@@ -1,0 +1,86 @@
+# This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: Build OpenSHC
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Download original binaries
+      uses: actions/checkout@v4
+      with:
+        repository: sourcehold/OpenSHC-private
+        token: ${{ secrets.OPENSHC_PRIVATE_READ_ONLY_TOKEN }}
+        path: _original
+        
+    - name: Toggle reimplementation status
+      shell: pwsh
+      run: >
+        & .\tools\reimplementation-control\Add-All-Reimplementations-To-Cmake.ps1
+        & .\tools\reimplementation-control\Enable-Reimplemented-Data.ps1
+        & .\tools\reimplementation-control\Enable-Reimplemented-Functions.ps1
+    - name: Build OpenSHC.dll
+      run: >
+        .\build.bat RelWithDebInfo OpenSHC.dll
+      shell: pwsh
+      
+    - name: Setup reccmp
+      run: >
+        .\reccmp\dll\setup.bat
+      shell: pwsh
+    - name: Compute progress
+      run: >
+        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 3699
+      shell: pwsh
+    - uses: actions/upload-artifact@v7
+      with:
+        name: progress.html
+        path: reccmp\dll\progress.html
+    - uses: actions/upload-artifact@v7
+      with:
+        name: progress.json
+        path: reccmp\dll\progress.json
+    - name: Upload to Progress Reports Release
+      run: gh release upload progress-reports reccmp\dll\progress.html reccmp\dll\progress.json --clobber --repo gynt/OpenSHC
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Prepare static files
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Path progress 
+        Copy-Item -Path reccmp\dll\progress.html -Destination progress\progress.html
+    - name: Upload static files as artifact
+      id: deployment
+      uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+      with:
+        path: progress/
+        
+  # Deployment job
+  deploy:
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
