@@ -1,0 +1,102 @@
+# This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: Build OpenSHC
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Download original binaries
+      uses: actions/checkout@v4
+      with:
+        repository: sourcehold/OpenSHC-private
+        token: ${{ secrets.OPENSHC_PRIVATE_READ_ONLY_TOKEN }}
+        path: _original
+        
+    - name: Collect cpp files and write to cmake/openshc-sources.txt
+      run: >
+        Get-ChildItem .\src\OpenSHC\*.cpp -Recurse | Resolve-Path -Relative | ForEach-Object { "$_".Substring(2).Replace("\", "/") } | Join-String -Separator "`n" | Set-Content -Path cmake\openshc-sources.txt
+      shell: pwsh
+    - name: Toggle reimplementation status
+      run: >
+        Get-ChildItem .\src\OpenSHC\*.cpp -Recurse | Select-String -Pattern "//\s*FUNCTION:\s* STRONGHOLDCRUSADER \s*(0x[0-9A-Za-z]+)" | ForEach-Object {
+            $address = $_.Matches[0].Groups[1].Value
+            Get-ChildItem .\src\OpenSHC\*.func.hpp -Recurse | Where-Object { $null -ne (Select-String -Path $_ -Pattern "$address") } | ForEach-Object { (Get-Content -Path $_ -Raw) -replace "(?s)(MACRO_FUNCTION_RESOLVER\b(?:(?!MACRO_FUNCTION_RESOLVER).)*?),\s*false(\s*, Address::SHC_3BB0A8C1_$address)", '$1, true$2' | Set-Content -Path $_}
+        }
+    - name: Build OpenSHC.dll
+      run: >
+        .\build.bat RelWithDebInfo OpenSHC.dll
+      shell: pwsh
+      
+    - name: Setup reccmp
+      run: >
+        .\reccmp\dll\setup.bat
+      shell: pwsh
+    - name: Compute progress
+      run: >
+        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
+      shell: pwsh
+    # - name: Toggle reimplemented to true
+    #   run: >
+    #     Get-Content -Path .\reccmp\dll\progress.json | ConvertFrom-Json | Select-Object -ExpandProperty data | Where-Object {$_.name.Contains("::")} | ForEach-Object {$funcFile = $_.name -split  "::" | select -SkipLast 1 | Join-String -Separator "/"; $funcFile = "src/$funcFile.func.hpp"; (Get-Content -Path $funcFile -Raw) -replace "(?s)(MACRO_FUNCTION_RESOLVER\b(?:(?!MACRO_FUNCTION_RESOLVER).)*?),\s*false(\s*,[^;]+$($_.name -split '::' | Select-Object -Last 1 );)", '$1, true$2' | Set-Content -Path $funcFile  }
+    #   shell: pwsh
+    # - name: Rebuild
+    #   run: >
+    #     .\build.bat RelWithDebInfo OpenSHC.dll
+    #   shell: pwsh
+    # - name: Recompute progress
+    #   run: >
+    #     .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
+    #   shell: pwsh
+    - uses: actions/upload-artifact@v7
+      with:
+        name: progress.html
+        path: reccmp\dll\progress.html
+    - uses: actions/upload-artifact@v7
+      with:
+        name: progress.json
+        path: reccmp\dll\progress.json
+    - name: Upload to Progress Reports Release
+      run: gh release upload progress-reports reccmp\dll\progress.html reccmp\dll\progress.json --clobber --repo gynt/OpenSHC
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Prepare static files
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Path progress 
+        Copy-Item -Path reccmp\dll\progress.html -Destination progress\progress.html
+    - name: Upload static files as artifact
+      id: deployment
+      uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+      with:
+        path: progress/
+        
+  # Deployment job
+  deploy:
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
