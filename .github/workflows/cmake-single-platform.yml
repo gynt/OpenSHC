@@ -27,6 +27,10 @@ jobs:
       run: >
         .\build.bat RelWithDebInfo OpenSHC.dll
       shell: pwsh
+    - name: Setup reccmp
+      run: >
+        .\reccmp\dll\setup.bat
+      shell: pwsh
     - name: Compute progress
       run: >
         .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
