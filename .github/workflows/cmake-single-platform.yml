@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
-name: CMake on a single platform
+name: Build OpenSHC
 
 on:
   push:
@@ -23,38 +23,45 @@ jobs:
       run: >
         Get-ChildItem .\src\OpenSHC\*.cpp -Recurse | Resolve-Path -Relative | ForEach-Object { "$_".Substring(2).Replace("\", "/") } | Join-String -Separator "`n" | Set-Content -Path cmake\openshc-sources.txt
       shell: pwsh
-    - name: Build
+    - name: Toggle reimplementation status
+      run: >
+        $results = Get-ChildItem .\src\OpenSHC\*.cpp -Recurse | Select-String -Pattern "//\s*FUNCTION:\s* STRONGHOLDCRUSADER \s*(0x[0-9A-Za-z]+)"
+        $results | ForEach-Object {
+            $address = $_.Matches[0].Groups[1].Value
+            Get-ChildItem .\src\OpenSHC\*.func.hpp -Recurse | Where-Object { $null -ne (Select-String -Path $_ -Pattern "$address") } | ForEach-Object { (Get-Content -Path $_ -Raw) -replace "(?s)(MACRO_FUNCTION_RESOLVER\b(?:(?!MACRO_FUNCTION_RESOLVER).)*?),\s*false(\s*, Address::SHC_3BB0A8C1_$address)", '$1, true$2' | Set-Content -Path $_}
+        }
+    - name: Build OpenSHC.dll
       run: >
         .\build.bat RelWithDebInfo OpenSHC.dll
       shell: pwsh
-    - name: Setup reccmp
-      run: >
-        .\reccmp\dll\setup.bat
-      shell: pwsh
-    - name: Compute progress
-      run: >
-        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
-      shell: pwsh
-    - name: Toggle reimplemented to true
-      run: >
-        Get-Content -Path .\reccmp\dll\progress.json | ConvertFrom-Json | Select-Object -ExpandProperty data | Where-Object {$_.name.Contains("::")} | ForEach-Object {$funcFile = $_.name -split  "::" | select -SkipLast 1 | Join-String -Separator "/"; $funcFile = "src/$funcFile.func.hpp"; (Get-Content -Path $funcFile -Raw) -replace "(?s)(MACRO_FUNCTION_RESOLVER\b(?:(?!MACRO_FUNCTION_RESOLVER).)*?),\s*false(\s*,[^;]+$($_.name -split '::' | Select-Object -Last 1 );)", '$1, true$2' | Set-Content -Path $funcFile  }
-      shell: pwsh
-    - name: Rebuild
-      run: >
-        .\build.bat RelWithDebInfo OpenSHC.dll
-      shell: pwsh
-    - name: Recompute progress
-      run: >
-        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
-      shell: pwsh
-    - uses: actions/upload-artifact@v7
-      with:
-        name: progress.html
-        path: reccmp\dll\progress.html
-    - uses: actions/upload-artifact@v7
-      with:
-        name: progress.json
-        path: reccmp\dll\progress.json
+    # - name: Setup reccmp
+    #   run: >
+    #     .\reccmp\dll\setup.bat
+    #   shell: pwsh
+    # - name: Compute progress
+    #   run: >
+    #     .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
+    #   shell: pwsh
+    # - name: Toggle reimplemented to true
+    #   run: >
+    #     Get-Content -Path .\reccmp\dll\progress.json | ConvertFrom-Json | Select-Object -ExpandProperty data | Where-Object {$_.name.Contains("::")} | ForEach-Object {$funcFile = $_.name -split  "::" | select -SkipLast 1 | Join-String -Separator "/"; $funcFile = "src/$funcFile.func.hpp"; (Get-Content -Path $funcFile -Raw) -replace "(?s)(MACRO_FUNCTION_RESOLVER\b(?:(?!MACRO_FUNCTION_RESOLVER).)*?),\s*false(\s*,[^;]+$($_.name -split '::' | Select-Object -Last 1 );)", '$1, true$2' | Set-Content -Path $funcFile  }
+    #   shell: pwsh
+    # - name: Rebuild
+    #   run: >
+    #     .\build.bat RelWithDebInfo OpenSHC.dll
+    #   shell: pwsh
+    # - name: Recompute progress
+    #   run: >
+    #     .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 4000
+    #   shell: pwsh
+    # - uses: actions/upload-artifact@v7
+    #   with:
+    #     name: progress.html
+    #     path: reccmp\dll\progress.html
+    # - uses: actions/upload-artifact@v7
+    #   with:
+    #     name: progress.json
+    #     path: reccmp\dll\progress.json
 
 
 
