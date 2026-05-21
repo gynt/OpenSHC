@@ -19,6 +19,13 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
+    - name: Download original binaries
+      uses: actions/checkout@v4
+      with:
+        repository: sourcehold/OpenSHC-private
+        token: ${{ secrets.OPENSHC_PRIVATE_READ_ONLY_TOKEN }}
+        path: _original
+        
     - name: Collect cpp files and write to cmake/openshc-sources.txt
       run: >
         Get-ChildItem .\src\OpenSHC\*.cpp -Recurse | Resolve-Path -Relative | ForEach-Object { "$_".Substring(2).Replace("\", "/") } | Join-String -Separator "`n" | Set-Content -Path cmake\openshc-sources.txt
@@ -34,12 +41,6 @@ jobs:
         .\build.bat RelWithDebInfo OpenSHC.dll
       shell: pwsh
       
-    - name: Download original binaries
-      uses: actions/checkout@v4
-      with:
-        repository: sourcehold/OpenSHC-private
-        token: ${{ secrets.OPENSHC_PRIVATE_READ_ONLY_TOKEN }}
-        path: _original
     - name: Setup reccmp
       run: >
         .\reccmp\dll\setup.bat
@@ -68,6 +69,10 @@ jobs:
       with:
         name: progress.json
         path: reccmp\dll\progress.json
-
+    - name: Upload to Progress Reports Release
+      run: gh release upload progress-reports reccmp\dll\progress.html reccmp\dll\progress.json --clobber --repo gynt/OpenSHC
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
