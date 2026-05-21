@@ -76,6 +76,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare static files
+      shell: pwsh
       run: >
         New-Item -ItemType Directory -Path progress 
         Copy-Item -Path reccmp\dll\progress.html -Destination progress\progress.html
