@@ -77,7 +77,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare static files
       shell: pwsh
-      run: >
+      run: |
         New-Item -ItemType Directory -Path progress 
         Copy-Item -Path reccmp\dll\progress.html -Destination progress\progress.html
     - name: Upload static files as artifact
