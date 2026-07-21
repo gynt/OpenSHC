@@ -1,9 +1,10 @@
+from collections.abc import Iterable
 from typing import List
 
 from tokenizer import Tokenizer
 
 from ghidra.app.decompiler import ClangVariableToken, DecompileResults
-from ghidra.program.model.pcode import HighFunction
+from ghidra.program.model.pcode import EquateSymbol, HighFunction
 
 def joinit(iterable, delimiter):
     try:
@@ -26,7 +27,7 @@ class FunctionRewriter(object):
     self._namespace_type = self._results.getFunction().getParentNamespace().getType().name()
     self._global_symbols = dict((s.getName(), s) for s in self._hf.getGlobalSymbolMap().getSymbols())
 
-  def is_this(self, tok: ClangVariableToken):
+  def is_this_variable(self, tok: ClangVariableToken):
     """Returns if the token's high symbol has a data type that has the name path as the function's namespace"""
     hs = tok.getHighSymbol(self._hf)
     if not hs.isGlobal():
@@ -137,12 +138,13 @@ class FunctionRewriter(object):
     r = []
     s.next()
     if s.class_name(s.current()) == "ClangVariableToken":
-      if self.is_this(s.current()):
+      if self.is_this_variable(s.current()):
         r.append("this")
         s.advance_until(lambda x: s.class_name(x) != "ClangBreak" and str(s) != " ")
-        if str(s.current()) == ".":
+        if str(s.next()) == ".":
           r.append("->") # substitute . with -> in case of DAT_ to this conversion
           s.next()
+          
     
 
     # TODO: unfinished!
@@ -178,6 +180,14 @@ class FunctionRewriter(object):
         r += [n]
     return r
   
+  def rewrite_ClangVariableToken(self, cvt: ClangVariableToken):
+    hs = cvt.getHighSymbol(self._hf)
+    if isinstance(hs, EquateSymbol):
+      if not hs.getDataType() or str(hs.getDataType()) == 'undefined':
+        return [str(hs.getValue())] # We do this because we can't get the enum associated with the equate name from anywhere...
+      self.register_datatype(hs.getDataType(), usings = True)
+    return str(cvt)
+  
   def rewrite_ClangBreak(self):
     return ["\n"]
   
@@ -186,10 +196,7 @@ class FunctionRewriter(object):
     r = []
     while s.has_next():
       cur = s.next()
-      if s.is_token(cur):
-        r.append(cur)
-      else:
-        r += self.rewrite_current(s)
+      r += self.rewrite_current(s)
     return r
   
   def rewrite_current(self, s: Tokenizer, context: List[str] = []):
@@ -202,7 +209,10 @@ class FunctionRewriter(object):
     if n == "ClangBreak":
       r += self.rewrite_ClangBreak()
     elif hasattr(self, needle):
-      r += getattr(self, needle)(s.enter(False))
+      if isinstance(cur, Iterable):
+        r += getattr(self, needle)(s.enter(False))
+      else:
+        r += getattr(self, needle)(cur)
     else:
       r.append(str(cur))
     return r

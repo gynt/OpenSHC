@@ -90,13 +90,6 @@ class Tokenizer(object):
       return obj.cls
     return obj.__class__.__name__.split(".")[-1]
   
-  def is_token(self, obj):
-    n = self.class_name(obj)
-    return n.endswith("Token") or n in ["ClangBreak"]
-  
-  def is_token_group(self, obj):
-    return not self.is_token(obj)
-  
   def is_instance(self, obj, name):
     return self.class_name(obj) == name
   
