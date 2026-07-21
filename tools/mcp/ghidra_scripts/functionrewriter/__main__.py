@@ -70,24 +70,24 @@ def decompile(func: Function, style = "decompile"):
 
     return results
 
-func = currentProgram.getFunctionManager().getFunctionAt(flat_api.toAddr(0x401000))
-r = decompile(func, "decompile")
-
-def create_this_refactor_task(r: DecompileResults):
-    hf = r.getHighFunction()
-    for sym in hf.getGlobalSymbolMap().getSymbols():
-        target = sym.getName()
 
 from rewriter import FunctionRewriter
 from tokenizer import Tokenizer
-
-fw = FunctionRewriter(r)
-fnew = fw.rewrite_function(Tokenizer(r.getCCodeMarkup()))
-
-print("============= OLD ===============")
-print(r.getDecompiledFunction().getC())
-
-print("============= NEW ===============")
 import subprocess
-ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-print(ps.communicate(fnew.replace("\n\n", ""))[0])
+
+def test(addr):
+    func = currentProgram.getFunctionManager().getFunctionAt(flat_api.toAddr(addr))
+    r = decompile(func, "decompile")
+    fw = FunctionRewriter(r)
+    fnew = fw.rewrite_function(Tokenizer(r.getCCodeMarkup()))
+
+    print("============= OLD ===============")
+    print(r.getDecompiledFunction().getC())
+
+    print("============= NEW ===============")
+    ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    print(ps.communicate(fnew.replace("\n\n", ""))[0])
+
+#test(0x401000)
+#test(0x00401040)
+test(0x00401060)

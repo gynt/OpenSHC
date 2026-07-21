@@ -4,8 +4,9 @@ from typing import List
 
 from tokenizer import Tokenizer
 
-from ghidra.app.decompiler import ClangVariableToken, DecompileResults
+from ghidra.app.decompiler import ClangFuncNameToken, ClangVariableToken, DecompileResults
 from ghidra.program.model.pcode import EquateSymbol, HighFunction
+from ghidra.program.model.listing import Function
 
 def joinit(iterable, delimiter):
     try:
@@ -24,10 +25,15 @@ class FunctionRewriter(object):
     self._hf: HighFunction = results.getHighFunction()
     self._includes = []
     self._usings = []
-    self._namespace = list(str(n).replace("_HoldStrong", "OpenSHC") for n in self._results.getFunction().getParentNamespace().getPathList(True))
+    self._namespace = list(str(n) for n in self._results.getFunction().getParentNamespace().getPathList(True))
     self._wrapping_namespace = self._namespace[:-1]
     self._namespace_type = self._results.getFunction().getParentNamespace().getType().name()
     self._global_symbols = dict((s.getName(), s) for s in self._hf.getGlobalSymbolMap().getSymbols())
+    self._program = self._hf.getDataTypeManager().getProgram()
+
+  def var_path_matches_namespace(self, path: str):
+    ns = [el for el in path.split("/") if el]
+    return ns == self._namespace
 
   def is_this_variable(self, tok: ClangVariableToken):
     """Returns if the token's high symbol has a data type that has the name path as the function's namespace"""
@@ -37,11 +43,10 @@ class FunctionRewriter(object):
     if not hs.isGlobal():
       return False
     dt = hs.getDataType()
-    ns = [el for el in str(dt.getDataTypePath()).split("/") if el]
-    return ns == self._namespace
+    return self.var_path_matches_namespace(str(dt.getDataTypePath()))
 
   def register_datatype(self, dt, usings = False, ignore_simple: bool = True):
-    include = str(dt.getDataTypePath()).replace("_HoldStrong", "OpenSHC")
+    include = str(dt.getDataTypePath())
     if ignore_simple:
       if not include.startswith("/OpenSHC"):
         return
@@ -116,26 +121,71 @@ class FunctionRewriter(object):
         r += [str(v.current()) + "::instance"]
     return r
   
-  def rewrite_function_namespace(self, fn: Tokenizer):
-    fn.reset(False)
+  def _advance_first_method_argument(self, fn: Tokenizer):
+    assert str(fn.peek(2)) == "("
+    if str(fn.peek(4)) == "this":
+      fn.advance_multiple(4)
+      return "this"
+    assert str(fn.peek(4)) == "&"
+    var = fn.advance_multiple(6)[-1]
+    if isinstance(var, ClangVariableToken) and self.is_this_variable(var):
+      return "this"
+    return var
+  
+  def _process_func_args(self, fn: Tokenizer):
     r = []
-    f = fn.peek_until(lambda x: fn.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+    while fn.has_next() and fn.has_upcoming_token(predicate=lambda x: True, failfast=lambda x: str(x) in [")", ";"]):
+      # TODO: how to handle end of arguments of function??
+      fn.next()
+      r += self.rewrite_current(fn)
+    if str(fn.peek()) == ")":
+      fn.next()
+    return r
+
+  def rewrite_function_namespace(self, fn: Tokenizer):
+    r = []
+    f = [fn.current()]
+    if fn.class_name(fn.current()) != "ClangFuncNameToken":
+      f = fn.advance_until(lambda x: fn.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
     if f:
       nspart, funcname = f[:-1], f[-1]
-      if nspart:
-        untilns = nspart[:-4]
-        ns = nspart[-4]
+      if not isinstance(funcname, ClangFuncNameToken):
+        raise Exception()
 
-        r += untilns
-        r += [str(ns) + "_Func" + "" + "::" + ""]
-        # add include!
+      addr = funcname.getMinAddress()
+      cu = self._program.getListing().getCodeUnitAt(addr)
+      if cu.getMnemonicString() != "CALL" and cu.getMnemonicString() != "JMP":
+        raise Exception(addr)
+      target_address = cu.getPrimaryReference(0).getToAddress()
+      func: Function = self._program.getFunctionManager().getFunctionAt(target_address)
+      pns = func.getParentNamespace()
+      pl = list(pns.getPathList(True))
+      pl_func = "::".join(pl[:-1] + [f"{pl[-1]}_Func"])
+      pl_func += "::" + func.getName()
+      if pns.getType().name() == "CLASS":
+        first = self._advance_first_method_argument(fn)
+        args = []
+        if str(fn.peek(2)) == ",":
+          fn.advance_multiple(2)
+          args = self._process_func_args(fn)
+        r +=  [
+          "MACRO_MEMBER_CALL",
+          "(",
+          pl_func,
+          ",",
+          " ",
+          "this" if str(first) == "this" else f"{first}::ptr",
+          ")",
+          "(",
+          *args,
+          ")",
+        ]
       else:
-        # fetch the namespace _Func part from somewhere
+        # TODO:
         pass
     else:
       funcname = fn.current()
-    r += [funcname]
-
+      r.append(funcname)
     return r
   
   def singleton_symbol(self):
@@ -158,17 +208,11 @@ class FunctionRewriter(object):
       elif s.has_upcoming_token(predicate=lambda x: s.is_instance(x, "ClangFuncNameToken"),
                                 failfast=lambda x: not re.match(pattern="[A-Za-z0-9_:]*", string=str(x)),
                                 include_current=True):
-        fpart = s.advance_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
-        fns = self.rewrite_function_namespace(Tokenizer(fpart))
-        macro = "MACRO_CALL"
-        thiscall = self.is_thiscall(fpart[-1])
-        if thiscall:
-          macro = "MACRO_CALL_MEMBER"
-        r += [macro, "("] + fns
-        if thiscall:
-          pass
-        
-        r += [")"]
+        fpart = [cur]
+        if s.class_name(cur) != "ClangFuncNameToken":
+          fpart = s.peek_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+        # Note this inherits the Tokenizer instead of entering a new situation
+        r += self.rewrite_function_namespace(s)
       else:
         r += self.rewrite_current(s, context=["ClangStatement"])
     return r
@@ -253,5 +297,6 @@ class FunctionRewriter(object):
     wrapper_open = "\n".join(f"namespace {ns} {{" for ns in self._wrapping_namespace)
     wrapper_close = "\n".join(f"}}" for ns in self._wrapping_namespace)
     usings = "\n".join(f'using {"::".join(str(incl)[1:].split("/"))};' for incl in self._includes)
+    global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}"'for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
     
-    return f"{includes}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}"
+    return f"{includes}\n\n{global_vars}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}".replace("_HoldStrong", "OpenSHC")
