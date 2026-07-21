@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+import re
 from typing import List
 
 from tokenizer import Tokenizer
@@ -23,21 +24,27 @@ class FunctionRewriter(object):
     self._hf: HighFunction = results.getHighFunction()
     self._includes = []
     self._usings = []
-    self._namespace = list(self._results.getFunction().getParentNamespace().getPathList(True))
+    self._namespace = list(str(n).replace("_HoldStrong", "OpenSHC") for n in self._results.getFunction().getParentNamespace().getPathList(True))
+    self._wrapping_namespace = self._namespace[:-1]
     self._namespace_type = self._results.getFunction().getParentNamespace().getType().name()
     self._global_symbols = dict((s.getName(), s) for s in self._hf.getGlobalSymbolMap().getSymbols())
 
   def is_this_variable(self, tok: ClangVariableToken):
     """Returns if the token's high symbol has a data type that has the name path as the function's namespace"""
     hs = tok.getHighSymbol(self._hf)
+    if not hs:
+      return False
     if not hs.isGlobal():
       return False
     dt = hs.getDataType()
     ns = [el for el in str(dt.getDataTypePath()).split("/") if el]
     return ns == self._namespace
 
-  def register_datatype(self, dt, usings = False):
-    include = dt.getDataTypePath()
+  def register_datatype(self, dt, usings = False, ignore_simple: bool = True):
+    include = str(dt.getDataTypePath()).replace("_HoldStrong", "OpenSHC")
+    if ignore_simple:
+      if not include.startswith("/OpenSHC"):
+        return
     if not include in self._includes:
       self._includes.append(include)
     if usings and not include in self._usings:
@@ -136,48 +143,34 @@ class FunctionRewriter(object):
   
   def rewrite_ClangStatement(self, s: Tokenizer):
     r = []
-    s.next()
-    if s.class_name(s.current()) == "ClangVariableToken":
-      if self.is_this_variable(s.current()):
-        r.append("this")
-        s.advance_until(lambda x: s.class_name(x) != "ClangBreak" and str(s) != " ")
-        if str(s.next()) == ".":
-          r.append("->") # substitute . with -> in case of DAT_ to this conversion
-          s.next()
-          
-    
-
-    # TODO: unfinished!
-    if s.has_upcoming_token((lambda x: str(x) == " " and s.is_instance(x, "ClangSyntaxToken")), include_current=True):
-      lhs = s.advance_until((lambda x: str(x) == " " and s.is_instance(x, "ClangSyntaxToken")), inclusive_return=True)
-      r += lhs
-      op = s.next()
-      r.append(op)
-      space = s.next()
-      r.append(space)
-      if not str(space) == " ":
-        raise Exception()
-      value = s.next()
-      r.append(value)
-      if s.has_upcoming_token((lambda x: str(x) == " " and s.is_instance(x, "ClangSyntaxToken")), include_current=True):
-        print("oh no!")
-        raise Exception("unhandled situation")
-    if s.has_upcoming_token(lambda x: s.is_instance(x, "ClangFuncNameToken"), include_current=True):
-      fpart = s.advance_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
-      fns = self.rewrite_function_namespace(Tokenizer(fpart))
-      macro = "MACRO_CALL"
-      thiscall = self.is_thiscall(fpart[-1])
-      if thiscall:
-        macro = "MACRO_CALL_MEMBER"
-      r += [macro, "("] + fns
-      if thiscall:
-        pass
-      
-      r += [")"]
-    else:
-      n = s.next(no_exception=True)
-      if n is not None:
-        r += [n]
+    while s.has_next():
+      s.next()
+      cur = s.current()
+      if s.class_name(cur) == "ClangVariableToken":
+        if self.is_this_variable(cur):
+          r.append("this")
+          s.advance_until(lambda x: s.class_name(x) != "ClangBreak" and str(s) != " ")
+          if str(s.next()) == ".":
+            r.append("->") # substitute . with -> in case of DAT_ to this conversion
+            s.next()
+        else:
+          r += self.rewrite_current(s, context=["ClangStatement"])
+      elif s.has_upcoming_token(predicate=lambda x: s.is_instance(x, "ClangFuncNameToken"),
+                                failfast=lambda x: not re.match(pattern="[A-Za-z0-9_:]*", string=str(x)),
+                                include_current=True):
+        fpart = s.advance_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+        fns = self.rewrite_function_namespace(Tokenizer(fpart))
+        macro = "MACRO_CALL"
+        thiscall = self.is_thiscall(fpart[-1])
+        if thiscall:
+          macro = "MACRO_CALL_MEMBER"
+        r += [macro, "("] + fns
+        if thiscall:
+          pass
+        
+        r += [")"]
+      else:
+        r += self.rewrite_current(s, context=["ClangStatement"])
     return r
   
   def rewrite_ClangVariableToken(self, cvt: ClangVariableToken):
@@ -186,7 +179,13 @@ class FunctionRewriter(object):
       if not hs.getDataType() or str(hs.getDataType()) == 'undefined':
         return [str(hs.getValue())] # We do this because we can't get the enum associated with the equate name from anywhere...
       self.register_datatype(hs.getDataType(), usings = True)
-    return str(cvt)
+    hc = cvt.getHighVariable()
+    if hc:
+      if hc.getDataType().getName() == "BOOLEnum":
+        return [str(cvt)] # TRUE and FALSE can be written as such
+    if str(cvt) == "'\\0'":
+      return [str(0)] # convert uchar and char 0's into proper decimal 0's
+    return [str(cvt)]
   
   def rewrite_ClangBreak(self):
     return ["\n"]
@@ -199,11 +198,12 @@ class FunctionRewriter(object):
       r += self.rewrite_current(s)
     return r
   
-  def rewrite_current(self, s: Tokenizer, context: List[str] = []):
+  def rewrite_current(self, s: Tokenizer, context: List[str] = [], fallback: bool = True):
     r = []
     cur = s.current()
     n = s.class_name(cur)
-    needle = f"rewrite_{n}"
+    simple_needle = f"rewrite_{n}"
+    needle = simple_needle
     if context:
       needle = f"rewrite_{'_'.join(context)}_{n}"
     if n == "ClangBreak":
@@ -213,6 +213,11 @@ class FunctionRewriter(object):
         r += getattr(self, needle)(s.enter(False))
       else:
         r += getattr(self, needle)(cur)
+    elif fallback and hasattr(self, simple_needle):
+      if isinstance(cur, Iterable):
+        r += getattr(self, simple_needle)(s.enter(False))
+      else:
+        r += getattr(self, simple_needle)(cur)
     else:
       r.append(str(cur))
     return r
@@ -244,4 +249,9 @@ class FunctionRewriter(object):
         pr.append("\n")      
         if indentation:
           pr.append(" " * indentation)
-    return ''.join(str(c) for c in pr)
+    includes = "\n".join(f'#include "{str(incl)[1:]}.hpp"' for incl in self._includes)
+    wrapper_open = "\n".join(f"namespace {ns} {{" for ns in self._wrapping_namespace)
+    wrapper_close = "\n".join(f"}}" for ns in self._wrapping_namespace)
+    usings = "\n".join(f'using {"::".join(str(incl)[1:].split("/"))};' for incl in self._includes)
+    
+    return f"{includes}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}"

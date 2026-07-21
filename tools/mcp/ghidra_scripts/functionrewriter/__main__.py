@@ -83,3 +83,11 @@ from tokenizer import Tokenizer
 
 fw = FunctionRewriter(r)
 fnew = fw.rewrite_function(Tokenizer(r.getCCodeMarkup()))
+
+print("============= OLD ===============")
+print(r.getDecompiledFunction().getC())
+
+print("============= NEW ===============")
+import subprocess
+ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+print(ps.communicate(fnew.replace("\n\n", ""))[0])
