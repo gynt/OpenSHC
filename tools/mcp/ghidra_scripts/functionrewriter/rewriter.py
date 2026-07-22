@@ -1,13 +1,13 @@
 from collections.abc import Iterable
 import re
-from typing import List
+from typing import Dict, List, Set
 
 from tokenizer import Tokenizer
 
-from ghidra.app.decompiler import ClangFuncNameToken, ClangOpToken, ClangTypeToken, ClangVariableToken, DecompileResults
+from ghidra.app.decompiler import ClangFieldToken, ClangFuncNameToken, ClangOpToken, ClangTypeToken, ClangVariableToken, DecompileResults
 from ghidra.program.model.pcode import EquateSymbol, HighFunction
 from ghidra.program.model.listing import Function
-from ghidra.program.model.data import TypeDef, Pointer, Enum
+from ghidra.program.model.data import DataType, TypeDef, Pointer, Enum
 
 def joinit(iterable, delimiter):
     try:
@@ -31,6 +31,23 @@ class FunctionRewriter(object):
     self._namespace_type = self._results.getFunction().getParentNamespace().getType().name()
     self._global_symbols = dict((s.getName(), s) for s in self._hf.getGlobalSymbolMap().getSymbols())
     self._program = self._hf.getDataTypeManager().getProgram()
+    # Entity * 40 psVar1;
+    # psVar1 = &this->entityArray[1].logicalState;
+    # Should become:
+    # Entity psvar1;
+    # psVar1 = &this->entityArray[1];
+    # This properly resolves the ADJ()
+    self._zap_field_for_symbol: Dict[str, DataType] = {}
+    for symbol in self._hf.getLocalSymbolMap().getSymbols():
+      dt = symbol.getDataType()
+      if isinstance(dt, TypeDef):
+        td: TypeDef = dt
+        if td.isPointer():
+          bdt = td.getBaseDataType()
+          if isinstance(bdt, Pointer):
+            odt = bdt.getDataType()
+            self.register_datatype(odt, usings=True)
+            self._zap_field_for_symbol[symbol.getName()] = odt
 
   def var_path_matches_namespace(self, path: str):
     ns = [el for el in path.split("/") if el]
@@ -196,7 +213,7 @@ class FunctionRewriter(object):
       func: Function = self._program.getFunctionManager().getFunctionAt(target_address)
       pns = func.getParentNamespace()
       pl = list(pns.getPathList(True))
-      pl_func = "::".join(pl[:-1] + [f"{pl[-1]}_Func"])
+      pl_func = "::".join(pl[:-1] + [f"{pl[-1]}_Func"]) # type: ignore
       pl_func += "::" + func.getName()
       if pns.getType().name() == "CLASS":
         first = self._advance_first_method_argument(fn)
@@ -249,6 +266,8 @@ class FunctionRewriter(object):
   
   def rewrite_ClangStatement(self, s: Tokenizer):
     r = []
+    zap_last_field = False
+    zap_after_data_type: DataType | None = None
     while s.has_next():
       s.next()
       cur = s.current()
@@ -259,6 +278,12 @@ class FunctionRewriter(object):
           if str(s.next()) == ".":
             r.append("->") # substitute . with -> in case of DAT_ to this conversion
             s.next()
+        elif cur.getHighSymbol(self._hf) and cur.getHighSymbol(self._hf).isGlobal():
+          r += [f"{cur}::instance"]
+        elif str(cur) in self._zap_field_for_symbol:
+          zap_last_field = True
+          zap_after_data_type = self._zap_field_for_symbol[str(cur)]
+          r += self.rewrite_current(s, context=["ClangStatement"])
         else:
           r += self.rewrite_current(s, context=["ClangStatement"])
       elif s.has_upcoming_token(predicate=lambda x: s.is_instance(x, "ClangFuncNameToken"),
@@ -275,6 +300,13 @@ class FunctionRewriter(object):
         r += self.rewrite_brace_contents(s)
         assert str(s.current()) == ")"
         # swallow the ")"
+      elif zap_after_data_type and s.has_next(4) and isinstance(s.peek(4), ClangFieldToken):
+        tok = s.peek(4)
+        if not isinstance(tok, ClangFieldToken):
+          raise Exception()
+        if tok.getDataType() == zap_after_data_type:
+          r += self.rewrite_current(s, context=["ClangStatement"])
+          s.advance_multiple(4)  
       else:
         r += self.rewrite_current(s, context=["ClangStatement"])
     return r
