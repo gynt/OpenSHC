@@ -4,7 +4,7 @@ from typing import List
 
 from tokenizer import Tokenizer
 
-from ghidra.app.decompiler import ClangFuncNameToken, ClangVariableToken, DecompileResults
+from ghidra.app.decompiler import ClangFuncNameToken, ClangOpToken, ClangVariableToken, DecompileResults
 from ghidra.program.model.pcode import EquateSymbol, HighFunction
 from ghidra.program.model.listing import Function
 
@@ -191,6 +191,26 @@ class FunctionRewriter(object):
   def singleton_symbol(self):
     return None
   
+  def rewrite_brace_contents(self, s: Tokenizer, brace_depth: int = 0):
+    r = []
+    if str(s.current()) == "(":
+      brace_depth += 1
+    if brace_depth == 0:
+      raise Exception("won't start alg, brace_depth == 0")
+    while brace_depth > 0 and s.has_upcoming_token(lambda x: str(x) == ")"):
+      if not s.has_next():
+        raise Exception("unclosed brace")
+      cur = s.next()
+      cur_str = str(cur)
+      if cur_str == "(":
+        brace_depth += 1
+      elif cur_str == ")":
+        brace_depth -= 1
+      if brace_depth == 0:
+        return r
+      r += self.rewrite_current(s)
+    return r
+  
   def rewrite_ClangStatement(self, s: Tokenizer):
     r = []
     while s.has_next():
@@ -213,6 +233,12 @@ class FunctionRewriter(object):
           fpart = s.peek_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
         # Note this inherits the Tokenizer instead of entering a new situation
         r += self.rewrite_function_namespace(s)
+      elif s.class_name(cur) == "ClangOpToken" and str(cur) == "ADJ":
+        assert str(s.peek(2)) == "("
+        s.advance_multiple(2)
+        r += self.rewrite_brace_contents(s)
+        assert str(s.current()) == ")"
+        # swallow the ")"
       else:
         r += self.rewrite_current(s, context=["ClangStatement"])
     return r
@@ -231,6 +257,9 @@ class FunctionRewriter(object):
       return [str(0)] # convert uchar and char 0's into proper decimal 0's
     return [str(cvt)]
   
+  def rewrite_ClangOpToken(self, tok: ClangOpToken):
+    return [str(tok)]
+
   def rewrite_ClangBreak(self):
     return ["\n"]
   
@@ -238,11 +267,14 @@ class FunctionRewriter(object):
     s.reset(False)
     r = []
     while s.has_next():
-      cur = s.next()
+      s.next()
       r += self.rewrite_current(s)
     return r
   
-  def rewrite_current(self, s: Tokenizer, context: List[str] = [], fallback: bool = True):
+  def rewrite_current(self,
+                      s: Tokenizer,
+                      context: List[str] = [],
+                      fallback: bool = True):
     r = []
     cur = s.current()
     n = s.class_name(cur)
@@ -252,6 +284,9 @@ class FunctionRewriter(object):
       needle = f"rewrite_{'_'.join(context)}_{n}"
     if n == "ClangBreak":
       r += self.rewrite_ClangBreak()
+    elif n == "ClangOpToken" and str(cur) == "ADJ":
+      s.advance_multiple(2) # Swallow ADJ, insert contents between ()
+      r += self.rewrite_brace_contents(s)
     elif hasattr(self, needle):
       if isinstance(cur, Iterable):
         r += getattr(self, needle)(s.enter(False))
@@ -297,6 +332,6 @@ class FunctionRewriter(object):
     wrapper_open = "\n".join(f"namespace {ns} {{" for ns in self._wrapping_namespace)
     wrapper_close = "\n".join(f"}}" for ns in self._wrapping_namespace)
     usings = "\n".join(f'using {"::".join(str(incl)[1:].split("/"))};' for incl in self._includes)
-    global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}"'for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
+    global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}"' for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
     
     return f"{includes}\n\n{global_vars}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}".replace("_HoldStrong", "OpenSHC")
