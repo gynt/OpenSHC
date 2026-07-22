@@ -24,12 +24,12 @@ class FunctionRewriter(object):
   def __init__(self, results: DecompileResults) -> None:
     self._results = results
     self._hf: HighFunction = results.getHighFunction()
-    self._includes = []
-    self._usings = []
     self._namespace = list(str(n) for n in self._results.getFunction().getParentNamespace().getPathList(True))
     self._wrapping_namespace = self._namespace[:-1]
     self._namespace_type = self._results.getFunction().getParentNamespace().getType().name()
     self._global_symbols = dict((s.getName(), s) for s in self._hf.getGlobalSymbolMap().getSymbols())
+    self._includes = [f'/{"/".join(self._namespace)}.func'] #.func by default
+    self._usings = []
     self._program = self._hf.getDataTypeManager().getProgram()
     # Entity * 40 psVar1;
     # psVar1 = &this->entityArray[1].logicalState;
@@ -83,9 +83,11 @@ class FunctionRewriter(object):
       include = include[:-3]
     if not include in self._includes:
       self._includes.append(include)
-    using = f"{include}/{key}"
-    if using not in self._usings:
-      self._usings.append(using)
+    if False:
+      # This doesn't work because our MSVC doesn't support it
+      using = f"{include}/{key}"
+      if using not in self._usings:
+        self._usings.append(using)
 
   def rewrite_ClangTypeToken(self, tok: ClangTypeToken):
     dt = tok.getDataType()
@@ -127,7 +129,7 @@ class FunctionRewriter(object):
     return [str(tok) for tok in cvd._tokens]
 
   def rewrite_ClangFuncProto(self, cfp: Tokenizer):
-    r = []
+    r = [f"//FUNCTION: STRONGHOLDCRUSADER {'0x{:08X}'.format(self._results.getFunction().getEntryPoint().getOffset())}", "\n"]
     while cfp.has_next():
       tok = cfp.next()
       if str(tok) == self._results.getFunction().getCallingConvention().getName() or str(tok) == self._namespace[0]:
@@ -340,7 +342,20 @@ class FunctionRewriter(object):
     r = []
     while s.has_next():
       s.next()
-      r += self.rewrite_current(s)
+      cur = s.current()
+      if s.class_name(cur) == "ClangVariableToken":
+        if self.is_this_variable(cur):
+          r.append("this")
+          s.advance_until(lambda x: s.class_name(x) != "ClangBreak" and str(s) != " ")
+          if str(s.next()) == ".":
+            r.append("->") # substitute . with -> in case of DAT_ to this conversion
+            s.next()
+        elif cur.getHighSymbol(self._hf) and cur.getHighSymbol(self._hf).isGlobal():
+          r += [f"{cur}::instance"]
+        else:
+          r += self.rewrite_current(s)
+      else:
+        r += self.rewrite_current(s)
     return r
   
   def rewrite_current(self,
@@ -404,6 +419,6 @@ class FunctionRewriter(object):
     wrapper_open = "\n".join(f"namespace {ns} {{" for ns in self._wrapping_namespace)
     wrapper_close = "\n".join(f"}}" for ns in self._wrapping_namespace)
     usings = "\n".join(f'using {"::".join(str(u)[1:].split("/"))};' for u in self._usings)
-    global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}"' for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
+    global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}.hpp"' for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
     
     return f"{includes}\n\n{global_vars}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}".replace("_HoldStrong", "OpenSHC")

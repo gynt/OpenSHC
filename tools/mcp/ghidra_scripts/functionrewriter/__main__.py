@@ -84,9 +84,12 @@ def test(addr):
     print("============= OLD ===============")
     print(r.getDecompiledFunction().getC())
 
+    print("============= NEW RAW ===========")
+    print(fnew)
+
     print("============= NEW ===============")
     ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-    print(ps.communicate(fnew.replace("\n\n", ""))[0])
+    print(ps.communicate(fnew)[0])
 
 #test(0x401000)
 #test(0x00401040)
