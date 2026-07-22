@@ -4,9 +4,10 @@ from typing import List
 
 from tokenizer import Tokenizer
 
-from ghidra.app.decompiler import ClangFuncNameToken, ClangOpToken, ClangVariableToken, DecompileResults
+from ghidra.app.decompiler import ClangFuncNameToken, ClangOpToken, ClangTypeToken, ClangVariableToken, DecompileResults
 from ghidra.program.model.pcode import EquateSymbol, HighFunction
 from ghidra.program.model.listing import Function
+from ghidra.program.model.data import TypeDef, Pointer, Enum
 
 def joinit(iterable, delimiter):
     try:
@@ -55,13 +56,48 @@ class FunctionRewriter(object):
     if usings and not include in self._usings:
       self._usings.append(include)
 
+  def register_enum(self, dt: Enum, key: str):
+    include = str(dt.getDataTypePath())
+    if include.endswith("Byte"):
+      include = include[:-4]
+    elif include.endswith("Short"):
+      include = include[:-5]
+    elif include.endswith("Int"):
+      include = include[:-3]
+    if not include in self._includes:
+      self._includes.append(include)
+    using = f"{include}/{key}"
+    if using not in self._usings:
+      self._usings.append(using)
+
+  def rewrite_ClangTypeToken(self, tok: ClangTypeToken):
+    dt = tok.getDataType()
+    if isinstance(dt, TypeDef):
+      td: TypeDef = dt
+      if td.isPointer():
+        bdt = td.getBaseDataType()
+        if isinstance(bdt, Pointer):
+          odt = bdt.getDataType()
+          self.register_datatype(odt, usings=True)
+          return [f"{odt.getName()} *"]
+    self.register_datatype(dt, usings=True)
+    return [str(tok)]
+
+  def rewrite_ClangVariableDecl(self, cvd: Tokenizer):
+    # assert cvd.has_next()
+    r = []
+    while cvd.has_next():
+      cvd.next()
+      r += self.rewrite_current(cvd)
+    return r
+
   def rewrite_ClangFuncProto_ClangReturnType(self, crt: Tokenizer):
     assert crt.has_next()
     tok = crt.next()
     dt = tok.getDataType() # type: ignore
     self.register_datatype(dt, usings=True)
     return [dt.getName()]
-  
+
   def rewrite_ClangFuncProto_ClangVariableDecl(self, cvd: Tokenizer):
     assert cvd.has_next()
     if cvd.has_upcoming_token(lambda x: str(x) == "this"):
@@ -253,6 +289,10 @@ class FunctionRewriter(object):
     if hc:
       if hc.getDataType().getName() == "BOOLEnum":
         return [str(cvt)] # TRUE and FALSE can be written as such
+      dt = hc.getDataType()
+      if isinstance(dt, Enum):
+        self.register_enum(dt, str(cvt))
+        return [str(cvt)]
     if str(cvt) == "'\\0'":
       return [str(0)] # convert uchar and char 0's into proper decimal 0's
     return [str(cvt)]
@@ -331,7 +371,7 @@ class FunctionRewriter(object):
     includes = "\n".join(f'#include "{str(incl)[1:]}.hpp"' for incl in self._includes)
     wrapper_open = "\n".join(f"namespace {ns} {{" for ns in self._wrapping_namespace)
     wrapper_close = "\n".join(f"}}" for ns in self._wrapping_namespace)
-    usings = "\n".join(f'using {"::".join(str(incl)[1:].split("/"))};' for incl in self._includes)
+    usings = "\n".join(f'using {"::".join(str(u)[1:].split("/"))};' for u in self._usings)
     global_vars = "\n".join(f'#include "OpenSHC/Globals/{n}"' for n, s in self._global_symbols.items() if not self.var_path_matches_namespace(str(s.getDataType().getDataTypePath())))
     
     return f"{includes}\n\n{global_vars}\n\n{wrapper_open}\n\n{usings}\n\n{''.join(str(c) for c in pr)}\n\n{wrapper_close}".replace("_HoldStrong", "OpenSHC")
