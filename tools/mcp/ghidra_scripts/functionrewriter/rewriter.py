@@ -2,7 +2,7 @@ from collections.abc import Iterable
 import re
 from typing import Dict, List, Set
 
-from tokenizer import Tokenizer
+from .tokenizer import Tokenizer
 
 from ghidra.app.decompiler import ClangFieldToken, ClangFuncNameToken, ClangOpToken, ClangTypeToken, ClangVariableToken, DecompileResults
 from ghidra.program.model.pcode import EquateSymbol, HighConstant, HighFunction

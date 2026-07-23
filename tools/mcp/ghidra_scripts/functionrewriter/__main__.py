@@ -1,100 +1,56 @@
-import atexit
-import pyghidra
-
-if not pyghidra.started():
-    pyghidra.start()
-
-import tempfile
-project_dir = tempfile.mkdtemp(prefix="ghidra-project-")
-project_name = "temp-project"
-project = pyghidra.open_project(project_dir, project_name, True)
-
-from java.io import File
-
-from ghidra.base.project import GhidraProject
-from ghidra.app.util.importer import ProgramLoader
-from ghidra.util.task import ConsoleTaskMonitor
-
-monitor = ConsoleTaskMonitor()
-
-loader = pyghidra.program_loader().project(project)
-loader = loader.source("Stronghold Crusader.exe.gzf")
-with loader.load() as load_results:
-    load_results.save(pyghidra.task_monitor()) # type: ignore
-    
-
-currentProgram, obj = pyghidra.consume_program(project, "/Stronghold Crusader.exe", project)
-
-from ghidra.program.flatapi import FlatProgramAPI
-flat_api = FlatProgramAPI(currentProgram, pyghidra.task_monitor())
-
-def getCurrentProgram():
-    return currentProgram
-
-def do_atexit():
-    currentProgram.release(project) # type: ignore
-    project.close()
-
-atexit.register(do_atexit)
-
-
-# Start scripting!
-
-from urllib.parse import urlparse, parse_qs
-from ghidra.app.decompiler import DecompInterface, DecompileOptions, DecompileResults # type: ignore
-from ghidra.util.task import ConsoleTaskMonitor # type: ignore
-from ghidra.program.model.listing import Function # type: ignore
-from ghidra.program.model.pcode import HighSymbol # type: ignore
-
-def decompile(func: Function, style = "decompile"):
-     # Initialize decompiler
-    decompiler = DecompInterface()
-        
-    # Set decompiler options
-    options = DecompileOptions()
-    decompiler.setOptions(options)
-    
-    decompiler.toggleSyntaxTree(True)
-    decompiler.toggleCCode(True)
-    decompiler.toggleJumpLoads(True)
-    decompiler.toggleParamMeasures(True)
-    decompiler.setSimplificationStyle(style)
-    
-    decompiler.openProgram(getCurrentProgram())
-
-    # Decompile
-    monitor = ConsoleTaskMonitor()
-    results = decompiler.decompileFunction(func, 30, monitor)  # 30 second timeout
-
-    decompiler.closeProgram()
-
-    return results
-
-
-from rewriter import FunctionRewriter
-from tokenizer import Tokenizer
 import subprocess
+from tools.mcp.ghidra_scripts.functionrewriter import rewrite_function
+from tools.mcp.ghidra_scripts.functionrewriter.rewrite_function import FunctionRewriter, Tokenizer, decompile, initialize_ghidra_from_gzf, initialize_ghidra_from_real_project, rewrite_function
+
 
 def test(addr):
-    func = currentProgram.getFunctionManager().getFunctionAt(flat_api.toAddr(addr))
-    r = decompile(func, "decompile")
-    fw = FunctionRewriter(r)
-    fnew = fw.rewrite_function(Tokenizer(r.getCCodeMarkup()))
+  func = rewrite_function.currentProgram.getFunctionManager().getFunctionAt(rewrite_function.flat_api.toAddr(addr))
+  r = decompile(func, "decompile")
+  fw = FunctionRewriter(r)
+  fnew = fw.rewrite_function(Tokenizer(r.getCCodeMarkup()))
 
-    print("============= OLD ===============")
-    print(r.getDecompiledFunction().getC())
+  print("============= OLD ===============")
+  print(r.getDecompiledFunction().getC())
 
-    print("============= NEW RAW ===========")
-    print(fnew)
+  print("============= NEW RAW ===========")
+  print(fnew)
 
-    print("============= NEW ===============")
-    ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-    print(ps.communicate(fnew)[0])
+  print("============= NEW ===============")
+  ps = subprocess.Popen(["clang-format"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+  print(ps.communicate(fnew)[0])
 
-#test(0x401000)
-#test(0x00401040)
-#test(0x00401060)
-#test(0x00401620) # handle ADJ() and enum values
-#test(0x004016e0) # Super complex if else statements and member calls
-#test(0x004039b0) # function call without namespace prefix
-test(0x00465700) # Test namespace functions
+def run_tests():
+  #test(0x401000)
+  #test(0x00401040)
+  #test(0x00401060)
+  #test(0x00401620) # handle ADJ() and enum values
+  #test(0x004016e0) # Super complex if else statements and member calls
+  #test(0x004039b0) # function call without namespace prefix
+  test(0x00465700) # Test namespace functions
+
+import argparse, pathlib, sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--gzf", default="")
+parser.add_argument("--project-dir", default="")
+parser.add_argument("--project-name", default="")
+parser.add_argument("--function", type=str, required=True)
+parser.add_argument("--stdout", action='store_true', default=False)
+
+if __name__ == "__main__":
+  args = parser.parse_args()
+  if not args.gzf and not args.project_dir and not args.project_name:
+    raise Exception(f"invalid arguments: specify --gzf <path> or --project-dir <dir> and --project-name <name>")
+  if args.gzf:
+    initialize_ghidra_from_gzf(args.gzf)
+  elif args.project_name:
+    dir = pathlib.Path(args.project_dir or ".").resolve().absolute()
+    initialize_ghidra_from_real_project(str(dir), args.project_name)
+  else:
+    run_tests()
+    import sys
+    exit(0)
+  print(rewrite_function(args.function))
+
+    
+    
