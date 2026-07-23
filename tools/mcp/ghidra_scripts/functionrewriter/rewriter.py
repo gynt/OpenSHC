@@ -207,7 +207,7 @@ class FunctionRewriter(object):
       return "this"
     return var
   
-  def _process_func_args(self, fn: Tokenizer, brace_method: bool = True, brace_depth = 1):
+  def _process_func_args(self, fn: Tokenizer, brace_method: bool = True, brace_depth = 1, arg_types: List[DataType] = []):
     r = []
     if not brace_method:
       while fn.has_next() and fn.has_upcoming_token(predicate=lambda x: True, failfast=lambda x: str(x) in [")", ";"]):
@@ -218,7 +218,7 @@ class FunctionRewriter(object):
         fn.next()
       return r
 
-    r += self.rewrite_brace_contents(fn, brace_depth=brace_depth)
+    r += self.rewrite_brace_contents(fn, brace_depth=brace_depth, arg_types=arg_types)
     return r
 
   def rewrite_function_namespace(self, fn: Tokenizer):
@@ -257,7 +257,7 @@ class FunctionRewriter(object):
         # Test if it has another argument
         if str(fn.peek(2)) == ",":
           fn.advance_multiple(2)
-          args = self._process_func_args(fn)
+          args = self._process_func_args(fn, arg_types=[param.getDataType() for param in func.getParameters() if param.getName() != "this"])
         r +=  [
           "MACRO_CALL_MEMBER",
           "(",
@@ -275,7 +275,7 @@ class FunctionRewriter(object):
         # We are now at the function argument, we expect a "(" in 2
         assert str(fn.peek(2)) == "("
         fn.advance_multiple(2)
-        args = self._process_func_args(fn,brace_depth=0) # Set to 0 because we are sitting on "("
+        args = self._process_func_args(fn,brace_depth=0, arg_types=[param.getDataType() for param in func.getParameters() if param.getName() != "this"]) # Set to 0 because we are sitting on "("
         r += [
           "MACRO_CALL",
           "(",
@@ -293,12 +293,17 @@ class FunctionRewriter(object):
   def singleton_symbol(self):
     return None
   
-  def rewrite_brace_contents(self, s: Tokenizer, brace_depth: int = 0):
+  def rewrite_brace_contents(self, s: Tokenizer, brace_depth: int = 0, arg_types: List[DataType] = []):
     r = []
     if str(s.current()) == "(":
       brace_depth += 1
     if brace_depth == 0:
       raise Exception("won't start alg, brace_depth == 0")
+    array_depth = 0
+    arg_i = 0
+    expected_type: DataType | None = None
+    last_seen_type: DataType | None = None
+    arg_part = []
     while brace_depth > 0 and s.has_upcoming_token(lambda x: str(x) == ")"):
       if not s.has_next():
         raise Exception("unclosed brace")
@@ -308,8 +313,41 @@ class FunctionRewriter(object):
         brace_depth += 1
       elif cur_str == ")":
         brace_depth -= 1
+      elif cur_str == "[":
+        array_depth += 1
+      elif cur_str == "]":
+        array_depth -= 1
       if brace_depth == 0:
+        if last_seen_type != expected_type and last_seen_type is not None and expected_type is not None:
+          self.register_datatype(expected_type, usings=True)
+          arg_part = [f"std::static_cast<{expected_type.getName()}>", "("] + arg_part + [")"]
+        r += arg_part
         return r
+      
+      if cur_str == ",":
+        # Assumes commas are proper separators for arguments
+        if last_seen_type != expected_type and last_seen_type is not None and expected_type is not None:
+          self.register_datatype(expected_type, usings=True)
+          arg_part = [f"std::static_cast<{expected_type.getName()}>", "("] + arg_part + [")"]
+        r += arg_part + [",", " "]
+        arg_part.clear()
+        arg_i += 1
+        if arg_types:
+          expected_type = arg_types[arg_i]
+          last_seen_type = None # reset
+        continue
+      if array_depth == 0 and isinstance(cur, ClangVariableToken):
+        hs = cur.getHighSymbol(self._hf)
+        if hs:
+          dt = hs.getDataType()
+          if dt:
+            last_seen_type = dt
+      elif array_depth == 0 and isinstance(cur, ClangFieldToken):
+        hs = cur.getHighSymbol(self._hf)
+        if hs:
+          dt = hs.getDataType()
+          if dt:
+            last_seen_type = dt
       if isinstance(cur, ClangVariableToken):
         if self.is_this_variable(cur):
           r.append("this")
@@ -318,11 +356,11 @@ class FunctionRewriter(object):
             r.append("->") # substitute . with -> in case of DAT_ to this conversion
             s.next()
         elif cur.getHighSymbol(self._hf) and cur.getHighSymbol(self._hf).isGlobal():
-          r += [f"{cur}::instance"]
+          arg_part += [f"{cur}::instance"]
         else:
-          r += self.rewrite_current(s)
+          arg_part += self.rewrite_current(s)
       else:
-        r +=  self.rewrite_current(s)
+        arg_part += self.rewrite_current(s)
     return r
 
   
