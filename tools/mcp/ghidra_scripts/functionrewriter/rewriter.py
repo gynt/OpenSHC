@@ -5,7 +5,7 @@ from typing import Dict, List, Set
 from tokenizer import Tokenizer
 
 from ghidra.app.decompiler import ClangFieldToken, ClangFuncNameToken, ClangOpToken, ClangTypeToken, ClangVariableToken, DecompileResults
-from ghidra.program.model.pcode import EquateSymbol, HighFunction
+from ghidra.program.model.pcode import EquateSymbol, HighConstant, HighFunction
 from ghidra.program.model.listing import Function
 from ghidra.program.model.data import DataType, TypeDef, Pointer, Enum
 
@@ -109,9 +109,21 @@ class FunctionRewriter(object):
   def rewrite_ClangVariableDecl(self, cvd: Tokenizer):
     # assert cvd.has_next()
     r = []
-    while cvd.has_next():
-      cvd.next()
-      r += self.rewrite_current(cvd)
+    ctt = cvd.next()
+    if not isinstance(ctt, ClangTypeToken):
+      raise Exception(f"unexpected tokens: {cvd._tokens}")
+    r += self.rewrite_current(cvd) # Convert Short, Byte and Int enums to their parent?
+    space = cvd.next()
+    if not space or str(space) != " ":
+      raise Exception("expected a space")
+    r += self.rewrite_current(cvd)
+    varname = cvd.next()
+    if not isinstance(varname, ClangVariableToken):
+      raise Exception(f"unexpected tokens: {cvd._tokens}")
+    r.append(str(varname))
+    # while cvd.has_next():
+    #   cvd.next()
+    #   r += self.rewrite_current(cvd)
     return r
 
   def rewrite_ClangFuncProto_ClangReturnType(self, crt: Tokenizer):
@@ -133,7 +145,7 @@ class FunctionRewriter(object):
     return [str(tok) for tok in cvd._tokens]
 
   def rewrite_ClangFuncProto(self, cfp: Tokenizer):
-    r = [f"//FUNCTION: STRONGHOLDCRUSADER {'0x{:08X}'.format(self._results.getFunction().getEntryPoint().getOffset())}", "\n"]
+    r = [f"// FUNCTION: STRONGHOLDCRUSADER {'0x{:08X}'.format(self._results.getFunction().getEntryPoint().getOffset())}", "\n"]
     while cfp.has_next():
       tok = cfp.next()
       cc = self._results.getFunction().getCallingConvention().getName()
@@ -312,6 +324,7 @@ class FunctionRewriter(object):
       else:
         r +=  self.rewrite_current(s)
     return r
+
   
   def rewrite_ClangStatement(self, s: Tokenizer):
     r = []
@@ -366,7 +379,7 @@ class FunctionRewriter(object):
         return [str(hs.getValue())] # We do this because we can't get the enum associated with the equate name from anywhere...
       self.register_datatype(hs.getDataType(), usings = True)
     hc = cvt.getHighVariable()
-    if hc:
+    if isinstance(hc, HighConstant): # As opposed to a HighLocal which is a variable name
       dt = hc.getDataType()
       if isinstance(dt, Enum):
         self.register_enum(dt, str(cvt))
