@@ -215,7 +215,12 @@ class FunctionRewriter(object):
       func: Function = self._program.getFunctionManager().getFunctionAt(target_address)
       pns = func.getParentNamespace()
       pl = list(pns.getPathList(True))
-      pl_func = "::".join(pl[:-1] + [f"{pl[-1]}_Func"]) # type: ignore
+      pli = [str(n) for n in pl[:-1]] + [f"{pl[-1]}.func"]
+      inc = f"/{'/'.join(pli)}"
+      if inc not in self._includes:
+        self._includes.append(inc)
+      plf = [str(n) for n in pl[:-1]] + [f"{pl[-1]}_Func"]
+      pl_func = "::".join(plf) # type: ignore
       pl_func += "::" + func.getName()
       if pns.getType().name() == "CLASS":
         first = self._advance_first_method_argument(fn)
