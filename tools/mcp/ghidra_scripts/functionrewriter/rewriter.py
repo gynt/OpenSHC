@@ -83,6 +83,10 @@ class FunctionRewriter(object):
       include = include[:-3]
     if not include in self._includes:
       self._includes.append(include)
+    #using = str(dt.getDataTypePath().getCategoryPath()) # Doesn't work
+    using = include
+    if using not in self._usings:
+      self._usings.append(using)
     if False:
       # This doesn't work because our MSVC doesn't support it
       using = f"{include}/{key}"
@@ -132,9 +136,13 @@ class FunctionRewriter(object):
     r = [f"//FUNCTION: STRONGHOLDCRUSADER {'0x{:08X}'.format(self._results.getFunction().getEntryPoint().getOffset())}", "\n"]
     while cfp.has_next():
       tok = cfp.next()
-      if str(tok) == self._results.getFunction().getCallingConvention().getName() or str(tok) == self._namespace[0]:
-        if str(tok) == self._results.getFunction().getCallingConvention().getName() and str(tok) != "__thiscall":
+      cc = self._results.getFunction().getCallingConvention().getName()
+      if str(tok) == cc or str(tok) == self._namespace[0]:
+        if str(tok) == cc and str(tok) != "__thiscall":
           r.append(str(tok))
+        elif str(tok) == self._namespace[0]:
+          # No calling convention specified, inject
+          r += [str(cc), " "]
         # After parsing the calling convention we are guaranteed going to enter the function name(space)
         r += [self._namespace[-1], " :: ", self._results.getFunction().getName()]
         while str(cfp.current()) != "(":
@@ -187,7 +195,7 @@ class FunctionRewriter(object):
       return "this"
     return var
   
-  def _process_func_args(self, fn: Tokenizer, brace_method: bool = True):
+  def _process_func_args(self, fn: Tokenizer, brace_method: bool = True, brace_depth = 1):
     r = []
     if not brace_method:
       while fn.has_next() and fn.has_upcoming_token(predicate=lambda x: True, failfast=lambda x: str(x) in [")", ";"]):
@@ -198,7 +206,7 @@ class FunctionRewriter(object):
         fn.next()
       return r
 
-    r += self.rewrite_brace_contents(fn, brace_depth=1)
+    r += self.rewrite_brace_contents(fn, brace_depth=brace_depth)
     return r
 
   def rewrite_function_namespace(self, fn: Tokenizer):
@@ -206,6 +214,7 @@ class FunctionRewriter(object):
     f = [fn.current()]
     if fn.class_name(fn.current()) != "ClangFuncNameToken":
       f += fn.advance_until(lambda x: fn.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+    # current() is now the function name
     if f:
       funcname = f[-1]
       if not isinstance(funcname, ClangFuncNameToken):
@@ -216,6 +225,10 @@ class FunctionRewriter(object):
       if cu.getMnemonicString() != "CALL" and cu.getMnemonicString() != "JMP":
         raise Exception(addr)
       target_address = cu.getPrimaryReference(0).getToAddress()
+      cuf = self._program.getListing().getCodeUnitAt(target_address)
+      if cuf.getMnemonicString() == "addr":
+        # function is a thunk situation, basically call dword ptr[addr]
+        return [funcname]
       func: Function = self._program.getFunctionManager().getFunctionAt(target_address)
       pns = func.getParentNamespace()
       pl = list(pns.getPathList(True))
@@ -229,11 +242,12 @@ class FunctionRewriter(object):
       if pns.getType().name() == "CLASS":
         first = self._advance_first_method_argument(fn)
         args = []
+        # Test if it has another argument
         if str(fn.peek(2)) == ",":
           fn.advance_multiple(2)
           args = self._process_func_args(fn)
         r +=  [
-          "MACRO_MEMBER_CALL",
+          "MACRO_CALL_MEMBER",
           "(",
           pl_func,
           ",",
@@ -246,7 +260,19 @@ class FunctionRewriter(object):
         ]
       else:
         # TODO:
-        pass
+        # We are now at the function argument, we expect a "(" in 2
+        assert str(fn.peek(2)) == "("
+        fn.advance_multiple(2)
+        args = self._process_func_args(fn,brace_depth=0) # Set to 0 because we are sitting on "("
+        r += [
+          "MACRO_CALL",
+          "(",
+          pl_func,
+          ")",
+          "(",
+          *args,
+          ")",
+        ]
     else:
       funcname = fn.current()
       r.append(funcname)
@@ -272,7 +298,19 @@ class FunctionRewriter(object):
         brace_depth -= 1
       if brace_depth == 0:
         return r
-      r += self.rewrite_current(s)
+      if isinstance(cur, ClangVariableToken):
+        if self.is_this_variable(cur):
+          r.append("this")
+          s.advance_until(lambda x: s.class_name(x) != "ClangBreak" and str(s) != " ")
+          if str(s.next()) == ".":
+            r.append("->") # substitute . with -> in case of DAT_ to this conversion
+            s.next()
+        elif cur.getHighSymbol(self._hf) and cur.getHighSymbol(self._hf).isGlobal():
+          r += [f"{cur}::instance"]
+        else:
+          r += self.rewrite_current(s)
+      else:
+        r +=  self.rewrite_current(s)
     return r
   
   def rewrite_ClangStatement(self, s: Tokenizer):
@@ -329,12 +367,14 @@ class FunctionRewriter(object):
       self.register_datatype(hs.getDataType(), usings = True)
     hc = cvt.getHighVariable()
     if hc:
-      if hc.getDataType().getName() == "BOOLEnum":
-        return [str(cvt)] # TRUE and FALSE can be written as such
       dt = hc.getDataType()
       if isinstance(dt, Enum):
         self.register_enum(dt, str(cvt))
-        return [str(cvt)]
+        if hc.getDataType().getName() == "BOOLEnum":
+          return [str(cvt)] # TRUE and FALSE can be written as such    
+        dtp = dt.getCategoryPath().getPath()
+        dtns = dtp[1:].replace("/", "::")
+        return [f'{dtns}::{str(cvt)}']
     if str(cvt) == "'\\0'":
       return [str(0)] # convert uchar and char 0's into proper decimal 0's
     return [str(cvt)]

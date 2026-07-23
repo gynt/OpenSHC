@@ -95,4 +95,6 @@ def test(addr):
 #test(0x00401040)
 #test(0x00401060)
 #test(0x00401620) # handle ADJ() and enum values
-test(0x004016e0) # Super complex if else statements
+#test(0x004016e0) # Super complex if else statements and member calls
+#test(0x004039b0) # function call without namespace prefix
+test(0x00465700) # Test namespace functions
