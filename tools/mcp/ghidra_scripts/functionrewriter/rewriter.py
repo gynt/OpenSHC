@@ -187,23 +187,27 @@ class FunctionRewriter(object):
       return "this"
     return var
   
-  def _process_func_args(self, fn: Tokenizer):
+  def _process_func_args(self, fn: Tokenizer, brace_method: bool = True):
     r = []
-    while fn.has_next() and fn.has_upcoming_token(predicate=lambda x: True, failfast=lambda x: str(x) in [")", ";"]):
-      # TODO: how to handle end of arguments of function??
-      fn.next()
-      r += self.rewrite_current(fn)
-    if str(fn.peek()) == ")":
-      fn.next()
+    if not brace_method:
+      while fn.has_next() and fn.has_upcoming_token(predicate=lambda x: True, failfast=lambda x: str(x) in [")", ";"]):
+        # TODO: how to handle end of arguments of function??
+        fn.next()
+        r += self.rewrite_current(fn)
+      if str(fn.peek()) == ")":
+        fn.next()
+      return r
+
+    r += self.rewrite_brace_contents(fn, brace_depth=1)
     return r
 
   def rewrite_function_namespace(self, fn: Tokenizer):
     r = []
     f = [fn.current()]
     if fn.class_name(fn.current()) != "ClangFuncNameToken":
-      f = fn.advance_until(lambda x: fn.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+      f += fn.advance_until(lambda x: fn.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
     if f:
-      nspart, funcname = f[:-1], f[-1]
+      funcname = f[-1]
       if not isinstance(funcname, ClangFuncNameToken):
         raise Exception()
 
@@ -293,12 +297,11 @@ class FunctionRewriter(object):
           r += self.rewrite_current(s, context=["ClangStatement"])
         else:
           r += self.rewrite_current(s, context=["ClangStatement"])
-      elif s.has_upcoming_token(predicate=lambda x: s.is_instance(x, "ClangFuncNameToken"),
-                                failfast=lambda x: not re.match(pattern="[A-Za-z0-9_:]*", string=str(x)),
-                                include_current=True):
-        fpart = [cur]
-        if s.class_name(cur) != "ClangFuncNameToken":
-          fpart = s.peek_until(lambda x: s.is_instance(x, "ClangFuncNameToken"), inclusive_return=True)
+      elif s.has_upcoming_token(
+                      predicate=lambda x: s.is_instance(x, "ClangFuncNameToken"),
+                      failfast=lambda x: re.match(pattern="([^A-Za-z0-9_:]*)",
+                                                      string=str(x)).group(0), # type: ignore
+                      include_current=True):
         # Note this inherits the Tokenizer instead of entering a new situation
         r += self.rewrite_function_namespace(s)
       elif s.class_name(cur) == "ClangOpToken" and str(cur) == "ADJ":

@@ -76,7 +76,10 @@ class Tokenizer(object):
         return True
     return False
   
-  def has_upcoming_token(self, predicate = lambda x: True, failfast = lambda x: False, include_current = False):
+  def has_upcoming_token(self,
+                         predicate = lambda x: True,
+                         failfast = lambda x: False,
+                         include_current = False):
     offset = self._index if self._index >= 0 else 0
     if not include_current:
       offset += 1
