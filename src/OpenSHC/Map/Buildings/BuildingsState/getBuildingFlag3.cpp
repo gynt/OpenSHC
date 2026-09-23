@@ -1,29 +1,12 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
-
-
-
-
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x0040F420
+        int BuildingsState::getBuildingFlag3(int param_1) { return this->buildings[param_1].unknownFlag3; }
 
-
-
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x0040F420
-int BuildingsState::getBuildingFlag3(int param_1)
-
-{
-return (int)this->buildings[param_1].unknownFlag3;
-}
-
-
-}
+    }
 }
 }

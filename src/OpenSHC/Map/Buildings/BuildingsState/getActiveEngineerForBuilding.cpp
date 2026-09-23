@@ -2,41 +2,31 @@
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 
-
-
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
-using OpenSHC::Map::Units::UnitLogicState;
-using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x0040E990
+        uint BuildingsState::getActiveEngineerForBuilding(int buildingID)
+        {
+            int unitID = DAT_BuildingsState::instance.buildings[buildingID].workerID[0];
+            if (DAT_BuildingsState::instance.buildings[buildingID].workerUID[0]
+                    != DAT_UnitsState::instance.units[unitID].uid
+                || DAT_UnitsState::instance.units[unitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL
+                || DAT_UnitsState::instance.units[unitID].unitType != OpenSHC::Map::Units::UT_E_ENGINEER
+                || DAT_UnitsState::instance.units[unitID].dying != 0
+                || DAT_UnitsState::instance.units[unitID].workplaceBuildingID_1 != buildingID) {
+                return 0;
+            }
+            return DAT_UnitsState::instance.units[unitID].field252_0x3c4 != 0 ? unitID : 0;
+        }
 
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x0040E990
-uint BuildingsState::getActiveEngineerForBuilding(int buildingID)
-
-{
-uint uVar1;
-
-uVar1 = (uint)this->buildings[buildingID].workerID[0];
-if ((((this->buildings[buildingID].workerUID[0] == DAT_UnitsState::instance.units[uVar1].uid)
-&& (DAT_UnitsState::instance.units[uVar1].logicalState == OpenSHC::Map::Units::ULS_NORMAL)) &&
-(DAT_UnitsState::instance.units[uVar1].unitType == OpenSHC::Map::Units::UT_E_ENGINEER)) &&
-((DAT_UnitsState::instance.units[uVar1].dying == 0 &&
-(DAT_UnitsState::instance.units[uVar1].workplaceBuildingID_1 == buildingID)))) {
-return -(uint)(DAT_UnitsState::instance.units[uVar1].field252_0x3c4 != 0) &uVar1;
-}
-return 0;
-}
-
-
-}
+    }
 }
 }

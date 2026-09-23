@@ -1,83 +1,69 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
-
-
-
-
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x00410920
+        undefined4 BuildingsState::getBuildingFlammabilityFactor(int buildingID)
+        {
+            switch (this->buildings[buildingID].buildingType) {
+            case BT_HOVEL:
+            case BT_WOODCUTTERSHUT:
+            case BT_OXTETHER:
+            case BT_IRONMINE:
+            case BT_HUNTERSHUT:
+            case BT_MERCENARYPOST:
+            case BT_BARRACKS:
+            case BT_ARMORY:
+            case BT_FLETCHER:
+            case BT_POLETURNER:
+            case BT_ARMOURER:
+            case BT_TANNER:
+            case BT_BREWERY:
+            case BT_GRANARY:
+            case BT_QUARRY:
+            case BT_APOTHECARY:
+            case BT_ENGINEERSGUILD:
+            case BT_TUNNELERSGUILD:
+            case BT_MARKETPLACE:
+            case BT_WHEATFARM:
+            case BT_HOPFARM:
+            case BT_APPLEFARM:
+            case BT_DAIRYFARM:
+            case BT_MILL:
+            case BT_STABLES:
+            case BT_CHAPEL:
+            case BT_CHURCH:
+            case BT_CATHEDRAL:
+            case BT_GALLOWS:
+            case BT_STOCKS:
+            case BT_MAYPOLE:
+            case BT_BURNINGSTAKE:
+            case BT_GIBBET:
+            case BT_STRETCHINGRACK:
+            case BT_CHOPPINGBLOCK:
+            case BT_DANCINGBEAR:
+            case BT_OUTPOST_EUROPEAN:
+            case BT_OUTPOST_ARABIAN:
+                return 1;
+            case BT_BLACKSMITH:
+            case BT_BAKERY:
+            case BT_INN:
+            case BT_OILSMELTER:
+                return 5;
+            case BT_PARADEGROUND:
+            case BT_CAMPGROUND:
+            case BT_PARADEGROUND2:
+            case BT_PARADEGROUND3:
+            case BT_PARADEGROUND4:
+            case BT_PARADEGROUND5:
+                return 4;
+            default:
+                return 0;
+            }
+        }
 
-
-
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x00410920
-undefined4 BuildingsState::getBuildingFlammabilityFactor(int buildingID)
-
-{
-switch(this->buildings[buildingID].buildingType) {
-case OpenSHC::Map::Buildings::BT_HOVEL:
-case OpenSHC::Map::Buildings::BT_WOODCUTTERSHUT:
-case OpenSHC::Map::Buildings::BT_OXTETHER:
-case OpenSHC::Map::Buildings::BT_IRONMINE:
-case OpenSHC::Map::Buildings::BT_HUNTERSHUT:
-case OpenSHC::Map::Buildings::BT_MERCENARYPOST:
-case OpenSHC::Map::Buildings::BT_BARRACKS:
-case OpenSHC::Map::Buildings::BT_ARMORY:
-case OpenSHC::Map::Buildings::BT_FLETCHER:
-case OpenSHC::Map::Buildings::BT_POLETURNER:
-case OpenSHC::Map::Buildings::BT_ARMOURER:
-case OpenSHC::Map::Buildings::BT_TANNER:
-case OpenSHC::Map::Buildings::BT_BREWERY:
-case OpenSHC::Map::Buildings::BT_GRANARY:
-case OpenSHC::Map::Buildings::BT_QUARRY:
-case OpenSHC::Map::Buildings::BT_APOTHECARY:
-case OpenSHC::Map::Buildings::BT_ENGINEERSGUILD:
-case OpenSHC::Map::Buildings::BT_TUNNELERSGUILD:
-case OpenSHC::Map::Buildings::BT_MARKETPLACE:
-case OpenSHC::Map::Buildings::BT_WHEATFARM:
-case OpenSHC::Map::Buildings::BT_HOPFARM:
-case OpenSHC::Map::Buildings::BT_APPLEFARM:
-case OpenSHC::Map::Buildings::BT_DAIRYFARM:
-case OpenSHC::Map::Buildings::BT_MILL:
-case OpenSHC::Map::Buildings::BT_STABLES:
-case OpenSHC::Map::Buildings::BT_CHAPEL:
-case OpenSHC::Map::Buildings::BT_CHURCH:
-case OpenSHC::Map::Buildings::BT_CATHEDRAL:
-case OpenSHC::Map::Buildings::BT_GALLOWS:
-case OpenSHC::Map::Buildings::BT_STOCKS:
-case OpenSHC::Map::Buildings::BT_MAYPOLE:
-case OpenSHC::Map::Buildings::BT_BURNINGSTAKE:
-case OpenSHC::Map::Buildings::BT_GIBBET:
-case OpenSHC::Map::Buildings::BT_STRETCHINGRACK:
-case OpenSHC::Map::Buildings::BT_CHOPPINGBLOCK:
-case OpenSHC::Map::Buildings::BT_DANCINGBEAR:
-case OpenSHC::Map::Buildings::BT_OUTPOST_EUROPEAN:
-case OpenSHC::Map::Buildings::BT_OUTPOST_ARABIAN:
-return(undefined4)( 1);
-OpenSHC::Map::Buildings::default:
-return(undefined4)( 0);
-case OpenSHC::Map::Buildings::BT_BLACKSMITH:
-case OpenSHC::Map::Buildings::BT_BAKERY:
-case OpenSHC::Map::Buildings::BT_INN:
-case OpenSHC::Map::Buildings::BT_OILSMELTER:
-return(undefined4)( 5);
-case OpenSHC::Map::Buildings::BT_PARADEGROUND:
-case OpenSHC::Map::Buildings::BT_CAMPGROUND:
-case OpenSHC::Map::Buildings::BT_PARADEGROUND2:
-case OpenSHC::Map::Buildings::BT_PARADEGROUND3:
-case OpenSHC::Map::Buildings::BT_PARADEGROUND4:
-case OpenSHC::Map::Buildings::BT_PARADEGROUND5:
-return(undefined4)( 4);
-}
-}
-
-
-}
+    }
 }
 }
