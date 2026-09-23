@@ -1,47 +1,27 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
-#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/TileMapState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
-
-
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
-using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x004197C0
+        void BuildingsState::updatePathLinkageLayerForAllBuildings()
+        {
+            for (int i = 1; i < 2000; ++i) {
+                if (DAT_BuildingsState::instance.buildings[i].logicalState != 0) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Map::TileMapState_Func::updatePathLinkagesForBuilding, DAT_TileMapState::ptr)(i);
+                }
+            }
+        }
 
-/* 
-  WARNING: Enum "MappersEnum": Some values do not have unique names
- */
-
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x004197C0
-void BuildingsState::updatePathLinkageLayerForAllBuildings()
-
-{
-Building * _ptrLogicalState;
-int _buildingID;
-
-_buildingID = 1;
-_ptrLogicalState = &this->buildings[1];
-do {
-if (_ptrLogicalState->logicalState != ((BuildingLogicalState)0)) {
-MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updatePathLinkagesForBuilding, DAT_TileMapState::ptr)(_buildingID);
-}
-_ptrLogicalState = _ptrLogicalState + 0x196;
-_buildingID = _buildingID + 1;
-} while ((int)_ptrLogicalState < 0x1124dc4);
-return;
-}
-
-
-}
+    }
 }
 }
