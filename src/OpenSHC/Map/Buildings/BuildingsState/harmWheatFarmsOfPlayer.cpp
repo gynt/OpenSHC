@@ -22,8 +22,11 @@ namespace Map {
                 // Young wheat is destroyed, grown wheat is set back
                 for (int t = 0; t < 36; ++t) {
                     int tile = (&this->buildings[i].tileRef1)[t];
-                    DAT_TileMapState::instance.DamageLayer[tile]
-                        = (char)DAT_TileMapState::instance.DamageLayer[tile] < 8 ? 0 : 101;
+                    if ((char)DAT_TileMapState::instance.DamageLayer[tile] < 8) {
+                        DAT_TileMapState::instance.DamageLayer[tile] = 0;
+                    } else {
+                        DAT_TileMapState::instance.DamageLayer[tile] = 101;
+                    }
                 }
                 this->buildings[i].growCounter = -1200;
                 *(short*)&this->buildings[i].wheatGrowStateRelated = 2;

@@ -1,100 +1,66 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
-
-
-#include "OpenSHC/Globals/GMTotalPicturesProcessed.hpp"
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/GMTotalPicturesProcessed.hpp"
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x0040EDF0
+        void BuildingsState::updateHopsFieldTileGraphics(int buildingID)
+        {
+            // Unless all tiles are refreshed (field14_0x18e024), only one tile is updated per call and the position to
+            // continue from is stored in padding_0x2fc
+            int start = 0;
+            int unchangedLeft = 3;
+            if (DAT_BuildingsState::instance.field14_0x18e024 == 0) {
+                start = *(short*)DAT_BuildingsState::instance.buildings[buildingID].padding_0x2fc;
+            }
+            for (int i = 0; i < 24; ++i) {
+                int tile = (&this->buildings[buildingID].tileRef1)[(i + start) % 24];
+                char stage = DAT_TileMapState::instance.DamageLayer[tile];
+                int frame;
+                if (stage == 0) {
+                    frame = 0;
+                } else if (stage < 2) {
+                    frame = 0;
+                } else if (stage < 4) {
+                    frame = 1;
+                } else if (stage < 6) {
+                    frame = 2;
+                } else if (stage < 8) {
+                    frame = 3;
+                } else if (stage < 10) {
+                    frame = 4;
+                } else if (stage < 12) {
+                    frame = 5;
+                } else if (stage < 14) {
+                    frame = 6;
+                } else if (stage < 28) {
+                    frame = 7;
+                } else if (stage < 32) {
+                    frame = 8;
+                } else {
+                    frame = 0;
+                }
 
+                int gfx = GMTotalPicturesProcessed::instance[14]
+                    + (DAT_TileMapState::instance.RandomLayer[tile] & 1) * 9 + 37 + frame;
+                if (gfx != DAT_TileMapState::instance.GfxLayer[tile]) {
+                    DAT_TileMapState::instance.GfxLayer[tile] = gfx;
+                } else if (--unchangedLeft == 0) {
+                    continue;
+                }
+                if (DAT_BuildingsState::instance.field14_0x18e024 == 0) {
+                    // Note: wraps at 36 instead of 24 like the tile index above
+                    *(short*)DAT_BuildingsState::instance.buildings[buildingID].padding_0x2fc = (i + 1 + start) % 36;
+                    return;
+                }
+            }
+        }
 
-
-/* 
-  WARNING: Enum "MappersEnum": Some values do not have unique names
- */
-
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x0040EDF0
-void BuildingsState::updateHopsFieldTileGraphics(int buildingID)
-
-{
-byte bVar1;
-int iVar2;
-uint uVar3;
-int iVar4;
-int iVar5;
-int local_8;
-
-iVar4 = 0;
-local_8 = 3;
-if (this->field14_0x18e024 == 0) {
-iVar4 = (int)*(short *)&this->buildings[buildingID].field_0x2fc;
-}
-iVar5 = 0;
-do {
-iVar2 = *(int *)(this->buildings[buildingID].workers +
-((iVar5 + iVar4) % 0x18) * 2 + 8);
-bVar1 = DAT_TileMapState::instance.DamageLayer[iVar2];
-if (bVar1 == 0) {
-uVar3 = 0;
-}
-else if ((char)bVar1 < '\x02') {
-uVar3 = 0;
-}
-else if ((char)bVar1 < '\x04') {
-uVar3 = 1;
-}
-else if ((char)bVar1 < '\x06') {
-uVar3 = 2;
-}
-else if ((char)bVar1 < '\b') {
-uVar3 = 3;
-}
-else if ((char)bVar1 < '\n') {
-uVar3 = 4;
-}
-else if ((char)bVar1 < '\f') {
-uVar3 = 5;
-}
-else if ((char)bVar1 < '\x0e') {
-uVar3 = 6;
-}
-else if ((char)bVar1 < '\x1c') {
-uVar3 = 7;
-}
-else {
-uVar3 = ('\x1f' < (char)bVar1) - 1 &8;
-}
-uVar3 = GMTotalPicturesProcessed::instance[0xe] + ((byte)DAT_TileMapState::instance.RandomLayer[iVar2] &1) * 9 +
-0x25 + uVar3;
-if (uVar3 == DAT_TileMapState::instance.GfxLayer[iVar2]) {
-local_8 = local_8 + -1;
-if (local_8 != 0) goto LAB_0040eef3;
-}
-else {
-DAT_TileMapState::instance.GfxLayer[iVar2] = (ushort)uVar3;
-LAB_0040eef3:
-if (this->field14_0x18e024 == 0) {
-*(short *)&this->buildings[buildingID].field_0x2fc =
-(short)((iVar5 + 1 + iVar4) % 0x24);
-return;
-}
-}
-iVar5 = iVar5 + 1;
-if (0x17 < iVar5) {
-return;
-}
-} while( true );
-}
-
-
-}
+    }
 }
 }
