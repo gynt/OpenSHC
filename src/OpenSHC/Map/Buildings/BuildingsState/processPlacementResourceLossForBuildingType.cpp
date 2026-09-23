@@ -1,11 +1,9 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
-#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
-#include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
-#include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Game/Resources/ResourceType.hpp"
-
-
+#include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -13,114 +11,93 @@
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-using OpenSHC::Game::GameMode2;
-using OpenSHC::Game::GameMode;
-using OpenSHC::Map::Buildings::BuildingType;
-using OpenSHC::Game::Resources::ResourceType;
+        using OpenSHC::Game::GameMode;
+        using OpenSHC::Game::GameMode2;
+        using OpenSHC::Game::Resources::ResourceType;
+        using OpenSHC::Map::Buildings::BuildingType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x0041BFD0
+        void BuildingsState::processPlacementResourceLossForBuildingType(
+            int playerID, BuildingType buildingType, int param_3)
+        {
+            if (DAT_GameCore::instance.solitaryAllBuildingsAreFree != FALSE
+                || DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+                return;
+            }
+            // Keeps are free in solitary mode
+            if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
+                && (buildingType == BT_MANORHOUSE || buildingType == BT_STONEKEEP || buildingType == BT_STRONGHOLD
+                    || buildingType == BT_KEEPFOUR || buildingType == BT_KEEPFIVE)) {
+                return;
+            }
+            // A woodcutter's hut is free if the player cannot afford one
+            if (MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::
+                                      hasLessWoodThanTheCostOfAWoodcuttersHutAndNoWoodcutters,
+                    this)(playerID, buildingType)
+                != 0) {
+                return;
+            }
 
-/* 
-  WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
- */
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
+                if (buildingType == BT_PITCHDITCH) {
+                    return;
+                }
+            } else if (buildingType == BT_PITCHDITCH) {
+                // Only every fourth pitch ditch tile costs pitch
+                if (DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4 == 0) {
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                        playerID, OpenSHC::Game::Resources::RT_PITCH, 1, param_3);
+                    if (param_3 != 0) {
+                        return;
+                    }
+                    DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4 = 1;
+                    return;
+                }
+                if (param_3 != 0) {
+                    return;
+                }
+                ++DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4;
+                if (DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4 == 4) {
+                    DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4 = 0;
+                }
+                return;
+            }
 
-/* 
-  WARNING: Enum "DPERRInt": Some values do not have unique names
- */
+            int stone = this->buildingCosts[buildingType].requiredStone_0x4;
+            int wood = this->buildingCosts[buildingType].requiredWood;
+            int iron = this->buildingCosts[buildingType].requiredIron_0x8;
+            int pitch = this->buildingCosts[buildingType].requiredPitch_0xc;
+            int gold = this->buildingCosts[buildingType].requiredGold;
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
+                iron = 0;
+                pitch = 0;
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::resourceGainForKillingPitAndPitchDitch,
+                    this)(buildingType, &stone, &gold);
+            } else if (wood != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                    playerID, OpenSHC::Game::Resources::RT_WOOD, wood, param_3);
+            }
+            if (stone != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                    playerID, OpenSHC::Game::Resources::RT_STONE, stone, param_3);
+            }
+            if (iron != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                    playerID, OpenSHC::Game::Resources::RT_IRON, iron, param_3);
+            }
+            if (pitch != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                    playerID, OpenSHC::Game::Resources::RT_PITCH, pitch, param_3);
+            }
+            if (gold != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(
+                    playerID, OpenSHC::Game::Resources::RT_GOLD, gold, param_3);
+            }
+        }
 
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x0041BFD0
-void BuildingsState::processPlacementResourceLossForBuildingType(int playerID,BuildingType buildingType,int param_3)
-
-{
-short *psVar1;
-int amount;
-int iVar2;
-short sVar3;
-uint uVar4;
-int amount_00;
-int iVar5;
-int local_4;
-BuildingType _buildingType;
-GameMode2Int _gamemode2;
-int _playerID;
-
-_buildingType = buildingType;
-_playerID = playerID;
-_gamemode2 = DAT_GameCore::instance.gameMode_2;
-local_4 = (int)this;
-if ((((DAT_GameCore::instance.solitaryAllBuildingsAreFree == FALSE) &&
-(DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)) &&
-((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY ||
-((((buildingType != OpenSHC::Map::Buildings::BT_MANORHOUSE && (buildingType != OpenSHC::Map::Buildings::BT_STONEKEEP)) &&
-(buildingType != OpenSHC::Map::Buildings::BT_STRONGHOLD)) &&
-((buildingType != OpenSHC::Map::Buildings::BT_KEEPFOUR && (buildingType != OpenSHC::Map::Buildings::BT_KEEPFIVE)))))))) &&
-(uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::hasLessWoodThanTheCostOfAWoodcuttersHutAndNoWoodcutters, this)(playerID, (int)((int)(buildingType))), iVar5 = param_3, uVar4 == 0)) {
-if (_gamemode2 == OpenSHC::Game::GM_SIEGE_THAT) {
-if (_buildingType == OpenSHC::Map::Buildings::BT_PITCHDITCH) {
-return;
-}
-}
-else if (_buildingType == OpenSHC::Map::Buildings::BT_PITCHDITCH) {
-psVar1 = &DAT_GameState::instance.playerDataArray[playerID].pitchDitchCounterTo4;
-if (*psVar1 == 0) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(playerID, OpenSHC::Game::Resources::RT_PITCH, 1, param_3);
-if (iVar5 != 0) {
-return;
-}
-*psVar1 = 1;
-return;
-}
-if (param_3 != 0) {
-return;
-}
-sVar3 = *psVar1 + 1;
-*psVar1 = sVar3;
-if (sVar3 != 4) {
-return;
-}
-*psVar1 = 0;
-return;
-}
-buildingType = this->buildingCosts[_buildingType].requiredStone_0x4;
-amount = this->buildingCosts[_buildingType].requiredWood;
-amount_00 = this->buildingCosts[_buildingType].requiredIron_0x8;
-iVar2 = this->buildingCosts[_buildingType].requiredPitch_0xc;
-local_4 = this->buildingCosts[_buildingType].requiredGold;
-if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-amount_00 = 0;
-playerID = 0;
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::resourceGainForKillingPitAndPitchDitch, this)(_buildingType, (int *)&buildingType, &local_4);
-iVar5 = param_3;
-iVar2 = playerID;
-}
-else if (amount != 0) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(playerID, OpenSHC::Game::Resources::RT_WOOD, amount, param_3);
-}
-playerID = iVar2;
-if (buildingType != ((BuildingType)0)) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(_playerID, OpenSHC::Game::Resources::RT_STONE, (int)((int)(buildingType)), iVar5);
-}
-if (amount_00 != 0) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(_playerID, OpenSHC::Game::Resources::RT_IRON, amount_00, iVar5);
-}
-if (playerID != 0) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(_playerID, OpenSHC::Game::Resources::RT_PITCH, playerID, iVar5);
-}
-if (local_4 != 0) {
-MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, this)(_playerID, OpenSHC::Game::Resources::RT_GOLD, local_4, iVar5);
-}
-}
-return;
-}
-
-
-}
+    }
 }
 }
