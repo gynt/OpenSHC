@@ -71,6 +71,8 @@ namespace Map {
                         == 2) {
                         paradeGround = paradeGround4;
                     }
+                    int x = (short)this->buildings[paradeGround].x;
+                    int y = (short)this->buildings[paradeGround].y;
                     for (int k = 0; k < 24; ++k) {
                         DAT_GameState::instance.playerDataArray[playerID]
                             .structure.mercenaryOutpostCampgroundLocations[formation * 72 + part * 24 + k]
@@ -78,14 +80,14 @@ namespace Map {
                                      .PlayerDataUnknownStructureRelatedArray_3[DAT_BuildingDefinedData::instance
                                              .PlayerDataUnknownStructureRelatedArray_1[formation]][k]
                                      .x
-                            + this->buildings[paradeGround].x;
+                            + x;
                         DAT_GameState::instance.playerDataArray[playerID]
                             .structure.mercenaryOutpostCampgroundLocations[formation * 72 + part * 24 + k]
                             .y = DAT_BuildingDefinedData::instance
                                      .PlayerDataUnknownStructureRelatedArray_3[DAT_BuildingDefinedData::instance
                                              .PlayerDataUnknownStructureRelatedArray_1[formation]][k]
                                      .y
-                            + this->buildings[paradeGround].y;
+                            + y;
                     }
                 }
             }
