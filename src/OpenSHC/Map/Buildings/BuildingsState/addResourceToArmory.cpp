@@ -9,7 +9,8 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0041BCA0
         void BuildingsState::addResourceToArmory(ResourceType resourceType, int playerID, int amount)
         {
-            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+            int buildingCount = this->maxBuildingsCount;
+            for (int i = 1; i < buildingCount; ++i) {
                 if (MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft, this)(
                         i, resourceType, playerID, amount)
                     != 0) {

@@ -20,7 +20,8 @@ namespace Map {
                         = DAT_BuildingDefinedData::instance
                               .BuildingShowRubbleWhenDestroyed[this->buildings[i].buildingType]
                         == 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(i);
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(i);
                 }
             }
         }

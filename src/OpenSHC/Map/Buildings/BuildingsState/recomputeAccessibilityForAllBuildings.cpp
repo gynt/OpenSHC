@@ -14,7 +14,8 @@ namespace Map {
         {
             for (int i = 1; i < this->maxBuildingsCount; ++i) {
                 if (this->buildings[i].logicalState != 0 && this->buildings[i].logicalState != BLS_REMOVE) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingIsAccessible, DAT_BuildingsState::ptr)(i, 0);
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingIsAccessible,
+                        DAT_BuildingsState::ptr)(i, 0);
                 }
             }
         }
