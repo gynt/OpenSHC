@@ -1,115 +1,48 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
-
-
-
+#include "OpenSHC/Globals/DAT_GameState.hpp"
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
-using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x0040F8A0
+        void BuildingsState::applySnoozedStateBasedOnPlayerData()
+        {
+            // Applies the snoozed settings of the owners and resets the production of buildings whose state changed
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState != BLS_NORMAL) {
+                    continue;
+                }
+                if (this->buildings[i].buildingType >= 91) {
+                    this->buildings[i].sleeping = false;
+                    continue;
+                }
+                bool snoozed = DAT_GameState::instance.playerDataArray[this->buildings[i].owner]
+                                   .snoozedBuildings[this->buildings[i].buildingType];
+                if (this->buildings[i].sleeping == snoozed) {
+                    continue;
+                }
+                this->buildings[i].sleeping = snoozed;
+                this->buildings[i].currentEmployeeCount = 0;
+                this->buildings[i].animationIndex = 0;
+                this->buildings[i].renderAnimation = 0;
+                // state/field117_0x11a and killingPitField/field119_0x11e are cleared as ints
+                *(int*)&this->buildings[i].state = 0;
+                *(int*)&this->buildings[i].killingPitField = 0;
+                for (int r = 0; r < 25; ++r) {
+                    this->buildings[i].resources[r] = 0;
+                }
+                for (int w = 0; w < 4; ++w) {
+                    this->buildings[i].workerUID[w] = 0;
+                    this->buildings[i].workerID[w] = 0;
+                }
+            }
+        }
 
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x0040F8A0
-void BuildingsState::applySnoozedStateBasedOnPlayerData()
-
-{
-Building * pBVar1;
-int iVar1;
-int iVar2;
-int *piVar3;
-short *psVar4;
-bool _isBuildingTypeSnoozed;
-
-iVar2 = 1;
-if (1 < this->maxBuildingsCount) {
-pBVar1 = &this->buildings[1];
-do {
-if (pBVar1->logicalState == OpenSHC::Map::Buildings::BLS_NORMAL) {
-if ((short)pBVar1->buildingType < 91) {
-/* 
-  *(char*)(PlayerDataArray[building.ownerPlayerIndex].buildingSnoozedState +
-   buildingType)
- */
-
-_isBuildingTypeSnoozed =
-*(bool *)(pBVar1->owner * 0x39f4 + 0x115df8c +
-(int)(short)pBVar1->buildingType);
-if (pBVar1->sleeping != _isBuildingTypeSnoozed) {
-/* 
-  if it was not snoozed, set it to snoozed
- */
-
-pBVar1->sleeping = _isBuildingTypeSnoozed;
-/* 
-  currentemployeecount
- */
-
-pBVar1->currentEmployeeCount = 0;
-pBVar1->animationIndex = 0;
-pBVar1->renderAnimation = 0;
-/* 
-  fixme: set resources to 0?
- */
-
-*(undefined4 *)&pBVar1->state = 0;
-*(undefined4 *)&pBVar1->killingPitField = 0;
-pBVar1->resources[0] = 0;
-pBVar1->resources[1] = 0;
-pBVar1->resources[2] = 0;
-pBVar1->resources[3] = 0;
-pBVar1->resources[4] = 0;
-pBVar1->resources[5] = 0;
-pBVar1->resources[6] = 0;
-pBVar1->resources[7] = 0;
-pBVar1->resources[8] = 0;
-pBVar1->resources[9] = 0;
-pBVar1->resources[10] = 0;
-pBVar1->resources[0xb] = 0;
-pBVar1->resources[0xc] = 0;
-pBVar1->resources[0xd] = 0;
-pBVar1->resources[0xe] = 0;
-pBVar1->resources[0xf] = 0;
-pBVar1->resources[0x10] = 0;
-pBVar1->resources[0x11] = 0;
-pBVar1->resources[0x12] = 0;
-pBVar1->resources[0x13] = 0;
-pBVar1->resources[0x14] = 0;
-pBVar1->resources[0x15] = 0;
-pBVar1->resources[0x16] = 0;
-pBVar1->resources[0x17] = 0;
-pBVar1->resources[0x18] = 0;
-psVar4 = pBVar1->workerID;
-piVar3 = pBVar1->workerUID;
-iVar1 = 4;
-do {
-*piVar3 = 0;
-*psVar4 = 0;
-piVar3 = piVar3 + 1;
-psVar4 = psVar4 + 1;
-iVar1 = iVar1 + -1;
-} while (iVar1 != 0);
-}
-}
-else {
-pBVar1->sleeping = false;
-}
-}
-iVar2 = iVar2 + 1;
-pBVar1 = pBVar1 + 0x196;
-} while (iVar2 < this->maxBuildingsCount);
-}
-return;
-}
-
-
-}
+    }
 }
 }
