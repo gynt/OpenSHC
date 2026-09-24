@@ -1,79 +1,56 @@
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
-#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Navigation/DirectionAlgorithmState.func.hpp"
 #include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
-
-
+#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
 #include "OpenSHC/Globals/DAT_DirectionAlgorithmState.hpp"
-#include "OpenSHC/Globals/DAT_UnitsState.hpp"
-#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
-#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 
 namespace OpenSHC {
 namespace Map {
-namespace Buildings {
+    namespace Buildings {
 
-using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
 
+        // FUNCTION: STRONGHOLDCRUSADER 0x00410B10
+        int BuildingsState::findClosestReachableAlliedBuilding(int param_1)
+        {
+            // Finds the closest burning building of the team of unit param_1 that the unit can reach
+            int unitArea
+                = (short)DAT_TileMapState::instance.PathConnectionLayer[DAT_UnitsState::instance.units[param_1].tile];
+            int closest = 0;
+            int closestDistance = 1000;
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState == 0 || this->buildings[i].logicalState == BLS_REMOVE
+                    || DAT_GameState::instance.mapAndTime.playerTeams[this->buildings[i].owner]
+                        != DAT_GameState::instance.mapAndTime.playerTeams[DAT_UnitsState::instance.units[param_1].owner]
+                    || this->buildings[i].fireDuration == 0) {
+                    continue;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                    DAT_DirectionAlgorithmState::ptr)(DAT_UnitsState::instance.units[param_1].x,
+                    DAT_UnitsState::instance.units[param_1].y, this->buildings[i].buildingEntryX,
+                    this->buildings[i].buildingEntryY);
+                if (DAT_DirectionAlgorithmState::instance.distanceHigh < closestDistance
+                    && MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                             calculateCanPlayerUnitsNavigateToAreaFromArea,
+                           DAT_PathFindingState::ptr)(DAT_UnitsState::instance.units[param_1].owner, unitArea,
+                           (short)DAT_TileMapState::instance.PathConnectionLayer[this->buildings[i].buildingEntryX
+                               + DAT_ViewportRenderState::instance.translationMatrix[this->buildings[i].buildingEntryY]
+                                   .addXgetTile],
+                           0)
+                        != 0) {
+                    closestDistance = DAT_DirectionAlgorithmState::instance.distanceHigh;
+                    closest = i;
+                }
+            }
+            return closest;
+        }
 
-/* 
-  WARNING: Enum "MappersEnum": Some values do not have unique names
- */
-
-/* 
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
-
-
-// FUNCTION: STRONGHOLDCRUSADER 0x00410B10
-int BuildingsState::findClosestReachableAlliedBuilding(int param_1)
-
-{
-ushort uVar1;
-int iVar2;
-int iVar3;
-BuildingLogicalStateShort *pBVar4;
-int local_8;
-int local_4;
-
-uVar1 = DAT_TileMapState::instance.PathConnectionLayer[DAT_UnitsState::instance.units[param_1].tile];
-iVar3 = 1;
-local_4 = 0;
-local_8 = 1000;
-if (1 < this->maxBuildingsCount) {
-pBVar4 = &this->buildings[1].logicalState;
-do {
-if ((((*pBVar4 != ((BuildingLogicalState)0)) && (*pBVar4 != OpenSHC::Map::Buildings::BLS_REMOVE)) &&
-(DAT_GameState::instance.mapAndTime.playerTeams[(short)pBVar4[3]] ==
-DAT_GameState::instance.mapAndTime.playerTeams[DAT_UnitsState::instance.units[param_1].owner])) &&
-(((pBVar4[0xf7] != 0 &&
-(MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult, DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[param_1].x, (int)((int)(
-DAT_UnitsState::instance.units[param_1].y)), (int)((int)((short)pBVar4[0x17])), (int)((int)(
-(short)pBVar4[0x18]))), DAT_DirectionAlgorithmState::instance.distanceHigh < local_8
-)) && (iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::calculateCanPlayerUnitsNavigateToAreaFromArea, DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[param_1].owner, (dword)((int)(
-(int)(short)uVar1)), (dword)((int)(
-(int)(short)DAT_TileMapState::instance.PathConnectionLayer
-[(int)(short)pBVar4[0x17] +
-DAT_ViewportRenderState::instance.translationMatrix
-[(short)pBVar4[0x18]].addXgetTile])), 0), iVar2 != 0)
-))) {
-local_8 = DAT_DirectionAlgorithmState::instance.distanceHigh;
-local_4 = iVar3;
-}
-iVar3 = iVar3 + 1;
-pBVar4 = pBVar4 + 0x196;
-} while (iVar3 < this->maxBuildingsCount);
-if (local_4 != 0) {
-return local_4;
-}
-}
-return 0;
-}
-
-
-}
+    }
 }
 }
