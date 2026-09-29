@@ -70457,7 +70457,7 @@ SHC_3BB0A8C1_0x0059D580 | 0.0% | thiscall
 
 SHC_3BB0A8C1_0x0059D590 | 0.0% | thiscall
 
-SHC_3BB0A8C1_0x0059D5A0 | 0.0% | Pending
+SHC_3BB0A8C1_0x0059D5A0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x0059D5B0 | 0.0% | thiscall
 
