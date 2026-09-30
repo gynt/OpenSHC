@@ -1,0 +1,38 @@
+#include "../../../Map.func.hpp"
+#include "../TroopValueState.func.hpp"
+
+#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x0051A100
+        void TroopValueState::countAvailableLordValueSlots(int param_1)
+        {
+            int* piVar1;
+            int iVar2;
+            DAT_TroopValueState::instance.attackInfo.lord2 = 0;
+            if (0 < DAT_TroopValueState::instance.attackInfo.lord3) {
+                piVar1 = &DAT_TroopValueState::instance.attackInfo.lordValuesArray[0].unitID;
+                iVar2 = DAT_TroopValueState::instance.attackInfo.lord3;
+                do {
+                    if ((*piVar1 == 0) || (param_1 != 0)) {
+                        DAT_TroopValueState::instance.attackInfo.lord2
+                            = DAT_TroopValueState::instance.attackInfo.lord2 + 1;
+                    }
+                    piVar1 = piVar1 + 4;
+                    iVar2 = iVar2 + -1;
+                } while (iVar2 != 0);
+            }
+        }
+
+    }
+}
+}
