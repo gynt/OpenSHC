@@ -1,0 +1,57 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x005242B0
+        UnitType TribesState::getMajorityArcherTypeEuropeanOrArabian(int selectionID)
+        {
+            UnitTypeShort UVar1;
+            int _unitID;
+            int iVar2;
+            int _unitSelectionIndex;
+            int _europeanArcherCount;
+            int _arabArcherCount;
+            iVar2 = (int)this->tribes[selectionID].size;
+            _unitSelectionIndex = 0;
+            _europeanArcherCount = 0;
+            _arabArcherCount = 0;
+            if (0 < iVar2) {
+                do {
+                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        selectionID, _unitSelectionIndex);
+                    _unitSelectionIndex = _unitSelectionIndex + 1;
+                    if ((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                        && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
+                        UVar1 = DAT_UnitsState::instance.units[_unitID].unitType;
+                        if (UVar1 == OpenSHC::Map::Units::UT_A_ARCHER) {
+                            _arabArcherCount = _arabArcherCount + 1;
+                        }
+                        if (UVar1 == OpenSHC::Map::Units::UT_E_ARCHER) {
+                            _europeanArcherCount = _europeanArcherCount + 1;
+                        }
+                    }
+                } while (_unitSelectionIndex < iVar2);
+                if (_europeanArcherCount < _arabArcherCount) {
+                    return OpenSHC::Map::Units::UT_A_ARCHER;
+                }
+            }
+            return OpenSHC::Map::Units::UT_E_ARCHER;
+        }
+
+    }
+}
+}
