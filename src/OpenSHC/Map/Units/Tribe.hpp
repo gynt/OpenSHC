@@ -88,7 +88,7 @@ namespace Map {
             short field138_0x282; // 0x00000282 length: 2
             short field139_0x284; // 0x00000284 length: 2
             short unknownCounter01; // 0x00000286 length: 2
-            undefined1 padding_0x288[2]; // 0x00000288 length: 2
+            short field_0x288; // 0x00000288 length: 2
             short unknownBool02; // 0x0000028A length: 2
             short unknownBool01; // 0x0000028C length: 2
             short countdown; // 0x0000028E length: 2
