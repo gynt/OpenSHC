@@ -1,0 +1,50 @@
+#include "../../Synchrony.func.hpp"
+
+#include "OpenSHC/OS.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
+
+namespace OpenSHC {
+namespace Synchrony {
+
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0047DEA0
+    void GameSynchronyState::setDirectPlaySessionDescription()
+    {
+        DPSESSIONDESC2 local_54;
+        uint local_4;
+        local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
+        if (this->isHost != FALSE) {
+            MACRO_CALL(OpenSHC::OS_Func::_memset)(&local_54, 0, 0x50);
+            local_54.guidApplication.Data1 = 0x1d5e2f48;
+            memcpy(local_54.guidApplication.Data4 + 4, "ڞ0Y", 4);
+            local_54.dwSize = 0x50;
+            local_54.dwFlags = DPSESSION_OPTIMIZELATENCY | DPSESSION_DIRECTPLAYPROTOCOL | DPSESSION_KEEPALIVE
+                | DPSESSION_MIGRATEHOST;
+            local_54.guidApplication.Data2 = 0xe8c0;
+            local_54.guidApplication.Data3 = 0x49e5;
+            local_54.guidApplication.Data4[0] = 0xae;
+            local_54.guidApplication.Data4[1] = 0xd8;
+            local_54.guidApplication.Data4[2] = 0xb1;
+            local_54.guidApplication.Data4[3] = 0x24;
+            local_54.dwMaxPlayers = 8;
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setDPlaySessionNameValue, this)();
+            local_54.lpszSessionName = (WCHAR*)0x191e002;
+            ((IDirectPlay4A*)this->DPLAYX_4A)->SetSessionDesc(&local_54, 0);
+        };
+    }
+
+}
+}
