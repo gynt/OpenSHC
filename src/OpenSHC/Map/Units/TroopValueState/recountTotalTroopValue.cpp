@@ -1,0 +1,66 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Units/TroopValueState.func.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x0051F9C0
+        void TroopValueState::recountTotalTroopValue()
+        {
+            int* piVar1;
+            int _troopTypeValue;
+            Unit* pUVar2;
+            int iVar2;
+            short _playerID;
+            UnitTypeShort _troopType;
+            this->attackInfo.playerTotalTroopValueArray[0] = 0;
+            this->attackInfo.playerTotalTroopValueArray[1] = 0;
+            this->attackInfo.playerTotalTroopValueArray[2] = 0;
+            this->attackInfo.playerTotalTroopValueArray[3] = 0;
+            this->attackInfo.playerTotalTroopValueArray[4] = 0;
+            this->attackInfo.playerTotalTroopValueArray[5] = 0;
+            this->attackInfo.playerTotalTroopValueArray[6] = 0;
+            this->attackInfo.playerTotalTroopValueArray[7] = 0;
+            this->attackInfo.playerTotalTroopValueArray[8] = 0;
+            this->attackInfo.field105442_0x25b28 = 0;
+            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+                pUVar2 = &DAT_UnitsState::instance.units[1];
+                iVar2 = DAT_UnitsState::instance.maxUnitCount - 1;
+                do {
+                    if ((((pUVar2->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE) && (pUVar2->dying == 0))
+                            && (pUVar2->isSelectable_OR_matchTime != 0))
+                        && (((_troopType = pUVar2->unitType,
+                                 _troopType != OpenSHC::Map::Units::UT_E_ENGINEER
+                                     && (_troopType != OpenSHC::Map::Units::UT_TUNNELER))
+                            && (_troopType != OpenSHC::Map::Units::UT_E_LADDER)))) {
+                        _playerID = pUVar2->owner;
+                        _troopTypeValue
+                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
+                                (OpenSHC::Map::Units::UnitType)(short)_troopType);
+                        piVar1 = this->attackInfo.playerTotalTroopValueArray + _playerID;
+                        *piVar1 = *piVar1 + _troopTypeValue;
+                    }
+                    pUVar2 = pUVar2 + 0x248;
+                    iVar2 = iVar2 + -1;
+                } while (iVar2 != 0);
+            }
+        }
+
+    }
+}
+}
