@@ -1,0 +1,34 @@
+#include "../../../Map.func.hpp"
+#include "../EntityState.func.hpp"
+
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
+
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Entities {
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:56:35.138000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x004015D0
+        void EntityState::processFireDamageToUnitsAtTile(int tile, int playerID, int fireLowIntensity)
+        {
+            ushort _unitID;
+            int _unitID2;
+            _unitID = DAT_TileMapState::instance.UnitLayer[tile];
+            while (_unitID2 = (int)(short)_unitID, _unitID2 != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::processFireDamageToUnit, DAT_UnitsState::ptr)(
+                    _unitID2, playerID, fireLowIntensity);
+                _unitID = DAT_UnitsState::instance.units[_unitID2].nextUnitOnTheSameTile;
+            }
+        }
+
+    }
+}
+}
