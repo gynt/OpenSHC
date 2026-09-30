@@ -1,0 +1,49 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x005250B0
+        BOOLEnum TribesState::anyUnitsOfTribeAreOutsideCoverageOfPathFindingAlg(int tribeID, int algTileFlag)
+        {
+            int _unitID;
+            int iVar1;
+            int unitSelectionIndex;
+            iVar1 = (int)this->tribes[tribeID].size;
+            unitSelectionIndex = 0;
+            if (0 < iVar1) {
+                do {
+                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, unitSelectionIndex);
+                    unitSelectionIndex = unitSelectionIndex + 1;
+                    if (((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                            && (DAT_UnitsState::instance.units[_unitID].dying == 0))
+                        && (DAT_TileMapState::instance.WalkLayer[DAT_UnitsState::instance.units[_unitID].tile]
+                            != algTileFlag)) {
+                        return FALSE;
+                    }
+                } while (unitSelectionIndex < iVar1);
+            }
+            return TRUE;
+        }
+
+    }
+}
+}
