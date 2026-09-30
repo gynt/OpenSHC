@@ -1,0 +1,69 @@
+#include "../../Synchrony.func.hpp"
+#include "../GameSynchronyState.func.hpp"
+
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+namespace OpenSHC {
+namespace Synchrony {
+
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0047EDE0
+    undefined4 GameSynchronyState::checkAllPlayersReadyAndCleanupSlots()
+    {
+        int* piVar1;
+        int iVar2;
+        if (this->isHost == FALSE) {
+            if (this->field215_0x106e1c == 0) {
+                return (undefined4)(0);
+            }
+        } else {
+            iVar2 = 1;
+            piVar1 = this->unknownPlayerInfo_01;
+            do {
+                piVar1 = piVar1 + 1;
+                if ((piVar1[-0x419c2] != -1) && (*piVar1 == 0)) {
+                    return (undefined4)(0);
+                }
+                iVar2 = iVar2 + 1;
+            } while (iVar2 < 9);
+            if (this->somePlayerRelatedArray[1] == 0) {
+                this->currentPlayerFullIDArray[1] = -1;
+            }
+            if (this->somePlayerRelatedArray[2] == 0) {
+                this->currentPlayerFullIDArray[2] = -1;
+            }
+            if (this->somePlayerRelatedArray[3] == 0) {
+                this->currentPlayerFullIDArray[3] = -1;
+            }
+            if (this->somePlayerRelatedArray[4] == 0) {
+                this->currentPlayerFullIDArray[4] = -1;
+            }
+            if (this->somePlayerRelatedArray[5] == 0) {
+                this->currentPlayerFullIDArray[5] = -1;
+            }
+            if (this->somePlayerRelatedArray[6] == 0) {
+                this->currentPlayerFullIDArray[6] = -1;
+            }
+            if (this->somePlayerRelatedArray[7] == 0) {
+                this->currentPlayerFullIDArray[7] = -1;
+            }
+            if (this->somePlayerRelatedArray[8] == 0) {
+                this->currentPlayerFullIDArray[8] = -1;
+                return (undefined4)(1);
+            }
+        }
+        return (undefined4)(1);
+    }
+
+}
+}
