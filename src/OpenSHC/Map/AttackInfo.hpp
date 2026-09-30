@@ -50,7 +50,7 @@ namespace Map {
         int startCon; // 0x00020DF4 length: 4
         int keepCon; // 0x00020DF8 length: 4
         int counter; // 0x00020DFC length: 4
-        undefined1 padding_0x20e00[4]; // 0x00020E00 length: 4
+        int field_0x20e00; // 0x00020E00 length: 4
         int field86627_0x20e04; // 0x00020E04 length: 4
         int index; // 0x00020E08 length: 4
         undefined1 padding_0x20e0c[340]; // 0x00020E0C length: 340
