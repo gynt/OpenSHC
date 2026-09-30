@@ -77,7 +77,7 @@ namespace Map {
         int field48_0x13560; // 0x00013560 length: 4
         undefined4 currentEventID; // 0x00013564 length: 4
         undefined4 field50_0x13568; // 0x00013568 length: 4
-        undefined1 padding_0x1356c[4]; // 0x0001356C length: 4
+        int field_0x1356c; // 0x0001356C length: 4
         undefined4 invasionTroopIndex; // 0x00013570 length: 4
         int DAT_BuildingAvailabilityScrollbarOffset; // 0x00013574 length: 4
         undefined4 flag; // 0x00013578 length: 4
