@@ -30489,7 +30489,7 @@ SHC_3BB0A8C1_0x004BEA20 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004BEA90 | 46.6% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004BEB20 | 0.0% | Pending
+SHC_3BB0A8C1_0x004BEB20 | 62.5% | resolved event union offsets
 
 SHC_3BB0A8C1_0x004BEC10 | 0.0% | Pending
 
