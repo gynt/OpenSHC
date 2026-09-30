@@ -20105,7 +20105,7 @@ SHC_3BB0A8C1_0x00468DE0 | 21.1% | orig keeps this in ecx at /Od
 
 SHC_3BB0A8C1_0x00468E40 | 21.1% | orig keeps this in ecx at /Od
 
-SHC_3BB0A8C1_0x00468EA0 | 0.0% | Pending
+SHC_3BB0A8C1_0x00468EA0 | 15.6% | orig keeps this in ecx at /Od
 
 SHC_3BB0A8C1_0x00468F20 | 0.0% | orig is /Od, frame 0xc
 
