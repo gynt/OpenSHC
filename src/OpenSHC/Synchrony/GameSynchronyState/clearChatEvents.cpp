@@ -1,0 +1,45 @@
+#include "../../Synchrony.func.hpp"
+#include "../GameSynchronyState.func.hpp"
+
+#include "OpenSHC/IO/LowLevelMemory.func.hpp"
+
+#include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
+
+namespace OpenSHC {
+namespace Synchrony {
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0047F7E0
+    void GameSynchronyState::clearChatEvents()
+    {
+        ChatEvent* _chatEventPtr;
+        int _chatEventCounter;
+        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            0xfa, '\0', (void*)((int)(this->receivedChatMessage)));
+        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            5000, '\0', (void*)((int)(this->DAT_ChatMessageArray)));
+        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            5000, '\0', (void*)((int)(this->DAT_ChatMessageSubjectPlayerNameArray)));
+        this->DAT_ChatMessageArrayIndex = 0;
+        _chatEventPtr = &this->DAT_ChatEventArray[0];
+        _chatEventCounter = 0x14;
+        do {
+            _chatEventPtr->subjectPlayer = 0;
+            _chatEventPtr->time = 0;
+            _chatEventPtr->flag = 0;
+            _chatEventPtr = _chatEventPtr + 4;
+            _chatEventCounter = _chatEventCounter + -1;
+        } while (_chatEventCounter != 0);
+        this->field237_0x1072f0 = 0;
+    }
+
+}
+}
