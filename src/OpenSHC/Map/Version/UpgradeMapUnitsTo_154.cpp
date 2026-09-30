@@ -1,0 +1,38 @@
+#include "../../Map.func.hpp"
+#include "../Version.func.hpp"
+
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+#include "OpenSHC/Map/Units/UnitTypeShort.hpp"
+
+#include "OpenSHC/Globals/DAT_CurrentUnitSlotID.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+
+    using OpenSHC::Map::Units::UnitLogicState;
+    using OpenSHC::Map::Units::UnitType;
+    using OpenSHC::Map::Units::UnitTypeShort;
+
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0053B5A0
+    void Version::UpgradeMapUnitsTo_154()
+    {
+        UnitTypeShort* pUVar1;
+        pUVar1 = &DAT_UnitsState::instance.units[1].unitType;
+        DAT_CurrentUnitSlotID::instance = 0x9c4;
+        do {
+            if ((pUVar1[-1] == OpenSHC::Map::Units::ULS_NORMAL)
+                && ((*pUVar1 == OpenSHC::Map::Units::UT_S_CATAPULT
+                    || (*pUVar1 == OpenSHC::Map::Units::UT_S_TREBUCHET)))) {
+                pUVar1[0x16a] = 0x14;
+            }
+            pUVar1 = pUVar1 + 0x248;
+        } while ((int)pUVar1 < 0x165141a);
+    }
+
+}
+}
