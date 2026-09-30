@@ -36193,7 +36193,7 @@ SHC_3BB0A8C1_0x004DB180 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004DB210 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004DB300 | 0.0% | Pending
+SHC_3BB0A8C1_0x004DB300 | 35.9% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004DB390 | 0.0% | Pending
 
