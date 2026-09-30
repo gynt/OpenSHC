@@ -30175,7 +30175,7 @@ SHC_3BB0A8C1_0x004BCEC0 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004BD0F0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004BD1B0 | 0.0% | Pending
+SHC_3BB0A8C1_0x004BD1B0 | 29.6% | 32 gotos still to remove
 
 SHC_3BB0A8C1_0x004BD774 | 0.0% | Pending
 
