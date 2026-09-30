@@ -46859,7 +46859,7 @@ SHC_3BB0A8C1_0x00523790 | 25.0% | loop shape
 
 SHC_3BB0A8C1_0x005237F0 | 28.9% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x00523920 | 0.0% | Pending
+SHC_3BB0A8C1_0x00523920 | 47.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00523A30 | 0.0% | Pending
 
