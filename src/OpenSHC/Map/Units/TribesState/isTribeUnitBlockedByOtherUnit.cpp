@@ -1,0 +1,68 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/Map/Units/States/UnitState.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::States::UnitState;
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x00524B30
+        undefined4 TribesState::isTribeUnitBlockedByOtherUnit(int param_1)
+        {
+            short sVar1;
+            int iVar2;
+            int iVar3;
+            int unitSelectionIndex;
+            unitSelectionIndex = 0;
+            sVar1 = this->tribes[param_1].size;
+            while (true) {
+                do {
+                    if (sVar1 <= unitSelectionIndex) {
+                        return (undefined4)(0);
+                    }
+                    iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        param_1, unitSelectionIndex);
+                    unitSelectionIndex = unitSelectionIndex + 1;
+                } while ((DAT_UnitsState::instance.units[iVar2].logicalState != OpenSHC::Map::Units::ULS_NORMAL)
+                    || (DAT_UnitsState::instance.units[iVar2].dying != 0));
+                if (DAT_UnitsState::instance.units[iVar2].usingTeleport != 0) {
+                    return (undefined4)(0);
+                }
+                if (DAT_UnitsState::instance.units[iVar2].field303_0x413 != 0) {
+                    return (undefined4)(0);
+                }
+                if (DAT_UnitsState::instance.units[iVar2].tunnelerFinishedDigging == 2)
+                    break;
+                if (DAT_UnitsState::instance.units[iVar2].state.generic
+                    == OpenSHC::Map::Units::States::US_MELEE_ATTACK) {
+                    return (undefined4)(0);
+                }
+                if (DAT_UnitsState::instance.units[iVar2].laddermanIsInPosition != '\0') {
+                    return (undefined4)(0);
+                }
+                iVar3 = (int)(short)DAT_TileMapState::instance.UnitLayer[DAT_UnitsState::instance.units[iVar2].tile];
+                if (((iVar3 != 0) && (iVar2 != iVar3))
+                    && (DAT_UnitsState::instance.units[iVar3].tunnelerFinishedDigging != 2)) {
+                    return (undefined4)(1);
+                }
+            }
+            return (undefined4)(0);
+        }
+
+    }
+}
+}
