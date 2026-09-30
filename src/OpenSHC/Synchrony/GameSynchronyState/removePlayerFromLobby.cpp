@@ -1,0 +1,67 @@
+#include "../../Synchrony.func.hpp"
+
+#include "OpenSHC/AI/AIVState.func.hpp"
+#include "OpenSHC/Game/GameCore.func.hpp"
+#include "OpenSHC/Synchrony/Actions.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
+#include "OpenSHC/Commands/GameCommandType.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+#include "OpenSHC/Globals/DAT_AIVState.hpp"
+#include "OpenSHC/Globals/DAT_GameCore.hpp"
+
+namespace OpenSHC {
+namespace Synchrony {
+
+    using OpenSHC::Commands::GameCommandType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "MappersEnumShort": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x00490380
+    void GameSynchronyState::removePlayerFromLobby(int playerID)
+    {
+        BOOLEnum BVar1;
+        GameCommandType commandType;
+        this->syncRelatedStatusArray[playerID] = 1;
+        BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        if ((BVar1 != FALSE) && (playerID != this->currentPlayerSlotID)) {
+            this->DAT_GameCommandParam0 = playerID;
+            this->DAT_GameCommandParam1 = this->kickDueToLagStatusUnk;
+            if ((this->syncStatus == 0) && (this->saveRelated == 0)) {
+                commandType = (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2
+                    | OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
+            } else {
+                commandType = OpenSHC::Commands::GCT_LEAVE_GAME;
+            }
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(commandType);
+            this->unknownIncrementBy40_01 = this->unknownIncrementBy40_01 + 0x28;
+            this->unknownPlayerInfo_03[playerID] = 1;
+        }
+        this->DAT_PlayerNames[playerID][0] = '\0';
+        this->currentPlayerFullIDArray[playerID] = -1;
+        this->DAT_PlayerSlotArraySomeValue[playerID] = 0;
+        this->reparseMaps = TRUE;
+        MACRO_CALL_MEMBER(OpenSHC::AI::AIVState_Func::hostChecksLobbyAIVAvailability, DAT_AIVState::ptr)();
+        this->isIncludedPlayer[playerID] = FALSE;
+        this->DAT_ReceivedAIVFileAvailabilityPerAIArray[playerID][0] = -1;
+        MACRO_CALL(OpenSHC::Synchrony::Actions_Func::RemovePositionOfPlayer)(playerID);
+        this->DAT_MultiplayerGameVersions[playerID] = 0;
+        this->field294_0x109e5f[playerID] = 0;
+        if ((playerID != this->currentPlayerSlotID) && (this->isHost != FALSE)) {
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
+        }
+    }
+
+}
+}
