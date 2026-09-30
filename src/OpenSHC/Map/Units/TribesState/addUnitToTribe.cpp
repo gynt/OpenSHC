@@ -1,0 +1,43 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Units/TribesState.func.hpp"
+
+#include "OpenSHC/Globals/DAT_UnitSelectionDefinedData.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x00522590
+        void TribesState::addUnitToTribe(uint unitID, int tribeID)
+        {
+            short* psVar1;
+            uint _mod16;
+            psVar1 = &this->tribes[tribeID].size;
+            *psVar1 = *psVar1 + 1;
+            /*
+              basically, it sets a bit flag for every unitID that is in the selection
+             */
+            psVar1 = this->tribes[tribeID].unitSelectionBitMasked + ((int)(unitID + ((int)unitID >> 0x1f & 0xfU)) >> 4);
+            _mod16 = unitID & 0x8000000f;
+            if ((int)_mod16 < 0) {
+                _mod16 = (_mod16 - 1 | 0xfffffff0) + 1;
+            }
+            *psVar1 = *psVar1 | DAT_UnitSelectionDefinedData::instance.BitMaskHelper[_mod16];
+            if (this->tribes[tribeID].selectionTargetUnitID == 0) {
+                this->tribes[tribeID].selectionTargetUnitID = (short)unitID;
+            }
+            DAT_UnitsState::instance.units[unitID].selectionTargetUnitID = this->tribes[tribeID].selectionTargetUnitID;
+            DAT_UnitsState::instance.units[unitID].tribeID = (short)tribeID;
+            DAT_UnitsState::instance.units[unitID].tribeUID = this->tribes[tribeID].uid;
+            DAT_UnitsState::instance.units[unitID].idInTribe = this->tribes[tribeID].size;
+            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(tribeID);
+        }
+
+    }
+}
+}
