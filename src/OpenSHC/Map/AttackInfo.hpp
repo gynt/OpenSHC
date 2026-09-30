@@ -108,7 +108,7 @@ namespace Map {
         int knightTribeArray[100]; // 0x0002C6BC length: 400
         int pitchRelatedPlayerID; // 0x0002C84C length: 4
         int playerID_0x2c850; // 0x0002C850 length: 4
-        undefined1 padding_0x2c854[4]; // 0x0002C854 length: 4
+        int field_0x2c854; // 0x0002C854 length: 4
         int someArea; // 0x0002C858 length: 4
         int field127541_0x2c85c; // 0x0002C85C length: 4
         int lord1; // 0x0002C860 length: 4
