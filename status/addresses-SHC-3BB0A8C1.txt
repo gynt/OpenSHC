@@ -22347,7 +22347,7 @@ SHC_3BB0A8C1_0x0047DE00 | 53.5% | DPLAYX_4A typed IDirectPlay4A*
 
 SHC_3BB0A8C1_0x0047DEA0 | 54.1% | DPLAYX_4A typed IDirectPlay4A*
 
-SHC_3BB0A8C1_0x0047DF40 | 0.0% | Pending
+SHC_3BB0A8C1_0x0047DF40 | 80.4% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0047E010 | 70.0% | Style pass, asm differs
 
