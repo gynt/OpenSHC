@@ -49273,7 +49273,7 @@ SHC_3BB0A8C1_0x0052D620 | 86.8% | fixed 16B stride (was 8B elems
 
 SHC_3BB0A8C1_0x0052D690 | 70.6% | fixed 16B stride (was 8B elems
 
-SHC_3BB0A8C1_0x0052D720 | 0.0% | Pending
+SHC_3BB0A8C1_0x0052D720 | 59.9% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0052D780 | 0.0% | Pending
 
