@@ -23183,7 +23183,7 @@ SHC_3BB0A8C1_0x0048C750 | 88.9% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0048C7B0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0048CB00 | 0.0% | Pending
+SHC_3BB0A8C1_0x0048CB00 | 16.2% | this-> beat global instance
 
 SHC_3BB0A8C1_0x0048CC90 | 0.0% | Pending
 
