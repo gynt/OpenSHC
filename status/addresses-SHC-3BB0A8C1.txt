@@ -22423,7 +22423,7 @@ SHC_3BB0A8C1_0x004800E0 | 92.7% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00480210 | 39.7% | global/this split lost, see no
 
-SHC_3BB0A8C1_0x00480440 | 0.0% | Pending
+SHC_3BB0A8C1_0x00480440 | 40.6% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00480570 | 0.0% | Pending
 
