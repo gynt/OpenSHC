@@ -46369,7 +46369,7 @@ SHC_3BB0A8C1_0x0051FF90 | 27.7% | header lacks field at 0x21C54
 
 SHC_3BB0A8C1_0x005200A0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x005202B0 | 0.0% | Pending
+SHC_3BB0A8C1_0x005202B0 | 55.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00520450 | 40.0% | Style pass, asm differs
 
