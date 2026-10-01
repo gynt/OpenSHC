@@ -26,7 +26,7 @@ namespace Map {
         // SIZE: 0x00000334
         typedef struct Tribe {
 
-            undefined1 padding_0x0[2]; // 0x00000000 length: 2
+            short field_0x0; // 0x00000000 length: 2
             short time; // 0x00000002 length: 2
             int owner; // 0x00000004 length: 4
             undefined1 padding_0x8[4]; // 0x00000008 length: 4
