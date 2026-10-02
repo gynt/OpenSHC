@@ -70119,7 +70119,7 @@ SHC_3BB0A8C1_0x0059C920 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x0059C940 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0059C960 | 0.0% | Pending
+SHC_3BB0A8C1_0x0059C960 | 50.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0059C980 | 50.0% | Style pass, asm differs
 
