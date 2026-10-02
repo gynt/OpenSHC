@@ -1,0 +1,26 @@
+#include "../../Global.func.hpp"
+#include "../Init.func.hpp"
+
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
+#include "OpenSHC/Meta.func.hpp"
+#include "OpenSHC/OS.func.hpp"
+
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
+
+namespace OpenSHC {
+namespace Global {
+
+    /*
+      decompilerscript: committed: 2026-05-02 18:15:17.059000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0059CBA0
+    void Init::Constructor_BuildingsState()
+    {
+        MACRO_CALL_MEMBER(
+            OpenSHC::Map::Buildings::BuildingsState_Func::Constructor_BuildingsState, DAT_BuildingsState::ptr)();
+        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d720));
+        return;
+    }
+
+}
+}
