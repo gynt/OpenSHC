@@ -1,0 +1,25 @@
+#include "../../Global.func.hpp"
+#include "../Init.func.hpp"
+
+#include "OpenSHC/Map/WildlifeState.func.hpp"
+#include "OpenSHC/Meta.func.hpp"
+#include "OpenSHC/OS.func.hpp"
+
+#include "OpenSHC/Globals/DAT_WildlifeState.hpp"
+
+namespace OpenSHC {
+namespace Global {
+
+    /*
+      decompilerscript: committed: 2026-05-02 18:15:17.059000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0059CAE0
+    void Init::Constructor_WildlifeState()
+    {
+        MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::Constructor_WildlifeState, DAT_WildlifeState::ptr)();
+        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d6c0));
+        return;
+    }
+
+}
+}
