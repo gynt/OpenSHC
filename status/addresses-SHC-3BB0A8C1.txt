@@ -29883,7 +29883,7 @@ SHC_3BB0A8C1_0x004BC104 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004BC110 | 28.9% | fixed else-if chain + month si
 
-SHC_3BB0A8C1_0x004BC1C0 | 0.0% | Pending
+SHC_3BB0A8C1_0x004BC1C0 | 58.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004BC4FC | 0.0% | Pending
 
