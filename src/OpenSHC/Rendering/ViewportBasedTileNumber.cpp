@@ -20,13 +20,9 @@ int Rendering::ViewportBasedTileNumber()
         }
     }
     return DAT_ViewportRenderState::instance
-        .screenPointToTileNumber[((int)(DAT_ViewportRenderState::instance.viewportState.viewportX
-                                      + (DAT_ViewportRenderState::instance.viewportState.viewportX >> 0x1f & 0x1fU))
-                                     >> 5)
+        .screenPointToTileNumber[(DAT_ViewportRenderState::instance.viewportState.viewportX / 32)
             + ((int)DAT_ViewportRenderState::instance.viewportState.mbr_0xb0 / 2
-                  + ((int)(DAT_ViewportRenderState::instance.viewportState.viewportY
-                         + (DAT_ViewportRenderState::instance.viewportState.viewportY >> 0x1f & 0xfU))
-                      >> 4))
+                  + (DAT_ViewportRenderState::instance.viewportState.viewportY / 16))
                 * 0x191
             + DAT_ViewportRenderState::instance.viewportState.mbr_0xac + iVar1 + -8];
 }
