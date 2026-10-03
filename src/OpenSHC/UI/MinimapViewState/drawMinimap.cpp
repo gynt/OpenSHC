@@ -80,7 +80,7 @@ namespace UI {
         }
         iVar12 = 400 - _mapSize;
         if (width < 200) {
-            iVar14 = (int)(iVar12 + (iVar12 >> 0x1f & 3U)) >> 2;
+            iVar14 = iVar12 / 4;
             local_2c = iVar12 / 2 + 2;
             iVar13 = 400 - iVar12 / 2;
             iVar6 = iVar13 / 2 + -2;
@@ -88,7 +88,7 @@ namespace UI {
         } else {
             local_2c = iVar12 / 2;
             iVar13 = 400 - local_2c;
-            iVar14 = (int)(iVar12 + (iVar12 >> 0x1f & 3U)) >> 2;
+            iVar14 = iVar12 / 4;
             iVar6 = iVar13 / 2;
             local_30 = iVar14;
         }
