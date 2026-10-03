@@ -21,10 +21,10 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6b, x, y, width, height);
-            iVar1 = (int)(width + (width >> 0x1f & 3U)) >> 2;
+            iVar1 = width / 4;
             left = x + iVar1;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                left + -1, y + 0x5a, ((int)(width * 3 + (width * 3 >> 0x1f & 3U)) >> 2) + 1 + x, y + 0x6d,
+                left + -1, y + 0x5a, (width * 3 / 4) + 1 + x, y + 0x6d,
                 (ushort)((int)(COL_BLACK::instance.shortValue)));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, y + 0x5b,
