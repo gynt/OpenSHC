@@ -36,15 +36,11 @@ namespace UI {
         pasVar5 = this->loadedMiniMap;
         do {
             uVar2 = (ushort)(*pasVar5)[0] & local_208;
-            iVar1 = 0;
-            if (0 < iVar4) {
-                do {
-                    if (uVar2 == local_204[iVar1]) {
-                        *(char*)(iVar3 + (int)_Src) = (char)iVar1;
-                        goto LAB_004b6281;
-                    }
-                    iVar1 = iVar1 + 1;
-                } while (iVar1 < iVar4);
+            for (iVar1 = 0; iVar1 < iVar4; iVar1++) {
+                if (uVar2 == local_204[iVar1]) {
+                    *(char*)(iVar3 + (int)_Src) = (char)iVar1;
+                    goto LAB_004b6281;
+                }
             }
             if (iVar4 < 0x100) {
                 local_204[iVar4] = (ushort)uVar2;
