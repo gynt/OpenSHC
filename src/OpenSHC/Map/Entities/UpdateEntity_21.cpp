@@ -23,12 +23,10 @@ namespace Map {
             if (sVar1 < 200) {
                 if (sVar1 < 0xc) {
                     DAT_EntityState::instance.entityArray[uVar2].graphicType2
-                        = ((int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset
-                              - ((int)((int)sVar1 + ((int)sVar1 >> 0x1f & 3U)) >> 2))
+                        = ((int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset - (sVar1 / 4))
                         + 0xf;
                     iVar3 = (int)DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated;
-                    DAT_EntityState::instance.entityArray[uVar2].unkMinusOne
-                        = 0x1f - (short)((int)(iVar3 + (iVar3 >> 0x1f & 3U)) >> 2);
+                    DAT_EntityState::instance.entityArray[uVar2].unkMinusOne = 0x1f - (short)(iVar3 / 4);
                 }
                 iVar3 = ((int)sVar1 << 4) / 200;
                 if (3 < iVar3) {
