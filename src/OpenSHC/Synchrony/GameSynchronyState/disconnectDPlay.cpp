@@ -44,15 +44,15 @@ namespace Synchrony {
             } while (iVar2 < this->modemScrollbarCount);
         }
         this->modemScrollbarCount = 0;
-        if (this->DPLAYX_4A != (IDirectPlay4A**)0x0) {
-            ((IDirectPlay4A*)this->DPLAYX_4A)->CancelMessage(0, 0);
-            ((IDirectPlay4A*)this->DPLAYX_4A)->DestroyPlayer(this->DPLAYX_PlayerHandle);
-            ((IDirectPlay4A*)this->DPLAYX_4A)->Close();
-            this->DPLAYX_4A = (IDirectPlay4A**)0x0;
+        if (this->DPLAYX_4A != (IDirectPlay4A*)0x0) {
+            this->DPLAYX_4A->CancelMessage(0, 0);
+            this->DPLAYX_4A->DestroyPlayer(this->DPLAYX_PlayerHandle);
+            this->DPLAYX_4A->Close();
+            this->DPLAYX_4A = (IDirectPlay4A*)0x0;
         }
-        if (this->DPLAYX_LOBBY != (IDirectPlayLobby3**)0x0) {
-            ((IDirectPlayLobby3*)this->DPLAYX_LOBBY)->Release();
-            this->DPLAYX_LOBBY = (IDirectPlayLobby3**)0x0;
+        if (this->DPLAYX_LOBBY != (IDirectPlayLobby3*)0x0) {
+            this->DPLAYX_LOBBY->Release();
+            this->DPLAYX_LOBBY = (IDirectPlayLobby3*)0x0;
         }
         if (this->DPLAYX_Connection != 0) {
             pvVar1 = GlobalHandle((void*)this->DPLAYX_Connection);
