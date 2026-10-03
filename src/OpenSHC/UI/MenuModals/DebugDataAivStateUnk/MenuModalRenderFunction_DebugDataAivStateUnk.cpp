@@ -27,8 +27,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 "Village Placement Success", _x2, y + 10, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x12, FALSE, 0);
             yPosition = y + 0x14;
-            x = 1;
-            do {
+            for (x = 1; x < 9; x++) {
                 yPosition = yPosition + 0x14;
                 if (DAT_AIVPlacementFit::instance[x] != -10) {
                     color = (-(uint)(DAT_AIVPlacementFit::instance[x] != 100) & 0xff3d1014) + 0xc2f0eb;
@@ -55,8 +54,7 @@ namespace UI {
                             "% Success", _x1 + 0x28, yPosition, OpenSHC::Text::TTA_LEFT, color, 0, 0x12, TRUE, 0);
                     }
                 }
-                x = x + 1;
-            } while (x < 9);
+            }
         }
 
     }
