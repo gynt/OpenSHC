@@ -296,8 +296,7 @@ namespace UI {
                         if (local_b0 < DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount)
                             goto LAB_004e017f;
                     }
-                    local_8c = 1;
-                    do {
+                    for (local_8c = 1; local_8c < 5; local_8c++) {
                         if (local_8c != local_84) {
                             iVar9 = DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount;
                             iVar8 = 2;
@@ -349,8 +348,7 @@ namespace UI {
                                 }
                             }
                         }
-                        local_8c = local_8c + 1;
-                    } while (local_8c < 5);
+                    }
                     if ((local_b0 < DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount)
                         && (local_b4 = 2, 1 < DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount)) {
                         piVar3 = DAT_SkMasters2DataArray::instance[iVar2].aiArray + 2;
