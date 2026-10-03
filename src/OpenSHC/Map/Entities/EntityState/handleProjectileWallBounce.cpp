@@ -46,9 +46,8 @@ namespace Map {
             iVar5 = 0;
             iVar9 = 0;
             uVar6 = y & 7;
-            _bitFlag = MACRO_CALL_MEMBER(
-                OpenSHC::Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep, DAT_TileMapState::ptr)(
-                (int)(x + ((int)x >> 0x1f & 7U)) >> 3, (int)((int)((y + (y >> 0x1f & 7U)) >> 3)));
+            _bitFlag = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep,
+                DAT_TileMapState::ptr)(x / 8, (int)((int)(y / 8)));
             switch (this->entityArray[param_1].orientation) {
             case 0x3c:
             case 0x40:
@@ -390,7 +389,7 @@ namespace Map {
             iVar5 = (int)this->entityArray[param_1].velocityUnk;
             fVar13 = ((double)iVar9 * (double)3.1415926535) / (double)180.0;
             sVar4 = this->entityArray[param_1].height;
-            sVar8 = (short)((int)(iVar5 + (iVar5 >> 0x1f & 7U)) >> 3);
+            sVar8 = (short)(iVar5 / 8);
             this->entityArray[param_1].velocityUnk = sVar8;
             this->entityArray[param_1].startingHeight = sVar4;
             this->entityArray[param_1].travelledDistance = 0;
