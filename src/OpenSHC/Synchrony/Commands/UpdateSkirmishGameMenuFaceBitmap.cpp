@@ -42,14 +42,12 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             iVar3 = DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                 + (DAT_GameCore::instance.lordIconUnk + -2) * 0x42;
-            iVar2 = 0;
-            do {
+            for (iVar2 = 0; iVar2 < 0x40; iVar2++) {
                 local_84[iVar2] = *(undefined1*)((int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94
                     + iVar2 * 2 + iVar3 * 0x80);
                 auStack_44[iVar2] = *(undefined1*)((int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94
                     + iVar2 * 2 + iVar3 * 0x80 + 1);
-                iVar2 = iVar2 + 1;
-            } while (iVar2 < 0x40);
+            }
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(local_84, (size_t)((int)(128)),
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
@@ -69,12 +67,10 @@ namespace Synchrony {
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
                 pvVar1 = DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94;
                 local_88 = local_88 + (local_8c + 19) * 0x42;
-                iVar3 = 0;
-                do {
+                for (iVar3 = 0; iVar3 < 0x40; iVar3++) {
                     *(undefined1*)((int)pvVar1 + iVar3 * 2 + local_88 * 0x80) = local_84[iVar3];
                     *(undefined1*)((int)pvVar1 + iVar3 * 2 + local_88 * 0x80 + 1) = auStack_44[iVar3];
-                    iVar3 = iVar3 + 1;
-                } while (iVar3 < 0x40);
+                }
                 DAT_TextureRenderCoreObject::instance.field69_0x98[local_8c + 0x13] = 0x2100;
             }
         };
