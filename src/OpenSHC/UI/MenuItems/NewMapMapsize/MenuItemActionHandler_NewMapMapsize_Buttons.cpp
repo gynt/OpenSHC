@@ -65,12 +65,10 @@ namespace UI {
                             OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                         MACRO_CALL_MEMBER(
                             OpenSHC::Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
-                        iVar1 = 0;
-                        do {
+                        for (iVar1 = 0; iVar1 < 0x28; iVar1++) {
                             MACRO_CALL_MEMBER(
                                 OpenSHC::Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(iVar1);
-                            iVar1 = iVar1 + 1;
-                        } while (iVar1 < 0x28);
+                        }
                         MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
                         MACRO_CALL_MEMBER(
                             OpenSHC::Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
