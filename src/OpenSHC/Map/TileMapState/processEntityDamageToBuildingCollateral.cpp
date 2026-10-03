@@ -53,7 +53,7 @@ namespace Map {
         short sVar4;
         ushort uVar5;
         ushort uVar6;
-        bool bVar7;
+        int bVar7;
         short _newHealth;
         uint _defensiveStructureOwner;
         uint uVar8;
