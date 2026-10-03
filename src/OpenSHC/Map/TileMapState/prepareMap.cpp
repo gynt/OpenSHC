@@ -22,7 +22,6 @@
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_AIVState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_EntityState.hpp"
@@ -35,6 +34,7 @@
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
 #include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
@@ -85,7 +85,8 @@ namespace Map {
             DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SOLITARY;
         }
     LAB_005124d2:
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::changeMapOrientation, this)(DAT_TileMapState::instance.mapOrientation);
+        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::changeMapOrientation, this)(
+            DAT_TileMapState::instance.mapOrientation);
         DAT_PathFindingState::instance.searchGeneration = 1;
         MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0x27420, '\0', (void*)((int)(DAT_TileMapState::instance.WalkLayer)));
@@ -104,7 +105,8 @@ namespace Map {
         DAT_TileMapState::instance.currentMoatCount = 16000;
         DAT_LandscapeState::instance.maxTreeCount = 2000;
         DAT_TileMapState::instance.maxPitchDitchCount = 4000;
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetHeightAndMapBorders, this)(DAT_TileMapState::instance.mapSize);
+        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetHeightAndMapBorders, this)(
+            DAT_TileMapState::instance.mapSize);
         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::toggleFlatView, this)(0);
         (*(int*)&DAT_TileMapState::instance.padding_0x5548d0[0]) = 0;
         DAT_TileMapState::instance.flatViewToggleValue2 = 0;
@@ -114,8 +116,8 @@ namespace Map {
         DAT_TileMapState::instance.forceUpdateGFXLayers = 1;
         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
         DAT_TileMapState::instance.field68_0x55487c = 500;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::upgradeTribeArrayLayoutForMapVersion,
-            DAT_TribesState::ptr)(
+        MACRO_CALL_MEMBER(
+            OpenSHC::Map::Units::TribesState_Func::upgradeTribeArrayLayoutForMapVersion, DAT_TribesState::ptr)(
             (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
             (OpenSHC::IO::PackagedFileMagicNum)(FilePackagerObj::instance.packagerMapVersionNumUnk));
         MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::uselessFunction, DAT_TroopValueState::ptr)(
@@ -127,11 +129,13 @@ namespace Map {
         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::upgradeMapFormatLogicLayer, this)(
             (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
             (OpenSHC::IO::PackagedFileMagicNum)(FilePackagerObj::instance.packagerMapVersionNumUnk));
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::upgradeBuildingsForMapVersion,
-            DAT_BuildingsState::ptr)((OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
+        MACRO_CALL_MEMBER(
+            OpenSHC::Map::Buildings::BuildingsState_Func::upgradeBuildingsForMapVersion, DAT_BuildingsState::ptr)(
+            (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
             (OpenSHC::IO::PackagedFileMagicNum)(FilePackagerObj::instance.packagerMapVersionNumUnk));
-        MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::upgradeTreesAndRocksForMapVersion,
-            DAT_LandscapeState::ptr)((OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
+        MACRO_CALL_MEMBER(
+            OpenSHC::Map::LandscapeState_Func::upgradeTreesAndRocksForMapVersion, DAT_LandscapeState::ptr)(
+            (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
             (OpenSHC::IO::PackagedFileMagicNum)(FilePackagerObj::instance.packagerMapVersionNumUnk));
         MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::upgradeMapTribesState, DAT_TribesState::ptr)(
             (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
@@ -162,17 +166,16 @@ namespace Map {
             OpenSHC::Game::GameStateStructures_Func::initializeGameStateAfterMapLoad, DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::applyVersionUpgradeAccessibilityRecompute,
-            DAT_BuildingsState::ptr)((OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
+            DAT_BuildingsState::ptr)(
+            (OpenSHC::IO::PackagedFileMagicNum)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk,
             (OpenSHC::IO::PackagedFileMagicNum)(FilePackagerObj::instance.packagerMapVersionNumUnk));
         MACRO_CALL_MEMBER(
             OpenSHC::Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(1);
         MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
             DAT_BuildingsState::ptr)();
-        _viewportX = 0;
-        do {
+        for (_viewportX = 0; _viewportX < 40; _viewportX++) {
             MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(_viewportX);
-            _viewportX = _viewportX + 1;
-        } while (_viewportX < 40);
+        }
         MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateNofFpoints, DAT_WildlifeState::ptr)();
