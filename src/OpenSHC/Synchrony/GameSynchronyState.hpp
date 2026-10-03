@@ -72,8 +72,8 @@ namespace Synchrony {
         WCHAR* DPLAY_SessionNames[50]; // 0x000001B0 length: 200
         bool unkEnumerationRelatedBool; // 0x00000278 length: 1
         undefined1 padding_0x279[3]; // 0x00000279 length: 3
-        IDirectPlay4A** DPLAYX_4A; // 0x0000027C length: 4
-        IDirectPlayLobby3** DPLAYX_LOBBY; // 0x00000280 length: 4
+        IDirectPlay4A* DPLAYX_4A; // 0x0000027C length: 4
+        IDirectPlayLobby3* DPLAYX_LOBBY; // 0x00000280 length: 4
         MenuModalTypeInt nextModalDialog; // 0x00000284 length: 4
         int multiplayerJoinStep; // 0x00000288 length: 4
         BOOLEnum useTCPIP; // 0x0000028C length: 4
