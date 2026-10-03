@@ -34,7 +34,7 @@ namespace Synchrony {
         _src = addressOfFullCommandObjectOrCommandParameters;
         if (((this->currentGameMode == OpenSHC::Game::GM_SOLITARY)
                 || (this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-            || (this->DPLAYX_4A == (IDirectPlay4A**)0x0))
+            || (this->DPLAYX_4A == (IDirectPlay4A*)0x0))
             goto LAB_00487e0f;
         this->transmissionCounterUnk = this->transmissionCounterUnk + 1;
         if (((int)size < 200) || (commandCategory == 65)) {
@@ -71,7 +71,7 @@ namespace Synchrony {
               SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
              */
             this->DPLAYX_SendAndReceiveREsult
-                = ((IDirectPlay4A*)this->DPLAYX_4A)
+                = this->DPLAYX_4A
                       ->SendEx(this->DPLAYX_PlayerHandle, idTo, 1537 | 1537 | 1537, &this->DAT_Packet, _packetSize + 4,
                           0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
         } else {
@@ -89,7 +89,7 @@ namespace Synchrony {
               DPLAYX.DirectPlayEnumerate+88C0
              */
             this->DPLAYX_SendAndReceiveREsult
-                = ((IDirectPlay4A*)this->DPLAYX_4A)
+                = this->DPLAYX_4A
                       ->SendEx(this->DPLAYX_PlayerHandle, idTo, _dwFlags, &this->DAT_Packet, _packetSize + 4,
                           _dwPriority, 0, (void*)0x0, (DWORD_PTR*)0x0);
         }
