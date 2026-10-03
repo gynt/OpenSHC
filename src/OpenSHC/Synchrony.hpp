@@ -35,8 +35,8 @@ namespace Synchrony {
     BOOL __stdcall EnumConnectionsCallback(
         LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize, DPNAME* lpName, DWORD dwFlags, LPVOID lpContext);
 
-    bool __stdcall EnumSessionsCallback_addSession_async(
-        DPSESSIONDESC2* lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext);
+    BOOL __stdcall EnumSessionsCallback_addSession_async(
+        LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext);
 
     BOOLEnum __stdcall DirectPlayModemRelated_MemoryAllocationCallback(int* param_1, undefined4 param_2, char* param_3);
 
