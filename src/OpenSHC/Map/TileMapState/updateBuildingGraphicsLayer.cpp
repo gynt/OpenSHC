@@ -3,6 +3,7 @@
 #include "OpenSHC/Map/TileMapState.func.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -11,7 +12,6 @@
 #include "OpenSHC/Globals/DAT_TerrainDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/GMTotalPicturesProcessed.hpp"
-#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -63,7 +63,7 @@ namespace Map {
                     if (DAT_TerrainDefinedData::instance.field1001_0x8b4[sVar5] == 2) {
                         iVar8 = DAT_BuildingsState::instance.buildings[buildingID].currentLimitOfResource - iVar7;
                         sVar6 = (short)this->buildingRotationRelatedValue
-                            + ((short)((int)(iVar8 + (iVar8 >> 0x1f & 3U)) >> 2) + ((ushort)iVar8 & 3) * 0xc) * 4;
+                            + ((short)(iVar8 / 4) + ((ushort)iVar8 & 3) * 0xc) * 4;
                     } else if (DAT_TerrainDefinedData::instance.field1001_0x8b4[sVar5] == 0) {
                         sVar6 = (short)this->buildingRotationRelatedValue + -4 + (short)iVar7 * 4;
                     } else {
