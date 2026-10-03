@@ -121,15 +121,13 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xf,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x22d,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xd8,
-                    ((int)(iVar10 + (iVar10 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xd8, (iVar10 / 32) + 0x20);
                 iVar10 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xe3,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x172,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x193,
-                    ((int)(iVar10 + (iVar10 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x193, (iVar10 / 32) + 0x20);
                 if (DAT_ButtonBackgroundBlendStrength::instance == 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                         DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
@@ -147,8 +145,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x234, iVar10,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2fc, iVar13,
-                    ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2fc, iVar13, (iVar4 / 32) + 0x20);
                 if (DAT_00b960dc::instance == 0) {
                     x2 = (undefined1*)((int)local_400 + 1);
                     iVar12 = iVar12 + 0x233;
@@ -392,9 +389,8 @@ namespace UI {
                 bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1a9;
                 INT_00b95f6c::instance = 0;
                 local_400 = piVar5;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
-                    iVar7, iVar4, (int)((int)(piVar5)), bottom, ((int)(iVar13 + (iVar13 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
+                    DAT_PencilRenderCore::ptr)(iVar7, iVar4, (int)((int)(piVar5)), bottom, (iVar13 / 32) + 0x20);
                 if (DAT_00b960dc::instance == 0) {
                     iVar13 = iVar10 + 0x225;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
