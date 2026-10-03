@@ -1691,6 +1691,8 @@ PUBLIC ?instance@?$Extern@K$0CECHEGM@@StructResolver@@2KA
 
 PUBLIC ?instance@?$Extern@H$0CECHEHA@@StructResolver@@2HA
 
+PUBLIC ?instance@?$Extern@E$0FDPAII@@StructResolver@@2EA
+
 
 _TEXT SEGMENT
 
@@ -3383,6 +3385,8 @@ _TEXT SEGMENT
 ?instance@?$Extern@K$0CECHEGM@@StructResolver@@2KA EQU 0242746Ch
 
 ?instance@?$Extern@H$0CECHEHA@@StructResolver@@2HA EQU 02427470h
+
+?instance@?$Extern@E$0FDPAII@@StructResolver@@2EA EQU 0053F088h
 
 
 _TEXT ENDS
