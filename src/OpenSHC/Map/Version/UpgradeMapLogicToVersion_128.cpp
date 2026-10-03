@@ -13,8 +13,7 @@ namespace Map {
     {
         int iVar1;
         int targetedTile;
-        targetedTile = 0;
-        do {
+        for (targetedTile = 0; targetedTile < 0x13a10; targetedTile++) {
             if ((DAT_TileMapState::instance.LogicLayer[targetedTile] & 0x40000000U) != 0) {
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::TileMapState_Func::returnOwnedMoatAtTile, DAT_TileMapState::ptr)(targetedTile);
@@ -23,8 +22,7 @@ namespace Map {
                     DAT_TileMapState::instance.HeightLayer[targetedTile] = 0;
                 }
             }
-            targetedTile = targetedTile + 1;
-        } while (targetedTile < 0x13a10);
+        }
     }
 
 }
