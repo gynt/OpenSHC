@@ -48,11 +48,11 @@ namespace Map {
         int iVar10;
         iVar7 = DAT_CurrentBuildingID::instance;
         _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
-        piVar5 = &DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].countFarms;
-        *piVar5 = *piVar5 + 1;
+        DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].countFarms
+            = DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].countFarms + 1;
         if (DAT_BuildingsState::instance.buildings[iVar7].workers[0] == 0) {
-            piVar5 = &DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].farmsWithoutWorkers;
-            *piVar5 = *piVar5 + 1;
+            DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].farmsWithoutWorkers
+                = DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].farmsWithoutWorkers + 1;
         }
         if ('\0' < (char)DAT_BuildingsState::instance.buildings[iVar7].numberOfAnimals) {
             DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].someResourceCounter = 0;
@@ -64,18 +64,18 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag
             = (uint)(DAT_BuildingsState::instance.buildings[iVar7].workers[0] != 0);
-        piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].field28_0x58;
-        *piVar5 = *piVar5 + 1;
+        DAT_BuildingsState::instance.buildings[iVar7].field28_0x58
+            = DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 + 1;
         if (1 < DAT_BuildingsState::instance.buildings[iVar7].field28_0x58) {
             DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 = 0;
-            piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock;
-            *piVar5 = *piVar5 + 1;
-            piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].field25_0x4c;
-            *piVar5 = *piVar5 + 1;
-            piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].field26_0x50;
-            *piVar5 = *piVar5 + 1;
-            piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].field27_0x54;
-            *piVar5 = *piVar5 + 1;
+            DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock
+                = DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock + 1;
+            DAT_BuildingsState::instance.buildings[iVar7].field25_0x4c
+                = DAT_BuildingsState::instance.buildings[iVar7].field25_0x4c + 1;
+            DAT_BuildingsState::instance.buildings[iVar7].field26_0x50
+                = DAT_BuildingsState::instance.buildings[iVar7].field26_0x50 + 1;
+            DAT_BuildingsState::instance.buildings[iVar7].field27_0x54
+                = DAT_BuildingsState::instance.buildings[iVar7].field27_0x54 + 1;
         }
         sVar8 = DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs;
         if (sVar8 != 0) {
@@ -97,8 +97,8 @@ namespace Map {
         if (bVar2 == 0) {
             if (((char)DAT_BuildingsState::instance.buildings[iVar7].numberOfAnimals < '\x03')
                 && (DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs == 0)) {
-                psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4;
-                *psVar9 = *psVar9 + 1;
+                DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4
+                    = DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 + 1;
                 if (400 < DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4) {
                     DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 1;
                     DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
@@ -107,8 +107,8 @@ namespace Map {
             } else if ((DAT_BuildingsState::instance.buildings[iVar7].resources[0xb] == 0)
                 && (psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4, *psVar9 = *psVar9 + 1,
                     400 < DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4)) {
-                pbVar1 = &DAT_BuildingsState::instance.buildings[iVar7].field215_0x299;
-                *pbVar1 = *pbVar1 + 1;
+                DAT_BuildingsState::instance.buildings[iVar7].field215_0x299
+                    = DAT_BuildingsState::instance.buildings[iVar7].field215_0x299 + 1;
                 if ('\x03' < (char)DAT_BuildingsState::instance.buildings[iVar7].field215_0x299) {
                     DAT_BuildingsState::instance.buildings[iVar7].field215_0x299 = 1;
                 }
@@ -129,8 +129,8 @@ namespace Map {
         }
         if (bVar2 == 1) {
             DAT_BuildingsState::instance.buildings[iVar7].field20_0x38 = 0x46;
-            psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe;
-            *psVar9 = *psVar9 + -1;
+            DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe
+                = DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe + -1;
             if (DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe < 1) {
                 DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
@@ -142,8 +142,8 @@ namespace Map {
             if (bVar2 == 3) {
                 DAT_BuildingsState::instance.buildings[iVar7].field20_0x38 = 0x10;
                 DAT_BuildingsState::instance.buildings[iVar7].field21_0x3c = 0x1c;
-                psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe;
-                *psVar9 = *psVar9 + -1;
+                DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe
+                    = DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe + -1;
                 if (DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe < 1) {
                     DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe = 0;
                     DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
@@ -156,8 +156,8 @@ namespace Map {
                     == 0) {
                     DAT_BuildingsState::instance.buildings[iVar7].field22_0x40 = 0x30;
                     DAT_BuildingsState::instance.buildings[iVar7].field20_0x38 = 0x10;
-                    psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe;
-                    *psVar9 = *psVar9 + 1;
+                    DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe
+                        = DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe + 1;
                     if (0x1f < DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe) {
                         DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe = 0x20;
                         DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 5;
@@ -231,8 +231,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe = 0;
             goto LAB_00416a00;
         }
-        psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe;
-        *psVar9 = *psVar9 + 1;
+        DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe
+            = DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe + 1;
         if (DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe < 0x20)
             goto LAB_00416a00;
         DAT_BuildingsState::instance.buildings[iVar7].field66_0xbe = 0x20;
@@ -277,8 +277,8 @@ namespace Map {
         iVar7 = DAT_CurrentBuildingID::instance;
         if (_cow == 0)
             goto LAB_00416a00;
-        piVar5 = &DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].counter;
-        *piVar5 = *piVar5 + 1;
+        DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].counter
+            = DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].counter + 1;
         DAT_UnitsState::instance.units[_cow].workplaceBuildingUID = DAT_BuildingsState::instance.buildings[iVar7].uid;
         DAT_UnitsState::instance.units[_cow].engineerManningSiegeStateRef_checkType = 0xff;
         DAT_UnitsState::instance.units[_cow].substate = -1;
@@ -344,8 +344,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].field39_0x84 = 0;
         }
         DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag = 1;
-        piVar5 = &DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame;
-        *piVar5 = *piVar5 + 1;
+        DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame
+            = DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame + 1;
         if ((char)DAT_BuildingDefinedData::instance
                 .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame / 2]
             < '\x01') {
