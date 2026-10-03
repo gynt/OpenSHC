@@ -44,7 +44,7 @@ namespace UI {
                 reverseOrBlendStrength = 0;
             }
             iVar1 = (reverseOrBlendStrength * 9 + -0x120) * 2;
-            _blendStrength = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+            _blendStrength = (iVar1 / 32) + 0x20;
             if (_blendStrength == 0x20) {}
             if (_blendStrengthMin1) {
                 iVar1 = DAT_ButtonW::instance - (DAT_ButtonW::instance + 9) % 10;
