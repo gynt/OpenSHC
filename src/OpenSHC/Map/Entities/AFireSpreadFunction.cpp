@@ -40,8 +40,8 @@ namespace Map {
         MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
         microX = x + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][0];
         microY = y + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][1];
-        x_2 = (int)(microX + (microX >> 0x1f & 7U)) >> 3;
-        y_2 = (int)(microY + (microY >> 0x1f & 7U)) >> 3;
+        x_2 = microX / 8;
+        y_2 = microY / 8;
         if (((x_2 < 400) && (y_2 < 400)) && (*(char*)(y_2 * 400 + 0x21aec98 + x_2) != '\0')) {
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y_2].addXgetTile + x_2;
             _entityID = MACRO_CALL_MEMBER(
