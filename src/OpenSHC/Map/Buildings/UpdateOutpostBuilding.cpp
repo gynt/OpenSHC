@@ -71,7 +71,6 @@ namespace Map {
         uint local_14;
         int local_10;
         int local_c;
-        ushort local_8;
         int local_4;
         UnitTypeInt _randomUnitType;
         int _tribeUID;
@@ -346,23 +345,18 @@ namespace Map {
             if ((uVar4 & 4) != 0) {
                 uVar12 = uVar12 + 1;
             }
-            local_8 = uVar4 & 8;
             if ((uVar4 & 8) != 0) {
                 uVar12 = uVar12 + 1;
             }
-            (*(short*)&local_c) = uVar4 & 0x10;
             if ((uVar4 & 0x10) != 0) {
                 uVar12 = uVar12 + 1;
             }
-            (*(short*)&local_10) = uVar4 & 0x20;
             if ((uVar4 & 0x20) != 0) {
                 uVar12 = uVar12 + 1;
             }
-            (*(short*)&local_14) = uVar4 & 0x40;
             if ((uVar4 & 0x40) != 0) {
                 uVar12 = uVar12 + 1;
             }
-            (*(short*)&local_18) = uVar4 & 0x80;
             if ((uVar4 & 0x80) != 0) {
                 uVar12 = uVar12 + 1;
             }
@@ -389,31 +383,31 @@ namespace Map {
                 }
                 iVar8 = iVar8 + 1;
             }
-            if (local_8 != 0) {
+            if ((uVar4 & 8) != 0) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 3;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((ushort)local_c != 0) {
+            if ((uVar4 & 0x10) != 0) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 4;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((ushort)local_10 != 0) {
+            if ((uVar4 & 0x20) != 0) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 5;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((ushort)local_14 != 0) {
+            if ((uVar4 & 0x40) != 0) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 6;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if (((ushort)local_18 != 0) && (iVar6 == iVar8)) {
+            if (((uVar4 & 0x80) != 0) && (iVar6 == iVar8)) {
                 DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 7;
             }
             if (DAT_BuildingsState::instance.buildings[iVar9].buildingType
