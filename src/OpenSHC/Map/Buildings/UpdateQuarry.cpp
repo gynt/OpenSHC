@@ -30,8 +30,8 @@ namespace Map {
     {
         int* piVar1;
         short sVar2;
-        ushort uVar3;
-        ushort uVar4;
+        int uVar3;
+        int uVar4;
         bool bVar5;
         ushort uVar6;
         int iVar7;
