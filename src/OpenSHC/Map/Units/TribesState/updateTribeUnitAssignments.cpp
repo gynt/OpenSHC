@@ -20,9 +20,9 @@ namespace Map {
             int _tribeUnitIndex;
             int _tribeID;
             int local_4;
-            short _tribeTime;
-            short _tribeSize;
-            short _state;
+            int _tribeTime;
+            int _tribeSize;
+            int _state;
             UnitLogicStateShort _unitLogicalState;
             this->clans = 0;
             this->field2_0x8 = 1;
