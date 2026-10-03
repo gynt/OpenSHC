@@ -6,6 +6,7 @@
 #include "OpenSHC/Map/LandscapeState.func.hpp"
 #include "OpenSHC/Random/RNG.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 #include "OpenSHC/Map/Entities/EntityType.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -15,14 +16,13 @@
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/SEC_RNG.hpp"
-#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Map {
 
     using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Entities::EntityType;
     using OpenSHC::Map::Buildings::BuildingTypeShort;
+    using OpenSHC::Map::Entities::EntityType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00405130
     uint Entities::SomeFireSpreadFunction(int param_1, int x, int y, int param_4, int param_5)
@@ -41,8 +41,8 @@ namespace Map {
         MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
         microX = x + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][0];
         microY = y + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][1];
-        _x = (int)(microX + (microX >> 0x1f & 7U)) >> 3;
-        _y = (int)(microY + (microY >> 0x1f & 7U)) >> 3;
+        _x = microX / 8;
+        _y = microY / 8;
         if (((399 < _x) || (399 < _y)) || (*(char*)(_y * 400 + 0x21aec98 + _x) == '\0')) {
             return 0;
         }
