@@ -63,13 +63,11 @@ void Synchrony::InitSkirmishLobbyData()
     DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
     DAT_GameSynchronyState::instance.field248_0x109250 = 6;
     INT_00b95ab8::instance = 0;
-    iVar1 = 0;
-    do {
+    for (iVar1 = 0; iVar1 < 20; iVar1++) {
         DAT_GameSynchronyState::instance.skirmishIntensityRelatedArray[iVar1]
             = DAT_RenderingDefinedData::instance
                   .SkirmishIntensityRelatedArray[0][DAT_GameSynchronyState::instance.skirmishTechLevel][iVar1];
-        iVar1 = iVar1 + 1;
-    } while (iVar1 < 20);
+    }
     DAT_GameSynchronyState::instance.skirmishBalanceRelatedArrayUnk1[0]
         = DAT_RenderingDefinedData::instance
               .SkirmishIntensityRelatedArray2[DAT_GameSynchronyState::instance.skirmishTechLevel][0];
