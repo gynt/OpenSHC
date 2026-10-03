@@ -528,8 +528,7 @@ namespace UI {
                 iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
-                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)((int)(local_108)),
-                    ((int)(iVar6 + (iVar6 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)((int)(local_108)), (iVar6 / 32) + 0x20);
                 _offset = _offset + 1;
             } while (_offset < 9);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
