@@ -20,32 +20,26 @@ namespace AI {
         int _offset;
         int _baseOffset;
         _baseOffset = DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1];
-        _offset = 0;
-        if (0 < maxAmount) {
-            do {
-                if (9 < _offset) {
-                    return 0;
+        for (_offset = 0; _offset < maxAmount; _offset++) {
+            if (9 < _offset) {
+                return 0;
+            }
+            _tribe = (int)DAT_GameState::instance.playerDataArray[playerID]
+                         .aiTribeIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset];
+            if ((_tribe == 0)
+                || (DAT_TribesState::instance.tribes[_tribe].uid
+                    != DAT_GameState::instance.playerDataArray[playerID]
+                        .aiTribeUIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset])) {
+                if (checkOnly != FALSE) {
+                    return 1;
                 }
-                _tribe = (int)DAT_GameState::instance.playerDataArray[playerID]
-                             .aiTribeIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset];
-                if ((_tribe == 0)
-                    || (DAT_TribesState::instance.tribes[_tribe].uid
-                        != DAT_GameState::instance.playerDataArray[playerID]
-                            .aiTribeUIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1]
-                                + _offset])) {
-                    if (checkOnly != FALSE) {
-                        return 1;
-                    }
-                    _newTribe = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
-                    DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[_baseOffset + _offset]
-                        = (short)_newTribe;
-                    DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[_baseOffset + _offset]
-                        = DAT_TribesState::instance.tribes[_newTribe].uid;
-                    return _newTribe;
-                }
-                _offset = _offset + 1;
-            } while (_offset < maxAmount);
+                _newTribe = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
+                DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[_baseOffset + _offset] = (short)_newTribe;
+                DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[_baseOffset + _offset]
+                    = DAT_TribesState::instance.tribes[_newTribe].uid;
+                return _newTribe;
+            }
         }
         return 0;
     }
