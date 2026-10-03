@@ -21,7 +21,7 @@ namespace Synchrony {
         _now = timeGetTime();
         if (((this->currentGameMode != OpenSHC::Game::GM_SOLITARY)
                 && (this->currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-            && (this->DPLAYX_4A != (IDirectPlay4A**)0x0)) {
+            && (this->DPLAYX_4A != (IDirectPlay4A*)0x0)) {
             BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 != FALSE) {
                 this->syncRelatedCounter = this->syncRelated2 + '\x01';
@@ -54,7 +54,7 @@ namespace Synchrony {
                 this->connectionLagInfoArray[7].now = _now;
                 this->connectionLagInfoArray[8].now = _now;
                 this->syncRelated2 = this->syncRelatedCounter;
-                this->DPLAYX_SendAndReceiveREsult = ((IDirectPlay4A*)this->DPLAYX_4A)
+                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A
                                                         ->SendEx(this->DPLAYX_PlayerHandle, 0, 1537 | 1537 | 1537,
                                                             (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
                 if ((this->DPLAYX_SendAndReceiveREsult != 0) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
