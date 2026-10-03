@@ -37,7 +37,6 @@ namespace Map {
         void TroopValueState::recomputeAttackInfo(int playerID, int attackedPlayerID)
         {
             byte bVar1;
-            BuildingTypeShort BVar2;
             undefined2 uVar3;
             undefined* puVar4;
             undefined* puVar5;
@@ -596,7 +595,8 @@ namespace Map {
                             }
                         }
                     } else {
-                        BVar2 = DAT_BuildingsState::instance.buildings[(short)_buildingID].buildingType;
+                        BuildingTypeShort BVar2
+                            = DAT_BuildingsState::instance.buildings[(short)_buildingID].buildingType;
                         uVar12 = (uint)DAT_TileMapState::instance.DefaultHeightLayer[_tile];
                         if (DAT_BuildingDefinedData::instance.IsGateOrTowerArray[(short)BVar2] == FALSE) {
                             if (DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[(short)BVar2] == 0) {
