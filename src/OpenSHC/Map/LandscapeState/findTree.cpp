@@ -48,8 +48,7 @@ namespace Map {
                                     local_18, (int)((int)(*(int*)(psVar8 + 4)))),
                                 BVar3 != FALSE)) {
                             bVar1 = DAT_TileMapState::instance.HeightLayer[*(uint*)(psVar8 + 0x12)];
-                            iVar6 = 0;
-                            do {
+                            for (iVar6 = 0; iVar6 < 8; iVar6++) {
                                 iVar7 = DAT_TileMapState::instance.directionTranslationMatrix[psVar8[0x10]][iVar6]
                                     + *(uint*)(psVar8 + 0x12);
                                 uVar5 = (uint)DAT_TileMapState::instance.HeightLayer[iVar7];
@@ -80,8 +79,7 @@ namespace Map {
                                     }
                                     break;
                                 }
-                                iVar6 = iVar6 + 1;
-                            } while (iVar6 < 8);
+                            }
                         }
                         local_18 = local_18 + 1;
                         psVar8 = psVar8 + 0x4e;
