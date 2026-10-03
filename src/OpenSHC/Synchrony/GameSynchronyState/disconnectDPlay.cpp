@@ -59,7 +59,7 @@ namespace Synchrony {
             GlobalUnlock(pvVar1);
             pvVar1 = GlobalHandle((void*)this->DPLAYX_Connection);
             GlobalFree(pvVar1);
-            this->DPLAYX_Connection = (undefined4)((void*)0x0);
+            this->DPLAYX_Connection = (void*)0x0;
         }
         this->scrollBarItemCount = 0;
         this->currentGameMode = OpenSHC::Game::GM_SOLITARY;

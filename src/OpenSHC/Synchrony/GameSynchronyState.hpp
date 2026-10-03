@@ -89,7 +89,7 @@ namespace Synchrony {
         GameModeInt currentGameModeCopy_SEC_Section1106; // 0x0000061C length: 4
         byte unused02[104]; // 0x00000620 length: 104
         DPNAME DPLAY_PlayerNameStructure; // 0x00000688 length: 16
-        undefined4 DPLAYX_Connection; // 0x00000698 length: 4
+        void* DPLAYX_Connection; // 0x00000698 length: 4
         undefined4 DPLAYX_ReceivedPlayerID; // 0x0000069C length: 4
         dword DPLAY_ToID; // 0x000006A0 length: 4
         undefined4 DPLAYX_PlayerHandle; // 0x000006A4 length: 4
