@@ -40,8 +40,7 @@ namespace Synchrony {
         GameCommandParameterLocation srcSwitch;
         GameCommandParameterReadWrite destSwitch;
         undefined4 _mapHash;
-        char local_3f4[4];
-        char local_3f0[1004];
+        char local_3f4[1008];
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_mapHash;
         DAT_GameSynchronyState::instance.DAT_CommandSize = 0x3ec;
