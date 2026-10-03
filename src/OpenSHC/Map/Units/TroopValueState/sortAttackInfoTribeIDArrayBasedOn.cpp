@@ -34,10 +34,9 @@ namespace Map {
             int _nextTribeType;
             int _counter2;
             int _index2;
-            bool bVar4;
             int _current;
             int _next;
-            bool _swapped;
+            int _swapped;
             if (someTribeTypeIdentifier == 1010) {
                 _tribeTypePriority = DAT_AttackInfoDefinedData::instance.field251_0x21c;
             } else if (someTribeTypeIdentifier == 1011) {
@@ -128,7 +127,7 @@ namespace Map {
                       This is a sorting algorithm
                      */
                     _index2 = 0;
-                    _swapped = false;
+                    _swapped = 0;
                     if (_index + -1 < 1)
                         break;
                     do {
@@ -193,14 +192,14 @@ namespace Map {
                             piVar2 = piVar2 + 6;
                         } while (_nextValue < 0xc);
                         if (_nextValue < _currentValue) {
-                            _swapped = true;
+                            _swapped = 1;
                             this->attackInfo.tribeIDArray[_index2] = _next;
                             this->attackInfo.tribeIDArray[_index2 + 1] = _current;
                         }
                         _index2 = _index2 + 1;
                     } while (_index2 < this->attackInfo.tribeIDArraySize + -1);
                     _index = this->attackInfo.tribeIDArraySize;
-                } while (_swapped);
+                } while (_swapped != 0);
                 _counter2 = 0;
                 if (0 < _index) {
                     do {
