@@ -29,9 +29,9 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042C090
         void Unknown33::MenuView_Unknown33_DoEveryFrame()
         {
-            int iVar1;
-            iVar1 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkAllPlayersReadyAndCleanupSlots,
-                DAT_GameSynchronyState::ptr)();
+            int iVar1
+                = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkAllPlayersReadyAndCleanupSlots,
+                    DAT_GameSynchronyState::ptr)();
             if (iVar1 != 0) {
                 if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
