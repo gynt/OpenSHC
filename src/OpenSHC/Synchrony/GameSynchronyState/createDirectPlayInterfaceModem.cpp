@@ -61,7 +61,7 @@ namespace Synchrony {
             piVar5 = _allocateMemLock;
             HVar3 = _interface->GetPlayerAddress(0, _allocateMemLock, &_playerAddress);
             if (-1 < HVar3) {
-                ((IDirectPlayLobby3*)this->DPLAYX_LOBBY)
+                this->DPLAYX_LOBBY
                     ->EnumAddress((LPDPENUMADDRESSCALLBACK)MACRO_CALL(
                                       OpenSHC::Synchrony_Func::DirectPlayModemRelated_MemoryAllocationCallback),
                         _allocateMemLock, _playerAddress, (void*)0x0);
