@@ -146,7 +146,7 @@ namespace Map {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 80;
                     }
                     this->seagullArray[seagullID].field12_0x1a = sVar4 + 1;
-                    if (0x13 < (short)(sVar4 + 1)) {
+                    if ((short)(sVar4 + 1) >= 0x14) {
                         this->seagullArray[seagullID].field12_0x1a = -0x14;
                     }
                 }
@@ -168,7 +168,7 @@ namespace Map {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 0x50;
                     }
                     this->seagullArray[seagullID].field12_0x1a = sVar4 + 1;
-                    if (0x13 < (short)(sVar4 + 1)) {
+                    if ((short)(sVar4 + 1) >= 0x14) {
                         this->seagullArray[seagullID].field12_0x1a = -0x14;
                     }
                 }
@@ -181,7 +181,7 @@ namespace Map {
                 sVar5 = this->seagullArray[seagullID].field15_0x20 + sVar4;
                 this->seagullArray[seagullID].angle_2 = sVar5;
                 fVar10 = ((double)(sVar4 + -0xb4) * (double)3.1415926535) / (double)180.0;
-                if (0x167 < sVar5) {
+                if (sVar5 >= 0x168) {
                     this->seagullArray[seagullID].angle_2 = sVar5 + -0x168;
                 }
                 sVar4 = this->seagullArray[seagullID].angle_2;
