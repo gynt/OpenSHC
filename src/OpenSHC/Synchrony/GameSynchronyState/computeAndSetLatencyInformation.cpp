@@ -28,7 +28,7 @@ namespace Synchrony {
         if (this->DPLAY_ReceiveData.packet.commandProtocol == 0x7e) {
             this->syncPacketType = 0x7f;
             this->syncRelatedCounter = this->DPLAY_ReceiveData.prefixedPacket.packet.commandProtocol;
-            this->DPLAYX_SendAndReceiveREsult = ((IDirectPlay4A*)this->DPLAYX_4A)
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A
                                                     ->SendEx(this->DPLAYX_PlayerHandle, this->DPLAYX_ReceivedPlayerID,
                                                         DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED,
                                                         (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
