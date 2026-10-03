@@ -16,13 +16,9 @@ namespace UI {
         int widthFactor;
         int heightFactor;
         xOffset = (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2
-            + ((int)(DAT_ViewportRenderState::instance.viewportState.viewportX
-                   + (DAT_ViewportRenderState::instance.viewportState.viewportX >> 0x1f & 0x1fU))
-                >> 5);
+            + (DAT_ViewportRenderState::instance.viewportState.viewportX / 32);
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
-            + ((int)(DAT_ViewportRenderState::instance.viewportState.viewportY
-                   + (DAT_ViewportRenderState::instance.viewportState.viewportY >> 0x1f & 7U))
-                >> 3);
+            + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);
         if (((this->field0_0x0 != 0) || (xOffset != this->field1_0x4)) || (yOffset != this->field2_0x8)) {
             if (DAT_TileMapState::instance.mapSize < 0xc9) {
                 heightFactor = 2;
