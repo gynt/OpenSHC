@@ -22,8 +22,7 @@ namespace Map {
         int* piVar7;
         int local_4;
         if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
-            local_4 = 0;
-            do {
+            for (local_4 = 0; local_4 < 0x14; local_4++) {
                 iVar2 = 0;
                 piVar3 = &this->grid[0][0];
                 do {
@@ -45,8 +44,7 @@ namespace Map {
                     iVar2 = iVar2 + 1;
                     piVar3 = piVar3 + 0x28;
                 } while (iVar2 < 0x28);
-                local_4 = local_4 + 1;
-            } while (local_4 < 0x14);
+            }
             iVar2 = 0;
             piVar5 = &this->grid[0][0].field25_0x64;
             do {
