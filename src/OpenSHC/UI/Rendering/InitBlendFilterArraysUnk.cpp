@@ -38,12 +38,12 @@ namespace UI {
                 psVar3 = local_8;
                 iVar6 = local_10;
                 do {
-                    uVar1 = (int)(iVar7 + (iVar7 >> 0x1f & 0x1fU)) >> 5;
+                    uVar1 = iVar7 / 32;
                     (*(short (*)[4])(psVar3 + -2))[0] = (short)uVar1;
                     *psVar3 = (short)((uVar1 & 0xffff) << 0xb);
                     iVar7 = iVar7 + local_10;
-                    puVar5[-4] = (short)(((int)(iVar4 + (iVar4 >> 0x1f & 0x3fU)) >> 6) << 5);
-                    *puVar5 = (short)(((int)(iVar6 + (iVar6 >> 0x1f & 0x3fU)) >> 6) << 5);
+                    puVar5[-4] = (short)((iVar4 / 64) << 5);
+                    *puVar5 = (short)((iVar6 / 64) << 5);
                     psVar3 = psVar3 + 4;
                     puVar5 = puVar5 + 8;
                     iVar4 = iVar4 + local_c;
@@ -62,7 +62,7 @@ namespace UI {
             iVar6 = 0x20;
             psVar3 = _shortPtr;
             do {
-                uVar1 = (int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5;
+                uVar1 = iVar4 / 32;
                 uVar2 = uVar1 & 0xffff;
                 psVar3[-1] = (short)uVar1;
                 *psVar3 = (short)(uVar2 << 5);
