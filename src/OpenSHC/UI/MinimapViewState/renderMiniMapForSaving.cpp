@@ -21,11 +21,9 @@ namespace UI {
             iVar1 = 0;
         }
         iVar2 = ((iVar1 / 2) / 2 + 1) * 0x20;
-        iVar2 = ((int)(iVar2 + (iVar2 >> 0x1f & 0x1fU)) >> 5)
-            + (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2;
+        iVar2 = (iVar2 / 32) + (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2;
         iVar1 = (iVar1 / 2) * 8 + 8;
-        iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 7U)) >> 3)
-            + DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2;
+        iVar1 = (iVar1 / 8) + DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2;
         MACRO_CALL(OpenSHC::OS_Func::_memset)(this->loadedMiniMap, 0, 80000);
         if (DAT_TileMapState::instance.mapSize < 0xc9) {
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::drawMinimap, this)(
