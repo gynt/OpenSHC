@@ -10,8 +10,7 @@ namespace Map {
         {
             char cVar1;
             int iVar2;
-            iVar2 = 0;
-            do {
+            for (iVar2 = 0; iVar2 < 200; iVar2 += 5) {
                 cVar1 = *(char*)(this->attackInfo.tilemapOffset + 0x1ecef88 + iVar2);
                 if (cVar1 != '\0') {
                     *(char*)(this->attackInfo.tilemapOffset + 0x1ecef88 + iVar2) = cVar1 + -1;
@@ -32,8 +31,7 @@ namespace Map {
                 if (cVar1 != '\0') {
                     *(char*)(this->attackInfo.tilemapOffset + 0x1ecef8c + iVar2) = cVar1 + -1;
                 }
-                iVar2 = iVar2 + 5;
-            } while (iVar2 < 200);
+            }
             if (this->attackInfo.tilemapOffset < 80200) {
                 this->attackInfo.tilemapOffset = this->attackInfo.tilemapOffset + 200;
             }
