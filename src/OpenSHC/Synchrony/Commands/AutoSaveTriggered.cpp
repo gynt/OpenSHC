@@ -56,17 +56,14 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_4c, (size_t)((int)(66)),
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
-            iVar2 = 1;
-            do {
+            for (iVar2 = 1; iVar2 < 9; iVar2++) {
                 if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar2] == -1)
                     || (iVar2 == DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
                     DAT_GameSynchronyState::instance.announcementReceivedByPlayer[iVar2] = 1;
                 } else {
                     DAT_GameSynchronyState::instance.announcementReceivedByPlayer[iVar2] = 0;
                 }
-                iVar2 = iVar2 + 1;
-            } while (iVar2 < 9);
-            ;
+            };
         }
         if (DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE) {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
