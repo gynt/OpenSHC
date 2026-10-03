@@ -8,10 +8,9 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0051D5D0
         void TroopValueState::decrementTileMap1104()
         {
-            char cVar1;
             int iVar2;
             for (iVar2 = 0; iVar2 < 200; iVar2 += 5) {
-                cVar1 = *(char*)(this->attackInfo.tilemapOffset + 0x1ecef88 + iVar2);
+                char cVar1 = *(char*)(this->attackInfo.tilemapOffset + 0x1ecef88 + iVar2);
                 if (cVar1 != '\0') {
                     *(char*)(this->attackInfo.tilemapOffset + 0x1ecef88 + iVar2) = cVar1 + -1;
                 }
