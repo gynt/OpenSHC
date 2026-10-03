@@ -208,7 +208,7 @@ namespace UI {
                 _width = this->disappearAfter * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(_left + 0x18, _top2 + 0x18, _left + -0x19 + (this->modalMenu).width,
-                    (this->modalMenu).height + -0x19 + _top2, 0x20 - ((int)(_width + (_width >> 0x1f & 0x1fU)) >> 5));
+                    (this->modalMenu).height + -0x19 + _top2, 0x20 - (_width / 32));
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
