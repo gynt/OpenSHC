@@ -1,3 +1,7 @@
+#ifndef WM_MOUSEWHEEL
+#define WM_MOUSEWHEEL 0x020A // WinUser.h gates this behind _WIN32_WINNT >= 0x0400
+#endif
+
 #include "../Global.func.hpp"
 
 #include "OpenSHC/AI/AICState.func.hpp"
@@ -89,24 +93,6 @@ using OpenSHC::UI::Enums::MenuModalType;
 using OpenSHC::UI::Enums::MenuViewType;
 using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-/*
-  WARNING: Enum "GeneralWindowsMessage": Some values do not have unique names
- */
-/*
-  WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "DPERRInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "MappersEnum": Some values do not have unique names
- */
-/*
-  WARNING: Enum "WindowsSystemMetricInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
- */
 /*
   This is the WindowProc   LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
   https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms633573(v=vs.85)      It handles input and
@@ -468,7 +454,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
                 _xMousePos, _yMousePos, _clickType);
             break;
-        case 0x020a: // WM_MOUSEWHEEL (WinUser.h, needs _WIN32_WINNT >= 0x0400)
+        case WM_MOUSEWHEEL:
             MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMouseWheelStatus, DAT_MouseState::ptr)(
                 (int)(short)(wParam >> 0x10));
         }
@@ -639,23 +625,19 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     cVar1 = *_pCurrentText2;
                     _pCurrentText2 = _pCurrentText2 + 1;
                 } while (cVar1 != '\0');
-                _textIndex = 0;
-                if (0 < (int)_pCurrentText2 - (int)(_pCurrentText + 1)) {
-                    do {
-                        if (_pCurrentText[_textIndex] != ' ') {
-                            DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
-                            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor,
-                                DAT_UserTextHandlerState::ptr)();
-                            if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_LOBBY_MENU) {
-                                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                            }
-                            break;
+                for (_textIndex = 0; _textIndex < (int)_pCurrentText2 - (int)(_pCurrentText + 1); _textIndex++) {
+                    if (_pCurrentText[_textIndex] != ' ') {
+                        DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
+                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor,
+                            DAT_UserTextHandlerState::ptr)();
+                        if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_LOBBY_MENU) {
+                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                         }
-                        _textIndex = _textIndex + 1;
-                    } while (_textIndex < (int)_pCurrentText2 - (int)(_pCurrentText + 1));
+                        break;
+                    }
                 }
             }
         } else if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
@@ -1469,7 +1451,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         _buildingX = DAT_BuildingsState::instance.buildings[_buildingID].x;
     LAB_004b3a35:
         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
-            DAT_ViewportRenderState::ptr)((short)_buildingX + 2, (int)((int)((short)_buildingY + 2)));
+            DAT_ViewportRenderState::ptr)((short)_buildingX + 2, (int)((short)_buildingY + 2));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
             AlphaAndButtonSurfaceObj::ptr)(_buildingID);
         break;
@@ -1530,7 +1512,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
                     DAT_ViewportRenderState::ptr)((short)DAT_BuildingsState::instance.buildings[iVar4].x + 1,
-                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y + 1)));
+                    (int)((short)DAT_BuildingsState::instance.buildings[iVar4].y + 1));
             }
             DAT_00df5538::instance = DAT_00df5538::instance + 1;
             if (7 < DAT_00df5538::instance) {
@@ -1818,7 +1800,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     if (0 < iVar3) {
                         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
                             DAT_ViewportRenderState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
-                            (int)((int)(DAT_UnitsState::instance.units[iVar3].y)));
+                            (int)(DAT_UnitsState::instance.units[iVar3].y));
                     }
                 }
             } else if (DAT_ModifierKeyState::instance.alt == 0) {
