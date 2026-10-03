@@ -76,10 +76,8 @@ namespace UI {
             char* pcVar5;
             undefined4 uVar6;
             FileResourceType FVar7;
-            char local_3f4[4];
-            char local_3f0[1004];
+            char local_3f4[1008];
             uint local_4;
-            int _mapNameIndex;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
