@@ -25,14 +25,10 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3150
     void LandscapeState::spawnCrowFromNearbyTree(int unitID)
     {
-        bool bVar1;
-        int _y;
         int _treeID;
         uint uVar2;
         uint uVar3;
-        int iVar4;
         int iVar5;
-        int _playerID;
         PlayerData* _pKeep;
         uint uVar6;
         int iVar7;
@@ -42,9 +38,9 @@ namespace Map {
         int _microX;
         int local_1c;
         int local_c;
-        bVar1 = false;
+        bool bVar1 = false;
         for (local_c = 0; local_c < 8; local_c++) {
-            _y = (int)DAT_UnitsState::instance.units[unitID].y;
+            int _y = (int)DAT_UnitsState::instance.units[unitID].y;
             if ((((DAT_TileMapState::instance
                           .OrganismLayer[DAT_TileMapState::instance.directionTranslationMatrix[_y][local_c]
                               + DAT_UnitsState::instance.units[unitID].tile]
@@ -56,7 +52,7 @@ namespace Map {
                     && (this->trees[_treeID].state == 2))
                 && ((this->trees[_treeID].unknownDistanceRelatedToCrow != 0
                     && (this->trees[_treeID].rng200till300 == 0)))) {
-                _playerID = (int)DAT_UnitsState::instance.units[unitID].owner;
+                int _playerID = (int)DAT_UnitsState::instance.units[unitID].owner;
                 _microX = 0;
                 _microY = 0;
                 local_2c = 10000;
@@ -71,7 +67,7 @@ namespace Map {
                         uVar3 = _y - iVar8;
                         iVar7 = (uVar2 ^ uVar6) - uVar6;
                         uVar2 = (int)uVar3 >> 0x1f;
-                        iVar4 = (uVar3 ^ uVar2) - uVar2;
+                        int iVar4 = (uVar3 ^ uVar2) - uVar2;
                         if (iVar4 < iVar7) {
                             iVar4 = iVar7;
                         }
