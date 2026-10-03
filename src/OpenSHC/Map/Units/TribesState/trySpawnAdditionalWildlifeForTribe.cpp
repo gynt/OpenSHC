@@ -19,9 +19,9 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x005260B0
         undefined4 TribesState::trySpawnAdditionalWildlifeForTribe(int param_1, int param_2, int param_3, int param_4)
         {
-            short sVar2;
-            short sVar3;
-            short sVar4;
+            int sVar2;
+            int sVar3;
+            int sVar4;
             byte bVar5;
             int iVar6;
             int iVar7;
