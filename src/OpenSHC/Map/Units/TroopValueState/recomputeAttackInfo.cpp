@@ -12,7 +12,6 @@
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -20,6 +19,7 @@
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 
@@ -106,14 +106,15 @@ namespace Map {
             DAT_TroopValueState::instance.attackInfo.someArea = 0;
             DAT_TroopValueState::instance.attackInfo.field127541_0x2c85c = 0;
             if (_isSolitary) {
-                DAT_TroopValueState::instance.attackInfo.someDistanceLimit = ((2999 < DAT_TroopValueState::instance.attackInfo.zoneSize) - 1 & 6) + 4;
+                DAT_TroopValueState::instance.attackInfo.someDistanceLimit
+                    = ((2999 < DAT_TroopValueState::instance.attackInfo.zoneSize) - 1 & 6) + 4;
             } else {
                 DAT_TroopValueState::instance.attackInfo.someDistanceLimit = 4;
             }
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-                16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset))));
+            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(16000,
+                '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset))));
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset))));
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
@@ -177,7 +178,8 @@ namespace Map {
                                 && (DAT_UnitsState::instance.units[(short)_unitID].isSelectable_OR_matchTime != 0)) {
                                 DAT_TileMapState::instance.DAT_SomeY
                                     = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_tile];
-                                DAT_TroopValueState::instance.attackInfo.people1 = DAT_TroopValueState::instance.attackInfo.people1 + 1;
+                                DAT_TroopValueState::instance.attackInfo.people1
+                                    = DAT_TroopValueState::instance.attackInfo.people1 + 1;
                                 _pTranslated
                                     = (char*)(((char*)DAT_TileMapState::instance.ptr_MovementDirectionTranslationMatrix)
                                         + DAT_TileMapState::instance.DAT_SomeY * 0x20);
@@ -212,11 +214,16 @@ namespace Map {
                                         _y = DAT_TileMapState::instance.DAT_SomeY;
                                         if (((int)_defaultHeight <= (int)(_height1 + 0x10))
                                             && ((int)(_height1 - 0x10) <= (int)_defaultHeight)) {
-                                            DAT_TroopValueState::instance.attackInfo.peopleValuesArray[DAT_TroopValueState::instance.attackInfo.people2].tile = _tile;
-                                            DAT_TroopValueState::instance.attackInfo.peopleValuesArray[DAT_TroopValueState::instance.attackInfo.people2].tile2
+                                            DAT_TroopValueState::instance.attackInfo
+                                                .peopleValuesArray[DAT_TroopValueState::instance.attackInfo.people2]
+                                                .tile = _tile;
+                                            DAT_TroopValueState::instance.attackInfo
+                                                .peopleValuesArray[DAT_TroopValueState::instance.attackInfo.people2]
+                                                .tile2
                                                 = DAT_TileMapState::instance.directionTranslationMatrix[_y][iVar13]
                                                 + _tile;
-                                            DAT_TroopValueState::instance.attackInfo.people2 = DAT_TroopValueState::instance.attackInfo.people2 + 1;
+                                            DAT_TroopValueState::instance.attackInfo.people2
+                                                = DAT_TroopValueState::instance.attackInfo.people2 + 1;
                                         }
                                     }
                                     iVar13 = iVar13 + 2;
@@ -226,8 +233,10 @@ namespace Map {
                                 == OpenSHC::Map::Units::UT_LORD) {
                                 DAT_TroopValueState::instance.attackInfo.someArea
                                     = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
-                                DAT_TroopValueState::instance.attackInfo.lord1 = DAT_TroopValueState::instance.attackInfo.lord1 + 1;
-                                if (DAT_TroopValueState::instance.attackInfo.someArea == DAT_TroopValueState::instance.attackInfo.startCon) {
+                                DAT_TroopValueState::instance.attackInfo.lord1
+                                    = DAT_TroopValueState::instance.attackInfo.lord1 + 1;
+                                if (DAT_TroopValueState::instance.attackInfo.someArea
+                                    == DAT_TroopValueState::instance.attackInfo.startCon) {
                                     DAT_TileMapState::instance.DAT_SomeY
                                         = (int)
                                               DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_tile];
@@ -240,8 +249,11 @@ namespace Map {
                                         if (DAT_TileMapState::instance.PathConnectionLayer[iVar6] != 0) {
                                             if (999 < iVar13)
                                                 break;
-                                            DAT_TroopValueState::instance.attackInfo.lordValuesArray[iVar13].tile = _tile;
-                                            DAT_TroopValueState::instance.attackInfo.lordValuesArray[DAT_TroopValueState::instance.attackInfo.lord3].tile2 = iVar6;
+                                            DAT_TroopValueState::instance.attackInfo.lordValuesArray[iVar13].tile
+                                                = _tile;
+                                            DAT_TroopValueState::instance.attackInfo
+                                                .lordValuesArray[DAT_TroopValueState::instance.attackInfo.lord3]
+                                                .tile2 = iVar6;
                                             iVar13 = DAT_TroopValueState::instance.attackInfo.lord3 + 1;
                                             DAT_TroopValueState::instance.attackInfo.lord3 = iVar13;
                                         }
@@ -261,7 +273,8 @@ namespace Map {
                                 && (*(char*)(attackedPlayerID * 0x13a10 + 0x1ee2998 + _tile) != '\0')) {
                                 bVar1 = DAT_TileMapState::instance.DefaultHeightLayer[_tile];
                                 piVar14 = (int*)((
-                                    undefined*)((int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset + -0xc)));
+                                    undefined*)((int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray
+                                    + _offset + -0xc)));
                                 *piVar14 = (int)((undefined*)(*piVar14 + 1));
                                 puVar5 = (undefined*)(DAT_TileMapState::instance.ptr_SpecialAreasArray);
                                 puVar4 = (undefined*)(DAT_TileMapState::instance.ptr_PathConnectionLayer);
@@ -284,10 +297,12 @@ namespace Map {
                                 do {
                                     iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                        DAT_PathFindingState::ptr)(playerID, (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                        DAT_PathFindingState::ptr)(playerID,
+                                        (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
                                         (dword)((int)((int)DAT_TileMapState::instance.specialAreasArray[iVar13])), 0);
                                     if (iVar11 != 0) {
-                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset + -8))
+                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray
+                                                 + _offset + -8))
                                             || (_teamsDifferent
                                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
@@ -305,13 +320,21 @@ namespace Map {
                                                 _someY = DAT_TileMapState::instance.DAT_SomeY,
                                                 (int)(uint)bVar1 <= (int)(uVar12 + 0x10)
                                                     && ((int)(uVar12 - 0x10) <= (int)(uint)bVar1)))) {
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.moatValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x17a2fa4 + _offset) = _tile;
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.moatValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x17a2fa8 + _offset)
                                                 = DAT_TileMapState::instance.directionTranslationMatrix[_someY][iVar13]
                                                 + _tile;
-                                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset + -8);
+                                            piVar14
+                                                = (int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray
+                                                    + _offset + -8);
                                             *piVar14 = *piVar14 + 1;
                                             if (DAT_TileMapState::instance.AIZoneLayer[_tile] != 0) {
                                                 iVar13 = DAT_ViewportRenderState::instance.translationMatrix[_someY]
@@ -361,11 +384,11 @@ namespace Map {
                             uVar3 = *(undefined2*)(puVar4 + iVar13 + -2);
                             *(undefined2*)(puVar5 + 6) = *(undefined2*)(puVar4 + iVar13 + 2);
                             *(undefined2*)(puVar5 + 10) = uVar3;
-                            _direction = 0;
-                            do {
+                            for (_direction = 0; _direction < 8; _direction += 2) {
                                 _toArea = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                 calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                    DAT_PathFindingState::ptr)(playerID, (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                    DAT_PathFindingState::ptr)(playerID,
+                                    (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
                                     (dword)((int)((int)DAT_TileMapState::instance.specialAreasArray[_direction])), 0);
                                 if (_toArea != 0) {
                                     _directionMin1 = _direction + -1;
@@ -374,7 +397,8 @@ namespace Map {
                                     }
                                     iVar13 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                        DAT_PathFindingState::ptr)(playerID, (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                        DAT_PathFindingState::ptr)(playerID,
+                                        (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
                                         (dword)((
                                             int)((int)DAT_TileMapState::instance.specialAreasArray[_direction + 1])),
                                         0);
@@ -389,7 +413,8 @@ namespace Map {
                                                     0),
                                                 iVar13 != 0))
                                         && ((DAT_TileMapState::instance.AIInfoLayer[_tile] & 0x20) == 0)) {
-                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset + -8))
+                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray
+                                                 + _offset + -8))
                                             || (_teamsDifferent
                                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
@@ -406,18 +431,28 @@ namespace Map {
                                                      DAT_TileMapState::ptr)(iVar13),
                                                 (int)uVar12 <= (int)(uVar7 + 0x10)
                                                     && ((int)(uVar7 - 0x10) <= (int)uVar12)))) {
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.wideValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x17a6e40 + _offset) = _tile;
                                             iVar13 = DAT_TileMapState::instance.DAT_SomeY;
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.wideValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x17a6e44 + _offset)
                                                 = DAT_TileMapState::instance
                                                       .directionTranslationMatrix[DAT_TileMapState::instance.DAT_SomeY]
                                                                                  [_direction]
                                                 + _tile;
-                                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset + -8);
+                                            piVar14
+                                                = (int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray
+                                                    + _offset + -8);
                                             *piVar14 = *piVar14 + 1;
-                                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset + -0xc);
+                                            piVar14
+                                                = (int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray
+                                                    + _offset + -0xc);
                                             *piVar14 = *piVar14 + 1;
                                             DAT_TileMapState::instance.DAT_SomeX = _tile
                                                 - DAT_ViewportRenderState::instance.translationMatrix[iVar13]
@@ -431,18 +466,20 @@ namespace Map {
                                         }
                                     }
                                 }
-                                _direction = _direction + 2;
-                            } while (_direction < 8);
-                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -0x10);
+                            }
+                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset
+                                + -0x10);
                             *piVar14 = *piVar14 + 1;
                             iVar13 = 0;
                             do {
                                 iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                    DAT_PathFindingState::ptr)(playerID, (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                    DAT_PathFindingState::ptr)(playerID,
+                                    (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
                                     (dword)((int)((int)DAT_TileMapState::instance.specialAreasArray[iVar13])), 0);
                                 if (iVar11 != 0) {
-                                    if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8))
+                                    if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray
+                                             + _offset + -8))
                                         || (_teamsDifferent
                                             = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
                                                                     getTileInTargetedBuildingTiles,
@@ -460,17 +497,23 @@ namespace Map {
                                             iVar11 = DAT_TileMapState::instance.DAT_SomeY,
                                             (int)uVar12 <= (int)(uVar7 + 0x10)
                                                 && ((int)(uVar7 - 0x10) <= (int)uVar12)))) {
-                                        *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8) * 0x10
+                                        *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray
+                                                    + _offset + -8)
+                                                * 0x10
                                             + 0x1793524 + _offset) = _tile;
-                                        *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8) * 0x10
+                                        *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray
+                                                    + _offset + -8)
+                                                * 0x10
                                             + 0x1793528 + _offset)
                                             = DAT_TileMapState::instance.directionTranslationMatrix[iVar11][iVar13]
                                             + _tile;
-                                        iVar13 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8);
+                                        iVar13 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray
+                                            + _offset + -8);
                                         DAT_TileMapState::instance
                                             .AIZoneLayer[*(int*)(iVar13 * 0x10 + 0x1793528 + _offset)] = 10;
                                         bVar1 = DAT_TileMapState::instance.AIZoneLayer[_tile];
-                                        *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8) = iVar13 + 1;
+                                        *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset
+                                            + -8) = iVar13 + 1;
                                         if (bVar1 != 0) {
                                             DAT_TileMapState::instance.DAT_SomeX = _tile
                                                 - DAT_ViewportRenderState::instance
@@ -478,7 +521,8 @@ namespace Map {
                                                       .addXgetTile;
                                             MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                   recomputeALGPathFindingTileMapUnk,
-                                                DAT_PathFindingState::ptr)(DAT_TroopValueState::instance.attackInfo.someDistanceLimit,
+                                                DAT_PathFindingState::ptr)(
+                                                DAT_TroopValueState::instance.attackInfo.someDistanceLimit,
                                                 (uint)((int)(DAT_TileMapState::instance.DAT_SomeX)),
                                                 (uint)((int)(DAT_TileMapState::instance.DAT_SomeY)), 1);
                                         }
@@ -487,11 +531,13 @@ namespace Map {
                                 }
                                 iVar13 = iVar13 + 2;
                             } while (iVar13 < 8);
-                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -0xc);
+                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset
+                                + -0xc);
                             *piVar14 = *piVar14 + 1;
                             if ((_logic & 0x400000) == 0) {
                                 iVar13 = (int)(char)DAT_TileMapState::instance.AIZoneLayer[_tile];
-                                piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -0xc);
+                                piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray
+                                    + _offset + -0xc);
                                 *piVar14 = *piVar14 + 1;
                                 if ((iVar13 != 0) && (iVar13 < DAT_TroopValueState::instance.attackInfo.scaleZone)) {
                                     DAT_TroopValueState::instance.attackInfo.scaleZone = iVar13;
@@ -500,10 +546,13 @@ namespace Map {
                                 do {
                                     iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                        DAT_PathFindingState::ptr)(playerID, (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                        DAT_PathFindingState::ptr)(playerID,
+                                        (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
                                         (dword)((int)((int)DAT_TileMapState::instance.specialAreasArray[iVar13])), 0);
                                     if (iVar11 != 0) {
-                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -8))
+                                        if ((999
+                                                < *(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray
+                                                    + _offset + -8))
                                             || (_teamsDifferent
                                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
@@ -520,18 +569,24 @@ namespace Map {
                                                      DAT_TileMapState::ptr)(iVar11),
                                                 (int)uVar12 <= (int)(uVar7 + 0x10)
                                                     && ((int)(uVar7 - 0x10) <= (int)uVar12)))) {
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -8)
+                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo
+                                                                .scaleValuesArray
+                                                        + _offset + -8)
                                                     * 0x10
                                                 + 0x17973d0 + _offset) = _tile;
                                             _someY = DAT_TileMapState::instance.DAT_SomeY;
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -8)
+                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo
+                                                                .scaleValuesArray
+                                                        + _offset + -8)
                                                     * 0x10
                                                 + 0x17973d4 + _offset)
                                                 = DAT_TileMapState::instance
                                                       .directionTranslationMatrix[DAT_TileMapState::instance.DAT_SomeY]
                                                                                  [iVar13]
                                                 + _tile;
-                                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -8);
+                                            piVar14
+                                                = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray
+                                                    + _offset + -8);
                                             *piVar14 = *piVar14 + 1;
                                             goto LAB_0051e94c;
                                         }
@@ -593,40 +648,58 @@ namespace Map {
                                                                             hasHumanPlayerUnitsOnBuilding,
                                                         DAT_BuildingsState::ptr)(_buildingID_3);
                                                 if (_teamsDifferent == FALSE) {
-                                                    DAT_TroopValueState::instance.attackInfo.arch1 = DAT_TroopValueState::instance.attackInfo.arch1 + 1;
+                                                    DAT_TroopValueState::instance.attackInfo.arch1
+                                                        = DAT_TroopValueState::instance.attackInfo.arch1 + 1;
                                                     if ((DAT_TroopValueState::instance.attackInfo.arch2 < 1000)
                                                         && (iVar13 = MACRO_CALL_MEMBER(
                                                                 OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                     calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                                 DAT_PathFindingState::ptr)(playerID,
-                                                                (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                                                (dword)((int)(DAT_TroopValueState::instance.attackInfo
+                                                                        .startCon)),
                                                                 (dword)((int)((int)(short)_area)), 0),
                                                             iVar13 != 0)) {
-                                                        DAT_TroopValueState::instance.attackInfo.arch2ValuesArray[DAT_TroopValueState::instance.attackInfo.arch2]
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .arch2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .arch2]
                                                             .buildingID = _buildingID_3;
-                                                        DAT_TroopValueState::instance.attackInfo.arch2ValuesArray[DAT_TroopValueState::instance.attackInfo.arch2].tile2
-                                                            = _tile;
-                                                        DAT_TroopValueState::instance.attackInfo.arch2ValuesArray[DAT_TroopValueState::instance.attackInfo.arch2].tile
-                                                            = _tile;
-                                                        DAT_TroopValueState::instance.attackInfo.arch2 = DAT_TroopValueState::instance.attackInfo.arch2 + 1;
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .arch2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .arch2]
+                                                            .tile2 = _tile;
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .arch2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .arch2]
+                                                            .tile = _tile;
+                                                        DAT_TroopValueState::instance.attackInfo.arch2
+                                                            = DAT_TroopValueState::instance.attackInfo.arch2 + 1;
                                                     }
                                                 } else {
-                                                    DAT_TroopValueState::instance.attackInfo.high1 = DAT_TroopValueState::instance.attackInfo.high1 + 1;
+                                                    DAT_TroopValueState::instance.attackInfo.high1
+                                                        = DAT_TroopValueState::instance.attackInfo.high1 + 1;
                                                     if ((DAT_TroopValueState::instance.attackInfo.high2 < 1000)
                                                         && (iVar13 = MACRO_CALL_MEMBER(
                                                                 OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                     calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                                 DAT_PathFindingState::ptr)(playerID,
-                                                                (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
+                                                                (dword)((int)(DAT_TroopValueState::instance.attackInfo
+                                                                        .startCon)),
                                                                 (dword)((int)((int)(short)_area)), 0),
                                                             iVar13 != 0)) {
-                                                        DAT_TroopValueState::instance.attackInfo.high2ValuesArray[DAT_TroopValueState::instance.attackInfo.high2]
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .high2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .high2]
                                                             .buildingID = _buildingID_3;
-                                                        DAT_TroopValueState::instance.attackInfo.high2ValuesArray[DAT_TroopValueState::instance.attackInfo.high2].tile2
-                                                            = _tile;
-                                                        DAT_TroopValueState::instance.attackInfo.high2ValuesArray[DAT_TroopValueState::instance.attackInfo.high2].tile
-                                                            = _tile;
-                                                        DAT_TroopValueState::instance.attackInfo.high2 = DAT_TroopValueState::instance.attackInfo.high2 + 1;
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .high2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .high2]
+                                                            .tile2 = _tile;
+                                                        DAT_TroopValueState::instance.attackInfo
+                                                            .high2ValuesArray[DAT_TroopValueState::instance.attackInfo
+                                                                    .high2]
+                                                            .tile = _tile;
+                                                        DAT_TroopValueState::instance.attackInfo.high2
+                                                            = DAT_TroopValueState::instance.attackInfo.high2 + 1;
                                                     }
                                                 }
                                             }
@@ -637,7 +710,8 @@ namespace Map {
                                 DAT_TileMapState::instance.DAT_SomeY
                                     = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_tile];
                                 piVar14 = (int*)((
-                                    undefined*)((int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset + -0xc)));
+                                    undefined*)((int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray
+                                    + _offset + -0xc)));
                                 *piVar14 = (int)((undefined*)(*piVar14 + 1));
                                 puVar5 = (undefined*)(DAT_TileMapState::instance.ptr_SpecialAreasArray);
                                 puVar4 = (undefined*)(DAT_TileMapState::instance.ptr_PathConnectionLayer);
@@ -658,7 +732,8 @@ namespace Map {
                                 do {
                                     if (DAT_TileMapState::instance.specialAreasArray[iVar13]
                                         == DAT_TroopValueState::instance.attackInfo.startCon) {
-                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset + -8))
+                                        if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray
+                                                 + _offset + -8))
                                             || (_teamsDifferent
                                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
@@ -675,13 +750,21 @@ namespace Map {
                                         iVar11 = DAT_TileMapState::instance.DAT_SomeY;
                                         if (((int)uVar12 <= (int)(_heightTown + 0x10))
                                             && ((int)(_heightTown - 0x10) <= (int)uVar12)) {
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.townValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x179b26c + _offset) = _tile;
-                                            *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset + -8) * 0x10
+                                            *(int*)(*(int*)((int)
+                                                                DAT_TroopValueState::instance.attackInfo.townValuesArray
+                                                        + _offset + -8)
+                                                    * 0x10
                                                 + 0x179b270 + _offset)
                                                 = DAT_TileMapState::instance.directionTranslationMatrix[iVar11][iVar13]
                                                 + _tile;
-                                            piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset + -8);
+                                            piVar14
+                                                = (int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray
+                                                    + _offset + -8);
                                             *piVar14 = *piVar14 + 1;
                                             break;
                                         }
@@ -690,8 +773,8 @@ namespace Map {
                                 } while (iVar13 < 8);
                             }
                         } else if (*(char*)(attackedPlayerID * 0x13a10 + 0x1ee2998 + _tile) != '\0') {
-                            piVar14
-                                = (int*)((undefined*)((int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -0xc)));
+                            piVar14 = (int*)((undefined*)((
+                                int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -0xc)));
                             *piVar14 = (int)((undefined*)(*piVar14 + 1));
                             puVar5 = (undefined*)(DAT_TileMapState::instance.ptr_SpecialAreasArray);
                             puVar4 = (undefined*)(DAT_TileMapState::instance.ptr_PathConnectionLayer);
@@ -715,9 +798,11 @@ namespace Map {
                             *(undefined2*)(puVar5 + 8) = uVar3;
                             iVar13 = 0;
                         LAB_0051e890:
-                            if (DAT_TileMapState::instance.specialAreasArray[iVar13] != DAT_TroopValueState::instance.attackInfo.startCon)
+                            if (DAT_TileMapState::instance.specialAreasArray[iVar13]
+                                != DAT_TroopValueState::instance.attackInfo.startCon)
                                 break;
-                            if ((*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8) < 1000)
+                            if ((*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8)
+                                    < 1000)
                                 && (_teamsDifferent = MACRO_CALL_MEMBER(
                                         OpenSHC::Map::Units::TroopValueState_Func::getTileInTargetedBuildingTiles,
                                         this)(_tile),
@@ -731,15 +816,20 @@ namespace Map {
                                             DAT_TileMapState::ptr)(iVar11),
                                         (int)(uVar7 + 0x10) < (int)uVar12 || ((int)uVar12 < (int)(uVar7 - 0x10)))))
                                     break;
-                                *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8) * 0x10 + 0x179f108
-                                    + _offset) = _tile;
+                                *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset
+                                            + -8)
+                                        * 0x10
+                                    + 0x179f108 + _offset) = _tile;
                                 _someY = DAT_TileMapState::instance.DAT_SomeY;
-                                *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8) * 0x10 + 0x179f10c
-                                    + _offset)
+                                *(int*)(*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset
+                                            + -8)
+                                        * 0x10
+                                    + 0x179f10c + _offset)
                                     = DAT_TileMapState::instance
                                           .directionTranslationMatrix[DAT_TileMapState::instance.DAT_SomeY][iVar13]
                                     + _tile;
-                                piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8);
+                                piVar14 = (int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset
+                                    + -8);
                                 *piVar14 = *piVar14 + 1;
                             LAB_0051e94c:
                                 if (DAT_TileMapState::instance.AIZoneLayer[_tile] != 0) {
