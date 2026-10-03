@@ -21,17 +21,15 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x00416540
     void Buildings::UpdateWheatFarm()
     {
-        int* piVar1;
-        short* psVar2;
         short sVar3;
         int iVar4;
         iVar4 = DAT_CurrentBuildingID::instance;
         sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
-        piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].countFarms;
-        *piVar1 = *piVar1 + 1;
+        DAT_GameState::instance.playerDataArray[sVar3].countFarms
+            = DAT_GameState::instance.playerDataArray[sVar3].countFarms + 1;
         if (DAT_BuildingsState::instance.buildings[iVar4].workers[0] == 0) {
-            piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].farmsWithoutWorkers;
-            *piVar1 = *piVar1 + 1;
+            DAT_GameState::instance.playerDataArray[sVar3].farmsWithoutWorkers
+                = DAT_GameState::instance.playerDataArray[sVar3].farmsWithoutWorkers + 1;
         }
         /*
           Two fire related functions.
@@ -41,8 +39,8 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        psVar2 = &DAT_BuildingsState::instance.buildings[iVar4].growCounter;
-        *psVar2 = *psVar2 + 1;
+        DAT_BuildingsState::instance.buildings[iVar4].growCounter
+            = DAT_BuildingsState::instance.buildings[iVar4].growCounter + 1;
         if (0x96 < DAT_BuildingsState::instance.buildings[iVar4].growCounter) {
             DAT_BuildingsState::instance.buildings[iVar4].growCounter = 0;
             MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::growWheat, DAT_BuildingsState::ptr)(iVar4);
@@ -51,8 +49,8 @@ namespace Map {
             OpenSHC::Map::Buildings::BuildingsState_Func::updateWheatFieldTileGraphics, DAT_BuildingsState::ptr)(iVar4);
         if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar4].displayOwnerFlag = 1;
-            piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame;
-            *piVar1 = *piVar1 + 1;
+            DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame
+                = DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame + 1;
             if ((char)DAT_BuildingDefinedData::instance
                     .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame / 2]
                 < '\x01') {
