@@ -30,11 +30,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B710
         void TroopValueState::placeSiegeTentsAndAssignEngineers(int param_1, int param_2)
         {
-            byte bVar1;
-            short sVar2;
-            MappersEnum MVar3;
             int iVar4;
-            int iVar5;
             Tribe* piVar6;
             int _tribeID2;
             int iVar6;
@@ -56,14 +52,14 @@ namespace Map {
                 && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
                 local_10 = 2;
             }
-            iVar5 = 0;
+            int iVar5 = 0;
             local_c = DAT_TroopValueState::instance.attackInfo.someSinglePlayerScore + param_1;
             iVar8 = 0;
             DAT_TroopValueState::instance.attackInfo.createTribeAmount = 0;
             iVar6 = 0;
             do {
-                bVar1 = (*local_c)[0];
-                MVar3 = *(MappersEnum*)((int)DAT_AttackInfoDefinedData::instance.field5_0xc8 + iVar6);
+                byte bVar1 = (*local_c)[0];
+                MappersEnum MVar3 = *(MappersEnum*)((int)DAT_AttackInfoDefinedData::instance.field5_0xc8 + iVar6);
                 iVar4 = *(int*)((int)DAT_AttackInfoDefinedData::instance.field1461_0x9ec + iVar6);
                 iVar7 = 0;
                 if (0 < (char)bVar1) {
@@ -120,7 +116,7 @@ namespace Map {
             if (iVar5 != 0) {
                 for (iVar6 = 0; iVar6 < iVar5; iVar6++) {
                     _tribeID = DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar6];
-                    sVar2 = DAT_TribesState::instance.tribes[_tribeID].size;
+                    short sVar2 = DAT_TribesState::instance.tribes[_tribeID].size;
                     for (;
                         (sVar2 != 0 && (iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize, 0 < iVar8));
                         iVar8 = iVar8 + -1) {
