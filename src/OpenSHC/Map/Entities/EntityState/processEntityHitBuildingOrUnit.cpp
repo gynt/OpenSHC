@@ -45,7 +45,7 @@ namespace Map {
             int* piVar1;
             short* psVar2;
             EntityTypeShort EVar3;
-            ushort uVar4;
+            int uVar4;
             short sVar5;
             BuildingTypeShort BVar6;
             short sVar7;
@@ -181,7 +181,7 @@ namespace Map {
                 }
                 goto LAB_00408150;
             }
-            uVar4 = DAT_TileMapState::instance.UnitLayer[_someTile];
+            uVar4 = (short)DAT_TileMapState::instance.UnitLayer[_someTile];
             if ((_entityType != 1) || (this->entityArray[entityID].rng_2 != 2)) {
                 if (((_entityType == 0x16) || (((_entityType == 3 || (_entityType == 2)) || (_entityType == 4))))
                     || (0x50 < this->entityArray[entityID].velocityUnk)) {
@@ -239,7 +239,7 @@ namespace Map {
                     iVar11 = DAT_TileMapState::instance
                                  .directionTranslationMatrix[this->entityArray[entityID].yPosition][_buildingID]
                         + _someTile;
-                    uVar4 = DAT_TileMapState::instance.UnitLayer[iVar11];
+                    uVar4 = (short)DAT_TileMapState::instance.UnitLayer[iVar11];
                     while (iVar9 = (int)(short)uVar4, iVar9 != 0) {
                         _y = MACRO_CALL_MEMBER(
                             OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(iVar11);
@@ -257,7 +257,7 @@ namespace Map {
                 do {
                     _buildingID = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::computeTileAlongAxisOffset,
                         DAT_TileMapState::ptr)(_someTile, pPVar10->xOffset, (uint)((int)(pPVar10->yOffset)));
-                    uVar4 = DAT_TileMapState::instance.UnitLayer[_buildingID];
+                    uVar4 = (short)DAT_TileMapState::instance.UnitLayer[_buildingID];
                     while (iVar11 = (int)(short)uVar4, iVar11 != 0) {
                         _y = MACRO_CALL_MEMBER(
                             OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_buildingID);
