@@ -66,8 +66,7 @@ namespace UI {
                     /*
                       Open the same file 8 times, for each lobby player once
                      */
-                    _addressee = 1;
-                    do {
+                    for (_addressee = 1; _addressee < 9; _addressee++) {
                         DAT_GameSynchronyState::instance.field290_0x109e20[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[_addressee] = 0;
                         DAT_GameSynchronyState::instance.field289_0x109dfc[_addressee] = 0;
@@ -87,9 +86,7 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECEIVE_SENT_MAPPARTUnk);
                         }
-                        _addressee = _addressee + 1;
-                    } while (_addressee < 9);
-                    ;
+                    };
                 }
                 goto LAB_004b12ab;
             }
