@@ -524,11 +524,46 @@ namespace Map {
                     || (DAT_GameState::instance.playerDataArray[sVar2].count_2
                             + DAT_GameState::instance.playerDataArray[sVar2].armySize
                         < DAT_GameState::instance.mapAndTime.armySizeLimit)) {
-                    local_4 = 0;
-                    if (0 < (int)local_18) {
+                    for (local_4 = 0; local_4 < (int)local_18; local_4++) {
+                        iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
+                        _randomUnitID = MACRO_CALL_MEMBER(
+                            OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
+                            (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
+                                            .buildingEntryX
+                                * 8)),
+                            (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
+                                            .buildingEntryY
+                                * 8)),
+                            8, (UnitType)((int)(_randomUnitType)));
+                        if (_randomUnitID == 0) {}
+                        if (_randomUnitType == OpenSHC::Map::Units::UT_S_CATAPULT) {
+                            DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 = 0;
+                        }
+                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
+                            _randomUnitID, _tribeID);
+                        switch (_randomUnitType) {
+                        case OpenSHC::Map::Units::UT_S_CATAPULT:
+                        case OpenSHC::Map::Units::UT_S_FBALLISTA:
+                            _requiredEngineers = 2;
+                            break;
+                        case OpenSHC::Map::Units::UT_S_TREBUCHET:
+                            _requiredEngineers = 3;
+                            break;
+                        default:
+                            goto switchD_004121d2_caseD_29;
+                        case OpenSHC::Map::Units::UT_S_TOWER:
+                        case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
+                            _requiredEngineers = 4;
+                            break;
+                        case OpenSHC::Map::Units::UT_S_SHIELD:
+                            _requiredEngineers = 1;
+                        }
                         do {
                             iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
-                            _randomUnitID = MACRO_CALL_MEMBER(
+                            /*
+                              spawn siege engineer
+                             */
+                            _engineerID = MACRO_CALL_MEMBER(
                                 OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
                                 (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                                 .buildingEntryX
@@ -536,59 +571,18 @@ namespace Map {
                                 (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                                 .buildingEntryY
                                     * 8)),
-                                8, (UnitType)((int)(_randomUnitType)));
-                            if (_randomUnitID == 0) {}
-                            if (_randomUnitType == OpenSHC::Map::Units::UT_S_CATAPULT) {
-                                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312
-                                    = 0;
+                                8, OpenSHC::Map::Units::UT_E_ENGINEER);
+                            if (_engineerID != 0) {
+                                DAT_UnitsState::instance.units[_engineerID].targetingType
+                                    = OpenSHC::Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
+                                DAT_UnitsState::instance.units[_engineerID]
+                                    .targetedUnitID__OR__engineerMannedSiegeEngineRef = (short)_randomUnitID;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe,
-                                DAT_TribesState::ptr)(_randomUnitID, _tribeID);
-                            switch (_randomUnitType) {
-                            case OpenSHC::Map::Units::UT_S_CATAPULT:
-                            case OpenSHC::Map::Units::UT_S_FBALLISTA:
-                                _requiredEngineers = 2;
-                                break;
-                            case OpenSHC::Map::Units::UT_S_TREBUCHET:
-                                _requiredEngineers = 3;
-                                break;
-                            default:
-                                goto switchD_004121d2_caseD_29;
-                            case OpenSHC::Map::Units::UT_S_TOWER:
-                            case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
-                                _requiredEngineers = 4;
-                                break;
-                            case OpenSHC::Map::Units::UT_S_SHIELD:
-                                _requiredEngineers = 1;
-                            }
-                            do {
-                                iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
-                                            .owner;
-                                /*
-                                  spawn siege engineer
-                                 */
-                                _engineerID = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
-                                    (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
-                                                    .buildingEntryX
-                                        * 8)),
-                                    (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
-                                                    .buildingEntryY
-                                        * 8)),
-                                    8, OpenSHC::Map::Units::UT_E_ENGINEER);
-                                if (_engineerID != 0) {
-                                    DAT_UnitsState::instance.units[_engineerID].targetingType
-                                        = OpenSHC::Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
-                                    DAT_UnitsState::instance.units[_engineerID]
-                                        .targetedUnitID__OR__engineerMannedSiegeEngineRef = (short)_randomUnitID;
-                                }
-                                _requiredEngineers = _requiredEngineers + -1;
-                            } while (_requiredEngineers != 0);
-                        switchD_004121d2_caseD_29:
-                            DAT_UnitsState::instance.units[_randomUnitID].aiUnitBehaviourType = 0x32;
-                            DAT_UnitsState::instance.units[_randomUnitID].goToRallyPoint = 0;
-                            local_4 = local_4 + 1;
-                        } while (local_4 < (int)local_18);
+                            _requiredEngineers = _requiredEngineers + -1;
+                        } while (_requiredEngineers != 0);
+                    switchD_004121d2_caseD_29:
+                        DAT_UnitsState::instance.units[_randomUnitID].aiUnitBehaviourType = 0x32;
+                        DAT_UnitsState::instance.units[_randomUnitID].goToRallyPoint = 0;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(_tribeID,
