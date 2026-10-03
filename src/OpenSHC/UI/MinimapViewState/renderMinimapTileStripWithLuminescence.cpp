@@ -18,22 +18,9 @@ namespace UI {
     void MinimapViewState::renderMinimapTileStripWithLuminescence(
         uint param_1, int param_2, int param_3, uint param_4, int param_5)
     {
-        int iVar1;
-        int iVar2;
-        uint uVar3;
-        uint uVar4;
-        int iVar5;
-        uint uVar6;
-        int _yOffset;
         int iVar7;
-        int iVar8;
         uint uVar9;
-        uint uVar10;
-        int iVar11;
-        int iVar12;
         uint uVar13;
-        uint _isRGB565;
-        int local_58;
         int* local_50;
         int local_4c;
         uint local_48;
@@ -48,24 +35,24 @@ namespace UI {
         int _paramSum;
         int _vpHeight;
         _vpHeight = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
-        _yOffset = param_4 * 400;
+        int _yOffset = param_4 * 400;
         _paramSum = param_4 + param_5;
-        uVar10 = 0;
-        iVar8 = 1;
-        local_58 = 1;
+        uint uVar10 = 0;
+        int iVar8 = 1;
+        int local_58 = 1;
         local_3c = 2;
         if ((param_1 & 4) != 0) {
             local_58 = 2;
             iVar8 = 2;
         }
-        iVar1 = (int)(400 / (longlong)param_2) * iVar8;
-        _isRGB565 = (uint)(DAT_WindowAndDirectDraw::instance.colorBitMode == 1381);
+        int iVar1 = (int)(400 / (longlong)param_2) * iVar8;
+        uint _isRGB565 = (uint)(DAT_WindowAndDirectDraw::instance.colorBitMode == 1381);
         if (DAT_TileMapState::instance.mapSize < 200) {
             uVar10 = 100;
             local_3c = 1;
         }
-        iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
-        iVar12 = 8;
+        int iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
+        int iVar12 = 8;
         if (DAT_TileMapState::instance.mapOrientation != 0) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar12 = 80408;
@@ -78,7 +65,7 @@ namespace UI {
                 }
             }
         }
-        uVar3 = uVar10 / 2;
+        uint uVar3 = uVar10 / 2;
         local_44 = iVar12 + 1 + uVar3 * 0x191;
         iVar8 = iVar8 * 200 - uVar10;
         if ((int)uVar10 < iVar8) {
@@ -98,10 +85,10 @@ namespace UI {
                 if (_yOffset / 100 <= (int)uVar10) {
                     if ((_paramSum * 400) / 100 <= (int)uVar10) {}
                     if ((local_58 != 2) || ((local_48 & 1) == 0)) {
-                        iVar11 = uVar3 - 2;
+                        int iVar11 = uVar3 - 2;
                         local_2c = iVar1 / local_3c - uVar3;
                         if (iVar11 < local_2c) {
-                            uVar6 = (iVar11 - uVar3) * param_2 + iVar12;
+                            uint uVar6 = (iVar11 - uVar3) * param_2 + iVar12;
                             local_50
                                 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar3 + local_44 + -10;
                             local_2c = local_2c - iVar11;
@@ -163,7 +150,7 @@ namespace UI {
                                         }
                                         uVar13 = uVar13 & 0x7e0;
                                     }
-                                    uVar4 = (int)((param_4 & 0x1f) * iVar12) / 100;
+                                    uint uVar4 = (int)((param_4 & 0x1f) * iVar12) / 100;
                                     if (0x1f < (int)uVar4) {
                                         uVar4 = 0x1f;
                                     }
@@ -201,7 +188,7 @@ namespace UI {
                                         do {
                                             if ((-1 < iVar12) && (iVar12 < iVar1 * param_2)) {
                                                 for (iVar7 = 0; iVar7 < param_3; iVar7++) {
-                                                    iVar5 = (param_5 + iVar7) / local_58;
+                                                    int iVar5 = (param_5 + iVar7) / local_58;
                                                     if ((short)uVar9 == 0) {
                                                         uVar9 = (uint)this->field18_0x27144[(iVar5 * 400) / 2
                                                             + iVar12 / local_58];
