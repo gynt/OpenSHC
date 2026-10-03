@@ -24,7 +24,6 @@
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_AICState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -35,6 +34,7 @@
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/SEC_RNG.hpp"
@@ -122,8 +122,8 @@ namespace Map {
                 if (unitID != 0) {
                     if (DAT_GameState::instance.mapAndTime.playerTeams[_buildingOwnerZeroBased + 1]
                         == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
-                        psVar1 = &DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk;
-                        *psVar1 = *psVar1 + 1;
+                        DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk
+                            = DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk + 1;
                     } else {
                         DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk = 0;
                     }
@@ -146,9 +146,12 @@ namespace Map {
                 DAT_GameCore::instance.cowPoisonTrackerUnk
                     = DAT_GameCore::instance.cowPoisonTrackerUnk + damageUnk * 10;
                 if ((((param_5 == 0)
-                         && ((DAT_TileMapState::instance.LogicLayer[tile] & OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED) == 0))
+                         && ((DAT_TileMapState::instance.LogicLayer[tile]
+                                 & OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED)
+                             == 0))
                         && (DAT_TileMapState::instance.DamageLayer[tile] == 0))
-                    && (DAT_TileMapState::instance.DefaultHeightLayer[tile] + 60 < (uint)DAT_TileMapState::instance.HeightLayer[tile])) {
+                    && (DAT_TileMapState::instance.DefaultHeightLayer[tile] + 60
+                        < (uint)DAT_TileMapState::instance.HeightLayer[tile])) {
                     DAT_TileMapState::instance.HeightLayer[tile] = DAT_TileMapState::instance.HeightLayer[tile] - 20;
                 }
                 if (damageUnk < 1) {
@@ -158,7 +161,8 @@ namespace Map {
                         DAT_PathFindingState::ptr)(yPosition, tile);
                 } else {
                     do {
-                        if (DAT_TileMapState::instance.HeightLayer[tile] <= DAT_TileMapState::instance.DefaultHeightLayer[tile]) {
+                        if (DAT_TileMapState::instance.HeightLayer[tile]
+                            <= DAT_TileMapState::instance.DefaultHeightLayer[tile]) {
                             MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::destroyEntitiesOnTile,
                                 DAT_EntityState::ptr)(tile);
                             DAT_TileMapState::instance.LogicLayer[tile] = DAT_TileMapState::instance.LogicLayer[tile]
@@ -166,7 +170,8 @@ namespace Map {
                                     | OpenSHC::Map::LogicHelpers::L_CRENEL | OpenSHC::Map::LogicHelpers::L_STAIRS
                                     | OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED
                                     | OpenSHC::Map::LogicHelpers::L_CRENEL_VARIATIONUnk);
-                            DAT_TileMapState::instance.HeightLayer[tile] = DAT_TileMapState::instance.DefaultHeightLayer[tile];
+                            DAT_TileMapState::instance.HeightLayer[tile]
+                                = DAT_TileMapState::instance.DefaultHeightLayer[tile];
                             DAT_TileMapState::instance.DamageLayer[tile] = 0;
                             DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
                             DAT_TileMapState::instance.field204_0x554a30 = 1;
@@ -175,7 +180,8 @@ namespace Map {
                         }
                         DAT_TileMapState::instance.HeightLayer[tile] = DAT_TileMapState::instance.HeightLayer[tile] - 1;
                         if ((char)DAT_TileMapState::instance.DamageLayer[tile] < 200) {
-                            DAT_TileMapState::instance.DamageLayer[tile] = DAT_TileMapState::instance.DamageLayer[tile] + 1;
+                            DAT_TileMapState::instance.DamageLayer[tile]
+                                = DAT_TileMapState::instance.DamageLayer[tile] + 1;
                         }
                         _owner = _owner + 1;
                     } while (_owner < damageUnk);
@@ -260,8 +266,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime
                     .playerTeams[DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner]
                 == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
-                psVar1 = &DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk;
-                *psVar1 = *psVar1 + 1;
+                DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk
+                    = DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk + 1;
             } else {
                 DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk = 0;
             }
@@ -353,8 +359,8 @@ namespace Map {
                 } else {
                     _microY = _y * 8 + 0x10;
                     _microX = _x * 8 + 0x10;
-                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(
-                        _owner2, _microX, _microY, (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 5);
+                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(_owner2, _microX, _microY,
+                        (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 5);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(_owner2)), 0, _microX, _microY,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 0, 0, 0,
