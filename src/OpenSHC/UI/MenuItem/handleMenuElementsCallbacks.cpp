@@ -380,8 +380,8 @@ namespace UI {
                                 this->clicked = 1;
                                 BOOL_CurrentMenuClickState::instance = TRUE;
                                 if (0x27 < (int)(DVar5 - iVar8)) {
-                                    piVar1 = &(this->secondItemTypeData).buttonState.countTo100;
-                                    *piVar1 = *piVar1 + 1;
+                                    (this->secondItemTypeData).buttonState.countTo100
+                                        = (this->secondItemTypeData).buttonState.countTo100 + 1;
                                     (this->secondItemTypeData).buttonState.someTimestamp_1_0x0
                                         = (this->secondItemTypeData).buttonState.clickTimestamp_0x4;
                                     if (99 < (this->secondItemTypeData).buttonState.countTo100) {
