@@ -99,8 +99,8 @@ namespace Map {
             ushort microX; // 0x000000E8 length: 2
             ushort microY; // 0x000000EA length: 2
             short terrainHeightUnk; // 0x000000EC length: 2
-            ushort x; // 0x000000EE length: 2
-            ushort y; // 0x000000F0 length: 2
+            short x; // 0x000000EE length: 2
+            short y; // 0x000000F0 length: 2
             undefined1 padding_0xf2[2]; // 0x000000F2 length: 2
             uint currentTilePositionAdjusted; // 0x000000F4 length: 4
             uint widthOrHeight; // 0x000000F8 length: 4
