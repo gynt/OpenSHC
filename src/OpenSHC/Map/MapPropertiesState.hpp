@@ -124,10 +124,10 @@ namespace Map {
         undefined4 field124_0x145c0; // 0x000145C0 length: 4
         undefined4 field125_0x145c4; // 0x000145C4 length: 4
         undefined4 field126_0x145c8; // 0x000145C8 length: 4
-        undefined1 padding_0x145cc[4]; // 0x000145CC length: 4
+        undefined4 field127_0x145cc; // 0x000145CC length: 4
         undefined4 field131_0x145d0; // 0x000145D0 length: 4
         undefined4 field132_0x145d4; // 0x000145D4 length: 4
-        undefined1 padding_0x145d8[4]; // 0x000145D8 length: 4
+        undefined4 field133_0x145d8; // 0x000145D8 length: 4
         undefined4 eventType; // 0x000145DC length: 4
         IngameEventHeader invasionEvent; // 0x000145E0 length: 16
         IngameInvasionEventItemContent invasionEventContent; // 0x000145F0 length: 176
