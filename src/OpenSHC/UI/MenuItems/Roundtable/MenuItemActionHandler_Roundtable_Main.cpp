@@ -61,16 +61,14 @@ namespace UI {
                                     DAT_GameSynchronyState::ptr)(playerID),
                                 BVar3 != FALSE)))) {
                         iVar4 = 0;
-                        playerID_00 = 1;
-                        do {
+                        for (playerID_00 = 1; playerID_00 < 9; playerID_00++) {
                             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID_00] != -1)
                                 || (BVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
                                         DAT_GameSynchronyState::ptr)(playerID_00),
                                     BVar3 != FALSE)) {
                                 iVar4 = iVar4 + 1;
                             }
-                            playerID_00 = playerID_00 + 1;
-                        } while (playerID_00 < 9);
+                        }
                         if (2 < iVar4) {
                             if ((DAT_GameSynchronyState::instance.currentAIArray[playerID_01] == 1)
                                 && (DAT_00df4240::instance == 0)) {
