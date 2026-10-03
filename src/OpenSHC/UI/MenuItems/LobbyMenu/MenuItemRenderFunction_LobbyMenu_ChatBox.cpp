@@ -66,7 +66,7 @@ namespace UI {
                             DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance + 2)),
                             (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonH::instance + -2 + DAT_ButtonY::instance)),
-                            ((int)(iVar2 * 0x10 + (iVar2 * 0x10 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                            (iVar2 * 0x10 / 32) + 0x20);
                         _widthTillCursor
                             = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor,
                                 DAT_UserTextHandlerState::ptr)();
@@ -78,7 +78,7 @@ namespace UI {
                                 (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                         }
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                        iVar2 = ((int)(iVar2 + (iVar2 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                        iVar2 = (iVar2 / 32) + 0x20;
                         BVar1 = FALSE;
                         fontSize = 0x13;
                         backgroundColor = 0;
@@ -92,7 +92,7 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
                             backgroundColor, fontSize, BVar1, iVar2);
                     }
-                    iVar2 = ((int)(iVar2 * 0x20 + (iVar2 * 0x20 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                    iVar2 = (iVar2 * 0x20 / 32) + 0x20;
                     if (param_1 == -1) {
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
@@ -109,8 +109,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance + 3)),
                     (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                    ((int)(iVar2 * 0x10 + (iVar2 * 0x10 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), (iVar2 * 0x10 / 32) + 0x20);
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::renderChatMessageList,
                     DAT_GameSynchronyState::ptr)(DAT_ButtonX::instance + 8,
                     (int)((int)(DAT_ButtonH::instance + -0x1f + DAT_ButtonY::instance)),
