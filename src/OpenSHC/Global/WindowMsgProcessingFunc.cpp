@@ -630,8 +630,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
-                        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor,
-                            DAT_UserTextHandlerState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
                         if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_LOBBY_MENU) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
@@ -1836,13 +1836,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     }
                     DAT_GameState::instance.playerDataArray[8].engineersAssemblyPoints[wParam - 6]
                         = *(XYPairShort*)(DAT_ViewportRenderState::instance.screenPointToTileNumber
-                            + ((int)(DAT_ViewportRenderState::instance.viewportState.viewportX
-                                   + (DAT_ViewportRenderState::instance.viewportState.viewportX >> 0x1f & 0x1fU))
-                                >> 5)
+                            + (DAT_ViewportRenderState::instance.viewportState.viewportX / 32)
                             + ((int)DAT_ViewportRenderState::instance.viewportState.mbr_0xb0 / 2
-                                  + ((int)(DAT_ViewportRenderState::instance.viewportState.viewportY
-                                         + (DAT_ViewportRenderState::instance.viewportState.viewportY >> 0x1f & 0xfU))
-                                      >> 4))
+                                  + (DAT_ViewportRenderState::instance.viewportState.viewportY / 16))
                                 * 401
                             + DAT_ViewportRenderState::instance.viewportState.mbr_0xac + _screenOffset + -8);
                 }
