@@ -4,9 +4,9 @@
 #include "OpenSHC/Map/Units/TroopValueState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 
 namespace OpenSHC {
@@ -43,8 +43,7 @@ namespace Map {
                     _y = (uint)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_candidateTile];
                     uVar5 = (uint)DAT_TileMapState::instance.HeightLayer[_candidateTile];
                     local_1c = DAT_TileMapState::instance.directionTranslationMatrix + _y;
-                    local_10 = 0;
-                    do {
+                    for (local_10 = 0; local_10 < 8; local_10++) {
                         uVar1 = (uint) * (byte*)((*local_1c)[0] + 0x1d32c38 + _candidateTile);
                         iVar8 = (*local_1c)[0] + _candidateTile;
                         if ((((uVar5 + 6 < uVar1) || ((int)uVar1 < (int)(uVar5 - 6)))
@@ -110,8 +109,7 @@ namespace Map {
                             iVar7 = iVar7 + 4;
                         } while (local_14 < 8);
                         local_1c = (int (*)[8])(*local_1c + 1);
-                        local_10 = local_10 + 1;
-                    } while (local_10 < 8);
+                    }
                     if (64 < iVar7) {
                         _x = _candidateTile - DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile;
                         BVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
@@ -123,18 +121,23 @@ namespace Map {
                                 OpenSHC::Map::Units::TroopValueState_Func::getSiegeIndexForTile, this)(_candidateTile);
                             _index = DAT_TroopValueState::instance.attackInfo.tentPointsNext;
                             if (_sIndex == 0) {
-                                DAT_TroopValueState::instance.attackInfo.tentPointsValues[DAT_TroopValueState::instance.attackInfo.tentPointsNext].x = _x;
+                                DAT_TroopValueState::instance.attackInfo
+                                    .tentPointsValues[DAT_TroopValueState::instance.attackInfo.tentPointsNext]
+                                    .x = _x;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].y = _y;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].tile = _candidateTile;
-                                DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].someCounter = DAT_TroopValueState::instance.attackInfo.someCounter1;
+                                DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].someCounter
+                                    = DAT_TroopValueState::instance.attackInfo.someCounter1;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].zero = 0;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].three = 0;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].tribeUID = 0;
                                 DAT_TroopValueState::instance.attackInfo.tentPointsValues[_index].tribeID = 0;
                             } else {
-                                DAT_TroopValueState::instance.attackInfo.tentPointsValues[_sIndex].someCounter = DAT_TroopValueState::instance.attackInfo.someCounter1;
+                                DAT_TroopValueState::instance.attackInfo.tentPointsValues[_sIndex].someCounter
+                                    = DAT_TroopValueState::instance.attackInfo.someCounter1;
                             }
-                            DAT_TroopValueState::instance.attackInfo.tentPoints = DAT_TroopValueState::instance.attackInfo.tentPoints + 1;
+                            DAT_TroopValueState::instance.attackInfo.tentPoints
+                                = DAT_TroopValueState::instance.attackInfo.tentPoints + 1;
                             if (1999 < DAT_TroopValueState::instance.attackInfo.tentPoints) {}
                         }
                     }
