@@ -312,6 +312,27 @@ Diff patterns that were reliable (more in the cheat sheet):
   for two values. `diff_slots.py` says the lowest-access extra slot is usually the culprit, so a function whose
   extra slots are all heavily used has genuine live values rather than a stray local, and needs structural
   understanding rather than a rule.
+  There is one mechanically actionable case, and it is worth checking first because it is a real bug rather than a
+  style difference: **our frame being far *smaller* than the original's** (8 bytes, or `-`, against 0x3f4). That
+  means a local was declared and never referenced, so MSVC deleted it -- and the usual reason is that Ghidra split
+  one stack object into two locals. Nine files had the same split of a 1008-byte filename buffer:
+
+      char local_3f4[4];      // the filename is copied in here through a pointer walk
+      char local_3f0[1004];   // never referenced anywhere, so MSVC drops it
+
+  The code then copies a map or save name into what is left and appends an extension, i.e. it writes an arbitrary
+  length string past the end of the frame. Merging the pieces into one `char local_3f4[1008]` fixed the corruption
+  and moved every one of the nine closer to the original; four landed on the original's frame size exactly, and the
+  match gains ran +1.2 to +16.0 (average +6.6 over the last six). `MenuView_LobbyMenu_DoEveryFrame` went from a
+  16-byte frame to the original's 0x400 and is now `alloc-only`.
+  To find them: Ghidra names a stack local after its frame offset (`local_3f4` is -0x3f4, `aGStack_3c` is -0x3c),
+  so the pieces of one object are exactly contiguous - `offset(next) == offset(prev) - sizeof(prev)`. Look for two
+  adjacent arrays of the same element type where the second is never referenced, and confirm the merge by watching
+  `frmU` converge on `frmO` rather than by the percentage. Note the trailing `local_4`/`local_c` in such a run is
+  the security cookie, not part of the object, and that a local which has already been given a meaningful name has
+  lost its offset and so cannot be found this way - `undefined4 _dpSessionDesc2[6]` plus `GUID aGStack_3c[3]` was
+  one 80-byte `DPSESSIONDESC2` (`guidApplication` is at +24), caught only by its `_memset(.., 0x50)` overrunning a
+  24-byte array.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`
