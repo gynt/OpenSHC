@@ -143,8 +143,7 @@ namespace Map {
                                 + local_35c;
                             _areaID = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
                             if (_areaID == 0) {
-                                piVar1 = &this->grid[_x10][_y10].unclaimedArea;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].unclaimedArea = this->grid[_x10][_y10].unclaimedArea + 1;
                             }
                             iVar8 = 0;
                             do {
@@ -161,70 +160,54 @@ namespace Map {
                             } while (iVar8 < 100);
                             if (_areaID != 0) {
                                 if (_areaID == local_348) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_344) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_340) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_33c) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_338) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_334) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_330) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                                 if (_areaID == local_32c) {
-                                    piVar1 = &this->grid[_x10][_y10].chimps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
                             }
-                            piVar1 = &this->grid[_x10][_y10].field28_0x70;
-                            *piVar1 = *piVar1 + (uint)DAT_TileMapState::instance.HeightLayer[_tile];
+                            this->grid[_x10][_y10].field28_0x70 = this->grid[_x10][_y10].field28_0x70
+                                + (uint)DAT_TileMapState::instance.HeightLayer[_tile];
                             uVar6 = DAT_TileMapState::instance.LogicLayer[_tile];
                             if ((uVar6 & 0x100) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field5_0x14;
-                                *piVar1 = *piVar1 + 1;
-                                piVar1 = &this->grid[_x10][_y10].castlebuildings;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field5_0x14 = this->grid[_x10][_y10].field5_0x14 + 1;
+                                this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                             }
                             if ((uVar6 & 0x20000000) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field16_0x40;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field16_0x40 = this->grid[_x10][_y10].field16_0x40 + 1;
                             }
                             if ((uVar6 & 0x20000) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field17_0x44;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
                             if ((char)uVar6 < '\0') {
-                                piVar1 = &this->grid[_x10][_y10].field17_0x44;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
                             if ((uVar6 & 0x40000) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field17_0x44;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
                             if ((uVar6 & 0x1000000) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field19_0x4c;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
                             }
                             if ((uVar6 & 0x2000000) != 0) {
-                                piVar1 = &this->grid[_x10][_y10].field19_0x4c;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
                             }
                             if (((int)DAT_TileMapState::instance.OrganismLayer[_tile] - 1U < 1999)
                                 && (((TVar3 = DAT_LandscapeState::instance
@@ -232,8 +215,7 @@ namespace Map {
                                              .treeType,
                                          TVar3 == ((TreeType)1) || (TVar3 == ((TreeType)2)))
                                     || ((TVar3 == ((TreeType)3) || (TVar3 == ((TreeType)4))))))) {
-                                piVar1 = &this->grid[_x10][_y10].trees;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].trees = this->grid[_x10][_y10].trees + 1;
                             }
                             if (DAT_TileMapState::instance.BuildingLayer[_tile] != 0) {
                                 pBVar2 = &DAT_BuildingsState::instance
@@ -241,23 +223,17 @@ namespace Map {
                                               .buildingType;
                                 BVar4 = *pBVar2;
                                 if (BVar4 == OpenSHC::Map::Buildings::BT_MANORHOUSE) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if (BVar4 == OpenSHC::Map::Buildings::BT_STONEKEEP) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if (BVar4 == OpenSHC::Map::Buildings::BT_STRONGHOLD) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if (BVar4 == OpenSHC::Map::Buildings::BT_KEEPFOUR) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if (BVar4 == OpenSHC::Map::Buildings::BT_KEEPFIVE) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if (BVar4 == OpenSHC::Map::Buildings::BT_CAMPGROUND) {
-                                    piVar1 = &this->grid[_x10][_y10].keeps;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
                                 } else if ((((BVar4 == OpenSHC::Map::Buildings::BT_GATEHOUSELARGE)
                                                 || (BVar4 == OpenSHC::Map::Buildings::BT_GATEHOUSESMALL))
                                                || (((BVar4 == OpenSHC::Map::Buildings::BT_WOODGATE1
@@ -268,45 +244,35 @@ namespace Map {
                                                                 || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER3))))))
                                                    || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER4))))
                                     || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER5)) {
-                                    piVar1 = &this->grid[_x10][_y10].castlebuildings;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                                 }
                                 if (*pBVar2 != OpenSHC::Map::Buildings::BT_SIGNPOST) {
-                                    piVar1 = &this->grid[_x10][_y10].field3_0xc;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].field3_0xc = this->grid[_x10][_y10].field3_0xc + 1;
                                 }
                             }
                             _unitID = (int)(short)DAT_TileMapState::instance.UnitLayer[_tile];
                             if (_unitID != 0) {
-                                piVar1 = &this->grid[_x10][_y10].unitCount;
-                                *piVar1 = *piVar1 + 1;
+                                this->grid[_x10][_y10].unitCount = this->grid[_x10][_y10].unitCount + 1;
                                 if (DAT_UnitsState::instance.units[_unitID].isStalked == 0) {
-                                    piVar1 = &this->grid[_x10][_y10].field12_0x30;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].field12_0x30 = this->grid[_x10][_y10].field12_0x30 + 1;
                                 LAB_0052be68:
-                                    piVar1 = &this->grid[_x10][_y10].field18_0x48;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].field18_0x48 = this->grid[_x10][_y10].field18_0x48 + 1;
                                 } else {
-                                    piVar1 = &this->grid[_x10][_y10].field8_0x20;
-                                    *piVar1 = *piVar1 + 1;
+                                    this->grid[_x10][_y10].field8_0x20 = this->grid[_x10][_y10].field8_0x20 + 1;
                                     UVar5 = DAT_UnitsState::instance.units[_unitID].unitType;
                                     if (UVar5 == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
-                                        piVar1 = &this->grid[_x10][_y10].deerCount;
-                                        *piVar1 = *piVar1 + 1;
+                                        this->grid[_x10][_y10].deerCount = this->grid[_x10][_y10].deerCount + 1;
                                         if (DAT_TribesState::instance
                                                 .tribes[DAT_UnitsState::instance.units[_unitID].tribeID]
                                                 .field133_0x278
                                             != 0)
                                             goto LAB_0052be68;
                                     } else if (UVar5 == OpenSHC::Map::Units::UT_RABBIT) {
-                                        piVar1 = &this->grid[_x10][_y10].rabbitCount;
-                                        *piVar1 = *piVar1 + 1;
+                                        this->grid[_x10][_y10].rabbitCount = this->grid[_x10][_y10].rabbitCount + 1;
                                     } else if (UVar5 == OpenSHC::Map::Units::UT_CAMELSHBEAR) {
-                                        piVar1 = &this->grid[_x10][_y10].camelCount;
-                                        *piVar1 = *piVar1 + 1;
+                                        this->grid[_x10][_y10].camelCount = this->grid[_x10][_y10].camelCount + 1;
                                     } else if (UVar5 == OpenSHC::Map::Units::UT_LIONSHWOLF) {
-                                        piVar1 = &this->grid[_x10][_y10].lionCount;
-                                        *piVar1 = *piVar1 + 1;
+                                        this->grid[_x10][_y10].lionCount = this->grid[_x10][_y10].lionCount + 1;
                                     }
                                 }
                             }
