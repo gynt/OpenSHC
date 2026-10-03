@@ -82,8 +82,8 @@ namespace Map {
                                 entityID = 0x19;
                                 pEVar4 = &this->entityArray[0x19].entityType;
                                 break;
-                                default:
-                                    goto switchD_00404bac_caseD_5;
+                            default:
+                                goto switchD_00404bac_caseD_5;
                             }
                             goto LAB_00404bc5;
                         }
@@ -152,13 +152,13 @@ namespace Map {
             case ((EntityType)0x5c):
             case ((EntityType)0x5d):
             case ((EntityType)0x5e):
-                uVar5 = (int)(microX + (microX >> 0x1f & 7U)) >> 3;
-                uVar6 = (int)(microY + (microY >> 0x1f & 7U)) >> 3;
+                uVar5 = microX / 8;
+                uVar6 = microY / 8;
                 if (((399 < uVar5) || (399 < uVar6)) || (*(char*)(uVar6 * 400 + 0x21aec98 + uVar5) == '\0')) {
                     return 0;
                 }
-                uVar5 = (int)(targetX + (targetX >> 0x1f & 7U)) >> 3;
-                uVar6 = (int)(targetY + (targetY >> 0x1f & 7U)) >> 3;
+                uVar5 = targetX / 8;
+                uVar6 = targetY / 8;
                 if (399 < uVar5) {
                     return 0;
                 }
@@ -284,8 +284,8 @@ namespace Map {
             case ((EntityType)0x1f):
                 MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::deleteEntity, this)(entityID);
                 goto LAB_00404c16;
-                default:
-                    entityID = entityID + 1;
+            default:
+                entityID = entityID + 1;
                 pEVar4 = pEVar4 + 0x74;
                 if (2999 < (int)entityID) {
                 switchD_00404bac_caseD_5:
