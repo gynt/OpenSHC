@@ -10,12 +10,10 @@ namespace Rendering {
         void BinkControlClass::stopAllBinkPlaybackThunk()
         {
             int binkObjIndex;
-            binkObjIndex = 0;
-            do {
+            for (binkObjIndex = 0; binkObjIndex < 2; binkObjIndex++) {
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(
                     binkObjIndex);
-                binkObjIndex = binkObjIndex + 1;
-            } while (binkObjIndex < 2);
+            }
         }
 
     }
