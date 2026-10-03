@@ -234,8 +234,7 @@ namespace Map {
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive != 0) {
             iVar7 = 1;
             DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-            iVar8 = 0;
-            do {
+            for (iVar8 = 0; iVar8 < 4; iVar8++) {
                 iVar5 = 0;
                 if (0 < _playerID) {
                     iVar5 = _playerID;
@@ -307,8 +306,7 @@ namespace Map {
                 } else if (iVar8 == 3) {
                     DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = iVar7;
                 }
-                iVar8 = iVar8 + 1;
-            } while (iVar8 < 4);
+            }
         }
     }
 
