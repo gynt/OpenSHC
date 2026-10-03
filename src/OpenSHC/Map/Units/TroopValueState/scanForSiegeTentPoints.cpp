@@ -18,13 +18,6 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F5C0
         void TroopValueState::scanForSiegeTentPoints()
         {
-            uint uVar1;
-            int iVar2;
-            BOOLEnum BVar3;
-            int _sIndex;
-            int _offset;
-            uint uVar4;
-            uint uVar5;
             int* piVar6;
             int iVar7;
             int iVar8;
@@ -41,10 +34,10 @@ namespace Map {
                 if ((DAT_TileMapState::instance.AIInfoLayer[_candidateTile] == '\b')
                     && (iVar7 = 0, DAT_TileMapState::instance.UnitLayer[_candidateTile] == 0)) {
                     _y = (uint)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_candidateTile];
-                    uVar5 = (uint)DAT_TileMapState::instance.HeightLayer[_candidateTile];
+                    uint uVar5 = (uint)DAT_TileMapState::instance.HeightLayer[_candidateTile];
                     local_1c = DAT_TileMapState::instance.directionTranslationMatrix + _y;
                     for (local_10 = 0; local_10 < 8; local_10++) {
-                        uVar1 = (uint) * (byte*)((*local_1c)[0] + 0x1d32c38 + _candidateTile);
+                        uint uVar1 = (uint) * (byte*)((*local_1c)[0] + 0x1d32c38 + _candidateTile);
                         iVar8 = (*local_1c)[0] + _candidateTile;
                         if ((((uVar5 + 6 < uVar1) || ((int)uVar1 < (int)(uVar5 - 6)))
                                 || (DAT_TileMapState::instance.UnitLayer[iVar8] != 0))
@@ -56,8 +49,8 @@ namespace Map {
                         local_14 = 0;
                         piVar6 = DAT_TileMapState::instance.directionTranslationMatrix[_y] + 1;
                         do {
-                            uVar4 = (uint) * (byte*)((*(int (*)[8])(piVar6 + -1))[0] + 0x1d32c38 + iVar8);
-                            iVar2 = (*(int (*)[8])(piVar6 + -1))[0] + iVar8;
+                            uint uVar4 = (uint) * (byte*)((*(int (*)[8])(piVar6 + -1))[0] + 0x1d32c38 + iVar8);
+                            int iVar2 = (*(int (*)[8])(piVar6 + -1))[0] + iVar8;
                             if (((uVar1 < uVar4) || ((int)uVar4 < (int)(uVar5 - 8)))
                                 || ((DAT_TileMapState::instance.UnitLayer[iVar2] != 0
                                     || (((short)DAT_TileMapState::instance.PathConnectionLayer[iVar2]
@@ -112,12 +105,13 @@ namespace Map {
                     }
                     if (64 < iVar7) {
                         _x = _candidateTile - DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile;
-                        BVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
-                            DAT_PathFindingState::ptr)(6, _x, _y, 0x80);
+                        BOOLEnum BVar3
+                            = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
+                                DAT_PathFindingState::ptr)(6, _x, _y, 0x80);
                         if (BVar3 == FALSE) {
                             DAT_TileMapState::instance.AIInfoLayer[_candidateTile]
                                 = DAT_TileMapState::instance.AIInfoLayer[_candidateTile] | 0x80;
-                            _sIndex = MACRO_CALL_MEMBER(
+                            int _sIndex = MACRO_CALL_MEMBER(
                                 OpenSHC::Map::Units::TroopValueState_Func::getSiegeIndexForTile, this)(_candidateTile);
                             _index = DAT_TroopValueState::instance.attackInfo.tentPointsNext;
                             if (_sIndex == 0) {
