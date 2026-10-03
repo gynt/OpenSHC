@@ -35,7 +35,9 @@ namespace AI {
             int field8_0xe4; // 0x000000E4 length: 4
             int field9_0xe8; // 0x000000E8 length: 4
             short field10_0xec[16][2]; // 0x000000EC length: 64
-            undefined1 padding_0x12c[240]; // 0x0000012C length: 240
+            AITribeTypeInt field_0x12c[20]; // 0x0000012C length: 80
+            AITribeTypeInt field_0x17c[20]; // 0x0000017C length: 80
+            AITribeTypeInt field_0x1cc[20]; // 0x000001CC length: 80
             AITribeTypeInt field251_0x21c[20]; // 0x0000021C length: 80
             AITribeTypeInt field252_0x26c[20]; // 0x0000026C length: 80
             AITribeTypeInt field253_0x2bc[20]; // 0x000002BC length: 80
@@ -43,11 +45,24 @@ namespace AI {
             AITribeTypeInt field255_0x35c[20]; // 0x0000035C length: 80
             AITribeTypeInt field256_0x3ac[20]; // 0x000003AC length: 80
             AITribeTypeInt field257_0x3fc[20]; // 0x000003FC length: 80
-            undefined1 padding_0x44c[800]; // 0x0000044C length: 800
+            AITribeTypeInt field_0x44c[20]; // 0x0000044C length: 80
+            AITribeTypeInt field_0x49c[20]; // 0x0000049C length: 80
+            AITribeTypeInt field_0x4ec[20]; // 0x000004EC length: 80
+            AITribeTypeInt field_0x53c[20]; // 0x0000053C length: 80
+            AITribeTypeInt field_0x58c[20]; // 0x0000058C length: 80
+            AITribeTypeInt field_0x5dc[20]; // 0x000005DC length: 80
+            AITribeTypeInt field_0x62c[20]; // 0x0000062C length: 80
+            AITribeTypeInt field_0x67c[20]; // 0x0000067C length: 80
+            AITribeTypeInt field_0x6cc[20]; // 0x000006CC length: 80
+            AITribeTypeInt field_0x71c[20]; // 0x0000071C length: 80
             AITribeTypeInt field1058_0x76c[20]; // 0x0000076C length: 80
             AITribeTypeInt field1059_0x7bc[20]; // 0x000007BC length: 80
-            AITribeTypeShort field1060_0x80c[40]; // 0x0000080C length: 80
-            undefined1 padding_0x85c[400]; // 0x0000085C length: 400
+            AITribeTypeInt field1060_0x80c[20]; // 0x0000080C length: 80
+            AITribeTypeInt field_0x85c[20]; // 0x0000085C length: 80
+            AITribeTypeInt field_0x8ac[20]; // 0x000008AC length: 80
+            AITribeTypeInt field_0x8fc[20]; // 0x000008FC length: 80
+            AITribeTypeInt field_0x94c[20]; // 0x0000094C length: 80
+            AITribeTypeInt field_0x99c[20]; // 0x0000099C length: 80
             int field1461_0x9ec[5]; // 0x000009EC length: 20
             undefined1 padding_0xa00[12]; // 0x00000A00 length: 12
             int field1474_0xa0c; // 0x00000A0C length: 4

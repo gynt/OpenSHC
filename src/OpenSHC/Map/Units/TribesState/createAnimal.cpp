@@ -1,0 +1,154 @@
+#include "../../../Map.func.hpp"
+
+#include "OpenSHC/Map/Entities/EntityState.func.hpp"
+#include "OpenSHC/Map/LandscapeState.func.hpp"
+#include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
+#include "OpenSHC/AI/Tribes/AITribeType.hpp"
+#include "OpenSHC/Commands/MappersEnum.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+
+#include "OpenSHC/Globals/DAT_EntityState.hpp"
+#include "OpenSHC/Globals/DAT_LandscapeState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
+#include "OpenSHC/Globals/SEC_RNG.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::AI::Tribes::AITribeType;
+        using OpenSHC::Commands::MappersEnum;
+        using OpenSHC::Map::Units::UnitType;
+
+        // FUNCTION: STRONGHOLDCRUSADER 0x00525BA0
+        dword TribesState::createAnimal(MappersEnum animalType, uint x, uint y, int tile)
+        {
+            short sVar1;
+            dword tribeID;
+            int _tile;
+            uint unitID;
+            byte bVar2;
+            int iVar3;
+            UnitType unitType;
+            int _rng2;
+            unitType = ((UnitType)0);
+            _rng2 = 0;
+            tribeID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe, this)(0, 0);
+            if ((int)tribeID < 1) {
+                return (dword)(0);
+            }
+            if (((399 < x) || (399 < y)) || (*(char*)(y * 400 + 0x21aec98 + x) == '\0')) {
+                return (dword)(0);
+            }
+            _tile = DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile + x;
+            if (animalType == OpenSHC::Commands::M_MAPPER_DEER) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                    return (dword)(0);
+                }
+                this->tribes[tribeID].tribeType
+                    = OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_SPEARMEN;
+                unitType = OpenSHC::Map::Units::UT_ANTELOPESHDEER;
+                _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 3) + 9;
+            } else if (animalType == OpenSHC::Commands::M_MAPPER_LION) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                    return (dword)(0);
+                }
+                this->tribes[tribeID].tribeType
+                    = OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_PIKEMEN;
+                unitType = OpenSHC::Map::Units::UT_LIONSHWOLF;
+                _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 1) + 3;
+            } else if (animalType == OpenSHC::Commands::M_MAPPER_RABBIT) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                    return (dword)(0);
+                }
+                this->tribes[tribeID].tribeType
+                    = OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_CROSSBOWMEN;
+                unitType = OpenSHC::Map::Units::UT_RABBIT;
+                _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 7) + 0xe;
+            } else if (animalType == OpenSHC::Commands::M_MAPPER_CAMEL) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                    return (dword)(0);
+                }
+                this->tribes[tribeID].tribeType = ((AITribeType)0x10);
+                unitType = OpenSHC::Map::Units::UT_CAMELSHBEAR;
+                _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 3) + 2;
+            } else {
+                if (animalType == OpenSHC::Commands::M_MAPPER_CROW_SEAGULL) {
+                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::markNearbyTreesAsCrowTargets,
+                        DAT_LandscapeState::ptr)(x, (int)((int)(y)));
+                    return (dword)(0);
+                }
+                if (animalType == OpenSHC::Commands::M_MAPPER_SEAGULL) {
+                    if ((DAT_TileMapState::instance.LogicLayer[_tile] & 1) == 0) {
+                        return (dword)(0);
+                    }
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::createSeagull, DAT_EntityState::ptr)(
+                        x * 8, (int)((int)(y * 8)));
+                    return (dword)(0);
+                }
+            }
+            iVar3 = 0;
+            if (_rng2 != 0) {
+                do {
+                    unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                        0, 0, (int)((int)(x * 8)), (int)((int)(y * 8)), tile, unitType);
+                    if (unitID != 0) {
+                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, this)(
+                            unitID, (int)((int)(tribeID)));
+                        DAT_UnitsState::instance.units[unitID].substate
+                            = (byte)DAT_UnitsState::instance.units[unitID].fixedRng & 3;
+                        if (unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
+                            bVar2 = (byte)DAT_UnitsState::instance.units[unitID].fixedRng & 7;
+                            DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = bVar2;
+                            if (bVar2 == 3) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 1;
+                            } else if (bVar2 == 4) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 1;
+                            } else if (bVar2 == 5) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 1;
+                            } else if ((bVar2 == 6) || (bVar2 == 7)) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 2;
+                            }
+                            if (iVar3 == 0) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 0;
+                            } else if ((iVar3 == 1) || (iVar3 == 2)) {
+                                DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 1;
+                            }
+                        }
+                        DAT_UnitsState::instance.units[unitID].disappearFadeAlphaCountdown = 0x20;
+                    }
+                    iVar3 = iVar3 + 1;
+                } while (iVar3 < _rng2);
+            }
+            sVar1 = this->tribes[tribeID].size;
+            this->tribes[tribeID].field137_0x280 = sVar1 / 2;
+            if (animalType == OpenSHC::Commands::M_MAPPER_LION) {
+                this->tribes[tribeID].field138_0x282 = sVar1;
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::storeLionXAndYInMapInfo, this)(
+                    x, (undefined4)((int)(y)));
+                return (dword)(tribeID);
+            }
+            this->tribes[tribeID].field138_0x282 = sVar1 * 2;
+            if (animalType == OpenSHC::Commands::M_MAPPER_DEER) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::storeDeerXAndYinMapInfo, this)(
+                    x, (undefined4)((int)(y)));
+                return (dword)(tribeID);
+            }
+            if (animalType == OpenSHC::Commands::M_MAPPER_RABBIT) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setRabbitSpawnXY, this)(
+                    x, (undefined4)((int)(y)));
+                return (dword)(tribeID);
+            }
+            if (animalType == OpenSHC::Commands::M_MAPPER_CAMEL) {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setCamelSpawnXY, this)(
+                    x, (undefined4)((int)(y)));
+            }
+            return (dword)(tribeID);
+        }
+
+    }
+}
+}

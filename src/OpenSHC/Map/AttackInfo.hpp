@@ -50,7 +50,7 @@ namespace Map {
         int startCon; // 0x00020DF4 length: 4
         int keepCon; // 0x00020DF8 length: 4
         int counter; // 0x00020DFC length: 4
-        undefined1 padding_0x20e00[4]; // 0x00020E00 length: 4
+        int field_0x20e00; // 0x00020E00 length: 4
         int field86627_0x20e04; // 0x00020E04 length: 4
         int index; // 0x00020E08 length: 4
         undefined1 padding_0x20e0c[340]; // 0x00020E0C length: 340
@@ -108,7 +108,7 @@ namespace Map {
         int knightTribeArray[100]; // 0x0002C6BC length: 400
         int pitchRelatedPlayerID; // 0x0002C84C length: 4
         int playerID_0x2c850; // 0x0002C850 length: 4
-        undefined1 padding_0x2c854[4]; // 0x0002C854 length: 4
+        int field_0x2c854; // 0x0002C854 length: 4
         int someArea; // 0x0002C858 length: 4
         int field127541_0x2c85c; // 0x0002C85C length: 4
         int lord1; // 0x0002C860 length: 4
