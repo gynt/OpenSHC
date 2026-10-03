@@ -54,9 +54,9 @@ namespace UI {
                 iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
                 iVar8 = DAT_ButtonH::instance + 0x7a + DAT_ButtonY::instance;
                 iVar1 = DAT_ButtonY::instance + 3;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + -0x6e, iVar1, local_4, iVar8,
-                    ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                    DAT_ButtonX::instance + -0x6e, iVar1, local_4, iVar8, (iVar4 / 32) + 0x20);
                 if (DAT_ButtonBackgroundBlendStrength::instance == 0) {
                     local_4 = iVar7 + -0x6f;
                     MACRO_CALL_MEMBER(
@@ -99,11 +99,11 @@ namespace UI {
                     iVar1 = iVar7 + -100;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar5, iVar1, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13,
-                        FALSE, ((int)(iVar6 + (iVar6 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                        FALSE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         "-", iVar7 + -0x5e, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
-                        0x13, TRUE, ((int)(iVar6 + (iVar6 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                        0x13, TRUE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                     if (DAT_GameCore::instance.savedMapBalance == 0) {
                         iVar8 = 0x19b;
@@ -113,7 +113,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, iVar8, iVar7 + -0x58,
                         (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE,
-                        ((int)(iVar6 + (iVar6 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                        (iVar6 / 32) + 0x20);
                     if (DAT_GameCore::instance.mapDescUseStringTable != 0) {
                         if (DAT_GameCore::instance.mapDescUseStringTableIndex != 0) {
                             iVar7 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -121,7 +121,7 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAP_NAMES,
                                 DAT_GameCore::instance.mapDescUseStringTableIndex, iVar1,
                                 (iVar2 - DAT_00b960f4::instance) + 0xb, (int)((int)(DAT_ButtonW::instance + 0xaa)),
-                                0xc2f0eb, 0x13, ((int)(iVar7 + (iVar7 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                                0xc2f0eb, 0x13, (iVar7 / 32) + 0x20);
                         }
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,
@@ -131,7 +131,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
                         DAT_TextManagerObject::ptr)(DAT_GameCore::instance.mapDescription, iVar1,
                         (iVar2 - DAT_00b960f4::instance) + 0xb, (int)((int)(DAT_ButtonW::instance + 0xaa)), 0xc2f0eb,
-                        0x13, ((int)(iVar7 + (iVar7 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                        0x13, (iVar7 / 32) + 0x20);
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,
                         DAT_TextureRenderCoreObject::ptr)();
