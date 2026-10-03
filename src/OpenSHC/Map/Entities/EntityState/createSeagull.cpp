@@ -61,10 +61,7 @@ namespace Map {
             this->seagullArray[_id].angle = SEC_RNG::instance.currentNumber2 % 0x168;
             this->seagullArray[_id].angle_2 = (short)(*(char*)((char*)&SEC_RNG::instance.currentNumber2 + 1)) % 0x168;
             MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-            uVar5 = (int)SEC_RNG::instance.currentNumber2 & 0x8000000f;
-            if ((int)uVar5 < 0) {
-                uVar5 = (uVar5 - 1 | 0xfffffff0) + 1;
-            }
+            uVar5 = (int)SEC_RNG::instance.currentNumber2 % 16;
             this->seagullArray[_id].unknownCounter_0x16 = (short)uVar5 + 0x18;
             this->seagullArray[_id].numberBetween60And100
                 = (short)(*(char*)((char*)&SEC_RNG::instance.currentNumber2 + 1)) % 0x28 + 0x3c;
