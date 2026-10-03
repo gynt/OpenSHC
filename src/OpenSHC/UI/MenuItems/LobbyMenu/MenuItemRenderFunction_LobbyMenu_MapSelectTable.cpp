@@ -102,7 +102,7 @@ namespace UI {
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                                 + param_1 + -1]],
                     (int)((int)(DAT_ButtonX::instance + 8)), (int)((int)(DAT_ButtonY::instance + 3)),
-                    OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, (iVar4 / 32) + 0x20);
                 if (DAT_GameSynchronyState::instance.mapBalanceArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                                 + param_1 + -1]]
@@ -136,10 +136,9 @@ namespace UI {
                     pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar2, &local_4);
                     iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                     DAT_TextManagerObject::instance.field12_0x30 = 1;
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(pcVar2,
-                        DAT_ButtonX::instance + 0x2c + iVar3, (int)((int)(DAT_ButtonY::instance + 3)), 0x96 - iVar3,
-                        color, 0x12, ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
+                        DAT_TextManagerObject::ptr)(pcVar2, DAT_ButtonX::instance + 0x2c + iVar3,
+                        (int)((int)(DAT_ButtonY::instance + 3)), 0x96 - iVar3, color, 0x12, (iVar4 / 32) + 0x20);
                 }
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
@@ -150,7 +149,7 @@ namespace UI {
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     pcVar2, DAT_ButtonX::instance + 0x18 + iVar3, (int)((int)(DAT_ButtonY::instance + 3)), 0xaa - iVar3,
-                    color, 0x12, ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    color, 0x12, (iVar4 / 32) + 0x20);
             }
         }
 
