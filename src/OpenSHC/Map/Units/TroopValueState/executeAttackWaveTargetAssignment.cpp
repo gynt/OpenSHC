@@ -63,7 +63,7 @@ namespace Map {
                 iVar4 = iVar5 * 0x177bc;
                 if (*(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + iVar4 + -0x18)
                     < *(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + iVar4 + -0x1c)) {
-                    (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[332]) = (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[332]) + 1;
+                    DAT_TroopValueState::instance.attackInfo.field_0x20f58 = DAT_TroopValueState::instance.attackInfo.field_0x20f58 + 1;
                 }
                 if (DAT_TroopValueState::instance.attackInfo.attacker == 8) {
                     if (9 < DAT_TroopValueState::instance.attackInfo.someCounter1) {
@@ -108,11 +108,11 @@ namespace Map {
                 if ((DAT_TroopValueState::instance.attackInfo.lord2 != 0)
                     && (2 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.field89399_0x21c48)) {
                     if (DAT_TroopValueState::instance.attackInfo.attacker == 4) {
-                        (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[304]) = (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[304]) * 2;
+                        DAT_TroopValueState::instance.attackInfo.field_0x20f3c = DAT_TroopValueState::instance.attackInfo.field_0x20f3c * 2;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
-                        param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[304]))), 1000, OpenSHC::Map::Units::STBT_0x3fd);
+                        param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f3c)), 1000, OpenSHC::Map::Units::STBT_0x3fd);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::assignBehaviorTypeToNearbyTribes,
                         this)(OpenSHC::Map::Units::STBT_0x3fd, 1, 0, 1);
                 }
@@ -124,7 +124,7 @@ namespace Map {
                 if ((iVar2 != 0) && (2 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.field89399_0x21c48)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
-                        param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[316]))), iVar2, OpenSHC::Map::Units::STBT_0x3f5);
+                        param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f48)), iVar2, OpenSHC::Map::Units::STBT_0x3f5);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         OpenSHC::Map::Units::STBT_0x3f5, OpenSHC::Map::Units::STBT_1, 0, 0x14);
                 }
@@ -134,17 +134,17 @@ namespace Map {
                 if (BVar3 != FALSE) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
-                        param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[312]))), 10000, OpenSHC::Map::Units::STBT_0x3fa);
+                        param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f44)), 10000, OpenSHC::Map::Units::STBT_0x3fa);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         OpenSHC::Map::Units::STBT_7, OpenSHC::Map::Units::STBT_1, 10, 0x14);
                 }
                 if ((0 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + iVar4 + -4))
                     && (2 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.field89399_0x21c48)) {
                     if (DAT_TroopValueState::instance.attackInfo.attacker == 4) {
-                        (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[320]) = (int)(*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[320]) / 2;
+                        DAT_TroopValueState::instance.attackInfo.field_0x20f4c = (int)DAT_TroopValueState::instance.attackInfo.field_0x20f4c / 2;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
-                        this)(param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[320]))),
+                        this)(param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f4c)),
                         *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + iVar4 + -4), OpenSHC::Map::Units::STBT_0x3f7);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         OpenSHC::Map::Units::STBT_0x3f7, OpenSHC::Map::Units::STBT_1, 10, 10);
@@ -178,7 +178,7 @@ namespace Map {
                 }
                 if (DAT_TroopValueState::instance.attackInfo.people3 != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
-                        this)(param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[328]))), DAT_TroopValueState::instance.attackInfo.people3,
+                        this)(param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f54)), DAT_TroopValueState::instance.attackInfo.people3,
                         OpenSHC::Map::Units::STBT_0x3fb);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         OpenSHC::Map::Units::STBT_0x3fb, OpenSHC::Map::Units::STBT_1, 5, 0x1e);
@@ -187,7 +187,7 @@ namespace Map {
                     && (3 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.field89399_0x21c48)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
-                        param_1, (int)((int)((*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x20e0c[332]))), 10000, OpenSHC::Map::Units::STBT_0x3f6);
+                        param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f58)), 10000, OpenSHC::Map::Units::STBT_0x3f6);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         OpenSHC::Map::Units::STBT_0x3f6, OpenSHC::Map::Units::STBT_1, 0, 10);
                 }

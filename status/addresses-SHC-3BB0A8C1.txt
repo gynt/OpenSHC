@@ -46373,7 +46373,7 @@ SHC_3BB0A8C1_0x005202B0 | 55.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00520450 | 40.0% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x005205A0 | 75.3% | Style pass, asm differs
+SHC_3BB0A8C1_0x005205A0 | 85.5% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00520CD0 | 66.3% | header lacks field at 0x20F3C
 
