@@ -256,23 +256,18 @@ namespace Map {
                                 && (*(char*)(uVar12 * 400 + 0x21aec98 + (int)pcVar1) != '\0')) {
                                 iVar8 = DAT_ViewportRenderState::instance.translationMatrix[iVar8 % 0xe + iVar7 + -7]
                                             .addXgetTile;
-                                if (((int)(short)DAT_TileMapState::instance.PathConnectionLayer
-                                            [DAT_ViewportRenderState::instance
-                                                    .translationMatrix[DAT_UnitsState::instance.units[iVar9].y]
-                                                    .addXgetTile
-                                                + (int)DAT_UnitsState::instance.units[iVar9].x]
-                                        == (int)(short)
-                                            DAT_TileMapState::instance.MacroLayer[iVar6 + iVar10 + iVar8 + 0x13a09])
+                                int _unitPathConnection = (short)DAT_TileMapState::instance.PathConnectionLayer
+                                        [DAT_ViewportRenderState::instance
+                                                .translationMatrix[DAT_UnitsState::instance.units[iVar9].y]
+                                                .addXgetTile
+                                            + (int)DAT_UnitsState::instance.units[iVar9].x];
+                                int _targetMacroTile = (short)DAT_TileMapState::instance
+                                        .MacroLayer[iVar6 + iVar10 + iVar8 + 0x13a09];
+                                if ((_unitPathConnection == _targetMacroTile)
                                     || (iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
                                                                       calculateCanPlayerUnitsNavigateToAreaFromArea,
                                             DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[iVar9].owner,
-                                            (dword)((int)((int)(short)DAT_TileMapState::instance.PathConnectionLayer
-                                                    [DAT_ViewportRenderState::instance
-                                                            .translationMatrix[DAT_UnitsState::instance.units[iVar9].y]
-                                                            .addXgetTile
-                                                        + (int)DAT_UnitsState::instance.units[iVar9].x])),
-                                            (dword)((int)((int)(short)DAT_TileMapState::instance
-                                                    .MacroLayer[iVar6 + iVar10 + iVar8 + 0x13a09])),
+                                            (dword)_unitPathConnection, (dword)_targetMacroTile,
                                             (int)((int)(DAT_UnitsState::instance.units[iVar9].unitCanClimb))),
                                         iVar7 != 0)) {
                                     if ((int)local_18 < 0) {
