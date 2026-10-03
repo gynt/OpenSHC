@@ -5,11 +5,11 @@
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
+#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -70,16 +70,17 @@ namespace Map {
             LAB_0052103d:
                 DAT_TroopValueState::instance.attackInfo.value3Array01[0] = 0;
                 DAT_TroopValueState::instance.attackInfo.attackWaveTicker[0] = 0;
-                _index = 1;
-                do {
-                    DAT_TroopValueState::instance.attackInfo.attacker = (int)(char)DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray[_index];
+                for (_index = 1; _index < 50; _index++) {
+                    DAT_TroopValueState::instance.attackInfo.attacker
+                        = (int)(char)DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray[_index];
                     if ((DAT_TroopValueState::instance.attackInfo.attacker != 1)
                         && ((0 < DAT_TroopValueState::instance.attackInfo.attacker
                             || (_hasTribe = MACRO_CALL_MEMBER(
                                     OpenSHC::Map::Units::TroopValueState_Func::searchTribeWithProperties, this)(_index),
                                 _hasTribe != FALSE)))) {
                         _nTribes = DAT_TroopValueState::instance.attackInfo.nof_tribes[_index];
-                        DAT_GameState::instance.playerDataArray[DAT_TroopValueState::instance.attackInfo.attacker].attackedPlayerID = 1;
+                        DAT_GameState::instance.playerDataArray[DAT_TroopValueState::instance.attackInfo.attacker]
+                            .attackedPlayerID = 1;
                         if (_nTribes == 0) {
                             DAT_TroopValueState::instance.attackInfo.value3Array01[_index] = 0;
                         } else {
@@ -121,8 +122,7 @@ namespace Map {
                         DAT_TroopValueState::instance.attackInfo.nof_tribes[_index] = 0;
                         DAT_TroopValueState::instance.attackInfo.unknownByteArray02[_index] = 0;
                     }
-                    _index = _index + 1;
-                } while (_index < 50);
+                }
                 DAT_TroopValueState::instance.attackInfo.field86986_0x20f98 = 0;
             }
         }
