@@ -232,20 +232,16 @@ namespace UI {
                                 }
                             }
                             if (local_54 == 1) {
-                                local_2c = 0;
-                                if (0 < param_2) {
-                                    do {
-                                        if (((-1 < (int)(param_5 + local_2c))
-                                                && ((int)(param_5 + local_2c) < iVar3 * param_2))
-                                            && (local_30 = 0, 0 < param_3)) {
-                                            do {
-                                                *(ushort*)((param_5 + local_2c) * 2 + 0x1a58754
-                                                    + (local_4c + local_30) * 400) = (ushort)param_4;
-                                                local_30 = local_30 + 1;
-                                            } while (local_30 < param_3);
-                                        }
-                                        local_2c = local_2c + 1;
-                                    } while (local_2c < param_2);
+                                for (local_2c = 0; local_2c < param_2; local_2c++) {
+                                    if (((-1 < (int)(param_5 + local_2c))
+                                            && ((int)(param_5 + local_2c) < iVar3 * param_2))
+                                        && (local_30 = 0, 0 < param_3)) {
+                                        do {
+                                            *(ushort*)((param_5 + local_2c) * 2 + 0x1a58754
+                                                + (local_4c + local_30) * 400) = (ushort)param_4;
+                                            local_30 = local_30 + 1;
+                                        } while (local_30 < param_3);
+                                    }
                                 }
                             } else {
                                 _tileColor = param_5 & 1;
@@ -254,13 +250,9 @@ namespace UI {
                                     iVar8 = ((param_2 - _tileColor) - 1 >> 1) + 1;
                                     do {
                                         if ((-1 < iVar5) && (iVar5 < iVar3 * param_2)) {
-                                            iVar9 = 0;
-                                            if (0 < param_3) {
-                                                do {
-                                                    *(ushort*)((iVar5 / local_54) * 2 + 0x1a58754
-                                                        + ((local_4c + iVar9) / local_54) * 400) = (ushort)param_4;
-                                                    iVar9 = iVar9 + 1;
-                                                } while (iVar9 < param_3);
+                                            for (iVar9 = 0; iVar9 < param_3; iVar9++) {
+                                                *(ushort*)((iVar5 / local_54) * 2 + 0x1a58754
+                                                    + ((local_4c + iVar9) / local_54) * 400) = (ushort)param_4;
                                             }
                                         }
                                         iVar5 = iVar5 + 2;
