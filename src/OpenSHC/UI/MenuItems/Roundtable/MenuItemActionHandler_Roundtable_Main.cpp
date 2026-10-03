@@ -30,11 +30,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AEA50
         void Roundtable::MenuItemActionHandler_Roundtable_Main(int param_1, ...)
         {
-            byte bVar1;
-            char cVar2;
             BOOLEnum BVar3;
-            int iVar4;
-            int playerID;
             int playerID_00;
             int playerID_01;
             if (DAT_GameSynchronyState::instance.isHost != FALSE) {
@@ -48,7 +44,8 @@ namespace UI {
                     }
                 }
                 if ((param_1 - 0xbU < 8) && (DAT_00df423c::instance != 0)) {
-                    playerID = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 26);
+                    int playerID
+                        = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 26);
                     playerID_01
                         = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance];
                     if ((((0 < playerID_01) && ((0 < playerID && (playerID != playerID_01))))
@@ -60,7 +57,7 @@ namespace UI {
                             || (BVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
                                     DAT_GameSynchronyState::ptr)(playerID),
                                 BVar3 != FALSE)))) {
-                        iVar4 = 0;
+                        int iVar4 = 0;
                         for (playerID_00 = 1; playerID_00 < 9; playerID_00++) {
                             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID_00] != -1)
                                 || (BVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
@@ -93,7 +90,7 @@ namespace UI {
                                 DAT_00df4298::instance = 1;
                             }
                         }
-                        bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID];
+                        byte bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID];
                         if ((DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] != bVar1)
                             || (DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] == 0)) {
                             if (bVar1 == 0) {
@@ -226,7 +223,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
                         DAT_GameSynchronyState::ptr)();
-                    cVar2 = '\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1];
+                    char cVar2 = '\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1];
                     if ('\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2]) {
                         cVar2 = cVar2 + '\x01';
                     }
