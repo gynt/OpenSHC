@@ -48,15 +48,13 @@ namespace Map {
                 }
                 iVar4 = iVar4 + 1;
                 if (3 < iVar4) {
-                    iVar4 = 0;
-                    do {
+                    for (iVar4 = 0; iVar4 < 8; iVar4++) {
                         if (DAT_GameState::instance.mapAndTime.signpostIDs[iVar4] != 0) {
                             *param_1 = DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar4][0].x;
                             *param_2 = DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar4][0].y;
                             return (undefined4)(1);
                         }
-                        iVar4 = iVar4 + 1;
-                    } while (iVar4 < 8);
+                    }
                     return (undefined4)(0);
                 }
             } while (true);
