@@ -16,7 +16,7 @@ using OpenSHC::WindowsHelper::Enums::GlobalAllocFlag;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0047D5B0
 BOOL __stdcall Synchrony::EnumConnectionsCallback(
-    LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize, DPNAME* lpName, DWORD dwFlags, LPVOID lpContext)
+    LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize, LPCDPNAME lpName, DWORD dwFlags, LPVOID lpContext)
 {
     WCHAR* pWVar1;
     WCHAR WVar2;

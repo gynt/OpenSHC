@@ -46,7 +46,7 @@ namespace Synchrony_Func {
     EnumDisplayModesCallback;
 
     MACRO_FUNCTION_RESOLVER(BOOL(__stdcall*)(LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize,
-                                DPNAME* lpName, DWORD dwFlags, LPVOID lpContext),
+                                LPCDPNAME lpName, DWORD dwFlags, LPVOID lpContext),
         false, Address::SHC_3BB0A8C1_0x0047D5B0, &OpenSHC::Synchrony::EnumConnectionsCallback)
     EnumConnectionsCallback;
 
