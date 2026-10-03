@@ -10,8 +10,7 @@ namespace Map {
     void Version::UpgradeMapLogicToVersion_Unknown2()
     {
         int iVar1;
-        iVar1 = 0;
-        do {
+        for (iVar1 = 0; iVar1 < 0x13a10; iVar1 += 5) {
             if (((DAT_TileMapState::instance.LogicLayer[iVar1] & 0x800U) != 0)
                 && (DAT_TileMapState::instance.HeightLayer[iVar1]
                     <= DAT_TileMapState::instance.DefaultHeightLayer[iVar1])) {
@@ -51,8 +50,7 @@ namespace Map {
                 DAT_TileMapState::instance.LogicLayer[iVar1 + 4]
                     = DAT_TileMapState::instance.LogicLayer[iVar1 + 4] & 0xffbef4ff;
             }
-            iVar1 = iVar1 + 5;
-        } while (iVar1 < 0x13a10);
+        }
     }
 
 }
