@@ -1206,24 +1206,24 @@ namespace Map {
                                                             && (*(char*)((int)&this->scenarioEvents[_eventIndex].data
                                                                     + 0x53)
                                                                 == '\0')) {
-                                                            (*(int*)&this->padding_0x145d8[0]) = 1;
+                                                            this->field133_0x145d8 = 1;
                                                             MACRO_CALL_MEMBER(
                                                                 OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate,
                                                                 this)();
                                                         } else {
-                                                            (*(int*)&this->padding_0x145d8[0]) = 3;
+                                                            this->field133_0x145d8 = 3;
                                                             MACRO_CALL_MEMBER(
                                                                 OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate,
                                                                 this)();
                                                         }
                                                     } else {
-                                                        (*(int*)&this->padding_0x145d8[0]) = 2;
+                                                        this->field133_0x145d8 = 2;
                                                         MACRO_CALL_MEMBER(
                                                             OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate,
                                                             this)();
                                                     }
                                                 } else {
-                                                    (*(int*)&this->padding_0x145d8[0]) = 1;
+                                                    this->field133_0x145d8 = 1;
                                                     MACRO_CALL_MEMBER(
                                                         OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate,
                                                         this)();
