@@ -31,8 +31,7 @@ namespace UI {
                 }
             }
             iVar2 = DAT_ViewportRenderState::instance
-                        .screenPointToTileNumber[((int)(*param_1 + (*param_1 >> 0x1f & 0x1fU)) >> 5)
-                            + ((int)(iVar2 + (iVar2 >> 0x1f & 0xfU)) >> 4) * 0x191 + iVar3 + -6];
+                        .screenPointToTileNumber[(*param_1 / 32) + (iVar2 / 16) * 0x191 + iVar3 + -6];
             sVar1 = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[iVar2];
             *param_2 = (int)sVar1;
             *param_1 = iVar2 - DAT_ViewportRenderState::instance.translationMatrix[sVar1].addXgetTile;
