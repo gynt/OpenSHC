@@ -11,22 +11,9 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B58D0
     void MinimapViewState::renderMinimapTileColors(uint param_1, int param_2, int param_3, int param_4, uint param_5)
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
-        uint uVar4;
-        uint _tileRandom;
-        uint _tileColor;
         int iVar5;
-        int iVar6;
-        int iVar7;
         int iVar8;
         int iVar9;
-        uint _colorMode;
-        int local_54;
-        int local_50;
-        int local_4c;
-        int local_48;
         int* local_40;
         uint local_3c;
         int local_38;
@@ -39,23 +26,23 @@ namespace UI {
         byte _tileTerrain;
         int _viewportWidth;
         _viewportWidth = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
-        iVar6 = param_4 * 400;
-        iVar2 = param_4 + param_5;
-        _tileColor = 0;
-        iVar7 = 1;
-        local_54 = 1;
+        int iVar6 = param_4 * 400;
+        int iVar2 = param_4 + param_5;
+        uint _tileColor = 0;
+        int iVar7 = 1;
+        int local_54 = 1;
         local_38 = 2;
         if ((param_1 & 4) != 0) {
             iVar7 = 2;
             local_54 = 2;
         }
-        iVar3 = (int)(400 / (longlong)param_2) * iVar7;
-        _colorMode = (uint)(DAT_WindowAndDirectDraw::instance.colorBitMode == 1381);
+        int iVar3 = (int)(400 / (longlong)param_2) * iVar7;
+        uint _colorMode = (uint)(DAT_WindowAndDirectDraw::instance.colorBitMode == 1381);
         if (DAT_TileMapState::instance.mapSize < 200) {
             _tileColor = 100;
             local_38 = 1;
         }
-        iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
+        int iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
         if (DAT_TileMapState::instance.mapOrientation == 0) {
             iVar5 = 8;
         } else if (DAT_TileMapState::instance.mapOrientation == 6) {
@@ -68,14 +55,14 @@ namespace UI {
                 iVar5 = 8;
             }
         }
-        uVar4 = _tileColor / 2;
+        uint uVar4 = _tileColor / 2;
         iVar7 = iVar7 * 200 - _tileColor;
-        local_50 = iVar5 + 1 + uVar4 * 401;
+        int local_50 = iVar5 + 1 + uVar4 * 401;
         if ((int)_tileColor < iVar7) {
             local_3c = 0;
-            local_4c = 0;
+            int local_4c = 0;
             param_1 = _tileColor;
-            local_48 = iVar1;
+            int local_48 = iVar1;
             do {
                 if (local_48 == iVar1) {
                     local_48 = _viewportWidth;
@@ -96,7 +83,7 @@ namespace UI {
                             _tile = *local_40;
                             _tile1003 = DAT_TileMapState::instance.LogicLayer[_tile];
                             _tileTerrain = DAT_TileMapState::instance.Logic2Layer[_tile];
-                            _tileRandom = (uint)(short)DAT_TileMapState::instance.RandomLayer[_tile];
+                            uint _tileRandom = (uint)(short)DAT_TileMapState::instance.RandomLayer[_tile];
                             if ((_tile1003 & 0x30) == 0) {
                                 if ((_tile1003 & 1) == 0) {
                                     if ((_tile1003 & 0x200000) == 0) {
