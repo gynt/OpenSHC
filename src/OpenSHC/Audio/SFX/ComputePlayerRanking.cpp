@@ -15,13 +15,7 @@ namespace Audio {
     // FUNCTION: STRONGHOLDCRUSADER 0x0044B680
     int SFX::ComputePlayerRanking(int playerID)
     {
-        int _isAlive;
-        int _playerPoints;
-        int _index2;
-        int _highestPointsIndex;
-        int _index;
         int _playerID;
-        int _arrayIndex;
         int _highestPointsUnk;
         undefined4 _deadPlayerList[10];
         int _playerPointsArray[9][2];
@@ -34,11 +28,11 @@ namespace Audio {
         _playerPointsArray[6][0] = 0;
         _playerPointsArray[7][0] = 0;
         _playerPointsArray[8][0] = 0;
-        _arrayIndex = 0;
+        int _arrayIndex = 0;
         for (_playerID = 1; _playerID < 9; _playerID++) {
             if (DAT_GameSynchronyState::instance.finalResults.active[_playerID] != 0) {
                 _playerPointsArray[_arrayIndex][0] = _playerID;
-                _isAlive = MACRO_CALL_MEMBER(
+                int _isAlive = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
                 if (_isAlive == 0) {
                     if (_playerID == playerID) {
@@ -47,17 +41,17 @@ namespace Audio {
                     _deadPlayerList[_playerID] = 1;
                     _playerPointsArray[_arrayIndex][1] = 0;
                 } else {
-                    _playerPoints = MACRO_CALL(OpenSHC::Audio::SFX_Func::ComputePlayerPoints1)(_playerID);
+                    int _playerPoints = MACRO_CALL(OpenSHC::Audio::SFX_Func::ComputePlayerPoints1)(_playerID);
                     _playerPointsArray[_arrayIndex][1] = _playerPoints;
                 }
                 _arrayIndex = _arrayIndex + 1;
             }
         }
-        _index = 0;
+        int _index = 0;
         if (0 < _arrayIndex) {
             do {
-                _highestPointsIndex = -1;
-                _index2 = 0;
+                int _highestPointsIndex = -1;
+                int _index2 = 0;
                 do {
                     if ((_playerPointsArray[_index2][0] != 0)
                         && ((_highestPointsIndex == -1 || (_highestPointsUnk < _playerPointsArray[_index2][1])))) {
