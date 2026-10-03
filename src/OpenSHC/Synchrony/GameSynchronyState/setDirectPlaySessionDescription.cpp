@@ -33,7 +33,7 @@ namespace Synchrony {
             local_54.dwMaxPlayers = 8;
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setDPlaySessionNameValue, this)();
             local_54.lpszSessionName = (WCHAR*)0x191e002;
-            ((IDirectPlay4A*)this->DPLAYX_4A)->SetSessionDesc(&local_54, 0);
+            this->DPLAYX_4A->SetSessionDesc(&local_54, 0);
         };
     }
 
