@@ -40,8 +40,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
                 }
-                iVar1 = 1;
-                do {
+                for (iVar1 = 1; iVar1 < 9; iVar1++) {
                     if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar1] == -1)
                         && (((DAT_GameCore::instance.mapU4Int0 == 0
                                  || (iVar1 != DAT_GameState::instance.mapAndTime.somePlayerID))
@@ -49,8 +48,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::destroyPlayerCompletely,
                             DAT_GameState::ptr)(iVar1);
                     }
-                    iVar1 = iVar1 + 1;
-                } while (iVar1 < 9);
+                }
                 MACRO_CALL(OpenSHC::Synchrony_Func::SetAIPlayerNickNames)();
                 DAT_GameSynchronyState::instance.timeSkirmishGameStart = timeGetTime();
                 DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
