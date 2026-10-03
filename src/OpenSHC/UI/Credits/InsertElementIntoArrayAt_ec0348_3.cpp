@@ -1,0 +1,40 @@
+#include "../Credits.func.hpp"
+
+#include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
+
+namespace OpenSHC {
+namespace UI {
+
+    // FUNCTION: STRONGHOLDCRUSADER 0x004DAE00
+    void Credits::InsertElementIntoArrayAt_ec0348_3(
+        int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8)
+    {
+        int iVar1;
+        CreditsRelatedStructure* pCVar2;
+        if (param_1 == 3) {
+            iVar1 = 0;
+            pCVar2 = DAT_ARRAY_00ec0348::instance;
+            while (pCVar2->isValid != 0) {
+                pCVar2 = pCVar2 + 1;
+                iVar1 = iVar1 + 1;
+                if (0xec0827 < (int)pCVar2) {
+                    return;
+                }
+            }
+            if (iVar1 != -1) {
+                DAT_ARRAY_00ec0348::instance[iVar1].isValid = 3;
+                DAT_ARRAY_00ec0348::instance[iVar1].flag = 0;
+                DAT_ARRAY_00ec0348::instance[iVar1].xSpace = param_2;
+                DAT_ARRAY_00ec0348::instance[iVar1].ySpace = param_3;
+                DAT_ARRAY_00ec0348::instance[iVar1].someX = param_4;
+                DAT_ARRAY_00ec0348::instance[iVar1].someY = param_5;
+                DAT_ARRAY_00ec0348::instance[iVar1].field5_0x14 = param_6;
+                DAT_ARRAY_00ec0348::instance[iVar1].field6_0x18 = param_7;
+                DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_8;
+            }
+        }
+        return;
+    }
+
+}
+}
