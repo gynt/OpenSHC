@@ -18,16 +18,14 @@ namespace Map {
                 psVar3 = this->tribes[tribeID].unitSelectionBitMasked;
                 do {
                     if (*psVar3 != 0) {
-                        iVar2 = 0;
-                        do {
+                        for (iVar2 = 0; iVar2 < 16; iVar2++) {
                             if (((int)*psVar3 & 1 << ((byte)iVar2 & 0x1f)) != 0) {
                                 if (_counter == unitSelectionIndex) {
                                     return iVar1 * 0x10 + iVar2;
                                 }
                                 _counter = _counter + 1;
                             }
-                            iVar2 = iVar2 + 1;
-                        } while (iVar2 < 16);
+                        }
                     }
                     iVar1 = iVar1 + 1;
                     psVar3 = psVar3 + 1;
