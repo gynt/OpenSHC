@@ -45,13 +45,13 @@ namespace Synchrony {
         if (this->currentGameMode != OpenSHC::Game::GM_SOLITARY) {
             while (true) {
                 if ((this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
-                    || (this->DPLAYX_4A == (IDirectPlay4A**)0x0))
+                    || (this->DPLAYX_4A == (IDirectPlay4A*)0x0))
                     goto LAB_00490905;
                 this->DPLAY_ReceiveDataSize = 61000;
                 /*
                   Receive(lpidFrom, lpidTo, dwFlags, lpData, lpdwDataSize)   DPRECEIVE_ALL = 1
                  */
-                this->DPLAYX_SendAndReceiveREsult = ((IDirectPlay4A*)this->DPLAYX_4A)->Receive((LPDPID)0x191de04, (LPDPID)0x191de08, DPRECEIVE_ALL, (void*)0x191e440, (DWORD*)0x194af84);
+                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->Receive((LPDPID)0x191de04, (LPDPID)0x191de08, DPRECEIVE_ALL, (void*)0x191e440, (DWORD*)0x194af84);
                 if ((this->DPLAYX_SendAndReceiveREsult == -0x7ffffff6)
                     || (this->DPLAYX_SendAndReceiveREsult == -0x7788ff42))
                     goto LAB_00490905;

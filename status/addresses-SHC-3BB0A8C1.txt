@@ -23379,7 +23379,7 @@ SHC_3BB0A8C1_0x00490380 | 55.6% | this-> beat global instance
 
 SHC_3BB0A8C1_0x00490480 | 59.9% | fixed lag indices + 3-elem str
 
-SHC_3BB0A8C1_0x00490690 | 36.7% | Style pass, asm differs
+SHC_3BB0A8C1_0x00490690 | 40.1% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00490920 | 71.6% | Style pass, asm differs
 
