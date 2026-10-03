@@ -35,14 +35,12 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
         }
         if (DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE) {
-            iVar1 = 0;
-            do {
+            for (iVar1 = 0; iVar1 < 0xe; iVar1++) {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                     DAT_GameSynchronyState::ptr)(&local_1, 1, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
                 DAT_GameSynchronyState::instance.sharedDesyncFlags[iVar1] = local_1;
-                iVar1 = iVar1 + 1;
-            } while (iVar1 < 0xe);
+            }
             DAT_GameSynchronyState::instance.syncStatus = 1;
         }
     }
