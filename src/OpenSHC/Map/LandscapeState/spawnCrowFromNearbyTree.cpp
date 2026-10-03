@@ -43,8 +43,7 @@ namespace Map {
         int local_1c;
         int local_c;
         bVar1 = false;
-        local_c = 0;
-        do {
+        for (local_c = 0; local_c < 8; local_c++) {
             _y = (int)DAT_UnitsState::instance.units[unitID].y;
             if ((((DAT_TileMapState::instance
                           .OrganismLayer[DAT_TileMapState::instance.directionTranslationMatrix[_y][local_c]
@@ -155,8 +154,7 @@ namespace Map {
                     bVar1 = true;
                 }
             }
-            local_c = local_c + 1;
-        } while (local_c < 8);
+        }
     }
 
 }
