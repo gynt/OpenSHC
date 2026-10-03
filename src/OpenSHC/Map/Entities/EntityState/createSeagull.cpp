@@ -43,7 +43,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                         100, '\0', (void*)((int)(destination)));
                 }
-                if (99 < _id) {
+                if (_id >= 99) {
                     return 0;
                 }
                 _id = _id + 1;
