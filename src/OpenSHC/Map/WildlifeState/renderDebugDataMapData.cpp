@@ -88,8 +88,7 @@ namespace Map {
             iVar8 = 0;
         } while (iVar7 != 0);
         do {
-            iVar6 = 0;
-            do {
+            for (iVar6 = 0; iVar6 < 40; iVar6++) {
                 if (0 < this->grid[iVar6][iVar8].firstMember) {
                     uVar5 = COL_BLUE::instance.shortValue;
                     if (this->DAT_DebugDataMapDataDisplayType == 0) {
@@ -208,7 +207,7 @@ namespace Map {
                             }
                         } else {
                             if (this->DAT_DebugDataMapDataDisplayType != 9)
-                                goto LAB_0052c54e;
+                                continue;
                             uVar5 = COL_RED::instance.shortValue;
                             if (((this->grid[iVar6][iVar8].field29_0x74 == 0)
                                     && (uVar5 = COL_VIVID_BLUE::instance.shortValue,
@@ -225,9 +224,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(iVar4 + 1, iVar2 + 1, iVar4 + 9, iVar2 + 9, (ushort)((int)(uVar5)));
                 }
-            LAB_0052c54e:
-                iVar6 = iVar6 + 1;
-            } while (iVar6 < 40);
+            }
             iVar8 = iVar8 + 1;
             if (40 < iVar8) {}
         } while (true);
