@@ -45,8 +45,7 @@ namespace UI {
             char* pcVar8;
             FileResourceType FVar9;
             MenuModalType dialogID;
-            char local_3f4[4];
-            char local_3f0[1004];
+            char local_3f4[1008];
             uint local_4;
             pcVar6 = local_3f4;
             _mapName = local_3f4;
