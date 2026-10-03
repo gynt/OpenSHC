@@ -53,7 +53,16 @@ namespace Map {
         int field_0x20e00; // 0x00020E00 length: 4
         int field86627_0x20e04; // 0x00020E04 length: 4
         int index; // 0x00020E08 length: 4
-        undefined1 padding_0x20e0c[340]; // 0x00020E0C length: 340
+        undefined1 padding_0x20e0c[304]; // 0x00020E0C length: 304
+        int field_0x20f3c; // 0x00020F3C length: 4
+        int field_0x20f40; // 0x00020F40 length: 4
+        int field_0x20f44; // 0x00020F44 length: 4
+        int field_0x20f48; // 0x00020F48 length: 4
+        int field_0x20f4c; // 0x00020F4C length: 4
+        int field_0x20f50; // 0x00020F50 length: 4
+        int field_0x20f54; // 0x00020F54 length: 4
+        int field_0x20f58; // 0x00020F58 length: 4
+        int field_0x20f5c; // 0x00020F5C length: 4
         int catapults; // 0x00020F60 length: 4
         int engineers; // 0x00020F64 length: 4
         int pikemenSwordsmenAndMore; // 0x00020F68 length: 4
