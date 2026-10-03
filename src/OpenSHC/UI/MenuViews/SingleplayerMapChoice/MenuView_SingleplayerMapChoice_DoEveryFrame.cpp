@@ -7,9 +7,9 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
+#include "OpenSHC/Map/MapType2.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/MapType2.hpp"
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
 #include "OpenSHC/Globals/DAT_00b960dc.hpp"
 #include "OpenSHC/Globals/DAT_ButtonBackgroundBlendStrength.hpp"
@@ -182,9 +182,9 @@ namespace UI {
             top = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xfd;
             local_3f8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x294;
             bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x216;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                DAT_PencilRenderCore::ptr)(iVar7, top, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x280,
-                bottom, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+            MACRO_CALL_MEMBER(
+                OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                iVar7, top, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x280, bottom, (iVar5 / 32) + 0x20);
             if (DAT_00b960dc::instance == 0) {
                 iVar8 = iVar8 + 0x295;
                 iVar7 = iVar7 + -1;
