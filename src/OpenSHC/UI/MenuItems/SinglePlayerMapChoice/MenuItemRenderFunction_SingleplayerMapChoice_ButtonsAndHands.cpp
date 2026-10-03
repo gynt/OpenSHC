@@ -45,7 +45,7 @@ namespace UI {
             switch (param_1) {
             case 2:
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                iVar1 = (int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5;
+                iVar1 = iVar1 / 32;
                 break;
             case 0x41:
                 iVar1 = 0x20;
@@ -56,7 +56,7 @@ namespace UI {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 }
                 iVar1 = (0x20 - DAT_ButtonBackgroundBlendStrength::instance) * iVar1;
-                iVar1 = -((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5);
+                iVar1 = -(iVar1 / 32);
                 break;
             case 0x45:
                 if (DAT_MapMissionType::instance == 0) {
@@ -82,7 +82,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x18, (int)((int)(DAT_ButtonX::instance + 10)),
                     (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE,
-                    ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    (iVar1 / 32) + 0x20);
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 /*
                   "easy, normal, hard, very hard"
@@ -91,7 +91,7 @@ namespace UI {
                     OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, DAT_GameState::instance.mapAndTime.difficulty + 0x13,
                     (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_RIGHT, 0xff00, 0x12, FALSE,
-                    ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    (iVar1 / 32) + 0x20);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             case 0x4a:
@@ -113,7 +113,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(
                         DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                    iVar1 = (iVar1 / 32) + 0x20;
                     uVar2 = 0xccfaff;
                     yParam = DAT_ButtonY::instance + 7;
                     goto LAB_0042d4cd;
@@ -130,7 +130,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
                         (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE,
-                        ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                        (iVar1 / 32) + 0x20);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -158,7 +158,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(
                         DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                    iVar1 = (iVar1 / 32) + 0x20;
                     uVar2 = 0xc2f0eb;
                     yParam = DAT_ButtonY::instance + 7;
                     goto LAB_0042d4cd;
