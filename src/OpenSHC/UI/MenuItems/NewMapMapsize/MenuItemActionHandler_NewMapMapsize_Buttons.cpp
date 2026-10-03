@@ -34,10 +34,9 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F940
         void NewMapMapsize::MenuItemActionHandler_NewMapMapsize_Buttons(int param_1, ...)
         {
-            int iVar1;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                iVar1 = 400;
+                int iVar1 = 400;
                 if (0 < param_1) {
                     if (param_1 < 5) {
                         if (param_1 == 1) {
