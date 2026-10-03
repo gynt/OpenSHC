@@ -8,12 +8,11 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00522390
         int TribesState::getUnitIDForIndexInTribe(int tribeID, int unitSelectionIndex)
         {
-            int iVar1;
             int iVar2;
             short* psVar3;
             int _counter;
             _counter = 0;
-            iVar1 = 0;
+            int iVar1 = 0;
             if ((this->tribes[tribeID].tribeState == 2) && (unitSelectionIndex < this->tribes[tribeID].size)) {
                 psVar3 = this->tribes[tribeID].unitSelectionBitMasked;
                 do {
