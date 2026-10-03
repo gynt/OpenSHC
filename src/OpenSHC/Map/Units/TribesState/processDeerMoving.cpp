@@ -86,8 +86,8 @@ namespace Map {
                         if (0x14 < iVar8) {
                             this->tribes[tribeID].field136_0x27e = 200;
                         }
-                        psVar1 = &this->tribes[tribeID].unknownAttackRelatedUpdateCounter;
-                        *psVar1 = *psVar1 + 1;
+                        this->tribes[tribeID].unknownAttackRelatedUpdateCounter
+                            = this->tribes[tribeID].unknownAttackRelatedUpdateCounter + 1;
                         if (this->tribes[tribeID].field136_0x27e
                             <= this->tribes[tribeID].unknownAttackRelatedUpdateCounter) {
                             this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
@@ -106,8 +106,8 @@ namespace Map {
                                 OpenSHC::Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
                                 this)(tribeID, (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][0])),
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][1])), 0, 0);
-                            psVar1 = &this->tribes[tribeID].currentRallyPointIndex;
-                            *psVar1 = *psVar1 + 1;
+                            this->tribes[tribeID].currentRallyPointIndex
+                                = this->tribes[tribeID].currentRallyPointIndex + 1;
                             if (this->tribes[tribeID].rallyPointCount <= this->tribes[tribeID].currentRallyPointIndex) {
                                 this->tribes[tribeID].tribeBehaviorType = OpenSHC::Map::Units::STBT_1;
                                 this->tribes[tribeID].rallyPointCount = 0;
@@ -142,8 +142,7 @@ namespace Map {
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][1])), 0, 0);
                         }
                     }
-                    psVar1 = &this->tribes[tribeID].field133_0x278;
-                    *psVar1 = *psVar1 + 1;
+                    this->tribes[tribeID].field133_0x278 = this->tribes[tribeID].field133_0x278 + 1;
                     if (799 < this->tribes[tribeID].field133_0x278) {
                         this->tribes[tribeID].field133_0x278 = 0;
                     }
@@ -157,8 +156,7 @@ namespace Map {
                     (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][0])),
                     (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][1])), 0, 0,
                     OpenSHC::Map::Units::Instructions::UMSE_0);
-                psVar1 = &this->tribes[tribeID].currentRallyPointIndex;
-                *psVar1 = *psVar1 + 1;
+                this->tribes[tribeID].currentRallyPointIndex = this->tribes[tribeID].currentRallyPointIndex + 1;
                 if (this->tribes[tribeID].rallyPointCount <= this->tribes[tribeID].currentRallyPointIndex) {
                     this->tribes[tribeID].rallyPointCount = 0;
                     this->tribes[tribeID].tribeBehaviorType = OpenSHC::Map::Units::STBT_1;
