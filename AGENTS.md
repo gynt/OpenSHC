@@ -215,6 +215,9 @@ Style expected of reimplemented code:
   two rows helped one function and hurt its near-identical neighbour. Use `try_styles.py` rather than reasoning about it.
 - Use `for` loops (loop variable declared in the `for`), early returns instead of nested if/else, no `goto`,
   no pointer variables walking over arrays or structs, named fields and enum constants instead of offsets and magic numbers.
+  The "no pointer variables" preference does **not** extend to the read-modify-write idiom
+  `piVar1 = &x.field; *piVar1 = *piVar1 + 1;`: there the original often did compute the address once, and removing the
+  pointer measurably loses. See the `unptr.py` note among the diff patterns below - decide that one per function.
   The early-return preference has one known exception, still tentative - see the note on arms sharing a tail among the
   diff patterns below.
 - Never change the `// FUNCTION:` address line; keep generated headers untouched unless asked.
@@ -254,9 +257,30 @@ Diff patterns that were reliable (more in the cheat sheet):
   always complement each other. The repair proves the operand is signed, so the dividend has to stay signed in our
   source too: the decompiler's `uint` locals and its `+ 4U` make the sum unsigned, and an unsigned `%` compiles to a
   bare `and` with no repair, which loses the match instead of gaining it.
-- `piVar1 = &x.field; *piVar1 = *piVar1 + 1;` is `x.field = x.field + 1` (`unptr.py`), worth 1.2% over 60 sites in one
-  function. Only rewrite it when the store immediately follows the pointer: a pointer freezes the address while the
-  field form re-evaluates the index, so with a call or a write to the index in between the two forms differ.
+- `piVar1 = &x.field; *piVar1 = *piVar1 + 1;` is `x.field = x.field + 1` (`unptr.py`). Only rewrite it when the store
+  immediately follows the pointer: a pointer freezes the address while the field form re-evaluates the index, so with a
+  call or a write to the index in between the two forms differ. It was worth 1.2% over 60 sites in one function, but
+  **do not run it as a blanket pass** - which of the two forms matches is decided per function and swings up to 8
+  points either way. Measured over 20 functions with `try_styles.py`: 10 preferred the pointer, 5 preferred the field
+  form, 5 tied exactly. Largest wins for the pointer `UpdateMill` +3.3 (42.4850% against 39.2000%) and `UpdateIronMine`
+  +3.5; largest wins for the field form `processDeerMoving` +7.8 (36.4729% -> 44.3114%) and `UpdateWheatFarm` +3.2
+  (56.0748% -> 59.2593%). So neither "remove the pointer walks" nor "keep them" is right on its own, and both
+  directions are real rather than allocator noise - they reproduce exactly to four decimals.
+  Five ways of predicting the winner from the source were tried and **all failed**; do not spend time re-deriving them:
+  what the pointer targets (a variable-indexed global array element, a `this->` member or a global scalar), how many
+  sites the function has, what fraction of its RMW sites already match the original, how many `[DAT_*::instance]`
+  indices it contains, and whether the index variable is loaded from a global or is a local or parameter. The last
+  looked strong in-sample (global-indexed preferred the pointer 7 of 10, mean +1.0) and was then falsified
+  out-of-sample by `UpdateWheatFarm`, which is global-indexed and prefers the field form by 3.2.
+  Two things are settled, and both save builds:
+  - `x = x + 1`, `x += 1` and `x++` compile **identically** - exact ties on two functions (three ways at 39.2000% on
+    `UpdateMill`, again at 24.9578% on `UpdatePoleturnersWorkshop`). There are only ever two candidates, so a
+    `try_styles.py` run here needs exactly two variants, and compound assignment is not a lever.
+  - Never hoist an **object pointer** to a global array element (`Building* b = &...buildings[id];` then `b->field`).
+    On `UpdateMill` that scored 18.5263% against 42.4850% for the per-field pointer, **24 points worse**. The original
+    folds the global's address into the instruction displacement and keeps only the scaled index in a register
+    (`add dword ptr [esi + BuildingsState+108], ecx`); an explicit `T*` forces `[ptr + 108]` and loses the folding.
+    That `esi` is the compiler's own CSE of the index computation, not a pointer the source held.
 - Our `movzx` against the original's `movsx` on a `ushort` layer (`PathConnectionLayer`) means the original cast the
   read: `dword x = (short)layer[i]`, one `movsx`. Declaring the local `short` does not do it - the signedness comes
   from the cast on the array access, not from the destination.
