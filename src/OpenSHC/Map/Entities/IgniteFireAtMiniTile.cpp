@@ -37,8 +37,8 @@ namespace Map {
         MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
         microX = miniTileX + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_randomJitter & 0x3f][0];
         microY = miniTileY + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_randomJitter & 0x3f][1];
-        _x = (int)(microX + (microX >> 0x1f & 7U)) >> 3;
-        _y = (int)(microY + (microY >> 0x1f & 7U)) >> 3;
+        _x = microX / 8;
+        _y = microY / 8;
         if (((399 < _x) || (399 < _y)) || (*(char*)(_y * 400 + 0x21aec98 + _x) == '\0')) {
             return 0;
         }
