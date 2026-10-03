@@ -29,18 +29,11 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x0052BF40
     void WildlifeState::renderDebugDataMapData(int x, int y, int width, int height)
     {
-        uint uVar1;
         int iVar2;
-        uint uVar3;
         int iVar4;
-        undefined2 uVar5;
-        uint _colour;
-        int x1;
-        int iVar6;
-        int iVar7;
         int iVar8;
         char* textAddress;
-        x1 = x + 2;
+        int x1 = x + 2;
         if (this->DAT_DebugDataMapDataDisplayType == 0) {
             textAddress = "Connect ";
         } else if (this->DAT_DebugDataMapDataDisplayType == 1) {
@@ -70,8 +63,8 @@ namespace Map {
         /*
           render the squares
          */
-        iVar7 = 41;
-        iVar6 = y;
+        int iVar7 = 41;
+        int iVar6 = y;
         do {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, iVar6, x + 0x192, iVar6, (ushort)((int)(COL_WHITE::instance.shortValue)));
@@ -90,10 +83,10 @@ namespace Map {
         do {
             for (iVar6 = 0; iVar6 < 40; iVar6++) {
                 if (0 < this->grid[iVar6][iVar8].firstMember) {
-                    uVar5 = COL_BLUE::instance.shortValue;
+                    undefined2 uVar5 = COL_BLUE::instance.shortValue;
                     if (this->DAT_DebugDataMapDataDisplayType == 0) {
-                        uVar1 = this->grid[iVar6][iVar8].separateAreaID;
-                        uVar3 = uVar1 & 7;
+                        uint uVar1 = this->grid[iVar6][iVar8].separateAreaID;
+                        uint uVar3 = uVar1 & 7;
                         if ((((uVar1 == 0) || (uVar5 = COL_RED::instance.shortValue, uVar3 == 1))
                                 || ((uVar5 = COL_BRIGHT_YELLOW::instance.shortValue,
                                     uVar3 == 2
