@@ -115,7 +115,7 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
                             (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar6, 0x12, FALSE,
-                            ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                            (iVar4 / 32) + 0x20);
                     }
                 } else {
                     switch (param_1) {
@@ -138,14 +138,13 @@ namespace UI {
                                     if ((1 < iVar4) && (bVar5)) {
                                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                                         MACRO_CALL(OpenSHC::UI::Rendering_Func::
-                                                RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                                            ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                                                RenderCurrentButtonToScreenMenuWithBlendingUnk)((iVar4 / 32) + 0x20);
                                     }
                                     iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
                                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                                     MACRO_CALL(
                                         OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                                        ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                                        (iVar4 / 32) + 0x20);
                                 }
                             }
                             bVar5 = false;
@@ -155,7 +154,7 @@ namespace UI {
                     case 2:
                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                            ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                            (iVar4 / 32) + 0x20);
                         return;
                     case 3:
                         if (DAT_GameSynchronyState::instance.currentGameMode
@@ -173,7 +172,7 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
                                 (int)((int)(DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
                                 (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar6, 0x12, FALSE,
-                                ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                                (iVar4 / 32) + 0x20);
                         }
                         break;
                     case 4:
@@ -209,7 +208,7 @@ namespace UI {
                                 }
                                 iVar4 = (0x20 - DAT_ButtonBackgroundBlendStrength::instance) * iVar4;
                                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                                    0x20 - ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5));
+                                    0x20 - (iVar4 / 32));
                             }
                         }
                         bVar5 = false;
@@ -260,7 +259,7 @@ namespace UI {
                         }
                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                            ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                            (iVar4 / 32) + 0x20);
                         return;
                     case -10:
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
@@ -289,7 +288,7 @@ namespace UI {
                 }
                 iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
-                    ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    (iVar4 / 32) + 0x20);
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             DAT_ButtonUnknownZero::instance = 0;
