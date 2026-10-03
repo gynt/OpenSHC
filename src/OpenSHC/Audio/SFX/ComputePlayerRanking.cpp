@@ -35,8 +35,7 @@ namespace Audio {
         _playerPointsArray[7][0] = 0;
         _playerPointsArray[8][0] = 0;
         _arrayIndex = 0;
-        _playerID = 1;
-        do {
+        for (_playerID = 1; _playerID < 9; _playerID++) {
             if (DAT_GameSynchronyState::instance.finalResults.active[_playerID] != 0) {
                 _playerPointsArray[_arrayIndex][0] = _playerID;
                 _isAlive = MACRO_CALL_MEMBER(
@@ -53,8 +52,7 @@ namespace Audio {
                 }
                 _arrayIndex = _arrayIndex + 1;
             }
-            _playerID = _playerID + 1;
-        } while (_playerID < 9);
+        }
         _index = 0;
         if (0 < _arrayIndex) {
             do {
