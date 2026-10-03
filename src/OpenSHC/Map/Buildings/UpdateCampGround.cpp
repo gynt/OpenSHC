@@ -37,8 +37,8 @@ namespace Map {
                 .field96_0x5a4c[DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
             < '\x01') {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex = 0;
-            piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].field13_0x28;
-            *piVar1 = *piVar1 + 1;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].field13_0x28
+                = DAT_BuildingsState::instance.buildings[_currentBuildingID].field13_0x28 + 1;
             DAT_SFX_Interval_Campfire::instance = DAT_SFX_Interval_Campfire::instance + 1;
             DAT_BuildingsState::instance.buildings[_currentBuildingID].field14_0x2c = 1;
             if (0 < DAT_SFX_Interval_Campfire::instance) {
@@ -89,8 +89,8 @@ namespace Map {
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 < 1) {
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 0;
                 }
-                piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88;
-                *piVar1 = *piVar1 + -1;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + -1;
                 goto LAB_004182b0;
             }
             DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 = 0;
@@ -98,12 +98,12 @@ namespace Map {
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 < 0x28) {
                 LAB_0041827d:
-                    piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88;
-                    *piVar1 = *piVar1 + 1;
+                    DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
+                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + 1;
                 } else {
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 1;
-                    piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88;
-                    *piVar1 = *piVar1 + 1;
+                    DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
+                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + 1;
                 }
             } else {
             LAB_00418285:
@@ -163,8 +163,8 @@ namespace Map {
                 if ((int)uVar3 < 0x12d)
                     goto LAB_00418476;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
-                piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress;
-                *piVar1 = *piVar1 + 1;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress + 1;
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress < 6) {
                 LAB_0041845a:
                     _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
@@ -187,8 +187,8 @@ namespace Map {
                 if ((int)uVar3 < 0x51)
                     goto LAB_00418476;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
-                piVar1 = &DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress;
-                *piVar1 = *piVar1 + 1;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress + 1;
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress < 0xd)
                     goto LAB_0041845a;
                 _ownerPlayerIndex = 2;
