@@ -23,16 +23,16 @@ namespace Map {
         BOOLEnum TribesState::spawnDeerLionOrRabbit(int tribeID, int param_2, UnitType unitType)
         {
             short* psVar1;
-            short sVar2;
+            int sVar2;
             int _finalTargetUnitID;
             int iVar3;
             uint _rng2;
-            short _terrainHeight;
-            short _unknown;
-            short _tribeSize;
-            short _unitX;
-            short _targetUnitID;
-            short _unitY;
+            int _terrainHeight;
+            int _unknown;
+            int _tribeSize;
+            int _unitX;
+            int _targetUnitID;
+            int _unitY;
             if ((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
                 && (0 < tribeID)) {
                 if (this->tribes[tribeID].field133_0x278 != 0) {
