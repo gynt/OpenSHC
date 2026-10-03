@@ -23,8 +23,6 @@ namespace UI {
         void PencilRenderCore::drawHeaderTextBanner(
             int textGroupIndex, int textNumInGroup, int xPos, int yPos, int width, int param_6)
         {
-            int iVar1;
-            int imageID;
             char* _textAddress;
             int _textY;
             int _width;
@@ -37,7 +35,7 @@ namespace UI {
             TextAlignment _alignment;
             BGR24 _color;
             BOOLEnum _keepOffsetX;
-            iVar1 = xPos;
+            int iVar1 = xPos;
             iVar2 = xPos + 8;
             _width = width + -0x10;
             for (xPos = 0; xPos < 0x40; xPos += 8) {
@@ -47,7 +45,7 @@ namespace UI {
                     iVar4 = (-(uint)(xPos != 0x38) & 0xfffffffa) + 0x3c;
                 }
                 for (iVar3 = 0; iVar3 < _width; iVar3 += 8) {
-                    imageID = iVar4;
+                    int imageID = iVar4;
                     if ((iVar3 != 0) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
                         imageID = iVar4 + 1;
                     }
