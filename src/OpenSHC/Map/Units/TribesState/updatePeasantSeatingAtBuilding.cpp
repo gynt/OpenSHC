@@ -18,9 +18,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitType;
         using OpenSHC::Map::Units::States::UnitState;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00522210
         void TribesState::updatePeasantSeatingAtBuilding(int param_1, int param_2, int param_3)
         {

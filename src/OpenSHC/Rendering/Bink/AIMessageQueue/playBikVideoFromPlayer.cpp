@@ -13,9 +13,6 @@ namespace Rendering {
 
         using OpenSHC::DE::SHCDE::eTextSections;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BEA90
         void AIMessageQueue::playBikVideoFromPlayer(int playerIndex, int aiType, int messageType)
         {

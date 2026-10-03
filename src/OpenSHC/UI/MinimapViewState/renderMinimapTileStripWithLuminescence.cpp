@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace UI {
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       Renders a horizontal strip of minimap pixels for a given map row range. For each tile, determines   the base
       colour from LogicLayer flags (water, trees, terrain type) and MiniMapDefinedData colour   tables, then applies a
       luminescence multiplier per channel (RGB555 or RGB565). Writes results   into the minimap pixel buffer at

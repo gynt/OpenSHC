@@ -11,12 +11,6 @@ namespace UI {
 
     using OpenSHC::UI::Enums::TextMessageBLLookupStructTypeEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4E00
     void BottomLeftTextDisplayState::setBottomLeftTextDisplayText(int messageTypeUnk, int textGroupIndex,
         int textNumInGroup, TextMessageBLLookupStructUnion param_4, int importanceUnk, int displayDurationUnk)

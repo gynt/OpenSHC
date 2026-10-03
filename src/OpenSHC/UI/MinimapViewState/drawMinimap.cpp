@@ -29,21 +29,6 @@ namespace UI {
     using OpenSHC::Map::Units::States::UnitState;
     using OpenSHC::Map::Units::States::UnitStateShort;
 
-    /*
-      WARNING: Restarted to delay deadcode elimination for space: ram
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B66C0
     void MinimapViewState::drawMinimap(int xPos, int yPos, int width, int height, uint flags, int xOffset, int yOffset,
         int widthFactor, int heightFactor, int param_10)

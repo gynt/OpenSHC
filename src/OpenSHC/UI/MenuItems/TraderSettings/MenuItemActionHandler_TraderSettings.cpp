@@ -15,9 +15,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BA780
         void TraderSettings::MenuItemActionHandler_TraderSettings(int param_1, ...)
         {

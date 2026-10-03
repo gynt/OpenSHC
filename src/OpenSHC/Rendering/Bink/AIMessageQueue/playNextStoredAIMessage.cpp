@@ -13,12 +13,6 @@ namespace Rendering {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BE960
         BOOLEnum AIMessageQueue::playNextStoredAIMessage()
         {

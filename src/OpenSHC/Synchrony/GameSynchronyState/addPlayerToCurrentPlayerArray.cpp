@@ -8,18 +8,6 @@ namespace Synchrony {
 
     using OpenSHC::Game::GameMode;
 
-    /*
-      WARNING: Unable to use type for symbol _pFullIdArrayPlus1
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0047EB80
     int GameSynchronyState::addPlayerToCurrentPlayerArray(int playerFullID)
     {

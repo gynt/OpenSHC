@@ -11,12 +11,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Resumable chunked resync sender. Picks up from somePacketSubTypeUnk (cases 0-15) and resumes   sending resync
       commands for the category at that index, starting from field70_0xbb0/field71_0xbb4   offsets. Sends until the
       packet budget (field68_0xba8) is exhausted, then suspends by saving   position and queuing

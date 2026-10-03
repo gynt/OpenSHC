@@ -6,9 +6,6 @@
 
 namespace OpenSHC {
 
-/*
-  WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
- */
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D790
 void Meta::Destructor_BinkControlClass()
 {

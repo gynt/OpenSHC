@@ -28,15 +28,6 @@ namespace UI {
         using OpenSHC::Game::TrailType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8EC0
         void CrusadeMap::MenuItemActionHandler_CrusadeMap_Main(int param_1, ...)
         {

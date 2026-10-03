@@ -19,15 +19,6 @@ namespace Map {
     using OpenSHC::AI::AIRecruitUnitChoiceInt;
     using OpenSHC::Game::GameMode;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:56:35.138000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00402900
     void Entities::UpdateFlag_1_2_4_Entity()
     {

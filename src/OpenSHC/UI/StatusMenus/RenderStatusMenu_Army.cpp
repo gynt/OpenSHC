@@ -32,18 +32,6 @@ namespace UI {
     using OpenSHC::Map::Units::UnitTypeInt;
     using OpenSHC::Rendering::Colors::BGR24;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00447FA0
     void StatusMenus::RenderStatusMenu_Army()
     {

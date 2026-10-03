@@ -11,12 +11,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00401620
         void EntityState::recountActiveFires()
         {

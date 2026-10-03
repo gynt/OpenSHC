@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       BFS from the current attack signpost position, restricted to the same separateAreaID. Returns the   casDisRelated2
       depth (1-99) at which it first encounters a cell with unknownNonZero01 set,   indicating the BFS distance to the
       nearest wildlife habitat or patrol marker from the signpost.   Returns 0 if none found within 99 steps or the

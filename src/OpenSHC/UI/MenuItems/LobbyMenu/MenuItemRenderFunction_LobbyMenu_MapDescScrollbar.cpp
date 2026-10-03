@@ -20,9 +20,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00428A60
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_MapDescScrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)

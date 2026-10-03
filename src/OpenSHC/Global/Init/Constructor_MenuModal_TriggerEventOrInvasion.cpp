@@ -15,9 +15,6 @@ namespace Global {
 
     using OpenSHC::UI::Enums::MenuModalType;
 
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BFA0
     void Init::Constructor_MenuModal_TriggerEventOrInvasion()
     {

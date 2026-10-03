@@ -12,9 +12,6 @@ namespace UI {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00471000
         void PencilRenderCore::drawBlendedBlackBox(int left, int top, int right, int bottom, int blendStrengh)
         {

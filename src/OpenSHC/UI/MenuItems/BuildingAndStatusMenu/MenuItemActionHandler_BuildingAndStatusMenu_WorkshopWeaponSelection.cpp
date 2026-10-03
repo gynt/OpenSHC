@@ -16,15 +16,6 @@ namespace UI {
         using OpenSHC::Commands::GameCommandType;
         using OpenSHC::Game::Resources::ResourceType;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00465200
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_WorkshopWeaponSelection(
             ResourceType weapon, ...)

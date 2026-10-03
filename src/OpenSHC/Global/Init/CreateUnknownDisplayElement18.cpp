@@ -14,9 +14,6 @@ namespace Global {
     using OpenSHC::DE::SHCDE::eOnScreenText;
     using OpenSHC::UI::Enums::DisplayElementPositionModifier;
 
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C400
     void Init::CreateUnknownDisplayElement18()
     {

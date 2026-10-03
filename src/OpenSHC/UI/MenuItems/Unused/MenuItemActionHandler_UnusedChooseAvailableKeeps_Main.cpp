@@ -15,9 +15,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00430050
         void Unused::MenuItemActionHandler_UnusedChooseAvailableKeeps_Main(int param_1, ...)
         {

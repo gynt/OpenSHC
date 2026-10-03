@@ -17,15 +17,6 @@ namespace UI {
         using OpenSHC::Audio::SFX::SoundEffectID;
         using OpenSHC::Commands::GameCommandType;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00465480
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_GatehouseOpenClose(int param_1, ...)
         {

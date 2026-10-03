@@ -5,9 +5,6 @@
 namespace OpenSHC {
 namespace IO {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004718C0
     void LowLevelMemory::fillMemory_ByteValue(size_t size, uchar value, void* destination)
     {

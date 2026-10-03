@@ -15,12 +15,6 @@ namespace UI {
 
         using OpenSHC::DE::SHCDE::eMusicIDs;
 
-        /*
-          WARNING: Enum "eMusicIDs": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004E1F50
         void CrusadeEndscreen::MenuView_CrusadeEndscreen_DoEveryFrame()
         {

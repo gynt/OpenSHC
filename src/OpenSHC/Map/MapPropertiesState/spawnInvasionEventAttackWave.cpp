@@ -21,15 +21,6 @@ namespace Map {
     /*
       WARNING (jumptable): Heritage AFTER dead removal. Revisit: 0x01667ebc
      */
-    /*
-      WARNING: Restarted to delay deadcode elimination for space: ram
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004C13F0
     void MapPropertiesState::spawnInvasionEventAttackWave()
     {

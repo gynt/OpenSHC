@@ -9,15 +9,6 @@ namespace UI {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "WindowsSystemMetricInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "GeneralWindowsMessage": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00467A90
         BOOLEnum WindowAndDirectDraw::createWindow(LPCSTR windowName, uint cursorResource)
         {

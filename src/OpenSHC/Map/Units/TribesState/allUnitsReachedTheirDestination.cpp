@@ -14,9 +14,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x005253F0
         BOOLEnum TribesState::allUnitsReachedTheirDestination(int tribeID)
         {

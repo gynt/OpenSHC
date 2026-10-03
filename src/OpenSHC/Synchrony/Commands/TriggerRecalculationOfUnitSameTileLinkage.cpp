@@ -17,12 +17,6 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandScheduling;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Command handler in OpenSHC::Commands. Serializes one byte parameter on GCS_SCHEDULE_AND_SEND.   On GCS_EXECUTE
       sets mapAndTime.field45_0xf8 to 100. The purpose of field45_0xf8 is not yet known;   likely a game pace or event
       trigger field.      renamed by: Claude Sonnet 4.6

@@ -18,9 +18,6 @@ namespace UI {
 
         using OpenSHC::Rendering::Enums::RenderTarget;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004658B0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_GeneralButtonRender(int param_1, ...)
         {

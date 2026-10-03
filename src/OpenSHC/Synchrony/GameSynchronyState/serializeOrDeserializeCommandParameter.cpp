@@ -13,15 +13,6 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandParameterLocation;
     using OpenSHC::Commands::GameCommandParameterReadWrite;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004805D0
     void GameSynchronyState::serializeOrDeserializeCommandParameter(void* destination, size_t size,
         GameCommandParameterLocation srcSwitch, GameCommandParameterReadWrite destSwitch)

@@ -14,12 +14,6 @@ namespace Rendering {
         using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00409200
         void BinkControlClass::processBinkFrames()
         {

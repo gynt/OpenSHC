@@ -17,9 +17,6 @@ namespace Global {
 
     using OpenSHC::UI::Enums::MenuViewType;
 
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A1C0
     void Init::Constructor_MenuView_HistoricMissionSelect()
     {

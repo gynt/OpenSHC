@@ -7,12 +7,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B5F70
     void MinimapViewState::locatePlayerKeepPositionsOnMinimap(uint param_1, int param_2, int param_3)
     {

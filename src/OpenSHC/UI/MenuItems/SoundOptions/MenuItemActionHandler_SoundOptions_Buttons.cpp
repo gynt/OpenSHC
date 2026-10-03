@@ -15,9 +15,6 @@ namespace UI {
 
         using OpenSHC::UI::Enums::SoundMenuClickType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004940B0
         void SoundOptions::MenuItemActionHandler_SoundOptions_Buttons(SoundMenuClickType param_1, ...)
         {

@@ -18,15 +18,6 @@ namespace UI {
     using OpenSHC::Game::Resources::ResourceTypeInt;
     using OpenSHC::Map::Units::EuroRecruitableState;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00464DA0
     EuroRecruitableState Helpers::IsEuroUnitRecruitableUnk(int barrackUnitIdUnk)
     {

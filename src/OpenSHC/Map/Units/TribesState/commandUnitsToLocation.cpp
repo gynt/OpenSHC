@@ -20,9 +20,6 @@ namespace Map {
         using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
         using OpenSHC::Map::Units::States::UnitState;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00526F00
         undefined4 TribesState::commandUnitsToLocation(
             int tribeID, uint destinationX, uint destinationY, undefined4 matchUnitSpeeds)

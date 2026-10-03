@@ -11,12 +11,6 @@ namespace Map {
 
         using OpenSHC::Map::Units::SomeTribeBehaviorType;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00518870
         void TroopValueState::applyTribeBehaviorTypes(
             SomeTribeBehaviorType tribeBehaviorType, SomeTribeBehaviorType tribeBehaviorType2, int off1, int off2)

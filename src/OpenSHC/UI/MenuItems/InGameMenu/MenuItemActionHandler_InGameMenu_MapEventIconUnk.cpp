@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B6530
         void InGameMenu::MenuItemActionHandler_InGameMenu_MapEventIconUnk(int param_1, ...)
         {

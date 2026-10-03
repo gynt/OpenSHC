@@ -9,9 +9,6 @@ namespace Map {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F950
         void TroopValueState::processSpottedEnemyTiles()
         {

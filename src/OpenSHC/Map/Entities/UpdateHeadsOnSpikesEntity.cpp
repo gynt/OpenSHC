@@ -14,9 +14,6 @@ namespace Map {
 
     using OpenSHC::Map::Entities::EntityType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00405C00
     void Entities::UpdateHeadsOnSpikesEntity()
     {

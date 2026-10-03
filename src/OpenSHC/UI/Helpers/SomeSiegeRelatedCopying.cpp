@@ -8,9 +8,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0042C540
     void Helpers::SomeSiegeRelatedCopying(int param_1)
     {

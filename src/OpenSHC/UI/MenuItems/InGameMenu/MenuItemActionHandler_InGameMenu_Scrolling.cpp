@@ -22,9 +22,6 @@ namespace UI {
         using OpenSHC::UI::Enums::DisplayElementID;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00434120
         void InGameMenu::MenuItemActionHandler_InGameMenu_Scrolling(int param_1, ...)
         {

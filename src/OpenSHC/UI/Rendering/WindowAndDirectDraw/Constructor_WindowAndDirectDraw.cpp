@@ -10,12 +10,6 @@ namespace UI {
         using OpenSHC::Rendering::ScreenResolutionEnum;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "WindowsSystemMetricInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004679F0
         WindowAndDirectDraw* WindowAndDirectDraw::Constructor_WindowAndDirectDraw()
         {

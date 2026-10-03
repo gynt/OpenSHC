@@ -15,9 +15,6 @@ namespace UI {
 
         using OpenSHC::DE::SHCDE::eGM;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC280
         void TriggerEventSlider::MenuModalRenderFunction_TriggerEventSlider(int x, int y, int width, int height)
         {

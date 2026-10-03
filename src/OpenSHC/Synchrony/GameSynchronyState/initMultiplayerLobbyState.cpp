@@ -38,12 +38,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Full multiplayer session initialisation. Resets all synchrony counters, clears per-player hash   and lag arrays,
       resets teams, sets default lobby settings (speed 40, gold 0, popularity 100,   balance 3, intensity 1), resets
       game commands and UI modals, restores default unit colours,   initialises skirmish lobby data, queues

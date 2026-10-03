@@ -5,9 +5,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00403790
         void EntityState::initializeSeagullMovementVector(
             int seagullID, int param_2, int param_3, int param_4, int param_5)

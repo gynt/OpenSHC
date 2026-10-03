@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00525A70
         void TribesState::removeUnitFromTribe(uint unitID, int tribeID)
         {

@@ -12,9 +12,6 @@ namespace UI {
     using OpenSHC::UI::Enums::MenuItemHandleState;
     using OpenSHC::UI::Enums::MenuViewType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F6A80
     void MenuHandlerState::setupMenuForRendering(MenuViewType menuID)
     {

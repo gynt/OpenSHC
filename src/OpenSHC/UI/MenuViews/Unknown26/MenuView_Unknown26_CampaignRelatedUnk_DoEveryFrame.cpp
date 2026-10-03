@@ -20,9 +20,6 @@ namespace UI {
 
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004E1E70
         void Unknown26::MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame()
         {

@@ -39,18 +39,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00407190
         undefined4 EntityState::processEntityHitBuildingOrUnit(int entityID)
         {

@@ -19,9 +19,6 @@ namespace Map {
     using OpenSHC::Map::Units::States::UnitState;
     using OpenSHC::Map::Units::States::UnitStateShort;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00417FD0
     void Buildings::UpdateTunnel()
     {

@@ -18,15 +18,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00404AE0
         uint EntityState::spawnProjectileEntity(int unitID, undefined4 playerID1, uint ownerColorUnk, int microX,
             int microY, int totalHeight, int targetX, int targetY, int targetZUnk, EntityType entityType, int param_11)

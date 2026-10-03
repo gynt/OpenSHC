@@ -6,9 +6,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9E50
         void General::MenuItemActionHandler_General_EventSlider(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)

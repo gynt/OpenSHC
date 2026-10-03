@@ -27,9 +27,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
         using OpenSHC::Rendering::Colors::BGR24;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BFA60
         void NewInvasion::MenuItemRenderFunction_NewInvasion_Buttons(int param_1, ...)
         {

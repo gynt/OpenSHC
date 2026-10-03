@@ -6,9 +6,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00404A10
         int EntityState::arrowShootingRelated(
             int microX, int microY, int height, int destMicroX, int destMicroY, int destHeight)

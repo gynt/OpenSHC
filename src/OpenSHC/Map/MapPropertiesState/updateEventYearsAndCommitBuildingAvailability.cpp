@@ -14,9 +14,6 @@ namespace Map {
 
     using OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004BEB20
     void MapPropertiesState::updateEventYearsAndCommitBuildingAvailability()
     {

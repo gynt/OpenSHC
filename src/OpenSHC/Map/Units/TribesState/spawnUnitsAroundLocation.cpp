@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00523240
         dword TribesState::spawnUnitsAroundLocation(
             undefined4 param_1, int aroundX, int aroundY, int playerID, UnitType unitType, int count)

@@ -17,15 +17,6 @@ namespace Synchrony {
     using OpenSHC::Audio::SFX::ResourceLackSFX;
     using OpenSHC::Game::Resources::ResourceType;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00466260
     void Actions::ProcessTowerRepair(
         int playerID, int buildingID, int requiredWood, int requiredStone, int gameObjectID)

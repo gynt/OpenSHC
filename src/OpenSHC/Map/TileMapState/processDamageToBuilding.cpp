@@ -55,15 +55,6 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       beware the renames! this is for both stones as well as units hitting walls   decompilerscript: committed:
       2025-01-30 21:57:43.216000
      */

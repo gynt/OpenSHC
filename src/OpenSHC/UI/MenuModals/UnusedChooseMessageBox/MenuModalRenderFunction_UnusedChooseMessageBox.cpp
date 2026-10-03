@@ -8,9 +8,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004AB460
         void UnusedChooseMessageBox::MenuModalRenderFunction_UnusedChooseMessageBox(int x, int y, int width, int height)
         {

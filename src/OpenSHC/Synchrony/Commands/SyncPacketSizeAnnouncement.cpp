@@ -18,12 +18,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Command handler in OpenSHC::Commands. On GCS_SCHEDULE_AND_SEND (host), serializes   currentPacketTotalSize,
       field73_0xbdc, and field67_0xba4, then immediately executes. On   GCS_EXECUTE (non-host), deserializes those three
       fields. Used to broadcast resync packet size   metadata from the host to all clients before a resync pass. renamed

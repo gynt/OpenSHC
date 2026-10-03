@@ -17,12 +17,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuViewType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00434300
         void BuildMenu::MenuItemRenderFunction_BuildMenu_MiniMapInteraction(int param_1, ...)
         {

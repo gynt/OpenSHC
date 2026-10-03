@@ -11,15 +11,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Type propagation algorithm not settling
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Full desync detection and resync broadcast pass. Compares the local player's hash arrays against   all other
       connected players for every game state category: Units, Buildings, Trees, Tribes,   PlayerDatas, Section1023,
       Entities, Moats, ClimbData, PitchDitches, Unknown2, AIVS, HeatMaps, and   LogicalTileMap. For each mismatch found,

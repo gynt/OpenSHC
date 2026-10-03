@@ -28,9 +28,6 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D99F0
         void RankingGames::MenuItemRenderFunction_RankingGames_Main(int param_1, ...)
         {

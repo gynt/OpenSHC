@@ -13,9 +13,6 @@ namespace UI {
 
         using OpenSHC::IO::Graphics::GmImageType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004554A0
         void TextureRenderCore::drawTgxGmOnFlaggedSurface(GmID gmId, int imageIndexInGm, int xPos, int yPos)
         {

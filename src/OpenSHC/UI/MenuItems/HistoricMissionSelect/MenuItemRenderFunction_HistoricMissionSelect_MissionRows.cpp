@@ -33,9 +33,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004269E0
         void HistoricMissionSelect::MenuItemRenderFunction_HistoricMissionSelect_MissionRows(int param_1, ...)
         {

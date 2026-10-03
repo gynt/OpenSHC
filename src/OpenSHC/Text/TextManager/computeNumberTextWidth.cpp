@@ -8,12 +8,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      WARNING: Removing unreachable block (ram,0x004716e7)
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004716D0
     int TextManager::computeNumberTextWidth(int param_1, int param_2)
     {

@@ -22,12 +22,6 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
     using OpenSHC::Map::Buildings::Building;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A460
     void Version::UpgradeDestroyDrawbridgesInFirst10Buildings()
     {

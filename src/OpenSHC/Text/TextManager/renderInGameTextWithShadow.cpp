@@ -5,9 +5,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00475E00
     void TextManager::renderInGameTextWithShadow(char const* textAddress, int xParam, int yParam,
         TextAlignment alignment, uint foregroundColor, uint backgroundColor, int fontSize, BOOLEnum keepOffsetX,

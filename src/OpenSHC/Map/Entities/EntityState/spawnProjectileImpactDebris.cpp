@@ -12,12 +12,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00405DA0
         void EntityState::spawnProjectileImpactDebris(int param_1)
         {

@@ -9,12 +9,6 @@
 namespace OpenSHC {
 
 /*
-  WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "DPERRInt": Some values do not have unique names
- */
-/*
   Copies the first three entries from DAT_PlayerGroupArray into playerGroupArray2Unk in   GameSynchronyState, and zeroes
   four related fields. Keeps the secondary player group array in   sync with the primary one, likely called after a
   group membership change or session reset.      renamed by: Claude Sonnet 4.6

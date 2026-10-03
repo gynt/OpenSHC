@@ -11,9 +11,6 @@ namespace UI {
 
     using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004DB180
     void Helpers::BuildIntroLogoSequence(undefined4 param_1, undefined4 param_2)
     {

@@ -11,12 +11,6 @@ namespace Map {
 
         using OpenSHC::AI::Tribes::AITribeType;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00518A10
         void TroopValueState::assignBehaviorTypeAndLinkSupportTribe(
             int param_1, int param_2, SomeTribeBehaviorType param_3, undefined4 param_4, undefined4 param_5)

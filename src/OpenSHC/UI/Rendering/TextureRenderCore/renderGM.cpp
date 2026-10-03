@@ -15,9 +15,6 @@ namespace UI {
         using OpenSHC::IO::Graphics::GmImageType;
         using OpenSHC::IO::Graphics::GmImageTypeInt;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00455300
         void TextureRenderCore::renderGM(eGM gmID, int imageID, int drawX, int drawY)
         {

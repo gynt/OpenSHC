@@ -18,12 +18,6 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandScheduling;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Command handler in OpenSHC::Commands. Serializes one short parameter (DAT_GameCommandParam0)   on
       GCS_SCHEDULE_AND_SEND, then on GCS_EXECUTE deserializes and calls   Map::Units::UnitsState::tribeRelated1 with the
       invoking player ID and the param.      renamed by: Claude Sonnet 4.6

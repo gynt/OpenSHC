@@ -17,9 +17,6 @@ namespace UI {
         using OpenSHC::Map::Buildings::BuildingType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0043E490
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_StatusMenuButtons(int param_1, ...)
         {

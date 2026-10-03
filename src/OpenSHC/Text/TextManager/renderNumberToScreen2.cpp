@@ -5,9 +5,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00474430
     void TextManager::renderNumberToScreen2(int number, int xParam, int yParam, TextAlignment alignment, uint color,
         int fontSize, BOOLEnum keepOffsetX, int blendStrength)

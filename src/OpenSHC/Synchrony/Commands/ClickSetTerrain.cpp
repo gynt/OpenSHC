@@ -27,15 +27,6 @@ namespace Synchrony {
     using OpenSHC::Map::LogicHelpers::Logic2;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       also for moat placement in editor!   decompilerscript: committed: 2025-01-30 21:57:43.216000
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x004813C0

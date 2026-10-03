@@ -24,9 +24,6 @@ namespace Map {
     using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
     using OpenSHC::UI::Enums::MenuViewType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00418F90
     void Buildings::UpdateBadBuildingBurningStake()
     {

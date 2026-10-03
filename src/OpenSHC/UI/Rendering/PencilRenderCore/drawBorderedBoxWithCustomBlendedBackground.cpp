@@ -12,9 +12,6 @@ namespace UI {
 
         using OpenSHC::IO::Graphics::GmID;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00471440
         void PencilRenderCore::drawBorderedBoxWithCustomBlendedBackground(
             int xPos, int yPos, int width, int height, int blendStrength)

@@ -24,12 +24,6 @@ namespace Map {
     using OpenSHC::Map::Entities::EntityType;
     using OpenSHC::Map::Buildings::BuildingTypeShort;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00405130
     uint Entities::SomeFireSpreadFunction(int param_1, int x, int y, int param_4, int param_5)
     {

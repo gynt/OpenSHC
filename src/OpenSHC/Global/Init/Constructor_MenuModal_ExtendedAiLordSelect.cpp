@@ -14,9 +14,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C0F0
     void Init::Constructor_MenuModal_ExtendedAiLordSelect()
     {

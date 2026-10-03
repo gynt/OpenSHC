@@ -14,12 +14,6 @@ namespace Map {
 
     using OpenSHC::Map::Trees::TreeType;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3560
     void LandscapeState::placeAppleTree(int buildingID, undefined4 treeX, undefined4 treeY)
     {

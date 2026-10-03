@@ -17,9 +17,6 @@ namespace UI {
         using OpenSHC::DE::SHCDE::eTextSections;
         using OpenSHC::Rendering::Colors::BGR24;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0047CEE0
         void ChooseNetworkServiceProvider::MenuItemRenderFunction_ChooseNetworkServiceProvider_InputLabels(
             int param_1, ...)

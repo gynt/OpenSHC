@@ -14,12 +14,6 @@ namespace Map {
     using OpenSHC::Map::Trees::TreeTypeShort;
 
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F1CE0
     int LandscapeState::createTree(undefined4 x, undefined4 y, TreeType treeType, undefined4 size,
         int stageRelatedValue, undefined4 param_6, int stage)

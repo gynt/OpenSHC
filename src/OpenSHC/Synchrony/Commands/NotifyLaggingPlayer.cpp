@@ -19,12 +19,6 @@ namespace Synchrony {
     using OpenSHC::UI::Enums::DisplayElementID;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Command handler in OpenSHC::Commands. On GCS_SCHEDULE_AND_SEND serializes   DAT_GameCommandParam0 (the lagging
       player ID) then executes immediately. On GCS_EXECUTE stores   the value in laggingPlayerIDUnk, shows multiplayer
       info display element   DEID_SOME_MULTIPLAYER_INFO_Unk_28, and resets field131_0xcd4 to 0. Notifies all clients

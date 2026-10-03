@@ -16,9 +16,6 @@ namespace UI {
     using OpenSHC::IO::FileResourceType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004D8A20
     void Helpers::ReadMapHeaderFromFile(char* param_1)
     {

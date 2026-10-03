@@ -25,9 +25,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00491A30
         void OptionsMenu::MenuItemRenderFunction_OptionsMenu_SubOptionsButtons(int param_1, ...)
         {

@@ -13,9 +13,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00403A20
         void EntityState::initializeProjectileVelocities(
             int entityID, int x, int y, int height, int targetX, int targetY, int targetZ)

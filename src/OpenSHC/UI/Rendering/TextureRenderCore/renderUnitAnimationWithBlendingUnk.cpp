@@ -22,9 +22,6 @@ namespace UI {
         using OpenSHC::Rendering::ColorMode;
         using OpenSHC::Rendering::Enums::RenderTarget;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00451E00
         void TextureRenderCore::renderUnitAnimationWithBlendingUnk(
             int xPosition, int yPosition, int width, int height, byte* imageAddress, int blendStrengthUnk)

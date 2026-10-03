@@ -10,9 +10,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004082A0
         uint EntityState::spawnEntityEffect2(
             undefined4 microX, undefined4 microY, undefined4 height, undefined4 entityType, int gmLookupValue)

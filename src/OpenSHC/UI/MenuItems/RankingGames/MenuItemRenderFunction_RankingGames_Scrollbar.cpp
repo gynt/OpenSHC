@@ -18,9 +18,6 @@ namespace UI {
 
         using OpenSHC::Rendering::Enums::RenderTarget;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9C10
         void RankingGames::MenuItemRenderFunction_RankingGames_Scrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)

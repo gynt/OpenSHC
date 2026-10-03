@@ -10,9 +10,6 @@ namespace Text {
 
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00474250
     void TextManager::renderTextToScreen(char* textAddress, int xParam, int yParam, TextAlignment alignment,
         BGR24 color, int fontSize, BOOLEnum keepOffsetX, int blendStrength)

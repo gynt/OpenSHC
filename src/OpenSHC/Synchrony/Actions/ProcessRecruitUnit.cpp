@@ -12,9 +12,6 @@ namespace Synchrony {
 
     using OpenSHC::Map::Units::UnitType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00464EF0
     void Actions::ProcessRecruitUnit(int playerID, int unitType, undefined4 recruitmentBuildingID)
     {

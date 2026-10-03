@@ -23,15 +23,6 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       whenever terrain is selected and you try to place it   decompilerscript: committed: 2025-01-30 21:57:43.216000
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x00508A00

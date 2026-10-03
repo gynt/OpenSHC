@@ -9,9 +9,6 @@ namespace Rendering {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BE7E0
         void AIMessageQueue::playEventVideoBik(char* eventText, char* eventVideoBik, char* eventWavFile)
         {

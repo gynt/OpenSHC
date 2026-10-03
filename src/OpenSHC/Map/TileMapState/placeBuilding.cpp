@@ -41,21 +41,6 @@ namespace Map {
     using OpenSHC::Map::Buildings::BuildingTypeShort;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x005162D0
     void TileMapState::placeBuilding(
         PlayerID playerID, int x, int y, MappersEnum cbt, int buildingSize, int buildingOrientation)

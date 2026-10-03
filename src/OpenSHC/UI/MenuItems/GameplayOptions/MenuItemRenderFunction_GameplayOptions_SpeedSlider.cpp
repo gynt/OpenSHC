@@ -26,9 +26,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00492080
         void GameplayOptions::MenuItemRenderFunction_GameplayOptions_SpeedSlider(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOL isDragged)

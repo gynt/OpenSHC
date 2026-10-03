@@ -11,9 +11,6 @@ namespace UI {
 
         using OpenSHC::Text::TextArrayIndexType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B8990
         void EditScenario::MenuItemActionHandler_EditScenario_DateYearBox(int param_1, ...)
         {

@@ -13,9 +13,6 @@ namespace Map {
 
     using OpenSHC::Game::GameMode2;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00417AA0
     void Buildings::UpdateKeepStronghold()
     {

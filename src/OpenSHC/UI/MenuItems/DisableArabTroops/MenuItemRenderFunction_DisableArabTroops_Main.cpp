@@ -31,9 +31,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB680
         void DisableArabTroops::MenuItemRenderFunction_DisableArabTroops_Main(int param_1, ...)
         {

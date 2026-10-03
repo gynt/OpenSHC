@@ -30,18 +30,6 @@ namespace Synchrony {
     using OpenSHC::Game::Resources::ResourceType;
     using OpenSHC::Map::Entities::EntityType;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004845B0
     void Commands::CommandSpawnEntity()
     {

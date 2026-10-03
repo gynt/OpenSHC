@@ -14,9 +14,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B0F70
         void OverlaySlider::MenuItemActionHandler_OverlaySlider_Deselect(int param_1, ...)
         {

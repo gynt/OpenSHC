@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00405CF0
         void EntityState::setProjectileTargetPosition(
             int entityID, int x, int y, int height, int targetX, int targetY, int targetZ)

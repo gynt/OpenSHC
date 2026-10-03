@@ -9,9 +9,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00402AE0
         void EntityState::updateEntityMicroMovement(int param_1)
         {

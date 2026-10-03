@@ -10,9 +10,6 @@ namespace UI {
         using OpenSHC::IO::Graphics::TgxToken;
         using OpenSHC::IO::Graphics::TgxTokenByte;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0044C9C0
 #pragma optimize("", off)
         void TextureRenderCore::transformTgxFromRGB555ToRGB565(ushort* tgxDataPtr, int tgxByteSize)

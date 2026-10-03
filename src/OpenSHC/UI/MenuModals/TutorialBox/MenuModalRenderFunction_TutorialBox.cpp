@@ -37,9 +37,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
         using OpenSHC::Rendering::Colors::BGR24;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BCBA0
         void TutorialBox::MenuModalRenderFunction_TutorialBox(int x, int y, int width, int height)
         {

@@ -4,9 +4,6 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00468F70
         void PencilRenderCore::drawPixelPattern4x4(int drawX, int drawY)
         {

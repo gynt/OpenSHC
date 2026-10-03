@@ -20,15 +20,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Unable to use type for symbol _pUnit1
-         */
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0051CCB0
         void TroopValueState::assignMacemenAndKnightsNotFromPlayer1ToTribes()
         {

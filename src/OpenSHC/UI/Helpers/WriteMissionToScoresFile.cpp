@@ -10,12 +10,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      WARNING: Type propagation algorithm not settling
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004E1810
     void Helpers::WriteMissionToScoresFile(char* param_1, int param_2)
     {

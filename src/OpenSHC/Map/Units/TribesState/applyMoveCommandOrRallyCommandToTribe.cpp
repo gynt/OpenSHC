@@ -19,9 +19,6 @@ namespace Map {
         using OpenSHC::Map::Units::States::UnitState;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00524340
         undefined4 TribesState::applyMoveCommandOrRallyCommandToTribe(
             int tribeID, undefined4 x1, undefined4 y1, undefined4 isRallying, int storeAsRallyPoint)

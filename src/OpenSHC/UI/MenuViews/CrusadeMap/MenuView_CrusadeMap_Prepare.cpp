@@ -18,9 +18,6 @@ namespace UI {
 
         using OpenSHC::Game::TrailType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8CB0
         void CrusadeMap::MenuView_CrusadeMap_Prepare()
         {

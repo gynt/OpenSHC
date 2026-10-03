@@ -13,9 +13,6 @@ namespace UI {
 
         using OpenSHC::UI::Enums::MenuModalType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00428980
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_MapDescScrollbar(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)

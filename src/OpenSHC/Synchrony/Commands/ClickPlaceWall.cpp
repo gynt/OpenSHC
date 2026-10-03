@@ -20,18 +20,6 @@ namespace Synchrony {
     using OpenSHC::Commands::MappersEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnumInt": Some values do not have unique names
-     */
-    /*
       called when placing a wall in the editor   decompilerscript: committed: 2025-01-30 21:57:43.216000
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x004819D0

@@ -18,9 +18,6 @@ namespace UI {
     using OpenSHC::UI::Enums::DisplayElementID;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1E60
     void DisplayElements::RenderGamePausedTextDisplayElement(int posX, int posY, DWORD elementState)
     {

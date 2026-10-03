@@ -10,12 +10,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
         using OpenSHC::WindowsHelper::Enums::WindowsDeviceCap;
 
-        /*
-          WARNING: Enum "WindowsSystemMetricInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00467B40
         void WindowAndDirectDraw::getDeviceCapsAndSetup()
         {

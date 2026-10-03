@@ -10,12 +10,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CAC0
     void Init::Constructor_TileMapState()
     {

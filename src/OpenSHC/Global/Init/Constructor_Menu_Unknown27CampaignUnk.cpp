@@ -9,9 +9,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AC80
     void Init::Constructor_Menu_Unknown27CampaignUnk()
     {

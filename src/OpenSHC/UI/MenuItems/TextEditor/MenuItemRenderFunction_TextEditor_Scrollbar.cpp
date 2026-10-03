@@ -12,9 +12,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0045EF90
         void TextEditor::MenuItemRenderFunction_TextEditor_Scrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)

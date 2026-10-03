@@ -15,9 +15,6 @@ namespace UI {
         using OpenSHC::Game::TrailType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8BB0
         void CrusadeMissionIntro::MenuItemRenderFunction_CrusadeMissionIntro_Main(int param_1, ...)
         {

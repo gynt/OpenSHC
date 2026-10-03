@@ -15,9 +15,6 @@ namespace Map {
 
     using OpenSHC::AI::Tribes::AITribeType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0052CAB0
     void WildlifeState::findAndSetNewRallyPointForDeerAndLions(int tribeID, int always2or3or5, int always0or1)
     {

@@ -26,12 +26,6 @@ namespace Map {
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Type propagation algorithm not settling
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0052BF40
     void WildlifeState::renderDebugDataMapData(int x, int y, int width, int height)
     {

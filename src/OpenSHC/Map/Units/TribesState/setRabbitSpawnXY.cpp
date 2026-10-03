@@ -7,9 +7,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x005233A0
         void TribesState::setRabbitSpawnXY(undefined4 x, undefined4 y)
         {

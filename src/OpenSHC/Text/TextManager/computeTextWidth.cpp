@@ -7,9 +7,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00471690
     int TextManager::computeTextWidth(char* text, int fontSize)
     {

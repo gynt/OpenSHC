@@ -8,9 +8,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0042EE80
         void MapEditorProperties::MenuItemActionHandler_MapEditorProperties_MapDescriptionScrollbar(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)

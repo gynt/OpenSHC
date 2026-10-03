@@ -21,9 +21,6 @@ namespace UI {
         using OpenSHC::IO::Graphics::GmID;
         using OpenSHC::Text::FontRenderType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00455540
         void TextureRenderCore::renderTextChar(int xPos, int yPos, int imageId, FontRenderType renderType,
             int lineHeight, ushort fillColor, int blendStrength)

@@ -23,9 +23,6 @@ namespace UI {
         using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00440770
         void CustomScenarios::MenuItemActionHandler_CustomScenarios_Main(int param_1, ...)
         {

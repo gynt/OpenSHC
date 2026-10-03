@@ -29,9 +29,6 @@ namespace UI {
         using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004476B0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus(int param_1, ...)
         {

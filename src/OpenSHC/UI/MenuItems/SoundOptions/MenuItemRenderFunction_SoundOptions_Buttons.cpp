@@ -26,9 +26,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00492690
         void SoundOptions::MenuItemRenderFunction_SoundOptions_Buttons(int param_1, ...)
         {

@@ -15,9 +15,6 @@ namespace Map {
     using OpenSHC::Map::Units::UnitType;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       Allocates a new attack wave slot (inv_count, wrapping at 50), maps unit type codes   (param_2/param_4) to internal
       unit type enums and group sizes, scales quantity (param_3/param_5)   by difficulty (50/100/140/200%), then
       distributes units across map edge signpost positions via   TribesState::FUN_00522f70. Handles both primary and

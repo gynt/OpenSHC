@@ -12,9 +12,6 @@ namespace Map {
 
         using OpenSHC::Map::Entities::EntityType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004011D0
         void EntityState::setProjectileEntityValues2(int entityID, EntityType entityType)
         {

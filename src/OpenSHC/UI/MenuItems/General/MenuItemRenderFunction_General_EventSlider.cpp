@@ -27,9 +27,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BA3C0
         void General::MenuItemRenderFunction_General_EventSlider(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOL isDragged)

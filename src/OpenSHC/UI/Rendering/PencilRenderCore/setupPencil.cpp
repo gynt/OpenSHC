@@ -13,9 +13,6 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00468C80
         BOOLEnum PencilRenderCore::setupPencil(int left, int top, int right, int bottom, ushort color)
         {

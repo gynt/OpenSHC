@@ -11,9 +11,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004DD300
         void ScenarioDescription::MenuView_ScenarioDescription_DoInitial()
         {

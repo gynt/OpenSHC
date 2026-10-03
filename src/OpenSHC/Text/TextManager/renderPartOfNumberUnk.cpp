@@ -13,9 +13,6 @@ namespace Text {
 
     using OpenSHC::Text::FontRenderType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0046A2C0
     int TextManager::renderPartOfNumberUnk(int numberToRenderUnk, int xPosUnk, int yPosUnk, int integerPartToRenderUnk,
         int bgr24, int digitSet, BOOL useCurrentXOffsetUnk)

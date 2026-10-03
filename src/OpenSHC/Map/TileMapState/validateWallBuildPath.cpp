@@ -26,18 +26,6 @@ namespace Map {
     using OpenSHC::Map::Units::UnitType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x005029D0
     void TileMapState::validateWallBuildPath(int playerID, uint x1, uint y1, uint x2, uint y2, undefined4 command)
     {

@@ -7,9 +7,6 @@
 namespace OpenSHC {
 namespace Map {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004BC110
     void MapPropertiesState::adjustEventMonthAndYearForSection1047()
     {

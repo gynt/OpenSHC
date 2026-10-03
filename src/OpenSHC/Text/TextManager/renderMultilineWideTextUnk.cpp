@@ -7,9 +7,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00473B50
     void TextManager::renderMultilineWideTextUnk(
         LPWSTR _wideText, int xPos, int yPos, int maxWidth, uint color1, uint color2, int fontSize, int blendStrength)

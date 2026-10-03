@@ -17,15 +17,6 @@ namespace UI {
         using OpenSHC::Commands::GameCommandType;
         using OpenSHC::Game::GameMode;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00493D30
         void IdentityOptions::MenuItemActionHandler_IdentityOptions_Confirm(int param_1, ...)
         {

@@ -13,12 +13,6 @@ namespace OpenSHC {
 namespace UI {
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Iterates all player slots (1-8), filtering for players on a different team than the current   player that are
       either human (currentPlayerFullIDArray != -1) or AI (currentAIArray != 0) and   still have a live lord (or the
       game just started). Populates DAT_RequestedGoodsByWhoArray with up   to 6 enemy player IDs and sets

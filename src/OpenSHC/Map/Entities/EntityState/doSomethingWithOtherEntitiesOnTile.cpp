@@ -7,12 +7,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00401460
         void EntityState::doSomethingWithOtherEntitiesOnTile(uint entityID)
         {

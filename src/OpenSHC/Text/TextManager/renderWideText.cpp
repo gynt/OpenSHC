@@ -7,9 +7,6 @@
 namespace OpenSHC {
 namespace Text {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004742F0
     void TextManager::renderWideText(LPWSTR wideText, int xPos, int yPos, TextAlignment alignment, uint color,
         int fontSize, BOOL keepXOffset, int blendStrength)

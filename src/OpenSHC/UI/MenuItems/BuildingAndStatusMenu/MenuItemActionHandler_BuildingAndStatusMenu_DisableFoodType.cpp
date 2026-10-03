@@ -15,15 +15,6 @@ namespace UI {
         using OpenSHC::Game::GameMode;
         using OpenSHC::Game::GameMode2;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0043FBB0
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_DisableFoodType(int param_1, ...)
         {

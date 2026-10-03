@@ -20,15 +20,6 @@ namespace UI {
     using OpenSHC::UI::Enums::MenuViewType;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Given a UI element ID (param_1), renders the animated tutorial float overlay at a hardcoded   screen position
       matching that element (e.g. granary, taxes slider, rations, quarry, hop farm   etc). Guards against showing while
       in incorrect menu states or when certain conditions aren't   met. Delegates to renderAnimatedTutorialFloatOverlay

@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004010E0
         void EntityState::clearEntityArrayAndSeagullArray()
         {

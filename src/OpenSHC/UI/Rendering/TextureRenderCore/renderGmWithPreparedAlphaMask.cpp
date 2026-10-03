@@ -19,9 +19,6 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::IO::Graphics::TgxTokenByte;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0044F170
         void TextureRenderCore::renderGmWithPreparedAlphaMask(
             int x, int y, int width, int height, ushort* imageDataPtr, int blendStrength)

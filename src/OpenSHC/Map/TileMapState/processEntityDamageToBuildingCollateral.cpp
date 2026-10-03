@@ -42,18 +42,6 @@ namespace Map {
     using OpenSHC::Map::Units::States::UnitState;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00517790
     void TileMapState::processEntityDamageToBuildingCollateral(
         int tile, uint x_2, uint y_2, int damage, int playerID, undefined4 unused, int unitID)

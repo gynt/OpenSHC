@@ -27,21 +27,6 @@ namespace Game {
     using OpenSHC::Game::TrailType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Unable to use type for symbol _startDateInMonths
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004C68D0
     void Skirmish::SetupSkirmishMode(int skirmishTrailMission)
     {

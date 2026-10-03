@@ -30,9 +30,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
         using OpenSHC::Rendering::Colors::BGR24;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00492170
         void VideoOptions::MenuItemRenderFunction_VideoOptions_Main(int param_1, ...)
         {

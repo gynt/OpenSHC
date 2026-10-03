@@ -14,9 +14,6 @@ namespace Map {
     using OpenSHC::Map::Units::UnitLogicState;
     using OpenSHC::Map::Units::Unit;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B380
     void Version::UpgradeMapUnitsTo_100()
     {

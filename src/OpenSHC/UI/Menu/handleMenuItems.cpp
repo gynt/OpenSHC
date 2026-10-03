@@ -95,9 +95,6 @@ namespace UI {
                                          || (funcIndex == OpenSHC::UI::Enums::MIHS_RESET_MENU_ITEM_STATEUnk))))
                                 && (funcIndex < ((MenuItemHandleState)4))))))) {
                         /*
-                          WARNING: Switch is manually overridden
-                         */
-                        /*
                           updates and renders menu
                          */
                         switch (funcIndex) {

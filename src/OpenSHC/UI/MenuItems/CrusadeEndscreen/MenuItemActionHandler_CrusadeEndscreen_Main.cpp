@@ -13,9 +13,6 @@ namespace UI {
         using OpenSHC::Game::TrailType;
         using OpenSHC::Game::TrailTypeInt;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9230
         void CrusadeEndscreen::MenuItemActionHandler_CrusadeEndscreen_Main(int param_1, ...)
         {

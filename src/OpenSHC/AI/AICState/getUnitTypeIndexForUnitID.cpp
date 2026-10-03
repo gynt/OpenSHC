@@ -19,12 +19,6 @@ namespace AI {
     using OpenSHC::Map::Units::UnitTypeInt;
     using OpenSHC::Map::Units::UnitTypeShort;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004CC390
     AIVUnitType AICState::getUnitTypeIndexForUnitID(int unitID, int param_2)
     {

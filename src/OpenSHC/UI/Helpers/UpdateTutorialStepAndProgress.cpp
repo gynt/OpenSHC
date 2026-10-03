@@ -54,9 +54,6 @@ namespace UI {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       Main per-frame tutorial update function. Manages the tutorial modal dialog (MMT_TUTORIAL_BOX /
       MMT_TUTORIAL_BOX_WITH_LEAVE), plays step speech audio with delay, handles step transition   fade-in/out via
       DAT_00df5540 state machine, advances DAT_TutorialCurrentStep on completion,   evaluates per-step completion

@@ -22,9 +22,6 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00465950
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_SelectBuySellGoods(int param_1, ...)
         {

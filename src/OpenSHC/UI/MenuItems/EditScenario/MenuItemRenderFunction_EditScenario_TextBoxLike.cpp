@@ -36,9 +36,6 @@ namespace UI {
         using OpenSHC::Text::TextArrayIndexType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004BF1D0
         void EditScenario::MenuItemRenderFunction_EditScenario_TextBoxLike(int param_1, ...)
         {

@@ -53,15 +53,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
           This includes stuff like the buildings to place, but also the unit stances for example.   -TheRedDaemon
           decompilerscript: committed: 2025-01-30 21:57:43.216000
          */

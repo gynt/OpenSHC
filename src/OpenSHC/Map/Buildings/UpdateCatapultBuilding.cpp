@@ -38,18 +38,6 @@ namespace Map {
     using OpenSHC::Map::Units::States::UnitState;
     using OpenSHC::UI::Enums::MenuViewType;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0041F3B0
     void Buildings::UpdateCatapultBuilding()
     {

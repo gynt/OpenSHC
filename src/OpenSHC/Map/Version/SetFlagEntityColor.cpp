@@ -15,9 +15,6 @@ namespace Map {
     using OpenSHC::Map::Entities::Entity;
     using OpenSHC::Map::Entities::EntityTypeShort;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:56:35.138000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004038B0
     void Version::SetFlagEntityColor()
     {

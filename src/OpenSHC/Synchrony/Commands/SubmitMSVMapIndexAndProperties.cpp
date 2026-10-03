@@ -34,18 +34,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
     using OpenSHC::IO::Base64State;
 
-    /*
-      WARNING: Function: __alloca_probe replaced with injection: alloca_probe
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00489E30
     void Commands::SubmitMSVMapIndexAndProperties()
     {

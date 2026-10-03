@@ -9,9 +9,6 @@ namespace UI {
 
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00472B20
         void PencilRenderCore::drawLine(int x1, int y1, int x2, int y2, ushort color)
         {

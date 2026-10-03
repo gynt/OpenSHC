@@ -11,9 +11,6 @@ namespace UI {
 
     using OpenSHC::Rendering::ColorMode;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B6320
     void MinimapViewState::convertLoadedMinimapColors()
     {

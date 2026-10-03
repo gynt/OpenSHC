@@ -8,9 +8,6 @@
 namespace OpenSHC {
 namespace Map {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:56:35.138000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004023F0
     uint Entities::UpdateEntity_29()
     {

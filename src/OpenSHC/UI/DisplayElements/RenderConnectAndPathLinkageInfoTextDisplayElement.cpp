@@ -12,9 +12,6 @@ namespace UI {
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00433BC0
     void DisplayElements::RenderConnectAndPathLinkageInfoTextDisplayElement(int posX, int posY, DWORD tileType)
     {

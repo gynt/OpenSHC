@@ -8,12 +8,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B58D0
     void MinimapViewState::renderMinimapTileColors(uint param_1, int param_2, int param_3, int param_4, uint param_5)
     {

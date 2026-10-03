@@ -24,9 +24,6 @@ namespace UI {
         using OpenSHC::UI::Enums::RoundedBoxEdgeRoundingLevel;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004932E0
         void SaveMap::MenuItemRenderFunction_SaveMap_InputTextDisplay(int param_1, ...)
         {

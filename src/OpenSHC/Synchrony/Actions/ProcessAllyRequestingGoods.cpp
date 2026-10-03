@@ -21,15 +21,6 @@ namespace Synchrony {
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::Game::Resources::ResourceType;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004AD7C0
     void Actions::ProcessAllyRequestingGoods(int askedPlayerID, int param_2, int amount, int askee)
     {

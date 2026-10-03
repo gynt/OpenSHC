@@ -10,12 +10,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CCD0
     void Init::Constructor_GameSynchronyState()
     {

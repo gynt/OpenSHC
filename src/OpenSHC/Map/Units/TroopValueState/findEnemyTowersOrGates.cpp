@@ -12,12 +12,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0051A330
         undefined4 TroopValueState::findEnemyTowersOrGates(int unitID)
         {

@@ -19,12 +19,6 @@ namespace Map {
     using OpenSHC::DE::SHCDE::eSFX;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00417B90
     void Buildings::UpdateDrawBridge()
     {

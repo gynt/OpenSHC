@@ -13,12 +13,6 @@ namespace Map {
 
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F8BD0
     void TileMapState::renderWallDragPreview(int playerID, uint x1, uint y1, uint x2, uint y2, undefined4 command)
     {

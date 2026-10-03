@@ -5,9 +5,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Navigation {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0046C920
         void DirectionAlgorithmState::calculateOrientation(
             int currentXPosition, int currentYPosition, int destinationXPosition, int destinationYPosition)

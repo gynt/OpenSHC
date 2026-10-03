@@ -7,12 +7,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00519DE0
         void TroopValueState::setScale3(int one, int playerID)
         {

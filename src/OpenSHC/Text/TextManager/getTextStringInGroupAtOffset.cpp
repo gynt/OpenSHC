@@ -7,9 +7,6 @@ namespace Text {
 
     using OpenSHC::DE::SHCDE::eTextSections;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0046A050
     char* TextManager::getTextStringInGroupAtOffset(eTextSections offsetIndex, int numInGroup)
     {

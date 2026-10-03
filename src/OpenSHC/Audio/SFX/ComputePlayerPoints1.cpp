@@ -11,9 +11,6 @@ namespace Audio {
 
     using OpenSHC::Game::Resources::ResourceType;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0044A830
     int SFX::ComputePlayerPoints1(int playerID)
     {

@@ -18,15 +18,6 @@ namespace Synchrony {
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004AD2F0
     void Actions::ProcessAllyRequestAttackDefense(
         int targetPlayerID, int playerID, int requestedByPlayerID, int param_4)

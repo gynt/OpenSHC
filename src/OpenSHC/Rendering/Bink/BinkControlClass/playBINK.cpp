@@ -21,12 +21,6 @@ namespace Rendering {
         using OpenSHC::Rendering::Bink::UnsortedBinkFlag;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00408ED0
         void BinkControlClass::playBINK(
             int binkObjIndex, char* binkFileName, DWORD param_3, DWORD param_4, int xPos, int yPos, DWORD param_7)

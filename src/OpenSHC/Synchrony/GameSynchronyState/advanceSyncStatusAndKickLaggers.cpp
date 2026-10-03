@@ -13,12 +13,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       Marks the current player's receivedSyncStatusByPlayerUnk as 2 and checks whether all connected   players have
       confirmed. If all confirmed, queues GCT_SET_SYNC_STATUS_0. If some players haven't   confirmed within the
       announcement timeout (0xAFC9ms), kicks them via GCT_LEAVE_GAME and then   queues GCT_SET_SYNC_STATUS_0. If the

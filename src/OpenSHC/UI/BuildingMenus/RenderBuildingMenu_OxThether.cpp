@@ -17,9 +17,6 @@ namespace UI {
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0043BE20
     void BuildingMenus::RenderBuildingMenu_OxThether()
     {

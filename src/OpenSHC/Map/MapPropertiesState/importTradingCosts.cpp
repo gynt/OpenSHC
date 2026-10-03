@@ -10,12 +10,6 @@ namespace OpenSHC {
 namespace Map {
     using OpenSHC::Game::Market::BuySellPair;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004B7800
     void MapPropertiesState::importTradingCosts()
     {

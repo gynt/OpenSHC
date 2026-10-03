@@ -20,12 +20,6 @@ namespace Map {
 
     using OpenSHC::Map::Entities::EntityType;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004052E0
     uint Entities::IgniteFireAtMiniTile(
         int playerID, int miniTileX, int miniTileY, int tileHeightMin8, int two, int fireIntensity)

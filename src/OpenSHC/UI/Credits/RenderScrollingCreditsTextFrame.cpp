@@ -20,9 +20,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004DB390
     void Credits::RenderScrollingCreditsTextFrame(float param_1)
     {

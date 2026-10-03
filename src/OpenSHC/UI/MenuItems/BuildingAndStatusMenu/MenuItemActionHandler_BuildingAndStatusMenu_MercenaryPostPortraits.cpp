@@ -33,15 +33,6 @@ namespace UI {
         using OpenSHC::Game::GameMode;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004674C0
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_MercenaryPostPortraits(int param_1, ...)
         {

@@ -18,9 +18,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004DB300
     void Helpers::TrimStoredMenuString(int storedMenuStringIndex, undefined4 param_2, undefined4 param_3,
         int allowedWidth, undefined4 param_5, int fontSize)

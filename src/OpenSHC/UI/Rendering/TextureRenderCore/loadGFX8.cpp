@@ -13,9 +13,6 @@ namespace UI {
         using OpenSHC::IO::FileResourceType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00454700
         int TextureRenderCore::loadGFX8(char* gfx8Filename)
         {

@@ -12,9 +12,6 @@ namespace Map {
 
         using OpenSHC::Map::Units::UnitType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00521500
         void TribesState::predictUnitInterceptPosition(
             int targetUnitID, int unitID, int* unitCurrentX, int* unitCurrentY)

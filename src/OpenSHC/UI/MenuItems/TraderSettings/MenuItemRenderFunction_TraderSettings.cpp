@@ -42,9 +42,6 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
         using OpenSHC::Rendering::Colors::BGR24;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004C1070
         void TraderSettings::MenuItemRenderFunction_TraderSettings(int param_1, ...)
         {

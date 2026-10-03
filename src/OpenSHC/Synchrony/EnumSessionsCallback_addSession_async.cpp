@@ -9,18 +9,6 @@ namespace OpenSHC {
 
 using OpenSHC::WindowsHelper::Enums::GlobalAllocFlag;
 
-/*
-  WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "DPERRInt": Some values do not have unique names
- */
-/*
-  WARNING: Enum "GlobalAllocFlagInt": Some values do not have unique names
- */
-/*
-  decompilerscript: committed: 2025-01-30 21:57:43.216000
- */
 // FUNCTION: STRONGHOLDCRUSADER 0x0047DF40
 bool __stdcall Synchrony::EnumSessionsCallback_addSession_async(
     DPSESSIONDESC2* lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext)

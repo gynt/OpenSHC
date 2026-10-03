@@ -48,18 +48,6 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       Per-frame update for the scripted military campaign missions (16-20). Handles win/loss   conditions, timed
       dialogue video sequences (Bink + WAV), spawn waves via   spawnAttackWaveForPlayer, and enemy kill tracking per
       mission number. Each mission (0x10-0x14)   has its own state machine driven by field3204_0x27d4 and

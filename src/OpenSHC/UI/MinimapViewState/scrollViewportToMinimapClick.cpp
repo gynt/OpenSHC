@@ -18,9 +18,6 @@ namespace UI {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       Converts the current mouse screen position into viewport coordinates using the minimap's   position, scale
       factors, and map offsets, then calls setViewportBasedOnMapSize to scroll the main   view. Skipped if in build menu
       with soldiers tab active, shift-related state is 1, or right mouse   button is held.      renamed by: Claude

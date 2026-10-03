@@ -17,12 +17,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00524CA0
         undefined4 TribesState::isTribePathToDestinationClear(
             int param_1, uint param_2, uint param_3, uint param_4, uint param_5)

@@ -4,9 +4,6 @@
 namespace OpenSHC {
 namespace IO {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0046AAF0
     void LowLevelMemory::copyData_0x001()
     {

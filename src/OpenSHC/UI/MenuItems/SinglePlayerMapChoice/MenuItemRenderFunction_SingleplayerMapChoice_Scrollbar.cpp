@@ -16,9 +16,6 @@ namespace UI {
 
         using OpenSHC::Rendering::Enums::RenderTarget;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DC60
         void SinglePlayerMapChoice::MenuItemRenderFunction_SingleplayerMapChoice_Scrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)

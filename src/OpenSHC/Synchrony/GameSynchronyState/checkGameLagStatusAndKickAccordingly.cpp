@@ -12,12 +12,6 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0048F4C0
     void GameSynchronyState::checkGameLagStatusAndKickAccordingly()
     {

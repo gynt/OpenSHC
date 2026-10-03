@@ -12,9 +12,6 @@ namespace UI {
     using OpenSHC::Audio::SFX::SoundEffectID;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4C80
     void MenuHandlerState::startBuildMenuTransition(int transitionDuration)
     {

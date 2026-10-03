@@ -13,9 +13,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00522CA0
         void TribesState::snapshotSelectionTribeAndComputeStance(int playerID)
         {

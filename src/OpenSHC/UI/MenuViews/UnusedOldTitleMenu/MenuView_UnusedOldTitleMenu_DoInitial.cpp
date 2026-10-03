@@ -21,9 +21,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DD00
         void UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_DoInitial()
         {

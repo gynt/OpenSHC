@@ -21,9 +21,6 @@ namespace Synchrony {
     using OpenSHC::Map::Units::UnitType;
     using OpenSHC::Map::Units::UnitTypeShort;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00465F90
     short* Actions::SelectionReplenishAmmo(int playerID, int param_2)
     {

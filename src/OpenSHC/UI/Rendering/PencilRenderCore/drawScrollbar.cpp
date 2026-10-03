@@ -15,9 +15,6 @@ namespace UI {
         using OpenSHC::IO::Graphics::GmID;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004690E0
         void PencilRenderCore::drawScrollbar(
             uint xPos, int yPos, int height, int thumbYPos, BOOLEnum isDragged, int thumbHeight, int blendStrength)

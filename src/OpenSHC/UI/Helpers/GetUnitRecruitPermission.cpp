@@ -7,15 +7,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00464E80
     int Helpers::GetUnitRecruitPermission(int param_1)
     {

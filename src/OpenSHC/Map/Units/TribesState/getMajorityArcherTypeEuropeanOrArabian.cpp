@@ -13,9 +13,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::Map::Units::UnitType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x005242B0
         UnitType TribesState::getMajorityArcherTypeEuropeanOrArabian(int selectionID)
         {

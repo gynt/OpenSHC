@@ -7,9 +7,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      decompilerscript: committed: 2026-05-02 18:15:17.059000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CC20
     void Init::Constructor_GameState()
     {

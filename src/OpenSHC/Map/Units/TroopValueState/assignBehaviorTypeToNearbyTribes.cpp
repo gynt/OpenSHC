@@ -12,12 +12,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00518930
         void TroopValueState::assignBehaviorTypeToNearbyTribes(
             SomeTribeBehaviorType param_1, undefined4 param_2, short param_3, short param_4)

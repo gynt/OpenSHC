@@ -8,9 +8,6 @@ namespace Text {
 
     using OpenSHC::Text::TextAlignment;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00424650
     void TextManager::renderLeftAlignedNumberToScreen(
         int number, int xParam, int yParam, uint color, int fontSize, BOOL keepOffsetX)

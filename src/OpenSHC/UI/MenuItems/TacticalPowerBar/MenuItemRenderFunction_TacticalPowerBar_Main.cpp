@@ -26,15 +26,6 @@ namespace UI {
         using OpenSHC::IO::Graphics::GmID;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9EC0
         void TacticalPowerBar::MenuItemRenderFunction_TacticalPowerBar_Main(int param_1, ...)
         {

@@ -8,9 +8,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004012F0
         void EntityState::setEntityParameters(int entityID, undefined4 entityType, int gmLookupValue)
         {

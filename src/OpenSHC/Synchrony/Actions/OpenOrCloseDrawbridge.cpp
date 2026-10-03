@@ -11,9 +11,6 @@ namespace Synchrony {
 
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004653B0
     void Actions::OpenOrCloseDrawbridge(undefined4 param_1, int buildingID, int value, int buildingUID)
     {

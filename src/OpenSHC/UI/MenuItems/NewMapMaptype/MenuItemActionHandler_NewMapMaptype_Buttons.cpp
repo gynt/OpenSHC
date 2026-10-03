@@ -20,9 +20,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F2B0
         void NewMapMaptype::MenuItemActionHandler_NewMapMaptype_Buttons(int param_1, ...)
         {

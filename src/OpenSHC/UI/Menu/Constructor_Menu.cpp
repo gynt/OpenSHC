@@ -15,9 +15,6 @@ namespace UI {
     using OpenSHC::UI::Enums::MenuItemUCMarker;
     using OpenSHC::UI::Enums::UserControlID;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4100
     Menu* Menu::Constructor_Menu(MenuItem* menuItemArrayAddress)
     {

@@ -26,9 +26,6 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B19E0
         void AiLordSelect::MenuModalRenderFunction_AiLordSelect(int x, int y, int width, int height)
         {

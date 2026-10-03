@@ -10,12 +10,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00523190
         dword TribesState::createTribeWithSpawnedUnit(
             short someIndex, undefined4 tribeType, int x, int y, int playerID, UnitType unitType, int count)

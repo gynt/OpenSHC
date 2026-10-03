@@ -15,12 +15,6 @@
 namespace OpenSHC {
 namespace Game {
 
-    /*
-      WARNING: Type propagation algorithm not settling
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004D9290
     void Skirmish::Skirmish_SortAIOpponentOrder(int reverseOrder)
     {

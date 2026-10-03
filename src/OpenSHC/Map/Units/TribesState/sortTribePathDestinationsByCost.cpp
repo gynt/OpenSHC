@@ -18,12 +18,6 @@ namespace Map {
         using OpenSHC::Map::Navigation::PathFindingStatePartB;
         using OpenSHC::Map::Navigation::PathHelper12;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00524930
         void TribesState::sortTribePathDestinationsByCost(int tribeID, int horseAndRamCount)
         {

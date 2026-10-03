@@ -22,15 +22,6 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandScheduling;
     using OpenSHC::DE::SHCDE::eTextSections;
 
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0048B4E0
     void Commands::VoteKick_SEND_L_E_C_A_F_H_ZAP()
     {

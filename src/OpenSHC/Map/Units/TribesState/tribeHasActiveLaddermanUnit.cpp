@@ -15,9 +15,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitType;
         using OpenSHC::Map::Units::States::UnitState;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00524140
         undefined4 TribesState::tribeHasActiveLaddermanUnit(int param_1)
         {

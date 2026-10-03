@@ -5,9 +5,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00522C50
         void TribesState::addRallyPoint(int section1016ID, short destinationX, short destinationY, int step)
         {

@@ -30,9 +30,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9530
         void NewInvasion::MenuItemRenderFunction_NewInvasion_RepeatSlider(
             int param_1, int thumbXPos, int sliderValue, int thumbWidth, BOOLEnum isDragged)

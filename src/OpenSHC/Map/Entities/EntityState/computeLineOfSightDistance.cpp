@@ -10,12 +10,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00402E20
         uint EntityState::computeLineOfSightDistance(
             int x, int y, int height, int targetX, int targetY, int targetHeight, int param_7)

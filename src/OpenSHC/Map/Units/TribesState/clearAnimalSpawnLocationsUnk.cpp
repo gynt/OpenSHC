@@ -10,9 +10,6 @@ namespace Map {
     namespace Units {
         using OpenSHC::Map::Location::Point4ShortXY;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x005232E0
         void TribesState::clearAnimalSpawnLocationsUnk()
         {

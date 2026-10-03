@@ -23,9 +23,6 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00464260
         void ChooseRandomNumberOfEnemies::MenuItemRenderFunction_ChooseRandomNumberOfEnemies_Main(int param_1, ...)
         {

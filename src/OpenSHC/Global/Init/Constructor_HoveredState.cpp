@@ -8,9 +8,6 @@
 namespace OpenSHC {
 namespace Global {
 
-    /*
-      WARNING: Enum "MappersEnumInt": Some values do not have unique names
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CCA0
     void Init::Constructor_HoveredState()
     {

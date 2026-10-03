@@ -14,9 +14,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::Map::Units::States::UnitState;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00524890
         undefined4 TribesState::stopTribeMovementAndCheckIdle(int param_1)
         {

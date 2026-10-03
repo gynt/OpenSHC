@@ -14,12 +14,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        /*
-          WARNING: Enum "UnsortedBinkFlagInt": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00424A50
         void IntroVideo::MenuView_IntroVideo_Prepare()
         {

@@ -21,15 +21,6 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       @return int 0 if allowed, 1 if not allowed, 2 not allowed because of clashing building placement decompilerscript:
       committed: 2025-01-30 21:57:43.216000
      */

@@ -25,21 +25,6 @@ namespace UI {
         using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
         using OpenSHC::UI::Enums::MenuViewType;
 
-        /*
-          WARNING: Enum "MappersEnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "DPERRInt": Some values do not have unique names
-         */
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00440280
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_ReturnToBuildMenu(int param_1, ...)
         {

@@ -10,12 +10,6 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:56:35.138000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004015D0
         void EntityState::processFireDamageToUnitsAtTile(int tile, int playerID, int fireLowIntensity)
         {

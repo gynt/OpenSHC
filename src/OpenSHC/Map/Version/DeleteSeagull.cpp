@@ -16,9 +16,6 @@ namespace Map {
     using OpenSHC::Map::Entities::EntityType;
     using OpenSHC::Map::Entities::ExtraEntityInfo;
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:56:35.138000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00404A70
     void Version::DeleteSeagull()
     {

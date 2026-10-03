@@ -27,12 +27,6 @@ namespace Map {
         using OpenSHC::Map::Units::UnitLogicState;
         using OpenSHC::Map::Units::UnitType;
 
-        /*
-          WARNING: Enum "MappersEnum": Some values do not have unique names
-         */
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B710
         void TroopValueState::placeSiegeTentsAndAssignEngineers(int param_1, int param_2)
         {

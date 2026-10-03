@@ -25,12 +25,6 @@ namespace Synchrony {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
-    /*
       called in multiplayer error: 0x4D   Stronghold 1: KickMPPlayer   decompilerscript: committed: 2025-01-30
       21:57:43.216000
      */

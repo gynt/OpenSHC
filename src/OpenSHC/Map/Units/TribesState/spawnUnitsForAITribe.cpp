@@ -14,9 +14,6 @@ namespace Map {
 
         using OpenSHC::Map::Units::UnitType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00522F70
         void TribesState::spawnUnitsForAITribe(
             undefined4 param_1, int param_2, int param_3, int param_4, UnitType param_5, int param_6, int param_7)

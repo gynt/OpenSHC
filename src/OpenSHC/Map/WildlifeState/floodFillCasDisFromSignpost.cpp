@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace Map {
 
     /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
       BFS from the current attack signpost position (from TroopValueState.attackInfo), propagating   casDisRelated2
       outward (incrementing by 1 per step, capped at 99). Restricted to cells in the   same separateAreaID with
       unknownNonZero01 == 0. Also increments field29_0x74 on each visited   cell, building both a distance map and a

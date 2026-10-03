@@ -26,9 +26,6 @@ namespace UI {
         using OpenSHC::DE::SHCDE::eTextSections;
         using OpenSHC::UI::Enums::MenuModalType;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0042EBC0
         void MapEditorProperties::MenuItemRenderFunction_MapEditorProperties_MapDescriptionBox(int param_1, ...)
         {

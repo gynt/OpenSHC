@@ -21,15 +21,6 @@ namespace UI {
     using OpenSHC::Commands::GameCommandType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-    /*
-      WARNING: Enum "MappersEnum": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
-     */
-    /*
-      WARNING: Enum "DPERRInt": Some values do not have unique names
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x00437CC0
     void Helpers::HandleWallTerrainMouseDrag()
     {

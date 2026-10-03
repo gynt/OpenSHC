@@ -4,9 +4,6 @@
 namespace OpenSHC {
 namespace Map {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3080
     void LandscapeState::advanceTreeDecayState(int treeID, int param_2)
     {

@@ -33,9 +33,6 @@ namespace UI {
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x0045DE40
         void TextEditor::MenuItemRenderFunction_TextEditor_Buttons(int param_1, ...)
         {

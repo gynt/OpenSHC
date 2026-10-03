@@ -9,9 +9,6 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004ABBA0
         void BuildingAvailability::MenuModalRenderFunction_BuildingAvailability(int x, int y, int width, int height)
         {

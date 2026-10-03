@@ -5,9 +5,6 @@
 namespace OpenSHC {
 namespace UI {
 
-    /*
-      decompilerscript: committed: 2025-01-30 21:57:43.216000
-     */
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA480
     void MenuModalComposition::setSliderParameters(
         int minimum, int maximum, int value, undefined* destination, void* callbackFunction)

@@ -15,9 +15,6 @@ namespace UI {
 
         using OpenSHC::Text::Enums::HelpTextToken;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00461570
         void TextEditor::MenuItemActionHandler_TextEditor_TextInputRelatedUnk()
         {

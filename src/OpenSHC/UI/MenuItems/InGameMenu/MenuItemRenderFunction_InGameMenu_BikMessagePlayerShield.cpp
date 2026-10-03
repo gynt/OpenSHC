@@ -16,9 +16,6 @@ namespace UI {
         using OpenSHC::DE::SHCDE::eGM;
         using OpenSHC::Rendering::Enums::RenderTarget;
 
-        /*
-          decompilerscript: committed: 2025-01-30 21:57:43.216000
-         */
         // FUNCTION: STRONGHOLDCRUSADER 0x004B65F0
         void InGameMenu::MenuItemRenderFunction_InGameMenu_BikMessagePlayerShield(int param_1, ...)
         {
