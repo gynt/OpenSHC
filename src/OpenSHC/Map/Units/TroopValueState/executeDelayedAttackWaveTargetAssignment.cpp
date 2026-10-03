@@ -67,8 +67,7 @@ namespace Map {
                 if (this->attackInfo.lord2 != 0) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(param_1,
-                        (int)((int)(this->attackInfo
-                                .padding_0x20e0c[304] /* 0x20F3C: inside padding_0x20e0c in the header */)),
+                        (int)((int)(this->attackInfo.field_0x20f3c)),
                         1000, OpenSHC::Map::Units::STBT_0x3fd);
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::assignBehaviorTypeToNearbyTribes,
                         this)(OpenSHC::Map::Units::STBT_0x3fd, 1, 0, 5);
