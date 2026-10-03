@@ -93,7 +93,7 @@ namespace UI {
             DAT_TextManagerObject::instance.field12_0x30 = 1;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar2, DAT_ButtonX::instance + 0x18 + iVar4, (int)((int)(DAT_ButtonY::instance + 3)), local_2c, color,
-                0x12, ((int)(iVar3 + (iVar3 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                0x12, (iVar3 / 32) + 0x20);
             dVar1 = DAT_ResourceManager::instance.mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                     [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1]];
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
@@ -102,8 +102,7 @@ namespace UI {
             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_24,
                 (int)((int)(DAT_ButtonX::instance + 0x134)), (int)((int)(DAT_ButtonY::instance + 3)),
-                OpenSHC::Text::TTA_LEFT, (BGR24)((int)(color)), 0x12, FALSE,
-                ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                OpenSHC::Text::TTA_LEFT, (BGR24)((int)(color)), 0x12, FALSE, (iVar4 / 32) + 0x20);
         LAB_0042db95:
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             ;
