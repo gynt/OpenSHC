@@ -40,29 +40,22 @@ namespace UI {
             iVar1 = xPos;
             iVar2 = xPos + 8;
             _width = width + -0x10;
-            xPos = 0;
-            do {
+            for (xPos = 0; xPos < 0x40; xPos += 8) {
                 if (xPos == 0) {
                     iVar4 = 0x30;
                 } else {
                     iVar4 = (-(uint)(xPos != 0x38) & 0xfffffffa) + 0x3c;
                 }
-                iVar3 = 0;
-                if (0 < _width) {
-                    do {
-                        imageID = iVar4;
-                        if ((iVar3 != 0) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
-                            imageID = iVar4 + 1;
-                        }
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
-                            iVar3 + iVar2, xPos + yPos + 8, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
-                            0);
-                        iVar3 = iVar3 + 8;
-                    } while (iVar3 < _width);
+                for (iVar3 = 0; iVar3 < _width; iVar3 += 8) {
+                    imageID = iVar4;
+                    if ((iVar3 != 0) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
+                        imageID = iVar4 + 1;
+                    }
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
+                        iVar3 + iVar2, xPos + yPos + 8, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3, 0);
                 }
-                xPos = xPos + 8;
-            } while (xPos < 0x40);
+            }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, iVar1 + 0xb,
                 yPos + 0x11, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
