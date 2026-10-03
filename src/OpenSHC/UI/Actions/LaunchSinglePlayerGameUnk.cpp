@@ -406,8 +406,7 @@ namespace UI {
                             iVar7 = -(iVar9 / 2);
                             goto LAB_0042cf15;
                         }
-                        local_7e4 = 0;
-                        do {
+                        for (local_7e4 = 0; local_7e4 < 3; local_7e4++) {
                             uVar12 = 1;
                             psVar4 = &DAT_UnitsState::instance.units[1].dying;
                             do {
@@ -437,8 +436,7 @@ namespace UI {
                                 psVar4 = psVar4 + 0x248;
                                 uVar12 = uVar12 + 1;
                             } while ((int)psVar4 < 0x165162c);
-                            local_7e4 = local_7e4 + 1;
-                        } while (local_7e4 < 3);
+                        }
                     }
                     goto LAB_0042cff9;
                 }
