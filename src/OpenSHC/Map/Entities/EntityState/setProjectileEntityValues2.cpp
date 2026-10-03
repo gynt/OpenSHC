@@ -47,28 +47,20 @@ namespace Map {
             case OpenSHC::Map::Entities::ET_UNKNOWN:
             case OpenSHC::Map::Entities::ET_MANGONEL:
             case OpenSHC::Map::Entities::ET_MANGONEL | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-                psVar1 = &this->entityArray[entityID].originX;
-                *psVar1 = *psVar1 + -1;
-                psVar1 = &this->entityArray[entityID].originY;
-                *psVar1 = *psVar1 + -7;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
                 break;
             case OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-                psVar1 = &this->entityArray[entityID].originX;
-                *psVar1 = *psVar1 + -1;
-                psVar1 = &this->entityArray[entityID].originY;
-                *psVar1 = *psVar1 + -2;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -2;
                 return;
             case OpenSHC::Map::Entities::ET_CATAPULT:
-                psVar1 = &this->entityArray[entityID].originX;
-                *psVar1 = *psVar1 + 8;
-                psVar1 = &this->entityArray[entityID].originY;
-                *psVar1 = *psVar1 + -8;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -8;
                 return;
             case OpenSHC::Map::Entities::ET_TREBUCHET:
-                psVar1 = &this->entityArray[entityID].originX;
-                *psVar1 = *psVar1 + 8;
-                psVar1 = &this->entityArray[entityID].originY;
-                *psVar1 = *psVar1 + -7;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
             }
         }
 
