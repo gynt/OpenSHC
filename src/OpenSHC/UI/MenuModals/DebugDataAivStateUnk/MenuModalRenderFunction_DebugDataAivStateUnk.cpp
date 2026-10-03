@@ -17,23 +17,18 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AF4C0
         void DebugDataAivStateUnk::MenuModalRenderFunction_DebugDataAivStateUnk(int x, int y, int width, int height)
         {
-            int integer;
-            uint color;
-            int _x2;
-            int yPosition;
-            int _x1;
-            _x1 = x;
-            _x2 = x + 0x14;
+            int _x1 = x;
+            int _x2 = x + 0x14;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 "Village Placement Success", _x2, y + 10, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x12, FALSE, 0);
-            yPosition = y + 0x14;
+            int yPosition = y + 0x14;
             for (x = 1; x < 9; x++) {
                 yPosition = yPosition + 0x14;
                 if (DAT_AIVPlacementFit::instance[x] != -10) {
-                    color = (-(uint)(DAT_AIVPlacementFit::instance[x] != 100) & 0xff3d1014) + 0xc2f0eb;
+                    uint color = (-(uint)(DAT_AIVPlacementFit::instance[x] != 100) & 0xff3d1014) + 0xc2f0eb;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         x, _x2, yPosition, OpenSHC::Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
-                    integer = DAT_AIVPlacementFit::instance[x];
+                    int integer = DAT_AIVPlacementFit::instance[x];
                     if (integer == -3) {
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
