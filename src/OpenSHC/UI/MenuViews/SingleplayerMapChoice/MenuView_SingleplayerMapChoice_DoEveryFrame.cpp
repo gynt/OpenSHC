@@ -48,8 +48,7 @@ namespace UI {
             int iVar8;
             int bottom;
             undefined4 local_3f8;
-            char local_3f4[4];
-            char local_3f0[1004];
+            char local_3f4[1008];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_3f8;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
