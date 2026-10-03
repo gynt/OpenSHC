@@ -73,7 +73,7 @@ namespace Map {
             int _searchBudget;
             bool _bool1;
             bool _isDefensiveStructure;
-            ushort _targetUnitArea;
+            int _targetUnitArea;
             uint _y;
             _y = y1;
             _bool1 = false;
@@ -100,10 +100,9 @@ namespace Map {
             _targetUnitID = (int)this->tribes[tribeID].selectionTargetUnitID;
             _targetUnitX = (int)DAT_UnitsState::instance.units[_targetUnitID].x;
             _targetUnitY = (int)DAT_UnitsState::instance.units[_targetUnitID].y;
-            _targetUnitArea
-                = DAT_TileMapState::instance
-                      .PathConnectionLayer[DAT_ViewportRenderState::instance.translationMatrix[_targetUnitY].addXgetTile
-                          + _targetUnitX];
+            _targetUnitArea = (short)DAT_TileMapState::instance
+                    .PathConnectionLayer[DAT_ViewportRenderState::instance.translationMatrix[_targetUnitY].addXgetTile
+                        + _targetUnitX];
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile + x1;
             _area = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
             if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x30) == 0) {
@@ -128,8 +127,8 @@ namespace Map {
                     _bool1 = true;
                     _area_2 = _navArea;
                 } else {
-                    _area_2 = (int)(short)_targetUnitArea;
-                    if ((int)(short)_targetUnitArea == 0) {
+                    _area_2 = _targetUnitArea;
+                    if (_targetUnitArea == 0) {
                         _one2 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::TribesState_Func::applyMoveCommandOrRallyCommandToTribe, this)(tribeID,
                             (undefined4)((int)(x1)), (undefined4)((int)(y1)), (undefined4)((int)(rallyBool)),
