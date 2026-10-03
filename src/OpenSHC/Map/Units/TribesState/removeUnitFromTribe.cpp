@@ -21,8 +21,7 @@ namespace Map {
                     uVar2 = (uVar2 - 1 | 0xfffffff0) + 1;
                 }
                 if ((ushort)(DAT_UnitSelectionDefinedData::instance.BitMaskHelper[uVar2]
-                        & this->tribes[tribeID]
-                            .unitSelectionBitMasked[(int)(unitID + ((int)unitID >> 0x1f & 0xfU)) >> 4])
+                        & this->tribes[tribeID].unitSelectionBitMasked[unitID / 16])
                     == 0)
                     goto LAB_00525b56;
             }
@@ -33,7 +32,7 @@ namespace Map {
             if (this->tribes[tribeID].size < 1) {
                 this->tribes[tribeID].tribeState = 3;
             }
-            psVar1 = this->tribes[tribeID].unitSelectionBitMasked + ((int)(unitID + ((int)unitID >> 0x1f & 0xfU)) >> 4);
+            psVar1 = this->tribes[tribeID].unitSelectionBitMasked + (unitID / 16);
             uVar2 = unitID & 0x8000000f;
             if ((int)uVar2 < 0) {
                 uVar2 = (uVar2 - 1 | 0xfffffff0) + 1;
