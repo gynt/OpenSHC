@@ -86,15 +86,15 @@ namespace Map {
                     _newMicroY
                         = (int)this->entityArray[_entityID].someMicroY + (int)this->entityArray[_entityID].microY;
                     _newMicroX = this->entityArray[_entityID].someMicroX + _microX;
-                    _newY = (int)(_newMicroY + (_newMicroY >> 0x1f & 7U)) >> 3;
-                    _newX = (int)(_newMicroX + (_newMicroX >> 0x1f & 7U)) >> 3;
+                    _newY = _newMicroY / 8;
+                    _newX = _newMicroX / 8;
                     _newBounds = MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid,
                         DAT_ViewportRenderState::ptr)(_newX, _newY);
                     if (_newBounds != FALSE) {
                         _oldMicroY = (int)this->entityArray[_entityID].microY;
                         _oldMicroX = (int)this->entityArray[_entityID].microX;
-                        _oldY = (int)(_oldMicroY + (_oldMicroY >> 0x1f & 7U)) >> 3;
-                        _oldX = (int)(_oldMicroX + (_oldMicroX >> 0x1f & 7U)) >> 3;
+                        _oldY = _oldMicroY / 8;
+                        _oldX = _oldMicroX / 8;
                         _oldBounds = MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_oldX, _oldY);
                         if (((_oldBounds != FALSE)
@@ -130,14 +130,13 @@ namespace Map {
                             (int)((int)(this->entityArray[_entityID].yPosition)), OpenSHC::DE::SHCDE::FX_GULL);
                     }
                     sVar4 = this->seagullArray[seagullID].field12_0x1a;
-                    psVar1 = &this->seagullArray[seagullID].angle;
-                    *psVar1 = *psVar1 + -360;
+                    this->seagullArray[seagullID].angle = this->seagullArray[seagullID].angle + -360;
                     if (sVar4 < 0) {
-                        psVar1 = &this->seagullArray[seagullID].unknownCounter_0x16;
-                        *psVar1 = *psVar1 + 1;
+                        this->seagullArray[seagullID].unknownCounter_0x16
+                            = this->seagullArray[seagullID].unknownCounter_0x16 + 1;
                     } else if (0 < sVar4) {
-                        psVar1 = &this->seagullArray[seagullID].unknownCounter_0x16;
-                        *psVar1 = *psVar1 + -1;
+                        this->seagullArray[seagullID].unknownCounter_0x16
+                            = this->seagullArray[seagullID].unknownCounter_0x16 + -1;
                     }
                     if (this->seagullArray[seagullID].unknownCounter_0x16 < 24) {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 24;
@@ -155,11 +154,11 @@ namespace Map {
                     this->seagullArray[seagullID].angle = sVar4 + 0x168;
                     sVar4 = this->seagullArray[seagullID].field12_0x1a;
                     if (sVar4 < 0) {
-                        psVar1 = &this->seagullArray[seagullID].unknownCounter_0x16;
-                        *psVar1 = *psVar1 + 1;
+                        this->seagullArray[seagullID].unknownCounter_0x16
+                            = this->seagullArray[seagullID].unknownCounter_0x16 + 1;
                     } else if (0 < sVar4) {
-                        psVar1 = &this->seagullArray[seagullID].unknownCounter_0x16;
-                        *psVar1 = *psVar1 + -1;
+                        this->seagullArray[seagullID].unknownCounter_0x16
+                            = this->seagullArray[seagullID].unknownCounter_0x16 + -1;
                     }
                     if (this->seagullArray[seagullID].unknownCounter_0x16 < 0x18) {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 0x18;
@@ -212,8 +211,7 @@ namespace Map {
                     || (uVar7 = (int)this->seagullArray[seagullID].y - (int)this->seagullArray[seagullID].y_3,
                         uVar9 = (int)uVar7 >> 0x1f, 1 < (int)((uVar7 ^ uVar9) - uVar9)))
                 && (sVar5 = this->seagullArray[seagullID].field27_0x38, 0 < sVar5)) {
-                psVar1 = &this->seagullArray[seagullID].field25_0x34;
-                *psVar1 = *psVar1 + -1;
+                this->seagullArray[seagullID].field25_0x34 = this->seagullArray[seagullID].field25_0x34 + -1;
                 if (this->seagullArray[seagullID].field25_0x34 < 1) {
                     sVar2 = this->seagullArray[seagullID].field22_0x2e;
                     this->seagullArray[seagullID].field25_0x34 = 10;
@@ -224,16 +222,16 @@ namespace Map {
                             return;
                         }
                         if (sVar2 == 1) {
-                            psVar1 = &this->seagullArray[seagullID].y;
-                            *psVar1 = *psVar1 + this->seagullArray[seagullID].field24_0x32;
+                            this->seagullArray[seagullID].y
+                                = this->seagullArray[seagullID].y + this->seagullArray[seagullID].field24_0x32;
                             return;
                         }
                         if (sVar2 == 4) {
                             sVar5 = this->seagullArray[seagullID].field21_0x2c;
                             if (0 < sVar5) {
                                 sVar2 = this->seagullArray[seagullID].field23_0x30;
-                                psVar1 = &this->seagullArray[seagullID].y;
-                                *psVar1 = *psVar1 + this->seagullArray[seagullID].field24_0x32;
+                                this->seagullArray[seagullID].y
+                                    = this->seagullArray[seagullID].y + this->seagullArray[seagullID].field24_0x32;
                                 this->seagullArray[seagullID].x = sVar2 + sVar4;
                                 this->seagullArray[seagullID].field21_0x2c
                                     = this->seagullArray[seagullID].field20_0x2a + sVar5;
@@ -246,8 +244,8 @@ namespace Map {
                         }
                         if (sVar2 == 3) {
                             sVar5 = this->seagullArray[seagullID].field21_0x2c;
-                            psVar1 = &this->seagullArray[seagullID].y;
-                            *psVar1 = *psVar1 + this->seagullArray[seagullID].field24_0x32;
+                            this->seagullArray[seagullID].y
+                                = this->seagullArray[seagullID].y + this->seagullArray[seagullID].field24_0x32;
                             if (0 < sVar5) {
                                 this->seagullArray[seagullID].x = this->seagullArray[seagullID].field23_0x30 + sVar4;
                                 this->seagullArray[seagullID].field21_0x2c
@@ -272,8 +270,7 @@ namespace Map {
                 OpenSHC::Map::Navigation::PathFindingState_Func::findFurthestSeaTile, DAT_PathFindingState::ptr)(
                 (int)((((ulonglong)((int)SEC_RNG::instance.currentNumber2 >> 0x1f) << 0x20)
                     | (uint)((uint)((int)((int)SEC_RNG::instance.currentNumber2 >> 4) % 200) + 400))),
-                (uint)((int)((int)(iVar8 + (iVar8 >> 0x1f & 7U)) >> 3)),
-                (int)(_entityID + (_entityID >> 0x1f & 7U)) >> 3);
+                (uint)((int)(iVar8 / 8)), _entityID / 8);
             this->seagullArray[seagullID].x_3 = (short)DAT_PathFindingState::instance.ALG_ResultX * 8;
             sVar4 = this->seagullArray[seagullID].x_3;
             sVar2 = (short)DAT_PathFindingState::instance.ALG_ResultY * 8;
