@@ -22,32 +22,32 @@ namespace Map {
                 default:
                     return;
                 case 1:
-                    psVar1 = &this->entityArray[param_1].microY;
-                    *psVar1 = *psVar1 + this->entityArray[param_1].someMicroY;
+                    this->entityArray[param_1].microY
+                        = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
                     return;
                 case 2:
-                    psVar1 = &this->entityArray[param_1].microX;
-                    *psVar1 = *psVar1 + this->entityArray[param_1].someMicroX;
+                    this->entityArray[param_1].microX
+                        = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
                     return;
                 case 3:
                     sVar2 = this->entityArray[param_1].field49_0x72;
                     if (0 < sVar2) {
-                        psVar1 = &this->entityArray[param_1].microX;
-                        *psVar1 = *psVar1 + this->entityArray[param_1].someMicroX;
-                        psVar1 = &this->entityArray[param_1].microY;
-                        *psVar1 = *psVar1 + this->entityArray[param_1].someMicroY;
+                        this->entityArray[param_1].microX
+                            = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
+                        this->entityArray[param_1].microY
+                            = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
                         this->entityArray[param_1].field49_0x72 = this->entityArray[param_1].field48_0x70 + sVar2;
                     }
-                    psVar1 = &this->entityArray[param_1].microY;
-                    *psVar1 = *psVar1 + this->entityArray[param_1].someMicroY;
+                    this->entityArray[param_1].microY
+                        = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
                     break;
                 case 4:
                     sVar2 = this->entityArray[param_1].field49_0x72;
-                    psVar1 = &this->entityArray[param_1].microX;
-                    *psVar1 = *psVar1 + this->entityArray[param_1].someMicroX;
+                    this->entityArray[param_1].microX
+                        = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
                     if (0 < sVar2) {
-                        psVar1 = &this->entityArray[param_1].microY;
-                        *psVar1 = *psVar1 + this->entityArray[param_1].someMicroY;
+                        this->entityArray[param_1].microY
+                            = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
                         this->entityArray[param_1].field49_0x72 = this->entityArray[param_1].field48_0x70 + sVar2;
                     }
                 }
