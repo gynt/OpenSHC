@@ -59,9 +59,8 @@ namespace UI {
                 } while (iVar3 < iVar2);
             }
             iVar3 = (blendStrength + -0x20) * 0x10;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(xPos + 0x18,
-                yPos + 0x18, xPos + -0x19 + iVar1, yPos + -0x19 + iVar2,
-                ((int)(iVar3 + (iVar3 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(
+                xPos + 0x18, yPos + 0x18, xPos + -0x19 + iVar1, yPos + -0x19 + iVar2, (iVar3 / 32) + 0x20);
         }
 
     }
