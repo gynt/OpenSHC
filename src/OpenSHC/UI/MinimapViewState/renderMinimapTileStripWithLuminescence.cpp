@@ -200,19 +200,15 @@ namespace UI {
                                         uVar9 = param_4;
                                         do {
                                             if ((-1 < iVar12) && (iVar12 < iVar1 * param_2)) {
-                                                iVar7 = 0;
-                                                if (0 < param_3) {
-                                                    do {
-                                                        iVar5 = (param_5 + iVar7) / local_58;
-                                                        if ((short)uVar9 == 0) {
-                                                            uVar9 = (uint)this->field18_0x27144[(iVar5 * 400) / 2
-                                                                + iVar12 / local_58];
-                                                            param_4 = uVar9;
-                                                        }
-                                                        *(undefined2*)((iVar12 / local_58) * 2 + 0x1a31654
-                                                            + iVar5 * 400) = (undefined2)param_4;
-                                                        iVar7 = iVar7 + 1;
-                                                    } while (iVar7 < param_3);
+                                                for (iVar7 = 0; iVar7 < param_3; iVar7++) {
+                                                    iVar5 = (param_5 + iVar7) / local_58;
+                                                    if ((short)uVar9 == 0) {
+                                                        uVar9 = (uint)this->field18_0x27144[(iVar5 * 400) / 2
+                                                            + iVar12 / local_58];
+                                                        param_4 = uVar9;
+                                                    }
+                                                    *(undefined2*)((iVar12 / local_58) * 2 + 0x1a31654 + iVar5 * 400)
+                                                        = (undefined2)param_4;
                                                 }
                                             }
                                             iVar12 = iVar12 + 2;
