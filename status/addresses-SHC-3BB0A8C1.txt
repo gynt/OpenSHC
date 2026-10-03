@@ -23075,7 +23075,7 @@ SHC_3BB0A8C1_0x00487A30 | 18.8% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00487C50 | 44.8% | DPSEND enum clashes with dplay
 
-SHC_3BB0A8C1_0x00487E30 | 70.1% | Style pass, asm differs
+SHC_3BB0A8C1_0x00487E30 | 72.5% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00488010 | 20.6% | Style pass, asm differs
 
