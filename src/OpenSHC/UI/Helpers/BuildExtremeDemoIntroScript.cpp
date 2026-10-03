@@ -42,8 +42,7 @@ namespace UI {
             OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)("demo4.tgx");
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
             DAT_TextureRenderCoreObject::ptr)("logo_280x100.tgx");
-        iVar1 = 0;
-        do {
+        for (iVar1 = 0; iVar1 < 5; iVar1++) {
             /*
               'Cut a path through an increasingly tough extreme trail. As the numbers of   opponents go up, so does the
               challenge!'   'Relive the Crusades from both sides, with the original Stronghold Crusader   and all the
@@ -54,8 +53,7 @@ namespace UI {
             textToStore = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_EXTREME_DEMO, iVar1 + 8);
             MACRO_CALL(OpenSHC::UI::Helpers_Func::StoreStringInMenuStringArray)(textToStore);
-            iVar1 = iVar1 + 1;
-        } while (iVar1 < 5);
+        }
         MACRO_CALL(OpenSHC::UI::Credits_Func::AppendCreditsSoundEntry)(1, 5);
         MACRO_CALL(OpenSHC::UI::Credits_Func::AppendCreditsCommand)(0x12);
         MACRO_CALL(OpenSHC::UI::Credits_Func::AppendCreditsSoundStreamCommand)(
