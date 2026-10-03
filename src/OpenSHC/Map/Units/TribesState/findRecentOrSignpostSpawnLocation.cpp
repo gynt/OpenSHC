@@ -12,24 +12,20 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00523410
         undefined4 TribesState::findRecentOrSignpostSpawnLocation(uint* param_1, uint* param_2)
         {
-            short sVar1;
-            uint uVar2;
-            uint uVar3;
-            int iVar4;
-            iVar4 = 0;
+            int iVar4 = 0;
             do {
-                uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
+                uint uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
                 if ((int)uVar2 < 0) {
                     uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                 }
-                sVar1 = DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].x;
+                short sVar1 = DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].x;
                 if (sVar1 != 0) {
                     *param_1 = (int)sVar1;
                     uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
                     if ((int)uVar2 < 0) {
                         uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                     }
-                    uVar3 = (uint)DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].y;
+                    uint uVar3 = (uint)DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].y;
                     *param_2 = uVar3;
                     uVar2 = *param_1;
                     if ((((uVar2 < 400) && (uVar3 < 400)) && (*(char*)(uVar2 + 0x21aec98 + uVar3 * 400) != '\0'))
