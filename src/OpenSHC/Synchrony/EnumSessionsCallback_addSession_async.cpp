@@ -10,8 +10,8 @@ namespace OpenSHC {
 using OpenSHC::WindowsHelper::Enums::GlobalAllocFlag;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0047DF40
-bool __stdcall Synchrony::EnumSessionsCallback_addSession_async(
-    DPSESSIONDESC2* lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext)
+BOOL __stdcall Synchrony::EnumSessionsCallback_addSession_async(
+    LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext)
 {
     WCHAR* pWVar1;
     ushort uVar2;
