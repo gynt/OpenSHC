@@ -29,8 +29,7 @@ namespace Game {
         _teamMembers = 0;
         _team = DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID];
         DAT_AlliesCount::instance = 0;
-        _playerID = 1;
-        do {
+        for (_playerID = 1; _playerID < 9; _playerID++) {
             if ((_playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID)
                 && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1
                     || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)))) {
@@ -39,7 +38,7 @@ namespace Game {
                         OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
                     _teamMembers = DAT_AlliesCount::instance;
                     if (iVar1 == 0)
-                        goto LAB_004ac619;
+                        continue;
                 }
                 if (_team == DAT_GameState::instance.mapAndTime.playerTeams[_playerID]) {
                     DAT_SomeTeamMemberPlayerIDArray::instance[_teamMembers] = _playerID;
@@ -49,9 +48,7 @@ namespace Game {
                         break;
                 }
             }
-        LAB_004ac619:
-            _playerID = _playerID + 1;
-        } while (_playerID < 9);
+        }
         if (_teamMembers <= DAT_LastTeamMemberIndex::instance) {
             DAT_LastTeamMemberIndex::instance = _teamMembers + -1;
         }
