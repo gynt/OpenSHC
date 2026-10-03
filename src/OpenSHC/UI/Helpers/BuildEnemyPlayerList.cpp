@@ -25,8 +25,7 @@ namespace UI {
         int _team
             = DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID];
         DAT_EnemyArrayIndex::instance = 0;
-        int _playerID = 1;
-        do {
+        for (int _playerID = 1; _playerID < 9; _playerID++) {
             if ((((_playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID)
                      && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1
                          || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0))))
@@ -39,8 +38,7 @@ namespace UI {
                 DAT_EnemyArrayIndex::instance = DAT_EnemyArrayIndex::instance + 1;
                 if (5 < DAT_EnemyArrayIndex::instance) {}
             }
-            _playerID = _playerID + 1;
-        } while (_playerID < 9);
+        }
     }
 
 }
