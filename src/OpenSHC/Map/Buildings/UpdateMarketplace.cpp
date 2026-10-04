@@ -49,7 +49,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 1;
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0;
                     DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x1f;
-                    DAT_BuildingsState::instance.buildings[buildingID].field13_0x28 = 0;
+                    DAT_BuildingsState::instance.buildings[buildingID].animationCycleCount = 0;
                 }
                 goto LAB_00415d57;
             }
@@ -78,16 +78,16 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar2;
         if ((char)bVar2 < 1) {
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;
-            piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].field13_0x28;
+            piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].animationCycleCount;
             *piVar1 = *piVar1 + 1;
-            DAT_BuildingsState::instance.buildings[buildingID].field14_0x2c = 1;
+            DAT_BuildingsState::instance.buildings[buildingID].animationCycleCompleted = 1;
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 1;
         } else {
-            DAT_BuildingsState::instance.buildings[buildingID].field14_0x2c = 0;
+            DAT_BuildingsState::instance.buildings[buildingID].animationCycleCompleted = 0;
         }
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe;
         if (0 < sVar3) {
-            if (DAT_BuildingsState::instance.buildings[buildingID].field13_0x28 == 0) {
+            if (DAT_BuildingsState::instance.buildings[buildingID].animationCycleCount == 0) {
                 sVar3 = sVar3 + -1;
             } else {
                 sVar3 = sVar3 + 1;

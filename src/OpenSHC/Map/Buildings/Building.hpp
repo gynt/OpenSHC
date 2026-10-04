@@ -37,20 +37,20 @@ namespace Map {
             short spriteID2; // 0x00000022 length: 2
             short unknownStockpileOrSignpostRelated; // 0x00000024 length: 2
             short renderAnimation; // 0x00000026 length: 2
-            int field13_0x28; // 0x00000028 length: 4
-            short field14_0x2c; // 0x0000002C length: 2
+            int animationCycleCount; // 0x00000028 length: 4
+            short animationCycleCompleted; // 0x0000002C length: 2
             short animationIncrement; // 0x0000002E length: 2
             short animationActive; // 0x00000030 length: 2
             undefined1 padding_0x32[2]; // 0x00000032 length: 2
             int displayOwnerFlag; // 0x00000034 length: 4
-            int field20_0x38; // 0x00000038 length: 4
-            int field21_0x3c; // 0x0000003C length: 4
-            int field22_0x40; // 0x00000040 length: 4
-            int field23_0x44; // 0x00000044 length: 4
+            int extraAnimationSprite1; // 0x00000038 length: 4
+            int extraAnimationSprite2; // 0x0000003C length: 4
+            int extraAnimationSprite3; // 0x00000040 length: 4
+            int extraAnimationSprite4; // 0x00000044 length: 4
             int campgroundVclock; // 0x00000048 length: 4
-            int field25_0x4c; // 0x0000004C length: 4
-            int field26_0x50; // 0x00000050 length: 4
-            int field27_0x54; // 0x00000054 length: 4
+            int extraAnimationFrame1; // 0x0000004C length: 4
+            int extraAnimationFrame2; // 0x00000050 length: 4
+            int extraAnimationFrame3; // 0x00000054 length: 4
             int field28_0x58; // 0x00000058 length: 4
             int field29_0x5c; // 0x0000005C length: 4
             int shouldRenderRoof; // 0x00000060 length: 4

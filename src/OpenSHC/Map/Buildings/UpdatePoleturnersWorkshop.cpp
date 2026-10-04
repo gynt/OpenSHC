@@ -89,7 +89,7 @@ namespace Map {
                 if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     bVar7 = DAT_BuildingDefinedData::instance.field78_0x54cc[sVar3];
                 } else {
-                    bVar7 = DAT_BuildingDefinedData::instance.field79_0x555c[sVar3];
+                    bVar7 = DAT_BuildingDefinedData::instance.PoleturnersWorkshopAnimationFrames4[sVar3];
                 }
                 if ('\0' < (char)bVar7) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (char)bVar7 + 0x5e;
@@ -109,7 +109,7 @@ namespace Map {
                 if (sVar3 != 1)
                     goto LAB_00413cb2;
                 bVar7 = DAT_BuildingDefinedData::instance
-                            .field80_0x55a4[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                            .PoleturnersWorkshopAnimationFrames5[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
                 if ('\0' < (char)bVar7) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (char)bVar7 + 0x5e;
                 }
@@ -126,9 +126,9 @@ namespace Map {
                     bVar10 = sVar3 == 1;
                 LAB_00413c9c:
                     if (bVar10) {
-                        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field13_0x28 + iVar9);
+                        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar9);
                         *piVar1 = *piVar1 + 1;
-                        *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].field14_0x2c + iVar9) = 1;
+                        *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar9) = 1;
                         *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 0;
                     }
                 }
@@ -137,7 +137,7 @@ namespace Map {
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
             if (sVar3 == 0) {
                 bVar7 = DAT_BuildingDefinedData::instance
-                            .field74_0x5364[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                            .PoleturnersWorkshopAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
                 if ('\0' < (char)bVar7) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar7;
                 }
@@ -170,7 +170,7 @@ namespace Map {
                 if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     bVar7 = DAT_BuildingDefinedData::instance.field75_0x53bc[sVar3];
                 } else {
-                    bVar7 = DAT_BuildingDefinedData::instance.field76_0x5484[sVar3];
+                    bVar7 = DAT_BuildingDefinedData::instance.PoleturnersWorkshopAnimationFrames2[sVar3];
                 }
                 if ('\0' < (char)bVar7) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (char)bVar7 + 0x3d;
@@ -187,7 +187,7 @@ namespace Map {
                 if (sVar3 != 3)
                     goto LAB_00413cb2;
                 if ((char)DAT_BuildingDefinedData::instance
-                        .field77_0x54a8[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                        .PoleturnersWorkshopAnimationFrames3[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                     < '\x01') {
                     DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe
                         = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
@@ -195,7 +195,7 @@ namespace Map {
                 } else {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                         = (char)DAT_BuildingDefinedData::instance
-                              .field77_0x54a8[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                              .PoleturnersWorkshopAnimationFrames3[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                         + 0x3d;
                     DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe
                         = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;

@@ -57,16 +57,16 @@ namespace Map {
             MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar4 = DAT_CurrentBuildingID::instance;
-            if ((char)DAT_BuildingDefinedData::instance.field54_0x4bac
+            if ((char)DAT_BuildingDefinedData::instance.WoodcuttersHutAnimationFrames
                     [DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex = 0;
-                piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].field13_0x28;
+                piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].animationCycleCount;
                 *piVar1 = *piVar1 + 1;
-                DAT_BuildingsState::instance.buildings[iVar4].field14_0x2c = 1;
+                DAT_BuildingsState::instance.buildings[iVar4].animationCycleCompleted = 1;
             }
             bVar2 = DAT_BuildingDefinedData::instance
-                        .field54_0x4bac[DAT_BuildingsState::instance.buildings[iVar4].animationIndex];
+                        .WoodcuttersHutAnimationFrames[DAT_BuildingsState::instance.buildings[iVar4].animationIndex];
             DAT_BuildingsState::instance.buildings[iVar4].animationFrame = (int)(char)bVar2;
             if (((char)bVar2 == 0x10) && (DAT_BuildingsState::instance.buildings[iVar4].animationActive != 0)) {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
@@ -78,15 +78,15 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
             iVar4 = DAT_BuildingsState::instance.buildings[iVar6].resources[1];
             if (iVar4 == 0) {
-                DAT_BuildingsState::instance.buildings[iVar6].field20_0x38 = 0;
+                DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = 0;
             } else {
-                DAT_BuildingsState::instance.buildings[iVar6].field20_0x38 = iVar4 + 0x12 + iVar5;
+                DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = iVar4 + 0x12 + iVar5;
             }
             iVar4 = DAT_BuildingsState::instance.buildings[iVar6].resources[2];
             if (iVar4 == 0) {
-                DAT_BuildingsState::instance.buildings[iVar6].field21_0x3c = 0;
+                DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = 0;
             } else {
-                DAT_BuildingsState::instance.buildings[iVar6].field21_0x3c = iVar4 + 0x15 + iVar5;
+                DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = iVar4 + 0x15 + iVar5;
             }
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame;

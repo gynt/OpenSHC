@@ -40,11 +40,11 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
                 DAT_BuildingsState::instance.buildings[iVar2].animationFrame
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field95_0x5a18[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
+                          .TunnelAnimationFrames[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
             }
             DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
             if (DAT_BuildingDefinedData::instance
-                    .field95_0x5a18[DAT_BuildingsState::instance.buildings[iVar2].animationIndex]
+                    .TunnelAnimationFrames[DAT_BuildingsState::instance.buildings[iVar2].animationIndex]
                 == 0xff) {
                 DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 0;
                 DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;
@@ -52,7 +52,7 @@ namespace Map {
                 DAT_UnitsState::instance.units[_unitID].tunnelerFinishedDigging = 2;
             }
             iVar3 = (int)(char)DAT_BuildingDefinedData::instance
-                        .field95_0x5a18[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
+                        .TunnelAnimationFrames[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
             DAT_BuildingsState::instance.buildings[iVar2].animationFrame = iVar3;
             if (((iVar3 == 10) || (iVar3 == 0x19))
                 && (DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0)) {

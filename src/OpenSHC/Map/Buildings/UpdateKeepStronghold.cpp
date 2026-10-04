@@ -29,7 +29,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[_buildingID].currentHealth
             = DAT_BuildingsState::instance.buildings[_buildingID].maxHealth;
         DAT_BuildingsState::instance.buildings[_buildingID].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[_buildingID].field20_0x38 = 0x1b;
+        DAT_BuildingsState::instance.buildings[_buildingID].extraAnimationSprite1 = 0x1b;
         DAT_BuildingsState::instance.buildings[_buildingID].someX
             = DAT_BuildingsState::instance.buildings[_buildingID].x + 5;
         bVar4 = (byte)DAT_GameCore::instance.mapTimeInTicks & 3;

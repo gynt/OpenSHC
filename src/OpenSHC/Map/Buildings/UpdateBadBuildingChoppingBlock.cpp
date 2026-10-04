@@ -39,11 +39,11 @@ namespace Map {
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock;
             *piVar1 = *piVar1 + 1;
             bVar2 = DAT_BuildingDefinedData::instance
-                        .field165_0x7884[DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock];
-            DAT_BuildingsState::instance.buildings[iVar5].field20_0x38 = (int)(char)bVar2;
+                        .BadBuildingChoppingBlockAnimationFrames[DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock];
+            DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite1 = (int)(char)bVar2;
             if ((char)bVar2 < 1) {
                 DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock = 0;
-                DAT_BuildingsState::instance.buildings[iVar5].field20_0x38 = 1;
+                DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite1 = 1;
             }
         }
     }

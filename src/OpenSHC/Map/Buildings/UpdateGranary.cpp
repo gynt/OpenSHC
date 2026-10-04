@@ -140,10 +140,10 @@ namespace Map {
         }
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = 0;
@@ -274,13 +274,13 @@ namespace Map {
                 }
             LAB_004155f9:
                 if (iVar9 == 0) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = iVar8;
                 } else if (iVar9 == 1) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = iVar8;
                 } else if (iVar9 == 2) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = iVar8;
                 } else if (iVar9 == 3) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = iVar8;
                 } else if (iVar9 == 4) {
                     DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = iVar8;
                 } else if (iVar9 == 5) {

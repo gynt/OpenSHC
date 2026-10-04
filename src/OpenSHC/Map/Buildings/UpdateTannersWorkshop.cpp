@@ -216,23 +216,23 @@ namespace Map {
                 iVar7 = buildingID * 0x32c;
                 if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     if ((char)DAT_BuildingDefinedData::instance
-                            .field89_0x5794[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                            .TannersWorkshopAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                         < '\x01') {
                         bVar3 = true;
                     } else {
                         DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                             = (char)DAT_BuildingDefinedData::instance
-                                  .field89_0x5794[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                                  .TannersWorkshopAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                             + 0x19;
                     }
                 } else if ((char)DAT_BuildingDefinedData::instance
-                               .field90_0x57f0[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                               .TannersWorkshopAnimationFrames2[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                     < '\x01') {
                     bVar3 = true;
                 } else {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                         = (char)DAT_BuildingDefinedData::instance
-                              .field90_0x57f0[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                              .TannersWorkshopAnimationFrames2[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                         + 0x19;
                 }
                 if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex != 0) {
@@ -271,9 +271,9 @@ namespace Map {
                 } else if (sVar5 == 9) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 10;
                 } else if (sVar5 == 10) {
-                    piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field13_0x28 + iVar7);
+                    piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar7);
                     *piVar1 = *piVar1 + 1;
-                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].field14_0x2c + iVar7) = 1;
+                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar7) = 1;
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 0;
                 }
             }

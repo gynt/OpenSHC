@@ -68,7 +68,7 @@ namespace Map {
         if (sVar6 == 0) {
             if ((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
                 && (DAT_BuildingDefinedData::instance
-                        .field48_0x490c[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                        .ArmorersWorkshopAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                     == 5)) {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
@@ -79,9 +79,9 @@ namespace Map {
             iVar8 = buildingID * 0x32c;
             sVar6 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
             if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                bVar5 = DAT_BuildingDefinedData::instance.field48_0x490c[sVar6];
+                bVar5 = DAT_BuildingDefinedData::instance.ArmorersWorkshopAnimationFrames1[sVar6];
             } else {
-                bVar5 = DAT_BuildingDefinedData::instance.field49_0x4acc[sVar6];
+                bVar5 = DAT_BuildingDefinedData::instance.ArmorersWorkshopAnimationFrames2[sVar6];
             }
             if ('\0' < (char)bVar5) {
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar5;
@@ -102,15 +102,15 @@ namespace Map {
                 if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) == 0) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 1;
                 } else {
-                    piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field13_0x28 + iVar8);
+                    piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar8);
                     *piVar1 = *piVar1 + 1;
-                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].field14_0x2c + iVar8) = 1;
+                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar8) = 1;
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 0;
                 }
             }
         } else if (sVar6 == 1) {
             bVar5 = DAT_BuildingDefinedData::instance
-                        .field50_0x4b3c[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                        .ArmorersWorkshopAnimationFrames3[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
             if ('\0' < (char)bVar5) {
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar5;
             }

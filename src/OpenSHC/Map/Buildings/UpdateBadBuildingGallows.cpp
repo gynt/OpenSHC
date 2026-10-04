@@ -47,7 +47,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].spriteOffetX = -0x23;
         DAT_BuildingsState::instance.buildings[buildingID].spriteOffetY = -0x6d;
         bVar1 = DAT_BuildingDefinedData::instance
-                    .field158_0x75fc[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                    .BadBuildingGallowsAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
         DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar1;
         if ((char)bVar1 < 1) {
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;

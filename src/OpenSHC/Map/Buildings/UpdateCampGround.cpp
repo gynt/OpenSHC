@@ -34,13 +34,13 @@ namespace Map {
         _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIncrement = 1;
         if ((char)DAT_BuildingDefinedData::instance
-                .field96_0x5a4c[DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
+                .CampGroundAnimationFrames[DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
             < '\x01') {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex = 0;
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field13_0x28
-                = DAT_BuildingsState::instance.buildings[_currentBuildingID].field13_0x28 + 1;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].animationCycleCount
+                = DAT_BuildingsState::instance.buildings[_currentBuildingID].animationCycleCount + 1;
             DAT_SFX_Interval_Campfire::instance = DAT_SFX_Interval_Campfire::instance + 1;
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field14_0x2c = 1;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].animationCycleCompleted = 1;
             if (0 < DAT_SFX_Interval_Campfire::instance) {
                 DAT_SFX_Interval_Campfire::instance = 0;
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
@@ -69,10 +69,10 @@ namespace Map {
         _vclock = iVar4 + -0x32;
         DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock = _vclock;
         if (_vclock < 0) {
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field20_0x38
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
                 = *(int*)((int)DAT_BuildingDefinedData::ptr + _vclock * -4 + 0xa46c) + 51;
         } else {
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field20_0x38
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
                 = DAT_BuildingDefinedData::instance.field413_0xa04c[0xc][iVar4 + 6];
         }
         if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270 == 0) {
@@ -112,7 +112,7 @@ namespace Map {
         LAB_004182b0:
             DAT_BuildingsState::instance.buildings[_currentBuildingID].animationFrame
                 = (char)DAT_BuildingDefinedData::instance
-                      .field96_0x5a4c[DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
+                      .CampGroundAnimationFrames[DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
                 + 0xb;
         }
         _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270;

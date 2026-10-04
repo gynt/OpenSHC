@@ -33,10 +33,10 @@ namespace Map {
         iVar5 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 1;
         DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[iVar5].field20_0x38 = 2;
-        DAT_BuildingsState::instance.buildings[iVar5].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[iVar5].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[iVar5].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite1 = 2;
+        DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].field29_0x5c = 0;
         DAT_BuildingsState::instance.buildings[iVar5].shouldRenderRoof = 0x7a;
         DAT_BuildingsState::instance.buildings[iVar5].shouldRenderSomeOverlay = 0;
@@ -61,13 +61,13 @@ namespace Map {
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
         if (iVar1 != 0) {
-            DAT_BuildingsState::instance.buildings[iVar5].field21_0x3c = 0x51;
+            DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite2 = 0x51;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
         if (iVar1 != 0) {
-            DAT_BuildingsState::instance.buildings[iVar5].field23_0x44 = 0x5a;
+            DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite4 = 0x5a;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
         }
         local_20[1] = 0;

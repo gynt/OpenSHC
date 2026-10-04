@@ -32,7 +32,7 @@ namespace Map {
         bVar5 = (byte)DAT_GameCore::instance.mapTimeInTicks & 3;
         DAT_BuildingsState::instance.buildings[iVar6].someY = DAT_BuildingsState::instance.buildings[iVar6].y + 2;
         DAT_BuildingsState::instance.buildings[iVar6].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[iVar6].field20_0x38 = 0x18;
+        DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = 0x18;
         if (((bVar5 == 0) && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
             && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT)) {
             iVar4 = DAT_GameState::instance.playerDataArray[sVar2].startResources[0xf];

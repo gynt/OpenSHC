@@ -90,7 +90,7 @@ namespace Map {
                 DAT_BuildingsState::ptr)(_buildingID, 1);
             DAT_BuildingsState::instance.buildings[_buildingID].renderAnimation = 1;
             bVar2 = DAT_BuildingDefinedData::instance
-                        .field166_0x794c[DAT_BuildingsState::instance.buildings[_buildingID].animationIndex];
+                        .DogCageAnimationFrames[DAT_BuildingsState::instance.buildings[_buildingID].animationIndex];
             DAT_BuildingsState::instance.buildings[_buildingID].animationFrame = (int)(char)bVar2;
             if ((char)bVar2 < 1) {
                 DAT_BuildingsState::instance.buildings[_buildingID].animationIndex = 0;

@@ -48,18 +48,18 @@ namespace Map {
             Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar2);
         DAT_BuildingsState::instance.buildings[iVar2].animationIncrement = 1;
         if ((char)DAT_BuildingDefinedData::instance
-                .field171_0x7bd4[DAT_BuildingsState::instance.buildings[iVar2].animationIndex]
+                .ApothecaryAnimationFrames[DAT_BuildingsState::instance.buildings[iVar2].animationIndex]
             < '\0') {
             DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;
-            piVar1 = &DAT_BuildingsState::instance.buildings[iVar2].field13_0x28;
+            piVar1 = &DAT_BuildingsState::instance.buildings[iVar2].animationCycleCount;
             *piVar1 = *piVar1 + 1;
-            DAT_BuildingsState::instance.buildings[iVar2].field14_0x2c = 1;
+            DAT_BuildingsState::instance.buildings[iVar2].animationCycleCompleted = 1;
         } else {
-            DAT_BuildingsState::instance.buildings[iVar2].field14_0x2c = 0;
+            DAT_BuildingsState::instance.buildings[iVar2].animationCycleCompleted = 0;
         }
         DAT_BuildingsState::instance.buildings[iVar2].animationFrame
             = (int)(char)DAT_BuildingDefinedData::instance
-                  .field171_0x7bd4[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
+                  .ApothecaryAnimationFrames[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
         if (DAT_BuildingsState::instance.buildings[iVar2].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[iVar2].oldVisualActiveState) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(

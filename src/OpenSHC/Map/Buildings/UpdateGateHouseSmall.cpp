@@ -49,14 +49,14 @@ namespace Map {
         }
         DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar2].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[iVar2].field20_0x38 = 0;
-        DAT_BuildingsState::instance.buildings[iVar2].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[iVar2].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[iVar2].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite1 = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite4 = 0;
         if (local_14 == 0x50) {
-            DAT_BuildingsState::instance.buildings[iVar2].field22_0x40 = 0xb;
+            DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite3 = 0xb;
         } else {
-            DAT_BuildingsState::instance.buildings[iVar2].field23_0x44 = 0xc;
+            DAT_BuildingsState::instance.buildings[iVar2].extraAnimationSprite4 = 0xc;
         }
         DAT_BuildingsState::instance.buildings[iVar2].field33_0x6c = 0;
         DAT_BuildingsState::instance.buildings[iVar2].field34_0x70 = 0;

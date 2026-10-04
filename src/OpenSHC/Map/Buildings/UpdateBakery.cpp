@@ -93,7 +93,7 @@ namespace Map {
             }
             iVar9 = iVar8 * 0x32c;
             bVar4 = DAT_BuildingDefinedData::instance
-                        .field55_0x4c14[DAT_BuildingsState::instance.buildings[iVar8].animationIndex];
+                        .BakeryAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar8].animationIndex];
             if ('\0' < (char)bVar4) {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame = (int)(char)bVar4;
             }
@@ -115,15 +115,15 @@ namespace Map {
                 if (sVar5 == 0) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
                 } else if (sVar5 == 1) {
-                    piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field13_0x28 + iVar9);
+                    piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar9);
                     *piVar2 = *piVar2 + 1;
-                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].field14_0x2c + iVar9) = 1;
+                    *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar9) = 1;
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 0;
                 }
             }
         } else if (sVar5 == 1) {
             bVar4 = DAT_BuildingDefinedData::instance
-                        .field56_0x4da0[DAT_BuildingsState::instance.buildings[iVar8].animationIndex];
+                        .BakeryAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar8].animationIndex];
             if ('\0' < (char)bVar4) {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame = (int)(char)bVar4;
             }
@@ -167,19 +167,19 @@ namespace Map {
         iVar8 = 0;
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
         if (iVar10 == 0) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0;
         } else if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) == 1) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = 0x44;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0x44;
         } else {
             sVar5 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9);
             if (sVar5 < 100) {
-                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = 0;
+                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0;
             } else if (sVar5 < 0xc2) {
-                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = 0x41;
+                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0x41;
             } else if (sVar5 < 0x120) {
-                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = 0x42;
+                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0x42;
             } else {
-                *(uint*)((int)&DAT_BuildingsState::instance.buildings[0].field20_0x38 + iVar9) = (0x17d < sVar5) + 0x43;
+                *(uint*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = (0x17d < sVar5) + 0x43;
             }
         }
         piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9);
@@ -188,20 +188,20 @@ namespace Map {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9) = 0;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9) == 0) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field21_0x3c + iVar9) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar9) = 0;
         } else {
             if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9) == 0) {
-                piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field25_0x4c + iVar9);
+                piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar9);
                 *piVar2 = *piVar2 + 1;
             }
             if ((char)DAT_BuildingDefinedData::instance
-                    .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field25_0x4c + iVar9)]
+                    .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar9)]
                 < '\x01') {
-                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field25_0x4c + iVar9) = 0;
+                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar9) = 0;
             }
-            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field21_0x3c + iVar9)
+            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar9)
                 = (char)DAT_BuildingDefinedData::instance
-                      .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field25_0x4c + iVar9)]
+                      .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar9)]
                 + 0x10;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {

@@ -46,7 +46,7 @@ namespace Map {
         if (iVar2 < -4) {
             DAT_BuildingsState::instance.buildings[iVar3].animationFrame
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field163_0x778c[DAT_BuildingsState::instance.buildings[iVar3].animationIndex];
+                      .BadBuildingBurningStakeAnimationFrames[DAT_BuildingsState::instance.buildings[iVar3].animationIndex];
         }
         if (DAT_BuildingsState::instance.buildings[iVar3].animationFrame < 1) {
             DAT_BuildingsState::instance.buildings[iVar3].animationIndex = 0;

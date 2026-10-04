@@ -50,68 +50,68 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].field28_0x58 < 1) {
             if ((char)DAT_BuildingsState::instance.buildings[buildingID].numberOfAnimals < '\x01') {
-                DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0;
             } else if (DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField < '\x01') {
                 piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock;
                 *piVar3 = *piVar3 + 1;
                 if ((char)DAT_BuildingDefinedData::instance
-                        .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock]
+                        .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock]
                     < '\x01') {
                     DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock = 0;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field20_0x38
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock];
+                          .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock];
             } else {
-                DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = 0x2a;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0x2a;
             }
             if ((char)DAT_BuildingsState::instance.buildings[buildingID].numberOfAnimals < '\x02') {
-                DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
             } else if (DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField < '\x02') {
-                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].field25_0x4c;
+                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame1;
                 *piVar3 = *piVar3 + 1;
                 if ((char)DAT_BuildingDefinedData::instance
-                        .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field25_0x4c]
+                        .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame1]
                     < '\x01') {
-                    DAT_BuildingsState::instance.buildings[buildingID].field25_0x4c = 0;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame1 = 0;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field25_0x4c];
+                          .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame1];
             } else {
-                DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = 0x29;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0x29;
             }
             if ((char)DAT_BuildingsState::instance.buildings[buildingID].numberOfAnimals < '\x03') {
-                DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
             } else if (DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField < '\x03') {
-                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].field26_0x50;
+                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame2;
                 *piVar3 = *piVar3 + 1;
                 if ((char)DAT_BuildingDefinedData::instance
-                        .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field26_0x50]
+                        .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame2]
                     < '\x01') {
-                    DAT_BuildingsState::instance.buildings[buildingID].field26_0x50 = 0;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame2 = 0;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field22_0x40
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field26_0x50];
+                          .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame2];
             } else {
-                DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = 0x28;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0x28;
             }
             if ((char)DAT_BuildingsState::instance.buildings[buildingID].numberOfAnimals < '\x04') {
-                DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
             } else if (DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField < '\x04') {
-                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].field27_0x54;
+                piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3;
                 *piVar3 = *piVar3 + 1;
                 if ((char)DAT_BuildingDefinedData::instance
-                        .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field27_0x54]
+                        .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3]
                     < '\x01') {
-                    DAT_BuildingsState::instance.buildings[buildingID].field27_0x54 = 0;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3 = 0;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field23_0x44
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field147_0x715c[DAT_BuildingsState::instance.buildings[buildingID].field27_0x54];
+                          .StablesAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3];
             } else {
-                DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = 0x27;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0x27;
             }
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;

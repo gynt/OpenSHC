@@ -51,7 +51,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
         }
         bVar1 = DAT_BuildingDefinedData::instance
-                    .field161_0x76bc[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                    .BadBuildingDunkingStoolAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
         DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar1;
         if ((char)bVar1 < 1) {
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;

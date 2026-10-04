@@ -33,7 +33,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar3].renderAnimation
             = (ushort)(2 < DAT_GameState::instance.playerDataArray[sVar2].fearFactorLevel);
         bVar1 = DAT_BuildingDefinedData::instance
-                    .field169_0x7a14[DAT_BuildingsState::instance.buildings[iVar3].animationIndex];
+                    .GoodBuildingDancingBearAnimationFrames[DAT_BuildingsState::instance.buildings[iVar3].animationIndex];
         DAT_BuildingsState::instance.buildings[iVar3].animationFrame = (int)(char)bVar1;
         if ((char)bVar1 < 1) {
             DAT_BuildingsState::instance.buildings[iVar3].animationIndex = 0;

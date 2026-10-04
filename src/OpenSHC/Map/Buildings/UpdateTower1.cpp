@@ -34,11 +34,11 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar1].animationFrame = 0;
         DAT_BuildingsState::instance.buildings[iVar1].someX = DAT_BuildingsState::instance.buildings[iVar1].x + 1;
         DAT_BuildingsState::instance.buildings[iVar1].someY = DAT_BuildingsState::instance.buildings[iVar1].y + 1;
-        DAT_BuildingsState::instance.buildings[iVar1].field20_0x38 = 0x7d;
+        DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite1 = 0x7d;
         DAT_BuildingsState::instance.buildings[iVar1].shouldRenderRoof = 0x7c;
-        DAT_BuildingsState::instance.buildings[iVar1].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[iVar1].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[iVar1].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].field29_0x5c = 0;
         DAT_BuildingsState::instance.buildings[iVar1].field33_0x6c = 0;
         DAT_BuildingsState::instance.buildings[iVar1].field34_0x70 = 0;

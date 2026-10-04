@@ -43,7 +43,7 @@ namespace Map {
             }
         }
         bVar1 = DAT_BuildingDefinedData::instance
-                    .field160_0x766c[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
+                    .BadBuildingDungeonAnimationFrames[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
         DAT_BuildingsState::instance.buildings[buildingID].animationFrame = (int)(char)bVar1;
         if ((char)bVar1 < 1) {
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;

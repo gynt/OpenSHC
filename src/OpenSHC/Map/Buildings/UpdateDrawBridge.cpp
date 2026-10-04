@@ -40,10 +40,10 @@ namespace Map {
             iVar9 = iVar9 + 8;
         }
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
-        DAT_BuildingsState::instance.buildings[iVar8].field20_0x38 = 0;
-        DAT_BuildingsState::instance.buildings[iVar8].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[iVar8].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[iVar8].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite1 = 0;
+        DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar8].animationIncrement = 1;
         bVar2 = DAT_BuildingsState::instance.buildings[iVar8].drawBridgeState1;
         if (bVar2 == 0) {
@@ -65,19 +65,19 @@ namespace Map {
             }
             DAT_BuildingsState::instance.buildings[iVar8].displayOwnerFlag = 1;
             if (iVar9 == 0) {
-                DAT_BuildingsState::instance.buildings[iVar8].field20_0x38 = 0x4f;
+                DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite1 = 0x4f;
                 goto LAB_00417f35;
             }
             if (iVar9 == 2) {
-                DAT_BuildingsState::instance.buildings[iVar8].field21_0x3c = 0x50;
+                DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite2 = 0x50;
                 goto LAB_00417f5a;
             }
             if (iVar9 == 4) {
-                DAT_BuildingsState::instance.buildings[iVar8].field22_0x40 = 0x4d;
+                DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite3 = 0x4d;
                 goto LAB_00417f7f;
             }
             if (iVar9 == 6) {
-                DAT_BuildingsState::instance.buildings[iVar8].field23_0x44 = 0x4e;
+                DAT_BuildingsState::instance.buildings[iVar8].extraAnimationSprite4 = 0x4e;
                 goto LAB_00417fa4;
             }
         } else if (bVar2 == 2) {
@@ -96,14 +96,14 @@ namespace Map {
             *puVar1 = *puVar1 + 1;
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field139_0x6ae4[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
+                    .DrawBridgeAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar8].drawBridgeState1 = 2;
                 DAT_BuildingsState::instance.buildings[iVar8].animationIndex = 0;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field139_0x6ae4[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
+                          .DrawBridgeAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
                     + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
@@ -129,7 +129,7 @@ namespace Map {
             *puVar1 = *puVar1 + 1;
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field140_0x6b04[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
+                    .DrawBridgeAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar8].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar8].drawBridgeState1 = 0;
@@ -139,7 +139,7 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame
                     = (int)(char)DAT_BuildingDefinedData::instance
-                          .field140_0x6b04[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
+                          .DrawBridgeAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
                     + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {

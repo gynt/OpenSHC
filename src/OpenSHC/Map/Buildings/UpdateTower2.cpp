@@ -35,10 +35,10 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar6].animationFrame = 0;
         DAT_BuildingsState::instance.buildings[iVar6].someX = DAT_BuildingsState::instance.buildings[iVar6].x + 1;
         DAT_BuildingsState::instance.buildings[iVar6].someY = DAT_BuildingsState::instance.buildings[iVar6].y + 1;
-        DAT_BuildingsState::instance.buildings[iVar6].field20_0x38 = 1;
-        DAT_BuildingsState::instance.buildings[iVar6].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = 1;
+        DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar6].field29_0x5c = 0;
         DAT_BuildingsState::instance.buildings[iVar6].field33_0x6c = 0;
         DAT_BuildingsState::instance.buildings[iVar6].field34_0x70 = 0;
@@ -58,13 +58,13 @@ namespace Map {
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar6);
         if (iVar1 != 0) {
-            DAT_BuildingsState::instance.buildings[iVar6].field21_0x3c = 0x51;
+            DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = 0x51;
             DAT_BuildingsState::instance.buildings[iVar6].animationFrame = 1;
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar6);
         if (iVar1 != 0) {
-            DAT_BuildingsState::instance.buildings[iVar6].field23_0x44 = 0x5a;
+            DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite4 = 0x5a;
             DAT_BuildingsState::instance.buildings[iVar6].animationFrame = 1;
         }
         local_20[1] = 0;

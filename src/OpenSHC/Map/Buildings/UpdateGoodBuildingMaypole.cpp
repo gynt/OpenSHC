@@ -45,7 +45,7 @@ namespace Map {
         if (DAT_GameState::instance.playerDataArray[sVar3].popularity
             < (int)((DAT_BuildingsState::instance.buildings[iVar4].fireRelatedRNG1 & 0xffU) + 5000)) {
             iVar5 = (char)DAT_BuildingDefinedData::instance
-                        .field168_0x79c4[DAT_BuildingsState::instance.buildings[iVar4].animationIndex]
+                        .GoodBuildingMaypoleAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar4].animationIndex]
                 + 0x20;
             DAT_BuildingsState::instance.buildings[iVar4].animationFrame = iVar5;
             if (iVar5 < 0x21) {
@@ -54,14 +54,14 @@ namespace Map {
             }
         } else {
             bVar2 = DAT_BuildingDefinedData::instance
-                        .field167_0x7974[DAT_BuildingsState::instance.buildings[iVar4].animationIndex];
+                        .GoodBuildingMaypoleAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar4].animationIndex];
             DAT_BuildingsState::instance.buildings[iVar4].animationFrame = (int)(char)bVar2;
             if ((char)bVar2 < 1) {
-                piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].field13_0x28;
+                piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].animationCycleCount;
                 *piVar1 = *piVar1 + 1;
                 DAT_BuildingsState::instance.buildings[iVar4].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar4].animationFrame = 1;
-                if ((DAT_BuildingsState::instance.buildings[iVar4].field13_0x28 & 7) == 0) {
+                if ((DAT_BuildingsState::instance.buildings[iVar4].animationCycleCount & 7) == 0) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar4].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)),

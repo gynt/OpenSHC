@@ -34,18 +34,18 @@ namespace Map {
         }
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 0;
         if (iVar2 == 0x50) {
-            DAT_BuildingsState::instance.buildings[buildingID].field20_0x38 = 0x28;
-            DAT_BuildingsState::instance.buildings[buildingID].field22_0x40 = 9;
+            DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0x28;
+            DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 9;
         } else {
-            DAT_BuildingsState::instance.buildings[buildingID].field21_0x3c = 0x29;
-            DAT_BuildingsState::instance.buildings[buildingID].field23_0x44 = 10;
+            DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0x29;
+            DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 10;
         }
         bVar1 = DAT_BuildingsState::instance.buildings[buildingID].pathLinkageRelated2;
         if (bVar1 == 0) {
