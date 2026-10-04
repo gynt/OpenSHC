@@ -140,7 +140,7 @@ namespace UI {
             if (DAT_TileMapState::instance.mapSize == 0) {
                 iVar5 = 400;
             }
-            DAT_MinimapViewState::instance.field0_0x0 = 1;
+            DAT_MinimapViewState::instance.needsRedraw = 1;
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar5, iVar5);
             switch (iVar5) {
             case 100:

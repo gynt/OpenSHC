@@ -26,7 +26,7 @@ namespace UI {
             + (DAT_ViewportRenderState::instance.viewportState.viewportX / 32);
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);
-        if (((this->field0_0x0 != 0) || (xOffset != this->field1_0x4)) || (yOffset != this->field2_0x8)) {
+        if (((this->needsRedraw != 0) || (xOffset != this->lastRenderedXOffset)) || (yOffset != this->lastRenderedYOffset)) {
             if (DAT_TileMapState::instance.mapSize < 200) {
                 heightFactor = 2;
                 widthFactor = 4;
@@ -39,13 +39,13 @@ namespace UI {
                 (int)((int)(126)), (int)((int)(126)), 7, xOffset, yOffset, widthFactor, heightFactor, 0);
         }
         this->DAT_SomeMiniMapCounterTill4 = this->DAT_SomeMiniMapCounterTill4 + 1 & 0x80000003;
-        this->field0_0x0 = 0;
+        this->needsRedraw = 0;
         this->field3_0xc = 0;
         if (this->DAT_SomeMiniMapCounterTill4 < 0) {
             this->DAT_SomeMiniMapCounterTill4 = (this->DAT_SomeMiniMapCounterTill4 - 1 | 0xfffffffc) + 1;
         }
-        this->field1_0x4 = xOffset;
-        this->field2_0x8 = yOffset;
+        this->lastRenderedXOffset = xOffset;
+        this->lastRenderedYOffset = yOffset;
         if ((DAT_TileMapState::instance.DAT_SelectionIconType != 0) && (this->field15_0x3c != 0)) {
             if ((DAT_MenuHandlerState::instance.x + 571 <= DAT_MouseState::instance.screenSpaceX)
                 && (DAT_MouseState::instance.screenSpaceX < DAT_MenuHandlerState::instance.x + 697)) {

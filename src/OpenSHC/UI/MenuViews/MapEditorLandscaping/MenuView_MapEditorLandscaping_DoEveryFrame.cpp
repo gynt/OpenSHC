@@ -35,7 +35,7 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x, DAT_MenuHandlerState::instance.y + 0x1b2);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         LAB_00431429:
-            DAT_MinimapViewState::instance.field0_0x0 = 1;
+            DAT_MinimapViewState::instance.needsRedraw = 1;
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapLandscaping, DAT_MinimapViewState::ptr)(
                 DAT_MenuHandlerState::instance.x + 0x298, DAT_MenuHandlerState::instance.y + 0x1d0, 0x80, 0x80);
         }

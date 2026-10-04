@@ -21,7 +21,7 @@ namespace UI {
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);
         this->DAT_SomeMiniMapCounterTill4 = 0;
-        if (((this->field0_0x0 != 0) || (xOffset != this->field1_0x4)) || (yOffset != this->field2_0x8)) {
+        if (((this->needsRedraw != 0) || (xOffset != this->lastRenderedXOffset)) || (yOffset != this->lastRenderedYOffset)) {
             if (DAT_TileMapState::instance.mapSize < 0xc9) {
                 heightFactor = 2;
                 widthFactor = 4;
@@ -33,9 +33,9 @@ namespace UI {
                 xPos, yPos, width, height, 5, xOffset, yOffset, widthFactor, heightFactor, -1);
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
         }
-        this->field1_0x4 = xOffset;
-        this->field2_0x8 = yOffset;
-        this->field0_0x0 = 0;
+        this->lastRenderedXOffset = xOffset;
+        this->lastRenderedYOffset = yOffset;
+        this->needsRedraw = 0;
         this->field3_0xc = 0;
     }
 

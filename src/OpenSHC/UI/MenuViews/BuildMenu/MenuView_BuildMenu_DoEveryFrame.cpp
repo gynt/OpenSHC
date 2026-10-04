@@ -88,7 +88,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                DAT_MinimapViewState::instance.field0_0x0 = 1;
+                DAT_MinimapViewState::instance.needsRedraw = 1;
                 if (DAT_GameCore::instance.isBinkVideoPlaying == 0) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::MinimapViewState_Func::renderMinimapMain, DAT_MinimapViewState::ptr)();

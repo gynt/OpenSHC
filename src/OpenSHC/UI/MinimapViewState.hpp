@@ -22,9 +22,9 @@ namespace UI {
     // SIZE: 0x00061BF8
     class MinimapViewState {
     public:
-        undefined4 field0_0x0; // 0x00000000 length: 4
-        undefined4 field1_0x4; // 0x00000004 length: 4
-        undefined4 field2_0x8; // 0x00000008 length: 4
+        undefined4 needsRedraw; // 0x00000000 length: 4
+        undefined4 lastRenderedXOffset; // 0x00000004 length: 4
+        undefined4 lastRenderedYOffset; // 0x00000008 length: 4
         undefined4 field3_0xc; // 0x0000000C length: 4
         undefined4 field4_0x10; // 0x00000010 length: 4
         undefined4 field5_0x14; // 0x00000014 length: 4

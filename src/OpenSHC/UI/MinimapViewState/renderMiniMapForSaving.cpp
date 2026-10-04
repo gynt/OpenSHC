@@ -38,9 +38,9 @@ namespace UI {
         }
         MACRO_CALL_MEMBER(UI::MinimapViewState_Func::locatePlayerKeepPositionsOnMinimap, this)(
             4, iVar3, iVar4);
-        this->field1_0x4 = iVar2;
-        this->field2_0x8 = iVar1;
-        this->field0_0x0 = 1;
+        this->lastRenderedXOffset = iVar2;
+        this->lastRenderedYOffset = iVar1;
+        this->needsRedraw = 1;
         this->field3_0xc = 0;
     }
 
