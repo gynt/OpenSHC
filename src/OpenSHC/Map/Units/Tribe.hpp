@@ -39,7 +39,7 @@ namespace Map {
             short facingDirection_1; // 0x00000020 length: 2
             short facingDirection_2; // 0x00000022 length: 2
             short facingDirection_3; // 0x00000024 length: 2
-            short field24_0x26; // 0x00000026 length: 2
+            short movementRunUpTime; // 0x00000026 length: 2
             SomeTribeBehaviorTypeShort tribeBehaviorType; // 0x00000028 length: 2
             undefined1 padding_0x2a[2]; // 0x0000002A length: 2
             short someUpdateUpperLimit; // 0x0000002C length: 2
@@ -55,7 +55,7 @@ namespace Map {
             short countdown2; // 0x000001E8 length: 2
             undefined1 padding_0x1ea[6]; // 0x000001EA length: 6
             short freeUnitSpeeds; // 0x000001F0 length: 2
-            short field56_0x1f2; // 0x000001F2 length: 2
+            short supportTribeID; // 0x000001F2 length: 2
             int uid2; // 0x000001F4 length: 4
             short tribeID; // 0x000001F8 length: 2
             short minimumMovementSpeed; // 0x000001FA length: 2

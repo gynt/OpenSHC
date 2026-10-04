@@ -53,7 +53,7 @@ namespace Map {
                 this->tribes[tribeID].facingDirection_1 = DAT_UnitsState::instance.units[_targetUnit].facingDirection;
                 this->tribes[tribeID].facingDirection_2 = DAT_UnitsState::instance.units[_targetUnit].facingDirection;
                 this->tribes[tribeID].facingDirection_3 = DAT_UnitsState::instance.units[_targetUnit].facingDirection;
-                this->tribes[tribeID].field24_0x26 = DAT_UnitsState::instance.units[_targetUnit].movementRunUpTime;
+                this->tribes[tribeID].movementRunUpTime = DAT_UnitsState::instance.units[_targetUnit].movementRunUpTime;
                 this->tribes[tribeID].maximumMovementSpeed = _maximumSpeed;
                 this->tribes[tribeID].minimumMovementSpeed = _minimumSpeed;
                 this->tribes[tribeID].movementSpeed = _minimumSpeed;

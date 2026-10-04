@@ -34,7 +34,7 @@ namespace Map {
         LAB_00518a50:
             iVar1 = this->attackInfo.tribeIDArray[iVar4];
             if (10 < this->attackInfo.tribeRelatedArrayValue0UpTo12[iVar4]) {}
-            iVar2 = (int)DAT_TribesState::instance.tribes[iVar1].field56_0x1f2;
+            iVar2 = (int)DAT_TribesState::instance.tribes[iVar1].supportTribeID;
             if ((iVar2 != 0)
                 && (DAT_TribesState::instance.tribes[iVar1].uid2 == DAT_TribesState::instance.tribes[iVar2].uid)) {}
             DAT_TribesState::instance.tribes[iVar1].tribeBehaviorType = (undefined2)param_3;
@@ -69,7 +69,7 @@ namespace Map {
             } while ((int)psVar3 < 0x17623a0);
             goto LAB_00518b92;
         LAB_00518b70:
-            DAT_TribesState::instance.tribes[iVar1].field56_0x1f2 = (short)iVar2;
+            DAT_TribesState::instance.tribes[iVar1].supportTribeID = (short)iVar2;
             DAT_TribesState::instance.tribes[iVar1].uid2 = DAT_TribesState::instance.tribes[iVar2].uid;
             DAT_TribesState::instance.tribes[iVar2].tribeID = (short)iVar1;
         LAB_00518b92:

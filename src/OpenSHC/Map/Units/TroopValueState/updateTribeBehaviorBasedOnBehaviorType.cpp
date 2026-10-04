@@ -333,7 +333,7 @@ namespace Map {
                     }
                     break;
                 case 0x411:
-                    iVar12 = (int)DAT_TribesState::instance.tribes[tribeID].field56_0x1f2;
+                    iVar12 = (int)DAT_TribesState::instance.tribes[tribeID].supportTribeID;
                     if ((iVar12 == 0)
                         || (DAT_TribesState::instance.tribes[tribeID].uid2
                             != DAT_TribesState::instance.tribes[iVar12].uid)) {
