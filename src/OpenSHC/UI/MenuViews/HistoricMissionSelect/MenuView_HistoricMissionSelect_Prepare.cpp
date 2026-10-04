@@ -25,8 +25,8 @@ namespace UI {
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat2.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_GameCore::instance.section1066 = 0;
-            DAT_MenuTextInputState::instance.field39_0x90 = 0;
-            DAT_MenuTextInputState::instance.field38_0x8c = 0xffffffff;
+            DAT_MenuTextInputState::instance.lastListClickTime = 0;
+            DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
             if (DAT_GameCore::instance.missionNumber1to20 < 6) {
                 DAT_00b95b2c::instance = 0;
                 DAT_00b96100::instance = 1;

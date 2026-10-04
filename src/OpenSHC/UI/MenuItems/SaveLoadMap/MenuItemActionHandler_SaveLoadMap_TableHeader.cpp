@@ -18,50 +18,50 @@ namespace UI {
                 param_1 = -1 - param_1;
                 switch (param_1) {
                 case 0:
-                    DAT_MenuTextInputState::instance.field33_0x78 = 1;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 1;
                     break;
                 case 1:
-                    DAT_MenuTextInputState::instance.field33_0x78 = 0;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 0;
                     param_1 = 0;
                     break;
                 case 2:
-                    DAT_MenuTextInputState::instance.field33_0x78 = 3;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                     param_1 = 1;
                     break;
                 case 3:
-                    DAT_MenuTextInputState::instance.field33_0x78 = 2;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                     param_1 = 1;
                 }
             }
             if (param_1 == 0) {
                 iVar2 = 0;
-                if (DAT_MenuTextInputState::instance.field33_0x78 == 0) {
-                    if (0 < DAT_MenuTextInputState::instance.field32_0x74) {
+                if (DAT_MenuTextInputState::instance.fileListSortOrder == 0) {
+                    if (0 < DAT_MenuTextInputState::instance.fileListEntryCount) {
                         do {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
-                                = (DAT_MenuTextInputState::instance.field32_0x74 - iVar2) + -1;
+                                = (DAT_MenuTextInputState::instance.fileListEntryCount - iVar2) + -1;
                             iVar2 = iVar2 + 1;
-                        } while (iVar2 < DAT_MenuTextInputState::instance.field32_0x74);
+                        } while (iVar2 < DAT_MenuTextInputState::instance.fileListEntryCount);
                     }
-                    DAT_MenuTextInputState::instance.field33_0x78 = 1;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 1;
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                 }
-                if (0 < DAT_MenuTextInputState::instance.field32_0x74) {
+                if (0 < DAT_MenuTextInputState::instance.fileListEntryCount) {
                     do {
                         DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
                         iVar2 = iVar2 + 1;
-                    } while (iVar2 < DAT_MenuTextInputState::instance.field32_0x74);
+                    } while (iVar2 < DAT_MenuTextInputState::instance.fileListEntryCount);
                 }
-                DAT_MenuTextInputState::instance.field33_0x78 = 0;
+                DAT_MenuTextInputState::instance.fileListSortOrder = 0;
                 DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
             } else if (param_1 == 1) {
-                iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
-                if (DAT_MenuTextInputState::instance.field33_0x78 != 2) {
+                iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
+                if (DAT_MenuTextInputState::instance.fileListSortOrder != 2) {
                     do {
                         iVar4 = 0;
                         iVar3 = 0;
                         if (iVar2 == 1 || iVar2 + -1 < 0) {
-                            DAT_MenuTextInputState::instance.field33_0x78 = 2;
+                            DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                             DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                         }
                         do {
@@ -72,19 +72,19 @@ namespace UI {
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                                 iVar4 = iVar4 + 1;
-                                iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
+                                iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar2 + -1);
                     } while (iVar4 != 0);
-                    DAT_MenuTextInputState::instance.field33_0x78 = 2;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                 }
                 do {
                     iVar4 = 0;
                     iVar3 = 0;
                     if (iVar2 == 1 || iVar2 + -1 < 0) {
-                        DAT_MenuTextInputState::instance.field33_0x78 = 3;
+                        DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                         DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                     }
                     do {
@@ -96,12 +96,12 @@ namespace UI {
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                             iVar4 = iVar4 + 1;
-                            iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
+                            iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
                         }
                         iVar3 = iVar3 + 1;
                     } while (iVar3 < iVar2 + -1);
                 } while (iVar4 != 0);
-                DAT_MenuTextInputState::instance.field33_0x78 = 3;
+                DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                 DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
             }
         }

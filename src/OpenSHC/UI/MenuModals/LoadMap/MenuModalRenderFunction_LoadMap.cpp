@@ -48,26 +48,26 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::MinimapViewState_Func::renderMinimapPreview, DAT_MinimapViewState::ptr)(
                 x + 0x37, y + 0x5f);
             (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
-            if (DAT_MenuTextInputState::instance.field0_0x0 == 1) {
-                DAT_MenuTextInputState::instance.field2_0x8
+            if (DAT_MenuTextInputState::instance.fileListContext == 1) {
+                DAT_MenuTextInputState::instance.savedListSelection1
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex;
-                DAT_MenuTextInputState::instance.field1_0x4
+                DAT_MenuTextInputState::instance.savedListOffset1
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
-                DAT_MenuTextInputState::instance.field3_0xc = DAT_MenuTextInputState::instance.field33_0x78;
+                DAT_MenuTextInputState::instance.savedListSortOrder1 = DAT_MenuTextInputState::instance.fileListSortOrder;
             }
-            if (DAT_MenuTextInputState::instance.field0_0x0 == 2) {
-                DAT_MenuTextInputState::instance.field8_0x20
+            if (DAT_MenuTextInputState::instance.fileListContext == 2) {
+                DAT_MenuTextInputState::instance.savedListSelection3
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex;
-                DAT_MenuTextInputState::instance.field7_0x1c
+                DAT_MenuTextInputState::instance.savedListOffset3
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
-                DAT_MenuTextInputState::instance.field9_0x24 = DAT_MenuTextInputState::instance.field33_0x78;
+                DAT_MenuTextInputState::instance.savedListSortOrder3 = DAT_MenuTextInputState::instance.fileListSortOrder;
             }
-            if (DAT_MenuTextInputState::instance.field0_0x0 == 3) {
-                DAT_MenuTextInputState::instance.field5_0x14
+            if (DAT_MenuTextInputState::instance.fileListContext == 3) {
+                DAT_MenuTextInputState::instance.savedListSelection2
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex;
-                DAT_MenuTextInputState::instance.field4_0x10
+                DAT_MenuTextInputState::instance.savedListOffset2
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
-                DAT_MenuTextInputState::instance.field6_0x18 = DAT_MenuTextInputState::instance.field33_0x78;
+                DAT_MenuTextInputState::instance.savedListSortOrder2 = DAT_MenuTextInputState::instance.fileListSortOrder;
             }
         }
 

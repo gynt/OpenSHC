@@ -64,18 +64,18 @@ namespace UI {
             _currentTime = timeGetTime();
             if ((DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    == DAT_MenuTextInputState::instance.field38_0x8c)
-                && ((int)(_currentTime - DAT_MenuTextInputState::instance.field39_0x90) < 500)) {
+                    == DAT_MenuTextInputState::instance.lastClickedListIndex)
+                && ((int)(_currentTime - DAT_MenuTextInputState::instance.lastListClickTime) < 500)) {
                 DAT_MouseState::instance.waitCursorToggle = 1;
                 MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
                 MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                         MenuItemActionHandler_SingleplayerMapChoice_ButtonsAndHands)(0x41);
             }
             if (DAT_MouseState::instance.leftClickStart != 0) {
-                DAT_MenuTextInputState::instance.field38_0x8c
+                DAT_MenuTextInputState::instance.lastClickedListIndex
                     = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                     + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
-                DAT_MenuTextInputState::instance.field39_0x90 = _currentTime;
+                DAT_MenuTextInputState::instance.lastListClickTime = _currentTime;
             }
             pcVar3 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance

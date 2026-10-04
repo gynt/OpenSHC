@@ -14,7 +14,7 @@ namespace UI {
             case 1:
                 *minValue = 0;
                 *maxValue
-                    = DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84;
+                    = DAT_MenuTextInputState::instance.fileListEntryCount - DAT_MenuTextInputState::instance.fileListVisibleRowCount;
                 *currentValue = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
                 return;
             case 2:
@@ -33,13 +33,13 @@ namespace UI {
                 break;
             case 6:
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
+                    < DAT_MenuTextInputState::instance.fileListEntryCount - DAT_MenuTextInputState::instance.fileListVisibleRowCount) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
                 }
                 break;
             case 7:
-                *currentValue = DAT_MenuTextInputState::instance.field36_0x84 + -1;
+                *currentValue = DAT_MenuTextInputState::instance.fileListVisibleRowCount + -1;
                 return;
             default:
                 return;

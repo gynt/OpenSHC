@@ -42,8 +42,8 @@ namespace UI {
             Menu* pMVar1;
             char* tgxFileName;
             Menu_SingleplayerMapChoice::instance.thousand = 0;
-            DAT_MenuTextInputState::instance.field39_0x90 = 0;
-            DAT_MenuTextInputState::instance.field38_0x8c = 0xffffffff;
+            DAT_MenuTextInputState::instance.lastListClickTime = 0;
+            DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
             DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SOLITARY;
             DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
             if (INT_00b95b64::instance == 0) {
@@ -52,7 +52,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
             } else {
-                DAT_MenuTextInputState::instance.field33_0x78 = 0;
+                DAT_MenuTextInputState::instance.fileListSortOrder = 0;
                 DAT_GameSynchronyState::instance.isHost = TRUE;
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                 DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;

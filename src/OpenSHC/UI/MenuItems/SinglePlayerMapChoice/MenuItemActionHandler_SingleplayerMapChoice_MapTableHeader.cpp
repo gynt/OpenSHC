@@ -21,7 +21,7 @@ namespace UI {
             iVar5 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
             if (param_1 == 0) {
                 iVar3 = 0;
-                if (DAT_MenuTextInputState::instance.field33_0x78 == 0) {
+                if (DAT_MenuTextInputState::instance.fileListSortOrder == 0) {
                     if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         puVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                             + DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + 0x1f2;
@@ -31,7 +31,7 @@ namespace UI {
                             puVar2 = puVar2 + -1;
                         } while (iVar3 < iVar5);
                     }
-                    DAT_MenuTextInputState::instance.field33_0x78 = 1;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 1;
                 } else {
                     if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         do {
@@ -40,11 +40,11 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
                     }
-                    DAT_MenuTextInputState::instance.field33_0x78 = 0;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 0;
                 }
             } else if (param_1 == 1) {
                 iVar5 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_MenuTextInputState::instance.field33_0x78 == 2) {
+                if (DAT_MenuTextInputState::instance.fileListSortOrder == 2) {
                     do {
                         iVar4 = 0;
                         iVar3 = 0;
@@ -63,7 +63,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
                     } while (iVar4 != 0);
-                    DAT_MenuTextInputState::instance.field33_0x78 = 3;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                 } else {
                     do {
                         iVar4 = 0;
@@ -82,7 +82,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
                     } while (iVar4 != 0);
-                    DAT_MenuTextInputState::instance.field33_0x78 = 2;
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                 }
             } else if (param_1 == 2) {
                 iVar5 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
@@ -131,7 +131,7 @@ namespace UI {
             MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                     MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
-            DAT_MenuTextInputState::instance.field38_0x8c = 0xffffffff;
+            DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
         }
 
     }

@@ -16,7 +16,7 @@ namespace UI {
         {
             char* pcVar1;
             if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
-                < DAT_MenuTextInputState::instance.field32_0x74) {
+                < DAT_MenuTextInputState::instance.fileListEntryCount) {
                 DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex = param_1;
                 pcVar1 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance

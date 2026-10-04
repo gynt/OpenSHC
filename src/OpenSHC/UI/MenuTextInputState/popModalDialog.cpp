@@ -28,7 +28,7 @@ namespace UI {
         this->currentModalDialog = _menuModalID;
         if (_menuModalID != UI::Enums::MMT_NO_MENU) {
             if (_menuModalID == UI::Enums::MMT_SAVE_MAP) {
-                this->field36_0x84 = 0x10;
+                this->fileListVisibleRowCount = 0x10;
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     2);

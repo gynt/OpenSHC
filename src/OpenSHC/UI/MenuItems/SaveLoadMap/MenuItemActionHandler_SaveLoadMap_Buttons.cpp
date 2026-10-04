@@ -299,7 +299,7 @@ namespace UI {
                 break;
             case -2:
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
+                    < DAT_MenuTextInputState::instance.fileListEntryCount - DAT_MenuTextInputState::instance.fileListVisibleRowCount) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
                     ;

@@ -38,9 +38,9 @@ namespace UI {
                 DAT_MenuTextInputState::instance.DAT_GenieVoiceActiveMenuVar = DAT_GameCore::instance.genieVoiceActive;
                 DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar
                     = DAT_SoundSystemState::instance.soundActiveUnk_0x0;
-                DAT_MenuTextInputState::instance.field20_0x44 = DAT_SoundSystemState::instance.streamVolume[0];
-                DAT_MenuTextInputState::instance.field21_0x48 = DAT_SoundSystemState::instance.streamVolume[1];
-                DAT_MenuTextInputState::instance.field22_0x4c = DAT_SoundSystemState::instance.streamVolume[3];
+                DAT_MenuTextInputState::instance.pendingStreamVolume0 = DAT_SoundSystemState::instance.streamVolume[0];
+                DAT_MenuTextInputState::instance.pendingStreamVolume1 = DAT_SoundSystemState::instance.streamVolume[1];
+                DAT_MenuTextInputState::instance.pendingStreamVolume3 = DAT_SoundSystemState::instance.streamVolume[3];
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(UI::Enums::MMT_SOUND_OPTIONS);
                 return;
@@ -52,9 +52,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                 return;
             case 0x19:
-                DAT_MenuTextInputState::instance.field12_0x30 = DAT_GameCore::instance.gameSpeedLevel;
-                DAT_MenuTextInputState::instance.field14_0x38 = DAT_GameCore::instance.settingBubbleHelp;
-                DAT_MenuTextInputState::instance.field15_0x3c = DAT_GameCore::instance.unusedOption1;
+                DAT_MenuTextInputState::instance.pendingGameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel;
+                DAT_MenuTextInputState::instance.pendingSettingBubbleHelp = DAT_GameCore::instance.settingBubbleHelp;
+                DAT_MenuTextInputState::instance.pendingUnusedOption1 = DAT_GameCore::instance.unusedOption1;
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(UI::Enums::MMT_GAMEPLAY_OPTIONS);
                 break;

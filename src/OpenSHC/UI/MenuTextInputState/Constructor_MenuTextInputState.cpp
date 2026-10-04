@@ -16,16 +16,16 @@ namespace UI {
         this->modalDialog_4 = UI::Enums::MMT_NO_MENU;
         this->modalDialog_5 = UI::Enums::MMT_NO_MENU;
         this->modalDialog_6 = UI::Enums::MMT_NO_MENU;
-        this->field0_0x0 = 3;
-        this->field1_0x4 = 0;
-        this->field2_0x8 = 0;
-        this->field3_0xc = 2;
-        this->field4_0x10 = 0;
-        this->field5_0x14 = 0;
-        this->field6_0x18 = 2;
-        this->field7_0x1c = 0;
-        this->field8_0x20 = 0;
-        this->field9_0x24 = 2;
+        this->fileListContext = 3;
+        this->savedListOffset1 = 0;
+        this->savedListSelection1 = 0;
+        this->savedListSortOrder1 = 2;
+        this->savedListOffset2 = 0;
+        this->savedListSelection2 = 0;
+        this->savedListSortOrder2 = 2;
+        this->savedListOffset3 = 0;
+        this->savedListSelection3 = 0;
+        this->savedListSortOrder3 = 2;
         return this;
     }
 

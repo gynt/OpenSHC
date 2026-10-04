@@ -44,7 +44,7 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
                 (uint)(param_1 == DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex), param_1, 0);
             if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
-                < DAT_MenuTextInputState::instance.field32_0x74) {
+                < DAT_MenuTextInputState::instance.fileListEntryCount) {
                 mapIndex
                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                           [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1];

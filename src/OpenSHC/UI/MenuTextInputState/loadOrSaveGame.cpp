@@ -48,7 +48,7 @@ namespace UI {
                 _savesPath.append("*.sav", 5);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
-                this->field32_0x74 = DAT_ResourceManager::instance.mapFileCounter;
+                this->fileListEntryCount = DAT_ResourceManager::instance.mapFileCounter;
                 for (int _mapIndex = 0; _mapIndex < DAT_ResourceManager::instance.mapFileCounter; _mapIndex++) {
                     (&this->DAT_MapSelectionPreloadMapIndexMapping)[_mapIndex] = _mapIndex;
                 }
@@ -58,7 +58,7 @@ namespace UI {
                 _savesPath.append("*.msv", 5);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
-                this->field32_0x74 = DAT_ResourceManager::instance.mapFileCounter;
+                this->fileListEntryCount = DAT_ResourceManager::instance.mapFileCounter;
                 iVar6 = 0;
                 if (0 < DAT_ResourceManager::instance.mapFileCounter) {
                     puVar5 = this->DAT_ArrayOfMapIndices + 499;
@@ -78,25 +78,25 @@ namespace UI {
                 }
             }
             DAT_MouseState::instance.waitCursorToggle = 0;
-            this->field33_0x78 = 0;
+            this->fileListSortOrder = 0;
             this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
-            if (this->field32_0x74 == 0) {
+            if (this->fileListEntryCount == 0) {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = -1;
             } else {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = 0;
             }
-            this->field39_0x90 = 0;
-            this->field38_0x8c = 0xffffffff;
+            this->lastListClickTime = 0;
+            this->lastClickedListIndex = 0xffffffff;
             this->field49_0xac = 0;
             this->field43_0xa0 = 0xffffffff;
-            this->field36_0x84 = 0x10;
+            this->fileListVisibleRowCount = 0x10;
             if (action == 9) {
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
                     UI::Enums::MMT_LOAD_MAP);
-                this->field0_0x0 = 1;
-                iVar6 = this->field1_0x4;
-                iVar1 = this->field2_0x8;
-                iVar2 = this->field3_0xc;
+                this->fileListContext = 1;
+                iVar6 = this->savedListOffset1;
+                iVar1 = this->savedListSelection1;
+                iVar2 = this->savedListSortOrder1;
             } else {
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
                     UI::Enums::MMT_SAVE_MAP);
@@ -106,19 +106,19 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
-                this->field0_0x0 = 3;
-                iVar6 = this->field4_0x10;
-                iVar1 = this->field5_0x14;
-                iVar2 = this->field6_0x18;
+                this->fileListContext = 3;
+                iVar6 = this->savedListOffset2;
+                iVar1 = this->savedListSelection2;
+                iVar2 = this->savedListSortOrder2;
             }
             if ((this->DAT_MenuLoadGameRelativeSelectionIndex != -1)
-                && (this->field33_0x78 = iVar2, this->DAT_MenuLoadGameRelativeSelectionIndex = iVar1,
-                    this->DAT_MenuLoadGameRelativeSelectionOffset = iVar6, this->field32_0x74 <= iVar6 + iVar1)) {
+                && (this->fileListSortOrder = iVar2, this->DAT_MenuLoadGameRelativeSelectionIndex = iVar1,
+                    this->DAT_MenuLoadGameRelativeSelectionOffset = iVar6, this->fileListEntryCount <= iVar6 + iVar1)) {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = 0;
                 this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
             }
             MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(
-                -1 - this->field33_0x78);
+                -1 - this->fileListSortOrder);
         } else {
             MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
         };
