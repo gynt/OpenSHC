@@ -423,13 +423,13 @@ namespace Map {
                                                                     }
                                                                 }
                                                             } else {
-                                                                this->field112_0x554908 = MACRO_CALL_MEMBER(
+                                                                this->wallCornerRotation = MACRO_CALL_MEMBER(
                                                                     Map::TileMapState_Func::
                                                                         computeWallCornerRenderRotation,
                                                                     this)(iVar17);
                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                     = (short)GMTotalPicturesProcessed::instance[10] + -1
-                                                                    + (short)this->field112_0x554908;
+                                                                    + (short)this->wallCornerRotation;
                                                                 sVar4 = (short)GMTotalPicturesProcessed::instance[0xc];
                                                                 if (this->DamageLayer[this->DAT_SomeTile] == 0) {
                                                                     if ((this->LogicLayer[this->DAT_SomeTile] & 0x200U)
@@ -849,7 +849,7 @@ namespace Map {
                                                             (uint)((int)(this->DAT_SomeY)));
                                                         this->PillarGFXLayer[this->DAT_SomeTile]
                                                             = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                            + (short)this->field112_0x554908;
+                                                            + (short)this->wallCornerRotation;
                                                         this->MiscDisplayLayer[this->DAT_SomeTile]
                                                             = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                         this->GfxLayer[this->DAT_SomeTile]
@@ -864,7 +864,7 @@ namespace Map {
                                                         (uint)((int)(this->DAT_SomeY)));
                                                     this->PillarGFXLayer[this->DAT_SomeTile]
                                                         = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                        + (short)this->field112_0x554908;
+                                                        + (short)this->wallCornerRotation;
                                                     this->MiscDisplayLayer[this->DAT_SomeTile]
                                                         = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                     this->GfxLayer[this->DAT_SomeTile]
@@ -1209,13 +1209,13 @@ namespace Map {
                                                         iVar13 = (int)this->BuildingLayer[this->DAT_SomeTile];
                                                         if (DAT_BuildingsState::instance.buildings[iVar13].buildingType
                                                             == Map::Buildings::BT_STOCKPILE) {
-                                                            this->field112_0x554908
+                                                            this->wallCornerRotation
                                                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::
                                                                                         computeWallCornerRenderRotation,
                                                                     this)(this->DAT_SomeX);
                                                             this->WallGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[10] + -1
-                                                                + (short)this->field112_0x554908;
+                                                                + (short)this->wallCornerRotation;
                                                         }
                                                         iVar14 = MACRO_CALL_MEMBER(
                                                             Map::TileMapState_Func::computeClimbRampRotation,
@@ -1239,7 +1239,7 @@ namespace Map {
                                                         } else {
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                                + (short)this->field112_0x554908;
+                                                                + (short)this->wallCornerRotation;
                                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                         }
@@ -1722,7 +1722,7 @@ namespace Map {
                                                                             this->PillarGFXLayer[this
                                                                                     ->DAT_SomeTile] = (ushort)
                                                                                 GMTotalPicturesProcessed::instance[9];
-                                                                            this->field112_0x554908
+                                                                            this->wallCornerRotation
                                                                                 = (int)(short)this
                                                                                       ->RandomLayer[this->DAT_SomeTile]
                                                                                 & 7;
@@ -1730,52 +1730,52 @@ namespace Map {
                                                                                 = (short)GMTotalPicturesProcessed::
                                                                                       instance[0x37]
                                                                                 + 0x428
-                                                                                + (short)(this->field112_0x554908 << 4);
+                                                                                + (short)(this->wallCornerRotation << 4);
                                                                             sVar4 = (short)this->DAT_SomeY;
                                                                             sVar5 = (short)this->DAT_SomeX;
-                                                                            if (this->field112_0x554908 == 0) {
+                                                                            if (this->wallCornerRotation == 0) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0x1ff;
-                                                                            } else if (this->field112_0x554908 == 1) {
+                                                                            } else if (this->wallCornerRotation == 1) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0x1ff;
-                                                                            } else if (this->field112_0x554908 == 2) {
+                                                                            } else if (this->wallCornerRotation == 2) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0x7f;
-                                                                            } else if (this->field112_0x554908 == 3) {
+                                                                            } else if (this->wallCornerRotation == 3) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0x7f;
-                                                                            } else if (this->field112_0x554908 == 4) {
+                                                                            } else if (this->wallCornerRotation == 4) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0xff;
-                                                                            } else if (this->field112_0x554908 == 5) {
+                                                                            } else if (this->wallCornerRotation == 5) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0xff;
-                                                                            } else if (this->field112_0x554908 == 6) {
+                                                                            } else if (this->wallCornerRotation == 6) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
                                                                                         + sVar5 + sVar4
                                                                                     & 0x7f;
-                                                                            } else if (this->field112_0x554908 == 7) {
+                                                                            } else if (this->wallCornerRotation == 7) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
@@ -1793,18 +1793,18 @@ namespace Map {
                                                                         this->PillarGFXLayer[this->DAT_SomeTile]
                                                                             = (short)
                                                                                   GMTotalPicturesProcessed::instance[9]
-                                                                            + -1 + (short)this->field112_0x554908;
+                                                                            + -1 + (short)this->wallCornerRotation;
                                                                         this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                             = this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                             | 0x800;
-                                                                        this->field112_0x554908
+                                                                        this->wallCornerRotation
                                                                             = (int)(short)this
                                                                                   ->RandomLayer[this->DAT_SomeTile]
                                                                             & 0xf;
                                                                         this->GfxLayer[this->DAT_SomeTile]
                                                                             = (short)GMTotalPicturesProcessed::instance
                                                                                   [0xc]
-                                                                            + 0xee + (short)this->field112_0x554908;
+                                                                            + 0xee + (short)this->wallCornerRotation;
                                                                     }
                                                                 } else {
                                                                     MACRO_CALL_MEMBER(Map::TileMapState_Func::
@@ -1814,11 +1814,11 @@ namespace Map {
                                                                         (uint)((int)(this->DAT_SomeY)));
                                                                     this->PillarGFXLayer[this->DAT_SomeTile]
                                                                         = (short)GMTotalPicturesProcessed::instance[9]
-                                                                        + -1 + (short)this->field112_0x554908;
+                                                                        + -1 + (short)this->wallCornerRotation;
                                                                     this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                         = this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                         | 0x800;
-                                                                    this->field112_0x554908
+                                                                    this->wallCornerRotation
                                                                         = (int)(short)this
                                                                               ->RandomLayer[this->DAT_SomeTile]
                                                                         & 0xf;
@@ -1827,12 +1827,12 @@ namespace Map {
                                                                         this->GfxLayer[this->DAT_SomeTile]
                                                                             = (short)GMTotalPicturesProcessed::instance
                                                                                   [0xc]
-                                                                            + 0x20 + (short)this->field112_0x554908;
+                                                                            + 0x20 + (short)this->wallCornerRotation;
                                                                     } else {
                                                                         this->GfxLayer[this->DAT_SomeTile]
                                                                             = (short)GMTotalPicturesProcessed::instance
                                                                                   [0xc]
-                                                                            + 0x30 + (short)this->field112_0x554908;
+                                                                            + 0x30 + (short)this->wallCornerRotation;
                                                                     }
                                                                 }
                                                             } else {
@@ -1843,21 +1843,21 @@ namespace Map {
                                                                     (uint)((int)(this->DAT_SomeY)));
                                                                 this->PillarGFXLayer[this->DAT_SomeTile]
                                                                     = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                                    + (short)this->field112_0x554908;
+                                                                    + (short)this->wallCornerRotation;
                                                                 this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                     = this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                     | 0x800;
-                                                                this->field112_0x554908
+                                                                this->wallCornerRotation
                                                                     = (int)(short)this->RandomLayer[this->DAT_SomeTile]
                                                                     & 0xf;
                                                                 if (this->LuminesenceLayer[this->DAT_SomeTile] < 6) {
                                                                     this->GfxLayer[this->DAT_SomeTile]
                                                                         = (short)GMTotalPicturesProcessed::instance[0xc]
-                                                                        + 0x40 + (short)this->field112_0x554908;
+                                                                        + 0x40 + (short)this->wallCornerRotation;
                                                                 } else {
                                                                     this->GfxLayer[this->DAT_SomeTile]
                                                                         = (short)GMTotalPicturesProcessed::instance[0xc]
-                                                                        + 0x50 + (short)this->field112_0x554908;
+                                                                        + 0x50 + (short)this->wallCornerRotation;
                                                                 }
                                                             }
                                                         } else {
@@ -1868,7 +1868,7 @@ namespace Map {
                                                                 (uint)((int)(this->DAT_SomeY)));
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                                + (short)this->field112_0x554908;
+                                                                + (short)this->wallCornerRotation;
                                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                             iVar13 = (int)this->OrganismLayer[this->DAT_SomeTile];
@@ -1883,12 +1883,12 @@ namespace Map {
                                                                 }
                                                                 goto LAB_0050c199;
                                                             }
-                                                            this->field112_0x554908
+                                                            this->wallCornerRotation
                                                                 = (int)(short)this->RandomLayer[this->DAT_SomeTile] & 7;
                                                             this->GfxLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[0x38]
                                                                 + (ushort)this->LuminesenceLayer[this->DAT_SomeTile] * 8
-                                                                + (short)this->field112_0x554908;
+                                                                + (short)this->wallCornerRotation;
                                                         }
                                                     } else {
                                                         if (DAT_BuildingsState::instance
@@ -1930,7 +1930,7 @@ namespace Map {
                                                                 (uint)((int)(this->DAT_SomeY)));
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                                + (short)this->field112_0x554908;
+                                                                + (short)this->wallCornerRotation;
                                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                             this->GfxLayer[this->DAT_SomeTile]
@@ -1978,7 +1978,7 @@ namespace Map {
                                                     } else {
                                                         this->PillarGFXLayer[this->DAT_SomeTile]
                                                             = (short)GMTotalPicturesProcessed::instance[9] + -1
-                                                            + (short)this->field112_0x554908;
+                                                            + (short)this->wallCornerRotation;
                                                         this->MiscDisplayLayer[this->DAT_SomeTile]
                                                             = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                         bVar10 = true;
@@ -2754,7 +2754,7 @@ namespace Map {
                                                 this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                 (uint)((int)(this->DAT_SomeY)));
                                             sVar5 = (short)GMTotalPicturesProcessed::instance[9];
-                                            sVar4 = (short)this->field112_0x554908;
+                                            sVar4 = (short)this->wallCornerRotation;
                                             if (this->DefaultHeightLayer[this->DAT_SomeTile] < 0x88) {
                                                 if (iVar17 == 0) {
                                                     if ((this->Logic2Layer[this->DAT_SomeTile] & 2) == 0) {

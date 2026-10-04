@@ -124,7 +124,7 @@ namespace UI {
                 OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
             iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             _clickedX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
-            iVar1 = DAT_TileMapState::instance.unknownZero_0x5548fc;
+            iVar1 = DAT_TileMapState::instance.editorSnapToMode;
             _orientation = DAT_TileMapState::instance.mapOrientation;
             if (DAT_MouseState::instance.leftClickStart != 0) {
                 DAT_TileMapState::instance.DAT_ClickedTileX
@@ -135,13 +135,13 @@ namespace UI {
                     DAT_ViewportRenderState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                     (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)));
                 if ((BVar3 != FALSE)
-                    && (DAT_TileMapState::instance.unknownZero_0x554904 = 0,
+                    && (DAT_TileMapState::instance.editorAffectType = 0,
                         (DAT_TileMapState::instance
                                 .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[iVar2].addXgetTile
                                     + _clickedX]
                             & 0x41)
                             != 0)) {
-                    DAT_TileMapState::instance.unknownZero_0x554904 = 1;
+                    DAT_TileMapState::instance.editorAffectType = 1;
                 }
             }
             _clickedY = DAT_TileMapState::instance.DAT_ClickedTileY;

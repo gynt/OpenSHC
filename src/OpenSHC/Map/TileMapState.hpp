@@ -108,7 +108,7 @@ namespace Map {
         undefined4 placedBuildingID; // 0x00554888 length: 4
         undefined4 field78_0x55488c; // 0x0055488C length: 4
         undefined4 rockOrientation; // 0x00554890 length: 4
-        undefined4 field80_0x554894; // 0x00554894 length: 4
+        undefined4 editorRockType; // 0x00554894 length: 4
         undefined4 lastTime; // 0x00554898 length: 4
         int mapOrientation; // 0x0055489C length: 4
         undefined4 DAT_FutureMapOrientation; // 0x005548A0 length: 4
@@ -126,7 +126,7 @@ namespace Map {
         undefined1 padding_0x5548d0[4]; // 0x005548D0 length: 4
         undefined4 flatViewToggleValue2; // 0x005548D4 length: 4
         undefined4 refreshRelatedTwo; // 0x005548D8 length: 4
-        undefined4 field101_0x5548dc; // 0x005548DC length: 4
+        undefined4 savedEditorActiveBrush; // 0x005548DC length: 4
         undefined4 editorActiveBrush; // 0x005548E0 length: 4
         MappersEnum currentMapperCommand; // 0x005548E4 length: 4
         undefined4 DAT_BuildingSize; // 0x005548E8 length: 4
@@ -134,10 +134,10 @@ namespace Map {
         BOOLEnum mapperMax; // 0x005548F0 length: 4
         undefined4 rockFlagStartNumber; // 0x005548F4 length: 4
         undefined4 unknownBrushRelated; // 0x005548F8 length: 4
-        undefined4 unknownZero_0x5548fc; // 0x005548FC length: 4
+        undefined4 editorSnapToMode; // 0x005548FC length: 4
         undefined4 unknownZero_0x554900; // 0x00554900 length: 4
-        undefined4 unknownZero_0x554904; // 0x00554904 length: 4
-        undefined4 field112_0x554908; // 0x00554908 length: 4
+        undefined4 editorAffectType; // 0x00554904 length: 4
+        undefined4 wallCornerRotation; // 0x00554908 length: 4
         undefined4 dragStartX; // 0x0055490C length: 4
         undefined4 dragStartY; // 0x00554910 length: 4
         undefined4 dragEndX; // 0x00554914 length: 4

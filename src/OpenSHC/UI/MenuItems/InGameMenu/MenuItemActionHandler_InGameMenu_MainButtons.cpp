@@ -202,7 +202,7 @@ namespace UI {
                             if (param_1 != -100) {
                                 if (param_1 == -0x65) {
                                     DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
-                                    DAT_TileMapState::instance.field101_0x5548dc
+                                    DAT_TileMapState::instance.savedEditorActiveBrush
                                         = DAT_TileMapState::instance.editorActiveBrush;
                                     MACRO_CALL(OpenSHC::UI::MenuItems::MapEditorLandscaping_Func::
                                             MenuItemActionHandler_MapEditorLandscaping_GeneralButtons)(
@@ -210,7 +210,7 @@ namespace UI {
                                 }
                                 if (param_1 == -0x66) {
                                     DAT_TileMapState::instance.editorActiveBrush
-                                        = DAT_TileMapState::instance.field101_0x5548dc;
+                                        = DAT_TileMapState::instance.savedEditorActiveBrush;
                                     DAT_UnitsState::instance.lastSelectedUnitID = 0;
                                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne,
                                         DAT_UnitsState::ptr)();

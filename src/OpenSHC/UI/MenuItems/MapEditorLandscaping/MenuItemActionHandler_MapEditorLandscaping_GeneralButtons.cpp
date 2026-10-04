@@ -103,11 +103,11 @@ namespace UI {
                     UI::Enums::MVT_BUILD_MENU, 0);
                 return;
             case Commands::M_MAPPER_AFFECT_TYPE:
-                if (DAT_TileMapState::instance.unknownZero_0x554904 + 1 < 2) {
-                    DAT_TileMapState::instance.unknownZero_0x554904
-                        = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
+                if (DAT_TileMapState::instance.editorAffectType + 1 < 2) {
+                    DAT_TileMapState::instance.editorAffectType
+                        = DAT_TileMapState::instance.editorAffectType + 1;
                 }
-                DAT_TileMapState::instance.unknownZero_0x554904 = 0;
+                DAT_TileMapState::instance.editorAffectType = 0;
                 return;
             case Commands::M_MAPPER_TO_MAP_EDIT:
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -119,39 +119,39 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                 return;
             case Commands::M_MAPPER_SNAP_TO:
-                if (DAT_TileMapState::instance.unknownZero_0x5548fc != 0) {
-                    DAT_TileMapState::instance.unknownZero_0x5548fc
-                        = (-(uint)(DAT_TileMapState::instance.unknownZero_0x5548fc != 1) & 0xfffffffe) + 2;
+                if (DAT_TileMapState::instance.editorSnapToMode != 0) {
+                    DAT_TileMapState::instance.editorSnapToMode
+                        = (-(uint)(DAT_TileMapState::instance.editorSnapToMode != 1) & 0xfffffffe) + 2;
                 }
-                DAT_TileMapState::instance.unknownZero_0x5548fc = 1;
+                DAT_TileMapState::instance.editorSnapToMode = 1;
                 return;
             case Commands::M_MAPPER_BIGROCK1:
-                DAT_TileMapState::instance.field80_0x554894 = 1;
+                DAT_TileMapState::instance.editorRockType = 1;
                 DAT_TileMapState::instance.rockOrientation = 0;
                 break;
             case Commands::M_MAPPER_BIGROCK2:
-                DAT_TileMapState::instance.field80_0x554894 = 2;
+                DAT_TileMapState::instance.editorRockType = 2;
                 DAT_TileMapState::instance.rockOrientation = 2;
                 break;
             case Commands::M_MAPPER_BIGROCK3:
                 DAT_TileMapState::instance.currentMapperCommand = param_1;
-                DAT_TileMapState::instance.field80_0x554894 = 3;
+                DAT_TileMapState::instance.editorRockType = 3;
                 DAT_TileMapState::instance.rockOrientation = 4;
                 if (DAT_TileMapState::instance.editorActiveBrush == 2) {
                     DAT_TileMapState::instance.editorActiveBrush = 3;
                 }
                 goto LAB_00431642;
             case Commands::M_MAPPER_BIGROCK4:
-                DAT_TileMapState::instance.field80_0x554894 = 4;
+                DAT_TileMapState::instance.editorRockType = 4;
                 DAT_TileMapState::instance.rockOrientation = 6;
                 break;
             case Commands::M_MAPPER_BIGROCK5:
                 DAT_TileMapState::instance.currentMapperCommand = param_1;
-                DAT_TileMapState::instance.field80_0x554894 = 5;
+                DAT_TileMapState::instance.editorRockType = 5;
                 DAT_TileMapState::instance.rockOrientation = 0;
                 if (DAT_TileMapState::instance.editorActiveBrush == 2) {
                     DAT_TileMapState::instance.rockOrientation = 0;
-                    DAT_TileMapState::instance.field80_0x554894 = 5;
+                    DAT_TileMapState::instance.editorRockType = 5;
                     DAT_TileMapState::instance.editorActiveBrush = 3;
                 }
                 if (DAT_TileMapState::instance.editorActiveBrush == 4) {

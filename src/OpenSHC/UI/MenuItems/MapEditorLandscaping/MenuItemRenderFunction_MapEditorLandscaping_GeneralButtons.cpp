@@ -41,9 +41,9 @@ namespace UI {
             uVar2 = 0;
             if (param_1 < 0xcd) {
                 if (param_1 == 0xcc) {
-                    if (DAT_TileMapState::instance.unknownZero_0x5548fc == 0) {
+                    if (DAT_TileMapState::instance.editorSnapToMode == 0) {
                         uVar2 = 6;
-                    } else if (DAT_TileMapState::instance.unknownZero_0x5548fc != 1) {
+                    } else if (DAT_TileMapState::instance.editorSnapToMode != 1) {
                         uVar2 = 3;
                     }
                 } else if (param_1 == 1) {
