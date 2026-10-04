@@ -69,7 +69,7 @@ namespace Map {
             sVar3 = DAT_TribesState::instance.tribes[tribeID].unknownAttackRelatedUpdateCounter;
             DAT_TribesState::instance.tribes[tribeID].field161_0x2ae = 0;
             _playerID_7 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            uVar7 = (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x21c54[0]);
+            uVar7 = DAT_TroopValueState::instance.attackInfo.attackWaveRetargetCount;
             if (_tribeBehaviorType < 1010) {
                 if (_tribeBehaviorType == 1010) {
                     sVar4 = DAT_TribesState::instance.tribes[tribeID].someUpdateUpperLimit;

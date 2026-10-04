@@ -24,7 +24,7 @@ namespace Map {
                 this->attackInfo.field105440_0x25b00 = this->attackInfo.field105440_0x25b00 + 1;
                 this->attackInfo.someCounter1 = 1;
                 this->attackInfo.field86987_0x20f9c = 0;
-                this->attackInfo.padding_0x21c54[0] /* 0x21C54: start of padding_0x21c54 in the header */ = 0;
+                this->attackInfo.attackWaveRetargetCount = 0;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(1);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::initializeAttackZoneSearch, this)(param_1);

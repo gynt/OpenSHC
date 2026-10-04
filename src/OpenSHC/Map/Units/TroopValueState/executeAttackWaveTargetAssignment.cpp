@@ -170,7 +170,7 @@ namespace Map {
                     Map::Units::STBT_0x41b, Map::Units::STBT_1, 0x14, 0x14);
                 if ((0 < DAT_TroopValueState::instance.attackInfo.archerPoints)
                     && (local_8 + 1 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.field89399_0x21c48)) {
-                    (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x21c54[0]) = (*(int*)&DAT_TroopValueState::instance.attackInfo.padding_0x21c54[0]) + 1;
+                    DAT_TroopValueState::instance.attackInfo.attackWaveRetargetCount = DAT_TroopValueState::instance.attackInfo.attackWaveRetargetCount + 1;
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, DAT_TroopValueState::instance.attackInfo.archerPoints, 10000, Map::Units::STBT_0x3fc);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(

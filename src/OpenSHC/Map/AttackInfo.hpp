@@ -92,7 +92,11 @@ namespace Map {
         int field89399_0x21c48; // 0x00021C48 length: 4
         int field89400_0x21c4c; // 0x00021C4C length: 4
         int casDis; // 0x00021C50 length: 4
-        undefined1 padding_0x21c54[16036]; // 0x00021C54 length: 16036
+        // Reset to 0 when a wave starts (initializeOrAdvanceAttackWave), incremented by
+        // executeAttackWaveTargetAssignment, and tested `> 2` by
+        // updateTribeBehaviorBasedOnBehaviorType to switch the tribe's behaviour.
+        int attackWaveRetargetCount; // 0x00021C54 length: 4
+        undefined1 padding_0x21c58[16032]; // 0x00021C58 length: 16032
         int zoneSize; // 0x00025AF8 length: 4
         int someDistanceLimit; // 0x00025AFC length: 4
         int field105440_0x25b00; // 0x00025B00 length: 4
