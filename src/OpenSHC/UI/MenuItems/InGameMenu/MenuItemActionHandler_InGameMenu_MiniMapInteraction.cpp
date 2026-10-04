@@ -40,7 +40,7 @@ namespace UI {
                                 && (DAT_TileMapState::instance.currentMapperCommand
                                     != Commands::M_MAPPER_CRENAL))))
                            || (DAT_MouseState::instance.leftClickState == FALSE))
-                && (DAT_MouseState::instance.field31_0x94 == 0)) {
+                && (DAT_MouseState::instance.selectionBoxState == 0)) {
                 if (DAT_GameCore::instance.isBinkVideoPlaying != 0) {
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);

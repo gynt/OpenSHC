@@ -129,7 +129,7 @@ namespace UI {
             }
             if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
             DAT_MouseState::instance.field68_0x1dc = -1;
-            (*(int*)&DAT_MouseState::instance.padding_0x98[0]) = DAT_MouseState::instance.field31_0x94;
+            DAT_MouseState::instance.savedSelectionBoxState = DAT_MouseState::instance.selectionBoxState;
             DAT_TileMapState::instance.DAT_SelectionIconType = 0;
             if (0x46 < (int)(DVar7 - DAT_TileMapState::instance.unknownTime_0x5549bc)) {
                 DAT_TileMapState::instance.field161_0x5549c0 = DAT_TileMapState::instance.field161_0x5549c0 + 1;
@@ -608,7 +608,7 @@ namespace UI {
                             Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(0);
                         if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                             DAT_UnitsState::instance.field49_0x608 = 0;
-                            DAT_MouseState::instance.field31_0x94 = 1;
+                            DAT_MouseState::instance.selectionBoxState = 1;
                             MACRO_CALL_MEMBER(
                                 Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)();
                             BOOLEnum_00b98414::instance = TRUE;
@@ -632,7 +632,7 @@ namespace UI {
                 if (((DAT_MouseState::instance.selectionBoxMode == 0)
                         || (MACRO_CALL_MEMBER(
                                 Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
-                            DAT_MouseState::instance.field31_0x94 == 0))
+                            DAT_MouseState::instance.selectionBoxState == 0))
                     || ((DAT_GameCore::instance.menuSwitchDelay = -1,
                         0 < DAT_UnitsState::instance.totalUnitsInSelection
                             && ((DAT_MouseState::instance.leftClickStartMoment != -1
@@ -2021,7 +2021,7 @@ namespace UI {
                             if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                                 DAT_UnitsState::instance.field49_0x608 = 0;
                             }
-                            DAT_MouseState::instance.field31_0x94 = 1;
+                            DAT_MouseState::instance.selectionBoxState = 1;
                             MACRO_CALL_MEMBER(
                                 Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)();
                             DAT_UnitsState::instance.field5_0x14 = TRUE;
@@ -2048,7 +2048,7 @@ namespace UI {
                     if ((DAT_MouseState::instance.selectionBoxMode == 0)
                         || (MACRO_CALL_MEMBER(
                                 Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
-                            DAT_MouseState::instance.field31_0x94 == 0))
+                            DAT_MouseState::instance.selectionBoxState == 0))
                         goto LAB_0043782c;
                     if (DAT_ModifierKeyState::instance.shift == 0) {
                         MACRO_CALL_MEMBER(

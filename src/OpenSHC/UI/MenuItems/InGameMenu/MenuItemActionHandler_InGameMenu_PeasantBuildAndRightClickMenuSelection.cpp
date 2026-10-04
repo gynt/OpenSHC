@@ -217,8 +217,8 @@ namespace UI {
                           && (DAT_UnitsState::instance.totalUnitsInSelection < 1))
                          && ((DVar1 = timeGetTime(),
                              DAT_MouseState::instance.draggingStopped != FALSE
-                                 && ((((DAT_MouseState::instance.field31_0x94 == 0
-                                           && ((*(int*)&DAT_MouseState::instance.padding_0x98[0]) == 0))
+                                 && ((((DAT_MouseState::instance.selectionBoxState == 0
+                                           && (DAT_MouseState::instance.savedSelectionBoxState == 0))
                                           && (BVar3
                                               = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::
                                                                       SelectUnitAndOpenStatusMenu,
