@@ -303,8 +303,8 @@ namespace UI {
                 }
                 iVar2
                     = DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + 0x1c + _requiredWood;
-                if ((DAT_TextManagerObject::instance.field2_0x8 < iVar2 + 0x14)
-                    && (iVar2 < DAT_TextManagerObject::instance.field3_0xc)) {
+                if ((DAT_TextManagerObject::instance.textClipMin < iVar2 + 0x14)
+                    && (iVar2 < DAT_TextManagerObject::instance.textClipMax)) {
                     MACRO_CALL(UI::Rendering_Func::TransformAndRenderPercentage)(
                         iVar2, (int)((int)(DAT_ButtonY::instance)), _requiredIron, FALSE);
                 }
