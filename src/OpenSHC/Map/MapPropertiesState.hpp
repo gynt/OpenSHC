@@ -48,7 +48,7 @@ namespace Map {
         SiegeGameModeRelatedSection SEC_Section1067; // 0x0000013C length: 28
         int SEC_StartingPopularity; // 0x00000158 length: 4
         short buildingAvailability[100]; // 0x0000015C length: 200
-        undefined4 field8_0x224; // 0x00000224 length: 4
+        undefined4 buildingAvailabilityRowCount; // 0x00000224 length: 4
         short buildingAvailabilityRelatedFlags[380]; // 0x00000228 length: 760
         short buildingAvailabilityArray2[49]; // 0x00000520 length: 98
         BarracksRecruitabilityShort barracksRecruitability; // 0x00000582 length: 14
@@ -94,9 +94,9 @@ namespace Map {
         undefined4 DAT_MapEditorUnitPointsSum; // 0x00014544 length: 4
         undefined4 DAT_InvasionEventItemUnitCountSum; // 0x00014548 length: 4
         undefined1 padding_0x1454c[8]; // 0x0001454C length: 8
-        undefined4 field91_0x14554; // 0x00014554 length: 4
-        undefined4 field92_0x14558; // 0x00014558 length: 4
-        undefined4 field93_0x1455c; // 0x0001455C length: 4
+        undefined4 missionScore; // 0x00014554 length: 4
+        undefined4 monthsRemaining; // 0x00014558 length: 4
+        undefined4 timeBonusScore; // 0x0001455C length: 4
         undefined4 field94_0x14560; // 0x00014560 length: 4
         undefined4 field95_0x14564; // 0x00014564 length: 4
         undefined4 field96_0x14568; // 0x00014568 length: 4

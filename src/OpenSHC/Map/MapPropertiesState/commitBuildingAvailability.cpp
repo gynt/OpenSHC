@@ -112,7 +112,7 @@ namespace Map {
         this->buildingAvailabilityArray2[0x28] = 1;
         this->buildingAvailabilityArray2[0x19] = 1;
         this->buildingAvailabilityArray2[0x1c] = 1;
-        this->field8_0x224 = _arrayIndex + -2;
+        this->buildingAvailabilityRowCount = _arrayIndex + -2;
     }
 
 }

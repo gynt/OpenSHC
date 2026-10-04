@@ -33,7 +33,7 @@ namespace Map {
         int local_4;
         local_4 = 0;
         local_8 = 0;
-        this->field91_0x14554 = 0xffffffff;
+        this->missionScore = 0xffffffff;
         this->field94_0x14560 = 0;
         iVar5 = 0;
         if (0 < this->eventsCount) {
@@ -262,22 +262,22 @@ namespace Map {
             } while (bVar1);
         }
         iVar6 = 0;
-        this->field92_0x14558 = 0;
-        this->field93_0x1455c = 0;
+        this->monthsRemaining = 0;
+        this->timeBonusScore = 0;
         if (iVar5 != 0) {
             uVar4 = ((iVar5 - DAT_GameState::instance.mapAndTime.year) * 0xc - DAT_GameState::instance.mapAndTime.month)
                 + local_4;
-            this->field92_0x14558 = uVar4 & ((int)uVar4 < 1) - 1;
-            this->field93_0x1455c = this->field92_0x14558 * 100;
+            this->monthsRemaining = uVar4 & ((int)uVar4 < 1) - 1;
+            this->timeBonusScore = this->monthsRemaining * 100;
         }
-        this->field91_0x14554
+        this->missionScore
             = DAT_MissionAestheticsDefinedData::instance.field1225_0x21a4[DAT_GameState::instance.mapAndTime.difficulty]
-            + this->field93_0x1455c;
+            + this->timeBonusScore;
         iVar5 = 0;
         if (0 < this->field94_0x14560) {
             piVar2 = (int *)(&this->field102_0x14580);
             do {
-                this->field91_0x14554 = this->field91_0x14554 + *piVar2;
+                this->missionScore = this->missionScore + *piVar2;
                 iVar5 = iVar5 + 1;
                 piVar2 = piVar2 + 1;
             } while (iVar5 < this->field94_0x14560);
@@ -303,7 +303,7 @@ namespace Map {
             if (iVar6 != 0) {
                 this->field123_0x145bc = (iVar5 * 100) / iVar6;
                 this->field122_0x145b8 = (100 - this->field123_0x145bc) * 100;
-                this->field91_0x14554 = this->field91_0x14554 + this->field122_0x145b8;
+                this->missionScore = this->missionScore + this->field122_0x145b8;
             }
         }
         if (DAT_GameCore::instance.mapU4Int1 != 0) {
