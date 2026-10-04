@@ -902,24 +902,24 @@ namespace Map {
                                                 if ((int)this->scenarioEvents[_eventIndex]
                                                         .data.scenario.conditions[0xd]
                                                         .value
-                                                    <= DAT_GameState::instance.mapAndTime.field33_0xa8
-                                                        + DAT_GameState::instance.mapAndTime.field34_0xac
-                                                        + DAT_GameState::instance.mapAndTime.field35_0xb0
-                                                        + DAT_GameState::instance.mapAndTime.field36_0xb4
-                                                        + DAT_GameState::instance.mapAndTime.field37_0xb8
-                                                        + DAT_GameState::instance.mapAndTime.field38_0xbc
-                                                        + DAT_GameState::instance.mapAndTime.field39_0xc0
-                                                        + DAT_GameState::instance.mapAndTime.field40_0xc4
-                                                        + DAT_GameState::instance.mapAndTime.field41_0xc8) {
-                                                    DAT_GameState::instance.mapAndTime.field33_0xa8 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field34_0xac = 0;
-                                                    DAT_GameState::instance.mapAndTime.field35_0xb0 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field36_0xb4 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field37_0xb8 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field38_0xbc = 0;
-                                                    DAT_GameState::instance.mapAndTime.field39_0xc0 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field40_0xc4 = 0;
-                                                    DAT_GameState::instance.mapAndTime.field41_0xc8 = 0;
+                                                    <= DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[0]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[1]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[2]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[3]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[4]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[5]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[6]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[7]
+                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[8]) {
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[0] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[1] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[2] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[3] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[4] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[5] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[6] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[7] = 0;
+                                                    DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[8] = 0;
                                                     this->SEC_EventsExtra[_eventIndex].field13_0x34 = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
