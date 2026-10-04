@@ -59,7 +59,12 @@ namespace Map {
         XYPair field370_0x5cc; // 0x000005CC length: 8
         undefined1 padding_0x5d4[184]; // 0x000005D4 length: 184
         XYPair field555_0x68c; // 0x0000068C length: 8
-        undefined1 padding_0x694[440]; // 0x00000694 length: 440
+        undefined1 padding_0x694[308]; // 0x00000694 length: 308
+        // setConstructionGFXLayerBasedOnPlacementChecks reads this as
+        // `table[shape * 4 + part] - mapOrientation`, wrapped by adding 8 when negative,
+        // so the entries are rotations in eighths. The inner index is 1-based, which is
+        // why there are 33 and not 32 entries.
+        int ConstructionSpriteRotationTable[33]; // 0x000007C8 length: 132
         int field996_0x84c[25]; // 0x0000084C length: 100
         undefined1 padding_0x8b0[4]; // 0x000008B0 length: 4
         int field1001_0x8b4[25]; // 0x000008B4 length: 100

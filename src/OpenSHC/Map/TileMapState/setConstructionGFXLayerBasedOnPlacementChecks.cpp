@@ -403,8 +403,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar6]
                                 = (short)GMTotalPicturesProcessed::instance[0x34] + 0x60e + (short)iVar5;
                         } else {
-                            iVar7 = *(int*)(&DAT_TerrainDefinedData::instance.padding_0x694[308] /* 0x7c8 */
-                                        + (iVar5 + iVar13 * 4) * 4)
+                            iVar7 = DAT_TerrainDefinedData::instance.ConstructionSpriteRotationTable[iVar5 + iVar13 * 4]
                                 - this->mapOrientation;
                             if (iVar7 < 0) {
                                 iVar7 = iVar7 + 8;
@@ -444,8 +443,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar5]
                                 = (short)GMTotalPicturesProcessed::instance[0x34] + 0x60e + (short)iVar4;
                         } else {
-                            iVar6 = *(int*)(&DAT_TerrainDefinedData::instance.padding_0x694[308] /* 0x7c8 */
-                                        + (iVar4 + iVar13 * 4) * 4)
+                            iVar6 = DAT_TerrainDefinedData::instance.ConstructionSpriteRotationTable[iVar4 + iVar13 * 4]
                                 - this->mapOrientation;
                             if (iVar6 < 0) {
                                 iVar6 = iVar6 + 8;
