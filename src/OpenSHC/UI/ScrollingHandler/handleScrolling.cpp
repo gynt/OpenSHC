@@ -21,7 +21,7 @@ namespace UI {
         int _scrollDistanceMax;
         DWORD _timeOfScroll;
         int _scrollDistanceDenominator;
-        _scrollDistanceMax = (this->field13_0x34 * 2) / 3;
+        _scrollDistanceMax = (this->scrollDistanceLimit * 2) / 3;
         if (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU) {
             if (this->rightKeyDown_0x18 != FALSE) {
                 this->scrollRight = TRUE;
@@ -67,7 +67,7 @@ namespace UI {
         }
         if (this->scrollDirection_0x4 == UI::SD_NONE) {
             this->isScrolling_0x0 = FALSE;
-            this->scrollDistanceBase = this->field11_0x2c;
+            this->scrollDistanceBase = this->scrollDistanceMin;
             this->timeOfLastNotScroll_0x40 = timeGetTime();
             this->scrollLeft = FALSE;
             this->scrollRight = FALSE;
@@ -78,17 +78,17 @@ namespace UI {
         this->isScrolling_0x0 = TRUE;
         if (this->scrollSpeedSetting_0x38 == UI::SS_FAST) {
             _scrollDistanceDenominator
-                = (int)((ulonglong)((longlong)this->field12_0x30 * 0x55555555) >> 0x20) - this->field12_0x30;
+                = (int)((ulonglong)((longlong)this->scrollAccelerationInterval * 0x55555555) >> 0x20) - this->scrollAccelerationInterval;
             _scrollDistanceDenominator = (_scrollDistanceDenominator >> 1) - (_scrollDistanceDenominator >> 0x1f);
             _scrollDistanceMax = (_scrollDistanceMax * 0x85) / 100;
         } else {
-            _scrollDistanceDenominator = this->field12_0x30;
+            _scrollDistanceDenominator = this->scrollAccelerationInterval;
             if (this->scrollSpeedSetting_0x38 != UI::SS_SLOW)
                 goto LAB_00468c01;
-            _scrollDistanceDenominator = this->field12_0x30 / 2;
+            _scrollDistanceDenominator = this->scrollAccelerationInterval / 2;
             _scrollDistanceMax = _scrollDistanceMax / 2;
         }
-        _scrollDistanceDenominator = this->field12_0x30 + _scrollDistanceDenominator;
+        _scrollDistanceDenominator = this->scrollAccelerationInterval + _scrollDistanceDenominator;
     LAB_00468c01:
         _timeOfScroll = timeGetTime();
         this->timeScrolling_0x44 = _timeOfScroll - this->timeOfLastNotScroll_0x40;

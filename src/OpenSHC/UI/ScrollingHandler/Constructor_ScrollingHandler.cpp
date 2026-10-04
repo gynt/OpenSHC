@@ -24,9 +24,9 @@ namespace UI {
         this->scrollUp = FALSE;
         this->upKeyDown_0x24 = FALSE;
         this->scrollDirection_0x4 = UI::SD_NONE;
-        this->field12_0x30 = 0x14;
-        this->field13_0x34 = 0x28;
-        this->field11_0x2c = 1;
+        this->scrollAccelerationInterval = 0x14;
+        this->scrollDistanceLimit = 0x28;
+        this->scrollDistanceMin = 1;
         this->scrollSpeedSetting_0x38 = UI::SS_NORMAL;
         return this;
     }
