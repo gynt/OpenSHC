@@ -10,6 +10,7 @@
 
 #include "OpenSHC/AI/Siege/EngineerBuildingAndCountPair.hpp"
 #include "OpenSHC/Map/AttackInfoPitchRelated.hpp"
+#include "OpenSHC/Map/ArcherAttackPoint.hpp"
 #include "OpenSHC/Map/AttackInfoSubArrayElement1.hpp"
 #include "OpenSHC/Map/AttackInfoSubArrayElement2.hpp"
 #include "OpenSHC/Map/AttackInfoSubArrayElement3.hpp"
@@ -44,7 +45,10 @@ namespace Map {
         undefined1 padding_0x1b638[16]; // 0x0001B638 length: 16
         int archerPoints; // 0x0001B648 length: 4
         int archerPointsNext; // 0x0001B64C length: 4
-        undefined1 padding_0x1b650[6432]; // 0x0001B650 length: 6432
+        // 201 slots of 32 bytes, indexed 1-based: scanForArcherPoints writes a new one at
+        // `archerPointsNext << 5` and findOrReserveArcherPointSlot scans slots 1..199 for
+        // a matching `tile` (0 meaning free), returning the slot number.
+        ArcherAttackPoint archerPointArray[201]; // 0x0001B650 length: 6432
         int targetedBuildingTilesArray[4000]; // 0x0001CF70 length: 16000
         int targetedBuildingTilesArraySize; // 0x00020DF0 length: 4
         int startCon; // 0x00020DF4 length: 4

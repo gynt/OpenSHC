@@ -16,8 +16,7 @@ namespace Map {
             iVar3 = 0;
             DAT_TroopValueState::instance.attackInfo.archerPointsNext = 0;
             iVar1 = 1;
-            /* 0x1B678: the generated header records this as part of padding_0x1b650 */
-            piVar2 = (int*)&DAT_TroopValueState::instance.attackInfo.padding_0x1b650[0x28];
+            piVar2 = (int*)&DAT_TroopValueState::instance.attackInfo.archerPointArray[1].tile;
             do {
                 if (*piVar2 == param_1) {
                     return iVar1;

@@ -19,8 +19,7 @@ namespace Map {
         {
             BOOLEnum BVar1;
             int* piVar2;
-            piVar2 = (int*)/* 0x1B680: recorded as padding_0x1b650 in the header */ &this->attackInfo
-                         .padding_0x1b650[0x30];
+            piVar2 = (int*)&this->attackInfo.archerPointArray[1].tribeID;
             do {
                 if (piVar2[-1] == this->attackInfo.someCounter1) {
                     if (*piVar2 != 0) {
