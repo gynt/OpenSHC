@@ -298,7 +298,7 @@ namespace Map {
             piVar2 = DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned + playerID;
             *piVar2 = *piVar2 + 1;
             piVar2 = DAT_GameSynchronyState::instance.finalResults.finalBuildingsDestroyedWeighted + playerID;
-            *piVar2 = *piVar2 + DAT_BuildingDefinedData::instance.field42_0x4154[_buildingType3];
+            *piVar2 = *piVar2 + DAT_BuildingDefinedData::instance.BuildingDestroyedScoreWeight[_buildingType3];
             piVar2 = DAT_GameSynchronyState::instance.finalResults.finalBuidingsDestroyed + _owner;
             *piVar2 = *piVar2 + 1;
             piVar2 = (int*)(_owner * 0x39f4 + 0x115e9d8 + playerID * 0x20);

@@ -50,15 +50,15 @@ namespace Map {
             TruncatedInt EmployeeCountPerBuildingType[110]; // 0x000011E4 length: 440
             int StorageLimitResourceTypeArray[26]; // 0x0000139C length: 104
             TruncatedInt field15_0x1404[110]; // 0x00001404 length: 440
-            TruncatedInt field16_0x15bc[110]; // 0x000015BC length: 440
+            TruncatedInt BuildingFlag1Defaults[110]; // 0x000015BC length: 440
             BOOLEnum field17_0x1774[110]; // 0x00001774 length: 440
-            TruncatedInt field18_0x192c[110]; // 0x0000192C length: 440
+            TruncatedInt BuildingFlag4Defaults[110]; // 0x0000192C length: 440
             int BuildingTypeHasHealth[110]; // 0x00001AE4 length: 440
             int BuildingIsGateHouseArray[110]; // 0x00001C9C length: 440
             int BuildingIsKeepArray[110]; // 0x00001E54 length: 440
             BOOLEnum IsGateOrTowerArray[110]; // 0x0000200C length: 440
             BOOLEnum field23_0x21c4[110]; // 0x000021C4 length: 440
-            TruncatedInt field24_0x237c[110]; // 0x0000237C length: 440
+            TruncatedInt BuildingFlag2Defaults[110]; // 0x0000237C length: 440
             int BuildingShowRubbleWhenDestroyed[110]; // 0x00002534 length: 440
             int BuildingTypeOwnable[110]; // 0x000026EC length: 440
             TruncatedInt BuildingHP[110]; // 0x000028A4 length: 440
@@ -76,7 +76,7 @@ namespace Map {
             short SpriteOffsets1[110][2][2]; // 0x00003A74 length: 880
             int AnimAdvanceThrottles[110]; // 0x00003DE4 length: 440
             int BuildingHeights[110]; // 0x00003F9C length: 440
-            int field42_0x4154[110]; // 0x00004154 length: 440
+            int BuildingDestroyedScoreWeight[110]; // 0x00004154 length: 440
             byte field43_0x430c[312]; // 0x0000430C length: 312
             byte FletcherWorkshopAnimationCycle[160]; // 0x00004444 length: 160
             byte field45_0x44e4[400]; // 0x000044E4 length: 400
@@ -175,7 +175,7 @@ namespace Map {
             byte MillAnimationFrames5[16]; // 0x00006AD4 length: 16
             byte DrawBridgeAnimationFrames1[32]; // 0x00006AE4 length: 32
             byte DrawBridgeAnimationFrames2[36]; // 0x00006B04 length: 36
-            byte field141_0x6b28[28]; // 0x00006B28 length: 28
+            byte GateHouseLargeAnimationFrames[28]; // 0x00006B28 length: 28
             byte field142_0x6b44[32]; // 0x00006B44 length: 32
             byte DairyFarmAnimationFrames1[264]; // 0x00006B64 length: 264
             byte DairyFarmAnimationFrames2[664]; // 0x00006C6C length: 664

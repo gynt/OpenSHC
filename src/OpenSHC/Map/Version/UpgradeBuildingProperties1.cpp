@@ -48,7 +48,7 @@ namespace Map {
                 _pBuilding->gfxOffset = DAT_BuildingDefinedData::instance.GFXOffsets[_buildingType];
                 _pBuilding->gfxOffset2 = DAT_BuildingDefinedData::instance.Building_Sprite_ID_Array_2[_buildingType];
                 _pBuilding->gfxOffset3 = DAT_BuildingDefinedData::instance.GFXOffsets3[_buildingType];
-                _pBuilding->unknownFlag4 = DAT_BuildingDefinedData::instance.field18_0x192c[_buildingType].byteValue;
+                _pBuilding->unknownFlag4 = DAT_BuildingDefinedData::instance.BuildingFlag4Defaults[_buildingType].byteValue;
                 _pBuilding->spriteOffetX = DAT_BuildingDefinedData::instance.SpriteOffsets1[_buildingType][0][0];
                 _pBuilding->spriteOffetY = DAT_BuildingDefinedData::instance.SpriteOffsets1[_buildingType][1][0];
                 _pBuilding->animAdvanceThrottle = DAT_BuildingDefinedData::instance.AnimAdvanceThrottles[_buildingType];

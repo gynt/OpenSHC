@@ -172,7 +172,7 @@ namespace Map {
                         DE::SHCDE::FX_PC_LIFT);
                 }
                 iVar2 = DAT_CurrentBuildingID::instance;
-                bVar1 = DAT_BuildingDefinedData::instance.field141_0x6b28
+                bVar1 = DAT_BuildingDefinedData::instance.GateHouseLargeAnimationFrames
                             [DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex];
                 if ((char)bVar1 < '\x01') {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].pathLinkageRelated2 = 0;

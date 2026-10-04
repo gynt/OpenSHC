@@ -21,9 +21,9 @@ namespace Map {
         pBVar2 = &DAT_BuildingsState::instance.buildings[1];
         do {
             if (pBVar2->logicalState != ((BuildingLogicalState)0)) {
-                sVar1 = DAT_BuildingDefinedData::instance.field24_0x237c[(short)pBVar2->buildingType].shortValue;
+                sVar1 = DAT_BuildingDefinedData::instance.BuildingFlag2Defaults[(short)pBVar2->buildingType].shortValue;
                 pBVar2->flag1
-                    = DAT_BuildingDefinedData::instance.field16_0x15bc[(short)pBVar2->buildingType].shortValue;
+                    = DAT_BuildingDefinedData::instance.BuildingFlag1Defaults[(short)pBVar2->buildingType].shortValue;
                 pBVar2->flag2 = sVar1;
             }
             pBVar2 = pBVar2 + 0x196;
