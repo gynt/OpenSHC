@@ -305,7 +305,7 @@ namespace UI {
                         DAT_GameState::ptr)(iVar7, DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
                     pcVar10 = "Random_Events2.wav";
                     iVar8 = 2;
-                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field1_0x4;
+                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
                     break;
                 case 0x8c:
                 case 0x8d:
@@ -379,7 +379,7 @@ namespace UI {
                     }
                     pcVar10 = "Random_Events8.wav";
                     iVar8 = 8;
-                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field7_0x1c;
+                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent8VideoName;
                     break;
                 case 0x92:
                     BVar4 = MACRO_CALL_MEMBER(
@@ -420,7 +420,7 @@ namespace UI {
                     }
                     pcVar10 = "Random_Events9.wav";
                     iVar8 = 9;
-                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field8_0x20;
+                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent9VideoName;
                     break;
                 case 0x94:
                     BVar4 = MACRO_CALL_MEMBER(
@@ -498,7 +498,7 @@ namespace UI {
                     }
                     pcVar10 = "Random_Events11.wav";
                     iVar8 = 0xb;
-                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field10_0x28;
+                    ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
                     break;
                 case 0xb3:
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -513,7 +513,7 @@ namespace UI {
                             DAT_BuildingsState::ptr)(
                             DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_WATERPOT);
                         pcVar10 = "general_message3.wav";
-                        ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field14_0x38;
+                        ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                         if (iVar8 == 0) {
                             iVar8 = 0x11;
                         } else {
@@ -522,7 +522,7 @@ namespace UI {
                     } else {
                         pcVar10 = "general_message3.wav";
                         iVar8 = 0xf;
-                        ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field14_0x38;
+                        ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                     }
                     break;
                 default:
@@ -610,7 +610,7 @@ namespace UI {
                     Map::Units::UT_FIREEATER);
                 pcVar10 = "Random_Events1.wav";
                 iVar8 = 1;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field0_0x0;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent1VideoName;
                 break;
             case 0x8b:
             case 0x91:
@@ -638,7 +638,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
                 pcVar10 = "Random_Events6.wav";
                 iVar8 = 6;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field5_0x14;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
                 break;
             case 0x90:
                 iVar8
@@ -663,7 +663,7 @@ namespace UI {
                     DAT_TribesState::instance.unknownX_01, DAT_TribesState::instance.unknownY_01);
                 pcVar10 = "Random_Events7.wav";
                 iVar8 = 7;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field6_0x18;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent7VideoName;
                 break;
             case 0x95:
                 DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
@@ -673,7 +673,7 @@ namespace UI {
                     DAT_GameState::instance.playerDataArray[iVar7].popularity = 10000;
                 }
                 pcVar3 = "Random_Events12.wav";
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field11_0x2c;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
                 /*
                   added by script: "The people rejoice at your forthcoming marriage, Sire."
                  */
@@ -695,7 +695,7 @@ namespace UI {
                 }
                 pcVar10 = "Random_Events13.wav";
                 iVar8 = 0xd;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field12_0x30;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent13VideoName;
                 break;
             case 0xd4:
                 /*

@@ -22,7 +22,7 @@ namespace Map {
         iVar1 = missionNumber + -1;
         if (iVar1 < 5) {
         LAB_004c688d:
-            mapName = (&DAT_MissionAestheticsDefinedData::instance.field14_0x38)[missionNumber];
+            mapName = (&DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName)[missionNumber];
         } else {
             if (9 < iVar1) {
                 if (iVar1 < 0xf)
@@ -30,7 +30,7 @@ namespace Map {
                 if (0x13 < iVar1)
                     goto LAB_004c68b3;
             }
-            mapName = (&DAT_MissionAestheticsDefinedData::instance.field14_0x38)[missionNumber];
+            mapName = (&DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName)[missionNumber];
         }
         MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMap, this)((char*)mapName);
     LAB_004c68b3:

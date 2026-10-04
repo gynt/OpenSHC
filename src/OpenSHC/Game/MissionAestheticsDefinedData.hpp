@@ -19,21 +19,21 @@ namespace Game {
     // SIZE: 0x00005504
     typedef struct MissionAestheticsDefinedData {
 
-        char** field0_0x0; // 0x00000000 length: 4
-        char** field1_0x4; // 0x00000004 length: 4
-        char** field2_0x8; // 0x00000008 length: 4
-        char** field3_0xc; // 0x0000000C length: 4
-        char** field4_0x10; // 0x00000010 length: 4
-        char** field5_0x14; // 0x00000014 length: 4
-        char** field6_0x18; // 0x00000018 length: 4
-        char** field7_0x1c; // 0x0000001C length: 4
-        char** field8_0x20; // 0x00000020 length: 4
-        char** field9_0x24; // 0x00000024 length: 4
-        char** field10_0x28; // 0x00000028 length: 4
-        char** field11_0x2c; // 0x0000002C length: 4
-        char** field12_0x30; // 0x00000030 length: 4
-        char** field13_0x34; // 0x00000034 length: 4
-        char** field14_0x38; // 0x00000038 length: 4
+        char** RandomEvent1VideoName; // 0x00000000 length: 4
+        char** RandomEvent2VideoName; // 0x00000004 length: 4
+        char** RandomEvent3VideoName; // 0x00000008 length: 4
+        char** RandomEvent4VideoName; // 0x0000000C length: 4
+        char** RandomEvent5VideoName; // 0x00000010 length: 4
+        char** RandomEvent6VideoName; // 0x00000014 length: 4
+        char** RandomEvent7VideoName; // 0x00000018 length: 4
+        char** RandomEvent8VideoName; // 0x0000001C length: 4
+        char** RandomEvent9VideoName; // 0x00000020 length: 4
+        char** RandomEvent10VideoName; // 0x00000024 length: 4
+        char** RandomEvent11VideoName; // 0x00000028 length: 4
+        char** RandomEvent12VideoName; // 0x0000002C length: 4
+        char** RandomEvent13VideoName; // 0x00000030 length: 4
+        char** RandomEvent14VideoName; // 0x00000034 length: 4
+        char** RandomEvent15VideoName; // 0x00000038 length: 4
         char** field15_0x3c; // 0x0000003C length: 4
         char** field16_0x40; // 0x00000040 length: 4
         char** field17_0x44; // 0x00000044 length: 4
