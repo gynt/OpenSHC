@@ -27,20 +27,20 @@ namespace Map {
             int field0_0x0[9]; // 0x00000000 length: 36
             pointer EntityCallbacks[44]; // 0x00000024 length: 176
             GmIDInt EntityPropertyArray_1[45]; // 0x000000D4 length: 180
-            byte field3_0x188[36]; // 0x00000188 length: 36
+            byte FireAnimationFrames1[36]; // 0x00000188 length: 36
             int EntityPropertyArray_2[45]; // 0x000001AC length: 180
-            byte field5_0x260[16]; // 0x00000260 length: 16
+            byte FireAnimationFrames2[16]; // 0x00000260 length: 16
             int field6_0x270[15]; // 0x00000270 length: 60
             int field7_0x2ac[35]; // 0x000002AC length: 140
-            byte field8_0x338[28]; // 0x00000338 length: 28
+            byte FireAnimationFrames3[28]; // 0x00000338 length: 28
             uint EntityTypeArrayForProjectileRange[38]; // 0x00000354 length: 152
             undefined1 padding_0x3ec[28]; // 0x000003EC length: 28
-            byte field38_0x408[28]; // 0x00000408 length: 28
+            byte FireAnimationFrames4[28]; // 0x00000408 length: 28
             int EntityArrayCurveTypeForProjectileType[45]; // 0x00000424 length: 180
-            byte field40_0x4d8[28]; // 0x000004D8 length: 28
+            byte FireAnimationFrames5[28]; // 0x000004D8 length: 28
             int EntityArrayProjectileVelocityForProjectileType[45]; // 0x000004F4 length: 180
-            byte field42_0x5a8[28]; // 0x000005A8 length: 28
-            float field43_0x5c4[46]; // 0x000005C4 length: 184
+            byte FireAnimationFrames6[28]; // 0x000005A8 length: 28
+            float ProjectileGravityPerEntityType[46]; // 0x000005C4 length: 184
             int EntityPropertyArray_3[56]; // 0x0000067C length: 224
             int field45_0x75c[36]; // 0x0000075C length: 144
             int field46_0x7ec[3]; // 0x000007EC length: 12

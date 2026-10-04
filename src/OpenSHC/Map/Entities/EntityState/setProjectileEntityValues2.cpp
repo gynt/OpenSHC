@@ -38,7 +38,7 @@ namespace Map {
                     = (short)DAT_EntityDefinedData::instance.EntityArrayProjectileVelocityForProjectileType[entityType];
             }
             this->entityArray[entityID]._elapsedTimeOrGravityAccumulator
-                = DAT_EntityDefinedData::instance.field43_0x5c4[entityType];
+                = DAT_EntityDefinedData::instance.ProjectileGravityPerEntityType[entityType];
             this->entityArray[entityID].field37_0x5a = (short)DAT_EntityDefinedData::instance.field6_0x270[entityType
                 + (Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT)];
             this->entityArray[entityID].gmLookupValue

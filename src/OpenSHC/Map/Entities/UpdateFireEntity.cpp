@@ -62,21 +62,21 @@ namespace Map {
                 if (_height0 < 3) {
                 LAB_004058a7:
                     if (_height0 == 2) {
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field3_0x188
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames1
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     } else {
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field5_0x260
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames2
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     }
                 } else if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
                     DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
                     iVar3
                         = (int)(char)DAT_EntityDefinedData::instance
-                              .field40_0x4d8[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
+                              .FireAnimationFrames5[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                 } else {
                     iVar3
                         = (int)(char)DAT_EntityDefinedData::instance
-                              .field8_0x338[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
+                              .FireAnimationFrames3[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                 }
             LAB_004058ca:
                 if (0 < iVar3)
@@ -102,10 +102,10 @@ namespace Map {
                         goto LAB_004058a7;
                     if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
                         DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field42_0x5a8
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames6
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     } else {
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field38_0x408
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames4
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     }
                     goto LAB_004058ca;
