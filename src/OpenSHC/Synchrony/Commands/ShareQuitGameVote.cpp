@@ -75,15 +75,15 @@ namespace Synchrony {
             } else if (DAT_GameSynchronyState::instance.quitGameVoteRelated == 2) {
                 if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 != 0) {}
                 DAT_GameSynchronyState::instance
-                    .field122_0xc70[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
-                if ((DAT_GameSynchronyState::instance.field122_0xc70[8] != 0)
-                    && (DAT_GameSynchronyState::instance.field122_0xc70[7] != 0
-                        && (DAT_GameSynchronyState::instance.field122_0xc70[6] != 0
-                            && (DAT_GameSynchronyState::instance.field122_0xc70[5] != 0
-                                && (DAT_GameSynchronyState::instance.field122_0xc70[4] != 0
-                                    && (DAT_GameSynchronyState::instance.field122_0xc70[3] != 0
-                                        && (DAT_GameSynchronyState::instance.field122_0xc70[2] != 0
-                                            && DAT_GameSynchronyState::instance.field122_0xc70[1] != 0))))))) {
+                    .quitGameVoteArray[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
+                if ((DAT_GameSynchronyState::instance.quitGameVoteArray[8] != 0)
+                    && (DAT_GameSynchronyState::instance.quitGameVoteArray[7] != 0
+                        && (DAT_GameSynchronyState::instance.quitGameVoteArray[6] != 0
+                            && (DAT_GameSynchronyState::instance.quitGameVoteArray[5] != 0
+                                && (DAT_GameSynchronyState::instance.quitGameVoteArray[4] != 0
+                                    && (DAT_GameSynchronyState::instance.quitGameVoteArray[3] != 0
+                                        && (DAT_GameSynchronyState::instance.quitGameVoteArray[2] != 0
+                                            && DAT_GameSynchronyState::instance.quitGameVoteArray[1] != 0))))))) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_KILL_GAME);

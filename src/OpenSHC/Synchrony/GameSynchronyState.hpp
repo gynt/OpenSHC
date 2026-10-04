@@ -82,7 +82,7 @@ namespace Synchrony {
         int connectPort; // 0x000002B0 length: 4
         int willHost; // 0x000002B4 length: 4
         char shellExecuteTarget[600]; // 0x000002B8 length: 600
-        int field32_0x510; // 0x00000510 length: 4
+        int gameSpyArcadeAvailable; // 0x00000510 length: 4
         BOOLEnum openOnClose; // 0x00000514 length: 4
         byte connectName[256]; // 0x00000518 length: 256
         GameModeInt currentGameMode; // 0x00000618 length: 4
@@ -118,7 +118,7 @@ namespace Synchrony {
         undefined4 field65_0xb9c; // 0x00000B9C length: 4
         undefined4 field66_0xba0; // 0x00000BA0 length: 4
         undefined4 field67_0xba4; // 0x00000BA4 length: 4
-        undefined4 field68_0xba8; // 0x00000BA8 length: 4
+        undefined4 resyncPacketBudget; // 0x00000BA8 length: 4
         undefined4 somePacketSubTypeUnk; // 0x00000BAC length: 4
         undefined4 field70_0xbb0; // 0x00000BB0 length: 4
         undefined4 field71_0xbb4; // 0x00000BB4 length: 4
@@ -158,7 +158,7 @@ namespace Synchrony {
         undefined4 firstSplitZone; // 0x00000C60 length: 4
         undefined1 padding_0xc64[8]; // 0x00000C64 length: 8
         undefined4 quitGameVoteRelated; // 0x00000C6C length: 4
-        int field122_0xc70[9]; // 0x00000C70 length: 36
+        int quitGameVoteArray[9]; // 0x00000C70 length: 36
         int quitGameVoteRequestTime; // 0x00000C94 length: 4
         int announcementReceivedByPlayer[9]; // 0x00000C98 length: 36
         undefined4 saveRelated; // 0x00000CBC length: 4

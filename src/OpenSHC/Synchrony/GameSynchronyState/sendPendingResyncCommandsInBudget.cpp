@@ -13,7 +13,7 @@ namespace Synchrony {
     /*
       Resumable chunked resync sender. Picks up from somePacketSubTypeUnk (cases 0-15) and resumes   sending resync
       commands for the category at that index, starting from field70_0xbb0/field71_0xbb4   offsets. Sends until the
-      packet budget (field68_0xba8) is exhausted, then suspends by saving   position and queuing
+      packet budget (resyncPacketBudget) is exhausted, then suspends by saving   position and queuing
       GCT_QUIT_MULTIPLAYERGAME as a continuation signal. When all categories are   complete, queues
       GCT_CHECK_GAME_SYNCUnk and advances syncStatus to 3.      renamed by: Claude Sonnet 4.6
      */
@@ -87,7 +87,7 @@ namespace Synchrony {
                                     this->currentPacketTotalSize
                                         = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                     local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                                    if (this->field68_0xba8 < local_14) {
+                                    if (this->resyncPacketBudget < local_14) {
                                         this->field71_0xbb4 = iVar4 + 1;
                                         this->somePacketSubTypeUnk = 0xd;
                                         this->field70_0xbb0 = iVar8;
@@ -128,7 +128,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 0xf;
                             LAB_0048e84b:
                                 this->field70_0xbb0 = iVar8 + 1;
@@ -166,7 +166,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 0;
                                 goto LAB_0048e84b;
                             }
@@ -196,7 +196,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 1;
                                 goto LAB_0048e84b;
                             }
@@ -226,7 +226,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 2;
                                 goto LAB_0048e84b;
                             }
@@ -256,7 +256,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 3;
                                 goto LAB_0048e84b;
                             }
@@ -286,7 +286,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 4;
                                 goto LAB_0048e84b;
                             }
@@ -316,7 +316,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 5;
                                 goto LAB_0048e84b;
                             }
@@ -346,7 +346,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 6;
                                 goto LAB_0048e84b;
                             }
@@ -380,7 +380,7 @@ namespace Synchrony {
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             iVar4 = this->currentPlayerSlotID;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 7;
                                 goto LAB_0048e84b;
                             }
@@ -410,7 +410,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 8;
                                 goto LAB_0048e84b;
                             }
@@ -440,7 +440,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 9;
                                 goto LAB_0048e84b;
                             }
@@ -470,7 +470,7 @@ namespace Synchrony {
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            if (this->field68_0xba8 < local_14) {
+                            if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 10;
                                 goto LAB_0048e84b;
                             }
@@ -506,7 +506,7 @@ namespace Synchrony {
                                 this->currentPacketTotalSize
                                     = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                 local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                                if (this->field68_0xba8 < local_14) {
+                                if (this->resyncPacketBudget < local_14) {
                                     this->somePacketSubTypeUnk = 0xb;
                                     goto LAB_0048e84b;
                                 }
@@ -546,7 +546,7 @@ namespace Synchrony {
                                         this->currentPacketTotalSize
                                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                                        if (this->field68_0xba8 < local_14) {
+                                        if (this->resyncPacketBudget < local_14) {
                                             this->field71_0xbb4 = iVar4 + 1;
                                             this->somePacketSubTypeUnk = 0xc;
                                             this->field70_0xbb0 = iVar8;
@@ -589,7 +589,7 @@ namespace Synchrony {
                         this->currentPacketTotalSize
                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                        if (this->field68_0xba8 < local_14) {
+                        if (this->resyncPacketBudget < local_14) {
                             this->somePacketSubTypeUnk = 0xe;
                             goto LAB_0048e84b;
                         }

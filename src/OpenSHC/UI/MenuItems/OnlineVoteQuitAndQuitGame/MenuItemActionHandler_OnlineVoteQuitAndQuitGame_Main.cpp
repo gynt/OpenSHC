@@ -59,24 +59,24 @@ namespace UI {
                         (Commands::GameCommandType)(Commands::GCT_BROADCAST_SYNC_RELATED_STATUS_1
                             | Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
                     DAT_GameSynchronyState::instance.quitGameVoteRelated = 2;
-                    DAT_GameSynchronyState::instance.field122_0xc70[1]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[1]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[2]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[2]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[2] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[3]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[3]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[3] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[4]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[4]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[4] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[5]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[5]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[5] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[6]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[6]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[6] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[7]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[7]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[7] == -1);
-                    DAT_GameSynchronyState::instance.field122_0xc70[8]
+                    DAT_GameSynchronyState::instance.quitGameVoteArray[8]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] == -1);
                     DAT_GameSynchronyState::instance
-                        .field122_0xc70[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
+                        .quitGameVoteArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                     DAT_GameSynchronyState::instance.quitGameVoteRequestTime = timeGetTime();
                     MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }

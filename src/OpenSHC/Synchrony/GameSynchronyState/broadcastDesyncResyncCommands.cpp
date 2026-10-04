@@ -524,9 +524,9 @@ namespace Synchrony {
             iVar6 = this->connectionLagInfoArray[8].average1;
         }
         if (iVar6 < 2) {
-            this->field68_0xba8 = 40000;
+            this->resyncPacketBudget = 40000;
         } else {
-            this->field68_0xba8 = (-(uint)(iVar6 != 2) & 0xffff8ad0) + 40000;
+            this->resyncPacketBudget = (-(uint)(iVar6 != 2) & 0xffff8ad0) + 40000;
         }
         this->somePacketSubTypeUnk = 0;
         this->field70_0xbb0 = 0;

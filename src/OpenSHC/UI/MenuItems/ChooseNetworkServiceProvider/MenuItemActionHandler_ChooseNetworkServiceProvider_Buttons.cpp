@@ -308,7 +308,7 @@ namespace UI {
                 }
             } else if ((int)param_1 < -9) {
                 if (param_1 == ((ChooseNetworkServiceProviderButtonActions)0xfffffff6)) {
-                    if (DAT_GameSynchronyState::instance.field32_0x510 != 0) {
+                    if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable != 0) {
                         DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                         DAT_GameSynchronyState::instance.openOnClose = TRUE;
                     }

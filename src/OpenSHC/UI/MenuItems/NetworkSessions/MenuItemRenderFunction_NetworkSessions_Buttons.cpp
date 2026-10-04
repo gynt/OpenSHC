@@ -105,7 +105,7 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             if (param_1 == -10) {
-                if (DAT_GameSynchronyState::instance.field32_0x510 != 0) {
+                if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable != 0) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }

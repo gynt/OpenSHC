@@ -18,7 +18,7 @@ namespace Synchrony {
         DWORD local_8;
         DWORD local_4;
         local_8 = 0x200;
-        this->field32_0x510 = 0;
+        this->gameSpyArcadeAvailable = 0;
         LVar2 = RegOpenKeyExA((HKEY__*)0x80000001, "Software\\GameSpy\\GameSpy Arcade", 0, 0x20019, &local_c);
         if (LVar2 == 0) {
             LVar2 = RegQueryValueExA(
@@ -46,7 +46,7 @@ namespace Synchrony {
                 strcpy(pcVar3 + 1, "aphex.exe");
                 _File = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, "rb");
                 if (_File != (FILE*)0x0) {
-                    this->field32_0x510 = 1;
+                    this->gameSpyArcadeAvailable = 1;
                     MACRO_CALL(OS_Func::_fclose)(_File);
                 }
             }
