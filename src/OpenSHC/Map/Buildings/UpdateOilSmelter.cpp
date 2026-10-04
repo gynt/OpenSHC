@@ -180,7 +180,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar5].state = 8;
                 piVar1 = DAT_BuildingsState::instance.buildings[iVar5].resources + 7;
                 *piVar1 = *piVar1 + -1;
-                iVar5 = (int)*(short*)&DAT_BuildingsState::instance.buildings[iVar5].padding_0x2a0[0] /* 0x2a0 */;
+                iVar5 = DAT_BuildingsState::instance.buildings[iVar5].engineerUnitID;
                 if (((iVar5 != 0)
                         && (DAT_UnitsState::instance.units[iVar5].unitType == Map::Units::UT_E_ENGINEER))
                     && (DAT_UnitsState::instance.units[iVar5].state.generic

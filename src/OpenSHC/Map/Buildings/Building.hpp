@@ -209,7 +209,7 @@ namespace Map {
             byte field215_0x299; // 0x00000299 length: 1
             short outpostRelatedUnk4; // 0x0000029A length: 2
             int ffBuildingVariation; // 0x0000029C length: 4
-            undefined1 padding_0x2a0[2]; // 0x000002A0 length: 2
+            short engineerUnitID; // 0x000002A0 length: 2
             byte pathLinkageRelated2; // 0x000002A2 length: 1
             byte gateState; // 0x000002A3 length: 1
             undefined1 unknownFlag4; // 0x000002A4 length: 1
@@ -260,7 +260,8 @@ namespace Map {
             short outpostRelatedUnk2; // 0x0000030E length: 2
             short outpostRelatedUnk3; // 0x00000310 length: 2
             short field273_0x312; // 0x00000312 length: 2
-            undefined1 padding_0x314[2]; // 0x00000314 length: 2
+            byte surroundingsRevealed; // 0x00000314 length: 1
+            undefined1 padding_0x315[1]; // 0x00000315 length: 1
             short outpostRelatedUnk06; // 0x00000316 length: 2
             short incByFourUnk; // 0x00000318 length: 2
             undefined1 padding_0x31a[18]; // 0x0000031A length: 18

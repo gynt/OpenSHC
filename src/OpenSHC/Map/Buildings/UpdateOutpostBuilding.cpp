@@ -101,8 +101,8 @@ namespace Map {
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
         if (((GVar5 != Game::GM_SOLITARY) && (GVar5 != Game::GM_SKIRMISH_SINGLE_PLAYER))
             && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {}
-        if (DAT_BuildingsState::instance.buildings[iVar9].padding_0x314[0] /* 0x314 */ == '\0') {
-            DAT_BuildingsState::instance.buildings[iVar9].padding_0x314[0] /* 0x314 */ = 1;
+        if (DAT_BuildingsState::instance.buildings[iVar9].surroundingsRevealed == 0) {
+            DAT_BuildingsState::instance.buildings[iVar9].surroundingsRevealed = 1;
             iVar6 = (int)DAT_BuildingsState::instance.buildings[iVar9].widthOrHeight / 2;
             iVar10 = (short)DAT_BuildingsState::instance.buildings[iVar9].x + iVar6;
             iVar6 = iVar6 + (short)DAT_BuildingsState::instance.buildings[iVar9].y;
