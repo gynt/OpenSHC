@@ -14,7 +14,7 @@ namespace UI {
         void SinglePlayerMapChoice::MenuItemActionHandler_SingleplayerMapChoice_MapTableHeader(int param_1, ...)
         {
             int iVar1;
-            undefined4* puVar2;
+            int* puVar2;
             int iVar3;
             int iVar4;
             int iVar5;

@@ -361,7 +361,7 @@ namespace Map {
             BOOLEnum hasBuildingAsNeighbour(int playerID, int x, int y, int size, BuildingType type);
 
             int findParticularBuilding(
-                undefined4 param_1, int x, int y, int buildingSize, BuildingType buildingType, int buildingID);
+                PlayerID playerID, int x, int y, int buildingSize, BuildingType buildingType, int buildingID);
 
             int findAccessibleAreaNearBuildingLocation(int x, int y, int buildingSize);
 

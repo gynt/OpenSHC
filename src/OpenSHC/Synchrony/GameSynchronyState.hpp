@@ -185,7 +185,7 @@ namespace Synchrony {
         GameCommand DAT_GameCommandArray[200]; // 0x0003C67C length: 254400
         short DAT_LagIndicatorPerPlayer[9]; // 0x0007A83C length: 18
         undefined1 padding_0x7a84e[2]; // 0x0007A84E length: 2
-        undefined4 DAT_GameCommandParam0; // 0x0007A850 length: 4
+        int DAT_GameCommandParam0; // 0x0007A850 length: 4
         undefined4 DAT_GameCommandParam1; // 0x0007A854 length: 4
         undefined4 DAT_GameCommandParam2; // 0x0007A858 length: 4
         undefined4 DAT_GameCommandParam3; // 0x0007A85C length: 4

@@ -38,7 +38,7 @@ namespace UI {
         undefined4 field13_0x34; // 0x00000034 length: 4
         undefined4 field14_0x38; // 0x00000038 length: 4
         undefined4 field15_0x3c; // 0x0000003C length: 4
-        undefined4 DAT_SomeMiniMapCounterTill4; // 0x00000040 length: 4
+        int DAT_SomeMiniMapCounterTill4; // 0x00000040 length: 4
         ushort field17_0x44[80000]; // 0x00000044 length: 160000
         ushort field18_0x27144[80000]; // 0x00027144 length: 160000
         short loadedMiniMap[200][200]; // 0x0004E244 length: 80000

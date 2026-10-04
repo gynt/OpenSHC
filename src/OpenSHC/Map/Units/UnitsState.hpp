@@ -39,7 +39,7 @@ namespace Map {
         // SIZE: 0x002CA7E4
         class UnitsState {
         public:
-            uint maxUnitCount; // 0x00000000 length: 4
+            int maxUnitCount; // 0x00000000 length: 4
             uint unitCount; // 0x00000004 length: 4
             undefined4 unknownInitially0_01; // 0x00000008 length: 4
             undefined4 lastSelectedUnitID; // 0x0000000C length: 4

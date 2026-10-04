@@ -19,7 +19,7 @@ namespace Map {
           fixme: there is more data on the stack than used?   decompilerscript: committed: 2025-01-30 21:57:43.216000
          */
         // FUNCTION: STRONGHOLDCRUSADER 0x00521720
-        UnitType TribesState::getMajoritySelectedUnitType(undefined4 tribeID, int* maximumCount)
+        UnitType TribesState::getMajoritySelectedUnitType(int tribeID, int* maximumCount)
         {
             Unit* _pUnit;
             int _maximumTroopType;

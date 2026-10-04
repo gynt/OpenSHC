@@ -31,7 +31,7 @@ namespace UI {
     {
         int iVar1;
         int iVar2;
-        undefined4* puVar5;
+        int* puVar5;
         int iVar6;
         if ((((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                  || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))

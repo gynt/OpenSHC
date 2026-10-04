@@ -8,7 +8,7 @@ namespace OpenSHC {
 namespace IO {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00473C10
-    int DecoderState::encodeData(int sizeUncompressed, undefined* src, undefined* dst)
+    int DecoderState::encodeData(int sizeUncompressed, uchar* src, uchar* dst)
     {
         this->sizeUncompressed = sizeUncompressed;
         MACRO_CALL_MEMBER(DecoderState_Func::doImplode, this)(

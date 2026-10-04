@@ -47,7 +47,7 @@ namespace UI {
           --TheRedDaemon   decompilerscript: committed: 2025-01-30 21:57:43.216000
          */
         // FUNCTION: STRONGHOLDCRUSADER 0x00440560
-        void GameStartEnterName::MenuView_GameStartEnterName_Prepare(void* param_1)
+        void GameStartEnterName::MenuView_GameStartEnterName_Prepare()
         {
             char cVar1;
             char* pcVar2;

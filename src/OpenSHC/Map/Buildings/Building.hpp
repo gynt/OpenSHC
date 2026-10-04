@@ -191,7 +191,7 @@ namespace Map {
             short field194_0x274; // 0x00000274 length: 2
             short field195_0x276; // 0x00000276 length: 2
             int buildingProgress; // 0x00000278 length: 4
-            uint timeAlive; // 0x0000027C length: 4
+            int timeAlive; // 0x0000027C length: 4
             undefined1 padding_0x280[4]; // 0x00000280 length: 4
             int hovelVisualStyle; // 0x00000284 length: 4
             short field203_0x288; // 0x00000288 length: 2
