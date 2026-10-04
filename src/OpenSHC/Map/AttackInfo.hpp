@@ -103,7 +103,7 @@ namespace Map {
         undefined1 padding_0x21c58[16032]; // 0x00021C58 length: 16032
         int zoneSize; // 0x00025AF8 length: 4
         int someDistanceLimit; // 0x00025AFC length: 4
-        int field105440_0x25b00; // 0x00025B00 length: 4
+        int pendingAttackWaveCount; // 0x00025B00 length: 4
         int playerTotalTroopValueArray[9]; // 0x00025B04 length: 36
         int field105442_0x25b28; // 0x00025B28 length: 4
         int playerTotalTroopValueOfTroopsNearKeep[9]; // 0x00025B2C length: 36

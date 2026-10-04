@@ -21,7 +21,7 @@ namespace Map {
             int* piVar1;
             if (this->attackInfo.attackWaveTicker[param_1] == 0) {
                 this->attackInfo.attackWaveTicker[param_1] = 1;
-                this->attackInfo.field105440_0x25b00 = this->attackInfo.field105440_0x25b00 + 1;
+                this->attackInfo.pendingAttackWaveCount = this->attackInfo.pendingAttackWaveCount + 1;
                 this->attackInfo.someCounter1 = 1;
                 this->attackInfo.field86987_0x20f9c = 0;
                 this->attackInfo.attackWaveRetargetCount = 0;

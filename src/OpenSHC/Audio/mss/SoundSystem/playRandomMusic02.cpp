@@ -26,7 +26,7 @@ namespace Audio {
             DAT_SoundEffectsHelperData1::ptr->DAT_SomeSoundTime2 = timeGetTime();
 
             if (param_1 != 2) {
-                if (DAT_TroopValueState::ptr->attackInfo.field105440_0x25b00 == 0) {
+                if (DAT_TroopValueState::ptr->attackInfo.pendingAttackWaveCount == 0) {
                     MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::recountTotalTroopValue, DAT_TroopValueState::ptr)();
                 }

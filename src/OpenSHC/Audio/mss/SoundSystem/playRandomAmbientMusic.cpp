@@ -111,7 +111,7 @@ namespace Audio {
                         && DAT_GameCore::instance.field22_0x64 != 0))
                 && DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL
                 && DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                if (DAT_TroopValueState::instance.attackInfo.field105440_0x25b00 != 0
+                if (DAT_TroopValueState::instance.attackInfo.pendingAttackWaveCount != 0
                     && 0 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .totalEnemyUnitsCount) {
                     if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c) {
@@ -119,7 +119,7 @@ namespace Audio {
                     } else {
                         MACRO_CALL_MEMBER(SoundSystem_Func::playRandomMusic02, this)(1);
                     }
-                    DAT_TroopValueState::instance.attackInfo.field105440_0x25b00 = 0;
+                    DAT_TroopValueState::instance.attackInfo.pendingAttackWaveCount = 0;
                 }
                 if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
                     if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
