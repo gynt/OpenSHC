@@ -18,11 +18,8 @@ namespace Global {
     void Init::Constructor_MenuModal_QuitDialog()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_QuitDialog::ptr)(
-            (UI::Enums::MenuModalType)29, -1, -1, 500, 0x96, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::YesNoDialog_Func::MenuModalRenderFunction_YesNoDialog),
-            Menu_QuitDialog::ptr);
+            (UI::Enums::MenuModalType)29, -1, -1, 500, 0x96, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::YesNoDialog_Func::MenuModalRenderFunction_YesNoDialog), Menu_QuitDialog::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_QuitDialog));
         return;
     }

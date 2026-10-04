@@ -156,7 +156,7 @@ namespace Map {
                             }
                             _unitID = _unitID + 1;
                             _ptrPlayerID = _ptrPlayerID + 0x248;
-                            if ((int)DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
+                            if (DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
                         } while (true);
                     }
                 }
@@ -164,7 +164,7 @@ namespace Map {
             return;
         LAB_0051b9cb:
             _unitID = _unitID + 1;
-            if ((int)DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
+            if (DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
             if (param_2 == 0) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                       placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers,

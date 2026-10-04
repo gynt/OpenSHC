@@ -19,15 +19,12 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A940
     void Init::Constructor_MenuView_UnusedSelectRandomNumberOfEnemies()
     {
-        MACRO_CALL_MEMBER(
-            UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedSelectRandomNumberOfEnemies::ptr)(
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedSelectRandomNumberOfEnemies::ptr)(
             UI::Enums::MVT_UNUSED_SELECT_RANDOM_NUMBER_OF_ENEMIES,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    UnusedSelectRandomNumberOfEnemies_Func::MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::UnusedSelectRandomNumberOfEnemies_Func::
+                    MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedSelectRandomNumberOfEnemies));
         return;

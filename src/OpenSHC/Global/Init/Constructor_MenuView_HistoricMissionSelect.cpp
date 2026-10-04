@@ -22,12 +22,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricMissionSelect::ptr)(
             UI::Enums::MVT_HISTORIC_MISSION_SELECT,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::HistoricMissionSelect_Func::MenuView_HistoricMissionSelect_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::HistoricMissionSelect_Func::MenuView_HistoricMissionSelect_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricMissionSelect));
         return;

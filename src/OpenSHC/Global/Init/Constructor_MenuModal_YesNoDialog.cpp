@@ -21,11 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_YesNoDialog()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_YesNoDialog::ptr)(
-            UI::Enums::MMT_YES_NO_DIALOG, -1, -1, 0x1c2, 0x96, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::YesNoDialog_Func::MenuModalRenderFunction_YesNoDialog),
-            Menu_YesNoDialog::ptr);
+            UI::Enums::MMT_YES_NO_DIALOG, -1, -1, 0x1c2, 0x96, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::YesNoDialog_Func::MenuModalRenderFunction_YesNoDialog), Menu_YesNoDialog::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_YesNoDialog));
         return;
     }

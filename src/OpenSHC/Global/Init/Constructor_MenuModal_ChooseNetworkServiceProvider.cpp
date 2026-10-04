@@ -20,11 +20,11 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B7E0
     void Init::Constructor_MenuModal_ChooseNetworkServiceProvider()
     {
-        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal,
-            MenuModal_ChooseNetworkServiceProvider::ptr)(UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, 0x96,
-            0x50, 500, 0x198, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(UI::MenuModals::
-                    ChooseNetworkServiceProvider_Func::MenuModalRenderFunction_ChooseNetworkServiceProvider),
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_ChooseNetworkServiceProvider::ptr)(
+            UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, 0x96, 0x50, 500, 0x198, 0x200,
+            (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::ChooseNetworkServiceProvider_Func::
+                    MenuModalRenderFunction_ChooseNetworkServiceProvider),
             Menu_ChooseNetworkServiceProvider::ptr);
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseNetworkServiceProvider));

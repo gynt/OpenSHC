@@ -60,7 +60,7 @@ namespace UI {
                     } else if (param_1 == 10) {
                         if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
                             goto switchD_004ac099_caseD_4;
-                    } else if ((param_1 != 0xb) || ((int)DAT_GameCore::instance.U2_mapType_singleOrMulti < 1))
+                    } else if ((param_1 != 0xb) || (DAT_GameCore::instance.U2_mapType_singleOrMulti < 1))
                         goto switchD_004ac099_caseD_4;
                 } else {
                     switch (param_1) {

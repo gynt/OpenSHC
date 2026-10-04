@@ -18,10 +18,8 @@ namespace Global {
     void Init::Constructor_MenuView_Unknown49DoesNothingUnk()
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown49DoesNothingUnk::ptr)(
-            UI::Enums::MVT_UNKNOWN_49_DOES_NOTHINGUnk,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing));
+            UI::Enums::MVT_UNKNOWN_49_DOES_NOTHINGUnk, MACRO_CALL(Global_Func::DoNothing),
+            MACRO_CALL(Global_Func::DoNothing), MACRO_CALL(Global_Func::DoNothing));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown49DoesNothingUnk));
         return;

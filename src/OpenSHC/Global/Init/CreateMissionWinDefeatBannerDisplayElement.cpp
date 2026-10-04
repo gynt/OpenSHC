@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             MissionWinDefeatBannerDisplayElement::ptr)(DE::SHCDE::OST_MISSION_FINISHED, 400, 0x1e, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderMissionWinDefeatBannerDisplayElement),
+            MACRO_CALL(UI::DisplayElements_Func::RenderMissionWinDefeatBannerDisplayElement),
             UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }

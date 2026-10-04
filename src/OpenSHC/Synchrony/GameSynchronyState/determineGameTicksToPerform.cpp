@@ -68,15 +68,15 @@ namespace Synchrony {
             }
         }
         this->field196_0x101ad4 = _relativeTickTime;
-        if ((int)DAT_GameCore::instance.gameSpeedMultiplicator < 0) {
+        if (DAT_GameCore::instance.gameSpeedMultiplicator < 0) {
             _durationOfOneTick
                 = (int)(-1000 / (longlong)(int)_gameSpeedLevel) * DAT_GameCore::instance.gameSpeedMultiplicator;
         } else {
             _durationOfOneTick = (int)(1000 / (longlong)(int)_gameSpeedLevel);
-            if (1 < (int)DAT_GameCore::instance.gameSpeedMultiplicator) {
+            if (1 < DAT_GameCore::instance.gameSpeedMultiplicator) {
                 _durationOfOneTick = (int)((longlong)((ulonglong)(uint)(_durationOfOneTick >> 0x1f) << 0x20
                                                | 1000 / (longlong)(int)_gameSpeedLevel & 0xffffffffU)
-                    / (longlong)(int)DAT_GameCore::instance.gameSpeedMultiplicator);
+                    / (longlong)DAT_GameCore::instance.gameSpeedMultiplicator);
             }
         }
         _relativeTickTime
@@ -94,7 +94,7 @@ namespace Synchrony {
             /*
               Execute game ticks
              */
-            if (((_durationOfOneTick < (int)DAT_GameCore::instance.averageTimePerGameTick)
+            if (((_durationOfOneTick < DAT_GameCore::instance.averageTimePerGameTick)
                     && (_durationOfOneTick * 2 <= _relativeTickTime))
                 && (_durationOfOneTick == (int)(1000 / (longlong)(int)_gameSpeedLevel))) {
                 /*
@@ -103,7 +103,7 @@ namespace Synchrony {
                 DAT_MillisecCarry::instance = 0;
                 return 2;
             }
-            if ((((_durationOfOneTick * 7) / 10 < (int)DAT_GameCore::instance.averageTimePerGameTick)
+            if ((((_durationOfOneTick * 7) / 10 < DAT_GameCore::instance.averageTimePerGameTick)
                     && (_durationOfOneTick * 2 <= _relativeTickTime))
                 && (_durationOfOneTick == (int)(1000 / (longlong)(int)_gameSpeedLevel))) {
                 /*

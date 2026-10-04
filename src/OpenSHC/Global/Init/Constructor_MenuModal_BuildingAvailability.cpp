@@ -21,8 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_BuildingAvailability::ptr)(
             UI::Enums::MMT_BUILDING_AVAILABILITY, -1, -1, 700, 0x21c, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::BuildingAvailability_Func::MenuModalRenderFunction_BuildingAvailability),
+            MACRO_CALL(UI::MenuModals::BuildingAvailability_Func::MenuModalRenderFunction_BuildingAvailability),
             Menu_BuildingAvailability::ptr);
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuModal_BuildingAvailability));

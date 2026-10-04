@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedExtremeAd::ptr)(
             UI::Enums::MVT_UNUSED_EXTREME_AD,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_Prepare),
+            MACRO_CALL(UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoInitial),
+            MACRO_CALL(UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedExtremeAd));
         return;
     }

@@ -31,7 +31,7 @@ namespace UI {
                 xPos, yPos, width, heigth, 7, xOffset, yOffset, widthFactor, heightFactor, 0);
         }
         this->DAT_SomeMiniMapCounterTill4 = this->DAT_SomeMiniMapCounterTill4 + 1 & 0x80000003;
-        if ((int)this->DAT_SomeMiniMapCounterTill4 < 0) {
+        if (this->DAT_SomeMiniMapCounterTill4 < 0) {
             this->DAT_SomeMiniMapCounterTill4 = (this->DAT_SomeMiniMapCounterTill4 - 1 | 0xfffffffc) + 1;
         }
         this->field1_0x4 = xOffset;

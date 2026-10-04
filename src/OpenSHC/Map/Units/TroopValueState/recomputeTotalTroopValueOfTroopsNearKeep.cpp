@@ -36,7 +36,7 @@ namespace Map {
             this->attackInfo.playerTotalTroopValueOfTroopsNearKeep[7] = 0;
             this->attackInfo.playerTotalTroopValueOfTroopsNearKeep[8] = 0;
             this->attackInfo.padding_0x25b50[0] /* 0x25B50: start of padding_0x25b50 in the header */ = 0;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 ptrUnit = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((((ptrUnit->logicalState != Map::Units::ULS_INVISIBLE) && (ptrUnit->dying == 0))
@@ -62,7 +62,7 @@ namespace Map {
                     }
                     iVar3 = iVar3 + 1;
                     ptrUnit = ptrUnit + 0x248;
-                } while (iVar3 < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while (iVar3 < DAT_UnitsState::instance.maxUnitCount);
             }
         }
 

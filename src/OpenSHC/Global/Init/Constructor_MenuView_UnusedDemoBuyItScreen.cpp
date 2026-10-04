@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedDemoBuyItScreen::ptr)(
             UI::Enums::MVT_UNUSED_DEMO_BUY_IT_SCREEN,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_Prepare),
+            MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoInitial),
+            MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedDemoBuyItScreen));
         return;

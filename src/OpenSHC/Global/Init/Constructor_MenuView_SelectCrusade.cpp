@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_SelectCrusade::ptr)(
             UI::Enums::MVT_SELECT_CRUSADE,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
+            MACRO_CALL(UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoInitial),
+            MACRO_CALL(UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_SelectCrusade));
         return;
     }

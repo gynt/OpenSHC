@@ -18,14 +18,10 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A7F0
     void Init::Constructor_MenuView_Credits()
     {
-        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Credits::ptr)(
-            UI::Enums::MVT_CREDITS,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::Credits_Func::MenuView_Credits_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::Credits_Func::MenuView_Credits_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::Credits_Func::MenuView_Credits_DoEveryFrame));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Credits::ptr)(UI::Enums::MVT_CREDITS,
+            MACRO_CALL(UI::MenuViews::Credits_Func::MenuView_Credits_Prepare),
+            MACRO_CALL(UI::MenuViews::Credits_Func::MenuView_Credits_DoInitial),
+            MACRO_CALL(UI::MenuViews::Credits_Func::MenuView_Credits_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Credits));
         return;
     }

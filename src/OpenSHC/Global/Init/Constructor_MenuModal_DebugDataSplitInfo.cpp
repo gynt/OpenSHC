@@ -23,8 +23,7 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DebugDataSplitInfo::ptr)(
             UI::Enums::MMT_DEBUG_DATA_SPLIT_INFO, 0x10b, 3, 500, 0x12e, 0xe,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::DebugDataSplitInfo_Func::MenuModalRenderFunction_DebugDataSplitInfo),
+            MACRO_CALL(UI::MenuModals::DebugDataSplitInfo_Func::MenuModalRenderFunction_DebugDataSplitInfo),
             Menu_DebugModals::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataSplitInfo));
         return;

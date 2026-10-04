@@ -104,7 +104,7 @@ namespace Synchrony {
                                     >> 3]
                                 .addXgetTile
                             + ((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                   + ((int)DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
+                                   + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
                                 >> 3)]
                     != 0))
             && (DAT_BuildingsState::instance
@@ -116,7 +116,7 @@ namespace Synchrony {
                                             >> 3]
                                     .addXgetTile
                                 + ((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                       + ((int)DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
+                                       + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
                                     >> 3)]]
                     .containsSiegeMangonel1OrBallista2
                 != 0)) {}
@@ -148,7 +148,7 @@ namespace Synchrony {
                                                >> 3]
                                        .addXgetTile
                         + ((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                               + ((int)DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
+                               + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
                             >> 3)],
                 iVar2 != 0
                     && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar2].buildingType,

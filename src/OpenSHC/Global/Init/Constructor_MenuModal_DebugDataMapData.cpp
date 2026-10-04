@@ -19,8 +19,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DebugDataMapData::ptr)(
             (UI::Enums::MenuModalType)201, 4, 4, 600, 0x19e, 0xe, (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::DebugDataMapData_Func::MenuModalRenderFunction_DebugDataMapData),
+            MACRO_CALL(UI::MenuModals::DebugDataMapData_Func::MenuModalRenderFunction_DebugDataMapData),
             Menu_DebugModals::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataMapData));
         return;

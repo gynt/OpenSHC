@@ -18,15 +18,14 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A340
     void Init::Constructor_MenuView_Unknown61ReturnToSkrimishMenuUnk()
     {
-        MACRO_CALL_MEMBER(
-            UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown61ReturnToSkrimishMenuUnk::ptr)(
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown61ReturnToSkrimishMenuUnk::ptr)(
             UI::Enums::MVT_UNKNOWN_61_RETURN_TO_SKIRMISH_MENUUnk,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    Unknown61ReturnToSkrimishMenuUnk_Func::MenuView_Unknown61ReturnToSkrimishMenuUnk_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    Unknown61ReturnToSkrimishMenuUnk_Func::MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    Unknown61ReturnToSkrimishMenuUnk_Func::MenuView_Unknown61ReturnToSkrimishMenuUnk_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk_Func::
+                    MenuView_Unknown61ReturnToSkrimishMenuUnk_Prepare),
+            MACRO_CALL(UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk_Func::
+                    MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial),
+            MACRO_CALL(UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk_Func::
+                    MenuView_Unknown61ReturnToSkrimishMenuUnk_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown61ReturnToSkrimishMenuUnk));
         return;

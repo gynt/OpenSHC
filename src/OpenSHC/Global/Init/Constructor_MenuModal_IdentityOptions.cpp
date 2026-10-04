@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_IdentityOptions()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_IdentityOptions::ptr)(
-            UI::Enums::MMT_IDENTITY_OPTIONS, -1, -1, 500, 400, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::IdentityOptions_Func::MenuModalRenderFunction_IdentityOptions),
+            UI::Enums::MMT_IDENTITY_OPTIONS, -1, -1, 500, 400, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::IdentityOptions_Func::MenuModalRenderFunction_IdentityOptions),
             Menu_IdentityOptions::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_IdentityOptions));
         return;

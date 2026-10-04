@@ -22,9 +22,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_PauseMenu::ptr)(
             UI::Enums::MMT_PAUSE_MENU, -1, -1, 500, 0x165, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::OptionsMenu_Func::MenuModalRenderFunction_OptionsMenu),
-            Menu_PauseMenu::ptr);
+            MACRO_CALL(UI::MenuModals::OptionsMenu_Func::MenuModalRenderFunction_OptionsMenu), Menu_PauseMenu::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_PauseMenu));
         return;
     }

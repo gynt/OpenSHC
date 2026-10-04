@@ -128,7 +128,7 @@ namespace Map {
         }
         sVar2 = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
         if (sVar2 == 3) {
-            if (1000 < (int)DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
+            if (1000 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
                     = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
@@ -138,7 +138,7 @@ namespace Map {
             goto LAB_00418476;
         }
         if (sVar2 == 2) {
-            if (200 < (int)DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
+            if (200 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
                     = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
@@ -148,7 +148,7 @@ namespace Map {
             goto LAB_00418476;
         }
         if (sVar2 == 4) {
-            if (600 < (int)DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
+            if (600 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
                     = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;

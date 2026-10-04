@@ -29,7 +29,7 @@ namespace Map {
             short* psVar3;
             int iVar4;
             iVar4 = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar3 = &DAT_UnitsState::instance.units[1].owner;
                 do {
                     if ((((psVar3[-5] != Map::Units::ULS_INVISIBLE)
@@ -61,7 +61,7 @@ namespace Map {
                     }
                     iVar4 = iVar4 + 1;
                     psVar3 = psVar3 + 0x248;
-                } while (iVar4 < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while (iVar4 < DAT_UnitsState::instance.maxUnitCount);
             }
         }
 

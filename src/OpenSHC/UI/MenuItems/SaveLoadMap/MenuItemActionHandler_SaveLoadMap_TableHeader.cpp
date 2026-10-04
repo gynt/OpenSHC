@@ -66,8 +66,7 @@ namespace UI {
                         }
                         do {
                             iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if ((int)DAT_ResourceManager::instance.mapFileTimes[iVar1]
-                                < (int)DAT_ResourceManager::instance
+                            if (DAT_ResourceManager::instance.mapFileTimes[iVar1] < (int)DAT_ResourceManager::instance
                                     .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
@@ -92,7 +91,7 @@ namespace UI {
                         iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
                         if ((int)DAT_ResourceManager::instance
                                 .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
-                            < (int)DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
+                            < DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;

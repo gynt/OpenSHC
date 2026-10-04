@@ -28,7 +28,7 @@ namespace Map {
             }
         } else if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
             goto LAB_004bb062;
-        if (0 < (int)DAT_GameCore::instance.U2_mapType_singleOrMulti) {
+        if (0 < DAT_GameCore::instance.U2_mapType_singleOrMulti) {
             if (param_1 == Commands::M_MAPPER_KEEP1) {
                 return FALSE;
             }

@@ -21,11 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_CreditsScroll()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_CreditsScroll::ptr)(
-            UI::Enums::MMT_CREDITS_SCROLL, 400, 0, 400, 600, 0x40,
-            (int)((int)(COL_BLACK::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::CreditsScroll_Func::MenuModalRenderFunction_CreditsScroll),
-            Menu_Credits::ptr);
+            UI::Enums::MMT_CREDITS_SCROLL, 400, 0, 400, 600, 0x40, (int)((int)(COL_BLACK::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::CreditsScroll_Func::MenuModalRenderFunction_CreditsScroll), Menu_Credits::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_CreditsScroll));
         return;
     }

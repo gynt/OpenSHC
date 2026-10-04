@@ -21,8 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedChooseMessageBox::ptr)(
             UI::Enums::MMT_UNUSED_CHOOSE_MESSAGE_BOX, -1, -1, 0x297, 0x1b8, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::UnusedChooseMessageBox_Func::MenuModalRenderFunction_UnusedChooseMessageBox),
+            MACRO_CALL(UI::MenuModals::UnusedChooseMessageBox_Func::MenuModalRenderFunction_UnusedChooseMessageBox),
             Menu_UnusedChooseMessageBox::ptr);
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedChooseMessageBox));

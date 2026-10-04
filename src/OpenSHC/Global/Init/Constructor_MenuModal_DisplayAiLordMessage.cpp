@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_DisplayAiLordMessage()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DisplayAiLordMessage::ptr)(
-            UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE, 0, 0, 0, 0, 0x40,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::DisplayAiLordMessage_Func::MenuModalRenderFunction_DisplayAiLordMessage),
+            UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE, 0, 0, 0, 0, 0x40, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::DisplayAiLordMessage_Func::MenuModalRenderFunction_DisplayAiLordMessage),
             Menu_DisplayAiLordMessage::ptr);
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuModal_DisplayAiLordMessage));

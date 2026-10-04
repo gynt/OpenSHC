@@ -20,13 +20,9 @@ namespace Global {
     void Init::Constructor_MenuView_EditScenario()
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_EditScenario::ptr)(
-            UI::Enums::MVT_EDIT_SCENARIO,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::EditScenario_Func::MenuView_EditScenario_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_OnlySetMenuXY),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::EditScenario_Func::MenuView_EditScenario_DoEveryFrame));
+            UI::Enums::MVT_EDIT_SCENARIO, MACRO_CALL(UI::MenuViews::EditScenario_Func::MenuView_EditScenario_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_OnlySetMenuXY),
+            MACRO_CALL(UI::MenuViews::EditScenario_Func::MenuView_EditScenario_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_EditScenario));
         return;
     }

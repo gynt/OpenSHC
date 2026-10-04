@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_OnlineQuitGame()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_OnlineQuitGame::ptr)(
-            UI::Enums::MMT_ONLINE_QUIT_GAME, -1, -1, 400, 0xeb, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::OnlineQuitGame_Func::MenuModalRenderFunction_OnlineQuitGame),
+            UI::Enums::MMT_ONLINE_QUIT_GAME, -1, -1, 400, 0xeb, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::OnlineQuitGame_Func::MenuModalRenderFunction_OnlineQuitGame),
             Menu_OnlineQuitGame::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_OnlineQuitGame));
         return;

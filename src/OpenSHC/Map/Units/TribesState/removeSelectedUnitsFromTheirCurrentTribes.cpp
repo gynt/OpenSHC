@@ -28,7 +28,7 @@ namespace Map {
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 1250, '\0', (void*)((int)(_unitRemovedFromTribeByID)));
             _unitID = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
@@ -40,7 +40,7 @@ namespace Map {
                     }
                     _unitID = _unitID + 1;
                     _pUnit = _pUnit + 0x248;
-                } while ((int)_unitID < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while ((int)_unitID < DAT_UnitsState::instance.maxUnitCount);
             }
             _tribeID = 1;
             _pTribe = &this->tribes[1];

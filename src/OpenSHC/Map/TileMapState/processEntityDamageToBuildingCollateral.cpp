@@ -232,12 +232,11 @@ namespace Map {
                             break;
                         case Map::Buildings::BT_GATEHOUSELARGE:
                         case Map::Buildings::BT_GATEHOUSESMALL:
-                            iVar9 = MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::findParticularBuilding,
-                                DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingID].owner,
-                                (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
-                                (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
-                                (int)((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
+                            iVar9 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                                DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[_buildingID].owner,
+                                ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
+                                ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
+                                ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                                 Map::Buildings::BT_DRAWBRIDGE, 0);
                             if (iVar9 != 0) {
                                 this->showNoRubbleWhenDestroyingBuilding
@@ -246,13 +245,11 @@ namespace Map {
                                         == 0);
                                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
                                     DAT_BuildingsState::ptr)(iVar9);
-                                iVar9 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::findParticularBuilding,
-                                    DAT_BuildingsState::ptr)(
-                                    (int)DAT_BuildingsState::instance.buildings[_buildingID].owner,
-                                    (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
-                                    (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
-                                    (int)((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
+                                iVar9 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                                    DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[_buildingID].owner,
+                                    ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
+                                    ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
+                                    ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                                     Map::Buildings::BT_DRAWBRIDGE, iVar9);
                                 if (iVar9 != 0) {
                                     this->showNoRubbleWhenDestroyingBuilding

@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_SoundOptions()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SoundOptions::ptr)(
-            UI::Enums::MMT_SOUND_OPTIONS, -1, -1, 500, 0x165, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::SoundOptions_Func::MenuModalRenderFunction_SoundOptions),
+            UI::Enums::MMT_SOUND_OPTIONS, -1, -1, 500, 0x165, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::SoundOptions_Func::MenuModalRenderFunction_SoundOptions),
             Menu_SoundOptions::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SoundOptions));
         return;

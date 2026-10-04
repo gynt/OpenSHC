@@ -19,13 +19,10 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A2B0
     void Init::Constructor_MenuView_Unknown21()
     {
-        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown21::ptr)(
-            UI::Enums::MVT_UNKNOWN_21,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::Helpers_Func::MainMenu_Unknown21_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown21::ptr)(UI::Enums::MVT_UNKNOWN_21,
+            MACRO_CALL(UI::Helpers_Func::MainMenu_Unknown21_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown21));
         return;
     }

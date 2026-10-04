@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_SingleplayerMapChoice::ptr)(
             UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_SingleplayerMapChoice));
         return;

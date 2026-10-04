@@ -21,12 +21,10 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedChooseAvailableKeeps::ptr)(
             UI::Enums::MVT_UNUSED_CHOOSE_AVAILABLE_KEEPS,
+            MACRO_CALL(UI::MenuViews::UnusedChooseAvailableKeeps_Func::MenuView_UnusedChooseAvailableKeeps_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_ScreenToBlack),
             (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedChooseAvailableKeeps_Func::MenuView_UnusedChooseAvailableKeeps_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_ScreenToBlack),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::UnusedChooseAvailableKeeps_Func::
-                    MenuView_UnusedChooseAvailableKeeps_DoEveryFrame));
+                UI::MenuViews::UnusedChooseAvailableKeeps_Func::MenuView_UnusedChooseAvailableKeeps_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedChooseAvailableKeeps));
         return;

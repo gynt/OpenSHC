@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_MapEditorLandscaping::ptr)(
             UI::Enums::MVT_MAP_EDITOR_LANDSCAPING,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_Prepare),
+            MACRO_CALL(UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_DoInitial),
+            MACRO_CALL(UI::MenuViews::MapEditorLandscaping_Func::MenuView_MapEditorLandscaping_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_MapEditorLandscaping));
         return;
     }

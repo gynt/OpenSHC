@@ -18,11 +18,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C6E0
     void Init::CreatePeopleLeftToPlaceDisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            PeopleLeftToPlaceDisplayElement::ptr)(DE::SHCDE::OST_PEOPLE_LEFT, 400, 10, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderPeopleLeftToPlaceDisplayElement),
-            UI::Enums::DEPM_RESOLUTION_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, PeopleLeftToPlaceDisplayElement::ptr)(
+            DE::SHCDE::OST_PEOPLE_LEFT, 400, 10, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderPeopleLeftToPlaceDisplayElement), UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }
 

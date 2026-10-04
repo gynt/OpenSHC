@@ -20,9 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, UnknownDisplayElement25::ptr)(
             DE::SHCDE::OST_KING_OF_THE_HILL, 100, 10, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderUnknownDisplayElement25),
-            UI::Enums::DEPM_RESOLUTION_Y);
+            MACRO_CALL(UI::DisplayElements_Func::RenderUnknownDisplayElement25), UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }
 

@@ -23,8 +23,7 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SkirmishPlayOptions::ptr)(
             UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS, -1, -1, 0x198, 0x172, 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::SkirmishPlayOptions_Func::MenuModalRenderFunction_SkirmishPlayOptions),
+            MACRO_CALL(UI::MenuModals::SkirmishPlayOptions_Func::MenuModalRenderFunction_SkirmishPlayOptions),
             Menu_SkirmishPlayOptions::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SkirmishPlayOptions));
         return;

@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricCampaignSelect::ptr)(
             UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBoxDefaultBorderAndPicture),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBoxDefaultBorderAndPicture),
+            MACRO_CALL(UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricCampaignSelect));
         return;

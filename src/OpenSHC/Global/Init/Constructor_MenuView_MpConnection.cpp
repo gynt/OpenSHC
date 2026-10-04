@@ -20,13 +20,9 @@ namespace Global {
     void Init::Constructor_MenuView_MpConnection()
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_MpConnection::ptr)(
-            UI::Enums::MVT_MP_CONNECTION,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MpConnection_Func::MenuView_MpConnection_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
+            UI::Enums::MVT_MP_CONNECTION, MACRO_CALL(UI::MenuViews::MpConnection_Func::MenuView_MpConnection_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_MpConnection));
         return;
     }

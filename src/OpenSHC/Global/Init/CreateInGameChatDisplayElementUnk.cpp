@@ -20,10 +20,8 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, InGameChatDisplayElement::ptr)(
             DE::SHCDE::OST_MULTI_CHAT, 4, (int)((int)(367)), 1,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderInGameChatDisplayElement),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_TOWARDS_MID_Y));
+            MACRO_CALL(UI::DisplayElements_Func::RenderInGameChatDisplayElement),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_TOWARDS_MID_Y));
         return;
     }
 

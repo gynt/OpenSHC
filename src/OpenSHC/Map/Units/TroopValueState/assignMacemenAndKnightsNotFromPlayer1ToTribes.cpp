@@ -46,7 +46,7 @@ namespace Map {
             _unitID0 = 1;
             _macemenCount = 0;
             _knightCount = 0;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit2 = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((_pUnit2->logicalState != Map::Units::ULS_INVISIBLE)
@@ -68,7 +68,7 @@ namespace Map {
                 LAB_0051cd29:
                     _unitID0 = _unitID0 + 1;
                     _pUnit2 = _pUnit2 + 0x248;
-                } while ((int)_unitID0 < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while ((int)_unitID0 < DAT_UnitsState::instance.maxUnitCount);
                 if (0x28 < _macemenCount) {
                     _macemenLimit = 10;
                     goto LAB_0051cd5e;

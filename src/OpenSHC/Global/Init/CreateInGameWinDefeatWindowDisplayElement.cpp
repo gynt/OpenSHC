@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             InGameWinDefeatWindowDisplayElement::ptr)(DE::SHCDE::OST_MP_GAME_OVER, 400, 0xf0, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderInGameWinDefeatWindowDisplayElement),
+            MACRO_CALL(UI::DisplayElements_Func::RenderInGameWinDefeatWindowDisplayElement),
             UI::Enums::DEPM_MAIN_MENU_X_Y);
         return;
     }

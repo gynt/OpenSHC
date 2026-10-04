@@ -21,8 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DisableWeapon::ptr)(
             UI::Enums::MMT_DISABLE_WEAPON, -1, -1, 400, 0xf0, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::DisableWeapon_Func::MenuModalRenderFunction_DisableWeapon),
+            MACRO_CALL(UI::MenuModals::DisableWeapon_Func::MenuModalRenderFunction_DisableWeapon),
             Menu_DisableWeapon::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DisableWeapon));
         return;

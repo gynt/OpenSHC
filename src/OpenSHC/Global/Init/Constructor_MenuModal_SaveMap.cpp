@@ -20,11 +20,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B4E0
     void Init::Constructor_MenuModal_SaveMap()
     {
-        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SaveMap::ptr)(
-            UI::Enums::MMT_SAVE_MAP, -1, -1, 700, 0x18d, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::SaveMap_Func::MenuModalRenderFunction_SaveMap),
-            Menu_SaveMap::ptr);
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SaveMap::ptr)(UI::Enums::MMT_SAVE_MAP,
+            -1, -1, 700, 0x18d, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::SaveMap_Func::MenuModalRenderFunction_SaveMap), Menu_SaveMap::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SaveMap));
         return;
     }

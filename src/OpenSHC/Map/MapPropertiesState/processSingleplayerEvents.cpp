@@ -833,7 +833,7 @@ namespace Map {
                                             break;
                                         case 10:
                                             iVar18 = 0;
-                                            if ((int)DAT_UnitsState::instance.maxUnitCount < 2)
+                                            if (DAT_UnitsState::instance.maxUnitCount < 2)
                                                 goto LAB_004c3fcd;
                                             pUVar12 = &DAT_UnitsState::instance.units[1].unitType;
                                             iVar22 = DAT_UnitsState::instance.maxUnitCount - 1;
@@ -862,7 +862,7 @@ namespace Map {
                                             break;
                                         case 0xc:
                                             iVar18 = 0;
-                                            if ((int)DAT_UnitsState::instance.maxUnitCount < 2)
+                                            if (DAT_UnitsState::instance.maxUnitCount < 2)
                                                 goto LAB_004c3fcd;
                                             pUVar12 = &DAT_UnitsState::instance.units[1].unitType;
                                             iVar22 = DAT_UnitsState::instance.maxUnitCount - 1;

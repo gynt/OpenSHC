@@ -21,11 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_AlliesOrder()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_AlliesOrder::ptr)(
-            UI::Enums::MMT_ALLIES_ORDER, -1, -1, 0x300, 0xf0, 0x200,
-            (int)((int)(COL_BLACK::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::AlliesOrder_Func::MenuModalRenderFunction_AlliesOrder),
-            Menu_AlliesOrder::ptr);
+            UI::Enums::MMT_ALLIES_ORDER, -1, -1, 0x300, 0xf0, 0x200, (int)((int)(COL_BLACK::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::AlliesOrder_Func::MenuModalRenderFunction_AlliesOrder), Menu_AlliesOrder::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_AlliesOrder));
         return;
     }

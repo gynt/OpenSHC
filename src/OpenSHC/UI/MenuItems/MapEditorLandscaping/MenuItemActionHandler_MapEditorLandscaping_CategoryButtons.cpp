@@ -34,7 +34,7 @@ namespace UI {
                         DAT_MenuTextInputState::ptr)(UI::Enums::MMT_PAUSE_MENU);
                 }
             } else {
-                if ((param_1 == 0xed) && (0 < (int)DAT_GameCore::instance.U2_mapType_singleOrMulti)) {
+                if ((param_1 == 0xed) && (0 < DAT_GameCore::instance.U2_mapType_singleOrMulti)) {
                     param_1 = UI::Enums::UCID_TTS_MACEMEN;
                 }
                 if ((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)

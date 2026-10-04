@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_NewMapMapsize::ptr)(
             UI::Enums::MVT_NEW_MAP_MAPSIZE,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::NewMapMapsize_Func::MenuView_NewMapMapsize_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::NewMapMapsize_Func::MenuView_NewMapMapsize_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::NewMapMapsize_Func::MenuView_NewMapMapsize_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::NewMapMapsize_Func::MenuView_NewMapMapsize_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_NewMapMapsize));
         return;
     }

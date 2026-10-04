@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedCreateSiege::ptr)(
             UI::Enums::MVT_UNUSED_CREATE_SIEGE,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedCreateSiege_Func::MenuView_UnusedCreateSiege_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedCreateSiege_Func::MenuView_UnusedCreateSiege_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::UnusedCreateSiege_Func::MenuView_UnusedCreateSiege_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            MACRO_CALL(UI::MenuViews::UnusedCreateSiege_Func::MenuView_UnusedCreateSiege_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedCreateSiege));
         return;
     }

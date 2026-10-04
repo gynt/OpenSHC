@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             SomeMultiplayerInfoUnkDisplayElement28::ptr)(DE::SHCDE::OST_PING_ERROR, 400, 10, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderSomeMultiplayerInfoUnkDisplayElement28),
+            MACRO_CALL(UI::DisplayElements_Func::RenderSomeMultiplayerInfoUnkDisplayElement28),
             UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }

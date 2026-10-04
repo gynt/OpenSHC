@@ -18,12 +18,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C3E0
     void Init::CreateBottomLeftDateDisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            BottomLeftDateDisplayElement::ptr)(DE::SHCDE::OST_DATE, 4, 0x1a8, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderBottomLeftDateDisplayElement),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_TOWARDS_MID_Y));
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, BottomLeftDateDisplayElement::ptr)(
+            DE::SHCDE::OST_DATE, 4, 0x1a8, 0, MACRO_CALL(UI::DisplayElements_Func::RenderBottomLeftDateDisplayElement),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_TOWARDS_MID_Y));
         return;
     }
 

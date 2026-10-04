@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_AlliesSendGoods()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_AlliesSendGoods::ptr)(
-            UI::Enums::MMT_ALLIES_SEND_GOODS, -1, -1, 600, 0x198, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::AlliesSendGoods_Func::MenuModalRenderFunction_AlliesSendGoods),
+            UI::Enums::MMT_ALLIES_SEND_GOODS, -1, -1, 600, 0x198, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::AlliesSendGoods_Func::MenuModalRenderFunction_AlliesSendGoods),
             Menu_AlliesSendGoods::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_AlliesSendGoods));
         return;

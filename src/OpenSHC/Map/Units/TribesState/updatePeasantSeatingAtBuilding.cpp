@@ -46,7 +46,7 @@ namespace Map {
             }
         LAB_00522291:
             iVar4 = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar3 = &DAT_UnitsState::instance.units[1].dying;
                 do {
                     if ((((psVar3[-0x10a] == Map::Units::ULS_NORMAL) && (*psVar3 == 0))
@@ -72,7 +72,7 @@ namespace Map {
                     }
                     iVar4 = iVar4 + 1;
                     psVar3 = psVar3 + 0x248;
-                } while (iVar4 < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while (iVar4 < DAT_UnitsState::instance.maxUnitCount);
             }
         }
 

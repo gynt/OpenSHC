@@ -24,7 +24,7 @@ namespace UI {
         int iVar2;
         int iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
         MACRO_CALL(OS_Func::_memset)(DAT_UnitTypeRelatedCounter::instance, 0, (size_t)((int)(320)));
-        if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+        if (1 < DAT_UnitsState::instance.maxUnitCount) {
             iVar2 = DAT_UnitsState::instance.maxUnitCount - 1;
             _unit = &DAT_UnitsState::instance.units[1];
             do {

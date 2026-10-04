@@ -18,14 +18,10 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A190
     void Init::Constructor_MenuView_IntroLogos()
     {
-        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_IntroLogos::ptr)(
-            UI::Enums::MVT_INTRO_LOGOS,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_DoEveryFrame));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_IntroLogos::ptr)(UI::Enums::MVT_INTRO_LOGOS,
+            MACRO_CALL(UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_Prepare),
+            MACRO_CALL(UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_DoInitial),
+            MACRO_CALL(UI::MenuViews::IntroLogos_Func::MenuView_IntroLogos_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_IntroLogos));
         return;
     }

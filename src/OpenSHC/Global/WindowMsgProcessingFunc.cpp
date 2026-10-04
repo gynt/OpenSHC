@@ -1855,12 +1855,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     _addKeyIngameMenu == FALSE))
             || (((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
                      || ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
-                         && (DAT_GameSynchronyState::instance.currentGameMode
-                             != Game::GM_SKIRMISH_SINGLE_PLAYER))))
-                || (90 < (int)DAT_GameCore::instance.gameSpeedLevel))))
+                         && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))))
+                || (90 < DAT_GameCore::instance.gameSpeedLevel))))
             break;
         DAT_GameCore::instance.gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel + 5;
-        if (0x5a < (int)DAT_GameCore::instance.gameSpeedLevel) {
+        if (0x5a < DAT_GameCore::instance.gameSpeedLevel) {
             DAT_GameCore::instance.gameSpeedLevel = 0x5a;
         }
         goto LAB_004b4768;
@@ -1874,12 +1873,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     _subtractKeyIngameMenu == FALSE))
             || ((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
                 || (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
-                         && (DAT_GameSynchronyState::instance.currentGameMode
-                             != Game::GM_SKIRMISH_SINGLE_PLAYER))
-                    || ((int)DAT_GameCore::instance.gameSpeedLevel < 0xb))))))
+                         && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
+                    || (DAT_GameCore::instance.gameSpeedLevel < 0xb))))))
             break;
         DAT_GameCore::instance.gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel - 5;
-        if ((int)DAT_GameCore::instance.gameSpeedLevel < 0x14) {
+        if (DAT_GameCore::instance.gameSpeedLevel < 0x14) {
             DAT_GameCore::instance.gameSpeedLevel = 0x14;
         }
     LAB_004b4768:

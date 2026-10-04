@@ -21,12 +21,10 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedEconomicGametypeSelect::ptr)(
             UI::Enums::MVT_UNUSED_ECONOMIC_GAMETYPE_SELECT,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    UnusedEconomicGametypeSelect_Func::MenuView_UnusedEconomicGametypeSelect_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
-                    UnusedEconomicGametypeSelect_Func::MenuView_UnusedEconomicGametypeSelect_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
+            MACRO_CALL(UI::MenuViews::UnusedEconomicGametypeSelect_Func::MenuView_UnusedEconomicGametypeSelect_Prepare),
+            MACRO_CALL(
+                UI::MenuViews::UnusedEconomicGametypeSelect_Func::MenuView_UnusedEconomicGametypeSelect_DoInitial),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicGametypeSelect));
         return;

@@ -21,7 +21,7 @@ namespace Map {
             short* psVar2;
             uint entityID;
             entityID = this->every10Ticks;
-            if ((int)this->every10Ticks < 3000) {
+            if (this->every10Ticks < 3000) {
                 psVar2 = &this->entityArray[this->every10Ticks].logicalState;
                 do {
                     if (*psVar2 == 0)

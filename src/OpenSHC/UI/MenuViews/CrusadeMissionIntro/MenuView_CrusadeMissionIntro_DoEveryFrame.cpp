@@ -116,7 +116,7 @@ namespace UI {
                         pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
                 }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                if (0x1d < (int)DAT_GameCore::instance.warchestTrailProgress) {
+                if (0x1d < DAT_GameCore::instance.warchestTrailProgress) {
                     _offset = 0;
                     BVar14 = FALSE;
                     iVar13 = 0x10;
@@ -133,7 +133,7 @@ namespace UI {
                         pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
                 }
             } else if ((DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION)
-                && (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress)) {
+                && (0x31 < DAT_GameCore::instance.skirmishTrailProgress)) {
                 _offset = 0;
                 BVar14 = FALSE;
                 iVar13 = 0x10;

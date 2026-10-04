@@ -20,12 +20,10 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_MissionFinishedTransition::ptr)(
             UI::Enums::MVT_MISSION_FINISHED_TRANSITION,
+            MACRO_CALL(UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::MissionFinishedTransition_Func::
-                    MenuView_MissionFinishedTransition_DoEveryFrame));
+                UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Global::Init_Func::Destructor_MenuView_MissionFinishedTransition));
         return;

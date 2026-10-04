@@ -21,9 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SendMapTo::ptr)(
             UI::Enums::MMT_SEND_MAP_TO, -1, 0x32, 0x1f8, 0x15c, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::SendMapTo_Func::MenuModalRenderFunction_SendMapTo),
-            Menu_SendMapTo::ptr);
+            MACRO_CALL(UI::MenuModals::SendMapTo_Func::MenuModalRenderFunction_SendMapTo), Menu_SendMapTo::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SendMapTo));
         return;
     }

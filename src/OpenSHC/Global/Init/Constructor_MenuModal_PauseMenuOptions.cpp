@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_PauseMenuOptions()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_PauseMenuOptions::ptr)(
-            UI::Enums::MMT_PAUSE_MENU_OPTIONS, -1, -1, 500, 0x165, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::OptionsMenu_Func::MenuModalRenderFunction_OptionsMenu),
+            UI::Enums::MMT_PAUSE_MENU_OPTIONS, -1, -1, 500, 0x165, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::OptionsMenu_Func::MenuModalRenderFunction_OptionsMenu),
             Menu_PauseMenuOptions::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_PauseMenuOptions));
         return;

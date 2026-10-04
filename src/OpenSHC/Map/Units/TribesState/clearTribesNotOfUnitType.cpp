@@ -24,7 +24,7 @@ namespace Map {
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 1250, '\0', (void*)((int)(_clearedTribes)));
             unitID = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar1 = &DAT_UnitsState::instance.units[1];
                 do {
                     if (((psVar1->owner == playerID) && (psVar1->ifSelectedThenPlayerID != 0))
@@ -38,7 +38,7 @@ namespace Map {
                     }
                     unitID = unitID + 1;
                     psVar1 = psVar1 + 0x248;
-                } while ((int)unitID < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while ((int)unitID < DAT_UnitsState::instance.maxUnitCount);
             }
             _tribeID2 = 1;
             psVar2 = &this->tribes[1];

@@ -18,11 +18,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C600
     void Init::CreateGamePausedTextDisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            GamePausedTextDisplayElement::ptr)(DE::SHCDE::OST_GAME_PAUSED, 400, 0xe6, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderGamePausedTextDisplayElement),
-            UI::Enums::DEPM_MAIN_MENU_X_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, GamePausedTextDisplayElement::ptr)(
+            DE::SHCDE::OST_GAME_PAUSED, 400, 0xe6, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderGamePausedTextDisplayElement), UI::Enums::DEPM_MAIN_MENU_X_Y);
         return;
     }
 

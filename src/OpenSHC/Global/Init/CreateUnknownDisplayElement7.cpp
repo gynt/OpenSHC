@@ -19,12 +19,9 @@ namespace Global {
     void Init::CreateUnknownDisplayElement7()
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, UnknownDisplayElement7::ptr)(
-            (DE::SHCDE::eOnScreenText)(DE::SHCDE::OST_FRAMERATE | DE::SHCDE::OST_DATE), 700,
-            9, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderUnknownDisplayElement7),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_TOWARDS_MID_X
-                | UI::Enums::DEPM_RESOLUTION_Y));
+            (DE::SHCDE::eOnScreenText)(DE::SHCDE::OST_FRAMERATE | DE::SHCDE::OST_DATE), 700, 9, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderUnknownDisplayElement7),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_TOWARDS_MID_X | UI::Enums::DEPM_RESOLUTION_Y));
         return;
     }
 

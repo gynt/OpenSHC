@@ -21,11 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_Roundtable()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Roundtable::ptr)(
-            UI::Enums::MMT_ROUNDTABLE, 4, 4, 0x318, 0x1b0, 0x1200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::Roundtable_Func::MenuModalRenderFunction_Roundtable),
-            Menu_Roundtable::ptr);
+            UI::Enums::MMT_ROUNDTABLE, 4, 4, 0x318, 0x1b0, 0x1200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::Roundtable_Func::MenuModalRenderFunction_Roundtable), Menu_Roundtable::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_Roundtable));
         return;
     }

@@ -21,12 +21,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedHelpTextEditor::ptr)(
             UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedHelpTextEditor_Func::MenuView_UnusedHelpTextEditor_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_OnlySetMenuXY),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedHelpTextEditor_Func::MenuView_UnusedHelpTextEditor_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::UnusedHelpTextEditor_Func::MenuView_UnusedHelpTextEditor_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_OnlySetMenuXY),
+            MACRO_CALL(UI::MenuViews::UnusedHelpTextEditor_Func::MenuView_UnusedHelpTextEditor_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedHelpTextEditor));
         return;
     }

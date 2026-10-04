@@ -52,7 +52,7 @@ namespace Map {
                 && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                 local_c = 2;
             }
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar3 = &DAT_UnitsState::instance.units[1];
                 iVar3 = DAT_UnitsState::instance.maxUnitCount - 1;
                 do {
@@ -122,7 +122,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
                             unitID, _tribe);
                         unitID = unitID + 1;
-                        if ((int)DAT_UnitsState::instance.maxUnitCount <= (int)unitID) {}
+                        if (DAT_UnitsState::instance.maxUnitCount <= (int)unitID) {}
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeTunnelEntrances, this)(
                             _tribe);
                         attackWave = attackWave + 1;

@@ -18,11 +18,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C6A0
     void Init::CreateTimeUntilDefeatDisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            TimeUntilDefeatDisplayElement::ptr)(DE::SHCDE::OST_TIMETODEFEAT, 0, 8, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderTimeUntilDefeatDisplayElement),
-            UI::Enums::DEPM_RESOLUTION_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, TimeUntilDefeatDisplayElement::ptr)(
+            DE::SHCDE::OST_TIMETODEFEAT, 0, 8, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderTimeUntilDefeatDisplayElement), UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }
 

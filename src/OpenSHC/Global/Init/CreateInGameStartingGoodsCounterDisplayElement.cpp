@@ -20,10 +20,8 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             InGameStartingGoodsCounterDisplayElement::ptr)(DE::SHCDE::OST_STARTING_GOODS, 4, 4, 1,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderStartingGoodDisplayElement),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_RESOLUTION_Y));
+            MACRO_CALL(UI::DisplayElements_Func::RenderStartingGoodDisplayElement),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_RESOLUTION_Y));
         return;
     }
 

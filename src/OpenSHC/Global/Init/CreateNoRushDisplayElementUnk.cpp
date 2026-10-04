@@ -19,9 +19,7 @@ namespace Global {
     void Init::CreateNoRushDisplayElementUnk()
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, NoRushDisplayElementUnk::ptr)(
-            DE::SHCDE::OST_MESSAGE_BAR, 0, 8, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderNoRushDisplayElementUnk),
+            DE::SHCDE::OST_MESSAGE_BAR, 0, 8, 0, MACRO_CALL(UI::DisplayElements_Func::RenderNoRushDisplayElementUnk),
             UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }

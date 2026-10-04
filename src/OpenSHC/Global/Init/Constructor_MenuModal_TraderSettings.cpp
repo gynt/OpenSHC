@@ -21,8 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_TraderSettings::ptr)(
             UI::Enums::MMT_TRADER_SETTINGS, -1, -1, 600, 0x186, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::TraderSettings_Func::MenuModalRenderFunction_TraderSettings),
+            MACRO_CALL(UI::MenuModals::TraderSettings_Func::MenuModalRenderFunction_TraderSettings),
             Menu_TraderSettings::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TraderSettings));
         return;

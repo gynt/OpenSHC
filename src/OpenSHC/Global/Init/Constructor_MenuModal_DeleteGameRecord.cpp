@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_DeleteGameRecord()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DeleteGameRecord::ptr)(
-            UI::Enums::MMT_DELETE_GAME_RECORD, -1, -1, 500, 0x96, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::DeleteGameRecord_Func::MenuModalRenderFunctionMenuModal_DeleteGameRecord),
+            UI::Enums::MMT_DELETE_GAME_RECORD, -1, -1, 500, 0x96, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::DeleteGameRecord_Func::MenuModalRenderFunctionMenuModal_DeleteGameRecord),
             Menu_DeleteGameRecord::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DeleteGameRecord));
         return;

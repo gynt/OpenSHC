@@ -45,7 +45,7 @@ namespace UI {
                                         .imh[_currentIconIndex + GMTotalPicturesProcessed::instance[_gmID]
                                             + _pictureInGm + -1]
                                         .width;
-                            if ((int)this->dim1_intMinimal350_1 < (int)dVar1) {
+                            if (this->dim1_intMinimal350_1 < (int)dVar1) {
                                 this->dim1_intMinimal350_1 = dVar1;
                             }
                             dVar1 = (dword)DAT_GMImageHeaders::instance
@@ -61,7 +61,7 @@ namespace UI {
                 }
                 _byteNumber = _byteNumber + 28;
             } while (_byteNumber < 18200);
-            if ((int)this->dim1_intMinimal350_1 < 350) {
+            if (this->dim1_intMinimal350_1 < 350) {
                 this->dim1_intMinimal350_1 = 350;
             }
             if ((int)_maxImageHeight < 350) {

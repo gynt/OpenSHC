@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             SomeMultiplayerInfoUnkDisplayElement19::ptr)(DE::SHCDE::OST_SPLIT_MESSAGE, 400, 10, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderSomeMultiplayerInfoUnkDisplayElement19),
+            MACRO_CALL(UI::DisplayElements_Func::RenderSomeMultiplayerInfoUnkDisplayElement19),
             UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }

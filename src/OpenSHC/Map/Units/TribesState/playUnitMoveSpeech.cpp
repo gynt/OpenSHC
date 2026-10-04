@@ -25,7 +25,7 @@ namespace Map {
               bug: the second argument ("stack") does not want to be renamed, but is   sfxToPlay again.
              */
             _unitTypeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(
-                (Ghidra::undefined4)(param_1), (int*)(&param_1));
+                (param_1), (int*)(&param_1));
             switch (_unitTypeID) {
             case Map::Units::UT_E_ARCHER:
             case Map::Units::UT_E_XBOW:

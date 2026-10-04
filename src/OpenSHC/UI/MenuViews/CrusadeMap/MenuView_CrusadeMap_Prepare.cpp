@@ -35,10 +35,10 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
-            if (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress) {
+            if (0x31 < DAT_GameCore::instance.skirmishTrailProgress) {
                 DAT_GameCore::instance.skirmishTrailProgress = 0x31;
             }
-            if (0x1d < (int)DAT_GameCore::instance.warchestTrailProgress) {
+            if (0x1d < DAT_GameCore::instance.warchestTrailProgress) {
                 DAT_GameCore::instance.warchestTrailProgress = 0x1d;
             }
             if (0x13 < DAT_GameCore::instance.extremeTrailProgress) {

@@ -26,7 +26,7 @@ namespace Map {
             _totalHealth = 0;
             _minimumSpeed = 100;
             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(unitID, tribeID);
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 tribeID = DAT_UnitsState::instance.maxUnitCount - 1;
                 _ptrUnit = &DAT_UnitsState::instance.units[1];
                 do {

@@ -128,7 +128,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
                         if (DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo == 0xed) {
-                            if ((int)DAT_GameCore::instance.U2_mapType_singleOrMulti < 1)
+                            if (DAT_GameCore::instance.U2_mapType_singleOrMulti < 1)
                                 goto LAB_00443214;
                             DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xef;
                         } else if (DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo != 0xef)

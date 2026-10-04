@@ -20,11 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedOldTitleMenu::ptr)(
             UI::Enums::MVT_UNUSED_OLD_TITLE_MENU,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing));
+            MACRO_CALL(UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_Prepare),
+            MACRO_CALL(UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_DoInitial),
+            MACRO_CALL(Global_Func::DoNothing));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedOldTitleMenu));
         return;
     }

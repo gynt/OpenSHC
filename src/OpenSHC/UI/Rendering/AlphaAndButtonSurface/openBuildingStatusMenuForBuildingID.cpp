@@ -195,19 +195,17 @@ namespace UI {
                     break;
                 case Map::Buildings::BT_DRAWBRIDGE:
                     iVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
-                        DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[buildingID].owner,
-                        (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].x)),
-                        (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                        (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)),
+                        DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[buildingID].owner,
+                        ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].x)),
+                        ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
+                        ((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)),
                         Map::Buildings::BT_GATEHOUSELARGE, 0);
                     if (((iVar3 != 0)
-                            || (iVar3 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::findParticularBuilding,
-                                    DAT_BuildingsState::ptr)(
-                                    (int)DAT_BuildingsState::instance.buildings[buildingID].owner,
-                                    (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].x)),
-                                    (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                                    (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)),
+                            || (iVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                                    DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[buildingID].owner,
+                                    ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].x)),
+                                    ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
+                                    ((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)),
                                     Map::Buildings::BT_GATEHOUSESMALL, 0),
                                 iVar3 != 0))
                         && (DAT_BuildingsState::instance.buildings[iVar3].field241_0x2c6 != 0)) {

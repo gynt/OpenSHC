@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_BuildingAndStatusMenu::ptr)(
             UI::Enums::MVT_BUILDING_AND_STATUS_MENU,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_Prepare),
+            MACRO_CALL(UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoInitial),
+            MACRO_CALL(UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(
             MACRO_CALL(Meta_Func::Destructor_MenuView_BuildingAndStatusMenu));
         return;

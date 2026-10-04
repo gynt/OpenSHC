@@ -37,7 +37,7 @@ namespace Map {
             _countAggressive = _index;
             _countDefensive = 0;
             _countStandground = 0;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _unitIDCountdown = DAT_UnitsState::instance.maxUnitCount - 1;
                 _tribeID_1 = -1;

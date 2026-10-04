@@ -21,10 +21,8 @@ namespace Global {
     void Init::Constructor_MenuModal_ProgressBarBox()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_ProgressBarBox::ptr)(
-            UI::Enums::MMT_PROGRESS_BAR_BOX, -1, 0x32, 400, 100, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::ProgressBarBox_Func::MenuModalRenderFunction_ProgressBarBox),
+            UI::Enums::MMT_PROGRESS_BAR_BOX, -1, 0x32, 400, 100, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            MACRO_CALL(UI::MenuModals::ProgressBarBox_Func::MenuModalRenderFunction_ProgressBarBox),
             Menu_ProgressBarBox::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_ProgressBarBox));
         return;

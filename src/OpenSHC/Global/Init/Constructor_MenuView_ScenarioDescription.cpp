@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_ScenarioDescription::ptr)(
             UI::Enums::MVT_SCENARIO_DESCRIPTION,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_Prepare),
+            MACRO_CALL(UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoInitial),
+            MACRO_CALL(UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_ScenarioDescription));
         return;
     }

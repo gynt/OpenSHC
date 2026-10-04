@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             KeepAndGranaryPlacementInfoDisplayElement::ptr)(DE::SHCDE::OST_KEEP_MESSAGE, 0x2d5, 0x1bf, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderAndPlayKeepAndGranaryPlacementInfoDisplayElement),
+            MACRO_CALL(UI::DisplayElements_Func::RenderAndPlayKeepAndGranaryPlacementInfoDisplayElement),
             UI::Enums::DEPM_TOWARDS_MID_Y);
         return;
     }

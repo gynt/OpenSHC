@@ -20,12 +20,9 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_CampaignUnk::ptr)(
             UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoInitial),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoEveryFrame));
+            MACRO_CALL(UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_Prepare),
+            MACRO_CALL(UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoInitial),
+            MACRO_CALL(UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_CampaignUnk));
         return;
     }

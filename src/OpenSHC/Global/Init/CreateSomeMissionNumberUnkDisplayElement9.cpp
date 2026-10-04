@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
             SomeMissionNumberUnkDisplayElement9::ptr)(((eOnScreenText)9), 0x122, 0xe1, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderSomeMissionNumberUnkDisplayElement9),
+            MACRO_CALL(UI::DisplayElements_Func::RenderSomeMissionNumberUnkDisplayElement9),
             UI::Enums::DEPM_MAIN_MENU_X_Y);
         return;
     }

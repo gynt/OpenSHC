@@ -18,12 +18,10 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C480
     void Init::CreateResourceMissing1DisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            ResourceMissing1DisplayElement::ptr)(DE::SHCDE::OST_FEEDBACK_1, 10, 0x193, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderResourceMissing1DisplayElement),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_TOWARDS_MID_Y));
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, ResourceMissing1DisplayElement::ptr)(
+            DE::SHCDE::OST_FEEDBACK_1, 10, 0x193, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderResourceMissing1DisplayElement),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_TOWARDS_MID_Y));
         return;
     }
 

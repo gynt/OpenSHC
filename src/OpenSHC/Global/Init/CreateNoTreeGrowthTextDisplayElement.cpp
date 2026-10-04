@@ -18,11 +18,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C520
     void Init::CreateNoTreeGrowthTextDisplayElement()
     {
-        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            NoTreeGrowthTextDisplayElement::ptr)((DE::SHCDE::eOnScreenText)0xe, 200, 0x22, 0,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(
-                UI::DisplayElements_Func::RenderNoTreeGrowthTextDisplayElement),
-            UI::Enums::DEPM_RESOLUTION_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, NoTreeGrowthTextDisplayElement::ptr)(
+            (DE::SHCDE::eOnScreenText)0xe, 200, 0x22, 0,
+            MACRO_CALL(UI::DisplayElements_Func::RenderNoTreeGrowthTextDisplayElement), UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }
 

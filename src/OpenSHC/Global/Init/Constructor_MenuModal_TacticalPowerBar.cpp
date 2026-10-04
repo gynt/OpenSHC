@@ -23,8 +23,7 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModa_TacticalPowerBar::ptr)(
             UI::Enums::MMT_TACTICAL_POWER_BAR, 0x2e9, 0x32, 0x37, 0x140, 0x1000,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::TacticalPowerBar_Func::MenuModalRenderFunction_TacticalPowerBar),
+            MACRO_CALL(UI::MenuModals::TacticalPowerBar_Func::MenuModalRenderFunction_TacticalPowerBar),
             Menu_TacticalPowerBar::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TacticalPowerBar));
         return;

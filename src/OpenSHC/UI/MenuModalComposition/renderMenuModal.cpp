@@ -60,7 +60,7 @@ namespace UI {
             if (this->mbr_0x6c != 0) {
                 _currentTime = timeGetTime();
                 this->disappearAfter = this->disappearAfter - (_currentTime - this->timeItIsSet) / 75;
-                if ((int)this->disappearAfter < 1) {
+                if (this->disappearAfter < 1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, this)(
                         OpenSHC::UI::Enums::MMT_NONE, FALSE);
                     this->disappearAfter = 0;
@@ -120,7 +120,7 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            if (((((this->modalMenu).borderStyle & 0x400U) != 0) && ((int)this->disappearAfter < 32))
+            if (((((this->modalMenu).borderStyle & 0x400U) != 0) && (this->disappearAfter < 32))
                 && (this->mbr_0x6c == 0)) {
                 _currentTime = timeGetTime();
                 /*

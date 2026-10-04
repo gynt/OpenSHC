@@ -25,7 +25,7 @@ namespace Map {
             local_8 = 0;
             _minimumSpeed = 100;
             _maximumSpeed = 0;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _unitID = 1;
                 do {
@@ -44,7 +44,7 @@ namespace Map {
                     }
                     _unitID = _unitID + 1;
                     _pUnit = _pUnit + 0x248;
-                } while ((int)_unitID < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while ((int)_unitID < DAT_UnitsState::instance.maxUnitCount);
             }
             sVar1 = this->tribes[tribeID].size;
             this->tribes[tribeID].size2Unk = sVar1;

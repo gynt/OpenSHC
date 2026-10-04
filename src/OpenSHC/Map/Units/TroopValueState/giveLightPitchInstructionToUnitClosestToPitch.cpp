@@ -46,7 +46,7 @@ namespace Map {
             _minUnitID = 0;
             _minDistance = 100000000;
             _unitID = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
@@ -80,7 +80,7 @@ namespace Map {
                     }
                     _unitID = _unitID + 1;
                     _pUnit = _pUnit + 0x248;
-                } while (_unitID < (int)DAT_UnitsState::instance.maxUnitCount);
+                } while (_unitID < DAT_UnitsState::instance.maxUnitCount);
                 if (_minUnitID != 0) {
                     DAT_UnitsState::instance.units[_minUnitID].shootTargetMicroX
                         = DAT_TileMapState::instance.pitchDitches[_ditchID].x * 8 + 4;

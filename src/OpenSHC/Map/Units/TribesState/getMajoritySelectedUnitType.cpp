@@ -29,7 +29,7 @@ namespace Map {
             int aiStackY_20140[32764];
             int _countOfUnitTypes[80];
             MACRO_CALL(OS_Func::_memset)(_countOfUnitTypes, 0, (size_t)((int)(320)));
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _countInclusive = DAT_UnitsState::instance.maxUnitCount - 1;
                 do {

@@ -20,13 +20,9 @@ namespace Global {
     void Init::Constructor_MenuView_RankingGames()
     {
         MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_RankingGames::ptr)(
-            UI::Enums::MVT_RANKING_GAMES,
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::RankingGames_Func::MenuView_RankingGames_Prepare),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::General_Func::MenuView_General_DoInitial_CrusadeAndRankMenu),
-            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                UI::MenuViews::RankingGames_Func::MenuView_RankingGames_DoEveryFrame));
+            UI::Enums::MVT_RANKING_GAMES, MACRO_CALL(UI::MenuViews::RankingGames_Func::MenuView_RankingGames_Prepare),
+            MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_CrusadeAndRankMenu),
+            MACRO_CALL(UI::MenuViews::RankingGames_Func::MenuView_RankingGames_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_RankingGames));
         return;
     }

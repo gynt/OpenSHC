@@ -21,8 +21,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_NewEventCondition::ptr)(
             UI::Enums::MMT_NEW_EVENT_CONDITION, -1, -1, 700, 0x21c, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(
-                UI::MenuModals::NewEventCondition_Func::MenuModalRenderFunction_NewEventCondition),
+            MACRO_CALL(UI::MenuModals::NewEventCondition_Func::MenuModalRenderFunction_NewEventCondition),
             Menu_NewEventCondition::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_NewEventCondition));
         return;

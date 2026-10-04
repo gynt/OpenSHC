@@ -27,7 +27,7 @@ namespace Map {
                 16000, '\0', (void*)((int)(this->attackInfo.targetedBuildingTilesArray)));
             uVar1 = DAT_UnitsState::instance.maxUnitCount;
             iVar3 = 1;
-            if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
+            if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar2 = &DAT_UnitsState::instance.units[1];
                 iVar2 = this->attackInfo.targetedBuildingTilesArraySize;
                 do {

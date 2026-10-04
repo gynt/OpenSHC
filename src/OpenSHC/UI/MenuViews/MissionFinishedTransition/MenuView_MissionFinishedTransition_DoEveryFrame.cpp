@@ -230,7 +230,7 @@ namespace UI {
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
-                    if ((int)DAT_GameCore::instance.skirmishTrailProgress
+                    if (DAT_GameCore::instance.skirmishTrailProgress
                         < DAT_GameCore::instance.furthestSkirmishTrailMission) {
                         if (sVar1 == 0)
                             goto LAB_004dc88c;
@@ -238,7 +238,7 @@ namespace UI {
                         DAT_GameCore::instance.furthestSkirmishTrailMission
                             = DAT_GameCore::instance.skirmishTrailProgress + 1;
                     }
-                    if ((int)DAT_GameCore::instance.skirmishTrailProgress < 0x31) {
+                    if (DAT_GameCore::instance.skirmishTrailProgress < 0x31) {
                         DAT_GameCore::instance.skirmishTrailProgress = DAT_GameCore::instance.skirmishTrailProgress + 1;
                     }
                     if (((sVar1 == 0) || (DAT_GameCore::instance.skirmishTrailProgress != 0x31)) || (dVar4 != 0x31))
@@ -295,7 +295,7 @@ namespace UI {
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
                     return;
                 }
-                if ((int)DAT_GameCore::instance.warchestTrailProgress
+                if (DAT_GameCore::instance.warchestTrailProgress
                     < DAT_GameCore::instance.furthestWarchestTrailMission) {
                     if (sVar1 == 0)
                         goto LAB_004dc826;
@@ -303,7 +303,7 @@ namespace UI {
                     DAT_GameCore::instance.furthestWarchestTrailMission
                         = DAT_GameCore::instance.warchestTrailProgress + 1;
                 }
-                if ((int)DAT_GameCore::instance.warchestTrailProgress < 0x1d) {
+                if (DAT_GameCore::instance.warchestTrailProgress < 0x1d) {
                     DAT_GameCore::instance.warchestTrailProgress = DAT_GameCore::instance.warchestTrailProgress + 1;
                 }
                 if (((sVar1 == 0) || (DAT_GameCore::instance.warchestTrailProgress != 0x1d)) || (dVar4 != 0x1d))

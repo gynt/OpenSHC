@@ -41,7 +41,7 @@ namespace UI {
             _scrollDistance = MACRO_CALL_MEMBER(
                 UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
             if (_scrollDistance == 0) {}
-            if ((DAT_CurrentFramerate::instance < (int)DAT_GameCore::instance.gameSpeedLevel)
+            if ((DAT_CurrentFramerate::instance < DAT_GameCore::instance.gameSpeedLevel)
                 && (DAT_CurrentFramerate::instance != 0)) {
                 _scrollDistance = (int)(DAT_GameCore::instance.gameSpeedLevel * _scrollDistance)
                     / ((int)(DAT_GameCore::instance.gameSpeedLevel - DAT_CurrentFramerate::instance) / 2

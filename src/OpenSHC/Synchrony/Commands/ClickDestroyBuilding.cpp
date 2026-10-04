@@ -77,15 +77,15 @@ namespace Synchrony {
                 == DAT_GameSynchronyState::instance.DAT_GameCommandParam2) {
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding, DAT_BuildingsState::ptr)(
-                    (int)DAT_BuildingsState::instance.buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
+                    DAT_BuildingsState::instance.buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                         .owner,
-                    (int)((int)((short)DAT_BuildingsState::instance
+                    ((int)((short)DAT_BuildingsState::instance
                             .buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                             .x)),
-                    (int)((int)((short)DAT_BuildingsState::instance
+                    ((int)((short)DAT_BuildingsState::instance
                             .buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                             .y)),
-                    (int)((int)(DAT_BuildingsState::instance
+                    ((int)(DAT_BuildingsState::instance
                             .buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                             .widthOrHeight)),
                     OpenSHC::Map::Buildings::BT_DRAWBRIDGE, 0);
@@ -99,10 +99,10 @@ namespace Synchrony {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(iVar1);
                     iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
-                        DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingID].owner,
-                        (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
-                        (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
-                        (int)((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
+                        DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[_buildingID].owner,
+                        ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].x)),
+                        ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
+                        ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                         OpenSHC::Map::Buildings::BT_DRAWBRIDGE, iVar1);
                     if (iVar1 != 0) {
                         DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
