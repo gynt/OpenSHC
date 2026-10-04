@@ -75,7 +75,7 @@ namespace Synchrony {
                     (void*)((_somePlayerInformation + 0x1b) * 0x2100
                         + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                     0x2100);
-                DAT_TextureRenderCoreObject::instance.field69_0x98[_receivedPlayerSlotID + 0x13] = 8448;
+                DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[_receivedPlayerSlotID + 0x13] = 8448;
             }
         }
         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,

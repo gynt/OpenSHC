@@ -31,7 +31,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x21c, x, y);
             }
-            if (0 < DAT_TextureRenderCoreObject::instance.field69_0x98[imageID + 0x13]) {
+            if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[imageID + 0x13]) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, x, y);
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawBitmapFace,

@@ -53,7 +53,7 @@ namespace Synchrony {
                     + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                 0x2100);
             DAT_TextureRenderCoreObject::instance
-                .field69_0x98[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
+                .bitmapFaceSizes[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
         }
     }
 

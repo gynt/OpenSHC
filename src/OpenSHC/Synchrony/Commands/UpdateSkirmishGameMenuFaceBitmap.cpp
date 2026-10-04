@@ -71,7 +71,7 @@ namespace Synchrony {
                     *(undefined1*)((int)pvVar1 + iVar3 * 2 + local_88 * 0x80) = local_84[iVar3];
                     *(undefined1*)((int)pvVar1 + iVar3 * 2 + local_88 * 0x80 + 1) = auStack_44[iVar3];
                 }
-                DAT_TextureRenderCoreObject::instance.field69_0x98[local_8c + 0x13] = 0x2100;
+                DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[local_8c + 0x13] = 0x2100;
             }
         };
     }

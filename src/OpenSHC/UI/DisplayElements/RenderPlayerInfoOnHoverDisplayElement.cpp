@@ -147,7 +147,7 @@ namespace UI {
                     iVar4 = 0x21b;
                 } else {
                     if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] != 1) {
-                        if (0 < DAT_TextureRenderCoreObject::instance.field69_0x98[DAT_00df5530::instance + 0x13]) {
+                        if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
                             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                 DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_2, 0x21d,
                                 iVar3, iVar5, (int)((int)(blendStrength)));
@@ -188,7 +188,7 @@ namespace UI {
                 iVar4 = 0x21b;
             } else {
                 if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] != 1) {
-                    if (0 < DAT_TextureRenderCoreObject::instance.field69_0x98[DAT_00df5530::instance + 0x13]) {
+                    if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
                         MACRO_CALL_MEMBER(
                             UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                             DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, iVar3, iVar5);

@@ -101,7 +101,7 @@ namespace UI {
                         iVar2 = 0x21c;
                         goto LAB_004ad609;
                     }
-                    if (0 < DAT_TextureRenderCoreObject::instance.field69_0x98[iVar1 + 0x13]) {
+                    if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[iVar1 + 0x13]) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d,
                             (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));

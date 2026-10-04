@@ -62,7 +62,7 @@ namespace Synchrony {
                         + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                     0x2100);
                 DAT_TextureRenderCoreObject::instance
-                    .field69_0x98[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
+                    .bitmapFaceSizes[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
             }
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&_commandSenderIsHost, 1,
@@ -103,7 +103,7 @@ namespace Synchrony {
                             + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                         0x2100);
                     DAT_TextureRenderCoreObject::instance
-                        .field69_0x98[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
+                        .bitmapFaceSizes[DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13] = 0x2100;
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_ASSIGN_PLAYERID_TO_PLAYER_SLOT);

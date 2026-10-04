@@ -64,8 +64,8 @@ namespace UI {
                 + DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[DAT_RenderedUnitOwner::instance] * 0x200
                 + 0x1fea604);
             if (0 < height) {
-                if (DAT_TextureRenderCoreObject::instance.mbr_0x70 != 0) {
-                    _colorPaletteRef = (ushort*)DAT_TextureRenderCoreObject::instance.mbr_0x70;
+                if (DAT_TextureRenderCoreObject::instance.colorPaletteOverride != 0) {
+                    _colorPaletteRef = (ushort*)DAT_TextureRenderCoreObject::instance.colorPaletteOverride;
                 }
                 if (blendStrengthUnk < 0x20) {
                     if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
