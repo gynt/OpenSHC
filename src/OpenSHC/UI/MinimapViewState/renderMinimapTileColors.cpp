@@ -185,7 +185,7 @@ namespace UI {
                             (*(short*)&param_4) = (ushort)_tileColor;
                             if (DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) {
                                 iVar5 = DAT_MiniMapDefinedData::instance
-                                            .field0_0x0[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                            .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
                                 if (_colorMode == 0) {
                                     iVar8 = (int)((_tileColor & 0x7c00) * iVar5) / 100;
                                     if (0x7c00 < iVar8) {

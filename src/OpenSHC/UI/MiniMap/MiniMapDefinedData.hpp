@@ -20,7 +20,7 @@ namespace UI {
         // SIZE: 0x000002C4
         typedef struct MiniMapDefinedData {
 
-            int field0_0x0[8]; // 0x00000000 length: 32
+            int LuminescenceBrightnessPercent[8]; // 0x00000000 length: 32
             ushort field1_0x20[2]; // 0x00000020 length: 4
             ushort field2_0x24[16]; // 0x00000024 length: 32
             ushort field3_0x44[8]; // 0x00000044 length: 16
