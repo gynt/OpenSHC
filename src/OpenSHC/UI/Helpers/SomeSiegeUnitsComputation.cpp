@@ -81,7 +81,7 @@ namespace UI {
             paaiVar7 = paaiVar7 + 1;
         } while ((int)paaiVar7 < 0xb95ab8);
         if (param_1 != 1) {
-            iVar11 = DAT_RenderingDefinedData::instance.field1027_0x5493c[param_1 + -0x18];
+            iVar11 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[param_1 + -0x18];
             iVar12 = 0;
             iVar9 = 0;
             piVar14 = DAT_SiegeInformationArray_2::instance[param_1][0] + 1;
@@ -110,7 +110,7 @@ namespace UI {
         local_14 = DAT_SiegeInformationArray_2::instance[0][0] + 1;
         do {
             if ((local_18 != param_1) && (local_18 != 1)) {
-                iVar12 = DAT_RenderingDefinedData::instance.field1027_0x5493c[local_18 + -0x18];
+                iVar12 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[local_18 + -0x18];
                 iVar13 = 0;
                 iVar11 = 0;
                 piVar14 = local_14;

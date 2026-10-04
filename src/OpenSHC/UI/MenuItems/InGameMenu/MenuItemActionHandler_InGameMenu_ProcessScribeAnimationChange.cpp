@@ -64,19 +64,19 @@ namespace UI {
                 if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
-                            .field1027_0x5493c[DAT_GameCore::instance.scribeAnimationFrame2];
+                            .ScribeAnimationFrames1[DAT_GameCore::instance.scribeAnimationFrame2];
                 break;
             case 2:
                 if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
-                            .field1028_0x5499c[DAT_GameCore::instance.scribeAnimationFrame2];
+                            .ScribeAnimationFrames2[DAT_GameCore::instance.scribeAnimationFrame2];
                 break;
             case 3:
                 if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
-                            .field1029_0x549fc[DAT_GameCore::instance.scribeAnimationFrame2];
+                            .ScribeAnimationFrames3[DAT_GameCore::instance.scribeAnimationFrame2];
                 break;
             default:
                 goto switchD_00433499_caseD_4;

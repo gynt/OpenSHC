@@ -224,9 +224,9 @@ namespace Game {
         int field1024_0x54930; // 0x00054930 length: 4
         int field1025_0x54934; // 0x00054934 length: 4
         int field1026_0x54938; // 0x00054938 length: 4
-        int field1027_0x5493c[24]; // 0x0005493C length: 96
-        int field1028_0x5499c[24]; // 0x0005499C length: 96
-        int field1029_0x549fc[24]; // 0x000549FC length: 96
+        int ScribeAnimationFrames1[24]; // 0x0005493C length: 96
+        int ScribeAnimationFrames2[24]; // 0x0005499C length: 96
+        int ScribeAnimationFrames3[24]; // 0x000549FC length: 96
         UnitTypeInt field1030_0x54a5c[28]; // 0x00054A5C length: 112
         char* ChimpTgxArray[70]; // 0x00054ACC length: 280
         char* ChimpTgxSketchArray[80]; // 0x00054BE4 length: 320
