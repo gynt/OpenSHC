@@ -56,14 +56,28 @@ namespace Map {
             int shouldRenderRoof; // 0x00000060 length: 4
             int shouldRenderSomeOverlay; // 0x00000064 length: 4
             int field32_0x68; // 0x00000068 length: 4
-            int field33_0x6c; // 0x0000006C length: 4
-            int field34_0x70; // 0x00000070 length: 4
-            int field35_0x74; // 0x00000074 length: 4
-            int field36_0x78; // 0x00000078 length: 4
-            int field37_0x7c; // 0x0000007C length: 4
-            int ownerFlagFrame; // 0x00000080 length: 4
-            int field39_0x84; // 0x00000084 length: 4
-            int field40_0x88; // 0x00000088 length: 4
+            // 0x6C..0x8B is one 32-byte region that two kinds of building use
+            // differently. Towers, gatehouses and the granary treat it as eight
+            // damage-decoration slots: UpdateTower* turns currentHealth/maxHealth
+            // into a damage level of 0..8, writes that many randomly chosen slots
+            // with a sprite variant, and copies all eight into these offsets.
+            // Every other building type uses individual slots for its own purpose
+            // -- the owner flag clock at 0x80 and its resolved sprite at 0x84
+            // (0x78 in the armoury), the camp ground's countdown at 0x88 -- and
+            // never touches the array as a whole.
+            union {
+                int damageDecoration[8]; // 0x0000006C length: 32
+                struct {
+                    int field33_0x6c; // 0x0000006C length: 4
+                    int field34_0x70; // 0x00000070 length: 4
+                    int field35_0x74; // 0x00000074 length: 4
+                    int field36_0x78; // 0x00000078 length: 4
+                    int field37_0x7c; // 0x0000007C length: 4
+                    int ownerFlagFrame; // 0x00000080 length: 4
+                    int field39_0x84; // 0x00000084 length: 4
+                    int field40_0x88; // 0x00000088 length: 4
+                };
+            };
             byte xPosition; // 0x0000008C length: 1
             byte yPosition; // 0x0000008D length: 1
             undefined1 padding_0x8e[2]; // 0x0000008E length: 2

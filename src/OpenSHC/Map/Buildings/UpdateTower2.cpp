@@ -40,14 +40,14 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar6].field29_0x5c = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field33_0x6c = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field34_0x70 = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field35_0x74 = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field36_0x78 = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field37_0x7c = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field39_0x84 = 0;
-        DAT_BuildingsState::instance.buildings[iVar6].field40_0x88 = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[0] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[1] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[2] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[3] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[4] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[5] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[6] = 0;
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[7] = 0;
         piVar3 = &DAT_BuildingsState::instance.buildings[iVar6].buildingProgress;
         *piVar3 = *piVar3 + 1;
         if (0x27 < DAT_BuildingsState::instance.buildings[iVar6].buildingProgress) {
@@ -96,14 +96,14 @@ namespace Map {
                 local_20[uVar5] = uVar8 + 1;
             } while (iVar1 != 0);
         }
-        DAT_BuildingsState::instance.buildings[iVar6].field33_0x6c = local_20[0];
-        DAT_BuildingsState::instance.buildings[iVar6].field34_0x70 = local_20[1];
-        DAT_BuildingsState::instance.buildings[iVar6].field35_0x74 = local_20[2];
-        DAT_BuildingsState::instance.buildings[iVar6].field36_0x78 = local_20[3];
-        DAT_BuildingsState::instance.buildings[iVar6].field37_0x7c = local_20[4];
-        DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame = local_20[5];
-        DAT_BuildingsState::instance.buildings[iVar6].field39_0x84 = local_20[6];
-        DAT_BuildingsState::instance.buildings[iVar6].field40_0x88 = local_20[7];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[0] = local_20[0];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[1] = local_20[1];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[2] = local_20[2];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[3] = local_20[3];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[4] = local_20[4];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[5] = local_20[5];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[6] = local_20[6];
+        DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[7] = local_20[7];
     LAB_0041ea51:
         if (DAT_BuildingsState::instance.field34_0x18e074 != 0) {
             iVar6 = 0;
