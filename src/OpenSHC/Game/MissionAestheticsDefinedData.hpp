@@ -19,21 +19,21 @@ namespace Game {
     // SIZE: 0x00005504
     typedef struct MissionAestheticsDefinedData {
 
-        char** RandomEvent1VideoName; // 0x00000000 length: 4
-        char** RandomEvent2VideoName; // 0x00000004 length: 4
-        char** RandomEvent3VideoName; // 0x00000008 length: 4
-        char** RandomEvent4VideoName; // 0x0000000C length: 4
-        char** RandomEvent5VideoName; // 0x00000010 length: 4
-        char** RandomEvent6VideoName; // 0x00000014 length: 4
-        char** RandomEvent7VideoName; // 0x00000018 length: 4
-        char** RandomEvent8VideoName; // 0x0000001C length: 4
-        char** RandomEvent9VideoName; // 0x00000020 length: 4
-        char** RandomEvent10VideoName; // 0x00000024 length: 4
-        char** RandomEvent11VideoName; // 0x00000028 length: 4
-        char** RandomEvent12VideoName; // 0x0000002C length: 4
-        char** RandomEvent13VideoName; // 0x00000030 length: 4
-        char** RandomEvent14VideoName; // 0x00000034 length: 4
-        char** RandomEvent15VideoName; // 0x00000038 length: 4
+        char* RandomEvent1VideoName; // 0x00000000 length: 4
+        char* RandomEvent2VideoName; // 0x00000004 length: 4
+        char* RandomEvent3VideoName; // 0x00000008 length: 4
+        char* RandomEvent4VideoName; // 0x0000000C length: 4
+        char* RandomEvent5VideoName; // 0x00000010 length: 4
+        char* RandomEvent6VideoName; // 0x00000014 length: 4
+        char* RandomEvent7VideoName; // 0x00000018 length: 4
+        char* RandomEvent8VideoName; // 0x0000001C length: 4
+        char* RandomEvent9VideoName; // 0x00000020 length: 4
+        char* RandomEvent10VideoName; // 0x00000024 length: 4
+        char* RandomEvent11VideoName; // 0x00000028 length: 4
+        char* RandomEvent12VideoName; // 0x0000002C length: 4
+        char* RandomEvent13VideoName; // 0x00000030 length: 4
+        char* RandomEvent14VideoName; // 0x00000034 length: 4
+        char* RandomEvent15VideoName; // 0x00000038 length: 4
         char** field15_0x3c; // 0x0000003C length: 4
         char** field16_0x40; // 0x00000040 length: 4
         char** field17_0x44; // 0x00000044 length: 4
@@ -78,7 +78,7 @@ namespace Game {
         char** field56_0xe0; // 0x000000E0 length: 4
         char** field57_0xe4; // 0x000000E4 length: 4
         char** field58_0xe8; // 0x000000E8 length: 4
-        char** field59_0xec; // 0x000000EC length: 4
+        char* field59_0xec; // 0x000000EC length: 4
         char** field60_0xf0; // 0x000000F0 length: 4
         char** field61_0xf4; // 0x000000F4 length: 4
         char** field62_0xf8; // 0x000000F8 length: 4

@@ -125,7 +125,7 @@ namespace Map {
         bool bVar23;
         bool bVar24;
         char* pcVar25;
-        char** ppcVar26;
+        char* pcVar26;
         char* pcVar27;
         int local_a0;
         int _eventIndex;
@@ -1400,7 +1400,7 @@ namespace Map {
                                                     .campground.tileEntry])),
                                             Map::Units::UT_FIREEATER);
                                         pcVar25 = "Random_Events1.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent1VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent1VideoName;
                                         /*
                                           "a travelling fair has come to town my lord"   added by script: "A ‘Travelling
                                           Fair’ has come to town, my Lord."
@@ -1410,7 +1410,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 1);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
@@ -1530,7 +1530,7 @@ namespace Map {
                                             DAT_GameState::ptr)(
                                             iVar18, this->scenarioEvents[_eventIndex].data.scenario.actionData);
                                         pcVar25 = "Random_Events2.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
                                         /*
                                           added by script: "Plague has descended on our castle your lordship."
                                          */
@@ -1539,7 +1539,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 2);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
@@ -1580,7 +1580,7 @@ namespace Map {
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             pcVar25 = "Random_Events3.wav";
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent3VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent3VideoName;
                                             /*
                                               added by script: "A pestilence is devastating our wheat crops, Sire."
                                              */
@@ -1589,7 +1589,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 3);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                                DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -1631,7 +1631,7 @@ namespace Map {
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             pcVar25 = "Random_Events4.wav";
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent4VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent4VideoName;
                                             /*
                                               added by script: "Our hops plants are overrun with hop weevil, the crop is
                                               ruined, My Liege."
@@ -1641,7 +1641,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 4);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                                DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -1732,7 +1732,7 @@ namespace Map {
                                         MACRO_CALL_MEMBER(Map::LandscapeState_Func::killEveryFifthTree,
                                             DAT_LandscapeState::ptr)();
                                         pcVar25 = "Random_Events6.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
                                         /*
                                           added by script: "Sire, woodcutters report that the recent drought has killed
                                           off many trees."
@@ -1742,7 +1742,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 6);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
@@ -1798,7 +1798,7 @@ namespace Map {
                                                 DAT_MinimapViewState::ptr)(DAT_TribesState::instance.unknownX_01,
                                                 DAT_TribesState::instance.unknownY_01);
                                             pcVar25 = "Random_Events7.wav";
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent7VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent7VideoName;
                                             /*
                                               added by script: "Rabbits are breeding at an alarming rate Liege.  Our
                                               crops   are threatened."
@@ -1808,7 +1808,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 7);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                                DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -1969,7 +1969,7 @@ namespace Map {
                                                 } while (iVar18 < sVar7);
                                             }
                                             pcVar25 = "Random_Events9.wav";
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent9VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent9VideoName;
                                             /*
                                               added by script: "Bandits are operating near the castle Lordship."
                                              */
@@ -1978,7 +1978,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 9);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                                DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -2174,7 +2174,7 @@ namespace Map {
                                                     Map::Units::Instructions::UMSE_0);
                                             }
                                             pcVar25 = "Random_Events11.wav";
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
                                             /*
                                               added by script: "Some outlaws from the woods have returned to our cause,
                                               my   lord."
@@ -2184,7 +2184,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xb);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                                DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -2223,7 +2223,7 @@ namespace Map {
                                             DAT_GameState::instance.playerDataArray[iVar18].popularity = 10000;
                                         }
                                         pcVar25 = "Random_Events12.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
                                         /*
                                           added by script: "The people rejoice at your forthcoming marriage, Sire."
                                          */
@@ -2232,7 +2232,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xc);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk,
                                             DAT_SFXState::ptr)(Audio::SFX::SEID_CHAPEL_BELL);
                                         MACRO_CALL_MEMBER(
@@ -2247,7 +2247,7 @@ namespace Map {
                                             DAT_GameState::instance.playerDataArray[iVar18].popularity = 10000;
                                         }
                                         pcVar25 = "Random_Events13.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent13VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent13VideoName;
                                         /*
                                           added by script: "A Jester has arrived at the castle Liege.  I have taken the
                                           liberty of offering him employment."
@@ -2257,7 +2257,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xd);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         MACRO_CALL_MEMBER(
                                             Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
@@ -2392,7 +2392,7 @@ namespace Map {
                                             } else {
                                                 iVar18 = 0xe;
                                             }
-                                            ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent14VideoName;
+                                            pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent14VideoName;
                                             /*
                                               added by script: "Thieves have stolen some food from our granary."
                                              */
@@ -2401,7 +2401,7 @@ namespace Map {
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, iVar18);
                                             MACRO_CALL_MEMBER(
                                                 Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                                DAT_VideoBikQueue::ptr)(pcVar25, (char*)((int)(ppcVar26)), pcVar10);
+                                                DAT_VideoBikQueue::ptr)(pcVar25, pcVar26, pcVar10);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
@@ -2459,7 +2459,7 @@ namespace Map {
                                             iVar18 = 0xf;
                                         }
                                         pcVar25 = "general_warning16.wav";
-                                        ppcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
+                                        pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                                         /*
                                           added by script: "There is fire in the castle and we have not built any wells
                                           my Liege!"
@@ -2469,7 +2469,7 @@ namespace Map {
                                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, iVar18);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar10, (char*)((int)(ppcVar26)), pcVar25);
+                                            DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((bVar4 == 0)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
@@ -2550,13 +2550,13 @@ namespace Map {
                                         }
                                         local_70[iVar22] = 1;
                                         if (iVar22 == 0) {
-                                            ppcVar26 = (&DAT_MissionAestheticsDefinedData::instance
+                                            pcVar26 = (&DAT_MissionAestheticsDefinedData::instance
                                                     .field59_0xec)[numInGroup];
                                             pcVar10 = "good_arab_nervous.bik";
                                         } else {
                                             if (iVar22 != 1)
                                                 goto LAB_004c609a;
-                                            ppcVar26 = (&DAT_MissionAestheticsDefinedData::instance
+                                            pcVar26 = (&DAT_MissionAestheticsDefinedData::instance
                                                     .field59_0xec)[numInGroup];
                                             pcVar10 = "good_soldier_nervous.bik";
                                         }
@@ -2566,7 +2566,7 @@ namespace Map {
                                             DE::SHCDE::TEXT_SANDS_OF_TIME, numInGroup);
                                         MACRO_CALL_MEMBER(
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                                            DAT_VideoBikQueue::ptr)(pcVar25, pcVar10, (char*)((int)(ppcVar26)));
+                                            DAT_VideoBikQueue::ptr)(pcVar25, pcVar10, pcVar26);
                                     }
                                 LAB_004c609a:
                                     _eventIndex = _eventIndex + 1;
