@@ -11,9 +11,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B5A0
     void Version::UpgradeMapUnitsTo_154()
@@ -22,9 +22,9 @@ namespace Map {
         pUVar1 = &DAT_UnitsState::instance.units[1].unitType;
         DAT_CurrentUnitSlotID::instance = 0x9c4;
         do {
-            if ((pUVar1[-1] == OpenSHC::Map::Units::ULS_NORMAL)
-                && ((*pUVar1 == OpenSHC::Map::Units::UT_S_CATAPULT
-                    || (*pUVar1 == OpenSHC::Map::Units::UT_S_TREBUCHET)))) {
+            if ((pUVar1[-1] == Map::Units::ULS_NORMAL)
+                && ((*pUVar1 == Map::Units::UT_S_CATAPULT
+                    || (*pUVar1 == Map::Units::UT_S_TREBUCHET)))) {
                 pUVar1[0x16a] = 0x14;
             }
             pUVar1 = pUVar1 + 0x248;

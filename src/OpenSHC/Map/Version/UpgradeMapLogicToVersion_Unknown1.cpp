@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
+    using Map::Buildings::BuildingTypeShort;
 
 
     // FUNCTION: STRONGHOLDCRUSADER 0x005011F0

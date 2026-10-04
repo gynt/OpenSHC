@@ -10,7 +10,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CC80
     void Init::Constructor_BinkControlClass()
     {
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_BinkControlClass));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_BinkControlClass));
         return;
     }
 

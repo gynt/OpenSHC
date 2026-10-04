@@ -14,13 +14,13 @@ namespace Text {
         char* pcVar1;
         char* pcVar2;
         int iVar3;
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::fillIntegerTextBuffer, this)(param_1);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::fillIntegerTextBuffer, this)(param_1);
         pcVar1 = this->integerTextBuffer;
         do {
             pcVar2 = pcVar1;
             pcVar1 = pcVar2 + 1;
         } while (*pcVar2 != '\0');
-        iVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getWidthOfText,
+        iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfText,
             &DAT_TextManagerObject::instance.fontSizeClassArray[param_2])(
             this->integerTextBuffer, (int)(pcVar2 + -0x2158898));
         return iVar3;

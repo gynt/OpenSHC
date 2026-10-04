@@ -17,7 +17,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AE720
         void GreatestLord::MenuItemRenderFunction_GreatestLord_Main(int param_1, ...)
@@ -46,16 +46,16 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = TRUE;
                 drawX = DAT_ButtonX::instance;
                 drawY = DAT_ButtonY::instance;
-                iVar1 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                iVar1 = MACRO_CALL_MEMBER(UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
                     &DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(TRUE);
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)((DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
                                                           .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                                           .gmId_0x0,
                     iVar1 + iVar2, drawX, drawY);
             }
         LAB_004ae736:
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
+            MACRO_CALL(UI::Rendering_Func::RenderButtonImageWithBlending)();
         }
 
     }

@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C340
     void Init::Constructor_MenuModal_TacticalPowerBar()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModa_TacticalPowerBar::ptr)(
-            OpenSHC::UI::Enums::MMT_TACTICAL_POWER_BAR, 0x2e9, 0x32, 0x37, 0x140, 0x1000,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModa_TacticalPowerBar::ptr)(
+            UI::Enums::MMT_TACTICAL_POWER_BAR, 0x2e9, 0x32, 0x37, 0x140, 0x1000,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::TacticalPowerBar_Func::MenuModalRenderFunction_TacticalPowerBar),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::TacticalPowerBar_Func::MenuModalRenderFunction_TacticalPowerBar),
             Menu_TacticalPowerBar::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_TacticalPowerBar));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TacticalPowerBar));
         return;
     }
 

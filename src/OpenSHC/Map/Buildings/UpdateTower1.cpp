@@ -25,7 +25,7 @@ namespace Map {
         uint uVar7;
         uint uVar8;
         int local_20[8];
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar1 = DAT_CurrentBuildingID::instance;
         iVar4 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -93,7 +93,7 @@ namespace Map {
             sVar2 = 0;
             do {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar5, 3);
+                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar5, 3);
                 iVar1 = DAT_CurrentBuildingID::instance;
                 if (DAT_TileMapState::instance
                         .UnitLayer[DAT_ViewportRenderState::instance

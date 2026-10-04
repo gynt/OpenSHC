@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005198C0
         void TroopValueState::recomputeTargetedBuildingTilesArray(int playerID)
@@ -23,7 +23,7 @@ namespace Map {
             int iVar2;
             int iVar3;
             this->attackInfo.targetedBuildingTilesArraySize = 0;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(this->attackInfo.targetedBuildingTilesArray)));
             uVar1 = DAT_UnitsState::instance.maxUnitCount;
             iVar3 = 1;
@@ -31,11 +31,11 @@ namespace Map {
                 psVar2 = &DAT_UnitsState::instance.units[1];
                 iVar2 = this->attackInfo.targetedBuildingTilesArraySize;
                 do {
-                    if ((((psVar2->logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if ((((psVar2->logicalState == Map::Units::ULS_NORMAL)
                              && (psVar2->isSelectable_OR_matchTime != 0))
                             && (psVar2->owner == playerID))
                         && ((psVar2->targetedBuildingTile != 0
-                            && (psVar2->unitType != OpenSHC::Map::Units::UT_A_SLAVE)))) {
+                            && (psVar2->unitType != Map::Units::UT_A_SLAVE)))) {
                         this->attackInfo.targetedBuildingTilesArray[iVar2] = psVar2->targetedBuildingTile;
                         /*
                           Units.targetBuildingTile

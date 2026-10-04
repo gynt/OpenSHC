@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::Game::Player::PlayerData;
+    using Game::Player::PlayerData;
 
 
     /*

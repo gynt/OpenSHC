@@ -15,19 +15,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B6A0
     void Init::Constructor_MenuModal_EnterTitleOnGameStart()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_EnterTitleOnGameStart::ptr)(
-            OpenSHC::UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, -1, 100, 500, 200, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_EnterTitleOnGameStart::ptr)(
+            UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, -1, 100, 500, 200, 0x200,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::EnterTitleOnGameStart_Func::MenuModalRenderFunction_EnterTitleOnGameStart),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::EnterTitleOnGameStart_Func::MenuModalRenderFunction_EnterTitleOnGameStart),
             Menu_EnterTitleOnGameStart::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_EnterTitleOnGameStart));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_EnterTitleOnGameStart));
         return;
     }
 

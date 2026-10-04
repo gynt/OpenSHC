@@ -14,18 +14,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BDE0
     void Init::Constructor_MenuModal_EditorMapTypeQuickChange()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_EditorMapTypeQuickChange::ptr)(
-            OpenSHC::UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE, -1, -1, 400, 300, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_EditorMapTypeQuickChange::ptr)(
+            UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE, -1, -1, 400, 300, 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(OpenSHC::Global_Func::DoNothing),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing),
             Menu_EditorMapTypeQuickChange::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_EditorMapTypeQuickChange));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_EditorMapTypeQuickChange));
         return;
     }
 

@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004882A0
     void GameSynchronyState::computeAndSetLatencyInformation()
@@ -34,9 +34,9 @@ namespace Synchrony {
                                                         (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
             if (this->DPLAYX_SendAndReceiveREsult == 0) {}
             if (this->DPLAYX_SendAndReceiveREsult == -0x7ffffff6) {}
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
         }
-        uVar1 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
+        uVar1 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
             this)(this->DPLAYX_ReceivedPlayerID);
         /*
           playerID is never 0 in this logic, but it could be 0 with a mod
@@ -49,7 +49,7 @@ namespace Synchrony {
             = (int)(DAT_GameCore::instance.mapTimeInTicks - this->connectionLagInfoArray[uVar1].mapTimeInTicks) / 2;
         _now_2 = timeGetTime();
         this->connectionLagInfoArray[uVar1].subtractedTime = _now_2 - this->connectionLagInfoArray[uVar1].now >> 1;
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (BVar2 == FALSE) {}
         this->connectionLagInfoArray[uVar1].checkFor0 = 1;
         _sum_2 = 0;

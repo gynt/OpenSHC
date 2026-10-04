@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004707F0
         void WindowAndDirectDraw::bltScreenMenuSurfaceToScreen(
@@ -39,7 +39,7 @@ namespace UI {
                         _destinationRect.bottom = this->gameResolutionY;
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     /*
                       Normal waiting blt. --TheRedDaemon

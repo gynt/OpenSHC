@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
+        using UI::Enums::BuildingsAndStatusMenuTabType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00487200
         void ChooseNetworkServiceProvider::MenuItemActionHandler_ChooseNetworkServiceProvider_ProviderTableRows(
@@ -21,16 +21,16 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1
                 < DAT_GameSynchronyState::instance.scrollBarItemCount) {
                 DAT_GameSynchronyState::instance.selectedProviderIndex = param_1;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID,
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID,
                     DAT_GameSynchronyState::ptr)();
                 if (DAT_GameCore::instance.activeMenuTab.tabType
-                    == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
+                    == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(7);
+                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(7);
                 } else if (DAT_GameCore::instance.activeMenuTab.tabType
-                    == OpenSHC::UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
+                    == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);
+                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);
                 }
             }
         }

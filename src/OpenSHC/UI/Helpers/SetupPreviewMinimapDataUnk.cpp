@@ -17,10 +17,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::IO::FileResourceType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using IO::FileResourceType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00493050
     void Helpers::SetupPreviewMinimapDataUnk()
@@ -39,7 +39,7 @@ namespace UI {
         if ((iVar2 == -1) || (DAT_MenuTextInputState::instance.field43_0xa0 == iVar2))
             goto LAB_00493187;
         DAT_MenuTextInputState::instance.field43_0xa0 = iVar2;
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+        pcVar3 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
             DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]);
         pcVar5 = local_3f4;
         do {
@@ -48,7 +48,7 @@ namespace UI {
             pcVar3 = pcVar3 + 1;
             pcVar5 = pcVar5 + 1;
         } while (cVar1 != '\0');
-        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
+        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
             pcVar3 = (local_3f4 - 1);
             do {
                 pcVar5 = pcVar3 + 1;
@@ -61,9 +61,9 @@ namespace UI {
         LAB_00493166:
             *(undefined4*)pcVar3 = uVar4;
             pcVar3[4] = '\0';
-            resourceType = OpenSHC::IO::FRT_MAPS;
+            resourceType = IO::FRT_MAPS;
         } else {
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS) {
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_CUSTOM_SCENARIOS) {
                 pcVar3 = (local_3f4 - 1);
                 do {
                     pcVar5 = pcVar3 + 1;
@@ -75,15 +75,15 @@ namespace UI {
                 (*(char*)((char*)&uVar4 + 3)) = 'p';
                 goto LAB_00493166;
             }
-            if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+            if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 pcVar3 = (local_3f4 - 1);
                 do {
                     pcVar5 = pcVar3;
                     pcVar3 = pcVar5 + 1;
                 } while (pcVar5[1] != '\0');
                 strcpy(pcVar5 + 1, ".sav");
-                resourceType = OpenSHC::IO::FRT_UNKNOWN;
+                resourceType = IO::FRT_UNKNOWN;
             } else {
                 pcVar3 = (local_3f4 - 1);
                 do {
@@ -91,12 +91,12 @@ namespace UI {
                     pcVar3 = pcVar5 + 1;
                 } while (pcVar5[1] != '\0');
                 strcpy(pcVar5 + 1, ".msv");
-                resourceType = OpenSHC::IO::FRT_UNKNOWN;
+                resourceType = IO::FRT_UNKNOWN;
             }
         }
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
             resourceType, (char const*)((int)(local_3f4)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);
     LAB_00493187:;
     }
 

@@ -61,7 +61,7 @@ namespace Map {
                         _tile3 = puVar3[-2];
                         _pathFindingCost = (uint) * (byte*)(_tile3 + iVar4 * 0x13a10 + 0x1ee2998);
                         iVar2 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::ifAnyUnitOnSameTileIsLadderInRightDirection,
+                            Map::Units::UnitsState_Func::ifAnyUnitOnSameTileIsLadderInRightDirection,
                             DAT_UnitsState::ptr)(_tile3,
                             (int)((int)(DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_tile3])));
                         if (iVar2 == 0) {

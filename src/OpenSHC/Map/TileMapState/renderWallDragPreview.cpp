@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F8BD0
     void TileMapState::renderWallDragPreview(int playerID, uint x1, uint y1, uint x2, uint y2, undefined4 command)
@@ -174,10 +174,10 @@ namespace Map {
             }
             if (this->field145_0x554980 == 0) {
                 if ((short)command == 0x2e) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
                         DAT_BuildingsState::ptr)(playerID, 0, this->DAT_WallTileCountCurrentDrag, 1);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
                     DAT_BuildingsState::ptr)(playerID, this->DAT_WallTileCountCurrentDrag, 0, 1);
             }
         }

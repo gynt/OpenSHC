@@ -18,8 +18,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BFE20
         void Unused::MenuItemActionHandler_UnusedCreateMessageEvent_SetTextUnk(int param_1, ...)
@@ -40,34 +40,34 @@ namespace UI {
                 }
             } else if (param_1 == 0x13) {
                 if (DAT_MapPropertiesState::instance.flag == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::removeEventAtIndex,
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                         DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                        Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
             } else if (param_1 == 0x25) {
                 if (DAT_MapPropertiesState::instance.flag == 0) {
                     if (DAT_MapPropertiesState::instance.value == 0xffffffff) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::removeEventAtIndex,
+                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                             DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
                     } else {
-                        _Str = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
+                        _Str = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
                             DAT_UserTextHandlerState::ptr)(0xb);
                         lVar1 = atol(_Str);
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.year = lVar1;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                        Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
                 if (DAT_MapPropertiesState::instance.flag == 1) {
@@ -75,17 +75,17 @@ namespace UI {
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .data.scenario.actionData = -1;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NEW_EVENT_ACTION, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NEW_EVENT_ACTION, FALSE);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
                 DAT_GameCore::instance.descriptionStringTableIndex = DAT_MapPropertiesState::instance.value;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 DAT_MenuView_TriggerPrepare::instance = TRUE;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     0xf);
                 return;
             }

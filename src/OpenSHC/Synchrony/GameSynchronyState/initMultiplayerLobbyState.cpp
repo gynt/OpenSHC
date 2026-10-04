@@ -29,13 +29,13 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using Game::GameMode2;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using UI::Enums::DisplayElementID;
+    using UI::Enums::MenuModalType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       Full multiplayer session initialisation. Resets all synchrony counters, clears per-player hash   and lag arrays,
@@ -66,9 +66,9 @@ namespace Synchrony {
         this->shouldSendAnnouncementUnk = 0;
         this->field261_0x109298 = 0;
         this->unknownIncrementBy40_01 = 1;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearChatEvents, this)();
-        DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearChatEvents, this)();
+        DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
         this->counter = 0xffffffff;
         this->limit = 5;
         this->laggingPlayerIDUnk = 0;
@@ -188,7 +188,7 @@ namespace Synchrony {
         this->field75_0xbe4 = 0;
         this->commandDelay = 0x23;
         DAT_GameState::instance.mapAndTime.gameOver = FALSE;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::resetGameCommands, this)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resetGameCommands, this)();
         DAT_GameCore::instance.mapTimeInTicks = 0;
         this->syncStatus = 0;
         this->flag_0xbec = 0;
@@ -201,16 +201,16 @@ namespace Synchrony {
         this->skirmishExtremeMode2 = 0;
         this->DAT_MapFileReceivingState = 0;
         DAT_GameState::instance.mapAndTime.skirmishFogOfWar = 0;
-        MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+        MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
+        MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
         DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-            OpenSHC::UI::Enums::MMT_NONE, FALSE);
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition2::ptr)(
-            OpenSHC::UI::Enums::MMT_NONE, FALSE);
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition3::ptr)(
-            OpenSHC::UI::Enums::MMT_NONE, FALSE);
-        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::stopAllActiveSounds, DAT_SoundSystemState::ptr)();
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+            UI::Enums::MMT_NONE, FALSE);
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition2::ptr)(
+            UI::Enums::MMT_NONE, FALSE);
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition3::ptr)(
+            UI::Enums::MMT_NONE, FALSE);
+        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::stopAllActiveSounds, DAT_SoundSystemState::ptr)();
         DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
             = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
         DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -231,13 +231,13 @@ namespace Synchrony {
         DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[8]
             = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
         this->field225_0x106ee4 = 1;
-        MACRO_CALL(OpenSHC::Synchrony_Func::InitSkirmishLobbyData)();
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setDirectPlaySessionDescription, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-            OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+        MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDirectPlaySessionDescription, this)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+            Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
         DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-            OpenSHC::UI::Enums::MVT_LOBBY_MENU, 0);
+        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+            UI::Enums::MVT_LOBBY_MENU, 0);
     }
 
 }

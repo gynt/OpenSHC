@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
+        using Map::Units::UnitInstructionType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B570
         int TroopValueState::placeTunnelEntrances(int tribeID)
@@ -30,7 +30,7 @@ namespace Map {
             /*
               finds a route from target to siege engine location?
              */
-            iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::algFindAttackAngle,
+            iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
                 DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].x)),
                 (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)), tribeID);
             if (iVar4 != 0) {
@@ -46,14 +46,14 @@ namespace Map {
                 this->attackInfo.tentPointsValues[iVar4].three = 3;
                 iVar2 = this->attackInfo.tentPointsValues[iVar4].x;
                 DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1 = (short)iVar4;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
                     playerID, iVar2 + -1, iVar3 + -1, (MappersEnum)((int)(66)), 3, 0xf);
                 iVar2 = DAT_TileMapState::instance.placedBuildingID;
                 if (0 < DAT_TileMapState::instance.placedBuildingID) {
                     DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(tribeID,
+                        Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(tribeID,
                         ((UnitInstructionType)0x15), iVar2, DAT_BuildingsState::instance.buildings[iVar2].uid, 0);
                     return iVar4;
                 }

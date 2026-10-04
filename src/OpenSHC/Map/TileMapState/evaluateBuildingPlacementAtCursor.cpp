@@ -20,13 +20,13 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Map::Buildings::BuildingFailReasonEnum;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Map::LogicHelpers::Logic1;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using Map::Buildings::BuildingFailReasonEnum;
+    using Map::Buildings::BuildingType;
+    using WindowsHelper::Enums::BOOLEnum;
+    using Map::Buildings::BuildingTypeShort;
+    using Map::LogicHelpers::Logic1;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00504A30
     void TileMapState::evaluateBuildingPlacementAtCursor(int playerID, uint x, uint y)
@@ -67,11 +67,11 @@ namespace Map {
             uVar3 = (uint)(short)DAT_BuildingsState::instance.buildings[x].x;
             y = (uint)(short)DAT_BuildingsState::instance.buildings[x].y;
         }
-        if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-            && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
+        if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+            && (BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                     DAT_PathFindingState::ptr)(playerID, uVar3, y,
-                    (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                    (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                                     & 0xfffffff1)
                         + 0x1e))),
                 BVar2 != FALSE)) {
@@ -85,32 +85,32 @@ namespace Map {
                     this->field194_0x554a20 = 1;
                 }
                 if (playerID != 0) {
-                    this->buildingPlacementFailReason = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
+                    this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 }
                 this->buildingPlacementFail = TRUE;
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                 this->field194_0x554a20 = 1;
             }
             if (0 < iVar4) {
-                if ((this->LogicLayer[iVar4] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                if ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
                     this->buildingPlacementFail = TRUE;
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                     this->field194_0x554a20 = 1;
                 }
                 if ((this->WallOwnerLayer[iVar4] & 7) + 1 != playerID) {
-                    this->buildingPlacementFailReason = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
+                    this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 }
                 this->buildingPlacementFail = TRUE;
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                 this->field194_0x554a20 = 1;
             }
-            if ((0 < local_4) && ((this->LogicLayer[local_4] & OpenSHC::Map::LogicHelpers::L_MOAT) != 0)) {
-                iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
+            if ((0 < local_4) && ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) != 0)) {
+                iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
                 if (iVar4 == 0) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
                     == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {}
             }
-            this->buildingPlacementFailReason = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
+            this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
         }
         if (DAT_ViewportRenderState::instance.viewportState.somePitchDitchID != 0) {
             if (this->pitchDitches[DAT_ViewportRenderState::instance.viewportState.somePitchDitchID].owner
@@ -124,11 +124,11 @@ namespace Map {
         }
         if (iVar4 < 1) {
         LAB_00504d0f:
-            if (((local_4 < 1) || ((this->LogicLayer[local_4] & OpenSHC::Map::LogicHelpers::L_MOAT) == 0)) || (x != 0)) {
+            if (((local_4 < 1) || ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) == 0)) || (x != 0)) {
                 if ((this->field151_0x554998 != 0) || (this->field152_0x55499c != 0))
                     goto LAB_00504da2;
             } else if (this->field151_0x554998 == 0) {
-                iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
+                iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
                 if (iVar4 == 0) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
                     != DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {}
@@ -140,8 +140,8 @@ namespace Map {
                 this->buildingPlacementFail = TRUE;
             }
         } else {
-            uVar3 = this->LogicLayer[iVar4] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
-            if ((uVar3 != 0) && ((this->LogicLayer[iVar4] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk) != 0)) {
+            uVar3 = this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
+            if ((uVar3 != 0) && ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk) != 0)) {
                 this->buildingPlacementFail = TRUE;
             }
             if (((uVar3 == 0) || (this->BuildingLayer[iVar4] != 0)) || (this->field152_0x55499c != 0))
@@ -158,22 +158,22 @@ namespace Map {
         }
         if (x == 0)
             goto LAB_00504e15;
-        if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR) {
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-                if (DAT_BuildingsState::instance.buildings[x].buildingType == OpenSHC::Map::Buildings::BT_SIGNPOST)
+        if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
+                if (DAT_BuildingsState::instance.buildings[x].buildingType == Map::Buildings::BT_SIGNPOST)
                     goto switchD_00504ded_caseD_27;
             } else {
                 switch (DAT_BuildingsState::instance.buildings[x].buildingType) {
-                case OpenSHC::Map::Buildings::BT_UNKNOWN1:
-                case OpenSHC::Map::Buildings::BT_MANORHOUSE:
-                case OpenSHC::Map::Buildings::BT_STONEKEEP:
-                case OpenSHC::Map::Buildings::BT_STRONGHOLD:
-                case OpenSHC::Map::Buildings::BT_SIGNPOST:
-                case OpenSHC::Map::Buildings::BT_CAMPGROUND:
-                case OpenSHC::Map::Buildings::BT_KEEPDOOR_LEFT:
-                case OpenSHC::Map::Buildings::BT_KEEPDOOR_RIGHT:
-                case OpenSHC::Map::Buildings::BT_KEEPDOOR:
-                case OpenSHC::Map::Buildings::BT_POND:
+                case Map::Buildings::BT_UNKNOWN1:
+                case Map::Buildings::BT_MANORHOUSE:
+                case Map::Buildings::BT_STONEKEEP:
+                case Map::Buildings::BT_STRONGHOLD:
+                case Map::Buildings::BT_SIGNPOST:
+                case Map::Buildings::BT_CAMPGROUND:
+                case Map::Buildings::BT_KEEPDOOR_LEFT:
+                case Map::Buildings::BT_KEEPDOOR_RIGHT:
+                case Map::Buildings::BT_KEEPDOOR:
+                case Map::Buildings::BT_POND:
                 switchD_00504ded_caseD_27:
                     this->buildingPlacementFail = TRUE;
                 }
@@ -183,17 +183,17 @@ namespace Map {
             this->field131_0x554954 = x;
         }
     LAB_00504e15:
-        if ((((((((this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                      | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+        if ((((((((this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted] & Map::LogicHelpers::L_BUILDING
+                      | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                      == 0)
                     && (BVar1 = DAT_BuildingsState::instance.buildings[x].buildingType,
-                        BVar1 != OpenSHC::Map::Buildings::BT_GATEHOUSELARGE))
-                   && (BVar1 != OpenSHC::Map::Buildings::BT_GATEHOUSESMALL))
-                  && ((BVar1 != OpenSHC::Map::Buildings::BT_WOODGATE1
-                      && (BVar1 != OpenSHC::Map::Buildings::BT_WOODGATE2))))
-                 && ((BVar1 != OpenSHC::Map::Buildings::BT_KEEPDOOR
-                     && ((BVar1 != OpenSHC::Map::Buildings::BT_DRAWBRIDGE
-                         && (BVar1 != OpenSHC::Map::Buildings::BT_KILLINGPIT))))))
+                        BVar1 != Map::Buildings::BT_GATEHOUSELARGE))
+                   && (BVar1 != Map::Buildings::BT_GATEHOUSESMALL))
+                  && ((BVar1 != Map::Buildings::BT_WOODGATE1
+                      && (BVar1 != Map::Buildings::BT_WOODGATE2))))
+                 && ((BVar1 != Map::Buildings::BT_KEEPDOOR
+                     && ((BVar1 != Map::Buildings::BT_DRAWBRIDGE
+                         && (BVar1 != Map::Buildings::BT_KILLINGPIT))))))
                 && (this->field151_0x554998 == 0))
             && (this->field152_0x55499c == 0)) {
             this->buildingPlacementFail = TRUE;

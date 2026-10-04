@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Game {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D1700
     BOOLEnum Skirmish::StoreCurrentGameIntoTemporarySKMasterEntry(int score)
@@ -27,7 +27,7 @@ namespace Game {
             iVar2 = iVar2 + 1;
         } while (cVar1 != '\0');
         DAT_SkMasterDataEntry::instance.skMasterScore = MACRO_CALL(
-            OpenSHC::UI::GreatestLord_Func::ComputeSkMasterScore)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
+            UI::GreatestLord_Func::ComputeSkMasterScore)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
         DAT_SkMasterDataEntry::instance.activePlayerCount = 0;
         iVar2 = 1;
         do {
@@ -61,7 +61,7 @@ namespace Game {
         DAT_SkMasterDataEntry::instance.aliveArray[7] = (int)DAT_GameState::instance.mapAndTime.playerIsAlive[7];
         DAT_SkMasterDataEntry::instance.aliveArray[8] = (int)DAT_GameState::instance.mapAndTime.playerIsAlive[8];
         DAT_SkMasterDataEntry::instance.lordType = DAT_GameCore::instance.selectedLordTypeUnk;
-        MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreLocalTime)();
+        MACRO_CALL(Game::Skirmish_Func::StoreLocalTime)();
         int const* _src = (int const*)&DAT_GameSynchronyState::instance.finalResults;
         int* _dst = (int*)&DAT_SkMasterDataEntry::instance.results;
         for (int i = 0; i < 478; ++i) {

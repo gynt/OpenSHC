@@ -7,8 +7,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::WindowsHelper::Enums::WindowsDeviceCap;
+        using WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::WindowsDeviceCap;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467B40
         void WindowAndDirectDraw::getDeviceCapsAndSetup()
@@ -20,12 +20,12 @@ namespace UI {
             int _screenWidth;
             int _screenHeight;
             _hdc = GetDC((HWND__*)0x0);
-            _numOfColors = GetDeviceCaps(_hdc, OpenSHC::WindowsHelper::Enums::WDC_NUMCOLORS);
+            _numOfColors = GetDeviceCaps(_hdc, WindowsHelper::Enums::WDC_NUMCOLORS);
             if (_numOfColors == -1) {
                 this->colorDepth = 0x10;
             } else {
-                _numColorPlanes = GetDeviceCaps(_hdc, OpenSHC::WindowsHelper::Enums::WDC_PLANES);
-                _colorBitsPerPixel = GetDeviceCaps(_hdc, OpenSHC::WindowsHelper::Enums::WDC_BITSPIXEL);
+                _numColorPlanes = GetDeviceCaps(_hdc, WindowsHelper::Enums::WDC_PLANES);
+                _colorBitsPerPixel = GetDeviceCaps(_hdc, WindowsHelper::Enums::WDC_BITSPIXEL);
                 this->colorDepth = _numColorPlanes * _colorBitsPerPixel;
             }
             ReleaseDC((HWND__*)0x0, _hdc);

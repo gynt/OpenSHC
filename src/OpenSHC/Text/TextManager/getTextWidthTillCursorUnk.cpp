@@ -13,7 +13,7 @@ namespace Text {
         if (text == (char*)0x0) {
             return 0;
         }
-        int _widthUnk = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getWidthOfText,
+        int _widthUnk = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfText,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(text, cursorIndex);
         return _widthUnk;
     }

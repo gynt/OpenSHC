@@ -18,7 +18,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
+    using DE::SHCDE::eSFX;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00418100
     void Buildings::UpdateCampGround()
@@ -43,10 +43,10 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].field14_0x2c = 1;
             if (0 < DAT_SFX_Interval_Campfire::instance) {
                 DAT_SFX_Interval_Campfire::instance = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[_currentBuildingID].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[_currentBuildingID].y)),
-                    OpenSHC::DE::SHCDE::FX_CAMPFIRE);
+                    DE::SHCDE::FX_CAMPFIRE);
                 _currentBuildingID = DAT_CurrentBuildingID::instance;
             }
         }
@@ -197,7 +197,7 @@ namespace Map {
             }
             _vclock = 100;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updatePeasantSeatingAtBuilding, DAT_TribesState::ptr)(
+        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updatePeasantSeatingAtBuilding, DAT_TribesState::ptr)(
             _currentBuildingID, (int)((int)(_ownerPlayerIndex)), _vclock);
         _currentBuildingID = DAT_CurrentBuildingID::instance;
     LAB_00418476:

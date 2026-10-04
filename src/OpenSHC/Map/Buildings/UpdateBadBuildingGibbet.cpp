@@ -24,13 +24,13 @@ namespace Map {
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk
             = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].fireRelatedRNG1 % 9;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar3);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar3);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar3 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[iVar3].field66_0xbe = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(iVar3, 1);
         DAT_BuildingsState::instance.buildings[iVar3].renderAnimation
             = (ushort)(DAT_GameState::instance.playerDataArray[sVar2].fearFactorLevel < -3);

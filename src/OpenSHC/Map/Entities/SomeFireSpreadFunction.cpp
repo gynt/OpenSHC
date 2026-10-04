@@ -20,9 +20,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Map::Entities::EntityType;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingTypeShort;
+    using Map::Entities::EntityType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00405130
     uint Entities::SomeFireSpreadFunction(int param_1, int x, int y, int param_4, int param_5)
@@ -38,7 +38,7 @@ namespace Map {
         short _buildingID;
         BuildingTypeShort _buildingType;
         _rng = (uint)SEC_RNG::instance.currentNumber2;
-        MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+        MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
         microX = x + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][0];
         microY = y + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][1];
         _x = microX / 8;
@@ -52,28 +52,28 @@ namespace Map {
             _buildingID = DAT_TileMapState::instance.BuildingLayer[_tile];
             if (_buildingID != 0) {
                 _buildingType = DAT_BuildingsState::instance.buildings[_buildingID].buildingType;
-                if (((_buildingType != OpenSHC::Map::Buildings::BT_TUNNEL)
-                        && (_buildingType != OpenSHC::Map::Buildings::BT_KILLINGPIT))
-                    && (_buildingType != OpenSHC::Map::Buildings::BT_UNKNOWN4)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::lightUpBuilding,
+                if (((_buildingType != Map::Buildings::BT_TUNNEL)
+                        && (_buildingType != Map::Buildings::BT_KILLINGPIT))
+                    && (_buildingType != Map::Buildings::BT_UNKNOWN4)) {
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::lightUpBuilding,
                         DAT_BuildingsState::ptr)((int)_buildingID, param_1, 0);
                     return 0;
                 }
             }
             _entityID = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
+                Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
             if (_entityID == 0) {
                 if ((_rng & 0x1000) != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
                         _tile, param_1);
                 }
-                _fireEntityID = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                _fireEntityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
-                    OpenSHC::Map::Entities::ET_FIRE, 0);
+                    Map::Entities::ET_FIRE, 0);
                 if ((2 < param_5) && ((DAT_TileMapState::instance.RandomLayer[_tile] & 3) == 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
-                        OpenSHC::Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
+                        Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
                 if (_fireEntityID != 0) {
                     DAT_EntityState::instance.entityArray[_fireEntityID].fireParameter_0xb6 = (short)param_5;

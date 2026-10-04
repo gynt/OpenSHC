@@ -18,8 +18,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::IO::Graphics::GmID;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using IO::Graphics::GmID;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004640D0
     void Rendering::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk()
@@ -34,14 +34,14 @@ namespace UI {
             iVar2 = 2;
         }
         buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
+        iVar1 = MACRO_CALL_MEMBER(UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
         if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
             iVar1 = iVar1 + 1;
         }
         if (DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar3].alphaGmIdUnk_0xc != ((GmID)0)) {
             if (DAT_ButtonBlendStrength::instance != 0x20) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)((OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                    DAT_TextureRenderCoreObject::ptr)((IO::Graphics::GmID)buttonGmData->gmId_0x0,
                     iVar1 + iVar2, (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonBlendStrength::instance)));
                 iVar3 = DAT_CurrentButtonGmDataIndex::instance;
@@ -49,8 +49,8 @@ namespace UI {
             DAT_CurrentButtonPictureInGm::instance
                 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar3].pictureInGm_0x4 + iVar2;
         }
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-            (OpenSHC::DE::SHCDE::eGM)buttonGmData->gmId_0x0, iVar1 + iVar2, (int)((int)(DAT_ButtonX::instance)),
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+            (DE::SHCDE::eGM)buttonGmData->gmId_0x0, iVar1 + iVar2, (int)((int)(DAT_ButtonX::instance)),
             (int)((int)(DAT_ButtonY::instance)));
         DAT_CurrentButtonPictureInGm::instance
             = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]

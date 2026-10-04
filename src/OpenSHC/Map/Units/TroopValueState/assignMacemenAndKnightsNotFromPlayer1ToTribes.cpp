@@ -15,10 +15,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using AI::Tribes::AITribeType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051CCB0
         void TroopValueState::assignMacemenAndKnightsNotFromPlayer1ToTribes()
@@ -49,19 +49,19 @@ namespace Map {
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit2 = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((_pUnit2->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE)
+                    if ((_pUnit2->logicalState != Map::Units::ULS_INVISIBLE)
                         && (BVar1
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                            = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                 this)((int)_pUnit2->owner),
                             BVar1 != FALSE)) {
-                        if (_pUnit2->unitType == OpenSHC::Map::Units::UT_E_MACE) {
+                        if (_pUnit2->unitType == Map::Units::UT_E_MACE) {
                             _macemenCount = _macemenCount + 1;
                         } else {
-                            if (_pUnit2->unitType != OpenSHC::Map::Units::UT_E_KNIGHT)
+                            if (_pUnit2->unitType != Map::Units::UT_E_KNIGHT)
                                 goto LAB_0051cd29;
                             _knightCount = _count + 1;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromTribe,
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromTribe,
                             DAT_TribesState::ptr)(_unitID0, (int)((int)(_pUnit2->tribeID)));
                         _count = _knightCount;
                     }
@@ -110,9 +110,9 @@ namespace Map {
                 _unitID1 = 0;
                 do {
                     _tribeID1 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(playerID, 0);
+                        Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(playerID, 0);
                     DAT_TroopValueState::instance.attackInfo.macemenTribeArray[local_14] = _tribeID1;
-                    DAT_TribesState::instance.tribes[_tribeID1].tribeType = OpenSHC::AI::Tribes::AITT_MACEMEN;
+                    DAT_TribesState::instance.tribes[_tribeID1].tribeType = AI::Tribes::AITT_MACEMEN;
                     _limitCounter = 0;
                     if (_macemenLimit != 0) {
                         _pUnit1 = &DAT_UnitsState::instance.units[_unitID1].owner;
@@ -120,11 +120,11 @@ namespace Map {
                             _unitID1 = _unitID1 + 1;
                             if (((_pUnit1[0x243] != 0)
                                     && (BVar1 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
+                                            Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
                                             (int)_pUnit1[0x248]),
                                         BVar1 != FALSE))
                                 && (_pUnit1[0x244] == 0x1a)) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe,
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID1, _tribeID1);
                                 _macemenCount = _macemenCount + -1;
                                 if (_macemenCount < 1)
@@ -143,21 +143,21 @@ namespace Map {
                 _unitID2 = 0;
                 do {
                     _tribeID2 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(playerID, 0);
+                        Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(playerID, 0);
                     _limitCounter2 = 0;
                     DAT_TroopValueState::instance.attackInfo.knightTribeArray[local_14] = _tribeID2;
-                    DAT_TribesState::instance.tribes[_tribeID2].tribeType = OpenSHC::AI::Tribes::AITT_KNIGHTS;
+                    DAT_TribesState::instance.tribes[_tribeID2].tribeType = AI::Tribes::AITT_KNIGHTS;
                     if (_knightLimit != 0) {
                         psVar2 = &DAT_UnitsState::instance.units[_unitID2].owner;
                         do {
                             _unitID2 = _unitID2 + 1;
                             if (((psVar2[0x243] != 0)
                                     && (BVar1 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
+                                            Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
                                             (int)psVar2[0x248]),
                                         BVar1 != FALSE))
                                 && (psVar2[0x244] == 0x1c)) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe,
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID2, _tribeID2);
                                 _knightCount = _knightCount + -1;
                                 if (_knightCount < 1) {}

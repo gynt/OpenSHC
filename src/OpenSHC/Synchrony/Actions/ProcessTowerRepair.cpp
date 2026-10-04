@@ -14,33 +14,33 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Audio::SFX::ResourceLackSFX;
-    using OpenSHC::Game::Resources::ResourceType;
+    using Audio::SFX::ResourceLackSFX;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00466260
     void Actions::ProcessTowerRepair(
         int playerID, int buildingID, int requiredWood, int requiredStone, int gameObjectID)
     {
         if (DAT_BuildingsState::instance.buildings[buildingID].uid == gameObjectID) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
                 DAT_BuildingsState::ptr)(buildingID);
             if (DAT_GameState::instance.playerDataArray[playerID].currentResources[2] < requiredWood) {
                 if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                        DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_WOOD);
+                    MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
+                        DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_WOOD);
                 }
             } else if (DAT_GameState::instance.playerDataArray[playerID].currentResources[4] < requiredStone) {
                 if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                        DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
+                    MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
+                        DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_STONE);
                 }
             } else {
                 DAT_BuildingsState::instance.buildings[buildingID].currentHealth
                     = DAT_BuildingsState::instance.buildings[buildingID].maxHealth;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss,
-                    DAT_BuildingsState::ptr)(playerID, OpenSHC::Game::Resources::RT_WOOD, requiredWood, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss,
-                    DAT_BuildingsState::ptr)(playerID, OpenSHC::Game::Resources::RT_STONE, requiredStone, 0);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
+                    DAT_BuildingsState::ptr)(playerID, Game::Resources::RT_WOOD, requiredWood, 0);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
+                    DAT_BuildingsState::ptr)(playerID, Game::Resources::RT_STONE, requiredStone, 0);
             }
         }
     }

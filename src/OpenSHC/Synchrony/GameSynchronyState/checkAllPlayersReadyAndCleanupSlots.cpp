@@ -6,7 +6,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047EDE0
     undefined4 GameSynchronyState::checkAllPlayersReadyAndCleanupSlots()

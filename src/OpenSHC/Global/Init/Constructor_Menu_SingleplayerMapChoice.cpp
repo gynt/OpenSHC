@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AC00
     void Init::Constructor_Menu_SingleplayerMapChoice()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_SingleplayerMapChoice::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_SingleplayerMapChoice::ptr)(
             DAT_RenderingDefinedData::instance.MenuItems_SingleplayerMapChoice);
     }
 

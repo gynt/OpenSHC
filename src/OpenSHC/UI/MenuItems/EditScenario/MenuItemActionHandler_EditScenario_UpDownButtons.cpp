@@ -9,12 +9,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
+        using UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9020
         void EditScenario::MenuItemActionHandler_EditScenario_UpDownButtons(int param_1, ...)
         {
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
                 if (param_1 == -2) {
                     if (DAT_MapPropertiesState::instance.field47_0x1355c
                         < DAT_MapPropertiesState::instance.eventsCount + -0x14) {

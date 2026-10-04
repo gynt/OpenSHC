@@ -20,8 +20,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Units::States::UnitState;
+    using Game::GameMode;
+    using Map::Units::States::UnitState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004156F0
     void Buildings::UpdateInn()
@@ -41,8 +41,8 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 0;
         DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[iVar5].animationIncrement = 1;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar5);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar5);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar5 = DAT_CurrentBuildingID::instance;
         iVar9 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -59,7 +59,7 @@ namespace Map {
         }
         sVar6 = DAT_BuildingsState::instance.buildings[iVar5].buildingIsVisuallyActive;
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar5);
+            Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar5);
         if (sVar6 == 0) {
             DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = 0;
             DAT_BuildingsState::instance.buildings[iVar5].renderAnimation = 0;
@@ -106,7 +106,7 @@ namespace Map {
                 piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].field25_0x4c;
                 *piVar1 = *piVar1 + 1;
             }
-            if (DAT_UnitsState::instance.units[iVar7].state.generic == OpenSHC::Map::Units::States::US_AIM_WEAPONUnk) {
+            if (DAT_UnitsState::instance.units[iVar7].state.generic == Map::Units::States::US_AIM_WEAPONUnk) {
                 bVar3 = DAT_BuildingDefinedData::instance
                             .field172_0x7c3c[DAT_BuildingsState::instance.buildings[iVar5].field26_0x50];
                 DAT_BuildingsState::instance.buildings[iVar5].field22_0x40 = (int)(char)bVar3;
@@ -124,7 +124,7 @@ namespace Map {
                 sVar6 = sVar6 + -1;
                 DAT_BuildingsState::instance.buildings[iVar5].field204_0x28a = sVar6;
                 if (sVar6 == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::spawnDrunkard, DAT_GameState::ptr)(
+                    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::spawnDrunkard, DAT_GameState::ptr)(
                         DAT_CurrentBuildingID::instance);
                 }
                 iVar5 = DAT_CurrentBuildingID::instance;
@@ -165,13 +165,13 @@ namespace Map {
         piVar1 = &DAT_GameState::instance.playerDataArray[sVar4].countInns;
         *piVar1 = *piVar1 + 1;
         if (sVar6 != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x52)) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar9 = DAT_CurrentBuildingID::instance * 0x32c;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
-        if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
             piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9);
             *piVar1 = *piVar1 + 1;

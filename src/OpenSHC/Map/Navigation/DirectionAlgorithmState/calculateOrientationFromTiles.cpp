@@ -16,7 +16,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0046C9A0
         void DirectionAlgorithmState::calculateOrientationFromTiles(int param_1, int param_2)
         {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::calculateOrientation, this)(
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::calculateOrientation, this)(
                 param_1
                     - DAT_ViewportRenderState::instance
                         .translationMatrix[DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[param_1]]

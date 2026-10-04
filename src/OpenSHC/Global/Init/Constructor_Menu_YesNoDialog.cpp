@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AE30
     void Init::Constructor_Menu_YesNoDialog()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_YesNoDialog::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_YesNoDialog::ptr)(
             DAT_RenderingDefinedData::instance.MenuItem_YesNoDialog);
     }
 

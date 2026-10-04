@@ -13,10 +13,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043E1B0
     void BuildingMenus::RenderBuildingMenu_Siegetent_BatteringRam()
@@ -34,33 +34,33 @@ namespace UI {
         BVar8 = FALSE;
         iVar7 = 0x11;
         BVar6 = 0;
-        TVar5 = OpenSHC::Text::TTA_LEFT;
+        TVar5 = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1eb;
         iVar4 = DAT_MenuHandlerState::instance.x + 0xb4;
         /*
           added by script: "Battering Ram"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_SIEGE_TENT, 4);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_SIEGE_TENT, 4);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar4, iVar1, TVar5, BVar6, iVar7, BVar8, blendStrength);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             (DAT_BuildingsState::instance.buildings[iVar3].buildingProgress * 100) / 0x280,
-            DAT_MenuHandlerState::instance.x + 0xb4, DAT_MenuHandlerState::instance.y + 0x209, OpenSHC::Text::TTA_LEFT,
+            DAT_MenuHandlerState::instance.x + 0xb4, DAT_MenuHandlerState::instance.y + 0x209, Text::TTA_LEFT,
             0, 0x11, FALSE, 0);
         iVar7 = 0;
         BVar8 = TRUE;
         iVar4 = 0x11;
         BVar6 = 0;
-        TVar5 = OpenSHC::Text::TTA_LEFT;
+        TVar5 = Text::TTA_LEFT;
         iVar3 = DAT_MenuHandlerState::instance.y + 0x209;
         iVar1 = DAT_MenuHandlerState::instance.x + 0xb4;
         /*
           added by script: "% Complete"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_SIEGE_TENT, 6);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_SIEGE_TENT, 6);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar3, TVar5, BVar6, iVar4, BVar8, iVar7);
     }
 

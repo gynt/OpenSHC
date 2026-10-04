@@ -17,7 +17,7 @@ namespace Map {
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2
             = (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
         if (DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround != 0) {
-            MACRO_CALL(OpenSHC::Map::Entities_Func::AFireSpreadFunction)(
+            MACRO_CALL(Map::Entities_Func::AFireSpreadFunction)(
                 (int)DAT_EntityState::instance.entityArray[uVar1].owner,
                 (int)((int)(DAT_EntityState::instance.entityArray[uVar1].microX)),
                 (int)((int)(DAT_EntityState::instance.entityArray[uVar1].microY)),

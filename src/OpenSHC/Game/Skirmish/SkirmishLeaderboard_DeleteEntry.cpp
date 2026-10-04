@@ -38,7 +38,7 @@ namespace Game {
                 } while (index < DAT_SkMasters2Data_Count::instance + -1);
             }
             DAT_SkMasters2Data_Count::instance = DAT_SkMasters2Data_Count::instance + -1;
-            MACRO_CALL(OpenSHC::IO_Func::WriteSkMasters2)();
+            MACRO_CALL(IO_Func::WriteSkMasters2)();
         }
     }
 

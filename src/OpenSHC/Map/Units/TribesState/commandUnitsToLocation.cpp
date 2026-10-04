@@ -15,10 +15,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
-        using OpenSHC::Map::Units::States::UnitState;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00526F00
         undefined4 TribesState::commandUnitsToLocation(
@@ -33,16 +33,16 @@ namespace Map {
             bVar1 = true;
             if (0 < this->tribes[tribeID].size) {
                 do {
-                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, _selectionUnitID);
                     _selectionUnitID = _selectionUnitID + 1;
-                    if ((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if ((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                         && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
                         _goToRallyPoint = DAT_UnitsState::instance.units[_unitID].goToRallyPoint;
                         DAT_UnitsState::instance.units[_unitID].rallyRelatedFlag = 0;
                         if ((((((_goToRallyPoint == 0)
                                    && ((DAT_UnitsState::instance.units[_unitID].isSelectable_OR_matchTime != 0
-                                       && (MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::
+                                       && (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
                                                                  setAxisBasedDistanceResult,
                                                DAT_DirectionAlgorithmState::ptr)(destinationX,
                                                (int)((int)(destinationY)),
@@ -54,23 +54,23 @@ namespace Map {
                                               .units[DAT_UnitsState::instance.units[_unitID]
                                                       .targetedUnitID__OR__engineerMannedSiegeEngineRef]
                                               .logicalState
-                                          != OpenSHC::Map::Units::ULS_NORMAL))))
+                                          != Map::Units::ULS_NORMAL))))
                                  && (((((_goToRallyPoint = DAT_UnitsState::instance.units[_unitID].shootTargetedUnit,
                                             _goToRallyPoint == 0
                                                 || (this->tribes[DAT_CurrentTribeID::instance].countdown2 < 1))
                                            || (DAT_UnitsState::instance.units[_unitID].unitType
-                                               == OpenSHC::Map::Units::UT_A_HARCHER))
+                                               == Map::Units::UT_A_HARCHER))
                                           || (DAT_UnitsState::instance.units[_unitID].targetUID
                                               != DAT_UnitsState::instance.units[_goToRallyPoint].uid))
                                      && (DAT_UnitsState::instance.units[_unitID].state.generic
-                                         != OpenSHC::Map::Units::States::US_MELEE_ATTACK))))
+                                         != Map::Units::States::US_MELEE_ATTACK))))
                                 && (((char)matchUnitSpeeds != '\0'
                                     || (((_unitType = DAT_UnitsState::instance.units[_unitID].unitType,
-                                             _unitType != OpenSHC::Map::Units::UT_S_FBALLISTA
-                                                 && (_unitType != OpenSHC::Map::Units::UT_S_CATAPULT))
-                                        && ((_unitType != OpenSHC::Map::Units::UT_S_SHIELD
-                                            && ((_unitType != OpenSHC::Map::Units::UT_S_TOWER
-                                                && (_unitType != OpenSHC::Map::Units::UT_S_BATTERINGRAM))))))))))
+                                             _unitType != Map::Units::UT_S_FBALLISTA
+                                                 && (_unitType != Map::Units::UT_S_CATAPULT))
+                                        && ((_unitType != Map::Units::UT_S_SHIELD
+                                            && ((_unitType != Map::Units::UT_S_TOWER
+                                                && (_unitType != Map::Units::UT_S_BATTERINGRAM))))))))))
                             && ((DAT_UnitsState::instance.units[_unitID].engineerRelatedUnk == 0
                                 || ((DAT_UnitsState::instance.units[_unitID].resourceToDeposit != 0
                                     && (DAT_UnitsState::instance.units[_unitID].field252_0x3c4 == 0)))))) {
@@ -85,8 +85,8 @@ namespace Map {
                     if ((char)matchUnitSpeeds != '\0') {
                         this->tribes[tribeID].freeUnitSpeeds = 0;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(
-                        tribeID, destinationX, destinationY, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(
+                        tribeID, destinationX, destinationY, 0, 0, Map::Units::Instructions::UMSE_0);
                     return (undefined4)(1);
                 }
             }

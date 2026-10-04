@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::Game::Market::BuySellPair;
+    using Game::Market::BuySellPair;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B7800
     void MapPropertiesState::importTradingCosts()

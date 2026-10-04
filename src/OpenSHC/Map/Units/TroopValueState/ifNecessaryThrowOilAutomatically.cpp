@@ -19,8 +19,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::Behavior::UnitStanceEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051C570
         undefined4 TroopValueState::ifNecessaryThrowOilAutomatically(int param_1)
@@ -47,7 +47,7 @@ namespace Map {
                 || ((iVar9 = (int)DAT_UnitsState::instance.units[param_1].owner,
                     DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar9] != -1
                         && (DAT_TribesState::instance.tribes[iVar10].unitStance
-                            == OpenSHC::Map::Units::Behavior::USE_STAND_GROUND)))) {
+                            == Map::Units::Behavior::USE_STAND_GROUND)))) {
                 return (undefined4)(0);
             }
             psVar1 = &DAT_UnitsState::instance.units[param_1].updateTickTracker;
@@ -55,11 +55,11 @@ namespace Map {
             if (7 < DAT_UnitsState::instance.units[param_1].updateTickTracker) {
                 iVar7 = DAT_UnitsState::instance.units[param_1].tile;
                 DAT_UnitsState::instance.units[param_1].updateTickTracker = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::computeTotalUnitsWithinDistance,
+                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeTotalUnitsWithinDistance,
                     DAT_PathFindingState::ptr)(iVar9, 0, 0, iVar7, iVar8);
                 iVar8 = DAT_PathFindingState::instance.field34_0x64;
                 if (DAT_TribesState::instance.tribes[iVar10].unitStance
-                    == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
+                    == Map::Units::Behavior::USE_AGGRESSIVE) {
                     if (DAT_PathFindingState::instance.ALGO_TotalTroopCount < 1) {
                         return (undefined4)(0);
                     }
@@ -72,19 +72,19 @@ namespace Map {
                                 [DAT_UnitsState::instance.units[DAT_PathFindingState::instance.field34_0x64].tile];
                     if (sVar2 != 0) {
                         switch (DAT_BuildingsState::instance.buildings[sVar2].buildingType) {
-                        case OpenSHC::Map::Buildings::BT_CAMPFIRE:
+                        case Map::Buildings::BT_CAMPFIRE:
                             param_1 = 4;
                             break;
                         default:
                             goto switchD_0051c693_caseD_34;
-                        case OpenSHC::Map::Buildings::BT_PARADEGROUND:
-                        case OpenSHC::Map::Buildings::BT_PARADEGROUND2:
-                        case OpenSHC::Map::Buildings::BT_PARADEGROUND3:
-                        case OpenSHC::Map::Buildings::BT_PARADEGROUND4:
-                        case OpenSHC::Map::Buildings::BT_PARADEGROUND5:
+                        case Map::Buildings::BT_PARADEGROUND:
+                        case Map::Buildings::BT_PARADEGROUND2:
+                        case Map::Buildings::BT_PARADEGROUND3:
+                        case Map::Buildings::BT_PARADEGROUND4:
+                        case Map::Buildings::BT_PARADEGROUND5:
                             param_1 = 5;
                             break;
-                        case OpenSHC::Map::Buildings::BT_CAMPGROUND:
+                        case Map::Buildings::BT_CAMPGROUND:
                             param_1 = 7;
                         }
                         uVar3 = DAT_BuildingsState::instance.buildings[sVar2].x;
@@ -93,7 +93,7 @@ namespace Map {
                         local_8 = 0;
                         local_c = 0;
                         do {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getBuildingSizeIndexMappingData,
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData,
                                 DAT_TileMapState::ptr)(iVar10, param_1);
                             uVar5 = DAT_TileMapState::instance.UnitLayer
                                         [DAT_ViewportRenderState::instance
@@ -107,13 +107,13 @@ namespace Map {
                                         == DAT_GameState::instance.mapAndTime
                                             .playerTeams[DAT_UnitsState::instance.units[iVar9].owner]) {
                                         iVar7 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
-                                            (OpenSHC::Map::Units::UnitType)DAT_UnitsState::instance.units[iVar9].unitType);
+                                            Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
+                                            (Map::Units::UnitType)DAT_UnitsState::instance.units[iVar9].unitType);
                                         local_8 = local_8 + iVar7;
                                     } else {
                                         iVar7 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
-                                            (OpenSHC::Map::Units::UnitType)DAT_UnitsState::instance.units[iVar9].unitType);
+                                            Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
+                                            (Map::Units::UnitType)DAT_UnitsState::instance.units[iVar9].unitType);
                                         local_c = local_c + iVar7;
                                     }
                                 }
@@ -126,7 +126,7 @@ namespace Map {
                         }
                     }
                 switchD_0051c693_caseD_34:
-                    DAT_UnitsState::instance.units[iVar6].targetingType = OpenSHC::Map::Units::UIT_THROW_OIL;
+                    DAT_UnitsState::instance.units[iVar6].targetingType = Map::Units::UIT_THROW_OIL;
                     DAT_UnitsState::instance.units[iVar6].attackAtTileX = DAT_UnitsState::instance.units[iVar8].x;
                     DAT_UnitsState::instance.units[iVar6].attackAtTileY = DAT_UnitsState::instance.units[iVar8].y;
                     DAT_UnitsState::instance.units[iVar6].animationFrame = 4;

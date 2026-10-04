@@ -17,7 +17,7 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00493980
     void MenuTextInputState::activateLoadOrSaveMapUI(int loadOrSaveMap)
@@ -25,11 +25,11 @@ namespace UI {
         int iVar1;
         int* piVar2;
         DAT_MouseState::instance.waitCursorToggle = 1;
-        MACRO_CALL(OpenSHC::UI::Helpers_Func::SetCursorDependingOnProgramState)();
-        MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
+        MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
+        MACRO_CALL(OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
         INT_00b95b64::instance = 1;
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)("maps\\*.map");
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_filterMapsIfMapLock, DAT_ResourceManager::ptr)();
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)("maps\\*.map");
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_filterMapsIfMapLock, DAT_ResourceManager::ptr)();
         this->field32_0x74 = DAT_ResourceManager::instance.mapFileCounter;
         iVar1 = 0;
         if (0 < DAT_ResourceManager::instance.mapFileCounter) {
@@ -53,14 +53,14 @@ namespace UI {
         DAT_MouseState::instance.waitCursorToggle = 0;
         this->field36_0x84 = 0x10;
         if (loadOrSaveMap == 9) {
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
-                OpenSHC::UI::Enums::MMT_LOAD_MAP);
+            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
+                UI::Enums::MMT_LOAD_MAP);
         } else {
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
-                OpenSHC::UI::Enums::MMT_SAVE_MAP);
+            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
+                UI::Enums::MMT_SAVE_MAP);
             DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(2);
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(2);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
             DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
         }
         this->field43_0xa0 = 0xffffffff;
@@ -73,7 +73,7 @@ namespace UI {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = 0;
                 this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(
+            MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(
                 -1 - this->field9_0x24);
         }
     }

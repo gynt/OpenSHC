@@ -129,7 +129,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.field248_0x109250 = 5;
                 }
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+            MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                     MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
             DAT_MenuTextInputState::instance.field38_0x8c = 0xffffffff;

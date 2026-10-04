@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::Building;
+    using Map::Buildings::BuildingLogicalState;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::Building;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A420
     void Version::UpgradeLogicAndDisplayLayerForDairyFarms()
@@ -23,8 +23,8 @@ namespace Map {
         pBVar1 = &DAT_BuildingsState::instance.buildings[1];
         do {
             if ((pBVar1->logicalState != ((BuildingLogicalState)0))
-                && (pBVar1->buildingType == OpenSHC::Map::Buildings::BT_DAIRYFARM)) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::markBuildingFootprintFlag, DAT_TileMapState::ptr)(
+                && (pBVar1->buildingType == Map::Buildings::BT_DAIRYFARM)) {
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::markBuildingFootprintFlag, DAT_TileMapState::ptr)(
                     (int)(short)pBVar1->x, (int)((int)((short)pBVar1->y)), 10);
             }
             pBVar1 = pBVar1 + 0x196;

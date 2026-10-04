@@ -25,13 +25,13 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::AI::AIV::AIVSpec;
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Map::ClimbData;
-    using OpenSHC::Map::Moat;
-    using OpenSHC::Map::PitchDitch;
-    using OpenSHC::Map::Entities::Entity;
-    using OpenSHC::Map::Units::Unit;
+    using AI::AIV::AIVSpec;
+    using Commands::GameCommandType;
+    using Map::ClimbData;
+    using Map::Moat;
+    using Map::PitchDitch;
+    using Map::Entities::Entity;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0048CC90
     void GameSynchronyState::recomputeHashesAndSendResync(int dontSendSyncCommand)
@@ -110,7 +110,7 @@ namespace Synchrony {
                     iVar45 = piVar40->field308_0x41c;
                     piVar40->field309_0x420 = 0;
                     piVar40->field308_0x41c = 0;
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(1028, (int*)((int)(&piVar40->logicalState)));
                     piVar44 = piVar40 + 0x124;
                     iVar20 = uVar19 + piVar40->animationLeapTicksTotal + piVar40->animationSpeed
@@ -131,7 +131,7 @@ namespace Synchrony {
                 do {
                     sVar5 = psVar38[0x16e];
                     psVar38[0x16e] = 0;
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x25c, (int*)((int)((psVar38 + 0x58))));
                     piVar41 = (int*)(psVar38 + 0x1a);
                     piVar1 = (int*)(psVar38 + 0x18);
@@ -153,7 +153,7 @@ namespace Synchrony {
                 _treeIndex = 0;
                 psVar38 = &DAT_LandscapeState::instance.trees[0].state;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(88, (int*)((int)(psVar38)));
                     psVar38 = psVar38 + 0x4e;
                     iVar39 = iVar39 + uVar19;
@@ -167,7 +167,7 @@ namespace Synchrony {
                 piVar41 = &DAT_TribesState::instance.tribes[0].owner;
                 _tribeIndex = 0;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(816, piVar41);
                     piVar41 = piVar41 + 0xcd;
                     iVar39 = iVar39 + uVar19;
@@ -178,7 +178,7 @@ namespace Synchrony {
                 this->HASH_HashTotal[this->currentPlayerSlotID]
                     = this->HASH_HashTotal[this->currentPlayerSlotID] + iVar39;
                 _hashSubTotal = 0;
-                piVar43 = (OpenSHC::Map::Units::Unit*)(&DAT_GameState::instance.playerDataArray[0].someAiCountdown3);
+                piVar43 = (Map::Units::Unit*)(&DAT_GameState::instance.playerDataArray[0].someAiCountdown3);
                 _playerDataIndex = 0;
                 do {
                     iVar39 = piVar43->animationFrame;
@@ -195,7 +195,7 @@ namespace Synchrony {
                     piVar43->animationFrame = 0;
                     piVar43->animationSpeed = 0;
                     piVar43->animationTicker = 0;
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(14748, (int*)((int)(piVar43 + -0xe13)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     this->HASH_PlayerDatas[this->currentPlayerSlotID][_playerDataIndex] = uVar19;
@@ -215,19 +215,19 @@ namespace Synchrony {
                 _someIndex = 0;
                 do {
                     iVar45 = _someIndex;
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(14566, piVar41);
                     piVar41 = (int*)((int)piVar41 + 14566);
                     iVar39 = iVar39 + uVar19;
                     this->HASH_Section1023[this->currentPlayerSlotID][iVar45] = uVar19;
                     _someIndex = iVar45 + 1;
                 } while ((int)piVar41 < 0x11bc94c);
-                uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                     DAT_DirectionAlgorithmState::ptr)(0x10,
                     (int*)((
                         int)(((int)DAT_GameState::instance.mapAndTime.signpostsMapEdge + iVar45 * 0x38e6 + 0x1022))));
                 this->HASH_Section1023[this->currentPlayerSlotID][iVar45 + 1] = uVar19;
-                uVar21 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                uVar21 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                     DAT_DirectionAlgorithmState::ptr)(
                     0x330, (int*)((int)(&DAT_AIVState::instance.mapExtraInfo.totalWoodAvailable)));
                 iVar39 = iVar39 + uVar19 + uVar21;
@@ -239,7 +239,7 @@ namespace Synchrony {
                 iVar45 = 0;
                 iVar39 = 0;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(2512, piVar41);
                     piVar41 = piVar41 + 0x274;
                     iVar45 = iVar45 + uVar19;
@@ -255,28 +255,28 @@ namespace Synchrony {
                     /*
                       tree and rock id tile map
                      */
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(2512, (int*)((int)((psVar38 + -0x13a10))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[3].componentArray[iVar39]
                         = uVar19;
                     /*
                       building id tile map
                      */
-                    uVar21 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar21 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)(psVar38)));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[4].componentArray[iVar39]
                         = uVar21;
                     /*
                       unit id tile map
                      */
-                    uVar22 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar22 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((psVar38 + 0x1d718))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[5].componentArray[iVar39]
                         = uVar22;
                     /*
                       entity id tile map
                      */
-                    uVar23 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar23 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((psVar38 + 0x31128))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[6].componentArray[iVar39]
                         = uVar23;
@@ -284,7 +284,7 @@ namespace Synchrony {
                     /*
                       area id tile map
                      */
-                    uVar24 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar24 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((psVar38 + 0xb0a90))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[8].componentArray[iVar39]
                         = uVar24;
@@ -296,77 +296,77 @@ namespace Synchrony {
                 pbVar42 = DAT_TileMapState::instance.WallOwnerLayer;
                 iVar39 = 0;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x62250))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[10].componentArray[iVar39]
                         = uVar19;
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xb].componentArray[iVar39] = 0;
                     uVar21 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
+                        Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
                         DAT_DirectionAlgorithmState::ptr)(2512, (uint*)((int)(pbVar42)), 0x7070707);
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xc].componentArray[iVar39]
                         = uVar21;
-                    uVar22 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar22 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0xc44a0))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xd].componentArray[iVar39]
                         = uVar22;
-                    uVar23 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar23 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0xd7eb0))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xe].componentArray[iVar39]
                         = uVar23;
-                    uVar24 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar24 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + -0x27420))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xf].componentArray[iVar39]
                         = uVar24;
-                    uVar25 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar25 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x14db10))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x10].componentArray[iVar39]
                         = uVar25;
-                    uVar26 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar26 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x13a100))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x11].componentArray[iVar39]
                         = uVar26;
-                    uVar27 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar27 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x174f30))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x12].componentArray[iVar39]
                         = uVar27;
-                    uVar28 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar28 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x161520))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x13].componentArray[iVar39]
                         = uVar28;
-                    uVar29 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar29 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x188940))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x14].componentArray[iVar39]
                         = uVar29;
-                    uVar30 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar30 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x19c350))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x15].componentArray[iVar39]
                         = uVar30;
-                    uVar31 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar31 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x1afd60))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x16].componentArray[iVar39]
                         = uVar31;
-                    uVar32 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar32 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x1c3770))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x17].componentArray[iVar39]
                         = uVar32;
-                    uVar33 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar33 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x1d7180))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x18].componentArray[iVar39]
                         = uVar33;
-                    uVar34 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar34 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x1eab90))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x19].componentArray[iVar39]
                         = uVar34;
-                    uVar35 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar35 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x1fe5a0))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x1a].componentArray[iVar39]
                         = uVar35;
-                    uVar36 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar36 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x211fb0))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0x1b].componentArray[iVar39]
                         = uVar36;
-                    uVar37 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar37 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + 0x2259c0))));
                     pbVar42 = pbVar42 + 0x9d0;
                     iVar45 = iVar45 + uVar19 + uVar21 + uVar22 + uVar23 + uVar24 + uVar25 + uVar26 + uVar27 + uVar28
@@ -411,7 +411,7 @@ namespace Synchrony {
                     *(int*)(psVar38 + 0x5c) = 0;
                     psVar38[0x5a] = 0;
                     psVar38[0x59] = 0;
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(0xe8, (int*)((int)(address)));
                     psVar38[8] = sVar5;
                     *psVar38 = sVar6;
@@ -439,7 +439,7 @@ namespace Synchrony {
                 uVar19 = 0;
                 address_00 = DAT_TileMapState::instance.moats;
                 do {
-                    uVar21 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar21 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(1600, (int*)((int)(address_00)));
                     _hashSubTotal = _hashSubTotal + uVar21;
                     _moatIndex = uVar19 / 100;
@@ -454,7 +454,7 @@ namespace Synchrony {
                 address_01 = DAT_PathFindingState::instance.climbData;
                 iVar39 = 0;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(516, (int*)((int)(&address_01->canBeUsed)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     address_01 = address_01 + 1;
@@ -468,7 +468,7 @@ namespace Synchrony {
                 _pitchDitchIndex = 0;
                 address_02 = DAT_TileMapState::instance.pitchDitches;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(2000, (int*)((int)(&address_02->tile)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     uVar21 = _pitchDitchIndex / 100;
@@ -490,7 +490,7 @@ namespace Synchrony {
                 address_03 = DAT_AIVState::instance.aivs;
                 _aivIndex = 0;
                 do {
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(28056, (int*)((int)(&address_03->playerID)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     address_03 = address_03 + 1;
@@ -508,7 +508,7 @@ namespace Synchrony {
                       fixme: it is wasteful to network latency to send the heatmap because it is a   derivative of the
                       map state, as long as the map and tree state is correct,   this is unnecessary
                      */
-                    uVar19 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::computeHash,
+                    uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                         DAT_DirectionAlgorithmState::ptr)(3840, (int*)((int)(_heatMapIndex)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     _heatMapIndex = _heatMapIndex + 0xf00;
@@ -519,8 +519,8 @@ namespace Synchrony {
                 this->HASH_HashTotal[this->currentPlayerSlotID]
                     = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
                 if (dontSendSyncCommand == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                        OpenSHC::Commands::GCT_ANNOUNCE_PLAYER_INFORMATION_AVAILABLE_AIVSSPECIALTRANSMITLOGIC);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                        Commands::GCT_ANNOUNCE_PLAYER_INFORMATION_AVAILABLE_AIVSSPECIALTRANSMITLOGIC);
                 }
             } else {
                 this->DAT_HashCountdown = this->DAT_HashCountdown + -1;

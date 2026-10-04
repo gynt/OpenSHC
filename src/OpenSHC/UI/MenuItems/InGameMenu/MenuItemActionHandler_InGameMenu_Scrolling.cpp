@@ -18,28 +18,28 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::UI::Enums::DisplayElementID;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using UI::Enums::DisplayElementID;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00434120
         void InGameMenu::MenuItemActionHandler_InGameMenu_Scrolling(int param_1, ...)
         {
             BOOLEnum _debugNumbersDisplayed;
             int _scrollDistance;
-            _debugNumbersDisplayed = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-                OpenSHC::UI::Enums::DEID_DEBUG_NUMBERS);
+            _debugNumbersDisplayed = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                UI::Enums::DEID_DEBUG_NUMBERS);
             if (_debugNumbersDisplayed == FALSE) {
                 /*
                   This call uses the function to compute the needed numbers, but the given   element state indicates to
                   not print the debug numbers. -TheRedDaemon
                  */
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::RenderDebugNumbersDisplayElement)(0, 0, 0xfffffc18);
+                MACRO_CALL(UI::DisplayElements_Func::RenderDebugNumbersDisplayElement)(0, 0, 0xfffffc18);
             }
             if (DAT_MouseState::instance.selectionBoxMode != 0) {}
             if (DAT_MouseState::instance.rightClickState != FALSE) {}
             _scrollDistance = MACRO_CALL_MEMBER(
-                OpenSHC::UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
+                UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
             if (_scrollDistance == 0) {}
             if ((DAT_CurrentFramerate::instance < (int)DAT_GameCore::instance.gameSpeedLevel)
                 && (DAT_CurrentFramerate::instance != 0)) {
@@ -82,10 +82,10 @@ namespace UI {
                     = DAT_ViewportRenderState::instance.viewportState.viewportY - _scrollDistance;
                 goto switchD_004341a6_caseD_6;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
+            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
                 DAT_ViewportRenderState::ptr)();
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::RecordTutorialPlayerAction)(1);
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
+                MACRO_CALL(UI::Helpers_Func::RecordTutorialPlayerAction)(1);
             }
         }
 

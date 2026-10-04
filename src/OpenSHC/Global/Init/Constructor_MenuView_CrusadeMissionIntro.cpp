@@ -14,20 +14,20 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A9A0
     void Init::Constructor_MenuView_CrusadeMissionIntro()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_CrusadeMissionIntro::ptr)(
-            OpenSHC::UI::Enums::MVT_CRUSADE_MISSION_INTRO,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::CrusadeMissionIntro_Func::MenuView_CrusadeMissionIntro_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_CrusadeAndRankMenu),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::CrusadeMissionIntro_Func::MenuView_CrusadeMissionIntro_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_CrusadeMissionIntro));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_CrusadeMissionIntro::ptr)(
+            UI::Enums::MVT_CRUSADE_MISSION_INTRO,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::CrusadeMissionIntro_Func::MenuView_CrusadeMissionIntro_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_CrusadeAndRankMenu),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::CrusadeMissionIntro_Func::MenuView_CrusadeMissionIntro_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_CrusadeMissionIntro));
         return;
     }
 

@@ -14,21 +14,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A880
     void Init::Constructor_MenuView_HistoricMissionPicture()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricMissionPicture::ptr)(
-            OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_PICTURE,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::HistoricMissionPicture_Func::MenuView_HistoricMissionPicture_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBorderAndGfx),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::HistoricMissionPicture_Func::MenuView_HistoricMissionPicture_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_HistoricMissionPicture));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricMissionPicture::ptr)(
+            UI::Enums::MVT_HISTORIC_MISSION_PICTURE,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::HistoricMissionPicture_Func::MenuView_HistoricMissionPicture_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBorderAndGfx),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::HistoricMissionPicture_Func::MenuView_HistoricMissionPicture_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricMissionPicture));
         return;
     }
 

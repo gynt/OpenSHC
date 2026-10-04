@@ -18,12 +18,12 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Game::TrailType;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::UnitTypeInt;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using Game::TrailType;
+        using Map::Units::UnitType;
+        using Map::Units::UnitTypeInt;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00527440
         void TribesState::spawnQueuedReinforcementWaves()
@@ -55,19 +55,19 @@ namespace Map {
             _unitType = ((UnitType)0);
             _destinationIndexTracker = 0;
             bVar2 = false;
-            if ((((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                     && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-                    && ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
-                        || (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk
-                                 || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL))
+            if ((((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+                    && ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
+                        || (((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
+                                 || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL))
                             || (0 < DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .keep.id))))))
                 && (-1 < DAT_GameState::instance.mapAndTime.countUpTo201)) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateTribeUnitAssignments, this)();
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateTribeUnitAssignments, this)();
                 _playerID_2 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL)) {
+                if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                    || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL)) {
                     pSVar8 = &DAT_GameState::instance.mapAndTime.siegeInformation;
                     do {
                         iVar3 = 100;
@@ -100,75 +100,75 @@ namespace Map {
                             switch (_siegeInfoSubIndex) {
                             case 0:
                                 _tribeType = 3;
-                                _unitType = OpenSHC::Map::Units::UT_E_ARCHER;
+                                _unitType = Map::Units::UT_E_ARCHER;
                                 break;
                             case 1:
                                 _tribeType = 7;
-                                _unitType = OpenSHC::Map::Units::UT_E_XBOW;
+                                _unitType = Map::Units::UT_E_XBOW;
                                 break;
                             case 2:
                                 _tribeType = 5;
-                                _unitType = OpenSHC::Map::Units::UT_E_SPEAR;
+                                _unitType = Map::Units::UT_E_SPEAR;
                                 break;
                             case 3:
                                 _tribeType = 6;
-                                _unitType = OpenSHC::Map::Units::UT_E_PIKE;
+                                _unitType = Map::Units::UT_E_PIKE;
                                 break;
                             case 4:
                                 _tribeType = 9;
-                                _unitType = OpenSHC::Map::Units::UT_E_MACE;
+                                _unitType = Map::Units::UT_E_MACE;
                                 break;
                             case 5:
                                 _tribeType = 8;
-                                _unitType = OpenSHC::Map::Units::UT_E_SWORD;
+                                _unitType = Map::Units::UT_E_SWORD;
                                 break;
                             case 6:
                                 _tribeType = 10;
-                                _unitType = OpenSHC::Map::Units::UT_E_KNIGHT;
+                                _unitType = Map::Units::UT_E_KNIGHT;
                                 break;
                             case 7:
                                 _tribeType = 4;
-                                _unitType = OpenSHC::Map::Units::UT_E_LADDER;
+                                _unitType = Map::Units::UT_E_LADDER;
                                 break;
                             case 8:
                                 _tribeType = 0xb;
-                                _unitType = OpenSHC::Map::Units::UT_E_ENGINEER;
+                                _unitType = Map::Units::UT_E_ENGINEER;
                                 break;
                             case 9:
                                 _tribeType = 0xc;
-                                _unitType = OpenSHC::Map::Units::UT_E_MONK;
+                                _unitType = Map::Units::UT_E_MONK;
                                 break;
                             case 10:
                                 _tribeType = 0x19;
-                                _unitType = OpenSHC::Map::Units::UT_A_ARCHER;
+                                _unitType = Map::Units::UT_A_ARCHER;
                                 break;
                             case 0xb:
                                 _tribeType = 0x1a;
-                                _unitType = OpenSHC::Map::Units::UT_A_SLAVE;
+                                _unitType = Map::Units::UT_A_SLAVE;
                                 break;
                             case 0xc:
                                 _tribeType = 0x1b;
-                                _unitType = OpenSHC::Map::Units::UT_A_SLINGER;
+                                _unitType = Map::Units::UT_A_SLINGER;
                                 break;
                             case 0xd:
                                 _tribeType = 0x1c;
-                                _unitType = OpenSHC::Map::Units::UT_A_ASSASSIN;
+                                _unitType = Map::Units::UT_A_ASSASSIN;
                                 break;
                             case 0xe:
                                 _tribeType = 0x1d;
-                                _unitType = OpenSHC::Map::Units::UT_A_HARCHER;
+                                _unitType = Map::Units::UT_A_HARCHER;
                                 break;
                             case 0xf:
                                 _tribeType = 0x1e;
-                                _unitType = OpenSHC::Map::Units::UT_A_SWORDSMAN;
+                                _unitType = Map::Units::UT_A_SWORDSMAN;
                                 break;
                             case 0x10:
                                 _tribeType = 0x1f;
-                                _unitType = OpenSHC::Map::Units::UT_A_FIRETHROWER;
+                                _unitType = Map::Units::UT_A_FIRETHROWER;
                                 break;
                             case 0x11:
                                 _tribeType = 0x18;
-                                _unitType = OpenSHC::Map::Units::UT_S_FBALLISTA;
+                                _unitType = Map::Units::UT_S_FBALLISTA;
                             }
                             do {
                                 _count = DAT_GameState::instance.mapAndTime.startGoods[_siegeInfoSubIndex + 0x19];
@@ -184,7 +184,7 @@ namespace Map {
                                 }
                                 _nextDestination = _destinationIndexTracker + 1;
                                 _tribeID1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TribesState_Func::createTribeWithSpawnedUnit, this)(
+                                    Map::Units::TribesState_Func::createTribeWithSpawnedUnit, this)(
                                     (short)_destinationIndexTracker, (undefined4)((int)(_tribeType)),
                                     DAT_GameState::instance.mapAndTime.unitMoveDestinationXYPairs[0][_destinationIndex]
                                         .x,
@@ -208,17 +208,17 @@ namespace Map {
                         if (0x27 < _destinationIndexTracker) {
                             iVar5 = 0;
                         }
-                        dVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribeWithSpawnedUnit,
+                        dVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribeWithSpawnedUnit,
                             this)((short)_destinationIndexTracker, 2,
                             DAT_GameState::instance.mapAndTime.unitMoveDestinationXYPairs[0][iVar5].x,
                             DAT_GameState::instance.mapAndTime.unitMoveDestinationXYPairs[0][iVar5].y, 2,
-                            OpenSHC::Map::Units::UT_TUNNELER, iVar6);
+                            Map::Units::UT_TUNNELER, iVar6);
                         this->tribes[dVar4].unknownAttackRelatedUpdateCounter = 0x32;
                         iVar3 = iVar3 - iVar6;
                         _destinationIndexTracker = _destinationIndexTracker + 1;
                     }
                     DAT_GameState::instance.mapAndTime.countUpTo201 = -1;
-                } else if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                } else if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     DAT_GameState::instance.mapAndTime.countUpTo201
                         = DAT_GameState::instance.mapAndTime.countUpTo201 + 1;
                     if (200 < DAT_GameState::instance.mapAndTime.countUpTo201) {
@@ -237,39 +237,39 @@ namespace Map {
                         switch (iVar3) {
                         case 0:
                             _tribeType = 3;
-                            _unitType = OpenSHC::Map::Units::UT_E_ARCHER;
+                            _unitType = Map::Units::UT_E_ARCHER;
                             break;
                         case 1:
                             _tribeType = 7;
-                            _unitType = OpenSHC::Map::Units::UT_E_XBOW;
+                            _unitType = Map::Units::UT_E_XBOW;
                             break;
                         case 2:
                             _tribeType = 5;
-                            _unitType = OpenSHC::Map::Units::UT_E_SPEAR;
+                            _unitType = Map::Units::UT_E_SPEAR;
                             break;
                         case 3:
                             _tribeType = 6;
-                            _unitType = OpenSHC::Map::Units::UT_E_PIKE;
+                            _unitType = Map::Units::UT_E_PIKE;
                             break;
                         case 4:
                             _tribeType = 9;
-                            _unitType = OpenSHC::Map::Units::UT_E_MACE;
+                            _unitType = Map::Units::UT_E_MACE;
                             break;
                         case 5:
                             _tribeType = 8;
-                            _unitType = OpenSHC::Map::Units::UT_E_SWORD;
+                            _unitType = Map::Units::UT_E_SWORD;
                             break;
                         case 6:
                             _tribeType = 10;
-                            _unitType = OpenSHC::Map::Units::UT_E_KNIGHT;
+                            _unitType = Map::Units::UT_E_KNIGHT;
                             break;
                         case 8:
                             _tribeType = 0xb;
-                            _unitType = OpenSHC::Map::Units::UT_E_ENGINEER;
+                            _unitType = Map::Units::UT_E_ENGINEER;
                             break;
                         case 9:
                             _tribeType = 0xc;
-                            _unitType = OpenSHC::Map::Units::UT_E_MONK;
+                            _unitType = Map::Units::UT_E_MONK;
                         }
                         iVar6 = DAT_GameState::instance.mapAndTime.startGoods[iVar3 + 0x19];
                         _unitType1Count = iVar6;
@@ -282,7 +282,7 @@ namespace Map {
                         do {
                             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1)
                                 || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
-                                dVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::spawnUnitsIntoNewTribe,
+                                dVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnUnitsIntoNewTribe,
                                     this)(_destinationIndexTracker, _tribeType, (int)((int)(*piVar7)),
                                     (int)((int)(piVar7[1])), _playerID, (UnitType)((int)(_unitType)), ((UnitType)0),
                                     _unitType1Count, 0);
@@ -303,35 +303,35 @@ namespace Map {
                         switch (iVar3) {
                         case 10:
                             _tribeType = 0x19;
-                            _unitType = OpenSHC::Map::Units::UT_A_ARCHER;
+                            _unitType = Map::Units::UT_A_ARCHER;
                             break;
                         case 0xb:
                             _tribeType = 0x1a;
-                            _unitType = OpenSHC::Map::Units::UT_A_SLAVE;
+                            _unitType = Map::Units::UT_A_SLAVE;
                             break;
                         case 0xc:
                             _tribeType = 0x1b;
-                            _unitType = OpenSHC::Map::Units::UT_A_SLINGER;
+                            _unitType = Map::Units::UT_A_SLINGER;
                             break;
                         case 0xd:
                             _tribeType = 0x1c;
-                            _unitType = OpenSHC::Map::Units::UT_A_ASSASSIN;
+                            _unitType = Map::Units::UT_A_ASSASSIN;
                             break;
                         case 0xe:
                             _tribeType = 0x1d;
-                            _unitType = OpenSHC::Map::Units::UT_A_HARCHER;
+                            _unitType = Map::Units::UT_A_HARCHER;
                             break;
                         case 0xf:
                             _tribeType = 0x1e;
-                            _unitType = OpenSHC::Map::Units::UT_A_SWORDSMAN;
+                            _unitType = Map::Units::UT_A_SWORDSMAN;
                             break;
                         case 0x10:
                             _tribeType = 0x1f;
-                            _unitType = OpenSHC::Map::Units::UT_A_FIRETHROWER;
+                            _unitType = Map::Units::UT_A_FIRETHROWER;
                             break;
                         case 0x11:
                             _tribeType = 0x18;
-                            _unitType = OpenSHC::Map::Units::UT_S_FBALLISTA;
+                            _unitType = Map::Units::UT_S_FBALLISTA;
                         }
                         iVar6 = DAT_GameState::instance.mapAndTime.startGoods[iVar3 + 0x19];
                         _unitType1Count = iVar6;
@@ -344,7 +344,7 @@ namespace Map {
                         do {
                             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar5] != -1)
                                 || (DAT_GameSynchronyState::instance.currentAIArray[iVar5] != 0)) {
-                                dVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::spawnUnitsIntoNewTribe,
+                                dVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnUnitsIntoNewTribe,
                                     this)(_destinationIndexTracker, _tribeType, (int)((int)(*piVar7)),
                                     (int)((int)(piVar7[1])), iVar5, (UnitType)((int)(_unitType)), ((UnitType)0),
                                     _unitType1Count, 0);
@@ -361,14 +361,14 @@ namespace Map {
                         }
                     }
                 } else if ((DAT_GameSynchronyState::instance.currentGameMode
-                               == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
+                               == Game::GM_SKIRMISH_SINGLE_PLAYER)
                     || (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0)) {
                     DAT_GameState::instance.mapAndTime.countUpTo201
                         = DAT_GameState::instance.mapAndTime.countUpTo201 + 1;
                     iVar3 = 200;
-                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                    if ((DAT_GameCore::instance.gameMode_2 == Game::GM_SKIRMISH_AND_MULTIPLAYER)
                         && ((DAT_GameCore::instance.isSkirmishTrail == TRUE
-                            && (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME)))) {
+                            && (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME)))) {
                         iVar3 = 0x32;
                     }
                     if (iVar3 < DAT_GameState::instance.mapAndTime.countUpTo201) {
@@ -390,71 +390,71 @@ namespace Map {
                                         switch (iVar3) {
                                         case 0:
                                             _tribeType = 3;
-                                            _unitType = OpenSHC::Map::Units::UT_E_ARCHER;
+                                            _unitType = Map::Units::UT_E_ARCHER;
                                             break;
                                         case 1:
                                             _tribeType = 7;
-                                            _unitType = OpenSHC::Map::Units::UT_E_XBOW;
+                                            _unitType = Map::Units::UT_E_XBOW;
                                             break;
                                         case 2:
                                             _tribeType = 5;
-                                            _unitType = OpenSHC::Map::Units::UT_E_SPEAR;
+                                            _unitType = Map::Units::UT_E_SPEAR;
                                             break;
                                         case 3:
                                             _tribeType = 6;
-                                            _unitType = OpenSHC::Map::Units::UT_E_PIKE;
+                                            _unitType = Map::Units::UT_E_PIKE;
                                             break;
                                         case 4:
                                             _tribeType = 9;
-                                            _unitType = OpenSHC::Map::Units::UT_E_MACE;
+                                            _unitType = Map::Units::UT_E_MACE;
                                             break;
                                         case 5:
                                             _tribeType = 8;
-                                            _unitType = OpenSHC::Map::Units::UT_E_SWORD;
+                                            _unitType = Map::Units::UT_E_SWORD;
                                             break;
                                         case 6:
                                             _tribeType = 10;
-                                            _unitType = OpenSHC::Map::Units::UT_E_KNIGHT;
+                                            _unitType = Map::Units::UT_E_KNIGHT;
                                             break;
                                         case 8:
                                             _tribeType = 0xb;
-                                            _unitType = OpenSHC::Map::Units::UT_E_ENGINEER;
+                                            _unitType = Map::Units::UT_E_ENGINEER;
                                             break;
                                         case 9:
                                             _tribeType = 0xc;
-                                            _unitType = OpenSHC::Map::Units::UT_E_MONK;
+                                            _unitType = Map::Units::UT_E_MONK;
                                             break;
                                         case 10:
                                             _tribeType = 0x19;
-                                            _unitType = OpenSHC::Map::Units::UT_A_ARCHER;
+                                            _unitType = Map::Units::UT_A_ARCHER;
                                             break;
                                         case 0xb:
                                             _tribeType = 0x1a;
-                                            _unitType = OpenSHC::Map::Units::UT_A_SLAVE;
+                                            _unitType = Map::Units::UT_A_SLAVE;
                                             break;
                                         case 0xc:
                                             _tribeType = 0x1b;
-                                            _unitType = OpenSHC::Map::Units::UT_A_SLINGER;
+                                            _unitType = Map::Units::UT_A_SLINGER;
                                             break;
                                         case 0xd:
                                             _tribeType = 0x1c;
-                                            _unitType = OpenSHC::Map::Units::UT_A_ASSASSIN;
+                                            _unitType = Map::Units::UT_A_ASSASSIN;
                                             break;
                                         case 0xe:
                                             _tribeType = 0x1d;
-                                            _unitType = OpenSHC::Map::Units::UT_A_HARCHER;
+                                            _unitType = Map::Units::UT_A_HARCHER;
                                             break;
                                         case 0xf:
                                             _tribeType = 0x1e;
-                                            _unitType = OpenSHC::Map::Units::UT_A_SWORDSMAN;
+                                            _unitType = Map::Units::UT_A_SWORDSMAN;
                                             break;
                                         case 0x10:
                                             _tribeType = 0x1f;
-                                            _unitType = OpenSHC::Map::Units::UT_A_FIRETHROWER;
+                                            _unitType = Map::Units::UT_A_FIRETHROWER;
                                             break;
                                         case 0x11:
                                             _tribeType = 0x18;
-                                            _unitType = OpenSHC::Map::Units::UT_S_FBALLISTA;
+                                            _unitType = Map::Units::UT_S_FBALLISTA;
                                         }
                                         iVar6 = *(int*)(DAT_GameState::instance.mapAndTime.unused_0x3ff00
                                             + (_unitType1Count + iVar3) * 4);
@@ -465,7 +465,7 @@ namespace Map {
                                         *(int*)(DAT_GameState::instance.mapAndTime.unused_0x3ff00
                                             + (_unitType1Count + iVar3) * 4) = iVar6 - iVar5;
                                         dVar4 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TribesState_Func::spawnUnitsIntoNewTribe, this)(
+                                            Map::Units::TribesState_Func::spawnUnitsIntoNewTribe, this)(
                                             _destinationIndexTracker, _tribeType, (int)((int)(*piVar7)),
                                             (int)((int)(piVar7[1])), local_4, (UnitType)((int)(_unitType)),
                                             ((UnitType)0), iVar5, 0);

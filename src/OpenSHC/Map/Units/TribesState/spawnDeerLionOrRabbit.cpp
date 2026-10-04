@@ -15,9 +15,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00525F20
         BOOLEnum TribesState::spawnDeerLionOrRabbit(int tribeID, int param_2, UnitType unitType)
@@ -33,16 +33,16 @@ namespace Map {
             int _unitX;
             int _targetUnitID;
             int _unitY;
-            if ((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
+            if ((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
                 && (0 < tribeID)) {
                 if (this->tribes[tribeID].field133_0x278 != 0) {
                     return FALSE;
                 }
                 _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
                 _finalTargetUnitID = (int)_targetUnitID;
-                if (unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
+                if (unitType == Map::Units::UT_ANTELOPESHDEER) {
                     _finalTargetUnitID
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getNonDyingUnit, this)(tribeID);
+                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getNonDyingUnit, this)(tribeID);
                     if (_finalTargetUnitID == 0) {
                         _finalTargetUnitID = (int)_targetUnitID;
                     }
@@ -61,27 +61,27 @@ namespace Map {
                 if ((param_2 <= this->tribes[tribeID].field139_0x284)
                     && (sVar2 = this->tribes[tribeID].field138_0x282, this->tribes[tribeID].field139_0x284 = 0,
                         _tribeSize < sVar2)) {
-                    if ((unitType == OpenSHC::Map::Units::UT_RABBIT)
+                    if ((unitType == Map::Units::UT_RABBIT)
                         && (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation != 0)) {
                         iVar3 = 110;
                     } else {
                         iVar3 = ((_unknown <= _tribeSize) - 1 & 0xffffffb5) + 100;
                     }
                     if (iVar3 <= (int)(_rng2 & 0x7f)) {
-                        _rng2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                        _rng2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                             0, 0, (int)((int)(_unitX * 8)), (int)((int)(_unitY * 8)), (int)((int)(_terrainHeight)),
                             unitType);
                         if (_rng2 != 0) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                                 _rng2, tribeID);
                             DAT_UnitsState::instance.units[_rng2].substate
                                 = (byte)DAT_UnitsState::instance.units[_rng2].fixedRng & 3;
-                            if (unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
+                            if (unitType == Map::Units::UT_ANTELOPESHDEER) {
                                 DAT_UnitsState::instance.units[_rng2].antelopeBasedRngValue = 2;
                             }
                             DAT_UnitsState::instance.units[_rng2].disappearFadeAlphaCountdown = 0x20;
-                            if (unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateAnimalHerdBehaviorState,
+                            if (unitType == Map::Units::UT_ANTELOPESHDEER) {
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateAnimalHerdBehaviorState,
                                     this)(tribeID);
                             }
                             return TRUE;

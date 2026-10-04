@@ -13,9 +13,9 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C9F0
     void Init::Constructor_AlphaAndButtonSurface()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::Constructor_AlphaAndButtonSurface,
+        MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::Constructor_AlphaAndButtonSurface,
             AlphaAndButtonSurfaceObj::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_AlphaAndButtonSurface));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_AlphaAndButtonSurface));
         return;
     }
 

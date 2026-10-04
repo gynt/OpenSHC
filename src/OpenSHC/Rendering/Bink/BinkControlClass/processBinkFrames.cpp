@@ -11,8 +11,8 @@ namespace OpenSHC {
 namespace Rendering {
     namespace Bink {
 
-        using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::MSS::enums::SHC_SoundStream;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00409200
         void BinkControlClass::processBinkFrames()
@@ -26,16 +26,16 @@ namespace Rendering {
             _ptrInBinkControlStruct = (BinkControlClass*)this->soundStreamIndex;
             _binkObjIndex = 0;
             do {
-                if (_ptrInBinkControlStruct->soundStreamIndex[0] != OpenSHC::Audio::MSS::enums::SND_STR_MUSIC) {
+                if (_ptrInBinkControlStruct->soundStreamIndex[0] != Audio::MSS::enums::SND_STR_MUSIC) {
                     _streamPlaying = MACRO_CALL_MEMBER(
-                        OpenSHC::Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
-                        (OpenSHC::Audio::MSS::enums::SHC_SoundStream)(_ptrInBinkControlStruct->soundStreamIndex[0]));
+                        Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
+                        (Audio::MSS::enums::SHC_SoundStream)(_ptrInBinkControlStruct->soundStreamIndex[0]));
                     if (_streamPlaying != FALSE) {
                         _currentSysTime = timeGetTime();
                         if (_currentSysTime - _ptrInBinkControlStruct->startTime[0] < 20000)
                             goto LAB_0040923b;
                     }
-                    _ptrInBinkControlStruct->soundStreamIndex[0] = OpenSHC::Audio::MSS::enums::SND_STR_MUSIC;
+                    _ptrInBinkControlStruct->soundStreamIndex[0] = Audio::MSS::enums::SND_STR_MUSIC;
                 }
             LAB_0040923b:
                 _ptrInBinkControlStruct->unknown01_zero[0] = 0;
@@ -48,10 +48,10 @@ namespace Rendering {
                         if ((_binkObjPtr->FrameNum == _binkObjPtr->Frames)
                             && (_ptrInBinkControlStruct->unknownParam03[0] == 0)) {
                             if (_ptrInBinkControlStruct->soundStreamIndex[0]
-                                == OpenSHC::Audio::MSS::enums::SND_STR_MUSIC) {
+                                == Audio::MSS::enums::SND_STR_MUSIC) {
                                 if (_ptrInBinkControlStruct->unknownParam07[0] != 2) {
                                     _ptrInBinkControlStruct->unknown01_zero[0] = 1;
-                                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
+                                    MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
                                         this)(_binkObjIndex);
                                     goto LAB_0040929d;
                                 }

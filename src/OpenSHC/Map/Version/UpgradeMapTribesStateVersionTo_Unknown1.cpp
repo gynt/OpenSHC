@@ -23,7 +23,7 @@ namespace Map {
                     psVar2[0x126] = sVar1 / 2;
                     psVar2[0x127] = sVar1 * 2;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::trimTribeToSize, DAT_TribesState::ptr)(
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trimTribeToSize, DAT_TribesState::ptr)(
                         tribeID, 0x1e);
                     psVar2[0x126] = 0xf;
                     psVar2[0x127] = 0x3c;

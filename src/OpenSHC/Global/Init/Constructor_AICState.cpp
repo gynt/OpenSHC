@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CBE0
     void Init::Constructor_AICState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::Constructor_AICState, DAT_AICState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d740));
+        MACRO_CALL_MEMBER(AI::AICState_Func::Constructor_AICState, DAT_AICState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d740));
         return;
     }
 

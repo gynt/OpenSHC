@@ -23,11 +23,11 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::RoundedBoxEdgeRoundingLevel;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Text::TextAlignment;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::RoundedBoxEdgeRoundingLevel;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00426FB0
         void Unused::MenuItemRenderFunction_UnusedSomeMissionStartUnk_General(int param_1, ...)
@@ -41,33 +41,33 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), UI::Enums::RBERL_SLIGHT);
                     backgroundColor = 0x3e66;
                     foregroundColor = 0xa2ff;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
+                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                        (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                        (ushort)((int)(COL_BLUE::instance.shortValue)), UI::Enums::RBERL_SLIGHT);
                     backgroundColor = 0;
                     foregroundColor = 0xffffff;
                 }
                 blendStrength = 0;
                 keepOffsetX = FALSE;
                 fontSize = 0x11;
-                alignment = OpenSHC::Text::TTA_CENTER;
+                alignment = Text::TTA_CENTER;
                 xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, param_1);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAINOPTIONS, param_1);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
                     backgroundColor, fontSize, keepOffsetX, blendStrength);
             }

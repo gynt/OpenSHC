@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Audio {
 
-    using OpenSHC::Game::Resources::ResourceType;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0044A830
     int SFX::ComputePlayerPoints1(int playerID)
@@ -55,62 +55,62 @@ namespace Audio {
         int _totalTroopValue;
         _currentGold = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xf];
         _totalTroopValue = DAT_GameState::instance.playerDataArray[playerID].totalTroopValue;
-        _appleSalesPrice = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood,
-            DAT_GameState::ptr)(OpenSHC::Game::Resources::RT_APPLE);
+        _appleSalesPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood,
+            DAT_GameState::ptr)(Game::Resources::RT_APPLE);
         _currentApple = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xd];
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_MEAT);
+        iVar1 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_MEAT);
         _currentMeat = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xc];
-        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_CHEESE);
+        iVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_CHEESE);
         _currentCheese = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xb];
-        iVar3 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_BREAD);
+        iVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_BREAD);
         _currentBread = DAT_GameState::instance.playerDataArray[playerID].currentResources[10];
-        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_IRONARMOR);
+        iVar4 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_IRONARMOR);
         _currentArmor = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x18];
-        iVar5 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_LEATHERARMOR);
+        iVar5 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_LEATHERARMOR);
         _currentLeather = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x17];
-        iVar6 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_SWORD);
+        iVar6 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_SWORD);
         _currentSword = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x16];
-        iVar7 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_MACE);
+        iVar7 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_MACE);
         _currentMace = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x15];
-        iVar8 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_PIKE);
+        iVar8 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_PIKE);
         _currentPike = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x14];
-        iVar9 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_SPEAR);
+        iVar9 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_SPEAR);
         _currentSpear = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x13];
-        iVar10 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_CROSSBOW);
+        iVar10 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_CROSSBOW);
         _currentCrossbow = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x12];
-        iVar11 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_BOW);
+        iVar11 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_BOW);
         _currentBow = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x11];
-        iVar12 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_FLOUR);
+        iVar12 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_FLOUR);
         _currentFlour = DAT_GameState::instance.playerDataArray[playerID].currentResources[0x10];
-        iVar13 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_ALE);
+        iVar13 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_ALE);
         _currentBeer = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xe];
-        iVar14 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_PARTIALPITCH);
+        iVar14 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_PARTIALPITCH);
         _currentPartialPitch = DAT_GameState::instance.playerDataArray[playerID].currentResources[8];
-        iVar15 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_IRON);
+        iVar15 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_IRON);
         _currentIron = DAT_GameState::instance.playerDataArray[playerID].currentResources[6];
-        iVar16 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_STONE);
+        iVar16 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_STONE);
         _currentStone = DAT_GameState::instance.playerDataArray[playerID].currentResources[4];
-        iVar17 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
-            OpenSHC::Game::Resources::RT_HOPS);
+        iVar17 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_HOPS);
         _currentHops = DAT_GameState::instance.playerDataArray[playerID].currentResources[3];
-        _woodSalesPriceDividedBy5 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalePriceOfGood,
-            DAT_GameState::ptr)(OpenSHC::Game::Resources::RT_WOOD);
+        _woodSalesPriceDividedBy5 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood,
+            DAT_GameState::ptr)(Game::Resources::RT_WOOD);
         return (_woodSalesPriceDividedBy5 * DAT_GameState::instance.playerDataArray[playerID].currentResources[2]
                    + iVar17 * _currentHops + iVar16 * _currentStone + iVar15 * _currentIron
                    + iVar14 * _currentPartialPitch + iVar13 * _currentBeer + iVar12 * _currentFlour)

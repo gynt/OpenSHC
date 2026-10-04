@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::DE::SHCDE::eSFX;
+        using DE::SHCDE::eSFX;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00403FF0
         void EntityState::handleProjectileWallBounce(int param_1)
@@ -46,7 +46,7 @@ namespace Map {
             iVar5 = 0;
             iVar9 = 0;
             uVar6 = y & 7;
-            _bitFlag = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep,
+            _bitFlag = MACRO_CALL_MEMBER(Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep,
                 DAT_TileMapState::ptr)(x / 8, (int)((int)(y / 8)));
             switch (this->entityArray[param_1].orientation) {
             case 0x3c:
@@ -326,7 +326,7 @@ namespace Map {
             default:
                 break;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
                 DAT_DirectionAlgorithmState::ptr)(x, (int)((int)(y)), iVar5, iVar9);
             this->entityArray[param_1].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             sVar7 = (short)iVar9;
@@ -397,13 +397,13 @@ namespace Map {
             this->entityArray[param_1].vCos = (float)((double)(int)sVar8 * fVar14);
             fVar13 = sin((double)fVar13);
             this->entityArray[param_1].vSin = (float)((double)(int)sVar8 * fVar13);
-            uVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar9);
+            uVar2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar9);
             sVar4 = this->entityArray[param_1].xPosition;
             this->entityArray[param_1].field45_0x6a = (short)uVar2;
             sVar8 = this->entityArray[param_1].yPosition;
             this->entityArray[param_1].gmLookupValue = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                (int)sVar4, (int)((int)(sVar8)), OpenSHC::DE::SHCDE::FX_ARROW_BOUNCE);
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                (int)sVar4, (int)((int)(sVar8)), DE::SHCDE::FX_ARROW_BOUNCE);
             return;
         }
 

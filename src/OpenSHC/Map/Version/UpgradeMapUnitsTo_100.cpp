@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::Unit;
+    using Map::Units::UnitLogicState;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B380
     void Version::UpgradeMapUnitsTo_100()
@@ -23,7 +23,7 @@ namespace Map {
         DAT_CurrentUnitSlotID::instance = 1;
         psVar3 = &DAT_UnitsState::instance.units[1];
         do {
-            if ((psVar3->logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+            if ((psVar3->logicalState == Map::Units::ULS_NORMAL)
                 && (iVar2 = (int)psVar3->workplaceBuildingID_1, iVar2 != 0)) {
                 iVar1 = psVar3->uid;
                 DAT_BuildingsState::instance.buildings[iVar2].unitRefID = (short)DAT_CurrentUnitSlotID::instance;

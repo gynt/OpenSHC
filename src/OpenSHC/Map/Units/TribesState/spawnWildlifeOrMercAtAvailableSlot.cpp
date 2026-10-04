@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::Game::GameMode;
+        using Commands::MappersEnum;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005262A0
         void TribesState::spawnWildlifeOrMercAtAvailableSlot()
@@ -24,7 +24,7 @@ namespace Map {
             short* psVar3;
             uint y;
             uint x;
-            if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+            if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                 || (0x9f < DAT_GameState::instance.mapAndTime.field3166_0x277c)) {}
             iVar2 = 0;
             psVar3 = DAT_GameState::instance.mapAndTime.playerPopulationStatistics[6] + 0xe4;
@@ -36,8 +36,8 @@ namespace Map {
                     if ((((x < 400) && (y < 400)) && (*(char*)(y * 400 + 0x21aec98 + x) != '\0'))
                         && (iVar1 = DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile + x,
                             (DAT_TileMapState::instance.LogicLayer[iVar1] & 0x50501581U) == 0)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createAnimal, this)(
-                            OpenSHC::Commands::M_MAPPER_RABBIT, x, y,
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createAnimal, this)(
+                            Commands::M_MAPPER_RABBIT, x, y,
                             (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[iVar1])));
                         this->unknownX_01 = x;
                         this->unknownY_01 = y;

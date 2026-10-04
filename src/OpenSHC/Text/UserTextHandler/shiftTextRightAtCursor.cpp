@@ -5,7 +5,7 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::Text::TextArrayIndexType;
+    using Text::TextArrayIndexType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00469930
     void UserTextHandler::shiftTextRightAtCursor(int startIndex, int count)
@@ -21,7 +21,7 @@ namespace Text {
               write character
              */
             this->textArray[this->textArrayIndex][count + startIndex]
-                = this->textArray[this->textArrayIndex - OpenSHC::Text::TAIT_ONE__FILTER_B]
+                = this->textArray[this->textArrayIndex - Text::TAIT_ONE__FILTER_B]
                                  [count + startIndex + 0xf9];
             count = next;
         } while (0 < next);

@@ -13,7 +13,7 @@ namespace UI {
             RVar1 = this->drawBufferChoiceValue;
             this->drawBufferChoiceValue = this->currentRenderSurfaceIdentifierUnk_0x8;
             MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(xPos,
+                UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(xPos,
                 yPos, this->loadedGfxArray[loadedGfxIndex].width, this->loadedGfxArray[loadedGfxIndex].height,
                 (ushort*)((int)(
 

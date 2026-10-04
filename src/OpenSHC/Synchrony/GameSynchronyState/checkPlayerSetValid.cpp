@@ -8,7 +8,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E8F0
     int GameSynchronyState::checkPlayerSetValid()
@@ -43,26 +43,26 @@ namespace Synchrony {
                 _someCounter = _someCounter + 1;
             LAB_0047e967:
                 _teamMemberCounts[_pFullIDs[-0x1e8232]] = _teamMemberCounts[_pFullIDs[-0x1e8232]] + 1;
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                     _someCounter = _someCounter + 1;
                 }
             }
             if ((((_pFullIDs[1] != -1) && (_someCounter = _someCounter + 1, _pFullIDs[1] != -1))
                     || (_pFullIDs[0x1c] != 0))
                 && (_teamMemberCounts[_pFullIDs[-0x1e8231]] = _teamMemberCounts[_pFullIDs[-0x1e8231]] + 1,
-                    DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                    DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 _someCounter = _someCounter + 1;
             }
             if ((((_pFullIDs[2] != -1) && (_someCounter = _someCounter + 1, _pFullIDs[2] != -1))
                     || (_pFullIDs[0x1d] != 0))
                 && (_teamMemberCounts[_pFullIDs[-0x1e8230]] = _teamMemberCounts[_pFullIDs[-0x1e8230]] + 1,
-                    DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                    DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 _someCounter = _someCounter + 1;
             }
             if ((((_pFullIDs[3] != -1) && (_someCounter = _someCounter + 1, _pFullIDs[3] != -1))
                     || (_pFullIDs[0x1e] != 0))
                 && (_teamMemberCounts[_pFullIDs[-0x1e822f]] = _teamMemberCounts[_pFullIDs[-0x1e822f]] + 1,
-                    DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                    DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 _someCounter = _someCounter + 1;
             }
             _pFullIDs = _pFullIDs + 4;

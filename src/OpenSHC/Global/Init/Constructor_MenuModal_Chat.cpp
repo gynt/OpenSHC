@@ -17,13 +17,13 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BD60
     void Init::Constructor_MenuModal_Chat()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Chat::ptr)(
-            (OpenSHC::UI::Enums::MenuModalType)27, 0x10, 0x10, 0x300, 0xe0, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Chat::ptr)(
+            (UI::Enums::MenuModalType)27, 0x10, 0x10, 0x300, 0xe0, 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::Chat_Func::MenuModalRenderFunction_Chat),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::Chat_Func::MenuModalRenderFunction_Chat),
             Menu_Chat::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_Chat));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_Chat));
         return;
     }
 

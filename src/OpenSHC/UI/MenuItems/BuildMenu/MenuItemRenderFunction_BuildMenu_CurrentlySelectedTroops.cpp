@@ -18,8 +18,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00439160
         void BuildMenu::MenuItemRenderFunction_BuildMenu_CurrentlySelectedTroops(int param_1, ...)
@@ -103,11 +103,11 @@ namespace UI {
             }
             DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x17c;
         LAB_004391d6:
-            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+            MACRO_CALL(UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_UnitsState::instance.selectionSlots[iVar1 + -0x1b], DAT_ButtonW::instance / 2 + iVar2, iVar3 + 0x53,
-                OpenSHC::Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
+                Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
         }
 
     }

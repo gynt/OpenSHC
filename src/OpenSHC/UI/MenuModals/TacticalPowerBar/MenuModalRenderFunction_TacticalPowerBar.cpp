@@ -20,8 +20,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::DE::SHCDE::eGM;
-        using OpenSHC::DE::SHCDE::eTextSections;
+        using DE::SHCDE::eGM;
+        using DE::SHCDE::eTextSections;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9DB0
         void TacticalPowerBar::MenuModalRenderFunction_TacticalPowerBar(int x, int y, int width, int height)
@@ -36,11 +36,11 @@ namespace UI {
             int blendStrength;
             iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .tacticalPowersBarLevel;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 x + 0x28, y + -10, x + 0x2d, y + 0x12e, (ushort)((int)(COL_BLACK::instance.shortValue)));
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 x + 0x28, y + -10, x + 0x2d, y + 0x12e, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 x + 0x2a, (y - (iVar1 * 0x134) / 7000) + 300, x + 0x2b, y + 300,
                 (ushort)((int)(COL_WHITE::instance.shortValue)));
             if (DAT_TacticalPowersHelpTextDisplayBool::instance != false) {
@@ -54,13 +54,13 @@ namespace UI {
                 /*
                   added by script: "Click on an Icon to use Tactical Powers"
                  */
-                text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_EXTREME_DEMO, 7);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
+                text = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_EXTREME_DEMO, 7);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
                     text, xPos, iVar1, maxWidth, color1, color2, fontSize, blendStrength);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x1d4, x + -0x1b, y + 0x10b);
+                    UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x1d4, x + -0x1b, y + 0x10b);
             }
         }
 

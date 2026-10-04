@@ -14,8 +14,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524CA0
         undefined4 TribesState::isTribePathToDestinationClear(
@@ -35,7 +35,7 @@ namespace Map {
                                 == DAT_TileMapState::instance.PathConnectionLayer[iVar2])))))) {
                 this->ALG_ResultTileIndex = 0;
                 uVar1 = DAT_TileMapState::instance.LogicLayer[iVar2];
-                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
+                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
                     DAT_PathFindingState::ptr)(param_4, param_5, -1, -1, 500, FALSE);
                 while (true) {
                     do {
@@ -43,12 +43,12 @@ namespace Map {
                             return (undefined4)(1);
                         }
                         iVar2 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(param_1, local_4);
+                            Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(param_1, local_4);
                         local_4 = local_4 + 1;
-                    } while ((DAT_UnitsState::instance.units[iVar2].logicalState != OpenSHC::Map::Units::ULS_NORMAL)
+                    } while ((DAT_UnitsState::instance.units[iVar2].logicalState != Map::Units::ULS_NORMAL)
                         || (DAT_UnitsState::instance.units[iVar2].dying != 0));
                     iVar3 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::findClosestTileToStartingTile,
+                        Map::Navigation::PathFindingState_Func::findClosestTileToStartingTile,
                         DAT_PathFindingState::ptr)(2 - (uint)((uVar1 & 0x100) != 0));
                     this->ALG_ResultTileIndex = this->ALG_ResultTileIndex + 1;
                     if (499 < this->ALG_ResultTileIndex)

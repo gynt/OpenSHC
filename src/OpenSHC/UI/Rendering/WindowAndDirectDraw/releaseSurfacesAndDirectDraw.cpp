@@ -6,7 +6,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467D80
         void WindowAndDirectDraw::releaseSurfacesAndDirectDraw(BOOLEnum alsoReleaseDDInterfaceUnk)

@@ -18,7 +18,7 @@ namespace Map {
         this->field50_0x13568 = 3;
         this->eventsCount = this->eventsCount + 1;
         MACRO_CALL_MEMBER(
-            OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, _ptrEvent)();
+            Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, _ptrEvent)();
         this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
         this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
         if (0xb < this->scenarioEvents[this->currentEventID].header.month) {
@@ -30,7 +30,7 @@ namespace Map {
         *(undefined2*)((int)&this->scenarioEvents[this->currentEventID].data + 8) = 0;
         this->scenarioEvents[this->currentEventID].data.scenario.ScenarioEventType = 1;
         *(undefined1*)((int)&this->scenarioEvents[this->currentEventID].data + 0x17) = 1;
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, this)();
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
     }
 
 }

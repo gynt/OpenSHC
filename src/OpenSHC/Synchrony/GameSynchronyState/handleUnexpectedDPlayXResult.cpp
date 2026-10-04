@@ -56,7 +56,7 @@ namespace Synchrony {
                                  && ((this->DPLAYX_SendAndReceiveREsult != -0x7788feca
                                      && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6))))
                             && (this->DPLAYX_SendAndReceiveREsult != -0x7788fe98)))))))))) {
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+            MACRO_CALL(OS_Func::_sprintf)(
                 local_68, "Error:DirectPlay unknown %x", this->DPLAYX_SendAndReceiveREsult);
         };
     }

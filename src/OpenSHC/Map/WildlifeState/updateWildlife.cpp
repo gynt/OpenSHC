@@ -8,7 +8,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052DF30
     void WildlifeState::updateWildlife()
@@ -20,7 +20,7 @@ namespace Map {
         WildlifeGridElement* piVar5;
         int iVar6;
         int iVar7;
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             piVar1 = &this->grid[0][0];
             iVar3 = 0x28;
             piVar5 = piVar1;
@@ -68,11 +68,11 @@ namespace Map {
                     } else {
                         iVar7 = 2;
                     LAB_0052dfdf:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::floodFillField13FromCell, this)(
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField13FromCell, this)(
                             iVar6, iVar3, iVar7);
                     }
                     if (piVar2->field19_0x4c != 0) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::floodFillField20FromCell, this)(
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField20FromCell, this)(
                             iVar6, iVar3, 6);
                     }
                     iVar6 = iVar6 + 1;

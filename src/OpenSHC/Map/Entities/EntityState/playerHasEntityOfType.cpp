@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Entities::EntityType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00401150
         BOOLEnum EntityState::playerHasEntityOfType(int playerID, EntityType entityType)

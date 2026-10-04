@@ -7,8 +7,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandState;
-    using OpenSHC::Commands::GameCommandStateByte;
+    using Commands::GameCommandState;
+    using Commands::GameCommandStateByte;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00480580
     int GameSynchronyState::getPendingGameCommandsCount()

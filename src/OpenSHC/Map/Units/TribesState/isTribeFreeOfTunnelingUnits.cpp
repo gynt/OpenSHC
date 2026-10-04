@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00525210
         BOOLEnum TribesState::isTribeFreeOfTunnelingUnits(int param_1, int param_2)
@@ -23,10 +23,10 @@ namespace Map {
             unitSelectionIndex = 0;
             if (0 < iVar1) {
                 do {
-                    iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         param_1, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if (((DAT_UnitsState::instance.units[iVar2].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if (((DAT_UnitsState::instance.units[iVar2].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[iVar2].dying == 0))
                         && (DAT_UnitsState::instance.units[iVar2].tunnelerFinishedDigging == 2)) {
                         return FALSE;

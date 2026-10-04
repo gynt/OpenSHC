@@ -14,8 +14,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047D500
     void GameSynchronyState::setMenuTypeBasedOnDirectPlayGUID()
@@ -24,19 +24,19 @@ namespace Synchrony {
         GUID _guid;
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_guid;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&_guid);
-        BVar1 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_MODEM::ptr);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&_guid);
+        BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_MODEM::ptr);
         if (BVar1 != FALSE) {
-            DAT_GameCore::instance.activeMenuTab.tabType = OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
+            DAT_GameCore::instance.activeMenuTab.tabType = UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
             ;
         }
-        BVar1 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
+        BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
         if (BVar1 != FALSE) {
-            DAT_GameCore::instance.activeMenuTab.tabType = OpenSHC::UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP;
+            DAT_GameCore::instance.activeMenuTab.tabType = UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP;
             ;
         }
-        BVar1 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_IPX::ptr);
-        DAT_GameCore::instance.activeMenuTab.tabType = (BVar1 != FALSE) + OpenSHC::UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
+        BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_IPX::ptr);
+        DAT_GameCore::instance.activeMenuTab.tabType = (BVar1 != FALSE) + UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
         ;
     }
 

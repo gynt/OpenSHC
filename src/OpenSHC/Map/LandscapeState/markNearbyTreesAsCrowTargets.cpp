@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F30D0
     void LandscapeState::markNearbyTreesAsCrowTargets(int x, int y)
@@ -22,11 +22,11 @@ namespace Map {
             piVar2 = &this->trees[1];
             do {
                 if ((((piVar2->state == 2) && (piVar2->stage < 4))
-                        && (BVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::isTreeAdult, this)(
+                        && (BVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(
                                 _treeID, piVar2->uid),
                             BVar1 != FALSE))
                     && (MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(
                             x, y, (int)((int)((short)piVar2->xPosition)), (int)((int)((short)piVar2->yPosition))),
                         DAT_DirectionAlgorithmState::instance.distanceHigh < 4)) {

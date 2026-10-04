@@ -13,23 +13,23 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Buildings::BuildingType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using Game::GameMode2;
+        using Map::Buildings::BuildingType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0043E490
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_StatusMenuButtons(int param_1, ...)
         {
             if (((param_1 == 0x47) && (DAT_GameCore::instance.buildingandstatusmenuMenuTabToSwitchTo == 0x4b))
                 && (INT_00b96120::instance == 4)) {
-                param_1 = OpenSHC::Map::Buildings::BT_OXTETHER;
+                param_1 = Map::Buildings::BT_OXTETHER;
             }
             DAT_GameCore::instance.buildingandstatusmenuMenuTabToSwitchTo = param_1;
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL)
-                && (param_1 != OpenSHC::Map::Buildings::BT_KEEPDOOR_LEFT)) {
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialBuildingActionState)(
+            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL)
+                && (param_1 != Map::Buildings::BT_KEEPDOOR_LEFT)) {
+                MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(
                     0xf, (BuildingType)((int)(param_1)));
             }
         }

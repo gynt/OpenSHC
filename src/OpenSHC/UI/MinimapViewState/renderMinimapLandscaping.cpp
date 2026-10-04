@@ -27,7 +27,7 @@ namespace UI {
                 heightFactor = 1;
                 widthFactor = 2;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::drawMinimap, this)(
+            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::drawMinimap, this)(
                 xPos, yPos, width, heigth, 7, xOffset, yOffset, widthFactor, heightFactor, 0);
         }
         this->DAT_SomeMiniMapCounterTill4 = this->DAT_SomeMiniMapCounterTill4 + 1 & 0x80000003;

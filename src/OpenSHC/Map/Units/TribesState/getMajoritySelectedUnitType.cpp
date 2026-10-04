@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         /*
           fixme: there is more data on the stack than used?   decompilerscript: committed: 2025-01-30 21:57:43.216000
@@ -28,7 +28,7 @@ namespace Map {
             int _maximumCount;
             int aiStackY_20140[32764];
             int _countOfUnitTypes[80];
-            MACRO_CALL(OpenSHC::OS_Func::_memset)(_countOfUnitTypes, 0, (size_t)((int)(320)));
+            MACRO_CALL(OS_Func::_memset)(_countOfUnitTypes, 0, (size_t)((int)(320)));
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _countInclusive = DAT_UnitsState::instance.maxUnitCount - 1;
@@ -36,7 +36,7 @@ namespace Map {
                     /*
                       bug: shouldn't this check if the unit is part of the tribe !? It checks for   being selected I see
                      */
-                    if ((((_pUnit->logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
                             && (_pUnit->owner == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                         && ((_pUnit->isSelected != 0 && ((short)_pUnit->unitType < 0x50)))) {
                         *(int*)((int)_countOfUnitTypes + (short)_pUnit->unitType * 4)
@@ -54,7 +54,7 @@ namespace Map {
                     _maximumTroopType = _index;
                     _maximumCount = *(int*)((int)_countOfUnitTypes + _index * 4);
                 }
-                _index = _index + OpenSHC::Map::Units::UT_PEASANT;
+                _index = _index + Map::Units::UT_PEASANT;
             } while (_index < 80);
             if ((_maximumTroopType != ((UnitType)0)) && (maximumCount != (int*)0x0)) {
                 *maximumCount = _maximumCount;

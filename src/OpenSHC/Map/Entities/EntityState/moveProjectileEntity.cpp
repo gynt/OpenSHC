@@ -15,9 +15,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::DE::SHCDE::eSFX;
-        using OpenSHC::Map::Entities::EntityType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eSFX;
+        using Map::Entities::EntityType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         /*
           decompilerscript: committed: 2025-01-30 21:57:43.216000      Note that Ghidra is bad at x87 extended precision
@@ -98,9 +98,9 @@ namespace Map {
                 *psVar1 = *psVar1 + -1;
                 if (entityID != 0) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(entityID);
+                        Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(entityID);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::updateEntityMicroMovement, this)(entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateEntityMicroMovement, this)(entityID);
                 if ((DAT_EntityDefinedData::instance
                             .EntityArrayCurveTypeForProjectileType[(short)this->entityArray[entityID].entityType]
                         != 9)
@@ -110,17 +110,17 @@ namespace Map {
                     _height = _height + local_10;
                     iVar9 = 1;
                     iVar6 = (long)((double)fVar7);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::updateProjectileHeightAndCollision,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateProjectileHeightAndCollision,
                         this)(entityID, (undefined4)((int)(_height)), iVar6, iVar9);
                 }
                 iVar6 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
+                    Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
                 if (iVar6 == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
                         entityID);
                     return TRUE;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
                 if (this->entityArray[entityID].someCounter_OR_hitGround != 0)
                     break;
                 sVar2 = this->entityArray[entityID].travelledDistance;
@@ -141,11 +141,11 @@ namespace Map {
                     this->entityArray[_entityID].someMicroY = 0;
                     this->entityArray[_entityID].someMicroX = 0;
                     this->entityArray[_entityID].height = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
                         0, 0, 0, iVar6, iVar5, 0, iVar6, iVar5, 0, ((EntityType)0x1f), 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[_entityID].xPosition,
-                        (int)((int)(this->entityArray[_entityID].yPosition)), OpenSHC::DE::SHCDE::FX_GULL_DIVE);
+                        (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL_DIVE);
                     return TRUE;
                 }
             } else {
@@ -156,7 +156,7 @@ namespace Map {
                 }
                 iVar9 = 0;
                 iVar6 = (long)((double)fVar7);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::updateProjectileHeightAndCollision, this)(
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateProjectileHeightAndCollision, this)(
                     _entityID, (undefined4)((int)(iVar5)), iVar6, iVar9);
             }
             return TRUE;

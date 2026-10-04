@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00525790
         void TribesState::removeSelectedUnitsFromTheirCurrentTribes(int playerID)
@@ -25,16 +25,16 @@ namespace Map {
             bool _unitRemovedFromTribeByID[1250];
             Tribe* _pTribe;
             uVar1 = MSVC_SecurityCookie::instance ^ (uint)_unitRemovedFromTribeByID;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 1250, '\0', (void*)((int)(_unitRemovedFromTribeByID)));
             _unitID = 1;
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((_pUnit->logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
                             && (_pUnit->ifSelectedThenPlayerID == playerID))
                         && (_unitTribeID = (int)_pUnit->tribeID, 0 < _unitTribeID)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,
                             this)(_unitID, _unitTribeID);
                         _unitRemovedFromTribeByID[_unitTribeID] = true;
                     }
@@ -50,9 +50,9 @@ namespace Map {
                  */
                 if (_pTribe->tribeState == 2) {
                     if (_pTribe->selectionTargetUnitID == -1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setTargetUnitForTribe, this)(_tribeID);
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setTargetUnitForTribe, this)(_tribeID);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(
                         _tribeID);
                 }
                 _tribeID = _tribeID + 1;

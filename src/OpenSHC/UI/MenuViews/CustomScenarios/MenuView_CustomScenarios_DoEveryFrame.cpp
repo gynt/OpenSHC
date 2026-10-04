@@ -17,15 +17,15 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00425FF0
         void CustomScenarios::MenuView_CustomScenarios_DoEveryFrame()
         {
             DAT_UnknownGFXIndex::instance
-                = (int)(DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE);
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
+                = (int)(DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(DAT_UnknownGFXIndex::instance,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[DAT_UnknownGFXIndex::instance].width)
@@ -34,11 +34,11 @@ namespace UI {
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[DAT_UnknownGFXIndex::instance].height)
                     / 2);
             if (DAT_MenuTextInputState::instance.dialogResult == 1) {
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
             }
             if (DAT_MenuTextInputState::instance.dialogResult == -1) {
-                MACRO_CALL(OpenSHC::UI::MenuViews::CustomScenarios_Func::MenuView_CustomScenarios_Prepare)();
+                MACRO_CALL(UI::MenuViews::CustomScenarios_Func::MenuView_CustomScenarios_Prepare)();
                 return;
             }
             return;

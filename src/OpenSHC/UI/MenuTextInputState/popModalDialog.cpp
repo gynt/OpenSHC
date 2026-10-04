@@ -12,8 +12,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00493900
     void MenuTextInputState::popModalDialog()
@@ -24,22 +24,22 @@ namespace UI {
         this->modalDialog_3 = this->modalDialog_4;
         this->modalDialog_4 = this->modalDialog_5;
         this->modalDialog_5 = this->modalDialog_6;
-        this->modalDialog_6 = OpenSHC::UI::Enums::MMT_NO_MENU;
+        this->modalDialog_6 = UI::Enums::MMT_NO_MENU;
         this->currentModalDialog = _menuModalID;
-        if (_menuModalID != OpenSHC::UI::Enums::MMT_NO_MENU) {
-            if (_menuModalID == OpenSHC::UI::Enums::MMT_SAVE_MAP) {
+        if (_menuModalID != UI::Enums::MMT_NO_MENU) {
+            if (_menuModalID == UI::Enums::MMT_SAVE_MAP) {
                 this->field36_0x84 = 0x10;
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     2);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)((OpenSHC::UI::Enums::MenuModalType)_menuModalID, TRUE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)((UI::Enums::MenuModalType)_menuModalID, TRUE);
         }
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
+        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
     }
 
 }

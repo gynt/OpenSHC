@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
+    using DE::SHCDE::eTextSections;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AD110
     void Actions::ProcessAllyAcceptsRequest(int param_1, int param_2)
@@ -29,8 +29,8 @@ namespace Synchrony {
             /*
               added by script: "Will come you your aid"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ALLIES2, 4);
+            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ALLIES2, 4);
             pcVar3 = DAT_GameSynchronyState::instance.receivedChatMessage;
             do {
                 cVar1 = *pcVar2;
@@ -46,8 +46,8 @@ namespace Synchrony {
             /*
               added by script: "Will Attack"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ALLIES2, 3);
+            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ALLIES2, 3);
             pcVar3 = DAT_GameSynchronyState::instance.receivedChatMessage;
             do {
                 cVar1 = *pcVar2;
@@ -57,7 +57,7 @@ namespace Synchrony {
             } while (cVar1 != '\0');
             iVar4 = DAT_GameState::instance.playerDataArray[param_2].requestedAttackTargetUnk;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
             DAT_GameSynchronyState::ptr)(param_2, iVar4);
     LAB_004ad1b5:
         DAT_GameState::instance.playerDataArray[param_2].requestStateUnk = 0;

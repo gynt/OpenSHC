@@ -38,7 +38,7 @@ namespace Synchrony {
                 _dplay4->Release();
                 return;
             }
-            _dplay4->EnumConnections((GUID*)0x0, MACRO_CALL(OpenSHC::Synchrony_Func::EnumConnectionsCallback), (void*)0x0, 0);
+            _dplay4->EnumConnections((GUID*)0x0, MACRO_CALL(Synchrony_Func::EnumConnectionsCallback), (void*)0x0, 0);
             ppGVar2 = this->guids + 2;
             if (this->guids[2] == (GUID*)0x0) {
                 iVar3 = 2;
@@ -78,7 +78,7 @@ namespace Synchrony {
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID, this)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID, this)();
             this->DPLAYX_LOBBY = _dplaylobby3;
             _dplay4->Release();
         }

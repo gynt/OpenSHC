@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BE60
     void Init::Constructor_MenuModal_SkirmishPlayOptions()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SkirmishPlayOptions::ptr)(
-            OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS, -1, -1, 0x198, 0x172, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SkirmishPlayOptions::ptr)(
+            UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS, -1, -1, 0x198, 0x172, 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::SkirmishPlayOptions_Func::MenuModalRenderFunction_SkirmishPlayOptions),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::SkirmishPlayOptions_Func::MenuModalRenderFunction_SkirmishPlayOptions),
             Menu_SkirmishPlayOptions::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_SkirmishPlayOptions));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SkirmishPlayOptions));
         return;
     }
 

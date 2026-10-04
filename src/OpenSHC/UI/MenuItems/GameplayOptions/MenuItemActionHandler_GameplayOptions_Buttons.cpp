@@ -20,7 +20,7 @@ namespace UI {
                 DAT_GameCore::instance.settingBubbleHelp = DAT_MenuTextInputState::instance.field14_0x38;
                 DAT_GameCore::instance.unusedOption1 = DAT_MenuTextInputState::instance.field15_0x3c;
             switchD_00493d93_caseD_11:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                 return;
             default:
                 return;

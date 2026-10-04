@@ -28,7 +28,7 @@ namespace Map {
                     .BuildingLayer[DAT_BuildingsState::instance.buildings[buildingID].currentTilePositionAdjusted]
                 != buildingID)) {
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
                 buildingID);
             buildingID = DAT_CurrentBuildingID::instance;
         }
@@ -39,7 +39,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].field117_0x11a = 0;
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;
             if (DAT_BuildingsState::instance.buildings[buildingID].killingPitField != 0) {}
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].killingPitField = 1;
             return;
@@ -52,7 +52,7 @@ namespace Map {
             if (iVar2 == -1) {
                 DAT_BuildingsState::instance.buildings[buildingID].state = 2;
                 DAT_BuildingsState::instance.buildings[buildingID].field117_0x11a = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     buildingID);
             }
         LAB_0041e704:
@@ -60,7 +60,7 @@ namespace Map {
             if (iVar2 != 0) {
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                     = iVar2 + (DAT_BuildingsState::instance.buildings[buildingID].fireRelatedRNG1 & 7U) * 4;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     buildingID);
             }
             break;
@@ -71,7 +71,7 @@ namespace Map {
             if (1999 < DAT_BuildingsState::instance.buildings[buildingID].field117_0x11a) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(buildingID);
+                    Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(buildingID);
             }
             break;
         case -2:
@@ -93,13 +93,13 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                 = (DAT_BuildingsState::instance.buildings[buildingID].fireRelatedRNG1 & 7U) * 4 + 4;
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 1;
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             return;
         default:
             return;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
             buildingID);
     }
 

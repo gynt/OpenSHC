@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB2C0
         void BuildingAvailability::MenuItemActionHandler_BuildingAvailability_Buttons(int param_1, ...)
@@ -39,18 +39,18 @@ namespace UI {
                 case 0x32:
                 case 0x52:
                 case 0x53:
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DISABLE_WEAPON, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_DISABLE_WEAPON, FALSE);
                     return;
                 default:
                     return;
                 case 0x56:
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DISABLE_ARAB_TROOPS, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_DISABLE_ARAB_TROOPS, FALSE);
                     return;
                 case 0x57:
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DISABLE_EURO_TROOPS, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_DISABLE_EURO_TROOPS, FALSE);
                 }
             }
         LAB_004bb359:
@@ -66,8 +66,8 @@ namespace UI {
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + -1;
                 }
             } else if (param_1 == 0x25) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             }
         }
 

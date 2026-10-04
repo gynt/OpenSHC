@@ -11,8 +11,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042B7B0
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_MapSelectScrollbar(
@@ -32,8 +32,8 @@ namespace UI {
                 if ((iVar1 != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar1,
                         DAT_GameSynchronyState::instance.isHost != FALSE)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                 }
                 break;
             case 4:
@@ -42,8 +42,8 @@ namespace UI {
                 if ((*currentValue != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (*currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset,
                         DAT_GameSynchronyState::instance.isHost != FALSE)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                 }
                 break;
             case 5:
@@ -52,8 +52,8 @@ namespace UI {
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
                 LAB_0042b8a4:
                     if (DAT_GameSynchronyState::instance.isHost != FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                     }
                 }
                 goto LAB_0042b8b9;

@@ -76,22 +76,22 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Commands::GameCommandType;
-using OpenSHC::Commands::MappersEnum;
-using OpenSHC::Coordinates::XYPairShort;
-using OpenSHC::Game::GameMode;
-using OpenSHC::Game::GameMode2;
-using OpenSHC::Input::Mouse::MouseClickInteraction;
-using OpenSHC::Map::MapType2;
-using OpenSHC::Map::Buildings::BuildingType;
-using OpenSHC::Map::Units::UnitLogicState;
-using OpenSHC::Map::Units::UnitType;
-using OpenSHC::Text::TextArrayIndexType;
-using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-using OpenSHC::UI::Enums::DisplayElementID;
-using OpenSHC::UI::Enums::MenuModalType;
-using OpenSHC::UI::Enums::MenuViewType;
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using Commands::GameCommandType;
+using Commands::MappersEnum;
+using Coordinates::XYPairShort;
+using Game::GameMode;
+using Game::GameMode2;
+using Input::Mouse::MouseClickInteraction;
+using Map::MapType2;
+using Map::Buildings::BuildingType;
+using Map::Units::UnitLogicState;
+using Map::Units::UnitType;
+using Text::TextArrayIndexType;
+using UI::Enums::BuildingsAndStatusMenuTabType;
+using UI::Enums::DisplayElementID;
+using UI::Enums::MenuModalType;
+using UI::Enums::MenuViewType;
+using WindowsHelper::Enums::BOOLEnum;
 
 /*
   This is the WindowProc   LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -165,8 +165,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         _yMousePos = (short)((uint)lParam >> 0x10);
         if (message < WM_LBUTTONDOWN) {
             if (message == WM_MOUSEMOVE) {
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
-                    _xMousePos, _yMousePos, OpenSHC::Input::Mouse::MCI_MOVE);
+                MACRO_CALL_MEMBER(Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
+                    _xMousePos, _yMousePos, Input::Mouse::MCI_MOVE);
                 goto switchD_004b4d0c_doDefWindowProcA;
             }
             switch (message) {
@@ -205,9 +205,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 /*
                  **** Note that keydown events are translated in char events if not swalloed   ****      WM_CHAR
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterCode,
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterCode,
                     DAT_UserTextHandlerState::ptr)((byte)wParam);
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                     DAT_UserTextHandlerState::ptr)(wParam);
                 break;
             case WM_SYSKEYDOWN:
@@ -240,7 +240,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                      */
                     if ((DAT_GameCore::instance.cheatModeFlag != FALSE)
                         && (_cheatInGameMenuCheck1 = MACRO_CALL_MEMBER(
-                                OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                                Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                             _cheatInGameMenuCheck1 == 0)) {
                         DAT_GameCore::instance.unlockAllHistoricalCampaigns = 1;
                     }
@@ -249,16 +249,16 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       key: D
                      */
-                    if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
-                        || ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
-                            && (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)))) {
+                    if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
+                        || ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
+                            && (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)))) {
                         DAT_ViewportRenderState::instance.DAT_MapEditorDisplayLayer
                             = DAT_ViewportRenderState::instance.DAT_MapEditorDisplayLayer + 1;
                         if (2 < (int)DAT_ViewportRenderState::instance.DAT_MapEditorDisplayLayer) {
                             DAT_ViewportRenderState::instance.DAT_MapEditorDisplayLayer = 0;
                         }
-                        MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                            OpenSHC::UI::Enums::DEID_CONNECT_AND_PATH_LINKAGE_INFO_TEXT,
+                        MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                            UI::Enums::DEID_CONNECT_AND_PATH_LINKAGE_INFO_TEXT,
                             (dword)((int)(DAT_ViewportRenderState::instance.DAT_MapEditorDisplayLayer)));
                     }
                     break;
@@ -266,20 +266,20 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       key E
                      */
-                    if (((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES)
+                    if (((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_PROPERTIES)
                             || (DAT_GameCore::instance.currentMenuViewType
-                                == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING))
-                        || ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
-                            && (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)))) {
+                                == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING))
+                        || ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
+                            && (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)))) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::killAllUnownedUnits, DAT_UnitsState::ptr)();
+                            Map::Units::UnitsState_Func::killAllUnownedUnits, DAT_UnitsState::ptr)();
                     }
                     break;
                 case 'H':
                     /*
                       H
                      */
-                    if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+                    if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
                         DAT_GameCore::instance.isTimeHalted = (BOOLEnum)(DAT_GameCore::instance.isTimeHalted2 == 0);
                         DAT_GameCore::instance.isTimeHalted2 = DAT_GameCore::instance.isTimeHalted;
                     }
@@ -288,7 +288,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       K
                      */
-                    if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         && (DAT_GameCore::instance.cheatModeFlag != FALSE)) {
                         DAT_GameCore::instance.solitaryAllBuildingsAreFree
                             = (BOOLEnum)(DAT_GameCore::instance.solitaryAllBuildingsAreFree == FALSE);
@@ -299,9 +299,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                       Q
                      */
                     _screenshotInGameMenuCheck
-                        = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                        = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
                     if (_screenshotInGameMenuCheck != 0) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::takeScreenshot,
+                        MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::takeScreenshot,
                             DAT_WindowAndDirectDraw::ptr)(DAT_ShortcutDefinedData::instance.ScreenshotFilenameVariant);
                         DAT_ShortcutDefinedData::instance.ScreenshotFilenameVariant
                             = DAT_ShortcutDefinedData::instance.ScreenshotFilenameVariant + 1;
@@ -315,23 +315,23 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         = DAT_GameCore::instance.altRToggleMinimapHideWildlife == 0;
                     break;
                 case 'T':
-                    if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                         && (DAT_GameSynchronyState::instance.currentGameMode
-                            != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
-                        MACRO_CALL(OpenSHC::UI::DisplayElements_Func::TogglePlayerPingDisplayElementUnk)(
-                            OpenSHC::UI::Enums::DEID_PLAYER_PING_Unk_19, 1);
+                            != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                        MACRO_CALL(UI::DisplayElements_Func::TogglePlayerPingDisplayElementUnk)(
+                            UI::Enums::DEID_PLAYER_PING_Unk_19, 1);
                     }
                     break;
                 case 'U':
                     /*
                       U
                      */
-                    if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                    if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                             && (DAT_GameCore::instance.currentMenuViewType
-                                == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
+                                == UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
                         && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                                 .buildingType
-                            == OpenSHC::Map::Buildings::BT_DUNGEON)) {
+                            == Map::Buildings::BT_DUNGEON)) {
                         DAT_GameCore::instance.solitaryAltUDungeon = TRUE;
                     }
                     break;
@@ -339,7 +339,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       V
                      */
-                    if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+                    if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
                         _lordID = DAT_GameState::instance
                                       .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                       .lordID;
@@ -353,7 +353,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                                 .lordID = 0;
                             DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].lordUID = 0;
                             if (_playerLordUID == _lordUID) {
-                                DAT_UnitsState::instance.units[_lordID].logicalState = OpenSHC::Map::Units::ULS_REMOVE;
+                                DAT_UnitsState::instance.units[_lordID].logicalState = Map::Units::ULS_REMOVE;
                             }
                         }
                         DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].lordKilledByPlayerID = 0;
@@ -363,7 +363,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       X
                      */
-                    if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_MULTIPLAYER)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_MULTIPLAYER)
                         && (DAT_GameCore::instance.cheatModeFlag != FALSE)) {
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .popularity = 10000;
@@ -390,7 +390,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                       ? basically, pressing a number above the letters on keyboard or on the numpad
                      */
                     _altNumInGameMenuCheck
-                        = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                        = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
                     if (_altNumInGameMenuCheck == 0)
                         break;
                     goto LAB_004b4af5;
@@ -403,16 +403,16 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       COMMA
                      */
-                    if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
+                    if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
                         if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                            == OpenSHC::UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                            == UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         } else if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                            == OpenSHC::UI::Enums::MMT_NONE) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                            == UI::Enums::MMT_NONE) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition1::ptr)(
-                                OpenSHC::UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE, FALSE);
+                                UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE, FALSE);
                         }
                     }
                     break;
@@ -421,7 +421,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       ~ or single quote `
                      */
-                    if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_EDIT_SCENARIO) {
+                    if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_EDIT_SCENARIO) {
                         DAT_GameState::instance.mapAndTime.editScenarioExtraOptions
                             = DAT_GameState::instance.mapAndTime.editScenarioExtraOptions ^ 1;
                     }
@@ -431,31 +431,31 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         }
         switch (message) {
         case WM_LBUTTONDOWN:
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
-                _xMousePos, _yMousePos, OpenSHC::Input::Mouse::MCI_LEFTDOWN);
+            MACRO_CALL_MEMBER(Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
+                _xMousePos, _yMousePos, Input::Mouse::MCI_LEFTDOWN);
             break;
         case WM_LBUTTONUP:
-            _clickType = OpenSHC::Input::Mouse::MCI_LEFTUP;
+            _clickType = Input::Mouse::MCI_LEFTUP;
             goto LAB_004b4d15;
         case WM_RBUTTONDOWN:
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
-                _xMousePos, _yMousePos, OpenSHC::Input::Mouse::MCI_RIGHTDOWN);
+            MACRO_CALL_MEMBER(Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
+                _xMousePos, _yMousePos, Input::Mouse::MCI_RIGHTDOWN);
             break;
         case WM_RBUTTONUP:
-            _clickType = OpenSHC::Input::Mouse::MCI_RIGHTUP;
+            _clickType = Input::Mouse::MCI_RIGHTUP;
             goto LAB_004b4d15;
         case WM_MBUTTONDOWN:
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
-                _xMousePos, _yMousePos, OpenSHC::Input::Mouse::MCI_MIDDOWN);
+            MACRO_CALL_MEMBER(Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
+                _xMousePos, _yMousePos, Input::Mouse::MCI_MIDDOWN);
             break;
         case WM_MBUTTONUP:
-            _clickType = OpenSHC::Input::Mouse::MCI_MIDUP;
+            _clickType = Input::Mouse::MCI_MIDUP;
         LAB_004b4d15:
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
+            MACRO_CALL_MEMBER(Input::MouseState_Func::updateMousePositionAndClicks, DAT_MouseState::ptr)(
                 _xMousePos, _yMousePos, _clickType);
             break;
         case WM_MOUSEWHEEL:
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::updateMouseWheelStatus, DAT_MouseState::ptr)(
+            MACRO_CALL_MEMBER(Input::MouseState_Func::updateMouseWheelStatus, DAT_MouseState::ptr)(
                 (int)(short)(wParam >> 0x10));
         }
         goto switchD_004b4d0c_doDefWindowProcA;
@@ -482,7 +482,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             }
         LAB_004b2b45:
             MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::reinitWindow, DAT_WindowAndDirectDraw::ptr)();
+                UI::Rendering::WindowAndDirectDraw_Func::reinitWindow, DAT_WindowAndDirectDraw::ptr)();
             /*
               The following three calls fill the RECT structure with coords that describe   the client in screen
               coordinates.
@@ -494,7 +494,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 (LPPOINT)((int)((tagPOINT*)&DAT_WindowAndDirectDraw::instance.clientOnScreenCoords.right)));
             break;
         case WM_SETFOCUS:
-            MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::resumeAudioSample, DAT_SoundSystemState::ptr)();
+            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::resumeAudioSample, DAT_SoundSystemState::ptr)();
             _hBinkPtr = DAT_BinkControlState::instance.binkObjPtrArray;
             do {
                 if (*_hBinkPtr != (HBINK)0x0) {
@@ -504,7 +504,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             } while ((int)_hBinkPtr < 0x2157570);
             break;
         case WM_KILLFOCUS:
-            MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::pauseAudioSample, DAT_SoundSystemState::ptr)();
+            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::pauseAudioSample, DAT_SoundSystemState::ptr)();
             _hBinkPtr = DAT_BinkControlState::instance.binkObjPtrArray;
             do {
                 if (*_hBinkPtr != (HBINK)0x0) {
@@ -517,10 +517,10 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             BeginPaint(windowHandle, &_paintstruct);
             EndPaint(windowHandle, &_paintstruct);
             _paintInGameMenuCheck
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (_paintInGameMenuCheck == 0) {
                 DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
+                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
                     DAT_WindowAndDirectDraw::ptr)(1);
             }
             goto LAB_004b2cfd;
@@ -541,24 +541,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 DAT_WindowAndDirectDraw::instance.gameFocused = FALSE;
                 DAT_WindowAndDirectDraw::instance.isNotProcessingInputEvents = TRUE;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Audio::MSS::SoundSystem_Func::endSpeechSoundStreams, DAT_SoundSystemState::ptr)();
+                    Audio::MSS::SoundSystem_Func::endSpeechSoundStreams, DAT_SoundSystemState::ptr)();
             }
             if ((DAT_WindowAndDirectDraw::instance.isNotProcessingInputEvents != FALSE)
                 && (DAT_WindowAndDirectDraw::instance.gameFocused != FALSE)) {
                 /*
                   restore everything
                  */
-                _restore = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::restoreDXSurfaces,
+                _restore = MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::restoreDXSurfaces,
                     DAT_WindowAndDirectDraw::ptr)();
                 if (_restore != FALSE) {
                     /*
                       Restoring DirectX succeeded
                      */
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::reinitWindow, DAT_WindowAndDirectDraw::ptr)();
+                        UI::Rendering::WindowAndDirectDraw_Func::reinitWindow, DAT_WindowAndDirectDraw::ptr)();
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
             }
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;
             break;
@@ -576,7 +576,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
       assuming WM_KEYDOWN
      */
     DAT_ModifierKeyState::instance.keyDownUnk = 1;
-    if ((((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAIN_MENU)
+    if ((((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAIN_MENU)
              && (DAT_ModifierKeyState::instance.ctrl != 0))
             && (DAT_GameCore::instance.cheatModeFlag == FALSE))
         && (wParam == (byte)DAT_ShortcutDefinedData::instance.cheatCode[DAT_CheatCodeStringTrackerIndex::instance])) {
@@ -594,32 +594,32 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           VK_BACK (Backspace)
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleBackspace, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleBackspace, DAT_UserTextHandlerState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf8);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf8);
         break;
     case VK_TAB:
         /*
           VK_TAB
          */
         if ((lParam & 0x40000000U) == 0) {
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::hideOrUnhideUI, DAT_GameCore::ptr)();
+            MACRO_CALL_MEMBER(Game::GameCore_Func::hideOrUnhideUI, DAT_GameCore::ptr)();
         }
         break;
     case VK_RETURN:
         /*
           VK_RETURN
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleReturnKey, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleReturnKey, DAT_UserTextHandlerState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf1);
-        if ((((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_CHAT))
-                && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-            || (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_LOBBY_MENU)) {
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf1);
+        if ((((DAT_GameCore::instance.gameMode_2 == Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_CHAT))
+                && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
+            || (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_LOBBY_MENU)) {
             if (DAT_UserTextHandlerState::instance.textArrayIndex == ((TextArrayIndexType)4)) {
                 _pCurrentText = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                 _pCurrentText2 = _pCurrentText;
                 do {
                     cVar1 = *_pCurrentText2;
@@ -628,38 +628,38 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 for (_textIndex = 0; _textIndex < (int)_pCurrentText2 - (int)(_pCurrentText + 1); _textIndex++) {
                     if (_pCurrentText[_textIndex] != ' ') {
                         DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
-                        if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_LOBBY_MENU) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                            Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+                        if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_LOBBY_MENU) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         }
                         break;
                     }
                 }
             }
-        } else if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                       && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
+        } else if (((DAT_GameCore::instance.gameMode_2 == Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                       && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && (_enterIngameMenuCheck
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                 _enterIngameMenuCheck != 0)) {
-            if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
+            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ALLIES, FALSE);
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_CHAT, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_CHAT, FALSE);
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     4);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
             }
         } else if (DAT_MenuModalComposition1::instance.activeModalDialogID
-            == OpenSHC::UI::Enums::MMT_IDENTITY_OPTIONS) {
-            MACRO_CALL(OpenSHC::UI::MenuItems::IdentityOptions_Func::MenuItemActionHandler_IdentityOptions_Confirm)(
+            == UI::Enums::MMT_IDENTITY_OPTIONS) {
+            MACRO_CALL(UI::MenuItems::IdentityOptions_Func::MenuItemActionHandler_IdentityOptions_Confirm)(
                 0x11);
         }
         break;
@@ -669,103 +669,103 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if ((lParam & 0x40000000U) != 0)
             break;
-        if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk)
-            || (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_INTRO_VIDEO)) {
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                OpenSHC::UI::Enums::MVT_GAME_START_ENTER_NAME, 0);
+        if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk)
+            || (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_INTRO_VIDEO)) {
+            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                UI::Enums::MVT_GAME_START_ENTER_NAME, 0);
             goto LAB_004b38a3;
         }
-        if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_QUIT_DIALOG) {
+        if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_QUIT_DIALOG) {
             if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x2f)
                 goto LAB_004b38a3;
         } else {
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_ONLINE_VOTE_QUIT_GAME) {
+                == UI::Enums::MMT_ONLINE_VOTE_QUIT_GAME) {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                 /*
                   Escape ally switching
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SEND_QUIT_GAME_VOTE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_SEND_QUIT_GAME_VOTE);
                 goto LAB_004b33a8;
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_NEW_EVENT_CONDITION) {
+                == UI::Enums::MMT_NEW_EVENT_CONDITION) {
                 MACRO_CALL(
-                    OpenSHC::UI::MenuItems::NewEventCondition_Func::MenuItemActionHandler_NewEventCondition_Main)(0x25);
+                    UI::MenuItems::NewEventCondition_Func::MenuItemActionHandler_NewEventCondition_Main)(0x25);
                 LVar1 = 0;
                 ;
                 return LVar1;
             }
-            if ((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_CHAT)
+            if ((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_CHAT)
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_SKIRMISH_CONNECTION_OPTIONS))
+                    == UI::Enums::MMT_SKIRMISH_CONNECTION_OPTIONS))
                 goto LAB_004b33a8;
         }
-        if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_QUIT_DIALOG) {
+        if (DAT_MenuTextInputState::instance.currentModalDialog != UI::Enums::MMT_NO_MENU) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_QUIT_DIALOG) {
                 if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 2000) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk);
                 }
             } else if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_IDENTITY_OPTIONS) {
-                MACRO_CALL(OpenSHC::UI::MenuItems::IdentityOptions_Func::MenuItemActionHandler_IdentityOptions_Confirm)(
+                == UI::Enums::MMT_IDENTITY_OPTIONS) {
+                MACRO_CALL(UI::MenuItems::IdentityOptions_Func::MenuItemActionHandler_IdentityOptions_Confirm)(
                     0x11);
                 LVar1 = 0;
                 ;
                 return LVar1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
             LVar1 = 0;
             ;
             return LVar1;
         }
-        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR) {
+        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog, DAT_TextEditorState::ptr)(-1);
+                Text::TextEditorState_Func::openUnusedHelpTextEditorDialog, DAT_TextEditorState::ptr)(-1);
             LVar1 = 0;
             ;
             return LVar1;
         }
-        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_CREDITS) {
+        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_CREDITS) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
+                Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
         } else {
             if ((DAT_TextEditorState::instance.helpDialogVariant != 0)
-                && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
+                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
+                    Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
                 LVar1 = 0;
                 ;
                 return LVar1;
             }
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_SELECT_CRUSADE)
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_SELECT_CRUSADE)
                 goto LAB_004b34ae;
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             LAB_004b3517:
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
                 LVar1 = 0;
                 ;
                 return LVar1;
             }
             _escInIngameMenu
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (_escInIngameMenu != 0) {
-                if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR) {
-                    if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_UNUSED_CREATE_SIEGE, 0);
+                if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
+                    if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_UNUSED_CREATE_SIEGE, 0);
                         LVar1 = 0;
                         ;
                         return LVar1;
                     }
                     if (DAT_GameCore::instance.specialMultiplayerState != 0) {
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::disconnectDPlay,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay,
                             DAT_GameSynchronyState::ptr)();
                         DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                         LVar1 = 0;
@@ -773,11 +773,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         return LVar1;
                     }
                     if (((DAT_GameCore::instance.menuSwitchDelay == -1)
-                            || (DAT_GameCore::instance.menuViewToSwitchTo == OpenSHC::UI::Enums::MVT_BUILD_MENU))
+                            || (DAT_GameCore::instance.menuViewToSwitchTo == UI::Enums::MVT_BUILD_MENU))
                         || (DAT_GameCore::instance.menuViewToSwitchTo
-                            == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU)) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                            DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_PAUSE_MENU);
+                            == UI::Enums::MVT_BUILDING_AND_STATUS_MENU)) {
+                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                            DAT_MenuTextInputState::ptr)(UI::Enums::MMT_PAUSE_MENU);
                         LVar1 = 0;
                         ;
                         return LVar1;
@@ -786,134 +786,134 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 }
                 goto LAB_004b3517;
             }
-            if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MP_CONNECTION)
-                || (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_LOBBY_MENU)) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MP_CONNECTION)
+                || (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_LOBBY_MENU)) {
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAIN_MENU, 0);
                 LVar1 = 0;
                 ;
                 return LVar1;
             }
-            if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE) {
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_GAME_START_ENTER_NAME)
+            if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE) {
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_GAME_START_ENTER_NAME)
                     goto LAB_004b38a3;
-                if (((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT)
+                if (((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT)
                         && (DAT_GameCore::instance.currentMenuViewType
-                            != OpenSHC::UI::Enums::MVT_UNUSED_ECONOMIC_GAMETYPE_SELECT))
-                    && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS)) {
+                            != UI::Enums::MVT_UNUSED_ECONOMIC_GAMETYPE_SELECT))
+                    && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_CUSTOM_SCENARIOS)) {
                     if (DAT_GameCore::instance.currentMenuViewType
-                        == (OpenSHC::UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR
-                            | OpenSHC::UI::Enums::MVT_UNUSED_OLD_TITLE_MENU)) {
-                        if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
-                            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
+                        == (UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR
+                            | UI::Enums::MVT_UNUSED_OLD_TITLE_MENU)) {
+                        if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
+                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                UI::Enums::MVT_INTRO_LOGOS, 0);
                             LVar1 = 0;
                             ;
                             return LVar1;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         LVar1 = 0;
                         ;
                         return LVar1;
                     }
                     if (DAT_GameCore::instance.currentMenuViewType == ((MenuViewType)0x18)) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            (OpenSHC::UI::Enums::MenuViewType)(OpenSHC::UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR
-                                | OpenSHC::UI::Enums::MVT_UNUSED_OLD_TITLE_MENU),
+                        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            (UI::Enums::MenuViewType)(UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR
+                                | UI::Enums::MVT_UNUSED_OLD_TITLE_MENU),
                             0);
                         LVar1 = 0;
                         ;
                         return LVar1;
                     }
-                    if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
+                    if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
                     LAB_004b33a8:
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         LVar1 = 0;
                         ;
                         return LVar1;
                     }
-                    if ((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT)
+                    if ((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_HISTORIC_MISSION_SELECT)
                         && (DAT_GameCore::instance.currentMenuViewType
-                            != OpenSHC::UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk)) {
-                        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_NEW_MAP_MAPTYPE) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                            != UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk)) {
+                        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_NEW_MAP_MAPTYPE) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                             LVar1 = 0;
                             ;
                             return LVar1;
                         }
-                        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                OpenSHC::UI::Enums::MVT_NEW_MAP_MAPTYPE, 0);
+                        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_NEW_MAP_MAPSIZE) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                UI::Enums::MVT_NEW_MAP_MAPTYPE, 0);
                             LVar1 = 0;
                             ;
                             return LVar1;
                         }
                         if (DAT_GameCore::instance.currentMenuViewType
-                            == OpenSHC::UI::Enums::MVT_UNUSED_CHOOSE_AVAILABLE_KEEPS) {
-                            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                            == UI::Enums::MVT_UNUSED_CHOOSE_AVAILABLE_KEEPS) {
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         LAB_004b3756:
-                            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                             LVar1 = 0;
                             ;
                             return LVar1;
                         }
                         if ((((((DAT_GameCore::instance.currentMenuViewType
-                                    != OpenSHC::UI::Enums::MVT_UNUSED_SOME_MISSION_STARTUnk)
+                                    != UI::Enums::MVT_UNUSED_SOME_MISSION_STARTUnk)
                                    && (DAT_GameCore::instance.currentMenuViewType
-                                       != OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk))
+                                       != UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk))
                                   && (DAT_GameCore::instance.currentMenuViewType
-                                      != OpenSHC::UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk))
+                                      != UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk))
                                  && ((DAT_GameCore::instance.currentMenuViewType
-                                         != OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION
+                                         != UI::Enums::MVT_SCENARIO_DESCRIPTION
                                      && (DAT_GameCore::instance.currentMenuViewType
-                                         != OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION))))
-                                && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_GAME_LOSTUnk))
-                            && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_EDIT_SCENARIO)) {
+                                         != UI::Enums::MVT_MISSION_FINISHED_TRANSITION))))
+                                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_GAME_LOSTUnk))
+                            && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_EDIT_SCENARIO)) {
                             if (DAT_GameCore::instance.currentMenuViewType
-                                == OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_INTRO) {
-                                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                    OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_PICTURE, 0);
+                                == UI::Enums::MVT_HISTORIC_CAMPAIGN_INTRO) {
+                                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                    UI::Enums::MVT_HISTORIC_MISSION_PICTURE, 0);
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
+                                    Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
                                     DAT_SoundSystemState::ptr)();
                                 LVar1 = 0;
                                 ;
                                 return LVar1;
                             }
                             if ((DAT_GameCore::instance.currentMenuViewType
-                                    == OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_PICTURE)
+                                    == UI::Enums::MVT_HISTORIC_MISSION_PICTURE)
                                 || (DAT_GameCore::instance.currentMenuViewType
-                                    == OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_INTRO)) {
-                                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                    OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                                    == UI::Enums::MVT_HISTORIC_MISSION_INTRO)) {
+                                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                    UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
+                                    Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
                                     DAT_SoundSystemState::ptr)();
                                 LVar1 = 0;
                                 ;
                                 return LVar1;
                             }
                             if (DAT_GameCore::instance.currentMenuViewType
-                                == OpenSHC::UI::Enums::MVT_UNUSED_CHOOSE_GAME_TYPE)
+                                == UI::Enums::MVT_UNUSED_CHOOSE_GAME_TYPE)
                                 goto LAB_004b3756;
-                            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAIN_MENU) {
-                                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_MAIN_MENU_OPTIONS);
+                            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAIN_MENU) {
+                                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_MAIN_MENU_OPTIONS);
                                 LVar1 = 0;
                                 ;
                                 return LVar1;
@@ -927,11 +927,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 }
             }
         }
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-            OpenSHC::UI::Enums::MMT_NONE, FALSE);
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+            UI::Enums::MMT_NONE, FALSE);
     LAB_004b34ae:
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-            OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+            UI::Enums::MVT_MAIN_MENU, 0);
         LVar1 = 0;
         ;
         return LVar1;
@@ -940,18 +940,18 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           VK_SPACE
          */
         if ((lParam & 0x40000000U) == 0) {
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
-                _tutorialStep = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetCurrentTutorialStep)();
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
+                _tutorialStep = MACRO_CALL(UI::Helpers_Func::GetCurrentTutorialStep)();
                 if (0x1c < _tutorialStep) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::toggleFlatView, DAT_TileMapState::ptr)(
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::toggleFlatView, DAT_TileMapState::ptr)(
                         DAT_TileMapState::instance.flatViewToggleValue1 ^ 1);
                 }
             } else {
                 _spaceIngameMenuCheck
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                    = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
                 if ((_spaceIngameMenuCheck != 0)
-                    && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::toggleFlatView, DAT_TileMapState::ptr)(
+                    && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::toggleFlatView, DAT_TileMapState::ptr)(
                         DAT_TileMapState::instance.flatViewToggleValue1 ^ 1);
                 }
             }
@@ -962,55 +962,55 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           VK_PRIOR (Page Up)
          */
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xfa);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xfa);
         break;
     case VK_NEXT:
         /*
           VK_NEXT (Page Down)
          */
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xfb);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xfb);
         break;
     case VK_END:
         /*
           VK_END
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf7);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf7);
         break;
     case VK_HOME:
         /*
           VK_HOME
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetCursorToStart, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetCursorToStart, DAT_UserTextHandlerState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf6);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf6);
         break;
     case VK_LEFT:
         /*
           VK_LEFT
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleLeftKey, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleLeftKey, DAT_UserTextHandlerState::ptr)();
         _leftKeyIngameMenuCheck
-            = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if ((((_leftKeyIngameMenuCheck == 0)
-                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
                 || (DAT_ModifierKeyState::instance.ctrl == 0))
             || (DAT_MouseState::instance.rightClickState != FALSE)) {
-            if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_CHAT)) {
+            if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.leftKeyDown_0x1c = TRUE;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf2);
         } else {
             uVar10 = DAT_TileMapState::instance.mapOrientation + 2U & 0x80000007;
             if ((int)uVar10 < 0) {
                 uVar10 = (uVar10 - 1 | 0xfffffff8) + 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf2);
         }
         break;
@@ -1018,49 +1018,49 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           VK_UP
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && ((DAT_ModifierKeyState::instance.ctrl != 0 && (DAT_MouseState::instance.rightClickState == FALSE)))) {
             /*
               zoom
              */
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(
+                Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(
                 (uint)(DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk == 0));
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
         }
-        if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_CHAT)) {
+        if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
             DAT_ScrollingHandler::instance.upKeyDown_0x24 = TRUE;
         }
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf4);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf4);
         break;
     case VK_RIGHT:
         /*
           VK_RIGHT
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleRightKey, DAT_UserTextHandlerState::ptr)();
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleRightKey, DAT_UserTextHandlerState::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if ((((BVar2 == FALSE)
-                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
                 || (DAT_ModifierKeyState::instance.ctrl == 0))
             || (DAT_MouseState::instance.rightClickState != FALSE)) {
-            if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_CHAT)) {
+            if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.rightKeyDown_0x18 = TRUE;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf3);
         } else {
             _newMapRotation = DAT_TileMapState::instance.mapOrientation + 6U & 0x80000007;
             if ((int)_newMapRotation < 0) {
                 _newMapRotation = (_newMapRotation - 1 | 0xfffffff8) + 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(_newMapRotation);
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(_newMapRotation);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf3);
         }
         break;
@@ -1068,20 +1068,20 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           VK_DOWN
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (((BVar2 == FALSE)
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+                || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             || ((DAT_ModifierKeyState::instance.ctrl == 0 || (DAT_MouseState::instance.rightClickState != FALSE)))) {
-            if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_CHAT)) {
+            if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
+                || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.downKeyDown_0x20 = TRUE;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf5);
         } else {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(3);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(3);
             DAT_ModifierKeyState::instance.downArrow = 1;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleCharacterIntoInputBuffer,
                 DAT_UserTextHandlerState::ptr)(0xf5);
         }
         break;
@@ -1095,9 +1095,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           VK_DELETE
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::handleDeleteKey, DAT_UserTextHandlerState::ptr)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleDeleteKey, DAT_UserTextHandlerState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf9);
+            Text::UserTextHandler_Func::handleCharacterIntoInputBuffer, DAT_UserTextHandlerState::ptr)(0xf9);
         break;
     case '0':
     case '1':
@@ -1116,17 +1116,17 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if ((((lParam & 0x40000000U) != 0)
                 || (_akeyIngameMenuCheck
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                    = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     _akeyIngameMenuCheck == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeArmoryHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeArmoryHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeArmoryHotkey = -1;
             }
@@ -1137,7 +1137,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                               .armory.id;
             if (_armoryCtrl != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(_armoryCtrl);
             }
             break;
@@ -1147,24 +1147,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeArmoryHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3b12;
     case 'B':
         /*
           B
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeBarracksHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeBarracksHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeBarracksHotkey = -1;
             }
@@ -1176,7 +1176,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                       .barracks.id;
             if (_barracksCtrl != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(_barracksCtrl);
             }
             break;
@@ -1186,32 +1186,32 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeBarracksHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3b12;
     case 'C':
         /*
           C
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && (DAT_MouseState::instance.rightClickState == FALSE)) {
             uVar10 = DAT_TileMapState::instance.mapOrientation + 6U & 0x80000007;
             if ((int)uVar10 < 0) {
                 uVar10 = (uVar10 - 1 | 0xfffffff8) + 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
         }
         break;
     case 'E':
         /*
           E
          */
-        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)
-                && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU))
-            && ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
-                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
+        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)
+                && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU))
+            && ((DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+                || (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
                 DAT_TribesState::instance.DAT_CurrentTribeID, 2);
         }
         break;
@@ -1220,17 +1220,17 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           G
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeGranaryHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeGranaryHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeGranaryHotkey = -1;
             }
@@ -1241,7 +1241,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         .granary.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1251,24 +1251,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeGranaryHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3a17;
     case 'H':
         /*
           H
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeKeepHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeKeepHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeKeepHotkey = -1;
             }
@@ -1279,7 +1279,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].keep.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1289,24 +1289,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeKeepHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3a17;
     case 'I':
         /*
           I
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeEngineersGuildHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeEngineersGuildHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeEngineersGuildHotkey = -1;
             }
@@ -1317,7 +1317,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         .engineersGuild.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1327,24 +1327,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeEngineersGuildHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3a17;
     case 'L':
         /*
           L
          */
         if ((((lParam & 0x40000000U) == 0)
-                && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 != FALSE))
-            && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
             if (DAT_ModifierKeyState::instance.shift == 0) {
                 iVar4 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .lordID;
-                if (((iVar4 != 0) && (DAT_UnitsState::instance.units[iVar4].unitType == OpenSHC::Map::Units::UT_LORD))
+                if (((iVar4 != 0) && (DAT_UnitsState::instance.units[iVar4].unitType == Map::Units::UT_LORD))
                     && ((DAT_UnitsState::instance.units[iVar4].owner
                             == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                        && (DAT_UnitsState::instance.units[iVar4].logicalState == OpenSHC::Map::Units::ULS_NORMAL)))) {
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                        && (DAT_UnitsState::instance.units[iVar4].logicalState == Map::Units::ULS_NORMAL)))) {
+                    MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                         DAT_ViewportRenderState::ptr)(DAT_UnitsState::instance.units[iVar4].tile);
                 }
             } else {
@@ -1357,9 +1357,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         DAT_ShortcutDefinedData::instance.CyclingLordID = 1;
                     }
                     iVar3 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(iVar3);
+                        Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(iVar3);
                     if (iVar3 != 0) {
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                             DAT_ViewportRenderState::ptr)(DAT_UnitsState::instance.units[iVar3].tile);
                         break;
                     }
@@ -1373,17 +1373,17 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           M
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeMarketHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeMarketHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeMarketHotkey = -1;
             }
@@ -1394,7 +1394,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         .marketplace.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1404,24 +1404,24 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeMarketHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
         goto LAB_004b3b12;
     case 'N':
         /*
           N
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.viewportFocusBeforeMercenaryHotkey != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.viewportFocusBeforeMercenaryHotkey);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.viewportFocusBeforeMercenaryHotkey = -1;
             }
@@ -1432,7 +1432,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         .mercenaryPost.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1442,7 +1442,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (_buildingID == 0)
             break;
         DAT_GameCore::instance.viewportFocusBeforeMercenaryHotkey
-            = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+            = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
     LAB_004b3b12:
         /*
           b press
@@ -1450,39 +1450,39 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         _buildingY = DAT_BuildingsState::instance.buildings[_buildingID].y;
         _buildingX = DAT_BuildingsState::instance.buildings[_buildingID].x;
     LAB_004b3a35:
-        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
+        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
             DAT_ViewportRenderState::ptr)((short)_buildingX + 2, (int)((short)_buildingY + 2));
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+        MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
             AlphaAndButtonSurfaceObj::ptr)(_buildingID);
         break;
     case 'P':
         /*
           P
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if ((((BVar2 != FALSE)
-                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
-                && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))
-            && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT
-                && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_MULTIPLAYER)))) {
+                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+                && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
+            && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
+                && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_MULTIPLAYER)))) {
             DAT_GameCore::instance.gamePausedLogical = DAT_GameCore::instance.gamePausedLogical ^ 1;
             if (DAT_GameCore::instance.gamePausedLogical == 0) {
                 if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                     /*
                       "Game running"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "game_running.wav");
                 }
             } else {
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                    OpenSHC::UI::Enums::DEID_GAME_PAUSED_TEXT, 1);
-                DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    UI::Enums::DEID_GAME_PAUSED_TEXT, 1);
+                DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                 if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                     /*
                       "Game paused"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "game_paused.wav");
                 }
             }
@@ -1492,11 +1492,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           Q
          */
-        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)
-                && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU))
-            && ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
-                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
+        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)
+                && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU))
+            && ((DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+                || (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
                 DAT_TribesState::instance.DAT_CurrentTribeID, 0);
         }
         break;
@@ -1505,12 +1505,12 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           S
          */
         if ((((lParam & 0x40000000U) == 0)
-                && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 != FALSE))
-            && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
             iVar4 = DAT_GameState::instance.mapAndTime.signpostIDs[DAT_00df5538::instance];
             if (iVar4 != 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
                     DAT_ViewportRenderState::ptr)((short)DAT_BuildingsState::instance.buildings[iVar4].x + 1,
                     (int)((short)DAT_BuildingsState::instance.buildings[iVar4].y + 1));
             }
@@ -1537,17 +1537,17 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           T
          */
         if ((((lParam & 0x40000000U) != 0)
-                || (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     BVar2 == FALSE))
-            || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+            || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift != 0) {
             if (DAT_GameCore::instance.field161_0x2364 != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                     DAT_ViewportRenderState::ptr)(DAT_GameCore::instance.field161_0x2364);
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
                 DAT_GameCore::instance.field161_0x2364 = -1;
             }
@@ -1558,7 +1558,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         .tunnelersGuild.id;
             if (iVar4 != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
+                    UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                     AlphaAndButtonSurfaceObj::ptr)(iVar4);
             }
             break;
@@ -1567,7 +1567,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                           .tunnelersGuild.id;
         if (_buildingID == 0)
             break;
-        DAT_GameCore::instance.field161_0x2364 = MACRO_CALL(OpenSHC::Rendering_Func::ViewportBasedTileNumber)();
+        DAT_GameCore::instance.field161_0x2364 = MACRO_CALL(Rendering_Func::ViewportBasedTileNumber)();
     LAB_004b3a17:
         _buildingY = DAT_BuildingsState::instance.buildings[_buildingID].y;
         _buildingX = DAT_BuildingsState::instance.buildings[_buildingID].x;
@@ -1576,11 +1576,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           V
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && (DAT_MouseState::instance.rightClickState == FALSE)) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(3);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(3);
             DAT_ModifierKeyState::instance.v = 1;
         }
         break;
@@ -1588,11 +1588,11 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           W
          */
-        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)
-                && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU))
-            && ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
-                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
+        if (((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)
+                && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU))
+            && ((DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+                || (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
                 DAT_TribesState::instance.DAT_CurrentTribeID, 1);
         }
         break;
@@ -1600,15 +1600,15 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         /*
           X
          */
-        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && (DAT_MouseState::instance.rightClickState == FALSE)) {
             uVar10 = DAT_TileMapState::instance.mapOrientation + 2U & 0x80000007;
             if ((int)uVar10 < 0) {
                 uVar10 = (uVar10 - 1 | 0xfffffff8) + 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(uVar10);
         }
         break;
     case 'Z':
@@ -1617,17 +1617,17 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if (((((lParam & 0x40000000U) != 0)
                  || (BVar2
-                     = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                     = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                      BVar2 == FALSE))
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE))
+                || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             || (DAT_MouseState::instance.rightClickState != FALSE))
             break;
         if (DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk == 0) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(1);
+                Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(1);
         } else {
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(0);
+                Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(0);
         }
     LAB_004b2cfd:
         DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
@@ -1652,132 +1652,132 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           0-9
          */
         if ((((lParam & 0x40000000U) == 0)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE))
-            && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+            && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                 _currentSelectionID = DAT_TribesState::instance.DAT_CurrentTribeID, BVar2 != FALSE)) {
             if (DAT_ModifierKeyState::instance.ctrl == 0) {
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                     if (DAT_GameCore::instance.activeMenuTab.tabType
-                        == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
+                        == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
                         switch (wParam) {
                         case '1':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT1);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT1);
                             break;
                         case '2':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT3);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT3);
                             break;
                         case '3':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT4);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT4);
                             break;
                         case '4':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT2);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT2);
                             break;
                         case '5':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT5);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT5);
                             break;
                         case '6':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT6);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT6);
                             break;
                         case '7':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINT7);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINT7);
                         }
                         break;
                     }
-                    if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST) {
+                    if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_MERCENARYPOST) {
                         switch (wParam) {
                         case '1':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM1);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM1);
                             break;
                         case '2':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM3);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM3);
                             break;
                         case '3':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM5);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM5);
                             break;
                         case '4':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM4);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM4);
                             break;
                         case '5':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM2);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM2);
                             break;
                         case '6':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM7);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM7);
                             break;
                         case '7':
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM6);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTM6);
                         }
                         break;
                     }
-                    if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_ENGINEERSGUILD) {
+                    if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_ENGINEERSGUILD) {
                         if (wParam - '1' < 2) {
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                (OpenSHC::Commands::MappersEnum)(wParam + 0x13e));
+                                (Commands::MappersEnum)(wParam + 0x13e));
                         }
                         break;
                     }
-                    if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD) {
+                    if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_TUNNELERSGUILD) {
                         if (wParam == '1') {
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTT1);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTT1);
                         }
                         break;
                     }
-                    if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_CATHEDRAL) {
+                    if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_CATHEDRAL) {
                         if (wParam == '1') {
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemActionHandler_General_ToolbarButtonPressed)(
-                                OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTK1);
+                                Commands::M_MAPPER_PLACE_ASSEMBLY_POINTK1);
                         }
                         break;
                     }
                 }
                 iVar4 = wParam - '0';
                 BVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::isUnitShortcutAvailable, DAT_UnitsState::ptr)(iVar4);
+                    Map::Units::UnitsState_Func::isUnitShortcutAvailable, DAT_UnitsState::ptr)(iVar4);
                 if (BVar2 == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
+                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::makeSelectionBasedOnShortcut, DAT_UnitsState::ptr)(iVar4);
+                        Map::Units::UnitsState_Func::makeSelectionBasedOnShortcut, DAT_UnitsState::ptr)(iVar4);
                     if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                         if (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                            != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM) {
+                            != UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM) {
                             DAT_GameCore::instance.tabTypeSiegeSubset
                                 = DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab;
                         }
                         DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                            = OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM;
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                            = UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM;
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_BUILD_MENU, 0);
                         DAT_TileMapState::instance.shiftRelated0or3 = 1;
                         DAT_UnitsState::instance.field5_0x14 = TRUE;
                         DAT_UnitsState::instance.unitControlsRelated = 1;
@@ -1798,7 +1798,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         } while (iVar3 == -1);
                     }
                     if (0 < iVar3) {
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
+                        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
                             DAT_ViewportRenderState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
                             (int)(DAT_UnitsState::instance.units[iVar3].y));
                     }
@@ -1807,9 +1807,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 if (((DAT_TribesState::instance.DAT_CurrentTribeID != 0)
                         && (DAT_TileMapState::instance.shiftRelated0or3 == 1))
                     && (DAT_TribesState::instance.DAT_CurrentTribeID != 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::clearTribeHotKey, DAT_GameState::ptr)(
+                    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearTribeHotKey, DAT_GameState::ptr)(
                         wParam - '0');
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::assignSelectionToKey,
+                    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::assignSelectionToKey,
                         DAT_GameState::ptr)(wParam - '0', _currentSelectionID);
                 }
             } else {
@@ -1820,7 +1820,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 if (DAT_ModifierKeyState::instance.ctrl == 0) {
                     _tile = DAT_GameState::instance.playerDataArray[8].engineersAssemblyPoints[wParam - 6];
                     if (-1 < *(int*)&_tile) {
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                             DAT_ViewportRenderState::ptr)(*(int*)&_tile);
                     }
                 } else {
@@ -1851,12 +1851,12 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if ((((lParam & 0x40000000U) != 0)
                 || (_addKeyIngameMenu
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                    = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     _addKeyIngameMenu == FALSE))
-            || (((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE
-                     || ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
+            || (((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
+                     || ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
                          && (DAT_GameSynchronyState::instance.currentGameMode
-                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))))
+                             != Game::GM_SKIRMISH_SINGLE_PLAYER))))
                 || (90 < (int)DAT_GameCore::instance.gameSpeedLevel))))
             break;
         DAT_GameCore::instance.gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel + 5;
@@ -1870,12 +1870,12 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if ((((lParam & 0x40000000U) != 0)
                 || (_subtractKeyIngameMenu
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                    = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                     _subtractKeyIngameMenu == FALSE))
-            || ((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE
-                || (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
+            || ((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
+                || (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
                          && (DAT_GameSynchronyState::instance.currentGameMode
-                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+                             != Game::GM_SKIRMISH_SINGLE_PLAYER))
                     || ((int)DAT_GameCore::instance.gameSpeedLevel < 0xb))))))
             break;
         DAT_GameCore::instance.gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel - 5;
@@ -1883,30 +1883,30 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             DAT_GameCore::instance.gameSpeedLevel = 0x14;
         }
     LAB_004b4768:
-        MACRO_CALL(OpenSHC::UI::DisplayElements_Func::ActivateGameSpeedAndResourceLackDisplayElementUnk)(
-            OpenSHC::UI::Enums::DEID_GAME_SPEED_TEXT, 1, 5000);
+        MACRO_CALL(UI::DisplayElements_Func::ActivateGameSpeedAndResourceLackDisplayElementUnk)(
+            UI::Enums::DEID_GAME_SPEED_TEXT, 1, 5000);
         break;
     case VK_F1:
         /*
           VK_F1
          */
         if (DAT_ModifierKeyState::instance.shift != 0) {
-            if (((((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+            if (((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                       || (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .playerDeathRelated
                           == 0))
-                     && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))
-                    && (((((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT
+                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
+                    && (((((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
                                && (DAT_MenuTextInputState::instance.currentModalDialog
-                                   == OpenSHC::UI::Enums::MMT_NO_MENU))
-                              && ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
+                                   == UI::Enums::MMT_NO_MENU))
+                              && ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
                                   || (DAT_GameCore::instance.currentMenuViewType
-                                      == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU))))
-                             && ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
+                                      == UI::Enums::MVT_BUILDING_AND_STATUS_MENU))))
+                             && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
                                  || (DAT_GameSynchronyState::instance.isHost != FALSE))))
                         && (DAT_GameCore::instance.field24_0x6c == 0))))
-                && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL)) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(
+                && (DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL)) {
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(
                     10);
             }
             break;
@@ -1924,9 +1924,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           F1-F10 without F2
          */
         DAT_ModifierKeyState::instance.keyDownUnk = 1;
-        if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
+        if ((DAT_GameCore::instance.gameMode_2 == Game::GM_SKIRMISH_AND_MULTIPLAYER)
             && (_tauntInGameMenuCheck
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                 _tauntInGameMenuCheck != 0)) {
             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -1940,20 +1940,20 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 wParam = wParam + (VK_BACK | VK_RBUTTON);
             }
             DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = wParam - VK_DIVIDE;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
-            if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                Commands::GCT_TAUNT_OR_CHAT);
+            if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)
                 && (DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage != 6)) {
-                MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::setTriggerForAITauntResponse, DAT_AICState::ptr)();
+                MACRO_CALL_MEMBER(AI::AICState_Func::setTriggerForAITauntResponse, DAT_AICState::ptr)();
             }
         } else if (((wParam < VK_F2)
-                       && (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk
-                                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_JUST_BUILD))
+                       && (((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
+                                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_JUST_BUILD))
                            && (_fkeyIngameMenuCheck = MACRO_CALL_MEMBER(
-                                   OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                                   Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                                _fkeyIngameMenuCheck != FALSE))))
             && (DAT_ModifierKeyState::instance.shift == 0)) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::openEventTriggerMenu, DAT_MapPropertiesState::ptr)(
+            MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::openEventTriggerMenu, DAT_MapPropertiesState::ptr)(
                 wParam - VK_F1);
             break;
         }
@@ -1968,27 +1968,27 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           VK_F2
          */
         if (DAT_ModifierKeyState::instance.shift != 0) {
-            if ((((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+            if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                      || (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                              .playerDeathRelated
                          == 0))
-                    && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR
-                        && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT
+                    && ((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
+                        && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
                             && (DAT_MenuTextInputState::instance.currentModalDialog
-                                == OpenSHC::UI::Enums::MMT_NO_MENU))))))
-                && ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
+                                == UI::Enums::MMT_NO_MENU))))))
+                && ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
                     || (DAT_GameCore::instance.currentMenuViewType
-                        == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU)))) {
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                        == UI::Enums::MVT_BUILDING_AND_STATUS_MENU)))) {
+                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     if ((DAT_GameCore::instance.field24_0x6c == 0)
-                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL)) {
+                        && (DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL)) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
+                            UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
                     }
                 } else if (DAT_GameSynchronyState::instance.currentGameMode
-                    == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                    == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
+                        UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
                 }
             }
             break;

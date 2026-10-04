@@ -22,10 +22,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Game::Resources::ResourceTypeInt;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Game::Resources::ResourceTypeInt;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00465A20
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_BuySellMenuButtonsAndHands(
@@ -47,83 +47,83 @@ namespace UI {
             if ((param_1 == 2) || (param_1 == 3)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 BVar10 = MACRO_CALL_MEMBER(
-                    OpenSHC::Game::GameStateStructures_Func::anyGoodsAreAllowedForSale, DAT_GameState::ptr)();
+                    Game::GameStateStructures_Func::anyGoodsAreAllowedForSale, DAT_GameState::ptr)();
                 if (BVar10 != FALSE) {
                     DAT_ButtonUnknownZero::instance = 0;
                     if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (param_1 == 2)) {
                         DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
             } else {
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                MACRO_CALL(UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 iVar4 = param_1 + 5;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     iVar11 = 0x11;
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
                     iVar11 = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, iVar11);
+                        Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, iVar11);
                     iVar12 = 0;
                     BVar10 = FALSE;
                     iVar9 = 0x11;
                     uVar8 = 0;
                     uVar7 = 0xffffff;
-                    TVar6 = OpenSHC::Text::TTA_LEFT;
+                    TVar6 = Text::TTA_LEFT;
                     iVar5 = DAT_ButtonY::instance + 0xb;
                     iVar3 = (DAT_ButtonW::instance - (iVar11 + 0x35)) / 2 + DAT_ButtonX::instance;
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, TVar6, uVar7, uVar8, iVar9, BVar10, iVar12);
                     RVar1
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .marketSelectedResourceType;
                     if (param_1 == 0) {
-                        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getBatchBuyPrice,
+                        iVar4 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
                             DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                     } else {
-                        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalesPrice,
+                        iVar4 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalesPrice,
                             DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar4,
+                        Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar4,
                         (int)((DAT_ButtonW::instance - (iVar11 + 0x35)) / 2 + 0x14 + DAT_ButtonX::instance),
-                        (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_LEFT, 0, 0x11, TRUE, 0);
+                        (int)(DAT_ButtonY::instance + 10), Text::TTA_LEFT, 0, 0x11, TRUE, 0);
                 }
                 iVar11 = 0x11;
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
+                pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
                 iVar11 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, iVar11);
+                    Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, iVar11);
                 iVar12 = 0;
                 BVar10 = FALSE;
                 iVar9 = 0x11;
                 uVar8 = 0;
                 uVar7 = 0xffffff;
-                TVar6 = OpenSHC::Text::TTA_LEFT;
+                TVar6 = Text::TTA_LEFT;
                 iVar5 = DAT_ButtonY::instance + 0xb;
                 iVar3 = (DAT_ButtonW::instance - (iVar11 + 0x35)) / 2 + DAT_ButtonX::instance;
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, TVar6, uVar7, uVar8, iVar9, BVar10, iVar12);
                 RVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType;
                 if (param_1 == 0) {
-                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getBatchBuyPrice,
+                    iVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                 } else {
-                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSalesPrice,
+                    iVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalesPrice,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     iVar3, (int)((DAT_ButtonW::instance - (iVar11 + 0x35)) / 2 + 0x14 + DAT_ButtonX::instance),
-                    (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_LEFT, 0, 0x11, TRUE, 0);
+                    (int)(DAT_ButtonY::instance + 10), Text::TTA_LEFT, 0, 0x11, TRUE, 0);
                 if (param_1 == 1) {
-                    iVar11 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSellResourceAmount,
+                    iVar11 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSellResourceAmount,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                         (int)(DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -134,32 +134,32 @@ namespace UI {
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState;
                 if (iVar5 == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar4, DAT_MenuHandlerState::instance.x + 0xdc,
-                        DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_IN_TRADEPOST, iVar4, DAT_MenuHandlerState::instance.x + 0xdc,
+                        DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(iVar11, DAT_MenuHandlerState::instance.x + 0xde,
-                        DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_GOODS,
+                        DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, TRUE, 0);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_GOODS,
                         (int)(DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .marketSelectedResourceType),
                         DAT_MenuHandlerState::instance.x + 0xe0, DAT_MenuHandlerState::instance.y + 0x243,
-                        OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
+                        Text::TTA_LEFT, 0, 0x12, TRUE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(iVar3, DAT_MenuHandlerState::instance.x + 0xf0,
-                        DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
+                        DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, TRUE, 0);
                     /*
                       added by script: "gold"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, 0xc, DAT_MenuHandlerState::instance.x + 0xf4,
-                        DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_IN_TRADEPOST, 0xc, DAT_MenuHandlerState::instance.x + 0xf4,
+                        DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, TRUE);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar5 + 8, DAT_MenuHandlerState::instance.x + 0xdc,
-                    DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_IN_TRADEPOST, iVar5 + 8, DAT_MenuHandlerState::instance.x + 0xdc,
+                    DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, FALSE);
                 _now = timeGetTime();
                 if (1000 < (int)(_now
                         - DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

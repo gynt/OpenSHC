@@ -10,9 +10,9 @@ namespace Text {
         int maxWidth, uint color, int fontSize, int blendStrength)
     {
         char* text;
-        text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+        text = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
             textOffsetIndex, textNumInGroup);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, this)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, this)(
             text, xPos, yPos, maxWidth, color, fontSize, blendStrength);
         return;
     }

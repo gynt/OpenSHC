@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00487A30
     int GameSynchronyState::determineGameTicksToPerform(int currentPlayerSlotID)
@@ -30,8 +30,8 @@ namespace Synchrony {
         if ((DAT_GameCore::instance.currentlyInGameUnk_0xa4 != TRUE) || (this->DAT_GameHalted != 0)) {
             return 0;
         }
-        if ((this->currentGameMode == OpenSHC::Game::GM_SOLITARY)
-            || (this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+        if ((this->currentGameMode == Game::GM_SOLITARY)
+            || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             this->mapTimeInTicksSinglePlayer = DAT_GameCore::instance.mapTimeInTicks;
             _gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel;
             _relativeTickTime = this->field196_0x101ad4;
@@ -41,7 +41,7 @@ namespace Synchrony {
              */
             DAT_GameCore::instance.gameSpeedMultiplicator = 1;
             this->field196_0x101ad4 = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::computeLatencyAdjustmentFromMatchTimes,
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeLatencyAdjustmentFromMatchTimes,
                 this)(currentPlayerSlotID);
             _relativeTickTime = *(int*)(extraout_ECX + 0x109eac);
             if ((-1 < *(int*)(extraout_ECX + 0x109eac))

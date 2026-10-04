@@ -13,20 +13,20 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00465F20
     void Actions::TryAcquireAmmunitionOrPlanToBuyStone(int param_1, int param_2)
     {
         short* psVar1;
         if (9 < DAT_GameState::instance.playerDataArray[param_1].currentResources[4]) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss,
-                DAT_BuildingsState::ptr)(param_1, OpenSHC::Game::Resources::RT_STONE, 10, 0);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
+                DAT_BuildingsState::ptr)(param_1, Game::Resources::RT_STONE, 10, 0);
             psVar1 = &DAT_UnitsState::instance.units[param_2].stoneAmmunition;
             *psVar1 = *psVar1 + 0x14;
         }
-        if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+        if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                 && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[param_1] == -1))
             && (DAT_GameSynchronyState::instance.currentAIArray[param_1] != 0)) {
             DAT_GameState::instance.playerDataArray[param_1].resourcesToAcquireArray[4] = 10;

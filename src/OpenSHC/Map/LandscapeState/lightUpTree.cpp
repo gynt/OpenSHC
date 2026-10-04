@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F2280
     BOOLEnum LandscapeState::lightUpTree(int tile, int playerID)
@@ -68,7 +68,7 @@ namespace Map {
             return FALSE;
         }
         this->trees[_treeID].igniterPlayer = (short)playerID;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::igniteFireAtTilesDistanceAway,
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::igniteFireAtTilesDistanceAway,
             DAT_PathFindingState::ptr)(tile, _spread, playerID);
         return TRUE;
     }

@@ -14,22 +14,22 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00491750
     void MenuTextInputState::clearAnyOtherModalDialogs()
     {
         DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
             this->DAT_SomeTextArrayIndex);
         if (this->DAT_SomeTextArrayIndex != 0) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
         }
-        this->currentModalDialog = OpenSHC::UI::Enums::MMT_NO_MENU;
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-            OpenSHC::UI::Enums::MMT_NONE, TRUE);
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
+        this->currentModalDialog = UI::Enums::MMT_NO_MENU;
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+            UI::Enums::MMT_NONE, TRUE);
+        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
         if (this->field42_0x9c != 0) {
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;

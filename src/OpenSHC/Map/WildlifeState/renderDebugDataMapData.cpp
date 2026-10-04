@@ -23,8 +23,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052BF40
     void WildlifeState::renderDebugDataMapData(int x, int y, int width, int height)
@@ -57,8 +57,8 @@ namespace Map {
                 goto LAB_0052c0db;
             textAddress = "Slink  ";
         }
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            textAddress, x + 0x1a6, y + 4, OpenSHC::Text::TTA_LEFT, 0xffffff, 0x11, FALSE, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            textAddress, x + 0x1a6, y + 4, Text::TTA_LEFT, 0xffffff, 0x11, FALSE, 0);
     LAB_0052c0db:
         /*
           render the squares
@@ -66,7 +66,7 @@ namespace Map {
         int iVar7 = 41;
         int iVar6 = y;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, iVar6, x + 0x192, iVar6, (ushort)((int)(COL_WHITE::instance.shortValue)));
             iVar6 = iVar6 + 10;
             iVar7 = iVar7 + -1;
@@ -74,7 +74,7 @@ namespace Map {
         iVar7 = 41;
         iVar6 = x1;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 iVar6, y, iVar6, y + 400, (ushort)((int)(COL_WHITE::instance.shortValue)));
             iVar6 = iVar6 + 10;
             iVar7 = iVar7 + -1;
@@ -214,7 +214,7 @@ namespace Map {
                         iVar2 = y + iVar8 * 10;
                     }
                 LAB_0052c533:
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
+                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(iVar4 + 1, iVar2 + 1, iVar4 + 9, iVar2 + 9, (ushort)((int)(uVar5)));
                 }
             }

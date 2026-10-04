@@ -16,7 +16,7 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x0045AE00
     void Version::ResetTeams()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
     }
 
 }

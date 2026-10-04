@@ -9,14 +9,14 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00491FD0
         void GameplayOptions::MenuItemActionHandler_GameplayOptions_SpeedSlider(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
-            if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+            if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
+                && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 *minValue = 0x14;
                 *maxValue = 0x5a;
                 *currentValue = DAT_GameSynchronyState::instance.skirmishGameSpeedLevel;

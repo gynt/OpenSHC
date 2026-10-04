@@ -21,9 +21,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041D510
     void Buildings::UpdateQuarry()
@@ -51,8 +51,8 @@ namespace Map {
                       .playerDataArray[DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner]
                       .countStoneQuarries;
         *piVar1 = *piVar1 + 1;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar10);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar10);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar7 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
@@ -63,7 +63,7 @@ namespace Map {
         if (1 < iVar10) {
             DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 = 0;
         }
-        if ((iVar10 == 1) && (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)) {}
+        if ((iVar10 == 1) && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)) {}
         bVar11 = DAT_BuildingsState::instance.buildings[iVar7].workers[0] != 0;
         sVar2 = DAT_BuildingsState::instance.buildings[iVar7].workers[1];
         if (sVar2 != 0) {
@@ -98,7 +98,7 @@ namespace Map {
                     }
                     bVar5 = (char)bVar8 < '\x01';
                     if (DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock == 1) {
-                        sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_PULLER_LOWER;
+                        sfxOffsetInArray = DE::SHCDE::FX_PULLER_LOWER;
                         goto LAB_0041d7b3;
                     }
                 } else {
@@ -119,18 +119,18 @@ namespace Map {
                         }
                         bVar5 = (char)bVar8 < '\x01';
                         if (DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock == 3) {
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)(short)DAT_BuildingsState::instance.buildings[iVar7].x,
                                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar7].y)),
-                                OpenSHC::DE::SHCDE::FX_PULLER_STRAIN);
+                                DE::SHCDE::FX_PULLER_STRAIN);
                         }
                         if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].campgroundVclock
                             == 0x38) {
                             uVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y;
                             uVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x;
-                            sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_PULLER_IMPACT;
+                            sfxOffsetInArray = DE::SHCDE::FX_PULLER_IMPACT;
                         LAB_0041d7c3:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)(short)uVar4, (int)((int)((short)uVar3)), sfxOffsetInArray);
                         }
                     } else {
@@ -151,7 +151,7 @@ namespace Map {
                             }
                             bVar5 = (char)bVar8 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock == 1) {
-                                sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_PULLER_ROCK;
+                                sfxOffsetInArray = DE::SHCDE::FX_PULLER_ROCK;
                             LAB_0041d7b3:
                                 uVar3 = DAT_BuildingsState::instance.buildings[iVar7].y;
                                 uVar4 = DAT_BuildingsState::instance.buildings[iVar7].x;
@@ -172,7 +172,7 @@ namespace Map {
                             }
                             bVar5 = (char)bVar8 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock == 1) {
-                                sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_PULLER_RETURN;
+                                sfxOffsetInArray = DE::SHCDE::FX_PULLER_RETURN;
                                 goto LAB_0041d7b3;
                             }
                         }
@@ -359,12 +359,12 @@ namespace Map {
                         }
                     LAB_0041dcd4:
                         if (bVar12) {
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)*(
                                     short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -0x32),
                                 (int)*(
                                     short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -0x30),
-                                OpenSHC::DE::SHCDE::FX_PRYER_LEVER);
+                                DE::SHCDE::FX_PRYER_LEVER);
                         }
                     } else {
                         if (sVar2 == 4) {
@@ -379,10 +379,10 @@ namespace Map {
                             }
                             bVar5 = (char)bVar8 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[iVar10].field26_0x50 == 1) {
-                                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation,
+                                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation,
                                     DAT_SFXState::ptr)((int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                                    OpenSHC::DE::SHCDE::FX_PRYER_LEVER);
+                                    DE::SHCDE::FX_PRYER_LEVER);
                             }
                             iVar7 = DAT_CurrentBuildingID::instance * 0x32c;
                             bVar12
@@ -402,21 +402,21 @@ namespace Map {
                             }
                             bVar5 = (char)bVar8 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[iVar10].field26_0x50 == 1) {
-                                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation,
+                                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation,
                                     DAT_SFXState::ptr)((int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                                    OpenSHC::DE::SHCDE::FX_PRYER_LEVER);
+                                    DE::SHCDE::FX_PRYER_LEVER);
                             }
                             if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field26_0x50
                                 == 0x17) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                                    Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                     (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                         .x,
                                     (int)((int)((
                                         short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                             .y)),
-                                    OpenSHC::DE::SHCDE::FX_PRYER_LEVER);
+                                    DE::SHCDE::FX_PRYER_LEVER);
                             }
                             iVar7 = DAT_CurrentBuildingID::instance * 0x32c;
                             bVar12
@@ -436,10 +436,10 @@ namespace Map {
                             }
                             bVar5 = (char)bVar8 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[iVar10].field26_0x50 == 0x18) {
-                                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation,
+                                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation,
                                     DAT_SFXState::ptr)((int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                                    OpenSHC::DE::SHCDE::FX_PRYER_LEVER);
+                                    DE::SHCDE::FX_PRYER_LEVER);
                             }
                             iVar7 = DAT_CurrentBuildingID::instance * 0x32c;
                             bVar12
@@ -530,9 +530,9 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].killingPitField = 0xb;
                 } else if ((sVar2 < 0xc)
                     && (iVar7 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingResourceAmountByUid,
+                            Map::Buildings::BuildingsState_Func::getBuildingResourceAmountByUid,
                             DAT_BuildingsState::ptr)(buildingID, DAT_BuildingsState::instance.buildings[buildingID].uid,
-                            OpenSHC::Game::Resources::RT_STONE),
+                            Game::Resources::RT_STONE),
                         iVar7 < 0x2f)) {
                     if (bVar9 == 0) {
                         DAT_BuildingsState::instance.buildings[iVar10].killingPitField = 0;
@@ -571,52 +571,52 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar10].field23_0x44 = (char)bVar9 + 0xc1;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x2a) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CHIP);
+                    DE::SHCDE::FX_MASON_CHIP);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x34) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CHIP);
+                    DE::SHCDE::FX_MASON_CHIP);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x41) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CRUMBLE);
+                    DE::SHCDE::FX_MASON_CRUMBLE);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 100) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CHIP);
+                    DE::SHCDE::FX_MASON_CHIP);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x73) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CRUMBLE);
+                    DE::SHCDE::FX_MASON_CRUMBLE);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x8e) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CHIP);
+                    DE::SHCDE::FX_MASON_CHIP);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar10].field27_0x54 == 0x96) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                    OpenSHC::DE::SHCDE::FX_MASON_CRUMBLE);
+                    DE::SHCDE::FX_MASON_CRUMBLE);
                 iVar10 = DAT_CurrentBuildingID::instance;
             }
             if ('\0' < (char)bVar9)
@@ -658,13 +658,13 @@ namespace Map {
             }
         } else if (sVar2 < 5) {
             DAT_BuildingsState::instance.buildings[iVar10].field119_0x11e = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::addResourceToStockpile,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::addResourceToStockpile,
                 DAT_BuildingsState::ptr)(buildingID, DAT_BuildingsState::instance.buildings[buildingID].uid,
-                OpenSHC::Game::Resources::RT_STONE, 1, 0x30, 1);
+                Game::Resources::RT_STONE, 1, 0x30, 1);
             iVar10 = DAT_CurrentBuildingID::instance;
         }
     LAB_0041e1d9:
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar10].field39_0x84 = 0;
         }
         piVar1 = &DAT_BuildingsState::instance.buildings[iVar10].ownerFlagFrame;

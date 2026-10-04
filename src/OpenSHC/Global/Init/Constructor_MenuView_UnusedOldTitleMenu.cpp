@@ -13,19 +13,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A250
     void Init::Constructor_MenuView_UnusedOldTitleMenu()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedOldTitleMenu::ptr)(
-            OpenSHC::UI::Enums::MVT_UNUSED_OLD_TITLE_MENU,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_DoInitial),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(OpenSHC::Global_Func::DoNothing));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_UnusedOldTitleMenu));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedOldTitleMenu::ptr)(
+            UI::Enums::MVT_UNUSED_OLD_TITLE_MENU,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_DoInitial),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedOldTitleMenu));
         return;
     }
 

@@ -21,11 +21,11 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::MappersEnum;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using Map::MapType2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005261B0
         void TribesState::respawnDeer()
@@ -35,11 +35,11 @@ namespace Map {
             int _counter;
             int _tile;
             uint _y;
-            if ((((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                     && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-                    && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk
-                        || (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != OpenSHC::Map::MT_SIEGE))))
-                && (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
+            if ((((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+                    && ((DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk
+                        || (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != Map::MT_SIEGE))))
+                && (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
                          && (DAT_GameState::instance.mapAndTime.aliveDeerCount != 0))
                     && (DAT_GameState::instance.mapAndTime.deerCount < 6)))) {
                 _counter = 0;
@@ -51,7 +51,7 @@ namespace Map {
                         _y = (int)DAT_GameState::instance.mapAndTime.deerSpawnLocationsXY[_counter].y;
                     }
                     BVar1 = MACRO_CALL_MEMBER(
-                        OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid, DAT_ViewportRenderState::ptr)(_x, _y);
+                        Rendering::ViewportRenderState_Func::xyAreValid, DAT_ViewportRenderState::ptr)(_x, _y);
                     if (BVar1 != FALSE)
                         break;
                 LAB_00526268:
@@ -62,11 +62,11 @@ namespace Map {
                 if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x50501581U) != 0) {
                     if (DAT_TileMapState::instance.OrganismLayer[_tile] == 0)
                         goto LAB_00526268;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(
                         (int)DAT_TileMapState::instance.OrganismLayer[_tile]);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createAnimal, this)(
-                    OpenSHC::Commands::M_MAPPER_DEER, _x, _y,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createAnimal, this)(
+                    Commands::M_MAPPER_DEER, _x, _y,
                     (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_tile])));
             }
         }

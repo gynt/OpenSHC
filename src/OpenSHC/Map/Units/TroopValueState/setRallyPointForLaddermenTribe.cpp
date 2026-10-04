@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using AI::Tribes::AITribeType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00519790
         void TroopValueState::setRallyPointForLaddermenTribe(int param_1)
@@ -32,13 +32,13 @@ namespace Map {
             do {
                 if (*(short*)(piVar4 + 5) != 0) {
                     BVar2 = MACRO_CALL_MEMBER(
-                        OpenSHC::Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(*piVar4);
+                        Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(*piVar4);
                     if (((BVar2 != FALSE)
-                            && (*(AITribeTypeShort*)((int)piVar4 + 0x16) == OpenSHC::AI::Tribes::AITT_LADDERMEN))
+                            && (*(AITribeTypeShort*)((int)piVar4 + 0x16) == AI::Tribes::AITT_LADDERMEN))
                         && (iVar3 = iVar3 + 1, iVar3 == DAT_TribesState::instance.tribes[param_1].someCounter1 + 1)) {
                         sVar1 = DAT_TribesState::instance.tribes[iVar5].selectionTargetUnitID;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
+                            Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
                             DAT_PathFindingState::ptr)(-1, (int)((int)(DAT_UnitsState::instance.units[sVar1].x)),
                             (int)((int)(DAT_UnitsState::instance.units[sVar1].y)));
                         sVar1 = (short)DAT_PathFindingState::instance.ALG_ResultY;

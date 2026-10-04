@@ -15,11 +15,11 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Map::Buildings::BuildingTypeShort;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00447D30
     void BuildingMenus::RenderBuildingMenu_Tower()
@@ -40,15 +40,15 @@ namespace UI {
         keepOffsetX = FALSE;
         iVar5 = 0x10;
         color = 0;
-        alignment = OpenSHC::Text::TTA_LEFT;
+        alignment = Text::TTA_LEFT;
         int iVar2 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar4 = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           added by script: "Tower"
          */
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TOWER, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TOWER, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar3, iVar4, iVar2, alignment, color, iVar5, keepOffsetX, iVar6);
         blendStrength = 0;
         iVar6 = 0x12;
@@ -56,11 +56,11 @@ namespace UI {
         iVar5 = 0x136;
         iVar2 = DAT_MenuHandlerState::instance.y + 0x1fb;
         iVar4 = DAT_MenuHandlerState::instance.x + 0xaf;
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TOWER, (int)((short)BVar1 + -0x49));
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TOWER, (int)((short)BVar1 + -0x49));
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             pcVar3, iVar4, iVar2, iVar5, color_00, iVar6, blendStrength);
-        MACRO_CALL(OpenSHC::UI::BuildingMenus_Func::RenderBuildingMenu_RenderTowerAndGateHealth)();
+        MACRO_CALL(UI::BuildingMenus_Func::RenderBuildingMenu_RenderTowerAndGateHealth)();
     }
 
 }

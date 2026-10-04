@@ -17,7 +17,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
+    using DE::SHCDE::eSFX;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00418740
     void Buildings::UpdateGoodBuildingMaypole()
@@ -31,12 +31,12 @@ namespace Map {
         sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk
             = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].fireRelatedRNG1 % 9;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field66_0xbe = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(iVar4, 1);
         DAT_BuildingsState::instance.buildings[iVar4].renderAnimation
             = (ushort)(0 < DAT_GameState::instance.playerDataArray[sVar3].fearFactorLevel);
@@ -62,10 +62,10 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar4].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar4].animationFrame = 1;
                 if ((DAT_BuildingsState::instance.buildings[iVar4].field13_0x28 & 7) == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar4].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)),
-                        OpenSHC::DE::SHCDE::FX_MAYPOLE);
+                        DE::SHCDE::FX_MAYPOLE);
                 }
             }
         }

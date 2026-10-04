@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AD30
     void Init::Constructor_Menu_ChooseNetworkServiceProvider()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_ChooseNetworkServiceProvider::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_ChooseNetworkServiceProvider::ptr)(
             DAT_RenderingDefinedData::instance.MenuItems_ChooseNetworkServiceProvider);
     }
 

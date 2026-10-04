@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00527330
         void TribesState::updateTribeUnitAssignments()
@@ -44,16 +44,16 @@ namespace Map {
                             if (0 < _tribeSize) {
                                 do {
                                     _unitID = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
+                                        Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
                                         _tribeID, _tribeUnitIndex);
                                     _unitLogicalState = DAT_UnitsState::instance.units[_unitID].logicalState;
                                     _tribeUnitIndex = _tribeUnitIndex + 1;
                                     if (((((short)_unitLogicalState < 1)
                                              || ((2 < (short)_unitLogicalState
-                                                 && (_unitLogicalState != OpenSHC::Map::Units::ULS_TRANSITIONING))))
+                                                 && (_unitLogicalState != Map::Units::ULS_TRANSITIONING))))
                                             || (DAT_UnitsState::instance.units[_unitID].dying != 0))
                                         || (DAT_UnitsState::instance.units[_unitID].tribeID != _tribeID)) {
-                                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromTribe,
+                                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromTribe,
                                             this)(_unitID, _tribeID);
                                         _tribeID = DAT_CurrentTribeID::instance;
                                     } else {
@@ -68,7 +68,7 @@ namespace Map {
                             }
                         }
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::clearTribe, this)(_tribeID);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearTribe, this)(_tribeID);
                 }
             LAB_00527425:
                 DAT_CurrentTribeID::instance = DAT_CurrentTribeID::instance + 1;

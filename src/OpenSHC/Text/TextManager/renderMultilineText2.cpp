@@ -22,8 +22,8 @@ namespace Text {
         color = 0;
         yPos = 0;
         iVar1 = 0;
-        text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(param_1, param_2);
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+        text = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(param_1, param_2);
+        iVar1 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[param_4])(
             text, iVar1, yPos, param_3, color, blendStrength, modeUnk);
         return iVar1;

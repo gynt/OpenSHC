@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmImageType;
-        using OpenSHC::IO::Graphics::GmImageTypeInt;
+        using IO::Graphics::GmImageType;
+        using IO::Graphics::GmImageTypeInt;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00455300
         void TextureRenderCore::renderGM(eGM gmID, int imageID, int drawX, int drawY)
@@ -22,10 +22,10 @@ namespace UI {
             GmImageTypeInt _imageType;
             iVar1 = GMTotalPicturesProcessed::instance[gmID];
             _imageType = this->gmFileHeaderColorpaletteArray[gmID].ImageType;
-            if ((_imageType != OpenSHC::IO::Graphics::GIT_InterfaceElement)
-                && (_imageType != OpenSHC::IO::Graphics::GIT_CompressedImage)) {
-                if (_imageType == OpenSHC::IO::Graphics::GIT_Animation) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderUnitAnimationUnk, this)(
+            if ((_imageType != IO::Graphics::GIT_InterfaceElement)
+                && (_imageType != IO::Graphics::GIT_CompressedImage)) {
+                if (_imageType == IO::Graphics::GIT_Animation) {
+                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderUnitAnimationUnk, this)(
                         drawX, drawY, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
                         (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
                         (byte*)((int)((
@@ -33,7 +33,7 @@ namespace UI {
                 }
             }
             MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(
+                UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(
                 drawX, drawY, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
                 (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
                 (ushort*)((int)(

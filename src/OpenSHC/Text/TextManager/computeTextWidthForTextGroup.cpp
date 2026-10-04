@@ -10,9 +10,9 @@ namespace Text {
     {
         char* text;
         int _width;
-        text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+        text = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
             textOffsetIndex, textNumInGroup);
-        _width = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, this)(text, fontSize);
+        _width = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, this)(text, fontSize);
         return _width;
     }
 

@@ -12,10 +12,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043CDB0
     void BuildingMenus::RenderBuildingMenu_Marketplace()
@@ -31,29 +31,29 @@ namespace UI {
         BVar7 = FALSE;
         iVar6 = 0x10;
         BVar5 = 0;
-        TVar4 = OpenSHC::Text::TTA_LEFT;
+        TVar4 = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1d4;
         iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           added by script: "The Marketplace"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar4, BVar5, iVar6, BVar7, iVar8);
         iVar8 = 0;
         BVar7 = FALSE;
         iVar6 = 0x12;
         BVar5 = 0;
-        TVar4 = OpenSHC::Text::TTA_CENTER;
+        TVar4 = Text::TTA_CENTER;
         iVar1 = DAT_MenuHandlerState::instance.y + 0x23c;
         iVar3 = DAT_MenuHandlerState::instance.x + 0x10b;
         /*
           added by script: "Choose a goods type to trade"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, 0x13);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, 0x13);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar4, BVar5, iVar6, BVar7, iVar8);
     }
 

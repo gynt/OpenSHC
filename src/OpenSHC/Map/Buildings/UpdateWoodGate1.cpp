@@ -20,10 +20,10 @@ namespace Map {
         byte bVar1;
         int iVar2;
         int buildingID;
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar2 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingVariation;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateGateDrawBridgeOpenCloseLogic,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateGateDrawBridgeOpenCloseLogic,
             DAT_BuildingsState::ptr)();
         buildingID = DAT_CurrentBuildingID::instance;
         if ((DAT_TileMapState::instance.mapOrientation == 2) || (DAT_TileMapState::instance.mapOrientation == 6)) {
@@ -52,14 +52,14 @@ namespace Map {
             if (DAT_BuildingsState::instance.buildings[buildingID].gateState == 10) {
                 DAT_BuildingsState::instance.buildings[buildingID].pathLinkageRelated2 = 2;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
+                    Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
                     DAT_PathFindingState::ptr)(buildingID);
             }
         } else if (bVar1 == 2) {
             if (DAT_BuildingsState::instance.buildings[buildingID].gateState == 0xb) {
                 DAT_BuildingsState::instance.buildings[buildingID].pathLinkageRelated2 = 0;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
+                    Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
                     DAT_PathFindingState::ptr)(buildingID);
                 buildingID = DAT_CurrentBuildingID::instance;
             }

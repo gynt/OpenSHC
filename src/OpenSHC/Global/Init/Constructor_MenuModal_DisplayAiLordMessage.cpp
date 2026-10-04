@@ -15,19 +15,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B860
     void Init::Constructor_MenuModal_DisplayAiLordMessage()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DisplayAiLordMessage::ptr)(
-            OpenSHC::UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE, 0, 0, 0, 0, 0x40,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DisplayAiLordMessage::ptr)(
+            UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE, 0, 0, 0, 0, 0x40,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::DisplayAiLordMessage_Func::MenuModalRenderFunction_DisplayAiLordMessage),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::DisplayAiLordMessage_Func::MenuModalRenderFunction_DisplayAiLordMessage),
             Menu_DisplayAiLordMessage::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_DisplayAiLordMessage));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_DisplayAiLordMessage));
         return;
     }
 

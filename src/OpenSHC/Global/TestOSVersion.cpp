@@ -13,7 +13,7 @@ byte Global::TestOSVersion()
     uint _unknownSecRelated;
     _OSVERSIONINFOEXA _versionInfoEx;
     _unknownSecRelated = MSVC_SecurityCookie::instance ^ (uint)&_versionInfoEx;
-    MACRO_CALL(OpenSHC::OS_Func::_memset)(&_versionInfoEx, 0, 0x9c);
+    MACRO_CALL(OS_Func::_memset)(&_versionInfoEx, 0, 0x9c);
     _versionInfoEx.dwOSVersionInfoSize = 0x9c;
     GetVersionExA((_OSVERSIONINFOA*)&_versionInfoEx);
     if ((_versionInfoEx.dwPlatformId == 2) && (4 < _versionInfoEx.dwMajorVersion)) {

@@ -13,26 +13,26 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::Resources::ResourceType;
+        using Commands::GameCommandType;
+        using Game::Resources::ResourceType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00465200
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_WorkshopWeaponSelection(
             ResourceType weapon, ...)
         {
             bool bVar1;
-            if (weapon == OpenSHC::Game::Resources::RT_CROSSBOW) {
+            if (weapon == Game::Resources::RT_CROSSBOW) {
                 bVar1 = DAT_GameCore::instance.xbowProducible_logic == 0;
-            } else if (weapon == OpenSHC::Game::Resources::RT_BOW) {
+            } else if (weapon == Game::Resources::RT_BOW) {
                 bVar1 = DAT_GameCore::instance.bowProducible_logic == 0;
-            } else if (weapon == OpenSHC::Game::Resources::RT_PIKE) {
+            } else if (weapon == Game::Resources::RT_PIKE) {
                 bVar1 = DAT_GameCore::instance.pikeProducible_logic == 0;
-            } else if (weapon == OpenSHC::Game::Resources::RT_SPEAR) {
+            } else if (weapon == Game::Resources::RT_SPEAR) {
                 bVar1 = DAT_GameCore::instance.spearProducible_logic == 0;
-            } else if (weapon == OpenSHC::Game::Resources::RT_SWORD) {
+            } else if (weapon == Game::Resources::RT_SWORD) {
                 bVar1 = DAT_GameCore::instance.swordProducible_logic == 0;
             } else {
-                if (weapon != OpenSHC::Game::Resources::RT_MACE)
+                if (weapon != Game::Resources::RT_MACE)
                     goto LAB_00465259;
                 bVar1 = DAT_GameCore::instance.maceProducible_logic == 0;
             }
@@ -43,7 +43,7 @@ namespace UI {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].uid;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = weapon;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 ((GameCommandType)0x21));
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].weaponRelated
                 = weapon;

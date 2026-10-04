@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Map::Units::Unit;
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitTypeInt;
+    using Map::Units::Unit;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitTypeInt;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00440360
     void Helpers::CountPlayerUnitsByType()
@@ -23,12 +23,12 @@ namespace UI {
         Unit* _unit;
         int iVar2;
         int iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_UnitTypeRelatedCounter::instance, 0, (size_t)((int)(320)));
+        MACRO_CALL(OS_Func::_memset)(DAT_UnitTypeRelatedCounter::instance, 0, (size_t)((int)(320)));
         if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
             iVar2 = DAT_UnitsState::instance.maxUnitCount - 1;
             _unit = &DAT_UnitsState::instance.units[1];
             do {
-                if ((((_unit->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE) && (_unit->owner == iVar1))
+                if ((((_unit->logicalState != Map::Units::ULS_INVISIBLE) && (_unit->owner == iVar1))
                         && (_unit->isStalked == 0))
                     && ((_unitType = (UnitTypeInt)(short)_unit->unitType,
                         0 < (int)_unitType && (((int)_unitType < 66 || (70 < (int)_unitType)))))) {

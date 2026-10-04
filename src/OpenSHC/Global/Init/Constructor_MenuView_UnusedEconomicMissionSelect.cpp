@@ -15,21 +15,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A1F0
     void Init::Constructor_MenuView_UnusedEconomicMissionSelect()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedEconomicMissionSelect::ptr)(
-            OpenSHC::UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::UnusedEconomicMissionSelect_Func::MenuView_UnusedEconomicMissionSelect_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_UnusedEconomicMissionSelect));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedEconomicMissionSelect::ptr)(
+            UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::UnusedEconomicMissionSelect_Func::MenuView_UnusedEconomicMissionSelect_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicMissionSelect));
         return;
     }
 

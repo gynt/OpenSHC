@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005229C0
         void TribesState::addUnitsToTribeAndComputeMovementSpeed(int playerID, int tribeID)
@@ -29,9 +29,9 @@ namespace Map {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _unitID = 1;
                 do {
-                    if (((_pUnit->logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if (((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
                         && (_pUnit->ifSelectedThenPlayerID == playerID)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                             _unitID, tribeID);
                         _movementSpeed = _pUnit->movementSpeed;
                         if (_movementSpeed < _minimumSpeed) {

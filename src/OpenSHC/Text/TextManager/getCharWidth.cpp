@@ -10,7 +10,7 @@ namespace Text {
     // FUNCTION: STRONGHOLDCRUSADER 0x0046A720
     int TextManager::getCharWidth(char character, int fontSize)
     {
-        int iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getCharWidthUnk,
+        int iVar1 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getCharWidthUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(character);
         return iVar1;
     }

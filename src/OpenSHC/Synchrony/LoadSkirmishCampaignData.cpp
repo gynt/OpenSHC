@@ -19,11 +19,11 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Commands::GameCommandType;
-using OpenSHC::Game::GameMode;
-using OpenSHC::Game::TrailType;
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-using OpenSHC::Game::CampaignTrailMission;
+using Commands::GameCommandType;
+using Game::GameMode;
+using Game::TrailType;
+using WindowsHelper::Enums::BOOLEnum;
+using Game::CampaignTrailMission;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x004C6B20
 void Synchrony::LoadSkirmishCampaignData(int missionID)
@@ -38,9 +38,9 @@ void Synchrony::LoadSkirmishCampaignData(int missionID)
     char (*pacVar8)[250];
     CampaignTrailMission* pCVar9;
     pCVar9 = DAT_SkirmishDefinedData::instance.SkirmishTrailMissions + missionID;
-    if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+    if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
         pCVar9 = DAT_SkirmishDefinedData::instance.ExtremeTrailMissions + missionID;
-    } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+    } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
         pCVar9 = DAT_SkirmishDefinedData::instance.WarchestTrailMissions + missionID;
     }
     pcVar3 = (char *)(pCVar9->mapNameAddress);
@@ -50,7 +50,7 @@ void Synchrony::LoadSkirmishCampaignData(int missionID)
         pcVar3[iVar7] = cVar1;
         pcVar3 = pcVar3 + 1;
     } while (cVar1 != '\0');
-    MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_GameSynchronyState::instance.DAT_PlayerNames, 0, 0x8ca);
+    MACRO_CALL(OS_Func::_memset)(DAT_GameSynchronyState::instance.DAT_PlayerNames, 0, 0x8ca);
     piVar4 = DAT_GameSynchronyState::instance.currentAIArray;
     do {
         piVar4[-0x1b] = -1;
@@ -59,7 +59,7 @@ void Synchrony::LoadSkirmishCampaignData(int missionID)
         piVar4 = piVar4 + 1;
     } while ((int)piVar4 < 0x191dea0);
     pcVar3
-        = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
     pacVar8 = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
     do {
         cVar1 = *pcVar3;
@@ -68,21 +68,21 @@ void Synchrony::LoadSkirmishCampaignData(int missionID)
         pacVar8 = (char (*)[250])(*pacVar8 + 1);
     } while (cVar1 != '\0');
     DAT_GameSynchronyState::instance.isHost = TRUE;
-    DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER;
-    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-        OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+    DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SKIRMISH_SINGLE_PLAYER;
+    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+        Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
     if (1 < pCVar9->numberOfPlayers) {
         piVar4 = &pCVar9->player2AI;
         iVar7 = 1;
         do {
             iVar5 = iVar7 + 1;
             DAT_GameSynchronyState::instance.currentAIArray[iVar7 + 1] = *piVar4;
-            MACRO_CALL(OpenSHC::Synchrony_Func::ResetAiVariationArrayValue)(iVar5);
+            MACRO_CALL(Synchrony_Func::ResetAiVariationArrayValue)(iVar5);
             piVar4 = piVar4 + 1;
             iVar7 = iVar5;
         } while (iVar5 < pCVar9->numberOfPlayers);
     }
-    MACRO_CALL(OpenSHC::Synchrony_Func::SetAIPlayerNickNames)();
+    MACRO_CALL(Synchrony_Func::SetAIPlayerNickNames)();
     iVar7 = pCVar9->numberOfPlayers;
     iVar5 = 0;
     piVar4 = &pCVar9->team1;

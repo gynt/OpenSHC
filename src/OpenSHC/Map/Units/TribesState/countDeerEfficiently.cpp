@@ -11,8 +11,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005236A0
         void TribesState::countDeerEfficiently()
@@ -24,18 +24,18 @@ namespace Map {
              */
             for (int i = 1; i < 2500; i += 3) {
                 Unit* unit = &DAT_UnitsState::instance.units[i];
-                if (((unit[0].logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (unit[0].dying == 0))
-                    && (unit[0].unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER)) {
+                if (((unit[0].logicalState == Map::Units::ULS_NORMAL) && (unit[0].dying == 0))
+                    && (unit[0].unitType == Map::Units::UT_ANTELOPESHDEER)) {
                     DAT_GameState::instance.mapAndTime.aliveDeerCount
                         = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
                 }
-                if (((unit[1].logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (unit[1].dying == 0))
-                    && (unit[1].unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER)) {
+                if (((unit[1].logicalState == Map::Units::ULS_NORMAL) && (unit[1].dying == 0))
+                    && (unit[1].unitType == Map::Units::UT_ANTELOPESHDEER)) {
                     DAT_GameState::instance.mapAndTime.aliveDeerCount
                         = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
                 }
-                if (((unit[2].logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (unit[2].dying == 0))
-                    && (unit[2].unitType == OpenSHC::Map::Units::UT_ANTELOPESHDEER)) {
+                if (((unit[2].logicalState == Map::Units::ULS_NORMAL) && (unit[2].dying == 0))
+                    && (unit[2].unitType == Map::Units::UT_ANTELOPESHDEER)) {
                     DAT_GameState::instance.mapAndTime.aliveDeerCount
                         = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
                 }

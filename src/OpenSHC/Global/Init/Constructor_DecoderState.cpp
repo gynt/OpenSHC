@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C980
     void Init::Constructor_DecoderState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::IO::DecoderState_Func::Constructor_DecoderState, DAT_DecoderState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_Decoder));
+        MACRO_CALL_MEMBER(IO::DecoderState_Func::Constructor_DecoderState, DAT_DecoderState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_Decoder));
         return;
     }
 

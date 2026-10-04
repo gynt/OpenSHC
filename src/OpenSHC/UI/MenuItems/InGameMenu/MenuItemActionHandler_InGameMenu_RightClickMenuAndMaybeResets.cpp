@@ -16,10 +16,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::MappersEnum;
+        using UI::Enums::BuildingsAndStatusMenuTabType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00438B60
         void InGameMenu::MenuItemActionHandler_InGameMenu_RightClickMenuAndMaybeResets(int param_1, ...)
@@ -27,19 +27,19 @@ namespace UI {
             DAT_MouseState::instance.mouseBasedEvent = 0;
             if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0) {
                 if ((DAT_MouseState::instance.rightClickStart == 0)
-                    || ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
+                    || ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
                         && ((DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+                                == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)))))) {
+                                == UI::Enums::BASMTT_SIEGETENT_SHIELD)))))) {
                     if ((DAT_MouseState::instance.rightClickState != FALSE)
                         && (DAT_MouseState::instance.previewEnabled != 0)) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Input::MouseState_Func::updateRightDragCameraControl, DAT_MouseState::ptr)();
+                            Input::MouseState_Func::updateRightDragCameraControl, DAT_MouseState::ptr)();
                     }
-                } else if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_NULL) {
+                } else if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_NULL) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
+                        Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
                     DAT_MouseState::instance.previewEnabled = 1;
                     DAT_GameSynchronyState::instance.field299_0x109e7c = 1;
                 }

@@ -7,14 +7,14 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00402AE0
         void EntityState::updateEntityMicroMovement(int param_1)
         {
             short* psVar1;
             short sVar2;
-            if ((((this->entityArray[param_1].entityType != OpenSHC::Map::Entities::ET_SEAGULLUnk)
+            if ((((this->entityArray[param_1].entityType != Map::Entities::ET_SEAGULLUnk)
                      || (this->entityArray[param_1].targetZ != 0))
                     || (this->entityArray[param_1].microX != this->entityArray[param_1].targetX))
                 || (this->entityArray[param_1].microY != this->entityArray[param_1].targetY)) {

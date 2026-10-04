@@ -30,7 +30,7 @@ int IO::Base64Encode(char* input, int length, char* output, Base64State* state)
             }
             char currentByte = *input;
             ++input;
-            *outputRunPtr = MACRO_CALL(OpenSHC::IO_Func::Base64Encode_CharacterLookup)(currentByte >> 2 & 0x3f);
+            *outputRunPtr = MACRO_CALL(IO_Func::Base64Encode_CharacterLookup)(currentByte >> 2 & 0x3f);
             ++outputRunPtr;
             carryByte = (currentByte & 0x3) << 4;
         }
@@ -43,7 +43,7 @@ int IO::Base64Encode(char* input, int length, char* output, Base64State* state)
             char currentByte = *input;
             ++input;
             *outputRunPtr
-                = MACRO_CALL(OpenSHC::IO_Func::Base64Encode_CharacterLookup)(currentByte >> 4 & 0xf | carryByte);
+                = MACRO_CALL(IO_Func::Base64Encode_CharacterLookup)(currentByte >> 4 & 0xf | carryByte);
             ++outputRunPtr;
             carryByte = (currentByte & 0xf) << 2;
         }
@@ -56,10 +56,10 @@ int IO::Base64Encode(char* input, int length, char* output, Base64State* state)
             char currentByte = *input;
             ++input;
             *outputRunPtr
-                = MACRO_CALL(OpenSHC::IO_Func::Base64Encode_CharacterLookup)(currentByte >> 6 & 0x3 | carryByte);
+                = MACRO_CALL(IO_Func::Base64Encode_CharacterLookup)(currentByte >> 6 & 0x3 | carryByte);
             ++outputRunPtr;
             carryByte = currentByte & 0x3f;
-            *outputRunPtr = MACRO_CALL(OpenSHC::IO_Func::Base64Encode_CharacterLookup)(carryByte);
+            *outputRunPtr = MACRO_CALL(IO_Func::Base64Encode_CharacterLookup)(carryByte);
             ++outputRunPtr;
             ++state->lineCharacterCounter;
             if (state->lineCharacterCounter != 7200) {

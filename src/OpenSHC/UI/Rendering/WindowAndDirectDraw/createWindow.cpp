@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467A90
         BOOLEnum WindowAndDirectDraw::createWindow(LPCSTR windowName, uint cursorResource)
@@ -20,7 +20,7 @@ namespace UI {
             HINSTANCE__* hInstance;
             void* lpParam;
             WNDCLASSA _wndClassA;
-            _wndClassA.lpfnWndProc = MACRO_CALL(OpenSHC::Global_Func::WindowMsgProcessingFunc);
+            _wndClassA.lpfnWndProc = MACRO_CALL(Global_Func::WindowMsgProcessingFunc);
             _wndClassA.style = 0;
             _wndClassA.cbClsExtra = 0;
             _wndClassA.cbWndExtra = 0;

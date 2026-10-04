@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00401570
         int EntityState::updateAllFireEntitiesAtTile(int tile)
@@ -21,7 +21,7 @@ namespace Map {
             _tile = (int)DAT_TileMapState::instance.EntityLayer[tile];
             if (DAT_TileMapState::instance.EntityLayer[tile] != 0) {
                 while (_to10 = _to10 + 1, _to10 < 10) {
-                    if (this->entityArray[_tile].entityType == OpenSHC::Map::Entities::ET_FIRE) {
+                    if (this->entityArray[_tile].entityType == Map::Entities::ET_FIRE) {
                         this->entityArray[_tile].someTracker = 2;
                         this->entityArray[_tile].fireParameter_0xb6 = 1;
                         this->entityArray[_tile].unknownAnimationFrameRelated = 0;

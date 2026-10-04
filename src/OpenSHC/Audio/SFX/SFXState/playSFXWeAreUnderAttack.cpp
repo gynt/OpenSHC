@@ -17,7 +17,7 @@ namespace Audio {
                 return;
             }
             if (60000 <= timeGetTime() - DAT_SFX_Cooldown_WeAreUnderAttack::instance) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     s_General_Warning10_wav_005a4dd8);
             }
             DAT_SFX_Cooldown_WeAreUnderAttack::instance = timeGetTime();

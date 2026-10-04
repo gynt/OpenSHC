@@ -17,7 +17,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
+        using UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00440A50
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_MapSelectHeader(int param_1, ...)
@@ -60,16 +60,16 @@ namespace UI {
                 if (DAT_00b960dc::instance != 0) {
                     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
                 }
-                if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
+                if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_ROUNDTABLE) {
                     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
+                    == UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
                     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
                 }
                 iVar1 = param_1;
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                    == UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
                     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
                 }
             }
@@ -207,14 +207,14 @@ namespace UI {
             }
             if (-1 < iVar8) {
                 INT_00b95ab8::instance = 1;
-                MACRO_CALL(OpenSHC::UI::MenuItems::LobbyMenu_Func::MenuItemActionHandler_LobbyMenu_MapSelectTable)(DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
+                MACRO_CALL(UI::MenuItems::LobbyMenu_Func::MenuItemActionHandler_LobbyMenu_MapSelectTable)(DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
             }
             iVar8 = 0;
             if (0 < iVar2) {
                 while (true) {
-                    _Str2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                    _Str2 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + -1]);
-                    iVar2 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
+                    iVar2 = MACRO_CALL(OS_Func::__stricmp)(
                         DAT_MapNameCache::instance, (char const*)((int)(_Str2)));
                     if (iVar2 == 0)
                         break;

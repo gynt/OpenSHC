@@ -35,7 +35,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00512100
     void TileMapState::setupAllMapSections()
@@ -49,17 +49,17 @@ namespace Map {
         DAT_TileMapState::instance.SEC_Section1052 = 0;
         DAT_TileMapState::instance.SEC_Section1053 = 0;
         DAT_TileMapState::instance.SEC_Section1054 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupTileMapSections, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::setupTileMapSections, this)();
         DAT_WallAndPitchState::instance.countdown = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::setTileSystemMemoryLookupArrays,
+        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setTileSystemMemoryLookupArrays,
             DAT_ViewportRenderState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::tweakValidTilesToExcludeMapBorders,
+        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::tweakValidTilesToExcludeMapBorders,
             DAT_ViewportRenderState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::setupViewport, DAT_ViewportRenderState::ptr)(0,
+        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupViewport, DAT_ViewportRenderState::ptr)(0,
             0, (undefined4)((int)(DAT_WindowAndDirectDraw::instance.resolutionX)),
             (undefined4)((int)(DAT_WindowAndDirectDraw::instance.resolutionY + -128)));
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupLogicalMapBorders, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateShowHiLayerOrResetChangedLayer, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::setupLogicalMapBorders, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateShowHiLayerOrResetChangedLayer, this)();
         puVar1 = DAT_TileMapState::instance.GfxLayer + 1;
         piVar4 = DAT_TileMapState::instance.LogicLayer + 1;
         iVar5 = 13400;
@@ -122,41 +122,41 @@ namespace Map {
             puVar1 = puVar1 + 6;
             iVar5 = iVar5 + -1;
         } while (iVar5 != 0);
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
             80400, 1, (void*)((int)(DAT_TileMapState::instance.PillarGFXLayer)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             80400, '\b', (void*)((int)(DAT_TileMapState::instance.HeightLayer)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             80400, '\b', (void*)((int)(DAT_TileMapState::instance.DefaultHeightLayer)));
         DAT_PathFindingState::instance.searchGeneration = 1;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             160800, '\0', (void*)((int)(DAT_TileMapState::instance.WalkLayer)));
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::setChangedLayerZeroBasedOn40x40Layer,
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::setChangedLayerZeroBasedOn40x40Layer,
             DAT_PathFindingState::ptr)(0);
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateLogicalTileMapRelatedSections, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateGfxLayer, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateGFXLayers, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetMoatArray, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetPitchDitchArray, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::toggleFlatView, this)(0);
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateLogicalTileMapRelatedSections, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateGfxLayer, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateGFXLayers, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::resetMoatArray, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::resetPitchDitchArray, this)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::toggleFlatView, this)(0);
         (*(int*)&DAT_TileMapState::instance.padding_0x5548d0[0]) = 0;
         DAT_TileMapState::instance.flatViewToggleValue2 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::clearBuildings, DAT_BuildingsState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::clearRocksAndTrees, DAT_LandscapeState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::resetWind, DAT_LandscapeState::ptr)();
-        MACRO_CALL(OpenSHC::Global_Func::DoNothing)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::clearAllUnits, DAT_UnitsState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::clearAllTribes, DAT_TribesState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::clearMapAndTimeAndPlayerData, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::clearBuildings, DAT_BuildingsState::ptr)();
+        MACRO_CALL_MEMBER(Map::LandscapeState_Func::clearRocksAndTrees, DAT_LandscapeState::ptr)();
+        MACRO_CALL_MEMBER(Map::LandscapeState_Func::resetWind, DAT_LandscapeState::ptr)();
+        MACRO_CALL(Global_Func::DoNothing)();
+        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearAllUnits, DAT_UnitsState::ptr)();
+        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearAllTribes, DAT_TribesState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearMapAndTimeAndPlayerData, DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Game::GameStateStructures_Func::resetVariousCountsAndStatisticsAndStartGoodsAndResources,
+            Game::GameStateStructures_Func::resetVariousCountsAndStatisticsAndStartGoodsAndResources,
             DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Game::GameStateStructures_Func::clearCurrentResourcesAndStrongWalls, DAT_GameState::ptr)();
+            Game::GameStateStructures_Func::clearCurrentResourcesAndStrongWalls, DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Game::GameStateStructures_Func::initializeGameStateAfterMapLoad, DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::fillWith0xFF, DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::clearAnimalSpawnLocationsUnk, DAT_TribesState::ptr)();
+            Game::GameStateStructures_Func::initializeGameStateAfterMapLoad, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::fillWith0xFF, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearAnimalSpawnLocationsUnk, DAT_TribesState::ptr)();
         piVar4 = DAT_AICState::instance.tribeUIDArray;
         psVar2 = DAT_AICState::instance.tribeIDArray;
         do {
@@ -165,29 +165,29 @@ namespace Map {
             psVar2 = psVar2 + 1;
             piVar4 = piVar4 + 1;
         } while ((int)psVar2 < 0x24026cc);
-        MACRO_CALL(OpenSHC::Global_Func::DoNothing)();
-        MACRO_CALL(OpenSHC::Global_Func::DoNothing)();
+        MACRO_CALL(Global_Func::DoNothing)();
+        MACRO_CALL(Global_Func::DoNothing)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, DAT_EntityState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setChangedLayerToThreeAndMapping0x40x40, this)();
+            Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, DAT_EntityState::ptr)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::setChangedLayerToThreeAndMapping0x40x40, this)();
         DAT_TileMapState::instance.forceUpdateLogicalAndMiscDisplayLayers = 1;
         DAT_TileMapState::instance.forceUpdateTextureTilemap = 1;
         DAT_TileMapState::instance.forceUpdateGFXLayers = 1;
         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
         DAT_TileMapState::instance.field68_0x55487c = 200;
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
+            Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
             DAT_PathFindingState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(1);
+            Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(1);
         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
         DAT_TileMapState::instance.field68_0x55487c = 500;
         MACRO_CALL_MEMBER(
-            OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
+            UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
         MACRO_CALL_MEMBER(
-            OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
+            UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
         DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
-        MACRO_CALL(OpenSHC::Map_Func::ResetSomeValuesFunctionUnk)();
+        MACRO_CALL(Map_Func::ResetSomeValuesFunctionUnk)();
     }
 
 }

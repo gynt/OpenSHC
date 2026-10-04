@@ -22,10 +22,10 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::MappersEnum;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00412730
     void Buildings::UpdateArmory()
@@ -50,21 +50,21 @@ namespace Map {
         int local_8;
         _playerID = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         bVar9 = false;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
-        if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_NULL) {
+        if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_NULL) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].someResourceNumber = 0;
         }
         if ((((((byte)DAT_GameCore::instance.mapTimeInTicks & 3) == 0)
-                 && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))
-                && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
+                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
+                && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
             && (DAT_GameState::instance.playerDataArray[_playerID].someCountdown01 == 0)) {
             iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x11];
             if ((0 < iVar7)
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x11, _playerID, 1),
                     uVar4 != 0)) {
                 bVar9 = true;
@@ -76,7 +76,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x12, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12];
@@ -89,7 +89,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x13])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x13, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x13];
@@ -102,7 +102,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x14])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x14, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x14];
@@ -115,7 +115,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x15])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x15, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x15];
@@ -128,7 +128,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x16])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x16, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x16];
@@ -141,7 +141,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x17])
-                && (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x17, _playerID, 1),
                     uVar4 != 0)) {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x17];
@@ -154,7 +154,7 @@ namespace Map {
                 bVar9 = true;
             }
             if ((DAT_GameState::instance.playerDataArray[_playerID].startResources[0x18] < 1)
-                || (uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
+                || (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
                         DAT_BuildingsState::ptr)(buildingID, 0x18, _playerID, 1),
                     uVar4 == 0)) {
                 if (!bVar9)
@@ -168,10 +168,10 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_playerID);
+                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_playerID);
         }
     LAB_00412a53:
-        uVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+        uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
             DAT_BuildingsState::ptr)(buildingID);
         if ((int)uVar4 < 10) {
             DAT_GameState::instance.playerDataArray[_playerID].isArmouryAlmostFilledUp = 0;
@@ -190,10 +190,10 @@ namespace Map {
                 psVar1 = &DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown;
                 *psVar1 = *psVar1 + -1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
                 DAT_BuildingsState::ptr)(buildingID);
         }
-        bVar9 = DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY;
+        bVar9 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 0;
@@ -225,7 +225,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             buildingID = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState

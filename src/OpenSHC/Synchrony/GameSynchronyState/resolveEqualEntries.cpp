@@ -7,7 +7,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E050
     void GameSynchronyState::resolveEqualEntries(GUID* pGUID)
@@ -20,7 +20,7 @@ namespace Synchrony {
         _index = 0;
         if (0 < this->DPLAY_SessionsCount) {
             do {
-                _equality = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)(
+                _equality = MACRO_CALL(OS_Func::isEqualGUID)(
                     pGUID, (GUID*)((int)(this->DPLAY_SessionGUIDs[_index])));
                 if (_equality != FALSE) {
                     if ((_index <= this->scrollBarItemOffset) || (this->scrollBarItemOffset + 10 <= _index)) {

@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00521500
         void TribesState::predictUnitInterceptPosition(
@@ -59,10 +59,10 @@ namespace Map {
             iVar2 = (int)DAT_UnitsState::instance.units[targetUnitID].y;
             if (DAT_UnitsState::instance.units[targetUnitID].stateBasedSpeed < 1) {
                 UVar1 = DAT_UnitsState::instance.units[targetUnitID].unitType;
-                if ((UVar1 == OpenSHC::Map::Units::UT_E_KNIGHT)
+                if ((UVar1 == Map::Units::UT_E_KNIGHT)
                     && (DAT_UnitsState::instance.units[targetUnitID].isMatchingSpeed == false)) {
                     iVar3 = iVar3 / 3;
-                } else if (UVar1 == OpenSHC::Map::Units::UT_E_SWORD)
+                } else if (UVar1 == Map::Units::UT_E_SWORD)
                     goto LAB_005215e9;
             } else {
             LAB_005215e9:
@@ -70,13 +70,13 @@ namespace Map {
             }
             if (DAT_UnitsState::instance.units[unitID].stateBasedSpeed < 1) {
                 UVar1 = DAT_UnitsState::instance.units[unitID].unitType;
-                if ((UVar1 == OpenSHC::Map::Units::UT_E_KNIGHT)
+                if ((UVar1 == Map::Units::UT_E_KNIGHT)
                     && (DAT_UnitsState::instance.units[unitID].isMatchingSpeed == false)) {
                     unitID = iVar3 / 3;
                     goto LAB_0052163b;
                 }
                 unitID = iVar3;
-                if (UVar1 != OpenSHC::Map::Units::UT_E_SWORD)
+                if (UVar1 != Map::Units::UT_E_SWORD)
                     goto LAB_0052163b;
             }
             /*

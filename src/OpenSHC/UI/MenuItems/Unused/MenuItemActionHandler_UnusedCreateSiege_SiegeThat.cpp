@@ -39,13 +39,13 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::IO::FileResourceType;
-        using OpenSHC::Map::MapLockState;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using Commands::MappersEnum;
+        using Game::GameMode2;
+        using IO::FileResourceType;
+        using Map::MapLockState;
+        using Map::MapType2;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004437E0
         void Unused::MenuItemActionHandler_UnusedCreateSiege_SiegeThat(int param_1, ...)
@@ -54,8 +54,8 @@ namespace UI {
             switch (param_1) {
             case 2:
                 DAT_MenuTextInputState::instance.field42_0x9c = 1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
-                    OpenSHC::UI::Enums::MMT_LOAD_MAP);
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
+                    UI::Enums::MMT_LOAD_MAP);
                 INT_00b960ec::instance = 1;
                 return;
             case 3:
@@ -89,82 +89,82 @@ namespace UI {
             case 0x22:
                 break;
             case 4:
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
-                    OpenSHC::IO::FRT_MAPS, "mission22.map");
-                MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                    IO::FRT_MAPS, "mission22.map");
+                MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
                     DAT_MapDefinedData::instance.MapSectionAddressArray);
                 DAT_GameCore::instance.section1095 = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
+                    Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
                 DAT_UnitsState::instance.lastSelectedUnitID = 0;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
                 iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .startResources[0xf] = 1500;
                 DAT_GameState::instance.playerDataArray[iVar1].startResources[4] = 1000;
                 DAT_GameState::instance.playerDataArray[iVar1].pitchDitchTileCount = 0;
-                DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
+                DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
                 DAT_GameState::instance.playerDataArray[iVar1].moatTileCount = 0;
                 DAT_GameCore::instance.mapU4Int1 = 1;
                 INT_00b960ec::instance = 1;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::MapPropertiesState_Func::importTradingCosts, DAT_MapPropertiesState::ptr)();
+                    Map::MapPropertiesState_Func::importTradingCosts, DAT_MapPropertiesState::ptr)();
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::recomputeAIZonerLayer, DAT_AICState::ptr)();
+                    Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
+                MACRO_CALL_MEMBER(AI::AICState_Func::recomputeAIZonerLayer, DAT_AICState::ptr)();
             case 6:
                 INT_00b95f68::instance = 1;
-                DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
-                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SIEGE_THAT;
+                DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
+                DAT_GameCore::instance.gameMode_2 = Game::GM_SIEGE_THAT;
                 DAT_GameCore::instance.missionNumber1to20 = 0x1b;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                 DAT_GameCore::instance.missionNumber1to20 = 0x1f;
-                MACRO_CALL(OpenSHC::UI::MenuItems::MapEditorLandscaping_Func::
-                        MenuItemActionHandler_MapEditorLandscaping_GeneralButtons)(OpenSHC::Commands::M_MAPPER_TOMAIN);
+                MACRO_CALL(UI::MenuItems::MapEditorLandscaping_Func::
+                        MenuItemActionHandler_MapEditorLandscaping_GeneralButtons)(Commands::M_MAPPER_TOMAIN);
                 INT_00b960ec::instance = 1;
                 return;
             case 5:
                 if (INT_00b95f68::instance == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 }
                 DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2b;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_QUIT_DIALOG);
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_QUIT_DIALOG);
                 return;
             case 0x23:
                 if (INT_00b960ec::instance != 0) {
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                         DAT_MapPropertiesState::ptr)();
                     DAT_MenuTextInputState::instance.field42_0x9c = 1;
                     DAT_MenuTextInputState::instance.field44_0xa4 = 0;
-                    DAT_GameCore::instance.U3_mapLockedState = OpenSHC::Map::MLS_EDITABLE;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
-                        OpenSHC::UI::Enums::MMT_SAVE_MAP);
+                    DAT_GameCore::instance.U3_mapLockedState = Map::MLS_EDITABLE;
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
+                        UI::Enums::MMT_SAVE_MAP);
                     INT_00b960e4::instance = 1;
                 }
                 break;
             case 0x24:
                 if (INT_00b960ec::instance != 0) {
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                         DAT_MapPropertiesState::ptr)();
                     DAT_MenuTextInputState::instance.field42_0x9c = 1;
                     DAT_MenuTextInputState::instance.field44_0xa4 = 0;
-                    DAT_GameCore::instance.U3_mapLockedState = OpenSHC::Map::MLS_PLAYABLE;
+                    DAT_GameCore::instance.U3_mapLockedState = Map::MLS_PLAYABLE;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::MenuTextInputState_Func::activateLoadOrSaveMapUI, DAT_MenuTextInputState::ptr)(10);
+                        UI::MenuTextInputState_Func::activateLoadOrSaveMapUI, DAT_MenuTextInputState::ptr)(10);
                     INT_00b960e4::instance = 1;
                 }
                 break;

@@ -20,11 +20,11 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Map::Buildings::BuildingFailReasonEnum;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using Map::Buildings::BuildingFailReasonEnum;
+    using Map::Units::UnitType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x005029D0
     void TileMapState::validateWallBuildPath(int playerID, uint x1, uint y1, uint x2, uint y2, undefined4 command)
@@ -51,7 +51,7 @@ namespace Map {
         _tileMapState = this;
         _tileMapState2 = this;
         local_c = 0;
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             local_8 = 0x1e;
             local_4 = 0x1e;
         } else {
@@ -72,16 +72,16 @@ namespace Map {
         this->DAT_SomeY = y1;
         this->DAT_SomeTile = iVar1;
         if ((short)command == 0x1b) {
-            BVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(
+            BVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(
                 iVar1, (int)((int)(y1)));
             if (BVar2 == FALSE) {}
             this->field119_0x554924
-                = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getMaxWallHeightInBrushArea, this)(iVar1, y1);
+                = MACRO_CALL_MEMBER(Map::TileMapState_Func::getMaxWallHeightInBrushArea, this)(iVar1, y1);
             if (this->field119_0x554924 < 0x11) {}
             _tileMapState = this;
             local_c = this->field119_0x554924;
         } else if (((short)command == 0x1a)
-            && (iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::isTileEnclosedByWalls, this)(
+            && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
                     iVar1, (int)((int)(y1))),
                 _tileMapState = extraout_ECX, iVar1 == 0)) {
             extraout_ECX->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
@@ -98,10 +98,10 @@ namespace Map {
         do {
             iVar1 = *local_1c + _x1;
             _logic = _tileMapState->LogicLayer[iVar1];
-            if ((_logic & OpenSHC::Map::LogicHelpers::L_PLAIN1_AND_FARM | OpenSHC::Map::LogicHelpers::L_BORDER) != 0) {}
-            if ((_logic & OpenSHC::Map::LogicHelpers::L_SEA | OpenSHC::Map::LogicHelpers::L_BUILDING | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE | OpenSHC::Map::LogicHelpers::L_MARSH | OpenSHC::Map::LogicHelpers::L_MOAT) != 0) {}
+            if ((_logic & Map::LogicHelpers::L_PLAIN1_AND_FARM | Map::LogicHelpers::L_BORDER) != 0) {}
+            if ((_logic & Map::LogicHelpers::L_SEA | Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE | Map::LogicHelpers::L_MARSH | Map::LogicHelpers::L_MOAT) != 0) {}
             if (_tileMapState->BuildingLayer[iVar1] != 0) {}
-            if ((((_logic & OpenSHC::Map::LogicHelpers::L_TREE | OpenSHC::Map::LogicHelpers::L_TREE_VARIATION) != 0)
+            if ((((_logic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION) != 0)
                     && (iVar4 = (int)_tileMapState->OrganismLayer[iVar1], iVar4 != 0))
                 && (iVar4 < 2000)) {
                 switch (DAT_LandscapeState::instance.trees[iVar4].treeType) {
@@ -124,29 +124,29 @@ namespace Map {
                         return;
                 }
             }
-            if ((_logic & OpenSHC::Map::LogicHelpers::L_RIVER | OpenSHC::Map::LogicHelpers::L_FORD) != 0) {}
+            if ((_logic & Map::LogicHelpers::L_RIVER | Map::LogicHelpers::L_FORD) != 0) {}
             if ((char)_logic < '\0') {}
-            if (((_tileMapState->UnitLayer[iVar1] != 0) && ((_logic & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0))
+            if (((_tileMapState->UnitLayer[iVar1] != 0) && ((_logic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0))
                 && (DAT_UnitsState::instance.units[(short)_tileMapState->UnitLayer[iVar1]].unitType
-                    != OpenSHC::Map::Units::UT_CHICKEN)) {}
-            if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                    && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-                && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
+                    != Map::Units::UT_CHICKEN)) {}
+            if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                    && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+                && (BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, local_8),
                     BVar2 != FALSE)) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
-            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
-                iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+            if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
+                iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
                     DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), local_4, -1, -1, -1);
                 if (iVar4 != 0) {
                     if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
                 }
-                if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+                if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                     _castleBuildingRange
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
-                    iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
+                        = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
+                    iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, _castleBuildingRange);
                     if (iVar4 != 0) {
                         if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
@@ -154,25 +154,25 @@ namespace Map {
                     }
                 }
             }
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)
                 && (iVar4
-                    = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                    = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
                         DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), 7, -1, -1, -1),
                     iVar4 != 0)) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
-            iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findSomeSuitableLocationUnk,
+            iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSomeSuitableLocationUnk,
                 DAT_PathFindingState::ptr)(playerID, _x1, _y1, 2);
             if (iVar4 != 0) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
-            BVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
+            BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                 DAT_PathFindingState::ptr)(_x1, _y1, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
             if (BVar2 != FALSE) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
             }
             if ((short)command == 0x1a) {
-                iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::isTileEnclosedByWalls, this)(
+                iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
                     iVar1, (int)((int)(_y1)));
                 if (iVar1 == 0) {
                     *(undefined4*)(extraout_ECX_00 + 0x554938) = 0x13;

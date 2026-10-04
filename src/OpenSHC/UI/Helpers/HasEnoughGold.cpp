@@ -8,7 +8,7 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00465040
     BOOLEnum Helpers::HasEnoughGold(int param_1)

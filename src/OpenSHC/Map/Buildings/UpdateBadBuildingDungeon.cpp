@@ -21,14 +21,14 @@ namespace Map {
         short sVar2;
         int iVar3;
         int buildingID;
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(buildingID, 1);
         iVar3 = DAT_GameState::instance.playerDataArray[sVar2].fearFactorLevel;
         if (iVar3 < -3) {
@@ -51,7 +51,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;

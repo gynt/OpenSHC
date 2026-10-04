@@ -13,23 +13,23 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::MappersEnum;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004BB010
     BOOLEnum MapPropertiesState::isMapperAvailable(MappersEnum param_1)
     {
-        if ((param_1 == OpenSHC::Commands::M_MAPPER_OUTPOST_EURO)
-            || (param_1 == OpenSHC::Commands::M_MAPPER_OUTPOST_ARAB)) {
-            if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR) {
+        if ((param_1 == Commands::M_MAPPER_OUTPOST_EURO)
+            || (param_1 == Commands::M_MAPPER_OUTPOST_ARAB)) {
+            if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
                 return FALSE;
             }
-        } else if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
+        } else if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
             goto LAB_004bb062;
         if (0 < (int)DAT_GameCore::instance.U2_mapType_singleOrMulti) {
-            if (param_1 == OpenSHC::Commands::M_MAPPER_KEEP1) {
+            if (param_1 == Commands::M_MAPPER_KEEP1) {
                 return FALSE;
             }
             if ((0x3d < (int)param_1) && ((int)param_1 < 0x41)) {
@@ -37,18 +37,18 @@ namespace Map {
             }
             return TRUE;
         }
-        if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+        if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
             return TRUE;
         }
     LAB_004bb062:
-        if (param_1 == OpenSHC::Commands::M_MAPPER_DOG_CAGE) {
-            if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if (param_1 == Commands::M_MAPPER_DOG_CAGE) {
+            if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
+                    && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (DAT_GameState::instance.mapAndTime.skirmishNoDogs != 0)) {
                 return FALSE;
             }
-        } else if (((param_1 == OpenSHC::Commands::M_MAPPER_HUNTER)
-                       && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY))
+        } else if (((param_1 == Commands::M_MAPPER_HUNTER)
+                       && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY))
             && (DAT_GameState::instance.mapAndTime.rawDeerCount == 0)) {
             return FALSE;
         }

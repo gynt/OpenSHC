@@ -14,20 +14,20 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A4C0
     void Init::Constructor_MenuView_NewMapMaptype()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_NewMapMaptype::ptr)(
-            OpenSHC::UI::Enums::MVT_NEW_MAP_MAPTYPE,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::NewMapMaptype_Func::MenuView_NewMapMaptype_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_NewMapMaptype));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_NewMapMaptype::ptr)(
+            UI::Enums::MVT_NEW_MAP_MAPTYPE,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::NewMapMaptype_Func::MenuView_NewMapMaptype_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_NewMapMaptype));
         return;
     }
 

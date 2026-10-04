@@ -12,7 +12,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using WindowsHelper::Enums::BOOLEnum;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x004BD800
 BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)

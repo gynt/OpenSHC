@@ -32,7 +32,7 @@ namespace Map {
             DAT_UnitsState::instance.units[unitID].tribeID = (short)tribeID;
             DAT_UnitsState::instance.units[unitID].tribeUID = this->tribes[tribeID].uid;
             DAT_UnitsState::instance.units[unitID].idInTribe = this->tribes[tribeID].size;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(tribeID);
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(tribeID);
         }
 
     }

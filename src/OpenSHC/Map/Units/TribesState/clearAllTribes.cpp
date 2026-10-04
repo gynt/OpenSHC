@@ -18,7 +18,7 @@ namespace Map {
             this->field9_0x24 = 0;
             DAT_CurrentTribeID::instance = 1;
             do {
-                MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     0x334, '\0', (void*)((int)(this->tribes + DAT_CurrentTribeID::instance)));
                 DAT_CurrentTribeID::instance = DAT_CurrentTribeID::instance + 1;
             } while (DAT_CurrentTribeID::instance < 1250);

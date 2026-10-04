@@ -17,9 +17,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::IO::Graphics::GmID;
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
+        using IO::Graphics::GmID;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523A30
         void TribesState::drawFlagsAndUnitDestinations(int tribeID)
@@ -44,8 +44,8 @@ namespace Map {
                     /*
                       spawn the rally point flag
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                        DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
+                    MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
+                        DAT_ViewportRenderState::ptr)(IO::Graphics::GID_FLOATS_NEW,
                         (int)((int)(((*_pRallyPoints)[0] + DAT_TileMapState::instance.field165_0x5549d0 + _rallyIndex
                                         + (*_pRallyPoints)[1])
                                 % 10
@@ -61,10 +61,10 @@ namespace Map {
             iVar5 = 0;
             if (0 < this->tribes[tribeID].size) {
                 do {
-                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
+                    _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
                         tribeID, iVar5);
                     iVar5 = iVar5 + 1;
-                    if (((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if (((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_unitID].dying == 0))
                         && ((DAT_UnitsState::instance.units[_unitID].unknownTestAgainst0_2 == 0
                             && (DAT_UnitsState::instance.units[_unitID].owner
@@ -74,16 +74,16 @@ namespace Map {
                             if (((DAT_UnitsState::instance.units[_unitID].currentIndexInPathPlan
                                      < DAT_UnitsState::instance.units[_unitID].totalSizeOfPathPlan)
                                     && (UVar2 = DAT_UnitsState::instance.units[_unitID].targetingType,
-                                        UVar2 != OpenSHC::Map::Units::UIT_UNIT_ATTACK_UNIT))
-                                && ((UVar2 != OpenSHC::Map::Units::UIT_ATTACK_LAND
-                                    && (UVar2 != OpenSHC::Map::Units::UIT_MAN_SIEGE_EQUIPMENT)))) {
+                                        UVar2 != Map::Units::UIT_UNIT_ATTACK_UNIT))
+                                && ((UVar2 != Map::Units::UIT_ATTACK_LAND
+                                    && (UVar2 != Map::Units::UIT_MAN_SIEGE_EQUIPMENT)))) {
                                 iVar4 = DAT_TileMapState::instance.field161_0x5549c0 + -1;
                                 if (7 < iVar4) {
                                     iVar4 = 0xf - iVar4;
                                 }
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                                    DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_CURSORS, iVar4 + 0x52, 0xc,
+                                    Rendering::ViewportRenderState_Func::createFloatingLayerElement,
+                                    DAT_ViewportRenderState::ptr)(IO::Graphics::GID_CURSORS, iVar4 + 0x52, 0xc,
                                     6,
                                     (int)DAT_UnitsState::instance.units[_unitID].plannedDestinationX
                                         + DAT_ViewportRenderState::instance
@@ -102,45 +102,45 @@ namespace Map {
                                 + DAT_ViewportRenderState::instance
                                       .translationMatrix[DAT_UnitsState::instance.units[_unitID].plannedDestinationY]
                                       .addXgetTile;
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                                DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_CURSORS,
+                            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
+                                DAT_ViewportRenderState::ptr)(IO::Graphics::GID_CURSORS,
                                 (int)((int)(0x6a - sVar1)), 10, 6, tile, iVar4 << 0x10 | 2);
                             iVar4 = DAT_TileMapState::instance.field161_0x5549c0 + -1;
                             if (7 < iVar4) {
                                 iVar4 = 0xf - iVar4;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                                DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_CURSORS, iVar4 + 0x52, 0xc, 6,
+                            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
+                                DAT_ViewportRenderState::ptr)(IO::Graphics::GID_CURSORS, iVar4 + 0x52, 0xc, 6,
                                 tile,
                                 (int)((int)(DAT_UnitsState::instance.units[_unitID].unitSpeedMatchingRelatedUnk << 0x11
                                     | 2)));
                         }
                         UVar2 = DAT_UnitsState::instance.units[_unitID].targetingType;
-                        if ((UVar2 == OpenSHC::Map::Units::UIT_ATTACK_LAND)
-                            || (UVar2 == OpenSHC::Map::Units::UIT_THROW_COW)) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::spawnFloatingNumberAroundTile,
+                        if ((UVar2 == Map::Units::UIT_ATTACK_LAND)
+                            || (UVar2 == Map::Units::UIT_THROW_COW)) {
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::spawnFloatingNumberAroundTile,
                                 DAT_TileMapState::ptr)((int)DAT_UnitsState::instance.units[_unitID].attackAtTileX,
                                 (int)((int)(DAT_UnitsState::instance.units[_unitID].attackAtTileY)),
                                 (int)((int)(DAT_UnitsState::instance.units[_unitID].unkAttackRelated)));
                         } else {
-                            if (UVar2 == OpenSHC::Map::Units::UIT_FILL_MOAT) {
+                            if (UVar2 == Map::Units::UIT_FILL_MOAT) {
                                 iVar4 = (int)DAT_UnitsState::instance.units[_unitID].targetX
                                     + DAT_ViewportRenderState::instance
                                           .translationMatrix[DAT_UnitsState::instance.units[_unitID].targetY]
                                           .addXgetTile;
                             } else {
-                                if (UVar2 != OpenSHC::Map::Units::UIT_DIG_MOAT) {
-                                    if (UVar2 == OpenSHC::Map::Units::UIT_UNIT_ATTACK_UNIT) {
+                                if (UVar2 != Map::Units::UIT_DIG_MOAT) {
+                                    if (UVar2 == Map::Units::UIT_UNIT_ATTACK_UNIT) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID]
                                                     .targetedUnitID__OR__engineerMannedSiegeEngineRef;
                                         if ((DAT_UnitsState::instance.units[sVar1].uid
                                                 == DAT_UnitsState::instance.units[_unitID]
                                                     .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID)
                                             && (DAT_UnitsState::instance.units[sVar1].logicalState
-                                                == OpenSHC::Map::Units::ULS_NORMAL)) {
+                                                == Map::Units::ULS_NORMAL)) {
                                             DAT_UnitsState::instance.units[sVar1].field45_0x6c = 1;
                                         }
-                                    } else if (UVar2 == OpenSHC::Map::Units::UIT_ATTACK_BUILDING) {
+                                    } else if (UVar2 == Map::Units::UIT_ATTACK_BUILDING) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID].targetID_OR_targetBuildingID;
                                         if ((sVar1 != 0)
                                             && (DAT_BuildingsState::instance.buildings[sVar1].uid
@@ -148,7 +148,7 @@ namespace Map {
                                                     .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID)) {
                                             DAT_BuildingsState::instance.buildings[sVar1].field68_0xc2 = 1;
                                         }
-                                    } else if (UVar2 == OpenSHC::Map::Units::UIT_LIGHT_PITCH) {
+                                    } else if (UVar2 == Map::Units::UIT_LIGHT_PITCH) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID].targetID_OR_targetBuildingID;
                                         if ((sVar1 != 0)
                                             && (DAT_TileMapState::instance.pitchDitches[sVar1].uid
@@ -175,7 +175,7 @@ namespace Map {
                                           .translationMatrix[DAT_UnitsState::instance.units[_unitID].targetY]
                                           .addXgetTile;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingTextElement,
+                            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingTextElement,
                                 DAT_ViewportRenderState::ptr)(0x4e, 6, -0x20, iVar4, 2);
                         }
                     }

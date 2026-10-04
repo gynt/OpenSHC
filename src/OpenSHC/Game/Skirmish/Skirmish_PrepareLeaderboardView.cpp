@@ -20,7 +20,7 @@
 namespace OpenSHC {
 namespace Game {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
+    using DE::SHCDE::eTextSections;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D9400
     void Skirmish::Skirmish_PrepareLeaderboardView()
@@ -129,7 +129,7 @@ namespace Game {
                         DAT_00eb9b60::instance = _index;
                     } while (iVar7 < _count);
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
+                MACRO_CALL(Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
             }
             if (DAT_MissionDefinedData::instance.sortColumn == 2) {
                 _index = 0;
@@ -149,7 +149,7 @@ namespace Game {
                             pSVar8 = pSVar8 + 1;
                         } while (iVar7 < _count);
                         DAT_00eb9b60::instance = _index;
-                        MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
+                        MACRO_CALL(Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
                     }
                 } else {
                     iVar7 = 0;
@@ -159,9 +159,9 @@ namespace Game {
                             if (INT_ARRAY_00eb0e48::instance[iVar7] != 0) {
                                 if (pSVar8->score != 0) {
                                     pcVar4 = MACRO_CALL_MEMBER(
-                                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(
-                                        OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, pSVar8->score);
+                                        DE::SHCDE::TEXT_TRAIL_NAMES_CRU, pSVar8->score);
                                     pcVar9 = pSVar8->mapName;
                                     do {
                                         cVar1 = *pcVar4;
@@ -190,7 +190,7 @@ namespace Game {
                         } while (iVar7 < _count);
                     }
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
+                MACRO_CALL(Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
             }
             if (DAT_MissionDefinedData::instance.sortColumn == 3) {
                 _index = 0;
@@ -210,7 +210,7 @@ namespace Game {
                         DAT_00eb9b60::instance = _index;
                     } while (iVar7 < _count);
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
+                MACRO_CALL(Game::Skirmish_Func::Skirmish_SortAIOpponentOrder)(DAT_MissionDefinedData::instance.descending);
             }
         }
     }

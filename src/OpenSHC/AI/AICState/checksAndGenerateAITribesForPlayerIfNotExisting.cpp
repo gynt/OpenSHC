@@ -10,7 +10,7 @@
 namespace OpenSHC {
 namespace AI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CCFB0
     int AICState::checksAndGenerateAITribesForPlayerIfNotExisting(int playerID, int maxAmount, BOOLEnum checkOnly)
@@ -31,7 +31,7 @@ namespace AI {
                     return 1;
                 }
                 int _newTribe = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
+                    Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
                 DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[_baseOffset + _offset] = (short)_newTribe;
                 DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[_baseOffset + _offset]
                     = DAT_TribesState::instance.tribes[_newTribe].uid;

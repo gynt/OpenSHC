@@ -28,7 +28,7 @@ namespace Synchrony {
          */
         this->DAT_ChatEventArray[this->DAT_ChatMessageArrayIndex].flag = 1;
         this->DAT_ChatEventArray[this->DAT_ChatMessageArrayIndex].objectPlayer = objectPlayerID;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
             (void*)((int)(this->receivedChatMessage)),
             (void*)((int)(this->DAT_ChatMessageArray + this->DAT_ChatMessageArrayIndex)));
         if (subjectPlayerID == 0) {
@@ -36,16 +36,16 @@ namespace Synchrony {
             /*
               "Host"   added by script: "Host"
              */
-            src = (char (*)[250])MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)76, 7);
+            src = (char (*)[250])MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)((DE::SHCDE::eTextSections)76, 7);
         } else {
             destination = this->DAT_ChatMessageSubjectPlayerNameArray + this->DAT_ChatMessageArrayIndex;
             src = this->DAT_PlayerNames + subjectPlayerID;
         }
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             250, (void*)((int)(src)), (void*)((int)(destination)));
         if (objectPlayerID != 0) {
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
                 (void*)((int)(this->DAT_PlayerNames + objectPlayerID)),
                 (void*)((int)(this->DAT_ChatMessageObjectPlayerNameArray + this->DAT_ChatMessageArrayIndex)));
         }

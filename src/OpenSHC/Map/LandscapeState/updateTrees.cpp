@@ -15,8 +15,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Map::Trees::TreeType;
+    using Game::GameMode2;
+    using Map::Trees::TreeType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3D60
     void LandscapeState::updateTrees()
@@ -52,7 +52,7 @@ namespace Map {
         if (_loadBalanceValue == 4) {
             _balanceRNG = (byte)SEC_RNG::instance.currentNumber2 & 0x3f;
         }
-        isItNOTScenarioGameMode = DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR;
+        isItNOTScenarioGameMode = DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR;
         this->field0_0x0 = 0;
         if ((DAT_TileMapState::instance.refreshRelatedOne == 0)
             || (DAT_TileMapState::instance.flatViewToggleValue1 != 0)) {
@@ -95,13 +95,13 @@ namespace Map {
                     }
                     uVar2 = DAT_CurrentTreeID::instance;
                     if (isItNOTScenarioGameMode && _loadBalanceValue == 4) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::updateTreeStage, this)(
+                        MACRO_CALL_MEMBER(Map::LandscapeState_Func::updateTreeStage, this)(
                             DAT_CurrentTreeID::instance, _balanceRNG);
                     }
                     DAT_CurrentTreeID::instance = uVar2;
                     (*DAT_OrganismDefinedData::instance.UpdateTree[(short)this->trees[uVar2].treeType])();
                     if (this->trees[DAT_CurrentTreeID::instance].field92_0x98 != 0) {
-                        if (this->trees[DAT_CurrentTreeID::instance].treeType != OpenSHC::Map::Trees::TT_APPLEUnk) {
+                        if (this->trees[DAT_CurrentTreeID::instance].treeType != Map::Trees::TT_APPLEUnk) {
                             DAT_GameState::instance.mapAndTime.field3176_0x27c8
                                 = DAT_GameState::instance.mapAndTime.field3176_0x27c8 + 1;
                         }
@@ -112,7 +112,7 @@ namespace Map {
                     }
                     break;
                 case 3:
-                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::removeTree, this)(DAT_CurrentTreeID::instance);
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, this)(DAT_CurrentTreeID::instance);
                     break;
                 case 4:
                     if (this->field0_0x0 == 0) {

@@ -14,17 +14,17 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00430690
         void UnusedCreateSiege::MenuView_UnusedCreateSiege_Prepare()
         {
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             INT_00b960e4::instance = 0;
         }
 

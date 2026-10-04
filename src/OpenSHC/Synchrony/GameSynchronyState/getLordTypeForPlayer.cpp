@@ -14,16 +14,16 @@ namespace Synchrony {
             return DAT_GameCore::instance.selectedLordTypes[playerID];
         }
         switch (DAT_GameState::instance.playerDataArray[playerID].aiType) {
-        case OpenSHC::AI::AIT_RAT:
-        case OpenSHC::AI::AIT_SNAKE:
-        case OpenSHC::AI::AIT_PIG:
-        case OpenSHC::AI::AIT_WOLF:
-        case OpenSHC::AI::AIT_RICHARD:
-        case OpenSHC::AI::AIT_FREDERICK:
-        case OpenSHC::AI::AIT_PHILIPP:
-        case OpenSHC::AI::AIT_SHERIFF:
-        case OpenSHC::AI::AIT_MARSHAL:
-        case OpenSHC::AI::AIT_ABBOT:
+        case AI::AIT_RAT:
+        case AI::AIT_SNAKE:
+        case AI::AIT_PIG:
+        case AI::AIT_WOLF:
+        case AI::AIT_RICHARD:
+        case AI::AIT_FREDERICK:
+        case AI::AIT_PHILIPP:
+        case AI::AIT_SHERIFF:
+        case AI::AIT_MARSHAL:
+        case AI::AIT_ABBOT:
             return 0;
         default:
             return 1;

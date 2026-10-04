@@ -17,7 +17,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B420
         BOOLEnum TroopValueState::placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers(
@@ -30,13 +30,13 @@ namespace Map {
             int _buildingID;
             _targetUnitID = (int)DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
             _targetTile = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
+                Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
                 DAT_PathFindingState::ptr)(100, (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                 (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)), (undefined4)((int)(tribeID)),
                 strategicDistance, DAT_TribesState::instance.tribes[tribeID].owner);
             if ((_targetTile == 0)
                 && (_targetTile = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
+                        Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
                         DAT_PathFindingState::ptr)(200,
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)),
@@ -54,7 +54,7 @@ namespace Map {
                          + 0x165160)
                         & 0x4a5014b1)
                     == 0)) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
                     DAT_TribesState::instance.tribes[tribeID].owner, (int)((int)(x)), (int)((int)(y)),
                     commandBuildingType, 3, 0xf);
                 _buildingID = DAT_TileMapState::instance.placedBuildingID;
@@ -63,7 +63,7 @@ namespace Map {
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
                     DAT_BuildingsState::instance.buildings[_buildingID].unknownSiegeTentRelated01 = 2;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
+                        Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
                         tribeID, instruction, _buildingID, DAT_BuildingsState::instance.buildings[_buildingID].uid, 0);
                     return TRUE;
                 }

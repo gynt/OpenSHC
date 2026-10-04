@@ -18,11 +18,11 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Rendering::Enums::RenderTarget;
-    using OpenSHC::Text::GameLanguage;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::WindowsHelper::Enums::CodePage;
+    using DE::SHCDE::eTextSections;
+    using Rendering::Enums::RenderTarget;
+    using Text::GameLanguage;
+    using WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::CodePage;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00473870
     void TextManager::loadCRTex()
@@ -31,79 +31,79 @@ namespace Text {
         WCHAR* _lpWideCharStr;
         int _languageCompareResult;
         char* _langStr;
-        this->codePage = OpenSHC::WindowsHelper::Enums::CP_WINDOWS_1252;
+        this->codePage = WindowsHelper::Enums::CP_WINDOWS_1252;
         this->field5_0x14 = 1;
         this->field6_0x18 = 0;
-        this->textSurfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+        this->textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
         this->field27_0x1348 = 0;
         _fileDescriptor
-            = MACRO_CALL(OpenSHC::OS_Func::_ucrt_open)("cr.tex", _O_BINARY, 0);
+            = MACRO_CALL(OS_Func::_ucrt_open)("cr.tex", _O_BINARY, 0);
         if (_fileDescriptor != -1) {
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_read)(
+            MACRO_CALL(OS_Func::_ucrt_read)(
                 _fileDescriptor, (void*)((int)(this->textOffsets)), (size_t)((int)(1040)));
-            _lpWideCharStr = (WCHAR*)MACRO_CALL(OpenSHC::OS_Func::_malloc)(702000);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_read)(
+            _lpWideCharStr = (WCHAR*)MACRO_CALL(OS_Func::_malloc)(702000);
+            MACRO_CALL(OS_Func::_ucrt_read)(
                 _fileDescriptor, (void*)((int)(_lpWideCharStr)), (size_t)((int)(702000)));
-            MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
+            MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
                 DAT_WideCharMultiByteState::ptr)(this->textStart, _lpWideCharStr, (int)((int)(351000)));
             this->alternativeCodePageUsedUnk = FALSE;
-            this->gameLanguage = OpenSHC::Text::GL_ENGLISH;
+            this->gameLanguage = Text::GL_ENGLISH;
             /*
               language
              */
-            _langStr = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
-                OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
-            _languageCompareResult = MACRO_CALL(OpenSHC::OS_Func::__stricmp)("polish", (char const*)((int)(_langStr)));
+            _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+                DE::SHCDE::TEXT_LANGUAGE, 0);
+            _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)("polish", (char const*)((int)(_langStr)));
             if (_languageCompareResult == 0) {
-                this->codePage = OpenSHC::WindowsHelper::Enums::CP_WINDOWS_1250;
+                this->codePage = WindowsHelper::Enums::CP_WINDOWS_1250;
                 this->alternativeCodePageUsedUnk = TRUE;
-                MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
+                MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
                     DAT_WideCharMultiByteState::ptr)(this->textStart, _lpWideCharStr, (int)((int)(351000)));
-                this->gameLanguage = OpenSHC::Text::GL_POLISH;
+                this->gameLanguage = Text::GL_POLISH;
             } else {
-                _langStr = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
-                    OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
+                _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+                    DE::SHCDE::TEXT_LANGUAGE, 0);
                 _languageCompareResult
-                    = MACRO_CALL(OpenSHC::OS_Func::__stricmp)("english", (char const*)((int)(_langStr)));
+                    = MACRO_CALL(OS_Func::__stricmp)("english", (char const*)((int)(_langStr)));
                 if (_languageCompareResult == 0) {
-                    this->gameLanguage = OpenSHC::Text::GL_ENGLISH;
+                    this->gameLanguage = Text::GL_ENGLISH;
                 } else {
-                    _langStr = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
-                        OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
+                    _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+                        DE::SHCDE::TEXT_LANGUAGE, 0);
                     _languageCompareResult
-                        = MACRO_CALL(OpenSHC::OS_Func::__stricmp)("american", (char const*)((int)(_langStr)));
+                        = MACRO_CALL(OS_Func::__stricmp)("american", (char const*)((int)(_langStr)));
                     if (_languageCompareResult == 0) {
-                        this->gameLanguage = OpenSHC::Text::GL_AMERICAN;
+                        this->gameLanguage = Text::GL_AMERICAN;
                     } else {
-                        _langStr = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            this)(OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
+                        _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            this)(DE::SHCDE::TEXT_LANGUAGE, 0);
                         _languageCompareResult
-                            = MACRO_CALL(OpenSHC::OS_Func::__stricmp)("german", (char const*)((int)(_langStr)));
+                            = MACRO_CALL(OS_Func::__stricmp)("german", (char const*)((int)(_langStr)));
                         if (_languageCompareResult == 0) {
-                            this->gameLanguage = OpenSHC::Text::GL_GERMAN;
+                            this->gameLanguage = Text::GL_GERMAN;
                         } else {
-                            _langStr = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                this)(OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
+                            _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                this)(DE::SHCDE::TEXT_LANGUAGE, 0);
                             _languageCompareResult
-                                = MACRO_CALL(OpenSHC::OS_Func::__stricmp)("french", (char const*)((int)(_langStr)));
+                                = MACRO_CALL(OS_Func::__stricmp)("french", (char const*)((int)(_langStr)));
                             if (_languageCompareResult == 0) {
-                                this->gameLanguage = OpenSHC::Text::GL_FRENCH;
+                                this->gameLanguage = Text::GL_FRENCH;
                             } else {
                                 _langStr
-                                    = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        this)(OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
-                                _languageCompareResult = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
+                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                        this)(DE::SHCDE::TEXT_LANGUAGE, 0);
+                                _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)(
                                     "italian", (char const*)((int)(_langStr)));
                                 if (_languageCompareResult == 0) {
-                                    this->gameLanguage = OpenSHC::Text::GL_ITALIAN;
+                                    this->gameLanguage = Text::GL_ITALIAN;
                                 } else {
                                     _langStr = MACRO_CALL_MEMBER(
-                                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
-                                        OpenSHC::DE::SHCDE::TEXT_LANGUAGE, 0);
-                                    _languageCompareResult = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
+                                        Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+                                        DE::SHCDE::TEXT_LANGUAGE, 0);
+                                    _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)(
                                         "SPANISH", (char const*)((int)(_langStr)));
                                     if (_languageCompareResult == 0) {
-                                        this->gameLanguage = OpenSHC::Text::GL_SPANISH;
+                                        this->gameLanguage = Text::GL_SPANISH;
                                     }
                                 }
                             }
@@ -111,13 +111,13 @@ namespace Text {
                     }
                 }
             }
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_close)(_fileDescriptor);
+            MACRO_CALL(OS_Func::_ucrt_close)(_fileDescriptor);
             this->field27_0x1348 = 1;
             this->field9_0x24 = 0;
             this->field10_0x28 = 0;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 20, '\0', (void*)((int)(this->field26_0x1334)));
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::resetTextClipRange, this)();
+            MACRO_CALL_MEMBER(Text::TextManager_Func::resetTextClipRange, this)();
             this->field13_0x34 = 0;
         }
         return;

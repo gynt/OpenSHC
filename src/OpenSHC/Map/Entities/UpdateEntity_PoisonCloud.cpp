@@ -59,7 +59,7 @@ namespace Map {
         if (sVar2 != 0) {
             if (DAT_EntityState::instance.entityArray[uVar3].uidRef
                 == DAT_EntityState::instance.entityArray[sVar2].uid) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                     DAT_DirectionAlgorithmState::ptr)((int)DAT_EntityState::instance.entityArray[sVar2].xPosition,
                     (int)((int)(DAT_EntityState::instance.entityArray[sVar2].yPosition)),
                     (int)((int)(DAT_EntityState::instance.entityArray[uVar3].xPosition)),

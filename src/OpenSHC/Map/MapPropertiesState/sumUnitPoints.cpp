@@ -16,7 +16,7 @@ namespace Map {
         do {
             _total = _total + piVar1->archers + piVar1->field1_0x4 + piVar1->field2_0x8 + piVar1->field4_0x10
                 + piVar1->field3_0xc;
-            piVar1 = (OpenSHC::AI::Siege::SiegeUnitCounts*)(&piVar1->field5_0x14);
+            piVar1 = (AI::Siege::SiegeUnitCounts*)(&piVar1->field5_0x14);
             iVar1 = iVar1 + -1;
         } while (iVar1 != 0);
         this->DAT_MapEditorUnitPointsSum = _total + this->SEC_Section1067.field5_0x14

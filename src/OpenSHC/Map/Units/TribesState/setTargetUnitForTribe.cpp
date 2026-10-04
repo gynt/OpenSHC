@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00525280
         void TribesState::setTargetUnitForTribe(int tribeID)
@@ -23,10 +23,10 @@ namespace Map {
             this->tribes[tribeID].selectionTargetUnitID = 0;
             if (0 < _tribeSize) {
                 do {
-                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, _unitSelectionIndex);
                     _unitSelectionIndex = _unitSelectionIndex + 1;
-                    if ((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if ((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                         && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
                         _tribeTargetUnitID = this->tribes[tribeID].selectionTargetUnitID;
                         if (_tribeTargetUnitID == 0) {

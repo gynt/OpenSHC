@@ -11,7 +11,7 @@ namespace Audio {
     int SFX::ComputeCurrentPlayerRanking()
     {
         int iVar1;
-        iVar1 = MACRO_CALL(OpenSHC::Audio::SFX_Func::ComputePlayerRanking)(
+        iVar1 = MACRO_CALL(Audio::SFX_Func::ComputePlayerRanking)(
             DAT_GameSynchronyState::instance.currentPlayerSlotID);
         return iVar1;
     }

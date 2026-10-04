@@ -13,21 +13,21 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4070
     void Rendering::RenderNoViewsFoundWarning()
     {
         int left;
         int top;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawPixelPattern4x4OverWholeScreen,
+        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawPixelPattern4x4OverWholeScreen,
             DAT_PencilRenderCore::ptr)();
         top = (DAT_WindowAndDirectDraw::instance.resolutionY + -0x28) / 2;
         left = (DAT_WindowAndDirectDraw::instance.resolutionX + -400) / 2;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
             left, top, left + 400, top + 0x28, (ushort)((int)(COL_WHITE::instance.shortValue)));
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "No views have been found.", (DAT_WindowAndDirectDraw::instance.resolutionX + -400) / 2,
             (int)((int)((DAT_WindowAndDirectDraw::instance.resolutionY + -40) / 2 + 8)), ((TextAlignment)400), 0, 0x11,
             FALSE, 0);

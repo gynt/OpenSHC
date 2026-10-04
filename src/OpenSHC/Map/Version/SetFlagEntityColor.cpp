@@ -11,9 +11,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Entities::EntityType;
-    using OpenSHC::Map::Entities::Entity;
-    using OpenSHC::Map::Entities::EntityTypeShort;
+    using Map::Entities::EntityType;
+    using Map::Entities::Entity;
+    using Map::Entities::EntityTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004038B0
     void Version::SetFlagEntityColor()
@@ -25,9 +25,9 @@ namespace Map {
         do {
             if ((pEVar2->logicalState == 2)
                 && ((((EVar1 = pEVar2->entityType,
-                          EVar1 == OpenSHC::Map::Entities::ET_FLAG_1 || (EVar1 == OpenSHC::Map::Entities::ET_FLAG_4))
-                         || (EVar1 == OpenSHC::Map::Entities::ET_FLAG_2))
-                    || (EVar1 == OpenSHC::Map::Entities::ET_FLAG_3)))) {
+                          EVar1 == Map::Entities::ET_FLAG_1 || (EVar1 == Map::Entities::ET_FLAG_4))
+                         || (EVar1 == Map::Entities::ET_FLAG_2))
+                    || (EVar1 == Map::Entities::ET_FLAG_3)))) {
                 pEVar2->colorUnk = (int)pEVar2->owner;
             }
             pEVar2 = pEVar2 + 0x74;

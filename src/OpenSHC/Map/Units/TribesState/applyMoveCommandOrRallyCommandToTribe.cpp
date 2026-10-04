@@ -14,10 +14,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::States::UnitState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::States::UnitState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524340
         undefined4 TribesState::applyMoveCommandOrRallyCommandToTribe(
@@ -29,7 +29,7 @@ namespace Map {
             short _targetUnitID;
             _unitSelectionIndex = 0;
             _allAssassins
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
+                = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
             this->tribes[tribeID].someUnitID = 0;
             if (storeAsRallyPoint != 0) {
                 _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
@@ -43,22 +43,22 @@ namespace Map {
             }
             if (0 < this->tribes[tribeID].size) {
                 do {
-                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, _unitSelectionIndex);
                     _unitSelectionIndex = _unitSelectionIndex + 1;
-                    if ((((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if ((((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                              && (DAT_UnitsState::instance.units[_unitID].dying == 0))
                             && (DAT_UnitsState::instance.units[_unitID].usingTeleport == 0))
                         && (((DAT_UnitsState::instance.units[_unitID].field303_0x413 == 0
                                  && (DAT_UnitsState::instance.units[_unitID].state.generic
-                                     != OpenSHC::Map::Units::States::US_MELEE_ATTACK))
+                                     != Map::Units::States::US_MELEE_ATTACK))
                             && ((DAT_UnitsState::instance.units[_unitID].moveableUnk != 0
                                 && (DAT_UnitsState::instance.units[_unitID].moveRelatedFlag != 1)))))) {
                         DAT_UnitsState::instance.units[_unitID].plannedDestinationX = (short)x1;
                         DAT_UnitsState::instance.units[_unitID].state.generic
-                            = OpenSHC::Map::Units::States::US_MOVE_TO_DESTINATION;
+                            = Map::Units::States::US_MOVE_TO_DESTINATION;
                         DAT_UnitsState::instance.units[_unitID].targetingType
-                            = OpenSHC::Map::Units::UIT_NO_INSTRUCTION_OR_MOVEUnk;
+                            = Map::Units::UIT_NO_INSTRUCTION_OR_MOVEUnk;
                         DAT_UnitsState::instance.units[_unitID]._someX_2 = 0;
                         DAT_UnitsState::instance.units[_unitID]._someY_2 = 0;
                         DAT_UnitsState::instance.units[_unitID].plannedDestinationY = (short)y1;
@@ -68,7 +68,7 @@ namespace Map {
                             DAT_PathFindingState::instance.allAssassinsUnk = 1;
                         }
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
+                            Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
                             _unitID, (uint)((int)((int)(short)x1)), (uint)((int)((int)(short)y1)), 0);
                     }
                 } while (_unitSelectionIndex < this->tribes[tribeID].size);

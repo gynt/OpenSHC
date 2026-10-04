@@ -18,11 +18,11 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
+        using Text::TextAlignment;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0043E4E0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_StatusMainMenuButtons(int param_1, ...)
@@ -34,19 +34,19 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+            if (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU) {
+                MACRO_CALL(UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 blendStrength = 0;
                 keepOffsetX = FALSE;
                 fontSize = 0x13;
                 color = 0;
                 int xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                alignment = OpenSHC::Text::TTA_CENTER;
+                alignment = Text::TTA_CENTER;
                 yParam = DAT_ButtonY::instance + 10;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, param_1 + -0x47);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_REPORT_BUTTONS, param_1 + -0x47);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
             }
         }

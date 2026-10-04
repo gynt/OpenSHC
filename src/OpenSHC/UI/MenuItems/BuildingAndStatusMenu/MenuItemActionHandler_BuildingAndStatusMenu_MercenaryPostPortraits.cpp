@@ -27,11 +27,11 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::ResourceLackSFX;
-        using OpenSHC::Audio::SFX::SoundEffectID;
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::ResourceLackSFX;
+        using Audio::SFX::SoundEffectID;
+        using Commands::GameCommandType;
+        using Game::GameMode;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004674C0
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_MercenaryPostPortraits(int param_1, ...)
@@ -39,21 +39,21 @@ namespace UI {
             DWORD DVar1;
             DWORD DVar2;
             bool bVar5;
-            int iVar3 = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
+            int iVar3 = MACRO_CALL(UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
             if (iVar3 == 1) {
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    (OpenSHC::Map::Units::UnitType)param_1,
+                iVar3 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    (Map::Units::UnitType)param_1,
                     (undefined4)((int)(DAT_GameState::instance
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .mercenaryPost.id)),
                     (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
                 if (iVar3 != 0) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECRUIT_UNIT);
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::DisableMercPostPortraits)();
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                        OpenSHC::Audio::SFX::SEID_BUTTON_CLICK_01);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
+                    MACRO_CALL(UI::Helpers_Func::DisableMercPostPortraits)();
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                        Audio::SFX::SEID_BUTTON_CLICK_01);
                     DWORD _now = timeGetTime();
                     if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .count_2
@@ -74,7 +74,7 @@ namespace UI {
                             /*
                               "Your army is approaching its maximum size"
                              */
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                                 "Genie_27.wav");
                             param_1 = DAT_ClickedMercUnitType::instance;
                         }
@@ -83,7 +83,7 @@ namespace UI {
                     TIME_ClickedMercUnitTypeMoment::instance = DVar1;
                     if (_now - TIME_ClickedMercUnitTypeMoment::instance < 0x1f41) {}
                 LAB_004675b5:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         (char const*)((int)DAT_UIButtonDefinedData::instance.ButtonGmDataArray + param_1 * 0x20
                             + 0x3f38));
                     TIME_ClickedMercUnitTypeMoment::instance = _now;
@@ -91,13 +91,13 @@ namespace UI {
                 }
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 1) {
                 LAB_0046764f:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                        DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_GOLD);
+                    MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
+                        DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_GOLD);
                 }
                 bVar5 = DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 3;
             } else {
                 int iVar4 = DAT_TroopDefinedData::instance.field279_0x210[param_1];
-                if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
                     iVar4 = 0;
                 }
@@ -106,7 +106,7 @@ namespace UI {
                     /*
                       "Your army is at its maximum size"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
                         "Genie_26.wav");
                 }
                 if (iVar3 == 4)
@@ -122,7 +122,7 @@ namespace UI {
             /*
               "Recruits needed sire"
              */
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
         }
 
     }

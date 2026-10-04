@@ -15,21 +15,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A1C0
     void Init::Constructor_MenuView_HistoricMissionSelect()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricMissionSelect::ptr)(
-            OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::HistoricMissionSelect_Func::MenuView_HistoricMissionSelect_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_HistoricMissionSelect));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricMissionSelect::ptr)(
+            UI::Enums::MVT_HISTORIC_MISSION_SELECT,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::HistoricMissionSelect_Func::MenuView_HistoricMissionSelect_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricMissionSelect));
         return;
     }
 

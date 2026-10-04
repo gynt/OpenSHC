@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::UnitTypeInt;
+        using Map::Units::UnitType;
+        using Map::Units::UnitTypeInt;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00521A90
         void TribesState::playUnitCombatSpeechForTarget(int selectionID, int unitID)
@@ -36,37 +36,37 @@ namespace Map {
             TribesState* _ptrCurrentSelectionID_2;
             _ptrCurrentSelectionID = this;
             _otherUnitID = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
+                Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
             _ptrptrCurrentSelectionID
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(
+                = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(
                     selectionID, (int*)&_ptrCurrentSelectionID);
             _ptrCurrentSelectionID_2 = _ptrCurrentSelectionID;
             sVar1 = DAT_TribesState::instance.tribes[selectionID].size;
             switch (_ptrptrCurrentSelectionID) {
-            case OpenSHC::Map::Units::UT_E_ARCHER:
-            case OpenSHC::Map::Units::UT_E_XBOW:
-            case OpenSHC::Map::Units::UT_A_ARCHER:
-            case OpenSHC::Map::Units::UT_A_SLINGER:
-            case OpenSHC::Map::Units::UT_A_HARCHER:
-            case OpenSHC::Map::Units::UT_A_FIRETHROWER:
-                if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_E_ARCHER) {
+            case Map::Units::UT_E_ARCHER:
+            case Map::Units::UT_E_XBOW:
+            case Map::Units::UT_A_ARCHER:
+            case Map::Units::UT_A_SLINGER:
+            case Map::Units::UT_A_HARCHER:
+            case Map::Units::UT_A_FIRETHROWER:
+                if (_ptrptrCurrentSelectionID == Map::Units::UT_E_ARCHER) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1];
-                } else if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_E_XBOW) {
+                } else if (_ptrptrCurrentSelectionID == Map::Units::UT_E_XBOW) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[7]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[7];
-                } else if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_A_ARCHER) {
+                } else if (_ptrptrCurrentSelectionID == Map::Units::UT_A_ARCHER) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1];
-                } else if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_A_SLINGER) {
+                } else if (_ptrptrCurrentSelectionID == Map::Units::UT_A_SLINGER) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x21]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x21];
-                } else if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_A_HARCHER) {
+                } else if (_ptrptrCurrentSelectionID == Map::Units::UT_A_HARCHER) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1];
                 } else {
                     _distance = unitID;
-                    if (_ptrptrCurrentSelectionID == OpenSHC::Map::Units::UT_A_FIRETHROWER) {
+                    if (_ptrptrCurrentSelectionID == Map::Units::UT_A_FIRETHROWER) {
                         _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x22]
                             * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x22];
                     }
@@ -80,9 +80,9 @@ namespace Map {
                 } else {
                     _actionID = 0x19;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                    (OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, _actionID);
-                if (_ptrptrCurrentSelectionID != OpenSHC::Map::Units::UT_A_HARCHER) {}
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
+                    (Map::Units::UnitType)_ptrptrCurrentSelectionID, _actionID);
+                if (_ptrptrCurrentSelectionID != Map::Units::UT_A_HARCHER) {}
                 if (_ptrCurrentSelectionID == (TribesState*)0x1) {
                     _otherY = (int)DAT_UnitsState::instance.units[_otherUnitID].y;
                     _otherX = (int)DAT_UnitsState::instance.units[_otherUnitID].x;
@@ -96,30 +96,30 @@ namespace Map {
                     _otherX = (int)DAT_UnitsState::instance.units[_otherUnitID].x;
                     sfxOffsetInArray = 0xec;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     _otherX, _otherY, sfxOffsetInArray);
                 _otherX = 0x59;
                 break;
-            case OpenSHC::Map::Units::UT_E_SPEAR:
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
+            case Map::Units::UT_E_SPEAR:
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
                 if (sVar1 < 0xf) {}
                 _otherX = 0x14;
                 break;
-            case OpenSHC::Map::Units::UT_E_PIKE:
-            case OpenSHC::Map::Units::UT_E_MACE:
-            case OpenSHC::Map::Units::UT_E_MONK:
+            case Map::Units::UT_E_PIKE:
+            case Map::Units::UT_E_MACE:
+            case Map::Units::UT_E_MONK:
                 UVar2 = DAT_UnitsState::instance.units[unitID].unitType;
-                if (((UVar2 == OpenSHC::Map::Units::UT_E_KNIGHT) || (UVar2 == OpenSHC::Map::Units::UT_E_SWORD))
-                    || (UVar2 == OpenSHC::Map::Units::UT_LORD)) {
+                if (((UVar2 == Map::Units::UT_E_KNIGHT) || (UVar2 == Map::Units::UT_E_SWORD))
+                    || (UVar2 == Map::Units::UT_LORD)) {
                     _otherX = 0x11;
                 } else {
                     _otherX = 0x15;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, _otherX);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, _otherX);
                 if (sVar1 < 0xf) {}
                 _otherX = 0x14;
                 break;
-            case OpenSHC::Map::Units::UT_E_SWORD:
+            case Map::Units::UT_E_SWORD:
                 if (_ptrCurrentSelectionID == (TribesState*)0x1) {
                     _otherX = 0xad;
                 } else if (_ptrCurrentSelectionID == (TribesState*)0x2) {
@@ -129,27 +129,27 @@ namespace Map {
                         goto LAB_00521d1b;
                     _otherX = 0xaf;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)DAT_UnitsState::instance.units[_otherUnitID].x,
                     (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), _otherX);
             LAB_00521d1b:
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
                 if (sVar1 < 0xf) {}
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)DAT_UnitsState::instance.units[_otherUnitID].x,
                     (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), 0x14);
                 return;
-            case OpenSHC::Map::Units::UT_E_KNIGHT:
+            case Map::Units::UT_E_KNIGHT:
                 if (_ptrCurrentSelectionID == (TribesState*)0x1) {
                     _otherX = 0x56;
                 LAB_00521c6f:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                         DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[_otherUnitID].x,
                         (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), _otherX);
                 } else {
                     if ((_ptrCurrentSelectionID == (TribesState*)0x2)
                         || (_ptrCurrentSelectionID == (TribesState*)0x3)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                             DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[_otherUnitID].x,
                             (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), 0x57);
                     }
@@ -158,30 +158,30 @@ namespace Map {
                         goto LAB_00521c6f;
                     }
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)DAT_UnitsState::instance.units[_otherUnitID].x,
                     (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), 0x59);
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
                 if (sVar1 < 0xf) {}
                 _otherX = 0xfa;
                 break;
                 default:
                     UVar2 = DAT_UnitsState::instance.units[unitID].unitType;
-                if ((((UVar2 != OpenSHC::Map::Units::UT_E_KNIGHT) && (UVar2 != OpenSHC::Map::Units::UT_E_SWORD))
-                        && (UVar2 != OpenSHC::Map::Units::UT_E_MACE))
-                    && ((UVar2 != OpenSHC::Map::Units::UT_E_PIKE && (UVar2 != OpenSHC::Map::Units::UT_LORD)))) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
+                if ((((UVar2 != Map::Units::UT_E_KNIGHT) && (UVar2 != Map::Units::UT_E_SWORD))
+                        && (UVar2 != Map::Units::UT_E_MACE))
+                    && ((UVar2 != Map::Units::UT_E_PIKE && (UVar2 != Map::Units::UT_LORD)))) {
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x15);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((OpenSHC::Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x11);
-            case OpenSHC::Map::Units::UT_E_ENGINEER:
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)((Map::Units::UnitType)_ptrptrCurrentSelectionID, 0x11);
+            case Map::Units::UT_E_ENGINEER:
                 return;
-            case OpenSHC::Map::Units::UT_A_SWORDSMAN:
+            case Map::Units::UT_A_SWORDSMAN:
                 if (sVar1 < 0xf) {}
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)DAT_UnitsState::instance.units[_otherUnitID].x,
                     (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), 0x14);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                 (int)DAT_UnitsState::instance.units[_otherUnitID].x,
                 (int)((int)(DAT_UnitsState::instance.units[_otherUnitID].y)), _otherX);
         }

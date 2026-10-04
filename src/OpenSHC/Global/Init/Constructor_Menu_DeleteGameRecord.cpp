@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AE50
     void Init::Constructor_Menu_DeleteGameRecord()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_DeleteGameRecord::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_DeleteGameRecord::ptr)(
             DAT_RenderingDefinedData::instance.MenuItems_DeleteGameRecord);
     }
 

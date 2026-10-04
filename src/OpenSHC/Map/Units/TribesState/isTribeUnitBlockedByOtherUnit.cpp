@@ -11,8 +11,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::States::UnitState;
+        using Map::Units::UnitLogicState;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524B30
         undefined4 TribesState::isTribeUnitBlockedByOtherUnit(int param_1)
@@ -28,10 +28,10 @@ namespace Map {
                     if (sVar1 <= unitSelectionIndex) {
                         return (undefined4)(0);
                     }
-                    iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         param_1, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                } while ((DAT_UnitsState::instance.units[iVar2].logicalState != OpenSHC::Map::Units::ULS_NORMAL)
+                } while ((DAT_UnitsState::instance.units[iVar2].logicalState != Map::Units::ULS_NORMAL)
                     || (DAT_UnitsState::instance.units[iVar2].dying != 0));
                 if (DAT_UnitsState::instance.units[iVar2].usingTeleport != 0) {
                     return (undefined4)(0);
@@ -42,7 +42,7 @@ namespace Map {
                 if (DAT_UnitsState::instance.units[iVar2].tunnelerFinishedDigging == 2)
                     break;
                 if (DAT_UnitsState::instance.units[iVar2].state.generic
-                    == OpenSHC::Map::Units::States::US_MELEE_ATTACK) {
+                    == Map::Units::States::US_MELEE_ATTACK) {
                     return (undefined4)(0);
                 }
                 if (DAT_UnitsState::instance.units[iVar2].laddermanIsInPosition != '\0') {

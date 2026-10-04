@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CC60
     void Init::Constructor_TextEditorState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::Constructor_TextEditorState, DAT_TextEditorState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d780));
+        MACRO_CALL_MEMBER(Text::TextEditorState_Func::Constructor_TextEditorState, DAT_TextEditorState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d780));
         return;
     }
 

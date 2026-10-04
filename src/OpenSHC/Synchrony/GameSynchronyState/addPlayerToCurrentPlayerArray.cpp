@@ -6,7 +6,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047EB80
     int GameSynchronyState::addPlayerToCurrentPlayerArray(int playerFullID)
@@ -26,7 +26,7 @@ namespace Synchrony {
             _slot_2 = _slot_2 + 1;
             _pFullIdArrayPlus1 = _pFullIdArrayPlus1 + 1;
         } while (_slot_2 < 9);
-        if (this->currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+        if (this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER) {
             _slot = 1;
             _pFullIdArrayPlus1_2 = _fullIDArray;
             do {

@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B760
     void Init::Constructor_MenuModal_InGameHelpText()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_InGameHelpText::ptr)(
-            OpenSHC::UI::Enums::MMT_IN_GAME_HELP_TEXT, -1, -1, 0x300, 0x1b0, 0x20,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_InGameHelpText::ptr)(
+            UI::Enums::MMT_IN_GAME_HELP_TEXT, -1, -1, 0x300, 0x1b0, 0x20,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::TextEditor_Func::MenuModalRenderFunction_TextEditor),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::TextEditor_Func::MenuModalRenderFunction_TextEditor),
             Menu_InGameHelpText::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_InGameHelpText));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_InGameHelpText));
         return;
     }
 

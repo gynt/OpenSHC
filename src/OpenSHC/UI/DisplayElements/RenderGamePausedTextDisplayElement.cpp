@@ -13,10 +13,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Text::TextAlignment;
+    using UI::Enums::DisplayElementID;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1E60
     void DisplayElements::RenderGamePausedTextDisplayElement(int posX, int posY, DWORD elementState)
@@ -30,20 +30,20 @@ namespace UI {
         int blendStrength;
         blendStrength = 0;
         if (DAT_GameCore::instance.gamePausedLogical == 0) {
-            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                OpenSHC::UI::Enums::DEID_GAME_PAUSED_TEXT, 0);
+            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                UI::Enums::DEID_GAME_PAUSED_TEXT, 0);
         }
         keepOffsetX = FALSE;
         fontSize = 0x10;
         backgroundColor = 0;
         foregroundColor = 0xc2f0eb;
-        alignment = OpenSHC::Text::TTA_CENTER;
+        alignment = Text::TTA_CENTER;
         /*
           added by script: "Game Paused"
          */
-        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, 0x16);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+        textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, 0x16);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             textAddress, posX, posY, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
     }
 

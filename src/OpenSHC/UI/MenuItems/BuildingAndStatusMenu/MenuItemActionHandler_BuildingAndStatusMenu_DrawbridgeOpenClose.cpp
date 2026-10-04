@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
+        using Commands::GameCommandType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00465360
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_DrawbridgeOpenClose(int param_1, ...)
@@ -21,7 +21,7 @@ namespace UI {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].uid;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = param_1;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 ((GameCommandType)0x25));
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .gateOpenOrCloseClick = param_1;

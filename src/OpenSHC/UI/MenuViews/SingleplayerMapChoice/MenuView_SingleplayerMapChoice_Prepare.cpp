@@ -32,9 +32,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00448D40
         void SingleplayerMapChoice::MenuView_SingleplayerMapChoice_Prepare()
@@ -44,10 +44,10 @@ namespace UI {
             Menu_SingleplayerMapChoice::instance.thousand = 0;
             DAT_MenuTextInputState::instance.field39_0x90 = 0;
             DAT_MenuTextInputState::instance.field38_0x8c = 0xffffffff;
-            DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SOLITARY;
-            DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_BUILDERUnk;
+            DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SOLITARY;
+            DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
             if (INT_00b95b64::instance == 0) {
-                MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                         MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
@@ -60,7 +60,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = -1;
                 DAT_GameSynchronyState::instance.mapName[0] = '\0';
                 DAT_GameCore::instance.mapDescription[0] = '\0';
-                MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
+                MACRO_CALL(OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
                 DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                 DAT_SH1_SiegeAdvancedMode::instance = 0;
                 DAT_SiegeRemainingPoints::instance = 0;
@@ -74,20 +74,20 @@ namespace UI {
             } else {
                 tgxFileName = "frontend_combat2.tgx";
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             (DAT_MenuHandlerState::instance.currentMenu)->xPosition
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(4);
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(4);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
             INT_00b95b64::instance = 0;
             DAT_GameCore::instance.activeMenuTab.tabType
-                = (OpenSHC::UI::Enums::BuildingsAndStatusMenuTabTypeInt)(DAT_MapMissionType::instance != 0);
+                = (UI::Enums::BuildingsAndStatusMenuTabTypeInt)(DAT_MapMissionType::instance != 0);
         }
 
     }

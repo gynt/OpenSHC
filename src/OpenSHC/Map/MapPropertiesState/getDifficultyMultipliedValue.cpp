@@ -10,12 +10,12 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
+    using Game::GameMode2;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B7AB0
     int MapPropertiesState::getDifficultyMultipliedValue(int param_1)
     {
-        if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
+        if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
             && (DAT_GameCore::instance.missionNumber1to20 == 8)) {
             return param_1;
         }

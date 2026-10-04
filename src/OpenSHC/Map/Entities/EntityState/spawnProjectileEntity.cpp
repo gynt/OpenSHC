@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00404AE0
         uint EntityState::spawnProjectileEntity(int unitID, undefined4 playerID1, uint ownerColorUnk, int microX,
@@ -34,7 +34,7 @@ namespace Map {
             if (((0x2b < (int)entityType) && ((int)entityType < 0x5b)) || (0x5e < (int)entityType)) {
                 return 0;
             }
-            if (entityType == ~OpenSHC::Map::Entities::ET_UNKNOWN) {
+            if (entityType == ~Map::Entities::ET_UNKNOWN) {
                 entityID = 0;
                 entityType = ((EntityType)8);
             } else if (entityType - ((EntityType)0x28) < 8) {
@@ -58,22 +58,22 @@ namespace Map {
                             break;
                         if (0xbb6 < (int)entityID) {
                             switch (entityType) {
-                            case OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-                            case OpenSHC::Map::Entities::ET_CATAPULT:
-                            case OpenSHC::Map::Entities::ET_TREBUCHET:
-                            case OpenSHC::Map::Entities::ET_MANGONEL:
-                            case OpenSHC::Map::Entities::ET_CROSSBOWARROW:
+                            case Map::Entities::ET_ARROW_AND_DEFAULT:
+                            case Map::Entities::ET_CATAPULT:
+                            case Map::Entities::ET_TREBUCHET:
+                            case Map::Entities::ET_MANGONEL:
+                            case Map::Entities::ET_CROSSBOWARROW:
                             case ((EntityType)8):
-                            case OpenSHC::Map::Entities::ET_COW_POISON_CLOUD:
-                            case OpenSHC::Map::Entities::ET_COW_FLYING:
+                            case Map::Entities::ET_COW_POISON_CLOUD:
+                            case Map::Entities::ET_COW_FLYING:
                             case ((EntityType)0x18):
                             case ((EntityType)0x19):
-                            case OpenSHC::Map::Entities::EntityTypeInt__ET_EXPLOSION:
-                            case OpenSHC::Map::Entities::ET_SLINGER:
-                            case OpenSHC::Map::Entities::ET_FIRETHROWER:
-                            case OpenSHC::Map::Entities::ET_FIRETHROWER | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-                            case OpenSHC::Map::Entities::ET_FIRETHROWER_UNTARGETED:
-                            case OpenSHC::Map::Entities::ET_FIREBALLISTA:
+                            case Map::Entities::EntityTypeInt__ET_EXPLOSION:
+                            case Map::Entities::ET_SLINGER:
+                            case Map::Entities::ET_FIRETHROWER:
+                            case Map::Entities::ET_FIRETHROWER | Map::Entities::ET_ARROW_AND_DEFAULT:
+                            case Map::Entities::ET_FIRETHROWER_UNTARGETED:
+                            case Map::Entities::ET_FIREBALLISTA:
                             case ((EntityType)0x5b):
                             case ((EntityType)0x5c):
                             case ((EntityType)0x5d):
@@ -101,14 +101,14 @@ namespace Map {
             if (entityType == ((EntityType)0x5b)) {
                 bVar1 = true;
                 this->entityArray[entityID].rng_2 = 1;
-                entityType = OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT;
-            } else if (entityType == OpenSHC::Map::Entities::ET_FIREBALLISTA) {
+                entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
+            } else if (entityType == Map::Entities::ET_FIREBALLISTA) {
                 bVar1 = true;
                 this->entityArray[entityID].field90_0xd0 = 1;
-                entityType = OpenSHC::Map::Entities::ET_BALLISTA;
+                entityType = Map::Entities::ET_BALLISTA;
             } else {
-                if ((entityType == OpenSHC::Map::Entities::ET_FIRETHROWER)
-                    || (entityType == OpenSHC::Map::Entities::ET_FIRETHROWER_UNTARGETED)) {
+                if ((entityType == Map::Entities::ET_FIRETHROWER)
+                    || (entityType == Map::Entities::ET_FIRETHROWER_UNTARGETED)) {
                     bVar1 = true;
                 }
                 if (entityType == ((EntityType)0x5c)) {
@@ -118,7 +118,7 @@ namespace Map {
                 } else if (entityType == ((EntityType)0x5d)) {
                     bVar1 = true;
                     this->entityArray[entityID].rng_2 = 2;
-                    entityType = OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT;
+                    entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
                 } else if (entityType == ((EntityType)0x5e)) {
                     bVar1 = true;
                     this->entityArray[entityID].rng_2 = 2;
@@ -132,22 +132,22 @@ namespace Map {
                 }
             }
             switch (entityType) {
-            case OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-            case OpenSHC::Map::Entities::ET_CATAPULT:
-            case OpenSHC::Map::Entities::ET_TREBUCHET:
-            case OpenSHC::Map::Entities::ET_MANGONEL:
-            case OpenSHC::Map::Entities::ET_CROSSBOWARROW:
-            case OpenSHC::Map::Entities::ET_BALLISTA:
-            case OpenSHC::Map::Entities::ET_COW_FLYING:
+            case Map::Entities::ET_ARROW_AND_DEFAULT:
+            case Map::Entities::ET_CATAPULT:
+            case Map::Entities::ET_TREBUCHET:
+            case Map::Entities::ET_MANGONEL:
+            case Map::Entities::ET_CROSSBOWARROW:
+            case Map::Entities::ET_BALLISTA:
+            case Map::Entities::ET_COW_FLYING:
             case ((EntityType)0x18):
             case ((EntityType)0x19):
             case ((EntityType)0x1b):
             case ((EntityType)0x20):
-            case OpenSHC::Map::Entities::ET_SLINGER:
-            case OpenSHC::Map::Entities::ET_FIRETHROWER:
-            case OpenSHC::Map::Entities::ET_FIRETHROWER | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
-            case OpenSHC::Map::Entities::ET_FIRETHROWER_UNTARGETED:
-            case OpenSHC::Map::Entities::ET_FIREBALLISTA:
+            case Map::Entities::ET_SLINGER:
+            case Map::Entities::ET_FIRETHROWER:
+            case Map::Entities::ET_FIRETHROWER | Map::Entities::ET_ARROW_AND_DEFAULT:
+            case Map::Entities::ET_FIRETHROWER_UNTARGETED:
+            case Map::Entities::ET_FIREBALLISTA:
             case ((EntityType)0x5b):
             case ((EntityType)0x5c):
             case ((EntityType)0x5d):
@@ -198,33 +198,33 @@ namespace Map {
             /*
               sets DAT_TempBuildingOrientation
              */
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
                 DAT_DirectionAlgorithmState::ptr)(microX, microY, targetX, targetY);
             this->entityArray[entityID].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             this->entityArray[entityID].colorUnk = 0;
-            if ((((entityType == OpenSHC::Map::Entities::ET_FLAG_1)
-                     || (entityType == OpenSHC::Map::Entities::ET_FLAG_4))
-                    || (entityType == OpenSHC::Map::Entities::ET_FLAG_2))
-                || (entityType == OpenSHC::Map::Entities::ET_FLAG_3)) {
+            if ((((entityType == Map::Entities::ET_FLAG_1)
+                     || (entityType == Map::Entities::ET_FLAG_4))
+                    || (entityType == Map::Entities::ET_FLAG_2))
+                || (entityType == Map::Entities::ET_FLAG_3)) {
                 this->entityArray[entityID].colorUnk = ownerColorUnk;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(
                 entityID, entityType);
             if (this->entityArray[entityID].rng_2 != 0) {
                 this->entityArray[entityID].gmID = 0x91;
             }
             this->entityArray[entityID].field7_0x12 = 0;
             this->entityArray[entityID].unknownAnimationFrameRelated = 0;
-            if (entityType == OpenSHC::Map::Entities::ET_DUST_CLOUD) {
+            if (entityType == Map::Entities::ET_DUST_CLOUD) {
                 if (param_11 == 1) {
                     this->entityArray[entityID].unknownAnimationFrameRelated = 200;
                 }
             LAB_00404efa:
                 this->entityArray[entityID].rng_1 = (int)SEC_RNG::instance.currentNumber2;
                 if (25 < (int)entityID) {
-                    MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                    MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 }
-                if (entityType == OpenSHC::Map::Entities::ET_SEAGULLUnk) {
+                if (entityType == Map::Entities::ET_SEAGULLUnk) {
                     this->entityArray[entityID].rng_2 = SEC_RNG::instance.currentNumber2 % 100 + 120;
                     goto LAB_00404f8c;
                 }
@@ -234,7 +234,7 @@ namespace Map {
                     }
                     goto LAB_00404f8c;
                 }
-                if (entityType != OpenSHC::Map::Entities::ET_HEADS_ON_SPIKES)
+                if (entityType != Map::Entities::ET_HEADS_ON_SPIKES)
                     goto LAB_00404f8c;
                 this->entityArray[entityID].rng_2 = SEC_RNG::instance.currentNumber2 % 500 + 300;
             } else {
@@ -244,28 +244,28 @@ namespace Map {
             }
             this->entityArray[entityID].rng_1 = ownerColorUnk;
         LAB_00404f8c:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::initializeProjectileVelocities, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeProjectileVelocities, this)(
                 entityID, microX, microY, totalHeight, targetX, targetY, targetZUnk);
             if (this->entityArray[entityID].entityType == ((EntityType)0x18)) {
-                this->entityArray[entityID].entityType = OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT;
+                this->entityArray[entityID].entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
             }
             if (this->entityArray[entityID].entityType == ((EntityType)0x19)) {
-                this->entityArray[entityID].entityType = OpenSHC::Map::Entities::ET_CROSSBOWARROW;
+                this->entityArray[entityID].entityType = Map::Entities::ET_CROSSBOWARROW;
             }
             if (this->entityArray[entityID].entityType
-                == (OpenSHC::Map::Entities::ET_FIRETHROWER | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT)) {
-                this->entityArray[entityID].entityType = OpenSHC::Map::Entities::ET_SLINGER;
+                == (Map::Entities::ET_FIRETHROWER | Map::Entities::ET_ARROW_AND_DEFAULT)) {
+                this->entityArray[entityID].entityType = Map::Entities::ET_SLINGER;
             }
-            if (this->entityArray[entityID].entityType == OpenSHC::Map::Entities::ET_FIRETHROWER_UNTARGETED) {
-                this->entityArray[entityID].entityType = OpenSHC::Map::Entities::ET_FIRETHROWER;
+            if (this->entityArray[entityID].entityType == Map::Entities::ET_FIRETHROWER_UNTARGETED) {
+                this->entityArray[entityID].entityType = Map::Entities::ET_FIRETHROWER;
             }
             if (bVar1) {
                 this->entityArray[entityID].gmLookupValue = 1;
             }
             if (entityID != 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
                     entityID);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
                 uVar5 = DAT_CurrentEntityID::instance;
                 DAT_CurrentEntityID::instance = entityID;
                 ((void (*)())DAT_EntityDefinedData::instance
@@ -277,12 +277,12 @@ namespace Map {
             if (pEVar4[-1] == 0)
                 goto LAB_00404c16;
             switch (*pEVar4) {
-            case OpenSHC::Map::Entities::ET_FIRE:
-            case OpenSHC::Map::Entities::ET_DUST_CLOUD:
+            case Map::Entities::ET_FIRE:
+            case Map::Entities::ET_DUST_CLOUD:
             case ((EntityType)0x1b):
             case ((EntityType)0x1e):
             case ((EntityType)0x1f):
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::deleteEntity, this)(entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::deleteEntity, this)(entityID);
                 goto LAB_00404c16;
             default:
                 entityID = entityID + 1;

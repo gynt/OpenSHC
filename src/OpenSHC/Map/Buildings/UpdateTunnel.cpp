@@ -15,9 +15,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::Map::Units::States::UnitStateShort;
+    using DE::SHCDE::eSFX;
+    using Map::Units::States::UnitState;
+    using Map::Units::States::UnitStateShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00417FD0
     void Buildings::UpdateTunnel()
@@ -30,12 +30,12 @@ namespace Map {
         _unitID = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].unitRefID;
         UVar1 = DAT_UnitsState::instance.units[_unitID].state.generic;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIncrement = 1;
-        if (((UVar1 == ((UnitState)3)) || (UVar1 == OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk))
+        if (((UVar1 == ((UnitState)3)) || (UVar1 == Map::Units::States::US_RELOAD_WEAPONUnk))
             || (DAT_UnitsState::instance.units[_unitID].dying != 0)) {
             DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;
             DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 0;
         } else {
-            if (UVar1 != (OpenSHC::Map::Units::States::US_STAND_UPUnk | OpenSHC::Map::Units::States::US_IDLEUnk)) {
+            if (UVar1 != (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)) {
                 DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
                 DAT_BuildingsState::instance.buildings[iVar2].animationFrame
@@ -56,9 +56,9 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar2].animationFrame = iVar3;
             if (((iVar3 == 10) || (iVar3 == 0x19))
                 && (DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0)) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar2].x,
-                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar2].y)), OpenSHC::DE::SHCDE::FX_DIG2);
+                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar2].y)), DE::SHCDE::FX_DIG2);
             }
         }
     }

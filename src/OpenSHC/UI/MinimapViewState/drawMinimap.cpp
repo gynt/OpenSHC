@@ -23,11 +23,11 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeShort;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::Map::Units::States::UnitStateShort;
+    using Game::GameMode;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeShort;
+    using Map::Units::States::UnitState;
+    using Map::Units::States::UnitStateShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B66C0
     void MinimapViewState::drawMinimap(int xPos, int yPos, int width, int height, uint flags, int xOffset, int yOffset,
@@ -96,22 +96,22 @@ namespace UI {
             /*
               this is run when you first? load a map
              */
-            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(0, 100);
-            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(0, 100);
+            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(0, 100);
+            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(0, 100);
             DAT_MiniMapDefinedData::instance.field92_0x2c0 = DAT_TileMapState::instance.mapOrientation;
         }
         if (this->field14_0x38 != 0) {
             if (this->field13_0x34 == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(0, 2);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(0, 2);
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(
                     this->field13_0x34, 2);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::collectCliffEdgeTilesForClimbData, DAT_TileMapState::ptr)();
+                    Map::TileMapState_Func::collectCliffEdgeTilesForClimbData, DAT_TileMapState::ptr)();
                 this->field13_0x34 = this->field13_0x34 + 2;
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(
                     this->field13_0x34, 2);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(
                     this->field13_0x34, 2);
                 this->field13_0x34 = this->field13_0x34 + 2;
                 if (99 < (int)this->field13_0x34) {
@@ -217,7 +217,7 @@ namespace UI {
         local_c = local_c + 1 + iVar14 * 0x191 + xOffset;
         if (param_10 < 1) {
             MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
+                UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
         } else {
             DAT_PencilRenderCore::instance.surfacePtr = (ushort*)this->loadedMiniMap;
             DAT_PencilRenderCore::instance.horizontalByteSize = 400;
@@ -290,13 +290,13 @@ namespace UI {
                                         _owner = (int)_player;
                                     } else {
                                         _unitType = DAT_UnitsState::instance.units[_unitID].unitType;
-                                        if (_unitType == OpenSHC::Map::Units::UT_E_KNIGHT) {
+                                        if (_unitType == Map::Units::UT_E_KNIGHT) {
                                         LAB_004b6ca7:
                                             _owner = (int)DAT_UnitsState::instance.units[_unitID].displayColorPlayerID;
                                         } else {
-                                            if (_unitType == OpenSHC::Map::Units::UT_S_TOWER)
+                                            if (_unitType == Map::Units::UT_S_TOWER)
                                                 goto LAB_004b6cb0;
-                                            if (_unitType == OpenSHC::Map::Units::UT_A_HARCHER)
+                                            if (_unitType == Map::Units::UT_A_HARCHER)
                                                 goto LAB_004b6ca7;
                                             _owner = DAT_UnitsState::instance.units[_unitID].calculatedOwnerPlayerIndex;
                                         }
@@ -305,14 +305,14 @@ namespace UI {
                                         _owner = 1;
                                     }
                                     switch (DAT_UnitsState::instance.units[_unitID].unitType) {
-                                    case OpenSHC::Map::Units::UT_S_CATAPULT:
-                                    case OpenSHC::Map::Units::UT_S_TREBUCHET:
-                                    case OpenSHC::Map::Units::UT_S_MANGONEL:
-                                    case OpenSHC::Map::Units::UT_S_TOWER:
-                                    case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
-                                    case OpenSHC::Map::Units::UT_S_SHIELD:
-                                    case OpenSHC::Map::Units::UT_S_BALLISTA:
-                                    case OpenSHC::Map::Units::UT_S_FBALLISTA:
+                                    case Map::Units::UT_S_CATAPULT:
+                                    case Map::Units::UT_S_TREBUCHET:
+                                    case Map::Units::UT_S_MANGONEL:
+                                    case Map::Units::UT_S_TOWER:
+                                    case Map::Units::UT_S_BATTERINGRAM:
+                                    case Map::Units::UT_S_SHIELD:
+                                    case Map::Units::UT_S_BALLISTA:
+                                    case Map::Units::UT_S_FBALLISTA:
                                         (*(short*)&height)
                                             = DAT_MiniMapDefinedData::instance
                                                   .PlayerColorColors[this->DAT_SomeMiniMapCounterTill4
@@ -325,14 +325,14 @@ namespace UI {
                                                   [DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_owner] * 4]
                                                   [_isRGB16];
                                         break;
-                                    case OpenSHC::Map::Units::UT_COW:
-                                    case OpenSHC::Map::Units::UT_HUNTERDOG:
-                                    case OpenSHC::Map::Units::UT_CHICKEN:
+                                    case Map::Units::UT_COW:
+                                    case Map::Units::UT_HUNTERDOG:
+                                    case Map::Units::UT_CHICKEN:
                                         (*(short*)&height)
                                             = *(ushort*)((int)(DAT_MiniMapDefinedData::instance.PlayerColorColors + 2)
                                                 + _isRGB16 * 2);
                                         break;
-                                    case OpenSHC::Map::Units::UT_A_ASSASSIN:
+                                    case Map::Units::UT_A_ASSASSIN:
                                         (*(short*)&height)
                                             = DAT_MiniMapDefinedData::instance.PlayerColorColors
                                                   [DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_owner] * 4]
@@ -343,10 +343,10 @@ namespace UI {
                                                  && (160 < DAT_UnitsState::instance.units[_unitID]
                                                          .assassinsMicroDistanceToEnemyUnk))
                                                 && (UVar1 = DAT_UnitsState::instance.units[_unitID].state.generic,
-                                                    UVar1 != OpenSHC::Map::Units::States::US_MELEE_ATTACK))
-                                            && ((UVar1 != OpenSHC::Map::Units::States::US_MELEE_ATTACK_WALL
+                                                    UVar1 != Map::Units::States::US_MELEE_ATTACK))
+                                            && ((UVar1 != Map::Units::States::US_MELEE_ATTACK_WALL
                                                 && ((DAT_GameSynchronyState::instance.currentGameMode
-                                                        != OpenSHC::Game::GM_SOLITARY
+                                                        != Game::GM_SOLITARY
                                                     || (DAT_UnitsState::instance.units[_unitID].idleCounterUnk
                                                         < 0x961))))))
                                             goto LAB_004b6eb4;
@@ -451,9 +451,9 @@ namespace UI {
                                             iVar7 != 0))))
                                 && (sVar3 = DAT_UnitsState::instance.units[iVar7].owner, sVar3 != 0)) {
                                 switch (DAT_UnitsState::instance.units[iVar7].unitType) {
-                                case OpenSHC::Map::Units::UT_COW:
-                                case OpenSHC::Map::Units::UT_HUNTERDOG:
-                                case OpenSHC::Map::Units::UT_CHICKEN:
+                                case Map::Units::UT_COW:
+                                case Map::Units::UT_HUNTERDOG:
+                                case Map::Units::UT_CHICKEN:
                                     break;
                                 default:
                                 switchD_004b702c_caseD_35:
@@ -506,16 +506,16 @@ namespace UI {
                                         }
                                     }
                                     break;
-                                case OpenSHC::Map::Units::UT_A_ASSASSIN:
+                                case Map::Units::UT_A_ASSASSIN:
                                     if (((((DAT_GameState::instance.mapAndTime.playerTeams[sVar3]
                                                == DAT_GameState::instance.mapAndTime.playerTeams[iVar14])
                                               || (DAT_UnitsState::instance.units[iVar7].assassinsMicroDistanceToEnemyUnk
                                                   < 160))
                                              || (UVar1 = DAT_UnitsState::instance.units[iVar7].state.generic,
-                                                 UVar1 == OpenSHC::Map::Units::States::US_MELEE_ATTACK))
-                                            || (UVar1 == OpenSHC::Map::Units::States::US_MELEE_ATTACK_WALL))
+                                                 UVar1 == Map::Units::States::US_MELEE_ATTACK))
+                                            || (UVar1 == Map::Units::States::US_MELEE_ATTACK_WALL))
                                         || ((DAT_GameSynchronyState::instance.currentGameMode
-                                                == OpenSHC::Game::GM_SOLITARY
+                                                == Game::GM_SOLITARY
                                             && (0x960 < DAT_UnitsState::instance.units[iVar7].idleCounterUnk))))
                                         goto switchD_004b702c_caseD_35;
                                 }
@@ -549,7 +549,7 @@ namespace UI {
             } else if (yPos + iVar5 <= iVar12 + local_44) {
                 local_44 = (iVar5 - iVar12) + yPos;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 iVar6, iVar12, local_1c + iVar6, iVar12 + local_44, 0xffff);
         }
     }

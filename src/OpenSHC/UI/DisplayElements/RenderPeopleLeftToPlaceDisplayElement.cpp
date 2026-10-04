@@ -11,9 +11,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B0AC0
     void DisplayElements::RenderPeopleLeftToPlaceDisplayElement(int posX, int posY, DWORD elementState)
@@ -32,20 +32,20 @@ namespace UI {
         fontSize = 0x11;
         backgroundColor = 0;
         foregroundColor = 0xc2f0eb;
-        alignment = OpenSHC::Text::TTA_CENTER;
+        alignment = Text::TTA_CENTER;
         xParam = posX;
         yParam = posY;
         /*
           "People available to place:"   added by script: "People Available to Place:"
          */
-        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x2c);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+        textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAPEDIT, 0x2c);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             textAddress, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX,
             blendStrength);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
             2499 - DAT_UnitsState::instance.unitCount,
-            DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + 6 + posX, posY, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
+            DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + 6 + posX, posY, Text::TTA_LEFT, 0xc2f0eb,
             0, 0x11, FALSE, 0);
     }
 

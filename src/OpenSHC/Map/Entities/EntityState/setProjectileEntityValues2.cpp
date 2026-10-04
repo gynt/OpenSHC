@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004011D0
         void EntityState::setProjectileEntityValues2(int entityID, EntityType entityType)
@@ -40,25 +40,25 @@ namespace Map {
             this->entityArray[entityID]._elapsedTimeOrGravityAccumulator
                 = DAT_EntityDefinedData::instance.field43_0x5c4[entityType];
             this->entityArray[entityID].field37_0x5a = (short)DAT_EntityDefinedData::instance.field6_0x270[entityType
-                + (OpenSHC::Map::Entities::ET_MANGONEL | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT)];
+                + (Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT)];
             this->entityArray[entityID].gmLookupValue
                 = (short)DAT_EntityDefinedData::instance.EntityPropertyArray_3[entityType + ((EntityType)0x2e)];
-            switch (entityType - OpenSHC::Map::Entities::ET_FLAG_1) {
-            case OpenSHC::Map::Entities::ET_UNKNOWN:
-            case OpenSHC::Map::Entities::ET_MANGONEL:
-            case OpenSHC::Map::Entities::ET_MANGONEL | OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
+            switch (entityType - Map::Entities::ET_FLAG_1) {
+            case Map::Entities::ET_UNKNOWN:
+            case Map::Entities::ET_MANGONEL:
+            case Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
                 this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
                 break;
-            case OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT:
+            case Map::Entities::ET_ARROW_AND_DEFAULT:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
                 this->entityArray[entityID].originY = this->entityArray[entityID].originY + -2;
                 return;
-            case OpenSHC::Map::Entities::ET_CATAPULT:
+            case Map::Entities::ET_CATAPULT:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
                 this->entityArray[entityID].originY = this->entityArray[entityID].originY + -8;
                 return;
-            case OpenSHC::Map::Entities::ET_TREBUCHET:
+            case Map::Entities::ET_TREBUCHET:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
                 this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
             }

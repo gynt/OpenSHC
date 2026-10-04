@@ -22,7 +22,7 @@ namespace Map {
         destination = this->trees;
         iVar1 = 2000;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 156, '\0', (void*)((int)(destination)));
             destination = destination + 1;
             iVar1 = iVar1 + -1;
@@ -30,7 +30,7 @@ namespace Map {
         destination_00 = this->rocks;
         iVar1 = 4000;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 32, '\0', (void*)((int)(destination_00)));
             destination_00 = destination_00 + 1;
             iVar1 = iVar1 + -1;

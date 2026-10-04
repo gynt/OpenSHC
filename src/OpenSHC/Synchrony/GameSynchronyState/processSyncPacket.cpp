@@ -19,7 +19,7 @@ namespace Synchrony {
         uint _min1IfNegative;
         int _newDiff;
         int _countDown;
-        _player = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
+        _player = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
             this)(this->DPLAYX_ReceivedPlayerID);
         this->matchTimesArray[_player - 1]
             = this->receivedCommandMapTimeInTicks + this->connectionLagInfoArray[_player].average1;

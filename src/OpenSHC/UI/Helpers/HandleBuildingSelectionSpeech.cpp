@@ -16,10 +16,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingTypeShort;
+    using Map::Units::UnitType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00439730
     void Helpers::HandleBuildingSelectionSpeech(int buildingIndexUnk)
@@ -28,22 +28,22 @@ namespace UI {
         if (DAT_BuildingsState::instance.buildings[buildingIndexUnk].owner
             == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
             BuildingTypeShort _buildingType = DAT_BuildingsState::instance.buildings[buildingIndexUnk].buildingType;
-            if (_buildingType == OpenSHC::Map::Buildings::BT_ENGINEERSGUILD) {
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
+            if (_buildingType == Map::Buildings::BT_ENGINEERSGUILD) {
+                MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
                 if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
                     /*
                       "You do not have enough gold for apprentices"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "units_warning1.wav");
                 }
-            } else if (_buildingType == OpenSHC::Map::Buildings::BT_TUNNELERSGUILD) {
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
+            } else if (_buildingType == Map::Buildings::BT_TUNNELERSGUILD) {
+                MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
                 if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
                     /*
                       "You do not have enough gold to train a tunneler"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "units_warning2.wav");
                 }
             } else if (0x27 < (short)_buildingType) {
@@ -52,7 +52,7 @@ namespace UI {
                 /*
                   "Work halted my lord"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     "other_warning12.wav");
             }
             short _currentEmployeeCount = DAT_BuildingsState::instance.buildings[buildingIndexUnk].currentEmployeeCount;
@@ -65,21 +65,21 @@ namespace UI {
                         /*
                           "This building has no labor sire"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "other_warning8.wav");
                     }
                     if (_requiredEmployeeCount == 1) {
                         /*
                           "Needs one more person"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "other_warning10.wav");
                     }
                     if (1 < _requiredEmployeeCount) {
                         /*
                           "Needs two more people"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "other_warning11.wav");
                     }
                 }
@@ -92,16 +92,16 @@ namespace UI {
                         if (DAT_UnitsState::instance
                                 .units[DAT_BuildingsState::instance.buildings[buildingIndexUnk].workerID[_workerIndex]]
                                 .unitType
-                            == OpenSHC::Map::Units::UT_PEASANT) {
+                            == Map::Units::UT_PEASANT) {
                             _noPeasantOnTheWay = false;
                         }
                         _workerIndex = _workerIndex + 1;
                     } while (_workerIndex < _currentEmployeeCount);
-                    if ((!_noPeasantOnTheWay) && (_buildingType != OpenSHC::Map::Buildings::BT_OILSMELTER)) {
+                    if ((!_noPeasantOnTheWay) && (_buildingType != Map::Buildings::BT_OILSMELTER)) {
                         /*
                           "A peasant is on its way"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "other_warning9.wav");
                     }
                 }

@@ -22,9 +22,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::UI::Enums::MenuViewType;
+    using DE::SHCDE::eSFX;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00419420
     void Buildings::UpdateBadBuildingDunkingStool()
@@ -33,15 +33,15 @@ namespace Map {
         short sVar2;
         int buildingID;
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(buildingID, 1);
         if (DAT_GameState::instance.playerDataArray[sVar2].fearFactorLevel < -4) {
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 1;
@@ -58,41 +58,41 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 1;
         }
         if ((((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
-                 && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
-                && (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_DUNKINGSTOOL))
+                 && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
+                && (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_DUNKINGSTOOL))
             && (buildingID == DAT_BuildingsState::instance.menuSelectedBuildingID)) {
             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex == 4) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                    OpenSHC::DE::SHCDE::FX_WH_DUNK);
+                    DE::SHCDE::FX_WH_DUNK);
                 buildingID = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex == 0x22) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                    OpenSHC::DE::SHCDE::FX_WH_BREATH1);
+                    DE::SHCDE::FX_WH_BREATH1);
                 buildingID = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex == 0x48) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                    OpenSHC::DE::SHCDE::FX_WH_BREATH2);
+                    DE::SHCDE::FX_WH_BREATH2);
                 buildingID = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex == 0x68) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                    OpenSHC::DE::SHCDE::FX_WH_LIFT);
+                    DE::SHCDE::FX_WH_LIFT);
                 buildingID = DAT_CurrentBuildingID::instance;
             }
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;

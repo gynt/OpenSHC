@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmID;
+        using IO::Graphics::GmID;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00468FE0
         void PencilRenderCore::drawHeaderBanner(int xPos, int yPos, int width, int unusedUnk)
@@ -32,19 +32,19 @@ namespace UI {
                     if ((iVar3 != 0) && (_imageID = iVar4 + 2, iVar3 != width + -0x18)) {
                         _imageID = iVar4 + 1;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, _imageID,
-                        iVar3 + iVar1, xPos + yPos + 8, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 3, 0);
+                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, _imageID,
+                        iVar3 + iVar1, xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 3, 0);
                 }
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, _x + 0xb,
-                yPos + 0x11, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, _x + 0xb,
+                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
                 (iVar1 - DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x9c] + 0x5a].width) + -3
                     + iVar2,
-                yPos + 0x11, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
+                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
         }
 
     }

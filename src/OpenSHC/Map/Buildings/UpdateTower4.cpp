@@ -28,7 +28,7 @@ namespace Map {
         int iVar8;
         uint uVar9;
         int local_20[8];
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar5 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 1;
@@ -55,16 +55,16 @@ namespace Map {
         *piVar3 = *piVar3 + 1;
         if (0x27 < DAT_BuildingsState::instance.buildings[iVar5].buildingProgress) {
             DAT_BuildingsState::instance.buildings[iVar5].buildingProgress = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeBuildingEntranceFlagsForOrientations,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeBuildingEntranceFlagsForOrientations,
                 DAT_BuildingsState::ptr)(iVar5);
         }
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
+        iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
         if (iVar1 != 0) {
             DAT_BuildingsState::instance.buildings[iVar5].field21_0x3c = 0x51;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
         }
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
+        iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
         if (iVar1 != 0) {
             DAT_BuildingsState::instance.buildings[iVar5].field23_0x44 = 0x5a;
@@ -115,7 +115,7 @@ namespace Map {
         if (DAT_BuildingsState::instance.field34_0x18e074 != 0) {
             do {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar1, 6);
+                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar1, 6);
                 iVar5 = DAT_ViewportRenderState::instance
                             .translationMatrix
                                 [(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y
@@ -149,7 +149,7 @@ namespace Map {
             sVar4 = 0;
             do {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar5, 6);
+                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar5, 6);
                 iVar8 = DAT_CurrentBuildingID::instance;
                 if (DAT_TileMapState::instance
                         .UnitLayer[DAT_ViewportRenderState::instance

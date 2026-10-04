@@ -10,7 +10,7 @@
 namespace OpenSHC {
 namespace Game {
 
-    using OpenSHC::Commands::GameCommandType;
+    using Commands::GameCommandType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00429710
     void Skirmish::SetupSkirmishBalanceAndOrIntensity()
@@ -179,8 +179,8 @@ namespace Game {
                 = DAT_RenderingDefinedData::instance
                       .SkirmishIntensityRelatedArray2[DAT_GameSynchronyState::instance.skirmishTechLevel + 10][9];
         }
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-            OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
         DAT_GameSynchronyState::instance.field235_0x1072e8 = -1;
         DAT_GameSynchronyState::instance.field236_0x1072ec = -1;
     }

@@ -15,7 +15,7 @@ namespace Map {
     {
         DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance.units[unitID].tile]
             = DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance.units[unitID].tile] | 8388608;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::createClimbData, DAT_PathFindingState::ptr)(
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::createClimbData, DAT_PathFindingState::ptr)(
             1, 0, unitID, 0, 0);
         DAT_UnitsState::instance.units[unitID].laddermanIsInPosition = 1;
     }

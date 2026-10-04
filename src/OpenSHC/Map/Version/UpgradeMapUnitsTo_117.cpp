@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::Unit;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B1F0
     void Version::UpgradeMapUnitsTo_117()
@@ -23,13 +23,13 @@ namespace Map {
         psVar1 = &DAT_UnitsState::instance.units[1];
         DAT_CurrentUnitSlotID::instance = 2500;
         do {
-            if (psVar1->logicalState == OpenSHC::Map::Units::ULS_NORMAL) {
+            if (psVar1->logicalState == Map::Units::ULS_NORMAL) {
                 psVar1->movementSpeed
                     = (short)DAT_UnitPropertiesDefinedData::instance.UNIT_MOVEMENT_SPEED_ARRAY[(short)psVar1->unitType];
                 if (psVar1->facingDirection == 0xf) {
                     psVar1->facingDirection = 4;
                 }
-                if (psVar1->unitType != OpenSHC::Map::Units::UT_A_ASSASSIN) {
+                if (psVar1->unitType != Map::Units::UT_A_ASSASSIN) {
                     psVar1->field306_0x418 = 0;
                 }
             }

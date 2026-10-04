@@ -10,7 +10,7 @@ namespace Map {
         EntityState* EntityState::Constructor_EntityState()
         {
             this->classConstructionTime = timeGetTime();
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, this)();
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, this)();
             this->fireCount = 0;
             return this;
         }

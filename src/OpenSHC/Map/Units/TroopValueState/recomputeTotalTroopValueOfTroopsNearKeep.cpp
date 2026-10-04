@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051FA70
         void TroopValueState::recomputeTotalTroopValueOfTroopsNearKeep()
@@ -39,23 +39,23 @@ namespace Map {
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 ptrUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((ptrUnit->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE) && (ptrUnit->dying == 0))
+                    if ((((ptrUnit->logicalState != Map::Units::ULS_INVISIBLE) && (ptrUnit->dying == 0))
                             && (ptrUnit->isSelectable_OR_matchTime != 0))
                         && (((UVar2 = ptrUnit->unitType,
-                                 UVar2 != OpenSHC::Map::Units::UT_E_ENGINEER
-                                     && (UVar2 != OpenSHC::Map::Units::UT_TUNNELER))
-                            && (UVar2 != OpenSHC::Map::Units::UT_E_LADDER)))) {
+                                 UVar2 != Map::Units::UT_E_ENGINEER
+                                     && (UVar2 != Map::Units::UT_TUNNELER))
+                            && (UVar2 != Map::Units::UT_E_LADDER)))) {
                         _playerID = ptrUnit->owner;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(
                             DAT_GameState::instance.playerDataArray[_playerID].campground.xEntry,
                             DAT_GameState::instance.playerDataArray[_playerID].campground.yEntry,
                             (int)((int)(ptrUnit->x)), (int)((int)(ptrUnit->y)));
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < 40) {
                             _troopValue
-                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
-                                    this)((OpenSHC::Map::Units::UnitType)(short)ptrUnit->unitType);
+                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
+                                    this)((Map::Units::UnitType)(short)ptrUnit->unitType);
                             piVar1 = this->attackInfo.playerTotalTroopValueOfTroopsNearKeep + _playerID;
                             *piVar1 = *piVar1 + _troopValue;
                         }

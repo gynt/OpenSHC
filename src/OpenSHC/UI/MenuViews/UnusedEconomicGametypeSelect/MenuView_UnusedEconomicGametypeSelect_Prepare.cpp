@@ -17,11 +17,11 @@ namespace UI {
         {
             DWORD _currentTime;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_economics.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_economics2.tgx");
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             _currentTime = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x168].stateTransitionTimeBaseUnk_0x18
                 = _currentTime - 0x12c0;

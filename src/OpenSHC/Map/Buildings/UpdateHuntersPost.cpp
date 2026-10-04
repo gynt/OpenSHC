@@ -26,13 +26,13 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
+    using Map::Units::UnitType;
+    using Map::Units::States::UnitState;
+    using WindowsHelper::Enums::BOOLEnum;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00423370
     void Buildings::UpdateHuntersPost()
@@ -49,9 +49,9 @@ namespace Map {
         int iVar10;
         bVar7 = false;
         bVar8 = false;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar10 = DAT_CurrentBuildingID::instance;
         iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[0];
@@ -65,9 +65,9 @@ namespace Map {
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerUID[1]))
             && ((UVar3 = DAT_UnitsState::instance.units[iVar9].unitType,
-                UVar3 == OpenSHC::Map::Units::UT_BURNINGMAN
-                    || ((UVar3 == OpenSHC::Map::Units::UT_BURNING_ANIMAL_BIG
-                        || (UVar3 == OpenSHC::Map::Units::UT_BURNING_ANIMAL_SMALL)))))) {
+                UVar3 == Map::Units::UT_BURNINGMAN
+                    || ((UVar3 == Map::Units::UT_BURNING_ANIMAL_BIG
+                        || (UVar3 == Map::Units::UT_BURNING_ANIMAL_SMALL)))))) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field185_0x264 = 400;
         }
         sVar4 = DAT_BuildingsState::instance.buildings[iVar10].field185_0x264;
@@ -80,26 +80,26 @@ namespace Map {
         if (((DAT_BuildingsState::instance.buildings[iVar10].numberOfAnimals == 0) && (bVar8))
             && (DAT_BuildingsState::instance.buildings[iVar10].field185_0x264 == 0)) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Buildings::BuildingsState_Func::buildingIsAccessible, DAT_BuildingsState::ptr)(iVar10, 0);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,
+                Map::Buildings::BuildingsState_Func::buildingIsAccessible, DAT_BuildingsState::ptr)(iVar10, 0);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,
                 DAT_BuildingsState::ptr)(DAT_CurrentBuildingID::instance, 2, FALSE);
             sVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryX;
             iVar10 = DAT_CurrentBuildingID::instance;
             if (((sVar4 != 0)
                     && (sVar5 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryY,
                         sVar5 != 0))
-                && (iVar9 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                && (iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner, 0,
                         (int)((int)(sVar4 * 8)), (int)((int)(sVar5 * 8)),
                         (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                 .terrainHeightUnk)),
-                        OpenSHC::Map::Units::UT_HUNTERDOG),
+                        Map::Units::UT_HUNTERDOG),
                     iVar10 = DAT_CurrentBuildingID::instance, iVar9 != 0)) {
                 sVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryY;
                 DAT_UnitsState::instance.units[iVar9].targetX_2
                     = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryX;
                 DAT_UnitsState::instance.units[iVar9].targetY_2 = sVar4;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,
                     DAT_BuildingsState::ptr)(iVar10, 1, FALSE);
                 iVar10 = DAT_CurrentBuildingID::instance;
                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingUID
@@ -108,7 +108,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar10].workerID[1] = (short)iVar9;
                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingID_1 = (short)iVar10;
                 DAT_UnitsState::instance.units[iVar9].state.generic
-                    = OpenSHC::Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
+                    = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                 DAT_UnitsState::instance.units[iVar9].substate = -1;
                 DAT_UnitsState::instance.units[iVar9].facingDirection = 4;
                 DAT_UnitsState::instance.units[iVar9].disappearFadeAlphaCountdown = 0x20;
@@ -153,16 +153,16 @@ namespace Map {
                 sVar4 = DAT_BuildingsState::instance.buildings[iVar10].animationIndex;
                 if ((char)DAT_BuildingDefinedData::instance.field52_0x4b68[sVar4] < '\x01') {
                     bVar7 = true;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::addResourceToStockpile,
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::addResourceToStockpile,
                         DAT_BuildingsState::ptr)(iVar10, DAT_BuildingsState::instance.buildings[iVar10].uid,
-                        OpenSHC::Game::Resources::RT_MEAT, 1, 6, 1);
+                        Game::Resources::RT_MEAT, 1, 6, 1);
                     iVar10 = DAT_CurrentBuildingID::instance;
                 } else {
                     if ((DAT_BuildingsState::instance.buildings[iVar10].animationActive != 0) && (sVar4 == 4)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[iVar10].x,
                             (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar10].y)),
-                            OpenSHC::DE::SHCDE::FX_HUNTER_CUT);
+                            DE::SHCDE::FX_HUNTER_CUT);
                         iVar10 = DAT_CurrentBuildingID::instance;
                     }
                     DAT_BuildingsState::instance.buildings[iVar10].animationFrame
@@ -226,7 +226,7 @@ namespace Map {
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9 + 2) == 0) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9 + 2) = 0;
         }
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9) = 0;
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;

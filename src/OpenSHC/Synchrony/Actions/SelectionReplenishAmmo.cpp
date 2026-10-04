@@ -16,10 +16,10 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using Game::Resources::ResourceType;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00465F90
     short* Actions::SelectionReplenishAmmo(int playerID, int param_2)
@@ -37,13 +37,13 @@ namespace Synchrony {
             return _currStone;
         }
         do {
-            _catapultID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
+            _catapultID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
                 DAT_TribesState::ptr)(param_2, _unitSelectionIndex);
             _unitSelectionIndex = _unitSelectionIndex + 1;
-            if (((DAT_UnitsState::instance.units[_catapultID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+            if (((DAT_UnitsState::instance.units[_catapultID].logicalState == Map::Units::ULS_NORMAL)
                     && (DAT_UnitsState::instance.units[_catapultID].dying == 0))
                 && ((UVar2 = DAT_UnitsState::instance.units[_catapultID].unitType,
-                    UVar2 == OpenSHC::Map::Units::UT_S_CATAPULT || (UVar2 == OpenSHC::Map::Units::UT_S_TREBUCHET)))) {
+                    UVar2 == Map::Units::UT_S_CATAPULT || (UVar2 == Map::Units::UT_S_TREBUCHET)))) {
                 _amount = -(int)DAT_UnitsState::instance.units[_catapultID].stoneAmmunition;
                 _missingRocks = _amount + 20;
                 if (0 < _missingRocks) {
@@ -54,14 +54,14 @@ namespace Synchrony {
                             return _currStone;
                         }
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss, DAT_BuildingsState::ptr)(
-                            playerID, OpenSHC::Game::Resources::RT_STONE, (int)((int)(_currStone)), 0);
+                            Map::Buildings::BuildingsState_Func::processResourceLoss, DAT_BuildingsState::ptr)(
+                            playerID, Game::Resources::RT_STONE, (int)((int)(_currStone)), 0);
                         psVar1 = &DAT_UnitsState::instance.units[_catapultID].stoneAmmunition;
                         *psVar1 = *psVar1 + (short)_currStone * 2;
                         return &DAT_UnitsState::instance.units[_catapultID].stoneAmmunition;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss,
-                        DAT_BuildingsState::ptr)(playerID, OpenSHC::Game::Resources::RT_STONE, _amount, 0);
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
+                        DAT_BuildingsState::ptr)(playerID, Game::Resources::RT_STONE, _amount, 0);
                     psVar1 = &DAT_UnitsState::instance.units[_catapultID].stoneAmmunition;
                     *psVar1 = *psVar1 + (short)_missingRocks;
                 }

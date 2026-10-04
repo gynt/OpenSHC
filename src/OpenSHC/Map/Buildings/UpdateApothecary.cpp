@@ -20,8 +20,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Units::States::UnitState;
+    using Game::GameMode;
+    using Map::Units::States::UnitState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00415A80
     void Buildings::UpdateApothecary()
@@ -31,8 +31,8 @@ namespace Map {
         int iVar3;
         iVar2 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar2);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar2);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar2 = DAT_CurrentBuildingID::instance;
         iVar3 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[0];
@@ -45,7 +45,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
         }
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar2);
+            Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar2);
         DAT_BuildingsState::instance.buildings[iVar2].animationIncrement = 1;
         if ((char)DAT_BuildingDefinedData::instance
                 .field171_0x7bd4[DAT_BuildingsState::instance.buildings[iVar2].animationIndex]
@@ -62,13 +62,13 @@ namespace Map {
                   .field171_0x7bd4[DAT_BuildingsState::instance.buildings[iVar2].animationIndex];
         if (DAT_BuildingsState::instance.buildings[iVar2].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[iVar2].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 iVar2);
             iVar2 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
-        if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar2].displayOwnerFlag = 1;
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar2].ownerFlagFrame;
             *piVar1 = *piVar1 + 1;

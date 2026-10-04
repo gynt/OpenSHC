@@ -13,11 +13,11 @@ namespace Synchrony {
     {
         ChatEvent* _chatEventPtr;
         int _chatEventCounter;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0xfa, '\0', (void*)((int)(this->receivedChatMessage)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             5000, '\0', (void*)((int)(this->DAT_ChatMessageArray)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             5000, '\0', (void*)((int)(this->DAT_ChatMessageSubjectPlayerNameArray)));
         this->DAT_ChatMessageArrayIndex = 0;
         _chatEventPtr = &this->DAT_ChatEventArray[0];

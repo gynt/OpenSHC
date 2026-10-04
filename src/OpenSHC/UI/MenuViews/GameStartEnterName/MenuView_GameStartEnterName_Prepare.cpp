@@ -35,12 +35,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::Audio::SFX::NameSpeechPair;
-        using OpenSHC::Audio::SFX::SpeechEffectID;
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::NameSpeechPair;
+        using Audio::SFX::SpeechEffectID;
+        using DE::SHCDE::eTextSections;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         /*
           Maybe this functions or part is always passed through on game start, which also triggers the name   call.
@@ -59,10 +59,10 @@ namespace UI {
             char _playerLordNameUnk[252];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_10c;
-            MACRO_CALL(OpenSHC::OS_Func::__time64)(&local_10c);
-            MACRO_CALL(OpenSHC::OS_Func::_localtime)(&local_10c);
+            MACRO_CALL(OS_Func::__time64)(&local_10c);
+            MACRO_CALL(OS_Func::_localtime)(&local_10c);
             pcVar2 = MACRO_CALL_MEMBER(
-                OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
             pcVar3 = _playerLordNameUnk;
             do {
                 cVar1 = *pcVar2;
@@ -73,22 +73,22 @@ namespace UI {
             _callableLordNameIndex = 0;
             _callableLordNamePtr = DAT_SpeechDefinedData::instance.LordNameToCall;
             do {
-                _lordNameCallable = MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::isLordNameCallable,
+                _lordNameCallable = MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::isLordNameCallable,
                     DAT_LowLevelMemory::ptr)(_playerLordNameUnk, (char*)((int)(_callableLordNamePtr->name)));
                 if (_lordNameCallable != FALSE) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
+                        Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
                         DAT_SpeechDefinedData::instance.LordNameToCall[_callableLordNameIndex].source, 1);
                     goto LAB_004405eb;
                 }
                 _callableLordNamePtr = _callableLordNamePtr + 1;
                 _callableLordNameIndex = _callableLordNameIndex + 1;
             } while ((int)_callableLordNamePtr < 0xab5708);
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
-                OpenSHC::Audio::SFX::SEID_GENERAL_STARTGAME);
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
+                Audio::SFX::SEID_GENERAL_STARTGAME);
         LAB_004405eb:
             pcVar2 = MACRO_CALL_MEMBER(
-                OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
             pcVar3 = pcVar2 + 1;
             do {
                 cVar1 = *pcVar2;
@@ -97,31 +97,31 @@ namespace UI {
             if (pcVar2 != pcVar3) {
                 DAT_GameCore::instance.unknownFlag_0x118 = TRUE;
                 DAT_GameCore::instance.unknownTime_0x11c = timeGetTime();
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::processMenuViewSwitch, DAT_GameCore::ptr)();
-                MACRO_CALL(OpenSHC::UI::MenuViews::MainMenu_Func::MenuView_MainMenu_Prepare)();
-                MACRO_CALL(OpenSHC::UI::MenuViews::MainMenu_Func::MenuView_MainMenu_DoInitial)();
-                MACRO_CALL(OpenSHC::UI::MenuViews::MainMenu_Func::MenuView_MainMenu_DoEveryFrame)();
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAIN_MENU, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::processMenuViewSwitch, DAT_GameCore::ptr)();
+                MACRO_CALL(UI::MenuViews::MainMenu_Func::MenuView_MainMenu_Prepare)();
+                MACRO_CALL(UI::MenuViews::MainMenu_Func::MenuView_MainMenu_DoInitial)();
+                MACRO_CALL(UI::MenuViews::MainMenu_Func::MenuView_MainMenu_DoEveryFrame)();
                 DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = FALSE;
                 DAT_MenuView_TriggerPrepare::instance = FALSE;
                 ;
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_GameCore::instance.unknownFlag_0x118 = FALSE;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0);
             /*
               added by script: "Lord Crusader"
              */
-            pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0x30);
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+            pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0x30);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
                 pcVar3);
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, FALSE);
             ;
         }
 

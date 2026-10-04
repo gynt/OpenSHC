@@ -9,7 +9,7 @@ namespace OpenSHC {
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D630
 void Meta::Destructor_0059d630()
 {
-    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::freeMemoryAt, DAT_SFXState::ptr)();
+    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::freeMemoryAt, DAT_SFXState::ptr)();
 }
 
 }

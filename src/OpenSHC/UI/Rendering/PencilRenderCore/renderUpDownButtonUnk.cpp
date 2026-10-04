@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmID;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using IO::Graphics::GmID;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00469290
         void PencilRenderCore::renderUpDownButtonUnk(int isDownButtonUnk, int blendStrengthUnk)
@@ -27,10 +27,10 @@ namespace UI {
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 _imageID = _imageID + 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, _imageID,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, _imageID,
                 (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 2, blendStrengthUnk);
+                IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 2, blendStrengthUnk);
         }
 
     }

@@ -12,20 +12,20 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandScheduling;
-    using OpenSHC::Commands::GameCommandState;
+    using Commands::GameCommandScheduling;
+    using Commands::GameCommandState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004800E0
     int GameSynchronyState::sendLongerDataSuchAsResync(GameCommandType commandCategory)
     {
         int iVar1;
         this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0x4ec, '\0', (void*)((int)(&this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters)));
-        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = OpenSHC::Commands::GCS_UNPROCESSED;
+        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_UNPROCESSED;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk = this->DPLAYX_PlayerHandle;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType = (undefined1)commandCategory;
-        this->DAT_CommandActionPlan = OpenSHC::Commands::GCS_SCHEDULE_AND_SEND;
+        this->DAT_CommandActionPlan = Commands::GCS_SCHEDULE_AND_SEND;
         this->DAT_PlayerIDReceiver = 0;
         this->DAT_CommandParameterOffset = 0;
         ((void (*)())DAT_ProtocolDefinedData::instance
@@ -33,19 +33,19 @@ namespace Synchrony {
         this->DAT_CommandParameterOffset = 0;
         iVar1 = this->DAT_CommandSize;
         if ((200 < this->DAT_CommandSize)
-            && ((undefined1)commandCategory != OpenSHC::Commands::GCT_SEND_RESYNC_LOGICALTILEMAP)) {
+            && ((undefined1)commandCategory != Commands::GCT_SEND_RESYNC_LOGICALTILEMAP)) {
             this->DAT_Packet.packet.commandProtocol = 0x7d;
             this->DAT_Packet.prefixedPacket.packet.commandProtocol = (undefined1)commandCategory;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 this->DAT_GameCommandArray + this->DAT_CurrentGameCommandID,
                 (void*)((int)(((int)&this->DAT_Packet + 2))));
             iVar1 = MACRO_CALL_MEMBER(
-                OpenSHC::Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
+                Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
                 this->DAT_CommandSize, (char*)((int)(this->DAT_GameCommandFixedParameterLocation)),
                 (void*)((int)(((int)&this->DAT_Packet + 5))));
             iVar1 = iVar1 + 1;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
             this->DAT_CurrentGameCommandID);
         return iVar1;
     }

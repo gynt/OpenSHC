@@ -9,7 +9,7 @@ namespace OpenSHC {
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D640
 void Meta::Destructor_AlphaAndButtonSurface()
 {
-    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::freeMemory, AlphaAndButtonSurfaceObj::ptr)();
+    MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::freeMemory, AlphaAndButtonSurfaceObj::ptr)();
 }
 
 }

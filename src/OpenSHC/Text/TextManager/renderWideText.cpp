@@ -23,7 +23,7 @@ namespace Text {
                 WVar1 = *pWVar2;
                 pWVar2 = pWVar2 + 1;
             } while (WVar1 != L'\0');
-            int _textWidth = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getWidthOfWideText,
+            int _textWidth = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfWideText,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 wideText, (int)pWVar2 - (int)(wideText + 1) >> 1);
             if ((int)alignment < 1) {
@@ -41,7 +41,7 @@ namespace Text {
                 WVar1 = *pWVar2;
                 pWVar2 = pWVar2 + 1;
             } while (WVar1 != L'\0');
-            MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderWideText,
+            MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderWideText,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 wideText, (int)pWVar2 - (int)(wideText + 1) >> 1, _x, yPos, color, blendStrength);
         }

@@ -15,11 +15,11 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004F2220
     void LandscapeState::removeRock(int param_1)
     {
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::clearRockFootprintFlags, DAT_TileMapState::ptr)(param_1);
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::clearRockFootprintFlags, DAT_TileMapState::ptr)(param_1);
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
             DAT_PathFindingState::ptr)((int)(short)this->rocks[param_1].y, (int)((int)(this->rocks[param_1].tile)));
         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0x20, '\0', (void*)((int)(this->rocks + param_1)));
     }
 

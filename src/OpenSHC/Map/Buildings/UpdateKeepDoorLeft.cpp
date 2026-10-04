@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004189A0
     void Buildings::UpdateKeepDoorLeft()
@@ -25,11 +25,11 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].orientation
             = DAT_BuildingsState::instance.buildings[sVar1].orientation;
         BVar2 = DAT_BuildingsState::instance.buildings[sVar1].buildingType;
-        if (BVar2 == OpenSHC::Map::Buildings::BT_MANORHOUSE) {
+        if (BVar2 == Map::Buildings::BT_MANORHOUSE) {
             DAT_BuildingsState::instance.buildings[buildingID].gfxOffset = 0x531;
             DAT_BuildingsState::instance.buildings[buildingID].spriteID = 0x524;
         } else {
-            if ((BVar2 != OpenSHC::Map::Buildings::BT_STONEKEEP) && (BVar2 != OpenSHC::Map::Buildings::BT_STRONGHOLD))
+            if ((BVar2 != Map::Buildings::BT_STONEKEEP) && (BVar2 != Map::Buildings::BT_STRONGHOLD))
                 goto LAB_00418a21;
             DAT_BuildingsState::instance.buildings[buildingID].gfxOffset = 0x52c;
             DAT_BuildingsState::instance.buildings[buildingID].spriteID = 0x522;
@@ -38,7 +38,7 @@ namespace Map {
     LAB_00418a21:
         if (DAT_BuildingsState::instance.buildings[buildingID].spriteID
             != (int)DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = (short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spriteID;

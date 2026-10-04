@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00405DA0
         void EntityState::spawnProjectileImpactDebris(int param_1)
@@ -33,7 +33,7 @@ namespace Map {
             iVar3 = 0;
             uVar4 = microY & 7;
             bVar1 = MACRO_CALL_MEMBER(
-                OpenSHC::Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep, DAT_TileMapState::ptr)(
+                Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep, DAT_TileMapState::ptr)(
                 (int)(microX + ((int)microX >> 0x1f & 7U)) >> 3, (int)((int)((microY + (microY >> 0x1f & 7U)) >> 3)));
             switch (this->entityArray[param_1].orientation) {
             case 0x3c:
@@ -320,7 +320,7 @@ namespace Map {
             }
             if (uVar4 != 0xfffffffb && -1 < (int)(uVar4 + 5)) {
                 do {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
                         (int)((int)(microX)), (int)((int)(microY)), (int)((int)(this->entityArray[param_1].height)),
                         iVar6, iVar3, 8, ((EntityType)0x1b), 0);
                     iVar5 = iVar5 + 1;
@@ -331,7 +331,7 @@ namespace Map {
                 } while (iVar5 < (int)(uVar4 + 5));
             }
             iVar3 = (int)this->entityArray[param_1].height;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
                 (int)((int)(microX)), (int)((int)(microY)), iVar3, (int)((int)(microX + 1)), (int)((int)(microY + 1)),
                 iVar3, ((EntityType)0x1e), 0);
         }

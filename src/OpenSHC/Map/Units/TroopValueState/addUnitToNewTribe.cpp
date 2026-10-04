@@ -16,10 +16,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using Map::MapType2;
+        using Map::Units::SomeTribeBehaviorType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051BC70
         void TroopValueState::addUnitToNewTribe(
@@ -27,26 +27,26 @@ namespace Map {
         {
             int _tribe;
             int _playerID;
-            if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                 _playerID = (int)(char)this->attackInfo.attackWavePlayerIDArray[attackWave];
                 if (_playerID == 0) {
                     _playerID = 2;
                 }
-                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                    && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
+                if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                    && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                     _playerID = 2;
                 }
-                _tribe = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(
+                _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, DAT_TribesState::ptr)(
                     _playerID, 0);
-                DAT_TribesState::instance.tribes[_tribe].tribeBehaviorType = OpenSHC::Map::Units::STBT_6;
+                DAT_TribesState::instance.tribes[_tribe].tribeBehaviorType = Map::Units::STBT_6;
             } else {
                 _tribe = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
+                    Map::Units::TribesState_Func::createTribeForPlayer, DAT_TribesState::ptr)(playerID);
             }
             DAT_TribesState::instance.tribes[_tribe].tribeType = (undefined2)tribeType;
             DAT_TribesState::instance.tribes[_tribe].attackWave = (short)attackWave;
             DAT_TribesState::instance.tribes[_tribe].attackInfo_someCounter1 = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
                 unitID, _tribe);
         }
 

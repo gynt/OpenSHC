@@ -21,8 +21,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B1AC0
         void Roundtable::MenuModalRenderFunction_Roundtable(int x, int y, int width, int height)
@@ -36,10 +36,10 @@ namespace UI {
             int local_40[16];
             iVar1 = y;
             if (DAT_MouseState::instance.rightClickStart != 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
                 DAT_TextureRenderCoreObject::ptr)(2, x + 8, y + 8);
             local_40[4] = 0x18e;
             local_40[8] = 0x18e;
@@ -86,7 +86,7 @@ namespace UI {
                         gfxIndex = iVar4 + 2 + iVar2 * 8;
                     }
                 }
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + x, piVar3[1] + iVar1, blendStrengthUnk);
                 iVar4 = iVar4 + 1;
                 piVar3 = piVar3 + 2;
@@ -97,7 +97,7 @@ namespace UI {
             DAT_ButtonH::instance = 0x28;
             if (DAT_00df4288::instance != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
+                    UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
                     DAT_BottomLeftTextDisplayState::ptr)(0);
                 DAT_00df4288::instance = 0;
             }

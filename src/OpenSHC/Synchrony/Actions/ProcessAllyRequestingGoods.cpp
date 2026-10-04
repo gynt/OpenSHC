@@ -18,8 +18,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Game::Resources::ResourceType;
+    using DE::SHCDE::eTextSections;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AD7C0
     void Actions::ProcessAllyRequestingGoods(int askedPlayerID, int param_2, int amount, int askee)
@@ -32,8 +32,8 @@ namespace Synchrony {
         char* pcVar4;
         bool bVar5;
         ResourceType _resourceType;
-        _resourceType = (OpenSHC::Game::Resources::ResourceType)(param_2 + OpenSHC::Game::Resources::RT_LOGS);
-        if (_resourceType == OpenSHC::Game::Resources::RT_GOLD) {
+        _resourceType = (Game::Resources::ResourceType)(param_2 + Game::Resources::RT_LOGS);
+        if (_resourceType == Game::Resources::RT_GOLD) {
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[askedPlayerID] != -1) {
                 bVar5 = askedPlayerID == DAT_GameSynchronyState::instance.currentPlayerSlotID;
                 DAT_GameState::instance.playerDataArray[askedPlayerID].requestedGoodsArray1Unk[askee]
@@ -43,8 +43,8 @@ namespace Synchrony {
                     /*
                       added by script: "is requesting goods from you"
                      */
-                    pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x48);
+                    pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x48);
                     pcVar4 = DAT_GameSynchronyState::instance.receivedChatMessage;
                     do {
                         cVar2 = *pcVar3;
@@ -52,23 +52,23 @@ namespace Synchrony {
                         pcVar3 = pcVar3 + 1;
                         pcVar4 = pcVar4 + 1;
                     } while (cVar2 != '\0');
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                         DAT_GameSynchronyState::ptr)(askee, 0);
                 }
             }
         } else if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[askedPlayerID] == -1) {
-            MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::playGoodsSentBikFromPlayerToPlayer, DAT_AICState::ptr)(
+            MACRO_CALL_MEMBER(AI::AICState_Func::playGoodsSentBikFromPlayerToPlayer, DAT_AICState::ptr)(
                 askedPlayerID, askee);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceGain,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceGain,
                 DAT_BuildingsState::ptr)(askee, _resourceType, amount);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processResourceLoss,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
                 DAT_BuildingsState::ptr)(askedPlayerID, _resourceType, amount, 0);
-            _gold1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSellPrice, DAT_GameState::ptr)(
+            _gold1 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSellPrice, DAT_GameState::ptr)(
                 askedPlayerID, (int)((int)(_resourceType)), amount);
             piVar1 = DAT_GameSynchronyState::instance.finalResults.finalGoodsRecieved + askee;
             *piVar1 = *piVar1 + _gold1;
             piVar1 = DAT_GameSynchronyState::instance.finalResults.finalGoodsSent + askedPlayerID;
-            _gold2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getSellPrice, DAT_GameState::ptr)(
+            _gold2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSellPrice, DAT_GameState::ptr)(
                 askedPlayerID, (int)((int)(_resourceType)), amount);
             *piVar1 = *piVar1 + _gold2;
         } else {
@@ -79,8 +79,8 @@ namespace Synchrony {
                 /*
                   added by script: "is requesting goods from you"
                  */
-                pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x48);
+                pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x48);
                 pcVar4 = DAT_GameSynchronyState::instance.receivedChatMessage;
                 do {
                     cVar2 = *pcVar3;
@@ -88,7 +88,7 @@ namespace Synchrony {
                     pcVar3 = pcVar3 + 1;
                     pcVar4 = pcVar4 + 1;
                 } while (cVar2 != '\0');
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                     DAT_GameSynchronyState::ptr)(askee, 0);
             }
         }

@@ -7,8 +7,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       Resumable chunked resync sender. Picks up from somePacketSubTypeUnk (cases 0-15) and resumes   sending resync
@@ -52,8 +52,8 @@ namespace Synchrony {
             if (*local_10 == 0) {
                 this->DAT_GameCommandParam1 = 0x3f;
                 this->DAT_GameCommandParam0 = iVar2;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                    OpenSHC::Commands::GCT_LEAVE_GAME);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                    Commands::GCT_LEAVE_GAME);
                 *local_10 = 1;
             }
             iVar2 = iVar2 + 1;
@@ -82,8 +82,8 @@ namespace Synchrony {
                                         != *piVar5)) {
                                     this->DAT_GameCommandParam0 = iVar8;
                                     this->DAT_GameCommandParam1 = iVar4;
-                                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                        OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA1);
+                                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                        Commands::GCT_SEND_RESYNC_TILEMAPDATA1);
                                     this->currentPacketTotalSize
                                         = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                     local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -91,8 +91,8 @@ namespace Synchrony {
                                         this->field71_0xbb4 = iVar4 + 1;
                                         this->somePacketSubTypeUnk = 0xd;
                                         this->field70_0xbb0 = iVar8;
-                                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(OpenSHC::Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                            this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
                                     }
                                     break;
                                 }
@@ -123,8 +123,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_HeatMaps[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_HOST_SHARE_HEATMAP);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_HOST_SHARE_HEATMAP);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -132,8 +132,8 @@ namespace Synchrony {
                                 this->somePacketSubTypeUnk = 0xf;
                             LAB_0048e84b:
                                 this->field70_0xbb0 = iVar8 + 1;
-                                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                    OpenSHC::Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
                             }
                             break;
                         }
@@ -144,8 +144,8 @@ namespace Synchrony {
                     piVar7 = piVar7 + 1;
                 } while (iVar8 < 0x50);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                OpenSHC::Commands::GCT_CHECK_GAME_SYNCUnk);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                Commands::GCT_CHECK_GAME_SYNCUnk);
             this->syncStatus = 3;
             return;
         default:
@@ -161,8 +161,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Units[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_UNIT);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_UNIT);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -191,8 +191,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Buildings[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_BUILDING);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_BUILDING);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -221,8 +221,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Trees[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_TREE);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_TREE);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -251,8 +251,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Tribes[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_UNITSELECTION);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_UNITSELECTION);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -281,8 +281,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_PlayerDatas[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_PLAYERDATA);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_PLAYERDATA);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -311,8 +311,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Section1023[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_UNKNOWN);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -341,8 +341,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Entities[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_ENTITY);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_ENTITY);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -374,8 +374,8 @@ namespace Synchrony {
                             && (paiVar1 = this->HASH_Moats + iVar4, iVar4 = this->currentPlayerSlotID,
                                 (*paiVar1)[iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_MOAT);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_MOAT);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -405,8 +405,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_ClimbData[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_CLIMB_DATA);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_CLIMB_DATA);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -435,8 +435,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_PitchDitches[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_PITCH_DITCH);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_PITCH_DITCH);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -465,8 +465,8 @@ namespace Synchrony {
                         piVar5 = piVar5 + 1;
                         if ((*piVar5 != -1) && (this->HASH_Unknown2[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN2);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_SEND_RESYNC_UNKNOWN2);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -501,8 +501,8 @@ namespace Synchrony {
                                     != *piVar6)) {
                                 this->DAT_GameCommandParam0 = 0;
                                 this->DAT_GameCommandParam1 = iVar8;
-                                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                    OpenSHC::Commands::GCT_SEND_RESYNC_LOGICALTILEMAP);
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_SEND_RESYNC_LOGICALTILEMAP);
                                 this->currentPacketTotalSize
                                     = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                 local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -541,8 +541,8 @@ namespace Synchrony {
                                             != *piVar5)) {
                                         this->DAT_GameCommandParam0 = iVar8;
                                         this->DAT_GameCommandParam1 = iVar4;
-                                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                            this)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
                                         this->currentPacketTotalSize
                                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -550,8 +550,8 @@ namespace Synchrony {
                                             this->field71_0xbb4 = iVar4 + 1;
                                             this->somePacketSubTypeUnk = 0xc;
                                             this->field70_0xbb0 = iVar8;
-                                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                                this)(OpenSHC::Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                                this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
                                         }
                                         break;
                                     }
@@ -584,8 +584,8 @@ namespace Synchrony {
                     piVar5 = piVar5 + 1;
                     if ((*piVar5 != -1) && (this->HASH_AIVS[this->currentPlayerSlotID][iVar8] != *piVar6)) {
                         this->DAT_GameCommandParam0 = iVar8;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                            OpenSHC::Commands::GCT_HOST_SHARE_AIV);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                            Commands::GCT_HOST_SHARE_AIV);
                         this->currentPacketTotalSize
                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;

@@ -17,10 +17,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047CF50
         void ChooseNetworkServiceProvider::MenuItemRenderFunction_ChooseNetworkServiceProvider_YourIpDisplay(
@@ -42,24 +42,24 @@ namespace UI {
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
                 color = 0xccfaff;
-                alignment = OpenSHC::Text::TTA_LEFT;
+                alignment = Text::TTA_LEFT;
                 yParam = DAT_ButtonY::instance + 5;
                 xParam = DAT_ButtonX::instance;
                 /*
                   added by script: "Your IP:"
                  */
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x24);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x24);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 if (DAT_GameSynchronyState::instance.lanOrWan == FALSE) {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d",
+                    MACRO_CALL(OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d",
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b4);
                 } else {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d  /  %d.%d.%d.%d",
+                    MACRO_CALL(OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d  /  %d.%d.%d.%d",
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,
@@ -69,9 +69,9 @@ namespace UI {
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b3,
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b4);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     local_68, (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance + 5)),
-                    OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                    Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
             };
         }
 

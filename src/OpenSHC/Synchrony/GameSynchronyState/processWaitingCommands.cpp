@@ -9,8 +9,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandScheduling;
-    using OpenSHC::Commands::GameCommandState;
+    using Commands::GameCommandScheduling;
+    using Commands::GameCommandState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004892F0
     void GameSynchronyState::processWaitingCommands()
@@ -18,7 +18,7 @@ namespace Synchrony {
         int _gameCommandID;
         int (*paiVar1)[2];
         _gameCommandID = MACRO_CALL_MEMBER(
-            OpenSHC::Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
+            Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
         if ((_gameCommandID != 0) && (_gameCommandID = 0, 0 < this->MBR_someIndex)) {
             paiVar1 = this->MBR_SelectedGameCommands;
             do {
@@ -27,7 +27,7 @@ namespace Synchrony {
                  */
                 this->DAT_CurrentGameCommandID = (*paiVar1)[0];
                 this->protocolInvokerPlayerID = MACRO_CALL_MEMBER(
-                    OpenSHC::Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+                    Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
                     this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk);
                 this->DAT_GameCommandParam5 = 0;
                 this->DAT_GameCommandParam4 = 0;
@@ -35,13 +35,13 @@ namespace Synchrony {
                 this->DAT_GameCommandParam2 = 0;
                 this->DAT_GameCommandParam1 = 0;
                 this->DAT_GameCommandParam0 = 0;
-                this->DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
+                this->DAT_CommandActionPlan = Commands::GCS_EXECUTE;
                 this->DAT_CommandParameterOffset = 0;
                 ((void (*)())DAT_ProtocolDefinedData::instance
                         .commandFunctions[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType
                             + 0x15])();
                 _gameCommandID = _gameCommandID + 1;
-                this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = OpenSHC::Commands::GCS_PROCESSED;
+                this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_PROCESSED;
                 paiVar1 = paiVar1 + 1;
             } while (_gameCommandID < this->MBR_someIndex);
         }

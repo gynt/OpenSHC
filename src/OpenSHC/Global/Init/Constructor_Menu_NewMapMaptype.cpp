@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AC20
     void Init::Constructor_Menu_NewMapMaptype()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_NewMapMaptype::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_NewMapMaptype::ptr)(
             DAT_RenderingDefinedData::instance.MenuItems_NewMapMaptype);
     }
 

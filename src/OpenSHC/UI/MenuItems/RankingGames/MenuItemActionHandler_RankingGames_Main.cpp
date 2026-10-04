@@ -28,12 +28,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Game::Skirmish::SkirmishStatistics;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
+        using Game::Skirmish::SkirmishStatistics;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9730
         void RankingGames::MenuItemActionHandler_RankingGames_Main(int param_1, ...)
@@ -64,9 +64,9 @@ namespace UI {
                         pSVar4 = (SkirmishStatistics*)(pSVar4->names[0] + 4);
                         pSVar6 = (SkirmishStatistics*)(pSVar6->names[0] + 4);
                     }
-                    DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
+                    DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
                     DAT_GameSynchronyState::instance.currentGameMode
-                        = OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER;
+                        = Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER;
                     if (iVar3 == 0) {
                         iVar1 = DAT_SkMasters2DataArray::instance[iVar1].lordType;
                         pcVar5 = "lose_screen_crusader.tgx";
@@ -88,23 +88,23 @@ namespace UI {
                         }
                     }
                     DAT_GameCore::instance.skipStoreSKMasters = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
                 }
                 if ((0x27 < param_1)
                     && (iVar1 = DAT_00ed3120::instance + -0x28 + param_1, iVar1 < DAT_00eb9b60::instance)) {
                     DAT_00ed2788::instance = INT_ARRAY_00eb96d8::instance[iVar1];
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DELETE_GAME_RECORD, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_DELETE_GAME_RECORD, FALSE);
                 }
                 if (param_1 == 0xb) {
                     if (DAT_CurrentMenuID_3::instance != 0x39) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_LOBBY_MENU, 0);
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_LOBBY_MENU, 0);
                         DAT_GameSynchronyState::instance.currentGameMode = DAT_StoredGameMode::instance;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_CRUSADE_MAP, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_CRUSADE_MAP, 0);
                     DAT_GameSynchronyState::instance.currentGameMode = DAT_StoredGameMode::instance;
                 }
                 if (param_1 - 0x14U < 10) {
@@ -114,7 +114,7 @@ namespace UI {
                         DAT_MissionDefinedData::instance.descending = 1;
                         DAT_MissionDefinedData::instance.sortColumn = param_1 + -0x13;
                     }
-                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
+                    MACRO_CALL(Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
                     iVar1 = DAT_00eb9b60::instance + -8;
                     if (iVar1 < 0) {
                         iVar1 = 0;
@@ -129,7 +129,7 @@ namespace UI {
                     if (param_1 != 0x1f) {}
                     DAT_00ed3124::instance = -(uint)(DAT_00ed3124::instance != 2) & 2;
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
+                MACRO_CALL(Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
                 iVar1 = DAT_00eb9b60::instance + -8;
                 if (iVar1 < 0) {
                     iVar1 = 0;

@@ -27,22 +27,22 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::SoundEffectID;
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Text::GameLanguage;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::SoundEffectID;
+        using DE::SHCDE::eTextSections;
+        using Text::GameLanguage;
+        using Text::TextAlignment;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F140
         void NewMapMaptype::MenuItemRenderFunction_NewMapMaptype_Buttons(int param_1, ...)
         {
             int fontSize;
             int iVar1;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 if (param_1 == 7) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
@@ -52,47 +52,47 @@ namespace UI {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 } else {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_CurrentButtonPictureInGm::instance
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                               .pictureInGm_0x4;
                     if (INT_00b95abc::instance != param_1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                            (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
-                                | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                            (Audio::SFX::SoundEffectID)(Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
+                                | Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
                 }
                 iVar1 = 0x13;
                 fontSize = 0x11;
-                if (DAT_TextManagerObject::instance.gameLanguage - OpenSHC::Text::GL_FRENCH < 3) {
+                if (DAT_TextManagerObject::instance.gameLanguage - Text::GL_FRENCH < 3) {
                     fontSize = 0x12;
                     iVar1 = 0x14;
                 }
                 if (param_1 == 1) {
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_MAP_TITLES, 1, (int)((int)(DAT_ButtonX::instance + 0x1a)),
-                        DAT_ButtonY::instance + iVar1, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_MAP_TITLES, 1, (int)((int)(DAT_ButtonX::instance + 0x1a)),
+                        DAT_ButtonY::instance + iVar1, Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
                 }
                 if (param_1 == 2) {
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_SHC_STANDALONE, 2, (int)((int)(DAT_ButtonX::instance + 0x1a)),
-                        DAT_ButtonY::instance + iVar1, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_SHC_STANDALONE, 2, (int)((int)(DAT_ButtonX::instance + 0x1a)),
+                        DAT_ButtonY::instance + iVar1, Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
                 }
                 if (param_1 == 3) {
                     /*
                       added by script: "New Crusader Map"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_MAP_TITLES, 2, (int)((int)(DAT_ButtonX::instance + 0x1a)),
-                        DAT_ButtonY::instance + iVar1, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_MAP_TITLES, 2, (int)((int)(DAT_ButtonX::instance + 0x1a)),
+                        DAT_ButtonY::instance + iVar1, Text::TTA_LEFT, 0xc2f0eb, 0, fontSize, FALSE);
                 }
             }
         }

@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Rendering::Enums::DirectDrawStatus;
+using Rendering::Enums::DirectDrawStatus;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0046F4F0
 DirectDrawStatus Global::DetectDXVersionByLoadingDDRAW()
@@ -21,7 +21,7 @@ DirectDrawStatus Global::DetectDXVersionByLoadingDDRAW()
     IDirectDraw* _testInterface;
     hLibModule = LoadLibraryA("DDRAW.DLL");
     if (hLibModule == (HINSTANCE__*)0x0) {
-        return OpenSHC::Rendering::Enums::DD7_NOT_LOADED;
+        return Rendering::Enums::DD7_NOT_LOADED;
     }
     _funcAddress = GetProcAddress(hLibModule, "DirectDrawCreate");
     if (_funcAddress != (FARPROC)0x0) {
@@ -32,12 +32,12 @@ DirectDrawStatus Global::DetectDXVersionByLoadingDDRAW()
             if (-1 < _foundDirectDraw) {
                 _testInterface->Release();
                 FreeLibrary(hLibModule);
-                return OpenSHC::Rendering::Enums::DD7_LOADED;
+                return Rendering::Enums::DD7_LOADED;
             }
         }
     }
     FreeLibrary(hLibModule);
-    return OpenSHC::Rendering::Enums::DD7_NOT_LOADED;
+    return Rendering::Enums::DD7_NOT_LOADED;
 }
 
 }

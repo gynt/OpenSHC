@@ -46,12 +46,12 @@ namespace UI {
             color = DAT_00eb9b3c::instance;
             fontSize = DAT_00eb9b40::instance;
             otherBlendValueUnk = (long)(param);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderSomeSpecificTextUnk, DAT_TextManagerObject::ptr)(
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderSomeSpecificTextUnk, DAT_TextManagerObject::ptr)(
                 INT_00eb9b20::instance, otherBlendValueUnk, xPos, yPos, color, fontSize);
             return;
         }
     LAB_004db3f9:
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             DAT_ArrayOfStoredMenuStrings::instance[DAT_00eb9b2c::instance],
             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + DAT_00eb9b30::instance,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + DAT_00eb9b34::instance, DAT_00eb9b38::instance,

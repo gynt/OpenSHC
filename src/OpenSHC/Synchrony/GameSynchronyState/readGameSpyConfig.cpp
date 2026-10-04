@@ -44,10 +44,10 @@ namespace Synchrony {
                     pcVar1 = pcVar3 + 1;
                 } while (pcVar3[1] != '\0');
                 strcpy(pcVar3 + 1, "aphex.exe");
-                _File = MACRO_CALL(OpenSHC::OS_Func::_fopen)(this->shellExecuteTarget, "rb");
+                _File = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, "rb");
                 if (_File != (FILE*)0x0) {
                     this->field32_0x510 = 1;
-                    MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
+                    MACRO_CALL(OS_Func::_fclose)(_File);
                 }
             }
         }

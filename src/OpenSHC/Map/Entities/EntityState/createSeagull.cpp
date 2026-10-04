@@ -14,7 +14,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00406650
         int EntityState::createSeagull(int x, int y)
@@ -40,7 +40,7 @@ namespace Map {
                 if (pEVar1[1].field3_0x8 == 0)
                     break;
                 if (pEVar1[1].entityUID != this->entityArray[destination->entityID].uid) {
-                    MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                    MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                         100, '\0', (void*)((int)(destination)));
                 }
                 if (_id >= 99) {
@@ -60,12 +60,12 @@ namespace Map {
             this->seagullArray[_id].y_2 = _y;
             this->seagullArray[_id].angle = SEC_RNG::instance.currentNumber2 % 0x168;
             this->seagullArray[_id].angle_2 = (short)(*(char*)((char*)&SEC_RNG::instance.currentNumber2 + 1)) % 0x168;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             uVar5 = (int)SEC_RNG::instance.currentNumber2 % 16;
             this->seagullArray[_id].unknownCounter_0x16 = (short)uVar5 + 0x18;
             this->seagullArray[_id].numberBetween60And100
                 = (short)(*(char*)((char*)&SEC_RNG::instance.currentNumber2 + 1)) % 0x28 + 0x3c;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             if ((SEC_RNG::instance.currentNumber2 & 1U) == 0) {
                 this->seagullArray[_id].someAngle = -1;
             } else {
@@ -94,15 +94,15 @@ namespace Map {
             this->seagullArray[_id].rngMax799_countdown = 400;
             this->seagullArray[_id].x_3 = _x;
             this->seagullArray[_id].y_3 = _y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
                 _id, (int)((int)(_x2)), (int)((int)(_y2)), (int)((int)(_x)), (int)((int)(_y)));
             this->seagullArray[_id].field25_0x34 = 5;
-            _entityID = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
-                _id, 0, 0, x, y, 0xfa, iVar3 + x, iVar4 + y, 0xfa, OpenSHC::Map::Entities::ET_SEAGULLUnk, 0);
+            _entityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
+                _id, 0, 0, x, y, 0xfa, iVar3 + x, iVar4 + y, 0xfa, Map::Entities::ET_SEAGULLUnk, 0);
             this->seagullArray[_id].entityID = (short)_entityID;
             this->seagullArray[_id].entityUID = this->entityArray[(short)_entityID].uid;
             this->seagullArray[_id].randomNumber = SEC_RNG::instance.currentNumber2;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             return _id;
         }
 

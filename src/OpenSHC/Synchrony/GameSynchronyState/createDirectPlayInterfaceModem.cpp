@@ -63,7 +63,7 @@ namespace Synchrony {
             if (-1 < HVar3) {
                 this->DPLAYX_LOBBY
                     ->EnumAddress((LPDPENUMADDRESSCALLBACK)MACRO_CALL(
-                                      OpenSHC::Synchrony_Func::DirectPlayModemRelated_MemoryAllocationCallback),
+                                      Synchrony_Func::DirectPlayModemRelated_MemoryAllocationCallback),
                         _allocateMemLock, _playerAddress, (void*)0x0);
             }
             _refIDirectPlay->Release();

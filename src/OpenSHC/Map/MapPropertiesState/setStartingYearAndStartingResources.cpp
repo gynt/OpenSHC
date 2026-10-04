@@ -13,7 +13,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004BE590
     void MapPropertiesState::setStartingYearAndStartingResources()
@@ -105,9 +105,9 @@ namespace Map {
         DAT_MapPropertiesState::instance.SEC_Section1067.field4_0x10 = 0;
         DAT_MapPropertiesState::instance.SEC_Section1067.field5_0x14 = 0;
         DAT_MapPropertiesState::instance.SEC_StartingPopularity = 100;
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
+        MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             local_10);
         DAT_MapPropertiesState::instance.field48_0x13560 = -1;
         DAT_MapPropertiesState::instance.field47_0x1355c = 0;
@@ -120,8 +120,8 @@ namespace Map {
             psVar2[1] = 1;
             psVar2 = psVar2 + 2;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::commitBuildingAvailability, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::commitBuildingAvailability, this)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
         ;
     }
 

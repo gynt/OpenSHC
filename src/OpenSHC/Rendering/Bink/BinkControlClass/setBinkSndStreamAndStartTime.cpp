@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Rendering {
     namespace Bink {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00408E70
         void BinkControlClass::setBinkSndStreamAndStartTime(int binkObjIndex, SHC_SoundStream soundStreamIndexUnk)

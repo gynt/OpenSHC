@@ -16,18 +16,18 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00425500
         void HistoricCampaignSelect::MenuView_HistoricCampaignSelect_Prepare()
         {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat2.tgx");
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x163].stateTransitionTimeBaseUnk_0x18
                 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 - 0x12c0;
@@ -37,8 +37,8 @@ namespace UI {
                 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 - 0xc80;
             INT_00b95abc::instance = -1;
             DAT_UnknownGFXIndex::instance = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition3::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
         }
 
     }

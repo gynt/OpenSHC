@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using WindowsHelper::Enums::BOOLEnum;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0047E160
 BOOLEnum __stdcall Synchrony::DirectPlayModemRelated_MemoryAllocationCallback(
@@ -18,7 +18,7 @@ BOOLEnum __stdcall Synchrony::DirectPlayModemRelated_MemoryAllocationCallback(
     BOOLEnum BVar2;
     char* pcVar3;
     char* pcVar4;
-    BVar2 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)((GUID*)param_1, (GUID*)GUID_DPAID_Modem::ptr);
+    BVar2 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)param_1, (GUID*)GUID_DPAID_Modem::ptr);
     if (BVar2 != FALSE) {
         pcVar3 = param_3;
         do {
@@ -35,7 +35,7 @@ BOOLEnum __stdcall Synchrony::DirectPlayModemRelated_MemoryAllocationCallback(
                     cVar1 = *pcVar3;
                     pcVar3 = pcVar3 + 1;
                 } while (cVar1 != '\0');
-                pcVar3 = (char*)(MACRO_CALL(OpenSHC::OS_Func::_malloc)((size_t)(pcVar3 + (2 - (int)(param_3 + 1)))));
+                pcVar3 = (char*)(MACRO_CALL(OS_Func::_malloc)((size_t)(pcVar3 + (2 - (int)(param_3 + 1)))));
                 DAT_GameSynchronyState::instance
                     .stringPointerArray[DAT_GameSynchronyState::instance.modemScrollbarCount] = pcVar3;
                 pcVar3 = DAT_GameSynchronyState::instance

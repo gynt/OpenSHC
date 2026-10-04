@@ -13,10 +13,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::States::UnitState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using Map::Units::States::UnitState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005270F0
         void TribesState::computeTribePercentages(int tribeID)
@@ -54,11 +54,11 @@ namespace Map {
             this->tribes[tribeID].unitType = DAT_UnitsState::instance.units[_percentage].unitType;
             if (0 < sVar1) {
                 do {
-                    _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
+                    _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getSpecificUnitFromTribe, this)(
                         tribeID, iVar4);
                     iVar4 = iVar4 + 1;
-                    if (DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL) {
-                        BVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::isComputerManagedNonPeasant,
+                    if (DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL) {
+                        BVar3 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::isComputerManagedNonPeasant,
                             DAT_UnitsState::ptr)(_unitID);
                         if (BVar3 == FALSE) {
                             if (DAT_UnitsState::instance.units[_unitID].dying == 0) {
@@ -66,22 +66,22 @@ namespace Map {
                                     _countMoving = _countMoving + 1;
                                 }
                                 UVar2 = DAT_UnitsState::instance.units[_unitID].state.generic;
-                                if (UVar2 == OpenSHC::Map::Units::States::US_MELEE_ATTACK) {
+                                if (UVar2 == Map::Units::States::US_MELEE_ATTACK) {
                                     _countAttackingUnk = _countAttackingUnk + 1;
                                 }
-                                if (UVar2 == OpenSHC::Map::Units::States::US_MELEE_ATTACK_WALL) {
+                                if (UVar2 == Map::Units::States::US_MELEE_ATTACK_WALL) {
                                     _countAttackingUnk = _countAttackingUnk + 1;
                                 }
                                 if (UVar2
-                                    == (OpenSHC::Map::Units::States::US_DEATH_02
-                                        | OpenSHC::Map::Units::States::US_STAND_UPUnk
-                                        | OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk)) {
+                                    == (Map::Units::States::US_DEATH_02
+                                        | Map::Units::States::US_STAND_UPUnk
+                                        | Map::Units::States::US_RELOAD_WEAPONUnk)) {
                                     local_8 = local_8 + 1;
                                 }
                                 if ((DAT_UnitsState::instance.units[_unitID].field316_0x430 != 0)
-                                    && (((UVar2 == OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk
-                                             || (UVar2 == OpenSHC::Map::Units::States::US_AIM_WEAPONUnk))
-                                        || (UVar2 == OpenSHC::Map::Units::States::US_FIRE_WEAPONUnk)))) {
+                                    && (((UVar2 == Map::Units::States::US_RELOAD_WEAPONUnk
+                                             || (UVar2 == Map::Units::States::US_AIM_WEAPONUnk))
+                                        || (UVar2 == Map::Units::States::US_FIRE_WEAPONUnk)))) {
                                     _countRangeUnk = _countRangeUnk + 1;
                                 }
                                 _unitType = this->tribes[tribeID].unitType;
@@ -97,7 +97,7 @@ namespace Map {
                                 _countDying = _countDying + 1;
                             }
                         } else {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromTribe, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromTribe, this)(
                                 _unitID, tribeID);
                         }
                     }

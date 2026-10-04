@@ -8,7 +8,7 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00474250
     void TextManager::renderTextToScreen(char* textAddress, int xParam, int yParam, TextAlignment alignment,
@@ -27,7 +27,7 @@ namespace Text {
                 _char = *_textLengthHelper;
                 _textLengthHelper = _textLengthHelper + 1;
             } while (_char != '\0');
-            _textWidth = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getWidthOfText,
+            _textWidth = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfText,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 textAddress, (int)_textLengthHelper - (int)(textAddress + 1));
             if ((int)alignment < 1) {
@@ -45,7 +45,7 @@ namespace Text {
                 _char = *_textLengthHelper;
                 _textLengthHelper = _textLengthHelper + 1;
             } while (_char != '\0');
-            MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderText,
+            MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderText,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 textAddress, (int)_textLengthHelper - (int)(textAddress + 1), xPos, yParam, color, blendStrength);
         }

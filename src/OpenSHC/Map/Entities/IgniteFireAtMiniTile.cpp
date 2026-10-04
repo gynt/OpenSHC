@@ -18,7 +18,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Entities::EntityType;
+    using Map::Entities::EntityType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004052E0
     uint Entities::IgniteFireAtMiniTile(
@@ -34,7 +34,7 @@ namespace Map {
         int microX;
         short _buildingID;
         _randomJitter = (uint)SEC_RNG::instance.currentNumber2;
-        MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+        MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
         microX = miniTileX + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_randomJitter & 0x3f][0];
         microY = miniTileY + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_randomJitter & 0x3f][1];
         _x = microX / 8;
@@ -47,33 +47,33 @@ namespace Map {
             _buildingID = DAT_TileMapState::instance.BuildingLayer[_tile];
             if (_buildingID != 0) {
                 switch (DAT_BuildingsState::instance.buildings[_buildingID].buildingType) {
-                case OpenSHC::Map::Buildings::BT_GATEHOUSELARGE:
-                case OpenSHC::Map::Buildings::BT_GATEHOUSESMALL:
-                case OpenSHC::Map::Buildings::BT_TOWER1:
-                case OpenSHC::Map::Buildings::BT_TOWER2:
-                case OpenSHC::Map::Buildings::BT_TOWER3:
-                case OpenSHC::Map::Buildings::BT_TOWER4:
-                case OpenSHC::Map::Buildings::BT_TOWER5:
+                case Map::Buildings::BT_GATEHOUSELARGE:
+                case Map::Buildings::BT_GATEHOUSESMALL:
+                case Map::Buildings::BT_TOWER1:
+                case Map::Buildings::BT_TOWER2:
+                case Map::Buildings::BT_TOWER3:
+                case Map::Buildings::BT_TOWER4:
+                case Map::Buildings::BT_TOWER5:
                     goto switchD_0040539c_caseD_2d;
                 }
             }
             _entityID = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
+                Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
             if (_entityID == 0) {
                 if (_buildingID != 0) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Buildings::BuildingsState_Func::lightUpBuilding, DAT_BuildingsState::ptr)(
+                        Map::Buildings::BuildingsState_Func::lightUpBuilding, DAT_BuildingsState::ptr)(
                         (int)DAT_TileMapState::instance.BuildingLayer[_tile], playerID, fireIntensity);
                 }
                 if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x1000U) != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
                         _tile, playerID);
                 }
-                _entityID_2 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                _entityID_2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, tileHeightMin8, 0, 0, 0,
-                    OpenSHC::Map::Entities::ET_FIRE, 0);
+                    Map::Entities::ET_FIRE, 0);
                 if ((2 < two) && ((DAT_TileMapState::instance.RandomLayer[_tile] & 3) == 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, tileHeightMin8, 0, 0,
                         0, (EntityType)((int)(26)), 0);
                 }

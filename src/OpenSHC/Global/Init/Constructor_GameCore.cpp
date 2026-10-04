@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C8A0
     void Init::Constructor_GameCore()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::Constructor_GameCore, DAT_GameCore::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_GameCoreAndRendering));
+        MACRO_CALL_MEMBER(Game::GameCore_Func::Constructor_GameCore, DAT_GameCore::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_GameCoreAndRendering));
         return;
     }
 

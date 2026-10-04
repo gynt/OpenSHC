@@ -21,7 +21,7 @@ namespace Text {
             _currentChar = *_textRunPtr;
             _textRunPtr = _textRunPtr + 1;
         } while (_currentChar != '\0');
-        _width = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::getWidthOfText,
+        _width = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfText,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(text, (int)_textRunPtr - (int)(text + 1));
         return _width;
     }

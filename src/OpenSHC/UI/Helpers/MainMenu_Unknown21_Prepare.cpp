@@ -15,8 +15,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00427180
     void Helpers::MainMenu_Unknown21_Prepare()
@@ -24,15 +24,15 @@ namespace UI {
         Menu* pMVar1;
         DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
             DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
-        MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+        MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
         DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
         DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
         pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
         (DAT_MenuHandlerState::instance.currentMenu)->xPosition = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
         pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
             ((MenuModalType)0x14), FALSE);
     }
 

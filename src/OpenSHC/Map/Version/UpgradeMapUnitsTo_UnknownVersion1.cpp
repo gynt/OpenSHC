@@ -13,9 +13,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::Unit;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B3E0
     void Version::UpgradeMapUnitsTo_UnknownVersion1()
@@ -24,8 +24,8 @@ namespace Map {
         psVar1 = &DAT_UnitsState::instance.units[1];
         DAT_CurrentUnitSlotID::instance = 2500;
         do {
-            if (psVar1->logicalState == OpenSHC::Map::Units::ULS_NORMAL) {
-                if (psVar1->unitType != OpenSHC::Map::Units::UT_CHILD) {
+            if (psVar1->logicalState == Map::Units::ULS_NORMAL) {
+                if (psVar1->unitType != Map::Units::UT_CHILD) {
                     psVar1->spriteID
                         = (short)DAT_UnitPropertiesDefinedData::instance.SPRITE_ID[(short)psVar1->unitType];
                 }

@@ -13,8 +13,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Map::Units::UnitType;
+    using DE::SHCDE::eSFX;
+    using Map::Units::UnitType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00466430
     void Actions::ProcessReleaseDogs(int param_1, int buildingID, int buildingUID)
@@ -44,9 +44,9 @@ namespace Synchrony {
             } while (iVar9 != 0);
             iVar9 = (short)uVar2 * 8;
             iVar5 = (short)uVar1 * 8;
-            iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
+            iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5, iVar9, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
-                OpenSHC::Map::Units::UT_CAGEDOG);
+                Map::Units::UT_CAGEDOG);
             if (iVar7 != 0) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
@@ -55,9 +55,9 @@ namespace Synchrony {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingUID = iVar3;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitUID1 = iVar4;
             }
-            iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
+            iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5 + 8, iVar9, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
-                OpenSHC::Map::Units::UT_CAGEDOG);
+                Map::Units::UT_CAGEDOG);
             if (iVar7 != 0) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
@@ -66,9 +66,9 @@ namespace Synchrony {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingUID = iVar3;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitUID2 = iVar4;
             }
-            iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
+            iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5, iVar9 + 8, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
-                OpenSHC::Map::Units::UT_CAGEDOG);
+                Map::Units::UT_CAGEDOG);
             if (iVar7 != 0) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
@@ -77,9 +77,9 @@ namespace Synchrony {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingUID = iVar3;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitUID3 = iVar4;
             }
-            iVar9 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
+            iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5 + 8, iVar9 + 8, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
-                OpenSHC::Map::Units::UT_CAGEDOG);
+                Map::Units::UT_CAGEDOG);
             if (iVar9 != 0) {
                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingID_1 = (short)buildingID;
                 iVar5 = DAT_BuildingsState::instance.buildings[buildingID].uid;
@@ -88,10 +88,10 @@ namespace Synchrony {
                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingUID = iVar5;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitUID4 = iVar7;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                 (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                OpenSHC::DE::SHCDE::FX_DOG_CAGE);
+                DE::SHCDE::FX_DOG_CAGE);
         }
     }
 

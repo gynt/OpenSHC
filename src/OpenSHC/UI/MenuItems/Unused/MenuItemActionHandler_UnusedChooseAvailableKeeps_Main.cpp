@@ -12,27 +12,27 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00430050
         void Unused::MenuItemActionHandler_UnusedChooseAvailableKeeps_Main(int param_1, ...)
         {
             uint* puVar1;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 switch (param_1) {
                 case 7:
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                     return;
                 case 0xb:
                     if (DAT_GameCore::instance.mapU2MiddleBytes[4] + DAT_GameCore::instance.mapU2MiddleBytes[3]
                             + DAT_GameCore::instance.mapU2MiddleBytes[2] + DAT_GameCore::instance.mapU2MiddleBytes[1]
                             + DAT_GameCore::instance.mapU2MiddleBytes[0]
                         != 0) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
                         DAT_GameCore::instance.field115_0x1d98 = 1;
                     }
                     break;

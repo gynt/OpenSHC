@@ -10,7 +10,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Map::Units::UnitType;
+    using Map::Units::UnitType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00464EF0
     void Actions::ProcessRecruitUnit(int playerID, int unitType, undefined4 recruitmentBuildingID)
@@ -19,20 +19,20 @@ namespace Synchrony {
                 + DAT_GameState::instance.playerDataArray[playerID].armySize
             < DAT_GameState::instance.mapAndTime.armySizeLimit) {
             if (unitType == 0x1e) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_E_ENGINEER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_E_ENGINEER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].engineersGuild.id)), playerID,
                     0);
             }
             if (unitType == 5) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_TUNNELER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_TUNNELER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].tunnelersGuild.id)), playerID,
                     0);
             }
             if (unitType == 0x1d) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_E_LADDER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_E_LADDER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].engineersGuild.id)), playerID,
                     0);
             }
@@ -40,52 +40,52 @@ namespace Synchrony {
                 /*
                   monk
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_E_MONK, (undefined4)((int)(recruitmentBuildingID)), playerID, 0);
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_E_MONK, (undefined4)((int)(recruitmentBuildingID)), playerID, 0);
             }
             if (unitType == 0x46) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_ARCHER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_ARCHER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x47) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_SLAVE,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_SLAVE,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x48) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_SLINGER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_SLINGER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x49) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_ASSASSIN,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_ASSASSIN,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x4a) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_HARCHER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_HARCHER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x4b) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_SWORDSMAN,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_SWORDSMAN,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
             if (unitType == 0x4c) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                    OpenSHC::Map::Units::UT_A_FIRETHROWER,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                    Map::Units::UT_A_FIRETHROWER,
                     (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].mercenaryPost.id)), playerID,
                     0);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::euroRecruit, DAT_UnitsState::ptr)(unitType,
+            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::euroRecruit, DAT_UnitsState::ptr)(unitType,
                 (undefined4)((int)(DAT_GameState::instance.playerDataArray[playerID].barracks.id)), playerID, 0);
         }
     }

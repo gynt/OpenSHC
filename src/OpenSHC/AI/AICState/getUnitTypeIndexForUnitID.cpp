@@ -13,11 +13,11 @@
 namespace OpenSHC {
 namespace AI {
 
-    using OpenSHC::AI::AIType;
-    using OpenSHC::AI::AIVUnitType;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeInt;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using AI::AIType;
+    using AI::AIVUnitType;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeInt;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CC390
     AIVUnitType AICState::getUnitTypeIndexForUnitID(int unitID, int param_2)
@@ -28,29 +28,29 @@ namespace AI {
         UnitTypeShort _unitType;
         _unitType = DAT_UnitsState::instance.units[unitID].unitType;
         _playerID = DAT_UnitsState::instance.units[unitID].owner;
-        if (_unitType == OpenSHC::Map::Units::UT_PEASANT) {
+        if (_unitType == Map::Units::UT_PEASANT) {
             _unitType = DAT_UnitsState::instance.units[unitID].unitTypeToChangeInto;
         }
         _unitType2 = (UnitTypeInt)(short)_unitType;
-        if ((((DAT_GameState::instance.playerDataArray[_playerID].aiType != OpenSHC::AI::AIT_CALIPH) && (param_2 != 0))
+        if ((((DAT_GameState::instance.playerDataArray[_playerID].aiType != AI::AIT_CALIPH) && (param_2 != 0))
                 && (0 < DAT_GameState::instance.playerDataArray[_playerID].aivUnitLocationSlotLocationCount[0xd]))
-            && (((_unitType2 == OpenSHC::Map::Units::UT_E_ARCHER || (_unitType2 == OpenSHC::Map::Units::UT_E_XBOW))
-                || ((_unitType2 == OpenSHC::Map::Units::UT_A_ARCHER
-                    || ((_unitType2 == OpenSHC::Map::Units::UT_A_SLINGER
-                        || (_unitType2 == OpenSHC::Map::Units::UT_A_FIRETHROWER)))))))) {
+            && (((_unitType2 == Map::Units::UT_E_ARCHER || (_unitType2 == Map::Units::UT_E_XBOW))
+                || ((_unitType2 == Map::Units::UT_A_ARCHER
+                    || ((_unitType2 == Map::Units::UT_A_SLINGER
+                        || (_unitType2 == Map::Units::UT_A_FIRETHROWER)))))))) {
             /*
               slave
              */
-            return OpenSHC::AI::AIVUT_SLAVE;
+            return AI::AIVUT_SLAVE;
         }
-        _someUnitTypeIndex = OpenSHC::AI::AIVUT_NONE;
+        _someUnitTypeIndex = AI::AIVUT_NONE;
         do {
             if (DAT_SkirmishDefinedData::instance.SomeAIUnitTypeArray[_someUnitTypeIndex] == _unitType2) {
                 return _someUnitTypeIndex;
             }
-            _someUnitTypeIndex = (OpenSHC::AI::AIVUnitType)(_someUnitTypeIndex + OpenSHC::AI::AIVUT_ENGINEER);
+            _someUnitTypeIndex = (AI::AIVUnitType)(_someUnitTypeIndex + AI::AIVUT_ENGINEER);
         } while ((int)_someUnitTypeIndex < 0x14);
-        return OpenSHC::AI::AIVUT_NONE;
+        return AI::AIVUT_NONE;
     }
 
 }

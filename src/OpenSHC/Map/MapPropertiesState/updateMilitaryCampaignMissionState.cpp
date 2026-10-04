@@ -37,15 +37,15 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Map::MapType2;
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::MappersEnum;
+    using DE::SHCDE::eTextSections;
+    using Game::GameMode2;
+    using Map::MapType2;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using UI::Enums::DisplayElementID;
+    using UI::Enums::MenuModalType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       Per-frame update for the scripted military campaign missions (16-20). Handles win/loss   conditions, timed
@@ -76,34 +76,34 @@ namespace Map {
             }
             if (DAT_GameState::instance.mapAndTime.unknownCountdown01 == 0) {
                 DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition3::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
                 DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
+                    UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .playerDeathRelated
                         == 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();
                         DAT_GameCore::instance.section1066 = 2;
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .playerDeathRelated
                         == 2) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_GAME_LOSTUnk, 0);
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_GAME_LOSTUnk, 0);
                         DAT_GameCore::instance.section1066 = 0;
                     }
-                    MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                        OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                    MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                        UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                 }
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                    OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
             }
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -111,31 +111,31 @@ namespace Map {
             != 0) {
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .playerDeathRelated = 2;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setAIControlStatusTo100000, DAT_UnitsState::ptr)();
+            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setAIControlStatusTo100000, DAT_UnitsState::ptr)();
             DAT_GameState::instance.mapAndTime.unknownCountdown01 = 0xf0;
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                 DAT_GameState::instance.mapAndTime.unknownCountdown01 = 0x280;
             }
-            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 2);
+            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 2);
             if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                    == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
+                    == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                 || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                    == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
+                    == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
                 DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab
                     = DAT_GameCore::instance.tabTypeSiegeSubset;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_BUILD_MENU, 0);
             }
-            DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+            DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
             if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
+                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
             }
-            DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+            DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
         }
         if (DAT_GameCore::instance.missionNumber1to20 == 0x10) {
             if (DAT_GameState::instance.mapAndTime.field3179_0x27d4 == 0) {
@@ -151,9 +151,9 @@ namespace Map {
                     pcVar9 = "Ap_Milit21.wav";
                     pcVar8 = "good_soldier_nervous.bik";
                     DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 1;
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 1);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 1);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 3;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
@@ -174,11 +174,11 @@ namespace Map {
                     pcVar9 = "Ap_Milit22.wav";
                     pcVar8 = "good_soldier_nervous.bik";
                     DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 2;
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 2);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 2);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                         2, 0x18, 5, 0x4b, 10, 3);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 1;
                     DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
@@ -199,9 +199,9 @@ namespace Map {
                     pcVar9 = "Ap_Milit23.wav";
                     pcVar8 = "bad_arab_taunt.bik";
                     DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 3;
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 3);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 3);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                 }
                 goto LAB_004c25f4;
@@ -221,9 +221,9 @@ namespace Map {
             /*
               added by script: "The old Rat’s made a run for it.  We’ve done it sar!"
              */
-            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 4);
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+            pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 4);
+            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                 pcVar5, pcVar8, pcVar9);
             sVar1 = (short)DAT_GameState::instance.mapAndTime.month;
             DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
@@ -236,9 +236,9 @@ namespace Map {
                     pcVar9 = "Ap_Milit25.wav";
                     pcVar8 = "good_soldier_nervous.bik";
                     DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 1;
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 5);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 5);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 2;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
@@ -260,11 +260,11 @@ namespace Map {
                     /*
                       added by script: "Here they come sar.  Men, to arms!"
                      */
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 6);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 6);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                         2, 0x48, 0x32, 0x47, 0x14, 3);
                     DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
                 }
@@ -277,9 +277,9 @@ namespace Map {
                     /*
                       added by script: "It’s now or never men.  Attack!"
                      */
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 7);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 7);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                 }
                 bVar6 = DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0;
@@ -297,9 +297,9 @@ namespace Map {
                                   charge of the castle."
                                  */
                                 pcVar5
-                                    = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 9);
-                                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 9);
+                                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                     DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                                 DAT_GameState::instance.mapAndTime.yearCopy
                                     = (short)DAT_GameState::instance.mapAndTime.year;
@@ -329,9 +329,9 @@ namespace Map {
                         /*
                           added by script: "I think we’ve rattled the snake sar!"
                          */
-                        pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 8);
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                        pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 8);
+                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                             DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                     }
                     goto LAB_004c28d6;
@@ -371,9 +371,9 @@ namespace Map {
                       added by script: "Sar, the Truffe brothers are launching a joint attack!  How   are we supposed to
                       hold out against both of them?"
                      */
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 10);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 10);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                 }
                 iVar7 = DAT_GameState::instance.playerDataArray[3].lordKilledByPlayerID;
@@ -405,9 +405,9 @@ namespace Map {
             /*
               added by script: "Not so bad after all.  Mission accomplished sar!"
              */
-            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0xd);
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+            pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0xd);
+            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                 pcVar5, pcVar8, pcVar9);
             DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
         LAB_004c2cfc:
@@ -447,9 +447,9 @@ namespace Map {
                           added by script: "Sar!  The Stoat is officially out of commission.  Looks   like we’re making
                           progress sar."
                          */
-                        pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x14);
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                        pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x14);
+                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                             DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                         DAT_GameState::instance.mapAndTime.field3180_0x27d6
                             = DAT_GameState::instance.mapAndTime.field3180_0x27d6 | 0x10;
@@ -482,9 +482,9 @@ namespace Map {
                               added by script: "Another bites the dust sar!  Only one rodent left and we   can get
                               started on the Wolf."
                              */
-                            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x15);
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                            pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x15);
+                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                 DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                         }
                         DAT_GameState::instance.mapAndTime.field3180_0x27d6
@@ -514,9 +514,9 @@ namespace Map {
                               added by script: "Another bites the dust sar!  Only one rodent left and we   can get
                               started on the Wolf."
                              */
-                            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x15);
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                            pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x15);
+                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                 DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                         }
                         DAT_GameState::instance.mapAndTime.field3180_0x27d6
@@ -531,9 +531,9 @@ namespace Map {
                     /*
                       added by script: "Sar!  The Wolf is launching a charge.  What are your   orders?"
                      */
-                    pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x16);
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                    pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x16);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                         DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                 }
                 if (!bVar6) {}
@@ -547,33 +547,33 @@ namespace Map {
                 /*
                   added by script: "Aftermath."
                  */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x17);
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x17);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                     DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
             LAB_004c3082:
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated = 1;
                 DAT_GameState::instance.mapAndTime.unknownCountdown01 = 0xf0;
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                    OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 1);
+                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 1);
                 if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                        == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
+                        == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                     || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                        == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
+                        == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
                     DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab
                         = DAT_GameCore::instance.tabTypeSiegeSubset;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_BUILD_MENU, 0);
                 }
-                DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                 if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
+                        Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                 }
-                DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
             }
             if (DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy) {}
             if (DAT_GameState::instance.mapAndTime.year != DAT_GameState::instance.mapAndTime.yearCopy) {}
@@ -585,9 +585,9 @@ namespace Map {
             /*
               added by script: "Sar!  These odds are impossible.  Four against one, it’s   just not right!"
              */
-            pcVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, iVar7);
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+            pcVar9 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, iVar7);
+            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                 pcVar9, pcVar5, pcVar8);
         }
         if (DAT_GameState::instance.mapAndTime.field3179_0x27d4 == 0) {
@@ -599,11 +599,11 @@ namespace Map {
                 /*
                   added by script: "The time for vengeance is upon us.  No surrender!"
                  */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0xe);
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0xe);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                     DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
-                MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
+                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                     2, 0x46, 8, 0x48, 0x16, 2);
                 DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
             }
@@ -618,9 +618,9 @@ namespace Map {
                   added by script: "Now I’m in charge I can do what I want and take what I   please.  The first thing I
                   want is your corpse on a stick."
                  */
-                pcVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, iVar7);
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                pcVar9 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, iVar7);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                     DAT_VideoBikQueue::ptr)(pcVar9, pcVar5, pcVar8);
             }
         } else if (DAT_GameState::instance.mapAndTime.field3179_0x27d4 == 2) {
@@ -632,9 +632,9 @@ namespace Map {
               added by script: "Sar!  I’m pleased to report that we’ve caught the   slippery eel.  He’s taking the long
               hot walk to our dungeon."
              */
-            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x10);
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+            pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x10);
+            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                 pcVar5, pcVar8, pcVar9);
             DAT_GameState::instance.mapAndTime.emenyHitArray[3] = 0;
         } else {
@@ -660,9 +660,9 @@ namespace Map {
                   added by script: "Sar!  The Wolf’s retreated into the Kingdom of Jerusalem.   Well have to track him
                   down later sar."
                  */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT2, 0x11);
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x11);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                     DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                 pcVar8 = "Ap_Milit38.wav";
                 pcVar5 = "bad_soldier_taunt.bik";

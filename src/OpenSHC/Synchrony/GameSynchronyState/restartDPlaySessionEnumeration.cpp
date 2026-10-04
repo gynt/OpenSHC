@@ -12,8 +12,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DirectPlay::EnumSessionsFlagsEnum;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DirectPlay::EnumSessionsFlagsEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00487390
     void GameSynchronyState::restartDPlaySessionEnumeration(BOOLEnum respectTimeout)
@@ -35,11 +35,11 @@ namespace Synchrony {
         _pGUID.Data4[5] = '\0';
         _pGUID.Data4[6] = '\0';
         _pGUID.Data4[7] = '\0';
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::fetchSessionGUID, this)(&_pGUID);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::fetchSessionGUID, this)(&_pGUID);
         if ((this->unkEnumerationRelatedBool == false)
             && ((respectTimeout != TRUE || (2999 < (int)(_now - TIME_EnumerateSessionsMoment::instance))))) {
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
-            MACRO_CALL(OpenSHC::OS_Func::_memset)(&_dpSessionDesc2, 0, 0x50);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
+            MACRO_CALL(OS_Func::_memset)(&_dpSessionDesc2, 0, 0x50);
             static const GUID _sessionAppGuid
                 = {0x1d5e2f48, 0xe8c0, 0x49e5, {0xae, 0xd8, 0xb1, 0x24, 0xda, 0x9e, 0x30, 0x59}};
             _dpSessionDesc2.guidApplication = _sessionAppGuid;
@@ -50,12 +50,12 @@ namespace Synchrony {
                   pointer to a pointer to a function
                  */
                 this->DPLAYX_4A->EnumSessions(&_dpSessionDesc2, 0,
-                    MACRO_CALL(OpenSHC::Synchrony_Func::EnumSessionsCallback_addSession_async), (void*)0x0,
-                    OpenSHC::DirectPlay::ESFE_RETURN_STATUS | OpenSHC::DirectPlay::ESFE_ASYNC_ENUMERATION
-                        | OpenSHC::DirectPlay::ESFE_AVAILABLE);
+                    MACRO_CALL(Synchrony_Func::EnumSessionsCallback_addSession_async), (void*)0x0,
+                    DirectPlay::ESFE_RETURN_STATUS | DirectPlay::ESFE_ASYNC_ENUMERATION
+                        | DirectPlay::ESFE_AVAILABLE);
             }
             this->unkEnumerationRelatedBool = false;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::resolveEqualEntries, this)((GUID*)&_pGUID);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resolveEqualEntries, this)((GUID*)&_pGUID);
             TIME_EnumerateSessionsMoment::instance = timeGetTime();
         };
         return;

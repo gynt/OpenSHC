@@ -4,7 +4,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using WindowsHelper::Enums::BOOLEnum;
 
 /*
   Library Function - Multiple Matches With Different Base Names   Name: ??8@YAHABU_GUID@@0@Z,

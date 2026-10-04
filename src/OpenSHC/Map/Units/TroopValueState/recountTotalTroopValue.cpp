@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F9C0
         void TroopValueState::recountTotalTroopValue()
@@ -36,16 +36,16 @@ namespace Map {
                 pUVar2 = &DAT_UnitsState::instance.units[1];
                 iVar2 = DAT_UnitsState::instance.maxUnitCount - 1;
                 do {
-                    if ((((pUVar2->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE) && (pUVar2->dying == 0))
+                    if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE) && (pUVar2->dying == 0))
                             && (pUVar2->isSelectable_OR_matchTime != 0))
                         && (((_troopType = pUVar2->unitType,
-                                 _troopType != OpenSHC::Map::Units::UT_E_ENGINEER
-                                     && (_troopType != OpenSHC::Map::Units::UT_TUNNELER))
-                            && (_troopType != OpenSHC::Map::Units::UT_E_LADDER)))) {
+                                 _troopType != Map::Units::UT_E_ENGINEER
+                                     && (_troopType != Map::Units::UT_TUNNELER))
+                            && (_troopType != Map::Units::UT_E_LADDER)))) {
                         _playerID = pUVar2->owner;
                         _troopTypeValue
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
-                                (OpenSHC::Map::Units::UnitType)(short)_troopType);
+                            = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType, this)(
+                                (Map::Units::UnitType)(short)_troopType);
                         piVar1 = this->attackInfo.playerTotalTroopValueArray + _playerID;
                         *piVar1 = *piVar1 + _troopTypeValue;
                     }

@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion;
+    using Game::ScenarioEvents::InGameEventUnionVersion;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004BEB20
     void MapPropertiesState::updateEventYearsAndCommitBuildingAvailability()
@@ -23,9 +23,9 @@ namespace Map {
         if (this->SEC_StartingYear < 1000) {
             this->SEC_StartingYear = 1181;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
+        MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             local_10);
         this->field48_0x13560 = -1;
         this->field47_0x1355c = 0;
@@ -44,7 +44,7 @@ namespace Map {
                 }
             }
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::commitBuildingAvailability, this)();
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::commitBuildingAvailability, this)();
         ;
     }
 

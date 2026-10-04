@@ -10,7 +10,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CCFC
     void Init::Constructor_CreateLocaleMemoryRelated()
     {
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d7d4));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d7d4));
         return;
     }
 

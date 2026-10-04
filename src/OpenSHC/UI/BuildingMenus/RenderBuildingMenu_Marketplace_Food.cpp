@@ -18,12 +18,12 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::Game::Resources::ResourceTypeInt;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Game::Resources::ResourceType;
+    using Game::Resources::ResourceTypeInt;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043D070
     void BuildingMenus::RenderBuildingMenu_Marketplace_Food()
@@ -40,28 +40,28 @@ namespace UI {
         BVar4 = FALSE;
         fontSize = 0x11;
         color = 0;
-        alignment = OpenSHC::Text::TTA_LEFT;
+        alignment = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1d4;
         iVar2 = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           added by script: "Trade Food"
          */
-        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, 2);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, 2);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             textAddress, iVar2, iVar1, alignment, color, fontSize, BVar4, blendStrength);
         iVar1 = 0;
         pRVar3 = DAT_RenderingDefinedData::instance.FoodTypes;
         do {
-            ResourceType resourceType = (OpenSHC::Game::Resources::ResourceType)(*pRVar3);
+            ResourceType resourceType = (Game::Resources::ResourceType)(*pRVar3);
             iVar2 = DAT_MenuHandlerState::instance.x + 0x78;
             BVar4 = MACRO_CALL_MEMBER(
-                OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(resourceType);
+                Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(resourceType);
             if (BVar4 != FALSE) {
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[resourceType],
-                    iVar2 + iVar1, DAT_MenuHandlerState::instance.y + 0x232, OpenSHC::Text::TTA_CENTER, 0, 0x11, FALSE,
+                    iVar2 + iVar1, DAT_MenuHandlerState::instance.y + 0x232, Text::TTA_CENTER, 0, 0x11, FALSE,
                     0);
             }
             pRVar3 = pRVar3 + 1;

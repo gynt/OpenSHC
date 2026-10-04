@@ -18,16 +18,16 @@ namespace Map {
             if ((x < 1) && (y < 1)) {
                 return (dword)(0);
             }
-            _tribeID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
+            _tribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
             if ((int)_tribeID < 1) {
                 return (dword)(0);
             }
             this->tribes[_tribeID].tribeType = (AITribeTypeShort)tribeType;
             this->tribes[_tribeID].someIndex = someIndex;
             this->tribes[_tribeID].attackWave = (short)DAT_TroopValueState::instance.attackInfo.inv_count;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
+            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
                 DAT_PathFindingState::ptr)(x, y, -1, -1, 2000, 0);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::spawnUnitAndAddToTribe,
+            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::spawnUnitAndAddToTribe,
                 DAT_PathFindingState::ptr)(playerID, playerID, count, unitType, (undefined4)((int)(_tribeID)));
             this->tribes[_tribeID].field134_0x27a = 1;
             return (dword)(_tribeID);

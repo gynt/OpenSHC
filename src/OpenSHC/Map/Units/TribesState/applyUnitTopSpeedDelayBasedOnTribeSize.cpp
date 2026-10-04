@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524EF0
         void TribesState::applyUnitTopSpeedDelayBasedOnTribeSize(int tribeID, BOOLEnum param_2)
@@ -38,7 +38,7 @@ namespace Map {
                   For selections (tribes) of size 40 or less
                  */
                 this->someUnitIDArrayCount = 0;
-                MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     4004, '\0', (void*)((int)(this->someUnitIDMovementDistancePair)));
                 if (0 < *_tribeSize) {
                     /*
@@ -47,10 +47,10 @@ namespace Map {
                     _ptrMovementDistance = &this->someUnitIDMovementDistancePair[0].movementDistance;
                     do {
                         _selectionUnit
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                            = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                                 tribeID, _unitSelectionIndex);
                         if ((DAT_UnitsState::instance.units[_selectionUnit].logicalState
-                                == OpenSHC::Map::Units::ULS_NORMAL)
+                                == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_selectionUnit].dying == 0)) {
                             this->someUnitIDArrayCount = this->someUnitIDArrayCount + 1;
                             /*
@@ -108,7 +108,7 @@ namespace Map {
                       Set incremental delay on first 199 units, then set same value of 199
                      */
                     _unitInSelection
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                             tribeID, _unitSelectionIndex);
                     iVar1 = _unitSelectionIndex;
                     if (199 < _unitSelectionIndex) {

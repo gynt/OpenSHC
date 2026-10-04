@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004708F0
         void WindowAndDirectDraw::reinitWindow()
@@ -22,7 +22,7 @@ namespace UI {
                 this->isNotProcessingInputEvents = FALSE;
                 if (this->runGameAsExclusiveFullscreen != FALSE) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::prepareWindowAndDDrawUnk, this)();
+                        UI::Rendering::WindowAndDirectDraw_Func::prepareWindowAndDDrawUnk, this)();
                     yBottom = GetSystemMetrics(SM_CYSCREEN);
                     xRight = GetSystemMetrics(SM_CXSCREEN);
                     SetRect(&this->clientOnScreenCoords, 0, 0, xRight, yBottom);

@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::Map::Buildings::BuildingType;
-        using OpenSHC::Map::Buildings::BuildingTypeShort;
+        using Map::Buildings::BuildingType;
+        using Map::Buildings::BuildingTypeShort;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00463270
         void AlphaAndButtonSurface::ProcessBuildingClickBonus(int buildingIndex)
@@ -28,18 +28,18 @@ namespace UI {
                     || ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerIndex] == -1
                         && (DAT_GameSynchronyState::instance.currentAIArray[_playerIndex] != 0)))) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Buildings::BuildingsState_Func::extendResourceCountdownForPlayerBuildingsOfType,
+                        Map::Buildings::BuildingsState_Func::extendResourceCountdownForPlayerBuildingsOfType,
                         DAT_BuildingsState::ptr)(
-                        (OpenSHC::Map::Buildings::BuildingType)(int)(short)DAT_BuildingsState::instance
+                        (Map::Buildings::BuildingType)(int)(short)DAT_BuildingsState::instance
                             .buildings[buildingIndex]
                             .buildingType,
                         1, _playerIndex);
                     _buildingType = DAT_BuildingsState::instance.buildings[buildingIndex].buildingType;
-                    if ((_buildingType == OpenSHC::Map::Buildings::BT_MANORHOUSE)
-                        || (((_buildingType == OpenSHC::Map::Buildings::BT_STONEKEEP
-                                 || (_buildingType == OpenSHC::Map::Buildings::BT_STRONGHOLD))
-                            || (_buildingType == OpenSHC::Map::Buildings::BT_CAMPGROUND)))) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::displayPopularityAndGoldPopups,
+                    if ((_buildingType == Map::Buildings::BT_MANORHOUSE)
+                        || (((_buildingType == Map::Buildings::BT_STONEKEEP
+                                 || (_buildingType == Map::Buildings::BT_STRONGHOLD))
+                            || (_buildingType == Map::Buildings::BT_CAMPGROUND)))) {
+                        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::displayPopularityAndGoldPopups,
                             DAT_BuildingsState::ptr)(buildingIndex, 0, 0, 0);
                     }
                 }

@@ -19,7 +19,7 @@ namespace UI {
                 if ((DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
                         == DAT_MenuTextInputState::instance.field38_0x8c)
                     && ((int)(DVar1 - DAT_MenuTextInputState::instance.field39_0x90) < 500)) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_Buttons)(2);
+                    MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_Buttons)(2);
                 }
                 DAT_MenuTextInputState::instance.field38_0x8c
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex

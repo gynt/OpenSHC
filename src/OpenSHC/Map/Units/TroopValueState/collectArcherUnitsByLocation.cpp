@@ -16,9 +16,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051CA50
         void TroopValueState::collectArcherUnitsByLocation()
@@ -27,13 +27,13 @@ namespace Map {
             Unit* _pUnit;
             uint _unitID;
             int _index;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 2000, '\0', (void*)((int)(this->attackInfo.unitIDArray_0x2b57c)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 800, '\0', (void*)((int)(this->attackInfo.tileArray_0x2bd50)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 400, '\0', (void*)((int)(this->attackInfo.unitIDArray_0x2c070)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 800, '\0', (void*)((int)(this->attackInfo.uidArray_0x2c200)));
             _unitID = 1;
             this->attackInfo.unitIDIndex_0x2bd4c = 0;
@@ -42,19 +42,19 @@ namespace Map {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
                     _index = this->attackInfo.unitIDIndex_0x2c520;
-                    if (((_pUnit->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE)
+                    if (((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
                             && (BVar1
-                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                     this)((int)_pUnit->owner),
                                 BVar1 != FALSE))
-                        && ((_pUnit->unitType == OpenSHC::Map::Units::UT_E_ARCHER
-                            || (_pUnit->unitType == OpenSHC::Map::Units::UT_E_XBOW)))) {
+                        && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
+                            || (_pUnit->unitType == Map::Units::UT_E_XBOW)))) {
                         if ((DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U) == 0) {
                             /*
                               not on the keep or gatehouse, or towers?
                              */
                             if (this->attackInfo.unitIDIndex_0x2bd4c < 1000) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromTribe,
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromTribe,
                                     DAT_TribesState::ptr)(_unitID, (int)((int)(_pUnit->tribeID)));
                                 this->attackInfo.unitIDArray_0x2b57c[this->attackInfo.unitIDIndex_0x2bd4c]
                                     = (short)_unitID;

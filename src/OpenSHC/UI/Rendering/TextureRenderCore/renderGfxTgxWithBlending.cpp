@@ -14,7 +14,7 @@ namespace UI {
             if ((uint)blendStrengthUnk < 0x20) {
                 this->drawBufferChoiceValue = this->currentRenderSurfaceIdentifierUnk_0x8;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderInterfaceOrBuildingOccupationArea, this)(x, y,
+                    UI::Rendering::TextureRenderCore_Func::renderInterfaceOrBuildingOccupationArea, this)(x, y,
                     this->loadedGfxArray[gfxIndex].width, this->loadedGfxArray[gfxIndex].height,
                     (ushort*)((int)(
 

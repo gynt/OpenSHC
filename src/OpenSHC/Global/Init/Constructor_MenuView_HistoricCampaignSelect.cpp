@@ -14,21 +14,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A760
     void Init::Constructor_MenuView_HistoricCampaignSelect()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricCampaignSelect::ptr)(
-            OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBoxDefaultBorderAndPicture),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_HistoricCampaignSelect));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_HistoricCampaignSelect::ptr)(
+            UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBoxDefaultBorderAndPicture),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::HistoricCampaignSelect_Func::MenuView_HistoricCampaignSelect_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricCampaignSelect));
         return;
     }
 

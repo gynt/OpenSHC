@@ -14,7 +14,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047DA70
     void GameSynchronyState::setDPlaySessionNameValue()
@@ -24,13 +24,13 @@ namespace Synchrony {
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)local_100;
         if (this->useTCPIP != FALSE) {
-            MACRO_CALL(OpenSHC::Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
+            MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
             ;
         }
         pcVar1 = MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_100, "Stronghold-%s", pcVar1);
-        MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::multiByteToWideCharacter,
+            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        MACRO_CALL(OS_Func::_sprintf)(local_100, "Stronghold-%s", pcVar1);
+        MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter,
             DAT_WideCharMultiByteState::ptr)(this->DPLAYX_SessionName, (LPCSTR)((int)(local_100)));
         ;
     }

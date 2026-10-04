@@ -13,7 +13,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::DE::SHCDE::eGM;
+        using DE::SHCDE::eGM;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC280
         void TriggerEventSlider::MenuModalRenderFunction_TriggerEventSlider(int x, int y, int width, int height)
@@ -30,11 +30,11 @@ namespace UI {
             }
             iVar1 = 2;
         LAB_004ac2a6:
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(199, textNumInGroup, x, y, width, height);
             if (iVar1 != -1) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 + 0x80,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 + 0x80,
                     width / 2 + 8 + DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + x, y + 0x1a);
             }
         }

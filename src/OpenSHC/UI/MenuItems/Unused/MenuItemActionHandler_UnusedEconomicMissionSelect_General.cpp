@@ -16,27 +16,27 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00426ED0
         void Unused::MenuItemActionHandler_UnusedEconomicMissionSelect_General(int param_1, ...)
         {
             DWORD DVar1;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 if (param_1 == 0xd) {
                 LAB_00426f5c:
                     DAT_GameCore::instance.missionNumber1to20 = DAT_GameCore::instance.missionNumber1to20 + -1;
-                    DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1;
+                    DAT_GameCore::instance.gameMode_2 = Game::GM_ECONOMIC_CAMPAIGN_SH1;
                     DAT_GameCore::instance.field26_0x74 = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();
                 }
                 if (param_1 == 0x12) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_MAIN_MENU, 0);
                 }
                 if (param_1 == 0x14) {
                     DAT_GameState::instance.mapAndTime.difficulty = DAT_GameState::instance.mapAndTime.difficulty + 1;

@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047DE00
     void GameSynchronyState::setSessionDescription()
@@ -18,7 +18,7 @@ namespace Synchrony {
         DPSESSIONDESC2 local_54;
         uVar1 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
         if (this->isHost != FALSE) {
-            MACRO_CALL(OpenSHC::OS_Func::_memset)(&local_54, 0, 0x50);
+            MACRO_CALL(OS_Func::_memset)(&local_54, 0, 0x50);
             local_54.guidApplication.Data1 = 0x1d5e2f48;
             memcpy(local_54.guidApplication.Data4 + 4, "ڞ0Y", 4);
             local_54.dwSize = 0x50;
@@ -31,7 +31,7 @@ namespace Synchrony {
             local_54.guidApplication.Data4[2] = 0xb1;
             local_54.guidApplication.Data4[3] = 0x24;
             local_54.dwMaxPlayers = 8;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setDPlaySessionNameValue, this)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDPlaySessionNameValue, this)();
             local_54.lpszSessionName = this->DPLAYX_SessionName;
             this->DPLAYX_4A->SetSessionDesc(&local_54, 0);
         };

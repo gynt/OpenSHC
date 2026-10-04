@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00433370
         void InGameMenu::MenuItemActionHandler_InGameMenu_ProcessScribeAnimationChange(int param_1, ...)
@@ -22,8 +22,8 @@ namespace UI {
             DWORD _currentTime;
             int iVar2;
             iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {}
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {}
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {}
             if (DAT_GameCore::instance.taxesSettingUnk != 0) {
                 _currentTime = timeGetTime();
                 if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {}

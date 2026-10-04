@@ -34,14 +34,14 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::AI::Tribes::AITribeType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
-    using OpenSHC::Map::Units::UnitInstructionType;
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::UI::Enums::MenuViewType;
+    using AI::Tribes::AITribeType;
+    using Game::GameMode;
+    using Map::Buildings::BuildingLogicalState;
+    using Map::Units::UnitInstructionType;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::States::UnitState;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004205B0
     void Buildings::UpdateShieldBuilding()
@@ -67,10 +67,10 @@ namespace Map {
         iVar8 = DAT_CurrentBuildingID::instance;
         playerID = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         iVar12 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].attackWave;
-        if (((0 < iVar12) && (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY))
+        if (((0 < iVar12) && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY))
             && ((char)DAT_TroopValueState::instance.attackInfo.nof_tribes[iVar12] < '\x01')) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].logicalState
-                = OpenSHC::Map::Buildings::BLS_REMOVE;
+                = Map::Buildings::BLS_REMOVE;
         }
         iVar12 = 1;
         if (DAT_BuildingsState::instance.buildings[iVar8].oldVisualActiveState == -1) {
@@ -81,7 +81,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar8].displayOwnerFlag = 0;
             if (iVar11 == -1) {
-                iVar11 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
+                iVar11 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(playerID);
                 iVar8 = DAT_CurrentBuildingID::instance;
                 if (iVar11 == 0) {
@@ -92,7 +92,7 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame = 1;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 iVar8);
             iVar8 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState = 0;
@@ -101,11 +101,11 @@ namespace Map {
         *piVar13 = *piVar13 + (int)DAT_BuildingsState::instance.buildings[iVar8].currentEmployeeCount;
         if (0x78 < DAT_BuildingsState::instance.buildings[iVar8].buildingProgress) {
             iVar11 = (int)DAT_BuildingsState::instance.buildings[iVar8].owner;
-            iVar8 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar11,
+            iVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar11,
                 iVar11, (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].x * 8)),
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[iVar8].terrainHeightUnk)),
-                OpenSHC::Map::Units::UT_S_SHIELD);
+                Map::Units::UT_S_SHIELD);
             if (iVar8 == 0) {
                 piVar13 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingProgress;
                 *piVar13 = *piVar13
@@ -117,14 +117,14 @@ namespace Map {
                     sVar2 = *psVar9;
                     psVar9 = psVar9 + 1;
                     iVar12 = iVar12 + -1;
-                    DAT_UnitsState::instance.units[sVar2].state.generic = OpenSHC::Map::Units::States::US_AIM_WEAPONUnk;
+                    DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
                 } while (iVar12 != 0);
             } else {
                 uVar14 = (int)SEC_RNG::instance.currentNumber2 & 0x8000000f;
                 if ((int)uVar14 < 0) {
                     uVar14 = (uVar14 - 1 | 0xfffffff0) + 1;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 local_c = 0;
                 iVar12 = DAT_CurrentBuildingID::instance;
                 if (0 < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount) {
@@ -136,16 +136,16 @@ namespace Map {
                         sVar5 = DAT_AttackInfoDefinedData::instance.field10_0xec[uVar14][1];
                         uVar14 = uVar14 + 1 & 0x8000000f;
                         DAT_UnitsState::instance.units[iVar11].state.generic
-                            = OpenSHC::Map::Units::States::US_JESTER_ROAM_TO;
+                            = Map::Units::States::US_JESTER_ROAM_TO;
                         DAT_UnitsState::instance.units[iVar11].disappearFadeAlphaCountdown = 0x20;
                         DAT_UnitsState::instance.units[iVar11].engineerManningSiegeStateRef_checkType = 0xfe;
                         DAT_UnitsState::instance.units[iVar11].cachedState
-                            = OpenSHC::Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
+                            = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                         if ((int)uVar14 < 0) {
                             uVar14 = (uVar14 - 1 | 0xfffffff0) + 1;
                         }
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
+                            Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
                             DAT_PathFindingState::ptr)(
                             -1, (int)((int)(sVar2 + (short)uVar3)), (int)((int)(sVar5 + (short)uVar4)));
                         iVar7 = DAT_PathFindingState::instance.ALG_ResultTile;
@@ -166,12 +166,12 @@ namespace Map {
                         DAT_UnitsState::instance.units[iVar11].totalSizeOfPathPlan = 0;
                         DAT_UnitsState::instance.units[iVar11].unknownMovementRelated_0x2d2 = 0;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::updateMicroPosition, DAT_UnitsState::ptr)(iVar11);
+                            Map::Units::UnitsState_Func::updateMicroPosition, DAT_UnitsState::ptr)(iVar11);
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(iVar11);
+                            Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(iVar11);
                         iVar12 = DAT_CurrentBuildingID::instance;
                         DAT_UnitsState::instance.units[iVar11].targetingType
-                            = OpenSHC::Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
+                            = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
                         DAT_UnitsState::instance.units[iVar11].targetedUnitID__OR__engineerMannedSiegeEngineRef
                             = (short)iVar8;
                         local_c = local_c + 1;
@@ -180,7 +180,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar12].currentEmployeeCount = 0;
             }
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
+                Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                 DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[iVar8].x,
                 (int)((int)(DAT_UnitsState::instance.units[iVar8].y)),
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -200,7 +200,7 @@ namespace Map {
             DAT_UnitsState::instance.units[iVar8].unknownSiegeTentRelated02
                 = (char)DAT_BuildingsState::instance.buildings[iVar12].unknownSiegeTentRelated01 + 1;
             DAT_UnitsState::instance.units[iVar8].logicalState = ((UnitLogicState)5);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::addUnitToNewTribe, DAT_TroopValueState::ptr)(
+            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::addUnitToNewTribe, DAT_TroopValueState::ptr)(
                 iVar8, iVar11, ((AITribeType)0x15), (undefined4)((int)(playerID)));
             sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount;
             if (0 < sVar2) {
@@ -220,7 +220,7 @@ namespace Map {
                 } while (local_c != 0);
             }
             iVar12 = DAT_CurrentBuildingID::instance;
-            bVar16 = DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU;
+            bVar16 = DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU;
             DAT_UnitsState::instance.units[iVar8].digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                 = sVar2;
             if ((bVar16) && (iVar12 == DAT_BuildingsState::instance.menuSelectedBuildingID)) {
@@ -228,7 +228,7 @@ namespace Map {
                 DAT_BuildingsState::instance.unitID = iVar8;
             }
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
                 iVar12);
         }
     }

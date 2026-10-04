@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DCB0
         void UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_Prepare()
@@ -26,7 +26,7 @@ namespace UI {
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("gm_fly.tgx");
         }
 

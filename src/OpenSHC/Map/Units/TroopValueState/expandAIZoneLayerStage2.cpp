@@ -28,7 +28,7 @@ namespace Map {
                     do {
                         if ((*(byte*)(iVar4 + 0x1ea7b68 + (*paiVar2)[0]) & 0xf) == 0) {
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Navigation::PathFindingState_Func::recomputeALGPathFindingTileMapUnk,
+                                Map::Navigation::PathFindingState_Func::recomputeALGPathFindingTileMapUnk,
                                 DAT_PathFindingState::ptr)(0xf,
                                 (uint)((
                                     int)(DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[iVar1 * 2]

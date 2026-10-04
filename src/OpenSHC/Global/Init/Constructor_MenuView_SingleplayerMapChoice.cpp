@@ -14,21 +14,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A370
     void Init::Constructor_MenuView_SingleplayerMapChoice()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_SingleplayerMapChoice::ptr)(
-            OpenSHC::UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_SingleplayerMapChoice));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_SingleplayerMapChoice::ptr)(
+            UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::SingleplayerMapChoice_Func::MenuView_SingleplayerMapChoice_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_SingleplayerMapChoice));
         return;
     }
 

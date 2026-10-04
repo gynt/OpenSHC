@@ -11,8 +11,8 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-using OpenSHC::WindowsHelper::Enums::GlobalAllocFlag;
+using WindowsHelper::Enums::BOOLEnum;
+using WindowsHelper::Enums::GlobalAllocFlag;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0047D5B0
 BOOL __stdcall Synchrony::EnumConnectionsCallback(
@@ -32,11 +32,11 @@ BOOL __stdcall Synchrony::EnumConnectionsCallback(
     if (9 < DAT_GameSynchronyState::instance.scrollBarItemCount) {
         return 0;
     }
-    BVar4 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
+    BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
     if (BVar4 == FALSE) {
-        BVar4 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_IPX::ptr);
+        BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_IPX::ptr);
         if (BVar4 == FALSE) {
-            BVar4 = MACRO_CALL(OpenSHC::OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_MODEM::ptr);
+            BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_MODEM::ptr);
             if (BVar4 == FALSE) {
                 DAT_GameSynchronyState::instance.scrollBarItemCount = _index + 1;
             } else {
@@ -54,7 +54,7 @@ BOOL __stdcall Synchrony::EnumConnectionsCallback(
         WVar2 = *pWVar5;
         pWVar5 = pWVar5 + 1;
     } while (WVar2 != L'\0');
-    pWVar6 = (WCHAR*)(MACRO_CALL(OpenSHC::OS_Func::_malloc)(((int)pWVar5 - (int)pWVar1 >> 1) * 2 + 4));
+    pWVar6 = (WCHAR*)(MACRO_CALL(OS_Func::_malloc)(((int)pWVar5 - (int)pWVar1 >> 1) * 2 + 4));
     DAT_GameSynchronyState::instance.providerNames[_index] = pWVar6;
     pWVar7 = lpName->lpszShortName;
     do {
@@ -63,7 +63,7 @@ BOOL __stdcall Synchrony::EnumConnectionsCallback(
         pWVar7 = pWVar7 + 1;
         pWVar6 = pWVar6 + 1;
     } while (WVar2 != L'\0');
-    hMem = GlobalAlloc(OpenSHC::WindowsHelper::Enums::GAF_GHND, 0x10);
+    hMem = GlobalAlloc(WindowsHelper::Enums::GAF_GHND, 0x10);
     pGVar7 = (GUID*)(GlobalLock(hMem));
     DAT_GameSynchronyState::instance.guids[_index] = (GUID*)pGVar7;
     if (pGVar7 != (GUID*)0x0) {

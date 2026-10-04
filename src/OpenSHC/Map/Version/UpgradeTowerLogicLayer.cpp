@@ -13,10 +13,10 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::Building;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
+    using Map::Buildings::BuildingLogicalState;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::Building;
+    using Map::Buildings::BuildingTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A2E0
     void Version::UpgradeTowerLogicLayer()
@@ -29,10 +29,10 @@ namespace Map {
         do {
             if ((pBVar2->logicalState != ((BuildingLogicalState)0))
                 && ((((BVar1 = pBVar2->buildingType,
-                          BVar1 == OpenSHC::Map::Buildings::BT_TOWER2 || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER3))
-                         || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER4))
-                    || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER5)))) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::upgradeTowerLogicLayer, DAT_TileMapState::ptr)(
+                          BVar1 == Map::Buildings::BT_TOWER2 || (BVar1 == Map::Buildings::BT_TOWER3))
+                         || (BVar1 == Map::Buildings::BT_TOWER4))
+                    || (BVar1 == Map::Buildings::BT_TOWER5)))) {
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::upgradeTowerLogicLayer, DAT_TileMapState::ptr)(
                     iVar2);
             }
             pBVar2 = pBVar2 + 0x196;

@@ -19,10 +19,10 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Game::GameMode;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00490690
     void GameSynchronyState::receiveAllTransmittedCommands()
@@ -42,9 +42,9 @@ namespace Synchrony {
         /*
           this is the main packet reading loop in multiplayer
          */
-        if (this->currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+        if (this->currentGameMode != Game::GM_SOLITARY) {
             while (true) {
-                if ((this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
+                if ((this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)
                     || (this->DPLAYX_4A == (IDirectPlay4A*)0x0))
                     goto LAB_00490905;
                 this->DPLAY_ReceiveDataSize = 61000;
@@ -65,9 +65,9 @@ namespace Synchrony {
                         if ((*(uint*)&this->DPLAY_ReceiveData) == 5) {
                             this->kickDueToLagStatusUnk = 0x3d;
                             _playerID = MACRO_CALL_MEMBER(
-                                OpenSHC::Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
+                                Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
                                 this)((*(uint*)((char*)&this->DPLAY_ReceiveData + 8)));
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::removePlayerFromLobby, this)(
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::removePlayerFromLobby, this)(
                                 _playerID);
                         } else if ((*(uint*)&this->DPLAY_ReceiveData) != 49) {
                             if ((*(uint*)&this->DPLAY_ReceiveData) == 257) {
@@ -86,8 +86,8 @@ namespace Synchrony {
                                   added by script: "You are now Host"
                                  */
                                 pcVar3 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x3c);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x3c);
                                 pcVar6 = this->receivedChatMessage;
                                 do {
                                     cVar1 = *pcVar3;
@@ -96,21 +96,21 @@ namespace Synchrony {
                                     pcVar6 = pcVar6 + 1;
                                 } while (cVar1 != '\0');
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList, this)(
+                                    Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList, this)(
                                     this->currentPlayerSlotID, 0);
                                 BVar4 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                                    Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
                                 if (BVar4 == FALSE) {
                                     if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                                        == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
+                                        == UI::Enums::MMT_ROUNDTABLE) {
                                         DAT_MenuModalComposition1::instance.activeModalDialogID
-                                            = OpenSHC::UI::Enums::MMT_NONE;
+                                            = UI::Enums::MMT_NONE;
                                     }
                                     MACRO_CALL_MEMBER(
-                                        OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
+                                        Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
                                 }
                             } else {
-                                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                                MACRO_CALL(OS_Func::_sprintf)(
                                     acStack_68, "DP SYS Message: %x", (*(uint*)&this->DPLAY_ReceiveData));
                             }
                         }
@@ -122,35 +122,35 @@ namespace Synchrony {
                          */
                         *(uint*)&this->DPLAY_ReceiveData = (*(uint*)&this->DPLAY_ReceiveData >> 8)
                             | ((uint)(uchar)this->DPLAY_ReceiveData.packet.payload[0] << 24);
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::decompressTooLongPacketData,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::decompressTooLongPacketData,
                             this)(this->DPLAY_ReceiveData.packet.payload + 1,
                             (byte*)((int)(this->DPLAY_ReceiveData.packet.payload)));
                     }
                     this->receivedCommandMapTimeInTicks = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2,
+                    MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2,
                         DAT_LowLevelMemory::ptr)((void*)((int)&this->DPLAY_ReceiveData + 1),
                         (void*)((int)(&this->receivedCommandMapTimeInTicks)));
                     if ((char)this->DPLAY_ReceiveData.packet.commandProtocol < 126) {
                         if ((char)this->DPLAY_ReceiveData.packet.commandProtocol < 2) {
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::processSyncPacket, this)(
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::processSyncPacket, this)(
                                 (int)(char)this->DPLAY_ReceiveData.packet.commandProtocol);
                         } else {
                             this->packetsReceived = this->packetsReceived + 1;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::scheduleReceivedCommand,
-                                this)((OpenSHC::Commands::GameCommandType)this->DPLAY_ReceiveData.packet.commandProtocol,
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::scheduleReceivedCommand,
+                                this)((Commands::GameCommandType)this->DPLAY_ReceiveData.packet.commandProtocol,
                                 this->DPLAYX_ReceivedPlayerID, this->receivedCommandMapTimeInTicks,
                                 (void*)((int)&this->DPLAY_ReceiveData + 4));
                         }
                     } else {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Synchrony::GameSynchronyState_Func::computeAndSetLatencyInformation, this)();
+                            Synchrony::GameSynchronyState_Func::computeAndSetLatencyInformation, this)();
                     }
                 }
-                if (this->currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                if (this->currentGameMode == Game::GM_SOLITARY) {
                     ;
                 }
             }
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
         }
     LAB_00490905:;
     }

@@ -21,9 +21,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::SoundEffectID;
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::SoundEffectID;
+        using Commands::GameCommandType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00466E20
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_EngineerAndMonkPortraits(
@@ -39,8 +39,8 @@ namespace UI {
                             .count_2
                         + DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .armySize)) {}
-            int iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
-                (OpenSHC::Map::Units::UnitType)param_1,
+            int iVar1 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
+                (Map::Units::UnitType)param_1,
                 (undefined4)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .engineersGuild.id)),
@@ -49,11 +49,11 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECRUIT_UNIT);
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                    OpenSHC::Audio::SFX::SEID_BUTTON_CLICK_01);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
+                MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                    Audio::SFX::SEID_BUTTON_CLICK_01);
                 if ((param_1 == INT_00df3368::instance)
                     && (DVar2 = timeGetTime(), DVar2 - DWORD_00df3364::instance < 0x1f41)) {}
                 if (param_1 == 0x1d) {
@@ -67,7 +67,7 @@ namespace UI {
                      */
                     wav_filename = "engineer_s2.wav";
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
                 INT_00df3368::instance = param_1;
                 DWORD_00df3364::instance = timeGetTime();
             }
@@ -93,14 +93,14 @@ namespace UI {
                 /*
                   "You do not have enough gold to train this unit"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     "units_warning3.wav");
             }
         LAB_00466f49:
             /*
               "Recruits needed sire"
              */
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
         }
 
     }

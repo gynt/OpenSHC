@@ -19,8 +19,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00410D20
     void Buildings::UpdateWoodcuttersHut()
@@ -42,7 +42,7 @@ namespace Map {
             piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].countWoodcutters;
             *piVar1 = *piVar1 + 1;
         }
-        iVar6 = MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::destroyBuildingIfNoWorker, DAT_AICState::ptr)(iVar4);
+        iVar6 = MACRO_CALL_MEMBER(AI::AICState_Func::destroyBuildingIfNoWorker, DAT_AICState::ptr)(iVar4);
         iVar4 = DAT_CurrentBuildingID::instance;
         if (iVar6 == 0) {
             if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field242_0x2c8 != 0) {
@@ -53,8 +53,8 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[sVar3].someCount10 = iVar6;
                 DAT_GameState::instance.playerDataArray[sVar3].someCount11 = iVar4;
             }
-            MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+            MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
+            MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar4 = DAT_CurrentBuildingID::instance;
             if ((char)DAT_BuildingDefinedData::instance.field54_0x4bac
@@ -69,9 +69,9 @@ namespace Map {
                         .field54_0x4bac[DAT_BuildingsState::instance.buildings[iVar4].animationIndex];
             DAT_BuildingsState::instance.buildings[iVar4].animationFrame = (int)(char)bVar2;
             if (((char)bVar2 == 0x10) && (DAT_BuildingsState::instance.buildings[iVar4].animationActive != 0)) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar4].x,
-                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)), OpenSHC::DE::SHCDE::FX_SAW);
+                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)), DE::SHCDE::FX_SAW);
             }
             iVar5 = GMTotalPicturesProcessed::instance[0x43];
             iVar6 = DAT_CurrentBuildingID::instance;
@@ -88,7 +88,7 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[iVar6].field21_0x3c = iVar4 + 0x15 + iVar5;
             }
-            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+            if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame;
                 *piVar1 = *piVar1 + 1;
                 if ((char)DAT_BuildingDefinedData::instance

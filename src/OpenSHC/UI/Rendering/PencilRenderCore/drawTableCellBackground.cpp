@@ -14,8 +14,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmID;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using IO::Graphics::GmID;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004692E0
         void PencilRenderCore::drawTableCellBackground(BOOLEnum isSelected, int indexToGetStripes, int blendStrength)
@@ -29,27 +29,27 @@ namespace UI {
                     if (DAT_ButtonW::instance + DAT_ButtonX::instance <= DAT_ButtonX::instance) {}
                     iVar1 = DAT_ButtonX::instance;
                     do {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
+                        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                            DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3,
                             (int)((int)(imageID)), iVar1, (int)((int)(DAT_ButtonY::instance)),
-                            OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, (int)((int)(imageID + 1)), blendStrength);
+                            IO::Graphics::GID_INTERFACE_ICONS_3, (int)((int)(imageID + 1)), blendStrength);
                         iVar1 = iVar1 + 0x14;
                     } while (iVar1 < DAT_ButtonW::instance + DAT_ButtonX::instance);
                 }
                 if (DAT_ButtonW::instance < 0x15) {
                     DAT_ButtonW::instance = DAT_ButtonW::instance + 1;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x49,
+                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x49,
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4c, blendStrength);
+                        IO::Graphics::GID_INTERFACE_ICONS_3, 0x4c, blendStrength);
                     iVar1 = iVar1 + 0x14;
                 }
                 if (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance) {
                     do {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
-                            (int)((int)(DAT_ButtonY::instance)), OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d,
+                        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                            DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
+                            (int)((int)(DAT_ButtonY::instance)), IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d,
                             blendStrength);
                         iVar1 = iVar1 + 0x14;
                     } while (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance);
@@ -58,26 +58,26 @@ namespace UI {
                 if (DAT_ButtonW::instance < 0x15) {
                     DAT_ButtonW::instance = DAT_ButtonW::instance + 1;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x49,
+                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x49,
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4c, blendStrength);
+                        IO::Graphics::GID_INTERFACE_ICONS_3, 0x4c, blendStrength);
                     iVar1 = iVar1 + 0x14;
                 }
                 if (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance) {
                     do {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
-                            (int)((int)(DAT_ButtonY::instance)), OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d,
+                        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                            DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
+                            (int)((int)(DAT_ButtonY::instance)), IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d,
                             blendStrength);
                         iVar1 = iVar1 + 0x14;
                     } while (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance);
                 }
             }
             if (DAT_ButtonW::instance < 0x16) {}
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4b, iVar1,
-                (int)((int)(DAT_ButtonY::instance)), OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d, blendStrength);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4b, iVar1,
+                (int)((int)(DAT_ButtonY::instance)), IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d, blendStrength);
         }
 
     }

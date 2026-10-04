@@ -18,7 +18,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
+    using DE::SHCDE::eSFX;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00423CD0
     void Buildings::UpdateGateHouseSmall()
@@ -32,10 +32,10 @@ namespace Map {
         uint uVar7;
         int local_14;
         int local_10[4];
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         local_14 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingVariation;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateGateDrawBridgeOpenCloseLogic,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateGateDrawBridgeOpenCloseLogic,
             DAT_BuildingsState::ptr)();
         iVar2 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].someX
@@ -129,18 +129,18 @@ namespace Map {
             if (bVar1 == 1) {
                 if (DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0) {
                     if (DAT_BuildingsState::instance.buildings[iVar2].animationIndex == 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[iVar2].x,
                             (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar2].y)),
-                            OpenSHC::DE::SHCDE::FX_PC_DROP);
+                            DE::SHCDE::FX_PC_DROP);
                     }
                     if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex
                         == 0x14) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x,
                             (int)((
                                 int)((short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y)),
-                            OpenSHC::DE::SHCDE::FX_PC_SLAM);
+                            DE::SHCDE::FX_PC_SLAM);
                     }
                 }
                 iVar2 = DAT_CurrentBuildingID::instance;
@@ -156,7 +156,7 @@ namespace Map {
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].pathLinkageRelated2 = 2;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
+                    Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
                     DAT_PathFindingState::ptr)(iVar2);
                 if (local_14 != 0x50) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof = 6;
@@ -166,10 +166,10 @@ namespace Map {
             if (bVar1 == 3) {
                 if ((DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0)
                     && (DAT_BuildingsState::instance.buildings[iVar2].animationIndex == 1)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar2].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar2].y)),
-                        OpenSHC::DE::SHCDE::FX_PC_LIFT);
+                        DE::SHCDE::FX_PC_LIFT);
                 }
                 iVar2 = DAT_CurrentBuildingID::instance;
                 bVar1 = DAT_BuildingDefinedData::instance.field141_0x6b28
@@ -177,7 +177,7 @@ namespace Map {
                 if ((char)bVar1 < '\x01') {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].pathLinkageRelated2 = 0;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
+                        Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
                         DAT_PathFindingState::ptr)(iVar2);
                 }
                 if (local_14 == 0x50) {

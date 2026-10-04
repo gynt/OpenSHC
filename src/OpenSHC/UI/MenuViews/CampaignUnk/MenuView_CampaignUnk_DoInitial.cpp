@@ -21,8 +21,8 @@ namespace UI {
             (DAT_MenuHandlerState::instance.currentMenu)->xPosition
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::DrawOuterMenuBorder)();
+            MACRO_CALL(UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
+            MACRO_CALL(UI::Rendering_Func::DrawOuterMenuBorder)();
         }
 
     }

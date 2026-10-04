@@ -30,14 +30,14 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::DE::SHCDE::eSFX;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Buildings::BuildingType;
-        using OpenSHC::Map::Buildings::BuildingTypeShort;
-        using OpenSHC::Map::Entities::EntityType;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::MappersEnum;
+        using DE::SHCDE::eSFX;
+        using Game::GameMode2;
+        using Map::Buildings::BuildingType;
+        using Map::Buildings::BuildingTypeShort;
+        using Map::Entities::EntityType;
+        using Map::Units::UnitType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00407190
         undefined4 EntityState::processEntityHitBuildingOrUnit(int entityID)
@@ -102,7 +102,7 @@ namespace Map {
                 return (undefined4)(0);
             }
             if ((DAT_TileMapState::instance.LogicLayer[_someTile] & 0x30) != 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::markEntityDestroyed, this)(entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::markEntityDestroyed, this)(entityID);
                 return (undefined4)(0);
             }
             _tile = _someTile * 2;
@@ -110,8 +110,8 @@ namespace Map {
                 DAT_TileMapState::instance.MiscDisplayLayer[_someTile]
                     = DAT_TileMapState::instance.MiscDisplayLayer[_someTile] | 0x1000;
                 EVar3 = this->entityArray[entityID].entityType;
-                if ((EVar3 == OpenSHC::Map::Entities::ET_BRAZIER)
-                    || (EVar3 == OpenSHC::Map::Entities::ET_HEADS_ON_SPIKES)) {
+                if ((EVar3 == Map::Entities::ET_BRAZIER)
+                    || (EVar3 == Map::Entities::ET_HEADS_ON_SPIKES)) {
                     _buildingID = this->entityArray[entityID].tile;
                     if (DAT_TileMapState::instance.BuildingLayer[_buildingID] == 0) {
                         if ((DAT_TileMapState::instance.LogicLayer[_buildingID] & 0x100U) != 0) {
@@ -128,40 +128,40 @@ namespace Map {
                         switch (DAT_BuildingsState::instance
                                 .buildings[DAT_TileMapState::instance.BuildingLayer[_buildingID]]
                                 .buildingType) {
-                        case OpenSHC::Map::Buildings::BT_STONEKEEP:
-                        case OpenSHC::Map::Buildings::BT_STRONGHOLD:
-                        case OpenSHC::Map::Buildings::BT_KEEPFOUR:
-                        case OpenSHC::Map::Buildings::BT_KEEPFIVE:
-                        case OpenSHC::Map::Buildings::BT_GATEHOUSELARGE:
-                        case OpenSHC::Map::Buildings::BT_GATEHOUSESMALL:
-                        case OpenSHC::Map::Buildings::BT_TOWER1:
-                        case OpenSHC::Map::Buildings::BT_TOWER2:
-                        case OpenSHC::Map::Buildings::BT_TOWER3:
-                        case OpenSHC::Map::Buildings::BT_TOWER4:
-                        case OpenSHC::Map::Buildings::BT_TOWER5:
-                            _y = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                        case Map::Buildings::BT_STONEKEEP:
+                        case Map::Buildings::BT_STRONGHOLD:
+                        case Map::Buildings::BT_KEEPFOUR:
+                        case Map::Buildings::BT_KEEPFIVE:
+                        case Map::Buildings::BT_GATEHOUSELARGE:
+                        case Map::Buildings::BT_GATEHOUSESMALL:
+                        case Map::Buildings::BT_TOWER1:
+                        case Map::Buildings::BT_TOWER2:
+                        case Map::Buildings::BT_TOWER3:
+                        case Map::Buildings::BT_TOWER4:
+                        case Map::Buildings::BT_TOWER5:
+                            _y = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile,
                                 DAT_TileMapState::ptr)(_buildingID);
                             this->entityArray[entityID].height = (short)_y;
                             goto LAB_00408150;
                         }
                     }
-                    if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
+                    if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingCost, DAT_BuildingsState::ptr)(
-                            OpenSHC::Commands::M_MAPPER_BRAZIER, (int*)&local_10, (int*)&local_4);
+                            Map::Buildings::BuildingsState_Func::getBuildingCost, DAT_BuildingsState::ptr)(
+                            Commands::M_MAPPER_BRAZIER, (int*)&local_10, (int*)&local_4);
                         piVar1 = DAT_GameState::instance
                                      .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                      .startResources
                             + 0xf;
                         *piVar1 = *piVar1 + local_4;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::markEntityDestroyed, this)(entityID);
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::markEntityDestroyed, this)(entityID);
                 } else {
                     _buildingID = this->entityArray[entityID].tile;
                     _y = DAT_TileMapState::instance.LogicLayer[_buildingID];
                     if (_y == 0) {
                         if (DAT_TileMapState::instance.BuildingLayer[_buildingID] == 0) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::markEntityDestroyed, this)(
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::markEntityDestroyed, this)(
                                 entityID);
                         }
                     } else if (DAT_TileMapState::instance.DamageLayer[_buildingID] != 0) {
@@ -188,16 +188,16 @@ namespace Map {
                     while (_buildingID = (int)(short)uVar4, _buildingID != 0) {
                         if ((this->entityArray[entityID].logicalState == 2)
                             && (BVar8
-                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                                = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                     DAT_UnitsState::ptr)(_buildingID, entityID, 0),
                                 BVar8 != FALSE)) {
-                            if (this->entityArray[entityID].entityType != OpenSHC::Map::Entities::ET_COW_FLYING) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::markEntityDestroyed, this)(
+                            if (this->entityArray[entityID].entityType != Map::Entities::ET_COW_FLYING) {
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::markEntityDestroyed, this)(
                                     entityID);
                                 return (undefined4)(0);
                             }
                             _y = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(_someTile, 0);
+                                Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(_someTile, 0);
                             this->entityArray[entityID].height = (short)_y;
                             goto LAB_004079b4;
                         }
@@ -205,8 +205,8 @@ namespace Map {
                     }
                 }
                 EVar3 = this->entityArray[entityID].entityType;
-                if (((EVar3 == OpenSHC::Map::Entities::ET_TREBUCHET) || (EVar3 == OpenSHC::Map::Entities::ET_CATAPULT))
-                    || ((EVar3 == OpenSHC::Map::Entities::ET_MANGONEL
+                if (((EVar3 == Map::Entities::ET_TREBUCHET) || (EVar3 == Map::Entities::ET_CATAPULT))
+                    || ((EVar3 == Map::Entities::ET_MANGONEL
                         || (0x50 < this->entityArray[entityID].velocityUnk)))) {
                     _buildingID = 1;
                     do {
@@ -218,11 +218,11 @@ namespace Map {
                             if (((DAT_UnitsState::instance.units[iVar11].field64_0x90 != 0)
                                     && (this->entityArray[entityID].logicalState == 2))
                                 && (BVar8
-                                    = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                         DAT_UnitsState::ptr)(iVar11, entityID, 1),
                                     BVar8 != FALSE)) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Entities::EntityState_Func::markEntityDestroyed, local_10)(entityID);
+                                    Map::Entities::EntityState_Func::markEntityDestroyed, local_10)(entityID);
                                 return (undefined4)(0);
                             }
                             uVar4 = DAT_UnitsState::instance.units[iVar11].nextUnitOnTheSameTile;
@@ -231,9 +231,9 @@ namespace Map {
                     } while (_buildingID < 8);
                 }
             }
-            if (this->entityArray[entityID].entityType == OpenSHC::Map::Entities::ET_COW_POISON_CLOUD) {
+            if (this->entityArray[entityID].entityType == Map::Entities::ET_COW_POISON_CLOUD) {
                 local_4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_someTile);
+                    Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_someTile);
                 _buildingID = 0;
                 do {
                     iVar11 = DAT_TileMapState::instance
@@ -242,11 +242,11 @@ namespace Map {
                     uVar4 = (short)DAT_TileMapState::instance.UnitLayer[iVar11];
                     while (iVar9 = (int)(short)uVar4, iVar9 != 0) {
                         _y = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(iVar11);
+                            Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(iVar11);
                         _x = (int)(local_4 - _y) >> 0x1f;
                         if (((int)((local_4 - _y ^ _x) - _x) < 0x78)
                             && (this->entityArray[entityID].logicalState == 2)) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                 DAT_UnitsState::ptr)(iVar9, entityID, 1);
                         }
                         uVar4 = DAT_UnitsState::instance.units[iVar9].nextUnitOnTheSameTile;
@@ -255,16 +255,16 @@ namespace Map {
                 } while (_buildingID < 8);
                 pPVar10 = DAT_EntityDefinedData::instance.field55_0xd84;
                 do {
-                    _buildingID = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::computeTileAlongAxisOffset,
+                    _buildingID = MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileAlongAxisOffset,
                         DAT_TileMapState::ptr)(_someTile, pPVar10->xOffset, (uint)((int)(pPVar10->yOffset)));
                     uVar4 = (short)DAT_TileMapState::instance.UnitLayer[_buildingID];
                     while (iVar11 = (int)(short)uVar4, iVar11 != 0) {
                         _y = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_buildingID);
+                            Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_buildingID);
                         _x = (int)(local_4 - _y) >> 0x1f;
                         if (((int)((local_4 - _y ^ _x) - _x) < 0x78)
                             && (this->entityArray[entityID].logicalState == 2)) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                 DAT_UnitsState::ptr)(iVar11, entityID, 2);
                         }
                         uVar4 = DAT_UnitsState::instance.units[iVar11].nextUnitOnTheSameTile;
@@ -272,14 +272,14 @@ namespace Map {
                     pPVar10 = pPVar10 + 1;
                 } while ((int)pPVar10 < 0x5b6e08);
             }
-            if ((((this->entityArray[entityID].entityType == OpenSHC::Map::Entities::ET_FIRE)
+            if ((((this->entityArray[entityID].entityType == Map::Entities::ET_FIRE)
                      && (_buildingID = this->entityArray[entityID].tile,
                          (DAT_TileMapState::instance.LogicLayer[_buildingID] & 8) != 0))
-                    && (_buildingID = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile,
+                    && (_buildingID = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
                             DAT_TileMapState::ptr)(_buildingID),
                         _buildingID != 0))
                 && (DAT_TileMapState::instance.pitchDitches[_buildingID].state == 1)) {
-                MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)((int)this->entityArray[entityID].owner,
+                MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)((int)this->entityArray[entityID].owner,
                     (int)((int)(DAT_TileMapState::instance.pitchDitches[_buildingID].x * 8)),
                     (int)((int)(DAT_TileMapState::instance.pitchDitches[_buildingID].y * 8)),
                     (int)((int)((uint)DAT_TileMapState::instance
@@ -287,7 +287,7 @@ namespace Map {
                     3);
                 DAT_TileMapState::instance.pitchDitches[_buildingID].state = 2;
             }
-            _y = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(
+            _y = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(
                 _someTile, 0);
             _buildingID = (int)*(short*)((int)DAT_TileMapState::instance.BuildingLayer + _tile);
             if (((_buildingID != 0)
@@ -307,7 +307,7 @@ namespace Map {
                             (DAT_TileMapState::instance.LogicLayer[_someTile] & 0x10000100U) == 0))
                     && (((int)(uint)DAT_TileMapState::instance.DefaultHeightLayer[_someTile]
                             < this->entityArray[entityID].startingHeight_2 + 0x32
-                        && ((MACRO_CALL(OpenSHC::Map::Entities_Func::IgniteFireAtMiniTile_Convenience)(
+                        && ((MACRO_CALL(Map::Entities_Func::IgniteFireAtMiniTile_Convenience)(
                                  (int)this->entityArray[entityID].owner,
                                  (int)((int)(this->entityArray[entityID].microX)),
                                  (int)((int)(this->entityArray[entityID].microY)),
@@ -316,13 +316,13 @@ namespace Map {
                                  2),
                             (DAT_TileMapState::instance.LogicLayer[_someTile] & 8) != 0
                                 && (_buildingID
-                                    = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile,
+                                    = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
                                         DAT_TileMapState::ptr)(_someTile),
                                     _buildingID != 0)))))) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[entityID].xPosition, (int)((int)(this->entityArray[entityID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_IGNITE_PITCH);
-                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)((int)this->entityArray[entityID].owner,
+                        DE::SHCDE::FX_IGNITE_PITCH);
+                    MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)((int)this->entityArray[entityID].owner,
                         (int)((int)(DAT_TileMapState::instance.pitchDitches[_buildingID].x * 8)),
                         (int)((int)(DAT_TileMapState::instance.pitchDitches[_buildingID].y * 8)),
                         (int)((int)((uint)DAT_TileMapState::instance
@@ -342,11 +342,11 @@ namespace Map {
                     iVar11 = (int)this->entityArray[entityID].microY;
                     iVar9 = (int)this->entityArray[entityID].microX;
                     _buildingID = DAT_TileMapState::instance.HeightLayer[this->entityArray[entityID].tile] + 2;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
                         1, 0, 0, iVar9, iVar11, _buildingID, iVar9, iVar11, _buildingID, ((EntityType)0x1f), 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[entityID].xPosition, (int)((int)(this->entityArray[entityID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_MED_PLOP);
+                        DE::SHCDE::FX_MED_PLOP);
                 }
                 goto LAB_00408150;
             }
@@ -358,11 +358,11 @@ namespace Map {
                 }
                 goto LAB_00408150;
             }
-            if (((EVar3 == OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT)
-                    || (EVar3 == OpenSHC::Map::Entities::ET_CROSSBOWARROW))
-                || ((EVar3 == OpenSHC::Map::Entities::ET_BALLISTA
-                    || ((EVar3 == OpenSHC::Map::Entities::ET_SLINGER
-                        || (EVar3 == OpenSHC::Map::Entities::ET_FIRETHROWER)))))) {
+            if (((EVar3 == Map::Entities::ET_ARROW_AND_DEFAULT)
+                    || (EVar3 == Map::Entities::ET_CROSSBOWARROW))
+                || ((EVar3 == Map::Entities::ET_BALLISTA
+                    || ((EVar3 == Map::Entities::ET_SLINGER
+                        || (EVar3 == Map::Entities::ET_FIRETHROWER)))))) {
                 if (this->entityArray[entityID].rng_2 == 2) {
                     _buildingID = 0;
                     do {
@@ -370,7 +370,7 @@ namespace Map {
                                      .directionTranslationMatrix[this->entityArray[entityID].yPosition][_buildingID]
                             + _someTile;
                         if (((DAT_TileMapState::instance.LogicLayer[iVar11] & 8) != 0)
-                            && (iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile,
+                            && (iVar11 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
                                     DAT_TileMapState::ptr)(iVar11),
                                 iVar11 != 0))
                             goto LAB_00407f73;
@@ -386,23 +386,23 @@ namespace Map {
                     iVar11 = (int)this->entityArray[entityID].microY;
                     iVar9 = (int)this->entityArray[entityID].microX;
                     _buildingID = DAT_TileMapState::instance.HeightLayer[this->entityArray[entityID].tile] + 2;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
                         1, 0, 0, iVar9, iVar11, _buildingID, iVar9, iVar11, _buildingID, ((EntityType)0x1f), 0);
                     sVar7 = this->entityArray[entityID].yPosition;
                     sVar5 = this->entityArray[entityID].xPosition;
                     this->entityArray[entityID].logicalState = 3;
                     local_c = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                        (int)sVar5, (int)((int)(sVar7)), OpenSHC::DE::SHCDE::FX_LITTLE_PLOP);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        (int)sVar5, (int)((int)(sVar7)), DE::SHCDE::FX_LITTLE_PLOP);
                     goto LAB_00408150;
                 }
                 if (((_y & 0x10000100) == 0)
                     && ((_buildingID == 0
                         || ((((BVar6 = DAT_BuildingsState::instance.buildings[_buildingID].buildingType,
-                                  BVar6 != OpenSHC::Map::Buildings::BT_STONEKEEP
-                                      && (BVar6 != OpenSHC::Map::Buildings::BT_STRONGHOLD))
-                                 && (BVar6 != OpenSHC::Map::Buildings::BT_KEEPFOUR))
-                            && (BVar6 != OpenSHC::Map::Buildings::BT_KEEPFIVE)))))) {
+                                  BVar6 != Map::Buildings::BT_STONEKEEP
+                                      && (BVar6 != Map::Buildings::BT_STRONGHOLD))
+                                 && (BVar6 != Map::Buildings::BT_KEEPFOUR))
+                            && (BVar6 != Map::Buildings::BT_KEEPFIVE)))))) {
                     if ((_y & 8) == 0) {
                         if (_buildingID == 0) {
                             this->entityArray[entityID].someCounter_OR_hitGround = 40;
@@ -417,17 +417,17 @@ namespace Map {
                                     || ((_y & 0xf000000) != 0))))
                                 goto LAB_00408150;
                             if (DAT_UnitsState::instance.units[_entityOriginUnitID].unitType
-                                == OpenSHC::Map::Units::UT_S_FBALLISTA) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processDamageToBuilding,
+                                == Map::Units::UT_S_FBALLISTA) {
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
                                     DAT_TileMapState::ptr)(_someTile,
                                     (uint)((int)((int)this->entityArray[entityID].xPosition)),
                                     (uint)((int)((int)this->entityArray[entityID].yPosition)), 10, 0,
                                     (int)((int)(this->entityArray[entityID].owner)), FALSE, _entityOriginUnitID);
                                 _buildingHealth = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::TileMapState_Func::getNonFarmFieldBuildingHealthAtTileOr1000,
+                                    Map::TileMapState_Func::getNonFarmFieldBuildingHealthAtTileOr1000,
                                     DAT_TileMapState::ptr)(_someTile);
                                 if (_buildingHealth < 50) {
-                                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(
+                                    MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(
                                         (int)this->entityArray[entityID].owner,
                                         (int)((int)(this->entityArray[entityID].xPosition * 8)),
                                         (int)((int)(this->entityArray[entityID].yPosition * 8)),
@@ -438,7 +438,7 @@ namespace Map {
                                     goto LAB_00408148;
                                 }
                             } else {
-                                if (this->entityArray[entityID].entityType == OpenSHC::Map::Entities::ET_BALLISTA) {
+                                if (this->entityArray[entityID].entityType == Map::Entities::ET_BALLISTA) {
                                     _playerID = this->entityArray[entityID].owner;
                                     _yPosition = this->entityArray[entityID].yPosition;
                                     _xPosition = this->entityArray[entityID].xPosition;
@@ -449,7 +449,7 @@ namespace Map {
                                     _xPosition = this->entityArray[entityID].xPosition;
                                     _buildingID = 1;
                                 }
-                                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processDamageToBuilding,
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
                                     DAT_TileMapState::ptr)(_someTile, (uint)((int)((int)_xPosition)),
                                     (uint)((int)((int)_yPosition)), _buildingID, 0, (int)((int)(_playerID)), FALSE,
                                     _entityOriginUnitID);
@@ -458,15 +458,15 @@ namespace Map {
                         }
                     } else {
                         if ((this->entityArray[entityID].rng_2 == 2)
-                            && (iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile,
+                            && (iVar11 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
                                     DAT_TileMapState::ptr)(_someTile),
                                 iVar11 != 0)) {
                         LAB_00407f73:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)this->entityArray[entityID].xPosition,
                                 (int)((int)(this->entityArray[entityID].yPosition)),
-                                OpenSHC::DE::SHCDE::FX_IGNITE_PITCH);
-                            MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(
+                                DE::SHCDE::FX_IGNITE_PITCH);
+                            MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(
                                 (int)this->entityArray[entityID].owner,
                                 (int)((int)(DAT_TileMapState::instance.pitchDitches[iVar11].x * 8)),
                                 (int)((int)(DAT_TileMapState::instance.pitchDitches[iVar11].y * 8)),
@@ -485,21 +485,21 @@ namespace Map {
                         || ((this->entityArray[entityID].hasDoneEffectUnk != 0
                             || (0 < this->entityArray[entityID].field80_0xba))))
                         goto LAB_00408150;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::handleProjectileWallBounce, local_10)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::handleProjectileWallBounce, local_10)(
                         entityID);
                 }
-            } else if (((EVar3 == OpenSHC::Map::Entities::ET_TREBUCHET)
-                           || (EVar3 == OpenSHC::Map::Entities::ET_CATAPULT))
-                || (EVar3 == OpenSHC::Map::Entities::ET_MANGONEL)) {
+            } else if (((EVar3 == Map::Entities::ET_TREBUCHET)
+                           || (EVar3 == Map::Entities::ET_CATAPULT))
+                || (EVar3 == Map::Entities::ET_MANGONEL)) {
                 this->entityArray[entityID].someCounter_OR_hitGround = 1;
                 _y = DAT_TileMapState::instance.LogicLayer[_someTile];
                 _damageUnk = 10;
                 local_4 = _y & 0x40100001;
                 _collateralDamageUnk = 10;
                 if (local_4 != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[entityID].xPosition, (int)((int)(this->entityArray[entityID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_ROCK_SPLASH);
+                        DE::SHCDE::FX_ROCK_SPLASH);
                 }
                 _x = _y & 0x100;
                 if (((_x == 0) && ((_y & 0x10000400) == 0))
@@ -509,10 +509,10 @@ namespace Map {
                     *psVar2 = *psVar2 + 1;
                     if ((_y & 0x4a5014b1) == 0) {
                         local_4 = _x;
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)this->entityArray[entityID].xPosition,
                             (int)((int)(this->entityArray[entityID].yPosition)),
-                            OpenSHC::DE::SHCDE::FX_ROCK_HIT_GROUND);
+                            DE::SHCDE::FX_ROCK_HIT_GROUND);
                         _y = this->entityArray[entityID].rng_1 & 0x80000007;
                         this->entityArray[entityID].someCounter_OR_hitGround = 0x28;
                         local_c = 0;
@@ -523,7 +523,7 @@ namespace Map {
                             do {
                                 _buildingID = (int)this->entityArray[entityID].microY;
                                 iVar11 = (int)this->entityArray[entityID].microX;
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                                     local_10)(2, 0, 0, iVar11, _buildingID,
                                     (int)((int)(DAT_TileMapState::instance.HeightLayer[this->entityArray[entityID].tile]
                                         + 2)),
@@ -548,7 +548,7 @@ namespace Map {
                             do {
                                 _buildingID = (int)this->entityArray[entityID].microY;
                                 iVar11 = (int)this->entityArray[entityID].microX;
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                                     local_10)(1, 0, 0, iVar11, _buildingID,
                                     (int)((int)(DAT_TileMapState::instance.HeightLayer[this->entityArray[entityID].tile]
                                         + 2)),
@@ -565,12 +565,12 @@ namespace Map {
                         iVar11 = (int)this->entityArray[entityID].microY;
                         iVar9 = (int)this->entityArray[entityID].microX;
                         _buildingID = DAT_TileMapState::instance.HeightLayer[this->entityArray[entityID].tile] + 2;
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, local_10)(
                             0, 0, 0, iVar9, iVar11, _buildingID, iVar9, iVar11, _buildingID, ((EntityType)0x1f), 0);
                     }
                 } else {
                     local_4 = _x;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileImpactDebris, local_10)(
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileImpactDebris, local_10)(
                         entityID);
                     _entityType_2 = this->entityArray[entityID].entityType;
                     if (_entityType_2 == 3) {
@@ -598,23 +598,23 @@ namespace Map {
                         _collateralDamageUnk = 0;
                     }
                     if (_entityType_2 == 4) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processDamageToBuilding,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
                             DAT_TileMapState::ptr)(_someTile, (uint)((int)((int)this->entityArray[entityID].xPosition)),
                             (uint)((int)((int)this->entityArray[entityID].yPosition)), (int)((int)(_damageUnk)), 0,
                             (int)((int)(-this->entityArray[entityID].owner)), FALSE,
                             (int)((int)(this->entityArray[entityID].unitID_OR_seaGullID)));
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processEntityDamageToBuildingCollateral,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::processEntityDamageToBuildingCollateral,
                             DAT_TileMapState::ptr)(_someTile, (uint)((int)((int)this->entityArray[entityID].xPosition)),
                             (uint)((int)((int)this->entityArray[entityID].yPosition)),
                             (int)((int)(_collateralDamageUnk)), (int)((int)(-this->entityArray[entityID].owner)), 0,
                             (int)((int)(this->entityArray[entityID].unitID_OR_seaGullID)));
                     } else {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processDamageToBuilding,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
                             DAT_TileMapState::ptr)(_someTile, (uint)((int)((int)this->entityArray[entityID].xPosition)),
                             (uint)((int)((int)this->entityArray[entityID].yPosition)), (int)((int)(_damageUnk)), 0,
                             (int)((int)(this->entityArray[entityID].owner)), FALSE,
                             (int)((int)(this->entityArray[entityID].unitID_OR_seaGullID)));
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::processEntityDamageToBuildingCollateralThunk,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::processEntityDamageToBuildingCollateralThunk,
                             DAT_TileMapState::ptr)(_someTile, (uint)((int)((int)this->entityArray[entityID].xPosition)),
                             (uint)((int)((int)this->entityArray[entityID].yPosition)),
                             (int)((int)(_collateralDamageUnk)), (int)((int)(this->entityArray[entityID].owner)), 0);
@@ -622,18 +622,18 @@ namespace Map {
                     /*
                       woodhit_02.wav ?
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[entityID].xPosition, (int)((int)(this->entityArray[entityID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_ROCK_HIT_WALL);
+                        DE::SHCDE::FX_ROCK_HIT_WALL);
                 }
             } else {
-                if (EVar3 != OpenSHC::Map::Entities::ET_COW_FLYING)
+                if (EVar3 != Map::Entities::ET_COW_FLYING)
                     goto LAB_00408150;
             LAB_004079b4:
                 if (this->entityArray[entityID].hasDoneEffectUnk == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)this->entityArray[entityID].xPosition, (int)((int)(this->entityArray[entityID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_COW_SPLAT);
+                        DE::SHCDE::FX_COW_SPLAT);
                     this->entityArray[entityID].hasDoneEffectUnk = 1;
                     if ((DAT_TileMapState::instance.LogicLayer[_someTile] & 0x401000b1U) == 0) {
                         this->entityArray[entityID].someCounter_OR_hitGround = 0x28;
@@ -642,18 +642,18 @@ namespace Map {
                         if (_randomNumber < 8) {
                             _randomNumber2 = 8 - _randomNumber;
                             do {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                                     this)(0, (undefined4)((int)((int)this->entityArray[entityID].owner)), 0,
                                     (int)((int)(this->entityArray[entityID].microX)),
                                     (int)((int)(this->entityArray[entityID].microY)),
                                     (int)((int)(this->entityArray[entityID].height)), 0, 0, 0,
-                                    OpenSHC::Map::Entities::ET_COW_POISON_CLOUD, 0);
+                                    Map::Entities::ET_COW_POISON_CLOUD, 0);
                                 _randomNumber2 = _randomNumber2 + -1;
                             } while (_randomNumber2 != 0);
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)this->entityArray[entityID].xPosition,
-                            (int)((int)(this->entityArray[entityID].yPosition)), OpenSHC::DE::SHCDE::FX_FLIES);
+                            (int)((int)(this->entityArray[entityID].yPosition)), DE::SHCDE::FX_FLIES);
                     } else {
                         this->entityArray[entityID].someCounter_OR_hitGround = 1;
                     }

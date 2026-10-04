@@ -13,18 +13,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A310
     void Init::Constructor_MenuView_Unknown33()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown33::ptr)(
-            OpenSHC::UI::Enums::MVT_UNKNOWN_33,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(OpenSHC::Global_Func::DoNothing),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(OpenSHC::Global_Func::DoNothing),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::Unknown33_Func::MenuView_Unknown33_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_Unknown33));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown33::ptr)(
+            UI::Enums::MVT_UNKNOWN_33,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(Global_Func::DoNothing),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::Unknown33_Func::MenuView_Unknown33_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown33));
         return;
     }
 

@@ -16,7 +16,7 @@ namespace UI {
         int iVar4;
         int iVar5;
         MACRO_CALL_MEMBER(
-            OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
+            UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
         iVar5 = (int)DAT_PencilRenderCore::instance.surfacePtr
             + screenY * DAT_PencilRenderCore::instance.horizontalByteSize + screenX * 2;
         iVar4 = 0x1a7f854;

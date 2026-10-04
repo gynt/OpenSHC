@@ -12,15 +12,15 @@ namespace UI {
     {
         FILE* _File;
         int* dstBuffer;
-        _File = MACRO_CALL(OpenSHC::OS_Func::_fopen)(filename, "rb");
+        _File = MACRO_CALL(OS_Func::_fopen)(filename, "rb");
         if (_File != (FILE*)0x0) {
-            MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, 4, FILE_BEGIN);
+            MACRO_CALL(OS_Func::_fseek)(_File, 4, FILE_BEGIN);
             dstBuffer = DAT_MissionScores::instance;
             do {
-                MACRO_CALL(OpenSHC::OS_Func::_fread)(dstBuffer, 4, 1, _File);
+                MACRO_CALL(OS_Func::_fread)(dstBuffer, 4, 1, _File);
                 dstBuffer = dstBuffer + 1;
             } while ((int)dstBuffer < 0xed27f0);
-            MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
+            MACRO_CALL(OS_Func::_fclose)(_File);
         }
         return;
     }

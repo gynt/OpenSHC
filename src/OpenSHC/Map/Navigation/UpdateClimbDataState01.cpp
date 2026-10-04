@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::States::UnitState;
+    using Map::Units::States::UnitState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004A4D60
     void Navigation::UpdateClimbDataState01()

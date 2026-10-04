@@ -18,10 +18,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Game::GameMode2;
+    using UI::Enums::DisplayElementID;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1C30
     void DisplayElements::RenderAndPlayKeepAndGranaryPlacementInfoDisplayElement(
@@ -37,19 +37,19 @@ namespace UI {
         uint color2;
         int fontSize;
         int blendStrength;
-        BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if ((BVar1 == FALSE) || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL)) {
-            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
+        BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        if ((BVar1 == FALSE) || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL)) {
+            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
         }
         numInGroup = whichBuildingIsMissing + 9;
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup);
-        iVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, numInGroup);
+        iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(pcVar2, 0, 0, 0x244, 0, 0, 1);
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup);
-        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, numInGroup);
+        iVar4 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(pcVar2, 0, 0, 0x244, 0, 0, 2);
         blendStrength = 0;
         fontSize = 0x12;
@@ -58,9 +58,9 @@ namespace UI {
         maxWidth = 0x244;
         iVar3 = posY - iVar3;
         iVar4 = posX - iVar4;
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, numInGroup);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
             pcVar2, iVar4, iVar3, maxWidth, color1, color2, fontSize, blendStrength);
         if (whichBuildingIsMissing == 1) {
             if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance != FALSE) {}
@@ -76,7 +76,7 @@ namespace UI {
              */
             pcVar2 = "other_warning2.wav";
         }
-        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar2);
+        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar2);
         BOOL_RelatedToInitialGranaryAndKeepPlacement::instance = TRUE;
     }
 

@@ -19,24 +19,24 @@ namespace UI {
         void UnusedExtremeAd::MenuView_UnusedExtremeAd_DoEveryFrame()
         {
             int iVar1;
-            iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::TicksSinceCounterStart)();
+            iVar1 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
             if (iVar1 != 0) {
                 if (DAT_MouseState::instance.rightClickStop != 0) {
-                    MACRO_CALL(OpenSHC::UI::Credits_Func::StopCreditsPlaybackAndSounds)();
+                    MACRO_CALL(UI::Credits_Func::StopCreditsPlaybackAndSounds)();
                 }
                 if (DAT_MouseState::instance.leftClickStart != 0) {
-                    iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::FindCampaignMapHotspotAtMouse)();
+                    iVar1 = MACRO_CALL(UI::Helpers_Func::FindCampaignMapHotspotAtMouse)();
                     if (iVar1 == 1) {
-                        MACRO_CALL(OpenSHC::UI::Credits_Func::EndCreditsSegmentAndAdvanceToNext)();
+                        MACRO_CALL(UI::Credits_Func::EndCreditsSegmentAndAdvanceToNext)();
                         DAT_00ed278c::instance = DAT_00ed278c::instance + 1;
                         if (DAT_00ed278c::instance == 3) {
                             DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                         }
                     }
                 }
-                MACRO_CALL(OpenSHC::Rendering_Func::ProcessCreditsScriptCommands)();
+                MACRO_CALL(Rendering_Func::ProcessCreditsScriptCommands)();
                 if (DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance) {
-                    MACRO_CALL(OpenSHC::Rendering_Func::RenderActiveCreditsElements)();
+                    MACRO_CALL(Rendering_Func::RenderActiveCreditsElements)();
                 }
                 INT_00ed3140::instance = INT_00ed3140::instance + 1;
                 if (DAT_UnknownBinkCount::instance <= DAT_UnknownBinkIndex::instance) {

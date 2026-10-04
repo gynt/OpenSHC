@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00520F70
         void TroopValueState::aiControlNonSkirmishUnitMovement()
@@ -28,17 +28,17 @@ namespace Map {
             int _index;
             int _pitchTile;
             byte _nTribes;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::decrementTileMap1104, this)();
-            if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                    && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {
+            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::decrementTileMap1104, this)();
+            if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                    && (DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER))
+                && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT)) {
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .keep.id
                     < 1) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::updateAttackInfoTick, this)();
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateAttackInfoTick, this)();
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(0);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(0);
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();
                 if (DAT_TroopValueState::instance.attackInfo.aiTroops == 0) {
                     DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 = 0;
                 }
@@ -76,7 +76,7 @@ namespace Map {
                     if ((DAT_TroopValueState::instance.attackInfo.attacker != 1)
                         && ((0 < DAT_TroopValueState::instance.attackInfo.attacker
                             || (_hasTribe = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::searchTribeWithProperties, this)(_index),
+                                    Map::Units::TroopValueState_Func::searchTribeWithProperties, this)(_index),
                                 _hasTribe != FALSE)))) {
                         _nTribes = DAT_TroopValueState::instance.attackInfo.nof_tribes[_index];
                         DAT_GameState::instance.playerDataArray[DAT_TroopValueState::instance.attackInfo.attacker]
@@ -91,31 +91,31 @@ namespace Map {
                                 && (DAT_TroopValueState::instance.attackInfo.value3Array01[_index] != 6)) {
                                 DAT_TroopValueState::instance.attackInfo.attackWaveTicker[_index] = 0;
                                 DAT_TroopValueState::instance.attackInfo.value3Array01[_index] = 6;
-                                MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::handleBattleEndMusicTransition,
+                                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::handleBattleEndMusicTransition,
                                     DAT_SoundSystemState::ptr)();
                             }
                             iVar2 = DAT_TroopValueState::instance.attackInfo.value3Array01[_index];
                             if (iVar2 == 0) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::initializeOrAdvanceAttackWave, this)(
+                                    Map::Units::TroopValueState_Func::initializeOrAdvanceAttackWave, this)(
                                     _index);
                             } else if (iVar2 == 1) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::advanceAttackWaveStaging, this)(_index);
+                                    Map::Units::TroopValueState_Func::advanceAttackWaveStaging, this)(_index);
                             } else if (iVar2 == 2) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::updateInProgressAttackWave,
+                                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateInProgressAttackWave,
                                     this)(_index);
                             } else if (iVar2 == 3) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::executeAttackWaveTargetAssignment, this)(
+                                    Map::Units::TroopValueState_Func::executeAttackWaveTargetAssignment, this)(
                                     _index);
                             } else if (iVar2 == 4) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::executeDelayedAttackWaveTargetAssignment,
+                                    Map::Units::TroopValueState_Func::executeDelayedAttackWaveTargetAssignment,
                                     this)(_index);
                             } else if ((iVar2 != 5) && (iVar2 == 6)) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::updateActiveAttackWaveState, this)(
+                                    Map::Units::TroopValueState_Func::updateActiveAttackWaveState, this)(
                                     _index);
                             }
                         }

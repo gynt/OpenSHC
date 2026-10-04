@@ -9,7 +9,7 @@ namespace Text {
     void TextManager::renderTextToScreen2(char* textAddress, int xParam, int yParam, TextAlignment alignment,
         BGR24 color, int fontSize, BOOLEnum keepOffsetX)
     {
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, this)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(
             textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, 0);
         return;
     }

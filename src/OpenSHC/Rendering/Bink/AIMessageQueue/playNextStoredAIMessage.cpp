@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace Rendering {
     namespace Bink {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BE960
         BOOLEnum AIMessageQueue::playNextStoredAIMessage()
@@ -26,7 +26,7 @@ namespace Rendering {
             char (*pacVar8)[100];
             if (this->currentMessageVfxFile_0xc[0] != '\0') {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
+                    Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
             }
             this->mbr_0x928 = 0;
             DAT_GameCore::instance.countdown = 2;
@@ -39,7 +39,7 @@ namespace Rendering {
                 this->currentMessageUnknownValue_0x4 = this->savedMessageUnknownValue_0x104[0];
                 this->currentMessageUnknownValue2_0xd4 = this->savedMessageUnknownValue2_0x8fc[0];
                 this->currentMessageText_0x8 = this->savedMessageTextPtr_0xdc[0];
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playVideoOverMap, this)(
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playVideoOverMap, this)(
                     this->savedMessageVfxFile_0x12c[0], (char*)((int)(this->savedMessageSfxFile_0x514[0])));
                 iVar7 = 1;
                 if (1 < this->storedMessages_0x924) {

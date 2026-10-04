@@ -16,9 +16,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::Building;
+    using Map::Buildings::BuildingLogicalState;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::Building;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A520
     void Version::UpgradePitchDitchBuildingIntoPitchDitchObject()
@@ -29,7 +29,7 @@ namespace Map {
         puVar3 = &DAT_BuildingsState::instance.buildings[1];
         do {
             if ((puVar3->logicalState != ((BuildingLogicalState)0))
-                && (puVar3->buildingType == OpenSHC::Map::Buildings::BT_PITCHDITCH)) {
+                && (puVar3->buildingType == Map::Buildings::BT_PITCHDITCH)) {
                 uVar2 = puVar3->currentTilePositionAdjusted;
                 uVar1 = puVar3->y;
                 DAT_TileMapState::instance.BuildingLayer[uVar2] = 0;
@@ -37,12 +37,12 @@ namespace Map {
                     = DAT_TileMapState::instance.LogicLayer[uVar2] & 0xfffffbff;
                 DAT_TileMapState::instance.BuildingWasLayer[uVar2] = '\0';
                 DAT_TileMapState::instance.HeightLayer[uVar2] = DAT_TileMapState::instance.DefaultHeightLayer[uVar2];
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placePitchDitch, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::placePitchDitch, DAT_TileMapState::ptr)(
                     (int)puVar3->owner, (uint)((int)((int)(short)puVar3->x)), (uint)((int)((int)(short)uVar1)));
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
+                    Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
                     4, (uint)((int)((int)(short)puVar3->x)), (uint)((int)((int)(short)puVar3->y)));
-                MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     812, '\0', puVar3);
             }
             puVar3 = puVar3 + 0xcb;

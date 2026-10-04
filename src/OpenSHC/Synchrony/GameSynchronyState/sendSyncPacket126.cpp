@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004880E0
     void GameSynchronyState::sendSyncPacket126()
@@ -19,10 +19,10 @@ namespace Synchrony {
         DWORD _now;
         BOOLEnum BVar1;
         _now = timeGetTime();
-        if (((this->currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                && (this->currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if (((this->currentGameMode != Game::GM_SOLITARY)
+                && (this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
             && (this->DPLAYX_4A != (IDirectPlay4A*)0x0)) {
-            BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 != FALSE) {
                 this->syncRelatedCounter = this->syncRelated2 + '\x01';
                 this->connectionLagInfoArray[0].mapTimeInTicks = DAT_GameCore::instance.mapTimeInTicks;
@@ -59,7 +59,7 @@ namespace Synchrony {
                                                             (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
                 if ((this->DPLAYX_SendAndReceiveREsult != 0) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
+                        Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
                 }
             }
         }

@@ -21,11 +21,11 @@
 namespace OpenSHC {
 namespace Game {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Game::TrailType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using Game::TrailType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004C68D0
     void Skirmish::SetupSkirmishMode(int skirmishTrailMission)
@@ -39,18 +39,18 @@ namespace Game {
         CampaignTrailMission* pCVar7;
         dword _startDateInMonths;
         pCVar7 = DAT_SkirmishDefinedData::instance.SkirmishTrailMissions + skirmishTrailMission;
-        if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+        if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
             pCVar7 = DAT_SkirmishDefinedData::instance.ExtremeTrailMissions + skirmishTrailMission;
-        } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+        } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
             pCVar7 = DAT_SkirmishDefinedData::instance.WarchestTrailMissions + skirmishTrailMission;
         }
         MACRO_CALL_MEMBER(
-            OpenSHC::Synchrony::GameSynchronyState_Func::setupSkirmishLobby, DAT_GameSynchronyState::ptr)();
+            Synchrony::GameSynchronyState_Func::setupSkirmishLobby, DAT_GameSynchronyState::ptr)();
         DAT_GameSynchronyState::instance.isHost = TRUE;
-        DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER;
+        DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SKIRMISH_SINGLE_PLAYER;
         DAT_GameSynchronyState::instance.DPLAYX_ReceivedPlayerID = 1;
-        DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
-        MACRO_CALL(OpenSHC::OS_Func::_memset)(
+        DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
+        MACRO_CALL(OS_Func::_memset)(
             DAT_GameSynchronyState::instance.DAT_PlayerNames, 0, (size_t)((int)(2250)));
         piVar2 = DAT_GameSynchronyState::instance.currentAIArray;
         do {
@@ -60,7 +60,7 @@ namespace Game {
             piVar2 = piVar2 + 1;
         } while ((int)piVar2 < 0x191dea0);
         pcVar3 = MACRO_CALL_MEMBER(
-            OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
         pacVar6 = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
         do {
             cVar1 = *pcVar3;
@@ -68,8 +68,8 @@ namespace Game {
             pcVar3 = pcVar3 + 1;
             pacVar6 = (char (*)[250])(*pacVar6 + 1);
         } while (cVar1 != '\0');
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-            OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
         DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[0] = 1;
         DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[1] = 1;
         DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[2] = 1;
@@ -87,7 +87,7 @@ namespace Game {
             do {
                 iVar5 = iVar4 + 1;
                 DAT_GameSynchronyState::instance.currentAIArray[iVar4 + 1] = *piVar2;
-                MACRO_CALL(OpenSHC::Synchrony_Func::ResetAiVariationArrayValue)(iVar5);
+                MACRO_CALL(Synchrony_Func::ResetAiVariationArrayValue)(iVar5);
                 piVar2 = piVar2 + 1;
                 iVar4 = iVar5;
             } while (iVar5 < pCVar7->numberOfPlayers);
@@ -131,21 +131,21 @@ namespace Game {
         DAT_GameSynchronyState::instance.skirmishGameIntensityType = pCVar7->startLevels;
         piVar2 = &pCVar7->aiv1;
         DAT_GameCore::instance.isSkirmishTrail = TRUE;
-        if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+        if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
             DAT_GameCore::instance.extremeTrailProgress = skirmishTrailMission;
-            MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
+            MACRO_CALL(UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
             _startDateInMonths
                 = DAT_GameCore::instance.extremeTrailStartDatesInMonths[DAT_GameCore::instance.extremeTrailProgress];
             DAT_GameCore::instance.extremeTrailStartDateMonths = _startDateInMonths;
-        } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+        } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
             DAT_GameCore::instance.warchestTrailProgress = skirmishTrailMission;
-            MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
+            MACRO_CALL(UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
             _startDateInMonths
                 = DAT_GameCore::instance.warchestTrailStartDatesInMonths[DAT_GameCore::instance.warchestTrailProgress];
             DAT_GameCore::instance.warchestTrailStartDateMonths = _startDateInMonths;
         } else {
             DAT_GameCore::instance.skirmishTrailProgress = skirmishTrailMission;
-            MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
+            MACRO_CALL(UI::Actions_Func::LaunchSkirmishGame)((int)piVar2);
             _startDateInMonths
                 = DAT_GameCore::instance.skirmishTrailStartDateInMonths[DAT_GameCore::instance.skirmishTrailProgress];
             DAT_GameCore::instance.skirmishTrailStartDateMonths = _startDateInMonths;

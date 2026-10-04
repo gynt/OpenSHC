@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522F70
         void TribesState::spawnUnitsForAITribe(
@@ -26,21 +26,21 @@ namespace Map {
                 microXPosition = param_2 * 8;
                 param_2 = param_6;
                 do {
-                    unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    unitID = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         param_4, param_4, microXPosition, param_3 * 8, 8, param_5);
                     if (unitID != 0) {
                         DAT_UnitsState::instance.units[unitID].calculatedOwnerPlayerIndex = param_7;
                         UVar1 = DAT_UnitsState::instance.units[unitID].unitType;
-                        if ((((UVar1 == OpenSHC::Map::Units::UT_E_ARCHER) || (UVar1 == OpenSHC::Map::Units::UT_E_XBOW))
-                                || ((UVar1 == OpenSHC::Map::Units::UT_A_ARCHER
-                                    || ((UVar1 == OpenSHC::Map::Units::UT_A_SLINGER
-                                        || (UVar1 == OpenSHC::Map::Units::UT_A_HARCHER))))))
-                            || (UVar1 == OpenSHC::Map::Units::UT_A_FIRETHROWER)) {
+                        if ((((UVar1 == Map::Units::UT_E_ARCHER) || (UVar1 == Map::Units::UT_E_XBOW))
+                                || ((UVar1 == Map::Units::UT_A_ARCHER
+                                    || ((UVar1 == Map::Units::UT_A_SLINGER
+                                        || (UVar1 == Map::Units::UT_A_HARCHER))))))
+                            || (UVar1 == Map::Units::UT_A_FIRETHROWER)) {
                             aiUnitBehaviourType = 0x11;
                         } else {
                             aiUnitBehaviourType = 0x14;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(
+                        MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(
                             unitID, aiUnitBehaviourType);
                     }
                     param_2 = param_2 + -1;

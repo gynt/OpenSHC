@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F950
         void TroopValueState::processSpottedEnemyTiles()
@@ -24,10 +24,10 @@ namespace Map {
                     }
                     if (piVar3->value == 100) {
                         BVar1 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
+                            Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
                             iVar2, this->attackInfo.pitchRelatedPlayerID, this->attackInfo.playerID_0x2c850);
                         if (BVar1 != FALSE) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                   giveLightPitchInstructionToUnitClosestToPitch,
                                 this)(iVar2);
                         }

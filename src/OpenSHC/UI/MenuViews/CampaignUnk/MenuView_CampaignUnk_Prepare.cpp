@@ -32,9 +32,9 @@ namespace UI {
             int iVar4;
             int* piVar5;
             int iVar6;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
+            MACRO_CALL(UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
             if (INT_00ed3110::instance == 0) {
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::ParseCampaignMapHotspotBitmap)();
+                MACRO_CALL(UI::Helpers_Func::ParseCampaignMapHotspotBitmap)();
             }
             iVar3 = 0;
             INT_00ed27b0::instance = 0;
@@ -125,58 +125,58 @@ namespace UI {
             INT_00ed3068::instance = 0;
             INT_00ec0838::instance = 0;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_01.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_02.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_03.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_04.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_05.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_06.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_07.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_08.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_09.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_10.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_11.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_12.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_13.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_14.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_15.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_16.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_17.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_18.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_19.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGFX8,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
                 DAT_TextureRenderCoreObject::ptr)("campaign_map_england_20.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("map_pig.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("map_rat.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("map_snake.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("map_wolf.tgx");
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
-            MACRO_CALL(OpenSHC::Rendering_Func::TicksStartCounter)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(Rendering_Func::TicksStartCounter)();
             return;
         }
 

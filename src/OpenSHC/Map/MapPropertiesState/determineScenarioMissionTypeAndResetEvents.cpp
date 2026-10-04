@@ -12,10 +12,10 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::ScenarioEvents::IngameScenarioEventItemContent;
-    using OpenSHC::Map::MapType2;
-    using OpenSHC::Map::Units::Unit;
-    using OpenSHC::Map::Units::UnitLogicState;
+    using Game::ScenarioEvents::IngameScenarioEventItemContent;
+    using Map::MapType2;
+    using Map::Units::Unit;
+    using Map::Units::UnitLogicState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B7980
     void MapPropertiesState::determineScenarioMissionTypeAndResetEvents()
@@ -41,13 +41,13 @@ namespace Map {
         }
         psVar5 = &DAT_UnitsState::instance.units[1];
         do {
-            if ((psVar5->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE) && (1 < psVar5->owner)) {
+            if ((psVar5->logicalState != Map::Units::ULS_INVISIBLE) && (1 < psVar5->owner)) {
                 bVar2 = true;
                 break;
             }
             psVar5 = psVar5 + 0x248;
         } while ((int)psVar5 < 0x1651422);
-        if (this->SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
+        if (this->SEC_U3_MapType2_1 == Map::MT_SIEGE) {
             iVar6 = 0;
             pSVar4 = &this->SEC_SiegeInformation;
             do {
@@ -69,7 +69,7 @@ namespace Map {
         }
         if (bVar2) {
         LAB_004b7a45:
-            this->scenarionMissionType = (this->SEC_U3_MapType2_1 != OpenSHC::Map::MT_SIEGE) + 2;
+            this->scenarionMissionType = (this->SEC_U3_MapType2_1 != Map::MT_SIEGE) + 2;
         } else {
             this->scenarionMissionType = (int)bVar3;
         }
@@ -77,7 +77,7 @@ namespace Map {
         DAT_GameState::instance.mapAndTime.year = this->SEC_StartingYear;
         iVar6 = 0;
         if (0 < this->eventsCount) {
-            psVar4 = (OpenSHC::Map::Units::Unit*)(&this->scenarioEvents[0].header.pre_done);
+            psVar4 = (Map::Units::Unit*)(&this->scenarioEvents[0].header.pre_done);
             do {
                 psVar4->moveRelatedFlag = 0;
                 psVar4->owner = 0;

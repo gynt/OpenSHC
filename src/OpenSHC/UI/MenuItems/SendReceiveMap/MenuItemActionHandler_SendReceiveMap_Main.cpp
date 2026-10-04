@@ -19,10 +19,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::IO::FileResourceType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using IO::FileResourceType;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B10D0
         void SendReceiveMap::MenuItemActionHandler_SendReceiveMap_Main(int param_1, ...)
@@ -40,7 +40,7 @@ namespace UI {
             if (param_1 != 3) {
                 if ((param_1 == 0x44) && (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 0)) {
                     DAT_GameSynchronyState::instance.DAT_MapFileReceivingState = 1;
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                    pcVar2 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                                 + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]);
@@ -57,10 +57,10 @@ namespace UI {
                         pcVar3 = pcVar2 + 1;
                     } while (pcVar2[1] != '\0');
                     strcpy(pcVar2 + 1, ".map");
-                    MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
-                        DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
+                    MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName,
+                        DAT_ResourceManager::ptr)(IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                     DAT_GameSynchronyState::instance.mapSendingFileSize = MACRO_CALL_MEMBER(
-                        OpenSHC::IO::ResourceManager_Func::getCurrentResourceSize, DAT_ResourceManager::ptr)();
+                        IO::ResourceManager_Func::getCurrentResourceSize, DAT_ResourceManager::ptr)();
                     DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile = (FILE*)0x0;
                     /*
                       Open the same file 8 times, for each lobby player once
@@ -71,9 +71,9 @@ namespace UI {
                         DAT_GameSynchronyState::instance.field289_0x109dfc[_addressee] = 0;
                         if (DAT_GameSynchronyState::instance.field282_0x109d98[_addressee] == 1) {
                             _fileName = MACRO_CALL_MEMBER(
-                                OpenSHC::IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
+                                IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
                                 DAT_ResourceManager::ptr)();
-                            _fileHandle = MACRO_CALL(OpenSHC::OS_Func::_fopen)(_fileName, "rb");
+                            _fileHandle = MACRO_CALL(OS_Func::_fopen)(_fileName, "rb");
                             DAT_GameSynchronyState::instance.mapSendingFileHandles[_addressee] = _fileHandle;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
@@ -82,8 +82,8 @@ namespace UI {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                                 = DAT_GameSynchronyState::instance.mapSendingFileSize;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _addressee;
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECEIVE_SENT_MAPPARTUnk);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                DAT_GameSynchronyState::ptr)(Commands::GCT_RECEIVE_SENT_MAPPARTUnk);
                         }
                     };
                 }
@@ -93,7 +93,7 @@ namespace UI {
                 ppFVar4 = DAT_GameSynchronyState::instance.mapSendingFileHandles + 1;
                 do {
                     if (*ppFVar4 != (FILE*)0x0) {
-                        MACRO_CALL(OpenSHC::OS_Func::_fclose)(*ppFVar4);
+                        MACRO_CALL(OS_Func::_fclose)(*ppFVar4);
                         *ppFVar4 = (FILE*)0x0;
                     }
                     ppFVar4 = ppFVar4 + 1;
@@ -102,18 +102,18 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_MapFileReceivingState = 0;
             } else if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 2) {
                 if (DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile != (FILE*)0x0) {
-                    MACRO_CALL(OpenSHC::OS_Func::_fclose)(DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile);
+                    MACRO_CALL(OS_Func::_fclose)(DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile);
                     DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile = (FILE*)0x0;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                        (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
-                            | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                        Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        (Commands::GameCommandType)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
+                            | Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
                 }
                 goto LAB_004b1298;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
         LAB_004b12ab:;
         }
 

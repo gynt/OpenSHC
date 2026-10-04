@@ -15,19 +15,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C2C0
     void Init::Constructor_MenuModal_ChooseRandomNumberOfEnemies()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal,
-            MenuModal_ChooseRandomNumberOfEnemies::ptr)(OpenSHC::UI::Enums::MMT_CHOOSE_RANDOM_NUMBER_OF_ENEMIES, -1, -1,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal,
+            MenuModal_ChooseRandomNumberOfEnemies::ptr)(UI::Enums::MMT_CHOOSE_RANDOM_NUMBER_OF_ENEMIES, -1, -1,
             600, 400, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(OpenSHC::UI::MenuModals::
+            (UI::MenuModalRenderFunction*)MACRO_CALL(UI::MenuModals::
                     ChooseRandomNumberOfEnemies_Func::MenuModalRenderFunction_ChooseRandomNumberOfEnemies),
             Menu_ChooseRandomNumberOfEnemies::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
         return;
     }
 

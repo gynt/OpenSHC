@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Trees::TreeType;
+    using Map::Trees::TreeType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3610
     int LandscapeState::selectClosestAppleTree(int xPosition, int yPosition, int param_3)
@@ -24,10 +24,10 @@ namespace Map {
         if (1 < this->maxTreeCount) {
             pTVar3 = &this->trees[1];
             do {
-                if (((pTVar3->state == 2) && (pTVar3->treeType == OpenSHC::Map::Trees::TT_APPLEUnk))
+                if (((pTVar3->state == 2) && (pTVar3->treeType == Map::Trees::TT_APPLEUnk))
                     && (pTVar3->stage == 3)) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                         DAT_DirectionAlgorithmState::ptr)(xPosition, yPosition, (int)((int)((short)pTVar3->xPosition)),
                         (int)((int)((short)pTVar3->yPosition)));
                     if (DAT_DirectionAlgorithmState::instance.distanceHigh < _minimumDistance) {

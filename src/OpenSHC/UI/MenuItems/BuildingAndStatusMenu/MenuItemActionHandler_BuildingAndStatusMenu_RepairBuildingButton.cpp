@@ -19,21 +19,21 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::ResourceLackSFX;
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::ResourceLackSFX;
+        using Commands::GameCommandType;
+        using Game::GameMode;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00466160
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_RepairBuildingButton()
         {
             BOOLEnum _buildingDamaged;
             _buildingDamaged
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
+                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID);
             int _buildingID = DAT_BuildingsState::instance.menuSelectedBuildingID;
             BOOLEnum _enemyTooClose = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk, DAT_PathFindingState::ptr)(
+                Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk, DAT_PathFindingState::ptr)(
                 (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].owner,
                 (uint)((
                     short)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
@@ -41,23 +41,23 @@ namespace UI {
                 (uint)((
                     short)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .y),
-                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                           & 0xfffffff1)
                     + 0x1e));
             if ((_enemyTooClose == FALSE) && (_buildingDamaged != FALSE)) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID);
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[2]
                     < DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                        DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_WOOD);
+                    MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
+                        DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_WOOD);
                 }
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[4]
                     < DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                        DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
+                    MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
+                        DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_STONE);
                 }
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost;
@@ -67,8 +67,8 @@ namespace UI {
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_REPAIR_TOWER);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_REPAIR_TOWER);
             }
         }
 

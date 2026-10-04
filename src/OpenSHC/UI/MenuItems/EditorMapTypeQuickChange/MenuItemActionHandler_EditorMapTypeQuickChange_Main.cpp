@@ -25,8 +25,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::MapType2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004ABEB0
         void EditorMapTypeQuickChange::MenuItemActionHandler_EditorMapTypeQuickChange_Main(int param_1, ...)
@@ -44,9 +44,9 @@ namespace UI {
             case 5:
             case 6:
                 BVar1 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
+                    Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
                 if (BVar1 == FALSE) {
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = param_1 - OpenSHC::Map::MT_JUST_BUILD;
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = param_1 - Map::MT_JUST_BUILD;
                 /*
                   param1 - 3
                  */                }
@@ -62,7 +62,7 @@ namespace UI {
             case 0x16:
             case 0x17:
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
+                    Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
                 if (param_1 == 0x14) {
                     DAT_TileMapState::instance.mapSize = 0xa0;
                 } else if (param_1 == 0x15) {
@@ -75,34 +75,34 @@ namespace UI {
                         DAT_TileMapState::instance.mapSize = param_1;
                     }
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(
                     DAT_TileMapState::instance.mapSize);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
+                    Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
                 DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
+                    Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
                     DAT_PathFindingState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap,
+                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap,
                     DAT_PathFindingState::ptr)(1);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
                     DAT_BuildingsState::ptr)();
                 DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
                 DAT_TileMapState::instance.field68_0x55487c = 200;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
+                MACRO_CALL_MEMBER(Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
                 for (_y10 = 0; _y10 < 0x28; _y10++) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(
+                    MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(
                         _y10);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::updateNofFpoints, DAT_WildlifeState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize,
+                MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
+                MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
+                MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateNofFpoints, DAT_WildlifeState::ptr)();
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize,
                     DAT_MinimapViewState::ptr)(0, 100);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize,
+                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize,
                     DAT_MinimapViewState::ptr)(0, 100);
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
+                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
                     DAT_ViewportRenderState::ptr)();
             }
         }

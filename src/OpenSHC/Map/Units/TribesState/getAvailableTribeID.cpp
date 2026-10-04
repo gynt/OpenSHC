@@ -11,13 +11,13 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522720
         int TribesState::getAvailableTribeID(int playerID)
         {
             int _tribeID;
-            if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                 _tribeID = 1249;
                 while ((this->tribes[_tribeID].tribeState != 0 || (this->tribes[_tribeID].time != 0))) {
                     _tribeID = _tribeID + -1;

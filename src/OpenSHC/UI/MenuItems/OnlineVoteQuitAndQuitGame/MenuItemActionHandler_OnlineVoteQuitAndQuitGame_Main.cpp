@@ -18,10 +18,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using Game::GameMode;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00495860
         void OnlineVoteQuitAndQuitGame::MenuItemActionHandler_OnlineVoteQuitAndQuitGame_Main(int param_1, ...)
@@ -52,12 +52,12 @@ namespace UI {
                     bVar1 = bVar1 + 1;
                 }
                 if (1 < bVar1) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                        (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_BROADCAST_SYNC_RELATED_STATUS_1
-                            | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                        Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        (Commands::GameCommandType)(Commands::GCT_BROADCAST_SYNC_RELATED_STATUS_1
+                            | Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
                     DAT_GameSynchronyState::instance.quitGameVoteRelated = 2;
                     DAT_GameSynchronyState::instance.field122_0xc70[1]
                         = (int)(DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] == -1);
@@ -78,15 +78,15 @@ namespace UI {
                     DAT_GameSynchronyState::instance
                         .field122_0xc70[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                     DAT_GameSynchronyState::instance.quitGameVoteRequestTime = timeGetTime();
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
             case 1:
-                DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
+                DAT_GameSynchronyState::instance.currentGameMode = Game::GM_MULTIPLAYER_END_OF_GAME;
                 DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                 MACRO_CALL(
-                    OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(
+                    UI::MenuItems::General_Func::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(
                     0x16);
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 return;
             case 3:
                 goto switchD_00495871_caseD_3;
@@ -98,13 +98,13 @@ namespace UI {
                 break;
             default:
             switchD_00495871_caseD_5:
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
             }
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                OpenSHC::Commands::GCT_SEND_QUIT_GAME_VOTE);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                Commands::GCT_SEND_QUIT_GAME_VOTE);
         switchD_00495871_caseD_3:
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             goto switchD_00495871_caseD_5;
         }
 

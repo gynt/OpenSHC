@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00418B20
     void Buildings::UpdateKeepDoor()
@@ -29,7 +29,7 @@ namespace Map {
             = (ushort)(DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0);
         iVar3 = DAT_TileMapState::instance.mapOrientation;
         BVar2 = DAT_BuildingsState::instance.buildings[sVar1].buildingType;
-        if (BVar2 == OpenSHC::Map::Buildings::BT_MANORHOUSE) {
+        if (BVar2 == Map::Buildings::BT_MANORHOUSE) {
             bVar4 = DAT_TileMapState::instance.mapOrientation == 0;
             DAT_BuildingsState::instance.buildings[buildingID].gfxOffset = 0x533;
             DAT_BuildingsState::instance.buildings[buildingID].spriteID = 0x52f;
@@ -43,8 +43,8 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].spriteOffetY = -0x2a;
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0x22;
             }
-        } else if ((BVar2 == OpenSHC::Map::Buildings::BT_STONEKEEP)
-            || (BVar2 == OpenSHC::Map::Buildings::BT_STRONGHOLD)) {
+        } else if ((BVar2 == Map::Buildings::BT_STONEKEEP)
+            || (BVar2 == Map::Buildings::BT_STRONGHOLD)) {
             bVar4 = DAT_TileMapState::instance.mapOrientation == 0;
             DAT_BuildingsState::instance.buildings[buildingID].gfxOffset = 0x52e;
             DAT_BuildingsState::instance.buildings[buildingID].spriteID = 0x52a;
@@ -61,7 +61,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].spriteID
             != (int)DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = (short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spriteID;

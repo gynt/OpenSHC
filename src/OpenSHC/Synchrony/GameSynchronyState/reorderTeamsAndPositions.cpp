@@ -10,9 +10,9 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0048C7B0
     undefined4 GameSynchronyState::reorderTeamsAndPositions()
@@ -196,11 +196,11 @@ namespace Synchrony {
                         local_38[(int)(pcVar2 + 5)] = 1;
                     } while (local_4c <= _counter2);
                 }
-                if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)((OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
-                        | OpenSHC::Commands::GCT_HOST_SHARE_LOBBY_STATE));
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                        OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
+                if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)((Commands::GameCommandType)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
+                        | Commands::GCT_HOST_SHARE_LOBBY_STATE));
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                        Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
                 }
                 return (undefined4)(1);
             }

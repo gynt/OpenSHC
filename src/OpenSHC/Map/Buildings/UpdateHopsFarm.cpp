@@ -16,7 +16,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00416630
     void Buildings::UpdateHopsFarm()
@@ -33,8 +33,8 @@ namespace Map {
             piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].farmsWithoutWorkers;
             *piVar1 = *piVar1 + 1;
         }
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
@@ -42,11 +42,11 @@ namespace Map {
         *psVar2 = *psVar2 + 1;
         if (400 < DAT_BuildingsState::instance.buildings[iVar4].growCounter) {
             DAT_BuildingsState::instance.buildings[iVar4].growCounter = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::growHops, DAT_BuildingsState::ptr)(iVar4);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::growHops, DAT_BuildingsState::ptr)(iVar4);
         }
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Buildings::BuildingsState_Func::updateHopsFieldTileGraphics, DAT_BuildingsState::ptr)(iVar4);
-        if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+            Map::Buildings::BuildingsState_Func::updateHopsFieldTileGraphics, DAT_BuildingsState::ptr)(iVar4);
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar4].displayOwnerFlag = 1;
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame;
             *piVar1 = *piVar1 + 1;

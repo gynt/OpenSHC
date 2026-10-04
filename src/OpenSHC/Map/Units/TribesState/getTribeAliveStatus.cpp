@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         /*
           @return 0 if all alive, 1 if majority alive, 50 if fewer alive than dead, 100 if all dead decompilerscript:
@@ -29,10 +29,10 @@ namespace Map {
             _alive = 0;
             if (0 < _size) {
                 do {
-                    _unit = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    _unit = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, _index);
                     _index = _index + 1;
-                    if ((DAT_UnitsState::instance.units[_unit].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if ((DAT_UnitsState::instance.units[_unit].logicalState == Map::Units::ULS_NORMAL)
                         && (DAT_UnitsState::instance.units[_unit].dying == 0)) {
                         if (DAT_UnitsState::instance.units[_unit].tunnelerFinishedDigging == 2) {
                             _alive = _alive + 1;

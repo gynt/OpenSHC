@@ -14,27 +14,27 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::DE::SHCDE::eTextSections;
+    using Commands::GameCommandType;
+    using DE::SHCDE::eTextSections;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00429650
     void Helpers::CallbackSetMultiplayerSpeedLevel()
     {
         char* pcVar1;
         int iVar2;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-            OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
         DAT_GameSynchronyState::instance.field235_0x1072e8 = -1;
         DAT_GameSynchronyState::instance.field236_0x1072ec = -1;
         iVar2 = DAT_GameSynchronyState::instance.skirmishGameSpeedLevel;
         /*
           added by script: "Game Speed"
          */
-        pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x52);
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+        pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x52);
+        MACRO_CALL(OS_Func::_sprintf)(
             DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%d", pcVar1, iVar2);
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             DAT_GameSynchronyState::instance.receivedChatMessage);
         DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
         DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -48,9 +48,9 @@ namespace UI {
         DAT_GameSynchronyState::instance
             .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
         DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 10000;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-            OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            Commands::GCT_TAUNT_OR_CHAT);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(
             DAT_UserTextHandlerState::instance.textArrayIndex);
     }
 

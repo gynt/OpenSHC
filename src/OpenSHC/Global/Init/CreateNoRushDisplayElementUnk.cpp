@@ -12,17 +12,17 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::DE::SHCDE::eOnScreenText;
-    using OpenSHC::UI::Enums::DisplayElementPositionModifier;
+    using DE::SHCDE::eOnScreenText;
+    using UI::Enums::DisplayElementPositionModifier;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C680
     void Init::CreateNoRushDisplayElementUnk()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::DisplayElement_Func::Constructor_DisplayElement, NoRushDisplayElementUnk::ptr)(
-            OpenSHC::DE::SHCDE::OST_MESSAGE_BAR, 0, 8, 0,
-            (OpenSHC::UI::DisplayElementRenderFunc*)MACRO_CALL(
-                OpenSHC::UI::DisplayElements_Func::RenderNoRushDisplayElementUnk),
-            OpenSHC::UI::Enums::DEPM_RESOLUTION_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, NoRushDisplayElementUnk::ptr)(
+            DE::SHCDE::OST_MESSAGE_BAR, 0, 8, 0,
+            (UI::DisplayElementRenderFunc*)MACRO_CALL(
+                UI::DisplayElements_Func::RenderNoRushDisplayElementUnk),
+            UI::Enums::DEPM_RESOLUTION_Y);
         return;
     }
 

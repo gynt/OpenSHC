@@ -13,20 +13,20 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A700
     void Init::Constructor_MenuView_GameStartEnterName()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_GameStartEnterName::ptr)(
-            OpenSHC::UI::Enums::MVT_GAME_START_ENTER_NAME,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_DoInitial),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_GameStartEnterName));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_GameStartEnterName::ptr)(
+            UI::Enums::MVT_GAME_START_ENTER_NAME,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_DoInitial),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::GameStartEnterName_Func::MenuView_GameStartEnterName_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_GameStartEnterName));
         return;
     }
 

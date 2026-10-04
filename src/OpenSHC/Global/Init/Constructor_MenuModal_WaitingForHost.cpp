@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B8A0
     void Init::Constructor_MenuModal_WaitingForHost()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_WaitingForHost::ptr)(
-            OpenSHC::UI::Enums::MMT_WAITING_FOR_HOST, -1, -1, 500, 100, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_WaitingForHost::ptr)(
+            UI::Enums::MMT_WAITING_FOR_HOST, -1, -1, 500, 100, 0x200,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::WaitingForHost_Func::MenuModalRenderFunction_WaitingForHost),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::WaitingForHost_Func::MenuModalRenderFunction_WaitingForHost),
             Menu_WaitingForHost::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_WaitingForHost));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_WaitingForHost));
         return;
     }
 

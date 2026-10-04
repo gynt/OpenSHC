@@ -111,7 +111,7 @@ namespace IO {
         // Size variable names not binding: Only guesses based on usage here
         {
             int magicByteHolder = -1;
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &magicByteHolder, sizeof(magicByteHolder));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &magicByteHolder, sizeof(magicByteHolder));
 
             switch (DAT_TileMapState::instance.mapSize) {
             case 100:
@@ -143,40 +143,40 @@ namespace IO {
             MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, _tempMem2, mapWriteSize);
         }
         {
-            int textSize = MACRO_CALL_MEMBER(OpenSHC::IO::DecoderState_Func::encodeData, DAT_DecoderState::ptr)(
+            int textSize = MACRO_CALL_MEMBER(IO::DecoderState_Func::encodeData, DAT_DecoderState::ptr)(
                 sizeof(DAT_GameCore::instance.temporaryTextBufferOfSize1000),
                 (unsigned char*)DAT_GameCore::instance.temporaryTextBufferOfSize1000, (unsigned char*)_tempMem2);
             textSize += sizeof(DAT_GameCore::instance.descriptionUseStringTable)
                 + sizeof(DAT_GameCore::instance.descriptionStringTableIndex);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &textSize, sizeof(textSize));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &textSize, sizeof(textSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_GameCore::instance.descriptionUseStringTable,
                 sizeof(DAT_GameCore::instance.descriptionUseStringTable));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_GameCore::instance.descriptionStringTableIndex,
                 sizeof(DAT_GameCore::instance.descriptionStringTableIndex));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, _tempMem2, textSize - sizeof(int) * 2);
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, _tempMem2, textSize - sizeof(int) * 2);
         }
         {
             int ticksAndHashSize = sizeof(DAT_GameSynchronyState::instance.savedMapTimeInTicks)
                 + sizeof(DAT_GameSynchronyState::instance.savedUnitsCRC32Hash);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &ticksAndHashSize, sizeof(ticksAndHashSize));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &ticksAndHashSize, sizeof(ticksAndHashSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_GameSynchronyState::instance.savedMapTimeInTicks,
                 sizeof(DAT_GameSynchronyState::instance.savedMapTimeInTicks));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_GameSynchronyState::instance.savedUnitsCRC32Hash,
                 sizeof(DAT_GameSynchronyState::instance.savedUnitsCRC32Hash));
         }
         {
             int playerDataSize = sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti)
                 + sizeof(DAT_GameCore::instance.mapU2MiddleBytes) + sizeof(DAT_GameCore::instance.mapU2PlayersCount);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &playerDataSize, sizeof(playerDataSize));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.U2_mapType_singleOrMulti,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &playerDataSize, sizeof(playerDataSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.U2_mapType_singleOrMulti,
                 sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2MiddleBytes,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2MiddleBytes,
                 sizeof(DAT_GameCore::instance.mapU2MiddleBytes));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2PlayersCount,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2PlayersCount,
                 sizeof(DAT_GameCore::instance.mapU2PlayersCount));
         }
         {
@@ -184,18 +184,18 @@ namespace IO {
                 + sizeof(DAT_MapPropertiesState::instance.SEC_U3_MapType2_1)
                 + sizeof(DAT_GameCore::instance.U3_mapLockedState) + sizeof(DAT_GameCore::instance.standaloneFilename)
                 + sizeof(DAT_GameCore::instance.mapU3EndInt);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &scenarioDataSize, sizeof(scenarioDataSize));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &scenarioDataSize, sizeof(scenarioDataSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_MapPropertiesState::instance.scenarionMissionType,
                 sizeof(DAT_MapPropertiesState::instance.scenarionMissionType));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_MapPropertiesState::instance.SEC_U3_MapType2_1,
                 sizeof(DAT_MapPropertiesState::instance.SEC_U3_MapType2_1));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.U3_mapLockedState,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.U3_mapLockedState,
                 sizeof(DAT_GameCore::instance.U3_mapLockedState));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, DAT_GameCore::instance.standaloneFilename,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, DAT_GameCore::instance.standaloneFilename,
                 sizeof(DAT_GameCore::instance.standaloneFilename));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(
+            MACRO_CALL(OS_Func::_ucrt_write)(
                 _fileDescriptor, &DAT_GameCore::instance.mapU3EndInt, sizeof(DAT_GameCore::instance.mapU3EndInt));
         }
         {
@@ -203,33 +203,33 @@ namespace IO {
                 + sizeof(DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes)
                 + sizeof(DAT_GameCore::instance.mapU4Int3_balanced)
                 + sizeof(DAT_MinimapViewState::instance.DAT_MapU4B64);
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &skirmishDataSize, sizeof(skirmishDataSize));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &skirmishDataSize, sizeof(skirmishDataSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(
                 _fileDescriptor, &DAT_GameCore::instance.mapU4Int0, sizeof(DAT_GameCore::instance.mapU4Int0));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(
+            MACRO_CALL(OS_Func::_ucrt_write)(
                 _fileDescriptor, &DAT_GameCore::instance.mapU4Int1, sizeof(DAT_GameCore::instance.mapU4Int1));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor,
                 &DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes,
                 sizeof(DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU4Int3_balanced,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU4Int3_balanced,
                 sizeof(DAT_GameCore::instance.mapU4Int3_balanced));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_MinimapViewState::instance.DAT_MapU4B64,
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &DAT_MinimapViewState::instance.DAT_MapU4B64,
                 sizeof(DAT_MinimapViewState::instance.DAT_MapU4B64));
         }
         {
             int unknownSize = 0;
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &unknownSize, sizeof(unknownSize));
+            MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &unknownSize, sizeof(unknownSize));
         }
 
         this->directorySize = sizeof(this->directorySize) + sizeof(this->directory);
         this->directory.magicNumOfFileType = 172;
-        MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &this->directorySize, sizeof(this->directorySize));
-        MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &this->directory, sizeof(this->directory));
+        MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &this->directorySize, sizeof(this->directorySize));
+        MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, &this->directory, sizeof(this->directory));
 
-        MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, this->tempMem, this->directory.filePayloadSize);
-        MACRO_CALL(OpenSHC::OS_Func::_ucrt_close)(_fileDescriptor);
-        MACRO_CALL(OpenSHC::OS_Func::_free_base)(this->tempMem);
-        MACRO_CALL(OpenSHC::OS_Func::_free_base)(_tempMem2);
+        MACRO_CALL(OS_Func::_ucrt_write)(_fileDescriptor, this->tempMem, this->directory.filePayloadSize);
+        MACRO_CALL(OS_Func::_ucrt_close)(_fileDescriptor);
+        MACRO_CALL(OS_Func::_free_base)(this->tempMem);
+        MACRO_CALL(OS_Func::_free_base)(_tempMem2);
         this->tempMem = NULL;
     }
 

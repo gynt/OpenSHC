@@ -15,7 +15,7 @@ namespace Map {
         void TroopValueState::playAttackAlarmSound()
         {
             char* filename;
-            MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet,
+            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet,
                 DAT_SoundSystemState::ptr)();
             switch (this->attackInfo.attacker) {
             case 2:
@@ -29,7 +29,7 @@ namespace Map {
             default:
                 goto switchD_0051b6d7_caseD_4;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playOnSpeechSfxStream, DAT_SFXState::ptr)(filename);
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playOnSpeechSfxStream, DAT_SFXState::ptr)(filename);
         switchD_0051b6d7_caseD_4:
             this->attackInfo.field86987_0x20f9c = 1;
         }

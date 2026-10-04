@@ -17,14 +17,14 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C0F0
     void Init::Constructor_MenuModal_ExtendedAiLordSelect()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_ExtendedAiLordSelect::ptr)(
-            (OpenSHC::UI::Enums::MenuModalType)119, (int)((int)(200)), (int)((int)(200)), (int)((int)(648)),
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_ExtendedAiLordSelect::ptr)(
+            (UI::Enums::MenuModalType)119, (int)((int)(200)), (int)((int)(200)), (int)((int)(648)),
             (int)((int)(364)), (int)((int)(4160)), (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::AiLordSelect_Func::MenuModalRenderFunction_AiLordSelect),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::AiLordSelect_Func::MenuModalRenderFunction_AiLordSelect),
             Menu_ExtendedAiLordSelect::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_ExtendedAiLordSelect));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_ExtendedAiLordSelect));
         return;
     }
 

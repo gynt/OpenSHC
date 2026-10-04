@@ -13,21 +13,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A640
     void Init::Constructor_MenuView_MissionFinishedTransition()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_MissionFinishedTransition::ptr)(
-            OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(OpenSHC::UI::MenuViews::MissionFinishedTransition_Func::
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_MissionFinishedTransition::ptr)(
+            UI::Enums::MVT_MISSION_FINISHED_TRANSITION,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::MissionFinishedTransition_Func::
                     MenuView_MissionFinishedTransition_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Global::Init_Func::Destructor_MenuView_MissionFinishedTransition));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Global::Init_Func::Destructor_MenuView_MissionFinishedTransition));
         return;
     }
 

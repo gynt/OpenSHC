@@ -16,10 +16,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043CB90
     void BuildingMenus::RenderBuildingMenu_Cathedral()
@@ -37,17 +37,17 @@ namespace UI {
         keepOffsetX = FALSE;
         iVar4 = 0x10;
         color = 0;
-        alignment = OpenSHC::Text::TTA_LEFT;
+        alignment = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           added by script: "Cathedral"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_CATHEDRAL, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_CATHEDRAL, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
-        MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckIfEnoughGoldForMonk)();
+        MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForMonk)();
         if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
             blendStrength = 0;
             iVar5 = 0x11;
@@ -58,12 +58,12 @@ namespace UI {
             /*
               added by script: "You do not have enough gold for monks"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_CATHEDRAL, 1);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_CATHEDRAL, 1);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::createEntityForAssemblyPointsForActiveTabType,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::createEntityForAssemblyPointsForActiveTabType,
             DAT_BuildingsState::ptr)();
     }
 

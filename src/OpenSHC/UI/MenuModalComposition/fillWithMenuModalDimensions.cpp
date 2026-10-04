@@ -10,17 +10,17 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA3E0
     void MenuModalComposition::fillWithMenuModalDimensions(int* xPtr, int* yPtr, int* widthPtr, int* heigthPtr)
     {
         BOOLEnum _areWeInAnInGameMenu;
         int _y;
-        if (this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
+        if (this->activeModalDialogID != UI::Enums::MMT_NONE) {
             _areWeInAnInGameMenu
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (_areWeInAnInGameMenu == FALSE) {
                 *xPtr = this->modalMenu.x;
                 _y = this->modalMenu.y;

@@ -29,7 +29,7 @@ namespace UI {
                 heightFactor = 1;
                 widthFactor = 2;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::drawMinimap, this)(
+            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::drawMinimap, this)(
                 xPos, yPos, width, height, 5, xOffset, yOffset, widthFactor, heightFactor, -1);
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
         }

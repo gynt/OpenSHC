@@ -5,6 +5,6 @@
 namespace OpenSHC {
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0059CF50
-void Meta::Destructor_MenuView_CustomScenarios() { MACRO_CALL(OpenSHC::Global_Func::DoNothing)(); }
+void Meta::Destructor_MenuView_CustomScenarios() { MACRO_CALL(Global_Func::DoNothing)(); }
 
 }

@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandState;
-    using OpenSHC::Commands::GameCommandStateByte;
+    using Commands::GameCommandState;
+    using Commands::GameCommandStateByte;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00480440
     int GameSynchronyState::getCommandIDFromCommandSelectionStuff()
@@ -26,7 +26,7 @@ namespace Synchrony {
         int _playerID;
         bool _reorderedAnyoneUnk;
         this->MBR_someIndex = 0;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             800, '\0', (void*)((int)(this->MBR_SelectedGameCommands)));
         if (this->MBR_GameCommandID < 200) {
             _stateAddress = &this->DAT_GameCommandArray[this->MBR_GameCommandID].stateUnk;
@@ -43,7 +43,7 @@ namespace Synchrony {
                       address - 5 = player
                      */
                     this->protocolInvokerPlayerID = MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+                        Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
                         *(int*)(_stateAddress + -5));
                     this->MBR_SelectedGameCommands[this->MBR_someIndex][0] = _currentIndexCounter;
                     this->MBR_SelectedGameCommands[this->MBR_someIndex][1] = this->protocolInvokerPlayerID;

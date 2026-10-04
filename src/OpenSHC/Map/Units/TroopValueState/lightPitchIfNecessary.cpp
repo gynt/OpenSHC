@@ -14,9 +14,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode;
+        using Map::Units::UnitInstructionType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051C1A0
         void TroopValueState::lightPitchIfNecessary(int unitID, int unitID2)
@@ -28,17 +28,17 @@ namespace Map {
             int _tile;
             int _unit2Tile;
             short _y;
-            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
+            if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 _playerID = (int)DAT_UnitsState::instance.units[unitID].owner;
                 if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] == -1)
                     && (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
                     _unit2Tile = DAT_UnitsState::instance.units[unitID2].tile;
                     if (((DAT_TileMapState::instance.LogicLayer[_unit2Tile] & 8) != 0)
-                        && ((_targetID = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile,
+                        && ((_targetID = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
                                  DAT_TileMapState::ptr)(_unit2Tile),
                             _targetID != 0
                                 && (_yes = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue,
+                                        Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue,
                                         this)(_unit2Tile, _playerID,
                                         (int)((int)(DAT_UnitsState::instance.units[unitID2].owner))),
                                     _yes != FALSE)))) {
@@ -56,7 +56,7 @@ namespace Map {
                             .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID
                             = _pitchDitchUID;
                         DAT_UnitsState::instance.units[unitID].field253_0x3c5 = 0x22;
-                        DAT_UnitsState::instance.units[unitID].targetingType = OpenSHC::Map::Units::UIT_LIGHT_PITCH;
+                        DAT_UnitsState::instance.units[unitID].targetingType = Map::Units::UIT_LIGHT_PITCH;
                         DAT_UnitsState::instance.units[unitID].field283_0x3f8 = 0;
                         DAT_UnitsState::instance.units[unitID].field298_0x40e = true;
                     }

@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523520
         undefined4 TribesState::hasAvailableSpawnSlotForWildlifeOrMercs()
@@ -19,7 +19,7 @@ namespace Map {
             uint uVar2;
             uint uVar3;
             bool bVar4;
-            if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+            if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                 && (iVar1 = 0, DAT_GameState::instance.mapAndTime.field3166_0x277c < 0xa0)) {
                 do {
                     if (iVar1 < 4) {

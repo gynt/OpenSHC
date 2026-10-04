@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C200
     void Init::Constructor_MenuModal_AlliesRequestGoods()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_AlliesRequestGoods::ptr)(
-            OpenSHC::UI::Enums::MMT_ALLIES_REQUEST_GOODS, -1, -1, 600, (int)((int)(408)), 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_AlliesRequestGoods::ptr)(
+            UI::Enums::MMT_ALLIES_REQUEST_GOODS, -1, -1, 600, (int)((int)(408)), 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::AlliesRequestGoods_Func::MenuModalRenderFunction_AlliesRequestGoods),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::AlliesRequestGoods_Func::MenuModalRenderFunction_AlliesRequestGoods),
             Menu_AlliesRequestGoods::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_AlliesRequestGoods));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_AlliesRequestGoods));
         return;
     }
 

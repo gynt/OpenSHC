@@ -16,31 +16,31 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using Map::MapType2;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F2B0
         void NewMapMaptype::MenuItemActionHandler_NewMapMaptype_Buttons(int param_1, ...)
         {
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 switch (param_1) {
                 case 1:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_JUST_BUILD;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_JUST_BUILD;
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                     return;
                 case 2:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_INVASION;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_INVASION;
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                     return;
                 case 3:
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::InitializeBasicMap)();
+                    MACRO_CALL(UI::Helpers_Func::InitializeBasicMap)();
                     DAT_GameCore::instance.U2_mapType_singleOrMulti = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                     DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                         = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                     DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -61,8 +61,8 @@ namespace UI {
                         = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
                     return;
                 case 7:
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 }
             }
         }

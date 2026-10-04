@@ -5,7 +5,7 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::Text::TextArrayIndexType;
+    using Text::TextArrayIndexType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004694A0
     void UserTextHandler::FUN_004694a0()
@@ -13,7 +13,7 @@ namespace Text {
         char (*pacVar1)[250];
         char (*pacVar2)[250];
         this->returnPressed = 0;
-        this->textArrayIndex = OpenSHC::Text::TAIT_NINE__FILTER_B;
+        this->textArrayIndex = Text::TAIT_NINE__FILTER_B;
         this->textArrayFontSizes[0] = 0x11;
         this->textBoxMaxCharactersArray[0] = 0x100;
         this->textBoxMaxTextWidthDimensionArray[0] = 0x13b;

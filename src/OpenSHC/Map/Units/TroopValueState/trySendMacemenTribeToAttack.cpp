@@ -16,9 +16,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
+        using Game::GameMode2;
+        using Map::Units::Behavior::UnitStanceEnum;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051CF90
         void TroopValueState::trySendMacemenTribeToAttack()
@@ -31,16 +31,16 @@ namespace Map {
             if (((0 < this->attackInfo.macemenTribeCount) && (3 < (int)this->attackInfo.field_0x2c854))
                 && (((byte)SEC_RNG::instance.currentNumber2 & 7) == 0)) {
                 _macemen = this->attackInfo.macemenTribeArray[this->attackInfo.macemenTribeCount + -1];
-                bVar1 = DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CAMPAIGN_MISSION;
+                bVar1 = DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION;
                 this->attackInfo.macemenTribeCount = this->attackInfo.macemenTribeCount + -1;
-                DAT_TribesState::instance.tribes[_macemen].unitStance = OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE;
+                DAT_TribesState::instance.tribes[_macemen].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
                 if ((bVar1) || (0xe < DAT_GameCore::instance.missionNumber1to20)) {
                     _unitID = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(_playerID);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
+                        Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(_playerID);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
                         DAT_TribesState::ptr)(_macemen, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].y)), 0, 0,
-                        OpenSHC::Map::Units::Instructions::UMSE_0);
+                        Map::Units::Instructions::UMSE_0);
                 }
             }
         }

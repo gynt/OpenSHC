@@ -15,7 +15,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052B860
         void TribesState::updateTribes()
@@ -33,22 +33,22 @@ namespace Map {
                         *psVar1 = *psVar1 + -1;
                     }
                     if ((DAT_CurrentTribeID::instance & 0x1f) == _tickBasedNumberUpTo32) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::computeTribePercentages, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::computeTribePercentages, this)(
                             DAT_CurrentTribeID::instance);
                     }
                     if ((DAT_GameSynchronyState::instance
                                 .currentPlayerFullIDArray[this->tribes[DAT_CurrentTribeID::instance].owner]
                             != -1)
-                        || (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)) {
+                        || (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)) {
                         /*
                           For humans, do:
                          */
                         switch (this->tribes[DAT_CurrentTribeID::instance].tribeType) {
-                        case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_SPEARMEN:
+                        case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_SPEARMEN:
                             goto switchD_0052b92a_caseD_d;
-                        case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_PIKEMEN:
+                        case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_PIKEMEN:
                             goto switchD_0052b92a_caseD_e;
-                        case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_CROSSBOWMEN:
+                        case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_CROSSBOWMEN:
                             goto switchD_0052b92a_caseD_f;
                         case ((AITribeType)0x10):
                             goto switchD_0052b92a_caseD_10;
@@ -57,17 +57,17 @@ namespace Map {
                         }
                     }
                     switch (this->tribes[DAT_CurrentTribeID::instance].tribeType) {
-                    case OpenSHC::AI::Tribes::AITT_TUNNELERS:
-                    case OpenSHC::AI::Tribes::AITT_ARCHERS:
-                    case OpenSHC::AI::Tribes::AITT_LADDERMEN:
-                    case OpenSHC::AI::Tribes::AITT_SPEARMEN:
-                    case OpenSHC::AI::Tribes::AITT_PIKEMEN:
-                    case OpenSHC::AI::Tribes::AITT_CROSSBOWMEN:
-                    case OpenSHC::AI::Tribes::AITT_SWORDSMEN:
-                    case OpenSHC::AI::Tribes::AITT_MACEMEN:
-                    case OpenSHC::AI::Tribes::AITT_KNIGHTS:
-                    case OpenSHC::AI::Tribes::AITT_ENGINEERS:
-                    case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_LADDERMEN:
+                    case AI::Tribes::AITT_TUNNELERS:
+                    case AI::Tribes::AITT_ARCHERS:
+                    case AI::Tribes::AITT_LADDERMEN:
+                    case AI::Tribes::AITT_SPEARMEN:
+                    case AI::Tribes::AITT_PIKEMEN:
+                    case AI::Tribes::AITT_CROSSBOWMEN:
+                    case AI::Tribes::AITT_SWORDSMEN:
+                    case AI::Tribes::AITT_MACEMEN:
+                    case AI::Tribes::AITT_KNIGHTS:
+                    case AI::Tribes::AITT_ENGINEERS:
+                    case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_LADDERMEN:
                     case ((AITribeType)0x13):
                     case ((AITribeType)0x14):
                     case ((AITribeType)0x15):
@@ -79,43 +79,43 @@ namespace Map {
                     case ((AITribeType)0x1b):
                     case ((AITribeType)0x1c):
                     case ((AITribeType)0x1d):
-                    case OpenSHC::AI::Tribes::OFFSET_CROSSBOWMAN:
+                    case AI::Tribes::OFFSET_CROSSBOWMAN:
                     case ((AITribeType)0x1f):
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::TroopValueState_Func::updateTribeBehaviorBasedOnBehaviorType,
+                            Map::Units::TroopValueState_Func::updateTribeBehaviorBasedOnBehaviorType,
                             DAT_TroopValueState::ptr)(DAT_CurrentTribeID::instance);
                         break;
-                    case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_SPEARMEN:
+                    case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_SPEARMEN:
                     switchD_0052b92a_caseD_d:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::processDeerMoving, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::processDeerMoving, this)(
                             DAT_CurrentTribeID::instance);
                         break;
-                    case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_PIKEMEN:
+                    case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_PIKEMEN:
                     switchD_0052b92a_caseD_e:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateLionWolfTribeBehavior, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateLionWolfTribeBehavior, this)(
                             DAT_CurrentTribeID::instance);
                         break;
-                    case OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_CROSSBOWMEN:
+                    case AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_CROSSBOWMEN:
                     switchD_0052b92a_caseD_f:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateRabbitTribeBehavior, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateRabbitTribeBehavior, this)(
                             DAT_CurrentTribeID::instance);
                         break;
                     case ((AITribeType)0x10):
                     switchD_0052b92a_caseD_10:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateCamelTribeBehavior, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateCamelTribeBehavior, this)(
                             DAT_CurrentTribeID::instance);
                         break;
                     case ((AITribeType)0x11):
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::markTribeAsAnimalTribe, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::markTribeAsAnimalTribe, this)(
                             DAT_CurrentTribeID::instance);
                         break;
                     case ((AITribeType)0x12):
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::markTribeAsAnimalTribe, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::markTribeAsAnimalTribe, this)(
                             DAT_CurrentTribeID::instance);
                         break;
                         default:
                             switchD_0052b92a_caseD_4
-                            : MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::updateTribeCombatStanceBehavior,
+                            : MACRO_CALL_MEMBER(Map::Units::TribesState_Func::updateTribeCombatStanceBehavior,
                                   this)(DAT_CurrentTribeID::instance);
                     }
                     psVar1 = &this->tribes[DAT_CurrentTribeID::instance].countdown;

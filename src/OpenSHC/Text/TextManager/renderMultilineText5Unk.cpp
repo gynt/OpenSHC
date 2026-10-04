@@ -12,7 +12,7 @@ namespace Text {
         char* text, int xPos, int yPos, int maxWidth, uint color, int fontSize, int blendStrength)
     {
         if (text != (char*)0x0) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+            MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 text, xPos, yPos, maxWidth, color, blendStrength, 0);
         }

@@ -18,8 +18,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00437CC0
     void Helpers::HandleWallTerrainMouseDrag()
@@ -29,10 +29,10 @@ namespace UI {
         if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {}
         if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
+                Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
         } else {
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
+                Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
         }
         if (DAT_MouseState::instance.leftClickStart == 0) {
             if ((DAT_MouseState::instance.draggingStopped != FALSE)
@@ -56,7 +56,7 @@ namespace UI {
                     + DAT_TileMapState::instance.dragStartX;
                 if ((DAT_TileMapState::instance.LogicLayer[iVar2] & 0x100000U) != 0) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
+                        Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                         DAT_DirectionAlgorithmState::ptr)(DAT_TileMapState::instance.dragStartX,
                         (int)(DAT_TileMapState::instance.dragStartY), (int)(DAT_TileMapState::instance.dragEndX),
                         (int)(DAT_TileMapState::instance.dragEndY));
@@ -70,14 +70,14 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 1;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x100000;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0x20;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_SET_TERRAIN);
                 }
             }
         }
         iVar3 = DAT_ViewportRenderState::instance.translationMatrix[DAT_TileMapState::instance.dragStartY].addXgetTile
             + DAT_TileMapState::instance.dragStartX;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
+        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
             DAT_DirectionAlgorithmState::ptr)(DAT_TileMapState::instance.dragStartX,
             (int)(DAT_TileMapState::instance.dragStartY), (int)(DAT_TileMapState::instance.dragEndX),
             (int)(DAT_TileMapState::instance.dragEndY));
@@ -108,7 +108,7 @@ namespace UI {
             DAT_TileMapState::instance.buildingPlacementFail = FALSE;
         }
         DAT_TileMapState::instance.buildingPlacementFail = TRUE;
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::renderPreviewMapperWithBrush, DAT_TileMapState::ptr)(
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::renderPreviewMapperWithBrush, DAT_TileMapState::ptr)(
             DAT_ViewportRenderState::instance.viewportState.mouseTileX,
             (uint)(DAT_ViewportRenderState::instance.viewportState.mouseTileY),
             DAT_TileMapState::instance.currentMapperCommand);

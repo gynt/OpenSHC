@@ -12,7 +12,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059AD60
     void Init::Constructor_Menu_BuildMenu()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::Constructor_Menu, Menu_BuildMenu::ptr)(
+        MACRO_CALL_MEMBER(UI::Menu_Func::Constructor_Menu, Menu_BuildMenu::ptr)(
             DAT_RenderingDefinedData::instance.MenuItems_BuildMenu);
     }
 

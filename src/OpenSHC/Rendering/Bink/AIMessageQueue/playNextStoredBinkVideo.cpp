@@ -7,13 +7,13 @@ namespace OpenSHC {
 namespace Rendering {
     namespace Bink {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004C62A0
         void AIMessageQueue::playNextStoredBinkVideo()
         {
             if (this->messagePlaying_0x0 != FALSE) {
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, this)();
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, this)();
             }
             this->storedMessages_0x924 = 0;
         }

@@ -10,7 +10,7 @@ namespace OpenSHC {
 void Meta::Destructor_BinkControlClass()
 {
     MACRO_CALL_MEMBER(
-        OpenSHC::Rendering::Bink::BinkControlClass_Func::stopAllBinkPlaybackThunk, DAT_BinkControlState::ptr)();
+        Rendering::Bink::BinkControlClass_Func::stopAllBinkPlaybackThunk, DAT_BinkControlState::ptr)();
 }
 
 }

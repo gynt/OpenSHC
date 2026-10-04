@@ -20,12 +20,12 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::DE::SHCDE::eSFX;
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eSFX;
+        using Map::Units::SomeTribeBehaviorType;
+        using Map::Units::UnitType;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052AD50
         void TribesState::processDeerMoving(int tribeID)
@@ -53,7 +53,7 @@ namespace Map {
                 this->tribes[tribeID].field137_0x280 = sVar2 / 2;
                 this->tribes[tribeID].field138_0x282 = sVar2 * 2;
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::trimTribeToSize, this)(
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trimTribeToSize, this)(
                     tribeID, (int)((int)(30)));
                 this->tribes[tribeID].field137_0x280 = 0xf;
                 this->tribes[tribeID].field138_0x282 = 0x3c;
@@ -61,19 +61,19 @@ namespace Map {
             if ((iVar4 + iVar6 != 0) && (this->tribes[tribeID].field133_0x278 == 0)) {
                 this->tribes[tribeID].field133_0x278 = 1;
             }
-            BVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
-                tribeID, 100, OpenSHC::Map::Units::UT_ANTELOPESHDEER);
+            BVar7 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
+                tribeID, 100, Map::Units::UT_ANTELOPESHDEER);
             if (BVar7 == FALSE) {
                 if (this->tribes[tribeID].field64_0x204 == 0) {
                     sVar2 = this->tribes[tribeID].selectionTargetUnitID;
                     this->tribes[tribeID].field64_0x204 = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].y)), 0, 0,
-                        OpenSHC::Map::Units::Instructions::UMSE_0);
-                    this->tribes[tribeID].tribeBehaviorType = OpenSHC::Map::Units::STBT_1;
+                        Map::Units::Instructions::UMSE_0);
+                    this->tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
                 }
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
                     this->tribes[tribeID].unknownCounter01 = 0;
                 }
                 sVar2 = this->tribes[tribeID].field133_0x278;
@@ -96,24 +96,24 @@ namespace Map {
                                 = (4 - ((byte)SEC_RNG::instance.currentNumber2 & 3)) * 200;
                             if (sVar2 < 1) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
+                                    Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                                     DAT_WildlifeState::ptr)(tribeID, 5, 0);
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::standUpAllTribeUnits, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(
                                 tribeID);
                             sVar2 = this->tribes[tribeID].currentRallyPointIndex;
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
+                                Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
                                 this)(tribeID, (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][0])),
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][1])), 0, 0);
                             this->tribes[tribeID].currentRallyPointIndex
                                 = this->tribes[tribeID].currentRallyPointIndex + 1;
                             if (this->tribes[tribeID].rallyPointCount <= this->tribes[tribeID].currentRallyPointIndex) {
-                                this->tribes[tribeID].tribeBehaviorType = OpenSHC::Map::Units::STBT_1;
+                                this->tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
                                 this->tribes[tribeID].rallyPointCount = 0;
                             }
                         }
-                    } else if ((SVar3 == OpenSHC::Map::Units::STBT_1)
+                    } else if ((SVar3 == Map::Units::STBT_1)
                         && (psVar1 = &this->tribes[tribeID].unknownAttackRelatedUpdateCounter, *psVar1 = *psVar1 + 1,
                             this->tribes[tribeID].unknownAttackRelatedUpdateCounter == 800)) {
                         this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
@@ -121,23 +121,23 @@ namespace Map {
                     }
                 } else {
                     if (sVar2 == 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                             DAT_WildlifeState::ptr)(tribeID, 5, 0);
                         if ((this->tribes[tribeID].rallyPointCount < 1)
                             && (MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
+                                    Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                                     DAT_WildlifeState::ptr)(tribeID, 5, 1),
                                 this->tribes[tribeID].rallyPointCount < 1)) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::scatterTribeUnitsRandomly, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::scatterTribeUnitsRandomly, this)(
                                 tribeID);
                         } else {
                             sVar2 = this->tribes[tribeID].selectionTargetUnitID;
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)DAT_UnitsState::instance.units[sVar2].x,
-                                (int)((int)(DAT_UnitsState::instance.units[sVar2].y)), OpenSHC::DE::SHCDE::FX_DEER_RUN);
+                                (int)((int)(DAT_UnitsState::instance.units[sVar2].y)), DE::SHCDE::FX_DEER_RUN);
                             iVar8 = (int)this->tribes[tribeID].rallyPointCount;
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
+                                Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
                                 this)(tribeID, (uint)((int)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][0])),
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][1])), 0, 0);
                         }
@@ -148,18 +148,18 @@ namespace Map {
                     }
                 }
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
+                MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                     DAT_WildlifeState::ptr)(tribeID, 2, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::standUpAllTribeUnits, this)(tribeID);
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(tribeID);
                 sVar2 = this->tribes[tribeID].currentRallyPointIndex;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
                     (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][0])),
                     (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2][1])), 0, 0,
-                    OpenSHC::Map::Units::Instructions::UMSE_0);
+                    Map::Units::Instructions::UMSE_0);
                 this->tribes[tribeID].currentRallyPointIndex = this->tribes[tribeID].currentRallyPointIndex + 1;
                 if (this->tribes[tribeID].rallyPointCount <= this->tribes[tribeID].currentRallyPointIndex) {
                     this->tribes[tribeID].rallyPointCount = 0;
-                    this->tribes[tribeID].tribeBehaviorType = OpenSHC::Map::Units::STBT_1;
+                    this->tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
                 }
             }
         }

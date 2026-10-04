@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmImageType;
+        using IO::Graphics::GmImageType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004554A0
         void TextureRenderCore::drawTgxGmOnFlaggedSurface(GmID gmId, int imageIndexInGm, int xPos, int yPos)
@@ -22,13 +22,13 @@ namespace UI {
             iVar1 = GMTotalPicturesProcessed::instance[gmId];
             _tgxSourcePtr = (ushort*)(DAT_GMImageOffsets::instance[iVar1 + -1 + imageIndexInGm]
                 + (int)this->gmProcessedImageData);
-            if (this->gmFileHeaderColorpaletteArray[gmId].ImageType == OpenSHC::IO::Graphics::GIT_InterfaceElement) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos,
+            if (this->gmFileHeaderColorpaletteArray[gmId].ImageType == IO::Graphics::GIT_InterfaceElement) {
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos,
                     yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageIndexInGm + iVar1 + -1].width)),
                     (int)((int)(DAT_GMImageHeaders::instance.imh[imageIndexInGm + iVar1 + -1].height)), _tgxSourcePtr);
             }
-            if (this->gmFileHeaderColorpaletteArray[gmId].ImageType == OpenSHC::IO::Graphics::GIT_CompressedImage) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos,
+            if (this->gmFileHeaderColorpaletteArray[gmId].ImageType == IO::Graphics::GIT_CompressedImage) {
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos,
                     yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageIndexInGm + iVar1 + -1].width)),
                     (int)((int)(DAT_GMImageHeaders::instance.imh[imageIndexInGm + iVar1 + -1].height)), _tgxSourcePtr);
             }

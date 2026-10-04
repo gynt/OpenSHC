@@ -20,11 +20,11 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Trees::TreeTypeShort;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using Map::Trees::TreeTypeShort;
+    using UI::Enums::DisplayElementID;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3960
     void LandscapeState::updateTreeStage(uint treeID, uint rng)
@@ -37,17 +37,17 @@ namespace Map {
         int _treeID;
         int _treeType;
         TreeTypeShort _treeType_2;
-        if ((((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+        if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                  || ((DAT_GameCore::instance.isTimeHalted == FALSE
-                     && (BVar2 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-                             OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
+                     && (BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                             UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
                          BVar2 == FALSE))))
                 && (((this->trees[treeID].rng1 & 0x3fU) == rng
                     && (((_treeType = (int)(short)this->trees[treeID].treeType, _treeType < 5 || (0x13 < _treeType))
                         && (this->trees[treeID].zeroUpTo2 == 0))))))
             && ((((short)this->trees[treeID].stageRelated2 <= (short)this->trees[treeID].stageRelated1
                      && (this->field1_0x4 != 0))
-                && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)))) {
+                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)))) {
             piVar1 = &this->trees[treeID].stageTracker;
             *piVar1 = *piVar1 + 1;
             iVar3 = this->trees[treeID].stage;
@@ -55,7 +55,7 @@ namespace Map {
                 <= this->trees[treeID].stageTracker) {
                 _stage = iVar3 + 1;
                 this->trees[treeID].stage = _stage;
-                MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::setTreeStageRelatedValues, this)(treeID, _stage);
+                MACRO_CALL_MEMBER(Map::LandscapeState_Func::setTreeStageRelatedValues, this)(treeID, _stage);
                 iVar3 = this->trees[treeID].stage;
                 if (5 < iVar3) {
                     this->trees[treeID].state = 3;
@@ -79,15 +79,15 @@ namespace Map {
                     this->trees[treeID].stage = 3;
                     DAT_GameState::instance.mapAndTime.newOrganismsValue2
                         = DAT_GameState::instance.mapAndTime.newOrganismsValue2 + 1;
-                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::setupBabyTreeLocation, this)(treeID,
+                    iVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::setupBabyTreeLocation, this)(treeID,
                         (int)((int)((short)this->trees[treeID].treeType)),
                         (uint)((int)((int)(short)this->trees[treeID].xPosition)),
                         (uint)((int)((int)(short)this->trees[treeID].yPosition)));
                     if (iVar3 != 0) {
                         size = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage, this)(
+                            Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage, this)(
                             (int)(short)this->trees[treeID].treeType, 0);
-                        _treeID = MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::createTree, this)(
+                        _treeID = MACRO_CALL_MEMBER(Map::LandscapeState_Func::createTree, this)(
                             DAT_PathFindingState::instance.ALG_ResultX,
                             (undefined4)((int)(DAT_PathFindingState::instance.ALG_ResultY)),
                             (TreeType)(short)this->trees[treeID].treeType, (undefined4)((int)(size)), 0, 0, 0);
@@ -96,10 +96,10 @@ namespace Map {
                             = DAT_TileMapState::instance.LogicLayer[DAT_PathFindingState::instance.ALG_ResultTile]
                             | 0x1000;
                         DAT_TileMapState::instance.OrganismLayer[iVar3] = (short)_treeID;
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::applyTreeBrushToLogicalLayer,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer,
                             DAT_TileMapState::ptr)(_treeID, 0);
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                            Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                             DAT_PathFindingState::ptr)(
                             (int)(short)this->trees[_treeID].yPosition, (int)((int)(this->trees[_treeID].tile)));
                         DAT_GameState::instance.mapAndTime.newOrganisms

@@ -26,11 +26,11 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::Map::Units::States::UnitStateShort;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
+    using Map::Units::States::UnitState;
+    using Map::Units::States::UnitStateShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004138D0
     void Buildings::UpdatePoleturnersWorkshop()
@@ -48,9 +48,9 @@ namespace Map {
         bool bVar10;
         sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         bVar10 = false;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field138_0x1c2 = 1;
@@ -61,7 +61,7 @@ namespace Map {
         if ((char)((char)DAT_BuildingsState::instance.buildings[buildingID].uid
                 + (char)DAT_GameCore::instance.mapTimeInTicks)
             == '\0') {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingPlacementRotationPreview,
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingPlacementRotationPreview,
                 DAT_TileMapState::ptr)((int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)));
             buildingID = DAT_CurrentBuildingID::instance;
@@ -70,7 +70,7 @@ namespace Map {
         }
         iVar9 = buildingID * 0x32c;
         RVar5 = DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext;
-        if (RVar5 == OpenSHC::Game::Resources::RT_SPEAR) {
+        if (RVar5 == Game::Resources::RT_SPEAR) {
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
             if (sVar3 == 0) {
                 if ((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
@@ -78,15 +78,15 @@ namespace Map {
                               sVar3 == 7 || (sVar3 == 0x27))
                              || (sVar3 == 0x4a))
                         || (((sVar3 == 0x6a || (sVar3 == 0x8c)) || (sVar3 == 0xaf)))))) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                        OpenSHC::DE::SHCDE::FX_POLE_TURN);
+                        DE::SHCDE::FX_POLE_TURN);
                     buildingID = DAT_CurrentBuildingID::instance;
                 }
                 iVar9 = buildingID * 0x32c;
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     bVar7 = DAT_BuildingDefinedData::instance.field78_0x54cc[sVar3];
                 } else {
                     bVar7 = DAT_BuildingDefinedData::instance.field79_0x555c[sVar3];
@@ -133,7 +133,7 @@ namespace Map {
                     }
                 }
             }
-        } else if (RVar5 == OpenSHC::Game::Resources::RT_PIKE) {
+        } else if (RVar5 == Game::Resources::RT_PIKE) {
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
             if (sVar3 == 0) {
                 bVar7 = DAT_BuildingDefinedData::instance
@@ -159,15 +159,15 @@ namespace Map {
                 if ((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
                     && ((sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex,
                         sVar3 == 2 || (sVar3 == 0x30)))) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
-                        OpenSHC::DE::SHCDE::FX_POLE_GRIND);
+                        DE::SHCDE::FX_POLE_GRIND);
                     buildingID = DAT_CurrentBuildingID::instance;
                 }
                 iVar9 = buildingID * 0x32c;
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     bVar7 = DAT_BuildingDefinedData::instance.field75_0x53bc[sVar3];
                 } else {
                     bVar7 = DAT_BuildingDefinedData::instance.field76_0x5484[sVar3];
@@ -229,28 +229,28 @@ namespace Map {
         iVar8 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9);
         if (iVar8 != 0) {
             UVar6 = DAT_UnitsState::instance.units[iVar8].state.generic;
-            if (UVar6 == OpenSHC::Map::Units::States::US_FIRE_WEAPONUnk) {
+            if (UVar6 == Map::Units::States::US_FIRE_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9) = 1;
                 goto LAB_00413d10;
             }
-            if (UVar6 == OpenSHC::Map::Units::States::US_AIM_WEAPONUnk) {
+            if (UVar6 == Map::Units::States::US_AIM_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9) = 1;
                 goto LAB_00413d10;
             }
         }
         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9) = 0;
     LAB_00413d10:
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
             DAT_BuildingsState::ptr)(buildingID);
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9)
             != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x52)) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar9 = DAT_CurrentBuildingID::instance * 0x32c;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
-        bVar10 = DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY;
+        bVar10 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
         if (bVar10) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9) = 0;

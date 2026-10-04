@@ -15,8 +15,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AF860
     void DisplayElements::RenderDebugNumbersDisplayElement(int posX, int posY, DWORD elementState)
@@ -63,8 +63,8 @@ namespace UI {
         } while (_loopEndCondition < 400);
         _averageMillisecLoopMain = _gameLoopDurationBufferSum / 100;
         if (elementState != 0xfffffc18) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                _lastGameLoopDuration, posX, posY + 5, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0xf, FALSE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                _lastGameLoopDuration, posX, posY + 5, Text::TTA_LEFT, 0x80ff, 0, 0xf, FALSE, 0);
         }
         _maxLoopDurationOfTheLast100 = -1;
         _millisecLoopPointer = DAT_GameLoopDurationBuffer::instance + 1;
@@ -87,15 +87,15 @@ namespace UI {
             _millisecLoopPointer = _millisecLoopPointer + 5;
         } while ((int)_millisecLoopPointer < 0xdf552c);
         if (elementState != 0xfffffc18) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                _averageMillisecLoopMain, posX + 0x30, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                _averageMillisecLoopMain, posX + 0x30, posY, Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
         }
         if (_averageMillisecLoopMain == 0) {
             _averageMillisecLoopMain = 1;
         }
         if (elementState != 0xfffffc18) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                (int)(1000 / (longlong)_averageMillisecLoopMain), posX + 0x30, posY + 0x14, OpenSHC::Text::TTA_LEFT,
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                (int)(1000 / (longlong)_averageMillisecLoopMain), posX + 0x30, posY + 0x14, Text::TTA_LEFT,
                 0x80ff, 0, 0x11, FALSE, 0);
         }
         DAT_CurrentFramerate::instance = (int)(1000 / (longlong)_averageMillisecLoopMain);
@@ -107,9 +107,9 @@ namespace UI {
             _someRelationBetweenLoopDurationAndTickrate = 1;
         }
         if (elementState != 0xfffffc18) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 (int)(1000 / (longlong)_someRelationBetweenLoopDurationAndTickrate), posX + 0x30, posY + 0x28,
-                OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
+                Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
         }
     }
 

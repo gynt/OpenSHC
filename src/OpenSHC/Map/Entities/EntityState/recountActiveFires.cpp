@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00401620
         void EntityState::recountActiveFires()
@@ -22,7 +22,7 @@ namespace Map {
                 psVar1 = &this->entityArray[1];
                 do {
                     if (((psVar1->logicalState != 0) && (psVar1->logicalState == 2))
-                        && (psVar1->entityType == OpenSHC::Map::Entities::ET_FIRE)) {
+                        && (psVar1->entityType == Map::Entities::ET_FIRE)) {
                         DAT_TileMapState::instance.OccupancyLayer[psVar1->tile]
                             = DAT_TileMapState::instance.OccupancyLayer[psVar1->tile]
                             | '\x01' << ((char)psVar1->owner - 1U & 0x1f);

@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
+    using Game::GameMode2;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00417AA0
     void Buildings::UpdateKeepStronghold()
@@ -35,8 +35,8 @@ namespace Map {
         bVar4 = (byte)DAT_GameCore::instance.mapTimeInTicks & 3;
         DAT_BuildingsState::instance.buildings[_buildingID].someY
             = DAT_BuildingsState::instance.buildings[_buildingID].y + 4;
-        if (((bVar4 == 0) && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))
-            && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {
+        if (((bVar4 == 0) && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
+            && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT)) {
             _currentStartingGold = DAT_GameState::instance.playerDataArray[sVar2].startResources[0xf];
             if (0 < _currentStartingGold) {
                 _goldStep = 1;

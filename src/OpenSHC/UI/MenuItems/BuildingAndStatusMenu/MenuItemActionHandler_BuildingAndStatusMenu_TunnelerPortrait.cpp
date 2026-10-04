@@ -19,9 +19,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::SoundEffectID;
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::SoundEffectID;
+        using Commands::GameCommandType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00466F60
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_TunnelerPortrait(int param_1, ...)
@@ -32,8 +32,8 @@ namespace UI {
                         + DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .armySize
                     < DAT_GameState::instance.mapAndTime.armySizeLimit)) {
-                int iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit,
-                    DAT_UnitsState::ptr)((OpenSHC::Map::Units::UnitType)param_1,
+                int iVar1 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::nonEuroRecruit,
+                    DAT_UnitsState::ptr)((Map::Units::UnitType)param_1,
                     (undefined4)((int)(DAT_GameState::instance
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .tunnelersGuild.id)),
@@ -45,27 +45,27 @@ namespace UI {
                         /*
                           "You do not have enough gold to train this unit"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "units_warning3.wav");
                     }
                     /*
                       "Recruits needed sire"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "other_warning5.wav");
                 } else {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECRUIT_UNIT);
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                        OpenSHC::Audio::SFX::SEID_BUTTON_CLICK_01);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
+                    MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                        Audio::SFX::SEID_BUTTON_CLICK_01);
                     DWORD DVar2 = timeGetTime();
                     if (8000 < DVar2 - DWORD_00df336c::instance) {
                         /*
                            "Yeeeess?"
                          */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "tunnel_s2.wav");
                         DWORD_00df336c::instance = timeGetTime();
                     }

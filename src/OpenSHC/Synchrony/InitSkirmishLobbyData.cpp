@@ -27,25 +27,25 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Game::GameMode2;
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using Game::GameMode2;
+using WindowsHelper::Enums::BOOLEnum;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x004274F0
 void Synchrony::InitSkirmishLobbyData()
 {
     int iVar1;
-    MACRO_CALL_MEMBER(OpenSHC::AI::AIVState_Func::hostChecksLobbyAIVAvailability, DAT_AIVState::ptr)();
+    MACRO_CALL_MEMBER(AI::AIVState_Func::hostChecksLobbyAIVAvailability, DAT_AIVState::ptr)();
     DAT_GameSynchronyState::instance.skirmishRelated1 = -1;
     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = -1;
     DAT_GameSynchronyState::instance.reparseMaps = TRUE;
     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
     DAT_GameCore::instance.mapU4Int0 = 0;
-    MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
-    MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+    MACRO_CALL_MEMBER(Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
+    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
     DAT_GameSynchronyState::instance.mapName[0] = '\0';
     DAT_GameCore::instance.mapDescription[0] = '\0';
     DAT_GameCore::instance.mapDescUseStringTableIndex = 0;
-    MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
+    MACRO_CALL(OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
     DAT_ButtonBackgroundBlendStrength::instance = 0x20;
     DAT_00b960dc::instance = 0xfffffffd;
     DWORD_00b95b1c::instance = timeGetTime();
@@ -60,7 +60,7 @@ void Synchrony::InitSkirmishLobbyData()
     DAT_00b95960::instance = 0xffffffff;
     INT_00b95950::instance = -1;
     INT_00b960b0::instance = -1;
-    DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
+    DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
     DAT_GameSynchronyState::instance.field248_0x109250 = 6;
     INT_00b95ab8::instance = 0;
     for (iVar1 = 0; iVar1 < 20; iVar1++) {
@@ -120,7 +120,7 @@ void Synchrony::InitSkirmishLobbyData()
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[7] = 0xff;
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[8] = 0xff;
         MACRO_CALL_MEMBER(
-            OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
+            Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
     }
     DAT_00b960f8::instance = 0;
     INT_00b95958::instance = 0;

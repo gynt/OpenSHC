@@ -14,9 +14,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuModalType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA1F0
     void MenuModalComposition::update()
@@ -36,7 +36,7 @@ namespace UI {
         int _y;
         this->minus1 = 0;
         this->mbr_0x78 = 0;
-        if (this->activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {}
+        if (this->activeModalDialogID == UI::Enums::MMT_NONE) {}
         _borderStyle = (this->modalMenu).borderStyle;
         if (((_borderStyle & 4) == 0) || ((_borderStyle & 2) == 0))
             goto LAB_004aa311;
@@ -71,7 +71,7 @@ namespace UI {
                 (this->modalMenu).y = 0;
             }
             _areWeInAnInGameMenu
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             _width = (this->modalMenu).width;
             _x3 = (this->modalMenu).x + _width;
             if (_areWeInAnInGameMenu == FALSE) {
@@ -99,7 +99,7 @@ namespace UI {
             _y = (this->modalMenu).y;
             _menuPtr->xPosition = (this->modalMenu).x;
             _menuPtr->yPosition = _y;
-MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToMenu)();
+MACRO_CALL_MEMBER(UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToMenu)();
         }
         if (this->minus1 == -1) {
             this->minus1 = 0;
@@ -114,14 +114,14 @@ MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::updateMenuButtons, (this->modalMenu).p
                 this->minus1 = 1;
             }
             _areWeInAnInGameMenu
-                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if ((_areWeInAnInGameMenu == FALSE)
-                && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
+                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
                 this->minus1 = 1;
             }
             if ((this->slot == 0)
                 && (_isInTickingGameMode
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::isGameHaltingMenuOpen, DAT_GameCore::ptr)(),
+                    = MACRO_CALL_MEMBER(Game::GameCore_Func::isGameHaltingMenuOpen, DAT_GameCore::ptr)(),
                     _isInTickingGameMode != 0)) {
                 this->minus1 = 1;
             }
@@ -132,7 +132,7 @@ MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::updateMenuButtons, (this->modalMenu).p
         }
         if ((_borderStyle & 0x1000) != 0) {
             if ((this->minus1 != 0)
-                && (this->activeModalDialogID != OpenSHC::UI::Enums::MMT_DISPLAY_SCENARIO_HELP_TEXT)) {
+                && (this->activeModalDialogID != UI::Enums::MMT_DISPLAY_SCENARIO_HELP_TEXT)) {
                 this->mbr_0x78 = 1;
             }
             this->minus1 = 0;

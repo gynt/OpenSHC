@@ -10,8 +10,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CCB0
     void Init::Constructor_MapPropertiesState()
     {
-        MACRO_CALL(OpenSHC::Global::Init_Func::Constructor_Empty)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d7b0));
+        MACRO_CALL(Global::Init_Func::Constructor_Empty)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d7b0));
         return;
     }
 

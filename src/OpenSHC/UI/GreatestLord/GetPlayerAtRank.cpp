@@ -26,7 +26,7 @@ namespace UI {
         do {
             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1)
                 || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
-                _rank = MACRO_CALL(OpenSHC::Audio::SFX_Func::ComputePlayerRanking)(_playerID);
+                _rank = MACRO_CALL(Audio::SFX_Func::ComputePlayerRanking)(_playerID);
                 _ranking[_rank] = _playerID;
             }
             _playerID = _playerID + 1;

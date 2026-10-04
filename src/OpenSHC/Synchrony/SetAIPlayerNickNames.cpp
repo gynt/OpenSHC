@@ -8,7 +8,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::DE::SHCDE::eTextSections;
+using DE::SHCDE::eTextSections;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0042A8E0
 void Synchrony::SetAIPlayerNickNames()
@@ -29,8 +29,8 @@ void Synchrony::SetAIPlayerNickNames()
                   AI Nicknames: rat
                  */
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x6f)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x6f)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -44,8 +44,8 @@ void Synchrony::SetAIPlayerNickNames()
                   AI Nicknames: snake
                  */
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x77)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x77)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -56,8 +56,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 3:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x7f)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x7f)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -68,8 +68,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 4:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x87)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x87)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -80,8 +80,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 5:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x8f)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x8f)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -92,8 +92,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 6:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x97)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x97)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -104,8 +104,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 7:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x9f)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0x9f)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -116,8 +116,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 8:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xa7)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xa7)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -128,8 +128,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 9:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xaf)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xaf)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -140,8 +140,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 10:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xb7)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xb7)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -152,8 +152,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0xb:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xbf)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xbf)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -164,8 +164,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0xc:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 199)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 199)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -176,8 +176,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0xd:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xcf)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xcf)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -188,8 +188,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0xe:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xd7)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xd7)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -200,8 +200,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0xf:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xdf)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xdf)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;
@@ -212,8 +212,8 @@ void Synchrony::SetAIPlayerNickNames()
                 break;
             case 0x10:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xe7)));
+                    Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, (int)((int)(piVar4->aiVariationArray[1] + 0xe7)));
                 pacVar3 = pacVar4;
                 do {
                     cVar1 = *pcVar2;

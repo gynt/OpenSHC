@@ -5,7 +5,7 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4CD0
     void MenuHandlerState::computeBuildMenuTransitionShift()

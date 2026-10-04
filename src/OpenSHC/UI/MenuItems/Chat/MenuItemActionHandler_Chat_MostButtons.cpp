@@ -19,9 +19,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0048F590
         void Chat::MenuItemActionHandler_Chat_MostButtons(int param_1, ...)
@@ -73,7 +73,7 @@ namespace UI {
                 return;
             case 0x21:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                 pcVar3 = pcVar2;
                 do {
                     cVar1 = *pcVar3;
@@ -89,15 +89,15 @@ namespace UI {
                         }
                     }
                     DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
                     goto switchD_0048f603_caseD_22;
                 }
                 break;
             case 0x22:
             switchD_0048f603_caseD_22:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                 return;
@@ -127,13 +127,13 @@ namespace UI {
                 }
                 break;
             case 0x45:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ALLIES, FALSE);
                 if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                     /*
                       "Your allies"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "Genie_11.wav");
                 }
             }

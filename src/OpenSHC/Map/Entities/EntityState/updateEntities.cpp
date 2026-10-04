@@ -14,7 +14,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004087C0
         void EntityState::updateEntities()
@@ -49,24 +49,24 @@ namespace Map {
                     case 3:
                         goto switchD_0040884c_caseD_3;
                     case 4:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::activateProjectileEntity, this)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::activateProjectileEntity, this)(
                             DAT_CurrentEntityID::instance);
                         break;
                     case 5:
                         *psVar4 = 6;
                         break;
                     case 7:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::tickEntityDecayCounter, this)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::tickEntityDecayCounter, this)(
                             DAT_CurrentEntityID::instance);
                         goto LAB_00408d6d;
                     case 8:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::tickEntityDecayCounter, this)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::tickEntityDecayCounter, this)(
                             DAT_CurrentEntityID::instance);
                     }
                     if (DAT_CurrentEntityID::instance
                         == (int)this->entityArray[DAT_CurrentEntityID::instance].nextEntityOnThisTileByID) {
                     switchD_0040884c_caseD_3:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::deleteEntity, this)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::deleteEntity, this)(
                             DAT_CurrentEntityID::instance);
                         goto LAB_00408d6d;
                     }
@@ -84,17 +84,17 @@ namespace Map {
                       Switch entity type
                      */
                     switch (this->entityArray[DAT_CurrentEntityID::instance].entityType) {
-                    case OpenSHC::Map::Entities::ET_FIRE:
+                    case Map::Entities::ET_FIRE:
                         break;
-                    case OpenSHC::Map::Entities::ET_FLAG_1:
-                    case OpenSHC::Map::Entities::ET_FLAG_4:
-                    case OpenSHC::Map::Entities::ET_FLAG_2:
-                    case OpenSHC::Map::Entities::ET_FLAG_3:
-                    case OpenSHC::Map::Entities::ET_BRAZIER:
-                    case OpenSHC::Map::Entities::ET_HEADS_ON_SPIKES:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile,
+                    case Map::Entities::ET_FLAG_1:
+                    case Map::Entities::ET_FLAG_4:
+                    case Map::Entities::ET_FLAG_2:
+                    case Map::Entities::ET_FLAG_3:
+                    case Map::Entities::ET_BRAZIER:
+                    case Map::Entities::ET_HEADS_ON_SPIKES:
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile,
                             this)(DAT_CurrentEntityID::instance);
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
                             this)(DAT_CurrentEntityID::instance);
                         break;
                     default:
@@ -112,14 +112,14 @@ namespace Map {
                                     _gmLookupValue != 0))
                             && (this->entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround == 0)) {
                             if (_gmLookupValue == 3) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnEntityEffect1, this)(
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntityEffect1, this)(
                                     this->entityArray[DAT_CurrentEntityID::instance].microX,
                                     this->entityArray[DAT_CurrentEntityID::instance].microY,
                                     (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].height)),
                                     6, (int)((int)(this->entityArray[DAT_CurrentEntityID::instance].gmID)),
                                     this->entityArray[DAT_CurrentEntityID::instance].graphicType2);
                             } else {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnEntityEffect2, this)(
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntityEffect2, this)(
                                     (int)this->entityArray[DAT_CurrentEntityID::instance].microX,
                                     (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].microY)),
                                     (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].height)),
@@ -127,16 +127,16 @@ namespace Map {
                             }
                         }
                         if (this->entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround == 0) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::moveProjectileEntity, this)(
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::moveProjectileEntity, this)(
                                 DAT_CurrentEntityID::instance);
                         }
                         break;
-                    case OpenSHC::Map::Entities::ET_DUST_CLOUD:
+                    case Map::Entities::ET_DUST_CLOUD:
                         if (this->entityArray[DAT_CurrentEntityID::instance].unitID == 2) {
                             if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated & 1)
                                 != 0) {
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
+                                    Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
                                     DAT_CurrentEntityID::instance);
                                 this->entityArray[DAT_CurrentEntityID::instance].height
                                     = this->entityArray[DAT_CurrentEntityID::instance].height + 1;
@@ -165,15 +165,15 @@ namespace Map {
                                         = this->entityArray[DAT_CurrentEntityID::instance].microY + 1;
                                 }
                                 MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
+                                    Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
                                     DAT_CurrentEntityID::instance);
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset,
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset,
                                     this)(DAT_CurrentEntityID::instance);
                             }
                         } else if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated & 1)
                             != 0) {
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
+                                Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
                                 DAT_CurrentEntityID::instance);
                             this->entityArray[DAT_CurrentEntityID::instance].height
                                 = this->entityArray[DAT_CurrentEntityID::instance].height + 1;
@@ -199,18 +199,18 @@ namespace Map {
                                 this->entityArray[DAT_CurrentEntityID::instance].microY
                                     = this->entityArray[DAT_CurrentEntityID::instance].microY + 1;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
                                 this)(DAT_CurrentEntityID::instance);
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset,
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset,
                                 this)(DAT_CurrentEntityID::instance);
                         }
                         break;
-                    case OpenSHC::Map::Entities::ET_COW_POISON_CLOUD:
+                    case Map::Entities::ET_COW_POISON_CLOUD:
                         this->entityArray[DAT_CurrentEntityID::instance].velocityUnk
                             = this->entityArray[DAT_CurrentEntityID::instance].velocityUnk + 1;
                         if (this->entityArray[DAT_CurrentEntityID::instance].velocityUnk < 0x1f)
                             goto LAB_00408c15;
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile,
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile,
                             this)(DAT_CurrentEntityID::instance);
                         if (this->entityArray[DAT_CurrentEntityID::instance].velocityUnk != 1000) {
                             this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk
@@ -220,7 +220,7 @@ namespace Map {
                                     = (short)(char)((*((char*)&SEC_RNG::instance.currentNumber2 + 1)) & 0x3f);
                                 this->entityArray[DAT_CurrentEntityID::instance].startingAngle
                                     = (byte)((char)SEC_RNG::instance.currentNumber2 >> 4) & 7;
-                                MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                                MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                             }
                         }
                         this->entityArray[DAT_CurrentEntityID::instance].velocityUnk = 0;
@@ -264,9 +264,9 @@ namespace Map {
                             this->entityArray[DAT_CurrentEntityID::instance].microY
                                 = this->entityArray[DAT_CurrentEntityID::instance].microY + -1;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit,
                             this)(DAT_CurrentEntityID::instance);
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
                             DAT_CurrentEntityID::instance);
                     LAB_00408c15:
                         this->entityArray[DAT_CurrentEntityID::instance].height
@@ -274,7 +274,7 @@ namespace Map {
                                   .HeightLayer[this->entityArray[DAT_CurrentEntityID::instance].tile]
                             + 0x14;
                         break;
-                    case OpenSHC::Map::Entities::EntityTypeInt__ET_EXPLOSION:
+                    case Map::Entities::EntityTypeInt__ET_EXPLOSION:
                     case ((EntityType)0x28):
                     case ((EntityType)0x29):
                     case ((EntityType)0x2a):
@@ -286,8 +286,8 @@ namespace Map {
                     ((void (*)())DAT_EntityDefinedData::instance
                             .EntityCallbacks[(short)this->entityArray[DAT_CurrentEntityID::instance].entityType])();
                     if (this->entityArray[DAT_CurrentEntityID::instance].entityType
-                        == OpenSHC::Map::Entities::ET_SEAGULLUnk) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processSeaGulls, this)(
+                        == Map::Entities::ET_SEAGULLUnk) {
+                        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processSeaGulls, this)(
                             (int)this->entityArray[DAT_CurrentEntityID::instance].unitID_OR_seaGullID);
                     }
                 LAB_00408d6d:

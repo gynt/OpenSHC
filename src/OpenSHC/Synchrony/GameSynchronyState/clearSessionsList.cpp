@@ -18,7 +18,7 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DPLAY_SessionsCount = 0;
         }
         do {
-            MACRO_CALL(OpenSHC::OS_Func::_free_base)(DAT_GameSynchronyState::instance.DPLAY_SessionNames[iVar2]);
+            MACRO_CALL(OS_Func::_free_base)(DAT_GameSynchronyState::instance.DPLAY_SessionNames[iVar2]);
             pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[iVar2]);
             GlobalUnlock(pvVar1);
             pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[iVar2]);

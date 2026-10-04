@@ -41,13 +41,13 @@ namespace Map {
                             if (((_tribe == 0) || (this->tribes[_tribe].tribeState == 0))
                                 || (this->tribes[_tribe].uid
                                     != DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk)) {
-                                _tribe = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe, this)(
+                                _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(
                                     playerID, 0);
                                 DAT_GameState::instance.playerDataArray[playerID].monkTribeIDUnk = _tribe;
                                 DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk
                                     = this->tribes[_tribe].uid;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                                 unitID, _tribe);
                         }
                     }
@@ -58,11 +58,11 @@ namespace Map {
             if (((_tribe == 0) || (this->tribes[_tribe].tribeState == 0))
                 || (this->tribes[_tribe].uid
                     != DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index])) {
-                _tribe = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
+                _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
                 *psVar1 = (short)_tribe;
                 DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index] = this->tribes[_tribe].uid;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, this)(unitID, _tribe);
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(unitID, _tribe);
         }
 
     }

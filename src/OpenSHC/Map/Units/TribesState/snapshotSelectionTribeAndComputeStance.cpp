@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
+        using Map::Units::UnitLogicState;
+        using Map::Units::Behavior::UnitStanceEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522CA0
         void TribesState::snapshotSelectionTribeAndComputeStance(int playerID)
@@ -43,7 +43,7 @@ namespace Map {
                 _tribeID_1 = -1;
                 do {
                     _tribeID_chosen = _tribeID_1;
-                    if (((((_pUnit->logicalState == OpenSHC::Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if (((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
                              && (_pUnit->ifSelectedThenPlayerID == playerID))
                             && ((_unitTribeID = (int)_pUnit->tribeID,
                                 0 < _unitTribeID
@@ -76,10 +76,10 @@ namespace Map {
                 }
             }
             if (_countAggressive + _countDefensive + _countStandground == 0) {
-                this->tribes[0].unitStance = OpenSHC::Map::Units::Behavior::USE_STAND_GROUND;
+                this->tribes[0].unitStance = Map::Units::Behavior::USE_STAND_GROUND;
             }
             if ((_countDefensive <= _countAggressive) && (_countStandground <= _countAggressive)) {
-                this->tribes[0].unitStance = OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE;
+                this->tribes[0].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
             }
             this->tribes[0].unitStance = (ushort)(_countStandground <= _countDefensive);
         }

@@ -12,9 +12,9 @@ namespace Text {
         char* _textAddress;
         int blendStrength;
         blendStrength = 0;
-        _textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
+        _textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
             textGroupIndex, textNumInGroup);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, this)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, this)(
             _textAddress, xPosition, yPosition, textShift, color, param_7, fontSize, param_9, blendStrength);
         return;
     }

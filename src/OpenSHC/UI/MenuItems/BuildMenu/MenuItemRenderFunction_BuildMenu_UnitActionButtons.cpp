@@ -29,11 +29,11 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using Map::Units::UnitType;
+        using Map::Units::Behavior::UnitStanceEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00438BE0
         void BuildMenu::MenuItemRenderFunction_BuildMenu_UnitActionButtons(int mapperValue, ...)
@@ -47,7 +47,7 @@ namespace UI {
             uint color2;
             int fontSize;
             BVar1 = MACRO_CALL_MEMBER(
-                OpenSHC::Map::MapPropertiesState_Func::isMapperAvailable, DAT_MapPropertiesState::ptr)((OpenSHC::Commands::MappersEnum)mapperValue);
+                Map::MapPropertiesState_Func::isMapperAvailable, DAT_MapPropertiesState::ptr)((Commands::MappersEnum)mapperValue);
             if (BVar1 == FALSE) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
@@ -58,7 +58,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
@@ -70,12 +70,12 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 uVar3 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
                 if (uVar3 == 0) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
             LAB_00438ec1:
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                MACRO_CALL(UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 DAT_ButtonUnknownZero::instance = 0;
             }
@@ -91,13 +91,13 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
                 }
@@ -105,41 +105,41 @@ namespace UI {
             default:
                 goto switchD_00438c35_caseD_d9;
             case 0xda:
-                if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
+                if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                        && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
                     && ((DAT_UnitsState::instance.hasEngineerSelected == FALSE
                         && (uVar3
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected,
+                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected,
                                 DAT_UnitsState::ptr)(),
                             uVar3 != 0)))) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
                 }
                 break;
             case 0xdb:
                 DAT_00ee1090::instance = 0xca;
-                if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
+                if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                        && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
                     && (DAT_UnitsState::instance.hasEngineerSelected == FALSE)) {
                     BVar1 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)();
+                        Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)();
                     if (BVar1 == FALSE) {
-                        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectionContainsTunnelersOnly,
+                        iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsTunnelersOnly,
                             DAT_UnitsState::ptr)();
                         if (iVar2 != 0) {
                             DAT_CurrentButtonGmDataIndex::instance = 0xda;
                             DAT_00ee1090::instance = 0xc9;
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
                         }
                         uVar3
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
+                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
                                 DAT_UnitsState::ptr)(0x27, 0x28);
                         if (uVar3 != 0) {
                             DAT_CurrentButtonGmDataIndex::instance = 0x177;
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             BVar1 = FALSE;
                             fontSize = 0x13;
@@ -148,36 +148,36 @@ namespace UI {
                             yPosition = DAT_ButtonY::instance + 2;
                             xPosition = DAT_ButtonX::instance + 2;
                             iVar2 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::UnitsState_Func::getMaxStoneAmmoInSelectedSiegeEngines,
+                                Map::Units::UnitsState_Func::getMaxStoneAmmoInSelectedSiegeEngines,
                                 DAT_UnitsState::ptr)();
                             goto LAB_00438e95;
                         }
                         BVar1
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectionContainsRangedOnlyUnits,
+                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsRangedOnlyUnits,
                                 DAT_UnitsState::ptr)();
                         if (BVar1 != FALSE) {
                             DAT_CurrentButtonGmDataIndex::instance = 0x177;
                             goto LAB_00438ec1;
                         }
-                        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectionContainsLaddermenOnly,
+                        iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsLaddermenOnly,
                             DAT_UnitsState::ptr)();
                         if ((iVar2 == 0)
                             && (iVar2 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::UnitsState_Func::selectionContainsShieldmenOnly,
+                                    Map::Units::UnitsState_Func::selectionContainsShieldmenOnly,
                                     DAT_UnitsState::ptr)(),
                                 iVar2 == 0)) {
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
                         }
                     } else {
                         uVar3 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
+                            Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                             DAT_UnitsState::ptr)();
                         if (uVar3 != 0) {
                             DAT_CurrentButtonGmDataIndex::instance = 0xd2;
                             DAT_00ee1090::instance = 0xc6;
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MACRO_CALL(UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
                         }
@@ -185,21 +185,21 @@ namespace UI {
                 }
                 break;
             case 0xdc:
-                if (((((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                          && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-                         && ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
+                if (((((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                          && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+                         && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
                              || ((DAT_GameSynchronyState::instance.currentGameMode
-                                     == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                                     == Game::GM_SKIRMISH_SINGLE_PLAYER
                                  || (DAT_GameState::instance.mapAndTime.skirmishNoCowThrowing == 0))))))
                         && (DAT_UnitsState::instance.hasEngineerSelected == FALSE))
                     && ((uVar3
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
+                        = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
                             DAT_UnitsState::ptr)(0x27, 0x28),
                         uVar3 != 0
                             && (0 < DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .counter)))) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     BVar1 = FALSE;
                     yPosition = DAT_ButtonY::instance + 2;
@@ -211,75 +211,75 @@ namespace UI {
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .counter;
                 LAB_00438e95:
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber, DAT_TextManagerObject::ptr)(
                         iVar2, xPosition, yPosition, uVar3, color2, fontSize, BVar1);
                     DAT_ButtonUnknownZero::instance = 0;
                 }
                 break;
             case 0x172:
                 UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
-                    == OpenSHC::Map::Units::Behavior::USE_STAND_GROUND) {
+                    == Map::Units::Behavior::USE_STAND_GROUND) {
                     DAT_ButtonY::instance = DAT_ButtonY::instance + -5;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
                 }
                 goto LAB_00438f47;
             case 0x173:
                 UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
-                    == OpenSHC::Map::Units::Behavior::USE_DEFENSIVE) {
+                    == Map::Units::Behavior::USE_DEFENSIVE) {
                     DAT_ButtonY::instance = DAT_ButtonY::instance + -1;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
                 }
                 goto LAB_00438f47;
             case 0x174:
                 UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
-                    == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
+                    == Map::Units::Behavior::USE_AGGRESSIVE) {
                     DAT_ButtonY::instance = DAT_ButtonY::instance + -1;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
                 }
             LAB_00438f47:
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                MACRO_CALL(UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 DAT_ButtonUnknownZero::instance = 0;
                 return;
             case 0x176:
                 DAT_00ee1094::instance = 0x123;
-                if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
+                if ((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
                     && (DAT_UnitsState::instance.hasEngineerSelected == FALSE)) {
                     uVar3 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                        Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
                     if (uVar3 != 0)
                         goto LAB_00438ec1;
-                    iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::countSelectedCatapultsAndTrebuchets,
+                    iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::countSelectedCatapultsAndTrebuchets,
                         DAT_UnitsState::ptr)();
                     if (iVar2 != 0) {
                         DAT_00ee1094::instance = 0x134;
                         DAT_CurrentButtonGmDataIndex::instance = 0x179;
-                        MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                        MACRO_CALL(UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                         DAT_ButtonUnknownZero::instance = 0;
                     }
@@ -287,7 +287,7 @@ namespace UI {
                 break;
             case 0x178:
                 if (DAT_UnitsState::instance.hasEngineerSelected == TRUE) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
             }

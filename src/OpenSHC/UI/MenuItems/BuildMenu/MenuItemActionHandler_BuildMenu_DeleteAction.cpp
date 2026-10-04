@@ -38,23 +38,23 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::DE::SHCDE::eSFX;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Buildings::BuildingFailReasonEnum;
-        using OpenSHC::Map::Entities::EntityType;
-        using OpenSHC::Map::Units::UnitTypeShort;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::States::UnitState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using Commands::MappersEnum;
+        using DE::SHCDE::eSFX;
+        using Game::GameMode;
+        using Game::GameMode2;
+        using Map::Buildings::BuildingFailReasonEnum;
+        using Map::Entities::EntityType;
+        using Map::Units::UnitTypeShort;
+        using Map::Units::UnitType;
+        using Map::Units::States::UnitState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004387D0
         void BuildMenu::MenuItemActionHandler_BuildMenu_DeleteAction(int param_1, ...)
         {
-            OpenSHC::UI::TextMessageBLLookupStructUnion _noBlLookup;
-            _noBlLookup.buildingType = (OpenSHC::Commands::MappersEnum)0;
+            UI::TextMessageBLLookupStructUnion _noBlLookup;
+            _noBlLookup.buildingType = (Commands::MappersEnum)0;
             int totalHeight;
             BOOLEnum BVar1;
             int _unitOwner;
@@ -64,23 +64,23 @@ namespace UI {
             UnitTypeShort _unitType;
             if ((((DAT_GameSynchronyState::instance.syncStatus == 0)
                      && (DAT_GameSynchronyState::instance.saveRelated == 0))
-                    && (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_DELETE))
+                    && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_DELETE))
                 && (DAT_TileMapState::instance.field194_0x554a20 = 0,
                     DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0)) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
+                    Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
                 DAT_TileMapState::instance.DAT_ClickedTileX
                     = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 DAT_TileMapState::instance.DAT_ClickedTileY
                     = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
-                if (((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
-                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT))
-                    && (BVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
+                if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
+                        && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+                    && (BVar1 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                             DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileX)),
                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)),
                             (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode
-                                             != OpenSHC::Game::GM_SOLITARY)
+                                             != Game::GM_SOLITARY)
                                             & 0xfffffff1)
                                 + 0x1e))),
                         BVar1 != FALSE)) {
@@ -104,7 +104,7 @@ namespace UI {
                         && ((_unitType = DAT_UnitsState::instance
                                  .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                  .unitType,
-                            _unitType != OpenSHC::Map::Units::UT_LORD
+                            _unitType != Map::Units::UT_LORD
                                 && (DAT_UnitsState::instance
                                         .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                         .dying
@@ -113,13 +113,13 @@ namespace UI {
                              .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                              .owner,
                         _unitOwner == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                            && (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)))) {
-                    if ((_unitType == OpenSHC::Map::Units::UT_E_ENGINEER)
+                            && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)))) {
+                    if ((_unitType == Map::Units::UT_E_ENGINEER)
                         && (DAT_UnitsState::instance
                                 .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                 .resourceToDeposit
                             != 0)) {
-                        MACRO_CALL(OpenSHC::Map::Entities_Func::IgniteFireAtMiniTile_Convenience)(_unitOwner,
+                        MACRO_CALL(Map::Entities_Func::IgniteFireAtMiniTile_Convenience)(_unitOwner,
                             (int)((int)(DAT_UnitsState::instance
                                     .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                     .microXPosition)),
@@ -135,7 +135,7 @@ namespace UI {
                                     .terrainOrClimbHeight)),
                             5);
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                            Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
                             (undefined4)((int)((int)DAT_UnitsState::instance.units[iVar2].owner)), 0,
                             (int)((int)(DAT_UnitsState::instance.units[iVar2].microXPosition)),
                             (int)((int)(DAT_UnitsState::instance.units[iVar2].microYPosition)),
@@ -151,18 +151,18 @@ namespace UI {
                     DAT_UnitsState::instance.units[iVar2].tunnelerFinishedDigging = 1;
                     DAT_UnitsState::instance.units[iVar2].animationCycleNumber = 0;
                     DAT_UnitsState::instance.units[iVar2].state.generic
-                        = OpenSHC::Map::Units::States::US_STONE_DEATH_01;
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                        = Map::Units::States::US_STONE_DEATH_01;
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, 0, 0, microX, microY, totalHeight, microX + 1, microY + 1, totalHeight,
                         ((EntityType)0x1e), 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)DAT_UnitsState::instance.units[iVar2].x,
-                        (int)((int)(DAT_UnitsState::instance.units[iVar2].y)), OpenSHC::DE::SHCDE::FX_DEATH_CLUB2);
+                        (int)((int)(DAT_UnitsState::instance.units[iVar2].y)), DE::SHCDE::FX_DEATH_CLUB2);
                     return;
                 }
                 DAT_TileMapState::instance.buildingPlacementFailReason
-                    = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
-                iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::spreadFlagPlacementAlgorithm,
+                    = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
+                iVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::spreadFlagPlacementAlgorithm,
                     DAT_TileMapState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileX)),
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
@@ -172,11 +172,11 @@ namespace UI {
                         = DAT_TileMapState::instance.DAT_ClickedTileX;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                         = DAT_TileMapState::instance.DAT_ClickedTileY;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(((GameCommandType)0x61));
                     return;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::evaluateBuildingPlacementAtCursor,
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::evaluateBuildingPlacementAtCursor,
                     DAT_TileMapState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileX)),
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
@@ -194,15 +194,15 @@ namespace UI {
                                     = DAT_BuildingsState::instance
                                           .buildings[DAT_TileMapState::instance.field131_0x554954]
                                           .uid;
-                                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_DESTROY_BUILDING);
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                    DAT_GameSynchronyState::ptr)(Commands::GCT_DESTROY_BUILDING);
                                 return;
                             }
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                                 = *(int*)(DAT_0053f088::ptr + DAT_TileMapState::instance.field131_0x554954 * -0x14
                                     + (int)DAT_TileMapState::instance.directionTranslationMatrix);
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                                DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_DESTROY_BUILDING);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                DAT_GameSynchronyState::ptr)(Commands::GCT_DESTROY_BUILDING);
                             return;
                         }
                     } else {
@@ -214,18 +214,18 @@ namespace UI {
                         = DAT_TileMapState::instance
                               .MiscDisplayLayer[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                         | 0x400;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_DESTROY2Unk);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_DESTROY2Unk);
                 } else {
                     if (DAT_TileMapState::instance.buildingPlacementFailReason == ((BuildingFailReasonEnum)1000)) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
+                        MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                             DAT_BottomLeftTextDisplayState::ptr)(
                             1, 0x101, 2, _noBlLookup, 100, 6000);
                         return;
                     }
                     if (DAT_TileMapState::instance.buildingPlacementFailReason
-                        != OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
+                        != Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
+                        MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                             DAT_BottomLeftTextDisplayState::ptr)(1, 0x4d,
                             (int)((int)(DAT_TileMapState::instance.buildingPlacementFailReason)),
                             _noBlLookup, 100, 6000);

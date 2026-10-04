@@ -14,8 +14,8 @@ namespace Global {
     void Init::Constructor_PathFindingState()
     {
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Navigation::PathFindingState_Func::Constructor_PathFindingState, DAT_PathFindingState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d6d0));
+            Map::Navigation::PathFindingState_Func::Constructor_PathFindingState, DAT_PathFindingState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6d0));
         return;
     }
 

@@ -15,7 +15,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3B90
     int LandscapeState::findTree(int playerID, uint unitXPosition, uint unitYPosition)
@@ -40,7 +40,7 @@ namespace Map {
                     psVar8 = &this->trees[1].state;
                     do {
                         if (((*(int*)(psVar8 + 0x1e) < 4) && (*psVar8 == 2))
-                            && (BVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::isTreeAdult, this)(
+                            && (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(
                                     local_18, (int)((int)(*(int*)(psVar8 + 4)))),
                                 BVar3 != FALSE)) {
                             byte bVar1 = DAT_TileMapState::instance.HeightLayer[*(uint*)(psVar8 + 0x12)];
@@ -50,13 +50,13 @@ namespace Map {
                                 uint uVar5 = (uint)DAT_TileMapState::instance.HeightLayer[iVar7];
                                 if (DAT_TileMapState::instance.BuildingLayer[iVar7] != 0) {
                                     int iVar4 = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                                        Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                                         DAT_BuildingsState::ptr)((int)DAT_TileMapState::instance.BuildingLayer[iVar7]);
                                     uVar5 = uVar5 + iVar4;
                                 }
                                 if ((((int)(uint)bVar1 <= (int)(uVar5 + 0x10))
                                         && ((int)(uVar5 - 0x10) <= (int)(uint)bVar1))
-                                    && (iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    && (iVar7 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                       calculateCanPlayerUnitsNavigateToAreaFromArea,
                                             DAT_PathFindingState::ptr)(playerID, (dword)((int)((int)(short)uVar2)),
                                             (dword)((int)((
@@ -64,7 +64,7 @@ namespace Map {
                                             0),
                                         iVar7 != 0)) {
                                     if ((iVar6 < 8)
-                                        && (MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::
+                                        && (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
                                                                   setAxisBasedDistanceResult,
                                                 DAT_DirectionAlgorithmState::ptr)(unitXPosition,
                                                 (int)((int)(unitYPosition)), (int)((int)(psVar8[0xf])),

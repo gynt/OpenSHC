@@ -21,7 +21,7 @@ namespace UI {
             case 2:
             case 3:
                 if (*currentValue != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                    MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 }
@@ -29,7 +29,7 @@ namespace UI {
                 return;
             case 4:
                 if (*currentValue != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                    MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 }
@@ -40,7 +40,7 @@ namespace UI {
                 if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                    MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 }
@@ -51,7 +51,7 @@ namespace UI {
                     < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                    MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 }

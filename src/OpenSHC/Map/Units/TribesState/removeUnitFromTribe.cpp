@@ -44,10 +44,10 @@ namespace Map {
                 DAT_UnitsState::instance.units[unitID].idInTribe = 0;
             }
             if ((int)this->tribes[tribeID].selectionTargetUnitID == unitID) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setTargetUnitForTribe, this)(tribeID);
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setTargetUnitForTribe, this)(tribeID);
             }
         LAB_00525b56:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(tribeID);
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(tribeID);
         }
 
     }

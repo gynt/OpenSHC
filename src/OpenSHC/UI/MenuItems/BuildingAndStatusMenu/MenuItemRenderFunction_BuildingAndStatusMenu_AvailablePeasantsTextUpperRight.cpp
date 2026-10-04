@@ -15,9 +15,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0043A8E0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_AvailablePeasantsTextUpperRight(
@@ -36,23 +36,23 @@ namespace UI {
             fontSize = 0x12;
             backgroundColor = 0;
             foregroundColor = 0xb8eefb;
-            alignment = OpenSHC::Text::TTA_RIGHT;
+            alignment = Text::TTA_RIGHT;
             int xParam = DAT_ButtonX::instance + -5;
             yParam = DAT_ButtonY::instance;
             /*
               added by script: "Available Peasants"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_BARRACKS, 3);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+            textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_BARRACKS, 3);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 textAddress, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX,
                 blendStrength);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .availablePeasantsOrHousedPeasants
                     - DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .count,
-                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
                 FALSE, 0);
         }
 

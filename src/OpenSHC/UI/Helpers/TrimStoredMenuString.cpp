@@ -39,7 +39,7 @@ namespace UI {
         DAT_00eb9b28::instance = 0;
         DAT_00eb9b38::instance = allowedWidth;
         DAT_00eb9b2c::instance = storedMenuStringIndex;
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::trimText, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::trimText, DAT_TextManagerObject::ptr)(
             DAT_ArrayOfStoredMenuStrings::instance[storedMenuStringIndex], allowedWidth, fontSize);
     }
 

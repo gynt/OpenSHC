@@ -27,7 +27,7 @@ namespace Map {
                         && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_pTribe->owner] == -1))
                     && (_pTribe->attackWave == attackID)) {
                     _status = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::getTribeAliveStatus, DAT_TribesState::ptr)(_tribeID);
+                        Map::Units::TribesState_Func::getTribeAliveStatus, DAT_TribesState::ptr)(_tribeID);
                     if (_status < 50) {
                         _living = _living + 1;
                     } else {

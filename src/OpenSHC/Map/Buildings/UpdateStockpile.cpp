@@ -18,10 +18,10 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using Game::Resources::ResourceType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00412360
     void Buildings::UpdateStockpile()
@@ -36,17 +36,17 @@ namespace Map {
         _buildingID = DAT_CurrentBuildingID::instance;
         _owner = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         bVar3 = false;
-        bVar5 = DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY;
+        bVar5 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         if (((((bVar5) || (_owner != DAT_GameState::instance.mapAndTime.somePlayerID))
                  && (((byte)DAT_GameCore::instance.mapTimeInTicks & 3) == 0))
                 && ((DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted == 0
-                    && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))))
-            && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT
+                    && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))))
+            && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
                 && (DAT_GameState::instance.playerDataArray[_owner].someCountdown01 == 0)))) {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[2])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_WOOD),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_WOOD),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[2];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 2;
@@ -54,17 +54,17 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[_owner].startResources[2] = iVar2 + -1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 2;
                 *piVar1 = *piVar1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[3])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_HOPS),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_HOPS),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[3];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 3;
@@ -72,17 +72,17 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[_owner].startResources[3] = iVar2 + -1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 3;
                 *piVar1 = *piVar1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[4])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_STONE),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_STONE),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[4];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 4;
@@ -90,17 +90,17 @@ namespace Map {
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 4;
                 *piVar1 = *piVar1 + 1;
                 DAT_GameState::instance.playerDataArray[_owner].startResources[4] = iVar2 + -1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[6])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_IRON),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_IRON),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[6];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 6;
@@ -108,17 +108,17 @@ namespace Map {
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 6;
                 *piVar1 = *piVar1 + 1;
                 DAT_GameState::instance.playerDataArray[_owner].startResources[6] = iVar2 + -1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[7])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_PITCH),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_PITCH),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[7];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 7;
@@ -126,17 +126,17 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[_owner].startResources[7] = iVar2 + -1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 7;
                 *piVar1 = *piVar1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[9])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_WHEAT),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_WHEAT),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[9];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 9;
@@ -144,17 +144,17 @@ namespace Map {
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 9;
                 *piVar1 = *piVar1 + 1;
                 DAT_GameState::instance.playerDataArray[_owner].startResources[9] = iVar2 + -1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[0xe])
-                && (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_ALE),
+                && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_ALE),
                     BVar4 != FALSE)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[0xe];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 0xe;
@@ -162,17 +162,17 @@ namespace Map {
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 0xe;
                 *piVar1 = *piVar1 + 1;
                 DAT_GameState::instance.playerDataArray[_owner].startResources[0xe] = iVar2 + -1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
                 bVar3 = true;
                 _buildingID = DAT_CurrentBuildingID::instance;
             }
             if ((DAT_GameState::instance.playerDataArray[_owner].startResources[0x10] < 1)
-                || (BVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
-                        DAT_BuildingsState::ptr)(_buildingID, OpenSHC::Game::Resources::RT_FLOUR),
+                || (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
+                        DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_FLOUR),
                     BVar4 == FALSE)) {
                 if (!bVar3) {}
             } else {
@@ -182,14 +182,14 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[_owner].startResources[0x10] = iVar2 + -1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 0x10;
                 *piVar1 = *piVar1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
             }
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_owner);
+                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_owner);
         }
     }
 

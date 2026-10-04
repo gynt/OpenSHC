@@ -25,7 +25,7 @@ namespace Map {
         int local_10;
         int local_c;
         iVar1 = buildingSize;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             4056, '\0', (void*)((int)(DAT_BuildingSizeIndexMapping::instance + buildingSize)));
         if (1 < buildingSize) {
             _y = 0;

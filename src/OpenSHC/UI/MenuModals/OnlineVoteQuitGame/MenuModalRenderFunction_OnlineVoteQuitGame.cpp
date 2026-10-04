@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004937E0
         void OnlineVoteQuitGame::MenuModalRenderFunction_OnlineVoteQuitGame(int x, int y, int width, int height)
@@ -24,15 +24,15 @@ namespace UI {
             /*
               added by script: "End this game?"
              */
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4c, 0x3b, x, y, width, height);
             DVar1 = timeGetTime();
             number = 10 - (DVar1 - DAT_GameSynchronyState::instance.quitGameVoteRequestTime) / 1000;
             if (number < 0) {
                 number = 0;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                number, x + 0x14, y + 0x7d, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                number, x + 0x14, y + 0x7d, Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE, 0);
         }
 
     }

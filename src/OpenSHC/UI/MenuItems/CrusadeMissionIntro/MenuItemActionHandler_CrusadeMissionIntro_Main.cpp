@@ -16,9 +16,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::TrailType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using Game::TrailType;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8C10
         void CrusadeMissionIntro::MenuItemActionHandler_CrusadeMissionIntro_Main(int param_1, ...)
@@ -30,23 +30,23 @@ namespace UI {
                 if (param_1 == 0xb) {
                     if (DAT_GameCore::instance.field22_0x64 == 1) {
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                            DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
+                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                            DAT_MenuTextInputState::ptr)(UI::Enums::MMT_YES_NO_DIALOG);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_CRUSADE_MAP, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_CRUSADE_MAP, 0);
                 }
             }
             if (DAT_GameCore::instance.field22_0x64 == 1) {
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_BUILD_MENU, 0);
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
             }
-            if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+            if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                 bVar2 = (DAT_GameCore::instance.extremeTrailProgress < 20);
                 bVar1 = DAT_GameCore::instance.extremeTrailProgress + 20 < 0;
                 skirmishTrailMission = DAT_GameCore::instance.extremeTrailProgress;
-            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                 bVar2 = (DAT_GameCore::instance.warchestTrailProgress < 30);
                 bVar1 = (int)(DAT_GameCore::instance.warchestTrailProgress - 30) < 0;
                 skirmishTrailMission = DAT_GameCore::instance.warchestTrailProgress;
@@ -56,9 +56,9 @@ namespace UI {
                 skirmishTrailMission = DAT_GameCore::instance.skirmishTrailProgress;
             }
             if (bVar2 != bVar1) {
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::SetupSkirmishMode)(skirmishTrailMission);
+                MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(skirmishTrailMission);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+            MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
         }
 
     }

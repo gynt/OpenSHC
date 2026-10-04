@@ -42,17 +42,17 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
-    using OpenSHC::Map::Buildings::BuildingLogicalStateShort;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::BuildingTypeInt;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Map::Entities::EntityType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::MappersEnum;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
+    using Map::Buildings::BuildingLogicalState;
+    using Map::Buildings::BuildingLogicalStateShort;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingTypeInt;
+    using Map::Buildings::BuildingTypeShort;
+    using Map::Entities::EntityType;
+    using Map::Units::States::UnitState;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       beware the renames! this is for both stones as well as units hitting walls   decompilerscript: committed:
@@ -131,7 +131,7 @@ namespace Map {
                 /*
                   checks if there are other wall tiles around this wall in a plus (cardinal   directions)
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::countLogicPropertyInSurroundingTiles, this)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::countLogicPropertyInSurroundingTiles, this)(
                     tile, (int)((int)(yPosition)), (uint)((int)(268435712)));
                 if (DAT_TileMapState::instance.DAT_CardinalTilesAroundTile < 2) {
                     damageUnk = damageUnk + damageUnk / 2;
@@ -147,7 +147,7 @@ namespace Map {
                     = DAT_GameCore::instance.cowPoisonTrackerUnk + damageUnk * 10;
                 if ((((param_5 == 0)
                          && ((DAT_TileMapState::instance.LogicLayer[tile]
-                                 & OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED)
+                                 & Map::LogicHelpers::L_UNKNOWN_WALL_RELATED)
                              == 0))
                         && (DAT_TileMapState::instance.DamageLayer[tile] == 0))
                     && (DAT_TileMapState::instance.DefaultHeightLayer[tile] + 60
@@ -157,19 +157,19 @@ namespace Map {
                 if (damageUnk < 1) {
                 LAB_00516d9a:
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                        Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(yPosition, tile);
                 } else {
                     do {
                         if (DAT_TileMapState::instance.HeightLayer[tile]
                             <= DAT_TileMapState::instance.DefaultHeightLayer[tile]) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::destroyEntitiesOnTile,
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::destroyEntitiesOnTile,
                                 DAT_EntityState::ptr)(tile);
                             DAT_TileMapState::instance.LogicLayer[tile] = DAT_TileMapState::instance.LogicLayer[tile]
-                                & ~(OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE
-                                    | OpenSHC::Map::LogicHelpers::L_CRENEL | OpenSHC::Map::LogicHelpers::L_STAIRS
-                                    | OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED
-                                    | OpenSHC::Map::LogicHelpers::L_CRENEL_VARIATIONUnk);
+                                & ~(Map::LogicHelpers::L_WALL_OR_GATEHOUSE
+                                    | Map::LogicHelpers::L_CRENEL | Map::LogicHelpers::L_STAIRS
+                                    | Map::LogicHelpers::L_UNKNOWN_WALL_RELATED
+                                    | Map::LogicHelpers::L_CRENEL_VARIATIONUnk);
                             DAT_TileMapState::instance.HeightLayer[tile]
                                 = DAT_TileMapState::instance.DefaultHeightLayer[tile];
                             DAT_TileMapState::instance.DamageLayer[tile] = 0;
@@ -186,7 +186,7 @@ namespace Map {
                         _owner = _owner + 1;
                     } while (_owner < damageUnk);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                        Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(yPosition, tile);
                 }
                 goto LAB_0051769a;
@@ -195,7 +195,7 @@ namespace Map {
         }
         _buildingIDAtTile = (int)DAT_TileMapState::instance.BuildingLayer[tile];
         _logicalState = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].logicalState;
-        if (((_logicalState == ((BuildingLogicalState)0)) || (_logicalState == OpenSHC::Map::Buildings::BLS_REMOVE))
+        if (((_logicalState == ((BuildingLogicalState)0)) || (_logicalState == Map::Buildings::BLS_REMOVE))
             || (_health = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth, _health == 0)) {
             return TRUE;
         }
@@ -215,47 +215,47 @@ namespace Map {
         }
         DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth = _health - (short)damageUnk;
         if ((aiBuildDelayRelated == TRUE)
-            && (((_buildingType == OpenSHC::Map::Buildings::BT_GATEHOUSELARGE
-                     || (_buildingType == OpenSHC::Map::Buildings::BT_GATEHOUSESMALL))
+            && (((_buildingType == Map::Buildings::BT_GATEHOUSELARGE
+                     || (_buildingType == Map::Buildings::BT_GATEHOUSESMALL))
                 && (_drawbridgeBuildingID
-                    = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                    = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                         DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x)),
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                         (int)((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
-                        OpenSHC::Map::Buildings::BT_DRAWBRIDGE, 0),
+                        Map::Buildings::BT_DRAWBRIDGE, 0),
                     _drawbridgeBuildingID != 0)))) {
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                 = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                             [(short)DAT_BuildingsState::instance.buildings[_drawbridgeBuildingID].buildingType]
                     == 0);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
                 _drawbridgeBuildingID);
             _drawbridgeBuildingID_2
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                     DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x)),
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                     (int)((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
-                    OpenSHC::Map::Buildings::BT_DRAWBRIDGE, _drawbridgeBuildingID);
+                    Map::Buildings::BT_DRAWBRIDGE, _drawbridgeBuildingID);
             if (_drawbridgeBuildingID_2 != 0) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeBuildingID_2].buildingType]
                         == 0);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
                     DAT_BuildingsState::ptr)(_drawbridgeBuildingID_2);
             }
         }
         _buildingType2 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType;
         switch (_buildingType2) {
-        case OpenSHC::Map::Buildings::BT_GATEHOUSELARGE:
-        case OpenSHC::Map::Buildings::BT_GATEHOUSESMALL:
-        case OpenSHC::Map::Buildings::BT_TOWER1:
-        case OpenSHC::Map::Buildings::BT_TOWER2:
-        case OpenSHC::Map::Buildings::BT_TOWER3:
-        case OpenSHC::Map::Buildings::BT_TOWER4:
-        case OpenSHC::Map::Buildings::BT_TOWER5:
+        case Map::Buildings::BT_GATEHOUSELARGE:
+        case Map::Buildings::BT_GATEHOUSESMALL:
+        case Map::Buildings::BT_TOWER1:
+        case Map::Buildings::BT_TOWER2:
+        case Map::Buildings::BT_TOWER3:
+        case Map::Buildings::BT_TOWER4:
+        case Map::Buildings::BT_TOWER5:
             DAT_GameState::instance.playerDataArray[DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner]
                 .defensesDamagedByPlayer = (short)playerID;
             break;
@@ -274,7 +274,7 @@ namespace Map {
         }
         _health2 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth;
         if (0 < _health2) {
-            if (((_buildingType2 == OpenSHC::Map::Buildings::BT_SIEGETOWER_PLACED)
+            if (((_buildingType2 == Map::Buildings::BT_SIEGETOWER_PLACED)
                     && (_owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID, _owner != 0))
                 && ((DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefUID
                         == DAT_UnitsState::instance.units[_owner].uid
@@ -286,7 +286,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner
             == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-            MACRO_CALL(OpenSHC::Map::Version_Func::UpdateDestroyedBuildingCountData)(1);
+            MACRO_CALL(Map::Version_Func::UpdateDestroyedBuildingCountData)(1);
         }
         _owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
         if ((aiBuildDelayRelated == TRUE)
@@ -294,7 +294,7 @@ namespace Map {
             DAT_GameState::instance.playerDataArray[_owner].resourceRebuildDelay = 1;
         }
         _buildingType3 = (BuildingTypeInt)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType;
-        if ((_buildingType3 != OpenSHC::Map::Buildings::BT_UNKNOWN3)
+        if ((_buildingType3 != Map::Buildings::BT_UNKNOWN3)
             && (((int)_buildingType3 < 0x56 || (0x59 < (int)_buildingType3)))) {
             piVar2 = DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned + playerID;
             *piVar2 = *piVar2 + 1;
@@ -306,43 +306,43 @@ namespace Map {
             *piVar2 = *piVar2 + 1;
         }
         switch (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType) {
-        case OpenSHC::Map::Buildings::BT_OILSMELTER:
-        case OpenSHC::Map::Buildings::BT_GATEHOUSELARGE:
-        case OpenSHC::Map::Buildings::BT_GATEHOUSESMALL:
-        case OpenSHC::Map::Buildings::BT_TOWER1:
-        case OpenSHC::Map::Buildings::BT_TOWER2:
-        case OpenSHC::Map::Buildings::BT_TOWER3:
-        case OpenSHC::Map::Buildings::BT_TOWER4:
-        case OpenSHC::Map::Buildings::BT_TOWER5:
-            MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(
+        case Map::Buildings::BT_OILSMELTER:
+        case Map::Buildings::BT_GATEHOUSELARGE:
+        case Map::Buildings::BT_GATEHOUSESMALL:
+        case Map::Buildings::BT_TOWER1:
+        case Map::Buildings::BT_TOWER2:
+        case Map::Buildings::BT_TOWER3:
+        case Map::Buildings::BT_TOWER4:
+        case Map::Buildings::BT_TOWER5:
+            MACRO_CALL_MEMBER(AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(
                 _owner, playerID);
             break;
         default:
-            MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::playVictory2BikFromPlayerToPlayer, DAT_AICState::ptr)(
+            MACRO_CALL_MEMBER(AI::AICState_Func::playVictory2BikFromPlayerToPlayer, DAT_AICState::ptr)(
                 _owner, playerID);
         }
-        if ((((((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+        if ((((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                    && (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                   && (DAT_GameState::instance.mapAndTime.playerTeams[_owner]
                       != DAT_GameState::instance.mapAndTime
                           .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]))
                  && (((BVar3 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType,
-                          BVar3 == OpenSHC::Map::Buildings::BT_TOWER4 || (BVar3 == OpenSHC::Map::Buildings::BT_TOWER5))
-                     || ((BVar3 == OpenSHC::Map::Buildings::BT_GATEHOUSELARGE
-                         || ((BVar3 == OpenSHC::Map::Buildings::BT_CHURCH
-                             || (BVar3 == OpenSHC::Map::Buildings::BT_CATHEDRAL))))))))
+                          BVar3 == Map::Buildings::BT_TOWER4 || (BVar3 == Map::Buildings::BT_TOWER5))
+                     || ((BVar3 == Map::Buildings::BT_GATEHOUSELARGE
+                         || ((BVar3 == Map::Buildings::BT_CHURCH
+                             || (BVar3 == Map::Buildings::BT_CATHEDRAL))))))))
                 && (BVar10 = MACRO_CALL_MEMBER(
-                        OpenSHC::Audio::MSS::SoundSystem_Func::shouldSoundXNotBePlaying, DAT_SoundSystemState::ptr)(),
+                        Audio::MSS::SoundSystem_Func::shouldSoundXNotBePlaying, DAT_SoundSystemState::ptr)(),
                     BVar10 == FALSE))
-            && (MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)(),
+            && (MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)(),
                 DAT_GameCore::instance.genieVoiceActive != FALSE)) {
             /*
               "Watch it crumble"
              */
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_36.wav");
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_36.wav");
         }
         switch (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType) {
-        case OpenSHC::Map::Buildings::BT_OILSMELTER:
+        case Map::Buildings::BT_OILSMELTER:
             _pitch = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].resources[7];
             if (_pitch != 0) {
                 _x = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
@@ -351,173 +351,173 @@ namespace Map {
                     = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentTilePositionAdjusted;
                 DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
                 _y = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                     DAT_BuildingsState::ptr)(_buildingIDAtTile);
                 if (_pitch < 5) {
-                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(_owner2, _x * 8 + 0x10, _y * 8 + 0x10,
+                    MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_owner2, _x * 8 + 0x10, _y * 8 + 0x10,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 3);
                 } else {
                     _microY = _y * 8 + 0x10;
                     _microX = _x * 8 + 0x10;
-                    MACRO_CALL(OpenSHC::Map::Entities_Func::SetPlaceOnFire)(_owner2, _microX, _microY,
+                    MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_owner2, _microX, _microY,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 5);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(_owner2)), 0, _microX, _microY,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 0, 0, 0,
-                        OpenSHC::Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
+                        Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                    _x, _y, OpenSHC::DE::SHCDE::FX_IGNITE_PITCH);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    _x, _y, DE::SHCDE::FX_IGNITE_PITCH);
                 local_8 = TRUE;
                 goto LAB_0051769a;
             }
         default:
             goto switchD_00517137_caseD_1d;
-        case OpenSHC::Map::Buildings::BT_GATEHOUSELARGE:
-        case OpenSHC::Map::Buildings::BT_GATEHOUSESMALL:
-            _drawbridgeID = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
+        case Map::Buildings::BT_GATEHOUSELARGE:
+        case Map::Buildings::BT_GATEHOUSESMALL:
+            _drawbridgeID = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                 DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner,
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x)),
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
-                OpenSHC::Map::Buildings::BT_DRAWBRIDGE, 0);
+                Map::Buildings::BT_DRAWBRIDGE, 0);
             if (_drawbridgeID != 0) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeID].buildingType]
                         == 0);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
                     DAT_BuildingsState::ptr)(_drawbridgeID);
-                _owner = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
+                _owner = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                     DAT_BuildingsState::ptr)((int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x)),
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                     (int)((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
-                    OpenSHC::Map::Buildings::BT_DRAWBRIDGE, _drawbridgeID);
+                    Map::Buildings::BT_DRAWBRIDGE, _drawbridgeID);
                 if (_owner != 0) {
                     DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                         = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                     [(short)DAT_BuildingsState::instance.buildings[_owner].buildingType]
                             == 0);
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(_owner);
+                        Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(_owner);
                 }
             }
             _gatehouseY = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
             _gatehouseX = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, (int)((int)(50)));
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                 = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                             [(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType]
                     == 0);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                (int)(short)_gatehouseX, (int)((int)((short)_gatehouseY)), OpenSHC::DE::SHCDE::FX_TOWER_SMASH);
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                (int)(short)_gatehouseX, (int)((int)((short)_gatehouseY)), DE::SHCDE::FX_TOWER_SMASH);
             local_8 = TRUE;
             goto LAB_0051769a;
-        case OpenSHC::Map::Buildings::BT_TUNNEL:
+        case Map::Buildings::BT_TUNNEL:
             _buildingOwnerZeroBased = (uint)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID;
             if (DAT_UnitsState::instance.units[_buildingOwnerZeroBased].state.generic
-                != (OpenSHC::Map::Units::States::US_STAND_UPUnk | OpenSHC::Map::Units::States::US_IDLEUnk)) {
+                != (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)) {
                 DAT_UnitsState::instance.units[_buildingOwnerZeroBased].totalSizeOfPathPlan
                     = DAT_UnitsState::instance.units[_buildingOwnerZeroBased].currentIndexInPathPlan;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::applyTunnelDamageAlongPathPlan,
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::applyTunnelDamageAlongPathPlan,
                     DAT_UnitsState::ptr)(_buildingOwnerZeroBased);
             }
             DAT_UnitsState::instance.units[_buildingOwnerZeroBased].state.generic
-                = OpenSHC::Map::Units::States::US_DISAPPEAR;
+                = Map::Units::States::US_DISAPPEAR;
             DAT_UnitsState::instance.units[_buildingOwnerZeroBased].disappearFadeAlphaCountdown = 0x20;
             DAT_UnitsState::instance.units[_buildingOwnerZeroBased].updateTickTracker = 0x20;
             goto switchD_00517137_caseD_1d;
-        case OpenSHC::Map::Buildings::BT_SIEGETOWER_PLACED:
+        case Map::Buildings::BT_SIEGETOWER_PLACED:
             _owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID;
             if ((_owner != 0)
                 && (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefUID
                     == DAT_UnitsState::instance.units[_owner].uid)) {
-                DAT_UnitsState::instance.units[_owner].state.generic = OpenSHC::Map::Units::States::US_DISAPPEAR;
+                DAT_UnitsState::instance.units[_owner].state.generic = Map::Units::States::US_DISAPPEAR;
                 DAT_UnitsState::instance.units[_owner].disappearFadeAlphaCountdown = 0;
                 DAT_UnitsState::instance.units[_owner].updateTickTracker = 0;
                 DAT_UnitsState::instance.units[_owner].workplaceBuildingID_1 = 0;
             }
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             local_8 = TRUE;
             goto LAB_0051769a;
-        case OpenSHC::Map::Buildings::BT_TOWER1:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+        case Map::Buildings::BT_TOWER1:
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, 0x19);
             sVar6 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
             uVar4 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
             uVar5 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             iVar11 = 3;
-            cbt = OpenSHC::Commands::M_MAPPER_TOWER1_DESTROYED;
+            cbt = Commands::M_MAPPER_TOWER1_DESTROYED;
             goto LAB_0051717e;
-        case OpenSHC::Map::Buildings::BT_TOWER2:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+        case Map::Buildings::BT_TOWER2:
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, 0x32);
             damageUnk = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
             _owner = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
             iVar12 = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             iVar11 = 4;
-            cbt = OpenSHC::Commands::M_MAPPER_TOWER2_DESTROYED;
+            cbt = Commands::M_MAPPER_TOWER2_DESTROYED;
             break;
-        case OpenSHC::Map::Buildings::BT_TOWER3:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+        case Map::Buildings::BT_TOWER3:
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, 0x32);
             damageUnk = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
             _owner = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
             iVar12 = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             iVar11 = 5;
-            cbt = OpenSHC::Commands::M_MAPPER_TOWER3_DESTROYED;
+            cbt = Commands::M_MAPPER_TOWER3_DESTROYED;
             break;
-        case OpenSHC::Map::Buildings::BT_TOWER4:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+        case Map::Buildings::BT_TOWER4:
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, 0x32);
             sVar6 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
             uVar4 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
             uVar5 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             iVar11 = 6;
-            cbt = OpenSHC::Commands::M_MAPPER_TOWER4_DESTROYED;
+            cbt = Commands::M_MAPPER_TOWER4_DESTROYED;
         LAB_0051717e:
             damageUnk = (int)sVar6;
             iVar12 = (int)(short)uVar5;
             _owner = (int)(short)uVar4;
             break;
-        case OpenSHC::Map::Buildings::BT_TOWER5:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+        case Map::Buildings::BT_TOWER5:
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                 DAT_BuildingsState::ptr)(_buildingIDAtTile, 0x32);
             damageUnk = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
             _owner = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
             DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
             iVar12 = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
                 _buildingIDAtTile);
             iVar11 = 6;
-            cbt = OpenSHC::Commands::M_MAPPER_TOWER5_DESTROYED;
+            cbt = Commands::M_MAPPER_TOWER5_DESTROYED;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeBuilding, this)(
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)(
             damageUnk, _owner, iVar12, cbt, iVar11, 0xf);
-        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-            _owner, iVar12, OpenSHC::DE::SHCDE::FX_TOWER_SMASH);
+        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+            _owner, iVar12, DE::SHCDE::FX_TOWER_SMASH);
         bVar9 = 1;
         local_8 = TRUE;
     LAB_0051769a:
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
             DAT_PathFindingState::ptr)(7, xPosition, yPosition);
         return ~-(uint)bVar9 & local_8;
     switchD_00517137_caseD_1d:
@@ -525,13 +525,13 @@ namespace Map {
         sVar6 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
         DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
             = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed[_owner] == 0);
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
             _buildingIDAtTile);
-        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
             (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x,
             (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
-            OpenSHC::DE::SHCDE::FX_BUILDING_SMASH);
-        if ((((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+            DE::SHCDE::FX_BUILDING_SMASH);
+        if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                  && (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                 && (DAT_GameState::instance.mapAndTime.playerTeams[sVar6]
                     != DAT_GameState::instance.mapAndTime
@@ -541,13 +541,13 @@ namespace Map {
                 /*
                   "Excellent"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_23.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_23.wav");
             }
             if ((_owner == 8) || (_owner == 9)) {
                 /*
                   "Bravo"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_24.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_24.wav");
             }
         }
     LAB_005175ec:

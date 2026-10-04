@@ -13,16 +13,16 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B160
     void Init::Constructor_MenuModal_UnusedWinCondition()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedWinCondition::ptr)(
-            OpenSHC::UI::Enums::MMT_UNUSED_WIN_CONDITION, 0, 0, 0xf0, 0, 0, 0,
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(OpenSHC::Global_Func::DoNothing),
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedWinCondition::ptr)(
+            UI::Enums::MMT_UNUSED_WIN_CONDITION, 0, 0, 0xf0, 0, 0, 0,
+            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing),
             Menu_UnusedWinCondition::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_UnusedWinCondition));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedWinCondition));
         return;
     }
 

@@ -16,8 +16,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00424990
         void IntroLogos::MenuItemActionHandler_IntroLogos_General(int unused, ...)
@@ -32,19 +32,19 @@ namespace UI {
                     DAT_IntroBlendStrength::instance = 0;
                     DAT_IntroStep::instance = 1;
                     DAT_IntroTimestamp::instance = timeGetTime();
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_INTRO_LOGOS, 0);
                 }
                 if (DAT_IntroStep::instance == 1) {
                     DAT_IntroTransitionStep::instance = 0;
                     DAT_IntroBlendStrength::instance = 0;
                     DAT_IntroStep::instance = 2;
                     DAT_IntroTimestamp::instance = timeGetTime();
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_INTRO_LOGOS, 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_INTRO_VIDEO, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_INTRO_VIDEO, 0);
             }
         }
 

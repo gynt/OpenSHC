@@ -15,8 +15,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeInt;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeInt;
 
     /*
       WARNING (jumptable): Heritage AFTER dead removal. Revisit: 0x01667ebc
@@ -43,7 +43,7 @@ namespace Map {
         if (0x31 < DAT_TroopValueState::instance.attackInfo.inv_count) {
             DAT_TroopValueState::instance.attackInfo.inv_count = 1;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
+        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
             DAT_TroopValueState::ptr)(DAT_TroopValueState::instance.attackInfo.inv_count, 0);
         DAT_TroopValueState::instance.attackInfo
             .attackWavePlayerIDArray[DAT_TroopValueState::instance.attackInfo.inv_count]
@@ -59,100 +59,100 @@ namespace Map {
             switch (_sliderIndex) {
             case 0:
                 _unitTypeOther = 3;
-                _unitType = OpenSHC::Map::Units::UT_E_ARCHER;
+                _unitType = Map::Units::UT_E_ARCHER;
                 break;
             case 1:
                 _unitTypeOther = 7;
-                _unitType = OpenSHC::Map::Units::UT_E_XBOW;
+                _unitType = Map::Units::UT_E_XBOW;
                 break;
             case 2:
                 _unitTypeOther = 5;
-                _unitType = OpenSHC::Map::Units::UT_E_SPEAR;
+                _unitType = Map::Units::UT_E_SPEAR;
                 break;
             case 3:
                 _unitTypeOther = 6;
-                _unitType = OpenSHC::Map::Units::UT_E_PIKE;
+                _unitType = Map::Units::UT_E_PIKE;
                 break;
             case 4:
                 _unitTypeOther = 9;
-                _unitType = OpenSHC::Map::Units::UT_E_MACE;
+                _unitType = Map::Units::UT_E_MACE;
                 break;
             case 5:
                 _unitTypeOther = 8;
-                _unitType = OpenSHC::Map::Units::UT_E_SWORD;
+                _unitType = Map::Units::UT_E_SWORD;
                 break;
             case 6:
                 _unitTypeOther = 10;
-                _unitType = OpenSHC::Map::Units::UT_E_KNIGHT;
+                _unitType = Map::Units::UT_E_KNIGHT;
                 iVar3 = 10;
                 goto switchD_004c146e_caseD_18;
             case 7:
                 _unitTypeOther = 4;
-                _unitType = OpenSHC::Map::Units::UT_E_LADDER;
+                _unitType = Map::Units::UT_E_LADDER;
                 break;
             case 8:
                 _unitTypeOther = 0xb;
-                _unitType = OpenSHC::Map::Units::UT_E_ENGINEER;
+                _unitType = Map::Units::UT_E_ENGINEER;
                 break;
             case 9:
                 _unitTypeOther = 0x16;
-                _unitType = OpenSHC::Map::Units::UT_S_CATAPULT;
+                _unitType = Map::Units::UT_S_CATAPULT;
                 break;
             case 10:
                 _unitTypeOther = 0x17;
-                _unitType = OpenSHC::Map::Units::UT_S_TREBUCHET;
+                _unitType = Map::Units::UT_S_TREBUCHET;
                 break;
             case 0xb:
                 _unitTypeOther = 0x13;
-                _unitType = OpenSHC::Map::Units::UT_S_BATTERINGRAM;
+                _unitType = Map::Units::UT_S_BATTERINGRAM;
                 break;
             case 0xc:
                 _unitTypeOther = 0x14;
-                _unitType = OpenSHC::Map::Units::UT_S_TOWER;
+                _unitType = Map::Units::UT_S_TOWER;
                 break;
             case 0xd:
                 _unitTypeOther = 0x15;
-                _unitType = OpenSHC::Map::Units::UT_S_SHIELD;
+                _unitType = Map::Units::UT_S_SHIELD;
                 break;
             case 0xe:
                 _unitTypeOther = 0xc;
-                _unitType = OpenSHC::Map::Units::UT_E_MONK;
+                _unitType = Map::Units::UT_E_MONK;
                 break;
             case 0xf:
                 _unitTypeOther = 2;
-                _unitType = OpenSHC::Map::Units::UT_TUNNELER;
+                _unitType = Map::Units::UT_TUNNELER;
                 break;
             case 0x10:
                 _unitTypeOther = 0x19;
-                _unitType = OpenSHC::Map::Units::UT_A_ARCHER;
+                _unitType = Map::Units::UT_A_ARCHER;
                 break;
             case 0x11:
                 _unitTypeOther = 0x1a;
-                _unitType = OpenSHC::Map::Units::UT_A_SLAVE;
+                _unitType = Map::Units::UT_A_SLAVE;
                 break;
             case 0x12:
                 _unitTypeOther = 0x1b;
-                _unitType = OpenSHC::Map::Units::UT_A_SLINGER;
+                _unitType = Map::Units::UT_A_SLINGER;
                 break;
             case 0x13:
                 _unitTypeOther = 0x1c;
-                _unitType = OpenSHC::Map::Units::UT_A_ASSASSIN;
+                _unitType = Map::Units::UT_A_ASSASSIN;
                 break;
             case 0x14:
                 _unitTypeOther = 0x1d;
-                _unitType = OpenSHC::Map::Units::UT_A_HARCHER;
+                _unitType = Map::Units::UT_A_HARCHER;
                 break;
             case 0x15:
                 _unitTypeOther = 0x1e;
-                _unitType = OpenSHC::Map::Units::UT_A_SWORDSMAN;
+                _unitType = Map::Units::UT_A_SWORDSMAN;
                 break;
             case 0x16:
                 _unitTypeOther = 0x1f;
-                _unitType = OpenSHC::Map::Units::UT_A_FIRETHROWER;
+                _unitType = Map::Units::UT_A_FIRETHROWER;
                 break;
             case 0x17:
                 _unitTypeOther = 0x18;
-                _unitType = OpenSHC::Map::Units::UT_S_FBALLISTA;
+                _unitType = Map::Units::UT_S_FBALLISTA;
                 break;
             default:
                 goto switchD_004c146e_caseD_18;
@@ -204,7 +204,7 @@ namespace Map {
                     iVar3 = (&DAT_TroopValueState::instance.attackInfo
                             .unknownSignpostRelatedArray)[DAT_TroopValueState::instance.attackInfo.inv_count];
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::spawnUnitsIntoNewTribe, DAT_TribesState::ptr)(local_c,
+                        Map::Units::TribesState_Func::spawnUnitsIntoNewTribe, DAT_TribesState::ptr)(local_c,
                         _unitTypeOther, DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar3][local_10].x,
                         DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar3][local_10].y,
                         this->invasionEventContent.crusaderArabian + 2, (UnitType)((int)(_unitType)), ((UnitType)0),
@@ -230,7 +230,7 @@ namespace Map {
                     eventWavFile = "arabian_attack.wav";
                     eventVideoBik = "good_soldier_nervous.bik";
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                     DAT_VideoBikQueue::ptr)("", eventVideoBik, eventWavFile);
                 this->eventsCount = 0;
             }

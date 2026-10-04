@@ -14,22 +14,22 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A940
     void Init::Constructor_MenuView_UnusedSelectRandomNumberOfEnemies()
     {
         MACRO_CALL_MEMBER(
-            OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedSelectRandomNumberOfEnemies::ptr)(
-            OpenSHC::UI::Enums::MVT_UNUSED_SELECT_RANDOM_NUMBER_OF_ENEMIES,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(OpenSHC::UI::MenuViews::
+            UI::MenuView_Func::Constructor_MenuView, MenuView_UnusedSelectRandomNumberOfEnemies::ptr)(
+            UI::Enums::MVT_UNUSED_SELECT_RANDOM_NUMBER_OF_ENEMIES,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_Prepare_SwordShieldAndBorder),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(UI::MenuViews::
                     UnusedSelectRandomNumberOfEnemies_Func::MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_UnusedSelectRandomNumberOfEnemies));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedSelectRandomNumberOfEnemies));
         return;
     }
 

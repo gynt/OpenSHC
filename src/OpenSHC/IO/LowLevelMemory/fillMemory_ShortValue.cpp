@@ -11,9 +11,9 @@ namespace IO {
         this->value = (uint)shortValue * 0x10001;
         this->size = size;
         this->destination = dst;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x100, this)();
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x010, this)();
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x002, this)();
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x100, this)();
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x010, this)();
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_setMemoryToValue_0x002, this)();
     }
 
 }

@@ -14,8 +14,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047CEE0
         void ChooseNetworkServiceProvider::MenuItemRenderFunction_ChooseNetworkServiceProvider_InputLabels(
@@ -39,9 +39,9 @@ namespace UI {
               Text:   0x0e => Phone Number (Only needed if Joining)   0x0C => "Host's IP Address (Only needed if
               Joining)"   0x0D => "Ip port"
              */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1);
-            iVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1);
+            iVar2 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                 pcVar1, iVar2, iVar3, iVar4, color, iVar5, iVar6);
             iVar6 = 0;
@@ -50,9 +50,9 @@ namespace UI {
             iVar4 = 400;
             iVar2 = (DAT_ButtonH::instance - iVar2) + -3 + DAT_ButtonY::instance;
             iVar3 = DAT_ButtonX::instance;
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar1, iVar3, iVar2, iVar4, color_00, iVar5, iVar6);
         }
 

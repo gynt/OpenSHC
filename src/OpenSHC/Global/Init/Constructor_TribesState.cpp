@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CB60
     void Init::Constructor_TribesState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::Constructor_TribesState, DAT_TribesState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d700));
+        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::Constructor_TribesState, DAT_TribesState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d700));
         return;
     }
 

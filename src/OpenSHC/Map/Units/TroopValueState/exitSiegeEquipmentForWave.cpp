@@ -14,10 +14,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::States::UnitState;
+        using AI::Tribes::AITribeType;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051BD10
         void TroopValueState::exitSiegeEquipmentForWave(int wave)
@@ -38,16 +38,16 @@ namespace Map {
                                     || ((AVar1 == ((AITribeType)0x17) || (AVar1 == ((AITribeType)0x18)))))))))
                     && (_tribeUnitIndex = 0, 0 < _tribe->size)) {
                     do {
-                        _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
+                        _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
                             DAT_TribesState::ptr)(_tribeID, _tribeUnitIndex);
                         _tribeUnitIndex = _tribeUnitIndex + 1;
-                        if ((DAT_UnitsState::instance.units[_unitID].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                        if ((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction,
-                                DAT_TribesState::ptr)(_tribeID, OpenSHC::Map::Units::UIT_EXIT_SIEGE_EQUIPMENT, _unitID,
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction,
+                                DAT_TribesState::ptr)(_tribeID, Map::Units::UIT_EXIT_SIEGE_EQUIPMENT, _unitID,
                                 DAT_UnitsState::instance.units[_unitID].uid, 0);
                             DAT_UnitsState::instance.units[_unitID].state.generic
-                                = OpenSHC::Map::Units::States::US_DISAPPEAR;
+                                = Map::Units::States::US_DISAPPEAR;
                         }
                     } while (_tribeUnitIndex < _tribe->size);
                 }

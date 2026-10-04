@@ -17,11 +17,11 @@ namespace Text {
             return;
         }
         this->field11_0x2c = 1;
-        MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+        MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
             text, xPos, yPos, maxWidth, color2, blendStrength, 0);
         this->field10_0x28 = iVar1;
-        MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+        MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
             text, xPos + -2, yPos + -1, maxWidth, color1, blendStrength, 0);
         this->field11_0x2c = 0;

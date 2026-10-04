@@ -9,8 +9,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Audio::SFX::SoundEffectID;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Audio::SFX::SoundEffectID;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4C80
     void MenuHandlerState::startBuildMenuTransition(int transitionDuration)
@@ -20,9 +20,9 @@ namespace UI {
         this->isBuildMenuTransitioning_0x18 = TRUE;
         this->buildMenuTransitionProgress_0x38 = 0;
         this->buildMenuTransitionDirection_0x2c = (uint)(this->buildMenuTransitionDirection_0x2c < 0) * 2 + -1;
-        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-            (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_BURNING_MAN_SCREAM2
-                | OpenSHC::Audio::SFX::SEID_WOOD_SAW));
+        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+            (Audio::SFX::SoundEffectID)(Audio::SFX::SEID_BURNING_MAN_SCREAM2
+                | Audio::SFX::SEID_WOOD_SAW));
     }
 
 }

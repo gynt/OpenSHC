@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       Takes a tribe index (param_1) and builds a rally point path for that tribe. First BFS-floods   field20_0x50

@@ -7,8 +7,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0048CB00
     void GameSynchronyState::checkGameSync()
@@ -64,8 +64,8 @@ namespace Synchrony {
                                 this->syncRelatedCountdown = 0;
                                 this->commandDelay = 0x1e;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                OpenSHC::Commands::GCT_GAME_DESYNCUnk);
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_GAME_DESYNCUnk);
                             this->flag_0xbec = 1;
                             this->receivedSyncStatusByPlayerUnk[1] = 0;
                             this->receivedSyncStatusByPlayerUnk[2] = 0;

@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Entities::EntityType;
+    using Map::Entities::EntityType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00405C00
     void Entities::UpdateHeadsOnSpikesEntity()
@@ -32,13 +32,13 @@ namespace Map {
             DAT_EntityState::instance.entityArray[_id].rng_2 = SEC_RNG::instance.currentNumber2 % 500 + 300;
             _x = DAT_EntityState::instance.entityArray[_id].xPosition;
             _y = DAT_EntityState::instance.entityArray[_id].yPosition;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
                 (undefined4)((int)((int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].owner)), 0,
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].microX)),
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].microY)),
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].height + 0x32)),
-                (_x + -0x32 + _rng % 100) * 8, (_y + -0x32 + (_rng >> 8) % 100) * 8, 0xfa, OpenSHC::Map::Entities::EntityTypeInt__ET_CROW,
+                (_x + -0x32 + _rng % 100) * 8, (_y + -0x32 + (_rng >> 8) % 100) * 8, 0xfa, Map::Entities::EntityTypeInt__ET_CROW,
                 0);
         }
     }

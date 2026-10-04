@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C140
     void Init::Constructor_MenuModal_Roundtable()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Roundtable::ptr)(
-            OpenSHC::UI::Enums::MMT_ROUNDTABLE, 4, 4, 0x318, 0x1b0, 0x1200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Roundtable::ptr)(
+            UI::Enums::MMT_ROUNDTABLE, 4, 4, 0x318, 0x1b0, 0x1200,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::Roundtable_Func::MenuModalRenderFunction_Roundtable),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::Roundtable_Func::MenuModalRenderFunction_Roundtable),
             Menu_Roundtable::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_Roundtable));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_Roundtable));
         return;
     }
 

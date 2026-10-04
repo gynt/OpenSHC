@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuViewType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00425720
         void HistoricCampaignSelect::MenuItemActionHandler_HistoricCampaignSelect_Main(int param_1, ...)
@@ -22,8 +22,8 @@ namespace UI {
                 DAT_GameCore::instance.field22_0x64 = 0;
                 DAT_GameCore::instance.missionNumber1to20 = 1;
                 DAT_GameCore::instance.historicCampaignNumber = 1;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -48,8 +48,8 @@ namespace UI {
                 DAT_GameCore::instance.field22_0x64 = 0;
                 DAT_GameCore::instance.missionNumber1to20 = 6;
                 DAT_GameCore::instance.historicCampaignNumber = 2;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -74,8 +74,8 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
                 DAT_GameCore::instance.missionNumber1to20 = 11;
                 DAT_GameCore::instance.historicCampaignNumber = 3;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -100,8 +100,8 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
                 DAT_GameCore::instance.missionNumber1to20 = 16;
                 DAT_GameCore::instance.historicCampaignNumber = 4;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -122,8 +122,8 @@ namespace UI {
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
                 return;
             case 5:
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAIN_MENU, 0);
             }
         }
 

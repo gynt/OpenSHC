@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00403A20
         void EntityState::initializeProjectileVelocities(
@@ -90,7 +90,7 @@ namespace Map {
             iVar7 = DAT_EntityDefinedData::instance
                         .EntityArrayCurveTypeForProjectileType[(short)this->entityArray[entityID].entityType];
             if (iVar7 == 0) {
-                uVar6 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
                     x, y, height, targetX, targetY, targetZ, 1);
                 sVar5 = (short)uVar6;
                 this->entityArray[entityID].field62_0x94 = sVar5;
@@ -99,21 +99,21 @@ namespace Map {
                 sVar10 = this->entityArray[entityID].velocityUnk;
             } else {
                 if (iVar7 == 1) {
-                    uVar6 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeLineOfSightDistance,
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
                         this)(x, y, height, targetX, targetY, targetZ, 1);
                     iVar7 = this->entityArray[entityID].heightDifference;
                     sVar5 = (short)uVar6;
                     this->entityArray[entityID].field62_0x94 = sVar5;
                     this->entityArray[entityID].field58_0x8c = sVar5;
                     this->entityArray[entityID].field80_0xba = (short)this->lineOfSightClearanceSteps;
-                    iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeVelocity, this)(
+                    iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                         (int)(short)this->entityArray[entityID].entityType,
                         (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)((int)(sVar5)), iVar7);
                     this->entityArray[entityID].velocityUnk = (short)iVar7;
                     goto LAB_00403f37;
                 }
                 if (iVar7 == 2) {
-                    uVar6 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeLineOfSightDistance,
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
                         this)(x, y, height, targetX, targetY, targetZ, 1);
                     sVar5 = this->entityArray[entityID].height;
                     sVar10 = this->entityArray[entityID].targetZ;
@@ -125,14 +125,14 @@ namespace Map {
                         this->entityArray[entityID].startingAngle = 3;
                     }
                     iVar7 = this->entityArray[entityID].heightDifference;
-                    iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeVelocity, this)(
+                    iVar11 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                         (int)(short)this->entityArray[entityID].entityType,
                         (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)((int)(sVar9)), iVar7);
                     this->entityArray[entityID].velocityUnk = (short)iVar11;
                     if ((short)iVar11 < 1) {
                         EVar4 = this->entityArray[entityID].entityType;
                         this->entityArray[entityID].startingAngle = 0xf;
-                        iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeVelocity, this)(
+                        iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                             (int)(short)EVar4, 15.0, (int)((int)(sVar9)), iVar7);
                         this->entityArray[entityID].velocityUnk = (short)iVar7;
                     }
@@ -206,7 +206,7 @@ namespace Map {
                     }
                     goto LAB_00403f37;
                 }
-                uVar6 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
                     x, y, height, targetX, targetY, targetZ, 1);
                 sVar5 = (short)uVar6;
                 this->entityArray[entityID].field62_0x94 = sVar5;
@@ -217,14 +217,14 @@ namespace Map {
                 }
                 sVar10 = this->entityArray[entityID].velocityUnk;
             }
-            iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::math_atan_1, this)(
+            iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::math_atan_1, this)(
                 (int)(short)this->entityArray[entityID].entityType, (double)((int)((int)sVar10)), (int)((int)(sVar5)),
                 this->entityArray[entityID].heightDifference);
             this->entityArray[entityID].startingAngle = (short)iVar7;
         LAB_00403f37:
             EVar4 = this->entityArray[entityID].entityType;
-            if ((((EVar4 == OpenSHC::Map::Entities::ET_ARROW_AND_DEFAULT)
-                     || (EVar4 == OpenSHC::Map::Entities::ET_CROSSBOWARROW))
+            if ((((EVar4 == Map::Entities::ET_ARROW_AND_DEFAULT)
+                     || (EVar4 == Map::Entities::ET_CROSSBOWARROW))
                     && (height + 0x36 < targetZ))
                 && (this->entityArray[entityID].rng_1 % 10 == 5)) {
                 this->entityArray[entityID].hasDoneEffectUnk = 1;
@@ -239,7 +239,7 @@ namespace Map {
             fVar12 = sin((double)fVar12);
             this->entityArray[entityID].vSin = (float)(fVar12 * (double)iVar7);
             uVar8
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
+                = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
             this->entityArray[entityID].field45_0x6a = (short)uVar8;
             return;
         }

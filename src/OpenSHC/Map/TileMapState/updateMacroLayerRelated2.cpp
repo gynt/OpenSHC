@@ -57,7 +57,7 @@ namespace Map {
                                                     .addXgetTile
                                                 + this->DAT_SomeX,
                                             this->ChangedLayer[this->DAT_SomeTile] != 0
-                                                && ((this->LogicLayer[this->DAT_SomeTile] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)))) {
+                                                && ((this->LogicLayer[this->DAT_SomeTile] & Map::LogicHelpers::L_SEA) != 0)))) {
                                         this->MacroLayer[this->DAT_SomeTile] = 0x800;
                                     }
                                     uVar2 = this->DAT_SomeX + 1;
@@ -67,7 +67,7 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -82,7 +82,7 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -97,7 +97,7 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -112,7 +112,7 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -162,7 +162,7 @@ namespace Map {
                                                         .translationMatrix[this->DAT_SomeY]
                                                         .addXgetTile,
                                                 this->MacroLayer[this->DAT_SomeTile] == 0x800
-                                                    && ((this->LogicLayer[this->DAT_SomeTile] & OpenSHC::Map::LogicHelpers::L_SEA) != 0)))))) {
+                                                    && ((this->LogicLayer[this->DAT_SomeTile] & Map::LogicHelpers::L_SEA) != 0)))))) {
                                         uVar4 = this->RandomLayer[this->DAT_SomeTile];
                                         _someX = this->DAT_SomeTile
                                             - DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]

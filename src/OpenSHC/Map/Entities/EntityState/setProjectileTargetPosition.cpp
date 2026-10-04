@@ -27,10 +27,10 @@ namespace Map {
             this->entityArray[entityID].startingHeight = _height;
             this->entityArray[entityID].targetX = (short)targetX;
             this->entityArray[entityID].heightDifference = targetZ - height;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
                 DAT_DirectionAlgorithmState::ptr)(x, y, targetX, targetY);
             this->entityArray[entityID].orientation = DAT_DirectionAlgorithmState::instance.orientation;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::initializeProjectileVelocities, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeProjectileVelocities, this)(
                 entityID, x, y, height, targetX, targetY, targetZ);
         }
 

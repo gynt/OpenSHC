@@ -16,8 +16,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047FB50
     void GameSynchronyState::renderChatMessageList(int xPos, int yPos, int param_3)
@@ -29,20 +29,20 @@ namespace Synchrony {
             this->field204_0x105670 = this->field204_0x105670 + 0x14;
         }
         iVar2 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
             DAT_TextureRenderCoreObject::ptr)(yPos + -0x48, yPos + 0x12);
         DAT_TextManagerObject::instance.field13_0x34 = 0x11;
         param_3 = 0;
         do {
             if (this->DAT_ChatEventArray[this->field204_0x105670].flag == 1) {
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(this->DAT_ChatMessageSubjectPlayerNameArray[this->field204_0x105670],
-                    xPos, yPos, OpenSHC::Text::TTA_LEFT,
+                    xPos, yPos, Text::TTA_LEFT,
                     (uint)((int)(DAT_RenderingDefinedData::instance.ColorTable1[DAT_BlendingDefinedData::instance
                             .PlayerSlotUnitColor[this->DAT_ChatEventArray[this->field204_0x105670].subjectPlayer]])),
                     0, 0x13, FALSE, (iVar1 / 32) + 0x20);
-                iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
+                iVar1 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(
                     this->DAT_ChatMessageArray[this->field204_0x105670], 0, 0,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0, 0, 1);
@@ -51,16 +51,16 @@ namespace Synchrony {
                     yPos = yPos + -0x12;
                     iVar2 = iVar2 + 1;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                         this->DAT_ChatMessageSubjectPlayerNameArray[this->field204_0x105670], xPos, yPos,
-                        OpenSHC::Text::TTA_LEFT,
+                        Text::TTA_LEFT,
                         (uint)((int)(DAT_RenderingDefinedData::instance
                                 .ColorTable1[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor
                                         [this->DAT_ChatEventArray[this->field204_0x105670].subjectPlayer]])),
                         0, 0x13, FALSE, (iVar1 / 32) + 0x20);
                 }
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
                     this->DAT_ChatMessageArray[this->field204_0x105670],
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 6 + xPos, yPos,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0xa2ff, 0x3e66, 0x13,
@@ -74,7 +74,7 @@ namespace Synchrony {
             yPos = yPos + -0x11;
         } while ((iVar2 < 5) && (param_3 = param_3 + 1, param_3 < 5));
         DAT_TextManagerObject::instance.field13_0x34 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,
             DAT_TextureRenderCoreObject::ptr)();
     }
 

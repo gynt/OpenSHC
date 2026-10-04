@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::Game::TrailType;
+        using Game::TrailType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8CB0
         void CrusadeMap::MenuView_CrusadeMap_Prepare()
@@ -24,17 +24,17 @@ namespace UI {
             int iVar1;
             char* tgxFileName;
             DWORD_00ed311c::instance = 0;
-            if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+            if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                 tgxFileName = "shcx_map.tgx";
-            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                 tgxFileName = "skirmish_trail2.tgx";
             } else {
                 tgxFileName = "skirmish_trail.tgx";
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             if (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress) {
                 DAT_GameCore::instance.skirmishTrailProgress = 0x31;
             }
@@ -47,7 +47,7 @@ namespace UI {
             INT_00eb9b48::instance = 1;
             DWORD_00ed27a8::instance = timeGetTime();
             DAT_SkirmishTrailRelated1::instance = 3;
-            if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
+            if (DAT_GameCore::instance.currentTrailType == Game::TT_FIRST_EDITION) {
                 iVar1 = 0;
                 if (DAT_GameCore::instance.furthestSkirmishTrailMission < 1) {
                     DAT_SkirmishTrailRelated1::instance = 3;
@@ -59,7 +59,7 @@ namespace UI {
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestSkirmishTrailMission);
-            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                 iVar1 = 0;
                 if (DAT_GameCore::instance.furthestWarchestTrailMission < 1) {
                     DAT_SkirmishTrailRelated1::instance = 3;
@@ -72,7 +72,7 @@ namespace UI {
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestWarchestTrailMission);
             } else {
-                if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME) {
+                if (DAT_GameCore::instance.currentTrailType != Game::TT_EXTREME) {
                     DAT_SkirmishTrailRelated1::instance = 3;
                     INT_00ed2bdc::instance = 0;
                 }

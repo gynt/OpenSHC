@@ -14,11 +14,11 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DB5C0
         void General::MenuView_General_DoInitial_BlackBorderAndGfx()
         {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)((int)(COL_BLACK::instance.shortValue)));
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::DrawOuterMenuBorder)();
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
+            MACRO_CALL(UI::Rendering_Func::DrawOuterMenuBorder)();
+            MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
         }
 
     }

@@ -13,10 +13,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
-    using OpenSHC::Game::Resources::ResourceTypeInt;
-    using OpenSHC::Map::Units::EuroRecruitableState;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
+    using Game::Resources::ResourceTypeInt;
+    using Map::Units::EuroRecruitableState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00464DA0
     EuroRecruitableState Helpers::IsEuroUnitRecruitableUnk(int barrackUnitIdUnk)
@@ -26,23 +26,23 @@ namespace UI {
         bool _noResourceUnk;
         int _resourceCost;
         ResourceTypeInt _unitGoldCost = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk + -1];
-        if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+        if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
             && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
             _unitGoldCost = ((ResourceType)0);
         }
         if (DAT_GameState::instance.mapAndTime.euroRecruitable[barrackUnitIdUnk + -0x16] == 0) {
-            return OpenSHC::Map::Units::ERS_NOT_ALLOWED_TO_RECRUIT;
+            return Map::Units::ERS_NOT_ALLOWED_TO_RECRUIT;
         }
         if (DAT_GameState::instance.mapAndTime.armySizeLimit
             <= DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].count_2
                 + DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .armySize) {
-            return OpenSHC::Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY;
+            return Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY;
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .currentResources[0xf]
             < (int)_unitGoldCost) {
-            return OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT;
+            return Map::Units::ERS_CAN_NOT_RECRUIT;
         }
         _loopCounterUnk = 0;
         _unitResourceCostPtr = DAT_UnitPropertiesDefinedData::instance.MELEE_DAMAGE[0x4e] + barrackUnitIdUnk * 4 + 0x48;
@@ -55,7 +55,7 @@ namespace UI {
                     == 0;
             LAB_00464e3f:
                 if (_noResourceUnk) {
-                    return OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT;
+                    return Map::Units::ERS_CAN_NOT_RECRUIT;
                 }
             } else if (_resourceCost != 0) {
                 _noResourceUnk
@@ -74,9 +74,9 @@ namespace UI {
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                           .count;
                 if (_resourceCost < _loopCounterUnk) {
-                    return OpenSHC::Map::Units::ERS_CAN_RECRUITUnk;
+                    return Map::Units::ERS_CAN_RECRUITUnk;
                 }
-                return OpenSHC::Map::Units::ERS_UNABLE_MISSING_PEASANTS;
+                return Map::Units::ERS_UNABLE_MISSING_PEASANTS;
             }
         } while (true);
     }

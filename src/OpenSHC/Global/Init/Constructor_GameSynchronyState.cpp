@@ -14,8 +14,8 @@ namespace Global {
     void Init::Constructor_GameSynchronyState()
     {
         MACRO_CALL_MEMBER(
-            OpenSHC::Synchrony::GameSynchronyState_Func::Constructor_GameSynchronyState, DAT_GameSynchronyState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d7c0));
+            Synchrony::GameSynchronyState_Func::Constructor_GameSynchronyState, DAT_GameSynchronyState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d7c0));
         return;
     }
 

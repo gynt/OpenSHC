@@ -10,7 +10,7 @@ namespace OpenSHC {
 void Meta::Destructor_0059d4e0()
 {
     MACRO_CALL_MEMBER(
-        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::cleanDirectDraw, DAT_WindowAndDirectDraw::ptr)();
+        UI::Rendering::WindowAndDirectDraw_Func::cleanDirectDraw, DAT_WindowAndDirectDraw::ptr)();
 }
 
 }

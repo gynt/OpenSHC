@@ -129,7 +129,7 @@ namespace Map {
                 }
                 if ((DAT_TileMapState::instance.BuildingLayer[DAT_EntityState::instance.entityArray[uVar2].tile] != 0)
                     && (iVar3
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlammabilityFactor,
+                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlammabilityFactor,
                             DAT_BuildingsState::ptr)((int)DAT_TileMapState::instance
                                 .BuildingLayer[DAT_EntityState::instance.entityArray[uVar2].tile]),
                         uVar2 = DAT_CurrentEntityID::instance, iVar3 != 0)) {
@@ -164,7 +164,7 @@ namespace Map {
             goto LAB_00405b3d;
         if (_height0 == 0) {
             _totalHeightAtTile = MACRO_CALL_MEMBER(
-                OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_tile + -1);
+                Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_tile + -1);
             _heightDerivative = (int)(_height - _totalHeightAtTile) >> 0x1f;
             if (0x18 < (int)((_height - _totalHeightAtTile ^ _heightDerivative) - _heightDerivative))
                 goto LAB_00405b2a;
@@ -176,11 +176,11 @@ namespace Map {
         LAB_00405b18:
             _playerID = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].owner;
         LAB_00405b22:
-            MACRO_CALL(OpenSHC::Map::Entities_Func::IgniteFireAtMiniTile)((int)_playerID, _x, _y,
+            MACRO_CALL(Map::Entities_Func::IgniteFireAtMiniTile)((int)_playerID, _x, _y,
                 (int)((int)(_height0)), (int)((int)(_0xb6 + -1)), (int)((int)(_fireIntensity0)));
         } else {
             if (_height0 == 1) {
-                uVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
+                uVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
                     _tile + 1);
                 uVar4 = (int)(_height - uVar2) >> 0x1f;
                 if (0x18 < (int)((_height - uVar2 ^ uVar4) - uVar4))
@@ -194,7 +194,7 @@ namespace Map {
                 goto LAB_00405b22;
             }
             if (_height0 == 2) {
-                uVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
+                uVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
                     (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].xPosition
                     + DAT_ViewportRenderState::instance
                         .translationMatrix
@@ -213,7 +213,7 @@ namespace Map {
                 }
             } else if ((_height0 == 3)
                 && (uVar2
-                    = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
+                    = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(
                         (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].xPosition
                         + DAT_ViewportRenderState::instance
                             .translationMatrix
@@ -234,7 +234,7 @@ namespace Map {
         iVar3 = *(int*)(DAT_EntityState::instance.entityArray[0].unused_0x48 + _entityOffset + 4);
         if ((DAT_TileMapState::instance.LogicLayer[iVar3] & 0xba7001b1U) == 0) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Entities::EntityState_Func::processFireDamageToUnitsAtTile, DAT_EntityState::ptr)(iVar3,
+                Map::Entities::EntityState_Func::processFireDamageToUnitsAtTile, DAT_EntityState::ptr)(iVar3,
                 (int)*(short*)(DAT_EntityState::instance.entityArray[0].unused_0x2e + _entityOffset + -2),
                 (int)*(short*)(DAT_EntityState::instance.entityArray[0].unused_0xe0 + _entityOffset + -8));
         }

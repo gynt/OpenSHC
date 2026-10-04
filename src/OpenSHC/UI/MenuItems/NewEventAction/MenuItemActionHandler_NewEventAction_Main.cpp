@@ -17,9 +17,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Game::ScenarioEvents::InGameEventUnion;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
+        using Game::ScenarioEvents::InGameEventUnion;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9C00
         void NewEventAction::MenuItemActionHandler_NewEventAction_Main(int param_1, ...)
@@ -31,8 +31,8 @@ namespace UI {
             iVar2 = param_1;
             switch (param_1) {
             case 0x25:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NEW_EVENT, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NEW_EVENT, FALSE);
                 return;
             case 0xb1:
             case 0xb2:
@@ -119,9 +119,9 @@ namespace UI {
                     = &DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                            .data;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(1,
+                    UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(1,
                     iVar2, (destination->scenario).actionData, (undefined*)((int)(destination)),
-                    (void*)MACRO_CALL(OpenSHC::UI::Helpers_Func::CaptureCurrentTimeToUnknownTime01));
+                    (void*)MACRO_CALL(UI::Helpers_Func::CaptureCurrentTimeToUnknownTime01));
                 DAT_MapPropertiesState::instance.field131_0x145d0 = DAT_ButtonX::instance + 0x3a;
                 DAT_MapPropertiesState::instance.field132_0x145d4 = DAT_ButtonY::instance + 0x1c;
                 DAT_MapPropertiesState::instance.field127_0x145cc = 2;

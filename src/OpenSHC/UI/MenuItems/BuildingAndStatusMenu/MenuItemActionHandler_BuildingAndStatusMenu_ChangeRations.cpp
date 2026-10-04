@@ -16,25 +16,25 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::Buildings::BuildingType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using Game::GameMode2;
+        using Map::Buildings::BuildingType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00465820
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_ChangeRations(int param_1, ...)
         {
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
-                BOOLEnum BVar1 = MACRO_CALL(OpenSHC::Game_Func::Tutorial_IsActionAllowed)(3, param_1);
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
+                BOOLEnum BVar1 = MACRO_CALL(Game_Func::Tutorial_IsActionAllowed)(3, param_1);
                 if (BVar1 == FALSE) {
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
+                    MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
                 }
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialBuildingActionState)(
+                MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(
                     0xc, (BuildingType)((int)(param_1)));
             }
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                OpenSHC::Commands::GCT_CHANGE_RATIONS);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                Commands::GCT_CHANGE_RATIONS);
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .rationsSetting3 = param_1;
             DWORD DVar2 = timeGetTime();

@@ -37,7 +37,7 @@ namespace Map {
                         iVar5 = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_p1->tile2];
                         iVar2 = _p1->tile2 - DAT_ViewportRenderState::instance.translationMatrix[iVar5].addXgetTile;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
                             (int)((int)(DAT_UnitsState::instance.units[unitID].y)), iVar2, iVar5);
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < local_10) {
@@ -78,7 +78,7 @@ namespace Map {
                         iVar5 = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_p2->tile2];
                         iVar2 = _p2->tile2 - DAT_ViewportRenderState::instance.translationMatrix[iVar5].addXgetTile;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
                             (int)((int)(DAT_UnitsState::instance.units[unitID].y)), iVar2, iVar5);
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < local_10) {

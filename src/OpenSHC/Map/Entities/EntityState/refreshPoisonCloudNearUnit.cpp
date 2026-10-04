@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00401880
         void EntityState::refreshPoisonCloudNearUnit(int param_1)
@@ -22,10 +22,10 @@ namespace Map {
             if (1 < this->maxEntityCount) {
                 pEVar1 = &this->entityArray[1].entityType;
                 do {
-                    if ((((pEVar1[-1] == 2) && (*pEVar1 == OpenSHC::Map::Entities::ET_COW_POISON_CLOUD))
+                    if ((((pEVar1[-1] == 2) && (*pEVar1 == Map::Entities::ET_COW_POISON_CLOUD))
                             && ((short)pEVar1[-0xb] < 0x3e9))
                         && (MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                                Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                                 DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[param_1].x,
                                 (int)((int)(DAT_UnitsState::instance.units[param_1].y)),
                                 (int)((int)((short)pEVar1[0xd])), (int)((int)((short)pEVar1[0xe]))),

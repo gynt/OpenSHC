@@ -26,12 +26,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::UI::ChooseNetworkServiceProvider::ChooseNetworkServiceProviderButtonActions;
-        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using UI::ChooseNetworkServiceProvider::ChooseNetworkServiceProviderButtonActions;
+        using UI::Enums::BuildingsAndStatusMenuTabType;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004909E0
         void ChooseNetworkServiceProvider::MenuItemActionHandler_ChooseNetworkServiceProvider_Buttons(
@@ -45,36 +45,36 @@ namespace UI {
             char (*pacVar6)[20];
             char (*pacVar7)[250];
             if (param_1 < ((ChooseNetworkServiceProviderButtonActions)0x80000000)) {
-                if (param_1 == OpenSHC::UI::ChooseNetworkServiceProvider::CNSPBA_EXIT) {
+                if (param_1 == UI::ChooseNetworkServiceProvider::CNSPBA_EXIT) {
                 LAB_00490d4f:
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
+                        Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
                     DAT_GameSynchronyState::instance.kickedAtTime = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_MAIN_MENU, 0);
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
-                if (param_1 == OpenSHC::UI::ChooseNetworkServiceProvider::CNSPBA_HOST_GAME) {
+                if (param_1 == UI::ChooseNetworkServiceProvider::CNSPBA_HOST_GAME) {
                     DAT_GameSynchronyState::instance.isHost = TRUE;
                     DAT_GameSynchronyState::instance.kickedAtTime = 0;
                     iVar4 = MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
+                        Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
                         DAT_GameSynchronyState::ptr)(FALSE);
                     if (-1 < iVar4) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                         DAT_GameSynchronyState::instance.field225_0x106ee4 = 1;
                         DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_LOBBY_MENU, 0);
-                        MACRO_CALL(OpenSHC::Synchrony_Func::InitSkirmishLobbyData)();
+                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                            UI::Enums::MVT_LOBBY_MENU, 0);
+                        MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
                         Menu_LobbyMenu::instance.thousand = 0;
-                        MACRO_CALL(OpenSHC::OS_Func::_memset)(
+                        MACRO_CALL(OS_Func::_memset)(
                             DAT_GameSynchronyState::instance.DAT_PlayerNames, 0, 0x8ca);
                         pcVar3 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+                            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
                         pacVar7 = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
                         do {
                             cVar1 = *pcVar3;
@@ -82,20 +82,20 @@ namespace UI {
                             pcVar3 = pcVar3 + 1;
                             pacVar7 = (char (*)[250])(*pacVar7 + 1);
                         } while (cVar1 != '\0');
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::waitForMultiplayerHost,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::waitForMultiplayerHost,
                             DAT_GameSynchronyState::ptr)();
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
-                if (param_1 == OpenSHC::UI::ChooseNetworkServiceProvider::CNSPBA_JOIN_GAME) {
+                if (param_1 == UI::ChooseNetworkServiceProvider::CNSPBA_JOIN_GAME) {
                     DAT_GameSynchronyState::instance.isHost = FALSE;
                     DAT_GameSynchronyState::instance.kickedAtTime = 0;
                     if (DAT_GameCore::instance.activeMenuTab.tabType
-                        == OpenSHC::UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
+                        == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
                         pcVar2 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
+                            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
                         pcVar3 = pcVar2 + 1;
                         do {
                             cVar1 = *pcVar2;
@@ -105,9 +105,9 @@ namespace UI {
                             pacVar6 = DAT_GameSynchronyState::instance.ipRelatedArray;
                             do {
                                 pacVar5 = pacVar6;
-                                pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
+                                pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
                                     DAT_UserTextHandlerState::ptr)(5);
-                                iVar4 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(pcVar3, (char const*)((int)(*pacVar5)));
+                                iVar4 = MACRO_CALL(OS_Func::__stricmp)(pcVar3, (char const*)((int)(*pacVar5)));
                                 if (iVar4 == 0)
                                     goto LAB_00490c30;
                                 pacVar6 = pacVar6 + 1;
@@ -121,7 +121,7 @@ namespace UI {
                                     pacVar5 = (char (*)[20])(*pacVar5 + 1);
                                 } while (*pcVar3 != '\0');
                                 if (pacVar5 == (char (*)[20])(*pacVar6 + 1)) {
-                                    pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
+                                    pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
                                         DAT_UserTextHandlerState::ptr)(5);
                                     pacVar6 = DAT_GameSynchronyState::instance.ipRelatedArray + iVar4;
                                     do {
@@ -275,7 +275,7 @@ namespace UI {
                             DAT_GameSynchronyState::instance.ipRelatedArray[3][0x11] = '\0';
                             DAT_GameSynchronyState::instance.ipRelatedArray[3][0x12] = '\0';
                             DAT_GameSynchronyState::instance.ipRelatedArray[3][0x13] = '\0';
-                            pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
+                            pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
                                 DAT_UserTextHandlerState::ptr)(5);
                             pacVar6 = DAT_GameSynchronyState::instance.ipRelatedArray + 3;
                             do {
@@ -288,18 +288,18 @@ namespace UI {
                     }
                 LAB_00490c30:
                     iVar4 = MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
+                        Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
                         DAT_GameSynchronyState::ptr)(FALSE);
                     if (-1 < iVar4) {
                         DAT_GameSynchronyState::instance.unkEnumerationRelatedBool = false;
                         DAT_GameSynchronyState::instance.scrollBarIndex = -1;
                         DAT_GameSynchronyState::instance.scrollBarItemOffset = 0;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::restartDPlaySessionEnumeration,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::restartDPlaySessionEnumeration,
                             DAT_GameSynchronyState::ptr)(FALSE);
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_FINDING_NETWORK_SESSIONS, FALSE);
+                        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_FINDING_NETWORK_SESSIONS, FALSE);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
             } else if (param_1 == ((ChooseNetworkServiceProviderButtonActions)0xffffffff)) {
                 if (0 < DAT_GameSynchronyState::instance.scrollBarItemOffset) {
@@ -316,7 +316,7 @@ namespace UI {
                     if (param_1 == ((ChooseNetworkServiceProviderButtonActions)0xffffd8f0))
                         goto LAB_00490d4f;
                     if (param_1 == ((ChooseNetworkServiceProviderButtonActions)0xfffffc18)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
+                        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
                             DAT_UserTextHandlerState::ptr)(
                             5, (char*)(DAT_GameSynchronyState::instance.ipArrayIndex * 0x14 + 0x1a274a4));
                         DAT_GameSynchronyState::instance.ipArrayIndex

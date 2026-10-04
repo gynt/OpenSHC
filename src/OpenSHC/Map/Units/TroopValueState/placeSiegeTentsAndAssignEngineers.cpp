@@ -20,12 +20,12 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
+        using AI::Tribes::AITribeType;
+        using Game::GameMode2;
+        using Map::MapType2;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B710
         void TroopValueState::placeSiegeTentsAndAssignEngineers(int param_1, int param_2)
@@ -48,8 +48,8 @@ namespace Map {
             if (local_10 == 0) {
                 local_10 = 2;
             }
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                 local_10 = 2;
             }
             int iVar5 = 0;
@@ -89,7 +89,7 @@ namespace Map {
                     if (0xf9 < iVar5)
                         break;
                     DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[iVar5].engineerBuildingType
-                        = (OpenSHC::Commands::MappersEnum)(iVar4);
+                        = (Commands::MappersEnum)(iVar4);
                     DAT_TroopValueState::instance.attackInfo
                         .field127624_0x41f74[DAT_TroopValueState::instance.attackInfo.createTribeAmount]
                         .engineerCount = iVar7;
@@ -105,7 +105,7 @@ namespace Map {
             piVar6 = &DAT_TribesState::instance.tribes[1];
             do {
                 if ((((piVar6->tribeState != 0) && (piVar6->owner == local_10)) && (piVar6->attackWave == param_1))
-                    && (piVar6->tribeType == OpenSHC::AI::Tribes::AITT_ENGINEERS)) {
+                    && (piVar6->tribeType == AI::Tribes::AITT_ENGINEERS)) {
                     DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar5] = _tribeID;
                     iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize + 1;
                     DAT_TroopValueState::instance.attackInfo.tribeIDArraySize = iVar5;
@@ -121,7 +121,7 @@ namespace Map {
                         (sVar2 != 0 && (iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize, 0 < iVar8));
                         iVar8 = iVar8 + -1) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::TribesState_Func::popUnitFromTribe, DAT_TribesState::ptr)(_tribeID);
+                            Map::Units::TribesState_Func::popUnitFromTribe, DAT_TribesState::ptr)(_tribeID);
                         sVar2 = DAT_TribesState::instance.tribes[_tribeID].size;
                         iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize;
                     }
@@ -131,7 +131,7 @@ namespace Map {
                 if (0 < DAT_TroopValueState::instance.attackInfo.createTribeAmount) {
                 LAB_0051b904:
                     _unitCount = DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerCount;
-                    _tribeID2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribe,
+                    _tribeID2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe,
                         DAT_TribesState::ptr)(DAT_TribesState::instance.tribes[_tribeID].owner, 0);
                     _maxUnits = DAT_UnitsState::instance.maxUnitCount;
                     DAT_TribesState::instance.tribes[_tribeID2].tribeType = 11;
@@ -143,12 +143,12 @@ namespace Map {
                     if (_unitID < (int)_maxUnits) {
                         _ptrPlayerID = &DAT_UnitsState::instance.units[_unitID];
                         do {
-                            if (((_ptrPlayerID->logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                            if (((_ptrPlayerID->logicalState == Map::Units::ULS_NORMAL)
                                     && (_ptrPlayerID->owner == local_10))
                                 && ((_ptrPlayerID->dying == 0
-                                    && ((_ptrPlayerID->unitType == OpenSHC::Map::Units::UT_E_ENGINEER
+                                    && ((_ptrPlayerID->unitType == Map::Units::UT_E_ENGINEER
                                         && (_ptrPlayerID->tribeID == 0)))))) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe,
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID, _tribeID2);
                                 _unitCount = _unitCount + -1;
                                 if (_unitCount < 1)
@@ -166,13 +166,13 @@ namespace Map {
             _unitID = _unitID + 1;
             if ((int)DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
             if (param_2 == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                       placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers,
                     this)(_tribeID2,
                     DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerBuildingType, 0,
-                    OpenSHC::Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED);
+                    Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED);
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::placeSiegeTentAtAttackAngle, this)(
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentAtAttackAngle, this)(
                     _tribeID2,
                     DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerBuildingType);
             }

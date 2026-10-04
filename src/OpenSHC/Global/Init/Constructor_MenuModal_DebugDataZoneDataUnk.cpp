@@ -15,19 +15,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B260
     void Init::Constructor_MenuModal_DebugDataZoneDataUnk()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DebugDataZoneDataUnk::ptr)(
-            OpenSHC::UI::Enums::MMT_DEBUG_DATA_ZONE_DATAUnk, 0x10b, 3, 400, 200, 0xe,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DebugDataZoneDataUnk::ptr)(
+            UI::Enums::MMT_DEBUG_DATA_ZONE_DATAUnk, 0x10b, 3, 400, 200, 0xe,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::DebugDataZoneDataUnk_Func::MenuModalRenderFunction_DebugDataZoneDataUnk),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::DebugDataZoneDataUnk_Func::MenuModalRenderFunction_DebugDataZoneDataUnk),
             Menu_DebugModals::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_DebugDataZoneDataUnk));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataZoneDataUnk));
         return;
     }
 

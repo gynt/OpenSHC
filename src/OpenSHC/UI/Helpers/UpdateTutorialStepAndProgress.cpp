@@ -46,12 +46,12 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
-    using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Audio::MSS::enums::SHC_SoundStream;
+    using Commands::MappersEnum;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using UI::Enums::MenuModalType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       Main per-frame tutorial update function. Manages the tutorial modal dialog (MMT_TUTORIAL_BOX /
@@ -75,18 +75,18 @@ namespace UI {
         uint local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_48;
         local_48 = DAT_00df5560::instance;
         if (((INT_DisableTutorialRestrictions::instance != 0)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_TUTORIAL_BOX))
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_TUTORIAL_BOX))
             && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                != OpenSHC::UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE))
+                != UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE))
             goto LAB_004bd764;
         DWORD _now = timeGetTime();
-        if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
+        if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
             if (DAT_TutorialCurrentStep::instance == 0x1f) {
-                menuModalID = OpenSHC::UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE;
+                menuModalID = UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE;
             } else {
-                menuModalID = OpenSHC::UI::Enums::MMT_TUTORIAL_BOX;
+                menuModalID = UI::Enums::MMT_TUTORIAL_BOX;
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                 DAT_MenuModalComposition1::ptr)(menuModalID, FALSE);
         }
         int iVar3 = DAT_00df5558::instance + DAT_TutorialCurrentStep::instance * 4;
@@ -99,11 +99,11 @@ namespace UI {
             && ((DAT_00df5558::instance < DAT_00df555c::instance
                 && (DVar1 = timeGetTime(), 1000 < DVar1 - DWORD_00df564c::instance)))) {
             INT_00df5650::instance = 1;
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_44, "%s%s", "fx\\speech\\",
+            MACRO_CALL(OS_Func::_sprintf)(local_44, "%s%s", "fx\\speech\\",
                 (DAT_00df5558::instance + DAT_TutorialCurrentStep::instance * 3) * 32 + 0xb3d810);
-            BVar2 = MACRO_CALL(OpenSHC::IO_Func::FileExists)(local_44);
+            BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
             if (BVar2 != FALSE) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
+                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                     DAT_SoundSystemState::ptr)(local_44);
             }
         }
@@ -114,15 +114,15 @@ namespace UI {
             && (((DAT_00df5558::instance == 0 || (INT_00df5650::instance != 0)) && (DAT_00df5540::instance == 0)))) {
             uVar4 = DAT_00df5544::instance;
             if (DAT_00df5558::instance < DAT_00df555c::instance + -1) {
-                BVar2 = MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
-                    DAT_SoundSystemState::ptr)(OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_1);
+                BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
+                    DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_1);
                 if (((BVar2 == FALSE)
-                        && (BVar2 = MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
-                                DAT_SoundSystemState::ptr)(OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_2),
+                        && (BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
+                                DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_2),
                             BVar2 == FALSE))
                     && ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE
                         && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)))) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
+                    MACRO_CALL(UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
                 }
                 goto LAB_004bd354;
             }
@@ -137,11 +137,11 @@ namespace UI {
                 if (uVar4 < 0x20) {
                     uVar4 = 0x1f - uVar4;
                 } else {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    MACRO_CALL(OS_Func::_sprintf)(
                         local_44, "%s%s", "fx\\speech\\", DAT_TutorialCurrentStep::instance * 96 + 0xb3d810);
-                    BVar2 = MACRO_CALL(OpenSHC::IO_Func::FileExists)(local_44);
+                    BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
                     if (BVar2 != FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
+                        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                             DAT_SoundSystemState::ptr)(local_44);
                     }
                     DAT_00df5540::instance = 0;
@@ -161,19 +161,19 @@ namespace UI {
                 goto LAB_004bd3e9;
             DAT_TutorialCurrentStep::instance = DAT_TutorialCurrentStep::instance + 1;
             if (INT_DisableTutorialRestrictions::instance != 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 uVar4 = DAT_00df5544::instance;
                 goto LAB_004bd3e9;
             }
             if (DAT_TutorialCurrentStep::instance == 0x1f) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE, FALSE);
             }
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::InitTutorialStepTransition)(1);
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
+            MACRO_CALL(UI::Helpers_Func::InitTutorialStepTransition)(1);
+            MACRO_CALL(UI::Helpers_Func::ResetTutorialActionTrackers)();
             DAT_00df555c::instance
                 = DAT_MissionAestheticsDefinedData::instance.field1249_0x5324[DAT_TutorialCurrentStep::instance];
             DAT_00df5560::instance = 0;
@@ -234,8 +234,8 @@ namespace UI {
         case 9:
             if (DAT_00df5558::instance != 0)
                 goto joined_r0x004bd57e;
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
                 goto LAB_004bd6bb;
             }
             break;
@@ -251,8 +251,8 @@ namespace UI {
             if (DAT_00df5588::instance == 0xe) {
                 DAT_00df5560::instance = 1;
             }
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_STATUS_OVERVIEW;
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_STATUS_OVERVIEW;
                 goto LAB_004bd6bb;
             }
             break;
@@ -260,14 +260,14 @@ namespace UI {
             if ((DAT_00df5588::instance == 0xf) && (DAT_00df558c::instance == 0x48)) {
                 DAT_00df5560::instance = 1;
             }
-            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
-                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_STATUS_POPULARITY;
+            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+                bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_STATUS_POPULARITY;
                 goto LAB_004bd6bb;
             }
             break;
         case 0xe:
         case 0x14:
-            if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
+            if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                 DAT_00df5560::instance = 1;
             }
             bVar5 = DAT_00df5588::instance == 0xb;
@@ -280,7 +280,7 @@ namespace UI {
                 DAT_00df5590::instance = DAT_00df5590::instance + 1;
                 DAT_00df5588::instance = 0;
             }
-            if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_NULL) {
+            if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_NULL) {
                 bVar5 = DAT_00df5590::instance == 4;
                 goto LAB_004bd6bb;
             }
@@ -345,8 +345,8 @@ namespace UI {
             if (DAT_MissionAestheticsDefinedData::instance.field1251_0x5464[DAT_TutorialCurrentStep::instance] == 2) {
                 iVar3 = DAT_00df556c::instance * 0x60;
                 DAT_00df556c::instance = DAT_00df556c::instance + 1;
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar3 + 0xb3d810);
-                MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
+                MACRO_CALL(OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar3 + 0xb3d810);
+                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                     DAT_SoundSystemState::ptr)(local_24);
                 if (0x27 < DAT_00df556c::instance) {
                     DAT_00df556c::instance = 0x24;
@@ -360,7 +360,7 @@ namespace UI {
             /*
               show continue button?
              */
-            MACRO_CALL(OpenSHC::UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
+            MACRO_CALL(UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
         }
     LAB_004bd764:;
         return;

@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::TrailType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::TrailType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8BB0
         void CrusadeMissionIntro::MenuItemRenderFunction_CrusadeMissionIntro_Main(int param_1, ...)
@@ -23,14 +23,14 @@ namespace UI {
             bool bVar3;
             bVar1 = false;
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+            if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                 bVar3 = (DAT_GameCore::instance.extremeTrailProgress < 0x14);
                 bVar2 = DAT_GameCore::instance.extremeTrailProgress + -0x14 < 0;
-            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                 bVar3 = (DAT_GameCore::instance.warchestTrailProgress < 0x1e);
                 bVar2 = (int)(DAT_GameCore::instance.warchestTrailProgress - 0x1e) < 0;
             } else {
-                if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_FIRST_EDITION)
+                if (DAT_GameCore::instance.currentTrailType != Game::TT_FIRST_EDITION)
                     goto LAB_004d8bee;
                 bVar3 = (DAT_GameCore::instance.skirmishTrailProgress < 0x32);
                 bVar2 = (int)(DAT_GameCore::instance.skirmishTrailProgress - 0x32) < 0;
@@ -43,7 +43,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+            MACRO_CALL(UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
         }
 

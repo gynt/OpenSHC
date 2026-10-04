@@ -14,19 +14,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BA60
     void Init::Constructor_MenuModal_UnusedCreateTimedMessageEvent()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal,
-            MenuModal_UnusedCreateTimedMessageEvent::ptr)(OpenSHC::UI::Enums::MMT_UNUSED_CREATE_TIMED_MESSAGE_EVENT, -1,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal,
+            MenuModal_UnusedCreateTimedMessageEvent::ptr)(UI::Enums::MMT_UNUSED_CREATE_TIMED_MESSAGE_EVENT, -1,
             -1, 700, 0x1fe, 0x200, 6,
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(OpenSHC::UI::MenuModals::
+            (UI::MenuModalRenderFunction*)MACRO_CALL(UI::MenuModals::
                     UnusedCreateTimedMessageEvent_Func::MenuModalRenderFunction_UnusedCreateTimedMessageEvent),
             Menu_UnusedCreateTimedMessageEvent::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_UnusedCreateTimedMessageEvent));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedCreateTimedMessageEvent));
         return;
     }
 

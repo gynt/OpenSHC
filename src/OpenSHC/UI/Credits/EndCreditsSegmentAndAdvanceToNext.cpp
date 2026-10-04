@@ -19,25 +19,25 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
+    using Audio::MSS::enums::SHC_SoundStream;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004DA200
     void Credits::EndCreditsSegmentAndAdvanceToNext()
     {
         CreditsRelatedStructure* pCVar1;
-        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
-            OpenSHC::Audio::MSS::enums::SND_STR_SFX_1Unk);
+        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
+            Audio::MSS::enums::SND_STR_SFX_1Unk);
         DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
         DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
-            OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_1);
-        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
-            OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_2);
+        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
+            Audio::MSS::enums::SND_STR_SPEECH_1);
+        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
+            Audio::MSS::enums::SND_STR_SPEECH_2);
         if (INT_00ed27a4::instance != 2) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
+                Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
             MACRO_CALL_MEMBER(
-                OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
+                Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
         }
         DWORD_00eb9ac4::instance = 0;
         INT_00eb1230::instance = 0;
@@ -53,10 +53,10 @@ namespace UI {
             do {
                 if (DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].field0_0x0 == 0x27) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
+                        Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID, DAT_SoundSystemState::ptr)(
-                        (OpenSHC::DE::SHCDE::eMusicIDs)(DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance]
+                        Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID, DAT_SoundSystemState::ptr)(
+                        (DE::SHCDE::eMusicIDs)(DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance]
                                 .soundStream));
                 }
             } while ((DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].field0_0x0 != 0x1f)

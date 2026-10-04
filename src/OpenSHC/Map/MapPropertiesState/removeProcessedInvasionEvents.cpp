@@ -57,7 +57,7 @@ namespace Map {
                 puVar5 = puVar5 + 0xe4;
             } while (local_d0 < this->eventsCount);
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::pruneInvalidEventTriggerLinks, this)();
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::pruneInvalidEventTriggerLinks, this)();
     }
 
 }

@@ -13,7 +13,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F70F0
     void TileMapState::updateLogicalTileMapRelatedSections()
@@ -56,14 +56,14 @@ namespace Map {
                             this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] & 0xffef;
                             if (uVar8 == 0) {
                                 uVar4 = this->LogicLayer[_tile];
-                                if ((((uVar4 & OpenSHC::Map::LogicHelpers::L_RIVER) == 0)
-                                        && ((this->Logic2Layer[_tile] & OpenSHC::Map::LogicHelpers::L2_BEACH) != 0))
-                                    || ((uVar4 & OpenSHC::Map::LogicHelpers::L_MOAT) != 0)) {
+                                if ((((uVar4 & Map::LogicHelpers::L_RIVER) == 0)
+                                        && ((this->Logic2Layer[_tile] & Map::LogicHelpers::L2_BEACH) != 0))
+                                    || ((uVar4 & Map::LogicHelpers::L_MOAT) != 0)) {
                                 LAB_004f71ea:
                                     this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
                                 } else {
                                     this->LogicLayer[_tile]
-                                        = uVar4 & ~(OpenSHC::Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
+                                        = uVar4 & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                 }
                             } else {
                                 if (uVar8 < 9)
@@ -78,7 +78,7 @@ namespace Map {
                                                         this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
                                                     } else if ((bVar1 & 0x40) == 0) {
                                                         this->LogicLayer[_tile] = this->LogicLayer[_tile]
-                                                            & ~(OpenSHC::Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
+                                                            & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                                     } else {
                                                         this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
                                                     }
@@ -105,11 +105,11 @@ namespace Map {
                                 iVar9 = (*paiVar12)[0] + _tile;
                                 if (((8 < uVar8) || (this->HeightLayer[iVar9] == 0))
                                     && (uVar8 != this->HeightLayer[iVar9])) {
-                                    if ((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_RIVER
-                                            | OpenSHC::Map::LogicHelpers::L_MOAT)
+                                    if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_RIVER
+                                            | Map::LogicHelpers::L_MOAT)
                                         == 0) {
                                         this->LogicLayer[_tile] = this->LogicLayer[_tile]
-                                            & ~(OpenSHC::Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
+                                            & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                     }
                                     break;
                                 }
@@ -118,7 +118,7 @@ namespace Map {
                             } while (iVar15 < 8);
                             if ((this->BuildingLayer[_tile] != 0)
                                 && (DAT_BuildingsState::instance.buildings[this->BuildingLayer[_tile]].buildingType
-                                    == OpenSHC::Map::Buildings::BT_DRAWBRIDGE)) {
+                                    == Map::Buildings::BT_DRAWBRIDGE)) {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
                             if (this->field93_0x5548c8 == 0) {
@@ -143,14 +143,14 @@ namespace Map {
                                 this->ShowHiLayer[_tile] = '\b';
                             }
                             uVar4 = this->LogicLayer[_tile];
-                            if ((uVar4 & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                    | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                            if ((uVar4 & Map::LogicHelpers::L_BUILDING
+                                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                 == 0) {
-                                if ((uVar4 & OpenSHC::Map::LogicHelpers::L_TREE_VARIATION) == 0) {
-                                    if ((uVar4 & OpenSHC::Map::LogicHelpers::L_FARM_FIELD_WHEAT) == 0) {
-                                        if ((uVar4 & OpenSHC::Map::LogicHelpers::L_FARM_FIELD_HOP) == 0) {
-                                            if ((uVar4 & OpenSHC::Map::LogicHelpers::L_CRENEL) == 0) {
-                                                if ((uVar4 & OpenSHC::Map::LogicHelpers::L_STAIRS) == 0) {
+                                if ((uVar4 & Map::LogicHelpers::L_TREE_VARIATION) == 0) {
+                                    if ((uVar4 & Map::LogicHelpers::L_FARM_FIELD_WHEAT) == 0) {
+                                        if ((uVar4 & Map::LogicHelpers::L_FARM_FIELD_HOP) == 0) {
+                                            if ((uVar4 & Map::LogicHelpers::L_CRENEL) == 0) {
+                                                if ((uVar4 & Map::LogicHelpers::L_STAIRS) == 0) {
                                                     this->MiscDisplayLayer[_tile]
                                                         = this->MiscDisplayLayer[_tile] | 0x10;
                                                     bVar7 = false;
@@ -177,7 +177,7 @@ namespace Map {
                                 iVar9 = (*paiVar13)[0] + _tile;
                                 if (((8 < uVar8) && (uVar8 != this->HeightLayer[iVar9]))
                                     || (uVar4 = this->LogicLayer[iVar9],
-                                        (uVar4 & OpenSHC::Map::LogicHelpers::L_TREE_VARIATION) != 0)) {
+                                        (uVar4 & Map::LogicHelpers::L_TREE_VARIATION) != 0)) {
                                     this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] & 0xffef;
                                     break;
                                 }
@@ -203,84 +203,84 @@ namespace Map {
                             if (iVar14 < iVar15) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
-                                if (((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                         | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                                if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                         != 0)
                                     && (iVar15 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11][this->field86_0x5548ac] + _tile;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11][this->field85_0x5548a8] + _tile;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
                                                                          [this->field86_0x5548ac]
                                     + iVar9;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
                                                                          [this->field85_0x5548a8]
                                     + iVar9;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
                                     + this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
                                                                       [this->field84_0x5548a4];
-                                if (((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                         | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                         != 0)
                                     && (iVar15 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
@@ -288,43 +288,43 @@ namespace Map {
                                 iVar15 = this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
                                                                          [this->field86_0x5548ac]
                                     + iVar9;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
                                                                          [this->field85_0x5548a8]
                                     + iVar9;
-                                if ((((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                          | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
+                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
                                         && (iVar10 = MACRO_CALL_MEMBER(
-                                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
-                                    || (((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                                    || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
                                             != 0
-                                        && ((this->LogicLayer[iVar15] & OpenSHC::Map::LogicHelpers::L_STOCKPILEUnk)
+                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
                                             == 0)))) {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
                                     + this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
                                                                       [this->field84_0x5548a4];
-                                if ((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                        | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                     != 0) {
                                     iVar15 = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                        Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                         DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]);
                                     bVar16 = iVar15 == 0;
                                     goto LAB_004f77ae;
@@ -334,7 +334,7 @@ namespace Map {
                                     bVar7 = true;
                                 }
                                 if (DAT_BuildingsState::instance.buildings[this->BuildingLayer[iVar9]].buildingType
-                                    == OpenSHC::Map::Buildings::BT_STOCKPILE) {
+                                    == Map::Buildings::BT_STOCKPILE) {
                                     bVar7 = true;
                                 }
                                 bVar16 = DAT_BuildingsState::instance
@@ -357,12 +357,12 @@ namespace Map {
                             if ((iVar3 <= iVar15) && (bVar5 = true, iVar14 < iVar15)) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
-                                if (((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                         | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                                if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                         != 0)
                                     && (iVar15 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
@@ -372,7 +372,7 @@ namespace Map {
                                     bVar7 = true;
                                 }
                                 if (DAT_BuildingsState::instance.buildings[this->BuildingLayer[iVar9]].buildingType
-                                    == OpenSHC::Map::Buildings::BT_STOCKPILE) {
+                                    == Map::Buildings::BT_STOCKPILE) {
                                     bVar7 = true;
                                 }
                             }
@@ -384,14 +384,14 @@ namespace Map {
                             if ((iVar3 <= iVar15) && (bVar6 = true, iVar14 < iVar15)) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
-                                if ((((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                                if ((((this->LogicLayer[_tile] & Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
-                                        || ((this->LogicLayer[iVar9] & OpenSHC::Map::LogicHelpers::L_BUILDING
-                                                | OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+                                        || ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                                | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                             == 0))
                                     || (iVar15 = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 == 0))
                                     goto LAB_004f79a8;
@@ -402,7 +402,7 @@ namespace Map {
                                     bVar7 = true;
                                 }
                                 if (DAT_BuildingsState::instance.buildings[this->BuildingLayer[iVar9]].buildingType
-                                    == OpenSHC::Map::Buildings::BT_STOCKPILE)
+                                    == Map::Buildings::BT_STOCKPILE)
                                     goto LAB_004f78f0;
                             LAB_004f79a8:
                                 if (bVar7)
@@ -413,7 +413,7 @@ namespace Map {
                                 if (this->field93_0x5548c8 == 0) {
                                     this->ShowHiLayer[_tile] = (char)iVar3 - (char)local_20;
                                 }
-                                if ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_SEA) == 0) {
+                                if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_SEA) == 0) {
                                     if (bVar5) {
                                         this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 1;
                                     }

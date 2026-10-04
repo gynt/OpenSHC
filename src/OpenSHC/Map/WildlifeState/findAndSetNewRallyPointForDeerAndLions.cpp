@@ -13,7 +13,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::AI::Tribes::AITribeType;
+    using AI::Tribes::AITribeType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052CAB0
     void WildlifeState::findAndSetNewRallyPointForDeerAndLions(int tribeID, int always2or3or5, int always0or1)
@@ -79,7 +79,7 @@ namespace Map {
                         if (always0or1 == 0) {
                             if (this->grid[uVar6][uVar10].field13_0x34 == 0) {
                                 if (DAT_TribesState::instance.tribes[tribeID].tribeType
-                                    == (OpenSHC::AI::Tribes::AITT_SWORDSMEN | OpenSHC::AI::Tribes::AITT_SPEARMEN)) {
+                                    == (AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_SPEARMEN)) {
                                     _count = this->grid[uVar6][uVar10].deerCount;
                                     goto LAB_0052cc5e;
                                 }
@@ -202,7 +202,7 @@ namespace Map {
             uVar6 = _x10 * 10 + 5;
             if (((uVar6 < 400) && (_destinationY < 400))
                 && (*(char*)(_destinationY * 400 + 0x21aec98 + uVar6) != '\0')) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::pathFindingDeerAndLionsUnk,
+                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::pathFindingDeerAndLionsUnk,
                     DAT_PathFindingState::ptr)(_currentArea, uVar6, _destinationY);
                 DAT_TribesState::instance.tribes[tribeID]
                     .rallyPointArray[DAT_TribesState::instance.tribes[tribeID].rallyPointCount][0]

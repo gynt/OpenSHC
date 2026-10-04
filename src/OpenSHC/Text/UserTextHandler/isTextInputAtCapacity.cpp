@@ -17,7 +17,7 @@ namespace Text {
     int UserTextHandler::isTextInputAtCapacity()
     {
         int iVar1;
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+        iVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
             this->textArray[this->textArrayIndex], (int)((int)(this->textArrayFontSizes[this->textArrayIndex])));
         if (this->textBoxMaxTextWidthDimensionArray[this->textArrayIndex] <= iVar1) {
             return 2;

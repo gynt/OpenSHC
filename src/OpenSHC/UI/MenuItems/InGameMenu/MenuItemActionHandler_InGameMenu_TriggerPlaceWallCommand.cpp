@@ -22,24 +22,24 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::Map::Buildings::BuildingFailReasonEnum;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using Commands::MappersEnum;
+        using Map::Buildings::BuildingFailReasonEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00437ED0
         void InGameMenu::MenuItemActionHandler_InGameMenu_TriggerPlaceWallCommand()
         {
-            OpenSHC::UI::TextMessageBLLookupStructUnion _noBlLookup;
-            _noBlLookup.buildingType = (OpenSHC::Commands::MappersEnum)0;
+            UI::TextMessageBLLookupStructUnion _noBlLookup;
+            _noBlLookup.buildingType = (Commands::MappersEnum)0;
             if ((((DAT_GameSynchronyState::instance.syncStatus == 0)
                      && (DAT_GameSynchronyState::instance.saveRelated == 0))
-                    && ((DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_WALL
-                        || (((DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_WOODWALL
+                    && ((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_WALL
+                        || (((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_WOODWALL
                                  || (DAT_TileMapState::instance.currentMapperCommand
-                                     == OpenSHC::Commands::M_MAPPER_STAIR))
+                                     == Commands::M_MAPPER_STAIR))
                             || (DAT_TileMapState::instance.currentMapperCommand
-                                == OpenSHC::Commands::M_MAPPER_CRENAL))))))
+                                == Commands::M_MAPPER_CRENAL))))))
                 && (DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0)) {
                 DAT_MouseState::instance.field68_0x1dc = 1000;
                 if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
@@ -47,9 +47,9 @@ namespace UI {
                       set up currently hovering x and y
                      */
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
+                        Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY2,
+                    MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupMouseTileXY2,
                         DAT_ViewportRenderState::ptr)();
                 }
                 if (DAT_MouseState::instance.leftClickStart == 0) {
@@ -75,12 +75,12 @@ namespace UI {
                     DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
                 }
                 DAT_TileMapState::instance.buildingPlacementFailReason
-                    = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
+                    = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 DAT_TileMapState::instance.wallPlacementCost = 0;
                 DAT_TileMapState::instance.constructionTileCount
-                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt,
+                    = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 4);
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::validateWallBuildPath, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::validateWallBuildPath, DAT_TileMapState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (uint)((int)(DAT_TileMapState::instance.dragStartX)),
                     (uint)((int)(DAT_TileMapState::instance.dragStartY)),
@@ -90,7 +90,7 @@ namespace UI {
                 if (DAT_MouseState::instance.draggingStopped == FALSE) {
                     DAT_TileMapState::instance.field145_0x554980
                         = (uint)(DAT_MouseState::instance.leftClickState == FALSE);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::renderWallDragPreview, DAT_TileMapState::ptr)(
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::renderWallDragPreview, DAT_TileMapState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID,
                         (uint)((int)(DAT_TileMapState::instance.dragStartX)),
                         (uint)((int)(DAT_TileMapState::instance.dragStartY)),
@@ -107,11 +107,11 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = DAT_TileMapState::instance.dragEndY;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam5
                         = DAT_TileMapState::instance.constructionTileCount;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_PLACE_WALL);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_PLACE_WALL);
                 } else if (DAT_TileMapState::instance.buildingPlacementFailReason
-                    != OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
+                    != Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
+                    MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(1, 0x4d,
                         (int)((int)(DAT_TileMapState::instance.buildingPlacementFailReason)), _noBlLookup, 100, 6000);
                 }

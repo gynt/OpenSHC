@@ -64,7 +64,7 @@ namespace Map {
                                     && ((int)(uVar5 - 0x40)
                                         <= (int)(uint)DAT_TileMapState::instance.HeightLayer[_newTile]))
                                 && (_treeID = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Navigation::PathFindingState_Func::setupBabyTreeLocationInfo,
+                                        Map::Navigation::PathFindingState_Func::setupBabyTreeLocationInfo,
                                         DAT_PathFindingState::ptr)(local_8, treeType, _newX, _newY),
                                     _treeID != 0)) {
                                 DAT_PathFindingState::instance.ALG_ResultTile = _newTile;

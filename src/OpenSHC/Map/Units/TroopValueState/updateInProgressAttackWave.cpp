@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::SomeTribeBehaviorType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00520450
         void TroopValueState::updateInProgressAttackWave(int attackID)
@@ -26,39 +26,39 @@ namespace Map {
             byte _playerID;
             _playerID = this->attackInfo.attackWavePlayerIDArray[attackID];
             BVar2 = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Units::TroopValueState_Func::isLessThanPercentageOfTribesInAttackDying, this)(
+                Map::Units::TroopValueState_Func::isLessThanPercentageOfTribesInAttackDying, this)(
                 attackID, (int)((int)(50)));
             if (BVar2 != FALSE) {
                 if (this->attackInfo.field86987_0x20f9c != 0)
                     goto LAB_00520489;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::playAttackAlarmSound, this)();
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::playAttackAlarmSound, this)();
             }
             if (this->attackInfo.field86987_0x20f9c == 0) {}
         LAB_00520489:
             if (this->attackInfo.attackWaveTicker[attackID] == 0) {
                 this->attackInfo.someCounter1 = this->attackInfo.someCounter1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::aiRecomputeAttacks2, this)(1, attackID);
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::aiRecomputeAttacks2, this)(1, attackID);
                 if (this->attackInfo.tentPoints < 1) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers,
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers,
                         this)(attackID, 0);
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers,
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers,
                         this)(attackID, 1);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::placeTunnelForEveryTunneler, this)(
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeTunnelForEveryTunneler, this)(
                         attackID);
                 }
                 tribeSizeSumLimit = *(int*)((int)this->attackInfo.townValuesArray + (char)_playerID * 0x177bc + -4);
                 if (tribeSizeSumLimit != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
-                        this)(attackID, 2, tribeSizeSumLimit, OpenSHC::Map::Units::STBT_0x3f5);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
-                        OpenSHC::Map::Units::STBT_0x3f5, OpenSHC::Map::Units::STBT_1, 0, 0x14);
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
+                        this)(attackID, 2, tribeSizeSumLimit, Map::Units::STBT_0x3f5);
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
+                        Map::Units::STBT_0x3f5, Map::Units::STBT_1, 0, 0x14);
                 }
                 if (this->attackInfo.people3 != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
-                        this)(attackID, 2, this->attackInfo.people3, OpenSHC::Map::Units::STBT_0x3fb);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
-                        OpenSHC::Map::Units::STBT_0x3fb, OpenSHC::Map::Units::STBT_1, 5, 0x1e);
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
+                        this)(attackID, 2, this->attackInfo.people3, Map::Units::STBT_0x3fb);
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
+                        Map::Units::STBT_0x3fb, Map::Units::STBT_1, 5, 0x1e);
                 }
             }
             piVar1 = this->attackInfo.attackWaveTicker + attackID;
@@ -73,7 +73,7 @@ namespace Map {
                     /*
                       "we are the macemen"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Mace_s4.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Mace_s4.wav");
                 }
             }
         }

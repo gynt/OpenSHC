@@ -14,17 +14,17 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BB20
     void Init::Constructor_MenuModal_NewEventAction()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_NewEventAction::ptr)(
-            OpenSHC::UI::Enums::MMT_NEW_EVENT_ACTION, -1, -1, 0x2f8, 0x21c, 0x200, 6,
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::NewEventAction_Func::MenuModalRenderFunction_NewEventAction),
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_NewEventAction::ptr)(
+            UI::Enums::MMT_NEW_EVENT_ACTION, -1, -1, 0x2f8, 0x21c, 0x200, 6,
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::NewEventAction_Func::MenuModalRenderFunction_NewEventAction),
             Menu_NewEventAction::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_NewEventAction));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_NewEventAction));
         return;
     }
 

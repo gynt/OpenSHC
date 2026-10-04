@@ -25,7 +25,7 @@ namespace Map {
                 do {
                     iVar1 = this->attackInfo.tribeIDArray[iVar3];
                     if ((this->attackInfo.tribeRelatedArrayValue0UpTo12[iVar3] < 0xb)
-                        && (iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                        && (iVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                           calculateCanPlayerUnitsNavigateToAreaFromArea,
                                 DAT_PathFindingState::ptr)(DAT_TribesState::instance.tribes[iVar1].owner,
                                 (dword)((int)((

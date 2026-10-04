@@ -7,7 +7,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::UI::BuildingNameRelatedSubStruct;
+    using UI::BuildingNameRelatedSubStruct;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004BAEC0
     void MapPropertiesState::commitBuildingAvailability()

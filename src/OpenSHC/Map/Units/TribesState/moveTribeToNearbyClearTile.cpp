@@ -11,8 +11,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Navigation::Algorithms::XYPair;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
+        using Map::Navigation::Algorithms::XYPair;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052A640
         void TribesState::moveTribeToNearbyClearTile(int param_1)
@@ -32,15 +32,15 @@ namespace Map {
                 x1 = ((XYPair*)(piVar4 + -1))->x + uVar5;
                 y1 = *piVar4 + uVar2;
                 if ((((x1 < 400) && (y1 < 400)) && (*(char*)(y1 * 400 + 0x21aec98 + x1) != '\0'))
-                    && (iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::isTribePathToDestinationClear,
+                    && (iVar3 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribePathToDestinationClear,
                             this)(param_1, uVar5, uVar2, x1, y1),
                         iVar3 != 0))
                     break;
                 piVar4 = piVar4 + 2;
                 if (0xb4df43 < (int)piVar4) {}
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(
-                param_1, x1, y1, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(
+                param_1, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
         }
 
     }

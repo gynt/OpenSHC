@@ -13,20 +13,20 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A610
     void Init::Constructor_MenuView_ScenarioDescription()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_ScenarioDescription::ptr)(
-            OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoInitial),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_ScenarioDescription));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_ScenarioDescription::ptr)(
+            UI::Enums::MVT_SCENARIO_DESCRIPTION,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoInitial),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_ScenarioDescription));
         return;
     }
 

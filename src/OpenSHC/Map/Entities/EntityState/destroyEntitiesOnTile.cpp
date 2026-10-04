@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::Map::Entities::EntityType;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004019D0
         void EntityState::destroyEntitiesOnTile(int tile)
@@ -23,12 +23,12 @@ namespace Map {
                 do {
                     if (((pEVar2->logicalState == 2)
                             && ((((EVar1 = pEVar2->entityType,
-                                      EVar1 == OpenSHC::Map::Entities::ET_FLAG_1
-                                          || (EVar1 == OpenSHC::Map::Entities::ET_FLAG_4))
-                                     || (EVar1 == OpenSHC::Map::Entities::ET_FLAG_2))
-                                || (((EVar1 == OpenSHC::Map::Entities::ET_FLAG_3
-                                         || (EVar1 == OpenSHC::Map::Entities::ET_BRAZIER))
-                                    || (EVar1 == OpenSHC::Map::Entities::ET_HEADS_ON_SPIKES))))))
+                                      EVar1 == Map::Entities::ET_FLAG_1
+                                          || (EVar1 == Map::Entities::ET_FLAG_4))
+                                     || (EVar1 == Map::Entities::ET_FLAG_2))
+                                || (((EVar1 == Map::Entities::ET_FLAG_3
+                                         || (EVar1 == Map::Entities::ET_BRAZIER))
+                                    || (EVar1 == Map::Entities::ET_HEADS_ON_SPIKES))))))
                         && (pEVar2->tile == tile)) {
                         pEVar2->logicalState = 3;
                         DAT_TileMapState::instance.MiscDisplayLayer[tile]

@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
+        using Map::Units::SomeTribeBehaviorType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00518870
         void TroopValueState::applyTribeBehaviorTypes(

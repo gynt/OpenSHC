@@ -15,8 +15,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Map::Units::UnitLogicState;
+    using Game::GameMode2;
+    using Map::Units::UnitLogicState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004BDE40
     void MapPropertiesState::computeMissionCompletionScore()
@@ -62,7 +62,7 @@ namespace Map {
                     goto LAB_004bdfd7;
                 this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x17];
                 iVar5 = this->field94_0x14560;
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x15));
                 this->unknownArray_01[iVar5 + 0x3f1]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -104,7 +104,7 @@ namespace Map {
                     goto LAB_004be0ae;
                 this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x43];
                 iVar5 = this->field94_0x14560;
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x41));
                 this->unknownArray_01[iVar5 + 0x3f1]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -146,7 +146,7 @@ namespace Map {
                     goto LAB_004be185;
                 this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x13];
                 iVar5 = this->field94_0x14560;
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x11));
                 this->unknownArray_01[iVar5 + 0x3f1]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -188,7 +188,7 @@ namespace Map {
                     goto LAB_004be25c;
                 this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x1b];
                 iVar5 = this->field94_0x14560;
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x19));
                 this->unknownArray_01[iVar5 + 0x3f1]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -228,7 +228,7 @@ namespace Map {
             LAB_004be25c:
                 if (pcVar7[0x10] != '\0') {
                     this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = 0xf;
-                    iVar5 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
+                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
                         this)((int)*(short*)(pcVar7 + 0xd));
                     this->unknownArray_01[this->field94_0x14560 + 0x3f1]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -242,7 +242,7 @@ namespace Map {
                 }
                 if (pcVar7[4] != '\0') {
                     this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = -1;
-                    iVar5 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
+                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
                         this)((int)*(short*)(pcVar7 + 1));
                     this->unknownArray_01[this->field94_0x14560 + 0x3f1]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -283,16 +283,16 @@ namespace Map {
             } while (iVar5 < this->field94_0x14560);
         }
         this->field122_0x145b8 = 0;
-        if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-            || ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk
+        if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
+            || ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
                 && ((int)this->SEC_U3_MapType2_1 < 2)))) {
             psVar8 = &DAT_UnitsState::instance.units[1].owner;
             iVar5 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             do {
-                if (((psVar8[-5] != OpenSHC::Map::Units::ULS_INVISIBLE) && (*psVar8 == iVar5))
+                if (((psVar8[-5] != Map::Units::ULS_INVISIBLE) && (*psVar8 == iVar5))
                     && (psVar8[0x107] != 0)) {
-                    iVar5 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
-                        DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar8[-4]));
+                    iVar5 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
+                        DAT_TroopValueState::ptr)((Map::Units::UnitType)((int)psVar8[-4]));
                     iVar6 = iVar6 + iVar5;
                     iVar5 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                 }
@@ -310,9 +310,9 @@ namespace Map {
             iVar5 = 0;
             psVar8 = &DAT_UnitsState::instance.units[1].owner;
             do {
-                if (((psVar8[-5] != OpenSHC::Map::Units::ULS_INVISIBLE) && (*psVar8 == 1)) && (psVar8[0x107] != 0)) {
-                    iVar6 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
-                        DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar8[-4]));
+                if (((psVar8[-5] != Map::Units::ULS_INVISIBLE) && (*psVar8 == 1)) && (psVar8[0x107] != 0)) {
+                    iVar6 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
+                        DAT_TroopValueState::ptr)((Map::Units::UnitType)((int)psVar8[-4]));
                     iVar5 = iVar5 + iVar6;
                 }
                 psVar8 = psVar8 + 0x248;

@@ -15,14 +15,14 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004F2070
     void LandscapeState::removeTree(int treeID)
     {
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::clearTreeFootprintFlags, DAT_TileMapState::ptr)(treeID);
-        MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::clearTreeFootprintFlags, DAT_TileMapState::ptr)(treeID);
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
             DAT_PathFindingState::ptr)(
             (int)(short)this->trees[treeID].yPosition, (int)((int)(this->trees[treeID].tile)));
         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
             treeID, 1);
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0x9c, '\0', (void*)((int)(this->trees + treeID)));
     }
 

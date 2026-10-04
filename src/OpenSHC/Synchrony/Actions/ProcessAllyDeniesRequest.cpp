@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
+    using DE::SHCDE::eTextSections;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AE010
     void Actions::ProcessAllyDeniesRequest(int param_1, int param_2)
@@ -28,8 +28,8 @@ namespace Synchrony {
             /*
               added by script: "Ally Denies Request"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ALLIES2, 0);
+            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ALLIES2, 0);
             pcVar3 = DAT_GameSynchronyState::instance.receivedChatMessage;
             do {
                 cVar1 = *pcVar2;
@@ -37,7 +37,7 @@ namespace Synchrony {
                 pcVar2 = pcVar2 + 1;
                 pcVar3 = pcVar3 + 1;
             } while (cVar1 != '\0');
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                 DAT_GameSynchronyState::ptr)(param_1, 0);
         }
     }

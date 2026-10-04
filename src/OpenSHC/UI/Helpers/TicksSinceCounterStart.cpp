@@ -13,7 +13,7 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0046CF90
     undefined4 Helpers::TicksSinceCounterStart()

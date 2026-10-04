@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
+        using UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00428980
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_MapDescScrollbar(
@@ -19,11 +19,11 @@ namespace UI {
         {
             int iVar1;
             if ((((DAT_00b960dc::instance == 0)
-                     && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE))
+                     && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_ROUNDTABLE))
                     && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                        != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
+                        != UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
+                    != UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
                 iVar1 = 0;
                 if (param_1 == 0) {
                     iVar1 = 0xcc;

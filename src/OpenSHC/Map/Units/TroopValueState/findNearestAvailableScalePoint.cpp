@@ -35,7 +35,7 @@ namespace Map {
                         fromXPosition
                             = *piVar2 - DAT_ViewportRenderState::instance.translationMatrix[fromYPosition].addXgetTile;
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
                             (int)((int)(DAT_UnitsState::instance.units[unitID].y)), fromXPosition, fromYPosition);
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < local_10) {

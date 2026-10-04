@@ -12,10 +12,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AE070
         void ChooseRandomNumberOfEnemies::MenuModalRenderFunction_ChooseRandomNumberOfEnemies(
@@ -35,15 +35,15 @@ namespace UI {
             keepOffsetX = FALSE;
             iVar4 = 0x11;
             color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_CENTER;
+            alignment = Text::TTA_CENTER;
             iVar2 = y + 100;
             iVar3 = x + 300;
             /*
               added by script: "How many opponents can you handle!"
              */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 1);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT, 1);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar1, iVar3, iVar2, alignment, color, iVar4, keepOffsetX, iVar5);
             blendStrength = 0;
             iVar5 = 0x12;
@@ -55,9 +55,9 @@ namespace UI {
               added by script: "This will create some random opponents for you. You can   still change opponent types
               afterwards."
              */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT, 2);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar1, iVar3, iVar2, iVar4, color_00, iVar5, blendStrength);
         }
 

@@ -26,16 +26,16 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042D640
         void SinglePlayerMapChoice::MenuItemActionHandler_SingleplayerMapChoice_ButtonsAndHands(int param_1, ...)
         {
             int iVar1;
             MenuViewType menuID;
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
+            if (DAT_MenuTextInputState::instance.currentModalDialog != UI::Enums::MMT_NO_MENU) {}
             DAT_StopHandlingMenuItems::instance = 0;
             if (param_1 < -100) {
                 if (param_1 == -0x65) {
@@ -55,14 +55,14 @@ namespace UI {
                     }
                 switchD_0042d6cf_caseD_2:
                     if (DAT_MapMissionType::instance == 0) {
-                        menuID = OpenSHC::UI::Enums::MVT_MAIN_MENU;
+                        menuID = UI::Enums::MVT_MAIN_MENU;
                     } else {
-                        menuID = OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS;
+                        menuID = UI::Enums::MVT_CUSTOM_SCENARIOS;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 10000);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 10000);
                     DWORD_00b95b1c::instance = timeGetTime();
                     DAT_00b960dc::instance = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
             switchD_0042d6cf_caseD_41:
                 /*
@@ -73,7 +73,7 @@ namespace UI {
                     if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
                     }
-                    MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSinglePlayerGameUnk)(0);
+                    MACRO_CALL(UI::Actions_Func::LaunchSinglePlayerGameUnk)(0);
                 }
             } else {
                 switch (param_1) {
@@ -120,7 +120,7 @@ namespace UI {
                         if (3 < DAT_GameState::instance.mapAndTime.difficulty) {
                             DAT_GameState::instance.mapAndTime.difficulty = 0;
                         }
-                        MACRO_CALL(OpenSHC::UI::Helpers_Func::SomeSiegeRelatedCopying)(DAT_GameState::instance.mapAndTime.difficulty);
+                        MACRO_CALL(UI::Helpers_Func::SomeSiegeRelatedCopying)(DAT_GameState::instance.mapAndTime.difficulty);
                     }
                     break;
                 case 0x4a:
@@ -162,7 +162,7 @@ namespace UI {
                         < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                             = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
-                        MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                        MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                                 MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                     }
@@ -171,7 +171,7 @@ namespace UI {
                     if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                             = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
-                        MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                        MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                                 MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                     }

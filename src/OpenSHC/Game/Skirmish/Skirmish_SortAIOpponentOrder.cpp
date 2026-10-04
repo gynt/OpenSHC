@@ -25,7 +25,7 @@ namespace Game {
         int iVar5;
         uint* puVar6;
         uint visitedBitMap[251];
-        MACRO_CALL(OpenSHC::OS_Func::_memset)(visitedBitMap + 1, 0, 1000);
+        MACRO_CALL(OS_Func::_memset)(visitedBitMap + 1, 0, 1000);
         iVar2 = DAT_00eb9b60::instance;
         iVar5 = 0;
         /*
@@ -62,7 +62,7 @@ namespace Game {
                 if (iVar2 < 2)
                     break;
                 do {
-                    iVar2 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
+                    iVar2 = MACRO_CALL(OS_Func::__stricmp)(
                         DAT_SkMasters2DataArray::instance[*(int*)(DAT_ArrayOfStoredMenuStrings::instance[0x20]
                                                               + iVar3 * 4 + 0x3fc)]
                             .mapName,

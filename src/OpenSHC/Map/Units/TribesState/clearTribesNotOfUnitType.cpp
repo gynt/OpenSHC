@@ -21,7 +21,7 @@ namespace Map {
             undefined1 _clearedTribes[1252];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)_clearedTribes;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 1250, '\0', (void*)((int)(_clearedTribes)));
             unitID = 1;
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
@@ -29,7 +29,7 @@ namespace Map {
                 do {
                     if (((psVar1->owner == playerID) && (psVar1->ifSelectedThenPlayerID != 0))
                         && ((short)psVar1->unitType != unitType)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,
                             this)(unitID, (int)((int)(psVar1->tribeID)));
                         psVar1->ifSelectedThenPlayerID = 0;
                         DAT_UnitsState::instance.unitCountOfSelection[playerID]
@@ -45,10 +45,10 @@ namespace Map {
             do {
                 if (psVar2->tribeState == 2) {
                     if (psVar2->selectionTargetUnitID == -1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setTargetUnitForTribe, this)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setTargetUnitForTribe, this)(
                             _tribeID2);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::setWhetherTribeContainsAnyUnits, this)(
                         _tribeID2);
                 }
                 _tribeID2 = _tribeID2 + 1;

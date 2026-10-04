@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CB40
     void Init::Constructor_EntityState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::Constructor_EntityState, DAT_EntityState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d6f0));
+        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::Constructor_EntityState, DAT_EntityState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6f0));
         return;
     }
 

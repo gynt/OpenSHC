@@ -8,7 +8,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052E020
     void WildlifeState::updateSection1034Info()
@@ -21,7 +21,7 @@ namespace Map {
         int iVar6;
         int* piVar7;
         int local_4;
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             for (local_4 = 0; local_4 < 0x14; local_4++) {
                 iVar2 = 0;
                 piVar3 = &this->grid[0][0];
@@ -33,7 +33,7 @@ namespace Map {
                         piVar4->field27_0x6c = 0;
                         if ((piVar4->castlebuildings != 0)
                             && (iVar1
-                                = MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::hasAdjacentCellWithField24Or25,
+                                = MACRO_CALL_MEMBER(Map::WildlifeState_Func::hasAdjacentCellWithField24Or25,
                                     this)(iVar6, iVar2),
                                 iVar1 != 0)) {
                             piVar4->field25_0x64 = piVar4->field25_0x64 + 1;
@@ -52,7 +52,7 @@ namespace Map {
                 piVar7 = piVar5;
                 do {
                     if ((piVar7[-1] != 0) || (*piVar7 != 0)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::floodFillUnknownNonZero01FromCell, this)(
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillUnknownNonZero01FromCell, this)(
                             iVar6, iVar2, 6);
                     }
                     iVar6 = iVar6 + 1;
@@ -69,7 +69,7 @@ namespace Map {
                 do {
                     if ((piVar7[-1] == 0)
                         && (iVar1 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::WildlifeState_Func::isSuitableWildlifeSpawnCell, this)(iVar6, iVar2),
+                                Map::WildlifeState_Func::isSuitableWildlifeSpawnCell, this)(iVar6, iVar2),
                             iVar1 != 0)) {
                         *piVar7 = *piVar7 + 1;
                     }

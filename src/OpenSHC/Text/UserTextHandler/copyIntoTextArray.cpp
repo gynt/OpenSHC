@@ -11,7 +11,7 @@ namespace Text {
         char cVar1;
         char* pcVar2;
         char (*_pText)[250];
-        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, this)();
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearTextAndCursor, this)();
         _pText = this->textArray + this->textArrayIndex;
         pcVar2 = param_1;
         do {

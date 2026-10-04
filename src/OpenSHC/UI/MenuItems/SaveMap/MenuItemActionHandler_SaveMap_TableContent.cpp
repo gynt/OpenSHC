@@ -18,12 +18,12 @@ namespace UI {
             if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
                 < DAT_MenuTextInputState::instance.field32_0x74) {
                 DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex = param_1;
-                pcVar1 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                pcVar1 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                         .DAT_ArrayOfMapIndices[DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                             + param_1 + -1]);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(pcVar1);
+                    Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(pcVar1);
             }
         }
 

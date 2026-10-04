@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::TrailType;
-        using OpenSHC::Game::TrailTypeInt;
+        using Game::TrailType;
+        using Game::TrailTypeInt;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9230
         void CrusadeEndscreen::MenuItemActionHandler_CrusadeEndscreen_Main(int param_1, ...)
@@ -21,15 +21,15 @@ namespace UI {
             }
 
             TrailTypeInt const trailType = DAT_GameCore::instance.currentTrailType;
-            if (trailType == OpenSHC::Game::TT_EXTREME) {
-                MACRO_CALL(OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(4);
+            if (trailType == Game::TT_EXTREME) {
+                MACRO_CALL(UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(4);
                 return;
             }
-            if (trailType == OpenSHC::Game::TT_WARCHEST) {
-                MACRO_CALL(OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(3);
+            if (trailType == Game::TT_WARCHEST) {
+                MACRO_CALL(UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(3);
                 return;
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(1);
+            MACRO_CALL(UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(1);
         }
 
     }

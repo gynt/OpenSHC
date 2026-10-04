@@ -11,7 +11,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+using WindowsHelper::Enums::BOOLEnum;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0046CF10
 void Rendering::TicksStartCounter()

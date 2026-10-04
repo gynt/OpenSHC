@@ -5,17 +5,17 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00491680
     MenuTextInputState* MenuTextInputState::Constructor_MenuTextInputState()
     {
-        this->currentModalDialog = OpenSHC::UI::Enums::MMT_NO_MENU;
-        this->modalDialog_2 = OpenSHC::UI::Enums::MMT_NO_MENU;
-        this->modalDialog_3 = OpenSHC::UI::Enums::MMT_NO_MENU;
-        this->modalDialog_4 = OpenSHC::UI::Enums::MMT_NO_MENU;
-        this->modalDialog_5 = OpenSHC::UI::Enums::MMT_NO_MENU;
-        this->modalDialog_6 = OpenSHC::UI::Enums::MMT_NO_MENU;
+        this->currentModalDialog = UI::Enums::MMT_NO_MENU;
+        this->modalDialog_2 = UI::Enums::MMT_NO_MENU;
+        this->modalDialog_3 = UI::Enums::MMT_NO_MENU;
+        this->modalDialog_4 = UI::Enums::MMT_NO_MENU;
+        this->modalDialog_5 = UI::Enums::MMT_NO_MENU;
+        this->modalDialog_6 = UI::Enums::MMT_NO_MENU;
         this->field0_0x0 = 3;
         this->field1_0x4 = 0;
         this->field2_0x8 = 0;

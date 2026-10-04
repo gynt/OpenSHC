@@ -9,8 +9,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0048DA60
     void GameSynchronyState::checkLagAndSyncStatus()
@@ -41,8 +41,8 @@ namespace Synchrony {
             DVar3 = timeGetTime();
             if (DVar3 - DAT_GameSynchronyState::instance.announcementReceiveTime < 60000) {}
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                OpenSHC::Commands::GCT_KILL_GAME);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                Commands::GCT_KILL_GAME);
         }
         DVar3 = timeGetTime();
         if (DVar3 - DAT_GameSynchronyState::instance.announcementReceiveTime < 45000) {}
@@ -51,8 +51,8 @@ namespace Synchrony {
             if ((piVar7[-0x40502] != -1) && (*piVar7 == 0)) {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _player;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                    OpenSHC::Commands::GCT_LEAVE_GAME);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                    Commands::GCT_LEAVE_GAME);
                 *piVar7 = 1;
             }
             _player = _player + 1;
@@ -115,8 +115,8 @@ namespace Synchrony {
             pHVar6 = (HashContainerElement*)&pHVar6->domain02;
             pbVar5 = pbVar5 + 1;
             if (14 < (int)puVar1) {
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                    OpenSHC::Commands::GCT_SHARE_SYNC_STATUS);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                    Commands::GCT_SHARE_SYNC_STATUS);
             }
         } while (true);
     }

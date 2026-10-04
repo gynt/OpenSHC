@@ -14,9 +14,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Map::Navigation::PathFindingStatePartB;
-        using OpenSHC::Map::Navigation::PathHelper12;
+        using WindowsHelper::Enums::BOOLEnum;
+        using Map::Navigation::PathFindingStatePartB;
+        using Map::Navigation::PathHelper12;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524930
         void TribesState::sortTribePathDestinationsByCost(int tribeID, int horseAndRamCount)
@@ -42,21 +42,21 @@ namespace Map {
             PathFindingStatePartB* _p;
             int _index1;
             int _index2;
-            BVar8 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
+            BVar8 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
             sVar1 = this->tribes[tribeID].selectionTargetUnitID;
             x = (uint)DAT_UnitsState::instance.units[sVar1].x;
             if (horseAndRamCount == 0) {
                 y = (uint)DAT_UnitsState::instance.units[sVar1].y;
                 if (BVar8 == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
                         DAT_PathFindingState::ptr)(x, y, -1, -1, 100000, FALSE);
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::pathFindingWithBuildingsIncluded,
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::pathFindingWithBuildingsIncluded,
                         DAT_PathFindingState::ptr)(x, y, 0xffffffff, 0xffffffff, 100000, 0);
                 }
             } else {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::calculatePathKeepAndWallsGatesNotAllowed,
+                    Map::Navigation::PathFindingState_Func::calculatePathKeepAndWallsGatesNotAllowed,
                     DAT_PathFindingState::ptr)(
                     x, (int)((int)(DAT_UnitsState::instance.units[sVar1].y)), -1, -1, 100000);
             }

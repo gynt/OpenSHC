@@ -13,7 +13,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F340
         void TroopValueState::scanForArcherPoints()
@@ -50,13 +50,13 @@ namespace Map {
                             && ((DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + iVar5] & 3) == 0)) {
                             x = iVar5 - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
                             BVar2 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
+                                Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
                                 DAT_PathFindingState::ptr)(local_c, x, y, 0x10);
                             if (BVar2 == FALSE) {
                                 DAT_TileMapState::instance.AIInfoLayer[iVar5]
                                     = DAT_TileMapState::instance.AIInfoLayer[iVar5] | 0x10;
                                 iVar3 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::findOrReserveArcherPointSlot, this)(
+                                    Map::Units::TroopValueState_Func::findOrReserveArcherPointSlot, this)(
                                     iVar5);
                                 iVar1 = DAT_TroopValueState::instance.attackInfo.archerPointsNext;
                                 if (iVar3 == 0) {

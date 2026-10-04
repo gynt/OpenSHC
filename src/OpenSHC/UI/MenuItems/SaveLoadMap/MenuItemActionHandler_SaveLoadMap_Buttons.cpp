@@ -24,12 +24,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::IO::FileResourceType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using Game::GameMode;
+        using IO::FileResourceType;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004943B0
         void SaveLoadMap::MenuItemActionHandler_SaveLoadMap_Buttons(int param_1, ...)
@@ -59,9 +59,9 @@ namespace UI {
                  */
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex == -1)
                     goto LAB_0049461b;
-                if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                         && (DAT_GameSynchronyState::instance.currentGameMode
-                            != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+                            != Game::GM_SKIRMISH_SINGLE_PLAYER))
                     && (DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                             [DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                                     [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
@@ -71,7 +71,7 @@ namespace UI {
                     break;
                 iVar1 = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
                     + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
-                _mapName = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                _mapName = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 + -1]);
                 pcVar6 = local_3f4;
                 do {
@@ -80,7 +80,7 @@ namespace UI {
                     _mapName = _mapName + 1;
                     pcVar6 = pcVar6 + 1;
                 } while (cVar2 != '\0');
-                if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
+                if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
                     pcVar6 = (local_3f4 - 1);
                     do {
                         _mapName = pcVar6 + 1;
@@ -93,9 +93,9 @@ namespace UI {
                 LAB_00494566:
                     *(undefined4*)pcVar6 = uVar4;
                     pcVar6[4] = '\0';
-                    FVar9 = OpenSHC::IO::FRT_MAPS;
+                    FVar9 = IO::FRT_MAPS;
                 } else {
-                    if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS) {
+                    if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_CUSTOM_SCENARIOS) {
                         pcVar6 = (local_3f4 - 1);
                         do {
                             _mapName = pcVar6 + 1;
@@ -107,16 +107,16 @@ namespace UI {
                         (*(char*)((char*)&uVar4 + 3)) = 'p';
                         goto LAB_00494566;
                     }
-                    if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                            == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         pcVar6 = (local_3f4 - 1);
                         do {
                             _mapName = pcVar6;
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
                         strcpy(_mapName + 1, ".sav");
-                        FVar9 = OpenSHC::IO::FRT_UNKNOWN;
+                        FVar9 = IO::FRT_UNKNOWN;
                     } else {
                         pcVar6 = (local_3f4 - 1);
                         do {
@@ -124,20 +124,20 @@ namespace UI {
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
                         strcpy(_mapName + 1, ".msv");
-                        FVar9 = OpenSHC::IO::FRT_UNKNOWN;
+                        FVar9 = IO::FRT_UNKNOWN;
                     }
                 }
-                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                     FVar9, (char const*)((int)(local_3f4)));
                 BVar3 = MACRO_CALL_MEMBER(
-                    OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
+                    IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
                 if (BVar3 != FALSE) {
-                    if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                         && (DAT_GameSynchronyState::instance.currentGameMode
-                            != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
+                            != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
                             DAT_MenuTextInputState::ptr)();
-                        pcVar6 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                        pcVar6 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                             DAT_ResourceManager::ptr)(
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 + -1]);
                         _mapName = DAT_GameSynchronyState::instance.shortMapName;
@@ -147,18 +147,18 @@ namespace UI {
                             pcVar6 = pcVar6 + 1;
                             _mapName = _mapName + 1;
                         } while (cVar2 != '\0');
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(((GameCommandType)0x28));
-                        MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                        MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                         ;
                     }
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x1f;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_PROGRESS_BAR_BOX);
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                        DAT_MenuTextInputState::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX);
                     DAT_GameCore::instance.field115_0x1d98 = 1;
                 }
             LAB_0049461b:
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 ;
                 return;
             case 3:
@@ -167,9 +167,9 @@ namespace UI {
                     == 0)
                     goto LAB_00494849;
                 if (DAT_MenuTextInputState::instance.field49_0xac == 0) {
-                    if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
+                    if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
                         pcVar6 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                            Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                         do {
                             cVar2 = *pcVar6;
                             *pcVar8 = cVar2;
@@ -187,11 +187,11 @@ namespace UI {
                         (*(char*)((char*)&uVar5 + 3)) = 'p';
                         goto LAB_0049477a;
                     }
-                    if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                            == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         pcVar6 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                            Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                         do {
                             cVar2 = *pcVar6;
                             *pcVar7 = cVar2;
@@ -204,10 +204,10 @@ namespace UI {
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
                         strcpy(_mapName + 1, ".sav");
-                        FVar9 = OpenSHC::IO::FRT_UNKNOWN;
+                        FVar9 = IO::FRT_UNKNOWN;
                     } else {
                         pcVar6 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                            Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                         do {
                             cVar2 = *pcVar6;
                             *_mapName = cVar2;
@@ -220,11 +220,11 @@ namespace UI {
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
                         strcpy(_mapName + 1, ".msv");
-                        FVar9 = OpenSHC::IO::FRT_UNKNOWN;
+                        FVar9 = IO::FRT_UNKNOWN;
                     }
                 } else {
                     _mapName = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                        Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                     do {
                         cVar2 = *_mapName;
                         *pcVar6 = cVar2;
@@ -243,22 +243,22 @@ namespace UI {
                 LAB_0049477a:
                     *(undefined4*)pcVar6 = uVar5;
                     pcVar6[4] = '\0';
-                    FVar9 = OpenSHC::IO::FRT_MAPS;
+                    FVar9 = IO::FRT_MAPS;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                     FVar9, (char const*)((int)(local_3f4)));
                 BVar3 = MACRO_CALL_MEMBER(
-                    OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
+                    IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
                 if (BVar3 == FALSE) {
-                    if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                    if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                            == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x20;
-                        dialogID = OpenSHC::UI::Enums::MMT_PROGRESS_BAR_BOX;
+                        dialogID = UI::Enums::MMT_PROGRESS_BAR_BOX;
                         goto LAB_0049481f;
                     }
                     pcVar6 = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                        Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                     _mapName = DAT_GameSynchronyState::instance.shortMapName;
                     do {
                         cVar2 = *pcVar6;
@@ -267,34 +267,34 @@ namespace UI {
                         _mapName = _mapName + 1;
                     } while (cVar2 != '\0');
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                        UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1
-                        = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray,
+                        = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray,
                             DAT_GameSynchronyState::ptr)();
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SAVE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_SAVE);
                 } else {
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x1e;
-                    dialogID = OpenSHC::UI::Enums::MMT_YES_NO_DIALOG;
+                    dialogID = UI::Enums::MMT_YES_NO_DIALOG;
                 LAB_0049481f:
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                         DAT_MenuTextInputState::ptr)(dialogID);
                 }
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     9);
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
             LAB_00494849:
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 ;
                 return;
             case 0x11:
                 /*
                   "Back"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                 DAT_MenuTextInputState::instance.dialogResult = 0xffffffff;
                 break;
             case -2:

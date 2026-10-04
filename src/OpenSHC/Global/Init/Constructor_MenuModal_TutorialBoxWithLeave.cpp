@@ -15,19 +15,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059BCE0
     void Init::Constructor_MenuModal_TutorialBoxWithLeave()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_TutorialBoxWithLeave::ptr)(
-            OpenSHC::UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE, -1, 0x14, 600, 0x96, 0x840,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_TutorialBoxWithLeave::ptr)(
+            UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE, -1, 0x14, 600, 0x96, 0x840,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::TutorialBox_Func::MenuModalRenderFunction_TutorialBox_Thunk),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::TutorialBox_Func::MenuModalRenderFunction_TutorialBox_Thunk),
             Menu_TutorialBoxWithLeave::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_TutorialBoxWithLeave));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_TutorialBoxWithLeave));
         return;
     }
 

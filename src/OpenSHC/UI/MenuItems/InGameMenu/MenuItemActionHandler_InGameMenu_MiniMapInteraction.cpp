@@ -20,35 +20,35 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::MappersEnum;
-        using OpenSHC::UI::Enums::BuildMenuTabType;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::MappersEnum;
+        using UI::Enums::BuildMenuTabType;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00434270
         void InGameMenu::MenuItemActionHandler_InGameMenu_MiniMapInteraction(int param_1, ...)
         {
             if ((param_1 == 2)
-                && ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS
+                && ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == UI::Enums::BMTT_SOLDIERS
                     || (DAT_TileMapState::instance.shiftRelated0or3 != 1)))) {
                 DAT_StopHandlingMenuItems::instance = 0;
-            } else if ((((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_WALL)
+            } else if ((((DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_WALL)
                             && ((
-                                (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_WOODWALL
+                                (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_WOODWALL
                                     && (DAT_TileMapState::instance.currentMapperCommand
-                                        != OpenSHC::Commands::M_MAPPER_STAIR))
+                                        != Commands::M_MAPPER_STAIR))
                                 && (DAT_TileMapState::instance.currentMapperCommand
-                                    != OpenSHC::Commands::M_MAPPER_CRENAL))))
+                                    != Commands::M_MAPPER_CRENAL))))
                            || (DAT_MouseState::instance.leftClickState == FALSE))
                 && (DAT_MouseState::instance.field31_0x94 == 0)) {
                 if (DAT_GameCore::instance.isBinkVideoPlaying != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
                 }
                 if (DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying == FALSE) {
                     DAT_00ed31d0::instance = 200;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::MinimapViewState_Func::scrollViewportToMinimapClick, DAT_MinimapViewState::ptr)();
+                        UI::MinimapViewState_Func::scrollViewportToMinimapClick, DAT_MinimapViewState::ptr)();
                 }
             }
         }

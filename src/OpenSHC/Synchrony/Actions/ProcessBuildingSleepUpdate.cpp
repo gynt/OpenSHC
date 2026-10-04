@@ -41,9 +41,9 @@ namespace Synchrony {
              */
             wav_filename = "other_warning7.wav";
         }
-        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
+        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
     LAB_00466144:
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateAllBuildingsSnoozedState,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateAllBuildingsSnoozedState,
             DAT_BuildingsState::ptr)(playerID, buildingType);
     }
 

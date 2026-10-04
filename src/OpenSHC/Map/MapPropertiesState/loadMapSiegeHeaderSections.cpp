@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::IO::FileResourceType;
+    using IO::FileResourceType;
 
     /*
       Resolves the map filename via ResourceManager (FRT_MAPS), then reads map header siege info   sections 1063, 1062,
@@ -22,20 +22,20 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004C3110
     void MapPropertiesState::loadMapSiegeHeaderSections(char* param_1)
     {
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
-            OpenSHC::IO::FRT_MAPS, (char const*)((int)(param_1)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+            IO::FRT_MAPS, (char const*)((int)(param_1)));
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1063)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1062)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1064)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1056)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1057)));
         if ((int)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk < 154) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::removeProcessedInvasionEvents, this)();
+            MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeProcessedInvasionEvents, this)();
         }
     }
 

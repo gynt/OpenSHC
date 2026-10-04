@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
+        using Map::Units::UnitLogicState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523590
         void TribesState::updateAnimalHerdBehaviorState(int tribeID)
@@ -20,10 +20,10 @@ namespace Map {
             if (((0 < tribeID) && (this->tribes[tribeID].field133_0x278 == 0))
                 && (unitSelectionIndex = 0, 0 < this->tribes[tribeID].size)) {
                 do {
-                    iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if (((DAT_UnitsState::instance.units[iVar1].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                    if (((DAT_UnitsState::instance.units[iVar1].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[iVar1].dying == 0))
                         && (DAT_UnitsState::instance.units[iVar1].antelopeBasedRngValue == 2)) {
                         uVar2 = DAT_UnitsState::instance.units[iVar1].fixedRng & 7;

@@ -14,7 +14,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052E120
     void WildlifeState::updateNofFpoints()
@@ -49,8 +49,8 @@ namespace Map {
             && (_separateAreaID = DAT_TileMapState::instance
                     .PathConnectionLayer[DAT_ViewportRenderState::instance.translationMatrix[_someY].addXgetTile
                         + uVar6],
-                DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::WildlifeState_Func::floodFillCasDisFromSignpost, this)();
+                DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)) {
+            MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillCasDisFromSignpost, this)();
             DAT_TroopValueState::instance.attackInfo.nof_fpoints = 0;
             psVar4 = DAT_TroopValueState::instance.attackInfo.nof_fpointsArray[0] + 2;
             do {
@@ -251,12 +251,12 @@ namespace Map {
                 do {
                     if (src[1][6] < (*src)[6]) {
                         bVar3 = true;
-                        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(16,
+                        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(16,
                             (void*)((int)(src)),
                             (void*)((int)(DAT_TroopValueState::instance.attackInfo.nof_fpointsArrayCopy)));
-                        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+                        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                             0x10, (void*)((int)(src + 1)), (void*)((int)(src)));
-                        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(0x10,
+                        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(0x10,
                             (void*)((int)(DAT_TroopValueState::instance.attackInfo.nof_fpointsArrayCopy)),
                             (void*)((int)(src + 1)));
                         iVar5 = DAT_TroopValueState::instance.attackInfo.nof_fpoints;

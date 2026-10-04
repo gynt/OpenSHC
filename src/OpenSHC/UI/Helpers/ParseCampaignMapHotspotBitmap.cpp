@@ -32,7 +32,7 @@ namespace UI {
         void* local_c;
         FILE* local_8;
         void* local_4;
-        _File = MACRO_CALL(OpenSHC::OS_Func::_fopen)("gfx8\\campaign_map_england_hotspots.bmp", "rb");
+        _File = MACRO_CALL(OS_Func::_fopen)("gfx8\\campaign_map_england_hotspots.bmp", "rb");
         INT_00ed3110::instance = 1;
         pGVar3 = DAT_00ec0840::ptr;
         do {
@@ -47,17 +47,17 @@ namespace UI {
         } while ((int)piVar4 < 0xed277c);
         if (_File != (FILE*)0x0) {
             local_8 = _File;
-            dstBuffer = MACRO_CALL(OpenSHC::OS_Func::_malloc)(0x428);
+            dstBuffer = MACRO_CALL(OS_Func::_malloc)(0x428);
             local_4 = dstBuffer;
             if (dstBuffer == (void*)0x0) {
-                MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
+                MACRO_CALL(OS_Func::_fclose)(_File);
                 return;
             }
-            MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, 0xe, FILE_BEGIN);
-            sVar5 = MACRO_CALL(OpenSHC::OS_Func::_fread)(dstBuffer, 1, 0x428, _File);
+            MACRO_CALL(OS_Func::_fseek)(_File, 0xe, FILE_BEGIN);
+            sVar5 = MACRO_CALL(OS_Func::_fread)(dstBuffer, 1, 0x428, _File);
             if (sVar5 != 0x428) {
-                MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
-                MACRO_CALL(OpenSHC::OS_Func::_free_base)(dstBuffer);
+                MACRO_CALL(OS_Func::_fclose)(_File);
+                MACRO_CALL(OS_Func::_free_base)(dstBuffer);
                 return;
             }
             iVar6 = *(int*)((int)dstBuffer + 8);
@@ -66,14 +66,14 @@ namespace UI {
                 iVar6 = -iVar6;
             }
             if ((*(int*)((int)dstBuffer + 4) == 800) && (iVar6 == 600)) {
-                MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, 10, FILE_BEGIN);
-                MACRO_CALL(OpenSHC::OS_Func::_fread)(&local_1c, 4, 1, _File);
-                MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, (long)((int)(local_1c)), FILE_BEGIN);
+                MACRO_CALL(OS_Func::_fseek)(_File, 10, FILE_BEGIN);
+                MACRO_CALL(OS_Func::_fread)(&local_1c, 4, 1, _File);
+                MACRO_CALL(OS_Func::_fseek)(_File, (long)((int)(local_1c)), FILE_BEGIN);
                 if (bVar10) {
                     iVar6 = 0;
                     do {
-                        MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, (long)((int)(iVar6 + local_1c)), FILE_BEGIN);
-                        MACRO_CALL(OpenSHC::OS_Func::_fread)(
+                        MACRO_CALL(OS_Func::_fseek)(_File, (long)((int)(iVar6 + local_1c)), FILE_BEGIN);
+                        MACRO_CALL(OS_Func::_fread)(
                             (void*)(iVar6 + (int)DAT_TextureRenderCoreObject::instance.gmAndGfxImageDataBuffer), 800, 1,
                             _File);
                         iVar6 = iVar6 + 800;
@@ -82,8 +82,8 @@ namespace UI {
                     iVar9 = 0;
                     iVar6 = 0x74fe0;
                     do {
-                        MACRO_CALL(OpenSHC::OS_Func::_fseek)(_File, (long)((int)(iVar6 + local_1c)), FILE_BEGIN);
-                        MACRO_CALL(OpenSHC::OS_Func::_fread)(
+                        MACRO_CALL(OS_Func::_fseek)(_File, (long)((int)(iVar6 + local_1c)), FILE_BEGIN);
+                        MACRO_CALL(OS_Func::_fread)(
                             (void*)(iVar9 + (int)DAT_TextureRenderCoreObject::instance.gmAndGfxImageDataBuffer), 800, 1,
                             _File);
                         iVar6 = iVar6 + -800;
@@ -126,8 +126,8 @@ namespace UI {
                     dstBuffer = local_4;
                 } while ((int)local_10 < 0xed2630);
             }
-            MACRO_CALL(OpenSHC::OS_Func::_free_base)(dstBuffer);
-            MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
+            MACRO_CALL(OS_Func::_free_base)(dstBuffer);
+            MACRO_CALL(OS_Func::_fclose)(_File);
         }
         return;
     }

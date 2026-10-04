@@ -35,16 +35,16 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::AI::AIType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::Game::GameModeInt;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Units::UnitInstructionType;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
-    using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
-    using OpenSHC::Map::Units::States::UnitState;
+    using AI::AIType;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using Game::GameModeInt;
+    using Map::Buildings::BuildingType;
+    using Map::Units::UnitInstructionType;
+    using Map::Units::UnitType;
+    using Map::Units::Behavior::UnitStanceEnum;
+    using Map::Units::Instructions::UnitMatchSpeedEnum;
+    using Map::Units::States::UnitState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00411540
     void Buildings::UpdateOutpostBuilding()
@@ -78,12 +78,12 @@ namespace Map {
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         piVar13 = &DAT_GameState::instance.playerDataArray[sVar2].someCount04;
         *piVar13 = *piVar13 + 10;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar9);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar9);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         GVar5 = DAT_GameSynchronyState::instance.currentGameMode;
         iVar9 = DAT_CurrentBuildingID::instance;
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field39_0x84 = 0;
         } else {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
@@ -98,8 +98,8 @@ namespace Map {
                 = (int)(char)DAT_BuildingDefinedData::instance
                       .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].ownerFlagFrame / 2];
         }
-        if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {}
-        if (((GVar5 != OpenSHC::Game::GM_SOLITARY) && (GVar5 != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
+        if (((GVar5 != Game::GM_SOLITARY) && (GVar5 != Game::GM_SKIRMISH_SINGLE_PLAYER))
             && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {}
         if (DAT_BuildingsState::instance.buildings[iVar9].padding_0x314[0] /* 0x314 */ == '\0') {
             DAT_BuildingsState::instance.buildings[iVar9].padding_0x314[0] /* 0x314 */ = 1;
@@ -152,7 +152,7 @@ namespace Map {
                 uVar12 = (uVar12 - 1 | 0xfffffffe) + 1;
             }
             DAT_BuildingsState::instance.buildings[iVar9].randomOutpostField = (char)uVar12 + '\x06';
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk4 = 1200;
         } else {
             psVar11 = &DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk4;
@@ -213,26 +213,26 @@ namespace Map {
                     /*
                       european archer
                      */
-                    unitType = OpenSHC::Map::Units::UT_E_ARCHER;
+                    unitType = Map::Units::UT_E_ARCHER;
                     if (DAT_BuildingsState::instance.buildings[iVar9].buildingType
-                        == OpenSHC::Map::Buildings::BT_OUTPOST_ARABIAN) {
+                        == Map::Buildings::BT_OUTPOST_ARABIAN) {
                         /*
                           arabian archer
                          */
-                        unitType = OpenSHC::Map::Units::UT_A_ARCHER;
+                        unitType = Map::Units::UT_A_ARCHER;
                     }
                     iVar8 = (int)DAT_BuildingsState::instance.buildings[iVar9].owner;
                     /*
                       spawn archer
                      */
-                    iVar9 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         iVar8, iVar8, (int)((int)(DAT_BuildingsState::instance.buildings[iVar9].buildingEntryX * 8)),
                         (int)((int)(DAT_BuildingsState::instance.buildings[iVar9].buildingEntryY * 8)), 8, unitType);
                     if (iVar9 != 0) {
                         DAT_UnitsState::instance.units[iVar9].aiUnitBehaviourType = 0x32;
                         DAT_UnitsState::instance.units[iVar9].goToRallyPoint = 0;
                         DAT_UnitsState::instance.units[iVar9].state.generic
-                            = OpenSHC::Map::Units::States::US_MOVE_TO_DESTINATION;
+                            = Map::Units::States::US_MOVE_TO_DESTINATION;
                         local_18 = (char*)0xffffffff;
                         local_14 = 0xffffffff;
                         local_c = 0;
@@ -243,14 +243,14 @@ namespace Map {
                                 + (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x;
                             iVar6 = (int)SEC_RNG::instance.currentNumber2 % 0xe;
                             pcVar1 = (char*)(iVar10 + -7 + iVar6);
-                            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                             iVar8 = (int)SEC_RNG::instance.currentNumber2;
                             iVar7 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                         .widthOrHeight
                                     / 2
                                 + (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y;
                             uVar12 = iVar7 + -7 + iVar8 % 0xe;
-                            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                             if ((((int)pcVar1 < 400) && (uVar12 < 400))
                                 && (*(char*)(uVar12 * 400 + 0x21aec98 + (int)pcVar1) != '\0')) {
                                 iVar8 = DAT_ViewportRenderState::instance.translationMatrix[iVar8 % 0xe + iVar7 + -7]
@@ -263,7 +263,7 @@ namespace Map {
                                 int _targetMacroTile = (short)DAT_TileMapState::instance
                                         .MacroLayer[iVar6 + iVar10 + iVar8 + 0x13a09];
                                 if ((_unitPathConnection == _targetMacroTile)
-                                    || (iVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    || (iVar7 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                       calculateCanPlayerUnitsNavigateToAreaFromArea,
                                             DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[iVar9].owner,
                                             (dword)_unitPathConnection, (dword)_targetMacroTile,
@@ -286,7 +286,7 @@ namespace Map {
                         local_14 = uVar12;
                         local_18 = pcVar1;
                         if (-1 < (int)local_18) {
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setDestinationForUnit,
+                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit,
                                 DAT_UnitsState::ptr)(iVar9, (uint)((int)(local_18)), local_14, 0);
                         }
                         iVar8 = DAT_CurrentBuildingID::instance;
@@ -325,8 +325,8 @@ namespace Map {
         iVar9 = DAT_CurrentBuildingID::instance;
         if (_tribeID == 0) {
             iVar8 = 2000 - DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk06;
-            if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                    || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+            if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                    || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
                 || (399 < iVar8)) {
                 if (iVar8 < 100) {
                     iVar8 = 100;
@@ -362,7 +362,7 @@ namespace Map {
             }
             if (uVar12 == 0) {}
             iVar6 = (int)SEC_RNG::instance.currentNumber2 % (int)uVar12;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             iVar9 = DAT_CurrentBuildingID::instance;
             iVar8 = 0;
             if ((uVar4 & 1) != 0) {
@@ -411,12 +411,12 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 7;
             }
             if (DAT_BuildingsState::instance.buildings[iVar9].buildingType
-                == OpenSHC::Map::Buildings::BT_OUTPOST_ARABIAN) {
+                == Map::Buildings::BT_OUTPOST_ARABIAN) {
                 psVar11 = &DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
                 *psVar11 = *psVar11 + 8;
             }
             local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
-            _tribeID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createTribeForPlayer,
+            _tribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribeForPlayer,
                 DAT_TribesState::ptr)((int)DAT_BuildingsState::instance.buildings[iVar9].owner);
             iVar9 = DAT_CurrentBuildingID::instance;
             if (_tribeID < 1) {}
@@ -426,11 +426,11 @@ namespace Map {
             iVar6 = (int)SEC_RNG::instance.currentNumber2;
             iVar8 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][3];
             sVar3 = DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk2;
-            DAT_TribesState::instance.tribes[_tribeID].unitStance = OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE;
+            DAT_TribesState::instance.tribes[_tribeID].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
             DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk05
                 = ((short)(iVar6 % iVar8) + (short)DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][2])
                 * (sVar3 + 1);
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             iVar8 = DAT_CurrentBuildingID::instance;
             iVar9 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][0xc];
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 = 1;
@@ -444,8 +444,8 @@ namespace Map {
         if (iVar6 < iVar9) {
             iVar6 = iVar9;
         }
-        if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
+                && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
             && (iVar6 < 0x32)) {
             iVar6 = 0x32;
         }
@@ -454,7 +454,7 @@ namespace Map {
         *psVar11 = *psVar11 + 1;
         if (((sVar3 * -0xf + 100) * iVar6) / 100 <= (int)DAT_BuildingsState::instance.buildings[iVar8].field268_0x308) {
             DAT_BuildingsState::instance.buildings[iVar8].field268_0x308 = SEC_RNG::instance.currentNumber2 % 0x28;
-            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3;
             if ((sVar3 < 1)
                 || ((int)DAT_TribesState::instance.tribes[_tribeID].size
@@ -491,11 +491,11 @@ namespace Map {
                 _randomUnitType
                     = DAT_BuildingDefinedData::instance
                           .field413_0xa04c[local_10][(int)SEC_RNG::instance.currentNumber2 % (int)uVar12 + 4];
-                MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 local_18 = (char*)0x1;
                 if (((0 < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3)
                         && (DAT_TribesState::instance.tribes[_tribeID].size == 0))
-                    && (DAT_GameState::instance.playerDataArray[sVar2].aiType != OpenSHC::AI::AIT_NULL)) {
+                    && (DAT_GameState::instance.playerDataArray[sVar2].aiType != AI::AIT_NULL)) {
                     local_18 = (char*)((int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                            .outpostRelatedUnk05
                         / 2);
@@ -503,20 +503,20 @@ namespace Map {
                         local_18 = (char*)0x1;
                     }
                     if (((local_10 == 7) || (local_10 == 6))
-                        && ((1 < (int)local_18 && (_randomUnitType == OpenSHC::Map::Units::UT_S_CATAPULT)))) {
+                        && ((1 < (int)local_18 && (_randomUnitType == Map::Units::UT_S_CATAPULT)))) {
                         _randomUnitType = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][5];
                     }
                 }
-                if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+                            == Game::GM_SKIRMISH_SINGLE_PLAYER))
                     || (DAT_GameState::instance.playerDataArray[sVar2].count_2
                             + DAT_GameState::instance.playerDataArray[sVar2].armySize
                         < DAT_GameState::instance.mapAndTime.armySizeLimit)) {
                     for (local_4 = 0; local_4 < (int)local_18; local_4++) {
                         iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
                         _randomUnitID = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
+                            Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
                             (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                             .buildingEntryX
                                 * 8)),
@@ -525,26 +525,26 @@ namespace Map {
                                 * 8)),
                             8, (UnitType)((int)(_randomUnitType)));
                         if (_randomUnitID == 0) {}
-                        if (_randomUnitType == OpenSHC::Map::Units::UT_S_CATAPULT) {
+                        if (_randomUnitType == Map::Units::UT_S_CATAPULT) {
                             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 = 0;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
+                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, DAT_TribesState::ptr)(
                             _randomUnitID, _tribeID);
                         switch (_randomUnitType) {
-                        case OpenSHC::Map::Units::UT_S_CATAPULT:
-                        case OpenSHC::Map::Units::UT_S_FBALLISTA:
+                        case Map::Units::UT_S_CATAPULT:
+                        case Map::Units::UT_S_FBALLISTA:
                             _requiredEngineers = 2;
                             break;
-                        case OpenSHC::Map::Units::UT_S_TREBUCHET:
+                        case Map::Units::UT_S_TREBUCHET:
                             _requiredEngineers = 3;
                             break;
                         default:
                             goto switchD_004121d2_caseD_29;
-                        case OpenSHC::Map::Units::UT_S_TOWER:
-                        case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
+                        case Map::Units::UT_S_TOWER:
+                        case Map::Units::UT_S_BATTERINGRAM:
                             _requiredEngineers = 4;
                             break;
-                        case OpenSHC::Map::Units::UT_S_SHIELD:
+                        case Map::Units::UT_S_SHIELD:
                             _requiredEngineers = 1;
                         }
                         do {
@@ -553,17 +553,17 @@ namespace Map {
                               spawn siege engineer
                              */
                             _engineerID = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
+                                Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar9, iVar9,
                                 (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                                 .buildingEntryX
                                     * 8)),
                                 (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                                 .buildingEntryY
                                     * 8)),
-                                8, OpenSHC::Map::Units::UT_E_ENGINEER);
+                                8, Map::Units::UT_E_ENGINEER);
                             if (_engineerID != 0) {
                                 DAT_UnitsState::instance.units[_engineerID].targetingType
-                                    = OpenSHC::Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
+                                    = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
                                 DAT_UnitsState::instance.units[_engineerID]
                                     .targetedUnitID__OR__engineerMannedSiegeEngineRef = (short)_randomUnitID;
                             }
@@ -574,18 +574,18 @@ namespace Map {
                         DAT_UnitsState::instance.units[_randomUnitID].goToRallyPoint = 0;
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(_tribeID,
+                        Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(_tribeID,
                         (uint)((int)((int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                 .buildingEntryX)),
                         (uint)((int)((int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                 .buildingEntryY)),
-                        0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
+                        0, 0, Map::Units::Instructions::UMSE_0);
                     if ((DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk05
                             <= DAT_TribesState::instance.tribes[_tribeID].size)
                         && (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3
                             < 1)) {
                         MACRO_CALL_MEMBER(
-                            OpenSHC::AI::AICState_Func::aiRegisterTribeAndAssignTarget, DAT_AICState::ptr)(
+                            AI::AICState_Func::aiRegisterTribeAndAssignTarget, DAT_AICState::ptr)(
                             _tribeID, DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].tribeUID);
                         iVar9 = DAT_CurrentBuildingID::instance;
                         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].tribeID = 0;

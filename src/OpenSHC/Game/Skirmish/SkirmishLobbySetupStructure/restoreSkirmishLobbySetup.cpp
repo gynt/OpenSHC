@@ -90,7 +90,7 @@ namespace Game {
             INT_00b960b0::instance = this->mapSelectionScrollOffset + this->mapSelectionRelativeSelected;
             DAT_GameSynchronyState::instance.field248_0x109250 = this->mbr_0xfc;
             MACRO_CALL_MEMBER(
-                OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
+                Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
         }
 
     }

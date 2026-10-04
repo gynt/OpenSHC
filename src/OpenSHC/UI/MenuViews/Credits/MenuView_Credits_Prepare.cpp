@@ -28,30 +28,30 @@ namespace UI {
             char* tgxFileName;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (DAT_00b95954::instance == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("credits_1.tgx");
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("credits_2.tgx");
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("credits_3.tgx");
                 tgxFileName = "credits_4.tgx";
             } else {
                 tgxFileName = "end_credit.tgx";
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             iVar1 = MACRO_CALL_MEMBER(
-                OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)("credits.hlp");
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(
+                Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)("credits.hlp");
+            MACRO_CALL_MEMBER(Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(
                 iVar1);
             DAT_TextEditorState::instance.helpContentScrollOffsetY = 0xfffffda8;
             DAT_00b95b3c::instance = 0;
             INT_00b960d0::instance = timeGetTime();
             DAT_00b95b70::instance = 0;
             DAT_00b9610c::instance = 1;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             INT_00b960d4::instance = timeGetTime();
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)((int)(COL_BLACK::instance.shortValue)));
         }

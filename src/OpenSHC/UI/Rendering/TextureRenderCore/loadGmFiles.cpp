@@ -72,14 +72,14 @@ namespace UI {
                 if (_reachedFilenameArrayEnd)
                     break;
                 GMTotalPicturesProcessed::instance[this->gmFileID] = this->gmNumberOfProcessedPictures;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGMFile, this)(
-                    (OpenSHC::IO::Graphics::GmID)(this->gmFileID), fileNameArray);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGMFile, this)(
+                    (IO::Graphics::GmID)(this->gmFileID), fileNameArray);
                 fileNameArray = fileNameArray + 1000;
                 this->gmNumberOfProcessedPictures = this->gmNumberOfProcessedPictures
                     + this->gmFileHeaderColorpaletteArray[this->gmFileID].numberOfPicturesInFile;
                 this->gmFileID = this->gmFileID + 1;
             } while (_currentGmIndex < 240);
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadCampaignMapGfxUnk, this)();
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadCampaignMapGfxUnk, this)();
             DAT_TextManagerObject::instance.sizeOfOneFontSet_0x3c
                 = this->gmFileHeaderColorpaletteArray[0x57].numberOfPicturesInFile / 5;
         }

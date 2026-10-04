@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00490480
     void GameSynchronyState::checkMultiplayerLaggingPlayers()
@@ -29,17 +29,17 @@ namespace Synchrony {
         int _playerID;
         bool _anyIsZero;
         this->currentGameModeCopy_SEC_Section1106 = this->currentGameMode;
-        if ((this->currentGameMode == OpenSHC::Game::GM_SOLITARY)
-            || (this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+        if ((this->currentGameMode == Game::GM_SOLITARY)
+            || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             this->commandDelay = 0;
         }
         if (this->shouldSendAnnouncementUnk != 0) {
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                (OpenSHC::Commands::GameCommandType)OpenSHC::Commands::M_MAPPER_HEALER);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                (Commands::GameCommandType)Commands::M_MAPPER_HEALER);
             this->shouldSendAnnouncementUnk = 0;
         }
         if ((this->syncStatus == 0) && (this->saveRelated == 0)) {
-            BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 != FALSE) {
                 iVar2 = 0;
                 piVar6 = &this->connectionLagInfoArray[1];
@@ -73,13 +73,13 @@ namespace Synchrony {
                                 && (this->laggingPlayerIDUnk == 0)) {
                                 this->laggingPlayerIDUnk = _playerID;
                                 this->DAT_GameCommandParam0 = _playerID;
-                                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                                    (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2
-                                        | OpenSHC::Commands::GCT_CHANGE_TAXES));
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    (Commands::GameCommandType)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2
+                                        | Commands::GCT_CHANGE_TAXES));
                             }
                             if (60000 < (int)(_now - pDVar7->time)) {
                                 this->kickDueToLagStatusUnk = 62;
-                                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::removePlayerFromLobby,
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::removePlayerFromLobby,
                                     this)(_playerID);
                             }
                         }
@@ -92,12 +92,12 @@ namespace Synchrony {
             _now2 = timeGetTime();
             if (1800 < (int)(_now2 - this->otherTime1)) {
                 this->otherTime1 = _now2;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::sendSyncPacket126, this)();
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendSyncPacket126, this)();
             }
             if ((180 < (int)(_now2 - this->now2))
                 && (this->now2 = _now2,
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Synchrony::GameSynchronyState_Func::sendSomeMultiplayerSyncMessageWithType, this)(0),
+                        Synchrony::GameSynchronyState_Func::sendSomeMultiplayerSyncMessageWithType, this)(0),
                     0 < this->syncRelatedCountdown)) {
                 this->syncRelatedCountdown = this->syncRelatedCountdown + -1;
             }

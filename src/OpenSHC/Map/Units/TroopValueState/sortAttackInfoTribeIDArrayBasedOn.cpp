@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
+        using Map::Units::SomeTribeBehaviorType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00518380
         void TroopValueState::sortAttackInfoTribeIDArrayBasedOn(
@@ -21,7 +21,7 @@ namespace Map {
             int iVar1;
             Tribe* psVar1;
             int* piVar2;
-            const OpenSHC::AI::Tribes::AITribeTypeInt* _tribeTypePriority;
+            const AI::Tribes::AITribeTypeInt* _tribeTypePriority;
             int iVar3;
             int _currentTribeType;
             int _nextValue;

@@ -15,7 +15,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00417740
     void Buildings::UpdateBuildingShared2()
@@ -23,12 +23,12 @@ namespace Map {
         int* piVar1;
         int iVar2;
         bool bVar3;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar2 = DAT_CurrentBuildingID::instance;
-        bVar3 = DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY;
+        bVar3 = DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         if (bVar3) {
             DAT_BuildingsState::instance.buildings[iVar2].displayOwnerFlag = 1;

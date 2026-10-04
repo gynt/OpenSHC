@@ -18,11 +18,11 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::States::UnitState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using Map::Units::States::UnitState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051BF70
         undefined4 TroopValueState::giveLightPitchInstructionToUnitClosestToPitch(int tile)
@@ -42,22 +42,22 @@ namespace Map {
             int _ditchUID;
             byte _height;
             _ditchID = MACRO_CALL_MEMBER(
-                OpenSHC::Map::TileMapState_Func::getPitchDitchIDForTile, DAT_TileMapState::ptr)(tile);
+                Map::TileMapState_Func::getPitchDitchIDForTile, DAT_TileMapState::ptr)(tile);
             _minUnitID = 0;
             _minDistance = 100000000;
             _unitID = 1;
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((_pUnit->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE)
+                    if ((((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
                              && (BVar1
-                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)_pUnit->owner),
                                  BVar1 != FALSE))
-                            && ((_pUnit->unitType == OpenSHC::Map::Units::UT_E_ARCHER
-                                || (_pUnit->unitType == OpenSHC::Map::Units::UT_A_ARCHER))))
+                            && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
+                                || (_pUnit->unitType == Map::Units::UT_A_ARCHER))))
                         && (((_pUnit->dying == 0 && (_pUnit->field297_0x40d != false))
-                            && (_pUnit->targetingType != OpenSHC::Map::Units::UIT_LIGHT_PITCH)))) {
+                            && (_pUnit->targetingType != Map::Units::UIT_LIGHT_PITCH)))) {
                         _ditchY = (int)DAT_TileMapState::instance.pitchDitches[_ditchID].y;
                         _ditchX = (int)DAT_TileMapState::instance.pitchDitches[_ditchID].x;
                         _unitY = _ditchY - _pUnit->y;
@@ -65,7 +65,7 @@ namespace Map {
                         _distancePyth = _unitX * _unitX + _unitY * _unitY;
                         if (((_distancePyth < 2500)
                                 && (_shot
-                                    = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::arrowShootingRelated,
+                                    = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::arrowShootingRelated,
                                         DAT_EntityState::ptr)((int)_pUnit->microXPosition,
                                         (int)((int)(_pUnit->microYPosition)),
                                         (int)((int)(_pUnit->buildingHeight + 30 + _pUnit->terrainOrClimbHeight)),
@@ -96,13 +96,13 @@ namespace Map {
                         .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID
                         = _ditchUID;
                     DAT_UnitsState::instance.units[_minUnitID].field253_0x3c5 = 0x22;
-                    DAT_UnitsState::instance.units[_minUnitID].targetingType = OpenSHC::Map::Units::UIT_LIGHT_PITCH;
+                    DAT_UnitsState::instance.units[_minUnitID].targetingType = Map::Units::UIT_LIGHT_PITCH;
                     DAT_UnitsState::instance.units[_minUnitID].field283_0x3f8 = 0;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::makeUnitStopWalkingByClearingPathProgressState,
+                        Map::Units::UnitsState_Func::makeUnitStopWalkingByClearingPathProgressState,
                         DAT_UnitsState::ptr)(_minUnitID);
                     DAT_UnitsState::instance.units[_minUnitID].state.generic
-                        = OpenSHC::Map::Units::States::US_FIRE_WEAPONUnk;
+                        = Map::Units::States::US_FIRE_WEAPONUnk;
                     DAT_UnitsState::instance.units[_minUnitID].field298_0x40e = true;
                     return (undefined4)(1);
                 }

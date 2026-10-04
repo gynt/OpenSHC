@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Text::TextArrayIndexType;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextArrayIndexType;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       param_1 is 0xb if Exit Crusader or Restart Game, 0xC if Options   decompilerscript: committed: 2025-01-30
@@ -23,12 +23,12 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004916C0
     void MenuTextInputState::activateModalDialogAndClearText(MenuModalType dialogID)
     {
-        if (this->currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
+        if (this->currentModalDialog == UI::Enums::MMT_NO_MENU) {
             this->DAT_SomeTextArrayIndex = DAT_UserTextHandlerState::instance.textArrayIndex;
             DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
-            if (DAT_UserTextHandlerState::instance.textArrayIndex != OpenSHC::Text::TAIT_ZERO) {
+            if (DAT_UserTextHandlerState::instance.textArrayIndex != Text::TAIT_ZERO) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
             }
         }
         if (this->currentModalDialog != dialogID) {
@@ -38,7 +38,7 @@ namespace UI {
             this->modalDialog_3 = this->modalDialog_2;
             this->modalDialog_2 = this->currentModalDialog;
             this->currentModalDialog = dialogID;
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                 DAT_MenuModalComposition1::ptr)(dialogID, TRUE);
         }
     }

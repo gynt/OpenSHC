@@ -45,13 +45,13 @@ namespace Map {
             this->entityArray[entityID].height = (short)height;
             this->entityArray[entityID].logicalState = 5;
             this->entityArray[entityID].colorUnk = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::drawEntityEffect, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::drawEntityEffect, this)(
                 entityID, (undefined4)((int)(entityType)), graphicType1, graphicType2);
             this->entityArray[entityID].field7_0x12 = 0;
             this->entityArray[entityID].unknownAnimationFrameRelated = 0;
             this->entityArray[entityID].unkMinusOne = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
             uVar1 = DAT_CurrentEntityID::instance;
             DAT_CurrentEntityID::instance = entityID;
             ((void (*)())

@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::SomeTribeBehaviorType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051A920
         undefined4 TroopValueState::findTribeWithMoatAttackBehavior()
@@ -26,9 +26,9 @@ namespace Map {
             do {
                 if (*(short*)(piVar2 + 5) != 0) {
                     BVar1 = MACRO_CALL_MEMBER(
-                        OpenSHC::Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(*piVar2);
+                        Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(*piVar2);
                     if ((BVar1 != FALSE)
-                        && (*(SomeTribeBehaviorTypeShort*)(piVar2 + 9) == OpenSHC::Map::Units::STBT_0x3f7)) {
+                        && (*(SomeTribeBehaviorTypeShort*)(piVar2 + 9) == Map::Units::STBT_0x3f7)) {
                         this->x = (int)DAT_TribesState::instance.tribes[iVar3].targetX;
                         this->y = (int)DAT_TribesState::instance.tribes[iVar3].targetY;
                         this->attackInfo.field127625_0x42744 = iVar3;

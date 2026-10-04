@@ -39,13 +39,13 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::IO::FileResourceType;
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Game::GameMode2Int;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using Game::GameMode2;
+    using IO::FileResourceType;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode2Int;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004C62C0
     void MapPropertiesState::loadMap(char* mapName)
@@ -87,14 +87,14 @@ namespace Map {
         local_1c = (int)DAT_GameState::instance.mapAndTime.unitLadyRelated;
         local_c = DAT_GameState::instance.mapAndTime.field43_0xf0;
         local_8 = DAT_GameState::instance.mapAndTime.field44_0xf4;
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
-            OpenSHC::IO::FRT_MAPS, (char const*)((int)(mapName)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+            IO::FRT_MAPS, (char const*)((int)(mapName)));
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray);
         MACRO_CALL_MEMBER(
-            OpenSHC::Audio::MSS::SoundSystem_Func::mapLoadingAndLaunchGameRelated1, DAT_SoundSystemState::ptr)();
+            Audio::MSS::SoundSystem_Func::mapLoadingAndLaunchGameRelated1, DAT_SoundSystemState::ptr)();
         DAT_GameState::instance.mapAndTime.difficulty = local_30;
         DAT_GameCore::instance.xbowProducible_logic = local_10;
         DAT_GameCore::instance.pikeProducible_logic = local_28;
@@ -110,8 +110,8 @@ namespace Map {
             iVar6 = 8;
             pUVar3 = &DAT_UnitsState::instance.units[1].unitType;
             do {
-                if (((pUVar3[-1] != OpenSHC::Map::Units::ULS_INVISIBLE)
-                        && (*pUVar3 == OpenSHC::Map::Units::UT_E_ARCHER))
+                if (((pUVar3[-1] != Map::Units::ULS_INVISIBLE)
+                        && (*pUVar3 == Map::Units::UT_E_ARCHER))
                     && (pUVar3[4] == 1)) {
                     iVar6 = iVar6 + -1;
                     *(int*)(pUVar3 + -0x3f) = 3;
@@ -152,11 +152,11 @@ namespace Map {
             mapName[iVar6] = cVar1;
             mapName = mapName + 1;
         } while (cVar1 != '\0');
-        if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
+        if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
             MACRO_CALL_MEMBER(
-                OpenSHC::Game::GameCore_Func::removeJesterAndLadyUnitsInCertainMissions, DAT_GameCore::ptr)();
-        } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1) {
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
+                Game::GameCore_Func::removeJesterAndLadyUnitsInCertainMissions, DAT_GameCore::ptr)();
+        } else if (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1) {
+            MACRO_CALL_MEMBER(Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
         }
         pIVar9 = this->SEC_EventsExtra;
         for (iVar6 = 8000; iVar6 != 0; iVar6 = iVar6 + -1) {
@@ -166,7 +166,7 @@ namespace Map {
         DAT_GameState::instance.mapAndTime.month = this->SEC_StartingMonth;
         DAT_GameState::instance.mapAndTime.year = this->SEC_StartingYear;
         if (DAT_GameCore::instance.missionNumber1to20 - 4294967280 < 5) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::adjustEventMonthAndYearForSection1047, this)();
+            MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::adjustEventMonthAndYearForSection1047, this)();
         }
         if ((DAT_GameState::instance.mapAndTime.month == this->SEC_StartingMonth)
             && (DAT_GameState::instance.mapAndTime.year == this->SEC_StartingYear)) {
@@ -187,18 +187,18 @@ namespace Map {
                 pSVar8 = (SiegeUnitCounts*)&pSVar8->field1_0x4;
             } while ((int)pSVar5 < 0x117cea0);
             DAT_GameState::instance.mapAndTime.startingPopularity = this->SEC_StartingPopularity * 10;
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::setMonthAndYear, DAT_GameState::ptr)(
+            MACRO_CALL_MEMBER(Game::GameStateStructures_Func::setMonthAndYear, DAT_GameState::ptr)(
                 this->SEC_StartingMonth, this->SEC_StartingYear);
         }
         this->SEC_Section1080 = 0;
         this->SEC_Section1081 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::countDeerEfficiently, DAT_TribesState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::countDeerEfficiently, DAT_TribesState::ptr)();
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
         DAT_UnitsState::instance.lastSelectedUnitID = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+            Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
         DAT_GameState::instance.mapAndTime.euroRecruitable[4]
             = (int)this->barracksRecruitability.recruitability.macemen;
         DAT_GameState::instance.mapAndTime.euroRecruitable[5]
@@ -250,13 +250,13 @@ namespace Map {
             = (int)(DAT_GameState::instance.mapAndTime.euroRecruitable[6] != 0);
         DAT_GameState::instance.mapAndTime.countUpTo201 = 0;
         DAT_GameState::instance.mapAndTime.cathedralRelated1 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::importTradingCosts, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::recomputeAIZonerLayer, DAT_AICState::ptr)();
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::importTradingCosts, this)();
+        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
+        MACRO_CALL_MEMBER(AI::AICState_Func::recomputeAIZonerLayer, DAT_AICState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Map::TileMapState_Func::setSignpostDistanceForCampaignMission, DAT_TileMapState::ptr)();
+            Map::TileMapState_Func::setSignpostDistanceForCampaignMission, DAT_TileMapState::ptr)();
         MACRO_CALL_MEMBER(
-            OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredBinkVideo, DAT_VideoBikQueue::ptr)();
+            Rendering::Bink::AIMessageQueue_Func::playNextStoredBinkVideo, DAT_VideoBikQueue::ptr)();
         DAT_GameCore::instance.xbowProducible_logic = (int)this->SEC_XbowProducible_save;
         DAT_GameCore::instance.bowProducible_logic = (int)this->SEC_BowProducible_save;
         DAT_GameCore::instance.pikeProducible_logic = (int)this->SEC_PikeProducible_save;

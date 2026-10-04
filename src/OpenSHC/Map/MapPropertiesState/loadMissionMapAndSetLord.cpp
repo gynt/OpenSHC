@@ -32,9 +32,9 @@ namespace Map {
             }
             mapName = (&DAT_MissionAestheticsDefinedData::instance.field14_0x38)[missionNumber];
         }
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::loadMap, this)((char*)mapName);
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMap, this)((char*)mapName);
     LAB_004c68b3:
-        MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setMissionNumberSpecificLord, DAT_UnitsState::ptr)(
+        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setMissionNumberSpecificLord, DAT_UnitsState::ptr)(
             missionNumber);
     }
 

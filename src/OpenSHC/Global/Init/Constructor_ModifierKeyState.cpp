@@ -14,8 +14,8 @@ namespace Global {
     void Init::Constructor_ModifierKeyState()
     {
         MACRO_CALL_MEMBER(
-            OpenSHC::Input::ModifierKeyState_Func::Constructor_ModifierKeyState, DAT_ModifierKeyState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d510));
+            Input::ModifierKeyState_Func::Constructor_ModifierKeyState, DAT_ModifierKeyState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d510));
         return;
     }
 

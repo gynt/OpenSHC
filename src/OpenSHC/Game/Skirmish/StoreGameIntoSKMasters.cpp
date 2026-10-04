@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Game {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D52A0
     void Skirmish::StoreGameIntoSKMasters(int score)
@@ -27,7 +27,7 @@ namespace Game {
         int _count;
         SkMasterDataEntry* _ptrDst2;
         SkMasterDataEntry* _ptrSrc2;
-        BVar1 = MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreCurrentGameIntoTemporarySKMasterEntry)(score);
+        BVar1 = MACRO_CALL(Game::Skirmish_Func::StoreCurrentGameIntoTemporarySKMasterEntry)(score);
         if (BVar1 == FALSE) {}
         _count = -1;
         if (DAT_SkMasters2Data_Count::instance < 1) {
@@ -79,7 +79,7 @@ namespace Game {
         if (DAT_SkMasters2Data_Count::instance < 250) {
             DAT_SkMasters2Data_Count::instance = DAT_SkMasters2Data_Count::instance + 1;
         }
-        MACRO_CALL(OpenSHC::IO_Func::WriteSkMasters2)();
+        MACRO_CALL(IO_Func::WriteSkMasters2)();
     }
 
 }

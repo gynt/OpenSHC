@@ -12,17 +12,17 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Game::GameMode2;
+        using Game::GameMode;
+        using Game::GameMode2;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0043FBB0
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_DisableFoodType(int param_1, ...)
         {
             short* psVar1;
-            if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
-                if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
+            if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
+                    MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
                 }
                 psVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                              .isFoodTypeBanned

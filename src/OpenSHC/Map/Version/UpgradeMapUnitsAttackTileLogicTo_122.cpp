@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::Unit;
+    using Map::Units::UnitLogicState;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B4F0
     void Version::UpgradeMapUnitsAttackTileLogicTo_122()
@@ -20,7 +20,7 @@ namespace Map {
         psVar1 = &DAT_UnitsState::instance.units[1];
         DAT_CurrentUnitSlotID::instance = 0x9c4;
         do {
-            if (psVar1->logicalState == OpenSHC::Map::Units::ULS_NORMAL) {
+            if (psVar1->logicalState == Map::Units::ULS_NORMAL) {
                 psVar1->attackAtTileX = psVar1->targetedUnitID__OR__engineerMannedSiegeEngineRef;
                 psVar1->attackAtTileY
                     = (short)

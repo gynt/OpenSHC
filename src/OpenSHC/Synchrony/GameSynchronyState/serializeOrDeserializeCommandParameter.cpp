@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandParameterLocation;
-    using OpenSHC::Commands::GameCommandParameterReadWrite;
+    using Commands::GameCommandParameterLocation;
+    using Commands::GameCommandParameterReadWrite;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004805D0
     void GameSynchronyState::serializeOrDeserializeCommandParameter(void* destination, size_t size,
@@ -20,17 +20,17 @@ namespace Synchrony {
         byte* _addr;
         byte* _src;
         if ((0 < (int)size) && (destination != (void*)0x0)) {
-            if (srcSwitch == OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS) {
+            if (srcSwitch == Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS) {
                 _src = this->DAT_GameCommandFixedParameterLocation;
             } else {
                 _src = &this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].parameters;
             }
             _addr = _src + this->DAT_CommandParameterOffset;
-            if (destSwitch == OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1) {
+            if (destSwitch == Commands::GCPRW_SERIALIZE_INTO_PARAM_1) {
                 _addr = (byte*)(destination);
                 destination = _src + this->DAT_CommandParameterOffset;
             }
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                 size, (void*)((int)(_addr)), destination);
             this->DAT_CommandParameterOffset = this->DAT_CommandParameterOffset + size;
         }

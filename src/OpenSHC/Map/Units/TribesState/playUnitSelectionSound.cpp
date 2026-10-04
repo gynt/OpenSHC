@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitType;
+        using Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005217E0
         void TribesState::playUnitSelectionSound(int param_1)
@@ -24,37 +24,37 @@ namespace Map {
             int iVar5;
             int sfxOffsetInArray;
             iVar3 = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
-            UVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(
+                Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
+            UVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(
                 param_1, &param_1);
             iVar5 = param_1;
             switch (UVar4) {
-            case OpenSHC::Map::Units::UT_E_SWORD:
+            case Map::Units::UT_E_SWORD:
                 if (param_1 != 1) {
                     if (param_1 == 2) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                             DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
                             (int)((int)(DAT_UnitsState::instance.units[iVar3].y)), 0xae);
                     }
                     if (param_1 < 3) {}
                     iVar5 = 0xaf;
                 LAB_0052188b:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                         DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
                         (int)((int)(DAT_UnitsState::instance.units[iVar3].y)), iVar5);
                 }
                 iVar5 = 0xad;
                 goto LAB_00521827;
-            case OpenSHC::Map::Units::UT_E_KNIGHT:
+            case Map::Units::UT_E_KNIGHT:
                 if (param_1 == 1) {
                     iVar5 = 0x56;
                 LAB_005218ec:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                         DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
                         (int)((int)(DAT_UnitsState::instance.units[iVar3].y)), iVar5);
                 } else {
                     if ((param_1 == 2) || (param_1 == 3)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume,
                             DAT_SFXState::ptr)((int)DAT_UnitsState::instance.units[iVar3].x,
                             (int)((int)(DAT_UnitsState::instance.units[iVar3].y)), 0x57);
                     }
@@ -65,23 +65,23 @@ namespace Map {
                 }
                 iVar5 = 0x59;
             LAB_00521827:
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)DAT_UnitsState::instance.units[iVar3].x, (int)((int)(DAT_UnitsState::instance.units[iVar3].y)),
                     iVar5);
                 return;
-            case OpenSHC::Map::Units::UT_E_ENGINEER:
-                if ((DAT_UnitsState::instance.units[iVar3].unitType == OpenSHC::Map::Units::UT_E_ENGINEER)
+            case Map::Units::UT_E_ENGINEER:
+                if ((DAT_UnitsState::instance.units[iVar3].unitType == Map::Units::UT_E_ENGINEER)
                     && (DAT_UnitsState::instance.units[iVar3].resourceToDeposit != 0)) {
                     param_1 = 0x24;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(
                         0x24);
                 }
                 break;
-            case OpenSHC::Map::Units::UT_S_CATAPULT:
-            case OpenSHC::Map::Units::UT_S_TOWER:
-            case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
+            case Map::Units::UT_S_CATAPULT:
+            case Map::Units::UT_S_TOWER:
+            case Map::Units::UT_S_BATTERINGRAM:
                 iVar5 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getRemainingRequiredEngineers, DAT_UnitsState::ptr)(iVar3);
+                    Map::Units::UnitsState_Func::getRemainingRequiredEngineers, DAT_UnitsState::ptr)(iVar3);
                 if (iVar5 < 1) {
                     iVar5 = 0x68;
                     goto LAB_0052188b;
@@ -91,22 +91,22 @@ namespace Map {
                         == 0)
                     || (3 < iVar5)) {
                     param_1 = 0xe;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xe);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xe);
                 }
                 if (iVar5 == 1) {
                     param_1 = 0xb;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xb);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xb);
                 }
                 if (iVar5 == 2) {
                     param_1 = 0xc;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xc);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xc);
                 }
                 if (iVar5 == 3) {
                     param_1 = 0xd;
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xd);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeechEffect, DAT_SFXState::ptr)(0xd);
                 }
                 break;
-            case OpenSHC::Map::Units::UT_A_HARCHER:
+            case Map::Units::UT_A_HARCHER:
                 psVar1 = &DAT_UnitsState::instance.units[iVar3].y;
                 psVar2 = &DAT_UnitsState::instance.units[iVar3].x;
                 if (param_1 == 1) {
@@ -122,9 +122,9 @@ namespace Map {
                     iVar5 = (int)*psVar2;
                     sfxOffsetInArray = 0xec;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     iVar5, iVar3, sfxOffsetInArray);
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocationFullVolume, DAT_SFXState::ptr)(
                     (int)*psVar2, (int)((int)(*psVar1)), 0x59);
             }
         }

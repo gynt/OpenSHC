@@ -13,9 +13,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051C2D0
         void TroopValueState::updateArcherBrazierProximityFlags()
@@ -28,15 +28,15 @@ namespace Map {
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 pUVar2 = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((pUVar2->logicalState != OpenSHC::Map::Units::ULS_INVISIBLE)
+                    if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE)
                              && (BVar1
-                                 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)pUVar2->owner),
                                  BVar1 != FALSE))
-                            && ((pUVar2->unitType == OpenSHC::Map::Units::UT_E_ARCHER
-                                || (pUVar2->unitType == OpenSHC::Map::Units::UT_A_ARCHER))))
+                            && ((pUVar2->unitType == Map::Units::UT_E_ARCHER
+                                || (pUVar2->unitType == Map::Units::UT_A_ARCHER))))
                         && (pUVar2->dying == 0)) {
-                        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::isBrazierNearby,
+                        iVar2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::isBrazierNearby,
                             DAT_EntityState::ptr)((int)pUVar2->x, (int)((int)(pUVar2->y)),
                             (int)((int)(pUVar2->buildingHeight + pUVar2->terrainOrClimbHeight)));
                         pUVar2->field297_0x40d = iVar2 != 0;

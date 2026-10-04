@@ -25,7 +25,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Rendering::ColorMode;
+using Rendering::ColorMode;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x00467890
 void Rendering::InitializeColors()
@@ -33,7 +33,7 @@ void Rendering::InitializeColors()
     uint _int16bit;
     COL_BLUE::instance.shortValue = 0x1f;
     COL_BLACK::instance.shortValue = 0;
-    if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
+    if (DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_555) {
         /*
           Does not care about "alpha" bit?
          */
@@ -61,15 +61,15 @@ void Rendering::InitializeColors()
         COL_VIVID_BLUE::instance.shortValue = 0x24bf;
         COL_VERY_SOFT_YELLOW::instance.shortValue = -0x1089;
     }
-    _int16bit = MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformToCurrentModeColor)(0xc0, 0xc0, 0xc0);
+    _int16bit = MACRO_CALL(UI::Rendering_Func::TransformToCurrentModeColor)(0xc0, 0xc0, 0xc0);
     COL_LIGHT_GREY::instance.shortValue = (short)_int16bit;
-    _int16bit = MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformToCurrentModeColor)(0xd7, 0xd2, 0xa4);
+    _int16bit = MACRO_CALL(UI::Rendering_Func::TransformToCurrentModeColor)(0xd7, 0xd2, 0xa4);
     COL_GREYISH_YELLOW::instance.shortValue = (short)_int16bit;
-    _int16bit = MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformToCurrentModeColor)(0x29, 0x75, 0x20);
+    _int16bit = MACRO_CALL(UI::Rendering_Func::TransformToCurrentModeColor)(0x29, 0x75, 0x20);
     COL_DARK_LIME::instance.shortValue = (short)_int16bit;
-    _int16bit = MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformToCurrentModeColor)(0x68, 0x74, 0x58);
+    _int16bit = MACRO_CALL(UI::Rendering_Func::TransformToCurrentModeColor)(0x68, 0x74, 0x58);
     COL_DARK_GRAYISH_GREEN::instance.shortValue = (short)_int16bit;
-    _int16bit = MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformToCurrentModeColor)(0x8c, 0, 0);
+    _int16bit = MACRO_CALL(UI::Rendering_Func::TransformToCurrentModeColor)(0x8c, 0, 0);
     COL_DARK_RED::instance.shortValue = (short)_int16bit;
 }
 

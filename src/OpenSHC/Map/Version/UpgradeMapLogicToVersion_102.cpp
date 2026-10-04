@@ -19,7 +19,7 @@ namespace Map {
         ushort auStack_27424[80402];
         _ptrNext = auStack_27424;
         uVar1 = MSVC_SecurityCookie::instance ^ (uint)auStack_27424;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             160800, (void*)((int)(DAT_TileMapState::instance.LogicLayer)), (void*)((int)(auStack_27424)));
         _ptrLogicLayer = DAT_TileMapState::instance.LogicLayer;
         do {

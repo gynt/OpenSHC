@@ -7,7 +7,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::WindowsHelper::Enums::GlobalAllocFlag;
+using WindowsHelper::Enums::GlobalAllocFlag;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0047DF40
 BOOL __stdcall Synchrony::EnumSessionsCallback_addSession_async(
@@ -30,7 +30,7 @@ BOOL __stdcall Synchrony::EnumSessionsCallback_addSession_async(
             _char = *pWVar3;
             pWVar3 = pWVar3 + 1;
         } while (_char != L'\0');
-        _pSessionName = (WCHAR*)(MACRO_CALL(OpenSHC::OS_Func::_malloc)(((int)pWVar3 - (int)pWVar1 >> 1) * 2 + 4));
+        _pSessionName = (WCHAR*)(MACRO_CALL(OS_Func::_malloc)(((int)pWVar3 - (int)pWVar1 >> 1) * 2 + 4));
         DAT_GameSynchronyState::instance.DPLAY_SessionNames[DAT_GameSynchronyState::instance.DPLAY_SessionsCount]
             = _pSessionName;
         _pReceivedSessionName = lpThisSD->lpszSessionName;
@@ -42,7 +42,7 @@ BOOL __stdcall Synchrony::EnumSessionsCallback_addSession_async(
             _pReceivedSessionName = _pReceivedSessionName + 1;
             _pSessionName2 = _pSessionName2 + 1;
         } while (_char != L'\0');
-        _alloc = GlobalAlloc(OpenSHC::WindowsHelper::Enums::GAF_GHND, 16);
+        _alloc = GlobalAlloc(WindowsHelper::Enums::GAF_GHND, 16);
         _lockedMemory = (GUID*)(GlobalLock(_alloc));
         DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[DAT_GameSynchronyState::instance.DPLAY_SessionsCount]
             = _lockedMemory;

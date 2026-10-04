@@ -13,8 +13,8 @@
 
 namespace OpenSHC {
 namespace Synchrony {
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00487C50
     void GameSynchronyState::transmitCommand(byte commandCategory, undefined4 time,
@@ -32,35 +32,35 @@ namespace Synchrony {
         _packetSize = size;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_src;
         _src = addressOfFullCommandObjectOrCommandParameters;
-        if (((this->currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                || (this->currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if (((this->currentGameMode == Game::GM_SOLITARY)
+                || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
             || (this->DPLAYX_4A == (IDirectPlay4A*)0x0))
             goto LAB_00487e0f;
         this->transmissionCounterUnk = this->transmissionCounterUnk + 1;
         if (((int)size < 200) || (commandCategory == 65)) {
             this->DAT_Packet.packet.commandProtocol = commandCategory;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 &time, (void*)((int)(((int)&this->DAT_Packet + 1))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                 _packetSize, (void*)((int)(_src)), (void*)((int)(((int)&this->DAT_Packet + 4))));
         } else {
             this->DAT_Packet.packet.commandProtocol = 125;
             this->DAT_Packet.prefixedPacket.packet.commandProtocol = commandCategory;
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 &time, (void*)((int)(((int)&this->DAT_Packet + 2))));
             local_3f0 = _packetSize;
             iVar1 = MACRO_CALL_MEMBER(
-                OpenSHC::Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
+                Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
                 _packetSize, _src, (void*)((int)(((int)&this->DAT_Packet + 5))));
             _packetSize = iVar1 + 1;
             if ((int)local_3f0 < _packetSize) {
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_3ec, "packet size:%d new size:%d type:%d", local_3f0,
+                MACRO_CALL(OS_Func::_sprintf)(local_3ec, "packet size:%d new size:%d type:%d", local_3f0,
                     _packetSize, (int)(char)commandCategory);
             }
         }
         this->DAT_CurrentTransmitCommandPacketSize = _packetSize;
         if (commandCategory == 117) {
-            BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             _dwPriority = 0xfffd;
             if (BVar2 == FALSE) {
             LAB_00487dc7:
@@ -97,7 +97,7 @@ namespace Synchrony {
             /*
               unsuccessfull transmission?
              */
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
         }
     LAB_00487e0f:;
         return;

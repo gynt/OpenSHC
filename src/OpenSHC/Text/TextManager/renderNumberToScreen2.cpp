@@ -9,8 +9,8 @@ namespace Text {
     void TextManager::renderNumberToScreen2(int number, int xParam, int yParam, TextAlignment alignment, uint color,
         int fontSize, BOOLEnum keepOffsetX, int blendStrength)
     {
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::fillIntegerTextBuffer, this)(number);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer, xParam,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::fillIntegerTextBuffer, this)(number);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer, xParam,
             yParam, alignment, (BGR24)((int)(color)), fontSize, keepOffsetX, blendStrength);
         return;
     }

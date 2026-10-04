@@ -10,7 +10,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CC90
     void Init::Constructor_Empty2()
     {
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d7a0));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d7a0));
         return;
     }
 

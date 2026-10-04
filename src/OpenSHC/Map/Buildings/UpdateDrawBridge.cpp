@@ -16,8 +16,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eSFX;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00417B90
     void Buildings::UpdateDrawBridge()
@@ -52,12 +52,12 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar8].animationFrame = iVar6;
             if ((DAT_BuildingsState::instance.buildings[iVar8].drawbridgeState2 == 10)
                 && (BVar7 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::TileMapState_Func::isUnitBlockingSizeFiveFootprint, DAT_TileMapState::ptr)(iVar8),
+                        Map::TileMapState_Func::isUnitBlockingSizeFiveFootprint, DAT_TileMapState::ptr)(iVar8),
                     iVar8 = DAT_CurrentBuildingID::instance, BVar7 == FALSE)) {
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].drawBridgeState1 = 1;
                 DAT_BuildingsState::instance.buildings[iVar8].animationIndex = 0;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::TileMapState_Func::floodMoatUnderRemovedBuilding, DAT_TileMapState::ptr)(iVar8);
+                    Map::TileMapState_Func::floodMoatUnderRemovedBuilding, DAT_TileMapState::ptr)(iVar8);
                 iVar8 = DAT_CurrentBuildingID::instance;
                 puVar1 = &DAT_GameState::instance.playerDataArray[sVar3].someCount31;
                 *puVar1 = *puVar1 + 1;
@@ -107,19 +107,19 @@ namespace Map {
                     + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar8].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].y)),
-                        OpenSHC::DE::SHCDE::FX_DRAWBRIDGE_RAISING);
+                        DE::SHCDE::FX_DRAWBRIDGE_RAISING);
                     iVar8 = DAT_CurrentBuildingID::instance;
                 }
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 0x18)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
                     uVar4 = DAT_BuildingsState::instance.buildings[iVar8].y;
                     uVar5 = DAT_BuildingsState::instance.buildings[iVar8].x;
-                    sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_DRAWBRIDGE_RAISED;
+                    sfxOffsetInArray = DE::SHCDE::FX_DRAWBRIDGE_RAISED;
                 LAB_00417f21:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)uVar5, (int)((int)((short)uVar4)), sfxOffsetInArray);
                     iVar8 = DAT_CurrentBuildingID::instance;
                 }
@@ -133,7 +133,7 @@ namespace Map {
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar8].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar8].drawBridgeState1 = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::createWaterForDrawBridge, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::createWaterForDrawBridge, DAT_TileMapState::ptr)(
                     iVar8);
                 iVar8 = DAT_CurrentBuildingID::instance;
             } else {
@@ -143,25 +143,25 @@ namespace Map {
                     + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar8].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].y)),
-                        OpenSHC::DE::SHCDE::FX_DRAWBRIDGE_CONTROL);
+                        DE::SHCDE::FX_DRAWBRIDGE_CONTROL);
                     iVar8 = DAT_CurrentBuildingID::instance;
                 }
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 5)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar8].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].y)),
-                        OpenSHC::DE::SHCDE::FX_DRAWBRIDGE_LOWERING);
+                        DE::SHCDE::FX_DRAWBRIDGE_LOWERING);
                     iVar8 = DAT_CurrentBuildingID::instance;
                 }
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 0x1c)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
                     uVar4 = DAT_BuildingsState::instance.buildings[iVar8].y;
                     uVar5 = DAT_BuildingsState::instance.buildings[iVar8].x;
-                    sfxOffsetInArray = OpenSHC::DE::SHCDE::FX_DRAWBRIDGE_LOWERED;
+                    sfxOffsetInArray = DE::SHCDE::FX_DRAWBRIDGE_LOWERED;
                     goto LAB_00417f21;
                 }
             }

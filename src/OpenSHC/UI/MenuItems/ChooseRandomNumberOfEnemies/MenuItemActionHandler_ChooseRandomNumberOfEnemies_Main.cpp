@@ -17,22 +17,22 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B18D0
         void ChooseRandomNumberOfEnemies::MenuItemActionHandler_ChooseRandomNumberOfEnemies_Main(int param_1, ...)
         {
             int iVar1;
             int* piVar2;
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             if (0 < param_1) {
                 iVar1 = 2;
                 do {
                     DAT_GameSynchronyState::instance.currentAIArray[iVar1] = 0;
                     DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[iVar1] = 0;
-                    MACRO_CALL(OpenSHC::Synchrony::Actions_Func::RemovePositionOfPlayer)(iVar1);
+                    MACRO_CALL(Synchrony::Actions_Func::RemovePositionOfPlayer)(iVar1);
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < 9);
                 if (0 < param_1) {
@@ -42,16 +42,16 @@ namespace UI {
                         piVar2[-0x419a7]
                             = DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[(int)SEC_RNG::instance.currentNumber2
                                 % DAT_GameCore::instance.numOfAIsWithCastleUnk];
-                        MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-                        MACRO_CALL(OpenSHC::Synchrony_Func::ResetAiVariationArrayValue)(iVar1);
+                        MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                        MACRO_CALL(Synchrony_Func::ResetAiVariationArrayValue)(iVar1);
                         *piVar2 = 1;
-                        MACRO_CALL(OpenSHC::Synchrony_Func::PutPlayerIntoRandomSlot)(iVar1);
+                        MACRO_CALL(Synchrony_Func::PutPlayerIntoRandomSlot)(iVar1);
                         piVar2 = piVar2 + 1;
                         iVar1 = iVar1 + 1;
                         param_1 = param_1 + -1;
                     } while (param_1 != 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
                     DAT_GameSynchronyState::ptr)();
                 DAT_GameSynchronyState::instance.reparseMaps = TRUE;
             }

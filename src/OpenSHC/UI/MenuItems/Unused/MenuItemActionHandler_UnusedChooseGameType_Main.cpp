@@ -14,35 +14,35 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::UI::Enums::MenuViewType;
+        using Map::MapType2;
+        using UI::Enums::MenuModalType;
+        using UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004305D0
         void Unused::MenuItemActionHandler_UnusedChooseGameType_Main(int param_1, ...)
         {
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
+            if (DAT_MenuTextInputState::instance.currentModalDialog != UI::Enums::MMT_NO_MENU) {}
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
                 switch (param_1) {
                 case 7:
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
                 default:
                     return;
                 case 0x1c:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
                     break;
                 case 0x1d:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_INVASION;
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_INVASION;
                     break;
                 case 0x1e:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_ECONOMIC;
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_ECONOMIC;
                     break;
                 case 0x21:
-                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_JUST_BUILD;
+                    DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_JUST_BUILD;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
                 DAT_GameCore::instance.field115_0x1d98 = 1;
             }
         }

@@ -28,10 +28,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Audio::SFX::SoundEffectID;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Audio::SFX::SoundEffectID;
+        using Text::TextAlignment;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F7F0
         void NewMapMapsize::MenuItemRenderFunction_NewMapMapsize_Buttons(int param_1, ...)
@@ -40,10 +40,10 @@ namespace UI {
             char local_18[20];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_18;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
+                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 if (param_1 == 7) {
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     ;
                 }
@@ -54,21 +54,21 @@ namespace UI {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 } else {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                    MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_CurrentButtonPictureInGm::instance
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                               .pictureInGm_0x4;
                     if (INT_00b95abc::instance != param_1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                            (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
-                                | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                            (Audio::SFX::SoundEffectID)(Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
+                                | Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
                 }
@@ -81,9 +81,9 @@ namespace UI {
                 } else {
                     uVar1 = 400;
                 }
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", uVar1, uVar1);
+                MACRO_CALL(OS_Func::_sprintf)(local_18, "%dx%d", uVar1, uVar1);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(local_18,
+                    Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(local_18,
                     (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance + 0x13)),
                     (TextAlignment)((int)(DAT_ButtonW::instance)), 0xc2f0eb, 0, 0x11, FALSE, 0);
             };

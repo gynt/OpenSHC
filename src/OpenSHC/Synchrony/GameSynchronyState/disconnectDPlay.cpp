@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E240
     void GameSynchronyState::disconnectDPlay()
@@ -20,12 +20,12 @@ namespace Synchrony {
         void* pvVar1;
         int iVar2;
         DAT_MouseState::instance.waitCursorToggle = 1;
-        MACRO_CALL(OpenSHC::UI::Helpers_Func::SetCursorDependingOnProgramState)();
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
+        MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
         iVar2 = 0;
         if (0 < this->scrollBarItemCount) {
             do {
-                MACRO_CALL(OpenSHC::OS_Func::_free_base)((void*)(this->providerNames[iVar2]));
+                MACRO_CALL(OS_Func::_free_base)((void*)(this->providerNames[iVar2]));
                 pvVar1 = GlobalHandle(this->guids[iVar2]);
                 GlobalUnlock(pvVar1);
                 pvVar1 = GlobalHandle(this->guids[iVar2]);
@@ -39,7 +39,7 @@ namespace Synchrony {
         this->scrollBarItemCount = 0;
         if (0 < this->modemScrollbarCount) {
             do {
-                MACRO_CALL(OpenSHC::OS_Func::_free_base)(this->stringPointerArray[iVar2]);
+                MACRO_CALL(OS_Func::_free_base)(this->stringPointerArray[iVar2]);
                 iVar2 = iVar2 + 1;
             } while (iVar2 < this->modemScrollbarCount);
         }
@@ -62,7 +62,7 @@ namespace Synchrony {
             this->DPLAYX_Connection = (void*)0x0;
         }
         this->scrollBarItemCount = 0;
-        this->currentGameMode = OpenSHC::Game::GM_SOLITARY;
+        this->currentGameMode = Game::GM_SOLITARY;
         this->DAT_GameHalted = 0;
         this->syncStatus = 0;
         this->flag_0xbec = 0;

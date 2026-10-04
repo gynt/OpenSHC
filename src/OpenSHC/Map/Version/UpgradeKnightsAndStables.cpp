@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::Unit;
+    using Map::Units::UnitType;
+    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A650
     void Version::UpgradeKnightsAndStables()
@@ -35,7 +35,7 @@ namespace Map {
                     = 0;
                 psVar4 = &DAT_UnitsState::instance.units[0];
                 do {
-                    if (((psVar4->unitType == OpenSHC::Map::Units::UT_E_KNIGHT)
+                    if (((psVar4->unitType == Map::Units::UT_E_KNIGHT)
                             && (psVar4->horseOriginStablesBuildingIndexUnk == local_4))
                         && (*(int*)&psVar4->horseOriginStableIDUnk
                             == *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar3 + -0x48))) {

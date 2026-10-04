@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::TextMessageBLLookupStructTypeEnum;
+    using UI::Enums::TextMessageBLLookupStructTypeEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4E00
     void BottomLeftTextDisplayState::setBottomLeftTextDisplayText(int messageTypeUnk, int textGroupIndex,
@@ -38,7 +38,7 @@ namespace UI {
         this->currentlyDisplayedTextIsDisplayedUnk = messageTypeUnk;
         if (textGroupIndex == -1) {
             if (messageTypeUnk == 2) {
-                TVar4 = OpenSHC::UI::Enums::TMBLLSTE_BUILDING_TEXT;
+                TVar4 = UI::Enums::TMBLLSTE_BUILDING_TEXT;
             }
             if (DAT_RenderingDefinedData::instance.TextMessageLookupTable[0].messageType
                 != ((TextMessageBLLookupStructTypeEnum)0xffffffff)) {
@@ -69,7 +69,7 @@ namespace UI {
                 /*
                   "Not enough workers available to run this building."
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     "placement_warning1.wav");
             }
         }

@@ -13,7 +13,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00470040
         void WindowAndDirectDraw::renderBltAndFlip(int param_1)
@@ -61,7 +61,7 @@ namespace UI {
                 _sourceRect.right = this->gameResolutionX;
                 _sourceRect.bottom = this->gameResolutionY;
                 if (param_1 == 1) {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_7d4, "Vid %d, sys %d",
+                    MACRO_CALL(OS_Func::_sprintf)(local_7d4, "Vid %d, sys %d",
                         this->directDrawBackbufferSurfacePointer, this->directDrawOffscreenSurfacePointer_screenMenu);
                 }
                 if (this->runGameAsExclusiveFullscreen == FALSE) {
@@ -70,7 +70,7 @@ namespace UI {
                     _destinationRect.left = this->clientOnScreenCoords.left;
                     _destinationRect.bottom = this->clientOnScreenCoords.bottom;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_screenMenu, &_sourceRect, 0x1000000,
                         (LPDDBLTFX)0x0);
@@ -93,7 +93,7 @@ namespace UI {
                 _destinationRect.right = this->clientOnScreenCoords.left + this->resolutionX;
                 _destinationRect.top = this->clientOnScreenCoords.top;
                 _destinationRect.bottom = (this->clientOnScreenCoords.top - iVar1) + this->resolutionY;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
+                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
                     this)(&_destinationRect, &_sourceRect);
                 this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000,
                     (LPDDBLTFX)0x0);
@@ -108,7 +108,7 @@ namespace UI {
                     _destinationRect.top = _destinationRect.bottom + -0x80;
                     _sourceRect.left = 0;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_screenMenu, &_sourceRect, 0x1000000,
                         (LPDDBLTFX)0x0);
@@ -143,7 +143,7 @@ namespace UI {
                             = DAT_MenuHandlerState::instance.y + this->clientOnScreenCoords.top + 0x250;
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_screenMenu, &_sourceRect, 0x1000000,
                         (LPDDBLTFX)0x0);
@@ -163,7 +163,7 @@ namespace UI {
                     _destinationRect.top = _destinationRect.bottom + -0x80;
                     _sourceRect.left = 0;
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_screenMenu, &_sourceRect, 0x1000000,
                         (LPDDBLTFX)0x0);
@@ -198,7 +198,7 @@ namespace UI {
                             = DAT_MenuHandlerState::instance.y + this->clientOnScreenCoords.top + 0x250;
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_screenMenu, &_sourceRect, 0x1000000,
                         (LPDDBLTFX)0x0);

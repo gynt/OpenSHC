@@ -15,7 +15,7 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::UI::Enums::MenuModalType;
+        using UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9110
         void NewInvasion::MenuItemActionHandler_NewInvasion_UnitButtons(int unitTypeMenuID, ...)
@@ -24,7 +24,7 @@ namespace UI {
             int _gmID;
             int _currentUnitCountOfType;
             _gmID = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::sumUnitCounts, DAT_MapPropertiesState::ptr)();
+            MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sumUnitCounts, DAT_MapPropertiesState::ptr)();
             _currentUnitCountOfType = *(int*)((int)&DAT_MapPropertiesState::instance
                                                   .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                                   .data
@@ -34,7 +34,7 @@ namespace UI {
             if (DAT_MissionAestheticsDefinedData::instance.InvasionUnitLimits[unitTypeMenuID] < _limit) {
                 _limit = DAT_MissionAestheticsDefinedData::instance.InvasionUnitLimits[unitTypeMenuID];
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setSliderParameters,
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setSliderParameters,
                 DAT_MenuModalComposition2::ptr)(0, _limit, _currentUnitCountOfType,
                 (undefined*)((int)(
 
@@ -42,7 +42,7 @@ namespace UI {
                             .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .data
                         + unitTypeMenuID * 4 + 4))),
-                (void*)MACRO_CALL(OpenSHC::Global_Func::DoNothing));
+                (void*)MACRO_CALL(Global_Func::DoNothing));
             switch (unitTypeMenuID) {
             case 0:
                 _gmID = 0x5b;
@@ -118,8 +118,8 @@ namespace UI {
             }
             DAT_MenuModalComposition2::instance.textGroup = 199;
             DAT_MenuModalComposition2::instance.textIndex = _gmID;
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
                 (int)((int)(DAT_ButtonX::instance + -0x3e)), (int)((int)(DAT_ButtonY::instance + 0x19)));
             return;
         }

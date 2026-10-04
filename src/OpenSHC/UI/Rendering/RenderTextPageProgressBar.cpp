@@ -44,11 +44,11 @@ namespace UI {
         destinationRect.left = left;
         destinationRect.right = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x230;
         destinationRect.bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xf0;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreenMenuSurface,
+        MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreenMenuSurface,
             DAT_WindowAndDirectDraw::ptr)(sourceRect, destinationRect);
         iVar6 = 0;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(left, iVar4, iVar1 + 0x22f, iVar4 + 1, iVar6 + 2);
             iVar6 = iVar6 + 1;
             iVar4 = iVar4 + 2;
@@ -56,7 +56,7 @@ namespace UI {
         iVar4 = 0;
         iVar5 = iVar5 + 0xf0;
         do {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(left, iVar5, iVar1 + 0x22f, iVar5 + 1, iVar4 + 2);
             iVar4 = iVar4 + 1;
             iVar5 = iVar5 + -2;

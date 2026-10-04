@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C940
     void Init::Constructor_Stopwatch_Unknown()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Util::Timing::Stopwatch_Func::Constructor_Stopwatch, DAT_UnknownStopwatch::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_Stopwatch_Unknown));
+        MACRO_CALL_MEMBER(Util::Timing::Stopwatch_Func::Constructor_Stopwatch, DAT_UnknownStopwatch::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_Stopwatch_Unknown));
         return;
     }
 

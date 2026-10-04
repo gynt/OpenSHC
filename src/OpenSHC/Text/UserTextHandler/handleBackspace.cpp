@@ -12,7 +12,7 @@ namespace Text {
         char (*pacVar2)[250];
         if (0 < this->textCursorIndexArray[this->textArrayIndex]) {
             this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] + -1;
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::shiftTextLeftAtCursor, this)(
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::shiftTextLeftAtCursor, this)(
                 this->textCursorIndexArray[this->textArrayIndex],
                 (int)((int)(this->textContentLengthArray[this->textArrayIndex]
                     - this->textCursorIndexArray[this->textArrayIndex])));

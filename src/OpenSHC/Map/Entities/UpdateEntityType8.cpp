@@ -12,7 +12,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
+    using DE::SHCDE::eSFX;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00406FD0
     void Entities::UpdateEntityType8()
@@ -46,17 +46,17 @@ namespace Map {
         }
         if (DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround != 0) {
             DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;
-            MACRO_CALL(OpenSHC::Map::Entities_Func::SomeFireSpreadFunction)(
+            MACRO_CALL(Map::Entities_Func::SomeFireSpreadFunction)(
                 (int)DAT_EntityState::instance.entityArray[uVar2].owner,
                 (int)((int)(DAT_EntityState::instance.entityArray[uVar2].microX)),
                 (int)((int)(DAT_EntityState::instance.entityArray[uVar2].microY)),
                 (int)((int)(DAT_TileMapState::instance.HeightLayer[DAT_EntityState::instance.entityArray[uVar2].tile]
                     + 8)),
                 5);
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                 (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].xPosition,
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].yPosition)),
-                OpenSHC::DE::SHCDE::FX_FIRE_START);
+                DE::SHCDE::FX_FIRE_START);
         }
         uVar2 = DAT_CurrentEntityID::instance;
         if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].orientation == 0x4c) {

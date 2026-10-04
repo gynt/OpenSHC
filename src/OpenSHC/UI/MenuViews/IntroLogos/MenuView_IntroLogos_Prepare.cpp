@@ -23,7 +23,7 @@ namespace UI {
                 tgxFileName = "logo2.tgx";
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
         LAB_0042474e:
             DAT_IntroBlendStrength::instance = 0;

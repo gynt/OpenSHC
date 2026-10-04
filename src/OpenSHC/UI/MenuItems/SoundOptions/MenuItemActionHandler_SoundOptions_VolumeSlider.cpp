@@ -22,7 +22,7 @@ namespace UI {
             case 3:
                 if (param_1 == 0) {
                     if (DAT_MenuTextInputState::instance.field20_0x44 != *currentValue) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(0, (int)((int)(*currentValue)));
                     }
                     DAT_MenuTextInputState::instance.field20_0x44 = *currentValue;
@@ -30,19 +30,19 @@ namespace UI {
                 if (param_1 != 1) {
                     if (param_1 != 2) {}
                     if (DAT_MenuTextInputState::instance.field22_0x4c != *currentValue) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(3, (int)((int)(*currentValue)));
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(4, (int)((int)(*currentValue)));
                     }
                     DAT_MenuTextInputState::instance.field22_0x4c = *currentValue;
                 }
                 if (DAT_MenuTextInputState::instance.field21_0x48 != *currentValue) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
                         1, (int)((int)(*currentValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
                         2, (int)((int)(*currentValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
                         -1, (int)((int)(*currentValue)));
                 }
                 DAT_MenuTextInputState::instance.field21_0x48 = *currentValue;

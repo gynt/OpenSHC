@@ -21,13 +21,13 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
-        using OpenSHC::Map::Units::States::UnitState;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Map::Units::UnitInstructionType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using Map::Units::Behavior::UnitStanceEnum;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
+        using Map::Units::States::UnitState;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052A7D0
         void TribesState::updateTribeCombatStanceBehavior(int tribeID)
@@ -49,14 +49,14 @@ namespace Map {
             _targetUnitID = (int)this->tribes[tribeID].selectionTargetUnitID;
             _buildingIndex_2 = this->tribes[tribeID].someUnitID;
             if (_buildingIndex_2 == 0) {
-                if (this->tribes[tribeID].unitStance == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
+                if (this->tribes[tribeID].unitStance == Map::Units::Behavior::USE_AGGRESSIVE) {
                     local_c = 0;
                     do {
                         iVar5 = ((this->tribes[tribeID].someUnitArrayIndex - local_c) + 10) % 10;
                         _unitID = (int)this->tribes[tribeID].someUnitArray[iVar5];
                         if (_unitID != 0) {
                             if ((((DAT_UnitsState::instance.units[_unitID].logicalState
-                                      == OpenSHC::Map::Units::ULS_NORMAL)
+                                      == Map::Units::ULS_NORMAL)
                                      && (DAT_UnitsState::instance.units[_unitID].dying == 0))
                                     && (DAT_UnitsState::instance.units[_unitID].uid
                                         == this->tribes[tribeID].someUnitUIDArray[iVar5]))
@@ -105,8 +105,8 @@ namespace Map {
                         if (DAT_UnitsState::instance.units[iVar5].tile == this->tribes[tribeID].someTile)
                             goto LAB_0052aa77;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, this)(tribeID,
-                        OpenSHC::Map::Units::UIT_UNIT_ATTACK_UNIT, iVar5, this->tribes[tribeID].someUnitUID, 1);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, this)(tribeID,
+                        Map::Units::UIT_UNIT_ATTACK_UNIT, iVar5, this->tribes[tribeID].someUnitUID, 1);
                 } else {
                     this->tribes[tribeID].someUnitID = 0;
                 }
@@ -114,36 +114,36 @@ namespace Map {
             goto LAB_0052aa77;
         LAB_0052a9f2:
             do {
-                iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                iVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                     tribeID, iVar5);
                 iVar5 = iVar5 + 1;
-                if (((DAT_UnitsState::instance.units[iVar4].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                if (((DAT_UnitsState::instance.units[iVar4].logicalState == Map::Units::ULS_NORMAL)
                         && (DAT_UnitsState::instance.units[iVar4].dying == 0))
                     && (DAT_UnitsState::instance.units[iVar4].state.generic
-                        != OpenSHC::Map::Units::States::US_MELEE_ATTACK)) {
+                        != Map::Units::States::US_MELEE_ATTACK)) {
                     switch (DAT_UnitsState::instance.units[iVar4].unitType) {
-                    case OpenSHC::Map::Units::UT_TUNNELER:
-                    case OpenSHC::Map::Units::UT_E_SPEAR:
-                    case OpenSHC::Map::Units::UT_E_PIKE:
-                    case OpenSHC::Map::Units::UT_E_MACE:
-                    case OpenSHC::Map::Units::UT_E_SWORD:
-                    case OpenSHC::Map::Units::UT_E_KNIGHT:
-                    case OpenSHC::Map::Units::UT_E_MONK:
-                    case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
+                    case Map::Units::UT_TUNNELER:
+                    case Map::Units::UT_E_SPEAR:
+                    case Map::Units::UT_E_PIKE:
+                    case Map::Units::UT_E_MACE:
+                    case Map::Units::UT_E_SWORD:
+                    case Map::Units::UT_E_KNIGHT:
+                    case Map::Units::UT_E_MONK:
+                    case Map::Units::UT_S_BATTERINGRAM:
                         if (DAT_UnitsState::instance.units[iVar4].SA == 0)
                             goto LAB_0052aa77;
                     }
                 }
             } while (iVar5 < this->tribes[tribeID].size);
         LAB_0052aa55:
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, this)(
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, this)(
                 tribeID, ((UnitInstructionType)0x20), _unitID, DAT_UnitsState::instance.units[_unitID].uid, 0);
         LAB_0052aa77:
             psVar1 = &this->tribes[tribeID].unknownAttackRelatedUpdateCounter;
             *psVar1 = *psVar1 + 1;
             if (0x32 < this->tribes[tribeID].unknownAttackRelatedUpdateCounter) {
                 if (this->tribes[tribeID].isRallyingUnk == 0) {
-                    if (this->tribes[tribeID].unitStance == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
+                    if (this->tribes[tribeID].unitStance == Map::Units::Behavior::USE_AGGRESSIVE) {
                         psVar1 = &this->tribes[tribeID].field93_0x22a;
                         *psVar1 = *psVar1 + 1;
                         if (this->tribes[tribeID].field93_0x22a < 0x3c) {}
@@ -153,26 +153,26 @@ namespace Map {
                             iVar5 = 0;
                             do {
                                 iVar4
-                                    = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
+                                    = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
                                         this)(tribeID, iVar5);
                                 iVar5 = iVar5 + 1;
                                 if (((DAT_UnitsState::instance.units[iVar4].logicalState
-                                         == OpenSHC::Map::Units::ULS_NORMAL)
+                                         == Map::Units::ULS_NORMAL)
                                         && (DAT_UnitsState::instance.units[iVar4].dying == 0))
                                     && (DAT_UnitsState::instance.units[iVar4].state.generic
-                                        != OpenSHC::Map::Units::States::US_MELEE_ATTACK)) {
+                                        != Map::Units::States::US_MELEE_ATTACK)) {
                                     switch (DAT_UnitsState::instance.units[iVar4].unitType) {
-                                    case OpenSHC::Map::Units::UT_TUNNELER:
-                                    case OpenSHC::Map::Units::UT_E_SPEAR:
-                                    case OpenSHC::Map::Units::UT_E_PIKE:
-                                    case OpenSHC::Map::Units::UT_E_MACE:
-                                    case OpenSHC::Map::Units::UT_E_SWORD:
-                                    case OpenSHC::Map::Units::UT_E_KNIGHT:
-                                    case OpenSHC::Map::Units::UT_E_MONK:
-                                    case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
-                                    case OpenSHC::Map::Units::UT_A_SLAVE:
-                                    case OpenSHC::Map::Units::UT_A_ASSASSIN:
-                                    case OpenSHC::Map::Units::UT_A_SWORDSMAN:
+                                    case Map::Units::UT_TUNNELER:
+                                    case Map::Units::UT_E_SPEAR:
+                                    case Map::Units::UT_E_PIKE:
+                                    case Map::Units::UT_E_MACE:
+                                    case Map::Units::UT_E_SWORD:
+                                    case Map::Units::UT_E_KNIGHT:
+                                    case Map::Units::UT_E_MONK:
+                                    case Map::Units::UT_S_BATTERINGRAM:
+                                    case Map::Units::UT_A_SLAVE:
+                                    case Map::Units::UT_A_ASSASSIN:
+                                    case Map::Units::UT_A_SWORDSMAN:
                                         if (DAT_UnitsState::instance.units[iVar4].SA == 0)
                                             goto LAB_0052ac8d;
                                     }
@@ -180,7 +180,7 @@ namespace Map {
                             } while (iVar5 < this->tribes[tribeID].size);
                         }
                         MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Navigation::PathFindingState_Func::aggressiveStanceTargetBuildingAtRange,
+                            Map::Navigation::PathFindingState_Func::aggressiveStanceTargetBuildingAtRange,
                             DAT_PathFindingState::ptr)(_targetUnitID, (int)((int)(15)));
                         if (DAT_PathFindingState::instance.ALG_ResultTile != 0) {
                             _buildingIndex_2 = DAT_TileMapState::instance
@@ -194,13 +194,13 @@ namespace Map {
                                 _unitInstructionType = ((UnitInstructionType)0x26);
                                 _buildingIndex = (int)_buildingIndex_2;
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, this)(
+                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, this)(
                                 tribeID, _unitInstructionType, _buildingIndex, _buildingID, 0);
                         }
                     }
                 } else {
                     BVar3 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TribesState_Func::allUnitsReachedTheirDestination, this)(tribeID);
+                        Map::Units::TribesState_Func::allUnitsReachedTheirDestination, this)(tribeID);
                     if (BVar3 == FALSE) {}
                     _buildingIndex_2 = this->tribes[tribeID].rallyPointCount;
                     iVar5 = this->tribes[tribeID].currentRallyPointIndex + 1;
@@ -217,29 +217,29 @@ namespace Map {
                         y1 = (uint)this->tribes[tribeID].rallyPointArray[iVar5][1];
                         this->tribes[tribeID].currentRallyPointIndex = (short)iVar5;
                         UVar2 = DAT_UnitsState::instance.units[_targetUnitID].unitType;
-                        if (((UVar2 == OpenSHC::Map::Units::UT_E_ARCHER) || (UVar2 == OpenSHC::Map::Units::UT_E_XBOW))
-                            || ((UVar2 == OpenSHC::Map::Units::UT_A_ARCHER
-                                || ((UVar2 == OpenSHC::Map::Units::UT_A_SLINGER
-                                    || (UVar2 == OpenSHC::Map::Units::UT_A_FIRETHROWER)))))) {
+                        if (((UVar2 == Map::Units::UT_E_ARCHER) || (UVar2 == Map::Units::UT_E_XBOW))
+                            || ((UVar2 == Map::Units::UT_A_ARCHER
+                                || ((UVar2 == Map::Units::UT_A_SLINGER
+                                    || (UVar2 == Map::Units::UT_A_FIRETHROWER)))))) {
                             if (0x1b0 < DAT_UnitsState::instance.units[_targetUnitID].closestEnemyMicroDistance) {
-                                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                                    this)(tribeID, x1, y1, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
+                                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
+                                    this)(tribeID, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                             }
-                        } else if (UVar2 == OpenSHC::Map::Units::UT_A_HARCHER) {
+                        } else if (UVar2 == Map::Units::UT_A_HARCHER) {
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
+                                Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
                                 this)(tribeID, x1, y1, 0, 0);
                         } else if ((0x60 < DAT_UnitsState::instance.units[_targetUnitID].closestEnemyMicroDistance)
-                            || (this->tribes[tribeID].unitStance != OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE)) {
+                            || (this->tribes[tribeID].unitStance != Map::Units::Behavior::USE_AGGRESSIVE)) {
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
+                                Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed,
                                 this)(tribeID, x1, y1, 0, 0);
                         }
                     }
                 }
             LAB_0052ac8d:
                 if (this->tribes[tribeID].field134_0x27a != 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::moveTribeToIndexedNearbyTile, this)(
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::moveTribeToIndexedNearbyTile, this)(
                         tribeID);
                     this->tribes[tribeID].field134_0x27a = 0;
                 }

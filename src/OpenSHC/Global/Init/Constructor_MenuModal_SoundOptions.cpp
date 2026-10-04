@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B420
     void Init::Constructor_MenuModal_SoundOptions()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SoundOptions::ptr)(
-            OpenSHC::UI::Enums::MMT_SOUND_OPTIONS, -1, -1, 500, 0x165, 0x200,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_SoundOptions::ptr)(
+            UI::Enums::MMT_SOUND_OPTIONS, -1, -1, 500, 0x165, 0x200,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::SoundOptions_Func::MenuModalRenderFunction_SoundOptions),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::SoundOptions_Func::MenuModalRenderFunction_SoundOptions),
             Menu_SoundOptions::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_SoundOptions));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_SoundOptions));
         return;
     }
 

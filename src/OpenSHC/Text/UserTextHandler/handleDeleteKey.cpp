@@ -11,9 +11,9 @@ namespace Text {
         char* pcVar1;
         int iVar2;
         char (*pacVar3)[250];
-        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::isTextInputAtCapacity, this)();
+        iVar2 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::isTextInputAtCapacity, this)();
         if (iVar2 != 2) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::shiftTextLeftAtCursor, this)(
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::shiftTextLeftAtCursor, this)(
                 this->textCursorIndexArray[this->textArrayIndex],
                 (int)((int)(this->textContentLengthArray[this->textArrayIndex]
                     - this->textCursorIndexArray[this->textArrayIndex])));

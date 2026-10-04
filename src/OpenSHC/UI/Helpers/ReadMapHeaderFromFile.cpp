@@ -13,8 +13,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::IO::FileResourceType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using IO::FileResourceType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D8A20
     void Helpers::ReadMapHeaderFromFile(char* param_1)
@@ -38,9 +38,9 @@ namespace UI {
             puVar3 = puVar4 + 1;
         } while (puVar4[1] != '\0');
         strcpy(puVar4 + 1, ".map");
-        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
-            OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
-        MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+            IO::FRT_MAPS, (char const*)((int)(local_3f4)));
+        MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);
         INT_00eb9ae8::instance = 1;
         ;
     }

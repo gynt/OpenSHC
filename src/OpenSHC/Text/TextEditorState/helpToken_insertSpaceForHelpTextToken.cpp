@@ -12,7 +12,7 @@ namespace Text {
         int iVar2;
         int iVar3;
         iVar1
-            = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength, this)(token);
+            = MACRO_CALL_MEMBER(Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength, this)(token);
         if (this->activeHelpHotspotIndex <= this->customHelpTextLength) {
             iVar3 = (this->customHelpTextLength + iVar1) * 2;
             iVar2 = this->customHelpTextLength;

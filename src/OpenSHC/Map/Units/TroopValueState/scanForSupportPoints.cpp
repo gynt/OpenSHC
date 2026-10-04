@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051F4B0
         void TroopValueState::scanForSupportPoints()
@@ -37,13 +37,13 @@ namespace Map {
                             && ((DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + tile] & 3) == 0)) {
                             x = tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
                             BVar2 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
+                                Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
                                 DAT_PathFindingState::ptr)(8, x, y, 0x40);
                             if (BVar2 == FALSE) {
                                 DAT_TileMapState::instance.AIInfoLayer[tile]
                                     = DAT_TileMapState::instance.AIInfoLayer[tile] | 0x40;
                                 iVar3 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Units::TroopValueState_Func::getSupportPointIndex, this)(tile);
+                                    Map::Units::TroopValueState_Func::getSupportPointIndex, this)(tile);
                                 iVar1 = this->attackInfo.supportPointsNext;
                                 if (iVar3 == 0) {
                                     this->attackInfo.supportPointsArray[this->attackInfo.supportPointsNext].x = x;

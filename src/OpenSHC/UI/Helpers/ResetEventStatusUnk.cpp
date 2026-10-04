@@ -16,9 +16,9 @@
 
 namespace OpenSHC {
 namespace UI {
-    using OpenSHC::Game::ScenarioEvents::InGameEventExtra;
-    using OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion;
-    using OpenSHC::Game::ScenarioEvents::ScenarioEventCondition;
+    using Game::ScenarioEvents::InGameEventExtra;
+    using Game::ScenarioEvents::InGameEventUnionVersion;
+    using Game::ScenarioEvents::ScenarioEventCondition;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D7200
     void Helpers::ResetEventStatusUnk()
@@ -418,7 +418,7 @@ namespace UI {
             INT_ARRAY_00ed2fc8::instance[iVar4] = (int)sVar1;
             if (((((iVar4 == 4) || (iVar4 == 5)) || (iVar4 == 6)) || ((iVar4 == 0x11 || (iVar4 == 7))))
                 || (iVar4 == 1)) {
-                iVar5 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
+                iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
                     DAT_MapPropertiesState::ptr)((int)sVar1);
                 INT_ARRAY_00ed2fc8::instance[iVar4] = iVar5;
             }

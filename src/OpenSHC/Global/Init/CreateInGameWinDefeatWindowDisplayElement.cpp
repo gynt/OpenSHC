@@ -12,17 +12,17 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::DE::SHCDE::eOnScreenText;
-    using OpenSHC::UI::Enums::DisplayElementPositionModifier;
+    using DE::SHCDE::eOnScreenText;
+    using UI::Enums::DisplayElementPositionModifier;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059C540
     void Init::CreateInGameWinDefeatWindowDisplayElement()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::DisplayElement_Func::Constructor_DisplayElement,
-            InGameWinDefeatWindowDisplayElement::ptr)(OpenSHC::DE::SHCDE::OST_MP_GAME_OVER, 400, 0xf0, 0,
-            (OpenSHC::UI::DisplayElementRenderFunc*)MACRO_CALL(
-                OpenSHC::UI::DisplayElements_Func::RenderInGameWinDefeatWindowDisplayElement),
-            OpenSHC::UI::Enums::DEPM_MAIN_MENU_X_Y);
+        MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
+            InGameWinDefeatWindowDisplayElement::ptr)(DE::SHCDE::OST_MP_GAME_OVER, 400, 0xf0, 0,
+            (UI::DisplayElementRenderFunc*)MACRO_CALL(
+                UI::DisplayElements_Func::RenderInGameWinDefeatWindowDisplayElement),
+            UI::Enums::DEPM_MAIN_MENU_X_Y);
         return;
     }
 

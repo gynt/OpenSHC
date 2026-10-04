@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::States::UnitState;
+        using Map::Units::UnitLogicState;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523920
         int TribesState::scatterTribeUnitsRandomly(int param_1)
@@ -31,23 +31,23 @@ namespace Map {
             sVar1 = this->tribes[param_1].selectionTargetUnitID;
             unitSelectionIndex = 0;
             index = 100;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
+            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
                 DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[sVar1].x,
                 (int)((int)(DAT_UnitsState::instance.units[sVar1].y)), -1, -1, 5000, 0);
-            iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::getComputationalTileIndex,
+            iVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::getComputationalTileIndex,
                 DAT_PathFindingState::ptr)();
             iVar4 = (int)this->tribes[param_1].size;
             if (iVar4 * 0x10 + 200 <= iVar2) {
                 if (0 < iVar4) {
                     do {
-                        iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
+                        iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
                             this)(param_1, unitSelectionIndex);
                         unitSelectionIndex = unitSelectionIndex + 1;
-                        if ((DAT_UnitsState::instance.units[iVar2].logicalState == OpenSHC::Map::Units::ULS_NORMAL)
+                        if ((DAT_UnitsState::instance.units[iVar2].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[iVar2].dying == 0)) {
                             index = index + 1 + (DAT_UnitsState::instance.units[iVar2].fixedRng & 0xf);
                             iVar3 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Navigation::PathFindingState_Func::getTileInSearchQueue,
+                                Map::Navigation::PathFindingState_Func::getTileInSearchQueue,
                                 DAT_PathFindingState::ptr)(index);
                             iVar4 = DAT_ViewportRenderState::instance
                                         .translationMatrix[DAT_ViewportRenderState::instance

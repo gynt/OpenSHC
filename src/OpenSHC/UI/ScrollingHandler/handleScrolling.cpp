@@ -10,10 +10,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::ScrollDirection;
-    using OpenSHC::UI::ScrollSpeed;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::ScrollDirection;
+    using UI::ScrollSpeed;
+    using UI::Enums::MenuModalType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00468AD0
     void ScrollingHandler::handleScrolling()
@@ -22,7 +22,7 @@ namespace UI {
         DWORD _timeOfScroll;
         int _scrollDistanceDenominator;
         _scrollDistanceMax = (this->field13_0x34 * 2) / 3;
-        if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
+        if (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU) {
             if (this->rightKeyDown_0x18 != FALSE) {
                 this->scrollRight = TRUE;
             }
@@ -40,32 +40,32 @@ namespace UI {
             if (this->scrollDown == FALSE) {
                 if (this->scrollLeft == FALSE) {
                     if (this->scrollRight == FALSE) {
-                        this->scrollDirection_0x4 = OpenSHC::UI::SD_NONE;
+                        this->scrollDirection_0x4 = UI::SD_NONE;
                     } else {
-                        this->scrollDirection_0x4 = OpenSHC::UI::SD_RIGHT;
+                        this->scrollDirection_0x4 = UI::SD_RIGHT;
                     }
                 } else {
-                    this->scrollDirection_0x4 = OpenSHC::UI::SD_LEFT;
+                    this->scrollDirection_0x4 = UI::SD_LEFT;
                 }
             } else if (this->scrollLeft == FALSE) {
                 if (this->scrollRight == FALSE) {
-                    this->scrollDirection_0x4 = OpenSHC::UI::SD_DOWN;
+                    this->scrollDirection_0x4 = UI::SD_DOWN;
                 } else {
-                    this->scrollDirection_0x4 = OpenSHC::UI::SD_DOWN_RIGHT;
+                    this->scrollDirection_0x4 = UI::SD_DOWN_RIGHT;
                 }
             } else {
-                this->scrollDirection_0x4 = OpenSHC::UI::SD_DOWN_LEFT;
+                this->scrollDirection_0x4 = UI::SD_DOWN_LEFT;
             }
         } else if (this->scrollLeft == FALSE) {
             if (this->scrollRight == FALSE) {
-                this->scrollDirection_0x4 = OpenSHC::UI::SD_UP;
+                this->scrollDirection_0x4 = UI::SD_UP;
             } else {
-                this->scrollDirection_0x4 = OpenSHC::UI::SD_UP_RIGHT;
+                this->scrollDirection_0x4 = UI::SD_UP_RIGHT;
             }
         } else {
-            this->scrollDirection_0x4 = OpenSHC::UI::SD_UP_LEFT;
+            this->scrollDirection_0x4 = UI::SD_UP_LEFT;
         }
-        if (this->scrollDirection_0x4 == OpenSHC::UI::SD_NONE) {
+        if (this->scrollDirection_0x4 == UI::SD_NONE) {
             this->isScrolling_0x0 = FALSE;
             this->scrollDistanceBase = this->field11_0x2c;
             this->timeOfLastNotScroll_0x40 = timeGetTime();
@@ -76,14 +76,14 @@ namespace UI {
             this->timeScrolling_0x44 = this->timeOfLastNotScroll_0x40;
         }
         this->isScrolling_0x0 = TRUE;
-        if (this->scrollSpeedSetting_0x38 == OpenSHC::UI::SS_FAST) {
+        if (this->scrollSpeedSetting_0x38 == UI::SS_FAST) {
             _scrollDistanceDenominator
                 = (int)((ulonglong)((longlong)this->field12_0x30 * 0x55555555) >> 0x20) - this->field12_0x30;
             _scrollDistanceDenominator = (_scrollDistanceDenominator >> 1) - (_scrollDistanceDenominator >> 0x1f);
             _scrollDistanceMax = (_scrollDistanceMax * 0x85) / 100;
         } else {
             _scrollDistanceDenominator = this->field12_0x30;
-            if (this->scrollSpeedSetting_0x38 != OpenSHC::UI::SS_SLOW)
+            if (this->scrollSpeedSetting_0x38 != UI::SS_SLOW)
                 goto LAB_00468c01;
             _scrollDistanceDenominator = this->field12_0x30 / 2;
             _scrollDistanceMax = _scrollDistanceMax / 2;

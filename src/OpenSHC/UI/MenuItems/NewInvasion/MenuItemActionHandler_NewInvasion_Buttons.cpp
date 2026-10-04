@@ -18,10 +18,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Game::ScenarioEvents::InGameEventUnion;
-        using OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::ScenarioEvents::InGameEventUnion;
+        using Game::ScenarioEvents::InGameEventUnionVersion;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BF760
         void NewInvasion::MenuItemActionHandler_NewInvasion_Buttons(int param_1, ...)
@@ -36,12 +36,12 @@ namespace UI {
             int iVar6;
             switch (param_1) {
             case 0x13:
-                MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::removeEventAtIndex,
+                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                     DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
                 goto LAB_004bf791;
             case 0x25:
                 _Str = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0xb);
+                    Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0xb);
                 _year = atol(_Str);
                 DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                     .header.year = _year;
@@ -104,11 +104,11 @@ namespace UI {
                     iVar6 = iVar6 + 5;
                 } while (iVar6 < 25);
             LAB_004bf791:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                    Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     0xf);
                 return;
             case 0x57:

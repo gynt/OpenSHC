@@ -18,8 +18,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043E350
     void BuildingMenus::RenderBuildingMenu_RenderTowerAndGateHealth()
@@ -44,24 +44,24 @@ namespace UI {
             iVar3 = (iVar3 * 100) / (int)sVar1;
         }
         int left = DAT_MenuHandlerState::instance.x + 0x1d6;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(left,
+        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(left,
             DAT_MenuHandlerState::instance.y + 0x1d3, DAT_MenuHandlerState::instance.x + 0x209,
             DAT_MenuHandlerState::instance.y + 0x1de, (ushort)(COL_BLACK::instance.shortValue));
         int bottom = iVar4 + 0x1dd;
         iVar4 = iVar4 + 0x1d4;
         local_20 = iVar2 + 0x1d7;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
             local_20, iVar4, iVar2 + 0x208, bottom, (ushort)(COL_RED::instance.shortValue));
         if (1 < iVar3) {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 local_20, iVar4, (iVar3 >> 1) + left, bottom, local_18.shortValue);
         }
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_14, "%d/%d",
+        MACRO_CALL(OS_Func::_sprintf)(local_14, "%d/%d",
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x14),
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x12));
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,
             DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2,
-            OpenSHC::Text::TTA_CENTER, 0, 0x12, FALSE, 0);
+            Text::TTA_CENTER, 0, 0x12, FALSE, 0);
         ;
     }
 

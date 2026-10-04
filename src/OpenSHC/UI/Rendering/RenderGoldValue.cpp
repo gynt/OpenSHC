@@ -46,27 +46,27 @@ namespace UI {
             local_c = 0x7d3e;
         }
         iVar5 = iVar5 + 1;
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
+        iVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
             _gold, iVar5);
         if (99999 < _gold) {
             iVar1 = iVar1 + -2;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 5, local_c,
             iVar5, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 4, local_c,
             iVar5, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 3, local_c,
             iVar5, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 2, local_c,
             iVar5, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 1, local_c,
             iVar5, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 0, local_c,
             iVar5, 1);
         local_c = 0;
@@ -87,39 +87,39 @@ namespace UI {
         iVar4 = 0;
     LAB_004339a1:
         iVar1 = local_c + 1;
-        iVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
+        iVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
             iVar4, iVar1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
             (DAT_MenuHandlerState::instance.x - iVar5) + 0x2d9, DAT_MenuHandlerState::instance.y + 0x228, 2, iVar3,
             iVar1, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
             (DAT_MenuHandlerState::instance.x - iVar5) + 0x2d9, DAT_MenuHandlerState::instance.y + 0x228, 1, iVar3,
             iVar1, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
             (DAT_MenuHandlerState::instance.x - iVar5) + 0x2d9, DAT_MenuHandlerState::instance.y + 0x228, 0, iVar3,
             iVar1, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar4,
             DAT_MenuHandlerState::instance.x + 0x2d9, DAT_MenuHandlerState::instance.y + 0x228, -1, iVar3, iVar1, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
             DAT_MenuHandlerState::instance.x + 0x2d7 + local_c, DAT_MenuHandlerState::instance.y + 0x228, 2, iVar3,
             iVar1, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
             DAT_MenuHandlerState::instance.x + 0x2d7 + local_c, DAT_MenuHandlerState::instance.y + 0x228, 1, iVar3,
             iVar1, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(iVar2,
             DAT_MenuHandlerState::instance.x + 0x2d7 + local_c, DAT_MenuHandlerState::instance.y + 0x228, 0, iVar3,
             iVar1, 1);
         iVar2 = ((0x31 < numberToRenderUnk) - 1 & 0xffff83c1) + 0x7d3e;
-        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
+        iVar4 = MACRO_CALL_MEMBER(Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
             numberToRenderUnk, 0);
         iVar4 = iVar4 / 2;
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
             numberToRenderUnk, (DAT_MenuHandlerState::instance.x - iVar4) + 0x2eb,
             DAT_MenuHandlerState::instance.y + 0x203, 2, iVar2, 0, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
             numberToRenderUnk, (DAT_MenuHandlerState::instance.x - iVar4) + 0x2eb,
             DAT_MenuHandlerState::instance.y + 0x203, 1, iVar2, 0, 1);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(
             numberToRenderUnk, (DAT_MenuHandlerState::instance.x - iVar4) + 0x2eb,
             DAT_MenuHandlerState::instance.y + 0x203, 0, iVar2, 0, 1);
     }

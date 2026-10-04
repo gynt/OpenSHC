@@ -29,10 +29,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Game::ScenarioEvents::InGameEventExtra;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using Game::ScenarioEvents::InGameEventExtra;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004DD100
         void ScenarioDescription::MenuView_ScenarioDescription_Prepare()
@@ -42,54 +42,54 @@ namespace UI {
             InGameEventExtra* pIVar3;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_screen_background.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back0.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back1.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back2.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back3.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back4.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back5.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back6.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back7.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back8.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back9.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back10.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back11.tgx");
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("briefing_back12.tgx");
             if ((DAT_MenuView_TriggerPrepare::instance != 2)
-                && ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
+                && ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
                     || (DAT_00ed2798::instance = 1,
-                        DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)))) {
+                        DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1)))) {
                 DAT_00ed2798::instance = 0;
             }
             if (DAT_MenuModalComposition2::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                == UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE) {
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
             }
             DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-            MACRO_CALL(OpenSHC::Rendering_Func::TicksStartCounter)();
+            MACRO_CALL(Rendering_Func::TicksStartCounter)();
             if (DAT_GameCore::instance.missionNumber1to20 < 1) {
                 DAT_GameCore::instance.missionNumber1to20 = 1;
             }
             iVar2 = DAT_GameCore::instance.missionNumber1to20;
             if (DAT_GameCore::instance.field22_0x64 == 0) {
-                if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::loadMapSiegeHeaderForMissionIndex,
+                if (DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk) {
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMapSiegeHeaderForMissionIndex,
                         DAT_MapPropertiesState::ptr)((char*)DAT_GameCore::instance.missionNumber1to20);
                 }
                 iVar2 = DAT_GameCore::instance.missionNumber1to20;
@@ -101,7 +101,7 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.field43_0xf0 = 0;
                 DAT_GameState::instance.mapAndTime.field44_0xf4 = 0;
             }
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
                 && (DAT_GameCore::instance.field22_0x64 == 0)) {
                 if (iVar2 < 4) {
                     DAT_GameState::instance.mapAndTime.difficulty = 1;
@@ -110,7 +110,7 @@ namespace UI {
                 }
             }
             DAT_MouseState::instance.waitCursorToggle = 0;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetEventStatusUnk)();
+            MACRO_CALL(UI::Helpers_Func::ResetEventStatusUnk)();
             DAT_00eb0b24::instance = 0;
             INT_00ed27c4::instance = 1;
             DAT_ARRAY_00ed26d0::instance[0].y = 0;
@@ -119,7 +119,7 @@ namespace UI {
             if ((DAT_MenuView_TriggerPrepare::instance != 2) && (DAT_GameCore::instance.field22_0x64 == 0)) {
                 DAT_00ed2794::instance = timeGetTime();
             }
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
+            MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             return;
         }
 

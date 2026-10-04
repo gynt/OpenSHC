@@ -26,10 +26,10 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Commands::MappersEnumInt;
+    using Map::Units::UnitType;
+    using Map::Units::States::UnitState;
+    using WindowsHelper::Enums::BOOLEnum;
+    using Commands::MappersEnumInt;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00502F30
     void TileMapState::placeWalls(
@@ -58,18 +58,18 @@ namespace Map {
         local_14 = 0;
         _normalWallCountUnk = 0;
         local_8 = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::validateWallBuildPath, this)(
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::validateWallBuildPath, this)(
             playerID, x1, y1, x2, y2, (undefined4)((int)(wallType)));
         if (this->illegalBuild == FALSE) {
             this->constructionTileCount = MACRO_CALL_MEMBER(
-                OpenSHC::Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt, DAT_GameState::ptr)(playerID, 4);
+                Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt, DAT_GameState::ptr)(playerID, 4);
             local_10 = 2;
-            if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_STAIR) {
+            if ((undefined2)wallType == Commands::M_MAPPER_STAIR) {
                 local_14 = this->field119_0x554924;
             }
             if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::WallAndPitchState_Func::resetWallPlacementInfo, DAT_WallAndPitchState::ptr)();
+                    Map::WallAndPitchState_Func::resetWallPlacementInfo, DAT_WallAndPitchState::ptr)();
             }
             local_20 = y1 - y2;
             local_1c = y2 - y1;
@@ -78,23 +78,23 @@ namespace Map {
             local_18 = x1;
             x1 = x1 - x2;
             do {
-                if (((undefined2)wallType == OpenSHC::Commands::M_MAPPER_STAIR) && (local_14 < 0x18))
+                if (((undefined2)wallType == Commands::M_MAPPER_STAIR) && (local_14 < 0x18))
                     goto LAB_00503440;
                 if ((tileCountUnk <= local_8) || (this->constructionTileCount < _normalWallCountUnk))
                     break;
                 local_8 = local_8 + 1;
                 _tile = *local_24 + local_18;
                 bVar2 = false;
-                if (((undefined2)wallType == OpenSHC::Commands::M_MAPPER_STAIR) && ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) != 0))
+                if (((undefined2)wallType == Commands::M_MAPPER_STAIR) && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) != 0))
                     goto LAB_00503440;
                 bVar1 = false;
-                if (((undefined2)wallType == OpenSHC::Commands::M_MAPPER_WALL) && ((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_CRENEL) != 0)) {
+                if (((undefined2)wallType == Commands::M_MAPPER_WALL) && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_CRENEL) != 0)) {
                     bVar1 = true;
                 }
-                if ((((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) || (this->DamageLayer[_tile] != 0))
+                if ((((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) || (this->DamageLayer[_tile] != 0))
                     || (bVar1)) {
                     if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                        MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::addWallPlacementInfoForTile,
+                        MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::addWallPlacementInfoForTile,
                             DAT_WallAndPitchState::ptr)(_tile);
                     }
                     if ((this->DamageLayer[_tile] != 0) || (bVar1)) {
@@ -102,31 +102,31 @@ namespace Map {
                         this->HeightLayer[_tile] = this->DefaultHeightLayer[_tile];
                         if (bVar1) {
                             this->LogicLayer[_tile]
-                                = this->LogicLayer[_tile] & (~(OpenSHC::Map::LogicHelpers::L_CRENEL | OpenSHC::Map::LogicHelpers::L_CRENEL_VARIATIONUnk)) | 256;
+                                = this->LogicLayer[_tile] & (~(Map::LogicHelpers::L_CRENEL | Map::LogicHelpers::L_CRENEL_VARIATIONUnk)) | 256;
                         }
                     }
-                    if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_WALL) {
+                    if ((undefined2)wallType == Commands::M_MAPPER_WALL) {
                         this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x5a;
                     LAB_005031c3:
                         if (bVar1)
                             goto LAB_005031c7;
                         _normalWallCountUnk = _normalWallCountUnk + 1;
                         this->LogicLayer[_tile]
-                            = this->LogicLayer[_tile] & (~(OpenSHC::Map::LogicHelpers::L_UNKNOWN_WALL_RELATED | OpenSHC::Map::LogicHelpers::L_BOULDERS | OpenSHC::Map::LogicHelpers::L_PEBBLES | OpenSHC::Map::LogicHelpers::L_IRON))
+                            = this->LogicLayer[_tile] & (~(Map::LogicHelpers::L_UNKNOWN_WALL_RELATED | Map::LogicHelpers::L_BOULDERS | Map::LogicHelpers::L_PEBBLES | Map::LogicHelpers::L_IRON))
                             | 256;
                         if ((this->UnitLayer[_tile] != 0)
                             && (_unitID = (int)(short)this->UnitLayer[_tile],
-                                DAT_UnitsState::instance.units[_unitID].unitType == OpenSHC::Map::Units::UT_CHICKEN)) {
+                                DAT_UnitsState::instance.units[_unitID].unitType == Map::Units::UT_CHICKEN)) {
                             DAT_UnitsState::instance.units[_unitID].state.generic
-                                = OpenSHC::Map::Units::States::US_DISAPPEAR;
+                                = Map::Units::States::US_DISAPPEAR;
                             DAT_UnitsState::instance.units[_unitID].updateTickTracker = 0;
                             DAT_UnitsState::instance.units[_unitID].disappearFadeAlphaCountdown = 0;
                         }
                         if ((this->LogicLayer[_tile] & 8U) != 0) {
-                            this->LogicLayer[_tile] = this->LogicLayer[_tile] & ~(OpenSHC::Map::LogicHelpers::L_PLAIN2_AND_PITCH);
+                            this->LogicLayer[_tile] = this->LogicLayer[_tile] & ~(Map::LogicHelpers::L_PLAIN2_AND_PITCH);
                             this->HeightLayer[_tile] = this->HeightLayer[_tile] + 4;
                         }
-                        if (((this->LogicLayer[_tile] & OpenSHC::Map::LogicHelpers::L_TREE) != 0)
+                        if (((this->LogicLayer[_tile] & Map::LogicHelpers::L_TREE) != 0)
                             && (_treeID = (int)this->OrganismLayer[_tile], _treeID < 2000)) {
                             switch (DAT_LandscapeState::instance.trees[_treeID].treeType) {
                             case ((TreeType)5):
@@ -146,18 +146,18 @@ namespace Map {
                                 DAT_LandscapeState::instance.trees[_treeID].state = 3;
                             }
                         }
-                        if (((undefined2)wallType == OpenSHC::Commands::M_MAPPER_WOODWALL) || (bVar2)) {
+                        if (((undefined2)wallType == Commands::M_MAPPER_WOODWALL) || (bVar2)) {
                             this->LogicLayer[_tile] = this->LogicLayer[_tile] | 65536;
                         }
                         this->WallOwnerLayer[_tile] = this->WallOwnerLayer[_tile] & 0xf8 | (char)playerID - 1U;
                     } else {
-                        if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_WOODWALL) {
+                        if ((undefined2)wallType == Commands::M_MAPPER_WOODWALL) {
                             this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x3c;
                             goto LAB_005031c3;
                         }
-                        if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_CRENAL) {
+                        if ((undefined2)wallType == Commands::M_MAPPER_CRENAL) {
                             this->LogicLayer[_tile] = this->LogicLayer[_tile] | 512;
-                            BVar3 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::hasOnlyTowerNeighborsNoWalls,
+                            BVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::hasOnlyTowerNeighborsNoWalls,
                                 this)(_tile, (int)((int)(y1)));
                             if (BVar3 == FALSE) {
                                 this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x62;
@@ -174,7 +174,7 @@ namespace Map {
                             }
                             goto LAB_005031c3;
                         }
-                        if ((undefined2)wallType != OpenSHC::Commands::M_MAPPER_STAIR)
+                        if ((undefined2)wallType != Commands::M_MAPPER_STAIR)
                             goto LAB_005031c3;
                         /*
                           --stairs code--
@@ -193,10 +193,10 @@ namespace Map {
                             goto LAB_005032fa;
                     }
                     MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                        Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(y1, _tile);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::clearMoat, this)(_tile);
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::clearMoat, this)(_tile);
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
                         DAT_PathFindingState::ptr)(7, local_18, y1);
                 }
             LAB_005032fa:
@@ -208,7 +208,7 @@ namespace Map {
                 if ((int)y1 < (int)y2) {
                     _tile = local_1c;
                 }
-                if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_STAIR) {
+                if ((undefined2)wallType == Commands::M_MAPPER_STAIR) {
                     if (_tile < (int)uVar4) {
                         if ((int)local_18 < (int)x2) {
                             x1 = x1 + 1;
@@ -266,7 +266,7 @@ namespace Map {
                     local_14 = local_14 + -0x10;
                 }
             } while (((local_18 != x2) || (y1 != y2)) || (local_10 != 0));
-            if ((undefined2)wallType == OpenSHC::Commands::M_MAPPER_WOODWALL) {
+            if ((undefined2)wallType == Commands::M_MAPPER_WOODWALL) {
                 _count2 = 0;
                 _count1 = _normalWallCountUnk;
             } else {
@@ -274,11 +274,11 @@ namespace Map {
                 _count1 = 0;
                 _count2 = _normalWallCountUnk;
             }
-            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
                 DAT_BuildingsState::ptr)(playerID, _count2, _count1, 0);
             DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
             this->field204_0x554a30 = 1;
-            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::triggerMinimapRedraw, DAT_MinimapViewState::ptr)(1);
+            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::triggerMinimapRedraw, DAT_MinimapViewState::ptr)(1);
         }
     }
 

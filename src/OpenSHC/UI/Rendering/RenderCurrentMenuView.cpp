@@ -12,8 +12,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F6210
     void Rendering::RenderCurrentMenuView()
@@ -24,9 +24,9 @@ namespace UI {
               menu id
              */
             if (DAT_GameCore::instance.currentMenuViewType == pMVar1->menuID) {
-                if (pMVar1->menuID == OpenSHC::UI::Enums::MVT_NO_VIEW) {
+                if (pMVar1->menuID == UI::Enums::MVT_NO_VIEW) {
                     if (DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial != FALSE) {
-                        MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderNoViewsFoundWarning)();
+                        MACRO_CALL(UI::Rendering_Func::RenderNoViewsFoundWarning)();
                     }
                 } else {
                     if (DAT_MenuView_TriggerPrepare::instance != FALSE) {

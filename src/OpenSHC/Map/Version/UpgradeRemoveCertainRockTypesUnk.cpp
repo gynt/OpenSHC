@@ -20,7 +20,7 @@ namespace Map {
             if ((puVar1->one != 0)
                 && (((int)DAT_TileMapState::instance.OrganismLayer[puVar1->tile] != iVar1 + 2000
                     || ((DAT_TileMapState::instance.LogicLayer[puVar1->tile] & 0x80) == 0)))) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::removeRock, DAT_LandscapeState::ptr)(iVar1);
+                MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeRock, DAT_LandscapeState::ptr)(iVar1);
             }
             puVar1 = puVar1 + 8;
             iVar1 = iVar1 + 1;

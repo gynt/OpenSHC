@@ -16,17 +16,17 @@ namespace UI {
         void General::MenuView_General_DoInitial_CrusadeAndRankMenu()
         {
             Menu* pMVar1;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)((int)(COL_BLACK::instance.shortValue)));
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::DrawOuterMenuBorder)();
+            MACRO_CALL(UI::Rendering_Func::DrawOuterMenuBorder)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             (DAT_MenuHandlerState::instance.currentMenu)->xPosition
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
+            MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
         }
 
     }

@@ -19,7 +19,7 @@ namespace Map {
             this->field50_0x13568 = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
-                OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
+                Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
             this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
             this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
             if (0xb < this->scenarioEvents[this->currentEventID].header.month) {
@@ -35,7 +35,7 @@ namespace Map {
             this->field50_0x13568 = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
-                OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
+                Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
             this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
             this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
             if (0xb < this->scenarioEvents[this->currentEventID].header.month) {
@@ -55,7 +55,7 @@ namespace Map {
             this->field50_0x13568 = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
-                OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
+                Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
             this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
             this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
             if (0xb < this->scenarioEvents[this->currentEventID].header.month) {
@@ -73,7 +73,7 @@ namespace Map {
             this->field50_0x13568 = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
-                OpenSHC::Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
+                Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
             this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
             this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
             if (0xb < this->scenarioEvents[this->currentEventID].header.month) {
@@ -87,7 +87,7 @@ namespace Map {
         }
         *(undefined1*)((int)&this->scenarioEvents[this->currentEventID].data + 0x4b) = 1;
     LAB_004bde26:
-        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::sortEventsByDate, this)();
+        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
     }
 
 }

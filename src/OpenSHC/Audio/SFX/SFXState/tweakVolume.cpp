@@ -17,7 +17,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0044ABB0
         void SFXState::tweakVolume(int param_1, float param_2, int currentStreamID)
         {
-            if (!MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)()) {
+            if (!MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)()) {
                 MACRO_CALL_MEMBER(MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
                     MSS::enums::SND_STR_SFX_2Unk);
                 DAT_00b986f0::instance = 0;
@@ -109,14 +109,14 @@ namespace Audio {
             }
             switch (param_1) {
             case 7:
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playAmbientSoundStream2Unk, this)(5);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playAmbientSoundStream2Unk, this)(5);
                 FLOAT_00b986e8::instance = 1.0;
                 DAT_SpeechDefinedData::instance.field10_0x49d4b4 = 7;
                 DAT_00b986f0::instance = 1;
                 DAT_SoundSystemState::instance.streamFileVolumeNextUnk_0x48[2] = 1;
                 break;
             case 8:
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playAmbientSoundStream2Unk, this)(6);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playAmbientSoundStream2Unk, this)(6);
                 DAT_SpeechDefinedData::instance.field10_0x49d4b4 = 8;
                 break;
             }

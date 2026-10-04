@@ -18,9 +18,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::Player::PlayerData;
-    using OpenSHC::Map::Entities::EntityType;
+    using DE::SHCDE::eSFX;
+    using Game::Player::PlayerData;
+    using Map::Entities::EntityType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F3150
     void LandscapeState::spawnCrowFromNearbyTree(int unitID)
@@ -133,20 +133,20 @@ namespace Map {
                     _microX = DAT_UnitsState::instance.units[unitID].x + -0x32
                         + (int)SEC_RNG::instance.currentNumber2 % 100;
                     _microY = ((int)SEC_RNG::instance.currentNumber2 >> 8) % 100 + -0x32 + _y;
-                    MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+                    MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 }
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(unitID,
+                    Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(unitID,
                     (undefined4)((int)((int)DAT_UnitsState::instance.units[unitID].owner)), 0,
                     (int)((int)((short)this->trees[_treeID].xPosition * 8)),
                     (int)((int)((short)this->trees[_treeID].yPosition * 8)),
                     (int)((int)(DAT_TileMapState::instance.HeightLayer[this->trees[_treeID].tile] + 0x1e)), _microX * 8,
-                    _microY * 8, 0xfa, OpenSHC::Map::Entities::EntityTypeInt__ET_CROW, 0);
+                    _microY * 8, 0xfa, Map::Entities::EntityTypeInt__ET_CROW, 0);
                 this->trees[_treeID].rng200till300 = SEC_RNG::instance.currentNumber2 % 100 + 200;
                 if (!bVar1) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)this->trees[_treeID].xPosition, (int)((int)((short)this->trees[_treeID].yPosition)),
-                        OpenSHC::DE::SHCDE::FX_CROW);
+                        DE::SHCDE::FX_CROW);
                     bVar1 = true;
                 }
             }

@@ -16,7 +16,7 @@
 
 namespace OpenSHC {
 
-using OpenSHC::Rendering::ColorMode;
+using Rendering::ColorMode;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x00453600
 void Rendering::ApplyBlending(int param_1)
@@ -45,11 +45,11 @@ void Rendering::ApplyBlending(int param_1)
             puVar8 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData
                 + DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance]);
             if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
-                MACRO_CALL(OpenSHC::UI::Rendering_Func::InitBlendFilterArraysUnk)();
+                MACRO_CALL(UI::Rendering_Func::InitBlendFilterArraysUnk)();
             }
             iVar9 = param_1 * 0x200;
             iVar2 = param_1 * -0x200;
-            if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
+            if (DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_555) {
                 puVar13 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
                     + uVar12 * 0xfd8;
                 sVar11 = 0x100;
@@ -98,11 +98,11 @@ void Rendering::ApplyBlending(int param_1)
             && ((int)uVar12 < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)) {
             iVar2 = DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance];
             if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
-                MACRO_CALL(OpenSHC::UI::Rendering_Func::InitBlendFilterArraysUnk)();
+                MACRO_CALL(UI::Rendering_Func::InitBlendFilterArraysUnk)();
             }
             iVar10 = param_1 * 0x200;
             iVar9 = param_1 * -0x200;
-            if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
+            if (DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_555) {
                 puVar14 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                     + (uVar12 >> 1) * 0x1fb0 + (DAT_RenderMap_DrawSomeX::instance & 0xfffffffe));
                 if ((uVar12 & 1) == 0) {

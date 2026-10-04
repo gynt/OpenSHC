@@ -7,7 +7,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::Map::Location::Point8IntXY;
+    using Map::Location::Point8IntXY;
 
     /*
       Boolean adjacency check. Walks all cardinal neighbours of cell (param_1, param_2) and returns 1   immediately if

@@ -21,13 +21,13 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Buildings::BuildingType;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
-    using OpenSHC::Map::Trees::TreeType;
-    using OpenSHC::Map::Trees::TreeTypeShort;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::UnitTypeShort;
+    using Game::GameMode;
+    using Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingTypeShort;
+    using Map::Trees::TreeType;
+    using Map::Trees::TreeTypeShort;
+    using Map::Units::UnitType;
+    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0052BA10
     void WildlifeState::updateWildlifeGrid(int _y10)
@@ -99,7 +99,7 @@ namespace Map {
             local_32c = (int)(short)DAT_TileMapState::instance
                             .PathConnectionLayer[DAT_GameState::instance.playerDataArray[8].campground.tileEntry];
         }
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             local_35c = 0;
             do {
                 _x10 = local_35c / 10;
@@ -222,31 +222,31 @@ namespace Map {
                                               .buildings[DAT_TileMapState::instance.BuildingLayer[_tile]]
                                               .buildingType;
                                 BVar4 = *pBVar2;
-                                if (BVar4 == OpenSHC::Map::Buildings::BT_MANORHOUSE) {
+                                if (BVar4 == Map::Buildings::BT_MANORHOUSE) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if (BVar4 == OpenSHC::Map::Buildings::BT_STONEKEEP) {
+                                } else if (BVar4 == Map::Buildings::BT_STONEKEEP) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if (BVar4 == OpenSHC::Map::Buildings::BT_STRONGHOLD) {
+                                } else if (BVar4 == Map::Buildings::BT_STRONGHOLD) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if (BVar4 == OpenSHC::Map::Buildings::BT_KEEPFOUR) {
+                                } else if (BVar4 == Map::Buildings::BT_KEEPFOUR) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if (BVar4 == OpenSHC::Map::Buildings::BT_KEEPFIVE) {
+                                } else if (BVar4 == Map::Buildings::BT_KEEPFIVE) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if (BVar4 == OpenSHC::Map::Buildings::BT_CAMPGROUND) {
+                                } else if (BVar4 == Map::Buildings::BT_CAMPGROUND) {
                                     this->grid[_x10][_y10].keeps = this->grid[_x10][_y10].keeps + 1;
-                                } else if ((((BVar4 == OpenSHC::Map::Buildings::BT_GATEHOUSELARGE)
-                                                || (BVar4 == OpenSHC::Map::Buildings::BT_GATEHOUSESMALL))
-                                               || (((BVar4 == OpenSHC::Map::Buildings::BT_WOODGATE1
-                                                        || ((((BVar4 == OpenSHC::Map::Buildings::BT_WOODGATE2
-                                                                  || (BVar4 == OpenSHC::Map::Buildings::BT_DRAWBRIDGE))
-                                                                 || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER1))
-                                                            || ((BVar4 == OpenSHC::Map::Buildings::BT_TOWER2
-                                                                || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER3))))))
-                                                   || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER4))))
-                                    || (BVar4 == OpenSHC::Map::Buildings::BT_TOWER5)) {
+                                } else if ((((BVar4 == Map::Buildings::BT_GATEHOUSELARGE)
+                                                || (BVar4 == Map::Buildings::BT_GATEHOUSESMALL))
+                                               || (((BVar4 == Map::Buildings::BT_WOODGATE1
+                                                        || ((((BVar4 == Map::Buildings::BT_WOODGATE2
+                                                                  || (BVar4 == Map::Buildings::BT_DRAWBRIDGE))
+                                                                 || (BVar4 == Map::Buildings::BT_TOWER1))
+                                                            || ((BVar4 == Map::Buildings::BT_TOWER2
+                                                                || (BVar4 == Map::Buildings::BT_TOWER3))))))
+                                                   || (BVar4 == Map::Buildings::BT_TOWER4))))
+                                    || (BVar4 == Map::Buildings::BT_TOWER5)) {
                                     this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                                 }
-                                if (*pBVar2 != OpenSHC::Map::Buildings::BT_SIGNPOST) {
+                                if (*pBVar2 != Map::Buildings::BT_SIGNPOST) {
                                     this->grid[_x10][_y10].field3_0xc = this->grid[_x10][_y10].field3_0xc + 1;
                                 }
                             }
@@ -260,18 +260,18 @@ namespace Map {
                                 } else {
                                     this->grid[_x10][_y10].field8_0x20 = this->grid[_x10][_y10].field8_0x20 + 1;
                                     UVar5 = DAT_UnitsState::instance.units[_unitID].unitType;
-                                    if (UVar5 == OpenSHC::Map::Units::UT_ANTELOPESHDEER) {
+                                    if (UVar5 == Map::Units::UT_ANTELOPESHDEER) {
                                         this->grid[_x10][_y10].deerCount = this->grid[_x10][_y10].deerCount + 1;
                                         if (DAT_TribesState::instance
                                                 .tribes[DAT_UnitsState::instance.units[_unitID].tribeID]
                                                 .field133_0x278
                                             != 0)
                                             goto LAB_0052be68;
-                                    } else if (UVar5 == OpenSHC::Map::Units::UT_RABBIT) {
+                                    } else if (UVar5 == Map::Units::UT_RABBIT) {
                                         this->grid[_x10][_y10].rabbitCount = this->grid[_x10][_y10].rabbitCount + 1;
-                                    } else if (UVar5 == OpenSHC::Map::Units::UT_CAMELSHBEAR) {
+                                    } else if (UVar5 == Map::Units::UT_CAMELSHBEAR) {
                                         this->grid[_x10][_y10].camelCount = this->grid[_x10][_y10].camelCount + 1;
-                                    } else if (UVar5 == OpenSHC::Map::Units::UT_LIONSHWOLF) {
+                                    } else if (UVar5 == Map::Units::UT_LIONSHWOLF) {
                                         this->grid[_x10][_y10].lionCount = this->grid[_x10][_y10].lionCount + 1;
                                     }
                                 }

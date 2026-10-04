@@ -10,12 +10,12 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0048C150
     GameSynchronyState* GameSynchronyState::Constructor_GameSynchronyState()
     {
-        this->currentGameMode = OpenSHC::Game::GM_SOLITARY;
+        this->currentGameMode = Game::GM_SOLITARY;
         this->field304_0x109e8c = 1;
         this->DPLAYX_ReceivedPlayerID = 0;
         this->DPLAY_ToID = 0;
@@ -34,12 +34,12 @@ namespace Synchrony {
         this->field57_0x79c[2] = 0;
         this->field57_0x79c[3] = 0;
         this->field196_0x101ad4 = 0;
-        MACRO_CALL(OpenSHC::Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             0xc, "Contestant", (void*)((int)(this->DPLAY_PlayerShortName)));
         this->scrollBarItemCount = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::setupSkirmishLobby, this)();
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::readGameSpyConfig, this)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setupSkirmishLobby, this)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::readGameSpyConfig, this)();
         this->skirmishAutoSaveEveryMinutes = 10;
         return this;
     }

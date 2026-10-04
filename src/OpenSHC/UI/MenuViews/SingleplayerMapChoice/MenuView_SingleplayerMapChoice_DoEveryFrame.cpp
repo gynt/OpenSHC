@@ -30,8 +30,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::IO::FileResourceType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using IO::FileResourceType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00448E90
         void SingleplayerMapChoice::MenuView_SingleplayerMapChoice_DoEveryFrame()
@@ -51,7 +51,7 @@ namespace UI {
             char local_3f4[1008];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_3f8;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(0,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].width)
@@ -82,15 +82,15 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.reparseMaps != FALSE) {
                 DAT_GameSynchronyState::instance.reparseMaps = FALSE;
                 DAT_MouseState::instance.waitCursorToggle = 1;
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetCursorDependingOnProgramState)();
+                MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
                 MACRO_CALL_MEMBER(
-                    OpenSHC::IO::ResourceManager_Func::mapNames_syncLoadedMapNames, DAT_ResourceManager::ptr)();
+                    IO::ResourceManager_Func::mapNames_syncLoadedMapNames, DAT_ResourceManager::ptr)();
                 iVar8 = 0;
                 iVar7 = -1;
                 id = 0;
                 if (0 < DAT_ResourceManager::instance.mapFileCounter) {
                     do {
-                        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                        pcVar3 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                             DAT_ResourceManager::ptr)(id);
                         pcVar6 = local_3f4;
                         do {
@@ -105,22 +105,22 @@ namespace UI {
                             pcVar6 = pcVar3 + 1;
                         } while (pcVar3[1] != '\0');
                         strcpy(pcVar3 + 1, ".map");
-                        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
-                            DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
-                        MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(
+                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName,
+                            DAT_ResourceManager::ptr)(IO::FRT_MAPS, (char const*)((int)(local_3f4)));
+                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(
                             id);
                         iVar4 = DAT_GameCore::instance.savedMapEndInt2;
                         switch (DAT_MapPropertiesState::instance.scenarioMissionSiegeOrInvasion) {
-                        case OpenSHC::Map::MT_SIEGE:
+                        case Map::MT_SIEGE:
                             DAT_MapPropertiesState::instance.scenarionMissionType = 2;
                             break;
-                        case OpenSHC::Map::MT_INVASION:
+                        case Map::MT_INVASION:
                             DAT_MapPropertiesState::instance.scenarionMissionType = 3;
                             break;
-                        case OpenSHC::Map::MT_ECONOMIC:
+                        case Map::MT_ECONOMIC:
                             DAT_MapPropertiesState::instance.scenarionMissionType = 1;
                             break;
-                        case OpenSHC::Map::MT_JUST_BUILD:
+                        case Map::MT_JUST_BUILD:
                             DAT_MapPropertiesState::instance.scenarionMissionType = 0;
                         }
                         if (((DAT_GameCore::instance.mapType == 0)
@@ -132,9 +132,9 @@ namespace UI {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + 499] = id;
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapU3EndInt2[id] = iVar4;
                             pcVar6 = MACRO_CALL_MEMBER(
-                                OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                                IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                                 DAT_ResourceManager::ptr)(id);
-                            iVar4 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(pcVar6, (char const*)((int)(pcVar3)));
+                            iVar4 = MACRO_CALL(OS_Func::__stricmp)(pcVar6, (char const*)((int)(pcVar3)));
                             if (iVar4 == 0) {
                                 iVar7 = iVar8;
                             }
@@ -163,7 +163,7 @@ namespace UI {
                             iVar7 = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1;
                         }
                     }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
+                    MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                     DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
@@ -182,28 +182,28 @@ namespace UI {
             local_3f8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x294;
             bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x216;
             MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
                 iVar7, top, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x280, bottom, (iVar5 / 32) + 0x20);
             if (DAT_00b960dc::instance == 0) {
                 iVar8 = iVar8 + 0x295;
                 iVar7 = iVar7 + -1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar7, iVar4 + 0xfc, iVar8, iVar4 + 0xfc,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar7, iVar4 + 0x217, iVar8, iVar4 + 0x217,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar7, iVar4 + 0x111, iVar8, iVar4 + 0x111,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar7, top, iVar7, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar8, top, iVar8, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     local_3f8 + -0x14, top, (int)((int)(local_3f8 + -0x14)), bottom,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     local_3f8 + -0x13, iVar4 + 0x202, (int)((int)(local_3f8)), iVar4 + 0x202,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
             };

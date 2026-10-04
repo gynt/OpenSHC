@@ -15,7 +15,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00416720
     void Buildings::UpdateAppleFarm()
@@ -32,11 +32,11 @@ namespace Map {
             piVar1 = &DAT_GameState::instance.playerDataArray[sVar2].farmsWithoutWorkers;
             *piVar1 = *piVar1 + 1;
         }
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar3);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar3);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar3 = DAT_CurrentBuildingID::instance;
-        bVar4 = DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY;
+        bVar4 = DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         if (bVar4) {
             DAT_BuildingsState::instance.buildings[iVar3].displayOwnerFlag = 1;

@@ -27,11 +27,11 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Map::Buildings::BuildingType;
-        using OpenSHC::Map::Buildings::BuildingTypeShort;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode;
+        using Map::Buildings::BuildingType;
+        using Map::Buildings::BuildingTypeShort;
+        using Map::Units::UnitType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051E300
         void TroopValueState::recomputeAttackInfo(int playerID, int attackedPlayerID)
@@ -79,7 +79,7 @@ namespace Map {
             ushort _area;
             int _startCon;
             _offset = playerID * 96188;
-            _isSolitary = DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY;
+            _isSolitary = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
             *(undefined4*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -0xc) = 0;
             *(undefined4*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -0xc) = 0;
             *(undefined4*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -8) = 0;
@@ -110,25 +110,25 @@ namespace Map {
             } else {
                 DAT_TroopValueState::instance.attackInfo.someDistanceLimit = 4;
             }
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(16000,
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(16000,
                 '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(DAT_TroopValueState::instance.attackInfo.peopleValuesArray)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(DAT_TroopValueState::instance.attackInfo.lordValuesArray)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + _offset))));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(DAT_TroopValueState::instance.attackInfo.high2ValuesArray)));
-            MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 16000, '\0', (void*)((int)(DAT_TroopValueState::instance.attackInfo.arch2ValuesArray)));
             _startCon = DAT_TroopValueState::instance.attackInfo.startCon;
             _tile = 0;
@@ -142,27 +142,27 @@ namespace Map {
                     } else {
                         _buildingID_2 = (int)(short)_buildingID;
                         _buildingType = DAT_BuildingsState::instance.buildings[_buildingID_2].buildingType;
-                        if (_buildingType == OpenSHC::Map::Buildings::BT_GATEHOUSELARGE) {
+                        if (_buildingType == Map::Buildings::BT_GATEHOUSELARGE) {
                             _buildingHeight_GHL = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                                Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                                 DAT_BuildingsState::ptr)(_buildingID_2);
                             _defaultHeight
                                 = _buildingHeight_GHL + (uint)DAT_TileMapState::instance.DefaultHeightLayer[_tile];
-                        } else if (_buildingType == OpenSHC::Map::Buildings::BT_GATEHOUSESMALL) {
+                        } else if (_buildingType == Map::Buildings::BT_GATEHOUSESMALL) {
                             _buildingHeight_GHS = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                                Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                                 DAT_BuildingsState::ptr)(_buildingID_2);
                             _defaultHeight
                                 = _buildingHeight_GHS + (uint)DAT_TileMapState::instance.DefaultHeightLayer[_tile];
                         } else {
                             _buildingHeight_else = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                                Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                                 DAT_BuildingsState::ptr)(_buildingID_2);
                             _defaultHeight = _buildingHeight_else + (uint)DAT_TileMapState::instance.HeightLayer[_tile];
                         }
                     }
                     if (_unitID != 0) {
-                        _teamsDifferent = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getTeamsDifferent,
+                        _teamsDifferent = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getTeamsDifferent,
                             DAT_GameState::ptr)((int)DAT_UnitsState::instance.units[(short)_unitID].owner, playerID);
                         _pSpecialAreas = (undefined*)(DAT_TileMapState::instance.ptr_SpecialAreasArray);
                         _pConnectionLayer = (undefined*)(DAT_TileMapState::instance.ptr_PathConnectionLayer);
@@ -198,13 +198,13 @@ namespace Map {
                                     if (DAT_TileMapState::instance.specialAreasArray[iVar13] == _startCon) {
                                         if ((999 < DAT_TroopValueState::instance.attackInfo.people2)
                                             || (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
                                                     this)(_tile),
                                                 _teamsDifferent != FALSE))
                                             break;
                                         _height1
-                                            = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                            = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile,
                                                 DAT_TileMapState::ptr)(
                                                 DAT_TileMapState::instance
                                                     .directionTranslationMatrix[DAT_TileMapState::instance.DAT_SomeY]
@@ -229,7 +229,7 @@ namespace Map {
                                 } while (iVar13 < 8);
                             }
                             if (DAT_UnitsState::instance.units[(short)_unitID].unitType
-                                == OpenSHC::Map::Units::UT_LORD) {
+                                == Map::Units::UT_LORD) {
                                 DAT_TroopValueState::instance.attackInfo.someArea
                                     = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
                                 DAT_TroopValueState::instance.attackInfo.lord1
@@ -294,7 +294,7 @@ namespace Map {
                                 *(undefined2*)(puVar5 + 8) = uVar3;
                                 iVar13 = 0;
                                 do {
-                                    iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    iVar11 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
                                         DAT_PathFindingState::ptr)(playerID,
                                         (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -303,7 +303,7 @@ namespace Map {
                                         if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray
                                                  + _offset + -8))
                                             || (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
                                                     this)(_tile),
                                                 _teamsDifferent != FALSE))
@@ -314,7 +314,7 @@ namespace Map {
                                             + _tile;
                                         if (((DAT_TileMapState::instance.LogicLayer[iVar11] & 0x10000100U) == 0)
                                             && ((uVar12 = MACRO_CALL_MEMBER(
-                                                     OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                                     Map::TileMapState_Func::getTotalHeightAtTile,
                                                      DAT_TileMapState::ptr)(iVar11),
                                                 _someY = DAT_TileMapState::instance.DAT_SomeY,
                                                 (int)(uint)bVar1 <= (int)(uVar12 + 0x10)
@@ -384,7 +384,7 @@ namespace Map {
                             *(undefined2*)(puVar5 + 6) = *(undefined2*)(puVar4 + iVar13 + 2);
                             *(undefined2*)(puVar5 + 10) = uVar3;
                             for (_direction = 0; _direction < 8; _direction += 2) {
-                                _toArea = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                _toArea = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                 calculateCanPlayerUnitsNavigateToAreaFromArea,
                                     DAT_PathFindingState::ptr)(playerID,
                                     (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -394,7 +394,7 @@ namespace Map {
                                     if (_directionMin1 < 0) {
                                         _directionMin1 = 7;
                                     }
-                                    iVar13 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    iVar13 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
                                         DAT_PathFindingState::ptr)(playerID,
                                         (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -403,7 +403,7 @@ namespace Map {
                                         0);
                                     if (((iVar13 != 0)
                                             && (iVar13
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                         calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                     DAT_PathFindingState::ptr)(playerID,
                                                     (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -415,7 +415,7 @@ namespace Map {
                                         if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray
                                                  + _offset + -8))
                                             || (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
                                                     this)(_tile),
                                                 _teamsDifferent != FALSE))
@@ -426,7 +426,7 @@ namespace Map {
                                             + _tile;
                                         if (((DAT_TileMapState::instance.LogicLayer[iVar13] & 0x10000100U) == 0)
                                             && ((uVar7 = MACRO_CALL_MEMBER(
-                                                     OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                                     Map::TileMapState_Func::getTotalHeightAtTile,
                                                      DAT_TileMapState::ptr)(iVar13),
                                                 (int)uVar12 <= (int)(uVar7 + 0x10)
                                                     && ((int)(uVar7 - 0x10) <= (int)uVar12)))) {
@@ -456,7 +456,7 @@ namespace Map {
                                             DAT_TileMapState::instance.DAT_SomeX = _tile
                                                 - DAT_ViewportRenderState::instance.translationMatrix[iVar13]
                                                       .addXgetTile;
-                                            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                   updateAIZoneWithFloodFill0x20,
                                                 DAT_PathFindingState::ptr)(4,
                                                 (uint)((int)(DAT_TileMapState::instance.DAT_SomeX)),
@@ -471,7 +471,7 @@ namespace Map {
                             *piVar14 = *piVar14 + 1;
                             iVar13 = 0;
                             do {
-                                iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                iVar11 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                calculateCanPlayerUnitsNavigateToAreaFromArea,
                                     DAT_PathFindingState::ptr)(playerID,
                                     (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -480,7 +480,7 @@ namespace Map {
                                     if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray
                                              + _offset + -8))
                                         || (_teamsDifferent
-                                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                            = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                     getTileInTargetedBuildingTiles,
                                                 this)(_tile),
                                             _teamsDifferent != FALSE))
@@ -491,7 +491,7 @@ namespace Map {
                                         + _tile;
                                     if (((DAT_TileMapState::instance.LogicLayer[iVar11] & 0x10000100U) == 0)
                                         && ((uVar7
-                                            = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                            = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile,
                                                 DAT_TileMapState::ptr)(iVar11),
                                             iVar11 = DAT_TileMapState::instance.DAT_SomeY,
                                             (int)uVar12 <= (int)(uVar7 + 0x10)
@@ -518,7 +518,7 @@ namespace Map {
                                                 - DAT_ViewportRenderState::instance
                                                       .translationMatrix[DAT_TileMapState::instance.DAT_SomeY]
                                                       .addXgetTile;
-                                            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                   recomputeALGPathFindingTileMapUnk,
                                                 DAT_PathFindingState::ptr)(
                                                 DAT_TroopValueState::instance.attackInfo.someDistanceLimit,
@@ -543,7 +543,7 @@ namespace Map {
                                 }
                                 iVar13 = 0;
                                 do {
-                                    iVar11 = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    iVar11 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                    calculateCanPlayerUnitsNavigateToAreaFromArea,
                                         DAT_PathFindingState::ptr)(playerID,
                                         (dword)((int)(DAT_TroopValueState::instance.attackInfo.startCon)),
@@ -553,7 +553,7 @@ namespace Map {
                                                 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray
                                                     + _offset + -8))
                                             || (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
                                                     this)(_tile),
                                                 _teamsDifferent != FALSE))
@@ -564,7 +564,7 @@ namespace Map {
                                             + _tile;
                                         if (((DAT_TileMapState::instance.LogicLayer[iVar11] & 0x10000100U) == 0)
                                             && ((uVar7 = MACRO_CALL_MEMBER(
-                                                     OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                                     Map::TileMapState_Func::getTotalHeightAtTile,
                                                      DAT_TileMapState::ptr)(iVar11),
                                                 (int)uVar12 <= (int)(uVar7 + 0x10)
                                                     && ((int)(uVar7 - 0x10) <= (int)uVar12)))) {
@@ -605,11 +605,11 @@ namespace Map {
                                     if (*(char*)(attackedPlayerID * 0x13a10 + 0x1ee2998 + _tile) != '\0') {
                                         _buildingID_3 = (int)DAT_TileMapState::instance.BuildingLayer[_tile];
                                         _teamsDifferent = MACRO_CALL_MEMBER(
-                                            OpenSHC::Map::Units::TroopValueState_Func::attackInfoHasHigh2Building,
+                                            Map::Units::TroopValueState_Func::attackInfoHasHigh2Building,
                                             this)(_buildingID_3);
                                         if ((_teamsDifferent == FALSE)
                                             && (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         attackInfoHasArch2Building,
                                                     this)(_buildingID_3),
                                                 puVar5 = (undefined*)DAT_TileMapState::instance.ptr_SpecialAreasArray,
@@ -644,7 +644,7 @@ namespace Map {
                                                 DAT_BuildingsState::instance.buildings[_buildingID_3]
                                                     .unknownCounterTo10000_0x2b4 = sVar10;
                                                 _teamsDifferent
-                                                    = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::
+                                                    = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
                                                                             hasHumanPlayerUnitsOnBuilding,
                                                         DAT_BuildingsState::ptr)(_buildingID_3);
                                                 if (_teamsDifferent == FALSE) {
@@ -652,7 +652,7 @@ namespace Map {
                                                         = DAT_TroopValueState::instance.attackInfo.arch1 + 1;
                                                     if ((DAT_TroopValueState::instance.attackInfo.arch2 < 1000)
                                                         && (iVar13 = MACRO_CALL_MEMBER(
-                                                                OpenSHC::Map::Navigation::PathFindingState_Func::
+                                                                Map::Navigation::PathFindingState_Func::
                                                                     calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                                 DAT_PathFindingState::ptr)(playerID,
                                                                 (dword)((int)(DAT_TroopValueState::instance.attackInfo
@@ -679,7 +679,7 @@ namespace Map {
                                                         = DAT_TroopValueState::instance.attackInfo.high1 + 1;
                                                     if ((DAT_TroopValueState::instance.attackInfo.high2 < 1000)
                                                         && (iVar13 = MACRO_CALL_MEMBER(
-                                                                OpenSHC::Map::Navigation::PathFindingState_Func::
+                                                                Map::Navigation::PathFindingState_Func::
                                                                     calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                                 DAT_PathFindingState::ptr)(playerID,
                                                                 (dword)((int)(DAT_TroopValueState::instance.attackInfo
@@ -735,13 +735,13 @@ namespace Map {
                                         if ((999 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray
                                                  + _offset + -8))
                                             || (_teamsDifferent
-                                                = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::
+                                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                                         getTileInTargetedBuildingTiles,
                                                     this)(_tile),
                                                 _teamsDifferent != FALSE))
                                             break;
                                         _heightTown
-                                            = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                            = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile,
                                                 DAT_TileMapState::ptr)(
                                                 DAT_TileMapState::instance
                                                     .directionTranslationMatrix[DAT_TileMapState::instance.DAT_SomeY]
@@ -804,7 +804,7 @@ namespace Map {
                             if ((*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + _offset + -8)
                                     < 1000)
                                 && (_teamsDifferent = MACRO_CALL_MEMBER(
-                                        OpenSHC::Map::Units::TroopValueState_Func::getTileInTargetedBuildingTiles,
+                                        Map::Units::TroopValueState_Func::getTileInTargetedBuildingTiles,
                                         this)(_tile),
                                     _teamsDifferent == FALSE)) {
                                 iVar11 = DAT_TileMapState::instance
@@ -812,7 +812,7 @@ namespace Map {
                                     + _tile;
                                 if (((DAT_TileMapState::instance.LogicLayer[iVar11] & 0x10000100U) != 0)
                                     || ((
-                                        uVar7 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::getTotalHeightAtTile,
+                                        uVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAtTile,
                                             DAT_TileMapState::ptr)(iVar11),
                                         (int)(uVar7 + 0x10) < (int)uVar12 || ((int)uVar12 < (int)(uVar7 - 0x10)))))
                                     break;
@@ -837,7 +837,7 @@ namespace Map {
                                     _someLimit = DAT_TroopValueState::instance.attackInfo.someDistanceLimit;
                                 LAB_0051f316:
                                     DAT_TileMapState::instance.DAT_SomeX = _tile - iVar13;
-                                    MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::
+                                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                           recomputeALGPathFindingTileMapUnk,
                                         DAT_PathFindingState::ptr)(_someLimit,
                                         (uint)((int)(DAT_TileMapState::instance.DAT_SomeX)), (uint)((int)(_someY)), 1);

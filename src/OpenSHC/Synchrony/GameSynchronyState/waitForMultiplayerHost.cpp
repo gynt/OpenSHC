@@ -15,24 +15,24 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::UI::Enums::MenuModalType;
-    using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Commands::GameCommandType;
+    using Game::GameMode;
+    using UI::Enums::MenuModalType;
+    using UI::Enums::MenuViewType;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00490920
     void GameSynchronyState::waitForMultiplayerHost()
     {
         DWORD DVar1;
         uint uVar2;
-        this->currentGameMode = OpenSHC::Game::GM_MULTIPLAYER;
+        this->currentGameMode = Game::GM_MULTIPLAYER;
         DAT_GameCore::instance.solitaryAllBuildingsAreFree = FALSE;
         DAT_GameCore::instance.solitaryAltUDungeon = FALSE;
         if (this->isHost == FALSE) {
             this->DAT_HostAnnounced = 0;
-            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST);
             this->DAT_TickCount = GetTickCount();
             DVar1 = GetTickCount();
             uVar2 = DVar1 - this->DAT_TickCount;
@@ -40,17 +40,17 @@ namespace Synchrony {
               20 seconds? 2 seconds? wait
              */
             while ((uVar2 < 20000 && (this->DAT_HostAnnounced == 0))) {
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::receiveAllTransmittedCommands, this)();
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::receiveAllTransmittedCommands, this)();
                 DVar1 = GetTickCount();
                 uVar2 = DVar1 - this->DAT_TickCount;
             }
             if (this->DAT_HostAnnounced == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::disconnectDPlay, this)();
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby, this)();
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_MP_CONNECTION, 0);
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay, this)();
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby, this)();
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_MP_CONNECTION, 0);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
             }
         }
         this->DAT_HostAnnounced = 1;

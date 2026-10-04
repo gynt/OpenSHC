@@ -16,9 +16,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
+        using Game::GameMode2;
+        using Map::MapType2;
+        using Map::Units::SomeTribeBehaviorType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051D730
         void TroopValueState::updateActiveAttackWaveState(int attackWave)
@@ -27,8 +27,8 @@ namespace Map {
             int iVar2;
             int playerID;
             playerID = (int)(char)this->attackInfo.attackWavePlayerIDArray[attackWave];
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                 playerID = 2;
             }
             iVar2 = this->attackInfo.attackWaveTicker[attackWave];
@@ -36,17 +36,17 @@ namespace Map {
             this->attackInfo.attackWaveTicker[attackWave] = iVar1;
             if (iVar2 < 1) {
                 this->attackInfo.someCounter1 = this->attackInfo.someCounter1 + 1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::removeSiegeBuildings,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::removeSiegeBuildings,
                     DAT_BuildingsState::ptr)(attackWave, playerID);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::exitSiegeEquipmentForWave, this)(
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::exitSiegeEquipmentForWave, this)(
                     attackWave);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                     attackWave, 1000, 10000, (SomeTribeBehaviorType)((int)(1023)));
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
-                    (OpenSHC::Map::Units::SomeTribeBehaviorType)1023, OpenSHC::Map::Units::STBT_1, 0, 10);
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
+                    (Map::Units::SomeTribeBehaviorType)1023, Map::Units::STBT_1, 0, 10);
             } else {
                 if (100 < iVar1) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::applyTribeBehaviorType,
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::applyTribeBehaviorType,
                         DAT_TribesState::ptr)(attackWave, (SomeTribeBehaviorType)((int)(1024)));
                 }
                 if (1000 < this->attackInfo.attackWaveTicker[attackWave]) {

@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Buildings::Building;
-    using OpenSHC::Map::Buildings::BuildingLogicalState;
+    using Map::Buildings::Building;
+    using Map::Buildings::BuildingLogicalState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A140
     void Version::UpgradeBuildingProperties1(int version)

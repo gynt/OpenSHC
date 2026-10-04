@@ -9,7 +9,7 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::Text::TextArrayIndexType;
+    using Text::TextArrayIndexType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00474110
     void UserTextHandler::handleCharacterCode(byte characterCode)
@@ -18,16 +18,16 @@ namespace Text {
             return;
         }
 
-        if ((this->textArrayIndex == OpenSHC::Text::TAIT_TWO__FILTER_A)
-            || (this->textArrayIndex == OpenSHC::Text::TAIT_THREE__FILTER_A)) {
+        if ((this->textArrayIndex == Text::TAIT_TWO__FILTER_A)
+            || (this->textArrayIndex == Text::TAIT_THREE__FILTER_A)) {
             if (DAT_TextInputDefinedData::instance.UserTextHandler_CharacterFilter_A_2_3[characterCode] == 0) {
                 return;
             }
-        } else if (((this->textArrayIndex == OpenSHC::Text::TAIT_FIVE__NUMERIC_DOT)
-                       || (this->textArrayIndex == OpenSHC::Text::TAIT_SIX__NUMERIC_ONLY))
-            || (this->textArrayIndex == OpenSHC::Text::TAIT_SEVEN__NUMERIC_ONLY)) {
+        } else if (((this->textArrayIndex == Text::TAIT_FIVE__NUMERIC_DOT)
+                       || (this->textArrayIndex == Text::TAIT_SIX__NUMERIC_ONLY))
+            || (this->textArrayIndex == Text::TAIT_SEVEN__NUMERIC_ONLY)) {
             if ((characterCode < 48) || (57 < characterCode)) {
-                if (this->textArrayIndex != OpenSHC::Text::TAIT_FIVE__NUMERIC_DOT) {
+                if (this->textArrayIndex != Text::TAIT_FIVE__NUMERIC_DOT) {
                     return;
                 }
                 if (characterCode != 0x2e) {
@@ -38,14 +38,14 @@ namespace Text {
             return;
         }
 
-        if (MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::isTextInputAtCapacity, this)() == 2) {
+        if (MACRO_CALL_MEMBER(Text::UserTextHandler_Func::isTextInputAtCapacity, this)() == 2) {
             return;
         }
 
         if ((DAT_InsertKeyState::instance.insert != 0)
             && (this->textContentLengthArray[this->textArrayIndex]
                 < this->textBoxMaxCharactersArray[this->textArrayIndex])) {
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::shiftTextRightAtCursor, this)(
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::shiftTextRightAtCursor, this)(
                 this->textCursorIndexArray[this->textArrayIndex],
                 this->textContentLengthArray[this->textArrayIndex]
                     - this->textCursorIndexArray[this->textArrayIndex]);

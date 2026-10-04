@@ -20,8 +20,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
-        using OpenSHC::DE::SHCDE::eSFX;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eSFX;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00406900
         void EntityState::processSeaGulls(int seagullID)
@@ -70,9 +70,9 @@ namespace Map {
                 this->entityArray[_entityID].targetX = this->entityArray[_entityID].microX;
                 _yPosition = this->entityArray[_entityID].yPosition;
                 this->entityArray[_entityID].targetY = _y;
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)this->entityArray[_entityID].xPosition, (int)((int)(_yPosition)),
-                    OpenSHC::DE::SHCDE::FX_GULL_SURFACE);
+                    DE::SHCDE::FX_GULL_SURFACE);
             }
             _microX = (int)this->entityArray[_entityID].microX;
             _targetX = _microX - this->entityArray[_entityID].targetX;
@@ -88,14 +88,14 @@ namespace Map {
                     _newMicroX = this->entityArray[_entityID].someMicroX + _microX;
                     _newY = _newMicroY / 8;
                     _newX = _newMicroX / 8;
-                    _newBounds = MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid,
+                    _newBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                         DAT_ViewportRenderState::ptr)(_newX, _newY);
                     if (_newBounds != FALSE) {
                         _oldMicroY = (int)this->entityArray[_entityID].microY;
                         _oldMicroX = (int)this->entityArray[_entityID].microX;
                         _oldY = _oldMicroY / 8;
                         _oldX = _oldMicroX / 8;
-                        _oldBounds = MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid,
+                        _oldBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_oldX, _oldY);
                         if (((_oldBounds != FALSE)
                                 && ((DAT_TileMapState::instance.LogicLayer
@@ -108,12 +108,12 @@ namespace Map {
                                     & 1)
                                 != 0)) {
                             this->seagullArray[seagullID].someCountDown = 160;
-                            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::setProjectileTargetPosition,
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition,
                                 this)(_entityID, (int)((int)(this->entityArray[_entityID].microX)),
                                 (int)((int)(this->entityArray[_entityID].microY)), 0xfa, _newMicroX, _newMicroY, 0);
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)this->entityArray[_entityID].xPosition,
-                                (int)((int)(this->entityArray[_entityID].yPosition)), OpenSHC::DE::SHCDE::FX_GULL);
+                                (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL);
                             return;
                         }
                     }
@@ -123,11 +123,11 @@ namespace Map {
                 _newAngle = this->seagullArray[seagullID].someAngle * 20 + sVar4;
                 this->seagullArray[seagullID].angle = _newAngle;
                 if (360 < _newAngle) {
-                    MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
+                    MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                     if ((int)SEC_RNG::instance.currentNumber1 % 5 == 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)this->entityArray[_entityID].xPosition,
-                            (int)((int)(this->entityArray[_entityID].yPosition)), OpenSHC::DE::SHCDE::FX_GULL);
+                            (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL);
                     }
                     sVar4 = this->seagullArray[seagullID].field12_0x1a;
                     this->seagullArray[seagullID].angle = this->seagullArray[seagullID].angle + -360;
@@ -197,7 +197,7 @@ namespace Map {
                 _targetYPart1 = (short)iVar8;
                 _targetYPart1 = _targetYPart1 + this->seagullArray[seagullID].y;
                 this->seagullArray[seagullID].y_2 = _targetYPart1;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::setProjectileTargetPosition, this)(
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition, this)(
                     _entityID, (int)((int)(this->entityArray[_entityID].microX)),
                     (int)((int)(this->entityArray[_entityID].microY)),
                     (int)((int)(this->entityArray[_entityID].height)), _targetXPart1 + _targetXPart2,
@@ -267,7 +267,7 @@ namespace Map {
             _entityID = (int)this->seagullArray[seagullID].y;
             this->seagullArray[seagullID].rngMax799_countdown = SEC_RNG::instance.currentNumber2 % 400 + 400;
             MACRO_CALL_MEMBER(
-                OpenSHC::Map::Navigation::PathFindingState_Func::findFurthestSeaTile, DAT_PathFindingState::ptr)(
+                Map::Navigation::PathFindingState_Func::findFurthestSeaTile, DAT_PathFindingState::ptr)(
                 (int)((((ulonglong)((int)SEC_RNG::instance.currentNumber2 >> 0x1f) << 0x20)
                     | (uint)((uint)((int)((int)SEC_RNG::instance.currentNumber2 >> 4) % 200) + 400))),
                 (uint)((int)(iVar8 / 8)), _entityID / 8);
@@ -276,7 +276,7 @@ namespace Map {
             sVar2 = (short)DAT_PathFindingState::instance.ALG_ResultY * 8;
             sVar5 = this->seagullArray[seagullID].x;
             this->seagullArray[seagullID].y_3 = sVar2;
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
                 seagullID, (int)((int)(sVar5)), (int)((int)(this->seagullArray[seagullID].y)), (int)((int)(sVar4)),
                 (int)((int)(sVar2)));
             this->seagullArray[seagullID].field25_0x34 = 10;

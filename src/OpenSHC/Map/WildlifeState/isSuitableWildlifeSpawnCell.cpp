@@ -7,7 +7,7 @@
 
 namespace OpenSHC {
 namespace Map {
-    using OpenSHC::Map::Location::Point8IntXY;
+    using Map::Location::Point8IntXY;
 
     /*
       Returns 1 if cell (param_1, param_2) is suitable for wildlife spawning, 0 otherwise. Conditions:   unclaimedArea <

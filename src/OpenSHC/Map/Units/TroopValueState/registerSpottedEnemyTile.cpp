@@ -14,8 +14,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Map::Entities::EntityType;
+        using Game::GameMode;
+        using Map::Entities::EntityType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051BE60
         void TroopValueState::registerSpottedEnemyTile(int param_1)
@@ -23,7 +23,7 @@ namespace Map {
             int iVar1;
             int iVar2;
             int iVar3;
-            if (((((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+            if (((((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                       && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .keep.id
                           < 1))
@@ -35,7 +35,7 @@ namespace Map {
                 && ((DAT_TileMapState::instance.EntityLayer[param_1] == 0
                     || (DAT_EntityState::instance.entityArray[DAT_TileMapState::instance.EntityLayer[param_1]]
                             .entityType
-                        != OpenSHC::Map::Entities::ET_FIRE)))) {
+                        != Map::Entities::ET_FIRE)))) {
                 iVar2 = -1;
                 iVar3 = 0;
                 do {

@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace Rendering {
     namespace Bink {
 
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BE7E0
         void AIMessageQueue::playEventVideoBik(char* eventText, char* eventVideoBik, char* eventWavFile)
@@ -19,7 +19,7 @@ namespace Rendering {
                     this->currentMessageText_0x8 = eventText;
                     this->currentMessageUnknownValue_0x4 = 1;
                     this->currentMessageUnknownValue2_0xd4 = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::AIMessageQueue_Func::playVideoOverMap, this)(
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playVideoOverMap, this)(
                         eventVideoBik, eventWavFile);
                 } else if (this->storedMessages_0x924 != 10) {
                     this->savedMessageUnknownValue_0x104[this->storedMessages_0x924] = 1;

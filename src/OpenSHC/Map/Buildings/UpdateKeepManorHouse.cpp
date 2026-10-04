@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode2;
+    using Game::GameMode2;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004178E0
     void Buildings::UpdateKeepManorHouse()
@@ -31,8 +31,8 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar6].someX = DAT_BuildingsState::instance.buildings[iVar6].x + 3;
         bVar5 = (byte)DAT_GameCore::instance.mapTimeInTicks & 3;
         DAT_BuildingsState::instance.buildings[iVar6].someY = DAT_BuildingsState::instance.buildings[iVar6].y + 9;
-        if (((bVar5 == 0) && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR))
-            && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {
+        if (((bVar5 == 0) && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
+            && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT)) {
             iVar4 = DAT_GameState::instance.playerDataArray[sVar2].startResources[0xf];
             if (0 < iVar4) {
                 iVar7 = 1;

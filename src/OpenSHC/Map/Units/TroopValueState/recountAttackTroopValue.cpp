@@ -18,8 +18,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using AI::Tribes::AITribeType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051FB90
         void TroopValueState::recountAttackTroopValue(int param_1)
@@ -38,7 +38,7 @@ namespace Map {
             DAT_TroopValueState::instance.attackInfo.counter = iVar1 + 1;
             if (0xf < DAT_TroopValueState::instance.attackInfo.counter) {
                 DAT_TroopValueState::instance.attackInfo.counter = 0;
-                MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     160, '\0', (void*)((int)(&DAT_TroopValueState::instance.attackInfo.aiTribeSizesPerTribeType)));
                 DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated = 0;
                 DAT_TroopValueState::instance.attackInfo.size = 0;
@@ -55,7 +55,7 @@ namespace Map {
                 _pTribe = &DAT_TribesState::instance.tribes[1];
                 do {
                     if (_pTribe->tribeState != 0) {
-                        BVar2 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
+                        BVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
                             DAT_GameState::ptr)(_pTribe->owner);
                         if (BVar2 == FALSE) {
                             if (_pTribe->owner == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
@@ -66,9 +66,9 @@ namespace Map {
                             _size = _pTribe->size;
                             _pMem = DAT_TroopValueState::instance.attackInfo.field127574_0x30b1a + (short)_tribeType * 2 + 0x33;
                             *(int*)_pMem = *(int*)_pMem + (int)_size;
-                            if (_tribeType == OpenSHC::AI::Tribes::AITT_ENGINEERS) {
+                            if (_tribeType == AI::Tribes::AITT_ENGINEERS) {
                                 DAT_TroopValueState::instance.attackInfo.engineers = DAT_TroopValueState::instance.attackInfo.engineers + 1;
-                            } else if (_tribeType == OpenSHC::AI::Tribes::AITT_LADDERMEN) {
+                            } else if (_tribeType == AI::Tribes::AITT_LADDERMEN) {
                                 DAT_TroopValueState::instance.attackInfo.laddermen = DAT_TroopValueState::instance.attackInfo.laddermen + 1;
                             } else if (((_tribeType != ((AITribeType)0x13)) && (_tribeType != ((AITribeType)0x14)))
                                 && (_tribeType != ((AITribeType)0x15))) {
@@ -82,37 +82,37 @@ namespace Map {
                                             .stoneAmmunition) {
                                         DAT_TroopValueState::instance.attackInfo.catapults = DAT_TroopValueState::instance.attackInfo.catapults + 1;
                                     }
-                                } else if ((_tribeType != OpenSHC::AI::Tribes::AITT_TUNNELERS)
+                                } else if ((_tribeType != AI::Tribes::AITT_TUNNELERS)
                                     && (((short)_tribeType < 0xd || (0x18 < (short)_tribeType)))) {
                                     DAT_TroopValueState::instance.attackInfo.aiTroops = DAT_TroopValueState::instance.attackInfo.aiTroops + _size;
                                     DAT_TroopValueState::instance.attackInfo.field86974_0x20f74 = DAT_TroopValueState::instance.attackInfo.field86974_0x20f74 + 1;
-                                    if (_tribeType == OpenSHC::AI::Tribes::AITT_SPEARMEN) {
+                                    if (_tribeType == AI::Tribes::AITT_SPEARMEN) {
                                         DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen = DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen + 1;
-                                    } else if (_tribeType == OpenSHC::AI::Tribes::AITT_MACEMEN) {
+                                    } else if (_tribeType == AI::Tribes::AITT_MACEMEN) {
                                         DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen = DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen + 1;
                                     } else if (_tribeType == ((AITribeType)0x1a)) {
                                         DAT_TroopValueState::instance.attackInfo.field86627_0x20e04 = DAT_TroopValueState::instance.attackInfo.field86627_0x20e04 + 1;
-                                    } else if (_tribeType == OpenSHC::AI::Tribes::AITT_PIKEMEN) {
+                                    } else if (_tribeType == AI::Tribes::AITT_PIKEMEN) {
                                         DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore
                                             = DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore + 1;
-                                    } else if (_tribeType == OpenSHC::AI::Tribes::AITT_SWORDSMEN) {
+                                    } else if (_tribeType == AI::Tribes::AITT_SWORDSMEN) {
                                         DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore
                                             = DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore + 1;
-                                    } else if (_tribeType == OpenSHC::AI::Tribes::OFFSET_CROSSBOWMAN) {
+                                    } else if (_tribeType == AI::Tribes::OFFSET_CROSSBOWMAN) {
                                         DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore
                                             = DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore + 1;
                                     } else if (_tribeType == ((AITribeType)0x1c)) {
                                         DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore
                                             = DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore + 1;
-                                    } else if (_tribeType == OpenSHC::AI::Tribes::AITT_KNIGHTS) {
+                                    } else if (_tribeType == AI::Tribes::AITT_KNIGHTS) {
                                         DAT_TroopValueState::instance.attackInfo.knights = DAT_TroopValueState::instance.attackInfo.knights + 1;
                                     } else if (_tribeType
-                                        == (OpenSHC::AI::Tribes::AITT_SWORDSMEN
-                                            | OpenSHC::AI::Tribes::AITT_LADDERMEN)) {
+                                        == (AI::Tribes::AITT_SWORDSMEN
+                                            | AI::Tribes::AITT_LADDERMEN)) {
                                         DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore
                                             = DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore + 1;
-                                    } else if (((_tribeType == OpenSHC::AI::Tribes::AITT_ARCHERS)
-                                                   || (_tribeType == OpenSHC::AI::Tribes::AITT_CROSSBOWMEN))
+                                    } else if (((_tribeType == AI::Tribes::AITT_ARCHERS)
+                                                   || (_tribeType == AI::Tribes::AITT_CROSSBOWMEN))
                                         || ((_tribeType == ((AITribeType)0x19)
                                             || (((_tribeType == ((AITribeType)0x1d)
                                                      || (_tribeType == ((AITribeType)0x1b)))
@@ -141,7 +141,7 @@ namespace Map {
                     DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated = 1;
                 }
                 if ((DAT_TroopValueState::instance.attackInfo.aiTroops * 3 < DAT_TroopValueState::instance.attackInfo.size) && (DAT_TroopValueState::instance.attackInfo.aiTroops < _limit)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::recountTotalTroopValue, this)();
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountTotalTroopValue, this)();
                     if (DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueArray[5] + DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueArray[4]
                             + DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueArray[3]
                             + DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueArray[2]

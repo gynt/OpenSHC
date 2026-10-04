@@ -11,7 +11,7 @@
 namespace OpenSHC {
 namespace Text {
 
-    using OpenSHC::Text::FontRenderType;
+    using Text::FontRenderType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0046A2C0
     int TextManager::renderPartOfNumberUnk(int numberToRenderUnk, int xPosUnk, int yPosUnk, int integerPartToRenderUnk,
@@ -19,8 +19,8 @@ namespace Text {
     {
         int iVar2;
         int _decimalNumberToRender = 0;
-        OpenSHC::Rendering::Colors::RGB15 fillColor
-            = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::transformBGR24ToScreenColor,
+        Rendering::Colors::RGB15 fillColor
+            = MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::transformBGR24ToScreenColor,
                 DAT_TextureRenderCoreObject::ptr)(bgr24);
         RenderTargetInt RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
         if (useCurrentXOffsetUnk == 0) {
@@ -91,9 +91,9 @@ namespace Text {
     LAB_0046a45a:
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = this->textSurfaceTarget;
         int _imageId = _decimalNumberToRender + GMTotalPicturesProcessed::instance[0x92];
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderTextChar,
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderTextChar,
             DAT_TextureRenderCoreObject::ptr)(this->currentXOffset_0x0 + xPosUnk, iVar2 + yPosUnk, _imageId,
-            OpenSHC::Text::FRT_BLENDED_COLOR, iVar2, (ushort)(fillColor), 0);
+            Text::FRT_BLENDED_COLOR, iVar2, (ushort)(fillColor), 0);
         int _widthOfRenderedNumber = DAT_GMImageHeaders::instance.imh[_imageId].width + -2;
         this->currentXOffset_0x0 = this->currentXOffset_0x0 + _widthOfRenderedNumber;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = RVar1;

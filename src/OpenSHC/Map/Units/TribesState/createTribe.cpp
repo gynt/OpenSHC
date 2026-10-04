@@ -14,8 +14,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::AI::Tribes::AITribeType;
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
+        using AI::Tribes::AITribeType;
+        using Map::Units::SomeTribeBehaviorType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522890
         int TribesState::createTribe(int playerID, int setAsCurrentTribeID)
@@ -25,7 +25,7 @@ namespace Map {
             do {
                 _tribeID = DAT_CurrentTribeID::instance;
                 if (this->tribes[DAT_CurrentTribeID::instance].tribeState == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                    MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                         820, '\0', (void*)((int)(this->tribes + DAT_CurrentTribeID::instance)));
                     if (_tribeID < 1) {
                         return 0;

@@ -14,9 +14,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Trees::TreeType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Map::Trees::TreeTypeShort;
+    using Map::Trees::TreeType;
+    using WindowsHelper::Enums::BOOLEnum;
+    using Map::Trees::TreeTypeShort;
 
     /*
       fixme:todo:bug:Is this the origin of the not visualized foliage bug?   decompilerscript: committed: 2025-01-30
@@ -43,10 +43,10 @@ namespace Map {
                                         .originX;
                 _pTree->gmOriginY = (short)iVar2;
                 BVar3 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Navigation::PathFindingState_Func::findNoTreeInRange, DAT_PathFindingState::ptr)(
+                    Map::Navigation::PathFindingState_Func::findNoTreeInRange, DAT_PathFindingState::ptr)(
                     2, (uint)((int)((int)(short)_pTree->xPosition)), (uint)((int)((int)(short)_pTree->yPosition)));
                 if (BVar3 == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(_treeID);
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(_treeID);
                 }
             }
             _pTree = _pTree + 0x4e;

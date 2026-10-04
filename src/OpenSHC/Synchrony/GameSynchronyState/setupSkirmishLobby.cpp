@@ -18,10 +18,10 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::GameMode2;
-    using OpenSHC::UI::Enums::DisplayElementID;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using Game::GameMode2;
+    using UI::Enums::DisplayElementID;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00487650
     void GameSynchronyState::setupSkirmishLobby()
@@ -37,7 +37,7 @@ namespace Synchrony {
         int (*local_c)[100][2];
         int* local_8;
         int local_4;
-        this->currentGameMode = OpenSHC::Game::GM_SOLITARY;
+        this->currentGameMode = Game::GM_SOLITARY;
         this->transmissionCounterUnk = 0;
         this->DAT_GameHalted = 0;
         this->field62_0xb90 = 0;
@@ -57,16 +57,16 @@ namespace Synchrony {
         this->field57_0x79c[2] = 0;
         this->field57_0x79c[3] = 0;
         this->unknownIncrementBy40_01 = 1;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearChatEvents, this)();
-        DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearChatEvents, this)();
+        DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
         this->counter = 0xffffffff;
         this->limit = 5;
         this->laggingPlayerIDUnk = 0;
         this->DAT_SomeTime = 0;
         this->flag_0x7aad8 = FALSE;
         this->DAT_TwoIfNotHost = 2;
-        MACRO_CALL_MEMBER(OpenSHC::IO::BitMapState_Func::setBMPFacesToMagenta, DAT_BitMapState::ptr)();
+        MACRO_CALL_MEMBER(IO::BitMapState_Func::setBMPFacesToMagenta, DAT_BitMapState::ptr)();
         local_1c = this->DAT_PlayerGroupArray;
         local_10 = (undefined2*)((int)this->finalResults.unusedUnk + 0x12);
         local_8 = &this->connectionLagInfoArray[0].checkFor0;
@@ -93,7 +93,7 @@ namespace Synchrony {
             (*local_18)[0] = -1;
             piVar4[0x1e861] = 0;
             piVar4[0x1e86a] = 0;
-            MACRO_CALL(OpenSHC::OS_Func::_memset)(local_14, 0, 0xfa);
+            MACRO_CALL(OS_Func::_memset)(local_14, 0, 0xfa);
             piVar4[0x419a7] = 0;
             piVar4[0x419b0] = 0;
             *local_1c = 0;
@@ -188,7 +188,7 @@ namespace Synchrony {
         this->field75_0xbe4 = 0;
         this->commandDelay = 0x23;
         DAT_GameState::instance.mapAndTime.gameOver = FALSE;
-        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::resetGameCommands, this)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resetGameCommands, this)();
         DAT_GameCore::instance.mapTimeInTicks = 0;
         this->syncStatus = 0;
         this->flag_0xbec = 0;
@@ -201,7 +201,7 @@ namespace Synchrony {
         this->skirmishExtremeMode2 = 0;
         this->DAT_MapFileReceivingState = 0;
         DAT_GameState::instance.mapAndTime.skirmishFogOfWar = 0;
-        MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
+        MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
     }
 
 }

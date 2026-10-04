@@ -17,9 +17,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::SomeTribeBehaviorType;
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::States::UnitState;
+        using Map::Units::SomeTribeBehaviorType;
+        using Map::Units::UnitLogicState;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00521280
         undefined4 TribesState::moveUnitToBehaviorTarget(int unitID, int param_2)
@@ -37,7 +37,7 @@ namespace Map {
             x = 0;
             uVar6 = 0;
             local_c = 0;
-            if (DAT_UnitsState::instance.units[unitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
+            if (DAT_UnitsState::instance.units[unitID].logicalState != Map::Units::ULS_NORMAL) {
                 return (undefined4)(0);
             }
             if (DAT_UnitsState::instance.units[unitID].dying != 0) {
@@ -55,13 +55,13 @@ namespace Map {
             }
             if (param_2 == 0x3f2) {
                 iVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::TroopValueState_Func::findEnemyWalls, DAT_TroopValueState::ptr)(unitID);
+                    Map::Units::TroopValueState_Func::findEnemyWalls, DAT_TroopValueState::ptr)(unitID);
             LAB_0052130b:
                 if (iVar4 == 0)
                     goto LAB_0052143b;
                 local_c = DAT_TroopValueState::instance.y;
             } else if (param_2 == 0x3f5) {
-                iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::findEnemyBuildingsClosestToUnit,
+                iVar4 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findEnemyBuildingsClosestToUnit,
                     DAT_TroopValueState::ptr)(unitID);
             LAB_00521333:
                 if (iVar4 == 0)
@@ -70,15 +70,15 @@ namespace Map {
             } else {
                 if (param_2 == 0x3fb) {
                     iVar4 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::TroopValueState_Func::calculateTile2PeoplValueClosestToUnit,
+                        Map::Units::TroopValueState_Func::calculateTile2PeoplValueClosestToUnit,
                         DAT_TroopValueState::ptr)(unitID);
                     if (iVar4 == 0) {
-                        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::findEnemyWalls,
+                        iVar4 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findEnemyWalls,
                             DAT_TroopValueState::ptr)(unitID);
                         if (iVar4 == 0)
                             goto LAB_0052143b;
                         if (DAT_TribesState::instance.tribes[sVar1].selectionTargetUnitID == unitID) {
-                            DAT_TribesState::instance.tribes[sVar1].tribeBehaviorType = OpenSHC::Map::Units::STBT_0x3f2;
+                            DAT_TribesState::instance.tribes[sVar1].tribeBehaviorType = Map::Units::STBT_0x3f2;
                         }
                         local_c = DAT_TroopValueState::instance.y;
                         DAT_UnitsState::instance.units[unitID].unknownDigMoatOrWallAttackFlag1015 = 0x3f2;
@@ -87,29 +87,29 @@ namespace Map {
                 } else {
                     if (param_2 == 0x3fd) {
                         iVar4 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::TroopValueState_Func::findEnemyLord, DAT_TroopValueState::ptr)(unitID);
+                            Map::Units::TroopValueState_Func::findEnemyLord, DAT_TroopValueState::ptr)(unitID);
                         goto LAB_00521333;
                     }
                     if (param_2 == 0x3f6) {
-                        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::findEnemyTowersOrGates,
+                        iVar4 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findEnemyTowersOrGates,
                             DAT_TroopValueState::ptr)(unitID);
                     } else {
                         if (param_2 == 0x413) {
                             iVar4 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TroopValueState_Func::getClosestWideValueBasedOnPlayer,
+                                Map::Units::TroopValueState_Func::getClosestWideValueBasedOnPlayer,
                                 DAT_TroopValueState::ptr)(unitID);
                             goto LAB_0052130b;
                         }
                         if (param_2 == 0x414) {
                             iVar4 = MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::TroopValueState_Func::getClosestWideValueBasedOnPlayer,
+                                Map::Units::TroopValueState_Func::getClosestWideValueBasedOnPlayer,
                                 DAT_TroopValueState::ptr)(unitID);
                             goto LAB_00521333;
                         }
                         if (param_2 != 0x3f7)
                             goto LAB_0052143b;
                         iVar4
-                            = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::findNearestDiggableMoatPoint,
+                            = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findNearestDiggableMoatPoint,
                                 DAT_TroopValueState::ptr)(unitID);
                     }
                     if (iVar4 == 0)
@@ -131,16 +131,16 @@ namespace Map {
             DAT_UnitsState::instance.units[unitID].attackAtTileY = sVar5;
             DAT_UnitsState::instance.units[unitID].targetedBuildingTile = uVar6;
             sVar5 = (short)uVar6 - (short)DAT_ViewportRenderState::instance.translationMatrix[sVar5].addXgetTile;
-            DAT_UnitsState::instance.units[unitID].state.generic = OpenSHC::Map::Units::States::US_MOVE_TO_DESTINATION;
+            DAT_UnitsState::instance.units[unitID].state.generic = Map::Units::States::US_MOVE_TO_DESTINATION;
             DAT_UnitsState::instance.units[unitID].attackAtTileX = sVar5;
             if (sVar2 == unitID) {
                 DAT_TribesState::instance.tribes[sVar1].targetX = sVar5;
                 DAT_TribesState::instance.tribes[sVar1].targetY = DAT_UnitsState::instance.units[unitID].attackAtTileY;
             }
             iVar4 = MACRO_CALL_MEMBER(
-                OpenSHC::Map::Units::UnitsState_Func::stopUnitIfNextToTarget, DAT_UnitsState::ptr)(unitID);
+                Map::Units::UnitsState_Func::stopUnitIfNextToTarget, DAT_UnitsState::ptr)(unitID);
             if (iVar4 == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
                     unitID, x, local_c, 0);
             }
             return (undefined4)(1);

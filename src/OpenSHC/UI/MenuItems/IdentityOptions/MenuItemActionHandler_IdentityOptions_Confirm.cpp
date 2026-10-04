@@ -14,20 +14,20 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::Game::GameMode;
+        using Commands::GameCommandType;
+        using Game::GameMode;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00493D30
         void IdentityOptions::MenuItemActionHandler_IdentityOptions_Confirm(int param_1, ...)
         {
             if (param_1 == 0x11) {
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     9);
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
-                if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(((GameCommandType)0x60));
                 }
             }

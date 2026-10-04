@@ -31,12 +31,12 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Game::GameMode;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::UI::Enums::MenuModalType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using DE::SHCDE::eTextSections;
+        using Game::GameMode;
+        using Text::TextAlignment;
+        using UI::Enums::MenuModalType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         /*
           Why are these advanced play options part of the lobby menu, an extra play options menu modal and   a reduced
@@ -56,14 +56,14 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                 return;
             }
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_SEND_MAP_TO) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_SEND_MAP_TO) {
                 return;
             }
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_RECEIVE_MAP_FROM) {
                 return;
             }
             if ((((((DAT_MenuModalComposition1::instance.activeModalDialogID
-                        == OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS)
+                        == UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS)
                        && (param_1 != -1000))
                       && (param_1 != -10))
                      && ((param_1 != -0xb && (param_1 != -0xc))))
@@ -72,7 +72,7 @@ namespace UI {
                     && ((((param_1 != 0x53 && (param_1 != 0x6d)) && (param_1 != 0x52)) && (param_1 != 0x5e)))))) {
                 return;
             }
-            if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                 if (param_1 == 0x5d) {
                     return;
                 }
@@ -80,19 +80,19 @@ namespace UI {
                     return;
                 }
             }
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_ROUNDTABLE) {
                 return;
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
+                == UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
                 return;
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                == UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
                 return;
             }
             if (param_1 == 0xe) {
-                if ((DAT_MenuModalComposition2::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
+                if ((DAT_MenuModalComposition2::instance.activeModalDialogID != UI::Enums::MMT_NONE)
                     && (INT_00b960cc::instance == 1)) {
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -106,12 +106,12 @@ namespace UI {
                     return;
                 }
                 INT_00b960cc::instance = 1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setSliderParameters,
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setSliderParameters,
                     DAT_MenuModalComposition2::ptr)(0, 10000, DAT_GameSynchronyState::instance.skirmishStartGold,
                     (undefined*)((int)(&DAT_GameSynchronyState::instance.skirmishStartGold)),
-                    (void*)MACRO_CALL(OpenSHC::Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
+                    (void*)MACRO_CALL(Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
                     (int)((int)(DAT_ButtonX::instance + 0x48)), (int)((int)(DAT_ButtonY::instance + 4)));
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -125,12 +125,12 @@ namespace UI {
                 return;
             }
             if (param_1 == 0xf) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setSliderParameters,
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setSliderParameters,
                     DAT_MenuModalComposition2::ptr)(0, 100, DAT_GameSynchronyState::instance.skirmishDefaultPopularity,
                     (undefined*)((int)(&DAT_GameSynchronyState::instance.skirmishDefaultPopularity)),
-                    (void*)MACRO_CALL(OpenSHC::Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
+                    (void*)MACRO_CALL(Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
                     (int)((int)(DAT_ButtonX::instance + 0x17)), (int)((int)(DAT_ButtonY::instance + 0x23)));
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -144,7 +144,7 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x52) {
-                if ((DAT_MenuModalComposition2::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
+                if ((DAT_MenuModalComposition2::instance.activeModalDialogID != UI::Enums::MMT_NONE)
                     && (INT_00b960cc::instance == 2)) {
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -158,12 +158,12 @@ namespace UI {
                     return;
                 }
                 INT_00b960cc::instance = 2;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setSliderParameters,
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setSliderParameters,
                     DAT_MenuModalComposition2::ptr)(0x14, 0x5a, DAT_GameSynchronyState::instance.skirmishGameSpeedLevel,
                     (undefined*)((int)(&DAT_GameSynchronyState::instance.skirmishGameSpeedLevel)),
-                    (void*)MACRO_CALL(OpenSHC::UI::Helpers_Func::CallbackSetMultiplayerSpeedLevel));
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
+                    (void*)MACRO_CALL(UI::Helpers_Func::CallbackSetMultiplayerSpeedLevel));
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
                     (int)((int)(DAT_ButtonX::instance + 0x48)), (int)((int)(DAT_ButtonY::instance + 4)));
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -182,7 +182,7 @@ namespace UI {
                 if (5 < DAT_GameSynchronyState::instance.skirmishTechLevel) {
                     DAT_GameSynchronyState::instance.skirmishTechLevel = 0;
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::SetupSkirmishBalanceAndOrIntensity)();
+                MACRO_CALL(Game::Skirmish_Func::SetupSkirmishBalanceAndOrIntensity)();
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -195,13 +195,13 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x24) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setModalSliderParameters,
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setModalSliderParameters,
                     DAT_MenuModalComposition1::ptr)(0x4f, 0x33, 2,
                     (dword)((int)(DAT_GameSynchronyState::instance.skirmishWinCondition)),
                     (undefined*)((int)(&DAT_GameSynchronyState::instance.skirmishWinCondition)),
-                    (undefined*)MACRO_CALL(OpenSHC::Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_UNUSED_WIN_CONDITION,
+                    (undefined*)MACRO_CALL(Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_UNUSED_WIN_CONDITION,
                     (int)((int)(DAT_ButtonX::instance + 5)), (int)((int)(DAT_ButtonY::instance + 0x23)));
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -217,8 +217,8 @@ namespace UI {
             if (param_1 == 0x53) {
                 DAT_GameSynchronyState::instance.skirmishTroopsCostGold
                     = DAT_GameSynchronyState::instance.skirmishTroopsCostGold ^ 1;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -236,8 +236,8 @@ namespace UI {
                 if (DAT_GameState::instance.mapAndTime.skirmishFogOfWar == 3) {
                     DAT_GameState::instance.mapAndTime.skirmishFogOfWar = 0;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -250,8 +250,8 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x5d) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_SKIRMISH_CONNECTION_OPTIONS, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_SKIRMISH_CONNECTION_OPTIONS, FALSE);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -264,8 +264,8 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x67) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS, FALSE);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -287,69 +287,69 @@ namespace UI {
                 } else if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0x14) {
                     DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes = 0;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0) {
                     /*
                       added by script: "Off"
                      */
-                    pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
+                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
                     /*
                       added by script: "Auto save game"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
+                    MACRO_CALL(OS_Func::_sprintf)(
                         DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 5) {
                     /*
                       added by script: "5 minutes"
                      */
-                    pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60);
+                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60);
                     /*
                       added by script: "Auto save game"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
+                    MACRO_CALL(OS_Func::_sprintf)(
                         DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 10) {
                     /*
                       added by script: "10 minutes"
                      */
-                    pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61);
+                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61);
                     /*
                       added by script: "Auto save game"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
+                    MACRO_CALL(OS_Func::_sprintf)(
                         DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 20) {
                     /*
                       added by script: "20 minutes"
                      */
-                    pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62);
+                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62);
                     iVar5 = 0x5e;
-                    eVar4 = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
+                    eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                 LAB_0042a392:
                     /*
                       added by script: "Auto save game"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(eVar4, iVar5);
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    MACRO_CALL(OS_Func::_sprintf)(
                         DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
                 }
             LAB_0042a3af:
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray,
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                     DAT_UserTextHandlerState::ptr)(DAT_GameSynchronyState::instance.receivedChatMessage);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -363,38 +363,38 @@ namespace UI {
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 10000;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
                 goto LAB_0042a41d;
             }
             if (param_1 == 99) {
                 DAT_GameSynchronyState::instance.skirmishStrongWalls
                     = DAT_GameSynchronyState::instance.skirmishStrongWalls ^ 1;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                 if (DAT_GameSynchronyState::instance.skirmishStrongWalls == 0) {
                     iVar5 = 0x5f;
-                    eVar4 = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
+                    eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                 } else {
                     iVar5 = 0xd;
-                    eVar4 = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
+                    eVar4 = DE::SHCDE::TEXT_GAME_OPTIONS;
                 }
                 /*
                   added by script: "Off"
                  */
-                pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(eVar4, iVar5);
                 iVar5 = 99;
-                eVar4 = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
+                eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
             LAB_00429e4b:
                 /*
                   added by script: "Strong Walls"
                  */
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(eVar4, iVar5);
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                MACRO_CALL(OS_Func::_sprintf)(
                     DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray,
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                     DAT_UserTextHandlerState::ptr)(DAT_GameSynchronyState::instance.receivedChatMessage);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -408,14 +408,14 @@ namespace UI {
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 10000;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
             } else {
                 if (param_1 == 100) {
                     DAT_GameSynchronyState::instance.skirmishAlliances
                         = DAT_GameSynchronyState::instance.skirmishAlliances ^ 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -428,8 +428,8 @@ namespace UI {
                     return;
                 }
                 if (param_1 == -1000) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -442,18 +442,18 @@ namespace UI {
                     return;
                 }
                 if (param_1 == -1) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setSliderParameters,
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setSliderParameters,
                         DAT_MenuModalComposition2::ptr)(2000, 150000,
                         (int)((int)(DAT_GameSynchronyState::instance.skirmishPoints)),
                         (undefined*)((int)(&DAT_GameSynchronyState::instance.skirmishPoints)),
-                        (void*)MACRO_CALL(OpenSHC::Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
+                        (void*)MACRO_CALL(Synchrony::Commands_Func::QueueChangeGameIntensityOrBalance));
                     DAT_MenuModalComposition2::instance.textGroup = 0x4f;
                     DAT_MenuModalComposition2::instance.textIndex = 0x58;
                     /*
                       cr.tex: Points
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                        DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
+                    MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
+                        DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
                         (int)((int)(DAT_ButtonX::instance + -0x17)), (int)((int)(DAT_ButtonY::instance + 0x3f)));
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -469,65 +469,65 @@ namespace UI {
                 if (param_1 == -10) {
                     DAT_GameSynchronyState::instance.skirmishNoCowThrowing
                         = DAT_GameSynchronyState::instance.skirmishNoCowThrowing ^ 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                     if (DAT_GameSynchronyState::instance.skirmishNoCowThrowing == 0) {
                         iVar5 = 0x5f;
-                        eVar4 = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
+                        eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                     } else {
                         iVar5 = 0xd;
-                        eVar4 = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
+                        eVar4 = DE::SHCDE::TEXT_GAME_OPTIONS;
                     }
                     /*
                       added by script: "Off" / "On"
                      */
-                    pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(eVar4, iVar5);
                     iVar5 = 5;
                 } else {
                     if (param_1 == -0xb) {
                         DAT_GameSynchronyState::instance.skirmishNoDogs
                             = DAT_GameSynchronyState::instance.skirmishNoDogs ^ 1;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                         if (DAT_GameSynchronyState::instance.skirmishNoDogs == 0) {
                             /*
                               added by script: "Off"
                              */
-                            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
+                            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
                         } else {
                             /*
                               added by script: "On"
                              */
-                            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
+                            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
                         }
                         iVar5 = 6;
-                        eVar4 = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
+                        eVar4 = DE::SHCDE::TEXT_SKIRMISH_MISC;
                         goto LAB_0042a392;
                     }
                     if (param_1 == -0xd) {
                         DAT_GameSynchronyState::instance.skirmishExtremeMode
                             = DAT_GameSynchronyState::instance.skirmishExtremeMode ^ 1;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                         if (DAT_GameSynchronyState::instance.skirmishExtremeMode == 0) {
                             /*
                               added by script: "Off"
                              */
-                            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
+                            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
                             iVar5 = 0xd;
-                            eVar4 = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
+                            eVar4 = DE::SHCDE::TEXT_SKIRMISH_MISC;
                         } else {
                             /*
                               added by script: "On"
                              */
-                            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
+                            pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
                             iVar5 = 0xd;
-                            eVar4 = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
+                            eVar4 = DE::SHCDE::TEXT_SKIRMISH_MISC;
                         }
                         goto LAB_00429e4b;
                     }
@@ -549,38 +549,38 @@ namespace UI {
                         if (5 < (int)DAT_GameSynchronyState::instance.skirmishNoRushSetting) {
                             DAT_GameSynchronyState::instance.skirmishNoRushSetting = 0;
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 0) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 1) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 2) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 3) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 4) {
@@ -588,19 +588,19 @@ namespace UI {
                             /*
                               30 minutes
                              */
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 8,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 8,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
                         bVar3 = false;
                         if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 5) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 9,
+                            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 9,
                                 (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
+                                (int)((int)(DAT_ButtonY::instance + 7)), Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar5 + (iVar5 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                             bVar3 = DAT_GameSynchronyState::instance.skirmishNoRushSetting == 5;
                         }
@@ -608,38 +608,38 @@ namespace UI {
                             switch (DAT_GameSynchronyState::instance.skirmishNoRushSetting) {
                             case 0:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
                                 break;
                             case 1:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x60);
                                 break;
                             case 2:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x61);
                                 break;
                             case 3:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62);
                                 break;
                             case 4:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 8);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 8);
                                 break;
                             case 5:
                                 pcVar1 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 9);
+                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 9);
                                 break;
                             }
-                            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 7);
-                            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 7);
+                            MACRO_CALL(OS_Func::_sprintf)(
                                 DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
                             goto LAB_0042a3af;
                         }
@@ -647,32 +647,32 @@ namespace UI {
                     }
                     DAT_GameSynchronyState::instance.skirmishExtremeMode2
                         = DAT_GameSynchronyState::instance.skirmishExtremeMode2 ^ 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                     if (DAT_GameSynchronyState::instance.skirmishExtremeMode == 0) {
                         /*
                           added by script: "Off"
                          */
-                        pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
+                        pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f);
                         iVar5 = 0xe;
                     } else {
                         /*
                           added by script: "On"
                          */
-                        pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
+                        pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0xd);
                         iVar5 = 0xe;
                     }
                 }
                 /*
                   added by script: "Extreme Powers around Lord"
                  */
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, iVar5);
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, iVar5);
+                MACRO_CALL(OS_Func::_sprintf)(
                     DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray,
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                     DAT_UserTextHandlerState::ptr)(DAT_GameSynchronyState::instance.receivedChatMessage);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
@@ -686,11 +686,11 @@ namespace UI {
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 10000;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
             }
         LAB_0042a41d:
-            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(
                 DAT_UserTextHandlerState::instance.textArrayIndex);
             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 1;
             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 1;

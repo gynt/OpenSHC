@@ -13,10 +13,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AD2B0
         void AlliesOrder::MenuModalRenderFunction_AlliesOrder(int x, int y, int width, int height)
@@ -29,20 +29,20 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::BuildEnemyPlayerList)();
+            MACRO_CALL(UI::Helpers_Func::BuildEnemyPlayerList)();
             blendStrength = 0;
             keepOffsetX = FALSE;
             fontSize = 0xf;
             color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_LEFT;
+            alignment = Text::TTA_LEFT;
             yParam = y + 0x19;
             xParam = x + 0x1e;
             /*
               added by script: "Set Orders"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ALLIES, 5);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ALLIES, 5);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
         }
 

@@ -20,9 +20,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Game::Resources::ResourceType;
+    using DE::SHCDE::eSFX;
+    using Game::GameMode;
+    using Game::Resources::ResourceType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041CC70
     void Buildings::UpdateIronMine()
@@ -42,8 +42,8 @@ namespace Map {
         *piVar1 = *piVar1 + 1;
         DAT_BuildingsState::instance.buildings[iVar4].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar4].displayOwnerFlag = 1;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar4);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
         iVar5 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -92,8 +92,8 @@ namespace Map {
                             iVar8 = *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x48);
                         }
                         iVar4 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingResourceAmountByUid,
-                            DAT_BuildingsState::ptr)(iVar4, iVar8, OpenSHC::Game::Resources::RT_IRON);
+                            Map::Buildings::BuildingsState_Func::getBuildingResourceAmountByUid,
+                            DAT_BuildingsState::ptr)(iVar4, iVar8, Game::Resources::RT_IRON);
                         *(ushort*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -8)
                             = (iVar4 < 7) - 1 & 6;
                     }
@@ -124,10 +124,10 @@ namespace Map {
                 if (sVar3 == 3) {
                     iVar5 = DAT_BuildingsState::instance.buildings[iVar4].campgroundVclock;
                     if ((((iVar5 == 0) || (iVar5 == 0x18)) || (iVar5 == 0x30)) || (iVar5 == 0x48)) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[iVar4].x,
                             (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)),
-                            OpenSHC::DE::SHCDE::FX_IRON_PULL);
+                            DE::SHCDE::FX_IRON_PULL);
                         iVar4 = DAT_CurrentBuildingID::instance;
                     }
                     iVar5 = iVar4 * 0x32c;
@@ -294,32 +294,32 @@ namespace Map {
             } else {
                 if (sVar3 == 1) {
                     if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field25_0x4c + iVar5) == 0x14) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x32),
                             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x30),
-                            OpenSHC::DE::SHCDE::FX_IRON_STRAIN);
+                            DE::SHCDE::FX_IRON_STRAIN);
                     }
                     if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field25_0x4c == 0x37) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x,
                             (int)((
                                 int)((short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y)),
-                            OpenSHC::DE::SHCDE::FX_IRON_DUMP);
+                            DE::SHCDE::FX_IRON_DUMP);
                     }
                     if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field25_0x4c == 0x41) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x,
                             (int)((
                                 int)((short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y)),
-                            OpenSHC::DE::SHCDE::FX_IRON_LDUMP);
+                            DE::SHCDE::FX_IRON_LDUMP);
                     }
                     iVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field25_0x4c;
                     if (((iVar4 == 100) || (iVar4 == 0xbe)) || ((iVar4 == 0x118 || (iVar4 == 0x172)))) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x,
                             (int)((
                                 int)((short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y)),
-                            OpenSHC::DE::SHCDE::FX_IRON_BOIL);
+                            DE::SHCDE::FX_IRON_BOIL);
                     }
                     iVar4 = DAT_CurrentBuildingID::instance;
                     iVar5 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -427,17 +427,17 @@ namespace Map {
                 }
             } else if (sVar3 == 1) {
                 *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -2) = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::addResourceToStockpile,
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::addResourceToStockpile,
                     DAT_BuildingsState::ptr)(iVar4,
                     *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x48),
-                    OpenSHC::Game::Resources::RT_IRON, 1, 8, 1);
+                    Game::Resources::RT_IRON, 1, 8, 1);
             }
         } else if (sVar3 == 1) {
             if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field27_0x54 + iVar5) == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x32),
                     (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + -0x30),
-                    OpenSHC::DE::SHCDE::FX_IRON_POUR);
+                    DE::SHCDE::FX_IRON_POUR);
             }
             iVar4 = DAT_CurrentBuildingID::instance;
             iVar5 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -467,7 +467,7 @@ namespace Map {
         } else {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field29_0x5c + iVar5) = 0xaa;
         }
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar5) = 0;
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar5) = 1;

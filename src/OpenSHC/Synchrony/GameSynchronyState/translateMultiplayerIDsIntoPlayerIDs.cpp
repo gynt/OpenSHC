@@ -6,7 +6,7 @@
 namespace OpenSHC {
 namespace Synchrony {
 
-    using OpenSHC::Game::GameMode;
+    using Game::GameMode;
 
     /*
       in multiplayer, player IDS are unique numbers of some sort   decompilerscript: committed: 2025-01-30
@@ -16,8 +16,8 @@ namespace Synchrony {
     uint GameSynchronyState::translateMultiplayerIDsIntoPlayerIDs(int multiplayerID)
     {
         uint _playerID;
-        if ((this->currentGameMode != OpenSHC::Game::GM_SOLITARY)
-            && (this->currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+        if ((this->currentGameMode != Game::GM_SOLITARY)
+            && (this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             /*
               if in multiplayer
              */

@@ -15,10 +15,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using OpenSHC::DE::SHCDE::eTextSections;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Text::TextAlignment;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using DE::SHCDE::eTextSections;
+        using Rendering::Colors::BGR24;
+        using Text::TextAlignment;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BAC90
         void EditScenario::MenuItemRenderFunction_EditScenario_StartDate(int param_1, ...)
@@ -41,8 +41,8 @@ namespace UI {
                     if (DAT_ButtonW::instance != 0) {
                         iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, iVar1, (int)((int)(DAT_ButtonY::instance + 6)),
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_SCENARIO, param_1, iVar1, (int)((int)(DAT_ButtonY::instance + 6)),
                         (TextAlignment)((int)((uint)(DAT_ButtonW::instance != 0))), 0xccfaff, 0x12, FALSE);
                 }
                 iVar1 = 0x20;
@@ -53,13 +53,13 @@ namespace UI {
             keepOffsetX = FALSE;
             fontSize = 0x12;
             color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_CENTER;
+            alignment = Text::TTA_CENTER;
             /*
               added by script: "Start Date"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, iVar1);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SCENARIO, iVar1);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
         }
 

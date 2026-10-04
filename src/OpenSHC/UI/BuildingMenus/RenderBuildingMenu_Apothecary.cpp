@@ -14,10 +14,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::DE::SHCDE::eTextSections;
-    using OpenSHC::Rendering::Colors::BGR24;
-    using OpenSHC::Text::TextAlignment;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using DE::SHCDE::eTextSections;
+    using Rendering::Colors::BGR24;
+    using Text::TextAlignment;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043BFA0
     void BuildingMenus::RenderBuildingMenu_Apothecary()
@@ -33,40 +33,40 @@ namespace UI {
         BVar7 = FALSE;
         iVar6 = 0x10;
         BVar5 = 0;
-        TVar4 = OpenSHC::Text::TTA_LEFT;
+        TVar4 = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           added by script: "Apothecary"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_HEALERS, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_HEALERS, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar4, BVar5, iVar6, BVar7, iVar8);
         iVar8 = 0;
         BVar7 = FALSE;
         iVar6 = 0x12;
         BVar5 = 0;
-        TVar4 = OpenSHC::Text::TTA_LEFT;
+        TVar4 = Text::TTA_LEFT;
         iVar1 = DAT_MenuHandlerState::instance.y + 0x203;
         iVar3 = DAT_MenuHandlerState::instance.x + 0xb1;
         /*
           added by script: "Immunity From Disease"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_HEALERS, 3);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_HEALERS, 3);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar4, BVar5, iVar6, BVar7, iVar8);
         iVar1
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].healerCount;
         if (2 < iVar1) {
             iVar1 = 3;
         }
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             iVar1 * 0x14, DAT_MenuHandlerState::instance.x + 0xb7, DAT_MenuHandlerState::instance.y + 0x203,
-            OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("%",
-            DAT_MenuHandlerState::instance.x + 0xb7, DAT_MenuHandlerState::instance.y + 0x203, OpenSHC::Text::TTA_LEFT,
+            Text::TTA_LEFT, 0, 0x12, TRUE, 0);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("%",
+            DAT_MenuHandlerState::instance.x + 0xb7, DAT_MenuHandlerState::instance.y + 0x203, Text::TTA_LEFT,
             0, 0x12, TRUE, 0);
     }
 

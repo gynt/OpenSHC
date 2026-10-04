@@ -15,18 +15,18 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B8E0
     void Init::Constructor_MenuModal_UnusedSetName()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedSetName::ptr)(
-            OpenSHC::UI::Enums::MMT_UNUSED_SET_NAME, -1, -1, 500, 0x96, 0x10,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedSetName::ptr)(
+            UI::Enums::MMT_UNUSED_SET_NAME, -1, -1, 500, 0x96, 0x10,
             (int)((int)(COL_WHITE::instance.shortValue)),
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(
-                OpenSHC::UI::MenuModals::UnusedSetName_Func::MenuModalRenderFunction_UnusedSetName),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::UnusedSetName_Func::MenuModalRenderFunction_UnusedSetName),
             Menu_UnusedSetName::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_UnusedSetName));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedSetName));
         return;
     }
 

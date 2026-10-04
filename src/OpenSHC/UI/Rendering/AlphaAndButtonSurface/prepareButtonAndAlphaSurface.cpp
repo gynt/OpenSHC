@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using OpenSHC::IO::Graphics::GmID;
+        using IO::Graphics::GmID;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00462FF0
         void AlphaAndButtonSurface::prepareButtonAndAlphaSurface()
@@ -69,7 +69,7 @@ namespace UI {
             }
             this->dim2_intMinimal350_2 = _maxImageHeight;
             this->surfacePtr
-                = (ushort*)(MACRO_CALL(OpenSHC::OS_Func::_malloc)(_maxImageHeight * this->dim1_intMinimal350_1 * 2));
+                = (ushort*)(MACRO_CALL(OS_Func::_malloc)(_maxImageHeight * this->dim1_intMinimal350_1 * 2));
         }
 
     }

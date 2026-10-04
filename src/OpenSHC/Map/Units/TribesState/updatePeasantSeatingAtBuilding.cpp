@@ -14,9 +14,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitLogicState;
-        using OpenSHC::Map::Units::UnitType;
-        using OpenSHC::Map::Units::States::UnitState;
+        using Map::Units::UnitLogicState;
+        using Map::Units::UnitType;
+        using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522210
         void TribesState::updatePeasantSeatingAtBuilding(int param_1, int param_2, int param_3)
@@ -49,11 +49,11 @@ namespace Map {
             if (1 < (int)DAT_UnitsState::instance.maxUnitCount) {
                 psVar3 = &DAT_UnitsState::instance.units[1].dying;
                 do {
-                    if ((((psVar3[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar3 == 0))
+                    if ((((psVar3[-0x10a] == Map::Units::ULS_NORMAL) && (*psVar3 == 0))
                             && (psVar3[-0x105] == sVar1))
-                        && (((psVar3[-0x109] == OpenSHC::Map::Units::UT_PEASANT
+                        && (((psVar3[-0x109] == Map::Units::UT_PEASANT
                                  && (((UnitStateUnion*)(psVar3 + 0x10))->generic
-                                     == OpenSHC::Map::Units::States::US_STAND_UPUnk))
+                                     == Map::Units::States::US_STAND_UPUnk))
                             && (psVar3[0x4c] == param_1)))) {
                         local_8 = local_8 + 1;
                         psVar3[0x78] = 0;
@@ -63,11 +63,11 @@ namespace Map {
                         if (local_8 == param_2) {
                             psVar3[0x77] = 1;
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::UnitsState_Func::standUpIfSeated, DAT_UnitsState::ptr)(iVar4);
+                                Map::Units::UnitsState_Func::standUpIfSeated, DAT_UnitsState::ptr)(iVar4);
                         } else if (psVar3[0x77] == 0) {
                             psVar3[0x78] = 1;
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Map::Units::UnitsState_Func::sitDownIfStanding, DAT_UnitsState::ptr)(iVar4);
+                                Map::Units::UnitsState_Func::sitDownIfStanding, DAT_UnitsState::ptr)(iVar4);
                         }
                     }
                     iVar4 = iVar4 + 1;

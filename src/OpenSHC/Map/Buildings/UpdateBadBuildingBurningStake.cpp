@@ -20,9 +20,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::DE::SHCDE::eSFX;
-    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-    using OpenSHC::UI::Enums::MenuViewType;
+    using DE::SHCDE::eSFX;
+    using UI::Enums::BuildingsAndStatusMenuTabType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00418F90
     void Buildings::UpdateBadBuildingBurningStake()
@@ -33,13 +33,13 @@ namespace Map {
         iVar2 = DAT_CurrentBuildingID::instance;
         sVar1 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk = 0;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar2);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(iVar2);
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar3 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[iVar3].field66_0xbe = 0;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(iVar3, 1);
         iVar2 = DAT_GameState::instance.playerDataArray[sVar1].fearFactorLevel;
         DAT_BuildingsState::instance.buildings[iVar3].renderAnimation = (ushort)(iVar2 < -4);
@@ -53,21 +53,21 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar3].animationFrame = 1;
         }
         if ((((DAT_BuildingsState::instance.buildings[iVar3].animationActive != 0)
-                 && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
-                && (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BURNINGSTAKE))
+                 && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU))
+                && (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_BURNINGSTAKE))
             && (iVar3 == DAT_BuildingsState::instance.menuSelectedBuildingID)) {
             if (DAT_BuildingsState::instance.buildings[iVar3].animationIndex == 0x2f) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar3].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar3].y)),
-                    OpenSHC::DE::SHCDE::FX_WITCH_BURN);
+                    DE::SHCDE::FX_WITCH_BURN);
                 iVar3 = DAT_CurrentBuildingID::instance;
             }
             if (DAT_BuildingsState::instance.buildings[iVar3].animationIndex == 0x31) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                     (int)(short)DAT_BuildingsState::instance.buildings[iVar3].x,
                     (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar3].y)),
-                    OpenSHC::DE::SHCDE::FX_WITCH_SCREAM);
+                    DE::SHCDE::FX_WITCH_SCREAM);
             }
         }
     }

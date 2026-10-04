@@ -5,6 +5,6 @@
 namespace OpenSHC {
 
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D610
-void Meta::Destructor_Decoder() { MACRO_CALL(OpenSHC::Global_Func::DoNothing)(); }
+void Meta::Destructor_Decoder() { MACRO_CALL(Global_Func::DoNothing)(); }
 
 }

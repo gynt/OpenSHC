@@ -23,11 +23,11 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::Map::Units::UnitLogicState;
-    using OpenSHC::Map::Units::UnitType;
-    using OpenSHC::Map::Units::States::UnitState;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+    using Game::GameMode;
+    using Map::Units::UnitLogicState;
+    using Map::Units::UnitType;
+    using Map::Units::States::UnitState;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00416F80
     void Buildings::UpdateMill()
@@ -42,9 +42,9 @@ namespace Map {
         int iVar7;
         char cVar8;
         bool bVar9;
-        MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
+        MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
             DAT_CurrentBuildingID::instance);
-        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation
@@ -71,13 +71,13 @@ namespace Map {
                 goto LAB_00417079;
             DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
         } else {
-            if (DAT_UnitsState::instance.units[iVar7].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
+            if (DAT_UnitsState::instance.units[iVar7].logicalState != Map::Units::ULS_NORMAL) {
                 DAT_BuildingsState::instance.buildings[buildingID].unitID = 0;
             }
-            if (DAT_UnitsState::instance.units[iVar7].unitType != OpenSHC::Map::Units::UT_MILLER) {
+            if (DAT_UnitsState::instance.units[iVar7].unitType != Map::Units::UT_MILLER) {
                 DAT_BuildingsState::instance.buildings[buildingID].unitID = 0;
             }
-            if (DAT_UnitsState::instance.units[iVar7].state.generic != OpenSHC::Map::Units::States::US_AIM_WEAPONUnk) {
+            if (DAT_UnitsState::instance.units[iVar7].state.generic != Map::Units::States::US_AIM_WEAPONUnk) {
                 DAT_BuildingsState::instance.buildings[buildingID].unitID = 0;
             }
             if (DAT_BuildingsState::instance.buildings[buildingID].unitID == 0) {
@@ -89,13 +89,13 @@ namespace Map {
         }
         BVar5 = DAT_BuildingsState::instance.isFirstTickInLoop;
         DAT_BuildingsState::instance.isFirstTickInLoop = TRUE;
-        MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
             DAT_BuildingsState::ptr)(buildingID);
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive;
         DAT_BuildingsState::instance.isFirstTickInLoop = BVar5;
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 buildingID);
             buildingID = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
@@ -247,7 +247,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].killingPitField = 3;
         }
     LAB_00417366:
-        if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = 0;
         }
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;

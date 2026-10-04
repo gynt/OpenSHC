@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::Behavior::UnitStanceEnum;
-        using OpenSHC::Map::Units::Instructions::UnitMatchSpeedEnum;
+        using Map::Units::Behavior::UnitStanceEnum;
+        using Map::Units::Instructions::UnitMatchSpeedEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051D020
         void TroopValueState::trySendKnightTribeToAttack()
@@ -34,18 +34,18 @@ namespace Map {
                 iVar1 = DAT_GameState::instance.playerDataArray[this->attackInfo.playerID_0x2c850]
                             .previousSiegeWeaponsCount;
                 this->attackInfo.knightTribeCount = this->attackInfo.knightTribeCount + -1;
-                DAT_TribesState::instance.tribes[tribeID].unitStance = OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE;
+                DAT_TribesState::instance.tribes[tribeID].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
                 if (iVar1 == 0) {
                     iVar2 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(iVar2);
+                        Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(iVar2);
                 } else {
-                    iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::findActiveSiegeEngineForTribe,
+                    iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::findActiveSiegeEngineForTribe,
                         DAT_UnitsState::ptr)(iVar2);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
                     DAT_TribesState::ptr)(tribeID, (uint)((int)((int)DAT_UnitsState::instance.units[iVar2].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[iVar2].y)), 0, 0,
-                    OpenSHC::Map::Units::Instructions::UMSE_0);
+                    Map::Units::Instructions::UMSE_0);
             }
         }
 

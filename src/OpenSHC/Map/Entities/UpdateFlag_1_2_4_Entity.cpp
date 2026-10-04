@@ -15,9 +15,9 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::AI::AIRecruitUnitChoice;
-    using OpenSHC::AI::AIRecruitUnitChoiceInt;
-    using OpenSHC::Game::GameMode;
+    using AI::AIRecruitUnitChoice;
+    using AI::AIRecruitUnitChoiceInt;
+    using Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00402900
     void Entities::UpdateFlag_1_2_4_Entity()
@@ -36,15 +36,15 @@ namespace Map {
             <= (int)((byte)DAT_EntityState::instance.entityArray[uVar2].yPosition & 0x1f)) {
             sVar4 = (short)DAT_LandscapeState::instance.wind.value;
         }
-        if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
+        if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                 && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_owner] == -1))
             && (DAT_GameSynchronyState::instance.currentAIArray[_owner] != 0)) {
             if (DAT_GameState::instance.playerDataArray[_owner].aiBuildingDestroyChoiceTracker == 0) {
                 if (DAT_GameState::instance.playerDataArray[_owner].aiNervousActionsTracker == 0) {
                     AVar1 = DAT_GameState::instance.playerDataArray[_owner].aiRecruitUnitChoiceState;
                     sVar4 = 0;
-                    if (AVar1 != OpenSHC::AI::AIRUC_DEFENSIVE) {
-                        sVar4 = (AVar1 != OpenSHC::AI::AIRUC_RAIDING) + 1;
+                    if (AVar1 != AI::AIRUC_DEFENSIVE) {
+                        sVar4 = (AVar1 != AI::AIRUC_RAIDING) + 1;
                     }
                 } else {
                     sVar4 = 3;

@@ -22,9 +22,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Commands::GameCommandType;
-    using OpenSHC::Game::GameMode;
-    using OpenSHC::UI::Enums::MenuModalType;
+    using Commands::GameCommandType;
+    using Game::GameMode;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004968A0
     void MenuTextInputState::loadOrSaveGame(int action)
@@ -33,20 +33,20 @@ namespace UI {
         int iVar2;
         undefined4* puVar5;
         int iVar6;
-        if ((((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                 || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
+        if ((((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                 || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
                 || (DAT_GameSynchronyState::instance.saveRelated != 1))
             || (action != 10)) {
             DAT_MouseState::instance.waitCursorToggle = 1;
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::SetCursorDependingOnProgramState)();
-            MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
+            MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
+            MACRO_CALL(OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
             INT_00b95b64::instance = 1;
-            if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+            if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 std::string _savesPath = MACRO_CALL_MEMBER(
-                    OpenSHC::IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
+                    IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
                 _savesPath.append("*.sav", 5);
-                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
                 this->field32_0x74 = DAT_ResourceManager::instance.mapFileCounter;
                 for (int _mapIndex = 0; _mapIndex < DAT_ResourceManager::instance.mapFileCounter; _mapIndex++) {
@@ -54,9 +54,9 @@ namespace UI {
                 }
             } else {
                 std::string _savesPath = MACRO_CALL_MEMBER(
-                    OpenSHC::IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
+                    IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
                 _savesPath.append("*.msv", 5);
-                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
                 this->field32_0x74 = DAT_ResourceManager::instance.mapFileCounter;
                 iVar6 = 0;
@@ -68,9 +68,9 @@ namespace UI {
                         if (action != 10) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar6;
                             MACRO_CALL_MEMBER(
-                                OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                                (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_LOAD_MAP_HEADER
-                                    | OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
+                                Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                                (Commands::GameCommandType)(Commands::GCT_LOAD_MAP_HEADER
+                                    | Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
                         }
                         iVar6 = iVar6 + 1;
                         puVar5 = puVar5 + 1;
@@ -91,20 +91,20 @@ namespace UI {
             this->field43_0xa0 = 0xffffffff;
             this->field36_0x84 = 0x10;
             if (action == 9) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
-                    OpenSHC::UI::Enums::MMT_LOAD_MAP);
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
+                    UI::Enums::MMT_LOAD_MAP);
                 this->field0_0x0 = 1;
                 iVar6 = this->field1_0x4;
                 iVar1 = this->field2_0x8;
                 iVar2 = this->field3_0xc;
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
-                    OpenSHC::UI::Enums::MMT_SAVE_MAP);
+                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
+                    UI::Enums::MMT_SAVE_MAP);
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     2);
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
+                    Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
                 this->field0_0x0 = 3;
                 iVar6 = this->field4_0x10;
@@ -117,10 +117,10 @@ namespace UI {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = 0;
                 this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(
+            MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(
                 -1 - this->field33_0x78);
         } else {
-            MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
+            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
         };
         return;
     }

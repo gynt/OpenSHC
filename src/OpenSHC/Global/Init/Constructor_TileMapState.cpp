@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CAC0
     void Init::Constructor_TileMapState()
     {
-        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::Constructor_TileMapState, DAT_TileMapState::ptr)();
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(MACRO_CALL(OpenSHC::Meta_Func::Destructor_0059d6b0));
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::Constructor_TileMapState, DAT_TileMapState::ptr)();
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6b0));
         return;
     }
 

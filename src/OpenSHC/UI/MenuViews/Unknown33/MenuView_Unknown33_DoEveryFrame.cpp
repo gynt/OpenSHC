@@ -21,39 +21,39 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using OpenSHC::Commands::GameCommandType;
-        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
-        using OpenSHC::UI::Enums::MenuViewType;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Commands::GameCommandType;
+        using UI::Enums::BuildingsAndStatusMenuTabType;
+        using UI::Enums::MenuViewType;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042C090
         void Unknown33::MenuView_Unknown33_DoEveryFrame()
         {
             int iVar1
-                = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkAllPlayersReadyAndCleanupSlots,
+                = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::checkAllPlayersReadyAndCleanupSlots,
                     DAT_GameSynchronyState::ptr)();
             if (iVar1 != 0) {
                 if (DAT_GameSynchronyState::instance.isHost != FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_SHARE_LOBBY_STATE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_HOST_SHARE_LOBBY_STATE);
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
                 }
                 for (iVar1 = 1; iVar1 < 9; iVar1++) {
                     if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar1] == -1)
                         && (((DAT_GameCore::instance.mapU4Int0 == 0
                                  || (iVar1 != DAT_GameState::instance.mapAndTime.somePlayerID))
                             && (DAT_GameSynchronyState::instance.currentAIArray[iVar1] == 0)))) {
-                        MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::destroyPlayerCompletely,
+                        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::destroyPlayerCompletely,
                             DAT_GameState::ptr)(iVar1);
                     }
                 }
-                MACRO_CALL(OpenSHC::Synchrony_Func::SetAIPlayerNickNames)();
+                MACRO_CALL(Synchrony_Func::SetAIPlayerNickNames)();
                 DAT_GameSynchronyState::instance.timeSkirmishGameStart = timeGetTime();
-                DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = UI::Enums::BASMTT_HUNTERSHUT;
+                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    UI::Enums::MVT_BUILD_MENU, 0);
                 DAT_GameSynchronyState::instance.DAT_TwoIfNotHost = 0;
                 DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[0] = 0;
                 DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[1] = 0;

@@ -13,15 +13,15 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Game::GameMode2;
-        using OpenSHC::Map::MapType2;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using Game::GameMode2;
+        using Map::MapType2;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051BDE0
         BOOLEnum TroopValueState::getPlayerNot1AndHasKeep(int playerID)
         {
-            if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
-                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE)) {
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
+                && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)) {
                 if (playerID != 1) {
                     return FALSE;
                 }

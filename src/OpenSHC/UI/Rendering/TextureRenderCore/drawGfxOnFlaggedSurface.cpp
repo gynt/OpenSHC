@@ -9,7 +9,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004558E0
         void TextureRenderCore::drawGfxOnFlaggedSurface(int gfxIndex, int xPos, int yPos)
         {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos, yPos,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawTgxOnFlaggedSurface, this)(xPos, yPos,
                 this->loadedGfxArray[gfxIndex].width, this->loadedGfxArray[gfxIndex].height,
                 (ushort*)((int)(
 

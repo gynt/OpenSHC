@@ -14,7 +14,7 @@ namespace Synchrony {
         this->DAT_CurrentGameCommandID = 0;
         this->MBR_GameCommandID = 0;
         this->DAT_GameCommandArrayIndex = 0;
-        MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+        MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             0x3e1c0, '\0', (void*)((int)(this->DAT_GameCommandArray)));
         this->DAT_LagIndicatorPerPlayer[0] = 1000;
         this->DAT_LagIndicatorPerPlayer[1] = 1000;

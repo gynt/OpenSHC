@@ -108,7 +108,7 @@ namespace Map {
                                                 || ((DAT_TileMapState::instance.LogicLayer[iVar6] & 0x400200U)
                                                     == 0)))))) {
                                         bVar5 = true;
-                                        uVar8 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                                        uVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                             DAT_TileMapState::ptr)(iVar6, 1);
                                         uVar12 = local_38 - y >> 0x1f;
                                         iVar9 = ((local_38 - y ^ uVar12) - uVar12) * (targetHeight - height);
@@ -168,7 +168,7 @@ namespace Map {
                                                     || ((DAT_TileMapState::instance.LogicLayer[iVar9] & 0x400200U)
                                                         == 0)))))) {
                                         bVar5 = true;
-                                        local_30 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                                        local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                             DAT_TileMapState::ptr)(iVar9, 1);
                                         uVar12 = local_3c - x >> 0x1f;
                                         local_1c = iVar9;
@@ -207,7 +207,7 @@ namespace Map {
                             y = iVar10 + -1;
                             iVar10 = iVar1;
                             do {
-                                local_30 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                                local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                     DAT_TileMapState::ptr)((((int)(targetX + (targetX >> 0x1f & 7U)) >> 3) - iVar10)
                                         + DAT_ViewportRenderState::instance
                                             .translationMatrix[(int)(targetY + (targetY >> 0x1f & 7U)) >> 3]
@@ -262,7 +262,7 @@ namespace Map {
                                                 || ((DAT_TileMapState::instance.LogicLayer[iVar13] & 0x400200U)
                                                     == 0)))))) {
                                         bVar5 = true;
-                                        local_30 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                                        local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                             DAT_TileMapState::ptr)(iVar13, 1);
                                         uVar12 = iVar10 - x >> 0x1f;
                                         iVar9 = local_38;
@@ -301,7 +301,7 @@ namespace Map {
                             + (((int)(targetY + (targetY >> 0x1f & 7U)) >> 3) - iVar2) * 0xc + 0x188728);
                         iVar6 = iVar6 + -1;
                         do {
-                            local_30 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                            local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                 DAT_TileMapState::ptr)(*piVar15 + ((int)(targetX + (targetX >> 0x1f & 7U)) >> 3), 1);
                             if (targetHeight < (int)local_30) {
                                 local_40 = 0x1c;
@@ -351,7 +351,7 @@ namespace Map {
                                         && ((!bVar4
                                             || ((DAT_TileMapState::instance.LogicLayer[iVar14] & 0x400200U) == 0)))))) {
                                     bVar5 = true;
-                                    local_30 = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnSomeHeight,
+                                    local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                         DAT_TileMapState::ptr)(iVar14, 1);
                                     uVar12 = iVar6 - y >> 0x1f;
                                     x = local_3c;

@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using OpenSHC::Map::Trees::TreeType;
-    using OpenSHC::Map::Trees::TreeTypeShort;
+    using Map::Trees::TreeType;
+    using Map::Trees::TreeTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F38A0
     void Version::UpdateTreesOfCertainTypes()

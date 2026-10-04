@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
-        using OpenSHC::Map::Units::UnitInstructionType;
+        using Map::Units::UnitInstructionType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0051B310
         int TroopValueState::placeSiegeTentAtAttackAngle(int tribeID, MappersEnum commandBuildingType)
@@ -32,7 +32,7 @@ namespace Map {
             int _y;
             _unitID = DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
             _attackLocationIndex
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::algFindAttackAngle,
+                = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
                     DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].y)), tribeID);
             if (_attackLocationIndex != 0) {
@@ -51,13 +51,13 @@ namespace Map {
                 this->attackInfo.tentPointsValues[_attackLocationIndex].three = 3;
                 _playerID = DAT_TribesState::instance.tribes[tribeID].owner;
                 DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1 = (short)_attackLocationIndex;
-                MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
                     _playerID, _x + -1, _y + -1, commandBuildingType, 3, 0xf);
                 _buildingID = DAT_TileMapState::instance.placedBuildingID;
                 DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                     = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
-                    tribeID, OpenSHC::Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED, _buildingID,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
+                    tribeID, Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED, _buildingID,
                     DAT_BuildingsState::instance.buildings[_buildingID].uid, 0);
                 return _attackLocationIndex;
             }

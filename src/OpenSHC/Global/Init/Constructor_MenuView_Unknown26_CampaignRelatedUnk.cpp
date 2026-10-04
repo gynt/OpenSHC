@@ -13,21 +13,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A5B0
     void Init::Constructor_MenuView_Unknown26_CampaignRelatedUnk()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown26_CampaignRelatedUnk::ptr)(
-            OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoInitial),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_Unknown26_CampaignRelatedUnk));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_Unknown26_CampaignRelatedUnk::ptr)(
+            UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoInitial),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown26_CampaignRelatedUnk));
         return;
     }
 

@@ -14,19 +14,19 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuModalType;
+    using UI::Enums::MenuModalType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059B9E0
     void Init::Constructor_MenuModal_UnusedSiegeAttackingForceUnk()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModal_Func::Constructor_MenuModal,
-            MenuModal_UnusedSiegeAttackingForceUnk::ptr)(OpenSHC::UI::Enums::MMT_UNUSED_SIEGE_ATTACKING_FORCEUnk, -1,
+        MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal,
+            MenuModal_UnusedSiegeAttackingForceUnk::ptr)(UI::Enums::MMT_UNUSED_SIEGE_ATTACKING_FORCEUnk, -1,
             -1, 600, 0x1b8, 0x200, 6,
-            (OpenSHC::UI::MenuModalRenderFunction*)MACRO_CALL(OpenSHC::UI::MenuModals::
+            (UI::MenuModalRenderFunction*)MACRO_CALL(UI::MenuModals::
                     UnusedSiegeAttackingForceUnk_Func::MenuModalRenderFunction_UnusedSiegeAttackingForceUnk),
             Menu_UnusedSiegeAttackingForceUnk::ptr);
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuModal_UnusedSiegeAttackingForceUnk));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedSiegeAttackingForceUnk));
         return;
     }
 

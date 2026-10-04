@@ -10,10 +10,10 @@
 namespace OpenSHC {
 namespace UI {
 
-    using OpenSHC::Rendering::Enums::GmDataIndex;
-    using OpenSHC::UI::Enums::MenuItemType;
-    using OpenSHC::UI::Enums::MenuItemUCMarker;
-    using OpenSHC::UI::Enums::UserControlID;
+    using Rendering::Enums::GmDataIndex;
+    using UI::Enums::MenuItemType;
+    using UI::Enums::MenuItemUCMarker;
+    using UI::Enums::UserControlID;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4100
     Menu* Menu::Constructor_Menu(MenuItem* menuItemArrayAddress)
@@ -41,12 +41,12 @@ namespace UI {
         /*
           0x66 is the final element sentinel
          */
-        if (menuItemArrayAddress->menuItemType != OpenSHC::UI::Enums::MIT_LAST_ENTRY) {
-            _shiftedCurrentMenuItemPtr = (OpenSHC::UI::MenuItem*)(&menuItemArrayAddress->position);
+        if (menuItemArrayAddress->menuItemType != UI::Enums::MIT_LAST_ENTRY) {
+            _shiftedCurrentMenuItemPtr = (UI::MenuItem*)(&menuItemArrayAddress->position);
             do {
                 _ucMarker = (_shiftedCurrentMenuItemPtr->position).ucInfo.ucMarker_0x0;
                 _shiftedCurrentMenuItemPtr->menuPointer = this;
-                if (_ucMarker == OpenSHC::UI::Enums::USE_UC_COORDS) {
+                if (_ucMarker == UI::Enums::USE_UC_COORDS) {
                     _shiftedCurrentMenuItemPtr->ucID
                         = *(UserControlIDShort*)((int)&_shiftedCurrentMenuItemPtr->position + 4);
                 } else {
@@ -55,21 +55,21 @@ namespace UI {
                 _currentMenuItemType = _shiftedCurrentMenuItemPtr->menuItemType;
                 _currentMenuItemPtr = _shiftedCurrentMenuItemPtr;
                 _shiftedCurrentMenuItemPtr->unknownZero = 0;
-                if (_currentMenuItemType == OpenSHC::UI::Enums::MIT_TAB_CONSIDER_ITEM_SKIP_BECAUSE_OTHER_MENU_TAB) {
+                if (_currentMenuItemType == UI::Enums::MIT_TAB_CONSIDER_ITEM_SKIP_BECAUSE_OTHER_MENU_TAB) {
                     _nextMenuItem1 = (MenuItem*)((int)_shiftedCurrentMenuItemPtr + 0x4c);
                     _itemsToSkip = 0;
                     _currentMenuItemType = *(MenuItemTypeInt*)((int)_shiftedCurrentMenuItemPtr + 0x4c);
-                    while ((_currentMenuItemType != OpenSHC::UI::Enums::MIT_LAST_ENTRY
+                    while ((_currentMenuItemType != UI::Enums::MIT_LAST_ENTRY
                         && (_currentMenuItemType
-                            != OpenSHC::UI::Enums::MIT_TAB_CONSIDER_ITEM_SKIP_BECAUSE_OTHER_MENU_TAB))) {
-                        if (_currentMenuItemType == OpenSHC::UI::Enums::MIT_STOP_HANDLING)
+                            != UI::Enums::MIT_TAB_CONSIDER_ITEM_SKIP_BECAUSE_OTHER_MENU_TAB))) {
+                        if (_currentMenuItemType == UI::Enums::MIT_STOP_HANDLING)
                             goto LAB_004f419d;
                         _currentMenuItemPtr = _nextMenuItem1 + 1;
                         _nextMenuItem1 = _nextMenuItem1 + 1;
                         _itemsToSkip = _itemsToSkip + 1;
                         _currentMenuItemType = _currentMenuItemPtr->menuItemType;
                     }
-                    if (_nextMenuItem1->menuItemType == OpenSHC::UI::Enums::MIT_STOP_HANDLING) {
+                    if (_nextMenuItem1->menuItemType == UI::Enums::MIT_STOP_HANDLING) {
                     LAB_004f419d:
                         _itemsToSkip = _itemsToSkip + 1;
                     }
@@ -77,24 +77,24 @@ namespace UI {
                       The whole structure here just seems to set this value. Why? --TheRedDaemon
                      */
                     (_shiftedCurrentMenuItemPtr->firstItemTypeData).itemsToSkip = _itemsToSkip;
-                } else if (_currentMenuItemType == OpenSHC::UI::Enums::MIT_START_OF_INTERACTION_GROUPUnk) {
+                } else if (_currentMenuItemType == UI::Enums::MIT_START_OF_INTERACTION_GROUPUnk) {
                     _previousClickHandler = _shiftedCurrentMenuItemPtr->menuItemActionHandler;
                     _previousRenderFunction = _shiftedCurrentMenuItemPtr->menuItemRenderFunction;
                     _nextMenuItem2 = (MenuItem*)((int)_shiftedCurrentMenuItemPtr + 0x4c);
-                    GVar1 = OpenSHC::Rendering::Enums::GDI_NONE_0;
+                    GVar1 = Rendering::Enums::GDI_NONE_0;
                     _nextMenuItemType2 = _nextMenuItem2->menuItemType;
-                    while ((_nextMenuItemType2 & OpenSHC::UI::Enums::MIT_PART_OF_INTERACTION_GROUPUnk)
+                    while ((_nextMenuItemType2 & UI::Enums::MIT_PART_OF_INTERACTION_GROUPUnk)
                         != ((MenuItemType)0)) {
                         if ((_nextMenuItem2->menuItemActionHandler).simple
-                            == (OpenSHC::UI::Callbacks::SimpleActionHandler*)0x0) {
+                            == (UI::Callbacks::SimpleActionHandler*)0x0) {
                             _nextMenuItem2->menuItemActionHandler = _previousClickHandler;
                         }
                         if ((_nextMenuItem2->menuItemRenderFunction).simple
-                            == (OpenSHC::UI::Callbacks::SimpleRenderFunction*)0x0) {
+                            == (UI::Callbacks::SimpleRenderFunction*)0x0) {
                             _nextMenuItem2->menuItemRenderFunction = _previousRenderFunction;
                         }
                         _nextMenuItem2 = _nextMenuItem2 + 1;
-                        GVar1 = GVar1 + OpenSHC::Rendering::Enums::GDI_ICONS_PLACEHOLDERS_1_PIC_61;
+                        GVar1 = GVar1 + Rendering::Enums::GDI_ICONS_PLACEHOLDERS_1_PIC_61;
                         _nextMenuItemType2 = _nextMenuItem2->menuItemType;
                     }
                     (_shiftedCurrentMenuItemPtr->firstItemTypeData).gmDataIndex = GVar1;
@@ -105,20 +105,20 @@ namespace UI {
                         _previousClickHandler = _nextMenuItem2->menuItemActionHandler;
                         _previousRenderFunction = _nextMenuItem2->menuItemRenderFunction;
                         _nextMenuItem3 = _nextMenuItem2 + 1;
-                        GVar1 = OpenSHC::Rendering::Enums::GDI_NONE_0;
+                        GVar1 = Rendering::Enums::GDI_NONE_0;
                         _currentMenuItemType = _nextMenuItem3->menuItemType;
-                        while ((_currentMenuItemType & OpenSHC::UI::Enums::MIT_PART_OF_INTERACTION_GROUPUnk)
+                        while ((_currentMenuItemType & UI::Enums::MIT_PART_OF_INTERACTION_GROUPUnk)
                             != ((MenuItemType)0)) {
                             if ((_nextMenuItem3->menuItemActionHandler).simple
-                                == (OpenSHC::UI::Callbacks::SimpleActionHandler*)0x0) {
+                                == (UI::Callbacks::SimpleActionHandler*)0x0) {
                                 _nextMenuItem3->menuItemActionHandler = _previousClickHandler;
                             }
                             if ((_nextMenuItem3->menuItemRenderFunction).simple
-                                == (OpenSHC::UI::Callbacks::SimpleRenderFunction*)0x0) {
+                                == (UI::Callbacks::SimpleRenderFunction*)0x0) {
                                 _nextMenuItem3->menuItemRenderFunction = _previousRenderFunction;
                             }
                             _nextMenuItem3 = _nextMenuItem3 + 1;
-                            GVar1 = GVar1 + OpenSHC::Rendering::Enums::GDI_ICONS_PLACEHOLDERS_1_PIC_61;
+                            GVar1 = GVar1 + Rendering::Enums::GDI_ICONS_PLACEHOLDERS_1_PIC_61;
                             _currentMenuItemType = _nextMenuItem3->menuItemType;
                         }
                         (_nextMenuItem2->firstItemTypeData).gmDataIndex = GVar1;
@@ -136,7 +136,7 @@ namespace UI {
                 }
                 _nextMenuItemType4Ptr = (MenuItemTypeInt*)((int)_shiftedCurrentMenuItemPtr + 0x4c);
                 _shiftedCurrentMenuItemPtr = _shiftedCurrentMenuItemPtr + 10;
-            } while (*_nextMenuItemType4Ptr != OpenSHC::UI::Enums::MIT_LAST_ENTRY);
+            } while (*_nextMenuItemType4Ptr != UI::Enums::MIT_LAST_ENTRY);
         }
         return this;
     }

@@ -13,21 +13,21 @@
 namespace OpenSHC {
 namespace Global {
 
-    using OpenSHC::UI::Enums::MenuViewType;
+    using UI::Enums::MenuViewType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0059A430
     void Init::Constructor_MenuView_BuildingAndStatusMenu()
     {
-        MACRO_CALL_MEMBER(OpenSHC::UI::MenuView_Func::Constructor_MenuView, MenuView_BuildingAndStatusMenu::ptr)(
-            OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU,
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_Prepare),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoInitial),
-            (OpenSHC::WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
-                OpenSHC::UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoEveryFrame));
-        MACRO_CALL(OpenSHC::OS_Func::_atexit)(
-            MACRO_CALL(OpenSHC::Meta_Func::Destructor_MenuView_BuildingAndStatusMenu));
+        MACRO_CALL_MEMBER(UI::MenuView_Func::Constructor_MenuView, MenuView_BuildingAndStatusMenu::ptr)(
+            UI::Enums::MVT_BUILDING_AND_STATUS_MENU,
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_Prepare),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoInitial),
+            (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
+                UI::MenuViews::BuildingAndStatusMenu_Func::MenuView_BuildingAndStatusMenu_DoEveryFrame));
+        MACRO_CALL(OS_Func::_atexit)(
+            MACRO_CALL(Meta_Func::Destructor_MenuView_BuildingAndStatusMenu));
         return;
     }
 
