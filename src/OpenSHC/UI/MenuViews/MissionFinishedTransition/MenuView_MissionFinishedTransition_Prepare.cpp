@@ -197,7 +197,7 @@ namespace UI {
                 pcVar5 = MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::getFileNameOfCurrentActiveResource, DAT_ResourceManager::ptr)();
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::WriteMissionToScoresFile)(
-                    pcVar5, (int)((int)(DAT_MapPropertiesState::instance.field91_0x14554)));
+                    pcVar5, (int)((int)(DAT_MapPropertiesState::instance.missionScore)));
             }
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
             ;

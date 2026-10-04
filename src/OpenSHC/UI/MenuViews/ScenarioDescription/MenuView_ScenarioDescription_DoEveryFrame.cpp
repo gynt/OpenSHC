@@ -75,7 +75,7 @@ namespace UI {
                 && (DAT_00ed2794::instance = 0, DAT_GameCore::instance.missionNumber1to20 + -1 < 0x14)) {
                 MACRO_CALL_MEMBER(
                     Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
-                    DAT_MissionDefinedData::instance.field24_0x864[DAT_GameCore::instance.missionNumber1to20 + -1], 1);
+                    DAT_MissionDefinedData::instance.MissionSpeechFileNames[DAT_GameCore::instance.missionNumber1to20 + -1], 1);
             }
             uVar4 = (_currentTime - INT_00ed3130::instance) / 0xfa;
             if (uVar4 < 0x3c) {
@@ -118,7 +118,7 @@ namespace UI {
             }
             if (DAT_00ed2798::instance == 2) {
                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1) {
-                    iVar3 = *(int*)(DAT_MissionDefinedData::instance.field24_0x864[0xf]
+                    iVar3 = *(int*)(DAT_MissionDefinedData::instance.MissionSpeechFileNames[0xf]
                         + DAT_GameCore::instance.missionNumber1to20 * 4 + 0x1c);
                     eVar5 = DAT_GameCore::instance.missionNumber1to20 + DE::SHCDE::TEXT_MISSION15_HINTS;
                 } else {

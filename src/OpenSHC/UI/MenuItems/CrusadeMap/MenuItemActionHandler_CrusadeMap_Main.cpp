@@ -126,8 +126,8 @@ namespace UI {
                         dVar3 = 0;
                         do {
                             if (DAT_GameCore::instance.furthestSkirmishTrailMission < (int)dVar3) {}
-                            iVar1 = DAT_MissionDefinedData::instance.field32_0xbbc[dVar3][0];
-                            iVar2 = DAT_MissionDefinedData::instance.field32_0xbbc[dVar3][1];
+                            iVar1 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][0];
+                            iVar2 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][1];
                             if (((iVar1 + -10 <= _clickX) && (_clickX <= iVar1 + 10))
                                 && ((iVar2 + -10 <= _clickY && (_clickY <= iVar2 + 10)))) {
                             LAB_004d9190:
@@ -144,8 +144,8 @@ namespace UI {
                         if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                             dVar4 = 0;
                             while ((int)dVar4 <= DAT_GameCore::instance.furthestWarchestTrailMission) {
-                                iVar1 = DAT_MissionDefinedData::instance.field33_0xd4c[dVar4][0];
-                                iVar2 = DAT_MissionDefinedData::instance.field33_0xd4c[dVar4][1];
+                                iVar1 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar4][0];
+                                iVar2 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar4][1];
                                 if (((iVar1 + -10 <= _clickX) && (_clickX <= iVar1 + 10))
                                     && ((iVar2 + -10 <= _clickY && (_clickY <= iVar2 + 10))))
                                     goto LAB_004d9190;
@@ -155,8 +155,8 @@ namespace UI {
                         } else if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                             iVar5 = 0;
                             while (iVar5 <= DAT_GameCore::instance.furthestExtremeTrailMission) {
-                                iVar1 = DAT_MissionDefinedData::instance.field34_0xe3c[iVar5][0];
-                                iVar2 = DAT_MissionDefinedData::instance.field34_0xe3c[iVar5][1];
+                                iVar1 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][0];
+                                iVar2 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][1];
                                 if ((((iVar1 + -10 <= _clickX) && (_clickX <= iVar1 + 10)) && (iVar2 + -10 <= _clickY))
                                     && (_clickY <= iVar2 + 10))
                                     goto LAB_004d9190;

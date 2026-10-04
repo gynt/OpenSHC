@@ -40,7 +40,7 @@ namespace Game {
         char** field21_0x7cc; // 0x000007CC length: 4
         char** field22_0x7d0; // 0x000007D0 length: 4
         int field23_0x7d4[18][2]; // 0x000007D4 length: 144
-        char field24_0x864[20][32]; // 0x00000864 length: 640
+        char MissionSpeechFileNames[20][32]; // 0x00000864 length: 640
         int field25_0xae4[5]; // 0x00000AE4 length: 20
         bool field26_0xaf8; // 0x00000AF8 length: 1
         byte field27_0xaf9[3]; // 0x00000AF9 length: 3
@@ -48,10 +48,10 @@ namespace Game {
         int field29_0xb00[20]; // 0x00000B00 length: 80
         int sortColumn; // 0x00000B50 length: 4
         int field31_0xb54[26]; // 0x00000B54 length: 104
-        int field32_0xbbc[50][2]; // 0x00000BBC length: 400
-        int field33_0xd4c[30][2]; // 0x00000D4C length: 240
-        int field34_0xe3c[30][2]; // 0x00000E3C length: 240
-        int field35_0xf2c[50]; // 0x00000F2C length: 200
+        int SkirmishTrailMissionPositions[50][2]; // 0x00000BBC length: 400
+        int WarchestTrailMissionPositions[30][2]; // 0x00000D4C length: 240
+        int ExtremeTrailMissionPositions[30][2]; // 0x00000E3C length: 240
+        int SkirmishTrailIconOffsets[50]; // 0x00000F2C length: 200
         int field36_0xff4[50][4]; // 0x00000FF4 length: 800
         int field37_0x1314[22]; // 0x00001314 length: 88
         undefined4 descending; // 0x0000136C length: 4
