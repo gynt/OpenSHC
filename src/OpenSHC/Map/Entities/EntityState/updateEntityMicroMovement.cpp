@@ -18,7 +18,7 @@ namespace Map {
                      || (this->entityArray[param_1].targetZ != 0))
                     || (this->entityArray[param_1].microX != this->entityArray[param_1].targetX))
                 || (this->entityArray[param_1].microY != this->entityArray[param_1].targetY)) {
-                switch (this->entityArray[param_1].field50_0x74) {
+                switch (this->entityArray[param_1].pathAxisCase) {
                 default:
                     return;
                 case 1:
@@ -30,28 +30,28 @@ namespace Map {
                         = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
                     return;
                 case 3:
-                    sVar2 = this->entityArray[param_1].field49_0x72;
+                    sVar2 = this->entityArray[param_1].pathError;
                     if (0 < sVar2) {
                         this->entityArray[param_1].microX
                             = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
                         this->entityArray[param_1].microY
                             = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
-                        this->entityArray[param_1].field49_0x72 = this->entityArray[param_1].field48_0x70 + sVar2;
+                        this->entityArray[param_1].pathError = this->entityArray[param_1].pathErrorStepDiagonal + sVar2;
                     }
                     this->entityArray[param_1].microY
                         = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
                     break;
                 case 4:
-                    sVar2 = this->entityArray[param_1].field49_0x72;
+                    sVar2 = this->entityArray[param_1].pathError;
                     this->entityArray[param_1].microX
                         = this->entityArray[param_1].microX + this->entityArray[param_1].someMicroX;
                     if (0 < sVar2) {
                         this->entityArray[param_1].microY
                             = this->entityArray[param_1].microY + this->entityArray[param_1].someMicroY;
-                        this->entityArray[param_1].field49_0x72 = this->entityArray[param_1].field48_0x70 + sVar2;
+                        this->entityArray[param_1].pathError = this->entityArray[param_1].pathErrorStepDiagonal + sVar2;
                     }
                 }
-                this->entityArray[param_1].field49_0x72 = this->entityArray[param_1].field47_0x6e + sVar2;
+                this->entityArray[param_1].pathError = this->entityArray[param_1].pathErrorStepStraight + sVar2;
             }
         }
 

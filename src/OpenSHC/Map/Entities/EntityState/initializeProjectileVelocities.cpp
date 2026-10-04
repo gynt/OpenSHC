@@ -32,9 +32,9 @@ namespace Map {
             double fVar13;
             sVar5 = (short)targetY;
             if (targetY < y) {
-                this->entityArray[entityID].field42_0x64 = (short)y - sVar5;
+                this->entityArray[entityID].pathDeltaY = (short)y - sVar5;
             } else {
-                this->entityArray[entityID].field42_0x64 = sVar5 - (short)y;
+                this->entityArray[entityID].pathDeltaY = sVar5 - (short)y;
             }
             sVar10 = (short)targetX;
             if (targetX < x) {
@@ -43,48 +43,48 @@ namespace Map {
                 sVar9 = sVar10 - (short)x;
             }
             sVar2 = this->entityArray[entityID].targetZ;
-            this->entityArray[entityID].field39_0x5e = sVar9;
+            this->entityArray[entityID].pathDeltaX = sVar9;
             sVar9 = this->entityArray[entityID].height;
             if (sVar9 < sVar2) {
-                this->entityArray[entityID].field44_0x68 = sVar2 - sVar9;
+                this->entityArray[entityID].pathDeltaZ = sVar2 - sVar9;
             } else {
-                this->entityArray[entityID].field44_0x68 = sVar9 - sVar2;
+                this->entityArray[entityID].pathDeltaZ = sVar9 - sVar2;
             }
-            sVar9 = this->entityArray[entityID].field39_0x5e;
-            this->entityArray[entityID].field38_0x5c = sVar10;
-            this->entityArray[entityID].field41_0x62 = sVar5;
+            sVar9 = this->entityArray[entityID].pathDeltaX;
+            this->entityArray[entityID].pathTargetX = sVar10;
+            this->entityArray[entityID].pathTargetY = sVar5;
             this->entityArray[entityID].someMicroX = (ushort)(x <= targetX) * 2 + -1;
             this->entityArray[entityID].someMicroY = (ushort)(y <= targetY) * 2 + -1;
             if (sVar9 == 0) {
-                if (this->entityArray[entityID].field42_0x64 == 0) {
-                    this->entityArray[entityID].field50_0x74 = 0;
+                if (this->entityArray[entityID].pathDeltaY == 0) {
+                    this->entityArray[entityID].pathAxisCase = 0;
                 } else {
-                    this->entityArray[entityID].field50_0x74 = 1;
+                    this->entityArray[entityID].pathAxisCase = 1;
                 }
             } else {
-                sVar5 = this->entityArray[entityID].field42_0x64;
+                sVar5 = this->entityArray[entityID].pathDeltaY;
                 if (sVar5 == 0) {
-                    this->entityArray[entityID].field50_0x74 = 2;
+                    this->entityArray[entityID].pathAxisCase = 2;
                 } else if (sVar9 < sVar5) {
-                    this->entityArray[entityID].field50_0x74 = 3;
+                    this->entityArray[entityID].pathAxisCase = 3;
                 } else {
-                    this->entityArray[entityID].field50_0x74 = 4;
+                    this->entityArray[entityID].pathAxisCase = 4;
                 }
             }
-            sVar5 = this->entityArray[entityID].field50_0x74;
+            sVar5 = this->entityArray[entityID].pathAxisCase;
             if (sVar5 == 3) {
                 sVar10 = sVar9 * 2;
-                sVar9 = this->entityArray[entityID].field42_0x64;
-                this->entityArray[entityID].field47_0x6e = sVar10;
-                sVar5 = this->entityArray[entityID].field42_0x64;
-                this->entityArray[entityID].field48_0x70 = sVar10 + sVar9 * -2;
+                sVar9 = this->entityArray[entityID].pathDeltaY;
+                this->entityArray[entityID].pathErrorStepStraight = sVar10;
+                sVar5 = this->entityArray[entityID].pathDeltaY;
+                this->entityArray[entityID].pathErrorStepDiagonal = sVar10 + sVar9 * -2;
             LAB_00403b64:
-                this->entityArray[entityID].field49_0x72 = sVar10 - sVar5;
+                this->entityArray[entityID].pathError = sVar10 - sVar5;
             } else if (sVar5 == 4) {
-                sVar10 = this->entityArray[entityID].field42_0x64 * 2;
-                this->entityArray[entityID].field47_0x6e = sVar10;
-                sVar5 = this->entityArray[entityID].field39_0x5e;
-                this->entityArray[entityID].field48_0x70 = sVar10 + sVar9 * -2;
+                sVar10 = this->entityArray[entityID].pathDeltaY * 2;
+                this->entityArray[entityID].pathErrorStepStraight = sVar10;
+                sVar5 = this->entityArray[entityID].pathDeltaX;
+                this->entityArray[entityID].pathErrorStepDiagonal = sVar10 + sVar9 * -2;
                 goto LAB_00403b64;
             }
             iVar7 = DAT_EntityDefinedData::instance

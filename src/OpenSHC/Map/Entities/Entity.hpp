@@ -58,19 +58,19 @@ namespace Map {
             short height_2; // 0x00000056 length: 2
             short startingHeight; // 0x00000058 length: 2
             short field37_0x5a; // 0x0000005A length: 2
-            short field38_0x5c; // 0x0000005C length: 2
-            short field39_0x5e; // 0x0000005E length: 2
+            short pathTargetX; // 0x0000005C length: 2
+            short pathDeltaX; // 0x0000005E length: 2
             short someMicroX; // 0x00000060 length: 2
-            short field41_0x62; // 0x00000062 length: 2
-            short field42_0x64; // 0x00000064 length: 2
+            short pathTargetY; // 0x00000062 length: 2
+            short pathDeltaY; // 0x00000064 length: 2
             short someMicroY; // 0x00000066 length: 2
-            short field44_0x68; // 0x00000068 length: 2
+            short pathDeltaZ; // 0x00000068 length: 2
             short field45_0x6a; // 0x0000006A length: 2
             short someCounter_OR_hitGround; // 0x0000006C length: 2
-            short field47_0x6e; // 0x0000006E length: 2
-            short field48_0x70; // 0x00000070 length: 2
-            short field49_0x72; // 0x00000072 length: 2
-            short field50_0x74; // 0x00000074 length: 2
+            short pathErrorStepStraight; // 0x0000006E length: 2
+            short pathErrorStepDiagonal; // 0x00000070 length: 2
+            short pathError; // 0x00000072 length: 2
+            short pathAxisCase; // 0x00000074 length: 2
             byte unused_0x76[2]; // 0x00000076 length: 2
             int speedUnk; // 0x00000078 length: 4
             float vCos; // 0x0000007C length: 4

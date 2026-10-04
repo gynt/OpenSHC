@@ -61,7 +61,7 @@ namespace Map {
             if (this->entityArray[entityID].someCounter_OR_hitGround != 0) {
                 return FALSE;
             }
-            if (this->entityArray[entityID].field50_0x74 == 0) {
+            if (this->entityArray[entityID].pathAxisCase == 0) {
                 this->entityArray[entityID].someCounter_OR_hitGround = 0x28;
             }
             _dxRaw = (double)_vCos * (double)_speed;

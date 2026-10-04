@@ -331,53 +331,53 @@ namespace Map {
             this->entityArray[param_1].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             sVar7 = (short)iVar9;
             if (iVar9 < (int)y) {
-                this->entityArray[param_1].field42_0x64 = sVar4 - sVar7;
+                this->entityArray[param_1].pathDeltaY = sVar4 - sVar7;
             } else {
-                this->entityArray[param_1].field42_0x64 = sVar7 - sVar4;
+                this->entityArray[param_1].pathDeltaY = sVar7 - sVar4;
             }
             sVar4 = (short)iVar5;
             if (iVar5 < (int)x) {
-                this->entityArray[param_1].field39_0x5e = sVar8 - sVar4;
+                this->entityArray[param_1].pathDeltaX = sVar8 - sVar4;
             } else {
-                this->entityArray[param_1].field39_0x5e = sVar4 - sVar8;
+                this->entityArray[param_1].pathDeltaX = sVar4 - sVar8;
             }
-            sVar8 = this->entityArray[param_1].field39_0x5e;
-            this->entityArray[param_1].field38_0x5c = sVar4;
+            sVar8 = this->entityArray[param_1].pathDeltaX;
+            this->entityArray[param_1].pathTargetX = sVar4;
             this->entityArray[param_1].someMicroX = (ushort)((int)x <= iVar5) * 2 + -1;
-            this->entityArray[param_1].field41_0x62 = sVar7;
+            this->entityArray[param_1].pathTargetY = sVar7;
             this->entityArray[param_1].someMicroY = (ushort)((int)y <= iVar9) * 2 + -1;
             if (sVar8 == 0) {
-                if (this->entityArray[param_1].field42_0x64 == 0) {
-                    this->entityArray[param_1].field50_0x74 = 0;
+                if (this->entityArray[param_1].pathDeltaY == 0) {
+                    this->entityArray[param_1].pathAxisCase = 0;
                 } else {
-                    this->entityArray[param_1].field50_0x74 = 1;
+                    this->entityArray[param_1].pathAxisCase = 1;
                 }
             } else {
-                sVar4 = this->entityArray[param_1].field42_0x64;
+                sVar4 = this->entityArray[param_1].pathDeltaY;
                 if (sVar4 == 0) {
-                    this->entityArray[param_1].field50_0x74 = 2;
+                    this->entityArray[param_1].pathAxisCase = 2;
                 } else if (sVar8 < sVar4) {
-                    this->entityArray[param_1].field50_0x74 = 3;
+                    this->entityArray[param_1].pathAxisCase = 3;
                 } else {
-                    this->entityArray[param_1].field50_0x74 = 4;
+                    this->entityArray[param_1].pathAxisCase = 4;
                 }
             }
-            sVar4 = this->entityArray[param_1].field50_0x74;
+            sVar4 = this->entityArray[param_1].pathAxisCase;
             if (sVar4 == 3) {
-                sVar4 = this->entityArray[param_1].field42_0x64;
+                sVar4 = this->entityArray[param_1].pathDeltaY;
                 sVar8 = sVar8 * 2;
-                this->entityArray[param_1].field47_0x6e = sVar8;
+                this->entityArray[param_1].pathErrorStepStraight = sVar8;
                 sVar7 = sVar8 + sVar4 * -2;
-                this->entityArray[param_1].field49_0x72 = sVar8 - sVar4;
+                this->entityArray[param_1].pathError = sVar8 - sVar4;
             } else {
                 if (sVar4 != 4)
                     goto LAB_0040440f;
-                sVar4 = this->entityArray[param_1].field42_0x64 * 2;
-                this->entityArray[param_1].field47_0x6e = sVar4;
+                sVar4 = this->entityArray[param_1].pathDeltaY * 2;
+                this->entityArray[param_1].pathErrorStepStraight = sVar4;
                 sVar7 = sVar4 + sVar8 * -2;
-                this->entityArray[param_1].field49_0x72 = sVar4 - sVar8;
+                this->entityArray[param_1].pathError = sVar4 - sVar8;
             }
-            this->entityArray[param_1].field48_0x70 = sVar7;
+            this->entityArray[param_1].pathErrorStepDiagonal = sVar7;
         LAB_0040440f:
             wVar1 = this->entityArray[param_1].graphicRotationUnk;
             this->entityArray[param_1].startingAngle = wVar1;
