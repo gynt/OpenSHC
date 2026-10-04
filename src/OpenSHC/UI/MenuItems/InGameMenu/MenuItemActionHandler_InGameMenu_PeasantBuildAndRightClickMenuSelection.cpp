@@ -204,9 +204,9 @@ namespace UI {
                     if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {}
                 } else if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
                     if ((DAT_MouseState::instance.leftClickStart == 0)
-                        && (DAT_ViewportRenderState::instance.viewportState.field4_0x10
+                        && (DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                             == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
-                    DAT_ViewportRenderState::instance.viewportState.field4_0x10
+                    DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                         = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();

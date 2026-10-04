@@ -19,7 +19,7 @@ namespace Rendering {
         int mouseTileX; // 0x00000004 length: 4
         int mouseTileY; // 0x00000008 length: 4
         int mouseTile; // 0x0000000C length: 4
-        int field4_0x10; // 0x00000010 length: 4
+        int previousMouseTile; // 0x00000010 length: 4
         undefined4 field5_0x14; // 0x00000014 length: 4
         undefined4 field6_0x18; // 0x00000018 length: 4
         int mouseRayBuildingID; // 0x0000001C length: 4

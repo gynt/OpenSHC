@@ -116,9 +116,9 @@ namespace UI {
                         + DAT_TileMapState::instance.unknownBrushRelated * 4)));
             }
             if ((DAT_MouseState::instance.leftClickStart == 0)
-                && (DAT_ViewportRenderState::instance.viewportState.field4_0x10
+                && (DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                     == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
-            DAT_ViewportRenderState::instance.viewportState.field4_0x10
+            DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                 = DAT_ViewportRenderState::instance.viewportState.mouseTile;
             MACRO_CALL_MEMBER(
                 OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
