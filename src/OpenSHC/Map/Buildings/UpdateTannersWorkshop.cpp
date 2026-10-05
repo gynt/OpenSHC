@@ -92,7 +92,7 @@ namespace Map {
             bVar3 = (char)bVar4 < '\x01';
             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex != 0)
                 goto LAB_004143b4;
-            DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x1f;
+            DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
             goto LAB_00414528;
         }
         if (((sVar5 == 1) || (sVar5 == 3)) || (sVar5 == 5)) {
@@ -185,7 +185,7 @@ namespace Map {
                             bVar3 = (char)bVar4 < '\x01';
                             if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex != 0)
                                 goto LAB_004143b4;
-                            DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x1f;
+                            DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                             goto LAB_00414528;
                         }
                         if (sVar5 != 10)
@@ -243,7 +243,7 @@ namespace Map {
                     sVar5 = sVar5 + -1;
                     goto LAB_00414521;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x1f;
+                DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
             }
         LAB_00414528:
             if (bVar3) {
@@ -313,7 +313,7 @@ namespace Map {
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar7) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar7) = 0;
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar7) = 1;
         piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar7);
@@ -323,7 +323,7 @@ namespace Map {
             < '\x01') {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar7) = 0;
         }
-        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar7)
+        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar7)
             = (int)(char)DAT_BuildingDefinedData::instance
                   .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar7) / 2];
     }

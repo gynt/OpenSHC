@@ -122,11 +122,11 @@ namespace Map {
                     < '\x01') {
                     DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
                 }
-                DAT_BuildingsState::instance.buildings[buildingID].field39_0x84
+                DAT_BuildingsState::instance.buildings[buildingID].overlayImageID
                     = (int)(char)DAT_BuildingDefinedData::instance
                           .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2];
             }
-            DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = 0;
+            DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         }
     }
 

@@ -56,11 +56,11 @@ namespace Map {
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame = 0;
             }
-            DAT_BuildingsState::instance.buildings[iVar4].field39_0x84
+            DAT_BuildingsState::instance.buildings[iVar4].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
                       .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame / 2];
         }
-        DAT_BuildingsState::instance.buildings[iVar4].field39_0x84 = 0;
+        DAT_BuildingsState::instance.buildings[iVar4].overlayImageID = 0;
     }
 
 }

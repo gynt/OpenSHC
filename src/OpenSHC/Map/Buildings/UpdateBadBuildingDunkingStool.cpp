@@ -40,7 +40,7 @@ namespace Map {
         buildingID = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].playerColorUnk = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0;
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(buildingID, 1);
         if (DAT_GameState::instance.playerDataArray[sVar2].fearFactorLevel < -4) {

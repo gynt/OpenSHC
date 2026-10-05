@@ -29,7 +29,7 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar5 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = 0;
         piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].field28_0x58;
         *piVar1 = *piVar1 + 1;
         if (1 < DAT_BuildingsState::instance.buildings[iVar5].field28_0x58) {

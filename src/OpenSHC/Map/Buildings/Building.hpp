@@ -74,7 +74,7 @@ namespace Map {
                     int field36_0x78; // 0x00000078 length: 4
                     int field37_0x7c; // 0x0000007C length: 4
                     int ownerFlagFrame; // 0x00000080 length: 4
-                    int field39_0x84; // 0x00000084 length: 4
+                    int overlayImageID; // 0x00000084 length: 4
                     int field40_0x88; // 0x00000088 length: 4
                 };
             };
@@ -96,7 +96,7 @@ namespace Map {
             int gfxOffset2; // 0x000000B4 length: 4
             int gfxOffset3; // 0x000000B8 length: 4
             short tickRelatedVisuallyActiveIndicator; // 0x000000BC length: 2
-            short field66_0xbe; // 0x000000BE length: 2
+            short renderBlendStrength; // 0x000000BE length: 2
             short recruitTimer; // 0x000000C0 length: 2
             short field68_0xc2; // 0x000000C2 length: 2
             short noRubble; // 0x000000C4 length: 2

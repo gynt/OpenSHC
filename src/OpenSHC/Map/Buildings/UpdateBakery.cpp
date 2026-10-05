@@ -101,12 +101,12 @@ namespace Map {
             sVar5 = DAT_BuildingsState::instance.buildings[iVar8].animationIndex;
             if (sVar5 == 0) {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame = 0;
-                DAT_BuildingsState::instance.buildings[iVar8].field66_0xbe = 0x1f;
+                DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength = 0x1f;
             } else if (sVar5 < 0xf) {
-                psVar3 = &DAT_BuildingsState::instance.buildings[iVar8].field66_0xbe;
+                psVar3 = &DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength;
                 *psVar3 = *psVar3 + -2;
             } else {
-                DAT_BuildingsState::instance.buildings[iVar8].field66_0xbe = 0;
+                DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength = 0;
             }
         LAB_0041495c:
             if (bVar7) {
@@ -128,7 +128,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame = (int)(char)bVar4;
             }
             bVar7 = '\0' >= (char)bVar4;
-            DAT_BuildingsState::instance.buildings[iVar8].field66_0xbe
+            DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength
                 = DAT_BuildingsState::instance.buildings[iVar8].animationIndex * 2;
             goto LAB_0041495c;
         }
@@ -218,7 +218,7 @@ namespace Map {
                         .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9)
                             / 2];
         }
-        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9) = iVar8;
+        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9) = iVar8;
     }
 
 }

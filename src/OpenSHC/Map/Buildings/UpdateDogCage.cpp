@@ -85,7 +85,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[_buildingID].displayOwnerFlag = 0;
             }
             DAT_BuildingsState::instance.buildings[_buildingID].displayOwnerFlag = 0;
-            DAT_BuildingsState::instance.buildings[_buildingID].field66_0xbe = 0;
+            DAT_BuildingsState::instance.buildings[_buildingID].renderBlendStrength = 0;
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
                 DAT_BuildingsState::ptr)(_buildingID, 1);
             DAT_BuildingsState::instance.buildings[_buildingID].renderAnimation = 1;

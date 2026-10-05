@@ -181,12 +181,12 @@ namespace Map {
                 < '\x01') {
                 *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9) = 0;
             }
-            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9)
+            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9)
                 = (int)(char)DAT_BuildingDefinedData::instance
                       .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9)
                           / 2];
         }
-        *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9) = 0;
+        *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9) = 0;
     }
 
 }

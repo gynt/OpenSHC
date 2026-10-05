@@ -129,10 +129,10 @@ namespace Map {
             }
             bVar7 = (char)bVar2 < '\x01';
             sVar4 = (0x10 - DAT_BuildingsState::instance.buildings[iVar10].animationIndex) * 2;
-            DAT_BuildingsState::instance.buildings[iVar10].field66_0xbe = sVar4;
+            DAT_BuildingsState::instance.buildings[iVar10].renderBlendStrength = sVar4;
             if (0 < sVar4)
                 goto LAB_004236b1;
-            DAT_BuildingsState::instance.buildings[iVar10].field66_0xbe = 0;
+            DAT_BuildingsState::instance.buildings[iVar10].renderBlendStrength = 0;
         } else {
             if ((sVar4 < 1) || (6 < sVar4)) {
                 if (sVar4 != 7)
@@ -144,9 +144,9 @@ namespace Map {
                 }
                 bVar7 = (char)bVar2 < '\x01';
                 sVar4 = DAT_BuildingsState::instance.buildings[iVar10].animationIndex * 2;
-                DAT_BuildingsState::instance.buildings[iVar10].field66_0xbe = sVar4;
+                DAT_BuildingsState::instance.buildings[iVar10].renderBlendStrength = sVar4;
                 if (0x1f < sVar4) {
-                    DAT_BuildingsState::instance.buildings[iVar10].field66_0xbe = 0x20;
+                    DAT_BuildingsState::instance.buildings[iVar10].renderBlendStrength = 0x20;
                     goto LAB_004236b9;
                 }
             } else {
@@ -170,7 +170,7 @@ namespace Map {
                               .HuntersPostAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar10].animationIndex];
                 }
                 iVar9 = iVar10 * 0x32c;
-                DAT_BuildingsState::instance.buildings[iVar10].field66_0xbe = 0;
+                DAT_BuildingsState::instance.buildings[iVar10].renderBlendStrength = 0;
             }
         LAB_004236b1:
             if (!bVar7)
@@ -227,7 +227,7 @@ namespace Map {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9 + 2) = 0;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9) = 0;
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
         piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9);
@@ -237,7 +237,7 @@ namespace Map {
             < '\x01') {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9) = 0;
         }
-        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar9)
+        *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9)
             = (int)(char)DAT_BuildingDefinedData::instance
                   .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar9) / 2];
     }

@@ -27,7 +27,7 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar3 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
-        DAT_BuildingsState::instance.buildings[iVar3].field66_0xbe = 0;
+        DAT_BuildingsState::instance.buildings[iVar3].renderBlendStrength = 0;
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(iVar3, 1);
         DAT_BuildingsState::instance.buildings[iVar3].renderAnimation

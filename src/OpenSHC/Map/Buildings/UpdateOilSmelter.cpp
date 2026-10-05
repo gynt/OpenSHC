@@ -65,7 +65,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar5].spriteOffetX = -0x10;
             DAT_BuildingsState::instance.buildings[iVar5].spriteOffetY = -0x5c;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
-            DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe = 0x1f;
+            DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = 0x1f;
             DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
             DAT_BuildingsState::instance.buildings[iVar5].state = 3;
         } else if (sVar3 == 3) {
@@ -82,13 +82,13 @@ namespace Map {
                           .OilSmelterAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar5].animationIndex]
                     + 0x20;
             }
-            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe;
+            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength;
             if (sVar3 < 1) {
                 DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar5].state = 4;
             } else {
             LAB_004160fb:
-                DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe = sVar3 + -1;
+                DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar3 + -1;
             }
         } else if (sVar3 == 4) {
             DAT_BuildingsState::instance.buildings[iVar5].spriteOffetX = -0x10;
@@ -128,9 +128,9 @@ namespace Map {
             LAB_00416072:
                 DAT_BuildingsState::instance.buildings[iVar5].animationFrame = iVar4;
             }
-            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe;
+            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength;
             if (sVar3 < 0x1f) {
-                DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe = sVar3 + 1;
+                DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar3 + 1;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar5].animationCycleCompleted = 1;
@@ -149,7 +149,7 @@ namespace Map {
                     = (int)(char)DAT_BuildingDefinedData::instance
                           .OilSmelterAnimationFrames4[DAT_BuildingsState::instance.buildings[iVar5].animationIndex];
             }
-            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].field66_0xbe;
+            sVar3 = DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength;
             if (0 < sVar3)
                 goto LAB_004160fb;
             DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
@@ -339,12 +339,12 @@ namespace Map {
                 < '\x01') {
                 *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar6) = 0;
             }
-            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar6)
+            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar6)
                 = (int)(char)DAT_BuildingDefinedData::instance
                       .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar6)
                           / 2];
         }
-        *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field39_0x84 + iVar6) = 0;
+        *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar6) = 0;
     }
 
 }

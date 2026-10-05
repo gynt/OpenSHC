@@ -48,16 +48,16 @@ namespace Map {
                 if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive != 1) {
                     DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 1;
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0;
-                    DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x1f;
+                    DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                     DAT_BuildingsState::instance.buildings[buildingID].animationCycleCount = 0;
                 }
                 goto LAB_00415d57;
             }
             if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive == 1) {
                 DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
-                DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 1;
+                DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 1;
             }
-            sVar3 = DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe;
+            sVar3 = DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
             if ((sVar3 == 0) || (0x1f < sVar3))
                 goto LAB_00415d57;
         }
@@ -85,20 +85,20 @@ namespace Map {
         } else {
             DAT_BuildingsState::instance.buildings[buildingID].animationCycleCompleted = 0;
         }
-        sVar3 = DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe;
+        sVar3 = DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
         if (0 < sVar3) {
             if (DAT_BuildingsState::instance.buildings[buildingID].animationCycleCount == 0) {
                 sVar3 = sVar3 + -1;
             } else {
                 sVar3 = sVar3 + 1;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = sVar3;
+            DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = sVar3;
         }
-        if (DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe < 1) {
-            DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0;
+        if (DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength < 1) {
+            DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0;
         }
-        if (0x1f < DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe) {
-            DAT_BuildingsState::instance.buildings[buildingID].field66_0xbe = 0x20;
+        if (0x1f < DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength) {
+            DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x20;
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
@@ -110,11 +110,11 @@ namespace Map {
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].field39_0x84
+            DAT_BuildingsState::instance.buildings[buildingID].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
                       .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2];
         }
-        DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
     }
 
 }

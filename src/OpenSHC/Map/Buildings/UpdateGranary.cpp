@@ -155,7 +155,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].field36_0x78 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field37_0x7c = 0;
         DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         DAT_BuildingsState::instance.buildings[buildingID].field40_0x88 = 0;
         if ((sVar3 == 0)
             && (local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[10], local_8 != 0)) {
@@ -302,7 +302,7 @@ namespace Map {
                 } else if (iVar9 == 0xd) {
                     DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = iVar8;
                 } else if (iVar9 == 0xe) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field39_0x84 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = iVar8;
                 } else if (iVar9 == 0xf) {
                     DAT_BuildingsState::instance.buildings[buildingID].field40_0x88 = iVar8;
                 }

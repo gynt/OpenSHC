@@ -35,7 +35,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
-        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field66_0xbe = 0;
+        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderBlendStrength = 0;
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingSignpostCounter,
             DAT_BuildingsState::ptr)(iVar4, 1);
         DAT_BuildingsState::instance.buildings[iVar4].renderAnimation
