@@ -38,8 +38,8 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].extraOverlayImage1 = 0;
-        DAT_BuildingsState::instance.buildings[iVar5].shouldRenderRoof = 0x7a;
-        DAT_BuildingsState::instance.buildings[iVar5].shouldRenderSomeOverlay = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].extraOverlayImage2 = 0x7a;
+        DAT_BuildingsState::instance.buildings[iVar5].extraOverlayImage3 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 0;
         DAT_BuildingsState::instance.buildings[iVar5].damageDecoration[0] = 0;
         DAT_BuildingsState::instance.buildings[iVar5].damageDecoration[1] = 0;
@@ -171,8 +171,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar8].field261_0x2fa = 100;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar1 + 0x2e) != 0) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].shouldRenderSomeOverlay + iVar1) = 0x7b;
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].shouldRenderRoof + iVar1) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage3 + iVar1) = 0x7b;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage2 + iVar1) = 0;
         }
     }
 

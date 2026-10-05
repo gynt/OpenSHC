@@ -48,16 +48,16 @@ namespace Map {
             Map::Buildings::BuildingsState_Func::updateHopsFieldTileGraphics, DAT_BuildingsState::ptr)(iVar4);
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar4].displayOwnerFlag = 1;
-            piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame;
+            piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame;
             *piVar1 = *piVar1 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame / 2]
+                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
-                DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame = 0;
+                DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[iVar4].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].ownerFlagFrame / 2];
+                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame / 2];
         }
         DAT_BuildingsState::instance.buildings[iVar4].overlayImageID = 0;
     }

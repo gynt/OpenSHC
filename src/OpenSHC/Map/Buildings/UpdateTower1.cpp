@@ -35,7 +35,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar1].someX = DAT_BuildingsState::instance.buildings[iVar1].x + 1;
         DAT_BuildingsState::instance.buildings[iVar1].someY = DAT_BuildingsState::instance.buildings[iVar1].y + 1;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite1 = 0x7d;
-        DAT_BuildingsState::instance.buildings[iVar1].shouldRenderRoof = 0x7c;
+        DAT_BuildingsState::instance.buildings[iVar1].extraOverlayImage2 = 0x7c;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite2 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite4 = 0;
@@ -115,7 +115,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa = 100;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar4 + 0x2e) != 0) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].shouldRenderRoof + iVar4) = 0x7e;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage2 + iVar4) = 0x7e;
         }
     }
 

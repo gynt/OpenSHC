@@ -344,16 +344,16 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].overlayImageID = 0;
         }
         DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag = 1;
-        DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame
-            = DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame + 1;
+        DAT_BuildingsState::instance.buildings[iVar7].flagSlot.ownerFlagFrame
+            = DAT_BuildingsState::instance.buildings[iVar7].flagSlot.ownerFlagFrame + 1;
         if ((char)DAT_BuildingDefinedData::instance
-                .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame / 2]
+                .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar7].flagSlot.ownerFlagFrame / 2]
             < '\x01') {
-            DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame = 0;
+            DAT_BuildingsState::instance.buildings[iVar7].flagSlot.ownerFlagFrame = 0;
         }
         DAT_BuildingsState::instance.buildings[iVar7].overlayImageID
             = (int)(char)DAT_BuildingDefinedData::instance
-                  .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar7].ownerFlagFrame / 2];
+                  .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar7].flagSlot.ownerFlagFrame / 2];
     }
 
 }

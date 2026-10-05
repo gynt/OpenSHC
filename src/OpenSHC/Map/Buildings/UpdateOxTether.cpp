@@ -56,16 +56,16 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].overlayImageID = 0;
         } else {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
-            piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame;
+            piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame;
             *piVar1 = *piVar1 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame / 2]
+                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
-                DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame = 0;
+                DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[iVar6].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar6].ownerFlagFrame / 2];
+                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame / 2];
         }
         sVar2 = DAT_BuildingsState::instance.buildings[iVar6].outpostRelatedUnk4;
         if (0 < sVar2) {

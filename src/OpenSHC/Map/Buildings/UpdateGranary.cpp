@@ -145,18 +145,18 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage2 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = 0;
-        sVar3 = DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[0];
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage4 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage5 = 0;
+        sVar3 = DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[0];
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage9 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].flagSlot.overlayImage = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage10 = 0;
         if ((sVar3 == 0)
             && (local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[10], local_8 != 0)) {
             local_1c = local_8;
@@ -284,27 +284,27 @@ namespace Map {
                 } else if (iVar9 == 4) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = iVar8;
                 } else if (iVar9 == 5) {
-                    DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = iVar8;
-                } else if (iVar9 == 6) {
-                    DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = iVar8;
-                } else if (iVar9 == 7) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage2 = iVar8;
-                } else if (iVar9 == 8) {
+                } else if (iVar9 == 6) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = iVar8;
-                } else if (iVar9 == 9) {
+                } else if (iVar9 == 7) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage4 = iVar8;
-                } else if (iVar9 == 10) {
+                } else if (iVar9 == 8) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage5 = iVar8;
-                } else if (iVar9 == 0xb) {
+                } else if (iVar9 == 9) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6 = iVar8;
-                } else if (iVar9 == 0xc) {
+                } else if (iVar9 == 10) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = iVar8;
+                } else if (iVar9 == 0xb) {
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = iVar8;
+                } else if (iVar9 == 0xc) {
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage9 = iVar8;
                 } else if (iVar9 == 0xd) {
-                    DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].flagSlot.overlayImage = iVar8;
                 } else if (iVar9 == 0xe) {
                     DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = iVar8;
                 } else if (iVar9 == 0xf) {
-                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage10 = iVar8;
                 }
                 iVar9 = iVar9 + 1;
             } while (iVar9 < 0x10);

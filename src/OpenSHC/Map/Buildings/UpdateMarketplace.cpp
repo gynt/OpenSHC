@@ -103,16 +103,16 @@ namespace Map {
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-            piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame;
+            piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame;
             *piVar1 = *piVar1 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2]
+                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
-                DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[buildingID].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2];
+                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
         }
         DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
     }

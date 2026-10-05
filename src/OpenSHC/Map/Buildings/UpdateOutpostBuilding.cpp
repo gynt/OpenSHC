@@ -87,16 +87,16 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].overlayImageID = 0;
         } else {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
-            piVar13 = &DAT_BuildingsState::instance.buildings[iVar9].ownerFlagFrame;
+            piVar13 = &DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame;
             *piVar13 = *piVar13 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].ownerFlagFrame / 2]
+                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
-                DAT_BuildingsState::instance.buildings[iVar9].ownerFlagFrame = 0;
+                DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[iVar9].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].ownerFlagFrame / 2];
+                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame / 2];
         }
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
         if (((GVar5 != Game::GM_SOLITARY) && (GVar5 != Game::GM_SKIRMISH_SINGLE_PLAYER))

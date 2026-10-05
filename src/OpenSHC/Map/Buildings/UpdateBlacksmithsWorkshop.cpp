@@ -405,17 +405,17 @@ namespace Map {
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar8) = 1;
-            piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar8);
+            piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar8);
             *piVar1 = *piVar1 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar8)
+                    .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar8)
                         / 2]
                 < '\x01') {
-                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar8) = 0;
+                *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar8) = 0;
             }
             *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar8)
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + iVar8)
+                      .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar8)
                           / 2];
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar8) = 0;

@@ -109,7 +109,7 @@ namespace Map {
         }
     LAB_00423a8d:
         DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage1 = 0;
-        DAT_BuildingsState::instance.buildings[iVar2].shouldRenderRoof = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage2 = 0;
         DAT_BuildingsState::instance.buildings[iVar2].animationIncrement = 1;
         DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
         bVar1 = DAT_BuildingsState::instance.buildings[iVar2].pathLinkageRelated2;
@@ -127,7 +127,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;
                 }
                 if (local_14 != 0x50) {
-                    DAT_BuildingsState::instance.buildings[iVar2].shouldRenderRoof = 6;
+                    DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage2 = 6;
                 }
                 DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage1 = 0xc;
             }
@@ -153,7 +153,7 @@ namespace Map {
                             [DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex];
                 if ('\0' < (char)bVar1) {
                     if (local_14 != 0x50) {
-                        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof
+                        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage2
                             = (int)(char)bVar1;
                     }
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1
@@ -164,7 +164,7 @@ namespace Map {
                     Map::Navigation::PathFindingState_Func::updatePathLinkageTileMapRelatedToGates,
                     DAT_PathFindingState::ptr)(iVar2);
                 if (local_14 != 0x50) {
-                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof = 6;
+                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage2 = 6;
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1 = 0xc;
             }
@@ -189,7 +189,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1
                         = (char)bVar1 + 6;
                 }
-                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof
+                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage2
                     = (int)(char)bVar1;
             }
         }

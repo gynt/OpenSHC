@@ -197,8 +197,8 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage9 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         local_20 = DAT_BuildingsState::instance.buildings[buildingID].resources[0x12];
         local_1c = DAT_BuildingsState::instance.buildings[buildingID].resources[0x13];
@@ -209,19 +209,19 @@ namespace Map {
         local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[0x17];
         local_c = DAT_BuildingsState::instance.buildings[buildingID].resources[0x18];
         if (bVar9) {
-            DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6 = 0;
+            DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = 0;
         } else {
             DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-            piVar2 = &DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame;
+            piVar2 = &DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame;
             *piVar2 = *piVar2 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2]
+                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
-                DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame = 0;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6
+            DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8
                 = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame / 2];
+                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
@@ -300,9 +300,9 @@ namespace Map {
                 if (iVar8 == 0) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = iVar7;
                 } else if (iVar8 == 1) {
-                    DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = iVar7;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = iVar7;
                 } else if (iVar8 == 2) {
-                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = iVar7;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage9 = iVar7;
                 } else if (iVar8 == 3) {
                     DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = iVar7;
                 }

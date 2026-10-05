@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include "OpenSHC/Map/Buildings/BuildingFlagSlot.hpp"
+
 #include "OpenSHC/Game/Resources/ResourceTypeShort.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalStateShort.hpp"
 #include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
@@ -48,7 +50,7 @@ namespace Map {
             // each the same way -- `MOV EAX, slot; TEST EAX, EAX; JZ skip` then pushes it as
             // the imageID of renderGMWithBlending under its own GmID -- so every one holds a
             // GM image index with 0 meaning "draw nothing".
-            // Two caveats. `shouldRenderRoof` and `shouldRenderSomeOverlay` are slots 6 and 7
+            // Two caveats. `extraOverlayImage2` and `extraOverlayImage3` are slots 6 and 7
             // of this family, read as imageIDs at 0x004E5243 and 0x004E528F, so their names
             // are wrong -- they only look boolean because 0 means skip. And `ownerFlagFrame`
             // (slot 14) really is a clock for most building types, which index
@@ -64,9 +66,9 @@ namespace Map {
             int extraAnimationFrame3; // 0x00000054 length: 4
             int field28_0x58; // 0x00000058 length: 4
             int extraOverlayImage1; // 0x0000005C length: 4
-            int shouldRenderRoof; // 0x00000060 length: 4
-            int shouldRenderSomeOverlay; // 0x00000064 length: 4
-            int extraOverlayImage2; // 0x00000068 length: 4
+            int extraOverlayImage2; // 0x00000060 length: 4
+            int extraOverlayImage3; // 0x00000064 length: 4
+            int extraOverlayImage4; // 0x00000068 length: 4
             // 0x6C..0x8B is one 32-byte region that two kinds of building use
             // differently. Towers, gatehouses and the granary treat it as eight
             // damage-decoration slots: UpdateTower* turns currentHealth/maxHealth
@@ -79,14 +81,14 @@ namespace Map {
             union {
                 int damageDecoration[8]; // 0x0000006C length: 32
                 struct {
-                    int extraOverlayImage3; // 0x0000006C length: 4
-                    int extraOverlayImage4; // 0x00000070 length: 4
-                    int extraOverlayImage5; // 0x00000074 length: 4
-                    int extraOverlayImage6; // 0x00000078 length: 4
-                    int extraOverlayImage7; // 0x0000007C length: 4
-                    int ownerFlagFrame; // 0x00000080 length: 4
+                    int extraOverlayImage5; // 0x0000006C length: 4
+                    int extraOverlayImage6; // 0x00000070 length: 4
+                    int extraOverlayImage7; // 0x00000074 length: 4
+                    int extraOverlayImage8; // 0x00000078 length: 4
+                    int extraOverlayImage9; // 0x0000007C length: 4
+                    BuildingFlagSlot flagSlot; // 0x00000080 length: 4
                     int overlayImageID; // 0x00000084 length: 4
-                    int extraOverlayImage8; // 0x00000088 length: 4
+                    int extraOverlayImage10; // 0x00000088 length: 4
                 };
             };
             byte xPosition; // 0x0000008C length: 1

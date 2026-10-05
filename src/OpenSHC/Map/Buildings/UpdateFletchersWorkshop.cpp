@@ -214,17 +214,17 @@ namespace Map {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + buildingID) = 0;
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + buildingID) = 1;
-        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + buildingID);
+        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + buildingID);
         *piVar1 = *piVar1 + 1;
         if ((char)DAT_BuildingDefinedData::instance
-                .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + buildingID)
+                .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + buildingID)
                     / 2]
             < '\x01') {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + buildingID) = 0;
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + buildingID) = 0;
         }
         *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + buildingID)
             = (int)(char)DAT_BuildingDefinedData::instance
-                  .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].ownerFlagFrame + buildingID)
+                  .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + buildingID)
                       / 2];
     }
 
