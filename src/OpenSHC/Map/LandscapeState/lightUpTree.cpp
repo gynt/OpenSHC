@@ -30,7 +30,7 @@ namespace Map {
         case 2:
         case 3:
         case 4:
-            if (0x13 < DAT_GameState::instance.mapAndTime.field3176_0x27c8) {
+            if (0x13 < DAT_GameState::instance.mapAndTime.burningTreeCount) {
                 return FALSE;
             }
             if (this->trees[_treeID].stage < 3) {

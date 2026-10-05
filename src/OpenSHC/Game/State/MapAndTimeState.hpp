@@ -232,7 +232,7 @@ namespace Game {
             int field3163_0x2770; // 0x00002770 length: 4
             int gameEventRelatedCountdown; // 0x00002774 length: 4
             int unk_signpostDistance; // 0x00002778 length: 4
-            int field3166_0x277c; // 0x0000277C length: 4
+            int wildlifeCount; // 0x0000277C length: 4
             short rabbitSpawnXY[4][2]; // 0x00002780 length: 16
             int field3168_0x2790; // 0x00002790 length: 4
             Point4ShortXY camelSpawnXY[4]; // 0x00002794 length: 16
@@ -242,11 +242,11 @@ namespace Game {
             int somePlayerID; // 0x000027B0 length: 4
             short playerIsAlive[9]; // 0x000027B4 length: 18
             short field3175_0x27c6; // 0x000027C6 length: 2
-            int field3176_0x27c8; // 0x000027C8 length: 4
+            int burningTreeCount; // 0x000027C8 length: 4
             int aliveDeerCount; // 0x000027CC length: 4
             int armySizeLimit; // 0x000027D0 length: 4
-            short field3179_0x27d4; // 0x000027D4 length: 2
-            short field3180_0x27d6; // 0x000027D6 length: 2
+            short militaryCampaignStage; // 0x000027D4 length: 2
+            short militaryCampaignFlags; // 0x000027D6 length: 2
             short yearCopy; // 0x000027D8 length: 2
             short monthCopy; // 0x000027DA length: 2
             short field3183_0x27dc; // 0x000027DC length: 2

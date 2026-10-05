@@ -11,9 +11,9 @@ namespace Map {
     void MapPropertiesState::adjustEventMonthAndYearForSection1047()
     {
         DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month;
-        DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 0;
+        DAT_GameState::instance.mapAndTime.militaryCampaignStage = 0;
         DAT_GameState::instance.mapAndTime.field3183_0x27dc = 0;
-        DAT_GameState::instance.mapAndTime.field3180_0x27d6 = 0;
+        DAT_GameState::instance.mapAndTime.militaryCampaignFlags = 0;
         DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
         if (DAT_GameCore::instance.missionNumber1to20 == 17) {
             DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 1;
@@ -23,8 +23,8 @@ namespace Map {
             DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 6;
         } else {
             if (DAT_GameCore::instance.missionNumber1to20 != 20) {
-                DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 0;
-                DAT_GameState::instance.mapAndTime.field3180_0x27d6 = 0;
+                DAT_GameState::instance.mapAndTime.militaryCampaignStage = 0;
+                DAT_GameState::instance.mapAndTime.militaryCampaignFlags = 0;
                 DAT_GameState::instance.mapAndTime.field3183_0x27dc = 0;
             }
             DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 3;

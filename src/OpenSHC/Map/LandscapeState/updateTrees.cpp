@@ -27,7 +27,7 @@ namespace Map {
         bool isItNOTScenarioGameMode;
         uint _balanceRNG;
         _balanceRNG = 0;
-        DAT_GameState::instance.mapAndTime.field3176_0x27c8 = 0;
+        DAT_GameState::instance.mapAndTime.burningTreeCount = 0;
         DAT_00ed31a0::instance = timeGetTime();
         if (DAT_GameState::instance.gameTicksLoadBalancer % 10 == 8) {
             this->maxTreeCount = 0;
@@ -102,8 +102,8 @@ namespace Map {
                     (*DAT_OrganismDefinedData::instance.UpdateTree[(short)this->trees[uVar2].treeType])();
                     if (this->trees[DAT_CurrentTreeID::instance].field92_0x98 != 0) {
                         if (this->trees[DAT_CurrentTreeID::instance].treeType != Map::Trees::TT_APPLEUnk) {
-                            DAT_GameState::instance.mapAndTime.field3176_0x27c8
-                                = DAT_GameState::instance.mapAndTime.field3176_0x27c8 + 1;
+                            DAT_GameState::instance.mapAndTime.burningTreeCount
+                                = DAT_GameState::instance.mapAndTime.burningTreeCount + 1;
                         }
                         if (1 < this->trees[DAT_CurrentTreeID::instance].field92_0x98) {
                             psVar1 = &this->trees[DAT_CurrentTreeID::instance].field92_0x98;

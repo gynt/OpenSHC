@@ -20,7 +20,7 @@ namespace Map {
             uint uVar3;
             bool bVar4;
             if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                && (iVar1 = 0, DAT_GameState::instance.mapAndTime.field3166_0x277c < 0xa0)) {
+                && (iVar1 = 0, DAT_GameState::instance.mapAndTime.wildlifeCount < 0xa0)) {
                 do {
                     if (iVar1 < 4) {
                         uVar3 = (uint)DAT_GameState::instance.mapAndTime.rabbitSpawnXY[iVar1][0];

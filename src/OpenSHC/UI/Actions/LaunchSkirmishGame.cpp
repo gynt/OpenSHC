@@ -752,9 +752,9 @@ namespace UI {
           This applies the start goods!
          */
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
-        DAT_GameState::instance.mapAndTime.field3179_0x27d4 = 0;
+        DAT_GameState::instance.mapAndTime.militaryCampaignStage = 0;
         DAT_GameState::instance.mapAndTime.field3183_0x27dc = 0;
-        DAT_GameState::instance.mapAndTime.field3180_0x27d6 = 0;
+        DAT_GameState::instance.mapAndTime.militaryCampaignFlags = 0;
         DAT_GameState::instance.mapAndTime.yearCopy = 0;
         DAT_GameState::instance.mapAndTime.monthCopy = 0;
         DAT_GameState::instance.mapAndTime.field3184_0x27de = 0;
