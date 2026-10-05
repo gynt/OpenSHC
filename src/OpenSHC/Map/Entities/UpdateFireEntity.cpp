@@ -88,10 +88,10 @@ namespace Map {
                         goto LAB_004058a7;
                     if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
                         DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field57_0xe34
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames8
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     } else {
-                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.field56_0xe04
+                        iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames7
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     }
                     goto LAB_004058ca;

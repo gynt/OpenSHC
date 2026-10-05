@@ -253,7 +253,7 @@ namespace Map {
                     }
                     _buildingID = _buildingID + 1;
                 } while (_buildingID < 8);
-                pPVar10 = DAT_EntityDefinedData::instance.field55_0xd84;
+                pPVar10 = DAT_EntityDefinedData::instance.EntityBlastTileOffsets;
                 do {
                     _buildingID = MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileAlongAxisOffset,
                         DAT_TileMapState::ptr)(_someTile, pPVar10->xOffset, (uint)((int)(pPVar10->yOffset)));

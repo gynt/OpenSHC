@@ -14,9 +14,9 @@ namespace Map {
             short sVar1;
             this->entityArray[entityID].entityType = (EntityTypeShort)entityType;
             this->entityArray[entityID].gmLookupValue = (short)gmLookupValue;
-            this->entityArray[entityID].gmID = (short)DAT_EntityDefinedData::instance.field52_0x95c[gmLookupValue];
+            this->entityArray[entityID].gmID = (short)DAT_EntityDefinedData::instance.EntityGmIDs[gmLookupValue];
             this->entityArray[entityID].graphicType2RelatedOffset
-                = (short)DAT_EntityDefinedData::instance.field53_0xa14[gmLookupValue];
+                = (short)DAT_EntityDefinedData::instance.EntityGraphicOffsets[gmLookupValue];
             sVar1 = this->entityArray[entityID].gmID;
             this->entityArray[entityID].originX
                 = (short)DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[sVar1].originX;

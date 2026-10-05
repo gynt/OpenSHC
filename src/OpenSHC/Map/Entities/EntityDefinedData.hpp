@@ -49,12 +49,12 @@ namespace Map {
             int field49_0x8a4[3]; // 0x000008A4 length: 12
             int field50_0x8b0; // 0x000008B0 length: 4
             int field51_0x8b4[42]; // 0x000008B4 length: 168
-            GmIDInt field52_0x95c[46]; // 0x0000095C length: 184
-            int field53_0xa14[92]; // 0x00000A14 length: 368
-            Point4ShortXY field54_0xb84[128]; // 0x00000B84 length: 512
-            Point8IntXY field55_0xd84[16]; // 0x00000D84 length: 128
-            byte field56_0xe04[48]; // 0x00000E04 length: 48
-            byte field57_0xe34[56]; // 0x00000E34 length: 56
+            GmIDInt EntityGmIDs[46]; // 0x0000095C length: 184
+            int EntityGraphicOffsets[92]; // 0x00000A14 length: 368
+            Point4ShortXY EntitySubTileDrawOffsets[128]; // 0x00000B84 length: 512
+            Point8IntXY EntityBlastTileOffsets[16]; // 0x00000D84 length: 128
+            byte FireAnimationFrames7[48]; // 0x00000E04 length: 48
+            byte FireAnimationFrames8[56]; // 0x00000E34 length: 56
             int XYOffsetsInAllDirections[64][2]; // 0x00000E6C length: 512
             int field59_0x106c[4]; // 0x0000106C length: 16
             int field60_0x107c[58]; // 0x0000107C length: 232
