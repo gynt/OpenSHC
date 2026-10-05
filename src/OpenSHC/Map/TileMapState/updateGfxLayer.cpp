@@ -992,13 +992,13 @@ namespace Map {
                                         }
                                     }
                                     if ((this->LogicLayer[this->DAT_SomeTile] & 0x200U) != 0) {
-                                        uVar12 = this->field84_0x5548a4 + 7U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 7U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        uVar12 = this->field84_0x5548a4 + 1U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 1U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
@@ -1017,13 +1017,13 @@ namespace Map {
                                                     + (this->RandomLayer[this->DAT_SomeTile] & 7);
                                             }
                                         }
-                                        uVar12 = this->field84_0x5548a4 + 1U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 1U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        uVar12 = this->field84_0x5548a4 + 3U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 3U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
@@ -1042,13 +1042,13 @@ namespace Map {
                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x3c0;
                                         }
-                                        uVar12 = this->field84_0x5548a4 + 5U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 5U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        uVar12 = this->field84_0x5548a4 + 7U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 7U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
@@ -1067,13 +1067,13 @@ namespace Map {
                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x3c0;
                                         }
-                                        uVar12 = this->field84_0x5548a4 + 3U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 3U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        uVar12 = this->field84_0x5548a4 + 5U & 0x80000007;
+                                        uVar12 = this->orientedDirection1 + 5U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
                                         }

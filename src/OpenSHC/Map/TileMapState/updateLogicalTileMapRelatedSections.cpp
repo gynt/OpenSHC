@@ -122,7 +122,7 @@ namespace Map {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
                             if (this->field93_0x5548c8 == 0) {
-                                local_28 = this->directionTranslationMatrix[iVar11] + this->field84_0x5548a4;
+                                local_28 = this->directionTranslationMatrix[iVar11] + this->orientedDirection1;
                                 iVar9 = 0;
                                 iVar15 = _tile;
                                 do {
@@ -134,7 +134,7 @@ namespace Map {
                                         this->ShowHiLayer[_tile] = 0xff;
                                         break;
                                     }
-                                    local_28 = local_28 + this->field88_0x5548b4 * 8;
+                                    local_28 = local_28 + this->orientedRowStep * 8;
                                     iVar9 = iVar9 + 0x10;
                                 } while (iVar9 < 0x80);
                                 if ((uVar8 == 0) || (this->ShowHiLayer[_tile] == 0xff))
@@ -193,7 +193,7 @@ namespace Map {
                             this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] & 0xfffc;
                             bVar6 = false;
                             bVar5 = false;
-                            iVar9 = this->directionTranslationMatrix[iVar11][this->field84_0x5548a4] + _tile;
+                            iVar9 = this->directionTranslationMatrix[iVar11][this->orientedDirection1] + _tile;
                             iVar15 = this->heightBasedScreenYOffset[this->HeightLayer[iVar9]];
                             local_20 = 0xfa;
                             if (iVar15 < 0xfa) {
@@ -213,7 +213,7 @@ namespace Map {
                                         iVar15 != 0)) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[iVar11][this->field86_0x5548ac] + _tile;
+                                iVar15 = this->directionTranslationMatrix[iVar11][this->orientedDirection3] + _tile;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
@@ -227,7 +227,7 @@ namespace Map {
                                             == 0)))) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[iVar11][this->field85_0x5548a8] + _tile;
+                                iVar15 = this->directionTranslationMatrix[iVar11][this->orientedDirection2] + _tile;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                          != 0)
@@ -241,8 +241,8 @@ namespace Map {
                                             == 0)))) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
-                                                                         [this->field86_0x5548ac]
+                                iVar15 = this->directionTranslationMatrix[this->orientedRowStep + iVar11]
+                                                                         [this->orientedDirection3]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
@@ -257,8 +257,8 @@ namespace Map {
                                             == 0)))) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
-                                                                         [this->field85_0x5548a8]
+                                iVar15 = this->directionTranslationMatrix[this->orientedRowStep + iVar11]
+                                                                         [this->orientedDirection2]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
@@ -274,8 +274,8 @@ namespace Map {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
-                                    + this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
-                                                                      [this->field84_0x5548a4];
+                                    + this->directionTranslationMatrix[this->orientedRowStep + iVar11]
+                                                                      [this->orientedDirection1];
                                 if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                         != 0)
@@ -285,8 +285,8 @@ namespace Map {
                                         iVar15 != 0)) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
-                                                                         [this->field86_0x5548ac]
+                                iVar15 = this->directionTranslationMatrix[iVar11 + this->orientedRowStep * 2]
+                                                                         [this->orientedDirection3]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
@@ -301,8 +301,8 @@ namespace Map {
                                             == 0)))) {
                                     bVar7 = true;
                                 }
-                                iVar15 = this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
-                                                                         [this->field85_0x5548a8]
+                                iVar15 = this->directionTranslationMatrix[iVar11 + this->orientedRowStep * 2]
+                                                                         [this->orientedDirection2]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
                                           | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
@@ -318,8 +318,8 @@ namespace Map {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
-                                    + this->directionTranslationMatrix[iVar11 + this->field88_0x5548b4 * 2]
-                                                                      [this->field84_0x5548a4];
+                                    + this->directionTranslationMatrix[iVar11 + this->orientedRowStep * 2]
+                                                                      [this->orientedDirection1];
                                 if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
                                     != 0) {
@@ -339,8 +339,8 @@ namespace Map {
                                 }
                                 bVar16 = DAT_BuildingsState::instance
                                              .buildings[this->BuildingLayer
-                                                     [this->directionTranslationMatrix[this->field88_0x5548b4 + iVar11]
-                                                                                      [this->field84_0x5548a4]
+                                                     [this->directionTranslationMatrix[this->orientedRowStep + iVar11]
+                                                                                      [this->orientedDirection1]
                                                          + iVar9]]
                                              .flag2
                                     == 0;
@@ -349,7 +349,7 @@ namespace Map {
                                     bVar7 = true;
                                 }
                             }
-                            iVar9 = this->directionTranslationMatrix[iVar11][this->field86_0x5548ac] + _tile;
+                            iVar9 = this->directionTranslationMatrix[iVar11][this->orientedDirection3] + _tile;
                             iVar15 = this->heightBasedScreenYOffset[this->HeightLayer[iVar9]];
                             if (iVar15 < local_20) {
                                 local_20 = iVar15;
@@ -376,7 +376,7 @@ namespace Map {
                                     bVar7 = true;
                                 }
                             }
-                            iVar9 = this->directionTranslationMatrix[iVar11][this->field85_0x5548a8] + _tile;
+                            iVar9 = this->directionTranslationMatrix[iVar11][this->orientedDirection2] + _tile;
                             iVar15 = this->heightBasedScreenYOffset[this->HeightLayer[iVar9]];
                             if (iVar15 < local_20) {
                                 local_20 = iVar15;

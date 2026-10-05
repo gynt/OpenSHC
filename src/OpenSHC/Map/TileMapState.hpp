@@ -112,11 +112,11 @@ namespace Map {
         undefined4 lastTime; // 0x00554898 length: 4
         int mapOrientation; // 0x0055489C length: 4
         undefined4 DAT_FutureMapOrientation; // 0x005548A0 length: 4
-        int field84_0x5548a4; // 0x005548A4 length: 4
-        int field85_0x5548a8; // 0x005548A8 length: 4
-        int field86_0x5548ac; // 0x005548AC length: 4
-        int field87_0x5548b0; // 0x005548B0 length: 4
-        int field88_0x5548b4; // 0x005548B4 length: 4
+        int orientedDirection1; // 0x005548A4 length: 4
+        int orientedDirection2; // 0x005548A8 length: 4
+        int orientedDirection3; // 0x005548AC length: 4
+        int orientedDirection4; // 0x005548B0 length: 4
+        int orientedRowStep; // 0x005548B4 length: 4
         undefined4 refreshCertainTileMap; // 0x005548B8 length: 4
         undefined4 refreshCertainTileMap_old; // 0x005548BC length: 4
         undefined4 counter1; // 0x005548C0 length: 4
