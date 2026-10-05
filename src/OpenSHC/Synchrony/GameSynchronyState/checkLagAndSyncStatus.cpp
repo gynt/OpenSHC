@@ -61,8 +61,8 @@ namespace Synchrony {
     LAB_0048da99:
         pGVar8 = (GUID*)0x0;
         DAT_GameSynchronyState::instance.syncStatus = 1;
-        DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.field259_0x109290;
-        DAT_GameSynchronyState::instance.announcementReceiveTime = DAT_GameSynchronyState::instance.field259_0x109290;
+        DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.resyncStartTime;
+        DAT_GameSynchronyState::instance.announcementReceiveTime = DAT_GameSynchronyState::instance.resyncStartTime;
         DAT_GameSynchronyState::instance.announcementReceivedBool = FALSE;
         pHVar6 = &DAT_GameSynchronyState::instance.HASH_PartialHashPerPlayer.player2;
         pbVar5 = DAT_GameSynchronyState::instance.sharedDesyncFlags;

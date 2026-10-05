@@ -89,12 +89,12 @@ namespace Synchrony {
             y = y + 4;
             x = x + 1;
         } while (x < 9);
-        bVar3 = -1 < DAT_GameSynchronyState::instance.field196_0x101ad4;
+        bVar3 = -1 < DAT_GameSynchronyState::instance.relativeTickTime;
         iVar1 = iVar2 + 0x1c;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "Relative time: ", xParam, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-            DAT_GameSynchronyState::instance.field196_0x101ad4, xParam, iVar1, Text::TTA_LEFT,
+            DAT_GameSynchronyState::instance.relativeTickTime, xParam, iVar1, Text::TTA_LEFT,
             (uint)((int)((bVar3 - 1 & 0xffff8000) + 0x80ff)), 0x12, TRUE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             " Logical speed: ", iVar5 + 0x98, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);

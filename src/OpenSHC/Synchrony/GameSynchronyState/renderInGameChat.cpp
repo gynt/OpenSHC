@@ -41,11 +41,11 @@ namespace Synchrony {
         int blendStrength;
         int local_4;
         int _lordID;
-        this->field204_0x105670 = this->DAT_ChatMessageArrayIndex;
+        this->chatMessageRenderIndex = this->DAT_ChatMessageArrayIndex;
         local_4 = 4;
         do {
-            iVar3 = this->field204_0x105670;
-            if (this->DAT_ChatEventArray[this->field204_0x105670].flag == 1) {
+            iVar3 = this->chatMessageRenderIndex;
+            if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
                 DVar1 = timeGetTime();
                 if ((int)(DVar1 - this->DAT_ChatEventArray[iVar3].time) < 0x2711) {
                     iVar5 = this->DAT_ChatEventArray[iVar3].subjectPlayer;
@@ -53,12 +53,12 @@ namespace Synchrony {
                     iVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth,
                         DAT_TextManagerObject::ptr)(this->DAT_ChatMessageSubjectPlayerNameArray[iVar3], 0x13);
                     iVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth,
-                        DAT_TextManagerObject::ptr)(this->DAT_ChatMessageArray[this->field204_0x105670], 0x13);
+                        DAT_TextManagerObject::ptr)(this->DAT_ChatMessageArray[this->chatMessageRenderIndex], 0x13);
                     iVar3 = iVar2 + 0xc + iVar3;
-                    if (this->DAT_ChatEventArray[this->field204_0x105670].objectPlayer != 0) {
+                    if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].objectPlayer != 0) {
                         iVar2 = MACRO_CALL_MEMBER(
                             Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
-                            this->DAT_ChatMessageObjectPlayerNameArray[this->field204_0x105670], 0x13);
+                            this->DAT_ChatMessageObjectPlayerNameArray[this->chatMessageRenderIndex], 0x13);
                         iVar3 = iVar3 + 6 + iVar2;
                     }
                     if ((((_lordID == 0)
@@ -83,11 +83,11 @@ namespace Synchrony {
                     DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(
                         Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                        this->DAT_ChatMessageSubjectPlayerNameArray[this->field204_0x105670], param_1, param_2,
+                        this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex], param_1, param_2,
                         Text::TTA_LEFT,
                         (uint)((int)(DAT_RenderingDefinedData::instance
                                 .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor
-                                        [this->DAT_ChatEventArray[this->field204_0x105670].subjectPlayer]])),
+                                        [this->DAT_ChatEventArray[this->chatMessageRenderIndex].subjectPlayer]])),
                         0, 0x13, FALSE, 0);
                     iVar3 = param_1;
                     if ((((_lordID == 0)
@@ -115,13 +115,13 @@ namespace Synchrony {
                             backgroundColor, iVar2, keepOffsetX, blendStrength);
                     }
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)(this->DAT_ChatMessageArray[this->field204_0x105670], iVar3 + 6,
+                        DAT_TextManagerObject::ptr)(this->DAT_ChatMessageArray[this->chatMessageRenderIndex], iVar3 + 6,
                         param_2, Text::TTA_LEFT, 0xb8eefb, 0, 0x13, TRUE, 0);
-                    iVar5 = this->DAT_ChatEventArray[this->field204_0x105670].objectPlayer;
+                    iVar5 = this->DAT_ChatEventArray[this->chatMessageRenderIndex].objectPlayer;
                     if (iVar5 != 0) {
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                            this->DAT_ChatMessageObjectPlayerNameArray[this->field204_0x105670], iVar3 + 0xc, param_2,
+                            this->DAT_ChatMessageObjectPlayerNameArray[this->chatMessageRenderIndex], iVar3 + 0xc, param_2,
                             Text::TTA_LEFT,
                             (uint)((int)(DAT_RenderingDefinedData::instance
                                     .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[iVar5]])),
@@ -131,9 +131,9 @@ namespace Synchrony {
                     this->DAT_ChatEventArray[iVar3].flag = 0;
                 }
             }
-            this->field204_0x105670 = this->field204_0x105670 + -1;
-            if (this->field204_0x105670 < 0) {
-                this->field204_0x105670 = 0x13;
+            this->chatMessageRenderIndex = this->chatMessageRenderIndex + -1;
+            if (this->chatMessageRenderIndex < 0) {
+                this->chatMessageRenderIndex = 0x13;
             }
             param_2 = param_2 + -0xe;
             local_4 = local_4 + -1;

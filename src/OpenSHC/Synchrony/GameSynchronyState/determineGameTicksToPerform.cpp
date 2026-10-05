@@ -34,26 +34,26 @@ namespace Synchrony {
             || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             this->mapTimeInTicksSinglePlayer = DAT_GameCore::instance.mapTimeInTicks;
             _gameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel;
-            _relativeTickTime = this->field196_0x101ad4;
+            _relativeTickTime = this->relativeTickTime;
         } else {
             /*
               Calculate multiplayer game speed.
              */
             DAT_GameCore::instance.gameSpeedMultiplicator = 1;
-            this->field196_0x101ad4 = 0;
+            this->relativeTickTime = 0;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeLatencyAdjustmentFromMatchTimes,
                 this)(currentPlayerSlotID);
             _relativeTickTime = *(int*)(extraout_ECX + 0x109eac);
             if ((-1 < *(int*)(extraout_ECX + 0x109eac))
-                && (iVar1 = *(int*)(extraout_ECX + 0x109ea8), _relativeTickTime = this->field196_0x101ad4, 0 < iVar1)) {
+                && (iVar1 = *(int*)(extraout_ECX + 0x109ea8), _relativeTickTime = this->relativeTickTime, 0 < iVar1)) {
                 iVar2 = *(int*)(extraout_ECX + 0x109ea8);
                 if (*(int*)(extraout_ECX + 0x109ee8) + 0x4b < iVar2) {
-                    this->field196_0x101ad4 = iVar1;
+                    this->relativeTickTime = iVar1;
                     if (*(int*)(extraout_ECX + 0x109260) < 1) {
                         *(undefined4*)(extraout_ECX + 0x109260) = 1;
                     }
                     _gameSpeedLevel = *(dword*)(extraout_ECX + 0x109260);
-                    _relativeTickTime = this->field196_0x101ad4;
+                    _relativeTickTime = this->relativeTickTime;
                     if ((int)*(dword*)(extraout_ECX + 0x106e38) < (int)*(dword*)(extraout_ECX + 0x109260)) {
                         _gameSpeedLevel = *(dword*)(extraout_ECX + 0x106e38);
                     }
@@ -67,7 +67,7 @@ namespace Synchrony {
                 }
             }
         }
-        this->field196_0x101ad4 = _relativeTickTime;
+        this->relativeTickTime = _relativeTickTime;
         if (DAT_GameCore::instance.gameSpeedMultiplicator < 0) {
             _durationOfOneTick
                 = (int)(-1000 / (longlong)(int)_gameSpeedLevel) * DAT_GameCore::instance.gameSpeedMultiplicator;

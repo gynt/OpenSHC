@@ -228,14 +228,14 @@ namespace Synchrony {
         int HASH_HeatMaps[9][80]; // 0x00100F4C length: 2880
         int receivedSyncStatusByPlayerUnk[9]; // 0x00101A8C length: 36
         int syncStatus10Related[9]; // 0x00101AB0 length: 36
-        undefined4 field196_0x101ad4; // 0x00101AD4 length: 4
+        undefined4 relativeTickTime; // 0x00101AD4 length: 4
         char receivedChatMessage[250]; // 0x00101AD8 length: 250
         char DAT_ChatMessageArray[20][250]; // 0x00101BD2 length: 5000
         char DAT_ChatMessageSubjectPlayerNameArray[20][250]; // 0x00102F5A length: 5000
         char DAT_ChatMessageObjectPlayerNameArray[20][250]; // 0x001042E2 length: 5000
         undefined1 padding_0x10566a[2]; // 0x0010566A length: 2
         undefined4 DAT_ChatMessageArrayIndex; // 0x0010566C length: 4
-        undefined4 field204_0x105670; // 0x00105670 length: 4
+        undefined4 chatMessageRenderIndex; // 0x00105670 length: 4
         undefined4 DAT_InsultTextIndex; // 0x00105674 length: 4
         ChatEvent DAT_ChatEventArray[20]; // 0x00105678 length: 320
         char shortMapName[120]; // 0x001057B8 length: 120
@@ -284,7 +284,7 @@ namespace Synchrony {
         int DAT_ChatMessageReceiverArray[9]; // 0x00109264 length: 36
         undefined4 DAT_ChatTauntOrMessage; // 0x00109288 length: 4
         undefined4 skirmishPoints; // 0x0010928C length: 4
-        dword field259_0x109290; // 0x00109290 length: 4
+        dword resyncStartTime; // 0x00109290 length: 4
         int kickedAtTime; // 0x00109294 length: 4
         undefined4 field261_0x109298; // 0x00109298 length: 4
         undefined4 kickDueToLagStatusUnk; // 0x0010929C length: 4

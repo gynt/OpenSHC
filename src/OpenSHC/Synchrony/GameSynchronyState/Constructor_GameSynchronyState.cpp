@@ -33,7 +33,7 @@ namespace Synchrony {
         this->field57_0x79c[1] = 0;
         this->field57_0x79c[2] = 0;
         this->field57_0x79c[3] = 0;
-        this->field196_0x101ad4 = 0;
+        this->relativeTickTime = 0;
         MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             0xc, "Contestant", (void*)((int)(this->DPLAY_PlayerShortName)));

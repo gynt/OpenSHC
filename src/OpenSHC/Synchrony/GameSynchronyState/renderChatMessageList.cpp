@@ -24,9 +24,9 @@ namespace Synchrony {
     {
         int iVar1;
         int iVar2;
-        this->field204_0x105670 = this->DAT_ChatMessageArrayIndex - param_3;
-        if (this->field204_0x105670 < 0) {
-            this->field204_0x105670 = this->field204_0x105670 + 0x14;
+        this->chatMessageRenderIndex = this->DAT_ChatMessageArrayIndex - param_3;
+        if (this->chatMessageRenderIndex < 0) {
+            this->chatMessageRenderIndex = this->chatMessageRenderIndex + 0x14;
         }
         iVar2 = 0;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
@@ -34,17 +34,17 @@ namespace Synchrony {
         DAT_TextManagerObject::instance.field13_0x34 = 0x11;
         param_3 = 0;
         do {
-            if (this->DAT_ChatEventArray[this->field204_0x105670].flag == 1) {
+            if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(this->DAT_ChatMessageSubjectPlayerNameArray[this->field204_0x105670],
+                    DAT_TextManagerObject::ptr)(this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex],
                     xPos, yPos, Text::TTA_LEFT,
                     (uint)((int)(DAT_RenderingDefinedData::instance.ColorTable1[DAT_BlendingDefinedData::instance
-                            .PlayerSlotUnitColor[this->DAT_ChatEventArray[this->field204_0x105670].subjectPlayer]])),
+                            .PlayerSlotUnitColor[this->DAT_ChatEventArray[this->chatMessageRenderIndex].subjectPlayer]])),
                     0, 0x13, FALSE, (iVar1 / 32) + 0x20);
                 iVar1 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(
-                    this->DAT_ChatMessageArray[this->field204_0x105670], 0, 0,
+                    this->DAT_ChatMessageArray[this->chatMessageRenderIndex], 0, 0,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0, 0, 1);
                 if (0x18 < iVar1) {
                     iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -52,23 +52,23 @@ namespace Synchrony {
                     iVar2 = iVar2 + 1;
                     MACRO_CALL_MEMBER(
                         Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                        this->DAT_ChatMessageSubjectPlayerNameArray[this->field204_0x105670], xPos, yPos,
+                        this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex], xPos, yPos,
                         Text::TTA_LEFT,
                         (uint)((int)(DAT_RenderingDefinedData::instance
                                 .ColorTable1[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor
-                                        [this->DAT_ChatEventArray[this->field204_0x105670].subjectPlayer]])),
+                                        [this->DAT_ChatEventArray[this->chatMessageRenderIndex].subjectPlayer]])),
                         0, 0x13, FALSE, (iVar1 / 32) + 0x20);
                 }
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
-                    this->DAT_ChatMessageArray[this->field204_0x105670],
+                    this->DAT_ChatMessageArray[this->chatMessageRenderIndex],
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 6 + xPos, yPos,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0xa2ff, 0x3e66, 0x13,
                     (iVar1 / 32) + 0x20);
             }
-            this->field204_0x105670 = this->field204_0x105670 + -1;
-            if (this->field204_0x105670 < 0) {
-                this->field204_0x105670 = 0x13;
+            this->chatMessageRenderIndex = this->chatMessageRenderIndex + -1;
+            if (this->chatMessageRenderIndex < 0) {
+                this->chatMessageRenderIndex = 0x13;
             }
             iVar2 = iVar2 + 1;
             yPos = yPos + -0x11;
