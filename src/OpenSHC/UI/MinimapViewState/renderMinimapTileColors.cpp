@@ -101,7 +101,7 @@ namespace UI {
                                                                 if (((char)_tileTerrain < '\0')
                                                                     && ((_tile1003 & 0x8000) != 0)) {
                                                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                                     .field19_0x174[_colorMode
+                                                                                     .ThickScrubMinimapColors[_colorMode
                                                                                          + (_tileRandom & 3) * 2];
                                                                 } else if (((_tileTerrain & 1) == 0)
                                                                     || ((_tile1003 & 0x8000) == 0)) {
@@ -115,69 +115,69 @@ namespace UI {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
                                                                                           instance
-                                                                                              .field14_0x104[_colorMode
+                                                                                              .EarthMinimapColors[_colorMode
                                                                                                   + (_tileRandom & 7)
                                                                                                       * 2];
                                                                             } else {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
                                                                                           instance
-                                                                                              .field15_0x124[_colorMode
+                                                                                              .EarthAndStonesMinimapColors[_colorMode
                                                                                                   + (_tileRandom & 7)
                                                                                                       * 2];
                                                                             }
                                                                         } else {
                                                                             _tileColor
                                                                                 = (uint)DAT_MiniMapDefinedData::instance
-                                                                                      .field13_0xf4[_colorMode
+                                                                                      .MarshOrOilMinimapColors[_colorMode
                                                                                           + (_tileRandom & 3) * 2];
                                                                         }
                                                                     } else {
                                                                         _tileColor
                                                                             = (uint)DAT_MiniMapDefinedData::instance
-                                                                                  .field12_0xe4[_colorMode
+                                                                                  .IronMinimapColors[_colorMode
                                                                                       + (_tileRandom & 3) * 2];
                                                                     }
                                                                 } else {
                                                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                                     .field18_0x164[_colorMode
+                                                                                     .ScrubMinimapColors[_colorMode
                                                                                          + (_tileRandom & 3) * 2];
                                                                 }
                                                             } else {
                                                                 _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                                 .field20_0x184[_colorMode
+                                                                                 .OasisGrassMinimapColors[_colorMode
                                                                                      + (_tileRandom & 3) * 2];
                                                             }
                                                         } else {
                                                             _tileColor
                                                                 = (uint)DAT_MiniMapDefinedData::instance
-                                                                      .field11_0xd4[_colorMode + (_tileRandom & 3) * 2];
+                                                                      .BeachMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                                         }
                                                     } else {
                                                     LAB_004b5bbe:
                                                         _tileColor
                                                             = (uint)DAT_MiniMapDefinedData::instance
-                                                                  .field17_0x154[_colorMode + (_tileRandom & 3) * 2];
+                                                                  .StonesOrDrivenSandMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                                     }
                                                 } else {
                                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                     .field9_0xb4[_colorMode + (_tileRandom & 3) * 2];
+                                                                     .PebblesMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                                 }
                                             } else {
                                                 _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                 .field7_0x84[_colorMode + (_tileRandom & 7) * 2];
+                                                                 .BouldersMinimapColors[_colorMode + (_tileRandom & 7) * 2];
                                             }
                                         } else {
                                             _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                             .field3_0x44[_colorMode + (_tileRandom & 3) * 2];
+                                                             .RiverMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                         }
                                     } else {
                                         _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                         .field4_0x54[_colorMode + (_tileRandom & 7) * 2];
+                                                         .FordMinimapColors[_colorMode + (_tileRandom & 7) * 2];
                                     }
                                 } else {
                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                     .field2_0x24[_colorMode + (_tileRandom & 7) * 2];
+                                                     .SeaMinimapColors[_colorMode + (_tileRandom & 7) * 2];
                                 }
                             } else {
                                 _tileColor = 0;

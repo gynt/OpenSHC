@@ -22,25 +22,25 @@ namespace UI {
 
             int LuminescenceBrightnessPercent[8]; // 0x00000000 length: 32
             ushort field1_0x20[2]; // 0x00000020 length: 4
-            ushort field2_0x24[16]; // 0x00000024 length: 32
-            ushort field3_0x44[8]; // 0x00000044 length: 16
-            ushort field4_0x54[8]; // 0x00000054 length: 16
+            ushort SeaMinimapColors[16]; // 0x00000024 length: 32
+            ushort RiverMinimapColors[8]; // 0x00000044 length: 16
+            ushort FordMinimapColors[8]; // 0x00000054 length: 16
             ushort field5_0x64[8]; // 0x00000064 length: 16
             ushort field6_0x74[8]; // 0x00000074 length: 16
-            ushort field7_0x84[16]; // 0x00000084 length: 32
+            ushort BouldersMinimapColors[16]; // 0x00000084 length: 32
             ushort MinimapColorArray[8]; // 0x000000A4 length: 16
-            ushort field9_0xb4[8]; // 0x000000B4 length: 16
+            ushort PebblesMinimapColors[8]; // 0x000000B4 length: 16
             ushort field10_0xc4[8]; // 0x000000C4 length: 16
-            ushort field11_0xd4[8]; // 0x000000D4 length: 16
-            ushort field12_0xe4[8]; // 0x000000E4 length: 16
-            ushort field13_0xf4[8]; // 0x000000F4 length: 16
-            ushort field14_0x104[16]; // 0x00000104 length: 32
-            ushort field15_0x124[16]; // 0x00000124 length: 32
+            ushort BeachMinimapColors[8]; // 0x000000D4 length: 16
+            ushort IronMinimapColors[8]; // 0x000000E4 length: 16
+            ushort MarshOrOilMinimapColors[8]; // 0x000000F4 length: 16
+            ushort EarthMinimapColors[16]; // 0x00000104 length: 32
+            ushort EarthAndStonesMinimapColors[16]; // 0x00000124 length: 32
             ushort field16_0x144[8]; // 0x00000144 length: 16
-            ushort field17_0x154[8]; // 0x00000154 length: 16
-            ushort field18_0x164[8]; // 0x00000164 length: 16
-            ushort field19_0x174[8]; // 0x00000174 length: 16
-            ushort field20_0x184[52]; // 0x00000184 length: 104
+            ushort StonesOrDrivenSandMinimapColors[8]; // 0x00000154 length: 16
+            ushort ScrubMinimapColors[8]; // 0x00000164 length: 16
+            ushort ThickScrubMinimapColors[8]; // 0x00000174 length: 16
+            ushort OasisGrassMinimapColors[52]; // 0x00000184 length: 104
             ushort PlayerColorColors[2][2]; // 0x000001EC length: 8
             ushort AnimalMinimapColour_RGB15; // 0x000001F4 length: 2
             ushort AnimalMinimapColour_RGB16; // 0x000001F6 length: 2
