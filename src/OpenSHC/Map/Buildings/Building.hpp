@@ -43,6 +43,17 @@ namespace Map {
             short animationActive; // 0x00000030 length: 2
             undefined1 padding_0x32[2]; // 0x00000032 length: 2
             int displayOwnerFlag; // 0x00000034 length: 4
+            // 0x38..0x44, 0x5C..0x88: sixteen overlay slots. UpdateGranary dispatches an
+            // index 0..15 over exactly these offsets, and renderGmOverlayBuilding(2) reads
+            // each the same way -- `MOV EAX, slot; TEST EAX, EAX; JZ skip` then pushes it as
+            // the imageID of renderGMWithBlending under its own GmID -- so every one holds a
+            // GM image index with 0 meaning "draw nothing".
+            // Two caveats. `shouldRenderRoof` and `shouldRenderSomeOverlay` are slots 6 and 7
+            // of this family, read as imageIDs at 0x004E5243 and 0x004E528F, so their names
+            // are wrong -- they only look boolean because 0 means skip. And `ownerFlagFrame`
+            // (slot 14) really is a clock for most building types, which index
+            // BuildingDefinedData.field177_0x7e1c by `ownerFlagFrame / 2`; the granary
+            // dispatch writes an image index there instead.
             int extraAnimationSprite1; // 0x00000038 length: 4
             int extraAnimationSprite2; // 0x0000003C length: 4
             int extraAnimationSprite3; // 0x00000040 length: 4
@@ -52,10 +63,10 @@ namespace Map {
             int extraAnimationFrame2; // 0x00000050 length: 4
             int extraAnimationFrame3; // 0x00000054 length: 4
             int field28_0x58; // 0x00000058 length: 4
-            int field29_0x5c; // 0x0000005C length: 4
+            int extraOverlayImage1; // 0x0000005C length: 4
             int shouldRenderRoof; // 0x00000060 length: 4
             int shouldRenderSomeOverlay; // 0x00000064 length: 4
-            int field32_0x68; // 0x00000068 length: 4
+            int extraOverlayImage2; // 0x00000068 length: 4
             // 0x6C..0x8B is one 32-byte region that two kinds of building use
             // differently. Towers, gatehouses and the granary treat it as eight
             // damage-decoration slots: UpdateTower* turns currentHealth/maxHealth
@@ -68,14 +79,14 @@ namespace Map {
             union {
                 int damageDecoration[8]; // 0x0000006C length: 32
                 struct {
-                    int field33_0x6c; // 0x0000006C length: 4
-                    int field34_0x70; // 0x00000070 length: 4
-                    int field35_0x74; // 0x00000074 length: 4
-                    int field36_0x78; // 0x00000078 length: 4
-                    int field37_0x7c; // 0x0000007C length: 4
+                    int extraOverlayImage3; // 0x0000006C length: 4
+                    int extraOverlayImage4; // 0x00000070 length: 4
+                    int extraOverlayImage5; // 0x00000074 length: 4
+                    int extraOverlayImage6; // 0x00000078 length: 4
+                    int extraOverlayImage7; // 0x0000007C length: 4
                     int ownerFlagFrame; // 0x00000080 length: 4
                     int overlayImageID; // 0x00000084 length: 4
-                    int field40_0x88; // 0x00000088 length: 4
+                    int extraOverlayImage8; // 0x00000088 length: 4
                 };
             };
             byte xPosition; // 0x0000008C length: 1

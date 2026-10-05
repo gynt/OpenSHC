@@ -78,7 +78,7 @@ namespace Map {
         if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270 == 0) {
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field193_0x272 != 0) {
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
-                    if (0x27 < DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88) {
+                    if (0x27 < DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8) {
                         DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 1;
                     }
                     goto LAB_0041827d;
@@ -86,28 +86,28 @@ namespace Map {
                 goto LAB_00418285;
             }
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation != 0) {
-                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 < 1) {
+                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 < 1) {
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 0;
                 }
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + -1;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 + -1;
                 goto LAB_004182b0;
             }
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 = 0;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 = 0;
         } else {
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
-                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 < 0x28) {
+                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 < 0x28) {
                 LAB_0041827d:
-                    DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
-                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + 1;
+                    DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8
+                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 + 1;
                 } else {
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 1;
-                    DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88
-                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 + 1;
+                    DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8
+                        = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 + 1;
                 }
             } else {
             LAB_00418285:
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field40_0x88 = 0x28;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage8 = 0x28;
             }
         LAB_004182b0:
             DAT_BuildingsState::instance.buildings[_currentBuildingID].animationFrame

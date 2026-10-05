@@ -39,7 +39,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite2 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].extraAnimationSprite4 = 0;
-        DAT_BuildingsState::instance.buildings[iVar1].field29_0x5c = 0;
+        DAT_BuildingsState::instance.buildings[iVar1].extraOverlayImage1 = 0;
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[0] = 0;
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[1] = 0;
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[2] = 0;

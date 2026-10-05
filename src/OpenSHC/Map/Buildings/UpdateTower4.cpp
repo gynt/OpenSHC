@@ -37,7 +37,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite2 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite4 = 0;
-        DAT_BuildingsState::instance.buildings[iVar5].field29_0x5c = 0;
+        DAT_BuildingsState::instance.buildings[iVar5].extraOverlayImage1 = 0;
         DAT_BuildingsState::instance.buildings[iVar5].shouldRenderRoof = 0x7a;
         DAT_BuildingsState::instance.buildings[iVar5].shouldRenderSomeOverlay = 0;
         DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 0;

@@ -144,19 +144,19 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field32_0x68 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field33_0x6c = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage2 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = 0;
         sVar3 = DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[0];
-        DAT_BuildingsState::instance.buildings[buildingID].field34_0x70 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field35_0x74 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field36_0x78 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field37_0x7c = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage4 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage5 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = 0;
         DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field40_0x88 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = 0;
         if ((sVar3 == 0)
             && (local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[10], local_8 != 0)) {
             local_1c = local_8;
@@ -282,29 +282,29 @@ namespace Map {
                 } else if (iVar9 == 3) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = iVar8;
                 } else if (iVar9 == 4) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = iVar8;
                 } else if (iVar9 == 5) {
                     DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = iVar8;
                 } else if (iVar9 == 6) {
                     DAT_BuildingsState::instance.buildings[buildingID].shouldRenderSomeOverlay = iVar8;
                 } else if (iVar9 == 7) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field32_0x68 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage2 = iVar8;
                 } else if (iVar9 == 8) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field33_0x6c = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = iVar8;
                 } else if (iVar9 == 9) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field34_0x70 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage4 = iVar8;
                 } else if (iVar9 == 10) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field35_0x74 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage5 = iVar8;
                 } else if (iVar9 == 0xb) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field36_0x78 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage6 = iVar8;
                 } else if (iVar9 == 0xc) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field37_0x7c = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage7 = iVar8;
                 } else if (iVar9 == 0xd) {
                     DAT_BuildingsState::instance.buildings[buildingID].ownerFlagFrame = iVar8;
                 } else if (iVar9 == 0xe) {
                     DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = iVar8;
                 } else if (iVar9 == 0xf) {
-                    DAT_BuildingsState::instance.buildings[buildingID].field40_0x88 = iVar8;
+                    DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8 = iVar8;
                 }
                 iVar9 = iVar9 + 1;
             } while (iVar9 < 0x10);

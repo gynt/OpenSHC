@@ -38,7 +38,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 0;
-        DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = 0;
         DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 0;
         if (iVar2 == 0x50) {
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0x28;
@@ -66,7 +66,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0;
             if (iVar2 == 0x50) {
-                DAT_BuildingsState::instance.buildings[buildingID].field29_0x5c = 6;
+                DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = 6;
             }
             DAT_BuildingsState::instance.buildings[buildingID].shouldRenderRoof = 8;
         }

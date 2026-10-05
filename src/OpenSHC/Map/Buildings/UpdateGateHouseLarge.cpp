@@ -108,7 +108,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar2].damageDecoration[7] = local_10[3];
         }
     LAB_00423a8d:
-        DAT_BuildingsState::instance.buildings[iVar2].field29_0x5c = 0;
+        DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage1 = 0;
         DAT_BuildingsState::instance.buildings[iVar2].shouldRenderRoof = 0;
         DAT_BuildingsState::instance.buildings[iVar2].animationIncrement = 1;
         DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
@@ -129,7 +129,7 @@ namespace Map {
                 if (local_14 != 0x50) {
                     DAT_BuildingsState::instance.buildings[iVar2].shouldRenderRoof = 6;
                 }
-                DAT_BuildingsState::instance.buildings[iVar2].field29_0x5c = 0xc;
+                DAT_BuildingsState::instance.buildings[iVar2].extraOverlayImage1 = 0xc;
             }
             if (bVar1 == 1) {
                 if (DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0) {
@@ -156,7 +156,7 @@ namespace Map {
                         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof
                             = (int)(char)bVar1;
                     }
-                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field29_0x5c
+                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1
                         = (char)bVar1 + 6;
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].pathLinkageRelated2 = 2;
@@ -166,7 +166,7 @@ namespace Map {
                 if (local_14 != 0x50) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof = 6;
                 }
-                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field29_0x5c = 0xc;
+                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1 = 0xc;
             }
             if (bVar1 == 3) {
                 if ((DAT_BuildingsState::instance.buildings[iVar2].animationActive != 0)
@@ -186,7 +186,7 @@ namespace Map {
                         DAT_PathFindingState::ptr)(iVar2);
                 }
                 if (local_14 == 0x50) {
-                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field29_0x5c
+                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraOverlayImage1
                         = (char)bVar1 + 6;
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].shouldRenderRoof
