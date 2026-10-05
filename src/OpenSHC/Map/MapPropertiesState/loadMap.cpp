@@ -183,8 +183,8 @@ namespace Map {
             pSVar8 = &this->SEC_SiegeInformation;
             do {
                 pSVar5->archers = pSVar8->archers;
-                pSVar5 = (SiegeUnitCounts*)&pSVar5->field1_0x4;
-                pSVar8 = (SiegeUnitCounts*)&pSVar8->field1_0x4;
+                pSVar5 = (SiegeUnitCounts*)&pSVar5->crossbowmen;
+                pSVar8 = (SiegeUnitCounts*)&pSVar8->crossbowmen;
             } while ((int)pSVar5 < 0x117cea0);
             DAT_GameState::instance.mapAndTime.startingPopularity = this->SEC_StartingPopularity * 10;
             MACRO_CALL_MEMBER(Game::GameStateStructures_Func::setMonthAndYear, DAT_GameState::ptr)(

@@ -56,7 +56,7 @@ namespace Map {
                     break;
                 }
                 iVar6 = iVar6 + 1;
-                pSVar4 = (SiegeUnitCounts*)&pSVar4->field1_0x4;
+                pSVar4 = (SiegeUnitCounts*)&pSVar4->crossbowmen;
             } while (iVar6 < 0x14);
             iVar6 = 0;
             pSVar5 = &this->SEC_Section1067;

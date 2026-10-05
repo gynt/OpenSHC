@@ -92,7 +92,7 @@ namespace Map {
                             }
                         }
                         pSVar8->archers = (pSVar8->archers * iVar3) / 100;
-                        pSVar8 = (SiegeUnitCounts*)&pSVar8->field1_0x4;
+                        pSVar8 = (SiegeUnitCounts*)&pSVar8->crossbowmen;
                     } while ((int)pSVar8 < 0x117cea0);
                     _siegeInfoSubIndex = 0;
                     do {

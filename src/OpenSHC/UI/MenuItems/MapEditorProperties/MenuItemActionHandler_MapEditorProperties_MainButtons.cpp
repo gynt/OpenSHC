@@ -237,42 +237,42 @@ namespace UI {
                         }
                         DAT_GameState::instance.mapAndTime.startGoods[7]
                             = DAT_GameState::instance.mapAndTime.startGoods[8];
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field3_0xc
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field3_0xc;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field2_0x8
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field2_0x8;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field1_0x4
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field1_0x4;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field6_0x18
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field6_0x18;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field5_0x14
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field5_0x14;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field4_0x10
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field4_0x10;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field9_0x24
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field9_0x24;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field8_0x20
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field8_0x20;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field7_0x1c
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field7_0x1c;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field12_0x30
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field12_0x30;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field11_0x2c
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field11_0x2c;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field10_0x28
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field10_0x28;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field15_0x3c
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field15_0x3c;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field14_0x38
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field14_0x38;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field13_0x34
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field13_0x34;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.pikemen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.pikemen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.spearmen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.spearmen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.crossbowmen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.knights
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.knights;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.swordsmen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.macemen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.macemen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.monks
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.monks;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.engineers
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.engineers;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.laddermen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.laddermen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.slingers
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.slingers;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.slaves
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.slaves;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.arabianArchers
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.arabianArchers;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.arabianSwordsmen;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.horseArchers;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.assassins
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.assassins;
                         DAT_GameState::instance.mapAndTime.siegeInformation.field18_0x48
                             = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field18_0x48;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field17_0x44
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field17_0x44;
-                        DAT_GameState::instance.mapAndTime.siegeInformation.field16_0x40
-                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field16_0x40;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.fireBallistas;
+                        DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers
+                            = DAT_MapPropertiesState::instance.SEC_SiegeInformation.fireThrowers;
                         DAT_GameState::instance.mapAndTime.startGoods[8] = 0;
                         DAT_GameState::instance.mapAndTime.siegeInformation.field19_0x4c
                             = DAT_MapPropertiesState::instance.SEC_SiegeInformation.field19_0x4c;
