@@ -39,7 +39,7 @@ namespace Map {
                 iVar2 = -1;
                 iVar3 = 0;
                 do {
-                    iVar1 = this->attackInfo.field127521_0x2b254[iVar3].tile;
+                    iVar1 = this->attackInfo.spottedEnemyTiles[iVar3].tile;
                     if (iVar1 == param_1) {}
                     if ((iVar1 == 0) && (iVar2 == -1)) {
                         iVar2 = iVar3;
@@ -47,8 +47,8 @@ namespace Map {
                     iVar3 = iVar3 + 1;
                 } while (iVar3 < 100);
                 if (-1 < iVar2) {
-                    this->attackInfo.field127521_0x2b254[iVar2].tile = param_1;
-                    this->attackInfo.field127521_0x2b254[iVar2].value = 100;
+                    this->attackInfo.spottedEnemyTiles[iVar2].tile = param_1;
+                    this->attackInfo.spottedEnemyTiles[iVar2].value = 100;
                 }
             }
         }

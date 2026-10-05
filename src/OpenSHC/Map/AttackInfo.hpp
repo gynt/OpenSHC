@@ -93,7 +93,7 @@ namespace Map {
         int lowTroopValueRelated; // 0x00021C3C length: 4
         int size; // 0x00021C40 length: 4
         int value10; // 0x00021C44 length: 4
-        int field89399_0x21c48; // 0x00021C48 length: 4
+        int reservedTroopBudget; // 0x00021C48 length: 4
         int field89400_0x21c4c; // 0x00021C4C length: 4
         int casDis; // 0x00021C50 length: 4
         // Reset to 0 when a wave starts (initializeOrAdvanceAttackWave), incremented by
@@ -110,7 +110,7 @@ namespace Map {
         undefined1 padding_0x25b50[20480]; // 0x00025B50 length: 20480
         int someIntArray2[50]; // 0x0002AB50 length: 200
         undefined1 padding_0x2ac18[1596]; // 0x0002AC18 length: 1596
-        AttackInfoPitchRelated field127521_0x2b254[100]; // 0x0002B254 length: 800
+        AttackInfoPitchRelated spottedEnemyTiles[100]; // 0x0002B254 length: 800
         int field127522_0x2b574; // 0x0002B574 length: 4
         int field127523_0x2b578; // 0x0002B578 length: 4
         short unitIDArray_0x2b57c[1000]; // 0x0002B57C length: 2000

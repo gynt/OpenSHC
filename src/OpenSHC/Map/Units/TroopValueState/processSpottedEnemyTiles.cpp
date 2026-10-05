@@ -15,7 +15,7 @@ namespace Map {
             BOOLEnum BVar1;
             int iVar2;
             AttackInfoPitchRelated* piVar3;
-            piVar3 = &this->attackInfo.field127521_0x2b254[0];
+            piVar3 = &this->attackInfo.spottedEnemyTiles[0];
             do {
                 iVar2 = piVar3->tile;
                 if (0 < iVar2) {
