@@ -70,13 +70,13 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             textAddress, iVar2, iVar3, alignment, color, iVar6, BVar7, iVar8);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        _positionPtr = DAT_RenderingDefinedData::instance.field1043_0x55524;
+        _positionPtr = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.field1041_0x554e4 + iVar5)];
+                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
             iVar6 = _positionPtr->y + iVar1;
             iVar8 = _positionPtr->x + iVar4;
-            iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.field1042_0x55504 + iVar5);
+            iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
             if (iVar2 < 1) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(
@@ -86,7 +86,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3, iVar8, iVar6);
             }
             if (DAT_MouseState::instance.leftClickStart != 0) {
-                iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.field1042_0x55504 + iVar5);
+                iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _positionPtr->x + iVar4, _positionPtr->y + iVar1,
                     (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 + -1]
@@ -99,7 +99,7 @@ namespace UI {
                         != 0)) {
                     BVar7 = MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(
-                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.field1041_0x554e4 + iVar5));
+                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5));
                     if (BVar7 != FALSE) {
                         DAT_BuildingsState::instance.newSelectedBuildingID
                             = DAT_GameState::instance
@@ -110,7 +110,7 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.field1041_0x554e4 + iVar5);
+                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
                     }
                 }
             }

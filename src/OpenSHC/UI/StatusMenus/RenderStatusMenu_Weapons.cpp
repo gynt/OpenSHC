@@ -61,13 +61,13 @@ namespace UI {
             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 7);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             textAddress, iVar3, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
-        pPVar5 = DAT_RenderingDefinedData::instance.field1043_0x55524;
+        pPVar5 = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.field1041_0x554e4 + iVar4)];
+                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar4)];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                *(int*)((int)DAT_RenderingDefinedData::instance.field1042_0x55504 + iVar4), pPVar5->x + iVar6,
+                *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar4), pPVar5->x + iVar6,
                 pPVar5->y + iVar1);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 iVar3, iVar6 + 0xc, iVar2 + 0x22d, OpenSHC::Text::TTA_LEFT, 0, 0x11, FALSE, 0);

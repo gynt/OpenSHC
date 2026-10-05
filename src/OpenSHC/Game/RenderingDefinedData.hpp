@@ -227,7 +227,7 @@ namespace Game {
         int ScribeAnimationFrames1[24]; // 0x0005493C length: 96
         int ScribeAnimationFrames2[24]; // 0x0005499C length: 96
         int ScribeAnimationFrames3[24]; // 0x000549FC length: 96
-        UnitTypeInt field1030_0x54a5c[28]; // 0x00054A5C length: 112
+        UnitTypeInt SelectionSlotUnitTypes[28]; // 0x00054A5C length: 112
         char* ChimpTgxArray[70]; // 0x00054ACC length: 280
         char* ChimpTgxSketchArray[80]; // 0x00054BE4 length: 320
         char* ChimpHelpArray[70]; // 0x00054D24 length: 280
@@ -235,12 +235,12 @@ namespace Game {
         char* BuildingHelpArray[108]; // 0x00054F54 length: 432
         char* BuildingBikArray[108]; // 0x00055104 length: 432
         char* BuildingTgxSketchArray[108]; // 0x000552B4 length: 432
-        ResourceTypeInt field1038_0x55464[8]; // 0x00055464 length: 32
-        int field1039_0x55484[8]; // 0x00055484 length: 32
+        ResourceTypeInt StockpileMenuResourceTypes[8]; // 0x00055464 length: 32
+        int StockpileMenuResourceIcons[8]; // 0x00055484 length: 32
         Position StockpileIconsPositionNudges[8]; // 0x000554A4 length: 64
-        int field1041_0x554e4[8]; // 0x000554E4 length: 32
-        int field1042_0x55504[8]; // 0x00055504 length: 32
-        Position field1043_0x55524[8]; // 0x00055524 length: 64
+        int ArmoryMenuResourceTypes[8]; // 0x000554E4 length: 32
+        int ArmoryMenuResourceIcons[8]; // 0x00055504 length: 32
+        Position ArmoryIconsPositionNudges[8]; // 0x00055524 length: 64
         int MarketStonksOrder[20]; // 0x00055564 length: 80
         ResourceTypeInt FoodTypes[8]; // 0x000555B4 length: 32
         int RawResourceTypes[4]; // 0x000555D4 length: 16

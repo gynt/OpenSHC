@@ -78,16 +78,16 @@ namespace UI {
         do {
             number
                 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.field1038_0x55464 + _index4)];
+                      .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
             /*
               Render resource image
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                *(int*)((int)DAT_RenderingDefinedData::instance.field1039_0x55484 + _index4), _nudges->x + _x,
+                *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + _index4), _nudges->x + _x,
                 _nudges->y + _y);
             if (DAT_MouseState::instance.leftClickStart != 0) {
-                int iVar1 = *(int*)((int)DAT_RenderingDefinedData::instance.field1039_0x55484 + _index4);
+                int iVar1 = *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + _index4);
                 BVar2 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _nudges->x + _x, _nudges->y + _y,
                     (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
@@ -100,7 +100,7 @@ namespace UI {
                         != 0)) {
                     BVar2 = MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(
-                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.field1038_0x55464 + _index4));
+                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4));
                     if (BVar2 != FALSE) {
                         DAT_BuildingsState::instance.newSelectedBuildingID
                             = DAT_GameState::instance
@@ -111,7 +111,7 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.field1038_0x55464 + _index4);
+                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4);
                     }
                 }
             }
