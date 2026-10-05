@@ -43,7 +43,7 @@ namespace Map {
                 <= (int)(char)this->attackInfo.unknownByteArray02[param_1]) {
                 piVar1 = this->attackInfo.attackWaveTicker + param_1;
                 *piVar1 = *piVar1 + 1;
-                if (DAT_AttackInfoDefinedData::instance.field1_0x28[this->attackInfo.attacker]
+                if (DAT_AttackInfoDefinedData::instance.AIAttackWaveAdvanceDelay[this->attackInfo.attacker]
                     <= this->attackInfo.attackWaveTicker[param_1]) {
                     if (this->attackInfo.attacker == 8) {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::playAttackAlarmSound, this)();

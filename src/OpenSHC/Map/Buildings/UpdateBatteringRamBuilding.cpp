@@ -130,10 +130,10 @@ namespace Map {
                 if (0 < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount) {
                     do {
                         iVar13 = (int)DAT_BuildingsState::instance.buildings[iVar11].workerID[local_c];
-                        sVar2 = DAT_AttackInfoDefinedData::instance.field10_0xec[uVar14][0];
+                        sVar2 = DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[uVar14][0];
                         uVar3 = DAT_BuildingsState::instance.buildings[iVar11].x;
                         uVar4 = DAT_BuildingsState::instance.buildings[iVar11].y;
-                        sVar5 = DAT_AttackInfoDefinedData::instance.field10_0xec[uVar14][1];
+                        sVar5 = DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[uVar14][1];
                         uVar14 = uVar14 + 1 & 0x8000000f;
                         DAT_UnitsState::instance.units[iVar13].state.generic
                             = Map::Units::States::US_JESTER_ROAM_TO;

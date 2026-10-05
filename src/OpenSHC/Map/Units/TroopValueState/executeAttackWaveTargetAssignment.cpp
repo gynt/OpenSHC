@@ -47,7 +47,7 @@ namespace Map {
             piVar1 = DAT_TroopValueState::instance.attackInfo.attackWaveTicker + param_1;
             *piVar1 = *piVar1 + 1;
             iVar4 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            if (DAT_AttackInfoDefinedData::instance.field3_0x78[DAT_TroopValueState::instance.attackInfo.attacker]
+            if (DAT_AttackInfoDefinedData::instance.AIAttackWaveTargetDelay[DAT_TroopValueState::instance.attackInfo.attacker]
                 <= DAT_TroopValueState::instance.attackInfo.attackWaveTicker[param_1]) {
                 DAT_TroopValueState::instance.attackInfo.attackWaveTicker[param_1] = 0;
                 DAT_TroopValueState::instance.attackInfo.value10 = DAT_TroopValueState::instance.attackInfo.value10 + 1;
@@ -96,7 +96,7 @@ namespace Map {
                 DAT_TroopValueState::instance.attackInfo.reservedTroopBudget = 0;
                 if (DAT_TroopValueState::instance.attackInfo.catapults != 0) {
                     DAT_TroopValueState::instance.attackInfo.reservedTroopBudget
-                        = DAT_AttackInfoDefinedData::instance.field4_0xa0[DAT_TroopValueState::instance.attackInfo.attacker];
+                        = DAT_AttackInfoDefinedData::instance.AIReservedTroopBudget[DAT_TroopValueState::instance.attackInfo.attacker];
                     if (DAT_TroopValueState::instance.attackInfo.zoneSize < 3000) {
                         DAT_TroopValueState::instance.attackInfo.reservedTroopBudget = DAT_TroopValueState::instance.attackInfo.reservedTroopBudget + 10;
                     }

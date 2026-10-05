@@ -26,7 +26,7 @@ namespace Map {
                 param_1, 2, 100000, (SomeTribeBehaviorType)((int)(1019)));
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                 (Map::Units::SomeTribeBehaviorType)1022, Map::Units::STBT_5, 0, 0x32);
-            if (DAT_AttackInfoDefinedData::instance.field0_0x0[this->attackInfo.attacker] <= this->attackInfo.casDis) {
+            if (DAT_AttackInfoDefinedData::instance.AICasDisThreshold[this->attackInfo.attacker] <= this->attackInfo.casDis) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                     param_1, 1000, 10000, Map::Units::STBT_5);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(

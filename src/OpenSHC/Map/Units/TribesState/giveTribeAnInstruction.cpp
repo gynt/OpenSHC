@@ -906,9 +906,9 @@ namespace Map {
                             do {
                                 iVar14 = (int)DAT_UnitsState::instance.units[iVar11]
                                              .digTileY__OR__countLifeCycleEngineersSentToManSiegeEngine;
-                                x = (int)DAT_AttackInfoDefinedData::instance.field10_0xec[iVar14][0]
+                                x = (int)DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[iVar14][0]
                                     + (int)DAT_UnitsState::instance.units[iVar11].x;
-                                y = (int)DAT_AttackInfoDefinedData::instance.field10_0xec[iVar14][1]
+                                y = (int)DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[iVar14][1]
                                     + (int)DAT_UnitsState::instance.units[iVar11].y;
                                 uVar19 = iVar14 + 1U & 0x8000000f;
                                 if ((int)uVar19 < 0) {
@@ -1005,9 +1005,9 @@ namespace Map {
                             unitUID = 0;
                         LAB_00529da0:
                             do {
-                                uVar19 = (int)DAT_AttackInfoDefinedData::instance.field10_0xec[param_5][0]
+                                uVar19 = (int)DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[param_5][0]
                                     + (int)DAT_UnitsState::instance.units[iVar11].x;
-                                uVar13 = (int)DAT_AttackInfoDefinedData::instance.field10_0xec[param_5][1]
+                                uVar13 = (int)DAT_AttackInfoDefinedData::instance.SiegeCrewPositionOffsets[param_5][1]
                                     + (int)DAT_UnitsState::instance.units[iVar11].y;
                                 param_5 = param_5 + 1U & 0x8000000f;
                                 if (param_5 < 0) {

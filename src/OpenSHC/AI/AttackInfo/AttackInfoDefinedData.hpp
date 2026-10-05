@@ -24,17 +24,17 @@ namespace AI {
         // SIZE: 0x00000A34
         typedef struct AttackInfoDefinedData {
 
-            int field0_0x0[10]; // 0x00000000 length: 40
-            int field1_0x28[10]; // 0x00000028 length: 40
+            int AICasDisThreshold[10]; // 0x00000000 length: 40
+            int AIAttackWaveAdvanceDelay[10]; // 0x00000028 length: 40
             int AttackWaveDurationPerAttacker[10]; // 0x00000050 length: 40
-            int field3_0x78[10]; // 0x00000078 length: 40
-            int field4_0xa0[10]; // 0x000000A0 length: 40
+            int AIAttackWaveTargetDelay[10]; // 0x00000078 length: 40
+            int AIReservedTroopBudget[10]; // 0x000000A0 length: 40
             MappersEnum field5_0xc8[5]; // 0x000000C8 length: 20
             int field6_0xdc; // 0x000000DC length: 4
             int field7_0xe0; // 0x000000E0 length: 4
             int field8_0xe4; // 0x000000E4 length: 4
             int field9_0xe8; // 0x000000E8 length: 4
-            short field10_0xec[16][2]; // 0x000000EC length: 64
+            short SiegeCrewPositionOffsets[16][2]; // 0x000000EC length: 64
             AITribeTypeInt field_0x12c[20]; // 0x0000012C length: 80
             AITribeTypeInt field_0x17c[20]; // 0x0000017C length: 80
             AITribeTypeInt field_0x1cc[20]; // 0x000001CC length: 80
