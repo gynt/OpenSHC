@@ -41,10 +41,10 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                 DAT_GameSynchronyState::instance
-                    .field282_0x109d98[DAT_GameSynchronyState::instance.protocolInvokerPlayerID]
+                    .mapTransferStatePerPlayer[DAT_GameSynchronyState::instance.protocolInvokerPlayerID]
                     = (local_1 != '\0') + 1;
             }
-            psVar1 = DAT_GameSynchronyState::instance.field282_0x109d98 + 1;
+            psVar1 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
             do {
                 if (*psVar1 == 0) {}
                 psVar1 = psVar1 + 1;

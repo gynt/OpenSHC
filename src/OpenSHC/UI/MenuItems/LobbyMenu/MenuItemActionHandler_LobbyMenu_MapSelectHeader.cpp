@@ -34,48 +34,48 @@ namespace UI {
             int iVar9;
             iVar8 = param_1;
             iVar2 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
-            DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+            DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
             if (param_1 < 0) {
                 iVar1 = -param_1;
                 if (param_1 == -1) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 2;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 2;
                     iVar1 = 0;
                 } else if (param_1 == -2) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 1;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 1;
                     iVar1 = 0;
                 } else if (param_1 == -3) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 4;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 4;
                     iVar1 = 2;
                 } else if (param_1 == -4) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 3;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 3;
                     iVar1 = 2;
                 } else if (4 < iVar1) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = iVar1 + -1;
-                    if (DAT_GameSynchronyState::instance.field248_0x109250 == 4) {
-                        DAT_GameSynchronyState::instance.field248_0x109250 = 0xb;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar1 + -1;
+                    if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 4) {
+                        DAT_GameSynchronyState::instance.lobbyMapSortOrder = 0xb;
                     }
                     iVar1 = 1;
                 }
             } else {
                 if (DAT_00b960dc::instance != 0) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_ROUNDTABLE) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
                 iVar1 = param_1;
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
             }
             if (iVar1 == 0) {
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_GameSynchronyState::instance.field248_0x109250 == 1) {
+                if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 1) {
                     do {
                         iVar7 = 0;
                         iVar3 = 0;
@@ -92,7 +92,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 2;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 2;
                 } else {
                     do {
                         iVar7 = 0;
@@ -110,20 +110,20 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 1;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 1;
                 }
             } else if (iVar1 == 1) {
-                if (DAT_GameSynchronyState::instance.field248_0x109250 < 5) {
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 5;
+                if (DAT_GameSynchronyState::instance.lobbyMapSortOrder < 5) {
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                 }
                 param_1 = 7;
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
                 do {
-                    iVar3 = DAT_GameSynchronyState::instance.field248_0x109250 + -5;
+                    iVar3 = DAT_GameSynchronyState::instance.lobbyMapSortOrder + -5;
                     do {
                         iVar9 = 0;
                         iVar4 = 0;
-                        iVar7 = DAT_GameSynchronyState::instance.field248_0x109250;
+                        iVar7 = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
                         if (iVar1 < 1)
                             break;
                         do {
@@ -149,13 +149,13 @@ namespace UI {
                             iVar4 = iVar4 + 1;
                             iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
                         } while (iVar4 < iVar1);
-                        iVar7 = DAT_GameSynchronyState::instance.field248_0x109250;
+                        iVar7 = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
                         iVar2 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
                     } while (iVar9 != 0);
                     param_1 = param_1 + -1;
-                    DAT_GameSynchronyState::instance.field248_0x109250 = iVar7 + 1;
-                    if (DAT_GameSynchronyState::instance.field248_0x109250 == 0xc) {
-                        DAT_GameSynchronyState::instance.field248_0x109250 = 5;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar7 + 1;
+                    if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 0xc) {
+                        DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                     }
                 } while ((DAT_GameSynchronyState::instance.mapPlayerCountArray[DAT_MenuTextInputState::instance
                                   .DAT_MapSelectionPreloadMapIndexMapping]
@@ -163,7 +163,7 @@ namespace UI {
                     && (0 < param_1));
             } else if (iVar1 == 2) {
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_GameSynchronyState::instance.field248_0x109250 == 3) {
+                if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 3) {
                     do {
                         iVar7 = 0;
                         iVar3 = 0;
@@ -182,7 +182,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 4;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 4;
                 } else {
                     do {
                         iVar7 = 0;
@@ -202,7 +202,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 3;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 3;
                 }
             }
             if (-1 < iVar8) {

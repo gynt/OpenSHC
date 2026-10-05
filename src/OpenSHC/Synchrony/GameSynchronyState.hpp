@@ -267,7 +267,7 @@ namespace Synchrony {
         int field236_0x1072ec; // 0x001072EC length: 4
         undefined4 field237_0x1072f0; // 0x001072F0 length: 4
         BOOLEnum reparseMaps; // 0x001072F4 length: 4
-        int field239_0x1072f8; // 0x001072F8 length: 4
+        int mapExistenceAckCountdown; // 0x001072F8 length: 4
         undefined4 DAT_MapSelectionScrollOffset; // 0x001072FC length: 4
         undefined4 DAT_MapSelectionTotalNumber; // 0x00107300 length: 4
         int DAT_MapSelectionRelativeSelected; // 0x00107304 length: 4
@@ -276,7 +276,7 @@ namespace Synchrony {
         int mapPlayerCountArray[500]; // 0x00107AE0 length: 2000
         int mapBalanceArray[500]; // 0x001082B0 length: 2000
         int mapU4Int0_2Array[500]; // 0x00108A80 length: 2000
-        undefined4 field248_0x109250; // 0x00109250 length: 4
+        undefined4 lobbyMapSortOrder; // 0x00109250 length: 4
         undefined4 savedMapTimeInTicks; // 0x00109254 length: 4
         undefined4 savedUnitsCRC32Hash; // 0x00109258 length: 4
         undefined1 padding_0x10925c[4]; // 0x0010925C length: 4
@@ -307,13 +307,13 @@ namespace Synchrony {
         int ipArrayIndex; // 0x00109D8C length: 4
         undefined4 DAT_TwoIfNotHost; // 0x00109D90 length: 4
         undefined4 DAT_MapFileReceivingState; // 0x00109D94 length: 4
-        short field282_0x109d98[9]; // 0x00109D98 length: 18
+        short mapTransferStatePerPlayer[9]; // 0x00109D98 length: 18
         undefined1 padding_0x109daa[2]; // 0x00109DAA length: 2
         int mapSendingFileSize; // 0x00109DAC length: 4
         int mapSendingByteBufferAddress[9]; // 0x00109DB0 length: 36
         FILE* mapSendingFileHandles[9]; // 0x00109DD4 length: 36
         FILE* FILEPTR_ReceivedMapFile; // 0x00109DF8 length: 4
-        int field289_0x109dfc[9]; // 0x00109DFC length: 36
+        int mapTransferTicksPerPlayer[9]; // 0x00109DFC length: 36
         int field290_0x109e20[9]; // 0x00109E20 length: 36
         byte DAT_RoundTableOrderArray[9]; // 0x00109E44 length: 9
         byte DAT_PlayerGroupArray[9]; // 0x00109E4D length: 9

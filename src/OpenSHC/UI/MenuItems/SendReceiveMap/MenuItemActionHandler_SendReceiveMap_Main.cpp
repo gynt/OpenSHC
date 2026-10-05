@@ -68,8 +68,8 @@ namespace UI {
                     for (_addressee = 1; _addressee < 9; _addressee++) {
                         DAT_GameSynchronyState::instance.field290_0x109e20[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[_addressee] = 0;
-                        DAT_GameSynchronyState::instance.field289_0x109dfc[_addressee] = 0;
-                        if (DAT_GameSynchronyState::instance.field282_0x109d98[_addressee] == 1) {
+                        DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[_addressee] = 0;
+                        if (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[_addressee] == 1) {
                             _fileName = MACRO_CALL_MEMBER(
                                 IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
                                 DAT_ResourceManager::ptr)();

@@ -43,7 +43,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             if ((_flag == 0) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
                 DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[_index] = 0;
-                DAT_GameSynchronyState::instance.field239_0x1072f8 = 50;
+                DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 50;
             }
         }
     }

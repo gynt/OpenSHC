@@ -178,12 +178,12 @@ namespace UI {
                 do {
                     if ((((DAT_GameSynchronyState::instance.mapSendingFileHandles[iVar12] != (FILE*)0x0)
                              && (iVar10 = 0, DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar12] != -1))
-                            && (DAT_GameSynchronyState::instance.field282_0x109d98[iVar12] == 1))
+                            && (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[iVar12] == 1))
                         && (DAT_GameSynchronyState::instance.field290_0x109e20[iVar12] != 1)) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                            = DAT_GameSynchronyState::instance.field289_0x109dfc[iVar12];
-                        DAT_GameSynchronyState::instance.field289_0x109dfc[iVar12]
-                            = DAT_GameSynchronyState::instance.field289_0x109dfc[iVar12] + 1;
+                            = DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[iVar12];
+                        DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[iVar12]
+                            = DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[iVar12] + 1;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = iVar12;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
@@ -193,7 +193,7 @@ namespace UI {
                     iVar12 = iVar12 + 1;
                 } while (iVar12 < 9);
                 if (iVar10 != 0) {
-                    psVar9 = DAT_GameSynchronyState::instance.field282_0x109d98 + 2;
+                    psVar9 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 2;
                     piVar5 = DAT_GameSynchronyState::instance.field290_0x109e20 + 1;
                     do {
                         if (((piVar5[-0x425de] != -1) && (psVar9[-1] == 1)) && (*piVar5 == 1)) {
@@ -342,7 +342,7 @@ namespace UI {
                     local_3fc = DAT_MenuModalComposition1::instance.activeModalDialogID;
                     DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                     MACRO_CALL(OpenSHC::UI::MenuItems::LobbyMenu_Func::MenuItemActionHandler_LobbyMenu_MapSelectHeader)(
-                        -DAT_GameSynchronyState::instance.field248_0x109250);
+                        -DAT_GameSynchronyState::instance.lobbyMapSortOrder);
                     iVar12 = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected;
                     iVar7 = iVar12;
@@ -371,9 +371,9 @@ namespace UI {
                 goto LAB_00448a5b;
             }
         LAB_00448a72:
-            if (DAT_GameSynchronyState::instance.field239_0x1072f8 != 0) {
-                DAT_GameSynchronyState::instance.field239_0x1072f8
-                    = DAT_GameSynchronyState::instance.field239_0x1072f8 + -1;
+            if (DAT_GameSynchronyState::instance.mapExistenceAckCountdown != 0) {
+                DAT_GameSynchronyState::instance.mapExistenceAckCountdown
+                    = DAT_GameSynchronyState::instance.mapExistenceAckCountdown + -1;
             }
         LAB_00448a80:
             MACRO_CALL_MEMBER(

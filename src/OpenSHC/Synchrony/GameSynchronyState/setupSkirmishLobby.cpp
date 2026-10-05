@@ -178,7 +178,7 @@ namespace Synchrony {
         this->skirmishGameIntensityType2 = 1;
         this->skirmishWinCondition = 0;
         this->skirmishTroopsCostGold = 1;
-        this->field248_0x109250 = 6;
+        this->lobbyMapSortOrder = 6;
         if ((((this->skirmishAutoSaveEveryMinutes != 0) && (this->skirmishAutoSaveEveryMinutes != 5))
                 && (this->skirmishAutoSaveEveryMinutes != 10))
             && (this->skirmishAutoSaveEveryMinutes != 0x14)) {

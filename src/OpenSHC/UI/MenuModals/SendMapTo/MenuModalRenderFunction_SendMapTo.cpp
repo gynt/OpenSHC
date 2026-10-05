@@ -37,7 +37,7 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6a, x, y, width, height);
             iVar1 = 0;
             local_c = DAT_GameSynchronyState::instance.DAT_PlayerNames;
-            local_8 = DAT_GameSynchronyState::instance.field282_0x109d98 + 1;
+            local_8 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
             local_10 = 0;
             do {
                 local_c = local_c + 1;

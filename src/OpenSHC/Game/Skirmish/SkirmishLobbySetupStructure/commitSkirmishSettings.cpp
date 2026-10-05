@@ -87,7 +87,7 @@ namespace Game {
             this->popularity = DAT_GameSynchronyState::instance.skirmishDefaultPopularity;
             this->mapSelectionRelativeSelected = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected;
             this->mapSelectionScrollOffset = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
-            this->mbr_0xfc = DAT_GameSynchronyState::instance.field248_0x109250;
+            this->mbr_0xfc = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
         }
 
     }

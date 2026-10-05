@@ -86,7 +86,7 @@ namespace UI {
                 }
             } else if (param_1 == 2) {
                 iVar5 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_GameSynchronyState::instance.field248_0x109250 == 5) {
+                if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 5) {
                     do {
                         iVar4 = 0;
                         iVar3 = 0;
@@ -105,7 +105,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
                     } while (iVar4 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 6;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 6;
                 } else {
                     do {
                         iVar4 = 0;
@@ -125,7 +125,7 @@ namespace UI {
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
                     } while (iVar4 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 5;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                 }
             }
             MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::

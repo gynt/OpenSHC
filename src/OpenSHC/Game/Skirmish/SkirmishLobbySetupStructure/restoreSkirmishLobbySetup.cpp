@@ -88,7 +88,7 @@ namespace Game {
             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = this->mapSelectionRelativeSelected;
             DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = this->mapSelectionScrollOffset;
             INT_00b960b0::instance = this->mapSelectionScrollOffset + this->mapSelectionRelativeSelected;
-            DAT_GameSynchronyState::instance.field248_0x109250 = this->mbr_0xfc;
+            DAT_GameSynchronyState::instance.lobbyMapSortOrder = this->mbr_0xfc;
             MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
         }

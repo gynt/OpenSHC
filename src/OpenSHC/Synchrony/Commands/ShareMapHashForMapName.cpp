@@ -81,9 +81,9 @@ namespace Synchrony {
             do {
                 if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar4] == -1)
                     || (iVar4 == DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
-                    DAT_GameSynchronyState::instance.field282_0x109d98[iVar4] = 2;
+                    DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[iVar4] = 2;
                 } else {
-                    DAT_GameSynchronyState::instance.field282_0x109d98[iVar4] = 0;
+                    DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[iVar4] = 0;
                 }
                 iVar4 = iVar4 + 1;
             } while (iVar4 < 9);

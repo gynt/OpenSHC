@@ -38,7 +38,7 @@ void Synchrony::InitSkirmishLobbyData()
     DAT_GameSynchronyState::instance.skirmishRelated1 = -1;
     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = -1;
     DAT_GameSynchronyState::instance.reparseMaps = TRUE;
-    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+    DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
     DAT_GameCore::instance.mapU4Int0 = 0;
     MACRO_CALL_MEMBER(Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
@@ -61,7 +61,7 @@ void Synchrony::InitSkirmishLobbyData()
     INT_00b95950::instance = -1;
     INT_00b960b0::instance = -1;
     DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
-    DAT_GameSynchronyState::instance.field248_0x109250 = 6;
+    DAT_GameSynchronyState::instance.lobbyMapSortOrder = 6;
     INT_00b95ab8::instance = 0;
     for (iVar1 = 0; iVar1 < 20; iVar1++) {
         DAT_GameSynchronyState::instance.skirmishIntensityRelatedArray[iVar1]
