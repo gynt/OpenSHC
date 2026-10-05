@@ -558,7 +558,7 @@ namespace UI {
                     _playerPosition = MACRO_CALL(Synchrony_Func::GetPlayerPosition)(_playerID);
                     _ptrAIVID[-0x18] = DAT_GameSynchronyState::instance.skirmishPoints;
                     DAT_TileMapState::instance.field195_0x554a24 = 1;
-                    DAT_TileMapState::instance.field122_0x554930 = 1;
+                    DAT_TileMapState::instance.skipPlacementCheck = 1;
                     DAT_TileMapState::instance.buildingPlacementFail = FALSE;
                     /*
                       set aiType to 1 + ai
@@ -624,7 +624,7 @@ namespace UI {
                 _ptrAIVID[0x5b6] = 0;
                 DAT_TileMapState::instance.buildingPlacementFail = FALSE;
                 DAT_TileMapState::instance.field195_0x554a24 = 1;
-                DAT_TileMapState::instance.field122_0x554930 = 1;
+                DAT_TileMapState::instance.skipPlacementCheck = 1;
                 _ptrAIVID[-0x18] = iVar25;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
                     _playerID, _s1023, iVar17, Commands::M_MAPPER_KEEP2, 7, 0xf);

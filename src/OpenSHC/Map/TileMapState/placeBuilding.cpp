@@ -64,7 +64,7 @@ namespace Map {
         _x = x;
         _commandBuildingType = (MappersEnum)(short)cbt;
         local_4 = 0;
-        if (this->field122_0x554930 == 0) {
+        if (this->skipPlacementCheck == 0) {
             if (buildingOrientation == 0xf) {
                 this->DAT_TempBuildingRotation = 0;
             } else {
@@ -74,7 +74,7 @@ namespace Map {
                 playerID, (uint)((int)(x)), (uint)((int)(y)), cbt, buildingSize);
             if (this->buildingPlacementFail != FALSE) {}
         }
-        this->field122_0x554930 = (Map::Buildings::BuildingType)(0);
+        this->skipPlacementCheck = (Map::Buildings::BuildingType)(0);
         _realBuildingType
             = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
                 DAT_BuildingsState::ptr)(_commandBuildingType);

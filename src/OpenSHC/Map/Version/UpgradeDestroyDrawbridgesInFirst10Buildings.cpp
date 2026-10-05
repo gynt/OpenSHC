@@ -47,7 +47,7 @@ namespace Map {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     812, '\0', puVar5);
                 DAT_TileMapState::instance.buildingPlacementFail = FALSE;
-                DAT_TileMapState::instance.field122_0x554930 = 1;
+                DAT_TileMapState::instance.skipPlacementCheck = 1;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)((int)sVar1,
                     (int)((int)((short)uVar2)), (int)((int)((short)uVar3)), Commands::M_MAPPER_DRAWBRIDGE, 5,
                     (int)((int)(sVar4)));

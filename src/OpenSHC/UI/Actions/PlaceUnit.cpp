@@ -273,16 +273,16 @@ namespace UI {
                         iVar2, (int)((int)(DAT_TileMapState::instance.DAT_ClickedTileX)),
                         (int)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)),
                         (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), _unitType, ((UnitType)0),
-                        (int)((int)(DAT_TileMapState::instance.field105_0x5548ec)), 0);
+                        (int)((int)(DAT_TileMapState::instance.unitPlacementCount)), 0);
                     bVar4 = DAT_TileMapState::instance.currentMapperCommand
                         == Commands::M_MAPPER_PEOPLE_ENGINEERS_POTS;
                     DAT_TribesState::instance.tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
                     DAT_TribesState::instance.tribes[tribeID].field64_0x204 = 1;
-                    if ((bVar4) && (iVar3 = 0, 0 < DAT_TileMapState::instance.field105_0x5548ec)) {
+                    if ((bVar4) && (iVar3 = 0, 0 < DAT_TileMapState::instance.unitPlacementCount)) {
                         do {
                             iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
                                 DAT_TribesState::ptr)(tribeID, iVar3);
-                            iVar2 = DAT_TileMapState::instance.field105_0x5548ec;
+                            iVar2 = DAT_TileMapState::instance.unitPlacementCount;
                             iVar3 = iVar3 + 1;
                             DAT_UnitsState::instance.units[iVar1].resourceToDeposit = 1;
                         } while (iVar3 < iVar2);

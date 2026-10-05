@@ -187,7 +187,7 @@ namespace UI {
                 DAT_TribesState::instance.rallyCount = 1;
                 return;
             case Commands::M_MAPPER_DELETE:
-                DAT_TileMapState::instance.field151_0x554998 = 0;
+                DAT_TileMapState::instance.placementOnWall = 0;
                 break;
             case Commands::M_MAPPER_STORES:
                 MACRO_CALL_MEMBER(Game::GameStateStructures_Func::validateBuildingCategoryReference,
@@ -303,7 +303,7 @@ namespace UI {
                     DAT_GameState::ptr)(
                     buttonID, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), TRUE);
             }
-            DAT_TileMapState::instance.field105_0x5548ec = 1;
+            DAT_TileMapState::instance.unitPlacementCount = 1;
             DAT_TileMapState::instance.currentMapperCommand = buttonID;
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                 ((SoundEffectID)0x87));

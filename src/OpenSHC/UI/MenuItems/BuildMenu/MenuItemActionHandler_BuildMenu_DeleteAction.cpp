@@ -88,11 +88,11 @@ namespace UI {
                 }
                 iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID;
                 if ((DAT_MouseState::instance.leftClickStart == 0)
-                    && (((DAT_TileMapState::instance.field151_0x554998 == 0
-                             && (DAT_TileMapState::instance.field152_0x55499c == 0))
+                    && (((DAT_TileMapState::instance.placementOnWall == 0
+                             && (DAT_TileMapState::instance.placementOnMoat == 0))
                         || (DAT_MouseState::instance.leftClickState == FALSE)))) {
-                    DAT_TileMapState::instance.field151_0x554998 = 0;
-                    DAT_TileMapState::instance.field152_0x55499c = 0;
+                    DAT_TileMapState::instance.placementOnWall = 0;
+                    DAT_TileMapState::instance.placementOnMoat = 0;
                     return;
                 }
                 if (((((DAT_GameCore::instance.solitaryAltUDungeon != FALSE)
@@ -182,11 +182,11 @@ namespace UI {
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
                 if (DAT_TileMapState::instance.buildingPlacementFail == FALSE) {
                     DAT_WallAndPitchState::instance.countdown = 0;
-                    if (DAT_TileMapState::instance.field152_0x55499c == 0) {
+                    if (DAT_TileMapState::instance.placementOnMoat == 0) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 50;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
-                        if (DAT_TileMapState::instance.field151_0x554998 == 0) {
+                        if (DAT_TileMapState::instance.placementOnWall == 0) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                                 = DAT_TileMapState::instance.field131_0x554954;
                             if (-1 < DAT_TileMapState::instance.field131_0x554954) {

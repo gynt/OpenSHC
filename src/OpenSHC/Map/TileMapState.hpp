@@ -130,7 +130,7 @@ namespace Map {
         undefined4 editorActiveBrush; // 0x005548E0 length: 4
         MappersEnum currentMapperCommand; // 0x005548E4 length: 4
         undefined4 DAT_BuildingSize; // 0x005548E8 length: 4
-        undefined4 field105_0x5548ec; // 0x005548EC length: 4
+        undefined4 unitPlacementCount; // 0x005548EC length: 4
         BOOLEnum mapperMax; // 0x005548F0 length: 4
         undefined4 rockFlagStartNumber; // 0x005548F4 length: 4
         undefined4 unknownBrushRelated; // 0x005548F8 length: 4
@@ -147,7 +147,7 @@ namespace Map {
         undefined4 field119_0x554924; // 0x00554924 length: 4
         undefined4 DAT_ClickedTileX; // 0x00554928 length: 4
         undefined4 DAT_ClickedTileY; // 0x0055492C length: 4
-        undefined4 field122_0x554930; // 0x00554930 length: 4
+        undefined4 skipPlacementCheck; // 0x00554930 length: 4
         BOOLEnum buildingPlacementFail; // 0x00554934 length: 4
         BuildingFailReasonEnumInt buildingPlacementFailReason; // 0x00554938 length: 4
         undefined4 placementWarning; // 0x0055493C length: 4
@@ -173,8 +173,8 @@ namespace Map {
         undefined4 buildingX; // 0x0055498C length: 4
         undefined4 buildingY; // 0x00554990 length: 4
         undefined4 buildingRotationRelatedValue; // 0x00554994 length: 4
-        undefined4 field151_0x554998; // 0x00554998 length: 4
-        undefined4 field152_0x55499c; // 0x0055499C length: 4
+        undefined4 placementOnWall; // 0x00554998 length: 4
+        undefined4 placementOnMoat; // 0x0055499C length: 4
         undefined4 field153_0x5549a0; // 0x005549A0 length: 4
         int showNoRubbleWhenDestroyingBuilding; // 0x005549A4 length: 4
         undefined4 field155_0x5549a8; // 0x005549A8 length: 4

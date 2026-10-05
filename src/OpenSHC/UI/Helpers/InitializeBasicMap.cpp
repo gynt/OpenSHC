@@ -62,7 +62,7 @@ namespace UI {
             OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
         DAT_GameCore::instance.descriptionUseStringTable = 0;
         DAT_GameCore::instance.temporaryTextBufferOfSize1000[0] = '\0';
-        DAT_TileMapState::instance.field105_0x5548ec = 1;
+        DAT_TileMapState::instance.unitPlacementCount = 1;
         MACRO_CALL_MEMBER(
             OpenSHC::Map::MapPropertiesState_Func::setStartingYearAndStartingResources, DAT_MapPropertiesState::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::clearAnimalSpawnLocationsUnk, DAT_TribesState::ptr)();

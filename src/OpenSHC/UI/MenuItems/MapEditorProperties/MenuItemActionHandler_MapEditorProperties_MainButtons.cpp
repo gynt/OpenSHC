@@ -69,7 +69,7 @@ namespace UI {
             int* piVar8;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
-                DAT_TileMapState::instance.field105_0x5548ec = 1;
+                DAT_TileMapState::instance.unitPlacementCount = 1;
                 switch (param_1) {
                 case 2:
                     DAT_MenuTextInputState::instance.field42_0x9c = 1;

@@ -125,14 +125,14 @@ namespace Map {
         if (iVar4 < 1) {
         LAB_00504d0f:
             if (((local_4 < 1) || ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) == 0)) || (x != 0)) {
-                if ((this->field151_0x554998 != 0) || (this->field152_0x55499c != 0))
+                if ((this->placementOnWall != 0) || (this->placementOnMoat != 0))
                     goto LAB_00504da2;
-            } else if (this->field151_0x554998 == 0) {
+            } else if (this->placementOnWall == 0) {
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
                 if (iVar4 == 0) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
                     != DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {}
-                this->field152_0x55499c = 1;
+                this->placementOnMoat = 1;
                 this->buildingPlacementFail = (BOOLEnum)((this->MiscDisplayLayer[local_4] & 0x400) != 0);
                 iVar4 = local_4;
             } else {
@@ -144,11 +144,11 @@ namespace Map {
             if ((uVar3 != 0) && ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk) != 0)) {
                 this->buildingPlacementFail = TRUE;
             }
-            if (((uVar3 == 0) || (this->BuildingLayer[iVar4] != 0)) || (this->field152_0x55499c != 0))
+            if (((uVar3 == 0) || (this->BuildingLayer[iVar4] != 0)) || (this->placementOnMoat != 0))
                 goto LAB_00504d0f;
             if ((this->WallOwnerLayer[iVar4] & 7) + 1 != playerID) {}
             this->buildingPlacementFail = FALSE;
-            this->field151_0x554998 = 1;
+            this->placementOnWall = 1;
             if ((this->MiscDisplayLayer[iVar4] & 0x400) != 0) {
                 this->buildingPlacementFail = TRUE;
             }
@@ -194,8 +194,8 @@ namespace Map {
                  && ((BVar1 != Map::Buildings::BT_KEEPDOOR
                      && ((BVar1 != Map::Buildings::BT_DRAWBRIDGE
                          && (BVar1 != Map::Buildings::BT_KILLINGPIT))))))
-                && (this->field151_0x554998 == 0))
-            && (this->field152_0x55499c == 0)) {
+                && (this->placementOnWall == 0))
+            && (this->placementOnMoat == 0)) {
             this->buildingPlacementFail = TRUE;
         }
         this->field131_0x554954 = x;
