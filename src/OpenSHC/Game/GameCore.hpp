@@ -116,7 +116,7 @@ namespace Game {
         byte unused_0x120[8]; // 0x00000120 length: 8
         int scribeAnimationFrameCopy; // 0x00000128 length: 4
         int taxesSettingUnk; // 0x0000012C length: 4
-        BOOLEnum scribeAnimationPhase; // 0x00000130 length: 4
+        int scribeAnimationPhase; // 0x00000130 length: 4
         int scribeAnimationFrame; // 0x00000134 length: 4
         int scribeAnimationFrame2; // 0x00000138 length: 4
         int taxestimeUnk; // 0x0000013C length: 4

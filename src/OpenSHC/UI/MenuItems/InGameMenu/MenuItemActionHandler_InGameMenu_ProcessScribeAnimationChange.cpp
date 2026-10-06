@@ -32,11 +32,11 @@ namespace UI {
                     if (DAT_GameCore::instance.scribeAnimationFrame < 6) {
                         DAT_GameCore::instance.scribeAnimationFrame = DAT_GameCore::instance.scribeAnimationFrame + 1;
                     } else if (DAT_GameCore::instance.scribeAnimationFrame < 7) {
-                        DAT_GameCore::instance.scribeAnimationPhase = TRUE;
+                        DAT_GameCore::instance.scribeAnimationPhase = 1;
                     } else {
                         DAT_GameCore::instance.scribeAnimationFrame = DAT_GameCore::instance.scribeAnimationFrame + -1;
                     }
-                } else if (DAT_GameCore::instance.scribeAnimationPhase == TRUE) {
+                } else if (DAT_GameCore::instance.scribeAnimationPhase == 1) {
                     DAT_GameCore::instance.scribeAnimationFrame2 = DAT_GameCore::instance.scribeAnimationFrame2 + 1;
                 } else if (DAT_GameCore::instance.scribeAnimationPhase == 2) {
                     iVar2 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
@@ -61,19 +61,19 @@ namespace UI {
                 iVar2 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
                 goto switchD_00433499_caseD_4;
             case 1:
-                if (DAT_GameCore::instance.scribeAnimationPhase != TRUE)
+                if (DAT_GameCore::instance.scribeAnimationPhase != 1)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
                             .ScribeAnimationFrames1[DAT_GameCore::instance.scribeAnimationFrame2];
                 break;
             case 2:
-                if (DAT_GameCore::instance.scribeAnimationPhase != TRUE)
+                if (DAT_GameCore::instance.scribeAnimationPhase != 1)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
                             .ScribeAnimationFrames2[DAT_GameCore::instance.scribeAnimationFrame2];
                 break;
             case 3:
-                if (DAT_GameCore::instance.scribeAnimationPhase != TRUE)
+                if (DAT_GameCore::instance.scribeAnimationPhase != 1)
                     goto switchD_00433499_caseD_4;
                 iVar2 = DAT_RenderingDefinedData::instance
                             .ScribeAnimationFrames3[DAT_GameCore::instance.scribeAnimationFrame2];
