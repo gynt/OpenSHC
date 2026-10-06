@@ -121,7 +121,7 @@ namespace Audio {
                     }
                     DAT_TroopValueState::instance.attackInfo.pendingAttackWaveCount = 0;
                 }
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
                     if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .totalEnemyUnitsCount
                             == 0)
@@ -178,7 +178,7 @@ namespace Audio {
                             DAT_SoundEffectsHelperData1::instance.battleMoodState = 0;
                         }
                     }
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
+                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
                         return;
                     }
                 }
@@ -192,7 +192,7 @@ namespace Audio {
                     MACRO_CALL_MEMBER(SoundSystem_Func::playBattleGloryMusicIfConditionsMet, this)();
                 }
 
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
                     return;
                 }
 
@@ -235,7 +235,7 @@ namespace Audio {
 
                 int const battleLevelTemp = DAT_GameCore::instance.battleLevel2 + 2500;
                 int const iVar7 = DAT_GameCore::instance.battleLevel2;
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 != 5) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState != 5) {
                     if (0 < DAT_GameCore::instance.battleLevel2) {
                         --DAT_GameCore::instance.battleLevel2;
                     }
@@ -248,7 +248,7 @@ namespace Audio {
                         DAT_GameCore::instance.battleLevel2 = DAT_GameCore::instance.battleLevel2 + 1;
                     }
                 }
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
                     if (DAT_GameCore::instance.battleLevel < iVar7) {
                         MACRO_CALL_MEMBER(
                             SoundSystem_Func::handleBattleEndMusicTransition, DAT_SoundSystemState::ptr)();
@@ -267,7 +267,7 @@ namespace Audio {
                     }
                 }
 
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
                     return;
                 }
 

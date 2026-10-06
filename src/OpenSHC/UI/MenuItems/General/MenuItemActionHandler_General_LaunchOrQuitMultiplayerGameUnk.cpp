@@ -181,7 +181,7 @@ namespace UI {
                                 DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
                             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::stopAllActiveSounds,
                                 DAT_SoundSystemState::ptr)();
-                            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 = 1;
+                            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState = 1;
                             MACRO_CALL_MEMBER(
                                 Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID,

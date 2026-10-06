@@ -15,13 +15,13 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047AB10
         void SoundSystem::playRandomMusic02(int param_1)
         {
-            if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.field0_0x0 == 5) {
+            if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicState == 5) {
                 return;
             }
             DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel = 2;
             DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicTracker = 0;
-            DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.field0_0x0 = 5;
-            DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.field6_0x18 = 0;
+            DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicState = 5;
+            DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.battleEndHandled = 0;
             DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel = param_1;
             DAT_SoundEffectsHelperData1::ptr->DAT_SomeSoundTime2 = timeGetTime();
 
