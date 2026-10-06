@@ -75,11 +75,11 @@ namespace Map {
             BVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(
                 iVar1, (int)((int)(y1)));
             if (BVar2 == FALSE) {}
-            this->field119_0x554924
+            this->maxWallHeightInPath
                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getMaxWallHeightInBrushArea, this)(iVar1, y1);
-            if (this->field119_0x554924 < 0x11) {}
+            if (this->maxWallHeightInPath < 0x11) {}
             _tileMapState = this;
-            local_c = this->field119_0x554924;
+            local_c = this->maxWallHeightInPath;
         } else if (((short)command == 0x1a)
             && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)((int)(y1))),
                 _tileMapState = extraout_ECX, !iVar1)) {

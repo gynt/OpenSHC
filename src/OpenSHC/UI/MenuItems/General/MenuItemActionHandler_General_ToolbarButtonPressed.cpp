@@ -262,7 +262,7 @@ namespace UI {
                 }
                 break;
             case Commands::M_MAPPER_HEADS:
-                DAT_TileMapState::instance.field193_0x554a1c = (int)SEC_RNG::instance.currentNumber1 % 7;
+                DAT_TileMapState::instance.decorationVariantIndex = (int)SEC_RNG::instance.currentNumber1 % 7;
                 MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                 break;
             case Commands::M_MAPPER_GATE_WOOD1A:

@@ -120,7 +120,7 @@ namespace Map {
                                     == Map::Buildings::BT_DRAWBRIDGE)) {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
-                            if (!this->field93_0x5548c8) {
+                            if (!this->disableElevationRendering) {
                                 local_28 = this->directionTranslationMatrix[iVar11] + this->screenSouthEastDirection;
                                 iVar9 = 0;
                                 iVar15 = _tile;
@@ -383,7 +383,7 @@ namespace Map {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
                             if (local_20 < iVar3) {
-                                if (!this->field93_0x5548c8) {
+                                if (!this->disableElevationRendering) {
                                     this->ShowHiLayer[_tile] = (char)iVar3 - (char)local_20;
                                 }
                                 if (!(this->LogicLayer[_tile] & Map::LogicHelpers::L_SEA)) {

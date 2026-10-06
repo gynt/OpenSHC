@@ -64,7 +64,7 @@ namespace UI {
             UnitTypeShort _unitType;
             if ((((!DAT_GameSynchronyState::instance.syncStatus) && (!DAT_GameSynchronyState::instance.saveRelated))
                     && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_DELETE))
-                && (DAT_TileMapState::instance.field194_0x554a20 = 0,
+                && (DAT_TileMapState::instance.demolishBlocked = 0,
                     DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0)) {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
@@ -83,7 +83,7 @@ namespace UI {
                                             & 0xfffffff1)
                                 + 0x1e))),
                         BVar1 != FALSE)) {
-                    DAT_TileMapState::instance.field194_0x554a20 = 1;
+                    DAT_TileMapState::instance.demolishBlocked = 1;
                 }
                 iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID;
                 if ((!DAT_MouseState::instance.leftClickStart)
@@ -186,18 +186,17 @@ namespace UI {
                             = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
                         if (!DAT_TileMapState::instance.placementOnWall) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                = DAT_TileMapState::instance.field131_0x554954;
-                            if (-1 < DAT_TileMapState::instance.field131_0x554954) {
+                                = DAT_TileMapState::instance.cursorTargetID;
+                            if (-1 < DAT_TileMapState::instance.cursorTargetID) {
                                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
-                                    = DAT_BuildingsState::instance
-                                          .buildings[DAT_TileMapState::instance.field131_0x554954]
+                                    = DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.cursorTargetID]
                                           .uid;
                                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                     DAT_GameSynchronyState::ptr)(Commands::GCT_DESTROY_BUILDING);
                                 return;
                             }
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
-                                = *(int*)(DAT_0053f088::ptr + DAT_TileMapState::instance.field131_0x554954 * -0x14
+                                = *(int*)(DAT_0053f088::ptr + DAT_TileMapState::instance.cursorTargetID * -0x14
                                     + (int)DAT_TileMapState::instance.directionTranslationMatrix);
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(Commands::GCT_DESTROY_BUILDING);
@@ -206,7 +205,7 @@ namespace UI {
                     } else {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0xffffffff;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                            = DAT_TileMapState::instance.field153_0x5549a0;
+                            = DAT_TileMapState::instance.cursorMoatTile;
                     }
                     DAT_TileMapState::instance.MiscDisplayLayer[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                         = DAT_TileMapState::instance

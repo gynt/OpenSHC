@@ -50,8 +50,8 @@ namespace UI {
             case 1:
                 DAT_UnitsState::instance.unitControlsRelated = 1;
                 DAT_UnitsState::instance.field5_0x14 = TRUE;
-                DAT_TileMapState::instance.field162_0x5549c4 = 0;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
             case 2:
             case 6:
@@ -84,8 +84,8 @@ namespace UI {
                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                 DAT_UnitsState::instance.field5_0x14 = 4;
                 DAT_UnitsState::instance.unitControlsRelated = 4;
-                DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
             case 5:
                 uVar2 = MACRO_CALL_MEMBER(
@@ -94,8 +94,8 @@ namespace UI {
                     DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                     DAT_UnitsState::instance.field5_0x14 = 0x14;
                     DAT_UnitsState::instance.unitControlsRelated = 0x14;
-                    DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                    DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 }
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::selectionContainsTunnelersOnly, DAT_UnitsState::ptr)();
@@ -115,8 +115,8 @@ namespace UI {
                     DAT_UnitsState::instance.field5_0x14 = 5;
                     DAT_UnitsState::instance.unitControlsRelated = 5;
                     DAT_TileMapState::instance.field185_0x554a08 = 0xf;
-                    DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                    DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 }
                 break;
             case 8:
@@ -126,8 +126,8 @@ namespace UI {
                 DAT_UnitsState::instance.field5_0x14 = DAT_UnitsState::instance.unitControlsRelated;
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
                     DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
-                DAT_TileMapState::instance.field162_0x5549c4 = 0;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
             case 0x14:
                 uVar2 = MACRO_CALL_MEMBER(
@@ -137,8 +137,8 @@ namespace UI {
                 }
                 DAT_UnitsState::instance.unitControlsRelated = 0x14;
                 DAT_UnitsState::instance.field5_0x14 = 0x14;
-                DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                 return;
             case 0x16:
@@ -156,8 +156,8 @@ namespace UI {
                         DAT_UnitsState::instance.field5_0x14 = 0x16;
                         DAT_UnitsState::instance.unitControlsRelated = 0x16;
                         DAT_TileMapState::instance.field185_0x554a08 = 0xf;
-                        DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                        DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                        DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                        DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     }
                 }
                 break;

@@ -49,7 +49,7 @@ namespace Map {
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_b = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_2 = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_b = 1;
-        DAT_GameState::instance.mapAndTime.field2257_0xda8 = 1;
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_4 = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_a = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_a = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_a_and_6_b = 1;

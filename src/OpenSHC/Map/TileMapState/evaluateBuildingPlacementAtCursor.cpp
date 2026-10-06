@@ -44,7 +44,7 @@ namespace Map {
         this->buildingPlacementFail = FALSE;
         if (DAT_ViewportRenderState::instance.viewportState.field15_0x3c) {
             local_4 = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
-            this->field153_0x5549a0 = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
+            this->cursorMoatTile = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
         }
         if (!this->flatViewToggleValue1) {
             x = DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID;
@@ -75,34 +75,34 @@ namespace Map {
                                     & 0xfffffff1)
                         + 0x1e))),
                 BVar2 != FALSE)) {
-            this->field194_0x554a20 = 1;
+            this->demolishBlocked = 1;
             this->buildingPlacementFail = TRUE;
             this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
             if (x) {
                 if (DAT_BuildingsState::instance.buildings[x].owner == playerID) {
                     this->buildingPlacementFail = TRUE;
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
-                    this->field194_0x554a20 = 1;
+                    this->demolishBlocked = 1;
                 }
                 if (playerID) {
                     this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 }
                 this->buildingPlacementFail = TRUE;
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
-                this->field194_0x554a20 = 1;
+                this->demolishBlocked = 1;
             }
             if (0 < iVar4) {
                 if (!(this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)) {
                     this->buildingPlacementFail = TRUE;
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
-                    this->field194_0x554a20 = 1;
+                    this->demolishBlocked = 1;
                 }
                 if ((this->WallOwnerLayer[iVar4] & 7) + 1 != playerID) {
                     this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 }
                 this->buildingPlacementFail = TRUE;
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
-                this->field194_0x554a20 = 1;
+                this->demolishBlocked = 1;
             }
             if ((0 < local_4) && ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT))) {
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
@@ -117,7 +117,7 @@ namespace Map {
                 != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 this->buildingPlacementFail = TRUE;
             }
-            this->field131_0x554954 = -DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
+            this->cursorTargetID = -DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
         }
         if (((int)x < 1) || ((DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID)))) {
             this->buildingPlacementFail = TRUE;
@@ -180,7 +180,7 @@ namespace Map {
             }
         }
         if ((int)x < 0) {
-            this->field131_0x554954 = x;
+            this->cursorTargetID = x;
         }
     LAB_00504e15:
         if (((((((!(this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted]
@@ -196,7 +196,7 @@ namespace Map {
             && (!this->placementOnMoat)) {
             this->buildingPlacementFail = TRUE;
         }
-        this->field131_0x554954 = x;
+        this->cursorTargetID = x;
     }
 
 }

@@ -926,17 +926,17 @@ namespace Map {
                                             = this->MiscDisplayLayer[this->DAT_SomeTile] & 0xfffc;
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][this->mapOrientation];
-                                        this->field218_0x554a50 = (ushort)this->HeightLayer[iVar17];
+                                        this->gfxTileHeight = (ushort)this->HeightLayer[iVar17];
                                         if ((this->LogicLayer[iVar17] & 1U)) {
-                                            this->field218_0x554a50 = 0;
+                                            this->gfxTileHeight = 0;
                                         }
                                         if ((this->LogicLayer[iVar17] & 0x80U)) {
-                                            this->field218_0x554a50 = 0x14;
+                                            this->gfxTileHeight = 0x14;
                                         }
-                                        if (0x13 < this->field218_0x554a50) {
+                                        if (0x13 < this->gfxTileHeight) {
                                             sVar4 = (short)GMTotalPicturesProcessed::instance[0xa6];
-                                            if (this->field218_0x554a50 < 0x5b) {
-                                                if (this->field218_0x554a50 < 0x29) {
+                                            if (this->gfxTileHeight < 0x5b) {
+                                                if (this->gfxTileHeight < 0x29) {
                                                     this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x5dc;
                                                 } else {
                                                     this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x5e2;

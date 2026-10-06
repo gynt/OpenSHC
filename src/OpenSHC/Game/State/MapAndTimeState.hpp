@@ -138,7 +138,7 @@ namespace Game {
             int euroRecruitableCopy_index_1_b; // 0x00000D9C length: 4
             int euroRecruitableCopy_index_2; // 0x00000DA0 length: 4
             int euroRecruitableCopy_index_3_b; // 0x00000DA4 length: 4
-            int field2257_0xda8; // 0x00000DA8 length: 4
+            int euroRecruitableCopy_index_4; // 0x00000DA8 length: 4
             int euroRecruitableCopy_index_6_a; // 0x00000DAC length: 4
             int euroRecruitableCopy_index_1_a; // 0x00000DB0 length: 4
             int euroRecruitableCopy_index_3_a_and_6_b; // 0x00000DB4 length: 4
@@ -150,7 +150,7 @@ namespace Game {
             short scenarioGold; // 0x00000DE8 length: 2
             short editScenarioExtraOptions; // 0x00000DEA length: 2
             short eventCountdownRabbitInfestation; // 0x00000DEC length: 2
-            short field2269_0xdee; // 0x00000DEE length: 2
+            short animalSpawnSlotCursor; // 0x00000DEE length: 2
             Point4ShortXY lionLocationsXY[4]; // 0x00000DF0 length: 16
             short unitLadyRelated; // 0x00000E00 length: 2
             short unitJesterRelated; // 0x00000E02 length: 2

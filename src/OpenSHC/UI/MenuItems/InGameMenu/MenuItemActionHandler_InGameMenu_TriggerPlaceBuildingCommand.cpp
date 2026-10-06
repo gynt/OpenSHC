@@ -244,7 +244,7 @@ namespace UI {
                                 .translationMatrix[DAT_ViewportRenderState::instance.viewportState.mouseTileY]
                                 .addXgetTile
                         + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
-                    iVar4 = DAT_TileMapState::instance.field193_0x554a1c + 1;
+                    iVar4 = DAT_TileMapState::instance.decorationVariantIndex + 1;
                     if (DAT_MouseState::instance.draggingStopped == FALSE) {
                         iVar12 = MACRO_CALL_MEMBER(
                             Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
@@ -268,9 +268,9 @@ namespace UI {
                         DAT_TileMapState::instance.DAT_ClickedTileX,
                         (int)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)),
                         DAT_TileMapState::instance.currentMapperCommand,
-                        (int)((int)(DAT_TileMapState::instance.field193_0x554a1c)), 0);
+                        (int)((int)(DAT_TileMapState::instance.decorationVariantIndex)), 0);
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam5
-                        = DAT_TileMapState::instance.field193_0x554a1c;
+                        = DAT_TileMapState::instance.decorationVariantIndex;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                         = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0xf;
@@ -279,7 +279,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = iVar4;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_SPAWN_ENTITY);
-                    DAT_TileMapState::instance.field193_0x554a1c = (int)SEC_RNG::instance.currentNumber1 % 7;
+                    DAT_TileMapState::instance.decorationVariantIndex = (int)SEC_RNG::instance.currentNumber1 % 7;
                     MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                 }
                 if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_BRAZIER) {

@@ -50,7 +50,7 @@ namespace Map {
             targetedTile
                 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + (short)uVar2].addXgetTile
                 + (int)(short)uVar1 + this->buildingX;
-            if (!this->field93_0x5548c8) {
+            if (!this->disableElevationRendering) {
                 BVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingType;
                 if ((BVar3 == Map::Buildings::BT_STOCKPILE)
                     || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {

@@ -26,7 +26,7 @@ namespace Map {
                 psVar1[0xeaa] = 0;
                 psVar1 = psVar1 + 2;
             } while ((int)psVar1 < 0x117d1de);
-            DAT_GameState::instance.mapAndTime.field2269_0xdee = 0;
+            DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor = 0;
         }
 
     }

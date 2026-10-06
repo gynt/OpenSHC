@@ -65,7 +65,7 @@ namespace Map {
                 Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt, DAT_GameState::ptr)(playerID, 4);
             local_10 = 2;
             if ((undefined2)wallType == Commands::M_MAPPER_STAIR) {
-                local_14 = this->field119_0x554924;
+                local_14 = this->maxWallHeightInPath;
             }
             if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 MACRO_CALL_MEMBER(

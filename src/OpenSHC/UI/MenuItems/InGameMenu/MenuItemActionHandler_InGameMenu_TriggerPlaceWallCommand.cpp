@@ -85,7 +85,7 @@ namespace UI {
                     (uint)((int)(DAT_TileMapState::instance.dragEndY)),
                     (undefined4)((int)(DAT_TileMapState::instance.currentMapperCommand & 0xffff)));
                 if (DAT_MouseState::instance.draggingStopped == FALSE) {
-                    DAT_TileMapState::instance.field145_0x554980
+                    DAT_TileMapState::instance.wallDragButtonUp
                         = (uint)(DAT_MouseState::instance.leftClickState == FALSE);
                     MACRO_CALL_MEMBER(Map::TileMapState_Func::renderWallDragPreview, DAT_TileMapState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID,

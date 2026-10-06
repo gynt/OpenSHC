@@ -14,14 +14,14 @@ namespace Map {
         {
             int iVar4 = 0;
             do {
-                uint uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
+                uint uVar2 = DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + iVar4 & 0x80000003;
                 if ((int)uVar2 < 0) {
                     uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                 }
                 short sVar1 = DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].x;
                 if (sVar1) {
                     *param_1 = (int)sVar1;
-                    uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
+                    uVar2 = DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + iVar4 & 0x80000003;
                     if ((int)uVar2 < 0) {
                         uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                     }
@@ -33,11 +33,11 @@ namespace Map {
                                   .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[uVar3].addXgetTile
                                       + uVar2]
                             & 0x4a5014b1U))) {
-                        uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + 1 + iVar4 & 0x80000003;
+                        uVar2 = DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + 1 + iVar4 & 0x80000003;
                         if ((int)uVar2 < 0) {
                             uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                         }
-                        DAT_GameState::instance.mapAndTime.field2269_0xdee = (short)uVar2;
+                        DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor = (short)uVar2;
                         return (undefined4)(1);
                     }
                 }

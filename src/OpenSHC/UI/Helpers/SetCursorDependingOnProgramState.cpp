@@ -43,7 +43,7 @@ namespace UI {
             }
             if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU)
                 && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_DELETE)) {
-                if (!DAT_TileMapState::instance.field194_0x554a20) {
+                if (!DAT_TileMapState::instance.demolishBlocked) {
                     _previousCursor
                         = MACRO_CALL_MEMBER(Input::MouseState_Func::setCursor, DAT_MouseState::ptr)(2);
                     return _previousCursor;

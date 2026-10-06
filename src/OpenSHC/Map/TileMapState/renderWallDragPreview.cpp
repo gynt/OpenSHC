@@ -33,7 +33,7 @@ namespace Map {
             && (((x2 < 400 && (y2 < 400)) && (*(char*)(x2 + 0x21aec98 + y2 * 400) != '\0')))) {
             this->DAT_WallTileCountCurrentDrag = 0;
             local_c = 2;
-            if (((short)command == 0x1b) && (local_4 = this->field119_0x554924, !this->field118_0x554920)) {
+            if (((short)command == 0x1b) && (local_4 = this->maxWallHeightInPath, !this->field118_0x554920)) {
                 this->ConstructionGFXLayer[DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile + x1]
                     = (short)GMTotalPicturesProcessed::instance[6] + 0x13;
             }
@@ -171,7 +171,7 @@ namespace Map {
             if (this->illegalBuild != FALSE) {
                 this->DAT_WallTileCountCurrentDrag = 0;
             }
-            if (!this->field145_0x554980) {
+            if (!this->wallDragButtonUp) {
                 if ((short)command == 0x2e) {
                     MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
                         DAT_BuildingsState::ptr)(playerID, 0, this->DAT_WallTileCountCurrentDrag, 1);

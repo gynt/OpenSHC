@@ -48,11 +48,11 @@ namespace Map {
         int _xOffset;
         y_00 = y;
         uVar2 = x;
-        if (this->field195_0x554a24) {
+        if (this->clearKeepFootprintOnPlace) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::demolishBuildingsInKeepsConstructionFootprint, this)(
                 playerID, (int)((int)(x)), (int)((int)(y)), (undefined4)((int)(type)), (int)((int)(size)), orientation,
                 xyValue);
-            this->field195_0x554a24 = 0;
+            this->clearKeepFootprintOnPlace = 0;
         }
         iVar6 = DAT_GameCore::instance.uniqueGameObjectTracker;
         local_18 = 0;

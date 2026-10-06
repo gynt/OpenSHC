@@ -556,7 +556,7 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0) {
                     _playerPosition = MACRO_CALL(Synchrony_Func::GetPlayerPosition)(_playerID);
                     _ptrAIVID[-0x18] = DAT_GameSynchronyState::instance.skirmishPoints;
-                    DAT_TileMapState::instance.field195_0x554a24 = 1;
+                    DAT_TileMapState::instance.clearKeepFootprintOnPlace = 1;
                     DAT_TileMapState::instance.skipPlacementCheck = 1;
                     DAT_TileMapState::instance.buildingPlacementFail = FALSE;
                     /*
@@ -622,7 +622,7 @@ namespace UI {
                 _s1023 = _playerTeams[iVar18 * 2];
                 _ptrAIVID[0x5b6] = 0;
                 DAT_TileMapState::instance.buildingPlacementFail = FALSE;
-                DAT_TileMapState::instance.field195_0x554a24 = 1;
+                DAT_TileMapState::instance.clearKeepFootprintOnPlace = 1;
                 DAT_TileMapState::instance.skipPlacementCheck = 1;
                 _ptrAIVID[-0x18] = iVar25;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
@@ -824,7 +824,7 @@ namespace UI {
         }
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_0 = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_2 = 1;
-        DAT_GameState::instance.mapAndTime.field2257_0xda8 = 1;
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_4 = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_b = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_b = 1;
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_a = 1;

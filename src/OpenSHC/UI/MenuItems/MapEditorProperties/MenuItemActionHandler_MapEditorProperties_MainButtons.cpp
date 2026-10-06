@@ -338,7 +338,7 @@ namespace UI {
                         if (DAT_GameState::instance.mapAndTime.euroRecruitable[4] != 0) {
                             DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_a = 1;
                         }
-                        DAT_GameState::instance.mapAndTime.field2257_0xda8
+                        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_4
                             = (int)(DAT_GameState::instance.mapAndTime.euroRecruitable[4] != 0);
                         if (DAT_GameState::instance.mapAndTime.euroRecruitable[5] != 0) {
                             DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_a_and_6_b = 1;
