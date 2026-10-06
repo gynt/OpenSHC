@@ -117,14 +117,14 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
                 piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame;
                 *piVar3 = *piVar3 + 1;
-                if ((char)DAT_BuildingDefinedData::instance
-                        .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
+                if ((char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                        [DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
                     < '\x01') {
                     DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame = 0;
                 }
                 DAT_BuildingsState::instance.buildings[buildingID].overlayImageID
-                    = (int)(char)DAT_BuildingDefinedData::instance
-                          .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
+                    = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                          [DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
             }
             DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         }

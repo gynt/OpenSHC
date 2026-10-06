@@ -232,14 +232,14 @@ namespace Map {
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
         piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9);
         *piVar1 = *piVar1 + 1;
-        if ((char)DAT_BuildingDefinedData::instance
-                .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9) / 2]
+        if ((char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                [*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9) / 2]
             < '\x01') {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9) = 0;
         }
         *(int*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar9)
-            = (int)(char)DAT_BuildingDefinedData::instance
-                  .field177_0x7e1c[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9) / 2];
+            = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                  [*(int*)((int)&DAT_BuildingsState::instance.buildings[0].flagSlot.ownerFlagFrame + iVar9) / 2];
     }
 
 }

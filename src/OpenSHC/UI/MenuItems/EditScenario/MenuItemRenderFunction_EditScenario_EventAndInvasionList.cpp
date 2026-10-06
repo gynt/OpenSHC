@@ -41,19 +41,19 @@ namespace UI {
             BOOLEnum BVar9;
             int iVar10;
             int blendStrength;
-            if (DAT_MapPropertiesState::instance.eventsCount <= DAT_MapPropertiesState::instance.field48_0x13560) {
-                DAT_MapPropertiesState::instance.field48_0x13560 = DAT_MapPropertiesState::instance.eventsCount + -1;
+            if (DAT_MapPropertiesState::instance.eventsCount <= DAT_MapPropertiesState::instance.eventListSelection) {
+                DAT_MapPropertiesState::instance.eventListSelection = DAT_MapPropertiesState::instance.eventsCount + -1;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
-                (uint)(param_1 == DAT_MapPropertiesState::instance.field48_0x13560), param_1, 0);
+                (uint)(param_1 == DAT_MapPropertiesState::instance.eventListSelection), param_1, 0);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if (DAT_MapPropertiesState::instance.eventsCount
-                <= DAT_MapPropertiesState::instance.field47_0x1355c + param_1) {
+                <= DAT_MapPropertiesState::instance.eventListScrollOffset + param_1) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            if ((param_1 == DAT_MapPropertiesState::instance.field48_0x13560)
+            if ((param_1 == DAT_MapPropertiesState::instance.eventListSelection)
                 || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                 color = 0xccfaff;
             }
@@ -67,18 +67,18 @@ namespace UI {
             pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS,
                 DAT_MapPropertiesState::instance
-                    .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                    .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                     .header.month);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar4, iVar3, TVar6, BVar7, iVar8, BVar9, iVar10);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 DAT_MapPropertiesState::instance
-                    .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                    .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                     .header.year,
                 (int)((int)(DAT_ButtonX::instance + 0x28)), (int)((int)(DAT_ButtonY::instance + 4)),
                 OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
             iVar3 = DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .header.tl_type;
             if (iVar3 == 1) {
                 iVar10 = 0;
@@ -97,12 +97,12 @@ namespace UI {
                     pcVar2, iVar4, iVar3, TVar6, BVar7, iVar8, BVar9, iVar10);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.scenario.actionData,
                     (int)((int)(DAT_ButtonX::instance + 0xfa)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, (uint)((int)(color)), 0x12, FALSE, 0);
                 if (DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.invasion.repeatMonths
                     == 0) {}
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
@@ -110,18 +110,18 @@ namespace UI {
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.invasion.repeatMonths,
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, (uint)((int)(color)), 0x12, TRUE, 0);
                 bVar5 = DAT_MapPropertiesState::instance
-                            .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.invasion.repeatMonths
                     == 1;
             } else {
                 if (iVar3 != 3) {}
                 iVar3 = DAT_MapPropertiesState::instance
-                            .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.scenario.ScenarioEventType;
                 iVar4 = iVar3 + 0x80;
                 if (0x9b < iVar4) {
@@ -139,18 +139,18 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar2, iVar8, iVar3, TVar6, BVar7, iVar10, BVar9, blendStrength);
                 if (DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.scenario.repeat
                     == 0) {}
                 if (DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.scenario.repeatMonths
                     == 1) {}
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(",
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 bVar1 = DAT_MapPropertiesState::instance
-                            .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.scenario.repeatMonths;
                 if (bVar1 != 10) {
                     MACRO_CALL_MEMBER(
@@ -163,12 +163,12 @@ namespace UI {
                     OpenSHC::Text::TTA_LEFT, color, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     (uint)DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .data.scenario.repeat,
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, (uint)((int)(color)), 0x12, TRUE, 0);
                 bVar5 = DAT_MapPropertiesState::instance
-                            .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
+                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.scenario.repeat
                     == 1;
             }

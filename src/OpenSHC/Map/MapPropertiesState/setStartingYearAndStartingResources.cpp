@@ -109,8 +109,8 @@ namespace Map {
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             local_10);
-        DAT_MapPropertiesState::instance.field48_0x13560 = -1;
-        DAT_MapPropertiesState::instance.field47_0x1355c = 0;
+        DAT_MapPropertiesState::instance.eventListSelection = -1;
+        DAT_MapPropertiesState::instance.eventListScrollOffset = 0;
         psVar2 = DAT_MapPropertiesState::instance.buildingAvailability;
         /*
           bitmask for setting the availability of two shorts

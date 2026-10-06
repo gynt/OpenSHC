@@ -54,7 +54,7 @@ namespace Map {
             // of this family, read as imageIDs at 0x004E5243 and 0x004E528F, so their names
             // are wrong -- they only look boolean because 0 means skip. And `ownerFlagFrame`
             // (slot 14) really is a clock for most building types, which index
-            // BuildingDefinedData.field177_0x7e1c by `ownerFlagFrame / 2`; the granary
+            // BuildingDefinedData.SharedOverlayAnimationFrames by `ownerFlagFrame / 2`; the granary
             // dispatch writes an image index there instead.
             int extraAnimationSprite1; // 0x00000038 length: 4
             int extraAnimationSprite2; // 0x0000003C length: 4

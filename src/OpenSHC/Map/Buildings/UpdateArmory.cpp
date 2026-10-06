@@ -214,14 +214,14 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
             piVar2 = &DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame;
             *piVar2 = *piVar2 + 1;
-            if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
+            if ((char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                    [DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage8
-                = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
+                = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                      [DAT_BuildingsState::instance.buildings[buildingID].flagSlot.ownerFlagFrame / 2];
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {

@@ -52,13 +52,14 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame
                 = DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame / 2]
+                    .SharedOverlayAnimationFrames[DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame
+                        / 2]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[iVar4].overlayImageID
-                = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame / 2];
+                = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                      [DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame / 2];
         }
         DAT_BuildingsState::instance.buildings[iVar4].overlayImageID = 0;
     }

@@ -211,7 +211,7 @@ namespace Map {
             byte InnAnimationFrames3[140]; // 0x00007D1C length: 140
             byte InnAnimationFrames4[36]; // 0x00007DA8 length: 36
             byte InnAnimationFrames5[80]; // 0x00007DCC length: 80
-            byte field177_0x7e1c[52]; // 0x00007E1C length: 52
+            byte SharedOverlayAnimationFrames[52]; // 0x00007E1C length: 52
             int BuildingAccessibleTilesCountForOneLarger[15]; // 0x00007E50 length: 60
             XYPair field179_0x7e8c[8]; // 0x00007E8C length: 64
             XYPair field180_0x7ecc[12]; // 0x00007ECC length: 96
@@ -266,7 +266,7 @@ namespace Map {
             undefined1 padding_0xa008[4]; // 0x0000A008 length: 4
             XYPairShort field412_0xa00c[16]; // 0x0000A00C length: 64
             int field413_0xa04c[16][13]; // 0x0000A04C length: 832
-            int field414_0xa38c[4]; // 0x0000A38C length: 16
+            int DrawBridgeAnimationFrames[4]; // 0x0000A38C length: 16
             int field415_0xa39c[52]; // 0x0000A39C length: 208
             int field416_0xa46c[52]; // 0x0000A46C length: 208
             int field417_0xa53c[26]; // 0x0000A53C length: 104

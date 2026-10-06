@@ -90,13 +90,14 @@ namespace Map {
             piVar13 = &DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame;
             *piVar13 = *piVar13 + 1;
             if ((char)DAT_BuildingDefinedData::instance
-                    .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame / 2]
+                    .SharedOverlayAnimationFrames[DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame
+                        / 2]
                 < '\x01') {
                 DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame = 0;
             }
             DAT_BuildingsState::instance.buildings[iVar9].overlayImageID
-                = (int)(char)DAT_BuildingDefinedData::instance
-                      .field177_0x7e1c[DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame / 2];
+                = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
+                      [DAT_BuildingsState::instance.buildings[iVar9].flagSlot.ownerFlagFrame / 2];
         }
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
         if (((GVar5 != Game::GM_SOLITARY) && (GVar5 != Game::GM_SKIRMISH_SINGLE_PLAYER))

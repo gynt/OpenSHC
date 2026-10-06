@@ -27,9 +27,9 @@ namespace UI {
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_10;
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
-                iVar1 = DAT_MapPropertiesState::instance.field47_0x1355c + param_1;
+                iVar1 = DAT_MapPropertiesState::instance.eventListScrollOffset + param_1;
                 if (iVar1 < DAT_MapPropertiesState::instance.eventsCount) {
-                    DAT_MapPropertiesState::instance.field48_0x13560 = param_1;
+                    DAT_MapPropertiesState::instance.eventListSelection = param_1;
                     DAT_MapPropertiesState::instance.field50_0x13568
                         = DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.tl_type;
                     DAT_MapPropertiesState::instance.currentEventID = iVar1;

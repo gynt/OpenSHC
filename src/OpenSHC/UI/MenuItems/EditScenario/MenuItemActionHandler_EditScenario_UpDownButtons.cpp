@@ -16,14 +16,14 @@ namespace UI {
         {
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
                 if (param_1 == -2) {
-                    if (DAT_MapPropertiesState::instance.field47_0x1355c
+                    if (DAT_MapPropertiesState::instance.eventListScrollOffset
                         < DAT_MapPropertiesState::instance.eventsCount + -0x14) {
-                        DAT_MapPropertiesState::instance.field47_0x1355c
-                            = DAT_MapPropertiesState::instance.field47_0x1355c + 1;
+                        DAT_MapPropertiesState::instance.eventListScrollOffset
+                            = DAT_MapPropertiesState::instance.eventListScrollOffset + 1;
                     }
-                } else if ((param_1 == -1) && (0 < DAT_MapPropertiesState::instance.field47_0x1355c)) {
-                    DAT_MapPropertiesState::instance.field47_0x1355c
-                        = DAT_MapPropertiesState::instance.field47_0x1355c + -1;
+                } else if ((param_1 == -1) && (0 < DAT_MapPropertiesState::instance.eventListScrollOffset)) {
+                    DAT_MapPropertiesState::instance.eventListScrollOffset
+                        = DAT_MapPropertiesState::instance.eventListScrollOffset + -1;
                 }
             }
         }

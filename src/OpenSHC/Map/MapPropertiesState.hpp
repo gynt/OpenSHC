@@ -73,8 +73,8 @@ namespace Map {
         undefined1 padding_0x1354c[4]; // 0x0001354C length: 4
         int visibleRowCount; // 0x00013550 length: 4
         undefined1 padding_0x13554[8]; // 0x00013554 length: 8
-        undefined4 field47_0x1355c; // 0x0001355C length: 4
-        int field48_0x13560; // 0x00013560 length: 4
+        undefined4 eventListScrollOffset; // 0x0001355C length: 4
+        int eventListSelection; // 0x00013560 length: 4
         undefined4 currentEventID; // 0x00013564 length: 4
         undefined4 field50_0x13568; // 0x00013568 length: 4
         int field_0x1356c; // 0x0001356C length: 4

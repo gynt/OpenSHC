@@ -21,30 +21,30 @@ namespace UI {
                 if (*currentValue < 0) {
                     *currentValue = 0;
                 }
-                DAT_MapPropertiesState::instance.field47_0x1355c = *currentValue;
+                DAT_MapPropertiesState::instance.eventListScrollOffset = *currentValue;
                 return;
             case 4:
-                *currentValue = DAT_MapPropertiesState::instance.field47_0x1355c;
+                *currentValue = DAT_MapPropertiesState::instance.eventListScrollOffset;
                 *maxValue = DAT_MapPropertiesState::instance.eventsCount + -0x14;
                 return;
             case 5:
-                if (0 < DAT_MapPropertiesState::instance.field47_0x1355c) {
-                    DAT_MapPropertiesState::instance.field47_0x1355c
-                        = DAT_MapPropertiesState::instance.field47_0x1355c + -1;
-                    *currentValue = DAT_MapPropertiesState::instance.field47_0x1355c;
+                if (0 < DAT_MapPropertiesState::instance.eventListScrollOffset) {
+                    DAT_MapPropertiesState::instance.eventListScrollOffset
+                        = DAT_MapPropertiesState::instance.eventListScrollOffset + -1;
+                    *currentValue = DAT_MapPropertiesState::instance.eventListScrollOffset;
                 }
                 break;
             case 6:
-                if (DAT_MapPropertiesState::instance.field47_0x1355c
+                if (DAT_MapPropertiesState::instance.eventListScrollOffset
                     < DAT_MapPropertiesState::instance.eventsCount + -0x14) {
-                    DAT_MapPropertiesState::instance.field47_0x1355c
-                        = DAT_MapPropertiesState::instance.field47_0x1355c + 1;
+                    DAT_MapPropertiesState::instance.eventListScrollOffset
+                        = DAT_MapPropertiesState::instance.eventListScrollOffset + 1;
                 }
                 break;
             default:
                 return;
             }
-            *currentValue = DAT_MapPropertiesState::instance.field47_0x1355c;
+            *currentValue = DAT_MapPropertiesState::instance.eventListScrollOffset;
         }
 
     }

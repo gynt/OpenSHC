@@ -27,8 +27,8 @@ namespace Map {
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             local_10);
-        this->field48_0x13560 = -1;
-        this->field47_0x1355c = 0;
+        this->eventListSelection = -1;
+        this->eventListScrollOffset = 0;
         this->year_copy = this->SEC_StartingYear;
         for (int eventIndex = 0; eventIndex < this->eventsCount; ++eventIndex) {
             InGameEventUnionVersion& event = this->scenarioEvents[eventIndex];

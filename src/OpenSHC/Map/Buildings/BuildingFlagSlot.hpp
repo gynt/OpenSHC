@@ -17,7 +17,7 @@ namespace Map {
         // Building offset 0x80, which two kinds of building use differently.
         // Most types run it as the owner flag's animation clock: the Update*
         // functions increment it and index
-        // BuildingDefinedData.field177_0x7e1c by `ownerFlagFrame / 2`, putting
+        // BuildingDefinedData.SharedOverlayAnimationFrames by `ownerFlagFrame / 2`, putting
         // the resolved image in overlayImageID at 0x84.
         // UpdateGranary instead treats 0x80 as slot 14 of the overlay family
         // and writes a GM image index there, which renderGmOverlayBuilding

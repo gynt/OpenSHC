@@ -47,7 +47,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar8].animationIncrement = 1;
         bVar2 = DAT_BuildingsState::instance.buildings[iVar8].drawBridgeState1;
         if (!bVar2) {
-            iVar6 = DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
+            iVar6 = DAT_BuildingDefinedData::instance.DrawBridgeAnimationFrames[iVar9 / 2];
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar8].animationFrame = iVar6;
             if ((DAT_BuildingsState::instance.buildings[iVar8].drawbridgeState2 == 10)
@@ -83,7 +83,7 @@ namespace Map {
         } else if (bVar2 == 2) {
             puVar1 = &DAT_GameState::instance.playerDataArray[sVar3].someCount31;
             *puVar1 = *puVar1 + 1;
-            iVar6 = DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
+            iVar6 = DAT_BuildingDefinedData::instance.DrawBridgeAnimationFrames[iVar9 / 2];
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar8].animationFrame = iVar6 + 7;
             if (DAT_BuildingsState::instance.buildings[iVar8].drawbridgeState2 == 0xb) {
@@ -104,7 +104,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame
                     = (int)(char)DAT_BuildingDefinedData::instance
                           .DrawBridgeAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
-                    + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
+                    + DAT_BuildingDefinedData::instance.DrawBridgeAnimationFrames[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
@@ -140,7 +140,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar8].animationFrame
                     = (int)(char)DAT_BuildingDefinedData::instance
                           .DrawBridgeAnimationFrames2[DAT_BuildingsState::instance.buildings[iVar8].animationIndex]
-                    + DAT_BuildingDefinedData::instance.field414_0xa38c[iVar9 / 2];
+                    + DAT_BuildingDefinedData::instance.DrawBridgeAnimationFrames[iVar9 / 2];
                 if ((DAT_BuildingsState::instance.buildings[iVar8].animationIndex == 1)
                     && (DAT_BuildingsState::instance.buildings[iVar8].animationActive != 0)) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
