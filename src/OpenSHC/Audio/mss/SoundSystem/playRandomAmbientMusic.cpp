@@ -60,25 +60,25 @@ namespace Audio {
                 DAT_GameCore::instance.someSoundMatchTime_1 = DAT_GameCore::instance.mapTimeInTicks;
                 DAT_GameCore::instance.cowPoisonTrackerUnk = 0;
             }
-            if (0 < this->sec_Section1055_0x3274 && this->mbr_0x154) {
-                if (this->mbr_0x154 == 2) {
+            if (0 < this->sec_Section1055_0x3274 && this->musicFadeState) {
+                if (this->musicFadeState == 2) {
                     unsigned int const transitionPercent = (timeGetTime() - this->someSoundTime_0x158) / 10;
                     if (transitionPercent >= 100) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::stopMusicPlayback, this)();
                         this->sec_Section1055_0x3274 = 0;
-                        this->mbr_0x154 = 0;
+                        this->musicFadeState = 0;
                     } else {
                         MACRO_CALL_MEMBER(SoundSystem_Func::setStreamAndSampleVolumeUnk, this)(enums::SND_STR_MUSIC,
                             ((100 - transitionPercent) * this->streamFileVolumeNextUnk_0x48[0]) / 100);
                         return;
                     }
                 }
-                if (this->mbr_0x154 == 1) {
+                if (this->musicFadeState == 1) {
                     unsigned int const transitionPercent = (timeGetTime() - this->someSoundTime_0x158) / 200;
                     if (transitionPercent >= 100) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::setStreamAndSampleVolumeUnk, this)(
                             enums::SND_STR_MUSIC, (100 * this->streamFileVolumeNextUnk_0x48[0]) / 100);
-                        this->mbr_0x154 = 0;
+                        this->musicFadeState = 0;
                     } else {
                         MACRO_CALL_MEMBER(SoundSystem_Func::setStreamAndSampleVolumeUnk, this)(
                             enums::SND_STR_MUSIC, (transitionPercent * this->streamFileVolumeNextUnk_0x48[0]) / 100);
@@ -88,7 +88,7 @@ namespace Audio {
             }
             if (this->currentSoundID_0x3278 != this->sec_Section1055_0x3274 && 0 < this->currentSoundID_0x3278) {
                 if (this->mbr_0x3280 == 1) {
-                    this->mbr_0x154 = 1;
+                    this->musicFadeState = 1;
                     this->someSoundTime_0x158 = timeGetTime();
                     this->mbr_0x3280 = 0;
                 }
@@ -199,7 +199,7 @@ namespace Audio {
                 if (this->sec_Section1055_0x3274) {
                     if (!MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)(enums::SND_STR_MUSIC)) {
                         if (9 < this->sec_Section1055_0x3274) {
-                            this->mbr_0x3288 = timeGetTime();
+                            this->lastMusicChangeTime = timeGetTime();
                         }
                         this->sec_Section1055_0x3274 = 0;
                         this->currentSoundID_0x3278 = 0;
@@ -208,14 +208,14 @@ namespace Audio {
                         return;
                     }
                 }
-                if (!this->mbr_0x3288) {
-                    this->mbr_0x3288 = timeGetTime();
+                if (!this->lastMusicChangeTime) {
+                    this->lastMusicChangeTime = timeGetTime();
                 }
                 if (this->sec_Section1055_0x3274) {
                     return;
                 }
 
-                if (timeGetTime() - this->mbr_0x3288 <= DAT_SFXDefinedData::instance
+                if (timeGetTime() - this->lastMusicChangeTime <= DAT_SFXDefinedData::instance
                         .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }
@@ -274,7 +274,7 @@ namespace Audio {
                 if (this->sec_Section1055_0x3274) {
                     if (!MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)(enums::SND_STR_MUSIC)) {
                         if (9 < this->sec_Section1055_0x3274) {
-                            this->mbr_0x3288 = timeGetTime();
+                            this->lastMusicChangeTime = timeGetTime();
                         }
                         this->sec_Section1055_0x3274 = 0;
                         this->currentSoundID_0x3278 = 0;
@@ -283,14 +283,14 @@ namespace Audio {
                         return;
                     }
                 }
-                if (!this->mbr_0x3288) {
-                    this->mbr_0x3288 = timeGetTime();
+                if (!this->lastMusicChangeTime) {
+                    this->lastMusicChangeTime = timeGetTime();
                 }
                 if (this->sec_Section1055_0x3274) {
                     return;
                 }
 
-                if (timeGetTime() - this->mbr_0x3288 <= DAT_SFXDefinedData::instance
+                if (timeGetTime() - this->lastMusicChangeTime <= DAT_SFXDefinedData::instance
                         .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }

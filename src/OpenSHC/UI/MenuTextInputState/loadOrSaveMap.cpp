@@ -59,7 +59,7 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
             DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
         }
-        this->field43_0xa0 = 0xffffffff;
+        this->previewedListIndex = 0xffffffff;
         MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_TableHeader)(1);
     }
 

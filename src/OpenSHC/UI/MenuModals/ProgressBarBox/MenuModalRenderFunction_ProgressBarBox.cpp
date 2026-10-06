@@ -62,15 +62,15 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(iVar2, y + 0x41, (x - iVar1) + width, y + 0x50,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                DAT_MenuTextInputState::instance.field41_0x98 = y + 0x41;
-                DAT_MenuTextInputState::instance.field40_0x94 = iVar2;
+                DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
+                DAT_MenuTextInputState::instance.progressBarX = iVar2;
             }
             iVar1 = (width + -300) / 2;
             iVar2 = iVar1 + x;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                 iVar2, y + 0x41, (x - iVar1) + width, y + 0x50);
-            DAT_MenuTextInputState::instance.field41_0x98 = y + 0x41;
-            DAT_MenuTextInputState::instance.field40_0x94 = iVar2;
+            DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
+            DAT_MenuTextInputState::instance.progressBarX = iVar2;
         }
 
     }

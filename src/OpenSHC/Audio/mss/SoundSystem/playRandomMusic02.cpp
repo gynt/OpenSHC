@@ -146,7 +146,7 @@ namespace Audio {
                 MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                 if (DAT_GameSynchronyState::ptr->currentGameMode != Game::GM_SOLITARY) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)(enums::SND_STR_MUSIC);
-                    this->mbr_0x154 = 0;
+                    this->musicFadeState = 0;
                     this->sec_Section1055_0x3274 = 0;
                     if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel != 1) {
                         DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicTracker = 1;
@@ -160,7 +160,7 @@ namespace Audio {
                 } else {
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicTracker = 1;
                     MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)(enums::SND_STR_MUSIC);
-                    this->mbr_0x154 = 0;
+                    this->musicFadeState = 0;
                     this->sec_Section1055_0x3274 = 0;
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel = 2;
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(

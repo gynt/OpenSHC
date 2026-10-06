@@ -63,7 +63,7 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
             DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
         }
-        this->field43_0xa0 = 0xffffffff;
+        this->previewedListIndex = 0xffffffff;
         this->fileListContext = 2;
         if (this->DAT_MenuLoadGameRelativeSelectionIndex != -1) {
             this->DAT_MenuLoadGameRelativeSelectionOffset = this->savedListOffset3;

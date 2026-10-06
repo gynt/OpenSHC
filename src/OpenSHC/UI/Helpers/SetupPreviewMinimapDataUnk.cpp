@@ -36,9 +36,9 @@ namespace UI {
         local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
         iVar2 = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
             + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
-        if ((iVar2 == -1) || (DAT_MenuTextInputState::instance.field43_0xa0 == iVar2))
+        if ((iVar2 == -1) || (DAT_MenuTextInputState::instance.previewedListIndex == iVar2))
             goto LAB_00493187;
-        DAT_MenuTextInputState::instance.field43_0xa0 = iVar2;
+        DAT_MenuTextInputState::instance.previewedListIndex = iVar2;
         pcVar3 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
             DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]);
         pcVar5 = local_3f4;

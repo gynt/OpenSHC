@@ -88,7 +88,7 @@ namespace UI {
             this->lastListClickTime = 0;
             this->lastClickedListIndex = 0xffffffff;
             this->field49_0xac = 0;
-            this->field43_0xa0 = 0xffffffff;
+            this->previewedListIndex = 0xffffffff;
             this->fileListVisibleRowCount = 0x10;
             if (action == 9) {
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText, this)(
