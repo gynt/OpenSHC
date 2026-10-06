@@ -170,7 +170,7 @@ namespace Map {
                                 DAT_GameCore::instance.unknownAlwaysZero = 0;
                                 DAT_GameState::instance.mapAndTime.unknownCountdown01 = 10;
                             }
-                            _pConditionIsMet = &DAT_GameState::instance.mapAndTime.field3092_0x2654;
+                            _pConditionIsMet = DAT_GameState::instance.mapAndTime.scenarioEventTimers;
                             do {
                                 if ((*_pConditionIsMet != 0)
                                     && (iVar18 = *_pConditionIsMet + 1, *_pConditionIsMet = iVar18, 0x4b0 < iVar18)) {
@@ -1125,7 +1125,7 @@ namespace Map {
                                         goto LAB_004c5f28;
                                     iVar18 = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
                                     this->scenarioEvents[_eventIndex].header.done = 1;
-                                    (&DAT_GameState::instance.mapAndTime.field3092_0x2654)[iVar18] = 1;
+                                    DAT_GameState::instance.mapAndTime.scenarioEventTimers[iVar18] = 1;
                                     iVar18 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                                     switch (this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType) {
                                     case 0:

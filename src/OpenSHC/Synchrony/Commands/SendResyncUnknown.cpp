@@ -38,7 +38,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 < 0x12) {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-                    DAT_GameSynchronyState::ptr)((void*)((int)&DAT_GameState::instance.mapAndTime.field192_0x194
+                    DAT_GameSynchronyState::ptr)((void*)((int)&DAT_GameState::instance.mapAndTime.syncedStateBase
                                                      + DAT_GameSynchronyState::instance.DAT_GameCommandParam0 * 14566),
                     (size_t)((int)(14566)), OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
@@ -67,7 +67,7 @@ namespace Synchrony {
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
                     local_3ec, "Glob %d", DAT_GameSynchronyState::instance.DAT_GameCommandParam0 * 0x38e6 + 0x194);
                 MACRO_CALL(OpenSHC::Synchrony_Func::MemCopyFromParameter)(
-                    (char*)((int)&DAT_GameState::instance.mapAndTime.field192_0x194
+                    (char*)((int)&DAT_GameState::instance.mapAndTime.syncedStateBase
                         + DAT_GameSynchronyState::instance.DAT_GameCommandParam0 * 0x38e6),
                     (size_t)((int)(14566)), DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
                 ;
@@ -75,7 +75,7 @@ namespace Synchrony {
             if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 == 0x12) {
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_3ec, "Glob %d", 0x401c0);
                 MACRO_CALL(OpenSHC::Synchrony_Func::MemCopyFromParameter)(
-                    (char*)((int)&DAT_GameState::instance.mapAndTime.field192_0x194
+                    (char*)((int)&DAT_GameState::instance.mapAndTime.syncedStateBase
                         + DAT_GameSynchronyState::instance.DAT_GameCommandParam0 * 0x38e6),
                     (size_t)((int)(16)), DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
                 ;

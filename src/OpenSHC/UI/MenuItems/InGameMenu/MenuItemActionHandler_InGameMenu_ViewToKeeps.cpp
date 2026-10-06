@@ -44,7 +44,7 @@ namespace UI {
                     DAT_00b9840c::instance = 0;
                     dVar5 = 1;
                     iVar4 = -1;
-                    piVar5 = DAT_GameState::instance.mapAndTime.field22_0x58[0] + 1;
+                    piVar5 = DAT_GameState::instance.mapAndTime.playerKeepTile + 1;
                     iVar3 = 2;
                     do {
                         if (-1 < piVar5[-1]) {
@@ -95,7 +95,7 @@ namespace UI {
                     } else {
                         DWORD_00b98410::instance = DVar2;
                         MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
-                            DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.field22_0x58[0][iVar4]);
+                            DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.playerKeepTile[iVar4]);
                     }
                     DAT_GameCore::instance.field29_0x80 = DAT_GameCore::instance.field29_0x80 + 1;
                     if ((int)dVar5 <= (int)DAT_GameCore::instance.field29_0x80) {

@@ -211,7 +211,7 @@ namespace Synchrony {
                 this->HASH_HashTotal[this->currentPlayerSlotID]
                     = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
                 iVar39 = 0;
-                piVar41 = &DAT_GameState::instance.mapAndTime.field192_0x194;
+                piVar41 = &DAT_GameState::instance.mapAndTime.syncedStateBase;
                 _someIndex = 0;
                 do {
                     iVar45 = _someIndex;

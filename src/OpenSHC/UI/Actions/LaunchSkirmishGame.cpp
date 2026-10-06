@@ -771,27 +771,27 @@ namespace UI {
             if (((*(int*)((int)DAT_GameSynchronyState::instance.currentPlayerFullIDArray + _index + 4) != -1)
                     || (*(int*)((int)DAT_GameSynchronyState::instance.currentAIArray + _index + 4) != 0))
                 && (*(int*)((int)(_pKeepPlayer2 + -0x173) + 4) != 0)) {
-                *(uint*)((int)DAT_GameState::instance.mapAndTime.field22_0x58[0] + _index + 4)
+                *(uint*)((int)DAT_GameState::instance.mapAndTime.playerKeepTile + _index + 4)
                     = DAT_BuildingsState::instance.buildings[*(int*)((int)(_pKeepPlayer2 + -0x173) + 4)]
                           .currentTilePositionAdjusted;
             }
             if (((*(int*)((int)DAT_GameSynchronyState::instance.currentPlayerFullIDArray + _index + 8) != -1)
                     || (*(int*)((int)DAT_GameSynchronyState::instance.currentAIArray + _index + 8) != 0))
                 && (_pKeepPlayer2->id)) {
-                *(uint*)((int)DAT_GameState::instance.mapAndTime.field22_0x58[0] + _index + 8)
+                *(uint*)((int)DAT_GameState::instance.mapAndTime.playerKeepTile + _index + 8)
                     = DAT_BuildingsState::instance.buildings[_pKeepPlayer2->id].currentTilePositionAdjusted;
             }
             if (((*(int*)((int)DAT_GameSynchronyState::instance.currentPlayerFullIDArray + _index + 0xc) != -1)
                     || (*(int*)((int)DAT_GameSynchronyState::instance.currentAIArray + _index + 0xc) != 0))
                 && (*(int*)((int)(_pKeepPlayer2 + 0x172) + 0x24) != 0)) {
-                *(uint*)((int)DAT_GameState::instance.mapAndTime.field22_0x58[0] + _index + 0xc)
+                *(uint*)((int)DAT_GameState::instance.mapAndTime.playerKeepTile + _index + 0xc)
                     = DAT_BuildingsState::instance.buildings[*(int*)((int)(_pKeepPlayer2 + 0x172) + 0x24)]
                           .currentTilePositionAdjusted;
             }
             if (((*(int*)((int)DAT_GameSynchronyState::instance.currentPlayerFullIDArray + _index + 0x10) != -1)
                     || (*(int*)((int)DAT_GameSynchronyState::instance.currentAIArray + _index + 0x10) != 0))
                 && (*(int*)((int)(_pKeepPlayer2 + 0x2e5) + 0x20) != 0)) {
-                *(uint*)((int)DAT_GameState::instance.mapAndTime.field22_0x58[0] + _index + 0x10)
+                *(uint*)((int)DAT_GameState::instance.mapAndTime.playerKeepTile + _index + 0x10)
                     = DAT_BuildingsState::instance.buildings[*(int*)((int)(_pKeepPlayer2 + 0x2e5) + 0x20)]
                           .currentTilePositionAdjusted;
             }
