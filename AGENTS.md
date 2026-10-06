@@ -378,6 +378,13 @@ Diff patterns that were reliable (more in the cheat sheet):
   The two forms also differ in codegen - `cmp x, 1; je` against `test x, x; jne` - so the asm says which the
   original used. Note too that `bVar = x != FALSE;` is an assignment rather than a condition, and there the
   `!= FALSE` is load-bearing: it emits the 0/1 normalisation a raw store does not.
+- **A generated `BOOLEnum` field that is assigned a non-boolean constant is mis-typed**, and the wrong type is worth
+  fixing because it is what makes the `== TRUE` above look rewritable. Two cases so far, both found by noticing one
+  odd assignment: `GameCore::scribeAnimationPhase` is compared against `2` as well as `TRUE`, so it is a three-state
+  animation phase; `UnitsState::pendingUnitControlMode` is assigned `0x14` and two parameters, and its only consumer
+  copies it into `unitControlsRelated`, an `undefined4` at the adjacent offset. Scan for an assignment or comparison
+  that is neither `TRUE`, `FALSE`, `0` nor `1`; when the field is really an int, the `= TRUE` assignments can stay,
+  since `TRUE` is `1` and `1` is usually a legitimate value.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
