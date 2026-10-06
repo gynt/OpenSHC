@@ -1265,9 +1265,9 @@ namespace Game {
         int BuildingAvailabilityStructIndexForNameArray[69]; // 0x000040CC length: 276
         undefined1 padding_0x41e0[4]; // 0x000041E0 length: 4
         char field1248_0x41e4[46][3][32]; // 0x000041E4 length: 4416
-        int field1249_0x5324[40]; // 0x00005324 length: 160
-        int field1250_0x53c4[40]; // 0x000053C4 length: 160
-        int field1251_0x5464[40]; // 0x00005464 length: 160
+        int TutorialStepActionCount[40]; // 0x00005324 length: 160
+        int TutorialStepShowsContinueButton[40]; // 0x000053C4 length: 160
+        int TutorialStepSpeechTrigger[40]; // 0x00005464 length: 160
 
     } MissionAestheticsDefinedData;
 #pragma pack(pop)

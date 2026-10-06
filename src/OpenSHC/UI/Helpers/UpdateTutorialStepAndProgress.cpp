@@ -174,7 +174,7 @@ namespace UI {
             MACRO_CALL(UI::Helpers_Func::InitTutorialStepTransition)(1);
             MACRO_CALL(UI::Helpers_Func::ResetTutorialActionTrackers)();
             DAT_00df555c::instance
-                = DAT_MissionAestheticsDefinedData::instance.field1249_0x5324[DAT_TutorialCurrentStep::instance];
+                = DAT_MissionAestheticsDefinedData::instance.TutorialStepActionCount[DAT_TutorialCurrentStep::instance];
             DAT_00df5560::instance = 0;
             DAT_00df5558::instance = 0;
         }
@@ -341,7 +341,8 @@ namespace UI {
         if (!local_48) {
             if (!DAT_00df5560::instance)
                 goto LAB_004bd764;
-            if (DAT_MissionAestheticsDefinedData::instance.field1251_0x5464[DAT_TutorialCurrentStep::instance] == 2) {
+            if (DAT_MissionAestheticsDefinedData::instance.TutorialStepSpeechTrigger[DAT_TutorialCurrentStep::instance]
+                == 2) {
                 iVar3 = DAT_00df556c::instance * 0x60;
                 DAT_00df556c::instance = DAT_00df556c::instance + 1;
                 MACRO_CALL(OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar3 + 0xb3d810);
@@ -353,7 +354,8 @@ namespace UI {
             }
         }
         if (((DAT_00df5560::instance)
-                && (DAT_MissionAestheticsDefinedData::instance.field1250_0x53c4[DAT_TutorialCurrentStep::instance]
+                && (DAT_MissionAestheticsDefinedData::instance
+                        .TutorialStepShowsContinueButton[DAT_TutorialCurrentStep::instance]
                     != 0))
             && (DAT_00df555c::instance + -1 <= DAT_00df5558::instance)) {
             /*

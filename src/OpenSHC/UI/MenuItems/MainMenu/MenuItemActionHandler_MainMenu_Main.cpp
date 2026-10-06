@@ -173,7 +173,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_TUTORIAL_BOX, FALSE);
                 MACRO_CALL(UI::Helpers_Func::InitTutorialStepTransition)(1);
-                DAT_00df555c::instance = DAT_MissionAestheticsDefinedData::instance.field1249_0x5324[0];
+                DAT_00df555c::instance = DAT_MissionAestheticsDefinedData::instance.TutorialStepActionCount[0];
                 INT_DisableTutorialRestrictions::instance = 0;
                 DAT_TutorialCurrentStep::instance = 0;
                 DAT_00df5554::instance = 0x20;
@@ -184,7 +184,7 @@ namespace UI {
                 iVar2 = 1;
                 iVar3 = 0;
                 do {
-                    iVar1 = *(int*)((int)DAT_MissionAestheticsDefinedData::instance.field1249_0x5324 + iVar3);
+                    iVar1 = *(int*)((int)DAT_MissionAestheticsDefinedData::instance.TutorialStepActionCount + iVar3);
                     *(int*)((int)INT_ARRAY_00df5598::instance + iVar3) = iVar2 + 1;
                     iVar3 = iVar3 + 4;
                     iVar2 = iVar2 + 2 + iVar1;

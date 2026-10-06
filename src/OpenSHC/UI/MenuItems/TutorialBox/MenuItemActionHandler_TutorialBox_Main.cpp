@@ -90,7 +90,8 @@ namespace UI {
                     if (DAT_00df5554::instance + -1 <= DAT_TutorialCurrentStep::instance) {
                         INT_DisableTutorialRestrictions::instance = 1;
                     }
-                    if (DAT_MissionAestheticsDefinedData::instance.field1251_0x5464[DAT_TutorialCurrentStep::instance]
+                    if (DAT_MissionAestheticsDefinedData::instance
+                            .TutorialStepSpeechTrigger[DAT_TutorialCurrentStep::instance]
                         == 1) {
                         iVar1 = DAT_00df556c::instance * 0x60;
                         DAT_00df556c::instance = DAT_00df556c::instance + 1;
