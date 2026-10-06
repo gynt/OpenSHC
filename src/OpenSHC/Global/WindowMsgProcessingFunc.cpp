@@ -1761,7 +1761,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_BUILD_MENU, 0);
                         DAT_TileMapState::instance.shiftRelated0or3 = 1;
-                        DAT_UnitsState::instance.field5_0x14 = TRUE;
+                        DAT_UnitsState::instance.pendingUnitControlMode = TRUE;
                         DAT_UnitsState::instance.unitControlsRelated = 1;
                         DAT_UnitsState::instance.hasEngineerSelected = FALSE;
                         DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;

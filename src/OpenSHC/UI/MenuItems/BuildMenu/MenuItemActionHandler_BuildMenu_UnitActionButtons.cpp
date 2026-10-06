@@ -49,7 +49,7 @@ namespace UI {
             switch (param_1) {
             case 1:
                 DAT_UnitsState::instance.unitControlsRelated = 1;
-                DAT_UnitsState::instance.field5_0x14 = TRUE;
+                DAT_UnitsState::instance.pendingUnitControlMode = TRUE;
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
@@ -82,7 +82,7 @@ namespace UI {
                 goto LAB_00446b3b;
             case 4:
                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                DAT_UnitsState::instance.field5_0x14 = 4;
+                DAT_UnitsState::instance.pendingUnitControlMode = 4;
                 DAT_UnitsState::instance.unitControlsRelated = 4;
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
@@ -92,7 +92,7 @@ namespace UI {
                     Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource, DAT_UnitsState::ptr)();
                 if (uVar2) {
                     DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                    DAT_UnitsState::instance.field5_0x14 = 0x14;
+                    DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
                     DAT_UnitsState::instance.unitControlsRelated = 0x14;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
@@ -112,7 +112,7 @@ namespace UI {
                     || (DAT_UnitsState::instance.units[uVar2]
                             .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                         != 0)) {
-                    DAT_UnitsState::instance.field5_0x14 = 5;
+                    DAT_UnitsState::instance.pendingUnitControlMode = 5;
                     DAT_UnitsState::instance.unitControlsRelated = 5;
                     DAT_TileMapState::instance.field185_0x554a08 = 0xf;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
@@ -123,7 +123,7 @@ namespace UI {
                 DAT_UnitsState::instance.unitControlsRelated = 8;
                 uVar4 = 8;
             LAB_00446b3b:
-                DAT_UnitsState::instance.field5_0x14 = DAT_UnitsState::instance.unitControlsRelated;
+                DAT_UnitsState::instance.pendingUnitControlMode = DAT_UnitsState::instance.unitControlsRelated;
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
                     DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0;
@@ -136,7 +136,7 @@ namespace UI {
                     DAT_StopHandlingMenuItems::instance = 0;
                 }
                 DAT_UnitsState::instance.unitControlsRelated = 0x14;
-                DAT_UnitsState::instance.field5_0x14 = 0x14;
+                DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
@@ -153,7 +153,7 @@ namespace UI {
                         && (DAT_UnitsState::instance.units[uVar2]
                                 .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                             != 0)) {
-                        DAT_UnitsState::instance.field5_0x14 = 0x16;
+                        DAT_UnitsState::instance.pendingUnitControlMode = 0x16;
                         DAT_UnitsState::instance.unitControlsRelated = 0x16;
                         DAT_TileMapState::instance.field185_0x554a08 = 0xf;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;

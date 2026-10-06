@@ -44,7 +44,7 @@ namespace Map {
             undefined4 unknownInitially0_01; // 0x00000008 length: 4
             undefined4 lastSelectedUnitID; // 0x0000000C length: 4
             undefined4 unitControlsRelated; // 0x00000010 length: 4
-            BOOLEnum field5_0x14; // 0x00000014 length: 4
+            BOOLEnum pendingUnitControlMode; // 0x00000014 length: 4
             undefined4 lostChimps; // 0x00000018 length: 4
             undefined4 unitDistanceComputationResultUnk; // 0x0000001C length: 4
             undefined4 totalUnitsInSelection; // 0x00000020 length: 4
