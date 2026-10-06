@@ -465,7 +465,7 @@ namespace UI {
             _keepID = (piVar14->keep).id;
             piVar27[-1] = -1;
             *piVar27 = -1;
-            if (_keepID != 0) {
+            if (_keepID) {
                 _aiType2 = (char (*)[250])((int)_aiType2 + 1);
                 uVar3 = DAT_BuildingsState::instance.buildings[_keepID].y;
                 piVar27[-1] = (int)(short)DAT_BuildingsState::instance.buildings[_keepID].x;
@@ -477,7 +477,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuildingAndLinkedDuplicates,
                     DAT_BuildingsState::ptr)((piVar14->stockpile).id);
                 uVar19 = piVar14->lordID;
-                if (uVar19 != 0) {
+                if (uVar19) {
                     if (piVar14->lordUID == DAT_UnitsState::instance.units[uVar19].uid) {
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(
                             uVar19);
@@ -499,8 +499,7 @@ namespace UI {
             piVar27 = _playerTeams;
             do {
                 piVar27 = piVar27 + 2;
-                if (((char)DAT_GameSynchronyState::instance.field294_0x109e5f[_playerID + 8] < '\0')
-                    && (*piVar27 != -1)) {
+                if ((DAT_GameSynchronyState::instance.playerPositionsArray[_playerID - 1] < 0) && (*piVar27 != -1)) {
                     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::destroyPlayerCompletely,
                         DAT_GameState::ptr)(_playerID);
                 }
@@ -531,7 +530,7 @@ namespace UI {
             do {
                 if (((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1)
                         || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0))
-                    && (iVar25 = _storedLordTypes[_playerID], iVar25 != 0)) {
+                    && (iVar25 = _storedLordTypes[_playerID], iVar25)) {
                     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::swapOwnership, DAT_GameState::ptr)(
                         iVar25, _playerID);
                     iVar17 = 1;
@@ -571,7 +570,7 @@ namespace UI {
                     *_ptrAIVID = iVar25;
                     MACRO_CALL_MEMBER(AI::AIVState_Func::setKeepOffsetAndOrientation, DAT_AIVState::ptr)(
                         iVar25, _autoSaveMinutes, _s1023);
-                    if (_whichCastle == 0) {
+                    if (!_whichCastle) {
                         MACRO_CALL_MEMBER(AI::AIVState_Func::selectBestAIVwithRandomStart, DAT_AIVState::ptr)(
                             *_ptrAIVID);
                     } else {
@@ -601,7 +600,7 @@ namespace UI {
                             Commands::M_MAPPER_KEEP2, 7,
                             DAT_AIVState::instance.aivs[_anotherPlayerIDUnk].keepOrientation);
                         _keepBuildingID = _ptrAIVID[-0x89a];
-                        if (_keepBuildingID != 0) {
+                        if (_keepBuildingID) {
                             iVar17 = (int)(short)DAT_BuildingsState::instance.buildings[_keepBuildingID].y;
                             iVar25 = (int)(short)DAT_BuildingsState::instance.buildings[_keepBuildingID].x;
                             iVar18 = DAT_TileMapState::instance.DefaultHeightLayer
@@ -646,7 +645,7 @@ namespace UI {
             _playerID = _playerID + 1;
             _ptrAIVID = _ptrAIVID + 0xe7d;
         } while (_playerID < 9);
-        if (DAT_GameCore::instance.mapU4Int0 != 0) {
+        if (DAT_GameCore::instance.mapU4Int0) {
             _playerID = 1;
             do {
                 /*
@@ -736,7 +735,7 @@ namespace UI {
                 piVar27 = piVar27 + 1;
                 _startingTroopsPlayerData = (int (*)[20])(*_startingTroopsPlayerData + 1);
                 _whichCastle = _whichCastle + -1;
-            } while (_whichCastle != 0);
+            } while (_whichCastle);
             _aiType2 = (char (*)[250])((int)_aiType2 + 0x39f4);
             _playerIndex = _playerIndex + 1;
             _playerID = 0;
@@ -778,7 +777,7 @@ namespace UI {
             }
             if (((*(int*)((int)DAT_GameSynchronyState::instance.currentPlayerFullIDArray + _index + 8) != -1)
                     || (*(int*)((int)DAT_GameSynchronyState::instance.currentAIArray + _index + 8) != 0))
-                && (_pKeepPlayer2->id != 0)) {
+                && (_pKeepPlayer2->id)) {
                 *(uint*)((int)DAT_GameState::instance.mapAndTime.field22_0x58[0] + _index + 8)
                     = DAT_BuildingsState::instance.buildings[_pKeepPlayer2->id].currentTilePositionAdjusted;
             }
@@ -834,7 +833,7 @@ namespace UI {
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c = 1;
         MACRO_CALL(Synchrony_Func::SetAIPlayerNickNames)();
         if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)
-            && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 0)) {
+            && (!DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
             DAT_GameState::instance.playerDataArray[0].playerDeathRelated = 1;
         }
         _finalResultsIndex = 1;

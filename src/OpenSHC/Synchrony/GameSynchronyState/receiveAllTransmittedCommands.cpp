@@ -38,7 +38,7 @@ namespace Synchrony {
         char acStack_68[100];
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)acStack_68;
-        this->field309_0x109e94 = timeGetTime();
+        this->lastCommandReceiveTime = timeGetTime();
         /*
           this is the main packet reading loop in multiplayer
          */
@@ -55,9 +55,9 @@ namespace Synchrony {
                 if ((this->DPLAYX_SendAndReceiveREsult == -0x7ffffff6)
                     || (this->DPLAYX_SendAndReceiveREsult == -0x7788ff42))
                     goto LAB_00490905;
-                if (this->DPLAYX_SendAndReceiveREsult != 0)
+                if (this->DPLAYX_SendAndReceiveREsult)
                     break;
-                if (this->DPLAYX_ReceivedPlayerID == 0) {
+                if (!this->DPLAYX_ReceivedPlayerID) {
                     /*
                       received system message
                      */
@@ -81,7 +81,7 @@ namespace Synchrony {
                                     *piVar2 = 0;
                                     piVar2 = piVar2 + 1;
                                     iVar5 = iVar5 + -1;
-                                } while (iVar5 != 0);
+                                } while (iVar5);
                                 /*
                                   added by script: "You are now Host"
                                  */

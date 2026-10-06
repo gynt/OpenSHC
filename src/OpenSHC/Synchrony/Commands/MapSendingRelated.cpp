@@ -35,7 +35,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             if (((DAT_GameSynchronyState::instance.isHost != FALSE)
                     && (DAT_GameSynchronyState::instance
-                            .field290_0x109e20[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 2,
+                            .mapSendRequestStatePerPlayer[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 2,
                         local_1 == '\x01'))
                 && (DAT_GameSynchronyState::instance
                         .mapSendingFileHandles[DAT_GameSynchronyState::instance.protocolInvokerPlayerID]

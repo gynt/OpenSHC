@@ -59,12 +59,12 @@ namespace Synchrony {
         int local_4;
         this->transmissionCounterUnk = 0;
         this->DAT_GameHalted = 0;
-        this->field62_0xb90 = 0;
+        this->lateCommandPenalty = 0;
         this->field78_0xbf0 = 0;
         this->DAT_HashCountdown = 0;
         this->quitGameVoteRelated = 0;
         this->shouldSendAnnouncementUnk = 0;
-        this->field261_0x109298 = 0;
+        this->connectionNoticeShown = 0;
         this->unknownIncrementBy40_01 = 1;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearChatEvents, this)();
         DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
@@ -162,7 +162,7 @@ namespace Synchrony {
             piVar5 = piVar5 + 9;
             local_4 = local_4 + -1;
             local_c = local_10;
-        } while (local_4 != 0);
+        } while (local_4);
         this->skirmishUnknownSetting1[0] = 1;
         this->skirmishUnknownSetting1[1] = 1;
         this->skirmishUnknownSetting1[2] = 1;
@@ -179,13 +179,13 @@ namespace Synchrony {
         this->skirmishWinCondition = 0;
         this->skirmishTroopsCostGold = 1;
         this->lobbyMapSortOrder = 6;
-        if ((((this->skirmishAutoSaveEveryMinutes != 0) && (this->skirmishAutoSaveEveryMinutes != 5))
+        if ((((this->skirmishAutoSaveEveryMinutes) && (this->skirmishAutoSaveEveryMinutes != 5))
                 && (this->skirmishAutoSaveEveryMinutes != 10))
             && (this->skirmishAutoSaveEveryMinutes != 0x14)) {
             this->skirmishAutoSaveEveryMinutes = 10;
         }
         this->saveRelated = 0;
-        this->field75_0xbe4 = 0;
+        this->lastAutoSaveTime = 0;
         this->commandDelay = 0x23;
         DAT_GameState::instance.mapAndTime.gameOver = FALSE;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resetGameCommands, this)();

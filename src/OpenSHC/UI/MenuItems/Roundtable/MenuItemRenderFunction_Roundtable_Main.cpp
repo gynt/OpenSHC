@@ -59,10 +59,9 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (8 < param_1) {
                 if ((((param_1 < 0x13)
-                         && (iVar4
-                             = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 0x1a),
+                         && (iVar4 = (int)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1 - 10],
                              0 < iVar4))
-                        && (DAT_00df423c::instance != 0))
+                        && (DAT_00df423c::instance))
                     && ((
                         (DAT_ButtonCurrentlyInteracting::instance != FALSE && (param_1 + -10 != DAT_00df423c::instance))
                         && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar4] != -1
@@ -76,7 +75,7 @@ namespace UI {
                 }
                 if (param_1 != 0x14) {
                     if ((param_1 == 100) || (param_1 == 0x65)) {
-                        DAT_ButtonUnknownZero::instance = (int)(DAT_00df423c::instance != 0);
+                        DAT_ButtonUnknownZero::instance = (int)(DAT_00df423c::instance);
                         if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                             DAT_ButtonUnknownZero::instance = 1;
                         } else {
@@ -87,7 +86,7 @@ namespace UI {
                             }
                         }
                     }
-                    if (((param_1 == 200) && (iVar4 = 0, DAT_00df423c::instance != 0))
+                    if (((param_1 == 200) && (iVar4 = 0, DAT_00df423c::instance))
                         && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
                         if (DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance] == 0) {
                             DAT_00df423c::instance = 0;
@@ -118,7 +117,7 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                                 iVar3 + 0x222, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + iVar5,
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + iVar2);
-                            if (iVar4 == 0) {
+                            if (!iVar4) {
                                 if (DAT_GameCore::instance.lordIcons[iVar3] == 0) {
                                     iVar4 = 0x21b;
                                 } else {
@@ -154,7 +153,7 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
                 if ((DAT_ButtonCurrentlyInteracting::instance != FALSE)
-                    && (DAT_00df4288::instance = 1, DAT_00df423c::instance == 0)) {
+                    && (DAT_00df4288::instance = 1, !DAT_00df423c::instance)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 }
                 iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -179,7 +178,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3 + 0x222,
                 (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 if (DAT_GameCore::instance.lordIcons[iVar3] == 0) {
                     iVar4 = 0x21b;
                 } else {
@@ -209,7 +208,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonX::instance + 0x47)), (int)((int)(DAT_ButtonY::instance + 0x47)));
             }
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
-                if (DAT_00df423c::instance == 0) {
+                if (!DAT_00df423c::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                         (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),

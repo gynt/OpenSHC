@@ -37,7 +37,7 @@ namespace UI {
             char cVar1;
             int playerID;
             MenuModalType menuModalID;
-            if (((DAT_00b960dc::instance == 0)
+            if (((!DAT_00b960dc::instance)
                     && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_ROUNDTABLE))
                 && (param_1 < 0)) {
                 if (param_1 < -9) {
@@ -117,13 +117,13 @@ namespace UI {
                                         DAT_GameSynchronyState::ptr)(Commands::GCT_HOST_REMOVE_PLAYER_BY_SLOT);
                                 }
                             }
-                        } else if (DAT_GameSynchronyState::instance.field294_0x109e5f[playerID] == 0) {
+                        } else if (DAT_GameSynchronyState::instance.slotActionPending[playerID] == 0) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = playerID;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(((GameCommandType)0x55));
                             MACRO_CALL_MEMBER(
                                 Audio::SFX::SFXState_Func::scheduleSFXVariation, DAT_SFXState::ptr)(0x60, 2);
-                            DAT_GameSynchronyState::instance.field294_0x109e5f[playerID] = 1;
+                            DAT_GameSynchronyState::instance.slotActionPending[playerID] = 1;
                         }
                     }
                 } else if (((*(char*)((int)DAT_GameSynchronyState::ptr + (0x109e44 - param_1))

@@ -21,8 +21,8 @@ namespace Synchrony {
     /*
       Command handler in OpenSHC::Commands. On GCS_SCHEDULE_AND_SEND serializes   DAT_GameCommandParam0 (the lagging
       player ID) then executes immediately. On GCS_EXECUTE stores   the value in laggingPlayerIDUnk, shows multiplayer
-      info display element   DEID_SOME_MULTIPLAYER_INFO_Unk_28, and resets field131_0xcd4 to 0. Notifies all clients
-      which   player is currently lagging.      renamed by: Claude Sonnet 4.6
+      info display element   DEID_SOME_MULTIPLAYER_INFO_Unk_28, and resets lagNotificationCode to 0. Notifies all
+      clients which   player is currently lagging.      renamed by: Claude Sonnet 4.6
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x004855C0
     void Commands::NotifyLaggingPlayer()
@@ -44,7 +44,7 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.laggingPlayerIDUnk = (int)local_4[0];
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_SOME_MULTIPLAYER_INFO_Unk_28, 1);
-            DAT_GameSynchronyState::instance.field131_0xcd4 = 0;
+            DAT_GameSynchronyState::instance.lagNotificationCode = 0;
         }
     }
 

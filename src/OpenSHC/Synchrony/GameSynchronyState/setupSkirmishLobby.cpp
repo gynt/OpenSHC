@@ -40,12 +40,12 @@ namespace Synchrony {
         this->currentGameMode = Game::GM_SOLITARY;
         this->transmissionCounterUnk = 0;
         this->DAT_GameHalted = 0;
-        this->field62_0xb90 = 0;
+        this->lateCommandPenalty = 0;
         this->field78_0xbf0 = 0;
         this->DAT_HashCountdown = 0;
         this->quitGameVoteRelated = 0;
         this->shouldSendAnnouncementUnk = 0;
-        this->field261_0x109298 = 0;
+        this->connectionNoticeShown = 0;
         this->DAT_HostPlayerSlotID = 0;
         this->DPLAYX_ReceivedPlayerID = 0;
         this->DPLAY_ToID = 0;
@@ -111,7 +111,7 @@ namespace Synchrony {
                 (*local_c)[0][0] = 0;
                 local_c = (int (*)[100][2])(*local_c + 1);
                 iVar2 = iVar2 + -1;
-            } while (iVar2 != 0);
+            } while (iVar2);
             local_18 = local_18 + 1;
             local_14 = local_14 + 1;
             local_8[-4] = 0;
@@ -154,7 +154,7 @@ namespace Synchrony {
             piVar3 = piVar3 + 0xc;
             local_4 = local_4 + -1;
             local_1c = local_1c + 1;
-        } while (local_4 != 0);
+        } while (local_4);
         this->skirmishUnknownSetting1[0] = 1;
         this->skirmishUnknownSetting1[1] = 1;
         this->skirmishUnknownSetting1[2] = 1;
@@ -179,13 +179,13 @@ namespace Synchrony {
         this->skirmishWinCondition = 0;
         this->skirmishTroopsCostGold = 1;
         this->lobbyMapSortOrder = 6;
-        if ((((this->skirmishAutoSaveEveryMinutes != 0) && (this->skirmishAutoSaveEveryMinutes != 5))
+        if ((((this->skirmishAutoSaveEveryMinutes) && (this->skirmishAutoSaveEveryMinutes != 5))
                 && (this->skirmishAutoSaveEveryMinutes != 10))
             && (this->skirmishAutoSaveEveryMinutes != 0x14)) {
             this->skirmishAutoSaveEveryMinutes = 10;
         }
         this->saveRelated = 0;
-        this->field75_0xbe4 = 0;
+        this->lastAutoSaveTime = 0;
         this->commandDelay = 0x23;
         DAT_GameState::instance.mapAndTime.gameOver = FALSE;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resetGameCommands, this)();

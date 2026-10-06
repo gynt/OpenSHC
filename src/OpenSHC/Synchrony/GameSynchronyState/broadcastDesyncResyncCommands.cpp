@@ -529,8 +529,8 @@ namespace Synchrony {
             this->resyncPacketBudget = (-(uint)(iVar6 != 2) & 0xffff8ad0) + 40000;
         }
         this->somePacketSubTypeUnk = 0;
-        this->field70_0xbb0 = 0;
-        this->field71_0xbb4 = 0;
+        this->resyncResumeOuterIndex = 0;
+        this->resyncResumeInnerIndex = 0;
         this->syncRelatedStatusArray[0] = 1;
         this->syncRelatedStatusArray[1] = 1;
         this->syncRelatedStatusArray[2] = 1;
@@ -540,7 +540,7 @@ namespace Synchrony {
         this->syncRelatedStatusArray[6] = 1;
         this->syncRelatedStatusArray[7] = 1;
         this->syncRelatedStatusArray[8] = 1;
-        this->field73_0xbdc = local_10;
+        this->resyncTransferTotalSize = local_10;
         this->currentPacketTotalSize = 0;
         this->syncStatus = 2;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(

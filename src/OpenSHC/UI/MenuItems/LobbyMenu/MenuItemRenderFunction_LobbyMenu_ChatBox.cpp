@@ -70,7 +70,7 @@ namespace UI {
                         _widthTillCursor
                             = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor,
                                 DAT_UserTextHandlerState::ptr)();
-                        if (DAT_00b960dc::instance == 0) {
+                        if (!DAT_00b960dc::instance) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                                 DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _widthTillCursor,
                                 (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 7 + _widthTillCursor,
@@ -113,7 +113,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::renderChatMessageList,
                     DAT_GameSynchronyState::ptr)(DAT_ButtonX::instance + 8,
                     (int)((int)(DAT_ButtonH::instance + -0x1f + DAT_ButtonY::instance)),
-                    (int)((int)(DAT_GameSynchronyState::instance.field237_0x1072f0)));
+                    (int)((int)(DAT_GameSynchronyState::instance.chatScrollOffset)));
             }
         }
 

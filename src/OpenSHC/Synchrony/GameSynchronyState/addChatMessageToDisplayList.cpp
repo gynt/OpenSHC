@@ -31,7 +31,7 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
             (void*)((int)(this->receivedChatMessage)),
             (void*)((int)(this->DAT_ChatMessageArray + this->DAT_ChatMessageArrayIndex)));
-        if (subjectPlayerID == 0) {
+        if (!subjectPlayerID) {
             destination = this->DAT_ChatMessageSubjectPlayerNameArray + this->DAT_ChatMessageArrayIndex;
             /*
               "Host"   added by script: "Host"
@@ -44,12 +44,12 @@ namespace Synchrony {
         }
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             250, (void*)((int)(src)), (void*)((int)(destination)));
-        if (objectPlayerID != 0) {
+        if (objectPlayerID) {
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(250,
                 (void*)((int)(this->DAT_PlayerNames + objectPlayerID)),
                 (void*)((int)(this->DAT_ChatMessageObjectPlayerNameArray + this->DAT_ChatMessageArrayIndex)));
         }
-        this->field237_0x1072f0 = 0;
+        this->chatScrollOffset = 0;
     }
 
 }

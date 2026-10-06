@@ -55,7 +55,7 @@ namespace UI {
             int iVar10;
             BVar2 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if (BVar2 != FALSE) {}
-            if (param_1 == 0) {
+            if (!param_1) {
                 iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 iVar4 = (iVar3 / 32) + 0x20;
                 BVar2 = FALSE;
@@ -106,7 +106,7 @@ namespace UI {
                     pcVar5, iVar4, iVar3, TVar7, BVar9, iVar10, BVar2, iVar6);
             }
             if (10 < param_1) {
-                iVar3 = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 0x1a);
+                iVar3 = (int)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1 - 10];
                 DAT_ButtonUnknownZero::instance = 1;
                 if (iVar3 < 1) {
                     DAT_ButtonUnknownZero::instance = 1;
@@ -293,7 +293,7 @@ namespace UI {
                     if (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                         DAT_ButtonUnknownZero::instance = 1;
                     }
-                    if (DAT_GameSynchronyState::instance.field294_0x109e5f[iVar3] != 0) {
+                    if (DAT_GameSynchronyState::instance.slotActionPending[iVar3] != 0) {
                         DAT_ButtonUnknownZero::instance = 0;
                     }
                     iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;

@@ -14,7 +14,7 @@ namespace Synchrony {
         int* piVar1;
         int iVar2;
         if (this->isHost == FALSE) {
-            if (this->field215_0x106e1c == 0) {
+            if (!this->lobbyStateReceived) {
                 return (undefined4)(0);
             }
         } else {

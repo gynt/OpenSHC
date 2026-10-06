@@ -104,7 +104,7 @@ namespace Game {
         piVar2 = &pCVar7->position1;
         do {
             if (*piVar2 != 0) {
-                DAT_GameSynchronyState::instance.field294_0x109e5f[*piVar2 + 8] = (byte)iVar4;
+                DAT_GameSynchronyState::instance.playerPositionsArray[*piVar2 - 1] = (char)iVar4;
             }
             iVar4 = iVar4 + 1;
             piVar2 = piVar2 + 1;

@@ -127,7 +127,7 @@ void Synchrony::LoadSkirmishCampaignData(int missionID)
     iVar7 = 0;
     do {
         if (*piVar4 != 0) {
-            DAT_GameSynchronyState::instance.field294_0x109e5f[*piVar4 + 8] = (byte)iVar7;
+            DAT_GameSynchronyState::instance.playerPositionsArray[*piVar4 - 1] = (char)iVar7;
         }
         iVar7 = iVar7 + 1;
         piVar4 = piVar4 + 1;

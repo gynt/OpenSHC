@@ -143,8 +143,8 @@ namespace Synchrony {
                 != -1)
             && (DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                 != DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
-            DAT_GameSynchronyState::instance.field290_0x109e20[DAT_GameSynchronyState::instance.DAT_GameCommandParam1]
-                = 1;
+            DAT_GameSynchronyState::instance
+                .mapSendRequestStatePerPlayer[DAT_GameSynchronyState::instance.DAT_GameCommandParam1] = 1;
         }
     LAB_0048ba88:
         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,

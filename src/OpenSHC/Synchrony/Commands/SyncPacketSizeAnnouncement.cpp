@@ -19,9 +19,9 @@ namespace Synchrony {
 
     /*
       Command handler in OpenSHC::Commands. On GCS_SCHEDULE_AND_SEND (host), serializes   currentPacketTotalSize,
-      field73_0xbdc, and field67_0xba4, then immediately executes. On   GCS_EXECUTE (non-host), deserializes those three
-      fields. Used to broadcast resync packet size   metadata from the host to all clients before a resync pass. renamed
-      by: Claude Sonnet 4.6
+      resyncTransferTotalSize, and field67_0xba4, then immediately executes. On   GCS_EXECUTE (non-host), deserializes
+      those three fields. Used to broadcast resync packet size   metadata from the host to all clients before a resync
+      pass. renamed by: Claude Sonnet 4.6
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x00485210
     void Commands::SyncPacketSizeAnnouncement()
@@ -34,7 +34,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.currentPacketTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field73_0xbdc, 4,
+                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.resyncTransferTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field67_0xba4, 4,
@@ -47,7 +47,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.currentPacketTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field73_0xbdc, 4,
+                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.resyncTransferTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field67_0xba4, 4,

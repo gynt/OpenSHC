@@ -12,8 +12,8 @@ namespace Synchrony {
 
     /*
       Resumable chunked resync sender. Picks up from somePacketSubTypeUnk (cases 0-15) and resumes   sending resync
-      commands for the category at that index, starting from field70_0xbb0/field71_0xbb4   offsets. Sends until the
-      packet budget (resyncPacketBudget) is exhausted, then suspends by saving   position and queuing
+      commands for the category at that index, starting from resyncResumeOuterIndex/resyncResumeInnerIndex   offsets.
+      Sends until the packet budget (resyncPacketBudget) is exhausted, then suspends by saving   position and queuing
       GCT_QUIT_MULTIPLAYERGAME as a continuation signal. When all categories are   complete, queues
       GCT_CHECK_GAME_SYNCUnk and advances syncStatus to 3.      renamed by: Claude Sonnet 4.6
      */
@@ -32,8 +32,8 @@ namespace Synchrony {
         int* local_10;
         int* local_c;
         int* local_8;
-        iVar4 = this->field71_0xbb4;
-        iVar8 = this->field70_0xbb0;
+        iVar4 = this->resyncResumeInnerIndex;
+        iVar8 = this->resyncResumeOuterIndex;
         local_14 = 0;
         iVar2 = 1;
         piVar7 = this->syncRelatedStatusArray;
@@ -88,9 +88,9 @@ namespace Synchrony {
                                         = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                     local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                                     if (this->resyncPacketBudget < local_14) {
-                                        this->field71_0xbb4 = iVar4 + 1;
+                                        this->resyncResumeInnerIndex = iVar4 + 1;
                                         this->somePacketSubTypeUnk = 0xd;
-                                        this->field70_0xbb0 = iVar8;
+                                        this->resyncResumeOuterIndex = iVar8;
                                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                             this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
                                     }
@@ -131,7 +131,7 @@ namespace Synchrony {
                             if (this->resyncPacketBudget < local_14) {
                                 this->somePacketSubTypeUnk = 0xf;
                             LAB_0048e84b:
-                                this->field70_0xbb0 = iVar8 + 1;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
                                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                     Commands::GCT_QUIT_MULTIPLAYERGAME);
                             }
@@ -547,9 +547,9 @@ namespace Synchrony {
                                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                                         if (this->resyncPacketBudget < local_14) {
-                                            this->field71_0xbb4 = iVar4 + 1;
+                                            this->resyncResumeInnerIndex = iVar4 + 1;
                                             this->somePacketSubTypeUnk = 0xc;
-                                            this->field70_0xbb0 = iVar8;
+                                            this->resyncResumeOuterIndex = iVar8;
                                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                                 this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
                                         }

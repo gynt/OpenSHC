@@ -105,8 +105,8 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance
                     .DAT_PlayerNames[DAT_GameSynchronyState::instance.DAT_GameCommandParam0][0] = '\0';
             }
-            if (DAT_GameSynchronyState::instance.field261_0x109298 == 0) {
-                DAT_GameSynchronyState::instance.field261_0x109298 = 1;
+            if (!DAT_GameSynchronyState::instance.connectionNoticeShown) {
+                DAT_GameSynchronyState::instance.connectionNoticeShown = 1;
                 pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION,
                     (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));

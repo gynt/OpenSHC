@@ -40,7 +40,7 @@ namespace Synchrony {
                         = DAT_GameCore::instance.mapTimeInTicks + 1;
                 }
             }
-            if (time != 0) {
+            if (time) {
                 if ((int)DAT_GameCore::instance.mapTimeInTicks < (int)time) {
                     if ((int)(time - DAT_GameCore::instance.mapTimeInTicks) < (int)DAT_GameSynchronyState::instance
                             .DAT_LagIndicatorPerPlayer[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
@@ -49,7 +49,7 @@ namespace Synchrony {
                             = (short)time - (short)DAT_GameCore::instance.mapTimeInTicks;
                     }
                 } else {
-                    this->field62_0xb90 = this->field62_0xb90 + 2;
+                    this->lateCommandPenalty = this->lateCommandPenalty + 2;
                 }
             }
             this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;

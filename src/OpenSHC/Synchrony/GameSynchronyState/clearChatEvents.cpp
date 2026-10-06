@@ -28,8 +28,8 @@ namespace Synchrony {
             _chatEventPtr->flag = 0;
             _chatEventPtr = _chatEventPtr + 4;
             _chatEventCounter = _chatEventCounter + -1;
-        } while (_chatEventCounter != 0);
-        this->field237_0x1072f0 = 0;
+        } while (_chatEventCounter);
+        this->chatScrollOffset = 0;
     }
 
 }

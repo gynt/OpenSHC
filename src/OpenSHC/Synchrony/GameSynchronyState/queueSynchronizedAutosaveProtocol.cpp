@@ -23,9 +23,9 @@ namespace Synchrony {
         if ((((this->currentGameMode != Game::GM_SOLITARY)
                  && (this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (this->isHost != FALSE))
-            && ((this->skirmishAutoSaveEveryMinutes != 0 && (this->timeSkirmishGameStart != 0)))) {
+            && ((this->skirmishAutoSaveEveryMinutes && (this->timeSkirmishGameStart)))) {
             BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if ((BVar1 != FALSE) && ((this->syncStatus == 0 && (this->saveRelated == 0)))) {
+            if ((BVar1 != FALSE) && ((!this->syncStatus && (!this->saveRelated)))) {
                 DVar2 = timeGetTime();
                 if (this->skirmishAutoSaveEveryMinutes * 60000 < (int)(DVar2 - this->timeSkirmishGameStart)) {
                     /*
@@ -33,7 +33,7 @@ namespace Synchrony {
                      */
                     strcpy(this->shortMapName, "autosave");
                     this->DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
-                    this->field75_0xbe4 = DVar2;
+                    this->lastAutoSaveTime = DVar2;
                     this->timeSkirmishGameStart = DVar2;
                     this->DAT_GameCommandParam1 = MACRO_CALL_MEMBER(
                         Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray, this)();

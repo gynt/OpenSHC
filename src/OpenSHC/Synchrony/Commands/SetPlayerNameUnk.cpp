@@ -103,7 +103,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(
                 OpenSHC::Synchrony::GameSynchronyState_Func::setSessionDescription, DAT_GameSynchronyState::ptr)();
             MACRO_CALL(OpenSHC::Synchrony_Func::ProgressBarRelated)();
-            DAT_GameSynchronyState::instance.field215_0x106e1c = 0;
+            DAT_GameSynchronyState::instance.lobbyStateReceived = 0;
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 ((GameCommandType)0x35));
         };

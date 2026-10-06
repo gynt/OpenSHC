@@ -35,7 +35,7 @@ namespace UI {
             int playerID_01;
             if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                 if (param_1 < 9) {
-                    if (DAT_00df423c::instance != 0) {
+                    if (DAT_00df423c::instance) {
                         param_1 = param_1 + 10;
                     }
                     if (param_1 < 9) {
@@ -43,9 +43,8 @@ namespace UI {
                         DAT_00df423c::instance = param_1;
                     }
                 }
-                if ((param_1 - 0xbU < 8) && (DAT_00df423c::instance != 0)) {
-                    int playerID
-                        = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 26);
+                if ((param_1 - 0xbU < 8) && (DAT_00df423c::instance)) {
+                    int playerID = (int)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1 - 10];
                     playerID_01
                         = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance];
                     if ((((0 < playerID_01) && ((0 < playerID && (playerID != playerID_01))))
@@ -68,7 +67,7 @@ namespace UI {
                         }
                         if (2 < iVar4) {
                             if ((DAT_GameSynchronyState::instance.currentAIArray[playerID_01] == 1)
-                                && (DAT_00df4240::instance == 0)) {
+                                && (!DAT_00df4240::instance)) {
                                 if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                                     /*
                                       "Not the rodent"
@@ -79,7 +78,7 @@ namespace UI {
                                 DAT_00df4240::instance = 1;
                             }
                             if ((DAT_GameSynchronyState::instance.currentAIArray[playerID_01] == 7)
-                                && (DAT_00df4298::instance == 0)) {
+                                && (!DAT_00df4298::instance)) {
                                 if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                                     /*
                                       "Oh no"
@@ -93,7 +92,7 @@ namespace UI {
                         byte bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID];
                         if ((DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] != bVar1)
                             || (DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] == 0)) {
-                            if (bVar1 == 0) {
+                            if (!bVar1) {
                                 bVar1 = 0;
                                 if (('\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1])
                                     && ('\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1])) {
@@ -130,9 +129,8 @@ namespace UI {
                                 DAT_GameSynchronyState::instance
                                     .DAT_PlayerGroupArray[(char)DAT_GameSynchronyState::instance
                                             .DAT_RoundTableOrderArray[DAT_00df423c::instance]] = bVar1 + 1;
-                                DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[*(
-                                    char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 0x1a)]
-                                    = bVar1 + 1;
+                                DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[DAT_GameSynchronyState::instance
+                                        .DAT_RoundTableOrderArray[param_1 - 10]] = bVar1 + 1;
                                 MACRO_CALL_MEMBER(
                                     Audio::SFX::SFXState_Func::scheduleSFXVariation, DAT_SFXState::ptr)(7, 1);
                                 BVar3
@@ -199,7 +197,7 @@ namespace UI {
                             }
                         }
                     }
-                    if ((param_1 + -10 == DAT_00df423c::instance) && (INT_00df4244::instance == 0)) {
+                    if ((param_1 + -10 == DAT_00df423c::instance) && (!INT_00df4244::instance)) {
                         INT_00df4244::instance = 1;
                     } else {
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
@@ -208,7 +206,7 @@ namespace UI {
                     }
                 }
                 if (param_1 == 0x15) {
-                    if ((DAT_00df423c::instance != 0)
+                    if ((DAT_00df423c::instance)
                         && (DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance] != 0)) {
                         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[(
                             char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance]] = 0;
@@ -280,11 +278,11 @@ namespace UI {
                             DAT_GameSynchronyState::ptr)();
                     }
                     if (param_1 == 200) {
-                        if (DAT_00df423c::instance != 0) {
+                        if (DAT_00df423c::instance) {
                             DAT_00df423c::instance = 0;
                         }
                     } else if (((param_1 == 0xc9) || (param_1 == 0xca))
-                        && ((DAT_00df423c::instance != 0 && ((INT_00df4244::instance != 1 || (param_1 == 0xc9)))))) {
+                        && ((DAT_00df423c::instance && ((INT_00df4244::instance != 1 || (param_1 == 0xc9)))))) {
                         DAT_00df423c::instance = 0;
                     }
                 }

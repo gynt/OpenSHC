@@ -73,7 +73,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(
                 OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
-            DAT_GameSynchronyState::instance.field215_0x106e1c = 1;
+            DAT_GameSynchronyState::instance.lobbyStateReceived = 1;
         }
     }
 

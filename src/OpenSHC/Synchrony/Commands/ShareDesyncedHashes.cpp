@@ -273,7 +273,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.announcementReceiveTime = timeGetTime();
             }
             DAT_GameSynchronyState::instance.currentPacketTotalSize = 0;
-            DAT_GameSynchronyState::instance.field73_0xbdc = 0;
+            DAT_GameSynchronyState::instance.resyncTransferTotalSize = 0;
         }
     }
 

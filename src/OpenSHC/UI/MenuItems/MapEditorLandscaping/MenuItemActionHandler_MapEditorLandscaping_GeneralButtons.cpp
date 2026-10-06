@@ -30,7 +30,7 @@ namespace UI {
         void MapEditorLandscaping::MenuItemActionHandler_MapEditorLandscaping_GeneralButtons(MappersEnum param_1, ...)
         {
             if (0x14b < (int)param_1) {
-                DAT_GameSynchronyState::instance.field299_0x109e7c = 1;
+                DAT_GameSynchronyState::instance.editorPlacementPlayerID = 1;
                 DAT_TileMapState::instance.currentMapperCommand = param_1;
             }
             if (param_1 == Commands::M_MAPPER_AREA_BACK) {
@@ -119,7 +119,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                 return;
             case Commands::M_MAPPER_SNAP_TO:
-                if (DAT_TileMapState::instance.editorSnapToMode != 0) {
+                if (DAT_TileMapState::instance.editorSnapToMode) {
                     DAT_TileMapState::instance.editorSnapToMode
                         = (-(uint)(DAT_TileMapState::instance.editorSnapToMode != 1) & 0xfffffffe) + 2;
                 }
@@ -159,7 +159,7 @@ namespace UI {
                 }
                 goto LAB_00431652;
             case Commands::M_MAPPER_MAP_SIZE:
-                if (DAT_TileMapState::instance.mapSize == 0) {
+                if (!DAT_TileMapState::instance.mapSize) {
                     DAT_TileMapState::instance.mapSize = 400;
                 }
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::setMapSize, DAT_TileMapState::ptr)(
@@ -183,7 +183,7 @@ namespace UI {
             case Commands::M_MAPPER_MP_KEEP6:
             case Commands::M_MAPPER_MP_KEEP7:
             case Commands::M_MAPPER_MP_KEEP8:
-                DAT_GameSynchronyState::instance.field299_0x109e7c
+                DAT_GameSynchronyState::instance.editorPlacementPlayerID
                     = param_1 - Commands::M_MAPPER_SUB_MODE_FEATURE_MP;
                 if (DAT_GameCore::instance.mapU2MiddleBytes[2] == 0) {
                     DAT_TileMapState::instance.currentMapperCommand

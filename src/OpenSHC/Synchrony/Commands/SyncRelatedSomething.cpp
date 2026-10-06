@@ -31,7 +31,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.currentPacketTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field73_0xbdc, 4,
+                DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.resyncTransferTotalSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             DAT_GameSynchronyState::instance.DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
             piVar1 = DAT_GameSynchronyState::instance.syncRelatedStatusArray;
@@ -57,7 +57,7 @@ namespace Synchrony {
                     OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-                    DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.field73_0xbdc, 4,
+                    DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.resyncTransferTotalSize, 4,
                     OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             }

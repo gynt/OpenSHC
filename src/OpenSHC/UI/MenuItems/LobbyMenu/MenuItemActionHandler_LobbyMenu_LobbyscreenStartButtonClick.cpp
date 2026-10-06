@@ -53,7 +53,7 @@ namespace UI {
             int _f1;
             int iVar4;
             int _f0;
-            if (DAT_00b960dc::instance != 0) {}
+            if (DAT_00b960dc::instance) {}
             if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
             if (0x69 < param_1) {
                 if (param_1 != 0x19d) {}
@@ -478,15 +478,15 @@ namespace UI {
                 }
                 break;
             case -2:
-                if (0 < DAT_GameSynchronyState::instance.field237_0x1072f0) {
-                    DAT_GameSynchronyState::instance.field237_0x1072f0
-                        = DAT_GameSynchronyState::instance.field237_0x1072f0 + -1;
+                if (0 < DAT_GameSynchronyState::instance.chatScrollOffset) {
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + -1;
                 }
                 break;
             case -1:
-                if (DAT_GameSynchronyState::instance.field237_0x1072f0 < 0xf) {
-                    DAT_GameSynchronyState::instance.field237_0x1072f0
-                        = DAT_GameSynchronyState::instance.field237_0x1072f0 + 1;
+                if (DAT_GameSynchronyState::instance.chatScrollOffset < 0xf) {
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + 1;
                 }
                 break;
             default:

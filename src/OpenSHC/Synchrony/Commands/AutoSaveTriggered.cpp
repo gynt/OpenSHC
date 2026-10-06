@@ -104,7 +104,7 @@ namespace Synchrony {
                 = DAT_GameSynchronyState::instance.DAT_GameCommandParam1;
             MACRO_CALL(OpenSHC::UI::Helpers_Func::ShowProgressBarSaveLoadDialog)(
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2);
-            DAT_GameSynchronyState::instance.field75_0xbe4 = timeGetTime();
+            DAT_GameSynchronyState::instance.lastAutoSaveTime = timeGetTime();
             DAT_GameSynchronyState::instance.saveRelated = 1;
             if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                 DAT_GameSynchronyState::instance.shouldSendAnnouncementUnk = 1;

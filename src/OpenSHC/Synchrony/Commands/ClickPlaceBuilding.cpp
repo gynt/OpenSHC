@@ -88,7 +88,7 @@ namespace Synchrony {
                     iVar1 == 0)) {}
             DAT_BuildingsState::instance.DAT_DraggedTileCountVerified
                 = DAT_GameSynchronyState::instance.DAT_GameCommandParam5;
-            iVar1 = DAT_GameSynchronyState::instance.field299_0x109e7c;
+            iVar1 = DAT_GameSynchronyState::instance.editorPlacementPlayerID;
             if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
                 iVar1 = DAT_GameSynchronyState::instance.protocolInvokerPlayerID;
             }

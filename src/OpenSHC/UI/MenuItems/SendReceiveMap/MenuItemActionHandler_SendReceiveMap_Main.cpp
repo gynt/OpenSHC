@@ -38,7 +38,7 @@ namespace UI {
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             if (param_1 != 3) {
-                if ((param_1 == 0x44) && (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 0)) {
+                if ((param_1 == 0x44) && (!DAT_GameSynchronyState::instance.DAT_MapFileReceivingState)) {
                     DAT_GameSynchronyState::instance.DAT_MapFileReceivingState = 1;
                     pcVar2 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
@@ -66,7 +66,7 @@ namespace UI {
                       Open the same file 8 times, for each lobby player once
                      */
                     for (_addressee = 1; _addressee < 9; _addressee++) {
-                        DAT_GameSynchronyState::instance.field290_0x109e20[_addressee] = 0;
+                        DAT_GameSynchronyState::instance.mapSendRequestStatePerPlayer[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[_addressee] = 0;
                         if (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[_addressee] == 1) {

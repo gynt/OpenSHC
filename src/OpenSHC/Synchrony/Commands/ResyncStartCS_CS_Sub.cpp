@@ -34,7 +34,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(1);
             DAT_GameSynchronyState::instance.resyncStartTime = timeGetTime();
             DAT_GameSynchronyState::instance.currentPacketTotalSize = 0;
-            DAT_GameSynchronyState::instance.field267_0x1092b0 = 0;
+            DAT_GameSynchronyState::instance.connectionInfoExpanded = 0;
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_SOME_MULTIPLAYER_INFO_Unk_19, 1);
             DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.resyncStartTime;

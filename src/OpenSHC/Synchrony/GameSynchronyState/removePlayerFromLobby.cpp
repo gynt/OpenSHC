@@ -26,7 +26,7 @@ namespace Synchrony {
         if ((BVar1 != FALSE) && (playerID != this->currentPlayerSlotID)) {
             this->DAT_GameCommandParam0 = playerID;
             this->DAT_GameCommandParam1 = this->kickDueToLagStatusUnk;
-            if ((this->syncStatus == 0) && (this->saveRelated == 0)) {
+            if ((!this->syncStatus) && (!this->saveRelated)) {
                 commandType = (Commands::GameCommandType)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2
                     | Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
             } else {
@@ -45,7 +45,7 @@ namespace Synchrony {
         this->DAT_ReceivedAIVFileAvailabilityPerAIArray[playerID][0] = -1;
         MACRO_CALL(Synchrony::Actions_Func::RemovePositionOfPlayer)(playerID);
         this->DAT_MultiplayerGameVersions[playerID] = 0;
-        this->field294_0x109e5f[playerID] = 0;
+        this->slotActionPending[playerID] = 0;
         if ((playerID != this->currentPlayerSlotID) && (this->isHost != FALSE)) {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
         }
