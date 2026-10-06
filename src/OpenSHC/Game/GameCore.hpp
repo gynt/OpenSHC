@@ -111,18 +111,18 @@ namespace Game {
         dword unknownAlwaysZero; // 0x0000010C length: 4
         dword unknownAlwaysZero02; // 0x00000110 length: 4
         int unknownAlwaysZero03; // 0x00000114 length: 4
-        BOOLEnum unknownFlag_0x118; // 0x00000118 length: 4
-        DWORD unknownTime_0x11c; // 0x0000011C length: 4
+        BOOLEnum isNameEntryActive; // 0x00000118 length: 4
+        DWORD nameEntryStartTime; // 0x0000011C length: 4
         byte unused_0x120[8]; // 0x00000120 length: 8
         int scribeAnimationFrameCopy; // 0x00000128 length: 4
         int taxesSettingUnk; // 0x0000012C length: 4
-        BOOLEnum unknownScribeRelatedFlag_0x130; // 0x00000130 length: 4
+        BOOLEnum scribeAnimationPhase; // 0x00000130 length: 4
         int scribeAnimationFrame; // 0x00000134 length: 4
         int scribeAnimationFrame2; // 0x00000138 length: 4
         int taxestimeUnk; // 0x0000013C length: 4
         byte unused_0x140[4]; // 0x00000140 length: 4
-        int field77_0x144; // 0x00000144 length: 4
-        int field78_0x148; // 0x00000148 length: 4
+        int popularityMessagePage; // 0x00000144 length: 4
+        int popularityMessagePageCount; // 0x00000148 length: 4
         dword isBinkVideoPlaying; // 0x0000014C length: 4
         dword section1095; // 0x00000150 length: 4
         dword newPlayerID; // 0x00000154 length: 4

@@ -37,7 +37,7 @@ namespace UI {
                 }
                 break;
             case 3:
-                if ((DAT_GameCore::instance.unknownFlag_0x118 != TRUE)
+                if ((DAT_GameCore::instance.isNameEntryActive != TRUE)
                     && (DAT_UserTextHandlerState::instance.textArrayIndex != Text::TAIT_ZERO)) {
                     MACRO_CALL_MEMBER(
                         Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0);

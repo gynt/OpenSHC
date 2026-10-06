@@ -28,7 +28,7 @@ namespace UI {
         {
             DWORD DVar1;
             bool bVar2;
-            if (DAT_GameCore::instance.unknownFlag_0x118 != TRUE) {
+            if (DAT_GameCore::instance.isNameEntryActive != TRUE) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                     DAT_TextureRenderCoreObject::ptr)(0,
                     (DAT_WindowAndDirectDraw::instance.resolutionX
@@ -37,9 +37,9 @@ namespace UI {
                     (DAT_WindowAndDirectDraw::instance.resolutionY
                         - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                         / 2);
-                if (DAT_GameCore::instance.unknownFlag_0x118 == TRUE) {
+                if (DAT_GameCore::instance.isNameEntryActive == TRUE) {
                     DVar1 = timeGetTime();
-                    if ((DVar1 - DAT_GameCore::instance.unknownTime_0x11c < 0x3e9)
+                    if ((DVar1 - DAT_GameCore::instance.nameEntryStartTime < 0x3e9)
                         && (!DAT_MouseState::instance.draggingStopped)) {
                         if (!DAT_MouseState::instance.rightClickStop) {
                             return;

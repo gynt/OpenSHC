@@ -95,8 +95,8 @@ namespace UI {
                 pcVar2 = pcVar2 + 1;
             } while (cVar1 != '\0');
             if (pcVar2 != pcVar3) {
-                DAT_GameCore::instance.unknownFlag_0x118 = TRUE;
-                DAT_GameCore::instance.unknownTime_0x11c = timeGetTime();
+                DAT_GameCore::instance.isNameEntryActive = TRUE;
+                DAT_GameCore::instance.nameEntryStartTime = timeGetTime();
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_MAIN_MENU, 0);
                 MACRO_CALL_MEMBER(Game::GameCore_Func::processMenuViewSwitch, DAT_GameCore::ptr)();
@@ -111,7 +111,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
-            DAT_GameCore::instance.unknownFlag_0x118 = FALSE;
+            DAT_GameCore::instance.isNameEntryActive = FALSE;
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0);
             /*
               added by script: "Lord Crusader"

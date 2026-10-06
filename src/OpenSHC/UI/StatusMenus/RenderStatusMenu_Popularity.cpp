@@ -129,22 +129,22 @@ namespace UI {
             bVar13 = bVar13 + 1;
             local_4 = uVar10;
         }
-        DAT_GameCore::instance.field78_0x148 = (2 < bVar13) + 1;
-        if (DAT_GameCore::instance.field78_0x148 <= DAT_GameCore::instance.field77_0x144) {
-            DAT_GameCore::instance.field77_0x144 = 0;
+        DAT_GameCore::instance.popularityMessagePageCount = (2 < bVar13) + 1;
+        if (DAT_GameCore::instance.popularityMessagePageCount <= DAT_GameCore::instance.popularityMessagePage) {
+            DAT_GameCore::instance.popularityMessagePage = 0;
         }
         local_2c = (int)sVar6 + (int)sVar5 + (int)sVar4 + (int)sVar3 + (int)sVar2 + (int)sVar1;
         if (BVar20) {
             local_2c = local_2c + 400;
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar7 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar7 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Food"
              */
@@ -190,19 +190,19 @@ namespace UI {
                 uVar10 = uVar10 + 0x4b;
             }
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)((int)(uVar10)),
                 FALSE);
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar7 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar7 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Tax"
              */
@@ -247,18 +247,18 @@ namespace UI {
                 iVar12 = (-(uint)(iVar12 != 10) & 0xffffff9c) - 500;
             }
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1f2, iVar12, FALSE);
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x20b);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar7 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar7 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Crowding"
              */
@@ -286,18 +286,18 @@ namespace UI {
                 iVar7 = ((0xb4 < iVar7) - 1 & 0x32) - 0xfa;
             }
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x20a, iVar7, FALSE);
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar17 = 0x12;
             iVar16 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x223);
             iVar21 = DAT_MenuHandlerState::instance.x + 0xc1;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar9 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar9 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Fear Factor"
              */
@@ -317,18 +317,18 @@ namespace UI {
         } else {
             iVar9 = uVar11 * 0x19;
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x222, iVar9, FALSE);
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar18 = 0x12;
             iVar21 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar17 = DAT_MenuHandlerState::instance.x + 0x163;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar16 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar16 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Religion"
              */
@@ -357,18 +357,18 @@ namespace UI {
             != 0) {
             iVar16 = iVar16 + 0x32;
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1da, iVar16, FALSE);
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             iVar19 = 0x12;
             iVar17 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar18 = DAT_MenuHandlerState::instance.x + 0x163;
-            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.field77_0x144);
-            BVar15 = DAT_GameCore::instance.field77_0x144;
-            BVar20 = DAT_GameCore::instance.field77_0x144;
-            iVar21 = DAT_GameCore::instance.field77_0x144;
+            TVar14 = (OpenSHC::Text::TextAlignment)(DAT_GameCore::instance.popularityMessagePage);
+            BVar15 = DAT_GameCore::instance.popularityMessagePage;
+            BVar20 = DAT_GameCore::instance.popularityMessagePage;
+            iVar21 = DAT_GameCore::instance.popularityMessagePage;
             /*
               added by script: "Ale coverage"
              */
@@ -388,14 +388,14 @@ namespace UI {
         } else {
             iVar21 = ((99 < iVar21) - 1 & 0xffffffce) + 200;
         }
-        if (!DAT_GameCore::instance.field77_0x144) {
+        if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1f2, iVar21, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .areCarnivalUnitsPresent)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -421,7 +421,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -451,7 +451,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount59
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -481,7 +481,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount54
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -511,7 +511,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount55
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -540,7 +540,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount56
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][2] + DAT_MenuHandlerState::instance.y;
             iVar18
@@ -570,7 +570,7 @@ namespace UI {
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount57
                 != 0)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][0]
-                == DAT_GameCore::instance.field77_0x144)) {
+                == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17
                 = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][2] + DAT_MenuHandlerState::instance.y;
             iVar18

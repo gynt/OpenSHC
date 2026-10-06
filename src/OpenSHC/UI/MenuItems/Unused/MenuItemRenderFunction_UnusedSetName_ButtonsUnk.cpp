@@ -39,10 +39,10 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            if (DAT_GameCore::instance.unknownFlag_0x118 == TRUE) {
+            if (DAT_GameCore::instance.isNameEntryActive == TRUE) {
                 bVar1 = param_1 == 8;
             } else {
-                if (DAT_GameCore::instance.unknownFlag_0x118)
+                if (DAT_GameCore::instance.isNameEntryActive)
                     goto LAB_00426777;
                 bVar1 = param_1 == 0x19;
             }

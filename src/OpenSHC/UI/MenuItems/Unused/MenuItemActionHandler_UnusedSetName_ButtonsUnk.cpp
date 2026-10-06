@@ -24,7 +24,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_MAIN_MENU, 0);
             } else if (param_1 == 0x19) {
-                DAT_GameCore::instance.unknownFlag_0x118 = FALSE;
+                DAT_GameCore::instance.isNameEntryActive = FALSE;
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     0);
             }
