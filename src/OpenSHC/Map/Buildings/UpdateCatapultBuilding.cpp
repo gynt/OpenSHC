@@ -129,7 +129,7 @@ namespace Map {
                         DAT_UnitsState::instance.units[unitID].cachedState
                             = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                         DAT_UnitsState::instance.units[unitID].totalSizeOfPathPlan = 0;
-                        DAT_UnitsState::instance.units[unitID].unknownMovementRelated_0x2d2 = 0;
+                        DAT_UnitsState::instance.units[unitID].movementCooldown = 0;
                         MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(unitID);
                         sVar1 = DAT_UnitsState::instance.units[unitID].aiUnitBehaviourType;

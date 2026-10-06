@@ -175,7 +175,7 @@ namespace Map {
         undefined4 buildingRotationRelatedValue; // 0x00554994 length: 4
         undefined4 placementOnWall; // 0x00554998 length: 4
         undefined4 placementOnMoat; // 0x0055499C length: 4
-        undefined4 cursorMoatTile; // 0x005549A0 length: 4
+        undefined4 savedCursorTile; // 0x005549A0 length: 4
         int showNoRubbleWhenDestroyingBuilding; // 0x005549A4 length: 4
         undefined4 field155_0x5549a8; // 0x005549A8 length: 4
         undefined4 field156_0x5549ac; // 0x005549AC length: 4

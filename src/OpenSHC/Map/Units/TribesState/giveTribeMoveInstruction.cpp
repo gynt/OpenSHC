@@ -425,7 +425,7 @@ namespace Map {
                                                 .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                                             == 1)))))) {
                                 if (UVar1 == Map::Units::States::US_MELEE_ATTACK) {
-                                    DAT_UnitsState::instance.units[_unitID_2].unknownMovementRelated_0x2d2
+                                    DAT_UnitsState::instance.units[_unitID_2].movementCooldown
                                         = DAT_UnitsState::instance.units[_unitID_2].movementSpeed * -4;
                                 }
                                 DAT_UnitsState::instance.units[_unitID_2].state.generic
@@ -569,7 +569,7 @@ namespace Map {
                                     DAT_UnitsState::instance.units[_targetUnitID].moveDelay
                                         = (short)(DAT_UnitSelectionDefinedData::instance.UnitMoveDelay[sVar3] / 2);
                                 }
-                                if (DAT_UnitsState::instance.units[_targetUnitID].unknownMovementRelated_0x2d2 != 0) {
+                                if (DAT_UnitsState::instance.units[_targetUnitID].movementCooldown != 0) {
                                     DAT_UnitsState::instance.units[_targetUnitID].moveDelay = 0;
                                 }
                                 DAT_UnitsState::instance.units[_targetUnitID].moveInstructionSpeedDelayTracker = 0;

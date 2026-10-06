@@ -154,7 +154,7 @@ namespace Map {
                         DAT_UnitsState::instance.units[_engineer].cachedState
                             = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                         DAT_UnitsState::instance.units[_engineer].totalSizeOfPathPlan = 0;
-                        DAT_UnitsState::instance.units[_engineer].unknownMovementRelated_0x2d2 = 0;
+                        DAT_UnitsState::instance.units[_engineer].movementCooldown = 0;
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::resetUnitMovementState,
                             DAT_UnitsState::ptr)(_engineer);
                         sVar2 = DAT_UnitsState::instance.units[_engineer].aiUnitBehaviourType;

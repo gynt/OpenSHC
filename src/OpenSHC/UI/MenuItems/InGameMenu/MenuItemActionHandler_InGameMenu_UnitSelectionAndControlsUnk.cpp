@@ -954,7 +954,7 @@ namespace UI {
                                             BVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                           calculateCanReachUsingCachedAreaLogic,
                                                 DAT_PathFindingState::ptr)(
-                                                DAT_ViewportRenderState::instance.viewportState.field24_0x60,
+                                                DAT_ViewportRenderState::instance.viewportState.cursorTile,
                                                 DAT_UnitsState::instance.units[(int)local_18].tile);
                                             if (BVar8)
                                                 goto LAB_moveToTileUI;
@@ -1539,15 +1539,15 @@ namespace UI {
                         DAT_UnitsState::instance.field49_0x608 = 0;
                     }
                 }
-                if (!DAT_ViewportRenderState::instance.viewportState.field24_0x60)
+                if (!DAT_ViewportRenderState::instance.viewportState.cursorTile)
                     goto LAB_00436953;
                 bVar18 = false;
                 while (true) {
                     bVar17 = false;
                     flag1003 = DAT_TileMapState::instance
-                                   .LogicLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60];
+                                   .LogicLayer[DAT_ViewportRenderState::instance.viewportState.cursorTile];
                     uVar1 = DAT_TileMapState::instance
-                                .PathConnectionLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60];
+                                .PathConnectionLayer[DAT_ViewportRenderState::instance.viewportState.cursorTile];
                     /*
                       returns a unit id if it fulfills some criteria? being selected !?
                      */
@@ -1572,9 +1572,8 @@ namespace UI {
                             (dword)((int)((int)(short)uVar1)), (dword)((int)(toArea)), _specificRange);
                         bVar17 = _specificRange != 0;
                     }
-                    BVar8
-                        = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::isTowerTileOvercrowdedByCurrentPlayer,
-                            DAT_UnitsState::ptr)(DAT_ViewportRenderState::instance.viewportState.field24_0x60);
+                    BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::isTowerTileOvercrowdedByCurrentPlayer,
+                        DAT_UnitsState::ptr)(DAT_ViewportRenderState::instance.viewportState.cursorTile);
                     if (BVar8) {
                         bVar17 = false;
                     }
@@ -1612,15 +1611,15 @@ namespace UI {
                         break;
                     bVar18 = true;
                     if ((DAT_TileMapState::instance
-                                .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60]
+                                .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.cursorTile]
                             == 0)
                         || (DAT_BuildingsState::instance
                                 .buildings[DAT_TileMapState::instance
-                                        .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60]]
+                                        .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.cursorTile]]
                                 .buildingType
                             != Map::Buildings::BT_MANORHOUSE))
                         break;
-                    DAT_ViewportRenderState::instance.viewportState.field24_0x60
+                    DAT_ViewportRenderState::instance.viewportState.cursorTile
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .campground.tileEntry;
                     DAT_ViewportRenderState::instance.viewportState.mouseX
@@ -1635,7 +1634,7 @@ namespace UI {
                 if ((!BVar12)
                     || (BVar12 = MACRO_CALL_MEMBER(
                             Map::Navigation::PathFindingState_Func::calculateCanReachUsingCachedAreaLogic,
-                            DAT_PathFindingState::ptr)(DAT_ViewportRenderState::instance.viewportState.field24_0x60,
+                            DAT_PathFindingState::ptr)(DAT_ViewportRenderState::instance.viewportState.cursorTile,
                             DAT_UnitsState::instance.units[_shooterID].tile),
                         !BVar12)) {
                     if (bVar17)
@@ -1690,7 +1689,7 @@ namespace UI {
                 if (((!_otherUnitIDUnk) || (!bVar17))
                     || ((bVar16
                         || ((_shooterID = (int)DAT_TileMapState::instance
-                                 .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60],
+                                 .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.cursorTile],
                             _shooterID == 0
                                 || (BVar5 = DAT_BuildingsState::instance.buildings[_shooterID].buildingType,
                                     (short)BVar5 < 0x28))))))

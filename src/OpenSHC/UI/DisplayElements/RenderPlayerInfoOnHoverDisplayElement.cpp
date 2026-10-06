@@ -70,11 +70,11 @@ namespace UI {
         }
         if ((!DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID)
             || (!DAT_ViewportRenderState::instance.viewportState.field0_0x0)) {
-            if ((DAT_ViewportRenderState::instance.viewportState.field21_0x54)
+            if ((DAT_ViewportRenderState::instance.viewportState.cursorWallTile)
                 && (((DAT_ViewportRenderState::instance.viewportState.field0_0x0
                          && (iVar3
                              = (DAT_TileMapState::instance
-                                       .WallOwnerLayer[DAT_ViewportRenderState::instance.viewportState.field21_0x54]
+                                       .WallOwnerLayer[DAT_ViewportRenderState::instance.viewportState.cursorWallTile]
                                    & 7)
                                  + 1,
                              DAT_GameCore::instance.mapU4Int0 != 0))

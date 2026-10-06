@@ -182,7 +182,7 @@ namespace UI {
                     if (!DAT_TileMapState::instance.placementOnMoat) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 50;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                            = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
+                            = DAT_ViewportRenderState::instance.viewportState.cursorWallTile;
                         if (!DAT_TileMapState::instance.placementOnWall) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                                 = DAT_TileMapState::instance.cursorTargetID;
@@ -204,7 +204,7 @@ namespace UI {
                     } else {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0xffffffff;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                            = DAT_TileMapState::instance.cursorMoatTile;
+                            = DAT_TileMapState::instance.savedCursorTile;
                     }
                     DAT_TileMapState::instance.MiscDisplayLayer[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                         = DAT_TileMapState::instance

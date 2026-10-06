@@ -43,12 +43,12 @@ namespace Map {
         }
         this->buildingPlacementFail = FALSE;
         if (DAT_ViewportRenderState::instance.viewportState.field15_0x3c) {
-            local_4 = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
-            this->cursorMoatTile = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
+            local_4 = DAT_ViewportRenderState::instance.viewportState.cursorTile;
+            this->savedCursorTile = DAT_ViewportRenderState::instance.viewportState.cursorTile;
         }
         if (!this->flatViewToggleValue1) {
             x = DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID;
-            iVar4 = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
+            iVar4 = DAT_ViewportRenderState::instance.viewportState.cursorWallTile;
         LAB_00504ae2:
             if (x)
                 goto LAB_00504ae6;
@@ -58,7 +58,7 @@ namespace Map {
             if (!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 0x100U))
                 goto LAB_00504ae2;
             if ((!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 2U)) || (!x)) {
-                DAT_ViewportRenderState::instance.viewportState.field21_0x54
+                DAT_ViewportRenderState::instance.viewportState.cursorWallTile
                     = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                 iVar4 = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                 goto LAB_00504ae2;

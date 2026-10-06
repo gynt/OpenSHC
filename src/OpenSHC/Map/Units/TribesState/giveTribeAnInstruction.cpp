@@ -330,7 +330,7 @@ namespace Map {
                                             DAT_UnitsState::instance.units[iVar11].targetedBuildingTile = 0;
                                             DAT_UnitsState::instance.units[iVar11].movementType_OR_targetUnitID = 0;
                                             if (UVar3 == Map::Units::States::US_MELEE_ATTACK) {
-                                                DAT_UnitsState::instance.units[iVar11].unknownMovementRelated_0x2d2
+                                                DAT_UnitsState::instance.units[iVar11].movementCooldown
                                                     = DAT_UnitsState::instance.units[iVar11].movementSpeed * -4;
                                             }
                                             DAT_UnitsState::instance.units[iVar11].state.generic
@@ -696,7 +696,7 @@ namespace Map {
                                         DAT_UnitsState::instance.units[_unitID].plannedDestinationY = sVar9;
                                         if (DAT_UnitsState::instance.units[_unitID].state.generic
                                             == Map::Units::States::US_MELEE_ATTACK) {
-                                            DAT_UnitsState::instance.units[_unitID].unknownMovementRelated_0x2d2
+                                            DAT_UnitsState::instance.units[_unitID].movementCooldown
                                                 = DAT_UnitsState::instance.units[_unitID].movementSpeed * -4;
                                         }
                                         DAT_UnitsState::instance.units[_unitID].state.generic
@@ -746,7 +746,7 @@ namespace Map {
                                         DAT_UnitsState::instance.units[_unitID].plannedDestinationY = sVar9;
                                         if (DAT_UnitsState::instance.units[_unitID].state.generic
                                             == Map::Units::States::US_MELEE_ATTACK) {
-                                            DAT_UnitsState::instance.units[_unitID].unknownMovementRelated_0x2d2
+                                            DAT_UnitsState::instance.units[_unitID].movementCooldown
                                                 = DAT_UnitsState::instance.units[_unitID].movementSpeed * -4;
                                         }
                                         DAT_UnitsState::instance.units[_unitID].state.generic
@@ -1361,8 +1361,7 @@ namespace Map {
                                                     DAT_UnitsState::instance.units[iVar14].plannedDestinationY = sVar9;
                                                     if (DAT_UnitsState::instance.units[iVar14].state.generic
                                                         == Map::Units::States::US_MELEE_ATTACK) {
-                                                        DAT_UnitsState::instance.units[iVar14]
-                                                            .unknownMovementRelated_0x2d2
+                                                        DAT_UnitsState::instance.units[iVar14].movementCooldown
                                                             = DAT_UnitsState::instance.units[iVar14].movementSpeed * -4;
                                                     }
                                                     DAT_UnitsState::instance.units[iVar14].state.generic
@@ -1397,7 +1396,7 @@ namespace Map {
                                         DAT_PathFindingState::instance.notAllAssassinsUnk = 1;
                                         if (DAT_UnitsState::instance.units[iVar14].state.generic
                                             == Map::Units::States::US_MELEE_ATTACK) {
-                                            DAT_UnitsState::instance.units[iVar14].unknownMovementRelated_0x2d2
+                                            DAT_UnitsState::instance.units[iVar14].movementCooldown
                                                 = DAT_UnitsState::instance.units[iVar14].movementSpeed * -4;
                                         }
                                         DAT_UnitsState::instance.units[iVar14].state.generic
@@ -1482,7 +1481,7 @@ namespace Map {
                                     DAT_PathFindingState::instance.notAllAssassinsUnk = 1;
                                     if (DAT_UnitsState::instance.units[_laddermanID].state.generic
                                         == Map::Units::States::US_MELEE_ATTACK) {
-                                        DAT_UnitsState::instance.units[_laddermanID].unknownMovementRelated_0x2d2
+                                        DAT_UnitsState::instance.units[_laddermanID].movementCooldown
                                             = DAT_UnitsState::instance.units[_laddermanID].movementSpeed * -4;
                                     }
                                     DAT_UnitsState::instance.units[_laddermanID].state.generic
@@ -1802,7 +1801,7 @@ namespace Map {
                                             DAT_UnitsState::instance.units[iVar14].targetedBuildingTile = 0;
                                             if (DAT_UnitsState::instance.units[iVar14].state.generic
                                                 == Map::Units::States::US_MELEE_ATTACK) {
-                                                DAT_UnitsState::instance.units[iVar14].unknownMovementRelated_0x2d2
+                                                DAT_UnitsState::instance.units[iVar14].movementCooldown
                                                     = DAT_UnitsState::instance.units[iVar14].movementSpeed * -4;
                                             }
                                             if (DAT_UnitsState::instance.units[iVar14]._someX_2 == 0) {

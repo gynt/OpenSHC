@@ -26,8 +26,8 @@ namespace Map {
             if (psVar3->logicalState == Map::Units::ULS_NORMAL) {
                 psVar3->someUnitStat2_meleeDamageUnk
                     = (short)DAT_UnitPropertiesDefinedData::instance.UNIT_CAN_MELEE[(short)psVar3->unitType];
-                if (1 < psVar3->unknownMovementRelated_0x2d2) {
-                    psVar3->unknownMovementRelated_0x2d2 = 0;
+                if (1 < psVar3->movementCooldown) {
+                    psVar3->movementCooldown = 0;
                 }
                 if (psVar3->maxHealth <= psVar3->health) {
                     iVar1 = DAT_UnitPropertiesDefinedData::instance.BASE_HP[(short)psVar3->unitType];

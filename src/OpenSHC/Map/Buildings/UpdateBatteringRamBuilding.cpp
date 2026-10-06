@@ -164,7 +164,7 @@ namespace Map {
                         DAT_UnitsState::instance.units[iVar13].microXPosition = sVar2 * 8 + 4;
                         DAT_UnitsState::instance.units[iVar13].microYPosition = sVar5 * 8 + 4;
                         DAT_UnitsState::instance.units[iVar13].totalSizeOfPathPlan = 0;
-                        DAT_UnitsState::instance.units[iVar13].unknownMovementRelated_0x2d2 = 0;
+                        DAT_UnitsState::instance.units[iVar13].movementCooldown = 0;
                         MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::updateMicroPosition, DAT_UnitsState::ptr)(iVar13);
                         MACRO_CALL_MEMBER(
