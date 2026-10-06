@@ -477,10 +477,10 @@ namespace Map {
                         this->entityArray[entityID].someCounter_OR_hitGround = 1;
                     }
                 } else {
-                    if (((this->entityArray[entityID].field45_0x6a < 3)
+                    if (((this->entityArray[entityID].rotationFrameIndex < 3)
                             && (this->entityArray[entityID].startingAngle < 0))
                         || ((this->entityArray[entityID].hasDoneEffectUnk != 0
-                            || (0 < this->entityArray[entityID].field80_0xba))))
+                            || (0 < this->entityArray[entityID].clearanceStepsRemaining))))
                         goto LAB_00408150;
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::handleProjectileWallBounce, local_10)(
                         entityID);

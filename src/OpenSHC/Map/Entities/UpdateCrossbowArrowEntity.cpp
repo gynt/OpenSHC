@@ -14,8 +14,8 @@ namespace Map {
         short sVar2;
         uVar1 = DAT_CurrentEntityID::instance;
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2
-            = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field45_0x6a * 0x10
-            + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field12_0x1c
+            = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].rotationFrameIndex * 0x10
+            + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].screenDirection
             + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
         sVar2 = DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround;
         if ((sVar2)

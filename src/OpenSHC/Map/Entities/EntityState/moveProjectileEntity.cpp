@@ -94,7 +94,7 @@ namespace Map {
             while (sVar2 < _dx) {
                 psVar1 = &this->entityArray[entityID].travelledDistance;
                 *psVar1 = *psVar1 + 1;
-                psVar1 = &this->entityArray[entityID].field80_0xba;
+                psVar1 = &this->entityArray[entityID].clearanceStepsRemaining;
                 *psVar1 = *psVar1 + -1;
                 if (entityID) {
                     MACRO_CALL_MEMBER(

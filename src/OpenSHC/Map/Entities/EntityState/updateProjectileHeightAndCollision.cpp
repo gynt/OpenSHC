@@ -26,7 +26,7 @@ namespace Map {
             }
             uVar2
                 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(param_3);
-            this->entityArray[entityID].field45_0x6a = (short)uVar2;
+            this->entityArray[entityID].rotationFrameIndex = (short)uVar2;
             this->entityArray[entityID].height_2 = sVar1;
         }
 

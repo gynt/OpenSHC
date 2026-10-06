@@ -18,10 +18,10 @@ namespace Map {
         uint uVar5;
         uVar2 = DAT_CurrentEntityID::instance;
         if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].targetZ == 0) {
-            uVar5 = (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field12_0x1c + 0x91;
+            uVar5 = (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].screenDirection + 0x91;
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2 = uVar5;
             DAT_EntityState::instance.entityArray[uVar2].imageID
-                = DAT_EntityState::instance.entityArray[uVar2].field12_0x1c + 0xa1;
+                = DAT_EntityState::instance.entityArray[uVar2].screenDirection + 0xa1;
             return uVar5;
         }
         if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].rng_2 < 0) {
@@ -32,9 +32,9 @@ namespace Map {
         }
         DAT_EntityState::instance.entityArray[uVar2].graphicType2
             = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated + 1
-            + DAT_EntityState::instance.entityArray[uVar2].field12_0x1c * 8;
+            + DAT_EntityState::instance.entityArray[uVar2].screenDirection * 8;
         DAT_EntityState::instance.entityArray[uVar2].imageID
-            = DAT_EntityState::instance.entityArray[uVar2].field12_0x1c + 0x81;
+            = DAT_EntityState::instance.entityArray[uVar2].screenDirection + 0x81;
         sVar3 = SEC_RNG::instance.currentNumber2;
         sVar4 = DAT_EntityState::instance.entityArray[uVar2].rng_2;
         if ((0 < sVar4) && (sVar4 = sVar4 + -1, DAT_EntityState::instance.entityArray[uVar2].rng_2 = sVar4, !sVar4)) {

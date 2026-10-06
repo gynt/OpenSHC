@@ -399,7 +399,7 @@ namespace Map {
             this->entityArray[param_1].vSin = (float)((double)(int)sVar8 * fVar13);
             uVar2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar9);
             sVar4 = this->entityArray[param_1].xPosition;
-            this->entityArray[param_1].field45_0x6a = (short)uVar2;
+            this->entityArray[param_1].rotationFrameIndex = (short)uVar2;
             sVar8 = this->entityArray[param_1].yPosition;
             this->entityArray[param_1].gmLookupValue = 0;
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(

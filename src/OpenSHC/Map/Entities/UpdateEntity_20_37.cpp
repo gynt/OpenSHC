@@ -14,13 +14,13 @@ namespace Map {
         short sVar2;
         uint uVar3;
         uVar1 = DAT_CurrentEntityID::instance;
-        uVar3
-            = (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field12_0x1c + 8U & 0x8000000f;
+        uVar3 = (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].screenDirection + 8U
+            & 0x8000000f;
         if ((int)uVar3 < 0) {
             uVar3 = (uVar3 - 1 | 0xfffffff0) + 1;
         }
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2 = uVar3
-            + DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field45_0x6a * 0x10
+            + DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].rotationFrameIndex * 0x10
             + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
         sVar2 = DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround;
         if ((sVar2)

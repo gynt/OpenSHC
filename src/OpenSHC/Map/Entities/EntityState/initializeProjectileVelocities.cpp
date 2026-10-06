@@ -95,7 +95,7 @@ namespace Map {
                 sVar5 = (short)uVar6;
                 this->entityArray[entityID].field62_0x94 = sVar5;
                 this->entityArray[entityID].field58_0x8c = sVar5;
-                this->entityArray[entityID].field80_0xba = (short)this->lineOfSightClearanceSteps;
+                this->entityArray[entityID].clearanceStepsRemaining = (short)this->lineOfSightClearanceSteps;
                 sVar10 = this->entityArray[entityID].velocityUnk;
             } else {
                 if (iVar7 == 1) {
@@ -105,7 +105,7 @@ namespace Map {
                     sVar5 = (short)uVar6;
                     this->entityArray[entityID].field62_0x94 = sVar5;
                     this->entityArray[entityID].field58_0x8c = sVar5;
-                    this->entityArray[entityID].field80_0xba = (short)this->lineOfSightClearanceSteps;
+                    this->entityArray[entityID].clearanceStepsRemaining = (short)this->lineOfSightClearanceSteps;
                     iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                         (int)(short)this->entityArray[entityID].entityType,
                         (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)((int)(sVar5)), iVar7);
@@ -120,7 +120,7 @@ namespace Map {
                     sVar9 = (short)uVar6;
                     this->entityArray[entityID].field62_0x94 = sVar9;
                     this->entityArray[entityID].field58_0x8c = sVar9;
-                    this->entityArray[entityID].field80_0xba = (short)this->lineOfSightClearanceSteps;
+                    this->entityArray[entityID].clearanceStepsRemaining = (short)this->lineOfSightClearanceSteps;
                     if (sVar10 < sVar5) {
                         this->entityArray[entityID].startingAngle = 3;
                     }
@@ -211,7 +211,7 @@ namespace Map {
                 sVar5 = (short)uVar6;
                 this->entityArray[entityID].field62_0x94 = sVar5;
                 this->entityArray[entityID].field58_0x8c = sVar5;
-                this->entityArray[entityID].field80_0xba = (short)this->lineOfSightClearanceSteps;
+                this->entityArray[entityID].clearanceStepsRemaining = (short)this->lineOfSightClearanceSteps;
                 if (0x96 < sVar5) {
                     this->entityArray[entityID].velocityUnk = 0x7d;
                 }
@@ -240,7 +240,7 @@ namespace Map {
             this->entityArray[entityID].vSin = (float)(fVar12 * (double)iVar7);
             uVar8
                 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
-            this->entityArray[entityID].field45_0x6a = (short)uVar8;
+            this->entityArray[entityID].rotationFrameIndex = (short)uVar8;
             return;
         }
 

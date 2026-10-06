@@ -17,7 +17,7 @@ namespace Map {
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated = 0;
         }
         iVar1 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated + 1
-            + DAT_EntityState::instance.entityArray[uVar2].field12_0x1c * 0xc;
+            + DAT_EntityState::instance.entityArray[uVar2].screenDirection * 0xc;
         DAT_EntityState::instance.entityArray[uVar2].graphicType2 = iVar1;
         DAT_EntityState::instance.entityArray[uVar2].imageID = (short)iVar1;
     }

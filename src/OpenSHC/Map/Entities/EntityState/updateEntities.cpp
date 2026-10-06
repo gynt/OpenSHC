@@ -98,13 +98,13 @@ namespace Map {
                             this)(DAT_CurrentEntityID::instance);
                         break;
                     default:
-                        this->entityArray[DAT_CurrentEntityID::instance].field12_0x1c
+                        this->entityArray[DAT_CurrentEntityID::instance].screenDirection
                             = (short)this->entityArray[DAT_CurrentEntityID::instance].orientation + -0x3c;
-                        this->entityArray[DAT_CurrentEntityID::instance].field12_0x1c
-                            = this->entityArray[DAT_CurrentEntityID::instance].field12_0x1c
+                        this->entityArray[DAT_CurrentEntityID::instance].screenDirection
+                            = this->entityArray[DAT_CurrentEntityID::instance].screenDirection
                             + (short)DAT_TileMapState::instance.mapOrientation * -2;
-                        psVar4 = &this->entityArray[DAT_CurrentEntityID::instance].field12_0x1c;
-                        if (this->entityArray[DAT_CurrentEntityID::instance].field12_0x1c < 0) {
+                        psVar4 = &this->entityArray[DAT_CurrentEntityID::instance].screenDirection;
+                        if (this->entityArray[DAT_CurrentEntityID::instance].screenDirection < 0) {
                             *psVar4 = *psVar4 + 0x10;
                         }
                         if ((((float)this->entityArray[DAT_CurrentEntityID::instance].speedUnk != 0.0)
