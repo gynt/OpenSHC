@@ -106,7 +106,7 @@ namespace Map {
         undefined4 field68_0x55487c; // 0x0055487C length: 4
         undefined1 padding_0x554880[8]; // 0x00554880 length: 8
         undefined4 placedBuildingID; // 0x00554888 length: 4
-        undefined4 field78_0x55488c; // 0x0055488C length: 4
+        undefined4 gateOrientationVariant; // 0x0055488C length: 4
         undefined4 rockOrientation; // 0x00554890 length: 4
         undefined4 editorRockType; // 0x00554894 length: 4
         undefined4 lastTime; // 0x00554898 length: 4
@@ -203,7 +203,7 @@ namespace Map {
         undefined4 field185_0x554a08; // 0x00554A08 length: 4
         int mapSize; // 0x00554A0C length: 4
         undefined4 field187_0x554a10; // 0x00554A10 length: 4
-        undefined4 field188_0x554a14; // 0x00554A14 length: 4
+        undefined4 skipPlacementFailChecks; // 0x00554A14 length: 4
         undefined1 padding_0x554a18[4]; // 0x00554A18 length: 4
         undefined4 decorationVariantIndex; // 0x00554A1C length: 4
         undefined4 demolishBlocked; // 0x00554A20 length: 4

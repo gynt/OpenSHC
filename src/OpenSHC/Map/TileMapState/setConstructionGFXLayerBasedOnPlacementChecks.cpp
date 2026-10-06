@@ -46,13 +46,13 @@ namespace Map {
         MappersEnumInt unionfacet3_505681;
         int _offset;
         iVar1 = x;
-        iVar14 = this->field188_0x554a14;
-        bVar16 = this->field188_0x554a14 == 0;
+        iVar14 = this->skipPlacementFailChecks;
+        bVar16 = this->skipPlacementFailChecks == 0;
         local_14 = 0;
-        this->field188_0x554a14 = 0;
+        this->skipPlacementFailChecks = 0;
         if (bVar16) {
             if (this->buildingPlacementFail == 2) {
-                this->field188_0x554a14 = 0;
+                this->skipPlacementFailChecks = 0;
                 return (int)(2);
             }
             if (this->buildingPlacementFail) {
@@ -298,12 +298,12 @@ namespace Map {
                         || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1C))
                        || ((undefined2)type == Commands::M_MAPPER_GATE_STONE1A))
             || ((undefined2)type == Commands::M_MAPPER_GATE_STONE2A)) {
-            this->field78_0x55488c = 0x51;
+            this->gateOrientationVariant = 0x51;
         } else if ((((undefined2)type == Commands::M_MAPPER_GATE_WOOD1B)
                        || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1D))
             || (((undefined2)type == Commands::M_MAPPER_GATE_STONE1B
                 || ((undefined2)type == Commands::M_MAPPER_GATE_STONE2B)))) {
-            this->field78_0x55488c = 0x50;
+            this->gateOrientationVariant = 0x50;
         }
         MVar10 = (MappersEnum)(short)(undefined2)type;
         do {
@@ -317,9 +317,9 @@ namespace Map {
             }
             (*(short*)&x) = (short)this->buildingSpriteID1;
             if ((this->mapOrientation == 2) || (this->mapOrientation == 6)) {
-                if (this->field78_0x55488c != 0x51)
+                if (this->gateOrientationVariant != 0x51)
                     goto LAB_00505714;
-            } else if (this->field78_0x55488c == 0x51) {
+            } else if (this->gateOrientationVariant == 0x51) {
             LAB_00505714:
                 (*(short*)&x) = (short)this->buildingSpriteID2;
             }

@@ -204,9 +204,9 @@ namespace UI {
                                                      .data
                                     + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe);
                                 if (*(int*)DAT_MissionAestheticsDefinedData::instance
-                                        .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                        .EventConditionOptionValues[DAT_MapPropertiesState::instance.invasionTroopIndex]
                                     != iVar7) {
-                                    pabVar4 = DAT_MissionAestheticsDefinedData::instance.field1231_0x2444
+                                    pabVar4 = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
                                         + DAT_MapPropertiesState::instance.invasionTroopIndex;
                                     do {
                                         pabVar4 = (byte(*)[100])(*pabVar4 + 4);
@@ -214,27 +214,27 @@ namespace UI {
                                     } while (*(int*)*pabVar4 != iVar7);
                                 }
                                 if (iVar8 + -1 < 0) {
-                                    pabVar4 = DAT_MissionAestheticsDefinedData::instance.field1231_0x2444
+                                    pabVar4 = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
                                         + DAT_MapPropertiesState::instance.invasionTroopIndex;
                                     iVar8 = 0;
                                     do {
                                         iVar7 = iVar8;
                                         if (*(int*)*pabVar4 == -1) {
-                                            *pbVar2 = DAT_MissionAestheticsDefinedData::instance.field1231_0x2444
-                                                          [DAT_MapPropertiesState::instance.invasionTroopIndex + -1]
-                                                          [iVar7 * 4 + 0x60];
+                                            *pbVar2
+                                                = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                                      [DAT_MapPropertiesState::instance.invasionTroopIndex + -1]
+                                                      [iVar7 * 4 + 0x60];
                                             goto LAB_004b98bd;
                                         }
                                         pabVar4 = (byte(*)[100])(*pabVar4 + 4);
                                         iVar8 = iVar7 + 1;
                                     } while (iVar7 + 1 < 100);
-                                    *pbVar2 = DAT_MissionAestheticsDefinedData::instance
-                                                  .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                                                                   [iVar7 * 4 + 4];
+                                    *pbVar2 = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                                  [DAT_MapPropertiesState::instance.invasionTroopIndex][iVar7 * 4 + 4];
                                 } else {
-                                    *pbVar2 = DAT_MissionAestheticsDefinedData::instance
-                                                  .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex
-                                                      + -1][iVar8 * 4 + 0x60];
+                                    *pbVar2 = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                                  [DAT_MapPropertiesState::instance.invasionTroopIndex + -1]
+                                                  [iVar8 * 4 + 0x60];
                                 }
                             }
                         LAB_004b98bd:
@@ -279,33 +279,32 @@ namespace UI {
                                 iVar7 = 10;
                             }
                             if (*(int*)DAT_MissionAestheticsDefinedData::instance
-                                    .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                    .EventConditionOptionValues[DAT_MapPropertiesState::instance.invasionTroopIndex]
                                 != iVar7) {
-                                pabVar4 = DAT_MissionAestheticsDefinedData::instance.field1231_0x2444
+                                pabVar4 = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
                                     + DAT_MapPropertiesState::instance.invasionTroopIndex;
                                 do {
                                     pabVar4 = (byte(*)[100])(*pabVar4 + 4);
                                     iVar8 = iVar8 + 1;
                                 } while (*(int*)*pabVar4 != iVar7);
                             }
-                            if (*(int*)(DAT_MissionAestheticsDefinedData::instance
-                                            .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            if (*(int*)(DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                            [DAT_MapPropertiesState::instance.invasionTroopIndex]
                                     + iVar8 * 4 + 4)
                                 == -1) {
                                 *(byte*)((int)&DAT_MapPropertiesState::instance
                                              .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                              .data
                                     + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)
-                                    = DAT_MissionAestheticsDefinedData::instance
-                                          .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex][0];
+                                    = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                          [DAT_MapPropertiesState::instance.invasionTroopIndex][0];
                             } else {
                                 *(byte*)((int)&DAT_MapPropertiesState::instance
                                              .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                              .data
                                     + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)
-                                    = DAT_MissionAestheticsDefinedData::instance
-                                          .field1231_0x2444[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                                                           [iVar8 * 4 + 4];
+                                    = DAT_MissionAestheticsDefinedData::instance.EventConditionOptionValues
+                                          [DAT_MapPropertiesState::instance.invasionTroopIndex][iVar8 * 4 + 4];
                             }
                         }
                         if (DAT_MissionAestheticsDefinedData::instance

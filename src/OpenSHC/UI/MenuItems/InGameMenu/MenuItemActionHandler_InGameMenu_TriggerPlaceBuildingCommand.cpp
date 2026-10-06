@@ -820,7 +820,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3
                         = DAT_TileMapState::instance.DAT_BuildingSize;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4
-                        = DAT_TileMapState::instance.field78_0x55488c;
+                        = DAT_TileMapState::instance.gateOrientationVariant;
                     if ((DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_GATE_MAIN)
                         && (DAT_TileMapState::instance.currentMapperCommand
                             != Commands::M_MAPPER_GATE_INNER)) {

@@ -71,12 +71,12 @@ namespace UI {
                         DAT_ViewportRenderState::instance.translationMatrix[piVar6->y].addXgetTile + piVar6->x, 0xd);
                     break;
                     default:
-                        DAT_TileMapState::instance.field188_0x554a14 = 1;
-                    DAT_TileMapState::instance.uiBuildingRotation = piVar6->rotationOrExtraInfo;
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::setConstructionGFXLayerBasedOnPlacementChecks,
-                        DAT_TileMapState::ptr)(
-                        piVar6->x, piVar6->y, (MappersEnum)((int)((uint)(ushort)(short)piVar6->type)), piVar6->size);
-                    break;
+                        DAT_TileMapState::instance.skipPlacementFailChecks = 1;
+                        DAT_TileMapState::instance.uiBuildingRotation = piVar6->rotationOrExtraInfo;
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::setConstructionGFXLayerBasedOnPlacementChecks,
+                            DAT_TileMapState::ptr)(piVar6->x, piVar6->y,
+                            (MappersEnum)((int)((uint)(ushort)(short)piVar6->type)), piVar6->size);
+                        break;
                 case Commands::M_MAPPER_HEADS:
                     imageID = piVar6->size + 1;
                     MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
