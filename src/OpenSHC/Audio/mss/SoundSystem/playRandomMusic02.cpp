@@ -33,8 +33,8 @@ namespace Audio {
                 int const currentPlayerTotalTroopValue
                     = DAT_TroopValueState::ptr->attackInfo
                           .playerTotalTroopValueArray[DAT_GameSynchronyState::ptr->currentPlayerSlotID];
-                DAT_SoundEffectsHelperData1::ptr->field12_0x4c = currentPlayerTotalTroopValue;
-                DAT_SoundEffectsHelperData1::ptr->field2_0x8 = currentPlayerTotalTroopValue;
+                DAT_SoundEffectsHelperData1::ptr->playerTroopValueBaseline = currentPlayerTotalTroopValue;
+                DAT_SoundEffectsHelperData1::ptr->playerTroopValue = currentPlayerTotalTroopValue;
 
                 DAT_SoundEffectsHelperData1::ptr->DAT_Music_TotalTroopValue = 0;
                 for (int i = 1; i < 9; ++i) {
@@ -45,9 +45,9 @@ namespace Audio {
                         += DAT_TroopValueState::ptr->attackInfo.playerTotalTroopValueArray[i];
                 }
 
-                DAT_SoundEffectsHelperData1::ptr->field4_0x2c
+                DAT_SoundEffectsHelperData1::ptr->enemyTroopValue
                     = DAT_SoundEffectsHelperData1::ptr->DAT_Music_TotalTroopValue;
-                DAT_SoundEffectsHelperData1::ptr->field6_0x34 = 0;
+                DAT_SoundEffectsHelperData1::ptr->battleMoodState = 0;
                 if (DAT_SoundEffectsHelperData1::ptr->DAT_Music_TotalTroopValue < 100) {
                     param_1 = 0;
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel = 0;
@@ -88,8 +88,8 @@ namespace Audio {
                     int const currentPlayerTotalTroopValue
                         = DAT_TroopValueState::ptr->attackInfo
                               .playerTotalTroopValueArray[DAT_GameSynchronyState::ptr->currentPlayerSlotID];
-                    DAT_SoundEffectsHelperData1::ptr->field12_0x4c = currentPlayerTotalTroopValue;
-                    DAT_SoundEffectsHelperData1::ptr->field2_0x8 = currentPlayerTotalTroopValue;
+                    DAT_SoundEffectsHelperData1::ptr->playerTroopValueBaseline = currentPlayerTotalTroopValue;
+                    DAT_SoundEffectsHelperData1::ptr->playerTroopValue = currentPlayerTotalTroopValue;
 
                     DAT_SoundEffectsHelperData1::ptr->DAT_Music_TotalTroopValue = 0;
                     for (int i = 1; i < 9; ++i) {
@@ -101,9 +101,9 @@ namespace Audio {
                     }
 
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel = 2;
-                    DAT_SoundEffectsHelperData1::ptr->field4_0x2c
+                    DAT_SoundEffectsHelperData1::ptr->enemyTroopValue
                         = DAT_SoundEffectsHelperData1::ptr->DAT_Music_TotalTroopValue;
-                    DAT_SoundEffectsHelperData1::ptr->field6_0x34 = 0;
+                    DAT_SoundEffectsHelperData1::ptr->battleMoodState = 0;
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicTracker = 1;
                 }
             }

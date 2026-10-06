@@ -160,14 +160,15 @@ namespace Audio {
                                     continue;
                                 }
                                 int iVar1 = DAT_SFXDefinedData::instance.field3_0x4a4[i];
-                                int field6_0x34 = DAT_SoundEffectsHelperData1::instance.field6_0x34;
-                                if ((iVar1 == 1 && iVar1 == field6_0x34) || (iVar1 == 2 && iVar1 == field6_0x34)) {
+                                int _battleMoodState = DAT_SoundEffectsHelperData1::instance.battleMoodState;
+                                if ((iVar1 == 1 && iVar1 == _battleMoodState)
+                                    || (iVar1 == 2 && iVar1 == _battleMoodState)) {
                                     continue;
                                 }
                                 aiStack_50[iVar6++] = i;
-                                if (field6_0x34 == 1 && iVar1 == 2) {
+                                if (_battleMoodState == 1 && iVar1 == 2) {
                                     aiStack_50[iVar6++] = i;
-                                } else if (field6_0x34 == 2 && iVar1 == 1) {
+                                } else if (_battleMoodState == 2 && iVar1 == 1) {
                                     aiStack_50[iVar6++] = i;
                                 }
                             }

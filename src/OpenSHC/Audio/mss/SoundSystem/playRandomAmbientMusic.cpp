@@ -149,15 +149,15 @@ namespace Audio {
                                 += DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueArray[i];
                         }
 
-                        if (DAT_SoundEffectsHelperData1::instance.field12_0x4c < 1) {
-                            DAT_SoundEffectsHelperData1::instance.field12_0x4c = 1;
+                        if (DAT_SoundEffectsHelperData1::instance.playerTroopValueBaseline < 1) {
+                            DAT_SoundEffectsHelperData1::instance.playerTroopValueBaseline = 1;
                         }
-                        int somePercentage1
-                            = (currentPlayerTotalTroopValue * 100) / DAT_SoundEffectsHelperData1::instance.field12_0x4c;
+                        int somePercentage1 = (currentPlayerTotalTroopValue * 100)
+                            / DAT_SoundEffectsHelperData1::instance.playerTroopValueBaseline;
                         if (100 < somePercentage1) {
                             somePercentage1 = 100;
                         }
-                        DAT_SoundEffectsHelperData1::instance.field2_0x8 = currentPlayerTotalTroopValue;
+                        DAT_SoundEffectsHelperData1::instance.playerTroopValue = currentPlayerTotalTroopValue;
 
                         if (DAT_SoundEffectsHelperData1::instance.DAT_Music_TotalTroopValue < 1) {
                             DAT_SoundEffectsHelperData1::instance.DAT_Music_TotalTroopValue = 1;
@@ -167,15 +167,15 @@ namespace Audio {
                         if (100 < somePercentage2) {
                             somePercentage2 = 100;
                         }
-                        DAT_SoundEffectsHelperData1::instance.field4_0x2c = enemyPlayerTotalTroopValue;
+                        DAT_SoundEffectsHelperData1::instance.enemyTroopValue = enemyPlayerTotalTroopValue;
 
                         int const someValue = somePercentage1 - somePercentage2;
                         if (someValue > 20) {
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 1;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 1;
                         } else if (someValue < -20) {
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 2;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 2;
                         } else {
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 0;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 0;
                         }
                     }
                     if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
@@ -215,14 +215,14 @@ namespace Audio {
                     return;
                 }
 
-                if (timeGetTime() - this->mbr_0x3288
-                    <= DAT_SFXDefinedData::instance.field4_0x4c4[DAT_SoundEffectsHelperData1::instance.field16_0x5c]) {
+                if (timeGetTime() - this->mbr_0x3288 <= DAT_SFXDefinedData::instance
+                        .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }
 
-                ++DAT_SoundEffectsHelperData1::instance.field16_0x5c;
-                if (DAT_SoundEffectsHelperData1::instance.field16_0x5c >= 6) {
-                    DAT_SoundEffectsHelperData1::instance.field16_0x5c = 0;
+                ++DAT_SoundEffectsHelperData1::instance.musicDelayIndex;
+                if (DAT_SoundEffectsHelperData1::instance.musicDelayIndex >= 6) {
+                    DAT_SoundEffectsHelperData1::instance.musicDelayIndex = 0;
                 }
                 MACRO_CALL_MEMBER(SoundSystem_Func::selectAndPlayMoodBasedMusic, this)();
             } else {
@@ -259,11 +259,11 @@ namespace Audio {
                         MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                         int const randomNumber = SEC_RNG::instance.currentNumber1 % 3;
                         if (!randomNumber)
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 1;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 1;
                         else if (randomNumber == 1)
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 2;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 2;
                         else
-                            DAT_SoundEffectsHelperData1::instance.field6_0x34 = 0;
+                            DAT_SoundEffectsHelperData1::instance.battleMoodState = 0;
                     }
                 }
 
@@ -290,14 +290,14 @@ namespace Audio {
                     return;
                 }
 
-                if (timeGetTime() - this->mbr_0x3288
-                    <= DAT_SFXDefinedData::instance.field4_0x4c4[DAT_SoundEffectsHelperData1::instance.field16_0x5c]) {
+                if (timeGetTime() - this->mbr_0x3288 <= DAT_SFXDefinedData::instance
+                        .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }
 
-                ++DAT_SoundEffectsHelperData1::instance.field16_0x5c;
-                if (DAT_SoundEffectsHelperData1::instance.field16_0x5c >= 6) {
-                    DAT_SoundEffectsHelperData1::instance.field16_0x5c = 0;
+                ++DAT_SoundEffectsHelperData1::instance.musicDelayIndex;
+                if (DAT_SoundEffectsHelperData1::instance.musicDelayIndex >= 6) {
+                    DAT_SoundEffectsHelperData1::instance.musicDelayIndex = 0;
                 }
                 MACRO_CALL_MEMBER(SoundSystem_Func::selectAndPlayMoodBasedMusic, this)();
             }

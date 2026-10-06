@@ -246,7 +246,7 @@ namespace Game {
         int RawResourceTypes[4]; // 0x000555D4 length: 16
         int field1047_0x555e4[8]; // 0x000555E4 length: 32
         Position field1048_0x55604[25]; // 0x00055604 length: 200
-        int field1049_0x556cc[7][3]; // 0x000556CC length: 84
+        int PopularityMessageLayout[7][3]; // 0x000556CC length: 84
         int field1050_0x55720[4]; // 0x00055720 length: 16
         undefined1 padding_0x55730[68]; // 0x00055730 length: 68
         UnitTypeInt UnitTypeGroups[3][9]; // 0x00055774 length: 108

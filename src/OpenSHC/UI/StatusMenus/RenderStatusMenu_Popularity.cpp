@@ -394,12 +394,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .areCarnivalUnitsPresent)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -413,19 +413,19 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
-                    + -0x16 + DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][1],
+                    + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1],
                 (int)((int)(DAT_MenuHandlerState::instance.y + -1
-                    + DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][2])),
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2])),
                 400, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -439,9 +439,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_18][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][2] + -1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -450,12 +450,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount59
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -469,9 +469,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_14][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][2] + -1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -480,12 +480,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount54
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -499,9 +499,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_10][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][2] + -1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -510,12 +510,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount55
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -529,9 +529,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
-                    + -0x16 + DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][1],
+                    + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1],
                 (int)((int)(DAT_MenuHandlerState::instance.y + -1
-                    + DAT_RenderingDefinedData::instance.field1049_0x556cc[local_c][2])),
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2])),
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount55)),
@@ -539,12 +539,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount56
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -558,9 +558,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_8][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][2] + -1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -569,12 +569,12 @@ namespace UI {
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount57
                 != 0)
-            && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][0]
+            && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
-            iVar17
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][2] + DAT_MenuHandlerState::instance.y;
-            iVar18
-                = DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][1] + DAT_MenuHandlerState::instance.x;
+            iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][2]
+                + DAT_MenuHandlerState::instance.y;
+            iVar18 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][1]
+                + DAT_MenuHandlerState::instance.x;
             iVar22 = 0;
             BVar20 = FALSE;
             iVar19 = 0x12;
@@ -588,9 +588,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.field1049_0x556cc[local_4][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][2] + -1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
