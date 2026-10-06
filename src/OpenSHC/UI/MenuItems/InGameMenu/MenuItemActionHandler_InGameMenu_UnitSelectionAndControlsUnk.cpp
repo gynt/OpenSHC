@@ -131,14 +131,14 @@ namespace UI {
             DAT_MouseState::instance.field68_0x1dc = -1;
             DAT_MouseState::instance.savedSelectionBoxState = DAT_MouseState::instance.selectionBoxState;
             DAT_TileMapState::instance.DAT_SelectionIconType = 0;
-            if (0x46 < (int)(DVar7 - DAT_TileMapState::instance.unknownTime_0x5549bc)) {
+            if (0x46 < (int)(DVar7 - DAT_TileMapState::instance.cursorAnimationTime)) {
                 DAT_TileMapState::instance.cursorOverlayAnimationFrame
                     = DAT_TileMapState::instance.cursorOverlayAnimationFrame + 1;
                 if (0x10 < DAT_TileMapState::instance.cursorOverlayAnimationFrame) {
                     DAT_TileMapState::instance.cursorOverlayAnimationFrame = 1;
                 }
                 DAT_TileMapState::instance.flagAnimationFrame = DAT_TileMapState::instance.flagAnimationFrame + 1;
-                DAT_TileMapState::instance.unknownTime_0x5549bc = DVar7;
+                DAT_TileMapState::instance.cursorAnimationTime = DVar7;
             }
             if (0
                 < DAT_UnitsState::instance.unitCountOfSelection[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
@@ -154,7 +154,7 @@ namespace UI {
                         Map::Units::UnitsState_Func::createTribeFromSelectedUnits, DAT_UnitsState::ptr)();
                     DAT_UnitsState::instance.field5_0x14 = TRUE;
                     DAT_UnitsState::instance.unitControlsRelated = TRUE;
-                    DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                    DAT_TileMapState::instance.pendingUnitCommand = 0;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     DAT_TileMapState::instance.shiftRelated0or3 = 1;
@@ -232,7 +232,7 @@ namespace UI {
                         DAT_UnitsState::instance.field5_0x14 = TRUE;
                         DAT_UnitsState::instance.unitControlsRelated = 1;
                         DAT_TileMapState::instance.shiftRelated0or3 = 1;
-                        DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                        DAT_TileMapState::instance.pendingUnitCommand = 0;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                         DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     }
@@ -334,14 +334,14 @@ namespace UI {
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                 bVar18 = false;
                 bVar17 = false;
-                if ((DAT_TileMapState::instance.field178_0x5549ec == 6)
+                if ((DAT_TileMapState::instance.activeTacticalPower == 6)
                     && ((DAT_TileMapState::instance
                              .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
                         & 0x100U))) {
                 LAB_00434f28:
                     bVar18 = true;
                 } else {
-                    switch (DAT_TileMapState::instance.field178_0x5549ec) {
+                    switch (DAT_TileMapState::instance.activeTacticalPower) {
                     case 2:
                     case 3:
                     case 4:
@@ -358,7 +358,7 @@ namespace UI {
                                   .keep.xEntry;
                         _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
                         bVar17 = true;
-                        if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                        if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                             bVar18 = (_yDifference < 0x3100);
                             iVar14 = -0x3100;
                             bVar15 = _yDifference == 0x3100;
@@ -387,7 +387,7 @@ namespace UI {
                             _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                             _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
                             bVar18 = false;
-                            if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                            if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                                 bVar16 = (_yDifference < 0x3100);
                                 iVar14 = _yDifference + -0x3100;
                                 bVar15 = _yDifference == 0x3100;
@@ -417,7 +417,7 @@ namespace UI {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
                                     _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                                     _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
-                                    if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                                    if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                                         bVar16 = (_yDifference < 0x3100);
                                         iVar14 = -0x3100;
                                         bVar15 = _yDifference == 0x3100;
@@ -450,7 +450,7 @@ namespace UI {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
                                     _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                                     _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
-                                    if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                                    if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                                         bVar16 = (_yDifference < 0x3100);
                                         iVar14 = -0x3100;
                                         bVar15 = _yDifference == 0x3100;
@@ -483,7 +483,7 @@ namespace UI {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
                                     _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                                     _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
-                                    if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                                    if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                                         bVar16 = (_yDifference < 0x3100);
                                         iVar14 = -0x3100;
                                         bVar15 = _yDifference == 0x3100;
@@ -515,7 +515,7 @@ namespace UI {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
                                     _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                                     _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
-                                    if (DAT_TileMapState::instance.field178_0x5549ec == 3) {
+                                    if (DAT_TileMapState::instance.activeTacticalPower == 3) {
                                         bVar16 = (_yDifference < 0x3100);
                                         iVar14 = -0x3100;
                                         bVar15 = _yDifference == 0x3100;
@@ -546,11 +546,11 @@ namespace UI {
                                  == 0))
                         && (bVar17)))) {
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                    DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                    DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                     local_20 = 4;
                 } else if (!DAT_MouseState::instance.leftClickStart) {
-                    switch (DAT_TileMapState::instance.field178_0x5549ec) {
+                    switch (DAT_TileMapState::instance.activeTacticalPower) {
                     case 2:
                     case 4:
                     case 6:
@@ -571,7 +571,7 @@ namespace UI {
                     }
                 } else {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                        = DAT_TileMapState::instance.field178_0x5549ec;
+                        = DAT_TileMapState::instance.activeTacticalPower;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                         = DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2
@@ -675,7 +675,7 @@ namespace UI {
                 goto LAB_moveToTileUI;
             if (DAT_UnitsState::instance.unitControlsRelated == TRUE) {
                 bVar16 = DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY;
-                DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                DAT_TileMapState::instance.pendingUnitCommand = 0;
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 DAT_TileMapState::instance.DAT_SelectionIconType = 1;
@@ -694,7 +694,7 @@ namespace UI {
                     DAT_TileMapState::instance.DAT_SelectionIconType = 0x19;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x10;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x5b;
-                    DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                    DAT_TileMapState::instance.pendingUnitCommand = -1;
                 }
                 _shooterID = DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
                 if (((DAT_ViewportRenderState::instance.viewportState.somePitchDitchID)
@@ -719,7 +719,7 @@ namespace UI {
                             _shooterID = (int)DAT_TileMapState::instance.pitchDitches[_shooterID].x
                                 - (int)DAT_UnitsState::instance.units[_specificRange].x,
                             _shooterID * _shooterID + _yDifference * _yDifference < 0x962)) {
-                        DAT_TileMapState::instance.field167_0x5549d8 = 0xc;
+                        DAT_TileMapState::instance.pendingUnitCommand = 0xc;
                         DAT_TileMapState::instance.DAT_SelectionIconType = 9;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                         local_20 = 2;
@@ -812,11 +812,11 @@ namespace UI {
                                         (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)), 1);
                                     if (!_shooterID)
                                         goto LAB_moveToTileUI;
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 3;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 3;
                                     DAT_TileMapState::instance.cursorOverlayImageBase = -3;
                                     DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 2;
                                     local_20 = -1;
-                                    DAT_TileMapState::instance.field177_0x5549e8 = _otherUnitIDUnk;
+                                    DAT_TileMapState::instance.instructionTargetUnitID = _otherUnitIDUnk;
                                     goto LAB_00436d33;
                                 }
                                 _specificRange = MACRO_CALL_MEMBER(
@@ -886,9 +886,9 @@ namespace UI {
                                     DAT_UnitsState::ptr)();
                                 if (!uVar9) {
                                     bVar16 = true;
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 10;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 10;
                                 } else {
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 0xb;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 0xb;
                                 }
                                 DAT_TileMapState::instance.DAT_SomeUNitUIDUIRelated
                                     = DAT_UnitsState::instance.units[_otherUnitIDUnk].uid;
@@ -985,7 +985,7 @@ namespace UI {
                                                                  || (BVar5 == Map::Buildings::BT_SHIELD))))
                                                         || (BVar5 == Map::Buildings::BT_OILSMELTER)))))) {
                                             DAT_BuildingsState::instance.buildings[_shooterID].field68_0xc2 = 2;
-                                            DAT_TileMapState::instance.field167_0x5549d8 = 2;
+                                            DAT_TileMapState::instance.pendingUnitCommand = 2;
                                             DAT_TileMapState::instance.cursorOverlayImageBase = -2;
                                             local_20 = -1;
                                         }
@@ -1143,7 +1143,7 @@ namespace UI {
                                                 goto LAB_0043674b;
                                         } else {
                                             bVar16 = true;
-                                            DAT_TileMapState::instance.field167_0x5549d8 = 1;
+                                            DAT_TileMapState::instance.pendingUnitCommand = 1;
                                             DAT_TileMapState::instance.DAT_SelectionIconType = 9;
                                             DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                                             local_20 = 2;
@@ -1295,7 +1295,7 @@ namespace UI {
                                                 if (_specificRange * _specificRange + _yDifference * _yDifference
                                                     <= _shooterID) {
                                                     bVar16 = true;
-                                                    DAT_TileMapState::instance.field167_0x5549d8 = 6;
+                                                    DAT_TileMapState::instance.pendingUnitCommand = 6;
                                                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                                                     DAT_TileMapState::instance.DAT_SelectionIconType = 9;
                                                     local_20 = 2;
@@ -1328,7 +1328,7 @@ namespace UI {
                                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState
                                                     .mouseAtomRefFloorTile)));
                                     if (_otherUnitIDUnk) {
-                                        DAT_TileMapState::instance.field167_0x5549d8 = 6;
+                                        DAT_TileMapState::instance.pendingUnitCommand = 6;
                                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                                         DAT_TileMapState::instance.DAT_SelectionIconType = 9;
                                         local_20 = 2;
@@ -1342,7 +1342,7 @@ namespace UI {
                                         & 7)
                                         + TRUE
                                     != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 5;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 5;
                                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                                     local_20 = 2;
                                     DAT_TileMapState::instance.DAT_SelectionIconType = 9;
@@ -1351,7 +1351,7 @@ namespace UI {
                             }
                         }
                     } else {
-                        DAT_TileMapState::instance.field177_0x5549e8 = _otherUnitIDUnk;
+                        DAT_TileMapState::instance.instructionTargetUnitID = _otherUnitIDUnk;
                         _shooterID
                             = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getRemainingRequiredEngineers,
                                 DAT_UnitsState::ptr)(_otherUnitIDUnk);
@@ -1379,7 +1379,7 @@ namespace UI {
                                     if (!bVar18)
                                         goto LAB_moveToTileUI;
                                 }
-                                DAT_TileMapState::instance.field167_0x5549d8 = 4;
+                                DAT_TileMapState::instance.pendingUnitCommand = 4;
                                 DAT_TileMapState::instance.cursorOverlayImageBase = -4;
                                 DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 3;
                                 local_20 = -1;
@@ -1399,7 +1399,7 @@ namespace UI {
                                         .PathConnectionLayer[DAT_UnitsState::instance.units[_shooterID].tile])),
                                 1);
                             if (_shooterID) {
-                                DAT_TileMapState::instance.field167_0x5549d8 = 3;
+                                DAT_TileMapState::instance.pendingUnitCommand = 3;
                                 DAT_TileMapState::instance.cursorOverlayImageBase = -3;
                                 DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 2;
                                 local_20 = -1;
@@ -1482,9 +1482,9 @@ namespace UI {
                                     Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                                     DAT_UnitsState::ptr)();
                                 if (!uVar9) {
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 10;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 10;
                                 } else {
-                                    DAT_TileMapState::instance.field167_0x5549d8 = 0xb;
+                                    DAT_TileMapState::instance.pendingUnitCommand = 0xb;
                                 }
                                 bVar16 = uVar9 == 0 || bVar16;
                                 DAT_TileMapState::instance.DAT_SomeUNitUIDUIRelated
@@ -1503,11 +1503,11 @@ namespace UI {
                             DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                             (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)), 1);
                         if (_shooterID) {
-                            DAT_TileMapState::instance.field167_0x5549d8 = 3;
+                            DAT_TileMapState::instance.pendingUnitCommand = 3;
                             DAT_TileMapState::instance.cursorOverlayImageBase = -3;
                             DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 2;
                             local_20 = -1;
-                            DAT_TileMapState::instance.field177_0x5549e8 = _otherUnitIDUnk;
+                            DAT_TileMapState::instance.instructionTargetUnitID = _otherUnitIDUnk;
                             goto LAB_00436d33;
                         }
                     }
@@ -1654,9 +1654,9 @@ namespace UI {
                                 (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseX)),
                                 (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseY))),
                             _shooterID == 0)) {
-                        DAT_TileMapState::instance.field167_0x5549d8 = -10;
+                        DAT_TileMapState::instance.pendingUnitCommand = -10;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                        DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                        DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                         DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                         /*
                           NoEntry-Icon under mouse
@@ -1671,10 +1671,10 @@ namespace UI {
                 bVar17 = true;
             LAB_00436b8a:
                 if (DAT_ViewportRenderState::instance.viewportState.field27_0x6c == 1) {
-                    DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                    DAT_TileMapState::instance.pendingUnitCommand = -1;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0xb5;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
-                    DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                    DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                     /*
                       MoveTo-Icon under mouse
                      */
@@ -1712,7 +1712,7 @@ namespace UI {
                     _otherUnitIDUnk
                         = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                             DAT_UnitsState::ptr)();
-                    DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                    DAT_TileMapState::instance.pendingUnitCommand = 0;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                     DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
@@ -1727,9 +1727,9 @@ namespace UI {
                     if ((DAT_DirectionAlgorithmState::instance.orientation == 0xf)
                         || ((!DAT_ViewportRenderState::instance.viewportState.mouseX
                             && (!DAT_ViewportRenderState::instance.viewportState.mouseY)))) {
-                        DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                        DAT_TileMapState::instance.pendingUnitCommand = -1;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                        DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                        DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                         DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                         local_20 = 4;
                     } else {
@@ -1746,9 +1746,9 @@ namespace UI {
                 }
                 if (DAT_UnitsState::instance.unitControlsRelated != 5) {
                     if (DAT_UnitsState::instance.unitControlsRelated == 0x16) {
-                        DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                        DAT_TileMapState::instance.pendingUnitCommand = -1;
                         DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                        DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                        DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                         DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                         DAT_TileMapState::instance.DAT_SelectionIconType = 0x11;
                         local_20 = 4;
@@ -1792,7 +1792,7 @@ namespace UI {
                             goto LAB_00436d33;
                     }
                 LAB_004367d0:
-                    DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                    DAT_TileMapState::instance.pendingUnitCommand = 0;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                     DAT_TileMapState::instance.DAT_SelectionIconType = 9;
@@ -1884,7 +1884,7 @@ namespace UI {
                             - (int)DAT_UnitsState::instance.units[(int)local_18].y;
                         if (_specificRange * _specificRange + _yDifference * _yDifference <= _shooterID) {
                             bVar16 = true;
-                            DAT_TileMapState::instance.field167_0x5549d8 = 6;
+                            DAT_TileMapState::instance.pendingUnitCommand = 6;
                             DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                             DAT_TileMapState::instance.DAT_SelectionIconType = 9;
                             local_20 = 2;
@@ -1959,9 +1959,9 @@ namespace UI {
                 if (_shooterID * _shooterID + _specificRange * _specificRange <= _specificRange2)
                     goto LAB_004367d0;
             LAB_00436953:
-                DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                DAT_TileMapState::instance.pendingUnitCommand = -1;
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                 DAT_TileMapState::instance.DAT_SelectionIconType = 0x11;
                 local_20 = 4;
@@ -1970,9 +1970,9 @@ namespace UI {
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                         DAT_UnitsState::ptr)();
                 if ((_otherUnitIDUnk) && (!bVar16)) {
-                    DAT_TileMapState::instance.field167_0x5549d8 = -1;
+                    DAT_TileMapState::instance.pendingUnitCommand = -1;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x41;
-                    DAT_TileMapState::instance.field164_0x5549cc = 0x10;
+                    DAT_TileMapState::instance.flagAnimationDivisor = 0x10;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                     DAT_TileMapState::instance.DAT_SelectionIconType = 0x11;
                     local_20 = 4;
@@ -1983,8 +1983,8 @@ namespace UI {
                     if (((!local_20)
                             || (((local_20 == 2 && (!DAT_TileMapState::instance.cursorOverlayImageBase))
                                 && (DAT_UnitsState::instance.unitControlsRelated != 5))))
-                        && ((DAT_TileMapState::instance.field167_0x5549d8 != 3
-                            && (DAT_TileMapState::instance.field167_0x5549d8 != 4)))) {
+                        && ((DAT_TileMapState::instance.pendingUnitCommand != 3
+                            && (DAT_TileMapState::instance.pendingUnitCommand != 4)))) {
                         MACRO_CALL_MEMBER(
                             Input::MouseState_Func::beginPointSelectionBox, DAT_MouseState::ptr)();
                         _otherUnitIDUnk = MACRO_CALL_MEMBER(
@@ -2009,7 +2009,7 @@ namespace UI {
                                 Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)();
                             DAT_UnitsState::instance.field5_0x14 = TRUE;
                             DAT_UnitsState::instance.unitControlsRelated = TRUE;
-                            DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                            DAT_TileMapState::instance.pendingUnitCommand = 0;
                             DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                             DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                             DAT_TileMapState::instance.shiftRelated0or3 = 0;
@@ -2041,7 +2041,7 @@ namespace UI {
                     DAT_TileMapState::instance.shiftRelated0or3 = -(uint)(DAT_ModifierKeyState::instance.shift) & 3;
                     DAT_UnitsState::instance.field5_0x14 = TRUE;
                     DAT_UnitsState::instance.unitControlsRelated = TRUE;
-                    DAT_TileMapState::instance.field167_0x5549d8 = 0;
+                    DAT_TileMapState::instance.pendingUnitCommand = 0;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                     DAT_GameCore::instance.menuSwitchDelay = -1;
@@ -2072,7 +2072,7 @@ namespace UI {
             _shooterID = DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID;
             switch (DAT_UnitsState::instance.unitControlsRelated) {
             case TRUE:
-                if (DAT_TileMapState::instance.field167_0x5549d8 == -10) {
+                if (DAT_TileMapState::instance.pendingUnitCommand == -10) {
                     if (bVar6) {
                         _noTextExtra.buildingType = (Commands::MappersEnum)0;
                         MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
@@ -2082,9 +2082,9 @@ namespace UI {
                         goto LAB_0043782c;
                     }
                 } else {
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 0xb)
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 0xb)
                         goto LAB_00437671;
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 10) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 10) {
                         if ((DAT_TileMapState::instance.uiSelectedUnitIDUnk)
                             && (DAT_TileMapState::instance.DAT_SomeUNitUIDUIRelated
                                 == DAT_UnitsState::instance.units[DAT_TileMapState::instance.uiSelectedUnitIDUnk]
@@ -2103,7 +2103,7 @@ namespace UI {
                         MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                         goto LAB_0043782c;
                     }
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 0xc) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 0xc) {
                         /*
                           queueCommand: DISBAND/ATTACK UNITS
                          */
@@ -2118,11 +2118,11 @@ namespace UI {
                         MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                         goto LAB_0043782c;
                     }
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 1) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 1) {
                         uVar13 = 9;
                         goto LAB_004374dc;
                     }
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 2) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 2) {
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand4Params,
                             DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0xf,
                             (undefined4)((int)(DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID)),
@@ -2141,17 +2141,17 @@ namespace UI {
                         } else {
                             _otherUnitIDUnk = 0x1d;
                         }
-                    } else if (DAT_TileMapState::instance.field167_0x5549d8 == 3) {
+                    } else if (DAT_TileMapState::instance.pendingUnitCommand == 3) {
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand4Params,
                             DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x10,
-                            DAT_TileMapState::instance.field177_0x5549e8,
+                            DAT_TileMapState::instance.instructionTargetUnitID,
                             (undefined4)((
-                                int)(DAT_UnitsState::instance.units[DAT_TileMapState::instance.field177_0x5549e8]
+                                int)(DAT_UnitsState::instance.units[DAT_TileMapState::instance.instructionTargetUnitID]
                                     .uid)));
                         _otherUnitIDUnk = 0x14;
                     } else {
-                        if (DAT_TileMapState::instance.field167_0x5549d8 != 4) {
-                            if (DAT_TileMapState::instance.field167_0x5549d8 == 5) {
+                        if (DAT_TileMapState::instance.pendingUnitCommand != 4) {
+                            if (DAT_TileMapState::instance.pendingUnitCommand == 5) {
                                 MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::queueDisbandAndAttackCommand3Params,
                                     DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x18,
@@ -2162,7 +2162,7 @@ namespace UI {
                                 MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                                 goto LAB_0043782c;
                             }
-                            if (DAT_TileMapState::instance.field167_0x5549d8 == 6) {
+                            if (DAT_TileMapState::instance.pendingUnitCommand == 6) {
                                 uVar13 = 0x17;
                                 goto LAB_00437494;
                             }
@@ -2267,9 +2267,10 @@ namespace UI {
                         }
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand5Params,
                             DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID,
-                            Map::Units::UIT_EXIT_SIEGE_EQUIPMENT, DAT_TileMapState::instance.field177_0x5549e8,
+                            Map::Units::UIT_EXIT_SIEGE_EQUIPMENT, DAT_TileMapState::instance.instructionTargetUnitID,
                             (undefined4)((
-                                int)(DAT_UnitsState::instance.units[DAT_TileMapState::instance.field177_0x5549e8].uid)),
+                                int)(DAT_UnitsState::instance.units[DAT_TileMapState::instance.instructionTargetUnitID]
+                                    .uid)),
                             0);
                         _otherUnitIDUnk = 0x16;
                     }
@@ -2296,7 +2297,7 @@ namespace UI {
                 goto LAB_0043782c;
             case 5:
                 if (local_20 == 2) {
-                    if (DAT_TileMapState::instance.field167_0x5549d8 == 6) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand == 6) {
                         uVar13 = 0x23;
                     LAB_00437494:
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::playUnitMoveSpeech,
@@ -2308,7 +2309,7 @@ namespace UI {
                         MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                         goto LAB_0043782c;
                     }
-                    if (DAT_TileMapState::instance.field167_0x5549d8 != 1) {
+                    if (DAT_TileMapState::instance.pendingUnitCommand != 1) {
                         DAT_UnitsState::instance.unitControlsRelated = DAT_UnitsState::instance.field5_0x14;
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::giveMoveCommand, DAT_UnitsState::ptr)(
                             DAT_TribesState::instance.DAT_CurrentTribeID,
@@ -2366,7 +2367,7 @@ namespace UI {
                 }
                 break;
             case 0x16:
-                if (DAT_TileMapState::instance.field167_0x5549d8 != -1) {
+                if (DAT_TileMapState::instance.pendingUnitCommand != -1) {
                     DAT_UnitsState::instance.unitControlsRelated = DAT_UnitsState::instance.field5_0x14;
                     MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand5Params,
                         DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, Map::Units::UIT_THROW_COW,

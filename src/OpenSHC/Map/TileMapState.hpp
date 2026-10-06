@@ -182,18 +182,18 @@ namespace Map {
         int wallPlacementCost; // 0x005549B0 length: 4
         int DAT_TempBuildingRotation; // 0x005549B4 length: 4
         int field159_0x5549b8; // 0x005549B8 length: 4
-        undefined4 unknownTime_0x5549bc; // 0x005549BC length: 4
+        undefined4 cursorAnimationTime; // 0x005549BC length: 4
         undefined4 cursorOverlayAnimationFrame; // 0x005549C0 length: 4
         undefined4 cursorOverlayImageBase; // 0x005549C4 length: 4
         undefined4 cursorOverlayGmID; // 0x005549C8 length: 4
-        undefined4 field164_0x5549cc; // 0x005549CC length: 4
+        undefined4 flagAnimationDivisor; // 0x005549CC length: 4
         undefined4 flagAnimationFrame; // 0x005549D0 length: 4
         undefined4 DAT_SelectionIconType; // 0x005549D4 length: 4
-        undefined4 field167_0x5549d8; // 0x005549D8 length: 4
+        undefined4 pendingUnitCommand; // 0x005549D8 length: 4
         undefined1 padding_0x5549dc[8]; // 0x005549DC length: 8
         int shiftRelated0or3; // 0x005549E4 length: 4
-        undefined4 field177_0x5549e8; // 0x005549E8 length: 4
-        undefined4 field178_0x5549ec; // 0x005549EC length: 4
+        undefined4 instructionTargetUnitID; // 0x005549E8 length: 4
+        undefined4 activeTacticalPower; // 0x005549EC length: 4
         undefined4 instructionTargetX; // 0x005549F0 length: 4
         undefined4 instructionTargetY; // 0x005549F4 length: 4
         undefined4 uiSelectedUnitIDUnk; // 0x005549F8 length: 4

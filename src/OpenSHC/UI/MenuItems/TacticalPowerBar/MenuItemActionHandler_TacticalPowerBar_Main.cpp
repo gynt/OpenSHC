@@ -53,7 +53,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         ((SoundEffectID)0x100));
                 }
-                DAT_TileMapState::instance.field178_0x5549ec = param_1;
+                DAT_TileMapState::instance.activeTacticalPower = param_1;
                 DAT_TileMapState::instance.shiftRelated0or3 = 5;
                 switch (param_1) {
                 case 1:
