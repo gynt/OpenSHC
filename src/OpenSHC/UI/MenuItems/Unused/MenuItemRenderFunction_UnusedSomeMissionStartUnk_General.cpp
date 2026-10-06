@@ -43,7 +43,7 @@ namespace UI {
             int blendStrength;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),

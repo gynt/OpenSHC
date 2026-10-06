@@ -17,7 +17,7 @@ namespace Rendering {
             char* _charRunPtr2;
             char _char;
             if (messageText != (char*)0x0) {
-                if (this->messagePlaying_0x0 == FALSE) {
+                if (!this->messagePlaying_0x0) {
                     this->currentMessageText_0x8 = messageText;
                     this->currentMessageUnknownValue2_0xd4 = param_4;
                     this->currentMessageUnknownValue_0x4 = 1;

@@ -217,7 +217,7 @@ namespace UI {
                         < (int)local_8)) {
                 bVar4 = false;
             }
-            if (DAT_MouseState::instance.draggingStopped == FALSE) {
+            if (!DAT_MouseState::instance.draggingStopped) {
                 if ((!(DAT_TileMapState::instance.LogicLayer[_tile] & local_18)) && (bVar4)) {
                     if (_gmID == IO::Graphics::GID_BODY_SIEGE_TOWER) {
                         if (0 < iVar3) {

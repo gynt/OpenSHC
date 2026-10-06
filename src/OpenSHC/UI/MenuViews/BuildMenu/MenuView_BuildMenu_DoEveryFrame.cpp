@@ -45,7 +45,7 @@ namespace UI {
                 if (!DAT_MinimapViewState::instance.field3_0xc) {
                     DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
                 }
-                if (DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18 != FALSE) {
+                if (DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuHandlerState_Func::computeBuildMenuTransitionShift,
                         DAT_MenuHandlerState::ptr)();
                 }

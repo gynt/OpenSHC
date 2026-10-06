@@ -78,7 +78,7 @@ namespace UI {
                 /*
                   click load game
                  */
-                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                if (DAT_GameSynchronyState::instance.isHost) {
                     piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
                     do {
                         if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
@@ -136,7 +136,7 @@ namespace UI {
                 /*
                   start game
                  */
-                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                if (DAT_GameSynchronyState::instance.isHost) {
                     piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
                     do {
                         if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
@@ -180,7 +180,7 @@ namespace UI {
                 }
                 break;
             case -0xc9:
-                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                if (DAT_GameSynchronyState::instance.isHost) {
                     if (-1 < DAT_00b95960::instance) {
                         iVar3 = 0;
                         while (((iVar4 = DAT_GameCore::instance.keepPositions[iVar3].x,
@@ -209,7 +209,7 @@ namespace UI {
                 }
                 break;
             case -200:
-                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                if (DAT_GameSynchronyState::instance.isHost) {
                     iVar3 = 0;
                     while ((((_f0 = DAT_GameCore::instance.keepPositions[iVar3].x,
                                  _f0 < 0
@@ -440,7 +440,7 @@ namespace UI {
                 /*
                   click ready button?
                  */
-                if ((DAT_GameSynchronyState::instance.flag_0x7aad8 != FALSE)
+                if ((DAT_GameSynchronyState::instance.flag_0x7aad8)
                     && (DAT_GameSynchronyState::instance.DAT_TwoIfNotHost == 2)) {
                     DAT_GameSynchronyState::instance
                         .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -450,7 +450,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
                 }
-                if ((DAT_GameSynchronyState::instance.isHost != FALSE)
+                if ((DAT_GameSynchronyState::instance.isHost)
                     && (DAT_GameSynchronyState::instance
                             .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         != 0)) {
@@ -464,7 +464,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                 LAB_0044291e:
-                    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    if (DAT_GameSynchronyState::instance.isHost) {
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
                     }

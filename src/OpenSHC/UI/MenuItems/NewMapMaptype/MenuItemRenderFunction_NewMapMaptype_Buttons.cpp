@@ -45,17 +45,17 @@ namespace UI {
                     MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     if (param_1 == INT_00b95abc::instance) {
                         INT_00b95abc::instance = -1;
                     }
-                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
+                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
                     MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 } else {
-                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
+                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
                     MACRO_CALL(UI::MenuItems::General_Func::

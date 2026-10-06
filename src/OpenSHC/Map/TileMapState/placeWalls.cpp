@@ -60,7 +60,7 @@ namespace Map {
         local_8 = 0;
         MACRO_CALL_MEMBER(Map::TileMapState_Func::validateWallBuildPath, this)(
             playerID, x1, y1, x2, y2, (undefined4)((int)(wallType)));
-        if (this->illegalBuild == FALSE) {
+        if (!this->illegalBuild) {
             this->constructionTileCount = MACRO_CALL_MEMBER(
                 Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt, DAT_GameState::ptr)(playerID, 4);
             local_10 = 2;
@@ -162,7 +162,7 @@ namespace Map {
                             this->LogicLayer[_tile] = this->LogicLayer[_tile] | 512;
                             BVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::hasOnlyTowerNeighborsNoWalls,
                                 this)(_tile, (int)((int)(y1)));
-                            if (BVar3 == FALSE) {
+                            if (!BVar3) {
                                 this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x62;
                             } else {
                                 this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x44;

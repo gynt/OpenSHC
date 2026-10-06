@@ -101,7 +101,7 @@ namespace Rendering {
                     _isSpeech1Playing
                         = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                             DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_1);
-                    if (_isSpeech1Playing != FALSE) {
+                    if (_isSpeech1Playing) {
                         MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::setBinkSndStreamAndStartTime,
                             DAT_BinkControlState::ptr)(1, Audio::MSS::enums::SND_STR_SPEECH_1);
                     }

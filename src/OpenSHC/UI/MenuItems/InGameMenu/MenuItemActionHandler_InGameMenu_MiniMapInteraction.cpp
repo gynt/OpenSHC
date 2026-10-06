@@ -36,13 +36,13 @@ namespace UI {
                             && (((DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_WOODWALL
                                      && (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_STAIR))
                                 && (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_CRENAL))))
-                           || (DAT_MouseState::instance.leftClickState == FALSE))
+                           || (!DAT_MouseState::instance.leftClickState))
                 && (!DAT_MouseState::instance.selectionBoxState)) {
                 if (DAT_GameCore::instance.isBinkVideoPlaying) {
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
                 }
-                if (DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying == FALSE) {
+                if (!DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying) {
                     DAT_00ed31d0::instance = 200;
                     MACRO_CALL_MEMBER(
                         UI::MinimapViewState_Func::scrollViewportToMinimapClick, DAT_MinimapViewState::ptr)();

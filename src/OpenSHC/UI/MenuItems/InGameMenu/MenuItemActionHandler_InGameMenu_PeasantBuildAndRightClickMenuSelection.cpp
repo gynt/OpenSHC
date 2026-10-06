@@ -137,8 +137,7 @@ namespace UI {
                 if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL)
                     goto LAB_004345e4;
                 iVar2 = 4;
-            } else if ((((DAT_MouseState::instance.rightClickState == FALSE)
-                            || (DAT_MouseState::instance.mouseBasedEvent == 2))
+            } else if ((((!DAT_MouseState::instance.rightClickState) || (DAT_MouseState::instance.mouseBasedEvent == 2))
                            && ((!DAT_ModifierKeyState::instance.ctrl || (!DAT_ModifierKeyState::instance.downArrow))))
                 && (!DAT_ModifierKeyState::instance.v)) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(4);
@@ -191,7 +190,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::noop1, DAT_TileMapState::ptr)(
                     DAT_ViewportRenderState::instance.viewportState.mouseTile);
-                if (DAT_MouseState::instance.leftClickState == FALSE) {
+                if (!DAT_MouseState::instance.leftClickState) {
                     if (DAT_UnitsState::instance
                             .unitCountOfSelection[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         < 1) {
@@ -199,7 +198,7 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID);
                     }
-                    if (DAT_MouseState::instance.draggingStopped == FALSE) {}
+                    if (!DAT_MouseState::instance.draggingStopped) {}
                     if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {}
                 } else if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
                     if ((!DAT_MouseState::instance.leftClickStart)
@@ -215,7 +214,7 @@ namespace UI {
                            < 1)
                           && (DAT_UnitsState::instance.totalUnitsInSelection < 1))
                          && ((DVar1 = timeGetTime(),
-                             DAT_MouseState::instance.draggingStopped != FALSE
+                             DAT_MouseState::instance.draggingStopped
                                  && ((((!DAT_MouseState::instance.selectionBoxState
                                            && (!DAT_MouseState::instance.savedSelectionBoxState))
                                           && (BVar3
@@ -223,7 +222,7 @@ namespace UI {
                                                                       SelectUnitAndOpenStatusMenu,
                                                   AlphaAndButtonSurfaceObj::ptr)(
                                                   DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID),
-                                              BVar3 == FALSE))
+                                              !BVar3))
                                      && ((199 < (int)(DVar1
                                               - DAT_ViewportRenderState::instance.viewportState.field13_0x34)
                                          || (BVar3
@@ -231,13 +230,13 @@ namespace UI {
                                                                      SelectUnitAndOpenStatusMenu,
                                                  AlphaAndButtonSurfaceObj::ptr)(
                                                  DAT_ViewportRenderState::instance.viewportState.mouseRayLastUnitID),
-                                             BVar3 == FALSE))))))))
+                                             !BVar3))))))))
                         && ((
                             BVar3 = MACRO_CALL_MEMBER(
                                 OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::openBuildingStatusMenuForBuildingID,
                                 AlphaAndButtonSurfaceObj::ptr)(
                                 DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID),
-                            BVar3 == FALSE
+                            !BVar3
                                 && (((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
                                               .viewportState.mouseAtomRefFloorTile]
                                          & 2)

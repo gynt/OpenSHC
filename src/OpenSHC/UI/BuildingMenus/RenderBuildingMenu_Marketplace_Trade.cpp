@@ -59,7 +59,7 @@ namespace UI {
             0, 0x11, FALSE, 0);
         BOOLEnum BVar2 = MACRO_CALL_MEMBER(
             OpenSHC::Game::GameStateStructures_Func::anyGoodsAreAllowedForSale, DAT_GameState::ptr)();
-        if (BVar2 != FALSE) {
+        if (BVar2) {
             int iVar3 = MACRO_CALL_MEMBER(
                 OpenSHC::Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed, DAT_GameState::ptr)(RVar4);
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,

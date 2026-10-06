@@ -24,7 +24,7 @@ namespace UI {
             if (!isDownButtonUnk) {
                 _imageID = 0x55;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 _imageID = _imageID + 1;
             }
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,

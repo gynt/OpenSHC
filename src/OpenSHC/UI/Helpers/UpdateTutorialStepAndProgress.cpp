@@ -101,7 +101,7 @@ namespace UI {
             MACRO_CALL(OS_Func::_sprintf)(local_44, "%s%s", "fx\\speech\\",
                 (DAT_00df5558::instance + DAT_TutorialCurrentStep::instance * 3) * 32 + 0xb3d810);
             BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
-            if (BVar2 != FALSE) {
+            if (BVar2) {
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                     DAT_SoundSystemState::ptr)(local_44);
             }
@@ -109,17 +109,17 @@ namespace UI {
         if ((DAT_00df5564::instance) && (1000 < _now - DWORD_00df5568::instance)) {
             DAT_00df5564::instance = 0;
         }
-        if ((DAT_FileDoesntExist::instance == FALSE)
+        if ((!DAT_FileDoesntExist::instance)
             && (((!DAT_00df5558::instance || (INT_00df5650::instance)) && (!DAT_00df5540::instance)))) {
             uVar4 = DAT_00df5544::instance;
             if (DAT_00df5558::instance < DAT_00df555c::instance + -1) {
                 BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                     DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_1);
-                if (((BVar2 == FALSE)
+                if (((!BVar2)
                         && (BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                                 DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_2),
-                            BVar2 == FALSE))
-                    && ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE
+                            !BVar2))
+                    && ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8
                         && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)))) {
                     MACRO_CALL(UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
                 }
@@ -139,7 +139,7 @@ namespace UI {
                     MACRO_CALL(OS_Func::_sprintf)(
                         local_44, "%s%s", "fx\\speech\\", DAT_TutorialCurrentStep::instance * 96 + 0xb3d810);
                     BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
-                    if (BVar2 != FALSE) {
+                    if (BVar2) {
                         MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                             DAT_SoundSystemState::ptr)(local_44);
                     }

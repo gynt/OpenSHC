@@ -62,7 +62,7 @@ namespace UI {
             this->hovering = 0;
             local_8 = MVar10;
             if (MVar10 != ((MenuItemType)0)) {
-                if ((MVar10 == ((MenuItemType)1)) && (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE)) {
+                if ((MVar10 == ((MenuItemType)1)) && (DAT_ScrollingHandler::instance.isScrolling_0x0)) {
                     (*(this->menuItemActionHandler).simple)((this->callbackParameter).parameter);
                     return 0;
                 }
@@ -105,8 +105,7 @@ namespace UI {
                         if (iVar8 < *piVar1) {
                             *piVar1 = iVar8;
                         }
-                        if ((!DAT_MouseState::instance.leftClickStart)
-                            && (DAT_MouseState::instance.leftClickState == FALSE)) {
+                        if ((!DAT_MouseState::instance.leftClickStart) && (!DAT_MouseState::instance.leftClickState)) {
                             (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc = -1000;
                             return 0;
                         }
@@ -133,7 +132,7 @@ namespace UI {
                         BVar6 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox,
                             DAT_MouseState::ptr)(iStack_4, this->menuPointer->yPosition + (this->position).position.y,
                             this->itemWidth, this->itemHeight);
-                        if (BVar6 != FALSE) {
+                        if (BVar6) {
                             this->hovering = 1;
                         }
                         pMVar4 = this->menuPointer;
@@ -150,11 +149,11 @@ namespace UI {
                         }
                         BVar6 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox,
                             DAT_MouseState::ptr)(xPos, yPos, iVar8, heigth);
-                        if (BVar6 != FALSE) {
+                        if (BVar6) {
                             iStack_10 = 1;
                         }
                         if (!DAT_MouseState::instance.leftClickStart) {
-                            if ((DAT_MouseState::instance.leftClickState != FALSE)
+                            if ((DAT_MouseState::instance.leftClickState)
                                 && (-1000 < (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc)) {
                                 iVar8 = (pMVar3->buttonState).someTimestamp_1_0x0;
                                 iStack_4 = *piVar2 - iVar8;
@@ -268,7 +267,7 @@ namespace UI {
                     BVar6 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                         this->menuPointer->xPosition + (this->position).position.x,
                         this->menuPointer->yPosition + (this->position).position.y, this->itemWidth, this->itemHeight);
-                    if (BVar6 != FALSE) {
+                    if (BVar6) {
                         DAT_MenuHandlerState::instance.field18_0x3c = 1;
                         DAT_ButtonX::instance = this->menuPointer->xPosition + (this->position).position.x;
                         DAT_ButtonY::instance = this->menuPointer->yPosition + (this->position).position.y;
@@ -285,7 +284,7 @@ namespace UI {
                             BVar6 = MACRO_CALL_MEMBER(
                                 OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::isMouseOnButtonImageUnk,
                                 AlphaAndButtonSurfaceObj::ptr)();
-                            if (BVar6 == FALSE) {
+                            if (!BVar6) {
                                 return 0;
                             }
                         }
@@ -328,9 +327,8 @@ namespace UI {
                         } else {
                             if (DAT_MouseState::instance.leftClickStart)
                                 goto LAB_004f444b;
-                            if ((DAT_MouseState::instance.leftClickState == FALSE) || (MVar10 != ((MenuItemType)2))) {
-                                if ((DAT_MouseState::instance.draggingStopped != FALSE)
-                                    && (MVar10 == ((MenuItemType)10))) {
+                            if ((!DAT_MouseState::instance.leftClickState) || (MVar10 != ((MenuItemType)2))) {
+                                if ((DAT_MouseState::instance.draggingStopped) && (MVar10 == ((MenuItemType)10))) {
                                     DVar5 = timeGetTime();
                                     (this->secondItemTypeData).buttonState.clickTimestamp_0x4 = DVar5;
                                     (this->secondItemTypeData).buttonState.someTimestamp_1_0x0 = DVar5;
@@ -356,7 +354,7 @@ namespace UI {
                                     (this->secondItemTypeData).buttonState.someTimestamp_1_0x0 = DVar5;
                                     this->clicked = 1;
                                     BOOL_CurrentMenuClickState::instance = TRUE;
-                                    if (DAT_MouseState::instance.midClickState == FALSE) {
+                                    if (!DAT_MouseState::instance.midClickState) {
                                         iVar9 = 10;
                                         do {
                                             (*(this->menuItemActionHandler).simple)(iVar8);

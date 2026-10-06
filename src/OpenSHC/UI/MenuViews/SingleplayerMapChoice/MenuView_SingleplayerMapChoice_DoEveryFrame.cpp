@@ -79,7 +79,7 @@ namespace UI {
                     }
                 }
             }
-            if (DAT_GameSynchronyState::instance.reparseMaps != FALSE) {
+            if (DAT_GameSynchronyState::instance.reparseMaps) {
                 DAT_GameSynchronyState::instance.reparseMaps = FALSE;
                 DAT_MouseState::instance.waitCursorToggle = 1;
                 MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();

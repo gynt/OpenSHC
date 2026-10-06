@@ -42,10 +42,10 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_EnoughGoldForRequestedUnit::instance != FALSE) {
+            if (DAT_EnoughGoldForRequestedUnit::instance) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 BVar2 = MACRO_CALL(OpenSHC::UI::Helpers_Func::CheckGoldResource)(param_1);
-                if (BVar2 == FALSE) {
+                if (!BVar2) {
                     blendStrengthUnk = 0x16;
                     pBVar1
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;

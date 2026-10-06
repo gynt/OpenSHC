@@ -55,10 +55,10 @@ namespace UI {
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         if ((((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
                  && (DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM))
-                && (DAT_GameCore::instance.isTimeHalted == FALSE))
+                && (!DAT_GameCore::instance.isTimeHalted))
             && (BVar1 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                     OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                BVar1 == FALSE)) {
+                !BVar1)) {
             blendStrength = 0;
             BVar1 = FALSE;
             fontSize = 0x12;

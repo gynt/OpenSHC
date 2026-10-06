@@ -34,7 +34,7 @@ namespace UI {
         Menu* _menuPtr;
         int _modalMenuX;
         int _modalMenuY;
-        if (((retainOther == FALSE) && (!this->slot))
+        if (((!retainOther) && (!this->slot))
             && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
@@ -67,7 +67,7 @@ namespace UI {
         _areWeInAnInGameMenu
             = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         _modalMenuX = (this->modalMenu).x;
-        if (_areWeInAnInGameMenu == FALSE) {
+        if (!_areWeInAnInGameMenu) {
             if (_modalMenuX == -1) {
                 _modalMenuX = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - (this->modalMenu).width / 2;
             } else {

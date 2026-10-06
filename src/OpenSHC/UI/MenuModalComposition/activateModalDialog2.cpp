@@ -63,7 +63,7 @@ namespace UI {
         }
         _areWeInAnInGameMenu
             = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (_areWeInAnInGameMenu == FALSE) {
+        if (!_areWeInAnInGameMenu) {
             if (this->modalMenu.x == -1) {
                 this->modalMenu.x = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - this->modalMenu.width / 2;
             } else {
@@ -98,7 +98,7 @@ namespace UI {
             DWORD_00df5534::instance = this->timeItIsSet;
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu != FALSE) {
+            if (_areWeInAnInGameMenu) {
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreen,
                     DAT_WindowAndDirectDraw::ptr)(

@@ -187,10 +187,9 @@ namespace Map {
                     || (0x50 < this->entityArray[entityID].velocityUnk)) {
                     while (_buildingID = (int)(short)uVar4, _buildingID) {
                         if ((this->entityArray[entityID].logicalState == 2)
-                            && (BVar8
-                                = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                            && (BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                     DAT_UnitsState::ptr)(_buildingID, entityID, 0),
-                                BVar8 != FALSE)) {
+                                BVar8)) {
                             if (this->entityArray[entityID].entityType != Map::Entities::ET_COW_FLYING) {
                                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::markEntityDestroyed, this)(
                                     entityID);
@@ -217,10 +216,9 @@ namespace Map {
                         while (iVar11 = (int)(short)uVar4, iVar11) {
                             if (((DAT_UnitsState::instance.units[iVar11].field64_0x90 != 0)
                                     && (this->entityArray[entityID].logicalState == 2))
-                                && (BVar8
-                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
+                                && (BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::processEntityDamageToUnit,
                                         DAT_UnitsState::ptr)(iVar11, entityID, 1),
-                                    BVar8 != FALSE)) {
+                                    BVar8)) {
                                 MACRO_CALL_MEMBER(
                                     Map::Entities::EntityState_Func::markEntityDestroyed, local_10)(entityID);
                                 return (undefined4)(0);

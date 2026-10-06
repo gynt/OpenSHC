@@ -41,7 +41,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

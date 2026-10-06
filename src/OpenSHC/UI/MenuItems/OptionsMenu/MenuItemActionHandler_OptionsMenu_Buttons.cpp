@@ -76,7 +76,7 @@ namespace UI {
                             .playerDeathRelated
                         != 0)
                         break;
-                } else if (DAT_GameSynchronyState::instance.isHost == FALSE)
+                } else if (!DAT_GameSynchronyState::instance.isHost)
                     break;
                 if ((((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
                          && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))

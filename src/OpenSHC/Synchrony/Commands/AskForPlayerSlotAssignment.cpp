@@ -70,7 +70,7 @@ namespace Synchrony {
             if (_commandSenderIsHost != '\0') {
                 DAT_GameSynchronyState::instance.DAT_TwoIfNotHost = 2;
             }
-            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+            if (DAT_GameSynchronyState::instance.isHost) {
                 _commandOriginPlayer = DAT_GameSynchronyState::instance.DPLAYX_ReceivedPlayerID;
                 /*
                   we are host

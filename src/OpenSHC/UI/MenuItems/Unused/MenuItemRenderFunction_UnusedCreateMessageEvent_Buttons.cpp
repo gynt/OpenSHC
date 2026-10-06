@@ -142,7 +142,7 @@ namespace UI {
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 0x48;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 color = 0xc2f0eb;
             } else {
                 color = 0xccfaff;

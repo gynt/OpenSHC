@@ -78,22 +78,21 @@ namespace UI {
                             DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileX)),
                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)),
-                            (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode
-                                             != Game::GM_SOLITARY)
+                            (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                                             & 0xfffffff1)
                                 + 0x1e))),
-                        BVar1 != FALSE)) {
+                        BVar1)) {
                     DAT_TileMapState::instance.demolishBlocked = 1;
                 }
                 iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID;
                 if ((!DAT_MouseState::instance.leftClickStart)
                     && (((!DAT_TileMapState::instance.placementOnWall && (!DAT_TileMapState::instance.placementOnMoat))
-                        || (DAT_MouseState::instance.leftClickState == FALSE)))) {
+                        || (!DAT_MouseState::instance.leftClickState)))) {
                     DAT_TileMapState::instance.placementOnWall = 0;
                     DAT_TileMapState::instance.placementOnMoat = 0;
                     return;
                 }
-                if (((((DAT_GameCore::instance.solitaryAltUDungeon != FALSE)
+                if (((((DAT_GameCore::instance.solitaryAltUDungeon)
                           && (DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID))
                          && (DAT_UnitsState::instance
                                  .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
@@ -178,7 +177,7 @@ namespace UI {
                     DAT_TileMapState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileX)),
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
-                if (DAT_TileMapState::instance.buildingPlacementFail == FALSE) {
+                if (!DAT_TileMapState::instance.buildingPlacementFail) {
                     DAT_WallAndPitchState::instance.countdown = 0;
                     if (!DAT_TileMapState::instance.placementOnMoat) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 50;

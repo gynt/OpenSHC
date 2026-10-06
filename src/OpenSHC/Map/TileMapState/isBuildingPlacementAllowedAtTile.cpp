@@ -100,7 +100,7 @@ namespace Map {
         if (_unitID) {
             _isAI2 = MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
-            if (_isAI2 == FALSE) {
+            if (!_isAI2) {
                 if (DAT_UnitsState::instance.units[(short)_unitID].unitType != Map::Units::UT_CHICKEN) {
                     return 1;
                 }

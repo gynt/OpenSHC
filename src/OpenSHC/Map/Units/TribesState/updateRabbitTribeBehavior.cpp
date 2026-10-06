@@ -74,7 +74,7 @@ namespace Map {
                     if (!sVar4) {
                         BVar7 = MACRO_CALL_MEMBER(Map::WildlifeState_Func::buildRallyPointPathForTribe,
                             DAT_WildlifeState::ptr)(tribeID, 4);
-                        if (BVar7 == FALSE) {
+                        if (!BVar7) {
                             MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                                 DAT_WildlifeState::ptr)(tribeID, 2, 1);
                         }
@@ -92,7 +92,7 @@ namespace Map {
                                 this)(tribeID, (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2 + -1][0])),
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[sVar2 + -1][1])), 0, 0);
                         }
-                    } else if (BVar7 != FALSE) {
+                    } else if (BVar7) {
                         this->tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
                         this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
                     }

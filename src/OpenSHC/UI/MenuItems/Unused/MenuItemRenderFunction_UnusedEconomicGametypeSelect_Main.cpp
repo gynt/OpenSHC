@@ -32,7 +32,7 @@ namespace UI {
             DWORD _currentTime;
             uint uVar2;
             iVar1 = DAT_CurrentButtonGmDataIndex::instance;
-            if ((param_1 != 5) && (DAT_ButtonCurrentlyInteracting::instance == FALSE)) {
+            if ((param_1 != 5) && (!DAT_ButtonCurrentlyInteracting::instance)) {
                 if (param_1 == INT_00b95abc::instance) {
                     INT_00b95abc::instance = -1;
                 }

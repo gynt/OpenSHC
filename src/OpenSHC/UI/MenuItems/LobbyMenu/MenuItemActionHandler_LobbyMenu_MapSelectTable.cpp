@@ -24,7 +24,7 @@ namespace UI {
                          != UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                     && (DAT_MenuModalComposition1::instance.activeModalDialogID
                         != UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                && ((DAT_GameSynchronyState::instance.isHost != FALSE
+                && ((DAT_GameSynchronyState::instance.isHost
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
                         < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber)))) {
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = param_1;

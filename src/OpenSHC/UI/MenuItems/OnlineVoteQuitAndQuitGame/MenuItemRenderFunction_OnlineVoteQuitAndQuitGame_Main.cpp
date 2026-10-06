@@ -62,7 +62,7 @@ namespace UI {
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 blendStrength = 4;
                 color = 0xc2f0eb;
             } else {

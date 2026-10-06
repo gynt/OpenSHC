@@ -51,9 +51,8 @@ namespace Map {
                 (&DAT_TroopValueState::instance.attackInfo.unknownSignpostRelatedArray)[param_2] = 0;
                 iVar4 = iVar2;
             }
-            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeAIZoneLayer,
-                DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                (int)((int)((uint)(BVar3 != FALSE))),
+            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeAIZoneLayer, DAT_PathFindingState::ptr)(
+                DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)((int)((uint)(BVar3))),
                 (int)((int)((short)DAT_TileMapState::instance.PathConnectionLayer[iVar4])));
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkLayerAndAIPathCostLayer,
                 DAT_PathFindingState::ptr)(90, 0, 0, playerID);

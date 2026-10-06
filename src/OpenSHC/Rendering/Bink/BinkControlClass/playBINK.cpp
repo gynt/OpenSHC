@@ -34,7 +34,7 @@ namespace Rendering {
                 MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(
                     binkObjIndex);
             }
-            if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 == FALSE)
+            if ((!DAT_SoundSystemState::instance.waveOutOpenUnk_0x8)
                 || (!DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                 _videoFileName = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::getFileNameOfCurrentActiveResource, DAT_ResourceManager::ptr)();
@@ -54,7 +54,7 @@ namespace Rendering {
                 _binkObjPtr = BinkOpen(_videoFileName, Rendering::Bink::UBF_BINKNOSKIP);
                 this->binkObjPtrArray[binkObjIndex] = _binkObjPtr;
             }
-            if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE)
+            if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8)
                 && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                 _fileSoundVolumne = MACRO_CALL_MEMBER(
                     Audio::SFX::SFXState_Func::getSoundVolumeForFilename, DAT_SFXState::ptr)(binkFileName);

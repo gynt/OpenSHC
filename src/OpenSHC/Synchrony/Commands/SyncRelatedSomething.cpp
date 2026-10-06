@@ -51,7 +51,7 @@ namespace Synchrony {
         if (DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE) {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 OpenSHC::Commands::GCT_BROADCAST_SYNC_RELATED_STATUS_1);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                     DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.currentPacketTotalSize, 4,
                     OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,

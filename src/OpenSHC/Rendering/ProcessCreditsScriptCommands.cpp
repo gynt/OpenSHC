@@ -240,7 +240,7 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field13_0x28)));
                 break;
             case 0x16:
-                if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                if (!DAT_MouseState::instance.draggingStopped) {
                     return;
                 }
                 piVar4 = DAT_ARRAY_00ec0348::ptr[0];
@@ -374,7 +374,7 @@ void Rendering::ProcessCreditsScriptCommands()
             case 0x2c:
                 if (FLOAT_Between1And5::instance + (float)INT_00ec083c::instance
                     <= (float)(int)DAT_ARRAY_00eb9b68::instance[iVar9].soundStream) {
-                    if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                    if (!DAT_MouseState::instance.draggingStopped) {
                         INT_00ec083c::instance = (int)(FLOAT_Between1And5::instance + (float)INT_00ec083c::instance);
                         return;
                     }

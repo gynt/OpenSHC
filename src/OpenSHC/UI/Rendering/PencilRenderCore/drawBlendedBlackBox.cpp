@@ -19,7 +19,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
             _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 left, top, right, bottom, 0);
-            if (_drawReady != FALSE) {
+            if (_drawReady) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderBlendedBlackBox,
                     DAT_TextureRenderCoreObject::ptr)(this->drawStartX, (int)((int)(this->drawStartY)),
                     (int)((int)(this->drawEndX)), (int)((int)(this->drawEndY)), blendStrengh);

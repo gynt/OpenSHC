@@ -95,7 +95,7 @@ namespace UI {
                  */
                 do {
                     DAT_PictureNumToGmIDArray_UNUSED::instance[_currentlyProcessedPictures] = gmID;
-                    if (BVar2 == FALSE) {
+                    if (!BVar2) {
                         if (!(_shiftedHeaderPtr->animatedColor & 4))
                             goto LAB_00455bc5;
                     LAB_00455ba2:

@@ -39,7 +39,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_1, 1, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+            if (DAT_GameSynchronyState::instance.isHost) {
                 DAT_GameSynchronyState::instance
                     .mapTransferStatePerPlayer[DAT_GameSynchronyState::instance.protocolInvokerPlayerID]
                     = (local_1 != '\0') + 1;

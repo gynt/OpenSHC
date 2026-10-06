@@ -54,7 +54,7 @@ namespace UI {
                             == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                     || (DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[mapIndex + 499] != 0)) {
                     if ((param_1 == DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex)
-                        || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                        || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                         color = 0xccfaff;
                     }
                 } else {

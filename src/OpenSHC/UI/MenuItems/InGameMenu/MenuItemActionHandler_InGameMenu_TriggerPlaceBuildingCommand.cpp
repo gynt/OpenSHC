@@ -114,8 +114,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
             }
-            if ((!DAT_MouseState::instance.leftClickStart)
-                && (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE)) {}
+            if ((!DAT_MouseState::instance.leftClickStart) && (DAT_ScrollingHandler::instance.isScrolling_0x0)) {}
             DAT_TileMapState::instance.DAT_ClickedTileY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             DAT_TileMapState::instance.DAT_ClickedTileX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
             if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_MANGONEL) {
@@ -125,7 +124,7 @@ namespace UI {
                             .addXgetTile
                     + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 iVar12 = (int)DAT_TileMapState::instance.BuildingLayer[iVar4];
-                if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                if (!DAT_MouseState::instance.draggingStopped) {
                     if ((((iVar12)
                              && (DAT_BuildingsState::instance.buildings[iVar12].owner
                                  == DAT_GameSynchronyState::instance.currentPlayerSlotID))
@@ -185,7 +184,7 @@ namespace UI {
                             .addXgetTile
                     + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 iVar4 = (int)DAT_TileMapState::instance.BuildingLayer[iVar6];
-                if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                if (!DAT_MouseState::instance.draggingStopped) {
                     if ((((iVar4)
                              && (DAT_BuildingsState::instance.buildings[iVar4].owner
                                  == DAT_GameSynchronyState::instance.currentPlayerSlotID))
@@ -245,7 +244,7 @@ namespace UI {
                                 .addXgetTile
                         + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                     iVar4 = DAT_TileMapState::instance.decorationVariantIndex + 1;
-                    if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                    if (!DAT_MouseState::instance.draggingStopped) {
                         iVar12 = MACRO_CALL_MEMBER(
                             Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
                             iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
@@ -297,7 +296,7 @@ namespace UI {
                                 < (int)local_4)) {
                         bVar14 = false;
                     }
-                    if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                    if (!DAT_MouseState::instance.draggingStopped) {
                         _height = MACRO_CALL_MEMBER(
                             Map::TileMapState_Func::getHeightAtTileIncludingOwnersBuildings,
                             DAT_TileMapState::ptr)(
@@ -385,7 +384,7 @@ namespace UI {
                             bVar14 = true;
                         }
                     }
-                    if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                    if (DAT_MouseState::instance.draggingStopped) {
                         if (!bVar14) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_TileMapState::instance.currentMapperCommand
@@ -464,7 +463,7 @@ namespace UI {
                             bVar14 = true;
                         }
                     }
-                    if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                    if (DAT_MouseState::instance.draggingStopped) {
                         if (!bVar14) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_TileMapState::instance.currentMapperCommand
@@ -512,7 +511,7 @@ namespace UI {
                             bVar14 = true;
                         }
                     }
-                    if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                    if (DAT_MouseState::instance.draggingStopped) {
                         if (!bVar14) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_TileMapState::instance.currentMapperCommand
@@ -558,7 +557,7 @@ namespace UI {
                             bVar14 = true;
                         }
                     }
-                    if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                    if (DAT_MouseState::instance.draggingStopped) {
                         if (!bVar14) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0x1e;
                         goto LAB_004465a6;
@@ -591,7 +590,7 @@ namespace UI {
                         = DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.BuildingLayer[_clickedTile]]
                               .buildingType
                         == Map::Buildings::BT_CATHEDRAL;
-                    if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                    if (DAT_MouseState::instance.draggingStopped) {
                         if (!bVar14 && !iVar6) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0x28;
                         goto LAB_004465a6;
@@ -679,7 +678,7 @@ namespace UI {
                     BVar9 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                         DAT_ViewportRenderState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                         (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)));
-                    if (BVar9 == FALSE) {}
+                    if (!BVar9) {}
                     iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar11].addXgetTile + uVar7;
                     if (((MVar13 == Commands::M_MAPPER_MOAT)
                             || (MVar13 == Commands::M_MAPPER_DUGMOAT))
@@ -697,8 +696,8 @@ namespace UI {
                             DAT_BottomLeftTextDisplayState::ptr)(
                             1, 8, 0x14d, (TextMessageBLLookupStructUnion)0x0, 100, 6000);
                     }
-                    if (((DAT_MouseState::instance.leftClickState == FALSE) || (iVar6 == DAT_00b96110::instance))
-                        && (iVar6 = DAT_00b96110::instance, DAT_MouseState::instance.draggingStopped == FALSE)) {
+                    if (((!DAT_MouseState::instance.leftClickState) || (iVar6 == DAT_00b96110::instance))
+                        && (iVar6 = DAT_00b96110::instance, !DAT_MouseState::instance.draggingStopped)) {
                         MACRO_CALL_MEMBER(Map::TileMapState_Func::renderPreviewMapperWithBrush,
                             DAT_TileMapState::ptr)(uVar7, uVar11, MVar13);
                     }
@@ -706,19 +705,18 @@ namespace UI {
                     BVar9 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                         DAT_PathFindingState::ptr)(
                         uVar7, uVar11, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-                    if (BVar9 != FALSE) {
+                    if (BVar9) {
                         MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                             DAT_BottomLeftTextDisplayState::ptr)(
                             1, 0x4d, 0x15, (TextMessageBLLookupStructUnion)0x0, 100, 6000);
                     }
                     if (((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_MOAT)
-                            || (DAT_TileMapState::instance.currentMapperCommand
-                                == Commands::M_MAPPER_ANTIMOAT))
+                            || (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_ANTIMOAT))
                         && (BVar9 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isValidCastleSiteLocation,
                                 DAT_TileMapState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                                 (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)),
                                 (int)((int)(DAT_TileMapState::instance.currentMapperCommand))),
-                            BVar9 == FALSE)) {}
+                            !BVar9)) {}
                     DVar8 = DAT_00b98450::instance;
                     if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                         && (DAT_GameSynchronyState::instance.currentGameMode
@@ -783,8 +781,7 @@ namespace UI {
                 if (DAT_MouseState::instance.leftClickStart) {
                     DAT_00b96110::instance = 0;
                 }
-                if (((DAT_MouseState::instance.leftClickState != FALSE)
-                        && (DAT_TileMapState::instance.buildingPlacementFail == FALSE))
+                if (((DAT_MouseState::instance.leftClickState) && (!DAT_TileMapState::instance.buildingPlacementFail))
                     && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_PITCH_DITCH)) {
                     DVar8 = DAT_00b98454::instance;
                     if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
@@ -950,9 +947,9 @@ namespace UI {
                     MACRO_CALL(UI::Helpers_Func::SetTaxesSetting_unknown)(2);
                 }
             LAB_00445e6f:
-                if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                if (DAT_MouseState::instance.draggingStopped) {
                     iVar6 = DAT_00b96110::instance;
-                    if (DAT_TileMapState::instance.buildingPlacementFail != FALSE) {
+                    if (DAT_TileMapState::instance.buildingPlacementFail) {
                         if (DAT_TileMapState::instance.buildingPlacementFailReason == ((BuildingFailReasonEnum)1000)) {
                             /*
                               added by script: "Too many dog cages"
@@ -984,9 +981,8 @@ namespace UI {
                 }
                 if (((int)DAT_TileMapState::instance.currentMapperCommand < 0xbe)
                     || (((0xc2 < (int)DAT_TileMapState::instance.currentMapperCommand
-                             && (DAT_TileMapState::instance.currentMapperCommand
-                                 != Commands::M_MAPPER_ARAB_BALLISTA))
-                        || (DAT_TileMapState::instance.buildingPlacementFail != FALSE)))) {
+                             && (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_ARAB_BALLISTA))
+                        || (DAT_TileMapState::instance.buildingPlacementFail)))) {
                     /*
                       special check for some types?
                      */
@@ -1059,7 +1055,7 @@ namespace UI {
                 imageY = IO::Graphics::GID_TILE_BUILDINGS_2;
                 imageX = IO::Graphics::GID_TILE_BUILDINGS_1;
             }
-            if (DAT_MouseState::instance.draggingStopped == FALSE) {
+            if (!DAT_MouseState::instance.draggingStopped) {
                 local_4 = IO::Graphics::GID_ANIM_FLAGS;
                 if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_FLAG_TYPE3) {
                     local_4 = IO::Graphics::GID_ANIM_CRUSADER_FLAG;

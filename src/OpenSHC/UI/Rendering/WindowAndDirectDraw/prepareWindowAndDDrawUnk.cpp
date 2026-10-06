@@ -29,7 +29,7 @@ namespace UI {
             this->drawingReady_0x0
                 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::initializeDirectDraw, this)();
             do {
-                if (this->drawingReady_0x0 != FALSE) {
+                if (this->drawingReady_0x0) {
                 LAB_00470010:
                     this->unk_resetViewportRelated = 2;
                     this->field37_0xdc = 1;

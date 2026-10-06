@@ -55,7 +55,7 @@ namespace UI {
                     _unitCost = ((ResourceType)0);
                 }
                 if (_recruitableState == Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY) {
-                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {}
+                    if (!DAT_GameCore::instance.genieVoiceActive) {}
                     /*
                       @TheRedDaemon: Army is Max Size Message
                      */
@@ -119,7 +119,7 @@ namespace UI {
                 barrackUnitIdUnk = DAT_00df3374::instance;
                 DVar1 = _now;
                 DVar2 = _now;
-                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                if (DAT_GameCore::instance.genieVoiceActive) {
                     /*
                       "Your army is approaching its maximum size"
                      */

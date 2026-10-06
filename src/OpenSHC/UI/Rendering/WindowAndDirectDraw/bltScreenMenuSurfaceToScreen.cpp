@@ -16,10 +16,10 @@ namespace UI {
             HWND__* _windowHandle;
             tagRECT _sourceRect;
             tagRECT _destinationRect;
-            if (this->drawingReady_0x0 != FALSE) {
+            if (this->drawingReady_0x0) {
                 _windowHandle = GetForegroundWindow();
                 if (_windowHandle == this->windowHandle) {
-                    if (this->NOTSelfBufferOrWindowMode_0xf8 == FALSE) {
+                    if (!this->NOTSelfBufferOrWindowMode_0xf8) {
                         _sourceRect.left = windowedX + -0x20;
                         _sourceRect.top = windowedY + -8;
                         _sourceRect.right = windowedWidth + 0x20;

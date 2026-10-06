@@ -46,7 +46,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     backgroundColor = 0x3e66;
                     foregroundColor = 0xa2ff;
                 } else {

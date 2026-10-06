@@ -48,7 +48,7 @@ namespace UI {
             BVar3 = MACRO_CALL(UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             iVar2 = DAT_ButtonY::instance;
             iVar7 = DAT_ButtonX::instance;
-            if (BVar3 == FALSE) {
+            if (!BVar3) {
                 iVar6 = DAT_ButtonW::instance + 0x65 + DAT_ButtonX::instance;
                 local_4 = iVar6 + -0x14;
                 iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
@@ -86,7 +86,7 @@ namespace UI {
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1)) {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(iVar2 + 7, DAT_ButtonH::instance + 0x79 + iVar2);
-                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                    if (!DAT_GameSynchronyState::instance.isHost) {
                         pcVar5 = DAT_GameSynchronyState::instance.mapName;
                     } else {
                         pcVar5 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,

@@ -115,7 +115,7 @@ namespace UI {
                                  .data
                 + param_1 * 4 + 4);
             if (number) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

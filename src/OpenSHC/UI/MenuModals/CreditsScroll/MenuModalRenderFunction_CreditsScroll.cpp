@@ -41,7 +41,7 @@ namespace UI {
             int local_10;
             int local_c;
             int local_8;
-            if (DAT_TextEditorState::instance.pendingCreditsFadeBorder != FALSE) {
+            if (DAT_TextEditorState::instance.pendingCreditsFadeBorder) {
                 DAT_TextEditorState::instance.pendingCreditsFadeBorder = FALSE;
                 MACRO_CALL_MEMBER(
                     Text::TextEditorState_Func::setTextRenderingLogic, DAT_TextEditorState::ptr)();

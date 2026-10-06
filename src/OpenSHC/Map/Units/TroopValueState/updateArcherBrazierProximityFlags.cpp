@@ -31,7 +31,7 @@ namespace Map {
                     if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE)
                              && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)pUVar2->owner),
-                                 BVar1 != FALSE))
+                                 BVar1))
                             && ((pUVar2->unitType == Map::Units::UT_E_ARCHER
                                 || (pUVar2->unitType == Map::Units::UT_A_ARCHER))))
                         && (!pUVar2->dying)) {

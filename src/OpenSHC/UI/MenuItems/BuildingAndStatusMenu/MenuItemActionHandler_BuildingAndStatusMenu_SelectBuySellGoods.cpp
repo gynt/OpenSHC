@@ -21,7 +21,7 @@ namespace UI {
         {
             BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isResourceTypeTradeable,
                 DAT_GameState::ptr)((Game::Resources::ResourceType)param_1);
-            if (BVar1 != FALSE) {
+            if (BVar1) {
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .marketSelectedResourceType = param_1;
                 DAT_GameCore::instance.buildingandstatusmenuMenuTabToSwitchTo = 0x39;

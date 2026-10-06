@@ -101,7 +101,7 @@ namespace UI {
                             + (uint)bVar4;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             DAT_MapEditorProperties_ClickedButton::instance = param_1;
                         }
                     }
@@ -135,12 +135,12 @@ namespace UI {
                             + (uint)bVar4;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             DAT_MapEditorProperties_ClickedButton::instance = param_1;
                         }
                     }
                 } else {
-                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                    if (DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_MapEditorProperties_ClickedButton::instance = param_1;
                     }
                     if (param_1 < 0) {
@@ -153,7 +153,7 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         color = 0xc2f0eb;
                     } else {
                         color = 0xccfaff;

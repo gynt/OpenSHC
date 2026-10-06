@@ -40,7 +40,7 @@ namespace UI {
                 if (DAT_GameCore::instance.unknownFlag_0x118 == TRUE) {
                     DVar1 = timeGetTime();
                     if ((DVar1 - DAT_GameCore::instance.unknownTime_0x11c < 0x3e9)
-                        && (DAT_MouseState::instance.draggingStopped == FALSE)) {
+                        && (!DAT_MouseState::instance.draggingStopped)) {
                         if (!DAT_MouseState::instance.rightClickStop) {
                             return;
                         }

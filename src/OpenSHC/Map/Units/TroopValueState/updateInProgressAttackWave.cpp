@@ -28,7 +28,7 @@ namespace Map {
             BVar2 = MACRO_CALL_MEMBER(
                 Map::Units::TroopValueState_Func::isLessThanPercentageOfTribesInAttackDying, this)(
                 attackID, (int)((int)(50)));
-            if (BVar2 != FALSE) {
+            if (BVar2) {
                 if (this->attackInfo.field86987_0x20f9c)
                     goto LAB_00520489;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::playAttackAlarmSound, this)();

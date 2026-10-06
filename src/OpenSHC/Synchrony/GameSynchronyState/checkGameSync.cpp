@@ -35,7 +35,7 @@ namespace Synchrony {
                 _playerID = _playerID + 1;
                 piVar2 = piVar2 + 1;
             } while (_playerID < 9);
-            if ((this->isHost != FALSE) && (!this->flag_0xbec)) {
+            if ((this->isHost) && (!this->flag_0xbec)) {
                 iVar3 = 1;
                 piVar2 = piVar1;
                 do {

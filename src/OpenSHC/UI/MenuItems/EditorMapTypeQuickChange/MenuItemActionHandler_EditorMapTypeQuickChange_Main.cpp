@@ -45,7 +45,7 @@ namespace UI {
             case 6:
                 BVar1 = MACRO_CALL_MEMBER(
                     Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
-                if (BVar1 == FALSE) {
+                if (!BVar1) {
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = param_1 - Map::MT_JUST_BUILD;
                 /*
                   param1 - 3

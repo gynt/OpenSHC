@@ -25,7 +25,7 @@ namespace Map {
                     if (*piVar2 != 0) {
                         BVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::tribeCorrespondsWithUID,
                             DAT_TribesState::ptr)(*piVar2, (uint)((int)(piVar2[1])));
-                        if (BVar1 == FALSE) {
+                        if (!BVar1) {
                             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue,
                                 DAT_LowLevelMemory::ptr)(0x20, '\0', (void*)((int)(piVar2 + -4)));
                         }

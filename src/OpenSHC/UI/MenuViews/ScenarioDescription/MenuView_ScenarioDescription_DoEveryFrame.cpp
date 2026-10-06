@@ -181,12 +181,12 @@ namespace UI {
                                 MACRO_CALL_MEMBER(
                                     Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                     pcVar2, iVar11, iVar3, TVar6, BVar7, iVar10, BVar9, iVar12);
-                                if ((DAT_MouseState::instance.draggingStopped != FALSE)
+                                if ((DAT_MouseState::instance.draggingStopped)
                                     && (BVar9 = MACRO_CALL_MEMBER(
                                             Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                                             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28, iVar1 + -2,
                                             0x13, 0x13),
-                                        BVar9 != FALSE)) {
+                                        BVar9)) {
                                     *(undefined1*)((int)DAT_GameState::instance.mapAndTime.emenyHitArray + iVar8 + 0x24)
                                         = 1;
                                 }

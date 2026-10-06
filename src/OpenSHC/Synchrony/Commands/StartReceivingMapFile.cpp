@@ -86,7 +86,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.mapSendingFileSize, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 _mapname = (local_3f4 - 1);
                 do {
                     pcVar2 = _mapname;

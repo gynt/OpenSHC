@@ -49,7 +49,7 @@ namespace UI {
             yParam = DAT_ButtonY::instance + 6;
             keepOffsetX = FALSE;
             fontSize = 0x12;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 iVar1 = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.month;
                 color = 0xc2f0eb;

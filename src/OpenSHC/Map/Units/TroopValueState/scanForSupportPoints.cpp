@@ -39,7 +39,7 @@ namespace Map {
                             BVar2 = MACRO_CALL_MEMBER(
                                 Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
                                 DAT_PathFindingState::ptr)(8, x, y, 0x40);
-                            if (BVar2 == FALSE) {
+                            if (!BVar2) {
                                 DAT_TileMapState::instance.AIInfoLayer[tile]
                                     = DAT_TileMapState::instance.AIInfoLayer[tile] | 0x40;
                                 iVar3 = MACRO_CALL_MEMBER(

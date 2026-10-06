@@ -35,7 +35,7 @@ namespace UI {
             if (param_1) {
                 this->windowMoveEventBlitCountdown = 0;
             }
-            if ((this->drawingReady_0x0 == FALSE)
+            if ((!this->drawingReady_0x0)
                 || (_windowHandle = GetForegroundWindow(), _windowHandle != this->windowHandle)) {
                 DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
                 goto LAB_004705e6;
@@ -64,7 +64,7 @@ namespace UI {
                     MACRO_CALL(OS_Func::_sprintf)(local_7d4, "Vid %d, sys %d",
                         this->directDrawBackbufferSurfacePointer, this->directDrawOffscreenSurfacePointer_screenMenu);
                 }
-                if (this->runGameAsExclusiveFullscreen == FALSE) {
+                if (!this->runGameAsExclusiveFullscreen) {
                     _destinationRect.top = this->clientOnScreenCoords.top;
                     _destinationRect.right = this->clientOnScreenCoords.right;
                     _destinationRect.left = this->clientOnScreenCoords.left;

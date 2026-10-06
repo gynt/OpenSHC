@@ -163,13 +163,13 @@ namespace Map {
                                 iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::stopUnitIfNextToTarget,
                                     DAT_UnitsState::ptr)(_unitID);
                                 if (!iVar5) {
-                                    if (BVar4 != FALSE) {
+                                    if (BVar4) {
                                         DAT_PathFindingState::instance.allAssassinsUnk = 1;
                                     }
                                     BVar6
                                         = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit,
                                             DAT_UnitsState::ptr)(_unitID, _x, _y, 0);
-                                    if (BVar6 == FALSE) {
+                                    if (!BVar6) {
                                         DAT_UnitsState::instance.units[_unitID].logicalState
                                             = Map::Units::ULS_REMOVE;
                                     }

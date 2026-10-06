@@ -83,7 +83,7 @@ namespace UI {
                     Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
                     DAT_BuildingsState::ptr)(buttonID);
                 BVar2 = MACRO_CALL(Game_Func::Tutorial_IsActionAllowed)(1, (int)((int)(BVar1)));
-                if (BVar2 == FALSE) {
+                if (!BVar2) {
                     MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
                 }
                 BVar1 = MACRO_CALL_MEMBER(
@@ -179,7 +179,7 @@ namespace UI {
                 UVar4 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {}
-                if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
+                if (DAT_TribesState::instance.patrolButtonPressed) {
                     MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                     DAT_TribesState::instance.rallyCount = 1;
                 }

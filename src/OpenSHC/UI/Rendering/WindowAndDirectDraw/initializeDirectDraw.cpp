@@ -117,7 +117,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     UI::Rendering::WindowAndDirectDraw_Func::setupPreferredScreenResolution, this)();
             }
-            if (this->runGameAsExclusiveFullscreen == FALSE) {
+            if (!this->runGameAsExclusiveFullscreen) {
                 /*
                   DDSC_NORMAL -> Wants to be a normal window      Signature Overwrite
                  */
@@ -147,7 +147,7 @@ namespace UI {
             /*
               Self-Buffering? Or window mode? -TheRedDaemon
              */
-            if (this->NOTSelfBufferOrWindowMode_0xf8 == FALSE) {
+            if (!this->NOTSelfBufferOrWindowMode_0xf8) {
                 MACRO_CALL(OS_Func::_memset)(&_ddsurfacedesc, 0, (size_t)((int)(108)));
                 _ddsurfacedesc.dwSize = 0x6c;
                 _ddsurfacedesc.dwFlags = 1;
@@ -276,7 +276,7 @@ namespace UI {
                                 this->colorBitMode = Rendering::RGB_565;
                             }
                             MACRO_CALL(Rendering_Func::InitializeColors)();
-                            if (this->runGameAsExclusiveFullscreen == FALSE) {
+                            if (!this->runGameAsExclusiveFullscreen) {
                                 GetClientRect(this->windowHandle, &this->clientOnScreenCoords);
                                 ClientToScreen(
                                     this->windowHandle, (LPPOINT)((int)((tagPOINT*)&this->clientOnScreenCoords)));

@@ -42,7 +42,7 @@ namespace Synchrony {
             if (8 < iVar2)
                 goto LAB_0048e72e;
         }
-        if (this->announcementReceivedBool == FALSE) {}
+        if (!this->announcementReceivedBool) {}
         DVar3 = timeGetTime();
         if (DVar3 - this->announcementReceiveTime < 0xafc9) {}
         iVar2 = 1;

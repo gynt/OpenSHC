@@ -80,7 +80,7 @@ namespace UI {
                 iVar1 = iVar1 * 0x2f;
                 BVar6 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable,
                     DAT_GameState::ptr)(_resourceType);
-                if (BVar6 != FALSE) {
+                if (BVar6) {
                     RVar2 = _resourceType;
                     if (_resourceType == OpenSHC::Game::Resources::RT_PITCH) {
                         RVar2 = OpenSHC::Game::Resources::RT_PARTIALPITCH;

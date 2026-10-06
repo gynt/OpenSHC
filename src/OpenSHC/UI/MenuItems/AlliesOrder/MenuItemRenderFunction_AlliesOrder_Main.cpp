@@ -61,7 +61,7 @@ namespace UI {
                 }
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     if (param_1 == 10) {
                         DAT_00df5200::instance = 0xe0;
                         DAT_00df51fc::instance = 8;
@@ -116,7 +116,7 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar2,
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                         (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),

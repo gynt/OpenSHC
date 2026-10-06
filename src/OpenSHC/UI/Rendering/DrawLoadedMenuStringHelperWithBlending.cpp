@@ -20,7 +20,7 @@ namespace UI {
     void Rendering::DrawLoadedMenuStringHelperWithBlending(int loadedMenuStringIndex, int xPos, int yPos, int maxWidth,
         uint color, int fontSize, BOOLEnum isSingleLine, int blendStrength)
     {
-        if (isSingleLine == FALSE) {
+        if (!isSingleLine) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 DAT_ArrayOfStoredMenuStrings::instance[loadedMenuStringIndex],
                 xPos + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,

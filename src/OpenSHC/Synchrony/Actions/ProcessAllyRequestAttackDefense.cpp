@@ -54,7 +54,7 @@ namespace Synchrony {
             }
             BVar3 = MACRO_CALL_MEMBER(AI::AICState_Func::determineAIPlayerHelp, DAT_AICState::ptr)(
                 playerID, requestedByPlayerID);
-            if (BVar3 != FALSE) {
+            if (BVar3) {
                 DAT_GameState::instance.playerDataArray[playerID].playerID_askerUnk = requestedByPlayerID;
                 DAT_GameState::instance.playerDataArray[playerID].requestStateUnk = 2;
             }
@@ -83,7 +83,7 @@ namespace Synchrony {
             }
             BVar3 = MACRO_CALL_MEMBER(AI::AICState_Func::determineAIPlayerAttackRequestResponse,
                 DAT_AICState::ptr)(playerID, (undefined4)((int)(targetPlayerID)), requestedByPlayerID);
-            if (BVar3 != FALSE) {
+            if (BVar3) {
                 DAT_GameState::instance.playerDataArray[playerID].requestStateUnk = 1;
                 DAT_GameState::instance.playerDataArray[playerID].requestedAttackTargetUnk = targetPlayerID;
                 DAT_GameState::instance.playerDataArray[playerID].playerID_askerUnk = requestedByPlayerID;

@@ -62,7 +62,7 @@ namespace UI {
                 xParam = DAT_ButtonX::instance + 8;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xccfaff;
                 } else {
                     color = 0xffffff;

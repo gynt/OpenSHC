@@ -33,11 +33,11 @@ BOOL __stdcall Synchrony::EnumConnectionsCallback(
         return 0;
     }
     BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
-    if (BVar4 == FALSE) {
+    if (!BVar4) {
         BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_IPX::ptr);
-        if (BVar4 == FALSE) {
+        if (!BVar4) {
             BVar4 = MACRO_CALL(OS_Func::isEqualGUID)((GUID*)lpguidSP, (GUID*)GUID_DPSPGUID_MODEM::ptr);
-            if (BVar4 == FALSE) {
+            if (!BVar4) {
                 DAT_GameSynchronyState::instance.scrollBarItemCount = _index + 1;
             } else {
                 _index = 2;

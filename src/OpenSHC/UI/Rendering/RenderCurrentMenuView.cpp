@@ -25,18 +25,18 @@ namespace UI {
              */
             if (DAT_GameCore::instance.currentMenuViewType == pMVar1->menuID) {
                 if (pMVar1->menuID == UI::Enums::MVT_NO_VIEW) {
-                    if (DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial != FALSE) {
+                    if (DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial) {
                         MACRO_CALL(UI::Rendering_Func::RenderNoViewsFoundWarning)();
                     }
                 } else {
-                    if (DAT_MenuView_TriggerPrepare::instance != FALSE) {
+                    if (DAT_MenuView_TriggerPrepare::instance) {
                         /*
                           renderMenuBackground
                          */
                         (*pMVar1->prepare)();
                     }
-                    if ((DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial != FALSE)
-                        || (DAT_MenuView_TriggerPrepare::instance != FALSE)) {
+                    if ((DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial)
+                        || (DAT_MenuView_TriggerPrepare::instance)) {
                         /*
                           someRenderFunction
                          */

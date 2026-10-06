@@ -105,7 +105,7 @@ namespace UI {
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
                 iVar1 = DAT_ButtonW::instance / 2 + -0xf + DAT_ButtonX::instance;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

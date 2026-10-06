@@ -43,8 +43,8 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             if (DAT_UnknownGFXIndex::instance == 1) {}
-            if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
-                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
+            if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance)) {
+                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) && (param_1 < 5)) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
                 }
                 MACRO_CALL(UI::MenuItems::General_Func::
@@ -64,7 +64,7 @@ namespace UI {
                 if (param_1 == INT_00b95abc::instance) {
                     INT_00b95abc::instance = -1;
                 }
-                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
+                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) && (param_1 < 5)) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
                 }
                 MACRO_CALL(UI::MenuItems::General_Func::
@@ -75,7 +75,7 @@ namespace UI {
             } else {
                 if (param_1 != 2) {
                     if (4 < param_1) {}
-                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                    if (DAT_ButtonCurrentlyInteracting::instance) {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                             DE::SHCDE::TEXT_MAP_TITLES, param_1 + -1,
                             (int)((int)(DAT_ButtonX::instance + 0x1a)), (int)((int)(DAT_ButtonY::instance + 0x13)),

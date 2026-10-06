@@ -37,7 +37,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5f,
                     (int)((int)(xPos)), _yPos, IO::Graphics::GID_INTERFACE_ICONS_3, 0x60, blendStrength);
             }
-            if (isDragged != FALSE) {
+            if (isDragged) {
                 if (thumbHeight < 0x15) {
                     MACRO_CALL_MEMBER(
                         UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(

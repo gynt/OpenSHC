@@ -74,7 +74,7 @@ namespace Map {
                     (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                                     & 0xfffffff1)
                         + 0x1e))),
-                BVar2 != FALSE)) {
+                BVar2)) {
             this->demolishBlocked = 1;
             this->buildingPlacementFail = TRUE;
             this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);

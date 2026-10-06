@@ -70,7 +70,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::showOpenHelpFileDialog,
                     DAT_ResourceManager::ptr)("Select help file to load");
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
                         cVar1 = *pcVar8;
@@ -102,7 +102,7 @@ namespace UI {
                     } while (cVar1 != '\0');
                     BVar7 = MACRO_CALL_MEMBER(
                         IO::ResourceManager_Func::showSaveHelpFileDialog, DAT_ResourceManager::ptr)();
-                    if (BVar7 != FALSE) {
+                    if (BVar7) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
                             cVar1 = *pcVar8;
@@ -131,7 +131,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::showOpenGfxFileDialog, DAT_ResourceManager::ptr)();
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
                         cVar1 = *pcVar8;
@@ -174,7 +174,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::showOpenHelpFileDialog,
                     DAT_ResourceManager::ptr)("Select help file to link to");
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
                         cVar1 = *pcVar8;
@@ -322,7 +322,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::showOpenSoundFileDialog, DAT_ResourceManager::ptr)();
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
                         cVar1 = *pcVar8;
@@ -385,7 +385,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::showOpenHelpFileDialog,
                     DAT_ResourceManager::ptr)("Select help file to include");
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
                         cVar1 = *pcVar8;
@@ -438,7 +438,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(
                         IO::ResourceManager_Func::showOpenGfxFileDialog, DAT_ResourceManager::ptr)();
-                    if (BVar7 != FALSE) {
+                    if (BVar7) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
                             cVar1 = *pcVar8;
@@ -462,7 +462,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::showOpenHelpFileDialog,
                         DAT_ResourceManager::ptr)("Select help file to link to");
-                    if (BVar7 != FALSE) {
+                    if (BVar7) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
                             cVar1 = *pcVar8;
@@ -483,7 +483,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(
                         IO::ResourceManager_Func::showOpenSoundFileDialog, DAT_ResourceManager::ptr)();
-                    if (BVar7 != FALSE) {
+                    if (BVar7) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
                             cVar1 = *pcVar8;
@@ -505,7 +505,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::showOpenHelpFileDialog,
                         DAT_ResourceManager::ptr)("Select help file to include");
-                    if (BVar7 != FALSE) {
+                    if (BVar7) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
                             cVar1 = *pcVar8;

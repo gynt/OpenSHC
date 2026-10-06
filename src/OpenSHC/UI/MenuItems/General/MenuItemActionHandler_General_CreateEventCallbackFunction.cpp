@@ -350,7 +350,7 @@ namespace UI {
                     if ((!iVar8)
                         || (BVar4 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                 DAT_ViewportRenderState::ptr)(dStack_4, (uint)((int)(param_1))),
-                            iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID, BVar4 == FALSE))
+                            iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID, !BVar4))
                         goto switchD_004c1bae_caseD_8c;
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount49 = 0xc;
@@ -384,7 +384,7 @@ namespace UI {
                 case 0x92:
                     BVar4 = MACRO_CALL_MEMBER(
                         Game::GameStateStructures_Func::hasAnySignpost, DAT_GameState::ptr)();
-                    if (BVar4 == FALSE)
+                    if (!BVar4)
                         goto switchD_004c1bae_caseD_8c;
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount50 = 0x10;
@@ -425,7 +425,7 @@ namespace UI {
                 case 0x94:
                     BVar4 = MACRO_CALL_MEMBER(
                         Game::GameStateStructures_Func::hasAnySignpost, DAT_GameState::ptr)();
-                    if (BVar4 == FALSE)
+                    if (!BVar4)
                         goto switchD_004c1bae_caseD_8c;
                     iVar8
                         = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::pickRandomAccessibleSignpostEntry,

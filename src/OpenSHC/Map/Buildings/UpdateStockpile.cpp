@@ -47,7 +47,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[2])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_WOOD),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[2];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 2;
                 *piVar1 = *piVar1 + 1;
@@ -65,7 +65,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[3])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_HOPS),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[3];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 3;
                 *piVar1 = *piVar1 + 1;
@@ -83,7 +83,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[4])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_STONE),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[4];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 4;
                 *piVar1 = *piVar1 + 1;
@@ -101,7 +101,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[6])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_IRON),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[6];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 6;
                 *piVar1 = *piVar1 + 1;
@@ -119,7 +119,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[7])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_PITCH),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[7];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 7;
                 *piVar1 = *piVar1 + 1;
@@ -137,7 +137,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[9])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_WHEAT),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[9];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 9;
                 *piVar1 = *piVar1 + 1;
@@ -155,7 +155,7 @@ namespace Map {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[0xe])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_ALE),
-                    BVar4 != FALSE)) {
+                    BVar4)) {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[0xe];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 0xe;
                 *piVar1 = *piVar1 + 1;
@@ -173,7 +173,7 @@ namespace Map {
             if ((DAT_GameState::instance.playerDataArray[_owner].startResources[0x10] < 1)
                 || (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_FLOUR),
-                    BVar4 == FALSE)) {
+                    !BVar4)) {
                 if (!bVar3) {}
             } else {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[0x10];

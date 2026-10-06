@@ -37,7 +37,7 @@ namespace Map {
             this->attackInfo.field128057_0x469d8 = this->attackInfo.field128057_0x469d8 + 1;
             BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZone,
                 DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, iVar4, param_1);
-            if (BVar3 == FALSE) {
+            if (!BVar3) {
                 this->attackInfo.value3Array01[param_1] = 3;
                 this->attackInfo.attackWaveTicker[param_1] = 0;
             }

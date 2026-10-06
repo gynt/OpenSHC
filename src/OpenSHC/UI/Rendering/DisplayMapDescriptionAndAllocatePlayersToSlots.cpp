@@ -53,7 +53,7 @@ namespace UI {
         if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                 + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
             < 0) {
-            if (DAT_GameSynchronyState::instance.isHost != FALSE)
+            if (DAT_GameSynchronyState::instance.isHost)
                 goto LAB_00441251;
             _mapName = DAT_GameSynchronyState::instance.mapName;
             do {
@@ -105,7 +105,7 @@ namespace UI {
                 OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, DAT_GameCore::instance.mapDescUseStringTableIndex);
             goto LAB_004411d1;
         }
-        if ((DAT_GameSynchronyState::instance.isHost != FALSE)
+        if ((DAT_GameSynchronyState::instance.isHost)
             && ((INT_00b960b0::instance
                     != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected

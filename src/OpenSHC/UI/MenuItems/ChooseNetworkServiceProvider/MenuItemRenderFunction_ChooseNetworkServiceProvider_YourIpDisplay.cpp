@@ -37,7 +37,7 @@ namespace UI {
             char local_68[100];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
-            if (DAT_GameSynchronyState::instance.displayYourIP != FALSE) {
+            if (DAT_GameSynchronyState::instance.displayYourIP) {
                 blendStrength = 0;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
@@ -52,7 +52,7 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x24);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
-                if (DAT_GameSynchronyState::instance.lanOrWan == FALSE) {
+                if (!DAT_GameSynchronyState::instance.lanOrWan) {
                     MACRO_CALL(OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d",
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,

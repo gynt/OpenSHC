@@ -70,7 +70,7 @@ namespace UI {
                         param_1 = DAT_ClickedMercUnitType::instance;
                         DVar1 = _now;
                         DVar2 = _now;
-                        if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                        if (DAT_GameCore::instance.genieVoiceActive) {
                             /*
                               "Your army is approaching its maximum size"
                              */
@@ -102,7 +102,7 @@ namespace UI {
                     iVar4 = 0;
                 }
                 if (iVar3 == 3) {
-                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {}
+                    if (!DAT_GameCore::instance.genieVoiceActive) {}
                     /*
                       "Your army is at its maximum size"
                      */

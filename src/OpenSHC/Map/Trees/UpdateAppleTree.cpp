@@ -75,7 +75,7 @@ namespace Map {
             }
         }
         _index = DAT_LandscapeState::instance.trees[_treeID].animationFrameIndex;
-        if (DAT_LandscapeState::instance.trees[_treeID].flag == FALSE) {
+        if (!DAT_LandscapeState::instance.trees[_treeID].flag) {
             bVar2 = DAT_OrganismDefinedData::instance.Tree_1_A[_index];
         } else {
             bVar2 = DAT_OrganismDefinedData::instance.Tree_1_B[_index];
@@ -89,7 +89,7 @@ namespace Map {
         case 0:
         case 6:
             _index = DAT_LandscapeState::instance.trees[_treeID].animationFrameIndex;
-            if (DAT_LandscapeState::instance.trees[_treeID].flag == FALSE) {
+            if (!DAT_LandscapeState::instance.trees[_treeID].flag) {
                 _frame = (int)(char)DAT_OrganismDefinedData::instance.Tree_1_A[_index];
             } else {
                 _frame = (int)(char)DAT_OrganismDefinedData::instance.Tree_1_B[_index];
@@ -97,7 +97,7 @@ namespace Map {
             break;
         case 1:
             _index = DAT_LandscapeState::instance.trees[_treeID].animationFrameIndex;
-            if (DAT_LandscapeState::instance.trees[_treeID].flag == FALSE) {
+            if (!DAT_LandscapeState::instance.trees[_treeID].flag) {
                 _frame = (char)DAT_OrganismDefinedData::instance.Tree_1_A[_index] + 0x19;
             } else {
                 _frame = (char)DAT_OrganismDefinedData::instance.Tree_1_B[_index] + 0x19;
@@ -107,7 +107,7 @@ namespace Map {
         case 4:
         case 5:
             _index = DAT_LandscapeState::instance.trees[_treeID].animationFrameIndex;
-            if (DAT_LandscapeState::instance.trees[_treeID].flag == FALSE) {
+            if (!DAT_LandscapeState::instance.trees[_treeID].flag) {
                 _frame = (char)DAT_OrganismDefinedData::instance.Tree_1_A[_index] + 0x4b;
             } else {
                 _frame = (char)DAT_OrganismDefinedData::instance.Tree_1_B[_index] + 0x4b;
@@ -115,7 +115,7 @@ namespace Map {
             break;
         case 3:
             _index = DAT_LandscapeState::instance.trees[_treeID].animationFrameIndex;
-            if (DAT_LandscapeState::instance.trees[_treeID].flag == FALSE) {
+            if (!DAT_LandscapeState::instance.trees[_treeID].flag) {
                 bVar2 = DAT_OrganismDefinedData::instance.Tree_1_A[_index];
             } else {
                 bVar2 = DAT_OrganismDefinedData::instance.Tree_1_B[_index];

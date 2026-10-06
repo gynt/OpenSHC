@@ -41,7 +41,7 @@ namespace UI {
                 == Map::Buildings::BT_OUTPOST_ARABIAN) {
                 iVar2 = 9;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 if ((!DAT_BuildingsState::instance.menuSelectedBuildingID)
                     || (DAT_ButtonCurrentlyInteracting::instance = TRUE,
                         (uVar1

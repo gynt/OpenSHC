@@ -50,8 +50,7 @@ namespace UI {
             LAB_00443aed:
                 INT_00b9844c::instance = 1;
             } else {
-                if ((((DAT_MouseState::instance.rightClickState != FALSE)
-                         && (DAT_MouseState::instance.mouseBasedEvent != 2))
+                if ((((DAT_MouseState::instance.rightClickState) && (DAT_MouseState::instance.mouseBasedEvent != 2))
                         || ((DAT_ModifierKeyState::instance.ctrl && (DAT_ModifierKeyState::instance.downArrow))))
                     || (DAT_ModifierKeyState::instance.v)) {
                     if (DAT_MouseState::instance.mouseBasedEvent == 3) {
@@ -91,7 +90,7 @@ namespace UI {
                 }
                 INT_00b9844c::instance = 0;
             }
-            if (DAT_MouseState::instance.leftClickState == FALSE) {
+            if (!DAT_MouseState::instance.leftClickState) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::noop1, DAT_TileMapState::ptr)(
@@ -133,7 +132,7 @@ namespace UI {
                 BVar3 = MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::xyAreValid,
                     DAT_ViewportRenderState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                     (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)));
-                if ((BVar3 != FALSE)
+                if ((BVar3)
                     && (DAT_TileMapState::instance.editorAffectType = 0,
                         (DAT_TileMapState::instance
                                 .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[iVar2].addXgetTile

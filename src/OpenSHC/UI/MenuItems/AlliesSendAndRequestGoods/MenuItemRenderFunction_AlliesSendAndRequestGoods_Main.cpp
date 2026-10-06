@@ -71,7 +71,7 @@ namespace UI {
                     actionParam = 0x17;
                 }
                 _gmID = actionParam * 2 + 0x269;
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     _gmID = actionParam * 2 + 0x26a;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -86,7 +86,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonX::instance + 0x15)), (int)((int)(DAT_ButtonY::instance + 0x28)),
                     OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x13, FALSE, 0);
             } else if (actionParam == 21) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     iVar1 = 0x285;
                 } else {
                     iVar1 = 0x286;

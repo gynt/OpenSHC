@@ -76,7 +76,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&local_59, 1, OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = (int)local_59;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                     DAT_GameSynchronyState::ptr)(&local_4c, 0x42, OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
@@ -106,7 +106,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2);
             DAT_GameSynchronyState::instance.lastAutoSaveTime = timeGetTime();
             DAT_GameSynchronyState::instance.saveRelated = 1;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 DAT_GameSynchronyState::instance.shouldSendAnnouncementUnk = 1;
                 ;
             }

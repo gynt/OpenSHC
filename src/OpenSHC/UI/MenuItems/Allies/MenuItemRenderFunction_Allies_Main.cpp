@@ -96,7 +96,7 @@ namespace UI {
             if (0x13 < (uint)param_1) {
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {}
+                if (!DAT_ButtonCurrentlyInteracting::instance) {}
                 if (param_1 == 0x14) {
                     DAT_00df51f4::instance = 1;
                     DAT_00df51f0::instance = 5;
@@ -153,7 +153,7 @@ namespace UI {
                 if ((iVar2 == -1)
                     && (BVar1 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
                             DAT_GameSynchronyState::ptr)(iVar3),
-                        BVar1 == FALSE)) {}
+                        !BVar1)) {}
                 iVar7 = DAT_ButtonY::instance;
                 iVar5 = DAT_ButtonX::instance;
                 iVar6 = DAT_ButtonX::instance + 0x18;

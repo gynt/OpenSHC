@@ -238,9 +238,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                     /*
                       c was pressed
                      */
-                    if ((DAT_GameCore::instance.cheatModeFlag != FALSE)
-                        && (_cheatInGameMenuCheck1 = MACRO_CALL_MEMBER(
-                                Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
+                    if ((DAT_GameCore::instance.cheatModeFlag)
+                        && (_cheatInGameMenuCheck1
+                            = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
                             _cheatInGameMenuCheck1 == 0)) {
                         DAT_GameCore::instance.unlockAllHistoricalCampaigns = 1;
                     }
@@ -289,9 +289,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                       K
                      */
                     if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                        && (DAT_GameCore::instance.cheatModeFlag != FALSE)) {
+                        && (DAT_GameCore::instance.cheatModeFlag)) {
                         DAT_GameCore::instance.solitaryAllBuildingsAreFree
-                            = (BOOLEnum)(DAT_GameCore::instance.solitaryAllBuildingsAreFree == FALSE);
+                            = (BOOLEnum)(!DAT_GameCore::instance.solitaryAllBuildingsAreFree);
                     }
                     break;
                 case 'Q':
@@ -364,7 +364,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                       X
                      */
                     if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_MULTIPLAYER)
-                        && (DAT_GameCore::instance.cheatModeFlag != FALSE)) {
+                        && (DAT_GameCore::instance.cheatModeFlag)) {
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .popularity = 10000;
                         _pGold = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].currentResources + 0xf;
@@ -464,7 +464,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         switch (message) {
         case WM_CREATE:
         case WM_MOVE:
-            if (DAT_WindowAndDirectDraw::instance.runGameAsExclusiveFullscreen != FALSE)
+            if (DAT_WindowAndDirectDraw::instance.runGameAsExclusiveFullscreen)
                 break;
             DAT_WindowAndDirectDraw::instance.windowMoveEventBlitCountdown = 10;
             goto LAB_004b2b45;
@@ -474,7 +474,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
             PostQuitMessage(0);
             break;
         case WM_SIZE:
-            if (DAT_WindowAndDirectDraw::instance.runGameAsExclusiveFullscreen != FALSE) {
+            if (DAT_WindowAndDirectDraw::instance.runGameAsExclusiveFullscreen) {
                 _yScreenSize = GetSystemMetrics(SM_CYSCREEN);
                 _xScreenSize = GetSystemMetrics(SM_CXSCREEN);
                 SetRect(&DAT_WindowAndDirectDraw::instance.clientOnScreenCoords, 0, 0, _xScreenSize, _yScreenSize);
@@ -543,14 +543,14 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 MACRO_CALL_MEMBER(
                     Audio::MSS::SoundSystem_Func::endSpeechSoundStreams, DAT_SoundSystemState::ptr)();
             }
-            if ((DAT_WindowAndDirectDraw::instance.isNotProcessingInputEvents != FALSE)
-                && (DAT_WindowAndDirectDraw::instance.gameFocused != FALSE)) {
+            if ((DAT_WindowAndDirectDraw::instance.isNotProcessingInputEvents)
+                && (DAT_WindowAndDirectDraw::instance.gameFocused)) {
                 /*
                   restore everything
                  */
                 _restore = MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::restoreDXSurfaces,
                     DAT_WindowAndDirectDraw::ptr)();
-                if (_restore != FALSE) {
+                if (_restore) {
                     /*
                       Restoring DirectX succeeded
                      */
@@ -578,7 +578,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
     DAT_ModifierKeyState::instance.keyDownUnk = 1;
     if ((((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAIN_MENU)
              && (DAT_ModifierKeyState::instance.ctrl))
-            && (DAT_GameCore::instance.cheatModeFlag == FALSE))
+            && (!DAT_GameCore::instance.cheatModeFlag))
         && (wParam == (byte)DAT_ShortcutDefinedData::instance.cheatCode[DAT_CheatCodeStringTrackerIndex::instance])) {
         _newIndex = DAT_CheatCodeStringTrackerIndex::instance + 1;
         _cheatCharIndex = DAT_CheatCodeStringTrackerIndex::instance + 1;
@@ -997,7 +997,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if ((((!_leftKeyIngameMenuCheck)
                  || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
                 || (!DAT_ModifierKeyState::instance.ctrl))
-            || (DAT_MouseState::instance.rightClickState != FALSE)) {
+            || (DAT_MouseState::instance.rightClickState)) {
             if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.leftKeyDown_0x1c = TRUE;
@@ -1019,8 +1019,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           VK_UP
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (((BVar2 != FALSE) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
-            && ((DAT_ModifierKeyState::instance.ctrl && (DAT_MouseState::instance.rightClickState == FALSE)))) {
+        if (((BVar2) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+            && ((DAT_ModifierKeyState::instance.ctrl && (!DAT_MouseState::instance.rightClickState)))) {
             /*
               zoom
              */
@@ -1042,9 +1042,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::handleRightKey, DAT_UserTextHandlerState::ptr)();
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if ((((BVar2 == FALSE) || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
+        if ((((!BVar2) || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
                 || (!DAT_ModifierKeyState::instance.ctrl))
-            || (DAT_MouseState::instance.rightClickState != FALSE)) {
+            || (DAT_MouseState::instance.rightClickState)) {
             if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.rightKeyDown_0x18 = TRUE;
@@ -1066,8 +1066,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           VK_DOWN
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (((BVar2 == FALSE) || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
-            || ((!DAT_ModifierKeyState::instance.ctrl || (DAT_MouseState::instance.rightClickState != FALSE)))) {
+        if (((!BVar2) || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
+            || ((!DAT_ModifierKeyState::instance.ctrl || (DAT_MouseState::instance.rightClickState)))) {
             if ((DAT_GameCore::instance.gameMode_2 != Game::GM_SKIRMISH_AND_MULTIPLAYER)
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_CHAT)) {
                 DAT_ScrollingHandler::instance.downKeyDown_0x20 = TRUE;
@@ -1113,7 +1113,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if ((((lParam & 0x40000000U))
                 || (_akeyIngameMenuCheck
                     = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    _akeyIngameMenuCheck == FALSE))
+                    !_akeyIngameMenuCheck))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1150,8 +1150,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           B
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1189,9 +1188,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           C
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
-            && (DAT_MouseState::instance.rightClickState == FALSE)) {
+        if (((BVar2) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+            && (!DAT_MouseState::instance.rightClickState)) {
             uVar10 = DAT_TileMapState::instance.mapOrientation + 6U & 0x80000007;
             if ((int)uVar10 < 0) {
                 uVar10 = (uVar10 - 1 | 0xfffffff8) + 1;
@@ -1216,8 +1214,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           G
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1254,8 +1251,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           H
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1292,8 +1288,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           I
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1330,8 +1325,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           L
          */
         if (((!(lParam & 0x40000000U))
-                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 != FALSE))
+                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), BVar2))
             && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
             if (!DAT_ModifierKeyState::instance.shift) {
                 iVar4 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -1369,8 +1363,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           M
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1407,8 +1400,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           N
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1456,14 +1448,13 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           P
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if ((((BVar2 != FALSE)
-                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+        if ((((BVar2) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
             && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
                 && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_MULTIPLAYER)))) {
             DAT_GameCore::instance.gamePausedLogical = DAT_GameCore::instance.gamePausedLogical ^ 1;
             if (!DAT_GameCore::instance.gamePausedLogical) {
-                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                if (DAT_GameCore::instance.genieVoiceActive) {
                     /*
                       "Game running"
                      */
@@ -1474,7 +1465,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                     UI::Enums::DEID_GAME_PAUSED_TEXT, 1);
                 DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
-                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                if (DAT_GameCore::instance.genieVoiceActive) {
                     /*
                       "Game paused"
                      */
@@ -1501,8 +1492,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           S
          */
         if (((!(lParam & 0x40000000U))
-                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 != FALSE))
+                && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), BVar2))
             && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
             iVar4 = DAT_GameState::instance.mapAndTime.signpostIDs[DAT_00df5538::instance];
             if (iVar4) {
@@ -1533,8 +1523,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           T
          */
         if ((((lParam & 0x40000000U))
-                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    BVar2 == FALSE))
+                || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(), !BVar2))
             || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
             break;
         if (DAT_ModifierKeyState::instance.shift) {
@@ -1573,9 +1562,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           V
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
-            && (DAT_MouseState::instance.rightClickState == FALSE)) {
+        if (((BVar2) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+            && (!DAT_MouseState::instance.rightClickState)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(3);
             DAT_ModifierKeyState::instance.v = 1;
         }
@@ -1597,9 +1585,8 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
           X
          */
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (((BVar2 != FALSE)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
-            && (DAT_MouseState::instance.rightClickState == FALSE)) {
+        if (((BVar2) && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
+            && (!DAT_MouseState::instance.rightClickState)) {
             uVar10 = DAT_TileMapState::instance.mapOrientation + 2U & 0x80000007;
             if ((int)uVar10 < 0) {
                 uVar10 = (uVar10 - 1 | 0xfffffff8) + 1;
@@ -1613,9 +1600,9 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
          */
         if (((((lParam & 0x40000000U))
                  || (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                     BVar2 == FALSE))
+                     !BVar2))
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE))
-            || (DAT_MouseState::instance.rightClickState != FALSE))
+            || (DAT_MouseState::instance.rightClickState))
             break;
         if (!DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk) {
             MACRO_CALL_MEMBER(
@@ -1649,7 +1636,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if (((!(lParam & 0x40000000U))
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE))
             && (BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                _currentSelectionID = DAT_TribesState::instance.DAT_CurrentTribeID, BVar2 != FALSE)) {
+                _currentSelectionID = DAT_TribesState::instance.DAT_CurrentTribeID, BVar2)) {
             if (!DAT_ModifierKeyState::instance.ctrl) {
                 if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                     if (DAT_GameCore::instance.activeMenuTab.tabType
@@ -1759,7 +1746,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                 iVar4 = wParam - '0';
                 BVar2 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::isUnitShortcutAvailable, DAT_UnitsState::ptr)(iVar4);
-                if (BVar2 == FALSE) {
+                if (!BVar2) {
                     MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
                     MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::makeSelectionBasedOnShortcut, DAT_UnitsState::ptr)(iVar4);
@@ -1847,7 +1834,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if ((((lParam & 0x40000000U))
                 || (_addKeyIngameMenu
                     = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    _addKeyIngameMenu == FALSE))
+                    !_addKeyIngameMenu))
             || (((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
                      || ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
                          && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))))
@@ -1865,7 +1852,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
         if ((((lParam & 0x40000000U))
                 || (_subtractKeyIngameMenu
                     = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                    _subtractKeyIngameMenu == FALSE))
+                    !_subtractKeyIngameMenu))
             || ((DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE
                 || (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
                          && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
@@ -1895,7 +1882,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                                   || (DAT_GameCore::instance.currentMenuViewType
                                       == UI::Enums::MVT_BUILDING_AND_STATUS_MENU))))
                              && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
-                                 || (DAT_GameSynchronyState::instance.isHost != FALSE))))
+                                 || (DAT_GameSynchronyState::instance.isHost))))
                         && (!DAT_GameCore::instance.field24_0x6c))))
                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL)) {
                 MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(
@@ -1943,7 +1930,7 @@ LRESULT __stdcall Global::WindowMsgProcessingFunc(HWND windowHandle, UINT messag
                                 && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_JUST_BUILD))
                            && (_fkeyIngameMenuCheck
                                = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)(),
-                               _fkeyIngameMenuCheck != FALSE))))
+                               _fkeyIngameMenuCheck))))
             && (!DAT_ModifierKeyState::instance.shift)) {
             MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::openEventTriggerMenu, DAT_MapPropertiesState::ptr)(
                 wParam - VK_F1);

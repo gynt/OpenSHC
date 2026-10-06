@@ -48,9 +48,9 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
                 BVar10 = MACRO_CALL_MEMBER(
                     Game::GameStateStructures_Func::anyGoodsAreAllowedForSale, DAT_GameState::ptr)();
-                if (BVar10 != FALSE) {
+                if (BVar10) {
                     DAT_ButtonUnknownZero::instance = 0;
-                    if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (param_1 == 2)) {
+                    if ((DAT_ButtonCurrentlyInteracting::instance) && (param_1 == 2)) {
                         DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
                     }
                     MACRO_CALL(UI::MenuItems::General_Func::
@@ -60,7 +60,7 @@ namespace UI {
                 MACRO_CALL(UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 iVar4 = param_1 + 5;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     iVar11 = 0x11;
                     pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TRADEPOST, iVar4);

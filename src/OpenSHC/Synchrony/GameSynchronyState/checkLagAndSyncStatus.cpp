@@ -37,7 +37,7 @@ namespace Synchrony {
             if (8 < iVar4)
                 goto LAB_0048da99;
         }
-        if (DAT_GameSynchronyState::instance.announcementReceivedBool == FALSE) {
+        if (!DAT_GameSynchronyState::instance.announcementReceivedBool) {
             DVar3 = timeGetTime();
             if (DVar3 - DAT_GameSynchronyState::instance.announcementReceiveTime < 60000) {}
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;

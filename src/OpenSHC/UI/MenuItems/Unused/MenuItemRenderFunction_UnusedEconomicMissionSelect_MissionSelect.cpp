@@ -79,7 +79,7 @@ namespace UI {
                         textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                     DAT_ButtonUnknownZero::instance = 0;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)((int)(DAT_ButtonX::instance + 8)),
                         (int)((int)(DAT_ButtonY::instance + 5)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);

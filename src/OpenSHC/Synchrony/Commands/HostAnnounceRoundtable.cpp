@@ -56,7 +56,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_1, 1, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if ((DAT_GameSynchronyState::instance.isHost != FALSE)
+            if ((DAT_GameSynchronyState::instance.isHost)
                 || (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_LOBBY_MENU)) {
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                     if (local_1 == '\0') {}

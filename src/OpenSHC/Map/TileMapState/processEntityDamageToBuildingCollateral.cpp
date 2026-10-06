@@ -305,7 +305,7 @@ namespace Map {
                                     && (DAT_GameState::instance.mapAndTime.playerTeams[sVar4]
                                         != DAT_GameState::instance.mapAndTime
                                             .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]))
-                                && (DAT_GameCore::instance.genieVoiceActive != FALSE)) {
+                                && (DAT_GameCore::instance.genieVoiceActive)) {
                                 if ((iVar9 == 0x13) || (iVar9 == 0xb)) {
                                     /*
                                       "Excellent"

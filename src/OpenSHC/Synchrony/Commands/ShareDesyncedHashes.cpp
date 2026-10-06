@@ -266,7 +266,7 @@ namespace Synchrony {
                     0xa0, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             }
-            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+            if (DAT_GameSynchronyState::instance.isHost) {
                 DAT_GameSynchronyState::instance
                     .receivedSyncStatusByPlayerUnk[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
                 DAT_GameSynchronyState::instance.announcementReceivedBool = TRUE;

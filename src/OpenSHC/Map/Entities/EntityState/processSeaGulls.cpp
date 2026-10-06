@@ -90,14 +90,14 @@ namespace Map {
                     _newX = _newMicroX / 8;
                     _newBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                         DAT_ViewportRenderState::ptr)(_newX, _newY);
-                    if (_newBounds != FALSE) {
+                    if (_newBounds) {
                         _oldMicroY = (int)this->entityArray[_entityID].microY;
                         _oldMicroX = (int)this->entityArray[_entityID].microX;
                         _oldY = _oldMicroY / 8;
                         _oldX = _oldMicroX / 8;
                         _oldBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_oldX, _oldY);
-                        if (((_oldBounds != FALSE)
+                        if (((_oldBounds)
                                 && ((
                                     DAT_TileMapState::instance.LogicLayer
                                         [DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile + _newX]

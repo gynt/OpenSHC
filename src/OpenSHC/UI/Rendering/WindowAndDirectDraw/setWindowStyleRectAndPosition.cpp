@@ -23,7 +23,7 @@ namespace UI {
               0xCA0000 -> WS_BORDER, WS_DLGFRAME, WS_SYSMENU, WS_MINIMIZEBOX      Hoever, if exclusive, it becomes only:
               WS_POPUP
              */
-            dwStyle = (-(uint)(this->runGameAsExclusiveFullscreen != FALSE) & 0x7f360000) + 0xca0000 | 268435456;
+            dwStyle = (-(uint)(this->runGameAsExclusiveFullscreen) & 0x7f360000) + 0xca0000 | 268435456;
             /*
               set a new window style GWL_STYLE      Needed to add signature overwrite to not break stack analysis.
               -TheRedDaemon
@@ -35,7 +35,7 @@ namespace UI {
                 DAT_WindowInformation::ptr)(0, 0, (LONG)((int)(this->resolutionX)), (LONG)((int)(this->resolutionY)));
             _x = this->resolutionX;
             _y = this->resolutionY;
-            if (this->runGameAsExclusiveFullscreen != FALSE) {
+            if (this->runGameAsExclusiveFullscreen) {
                 _y = GetSystemMetrics(SM_CYSCREEN);
                 _x = GetSystemMetrics(SM_CXSCREEN);
             }

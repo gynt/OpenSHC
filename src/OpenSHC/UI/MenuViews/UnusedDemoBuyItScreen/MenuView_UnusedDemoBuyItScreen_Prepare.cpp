@@ -37,7 +37,7 @@ namespace UI {
                 INT_00b960e0::instance = 0x18;
             }
             MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::shutdownSoundSystem, DAT_SoundSystemState::ptr)();
-            if (DAT_GameSynchronyState::instance.openOnClose != FALSE) {
+            if (DAT_GameSynchronyState::instance.openOnClose) {
                 DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
             }
         }

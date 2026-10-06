@@ -29,7 +29,7 @@ namespace UI {
             int _scrollDistance;
             _debugNumbersDisplayed = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                 UI::Enums::DEID_DEBUG_NUMBERS);
-            if (_debugNumbersDisplayed == FALSE) {
+            if (!_debugNumbersDisplayed) {
                 /*
                   This call uses the function to compute the needed numbers, but the given   element state indicates to
                   not print the debug numbers. -TheRedDaemon
@@ -37,7 +37,7 @@ namespace UI {
                 MACRO_CALL(UI::DisplayElements_Func::RenderDebugNumbersDisplayElement)(0, 0, 0xfffffc18);
             }
             if (DAT_MouseState::instance.selectionBoxMode) {}
-            if (DAT_MouseState::instance.rightClickState != FALSE) {}
+            if (DAT_MouseState::instance.rightClickState) {}
             _scrollDistance = MACRO_CALL_MEMBER(
                 UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
             if (!_scrollDistance) {}

@@ -69,7 +69,7 @@ namespace UI {
             BOOLEnum BVar19;
             uint local_8;
             int* local_4;
-            if ((BOOLEnum_00ed313c::instance & TRUE) == FALSE) {
+            if (!(BOOLEnum_00ed313c::instance & TRUE)) {
                 BOOLEnum_00ed313c::instance = BOOLEnum_00ed313c::instance | TRUE;
                 DWORD_00ed3138::instance = timeGetTime();
             }

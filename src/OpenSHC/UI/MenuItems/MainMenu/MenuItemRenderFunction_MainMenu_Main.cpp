@@ -51,12 +51,12 @@ namespace UI {
             uint _color;
             if (DAT_UnknownGFXIndex::instance == 1) {}
             if (param_1 == 5) {
-                if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (BOOL_WasInteracting::instance == FALSE)) {
+                if ((DAT_ButtonCurrentlyInteracting::instance) && (!BOOL_WasInteracting::instance)) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)((OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3 | OpenSHC::Audio::SFX::SEID_WOOD_SAW));
                 }
                 BOOL_WasInteracting::instance = DAT_ButtonCurrentlyInteracting::instance;
             LAB_00424fed:
-                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE)
+                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag)
                     && (((param_1 == 1 || (param_1 == 2)) || ((param_1 == 3 || (param_1 == 9)))))) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
                 }
@@ -69,20 +69,20 @@ namespace UI {
                 DAT_CurrentButtonPictureInGm::instance
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                           .pictureInGm_0x4;
-                if (((param_1 < 5) || (param_1 == 9)) && (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                if (((param_1 < 5) || (param_1 == 9)) && (DAT_ButtonCurrentlyInteracting::instance)) {
                     if (INT_00b95abc::instance != param_1) {
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)((OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
                 }
             } else {
-                if ((((DAT_ButtonCurrentlyInteracting::instance != FALSE) || (param_1 == 6)) || (param_1 == 7))
+                if ((((DAT_ButtonCurrentlyInteracting::instance) || (param_1 == 6)) || (param_1 == 7))
                     || ((param_1 == 8 || (param_1 == 9))))
                     goto LAB_00424fed;
                 if (param_1 == INT_00b95abc::instance) {
                     INT_00b95abc::instance = -1;
                 }
-                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE)
+                if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag)
                     && (((param_1 == 1 || (param_1 == 2)) || (param_1 == 3)))) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
                 }
@@ -131,7 +131,7 @@ namespace UI {
             } else if (4 < param_1) {
             }
         LAB_00425150:
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_ICONS_FRONT_END, 1,

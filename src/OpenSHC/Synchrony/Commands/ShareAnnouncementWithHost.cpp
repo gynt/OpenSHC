@@ -22,7 +22,7 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
         }
         if ((DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE)
-            && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+            && (DAT_GameSynchronyState::instance.isHost)) {
             DAT_GameSynchronyState::instance
                 .announcementReceivedByPlayer[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
             DAT_GameSynchronyState::instance.announcementReceiveTime = timeGetTime();

@@ -16,7 +16,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
             _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 x1, y1, x2, y2, color);
-            if (_drawReady != FALSE) {
+            if (_drawReady) {
                 if (!this->currentWidth_0x28) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawVerticalLine, this)();
                 }

@@ -75,7 +75,7 @@ namespace UI {
             do {
                 _lordNameCallable = MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::isLordNameCallable,
                     DAT_LowLevelMemory::ptr)(_playerLordNameUnk, (char*)((int)(_callableLordNamePtr->name)));
-                if (_lordNameCallable != FALSE) {
+                if (_lordNameCallable) {
                     MACRO_CALL_MEMBER(
                         Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
                         DAT_SpeechDefinedData::instance.LordNameToCall[_callableLordNameIndex].source, 1);

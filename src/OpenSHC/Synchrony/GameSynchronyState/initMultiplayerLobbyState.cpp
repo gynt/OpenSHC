@@ -74,7 +74,7 @@ namespace Synchrony {
         this->laggingPlayerIDUnk = 0;
         this->DAT_SomeTime = 0;
         this->flag_0x7aad8 = FALSE;
-        if (this->isHost != FALSE) {
+        if (this->isHost) {
             this->DAT_TwoIfNotHost = 2;
         }
         local_8 = (undefined2*)((int)this->finalResults.unusedUnk + 0x12);

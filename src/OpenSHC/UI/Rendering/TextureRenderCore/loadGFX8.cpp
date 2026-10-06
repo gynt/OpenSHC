@@ -31,7 +31,7 @@ namespace UI {
             _destination = (void*)((int)this->gmAndGfxImageDataBuffer + _currentBufferFillSize);
             _success = MACRO_CALL_MEMBER(IO::ResourceManager_Func::readCurrentResourceIntoDestination,
                 DAT_ResourceManager::ptr)(_destination, _size);
-            if (_success == FALSE) {
+            if (!_success) {
                 return -1;
             }
             this->loadedGfxArray[this->totalLoadedGfx + 1].offsetInBuffer

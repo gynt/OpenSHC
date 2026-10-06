@@ -96,7 +96,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&_mapHash, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 iVar4 = 0;
                 do {
                     cVar1 = local_3f4[iVar4];

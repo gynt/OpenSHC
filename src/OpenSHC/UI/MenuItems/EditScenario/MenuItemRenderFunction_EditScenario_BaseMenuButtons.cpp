@@ -49,7 +49,7 @@ namespace UI {
                     if (param_1 == 0x3d) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             /*
                               added by script: "Gold"
                              */
@@ -80,7 +80,7 @@ namespace UI {
                                     .field1236_0x3448[DAT_GameState::instance.mapAndTime.scenarioRationsSetting];
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar1,
                                 (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
@@ -96,7 +96,7 @@ namespace UI {
                         iVar1 = (int)DAT_GameState::instance.mapAndTime.scenarioTaxesSetting;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        if (!DAT_ButtonCurrentlyInteracting::instance) {
                             color = 0xc2f0eb;
                         } else {
                             color = 0xccfaff;
@@ -111,7 +111,7 @@ namespace UI {
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         /*
                           added by script: "Starting Gold"
                          */
@@ -139,7 +139,7 @@ namespace UI {
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         /*
                           added by script: "Starting Pitch"
                          */
@@ -176,7 +176,7 @@ namespace UI {
                         } else if (param_1 == 0x4f) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                            if (DAT_ButtonCurrentlyInteracting::instance) {
                                 /*
                                   added by script: "Popularity"
                                  */

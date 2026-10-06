@@ -53,7 +53,7 @@ namespace UI {
             bool bVar3;
             eTextSections eVar4;
             int iVar5;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 return;
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_SEND_MAP_TO) {

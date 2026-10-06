@@ -71,7 +71,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 if (param_1 == 0x67) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
@@ -81,8 +81,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             if (param_1 != 0x67) {
-                if ((DAT_ButtonCurrentlyInteracting::instance == FALSE)
-                    || (DAT_GameSynchronyState::instance.isHost == FALSE)) {
+                if ((!DAT_ButtonCurrentlyInteracting::instance) || (!DAT_GameSynchronyState::instance.isHost)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderNonInteractingButtonBackground,
                         AlphaAndButtonSurfaceObj::ptr)(DAT_ButtonBackgroundBlendStrength::instance);

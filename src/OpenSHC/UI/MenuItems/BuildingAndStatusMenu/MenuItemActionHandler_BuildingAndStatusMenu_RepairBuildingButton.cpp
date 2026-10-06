@@ -44,7 +44,7 @@ namespace UI {
                 (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                           & 0xfffffff1)
                     + 0x1e));
-            if ((_enemyTooClose == FALSE) && (_buildingDamaged != FALSE)) {
+            if ((!_enemyTooClose) && (_buildingDamaged)) {
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID);
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

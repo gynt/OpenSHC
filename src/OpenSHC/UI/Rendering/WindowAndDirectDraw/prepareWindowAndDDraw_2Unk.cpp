@@ -22,7 +22,7 @@ namespace UI {
         {
             dword dVar1;
             dVar1 = this->mbr_0xd0;
-            if (this->drawingReady_0x0 != FALSE) {
+            if (this->drawingReady_0x0) {
                 this->mbr_0xd0 = 0;
                 MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     this->byteSizeofScreenResolution, '\0', (void*)((int)(this->surfacePointer_screenMenu)));
@@ -39,7 +39,7 @@ namespace UI {
             this->drawingReady_0x0
                 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::initializeDirectDraw, this)();
             do {
-                if (this->drawingReady_0x0 != FALSE) {
+                if (this->drawingReady_0x0) {
                 LAB_00472a5f:
                     this->unk_resetViewportRelated = 2;
                     this->field37_0xdc = 1;

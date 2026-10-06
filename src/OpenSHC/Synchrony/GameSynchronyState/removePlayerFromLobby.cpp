@@ -23,7 +23,7 @@ namespace Synchrony {
         GameCommandType commandType;
         this->syncRelatedStatusArray[playerID] = 1;
         BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if ((BVar1 != FALSE) && (playerID != this->currentPlayerSlotID)) {
+        if ((BVar1) && (playerID != this->currentPlayerSlotID)) {
             this->DAT_GameCommandParam0 = playerID;
             this->DAT_GameCommandParam1 = this->kickDueToLagStatusUnk;
             if ((!this->syncStatus) && (!this->saveRelated)) {
@@ -46,7 +46,7 @@ namespace Synchrony {
         MACRO_CALL(Synchrony::Actions_Func::RemovePositionOfPlayer)(playerID);
         this->DAT_MultiplayerGameVersions[playerID] = 0;
         this->slotActionPending[playerID] = 0;
-        if ((playerID != this->currentPlayerSlotID) && (this->isHost != FALSE)) {
+        if ((playerID != this->currentPlayerSlotID) && (this->isHost)) {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
         }
     }

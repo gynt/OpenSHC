@@ -28,7 +28,7 @@ namespace UI {
             int imageID;
             if (0x27 < param_1) {
                 BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-                if (BVar1 == FALSE) {
+                if (!BVar1) {
                     MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }

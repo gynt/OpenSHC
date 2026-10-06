@@ -58,10 +58,10 @@ namespace UI {
                 (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                           & 0xfffffff1)
                     + 0x1e));
-            if ((BVar2 == FALSE) && (BVar1 != FALSE)) {
+            if ((!BVar2) && (BVar1)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_SCREEN_MENU);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color_00 = 0xc2f0eb;
                 } else {
                     color_00 = 0xccfaff;

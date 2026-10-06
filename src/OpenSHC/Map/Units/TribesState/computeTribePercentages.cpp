@@ -60,7 +60,7 @@ namespace Map {
                     if (DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL) {
                         BVar3 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::isComputerManagedNonPeasant,
                             DAT_UnitsState::ptr)(_unitID);
-                        if (BVar3 == FALSE) {
+                        if (!BVar3) {
                             if (DAT_UnitsState::instance.units[_unitID].dying == 0) {
                                 if (DAT_UnitsState::instance.units[_unitID].movementRelated != 8) {
                                     _countMoving = _countMoving + 1;

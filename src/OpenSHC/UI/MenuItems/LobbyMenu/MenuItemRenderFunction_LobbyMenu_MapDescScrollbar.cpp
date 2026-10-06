@@ -31,7 +31,7 @@ namespace UI {
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID
                     != UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
                 BVar1 = MACRO_CALL(UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-                if (BVar1 == FALSE) {
+                if (!BVar1) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = BVar1;
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawScrollbar,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),

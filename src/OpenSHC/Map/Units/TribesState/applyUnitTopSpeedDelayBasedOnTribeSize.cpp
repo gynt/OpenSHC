@@ -57,7 +57,7 @@ namespace Map {
                               sets unitID
                              */
                             ((UnitIDMovementDistancePair*)(_ptrMovementDistance + -1))->unitID = (short)_selectionUnit;
-                            if (param_2 == FALSE) {
+                            if (!param_2) {
                                 *_ptrMovementDistance = DAT_UnitsState::instance.units[_selectionUnit].movementDistance;
                             }
                         }
@@ -82,7 +82,7 @@ namespace Map {
                         _distance = pUVar2->unitID;
                         _unitID = pUVar2->movementDistance;
                         _nextUnitID = pUVar2[1].movementDistance;
-                        if ((param_2 == FALSE) && (_nextUnitID < _unitID)) {
+                        if ((!param_2) && (_nextUnitID < _unitID)) {
                             _foundUnsortedEntry = true;
                             pUVar2->unitID = _nextUnit->unitID;
                             _nextUnit->unitID = _distance;

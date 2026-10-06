@@ -33,7 +33,7 @@ namespace UI {
             BOOLEnum BVar3;
             int playerID_00;
             int playerID_01;
-            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+            if (DAT_GameSynchronyState::instance.isHost) {
                 if (param_1 < 9) {
                     if (DAT_00df423c::instance) {
                         param_1 = param_1 + 10;
@@ -51,24 +51,24 @@ namespace UI {
                             && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID_01] != -1
                                 || (BVar3 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
                                         DAT_GameSynchronyState::ptr)(playerID_01),
-                                    BVar3 != FALSE))))
+                                    BVar3))))
                         && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID] != -1
                             || (BVar3 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
                                     DAT_GameSynchronyState::ptr)(playerID),
-                                BVar3 != FALSE)))) {
+                                BVar3)))) {
                         int iVar4 = 0;
                         for (playerID_00 = 1; playerID_00 < 9; playerID_00++) {
                             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID_00] != -1)
                                 || (BVar3 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
                                         DAT_GameSynchronyState::ptr)(playerID_00),
-                                    BVar3 != FALSE)) {
+                                    BVar3)) {
                                 iVar4 = iVar4 + 1;
                             }
                         }
                         if (2 < iVar4) {
                             if ((DAT_GameSynchronyState::instance.currentAIArray[playerID_01] == 1)
                                 && (!DAT_00df4240::instance)) {
-                                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                                if (DAT_GameCore::instance.genieVoiceActive) {
                                     /*
                                       "Not the rodent"
                                      */
@@ -79,7 +79,7 @@ namespace UI {
                             }
                             if ((DAT_GameSynchronyState::instance.currentAIArray[playerID_01] == 7)
                                 && (!DAT_00df4298::instance)) {
-                                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                                if (DAT_GameCore::instance.genieVoiceActive) {
                                     /*
                                       "Oh no"
                                      */
@@ -136,8 +136,7 @@ namespace UI {
                                 BVar3
                                     = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::shouldSoundXNotBePlaying,
                                         DAT_SoundSystemState::ptr)();
-                                if (((BVar3 == FALSE) && (2 < iVar4))
-                                    && (DAT_GameCore::instance.genieVoiceActive != FALSE)) {
+                                if (((!BVar3) && (2 < iVar4)) && (DAT_GameCore::instance.genieVoiceActive)) {
                                     MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                                     switch ((int)SEC_RNG::instance.currentNumber1 % 7) {
                                     case 0:

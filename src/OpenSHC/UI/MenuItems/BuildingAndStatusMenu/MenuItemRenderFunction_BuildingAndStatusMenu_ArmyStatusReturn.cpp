@@ -45,7 +45,7 @@ namespace UI {
                             && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE))))))
                 && (BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                         UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                    BVar2 == FALSE)) {
+                    !BVar2)) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;

@@ -344,7 +344,7 @@ namespace UI {
             }
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
             if (((!DAT_GameCore::instance.isBinkVideoPlaying)
-                    && (DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying == FALSE))
+                    && (!DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying))
                 && (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_640x480)) {
                 DAT_MinimapViewState::instance.needsRedraw = 1;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapMain, DAT_MinimapViewState::ptr)();

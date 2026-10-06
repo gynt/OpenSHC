@@ -62,7 +62,7 @@ namespace Synchrony {
         if (commandCategory == 117) {
             BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             _dwPriority = 0xfffd;
-            if (BVar2 == FALSE) {
+            if (!BVar2) {
             LAB_00487dc7:
                 _dwFlags = 1536 | 1536;
                 goto LAB_00487dda;

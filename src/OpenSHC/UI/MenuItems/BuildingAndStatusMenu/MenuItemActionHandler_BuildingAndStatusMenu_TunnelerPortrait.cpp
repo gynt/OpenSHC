@@ -26,7 +26,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00466F60
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_TunnelerPortrait(int param_1, ...)
         {
-            if ((DAT_EnoughGoldForRequestedUnit::instance != FALSE)
+            if ((DAT_EnoughGoldForRequestedUnit::instance)
                 && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .count_2
                         + DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

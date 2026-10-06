@@ -18,7 +18,7 @@ namespace Text {
         int _textWidth;
         int xPos;
         char _char;
-        if (keepOffsetX == FALSE) {
+        if (!keepOffsetX) {
             this->currentXOffset_0x0 = 0;
         }
         if (textAddress != (char*)0x0) {

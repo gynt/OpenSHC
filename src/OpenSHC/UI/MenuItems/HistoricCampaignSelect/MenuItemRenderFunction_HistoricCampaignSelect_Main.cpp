@@ -47,8 +47,8 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             if (DAT_UnknownGFXIndex::instance != 1) {
-                if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
-                    if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
+                if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance)) {
+                    if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) && (param_1 < 5)) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
@@ -67,7 +67,7 @@ namespace UI {
                     if (param_1 == INT_00b95abc::instance) {
                         INT_00b95abc::instance = -1;
                     }
-                    if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
+                    if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) && (param_1 < 5)) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
@@ -87,7 +87,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
                         backgroundColor, fontSize, keepOffsetX, blendStrength);
-                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                    if (DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,

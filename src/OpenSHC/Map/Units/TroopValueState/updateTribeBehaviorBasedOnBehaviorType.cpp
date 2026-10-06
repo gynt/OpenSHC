@@ -296,7 +296,7 @@ namespace Map {
                         = Map::Units::Behavior::USE_AGGRESSIVE;
                     BVar9 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::allUnitsReachedTheirDestination,
                         DAT_TribesState::ptr)(tribeID);
-                    if (BVar9 != FALSE) {
+                    if (BVar9) {
                         DAT_TribesState::instance.tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
                         MACRO_CALL_MEMBER(
                             Map::Units::TroopValueState_Func::buildRallyPointsFromSiegeUnits, this)(tribeID);

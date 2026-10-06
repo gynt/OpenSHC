@@ -56,8 +56,8 @@ namespace UI {
                              != OpenSHC::UI::Enums::MMT_SEND_MAP_TO))
                         && (DAT_MenuModalComposition1::instance.activeModalDialogID
                             != OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM))
-                    && (BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)(),
-                        BVar1 != FALSE)) {}
+                    && (BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)(), BVar1)) {
+                }
                 iVar2 = DAT_ButtonBackgroundBlendStrength::instance + -0x20;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 if (param_1 != -3) {

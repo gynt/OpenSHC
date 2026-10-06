@@ -52,11 +52,11 @@ namespace UI {
             iVar4 = DAT_CurrentButtonGmDataIndex::instance;
             buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
             iVar3 = DAT_ButtonY::instance;
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 DAT_00df3350::instance = param_1 + -0x46;
             }
             if (iVar1 == 1) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                         .stateTransitionTimeBaseUnk_0x18 = 0;
                     buttonIsInteracting = FALSE;

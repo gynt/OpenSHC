@@ -45,7 +45,7 @@ namespace Synchrony {
             ;
             return (int)(_lobbyStatus);
         }
-        if (join == FALSE) {
+        if (!join) {
             if (this->DPLAYX_Connection != (void*)0x0) {
                 pvVar3 = GlobalHandle(this->DPLAYX_Connection);
                 GlobalUnlock(pvVar3);
@@ -69,7 +69,7 @@ namespace Synchrony {
             _dpStatus = _dplay4->InitializeConnection(this->DPLAYX_Connection, 0);
             if (_dpStatus < DP_OK)
                 goto LAB_release;
-            if (this->isHost != FALSE) {
+            if (this->isHost) {
                 MACRO_CALL(OS_Func::_memset)(&_session, 0, (size_t)((int)(80)));
                 _session.guidApplication.Data1 = 0x1d5e2f48;
                 memcpy(_session.guidApplication.Data4 + 4, "ڞ0Y", 4);

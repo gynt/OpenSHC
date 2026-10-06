@@ -56,7 +56,7 @@ namespace UI {
             posY = posY + 0x41;
         }
         if (!DAT_GameSynchronyState::instance.DAT_SomeTime) {
-            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+            if (DAT_GameSynchronyState::instance.isHost) {
                 if (DAT_GameSynchronyState::instance
                         .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
                     == -1) {
@@ -105,7 +105,7 @@ namespace UI {
             DAT_ButtonX::instance = posX;
             DAT_ButtonW::instance = 0xb4;
             DAT_ButtonH::instance = 0x1c;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 BVar5 = 0x7f7f7f;
                 posX = posX + 0x5a;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
@@ -130,7 +130,7 @@ namespace UI {
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX,
                     (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0x34, 0xb4, 0x1c);
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);

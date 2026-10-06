@@ -224,7 +224,7 @@ namespace Map {
                                                                       pathFindingWithBuildingsIncluded,
                                             DAT_PathFindingState::ptr)(x1, _y, (uint)((int)(_targetUnitX)),
                                             (uint)((int)(_targetUnitY)), 100000, 0);
-                                        if (BVar8 == FALSE) {
+                                        if (!BVar8) {
                                             return (undefined4)(0);
                                         }
                                     } else if (_bool1) {
@@ -232,7 +232,7 @@ namespace Map {
                                                                       findPathUsingClimbingWithHeightMargin16,
                                             DAT_PathFindingState::ptr)(x1, _y, (uint)((int)(_targetUnitX)),
                                             (uint)((int)(_targetUnitY)), 100000, FALSE);
-                                        if (BVar8 == FALSE) {
+                                        if (!BVar8) {
                                             return (undefined4)(0);
                                         }
                                     } else {
@@ -240,7 +240,7 @@ namespace Map {
                                                                       findLinkageBasedPathOrWalkRadius,
                                             DAT_PathFindingState::ptr)(
                                             x1, _y, _targetUnitX, _targetUnitY, 100000, FALSE);
-                                        if (BVar8 == FALSE) {
+                                        if (!BVar8) {
                                             return (undefined4)(0);
                                         }
                                     }
@@ -267,7 +267,7 @@ namespace Map {
                             BVar8 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::
                                                           anyUnitsOfTribeAreOutsideCoverageOfPathFindingAlg,
                                 this)(tribeID, DAT_PathFindingState::instance.searchGeneration);
-                        } while (BVar8 == FALSE);
+                        } while (!BVar8);
                     }
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::applyMovementDistanceToUnitsInTribe, this)(
                         tribeID);
@@ -459,7 +459,7 @@ namespace Map {
                                         (uint)((
                                             int)((int)DAT_UnitsState::instance.units[_unitID_2].plannedDestinationY)),
                                         0);
-                                    if (BVar8 == FALSE) {
+                                    if (!BVar8) {
                                         if ((bVar6)
                                             && ((DAT_TileMapState::instance
                                                      .LogicLayer[DAT_UnitsState::instance.units[_unitID_2].tile]

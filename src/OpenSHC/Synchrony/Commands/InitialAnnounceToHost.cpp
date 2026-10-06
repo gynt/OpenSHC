@@ -25,7 +25,7 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
         }
         if ((DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE)
-            && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+            && (DAT_GameSynchronyState::instance.isHost)) {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST);
         }

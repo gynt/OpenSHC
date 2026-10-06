@@ -17,7 +17,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
             _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 left, top, right, bottom, color);
-            if (_drawReady != FALSE) {
+            if (_drawReady) {
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHorizontalLine, this)();
                 dVar1 = this->drawStartY;
                 this->drawStartY = this->drawEndY;

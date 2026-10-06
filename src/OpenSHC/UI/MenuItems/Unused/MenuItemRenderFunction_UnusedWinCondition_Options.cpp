@@ -36,7 +36,7 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             if (param_1 < (int)DAT_MenuModalComposition1::instance.mbr_0x64) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

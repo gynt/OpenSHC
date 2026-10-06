@@ -131,7 +131,7 @@ namespace UI {
                     FVar9, (char const*)((int)(local_3f4)));
                 BVar3 = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                if (BVar3 != FALSE) {
+                if (BVar3) {
                     if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                         && (DAT_GameSynchronyState::instance.currentGameMode
                             != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
@@ -249,7 +249,7 @@ namespace UI {
                     FVar9, (char const*)((int)(local_3f4)));
                 BVar3 = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                if (BVar3 == FALSE) {
+                if (!BVar3) {
                     if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
                             == Game::GM_SKIRMISH_SINGLE_PLAYER)) {

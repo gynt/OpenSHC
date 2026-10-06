@@ -30,7 +30,7 @@ namespace UI {
             int imageID;
             int drawX;
             int drawY;
-            if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (param_1 != INT_00df3360::instance)) {
+            if ((DAT_ButtonCurrentlyInteracting::instance) && (param_1 != INT_00df3360::instance)) {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::scheduleSFXVariation, DAT_SFXState::ptr)(
                     0x79, param_1);
                 INT_00df3360::instance = param_1;

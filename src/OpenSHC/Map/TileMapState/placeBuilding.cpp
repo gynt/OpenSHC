@@ -72,7 +72,7 @@ namespace Map {
             }
             MACRO_CALL_MEMBER(Map::TileMapState_Func::checkBuildingCanBePlacedHere, this)(
                 playerID, (uint)((int)(x)), (uint)((int)(y)), cbt, buildingSize);
-            if (this->buildingPlacementFail != FALSE) {}
+            if (this->buildingPlacementFail) {}
         }
         this->skipPlacementCheck = (Map::Buildings::BuildingType)(0);
         _realBuildingType
@@ -82,7 +82,7 @@ namespace Map {
         _buildingType2 = (BuildingTypeShort)_realBuildingType;
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
             BVar2 = MACRO_CALL(Game_Func::Tutorial_IsActionAllowed)(2, (int)((int)((short)_buildingType2)));
-            if (BVar2 == FALSE) {
+            if (!BVar2) {
                 MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
             }
             MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(

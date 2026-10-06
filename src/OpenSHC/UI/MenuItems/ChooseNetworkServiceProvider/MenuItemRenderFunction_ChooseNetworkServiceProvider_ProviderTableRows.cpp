@@ -39,7 +39,7 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1
                 < DAT_GameSynchronyState::instance.scrollBarItemCount) {
                 if ((param_1 == DAT_GameSynchronyState::instance.selectedProviderIndex)
-                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                     color = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::wideCharToMultiByteComplete,

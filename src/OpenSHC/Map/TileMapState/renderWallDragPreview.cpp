@@ -60,7 +60,7 @@ namespace Map {
                         goto LAB_004f8d6c;
                 LAB_004f8d75:
                     this->DAT_WallTileCountCurrentDrag = iVar3;
-                    if (this->illegalBuild == FALSE) {
+                    if (!this->illegalBuild) {
                         if ((short)command == 0x19) {
                             this->ConstructionGFXLayer[iVar6] = (ushort)GMTotalPicturesProcessed::instance[6];
                         } else {
@@ -168,7 +168,7 @@ namespace Map {
                     local_4 = local_4 + -0x10;
                 }
             } while (((local_8 != x2) || (uVar7 != y2)) || (local_c));
-            if (this->illegalBuild != FALSE) {
+            if (this->illegalBuild) {
                 this->DAT_WallTileCountCurrentDrag = 0;
             }
             if (!this->wallDragButtonUp) {

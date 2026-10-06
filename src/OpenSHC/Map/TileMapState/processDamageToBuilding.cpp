@@ -327,13 +327,12 @@ namespace Map {
                  && (((BVar3 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType,
                           BVar3 == Map::Buildings::BT_TOWER4 || (BVar3 == Map::Buildings::BT_TOWER5))
                      || ((BVar3 == Map::Buildings::BT_GATEHOUSELARGE
-                         || ((BVar3 == Map::Buildings::BT_CHURCH
-                             || (BVar3 == Map::Buildings::BT_CATHEDRAL))))))))
+                         || ((BVar3 == Map::Buildings::BT_CHURCH || (BVar3 == Map::Buildings::BT_CATHEDRAL))))))))
                 && (BVar10 = MACRO_CALL_MEMBER(
                         Audio::MSS::SoundSystem_Func::shouldSoundXNotBePlaying, DAT_SoundSystemState::ptr)(),
-                    BVar10 == FALSE))
+                    !BVar10))
             && (MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)(),
-                DAT_GameCore::instance.genieVoiceActive != FALSE)) {
+                DAT_GameCore::instance.genieVoiceActive)) {
             /*
               "Watch it crumble"
              */
@@ -534,7 +533,7 @@ namespace Map {
                 && (DAT_GameState::instance.mapAndTime.playerTeams[sVar6]
                     != DAT_GameState::instance.mapAndTime
                         .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]))
-            && (DAT_GameCore::instance.genieVoiceActive != FALSE)) {
+            && (DAT_GameCore::instance.genieVoiceActive)) {
             if ((_owner == 0x13) || (_owner == 0xb)) {
                 /*
                   "Excellent"

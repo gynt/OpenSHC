@@ -36,7 +36,7 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             if (param_1 == 1000) {
-                INT_00ed2bdc::instance = (int)(DAT_ButtonCurrentlyInteracting::instance != FALSE);
+                INT_00ed2bdc::instance = (int)(DAT_ButtonCurrentlyInteracting::instance);
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(

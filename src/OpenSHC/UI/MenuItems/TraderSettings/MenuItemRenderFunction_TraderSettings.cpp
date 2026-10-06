@@ -60,8 +60,7 @@ namespace UI {
             if (param_1 < 0) {
                 DAT_ButtonCurrentlyInteracting::instance
                     = (BOOLEnum)(DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[*(
-                                     int*)((int)DAT_MissionAestheticsDefinedData::ptr + (-1 - param_1) * 4 + 0x345c)]
-                        != FALSE);
+                        int*)((int)DAT_MissionAestheticsDefinedData::ptr + (-1 - param_1) * 4 + 0x345c)]);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 iVar2 = *(int*)((int)DAT_MissionAestheticsDefinedData::ptr + (-1 - param_1) * 4 + 0x345c);
@@ -69,7 +68,7 @@ namespace UI {
                 if (iVar1 == 0x9d) {
                     iVar1 = 0x9b;
                 }
-                if (DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[iVar2] == FALSE) {
+                if (!DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[iVar2]) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, iVar1,
                         (int)((int)(DAT_ButtonX::instance + 10)),
@@ -118,7 +117,7 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x44c) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
@@ -144,7 +143,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),

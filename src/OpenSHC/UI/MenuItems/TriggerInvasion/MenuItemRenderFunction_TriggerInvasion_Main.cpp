@@ -112,7 +112,7 @@ namespace UI {
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             number = DAT_MapPropertiesState::instance.invasionEventContent.unitCountsPerUnitType[param_1];
             if (number) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

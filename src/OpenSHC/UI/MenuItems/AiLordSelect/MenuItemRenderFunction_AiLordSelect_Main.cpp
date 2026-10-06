@@ -43,7 +43,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 + 0x20a,
                 (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                     (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),

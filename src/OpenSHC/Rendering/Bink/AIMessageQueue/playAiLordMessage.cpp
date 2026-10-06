@@ -48,7 +48,7 @@ namespace Rendering {
             DVar1 = timeGetTime();
             iVar6 = 0;
             BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (BVar2 != FALSE) {
+            if (BVar2) {
                 if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                     if (DAT_GameCore::instance.activeMenuTab.tabType
                         == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
@@ -61,7 +61,7 @@ namespace Rendering {
                     }
                 }
                 BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
-                if (BVar2 != FALSE) {
+                if (BVar2) {
                     iVar6 = iVar6 + -0x28;
                 }
                 if (!this->currentMessageUnknownValue_0x4) {
@@ -119,13 +119,13 @@ namespace Rendering {
                 }
                 BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                     DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_1);
-                if (BVar2 == FALSE) {
+                if (!BVar2) {
                     this->mbr_0x92c = 1;
                 }
                 if ((10000 < (int)(DVar1 - this->videoStartTimeUnk_0xd8)) || (!iVar4)) {
                     if (this->currentMessageVfxFile_0xc[0] == '\0') {
                         if ((((this->currentMessageSfxFile_0x70[0] != '\0')
-                                 && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
+                                 && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8))
                                 && (DAT_SoundSystemState::instance.soundActiveUnk_0x0))
                             && (!this->mbr_0x92c)) {}
                     } else if (DAT_BinkControlState::instance.binkObjPtrArray[1] != (HBINK)0x0) {

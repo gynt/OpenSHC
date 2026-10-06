@@ -33,7 +33,7 @@ namespace UI {
             bool bVar3;
             bool bVar4;
             char* wav_filename;
-            if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
+            if ((!DAT_EnoughGoldForRequestedUnit::instance)
                 || (DAT_GameState::instance.mapAndTime.armySizeLimit
                     <= DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .count_2

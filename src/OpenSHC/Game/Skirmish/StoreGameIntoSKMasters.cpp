@@ -28,7 +28,7 @@ namespace Game {
         SkMasterDataEntry* _ptrDst2;
         SkMasterDataEntry* _ptrSrc2;
         BVar1 = MACRO_CALL(Game::Skirmish_Func::StoreCurrentGameIntoTemporarySKMasterEntry)(score);
-        if (BVar1 == FALSE) {}
+        if (!BVar1) {}
         _count = -1;
         if (DAT_SkMasters2Data_Count::instance < 1) {
             _count = 0;

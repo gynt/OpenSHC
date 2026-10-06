@@ -20,7 +20,7 @@ namespace Map {
         int _tree;
         _tree = DAT_CurrentTreeID::instance;
         _rng2 = DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex;
-        if (DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].flag == FALSE) {
+        if (!DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].flag) {
             _frame = DAT_OrganismDefinedData::instance.Tree_1_A[_rng2];
         } else {
             _frame = DAT_OrganismDefinedData::instance.Tree_1_B[_rng2];
@@ -30,7 +30,7 @@ namespace Map {
             DAT_LandscapeState::instance.trees[_tree].flag = (uint)(DAT_LandscapeState::instance.trees[_tree].one == 2);
         }
         _rng2 = DAT_LandscapeState::instance.trees[_tree].animationFrameIndex;
-        if (DAT_LandscapeState::instance.trees[_tree].flag == FALSE) {
+        if (!DAT_LandscapeState::instance.trees[_tree].flag) {
             _frame = DAT_OrganismDefinedData::instance.Tree_1_A[_rng2];
         } else {
             _frame = DAT_OrganismDefinedData::instance.Tree_1_B[_rng2];

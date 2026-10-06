@@ -119,7 +119,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_179c, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 pcVar4 = (char*)((int)&local_1794.lineCharacterCounter + 3);
                 do {
                     pcVar5 = pcVar4;
@@ -130,7 +130,7 @@ namespace Synchrony {
                     OpenSHC::IO::FRT_UNKNOWN, (char const*)((int)(_msvFile)));
                 BVar7 = MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)((OpenSHC::Commands::GameCommandType)FALSE);
                     if ((DAT_GameSynchronyState::instance.savedMapTimeInTicks == local_1798)
                         && (DAT_GameSynchronyState::instance.savedUnitsCRC32Hash == local_179c))

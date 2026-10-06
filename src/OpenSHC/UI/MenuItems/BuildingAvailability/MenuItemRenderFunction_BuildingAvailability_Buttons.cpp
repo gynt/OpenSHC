@@ -58,7 +58,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x13;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     BVar2 = 0xc2f0eb;
                 } else {
                     BVar2 = 0xccfaff;
@@ -104,7 +104,7 @@ namespace UI {
             DAT_ButtonUnknownZero::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 BVar2 = 0xc2f0eb;
             } else {
                 BVar2 = 0xccfaff;

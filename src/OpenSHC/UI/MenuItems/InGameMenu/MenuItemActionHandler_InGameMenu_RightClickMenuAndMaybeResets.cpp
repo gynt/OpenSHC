@@ -31,8 +31,7 @@ namespace UI {
                         && ((DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == UI::Enums::BASMTT_SIEGETENT_SHIELD)))))) {
-                    if ((DAT_MouseState::instance.rightClickState != FALSE)
-                        && (DAT_MouseState::instance.previewEnabled)) {
+                    if ((DAT_MouseState::instance.rightClickState) && (DAT_MouseState::instance.previewEnabled)) {
                         MACRO_CALL_MEMBER(
                             Input::MouseState_Func::updateRightDragCameraControl, DAT_MouseState::ptr)();
                     }

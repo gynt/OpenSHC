@@ -133,7 +133,7 @@ namespace UI {
             case 0x17:
                 textAddress = "400x400";
             }
-            if (BVar2 == FALSE) {
+            if (!BVar2) {
                 color = 0xc2f0eb;
             } else {
                 color = 0xccfaff;

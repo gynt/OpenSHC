@@ -201,7 +201,7 @@ namespace Map {
                 } else {
                     BVar3 = MACRO_CALL_MEMBER(
                         Map::Units::TribesState_Func::allUnitsReachedTheirDestination, this)(tribeID);
-                    if (BVar3 == FALSE) {}
+                    if (!BVar3) {}
                     _buildingIndex_2 = this->tribes[tribeID].rallyPointCount;
                     iVar5 = this->tribes[tribeID].currentRallyPointIndex + 1;
                     this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;

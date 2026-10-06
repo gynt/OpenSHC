@@ -27,8 +27,7 @@ namespace Map {
                 if (*(short*)(piVar2 + 5) != 0) {
                     BVar1 = MACRO_CALL_MEMBER(
                         Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(*piVar2);
-                    if ((BVar1 != FALSE)
-                        && (*(SomeTribeBehaviorTypeShort*)(piVar2 + 9) == Map::Units::STBT_0x3f7)) {
+                    if ((BVar1) && (*(SomeTribeBehaviorTypeShort*)(piVar2 + 9) == Map::Units::STBT_0x3f7)) {
                         this->x = (int)DAT_TribesState::instance.tribes[iVar3].targetX;
                         this->y = (int)DAT_TribesState::instance.tribes[iVar3].targetY;
                         this->attackInfo.field127625_0x42744 = iVar3;

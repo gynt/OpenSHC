@@ -27,7 +27,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DE20
         void Unused::MenuItemRenderFunction_UnusedOldTitleMenu_ExitButton(int param_1, ...)
         {
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 DAT_TextManagerObject::instance.textColor = 0;
                 DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
             } else {

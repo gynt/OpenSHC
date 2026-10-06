@@ -44,7 +44,7 @@ namespace UI {
             int iVar9;
             bVar3 = false;
             if (param_1 == -1) {
-                if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
+                if ((!DAT_EnoughGoldForRequestedUnit::instance)
                     || (!DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 } else {
@@ -122,7 +122,7 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
             }
-            if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
+            if ((!DAT_EnoughGoldForRequestedUnit::instance)
                 || (DAT_GameState::instance.mapAndTime.euroRecruitable[param_1 + -10] == 0)) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }

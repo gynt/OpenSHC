@@ -38,7 +38,7 @@ namespace UI {
         int fontSize;
         int blendStrength;
         BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if ((BVar1 == FALSE) || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL)) {
+        if ((!BVar1) || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL)) {
             MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
         }
@@ -63,14 +63,14 @@ namespace UI {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
             pcVar2, iVar4, iVar3, maxWidth, color1, color2, fontSize, blendStrength);
         if (whichBuildingIsMissing == 1) {
-            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance != FALSE) {}
+            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
             /*
               "Place a keep to site your castle my liege"
              */
             pcVar2 = "other_warning1.wav";
         } else {
             if (whichBuildingIsMissing != 2) {}
-            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance != FALSE) {}
+            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
             /*
               "Site your granary sire"
              */

@@ -82,7 +82,7 @@ namespace UI {
                         DAT_ButtonCurrentlyInteracting::instance
                             = (BOOLEnum)(DAT_MapPropertiesState::instance.invasionTroopIndex == iVar1 + -0x6a);
                         uVar2 = 0xc2f0eb;
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             uVar2 = 0xccfaff;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -161,7 +161,7 @@ namespace UI {
                     case -1:
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        if (!DAT_ButtonCurrentlyInteracting::instance) {
                             uVar2 = 0xc2f0eb;
                         } else {
                             uVar2 = 0xccfaff;
@@ -243,7 +243,7 @@ namespace UI {
                         == 0) {
                         DAT_ButtonUnknownZero::instance = 0;
                     }
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                             DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                             (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
@@ -263,7 +263,7 @@ namespace UI {
                         == 0) {
                         DAT_ButtonUnknownZero::instance = 0;
                     }
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                             DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                             (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
@@ -318,7 +318,7 @@ namespace UI {
             if (!iVar1) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),

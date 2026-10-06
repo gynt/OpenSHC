@@ -40,7 +40,7 @@ namespace UI {
             int iVar2;
             BVar1 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                 DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SFX_1Unk);
-            if (BVar1 == FALSE) {
+            if (!BVar1) {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playAmbientSoundStreamUnk, DAT_SFXState::ptr)(
                     Audio::SFX::ASFXT_WIND_0);
             }

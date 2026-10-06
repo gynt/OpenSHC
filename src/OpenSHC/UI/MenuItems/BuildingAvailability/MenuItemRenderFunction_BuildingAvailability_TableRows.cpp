@@ -48,7 +48,7 @@ namespace UI {
             keepOffsetX = FALSE;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             fontSize = 0x13;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 if (DAT_MapPropertiesState::instance.buildingAvailability[_structIndex] == 0) {
                     color = 0x7f7f7f;
                 } else {

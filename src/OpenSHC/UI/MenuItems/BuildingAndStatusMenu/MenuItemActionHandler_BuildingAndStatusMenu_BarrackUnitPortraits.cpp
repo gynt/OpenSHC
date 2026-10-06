@@ -43,7 +43,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
+            if (!DAT_EnoughGoldForRequestedUnit::instance) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -51,11 +51,11 @@ namespace UI {
             int iVar2 = DAT_CurrentButtonGmDataIndex::instance;
             BOOLEnum buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
             _yPosition = DAT_ButtonY::instance;
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 DAT_00df3350::instance = param_1 + -0x16;
             }
             if (EVar1 == OpenSHC::Map::Units::ERS_CAN_RECRUITUnk) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                         .stateTransitionTimeBaseUnk_0x18 = 0;
                     buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + iVar2;

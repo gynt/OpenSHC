@@ -33,7 +33,7 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable,
                 DAT_GameState::ptr)((OpenSHC::Game::Resources::ResourceType)param_1);
-            if (BVar1 == FALSE) {
+            if (!BVar1) {
                 DAT_ButtonCurrentlyInteracting::instance = BVar1;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }

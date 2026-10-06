@@ -37,7 +37,7 @@ namespace UI {
             this->activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
             BVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, DAT_VideoBikQueue::ptr)();
-            if (BVar2 != FALSE) {}
+            if (BVar2) {}
         }
         this->activeModalDialogID = menuModalID;
         if (menuModalID != OpenSHC::UI::Enums::MMT_NONE) {

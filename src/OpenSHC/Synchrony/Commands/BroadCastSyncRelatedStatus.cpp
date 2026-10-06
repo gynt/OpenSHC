@@ -24,7 +24,7 @@ namespace Synchrony {
         if ((DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE)
             && (DAT_GameSynchronyState::instance
                     .syncRelatedStatusArray[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1,
-                DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                DAT_GameSynchronyState::instance.isHost)) {
             DAT_GameSynchronyState::instance.announcementReceiveTime = timeGetTime();
             DAT_GameSynchronyState::instance.announcementReceivedBool = TRUE;
         }

@@ -91,7 +91,7 @@ namespace UI {
         iVar2 = iVar6 / 2;
         iVar3 = posX + 10 + iVar2;
         _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
-        if (_stateNotZero != FALSE) {
+        if (_stateNotZero) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
         left = iVar3 - iVar2;
@@ -122,9 +122,9 @@ namespace UI {
                      + DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.year * 0xc)
                     - iVar4)
             * 800;
-        if (DAT_GameCore::instance.isTimeHalted == FALSE) {
+        if (!DAT_GameCore::instance.isTimeHalted) {
             _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
-            if (_stateNotZero == FALSE) {
+            if (!_stateNotZero) {
                 local_c = ((iVar4 + DAT_GameState::instance.mapAndTime.week * -200)
                               - DAT_GameState::instance.gameTicksLoadBalancer)
                     + iVar5 * -800;

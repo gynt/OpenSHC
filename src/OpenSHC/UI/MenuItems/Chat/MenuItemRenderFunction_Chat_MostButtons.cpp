@@ -63,7 +63,7 @@ namespace UI {
                 iVar3 = DAT_ButtonY::instance + 7;
                 keepOffsetX = FALSE;
                 iVar5 = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     BVar7 = 0xc2f0eb;
                 } else {
                     BVar7 = 0xccfaff;
@@ -108,7 +108,7 @@ namespace UI {
                 = (BOOLEnum)(*(int*)((int)DAT_GameSynchronyState::ptr + param_1 * -4 + 0x109264) != 0);
             MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, Rendering::Enums::RT_CONTEXT_BASED);
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 BVar7 = DAT_RenderingDefinedData::instance
                             .ColorArray[*(int*)((int)DAT_BlendingDefinedData::ptr + param_1 * -4 + 0x2738)];
             } else {

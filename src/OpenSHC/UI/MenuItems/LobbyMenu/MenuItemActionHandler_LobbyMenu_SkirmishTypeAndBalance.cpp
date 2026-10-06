@@ -21,7 +21,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042A840
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_SkirmishTypeAndBalance(int param_1, ...)
         {
-            if ((((!DAT_00b960dc::instance) && (DAT_GameSynchronyState::instance.isHost != FALSE)) && (param_1 != 4))
+            if ((((!DAT_00b960dc::instance) && (DAT_GameSynchronyState::instance.isHost)) && (param_1 != 4))
                 && (param_1 != 0x14)) {
                 if (param_1 - 1U < 3) {
                     DAT_GameSynchronyState::instance.skirmishGameIntensityType = param_1;

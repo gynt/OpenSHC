@@ -77,7 +77,7 @@ namespace Map {
                         && ((0 < DAT_TroopValueState::instance.attackInfo.attacker
                             || (_hasTribe = MACRO_CALL_MEMBER(
                                     Map::Units::TroopValueState_Func::searchTribeWithProperties, this)(_index),
-                                _hasTribe != FALSE)))) {
+                                _hasTribe)))) {
                         _nTribes = DAT_TroopValueState::instance.attackInfo.nof_tribes[_index];
                         DAT_GameState::instance.playerDataArray[DAT_TroopValueState::instance.attackInfo.attacker]
                             .attackedPlayerID = 1;

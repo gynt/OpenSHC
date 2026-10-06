@@ -55,7 +55,7 @@ namespace Map {
                 this->field188_0x554a14 = 0;
                 return (int)(2);
             }
-            if (this->buildingPlacementFail != FALSE) {
+            if (this->buildingPlacementFail) {
                 do {
                     MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
                         local_14, size);

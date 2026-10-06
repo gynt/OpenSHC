@@ -102,7 +102,7 @@ namespace UI {
                             DAT_RenderingDefinedData::instance.BuildingHelpArray[(short)DAT_BuildingsState::instance
                                     .buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                                     .buildingType]),
-                        BVar4 != FALSE)) {
+                        BVar4)) {
                     DAT_BuildingsState::instance.field24_0x18e04c = (undefined4)(DAT_RenderingDefinedData::instance
                             .BuildingHelpArray[(short)*_ptrToSelectedBuildingType]);
                 }
@@ -122,7 +122,7 @@ namespace UI {
                                 .BuildingBikArray[(short)*_ptrToSelectedBuildingType])));
                     BVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                    if ((BVar4 != FALSE) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
+                    if ((BVar4) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
                         DAT_BuildingsState::instance.DAT_CurrentlyPlayingBuildingBik
                             = DAT_RenderingDefinedData::instance.BuildingBikArray[(short)*_ptrToSelectedBuildingType];
                         MACRO_CALL_MEMBER(
@@ -265,7 +265,7 @@ namespace UI {
                     BVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                    if (BVar4 == FALSE) {
+                    if (!BVar4) {
                         pcVar8 = "chimp00_null.tgx";
                     } else {
                         pcVar8 = DAT_RenderingDefinedData::instance.ChimpTgxArray[(short)*pUVar1];
@@ -280,7 +280,7 @@ namespace UI {
                     && (BVar4 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextEditorState_Func::loadAndParseHelpFile, DAT_TextEditorState::ptr)(
                             DAT_RenderingDefinedData::instance.ChimpHelpArray[(short)*pUVar1]),
-                        BVar4 != FALSE)) {
+                        BVar4)) {
                     DAT_BuildingsState::instance.field24_0x18e04c
                         = (undefined4)(DAT_RenderingDefinedData::instance.ChimpHelpArray[(short)*pUVar1]);
                 }
@@ -290,7 +290,7 @@ namespace UI {
                         (char const*)((int)(DAT_RenderingDefinedData::instance.ChimpBikArray[(short)*pUVar1])));
                     BVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                    if ((BVar4 != FALSE) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
+                    if ((BVar4) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
                         DAT_BuildingsState::instance.DAT_CurrentlyPlayingBuildingBik
                             = DAT_RenderingDefinedData::instance.ChimpBikArray[(short)*pUVar1];
                         MACRO_CALL_MEMBER(

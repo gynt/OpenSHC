@@ -85,7 +85,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     uVar2 = 0xc2f0eb;
                 } else {
                     uVar2 = 0xccfaff;
@@ -118,7 +118,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     uVar2 = 0xc2f0eb;
                 } else {
                     uVar2 = 0xccfaff;
@@ -143,7 +143,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     uVar2 = 0xc2f0eb;
                 } else {
                     uVar2 = 0xccfaff;
@@ -168,7 +168,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     uVar2 = 0xc2f0eb;
                 } else {
                     uVar2 = 0xccfaff;

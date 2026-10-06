@@ -35,7 +35,7 @@ namespace UI {
             _tgxLoadLocation = (void*)((int)this->gmAndGfxImageDataBuffer + _currentBufferSize);
             _loadSuccessful = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::readCurrentResourceIntoDestination,
                 DAT_ResourceManager::ptr)(_tgxLoadLocation, _size);
-            if (_loadSuccessful == FALSE) {
+            if (!_loadSuccessful) {
                 return -1;
             }
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {

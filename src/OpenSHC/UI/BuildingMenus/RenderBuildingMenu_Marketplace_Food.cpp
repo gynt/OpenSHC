@@ -57,7 +57,7 @@ namespace UI {
             iVar2 = DAT_MenuHandlerState::instance.x + 0x78;
             BVar4 = MACRO_CALL_MEMBER(
                 Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(resourceType);
-            if (BVar4 != FALSE) {
+            if (BVar4) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[resourceType],

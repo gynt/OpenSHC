@@ -134,7 +134,7 @@ namespace UI {
             DAT_GameCore::instance.field77_0x144 = 0;
         }
         local_2c = (int)sVar6 + (int)sVar5 + (int)sVar4 + (int)sVar3 + (int)sVar2 + (int)sVar1;
-        if (BVar20 != FALSE) {
+        if (BVar20) {
             local_2c = local_2c + 400;
         }
         if (!DAT_GameCore::instance.field77_0x144) {
@@ -393,8 +393,7 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1f2, iVar21, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .areCarnivalUnitsPresent
-                != FALSE)
+                    .areCarnivalUnitsPresent)
             && (DAT_RenderingDefinedData::instance.field1049_0x556cc[local_1c][0]
                 == DAT_GameCore::instance.field77_0x144)) {
             iVar17

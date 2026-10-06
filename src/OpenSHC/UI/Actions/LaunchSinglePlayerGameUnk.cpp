@@ -376,7 +376,7 @@ namespace UI {
                 if (DAT_GameState::instance.mapAndTime.difficulty) {
                     BVar6 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
-                    if (BVar6 == FALSE) {
+                    if (!BVar6) {
                         iVar9 = 0;
                         iVar8 = 0;
                         local_7e8 = 0;

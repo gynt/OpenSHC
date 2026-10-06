@@ -56,15 +56,15 @@ namespace UI {
             BGR24 color;
             int fontSize;
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar1 == FALSE) {
+            if (!BVar1) {
                 _goldMultiplier = 1;
                 if (((((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
                           && (DAT_MenuModalComposition1::instance.activeModalDialogID
                               != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                          && (DAT_MenuModalComposition1::instance.activeModalDialogID
                              != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                        || (DAT_ButtonUnknownZero::instance = 1, DAT_GameSynchronyState::instance.isHost == FALSE))
-                    && (DAT_ButtonUnknownZero::instance = 0, DAT_GameSynchronyState::instance.isHost == FALSE)) {
+                        || (DAT_ButtonUnknownZero::instance = 1, !DAT_GameSynchronyState::instance.isHost))
+                    && (DAT_ButtonUnknownZero::instance = 0, !DAT_GameSynchronyState::instance.isHost)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     DAT_ButtonUnknownZero::instance = 1;
                 }

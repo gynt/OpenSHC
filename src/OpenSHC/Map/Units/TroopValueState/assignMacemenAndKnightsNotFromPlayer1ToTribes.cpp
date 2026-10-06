@@ -50,10 +50,9 @@ namespace Map {
                 _pUnit2 = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((_pUnit2->logicalState != Map::Units::ULS_INVISIBLE)
-                        && (BVar1
-                            = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
-                                this)((int)_pUnit2->owner),
-                            BVar1 != FALSE)) {
+                        && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
+                                (int)_pUnit2->owner),
+                            BVar1)) {
                         if (_pUnit2->unitType == Map::Units::UT_E_MACE) {
                             _macemenCount = _macemenCount + 1;
                         } else {
@@ -119,10 +118,10 @@ namespace Map {
                         do {
                             _unitID1 = _unitID1 + 1;
                             if (((_pUnit1[0x243] != 0)
-                                    && (BVar1 = MACRO_CALL_MEMBER(
-                                            Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
-                                            (int)_pUnit1[0x248]),
-                                        BVar1 != FALSE))
+                                    && (BVar1
+                                        = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                            this)((int)_pUnit1[0x248]),
+                                        BVar1))
                                 && (_pUnit1[0x244] == 0x1a)) {
                                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID1, _tribeID1);
@@ -152,10 +151,10 @@ namespace Map {
                         do {
                             _unitID2 = _unitID2 + 1;
                             if (((psVar2[0x243] != 0)
-                                    && (BVar1 = MACRO_CALL_MEMBER(
-                                            Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
-                                            (int)psVar2[0x248]),
-                                        BVar1 != FALSE))
+                                    && (BVar1
+                                        = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                            this)((int)psVar2[0x248]),
+                                        BVar1))
                                 && (psVar2[0x244] == 0x1c)) {
                                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID2, _tribeID2);

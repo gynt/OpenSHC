@@ -162,7 +162,7 @@ namespace Map {
                         if ((this->SEC_Section1081) && (0 < this->SEC_Section1080)) {
                             this->SEC_Section1080 = this->SEC_Section1080 + -1;
                         }
-                        if (DAT_GameState::instance.mapAndTime.startOfDay != FALSE) {
+                        if (DAT_GameState::instance.mapAndTime.startOfDay) {
                             if (DAT_GameCore::instance.unknownAlwaysZero) {
                                 DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -826,7 +826,7 @@ namespace Map {
                                                 Game::GameStateStructures_Func::checkKeepEnclosed,
                                                 DAT_GameState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                            if (BVar11 == FALSE)
+                                            if (!BVar11)
                                                 goto LAB_004c37cd;
                                             *_pConditionIsMet = 1;
                                             local_a0 = local_a0 + 1;
@@ -984,10 +984,9 @@ namespace Map {
                                                         || (this->SEC_U3_MapType2_1 != Map::MT_SIEGE))
                                                     || ((DAT_GameSynchronyState::instance.currentPlayerSlotID != 1
                                                         || (BVar11 = MACRO_CALL_MEMBER(
-                                                                Map::Units::TroopValueState_Func::
-                                                                    isAttackWaveComplete,
+                                                                Map::Units::TroopValueState_Func::isAttackWaveComplete,
                                                                 DAT_TroopValueState::ptr)(),
-                                                            BVar11 == FALSE))))
+                                                            !BVar11))))
                                                     goto LAB_004c37cd;
                                                 *_pConditionIsMet = 1;
                                                 local_a0 = local_a0 + 1;
@@ -1845,7 +1844,7 @@ namespace Map {
                                                 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                                     DAT_ViewportRenderState::ptr)(uStack_78, uStack_7c),
                                                 iVar18 = DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                                BVar11 != FALSE)) {
+                                                BVar11)) {
                                             DAT_GameState::instance
                                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                 .someCount49 = 0xc;
@@ -1923,7 +1922,7 @@ namespace Map {
                                         BVar11
                                             = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::hasAnySignpost,
                                                 DAT_GameState::ptr)();
-                                        if (BVar11 != FALSE) {
+                                        if (BVar11) {
                                             DAT_GameState::instance
                                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                 .someCount50 = 0x10;
@@ -2071,7 +2070,7 @@ namespace Map {
                                         BVar11
                                             = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::hasAnySignpost,
                                                 DAT_GameState::ptr)();
-                                        if (BVar11 != FALSE) {
+                                        if (BVar11) {
                                             iVar18 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::
                                                                            pickRandomAccessibleSignpostEntry,
                                                 DAT_GameState::ptr)();

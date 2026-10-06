@@ -196,7 +196,8 @@ namespace Synchrony {
                         local_38[(int)(pcVar2 + 5)] = 1;
                     } while (local_4c <= _counter2);
                 }
-                if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)
+                    && (DAT_GameSynchronyState::instance.isHost)) {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)((Commands::GameCommandType)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
                         | Commands::GCT_HOST_SHARE_LOBBY_STATE));
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(

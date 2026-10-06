@@ -44,7 +44,7 @@ namespace Synchrony {
         do {
             piVar6 = piVar6 + 1;
             if (piVar6[-0x1e8fa] != -1) {
-                if (piVar6[9] == FALSE) {
+                if (!piVar6[9]) {
                     this->flag_0x7aad8 = TRUE;
                     break;
                 }
@@ -59,8 +59,8 @@ namespace Synchrony {
             }
             iVar9 = iVar9 + 1;
         } while (iVar9 < 9);
-        if (this->flag_0x7aad8 == FALSE) {
-            if ((BVar4 != FALSE) && (_gameVersion < this->DAT_MultiplayerGameVersions[this->currentPlayerSlotID])) {
+        if (!this->flag_0x7aad8) {
+            if ((BVar4) && (_gameVersion < this->DAT_MultiplayerGameVersions[this->currentPlayerSlotID])) {
                 /*
                   added by script: "Someone has an old version, please get him or her to   upgrade"
                  */

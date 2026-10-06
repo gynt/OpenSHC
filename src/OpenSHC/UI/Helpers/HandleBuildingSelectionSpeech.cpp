@@ -30,7 +30,7 @@ namespace UI {
             BuildingTypeShort _buildingType = DAT_BuildingsState::instance.buildings[buildingIndexUnk].buildingType;
             if (_buildingType == Map::Buildings::BT_ENGINEERSGUILD) {
                 MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
-                if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
+                if (!DAT_EnoughGoldForRequestedUnit::instance) {
                     /*
                       "You do not have enough gold for apprentices"
                      */
@@ -39,7 +39,7 @@ namespace UI {
                 }
             } else if (_buildingType == Map::Buildings::BT_TUNNELERSGUILD) {
                 MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
-                if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
+                if (!DAT_EnoughGoldForRequestedUnit::instance) {
                     /*
                       "You do not have enough gold to train a tunneler"
                      */

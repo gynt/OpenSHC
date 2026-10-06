@@ -52,7 +52,7 @@ namespace UI {
                     yParam = DAT_ButtonY::instance + 6;
                     keepOffsetX = FALSE;
                     fontSize = 0x12;
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         color = 0xc2f0eb;
                     } else {
                         color = 0xccfaff;
@@ -67,7 +67,7 @@ namespace UI {
                         textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 }
             }
-            if ((param_1 == 1) && (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+            if ((param_1 == 1) && (DAT_ButtonCurrentlyInteracting::instance)) {
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 1;
                 iVar1 = -1;
             }

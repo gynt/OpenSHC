@@ -41,7 +41,7 @@ namespace Map {
                                         Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
                                         _unit2Tile, _playerID,
                                         (int)((int)(DAT_UnitsState::instance.units[unitID2].owner))),
-                                    _yes != FALSE)))) {
+                                    _yes)))) {
                         _y = DAT_TileMapState::instance.pitchDitches[_targetID].y;
                         DAT_UnitsState::instance.units[unitID].shootTargetMicroX
                             = DAT_TileMapState::instance.pitchDitches[_targetID].x * 8 + 4;

@@ -27,7 +27,7 @@ namespace AI {
                 || (DAT_TribesState::instance.tribes[_tribe].uid
                     != DAT_GameState::instance.playerDataArray[playerID]
                         .aiTribeUIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset])) {
-                if (checkOnly != FALSE) {
+                if (checkOnly) {
                     return 1;
                 }
                 int _newTribe = MACRO_CALL_MEMBER(

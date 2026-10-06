@@ -15,7 +15,7 @@ namespace Rendering {
             char cVar1;
             char (*pacVar2)[100];
             if (eventText != (char*)0x0) {
-                if (this->messagePlaying_0x0 == FALSE) {
+                if (!this->messagePlaying_0x0) {
                     this->currentMessageText_0x8 = eventText;
                     this->currentMessageUnknownValue_0x4 = 1;
                     this->currentMessageUnknownValue2_0xd4 = 0;

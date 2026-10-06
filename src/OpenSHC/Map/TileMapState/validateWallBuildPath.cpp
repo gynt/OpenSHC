@@ -74,7 +74,7 @@ namespace Map {
         if ((short)command == 0x1b) {
             BVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(
                 iVar1, (int)((int)(y1)));
-            if (BVar2 == FALSE) {}
+            if (!BVar2) {}
             this->maxWallHeightInPath
                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getMaxWallHeightInBrushArea, this)(iVar1, y1);
             if (this->maxWallHeightInPath < 0x11) {}
@@ -134,7 +134,7 @@ namespace Map {
                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
                 && (BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, local_8),
-                    BVar2 != FALSE)) {
+                    BVar2)) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
@@ -169,7 +169,7 @@ namespace Map {
             }
             BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                 DAT_PathFindingState::ptr)(_x1, _y1, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-            if (BVar2 != FALSE) {
+            if (BVar2) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
             }
             if ((short)command == 0x1a) {

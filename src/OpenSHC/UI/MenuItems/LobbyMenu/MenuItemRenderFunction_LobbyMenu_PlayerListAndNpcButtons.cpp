@@ -54,7 +54,7 @@ namespace UI {
             BGR24 BVar9;
             int iVar10;
             BVar2 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar2 != FALSE) {}
+            if (BVar2) {}
             if (!param_1) {
                 iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 iVar4 = (iVar3 / 32) + 0x20;
@@ -88,7 +88,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar5, iVar4, iVar3, TVar7, BVar9, iVar10, BVar2, iVar6);
                 }
-                if (DAT_GameSynchronyState::instance.isHost == FALSE) {}
+                if (!DAT_GameSynchronyState::instance.isHost) {}
                 iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 iVar6 = (iVar3 / 32) + 0x20;
                 BVar2 = FALSE;
@@ -202,7 +202,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
                     && ((iVar3 == DAT_GameSynchronyState::instance.DAT_HostPlayerSlotID
-                        || ((DAT_GameSynchronyState::instance.isHost != FALSE
+                        || ((DAT_GameSynchronyState::instance.isHost
                             && (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID)))))) {
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
@@ -282,7 +282,7 @@ namespace UI {
             }
             if (param_1 < -199) {
                 DAT_ButtonUnknownZero::instance = 0;
-                if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                if (!DAT_GameSynchronyState::instance.isHost) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 iVar3 = (int)*(char*)((int)DAT_GameSynchronyState::ptr + (0x109d7c - param_1));
@@ -305,14 +305,14 @@ namespace UI {
                 }
                 BVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(iVar3);
-                if (BVar2 == FALSE) {}
+                if (!BVar2) {}
                 iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                     (iVar3 / 32) + 0x20);
             }
             if (param_1 == -0x65) {
                 DAT_ButtonUnknownZero::instance = 1;
-                if ((DAT_GameSynchronyState::instance.isHost != FALSE)
+                if ((DAT_GameSynchronyState::instance.isHost)
                     && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                     iVar3 = 1;
                     do {
@@ -325,7 +325,7 @@ namespace UI {
             } else {
                 if (param_1 == -0x66) {
                     DAT_ButtonUnknownZero::instance = 1;
-                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                    if (!DAT_GameSynchronyState::instance.isHost) {
                         DAT_ButtonUnknownZero::instance = 1;
                     }
                     if (((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
@@ -345,7 +345,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
             }
         LAB_00427f4c:
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {}
+            if (!DAT_GameSynchronyState::instance.isHost) {}
             iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                 (iVar3 / 32) + 0x20);

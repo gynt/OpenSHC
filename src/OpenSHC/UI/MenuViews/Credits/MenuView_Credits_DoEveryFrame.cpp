@@ -78,7 +78,7 @@ namespace UI {
             }
             iVar3 = (int)(DVar2 - INT_00b960d4::instance) / 0x1e + -600;
             if (iVar3 == DAT_TextEditorState::instance.helpContentScrollOffsetY) {
-                if (DAT_TextEditorState::instance.pendingCreditsFadeBorder == FALSE)
+                if (!DAT_TextEditorState::instance.pendingCreditsFadeBorder)
                     goto LAB_0042653a;
             } else {
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;

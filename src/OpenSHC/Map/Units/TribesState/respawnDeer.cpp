@@ -52,7 +52,7 @@ namespace Map {
                     }
                     BVar1 = MACRO_CALL_MEMBER(
                         Rendering::ViewportRenderState_Func::xyAreValid, DAT_ViewportRenderState::ptr)(_x, _y);
-                    if (BVar1 != FALSE)
+                    if (BVar1)
                         break;
                 LAB_00526268:
                     _counter = _counter + 1;

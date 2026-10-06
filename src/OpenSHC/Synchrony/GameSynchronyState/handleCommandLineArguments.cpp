@@ -251,7 +251,7 @@ namespace Synchrony {
                 _charIndex3 = _nextArgCharIndex;
                 _charIndex = _charIndex2;
             } while (local_409 == '\0');
-            if (this->useTCPIP != FALSE) {
+            if (this->useTCPIP) {
                 pcVar2 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
                 _pCandidatePlus1 = pcVar2 + 1;

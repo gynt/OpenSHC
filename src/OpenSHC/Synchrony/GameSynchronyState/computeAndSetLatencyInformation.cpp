@@ -50,7 +50,7 @@ namespace Synchrony {
         _now_2 = timeGetTime();
         this->connectionLagInfoArray[uVar1].subtractedTime = _now_2 - this->connectionLagInfoArray[uVar1].now >> 1;
         BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (BVar2 == FALSE) {}
+        if (!BVar2) {}
         this->connectionLagInfoArray[uVar1].checkFor0 = 1;
         _sum_2 = 0;
         /*

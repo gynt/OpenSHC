@@ -31,7 +31,7 @@ namespace Synchrony {
             if ((_buyPrice <= DAT_GameState::instance.playerDataArray[playerID].currentResources[0xf])
                 && (BVar2 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceGain,
                         DAT_BuildingsState::ptr)(playerID, resourceType, 5),
-                    BVar2 != FALSE)) {
+                    BVar2)) {
                 piVar1 = DAT_GameState::instance.playerDataArray[playerID].currentResources + 0xf;
                 *piVar1 = *piVar1 - _buyPrice;
                 piVar1 = &DAT_GameState::instance.playerDataArray[playerID].marketGold;

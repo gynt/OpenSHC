@@ -63,7 +63,7 @@ namespace Map {
             BVar1
                 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::unitsCanMoveFromKeepOfPlayerToAnotherArea,
                     DAT_GameState::ptr)(1);
-            if ((BVar1 != FALSE) && (!this->attackInfo.field127523_0x2b578)) {
+            if ((BVar1) && (!this->attackInfo.field127523_0x2b578)) {
                 this->attackInfo.field127523_0x2b578 = 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::commandUnitsToMoveToKeep, this)();
             }

@@ -57,7 +57,7 @@ namespace UI {
             }
         }
         BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (BVar1 == FALSE) {
+        if (!BVar1) {
             if (((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
                     && (DAT_GameCore::instance.missionNumber1to20 - 6U < 5))
                 && ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_HISTORIC_CAMPAIGN_INTRO

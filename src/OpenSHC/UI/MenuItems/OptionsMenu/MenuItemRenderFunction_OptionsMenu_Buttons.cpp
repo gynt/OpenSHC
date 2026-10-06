@@ -66,8 +66,7 @@ namespace UI {
                                     goto LAB_00491982;
                                 goto LAB_0049198b;
                             }
-                        } else if ((param_1 != 0x27)
-                            && ((param_1 != 3 || (DAT_GameSynchronyState::instance.isHost != FALSE))))
+                        } else if ((param_1 != 0x27) && ((param_1 != 3 || (DAT_GameSynchronyState::instance.isHost))))
                             goto LAB_00491978;
                     }
                 LAB_004918c8:
@@ -120,7 +119,7 @@ namespace UI {
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 blendStrength = 4;
                 color = 0xc2f0eb;
             } else {

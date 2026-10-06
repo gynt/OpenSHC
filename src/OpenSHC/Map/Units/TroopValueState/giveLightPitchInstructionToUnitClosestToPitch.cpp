@@ -52,7 +52,7 @@ namespace Map {
                     if ((((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
                              && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)_pUnit->owner),
-                                 BVar1 != FALSE))
+                                 BVar1))
                             && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
                                 || (_pUnit->unitType == Map::Units::UT_A_ARCHER))))
                         && (((!_pUnit->dying && (_pUnit->field297_0x40d != false))

@@ -39,7 +39,7 @@ namespace Synchrony {
                     Commands::GCT_SET_SYNC_STATUS_0);
             }
         }
-        if (DAT_GameSynchronyState::instance.announcementReceivedBool != FALSE) {
+        if (DAT_GameSynchronyState::instance.announcementReceivedBool) {
             DVar2 = timeGetTime();
             if (DVar2 - DAT_GameSynchronyState::instance.announcementReceiveTime < 0xafc9) {}
             iVar3 = 1;

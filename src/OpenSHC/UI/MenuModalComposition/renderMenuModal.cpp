@@ -70,7 +70,7 @@ namespace UI {
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             _top = (this->modalMenu).y;
-            if (_areWeInAnInGameMenu == FALSE) {
+            if (!_areWeInAnInGameMenu) {
                 _left = (this->modalMenu).x;
             } else {
                 _left = (this->modalMenu).x + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX;
@@ -114,7 +114,7 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu == FALSE) {
+            if (!_areWeInAnInGameMenu) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             } else {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -211,7 +211,7 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu != FALSE) {
+            if (_areWeInAnInGameMenu) {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
@@ -219,7 +219,7 @@ namespace UI {
                 _left, _top2, (this->modalMenu).width, (this->modalMenu).height);
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu == FALSE) {
+            if (!_areWeInAnInGameMenu) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             } else {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;

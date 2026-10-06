@@ -42,10 +42,10 @@ namespace Map {
             }
             sVar2 = this->tribes[param_1].countdown;
             if (!sVar2) {
-                if ((BVar5 != FALSE)
+                if ((BVar5)
                     && (BVar6 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                             param_1, 500, Map::Units::UT_LIONSHWOLF),
-                        BVar6 != FALSE)) {
+                        BVar6)) {
                     this->tribes[param_1].initialMoveOrderGiven = 1;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                 }
@@ -104,7 +104,7 @@ namespace Map {
                                 this)(param_1, (uint)((int)((int)this->tribes[param_1].rallyPointArray[sVar2 + -1][0])),
                                 (uint)((int)((int)this->tribes[param_1].rallyPointArray[sVar2 + -1][1])), 0, 0);
                         }
-                    } else if (BVar5 != FALSE) {
+                    } else if (BVar5) {
                         this->tribes[param_1].tribeBehaviorType = Map::Units::STBT_1;
                         this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                     }

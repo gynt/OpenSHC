@@ -63,7 +63,7 @@ namespace Synchrony {
             if (8 < iVar6)
                 goto LAB_0048dc9c;
         }
-        if (this->announcementReceivedBool == FALSE) {
+        if (!this->announcementReceivedBool) {
             DVar3 = timeGetTime();
             if (DVar3 - this->announcementReceiveTime < 0xea61) {}
             this->DAT_GameCommandParam0 = 0;

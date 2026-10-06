@@ -100,7 +100,7 @@ namespace Synchrony {
                                     this->currentPlayerSlotID, 0);
                                 BVar4 = MACRO_CALL_MEMBER(
                                     Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-                                if (BVar4 == FALSE) {
+                                if (!BVar4) {
                                     if (DAT_MenuModalComposition1::instance.activeModalDialogID
                                         == UI::Enums::MMT_ROUNDTABLE) {
                                         DAT_MenuModalComposition1::instance.activeModalDialogID

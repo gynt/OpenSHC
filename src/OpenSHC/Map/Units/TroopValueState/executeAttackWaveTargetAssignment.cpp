@@ -53,7 +53,7 @@ namespace Map {
                 DAT_TroopValueState::instance.attackInfo.value10 = DAT_TroopValueState::instance.attackInfo.value10 + 1;
                 BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZone,
                     DAT_GameState::ptr)(iVar4, iVar5, param_1);
-                if ((BVar3 != FALSE) && (DAT_TroopValueState::instance.attackInfo.attacker != 8)) {
+                if ((BVar3) && (DAT_TroopValueState::instance.attackInfo.attacker != 8)) {
                     DAT_TroopValueState::instance.attackInfo.value3Array01[param_1] = 4;
                     DAT_TroopValueState::instance.attackInfo.attackWaveTicker[param_1] = 10000;
                     DAT_TroopValueState::instance.attackInfo.attackWaveAssignmentAttempts[param_1] = 0;
@@ -74,7 +74,8 @@ namespace Map {
                     }
                     BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZone,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, iVar5, param_1);
-                    if ((BVar3 != FALSE) && (*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + iVar4 + -4) != 0)) {
+                    if ((BVar3)
+                        && (*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + iVar4 + -4) != 0)) {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                             this)(param_1, 1000, 10000, Map::Units::STBT_0x3f6);
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
@@ -134,7 +135,7 @@ namespace Map {
                 BVar3
                     = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZoneViaPathfinder,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, iVar5, param_1);
-                if (BVar3 != FALSE) {
+                if (BVar3) {
                     MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                         param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f44)), 10000, Map::Units::STBT_0x3fa);

@@ -21,7 +21,7 @@ namespace UI {
         if (this->activeModalDialogID != UI::Enums::MMT_NONE) {
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu == FALSE) {
+            if (!_areWeInAnInGameMenu) {
                 *xPtr = this->modalMenu.x;
                 _y = this->modalMenu.y;
             } else {

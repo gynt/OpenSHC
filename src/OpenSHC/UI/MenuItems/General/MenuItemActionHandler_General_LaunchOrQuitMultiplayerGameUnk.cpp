@@ -331,7 +331,7 @@ namespace UI {
                 DAT_GameCore::instance.field24_0x6c = 0;
                 goto LAB_0049504b;
             }
-            if (UI_MissionModeIntent::instance == FALSE) {
+            if (!UI_MissionModeIntent::instance) {
                 if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter != 7) {
                     menuID = UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE;
                     goto LAB_00495046;
@@ -350,7 +350,7 @@ namespace UI {
                     }
                 } else if (GVar1 == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                     if (DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION) {
-                        if (DAT_GameCore::instance.isSkirmishTrail == FALSE) {
+                        if (!DAT_GameCore::instance.isSkirmishTrail) {
                             menuID = UI::Enums::MVT_UNKNOWN_61_RETURN_TO_SKIRMISH_MENUUnk;
                         } else {
                             DAT_GameCore::instance.field22_0x64 = 0;

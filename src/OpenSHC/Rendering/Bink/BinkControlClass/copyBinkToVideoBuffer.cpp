@@ -43,10 +43,10 @@ namespace Rendering {
             _binkStructPtr = (BinkControlClass*)this->soundStreamIndex;
             do {
                 if ((_binkStructPtr->soundStreamIndex[0] != Audio::MSS::enums::SND_STR_MUSIC)
-                    && ((_soundPlaying
-                        = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
-                            DAT_SoundSystemState::ptr)((Audio::MSS::enums::SHC_SoundStream)(_binkStructPtr->soundStreamIndex[0])),
-                        _soundPlaying == FALSE
+                    && ((_soundPlaying = MACRO_CALL_MEMBER(
+                             Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
+                             (Audio::MSS::enums::SHC_SoundStream)(_binkStructPtr->soundStreamIndex[0])),
+                        !_soundPlaying
                             || (_sysTime = timeGetTime(), 20000 < _sysTime - _binkStructPtr->startTime[0])))) {
                     _binkStructPtr->soundStreamIndex[0] = Audio::MSS::enums::SND_STR_MUSIC;
                 }
@@ -92,7 +92,7 @@ namespace Rendering {
                             DAT_WindowAndDirectDraw::instance.resolutionY,
                             (ushort)((int)(COL_BLACK::instance.shortValue)));
                     }
-                    if (_binkStructPtr->frameReadyToDisplay[0] != FALSE) {
+                    if (_binkStructPtr->frameReadyToDisplay[0]) {
                         if (_binkStructPtr.unknownParam04[0] == 0) {
                             /*
                               Stack pointer also broken here. Lock requires 5 inputs.      Singature Overwrite

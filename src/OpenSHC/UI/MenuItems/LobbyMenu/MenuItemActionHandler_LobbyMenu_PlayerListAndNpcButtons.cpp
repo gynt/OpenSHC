@@ -42,7 +42,7 @@ namespace UI {
                 && (param_1 < 0)) {
                 if (param_1 < -9) {
                     if (param_1 == -0x65) {
-                        if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                        if (DAT_GameSynchronyState::instance.isHost) {
                             MACRO_CALL(UI::Helpers_Func::ClearLobbyHoveredAI)();
                             if (DAT_GameCore::instance.numOfAIsWithCastleUnk < 9) {
                                 menuModalID = UI::Enums::MMT_BASIC_AI_LORD_SELECT;
@@ -53,7 +53,7 @@ namespace UI {
                                 DAT_MenuModalComposition1::ptr)(menuModalID,
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 4,
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xcd);
-                            if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                            if (DAT_GameCore::instance.genieVoiceActive) {
                                 /*
                                   "Choose your adversary"
                                  */
@@ -62,7 +62,7 @@ namespace UI {
                             }
                         }
                     } else if (param_1 == -0x66) {
-                        if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                        if (DAT_GameSynchronyState::instance.isHost) {
                             if (DAT_MenuModalComposition1::instance.activeModalDialogID
                                 != UI::Enums::MMT_NONE) {
                                 if ((DAT_MenuModalComposition1::instance.activeModalDialogID
@@ -77,7 +77,7 @@ namespace UI {
                                 DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ROUNDTABLE, FALSE);
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
                                 DAT_GameSynchronyState::ptr)();
-                            if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                            if (DAT_GameCore::instance.genieVoiceActive) {
                                 /*
                                   "The round table"
                                  */
@@ -86,11 +86,9 @@ namespace UI {
                             }
                         }
                     } else if (param_1 == -0x67) {
-                        if (((DAT_GameSynchronyState::instance.currentGameMode
-                                 == Game::GM_SKIRMISH_SINGLE_PLAYER)
-                                && (DAT_GameSynchronyState::instance.isHost != FALSE))
-                            && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                                == UI::Enums::MMT_NONE)) {
+                        if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)
+                                && (DAT_GameSynchronyState::instance.isHost))
+                            && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)((Audio::SFX::SoundEffectID)(Audio::SFX::SEID_UNIT_DAMAGE3 | Audio::SFX::SEID_STOCKS));
                             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition1::ptr)(
@@ -98,7 +96,7 @@ namespace UI {
                             (DAT_MenuHandlerState::instance.currentMenu)->hoveredItem = (MenuItem*)0x0;
                             DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk = 0;
                         }
-                    } else if (((DAT_GameSynchronyState::instance.isHost != FALSE)
+                    } else if (((DAT_GameSynchronyState::instance.isHost)
                                    && (cVar1 = *(char*)((int)DAT_GameSynchronyState::ptr + (0x109d7c - param_1)),
                                        '\0' < cVar1))
                         && (playerID = (int)cVar1, playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
@@ -128,7 +126,7 @@ namespace UI {
                     }
                 } else if (((*(char*)((int)DAT_GameSynchronyState::ptr + (0x109e44 - param_1))
                                 == DAT_GameSynchronyState::instance.currentPlayerSlotID)
-                               && (DAT_GameSynchronyState::instance.flag_0x7aad8 != FALSE))
+                               && (DAT_GameSynchronyState::instance.flag_0x7aad8))
                     && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                     DAT_GameSynchronyState::instance
                         .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]

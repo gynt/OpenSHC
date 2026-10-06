@@ -43,10 +43,9 @@ namespace Map {
                 do {
                     _index = this->attackInfo.unitIDIndex_0x2c520;
                     if (((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
-                            && (BVar1
-                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                            && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                     this)((int)_pUnit->owner),
-                                BVar1 != FALSE))
+                                BVar1))
                         && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
                             || (_pUnit->unitType == Map::Units::UT_E_XBOW)))) {
                         if (!(DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U)) {

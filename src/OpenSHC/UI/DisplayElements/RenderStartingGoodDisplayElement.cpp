@@ -72,10 +72,10 @@ namespace UI {
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
         LAB_00433e2b:
             _stackMenuStateNotZero = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(UI::Enums::DEID_TIME_UNTIL_VICTORY);
-            if ((_stackMenuStateNotZero != FALSE)
-                || (_stackMenuStateNotZero
-                    = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(UI::Enums::DEID_TIME_UNTIL_DEFEAT),
-                    _stackMenuStateNotZero != FALSE)) {
+            if ((_stackMenuStateNotZero)
+                || (_stackMenuStateNotZero = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                        UI::Enums::DEID_TIME_UNTIL_DEFEAT),
+                    _stackMenuStateNotZero)) {
                 posY = posY + 0x32;
             }
         } else {
@@ -87,7 +87,7 @@ namespace UI {
                 != 0) {}
             _stackMenuStateNotZero = MACRO_CALL_MEMBER(
                 Game::GameStateStructures_Func::areActivePlayersMostlySameTeam, DAT_GameState::ptr)();
-            if (_stackMenuStateNotZero != FALSE) {}
+            if (_stackMenuStateNotZero) {}
             if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                 || (!DAT_GameCore::instance.mapU4Int0))
                 goto LAB_00433e2b;

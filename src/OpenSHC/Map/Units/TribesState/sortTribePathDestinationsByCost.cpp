@@ -47,7 +47,7 @@ namespace Map {
             x = (uint)DAT_UnitsState::instance.units[sVar1].x;
             if (!horseAndRamCount) {
                 y = (uint)DAT_UnitsState::instance.units[sVar1].y;
-                if (BVar8 == FALSE) {
+                if (!BVar8) {
                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
                         DAT_PathFindingState::ptr)(x, y, -1, -1, 100000, FALSE);
                 } else {

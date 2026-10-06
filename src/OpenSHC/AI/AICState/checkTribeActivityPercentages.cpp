@@ -12,7 +12,7 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CD070
     BOOLEnum AICState::checkTribeActivityPercentages(int tribeID, BOOLEnum ignoreShooting, BOOLEnum includeMoving)
     {
-        if (((includeMoving == FALSE) || (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 11))
+        if (((!includeMoving) || (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 11))
             && ((DAT_TribesState::instance.tribes[tribeID].percentageShootingUnk < 11 || (ignoreShooting == TRUE)))) {
             return (uint)(10 < DAT_TribesState::instance.tribes[tribeID].percentageAttackingUnk);
         }

@@ -57,7 +57,7 @@ namespace UI {
             }
             goto LAB_004aa272;
         }
-        if (DAT_MouseState::instance.leftClickState == FALSE) {
+        if (!DAT_MouseState::instance.leftClickState) {
             this->modalDragDropUnk = 0;
         } else {
             _x2 = DAT_MouseState::instance.screenSpaceX - this->mouseRelativeX;
@@ -74,7 +74,7 @@ namespace UI {
                 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             _width = (this->modalMenu).width;
             _x3 = (this->modalMenu).x + _width;
-            if (_areWeInAnInGameMenu == FALSE) {
+            if (!_areWeInAnInGameMenu) {
                 if (DAT_WindowAndDirectDraw::instance.gameResolutionX <= _x3) {
                     (this->modalMenu).x = DAT_WindowAndDirectDraw::instance.gameResolutionX - _width;
                 }
@@ -115,7 +115,7 @@ MACRO_CALL_MEMBER(UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToM
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if ((_areWeInAnInGameMenu == FALSE)
+            if ((!_areWeInAnInGameMenu)
                 && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
                 this->minus1 = 1;
             }

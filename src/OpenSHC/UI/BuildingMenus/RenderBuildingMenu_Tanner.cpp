@@ -50,7 +50,7 @@ namespace UI {
                     .workerID[0];
         if ((iVar1) && (DAT_UnitsState::instance.units[iVar1].state.generic == Map::Units::States::US_IDLEUnk)) {
             BVar7 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1);
-            if (BVar7 == FALSE) {
+            if (!BVar7) {
                 iVar8 = 0;
                 BVar7 = FALSE;
                 iVar6 = 0x12;

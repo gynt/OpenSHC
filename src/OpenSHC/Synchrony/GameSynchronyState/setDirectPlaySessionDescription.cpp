@@ -17,7 +17,7 @@ namespace Synchrony {
         DPSESSIONDESC2 local_54;
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
-        if (this->isHost != FALSE) {
+        if (this->isHost) {
             MACRO_CALL(OS_Func::_memset)(&local_54, 0, 0x50);
             local_54.guidApplication.Data1 = 0x1d5e2f48;
             memcpy(local_54.guidApplication.Data4 + 4, "ڞ0Y", 4);

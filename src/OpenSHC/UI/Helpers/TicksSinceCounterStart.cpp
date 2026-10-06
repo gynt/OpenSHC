@@ -20,7 +20,7 @@ namespace UI {
     {
         undefined4 _now = DAT_00df33ac::instance;
         do {
-            if (DAT_HasNoQueryPerformanceFrequency::instance == FALSE) {
+            if (!DAT_HasNoQueryPerformanceFrequency::instance) {
                 QueryPerformanceCounter(DAT_PerformanceCounterFrequency::ptr);
                 DAT_00df33ac::instance = DAT_PerformanceCounterFrequency::instance.LowPart;
                 _now = DAT_PerformanceCounterFrequency::instance.LowPart;

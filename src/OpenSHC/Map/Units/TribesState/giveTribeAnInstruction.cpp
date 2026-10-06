@@ -338,7 +338,7 @@ namespace Map {
                                             BVar16 = MACRO_CALL_MEMBER(
                                                 Map::Units::TribesState_Func::isTribeAllAssassins, this)(
                                                 tribeID);
-                                            if (BVar16 == FALSE) {
+                                            if (!BVar16) {
                                                 DAT_PathFindingState::instance.notAllAssassinsUnk = 1;
                                             } else {
                                                 DAT_PathFindingState::instance.allAssassinsUnk = 1;
@@ -703,7 +703,7 @@ namespace Map {
                                             = Map::Units::States::US_MOVE_TO_DESTINATION;
                                         BVar16 = MACRO_CALL_MEMBER(
                                             Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
-                                        if (BVar16 == FALSE) {
+                                        if (!BVar16) {
                                             DAT_PathFindingState::instance.notAllAssassinsUnk = 1;
                                         } else {
                                             DAT_PathFindingState::instance.allAssassinsUnk = 1;
@@ -737,7 +737,7 @@ namespace Map {
                                             Map::Units::UnitsState_Func::setDestinationForUnit,
                                             DAT_UnitsState::ptr)(
                                             _unitID, (uint)((int)(unitUID)), (uint)((int)((int)sVar9)), 0);
-                                        if (BVar16 == FALSE)
+                                        if (!BVar16)
                                             goto LAB_00528f32;
                                         DAT_UnitsState::instance.units[_unitID].targetingType
                                             = ((UnitInstructionType)0);
@@ -787,7 +787,7 @@ namespace Map {
                 _unitTribeIndex = 0;
                 BVar16 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                     DAT_ViewportRenderState::ptr)((int)_x, (uint)((int)((int)_y)));
-                if (BVar16 == FALSE) {
+                if (!BVar16) {
                     return (undefined4)(0);
                 }
                 param_5 = (int)(short)DAT_TileMapState::instance
@@ -918,7 +918,7 @@ namespace Map {
                                     .digTileY__OR__countLifeCycleEngineersSentToManSiegeEngine = (short)uVar19;
                                 BVar16 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(x, y);
-                                if (BVar16 != FALSE) {
+                                if (BVar16) {
                                     iVar14 = DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile + x;
                                     _param_4_unitUID_Y_copy
                                         = (dword)(short)DAT_TileMapState::instance.PathConnectionLayer[iVar14];
@@ -1103,7 +1103,7 @@ namespace Map {
                 BVar16 = MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::xyAreValid, DAT_ViewportRenderState::ptr)(
                     (int)DAT_BuildingsState::instance.buildings[id].buildingEntryX, uVar13);
-                if (BVar16 == FALSE) {
+                if (!BVar16) {
                     return (undefined4)(0);
                 }
                 param_5
@@ -1353,7 +1353,7 @@ namespace Map {
                                                     Map::Units::UnitsState_Func::setDestinationForUnit,
                                                     DAT_UnitsState::ptr)(
                                                     iVar14, (uint)((int)(unitUID)), (uint)((int)((int)sVar9)), 0);
-                                                if (BVar16 != FALSE) {
+                                                if (BVar16) {
                                                     DAT_UnitsState::instance.units[iVar14].targetingType
                                                         = ((UnitInstructionType)0);
                                                     DAT_UnitsState::instance.units[iVar14].plannedDestinationX

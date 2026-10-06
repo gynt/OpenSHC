@@ -31,7 +31,7 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int iVar1;
             uint uVar2;
-            uVar2 = (uint)(DAT_ButtonCurrentlyInteracting::instance != FALSE);
+            uVar2 = (uint)(DAT_ButtonCurrentlyInteracting::instance);
             if (param_1 - 0xe7U < 7) {
                 if (DAT_GameCore::instance.activeMenuTab.tabType == param_1) {
                     uVar2 = 2;
@@ -59,12 +59,12 @@ namespace UI {
             LAB_004648f1:
                 if (DAT_TileMapState::instance.currentMapperCommand == param_1) {
                     uVar2 = 2;
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE)
+                    if (!DAT_ButtonCurrentlyInteracting::instance)
                         goto LAB_0046490e;
                     uVar2 = 1;
                 }
             }
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 uVar2 = uVar2 + 1;
             }
         LAB_0046490e:

@@ -36,16 +36,14 @@ namespace UI {
         int blendStrength;
         int _xParam;
         int _yParam;
-        if ((DAT_GameCore::instance.isTimeHalted == FALSE)
+        if ((!DAT_GameCore::instance.isTimeHalted)
             && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)) {
             _menuStateNotZero = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                 UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
-            if ((_menuStateNotZero == FALSE)
+            if ((!_menuStateNotZero)
                 && ((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_BUILDING_AND_STATUS_MENU
-                    || ((DAT_GameCore::instance.activeMenuTab.tabType
-                            != UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
-                        && (DAT_GameCore::instance.activeMenuTab.tabType
-                            != UI::Enums::BASMTT_MERCENARYPOST)))))) {
+                    || ((DAT_GameCore::instance.activeMenuTab.tabType != UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
+                        && (DAT_GameCore::instance.activeMenuTab.tabType != UI::Enums::BASMTT_MERCENARYPOST)))))) {
                 blendStrength = 0;
                 _menuStateNotZero = FALSE;
                 fontSize = 0x12;

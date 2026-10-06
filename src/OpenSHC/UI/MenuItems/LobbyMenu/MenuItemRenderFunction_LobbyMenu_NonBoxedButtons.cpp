@@ -53,7 +53,7 @@ namespace UI {
             bool bVar5;
             uint uVar6;
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar1 != FALSE) {}
+            if (BVar1) {}
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
                 if (((param_1 != 2) && (param_1 != 3)) && ((param_1 != -0x14 && (param_1 != -1)))) {
                     bVar5 = param_1 == -2;
@@ -77,7 +77,7 @@ namespace UI {
             if (param_1 < 0x6a) {
                 if (param_1 == 0x69) {
                     if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                        if (!DAT_GameSynchronyState::instance.isHost) {
                             DAT_ButtonUnknownZero::instance = 1;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -106,7 +106,7 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        if (!DAT_ButtonCurrentlyInteracting::instance) {
                             uVar6 = 0xc2f0eb;
                         } else {
                             uVar6 = 0xccfaff;
@@ -122,7 +122,7 @@ namespace UI {
                     case 1:
                         if (DAT_GameSynchronyState::instance.currentGameMode
                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                            if (!DAT_GameSynchronyState::instance.isHost) {
                                 DAT_ButtonUnknownZero::instance = 1;
                                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                     = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -163,7 +163,7 @@ namespace UI {
                                 AlphaAndButtonSurfaceObj::ptr)(DAT_ButtonBackgroundBlendStrength::instance,
                                 OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                            if (!DAT_ButtonCurrentlyInteracting::instance) {
                                 uVar6 = 0xc2f0eb;
                             } else {
                                 uVar6 = 0xccfaff;
@@ -176,7 +176,7 @@ namespace UI {
                         }
                         break;
                     case 4:
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                        if (!DAT_GameSynchronyState::instance.isHost) {
                             DAT_ButtonUnknownZero::instance = 1;
                         }
                         piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;

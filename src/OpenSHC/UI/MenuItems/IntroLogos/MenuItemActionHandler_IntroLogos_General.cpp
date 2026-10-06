@@ -25,7 +25,7 @@ namespace UI {
             if (DAT_MouseState::instance.leftClickStart) {
                 BOOLEnum_00b98404::instance = TRUE;
             }
-            if ((DAT_MouseState::instance.draggingStopped != FALSE) && (BOOLEnum_00b98404::instance != FALSE)) {
+            if ((DAT_MouseState::instance.draggingStopped) && (BOOLEnum_00b98404::instance)) {
                 BOOLEnum_00b98404::instance = FALSE;
                 if (!DAT_IntroStep::instance) {
                     DAT_IntroTransitionStep::instance = 0;

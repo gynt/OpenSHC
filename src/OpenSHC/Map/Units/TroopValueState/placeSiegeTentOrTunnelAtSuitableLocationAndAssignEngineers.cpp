@@ -57,7 +57,7 @@ namespace Map {
                     DAT_TribesState::instance.tribes[tribeID].owner, (int)((int)(x)), (int)((int)(y)),
                     commandBuildingType, 3, 0xf);
                 _buildingID = DAT_TileMapState::instance.placedBuildingID;
-                if (DAT_TileMapState::instance.buildingPlacementFail == FALSE) {
+                if (!DAT_TileMapState::instance.buildingPlacementFail) {
                     DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
                     DAT_BuildingsState::instance.buildings[_buildingID].unknownSiegeTentRelated01 = 2;

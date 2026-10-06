@@ -26,17 +26,17 @@ namespace Synchrony {
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_guid;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&_guid);
         BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_MODEM::ptr);
-        if (BVar1 != FALSE) {
+        if (BVar1) {
             DAT_GameCore::instance.activeMenuTab.tabType = UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
             ;
         }
         BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
-        if (BVar1 != FALSE) {
+        if (BVar1) {
             DAT_GameCore::instance.activeMenuTab.tabType = UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP;
             ;
         }
         BVar1 = MACRO_CALL(OS_Func::isEqualGUID)(&_guid, (GUID*)GUID_DPSPGUID_IPX::ptr);
-        DAT_GameCore::instance.activeMenuTab.tabType = (BVar1 != FALSE) + UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
+        DAT_GameCore::instance.activeMenuTab.tabType = (BVar1) + UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
         ;
     }
 

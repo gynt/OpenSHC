@@ -57,7 +57,7 @@ namespace Map {
                     if (_pTribe->tribeState) {
                         BVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
                             DAT_GameState::ptr)(_pTribe->owner);
-                        if (BVar2 == FALSE) {
+                        if (!BVar2) {
                             if (_pTribe->owner == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                                 DAT_TroopValueState::instance.attackInfo.size = DAT_TroopValueState::instance.attackInfo.size + _pTribe->size;
                             }

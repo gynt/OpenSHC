@@ -27,7 +27,7 @@ namespace Synchrony {
                     Commands::GCT_CLOSE_MODAL_DIALOG_FOR_ALL);
             }
         }
-        if (DAT_GameSynchronyState::instance.announcementReceivedBool == FALSE) {
+        if (!DAT_GameSynchronyState::instance.announcementReceivedBool) {
             _now1 = timeGetTime();
             if (_now1 - DAT_GameSynchronyState::instance.announcementReceiveTime < 45000) {}
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;

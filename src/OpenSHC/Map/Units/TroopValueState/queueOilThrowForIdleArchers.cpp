@@ -33,14 +33,12 @@ namespace Map {
                 psVar3 = &DAT_UnitsState::instance.units[1].owner;
                 do {
                     if ((((psVar3[-5] != Map::Units::ULS_INVISIBLE)
-                             && (BVar1
-                                 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
-                                     this)((int)*psVar3),
-                                 BVar1 != FALSE))
+                             && (BVar1 = MACRO_CALL_MEMBER(
+                                     Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)((int)*psVar3),
+                                 BVar1))
                             && (psVar3[-4] == Map::Units::UT_E_ENGINEER))
                         && ((psVar3[0x105] == 0
-                            && (((UnitStateUnion*)(psVar3 + 0x115))->generic
-                                == Map::Units::States::US_SIT_DOWNUnk)))) {
+                            && (((UnitStateUnion*)(psVar3 + 0x115))->generic == Map::Units::States::US_SIT_DOWNUnk)))) {
                         iVar2 = 3;
                         if (0x6e < psVar3[0x12]) {
                             iVar2 = 5;

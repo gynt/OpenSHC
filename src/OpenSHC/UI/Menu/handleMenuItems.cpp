@@ -50,7 +50,7 @@ namespace UI {
             } else {
                 if (_menuItemType == UI::Enums::MIT_STOP_HANDLING) {}
                 if (_menuItemType == UI::Enums::MIT_ENABLE_OR_WRAP_BUILD_MENU_TRANSITION_OFFSET) {
-                    if ((DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18 != FALSE)
+                    if ((DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18)
                         && (funcIndex == UI::Enums::MIHS_HANDLE_INPUT_CALLBACKSUnk)) {}
                     this->currentBuildMenuButtonShiftUnk_0x14 = ~-(uint)(this->currentBuildMenuButtonShiftUnk_0x14)
                         & DAT_MenuHandlerState::instance.buildMenuItemsLeftShift_0x28;

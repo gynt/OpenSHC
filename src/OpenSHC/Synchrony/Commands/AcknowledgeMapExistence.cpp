@@ -41,7 +41,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&_index, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if ((!_flag) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+            if ((!_flag) && (DAT_GameSynchronyState::instance.isHost)) {
                 DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[_index] = 0;
                 DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 50;
             }

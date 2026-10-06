@@ -26,7 +26,7 @@ namespace UI {
         {
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
                 BOOLEnum BVar1 = MACRO_CALL(Game_Func::Tutorial_IsActionAllowed)(3, param_1);
-                if (BVar1 == FALSE) {
+                if (!BVar1) {
                     MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
                 }
                 MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(

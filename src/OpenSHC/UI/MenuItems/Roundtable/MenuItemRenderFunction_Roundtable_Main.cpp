@@ -62,12 +62,11 @@ namespace UI {
                          && (iVar4 = (int)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1 - 10],
                              0 < iVar4))
                         && (DAT_00df423c::instance))
-                    && ((
-                        (DAT_ButtonCurrentlyInteracting::instance != FALSE && (param_1 + -10 != DAT_00df423c::instance))
+                    && (((DAT_ButtonCurrentlyInteracting::instance && (param_1 + -10 != DAT_00df423c::instance))
                         && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar4] != -1
                             || (BVar6 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
                                     DAT_GameSynchronyState::ptr)(iVar4),
-                                BVar6 != FALSE)))))) {
+                                BVar6)))))) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                         (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance + -1)),
@@ -76,18 +75,18 @@ namespace UI {
                 if (param_1 != 0x14) {
                     if ((param_1 == 100) || (param_1 == 0x65)) {
                         DAT_ButtonUnknownZero::instance = (int)(DAT_00df423c::instance);
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                        if (!DAT_GameSynchronyState::instance.isHost) {
                             DAT_ButtonUnknownZero::instance = 1;
                         } else {
                             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                            if (DAT_ButtonCurrentlyInteracting::instance) {
                                 DAT_00df4288::instance = 1;
                             }
                         }
                     }
                     if (((param_1 == 200) && (iVar4 = 0, DAT_00df423c::instance))
-                        && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                        && (DAT_GameSynchronyState::instance.isHost)) {
                         if (DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance] == 0) {
                             DAT_00df423c::instance = 0;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -152,7 +151,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                if ((DAT_ButtonCurrentlyInteracting::instance != FALSE)
+                if ((DAT_ButtonCurrentlyInteracting::instance)
                     && (DAT_00df4288::instance = 1, !DAT_00df423c::instance)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 }
@@ -171,7 +170,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            DAT_ButtonUnknownZero::instance = (int)(DAT_GameSynchronyState::instance.isHost == FALSE);
+            DAT_ButtonUnknownZero::instance = (int)(!DAT_GameSynchronyState::instance.isHost);
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] == -1) {
                 iVar4 = DAT_GameSynchronyState::instance.currentAIArray[iVar3];
             }
@@ -207,14 +206,14 @@ namespace UI {
                     DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonX::instance + 0x47)), (int)((int)(DAT_ButtonY::instance + 0x47)));
             }
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 if (!DAT_00df423c::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                         (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     DAT_00df4288::instance = 1;
                 }
             }

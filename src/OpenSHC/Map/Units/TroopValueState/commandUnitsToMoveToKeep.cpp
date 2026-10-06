@@ -82,7 +82,7 @@ namespace Map {
                                  && (BVar2
                                      = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                          this)((int)_pUnit->owner),
-                                     BVar2 != FALSE))
+                                     BVar2))
                                 && ((
                                     (UVar1 = _pUnit->unitType,
                                         UVar1 == Map::Units::UT_E_MACE

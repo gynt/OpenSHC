@@ -150,7 +150,7 @@ namespace Map {
                     BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y,
                         (int)((int)((-(uint)bVar10 & 0xfffffff1) + 0x1e)));
-                    if (BVar3 != FALSE) {
+                    if (BVar3) {
                         this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
                         bVar11 = false;
                         break;
@@ -159,7 +159,7 @@ namespace Map {
                 } while ((int)x < this->constructionTileCount);
                 BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                     DAT_PathFindingState::ptr)(_x, _y, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-                if (BVar3 == FALSE) {
+                if (!BVar3) {
                     if (bVar11)
                         goto LAB_00503d46;
                 } else {
@@ -207,7 +207,7 @@ namespace Map {
                         x, buildingSize);
                     BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y, _distance);
-                    if (BVar3 != FALSE) {
+                    if (BVar3) {
                     LAB_00503b32:
                         this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
                     LAB_00503b48:
@@ -238,7 +238,7 @@ namespace Map {
                 } while ((int)x < this->constructionTileCount);
                 BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                     DAT_PathFindingState::ptr)(_x, _y, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-                if (BVar3 == FALSE) {
+                if (!BVar3) {
                     if (bVar11)
                         goto LAB_00503d46;
                 } else {
@@ -274,7 +274,7 @@ namespace Map {
                             iVar8, buildingSize);
                         BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                             DAT_PathFindingState::ptr)(playerID, this->buildingX + x, this->buildingY + _y, 3);
-                        if (BVar3 != FALSE)
+                        if (BVar3)
                             goto LAB_005039d6;
                         iVar8 = iVar8 + 1;
                     } while (iVar8 < this->constructionTileCount);
@@ -321,7 +321,7 @@ namespace Map {
                             iVar8, buildingSize);
                         BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                             DAT_PathFindingState::ptr)(playerID, this->buildingX + x, this->buildingY + _y, 3);
-                        if (BVar3 != FALSE)
+                        if (BVar3)
                             goto LAB_005039d6;
                         iVar8 = iVar8 + 1;
                     } while (iVar8 < this->constructionTileCount);
@@ -329,7 +329,7 @@ namespace Map {
             }
         }
     LAB_00503d46:
-        if (this->buildingPlacementFail == FALSE) {
+        if (!this->buildingPlacementFail) {
             iVar8 = 0;
             do {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
@@ -429,7 +429,7 @@ namespace Map {
                         uVar5 = *(int*)(buildingSize + 4) + _y;
                         BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(*(int*)buildingSize + _x, uVar5);
-                        if (BVar3 == FALSE) {
+                        if (!BVar3) {
                             this->buildingPlacementFail = 2;
                         }
                         iVar8 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile
@@ -484,7 +484,7 @@ namespace Map {
                         uVar5 = this->buildingY + iVar8 + _y;
                         BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(iVar4 + this->buildingX, uVar5);
-                        if ((BVar3 == FALSE)
+                        if ((!BVar3)
                             || (iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile + iVar6
                                     + iVar4,
                                 (this->LogicLayer[iVar6] & 0x30) != 0))
@@ -522,7 +522,7 @@ namespace Map {
                                     Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
                                     DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
                                     Map::Buildings::BT_STOCKPILE);
-                                if (BVar3 != FALSE) {}
+                                if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_STOCKPILE;
                             }
@@ -538,7 +538,7 @@ namespace Map {
                                     Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
                                     DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
                                     Map::Buildings::BT_GRANARY);
-                                if (BVar3 != FALSE) {}
+                                if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_GRANARY;
                             }
@@ -554,7 +554,7 @@ namespace Map {
                                     Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
                                     DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
                                     Map::Buildings::BT_ARMORY);
-                                if (BVar3 != FALSE) {}
+                                if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_ARMORY;
                             }
@@ -576,7 +576,7 @@ namespace Map {
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
-                                if (BVar3 == FALSE) {
+                                if (!BVar3) {
                                     this->buildingPlacementFail = 2;
                                 }
                                 iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile
@@ -608,7 +608,7 @@ namespace Map {
                                         BVar3 = MACRO_CALL_MEMBER(
                                             Rendering::ViewportRenderState_Func::xyAreValid,
                                             DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
-                                        if (BVar3 == FALSE) {
+                                        if (!BVar3) {
                                             this->buildingPlacementFail = 2;
                                         }
                                         iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile
@@ -640,7 +640,7 @@ namespace Map {
                                                 BVar3 = MACRO_CALL_MEMBER(
                                                     Rendering::ViewportRenderState_Func::xyAreValid,
                                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
-                                                if (BVar3 == FALSE) {
+                                                if (!BVar3) {
                                                     this->buildingPlacementFail = 2;
                                                 }
                                                 iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5]
@@ -681,7 +681,7 @@ namespace Map {
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
-                                if (BVar3 == FALSE) {
+                                if (!BVar3) {
                                     this->buildingPlacementFail = 2;
                                 }
                                 iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile
@@ -710,7 +710,7 @@ namespace Map {
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
-                                if (BVar3 == FALSE) {
+                                if (!BVar3) {
                                     this->buildingPlacementFail = 2;
                                 }
                                 iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile
@@ -745,7 +745,7 @@ namespace Map {
                         uVar5 = this->buildingY + _y + iVar4;
                         BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(this->buildingX + iVar6, uVar5);
-                        if (BVar3 == FALSE) {
+                        if (!BVar3) {
                             this->buildingPlacementFail = 2;
                         }
                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile + this->buildingX
@@ -769,7 +769,7 @@ namespace Map {
                         uVar5 = this->buildingY + iVar4 + _y;
                         BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(iVar8 + this->buildingX, uVar5);
-                        if (BVar3 == FALSE) {
+                        if (!BVar3) {
                             this->buildingPlacementFail = 2;
                         }
                         iVar6 = DAT_ViewportRenderState::instance.translationMatrix[uVar5].addXgetTile + iVar6 + iVar8;
@@ -791,7 +791,7 @@ namespace Map {
                         iVar4 = *piVar9;
                         BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_x + iVar4, iVar8 + _y);
-                        if ((BVar3 == FALSE)
+                        if ((!BVar3)
                             || (iVar8 = DAT_ViewportRenderState::instance.translationMatrix[iVar8 + _y].addXgetTile
                                     + iVar4 + _x,
                                 (this->LogicLayer[iVar8] & 0x30) != 0))

@@ -26,7 +26,7 @@ namespace Map {
                         BVar1 = MACRO_CALL_MEMBER(
                             Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
                             iVar2, this->attackInfo.pitchRelatedPlayerID, this->attackInfo.playerID_0x2c850);
-                        if (BVar1 != FALSE) {
+                        if (BVar1) {
                             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                                   giveLightPitchInstructionToUnitClosestToPitch,
                                 this)(iVar2);

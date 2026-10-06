@@ -56,7 +56,7 @@ namespace UI {
                     if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != OpenSHC::Map::MT_SIEGE) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        if (!DAT_ButtonCurrentlyInteracting::instance) {
                             uVar4 = 0xc2f0eb;
                         } else {
                             uVar4 = 0xccfaff;
@@ -95,7 +95,7 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         uVar4 = 0xc2f0eb;
                         iVar2 = *(int*)((int)DAT_MapPropertiesState::ptr + iVar3 * 4 + 0x9c);
                     } else {
@@ -114,7 +114,7 @@ namespace UI {
                     if (iVar3 == 0x1e) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        if (!DAT_ButtonCurrentlyInteracting::instance) {
                             uVar4 = 0xc2f0eb;
                         } else {
                             uVar4 = 0xccfaff;
@@ -142,7 +142,7 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         uVar4 = 0xc2f0eb;
                         iVar2 = *(int*)((int)DAT_MapPropertiesState::ptr + iVar3 * 4 + 0x9c);
                     } else {
@@ -174,7 +174,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             }
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),

@@ -108,7 +108,7 @@ namespace Map {
                         BOOLEnum BVar3
                             = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
                                 DAT_PathFindingState::ptr)(6, _x, _y, 0x80);
-                        if (BVar3 == FALSE) {
+                        if (!BVar3) {
                             DAT_TileMapState::instance.AIInfoLayer[_candidateTile]
                                 = DAT_TileMapState::instance.AIInfoLayer[_candidateTile] | 0x80;
                             int _sIndex = MACRO_CALL_MEMBER(

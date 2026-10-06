@@ -65,7 +65,7 @@ namespace UI {
                         goto LAB_004dca69;
                 }
             }
-            if (((DAT_MouseState::instance.draggingStopped == FALSE)
+            if (((!DAT_MouseState::instance.draggingStopped)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
                 && (!INT_00ed279c::instance)) {}
         LAB_004dca69:
@@ -79,7 +79,7 @@ namespace UI {
                 OpenSHC::Rendering::Bink::BinkControlClass_Func::stopAllBinkPlayback, DAT_BinkControlState::ptr)();
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                    if (DAT_GameCore::instance.isSkirmishTrail == FALSE) {
+                    if (!DAT_GameCore::instance.isSkirmishTrail) {
                         if (!DAT_GameCore::instance.skipStoreSKMasters) {
                             MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(0);
                         }
@@ -129,7 +129,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    if (DAT_GameSynchronyState::instance.isHost) {
                         MACRO_CALL_MEMBER(
                             OpenSHC::Game::Skirmish::SkirmishLobbySetupStructure_Func::restoreSkirmishLobbySetup,
                             SEC_SkirmishLobbySetupStructure::ptr)();

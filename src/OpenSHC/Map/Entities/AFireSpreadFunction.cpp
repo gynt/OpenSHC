@@ -63,7 +63,7 @@ namespace Map {
                 && ((!(DAT_TileMapState::instance.LogicLayer[_tile] & 0x1000U)
                     || (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
                             _tile, playerID),
-                        BVar3 != FALSE)))) {
+                        BVar3)))) {
                 _entityID2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
                     Map::Entities::ET_FIRE, 0);

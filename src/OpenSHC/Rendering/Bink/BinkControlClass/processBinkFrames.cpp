@@ -30,7 +30,7 @@ namespace Rendering {
                     _streamPlaying = MACRO_CALL_MEMBER(
                         Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
                         (Audio::MSS::enums::SHC_SoundStream)(_ptrInBinkControlStruct->soundStreamIndex[0]));
-                    if (_streamPlaying != FALSE) {
+                    if (_streamPlaying) {
                         _currentSysTime = timeGetTime();
                         if (_currentSysTime - _ptrInBinkControlStruct->startTime[0] < 20000)
                             goto LAB_0040923b;

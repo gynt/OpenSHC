@@ -194,7 +194,7 @@ namespace UI {
                                     + Game::Resources::RT_LOGS)),
                                 (int)((int)(DAT_SentOrRequestedGoodsAmount::instance)));
                         }
-                        if (BVar1 != FALSE) {
+                        if (BVar1) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = playerID;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam2

@@ -13,7 +13,7 @@ namespace Synchrony {
     {
         int* piVar1;
         int iVar2;
-        if (this->isHost == FALSE) {
+        if (!this->isHost) {
             if (!this->lobbyStateReceived) {
                 return (undefined4)(0);
             }

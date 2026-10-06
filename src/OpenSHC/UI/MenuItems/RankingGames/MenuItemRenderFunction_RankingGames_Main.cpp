@@ -37,7 +37,7 @@ namespace UI {
                 if (param_1 == -10) {
                     iVar1 = 0x55;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     iVar1 = iVar1 + 1;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -54,7 +54,7 @@ namespace UI {
                 if (param_1 == 0x14) {
                     DAT_00ed27a0::instance = 0;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                if (DAT_ButtonCurrentlyInteracting::instance) {
                     DAT_00ed27a0::instance = param_1;
                 }
                 if ((param_1 < 0x1e) && (param_1 + -0x13 == DAT_MissionDefinedData::instance.sortColumn)) {

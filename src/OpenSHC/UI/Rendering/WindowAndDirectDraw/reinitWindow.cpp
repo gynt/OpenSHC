@@ -20,7 +20,7 @@ namespace UI {
             _currentForegroundWindow = GetForegroundWindow();
             if (_currentForegroundWindow == hWnd) {
                 this->isNotProcessingInputEvents = FALSE;
-                if (this->runGameAsExclusiveFullscreen != FALSE) {
+                if (this->runGameAsExclusiveFullscreen) {
                     MACRO_CALL_MEMBER(
                         UI::Rendering::WindowAndDirectDraw_Func::prepareWindowAndDDrawUnk, this)();
                     yBottom = GetSystemMetrics(SM_CYSCREEN);

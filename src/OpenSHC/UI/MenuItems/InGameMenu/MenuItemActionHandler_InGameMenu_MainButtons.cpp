@@ -171,7 +171,7 @@ namespace UI {
                 if (param_1 == -90) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
-                    if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
+                    if (DAT_GameCore::instance.genieVoiceActive) {
                         /*
                           "Your allies"
                          */
@@ -256,7 +256,7 @@ namespace UI {
                                 && (BVar2
                                     = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                                         OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                                    BVar2 == FALSE)) {
+                                    !BVar2)) {
                                 param_1 = 0x4c;
                             }
                             DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;

@@ -54,13 +54,13 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)(
             (GUID*)&local_26c);
         BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
-        if (BVar3 == FALSE) {
+        if (!BVar3) {
             BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
-            if (BVar3 == FALSE) {
+            if (!BVar3) {
                 BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_IPX::ptr);
                 local_2a4 = 0x10;
                 DVar9 = 1;
-                if (BVar3 == FALSE) {
+                if (!BVar3) {
                     local_2b4.Data1 = 0x7d916c0;
                     local_2b4.Data2 = 0xe0af;
                     local_2b4.Data3 = 0x11cf;

@@ -38,10 +38,10 @@ namespace Map {
         int _treeType;
         TreeTypeShort _treeType_2;
         if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                 || ((DAT_GameCore::instance.isTimeHalted == FALSE
+                 || ((!DAT_GameCore::instance.isTimeHalted
                      && (BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                              UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                         BVar2 == FALSE))))
+                         !BVar2))))
                 && (((this->trees[treeID].rng1 & 0x3fU) == rng
                     && (((_treeType = (int)(short)this->trees[treeID].treeType, _treeType < 5 || (0x13 < _treeType))
                         && (this->trees[treeID].zeroUpTo2 == 0))))))

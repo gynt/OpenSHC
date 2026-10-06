@@ -30,7 +30,7 @@ namespace Map {
                         && (DAT_UnitsState::instance.units[unitID].dying == 0)) {
                         BVar1 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::hasUnitReachedDestination,
                             DAT_UnitsState::ptr)(unitID);
-                        if (BVar1 == FALSE) {
+                        if (!BVar1) {
                             return FALSE;
                         }
                     }

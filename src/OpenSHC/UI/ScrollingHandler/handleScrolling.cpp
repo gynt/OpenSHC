@@ -23,23 +23,23 @@ namespace UI {
         int _scrollDistanceDenominator;
         _scrollDistanceMax = (this->scrollDistanceLimit * 2) / 3;
         if (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU) {
-            if (this->rightKeyDown_0x18 != FALSE) {
+            if (this->rightKeyDown_0x18) {
                 this->scrollRight = TRUE;
             }
-            if (this->leftKeyDown_0x1c != FALSE) {
+            if (this->leftKeyDown_0x1c) {
                 this->scrollLeft = TRUE;
             }
-            if (this->upKeyDown_0x24 != FALSE) {
+            if (this->upKeyDown_0x24) {
                 this->scrollUp = TRUE;
             }
-            if (this->downKeyDown_0x20 != FALSE) {
+            if (this->downKeyDown_0x20) {
                 this->scrollDown = TRUE;
             }
         }
-        if (this->scrollUp == FALSE) {
-            if (this->scrollDown == FALSE) {
-                if (this->scrollLeft == FALSE) {
-                    if (this->scrollRight == FALSE) {
+        if (!this->scrollUp) {
+            if (!this->scrollDown) {
+                if (!this->scrollLeft) {
+                    if (!this->scrollRight) {
                         this->scrollDirection_0x4 = UI::SD_NONE;
                     } else {
                         this->scrollDirection_0x4 = UI::SD_RIGHT;
@@ -47,8 +47,8 @@ namespace UI {
                 } else {
                     this->scrollDirection_0x4 = UI::SD_LEFT;
                 }
-            } else if (this->scrollLeft == FALSE) {
-                if (this->scrollRight == FALSE) {
+            } else if (!this->scrollLeft) {
+                if (!this->scrollRight) {
                     this->scrollDirection_0x4 = UI::SD_DOWN;
                 } else {
                     this->scrollDirection_0x4 = UI::SD_DOWN_RIGHT;
@@ -56,8 +56,8 @@ namespace UI {
             } else {
                 this->scrollDirection_0x4 = UI::SD_DOWN_LEFT;
             }
-        } else if (this->scrollLeft == FALSE) {
-            if (this->scrollRight == FALSE) {
+        } else if (!this->scrollLeft) {
+            if (!this->scrollRight) {
                 this->scrollDirection_0x4 = UI::SD_UP;
             } else {
                 this->scrollDirection_0x4 = UI::SD_UP_RIGHT;

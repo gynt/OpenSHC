@@ -166,7 +166,7 @@ namespace UI {
                         FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         iVar3 = 0;
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                        if (!DAT_GameSynchronyState::instance.isHost) {
                             do {
                                 cVar1 = DAT_GameSynchronyState::instance.shortMapName[iVar3];
                                 local_3f4[iVar3] = cVar1;
@@ -364,7 +364,7 @@ namespace UI {
                         FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         iVar3 = 0;
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                        if (!DAT_GameSynchronyState::instance.isHost) {
                             do {
                                 cVar1 = DAT_GameSynchronyState::instance.shortMapName[iVar3];
                                 local_3f4[iVar3] = cVar1;

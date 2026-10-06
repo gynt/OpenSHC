@@ -78,7 +78,7 @@ namespace UI {
         iVar6 = 0x12;
         BVar4 = 0xc2f0eb;
         TVar3 = OpenSHC::Text::TTA_CENTER;
-        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+        if (!DAT_GameSynchronyState::instance.isHost) {
             iVar5 = 0x33;
         } else {
             iVar5 = 0x32;
@@ -165,7 +165,7 @@ namespace UI {
         DAT_ButtonW::instance = 200;
         DAT_ButtonH::instance = 0x1c;
         DAT_ButtonX::instance = iVar6;
-        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+        if (!DAT_GameSynchronyState::instance.isHost) {
             BVar4 = 0x7f7f7f;
         } else {
             if (DAT_GameSynchronyState::instance.connectionInfoExpanded) {
@@ -190,7 +190,7 @@ namespace UI {
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) + -0x96,
                     (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0xc6, 0x96, 0x1c);
-                if (BVar7 == FALSE) {
+                if (!BVar7) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -238,7 +238,7 @@ namespace UI {
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) + 0x32,
                     (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0xc6, 0x96, 0x1c);
-                if (BVar7 != FALSE) {
+                if (BVar7) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -273,7 +273,7 @@ namespace UI {
             BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                 (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) + -100,
                 (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0x96, 200, 0x1c);
-            if (BVar7 != FALSE) {
+            if (BVar7) {
                 DAT_ButtonCurrentlyInteracting::instance = TRUE;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);

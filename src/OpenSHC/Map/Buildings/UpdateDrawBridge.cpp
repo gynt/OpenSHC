@@ -53,7 +53,7 @@ namespace Map {
             if ((DAT_BuildingsState::instance.buildings[iVar8].drawbridgeState2 == 10)
                 && (BVar7 = MACRO_CALL_MEMBER(
                         Map::TileMapState_Func::isUnitBlockingSizeFiveFootprint, DAT_TileMapState::ptr)(iVar8),
-                    iVar8 = DAT_CurrentBuildingID::instance, BVar7 == FALSE)) {
+                    iVar8 = DAT_CurrentBuildingID::instance, !BVar7)) {
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].drawBridgeState1 = 1;
                 DAT_BuildingsState::instance.buildings[iVar8].animationIndex = 0;
                 MACRO_CALL_MEMBER(

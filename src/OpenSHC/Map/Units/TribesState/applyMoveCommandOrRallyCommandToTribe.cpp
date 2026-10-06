@@ -64,7 +64,7 @@ namespace Map {
                         DAT_UnitsState::instance.units[_unitID].plannedDestinationY = (short)y1;
                         DAT_UnitsState::instance.units[_unitID].moveDelay = 0;
                         DAT_UnitsState::instance.units[_unitID].moveInstructionSpeedDelayTracker = 0;
-                        if (_allAssassins != FALSE) {
+                        if (_allAssassins) {
                             DAT_PathFindingState::instance.allAssassinsUnk = 1;
                         }
                         MACRO_CALL_MEMBER(

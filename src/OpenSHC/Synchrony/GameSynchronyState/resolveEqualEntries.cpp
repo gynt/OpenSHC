@@ -22,7 +22,7 @@ namespace Synchrony {
             do {
                 _equality = MACRO_CALL(OS_Func::isEqualGUID)(
                     pGUID, (GUID*)((int)(this->DPLAY_SessionGUIDs[_index])));
-                if (_equality != FALSE) {
+                if (_equality) {
                     if ((_index <= this->scrollBarItemOffset) || (this->scrollBarItemOffset + 10 <= _index)) {
                         uVar1 = _count - 10;
                         if (_index <= (int)uVar1) {

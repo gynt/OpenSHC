@@ -12,7 +12,7 @@ namespace Synchrony {
     void GameSynchronyState::getGUIDForSelectedProvider(GUID* param_1)
     {
         GUID* pGVar1;
-        if (this->useTCPIP != FALSE) {
+        if (this->useTCPIP) {
             /*
               fixme: include check for steam provider
              */

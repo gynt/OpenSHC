@@ -85,7 +85,7 @@ namespace UI {
                     goto LAB_004dc5a5;
             } else {
             LAB_004dc5a5:
-                if (((DAT_MouseState::instance.draggingStopped == FALSE)
+                if (((!DAT_MouseState::instance.draggingStopped)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
                     && (!INT_00ed279c::instance)) {
                     return;
@@ -147,7 +147,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                    if (!DAT_GameSynchronyState::instance.isHost) {
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
@@ -163,7 +163,7 @@ namespace UI {
                 menuID = OpenSHC::UI::Enums::MVT_RANKING_GAMES;
                 goto LAB_004dc9bd;
             }
-            if (DAT_GameCore::instance.isSkirmishTrail == FALSE) {
+            if (!DAT_GameCore::instance.isSkirmishTrail) {
                 if (!DAT_GameCore::instance.skipStoreSKMasters) {
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(0);
                 }

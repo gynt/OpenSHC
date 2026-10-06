@@ -94,14 +94,14 @@ namespace UI {
                             .width),
                     (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
                             .height));
-                if ((BVar2 != FALSE)
+                if ((BVar2)
                     && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketplace.id
                         != 0)) {
                     BVar2 = MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(
                         *(ResourceType*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4));
-                    if (BVar2 != FALSE) {
+                    if (BVar2) {
                         DAT_BuildingsState::instance.newSelectedBuildingID
                             = DAT_GameState::instance
                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

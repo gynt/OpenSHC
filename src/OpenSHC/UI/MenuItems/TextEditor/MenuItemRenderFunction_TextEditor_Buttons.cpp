@@ -63,7 +63,7 @@ namespace UI {
             case 0xf:
             case 0x14:
                 if ((param_1 != -4) || (DAT_TextEditorState::instance.helpSectionHistoryStack[0] != -1)) {
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_TextManagerObject::instance.textColor = 0;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
                     } else {
@@ -256,7 +256,7 @@ namespace UI {
                 }
                 break;
             case 0x20:
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     DAT_TextManagerObject::instance.textColor = 0xffffff;
                     DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                 } else {
@@ -385,7 +385,7 @@ namespace UI {
                 case 3:
                 case 10:
                 case 0xc:
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_TextManagerObject::instance.textColor = 0xffffff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                     } else {
@@ -426,7 +426,7 @@ namespace UI {
                 case 3:
                 case 10:
                 case 0xc:
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_TextManagerObject::instance.textColor = 0xffffff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                     } else {
@@ -485,7 +485,7 @@ namespace UI {
             case -5:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_HELP, 2,
                         (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
@@ -499,7 +499,7 @@ namespace UI {
                 if (DAT_TextEditorState::instance.helpSectionHistoryStack[0] != -1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    if (!DAT_ButtonCurrentlyInteracting::instance) {
                         iVar1 = 4;
                         color = 0xc2f0eb;
                     } else {

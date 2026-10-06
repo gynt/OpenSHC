@@ -49,7 +49,7 @@ namespace UI {
                 } else {
                     if (!DAT_00df5560::instance) {}
                     if (((DAT_00df5558::instance < DAT_00df555c::instance + -1)
-                            && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
+                            && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8))
                         && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                         numInGroup = 5;
                     }
@@ -61,7 +61,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 8;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

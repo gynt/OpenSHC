@@ -36,7 +36,7 @@ namespace UI {
             TIME_LoadSaveBar::instance = _currentTime;
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu != FALSE) {
+            if (_areWeInAnInGameMenu) {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,

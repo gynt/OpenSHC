@@ -73,7 +73,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_fc4, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 dVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::getChecksumOfMapByName, DAT_ResourceManager::ptr)(local_7dc);
                 if (dVar1 != local_fc8) {

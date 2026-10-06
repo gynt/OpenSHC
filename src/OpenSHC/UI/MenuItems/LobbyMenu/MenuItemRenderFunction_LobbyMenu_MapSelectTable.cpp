@@ -47,18 +47,18 @@ namespace UI {
             char* _Str2;
             int local_4;
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar1 != FALSE) {}
+            if (BVar1) {}
             if ((((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
                      && (DAT_MenuModalComposition1::instance.activeModalDialogID
                          != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                     && (DAT_MenuModalComposition1::instance.activeModalDialogID
                         != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                || (DAT_ButtonUnknownZero::instance = 1, DAT_GameSynchronyState::instance.isHost == FALSE)) {
+                || (DAT_ButtonUnknownZero::instance = 1, !DAT_GameSynchronyState::instance.isHost)) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
             iVar4 = 0;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 iVar4 = -1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
@@ -91,7 +91,7 @@ namespace UI {
                     < 1) {
                     color = 0x7f7f7f;
                 } else if ((((param_1 != DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected)
-                                && (DAT_ButtonCurrentlyInteracting::instance == FALSE))
+                                && (!DAT_ButtonCurrentlyInteracting::instance))
                                && (iVar4 != 1))
                     || (color = 0xccfaff, iVar4 < 0)) {
                     color = 0xc2f0eb;

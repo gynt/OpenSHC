@@ -35,7 +35,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 param_1, xParam, (int)((int)(DAT_ButtonY::instance + 9)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13,
                 FALSE, 0);
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (DAT_ButtonCurrentlyInteracting::instance) {
                 DAT_GameSynchronyState::instance.DAT_InsultTextIndex = param_1;
             }
         }

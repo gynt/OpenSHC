@@ -34,7 +34,7 @@ namespace Synchrony {
                 .taxesSetting2) {
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
                 BVar2 = MACRO_CALL(OpenSHC::Game_Func::Tutorial_IsActionAllowed)(4, iVar1);
-                if (BVar2 == FALSE) {
+                if (!BVar2) {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .taxesSliderUI
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

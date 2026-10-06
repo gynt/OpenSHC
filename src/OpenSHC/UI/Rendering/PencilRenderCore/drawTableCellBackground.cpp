@@ -24,8 +24,8 @@ namespace UI {
             uint imageID;
             iVar1 = DAT_ButtonX::instance;
             imageID = ((int)(char)indexToGetStripes & 1U) * 2 | 0x45;
-            if (isSelected == FALSE) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!isSelected) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     if (DAT_ButtonW::instance + DAT_ButtonX::instance <= DAT_ButtonX::instance) {}
                     iVar1 = DAT_ButtonX::instance;
                     do {

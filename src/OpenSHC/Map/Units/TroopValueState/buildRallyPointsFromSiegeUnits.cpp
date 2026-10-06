@@ -31,7 +31,7 @@ namespace Map {
                 if (psVar3->tribeState) {
                     BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
                         DAT_GameState::ptr)(psVar3->owner);
-                    if (BVar3 != FALSE) {
+                    if (BVar3) {
                         if (((psVar3->tribeType == ((AITribeType)0x16)) || (psVar3->tribeType == ((AITribeType)0x17)))
                             && (sVar2 = psVar3->selectionTargetUnitID,
                                 0 < DAT_UnitsState::instance.units[sVar2].stoneAmmunition)) {

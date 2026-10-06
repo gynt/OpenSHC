@@ -67,7 +67,7 @@ namespace Synchrony {
                 _deadPlayerID = _deadPlayerID + 1;
             } while ((int)psVar9 < 0x1180150);
             if ((DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION)
-                && (DAT_GameState::instance.mapAndTime.gameOver == FALSE)) {
+                && (!DAT_GameState::instance.mapAndTime.gameOver)) {
                 if (DAT_GameCore::instance.unknownAlwaysZero) {
                     DAT_GameCore::instance.unknownAlwaysZero = 0;
                     piVar3 = &DAT_GameState::instance.playerDataArray[1].playerDeathRelated;

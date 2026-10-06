@@ -12,7 +12,7 @@ namespace UI {
         void WindowAndDirectDraw::releaseSurfacesAndDirectDraw(BOOLEnum alsoReleaseDDInterfaceUnk)
         {
             this->drawingReady_0x0 = FALSE;
-            if ((alsoReleaseDDInterfaceUnk != FALSE) && (this->pointerToIDirectDrawInterface != (IDirectDraw*)0x0)) {
+            if ((alsoReleaseDDInterfaceUnk) && (this->pointerToIDirectDrawInterface != (IDirectDraw*)0x0)) {
                 /*
                   Signature overwrite
                  */
@@ -47,7 +47,7 @@ namespace UI {
                 this->directDrawPrimarySurfacePointer = (IDirectDrawSurface*)0x0;
             }
             this->surfacePointer_screenMenu = (ushort*)0x0;
-            if ((alsoReleaseDDInterfaceUnk != FALSE) && (this->pointerToIDirectDrawInterface != (IDirectDraw*)0x0)) {
+            if ((alsoReleaseDDInterfaceUnk) && (this->pointerToIDirectDrawInterface != (IDirectDraw*)0x0)) {
                 /*
                   Signature overwrite
                  */

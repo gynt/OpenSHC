@@ -42,7 +42,7 @@ namespace Map {
                         if (((*(int*)(psVar8 + 0x1e) < 4) && (*psVar8 == 2))
                             && (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(
                                     local_18, (int)((int)(*(int*)(psVar8 + 4)))),
-                                BVar3 != FALSE)) {
+                                BVar3)) {
                             byte bVar1 = DAT_TileMapState::instance.HeightLayer[*(uint*)(psVar8 + 0x12)];
                             for (iVar6 = 0; iVar6 < 8; iVar6++) {
                                 int iVar7 = DAT_TileMapState::instance.directionTranslationMatrix[psVar8[0x10]][iVar6]

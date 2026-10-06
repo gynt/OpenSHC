@@ -57,7 +57,7 @@ namespace UI {
                 <= DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1)
                 goto LAB_0042db95;
             if ((param_1 == DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected)
-                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                 color = 0xccfaff;
             }
             if (DAT_MapMissionType::instance == 2) {

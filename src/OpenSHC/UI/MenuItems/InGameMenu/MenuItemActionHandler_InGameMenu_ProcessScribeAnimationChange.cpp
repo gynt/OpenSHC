@@ -28,7 +28,7 @@ namespace UI {
                 _currentTime = timeGetTime();
                 if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {}
                 DAT_GameCore::instance.taxestimeUnk = _currentTime;
-                if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 == FALSE) {
+                if (!DAT_GameCore::instance.unknownScribeRelatedFlag_0x130) {
                     if (DAT_GameCore::instance.scribeAnimationFrame < 6) {
                         DAT_GameCore::instance.scribeAnimationFrame = DAT_GameCore::instance.scribeAnimationFrame + 1;
                     } else if (DAT_GameCore::instance.scribeAnimationFrame < 7) {

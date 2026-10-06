@@ -48,13 +48,13 @@ namespace UI {
             int fontSize;
             BVar1 = MACRO_CALL_MEMBER(
                 Map::MapPropertiesState_Func::isMapperAvailable, DAT_MapPropertiesState::ptr)((Commands::MappersEnum)mapperValue);
-            if (BVar1 == FALSE) {
+            if (!BVar1) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;
             if (0x22e < DAT_CurrentButtonGmDataIndex::instance) {
             switchD_00438c35_caseD_d9:
-                if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
+                if (DAT_UnitsState::instance.hasEngineerSelected) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
@@ -87,7 +87,7 @@ namespace UI {
             case 0xd7:
                 goto switchD_00438c35_caseD_d3;
             case 0xd8:
-                if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
+                if (DAT_UnitsState::instance.hasEngineerSelected) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
@@ -95,7 +95,7 @@ namespace UI {
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
-                if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
+                if (DAT_TribesState::instance.patrolButtonPressed) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -107,10 +107,9 @@ namespace UI {
             case 0xda:
                 if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
                         && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
-                    && ((DAT_UnitsState::instance.hasEngineerSelected == FALSE
-                        && (uVar3
-                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected,
-                                DAT_UnitsState::ptr)(),
+                    && ((!DAT_UnitsState::instance.hasEngineerSelected
+                        && (uVar3 = MACRO_CALL_MEMBER(
+                                Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected, DAT_UnitsState::ptr)(),
                             uVar3 != 0)))) {
                     MACRO_CALL(UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -121,10 +120,10 @@ namespace UI {
                 DAT_00ee1090::instance = 0xca;
                 if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
                         && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
-                    && (DAT_UnitsState::instance.hasEngineerSelected == FALSE)) {
+                    && (!DAT_UnitsState::instance.hasEngineerSelected)) {
                     BVar1 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)();
-                    if (BVar1 == FALSE) {
+                    if (!BVar1) {
                         iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsTunnelersOnly,
                             DAT_UnitsState::ptr)();
                         if (iVar2) {
@@ -155,7 +154,7 @@ namespace UI {
                         BVar1
                             = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsRangedOnlyUnits,
                                 DAT_UnitsState::ptr)();
-                        if (BVar1 != FALSE) {
+                        if (BVar1) {
                             DAT_CurrentButtonGmDataIndex::instance = 0x177;
                             goto LAB_00438ec1;
                         }
@@ -189,7 +188,7 @@ namespace UI {
                          && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
                              || ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER
                                  || (!DAT_GameState::instance.mapAndTime.skirmishNoCowThrowing))))))
-                        && (DAT_UnitsState::instance.hasEngineerSelected == FALSE))
+                        && (!DAT_UnitsState::instance.hasEngineerSelected))
                     && ((uVar3 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
                              DAT_UnitsState::ptr)(0x27, 0x28),
                         uVar3 != 0
@@ -266,7 +265,7 @@ namespace UI {
             case 0x176:
                 DAT_00ee1094::instance = 0x123;
                 if ((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
-                    && (DAT_UnitsState::instance.hasEngineerSelected == FALSE)) {
+                    && (!DAT_UnitsState::instance.hasEngineerSelected)) {
                     uVar3 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
                     if (uVar3)

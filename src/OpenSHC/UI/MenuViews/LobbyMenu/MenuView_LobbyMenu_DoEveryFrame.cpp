@@ -87,7 +87,7 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            if ((DAT_00b960dc::instance) && (DAT_GameSynchronyState::instance.reparseMaps == FALSE)) {
+            if ((DAT_00b960dc::instance) && (!DAT_GameSynchronyState::instance.reparseMaps)) {
                 DAT_GameCore::instance.hasMenuRenderedUnk = 1;
                 if (DAT_00b960dc::instance < 0) {
                     iVar10
@@ -108,7 +108,7 @@ namespace UI {
                 }
             }
             BVar3 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar3 == FALSE) {
+            if (!BVar3) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithCustomBlendedBackground,
@@ -242,7 +242,7 @@ namespace UI {
                 goto LAB_00448a80;
             if (30000 < (int)(MVar2 - INT_00b960fc::instance)) {
                 INT_00b960fc::instance = MVar2;
-                if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                if (!DAT_GameSynchronyState::instance.isHost) {
                     if (!INT_00b95958::instance) {
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::DisplayMapDescriptionAndAllocatePlayersToSlots)();
                     }
@@ -252,7 +252,7 @@ namespace UI {
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
                 }
             }
-            if (DAT_GameSynchronyState::instance.reparseMaps != FALSE) {
+            if (DAT_GameSynchronyState::instance.reparseMaps) {
                 iVar10 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::countOccupiedPlayerSlots,
                     DAT_GameSynchronyState::ptr)();
                 DAT_MouseState::instance.waitCursorToggle = 1;
@@ -317,7 +317,7 @@ namespace UI {
                             DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[_mapID]
                                 = (uint)(iVar10 <= iVar4) * 2 + -1;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _mapID;
-                            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                            if (DAT_GameSynchronyState::instance.isHost) {
                                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_LOAD_MAP_HEADER);
                             }
@@ -408,7 +408,7 @@ namespace UI {
                 }
                 BVar3 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     iVar7, iVar4, (int)piVar5 - iVar7, bottom - iVar4);
-                if (BVar3 != FALSE) {
+                if (BVar3) {
                     INT_00b95f6c::instance = 1;
                 }
                 if (!DAT_00b960dc::instance) {
@@ -514,7 +514,7 @@ namespace UI {
         LAB_00448a3a:
             MACRO_CALL(OpenSHC::UI::MenuItems::LobbyMenu_Func::MenuItemActionHandler_LobbyMenu_MapSelectTable)(
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+            if (!DAT_GameSynchronyState::instance.isHost) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::DisplayMapDescriptionAndAllocatePlayersToSlots)();
             }
             DAT_MenuModalComposition1::instance.activeModalDialogID = local_3fc;

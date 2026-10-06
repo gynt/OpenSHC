@@ -59,10 +59,8 @@ namespace UI {
             case ((TextMessageBLLookupStructTypeEnum)0):
                 return;
                 default:
-                    if (((DAT_MouseState::instance.leftClickState == FALSE)
-                            && (DAT_MouseState::instance.rightClickState == FALSE))
-                        && ((DAT_MouseState::instance.midClickState == FALSE
-                            && (DAT_GameCore::instance.settingBubbleHelp)))) {
+                    if (((!DAT_MouseState::instance.leftClickState) && (!DAT_MouseState::instance.rightClickState))
+                        && ((!DAT_MouseState::instance.midClickState && (DAT_GameCore::instance.settingBubbleHelp)))) {
                         iVar1 = this->zero;
                         if (!iVar1) {
                             this->zero = 1;

@@ -63,7 +63,7 @@ namespace Map {
             }
             BVar7 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                 tribeID, 100, Map::Units::UT_ANTELOPESHDEER);
-            if (BVar7 == FALSE) {
+            if (!BVar7) {
                 if (this->tribes[tribeID].initialMoveOrderGiven == 0) {
                     sVar2 = this->tribes[tribeID].selectionTargetUnitID;
                     this->tribes[tribeID].initialMoveOrderGiven = 1;

@@ -54,7 +54,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
             if ((param_1 == DAT_MapPropertiesState::instance.field48_0x13560)
-                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                 color = 0xccfaff;
             }
             iVar10 = 0;

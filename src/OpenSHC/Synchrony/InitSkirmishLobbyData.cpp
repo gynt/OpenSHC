@@ -109,7 +109,7 @@ void Synchrony::InitSkirmishLobbyData()
     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 1;
     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 1;
     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 1;
-    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+    if (DAT_GameSynchronyState::instance.isHost) {
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[0] = 0xff;
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1] = 0xff;
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2] = 0xff;

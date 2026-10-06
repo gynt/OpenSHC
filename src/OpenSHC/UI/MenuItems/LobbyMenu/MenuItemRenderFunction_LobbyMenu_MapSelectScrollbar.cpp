@@ -29,7 +29,7 @@ namespace UI {
         {
             BOOLEnum BVar1;
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar1 == FALSE) {
+            if (!BVar1) {
                 if (((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
                         && (DAT_MenuModalComposition1::instance.activeModalDialogID
                             != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))

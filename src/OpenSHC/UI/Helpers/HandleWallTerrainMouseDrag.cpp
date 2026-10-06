@@ -35,13 +35,12 @@ namespace UI {
                 Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
         }
         if (!DAT_MouseState::instance.leftClickStart) {
-            if ((DAT_MouseState::instance.draggingStopped != FALSE)
-                || (DAT_MouseState::instance.leftClickState != FALSE)) {
+            if ((DAT_MouseState::instance.draggingStopped) || (DAT_MouseState::instance.leftClickState)) {
                 DAT_TileMapState::instance.dragEndX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 DAT_TileMapState::instance.dragEndY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
                 goto LAB_00437d7f;
             }
-            if (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE) {}
+            if (DAT_ScrollingHandler::instance.isScrolling_0x0) {}
             DAT_TileMapState::instance.dragStartX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
             DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             DAT_TileMapState::instance.dragEndX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
@@ -50,7 +49,7 @@ namespace UI {
             DAT_TileMapState::instance.dragStartX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
             DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
         LAB_00437d7f:
-            if (DAT_MouseState::instance.draggingStopped != FALSE) {
+            if (DAT_MouseState::instance.draggingStopped) {
                 iVar2 = DAT_ViewportRenderState::instance.translationMatrix[DAT_TileMapState::instance.dragStartY]
                             .addXgetTile
                     + DAT_TileMapState::instance.dragStartX;
@@ -101,7 +100,7 @@ namespace UI {
             }
             uVar1 = (short)GMTotalPicturesProcessed::instance[5] + 0x38c + (uVar1 & 7) * 8;
         }
-        if (DAT_MouseState::instance.leftClickState != FALSE) {
+        if (DAT_MouseState::instance.leftClickState) {
             if ((DAT_TileMapState::instance.LogicLayer[iVar3] & 0x100000U)) {
                 DAT_TileMapState::instance.ConstructionGFXLayer[iVar3] = uVar1;
             }

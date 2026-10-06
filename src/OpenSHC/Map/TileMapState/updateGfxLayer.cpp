@@ -444,25 +444,25 @@ namespace Map {
                                                                                     hasHigherNeighborWithStairs,
                                                                                 this)(
                                                                                 this->DAT_SomeTile, this->DAT_SomeY, 0);
-                                                                            if (BVar11 == FALSE) {
+                                                                            if (!BVar11) {
                                                                                 BVar11 = MACRO_CALL_MEMBER(
                                                                                     Map::TileMapState_Func::
                                                                                         hasHigherNeighborWithStairs,
                                                                                     this)(this->DAT_SomeTile,
                                                                                     this->DAT_SomeY, 2);
-                                                                                if (BVar11 == FALSE) {
+                                                                                if (!BVar11) {
                                                                                     BVar11 = MACRO_CALL_MEMBER(
                                                                                         Map::TileMapState_Func::
                                                                                             hasHigherNeighborWithStairs,
                                                                                         this)(this->DAT_SomeTile,
                                                                                         this->DAT_SomeY, 4);
-                                                                                    if (BVar11 == FALSE) {
+                                                                                    if (!BVar11) {
                                                                                         BVar11 = MACRO_CALL_MEMBER(
                                                                                             Map::TileMapState_Func::
                                                                                                 hasHigherNeighborWithStairs,
                                                                                             this)(this->DAT_SomeTile,
                                                                                             this->DAT_SomeY, 6);
-                                                                                        if (BVar11 == FALSE) {
+                                                                                        if (!BVar11) {
                                                                                             BVar11 = MACRO_CALL_MEMBER(
                                                                                                 Map::
                                                                                                     TileMapState_Func::
@@ -470,7 +470,7 @@ namespace Map {
                                                                                                 this)(
                                                                                                 this->DAT_SomeTile,
                                                                                                 this->DAT_SomeY, 0);
-                                                                                            if (BVar11 == FALSE) {
+                                                                                            if (!BVar11) {
                                                                                                 BVar11 = MACRO_CALL_MEMBER(
                                                                                                     Map::
                                                                                                         TileMapState_Func::
@@ -478,7 +478,7 @@ namespace Map {
                                                                                                     this)(
                                                                                                     this->DAT_SomeTile,
                                                                                                     this->DAT_SomeY, 2);
-                                                                                                if (BVar11 == FALSE) {
+                                                                                                if (!BVar11) {
                                                                                                     BVar11 = MACRO_CALL_MEMBER(
                                                                                                         Map::
                                                                                                             TileMapState_Func::
@@ -487,8 +487,7 @@ namespace Map {
                                                                                                         this->DAT_SomeTile,
                                                                                                         this->DAT_SomeY,
                                                                                                         4);
-                                                                                                    if (BVar11
-                                                                                                        == FALSE) {
+                                                                                                    if (!BVar11) {
                                                                                                         BVar11 = MACRO_CALL_MEMBER(
                                                                                                             Map::
                                                                                                                 TileMapState_Func::
@@ -497,8 +496,7 @@ namespace Map {
                                                                                                             this->DAT_SomeTile,
                                                                                                             this->DAT_SomeY,
                                                                                                             6);
-                                                                                                        if (BVar11
-                                                                                                            == FALSE) {
+                                                                                                        if (!BVar11) {
                                                                                                             this->GfxLayer
                                                                                                                 [this->DAT_SomeTile]
                                                                                                                 = (short)GMTotalPicturesProcessed::
@@ -574,13 +572,13 @@ namespace Map {
                                                                                 isWallCornerForCardinalDirection,
                                                                             this)(
                                                                             this->DAT_SomeTile, this->DAT_SomeY, 0);
-                                                                        if (BVar11 == FALSE) {
+                                                                        if (!BVar11) {
                                                                             BVar11 = MACRO_CALL_MEMBER(
                                                                                 Map::TileMapState_Func::
                                                                                     isWallCornerForCardinalDirection,
                                                                                 this)(
                                                                                 this->DAT_SomeTile, this->DAT_SomeY, 2);
-                                                                            if (BVar11 == FALSE) {
+                                                                            if (!BVar11) {
                                                                                 uVar12 = MACRO_CALL_MEMBER(
                                                                                     Map::TileMapState_Func::
                                                                                         isWallCornerForDiagonalDirection,
@@ -858,7 +856,7 @@ namespace Map {
                                                     Map::TileMapState_Func::isTileSuitableForBrushPlacement,
                                                     this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                     (uint)((int)(this->DAT_SomeY)));
-                                                if (BVar11 == FALSE) {
+                                                if (!BVar11) {
                                                     this->PillarGFXLayer[this->DAT_SomeTile] = 0x20;
                                                 } else {
                                                     this->PillarGFXLayer[this->DAT_SomeTile]
@@ -872,7 +870,7 @@ namespace Map {
                                                 Map::TileMapState_Func::isTileSuitableForBrushPlacement, this)(
                                                 this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                 (uint)((int)(this->DAT_SomeY)));
-                                            if (BVar11 == FALSE) {
+                                            if (!BVar11) {
                                                 this->PillarGFXLayer[this->DAT_SomeTile] = 0x20;
                                             } else {
                                                 this->PillarGFXLayer[this->DAT_SomeTile]
@@ -907,7 +905,7 @@ namespace Map {
                             for (local_30 = 0; local_30 < 10; local_30 = local_30 + 1) {
                                 BVar11 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
-                                if ((((BVar11 != FALSE)
+                                if ((((BVar11)
                                          && (this->DAT_SomeTile
                                              = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                                  DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
@@ -1093,7 +1091,7 @@ namespace Map {
                             for (local_30 = 0; local_30 < 10; local_30 = local_30 + 1) {
                                 BVar11 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
-                                if (((BVar11 != FALSE)
+                                if (((BVar11)
                                         && (this->DAT_SomeTile
                                             = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                                 DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
@@ -1170,9 +1168,9 @@ namespace Map {
                             for (local_30 = 0; local_30 < 10; local_30 = local_30 + 1) {
                                 BVar11 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
-                                if (((BVar11 != FALSE)
-                                        && (this->DAT_SomeTile = MACRO_CALL_MEMBER(
-                                                Rendering::ViewportRenderState_Func::translateXYToTile,
+                                if (((BVar11)
+                                        && (this->DAT_SomeTile
+                                            = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                                 DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
                                             (this->LogicLayer[this->DAT_SomeTile] & L_BORDER | L_BORDER_EDGE) == 0))
                                     && (this->ChangedLayer[this->DAT_SomeTile] != 0)) {
@@ -1225,15 +1223,14 @@ namespace Map {
                                                                  == Map::Buildings::BT_KILLINGPIT)
                                                                 && (DAT_BuildingsState::instance.buildings[iVar13].state
                                                                     < 1))
-                                                            && ((
-                                                                BVar11 = MACRO_CALL_MEMBER(
-                                                                    Game::GameStateStructures_Func::isSameTeam,
-                                                                    DAT_GameState::ptr)(
-                                                                    (int)DAT_BuildingsState::instance.buildings[iVar13]
-                                                                        .owner,
-                                                                    (int)((int)(DAT_GameSynchronyState::instance
-                                                                            .currentPlayerSlotID))),
-                                                                BVar11 == FALSE
+                                                            && ((BVar11 = MACRO_CALL_MEMBER(
+                                                                     Game::GameStateStructures_Func::isSameTeam,
+                                                                     DAT_GameState::ptr)(
+                                                                     (int)DAT_BuildingsState::instance.buildings[iVar13]
+                                                                         .owner,
+                                                                     (int)((int)(DAT_GameSynchronyState::instance
+                                                                             .currentPlayerSlotID))),
+                                                                !BVar11
                                                                     && (DAT_GameCore::instance.gameMode_2
                                                                         != Game::GM_EDITOR)))) {
                                                             if (!(this->LogicLayer[this->DAT_SomeTile]
@@ -1866,15 +1863,13 @@ namespace Map {
                                                     if (iVar13) {
                                                         if (((this->pitchDitches[iVar13].state < 2)
                                                                 && (BVar11 = MACRO_CALL_MEMBER(
-                                                                        Game::GameStateStructures_Func::
-                                                                            isSameTeam,
+                                                                        Game::GameStateStructures_Func::isSameTeam,
                                                                         DAT_GameState::ptr)(
                                                                         (int)this->pitchDitches[iVar13].owner,
                                                                         (int)((int)(DAT_GameSynchronyState::instance
                                                                                 .currentPlayerSlotID))),
-                                                                    BVar11 == FALSE))
-                                                            && (DAT_GameCore::instance.gameMode_2
-                                                                != Game::GM_EDITOR)) {
+                                                                    !BVar11))
+                                                            && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)) {
                                                             if (!(this->LogicLayer[this->DAT_SomeTile]
                                                                     & L_DEFAULT_EARTH_OR_TEXTURE))
                                                                 goto LAB_00510585;
@@ -1924,7 +1919,7 @@ namespace Map {
                                                             Map::TileMapState_Func::isCliffDropInDirection,
                                                             this)(this->DAT_SomeTile, (undefined4)((int)(iVar17)),
                                                             this->DAT_SomeY);
-                                                        if (BVar11 == FALSE) {
+                                                        if (!BVar11) {
                                                             bVar10 = false;
                                                         } else {
                                                             bVar10 = true;

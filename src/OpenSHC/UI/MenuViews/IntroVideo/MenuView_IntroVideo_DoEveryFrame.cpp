@@ -23,7 +23,7 @@ namespace UI {
             DWORD DVar1;
             DVar1 = timeGetTime();
             if (399 < DVar1 - TIME_IntroVideo_Prepare::instance) {
-                if (DAT_MouseState::instance.draggingStopped != FALSE) {
+                if (DAT_MouseState::instance.draggingStopped) {
                     MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
                         DAT_BinkControlState::ptr)(0);
                 }

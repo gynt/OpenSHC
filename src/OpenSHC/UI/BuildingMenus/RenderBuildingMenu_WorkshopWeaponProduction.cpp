@@ -45,7 +45,7 @@ namespace UI {
                          .workerID[0],
                      iVar1 != 0))
                 && (DAT_UnitsState::instance.units[iVar1].state.generic == Map::Units::States::US_STAND_UPUnk))
-            && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)) {
+            && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), !BVar2)) {
             /*
               added by script: "Not producing - No Wood"
              */
@@ -55,7 +55,7 @@ namespace UI {
         } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType == Map::Buildings::BT_POLETURNER)
                        && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1))
             && ((DAT_UnitsState::instance.units[iVar1].state.generic == Map::Units::States::US_IDLEUnk
-                && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {
+                && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), !BVar2)))) {
             /*
               added by script: "Not producing - No Wood"
              */
@@ -66,7 +66,7 @@ namespace UI {
                        && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1))
             && ((DAT_UnitsState::instance.units[iVar1].state.generic
                     == (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)
-                && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {
+                && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), !BVar2)))) {
             /*
               added by script: "Not producing - No Iron"
              */

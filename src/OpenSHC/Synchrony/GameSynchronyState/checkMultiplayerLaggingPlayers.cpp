@@ -40,7 +40,7 @@ namespace Synchrony {
         }
         if ((!this->syncStatus) && (!this->saveRelated)) {
             BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (BVar1 != FALSE) {
+            if (BVar1) {
                 iVar2 = 0;
                 piVar6 = &this->connectionLagInfoArray[1];
                 piVar3 = this->currentPlayerFullIDArray + 1;
@@ -69,7 +69,7 @@ namespace Synchrony {
                     piVar3 = this->currentPlayerFullIDArray;
                     do {
                         if (((*piVar3 != -1) && (_playerID != this->currentPlayerSlotID)) && (pDVar7->time)) {
-                            if (((15000 < (int)(_now - pDVar7->time)) && (this->isHost != FALSE))
+                            if (((15000 < (int)(_now - pDVar7->time)) && (this->isHost))
                                 && (!this->laggingPlayerIDUnk)) {
                                 this->laggingPlayerIDUnk = _playerID;
                                 this->DAT_GameCommandParam0 = _playerID;

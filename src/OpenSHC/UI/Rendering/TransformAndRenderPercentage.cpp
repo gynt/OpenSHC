@@ -34,7 +34,7 @@ namespace UI {
         } else {
             imageID = 0x80;
         }
-        if (otherImageFlagUnk == FALSE) {
+        if (!otherImageFlagUnk) {
             imageID = imageID + 3;
             iVar2 = 1;
         } else {

@@ -46,7 +46,7 @@ namespace UI {
             BVar5 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             iVar4 = DAT_ButtonY::instance;
             iVar3 = DAT_ButtonX::instance;
-            if (BVar5 == FALSE) {
+            if (!BVar5) {
                 iVar7 = 0;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
@@ -177,8 +177,8 @@ namespace UI {
                                 DAT_MouseState::instance.screenSpaceY + -7);
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                            if ((DAT_MouseState::instance.leftClickState == FALSE)
-                                && (DAT_MouseState::instance.draggingStopped == FALSE)) {
+                            if ((!DAT_MouseState::instance.leftClickState)
+                                && (!DAT_MouseState::instance.draggingStopped)) {
                                 DAT_00b95960::instance = -1;
                             }
                         }

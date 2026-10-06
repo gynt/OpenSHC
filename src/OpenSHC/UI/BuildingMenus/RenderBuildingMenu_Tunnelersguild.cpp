@@ -48,7 +48,7 @@ namespace UI {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
         MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
-        if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
+        if (!DAT_EnoughGoldForRequestedUnit::instance) {
             blendStrength = 0;
             iVar5 = 0x11;
             color_00 = 0;

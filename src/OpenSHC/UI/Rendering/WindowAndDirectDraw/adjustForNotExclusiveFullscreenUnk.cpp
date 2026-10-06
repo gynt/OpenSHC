@@ -13,7 +13,7 @@ namespace UI {
         {
             int _screenWidth;
             int _screenHeight;
-            if (this->runGameAsExclusiveFullscreen == FALSE) {
+            if (!this->runGameAsExclusiveFullscreen) {
                 _screenWidth = GetSystemMetrics(SM_CXSCREEN);
                 _screenHeight = GetSystemMetrics(SM_CYSCREEN);
                 if (destinationRect->left < 0) {

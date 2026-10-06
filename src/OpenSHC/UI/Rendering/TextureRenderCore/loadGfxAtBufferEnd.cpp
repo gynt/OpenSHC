@@ -45,7 +45,7 @@ namespace UI {
                 + 0x3c858);
             _success = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::readCurrentResourceIntoDestination,
                 DAT_ResourceManager::ptr)(_destination, _size);
-            if (_success == FALSE) {
+            if (!_success) {
                 return -1;
             }
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {

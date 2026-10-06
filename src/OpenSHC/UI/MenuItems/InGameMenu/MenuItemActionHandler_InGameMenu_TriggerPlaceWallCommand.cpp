@@ -50,9 +50,8 @@ namespace UI {
                         DAT_ViewportRenderState::ptr)();
                 }
                 if (!DAT_MouseState::instance.leftClickStart) {
-                    if ((DAT_MouseState::instance.draggingStopped == FALSE)
-                        && (DAT_MouseState::instance.leftClickState == FALSE)) {
-                        if (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE) {}
+                    if ((!DAT_MouseState::instance.draggingStopped) && (!DAT_MouseState::instance.leftClickState)) {
+                        if (DAT_ScrollingHandler::instance.isScrolling_0x0) {}
                         DAT_TileMapState::instance.dragStartX
                             = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                         DAT_TileMapState::instance.dragStartY
@@ -84,9 +83,8 @@ namespace UI {
                     (uint)((int)(DAT_TileMapState::instance.dragEndX)),
                     (uint)((int)(DAT_TileMapState::instance.dragEndY)),
                     (undefined4)((int)(DAT_TileMapState::instance.currentMapperCommand & 0xffff)));
-                if (DAT_MouseState::instance.draggingStopped == FALSE) {
-                    DAT_TileMapState::instance.wallDragButtonUp
-                        = (uint)(DAT_MouseState::instance.leftClickState == FALSE);
+                if (!DAT_MouseState::instance.draggingStopped) {
+                    DAT_TileMapState::instance.wallDragButtonUp = (uint)(!DAT_MouseState::instance.leftClickState);
                     MACRO_CALL_MEMBER(Map::TileMapState_Func::renderWallDragPreview, DAT_TileMapState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID,
                         (uint)((int)(DAT_TileMapState::instance.dragStartX)),
@@ -95,7 +93,7 @@ namespace UI {
                         (uint)((int)(DAT_TileMapState::instance.dragEndY)),
                         (undefined4)((int)(DAT_TileMapState::instance.currentMapperCommand & 0xffff)));
                 }
-                if (DAT_TileMapState::instance.illegalBuild == FALSE) {
+                if (!DAT_TileMapState::instance.illegalBuild) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = DAT_TileMapState::instance.dragStartY;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_TileMapState::instance.dragStartX;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.dragEndX;

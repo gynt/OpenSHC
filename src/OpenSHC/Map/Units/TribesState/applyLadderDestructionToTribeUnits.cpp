@@ -39,7 +39,7 @@ namespace Map {
                         bVar2 = this->tribes[param_1].unknownBool02 == 0;
                         BVar1 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::computeLadderClimbPath,
                             DAT_UnitsState::ptr)(unitID, (uint)((int)(bVar2)), 0, (int)((int)((uint)bVar2)));
-                        if (BVar1 != FALSE) {
+                        if (BVar1) {
                             DAT_UnitsState::instance.units[unitID].state.generic
                                 = Map::Units::States::US_DEATH_02
                                 | Map::Units::States::US_STAND_UPUnk;

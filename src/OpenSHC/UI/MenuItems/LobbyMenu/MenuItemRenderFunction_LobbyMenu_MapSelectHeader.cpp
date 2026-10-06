@@ -42,7 +42,7 @@ namespace UI {
             numInGroup = -1;
             iVar3 = 0;
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if ((BVar1 == FALSE)
+            if ((!BVar1)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)) {
                 if (!param_1) {
                     numInGroup = 0x3e;
@@ -62,7 +62,7 @@ namespace UI {
                 iVar3 = DAT_ButtonX::instance + iVar3;
                 BVar1 = FALSE;
                 fontSize = 0x13;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                if (!DAT_ButtonCurrentlyInteracting::instance) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;

@@ -42,7 +42,7 @@ namespace UI {
             if (DAT_GameCore::instance.unknownFlag_0x118 == TRUE) {
                 bVar1 = param_1 == 8;
             } else {
-                if (DAT_GameCore::instance.unknownFlag_0x118 != FALSE)
+                if (DAT_GameCore::instance.unknownFlag_0x118)
                     goto LAB_00426777;
                 bVar1 = param_1 == 0x19;
             }
@@ -58,7 +58,7 @@ namespace UI {
             yParam = DAT_ButtonY::instance + 6;
             keepOffsetX = FALSE;
             fontSize = 0x11;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+            if (!DAT_ButtonCurrentlyInteracting::instance) {
                 color = 0xc2f0eb;
             } else {
                 color = 0xccfaff;

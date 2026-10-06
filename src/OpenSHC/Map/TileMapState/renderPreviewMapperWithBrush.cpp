@@ -148,12 +148,12 @@ namespace Map {
                 }
                 BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                     DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, x, y_00, iVar4);
-                if (BVar3 != FALSE) {
+                if (BVar3) {
                     _gfx = 0x3e;
                 }
                 BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
                     DAT_PathFindingState::ptr)(x, y_00, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-                if (BVar3 != FALSE) {
+                if (BVar3) {
                     _gfx = 0x3e;
                 }
                 if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {

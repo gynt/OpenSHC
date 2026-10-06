@@ -37,7 +37,7 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.modemScrollBarOffset + param_1
                 < DAT_GameSynchronyState::instance.modemScrollbarCount) {
                 if ((param_1 == DAT_GameSynchronyState::instance.modemScrollbarIndex)
-                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
                     color = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(

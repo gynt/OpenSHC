@@ -31,7 +31,7 @@ namespace UI {
                 iVar1 = *currentValue;
                 if ((iVar1 != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar1,
-                        DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                        DAT_GameSynchronyState::instance.isHost)) {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                 }
@@ -41,7 +41,7 @@ namespace UI {
                 *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8;
                 if ((*currentValue != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (*currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset,
-                        DAT_GameSynchronyState::instance.isHost != FALSE)) {
+                        DAT_GameSynchronyState::instance.isHost)) {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                 }
@@ -51,7 +51,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
                 LAB_0042b8a4:
-                    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    if (DAT_GameSynchronyState::instance.isHost) {
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_MAP_SELECTION);
                     }

@@ -37,9 +37,9 @@ namespace Map {
             if (7999 < sVar5) {
                 this->tribes[param_1].unknownCounter01 = 4000;
             }
-            if ((BVar3 != FALSE)
-                && (iVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trySpawnAdditionalWildlifeForTribe,
-                        this)(param_1, 1000, 10, 0x2f),
+            if ((BVar3)
+                && (iVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trySpawnAdditionalWildlifeForTribe, this)(
+                        param_1, 1000, 10, 0x2f),
                     iVar4 != 0)) {
                 this->tribes[param_1].initialMoveOrderGiven = 1;
                 this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
@@ -91,7 +91,7 @@ namespace Map {
                                 this)(param_1, (uint)((int)((int)this->tribes[param_1].rallyPointArray[iVar4 + -1][0])),
                                 (uint)((int)((int)this->tribes[param_1].rallyPointArray[iVar4 + -1][1])), 0, 0);
                         }
-                    } else if (BVar3 != FALSE) {
+                    } else if (BVar3) {
                         this->tribes[param_1].tribeBehaviorType = Map::Units::STBT_1;
                         this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                     }

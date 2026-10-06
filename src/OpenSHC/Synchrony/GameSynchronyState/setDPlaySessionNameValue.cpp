@@ -23,7 +23,7 @@ namespace Synchrony {
         char local_100[252];
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)local_100;
-        if (this->useTCPIP != FALSE) {
+        if (this->useTCPIP) {
             MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
             ;
         }

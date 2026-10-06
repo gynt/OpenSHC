@@ -16,7 +16,7 @@ namespace UI {
             this->hInstanceUnk_0xa8 = hInstance;
             _windowCreated = MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::createWindow, this)(
                 windowName, cursorResource);
-            if (_windowCreated != FALSE) {
+            if (_windowCreated) {
                 CoInitialize((void*)0x0);
                 MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::getDeviceCapsAndSetup, this)();
                 if (-1 < (int)this->currentGameResolution) {

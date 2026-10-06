@@ -33,7 +33,7 @@ namespace UI {
                 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::checkAllPlayersReadyAndCleanupSlots,
                     DAT_GameSynchronyState::ptr)();
             if (iVar1) {
-                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                if (DAT_GameSynchronyState::instance.isHost) {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_HOST_SHARE_LOBBY_STATE);
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;

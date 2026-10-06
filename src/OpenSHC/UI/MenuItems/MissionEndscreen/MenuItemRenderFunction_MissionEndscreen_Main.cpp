@@ -58,7 +58,7 @@ namespace UI {
                 if (param_1 != -0x65) {
                     if (0xf < (uint)param_1) {
                     LAB_004d6d83:
-                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                        if (DAT_ButtonCurrentlyInteracting::instance) {
                             if (param_1 == -10) {
                                 DAT_00eb9af8::instance = 0x11;
                             } else if (param_1 == -1) {
@@ -70,7 +70,7 @@ namespace UI {
                         MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     }
-                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                    if (DAT_ButtonCurrentlyInteracting::instance) {
                         DAT_00eb9af8::instance = param_1;
                     }
                     if (param_1 != DAT_FinalResultsOrderByColumn::instance)
