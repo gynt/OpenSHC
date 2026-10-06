@@ -76,13 +76,13 @@ namespace Map {
         undefined1 padding_0x146c[1280]; // 0x0000146C length: 1280
         XYPair field2290_0x196c[4]; // 0x0000196C length: 32
         XYPair field2291_0x198c[9]; // 0x0000198C length: 72
-        XYPair field2292_0x19d4[16]; // 0x000019D4 length: 128
+        XYPair MacroLayerScanOffsets[16]; // 0x000019D4 length: 128
         int field2293_0x1a54[4][16]; // 0x00001A54 length: 256
         int field2294_0x1b54[4][16]; // 0x00001B54 length: 256
         int field2295_0x1c54[4][16]; // 0x00001C54 length: 256
         byte field2296_0x1d54[4][2]; // 0x00001D54 length: 8
         byte field2297_0x1d5c[4][2]; // 0x00001D5C length: 8
-        UnkBytePair field2298_0x1d64[8]; // 0x00001D64 length: 16
+        UnkBytePair TerrainFlagGraphicLookup[8]; // 0x00001D64 length: 16
         int MapSizes[5]; // 0x00001D74 length: 20
         undefined1 padding_0x1d88[164]; // 0x00001D88 length: 164
         int SomeOrientationOrderArray[8]; // 0x00001E2C length: 32

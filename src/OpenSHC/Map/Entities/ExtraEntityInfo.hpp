@@ -35,15 +35,15 @@ namespace Map {
             short rngMax799_countdown; // 0x00000022 length: 2
             short x_3; // 0x00000024 length: 2
             short y_3; // 0x00000026 length: 2
-            short field19_0x28; // 0x00000028 length: 2
-            short field20_0x2a; // 0x0000002A length: 2
-            short field21_0x2c; // 0x0000002C length: 2
-            short field22_0x2e; // 0x0000002E length: 2
-            short field23_0x30; // 0x00000030 length: 2
-            short field24_0x32; // 0x00000032 length: 2
+            short pathErrorStepStraight; // 0x00000028 length: 2
+            short pathErrorStepDiagonal; // 0x0000002A length: 2
+            short pathError; // 0x0000002C length: 2
+            short pathAxisCase; // 0x0000002E length: 2
+            short pathStepX; // 0x00000030 length: 2
+            short pathStepY; // 0x00000032 length: 2
             short field25_0x34; // 0x00000034 length: 2
             short someCountDown; // 0x00000036 length: 2
-            short field27_0x38; // 0x00000038 length: 2
+            short pathMajorLength; // 0x00000038 length: 2
             short field28_0x3a; // 0x0000003A length: 2
             short field29_0x3c; // 0x0000003C length: 2
             short field30_0x3e; // 0x0000003E length: 2

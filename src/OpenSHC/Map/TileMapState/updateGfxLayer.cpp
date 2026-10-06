@@ -1430,7 +1430,8 @@ namespace Map {
                                                                                 for (local_14 = 0; local_14 < 7;
                                                                                     local_14 = local_14 + 1) {
                                                                                     if (DAT_TerrainDefinedData::instance
-                                                                                            .field2298_0x1d64[local_14]
+                                                                                            .TerrainFlagGraphicLookup
+                                                                                                [local_14]
                                                                                             .unk1
                                                                                         == this->bitFlag) {
                                                                                         sVar4 = (short)
@@ -1445,7 +1446,7 @@ namespace Map {
                                                                                                     * 4
                                                                                                 + (ushort)DAT_TerrainDefinedData::
                                                                                                       instance
-                                                                                                          .field2298_0x1d64
+                                                                                                          .TerrainFlagGraphicLookup
                                                                                                               [local_14]
                                                                                                           .unk2;
                                                                                         } else if (local_14 == 4) {
@@ -2075,14 +2076,16 @@ namespace Map {
                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile] * 8
                                                     + (this->RandomLayer[this->DAT_SomeTile] & 7);
                                                 for (local_14 = 0; local_14 < 7; local_14 = local_14 + 1) {
-                                                    if (DAT_TerrainDefinedData::instance.field2298_0x1d64[local_14].unk1
+                                                    if (DAT_TerrainDefinedData::instance
+                                                            .TerrainFlagGraphicLookup[local_14]
+                                                            .unk1
                                                         == this->bitFlag) {
                                                         sVar4 = (short)GMTotalPicturesProcessed::instance[5];
                                                         if (local_14 < 4) {
                                                             this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x234
                                                                 + (ushort)this->LuminesenceLayer[this->DAT_SomeTile] * 4
                                                                 + (ushort)DAT_TerrainDefinedData::instance
-                                                                      .field2298_0x1d64[local_14]
+                                                                      .TerrainFlagGraphicLookup[local_14]
                                                                       .unk2;
                                                         } else if (local_14 == 4) {
                                                             this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x254
@@ -2229,7 +2232,9 @@ namespace Map {
                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile] * 4
                                                     + (this->RandomLayer[this->DAT_SomeTile] & 3);
                                                 for (local_14 = 0; local_14 < 7; local_14 = local_14 + 1) {
-                                                    if (DAT_TerrainDefinedData::instance.field2298_0x1d64[local_14].unk1
+                                                    if (DAT_TerrainDefinedData::instance
+                                                            .TerrainFlagGraphicLookup[local_14]
+                                                            .unk1
                                                         == this->bitFlag) {
                                                         this->bitFlag = 0;
                                                         if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
@@ -2265,14 +2270,14 @@ namespace Map {
                                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile]
                                                                         * 4
                                                                     + (ushort)DAT_TerrainDefinedData::instance
-                                                                          .field2298_0x1d64[local_14]
+                                                                          .TerrainFlagGraphicLookup[local_14]
                                                                           .unk2;
                                                             } else {
                                                                 this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x2dc
                                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile]
                                                                         * 4
                                                                     + (ushort)DAT_TerrainDefinedData::instance
-                                                                          .field2298_0x1d64[local_14]
+                                                                          .TerrainFlagGraphicLookup[local_14]
                                                                           .unk2;
                                                             }
                                                         } else if (!this->bitFlag) {

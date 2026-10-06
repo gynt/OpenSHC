@@ -22,27 +22,27 @@ namespace Map {
             }
             if (param_4 < param_2) {
                 iVar3 = param_2 - param_4;
-                this->seagullArray[seagullID].field23_0x30 = -1;
+                this->seagullArray[seagullID].pathStepX = -1;
             } else {
                 iVar3 = param_4 - param_2;
-                this->seagullArray[seagullID].field23_0x30 = 1;
+                this->seagullArray[seagullID].pathStepX = 1;
             }
-            this->seagullArray[seagullID].field24_0x32 = (ushort)(param_3 <= param_5) * 2 + -1;
+            this->seagullArray[seagullID].pathStepY = (ushort)(param_3 <= param_5) * 2 + -1;
             sVar4 = (short)iVar5;
             sVar1 = (short)iVar3;
             if (!iVar3) {
                 if (iVar5) {
-                    this->seagullArray[seagullID].field22_0x2e = 1;
+                    this->seagullArray[seagullID].pathAxisCase = 1;
                     goto LAB_0040383b;
                 }
-                this->seagullArray[seagullID].field22_0x2e = 0;
+                this->seagullArray[seagullID].pathAxisCase = 0;
             } else {
                 if (!iVar5) {
-                    this->seagullArray[seagullID].field22_0x2e = 2;
+                    this->seagullArray[seagullID].pathAxisCase = 2;
                 } else if (iVar3 < iVar5) {
-                    this->seagullArray[seagullID].field22_0x2e = 3;
+                    this->seagullArray[seagullID].pathAxisCase = 3;
                 } else {
-                    this->seagullArray[seagullID].field22_0x2e = 4;
+                    this->seagullArray[seagullID].pathAxisCase = 4;
                 }
             LAB_0040383b:
                 sVar2 = sVar1;
@@ -51,22 +51,22 @@ namespace Map {
             }
             sVar2 = sVar4;
         LAB_00403843:
-            this->seagullArray[seagullID].field27_0x38 = sVar2;
-            sVar2 = this->seagullArray[seagullID].field22_0x2e;
+            this->seagullArray[seagullID].pathMajorLength = sVar2;
+            sVar2 = this->seagullArray[seagullID].pathAxisCase;
             if (sVar2 == 3) {
                 sVar2 = sVar1 * 2;
-                this->seagullArray[seagullID].field19_0x28 = sVar2;
+                this->seagullArray[seagullID].pathErrorStepStraight = sVar2;
                 sVar6 = sVar2 + sVar4 * -2;
                 sVar2 = sVar2 - sVar4;
             } else {
                 if (sVar2 != 4) {}
                 sVar2 = sVar4 * 2;
-                this->seagullArray[seagullID].field19_0x28 = sVar2;
+                this->seagullArray[seagullID].pathErrorStepStraight = sVar2;
                 sVar6 = sVar2 + sVar1 * -2;
                 sVar2 = sVar2 - sVar1;
             }
-            this->seagullArray[seagullID].field21_0x2c = sVar2;
-            this->seagullArray[seagullID].field20_0x2a = sVar6;
+            this->seagullArray[seagullID].pathError = sVar2;
+            this->seagullArray[seagullID].pathErrorStepDiagonal = sVar6;
         }
 
     }

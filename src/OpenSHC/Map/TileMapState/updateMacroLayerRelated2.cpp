@@ -178,11 +178,13 @@ namespace Map {
                                             if (*(short*)((int)this
                                                     + (DAT_ViewportRenderState::instance
                                                               .translationMatrix[DAT_TerrainDefinedData::instance
-                                                                                     .field2292_0x19d4[iVar6]
+                                                                                     .MacroLayerScanOffsets[iVar6]
                                                                                      .y
                                                                   + this->DAT_SomeY]
                                                               .addXgetTile
-                                                          + DAT_TerrainDefinedData::instance.field2292_0x19d4[iVar6].x
+                                                          + DAT_TerrainDefinedData::instance
+                                                              .MacroLayerScanOffsets[iVar6]
+                                                              .x
                                                           + _someX)
                                                         * 2
                                                     + 0x33cab0)
@@ -195,8 +197,8 @@ namespace Map {
                                         } while (iVar6 < 0x10);
                                         _upTo16 = 0;
                                         do {
-                                            pXVar3 = DAT_TerrainDefinedData::instance.field2292_0x19d4 + _upTo16;
-                                            pXVar1 = DAT_TerrainDefinedData::instance.field2292_0x19d4 + _upTo16;
+                                            pXVar3 = DAT_TerrainDefinedData::instance.MacroLayerScanOffsets + _upTo16;
+                                            pXVar1 = DAT_TerrainDefinedData::instance.MacroLayerScanOffsets + _upTo16;
                                             _upTo960 = _upTo16 << 6;
                                             _upTo16 = _upTo16 + 1;
                                             /*
