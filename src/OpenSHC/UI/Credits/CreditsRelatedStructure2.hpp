@@ -22,7 +22,7 @@ namespace UI {
         // SIZE: 0x0000005C
         typedef struct CreditsRelatedStructure2 {
 
-            int field0_0x0; // 0x00000000 length: 4
+            int commandType; // 0x00000000 length: 4
             SHC_SoundStreamInt soundStream; // 0x00000004 length: 4
             int x; // 0x00000008 length: 4
             int y; // 0x0000000C length: 4

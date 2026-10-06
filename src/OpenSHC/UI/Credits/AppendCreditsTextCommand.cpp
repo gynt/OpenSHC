@@ -14,7 +14,7 @@ namespace UI {
         CreditsRelatedStructure2* pCVar1;
         if (((DAT_UnknownBinkCount::instance < 0x120) && (-1 < param_2))
             && (param_2 < DAT_NumberOfStoredMenuStrings::instance)) {
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field0_0x0 = param_1;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = param_1;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].soundStream = param_2;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field6_0x18 = param_3;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].x = param_5;

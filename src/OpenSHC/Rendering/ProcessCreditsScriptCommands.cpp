@@ -54,7 +54,7 @@ void Rendering::ProcessCreditsScriptCommands()
         && (iVar9 = DAT_UnknownBinkIndex::instance, -1 < DAT_UnknownBinkIndex::instance)) {
         while (iVar9 < DAT_UnknownBinkCount::instance) {
             iVar10 = iVar9;
-            switch (DAT_ARRAY_00eb9b68::instance[iVar9].field0_0x0) {
+            switch (DAT_ARRAY_00eb9b68::instance[iVar9].commandType) {
             case 1:
                 if (FLOAT_Between1And5::instance + (float)INT_00ec083c::instance
                     <= (float)(int)DAT_ARRAY_00eb9b68::instance[iVar9].soundStream) {
@@ -340,7 +340,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 if (0 < iVar10) {
                     pCVar5 = DAT_ARRAY_00eb9b68::instance + iVar10;
                     do {
-                        if (pCVar5->field0_0x0 == 0x1f)
+                        if (pCVar5->commandType == 0x1f)
                             break;
                         iVar10 = iVar10 + -1;
                         pCVar5 = pCVar5 + -1;

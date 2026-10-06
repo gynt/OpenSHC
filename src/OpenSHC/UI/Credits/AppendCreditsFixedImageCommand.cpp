@@ -13,7 +13,7 @@ namespace UI {
         int iVar1;
         int iVar2;
         if (DAT_UnknownBinkCount::instance < 0x120) {
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field0_0x0 = 0x15;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = 0x15;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].soundStream = param_1;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].x = param_2;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].y = param_3;

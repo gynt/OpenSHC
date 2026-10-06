@@ -51,7 +51,7 @@ namespace UI {
         DAT_UnknownBinkIndex::instance = DAT_UnknownBinkIndex::instance + 1;
         if (DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance) {
             do {
-                if (DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].field0_0x0 == 0x27) {
+                if (DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].commandType == 0x27) {
                     MACRO_CALL_MEMBER(
                         Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                     MACRO_CALL_MEMBER(
@@ -59,7 +59,7 @@ namespace UI {
                         (DE::SHCDE::eMusicIDs)(DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance]
                                 .soundStream));
                 }
-            } while ((DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].field0_0x0 != 0x1f)
+            } while ((DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].commandType != 0x1f)
                 && (DAT_UnknownBinkIndex::instance = DAT_UnknownBinkIndex::instance + 1,
                     DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance));
         }

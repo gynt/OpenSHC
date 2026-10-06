@@ -12,7 +12,7 @@ namespace UI {
         char cVar1;
         int iVar2;
         if (DAT_UnknownBinkCount::instance < 0x120) {
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field0_0x0 = 0xd;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = 0xd;
             iVar2 = (DAT_UnknownBinkCount::instance * 0x5c + 0xeb9ba4) - (int)param_1;
             do {
                 cVar1 = *param_1;

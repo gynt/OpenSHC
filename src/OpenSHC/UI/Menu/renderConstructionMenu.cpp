@@ -76,58 +76,58 @@ namespace UI {
                                          .TextMessageLookupTable[(
                                              uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
                                          .textIndexInGroup;
-                            this->field11_0x2c = _group;
+                            this->textIndexInGroup = _group;
                             _groupIndex = DAT_RenderingDefinedData::instance
                                               .TextMessageLookupTable[(
                                                   uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
                                               .textGroupIndex;
-                            this->field12_0x30 = _groupIndex;
+                            this->textGroupIndex = _groupIndex;
                             if (((_group == 0x12e) && (_groupIndex == 8))
                                 && (DAT_GameCore::instance.field22_0x64 == 1)) {
                                 /*
                                   "Resume Game"
                                  */
-                                this->field12_0x30 = 0x4a;
-                                this->field11_0x2c = 10;
+                                this->textGroupIndex = 0x4a;
+                                this->textIndexInGroup = 10;
                             }
                             this->someMenuItemPtr_0x3c = _menuItem;
                         }
                         if ((iVar1 == 2) && (this->someMenuItemPtr_0x3c == _menuItem)) {
                             text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                                 DAT_TextManagerObject::ptr)(
-                                (OpenSHC::DE::SHCDE::eTextSections)(this->field12_0x30), this->field11_0x2c);
+                                (OpenSHC::DE::SHCDE::eTextSections)(this->textGroupIndex), this->textIndexInGroup);
                             iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
                                 DAT_TextManagerObject::ptr)(text, 0x11);
                             if ((DAT_GameCore::instance.currentMenuViewType
                                     == OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION)
                                 || (DAT_GameCore::instance.currentMenuViewType
                                     == OpenSHC::UI::Enums::MVT_GAME_LOSTUnk)) {
-                                this->field9_0x24 = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
-                                this->field10_0x28 = DAT_MouseState::instance.screenSpaceY + 0x10;
+                                this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
+                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + 0x10;
                             } else {
-                                this->field9_0x24 = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
-                                this->field10_0x28 = DAT_MouseState::instance.screenSpaceY + -0x44;
+                                this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
+                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x44;
                             }
-                            if (DAT_WindowAndDirectDraw::instance.resolutionY < this->field10_0x28 + 0x17) {
-                                this->field10_0x28 = DAT_MouseState::instance.screenSpaceY + -0x17;
+                            if (DAT_WindowAndDirectDraw::instance.resolutionY < this->hoverTextY + 0x17) {
+                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x17;
                             }
-                            if (DAT_WindowAndDirectDraw::instance.resolutionX < this->field9_0x24 + 0x14 + iVar1) {
-                                this->field9_0x24 = (DAT_WindowAndDirectDraw::instance.resolutionX - iVar1) + -0x14;
+                            if (DAT_WindowAndDirectDraw::instance.resolutionX < this->hoverTextX + 0x14 + iVar1) {
+                                this->hoverTextX = (DAT_WindowAndDirectDraw::instance.resolutionX - iVar1) + -0x14;
                             }
-                            if (this->field9_0x24 < 0) {
-                                this->field9_0x24 = 0;
+                            if (this->hoverTextX < 0) {
+                                this->hoverTextX = 0;
                             }
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox,
-                                DAT_PencilRenderCore::ptr)(this->field9_0x24, this->field10_0x28,
-                                this->field9_0x24 + 0x12 + iVar1, this->field10_0x28 + 0x1a);
+                                DAT_PencilRenderCore::ptr)(this->hoverTextX, this->hoverTextY,
+                                this->hoverTextX + 0x12 + iVar1, this->hoverTextY + 0x1a);
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                                DAT_PencilRenderCore::ptr)(this->field9_0x24 + -1, this->field10_0x28 + -1,
-                                this->field9_0x24 + 0x13 + iVar1, this->field10_0x28 + 0x1b,
+                                DAT_PencilRenderCore::ptr)(this->hoverTextX + -1, this->hoverTextY + -1,
+                                this->hoverTextX + 0x13 + iVar1, this->hoverTextY + 0x1b,
                                 (ushort)((int)(COL_GREYISH_YELLOW::instance.shortValue)));
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)(text, this->field9_0x24 + 0xb, this->field10_0x28 + 3,
+                                DAT_TextManagerObject::ptr)(text, this->hoverTextX + 0xb, this->hoverTextY + 3,
                                 OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, FALSE, 0);
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
