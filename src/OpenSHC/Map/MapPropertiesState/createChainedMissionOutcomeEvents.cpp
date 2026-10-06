@@ -16,7 +16,7 @@ namespace Map {
         if (param_1 == 2) {
             this->currentEventID = this->eventsCount;
             pIVar1 = this->scenarioEvents + this->eventsCount;
-            this->field50_0x13568 = 3;
+            this->editedEventType = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
                 Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
@@ -32,7 +32,7 @@ namespace Map {
             *(undefined1*)((int)&this->scenarioEvents[this->currentEventID].data + 0x3f) = 1;
             this->currentEventID = this->eventsCount;
             pIVar1 = this->scenarioEvents + this->eventsCount;
-            this->field50_0x13568 = 3;
+            this->editedEventType = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
                 Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
@@ -52,7 +52,7 @@ namespace Map {
                 goto LAB_004bde26;
             this->currentEventID = this->eventsCount;
             pIVar1 = this->scenarioEvents + this->eventsCount;
-            this->field50_0x13568 = 3;
+            this->editedEventType = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
                 Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();
@@ -70,7 +70,7 @@ namespace Map {
             *(undefined1*)((int)&this->scenarioEvents[this->currentEventID].data + 0x3f) = 1;
             this->currentEventID = this->eventsCount;
             pIVar1 = this->scenarioEvents + this->eventsCount;
-            this->field50_0x13568 = 3;
+            this->editedEventType = 3;
             this->eventsCount = this->eventsCount + 1;
             MACRO_CALL_MEMBER(
                 Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar1)();

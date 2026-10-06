@@ -377,7 +377,7 @@ namespace Map {
                 }
                 _buildingID = (int)*(short*)((int)DAT_TileMapState::instance.BuildingLayer + _tile);
                 if ((int)this->entityArray[entityID].travelledDistance
-                    <= (int)this->entityArray[entityID].field58_0x8c / 2)
+                    <= (int)this->entityArray[entityID].totalFlightDistance / 2)
                     goto LAB_00408150;
                 _y = DAT_TileMapState::instance.LogicLayer[_someTile];
                 if ((_y & 0x40100001)) {

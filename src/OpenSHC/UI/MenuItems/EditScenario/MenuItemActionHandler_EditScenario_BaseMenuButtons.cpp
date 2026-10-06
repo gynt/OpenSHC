@@ -108,7 +108,7 @@ namespace UI {
                     DAT_MapPropertiesState::instance.currentEventID = DAT_MapPropertiesState::instance.eventsCount;
                     pIVar2 = DAT_MapPropertiesState::instance.scenarioEvents
                         + DAT_MapPropertiesState::instance.eventsCount;
-                    DAT_MapPropertiesState::instance.field50_0x13568 = 1;
+                    DAT_MapPropertiesState::instance.editedEventType = 1;
                     DAT_MapPropertiesState::instance.eventsCount = DAT_MapPropertiesState::instance.eventsCount + 1;
                     MACRO_CALL_MEMBER(
                         Game::ScenarioEvents::InGameEventUnionVersion_Func::resetEvent, pIVar2)();
@@ -144,7 +144,7 @@ namespace UI {
                     DAT_MapPropertiesState::instance.currentEventID = DAT_MapPropertiesState::instance.eventsCount;
                     pIVar2 = DAT_MapPropertiesState::instance.scenarioEvents
                         + DAT_MapPropertiesState::instance.eventsCount;
-                    DAT_MapPropertiesState::instance.field50_0x13568 = 3;
+                    DAT_MapPropertiesState::instance.editedEventType = 3;
                     DAT_MapPropertiesState::instance.eventsCount = DAT_MapPropertiesState::instance.eventsCount + 1;
                     MACRO_CALL_MEMBER(
                         Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, pIVar2)();

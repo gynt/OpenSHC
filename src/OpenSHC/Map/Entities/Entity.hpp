@@ -78,7 +78,7 @@ namespace Map {
             short travelledDistance; // 0x00000084 length: 2
             byte field56_0x86[2]; // 0x00000086 length: 2
             int orientation; // 0x00000088 length: 4
-            short field58_0x8c; // 0x0000008C length: 2
+            short totalFlightDistance; // 0x0000008C length: 2
             undefined1 padding_0x8e[2]; // 0x0000008E length: 2
             int heightDifference; // 0x00000090 length: 4
             short field62_0x94; // 0x00000094 length: 2

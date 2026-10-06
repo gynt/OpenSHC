@@ -30,7 +30,7 @@ namespace UI {
                 iVar1 = DAT_MapPropertiesState::instance.eventListScrollOffset + param_1;
                 if (iVar1 < DAT_MapPropertiesState::instance.eventsCount) {
                     DAT_MapPropertiesState::instance.eventListSelection = param_1;
-                    DAT_MapPropertiesState::instance.field50_0x13568
+                    DAT_MapPropertiesState::instance.editedEventType
                         = DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.tl_type;
                     DAT_MapPropertiesState::instance.currentEventID = iVar1;
                     MACRO_CALL_MEMBER(
@@ -40,7 +40,7 @@ namespace UI {
                             .header.year);
                     MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                         DAT_UserTextHandlerState::ptr)(local_10);
-                    if (DAT_MapPropertiesState::instance.field50_0x13568 == 1) {
+                    if (DAT_MapPropertiesState::instance.editedEventType == 1) {
                         MACRO_CALL_MEMBER(
                             Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
                         DAT_MapPropertiesState::instance.field_0x1356c = 0;
@@ -48,7 +48,7 @@ namespace UI {
                         DAT_MapPropertiesState::instance.indexStored = 0;
                         menuModalID = UI::Enums::MMT_NEW_INVASION;
                     } else {
-                        if (DAT_MapPropertiesState::instance.field50_0x13568 != 3)
+                        if (DAT_MapPropertiesState::instance.editedEventType != 3)
                             goto LAB_004b8bdc;
                         menuModalID = UI::Enums::MMT_NEW_EVENT;
                     }

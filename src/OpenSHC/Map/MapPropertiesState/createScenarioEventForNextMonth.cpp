@@ -15,7 +15,7 @@ namespace Map {
         InGameEventUnionVersion* _ptrEvent;
         this->currentEventID = this->eventsCount;
         _ptrEvent = this->scenarioEvents + this->eventsCount;
-        this->field50_0x13568 = 3;
+        this->editedEventType = 3;
         this->eventsCount = this->eventsCount + 1;
         MACRO_CALL_MEMBER(
             Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, _ptrEvent)();
