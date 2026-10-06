@@ -148,7 +148,7 @@ namespace Map {
         undefined4 DAT_ClickedTileX; // 0x00554928 length: 4
         undefined4 DAT_ClickedTileY; // 0x0055492C length: 4
         undefined4 skipPlacementCheck; // 0x00554930 length: 4
-        BOOLEnum buildingPlacementFail; // 0x00554934 length: 4
+        int buildingPlacementFail; // 0x00554934 length: 4
         BuildingFailReasonEnumInt buildingPlacementFailReason; // 0x00554938 length: 4
         undefined4 placementWarning; // 0x0055493C length: 4
         undefined4 uiBuildingRotation; // 0x00554940 length: 4
