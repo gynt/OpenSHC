@@ -66,14 +66,14 @@ namespace Game {
         dword unlockAllHistoricalCampaigns; // 0x00000058 length: 4
         dword unused1; // 0x0000005C length: 4
         dword section1066; // 0x00000060 length: 4
-        dword field22_0x64; // 0x00000064 length: 4
+        dword gameSuspended; // 0x00000064 length: 4
         GameMode2Int gameMode_2; // 0x00000068 length: 4
         int field24_0x6c; // 0x0000006C length: 4
         dword specialMultiplayerState; // 0x00000070 length: 4
         dword field26_0x74; // 0x00000074 length: 4
         int mapU4Int1; // 0x00000078 length: 4
         int mapU4Int1_2; // 0x0000007C length: 4
-        dword field29_0x80; // 0x00000080 length: 4
+        dword viewedKeepIndex; // 0x00000080 length: 4
         int battleLevel; // 0x00000084 length: 4
         dword cowPoisonTrackerUnk; // 0x00000088 length: 4
         int someSoundMatchTime_1; // 0x0000008C length: 4
@@ -159,7 +159,7 @@ namespace Game {
         int savedMapBalance; // 0x00001D8C length: 4
         MapLockStateInt U3_mapLockedState; // 0x00001D90 length: 4
         MapLockStateInt savedMapLocked; // 0x00001D94 length: 4
-        dword field115_0x1d98; // 0x00001D98 length: 4
+        dword mapLoadedForEditor; // 0x00001D98 length: 4
         int mapU3EndInt; // 0x00001D9C length: 4
         int savedMapEndInt2; // 0x00001DA0 length: 4
         int canBeginMainLoop; // 0x00001DA4 length: 4

@@ -73,7 +73,7 @@ namespace UI {
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     right, top_00, right_00, top_00, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                if (DAT_GameCore::instance.field115_0x1d98) {
+                if (DAT_GameCore::instance.mapLoadedForEditor) {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(
                         DAT_ButtonY::instance + 7, (int)((int)(DAT_ButtonH::instance + -0x2a + DAT_ButtonY::instance)));

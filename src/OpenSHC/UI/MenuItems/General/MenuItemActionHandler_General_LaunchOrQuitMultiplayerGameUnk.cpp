@@ -248,7 +248,7 @@ namespace UI {
                                         Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
                                 }
                             }
-                            DAT_GameCore::instance.field22_0x64 = 0;
+                            DAT_GameCore::instance.gameSuspended = 0;
                             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                             MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
@@ -353,7 +353,7 @@ namespace UI {
                         if (!DAT_GameCore::instance.isSkirmishTrail) {
                             menuID = UI::Enums::MVT_UNKNOWN_61_RETURN_TO_SKIRMISH_MENUUnk;
                         } else {
-                            DAT_GameCore::instance.field22_0x64 = 0;
+                            DAT_GameCore::instance.gameSuspended = 0;
                             menuID = UI::Enums::MVT_CRUSADE_MAP;
                         }
                         goto LAB_00495046;

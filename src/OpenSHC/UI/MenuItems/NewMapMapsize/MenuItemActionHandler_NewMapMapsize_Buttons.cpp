@@ -83,7 +83,7 @@ namespace UI {
                         DAT_GameCore::instance.temporaryTextBufferOfSize1000[0] = '\0';
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
-                        DAT_GameCore::instance.field115_0x1d98 = 1;
+                        DAT_GameCore::instance.mapLoadedForEditor = 1;
                     } else if (param_1 == 7) {
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_CUSTOM_SCENARIOS, 0);

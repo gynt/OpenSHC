@@ -79,7 +79,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
                 }
-                if (DAT_GameCore::instance.field22_0x64 == 1) {
+                if (DAT_GameCore::instance.gameSuspended == 1) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 }
                 DAT_ButtonUnknownZero::instance = 0;
@@ -135,7 +135,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
                 }
-                if (DAT_GameCore::instance.field22_0x64 != 1) {
+                if (DAT_GameCore::instance.gameSuspended != 1) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
@@ -208,7 +208,7 @@ namespace UI {
                     return;
                 }
                 if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk)
-                    || (DAT_GameCore::instance.field22_0x64 != 1))
+                    || (DAT_GameCore::instance.gameSuspended != 1))
                     goto LAB_004d8543;
                 bVar1 = param_1 == 0xc;
             }

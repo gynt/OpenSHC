@@ -21,7 +21,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042EDF0
         void MapEditorProperties::MenuItemActionHandler_MapEditorProperties_MapDescriptionBox()
         {
-            if ((((DAT_GameCore::instance.U2_mapType_singleOrMulti) && (DAT_GameCore::instance.field115_0x1d98))
+            if ((((DAT_GameCore::instance.U2_mapType_singleOrMulti) && (DAT_GameCore::instance.mapLoadedForEditor))
                     && (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU))
                 && ((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE
                     && (INT_00b95f68::instance = 1, !DAT_GameCore::instance.unknownAlwaysZero03)))) {

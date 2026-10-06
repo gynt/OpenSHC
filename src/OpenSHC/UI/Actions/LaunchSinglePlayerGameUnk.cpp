@@ -528,7 +528,7 @@ namespace UI {
         }
         if ((DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION) && (param_1 != 1)) {
             iVar8 = 10000;
-            DAT_GameCore::instance.field22_0x64 = 0;
+            DAT_GameCore::instance.gameSuspended = 0;
             menuID = OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION;
         } else {
             DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;

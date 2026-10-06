@@ -42,7 +42,7 @@ namespace UI {
             INT_00b95abc::instance = -1;
             DAT_MenuTextInputState::instance.dialogResult = 0;
             DAT_GameCore::instance.missionNumber1to20 = 0;
-            DAT_GameCore::instance.field115_0x1d98 = 0;
+            DAT_GameCore::instance.mapLoadedForEditor = 0;
             DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
             INT_00b960e4::instance = 0;
             if (!DAT_GameSynchronyState::instance.currentPlayerSlotID) {

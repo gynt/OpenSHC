@@ -28,7 +28,7 @@ namespace UI {
             bool bVar2;
             if (param_1 != 10) {
                 if (param_1 == 0xb) {
-                    if (DAT_GameCore::instance.field22_0x64 == 1) {
+                    if (DAT_GameCore::instance.gameSuspended == 1) {
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                         MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                             DAT_MenuTextInputState::ptr)(UI::Enums::MMT_YES_NO_DIALOG);
@@ -37,7 +37,7 @@ namespace UI {
                         UI::Enums::MVT_CRUSADE_MAP, 0);
                 }
             }
-            if (DAT_GameCore::instance.field22_0x64 == 1) {
+            if (DAT_GameCore::instance.gameSuspended == 1) {
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_BUILD_MENU, 0);
                 MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();

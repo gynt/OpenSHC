@@ -76,7 +76,7 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner, DAT_PencilRenderCore::ptr)(
                 DAT_MenuHandlerState::instance.x + 0x30, DAT_MenuHandlerState::instance.y + 6, 0x2c0, 0x32);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if (DAT_GameCore::instance.field115_0x1d98) {
+            if (DAT_GameCore::instance.mapLoadedForEditor) {
                 iVar12 = 0;
                 BVar11 = FALSE;
                 iVar10 = 0x11;

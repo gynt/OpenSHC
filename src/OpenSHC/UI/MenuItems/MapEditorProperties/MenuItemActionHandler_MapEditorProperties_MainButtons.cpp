@@ -78,7 +78,7 @@ namespace UI {
                     return;
                 case 3:
                     if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
-                        || (DAT_GameCore::instance.field115_0x1d98)) {
+                        || (DAT_GameCore::instance.mapLoadedForEditor)) {
                         MACRO_CALL_MEMBER(
                             Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                             DAT_MapPropertiesState::ptr)();
@@ -107,7 +107,7 @@ namespace UI {
                         UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                     return;
                 case 6:
-                    if (DAT_GameCore::instance.field115_0x1d98) {
+                    if (DAT_GameCore::instance.mapLoadedForEditor) {
                         INT_00b95f68::instance = 1;
                         DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                         DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
@@ -148,7 +148,7 @@ namespace UI {
                     return;
                 case 0x19:
                     if ((DAT_GameCore::instance.U2_mapType_singleOrMulti != 1)
-                        && (DAT_GameCore::instance.field115_0x1d98)) {
+                        && (DAT_GameCore::instance.mapLoadedForEditor)) {
                         INT_00b95f68::instance = 1;
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_EDIT_SCENARIO, 0);
@@ -156,7 +156,7 @@ namespace UI {
                     }
                     break;
                 case 0x1f:
-                    if (DAT_GameCore::instance.field115_0x1d98) {
+                    if (DAT_GameCore::instance.mapLoadedForEditor) {
                         DAT_GameCore::instance.missionNumber1to20 = 27;
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x20;
                         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,

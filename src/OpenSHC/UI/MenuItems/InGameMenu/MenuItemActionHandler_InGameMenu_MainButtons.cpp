@@ -143,7 +143,7 @@ namespace UI {
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .playerDeathRelated
                     == 0) {
-                    DAT_GameCore::instance.field22_0x64 = 1;
+                    DAT_GameCore::instance.gameSuspended = 1;
                     DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
                         DAT_SoundSystemState::ptr)();

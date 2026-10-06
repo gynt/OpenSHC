@@ -48,31 +48,31 @@ namespace UI {
                     iVar3 = 2;
                     do {
                         if (-1 < piVar5[-1]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                            if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                 iVar4 = iVar3 + -2;
                             }
                             dVar5 = dVar5 + 1;
                         }
                         if (-1 < *piVar5) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                            if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                 iVar4 = iVar3 + -1;
                             }
                             dVar5 = dVar5 + 1;
                         }
                         if (-1 < piVar5[1]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                            if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                 iVar4 = iVar3;
                             }
                             dVar5 = dVar5 + 1;
                         }
                         if (-1 < piVar5[2]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                            if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                 iVar4 = iVar3 + 1;
                             }
                             dVar5 = dVar5 + 1;
                         }
                         if (-1 < piVar5[3]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                            if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                 iVar4 = iVar3 + 2;
                             }
                             dVar5 = dVar5 + 1;
@@ -97,9 +97,9 @@ namespace UI {
                         MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnTile,
                             DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.playerKeepTile[iVar4]);
                     }
-                    DAT_GameCore::instance.field29_0x80 = DAT_GameCore::instance.field29_0x80 + 1;
-                    if ((int)dVar5 <= (int)DAT_GameCore::instance.field29_0x80) {
-                        DAT_GameCore::instance.field29_0x80 = 0;
+                    DAT_GameCore::instance.viewedKeepIndex = DAT_GameCore::instance.viewedKeepIndex + 1;
+                    if ((int)dVar5 <= (int)DAT_GameCore::instance.viewedKeepIndex) {
+                        DAT_GameCore::instance.viewedKeepIndex = 0;
                     }
                 }
                 if (DAT_MouseState::instance.scrollEventData == 8) {

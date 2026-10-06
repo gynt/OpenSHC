@@ -19,7 +19,7 @@ namespace UI {
             switch (param_1) {
             case 1:
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameCore::instance.missionNumber1to20 = 1;
                 DAT_GameCore::instance.historicCampaignNumber = 1;
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -45,7 +45,7 @@ namespace UI {
                 return;
             case 2:
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameCore::instance.missionNumber1to20 = 6;
                 DAT_GameCore::instance.historicCampaignNumber = 2;
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -70,7 +70,7 @@ namespace UI {
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
                 return;
             case 3:
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
                 DAT_GameCore::instance.missionNumber1to20 = 11;
                 DAT_GameCore::instance.historicCampaignNumber = 3;
@@ -96,7 +96,7 @@ namespace UI {
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
                 return;
             case 4:
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
                 DAT_GameCore::instance.missionNumber1to20 = 16;
                 DAT_GameCore::instance.historicCampaignNumber = 4;

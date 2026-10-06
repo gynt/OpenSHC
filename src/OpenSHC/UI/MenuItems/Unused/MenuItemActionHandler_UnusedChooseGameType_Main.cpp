@@ -43,7 +43,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
-                DAT_GameCore::instance.field115_0x1d98 = 1;
+                DAT_GameCore::instance.mapLoadedForEditor = 1;
             }
         }
 

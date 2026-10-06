@@ -43,7 +43,7 @@ namespace UI {
                     UI::Enums::MVT_MAIN_MENU, 0);
             }
             if (((param_1 == 1) || (param_1 == 3)) || (param_1 == 4)) {
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 if (param_1 == 4) {
                     DAT_GameCore::instance.currentTrailType = Game::TT_EXTREME;
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(

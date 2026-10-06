@@ -87,7 +87,7 @@ namespace UI {
                 DAT_GameCore::instance.missionNumber1to20 = 1;
             }
             iVar2 = DAT_GameCore::instance.missionNumber1to20;
-            if (!DAT_GameCore::instance.field22_0x64) {
+            if (!DAT_GameCore::instance.gameSuspended) {
                 if (DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk) {
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMapSiegeHeaderForMissionIndex,
                         DAT_MapPropertiesState::ptr)((char*)DAT_GameCore::instance.missionNumber1to20);
@@ -102,7 +102,7 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.field44_0xf4 = 0;
             }
             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
-                && (!DAT_GameCore::instance.field22_0x64)) {
+                && (!DAT_GameCore::instance.gameSuspended)) {
                 if (iVar2 < 4) {
                     DAT_GameState::instance.mapAndTime.difficulty = 1;
                 } else {
@@ -116,7 +116,7 @@ namespace UI {
             DAT_ARRAY_00ed26d0::instance[0].y = 0;
             DAT_00ed27bc::instance = 0;
             DAT_00ed2794::instance = 0;
-            if ((DAT_MenuView_TriggerPrepare::instance != 2) && (!DAT_GameCore::instance.field22_0x64)) {
+            if ((DAT_MenuView_TriggerPrepare::instance != 2) && (!DAT_GameCore::instance.gameSuspended)) {
                 DAT_00ed2794::instance = timeGetTime();
             }
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();

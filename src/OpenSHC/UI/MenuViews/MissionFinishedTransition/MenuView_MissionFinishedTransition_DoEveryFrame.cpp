@@ -101,7 +101,7 @@ namespace UI {
                 OpenSHC::Rendering::Bink::BinkControlClass_Func::stopAllBinkPlayback, DAT_BinkControlState::ptr)();
             if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
-                    DAT_GameCore::instance.field22_0x64 = 0;
+                    DAT_GameCore::instance.gameSuspended = 0;
                     if (DAT_GameCore::instance.missionNumber1to20
                         <= (int)(DAT_GameCore::instance.historicCampaignNumber * 5)) {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -115,7 +115,7 @@ namespace UI {
                     return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1) {
-                    DAT_GameCore::instance.field22_0x64 = 0;
+                    DAT_GameCore::instance.gameSuspended = 0;
                     if (DAT_GameCore::instance.missionNumber1to20 < 0x26) {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);

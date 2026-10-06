@@ -74,7 +74,7 @@ namespace UI {
             }
             DAT_00b95b74::instance = 0;
             DAT_00b960f4::instance = 0;
-            if (DAT_GameCore::instance.field115_0x1d98) {
+            if (DAT_GameCore::instance.mapLoadedForEditor) {
                 if (!DAT_GameCore::instance.descriptionUseStringTable) {
                     modeUnk = 1;
                     blendStrength = 0;

@@ -83,7 +83,7 @@ namespace UI {
                                               .textGroupIndex;
                             this->textGroupIndex = _groupIndex;
                             if (((_group == 0x12e) && (_groupIndex == 8))
-                                && (DAT_GameCore::instance.field22_0x64 == 1)) {
+                                && (DAT_GameCore::instance.gameSuspended == 1)) {
                                 /*
                                   "Resume Game"
                                  */

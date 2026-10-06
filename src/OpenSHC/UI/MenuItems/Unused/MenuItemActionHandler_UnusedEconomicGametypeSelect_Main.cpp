@@ -23,7 +23,7 @@ namespace UI {
         {
             switch (param_1) {
             case 1:
-                DAT_GameCore::instance.field22_0x64 = 0;
+                DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty2;
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk, 0);

@@ -68,7 +68,7 @@ void Map::ResetSomeValuesFunctionUnk()
     DAT_GameCore::instance.viewportFocusBeforeArmoryHotkey = -1;
     DAT_BuildingsState::instance.siegeEngineCreationRelated01 = 0;
     DAT_MinimapViewState::instance.spawnMomentCount = 0;
-    DAT_GameCore::instance.field29_0x80 = 0;
+    DAT_GameCore::instance.viewedKeepIndex = 0;
     DAT_GameCore::instance.section1095 = 0;
     DAT_GameCore::instance.solitaryAltUDungeon = FALSE;
     DWORD_00eb0b18::instance = 0;

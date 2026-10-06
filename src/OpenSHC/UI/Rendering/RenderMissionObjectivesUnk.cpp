@@ -124,7 +124,7 @@ namespace UI {
                             }
                             iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeNumberTextWidth,
                                 DAT_TextManagerObject::ptr)(INT_ARRAY_00ed2fc8::instance[iVar6], 0x12);
-                            if (DAT_GameCore::instance.field22_0x64 == 1) {
+                            if (DAT_GameCore::instance.gameSuspended == 1) {
                                 iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
                                     DAT_TextManagerObject::ptr)(" ()", 0x12);
                                 /*
@@ -189,7 +189,7 @@ namespace UI {
                                     DAT_TextManagerObject::ptr)(pcVar2, iVar4);
                                 iVar1 = iVar1 + 6 + iVar4;
                             }
-                            if (DAT_GameCore::instance.field22_0x64 == 1) {
+                            if (DAT_GameCore::instance.gameSuspended == 1) {
                                 iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
                                     DAT_TextManagerObject::ptr)(" ()", 0x12);
                                 iVar4 = INT_ARRAY_00eb1238::instance[iVar6];
@@ -260,7 +260,7 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(INT_ARRAY_00ed2fc8::instance[iVar1],
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + iVar5, yParam,
                                 OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE, 0);
-                            if (DAT_GameCore::instance.field22_0x64 == 1) {
+                            if (DAT_GameCore::instance.gameSuspended == 1) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                                     DAT_TextManagerObject::ptr)(" (",
                                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + iVar5, yParam,
@@ -338,7 +338,7 @@ namespace UI {
                                     OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                     pcVar2, iVar4, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
                             }
-                            if (DAT_GameCore::instance.field22_0x64 == 1) {
+                            if (DAT_GameCore::instance.gameSuspended == 1) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                                     DAT_TextManagerObject::ptr)(" (",
                                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 6 + iVar5, yParam,
@@ -449,7 +449,7 @@ namespace UI {
                     iVar1 = (DAT_MapPropertiesState::instance.scenarioEvents[local_4].header.month
                                 + DAT_MapPropertiesState::instance.scenarioEvents[local_4].header.year * 0xc)
                         - iVar1;
-                    if (!DAT_GameCore::instance.field22_0x64) {
+                    if (!DAT_GameCore::instance.gameSuspended) {
                         iVar4 = 0;
                     }
                     iVar12 = 0;

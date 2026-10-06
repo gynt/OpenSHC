@@ -182,7 +182,7 @@ namespace UI {
             local_f4[8] = 0;
             local_f4[9] = 0;
             local_f4[10] = 0;
-            if (!DAT_GameCore::instance.field22_0x64) {
+            if (!DAT_GameCore::instance.gameSuspended) {
                 dVar3 = DAT_GameCore::instance.extremeTrailProgress;
                 if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
                     && (dVar3 = DAT_GameCore::instance.skirmishTrailProgress,
@@ -416,7 +416,7 @@ namespace UI {
             local_c = 0;
             _offset = 1;
             piVar5 = local_f4 + 0x20;
-            dVar3 = DAT_GameCore::instance.field22_0x64;
+            dVar3 = DAT_GameCore::instance.gameSuspended;
             do {
                 if (dVar3 == 1) {
                     bVar8 = DAT_GameSynchronyState::instance.finalResults.active[_offset] == 0;
@@ -434,7 +434,7 @@ namespace UI {
                         local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
                         iVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_offset);
-                        dVar3 = DAT_GameCore::instance.field22_0x64;
+                        dVar3 = DAT_GameCore::instance.gameSuspended;
                         if (!iVar6) {
                             local_10c = local_10c + 3;
                             *piVar5 = 0;

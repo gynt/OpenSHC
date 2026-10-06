@@ -378,7 +378,7 @@ namespace UI {
                 }
                 iVar4 = (_event2->data).scenario.ScenarioEventType;
                 if ((!iVar4) || (iVar4 == 0x1a)) {
-                    if ((DAT_GameCore::instance.field22_0x64 != 1)
+                    if ((DAT_GameCore::instance.gameSuspended != 1)
                         || (iVar4 = iVar5 + 1, DAT_MapPropertiesState::instance.eventsCount <= iVar4))
                         goto LAB_004d7613;
                     pIVar4

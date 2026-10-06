@@ -155,7 +155,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x1f;
                     MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                         DAT_MenuTextInputState::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX);
-                    DAT_GameCore::instance.field115_0x1d98 = 1;
+                    DAT_GameCore::instance.mapLoadedForEditor = 1;
                 }
             LAB_0049461b:
                 MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();

@@ -153,7 +153,7 @@ namespace UI {
                             && (DAT_MapPropertiesState::instance.scenarionMissionType)))))) {
                     MACRO_CALL_MEMBER(
                         UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                    DAT_GameCore::instance.field22_0x64 = 1;
+                    DAT_GameCore::instance.gameSuspended = 1;
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
