@@ -128,6 +128,18 @@ restores the list *and* rebuilds before exiting, because restoring the list alon
 the narrowed one, so `diff.json` keeps reporting a single function at the last variant's score and `--run` cannot
 repair it. That rebuild costs a few minutes per invocation and is worth paying.
 
+**A `BUILD_OK` is not by itself evidence that a measurement is valid - read the coverage line.** A link can fail with
+`LNK1318: Unexpected PDB error; RPC (23)` when `mspdbsrv.exe` drops its connection; that is toolchain flakiness, not a
+source error, and it happens at link time after every object has compiled. Killing the stale `mspdbsrv.exe` processes
+and rebuilding then reports `BUILD_OK` and writes a DLL and PDB, but the PDB can come out with no symbols reccmp can
+read. `diff.json` is then `function_count: 0` with empty `data`, and `reccmp_report.py` prints
+
+    warning: the last reccmp run covers only 0 of the 805 functions in the build list.
+
+while still reporting `0 WORSE` - which is indistinguishable from a genuine clean result if the warning is skipped.
+Deleting the DLL and the PDB to force a clean relink fixes it. So after any build that did not succeed first time,
+confirm the report covers the whole list before believing a number.
+
 `try_styles.py` reports four decimals, and its tie test is exact. It used to parse the one-decimal percentage
 `reccmp_report.py` prints, so anything sharing a first decimal compared as a tie - which is how a variant 0.02
 points *below* its baseline got kept as "identical, so pick the readable one". Treat a tie from an older run as
