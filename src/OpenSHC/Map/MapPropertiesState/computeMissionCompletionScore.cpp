@@ -270,8 +270,8 @@ namespace Map {
             this->monthsRemaining = uVar4 & ((int)uVar4 < 1) - 1;
             this->timeBonusScore = this->monthsRemaining * 100;
         }
-        this->missionScore
-            = DAT_MissionAestheticsDefinedData::instance.field1225_0x21a4[DAT_GameState::instance.mapAndTime.difficulty]
+        this->missionScore = DAT_MissionAestheticsDefinedData::instance
+                                 .MissionScoreByDifficulty[DAT_GameState::instance.mapAndTime.difficulty]
             + this->timeBonusScore;
         iVar5 = 0;
         if (0 < this->field94_0x14560) {

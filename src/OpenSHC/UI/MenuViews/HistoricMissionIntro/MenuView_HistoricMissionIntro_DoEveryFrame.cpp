@@ -113,9 +113,9 @@ namespace UI {
                 }
                 DAT_00ed2780::instance = 0;
                 if (DAT_GameCore::instance.missionNumber1to20 + -1 < 0x14) {
-                    MACRO_CALL_MEMBER(
-                        Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
-                        DAT_MissionDefinedData::instance.field49_0x1444[DAT_GameCore::instance.missionNumber1to20 + -1],
+                    MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
+                        DAT_MissionDefinedData::instance
+                            .HistoricMissionIntroSoundNames[DAT_GameCore::instance.missionNumber1to20 + -1],
                         1);
                 }
             }

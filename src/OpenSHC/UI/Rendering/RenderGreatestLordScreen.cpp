@@ -618,9 +618,9 @@ namespace UI {
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_GameSynchronyState::instance.finalResults.monthStart);
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)((char*)local_30c, "%s %d - %s %d", pcVar6, iVar2, pcVar5, iVar8);
-                iVar2 = DAT_MissionDefinedData::instance.field23_0x7d4[DAT_00eb9af8::instance][1];
+                iVar2 = DAT_MissionDefinedData::instance.GreatestLordTextEntries[DAT_00eb9af8::instance][1];
                 offsetIndex = (OpenSHC::DE::SHCDE::eTextSections)(DAT_MissionDefinedData::instance
-                        .field23_0x7d4[DAT_00eb9af8::instance][0]);
+                        .GreatestLordTextEntries[DAT_00eb9af8::instance][0]);
                 iVar10 = 0;
                 BVar13 = FALSE;
                 iVar8 = 0x11;
@@ -672,9 +672,9 @@ namespace UI {
                 }
                 piVar7 = (int*)MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)(DAT_MissionDefinedData::instance
-                                                        .field23_0x7d4[DAT_00eb9af8::instance][0]),
+                                                        .GreatestLordTextEntries[DAT_00eb9af8::instance][0]),
                     (int)((int)((OpenSHC::DE::SHCDE::eTextSections)
-                            DAT_MissionDefinedData::instance.field23_0x7d4[DAT_00eb9af8::instance][1])));
+                            DAT_MissionDefinedData::instance.GreatestLordTextEntries[DAT_00eb9af8::instance][1])));
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 (char*)piVar7, iVar3, iVar10, TVar11, BVar12, iVar2, BVar13, iVar8);

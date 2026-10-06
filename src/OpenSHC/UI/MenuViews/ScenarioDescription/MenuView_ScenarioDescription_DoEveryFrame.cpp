@@ -86,7 +86,7 @@ namespace UI {
                 INT_00ed3130::instance = timeGetTime();
             LAB_004dd411:
                 MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
-                    DAT_MissionDefinedData::instance.field31_0xb54[uVar4] + 1, 0, 0);
+                    DAT_MissionDefinedData::instance.ScenarioDescriptionSpriteIDs[uVar4] + 1, 0, 0);
             }
             if (DAT_00ed27bc::instance == 1) {
                 iVar11 = 0;

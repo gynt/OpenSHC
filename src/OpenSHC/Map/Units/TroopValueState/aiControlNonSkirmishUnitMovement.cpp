@@ -40,7 +40,7 @@ namespace Map {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(0);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();
                 if (!DAT_TroopValueState::instance.attackInfo.aiTroops) {
-                    DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 = 0;
+                    DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle = 0;
                 }
                 iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .aiControlStatusRelated;

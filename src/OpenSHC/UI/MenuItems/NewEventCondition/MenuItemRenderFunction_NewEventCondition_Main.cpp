@@ -97,7 +97,7 @@ namespace UI {
                                 OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, (int)((int)(DAT_ButtonX::instance + 5)),
                                 (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE);
                             if (DAT_MissionAestheticsDefinedData::instance.unknown3[iVar1 + 0x35e] == 0) {}
-                            if (DAT_MissionAestheticsDefinedData::instance.field1227_0x21c4[iVar1 + 0xe] == 1) {
+                            if (DAT_MissionAestheticsDefinedData::instance.EventConditionMinValue[iVar1 + 0xe] == 1) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
                                     (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[(
@@ -106,7 +106,7 @@ namespace UI {
                                     (int)((int)(DAT_ButtonX::instance + 0xe)), (int)((int)(DAT_ButtonY::instance + 7)),
                                     OpenSHC::Text::TTA_LEFT, uVar2, 0x12, TRUE);
                             }
-                            if (DAT_MissionAestheticsDefinedData::instance.field1227_0x21c4[iVar1 + 0xe] == 2) {
+                            if (DAT_MissionAestheticsDefinedData::instance.EventConditionMinValue[iVar1 + 0xe] == 2) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
                                     (int)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[(

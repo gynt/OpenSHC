@@ -74,15 +74,15 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::setMoat3, this)(1, playerID);
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::countAvailableHighValueSlots, this)(1);
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::countAvailableArcherValueSlots, this)(1);
-            if (DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 < 1) {
+            if (DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle < 1) {
                 MACRO_CALL_MEMBER(Game::GameStateStructures_Func::calculateAttackVectorsToCampFireOfPlayer,
                     DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 = 1;
+                DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle = 1;
             }
-            DAT_TroopValueState::instance.attackInfo.field86981_0x20f84
-                = DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 + 1;
-            if (1 < DAT_TroopValueState::instance.attackInfo.field86981_0x20f84) {
-                DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 = 0;
+            DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle
+                = DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle + 1;
+            if (1 < DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle) {
+                DAT_TroopValueState::instance.attackInfo.attackVectorRecomputeThrottle = 0;
             }
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::expandAIZoneLayerStage1, this)();
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::expandAIZoneLayerStage2, this)();

@@ -76,7 +76,7 @@ namespace Map {
         int attacker; // 0x00020F78 length: 4
         undefined1 padding_0x20f7c[4]; // 0x00020F7C length: 4
         int aiTroops; // 0x00020F80 length: 4
-        int field86981_0x20f84; // 0x00020F84 length: 4
+        int attackVectorRecomputeThrottle; // 0x00020F84 length: 4
         int biggestZone; // 0x00020F88 length: 4
         int startZone; // 0x00020F8C length: 4
         int unknownOne_0x20f90; // 0x00020F90 length: 4
@@ -94,7 +94,7 @@ namespace Map {
         int size; // 0x00021C40 length: 4
         int value10; // 0x00021C44 length: 4
         int reservedTroopBudget; // 0x00021C48 length: 4
-        int field89400_0x21c4c; // 0x00021C4C length: 4
+        int tribesToSortCount; // 0x00021C4C length: 4
         int casDis; // 0x00021C50 length: 4
         // Reset to 0 when a wave starts (initializeOrAdvanceAttackWave), incremented by
         // executeAttackWaveTargetAssignment, and tested `> 2` by
@@ -146,7 +146,7 @@ namespace Map {
         byte unknownByteArray02[50]; // 0x000308C2 length: 50
         byte attackWavePlayerIDArray[50]; // 0x000308F4 length: 50
         byte someSinglePlayerScore[50][10]; // 0x00030926 length: 500
-        short field127574_0x30b1a[50]; // 0x00030B1A length: 100
+        short attackWaveAssignmentAttempts[50]; // 0x00030B1A length: 100
         undefined1 padding_0x30b7e[2]; // 0x00030B7E length: 2
         TribeSizesPerTribeType aiTribeSizesPerTribeType; // 0x00030B80 length: 160
         int supportPoints; // 0x00030C20 length: 4

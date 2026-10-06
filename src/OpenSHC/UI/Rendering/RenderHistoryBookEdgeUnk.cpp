@@ -23,7 +23,7 @@ namespace UI {
         xPosInMenuRect = 0x2a0;
         iVar1 = (long)((double)FLOAT_00ed312c::instance);
         MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
-            DAT_MissionDefinedData::instance.field48_0x137c[iVar1] + 1, xPosInMenuRect, yPosInMenuRect);
+            DAT_MissionDefinedData::instance.HistoryBookEdgeSpriteIDs[iVar1] + 1, xPosInMenuRect, yPosInMenuRect);
         return;
     }
 

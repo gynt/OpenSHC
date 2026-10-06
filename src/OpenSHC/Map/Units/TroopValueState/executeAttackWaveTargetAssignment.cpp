@@ -56,7 +56,7 @@ namespace Map {
                 if ((BVar3 != FALSE) && (DAT_TroopValueState::instance.attackInfo.attacker != 8)) {
                     DAT_TroopValueState::instance.attackInfo.value3Array01[param_1] = 4;
                     DAT_TroopValueState::instance.attackInfo.attackWaveTicker[param_1] = 10000;
-                    DAT_TroopValueState::instance.attackInfo.field127574_0x30b1a[param_1] = 0;
+                    DAT_TroopValueState::instance.attackInfo.attackWaveAssignmentAttempts[param_1] = 0;
                 }
                 DAT_TroopValueState::instance.attackInfo.someCounter1 = DAT_TroopValueState::instance.attackInfo.someCounter1 + 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::aiRecomputeAttacks2, this)(0, param_1);
@@ -151,7 +151,8 @@ namespace Map {
                         *(int*)((int)DAT_TroopValueState::instance.attackInfo.moatValuesArray + iVar4 + -4), Map::Units::STBT_0x3f7);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3f7, Map::Units::STBT_1, 10, 10);
-                    DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c = DAT_TroopValueState::instance.attackInfo.unknownTribeCounterRelated;
+                    DAT_TroopValueState::instance.attackInfo.tribesToSortCount
+                        = DAT_TroopValueState::instance.attackInfo.unknownTribeCounterRelated;
                 }
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                     param_1, 1000, 10000, Map::Units::STBT_0x418);
@@ -232,9 +233,10 @@ namespace Map {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                             Map::Units::STBT_0x3f4, Map::Units::STBT_5, 0, 0x19);
                     }
-                    if (DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c) {
-                        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
-                            this)(param_1, DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c, 10000, Map::Units::STBT_0x3f4);
+                    if (DAT_TroopValueState::instance.attackInfo.tribesToSortCount) {
+                        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
+                            param_1, DAT_TroopValueState::instance.attackInfo.tribesToSortCount, 10000,
+                            Map::Units::STBT_0x3f4);
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                             Map::Units::STBT_0x3fc, Map::Units::STBT_1, 0, 0x14);
                     }

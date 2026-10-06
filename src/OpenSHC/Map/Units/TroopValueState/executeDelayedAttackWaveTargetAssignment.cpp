@@ -46,8 +46,8 @@ namespace Map {
             if (399 < this->attackInfo.attackWaveTicker[param_1]) {
                 this->attackInfo.attackWaveTicker[param_1] = 0;
                 this->attackInfo.someCounter1 = this->attackInfo.someCounter1 + 1;
-                sVar2 = this->attackInfo.field127574_0x30b1a[param_1];
-                this->attackInfo.field127574_0x30b1a[param_1] = sVar2 + 1;
+                sVar2 = this->attackInfo.attackWaveAssignmentAttempts[param_1];
+                this->attackInfo.attackWaveAssignmentAttempts[param_1] = sVar2 + 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::aiRecomputeAttacks, this)(
                     (int)sVar2, param_1);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(

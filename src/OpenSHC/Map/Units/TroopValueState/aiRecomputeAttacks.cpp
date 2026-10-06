@@ -63,14 +63,14 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::setMoat3, this)(1, playerID);
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::countAvailableHighValueSlots, this)(1);
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::countAvailableArcherValueSlots, this)(1);
-            if (this->attackInfo.field86981_0x20f84 < 1) {
+            if (this->attackInfo.attackVectorRecomputeThrottle < 1) {
                 MACRO_CALL_MEMBER(Game::GameStateStructures_Func::calculateAttackVectorsToCampFireOfPlayer,
                     DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                this->attackInfo.field86981_0x20f84 = 1;
+                this->attackInfo.attackVectorRecomputeThrottle = 1;
             }
-            this->attackInfo.field86981_0x20f84 = this->attackInfo.field86981_0x20f84 + 1;
-            if (1 < this->attackInfo.field86981_0x20f84) {
-                this->attackInfo.field86981_0x20f84 = 0;
+            this->attackInfo.attackVectorRecomputeThrottle = this->attackInfo.attackVectorRecomputeThrottle + 1;
+            if (1 < this->attackInfo.attackVectorRecomputeThrottle) {
+                this->attackInfo.attackVectorRecomputeThrottle = 0;
             }
             MACRO_CALL_MEMBER(Util::Timing::Stopwatch_Func::stop, DAT_UnknownStopwatch::ptr)();
         }

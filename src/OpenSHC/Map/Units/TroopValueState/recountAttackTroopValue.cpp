@@ -64,7 +64,8 @@ namespace Map {
                         } else {
                             _tribeType = _pTribe->tribeType;
                             _size = _pTribe->size;
-                            _pMem = DAT_TroopValueState::instance.attackInfo.field127574_0x30b1a + (short)_tribeType * 2 + 0x33;
+                            _pMem = DAT_TroopValueState::instance.attackInfo.attackWaveAssignmentAttempts
+                                + (short)_tribeType * 2 + 0x33;
                             *(int*)_pMem = *(int*)_pMem + (int)_size;
                             if (_tribeType == AI::Tribes::AITT_ENGINEERS) {
                                 DAT_TroopValueState::instance.attackInfo.engineers = DAT_TroopValueState::instance.attackInfo.engineers + 1;

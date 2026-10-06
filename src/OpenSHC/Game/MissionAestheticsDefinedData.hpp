@@ -1244,9 +1244,9 @@ namespace Game {
         int field1222_0x1328[7]; // 0x00001328 length: 28
         int unknown3[914]; // 0x00001344 length: 3656
         int field1224_0x218c[6]; // 0x0000218C length: 24
-        int field1225_0x21a4[4]; // 0x000021A4 length: 16
+        int MissionScoreByDifficulty[4]; // 0x000021A4 length: 16
         int DifficultyEventMultipliers[4]; // 0x000021B4 length: 16
-        int field1227_0x21c4[40]; // 0x000021C4 length: 160
+        int EventConditionMinValue[40]; // 0x000021C4 length: 160
         int field1228_0x2264[40]; // 0x00002264 length: 160
         int field1229_0x2304[40]; // 0x00002304 length: 160
         int field1230_0x23a4[40]; // 0x000023A4 length: 160

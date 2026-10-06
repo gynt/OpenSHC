@@ -164,13 +164,13 @@ namespace UI {
                                 (int)((int)(piVar8 + 0x39)), iVar11 + iVar12, iVar6 + -0x1a + iVar14);
                         }
                         if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
-                            iVar6 = DAT_MissionDefinedData::instance.field36_0xff4[dVar9][3]
+                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
                                 + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                             DAT_CurrentlyRenderedSpriteID::instance
-                                = DAT_MissionDefinedData::instance.field36_0xff4[dVar9][0];
-                            iVar7 = DAT_MissionDefinedData::instance.field36_0xff4[dVar9][2]
+                                = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][0];
+                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][2]
                                 + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
-                            iVar11 = DAT_MissionDefinedData::instance.field36_0xff4[dVar9][1];
+                            iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
                             DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
                         } else {
@@ -294,7 +294,7 @@ namespace UI {
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 dVar9 = 0;
                 if (0 < DAT_GameCore::instance.furthestWarchestTrailMission) {
-                    local_4 = DAT_MissionDefinedData::instance.field36_0xff4[0] + 2;
+                    local_4 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[0] + 2;
                     do {
                         if (0x1c < (int)dVar9)
                             break;
@@ -451,7 +451,7 @@ namespace UI {
                 }
                 iVar13 = 0;
                 if (0 < DAT_GameCore::instance.furthestExtremeTrailMission) {
-                    local_4 = DAT_MissionDefinedData::instance.field36_0xff4[0] + 2;
+                    local_4 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[0] + 2;
                     do {
                         if (0x12 < iVar13)
                             break;
