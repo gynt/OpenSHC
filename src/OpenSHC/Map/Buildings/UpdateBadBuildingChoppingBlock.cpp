@@ -30,11 +30,11 @@ namespace Map {
         iVar5 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = 0;
-        piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].field28_0x58;
+        piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter;
         *piVar1 = *piVar1 + 1;
-        if (1 < DAT_BuildingsState::instance.buildings[iVar5].field28_0x58) {
+        if (1 < DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter) {
             iVar4 = DAT_GameState::instance.playerDataArray[sVar3].fearFactorLevel;
-            DAT_BuildingsState::instance.buildings[iVar5].field28_0x58 = 0;
+            DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter = 0;
             DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = (uint)(iVar4 < -3);
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock;
             *piVar1 = *piVar1 + 1;

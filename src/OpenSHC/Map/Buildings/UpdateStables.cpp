@@ -43,12 +43,12 @@ namespace Map {
             buildingID = DAT_CurrentBuildingID::instance;
         }
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-        piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].field28_0x58;
+        piVar3 = &DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter;
         *piVar3 = *piVar3 + 1;
-        if (5 < DAT_BuildingsState::instance.buildings[buildingID].field28_0x58) {
-            DAT_BuildingsState::instance.buildings[buildingID].field28_0x58 = 0;
+        if (5 < DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter) {
+            DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter = 0;
         }
-        if (DAT_BuildingsState::instance.buildings[buildingID].field28_0x58 < 1) {
+        if (DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter < 1) {
             if ((char)DAT_BuildingsState::instance.buildings[buildingID].numberOfAnimals < '\x01') {
                 DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0;
             } else if (DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField < '\x01') {

@@ -57,11 +57,11 @@ namespace Map {
         iVar7 = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag = 1;
-        piVar1 = &DAT_BuildingsState::instance.buildings[iVar7].field28_0x58;
+        piVar1 = &DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter;
         *piVar1 = *piVar1 + 1;
-        iVar10 = DAT_BuildingsState::instance.buildings[iVar7].field28_0x58;
+        iVar10 = DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter;
         if (1 < iVar10) {
-            DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 = 0;
+            DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter = 0;
         }
         if ((iVar10 == 1) && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)) {}
         bVar11 = DAT_BuildingsState::instance.buildings[iVar7].workers[0] != 0;

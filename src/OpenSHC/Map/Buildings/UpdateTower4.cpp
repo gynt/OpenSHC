@@ -142,9 +142,9 @@ namespace Map {
             } while (iVar1 < DAT_TileMapState::instance.constructionTileCount);
         }
         iVar1 = iVar5 * 0x32c;
-        sVar4 = DAT_BuildingsState::instance.buildings[iVar5].field261_0x2fa;
+        sVar4 = DAT_BuildingsState::instance.buildings[iVar5].tileScanCountdown;
         if ((0 < sVar4)
-            && (sVar4 = sVar4 + -1, DAT_BuildingsState::instance.buildings[iVar5].field261_0x2fa = sVar4, !sVar4)) {
+            && (sVar4 = sVar4 + -1, DAT_BuildingsState::instance.buildings[iVar5].tileScanCountdown = sVar4, !sVar4)) {
             iVar5 = 0;
             sVar4 = 0;
             do {
@@ -168,7 +168,7 @@ namespace Map {
             } while (iVar5 < DAT_TileMapState::instance.constructionTileCount);
             iVar1 = DAT_CurrentBuildingID::instance * 0x32c;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].hasUnitsOntop = sVar4;
-            DAT_BuildingsState::instance.buildings[iVar8].field261_0x2fa = 100;
+            DAT_BuildingsState::instance.buildings[iVar8].tileScanCountdown = 100;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar1 + 0x2e) != 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage3 + iVar1) = 0x7b;

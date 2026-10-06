@@ -64,7 +64,7 @@ namespace Map {
             int extraAnimationFrame1; // 0x0000004C length: 4
             int extraAnimationFrame2; // 0x00000050 length: 4
             int extraAnimationFrame3; // 0x00000054 length: 4
-            int field28_0x58; // 0x00000058 length: 4
+            int animationTickCounter; // 0x00000058 length: 4
             int extraOverlayImage1; // 0x0000005C length: 4
             int extraOverlayImage2; // 0x00000060 length: 4
             int extraOverlayImage3; // 0x00000064 length: 4
@@ -275,7 +275,7 @@ namespace Map {
             int insideUnitUID3; // 0x000002F0 length: 4
             int insideUnitUID4; // 0x000002F4 length: 4
             short hasUnitsOntop; // 0x000002F8 length: 2
-            short field261_0x2fa; // 0x000002FA length: 2
+            short tileScanCountdown; // 0x000002FA length: 2
             undefined1 padding_0x2fc[2]; // 0x000002FC length: 2
             short statueCommemoratingPlayerID; // 0x000002FE length: 2
             short outpostRelatedUnk1; // 0x00000300 length: 2
@@ -283,7 +283,7 @@ namespace Map {
             int tribeUID; // 0x00000304 length: 4
             short field268_0x308; // 0x00000308 length: 2
             short outpostRelatedUnk05; // 0x0000030A length: 2
-            short field270_0x30c; // 0x0000030C length: 2
+            short spawnUnitTypeIndex; // 0x0000030C length: 2
             short outpostRelatedUnk2; // 0x0000030E length: 2
             short outpostRelatedUnk3; // 0x00000310 length: 2
             short field273_0x312; // 0x00000312 length: 2

@@ -75,9 +75,9 @@ namespace Map {
         sVar2 = DAT_BuildingsState::instance.buildings[iVar6].oxTetherRelatedUnitID;
         if (sVar2 < 1) {
             if ((DAT_BuildingsState::instance.buildings[iVar6].workerID[0] != 0)
-                && (piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].field28_0x58, *piVar1 = *piVar1 + 1,
-                    99 < DAT_BuildingsState::instance.buildings[iVar6].field28_0x58)) {
-                DAT_BuildingsState::instance.buildings[iVar6].field28_0x58 = 0;
+                && (piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].animationTickCounter, *piVar1 = *piVar1 + 1,
+                    99 < DAT_BuildingsState::instance.buildings[iVar6].animationTickCounter)) {
+                DAT_BuildingsState::instance.buildings[iVar6].animationTickCounter = 0;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setBuildingInitialEntryTileTry,
                     DAT_BuildingsState::ptr)(iVar6, 1);
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,

@@ -47,10 +47,10 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
         DAT_BuildingsState::instance.buildings[iVar5].animationCycleCompleted = 0;
         DAT_BuildingsState::instance.buildings[iVar5].currentEmployeeCount = 0;
-        piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].field28_0x58;
+        piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter;
         *piVar1 = *piVar1 + 1;
-        if (1 < DAT_BuildingsState::instance.buildings[iVar5].field28_0x58) {
-            DAT_BuildingsState::instance.buildings[iVar5].field28_0x58 = 0;
+        if (1 < DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter) {
+            DAT_BuildingsState::instance.buildings[iVar5].animationTickCounter = 0;
         }
         DAT_BuildingsState::instance.buildings[iVar5].buildingIsVisuallyActive = 1;
         sVar3 = DAT_BuildingsState::instance.buildings[iVar5].state;

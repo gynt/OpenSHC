@@ -246,15 +246,15 @@ namespace Map {
                       .BreweryAnimationFrames6[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].campgroundVclock + iVar7)]
                 + 0x30;
         }
-        piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar7);
+        piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar7);
         *piVar2 = *piVar2 + 1;
-        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar7)) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar7) = 0;
+        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar7)) {
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar7) = 0;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar7) == 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar7) = 0;
         } else {
-            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar7) == 0) {
+            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar7) == 0) {
                 piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7);
                 *piVar2 = *piVar2 + 1;
             }

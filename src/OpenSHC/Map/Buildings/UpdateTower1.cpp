@@ -86,9 +86,9 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[6] = local_20[6];
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[7] = local_20[7];
     LAB_00418e05:
-        sVar2 = DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa;
+        sVar2 = DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown;
         if ((0 < sVar2)
-            && (sVar2 = sVar2 + -1, DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa = sVar2, !sVar2)) {
+            && (sVar2 = sVar2 + -1, DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown = sVar2, !sVar2)) {
             iVar5 = 0;
             sVar2 = 0;
             do {
@@ -112,7 +112,7 @@ namespace Map {
             } while (iVar5 < DAT_TileMapState::instance.constructionTileCount);
             iVar4 = DAT_CurrentBuildingID::instance * 0x32c;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].hasUnitsOntop = sVar2;
-            DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa = 100;
+            DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown = 100;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar4 + 0x2e) != 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage2 + iVar4) = 0x7e;

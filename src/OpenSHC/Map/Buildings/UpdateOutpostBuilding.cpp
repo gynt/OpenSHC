@@ -141,7 +141,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk3 = sVar3 + -1;
         }
         _tribeID = (int)DAT_BuildingsState::instance.buildings[iVar9].tribeID;
-        local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
+        local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex;
         if ((_tribeID)
             && (DAT_TribesState::instance.tribes[_tribeID].uid
                 != DAT_BuildingsState::instance.buildings[iVar9].tribeUID)) {
@@ -367,55 +367,55 @@ namespace Map {
             iVar8 = 0;
             if ((uVar4 & 1)) {
                 if (!iVar6) {
-                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field270_0x30c = 0;
+                    DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spawnUnitTypeIndex = 0;
                 }
                 iVar8 = 1;
             }
             if ((uVar4 & 2)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 1;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 1;
                 }
                 iVar8 = iVar8 + 1;
             }
             if ((uVar4 & 4)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 2;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 2;
                 }
                 iVar8 = iVar8 + 1;
             }
             if ((uVar4 & 8)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 3;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 3;
                 }
                 iVar8 = iVar8 + 1;
             }
             if ((uVar4 & 0x10)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 4;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 4;
                 }
                 iVar8 = iVar8 + 1;
             }
             if ((uVar4 & 0x20)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 5;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 5;
                 }
                 iVar8 = iVar8 + 1;
             }
             if ((uVar4 & 0x40)) {
                 if (iVar6 == iVar8) {
-                    DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 6;
+                    DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 6;
                 }
                 iVar8 = iVar8 + 1;
             }
             if (((uVar4 & 0x80)) && (iVar6 == iVar8)) {
-                DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 7;
+                DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex = 7;
             }
             if (DAT_BuildingsState::instance.buildings[iVar9].buildingType
                 == Map::Buildings::BT_OUTPOST_ARABIAN) {
-                psVar11 = &DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
+                psVar11 = &DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex;
                 *psVar11 = *psVar11 + 8;
             }
-            local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
+            local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex;
             _tribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribeForPlayer,
                 DAT_TribesState::ptr)((int)DAT_BuildingsState::instance.buildings[iVar9].owner);
             iVar9 = DAT_CurrentBuildingID::instance;

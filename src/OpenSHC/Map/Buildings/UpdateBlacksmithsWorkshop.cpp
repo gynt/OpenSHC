@@ -381,15 +381,15 @@ namespace Map {
         }
         *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar8) = iVar7;
     LAB_00413819:
-        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar8);
+        piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar8);
         *piVar1 = *piVar1 + 1;
-        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar8)) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar8) = 0;
+        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar8)) {
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar8) = 0;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar8) == 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar8) = 0;
         } else {
-            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar8) == 0) {
+            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar8) == 0) {
                 piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar8);
                 *piVar1 = *piVar1 + 1;
             }

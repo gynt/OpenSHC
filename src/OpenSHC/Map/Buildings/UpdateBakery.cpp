@@ -182,15 +182,15 @@ namespace Map {
                 *(uint*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = (0x17d < sVar5) + 0x43;
             }
         }
-        piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9);
+        piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar9);
         *piVar2 = *piVar2 + 1;
-        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9)) {
-            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9) = 0;
+        if (3 < *(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar9)) {
+            *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar9) = 0;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9) == 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar9) = 0;
         } else {
-            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].field28_0x58 + iVar9) == 0) {
+            if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].animationTickCounter + iVar9) == 0) {
                 piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar9);
                 *piVar2 = *piVar2 + 1;
             }

@@ -50,11 +50,11 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation
             = (ushort)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workers[0] != 0);
         DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;
-        piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].field28_0x58;
+        piVar1 = &DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter;
         *piVar1 = *piVar1 + 1;
-        iVar7 = DAT_BuildingsState::instance.buildings[buildingID].field28_0x58;
+        iVar7 = DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter;
         if (1 < iVar7) {
-            DAT_BuildingsState::instance.buildings[buildingID].field28_0x58 = 0;
+            DAT_BuildingsState::instance.buildings[buildingID].animationTickCounter = 0;
         }
         if (iVar7 == 1) {}
         cVar8 = DAT_BuildingsState::instance.buildings[buildingID].workers[0] != 0;

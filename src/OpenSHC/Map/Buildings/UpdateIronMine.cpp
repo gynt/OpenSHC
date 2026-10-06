@@ -47,10 +47,10 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar4 = DAT_CurrentBuildingID::instance;
         iVar5 = DAT_CurrentBuildingID::instance * 0x32c;
-        piVar1 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field28_0x58;
+        piVar1 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationTickCounter;
         *piVar1 = *piVar1 + 1;
-        if (DAT_BuildingsState::instance.buildings[iVar4].field28_0x58 < 2) {}
-        DAT_BuildingsState::instance.buildings[iVar4].field28_0x58 = 0;
+        if (DAT_BuildingsState::instance.buildings[iVar4].animationTickCounter < 2) {}
+        DAT_BuildingsState::instance.buildings[iVar4].animationTickCounter = 0;
         if (DAT_BuildingsState::instance.buildings[iVar4].workers[0] == 0) {
             DAT_BuildingsState::instance.buildings[iVar4].state = 0;
             DAT_BuildingsState::instance.buildings[iVar4].campgroundVclock = 0;

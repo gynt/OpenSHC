@@ -155,7 +155,7 @@ namespace Synchrony {
                         BVar1 == OpenSHC::Map::Buildings::BT_TOWER1
                             || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER4)))))) {
             DAT_BuildingsState::instance.buildings[iVar2].hasUnitsOntop = 1;
-            DAT_BuildingsState::instance.buildings[iVar2].field261_0x2fa = 100;
+            DAT_BuildingsState::instance.buildings[iVar2].tileScanCountdown = 100;
         }
         if (DAT_GameSynchronyState::instance.protocolInvokerPlayerID
             == DAT_GameSynchronyState::instance.currentPlayerSlotID) {

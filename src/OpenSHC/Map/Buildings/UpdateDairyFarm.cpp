@@ -64,10 +64,10 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag
             = (uint)(DAT_BuildingsState::instance.buildings[iVar7].workers[0] != 0);
-        DAT_BuildingsState::instance.buildings[iVar7].field28_0x58
-            = DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 + 1;
-        if (1 < DAT_BuildingsState::instance.buildings[iVar7].field28_0x58) {
-            DAT_BuildingsState::instance.buildings[iVar7].field28_0x58 = 0;
+        DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter
+            = DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter + 1;
+        if (1 < DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter) {
+            DAT_BuildingsState::instance.buildings[iVar7].animationTickCounter = 0;
             DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock
                 = DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock + 1;
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame1
