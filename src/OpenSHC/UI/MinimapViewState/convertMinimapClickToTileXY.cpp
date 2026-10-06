@@ -13,13 +13,13 @@ namespace UI {
         short sVar1;
         int iVar2;
         int iVar3;
-        if (this->field15_0x3c) {
+        if (this->minimapClickEnabled) {
             iVar2 = DAT_MouseState::instance.screenSpaceY - this->y;
             iVar3 = 0;
             *param_1 = (((DAT_MouseState::instance.screenSpaceX - this->x) * this->oneOrTwo) / this->widthFactor + 6
-                           + this->field5_0x14)
+                           + this->tileOffsetX)
                 * 0x20;
-            iVar2 = ((this->oneOrTwo * iVar2) / this->heightFactor + this->field4_0x10) * 8;
+            iVar2 = ((this->oneOrTwo * iVar2) / this->heightFactor + this->tileOffsetY) * 8;
             *param_2 = iVar2;
             if (DAT_TileMapState::instance.mapOrientation) {
                 if (DAT_TileMapState::instance.mapOrientation == 6) {

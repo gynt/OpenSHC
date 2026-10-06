@@ -290,19 +290,19 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::createUnitSelection, DAT_UnitsState::ptr)();
             }
             if ((!DAT_ViewportRenderState::instance.viewportState.field0_0x0)
-                && (!DAT_MinimapViewState::instance.field15_0x3c)) {}
+                && (!DAT_MinimapViewState::instance.minimapClickEnabled)) {}
             if (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_NULL) {}
             if (DAT_MouseState::instance.rightClickStart) {
                 if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                         == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                     || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                         == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
-                    if (DAT_MinimapViewState::instance.field15_0x3c) {}
+                    if (DAT_MinimapViewState::instance.minimapClickEnabled) {}
                     DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab
                         = DAT_GameCore::instance.tabTypeSiegeSubset;
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_BUILD_MENU, 0);
-                } else if ((DAT_MinimapViewState::instance.field15_0x3c)
+                } else if ((DAT_MinimapViewState::instance.minimapClickEnabled)
                     && (DAT_TileMapState::instance.shiftRelated0or3 == 1)) {
                 }
                 DAT_UnitsState::instance.lastSelectedUnitID = 0;
@@ -314,7 +314,7 @@ namespace UI {
                     Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                 DAT_TileMapState::instance.shiftRelated0or3 = 0;
             }
-            if (!DAT_MinimapViewState::instance.field15_0x3c) {
+            if (!DAT_MinimapViewState::instance.minimapClickEnabled) {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
             }
@@ -741,7 +741,7 @@ namespace UI {
                                 !BVar8)))) {
                     _otherUnitIDUnk = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(2);
-                    if (((!_otherUnitIDUnk) || (DAT_MinimapViewState::instance.field15_0x3c))
+                    if (((!_otherUnitIDUnk) || (DAT_MinimapViewState::instance.minimapClickEnabled))
                         || (_shooterID = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk),
                             !_shooterID)) {
                         if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
@@ -974,7 +974,7 @@ namespace UI {
                                         if (((BVar8)
                                                 && (((int)DAT_BuildingsState::instance.buildings[_shooterID].owner
                                                         == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                                                    && (!DAT_MinimapViewState::instance.field15_0x3c))))
+                                                    && (!DAT_MinimapViewState::instance.minimapClickEnabled))))
                                             && ((
                                                 BVar5 = DAT_BuildingsState::instance.buildings[_shooterID].buildingType,
                                                 BVar5 == Map::Buildings::BT_CATAPULT

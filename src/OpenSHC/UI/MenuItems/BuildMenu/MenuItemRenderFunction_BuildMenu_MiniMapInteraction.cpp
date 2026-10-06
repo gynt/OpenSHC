@@ -24,9 +24,9 @@ namespace UI {
                     && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU))
                 && ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == UI::Enums::BMTT_SOLDIERS
                     || (DAT_TileMapState::instance.shiftRelated0or3 == 1)))) {
-                DAT_MinimapViewState::instance.field15_0x3c = 1;
+                DAT_MinimapViewState::instance.minimapClickEnabled = 1;
             }
-            DAT_MinimapViewState::instance.field15_0x3c = 0;
+            DAT_MinimapViewState::instance.minimapClickEnabled = 0;
         }
 
     }

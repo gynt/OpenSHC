@@ -29,8 +29,8 @@ void Map::ResetSomeValuesFunctionUnk()
 {
     DAT_GameCore::instance.isBinkVideoPlaying = 0;
     DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying = FALSE;
-    DAT_BuildingsState::instance.field28_0x18e05c = 0;
-    DAT_BuildingsState::instance.field29_0x18e060 = 0;
+    DAT_BuildingsState::instance.selectedBuildingID = 0;
+    DAT_BuildingsState::instance.selectedBuildingUID = 0;
     MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
         UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
     MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(

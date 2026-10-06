@@ -166,9 +166,10 @@ namespace UI {
                                                 && (local_4c = 0, 0 < param_3)) {
                                                 do {
                                                     if ((short)uVar9 == 0) {
-                                                        uVar9 = (uint)this
-                                                                    ->field18_0x27144[((param_5 + local_4c) * 400) / 2
-                                                                        + uVar6 + local_38];
+                                                        uVar9
+                                                            = (uint)this
+                                                                  ->minimapPixelBuffer[((param_5 + local_4c) * 400) / 2
+                                                                      + uVar6 + local_38];
                                                         param_4 = uVar9;
                                                     }
                                                     *(undefined2*)((uVar6 + local_38) * 2 + 0x1a31654
@@ -190,7 +191,7 @@ namespace UI {
                                                 for (iVar7 = 0; iVar7 < param_3; iVar7++) {
                                                     int iVar5 = (param_5 + iVar7) / local_58;
                                                     if ((short)uVar9 == 0) {
-                                                        uVar9 = (uint)this->field18_0x27144[(iVar5 * 400) / 2
+                                                        uVar9 = (uint)this->minimapPixelBuffer[(iVar5 * 400) / 2
                                                             + iVar12 / local_58];
                                                         param_4 = uVar9;
                                                     }

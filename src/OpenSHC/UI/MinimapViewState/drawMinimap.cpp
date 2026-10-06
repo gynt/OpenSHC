@@ -154,7 +154,7 @@ namespace UI {
         iVar10 = _mapSize / 2;
         if (iVar10 < iVar8) {
             iVar14 = iVar14 - (iVar8 - iVar10) / 2;
-            this->field4_0x10 = iVar12 / 2 - (iVar9 - _mapSize) / 2;
+            this->tileOffsetY = iVar12 / 2 - (iVar9 - _mapSize) / 2;
             local_10 = xOffset - iVar7 / 2;
             yOffset = yOffset - DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2;
             bVar4 = local_10 < local_30;
@@ -181,9 +181,9 @@ namespace UI {
             if ((xOffset < local_30) || (iVar14 = iVar6 - iVar8, iVar14 < xOffset)) {
                 xOffset = iVar14;
             }
-            this->field4_0x10 = local_2c;
-            if ((local_2c <= iVar12) && (iVar14 = (iVar13 - iVar9) + -1, this->field4_0x10 = iVar12, iVar14 < iVar12)) {
-                this->field4_0x10 = iVar14;
+            this->tileOffsetY = local_2c;
+            if ((local_2c <= iVar12) && (iVar14 = (iVar13 - iVar9) + -1, this->tileOffsetY = iVar12, iVar14 < iVar12)) {
+                this->tileOffsetY = iVar14;
             }
             if ((local_10 < local_30)
                 || (local_30 = (iVar6 - DAT_ViewportRenderState::instance.viewportState.viewportHeight) + 5,
@@ -199,11 +199,11 @@ namespace UI {
                 }
             }
         }
-        this->field5_0x14 = xOffset;
+        this->tileOffsetX = xOffset;
         iVar6 = ((local_10 - xOffset) * widthFactor) / local_8 + xPos;
-        iVar12 = ((yOffset - this->field4_0x10) * heightFactor) / local_8 + yPos;
+        iVar12 = ((yOffset - this->tileOffsetY) * heightFactor) / local_8 + yPos;
         iVar13 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
-        iVar14 = this->field4_0x10 / 2;
+        iVar14 = this->tileOffsetY / 2;
         if (!DAT_TileMapState::instance.mapOrientation) {
             local_c = 8;
         } else if (DAT_TileMapState::instance.mapOrientation == 6) {

@@ -46,7 +46,7 @@ namespace UI {
         }
         this->lastRenderedXOffset = xOffset;
         this->lastRenderedYOffset = yOffset;
-        if ((DAT_TileMapState::instance.DAT_SelectionIconType) && (this->field15_0x3c)) {
+        if ((DAT_TileMapState::instance.DAT_SelectionIconType) && (this->minimapClickEnabled)) {
             if ((DAT_MenuHandlerState::instance.x + 571 <= DAT_MouseState::instance.screenSpaceX)
                 && (DAT_MouseState::instance.screenSpaceX < DAT_MenuHandlerState::instance.x + 697)) {
                 if ((DAT_MenuHandlerState::instance.y + 465 <= DAT_MouseState::instance.screenSpaceY)

@@ -253,8 +253,8 @@ namespace UI {
                     break;
                 case Map::Buildings::BT_SIEGETOWER_PLACED:
                 switchD_004633df_caseD_45:
-                    DAT_BuildingsState::instance.field28_0x18e05c = buildingID;
-                    DAT_BuildingsState::instance.field29_0x18e060
+                    DAT_BuildingsState::instance.selectedBuildingID = buildingID;
+                    DAT_BuildingsState::instance.selectedBuildingUID
                         = DAT_BuildingsState::instance.buildings[buildingID].uid;
                     return FALSE;
                 case Map::Buildings::BT_WATERPOT:
@@ -332,8 +332,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
                             DAT_TextEditorState::ptr)();
                     LAB_0046340c:
-                        DAT_BuildingsState::instance.field28_0x18e05c = buildingID;
-                        DAT_BuildingsState::instance.field29_0x18e060
+                        DAT_BuildingsState::instance.selectedBuildingID = buildingID;
+                        DAT_BuildingsState::instance.selectedBuildingUID
                             = DAT_BuildingsState::instance.buildings[buildingID].uid;
                         return FALSE;
                     }
@@ -441,8 +441,8 @@ namespace UI {
                 MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(8,
                     (BuildingType)((int)((int)(short)DAT_BuildingsState::instance.buildings[buildingID].buildingType)));
             }
-            DAT_BuildingsState::instance.field28_0x18e05c = 0;
-            DAT_BuildingsState::instance.field29_0x18e060 = 0;
+            DAT_BuildingsState::instance.selectedBuildingID = 0;
+            DAT_BuildingsState::instance.selectedBuildingUID = 0;
             return TRUE;
         }
 

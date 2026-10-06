@@ -14,7 +14,7 @@ namespace UI {
         int iVar4;
         int iVar6;
         int iVar7;
-        if (((!DAT_MinimapViewState::instance.field15_0x3c)
+        if (((!DAT_MinimapViewState::instance.minimapClickEnabled)
                 && (DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile))
             && ((DAT_TileMapState::instance
                      .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]

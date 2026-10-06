@@ -33,12 +33,12 @@ namespace UI {
         DAT_ViewportRenderState::instance.viewportState.viewportX
             = ((((DAT_MouseState::instance.screenSpaceX - this->x) / this->widthFactor) * this->oneOrTwo
                    - (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2)
-                  + this->field5_0x14)
+                  + this->tileOffsetX)
             * 0x20;
         DAT_ViewportRenderState::instance.viewportState.viewportY
             = ((((DAT_MouseState::instance.screenSpaceY - this->y) / this->heightFactor) * this->oneOrTwo
                    - DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2)
-                  + this->field4_0x10)
+                  + this->tileOffsetY)
             * 8;
         MACRO_CALL_MEMBER(
             Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
