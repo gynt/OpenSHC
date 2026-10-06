@@ -258,14 +258,14 @@ namespace Map {
                 piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7);
                 *piVar2 = *piVar2 + 1;
             }
-            if ((char)DAT_BuildingDefinedData::instance
-                    .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7)]
+            if ((char)DAT_BuildingDefinedData::instance.SecondaryOverlayAnimationFrames[*(
+                    int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7)]
                 < '\x01') {
                 *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7) = 0;
             }
             *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar7)
-                = (char)DAT_BuildingDefinedData::instance
-                      .field81_0x55c0[*(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7)]
+                = (char)DAT_BuildingDefinedData::instance.SecondaryOverlayAnimationFrames[*(
+                      int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar7)]
                 + 0x10;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {

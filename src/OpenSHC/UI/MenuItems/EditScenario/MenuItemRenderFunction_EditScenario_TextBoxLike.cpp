@@ -47,7 +47,7 @@ namespace UI {
             int iVar4;
             if ((param_1 == 7)
                 && (DAT_MissionAestheticsDefinedData::instance
-                        .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                        .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex]
                     == 0)) {
                 return;
             }
@@ -162,7 +162,7 @@ namespace UI {
                                   .data
                         + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xc) = (short)(lVar3
                         / DAT_MissionAestheticsDefinedData::instance
-                            .field1229_0x2304[DAT_MapPropertiesState::instance.invasionTroopIndex]);
+                            .EventConditionValueScale[DAT_MapPropertiesState::instance.invasionTroopIndex]);
                 }
             LAB_004bf4f3:
                 iVar1 = DAT_ButtonY::instance + 6;

@@ -150,7 +150,7 @@ namespace UI {
                                       .EventConditionMinValue[DAT_MapPropertiesState::instance.invasionTroopIndex];
                         }
                         if (DAT_MissionAestheticsDefinedData::instance
-                                .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex]
                             != 0) {
                             destination = (short*)((int)&DAT_MapPropertiesState::instance
                                                        .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -161,7 +161,7 @@ namespace UI {
                                 DAT_MissionAestheticsDefinedData::instance
                                     .EventConditionMinValue[DAT_MapPropertiesState::instance.invasionTroopIndex],
                                 (dword)((int)(DAT_MissionAestheticsDefinedData::instance
-                                        .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex])),
+                                        .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex])),
                                 (dword)((int)((int)*destination)), (dword)((int)(destination)),
                                 (undefined*)MACRO_CALL(UI::Helpers_Func::CaptureCurrentTimeToUnknownTime01));
                             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
@@ -179,7 +179,7 @@ namespace UI {
                                               .data
                             + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xc);
                         if ((int)sVar3 < DAT_MissionAestheticsDefinedData::instance
-                                .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex]) {
+                                .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex]) {
                             *(short*)((int)&DAT_MapPropertiesState::instance
                                           .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                           .data
@@ -189,10 +189,10 @@ namespace UI {
                     } else if (param_1 == 2000) {
                         iVar8 = 0;
                         if (DAT_MissionAestheticsDefinedData::instance
-                                .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                             != 0) {
                             if (DAT_MissionAestheticsDefinedData::instance
-                                    .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                    .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                                 == 1) {
                                 iVar7
                                     = (int)*(char*)((int)&DAT_MapPropertiesState::instance
@@ -239,7 +239,7 @@ namespace UI {
                             }
                         LAB_004b98bd:
                             if (DAT_MissionAestheticsDefinedData::instance
-                                    .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                    .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                                 == 2) {
                                 pcVar6 = (char*)((int)&DAT_MapPropertiesState::instance
                                                      .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -262,10 +262,10 @@ namespace UI {
                 } else {
                     iVar8 = 0;
                     if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                         != 0) {
                         if (DAT_MissionAestheticsDefinedData::instance
-                                .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                             == 1) {
                             iVar7 = (int)*(char*)((int)&DAT_MapPropertiesState::instance
                                                       .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -309,7 +309,7 @@ namespace UI {
                             }
                         }
                         if (DAT_MissionAestheticsDefinedData::instance
-                                .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                                .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                             == 2) {
                             pcVar6 = (char*)((int)&DAT_MapPropertiesState::instance
                                                  .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]

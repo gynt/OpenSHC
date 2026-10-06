@@ -149,7 +149,7 @@ namespace Map {
                     }
                 }
                 iVar2 = DAT_CurrentBuildingID::instance;
-                bVar1 = DAT_BuildingDefinedData::instance.field142_0x6b44
+                bVar1 = DAT_BuildingDefinedData::instance.GateHouseOverlayAnimationFrames
                             [DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex];
                 if ('\0' < (char)bVar1) {
                     if (local_14 != 0x50) {

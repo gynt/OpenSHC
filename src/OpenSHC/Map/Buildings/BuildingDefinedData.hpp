@@ -115,7 +115,7 @@ namespace Map {
             byte field78_0x54cc[144]; // 0x000054CC length: 144
             byte PoleturnersWorkshopAnimationFrames4[72]; // 0x0000555C length: 72
             byte PoleturnersWorkshopAnimationFrames5[28]; // 0x000055A4 length: 28
-            byte field81_0x55c0[20]; // 0x000055C0 length: 20
+            byte SecondaryOverlayAnimationFrames[20]; // 0x000055C0 length: 20
             byte BreweryAnimationFrames6[260]; // 0x000055D4 length: 260
             byte AnimTannerSolitary[44]; // 0x000056D8 length: 44
             byte AnimTanner[12]; // 0x00005704 length: 12
@@ -176,7 +176,7 @@ namespace Map {
             byte DrawBridgeAnimationFrames1[32]; // 0x00006AE4 length: 32
             byte DrawBridgeAnimationFrames2[36]; // 0x00006B04 length: 36
             byte GateHouseLargeAnimationFrames[28]; // 0x00006B28 length: 28
-            byte field142_0x6b44[32]; // 0x00006B44 length: 32
+            byte GateHouseOverlayAnimationFrames[32]; // 0x00006B44 length: 32
             byte DairyFarmAnimationFrames1[264]; // 0x00006B64 length: 264
             byte DairyFarmAnimationFrames2[664]; // 0x00006C6C length: 664
             byte DairyFarmAnimationFrames3[448]; // 0x00006F04 length: 448

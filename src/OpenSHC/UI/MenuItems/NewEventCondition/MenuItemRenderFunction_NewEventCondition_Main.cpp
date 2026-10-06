@@ -100,9 +100,11 @@ namespace UI {
                             if (DAT_MissionAestheticsDefinedData::instance.EventConditionMinValue[iVar1 + 0xe] == 1) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                                    (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[(
-                                        char)DAT_MapPropertiesState::instance.buildingAvailabilityRelatedFlags[iVar1 * 2
-                                        + DAT_MapPropertiesState::instance.currentEventID * 0x72 + 0xff]])),
+                                    (int)((int)(DAT_MissionAestheticsDefinedData::instance
+                                            .EventConditionOptionTextOffsets[(char)DAT_MapPropertiesState::instance
+                                                    .buildingAvailabilityRelatedFlags[iVar1 * 2
+                                                        + DAT_MapPropertiesState::instance.currentEventID * 0x72
+                                                        + 0xff]])),
                                     (int)((int)(DAT_ButtonX::instance + 0xe)), (int)((int)(DAT_ButtonY::instance + 7)),
                                     OpenSHC::Text::TTA_LEFT, uVar2, 0x12, TRUE);
                             }
@@ -239,7 +241,7 @@ namespace UI {
             if (param_1 < 2000) {
                 if (param_1 == 2000) {
                     if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                         == 0) {
                         DAT_ButtonUnknownZero::instance = 0;
                     }
@@ -255,11 +257,11 @@ namespace UI {
                         if (param_1 != 1001)
                             goto switchD_004c01f4_caseD_0;
                         iVar1 = DAT_MissionAestheticsDefinedData::instance
-                                    .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex];
+                                    .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex];
                         goto joined_r0x004c072d;
                     }
                     if (DAT_MissionAestheticsDefinedData::instance
-                            .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            .EventConditionMaxValue[DAT_MapPropertiesState::instance.invasionTroopIndex]
                         == 0) {
                         DAT_ButtonUnknownZero::instance = 0;
                     }
@@ -280,13 +282,13 @@ namespace UI {
             if (param_1 != 2001) {
                 if (param_1 == 0x7d2) {
                     if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                         == 1) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[*(
+                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.EventConditionOptionTextOffsets[*(
                                 char*)(&DAT_MapPropertiesState::instance
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
@@ -295,7 +297,7 @@ namespace UI {
                             (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
                     }
                     if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                            .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                         != 2) {}
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -313,7 +315,7 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
             }
             iVar1 = DAT_MissionAestheticsDefinedData::instance
-                        .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex];
+                        .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex];
         joined_r0x004c072d:
             if (!iVar1) {
                 DAT_ButtonUnknownZero::instance = 0;

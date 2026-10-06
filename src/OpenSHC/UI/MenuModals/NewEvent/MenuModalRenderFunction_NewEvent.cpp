@@ -67,7 +67,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, iVar1);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar2, iVar12, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
-                    if (DAT_MissionAestheticsDefinedData::instance.field1230_0x23a4[iVar5] == 1) {
+                    if (DAT_MissionAestheticsDefinedData::instance.EventConditionParamKind[iVar5] == 1) {
                         iVar1 = iVar3 + 0x9e;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
@@ -81,7 +81,7 @@ namespace UI {
                         iVar6 = iVar4;
                         pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[*(
+                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.EventConditionOptionTextOffsets[*(
                                 char*)(&DAT_MapPropertiesState::instance
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
@@ -92,7 +92,7 @@ namespace UI {
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                             ")", iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                     }
-                    if (DAT_MissionAestheticsDefinedData::instance.field1230_0x23a4[iVar5] == 2) {
+                    if (DAT_MissionAestheticsDefinedData::instance.EventConditionParamKind[iVar5] == 2) {
                         iVar1 = iVar3 + 0x9e;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
@@ -123,7 +123,7 @@ namespace UI {
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
                             + iVar5 * 4 + 0xc)
-                            * DAT_MissionAestheticsDefinedData::instance.field1229_0x2304[iVar5],
+                            * DAT_MissionAestheticsDefinedData::instance.EventConditionValueScale[iVar5],
                         iVar3 + 0x1c2, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                     x = x + 1;
                     iVar4 = iVar4 + 0x18;

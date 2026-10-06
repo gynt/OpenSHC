@@ -1247,14 +1247,14 @@ namespace Game {
         int MissionScoreByDifficulty[4]; // 0x000021A4 length: 16
         int DifficultyEventMultipliers[4]; // 0x000021B4 length: 16
         int EventConditionMinValue[40]; // 0x000021C4 length: 160
-        int field1228_0x2264[40]; // 0x00002264 length: 160
-        int field1229_0x2304[40]; // 0x00002304 length: 160
-        int field1230_0x23a4[40]; // 0x000023A4 length: 160
+        int EventConditionMaxValue[40]; // 0x00002264 length: 160
+        int EventConditionValueScale[40]; // 0x00002304 length: 160
+        int EventConditionParamKind[40]; // 0x000023A4 length: 160
         byte field1231_0x2444[32][100]; // 0x00002444 length: 3200
         int field1232_0x30c4[25]; // 0x000030C4 length: 100
         int field1233_0x3128; // 0x00003128 length: 4
         int field1234_0x312c[174]; // 0x0000312C length: 696
-        int field1235_0x33e4[25]; // 0x000033E4 length: 100
+        int EventConditionOptionTextOffsets[25]; // 0x000033E4 length: 100
         int field1236_0x3448[5]; // 0x00003448 length: 20
         int field1237_0x345c[22]; // 0x0000345C length: 88
         int field1238_0x34b4[40]; // 0x000034B4 length: 160

@@ -39,7 +39,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(199, 0x66, x, y, width, height);
             if (DAT_MissionAestheticsDefinedData::instance
-                    .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                    .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                 != 0) {
                 numInGroup = DAT_MapPropertiesState::instance.invasionTroopIndex + 0x6a;
                 if (0x7d < numInGroup) {
