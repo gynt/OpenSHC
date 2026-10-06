@@ -141,8 +141,8 @@ namespace Map {
                 if (param_5) {
                     damageUnk = 0;
                 }
-                DAT_TroopValueState::instance.attackInfo.field128059_0x469e0
-                    = DAT_TroopValueState::instance.attackInfo.field128059_0x469e0 + 1;
+                DAT_TroopValueState::instance.attackInfo.buildingDamageEventCount
+                    = DAT_TroopValueState::instance.attackInfo.buildingDamageEventCount + 1;
                 DAT_GameCore::instance.cowPoisonTrackerUnk
                     = DAT_GameCore::instance.cowPoisonTrackerUnk + damageUnk * 10;
                 if ((((!param_5)

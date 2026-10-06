@@ -177,7 +177,7 @@ namespace Map {
         int moat3; // 0x0003FC4C length: 4
         AttackInfoSubArrayElement1 moatValuesArray[562]; // 0x0003FC50 length: 8992
         int createTribeAmount; // 0x00041F70 length: 4
-        EngineerBuildingAndCountPair field127624_0x41f74[250]; // 0x00041F74 length: 2000
+        EngineerBuildingAndCountPair engineerBuildQueue[250]; // 0x00041F74 length: 2000
         int field127625_0x42744; // 0x00042744 length: 4
         int people1; // 0x00042748 length: 4
         int people2; // 0x0004274C length: 4
@@ -199,8 +199,8 @@ namespace Map {
         undefined1 padding_0x46910[196]; // 0x00046910 length: 196
         int field128056_0x469d4; // 0x000469D4 length: 4
         int field128057_0x469d8; // 0x000469D8 length: 4
-        int field128058_0x469dc; // 0x000469DC length: 4
-        int field128059_0x469e0; // 0x000469E0 length: 4
+        int enemyUnitsInsideCastleCount; // 0x000469DC length: 4
+        int buildingDamageEventCount; // 0x000469E0 length: 4
         int knights; // 0x000469E4 length: 4
         int ranged; // 0x000469E8 length: 4
         undefined1 padding_0x469ec[8]; // 0x000469EC length: 8

@@ -64,10 +64,9 @@ namespace Map {
                 iVar7 = 0;
                 if (0 < (char)bVar1) {
                     do {
-                        DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[iVar5].engineerBuildingType
-                            = MVar3;
+                        DAT_TroopValueState::instance.attackInfo.engineerBuildQueue[iVar5].engineerBuildingType = MVar3;
                         DAT_TroopValueState::instance.attackInfo
-                            .field127624_0x41f74[DAT_TroopValueState::instance.attackInfo.createTribeAmount]
+                            .engineerBuildQueue[DAT_TroopValueState::instance.attackInfo.createTribeAmount]
                             .engineerCount = iVar4;
                         iVar5 = DAT_TroopValueState::instance.attackInfo.createTribeAmount + 1;
                         iVar8 = iVar8 + iVar4;
@@ -88,10 +87,10 @@ namespace Map {
                 do {
                     if (0xf9 < iVar5)
                         break;
-                    DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[iVar5].engineerBuildingType
+                    DAT_TroopValueState::instance.attackInfo.engineerBuildQueue[iVar5].engineerBuildingType
                         = (Commands::MappersEnum)(iVar4);
                     DAT_TroopValueState::instance.attackInfo
-                        .field127624_0x41f74[DAT_TroopValueState::instance.attackInfo.createTribeAmount]
+                        .engineerBuildQueue[DAT_TroopValueState::instance.attackInfo.createTribeAmount]
                         .engineerCount = iVar7;
                     iVar5 = DAT_TroopValueState::instance.attackInfo.createTribeAmount + 1;
                     iVar6 = iVar6 + 1;
@@ -129,7 +128,7 @@ namespace Map {
                 param_1 = 0;
                 if (0 < DAT_TroopValueState::instance.attackInfo.createTribeAmount) {
                 LAB_0051b904:
-                    _unitCount = DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerCount;
+                    _unitCount = DAT_TroopValueState::instance.attackInfo.engineerBuildQueue[param_1].engineerCount;
                     _tribeID2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe,
                         DAT_TribesState::ptr)(DAT_TribesState::instance.tribes[_tribeID].owner, 0);
                     _maxUnits = DAT_UnitsState::instance.maxUnitCount;
@@ -165,15 +164,14 @@ namespace Map {
             _unitID = _unitID + 1;
             if (DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
             if (!param_2) {
-                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
-                                      placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers,
-                    this)(_tribeID2,
-                    DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerBuildingType, 0,
+                MACRO_CALL_MEMBER(
+                    Map::Units::TroopValueState_Func::placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers, this)(
+                    _tribeID2,
+                    DAT_TroopValueState::instance.attackInfo.engineerBuildQueue[param_1].engineerBuildingType, 0,
                     Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED);
             } else {
-                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentAtAttackAngle, this)(
-                    _tribeID2,
-                    DAT_TroopValueState::instance.attackInfo.field127624_0x41f74[param_1].engineerBuildingType);
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentAtAttackAngle, this)(_tribeID2,
+                    DAT_TroopValueState::instance.attackInfo.engineerBuildQueue[param_1].engineerBuildingType);
             }
             param_1 = param_1 + 1;
             if (DAT_TroopValueState::instance.attackInfo.createTribeAmount <= param_1) {}

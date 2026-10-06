@@ -32,17 +32,17 @@ namespace Audio {
                     || DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .lordID
                         <= 0) {
-                    DAT_TroopValueState::instance.attackInfo.field128058_0x469dc = 0;
+                    DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount = 0;
                 } else {
-                    if (0 < DAT_TroopValueState::instance.attackInfo.field128059_0x469e0
+                    if (0 < DAT_TroopValueState::instance.attackInfo.buildingDamageEventCount
                         && DAT_TroopValueState::instance.attackInfo.field128057_0x469d8 == 1) {
                         DAT_TroopValueState::instance.attackInfo.field128057_0x469d8 = 2;
                         /* "the enemy has breached the walls!" */
                         MACRO_CALL_MEMBER(SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             s_General_Warning15_wav_005a6ce4);
                     }
-                    if (DAT_TroopValueState::instance.attackInfo.field128058_0x469dc) {
-                        DAT_TroopValueState::instance.attackInfo.field128058_0x469dc = 0;
+                    if (DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount) {
+                        DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount = 0;
                         if (90000 < timeGetTime()
                                 - DAT_SoundEffectsHelperData1::instance
                                     .DAT_enemyInsideCastleSoundWarningCooldownTimer) {

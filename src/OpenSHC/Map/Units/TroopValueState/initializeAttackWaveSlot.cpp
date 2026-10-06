@@ -25,8 +25,8 @@ namespace Map {
             this->attackInfo.counter = 0x10;
             this->attackInfo.field_0x20e00 = 0xffffffff;
             this->attackInfo.field128057_0x469d8 = 0;
-            this->attackInfo.field128059_0x469e0 = 0;
-            this->attackInfo.field128058_0x469dc = 0;
+            this->attackInfo.buildingDamageEventCount = 0;
+            this->attackInfo.enemyUnitsInsideCastleCount = 0;
             this->attackInfo.playerInfo[0].field22_0x3ea4 = 0;
             this->attackInfo.playerInfo[0].field_0x3ea8 = 0;
             this->attackInfo.playerInfo[1].field22_0x3ea4 = 0;
