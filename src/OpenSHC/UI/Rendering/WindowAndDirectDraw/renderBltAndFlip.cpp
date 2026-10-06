@@ -31,7 +31,7 @@ namespace UI {
             if (99 < param_1) {
                 param_1 = param_1 + -100;
             }
-            bVar2 = this->mbr_0xd0 != 0;
+            bVar2 = this->pendingBltMode != 0;
             if (param_1) {
                 this->windowMoveEventBlitCountdown = 0;
             }
@@ -51,7 +51,7 @@ namespace UI {
              */
             if (this->unk_resetViewportRelated == 1) {
                 bVar2 = false;
-                this->mbr_0xd0 = 0;
+                this->pendingBltMode = 0;
             } else if ((int)(_currentTime - this->windowRenderTimeUnk_0x1e0) < 5)
                 goto LAB_004705e6;
             this->windowRenderTimeUnk_0x1e0 = _currentTime;
@@ -79,8 +79,8 @@ namespace UI {
                         this->directDrawOffscreenSurfacePointer_screenMenu, (tagRECT*)0xf983e8, 0x10);
                 }
             }
-            if (this->mbr_0xd0) {
-                if (this->mbr_0xd0 == 2) {
+            if (this->pendingBltMode) {
+                if (this->pendingBltMode == 2) {
                     iVar1 = 0;
                 }
                 _sourceRect.left = DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX;
@@ -97,7 +97,7 @@ namespace UI {
                     this)(&_destinationRect, &_sourceRect);
                 this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect, this->directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000,
                     (LPDDBLTFX)0x0);
-                if ((this->unk_resetViewportRelated == 2) && (this->mbr_0xd0 != 2)) {
+                if ((this->unk_resetViewportRelated == 2) && (this->pendingBltMode != 2)) {
                     this->mbr_0xcc = this->mbr_0xcc + 1;
                     _sourceRect.top = this->resolutionY + -0x80;
                     _sourceRect.bottom = this->resolutionY;
@@ -152,7 +152,7 @@ namespace UI {
         LAB_0047040e:
             if (this->NOTSelfBufferOrWindowMode_0xf8 == TRUE) {
                 this->directDrawPrimarySurfacePointer->Flip((IDirectDrawSurface*)0x0, 1);
-                if ((this->unk_resetViewportRelated == 2) && (this->mbr_0xd0 != 2)) {
+                if ((this->unk_resetViewportRelated == 2) && (this->pendingBltMode != 2)) {
                     this->mbr_0xcc = this->mbr_0xcc + 1;
                     _sourceRect.top = this->resolutionY + -0x80;
                     _sourceRect.bottom = this->resolutionY;
@@ -205,7 +205,7 @@ namespace UI {
                 }
             }
         LAB_004705da:
-            this->mbr_0xd0 = 0;
+            this->pendingBltMode = 0;
             this->unk_resetViewportRelated = 0;
         LAB_004705e6:;
         }

@@ -21,14 +21,14 @@ namespace UI {
             BOOLEnum runAsExclusiveFullscreen, ScreenResolutionEnum resEnum)
         {
             dword dVar1;
-            dVar1 = this->mbr_0xd0;
+            dVar1 = this->pendingBltMode;
             if (this->drawingReady_0x0) {
-                this->mbr_0xd0 = 0;
+                this->pendingBltMode = 0;
                 MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     this->byteSizeofScreenResolution, '\0', (void*)((int)(this->surfacePointer_screenMenu)));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip, this)(1);
             }
-            this->mbr_0xd0 = dVar1;
+            this->pendingBltMode = dVar1;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(
                 TRUE);
             this->runGameAsExclusiveFullscreen = runAsExclusiveFullscreen;
@@ -42,7 +42,7 @@ namespace UI {
                 if (this->drawingReady_0x0) {
                 LAB_00472a5f:
                     this->unk_resetViewportRelated = 2;
-                    this->field37_0xdc = 1;
+                    this->pendingMenuRedraw = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
                         DAT_BinkControlState::ptr)(0);
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,

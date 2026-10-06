@@ -48,10 +48,10 @@ namespace UI {
                 if (((DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_SIEGETOWER)
                         && (DAT_GameCore::instance.activeMenuTab.tabType
                             != OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD))
-                    || (DAT_WindowAndDirectDraw::instance.mbr_0xd0 = 2,
+                    || (DAT_WindowAndDirectDraw::instance.pendingBltMode = 2,
                         DAT_GameCore::instance.currentMenuViewType
                             == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU)) {
-                    DAT_WindowAndDirectDraw::instance.mbr_0xd0 = 1;
+                    DAT_WindowAndDirectDraw::instance.pendingBltMode = 1;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
                     DAT_WindowAndDirectDraw::ptr)(1);

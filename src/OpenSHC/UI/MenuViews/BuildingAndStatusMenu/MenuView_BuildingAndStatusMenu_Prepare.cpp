@@ -524,7 +524,7 @@ namespace UI {
                     = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
                         DAT_TextEditorState::ptr)((char*)DAT_BuildingsState::instance.field24_0x18e04c);
             }
-            DAT_WindowAndDirectDraw::instance.field37_0xdc = 1;
+            DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 1;
         }
 
     }

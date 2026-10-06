@@ -33,7 +33,7 @@ namespace UI {
             this->directDrawOffscreenSurfacePointer_mapGame = (IDirectDrawSurface*)0x0;
             this->surfacePointer_screenMenu = (ushort*)0x0;
             this->surfacePointer_mapGame = (ushort*)0x0;
-            this->field37_0xdc = 0;
+            this->pendingMenuRedraw = 0;
             this->screenHeightOnInit_0x14 = _screenHeight;
             this->NOTSelfBufferOrWindowMode_0xf8 = TRUE;
             return this;

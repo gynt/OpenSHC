@@ -57,8 +57,8 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                 DAT_TextureRenderCoreObject::ptr)(iVar5);
-            if (DAT_WindowAndDirectDraw::instance.field37_0xdc) {
-                DAT_WindowAndDirectDraw::instance.field37_0xdc = 0;
+            if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
+                DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,

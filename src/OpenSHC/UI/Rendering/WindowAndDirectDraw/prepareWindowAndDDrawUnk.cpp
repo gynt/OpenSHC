@@ -32,7 +32,7 @@ namespace UI {
                 if (this->drawingReady_0x0) {
                 LAB_00470010:
                     this->unk_resetViewportRelated = 2;
-                    this->field37_0xdc = 1;
+                    this->pendingMenuRedraw = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
                         DAT_BinkControlState::ptr)(0);
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,

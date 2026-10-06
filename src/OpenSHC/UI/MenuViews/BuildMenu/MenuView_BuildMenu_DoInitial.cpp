@@ -49,13 +49,13 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(iVar2);
-                if (!DAT_WindowAndDirectDraw::instance.field37_0xdc) {}
+                if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_MenuHandlerState::instance.y + 406)),
                     DAT_WindowAndDirectDraw::instance.resolutionX + -1,
                     (int)((int)(DAT_MenuHandlerState::instance.y + 471)),
                     (ushort)((int)(COL_MAGENTA::instance.shortValue)));
-                DAT_WindowAndDirectDraw::instance.field37_0xdc = 0;
+                DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
@@ -409,12 +409,12 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(iVar2);
-                if (!DAT_WindowAndDirectDraw::instance.field37_0xdc) {}
+                if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
                     DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
-                DAT_WindowAndDirectDraw::instance.field37_0xdc = 0;
+                DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                     if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {

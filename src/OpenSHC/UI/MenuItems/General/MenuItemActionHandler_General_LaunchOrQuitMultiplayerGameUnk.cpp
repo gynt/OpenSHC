@@ -315,7 +315,7 @@ namespace UI {
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX, FALSE);
                 MACRO_CALL_MEMBER(
                     UI::MenuModalComposition_Func::renderMenuModal, DAT_MenuModalComposition1::ptr)();
-                DAT_WindowAndDirectDraw::instance.mbr_0xd0 = 1;
+                DAT_WindowAndDirectDraw::instance.pendingBltMode = 1;
                 MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
                     DAT_WindowAndDirectDraw::ptr)(0);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(

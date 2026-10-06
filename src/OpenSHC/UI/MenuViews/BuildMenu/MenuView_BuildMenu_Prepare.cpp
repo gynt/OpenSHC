@@ -41,7 +41,7 @@ namespace UI {
             }
             MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
-            DAT_WindowAndDirectDraw::instance.field37_0xdc = 1;
+            DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 1;
             iVar1 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getEventIDForTimeUntilDefeatEventType,
                 DAT_MapPropertiesState::ptr)();
             if (-1 < iVar1) {
