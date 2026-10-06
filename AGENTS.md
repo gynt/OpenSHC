@@ -220,6 +220,16 @@ Style expected of reimplemented code:
   pointer measurably loses. See the `unptr.py` note among the diff patterns below - decide that one per function.
   The early-return preference has one known exception, still tentative - see the note on arms sharing a tail among the
   diff patterns below.
+  The `for` preference applies to loops that are already counted; **do not sweep the tree converting `while`**. All
+  217 standalone `while` loops were classified and none converts safely: 108 are `while (true)` with no induction
+  variable, 64 have a sentinel, flag or comma-expression condition, 11 never modify the condition variable in the
+  body, 6 contain `continue`/`goto`, and 1 increments before the end. The relational-looking ones each fail for a
+  concrete reason - `loadWavSounds` consumes the variable *after* incrementing it (`loadingBar = i * 80`), so
+  hoisting the increment changes the result; `MenuItemActionHandler_CrusadeMap_Main` has a trailing `if (20 < i) {}`
+  bound check that must stay after the increment; the `FilePackager` inner scans never touch their condition
+  variable; and `copyData`/`fillMemory`/`compressRLE`/`computeHash` are block-stride routines. Note that a `while`
+  with a trailing increment and a `continue` is **not** equivalent to the `for`: the `for` header always runs the
+  increment.
 - Never change the `// FUNCTION:` address line; keep generated headers untouched unless asked.
 - Write sources as UTF-8 with LF line endings.
 
@@ -348,6 +358,14 @@ Diff patterns that were reliable (more in the cheat sheet):
 - MSVC1400 at `/O2` never unrolls a loop, so a body repeated N times in the asm means the source was written out N
   times. A plain loop where the original is unrolled has cost 80 points on its own.
 - A flag stored with `mov dword ptr [..], 0/1` is an `int`, not a `bool`, which stores a byte.
+- `BOOLEnum` is `typedef BOOL`, i.e. `int`, so `x == FALSE` is exactly `!x` but **`x == TRUE` is `x == 1`** and is
+  not `x` for any other nonzero value. The decompiler writes `== TRUE` wherever the constant happens to be 1, which
+  is how `currentPlayerSlotID == TRUE` (an `int` player slot 0..8) and `unitControlsRelated == TRUE` (an
+  `undefined4` holding 4, 5, 0x14, 0x16, 0x20) both appear in the sources: those are genuine `== 1` tests and
+  rewriting them to a truth test is a behaviour change. Check the operand's declared type before touching one.
+  The two forms also differ in codegen - `cmp x, 1; je` against `test x, x; jne` - so the asm says which the
+  original used. Note too that `bVar = x != FALSE;` is an assignment rather than a condition, and there the
+  `!= FALSE` is load-bearing: it emits the 0/1 normalisation a raw store does not.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
@@ -357,6 +375,39 @@ Diff patterns that were reliable (more in the cheat sheet):
   measured *worse* on `updateCrowding` (all three nested variants lost 9-14 points) and made no difference at all on
   `showPopAndGoldPopup` and `createStatsPopUpEntities`, where every shape tied to the decimal because the gap there is
   the loop base-pointer anchor. `try_styles.py` settles it per function; prefer the early-return form on a tie.
+
+## Naming Struct Fields
+
+Naming a `field*_0x*` or `padding*` slot is an evidence problem, not a guessing one. Three traps have each
+cost real work:
+
+- **A Ghidra DATA xref to a field's address can be a loop terminator, not a use.** `ResetAiVariationArrayValue`
+  and `SetAIPlayerNickNames` both reference `GameSynchronyState+0x75c`, which looks like strong evidence that
+  the field is the AI variation array. It is not: the decompilation ends its loop with
+  `while ((int)piVar1 < 0x191dec4)`, and `0x0191DEC4` *is* that field's address - it is the exclusive end bound
+  of a walk over the preceding `aiVariationArray[9]` (`0x738-0x75B`). Read the decompilation before treating an
+  xref as a use, and check whether the address is simply the end of the field before it.
+- **Read the field's whole site list before naming it.** `Building+0x298` assigns `0` and `1` in its first three
+  sites and reads as `if (!x)`, which reads exactly like a boolean; the full list also assigns `2` and `3`, so it
+  is a stage machine. A name taken from a sample of the sites will be confidently wrong.
+- **Write-only across the whole binary is common, and is the right reason to leave a field unnamed.** Verify it
+  with Ghidra xrefs on the resolved address, not with the reimplemented subset: a field can look write-only to us
+  simply because its reader is not reimplemented yet. Of `GameSynchronyState`'s 38 referenced unnamed fields, 19
+  turned out to have no reader anywhere, including `0xba4`, which `SyncPacketSizeAnnouncement` serialises onto the
+  wire and which neither side ever reads. Prefer leaving these alone over inventing semantics for them.
+
+Two further notes:
+
+- Compute the address as the resolver's base plus the field offset and confirm it against a field whose name is
+  already known. Mis-attributing one slot shifts every conclusion: `[0x01fe7bc8]` in `renderMap` is
+  `TileMapState+0x5549C0`, so it is `field161`, not the `field162` an off-by-one makes it look like.
+- A struct's own header shows which convention a new name should follow - PascalCase beside
+  `MissionSpeechFileNames` for a predefined table, camelCase beside `sortColumn` for mutable state - and the
+  offsets chain exactly, so a `[50][4]` table at `0xFF4` following `SkirmishTrailIconOffsets[50]` at `0xF2C`
+  (`0xF2C + 200 = 0xFF4`) is confirmation that it belongs to the same family.
+
+Where a slot is shared between building types, name it after the type that uses it and expect the name to be
+extended later, as `flagonsOfAleOrCheeseOrReleaseDogs` already was.
 
 ## Agent Skills
 
