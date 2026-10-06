@@ -19,12 +19,12 @@ namespace Map {
         _playerID = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].owner;
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkOne_1 = 2;
         sVar1 = DAT_EntityState::instance.entityArray[_section1025ID].unknownAnimationFrameRelated;
-        if (DAT_EntityDefinedData::instance.field60_0x107c[sVar1] < 1) {
+        if (DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] < 1) {
             DAT_EntityState::instance.entityArray[_section1025ID].logicalState = 3;
             DAT_GameState::instance.playerDataArray[_playerID].someCount32 = 0x46;
         } else {
             DAT_EntityState::instance.entityArray[_section1025ID].unkMinusOne
-                = (short)DAT_EntityDefinedData::instance.field60_0x107c[sVar1] + -1;
+                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] + -1;
             DAT_EntityState::instance.entityArray[_section1025ID].graphicType2 = 1;
         }
         DAT_EntityState::instance.entityArray[_section1025ID].field82_0xbe = 0x2e;

@@ -56,19 +56,22 @@ namespace Map {
         DAT_EntityState::instance.entityArray[uVar2].unkOne_1 = 3;
         switch (DAT_EntityState::instance.entityArray[uVar2].someTracker) {
         case 0:
-            iVar3 = DAT_EntityDefinedData::instance
-                        .field61_0x1164[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
+            iVar3
+                = DAT_EntityDefinedData::instance
+                      .FlagAnimationFrames1[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
             break;
         case 1:
-            iVar3 = DAT_EntityDefinedData::instance
-                        .field62_0x1294[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
+            iVar3
+                = DAT_EntityDefinedData::instance
+                      .FlagAnimationFrames2[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
             break;
         case 3:
             DAT_EntityState::instance.entityArray[uVar2].unkOne_1 = 1;
             /* falls through into case 2 */
         case 2:
-            iVar3 = DAT_EntityDefinedData::instance
-                        .field63_0x139c[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
+            iVar3
+                = DAT_EntityDefinedData::instance
+                      .FlagAnimationFrames3[DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
             break;
         default:
             return;

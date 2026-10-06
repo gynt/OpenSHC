@@ -23,12 +23,14 @@ namespace Map {
         }
         iVar2 = (int)DAT_EntityState::instance.entityArray[uVar1].someTracker;
         if (!iVar2) {
-            iVar2 = DAT_EntityDefinedData::instance
-                        .field64_0x15dc[DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated];
+            iVar2
+                = DAT_EntityDefinedData::instance
+                      .Flag3AnimationFrames1[DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated];
         } else {
             if (1 < iVar2 - 1U) {}
-            iVar2 = DAT_EntityDefinedData::instance
-                        .field65_0x17a4[DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated];
+            iVar2
+                = DAT_EntityDefinedData::instance
+                      .Flag3AnimationFrames2[DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated];
         }
         if (0 < iVar2) {
             DAT_EntityState::instance.entityArray[uVar1].graphicType2

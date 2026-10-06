@@ -57,12 +57,12 @@ namespace Map {
             byte FireAnimationFrames8[56]; // 0x00000E34 length: 56
             int XYOffsetsInAllDirections[64][2]; // 0x00000E6C length: 512
             int field59_0x106c[4]; // 0x0000106C length: 16
-            int field60_0x107c[58]; // 0x0000107C length: 232
-            int field61_0x1164[76]; // 0x00001164 length: 304
-            int field62_0x1294[66]; // 0x00001294 length: 264
-            int field63_0x139c[144]; // 0x0000139C length: 576
-            int field64_0x15dc[114]; // 0x000015DC length: 456
-            int field65_0x17a4[112]; // 0x000017A4 length: 448
+            int SharedEntityAnimationFrames[58]; // 0x0000107C length: 232
+            int FlagAnimationFrames1[76]; // 0x00001164 length: 304
+            int FlagAnimationFrames2[66]; // 0x00001294 length: 264
+            int FlagAnimationFrames3[144]; // 0x0000139C length: 576
+            int Flag3AnimationFrames1[114]; // 0x000015DC length: 456
+            int Flag3AnimationFrames2[112]; // 0x000017A4 length: 448
 
         } EntityDefinedData;
 #pragma pack(pop)

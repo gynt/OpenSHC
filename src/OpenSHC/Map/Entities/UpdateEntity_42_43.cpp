@@ -18,11 +18,11 @@ namespace Map {
         uVar2 = DAT_CurrentEntityID::instance;
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkOne_1 = 2;
         sVar1 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated;
-        if (DAT_EntityDefinedData::instance.field60_0x107c[sVar1] < 1) {
+        if (DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] < 1) {
             DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;
         } else {
             DAT_EntityState::instance.entityArray[uVar2].unkMinusOne
-                = (short)DAT_EntityDefinedData::instance.field60_0x107c[sVar1] + -1;
+                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] + -1;
             DAT_EntityState::instance.entityArray[uVar2].graphicType2 = 1;
         }
         DAT_EntityState::instance.entityArray[uVar2].field82_0xbe = 0x2e;
