@@ -17,7 +17,7 @@ namespace Map {
             int iVar1;
             uint uVar2;
             int unitSelectionIndex;
-            if (((0 < tribeID) && (this->tribes[tribeID].field133_0x278 == 0))
+            if (((0 < tribeID) && (this->tribes[tribeID].predatorNearby == 0))
                 && (unitSelectionIndex = 0, 0 < this->tribes[tribeID].size)) {
                 do {
                     iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(

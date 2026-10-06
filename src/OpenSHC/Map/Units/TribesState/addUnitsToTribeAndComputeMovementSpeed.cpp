@@ -59,7 +59,7 @@ namespace Map {
                 this->tribes[tribeID].movementSpeed = _minimumSpeed;
                 this->tribes[tribeID].field62_0x200 = 0;
                 this->tribes[tribeID].field63_0x202 = 0;
-                this->tribes[tribeID].field64_0x204 = 0;
+                this->tribes[tribeID].initialMoveOrderGiven = 0;
                 this->tribes[tribeID].field66_0x208 = 0;
                 this->tribes[tribeID].field68_0x20c = 0;
                 this->tribes[tribeID].unitsHealthPercentage = (short)(local_8 / (int)sVar1);

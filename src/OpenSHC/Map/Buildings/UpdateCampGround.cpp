@@ -117,22 +117,22 @@ namespace Map {
         }
         _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270;
         if (_ownerPlayerIndex < 2) {
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = 1;
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276 = 1;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = 1;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious = 1;
             goto LAB_00418476;
         }
         if (_ownerPlayerIndex < 5) {
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = 3;
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276 = 3;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = 3;
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious = 3;
             goto LAB_00418476;
         }
-        sVar2 = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
+        sVar2 = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
         if (sVar2 == 3) {
             if (1000 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = 5;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = 5;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress = 0;
             }
             goto LAB_00418476;
@@ -140,9 +140,9 @@ namespace Map {
         if (sVar2 == 2) {
             if (200 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = 4;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = 4;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress = 0;
             }
             goto LAB_00418476;
@@ -150,9 +150,9 @@ namespace Map {
         if (sVar2 == 4) {
             if (600 < DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive) {
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].timeAlive = 0;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = 3;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = 3;
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress = 0;
             }
             goto LAB_00418476;
@@ -167,15 +167,15 @@ namespace Map {
                     = DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress + 1;
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress < 6) {
                 LAB_0041845a:
-                    _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
+                    _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
                 } else {
                     _ownerPlayerIndex = 6;
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].buildingProgress = 0;
                 }
             LAB_00418461:
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field195_0x276
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274;
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].field194_0x274 = _ownerPlayerIndex;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStagePrevious
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage;
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].campStage = _ownerPlayerIndex;
                 goto LAB_00418476;
             }
             _vclock = 1;

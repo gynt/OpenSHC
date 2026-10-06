@@ -51,9 +51,9 @@ namespace Map {
             }
             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                 tribeID, iVar8, Map::Units::UT_RABBIT);
-            if (this->tribes[tribeID].field64_0x204 == 0) {
+            if (this->tribes[tribeID].initialMoveOrderGiven == 0) {
                 _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
-                this->tribes[tribeID].field64_0x204 = 1;
+                this->tribes[tribeID].initialMoveOrderGiven = 1;
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(tribeID);
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
                     (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
@@ -64,7 +64,7 @@ namespace Map {
             if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
                 this->tribes[tribeID].unknownCounter01 = 0;
             }
-            sVar2 = this->tribes[tribeID].field133_0x278;
+            sVar2 = this->tribes[tribeID].predatorNearby;
             if (!sVar2) {
                 SVar3 = this->tribes[tribeID].tribeBehaviorType;
                 if (SVar3 == ((SomeTribeBehaviorType)0)) {
@@ -99,16 +99,16 @@ namespace Map {
                 } else if (SVar3 == Map::Units::STBT_1) {
                     if (!iVar6) {
                         if (iVar5 < 0x15) {
-                            this->tribes[tribeID].field136_0x27e = 400;
+                            this->tribes[tribeID].wanderIntervalTicks = 400;
                         } else {
-                            this->tribes[tribeID].field136_0x27e = 0x14;
+                            this->tribes[tribeID].wanderIntervalTicks = 0x14;
                         }
                     } else {
-                        this->tribes[tribeID].field136_0x27e = 0x14;
+                        this->tribes[tribeID].wanderIntervalTicks = 0x14;
                     }
                     psVar1 = &this->tribes[tribeID].unknownAttackRelatedUpdateCounter;
                     *psVar1 = *psVar1 + 1;
-                    if (this->tribes[tribeID].field136_0x27e
+                    if (this->tribes[tribeID].wanderIntervalTicks
                         <= this->tribes[tribeID].unknownAttackRelatedUpdateCounter) {
                         this->tribes[tribeID].tribeBehaviorType = ((SomeTribeBehaviorType)0);
                         this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
@@ -125,10 +125,10 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(tribeID);
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::scatterTribeUnitsRandomly, this)(tribeID);
                 }
-                psVar1 = &this->tribes[tribeID].field133_0x278;
+                psVar1 = &this->tribes[tribeID].predatorNearby;
                 *psVar1 = *psVar1 + 1;
-                if (2999 < this->tribes[tribeID].field133_0x278) {
-                    this->tribes[tribeID].field133_0x278 = 0;
+                if (2999 < this->tribes[tribeID].predatorNearby) {
+                    this->tribes[tribeID].predatorNearby = 0;
                 }
             }
         }

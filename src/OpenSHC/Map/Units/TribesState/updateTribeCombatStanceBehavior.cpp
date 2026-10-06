@@ -74,7 +74,7 @@ namespace Map {
                                     - (int)DAT_UnitsState::instance.units[_unitID].microYPosition;
                                 if (iVar5 * iVar5 + iVar4 * iVar4 < 250000) {
                                     if ((this->tribes[tribeID].unknownAttackRelatedUpdateCounter == 0)
-                                        && (this->tribes[tribeID].field93_0x22a == 0x3b)) {
+                                        && (this->tribes[tribeID].aggressiveStanceCounter == 0x3b)) {
                                         iVar5 = 0;
                                         if (this->tribes[tribeID].size < 1)
                                             goto LAB_0052aa55;
@@ -144,11 +144,11 @@ namespace Map {
             if (0x32 < this->tribes[tribeID].unknownAttackRelatedUpdateCounter) {
                 if (this->tribes[tribeID].isRallyingUnk == 0) {
                     if (this->tribes[tribeID].unitStance == Map::Units::Behavior::USE_AGGRESSIVE) {
-                        psVar1 = &this->tribes[tribeID].field93_0x22a;
+                        psVar1 = &this->tribes[tribeID].aggressiveStanceCounter;
                         *psVar1 = *psVar1 + 1;
-                        if (this->tribes[tribeID].field93_0x22a < 0x3c) {}
+                        if (this->tribes[tribeID].aggressiveStanceCounter < 0x3c) {}
                         _buildingIndex_2 = this->tribes[tribeID].size;
-                        this->tribes[tribeID].field93_0x22a = 0;
+                        this->tribes[tribeID].aggressiveStanceCounter = 0;
                         if (0 < _buildingIndex_2) {
                             iVar5 = 0;
                             do {

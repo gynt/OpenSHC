@@ -187,7 +187,7 @@ namespace Map {
                         this->tribes[tribeID].rallyPointArray[1][1] = (short)_y;
                         this->tribes[tribeID].currentRallyPointIndex = 1;
                         this->tribes[tribeID].rallyPointCount = 2;
-                        this->tribes[tribeID].field71_0x212 = 0;
+                        this->tribes[tribeID].containsRabbit = 0;
                     }
                     this->ALG_ResultTileIndex = 0;
                     this->field6_0x18 = 0;

@@ -83,7 +83,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[iVar7].workers[0] == 0) {
             DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
-            DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 0;
+            DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 0;
             DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame1 = 0;
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame2 = 0;
@@ -93,32 +93,32 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite4 = 0;
             goto LAB_00416a00;
         }
-        bVar2 = DAT_BuildingsState::instance.buildings[iVar7].field214_0x298;
+        bVar2 = DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage;
         if (!bVar2) {
             if (((char)DAT_BuildingsState::instance.buildings[iVar7].numberOfAnimals < '\x03')
                 && (DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs == 0)) {
                 DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4
                     = DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 + 1;
                 if (400 < DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4) {
-                    DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 1;
+                    DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 1;
                     DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
                     DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0x20;
                 }
             } else if ((DAT_BuildingsState::instance.buildings[iVar7].resources[0xb] == 0)
                 && (psVar9 = &DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4, *psVar9 = *psVar9 + 1,
                     400 < DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4)) {
-                DAT_BuildingsState::instance.buildings[iVar7].field215_0x299
-                    = DAT_BuildingsState::instance.buildings[iVar7].field215_0x299 + 1;
-                if ('\x03' < (char)DAT_BuildingsState::instance.buildings[iVar7].field215_0x299) {
-                    DAT_BuildingsState::instance.buildings[iVar7].field215_0x299 = 1;
+                DAT_BuildingsState::instance.buildings[iVar7].workerRotationIndex
+                    = DAT_BuildingsState::instance.buildings[iVar7].workerRotationIndex + 1;
+                if ('\x03' < (char)DAT_BuildingsState::instance.buildings[iVar7].workerRotationIndex) {
+                    DAT_BuildingsState::instance.buildings[iVar7].workerRotationIndex = 1;
                 }
-                bVar2 = DAT_BuildingsState::instance.buildings[iVar7].field215_0x299;
+                bVar2 = DAT_BuildingsState::instance.buildings[iVar7].workerRotationIndex;
                 _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[iVar7].workerID[(char)bVar2];
                 if (!_ownerPlayerIndex) {}
                 if (DAT_UnitsState::instance.units[_ownerPlayerIndex].uid
                     != DAT_BuildingsState::instance.buildings[iVar7].workerUID[(char)bVar2]) {}
                 DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
-                DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 3;
+                DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 3;
                 DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0x20;
                 DAT_UnitsState::instance.units[_ownerPlayerIndex].state.generic
                     = Map::Units::States::US_JESTER_ROAM_TO;
@@ -134,7 +134,7 @@ namespace Map {
             if (DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength < 1) {
                 DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
-                DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 2;
+                DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 2;
             }
             goto LAB_00416a00;
         }
@@ -148,7 +148,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0;
                     DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
                     DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame1 = 0;
-                    DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 4;
+                    DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 4;
                 }
             } else if (bVar2 == 4) {
                 if (DAT_BuildingDefinedData::instance
@@ -160,7 +160,7 @@ namespace Map {
                         = DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength + 1;
                     if (0x1f < DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength) {
                         DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0x20;
-                        DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 5;
+                        DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 5;
                         DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0;
                         DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
                         DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite2 = 0;
@@ -197,7 +197,7 @@ namespace Map {
                         .DairyFarmAnimationFrames4[DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame2]
                     == 0) {
                     DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite3 = 0x36;
-                    DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 6;
+                    DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 6;
                     DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame2 = 0;
                 } else {
                     DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite3
@@ -210,7 +210,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite3 = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite4 = 0x37;
                 DAT_BuildingsState::instance.buildings[iVar7].resources[0xb] = 1;
-                DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 0;
+                DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 0;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0;
@@ -313,7 +313,7 @@ namespace Map {
                 goto LAB_00416d22;
             }
         }
-        DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 0;
+        DAT_BuildingsState::instance.buildings[iVar7].dairyProductionStage = 0;
         DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0;
     LAB_00416a00:
         if (DAT_BuildingsState::instance.field4_0x10) {

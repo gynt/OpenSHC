@@ -46,14 +46,14 @@ namespace Map {
                     && (BVar6 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                             param_1, 500, Map::Units::UT_LIONSHWOLF),
                         BVar6 != FALSE)) {
-                    this->tribes[param_1].field64_0x204 = 1;
+                    this->tribes[param_1].initialMoveOrderGiven = 1;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                 }
-                sVar2 = this->tribes[param_1].field64_0x204;
+                sVar2 = this->tribes[param_1].initialMoveOrderGiven;
                 if (!sVar2) {
                     sVar2 = this->tribes[param_1].selectionTargetUnitID;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
-                    this->tribes[param_1].field64_0x204 = 2;
+                    this->tribes[param_1].initialMoveOrderGiven = 2;
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(param_1,
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].y)), 0, 0,
@@ -62,7 +62,7 @@ namespace Map {
                 }
                 if (sVar2 == 1) {
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
-                    this->tribes[param_1].field64_0x204 = 2;
+                    this->tribes[param_1].initialMoveOrderGiven = 2;
                     MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                         DAT_WildlifeState::ptr)(param_1, 2, 0);
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(param_1);

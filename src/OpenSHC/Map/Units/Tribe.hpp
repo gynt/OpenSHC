@@ -63,29 +63,29 @@ namespace Map {
             short maximumMovementSpeed; // 0x000001FE length: 2
             short field62_0x200; // 0x00000200 length: 2
             short field63_0x202; // 0x00000202 length: 2
-            short field64_0x204; // 0x00000204 length: 2
+            short initialMoveOrderGiven; // 0x00000204 length: 2
             short isRallyingUnk; // 0x00000206 length: 2
             short field66_0x208; // 0x00000208 length: 2
             short unitsHealthPercentage; // 0x0000020A length: 2
             short field68_0x20c; // 0x0000020C length: 2
             short targetX; // 0x0000020E length: 2
             short targetY; // 0x00000210 length: 2
-            short field71_0x212; // 0x00000212 length: 2
+            short containsRabbit; // 0x00000212 length: 2
             undefined1 padding_0x214[20]; // 0x00000214 length: 20
             UnitTypeShort unitType; // 0x00000228 length: 2
-            short field93_0x22a; // 0x0000022A length: 2
+            short aggressiveStanceCounter; // 0x0000022A length: 2
             undefined1 padding_0x22c[12]; // 0x0000022C length: 12
             short rallyPointArray[9][2]; // 0x00000238 length: 36
             undefined1 padding_0x25c[4]; // 0x0000025C length: 4
             short currentRallyPointIndex; // 0x00000260 length: 2
             short rallyPointCount; // 0x00000262 length: 2
             undefined1 padding_0x264[20]; // 0x00000264 length: 20
-            short field133_0x278; // 0x00000278 length: 2
+            short predatorNearby; // 0x00000278 length: 2
             short field134_0x27a; // 0x0000027A length: 2
             short unkIsAnimalTribe; // 0x0000027C length: 2
-            short field136_0x27e; // 0x0000027E length: 2
-            short field137_0x280; // 0x00000280 length: 2
-            short field138_0x282; // 0x00000282 length: 2
+            short wanderIntervalTicks; // 0x0000027E length: 2
+            short herdMinSize; // 0x00000280 length: 2
+            short herdMaxSize; // 0x00000282 length: 2
             short field139_0x284; // 0x00000284 length: 2
             short unknownCounter01; // 0x00000286 length: 2
             short field_0x288; // 0x00000288 length: 2

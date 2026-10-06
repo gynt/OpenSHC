@@ -41,14 +41,14 @@ namespace Map {
                 && (iVar4 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trySpawnAdditionalWildlifeForTribe,
                         this)(param_1, 1000, 10, 0x2f),
                     iVar4 != 0)) {
-                this->tribes[param_1].field64_0x204 = 1;
+                this->tribes[param_1].initialMoveOrderGiven = 1;
                 this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
             }
-            sVar5 = this->tribes[param_1].field64_0x204;
+            sVar5 = this->tribes[param_1].initialMoveOrderGiven;
             if (!sVar5) {
                 sVar5 = this->tribes[param_1].selectionTargetUnitID;
                 this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
-                this->tribes[param_1].field64_0x204 = 2;
+                this->tribes[param_1].initialMoveOrderGiven = 2;
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(param_1,
                     (uint)((int)((int)DAT_UnitsState::instance.units[sVar5].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[sVar5].y)), 0, 0,
@@ -58,7 +58,7 @@ namespace Map {
             if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
                 if (sVar5 == 1) {
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
-                    this->tribes[param_1].field64_0x204 = 2;
+                    this->tribes[param_1].initialMoveOrderGiven = 2;
                     MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                         DAT_WildlifeState::ptr)(param_1, 2, 0);
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::standUpAllTribeUnits, this)(param_1);

@@ -105,7 +105,7 @@ namespace Map {
             undefined1 padding_0xa6[2]; // 0x000000A6 length: 2
             uint unknownManorHouseOrStoneKeepRelated; // 0x000000A8 length: 4
             int gfxOffset; // 0x000000AC length: 4
-            int field62_0xb0; // 0x000000B0 length: 4
+            int useOffsetGraphics; // 0x000000B0 length: 4
             int gfxOffset2; // 0x000000B4 length: 4
             int gfxOffset3; // 0x000000B8 length: 4
             short tickRelatedVisuallyActiveIndicator; // 0x000000BC length: 2
@@ -208,20 +208,20 @@ namespace Map {
             int tunnelerCounter; // 0x0000025C length: 4
             short someX; // 0x00000260 length: 2
             short someY; // 0x00000262 length: 2
-            short field185_0x264; // 0x00000264 length: 2
+            short burningWorkerCountdown; // 0x00000264 length: 2
             undefined1 padding_0x266[2]; // 0x00000266 length: 2
             int oxTetherRelatedUnitUID; // 0x00000268 length: 4
             short oxTetherRelatedUnitID; // 0x0000026C length: 2
             undefined1 padding_0x26e[2]; // 0x0000026E length: 2
             short field192_0x270; // 0x00000270 length: 2
             short field193_0x272; // 0x00000272 length: 2
-            short field194_0x274; // 0x00000274 length: 2
-            short field195_0x276; // 0x00000276 length: 2
+            short campStage; // 0x00000274 length: 2
+            short campStagePrevious; // 0x00000276 length: 2
             int buildingProgress; // 0x00000278 length: 4
             int timeAlive; // 0x0000027C length: 4
             undefined1 padding_0x280[4]; // 0x00000280 length: 4
             int hovelVisualStyle; // 0x00000284 length: 4
-            short field203_0x288; // 0x00000288 length: 2
+            short suppressDestroyRefund; // 0x00000288 length: 2
             short field204_0x28a; // 0x0000028A length: 2
             short flag2; // 0x0000028C length: 2
             ResourceTypeShort producedItemTypeNext; // 0x0000028E length: 2
@@ -232,8 +232,8 @@ namespace Map {
             byte containsSiegeMangonel1OrBallista2; // 0x00000295 length: 1
             bool sleeping; // 0x00000296 length: 1
             byte numberOfAnimals; // 0x00000297 length: 1
-            byte field214_0x298; // 0x00000298 length: 1
-            byte field215_0x299; // 0x00000299 length: 1
+            byte dairyProductionStage; // 0x00000298 length: 1
+            byte workerRotationIndex; // 0x00000299 length: 1
             short outpostRelatedUnk4; // 0x0000029A length: 2
             int ffBuildingVariation; // 0x0000029C length: 4
             short engineerUnitID; // 0x000002A0 length: 2

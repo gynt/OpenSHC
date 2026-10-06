@@ -124,14 +124,14 @@ namespace Map {
                 } while (iVar3 < _rng2);
             }
             sVar1 = this->tribes[tribeID].size;
-            this->tribes[tribeID].field137_0x280 = sVar1 / 2;
+            this->tribes[tribeID].herdMinSize = sVar1 / 2;
             if (animalType == Commands::M_MAPPER_LION) {
-                this->tribes[tribeID].field138_0x282 = sVar1;
+                this->tribes[tribeID].herdMaxSize = sVar1;
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::storeLionXAndYInMapInfo, this)(
                     x, (undefined4)((int)(y)));
                 return (dword)(tribeID);
             }
-            this->tribes[tribeID].field138_0x282 = sVar1 * 2;
+            this->tribes[tribeID].herdMaxSize = sVar1 * 2;
             if (animalType == Commands::M_MAPPER_DEER) {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::storeDeerXAndYinMapInfo, this)(
                     x, (undefined4)((int)(y)));

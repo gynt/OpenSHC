@@ -264,7 +264,7 @@ namespace Map {
                                         this->grid[_x10][_y10].deerCount = this->grid[_x10][_y10].deerCount + 1;
                                         if (DAT_TribesState::instance
                                                 .tribes[DAT_UnitsState::instance.units[_unitID].tribeID]
-                                                .field133_0x278
+                                                .predatorNearby
                                             != 0)
                                             goto LAB_0052be68;
                                     } else if (UVar5 == Map::Units::UT_RABBIT) {

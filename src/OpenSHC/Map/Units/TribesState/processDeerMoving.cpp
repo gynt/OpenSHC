@@ -50,23 +50,23 @@ namespace Map {
             sVar2 = this->tribes[tribeID].size;
             this->tribes[tribeID].unkIsAnimalTribe = 1;
             if (sVar2 < 0x1f) {
-                this->tribes[tribeID].field137_0x280 = sVar2 / 2;
-                this->tribes[tribeID].field138_0x282 = sVar2 * 2;
+                this->tribes[tribeID].herdMinSize = sVar2 / 2;
+                this->tribes[tribeID].herdMaxSize = sVar2 * 2;
             } else {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trimTribeToSize, this)(
                     tribeID, (int)((int)(30)));
-                this->tribes[tribeID].field137_0x280 = 0xf;
-                this->tribes[tribeID].field138_0x282 = 0x3c;
+                this->tribes[tribeID].herdMinSize = 0xf;
+                this->tribes[tribeID].herdMaxSize = 0x3c;
             }
-            if ((iVar4 + iVar6 != 0) && (this->tribes[tribeID].field133_0x278 == 0)) {
-                this->tribes[tribeID].field133_0x278 = 1;
+            if ((iVar4 + iVar6 != 0) && (this->tribes[tribeID].predatorNearby == 0)) {
+                this->tribes[tribeID].predatorNearby = 1;
             }
             BVar7 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                 tribeID, 100, Map::Units::UT_ANTELOPESHDEER);
             if (BVar7 == FALSE) {
-                if (this->tribes[tribeID].field64_0x204 == 0) {
+                if (this->tribes[tribeID].initialMoveOrderGiven == 0) {
                     sVar2 = this->tribes[tribeID].selectionTargetUnitID;
-                    this->tribes[tribeID].field64_0x204 = 1;
+                    this->tribes[tribeID].initialMoveOrderGiven = 1;
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(tribeID,
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[sVar2].y)), 0, 0,
@@ -76,23 +76,23 @@ namespace Map {
                 if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
                     this->tribes[tribeID].unknownCounter01 = 0;
                 }
-                sVar2 = this->tribes[tribeID].field133_0x278;
+                sVar2 = this->tribes[tribeID].predatorNearby;
                 if (!sVar2) {
                     SVar3 = this->tribes[tribeID].tribeBehaviorType;
                     if (SVar3 == ((SomeTribeBehaviorType)0)) {
                         if (iVar5) {
-                            this->tribes[tribeID].field136_0x27e = 200;
+                            this->tribes[tribeID].wanderIntervalTicks = 200;
                         }
                         if (0x14 < iVar8) {
-                            this->tribes[tribeID].field136_0x27e = 200;
+                            this->tribes[tribeID].wanderIntervalTicks = 200;
                         }
                         this->tribes[tribeID].unknownAttackRelatedUpdateCounter
                             = this->tribes[tribeID].unknownAttackRelatedUpdateCounter + 1;
-                        if (this->tribes[tribeID].field136_0x27e
+                        if (this->tribes[tribeID].wanderIntervalTicks
                             <= this->tribes[tribeID].unknownAttackRelatedUpdateCounter) {
                             this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
                             sVar2 = this->tribes[tribeID].rallyPointCount;
-                            this->tribes[tribeID].field136_0x27e
+                            this->tribes[tribeID].wanderIntervalTicks
                                 = (4 - ((byte)SEC_RNG::instance.currentNumber2 & 3)) * 200;
                             if (sVar2 < 1) {
                                 MACRO_CALL_MEMBER(
@@ -142,9 +142,9 @@ namespace Map {
                                 (uint)((int)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][1])), 0, 0);
                         }
                     }
-                    this->tribes[tribeID].field133_0x278 = this->tribes[tribeID].field133_0x278 + 1;
-                    if (799 < this->tribes[tribeID].field133_0x278) {
-                        this->tribes[tribeID].field133_0x278 = 0;
+                    this->tribes[tribeID].predatorNearby = this->tribes[tribeID].predatorNearby + 1;
+                    if (799 < this->tribes[tribeID].predatorNearby) {
+                        this->tribes[tribeID].predatorNearby = 0;
                     }
                 }
             } else {

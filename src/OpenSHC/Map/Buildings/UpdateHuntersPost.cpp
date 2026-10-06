@@ -68,17 +68,17 @@ namespace Map {
                 UVar3 == Map::Units::UT_BURNINGMAN
                     || ((UVar3 == Map::Units::UT_BURNING_ANIMAL_BIG
                         || (UVar3 == Map::Units::UT_BURNING_ANIMAL_SMALL)))))) {
-            DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field185_0x264 = 400;
+            DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].burningWorkerCountdown = 400;
         }
-        sVar4 = DAT_BuildingsState::instance.buildings[iVar10].field185_0x264;
+        sVar4 = DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown;
         if (0 < sVar4) {
-            DAT_BuildingsState::instance.buildings[iVar10].field185_0x264 = sVar4 + -1;
+            DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown = sVar4 + -1;
         }
         DAT_BuildingsState::instance.buildings[iVar10].renderAnimation
             = (ushort)(DAT_BuildingsState::instance.buildings[iVar10].workers[0] != 0);
         DAT_BuildingsState::instance.buildings[iVar10].displayOwnerFlag = 1;
         if (((DAT_BuildingsState::instance.buildings[iVar10].numberOfAnimals == 0) && (bVar8))
-            && (DAT_BuildingsState::instance.buildings[iVar10].field185_0x264 == 0)) {
+            && (DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown == 0)) {
             MACRO_CALL_MEMBER(
                 Map::Buildings::BuildingsState_Func::buildingIsAccessible, DAT_BuildingsState::ptr)(iVar10, 0);
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::determineBuildingEntranceFromKeepArea,

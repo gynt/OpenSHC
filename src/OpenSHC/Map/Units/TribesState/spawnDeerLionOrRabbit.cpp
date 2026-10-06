@@ -35,7 +35,7 @@ namespace Map {
             int _unitY;
             if ((DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
                 && (0 < tribeID)) {
-                if (this->tribes[tribeID].field133_0x278 != 0) {
+                if (this->tribes[tribeID].predatorNearby != 0) {
                     return FALSE;
                 }
                 _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
@@ -49,7 +49,7 @@ namespace Map {
                 }
                 _rng2 = (uint)(byte)SEC_RNG::instance.currentNumber2;
                 _terrainHeight = DAT_UnitsState::instance.units[_finalTargetUnitID].terrainOrClimbHeight;
-                _unknown = this->tribes[tribeID].field137_0x280;
+                _unknown = this->tribes[tribeID].herdMinSize;
                 _tribeSize = this->tribes[tribeID].size;
                 _unitX = DAT_UnitsState::instance.units[_finalTargetUnitID].x;
                 _unitY = DAT_UnitsState::instance.units[_finalTargetUnitID].y;
@@ -59,7 +59,7 @@ namespace Map {
                 psVar1 = &this->tribes[tribeID].field139_0x284;
                 *psVar1 = *psVar1 + 1;
                 if ((param_2 <= this->tribes[tribeID].field139_0x284)
-                    && (sVar2 = this->tribes[tribeID].field138_0x282, this->tribes[tribeID].field139_0x284 = 0,
+                    && (sVar2 = this->tribes[tribeID].herdMaxSize, this->tribes[tribeID].field139_0x284 = 0,
                         _tribeSize < sVar2)) {
                     if ((unitType == Map::Units::UT_RABBIT)
                         && (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation)) {

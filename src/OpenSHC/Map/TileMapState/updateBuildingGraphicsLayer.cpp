@@ -37,10 +37,10 @@ namespace Map {
         int local_c;
         uVar1 = DAT_BuildingsState::instance.buildings[buildingID].x;
         uVar2 = DAT_BuildingsState::instance.buildings[buildingID].y;
-        DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 = 0;
+        DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics = 0;
         local_c = 0;
         if ((!this->refreshRelatedOne) && (DAT_BuildingsState::instance.buildings[buildingID].gfxOffset != 0)) {
-            DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 = 1;
+            DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics = 1;
         }
         iVar7 = DAT_BuildingsState::instance.buildings[buildingID].currentNumberOfResource
             - (int)DAT_BuildingsState::instance.buildings[buildingID].someResourceNumber;
@@ -91,7 +91,7 @@ namespace Map {
                         && (uVar9 = this->mapOrientation + 2U & 0x80000007, (int)uVar9 < 0)) {
                         uVar9 = (uVar9 - 1 | 0xfffffff8) + 1;
                     }
-                    if (DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0) {
+                    if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0) {
                         if ((uVar9 == 2) || (uVar9 == 6)) {
                             uVar10 = (short)GMTotalPicturesProcessed::instance
                                          [(short)DAT_BuildingsState::instance.buildings[buildingID].spriteSheetID]
@@ -121,7 +121,7 @@ namespace Map {
                         this->GfxLayer[targetedTile] = uVar10;
                     }
                 } else if (BVar3 == Map::Buildings::BT_KEEPDOOR) {
-                    if (DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0) {
+                    if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0) {
                         if ((this->mapOrientation != 2) && (this->mapOrientation != 6)) {
                             uVar10 = ((short)GMTotalPicturesProcessed::instance
                                              [(short)DAT_BuildingsState::instance.buildings[buildingID].spriteSheetID]
@@ -154,7 +154,7 @@ namespace Map {
                     } else {
                         iVar8 = (int)DAT_BuildingsState::instance.buildings[buildingID].buildingVariation;
                     }
-                    if (DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0) {
+                    if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0) {
                         if (iVar8 == 0x50)
                             goto LAB_005065bd;
                         sVar5 = (short)GMTotalPicturesProcessed::instance
@@ -179,7 +179,7 @@ namespace Map {
                     if ((this->mapOrientation == 2) || (iVar8 = 0x50, this->mapOrientation == 6)) {
                         iVar8 = 0x51;
                     }
-                    if (DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 != 0) {
+                    if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics != 0) {
                         if (iVar8 == 0x50)
                             goto LAB_0050657d;
                         uVar10 = (short)GMTotalPicturesProcessed::instance
@@ -225,7 +225,7 @@ namespace Map {
                     && (BVar3 != Map::Buildings::BT_SIEGETOWER_PLACED)) {
                     sVar5 = DAT_BuildingsState::instance.buildings[buildingID].buildingVariation;
                     if (sVar5 == 0xf) {
-                        if (DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0) {
+                        if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0) {
                             if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive == 0) {
                                 this->GfxLayer[targetedTile]
                                     = ((short)GMTotalPicturesProcessed::instance

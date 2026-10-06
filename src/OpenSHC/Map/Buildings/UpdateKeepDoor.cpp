@@ -26,7 +26,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].orientation
             = DAT_BuildingsState::instance.buildings[sVar1].orientation;
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation
-            = (ushort)(DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 == 0);
+            = (ushort)(DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0);
         iVar3 = DAT_TileMapState::instance.mapOrientation;
         BVar2 = DAT_BuildingsState::instance.buildings[sVar1].buildingType;
         if (BVar2 == Map::Buildings::BT_MANORHOUSE) {

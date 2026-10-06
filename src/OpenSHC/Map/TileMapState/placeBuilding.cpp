@@ -380,7 +380,7 @@ namespace Map {
             Map::Buildings::BuildingsState_Func::hasLessWoodThanTheCostOfAWoodcuttersHutAndNoWoodcutters,
             DAT_BuildingsState::ptr)(playerID, (int)((int)(_buildingType_2)));
         if (uVar4) {
-            DAT_BuildingsState::instance.buildings[this->placedBuildingID].field203_0x288 = 1;
+            DAT_BuildingsState::instance.buildings[this->placedBuildingID].suppressDestroyRefund = 1;
         }
         MACRO_CALL_MEMBER(UI::MinimapViewState_Func::triggerMinimapRedraw, DAT_MinimapViewState::ptr)(1);
         if (buildingSize < 6) {

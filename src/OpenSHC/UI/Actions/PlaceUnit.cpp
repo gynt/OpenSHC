@@ -277,7 +277,7 @@ namespace UI {
                     bVar4 = DAT_TileMapState::instance.currentMapperCommand
                         == Commands::M_MAPPER_PEOPLE_ENGINEERS_POTS;
                     DAT_TribesState::instance.tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;
-                    DAT_TribesState::instance.tribes[tribeID].field64_0x204 = 1;
+                    DAT_TribesState::instance.tribes[tribeID].initialMoveOrderGiven = 1;
                     if ((bVar4) && (iVar3 = 0, 0 < DAT_TileMapState::instance.unitPlacementCount)) {
                         do {
                             iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,

@@ -29,7 +29,7 @@ namespace Map {
                 || (param_1 < 1)) {
                 return (undefined4)(0);
             }
-            if ((this->tribes[param_1].field133_0x278 == 0)
+            if ((this->tribes[param_1].predatorNearby == 0)
                 && ((DAT_GameCore::instance.missionNumber1to20 != 0x26 || (param_4 != 0x2f)))) {
                 iVar7 = (int)this->tribes[param_1].selectionTargetUnitID;
                 iVar6 = iVar7;

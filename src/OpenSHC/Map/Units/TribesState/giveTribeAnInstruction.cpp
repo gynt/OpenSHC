@@ -115,7 +115,7 @@ namespace Map {
             local_8 = 0;
             bVar5 = false;
             this->tribes[tribeID].someUnitID = 0;
-            this->tribes[tribeID].field71_0x212 = 0;
+            this->tribes[tribeID].containsRabbit = 0;
             _param_3_id_x_tile_buildingID_copy = (short)id;
             uVar13 = id;
             switch (unitInstructionType) {
@@ -246,7 +246,7 @@ namespace Map {
                             DAT_UnitsState::instance.units[_unitID_0x04].shootBeforeStop = 10;
                         LAB_00527ee1:
                             if (DAT_UnitsState::instance.units[iVar11].unitType == Map::Units::UT_RABBIT) {
-                                this->tribes[_param_1_tribeID].field71_0x212 = 1;
+                                this->tribes[_param_1_tribeID].containsRabbit = 1;
                             }
                         }
                     } while (_unitTribeIndex < this->tribes[_param_1_tribeID].size);
@@ -1679,7 +1679,7 @@ namespace Map {
                                     = unitUID;
                                 DAT_UnitsState::instance.units[iVar12].field283_0x3f8 = 0;
                                 if (DAT_UnitsState::instance.units[iVar11].unitType == Map::Units::UT_RABBIT) {
-                                    this->tribes[_param_1_tribeID].field71_0x212 = 1;
+                                    this->tribes[_param_1_tribeID].containsRabbit = 1;
                                 }
                                 if (DAT_UnitsState::instance.units[iVar12]._someX_2 == 0) {
                                     sVar9 = DAT_UnitsState::instance.units[iVar12].destinationY_2Unk;

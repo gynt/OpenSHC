@@ -116,7 +116,7 @@ namespace Synchrony {
                     }
                 }
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
-                if (DAT_BuildingsState::instance.buildings[_buildingID].field203_0x288 == 0) {
+                if (DAT_BuildingsState::instance.buildings[_buildingID].suppressDestroyRefund == 0) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
                         DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
