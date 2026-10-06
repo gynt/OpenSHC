@@ -57,7 +57,7 @@ namespace Rendering {
                 if ((_binkStructPtr->binkObjPtrArray[0] != (HBINK)0x0)
                     && (_binkStructPtr->unknownParam07[0] == param_1)) {
                     _waitingForFrame = BinkWait(_binkStructPtr->binkObjPtrArray[0]);
-                    if (_waitingForFrame == 0) {
+                    if (!_waitingForFrame) {
                         BinkDoFrame(_binkStructPtr->binkObjPtrArray[0]);
                         _binkObjPtr = _binkStructPtr->binkObjPtrArray[0];
                         if ((_binkObjPtr->frameNum == _binkObjPtr->frames)
@@ -111,7 +111,7 @@ namespace Rendering {
                                     = (*(DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_screenMenu)
                                             ->vTable->Restore)(
                                         DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_screenMenu);
-                                if (_hResultRestore != 0)
+                                if (_hResultRestore)
                                     goto LAB_004091dd;
                                 /*
                                   Signature Overwrite
@@ -151,7 +151,7 @@ namespace Rendering {
                                     = (*(DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_mapGame)
                                             ->vTable->Restore)(
                                         DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_mapGame);
-                                if (_hResultRestore != 0)
+                                if (_hResultRestore)
                                     goto LAB_004091dd;
                                 /*
                                   Singature Overwrite

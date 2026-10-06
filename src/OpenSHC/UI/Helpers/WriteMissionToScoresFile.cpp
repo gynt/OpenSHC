@@ -51,7 +51,7 @@ namespace UI {
             do {
                 MACRO_CALL(OS_Func::_fwrite)(local_2c, 4, 1, _fileHandle2);
                 iVar2 = iVar2 + -1;
-            } while (iVar2 != 0);
+            } while (iVar2);
             MACRO_CALL(OS_Func::_fclose)(_fileHandle2);
             INT_00ec0828::instance = 0;
             MACRO_CALL(UI::Helpers_Func::LoadScoresFileToMemory)(param_1);
@@ -62,7 +62,7 @@ namespace UI {
             piVar3 = (int*)((int)piVar3 + 4);
             MACRO_CALL(OS_Func::_fread)(piVar3, 4, 1, _fileHandle);
             iVar2 = iVar2 + -1;
-        } while (iVar2 != 0);
+        } while (iVar2);
         MACRO_CALL(OS_Func::_fclose)(_fileHandle);
         INT_00ec0828::instance = local_2c[1];
         iVar2 = 0;
@@ -90,7 +90,7 @@ namespace UI {
             piVar3 = (int*)((int)piVar3 + 4);
             MACRO_CALL(OS_Func::_fwrite)(piVar3, 4, 1, _File);
             iVar2 = iVar2 + -1;
-        } while (iVar2 != 0);
+        } while (iVar2);
         MACRO_CALL(OS_Func::_fclose)(_File);
         MACRO_CALL(UI::Helpers_Func::LoadScoresFileToMemory)(param_1);
     }

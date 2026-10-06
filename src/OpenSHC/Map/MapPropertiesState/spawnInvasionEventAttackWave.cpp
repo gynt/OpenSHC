@@ -51,7 +51,7 @@ namespace Map {
         _sliderIndex = 0;
         do {
             _sliderValue = this->invasionEventContent.unitCountsPerUnitType[_sliderIndex];
-            if (_sliderValue == 0)
+            if (!_sliderValue)
                 goto LAB_004c16b3;
             _unitTypeOther = 0;
             _unitType = ((UnitType)0);
@@ -220,7 +220,7 @@ namespace Map {
         LAB_004c16b3:
             _sliderIndex = _sliderIndex + 1;
             if (0x18 < _sliderIndex) {
-                if (this->invasionEventContent.crusaderArabian == 0) {
+                if (!this->invasionEventContent.crusaderArabian) {
                     eventWavFile = "infidel_attack.wav";
                     eventVideoBik = "sultan_nervous.bik";
                 } else {

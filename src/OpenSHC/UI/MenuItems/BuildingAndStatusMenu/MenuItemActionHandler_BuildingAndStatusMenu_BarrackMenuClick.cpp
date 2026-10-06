@@ -51,7 +51,7 @@ namespace UI {
                 ResourceTypeInt _unitCost
                     = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk + -1];
                 if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
+                    && (!DAT_GameSynchronyState::instance.skirmishTroopsCostGold)) {
                     _unitCost = ((ResourceType)0);
                 }
                 if (_recruitableState == Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY) {
@@ -91,7 +91,7 @@ namespace UI {
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .barracks.id)),
                 (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
-            if (_recruitSuccess == 0) {
+            if (!_recruitSuccess) {
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 1)
                     goto LAB_00467488;
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 2)

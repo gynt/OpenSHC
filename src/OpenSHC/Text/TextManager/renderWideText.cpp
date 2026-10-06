@@ -14,7 +14,7 @@ namespace Text {
         WCHAR WVar1;
         WCHAR* pWVar2;
         int _x;
-        if (keepXOffset == 0) {
+        if (!keepXOffset) {
             this->currentXOffset_0x0 = 0;
         }
         if (wideText != (WCHAR*)0x0) {

@@ -14,7 +14,7 @@ namespace Map {
         uint uVar2;
         uVar2 = DAT_CurrentEntityID::instance;
         sVar1 = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unitID_OR_seaGullID;
-        if (sVar1 == 0) {
+        if (!sVar1) {
             if (16
                 < DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated) {
                 DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].logicalState = 3;

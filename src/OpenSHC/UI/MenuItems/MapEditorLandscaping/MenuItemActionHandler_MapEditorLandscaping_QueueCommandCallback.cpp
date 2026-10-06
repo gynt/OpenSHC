@@ -52,9 +52,8 @@ namespace UI {
             } else {
                 if ((((DAT_MouseState::instance.rightClickState != FALSE)
                          && (DAT_MouseState::instance.mouseBasedEvent != 2))
-                        || ((DAT_ModifierKeyState::instance.ctrl != 0
-                            && (DAT_ModifierKeyState::instance.downArrow != 0))))
-                    || (DAT_ModifierKeyState::instance.v != 0)) {
+                        || ((DAT_ModifierKeyState::instance.ctrl && (DAT_ModifierKeyState::instance.downArrow))))
+                    || (DAT_ModifierKeyState::instance.v)) {
                     if (DAT_MouseState::instance.mouseBasedEvent == 3) {
                         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapRotation, DAT_TileMapState::ptr)(
                             DAT_MouseState::instance.mapOrientationCopy3);
@@ -62,7 +61,7 @@ namespace UI {
                         DAT_MouseState::instance.field51_0x198 = 2;
                         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport,
                             DAT_ViewportRenderState::ptr)(
-                            (uint)(DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk == 0));
+                            (uint)(!DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk));
                         DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
                         DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
                     } else {
@@ -83,11 +82,11 @@ namespace UI {
             if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_RIPPLE) {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::HandleWallTerrainMouseDrag)();
             }
-            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {
+            if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
             }
-            if (DAT_MouseState::instance.rightClickStop != 0) {
-                if (INT_00b9844c::instance == 0) {
+            if (DAT_MouseState::instance.rightClickStop) {
+                if (!INT_00b9844c::instance) {
                     DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
                 }
                 INT_00b9844c::instance = 0;
@@ -115,7 +114,7 @@ namespace UI {
                     (short)((int)(DAT_TileMapState::instance.rockFlagStartNumber
                         + DAT_TileMapState::instance.unknownBrushRelated * 4)));
             }
-            if ((DAT_MouseState::instance.leftClickStart == 0)
+            if ((!DAT_MouseState::instance.leftClickStart)
                 && (DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                     == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
             DAT_ViewportRenderState::instance.viewportState.previousMouseTile
@@ -126,7 +125,7 @@ namespace UI {
             _clickedX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
             iVar1 = DAT_TileMapState::instance.editorSnapToMode;
             _orientation = DAT_TileMapState::instance.mapOrientation;
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 DAT_TileMapState::instance.DAT_ClickedTileX
                     = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 DAT_TileMapState::instance.DAT_ClickedTileY
@@ -145,7 +144,7 @@ namespace UI {
                 }
             }
             _clickedY = DAT_TileMapState::instance.DAT_ClickedTileY;
-            if ((_orientation == 0) || (_orientation == 4)) {
+            if ((!_orientation) || (_orientation == 4)) {
                 if (iVar1 != 1) {
                     bVar4 = iVar1 == 2;
                     goto LAB_00443cb1;

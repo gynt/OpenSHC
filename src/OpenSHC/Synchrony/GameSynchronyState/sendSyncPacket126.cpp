@@ -57,7 +57,7 @@ namespace Synchrony {
                 this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A
                                                         ->SendEx(this->DPLAYX_PlayerHandle, 0, 1537 | 1537 | 1537,
                                                             (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
-                if ((this->DPLAYX_SendAndReceiveREsult != 0) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
+                if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
                     MACRO_CALL_MEMBER(
                         Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
                 }

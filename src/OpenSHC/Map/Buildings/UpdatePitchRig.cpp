@@ -44,7 +44,7 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar6 = DAT_CurrentBuildingID::instance * 0x32c;
         sVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].state;
-        if (sVar4 == 0) {
+        if (!sVar4) {
             if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationActive != 0) {
                 if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex == 3) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
@@ -82,7 +82,7 @@ namespace Map {
             }
             bVar7 = (char)bVar3 < '\x01';
             sVar4 = DAT_BuildingsState::instance.buildings[iVar5].animationIndex;
-            if (sVar4 == 0) {
+            if (!sVar4) {
                 DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 0;
                 DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = 0x1f;
             } else {
@@ -95,7 +95,7 @@ namespace Map {
             if (bVar7) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar6) = 0;
                 sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8);
-                if (sVar4 == 0) {
+                if (!sVar4) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 1;
                 } else if (sVar4 == 1) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 2;

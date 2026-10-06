@@ -27,7 +27,7 @@ namespace UI {
         int _resourceCost;
         ResourceTypeInt _unitGoldCost = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk + -1];
         if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-            && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
+            && (!DAT_GameSynchronyState::instance.skirmishTroopsCostGold)) {
             _unitGoldCost = ((ResourceType)0);
         }
         if (DAT_GameState::instance.mapAndTime.euroRecruitable[barrackUnitIdUnk + -0x16] == 0) {
@@ -57,7 +57,7 @@ namespace UI {
                 if (_noResourceUnk) {
                     return Map::Units::ERS_CAN_NOT_RECRUIT;
                 }
-            } else if (_resourceCost != 0) {
+            } else if (_resourceCost) {
                 _noResourceUnk
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                           .currentResources[_resourceCost]

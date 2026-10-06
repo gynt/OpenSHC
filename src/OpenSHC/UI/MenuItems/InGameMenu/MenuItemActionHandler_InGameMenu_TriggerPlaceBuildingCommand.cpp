@@ -92,9 +92,9 @@ namespace UI {
             int _engineersGuildBuildingID;
             int _tunnelersGuildBuildingID;
             char* pcVar5;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
-            if (DAT_GameCore::instance.gamePausedLogical != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus) {}
+            if (DAT_GameSynchronyState::instance.saveRelated) {}
+            if (DAT_GameCore::instance.gamePausedLogical) {}
             DAT_TileMapState::instance.DAT_BuildingSize
                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeForCommandBuildingType,
                     DAT_TileMapState::ptr)(DAT_TileMapState::instance.currentMapperCommand);
@@ -104,17 +104,17 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                 DAT_BottomLeftTextDisplayState::ptr)(2, -1, 0,
                 (TextMessageBLLookupStructUnion)((int)(DAT_TileMapState::instance.currentMapperCommand)), 0x32, -1);
-            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {}
+            if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {}
             DAT_TileMapState::instance.buildingPlacementFailReason
                 = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
-            if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
+            if (!DAT_TileMapState::instance.flatViewToggleValue1) {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
             } else {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
             }
-            if ((DAT_MouseState::instance.leftClickStart == 0)
+            if ((!DAT_MouseState::instance.leftClickStart)
                 && (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE)) {}
             DAT_TileMapState::instance.DAT_ClickedTileY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             DAT_TileMapState::instance.DAT_ClickedTileX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
@@ -126,13 +126,12 @@ namespace UI {
                     + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 iVar12 = (int)DAT_TileMapState::instance.BuildingLayer[iVar4];
                 if (DAT_MouseState::instance.draggingStopped == FALSE) {
-                    if ((((iVar12 != 0)
+                    if ((((iVar12)
                              && (DAT_BuildingsState::instance.buildings[iVar12].owner
                                  == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                             && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar12].buildingType,
-                                BVar1 == Map::Buildings::BT_TOWER4
-                                    || (BVar1 == Map::Buildings::BT_TOWER5))))
-                        && ((((DAT_TileMapState::instance.LogicLayer[iVar4] & 0x10000000U) != 0
+                                BVar1 == Map::Buildings::BT_TOWER4 || (BVar1 == Map::Buildings::BT_TOWER5))))
+                        && ((((DAT_TileMapState::instance.LogicLayer[iVar4] & 0x10000000U)
                                  && (DAT_TileMapState::instance.UnitLayer[iVar4] == 0))
                             && (DAT_BuildingsState::instance.buildings[iVar12].containsSiegeMangonel1OrBallista2
                                 == 0)))) {
@@ -143,7 +142,7 @@ namespace UI {
                         DAT_ViewportRenderState::ptr)(
                         IO::Graphics::GID_BODY_MANGONEL, 1, 0, 0, iVar4, 0x100005);
                 }
-                if (iVar12 == 0) {}
+                if (!iVar12) {}
                 (*(int*)((char*)&UNK_UnusedTextLocation1::instance + 994)) = (*(int*)((char*)&UNK_UnusedTextLocation1::instance + 994))
                     + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 cVar3 = (char)iVar4 + -3;
@@ -152,14 +151,14 @@ namespace UI {
                 if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar12 + -0x4a) != iVar6) {}
                 sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar12 + -0x4e);
                 if ((sVar2 != 0x4d) && (sVar2 != 0x4e)) {}
-                if ((DAT_TileMapState::instance.LogicLayer[(int)pcVar5] & 0x10000000U) == 0) {}
+                if (!(DAT_TileMapState::instance.LogicLayer[(int)pcVar5] & 0x10000000U)) {}
                 if (DAT_TileMapState::instance.UnitLayer[(int)pcVar5] != 0) {}
                 if (*(char*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar12 + -0x35)
                     != '\0') {}
                 iVar6 = MACRO_CALL_MEMBER(
                     Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                     DAT_GameState::ptr)(Commands::M_MAPPER_MANGONEL, iVar6, TRUE);
-                if (iVar6 == 0) {}
+                if (!iVar6) {}
                 MACRO_CALL_MEMBER(UI::HoveredState_Func::createHoverStateElement, DAT_HoveredState::ptr)(
                     DAT_TileMapState::instance.DAT_ClickedTileX,
                     (int)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)),
@@ -187,13 +186,12 @@ namespace UI {
                     + DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                 iVar4 = (int)DAT_TileMapState::instance.BuildingLayer[iVar6];
                 if (DAT_MouseState::instance.draggingStopped == FALSE) {
-                    if ((((iVar4 != 0)
+                    if ((((iVar4)
                              && (DAT_BuildingsState::instance.buildings[iVar4].owner
                                  == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                             && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar4].buildingType,
-                                BVar1 == Map::Buildings::BT_TOWER4
-                                    || (BVar1 == Map::Buildings::BT_TOWER5))))
-                        && ((((DAT_TileMapState::instance.LogicLayer[iVar6] & 0x10000000U) != 0
+                                BVar1 == Map::Buildings::BT_TOWER4 || (BVar1 == Map::Buildings::BT_TOWER5))))
+                        && ((((DAT_TileMapState::instance.LogicLayer[iVar6] & 0x10000000U)
                                  && (DAT_TileMapState::instance.UnitLayer[iVar6] == 0))
                             && (DAT_BuildingsState::instance.buildings[iVar4].containsSiegeMangonel1OrBallista2
                                 == 0)))) {
@@ -204,19 +202,19 @@ namespace UI {
                         DAT_ViewportRenderState::ptr)(
                         IO::Graphics::GID_BODY_BALLISTA, 1, 0, 0, iVar6, 0x100005);
                 }
-                if (iVar4 == 0) {}
+                if (!iVar4) {}
                 if (DAT_BuildingsState::instance.buildings[iVar4].owner
                     != DAT_GameSynchronyState::instance.currentPlayerSlotID) {}
                 BVar1 = DAT_BuildingsState::instance.buildings[iVar4].buildingType;
                 if ((BVar1 != Map::Buildings::BT_TOWER4) && (BVar1 != Map::Buildings::BT_TOWER5)) {}
-                if ((DAT_TileMapState::instance.LogicLayer[iVar6] & 0x10000000U) == 0) {}
+                if (!(DAT_TileMapState::instance.LogicLayer[iVar6] & 0x10000000U)) {}
                 if (DAT_TileMapState::instance.UnitLayer[iVar6] != 0) {}
                 if (DAT_BuildingsState::instance.buildings[iVar4].containsSiegeMangonel1OrBallista2 != 0) {}
                 iVar6 = MACRO_CALL_MEMBER(
                     Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                     DAT_GameState::ptr)(Commands::M_MAPPER_BALLISTA,
                     (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), TRUE);
-                if (iVar6 == 0) {}
+                if (!iVar6) {}
                 MACRO_CALL_MEMBER(UI::HoveredState_Func::createHoverStateElement, DAT_HoveredState::ptr)(
                     DAT_TileMapState::instance.DAT_ClickedTileX,
                     (int)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)),
@@ -251,7 +249,7 @@ namespace UI {
                         iVar12 = MACRO_CALL_MEMBER(
                             Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
                             iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
-                        if ((-1 < iVar12) && ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000) == 0)) {
+                        if ((-1 < iVar12) && (!(DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000))) {
                             MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                                 DAT_ViewportRenderState::ptr)(
                                 IO::Graphics::GID_ANIM_HEADS, iVar4, 0xf, 7, iVar6, 0x1d);
@@ -263,7 +261,7 @@ namespace UI {
                     iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
                         iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
                     if (iVar4 < 0) {}
-                    if ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000) != 0) {}
+                    if ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000)) {}
                     iVar6 = DAT_TileMapState::instance.DAT_ClickedTileY * 8;
                     iVar12 = DAT_TileMapState::instance.DAT_ClickedTileX * 8;
                     MACRO_CALL_MEMBER(UI::HoveredState_Func::createHoverStateElement, DAT_HoveredState::ptr)(
@@ -304,7 +302,7 @@ namespace UI {
                             Map::TileMapState_Func::getHeightAtTileIncludingOwnersBuildings,
                             DAT_TileMapState::ptr)(
                             iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
-                        if ((_height == 0) || (!bVar14)) {
+                        if ((!_height) || (!bVar14)) {
                             iVar4 = 0x10001d;
                         } else {
                             iVar4 = 0x1d;
@@ -316,7 +314,7 @@ namespace UI {
                     uVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getHeightAtTileIncludingOwnersBuildings,
                         DAT_TileMapState::ptr)(
                         iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
-                    if (uVar7 == 0) {}
+                    if (!uVar7) {}
                     if (!bVar14) {}
                     MACRO_CALL_MEMBER(UI::HoveredState_Func::createHoverStateElement, DAT_HoveredState::ptr)(
                         DAT_TileMapState::instance.DAT_ClickedTileX,
@@ -594,11 +592,11 @@ namespace UI {
                               .buildingType
                         == Map::Buildings::BT_CATHEDRAL;
                     if (DAT_MouseState::instance.draggingStopped != FALSE) {
-                        if (!bVar14 && iVar6 == 0) {}
+                        if (!bVar14 && !iVar6) {}
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0x28;
                         goto LAB_004465a6;
                     }
-                    if (bVar14 || iVar6 != 0) {
+                    if (bVar14 || iVar6) {
                         iVar6 = 0xd;
                         goto LAB_0044655d;
                     }
@@ -726,7 +724,7 @@ namespace UI {
                         && (DAT_GameSynchronyState::instance.currentGameMode
                             != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         DVar8 = timeGetTime();
-                        if (DAT_00b98450::instance == 0) {
+                        if (!DAT_00b98450::instance) {
                             DVar8 = timeGetTime();
                         } else if (DVar8 - DAT_00b98450::instance < 0xc9) {
                         }
@@ -782,7 +780,7 @@ namespace UI {
                                 != Commands::M_MAPPER_TUNNEL_CONSTRUCTION
                             && (DAT_BuildingsState::instance.unknownCountdown01 < 0x14))))))
                     goto LAB_00445d3d;
-                if (DAT_MouseState::instance.leftClickStart != 0) {
+                if (DAT_MouseState::instance.leftClickStart) {
                     DAT_00b96110::instance = 0;
                 }
                 if (((DAT_MouseState::instance.leftClickState != FALSE)
@@ -793,7 +791,7 @@ namespace UI {
                         && (DAT_GameSynchronyState::instance.currentGameMode
                             != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         DVar8 = timeGetTime();
-                        if (DAT_00b98454::instance == 0) {
+                        if (!DAT_00b98454::instance) {
                             DVar8 = timeGetTime();
                         } else if (DVar8 - DAT_00b98454::instance < 0xc9) {
                         }
@@ -805,7 +803,7 @@ namespace UI {
                         + DAT_TileMapState::instance.DAT_ClickedTileX;
                     if (DAT_00b96110::instance == iVar6)
                         goto LAB_00445e6f;
-                    if (DAT_00b96110::instance == 0) {
+                    if (!DAT_00b96110::instance) {
                         MACRO_CALL_MEMBER(
                             Map::WallAndPitchState_Func::resetWallAndPitchState, DAT_WallAndPitchState::ptr)();
                     }
@@ -815,7 +813,7 @@ namespace UI {
                         Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                         DAT_GameState::ptr)(DAT_TileMapState::instance.currentMapperCommand,
                         (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), TRUE);
-                    if (iVar6 == 0) {}
+                    if (!iVar6) {}
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                         = DAT_TileMapState::instance.DAT_ClickedTileX;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1
@@ -973,13 +971,13 @@ namespace UI {
                                 (TextMessageBLLookupStructUnion)0x0, 100, 6000);
                             MACRO_CALL(UI::Helpers_Func::PlayPlacementWarning)(DAT_TileMapState::instance.buildingPlacementFailReason);
                         }
-                        if (DAT_TileMapState::instance.placementWarning != 0) {
+                        if (DAT_TileMapState::instance.placementWarning) {
                             MACRO_CALL(UI::Helpers_Func::PlayPlacementWarning)(
                                 Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE1
                                 - DAT_TileMapState::instance.placementWarning);
                         }
                         if ((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_PITCH_DITCH)
-                            && (DAT_00b96110::instance != 0)) {}
+                            && (DAT_00b96110::instance)) {}
                         MACRO_CALL(UI::Helpers_Func::PlayPlacementWarning)(Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE1);
                     }
                     goto LAB_00445e0c;
@@ -1068,7 +1066,7 @@ namespace UI {
                 }
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
                     iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
-                if ((-1 < iVar4) && ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000) == 0)) {
+                if ((-1 < iVar4) && (!(DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000))) {
                     MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                         DAT_ViewportRenderState::ptr)(
                         local_4, local_8, (int)((int)(imageX)), (int)((int)(imageY)), iVar6, 0xd);
@@ -1080,7 +1078,7 @@ namespace UI {
             GVar10 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getTotalHeightAt, DAT_TileMapState::ptr)(
                 iVar6, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)));
             if ((int)GVar10 < 0) {}
-            if ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000) != 0) {}
+            if ((DAT_TileMapState::instance.MiscDisplayLayer[iVar6] & 0x1000)) {}
             local_4 = GVar10;
             switch (DAT_TileMapState::instance.currentMapperCommand) {
             case Commands::M_MAPPER_FLAG_TYPE0:

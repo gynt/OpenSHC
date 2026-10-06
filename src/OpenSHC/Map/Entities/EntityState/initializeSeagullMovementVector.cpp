@@ -30,14 +30,14 @@ namespace Map {
             this->seagullArray[seagullID].field24_0x32 = (ushort)(param_3 <= param_5) * 2 + -1;
             sVar4 = (short)iVar5;
             sVar1 = (short)iVar3;
-            if (iVar3 == 0) {
-                if (iVar5 != 0) {
+            if (!iVar3) {
+                if (iVar5) {
                     this->seagullArray[seagullID].field22_0x2e = 1;
                     goto LAB_0040383b;
                 }
                 this->seagullArray[seagullID].field22_0x2e = 0;
             } else {
-                if (iVar5 == 0) {
+                if (!iVar5) {
                     this->seagullArray[seagullID].field22_0x2e = 2;
                 } else if (iVar3 < iVar5) {
                     this->seagullArray[seagullID].field22_0x2e = 3;

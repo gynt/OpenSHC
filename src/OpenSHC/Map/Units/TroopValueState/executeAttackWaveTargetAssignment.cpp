@@ -81,7 +81,7 @@ namespace Map {
                             Map::Units::STBT_0x3f6, Map::Units::STBT_1, 0, 10);
                     }
                     iVar5 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar4 + -4);
-                    if (iVar5 != 0) {
+                    if (iVar5) {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                             this)(param_1, 1000, iVar5, (SomeTribeBehaviorType)((int)(1013)));
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
@@ -94,7 +94,7 @@ namespace Map {
                         Map::Units::STBT_0x3f2, Map::Units::STBT_1, 0, 10);
                 }
                 DAT_TroopValueState::instance.attackInfo.reservedTroopBudget = 0;
-                if (DAT_TroopValueState::instance.attackInfo.catapults != 0) {
+                if (DAT_TroopValueState::instance.attackInfo.catapults) {
                     DAT_TroopValueState::instance.attackInfo.reservedTroopBudget
                         = DAT_AttackInfoDefinedData::instance.AIReservedTroopBudget[DAT_TroopValueState::instance.attackInfo.attacker];
                     if (DAT_TroopValueState::instance.attackInfo.zoneSize < 3000) {
@@ -105,8 +105,9 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x401, Map::Units::STBT_1, 0, 0x32);
                 }
-                if ((DAT_TroopValueState::instance.attackInfo.lord2 != 0)
-                    && (2 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
+                if ((DAT_TroopValueState::instance.attackInfo.lord2)
+                    && (2 < DAT_TroopValueState::instance.attackInfo.value10
+                            - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
                     if (DAT_TroopValueState::instance.attackInfo.attacker == 4) {
                         DAT_TroopValueState::instance.attackInfo.field_0x20f3c = DAT_TroopValueState::instance.attackInfo.field_0x20f3c * 2;
                     }
@@ -121,7 +122,9 @@ namespace Map {
                         = *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar4 + -4) * 2;
                 }
                 iVar2 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar4 + -4);
-                if ((iVar2 != 0) && (2 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
+                if ((iVar2)
+                    && (2 < DAT_TroopValueState::instance.attackInfo.value10
+                            - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
                     MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                         param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f48)), iVar2, Map::Units::STBT_0x3f5);
@@ -176,7 +179,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3fc, Map::Units::STBT_1, 0, 5);
                 }
-                if (DAT_TroopValueState::instance.attackInfo.people3 != 0) {
+                if (DAT_TroopValueState::instance.attackInfo.people3) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, (int)((int)(DAT_TroopValueState::instance.attackInfo.field_0x20f54)), DAT_TroopValueState::instance.attackInfo.people3,
                         Map::Units::STBT_0x3fb);
@@ -192,14 +195,16 @@ namespace Map {
                         Map::Units::STBT_0x3f6, Map::Units::STBT_1, 0, 10);
                 }
                 iVar2 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + iVar4 + -4);
-                if ((iVar2 != 0) && (3 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
+                if ((iVar2)
+                    && (3 < DAT_TroopValueState::instance.attackInfo.value10
+                            - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, iVar2, 10000, Map::Units::STBT_0x413);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x413, Map::Units::STBT_1, 0, 0x28);
                 }
                 iVar2 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.wideValuesArray + iVar4 + -4);
-                if (iVar2 != 0) {
+                if (iVar2) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, iVar2, 10000, Map::Units::STBT_0x414);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
@@ -227,7 +232,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                             Map::Units::STBT_0x3f4, Map::Units::STBT_5, 0, 0x19);
                     }
-                    if (DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c != 0) {
+                    if (DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c) {
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                             this)(param_1, DAT_TroopValueState::instance.attackInfo.field89400_0x21c4c, 10000, Map::Units::STBT_0x3f4);
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
@@ -248,9 +253,10 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3f7, Map::Units::STBT_1, 10, 5);
                 }
-                if (((DAT_TroopValueState::instance.attackInfo.knights != 0)
+                if (((DAT_TroopValueState::instance.attackInfo.knights)
                         && (*(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + iVar4 + -4) != 0))
-                    && (3 < DAT_TroopValueState::instance.attackInfo.value10 - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
+                    && (3 < DAT_TroopValueState::instance.attackInfo.value10
+                            - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget)) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, 1000, 10000, Map::Units::STBT_0x417);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(

@@ -57,7 +57,7 @@ namespace UI {
                     && (DAT_GameSynchronyState::instance.currentGameMode
                         != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER))
                 && (DAT_BinkControlState::instance.unknown02_zero[0] != 0)) {
-                if (DWORD_00ed27b4::instance == 0) {
+                if (!DWORD_00ed27b4::instance) {
                     DWORD_00ed27b4::instance = timeGetTime();
                 } else {
                     DVar1 = timeGetTime();
@@ -67,7 +67,7 @@ namespace UI {
             }
             if (((DAT_MouseState::instance.draggingStopped == FALSE)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                && (INT_00ed279c::instance == 0)) {}
+                && (!INT_00ed279c::instance)) {}
         LAB_004dca69:
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;
@@ -80,7 +80,7 @@ namespace UI {
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
                     if (DAT_GameCore::instance.isSkirmishTrail == FALSE) {
-                        if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
+                        if (!DAT_GameCore::instance.skipStoreSKMasters) {
                             MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(0);
                         }
                         MACRO_CALL(
@@ -91,7 +91,7 @@ namespace UI {
                     }
                     if (DAT_GameCore::instance.isSkirmishTrail == TRUE) {
                         if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                            if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
+                            if (!DAT_GameCore::instance.skipStoreSKMasters) {
                                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
                                     DAT_GameCore::instance.extremeTrailProgress + 0x51);
                             }
@@ -101,7 +101,7 @@ namespace UI {
                             DAT_GameCore::instance.skipStoreSKMasters = 0;
                         }
                         if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_WARCHEST) {
-                            if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
+                            if (!DAT_GameCore::instance.skipStoreSKMasters) {
                                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
                                     DAT_GameCore::instance.skirmishTrailProgress + 1);
                             }
@@ -110,7 +110,7 @@ namespace UI {
                                 1);
                             DAT_GameCore::instance.skipStoreSKMasters = 0;
                         }
-                        if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
+                        if (!DAT_GameCore::instance.skipStoreSKMasters) {
                             MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
                                 DAT_GameCore::instance.warchestTrailProgress + 0x33);
                         }

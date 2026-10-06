@@ -65,7 +65,7 @@ namespace Map {
             cVar8 = cVar8 + '\x01';
         }
         iVar7 = (int)DAT_BuildingsState::instance.buildings[buildingID].unitID;
-        if (iVar7 == 0) {
+        if (!iVar7) {
         LAB_00417070:
             if (DAT_BuildingsState::instance.buildings[buildingID].unitID != 0)
                 goto LAB_00417079;
@@ -139,8 +139,8 @@ namespace Map {
                           .MillAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3];
             }
         }
-        if (((cVar8 == '\0') || (sVar3 != 0))
-            || (uVar6 = DAT_BuildingsState::instance.buildings[buildingID].outpostRelatedUnk4, uVar6 == 0)) {
+        if (((cVar8 == '\0') || (sVar3))
+            || (uVar6 = DAT_BuildingsState::instance.buildings[buildingID].outpostRelatedUnk4, !uVar6)) {
             DAT_BuildingsState::instance.buildings[buildingID].campgroundVclock = 0;
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = 0;
         } else {
@@ -174,7 +174,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].killingPitField = 0;
             }
         }
-        if ((cVar8 == '\0') || (sVar3 == 0)) {
+        if ((cVar8 == '\0') || (!sVar3)) {
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame1 = 0;
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = 0;
         } else {
@@ -203,7 +203,7 @@ namespace Map {
             goto LAB_00417366;
         }
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].killingPitField;
-        if (sVar3 == 0) {
+        if (!sVar3) {
         LAB_00417289:
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame2 = 0;
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite3 = 0x2e;
@@ -241,7 +241,7 @@ namespace Map {
                 goto LAB_00417366;
         }
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].killingPitField;
-        if (sVar3 == 0) {
+        if (!sVar3) {
             DAT_BuildingsState::instance.buildings[buildingID].killingPitField = 1;
         } else if (((sVar3 == 1) || (sVar3 == 2)) || (sVar3 == 3)) {
             DAT_BuildingsState::instance.buildings[buildingID].killingPitField = 3;

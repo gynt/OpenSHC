@@ -67,10 +67,10 @@ namespace Map {
                     && (DAT_PathFindingState::instance.ALGO_TotalTroopValue < 0x14)) {
                     return (undefined4)(0);
                 }
-                if (DAT_PathFindingState::instance.field34_0x64 != 0) {
+                if (DAT_PathFindingState::instance.field34_0x64) {
                     sVar2 = DAT_TileMapState::instance.BuildingLayer
                                 [DAT_UnitsState::instance.units[DAT_PathFindingState::instance.field34_0x64].tile];
-                    if (sVar2 != 0) {
+                    if (sVar2) {
                         switch (DAT_BuildingsState::instance.buildings[sVar2].buildingType) {
                         case Map::Buildings::BT_CAMPFIRE:
                             param_1 = 4;
@@ -100,7 +100,7 @@ namespace Map {
                                                 .translationMatrix[DAT_TileMapState::instance.buildingY + (short)uVar4]
                                                 .addXgetTile
                                             + DAT_TileMapState::instance.buildingX + (int)(short)uVar3];
-                            while (iVar9 = (int)(short)uVar5, iVar9 != 0) {
+                            while (iVar9 = (int)(short)uVar5, iVar9) {
                                 if (DAT_UnitsState::instance.units[iVar9].isSelectable_OR_matchTime != 0) {
                                     if (DAT_GameState::instance.mapAndTime
                                             .playerTeams[DAT_UnitsState::instance.units[iVar6].owner]

@@ -46,7 +46,7 @@ namespace UI {
                 do {
                     for (; iVar3 <= drawXEnd; iVar3 = iVar3 + 1) {
                         uVar2 = *_drawPtr;
-                        if (uVar2 != 0) {
+                        if (uVar2) {
                             *_drawPtr = DAT_BlendFilterArrays::instance[blendStrengthUnk][uVar2 & 0x1f][0]
                                 | *(ushort*)(iVar4 + 0xd7d2da + (uint)(uVar2 >> 5 & 0x3f) * 8)
                                 | *(ushort*)(iVar4 + 0xd7d2dc + (uint)(uVar2 >> 0xb) * 8);
@@ -64,7 +64,7 @@ namespace UI {
             do {
                 for (; iVar3 <= drawXEnd; iVar3 = iVar3 + 1) {
                     uVar2 = *_drawPtr;
-                    if (uVar2 != 0) {
+                    if (uVar2) {
                         *_drawPtr = DAT_BlendFilterArrays::instance[blendStrengthUnk][uVar2 & 0x1f][0]
                             | *(ushort*)(iVar4 + 0xd7d2da + (uint)(uVar2 >> 5 & 0x1f) * 8)
                             | *(ushort*)(iVar4 + 0xd7d2dc + (uVar2 >> 10 & 0x1f) * 8);

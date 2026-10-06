@@ -40,7 +40,7 @@ namespace Map {
                         *puVar3 = 0;
                         puVar3 = puVar3 + 4;
                         iVar4 = iVar4 + -1;
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     iVar4 = 0;
                     puVar3 = puVar5;
                     do {

@@ -43,7 +43,7 @@ namespace UI {
             int _heightEnd;
             uint _length;
             if (0 < imageHeight) {
-                if (this->isZoom2 == 0) {
+                if (!this->isZoom2) {
                     if (this->drawBufferChoiceValue == Rendering::Enums::RT_MAP_GAME) {
                         this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                         _hori = imageWidth * -2 + 0x1fb0;
@@ -156,7 +156,7 @@ namespace UI {
                                     bVar3 = 0 < _outsidePosY;
                                     drawY = _heightStart;
                                     _outsidePosY = iVar4;
-                                } while (iVar4 != 0 && bVar3);
+                                } while (iVar4 && bVar3);
                             }
                             _currentDrawPointer
                                 = (undefined4*)((int)this->currentRenderSurface + drawY * _vert + drawX * 2);
@@ -1139,7 +1139,7 @@ namespace UI {
                                 bVar3 = 0 < imageHeight;
                                 imageHeight = _outsidePosY;
                                 imageAddress = (ushort*)_imageDataPtr;
-                            } while (_outsidePosY != 0 && bVar3);
+                            } while (_outsidePosY && bVar3);
                         }
                     }
                 } else {
@@ -1174,7 +1174,7 @@ namespace UI {
                                 bVar3 = 0 < _outsidePosY;
                                 drawY = this->mapGameSurfaceHeightRange.start;
                                 _outsidePosY = iVar4;
-                            } while (iVar4 != 0 && bVar3);
+                            } while (iVar4 && bVar3);
                         }
                         _drawPointer = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                             + ((uint)drawY >> 1) * 0x1fb0 + (drawX & 0xfffffffeU);
@@ -1198,14 +1198,14 @@ namespace UI {
                                     _outsidePosY = uVar6 + 1;
                                     uVar6 = local_20 + _outsidePosY;
                                     do {
-                                        if ((local_20 & 1) == 0) {
+                                        if (!(local_20 & 1)) {
                                             *(undefined2*)(_drawPointer + local_20) = *(undefined2*)_imageDataPtr;
                                         }
                                         local_20 = local_20 + 1;
                                         _imageDataPtr = _imageDataPtr + 2;
                                         _outsidePosY = _outsidePosY + -1;
                                         imageAddress = (ushort*)_imageDataPtr;
-                                    } while (_outsidePosY != 0);
+                                    } while (_outsidePosY);
                                 }
                                 if (_tgxToken2 != IO::Graphics::TT_REPEATING_PIXELS)
                                     break;
@@ -1214,12 +1214,12 @@ namespace UI {
                                 _outsidePosY = uVar6 + 1;
                                 uVar6 = local_20 + _outsidePosY;
                                 do {
-                                    if ((local_20 & 1) == 0) {
+                                    if (!(local_20 & 1)) {
                                         *(undefined2*)(_drawPointer + local_20) = uVar1;
                                     }
                                     local_20 = local_20 + 1;
                                     _outsidePosY = _outsidePosY + -1;
-                                } while (_outsidePosY != 0);
+                                } while (_outsidePosY);
                             }
                             _drawPointer = _drawPointer + 0x1fb0;
                             _outsidePosY = imageHeight + -1;
@@ -1243,7 +1243,7 @@ namespace UI {
                             imageHeight = imageHeight + -2;
                             imageAddress = (ushort*)_imageDataPtr;
                             uVar6 = local_20;
-                        } while (imageHeight != 0 && 0 < _outsidePosY);
+                        } while (imageHeight && 0 < _outsidePosY);
                     }
                 }
             }

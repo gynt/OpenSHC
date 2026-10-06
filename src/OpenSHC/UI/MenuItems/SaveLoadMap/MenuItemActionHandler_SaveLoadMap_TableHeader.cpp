@@ -33,9 +33,9 @@ namespace UI {
                     param_1 = 1;
                 }
             }
-            if (param_1 == 0) {
+            if (!param_1) {
                 iVar2 = 0;
-                if (DAT_MenuTextInputState::instance.fileListSortOrder == 0) {
+                if (!DAT_MenuTextInputState::instance.fileListSortOrder) {
                     if (0 < DAT_MenuTextInputState::instance.fileListEntryCount) {
                         do {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
@@ -76,7 +76,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar2 + -1);
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                 }
@@ -100,7 +100,7 @@ namespace UI {
                         }
                         iVar3 = iVar3 + 1;
                     } while (iVar3 < iVar2 + -1);
-                } while (iVar4 != 0);
+                } while (iVar4);
                 DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                 DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
             }

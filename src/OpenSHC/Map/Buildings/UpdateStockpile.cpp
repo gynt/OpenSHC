@@ -39,7 +39,7 @@ namespace Map {
         bVar5 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
         if (((((bVar5) || (_owner != DAT_GameState::instance.mapAndTime.somePlayerID))
-                 && (((byte)DAT_GameCore::instance.mapTimeInTicks & 3) == 0))
+                 && (!((byte)DAT_GameCore::instance.mapTimeInTicks & 3)))
                 && ((DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted == 0
                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))))
             && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT

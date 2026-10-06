@@ -14,7 +14,7 @@ namespace Map {
             undefined4 uVar2;
             sVar1 = this->entityArray[entityID].startingHeight + (short)param_2;
             this->entityArray[entityID].height = sVar1;
-            if ((sVar1 < 3) && (param_4 == 0)) {
+            if ((sVar1 < 3) && (!param_4)) {
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
                     entityID);
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(

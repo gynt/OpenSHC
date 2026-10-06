@@ -42,8 +42,8 @@ namespace Map {
             _rng1_0to8 = DAT_LandscapeState::instance.trees[_treeID].rng1 & 7;
             DAT_LandscapeState::instance.trees[_treeID].appleTreeColorVariation = _rng1_0to8;
             _stage = DAT_LandscapeState::instance.trees[_treeID].stage;
-            if ((_stage == 0) && (DAT_LandscapeState::instance.trees[_treeID].stageTracker < 0xfa)) {
-                if (_rng1_0to8 == 0) {
+            if ((!_stage) && (DAT_LandscapeState::instance.trees[_treeID].stageTracker < 0xfa)) {
+                if (!_rng1_0to8) {
                     DAT_LandscapeState::instance.trees[_treeID].appleTreeColorVariation = 2;
                 } else {
                 LAB_004f274d:
@@ -55,7 +55,7 @@ namespace Map {
                     }
                 }
             } else if (_stage == 5) {
-                if (_rng1_0to8 != 0)
+                if (_rng1_0to8)
                     goto LAB_004f274d;
                 DAT_LandscapeState::instance.trees[_treeID].appleTreeColorVariation = 2;
             } else if (_rng1_0to8 == 2) {
@@ -127,7 +127,7 @@ namespace Map {
         }
         DAT_LandscapeState::instance.trees[_treeID].animationFrameUnk = _frame;
     switchD_004f281e_caseD_7:
-        if (DAT_LandscapeState::instance.field0_0x0 != 0) {
+        if (DAT_LandscapeState::instance.field0_0x0) {
             DAT_LandscapeState::instance.trees[_treeID].animationFrameUnk = 0;
         }
     }

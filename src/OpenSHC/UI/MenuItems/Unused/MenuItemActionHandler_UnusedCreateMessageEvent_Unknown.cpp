@@ -13,7 +13,7 @@ namespace UI {
                 && (DAT_MapPropertiesState::instance.indexStored = index, index != -1)) {
                 DAT_MapPropertiesState::instance.value
                     = DAT_MapPropertiesState::instance.unknownArray_01[DAT_MapPropertiesState::instance.offset + index];
-                if (DAT_MapPropertiesState::instance.flag == 0) {
+                if (!DAT_MapPropertiesState::instance.flag) {
                     DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.actionData = DAT_MapPropertiesState::instance.value;
                 }

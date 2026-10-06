@@ -79,18 +79,16 @@ namespace Map {
                     _pUnit = &DAT_UnitsState::instance.units[1];
                     do {
                         if ((((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
-                                 && (BVar2 = MACRO_CALL_MEMBER(
-                                         Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep, this)(
-                                         (int)_pUnit->owner),
+                                 && (BVar2
+                                     = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                                         this)((int)_pUnit->owner),
                                      BVar2 != FALSE))
-                                && (((UVar1 = _pUnit->unitType,
-                                         UVar1 == Map::Units::UT_E_MACE
-                                             || ((UVar1 == Map::Units::UT_E_SWORD
-                                                 || (UVar1 == Map::Units::UT_E_SPEAR))))
-                                    || (((UVar1 == Map::Units::UT_E_ARCHER
-                                             || (UVar1 == Map::Units::UT_E_XBOW))
-                                        && ((DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U)
-                                            == 0))))))
+                                && ((
+                                    (UVar1 = _pUnit->unitType,
+                                        UVar1 == Map::Units::UT_E_MACE
+                                            || ((UVar1 == Map::Units::UT_E_SWORD || (UVar1 == Map::Units::UT_E_SPEAR))))
+                                    || (((UVar1 == Map::Units::UT_E_ARCHER || (UVar1 == Map::Units::UT_E_XBOW))
+                                        && (!(DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U)))))))
                             && (MACRO_CALL_MEMBER(
                                     Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                                     DAT_DirectionAlgorithmState::ptr)(

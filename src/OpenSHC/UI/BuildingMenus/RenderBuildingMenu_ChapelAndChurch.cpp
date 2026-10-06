@@ -104,7 +104,7 @@ namespace UI {
             DAT_RenderingDefinedData::instance.field1120_0x557e0 = DAT_GameState::instance.mapAndTime.month;
             DAT_00b9843c::instance = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::chooseHusbandAndWife,
                 DAT_UnitsState::ptr)((int*)DAT_HusbandID::ptr, (int*)DAT_WifeID::ptr);
-            if (DAT_00b9843c::instance == 0) {
+            if (!DAT_00b9843c::instance) {
                 /* no wedding this month: render the notice and stop */
                 iVar11 = 0;
                 BVar9 = FALSE;
@@ -143,14 +143,14 @@ namespace UI {
                 }
             }
         }
-        if (DAT_00b9843c::instance != 0) {
+        if (DAT_00b9843c::instance) {
             if ((int)(short)DAT_UnitsState::instance.units[DAT_HusbandID::instance].unitType
                 != DAT_HusbandUnitType::instance) {
                 DAT_00b9843c::instance = 0;
             }
             if ((int)(short)DAT_UnitsState::instance.units[DAT_WifeID::instance].unitType
                 == DAT_WifeUnitType::instance) {
-                if (DAT_00b9843c::instance != 0) {
+                if (DAT_00b9843c::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
                         DAT_TextureRenderCoreObject::ptr)(
                         1, DAT_MenuHandlerState::instance.x + 0x173, DAT_MenuHandlerState::instance.y + 0x1e0);
@@ -211,7 +211,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(pcVar3, iVar8, iVar5, TVar6, BVar7, iVar11, BVar9, iVar10);
                         bVar1 = DAT_UnitsState::instance.units[iVar4].rng1_to_70;
-                        if (bVar1 != 0) {
+                        if (bVar1) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((char)bVar1),
                                 DAT_MenuHandlerState::instance.x + 0xdc, DAT_MenuHandlerState::instance.y + 0x1ec,
@@ -233,14 +233,14 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(pcVar3, iVar8, iVar5, TVar6, BVar7, iVar11, BVar9, iVar10);
                         bVar1 = DAT_UnitsState::instance.units[iVar4].rng1_to_70;
-                        if (bVar1 != 0) {
+                        if (bVar1) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((char)bVar1),
                                 DAT_MenuHandlerState::instance.x + 0xeb, DAT_MenuHandlerState::instance.y + 0x205,
                                 OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE);
                         }
                     }
-                    if (DAT_00b9843c::instance != 0) {}
+                    if (DAT_00b9843c::instance) {}
                 }
             } else {
                 DAT_00b9843c::instance = 0;

@@ -79,7 +79,7 @@ namespace Map {
             - (DAT_BuildingsState::instance.buildings[iVar2].currentHealth * 5)
                 / (int)DAT_BuildingsState::instance.buildings[iVar2].maxHealth;
         if (iVar4 < 5) {
-            if (iVar4 == 0)
+            if (!iVar4)
                 goto LAB_00423a8d;
         } else {
             iVar4 = 4;
@@ -94,7 +94,7 @@ namespace Map {
                 uVar3 = uVar3 + 1;
                 iVar4 = iVar4 + -1;
                 local_10[uVar5] = uVar7 + 1;
-            } while (iVar4 != 0);
+            } while (iVar4);
         }
         if (local_14 == 0x50) {
             DAT_BuildingsState::instance.buildings[iVar2].damageDecoration[0] = local_10[0];
@@ -113,7 +113,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar2].animationIncrement = 1;
         DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 1;
         bVar1 = DAT_BuildingsState::instance.buildings[iVar2].pathLinkageRelated2;
-        if (bVar1 == 0) {
+        if (!bVar1) {
             if (DAT_BuildingsState::instance.buildings[iVar2].gateState == 10) {
                 DAT_BuildingsState::instance.buildings[iVar2].pathLinkageRelated2 = 1;
                 DAT_BuildingsState::instance.buildings[iVar2].gateState = 0xc;

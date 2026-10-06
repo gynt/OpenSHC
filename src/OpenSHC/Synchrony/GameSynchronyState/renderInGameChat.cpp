@@ -61,11 +61,10 @@ namespace Synchrony {
                             this->DAT_ChatMessageObjectPlayerNameArray[this->chatMessageRenderIndex], 0x13);
                         iVar3 = iVar3 + 6 + iVar2;
                     }
-                    if ((((_lordID == 0)
+                    if ((((!_lordID)
                              || (DAT_UnitsState::instance.units[_lordID].uid
                                  != DAT_GameState::instance.playerDataArray[iVar5].lordUID))
-                            || (DAT_UnitsState::instance.units[_lordID].logicalState
-                                != Map::Units::ULS_NORMAL))
+                            || (DAT_UnitsState::instance.units[_lordID].logicalState != Map::Units::ULS_NORMAL))
                         && (200 < (int)(DAT_GameCore::instance.mapTimeInTicks - DAT_GameCore::instance.section1127))) {
                         iVar2 = 0x13;
                         /*
@@ -90,11 +89,10 @@ namespace Synchrony {
                                         [this->DAT_ChatEventArray[this->chatMessageRenderIndex].subjectPlayer]])),
                         0, 0x13, FALSE, 0);
                     iVar3 = param_1;
-                    if ((((_lordID == 0)
+                    if ((((!_lordID)
                              || (DAT_UnitsState::instance.units[_lordID].uid
                                  != DAT_GameState::instance.playerDataArray[iVar5].lordUID))
-                            || (DAT_UnitsState::instance.units[_lordID].logicalState
-                                != Map::Units::ULS_NORMAL))
+                            || (DAT_UnitsState::instance.units[_lordID].logicalState != Map::Units::ULS_NORMAL))
                         && (200 < (int)(DAT_GameCore::instance.mapTimeInTicks - DAT_GameCore::instance.section1127))) {
                         blendStrength = 0;
                         keepOffsetX = TRUE;
@@ -118,7 +116,7 @@ namespace Synchrony {
                         DAT_TextManagerObject::ptr)(this->DAT_ChatMessageArray[this->chatMessageRenderIndex], iVar3 + 6,
                         param_2, Text::TTA_LEFT, 0xb8eefb, 0, 0x13, TRUE, 0);
                     iVar5 = this->DAT_ChatEventArray[this->chatMessageRenderIndex].objectPlayer;
-                    if (iVar5 != 0) {
+                    if (iVar5) {
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                             this->DAT_ChatMessageObjectPlayerNameArray[this->chatMessageRenderIndex], iVar3 + 0xc, param_2,
@@ -137,7 +135,7 @@ namespace Synchrony {
             }
             param_2 = param_2 + -0xe;
             local_4 = local_4 + -1;
-        } while (local_4 != 0);
+        } while (local_4);
     }
 
 }

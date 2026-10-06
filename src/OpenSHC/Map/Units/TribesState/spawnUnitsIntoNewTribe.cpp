@@ -31,13 +31,13 @@ namespace Map {
                     do {
                         _unitID = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
                             DAT_UnitsState::ptr)(playerID, playerID, x * 8, y * 8, 8, unitType);
-                        if (_unitID != 0) {
+                        if (_unitID) {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                                 _unitID, (int)((int)(_tribeID)));
                             DAT_UnitsState::instance.units[_unitID].aiUnitBehaviourType = 0;
                         }
                         tribeType = tribeType + -1;
-                    } while (tribeType != 0);
+                    } while (tribeType);
                 }
                 if (0 < unitType2Count) {
                     microYPosition = y * 8;
@@ -45,13 +45,13 @@ namespace Map {
                     do {
                         _unitID2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
                             DAT_UnitsState::ptr)(playerID, playerID, x * 8, microYPosition, 8, unitType2);
-                        if (_unitID2 != 0) {
+                        if (_unitID2) {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                                 _unitID2, (int)((int)(_tribeID)));
                             DAT_UnitsState::instance.units[_unitID2].aiUnitBehaviourType = 0;
                         }
                         y = y + -1;
-                    } while (y != 0);
+                    } while (y);
                 }
                 this->tribes[_tribeID].field134_0x27a = 1;
                 return (dword)(_tribeID);

@@ -48,7 +48,7 @@ namespace IO {
             lenPattern += 2;
             for (int offset = 0; offset <= diff; offset++) {
                 bool match = true;
-                if (offset == 0) {
+                if (!offset) {
                     for (int i = 0; i < lenPattern - 1; ++i) {
                         if (i == lenPattern - 2) {
                             char c = playerLordNameUnk[offset + i];
@@ -65,7 +65,7 @@ namespace IO {
                     }
                 } else {
                     for (int i = 0; i < lenPattern; ++i) {
-                        if (i == 0) {
+                        if (!i) {
                             if (playerLordNameUnk[offset + i] == ' ') {
                                 continue;
                             }

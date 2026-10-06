@@ -19,7 +19,7 @@ namespace Map {
                     uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;
                 }
                 short sVar1 = DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].x;
-                if (sVar1 != 0) {
+                if (sVar1) {
                     *param_1 = (int)sVar1;
                     uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + iVar4 & 0x80000003;
                     if ((int)uVar2 < 0) {
@@ -29,11 +29,10 @@ namespace Map {
                     *param_2 = uVar3;
                     uVar2 = *param_1;
                     if ((((uVar2 < 400) && (uVar3 < 400)) && (*(char*)(uVar2 + 0x21aec98 + uVar3 * 400) != '\0'))
-                        && ((DAT_TileMapState::instance
-                                    .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[uVar3].addXgetTile
-                                        + uVar2]
-                                & 0x4a5014b1U)
-                            == 0)) {
+                        && (!(DAT_TileMapState::instance
+                                  .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[uVar3].addXgetTile
+                                      + uVar2]
+                            & 0x4a5014b1U))) {
                         uVar2 = DAT_GameState::instance.mapAndTime.field2269_0xdee + 1 + iVar4 & 0x80000003;
                         if ((int)uVar2 < 0) {
                             uVar2 = (uVar2 - 1 | 0xfffffffc) + 1;

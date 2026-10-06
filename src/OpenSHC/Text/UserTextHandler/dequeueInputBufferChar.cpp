@@ -6,7 +6,7 @@ namespace Text {
     // FUNCTION: STRONGHOLDCRUSADER 0x004699E0
     uint UserTextHandler::dequeueInputBufferChar()
     {
-        if (this->inputBufferIndex == 0) {
+        if (!this->inputBufferIndex) {
             return 0xffffffff;
         }
 

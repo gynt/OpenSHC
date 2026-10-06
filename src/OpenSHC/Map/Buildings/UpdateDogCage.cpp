@@ -36,7 +36,7 @@ namespace Map {
         _unitID = (int)DAT_BuildingsState::instance.buildings[_buildingID].insideUnitID1;
         iVar3 = 0;
         iVar4 = 0;
-        if ((_unitID != 0)
+        if ((_unitID)
             && (DAT_BuildingsState::instance.buildings[_buildingID].insideUnitUID1
                 == DAT_UnitsState::instance.units[_unitID].uid)) {
             iVar4 = 1;
@@ -47,40 +47,37 @@ namespace Map {
             }
         }
         _unitID = (int)DAT_BuildingsState::instance.buildings[_buildingID].insideUnitID2;
-        if (((_unitID != 0)
+        if (((_unitID)
                 && (DAT_BuildingsState::instance.buildings[_buildingID].insideUnitUID2
                     == DAT_UnitsState::instance.units[_unitID].uid))
             && (iVar4 = iVar4 + 1,
-                DAT_UnitsState::instance.units[_unitID].state.generic
-                    == Map::Units::States::USDU_WAITING_IN_CAGE)) {
+                DAT_UnitsState::instance.units[_unitID].state.generic == Map::Units::States::USDU_WAITING_IN_CAGE)) {
             iVar3 = iVar3 + 1;
         }
         _unitID = (int)DAT_BuildingsState::instance.buildings[_buildingID].insideUnitID3;
-        if (((_unitID != 0)
+        if (((_unitID)
                 && (DAT_BuildingsState::instance.buildings[_buildingID].insideUnitUID3
                     == DAT_UnitsState::instance.units[_unitID].uid))
             && (iVar4 = iVar4 + 1,
-                DAT_UnitsState::instance.units[_unitID].state.generic
-                    == Map::Units::States::USDU_WAITING_IN_CAGE)) {
+                DAT_UnitsState::instance.units[_unitID].state.generic == Map::Units::States::USDU_WAITING_IN_CAGE)) {
             iVar3 = iVar3 + 1;
         }
         _unitID = (int)DAT_BuildingsState::instance.buildings[_buildingID].insideUnitID4;
-        if (((_unitID != 0)
+        if (((_unitID)
                 && (DAT_BuildingsState::instance.buildings[_buildingID].insideUnitUID4
                     == DAT_UnitsState::instance.units[_unitID].uid))
             && (iVar4 = iVar4 + 1,
-                DAT_UnitsState::instance.units[_unitID].state.generic
-                    == Map::Units::States::USDU_WAITING_IN_CAGE)) {
+                DAT_UnitsState::instance.units[_unitID].state.generic == Map::Units::States::USDU_WAITING_IN_CAGE)) {
             iVar3 = iVar3 + 1;
         }
-        if (iVar4 == 0) {
+        if (!iVar4) {
             DAT_BuildingsState::instance.buildings[_buildingID].renderAnimation = 0;
             DAT_BuildingsState::instance.buildings[_buildingID].displayOwnerFlag = 0;
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
                 _buildingID);
         } else {
-            if (iVar3 == 0) {
+            if (!iVar3) {
                 DAT_BuildingsState::instance.buildings[_buildingID].renderAnimation = 0;
                 DAT_BuildingsState::instance.buildings[_buildingID].displayOwnerFlag = 0;
             }

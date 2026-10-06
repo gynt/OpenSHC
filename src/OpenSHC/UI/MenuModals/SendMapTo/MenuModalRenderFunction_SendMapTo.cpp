@@ -47,7 +47,7 @@ namespace UI {
                         (BGR24)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(
                             int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_10 + 4)])),
                         0x11, FALSE, 0);
-                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
+                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
                         iVar2 = width / 2;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x + -1, iVar1 + 0x52 + y, width + -0x13 + x,

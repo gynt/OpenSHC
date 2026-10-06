@@ -46,7 +46,7 @@ namespace Map {
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y_2].addXgetTile + x_2;
             _entityID = MACRO_CALL_MEMBER(
                 Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
-            if (_entityID != 0) {
+            if (_entityID) {
                 sVar1 = DAT_EntityState::instance.entityArray[_entityID].fireParameter_0xb6;
                 DAT_EntityState::instance.entityArray[_entityID].someTracker = 0;
                 if (sVar1 < param_5) {
@@ -54,24 +54,24 @@ namespace Map {
                 }
                 DAT_EntityState::instance.entityArray[_entityID].unknownAnimationFrameRelated = 0;
             }
-            if ((((DAT_TileMapState::instance.LogicLayer[_tile] & 0x1a7001b1U) == 0)
+            if (((!(DAT_TileMapState::instance.LogicLayer[_tile] & 0x1a7001b1U))
                     && ((DAT_TileMapState::instance.BuildingLayer[_tile] == 0
                         || (iVar2 = MACRO_CALL_MEMBER(
                                 Map::Buildings::BuildingsState_Func::lightUpBuilding, DAT_BuildingsState::ptr)(
                                 (int)DAT_TileMapState::instance.BuildingLayer[_tile], playerID, param_6),
                             iVar2 != 0))))
-                && (((DAT_TileMapState::instance.LogicLayer[_tile] & 0x1000U) == 0
-                    || (BVar3 = MACRO_CALL_MEMBER(
-                            Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(_tile, playerID),
+                && ((!(DAT_TileMapState::instance.LogicLayer[_tile] & 0x1000U)
+                    || (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
+                            _tile, playerID),
                         BVar3 != FALSE)))) {
                 _entityID2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
                     Map::Entities::ET_FIRE, 0);
-                if (_entityID2 != 0) {
+                if (_entityID2) {
                     DAT_EntityState::instance.entityArray[_entityID2].fireParameter_0xb6 = (short)param_5;
                     DAT_EntityState::instance.entityArray[_entityID2].fireIntensity = (short)param_6;
                 }
-                if ((2 < param_5) && ((DAT_TileMapState::instance.RandomLayer[_tile] & 3) == 0)) {
+                if ((2 < param_5) && (!(DAT_TileMapState::instance.RandomLayer[_tile] & 3))) {
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
                         Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);

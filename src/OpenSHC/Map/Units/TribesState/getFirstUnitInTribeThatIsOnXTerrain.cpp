@@ -28,8 +28,7 @@ namespace Map {
                     if (((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_unitID].dying == 0))
                         && ((DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance.units[_unitID].tile]
-                                & 0x40000000U)
-                            != 0)) {
+                            & 0x40000000U))) {
                         return _unitID;
                     }
                 } while (_unitSelectionIndex < iVar1);

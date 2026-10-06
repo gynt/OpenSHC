@@ -80,7 +80,7 @@ namespace UI {
                 }
             } else {
                 local_2c = 0x172;
-                if (DAT_MapMissionType::instance != 0)
+                if (DAT_MapMissionType::instance)
                     goto LAB_0042da2d;
                 iVar4 = -0x10;
             }

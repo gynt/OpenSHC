@@ -48,7 +48,7 @@ namespace Map {
         int _xOffset;
         y_00 = y;
         uVar2 = x;
-        if (this->field195_0x554a24 != 0) {
+        if (this->field195_0x554a24) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::demolishBuildingsInKeepsConstructionFootprint, this)(
                 playerID, (int)((int)(x)), (int)((int)(y)), (undefined4)((int)(type)), (int)((int)(size)), orientation,
                 xyValue);
@@ -88,7 +88,7 @@ namespace Map {
             (*(short*)&x) = (short)_buildingID;
             this->BuildingLayer[iVar4] = (short)x;
             this->BuildingWasLayer[iVar4] = (uchar)type;
-            if ((bVar1 & 0x90) == 0) {
+            if (!(bVar1 & 0x90)) {
                 LVar10 = Map::LogicHelpers::L2_EARTH_AND_STONES;
                 uVar9 = 6;
             } else {
@@ -210,7 +210,7 @@ namespace Map {
             (*(short*)&x) = (short)uVar9;
             this->BuildingLayer[iVar6] = (short)x;
             this->ChangedLayer[iVar6] = 2;
-            if ((bVar1 & 0x90) == 0) {
+            if (!(bVar1 & 0x90)) {
                 LVar10 = Map::LogicHelpers::L2_EARTH_AND_STONES;
                 brushType = 6;
             } else {

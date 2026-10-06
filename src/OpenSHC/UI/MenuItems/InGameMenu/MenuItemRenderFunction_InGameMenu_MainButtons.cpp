@@ -97,7 +97,7 @@ namespace UI {
             }
             if (param_1 == -5) {
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                    && (DAT_GameCore::instance.field24_0x6c != 0)) {
+                    && (DAT_GameCore::instance.field24_0x6c)) {
                     DAT_ButtonUnknownZero::instance = 1;
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 } else if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
@@ -150,7 +150,7 @@ namespace UI {
                     }
                     if (-100 < param_1) {
                         iVar1 = -9 - param_1;
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+                        if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                             if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION) {
                                 if (5 < iVar1) {
                                     DAT_ButtonUnknownZero::instance = 1;
@@ -259,7 +259,7 @@ namespace UI {
                     }
                 }
             }
-            if ((param_1 == -2) && (DAT_WallAndPitchState::instance.countdown == 0)) {
+            if ((param_1 == -2) && (!DAT_WallAndPitchState::instance.countdown)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 iVar3 = 2;

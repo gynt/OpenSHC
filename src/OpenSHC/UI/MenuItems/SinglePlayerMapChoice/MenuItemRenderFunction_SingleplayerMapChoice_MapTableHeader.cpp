@@ -39,7 +39,7 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             numInGroup = -1;
-            if (param_1 == 0) {
+            if (!param_1) {
                 /*
                   Name
                  */

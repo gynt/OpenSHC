@@ -89,7 +89,7 @@ namespace Synchrony {
                             .buildings[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                             .widthOrHeight)),
                     OpenSHC::Map::Buildings::BT_DRAWBRIDGE, 0);
-                if (iVar1 != 0) {
+                if (iVar1) {
                     DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
@@ -104,7 +104,7 @@ namespace Synchrony {
                         ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
                         ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                         OpenSHC::Map::Buildings::BT_DRAWBRIDGE, iVar1);
-                    if (iVar1 != 0) {
+                    if (iVar1) {
                         DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
@@ -123,7 +123,7 @@ namespace Synchrony {
                         (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
                         (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
                 }
-                if ((_buildingID != 0)
+                if ((_buildingID)
                     && (DAT_BuildingsState::instance.buildings[_buildingID].owner
                         == DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
                     switch (DAT_BuildingsState::instance.buildings[_buildingID].buildingType) {

@@ -122,7 +122,7 @@ namespace UI {
                                 .BuildingBikArray[(short)*_ptrToSelectedBuildingType])));
                     BVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                    if ((BVar4 != FALSE) && (DAT_GameCore::instance.isBinkVideoPlaying == 0)) {
+                    if ((BVar4 != FALSE) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
                         DAT_BuildingsState::instance.DAT_CurrentlyPlayingBuildingBik
                             = DAT_RenderingDefinedData::instance.BuildingBikArray[(short)*_ptrToSelectedBuildingType];
                         MACRO_CALL_MEMBER(
@@ -290,7 +290,7 @@ namespace UI {
                         (char const*)((int)(DAT_RenderingDefinedData::instance.ChimpBikArray[(short)*pUVar1])));
                     BVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
-                    if ((BVar4 != FALSE) && (DAT_GameCore::instance.isBinkVideoPlaying == 0)) {
+                    if ((BVar4 != FALSE) && (!DAT_GameCore::instance.isBinkVideoPlaying)) {
                         DAT_BuildingsState::instance.DAT_CurrentlyPlayingBuildingBik
                             = DAT_RenderingDefinedData::instance.ChimpBikArray[(short)*pUVar1];
                         MACRO_CALL_MEMBER(
@@ -304,7 +304,7 @@ namespace UI {
                 break;
             case OpenSHC::UI::Enums::BASMTT_STATUS_OVERVIEW:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                if (DAT_GameCore::instance.selectedLordTypeUnk == 0) {
+                if (!DAT_GameCore::instance.selectedLordTypeUnk) {
                     pcVar8 = "shield1.tgx";
                 } else {
                     pcVar8 = "shield2.tgx";
@@ -354,7 +354,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)("fearfneg.tgx");
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .fearFactorLevel;
-                if (iVar5 != 0) {
+                if (iVar5) {
                     if (iVar5 < -4) {
                         /*
                           "You are truly the cruelest tyrant in the kingdom your lordship"
@@ -519,7 +519,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     OpenSHC::Audio::SFX::SEID_PIKE_KILL);
             }
-            if (DAT_BuildingsState::instance.field24_0x18e04c != 0) {
+            if (DAT_BuildingsState::instance.field24_0x18e04c) {
                 DAT_BuildingsState::instance.field25_0x18e050
                     = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
                         DAT_TextEditorState::ptr)((char*)DAT_BuildingsState::instance.field24_0x18e04c);

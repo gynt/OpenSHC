@@ -57,7 +57,7 @@ namespace UI {
                     iVar1 = 1;
                 }
             } else {
-                if (DAT_00b960dc::instance != 0) {
+                if (DAT_00b960dc::instance) {
                     DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_ROUNDTABLE) {
@@ -73,7 +73,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.mapExistenceAckCountdown = 0;
                 }
             }
-            if (iVar1 == 0) {
+            if (!iVar1) {
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
                 if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 1) {
                     do {
@@ -91,7 +91,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
-                    } while (iVar7 != 0);
+                    } while (iVar7);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 2;
                 } else {
                     do {
@@ -109,7 +109,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
-                    } while (iVar7 != 0);
+                    } while (iVar7);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 1;
                 }
             } else if (iVar1 == 1) {
@@ -151,7 +151,7 @@ namespace UI {
                         } while (iVar4 < iVar1);
                         iVar7 = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
                         iVar2 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
-                    } while (iVar9 != 0);
+                    } while (iVar9);
                     param_1 = param_1 + -1;
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar7 + 1;
                     if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 0xc) {
@@ -181,7 +181,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
-                    } while (iVar7 != 0);
+                    } while (iVar7);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 4;
                 } else {
                     do {
@@ -201,7 +201,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
-                    } while (iVar7 != 0);
+                    } while (iVar7);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 3;
                 }
             }
@@ -216,7 +216,7 @@ namespace UI {
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + -1]);
                     iVar2 = MACRO_CALL(OS_Func::__stricmp)(
                         DAT_MapNameCache::instance, (char const*)((int)(_Str2)));
-                    if (iVar2 == 0)
+                    if (!iVar2)
                         break;
                     iVar8 = iVar8 + 1;
                     if (DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {}

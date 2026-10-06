@@ -37,7 +37,7 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            if ((DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 0) || (param_1 != 0x44)) {
+            if ((!DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) || (param_1 != 0x44)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 blendStrength = 0;

@@ -89,7 +89,7 @@ namespace UI {
                 Game::GameStateStructures_Func::areActivePlayersMostlySameTeam, DAT_GameState::ptr)();
             if (_stackMenuStateNotZero != FALSE) {}
             if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                || (DAT_GameCore::instance.mapU4Int0 == 0))
+                || (!DAT_GameCore::instance.mapU4Int0))
                 goto LAB_00433e2b;
             posY = posY + 0x46;
         }
@@ -117,9 +117,9 @@ namespace UI {
             }
             piVar1 = piVar1 + 5;
             iVar2 = iVar2 + -1;
-        } while (iVar2 != 0);
+        } while (iVar2);
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
-            if (iVar3 == 0) {}
+            if (!iVar3) {}
         } else if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
                 = 0;
@@ -131,9 +131,9 @@ namespace UI {
             DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = 0x1e;
         }
         iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount45;
-        if (iVar3 == 0) {
+        if (!iVar3) {
             iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset;
-            if (iVar3 != 0) {
+            if (iVar3) {
                 DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = iVar3 + -1;
             }
             goto LAB_00433fe5;

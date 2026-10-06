@@ -15,7 +15,7 @@ namespace UI {
         void IntroLogos::MenuView_IntroLogos_Prepare()
         {
             char* tgxFileName;
-            if (DAT_IntroStep::instance == 0) {
+            if (!DAT_IntroStep::instance) {
                 tgxFileName = "logo1.tgx";
             } else {
                 if (DAT_IntroStep::instance != 1)

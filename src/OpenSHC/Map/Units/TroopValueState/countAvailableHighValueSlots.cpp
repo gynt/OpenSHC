@@ -19,13 +19,13 @@ namespace Map {
                 iVar2 = DAT_TroopValueState::instance.attackInfo.high2;
                 do {
                     if ((DAT_BuildingsState::instance.buildings[piVar1[-1]].unknownCounterTo10000_0x2b4 < 9999)
-                        && ((*piVar1 == 0 || (param_1 != 0)))) {
+                        && ((*piVar1 == 0 || (param_1)))) {
                         DAT_TroopValueState::instance.attackInfo.high3
                             = DAT_TroopValueState::instance.attackInfo.high3 + 1;
                     }
                     piVar1 = piVar1 + 4;
                     iVar2 = iVar2 + -1;
-                } while (iVar2 != 0);
+                } while (iVar2);
             }
         }
 

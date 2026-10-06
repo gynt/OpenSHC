@@ -37,10 +37,10 @@ namespace Audio {
             }
 
             int bVar7 = true;
-            if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel == 0) {
+            if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel) {
                 switch (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.volumeLevel) {
                 case 1:
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 0) {
+                    if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker) {
                         DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker = 1;
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::instance.Pointers[23].musicFile);
@@ -51,13 +51,13 @@ namespace Audio {
                             DAT_GameCore::instance.battleLevel2 += 2000;
                         }
                     }
-                    if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                    if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                         ++this->streamFlagsUnkAndLoopCount_0x34[0];
                     }
                     return;
 
                 case 2:
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 0) {
+                    if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker) {
                         DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker = 1;
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::instance.Pointers[25].musicFile);
@@ -68,7 +68,7 @@ namespace Audio {
                             DAT_GameCore::instance.battleLevel2 += 2000;
                         }
                     }
-                    if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                    if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                         ++this->streamFlagsUnkAndLoopCount_0x34[0];
                     }
                     return;
@@ -84,21 +84,21 @@ namespace Audio {
                     if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 1) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::instance.Pointers[25].musicFile);
-                        if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                        if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                             ++this->streamFlagsUnkAndLoopCount_0x34[0];
                         }
                     } else {
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::instance.Pointers[27].musicFile);
-                        if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                        if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                             ++this->streamFlagsUnkAndLoopCount_0x34[0];
                         }
                     }
                     return;
                 }
             } else if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.volumeLevel == 1) {
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field6_0x18 == 0) {
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 0) {
+                if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field6_0x18) {
+                    if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::instance.Pointers[30].musicFile);
                     } else if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 1) {
@@ -112,7 +112,7 @@ namespace Audio {
                         }
                     }
                     ++DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker;
-                    if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                    if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                         ++this->streamFlagsUnkAndLoopCount_0x34[0];
                     }
                     return;
@@ -120,12 +120,12 @@ namespace Audio {
                 DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 = 1;
                 bVar7 = false;
             } else {
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field6_0x18 == 0) {
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker == 0) {
+                if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field6_0x18) {
+                    if (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicTracker) {
                         if (this->sec_Section1055_0x3274 != 25) {
                             MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                                 DAT_SFXDefinedData::instance.Pointers[25].musicFile);
-                            if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                            if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                                 ++this->streamFlagsUnkAndLoopCount_0x34[0];
                             }
                             return;
@@ -173,7 +173,7 @@ namespace Audio {
                             }
 
                             int sfxIndex;
-                            if (iVar6 == 0) {
+                            if (!iVar6) {
                                 sfxIndex = iVar5 + 34;
                             } else {
                                 MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
@@ -183,7 +183,7 @@ namespace Audio {
                                 DAT_SFXDefinedData::instance.Pointers[sfxIndex].musicFile);
                             DAT_SoundEffectsHelperData1::instance.field21_0x70 = sfxIndex;
                         }
-                        if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                        if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                             ++this->streamFlagsUnkAndLoopCount_0x34[0];
                         }
                         return;
@@ -204,7 +204,7 @@ namespace Audio {
                     this->streamFlagsUnkAndLoopCount_0x34[0] &= ~FLAG_SOUND_LOOP_COUNT_FIELD;
                 }
             } else {
-                if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                     ++this->streamFlagsUnkAndLoopCount_0x34[0];
                 }
             }

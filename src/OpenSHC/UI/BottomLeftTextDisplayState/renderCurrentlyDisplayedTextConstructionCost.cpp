@@ -70,12 +70,11 @@ namespace UI {
         int _requiredWood;
         _requiredIron = DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost;
         _requiredWood = DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost;
-        if ((param_1 == 0)
-            && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU)) {
+        if ((!param_1) && (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU)) {
             if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {}
             if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_MERCENARYPOST) {}
         }
-        if (this->currentlyDisplayedTextIsDisplayedUnk == 0) {}
+        if (!this->currentlyDisplayedTextIsDisplayedUnk) {}
         if ((((this->currentlyDisplayedTextIsDisplayedUnk != 6) && (this->currentlyDisplayedTextIsDisplayedUnk != 0xc))
                 && (this->currentlyDisplayedTextIsDisplayedUnk != 7))
             && (this->currentlyDisplayedTextIsDisplayedUnk != 0xd)) {
@@ -132,7 +131,7 @@ namespace UI {
                 Map::Buildings::BuildingsState_Func::hasLessWoodThanTheCostOfAWoodcuttersHutAndNoWoodcutters,
                 DAT_BuildingsState::ptr)(
                 DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)((int)(_buildingType)));
-            if (uVar1 != 0) {
+            if (uVar1) {
                 _requiredWood = 0;
             }
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
@@ -158,7 +157,7 @@ namespace UI {
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
             iVar2 = 0x1e;
-            if (_requiredWood != 0) {
+            if (_requiredWood) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     _requiredWood, (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)),
                     Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
@@ -179,7 +178,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = 0x5e;
             }
-            if (param_1 != 0) {
+            if (param_1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(param_1,
                     DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
                     0xb8eefb, 0, 0x12, TRUE, 0);
@@ -199,7 +198,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x40;
             }
-            if (_requiredIron != 0) {
+            if (_requiredIron) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     _requiredIron, DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)),
                     Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
@@ -221,7 +220,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x40;
             }
-            if (_requiredPitch != 0) {
+            if (_requiredPitch) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     _requiredPitch, DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)),
                     Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
@@ -243,7 +242,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x26;
             }
-            if (_requiredGold == 0) {
+            if (!_requiredGold) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                 DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             }
@@ -377,7 +376,7 @@ namespace UI {
                              (int)((int)(DAT_ButtonX::instance + 0x104)), (int)((int)(DAT_ButtonY::instance)),
                              Text::TTA_CENTER, 0xb8eefb, 0, 0x12, FALSE),
                         DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
-                            || (DAT_GameSynchronyState::instance.skirmishTroopsCostGold != 0)))) {
+                            || (DAT_GameSynchronyState::instance.skirmishTroopsCostGold)))) {
                     /*
                       added by script: "Cost"
                      */
@@ -453,7 +452,7 @@ namespace UI {
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
             iVar2 = 0x1e;
-            if (_requiredWood != 0) {
+            if (_requiredWood) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     _requiredWood, (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)),
                     Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
@@ -474,7 +473,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = 0x5e;
             }
-            if (_requiredIron == 0) {
+            if (!_requiredIron) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                 DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             }
@@ -519,7 +518,7 @@ namespace UI {
             this->currentlyDisplayedUnkTextNumInGroup_0x8
                 = DAT_RenderingDefinedData::instance.field114_0x525a4[DAT_UnitsState::instance
                         .selectionSlots[this->currentlyDisplayedUnktextExtraObject.buildingType]];
-            if (this->currentlyDisplayedUnkTextNumInGroup_0x8 != 0) {
+            if (this->currentlyDisplayedUnkTextNumInGroup_0x8) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                     this->currentlyDisplayedUnkTextGroupIndex_0x4,
                     (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
@@ -571,7 +570,7 @@ namespace UI {
                          (int)((int)(DAT_ButtonX::instance + 0x104)), (int)((int)(DAT_ButtonY::instance + 0x98)),
                          Text::TTA_CENTER, 0xb8eefb, 0, 0x12, FALSE),
                     DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
-                        || (DAT_GameSynchronyState::instance.skirmishTroopsCostGold != 0)))) {
+                        || (DAT_GameSynchronyState::instance.skirmishTroopsCostGold)))) {
                 /*
                   added by script: "Cost"
                  */

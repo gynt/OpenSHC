@@ -29,11 +29,11 @@ namespace Map {
                 Map::Units::TroopValueState_Func::isLessThanPercentageOfTribesInAttackDying, this)(
                 attackID, (int)((int)(50)));
             if (BVar2 != FALSE) {
-                if (this->attackInfo.field86987_0x20f9c != 0)
+                if (this->attackInfo.field86987_0x20f9c)
                     goto LAB_00520489;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::playAttackAlarmSound, this)();
             }
-            if (this->attackInfo.field86987_0x20f9c == 0) {}
+            if (!this->attackInfo.field86987_0x20f9c) {}
         LAB_00520489:
             if (this->attackInfo.attackWaveTicker[attackID] == 0) {
                 this->attackInfo.someCounter1 = this->attackInfo.someCounter1 + 1;
@@ -48,13 +48,13 @@ namespace Map {
                         attackID);
                 }
                 tribeSizeSumLimit = *(int*)((int)this->attackInfo.townValuesArray + (char)_playerID * 0x177bc + -4);
-                if (tribeSizeSumLimit != 0) {
+                if (tribeSizeSumLimit) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(attackID, 2, tribeSizeSumLimit, Map::Units::STBT_0x3f5);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3f5, Map::Units::STBT_1, 0, 0x14);
                 }
-                if (this->attackInfo.people3 != 0) {
+                if (this->attackInfo.people3) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(attackID, 2, this->attackInfo.people3, Map::Units::STBT_0x3fb);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(

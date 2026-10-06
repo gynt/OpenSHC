@@ -31,11 +31,9 @@ namespace Map {
                 psVar2 = &DAT_UnitsState::instance.units[1];
                 iVar2 = this->attackInfo.targetedBuildingTilesArraySize;
                 do {
-                    if ((((psVar2->logicalState == Map::Units::ULS_NORMAL)
-                             && (psVar2->isSelectable_OR_matchTime != 0))
+                    if ((((psVar2->logicalState == Map::Units::ULS_NORMAL) && (psVar2->isSelectable_OR_matchTime))
                             && (psVar2->owner == playerID))
-                        && ((psVar2->targetedBuildingTile != 0
-                            && (psVar2->unitType != Map::Units::UT_A_SLAVE)))) {
+                        && ((psVar2->targetedBuildingTile && (psVar2->unitType != Map::Units::UT_A_SLAVE)))) {
                         this->attackInfo.targetedBuildingTilesArray[iVar2] = psVar2->targetedBuildingTile;
                         /*
                           Units.targetBuildingTile

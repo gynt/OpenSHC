@@ -20,13 +20,13 @@ namespace UI {
         int iVar3;
         TextMessageBLLookupStructTypeEnumInt TVar4;
         TVar4 = ((TextMessageBLLookupStructTypeEnum)0);
-        if (messageTypeUnk == 0) {
+        if (!messageTypeUnk) {
             /*
               basically clear!
              */
             this->currentlyDisplayedTextIsDisplayedUnk = 0;
         }
-        if (this->currentlyDisplayedTextIsDisplayedUnk != 0) {
+        if (this->currentlyDisplayedTextIsDisplayedUnk) {
             if (importanceUnk < this->currentlyDisplayedTextImportanceUnk) {}
             if (((textGroupIndex == this->currentlyDisplayedUnkTextGroupIndex_0x4)
                     && (textNumInGroup == this->currentlyDisplayedUnkTextNumInGroup_0x8))

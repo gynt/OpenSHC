@@ -20,9 +20,9 @@ namespace UI {
         {
             int iVar1;
             iVar1 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (iVar1 != 0) {
+            if (iVar1) {
                 MACRO_CALL(Rendering_Func::ProcessCreditsScriptCommands)();
-                if ((0x3a < DAT_UnknownBinkIndex::instance) && (INT_00ed27b8::instance == 0)) {
+                if ((0x3a < DAT_UnknownBinkIndex::instance) && (!INT_00ed27b8::instance)) {
                     MACRO_CALL_MEMBER(
                         Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                     MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID,

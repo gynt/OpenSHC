@@ -309,7 +309,7 @@ namespace UI {
                 DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::stopAllActiveSounds, DAT_SoundSystemState::ptr)();
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
-            if (DAT_GameCore::instance.field24_0x6c != 0) {
+            if (DAT_GameCore::instance.field24_0x6c) {
                 DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x1f;
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX, FALSE);

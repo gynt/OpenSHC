@@ -115,7 +115,7 @@ namespace Map {
                     && (pUVar3[4] == 1)) {
                     iVar6 = iVar6 + -1;
                     *(int*)(pUVar3 + -0x3f) = 3;
-                    if (iVar6 == 0)
+                    if (!iVar6)
                         break;
                 }
                 pUVar3 = pUVar3 + 0x248;

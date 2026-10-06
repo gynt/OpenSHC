@@ -100,7 +100,7 @@ namespace Map {
         }
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
         if (((GVar5 != Game::GM_SOLITARY) && (GVar5 != Game::GM_SKIRMISH_SINGLE_PLAYER))
-            && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {}
+            && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {}
         if (DAT_BuildingsState::instance.buildings[iVar9].surroundingsRevealed == 0) {
             DAT_BuildingsState::instance.buildings[iVar9].surroundingsRevealed = 1;
             iVar6 = (int)DAT_BuildingsState::instance.buildings[iVar9].widthOrHeight / 2;
@@ -124,11 +124,11 @@ namespace Map {
                                         DAT_UnitsState::instance.units[iVar7].aiUnitBehaviourType = 0x32;
                                     }
                                     iVar7 = (int)(short)DAT_UnitsState::instance.units[iVar7].nextUnitOnTheSameTile;
-                                } while (iVar7 != 0);
+                                } while (iVar7);
                             }
                             piVar13 = piVar13 + 3;
                             iVar10 = iVar10 + -1;
-                        } while (iVar10 != 0);
+                        } while (iVar10);
                     }
                     local_18 = local_18 + 0x191;
                     uVar12 = uVar12 + 1;
@@ -141,7 +141,7 @@ namespace Map {
         }
         _tribeID = (int)DAT_BuildingsState::instance.buildings[iVar9].tribeID;
         local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c;
-        if ((_tribeID != 0)
+        if ((_tribeID)
             && (DAT_TribesState::instance.tribes[_tribeID].uid
                 != DAT_BuildingsState::instance.buildings[iVar9].tribeUID)) {
             _tribeID = 0;
@@ -228,7 +228,7 @@ namespace Map {
                     iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         iVar8, iVar8, (int)((int)(DAT_BuildingsState::instance.buildings[iVar9].buildingEntryX * 8)),
                         (int)((int)(DAT_BuildingsState::instance.buildings[iVar9].buildingEntryY * 8)), 8, unitType);
-                    if (iVar9 != 0) {
+                    if (iVar9) {
                         DAT_UnitsState::instance.units[iVar9].aiUnitBehaviourType = 0x32;
                         DAT_UnitsState::instance.units[iVar9].goToRallyPoint = 0;
                         DAT_UnitsState::instance.units[iVar9].state.generic
@@ -274,8 +274,7 @@ namespace Map {
                                         local_14 = uVar12;
                                     }
                                     if ((DAT_TileMapState::instance.LogicLayer[iVar6 + iVar10 + iVar8 + -7]
-                                            & 0x10000000U)
-                                        != 0)
+                                            & 0x10000000U))
                                         break;
                                 }
                             }
@@ -323,7 +322,7 @@ namespace Map {
             }
         }
         iVar9 = DAT_CurrentBuildingID::instance;
-        if (_tribeID == 0) {
+        if (!_tribeID) {
             iVar8 = 2000 - DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk06;
             if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                     || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
@@ -338,76 +337,76 @@ namespace Map {
             *psVar11 = *psVar11 + 1;
             if (DAT_BuildingsState::instance.buildings[iVar9].field268_0x308 < iVar8) {}
             uVar4 = DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk1;
-            uVar12 = (uint)((uVar4 & 1) != 0);
-            if ((uVar4 & 2) != 0) {
+            uVar12 = (uint)((uVar4 & 1));
+            if ((uVar4 & 2)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 4) != 0) {
+            if ((uVar4 & 4)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 8) != 0) {
+            if ((uVar4 & 8)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 0x10) != 0) {
+            if ((uVar4 & 0x10)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 0x20) != 0) {
+            if ((uVar4 & 0x20)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 0x40) != 0) {
+            if ((uVar4 & 0x40)) {
                 uVar12 = uVar12 + 1;
             }
-            if ((uVar4 & 0x80) != 0) {
+            if ((uVar4 & 0x80)) {
                 uVar12 = uVar12 + 1;
             }
-            if (uVar12 == 0) {}
+            if (!uVar12) {}
             iVar6 = (int)SEC_RNG::instance.currentNumber2 % (int)uVar12;
             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             iVar9 = DAT_CurrentBuildingID::instance;
             iVar8 = 0;
-            if ((uVar4 & 1) != 0) {
-                if (iVar6 == 0) {
+            if ((uVar4 & 1)) {
+                if (!iVar6) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field270_0x30c = 0;
                 }
                 iVar8 = 1;
             }
-            if ((uVar4 & 2) != 0) {
+            if ((uVar4 & 2)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 1;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((uVar4 & 4) != 0) {
+            if ((uVar4 & 4)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 2;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((uVar4 & 8) != 0) {
+            if ((uVar4 & 8)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 3;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((uVar4 & 0x10) != 0) {
+            if ((uVar4 & 0x10)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 4;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((uVar4 & 0x20) != 0) {
+            if ((uVar4 & 0x20)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 5;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if ((uVar4 & 0x40) != 0) {
+            if ((uVar4 & 0x40)) {
                 if (iVar6 == iVar8) {
                     DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 6;
                 }
                 iVar8 = iVar8 + 1;
             }
-            if (((uVar4 & 0x80) != 0) && (iVar6 == iVar8)) {
+            if (((uVar4 & 0x80)) && (iVar6 == iVar8)) {
                 DAT_BuildingsState::instance.buildings[iVar9].field270_0x30c = 7;
             }
             if (DAT_BuildingsState::instance.buildings[iVar9].buildingType
@@ -483,7 +482,7 @@ namespace Map {
                     uVar12 = uVar12 + 1;
                 }
                 if (((local_10 == 7) || (local_10 == 6))
-                    && (((sVar3 == 0 && (DAT_TribesState::instance.tribes[_tribeID].size == 0))
+                    && (((!sVar3 && (DAT_TribesState::instance.tribes[_tribeID].size == 0))
                         || ((DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 != 0
                             && (0 < DAT_TribesState::instance.tribes[_tribeID].size)))))) {
                     uVar12 = 1;
@@ -524,7 +523,7 @@ namespace Map {
                                             .buildingEntryY
                                 * 8)),
                             8, (UnitType)((int)(_randomUnitType)));
-                        if (_randomUnitID == 0) {}
+                        if (!_randomUnitID) {}
                         if (_randomUnitType == Map::Units::UT_S_CATAPULT) {
                             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 = 0;
                         }
@@ -561,14 +560,14 @@ namespace Map {
                                                 .buildingEntryY
                                     * 8)),
                                 8, Map::Units::UT_E_ENGINEER);
-                            if (_engineerID != 0) {
+                            if (_engineerID) {
                                 DAT_UnitsState::instance.units[_engineerID].targetingType
                                     = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
                                 DAT_UnitsState::instance.units[_engineerID]
                                     .targetedUnitID__OR__engineerMannedSiegeEngineRef = (short)_randomUnitID;
                             }
                             _requiredEngineers = _requiredEngineers + -1;
-                        } while (_requiredEngineers != 0);
+                        } while (_requiredEngineers);
                     switchD_004121d2_caseD_29:
                         DAT_UnitsState::instance.units[_randomUnitID].aiUnitBehaviourType = 0x32;
                         DAT_UnitsState::instance.units[_randomUnitID].goToRallyPoint = 0;

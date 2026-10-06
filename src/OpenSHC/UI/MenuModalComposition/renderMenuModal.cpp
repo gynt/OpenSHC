@@ -57,7 +57,7 @@ namespace UI {
         int _x;
         if ((this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
             && (this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NO_MENU)) {
-            if (this->mbr_0x6c != 0) {
+            if (this->mbr_0x6c) {
                 _currentTime = timeGetTime();
                 this->disappearAfter = this->disappearAfter - (_currentTime - this->timeItIsSet) / 75;
                 if (this->disappearAfter < 1) {
@@ -120,8 +120,7 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            if (((((this->modalMenu).borderStyle & 0x400U) != 0) && (this->disappearAfter < 32))
-                && (this->mbr_0x6c == 0)) {
+            if (((((this->modalMenu).borderStyle & 0x400U)) && (this->disappearAfter < 32)) && (!this->mbr_0x6c)) {
                 _currentTime = timeGetTime();
                 /*
                   fixme
@@ -129,37 +128,37 @@ namespace UI {
                 this->disappearAfter = this->disappearAfter + (_currentTime - this->timeItIsSet) / 75;
             }
             _top2 = _top;
-            if (((this->modalMenu).borderStyle & 2) != 0) {
+            if (((this->modalMenu).borderStyle & 2)) {
                 _top2 = _top + 0xc;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                     _left, _top, _width + _left, _top2, (ushort)((int)(COL_DARK_CYAN_GREY::instance.shortValue)));
                 _height = _height + -0xc;
             }
-            if (((this->modalMenu).borderStyle & 1) != 0) {
+            if (((this->modalMenu).borderStyle & 1)) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(_left,
                     _top2, _width + _left, _height + _top2, (ushort)((int)((this->modalMenu).backgroundColourIndex)));
             }
-            if (((this->modalMenu).borderStyle & 8) != 0) {
+            if (((this->modalMenu).borderStyle & 8)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                     _left, _top2, _width + _left, _height + _top2);
             }
-            if (((this->modalMenu).borderStyle & 0x10) != 0) {
+            if (((this->modalMenu).borderStyle & 0x10)) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                     _left, _top2, _width + _left, _height + _top2, OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            if (((this->modalMenu).borderStyle & 0x20) != 0) {
+            if (((this->modalMenu).borderStyle & 0x20)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::drawBorderStyle0x20, DAT_TextEditorState::ptr)(
                     _left, _top2, _width, _height);
             }
-            if (((this->modalMenu).borderStyle & 0x80) != 0) {
+            if (((this->modalMenu).borderStyle & 0x80)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                     DAT_PencilRenderCore::ptr)(_left, _top2, _width + _left, _height + _top2, (ushort)((int)(_color)),
                     OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            if (((this->modalMenu).borderStyle & 0x100U) != 0) {
+            if (((this->modalMenu).borderStyle & 0x100U)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                     DAT_PencilRenderCore::ptr)(_left, _top2, _width + _left, _height + _top2,
                     (ushort)((int)(COL_BLACK::instance.shortValue)), OpenSHC::UI::Enums::RBERL_STRONG);
@@ -168,11 +167,11 @@ namespace UI {
                     (ushort)((int)(_color)), OpenSHC::UI::Enums::RBERL_STRONG);
             }
             uVar1 = (this->modalMenu).borderStyle;
-            if (((uVar1 & 0x200) != 0) || ((uVar1 & 0x20) != 0)) {
+            if (((uVar1 & 0x200)) || ((uVar1 & 0x20))) {
                 _height = 0;
                 if (0 < (this->modalMenu).height) {
                     do {
-                        if (_height == 0) {
+                        if (!_height) {
                             _width = 1;
                         } else {
                             _width = (-(uint)(_height != (this->modalMenu).height + -0x18) & 0xfffffffa) + 0xd;
@@ -181,7 +180,7 @@ namespace UI {
                         if (0 < (this->modalMenu).width) {
                             do {
                                 imageID = _width;
-                                if (_x == 0) {
+                                if (!_x) {
                                 LAB_004b0e31:
                                     MACRO_CALL_MEMBER(
                                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,

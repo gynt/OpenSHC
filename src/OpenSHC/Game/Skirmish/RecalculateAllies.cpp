@@ -21,7 +21,7 @@ namespace Game {
         if (400 < (int)(DAT_GameCore::instance.mapTimeInTicks - DAT_GameCore::instance.section1127)) {
             DAT_AlliesCount::instance = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
                 DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-            if (DAT_AlliesCount::instance == 0) {}
+            if (!DAT_AlliesCount::instance) {}
         }
         int _teamMembers = 0;
         int _team
@@ -35,7 +35,7 @@ namespace Game {
                     int iVar1 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
                     _teamMembers = DAT_AlliesCount::instance;
-                    if (iVar1 == 0)
+                    if (!iVar1)
                         continue;
                 }
                 if (_team == DAT_GameState::instance.mapAndTime.playerTeams[_playerID]) {

@@ -59,11 +59,11 @@ namespace UI {
                 iVar1 = -(iVar1 / 32);
                 break;
             case 0x45:
-                if (DAT_MapMissionType::instance == 0) {
+                if (!DAT_MapMissionType::instance) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
+                if (DAT_GameCore::instance.mapU4Int1_2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -103,11 +103,11 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
+                if (DAT_GameCore::instance.mapU4Int1_2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                if ((DAT_SH1_SiegeAdvancedMode::instance != 0) && (DAT_00b960dc::instance == 0)) {
+                if ((DAT_SH1_SiegeAdvancedMode::instance) && (!DAT_00b960dc::instance)) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(
@@ -149,7 +149,7 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1) {
                     param_1 = 0x4e;
                 }
-                if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
+                if (DAT_GameCore::instance.mapU4Int1_2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }

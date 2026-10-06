@@ -63,7 +63,7 @@ int* __stdcall OS::basic_ofstream_write(void* param_1, uint param_2)
                 uVar9 = 4;
                 local_1c = 4;
             }
-            for (; (uVar9 == 0 && (0 < local_18)); local_18 = local_18 + -1) {
+            for (; (!uVar9 && (0 < local_18)); local_18 = local_18 + -1) {
                 bVar1 = *(byte*)(*(int*)(*(int*)param_1 + 4) + 0x30 + (int)param_1);
                 piVar2 = *(int**)((int)param_1 + *(int*)(*(int*)param_1 + 4) + 0x28);
                 if ((*(int*)piVar2[9] == 0) || (piVar3 = (int*)piVar2[0xd], *piVar3 < 1)) {
@@ -81,7 +81,7 @@ int* __stdcall OS::basic_ofstream_write(void* param_1, uint param_2)
                 }
             }
         } else {
-            while (uVar9 == 0) {
+            while (!uVar9) {
                 if (local_18 < 1)
                     goto LAB_00479280;
                 bVar1 = *(byte*)((int)param_1 + *(int*)(*(int*)param_1 + 4) + 0x30);
@@ -106,7 +106,7 @@ int* __stdcall OS::basic_ofstream_write(void* param_1, uint param_2)
     local_8 = 0;
     *(undefined4*)((int)param_1 + *(int*)(*(int*)param_1 + 4) + 0x18) = 0;
     iVar8 = *(int*)(*(int*)param_1 + 4) + (int)param_1;
-    if (uVar9 != 0) {
+    if (uVar9) {
         uVar9 = *(uint*)(iVar8 + 8) | uVar9;
         if (*(int*)(iVar8 + 0x28) == 0) {
             uVar9 = uVar9 | 4;
@@ -120,8 +120,8 @@ int* __stdcall OS::basic_ofstream_write(void* param_1, uint param_2)
     }
     iVar8 = *(int*)(*(int*)(*local_24 + 4) + 0x28 + (int)local_24);
     local_8 = 0xffffffff;
-    if (iVar8 != 0) {
-MACRO_CALL_MEMBER(HoldStrong_lib::LockClass1_Func::releaseLock, (LockClass1*)(iVar8 + 4))();
+    if (iVar8) {
+        MACRO_CALL_MEMBER(HoldStrong_lib::LockClass1_Func::releaseLock, (LockClass1*)(iVar8 + 4))();
     }
     *unaff_FS_OFFSET = local_10;
     return (int*)(param_1);

@@ -60,7 +60,7 @@ namespace Map {
             - (DAT_BuildingsState::instance.buildings[iVar1].currentHealth * 9)
                 / (int)DAT_BuildingsState::instance.buildings[iVar1].maxHealth;
         if (iVar5 < 9) {
-            if (iVar5 == 0)
+            if (!iVar5)
                 goto LAB_00418e05;
         } else {
             iVar5 = 8;
@@ -75,7 +75,7 @@ namespace Map {
                 uVar3 = uVar3 + 1;
                 iVar5 = iVar5 + -1;
                 local_20[uVar7] = uVar6 + 1;
-            } while (iVar5 != 0);
+            } while (iVar5);
         }
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[0] = local_20[0];
         DAT_BuildingsState::instance.buildings[iVar1].damageDecoration[1] = local_20[1];
@@ -88,7 +88,7 @@ namespace Map {
     LAB_00418e05:
         sVar2 = DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa;
         if ((0 < sVar2)
-            && (sVar2 = sVar2 + -1, DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa = sVar2, sVar2 == 0)) {
+            && (sVar2 = sVar2 + -1, DAT_BuildingsState::instance.buildings[iVar1].field261_0x2fa = sVar2, !sVar2)) {
             iVar5 = 0;
             sVar2 = 0;
             do {

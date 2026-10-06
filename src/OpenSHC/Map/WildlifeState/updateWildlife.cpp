@@ -32,20 +32,20 @@ namespace Map {
                     piVar5->field24_0x60 = 0;
                     piVar5->field25_0x64 = 0;
                     piVar5->field28_0x70 = piVar5->field28_0x70 / 100;
-                    if (piVar5->chimps != 0) {
-                        if (piVar5->keeps != 0) {
+                    if (piVar5->chimps) {
+                        if (piVar5->keeps) {
                             piVar5->field24_0x60 = 1;
                         }
-                        if (piVar5->castlebuildings != 0) {
+                        if (piVar5->castlebuildings) {
                             piVar5->field24_0x60 = piVar5->field24_0x60 + 1;
                         }
                     }
                     piVar5 = piVar5 + 0x640;
                     iVar6 = iVar6 + -1;
-                } while (iVar6 != 0);
+                } while (iVar6);
                 piVar1 = piVar1 + 0x28;
                 iVar3 = iVar3 + -1;
-                if (iVar3 == 0)
+                if (!iVar3)
                     break;
                 iVar6 = 0x28;
                 piVar5 = piVar1;
@@ -56,12 +56,12 @@ namespace Map {
                 iVar6 = 0;
                 piVar2 = piVar4;
                 do {
-                    if (piVar2->field12_0x30 == 0) {
-                        if (piVar2->field3_0xc != 0) {
+                    if (!piVar2->field12_0x30) {
+                        if (piVar2->field3_0xc) {
                             iVar7 = 2;
                             goto LAB_0052dfdf;
                         }
-                        if (piVar2->lionCount != 0) {
+                        if (piVar2->lionCount) {
                             iVar7 = 3;
                             goto LAB_0052dfdf;
                         }
@@ -71,7 +71,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField13FromCell, this)(
                             iVar6, iVar3, iVar7);
                     }
-                    if (piVar2->field19_0x4c != 0) {
+                    if (piVar2->field19_0x4c) {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField20FromCell, this)(
                             iVar6, iVar3, 6);
                     }

@@ -162,7 +162,7 @@ namespace Map {
                         = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
                             DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                             (int)((int)(x)), (int)((int)(y_00)), (int)((int)(param_3)), -1, -1, iVar4 + 5);
-                    if (iVar4 != 0) {
+                    if (iVar4) {
                         _gfx = 0x3e;
                     }
                 }

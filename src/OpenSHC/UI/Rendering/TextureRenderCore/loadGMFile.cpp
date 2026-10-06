@@ -42,9 +42,9 @@ namespace UI {
             char* shortFileName;
             char currentCharInGMFile;
             BVar3 = PeekMessageA(&local_1c, (HWND__*)0x0, 0, 0, 0);
-            if (BVar3 != 0) {
+            if (BVar3) {
                 BVar3 = GetMessageA(&local_1c, (HWND__*)0x0, 0, 0);
-                if (BVar3 != 0) {
+                if (BVar3) {
                     TranslateMessage(&local_1c);
                     DispatchMessageA(&local_1c);
                 }
@@ -96,7 +96,7 @@ namespace UI {
                 do {
                     DAT_PictureNumToGmIDArray_UNUSED::instance[_currentlyProcessedPictures] = gmID;
                     if (BVar2 == FALSE) {
-                        if ((_shiftedHeaderPtr->animatedColor & 4) == 0)
+                        if (!(_shiftedHeaderPtr->animatedColor & 4))
                             goto LAB_00455bc5;
                     LAB_00455ba2:
                         /*
@@ -109,8 +109,8 @@ namespace UI {
                         DAT_GMImageSizes::instance[_currentlyProcessedPictures]
                             = DAT_GMImageSizes::instance[sVar1 + _currentlyProcessedPictures];
                     } else {
-                        if (_shiftedHeaderPtr->animatedColor != 0) {
-                            if ((_shiftedHeaderPtr->animatedColor & 4) != 0)
+                        if (_shiftedHeaderPtr->animatedColor) {
+                            if ((_shiftedHeaderPtr->animatedColor & 4))
                                 goto LAB_00455ba2;
                             iVar4 = DAT_GMImageOffsets::instance[_shiftedHeaderPtr->alternativeImageIndexUnk
                                 + _currentlyProcessedPictures];

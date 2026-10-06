@@ -115,7 +115,7 @@ namespace UI {
                 iVar7 = 0x4d;
                 do {
                     iVar8 = (*local_74 / iVar4) % 10;
-                    if (((iVar8 != 0) || (bVar2)) || (local_78 == 0)) {
+                    if (((iVar8) || (bVar2)) || (!local_78)) {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             iVar8, (local_84 / 2 - iVar7) + iVar6 + posX, posY + 0x19, Text::TTA_RIGHT,
                             (uint)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(

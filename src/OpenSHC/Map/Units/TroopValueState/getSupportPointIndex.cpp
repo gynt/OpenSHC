@@ -24,7 +24,7 @@ namespace Map {
                 if (*piVar2 == tile) {
                     return iVar1;
                 }
-                if ((*piVar2 == 0) && (iVar3 == 0)) {
+                if ((*piVar2 == 0) && (!iVar3)) {
                     iVar3 = iVar1;
                     DAT_TroopValueState::instance.attackInfo.supportPointsNext = iVar1;
                 }

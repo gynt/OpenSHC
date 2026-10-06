@@ -52,7 +52,7 @@ namespace UI {
             iVar2 = DAT_ButtonX::instance;
             iVar3 = DAT_ButtonY::instance;
             if (param_1 == -100) {
-                if ((DAT_00ec082c::instance != 0) && (DAT_00ec082c::instance != 2))
+                if ((DAT_00ec082c::instance) && (DAT_00ec082c::instance != 2))
                     goto LAB_004d6d83;
             } else {
                 if (param_1 != -0x65) {

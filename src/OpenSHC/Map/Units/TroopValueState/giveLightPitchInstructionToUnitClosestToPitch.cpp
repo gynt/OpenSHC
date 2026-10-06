@@ -50,13 +50,12 @@ namespace Map {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((((_pUnit->logicalState != Map::Units::ULS_INVISIBLE)
-                             && (BVar1
-                                 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                             && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)_pUnit->owner),
                                  BVar1 != FALSE))
                             && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
                                 || (_pUnit->unitType == Map::Units::UT_A_ARCHER))))
-                        && (((_pUnit->dying == 0 && (_pUnit->field297_0x40d != false))
+                        && (((!_pUnit->dying && (_pUnit->field297_0x40d != false))
                             && (_pUnit->targetingType != Map::Units::UIT_LIGHT_PITCH)))) {
                         _ditchY = (int)DAT_TileMapState::instance.pitchDitches[_ditchID].y;
                         _ditchX = (int)DAT_TileMapState::instance.pitchDitches[_ditchID].x;
@@ -81,7 +80,7 @@ namespace Map {
                     _unitID = _unitID + 1;
                     _pUnit = _pUnit + 0x248;
                 } while (_unitID < DAT_UnitsState::instance.maxUnitCount);
-                if (_minUnitID != 0) {
+                if (_minUnitID) {
                     DAT_UnitsState::instance.units[_minUnitID].shootTargetMicroX
                         = DAT_TileMapState::instance.pitchDitches[_ditchID].x * 8 + 4;
                     DAT_UnitsState::instance.units[_minUnitID].shootTargetMicroY

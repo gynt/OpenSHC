@@ -101,7 +101,7 @@ namespace Map {
                       get current value in pathPlan, each byte contains two move instructions
                      */
                     _pathPlanPair = (uint) * (char*)((int)_currentIndexInPathPlan / 2 + 0x138864a + _unitAddressOffset);
-                    if ((_currentIndexInPathPlan & 1) == 0) {
+                    if (!(_currentIndexInPathPlan & 1)) {
                         /*
                           if index is even, retain the lowest 4 bits
                          */

@@ -24,7 +24,7 @@ namespace Map {
         psVar3 = &DAT_UnitsState::instance.units[1];
         do {
             if ((psVar3->logicalState == Map::Units::ULS_NORMAL)
-                && (iVar2 = (int)psVar3->workplaceBuildingID_1, iVar2 != 0)) {
+                && (iVar2 = (int)psVar3->workplaceBuildingID_1, iVar2)) {
                 iVar1 = psVar3->uid;
                 DAT_BuildingsState::instance.buildings[iVar2].unitRefID = (short)DAT_CurrentUnitSlotID::instance;
                 DAT_BuildingsState::instance.buildings[iVar2].unitRefUID = iVar1;

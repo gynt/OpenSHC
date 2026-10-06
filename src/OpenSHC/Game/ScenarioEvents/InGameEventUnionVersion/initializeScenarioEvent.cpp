@@ -25,7 +25,7 @@ namespace Game {
                 pSVar1->subType = 0;
                 pSVar1 = pSVar1 + 1;
                 iVar2 = iVar2 + -1;
-            } while (iVar2 != 0);
+            } while (iVar2);
             return pSVar1;
         }
 

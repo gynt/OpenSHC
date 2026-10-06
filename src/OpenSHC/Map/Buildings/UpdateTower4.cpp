@@ -60,13 +60,13 @@ namespace Map {
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
-        if (iVar1 != 0) {
+        if (iVar1) {
             DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite2 = 0x51;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar5);
-        if (iVar1 != 0) {
+        if (iVar1) {
             DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite4 = 0x5a;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 1;
         }
@@ -82,7 +82,7 @@ namespace Map {
             - (DAT_BuildingsState::instance.buildings[iVar5].currentHealth * 9)
                 / (int)DAT_BuildingsState::instance.buildings[iVar5].maxHealth;
         if (iVar1 < 9) {
-            if (iVar1 == 0)
+            if (!iVar1)
                 goto LAB_0041efa6;
         } else {
             iVar1 = 8;
@@ -99,7 +99,7 @@ namespace Map {
                 iVar1 = iVar1 + -1;
                 local_20[uVar9] = uVar7 + 1;
                 iVar8 = DAT_CurrentBuildingID::instance;
-            } while (iVar1 != 0);
+            } while (iVar1);
         }
         DAT_BuildingsState::instance.buildings[iVar5].damageDecoration[0] = local_20[0];
         DAT_BuildingsState::instance.buildings[iVar5].damageDecoration[1] = local_20[1];
@@ -112,7 +112,7 @@ namespace Map {
         iVar5 = iVar8;
     LAB_0041efa6:
         iVar1 = 0;
-        if (DAT_BuildingsState::instance.field34_0x18e074 != 0) {
+        if (DAT_BuildingsState::instance.field34_0x18e074) {
             do {
                 MACRO_CALL_MEMBER(
                     Map::TileMapState_Func::getBuildingSizeIndexMappingData, DAT_TileMapState::ptr)(iVar1, 6);
@@ -144,7 +144,7 @@ namespace Map {
         iVar1 = iVar5 * 0x32c;
         sVar4 = DAT_BuildingsState::instance.buildings[iVar5].field261_0x2fa;
         if ((0 < sVar4)
-            && (sVar4 = sVar4 + -1, DAT_BuildingsState::instance.buildings[iVar5].field261_0x2fa = sVar4, sVar4 == 0)) {
+            && (sVar4 = sVar4 + -1, DAT_BuildingsState::instance.buildings[iVar5].field261_0x2fa = sVar4, !sVar4)) {
             iVar5 = 0;
             sVar4 = 0;
             do {

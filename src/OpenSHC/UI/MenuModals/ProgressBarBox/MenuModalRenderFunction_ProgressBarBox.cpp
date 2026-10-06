@@ -56,7 +56,7 @@ namespace UI {
                 textAddress, iVar1, yParam, alignment, color, iVar2, keepOffsetX, blendStrength);
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameSynchronyState::instance.saveRelated != 0)) {
+                && (DAT_GameSynchronyState::instance.saveRelated)) {
                 iVar1 = (width + -300) / 2;
                 iVar2 = iVar1 + x;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,

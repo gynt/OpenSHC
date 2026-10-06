@@ -39,7 +39,7 @@ namespace Map {
         uVar2 = DAT_BuildingsState::instance.buildings[buildingID].y;
         DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 = 0;
         local_c = 0;
-        if ((this->refreshRelatedOne == 0) && (DAT_BuildingsState::instance.buildings[buildingID].gfxOffset != 0)) {
+        if ((!this->refreshRelatedOne) && (DAT_BuildingsState::instance.buildings[buildingID].gfxOffset != 0)) {
             DAT_BuildingsState::instance.buildings[buildingID].field62_0xb0 = 1;
         }
         iVar7 = DAT_BuildingsState::instance.buildings[buildingID].currentNumberOfResource
@@ -50,7 +50,7 @@ namespace Map {
             targetedTile
                 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + (short)uVar2].addXgetTile
                 + (int)(short)uVar1 + this->buildingX;
-            if (this->field93_0x5548c8 == 0) {
+            if (!this->field93_0x5548c8) {
                 BVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingType;
                 if ((BVar3 == Map::Buildings::BT_STOCKPILE)
                     || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
@@ -197,10 +197,10 @@ namespace Map {
                     iVar8
                         = DAT_TerrainDefinedData::instance.field2467_0x1fec
                               [(int)DAT_BuildingsState::instance.buildings[buildingID].buildingVariation / 2][local_c];
-                    if (iVar8 == 0) {
+                    if (!iVar8) {
                         iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(
                             targetedTile);
-                        if (iVar8 == 0) {
+                        if (!iVar8) {
                             this->GfxLayer[targetedTile] = ((byte)this->RandomLayer[targetedTile] & 3)
                                 + (ushort)this->LuminesenceLayer[targetedTile] * 4
                                 + (short)GMTotalPicturesProcessed::instance[2];

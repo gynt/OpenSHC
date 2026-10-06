@@ -54,11 +54,11 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0) {
+            if (DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                 DAT_GameCore::instance.mapU2PlayersCount = 0;
                 piVar4 = DAT_GameState::instance.playerDataArray[1].startResources;
                 do {
-                    if (((BuildingEntryInfo*)(piVar4 + -0xf6))->id != 0) {
+                    if (((BuildingEntryInfo*)(piVar4 + -0xf6))->id) {
                         DAT_GameCore::instance.mapU2PlayersCount = DAT_GameCore::instance.mapU2PlayersCount + 1;
                     }
                     piVar2 = DAT_GameState::instance.mapAndTime.startGoods;
@@ -74,8 +74,8 @@ namespace UI {
             }
             DAT_00b95b74::instance = 0;
             DAT_00b960f4::instance = 0;
-            if (DAT_GameCore::instance.field115_0x1d98 != 0) {
-                if (DAT_GameCore::instance.descriptionUseStringTable == 0) {
+            if (DAT_GameCore::instance.field115_0x1d98) {
+                if (!DAT_GameCore::instance.descriptionUseStringTable) {
                     modeUnk = 1;
                     blendStrength = 0;
                     color = 0;
@@ -84,7 +84,7 @@ namespace UI {
                     xPos = 0;
                     text = DAT_GameCore::instance.temporaryTextBufferOfSize1000;
                 } else {
-                    if (DAT_GameCore::instance.descriptionStringTableIndex == 0)
+                    if (!DAT_GameCore::instance.descriptionStringTableIndex)
                         goto LAB_0042e0bd;
                     modeUnk = 1;
                     blendStrength = 0;

@@ -59,7 +59,7 @@ namespace Game {
             if (0 < _count) {
                 _pSkMasters_01 = DAT_SkMasters2DataArray::instance;
                 do {
-                    if (_pSkMasters_01->score == 0) {
+                    if (!_pSkMasters_01->score) {
                         INT_ARRAY_00eb0e48::instance[_index] = 0;
                     }
                     _index = _index + 1;
@@ -69,7 +69,7 @@ namespace Game {
         } else if ((DAT_00ed3124::instance == 2) && (_index = 0, 0 < _count)) {
             _pSkMasters_02 = DAT_SkMasters2DataArray::instance;
             do {
-                if (_pSkMasters_02->score != 0) {
+                if (_pSkMasters_02->score) {
                     INT_ARRAY_00eb0e48::instance[_index] = 0;
                 }
                 _index = _index + 1;
@@ -94,7 +94,7 @@ namespace Game {
                     } while (_index < _count);
                     DAT_00eb9b60::instance = iVar7;
                 }
-            } else if ((DAT_MissionDefinedData::instance.descending == 0) && (0 < _count)) {
+            } else if ((!DAT_MissionDefinedData::instance.descending) && (0 < _count)) {
                 piVar5 = INT_00eb0e44::ptr + _count;
                 _index = _count;
                 do {
@@ -105,7 +105,7 @@ namespace Game {
                     }
                     piVar5 = piVar5 + -1;
                     _count = _count + -1;
-                } while (_count != 0);
+                } while (_count);
                 DAT_00eb9b60::instance = iVar7;
             }
         } else {
@@ -157,7 +157,7 @@ namespace Game {
                         pSVar8 = DAT_SkMasters2DataArray::instance;
                         do {
                             if (INT_ARRAY_00eb0e48::instance[iVar7] != 0) {
-                                if (pSVar8->score != 0) {
+                                if (pSVar8->score) {
                                     pcVar4 = MACRO_CALL_MEMBER(
                                         Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(

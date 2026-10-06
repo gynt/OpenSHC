@@ -97,7 +97,7 @@ namespace UI {
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         }
-                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
+                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
                             DAT_ButtonUnknownZero::instance = 1;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;

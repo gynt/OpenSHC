@@ -11,7 +11,7 @@ namespace UI {
         int _index;
         int _nextIndex;
         DWORD* _ptrMoment;
-        if (this->spawnMomentCount != 0) {
+        if (this->spawnMomentCount) {
             _now = timeGetTime();
             if (0 < this->spawnMomentCount) {
                 _ptrMoment = this->spawnMoment;

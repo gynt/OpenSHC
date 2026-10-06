@@ -99,7 +99,7 @@ namespace UI {
             local_c8[9] = 0;
             if (0 < (int)XVar2) {
                 do {
-                    if (iVar5 == 0) {
+                    if (!iVar5) {
                         iVar8 = 1;
                     } else {
                         iVar8 = (-(uint)(iVar5 != height + -0x78) & 0xfffffffa) + 0xd;
@@ -108,7 +108,7 @@ namespace UI {
                     if (0 < width + -0x30) {
                         do {
                             iVar6 = iVar8;
-                            if (iVar9 == 0) {
+                            if (!iVar9) {
                             LAB_004ae1c0:
                                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3,
@@ -159,7 +159,7 @@ namespace UI {
                         *(int*)local_d4 = _playerIndex_1;
                         iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
                             DAT_UnitsState::ptr)(_playerIndex_1);
-                        if ((iVar5 == 0)
+                        if ((!iVar5)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
                             local_c8[_playerIndex_1] = 1;
@@ -184,7 +184,7 @@ namespace UI {
                     _playerIndex_1 = _playerIndex_1 + 1;
                 } while ((int)_playerData < 0x117ccc8);
             }
-            if (DAT_GreatestLordDefinedData::instance.tableSortBy == 0) {
+            if (!DAT_GreatestLordDefinedData::instance.tableSortBy) {
                 XVar2.x = 0;
                 XVar2.y = 0;
                 local_d4 = (XYPairShort)(local_c8 + 0x14);
@@ -197,7 +197,7 @@ namespace UI {
                         *(int*)local_d4 = _playerIndex_2;
                         iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
                             DAT_UnitsState::ptr)(_playerIndex_2);
-                        if ((iVar5 == 0)
+                        if ((!iVar5)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
                             local_c8[_playerIndex_2] = 1;
@@ -233,7 +233,7 @@ namespace UI {
                         *(int*)local_d4 = _playerIndex_3;
                         _zeroIfDead = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
                             DAT_UnitsState::ptr)(_playerIndex_3);
-                        if ((_zeroIfDead == 0)
+                        if ((!_zeroIfDead)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
                             local_c8[_playerIndex_3] = 1;
@@ -292,7 +292,7 @@ namespace UI {
                     break;
                 iVar9 = local_c8[iVar8];
                 iVar6 = 0;
-                if (iVar9 == 0) {
+                if (!iVar9) {
                     iVar1 = DAT_GameState::instance.mapAndTime.playerGroupArray[iVar8];
                     if (0 < iVar1) {
                         MACRO_CALL_MEMBER(
@@ -311,7 +311,7 @@ namespace UI {
                     (uint)((int)(DAT_RenderingDefinedData::instance
                             .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[iVar8]])),
                     0, 0x12, 0);
-                if (iVar9 == 0) {
+                if (!iVar9) {
                     iVar9 = DAT_GameState::instance.playerDataArray[iVar8].currentResources[0xf];
                     if (iVar9 < 0) {
                         iVar9 = 0;
@@ -344,7 +344,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x2da,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 10 + xPos, y + 0x163);
             }
-            if (DAT_GreatestLordDefinedData::instance.tableSortBy == 0) {
+            if (!DAT_GreatestLordDefinedData::instance.tableSortBy) {
                 iVar6 = 0;
                 BVar13 = FALSE;
                 iVar9 = 0x11;

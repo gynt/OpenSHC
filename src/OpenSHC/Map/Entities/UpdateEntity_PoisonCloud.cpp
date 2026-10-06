@@ -56,7 +56,7 @@ namespace Map {
         DAT_EntityState::instance.entityArray[uVar3].imageID
             = (short)DAT_EntityState::instance.entityArray[uVar3].graphicType2 + 0x10;
         sVar2 = DAT_EntityState::instance.entityArray[uVar3].unknownDistanceRelatedValue;
-        if (sVar2 != 0) {
+        if (sVar2) {
             if (DAT_EntityState::instance.entityArray[uVar3].uidRef
                 == DAT_EntityState::instance.entityArray[sVar2].uid) {
                 MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,

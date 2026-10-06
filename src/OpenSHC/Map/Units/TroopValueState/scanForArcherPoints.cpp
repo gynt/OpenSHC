@@ -47,7 +47,7 @@ namespace Map {
                     paiVar4 = DAT_TileMapState::instance.directionTranslationMatrix + y;
                     do {
                         if (((*(byte*)((*paiVar4)[0] + 0x1ea7b68 + iVar5) & 0xf) == 4)
-                            && ((DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + iVar5] & 3) == 0)) {
+                            && (!(DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + iVar5] & 3))) {
                             x = iVar5 - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
                             BVar2 = MACRO_CALL_MEMBER(
                                 Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
@@ -59,7 +59,7 @@ namespace Map {
                                     Map::Units::TroopValueState_Func::findOrReserveArcherPointSlot, this)(
                                     iVar5);
                                 iVar1 = DAT_TroopValueState::instance.attackInfo.archerPointsNext;
-                                if (iVar3 == 0) {
+                                if (!iVar3) {
                                     DAT_TroopValueState::instance.attackInfo
                                         .arch2ValuesArray[DAT_TroopValueState::instance.attackInfo.archerPointsNext * 2
                                             + 0x3e9]

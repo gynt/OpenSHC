@@ -34,9 +34,9 @@ namespace Map {
                 DAT_PathFindingState::ptr)(100, (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                 (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)), (undefined4)((int)(tribeID)),
                 strategicDistance, DAT_TribesState::instance.tribes[tribeID].owner);
-            if ((_targetTile == 0)
-                && (_targetTile = MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
+            if ((!_targetTile)
+                && (_targetTile
+                    = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
                         DAT_PathFindingState::ptr)(200,
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)),
@@ -49,11 +49,10 @@ namespace Map {
             x = (_targetTile - DAT_ViewportRenderState::instance.translationMatrix[_buildingID].addXgetTile) - 1;
             y = _buildingID - 1;
             if ((((x < 400) && (y < 400)) && (*(char*)(y * 400 + 0x21aec98 + x) != '\0'))
-                && ((*(uint*)((int)DAT_TileMapState::ptr
-                         + (DAT_ViewportRenderState::instance.translationMatrix[_buildingID + -1].addXgetTile + x) * 4
-                         + 0x165160)
-                        & 0x4a5014b1)
-                    == 0)) {
+                && (!(*(uint*)((int)DAT_TileMapState::ptr
+                          + (DAT_ViewportRenderState::instance.translationMatrix[_buildingID + -1].addXgetTile + x) * 4
+                          + 0x165160)
+                    & 0x4a5014b1))) {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
                     DAT_TribesState::instance.tribes[tribeID].owner, (int)((int)(x)), (int)((int)(y)),
                     commandBuildingType, 3, 0xf);

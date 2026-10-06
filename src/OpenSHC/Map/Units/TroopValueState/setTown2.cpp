@@ -22,7 +22,7 @@ namespace Map {
             if (0 < _index) {
                 piVar3 = (int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 + 0xc);
                 do {
-                    if ((*piVar3 == 0) || (param_1 != 0)) {
+                    if ((*piVar3 == 0) || (param_1)) {
                         _ptrTown2 = (int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 + -4);
                         *_ptrTown2 = *_ptrTown2 + 1;
                     }

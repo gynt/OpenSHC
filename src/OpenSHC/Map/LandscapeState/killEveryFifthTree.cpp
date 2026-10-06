@@ -15,7 +15,7 @@ namespace Map {
         if (1 < this->maxTreeCount) {
             piVar1 = &this->trees[1];
             do {
-                if ((((piVar1->state != 0) && ((int)(short)piVar1->treeType - 1U < 4)) && (1 < piVar1->stage))
+                if ((((piVar1->state) && ((int)(short)piVar1->treeType - 1U < 4)) && (1 < piVar1->stage))
                     && ((piVar1->stage < 5 && (((int)SEC_RNG::instance.currentNumber2 ^ piVar1->rng1) % 5 != 0)))) {
                     piVar1->stage = 5;
                 }

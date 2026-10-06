@@ -80,7 +80,7 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner, DAT_PencilRenderCore::ptr)(
                 DAT_MenuHandlerState::instance.x + 0x30, DAT_MenuHandlerState::instance.y + 6, 0x2c0, 0x32);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if (DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk == 0) {
+            if (!DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk) {
                 iVar10 = 0;
                 iVar8 = 0x11;
                 color2 = 0;
@@ -108,7 +108,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(" - ",
                 DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
                 OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
-            if (INT_00b960e4::instance == 0) {
+            if (!INT_00b960e4::instance) {
                 iVar8 = 0;
                 BVar9 = TRUE;
                 iVar5 = 0x11;
@@ -137,7 +137,7 @@ namespace UI {
                 goto LAB_00430ac9;
             local_1c = DAT_MenuHandlerState::instance.y + 0xf0;
             iVar5 = DAT_TileMapState::instance.mapSize;
-            if (DAT_TileMapState::instance.mapSize == 0) {
+            if (!DAT_TileMapState::instance.mapSize) {
                 iVar5 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
@@ -223,7 +223,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 local_18, iVar8 + -5, iVar4 + -0xb, OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0, 0x13, FALSE, 0);
         LAB_00430ac9:
-            if (DAT_MenuTextInputState::instance.field44_0xa4 != 0) {
+            if (DAT_MenuTextInputState::instance.field44_0xa4) {
                 INT_00b95f68::instance = 0;
                 DAT_MenuTextInputState::instance.field44_0xa4 = 0;
             }

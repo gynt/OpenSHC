@@ -29,7 +29,7 @@ namespace Map {
             int _playerID;
             if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                 _playerID = (int)(char)this->attackInfo.attackWavePlayerIDArray[attackWave];
-                if (_playerID == 0) {
+                if (!_playerID) {
                     _playerID = 2;
                 }
                 if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)

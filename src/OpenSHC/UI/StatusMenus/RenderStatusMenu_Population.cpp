@@ -117,7 +117,7 @@ namespace UI {
                 }
                 pasVar7 = (short (*)[300])(*pasVar7 + 1);
                 iVar9 = iVar9 + -1;
-            } while (iVar9 != 0);
+            } while (iVar9);
             if (0x32 < sVar4) {
                 if (sVar4 < 0x65) {
                     local_10 = 2;

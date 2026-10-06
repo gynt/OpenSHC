@@ -40,7 +40,7 @@ namespace Map {
                         && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
                         _goToRallyPoint = DAT_UnitsState::instance.units[_unitID].goToRallyPoint;
                         DAT_UnitsState::instance.units[_unitID].rallyRelatedFlag = 0;
-                        if ((((((_goToRallyPoint == 0)
+                        if ((((((!_goToRallyPoint)
                                    && ((DAT_UnitsState::instance.units[_unitID].isSelectable_OR_matchTime != 0
                                        && (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
                                                                  setAxisBasedDistanceResult,

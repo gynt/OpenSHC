@@ -47,13 +47,13 @@ namespace UI {
             if ((DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0)
                 || (DAT_GameCore::instance.menuViewToSwitchTo != DAT_GameCore::instance.currentMenuViewType))
                 goto LAB_00424eb2;
-            if (DAT_MainMenuSwingSwordBool::instance == 0) {
+            if (!DAT_MainMenuSwingSwordBool::instance) {
                 DAT_MainMenuSwingSwordBool::instance = (int)SEC_RNG::instance.currentNumber1 % 3;
                 if (0 < DAT_MainMenuSwingSwordBool::instance) {
                     DAT_MainMenuSwingSwordBool::instance = 0;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
-                if (DAT_MainMenuSwingSwordBool::instance == 0)
+                if (!DAT_MainMenuSwingSwordBool::instance)
                     goto LAB_00424e2e;
             } else {
                 DAT_MainMenuSwingSwordBool::instance = 0;

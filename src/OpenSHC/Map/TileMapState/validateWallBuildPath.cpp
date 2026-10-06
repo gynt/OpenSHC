@@ -81,9 +81,8 @@ namespace Map {
             _tileMapState = this;
             local_c = this->field119_0x554924;
         } else if (((short)command == 0x1a)
-            && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
-                    iVar1, (int)((int)(y1))),
-                _tileMapState = extraout_ECX, iVar1 == 0)) {
+            && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)((int)(y1))),
+                _tileMapState = extraout_ECX, !iVar1)) {
             extraout_ECX->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
         }
         local_10 = 2;
@@ -98,11 +97,13 @@ namespace Map {
         do {
             iVar1 = *local_1c + _x1;
             _logic = _tileMapState->LogicLayer[iVar1];
-            if ((_logic & Map::LogicHelpers::L_PLAIN1_AND_FARM | Map::LogicHelpers::L_BORDER) != 0) {}
-            if ((_logic & Map::LogicHelpers::L_SEA | Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE | Map::LogicHelpers::L_MARSH | Map::LogicHelpers::L_MOAT) != 0) {}
+            if ((_logic & Map::LogicHelpers::L_PLAIN1_AND_FARM | Map::LogicHelpers::L_BORDER)) {}
+            if ((_logic & Map::LogicHelpers::L_SEA | Map::LogicHelpers::L_BUILDING
+                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE | Map::LogicHelpers::L_MARSH
+                    | Map::LogicHelpers::L_MOAT)) {}
             if (_tileMapState->BuildingLayer[iVar1] != 0) {}
-            if ((((_logic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION) != 0)
-                    && (iVar4 = (int)_tileMapState->OrganismLayer[iVar1], iVar4 != 0))
+            if ((((_logic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION))
+                    && (iVar4 = (int)_tileMapState->OrganismLayer[iVar1], iVar4))
                 && (iVar4 < 2000)) {
                 switch (DAT_LandscapeState::instance.trees[iVar4].treeType) {
                 case ((TreeType)5):
@@ -124,9 +125,9 @@ namespace Map {
                         return;
                 }
             }
-            if ((_logic & Map::LogicHelpers::L_RIVER | Map::LogicHelpers::L_FORD) != 0) {}
+            if ((_logic & Map::LogicHelpers::L_RIVER | Map::LogicHelpers::L_FORD)) {}
             if ((char)_logic < '\0') {}
-            if (((_tileMapState->UnitLayer[iVar1] != 0) && ((_logic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0))
+            if (((_tileMapState->UnitLayer[iVar1] != 0) && (!(_logic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)))
                 && (DAT_UnitsState::instance.units[(short)_tileMapState->UnitLayer[iVar1]].unitType
                     != Map::Units::UT_CHICKEN)) {}
             if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
@@ -139,7 +140,7 @@ namespace Map {
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
                     DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), local_4, -1, -1, -1);
-                if (iVar4 != 0) {
+                if (iVar4) {
                     if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
                 }
@@ -148,7 +149,7 @@ namespace Map {
                         = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
                     iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, _castleBuildingRange);
-                    if (iVar4 != 0) {
+                    if (iVar4) {
                         if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
                         this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
                     }
@@ -163,7 +164,7 @@ namespace Map {
             }
             iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSomeSuitableLocationUnk,
                 DAT_PathFindingState::ptr)(playerID, _x1, _y1, 2);
-            if (iVar4 != 0) {
+            if (iVar4) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
             BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
@@ -174,10 +175,10 @@ namespace Map {
             if ((short)command == 0x1a) {
                 iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
                     iVar1, (int)((int)(_y1)));
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     *(undefined4*)(extraout_ECX_00 + 0x554938) = 0x13;
                 }
-            } else if (((short)command == 0x1b) && ((local_c < 0x11 || ((this->LogicLayer[iVar1] & 0x100U) != 0))))
+            } else if (((short)command == 0x1b) && ((local_c < 0x11 || ((this->LogicLayer[iVar1] & 0x100U)))))
                 break;
             uVar3 = x1;
             if ((int)_x1 < (int)x2) {
@@ -214,7 +215,7 @@ namespace Map {
                     }
                 }
             } else {
-                if (uVar3 != 0) {
+                if (uVar3) {
                     if ((int)_x1 < (int)x2) {
                         x1 = x1 + 1;
                         _x1 = _x1 + 1;
@@ -225,7 +226,7 @@ namespace Map {
                         y1 = y1 + 1;
                     }
                 }
-                if (iVar1 != 0) {
+                if (iVar1) {
                     if ((int)_y1 < (int)y2) {
                         local_1c = local_1c + 3;
                         local_18 = local_18 + 1;
@@ -247,7 +248,7 @@ namespace Map {
                 local_c = local_c + -0x10;
             }
             _tileMapState = _tileMapState2;
-        } while (((_x1 != x2) || (_y1 != y2)) || (local_10 != 0));
+        } while (((_x1 != x2) || (_y1 != y2)) || (local_10));
         this->illegalBuild = FALSE;
     }
 

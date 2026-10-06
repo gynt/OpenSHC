@@ -43,7 +43,7 @@ namespace Map {
                         iVar2 = iVar2 + 1;
                     }
                 } while (unitSelectionIndex < *psVar1);
-                if (iVar2 != 0) {
+                if (iVar2) {
                     return (undefined4)(0);
                 }
             }

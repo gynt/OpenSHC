@@ -41,13 +41,13 @@ namespace Synchrony {
                 psVar6 = psVar6 + 1;
                 piVar8 = piVar8 + 1;
                 iVar9 = iVar9 + -1;
-            } while (iVar9 != 0);
+            } while (iVar9);
             iVar9 = (short)uVar2 * 8;
             iVar5 = (short)uVar1 * 8;
             iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5, iVar9, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
                 Map::Units::UT_CAGEDOG);
-            if (iVar7 != 0) {
+            if (iVar7) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitID1 = (short)iVar7;
@@ -58,7 +58,7 @@ namespace Synchrony {
             iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5 + 8, iVar9, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
                 Map::Units::UT_CAGEDOG);
-            if (iVar7 != 0) {
+            if (iVar7) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitID2 = (short)iVar7;
@@ -69,7 +69,7 @@ namespace Synchrony {
             iVar7 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5, iVar9 + 8, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
                 Map::Units::UT_CAGEDOG);
-            if (iVar7 != 0) {
+            if (iVar7) {
                 DAT_UnitsState::instance.units[iVar7].workplaceBuildingID_1 = (short)buildingID;
                 iVar3 = DAT_BuildingsState::instance.buildings[buildingID].uid;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitID3 = (short)iVar7;
@@ -80,7 +80,7 @@ namespace Synchrony {
             iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(0, param_1,
                 iVar5 + 8, iVar9 + 8, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].terrainHeightUnk)),
                 Map::Units::UT_CAGEDOG);
-            if (iVar9 != 0) {
+            if (iVar9) {
                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingID_1 = (short)buildingID;
                 iVar5 = DAT_BuildingsState::instance.buildings[buildingID].uid;
                 DAT_BuildingsState::instance.buildings[buildingID].insideUnitID4 = (short)iVar9;

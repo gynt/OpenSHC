@@ -29,7 +29,7 @@ namespace Synchrony {
                 = this->DPLAYX_4A
                       ->SendEx(this->DPLAYX_PlayerHandle, 0, DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC, (void*)0x194af7c,
                           5, 65533, 0, (void*)0x0, (DWORD_PTR*)0x0);
-            if ((this->DPLAYX_SendAndReceiveREsult != 0) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
+            if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
             }
             _playerID
@@ -43,7 +43,7 @@ namespace Synchrony {
             if (6 < this->receivedMatchTimesTrackerUnk) {
                 this->commandDelay = this->commandDelay + -1;
                 this->receivedMatchTimesTrackerUnk = 0;
-                if (this->syncRelatedCountdown == 0) {
+                if (!this->syncRelatedCountdown) {
                     _maxLatency = 0;
                     if ((this->currentPlayerFullIDArray[1] != -1) && (0 < this->connectionLagInfoArray[1].average1)) {
                         _maxLatency = this->connectionLagInfoArray[1].average1;

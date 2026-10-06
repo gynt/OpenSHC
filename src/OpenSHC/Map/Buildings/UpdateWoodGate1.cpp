@@ -48,7 +48,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 10;
         }
         bVar1 = DAT_BuildingsState::instance.buildings[buildingID].pathLinkageRelated2;
-        if (bVar1 == 0) {
+        if (!bVar1) {
             if (DAT_BuildingsState::instance.buildings[buildingID].gateState == 10) {
                 DAT_BuildingsState::instance.buildings[buildingID].pathLinkageRelated2 = 2;
                 MACRO_CALL_MEMBER(

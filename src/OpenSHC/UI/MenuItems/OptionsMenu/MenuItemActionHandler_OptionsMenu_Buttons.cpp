@@ -57,7 +57,7 @@ namespace UI {
                     }
                     if (((!bVar1) || (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR))
                         || ((DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT
-                            || ((DAT_GameCore::instance.field24_0x6c != 0
+                            || ((DAT_GameCore::instance.field24_0x6c
                                 || (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL))))))
                         break;
                 }
@@ -80,7 +80,7 @@ namespace UI {
                     break;
                 if ((((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
                          && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
-                        && (DAT_GameCore::instance.field24_0x6c == 0))
+                        && (!DAT_GameCore::instance.field24_0x6c))
                     && (DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL)) {
                     /*
                       save
@@ -150,7 +150,7 @@ namespace UI {
                     && (((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
                              || (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1))
                         || ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
-                            && (DAT_MapPropertiesState::instance.scenarionMissionType != 0)))))) {
+                            && (DAT_MapPropertiesState::instance.scenarionMissionType)))))) {
                     MACRO_CALL_MEMBER(
                         UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                     DAT_GameCore::instance.field22_0x64 = 1;
@@ -168,7 +168,7 @@ namespace UI {
                 if ((((DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION)
                          && (DAT_GameCore::instance.gameMode_2 != Game::GM_ECONOMIC_CAMPAIGN_SH1))
                         && ((DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk
-                            || (DAT_GameCore::instance.field24_0x6c != 0))))
+                            || (DAT_GameCore::instance.field24_0x6c))))
                     && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
                     break;
                 goto LAB_00496da8;

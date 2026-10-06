@@ -33,7 +33,7 @@ namespace Map {
             && (((x2 < 400 && (y2 < 400)) && (*(char*)(x2 + 0x21aec98 + y2 * 400) != '\0')))) {
             this->DAT_WallTileCountCurrentDrag = 0;
             local_c = 2;
-            if (((short)command == 0x1b) && (local_4 = this->field119_0x554924, this->field118_0x554920 == 0)) {
+            if (((short)command == 0x1b) && (local_4 = this->field119_0x554924, !this->field118_0x554920)) {
                 this->ConstructionGFXLayer[DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile + x1]
                     = (short)GMTotalPicturesProcessed::instance[6] + 0x13;
             }
@@ -47,15 +47,14 @@ namespace Map {
             y1 = uVar5;
             do {
                 if ((((short)command == 0x1b) && (local_4 < 0x18))
-                    || (((iVar6 = *local_14 + local_8,
-                             (short)command == 0x1b && ((this->LogicLayer[iVar6] & 0x100U) != 0))
+                    || (((iVar6 = *local_14 + local_8, (short)command == 0x1b && ((this->LogicLayer[iVar6] & 0x100U)))
                         || (this->constructionTileCount <= this->DAT_WallTileCountCurrentDrag))))
                     break;
                 bVar1 = false;
-                if (((short)command == 0x19) && ((this->LogicLayer[iVar6] & 0x200U) != 0)) {
+                if (((short)command == 0x19) && ((this->LogicLayer[iVar6] & 0x200U))) {
                     bVar1 = true;
                 }
-                if (((this->LogicLayer[iVar6] & 0x100U) == 0) || (this->DamageLayer[iVar6] != 0)) {
+                if ((!(this->LogicLayer[iVar6] & 0x100U)) || (this->DamageLayer[iVar6] != 0)) {
                     iVar3 = this->DAT_WallTileCountCurrentDrag + 1;
                     if (bVar1)
                         goto LAB_004f8d6c;
@@ -136,7 +135,7 @@ namespace Map {
                         }
                     }
                 } else {
-                    if (uVar5 != 0) {
+                    if (uVar5) {
                         if ((int)local_8 < (int)x2) {
                             x1 = x1 + 1;
                             local_8 = local_8 + 1;
@@ -147,7 +146,7 @@ namespace Map {
                             y1 = y1 + 1;
                         }
                     }
-                    if (iVar6 != 0) {
+                    if (iVar6) {
                         if ((int)uVar7 < (int)y2) {
                             local_14 = local_14 + 3;
                             uVar7 = uVar7 + 1;
@@ -168,11 +167,11 @@ namespace Map {
                 if ((0x10 < local_4) && (local_c == 2)) {
                     local_4 = local_4 + -0x10;
                 }
-            } while (((local_8 != x2) || (uVar7 != y2)) || (local_c != 0));
+            } while (((local_8 != x2) || (uVar7 != y2)) || (local_c));
             if (this->illegalBuild != FALSE) {
                 this->DAT_WallTileCountCurrentDrag = 0;
             }
-            if (this->field145_0x554980 == 0) {
+            if (!this->field145_0x554980) {
                 if ((short)command == 0x2e) {
                     MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processWallBuildingLoss,
                         DAT_BuildingsState::ptr)(playerID, 0, this->DAT_WallTileCountCurrentDrag, 1);

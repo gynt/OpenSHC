@@ -17,13 +17,13 @@ namespace Map {
                 piVar1 = &DAT_TroopValueState::instance.attackInfo.peopleValuesArray[0];
                 iVar1 = DAT_TroopValueState::instance.attackInfo.people2;
                 do {
-                    if ((piVar1->unitID == 0) || (param_1 != 0)) {
+                    if ((!piVar1->unitID) || (param_1)) {
                         DAT_TroopValueState::instance.attackInfo.people3
                             = DAT_TroopValueState::instance.attackInfo.people3 + 1;
                     }
                     piVar1 = piVar1 + 4;
                     iVar1 = iVar1 + -1;
-                } while (iVar1 != 0);
+                } while (iVar1);
             }
         }
 

@@ -10,7 +10,7 @@ namespace Audio {
             MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundIDWithMultiplier, this)(
                 DE::SHCDE::MUSIC_TUNE_HAPPY2, 100);
 
-            if (this->sec_Section1055_0x3274 != 0 && this->sec_Section1055_0x3274 != 0xf) {
+            if (this->sec_Section1055_0x3274 && this->sec_Section1055_0x3274 != 0xf) {
                 MACRO_CALL_MEMBER(SoundSystem_Func::setSomeSoundTime, this)();
             }
         }

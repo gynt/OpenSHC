@@ -22,7 +22,7 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar1].rng_2 = (short)DAT_LandscapeState::instance.wind.value;
         }
         iVar2 = (int)DAT_EntityState::instance.entityArray[uVar1].someTracker;
-        if (iVar2 == 0) {
+        if (!iVar2) {
             iVar2 = DAT_EntityDefinedData::instance
                         .field64_0x15dc[DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated];
         } else {

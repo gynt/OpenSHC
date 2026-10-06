@@ -39,7 +39,7 @@ namespace UI {
                         .header.month = 0;
                 }
             } else if (param_1 == 0x13) {
-                if (DAT_MapPropertiesState::instance.flag == 0) {
+                if (!DAT_MapPropertiesState::instance.flag) {
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                         DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
@@ -51,7 +51,7 @@ namespace UI {
                     return;
                 }
             } else if (param_1 == 0x25) {
-                if (DAT_MapPropertiesState::instance.flag == 0) {
+                if (!DAT_MapPropertiesState::instance.flag) {
                     if (DAT_MapPropertiesState::instance.value == 0xffffffff) {
                         MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                             DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);

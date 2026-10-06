@@ -22,7 +22,7 @@ namespace Map {
             piVar2 = &DAT_MapPropertiesState::instance.scenarioEvents[0].data.scenario.ScenarioEventType;
             do {
                 if ((piVar2[-3] == 3)
-                    && ((((iVar1 = *piVar2, iVar1 == 1 || (iVar1 == 0x1b)) || (iVar1 == 0)) || (iVar1 == 0x1a)))) {
+                    && ((((iVar1 = *piVar2, iVar1 == 1 || (iVar1 == 0x1b)) || (!iVar1)) || (iVar1 == 0x1a)))) {
                     *(undefined2*)(piVar2 + -2) = 1;
                 }
                 iVar3 = iVar3 + 1;

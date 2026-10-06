@@ -31,7 +31,7 @@ namespace UI {
             *yPtr = _y;
             *widthPtr = this->modalMenu.width;
             *heigthPtr = this->modalMenu.height;
-            if (((byte)this->modalMenu.borderStyle & 2) != 0) {
+            if (((byte)this->modalMenu.borderStyle & 2)) {
                 *yPtr = *yPtr + 0xc;
                 *heigthPtr = *heigthPtr + -0xc;
             }

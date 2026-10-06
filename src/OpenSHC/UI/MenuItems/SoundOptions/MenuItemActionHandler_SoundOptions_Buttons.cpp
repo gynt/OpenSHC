@@ -49,7 +49,7 @@ namespace UI {
                 MACRO_CALL(UI::MenuItems::SoundOptions_Func::MenuItemActionHandler_SoundOptions_VolumeSlider)(
                     0, 3, &local_4, &local_8, (int*)&param_1);
             }
-            if (DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar == 0) {
+            if (!DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar) {
                 DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar = 1;
                 MACRO_CALL_MEMBER(
                     Audio::MSS::SoundSystem_Func::activateSoundFromMenuFuncUnk, DAT_SoundSystemState::ptr)();

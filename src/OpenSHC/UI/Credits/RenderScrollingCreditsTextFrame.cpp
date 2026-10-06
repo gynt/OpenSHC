@@ -40,7 +40,7 @@ namespace UI {
             }
             param = (double)FLOAT_00eb9b1c::instance;
         }
-        if (DAT_00eb9b28::instance == 0) {
+        if (!DAT_00eb9b28::instance) {
             yPos = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + DAT_00eb9b34::instance;
             xPos = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + DAT_00eb9b30::instance;
             color = DAT_00eb9b3c::instance;

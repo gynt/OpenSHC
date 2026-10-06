@@ -136,7 +136,7 @@ namespace UI {
                         case Map::MT_JUST_BUILD:
                             DAT_MapMissionType::instance = 0;
                         }
-                        if (DAT_GameCore::instance.field22_0x64 == 0) {
+                        if (!DAT_GameCore::instance.field22_0x64) {
                             DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                                 = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                             DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -173,7 +173,7 @@ namespace UI {
                         DAT_TextEditorState::ptr)();
                     MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSpeechStreamsAndResetLoopFlags,
                         DAT_SoundSystemState::ptr)();
-                    if (DAT_GameCore::instance.field22_0x64 == 0) {
+                    if (!DAT_GameCore::instance.field22_0x64) {
                         if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
                             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
@@ -205,10 +205,10 @@ namespace UI {
                     ;
                     return;
                 case -1:
-                    if ((DAT_00ed2798::instance == 0)
+                    if ((!DAT_00ed2798::instance)
                         && (((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
                                  || (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1))
-                            && (DAT_GameCore::instance.field22_0x64 == 0)))) {
+                            && (!DAT_GameCore::instance.field22_0x64)))) {
                         DAT_GameState::instance.mapAndTime.difficulty
                             = DAT_GameState::instance.mapAndTime.difficulty + 1;
                         if (3 < DAT_GameState::instance.mapAndTime.difficulty) {

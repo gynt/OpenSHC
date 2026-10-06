@@ -20,12 +20,12 @@ namespace Map {
                 this->distanceY = targetY - y;
             }
             if (this->distanceX < this->distanceY) {
-                if (this->distanceY == 0) {
+                if (!this->distanceY) {
                     iVar1 = 100;
                 } else {
                     iVar1 = (this->distanceX * 100) / this->distanceY;
                 }
-            } else if (this->distanceX == 0) {
+            } else if (!this->distanceX) {
                 iVar1 = 100;
             } else {
                 iVar1 = (this->distanceY * 100) / this->distanceX;

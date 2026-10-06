@@ -52,7 +52,7 @@ namespace UI {
                 if (_menuItemType == UI::Enums::MIT_ENABLE_OR_WRAP_BUILD_MENU_TRANSITION_OFFSET) {
                     if ((DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18 != FALSE)
                         && (funcIndex == UI::Enums::MIHS_HANDLE_INPUT_CALLBACKSUnk)) {}
-                    this->currentBuildMenuButtonShiftUnk_0x14 = ~-(uint)(this->currentBuildMenuButtonShiftUnk_0x14 != 0)
+                    this->currentBuildMenuButtonShiftUnk_0x14 = ~-(uint)(this->currentBuildMenuButtonShiftUnk_0x14)
                         & DAT_MenuHandlerState::instance.buildMenuItemsLeftShift_0x28;
                 } else if (_menuItemType == UI::Enums::MIT_MENU_MODALUnk) {
                     if (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_NONE) {}
@@ -101,7 +101,7 @@ namespace UI {
                         case UI::Enums::MIHS_HANDLE_INPUT_CALLBACKSUnk:
                             _stopProcessing = MACRO_CALL_MEMBER(
                                 UI::MenuItem_Func::handleMenuElementsCallbacks, _currentMenuItemPtr)();
-                            if (_stopProcessing != 0) {}
+                            if (_stopProcessing) {}
                             break;
                         case UI::Enums::MIHS_PREPARE_AND_RENDER:
                             MACRO_CALL_MEMBER(

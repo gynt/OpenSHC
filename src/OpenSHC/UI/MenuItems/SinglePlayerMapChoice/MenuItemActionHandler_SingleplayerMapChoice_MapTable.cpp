@@ -71,7 +71,7 @@ namespace UI {
                 MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
                         MenuItemActionHandler_SingleplayerMapChoice_ButtonsAndHands)(0x41);
             }
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 DAT_MenuTextInputState::instance.lastClickedListIndex
                     = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                     + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
@@ -99,7 +99,7 @@ namespace UI {
             MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);
             DAT_00b95b74::instance = 0;
             DAT_00b960f4::instance = 0;
-            if (DAT_GameCore::instance.mapDescUseStringTable == 0) {
+            if (!DAT_GameCore::instance.mapDescUseStringTable) {
                 modeUnk = 1;
                 blendStrength = 0;
                 color = 0;
@@ -111,7 +111,7 @@ namespace UI {
                 DAT_00b95b74::instance = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(
                     pcVar5, iVar6, yPos, maxWidth, color, blendStrength, modeUnk);
-            } else if (DAT_GameCore::instance.mapDescUseStringTableIndex != 0) {
+            } else if (DAT_GameCore::instance.mapDescUseStringTableIndex) {
                 modeUnk = 1;
                 blendStrength = 0;
                 color = 0;
@@ -128,7 +128,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
                     DAT_MapDefinedData::instance.MapSectionAddressArray, 0x423);
                 piVar4 = DAT_SiegeInformationArray::instance;
-                if (DAT_GameCore::instance.mapU4Int1_2 == 0) {
+                if (!DAT_GameCore::instance.mapU4Int1_2) {
                     do {
                         if (0 < *piVar4)
                             goto LAB_00442f24;

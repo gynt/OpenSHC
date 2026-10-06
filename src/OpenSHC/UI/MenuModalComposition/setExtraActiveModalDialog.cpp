@@ -29,8 +29,7 @@ namespace UI {
         int iVar4;
         MenuModalComposition* pMVar5;
         Menu* _menuPtr;
-        if ((this->slot == 0)
-            && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
+        if ((!this->slot) && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
         }
@@ -47,7 +46,7 @@ namespace UI {
             /*
               Just memcopies it into current modal menu? -TheRedDaemon
              */
-            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4 != 0; iVar4 = iVar4 + -1) {
+            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4; iVar4 = iVar4 + -1) {
                 ((MenuModal*)pMVar5)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
@@ -56,7 +55,7 @@ namespace UI {
         this->modalDragDropUnk = 0;
         (this->modalMenu).x = dialogX;
         (this->modalMenu).y = dialogY;
-        if ((uVar1 & 0x220) != 0) {
+        if ((uVar1 & 0x220)) {
             (this->modalMenu).width = (((this->modalMenu).width + -1) / 0x18 + 1) * 0x18;
             (this->modalMenu).height = (((this->modalMenu).height + -1) / 0x18 + 1) * 0x18;
         }
@@ -79,7 +78,7 @@ namespace UI {
         DVar3 = timeGetTime();
         uVar1 = (this->modalMenu).borderStyle;
         this->timeItIsSet = DVar3;
-        if ((uVar1 & 0x400) != 0) {
+        if ((uVar1 & 0x400)) {
             this->disappearAfter = 0;
         }
         _menuPtr = (this->modalMenu).pointerToMenu;

@@ -64,7 +64,7 @@ namespace UI {
                 y + 0x138);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if ((DAT_GameSynchronyState::instance.scrollBarIndex == -1)
-                && (DAT_GameSynchronyState::instance.DPLAY_SessionsCount != 0)) {
+                && (DAT_GameSynchronyState::instance.DPLAY_SessionsCount)) {
                 DAT_GameSynchronyState::instance.scrollBarIndex = 0;
             }
         }

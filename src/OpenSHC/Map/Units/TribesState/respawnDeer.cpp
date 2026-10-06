@@ -40,7 +40,7 @@ namespace Map {
                     && ((DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk
                         || (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != Map::MT_SIEGE))))
                 && (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
-                         && (DAT_GameState::instance.mapAndTime.aliveDeerCount != 0))
+                         && (DAT_GameState::instance.mapAndTime.aliveDeerCount))
                     && (DAT_GameState::instance.mapAndTime.deerCount < 6)))) {
                 _counter = 0;
                 while (true) {
@@ -59,7 +59,7 @@ namespace Map {
                     if (4 < _counter) {}
                 }
                 _tile = DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile + _x;
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x50501581U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x50501581U)) {
                     if (DAT_TileMapState::instance.OrganismLayer[_tile] == 0)
                         goto LAB_00526268;
                     MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(

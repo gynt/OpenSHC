@@ -42,7 +42,7 @@ namespace UI {
                 iVar2 = 9;
             }
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                if ((DAT_BuildingsState::instance.menuSelectedBuildingID == 0)
+                if ((!DAT_BuildingsState::instance.menuSelectedBuildingID)
                     || (DAT_ButtonCurrentlyInteracting::instance = TRUE,
                         (uVar1
                             & (int)DAT_BuildingsState::instance
@@ -56,7 +56,7 @@ namespace UI {
                 backgroundColor = 0x3e66;
                 uVar1 = 0xc2f0eb;
             } else {
-                if ((DAT_BuildingsState::instance.menuSelectedBuildingID == 0)
+                if ((!DAT_BuildingsState::instance.menuSelectedBuildingID)
                     || (DAT_ButtonCurrentlyInteracting::instance = TRUE,
                         (uVar1
                             & (int)DAT_BuildingsState::instance

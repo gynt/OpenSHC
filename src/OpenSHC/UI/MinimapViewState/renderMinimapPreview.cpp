@@ -30,11 +30,11 @@ namespace UI {
                 }
                 iVar3 = iVar3 + 2;
                 iVar1 = iVar1 + -1;
-            } while (iVar1 != 0);
+            } while (iVar1);
             iVar4 = iVar4 + 400;
             iVar5 = iVar5 + DAT_PencilRenderCore::instance.horizontalByteSize;
             iVar2 = iVar2 + -1;
-        } while (iVar2 != 0);
+        } while (iVar2);
     }
 
 }

@@ -51,7 +51,7 @@ namespace Map {
             iVar6 = 0;
             pSVar4 = &this->SEC_SiegeInformation;
             do {
-                if (pSVar4->archers != 0) {
+                if (pSVar4->archers) {
                     bVar2 = true;
                     break;
                 }
@@ -61,7 +61,7 @@ namespace Map {
             iVar6 = 0;
             pSVar5 = &this->SEC_Section1067;
             do {
-                if (pSVar5->field0_0x0 != 0)
+                if (pSVar5->field0_0x0)
                     goto LAB_004b7a45;
                 iVar6 = iVar6 + 1;
                 pSVar5 = (SiegeGameModeRelatedSection*)&pSVar5->field1_0x4;

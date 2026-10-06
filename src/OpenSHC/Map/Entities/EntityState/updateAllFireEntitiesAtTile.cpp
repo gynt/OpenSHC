@@ -31,7 +31,7 @@ namespace Map {
                         return 0;
                     }
                     _tile = _nextTile;
-                    if (_nextTile == 0) {
+                    if (!_nextTile) {
                         return 0;
                     }
                 }

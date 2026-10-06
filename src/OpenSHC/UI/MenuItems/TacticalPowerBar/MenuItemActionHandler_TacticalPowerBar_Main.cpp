@@ -29,7 +29,7 @@ namespace UI {
             int iVar1;
             if ((((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                      || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
-                    || (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0))
+                    || (!DAT_GameState::instance.mapAndTime.skirmishNoRushTicks))
                 && ((iVar1
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .tacticalPowersBarLevel,

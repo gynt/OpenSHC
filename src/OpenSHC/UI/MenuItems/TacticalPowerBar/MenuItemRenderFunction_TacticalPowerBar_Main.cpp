@@ -68,10 +68,10 @@ namespace UI {
             }
             if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
                     || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER))
-                || (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0)) {
+                || (!DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
                 blendStrengthUnk = DAT_ButtonBlendStrength::instance;
                 if ((param_1 + 1) * 0x27c <= _level) {
-                    if (DAT_GameCore::instance.tacticalPowersDisplayFlag == 0) {
+                    if (!DAT_GameCore::instance.tacticalPowersDisplayFlag) {
                         DAT_TacticalPowersHelpTextDisplayBool::instance = true;
                         DAT_GameCore::instance.tacticalPowersDisplayFlag = 1;
                     }

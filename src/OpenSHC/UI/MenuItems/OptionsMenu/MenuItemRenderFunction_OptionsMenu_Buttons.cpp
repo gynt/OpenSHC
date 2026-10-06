@@ -90,10 +90,10 @@ namespace UI {
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1))
                     goto LAB_00491978;
                 if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk)
-                    || (DAT_MapPropertiesState::instance.scenarionMissionType == 0))
+                    || (!DAT_MapPropertiesState::instance.scenarionMissionType))
                     goto LAB_004918c8;
             LAB_00491982:
-                if ((DAT_GameCore::instance.field24_0x6c != 0)
+                if ((DAT_GameCore::instance.field24_0x6c)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL)) {
                 LAB_0049198b:
                     if (((param_1 == 2) || (param_1 == 0x27)) || (param_1 == 3))
@@ -102,7 +102,7 @@ namespace UI {
                 if (((((param_1 == 0x2c) && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CAMPAIGN_MISSION))
                          && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1))
                         && ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk
-                            || (DAT_GameCore::instance.field24_0x6c != 0))))
+                            || (DAT_GameCore::instance.field24_0x6c))))
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderNonInteractingButtonBackground,

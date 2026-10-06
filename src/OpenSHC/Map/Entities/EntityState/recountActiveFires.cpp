@@ -21,7 +21,7 @@ namespace Map {
             if (1 < this->maxEntityCount) {
                 psVar1 = &this->entityArray[1];
                 do {
-                    if (((psVar1->logicalState != 0) && (psVar1->logicalState == 2))
+                    if (((psVar1->logicalState) && (psVar1->logicalState == 2))
                         && (psVar1->entityType == Map::Entities::ET_FIRE)) {
                         DAT_TileMapState::instance.OccupancyLayer[psVar1->tile]
                             = DAT_TileMapState::instance.OccupancyLayer[psVar1->tile]

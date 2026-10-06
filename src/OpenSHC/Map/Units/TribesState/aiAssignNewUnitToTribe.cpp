@@ -38,7 +38,7 @@ namespace Map {
                          */
                         if (unitType == 0x25) {
                             _tribe = DAT_GameState::instance.playerDataArray[playerID].monkTribeIDUnk;
-                            if (((_tribe == 0) || (this->tribes[_tribe].tribeState == 0))
+                            if (((!_tribe) || (this->tribes[_tribe].tribeState == 0))
                                 || (this->tribes[_tribe].uid
                                     != DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk)) {
                                 _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(
@@ -55,7 +55,7 @@ namespace Map {
             }
             psVar1 = DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeIDs + _index;
             _tribe = (int)*psVar1;
-            if (((_tribe == 0) || (this->tribes[_tribe].tribeState == 0))
+            if (((!_tribe) || (this->tribes[_tribe].tribeState == 0))
                 || (this->tribes[_tribe].uid
                     != DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index])) {
                 _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);

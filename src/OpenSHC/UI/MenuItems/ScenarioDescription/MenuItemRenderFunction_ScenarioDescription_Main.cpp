@@ -54,7 +54,7 @@ namespace UI {
                 return;
             }
             if (param_1 == -1) {
-                if ((DAT_00ed2798::instance != 0) && (DAT_00ed2798::instance != 1)) {
+                if ((DAT_00ed2798::instance) && (DAT_00ed2798::instance != 1)) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
@@ -69,7 +69,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
                 }
-                if (DAT_GameCore::instance.mapU4Int1 != 0) {
+                if (DAT_GameCore::instance.mapU4Int1) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
@@ -100,7 +100,7 @@ namespace UI {
                 return;
             }
             if (param_1 == -2) {
-                if (DAT_00ed2798::instance != 0) {
+                if (DAT_00ed2798::instance) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
@@ -110,7 +110,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     return;
                 }
-                if (DAT_00ed27bc::instance != 0) {
+                if (DAT_00ed27bc::instance) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;
                     return;

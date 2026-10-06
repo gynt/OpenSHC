@@ -57,7 +57,7 @@ namespace Map {
             }
         LAB_0041e704:
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame = iVar2;
-            if (iVar2 != 0) {
+            if (iVar2) {
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                     = iVar2 + (DAT_BuildingsState::instance.buildings[buildingID].fireRelatedRNG1 & 7U) * 4;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(

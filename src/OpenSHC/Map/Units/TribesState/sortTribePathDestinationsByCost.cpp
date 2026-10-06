@@ -45,7 +45,7 @@ namespace Map {
             BVar8 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
             sVar1 = this->tribes[tribeID].selectionTargetUnitID;
             x = (uint)DAT_UnitsState::instance.units[sVar1].x;
-            if (horseAndRamCount == 0) {
+            if (!horseAndRamCount) {
                 y = (uint)DAT_UnitsState::instance.units[sVar1].y;
                 if (BVar8 == FALSE) {
                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
@@ -101,7 +101,7 @@ namespace Map {
                                         ->destinationsArray[0]
                                         .tile2OrAHelper
                         + iVar9);
-                    if (((iVar2 == 0)
+                    if (((!iVar2)
                             || (iVar3 = *(int*)((int)&((PathFindingStatePartB*)(DAT_PathFindingState::instance.climbData
                                                            + 200))
                                                     ->destinationsArray[1]

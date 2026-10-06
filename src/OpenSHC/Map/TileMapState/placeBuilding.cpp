@@ -64,7 +64,7 @@ namespace Map {
         _x = x;
         _commandBuildingType = (MappersEnum)(short)cbt;
         local_4 = 0;
-        if (this->skipPlacementCheck == 0) {
+        if (!this->skipPlacementCheck) {
             if (buildingOrientation == 0xf) {
                 this->DAT_TempBuildingRotation = 0;
             } else {
@@ -93,12 +93,11 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(y, buildingSize);
             _tile = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + yPosition_param].addXgetTile
                 + this->buildingX + x;
-            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT)
-                && ((this->LogicLayer[_tile] & 0x100U) != 0)) {
+            if ((DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) && ((this->LogicLayer[_tile] & 0x100U))) {
                 piVar1 = DAT_GameState::instance.playerDataArray[playerID].startResources + 4;
                 *piVar1 = *piVar1 + 1;
             }
-            if (((this->LogicLayer[_tile] & 0x80) != 0) && (1999 < this->OrganismLayer[_tile])) {
+            if (((this->LogicLayer[_tile] & 0x80)) && (1999 < this->OrganismLayer[_tile])) {
                 MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeRock, DAT_LandscapeState::ptr)(
                     this->OrganismLayer[_tile] + -2000);
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
@@ -110,7 +109,7 @@ namespace Map {
             this->LogicLayer[_tile] = this->LogicLayer[_tile] & 0xffbef4f7;
             this->HeightLayer[_tile] = this->DefaultHeightLayer[_tile];
             this->DamageLayer[_tile] = 0;
-            if (((this->LogicLayer[_tile] & 0x1000U) != 0) && (iVar3 = (int)this->OrganismLayer[_tile], iVar3 < 2000)) {
+            if (((this->LogicLayer[_tile] & 0x1000U)) && (iVar3 = (int)this->OrganismLayer[_tile], iVar3 < 2000)) {
                 switch (DAT_LandscapeState::instance.trees[iVar3].treeType) {
                 case ((TreeType)5):
                 case ((TreeType)6):
@@ -164,7 +163,7 @@ namespace Map {
                         (int)(short)this->UnitLayer[_tile]);
                 }
             }
-            if ((this->LogicLayer[_tile] & 0x40004000U) != 0) {
+            if ((this->LogicLayer[_tile] & 0x40004000U)) {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::clearMoatDataAtTile, this)(
                     this->buildingX + x, this->buildingY + yPosition_param);
                 this->LogicLayer[_tile] = this->LogicLayer[_tile] & 0xbfffbfff;
@@ -366,7 +365,7 @@ namespace Map {
          ** Now PlacedBuildingID has been set ***/
         if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
             if (_buildingType2 == Map::Buildings::BT_PITCHDITCH) {
-                if (local_4 != 0) {
+                if (local_4) {
                     MACRO_CALL_MEMBER(
                         Map::WallAndPitchState_Func::placePitchDitch, DAT_WallAndPitchState::ptr)(local_4);
                 }
@@ -380,7 +379,7 @@ namespace Map {
         uVar4 = MACRO_CALL_MEMBER(
             Map::Buildings::BuildingsState_Func::hasLessWoodThanTheCostOfAWoodcuttersHutAndNoWoodcutters,
             DAT_BuildingsState::ptr)(playerID, (int)((int)(_buildingType_2)));
-        if (uVar4 != 0) {
+        if (uVar4) {
             DAT_BuildingsState::instance.buildings[this->placedBuildingID].field203_0x288 = 1;
         }
         MACRO_CALL_MEMBER(UI::MinimapViewState_Func::triggerMinimapRedraw, DAT_MinimapViewState::ptr)(1);

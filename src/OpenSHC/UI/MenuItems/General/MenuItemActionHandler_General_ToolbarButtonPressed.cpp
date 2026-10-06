@@ -65,8 +65,8 @@ namespace UI {
             UnitType UVar4;
             uint uVar5;
             undefined4 uVar6;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus) {}
+            if (DAT_GameSynchronyState::instance.saveRelated) {}
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated
                 != 0) {
@@ -77,7 +77,7 @@ namespace UI {
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
                 != 0) {}
-            if (DAT_GameCore::instance.gamePausedLogical != 0) {}
+            if (DAT_GameCore::instance.gamePausedLogical) {}
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
                 BVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
@@ -106,11 +106,11 @@ namespace UI {
                 case Commands::M_MAPPER_ENGINEER_BUILD:
                     uVar5 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                    if (uVar5 == 0) {
+                    if (!uVar5) {
                         iVar3 = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::countSelectedCatapultsAndTrebuchets,
                             DAT_UnitsState::ptr)();
-                        if (iVar3 == 0) {
+                        if (!iVar3) {
                             DAT_StopHandlingMenuItems::instance = 0;
                         }
                         if (iVar3 == 1) {
@@ -165,7 +165,7 @@ namespace UI {
             case Commands::M_MAPPER_WOODWALL:
                 iVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getWallTilesThatCanBeBuilt,
                     DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 4);
-                if (iVar3 == 0) {
+                if (!iVar3) {
                     MACRO_CALL_MEMBER(Audio::MissingResourceState_Func::playResourceLackSFX,
                         DAT_MissingResourceState::ptr)(1, Audio::SFX::RLSFX_STONE);
                     DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
@@ -241,7 +241,7 @@ namespace UI {
                 iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .tunnelersGuild.id;
             LAB_004445d7:
-                if ((iVar3 != 0)
+                if ((iVar3)
                     && (uVar5 = DAT_BuildingsState::instance.buildings[iVar3].widthOrHeight,
                         (int)DAT_BuildingsState::instance.buildings[iVar3].surfaceAreaUnk != uVar5 * uVar5)) {
                     MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
@@ -360,7 +360,7 @@ namespace UI {
             uVar5 = MACRO_CALL_MEMBER(
                 Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
         joined_r0x00444948:
-            if (uVar5 == 0) {
+            if (!uVar5) {
                 DAT_StopHandlingMenuItems::instance = 0;
             }
             MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);

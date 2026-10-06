@@ -52,10 +52,10 @@ namespace UI {
         int blendStrength;
         int _unitID;
         _unitID = DAT_BuildingsState::instance.menuSelectedUnitID;
-        if (DAT_BuildingsState::instance.menuSelectedUnitID != 0) {
+        if (DAT_BuildingsState::instance.menuSelectedUnitID) {
             numInGroup
                 = (int)(short)DAT_UnitsState::instance.units[DAT_BuildingsState::instance.menuSelectedUnitID].unitType;
-            if (numInGroup == 0) {
+            if (!numInGroup) {
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
             }
@@ -87,7 +87,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar3, _xParam, _yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 bVar1 = DAT_UnitsState::instance.units[_unitID].rng1_to_70;
-                if (bVar1 != 0) {
+                if (bVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((int)((char)bVar1)),
                         DAT_MenuHandlerState::instance.x + 0x91, DAT_MenuHandlerState::instance.y + 0x1e1,

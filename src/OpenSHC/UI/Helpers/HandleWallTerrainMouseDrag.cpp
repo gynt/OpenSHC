@@ -26,15 +26,15 @@ namespace UI {
     {
         int iVar2;
         int iVar3;
-        if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {}
-        if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
+        if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {}
+        if (!DAT_TileMapState::instance.flatViewToggleValue1) {
             MACRO_CALL_MEMBER(
                 Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
         } else {
             MACRO_CALL_MEMBER(
                 Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
         }
-        if (DAT_MouseState::instance.leftClickStart == 0) {
+        if (!DAT_MouseState::instance.leftClickStart) {
             if ((DAT_MouseState::instance.draggingStopped != FALSE)
                 || (DAT_MouseState::instance.leftClickState != FALSE)) {
                 DAT_TileMapState::instance.dragEndX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
@@ -54,7 +54,7 @@ namespace UI {
                 iVar2 = DAT_ViewportRenderState::instance.translationMatrix[DAT_TileMapState::instance.dragStartY]
                             .addXgetTile
                     + DAT_TileMapState::instance.dragStartX;
-                if ((DAT_TileMapState::instance.LogicLayer[iVar2] & 0x100000U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[iVar2] & 0x100000U)) {
                     MACRO_CALL_MEMBER(
                         Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                         DAT_DirectionAlgorithmState::ptr)(DAT_TileMapState::instance.dragStartX,
@@ -86,7 +86,7 @@ namespace UI {
             iVar2 = 0;
         }
         ushort uVar1 = (ushort)iVar2;
-        if (DAT_TileMapState::instance.mapOrientation == 0) {
+        if (!DAT_TileMapState::instance.mapOrientation) {
         LAB_00437dcd:
             uVar1 = (short)GMTotalPicturesProcessed::instance[5] + 0x38c + uVar1 * 8;
         } else {
@@ -102,7 +102,7 @@ namespace UI {
             uVar1 = (short)GMTotalPicturesProcessed::instance[5] + 0x38c + (uVar1 & 7) * 8;
         }
         if (DAT_MouseState::instance.leftClickState != FALSE) {
-            if ((DAT_TileMapState::instance.LogicLayer[iVar3] & 0x100000U) != 0) {
+            if ((DAT_TileMapState::instance.LogicLayer[iVar3] & 0x100000U)) {
                 DAT_TileMapState::instance.ConstructionGFXLayer[iVar3] = uVar1;
             }
             DAT_TileMapState::instance.buildingPlacementFail = FALSE;

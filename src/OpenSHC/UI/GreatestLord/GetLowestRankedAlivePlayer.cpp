@@ -19,7 +19,7 @@ namespace UI {
         do {
             _alive = MACRO_CALL_MEMBER(
                 Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
-            if (_alive != 0) {
+            if (_alive) {
                 _total = _total + 1;
             }
             _playerID = _playerID + 1;

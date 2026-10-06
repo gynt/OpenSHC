@@ -29,13 +29,12 @@ namespace Map {
                 pUVar2 = &DAT_UnitsState::instance.units[1];
                 do {
                     if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE)
-                             && (BVar1
-                                 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
+                             && (BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getPlayerNot1AndHasKeep,
                                      this)((int)pUVar2->owner),
                                  BVar1 != FALSE))
                             && ((pUVar2->unitType == Map::Units::UT_E_ARCHER
                                 || (pUVar2->unitType == Map::Units::UT_A_ARCHER))))
-                        && (pUVar2->dying == 0)) {
+                        && (!pUVar2->dying)) {
                         iVar2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::isBrazierNearby,
                             DAT_EntityState::ptr)((int)pUVar2->x, (int)((int)(pUVar2->y)),
                             (int)((int)(pUVar2->buildingHeight + pUVar2->terrainOrClimbHeight)));

@@ -103,9 +103,9 @@ namespace Map {
             } else {
                 this->attackInfo.field_0x20f44 = 2;
             }
-            this->attackInfo.field_0x20f48 = (this->attackInfo.pikemenSwordsmenAndMore != 0) + 1;
+            this->attackInfo.field_0x20f48 = (this->attackInfo.pikemenSwordsmenAndMore) + 1;
             this->attackInfo.field_0x20f4c = (4 < this->attackInfo.spearmenAndMacemen) + 2;
-            if (this->attackInfo.pikemenSwordsmenAndMore == 0) {
+            if (!this->attackInfo.pikemenSwordsmenAndMore) {
                 this->attackInfo.field_0x20f54 = 0;
             LAB_005193ed:
                 this->attackInfo.field_0x20f58 = 0;
@@ -119,7 +119,7 @@ namespace Map {
             if (this->attackInfo.laddermen < 3) {
                 this->attackInfo.field_0x20f5c = this->attackInfo.laddermen;
             }
-            this->attackInfo.field_0x20f40 = (this->attackInfo.pikemenSwordsmenAndMore != 0);
+            this->attackInfo.field_0x20f40 = (this->attackInfo.pikemenSwordsmenAndMore);
         LAB_00519672:
             this->attackInfo.field_0x20f50 = this->attackInfo.engineers;
             this->attackInfo.field_0x20f3c = 3;

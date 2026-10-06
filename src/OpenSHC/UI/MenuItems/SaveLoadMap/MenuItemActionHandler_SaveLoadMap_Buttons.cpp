@@ -166,7 +166,7 @@ namespace UI {
                         .textContentLengthArray[DAT_UserTextHandlerState::instance.textArrayIndex]
                     == 0)
                     goto LAB_00494849;
-                if (DAT_MenuTextInputState::instance.field49_0xac == 0) {
+                if (!DAT_MenuTextInputState::instance.field49_0xac) {
                     if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
                         pcVar6 = MACRO_CALL_MEMBER(
                             Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();

@@ -82,8 +82,8 @@ namespace Map {
             _algTile2 = 0;
             _algTile = 0;
             bVar4 = false;
-            if (x1 == 0) {
-                if (y1 == 0) {
+            if (!x1) {
+                if (!y1) {
                     return (undefined4)(0);
                 }
             } else {
@@ -105,7 +105,7 @@ namespace Map {
                         + _targetUnitX];
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile + x1;
             _area = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
-            if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x30) == 0) {
+            if (!(DAT_TileMapState::instance.LogicLayer[_tile] & 0x30)) {
                 DAT_PathFindingState::instance.field50_0x98 = 0;
                 this->fcn_mtribe = this->fcn_mtribe + 1;
                 _firstUnitID = MACRO_CALL_MEMBER(
@@ -116,7 +116,7 @@ namespace Map {
                         DAT_PathFindingState::ptr)(this->tribes[tribeID].owner, (dword)((int)(_area)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)));
-                    if (_navArea == 0) {
+                    if (!_navArea) {
                         _one = MACRO_CALL_MEMBER(
                             Map::Units::TribesState_Func::applyMoveCommandOrRallyCommandToTribe, this)(tribeID,
                             (undefined4)((int)(x1)), (undefined4)((int)(y1)), (undefined4)((int)(rallyBool)),
@@ -128,7 +128,7 @@ namespace Map {
                     _area_2 = _navArea;
                 } else {
                     _area_2 = _targetUnitArea;
-                    if (_targetUnitArea == 0) {
+                    if (!_targetUnitArea) {
                         _one2 = MACRO_CALL_MEMBER(
                             Map::Units::TribesState_Func::applyMoveCommandOrRallyCommandToTribe, this)(tribeID,
                             (undefined4)((int)(x1)), (undefined4)((int)(y1)), (undefined4)((int)(rallyBool)),
@@ -143,7 +143,7 @@ namespace Map {
                 if (0 < _area) {
                     _firstUnit
                         = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
-                    if (_firstUnit == 0) {
+                    if (!_firstUnit) {
                         if (_area != y1) {
                             _someUnitCanClimb = MACRO_CALL_MEMBER(
                                 Map::Units::TribesState_Func::tribeContainsUnitThatCanClimb, this)(tribeID);
@@ -151,17 +151,17 @@ namespace Map {
                                                            calculateCanPlayerUnitsNavigateToAreaFromArea,
                                 DAT_PathFindingState::ptr)(this->tribes[tribeID].owner, (dword)((int)(y1)),
                                 (dword)((int)(_area)), (int)((int)(_someUnitCanClimb)));
-                            if (_area3 == 0) {
+                            if (!_area3) {
                                 iVar7 = MACRO_CALL_MEMBER(
                                     Map::Navigation::PathFindingState_Func::someBinaryAlgFunctionPathFinding,
                                     DAT_PathFindingState::ptr)(_targetUnitID);
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     return (undefined4)(0);
                                 }
                                 iVar7 = MACRO_CALL_MEMBER(
                                     Map::Navigation::PathFindingState_Func::findCrossAreaBridgeTileToTarget,
                                     DAT_PathFindingState::ptr)(_targetUnitID, x1, _y);
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     return (undefined4)(0);
                                 }
                                 bVar6 = true;
@@ -171,7 +171,7 @@ namespace Map {
                                 iVar7 = MACRO_CALL_MEMBER(
                                     Map::Navigation::PathFindingState_Func::setClimbBasedOnClosestClimbData,
                                     DAT_PathFindingState::ptr)(_targetUnitID, (int)((int)(y1)), (int)((int)(_area3)));
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     return (undefined4)(0);
                                 }
                             }
@@ -179,7 +179,7 @@ namespace Map {
                     } else {
                         bVar4 = true;
                     }
-                    if (storeAsRallyPoint != 0) {
+                    if (storeAsRallyPoint) {
                         this->tribes[tribeID].isRallyingUnk = (short)rallyBool;
                         this->tribes[tribeID].rallyPointArray[0][0] = DAT_UnitsState::instance.units[_targetUnitID].x;
                         this->tribes[tribeID].rallyPointArray[0][1] = DAT_UnitsState::instance.units[_targetUnitID].y;
@@ -212,13 +212,13 @@ namespace Map {
                     _hasUnitInArea = MACRO_CALL_MEMBER(
                         Map::Units::TribesState_Func::anyUnitsOfTribeAreOutsideCoverageOfPathFindingAlg, this)(
                         tribeID, DAT_PathFindingState::instance.searchGeneration);
-                    if (_hasUnitInArea == 0) {
+                    if (!_hasUnitInArea) {
                         _searchBudget = 500;
                         do {
                             _searchBudget = _searchBudget + 500;
                             if ((0x13a0f < _searchBudget)
                                 || (((_bool1 || (_isDefensiveStructure)) && (7999 < _searchBudget)))) {
-                                if (DAT_PathFindingState::instance.field50_0x98 == 0) {
+                                if (!DAT_PathFindingState::instance.field50_0x98) {
                                     if (bVar4) {
                                         BVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                       pathFindingWithBuildingsIncluded,
@@ -330,7 +330,7 @@ namespace Map {
                                                     findNextTileByModuloAmongPreviousSearchNotOnDefensiveStructure,
                                                 DAT_PathFindingState::ptr)(3, (int)((int)(x1)), (int)((int)(_y)));
                                             this->ALG_ResultTileIndex = this->ALG_ResultTileIndex + 1;
-                                            if (dVar9 != 0)
+                                            if (dVar9)
                                                 goto LAB_0052691a;
                                             bVar5 = true;
                                             this->ALG_ResultTileIndex = 0;
@@ -347,7 +347,7 @@ namespace Map {
                                         Map::Navigation::PathFindingState_Func::pathFindingResultBased,
                                         DAT_PathFindingState::ptr)(1, (int)((int)(x1)), (int)((int)(_y)), rallyBool);
                                     this->ALG_ResultTileIndex = this->ALG_ResultTileIndex + 1;
-                                    if (dVar9 == 0) {
+                                    if (!dVar9) {
                                         bVar5 = true;
                                         this->ALG_ResultTileIndex = 0;
                                         goto LAB_00526908;
@@ -438,7 +438,7 @@ namespace Map {
                                     DAT_PathFindingState::instance.notAllAssassinsUnk = 0;
                                 } else {
                                     DAT_PathFindingState::instance.notAllAssassinsUnk
-                                        = (int)(DAT_EntityState::instance.fireCount == 0);
+                                        = (int)(!DAT_EntityState::instance.fireCount);
                                 }
                                 DAT_UnitsState::instance.units[_unitID_2]._someX_2 = 0;
                                 DAT_UnitsState::instance.units[_unitID_2]._someY_2 = 0;
@@ -462,9 +462,8 @@ namespace Map {
                                     if (BVar8 == FALSE) {
                                         if ((bVar6)
                                             && ((DAT_TileMapState::instance
-                                                        .LogicLayer[DAT_UnitsState::instance.units[_unitID_2].tile]
-                                                    & 0x10000100U)
-                                                != 0)) {
+                                                     .LogicLayer[DAT_UnitsState::instance.units[_unitID_2].tile]
+                                                & 0x10000100U))) {
                                             /*
                                               teleport?
                                              */
@@ -496,7 +495,7 @@ namespace Map {
                                     DAT_UnitsState::instance.units[_unitID_2].unitSpeedMatchingRelatedUnk = 0x10;
                                 }
                                 DAT_PathFindingState::instance.notAllAssassinsUnk = 0;
-                                if (DAT_PathFindingState::instance.field43_0x7c == 0) {
+                                if (!DAT_PathFindingState::instance.field43_0x7c) {
                                     this->field6_0x18 = this->field6_0x18 + 1;
                                 } else {
                                     this->field6_0x18 = this->field6_0x18 + -1;

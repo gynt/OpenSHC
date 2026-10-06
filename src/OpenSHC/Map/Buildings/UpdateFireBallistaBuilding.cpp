@@ -87,7 +87,7 @@ namespace Map {
                 _lordType = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(_owner);
                 _fireballistaUnit = DAT_CurrentBuildingID::instance;
-                if (_lordType == 0) {
+                if (!_lordType) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
@@ -116,7 +116,7 @@ namespace Map {
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[_fireballistaUnit].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[_fireballistaUnit].terrainHeightUnk)),
                 Map::Units::UT_S_FBALLISTA);
-            if (_fireballistaUnit == 0) {
+            if (!_fireballistaUnit) {
                 _pProgress2 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingProgress;
                 *_pProgress2 = *_pProgress2
                     - (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount;
@@ -140,7 +140,7 @@ namespace Map {
                     _pWorkers = _pWorkers + 1;
                     _counter1 = _counter1 + -1;
                     DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
-                } while (_counter1 != 0);
+                } while (_counter1);
             } else {
                 _counter2 = 0;
                 if (0 < _employeeCount) {
@@ -186,7 +186,7 @@ namespace Map {
             } else {
                 _buildingID2 = DAT_GameState::instance.playerDataArray[_owner].keep.id;
                 DAT_UnitsState::instance.units[_fireballistaUnit].facingDirection = 0;
-                if (_buildingID2 == 0) {
+                if (!_buildingID2) {
                     piVar1 = &DAT_GameState::instance.playerDataArray[_owner].counter;
                     *piVar1 = *piVar1 + 2;
                 }
@@ -216,7 +216,7 @@ namespace Map {
                     _pWorkerUID = _pWorkerUID + 1;
                     _employeeCount3 = _employeeCount3 + -1;
                     _buildingID2 = DAT_CurrentBuildingID::instance;
-                } while (_employeeCount3 != 0);
+                } while (_employeeCount3);
             }
             _menuIsBuildingAndStatus
                 = DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU;

@@ -61,14 +61,14 @@ namespace Synchrony {
         UVar1 = DAT_UnitsState::instance.units[_entity].unitType;
         iVar2 = (int)DAT_TileMapState::instance.BuildingLayer[DAT_UnitsState::instance.units[_entity].tile];
         if (UVar1 == OpenSHC::Map::Units::UT_S_MANGONEL) {
-            if (iVar2 != 0) {
+            if (iVar2) {
                 DAT_BuildingsState::instance.buildings[iVar2].containsSiegeMangonel1OrBallista2 = 0;
             }
             iVar2 = -3;
         } else {
             if (UVar1 != OpenSHC::Map::Units::UT_S_BALLISTA)
                 goto LAB_00484c1b;
-            if (iVar2 != 0) {
+            if (iVar2) {
                 DAT_BuildingsState::instance.buildings[iVar2].containsSiegeMangonel1OrBallista2 = 0;
             }
             iVar2 = -4;

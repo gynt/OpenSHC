@@ -41,7 +41,7 @@ namespace UI {
             short sVar1 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentEmployeeCount;
             bool bVar4 = true;
-            if ((sVar1 == 0)
+            if ((!sVar1)
                 && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .currentlyNeededEmployeeCount
                     == 0)) {}
@@ -68,8 +68,8 @@ namespace UI {
                 short sVar3
                     = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                           .currentlyNeededEmployeeCount;
-                if (sVar3 != 0) {
-                    if (sVar1 != 0) {
+                if (sVar3) {
+                    if (sVar1) {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, (int)(sVar3 + 4),
                             (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance), Text::TTA_LEFT,
@@ -94,7 +94,7 @@ namespace UI {
                         }
                         psVar5 = psVar5 + 1;
                         iVar8 = iVar8 + -1;
-                    } while (iVar8 != 0);
+                    } while (iVar8);
                     if (!bVar4) {
                         /*
                           added by script: "Peasant on his way"
@@ -194,7 +194,7 @@ namespace UI {
                     }
                     psVar5 = psVar5 + 1;
                     iVar7 = iVar7 + -1;
-                } while (iVar7 != 0);
+                } while (iVar7);
                 if (uVar6 < 100) {
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         DE::SHCDE::TEXT_IN_MILL, (int)(uVar6 + 3), (int)(DAT_ButtonX::instance + 0x96),

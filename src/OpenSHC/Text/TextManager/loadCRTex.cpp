@@ -54,7 +54,7 @@ namespace Text {
             _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
                 DE::SHCDE::TEXT_LANGUAGE, 0);
             _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)("polish", (char const*)((int)(_langStr)));
-            if (_languageCompareResult == 0) {
+            if (!_languageCompareResult) {
                 this->codePage = WindowsHelper::Enums::CP_WINDOWS_1250;
                 this->alternativeCodePageUsedUnk = TRUE;
                 MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
@@ -65,28 +65,28 @@ namespace Text {
                     DE::SHCDE::TEXT_LANGUAGE, 0);
                 _languageCompareResult
                     = MACRO_CALL(OS_Func::__stricmp)("english", (char const*)((int)(_langStr)));
-                if (_languageCompareResult == 0) {
+                if (!_languageCompareResult) {
                     this->gameLanguage = Text::GL_ENGLISH;
                 } else {
                     _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
                         DE::SHCDE::TEXT_LANGUAGE, 0);
                     _languageCompareResult
                         = MACRO_CALL(OS_Func::__stricmp)("american", (char const*)((int)(_langStr)));
-                    if (_languageCompareResult == 0) {
+                    if (!_languageCompareResult) {
                         this->gameLanguage = Text::GL_AMERICAN;
                     } else {
                         _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                             this)(DE::SHCDE::TEXT_LANGUAGE, 0);
                         _languageCompareResult
                             = MACRO_CALL(OS_Func::__stricmp)("german", (char const*)((int)(_langStr)));
-                        if (_languageCompareResult == 0) {
+                        if (!_languageCompareResult) {
                             this->gameLanguage = Text::GL_GERMAN;
                         } else {
                             _langStr = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                 this)(DE::SHCDE::TEXT_LANGUAGE, 0);
                             _languageCompareResult
                                 = MACRO_CALL(OS_Func::__stricmp)("french", (char const*)((int)(_langStr)));
-                            if (_languageCompareResult == 0) {
+                            if (!_languageCompareResult) {
                                 this->gameLanguage = Text::GL_FRENCH;
                             } else {
                                 _langStr
@@ -94,7 +94,7 @@ namespace Text {
                                         this)(DE::SHCDE::TEXT_LANGUAGE, 0);
                                 _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)(
                                     "italian", (char const*)((int)(_langStr)));
-                                if (_languageCompareResult == 0) {
+                                if (!_languageCompareResult) {
                                     this->gameLanguage = Text::GL_ITALIAN;
                                 } else {
                                     _langStr = MACRO_CALL_MEMBER(
@@ -102,7 +102,7 @@ namespace Text {
                                         DE::SHCDE::TEXT_LANGUAGE, 0);
                                     _languageCompareResult = MACRO_CALL(OS_Func::__stricmp)(
                                         "SPANISH", (char const*)((int)(_langStr)));
-                                    if (_languageCompareResult == 0) {
+                                    if (!_languageCompareResult) {
                                         this->gameLanguage = Text::GL_SPANISH;
                                     }
                                 }

@@ -71,7 +71,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, imageID, drawX, drawY);
-            if (DAT_00b96108::instance != 0) {
+            if (DAT_00b96108::instance) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(
                     0, DAT_MenuHandlerState::instance.x + 0xe, DAT_MenuHandlerState::instance.y + 0x1e9);
@@ -343,7 +343,7 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::BuildingMenus_Func::RenderBuildingMenu_Cathedral)();
             }
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
-            if (((DAT_GameCore::instance.isBinkVideoPlaying == 0)
+            if (((!DAT_GameCore::instance.isBinkVideoPlaying)
                     && (DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying == FALSE))
                 && (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_640x480)) {
                 DAT_MinimapViewState::instance.needsRedraw = 1;

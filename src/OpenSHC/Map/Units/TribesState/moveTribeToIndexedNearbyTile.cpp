@@ -45,7 +45,7 @@ namespace Map {
                     iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribePathToDestinationClear,
                         this)(param_1, uVar7, uVar4, x1, y1);
                     uVar3 = 0;
-                    if (iVar2 != 0) {
+                    if (iVar2) {
                         iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
                             this)(param_1, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                         return iVar2;

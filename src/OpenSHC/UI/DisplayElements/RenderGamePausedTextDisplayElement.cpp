@@ -29,7 +29,7 @@ namespace UI {
         BOOLEnum keepOffsetX;
         int blendStrength;
         blendStrength = 0;
-        if (DAT_GameCore::instance.gamePausedLogical == 0) {
+        if (!DAT_GameCore::instance.gamePausedLogical) {
             MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 UI::Enums::DEID_GAME_PAUSED_TEXT, 0);
         }

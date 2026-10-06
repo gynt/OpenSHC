@@ -15,7 +15,7 @@ namespace Map {
             iVar1 = DAT_TroopValueState::instance.attackInfo.someCounter1;
             psVar2 = &this->tribes[1];
             do {
-                if ((((psVar2->tribeState != 0) && (psVar2->attackWave == attackWave))
+                if ((((psVar2->tribeState) && (psVar2->attackWave == attackWave))
                         && ((int)(short)psVar2->tribeBehaviorType != tribeBehaviorType))
                     && (psVar2->attackInfo_someCounter1 != iVar1)) {
                     psVar2->tribeBehaviorType = (SomeTribeBehaviorTypeShort)tribeBehaviorType;

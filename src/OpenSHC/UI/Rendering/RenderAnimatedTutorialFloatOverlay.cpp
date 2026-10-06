@@ -32,8 +32,8 @@ namespace UI {
         DWORD DVar2;
         uint uVar3;
         int iVar4;
-        if (DAT_00df5540::instance != 0) {}
-        if ((INT_00df5640::instance & 1U) == 0) {
+        if (DAT_00df5540::instance) {}
+        if (!(INT_00df5640::instance & 1U)) {
             INT_00df5640::instance = INT_00df5640::instance | 1;
             INT_00df563c::instance = timeGetTime();
         }

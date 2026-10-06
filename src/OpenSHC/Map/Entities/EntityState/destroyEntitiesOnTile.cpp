@@ -17,7 +17,7 @@ namespace Map {
             EntityTypeShort EVar1;
             Entity* pEVar2;
             int iVar2;
-            if (((DAT_TileMapState::instance.MiscDisplayLayer[tile] & 0x1000) != 0)
+            if (((DAT_TileMapState::instance.MiscDisplayLayer[tile] & 0x1000))
                 && (iVar2 = 1, 1 < this->maxEntityCount)) {
                 pEVar2 = &this->entityArray[1];
                 do {

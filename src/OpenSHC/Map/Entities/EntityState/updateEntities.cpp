@@ -133,8 +133,7 @@ namespace Map {
                         break;
                     case Map::Entities::ET_DUST_CLOUD:
                         if (this->entityArray[DAT_CurrentEntityID::instance].unitID == 2) {
-                            if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated & 1)
-                                != 0) {
+                            if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated & 1)) {
                                 MACRO_CALL_MEMBER(
                                     Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
                                     DAT_CurrentEntityID::instance);
@@ -170,8 +169,8 @@ namespace Map {
                                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset,
                                     this)(DAT_CurrentEntityID::instance);
                             }
-                        } else if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated & 1)
-                            != 0) {
+                        } else if ((this->entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated
+                                       & 1)) {
                             MACRO_CALL_MEMBER(
                                 Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
                                 DAT_CurrentEntityID::instance);

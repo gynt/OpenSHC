@@ -36,7 +36,7 @@ namespace Map {
             DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4;
             iVar3 = iVar3 + -1;
         } else {
-            if (iVar3 != 0)
+            if (iVar3)
                 goto LAB_004a519e;
             iVar4 = (int)(short)DAT_BuildingsState::instance.buildings[iVar1].y;
             iVar3 = (short)DAT_BuildingsState::instance.buildings[iVar1].x + 1;

@@ -54,7 +54,7 @@ namespace Map {
         }
         DAT_BuildingsState::instance.buildings[iVar5].buildingIsVisuallyActive = 1;
         sVar3 = DAT_BuildingsState::instance.buildings[iVar5].state;
-        if (sVar3 == 0) {
+        if (!sVar3) {
             DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
             DAT_BuildingsState::instance.buildings[iVar5].animationFrame = 0;
             DAT_BuildingsState::instance.buildings[iVar5].state = 2;
@@ -181,8 +181,7 @@ namespace Map {
                 piVar1 = DAT_BuildingsState::instance.buildings[iVar5].resources + 7;
                 *piVar1 = *piVar1 + -1;
                 iVar5 = DAT_BuildingsState::instance.buildings[iVar5].engineerUnitID;
-                if (((iVar5 != 0)
-                        && (DAT_UnitsState::instance.units[iVar5].unitType == Map::Units::UT_E_ENGINEER))
+                if (((iVar5) && (DAT_UnitsState::instance.units[iVar5].unitType == Map::Units::UT_E_ENGINEER))
                     && (DAT_UnitsState::instance.units[iVar5].state.generic
                         == (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk))) {
                     DAT_UnitsState::instance.units[iVar5].resourceToDeposit = 1;

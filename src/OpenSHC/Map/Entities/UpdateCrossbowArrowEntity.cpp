@@ -18,7 +18,7 @@ namespace Map {
             + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].field12_0x1c
             + (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
         sVar2 = DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround;
-        if ((sVar2 != 0)
+        if ((sVar2)
             && (sVar2 = sVar2 + -1, DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround = sVar2,
                 sVar2 < 1)) {
             DAT_EntityState::instance.entityArray[uVar1].logicalState = 7;

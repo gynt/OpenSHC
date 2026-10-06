@@ -42,7 +42,7 @@ namespace Rendering {
                 _ptrInBinkControlStruct->unknown02_zero[0] = 0;
                 if (_ptrInBinkControlStruct->binkObjPtrArray[0] != (HBINK)0x0) {
                     _frameNotDone = BinkWait(_ptrInBinkControlStruct->binkObjPtrArray[0]);
-                    if (_frameNotDone == 0) {
+                    if (!_frameNotDone) {
                         BinkDoFrame(_ptrInBinkControlStruct->binkObjPtrArray[0]);
                         _binkObjPtr = _ptrInBinkControlStruct->binkObjPtrArray[0];
                         if ((_binkObjPtr->FrameNum == _binkObjPtr->Frames)

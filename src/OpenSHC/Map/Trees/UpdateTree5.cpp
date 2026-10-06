@@ -36,7 +36,7 @@ namespace Map {
             _frame = DAT_OrganismDefinedData::instance.Tree_1_B[_rng2];
         }
         DAT_LandscapeState::instance.trees[_tree].animationFrameUnk = (int)(char)_frame;
-        if (DAT_LandscapeState::instance.field0_0x0 != 0) {
+        if (DAT_LandscapeState::instance.field0_0x0) {
             DAT_LandscapeState::instance.trees[_tree].animationFrameUnk = 0;
         }
     }

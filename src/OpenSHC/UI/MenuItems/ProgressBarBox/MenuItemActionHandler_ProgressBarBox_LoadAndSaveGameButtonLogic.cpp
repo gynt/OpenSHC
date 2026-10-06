@@ -81,7 +81,7 @@ namespace UI {
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameSynchronyState::instance.saveRelated != 0))
+                && (DAT_GameSynchronyState::instance.saveRelated))
                 goto LAB_004957df;
             if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x1f) {
                 /*
@@ -258,7 +258,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[6] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[7] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] = -1;
-                        if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 0) {
+                        if (!DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                             DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         }
                         DAT_GameSynchronyState::instance
@@ -292,7 +292,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[6] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[7] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] = -1;
-                        if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 0) {
+                        if (!DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                             DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         }
                         DAT_GameSynchronyState::instance
@@ -319,7 +319,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     2);
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
-                if (DAT_MenuTextInputState::instance.field49_0xac == 0) {
+                if (!DAT_MenuTextInputState::instance.field49_0xac) {
                     if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES)
                         || (DAT_GameCore::instance.currentMenuViewType
                             == OpenSHC::UI::Enums::MVT_UNUSED_CREATE_SIEGE)) {

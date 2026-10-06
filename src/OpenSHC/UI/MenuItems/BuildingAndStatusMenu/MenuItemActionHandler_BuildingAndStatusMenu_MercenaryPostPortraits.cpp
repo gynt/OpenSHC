@@ -47,7 +47,7 @@ namespace UI {
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .mercenaryPost.id)),
                     (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
-                if (iVar3 != 0) {
+                if (iVar3) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
@@ -98,7 +98,7 @@ namespace UI {
             } else {
                 int iVar4 = DAT_TroopDefinedData::instance.field279_0x210[param_1];
                 if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
+                    && (!DAT_GameSynchronyState::instance.skirmishTroopsCostGold)) {
                     iVar4 = 0;
                 }
                 if (iVar3 == 3) {

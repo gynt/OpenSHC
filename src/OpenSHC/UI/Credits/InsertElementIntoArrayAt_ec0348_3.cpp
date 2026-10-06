@@ -14,7 +14,7 @@ namespace UI {
         if (param_1 == 3) {
             iVar1 = 0;
             pCVar2 = DAT_ARRAY_00ec0348::instance;
-            while (pCVar2->isValid != 0) {
+            while (pCVar2->isValid) {
                 pCVar2 = pCVar2 + 1;
                 iVar1 = iVar1 + 1;
                 if (0xec0827 < (int)pCVar2) {

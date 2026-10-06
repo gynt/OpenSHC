@@ -86,7 +86,7 @@ namespace UI {
                                 _drawingPosition = _drawingPosition + 1;
                                 iVar1 = iVar1 + -1;
                                 imageSource = (ushort*)_tgxHeader;
-                            } while (iVar1 != 0);
+                            } while (iVar1);
                         }
                         if (_tgxToken2 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                             break;
@@ -96,7 +96,7 @@ namespace UI {
                             *_drawingPosition = fillColorUnk;
                             _drawingPosition = _drawingPosition + 1;
                             iVar1 = iVar1 + -1;
-                        } while (iVar1 != 0);
+                        } while (iVar1);
                     }
                     _drawingPosition = (ushort*)((int)_drawingPosition + width);
                     height = height + -1;

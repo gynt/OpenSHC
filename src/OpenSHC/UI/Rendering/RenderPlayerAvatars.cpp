@@ -22,7 +22,7 @@ namespace UI {
         }
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             DE::SHCDE::GM_INTERFACE_ICONS2, imageID + 0x222, x, y);
-        if (iVar1 == 0) {
+        if (!iVar1) {
             if (DAT_GameCore::instance.lordIcons[imageID] == 0) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x21b, x, y);

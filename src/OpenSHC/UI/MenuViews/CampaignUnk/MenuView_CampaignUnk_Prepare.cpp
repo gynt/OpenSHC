@@ -33,7 +33,7 @@ namespace UI {
             int* piVar5;
             int iVar6;
             MACRO_CALL(UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
-            if (INT_00ed3110::instance == 0) {
+            if (!INT_00ed3110::instance) {
                 MACRO_CALL(UI::Helpers_Func::ParseCampaignMapHotspotBitmap)();
             }
             iVar3 = 0;
@@ -117,7 +117,7 @@ namespace UI {
                 INT_00ed27b0::instance = iVar3;
             }
             INT_00ed2778::instance = 0;
-            if (INT_00ed27b0::instance == 0) {
+            if (!INT_00ed27b0::instance) {
                 INT_00eb9b4c::instance = 100;
                 INT_00eb9b44::instance = timeGetTime();
             }

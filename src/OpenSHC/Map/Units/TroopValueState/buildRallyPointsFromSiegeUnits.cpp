@@ -28,7 +28,7 @@ namespace Map {
             DAT_TribesState::instance.tribes[tribeID].rallyPointCount = 0;
             psVar3 = &DAT_TribesState::instance.tribes[1];
             do {
-                if (psVar3->tribeState != 0) {
+                if (psVar3->tribeState) {
                     BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
                         DAT_GameState::ptr)(psVar3->owner);
                     if (BVar3 != FALSE) {

@@ -114,7 +114,7 @@ namespace UI {
                                  .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                  .data
                 + param_1 * 4 + 4);
-            if (number != 0) {
+            if (number) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color = 0xc2f0eb;
                 } else {

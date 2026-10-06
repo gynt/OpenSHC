@@ -123,7 +123,7 @@ namespace UI {
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = ((_length & 0xffff0000) | (uint)(ushort)iVar2) + -1;
                                     imageSource = (ushort*)pTVar3;
-                                    if (iVar2 == 0)
+                                    if (!iVar2)
                                         goto LAB_0044f97b;
                                 }
                                 *_drawPointer = fillColorUnk;
@@ -131,7 +131,7 @@ namespace UI {
                                 _drawPointer = _drawPointer + 1;
                                 iVar2 = iVar2 + -1;
                                 imageSource = (ushort*)pTVar3;
-                            } while (iVar2 != 0);
+                            } while (iVar2);
                             goto LAB_0044f97b;
                         }
                         if (_tgxToken2 == OpenSHC::IO::Graphics::TT_REPEATING_PIXELS) {
@@ -145,7 +145,7 @@ namespace UI {
                                     *_drawPointer = fillColorUnk;
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = iVar2 + -1;
-                                } while (iVar2 != 0);
+                                } while (iVar2);
                             } else {
                                 do {
                                     _length = (((iVar2 >> 0x10) << 0x10) | (uint)(ushort)*_drawPointer) & 0xffff001f;
@@ -168,7 +168,7 @@ namespace UI {
                                             & 0x1f);
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = ((_length & 0xffff0000) | (uint)(ushort)iVar2) + -1;
-                                } while (iVar2 != 0);
+                                } while (iVar2);
                             }
                             goto LAB_0044f97b;
                         }

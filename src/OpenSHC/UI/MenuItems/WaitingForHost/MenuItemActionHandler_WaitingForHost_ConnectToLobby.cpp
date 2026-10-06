@@ -40,9 +40,9 @@ namespace UI {
             DPSESSIONDESC2 _enumDesc;
             uVar2 = MSVC_SecurityCookie::instance ^ (uint)&_enumDesc;
             DAT_GameSynchronyState::instance.scrollBarItemOffset = 0;
-            if ((DAT_GameSynchronyState::instance.multiplayerJoinStep == 0)
-                && (_status = MACRO_CALL_MEMBER(
-                        Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
+            if ((!DAT_GameSynchronyState::instance.multiplayerJoinStep)
+                && (_status
+                    = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
                         DAT_GameSynchronyState::ptr)(FALSE),
                     ~DP_OK < _status)) {
                 DAT_GameSynchronyState::instance.multiplayerJoinStep = 1;
@@ -61,7 +61,7 @@ namespace UI {
                      */
                     iVar3 = MACRO_CALL(OS_Func::__wcsicmp)(L"Crusader",
                         (wchar_t*)((int)(DAT_GameSynchronyState::instance.DPLAY_SessionNames[_sessionID])));
-                    if (iVar3 == 0) {
+                    if (!iVar3) {
                         pGVar1 = DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[_sessionID];
                         DPLAY_CurrentSessionGUID::instance.Data1 = pGVar1->Data1;
                         DPLAY_CurrentSessionGUID::instance.Data2 = pGVar1->Data2;

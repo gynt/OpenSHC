@@ -41,7 +41,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.DAT_GameCommandParam0, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_GameCommandParam0) {
                 DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                 MACRO_CALL(
                     OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(

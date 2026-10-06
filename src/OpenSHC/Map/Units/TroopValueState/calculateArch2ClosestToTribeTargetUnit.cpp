@@ -31,7 +31,7 @@ namespace Map {
                 piVar2 = &DAT_TroopValueState::instance.attackInfo.arch2ValuesArray[0];
                 do {
                     if ((DAT_BuildingsState::instance.buildings[piVar2->buildingID].unknownCounterTo10000_0x2b4 < 9999)
-                        && (piVar2->unitID == 0)) {
+                        && (!piVar2->unitID)) {
                         fromYPosition
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[piVar2->tile2];
                         fromXPosition = piVar2->tile2

@@ -36,7 +36,7 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar2 = DAT_CurrentBuildingID::instance;
         iVar3 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[0];
-        if ((iVar3 == 0) || (DAT_UnitsState::instance.units[iVar3].state.generic != ((UnitState)2))) {
+        if ((!iVar3) || (DAT_UnitsState::instance.units[iVar3].state.generic != ((UnitState)2))) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive = 0;
             DAT_BuildingsState::instance.buildings[iVar2].renderAnimation = 0;
             DAT_BuildingsState::instance.buildings[iVar2].animationIndex = 0;

@@ -66,7 +66,7 @@ namespace Map {
             this->seagullArray[_id].numberBetween60And100
                 = (short)(*(char*)((char*)&SEC_RNG::instance.currentNumber2 + 1)) % 0x28 + 0x3c;
             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-            if ((SEC_RNG::instance.currentNumber2 & 1U) == 0) {
+            if (!(SEC_RNG::instance.currentNumber2 & 1U)) {
                 this->seagullArray[_id].someAngle = -1;
             } else {
                 this->seagullArray[_id].someAngle = 1;
@@ -74,7 +74,7 @@ namespace Map {
             sVar2 = this->seagullArray[_id].angle;
             fVar6 = ((double)(sVar2 + -0xb4) * (double)3.1415926535) / (double)180.0;
             sVar2 = this->seagullArray[_id].someAngle * 0x14 + sVar2;
-            this->seagullArray[_id].field15_0x20 = (-(ushort)((SEC_RNG::instance.currentNumber2 & 2U) != 0) & 2) - 1;
+            this->seagullArray[_id].field15_0x20 = (-(ushort)((SEC_RNG::instance.currentNumber2 & 2U)) & 2) - 1;
             this->seagullArray[_id].angle = sVar2;
             if (0x167 < sVar2) {
                 this->seagullArray[_id].angle = sVar2 + 0x168;

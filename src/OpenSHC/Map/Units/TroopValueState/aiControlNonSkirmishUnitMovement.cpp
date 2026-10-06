@@ -39,7 +39,7 @@ namespace Map {
                 }
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(0);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();
-                if (DAT_TroopValueState::instance.attackInfo.aiTroops == 0) {
+                if (!DAT_TroopValueState::instance.attackInfo.aiTroops) {
                     DAT_TroopValueState::instance.attackInfo.field86981_0x20f84 = 0;
                 }
                 iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -47,7 +47,7 @@ namespace Map {
                 piVar1 = &DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .aiControlStatusRelated;
                 if (iVar2 != -1000) {
-                    if (iVar2 == 0) {
+                    if (!iVar2) {
                         iVar2 = 0;
                         do {
                             if ((DAT_TroopValueState::instance.attackInfo.nof_tribes[iVar2] != 0)
@@ -81,13 +81,13 @@ namespace Map {
                         _nTribes = DAT_TroopValueState::instance.attackInfo.nof_tribes[_index];
                         DAT_GameState::instance.playerDataArray[DAT_TroopValueState::instance.attackInfo.attacker]
                             .attackedPlayerID = 1;
-                        if (_nTribes == 0) {
+                        if (!_nTribes) {
                             DAT_TroopValueState::instance.attackInfo.value3Array01[_index] = 0;
                         } else {
                             iVar2 = DAT_TroopValueState::instance.attackInfo.someIntArray2[_index + -1] + 1;
                             DAT_TroopValueState::instance.attackInfo.index = _index;
                             DAT_TroopValueState::instance.attackInfo.someIntArray2[_index + -1] = iVar2;
-                            if (((DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated != 0) && (10 < iVar2))
+                            if (((DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated) && (10 < iVar2))
                                 && (DAT_TroopValueState::instance.attackInfo.value3Array01[_index] != 6)) {
                                 DAT_TroopValueState::instance.attackInfo.attackWaveTicker[_index] = 0;
                                 DAT_TroopValueState::instance.attackInfo.value3Array01[_index] = 6;
@@ -95,7 +95,7 @@ namespace Map {
                                     DAT_SoundSystemState::ptr)();
                             }
                             iVar2 = DAT_TroopValueState::instance.attackInfo.value3Array01[_index];
-                            if (iVar2 == 0) {
+                            if (!iVar2) {
                                 MACRO_CALL_MEMBER(
                                     Map::Units::TroopValueState_Func::initializeOrAdvanceAttackWave, this)(
                                     _index);

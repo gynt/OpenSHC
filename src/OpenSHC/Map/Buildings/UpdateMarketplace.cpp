@@ -58,7 +58,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 1;
             }
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
-            if ((sVar3 == 0) || (0x1f < sVar3))
+            if ((!sVar3) || (0x1f < sVar3))
                 goto LAB_00415d57;
         }
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 1;

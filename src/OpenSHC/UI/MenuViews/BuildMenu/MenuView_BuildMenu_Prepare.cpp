@@ -49,7 +49,7 @@ namespace UI {
                     UI::Enums::DEID_TIME_UNTIL_DEFEAT, 1);
             }
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
-                if (DAT_GameCore::instance.mapU4Int0 != 0) {
+                if (DAT_GameCore::instance.mapU4Int0) {
                     MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                         UI::Enums::DEID_UNKNOWN_25, 1);
                 }
@@ -57,9 +57,8 @@ namespace UI {
                     MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                         UI::Enums::DEID_PLAYER_INFO_ON_HOVER, 1);
                     if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                            && (DAT_GameSynchronyState::instance.currentGameMode
-                                != Game::GM_SKIRMISH_SINGLE_PLAYER))
-                        && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {
+                            && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
+                        && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
                         MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                             UI::Enums::DEID_NO_RUSH, 1);
                     }

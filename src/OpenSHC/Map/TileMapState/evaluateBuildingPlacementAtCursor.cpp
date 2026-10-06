@@ -42,22 +42,22 @@ namespace Map {
             this->buildingPlacementFail = TRUE;
         }
         this->buildingPlacementFail = FALSE;
-        if (DAT_ViewportRenderState::instance.viewportState.field15_0x3c != 0) {
+        if (DAT_ViewportRenderState::instance.viewportState.field15_0x3c) {
             local_4 = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
             this->field153_0x5549a0 = DAT_ViewportRenderState::instance.viewportState.field24_0x60;
         }
-        if (this->flatViewToggleValue1 == 0) {
+        if (!this->flatViewToggleValue1) {
             x = DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID;
             iVar4 = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
         LAB_00504ae2:
-            if (x != 0)
+            if (x)
                 goto LAB_00504ae6;
         } else {
             x = (uint)this->BuildingLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile];
             iVar4 = 0;
-            if ((this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 0x100U) == 0)
+            if (!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 0x100U))
                 goto LAB_00504ae2;
-            if (((this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 2U) == 0) || (x == 0)) {
+            if ((!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 2U)) || (!x)) {
                 DAT_ViewportRenderState::instance.viewportState.field21_0x54
                     = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                 iVar4 = DAT_ViewportRenderState::instance.viewportState.mouseTile;
@@ -78,13 +78,13 @@ namespace Map {
             this->field194_0x554a20 = 1;
             this->buildingPlacementFail = TRUE;
             this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
-            if (x != 0) {
+            if (x) {
                 if (DAT_BuildingsState::instance.buildings[x].owner == playerID) {
                     this->buildingPlacementFail = TRUE;
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                     this->field194_0x554a20 = 1;
                 }
-                if (playerID != 0) {
+                if (playerID) {
                     this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
                 }
                 this->buildingPlacementFail = TRUE;
@@ -92,7 +92,7 @@ namespace Map {
                 this->field194_0x554a20 = 1;
             }
             if (0 < iVar4) {
-                if ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                if (!(this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)) {
                     this->buildingPlacementFail = TRUE;
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                     this->field194_0x554a20 = 1;
@@ -104,36 +104,36 @@ namespace Map {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                 this->field194_0x554a20 = 1;
             }
-            if ((0 < local_4) && ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) != 0)) {
+            if ((0 < local_4) && ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT))) {
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
-                if (iVar4 == 0) {}
+                if (!iVar4) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
                     == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {}
             }
             this->buildingPlacementFailReason = Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
         }
-        if (DAT_ViewportRenderState::instance.viewportState.somePitchDitchID != 0) {
+        if (DAT_ViewportRenderState::instance.viewportState.somePitchDitchID) {
             if (this->pitchDitches[DAT_ViewportRenderState::instance.viewportState.somePitchDitchID].owner
                 != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 this->buildingPlacementFail = TRUE;
             }
             this->field131_0x554954 = -DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
         }
-        if (((int)x < 1) || ((DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID != 0)))) {
+        if (((int)x < 1) || ((DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID)))) {
             this->buildingPlacementFail = TRUE;
         }
         if (iVar4 < 1) {
         LAB_00504d0f:
-            if (((local_4 < 1) || ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) == 0)) || (x != 0)) {
-                if ((this->placementOnWall != 0) || (this->placementOnMoat != 0))
+            if (((local_4 < 1) || (!(this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT))) || (x)) {
+                if ((this->placementOnWall) || (this->placementOnMoat))
                     goto LAB_00504da2;
-            } else if (this->placementOnWall == 0) {
+            } else if (!this->placementOnWall) {
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
-                if (iVar4 == 0) {}
+                if (!iVar4) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
                     != DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {}
                 this->placementOnMoat = 1;
-                this->buildingPlacementFail = (BOOLEnum)((this->MiscDisplayLayer[local_4] & 0x400) != 0);
+                this->buildingPlacementFail = (BOOLEnum)((this->MiscDisplayLayer[local_4] & 0x400));
                 iVar4 = local_4;
             } else {
             LAB_00504da2:
@@ -141,22 +141,22 @@ namespace Map {
             }
         } else {
             uVar3 = this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
-            if ((uVar3 != 0) && ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk) != 0)) {
+            if ((uVar3) && ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk))) {
                 this->buildingPlacementFail = TRUE;
             }
-            if (((uVar3 == 0) || (this->BuildingLayer[iVar4] != 0)) || (this->placementOnMoat != 0))
+            if (((!uVar3) || (this->BuildingLayer[iVar4] != 0)) || (this->placementOnMoat))
                 goto LAB_00504d0f;
             if ((this->WallOwnerLayer[iVar4] & 7) + 1 != playerID) {}
             this->buildingPlacementFail = FALSE;
             this->placementOnWall = 1;
-            if ((this->MiscDisplayLayer[iVar4] & 0x400) != 0) {
+            if ((this->MiscDisplayLayer[iVar4] & 0x400)) {
                 this->buildingPlacementFail = TRUE;
             }
         }
         if ((0 < iVar4) && (this->UnitLayer[iVar4] != 0)) {
             this->buildingPlacementFail = TRUE;
         }
-        if (x == 0)
+        if (!x)
             goto LAB_00504e15;
         if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
@@ -183,19 +183,17 @@ namespace Map {
             this->field131_0x554954 = x;
         }
     LAB_00504e15:
-        if ((((((((this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted] & Map::LogicHelpers::L_BUILDING
-                      | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                     == 0)
+        if (((((((!(this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted]
+                         & Map::LogicHelpers::L_BUILDING
+                     | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
                     && (BVar1 = DAT_BuildingsState::instance.buildings[x].buildingType,
                         BVar1 != Map::Buildings::BT_GATEHOUSELARGE))
                    && (BVar1 != Map::Buildings::BT_GATEHOUSESMALL))
-                  && ((BVar1 != Map::Buildings::BT_WOODGATE1
-                      && (BVar1 != Map::Buildings::BT_WOODGATE2))))
+                  && ((BVar1 != Map::Buildings::BT_WOODGATE1 && (BVar1 != Map::Buildings::BT_WOODGATE2))))
                  && ((BVar1 != Map::Buildings::BT_KEEPDOOR
-                     && ((BVar1 != Map::Buildings::BT_DRAWBRIDGE
-                         && (BVar1 != Map::Buildings::BT_KILLINGPIT))))))
-                && (this->placementOnWall == 0))
-            && (this->placementOnMoat == 0)) {
+                     && ((BVar1 != Map::Buildings::BT_DRAWBRIDGE && (BVar1 != Map::Buildings::BT_KILLINGPIT))))))
+                && (!this->placementOnWall))
+            && (!this->placementOnMoat)) {
             this->buildingPlacementFail = TRUE;
         }
         this->field131_0x554954 = x;

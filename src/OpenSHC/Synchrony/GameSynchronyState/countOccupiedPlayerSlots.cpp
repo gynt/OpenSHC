@@ -28,7 +28,7 @@ namespace Synchrony {
             }
             _aiPtr = _aiPtr + 4;
             iVar1 = iVar1 + -1;
-        } while (iVar1 != 0);
+        } while (iVar1);
         return _sum;
     }
 

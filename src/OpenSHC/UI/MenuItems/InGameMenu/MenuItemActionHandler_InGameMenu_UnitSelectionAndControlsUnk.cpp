@@ -118,16 +118,16 @@ namespace UI {
             bVar18 = false;
             bVar15 = false;
             bVar6 = false;
-            if (DAT_GameCore::instance.gamePausedLogical != 0) {}
+            if (DAT_GameCore::instance.gamePausedLogical) {}
             BVar8 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
             if (BVar8 != FALSE) {}
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {
-                if (DAT_MouseState::instance.selectionBoxMode == 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus) {
+                if (!DAT_MouseState::instance.selectionBoxMode) {}
                 MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                 MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
             }
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.saveRelated) {}
             DAT_MouseState::instance.field68_0x1dc = -1;
             DAT_MouseState::instance.savedSelectionBoxState = DAT_MouseState::instance.selectionBoxState;
             DAT_TileMapState::instance.DAT_SelectionIconType = 0;
@@ -144,11 +144,10 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::drawFlagsAndUnitDestinations,
                     DAT_TribesState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID);
             }
-            if ((((DAT_TileMapState::instance.shiftRelated0or3 == 0)
-                     || (DAT_TileMapState::instance.shiftRelated0or3 == 3))
+            if ((((!DAT_TileMapState::instance.shiftRelated0or3) || (DAT_TileMapState::instance.shiftRelated0or3 == 3))
                     || (DAT_TileMapState::instance.shiftRelated0or3 == 2))
                 && ((DAT_MouseState::instance.draggingStopped != FALSE
-                    && (DAT_MouseState::instance.selectionBoxMode != 0)))) {
+                    && (DAT_MouseState::instance.selectionBoxMode)))) {
                 DAT_TribesState::instance.rallyCount = 1;
                 if (DAT_TileMapState::instance.shiftRelated0or3 == 3) {
                     MACRO_CALL_MEMBER(
@@ -189,8 +188,8 @@ namespace UI {
                     if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                         _shooterID = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::createUnitSelection, DAT_UnitsState::ptr)();
-                        if (_shooterID == 0) {}
-                        if ((DAT_UnitsState::instance.field49_0x608 == 0)
+                        if (!_shooterID) {}
+                        if ((!DAT_UnitsState::instance.field49_0x608)
                             && (DAT_UnitsState::instance.totalUnitsInSelection == 1)) {
                             DAT_UnitsState::instance.field49_0x608
                                 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsCombatUnit,
@@ -200,7 +199,7 @@ namespace UI {
                         _otherUnitIDUnk = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                             DAT_UnitsState::ptr)();
-                        if (_otherUnitIDUnk == 0) {
+                        if (!_otherUnitIDUnk) {
                             if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                                     != UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                                 && (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
@@ -275,7 +274,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                 DAT_TileMapState::instance.shiftRelated0or3 = 0;
             }
-            if ((DAT_BuildingsState::instance.siegeEngineCreationRelated01 != 0)
+            if ((DAT_BuildingsState::instance.siegeEngineCreationRelated01)
                 && (DAT_BuildingsState::instance.siegeEngineCreationRelated01
                     = DAT_BuildingsState::instance.siegeEngineCreationRelated01 + -1,
                     DAT_BuildingsState::instance.siegeEngineCreationRelated01 == 0)) {
@@ -290,20 +289,20 @@ namespace UI {
                 DAT_UnitsState::instance.hasEngineerSelected = FALSE;
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::createUnitSelection, DAT_UnitsState::ptr)();
             }
-            if ((DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0)
-                && (DAT_MinimapViewState::instance.field15_0x3c == 0)) {}
+            if ((!DAT_ViewportRenderState::instance.viewportState.field0_0x0)
+                && (!DAT_MinimapViewState::instance.field15_0x3c)) {}
             if (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_NULL) {}
-            if (DAT_MouseState::instance.rightClickStart != 0) {
+            if (DAT_MouseState::instance.rightClickStart) {
                 if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                         == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                     || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                         == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
-                    if (DAT_MinimapViewState::instance.field15_0x3c != 0) {}
+                    if (DAT_MinimapViewState::instance.field15_0x3c) {}
                     DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab
                         = DAT_GameCore::instance.tabTypeSiegeSubset;
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_BUILD_MENU, 0);
-                } else if ((DAT_MinimapViewState::instance.field15_0x3c != 0)
+                } else if ((DAT_MinimapViewState::instance.field15_0x3c)
                     && (DAT_TileMapState::instance.shiftRelated0or3 == 1)) {
                 }
                 DAT_UnitsState::instance.lastSelectedUnitID = 0;
@@ -315,13 +314,12 @@ namespace UI {
                     Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                 DAT_TileMapState::instance.shiftRelated0or3 = 0;
             }
-            if (DAT_MinimapViewState::instance.field15_0x3c == 0) {
+            if (!DAT_MinimapViewState::instance.field15_0x3c) {
                 MACRO_CALL_MEMBER(
                     Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
             }
             if (DAT_TileMapState::instance.shiftRelated0or3 == 5) {
-                if ((DAT_MouseState::instance.leftClickStart == 0)
-                    && (DAT_MouseState::instance.leftClickState == FALSE)) {
+                if ((!DAT_MouseState::instance.leftClickStart) && (DAT_MouseState::instance.leftClickState == FALSE)) {
                     DAT_TileMapState::instance.shiftRelated0or3 = 4;
                 }
                 goto LAB_0043782c;
@@ -338,9 +336,8 @@ namespace UI {
                 bVar17 = false;
                 if ((DAT_TileMapState::instance.field178_0x5549ec == 6)
                     && ((DAT_TileMapState::instance
-                                .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
-                            & 0x100U)
-                        != 0)) {
+                             .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
+                        & 0x100U))) {
                 LAB_00434f28:
                     bVar18 = true;
                 } else {
@@ -372,7 +369,7 @@ namespace UI {
                         }
                         bVar16 = bVar18 == _yDifference + iVar14 < 0;
                         bVar18 = !bVar15 && bVar16;
-                        if (DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 == 0) {
+                        if (!DAT_GameState::instance.mapAndTime.skirmishExtremeMode2) {
                         LAB_00434fbe:
                             if (bVar18)
                                 break;
@@ -380,7 +377,7 @@ namespace UI {
                             _yDifference = DAT_GameState::instance
                                                .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                .lordID;
-                            if ((_yDifference == 0)
+                            if ((!_yDifference)
                                 || (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                         .lordUID
@@ -411,11 +408,12 @@ namespace UI {
                                 && (_yDifference = _shooterID - DAT_GameState::instance.playerDataArray[_playerID].keep.yEntry,
                                     iVar14 = _specificRange - DAT_GameState::instance.playerDataArray[_playerID].keep.xEntry,
                                     iVar14 * iVar14 + _yDifference * _yDifference < 0x271)) {
-                                if (DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 == 0)
+                                if (!DAT_GameState::instance.mapAndTime.skirmishExtremeMode2)
                                     goto LAB_00434f28;
                                 _yDifference = DAT_GameState::instance.playerDataArray[_playerID].lordID;
-                                if ((_yDifference != 0)
-                                    && (DAT_GameState::instance.playerDataArray[_playerID].lordUID == DAT_UnitsState::instance.units[_yDifference].uid)) {
+                                if ((_yDifference)
+                                    && (DAT_GameState::instance.playerDataArray[_playerID].lordUID
+                                        == DAT_UnitsState::instance.units[_yDifference].uid)) {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
                                     _yDifference = _shooterID - DAT_UnitsState::instance.units[_yDifference].y;
                                     _yDifference = _yDifference * _yDifference + iVar14 * iVar14;
@@ -443,10 +441,10 @@ namespace UI {
                                         (_specificRange - DAT_GameState::instance.playerDataArray[_playerID + 1].keep.xEntry) * (_specificRange - DAT_GameState::instance.playerDataArray[_playerID + 1].keep.xEntry)
                                                 + _yDifference * _yDifference
                                             < 0x271)))) {
-                                if (DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 == 0)
+                                if (!DAT_GameState::instance.mapAndTime.skirmishExtremeMode2)
                                     goto LAB_00434f28;
                                 _yDifference = DAT_GameState::instance.playerDataArray[_playerID + 1].lordID;
-                                if ((_yDifference != 0)
+                                if ((_yDifference)
                                     && (DAT_GameState::instance.playerDataArray[_playerID + 1].lordUID
                                         == DAT_UnitsState::instance.units[_yDifference].uid)) {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
@@ -476,10 +474,10 @@ namespace UI {
                                     _yDifference * _yDifference
                                             + (_shooterID - DAT_GameState::instance.playerDataArray[_playerID + 2].keep.yEntry) * (_shooterID - DAT_GameState::instance.playerDataArray[_playerID + 2].keep.yEntry)
                                         < 0x271)) {
-                                if (DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 == 0)
+                                if (!DAT_GameState::instance.mapAndTime.skirmishExtremeMode2)
                                     goto LAB_00434f28;
                                 _yDifference = DAT_GameState::instance.playerDataArray[_playerID + 2].lordID;
-                                if ((_yDifference != 0)
+                                if ((_yDifference)
                                     && (DAT_GameState::instance.playerDataArray[_playerID + 2].lordUID
                                         == DAT_UnitsState::instance.units[_yDifference].uid)) {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
@@ -508,10 +506,10 @@ namespace UI {
                                     && (_yDifference = _shooterID - DAT_GameState::instance.playerDataArray[_playerID + 3].keep.yEntry,
                                         iVar14 = _specificRange - DAT_GameState::instance.playerDataArray[_playerID + 3].keep.xEntry,
                                         iVar14 * iVar14 + _yDifference * _yDifference < 0x271)))) {
-                                if (DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 == 0)
+                                if (!DAT_GameState::instance.mapAndTime.skirmishExtremeMode2)
                                     goto LAB_00434f28;
                                 _yDifference = DAT_GameState::instance.playerDataArray[_playerID + 3].lordID;
-                                if ((_yDifference != 0)
+                                if ((_yDifference)
                                     && (DAT_GameState::instance.playerDataArray[_playerID + 3].lordUID
                                         == DAT_UnitsState::instance.units[_yDifference].uid)) {
                                     iVar14 = _specificRange - DAT_UnitsState::instance.units[_yDifference].x;
@@ -543,7 +541,6 @@ namespace UI {
                     || ((((DAT_TileMapState::instance
                                   .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
                               & 0x40501481U)
-                                 != 0
                              || (DAT_TileMapState::instance.PathConnectionLayer[DAT_ViewportRenderState::instance
                                          .viewportState.mouseAtomRefFloorTile]
                                  == 0))
@@ -552,7 +549,7 @@ namespace UI {
                     DAT_TileMapState::instance.field164_0x5549cc = 0x10;
                     DAT_TileMapState::instance.field163_0x5549c8 = 0xac;
                     local_20 = 4;
-                } else if (DAT_MouseState::instance.leftClickStart == 0) {
+                } else if (!DAT_MouseState::instance.leftClickStart) {
                     switch (DAT_TileMapState::instance.field178_0x5549ec) {
                     case 2:
                     case 4:
@@ -585,10 +582,9 @@ namespace UI {
                 }
                 goto LAB_0043782c;
             }
-            if (((DAT_TileMapState::instance.shiftRelated0or3 == 0)
-                    || (DAT_TileMapState::instance.shiftRelated0or3 == 3))
+            if (((!DAT_TileMapState::instance.shiftRelated0or3) || (DAT_TileMapState::instance.shiftRelated0or3 == 3))
                 || (DAT_TileMapState::instance.shiftRelated0or3 == 2)) {
-                if (DAT_MouseState::instance.leftClickStart != 0) {
+                if (DAT_MouseState::instance.leftClickStart) {
                     BOOLEnum_00b98414::instance = FALSE;
                     DAT_UnitsState::instance.field49_0x608 = 0xffffffff;
                     MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
@@ -622,16 +618,14 @@ namespace UI {
                         MACRO_CALL_MEMBER(Input::MouseState_Func::setupHitBox, DAT_MouseState::ptr)(4, 4);
                         _otherUnitIDUnk = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(4);
-                        if ((_otherUnitIDUnk != 0)
-                            && (DAT_UnitsState::instance.units[_otherUnitIDUnk].isSelected == 0)) {
+                        if ((_otherUnitIDUnk) && (DAT_UnitsState::instance.units[_otherUnitIDUnk].isSelected == 0)) {
                             local_20 = 0;
                         }
                     }
                     goto LAB_0043782c;
                 }
-                if (((DAT_MouseState::instance.selectionBoxMode == 0)
-                        || (MACRO_CALL_MEMBER(
-                                Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
+                if (((!DAT_MouseState::instance.selectionBoxMode)
+                        || (MACRO_CALL_MEMBER(Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
                             DAT_MouseState::instance.selectionBoxState == 0))
                     || ((DAT_GameCore::instance.menuSwitchDelay = -1,
                         0 < DAT_UnitsState::instance.totalUnitsInSelection
@@ -654,14 +648,13 @@ namespace UI {
             /*
               WARNING: shiftRelated0or3 == 1 !
              */
-            if (((DAT_ModifierKeyState::instance.shift != 0)
-                    && (DAT_TribesState::instance.patrolButtonPressed == FALSE))
-                && (DAT_MouseState::instance.leftClickStart != 0)) {
+            if (((DAT_ModifierKeyState::instance.shift) && (DAT_TribesState::instance.patrolButtonPressed == FALSE))
+                && (DAT_MouseState::instance.leftClickStart)) {
                 local_20 = 0;
                 MACRO_CALL_MEMBER(Input::MouseState_Func::setupHitBox, DAT_MouseState::ptr)(4, 4);
                 _clickHitEnemy
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(5);
-                if (_clickHitEnemy != 0) {
+                if (_clickHitEnemy) {
                     if (DAT_UnitsState::instance.units[_clickHitEnemy].isSelected == 0) {
                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getFirstSelectedUnitID,
                             DAT_UnitsState::ptr)(_clickHitEnemy);
@@ -688,11 +681,11 @@ namespace UI {
                 DAT_TileMapState::instance.DAT_SelectionIconType = 1;
                 MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::getFirstSelectedSiegeEngineID, DAT_UnitsState::ptr)();
-                if (((DAT_ViewportRenderState::instance.viewportState.field14_0x38 != 0)
+                if (((DAT_ViewportRenderState::instance.viewportState.field14_0x38)
                         && (_shooterID = MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::selectionHasFootSoldiers, DAT_UnitsState::ptr)(),
                             _shooterID != 0))
-                    || ((DAT_ViewportRenderState::instance.viewportState.field16_0x40 != 0
+                    || ((DAT_ViewportRenderState::instance.viewportState.field16_0x40
                         && (_shooterID = MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::selectionHasFootSoldiers, DAT_UnitsState::ptr)(),
                             _shooterID != 0)))) {
@@ -704,14 +697,14 @@ namespace UI {
                     DAT_TileMapState::instance.field167_0x5549d8 = -1;
                 }
                 _shooterID = DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
-                if (((DAT_ViewportRenderState::instance.viewportState.somePitchDitchID != 0)
+                if (((DAT_ViewportRenderState::instance.viewportState.somePitchDitchID)
                         && (DAT_GameState::instance.mapAndTime.playerTeams[DAT_TileMapState::instance
                                     .pitchDitches[DAT_ViewportRenderState::instance.viewportState.somePitchDitchID]
                                     .owner]
                             == DAT_GameState::instance.mapAndTime
                                 .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]))
-                    && (BVar8 = MACRO_CALL_MEMBER(
-                            Map::Units::UnitsState_Func::selectionHasArchers, DAT_UnitsState::ptr)(),
+                    && (BVar8
+                        = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasArchers, DAT_UnitsState::ptr)(),
                         BVar8 != FALSE)) {
                     _specificRange = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
@@ -720,7 +713,7 @@ namespace UI {
                         (int)((int)(DAT_UnitsState::instance.units[_specificRange].y)),
                         (int)((int)(DAT_UnitsState::instance.units[_specificRange].buildingHeight
                             + DAT_UnitsState::instance.units[_specificRange].terrainOrClimbHeight)));
-                    if ((_yDifference != 0)
+                    if ((_yDifference)
                         && (_yDifference = (int)DAT_TileMapState::instance.pitchDitches[_shooterID].y
                                 - (int)DAT_UnitsState::instance.units[_specificRange].y,
                             _shooterID = (int)DAT_TileMapState::instance.pitchDitches[_shooterID].x
@@ -737,23 +730,22 @@ namespace UI {
                 MACRO_CALL_MEMBER(Input::MouseState_Func::setupHitBox, DAT_MouseState::ptr)(4, 4);
                 _otherUnitIDUnk
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(1);
-                if (((_otherUnitIDUnk == 0)
-                        || (_shooterID
-                            = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk), _shooterID == 0))
-                    || ((BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
-                             DAT_UnitsState::ptr)(),
+                if (((!_otherUnitIDUnk)
+                        || (_shooterID = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk),
+                            !_shooterID))
+                    || ((BVar8 = MACRO_CALL_MEMBER(
+                             Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)(),
                         BVar8 != FALSE
-                            && (BVar8 = MACRO_CALL_MEMBER(
-                                    Map::Units::UnitsState_Func::selectionHasUnmannedSiegeEngine,
+                            && (BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasUnmannedSiegeEngine,
                                     DAT_UnitsState::ptr)(_otherUnitIDUnk),
                                 BVar8 == FALSE)))) {
                     _otherUnitIDUnk = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(2);
-                    if (((_otherUnitIDUnk == 0) || (DAT_MinimapViewState::instance.field15_0x3c != 0))
-                        || (_shooterID
-                            = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk), _shooterID == 0)) {
+                    if (((!_otherUnitIDUnk) || (DAT_MinimapViewState::instance.field15_0x3c))
+                        || (_shooterID = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk),
+                            !_shooterID)) {
                         if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                            && (DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID != 0)) {
+                            && (DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID)) {
                             switch (DAT_BuildingsState::instance
                                     .buildings[DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID]
                                     .buildingType) {
@@ -780,7 +772,7 @@ namespace UI {
                             _otherUnitIDUnk = MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                                 DAT_UnitsState::ptr)();
-                            if (_otherUnitIDUnk == 0) {
+                            if (!_otherUnitIDUnk) {
                                 _specificRange = 0x1e;
                                 _shooterID = 0x1e;
                             } else {
@@ -791,11 +783,13 @@ namespace UI {
                                 _shooterID, _specificRange);
                             _otherUnitIDUnk = MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(1);
-                            if (((_otherUnitIDUnk != 0)
-                                    && (_shooterID = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk), _shooterID != 0))
-                                && ((BVar8 = MACRO_CALL_MEMBER(
-                                         Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
-                                         DAT_UnitsState::ptr)(),
+                            if (((_otherUnitIDUnk)
+                                    && (_shooterID
+                                        = MACRO_CALL(UI::Helpers_Func::SomeUnitAndViewportCheck)(_otherUnitIDUnk),
+                                        _shooterID))
+                                && ((BVar8
+                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
+                                        DAT_UnitsState::ptr)(),
                                     BVar8 == FALSE
                                         || (BVar8 = MACRO_CALL_MEMBER(
                                                 Map::Units::UnitsState_Func::selectionHasUnmannedSiegeEngine,
@@ -816,7 +810,7 @@ namespace UI {
                                                                        calculateCanPlayerUnitsNavigateToAreaFromArea,
                                         DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                         (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)), 1);
-                                    if (_shooterID == 0)
+                                    if (!_shooterID)
                                         goto LAB_moveToTileUI;
                                     DAT_TileMapState::instance.field167_0x5549d8 = 3;
                                     DAT_TileMapState::instance.field162_0x5549c4 = -3;
@@ -828,7 +822,7 @@ namespace UI {
                                 _specificRange = MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::selectionHasShieldOrSiegeMobileUnits,
                                     DAT_UnitsState::ptr)();
-                                if (_specificRange != 0)
+                                if (_specificRange)
                                     goto LAB_moveToTileUI;
                                 switch (DAT_UnitsState::instance.units[_shooterID].unitType) {
                                 case Map::Units::UT_E_ARCHER:
@@ -848,14 +842,13 @@ namespace UI {
                                         (int)DAT_UnitsState::instance.units[_shooterID].owner,
                                         (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)),
                                         _yDifference);
-                                    if ((_yDifference == 0)
-                                        && ((BVar8 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::
-                                                                           selectionContainsOnlyArabAssassins,
+                                    if ((!_yDifference)
+                                        && ((BVar8 = MACRO_CALL_MEMBER(
+                                                 Map::Units::UnitsState_Func::selectionContainsOnlyArabAssassins,
                                                  DAT_UnitsState::ptr)(),
                                             BVar8 == FALSE
-                                                || (BVar8 = MACRO_CALL_MEMBER(
-                                                        Map::Navigation::PathFindingState_Func::
-                                                            calculateCanReachUsingCachedAreaLogic,
+                                                || (BVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
+                                                                                  calculateCanReachUsingCachedAreaLogic,
                                                         DAT_PathFindingState::ptr)(
                                                         DAT_UnitsState::instance.units[_otherUnitIDUnk].tile,
                                                         DAT_UnitsState::instance.units[_shooterID].tile),
@@ -863,7 +856,7 @@ namespace UI {
                                         _specificRange = MACRO_CALL_MEMBER(
                                             Map::Units::UnitsState_Func::selectionHasNoRangedUnits,
                                             DAT_UnitsState::ptr)();
-                                        _specificRange = (-(uint)(_specificRange != 0) & 0xfffff49b) + 0xb64;
+                                        _specificRange = (-(uint)(_specificRange) & 0xfffff49b) + 0xb64;
                                     }
                                     break;
                                 case Map::Units::UT_S_CATAPULT:
@@ -891,7 +884,7 @@ namespace UI {
                                 uVar9 = MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                                     DAT_UnitsState::ptr)();
-                                if (uVar9 == 0) {
+                                if (!uVar9) {
                                     bVar16 = true;
                                     DAT_TileMapState::instance.field167_0x5549d8 = 10;
                                 } else {
@@ -906,7 +899,7 @@ namespace UI {
                                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = _otherUnitIDUnk;
                                 goto LAB_00436d33;
                             }
-                            if ((DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID == 0) || (bVar17)) {
+                            if ((!DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID) || (bVar17)) {
                             LAB_00436245:
                                 if (local_20 == -2)
                                     goto LAB_00436262;
@@ -920,20 +913,19 @@ namespace UI {
                             _otherUnitIDUnk
                                 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getFirstSelectedSiegeEngineID,
                                     DAT_UnitsState::ptr)();
-                            if (_otherUnitIDUnk == 0) {
+                            if (!_otherUnitIDUnk) {
                                 _otherUnitIDUnk = MACRO_CALL_MEMBER(
                                     Map::Buildings::BuildingsState_Func::isBuildingPathBlockerOrDamageable,
                                     DAT_BuildingsState::ptr)(
                                     _shooterID, DAT_UnitsState::instance.units[(int)local_18].tile);
-                                if ((_otherUnitIDUnk != 0)
+                                if ((_otherUnitIDUnk)
                                     || ((BVar8 = MACRO_CALL_MEMBER(
                                              Map::Buildings::BuildingsState_Func::getBuildingHasHealthProperty,
                                              DAT_BuildingsState::ptr)(
                                              _shooterID, DAT_UnitsState::instance.units[(int)local_18].tile),
                                         BVar8 != FALSE
-                                            && (_specificRange
-                                                = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::
-                                                                        selectionHasMixedAssaultAndInfantry,
+                                            && (_specificRange = MACRO_CALL_MEMBER(
+                                                    Map::Units::UnitsState_Func::selectionHasMixedAssaultAndInfantry,
                                                     DAT_UnitsState::ptr)(),
                                                 _specificRange != 0))))
                                     goto LAB_00435eef;
@@ -982,7 +974,7 @@ namespace UI {
                                         if (((BVar8 != FALSE)
                                                 && (((int)DAT_BuildingsState::instance.buildings[_shooterID].owner
                                                         == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                                                    && (DAT_MinimapViewState::instance.field15_0x3c == 0))))
+                                                    && (!DAT_MinimapViewState::instance.field15_0x3c))))
                                             && ((
                                                 BVar5 = DAT_BuildingsState::instance.buildings[_shooterID].buildingType,
                                                 BVar5 == Map::Buildings::BT_CATAPULT
@@ -1024,108 +1016,108 @@ namespace UI {
                                             }
                                             break;
                                             default:
-                                                switchD_00435bd8_caseD_18
-                                                : if (((DAT_GameSynchronyState::instance.currentGameMode
-                                                           == Game::GM_SOLITARY)
-                                                          || (DAT_GameState::instance.mapAndTime.skirmishStrongWalls
-                                                              == 0))
-                                                      || ((UVar4 == Map::Units::UT_S_BATTERINGRAM
-                                                          || (4 < (int)(short)DAT_BuildingsState::instance
-                                                                      .buildings[_shooterID]
-                                                                      .buildingType
-                                                                  - 0x4aU))))
-                                            {
-                                                if (_specificRange != -1) {
-                                                    _specificRange = 100000000;
-                                                    _yDifference = MACRO_CALL_MEMBER(
-                                                        Map::Buildings::BuildingsState_Func::
-                                                            canUnitReachBuildingPerimeter,
-                                                        DAT_BuildingsState::ptr)(_shooterID, (int)((int)(local_18)));
-                                                    if (_yDifference == 0) {
-                                                        _specificRange
-                                                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::
-                                                                                    selectionHasNoRangedUnits,
+                                            switchD_00435bd8_caseD_18:
+                                                if (((DAT_GameSynchronyState::instance.currentGameMode
+                                                         == Game::GM_SOLITARY)
+                                                        || (!DAT_GameState::instance.mapAndTime.skirmishStrongWalls))
+                                                    || ((UVar4 == Map::Units::UT_S_BATTERINGRAM
+                                                        || (4 < (int)(short)DAT_BuildingsState::instance
+                                                                    .buildings[_shooterID]
+                                                                    .buildingType
+                                                                - 0x4aU)))) {
+                                                    if (_specificRange != -1) {
+                                                        _specificRange = 100000000;
+                                                        _yDifference
+                                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
+                                                                                    canUnitReachBuildingPerimeter,
+                                                                DAT_BuildingsState::ptr)(
+                                                                _shooterID, (int)((int)(local_18)));
+                                                        if (!_yDifference) {
+                                                            _specificRange = MACRO_CALL_MEMBER(
+                                                                Map::Units::UnitsState_Func::selectionHasNoRangedUnits,
                                                                 DAT_UnitsState::ptr)();
-                                                        _specificRange
-                                                            = (-(uint)(_specificRange != 0) & 0xfffff49b) + 0xb64;
+                                                            _specificRange
+                                                                = (-(uint)(_specificRange) & 0xfffff49b) + 0xb64;
+                                                        }
                                                     }
+                                                } else {
+                                                    _specificRange = -1;
+                                                    bVar6 = true;
                                                 }
-                                            }
-                                            else
-                                            {
-                                                _specificRange = -1;
-                                                bVar6 = true;
-                                            }
-                                            break;
-                                        case Map::Units::UT_S_CATAPULT:
-                                            _specificRange = 0x15f9;
-                                            break;
-                                        case Map::Units::UT_S_TREBUCHET:
-                                            _specificRange = 0x1c39;
-                                            break;
-                                        case Map::Units::UT_S_MANGONEL:
-                                            _specificRange = 0x1324;
-                                            break;
-                                        case Map::Units::UT_S_BALLISTA:
-                                            _specificRange = 0x1c39;
-                                            switch (DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
-                                            case Map::Buildings::BT_GATEHOUSELARGE:
-                                            case Map::Buildings::BT_GATEHOUSESMALL:
-                                            case Map::Buildings::BT_WOODGATE1:
-                                            case Map::Buildings::BT_WOODGATE2:
-                                            case Map::Buildings::BT_TOWER1:
-                                            case Map::Buildings::BT_TOWER2:
-                                            case Map::Buildings::BT_TOWER3:
-                                            case Map::Buildings::BT_TOWER4:
-                                            case Map::Buildings::BT_TOWER5:
-                                            switchD_00435ce1_caseD_2d:
-                                                _specificRange = -1;
-                                            }
-                                            break;
-                                        case Map::Units::UT_A_SLINGER:
-                                            _specificRange = 0x1e4;
-                                            switch (DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
-                                            case Map::Buildings::BT_GATEHOUSELARGE:
-                                            case Map::Buildings::BT_GATEHOUSESMALL:
-                                            case Map::Buildings::BT_WOODGATE1:
-                                            case Map::Buildings::BT_WOODGATE2:
-                                            case Map::Buildings::BT_TOWER1:
-                                            case Map::Buildings::BT_TOWER2:
-                                            case Map::Buildings::BT_TOWER3:
-                                            case Map::Buildings::BT_TOWER4:
-                                            case Map::Buildings::BT_TOWER5:
-                                                goto switchD_00435c7b_caseD_2d;
-                                            }
-                                            break;
-                                        case Map::Units::UT_A_FIRETHROWER:
-                                            _specificRange = 0x79;
-                                            switch (DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
-                                            case Map::Buildings::BT_GATEHOUSELARGE:
-                                            case Map::Buildings::BT_GATEHOUSESMALL:
-                                            case Map::Buildings::BT_WOODGATE1:
-                                            case Map::Buildings::BT_WOODGATE2:
-                                            case Map::Buildings::BT_TOWER1:
-                                            case Map::Buildings::BT_TOWER2:
-                                            case Map::Buildings::BT_TOWER3:
-                                            case Map::Buildings::BT_TOWER4:
-                                            case Map::Buildings::BT_TOWER5:
-                                                goto switchD_00435c7b_caseD_2d;
-                                            }
-                                            break;
-                                        case Map::Units::UT_S_FBALLISTA:
-                                            _specificRange = 0xb64;
-                                            switch (DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
-                                            case Map::Buildings::BT_GATEHOUSELARGE:
-                                            case Map::Buildings::BT_GATEHOUSESMALL:
-                                            case Map::Buildings::BT_WOODGATE1:
-                                            case Map::Buildings::BT_WOODGATE2:
-                                            case Map::Buildings::BT_TOWER1:
-                                            case Map::Buildings::BT_TOWER2:
-                                            case Map::Buildings::BT_TOWER3:
-                                            case Map::Buildings::BT_TOWER4:
-                                            case Map::Buildings::BT_TOWER5:
-                                                goto switchD_00435ce1_caseD_2d;
-                                            }
+                                                break;
+                                            case Map::Units::UT_S_CATAPULT:
+                                                _specificRange = 0x15f9;
+                                                break;
+                                            case Map::Units::UT_S_TREBUCHET:
+                                                _specificRange = 0x1c39;
+                                                break;
+                                            case Map::Units::UT_S_MANGONEL:
+                                                _specificRange = 0x1324;
+                                                break;
+                                            case Map::Units::UT_S_BALLISTA:
+                                                _specificRange = 0x1c39;
+                                                switch (
+                                                    DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
+                                                case Map::Buildings::BT_GATEHOUSELARGE:
+                                                case Map::Buildings::BT_GATEHOUSESMALL:
+                                                case Map::Buildings::BT_WOODGATE1:
+                                                case Map::Buildings::BT_WOODGATE2:
+                                                case Map::Buildings::BT_TOWER1:
+                                                case Map::Buildings::BT_TOWER2:
+                                                case Map::Buildings::BT_TOWER3:
+                                                case Map::Buildings::BT_TOWER4:
+                                                case Map::Buildings::BT_TOWER5:
+                                                switchD_00435ce1_caseD_2d:
+                                                    _specificRange = -1;
+                                                }
+                                                break;
+                                            case Map::Units::UT_A_SLINGER:
+                                                _specificRange = 0x1e4;
+                                                switch (
+                                                    DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
+                                                case Map::Buildings::BT_GATEHOUSELARGE:
+                                                case Map::Buildings::BT_GATEHOUSESMALL:
+                                                case Map::Buildings::BT_WOODGATE1:
+                                                case Map::Buildings::BT_WOODGATE2:
+                                                case Map::Buildings::BT_TOWER1:
+                                                case Map::Buildings::BT_TOWER2:
+                                                case Map::Buildings::BT_TOWER3:
+                                                case Map::Buildings::BT_TOWER4:
+                                                case Map::Buildings::BT_TOWER5:
+                                                    goto switchD_00435c7b_caseD_2d;
+                                                }
+                                                break;
+                                            case Map::Units::UT_A_FIRETHROWER:
+                                                _specificRange = 0x79;
+                                                switch (
+                                                    DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
+                                                case Map::Buildings::BT_GATEHOUSELARGE:
+                                                case Map::Buildings::BT_GATEHOUSESMALL:
+                                                case Map::Buildings::BT_WOODGATE1:
+                                                case Map::Buildings::BT_WOODGATE2:
+                                                case Map::Buildings::BT_TOWER1:
+                                                case Map::Buildings::BT_TOWER2:
+                                                case Map::Buildings::BT_TOWER3:
+                                                case Map::Buildings::BT_TOWER4:
+                                                case Map::Buildings::BT_TOWER5:
+                                                    goto switchD_00435c7b_caseD_2d;
+                                                }
+                                                break;
+                                            case Map::Units::UT_S_FBALLISTA:
+                                                _specificRange = 0xb64;
+                                                switch (
+                                                    DAT_BuildingsState::instance.buildings[_shooterID].buildingType) {
+                                                case Map::Buildings::BT_GATEHOUSELARGE:
+                                                case Map::Buildings::BT_GATEHOUSESMALL:
+                                                case Map::Buildings::BT_WOODGATE1:
+                                                case Map::Buildings::BT_WOODGATE2:
+                                                case Map::Buildings::BT_TOWER1:
+                                                case Map::Buildings::BT_TOWER2:
+                                                case Map::Buildings::BT_TOWER3:
+                                                case Map::Buildings::BT_TOWER4:
+                                                case Map::Buildings::BT_TOWER5:
+                                                    goto switchD_00435ce1_caseD_2d;
+                                                }
                                         }
                                         if ((DAT_BuildingsState::instance.buildings[_shooterID].buildingType
                                                 == Map::Buildings::BT_PITCHDITCH)
@@ -1135,7 +1127,7 @@ namespace UI {
                                                 BVar8 == FALSE)) {
                                             _specificRange = -1;
                                         }
-                                        if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)
+                                        if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)
                                                 && (DAT_GameSynchronyState::instance.currentGameMode
                                                     != Game::GM_SKIRMISH_SINGLE_PLAYER))
                                             && (DAT_GameSynchronyState::instance.currentGameMode
@@ -1167,19 +1159,17 @@ namespace UI {
                             if (!bVar15)
                                 goto LAB_00436d33;
                         LAB_00436262:
-                            if (((DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile != 0)
+                            if (((DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile)
                                     && ((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
                                                  .viewportState.mouseAtomRefFloorTile]
-                                            & 0x10000300U)
-                                        != 0))
-                                && ((BVar8 = MACRO_CALL_MEMBER(
-                                         Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
-                                         DAT_UnitsState::ptr)(),
+                                        & 0x10000300U)))
+                                && ((BVar8
+                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
+                                        DAT_UnitsState::ptr)(),
                                     BVar8 == FALSE
-                                        && ((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
-                                                     .viewportState.mouseAtomRefFloorTile]
-                                                & 2)
-                                            == 0)))) {
+                                        && (!(DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
+                                                      .viewportState.mouseAtomRefFloorTile]
+                                            & 2))))) {
                                 uVar1 = DAT_TileMapState::instance.PathConnectionLayer[DAT_ViewportRenderState::instance
                                         .viewportState.mouseAtomRefFloorTile];
                                 local_18 = (int*)MACRO_CALL_MEMBER(
@@ -1190,13 +1180,13 @@ namespace UI {
                                 _otherUnitIDUnk = MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::getFirstSelectedLadderUnitID,
                                     DAT_UnitsState::ptr)();
-                                if (_otherUnitIDUnk == 0) {
+                                if (!_otherUnitIDUnk) {
                                     if (DAT_UnitsState::instance.units[(int)local_18].unitType
                                         != Map::Units::UT_S_TOWER) {
                                         _shooterID = MACRO_CALL_MEMBER(
                                             Map::Units::UnitsState_Func::checkAnySelectedUnitCannotClimb,
                                             DAT_UnitsState::ptr)();
-                                        if (_shooterID == 0) {
+                                        if (!_shooterID) {
                                             UVar4 = DAT_UnitsState::instance.units[(int)local_18].unitType;
                                             if ((((UVar4 == Map::Units::UT_S_BATTERINGRAM)
                                                      || (UVar4 == Map::Units::UT_S_CATAPULT))
@@ -1268,19 +1258,19 @@ namespace UI {
                                                         DAT_ViewportRenderState::instance.viewportState
                                                             .mouseAtomRefFloorTile,
                                                         (int)((int)(local_18)));
-                                                    if (_specificRange == 0) {
+                                                    if (!_specificRange) {
                                                         _shooterID
                                                             = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::
                                                                                     selectionHasNoRangedUnits,
                                                                 DAT_UnitsState::ptr)();
-                                                        _shooterID = (-(uint)(_shooterID != 0) & 0xfffff49b) + 0xb64;
+                                                        _shooterID = (-(uint)(_shooterID) & 0xfffff49b) + 0xb64;
                                                     }
                                                     break;
                                                 case Map::Units::UT_S_BALLISTA:
                                                 case Map::Units::UT_S_FBALLISTA:
                                                     _shooterID = -1;
                                                 }
-                                                if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)
+                                                if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)
                                                         && (DAT_GameSynchronyState::instance.currentGameMode
                                                             != Game::GM_SKIRMISH_SINGLE_PLAYER))
                                                     && (DAT_GameSynchronyState::instance.currentGameMode
@@ -1321,7 +1311,7 @@ namespace UI {
                                                     DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                     (dword)((int)((int)(short)uVar1)),
                                                     (dword)((int)((int)(short)uVar2)), 1);
-                                            if ((_shooterID == 0)
+                                            if ((!_shooterID)
                                                 && ((DAT_TileMapState::instance
                                                             .WallOwnerLayer[DAT_ViewportRenderState::instance
                                                                     .viewportState.mouseAtomRefFloorTile]
@@ -1337,7 +1327,7 @@ namespace UI {
                                             DAT_UnitsState::ptr)((uint)local_18,
                                             (uint)((int)(DAT_ViewportRenderState::instance.viewportState
                                                     .mouseAtomRefFloorTile)));
-                                    if (_otherUnitIDUnk != 0) {
+                                    if (_otherUnitIDUnk) {
                                         DAT_TileMapState::instance.field167_0x5549d8 = 6;
                                         DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
                                         DAT_TileMapState::instance.DAT_SelectionIconType = 9;
@@ -1365,14 +1355,13 @@ namespace UI {
                         _shooterID
                             = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getRemainingRequiredEngineers,
                                 DAT_UnitsState::ptr)(_otherUnitIDUnk);
-                        if ((_shooterID == 0)
-                            || (uVar9
-                                = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::returnFirstSelectedEngineer,
-                                    DAT_UnitsState::ptr)(),
+                        if ((!_shooterID)
+                            || (uVar9 = MACRO_CALL_MEMBER(
+                                    Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)(),
                                 uVar9 == 0)) {
                             sVar3 = DAT_UnitsState::instance.units[_otherUnitIDUnk]
                                         .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300;
-                            if ((sVar3 != 0) && (DAT_UnitsState::instance.units[_otherUnitIDUnk].isSelected != 0)) {
+                            if ((sVar3) && (DAT_UnitsState::instance.units[_otherUnitIDUnk].isSelected != 0)) {
                                 bVar18 = true;
                                 if (0 < sVar3) {
                                     _shooterID
@@ -1386,7 +1375,7 @@ namespace UI {
                                         }
                                         psVar10 = psVar10 + 1;
                                         _shooterID = _shooterID + -1;
-                                    } while (_shooterID != 0);
+                                    } while (_shooterID);
                                     if (!bVar18)
                                         goto LAB_moveToTileUI;
                                 }
@@ -1409,7 +1398,7 @@ namespace UI {
                                 (dword)((int)((int)(short)DAT_TileMapState::instance
                                         .PathConnectionLayer[DAT_UnitsState::instance.units[_shooterID].tile])),
                                 1);
-                            if (_shooterID != 0) {
+                            if (_shooterID) {
                                 DAT_TileMapState::instance.field167_0x5549d8 = 3;
                                 DAT_TileMapState::instance.field162_0x5549c4 = -3;
                                 DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 2;
@@ -1431,7 +1420,7 @@ namespace UI {
                         _specificRange = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::selectionHasShieldOrSiegeMobileUnits,
                             DAT_UnitsState::ptr)();
-                        if (_specificRange == 0) {
+                        if (!_specificRange) {
                             switch (DAT_UnitsState::instance.units[_shooterID].unitType) {
                             case Map::Units::UT_E_ARCHER:
                             case Map::Units::UT_E_XBOW:
@@ -1448,14 +1437,13 @@ namespace UI {
                                                                      calculateCanPlayerUnitsNavigateToAreaFromArea,
                                     DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[_shooterID].owner,
                                     (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)), _yDifference);
-                                if ((_yDifference == 0)
+                                if ((!_yDifference)
                                     && ((BVar8 = MACRO_CALL_MEMBER(
                                              Map::Units::UnitsState_Func::selectionContainsOnlyArabAssassins,
                                              DAT_UnitsState::ptr)(),
                                         BVar8 == FALSE
-                                            || (BVar8
-                                                = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                                                        calculateCanReachUsingCachedAreaLogic,
+                                            || (BVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
+                                                                              calculateCanReachUsingCachedAreaLogic,
                                                     DAT_PathFindingState::ptr)(
                                                     DAT_UnitsState::instance.units[_otherUnitIDUnk].tile,
                                                     DAT_UnitsState::instance.units[_shooterID].tile),
@@ -1463,7 +1451,7 @@ namespace UI {
                                     _specificRange = MACRO_CALL_MEMBER(
                                         Map::Units::UnitsState_Func::selectionHasNoRangedUnits,
                                         DAT_UnitsState::ptr)();
-                                    _specificRange = (-(uint)(_specificRange != 0) & 0xfffff49b) + 0xb64;
+                                    _specificRange = (-(uint)(_specificRange) & 0xfffff49b) + 0xb64;
                                 }
                                 break;
                             case Map::Units::UT_S_CATAPULT:
@@ -1493,7 +1481,7 @@ namespace UI {
                                 uVar9 = MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
                                     DAT_UnitsState::ptr)();
-                                if (uVar9 == 0) {
+                                if (!uVar9) {
                                     DAT_TileMapState::instance.field167_0x5549d8 = 10;
                                 } else {
                                     DAT_TileMapState::instance.field167_0x5549d8 = 0xb;
@@ -1514,7 +1502,7 @@ namespace UI {
                                                            calculateCanPlayerUnitsNavigateToAreaFromArea,
                             DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                             (dword)((int)((int)(short)uVar1)), (dword)((int)((int)(short)uVar2)), 1);
-                        if (_shooterID != 0) {
+                        if (_shooterID) {
                             DAT_TileMapState::instance.field167_0x5549d8 = 3;
                             DAT_TileMapState::instance.field162_0x5549c4 = -3;
                             DAT_UnitsState::instance.units[_otherUnitIDUnk].field45_0x6c = 2;
@@ -1525,19 +1513,19 @@ namespace UI {
                     }
                 }
             LAB_moveToTileUI:
-                if ((local_20 != -2) || (DAT_MouseState::instance.selectionBoxMode != 0))
+                if ((local_20 != -2) || (DAT_MouseState::instance.selectionBoxMode))
                     goto LAB_00436d33;
                 MACRO_CALL_MEMBER(Input::MouseState_Func::setupHitBox, DAT_MouseState::ptr)(4, 4);
                 _otherUnitIDUnk
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(5);
-                if (_otherUnitIDUnk != 0) {
+                if (_otherUnitIDUnk) {
                     if (DAT_UnitsState::instance.units[_otherUnitIDUnk].isSelected == 0) {
                         local_20 = 0;
                         goto LAB_00436d33;
                     }
                     if (((_otherUnitIDUnk == DAT_UnitsState::instance.field49_0x608)
                             && (DVar11 = timeGetTime(), DVar11 - DAT_UnitsState::instance.field48_0x604 < 500))
-                        && (DAT_MouseState::instance.leftClickStart != 0)) {
+                        && (DAT_MouseState::instance.leftClickStart)) {
                         DAT_00b98424::instance = 0;
                         MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
@@ -1551,7 +1539,7 @@ namespace UI {
                         DAT_UnitsState::instance.field49_0x608 = 0;
                     }
                 }
-                if (DAT_ViewportRenderState::instance.viewportState.field24_0x60 == 0)
+                if (!DAT_ViewportRenderState::instance.viewportState.field24_0x60)
                     goto LAB_00436953;
                 bVar18 = false;
                 while (true) {
@@ -1568,7 +1556,7 @@ namespace UI {
                     if (0 < _shooterID) {
                         _specificRange = DAT_UnitsState::instance.units[_shooterID].tile;
                         toArea = (dword)(short)DAT_TileMapState::instance.PathConnectionLayer[_specificRange];
-                        if ((DAT_TileMapState::instance.LogicLayer[_specificRange] & 0x40000000U) != 0) {
+                        if ((DAT_TileMapState::instance.LogicLayer[_specificRange] & 0x40000000U)) {
                             toArea = MACRO_CALL_MEMBER(
                                 Map::Navigation::PathFindingState_Func::canNavigateFunctionReturnsArea,
                                 DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[_shooterID].owner,
@@ -1592,16 +1580,16 @@ namespace UI {
                     }
                     _specificRange = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::selectionHasMovableNonSiegeUnit, DAT_UnitsState::ptr)();
-                    if (_specificRange == 0) {
+                    if (!_specificRange) {
                         bVar17 = false;
                     }
                     _yDifference
                         = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasMixedAssaultAndInfantry,
                             DAT_UnitsState::ptr)();
-                    if (_yDifference != 0) {
-                        if (((flag1003 & 0x10000100) != 0)
-                            || (_yDifference = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                                                     calculatePathKeepAndWallsGatesNotAllowed,
+                    if (_yDifference) {
+                        if (((flag1003 & 0x10000100))
+                            || (_yDifference = MACRO_CALL_MEMBER(
+                                    Map::Navigation::PathFindingState_Func::calculatePathKeepAndWallsGatesNotAllowed,
                                     DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[_shooterID].x,
                                     (int)((int)(DAT_UnitsState::instance.units[_shooterID].y)),
                                     DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile
@@ -1620,7 +1608,7 @@ namespace UI {
                     _otherUnitIDUnk = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                         DAT_UnitsState::ptr)();
-                    if (((_otherUnitIDUnk == 0) || (bVar17)) || ((bVar16 || (bVar18))))
+                    if (((!_otherUnitIDUnk) || (bVar17)) || ((bVar16 || (bVar18))))
                         break;
                     bVar18 = true;
                     if ((DAT_TileMapState::instance
@@ -1652,16 +1640,16 @@ namespace UI {
                         BVar12 == FALSE)) {
                     if (bVar17)
                         goto LAB_00436b8a;
-                    if ((((_specificRange == 0 || BVar8 != FALSE)
-                             || ((DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance.units[_shooterID].tile]
-                                     & 0x10000100U)
-                                 == 0))
+                    if ((((!_specificRange || BVar8 != FALSE)
+                             || (!(
+                                 DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance.units[_shooterID].tile]
+                                 & 0x10000100U)))
                             || (_specificRange = MACRO_CALL_MEMBER(
                                     Map::Navigation::PathFindingState_Func::someBinaryAlgFunctionPathFinding,
                                     DAT_PathFindingState::ptr)(_shooterID),
                                 _specificRange == 0))
-                        || (_shooterID = MACRO_CALL_MEMBER(
-                                Map::Navigation::PathFindingState_Func::findCrossAreaBridgeTileToTarget,
+                        || (_shooterID
+                            = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findCrossAreaBridgeTileToTarget,
                                 DAT_PathFindingState::ptr)(_shooterID,
                                 (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseX)),
                                 (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseY))),
@@ -1699,7 +1687,7 @@ namespace UI {
                 _otherUnitIDUnk
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                         DAT_UnitsState::ptr)();
-                if (((_otherUnitIDUnk == 0) || (!bVar17))
+                if (((!_otherUnitIDUnk) || (!bVar17))
                     || ((bVar16
                         || ((_shooterID = (int)DAT_TileMapState::instance
                                  .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.field24_0x60],
@@ -1717,7 +1705,7 @@ namespace UI {
                 if ((((BVar5 != Map::Buildings::BT_CAMPGROUND) || (!bVar18))
                         || ((int)DAT_BuildingsState::instance.buildings[_shooterID].owner
                             != DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                    || (bVar16 = true, DAT_MouseState::instance.leftClickStart == 0))
+                    || (bVar16 = true, !DAT_MouseState::instance.leftClickStart))
                     goto LAB_00436d33;
             } else {
                 if (DAT_UnitsState::instance.unitControlsRelated == 0x14) {
@@ -1737,8 +1725,8 @@ namespace UI {
                         DAT_ViewportRenderState::instance.viewportState.mouseX,
                         DAT_ViewportRenderState::instance.viewportState.mouseY);
                     if ((DAT_DirectionAlgorithmState::instance.orientation == 0xf)
-                        || ((DAT_ViewportRenderState::instance.viewportState.mouseX == 0
-                            && (DAT_ViewportRenderState::instance.viewportState.mouseY == 0)))) {
+                        || ((!DAT_ViewportRenderState::instance.viewportState.mouseX
+                            && (!DAT_ViewportRenderState::instance.viewportState.mouseY)))) {
                         DAT_TileMapState::instance.field167_0x5549d8 = -1;
                         DAT_TileMapState::instance.field162_0x5549c4 = 0x41;
                         DAT_TileMapState::instance.field164_0x5549cc = 0x10;
@@ -1817,20 +1805,17 @@ namespace UI {
                 local_18 = (int*)MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
                 _shooterID = DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID;
-                if (DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID == 0) {
-                    if (((DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile != 0)
-                            && ((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance.viewportState
-                                         .mouseAtomRefFloorTile]
-                                    & 0x10000300U)
-                                != 0))
-                        && ((BVar8
-                            = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsEngineersOnly,
-                                DAT_UnitsState::ptr)(),
+                if (!DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID) {
+                    if (((DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile)
+                            && ((DAT_TileMapState::instance
+                                     .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
+                                & 0x10000300U)))
+                        && ((BVar8 = MACRO_CALL_MEMBER(
+                                 Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)(),
                             BVar8 == FALSE
-                                && ((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
-                                             .viewportState.mouseAtomRefFloorTile]
-                                        & 2)
-                                    == 0)))) {
+                                && (!(DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
+                                              .viewportState.mouseAtomRefFloorTile]
+                                    & 2))))) {
                     LAB_00436607:
                         UVar4 = DAT_UnitsState::instance.units[(int)local_18].unitType;
                         switch (UVar4) {
@@ -1844,49 +1829,48 @@ namespace UI {
                                 goto switchD_0043662c_caseD_18;
                             break;
                             default:
-                                switchD_0043662c_caseD_18
-                                : if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                                          || (DAT_GameState::instance.mapAndTime.skirmishStrongWalls == 0))
-                                      || (UVar4
-                                          == Map::Units::UT_S_BATTERINGRAM)) goto switchD_0043662c_caseD_3a;
-                            _shooterID = -1;
-                            bVar6 = true;
-                            break;
-                        case Map::Units::UT_S_CATAPULT:
-                            _shooterID = 0x15f9;
-                            break;
-                        case Map::Units::UT_S_TREBUCHET:
-                            _shooterID = 0x1c39;
-                            break;
-                        case Map::Units::UT_S_MANGONEL:
-                            _shooterID = 0x1324;
-                            break;
-                        case Map::Units::UT_S_TOWER:
-                        switchD_0043662c_caseD_3a:
-                            _shooterID = 100000000;
-                            _specificRange = MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::canUnitReachAdjacentTile,
-                                DAT_BuildingsState::ptr)(
-                                DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile,
-                                (int)((int)(local_18)));
-                            if (_specificRange == 0) {
-                                _shooterID
-                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasNoRangedUnits,
-                                        DAT_UnitsState::ptr)();
-                                _shooterID = (-(uint)(_shooterID != 0) & 0xfffff49b) + 0xb64;
+                            switchD_0043662c_caseD_18:
+                                if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
+                                        || (!DAT_GameState::instance.mapAndTime.skirmishStrongWalls))
+                                    || (UVar4 == Map::Units::UT_S_BATTERINGRAM))
+                                    goto switchD_0043662c_caseD_3a;
+                                _shooterID = -1;
+                                bVar6 = true;
+                                break;
+                            case Map::Units::UT_S_CATAPULT:
+                                _shooterID = 0x15f9;
+                                break;
+                            case Map::Units::UT_S_TREBUCHET:
+                                _shooterID = 0x1c39;
+                                break;
+                            case Map::Units::UT_S_MANGONEL:
+                                _shooterID = 0x1324;
+                                break;
+                            case Map::Units::UT_S_TOWER:
+                            switchD_0043662c_caseD_3a:
+                                _shooterID = 100000000;
+                                _specificRange
+                                    = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::canUnitReachAdjacentTile,
+                                        DAT_BuildingsState::ptr)(
+                                        DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile,
+                                        (int)((int)(local_18)));
+                                if (!_specificRange) {
+                                    _shooterID = MACRO_CALL_MEMBER(
+                                        Map::Units::UnitsState_Func::selectionHasNoRangedUnits, DAT_UnitsState::ptr)();
+                                    _shooterID = (-(uint)(_shooterID) & 0xfffff49b) + 0xb64;
+                                }
+                                break;
+                            case Map::Units::UT_S_BALLISTA:
+                            case Map::Units::UT_A_FIRETHROWER:
+                            case Map::Units::UT_S_FBALLISTA:
+                                _shooterID = -1;
                             }
-                            break;
-                        case Map::Units::UT_S_BALLISTA:
-                        case Map::Units::UT_A_FIRETHROWER:
-                        case Map::Units::UT_S_FBALLISTA:
-                            _shooterID = -1;
-                        }
-                        if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)
-                                && (DAT_GameSynchronyState::instance.currentGameMode
-                                    != Game::GM_SKIRMISH_SINGLE_PLAYER))
-                            && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)) {
-                            _shooterID = -1;
-                        }
+                            if (((DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)
+                                    && (DAT_GameSynchronyState::instance.currentGameMode
+                                        != Game::GM_SKIRMISH_SINGLE_PLAYER))
+                                && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)) {
+                                _shooterID = -1;
+                            }
                         _yDifference
                             = (DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile
                                   - DAT_ViewportRenderState::instance
@@ -1913,7 +1897,7 @@ namespace UI {
                 } else {
                     _otherUnitIDUnk = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getFirstSelectedSiegeEngineID, DAT_UnitsState::ptr)();
-                    if (_otherUnitIDUnk == 0) {
+                    if (!_otherUnitIDUnk) {
                         BVar8 = MACRO_CALL_MEMBER(
                             Map::Buildings::BuildingsState_Func::getBuildingHasHealthProperty,
                             DAT_BuildingsState::ptr)(_shooterID, DAT_UnitsState::instance.units[(int)local_18].tile);
@@ -1986,7 +1970,7 @@ namespace UI {
                 _otherUnitIDUnk
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                         DAT_UnitsState::ptr)();
-                if ((_otherUnitIDUnk != 0) && (!bVar16)) {
+                if ((_otherUnitIDUnk) && (!bVar16)) {
                     DAT_TileMapState::instance.field167_0x5549d8 = -1;
                     DAT_TileMapState::instance.field162_0x5549c4 = 0x41;
                     DAT_TileMapState::instance.field164_0x5549cc = 0x10;
@@ -1995,10 +1979,10 @@ namespace UI {
                     local_20 = 4;
                 }
             LAB_00436d8a:
-                if (DAT_MouseState::instance.leftClickStart != 0) {
+                if (DAT_MouseState::instance.leftClickStart) {
                     DAT_00b98424::instance = 1;
-                    if (((local_20 == 0)
-                            || (((local_20 == 2 && (DAT_TileMapState::instance.field162_0x5549c4 == 0))
+                    if (((!local_20)
+                            || (((local_20 == 2 && (!DAT_TileMapState::instance.field162_0x5549c4))
                                 && (DAT_UnitsState::instance.unitControlsRelated != 5))))
                         && ((DAT_TileMapState::instance.field167_0x5549d8 != 3
                             && (DAT_TileMapState::instance.field167_0x5549d8 != 4)))) {
@@ -2006,7 +1990,7 @@ namespace UI {
                             Input::MouseState_Func::beginPointSelectionBox, DAT_MouseState::ptr)();
                         _otherUnitIDUnk = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::getUnitInHitBox, DAT_UnitsState::ptr)(5);
-                        if (_otherUnitIDUnk != 0) {
+                        if (_otherUnitIDUnk) {
                             MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectFirstUnitInDragBoxAnyPlayer,
                                 DAT_UnitsState::ptr)();
                             MACRO_CALL_MEMBER(
@@ -2042,22 +2026,20 @@ namespace UI {
                         = DAT_ViewportRenderState::instance.viewportState.mouseY;
                     goto LAB_0043782c;
                 }
-                if ((DAT_MouseState::instance.leftClickState != FALSE) && (DAT_00b98424::instance != 0)) {
+                if ((DAT_MouseState::instance.leftClickState != FALSE) && (DAT_00b98424::instance)) {
                     MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                    if ((DAT_MouseState::instance.selectionBoxMode == 0)
-                        || (MACRO_CALL_MEMBER(
-                                Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
+                    if ((!DAT_MouseState::instance.selectionBoxMode)
+                        || (MACRO_CALL_MEMBER(Input::MouseState_Func::extendSelectionBoxToMouse, DAT_MouseState::ptr)(),
                             DAT_MouseState::instance.selectionBoxState == 0))
                         goto LAB_0043782c;
-                    if (DAT_ModifierKeyState::instance.shift == 0) {
+                    if (!DAT_ModifierKeyState::instance.shift) {
                         MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                         MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
                     }
-                    DAT_TileMapState::instance.shiftRelated0or3
-                        = -(uint)(DAT_ModifierKeyState::instance.shift != 0) & 3;
+                    DAT_TileMapState::instance.shiftRelated0or3 = -(uint)(DAT_ModifierKeyState::instance.shift) & 3;
                     DAT_UnitsState::instance.field5_0x14 = TRUE;
                     DAT_UnitsState::instance.unitControlsRelated = TRUE;
                     DAT_TileMapState::instance.field167_0x5549d8 = 0;
@@ -2081,7 +2063,7 @@ namespace UI {
                 _otherUnitIDUnk
                     = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getSelectedLordIDIfOwnedByCurrentPlayer,
                         DAT_UnitsState::ptr)();
-                if ((_otherUnitIDUnk != 0) && (!bVar16)) {
+                if ((_otherUnitIDUnk) && (!bVar16)) {
                     MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                     goto LAB_0043782c;
                 }
@@ -2104,7 +2086,7 @@ namespace UI {
                     if (DAT_TileMapState::instance.field167_0x5549d8 == 0xb)
                         goto LAB_00437671;
                     if (DAT_TileMapState::instance.field167_0x5549d8 == 10) {
-                        if ((DAT_TileMapState::instance.uiSelectedUnitIDUnk != 0)
+                        if ((DAT_TileMapState::instance.uiSelectedUnitIDUnk)
                             && (DAT_TileMapState::instance.DAT_SomeUNitUIDUIRelated
                                 == DAT_UnitsState::instance.units[DAT_TileMapState::instance.uiSelectedUnitIDUnk]
                                     .uid)) {
@@ -2185,10 +2167,9 @@ namespace UI {
                                 uVar13 = 0x17;
                                 goto LAB_00437494;
                             }
-                            if ((DAT_ViewportRenderState::instance.viewportState.field14_0x38 != 0)
-                                && (_shooterID
-                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasFootSoldiers,
-                                        DAT_UnitsState::ptr)(),
+                            if ((DAT_ViewportRenderState::instance.viewportState.field14_0x38)
+                                && (_shooterID = MACRO_CALL_MEMBER(
+                                        Map::Units::UnitsState_Func::selectionHasFootSoldiers, DAT_UnitsState::ptr)(),
                                     _shooterID != 0)) {
                                 MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::queueDisbandAndAttackCommand5Params,
@@ -2201,10 +2182,9 @@ namespace UI {
                                 MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                                 goto LAB_0043782c;
                             }
-                            if ((DAT_ViewportRenderState::instance.viewportState.field16_0x40 != 0)
-                                && (_shooterID
-                                    = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionHasFootSoldiers,
-                                        DAT_UnitsState::ptr)(),
+                            if ((DAT_ViewportRenderState::instance.viewportState.field16_0x40)
+                                && (_shooterID = MACRO_CALL_MEMBER(
+                                        Map::Units::UnitsState_Func::selectionHasFootSoldiers, DAT_UnitsState::ptr)(),
                                     _shooterID != 0)) {
                                 MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::queueDisbandAndAttackCommand5Params,
@@ -2217,7 +2197,7 @@ namespace UI {
                                 MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                                 goto LAB_0043782c;
                             }
-                            if (DAT_ModifierKeyState::instance.shift == 0) {
+                            if (!DAT_ModifierKeyState::instance.shift) {
                                 DVar7 = timeGetTime();
                                 _oneOr129 = 1;
                                 if (((DAT_00b98420::instance == DAT_ViewportRenderState::instance.viewportState.mouseX)
@@ -2300,7 +2280,7 @@ namespace UI {
                 }
                 break;
             case 4:
-                if (DAT_TileMapState::instance.uiSelectedUnitIDUnk != 0) {
+                if (DAT_TileMapState::instance.uiSelectedUnitIDUnk) {
                     MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand5Params,
                         DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID,
                         Map::Units::UIT_UNIT_ATTACK_UNIT, DAT_TileMapState::instance.uiSelectedUnitIDUnk,
@@ -2356,7 +2336,7 @@ namespace UI {
                         (undefined4)((int)(DAT_BuildingsState::instance
                                 .buildings[DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID]
                                 .uid)));
-                    if ((_shooterID == 0)
+                    if ((!_shooterID)
                         || (DAT_BuildingsState::instance.buildings[_shooterID].buildingType
                             != Map::Buildings::BT_PITCHDITCH)) {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::playAttackCommandFeedback,
@@ -2398,7 +2378,7 @@ namespace UI {
                     DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
                     _shooterID = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
-                    if ((_shooterID != 0)
+                    if ((_shooterID)
                         && (DAT_UnitsState::instance.units[_shooterID]
                                 .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                             != 0)) {

@@ -100,9 +100,9 @@ namespace UI {
                     do {
                         bVar1 = *(byte*)(iVar6 + (int)local_c);
                         iVar7 = iVar6;
-                        if ((bVar1 != 0) && (_File = local_8, (byte)(bVar1 - 0x15) < 0x14)) {
+                        if ((bVar1) && (_File = local_8, (byte)(bVar1 - 0x15) < 0x14)) {
                             sVar8 = 1;
-                            for (; (iVar7 < 800 && (bVar2 = *(byte*)(iVar7 + (int)local_c), bVar2 != 0));
+                            for (; (iVar7 < 800 && (bVar2 = *(byte*)(iVar7 + (int)local_c), bVar2));
                                 iVar7 = iVar7 + 1) {
                                 if (bVar2 < 20) {
                                     DAT_ARRAY_00ed26d0::instance[bVar2].y = local_18;

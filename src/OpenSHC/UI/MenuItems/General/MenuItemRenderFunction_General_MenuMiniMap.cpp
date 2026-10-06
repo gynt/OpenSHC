@@ -55,9 +55,9 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance + -0x6c)), 0xd8, 0xd8,
                     (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                if ((DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber != 0)
+                if ((DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1)) {
-                    if (DAT_ButtonBackgroundBlendStrength::instance == 0) {
+                    if (!DAT_ButtonBackgroundBlendStrength::instance) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapPreview,
                             DAT_MinimapViewState::ptr)(iVar3 + -100, iVar4 + -100);
                         do {
@@ -93,7 +93,7 @@ namespace UI {
                                                 iVar2 + -0x60 + iVar3,
                                                 DAT_GameCore::instance.keepPositions[iVar7].y + -100 + iVar4, 0xc);
                                         }
-                                        if (INT_00b95f6c::instance == 0) {
+                                        if (!INT_00b95f6c::instance) {
                                             if (INT_00b95950::instance == iVar7) {
                                                 MACRO_CALL_MEMBER(
                                                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,

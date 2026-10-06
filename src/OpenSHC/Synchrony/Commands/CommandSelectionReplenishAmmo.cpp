@@ -38,7 +38,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&local_4, 1, OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = (int)(char)local_4;
-            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_GameCommandParam1) {
                 MACRO_CALL(OpenSHC::Synchrony::Actions_Func::TryAcquireAmmunitionOrPlanToBuyStone)(
                     DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
                     (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)));

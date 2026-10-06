@@ -72,7 +72,7 @@ namespace Map {
                                 _tile1 = DAT_TroopValueState::instance.tile;
                                 _y = DAT_TroopValueState::instance.y;
                                 _x = DAT_TroopValueState::instance.x;
-                                if (_tile2 != 0) {
+                                if (_tile2) {
                                     DAT_UnitsState::instance.units[_unitID].state.generic
                                         = Map::Units::States::US_MOVE_TO_DESTINATION;
                                     if (targetType != Map::Units::STBT_0x414)
@@ -80,7 +80,7 @@ namespace Map {
                                     _freeTile
                                         = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::findFreeTileNearby,
                                             DAT_UnitsState::ptr)(_unitID, _tile1);
-                                    if (_freeTile != 0) {
+                                    if (_freeTile) {
                                         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit,
                                             DAT_UnitsState::ptr)(_unitID,
                                             (uint)((int)(_freeTile
@@ -147,7 +147,7 @@ namespace Map {
                                 _tile1 = DAT_TroopValueState::instance.tile;
                                 _y = DAT_TroopValueState::instance.y;
                                 _x = DAT_TroopValueState::instance.x;
-                                if (iVar5 == 0)
+                                if (!iVar5)
                                     continue;
                                 DAT_UnitsState::instance.units[_unitID].state.generic = ((UnitState)0x67);
                             LAB_0052471e:
@@ -162,7 +162,7 @@ namespace Map {
                                     = (undefined2)targetType;
                                 iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::stopUnitIfNextToTarget,
                                     DAT_UnitsState::ptr)(_unitID);
-                                if (iVar5 == 0) {
+                                if (!iVar5) {
                                     if (BVar4 != FALSE) {
                                         DAT_PathFindingState::instance.allAssassinsUnk = 1;
                                     }

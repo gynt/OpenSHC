@@ -30,8 +30,7 @@ namespace Map {
                     if (_tribeID < 1) {
                         return 0;
                     }
-                    if ((playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID)
-                        && (setAsCurrentTribeID != 0)) {
+                    if ((playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) && (setAsCurrentTribeID)) {
                         this->DAT_CurrentTribeID = _tribeID;
                     }
                     this->tribes[_tribeID].owner = playerID;

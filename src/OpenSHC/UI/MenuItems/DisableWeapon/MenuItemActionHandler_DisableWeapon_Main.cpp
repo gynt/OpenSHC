@@ -17,7 +17,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB740
         void DisableWeapon::MenuItemActionHandler_DisableWeapon_Main(int param_1, ...)
         {
-            if (param_1 == 0) {
+            if (!param_1) {
                 DAT_MapPropertiesState::instance.SEC_XbowProducible_save
                     = DAT_MapPropertiesState::instance.SEC_XbowProducible_save ^ 1;
             }

@@ -64,7 +64,7 @@ namespace UI {
                 + DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[DAT_RenderedUnitOwner::instance] * 0x200
                 + 0x1fea604);
             if (0 < height) {
-                if (DAT_TextureRenderCoreObject::instance.colorPaletteOverride != 0) {
+                if (DAT_TextureRenderCoreObject::instance.colorPaletteOverride) {
                     _colorPaletteRef = (ushort*)DAT_TextureRenderCoreObject::instance.colorPaletteOverride;
                 }
                 if (blendStrengthUnk < 0x20) {
@@ -74,7 +74,7 @@ namespace UI {
                     iVar6 = blendStrengthUnk * 0x200;
                     iVar2 = blendStrengthUnk * -0x200;
                     iVar10 = iVar2 + 0xd812d8;
-                    if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
+                    if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
                         if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                             DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                             local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
@@ -147,7 +147,7 @@ namespace UI {
                                                     imageAddress = imageAddress + 1;
                                                     puVar19 = puVar19 + 1;
                                                     iVar14 = iVar14 + -1;
-                                                } while (iVar14 != 0);
+                                                } while (iVar14);
                                             }
                                             if (TVar3 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                                 break;
@@ -167,7 +167,7 @@ namespace UI {
                                                     + (uVar5 | uVar9 | uVar4);
                                                 puVar19 = puVar19 + 1;
                                                 iVar14 = iVar14 + -1;
-                                            } while (iVar14 != 0);
+                                            } while (iVar14);
                                         }
                                         puVar19 = (ushort*)((int)puVar20 + local_8);
                                         height = height + -1;
@@ -189,7 +189,7 @@ namespace UI {
                                                     bVar13 = *pbVar16 & 0xe0;
                                                     imageAddress = pbVar16 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13 != 0)
+                                                if (bVar13)
                                                     break;
                                                 imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                             }
@@ -216,7 +216,7 @@ namespace UI {
                                                 puVar19 = puVar19 + uVar11 + 1;
                                                 imageAddress = pbVar16;
                                             }
-                                            if (bVar13 != 0)
+                                            if (bVar13)
                                                 break;
                                             iVar14 = uVar11 + 1;
                                             do {
@@ -241,7 +241,7 @@ namespace UI {
                                                 puVar19 = puVar19 + 1;
                                                 iVar14 = iVar14 + -1;
                                                 imageAddress = pbVar16;
-                                            } while (iVar14 != 0);
+                                            } while (iVar14);
                                         }
                                         if (bVar13 != 0x40)
                                             break;
@@ -264,7 +264,7 @@ namespace UI {
                                                 + (uVar5 & 0x3ff | uVar4);
                                             puVar19 = puVar19 + 1;
                                             iVar14 = iVar14 + -1;
-                                        } while (iVar14 != 0);
+                                        } while (iVar14);
                                     }
                                     puVar19 = (ushort*)((int)puVar20 + local_8);
                                     height = height + -1;
@@ -295,7 +295,7 @@ namespace UI {
                                                         bVar13 = *pbVar16 & 0xe0;
                                                         imageAddress = pbVar16 + 1;
                                                     } while (bVar13 == 0x20);
-                                                    if (bVar13 != 0)
+                                                    if (bVar13)
                                                         break;
                                                     imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                                 }
@@ -323,12 +323,12 @@ namespace UI {
                                                     imageAddress = pbVar16;
                                                     uVar7 = local_14 + uVar7 + 1;
                                                 }
-                                                if (bVar13 != 0)
+                                                if (bVar13)
                                                     break;
                                                 iVar8 = uVar7 + 1;
                                                 uVar7 = local_14 + iVar8;
                                                 do {
-                                                    if ((local_14 & 1) == 0) {
+                                                    if (!(local_14 & 1)) {
                                                         uStack_36 = (undefined2)(local_14 >> 0x10);
                                                         uVar15 = (((uint)(uStack_36) << 0x10)
                                                                      | (uint)(ushort)(_colorPaletteRef[*pbVar16]))
@@ -362,7 +362,7 @@ namespace UI {
                                                     local_14 = local_14 + 1;
                                                     iVar8 = iVar8 + -1;
                                                     imageAddress = pbVar16;
-                                                } while (iVar8 != 0);
+                                                } while (iVar8);
                                             }
                                             if (bVar13 != 0x40)
                                                 break;
@@ -375,7 +375,7 @@ namespace UI {
                                             iVar8 = uVar7 + 1;
                                             uVar7 = local_14 + iVar8;
                                             do {
-                                                if ((local_14 & 1) == 0) {
+                                                if (!(local_14 & 1)) {
                                                     uVar9 = *(ushort*)(iVar14 + local_14) & 0xffe0
                                                         | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                          [*(ushort*)(iVar14 + local_14)
@@ -390,7 +390,7 @@ namespace UI {
                                                 }
                                                 local_14 = local_14 + 1;
                                                 iVar8 = iVar8 + -1;
-                                            } while (iVar8 != 0);
+                                            } while (iVar8);
                                         }
                                         iVar14 = iVar14 + 0x1fb0;
                                         if (height + -1 < 1) {}
@@ -401,7 +401,7 @@ namespace UI {
                                                     bVar13 = *pbVar18 & 0xe0;
                                                     pbVar16 = pbVar18 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13 != 0)
+                                                if (bVar13)
                                                     break;
                                                 pbVar16 = pbVar16 + (*pbVar18 & 0xffffff1f) + 1;
                                             }
@@ -431,7 +431,7 @@ namespace UI {
                                                     bVar13 = *pbVar16 & 0xe0;
                                                     imageAddress = pbVar16 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13 != 0)
+                                                if (bVar13)
                                                     break;
                                                 imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                             }
@@ -459,12 +459,12 @@ namespace UI {
                                                 imageAddress = pbVar16;
                                                 uVar7 = local_14 + uVar7 + 1;
                                             }
-                                            if (bVar13 != 0)
+                                            if (bVar13)
                                                 break;
                                             iVar8 = uVar7 + 1;
                                             uVar7 = local_14 + iVar8;
                                             do {
-                                                if ((local_14 & 1) == 0) {
+                                                if (!(local_14 & 1)) {
                                                     uStack_36 = (undefined2)(local_14 >> 0x10);
                                                     uVar15 = (((uint)(uStack_36) << 0x10)
                                                                  | (uint)(ushort)(_colorPaletteRef[*pbVar16]))
@@ -494,7 +494,7 @@ namespace UI {
                                                 local_14 = local_14 + 1;
                                                 iVar8 = iVar8 + -1;
                                                 imageAddress = pbVar16;
-                                            } while (iVar8 != 0);
+                                            } while (iVar8);
                                         }
                                         if (bVar13 != 0x40)
                                             break;
@@ -507,7 +507,7 @@ namespace UI {
                                         iVar8 = uVar7 + 1;
                                         uVar7 = local_14 + iVar8;
                                         do {
-                                            if ((local_14 & 1) == 0) {
+                                            if (!(local_14 & 1)) {
                                                 uVar9 = *(ushort*)(iVar14 + local_14) & 0xffe0
                                                     | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                      [*(ushort*)(iVar14 + local_14)
@@ -521,7 +521,7 @@ namespace UI {
                                             }
                                             local_14 = local_14 + 1;
                                             iVar8 = iVar8 + -1;
-                                        } while (iVar8 != 0);
+                                        } while (iVar8);
                                     }
                                     iVar14 = iVar14 + 0x1fb0;
                                     if (height + -1 < 1) {}
@@ -532,7 +532,7 @@ namespace UI {
                                                 bVar13 = *pbVar18 & 0xe0;
                                                 pbVar16 = pbVar18 + 1;
                                             } while (bVar13 == 0x20);
-                                            if (bVar13 != 0)
+                                            if (bVar13)
                                                 break;
                                             pbVar16 = pbVar16 + (*pbVar18 & 0xffffff1f) + 1;
                                         }

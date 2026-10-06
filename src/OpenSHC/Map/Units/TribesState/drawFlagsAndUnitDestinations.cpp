@@ -35,8 +35,7 @@ namespace Map {
             int tile;
             short _isRallying;
             _isRallying = this->tribes[tribeID].isRallyingUnk;
-            if (((_isRallying != 0)
-                    && (this->tribes[tribeID].owner == DAT_GameSynchronyState::instance.currentPlayerSlotID))
+            if (((_isRallying) && (this->tribes[tribeID].owner == DAT_GameSynchronyState::instance.currentPlayerSlotID))
                 && (_rallyIndex = (uint)(_isRallying < 0),
                     (int)_rallyIndex < (int)this->tribes[tribeID].rallyPointCount)) {
                 _pRallyPoints = this->tribes[tribeID].rallyPointArray + _rallyIndex;
@@ -70,7 +69,7 @@ namespace Map {
                             && (DAT_UnitsState::instance.units[_unitID].owner
                                 == DAT_GameSynchronyState::instance.currentPlayerSlotID)))) {
                         sVar1 = DAT_UnitsState::instance.units[_unitID].unitSpeedMatchingRelatedUnk;
-                        if (sVar1 == 0) {
+                        if (!sVar1) {
                             if (((DAT_UnitsState::instance.units[_unitID].currentIndexInPathPlan
                                      < DAT_UnitsState::instance.units[_unitID].totalSizeOfPathPlan)
                                     && (UVar2 = DAT_UnitsState::instance.units[_unitID].targetingType,
@@ -142,7 +141,7 @@ namespace Map {
                                         }
                                     } else if (UVar2 == Map::Units::UIT_ATTACK_BUILDING) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID].targetID_OR_targetBuildingID;
-                                        if ((sVar1 != 0)
+                                        if ((sVar1)
                                             && (DAT_BuildingsState::instance.buildings[sVar1].uid
                                                 == DAT_UnitsState::instance.units[_unitID]
                                                     .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID)) {
@@ -150,7 +149,7 @@ namespace Map {
                                         }
                                     } else if (UVar2 == Map::Units::UIT_LIGHT_PITCH) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID].targetID_OR_targetBuildingID;
-                                        if ((sVar1 != 0)
+                                        if ((sVar1)
                                             && (DAT_TileMapState::instance.pitchDitches[sVar1].uid
                                                 == DAT_UnitsState::instance.units[_unitID]
                                                     .targetedUnitUIDUnk_OR_someAppearTileUnk_OR_buildingUID_OR_pitchDitchUID_OR_entityUID)) {
@@ -162,7 +161,7 @@ namespace Map {
                                         }
                                     } else {
                                         uVar3 = DAT_UnitsState::instance.units[_unitID].targetedBuildingTile;
-                                        if ((uVar3 != 0) && (DAT_TileMapState::instance.BuildingLayer[uVar3] != 0)) {
+                                        if ((uVar3) && (DAT_TileMapState::instance.BuildingLayer[uVar3] != 0)) {
                                             DAT_BuildingsState::instance
                                                 .buildings[DAT_TileMapState::instance.BuildingLayer[uVar3]]
                                                 .field68_0xc2 = 1;

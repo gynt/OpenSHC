@@ -66,13 +66,13 @@ namespace Map {
         if ((iVar10 == 1) && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)) {}
         bVar11 = DAT_BuildingsState::instance.buildings[iVar7].workers[0] != 0;
         sVar2 = DAT_BuildingsState::instance.buildings[iVar7].workers[1];
-        if (sVar2 != 0) {
+        if (sVar2) {
             bVar11 = bVar11 + 1;
         }
         if (DAT_BuildingsState::instance.buildings[iVar7].workers[2] != 0) {
             bVar11 = bVar11 + 1;
         }
-        if (sVar2 == 0) {
+        if (!sVar2) {
             DAT_BuildingsState::instance.buildings[iVar7].state = 0;
             DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0;
@@ -82,7 +82,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 1;
         } else {
             sVar2 = DAT_BuildingsState::instance.buildings[iVar7].state;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 1;
             } else {
@@ -183,7 +183,7 @@ namespace Map {
             }
         LAB_0041d7da:
             sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].state;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].killingPitField == 7) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].state = 1;
                 }
@@ -209,12 +209,12 @@ namespace Map {
         iVar10 = DAT_CurrentBuildingID::instance;
         iVar7 = DAT_CurrentBuildingID::instance * 0x32c;
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field117_0x11a;
-        if (sVar2 == 0) {
+        if (!sVar2) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraAnimationFrame1 = 0;
             DAT_BuildingsState::instance.buildings[iVar10].extraAnimationSprite2 = 0x7a;
         LAB_0041d999:
             sVar2 = DAT_BuildingsState::instance.buildings[iVar10].field117_0x11a;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 if (DAT_BuildingsState::instance.buildings[iVar10].killingPitField == 7) {
                     DAT_BuildingsState::instance.buildings[iVar10].field117_0x11a = 1;
                 }
@@ -308,7 +308,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar10].extraAnimationSprite3 = 0x7b;
         } else {
             sVar2 = DAT_BuildingsState::instance.buildings[iVar10].killingPitField;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 piVar1 = &DAT_BuildingsState::instance.buildings[iVar10].extraAnimationFrame2;
                 *piVar1 = *piVar1 + 1;
                 bVar8 = DAT_BuildingDefinedData::instance
@@ -534,7 +534,7 @@ namespace Map {
                             DAT_BuildingsState::ptr)(buildingID, DAT_BuildingsState::instance.buildings[buildingID].uid,
                             Game::Resources::RT_STONE),
                         iVar7 < 0x2f)) {
-                    if (bVar9 == 0) {
+                    if (!bVar9) {
                         DAT_BuildingsState::instance.buildings[iVar10].killingPitField = 0;
                     } else {
                         DAT_BuildingsState::instance.buildings[iVar10].killingPitField = 2 - (ushort)((uVar6 & 3) != 1);
@@ -557,7 +557,7 @@ namespace Map {
             goto LAB_0041e1d9;
         }
         sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field119_0x11e;
-        if (sVar2 == 0) {
+        if (!sVar2) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].extraAnimationFrame3 = 0;
             DAT_BuildingsState::instance.buildings[iVar10].extraAnimationSprite4 = 0xc1;
         } else if (sVar2 == 1) {
@@ -652,7 +652,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar10].extraAnimationFrame3 = 0;
         }
         sVar2 = DAT_BuildingsState::instance.buildings[iVar10].field119_0x11e;
-        if (sVar2 == 0) {
+        if (!sVar2) {
             if (DAT_BuildingsState::instance.buildings[iVar10].field117_0x11a == 6) {
                 DAT_BuildingsState::instance.buildings[iVar10].field119_0x11e = 1;
             }

@@ -28,12 +28,12 @@ namespace Map {
                 DAT_PathFindingState::ptr)(DAT_TribesState::instance.tribes[param_1].owner,
                 (int)((int)(DAT_UnitsState::instance.units[sVar1].x)),
                 (int)((int)(DAT_UnitsState::instance.units[sVar1].y)), (int)((int)(80)));
-            if (iVar2 == 0) {
+            if (!iVar2) {
                 iVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::getGatehouseNearSomethingUnk,
                     DAT_PathFindingState::ptr)(DAT_TribesState::instance.tribes[param_1].owner,
                     (int)((int)(DAT_UnitsState::instance.units[sVar1].x)),
                     (int)((int)(DAT_UnitsState::instance.units[sVar1].y)), 200);
-                if (iVar2 == 0) {
+                if (!iVar2) {
                     return (undefined4)(0);
                 }
             }

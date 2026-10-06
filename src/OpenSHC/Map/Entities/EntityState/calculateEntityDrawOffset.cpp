@@ -31,7 +31,7 @@ namespace Map {
                     _yOffset = (7 - _microYPart) * 2;
                     goto LAB_0040372e;
                 }
-                if (DAT_TileMapState::instance.mapOrientation != 0) {
+                if (DAT_TileMapState::instance.mapOrientation) {
                     _xOffset = _microXPart << 4;
                     _yOffset = _microYPart * 2;
                     goto LAB_0040372e;

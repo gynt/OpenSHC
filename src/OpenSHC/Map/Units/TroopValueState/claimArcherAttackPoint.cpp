@@ -26,12 +26,12 @@ namespace Map {
             sVar1 = DAT_TribesState::instance.tribes[param_1].selectionTargetUnitID;
             iVar3 = MACRO_CALL_MEMBER(
                 Map::Units::TribesState_Func::tribeHasActiveLaddermanUnit, DAT_TribesState::ptr)(param_1);
-            if (iVar3 == 0) {
+            if (!iVar3) {
                 iVar3 = MACRO_CALL_MEMBER(
                     Map::Navigation::PathFindingState_Func::findArcherRelatedAttackInfoIndex,
                     DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)), param_1);
-                if (iVar3 != 0) {
+                if (iVar3) {
                     sVar1 = DAT_TribesState::instance.tribes[param_1].archerRelated;
                     iVar2 = DAT_TribesState::instance.tribes[param_1].uid;
                     DAT_TribesState::instance.tribes[param_1].archerRelated2 = sVar1;

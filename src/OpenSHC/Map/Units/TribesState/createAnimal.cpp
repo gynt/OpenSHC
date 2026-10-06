@@ -45,7 +45,7 @@ namespace Map {
             }
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile + x;
             if (animalType == Commands::M_MAPPER_DEER) {
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U)) {
                     return (dword)(0);
                 }
                 this->tribes[tribeID].tribeType
@@ -53,7 +53,7 @@ namespace Map {
                 unitType = Map::Units::UT_ANTELOPESHDEER;
                 _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 3) + 9;
             } else if (animalType == Commands::M_MAPPER_LION) {
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U)) {
                     return (dword)(0);
                 }
                 this->tribes[tribeID].tribeType
@@ -61,7 +61,7 @@ namespace Map {
                 unitType = Map::Units::UT_LIONSHWOLF;
                 _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 1) + 3;
             } else if (animalType == Commands::M_MAPPER_RABBIT) {
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U)) {
                     return (dword)(0);
                 }
                 this->tribes[tribeID].tribeType
@@ -69,7 +69,7 @@ namespace Map {
                 unitType = Map::Units::UT_RABBIT;
                 _rng2 = ((byte)SEC_RNG::instance.currentNumber2 & 7) + 0xe;
             } else if (animalType == Commands::M_MAPPER_CAMEL) {
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U) != 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x4a5014b1U)) {
                     return (dword)(0);
                 }
                 this->tribes[tribeID].tribeType = ((AITribeType)0x10);
@@ -82,7 +82,7 @@ namespace Map {
                     return (dword)(0);
                 }
                 if (animalType == Commands::M_MAPPER_SEAGULL) {
-                    if ((DAT_TileMapState::instance.LogicLayer[_tile] & 1) == 0) {
+                    if (!(DAT_TileMapState::instance.LogicLayer[_tile] & 1)) {
                         return (dword)(0);
                     }
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::createSeagull, DAT_EntityState::ptr)(
@@ -91,11 +91,11 @@ namespace Map {
                 }
             }
             iVar3 = 0;
-            if (_rng2 != 0) {
+            if (_rng2) {
                 do {
                     unitID = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         0, 0, (int)((int)(x * 8)), (int)((int)(y * 8)), tile, unitType);
-                    if (unitID != 0) {
+                    if (unitID) {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                             unitID, (int)((int)(tribeID)));
                         DAT_UnitsState::instance.units[unitID].substate
@@ -112,7 +112,7 @@ namespace Map {
                             } else if ((bVar2 == 6) || (bVar2 == 7)) {
                                 DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 2;
                             }
-                            if (iVar3 == 0) {
+                            if (!iVar3) {
                                 DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 0;
                             } else if ((iVar3 == 1) || (iVar3 == 2)) {
                                 DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 1;

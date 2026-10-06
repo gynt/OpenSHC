@@ -56,7 +56,7 @@ namespace UI {
                             DAT_00b95b3c::instance = 0;
                         }
                     }
-                } else if ((20000 < (int)(DVar2 - INT_00b960d0::instance)) && (DAT_00b95954::instance == 0)) {
+                } else if ((20000 < (int)(DVar2 - INT_00b960d0::instance)) && (!DAT_00b95954::instance)) {
                     DAT_00b9610c::instance = -1;
                     INT_00b960d0::instance = DVar2;
                 }
@@ -69,8 +69,8 @@ namespace UI {
                 }
             }
             SVar1 = GetAsyncKeyState(VK_DOWN);
-            if (SVar1 != 0) {
-                if (DAT_ModifierKeyState::instance.shift == 0) {
+            if (SVar1) {
+                if (!DAT_ModifierKeyState::instance.shift) {
                     INT_00b960d4::instance = INT_00b960d4::instance + -0x3c;
                 } else {
                     INT_00b960d4::instance = INT_00b960d4::instance + -200;
@@ -98,7 +98,7 @@ namespace UI {
                     / 2);
             if (DAT_00b95b70::instance < 0x20) {
                 timeGetTime();
-                if (DAT_00b95954::instance == 0) {
+                if (!DAT_00b95954::instance) {
                     iVar3 = DAT_MenuHandlerState::instance.x + 800;
                     left = DAT_MenuHandlerState::instance.x;
                     top = DAT_MenuHandlerState::instance.y;
@@ -113,7 +113,7 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(left, top, iVar3, bottom, DAT_00b95b70::instance);
             }
         LAB_0042653a:
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 MACRO_CALL_MEMBER(
                     Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(

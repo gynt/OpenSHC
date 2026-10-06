@@ -48,13 +48,13 @@ namespace Map {
             UnitInstructionType _unitInstructionType;
             _targetUnitID = (int)this->tribes[tribeID].selectionTargetUnitID;
             _buildingIndex_2 = this->tribes[tribeID].someUnitID;
-            if (_buildingIndex_2 == 0) {
+            if (!_buildingIndex_2) {
                 if (this->tribes[tribeID].unitStance == Map::Units::Behavior::USE_AGGRESSIVE) {
                     local_c = 0;
                     do {
                         iVar5 = ((this->tribes[tribeID].someUnitArrayIndex - local_c) + 10) % 10;
                         _unitID = (int)this->tribes[tribeID].someUnitArray[iVar5];
-                        if (_unitID != 0) {
+                        if (_unitID) {
                             if ((((DAT_UnitsState::instance.units[_unitID].logicalState
                                       == Map::Units::ULS_NORMAL)
                                      && (DAT_UnitsState::instance.units[_unitID].dying == 0))
@@ -98,7 +98,7 @@ namespace Map {
                                 .addXgetTile
                         == this->tribes[tribeID].someTile2) {
                         _buildingIndex_2 = this->tribes[tribeID].field168_0x2be;
-                        if (_buildingIndex_2 != 0) {
+                        if (_buildingIndex_2) {
                             this->tribes[tribeID].field168_0x2be = _buildingIndex_2 + -1;
                             goto LAB_0052aa77;
                         }
@@ -182,10 +182,10 @@ namespace Map {
                         MACRO_CALL_MEMBER(
                             Map::Navigation::PathFindingState_Func::aggressiveStanceTargetBuildingAtRange,
                             DAT_PathFindingState::ptr)(_targetUnitID, (int)((int)(15)));
-                        if (DAT_PathFindingState::instance.ALG_ResultTile != 0) {
+                        if (DAT_PathFindingState::instance.ALG_ResultTile) {
                             _buildingIndex_2 = DAT_TileMapState::instance
                                                    .BuildingLayer[DAT_PathFindingState::instance.ALG_ResultTile];
-                            if (_buildingIndex_2 == 0) {
+                            if (!_buildingIndex_2) {
                                 _buildingID = 0;
                                 _unitInstructionType = ((UnitInstructionType)0x25);
                                 _buildingIndex = DAT_PathFindingState::instance.ALG_ResultTile;

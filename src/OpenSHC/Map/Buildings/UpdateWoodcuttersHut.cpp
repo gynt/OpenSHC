@@ -44,7 +44,7 @@ namespace Map {
         }
         iVar6 = MACRO_CALL_MEMBER(AI::AICState_Func::destroyBuildingIfNoWorker, DAT_AICState::ptr)(iVar4);
         iVar4 = DAT_CurrentBuildingID::instance;
-        if (iVar6 == 0) {
+        if (!iVar6) {
             if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field242_0x2c8 != 0) {
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field246_0x2d4 = 0;
             }
@@ -77,13 +77,13 @@ namespace Map {
             iVar6 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
             iVar4 = DAT_BuildingsState::instance.buildings[iVar6].resources[1];
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = 0;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite1 = iVar4 + 0x12 + iVar5;
             }
             iVar4 = DAT_BuildingsState::instance.buildings[iVar6].resources[2];
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = 0;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = iVar4 + 0x15 + iVar5;

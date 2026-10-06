@@ -29,7 +29,7 @@ namespace Map {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 _unitID = 1;
                 do {
-                    if (((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if (((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (!_pUnit->dying))
                         && (_pUnit->ifSelectedThenPlayerID == playerID)) {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                             _unitID, tribeID);

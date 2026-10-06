@@ -45,7 +45,7 @@ namespace UI {
             int blendStrength;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                if ((DAT_GameCore::instance.unlockAllHistoricalCampaigns == 0)
+                if ((!DAT_GameCore::instance.unlockAllHistoricalCampaigns)
                     && (-DAT_GameCore::instance.furthestMission != param_1
                         && (int)DAT_GameCore::instance.furthestMission <= -param_1)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;

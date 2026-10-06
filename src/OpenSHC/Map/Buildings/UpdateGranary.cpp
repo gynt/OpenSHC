@@ -50,7 +50,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         buildingID = DAT_CurrentBuildingID::instance;
-        if ((((((byte)DAT_GameCore::instance.mapTimeInTicks & 3) == 0)
+        if ((((!((byte)DAT_GameCore::instance.mapTimeInTicks & 3))
                  && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
             && (DAT_GameState::instance.playerDataArray[_playerID].someCountdown01 == 0)) {
@@ -157,13 +157,12 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[buildingID].flagSlot.overlayImage = 0;
         DAT_BuildingsState::instance.buildings[buildingID].overlayImageID = 0;
         DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage10 = 0;
-        if ((sVar3 == 0)
-            && (local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[10], local_8 != 0)) {
+        if ((!sVar3) && (local_8 = DAT_BuildingsState::instance.buildings[buildingID].resources[10], local_8)) {
             local_1c = local_8;
         }
         if (DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[1] == 0) {
             iVar8 = DAT_BuildingsState::instance.buildings[buildingID].resources[0xb];
-            if (iVar8 != 0) {
+            if (iVar8) {
                 local_1c = local_1c + iVar8;
             }
         } else {
@@ -171,7 +170,7 @@ namespace Map {
         }
         if (DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[2] == 0) {
             iVar9 = DAT_BuildingsState::instance.buildings[buildingID].resources[0xc];
-            if (iVar9 != 0) {
+            if (iVar9) {
                 local_1c = local_1c + iVar9;
             }
         } else {
@@ -179,7 +178,7 @@ namespace Map {
         }
         if (DAT_GameState::instance.playerDataArray[_playerID].isFoodTypeBanned[3] == 0) {
             iVar6 = DAT_BuildingsState::instance.buildings[buildingID].resources[0xd];
-            if (iVar6 != 0) {
+            if (iVar6) {
                 local_1c = local_1c + iVar6;
             }
         } else {
@@ -273,7 +272,7 @@ namespace Map {
                     }
                 }
             LAB_004155f9:
-                if (iVar9 == 0) {
+                if (!iVar9) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite1 = iVar8;
                 } else if (iVar9 == 1) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite2 = iVar8;

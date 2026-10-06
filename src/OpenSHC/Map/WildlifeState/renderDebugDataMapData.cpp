@@ -34,7 +34,7 @@ namespace Map {
         int iVar8;
         char* textAddress;
         int x1 = x + 2;
-        if (this->DAT_DebugDataMapDataDisplayType == 0) {
+        if (!this->DAT_DebugDataMapDataDisplayType) {
             textAddress = "Connect ";
         } else if (this->DAT_DebugDataMapDataDisplayType == 1) {
             textAddress = "Chimps  ";
@@ -70,7 +70,7 @@ namespace Map {
                 x1, iVar6, x + 0x192, iVar6, (ushort)((int)(COL_WHITE::instance.shortValue)));
             iVar6 = iVar6 + 10;
             iVar7 = iVar7 + -1;
-        } while (iVar7 != 0);
+        } while (iVar7);
         iVar7 = 41;
         iVar6 = x1;
         do {
@@ -79,15 +79,15 @@ namespace Map {
             iVar6 = iVar6 + 10;
             iVar7 = iVar7 + -1;
             iVar8 = 0;
-        } while (iVar7 != 0);
+        } while (iVar7);
         do {
             for (iVar6 = 0; iVar6 < 40; iVar6++) {
                 if (0 < this->grid[iVar6][iVar8].firstMember) {
                     undefined2 uVar5 = COL_BLUE::instance.shortValue;
-                    if (this->DAT_DebugDataMapDataDisplayType == 0) {
+                    if (!this->DAT_DebugDataMapDataDisplayType) {
                         uint uVar1 = this->grid[iVar6][iVar8].separateAreaID;
                         uint uVar3 = uVar1 & 7;
-                        if ((((uVar1 == 0) || (uVar5 = COL_RED::instance.shortValue, uVar3 == 1))
+                        if ((((!uVar1) || (uVar5 = COL_RED::instance.shortValue, uVar3 == 1))
                                 || ((uVar5 = COL_BRIGHT_YELLOW::instance.shortValue,
                                     uVar3 == 2
                                         || ((uVar5 = COL_MODERATE_GREEN::instance.shortValue,
@@ -113,7 +113,7 @@ namespace Map {
                             joined_r0x0052c335:
                                 iVar2 = y + iVar8 * 10;
                                 iVar4 = x1 + iVar6 * 10;
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     uVar5 = COL_LIME::instance.shortValue;
                                 }
                                 goto LAB_0052c533;
@@ -141,7 +141,7 @@ namespace Map {
                                 && (uVar5 = COL_RED::instance.shortValue, this->grid[iVar6][iVar8].field12_0x30 == 0)) {
                                 iVar7 = this->grid[iVar6][iVar8].field3_0xc;
                             joined_r0x0052c3aa:
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     iVar7 = this->grid[iVar6][iVar8].field13_0x34;
                                     uVar5 = COL_BRIGHT_YELLOW::instance.shortValue;
                                     goto joined_r0x0052c335;
@@ -169,7 +169,7 @@ namespace Map {
                                 iVar7 = this->grid[iVar6][iVar8].casDisRelated2;
                                 uVar5 = COL_BRIGHT_YELLOW::instance.shortValue;
                             joined_r0x0052c46b:
-                                if (iVar7 == 0) {
+                                if (!iVar7) {
                                     iVar7 = this->grid[iVar6][iVar8].field13_0x34;
                                     uVar5 = COL_BLACK::instance.shortValue;
                                     goto joined_r0x0052c335;

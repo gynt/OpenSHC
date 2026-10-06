@@ -59,7 +59,7 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            if (DAT_00b960dc::instance != 0) {
+            if (DAT_00b960dc::instance) {
                 DAT_GameCore::instance.hasMenuRenderedUnk = 1;
                 if (DAT_00b960dc::instance < 0) {
                     DVar2 = timeGetTime();
@@ -123,7 +123,7 @@ namespace UI {
                         case Map::MT_JUST_BUILD:
                             DAT_MapPropertiesState::instance.scenarionMissionType = 0;
                         }
-                        if (((DAT_GameCore::instance.mapType == 0)
+                        if (((!DAT_GameCore::instance.mapType)
                                 && (DAT_MapPropertiesState::instance.scenarionMissionType
                                     == DAT_MapMissionType::instance))
                             && ((int)DAT_GameCore::instance.savedMapLocked < 2)) {
@@ -135,7 +135,7 @@ namespace UI {
                                 IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                                 DAT_ResourceManager::ptr)(id);
                             iVar4 = MACRO_CALL(OS_Func::__stricmp)(pcVar6, (char const*)((int)(pcVar3)));
-                            if (iVar4 == 0) {
+                            if (!iVar4) {
                                 iVar7 = iVar8;
                             }
                             iVar8 = iVar8 + 1;
@@ -148,7 +148,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = -1;
                 DAT_GameSynchronyState::instance.skirmishRelated1 = 0;
                 DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber = iVar8;
-                if (iVar8 != 0) {
+                if (iVar8) {
                     pcVar6 = DAT_GameCore::instance.standaloneFilename;
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = 0;
                     do {
@@ -184,7 +184,7 @@ namespace UI {
             MACRO_CALL_MEMBER(
                 UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
                 iVar7, top, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x280, bottom, (iVar5 / 32) + 0x20);
-            if (DAT_00b960dc::instance == 0) {
+            if (!DAT_00b960dc::instance) {
                 iVar8 = iVar8 + 0x295;
                 iVar7 = iVar7 + -1;
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(

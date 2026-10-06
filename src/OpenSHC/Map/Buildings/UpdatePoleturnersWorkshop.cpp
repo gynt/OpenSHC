@@ -57,7 +57,7 @@ namespace Map {
         sVar4 = DAT_BuildingsState::instance.buildings[buildingID].workers[0];
         piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].countFletchersPoleturners;
         *piVar1 = *piVar1 + 1;
-        DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = (ushort)(sVar4 != 0);
+        DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = (ushort)(sVar4);
         if ((char)((char)DAT_BuildingsState::instance.buildings[buildingID].uid
                 + (char)DAT_GameCore::instance.mapTimeInTicks)
             == '\0') {
@@ -72,7 +72,7 @@ namespace Map {
         RVar5 = DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext;
         if (RVar5 == Game::Resources::RT_SPEAR) {
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
-            if (sVar3 == 0) {
+            if (!sVar3) {
                 if ((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
                     && ((((sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex,
                               sVar3 == 7 || (sVar3 == 0x27))
@@ -96,7 +96,7 @@ namespace Map {
                 }
                 bVar10 = '\0' >= (char)bVar7;
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0;
                     DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                 } else if (sVar3 < 0x1e) {
@@ -120,7 +120,7 @@ namespace Map {
             if (bVar10) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
                 sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
                 } else {
                     bVar10 = sVar3 == 1;
@@ -135,7 +135,7 @@ namespace Map {
             }
         } else if (RVar5 == Game::Resources::RT_PIKE) {
             sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
-            if (sVar3 == 0) {
+            if (!sVar3) {
                 bVar7 = DAT_BuildingDefinedData::instance
                             .PoleturnersWorkshopAnimationFrames1[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
                 if ('\0' < (char)bVar7) {
@@ -143,7 +143,7 @@ namespace Map {
                 }
                 bVar10 = (char)bVar7 < '\x01';
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0;
                     DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                 } else if (sVar3 < 0x1e) {
@@ -204,7 +204,7 @@ namespace Map {
             if (bVar10) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
                 sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
                 } else if (sVar3 == 1) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 2;
@@ -227,7 +227,7 @@ namespace Map {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0x1f;
         }
         iVar8 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9);
-        if (iVar8 != 0) {
+        if (iVar8) {
             UVar6 = DAT_UnitsState::instance.units[iVar8].state.generic;
             if (UVar6 == Map::Units::States::US_FIRE_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9) = 1;

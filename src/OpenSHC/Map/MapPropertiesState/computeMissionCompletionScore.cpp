@@ -264,7 +264,7 @@ namespace Map {
         iVar6 = 0;
         this->monthsRemaining = 0;
         this->timeBonusScore = 0;
-        if (iVar5 != 0) {
+        if (iVar5) {
             uVar4 = ((iVar5 - DAT_GameState::instance.mapAndTime.year) * 0xc - DAT_GameState::instance.mapAndTime.month)
                 + local_4;
             this->monthsRemaining = uVar4 & ((int)uVar4 < 1) - 1;
@@ -300,13 +300,13 @@ namespace Map {
             } while ((int)psVar8 < 0x1651422);
             iVar5 = DAT_GameState::instance.playerDataArray[iVar5].weightedLosses;
             iVar6 = iVar5 + iVar6;
-            if (iVar6 != 0) {
+            if (iVar6) {
                 this->field123_0x145bc = (iVar5 * 100) / iVar6;
                 this->field122_0x145b8 = (100 - this->field123_0x145bc) * 100;
                 this->missionScore = this->missionScore + this->field122_0x145b8;
             }
         }
-        if (DAT_GameCore::instance.mapU4Int1 != 0) {
+        if (DAT_GameCore::instance.mapU4Int1) {
             iVar5 = 0;
             psVar8 = &DAT_UnitsState::instance.units[1].owner;
             do {

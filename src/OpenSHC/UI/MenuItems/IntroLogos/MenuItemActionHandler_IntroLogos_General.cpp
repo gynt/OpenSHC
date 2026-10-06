@@ -22,12 +22,12 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00424990
         void IntroLogos::MenuItemActionHandler_IntroLogos_General(int unused, ...)
         {
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 BOOLEnum_00b98404::instance = TRUE;
             }
             if ((DAT_MouseState::instance.draggingStopped != FALSE) && (BOOLEnum_00b98404::instance != FALSE)) {
                 BOOLEnum_00b98404::instance = FALSE;
-                if (DAT_IntroStep::instance == 0) {
+                if (!DAT_IntroStep::instance) {
                     DAT_IntroTransitionStep::instance = 0;
                     DAT_IntroBlendStrength::instance = 0;
                     DAT_IntroStep::instance = 1;

@@ -85,13 +85,16 @@ namespace Map {
                 local_8 = local_8 + 1;
                 _tile = *local_24 + local_18;
                 bVar2 = false;
-                if (((undefined2)wallType == Commands::M_MAPPER_STAIR) && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) != 0))
+                if (((undefined2)wallType == Commands::M_MAPPER_STAIR)
+                    && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)))
                     goto LAB_00503440;
                 bVar1 = false;
-                if (((undefined2)wallType == Commands::M_MAPPER_WALL) && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_CRENEL) != 0)) {
+                if (((undefined2)wallType == Commands::M_MAPPER_WALL)
+                    && ((this->LogicLayer[_tile] & Map::LogicHelpers::L_CRENEL))) {
                     bVar1 = true;
                 }
-                if ((((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) || (this->DamageLayer[_tile] != 0))
+                if (((!(this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE))
+                        || (this->DamageLayer[_tile] != 0))
                     || (bVar1)) {
                     if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                         MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::addWallPlacementInfoForTile,
@@ -122,11 +125,11 @@ namespace Map {
                             DAT_UnitsState::instance.units[_unitID].updateTickTracker = 0;
                             DAT_UnitsState::instance.units[_unitID].disappearFadeAlphaCountdown = 0;
                         }
-                        if ((this->LogicLayer[_tile] & 8U) != 0) {
+                        if ((this->LogicLayer[_tile] & 8U)) {
                             this->LogicLayer[_tile] = this->LogicLayer[_tile] & ~(Map::LogicHelpers::L_PLAIN2_AND_PITCH);
                             this->HeightLayer[_tile] = this->HeightLayer[_tile] + 4;
                         }
-                        if (((this->LogicLayer[_tile] & Map::LogicHelpers::L_TREE) != 0)
+                        if (((this->LogicLayer[_tile] & Map::LogicHelpers::L_TREE))
                             && (_treeID = (int)this->OrganismLayer[_tile], _treeID < 2000)) {
                             switch (DAT_LandscapeState::instance.trees[_treeID].treeType) {
                             case ((TreeType)5):
@@ -165,8 +168,8 @@ namespace Map {
                                 this->HeightLayer[_tile] = this->HeightLayer[_tile] + 0x44;
                             }
                             bVar2 = BVar3 != FALSE;
-                            if (((local_18 & 1) == 0) || ((y1 & 1) != 0)) {
-                                if (((local_18 & 1) == 0) && ((y1 & 1) != 0)) {
+                            if ((!(local_18 & 1)) || ((y1 & 1))) {
+                                if ((!(local_18 & 1)) && ((y1 & 1))) {
                                     this->LogicLayer[_tile] = this->LogicLayer[_tile] | 4194304;
                                 }
                             } else {
@@ -234,7 +237,7 @@ namespace Map {
                     }
                 } else {
                     iVar5 = 1;
-                    if (uVar4 != 0) {
+                    if (uVar4) {
                         if ((int)local_18 < (int)x2) {
                             x1 = x1 + 1;
                             local_28 = local_28 - 1;
@@ -245,7 +248,7 @@ namespace Map {
                         }
                         local_18 = local_18 + iVar5;
                     }
-                    if (_tile != 0) {
+                    if (_tile) {
                         if ((int)y1 < (int)y2) {
                             y1 = y1 + 1;
                             local_24 = local_24 + 3;
@@ -265,7 +268,7 @@ namespace Map {
                 if (0xf < local_14) {
                     local_14 = local_14 + -0x10;
                 }
-            } while (((local_18 != x2) || (y1 != y2)) || (local_10 != 0));
+            } while (((local_18 != x2) || (y1 != y2)) || (local_10));
             if ((undefined2)wallType == Commands::M_MAPPER_WOODWALL) {
                 _count2 = 0;
                 _count1 = _normalWallCountUnk;

@@ -98,8 +98,8 @@ namespace Synchrony {
         int _tribeIndex;
         int _heatMapIndex;
         int _aivIndex;
-        if (this->DAT_GameHalted == 0) {
-            if (this->DAT_HashCountdown == 0) {
+        if (!this->DAT_GameHalted) {
+            if (!this->DAT_HashCountdown) {
                 this->HASH_HashTotal[this->currentPlayerSlotID] = 0;
                 this->DAT_PlayerMatchTimes[this->currentPlayerSlotID] = DAT_GameCore::instance.mapTimeInTicks;
                 _hashSubTotal = 0;
@@ -518,7 +518,7 @@ namespace Synchrony {
                 this->DAT_PlayerMatchTimes[this->currentPlayerSlotID * 0xc + 0x16] = _hashSubTotal;
                 this->HASH_HashTotal[this->currentPlayerSlotID]
                     = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
-                if (dontSendSyncCommand == 0) {
+                if (!dontSendSyncCommand) {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                         Commands::GCT_ANNOUNCE_PLAYER_INFORMATION_AVAILABLE_AIVSSPECIALTRANSMITLOGIC);
                 }

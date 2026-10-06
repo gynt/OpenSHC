@@ -33,8 +33,8 @@ namespace UI {
             UnitType UVar3;
             int extraout_ECX;
             undefined4 uVar4;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus) {}
+            if (DAT_GameSynchronyState::instance.saveRelated) {}
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
                 != 0) {}
@@ -90,7 +90,7 @@ namespace UI {
             case 5:
                 uVar2 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource, DAT_UnitsState::ptr)();
-                if (uVar2 != 0) {
+                if (uVar2) {
                     DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                     DAT_UnitsState::instance.field5_0x14 = 0x14;
                     DAT_UnitsState::instance.unitControlsRelated = 0x14;
@@ -99,7 +99,7 @@ namespace UI {
                 }
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::selectionContainsTunnelersOnly, DAT_UnitsState::ptr)();
-                if (iVar1 != 0) {
+                if (iVar1) {
                     MACRO_CALL(
                         UI::MenuItems::General_Func::MenuItemActionHandler_General_ToolbarButtonPressed)(
                         Commands::M_MAPPER_TUNNEL_CONSTRUCTION);
@@ -132,7 +132,7 @@ namespace UI {
             case 0x14:
                 uVar2 = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                if (uVar2 == 0) {
+                if (!uVar2) {
                     DAT_StopHandlingMenuItems::instance = 0;
                 }
                 DAT_UnitsState::instance.unitControlsRelated = 0x14;

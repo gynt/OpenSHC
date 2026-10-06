@@ -27,7 +27,7 @@ namespace Map {
             if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 psVar1 = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((psVar1->owner == param_1) && (psVar1->ifSelectedThenPlayerID != 0)) {
+                    if ((psVar1->owner == param_1) && (psVar1->ifSelectedThenPlayerID)) {
                         if ((short)psVar1->unitType == param_2) {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,
                                 this)(unitID, (int)((int)(psVar1->tribeID)));

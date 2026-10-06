@@ -49,7 +49,7 @@ namespace UI {
                         piVar2 = piVar2 + 1;
                         iVar1 = iVar1 + 1;
                         param_1 = param_1 + -1;
-                    } while (param_1 != 0);
+                    } while (param_1);
                 }
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
                     DAT_GameSynchronyState::ptr)();

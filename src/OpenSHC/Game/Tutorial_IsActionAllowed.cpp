@@ -19,7 +19,7 @@ BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)
 {
     int iVar1;
     bool bVar2;
-    if (INT_DisableTutorialRestrictions::instance != 0) {
+    if (INT_DisableTutorialRestrictions::instance) {
         return TRUE;
     }
     switch (actionType) {
@@ -30,7 +30,7 @@ BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)
             }
             bVar2 = actionParam == 0x28;
         } else if (DAT_TutorialCurrentStep::instance == 5) {
-            if (DAT_00df5558::instance != 0) {
+            if (DAT_00df5558::instance) {
                 return FALSE;
             }
             bVar2 = actionParam == 0x13;
@@ -61,7 +61,7 @@ BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)
                 return TRUE;
             }
         } else if (DAT_TutorialCurrentStep::instance == 5) {
-            if (((DAT_00df5558::instance == 0) && (actionParam == 0x13)) && (DAT_00df5560::instance == 0)) {
+            if (((!DAT_00df5558::instance) && (actionParam == 0x13)) && (!DAT_00df5560::instance)) {
                 return TRUE;
             }
         } else {
@@ -75,7 +75,7 @@ BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)
                     if (actionParam != 1) {
                         return FALSE;
                     }
-                    if (DAT_00df5560::instance != 0) {
+                    if (DAT_00df5560::instance) {
                         return FALSE;
                     }
                     return TRUE;

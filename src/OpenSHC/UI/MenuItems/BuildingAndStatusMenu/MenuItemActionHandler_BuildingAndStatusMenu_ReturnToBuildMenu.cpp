@@ -35,11 +35,11 @@ namespace UI {
                                              .buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                                              .buildingType,
                 1, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID));
-            if (DAT_MouseState::instance.rightClickStart != 0) {
+            if (DAT_MouseState::instance.rightClickStart) {
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_BUILD_MENU, 0);
             }
-            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {}
+            if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {}
             if (DAT_GameCore::instance.activeMenuTab.inBuildingTab == DE::SHCDE::IBM_INSIDE_BARRACKS) {
                 if ((0x14b < (int)DAT_TileMapState::instance.currentMapperCommand)
                     && ((int)DAT_TileMapState::instance.currentMapperCommand < 0x153)) {}
@@ -62,7 +62,7 @@ namespace UI {
                 if (bVar1) {}
             }
         LAB_00440340:
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     UI::Enums::MVT_BUILD_MENU, 100);
             }

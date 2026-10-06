@@ -29,7 +29,7 @@ namespace Audio {
             } else {
                 FLOAT_00b986ec::instance = 0.0f;
             }
-            if (DAT_00b986f0::instance != 0 && DAT_SpeechDefinedData::instance.field10_0x49d4b4 == -1) {
+            if (DAT_00b986f0::instance && DAT_SpeechDefinedData::instance.field10_0x49d4b4 == -1) {
                 DAT_00b986f0::instance = 0;
             } else {
                 if (DAT_00b986f0::instance == 1) {

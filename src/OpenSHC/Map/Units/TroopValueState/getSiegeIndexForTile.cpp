@@ -21,7 +21,7 @@ namespace Map {
                 if (piVar1->tile == tile) {
                     return _index;
                 }
-                if ((piVar1->tile == 0) && (_index2 == 0)) {
+                if ((!piVar1->tile) && (!_index2)) {
                     _index2 = _index;
                     DAT_TroopValueState::instance.attackInfo.tentPointsNext = _index;
                 }

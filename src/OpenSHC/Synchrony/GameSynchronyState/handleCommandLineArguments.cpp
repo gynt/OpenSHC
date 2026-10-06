@@ -117,7 +117,7 @@ namespace Synchrony {
                         } while (_char != '\0');
                         _isConnect
                             = MACRO_CALL(OS_Func::__stricmp)("+connect", (char const*)((int)(_candidates[0])));
-                        if (_isConnect == 0) {
+                        if (!_isConnect) {
                             _pConnectTarget = _candidates[1];
                             this->useTCPIP = TRUE;
                             do {
@@ -181,7 +181,7 @@ namespace Synchrony {
                             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                                 DAT_UserTextHandlerState::ptr)(_candidates[3]);
                             _candidateIndex = local_408;
-                            if (this->connectPort != 0) {
+                            if (this->connectPort) {
                                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex,
                                     DAT_UserTextHandlerState::ptr)(6);
                                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
@@ -191,11 +191,11 @@ namespace Synchrony {
                         } else {
                             _charIndex3 = MACRO_CALL(OS_Func::__stricmp)(
                                 "+host", (char const*)((int)(_candidates[0])));
-                            if (_charIndex3 == 0) {
+                            if (!_charIndex3) {
                                 this->useTCPIP = TRUE;
                                 this->willHost = 1;
                                 this->connectPort = atol(_candidates[1]);
-                                if (this->connectPort != 0) {
+                                if (this->connectPort) {
                                     MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex,
                                         DAT_UserTextHandlerState::ptr)(6);
                                     MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
@@ -204,7 +204,7 @@ namespace Synchrony {
                             } else {
                                 _charIndex3 = MACRO_CALL(OS_Func::__stricmp)(
                                     "+name", (char const*)((int)(_candidates[0])));
-                                if (_charIndex3 == 0) {
+                                if (!_charIndex3) {
                                     _pCandidatePlus1 = _candidates[1];
                                     _charIndex3 = 0x191dc80 - (int)_pCandidatePlus1;
                                     do {
@@ -273,7 +273,7 @@ namespace Synchrony {
                         Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
                 }
                 this->isHost = this->willHost;
-                if (this->willHost == 0) {
+                if (!this->willHost) {
                     this->nextModalDialog = 21;
                     /*
                       switching to this menu triggers a bunch of multiplayer logic via the render   functions

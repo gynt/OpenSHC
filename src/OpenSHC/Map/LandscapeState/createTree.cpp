@@ -31,7 +31,7 @@ namespace Map {
         _treeID = 1;
         _ptrState = &this->trees[1];
         do {
-            if (_ptrState->state == 0)
+            if (!_ptrState->state)
                 break;
             if (1999 < _treeID) {
                 return 0;

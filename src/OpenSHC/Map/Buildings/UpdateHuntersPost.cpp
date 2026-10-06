@@ -55,13 +55,13 @@ namespace Map {
             DAT_CurrentBuildingID::instance);
         iVar10 = DAT_CurrentBuildingID::instance;
         iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[0];
-        if ((iVar9 != 0)
+        if ((iVar9)
             && (DAT_UnitsState::instance.units[iVar9].uid
                 == DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerUID[0])) {
             bVar8 = true;
         }
         iVar9 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[1];
-        if (((iVar9 != 0)
+        if (((iVar9)
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerUID[1]))
             && ((UVar3 = DAT_UnitsState::instance.units[iVar9].unitType,
@@ -85,7 +85,7 @@ namespace Map {
                 DAT_BuildingsState::ptr)(DAT_CurrentBuildingID::instance, 2, FALSE);
             sVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryX;
             iVar10 = DAT_CurrentBuildingID::instance;
-            if (((sVar4 != 0)
+            if (((sVar4)
                     && (sVar5 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryY,
                         sVar5 != 0))
                 && (iVar9 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
@@ -94,7 +94,7 @@ namespace Map {
                         (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                 .terrainHeightUnk)),
                         Map::Units::UT_HUNTERDOG),
-                    iVar10 = DAT_CurrentBuildingID::instance, iVar9 != 0)) {
+                    iVar10 = DAT_CurrentBuildingID::instance, iVar9)) {
                 sVar4 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryY;
                 DAT_UnitsState::instance.units[iVar9].targetX_2
                     = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryX;
@@ -121,7 +121,7 @@ namespace Map {
         if (DAT_BuildingsState::instance.buildings[iVar10].renderAnimation == 0)
             goto LAB_004237a8;
         sVar4 = DAT_BuildingsState::instance.buildings[iVar10].state;
-        if (sVar4 == 0) {
+        if (!sVar4) {
             bVar2 = DAT_BuildingDefinedData::instance
                         .HuntersPostAnimationFrames1[DAT_BuildingsState::instance.buildings[iVar10].animationIndex];
             if ('\0' < (char)bVar2) {
@@ -179,7 +179,7 @@ namespace Map {
     LAB_004236b9:
         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
         sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
-        if (sVar4 == 0) {
+        if (!sVar4) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
         } else if (sVar4 == 1) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 2;

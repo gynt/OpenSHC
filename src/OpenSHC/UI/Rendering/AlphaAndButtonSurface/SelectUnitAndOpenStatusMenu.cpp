@@ -31,9 +31,8 @@ namespace UI {
                     && (DAT_UnitsState::instance.units[unitIndex].isSelectable_OR_matchTime == 0))
                 && (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
                          && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
-                    && ((DAT_GameCore::instance.gamePausedLogical == 0
-                        && (DAT_UnitsState::instance.units[unitIndex].unitType
-                            != Map::Units::UT_S_TOWER)))))) {
+                    && ((!DAT_GameCore::instance.gamePausedLogical
+                        && (DAT_UnitsState::instance.units[unitIndex].unitType != Map::Units::UT_S_TOWER)))))) {
                 MACRO_CALL_MEMBER(
                     Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu, DAT_TextEditorState::ptr)();
                 DAT_GameCore::instance.buildingandstatusmenuMenuTabToSwitchTo = 0x46;

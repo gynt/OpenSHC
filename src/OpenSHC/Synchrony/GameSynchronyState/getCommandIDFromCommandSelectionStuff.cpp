@@ -76,7 +76,7 @@ namespace Synchrony {
                         _nextPlayerID = _selectedPlayerIDAddress[2];
                         _commandID = (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0];
                         _playerID = *_selectedPlayerIDAddress;
-                        if (_nextPlayerID == 0) {
+                        if (!_nextPlayerID) {
                             return 0;
                         }
                         if (_nextPlayerID < _playerID) {

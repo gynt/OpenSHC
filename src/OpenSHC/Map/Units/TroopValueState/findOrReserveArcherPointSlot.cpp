@@ -21,7 +21,7 @@ namespace Map {
                 if (*piVar2 == param_1) {
                     return iVar1;
                 }
-                if ((*piVar2 == 0) && (iVar3 == 0)) {
+                if ((*piVar2 == 0) && (!iVar3)) {
                     iVar3 = iVar1;
                     DAT_TroopValueState::instance.attackInfo.archerPointsNext = iVar1;
                 }

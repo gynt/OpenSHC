@@ -64,9 +64,8 @@ namespace UI {
                     BVar2 = 0xccfaff;
                 }
                 alignment = OpenSHC::Text::TTA_CENTER;
-                textAddress = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_SCENARIO, (int)((int)(0xad - (uint)(sVar1 != 0))));
+                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, (int)((int)(0xad - (uint)(sVar1))));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, xParam, yParam, alignment, BVar2, fontSize, keepOffsetX, blendStrength);
             }

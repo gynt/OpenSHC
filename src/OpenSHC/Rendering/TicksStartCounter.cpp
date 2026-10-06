@@ -18,7 +18,7 @@ void Rendering::TicksStartCounter()
 {
     BOOL _success;
     _success = QueryPerformanceFrequency(DAT_PerformanceCounterFrequency::ptr);
-    if (_success == 0) {
+    if (!_success) {
         DAT_HasNoQueryPerformanceFrequency::instance = TRUE;
         TIME_QueryMargin::instance = 0x10;
         TIME_PreviousQuery::instance = timeGetTime();

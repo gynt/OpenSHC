@@ -56,12 +56,12 @@ namespace UI {
                     "other_warning12.wav");
             }
             short _currentEmployeeCount = DAT_BuildingsState::instance.buildings[buildingIndexUnk].currentEmployeeCount;
-            if ((_currentEmployeeCount != 0)
+            if ((_currentEmployeeCount)
                 || (DAT_BuildingsState::instance.buildings[buildingIndexUnk].currentlyNeededEmployeeCount != 0)) {
                 _requiredEmployeeCount
                     = DAT_BuildingsState::instance.buildings[buildingIndexUnk].currentlyNeededEmployeeCount;
                 if (0 < _requiredEmployeeCount) {
-                    if (_currentEmployeeCount == 0) {
+                    if (!_currentEmployeeCount) {
                         /*
                           "This building has no labor sire"
                          */

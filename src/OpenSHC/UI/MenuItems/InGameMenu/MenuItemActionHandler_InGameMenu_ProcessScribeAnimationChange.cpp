@@ -24,7 +24,7 @@ namespace UI {
             iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {}
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {}
-            if (DAT_GameCore::instance.taxesSettingUnk != 0) {
+            if (DAT_GameCore::instance.taxesSettingUnk) {
                 _currentTime = timeGetTime();
                 if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {}
                 DAT_GameCore::instance.taxestimeUnk = _currentTime;
@@ -81,14 +81,14 @@ namespace UI {
             default:
                 goto switchD_00433499_caseD_4;
             }
-            if (iVar2 == 0) {
+            if (!iVar2) {
                 DAT_GameCore::instance.taxesSettingUnk = 0;
                 iVar2 = DAT_GameCore::instance.scribeAnimationFrame;
             }
         switchD_00433499_caseD_4:
             DAT_GameCore::instance.scribeAnimationFrame = iVar2;
             if ((DAT_GameCore::instance.scribeAnimationFrameCopy != DAT_GameCore::instance.scribeAnimationFrame)
-                || (DAT_GameState::instance.mapAndTime.monthChanged != 0)) {
+                || (DAT_GameState::instance.mapAndTime.monthChanged)) {
                 DAT_GameCore::instance.countdown = 1;
                 DAT_GameCore::instance.scribeAnimationFrameCopy = DAT_GameCore::instance.scribeAnimationFrame;
             }

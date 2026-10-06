@@ -47,11 +47,11 @@ namespace UI {
                     _surfacePixel = _surfacePixel + 1;
                     j = j + -1;
                     _potraitDataBegin = _color + 2;
-                } while (j != 0);
+                } while (j);
                 _potraitDataBegin = _color + 0x42;
                 i = i + -1;
                 _surface = _surface + _byteWidth / 2;
-            } while (i != 0);
+            } while (i);
         }
 
     }

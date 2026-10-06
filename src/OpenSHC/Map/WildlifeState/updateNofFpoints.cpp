@@ -69,7 +69,7 @@ namespace Map {
                 uVar6 = 0xf;
                 piVar5 = local_4;
                 do {
-                    if ((piVar5->field27_0x6c != 0) && (0 < piVar5->firstMember)) {
+                    if ((piVar5->field27_0x6c) && (0 < piVar5->firstMember)) {
                         uVar1 = uVar6 - 10;
                         _area = DAT_TileMapState::instance.MacroLayer[uVar6
                             + *(int*)((int)&DAT_ViewportRenderState::instance.translationMatrix[0].addXgetTile

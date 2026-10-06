@@ -27,7 +27,7 @@ namespace UI {
             iVar3 = 0;
             if (0 < iVar2) {
                 do {
-                    if (iVar3 == 0) {
+                    if (!iVar3) {
                         iVar4 = 1;
                     } else {
                         iVar4 = (-(uint)(iVar3 != iVar2 + -0x18) & 0xfffffffa) + 0xd;
@@ -36,7 +36,7 @@ namespace UI {
                     if (0 < iVar1) {
                         do {
                             imageID = iVar4;
-                            if (iVar5 == 0) {
+                            if (!iVar5) {
                             LAB_004714da:
                                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3,

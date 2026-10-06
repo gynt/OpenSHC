@@ -92,7 +92,7 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::pruneStaleArcherPoints, this)();
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::scanForSupportPoints, this)();
             MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::pruneStaleSupportPoints, this)();
-            if (param_1 != 0) {
+            if (param_1) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::scanForSiegeTentPoints, this)();
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::pruneStaleTentPoints, this)();
             }

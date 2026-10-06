@@ -378,7 +378,7 @@ namespace UI {
                 iVar4 = DAT_MapPropertiesState::instance.SEC_Section1090;
                 iVar1 = iVar1 + 1;
             } while (iVar1 < 0x27);
-            if ((INT_ARRAY_00ed2630::instance[0x27] != 0) && (DAT_MapPropertiesState::instance.SEC_Section1081 != 0)) {
+            if ((INT_ARRAY_00ed2630::instance[0x27] != 0) && (DAT_MapPropertiesState::instance.SEC_Section1081)) {
                 iVar11 = 0;
                 BVar10 = FALSE;
                 iVar9 = 0x12;
@@ -405,7 +405,7 @@ namespace UI {
                 if (iVar4 < iVar1) {
                     iVar1 = iVar4;
                 }
-                if (iVar1 != 0) {
+                if (iVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRect,
                         DAT_TextureRenderCoreObject::ptr)(
                         0, 0, (iVar1 * 0xfa) / iVar4 + 2 + iVar6, DAT_WindowAndDirectDraw::instance.resolutionY);
@@ -423,7 +423,7 @@ namespace UI {
             }
             iVar5 = 0xf;
             if ((((INT_ARRAY_00ed2630::instance[8] != 0) || (INT_ARRAY_00ed2630::instance[0xf] != 0))
-                    || (INT_00ec02e8::instance != 0))
+                    || (INT_00ec02e8::instance))
                 && (iVar1 = 0, 0 < DAT_MapPropertiesState::instance.eventsCount)) {
                 piVar3 = &DAT_MapPropertiesState::instance.scenarioEvents[0].header.tl_type;
                 iVar4 = local_4;
@@ -449,7 +449,7 @@ namespace UI {
                     iVar1 = (DAT_MapPropertiesState::instance.scenarioEvents[local_4].header.month
                                 + DAT_MapPropertiesState::instance.scenarioEvents[local_4].header.year * 0xc)
                         - iVar1;
-                    if (DAT_GameCore::instance.field22_0x64 == 0) {
+                    if (!DAT_GameCore::instance.field22_0x64) {
                         iVar4 = 0;
                     }
                     iVar12 = 0;
@@ -477,7 +477,7 @@ namespace UI {
                     if (iVar1 < iVar4) {
                         iVar4 = iVar1;
                     }
-                    if (iVar4 != 0) {
+                    if (iVar4) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRect,
                             DAT_TextureRenderCoreObject::ptr)(
                             0, 0, (iVar4 * 0xfa) / iVar1 + 2 + iVar6, DAT_WindowAndDirectDraw::instance.resolutionY);
@@ -510,7 +510,7 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
             DAT_TextureRenderCoreObject::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x2d + iVar5,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + iVar1 + 0x2d + iVar5);
-        if (DAT_GameCore::instance.descriptionUseStringTable == 0) {
+        if (!DAT_GameCore::instance.descriptionUseStringTable) {
             iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                 DAT_GameCore::instance.temporaryTextBufferOfSize1000, 0, 0, 0x2d0, 0, 0, 1);
@@ -524,7 +524,7 @@ namespace UI {
             iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28;
             pcVar2 = DAT_GameCore::instance.temporaryTextBufferOfSize1000;
         } else {
-            if (DAT_GameCore::instance.descriptionStringTableIndex == 0)
+            if (!DAT_GameCore::instance.descriptionStringTableIndex)
                 goto LAB_004d8182;
             iVar12 = 1;
             iVar11 = 0;

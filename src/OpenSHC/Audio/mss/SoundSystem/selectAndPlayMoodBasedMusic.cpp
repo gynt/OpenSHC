@@ -62,7 +62,7 @@ namespace Audio {
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_MAIN);
                     break;
                 case 1:
-                    if (DAT_SoundEffectsHelperData1::instance.field8_0x3c != 0) {
+                    if (DAT_SoundEffectsHelperData1::instance.field8_0x3c) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_AVG2);
                         break;
                     }
@@ -77,7 +77,7 @@ namespace Audio {
                     break;
                 }
             } else {
-                if (DAT_SoundEffectsHelperData1::instance.field18_0x64 == 0) {
+                if (!DAT_SoundEffectsHelperData1::instance.field18_0x64) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_HAPPY);
                 }
                 if (DAT_SoundEffectsHelperData1::instance.field18_0x64 == 1) {

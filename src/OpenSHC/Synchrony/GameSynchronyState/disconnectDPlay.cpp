@@ -54,7 +54,7 @@ namespace Synchrony {
             this->DPLAYX_LOBBY->Release();
             this->DPLAYX_LOBBY = (IDirectPlayLobby3*)0x0;
         }
-        if (this->DPLAYX_Connection != 0) {
+        if (this->DPLAYX_Connection) {
             pvVar1 = GlobalHandle((void*)this->DPLAYX_Connection);
             GlobalUnlock(pvVar1);
             pvVar1 = GlobalHandle((void*)this->DPLAYX_Connection);

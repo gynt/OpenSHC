@@ -52,13 +52,13 @@ namespace UI {
                 }
                 if (param_1 < 0x14) {
                     if (param_1 == 0xc) {
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+                        if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                             DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         }
-                        if (DAT_GameCore::instance.mapU4Int0 == 0)
+                        if (!DAT_GameCore::instance.mapU4Int0)
                             goto switchD_004ac099_caseD_4;
                     } else if (param_1 == 10) {
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
+                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti)
                             goto switchD_004ac099_caseD_4;
                     } else if ((param_1 != 0xb) || (DAT_GameCore::instance.U2_mapType_singleOrMulti < 1))
                         goto switchD_004ac099_caseD_4;

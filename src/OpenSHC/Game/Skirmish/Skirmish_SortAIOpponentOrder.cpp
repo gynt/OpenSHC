@@ -78,18 +78,18 @@ namespace Game {
                     iVar3 = iVar3 + 1;
                 } while (iVar3 < DAT_00eb9b60::instance);
                 iVar2 = DAT_00eb9b60::instance;
-                if ((iVar1 == 0) || (iVar5 = iVar5 + 1, 0x9c3 < iVar5))
+                if ((!iVar1) || (iVar5 = iVar5 + 1, 0x9c3 < iVar5))
                     break;
             }
         }
         /*
           reverse order
          */
-        if (reverseOrder == 0) {
+        if (!reverseOrder) {
             puVar4 = visitedBitMap;
             iVar5 = 0;
             puVar6 = (uint*)INT_ARRAY_00eb96d8::instance;
-            for (iVar3 = 0xfa; puVar4 = (uint*)((int)puVar4 + 4), iVar3 != 0; iVar3 = iVar3 + -1) {
+            for (iVar3 = 0xfa; puVar4 = (uint*)((int)puVar4 + 4), iVar3; iVar3 = iVar3 + -1) {
                 *puVar4 = *puVar6;
                 puVar6 = puVar6 + 1;
             }

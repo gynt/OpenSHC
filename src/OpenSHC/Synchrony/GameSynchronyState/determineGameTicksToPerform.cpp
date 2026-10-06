@@ -24,10 +24,10 @@ namespace Synchrony {
         dword _gameSpeedLevel;
         int _relativeTickTime;
         _gameSpeedLevel = this->skirmishGameSpeedLevel;
-        if (DAT_GameCore::instance.gameSpeedLevel == 0) {
+        if (!DAT_GameCore::instance.gameSpeedLevel) {
             DAT_GameCore::instance.gameSpeedLevel = 40;
         }
-        if ((DAT_GameCore::instance.currentlyInGameUnk_0xa4 != TRUE) || (this->DAT_GameHalted != 0)) {
+        if ((DAT_GameCore::instance.currentlyInGameUnk_0xa4 != TRUE) || (this->DAT_GameHalted)) {
             return 0;
         }
         if ((this->currentGameMode == Game::GM_SOLITARY)

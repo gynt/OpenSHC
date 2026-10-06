@@ -45,7 +45,7 @@ namespace Map {
             int _unitCount;
             uint _maxUnits;
             local_10 = (int)(char)DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray[param_1];
-            if (local_10 == 0) {
+            if (!local_10) {
                 local_10 = 2;
             }
             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
@@ -104,7 +104,7 @@ namespace Map {
             DAT_TroopValueState::instance.attackInfo.tribeIDArraySize = 0;
             piVar6 = &DAT_TribesState::instance.tribes[1];
             do {
-                if ((((piVar6->tribeState != 0) && (piVar6->owner == local_10)) && (piVar6->attackWave == param_1))
+                if ((((piVar6->tribeState) && (piVar6->owner == local_10)) && (piVar6->attackWave == param_1))
                     && (piVar6->tribeType == AI::Tribes::AITT_ENGINEERS)) {
                     DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar5] = _tribeID;
                     iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize + 1;
@@ -113,12 +113,11 @@ namespace Map {
                 piVar6 = piVar6 + 0xcd;
                 _tribeID = _tribeID + 1;
             } while ((int)piVar6 < 0x176238c);
-            if (iVar5 != 0) {
+            if (iVar5) {
                 for (iVar6 = 0; iVar6 < iVar5; iVar6++) {
                     _tribeID = DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar6];
                     short sVar2 = DAT_TribesState::instance.tribes[_tribeID].size;
-                    for (;
-                        (sVar2 != 0 && (iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize, 0 < iVar8));
+                    for (; (sVar2 && (iVar5 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize, 0 < iVar8));
                         iVar8 = iVar8 + -1) {
                         MACRO_CALL_MEMBER(
                             Map::Units::TribesState_Func::popUnitFromTribe, DAT_TribesState::ptr)(_tribeID);
@@ -145,9 +144,9 @@ namespace Map {
                         do {
                             if (((_ptrPlayerID->logicalState == Map::Units::ULS_NORMAL)
                                     && (_ptrPlayerID->owner == local_10))
-                                && ((_ptrPlayerID->dying == 0
+                                && ((!_ptrPlayerID->dying
                                     && ((_ptrPlayerID->unitType == Map::Units::UT_E_ENGINEER
-                                        && (_ptrPlayerID->tribeID == 0)))))) {
+                                        && (!_ptrPlayerID->tribeID)))))) {
                                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe,
                                     DAT_TribesState::ptr)(_unitID, _tribeID2);
                                 _unitCount = _unitCount + -1;
@@ -165,7 +164,7 @@ namespace Map {
         LAB_0051b9cb:
             _unitID = _unitID + 1;
             if (DAT_UnitsState::instance.maxUnitCount <= _unitID) {}
-            if (param_2 == 0) {
+            if (!param_2) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
                                       placeSiegeTentOrTunnelAtSuitableLocationAndAssignEngineers,
                     this)(_tribeID2,

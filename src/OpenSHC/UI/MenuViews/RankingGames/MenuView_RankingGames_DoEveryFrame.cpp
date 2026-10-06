@@ -140,7 +140,7 @@ namespace UI {
                     iVar2 = INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + uVar12];
                     iVar8 = DAT_SkMasters2DataArray::instance[iVar2].score;
                     iVar14 = iVar9 + 0x4e;
-                    if (iVar8 == 0) {
+                    if (!iVar8) {
                         pcVar1 = DAT_SkMasters2DataArray::instance[iVar2].mapName;
                         text = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar1, &local_68);
                         iVar8 = MACRO_CALL_MEMBER(
@@ -161,7 +161,7 @@ namespace UI {
                                 "...", iVar9 + 0xdf, iVar8, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                         }
                         iVar8 = DAT_SkMasters2DataArray::instance[iVar2].score;
-                        if (iVar8 != 0)
+                        if (iVar8)
                             goto LAB_004dfe50;
                     } else {
                     LAB_004dfe50:
@@ -249,7 +249,7 @@ namespace UI {
                     iVar14 = iVar14 + iVar8;
                     local_84 = DAT_SkMasters2DataArray::instance[iVar2].array1[1];
                     local_b0 = 1;
-                    if (local_84 == 0) {
+                    if (!local_84) {
                         local_84 = -1;
                     }
                     iVar9 = DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount;
@@ -427,7 +427,7 @@ namespace UI {
                 pSVar5 = DAT_SkMasters2DataArray::instance
                     + INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + local_80];
                 iVar4 = pSVar5->score;
-                if (iVar4 != 0) {
+                if (iVar4) {
                     if (iVar4 < 0x51) {
                         if (iVar4 < 0x33) {
                             MACRO_CALL_MEMBER(
@@ -498,7 +498,7 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x226, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x11, TRUE, 0);
             }
-            if (DAT_00eb9b60::instance == 0) {
+            if (!DAT_00eb9b60::instance) {
                 iVar8 = 0;
                 BVar13 = FALSE;
                 iVar9 = 0x11;
@@ -514,7 +514,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar1, iVar2, iVar4, TVar7, BVar10, iVar9, BVar13, iVar8);
             }
-            if (DAT_00ed27a0::instance != 0) {
+            if (DAT_00ed27a0::instance) {
                 if (DAT_00ed27a0::instance == 0x1e) {
                     iVar8 = 0;
                     BVar13 = FALSE;
@@ -626,7 +626,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar1, iVar9, iVar2, TVar7, BVar10, iVar8, BVar13, iVar14);
                 }
-                if (DAT_00ed27a0::instance != 0)
+                if (DAT_00ed27a0::instance)
                     goto LAB_004e0a24;
             }
             iVar8 = 0;

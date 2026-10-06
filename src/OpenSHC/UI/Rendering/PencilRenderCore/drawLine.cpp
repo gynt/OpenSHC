@@ -17,10 +17,10 @@ namespace UI {
             _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 x1, y1, x2, y2, color);
             if (_drawReady != FALSE) {
-                if (this->currentWidth_0x28 == 0) {
+                if (!this->currentWidth_0x28) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawVerticalLine, this)();
                 }
-                if (this->currentHeight_0x2c == 0) {
+                if (!this->currentHeight_0x2c) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHorizontalLine, this)();
                 }
                 if (this->currentWidth_0x28 < this->currentHeight_0x2c) {

@@ -81,7 +81,7 @@ namespace UI {
         INT_00b95958::instance = 1;
         DAT_00b95b74::instance = 0;
         DAT_00b960f4::instance = 0xffffffed;
-        if (DAT_GameCore::instance.mapDescUseStringTable == 0) {
+        if (!DAT_GameCore::instance.mapDescUseStringTable) {
             _mode = 1;
             _blendStrength = 0;
             _color = 0;
@@ -93,7 +93,7 @@ namespace UI {
             DAT_00b95b74::instance = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(
                 _mapName, _x, _y, _width, _color, _blendStrength, _mode);
-        } else if (DAT_GameCore::instance.mapDescUseStringTableIndex != 0) {
+        } else if (DAT_GameCore::instance.mapDescUseStringTableIndex) {
             _mode = 1;
             _blendStrength = 0;
             _color = 0;
@@ -109,7 +109,7 @@ namespace UI {
             && ((INT_00b960b0::instance
                     != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                || (INT_00b95ab8::instance != 0)))) {
+                || (INT_00b95ab8::instance)))) {
             DAT_GameSynchronyState::instance.playerPositionsArray[0] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[1] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[2] = -10;

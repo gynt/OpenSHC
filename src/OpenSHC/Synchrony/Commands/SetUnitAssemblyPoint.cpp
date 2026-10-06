@@ -75,7 +75,7 @@ namespace Synchrony {
                     iVar3 = (int)DAT_TileMapState::instance
                                 .BuildingLayer[DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile
                                     + uVar2];
-                    if ((iVar3 != 0) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID)) {
+                    if ((iVar3) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID)) {
                         switch (DAT_BuildingsState::instance.buildings[iVar3].buildingType) {
                         case OpenSHC::Map::Buildings::BT_MERCENARYPOST:
                         case OpenSHC::Map::Buildings::BT_BARRACKS:
@@ -96,7 +96,7 @@ namespace Synchrony {
                     iVar3 = (int)DAT_TileMapState::instance
                                 .BuildingLayer[DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile
                                     + uVar2];
-                    if ((iVar3 != 0) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID)) {
+                    if ((iVar3) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID)) {
                         switch (DAT_BuildingsState::instance.buildings[iVar3].buildingType) {
                         case OpenSHC::Map::Buildings::BT_MERCENARYPOST:
                         case OpenSHC::Map::Buildings::BT_BARRACKS:
@@ -117,7 +117,7 @@ namespace Synchrony {
                     iVar3 = (int)DAT_TileMapState::instance
                                 .BuildingLayer[DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile
                                     + uVar2];
-                    if (((iVar3 != 0) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
+                    if (((iVar3) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
                         && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar3].buildingType,
                             BVar1 == OpenSHC::Map::Buildings::BT_ENGINEERSGUILD
                                 || (BVar1 == OpenSHC::Map::Buildings::BT_PARADEGROUND)))) {
@@ -133,7 +133,7 @@ namespace Synchrony {
                                 .BuildingLayer[DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile
                                     + uVar2];
                     DAT_GameState::instance.playerDataArray[_playerID].tunnelersGuildAssemblyPointX = _x;
-                    if (((iVar3 != 0) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
+                    if (((iVar3) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
                         && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar3].buildingType,
                             BVar1 == OpenSHC::Map::Buildings::BT_TUNNELERSGUILD
                                 || (BVar1 == OpenSHC::Map::Buildings::BT_PARADEGROUND5)))) {
@@ -147,7 +147,7 @@ namespace Synchrony {
                                 .BuildingLayer[DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile
                                     + uVar2];
                     DAT_GameState::instance.playerDataArray[_playerID].cathedralAssemblyPointX = _x;
-                    if (((iVar3 != 0) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
+                    if (((iVar3) && (DAT_BuildingsState::instance.buildings[iVar3].owner == _playerID))
                         && (DAT_BuildingsState::instance.buildings[iVar3].buildingType
                             == OpenSHC::Map::Buildings::BT_CATHEDRAL)) {
                         DAT_GameState::instance.playerDataArray[_playerID].cathedralAssemblyPointX = 0;

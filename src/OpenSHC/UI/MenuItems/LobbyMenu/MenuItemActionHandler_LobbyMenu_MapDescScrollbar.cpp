@@ -18,14 +18,13 @@ namespace UI {
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
             int iVar1;
-            if ((((DAT_00b960dc::instance == 0)
+            if ((((!DAT_00b960dc::instance)
                      && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_ROUNDTABLE))
-                    && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                        != UI::Enums::MMT_BASIC_AI_LORD_SELECT))
+                    && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID
                     != UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
                 iVar1 = 0;
-                if (param_1 == 0) {
+                if (!param_1) {
                     iVar1 = 0xcc;
                 } else if (param_1 == 1) {
                     iVar1 = 0x6e;

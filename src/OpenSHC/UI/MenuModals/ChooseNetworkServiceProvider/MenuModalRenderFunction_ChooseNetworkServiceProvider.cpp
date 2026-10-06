@@ -43,7 +43,7 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4c, 6, x, y, width, height);
-            if (DAT_GameSynchronyState::instance.kickedAtTime != 0) {
+            if (DAT_GameSynchronyState::instance.kickedAtTime) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(x, y + -0x3c, x + width, y + -0x12, 0x10);
                 iVar5 = 0;

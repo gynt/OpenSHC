@@ -90,7 +90,7 @@ namespace UI {
                 iVar1 = DAT_MenuTextInputState::instance.DAT_GenieVoiceActiveMenuVar;
                 if ((param_1 != -5)
                     && (iVar1 = DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar, param_1 != -1)) {}
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     iVar1 = 0xe;
                 } else {
                     if (iVar1 != 1) {}

@@ -34,7 +34,7 @@ namespace Rendering {
             this->currentMessageSfxFile_0x70[0] = '\0';
             this->currentMessageText_0x8 = (char*)0x0;
             this->messagePlaying_0x0 = FALSE;
-            if (this->storedMessages_0x924 != 0) {
+            if (this->storedMessages_0x924) {
                 piVar6 = this->savedMessageUnknownValue_0x104;
                 this->currentMessageUnknownValue_0x4 = this->savedMessageUnknownValue_0x104[0];
                 this->currentMessageUnknownValue2_0xd4 = this->savedMessageUnknownValue2_0x8fc[0];

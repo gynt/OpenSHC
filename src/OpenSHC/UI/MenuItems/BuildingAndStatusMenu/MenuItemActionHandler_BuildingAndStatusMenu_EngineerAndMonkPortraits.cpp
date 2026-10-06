@@ -45,7 +45,7 @@ namespace UI {
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .engineersGuild.id)),
                 (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
-            if (iVar1 != 0) {
+            if (iVar1) {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;

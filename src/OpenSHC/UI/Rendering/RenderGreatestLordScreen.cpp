@@ -137,7 +137,7 @@ namespace UI {
             }
             aiStack_354[iVar2] = iVar8;
             iVar8 = 0;
-            if (iVar2 != 0) {
+            if (iVar2) {
                 iVar8 = DAT_GameSynchronyState::instance.finalResults.finalKillMatrix[0][iVar2];
             }
             if (iVar2 != 1) {
@@ -185,7 +185,7 @@ namespace UI {
                 *piVar7 = iVar2;
                 piVar7 = piVar7 + 9;
                 iVar8 = iVar8 + -1;
-            } while (iVar8 != 0);
+            } while (iVar8);
             iVar2 = iVar2 + 1;
         } while (iVar2 < 9);
         local_3c8 = 8;
@@ -468,7 +468,7 @@ namespace UI {
                             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8b, iVar8, iVar2 + -2);
                         iVar8 = iVar8 + 0x16;
                         iVar10 = iVar10 + -1;
-                    } while (iVar10 != 0);
+                    } while (iVar10);
                 }
                 iVar10 = 0;
                 if ('\0' < (char)DAT_GameSynchronyState::instance.finalResults.finalKilledLords[_renderPlayer]) {
@@ -511,7 +511,7 @@ namespace UI {
                 iVar10 = local_3c4;
                 iVar8 = local_3d0;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                if ((DAT_00ec082c::instance == 0) || (DAT_00ec082c::instance == 2)) {
+                if ((!DAT_00ec082c::instance) || (DAT_00ec082c::instance == 2)) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(aiStack_354[_renderPlayer], local_3c4 + 0x117, local_3d0,
                         OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 0);
@@ -608,7 +608,7 @@ namespace UI {
             local_3c8 = local_3c8 + 4;
         } while (local_3c8 < 0x20);
         if ((char)INT_00eb0e44::instance == '\0') {
-            if ((DAT_00eb9af8::instance == 0) && (DAT_GameSynchronyState::instance.finalResults.yearStart != 0)) {
+            if ((!DAT_00eb9af8::instance) && (DAT_GameSynchronyState::instance.finalResults.yearStart)) {
                 iVar8 = DAT_GameSynchronyState::instance.finalResults.yearEnd;
                 pcVar5 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(

@@ -55,7 +55,7 @@ namespace Map {
         sVar4 = DAT_BuildingsState::instance.buildings[buildingID_00].workers[0];
         piVar1 = &DAT_GameState::instance.playerDataArray[sVar3].countFletchersPoleturners;
         *piVar1 = *piVar1 + 1;
-        DAT_BuildingsState::instance.buildings[buildingID_00].renderAnimation = (ushort)(sVar4 != 0);
+        DAT_BuildingsState::instance.buildings[buildingID_00].renderAnimation = (ushort)(sVar4);
         DAT_BuildingsState::instance.buildings[buildingID_00].displayOwnerFlag = 0;
         if ((char)((char)DAT_BuildingsState::instance.buildings[buildingID_00].uid
                 + (char)DAT_GameCore::instance.mapTimeInTicks)
@@ -72,7 +72,7 @@ namespace Map {
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID_00].state;
         if (DAT_BuildingsState::instance.buildings[buildingID_00].producedItemTypeNext
             == Game::Resources::RT_BOW) {
-            if (sVar3 == 0) {
+            if (!sVar3) {
                 if ((DAT_BuildingsState::instance.buildings[buildingID_00].animationActive != 0)
                     && ((sVar3 = DAT_BuildingsState::instance.buildings[buildingID_00].animationIndex,
                         sVar3 == 8 || (sVar3 == 0x3a)))) {
@@ -98,7 +98,7 @@ namespace Map {
                 }
             LAB_00412f1b:
                 sVar3 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + buildingID);
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].animationFrame + buildingID) = 0;
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62)
                         = 0x1f;
@@ -131,7 +131,7 @@ namespace Map {
             if (bVar6) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + buildingID) = 0;
                 sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -8);
-                if (sVar3 == 0) {
+                if (!sVar3) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -8) = 1;
                 } else if (sVar3 == 1) {
                     piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + buildingID);
@@ -144,7 +144,7 @@ namespace Map {
                 }
             }
         } else {
-            if (sVar3 == 0) {
+            if (!sVar3) {
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID_00].animationIndex;
                 if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                     animcycle = DAT_BuildingDefinedData::instance.field45_0x44e4[sVar3];
@@ -185,7 +185,7 @@ namespace Map {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62) = 0x1f;
         }
         iVar7 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + buildingID);
-        if (iVar7 != 0) {
+        if (iVar7) {
             UVar5 = DAT_UnitsState::instance.units[iVar7].state.generic;
             if (UVar5 == Map::Units::States::US_AIM_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + buildingID)

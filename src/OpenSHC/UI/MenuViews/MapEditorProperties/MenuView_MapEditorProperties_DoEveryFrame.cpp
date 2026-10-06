@@ -76,7 +76,7 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner, DAT_PencilRenderCore::ptr)(
                 DAT_MenuHandlerState::instance.x + 0x30, DAT_MenuHandlerState::instance.y + 6, 0x2c0, 0x32);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if (DAT_GameCore::instance.field115_0x1d98 != 0) {
+            if (DAT_GameCore::instance.field115_0x1d98) {
                 iVar12 = 0;
                 BVar11 = FALSE;
                 iVar10 = 0x11;
@@ -84,7 +84,7 @@ namespace UI {
                 iVar1 = DAT_MenuHandlerState::instance.y + 0x23;
                 TVar6 = OpenSHC::Text::TTA_LEFT;
                 iVar4 = DAT_MenuHandlerState::instance.x + 0x8c;
-                if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+                if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                     /*
                       added by script: "Single-Player"
                      */
@@ -108,7 +108,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(" - ", DAT_MenuHandlerState::instance.x + 0x8c,
                             DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
-                        if (DAT_GameCore::instance.mapU3EndInt == 0) {
+                        if (!DAT_GameCore::instance.mapU3EndInt) {
                             /*
                               added by script: "Invasion"
                              */
@@ -158,7 +158,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ", DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
                     OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
-                if (INT_00b960e4::instance == 0) {
+                if (!INT_00b960e4::instance) {
                     iVar12 = 0;
                     BVar11 = TRUE;
                     iVar10 = 0x11;
@@ -188,14 +188,14 @@ namespace UI {
             iVar1 = DAT_MenuHandlerState::instance.y;
             if (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
                 goto LAB_0042e7ab;
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+            if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                 iVar4 = DAT_MenuHandlerState::instance.x + 400;
             } else {
                 iVar4 = DAT_MenuHandlerState::instance.x + 600;
             }
             local_1c = DAT_MenuHandlerState::instance.y + 0xf0;
             iVar10 = DAT_TileMapState::instance.mapSize;
-            if (DAT_TileMapState::instance.mapSize == 0) {
+            if (!DAT_TileMapState::instance.mapSize) {
                 iVar10 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
@@ -349,13 +349,13 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(pcVar2, iVar4, iVar1, TVar6, uVar7, uVar9, iVar10, BVar11, iVar12);
             }
         LAB_0042e7ab:
-            if (DAT_GameCore::instance.isTimeHalted2 != 0) {
+            if (DAT_GameCore::instance.isTimeHalted2) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                     "Game Paused", 0x31e, 0x240, OpenSHC::Text::TTA_RIGHT, 0xa2ff, 0x3e66, 0x11, FALSE, 0);
             }
             DAT_MapEditorProperties_ClickedButton::instance = 0;
-            if (DAT_MenuTextInputState::instance.field44_0xa4 != 0) {
+            if (DAT_MenuTextInputState::instance.field44_0xa4) {
                 INT_00b95f68::instance = 0;
                 DAT_MenuTextInputState::instance.field44_0xa4 = 0;
             };

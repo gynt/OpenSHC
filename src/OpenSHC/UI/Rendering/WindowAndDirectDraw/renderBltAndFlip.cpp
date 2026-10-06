@@ -32,7 +32,7 @@ namespace UI {
                 param_1 = param_1 + -100;
             }
             bVar2 = this->mbr_0xd0 != 0;
-            if (param_1 != 0) {
+            if (param_1) {
                 this->windowMoveEventBlitCountdown = 0;
             }
             if ((this->drawingReady_0x0 == FALSE)
@@ -40,7 +40,7 @@ namespace UI {
                 DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
                 goto LAB_004705e6;
             }
-            if (this->windowMoveEventBlitCountdown != 0) {
+            if (this->windowMoveEventBlitCountdown) {
                 DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
                 this->windowMoveEventBlitCountdown = this->windowMoveEventBlitCountdown - 1;
                 goto LAB_004705e6;
@@ -79,7 +79,7 @@ namespace UI {
                         this->directDrawOffscreenSurfacePointer_screenMenu, (tagRECT*)0xf983e8, 0x10);
                 }
             }
-            if (this->mbr_0xd0 != 0) {
+            if (this->mbr_0xd0) {
                 if (this->mbr_0xd0 == 2) {
                     iVar1 = 0;
                 }

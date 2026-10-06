@@ -193,7 +193,7 @@ namespace UI {
                 }
                 break;
             case 0x3d:
-                if (DAT_GameState::instance.mapAndTime.editScenarioExtraOptions != 0) {
+                if (DAT_GameState::instance.mapAndTime.editScenarioExtraOptions) {
                     DAT_CopyOfScenarioGold::instance = (int)DAT_GameState::instance.mapAndTime.scenarioGold;
                     MACRO_CALL_MEMBER(
                         UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0,
@@ -228,7 +228,7 @@ namespace UI {
                 ;
                 return;
             case 0xa6:
-                if ((DAT_GameState::instance.mapAndTime.editScenarioExtraOptions != 0)
+                if ((DAT_GameState::instance.mapAndTime.editScenarioExtraOptions)
                     && (DAT_GameState::instance.mapAndTime.scenarioRationsSetting
                         = DAT_GameState::instance.mapAndTime.scenarioRationsSetting + 1,
                         4 < DAT_GameState::instance.mapAndTime.scenarioRationsSetting)) {
@@ -238,7 +238,7 @@ namespace UI {
                 }
                 break;
             case 0xa7:
-                if ((DAT_GameState::instance.mapAndTime.editScenarioExtraOptions != 0)
+                if ((DAT_GameState::instance.mapAndTime.editScenarioExtraOptions)
                     && (DAT_GameState::instance.mapAndTime.scenarioTaxesSetting
                         = DAT_GameState::instance.mapAndTime.scenarioTaxesSetting + 1,
                         9 < DAT_GameState::instance.mapAndTime.scenarioTaxesSetting)) {

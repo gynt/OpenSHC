@@ -36,8 +36,8 @@ namespace Map {
             if ((eventYear <= DAT_GameState::instance.mapAndTime.year)
                 && ((DAT_GameState::instance.mapAndTime.year != eventYear)
                     || (DAT_GameState::instance.mapAndTime.month < event.header.month))
-                && (event.header.tl_type == 1) && (event.data.invasion.messageYear != 0)) {
-                if (event.data.invasion.messageMonth == 0) {
+                && (event.header.tl_type == 1) && (event.data.invasion.messageYear)) {
+                if (!event.data.invasion.messageMonth) {
                     event.data.invasion.messageMonth = eventYear;
                 } else {
                     event.header.year = event.data.invasion.messageMonth;

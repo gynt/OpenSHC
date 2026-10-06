@@ -25,7 +25,7 @@ namespace Synchrony {
         iVar2 = x + 2;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "Splinter box ", iVar2, y, Text::TTA_LEFT, 0xffffff, 0x11, FALSE, 0);
-        if (this->splinterType == 0) {
+        if (!this->splinterType) {
             textAddress = " - Chimps";
         } else if (this->splinterType == 1) {
             textAddress = " - Structures";
@@ -48,7 +48,7 @@ namespace Synchrony {
         xParam = x + 0xc;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             this->totalSplitDataItems, xParam, y + 0x1c, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
-        if (this->splinterType == 0) {
+        if (!this->splinterType) {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 "Total split chimps:  ", iVar2, y + 0x2a, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -68,7 +68,7 @@ namespace Synchrony {
                     *piVar3, xParam, y + 0x54, Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 xParam = xParam + 0x28;
                 iVar2 = iVar2 + -1;
-            } while (iVar2 != 0);
+            } while (iVar2);
         }
         if (this->splinterType == 1) {
             iVar1 = y + 0x2a;

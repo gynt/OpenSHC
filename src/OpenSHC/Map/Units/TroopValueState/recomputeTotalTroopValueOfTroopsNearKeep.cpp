@@ -39,11 +39,10 @@ namespace Map {
             if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 ptrUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((ptrUnit->logicalState != Map::Units::ULS_INVISIBLE) && (ptrUnit->dying == 0))
-                            && (ptrUnit->isSelectable_OR_matchTime != 0))
+                    if ((((ptrUnit->logicalState != Map::Units::ULS_INVISIBLE) && (!ptrUnit->dying))
+                            && (ptrUnit->isSelectable_OR_matchTime))
                         && (((UVar2 = ptrUnit->unitType,
-                                 UVar2 != Map::Units::UT_E_ENGINEER
-                                     && (UVar2 != Map::Units::UT_TUNNELER))
+                                 UVar2 != Map::Units::UT_E_ENGINEER && (UVar2 != Map::Units::UT_TUNNELER))
                             && (UVar2 != Map::Units::UT_E_LADDER)))) {
                         _playerID = ptrUnit->owner;
                         MACRO_CALL_MEMBER(

@@ -30,7 +30,7 @@ namespace Map {
                 tribeID = DAT_UnitsState::instance.maxUnitCount - 1;
                 _ptrUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if (((_ptrUnit->logicalState == Map::Units::ULS_NORMAL) && (_ptrUnit->dying == 0))
+                    if (((_ptrUnit->logicalState == Map::Units::ULS_NORMAL) && (!_ptrUnit->dying))
                         && (_ptrUnit->ifSelectedThenPlayerID == param_1)) {
                         _movementSpeed = _ptrUnit->movementSpeed;
                         if (_movementSpeed < _minimumSpeed) {
@@ -43,7 +43,7 @@ namespace Map {
                     }
                     _ptrUnit = _ptrUnit + 0x248;
                     tribeID = tribeID + -1;
-                } while (tribeID != 0);
+                } while (tribeID);
             }
             _tribeSize = this->tribes[_tribeID].size;
             this->tribes[_tribeID].size2Unk = _tribeSize;

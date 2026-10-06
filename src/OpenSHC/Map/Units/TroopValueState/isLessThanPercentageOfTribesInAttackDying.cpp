@@ -23,7 +23,7 @@ namespace Map {
             _tribeID = 1;
             _pTribe = &DAT_TribesState::instance.tribes[1];
             do {
-                if ((((_pTribe->tribeState != 0) && (_pTribe->tribeState != 3))
+                if ((((_pTribe->tribeState) && (_pTribe->tribeState != 3))
                         && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_pTribe->owner] == -1))
                     && (_pTribe->attackWave == attackID)) {
                     _status = MACRO_CALL_MEMBER(

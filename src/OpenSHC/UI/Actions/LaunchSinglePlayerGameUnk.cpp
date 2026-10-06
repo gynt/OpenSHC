@@ -92,7 +92,7 @@ namespace UI {
             *psVar4 = 1;
             psVar4 = psVar4 + 1;
         } while ((int)psVar4 < 0x1653df6);
-        if (param_1 == 0) {
+        if (!param_1) {
             pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -217,7 +217,7 @@ namespace UI {
         }
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c
             = (int)(DAT_GameState::instance.mapAndTime.euroRecruitable[6] != 0);
-        if (param_1 == 0) {
+        if (!param_1) {
             pcVar10 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -251,7 +251,7 @@ namespace UI {
             }
             if ((DAT_MapMissionType::instance == 2) && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1)) {
                 _pointsMultiplier = 100;
-                if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+                if (!DAT_GameState::instance.mapAndTime.difficulty) {
                     _pointsMultiplier = 66;
                 } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
                     _pointsMultiplier = 133;
@@ -305,7 +305,7 @@ namespace UI {
                     + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
             }
         }
-        if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
+        if (!DAT_SH1_SiegeAdvancedMode::instance) {
             if (DAT_MapMissionType::instance != 2)
                 goto LAB_0042ce38;
             if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2) {
@@ -373,7 +373,7 @@ namespace UI {
             }
         LAB_0042ce38:
             if (DAT_MapMissionType::instance == 3) {
-                if (DAT_GameState::instance.mapAndTime.difficulty != 0) {
+                if (DAT_GameState::instance.mapAndTime.difficulty) {
                     BVar6 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
                     if (BVar6 == FALSE) {
@@ -467,11 +467,11 @@ namespace UI {
             DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount = 0;
         }
         iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        if (DAT_MapMissionType::instance == 0) {
+        if (!DAT_MapMissionType::instance) {
             DAT_GameState::instance.mapAndTime.unitJesterRelated = 0;
             iVar9 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .jesterIDUnk;
-            if ((iVar9 != 0)
+            if ((iVar9)
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someUnitIDSelfRef_2)) {
@@ -482,7 +482,7 @@ namespace UI {
             }
             DAT_GameState::instance.mapAndTime.unitLadyRelated = 0;
             iVar9 = DAT_GameState::instance.playerDataArray[iVar8].ladyIDUnk;
-            if ((iVar9 != 0)
+            if ((iVar9)
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_GameState::instance.playerDataArray[iVar8].someUnitIDSelfRef)) {
                 DAT_GameState::instance.playerDataArray[iVar8].ladyIDUnk = 0;
@@ -500,7 +500,7 @@ namespace UI {
             DAT_GameState::instance.playerDataArray[2].lastMonthsGold
                 = (short)DAT_GameState::instance.playerDataArray[2].currentResources[0xf];
         }
-        if (DAT_GameCore::instance.mapU4Int1 != 0) {
+        if (DAT_GameCore::instance.mapU4Int1) {
             DAT_GameState::instance.playerDataArray[iVar8].currentResources[0xf] = 600;
             DAT_GameState::instance.playerDataArray[iVar8].startResources[0xf] = 0;
         }
@@ -522,7 +522,7 @@ namespace UI {
     LAB_0042d095:
         MACRO_CALL_MEMBER(
             OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
-        if (DAT_GameCore::instance.mapU4Int1 != 0) {
+        if (DAT_GameCore::instance.mapU4Int1) {
             MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::pathfindingUpdate_0x4a8ab0,
                 DAT_PathFindingState::ptr)(0x1e);
         }

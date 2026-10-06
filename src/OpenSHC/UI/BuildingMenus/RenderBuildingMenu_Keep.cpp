@@ -92,7 +92,7 @@ namespace UI {
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         if (iVar3 - 0x47U < 3) {
             iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[_displayNumber].quarryStockpileID;
-            if ((iVar3 != 0)
+            if ((iVar3)
                 && (DAT_BuildingsState::instance.buildings[iVar3].uid
                     == DAT_BuildingsState::instance.buildings[_displayNumber].uidWhenPlaced)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
@@ -200,7 +200,7 @@ namespace UI {
             iVar4 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .taxesSliderUI;
             if ((2 < iVar4) || (0 < iVar1)) {
-                if (iVar4 == 0) {
+                if (!iVar4) {
                     iVar3 = 0xaf;
                 } else if (iVar4 == 1) {
                     iVar3 = 0x7d;

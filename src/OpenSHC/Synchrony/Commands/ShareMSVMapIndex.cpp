@@ -42,7 +42,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_4, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if ((local_8 == 0) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
+            if ((!local_8) && (DAT_GameSynchronyState::instance.isHost != FALSE)) {
                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[local_4 + 499] = 0;
             }
         }

@@ -36,7 +36,7 @@ namespace Map {
             if (0 < *(int*)((int)this->attackInfo.wideValuesArray + iVar2 + -8)) {
                 _ptr = (AttackInfoSubArrayElement1*)((int)&this->attackInfo.wideValuesArray + iVar2 + 4);
                 do {
-                    if ((_ptr->buildingID < 5999) && (_ptr->unitID == 0)) {
+                    if ((_ptr->buildingID < 5999) && (!_ptr->unitID)) {
                         fromYPosition
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_ptr->tile2];
                         fromXPosition = _ptr->tile2

@@ -27,10 +27,10 @@ namespace Map {
             iVar2 = param_4 - param_3;
         }
         if (iVar1 < iVar2) {
-            if (iVar2 != 0) {
+            if (iVar2) {
                 return (((iVar1 * 2) / 5) * iVar1) / iVar2 + iVar2;
             }
-        } else if (iVar1 != 0) {
+        } else if (iVar1) {
             return (((iVar2 * 2) / 5) * iVar2) / iVar1 + iVar1;
         }
         return 0;

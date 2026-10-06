@@ -54,10 +54,10 @@ namespace Map {
                 *piVar4 = 0;
                 piVar4 = piVar4 + 0x640;
                 iVar5 = iVar5 + -1;
-            } while (iVar5 != 0);
+            } while (iVar5);
             piVar9 = piVar9 + 0x28;
             iVar11 = iVar11 + -1;
-        } while (iVar11 != 0);
+        } while (iVar11);
         this->DAT_Y10_Array_Section1034[0] = (short)_y10;
         this->DAT_X10_Array_Section1034[0] = (short)_x10;
         _currentArea = this->grid[_x10][_y10].separateAreaID;
@@ -76,7 +76,7 @@ namespace Map {
                     uVar6 = ((Point8IntXY*)(piVar9 + -1))->xOffset + (int)sVar2;
                     if ((((uVar6 < 0x28) && (uVar10 < 0x28)) && (0 < this->grid[uVar6][uVar10].firstMember))
                         && (_currentArea == this->grid[uVar6][uVar10].separateAreaID)) {
-                        if (always0or1 == 0) {
+                        if (!always0or1) {
                             if (this->grid[uVar6][uVar10].field13_0x34 == 0) {
                                 if (DAT_TribesState::instance.tribes[tribeID].tribeType
                                     == (AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_SPEARMEN)) {
@@ -97,7 +97,7 @@ namespace Map {
                         } else if (this->grid[uVar6][uVar10].field12_0x30 == 0) {
                             _count = this->grid[uVar6][uVar10].field3_0xc;
                         LAB_0052cc5e:
-                            if ((_count == 0) && (this->grid[uVar6][uVar10].lionCount == 0))
+                            if ((!_count) && (this->grid[uVar6][uVar10].lionCount == 0))
                                 goto LAB_0052cc66;
                         }
                     }
@@ -149,7 +149,7 @@ namespace Map {
                 uVar6
                     = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar8) + _x10;
                 if ((((uVar6 < 0x28) && (uVar10 < 0x28)) && (0 < this->grid[uVar6][uVar10].firstMember))
-                    && ((iVar8 = this->grid[uVar6][uVar10].casDisRelated2, iVar8 != 0 && (iVar8 < always2or3or5)))) {
+                    && ((iVar8 = this->grid[uVar6][uVar10].casDisRelated2, iVar8 && (iVar8 < always2or3or5)))) {
                     this->grid[uVar6][uVar10].casDisRelated2 = 0;
                     always2or3or5 = iVar8;
                     local_18 = iVar7;
@@ -183,7 +183,7 @@ namespace Map {
                 uVar6
                     = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar7) + _x10;
                 if ((((uVar6 < 0x28) && (uVar10 < 0x28)) && (0 < this->grid[uVar6][uVar10].firstMember))
-                    && ((iVar7 = this->grid[uVar6][uVar10].casDisRelated2, iVar7 != 0 && (iVar7 < always2or3or5)))) {
+                    && ((iVar7 = this->grid[uVar6][uVar10].casDisRelated2, iVar7 && (iVar7 < always2or3or5)))) {
                     this->grid[uVar6][uVar10].casDisRelated2 = 0;
                     always2or3or5 = iVar7;
                     local_18 = iVar8;
@@ -191,7 +191,7 @@ namespace Map {
                 iVar11 = iVar11 + 0x20;
                 iVar5 = iVar5 + 4;
                 local_c = local_c + -1;
-            } while (local_c != 0);
+            } while (local_c);
             if (local_18 < 0)
                 break;
             _x10 = _x10 + DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[local_18].int_.xOffset;

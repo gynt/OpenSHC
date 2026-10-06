@@ -39,12 +39,12 @@ namespace Map {
                     DAT_PathFindingState::ptr)(DAT_TribesState::instance.tribes[tribeID].owner,
                     (int)((int)(DAT_UnitsState::instance.units[_targetUnitID].x)),
                     (int)((int)(DAT_UnitsState::instance.units[_targetUnitID].y)), 10);
-            if ((_buildingID != 0) && (((byte)SEC_RNG::instance.currentNumber2 & 1) != 0)) {
+            if ((_buildingID) && (((byte)SEC_RNG::instance.currentNumber2 & 1))) {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
                     tribeID, Map::Units::UIT_ATTACK_BUILDING, _buildingID,
                     DAT_BuildingsState::instance.buildings[_buildingID].uid, 0);
             }
-            if ((_unitID != 0) && (((byte)SEC_RNG::instance.currentNumber2 & 1) != 0)) {
+            if ((_unitID) && (((byte)SEC_RNG::instance.currentNumber2 & 1))) {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
                     tribeID, Map::Units::UIT_UNIT_ATTACK_UNIT, _unitID,
                     DAT_UnitsState::instance.units[_unitID].uid, 0);

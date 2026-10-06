@@ -23,7 +23,7 @@ namespace Map {
             }
             _tribeID = 1;
             piVar1 = &DAT_TribesState::instance.tribes[1];
-            while (((piVar1->tribeState != 2 || (piVar1->owner == 0))
+            while (((piVar1->tribeState != 2 || (!piVar1->owner))
                 || (piVar1->owner == DAT_GameSynchronyState::instance.currentPlayerSlotID))) {
                 piVar1 = piVar1 + 0xcd;
                 _tribeID = _tribeID + 1;
@@ -35,7 +35,7 @@ namespace Map {
                 }
             }
             _owner = DAT_TribesState::instance.tribes[_tribeID].owner;
-            if (_owner != 0) {
+            if (_owner) {
                 this->attackInfo.attackWavePlayerIDArray[param_1] = (byte)_owner;
                 this->attackInfo.attacker = (int)(char)(byte)_owner;
                 this->attackInfo.attackWaveTicker[param_1] = 10000;

@@ -45,7 +45,7 @@ namespace UI {
             bVar3 = false;
             if (param_1 == -1) {
                 if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
-                    || (DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c == 0)) {
+                    || (!DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 } else {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -109,7 +109,7 @@ namespace UI {
                         sVar2 = DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .availableHorses;
-                        if (sVar2 != 0) {
+                        if (sVar2) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
                                 DAT_TextManagerObject::ptr)((int)sVar2, (int)(DAT_ButtonX::instance + 8),
                                 (int)(DAT_ButtonY::instance + 0x28), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
@@ -185,7 +185,7 @@ namespace UI {
                 (OpenSHC::DE::SHCDE::eGM)pBVar1->gmId_0x0, iVar4 + 0x11f, iVar8, iVar9);
             iVar8 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[param_1];
-            if (iVar8 != 0) {
+            if (iVar8) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     iVar8, (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 0x28),
                     OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);

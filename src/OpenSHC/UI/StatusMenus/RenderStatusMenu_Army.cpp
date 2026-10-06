@@ -84,7 +84,7 @@ namespace UI {
             local_c = 9;
         }
         iVar6 = 0;
-        if (local_c != 0) {
+        if (local_c) {
             local_10 = iVar5 + 0x55;
             iVar3 = 0;
             paUVar2 = DAT_RenderingDefinedData::instance.UnitTypeGroups + iVar11;
@@ -103,7 +103,7 @@ namespace UI {
                 iVar3 = iVar3 + 0x2e;
             } while (iVar6 < local_c);
         }
-        if (DAT_00b95b68::instance != 0) {
+        if (DAT_00b95b68::instance) {
             iVar3 = 0;
             BVar10 = FALSE;
             iVar6 = 0x12;

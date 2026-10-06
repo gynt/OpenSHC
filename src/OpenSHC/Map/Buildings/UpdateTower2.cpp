@@ -57,13 +57,13 @@ namespace Map {
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingExitFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar6);
-        if (iVar1 != 0) {
+        if (iVar1) {
             DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite2 = 0x51;
             DAT_BuildingsState::instance.buildings[iVar6].animationFrame = 1;
         }
         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingEntranceFlagForOrientation,
             DAT_BuildingsState::ptr)(iVar6);
-        if (iVar1 != 0) {
+        if (iVar1) {
             DAT_BuildingsState::instance.buildings[iVar6].extraAnimationSprite4 = 0x5a;
             DAT_BuildingsState::instance.buildings[iVar6].animationFrame = 1;
         }
@@ -79,7 +79,7 @@ namespace Map {
             - (DAT_BuildingsState::instance.buildings[iVar6].currentHealth * 9)
                 / (int)DAT_BuildingsState::instance.buildings[iVar6].maxHealth;
         if (iVar1 < 9) {
-            if (iVar1 == 0)
+            if (!iVar1)
                 goto LAB_0041ea51;
         } else {
             iVar1 = 8;
@@ -94,7 +94,7 @@ namespace Map {
                 uVar2 = uVar2 + 1;
                 iVar1 = iVar1 + -1;
                 local_20[uVar5] = uVar8 + 1;
-            } while (iVar1 != 0);
+            } while (iVar1);
         }
         DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[0] = local_20[0];
         DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[1] = local_20[1];
@@ -105,7 +105,7 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[6] = local_20[6];
         DAT_BuildingsState::instance.buildings[iVar6].damageDecoration[7] = local_20[7];
     LAB_0041ea51:
-        if (DAT_BuildingsState::instance.field34_0x18e074 != 0) {
+        if (DAT_BuildingsState::instance.field34_0x18e074) {
             iVar6 = 0;
             do {
                 MACRO_CALL_MEMBER(

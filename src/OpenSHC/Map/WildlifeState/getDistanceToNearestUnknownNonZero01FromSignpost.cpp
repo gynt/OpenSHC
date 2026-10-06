@@ -49,10 +49,10 @@ namespace Map {
                 *piVar1 = 0;
                 piVar1 = piVar1 + 0x640;
                 iVar4 = iVar4 + -1;
-            } while (iVar4 != 0);
+            } while (iVar4);
             piVar2 = piVar2 + 0x28;
             iVar3 = iVar3 + -1;
-        } while (iVar3 != 0);
+        } while (iVar3);
         this->DAT_Y10_Array_Section1034[0] = (short)_zoneY;
         _area = this->grid[_zoneX][_zoneY].separateAreaID;
         this->grid[_zoneX][_zoneY].casDisRelated2 = 1;

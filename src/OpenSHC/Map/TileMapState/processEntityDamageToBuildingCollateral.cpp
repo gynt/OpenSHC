@@ -86,15 +86,15 @@ namespace Map {
                 0, _iter0till8, &tile, (int*)&y_2, _tile_2, _y);
             _tile = tile;
             uVar8 = this->LogicLayer[tile];
-            if (((uVar8 & 0x10000400) == 0) && (this->BuildingLayer[tile] == 0)) {
-                if ((((uVar8 & 0x100) != 0) && ((uVar8 & 2) == 0))
+            if ((!(uVar8 & 0x10000400)) && (this->BuildingLayer[tile] == 0)) {
+                if ((((uVar8 & 0x100)) && (!(uVar8 & 2)))
                     && ((_defensiveStructureOwner = this->WallOwnerLayer[tile] & 7,
                         !bVar7
                             || (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
                                 != DAT_GameState::instance.mapAndTime.playerTeams[_defensiveStructureOwner + 1])))) {
                     DAT_GameState::instance.playerDataArray[_defensiveStructureOwner + 1].defensesDamagedByPlayer
                         = (short)playerID;
-                    if (unitID != 0) {
+                    if (unitID) {
                         if (DAT_GameState::instance.mapAndTime.playerTeams[_defensiveStructureOwner + 1]
                             == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
                             psVar1 = &DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk;
@@ -139,7 +139,7 @@ namespace Map {
                                  && (_buildingType
                                      = (int)(short)DAT_BuildingsState::instance.buildings[_buildingID].buildingType,
                                      DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[_buildingType] != 0))
-                            && (((uVar8 & 0xf000000) == 0 && ((uVar8 & 2) == 0))))))
+                            && ((!(uVar8 & 0xf000000) && (!(uVar8 & 2)))))))
                     && ((!bVar7
                         || (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
                             != DAT_GameState::instance.mapAndTime
@@ -160,7 +160,7 @@ namespace Map {
                             .playerDataArray[DAT_BuildingsState::instance.buildings[_buildingID].owner]
                             .defensesDamagedByPlayer = (short)playerID;
                     }
-                    if (unitID != 0) {
+                    if (unitID) {
                         if (DAT_GameState::instance.mapAndTime
                                 .playerTeams[DAT_BuildingsState::instance.buildings[_buildingID].owner]
                             == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
@@ -202,7 +202,7 @@ namespace Map {
                         switch (DAT_BuildingsState::instance.buildings[_buildingID].buildingType) {
                         case Map::Buildings::BT_OILSMELTER:
                             iVar9 = DAT_BuildingsState::instance.buildings[_buildingID].resources[7];
-                            if (iVar9 == 0)
+                            if (!iVar9)
                                 goto switchD_00517b1f_caseD_1d;
                             _oilSmelterTilePosition
                                 = DAT_BuildingsState::instance.buildings[_buildingID].currentTilePositionAdjusted;
@@ -238,7 +238,7 @@ namespace Map {
                                 ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
                                 ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                                 Map::Buildings::BT_DRAWBRIDGE, 0);
-                            if (iVar9 != 0) {
+                            if (iVar9) {
                                 this->showNoRubbleWhenDestroyingBuilding
                                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                                 [(short)DAT_BuildingsState::instance.buildings[iVar9].buildingType]
@@ -251,7 +251,7 @@ namespace Map {
                                     ((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
                                     ((int)(DAT_BuildingsState::instance.buildings[_buildingID].widthOrHeight)),
                                     Map::Buildings::BT_DRAWBRIDGE, iVar9);
-                                if (iVar9 != 0) {
+                                if (iVar9) {
                                     this->showNoRubbleWhenDestroyingBuilding
                                         = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                                     [(short)DAT_BuildingsState::instance.buildings[iVar9].buildingType]
@@ -324,7 +324,7 @@ namespace Map {
                             break;
                         case Map::Buildings::BT_SIEGETOWER_PLACED:
                             iVar9 = (int)DAT_BuildingsState::instance.buildings[_buildingID].unitRefID;
-                            if ((iVar9 != 0)
+                            if ((iVar9)
                                 && (DAT_BuildingsState::instance.buildings[_buildingID].unitRefUID
                                     == DAT_UnitsState::instance.units[iVar9].uid)) {
                                 DAT_UnitsState::instance.units[iVar9].state.generic

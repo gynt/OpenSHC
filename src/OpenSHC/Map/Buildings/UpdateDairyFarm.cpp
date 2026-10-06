@@ -78,7 +78,7 @@ namespace Map {
                 = DAT_BuildingsState::instance.buildings[iVar7].extraAnimationFrame3 + 1;
         }
         sVar8 = DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs;
-        if (sVar8 != 0) {
+        if (sVar8) {
             DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs = sVar8 + -1;
         }
         if (DAT_BuildingsState::instance.buildings[iVar7].workers[0] == 0) {
@@ -94,7 +94,7 @@ namespace Map {
             goto LAB_00416a00;
         }
         bVar2 = DAT_BuildingsState::instance.buildings[iVar7].field214_0x298;
-        if (bVar2 == 0) {
+        if (!bVar2) {
             if (((char)DAT_BuildingsState::instance.buildings[iVar7].numberOfAnimals < '\x03')
                 && (DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs == 0)) {
                 DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4
@@ -114,7 +114,7 @@ namespace Map {
                 }
                 bVar2 = DAT_BuildingsState::instance.buildings[iVar7].field215_0x299;
                 _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[iVar7].workerID[(char)bVar2];
-                if (_ownerPlayerIndex == 0) {}
+                if (!_ownerPlayerIndex) {}
                 if (DAT_UnitsState::instance.units[_ownerPlayerIndex].uid
                     != DAT_BuildingsState::instance.buildings[iVar7].workerUID[(char)bVar2]) {}
                 DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
@@ -275,7 +275,7 @@ namespace Map {
             (int)((int)(DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[iVar6] * 8)),
             (int)((int)(DAT_BuildingsState::instance.buildings[iVar7].terrainHeightUnk)), Map::Units::UT_COW);
         iVar7 = DAT_CurrentBuildingID::instance;
-        if (_cow == 0)
+        if (!_cow)
             goto LAB_00416a00;
         DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].counter
             = DAT_GameState::instance.playerDataArray[_ownerPlayerIndex].counter + 1;
@@ -290,7 +290,7 @@ namespace Map {
         DAT_UnitsState::instance.units[_cow].facingDirection = (byte)uVar3 & 7;
         DAT_UnitsState::instance.units[_cow].animationCycleNumber = 0;
         sVar8 = (short)_cow;
-        if (iVar10 == 0) {
+        if (!iVar10) {
             _ownerPlayerIndex = DAT_UnitsState::instance.units[_cow].uid;
             DAT_BuildingsState::instance.buildings[iVar7].workerID[1] = sVar8;
             DAT_BuildingsState::instance.buildings[iVar7].workerUID[1] = _ownerPlayerIndex;
@@ -316,26 +316,26 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[iVar7].field214_0x298 = 0;
         DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0;
     LAB_00416a00:
-        if (DAT_BuildingsState::instance.field4_0x10 != 0) {
+        if (DAT_BuildingsState::instance.field4_0x10) {
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateBuildingAreaTileGraphics,
                 DAT_BuildingsState::ptr)(iVar7);
             iVar7 = DAT_CurrentBuildingID::instance;
         }
         DAT_BuildingsState::instance.buildings[iVar7].numberOfAnimals = 0;
         _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[iVar7].workerID[1];
-        if ((_ownerPlayerIndex == 0)
+        if ((!_ownerPlayerIndex)
             || (DAT_UnitsState::instance.units[_ownerPlayerIndex].uid
                 != DAT_BuildingsState::instance.buildings[iVar7].workerUID[1])) {
             DAT_BuildingsState::instance.buildings[iVar7].workerID[1] = 0;
         }
         _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[iVar7].workerID[2];
-        if ((_ownerPlayerIndex == 0)
+        if ((!_ownerPlayerIndex)
             || (DAT_UnitsState::instance.units[_ownerPlayerIndex].uid
                 != DAT_BuildingsState::instance.buildings[iVar7].workerUID[2])) {
             DAT_BuildingsState::instance.buildings[iVar7].workerID[2] = 0;
         }
         _ownerPlayerIndex = (int)DAT_BuildingsState::instance.buildings[iVar7].workerID[3];
-        if ((_ownerPlayerIndex == 0)
+        if ((!_ownerPlayerIndex)
             || (DAT_UnitsState::instance.units[_ownerPlayerIndex].uid
                 != DAT_BuildingsState::instance.buildings[iVar7].workerUID[3])) {
             DAT_BuildingsState::instance.buildings[iVar7].workerID[3] = 0;

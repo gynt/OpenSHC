@@ -24,7 +24,7 @@ namespace UI {
         void MapEditorProperties::MenuItemRenderFunction_MapEditorProperties_MapDescriptionScrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)
         {
-            if (((DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
+            if (((DAT_GameCore::instance.U2_mapType_singleOrMulti)
                     && (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU))
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;

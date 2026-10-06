@@ -54,8 +54,7 @@ namespace Map {
         }
         isItNOTScenarioGameMode = DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR;
         this->field0_0x0 = 0;
-        if ((DAT_TileMapState::instance.refreshRelatedOne == 0)
-            || (DAT_TileMapState::instance.flatViewToggleValue1 != 0)) {
+        if ((!DAT_TileMapState::instance.refreshRelatedOne) || (DAT_TileMapState::instance.flatViewToggleValue1)) {
             this->field0_0x0 = 1;
         }
         DAT_GameState::instance.mapAndTime.newOrganisms = 0;
@@ -115,7 +114,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, this)(DAT_CurrentTreeID::instance);
                     break;
                 case 4:
-                    if (this->field0_0x0 == 0) {
+                    if (!this->field0_0x0) {
                         this->trees[DAT_CurrentTreeID::instance].animationFrameUnk
                             = this->trees[DAT_CurrentTreeID::instance].animationFrame2Unk;
                     } else {

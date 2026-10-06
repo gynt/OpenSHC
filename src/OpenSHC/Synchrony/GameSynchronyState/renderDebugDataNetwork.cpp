@@ -139,8 +139,8 @@ namespace Synchrony {
             y = y + 4;
             x = x + 1;
         } while (x < 9);
-        if (DAT_GameSynchronyState::instance.syncStatus == 0) {
-            if (DAT_GameSynchronyState::instance.DAT_GameHalted == 0) {
+        if (!DAT_GameSynchronyState::instance.syncStatus) {
+            if (!DAT_GameSynchronyState::instance.DAT_GameHalted) {
                 color = 0xffffff;
                 textAddress = "Game in sync";
             } else {

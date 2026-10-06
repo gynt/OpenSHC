@@ -85,7 +85,7 @@ namespace UI {
                         DAT_RequestedGoodsByWhoArray::instance[0] = -1;
                         DAT_SentOrRequestedGoodsAmount::instance = 0;
                     }
-                    if (DAT_00df4284::instance == 0) {
+                    if (!DAT_00df4284::instance) {
                         DAT_RequestedGoodsByWhoArray::instance[0] = -1;
                         DAT_SentOrRequestedGoodsAmount::instance = 0;
                     }

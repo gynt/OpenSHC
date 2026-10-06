@@ -70,11 +70,11 @@ namespace Map {
                 .playerDeathRelated
             != 0) {
             if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
-                && (DAT_VideoBikQueue::instance.storedMessages_0x924 == 0)) {
+                && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
                 DAT_GameState::instance.mapAndTime.unknownCountdown01
                     = DAT_GameState::instance.mapAndTime.unknownCountdown01 + -1;
             }
-            if (DAT_GameState::instance.mapAndTime.unknownCountdown01 == 0) {
+            if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
                 DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
@@ -138,7 +138,7 @@ namespace Map {
             DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
         }
         if (DAT_GameCore::instance.missionNumber1to20 == 0x10) {
-            if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 0) {
+            if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
                 iVar7 = DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID;
                 if (7 < DAT_GameState::instance.mapAndTime.emenyHitArray[2]
                         + DAT_GameState::instance.mapAndTime.emenyHitArray[1]
@@ -164,7 +164,7 @@ namespace Map {
                     }
                 }
             LAB_004c24df:
-                if (iVar7 != 0) {
+                if (iVar7) {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
                 }
             }
@@ -230,7 +230,7 @@ namespace Map {
             goto LAB_004c2d0b;
         }
         if (DAT_GameCore::instance.missionNumber1to20 == 0x11) {
-            if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 0) {
+            if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
                 if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                     && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
                     pcVar9 = "Ap_Milit25.wav";
@@ -351,7 +351,7 @@ namespace Map {
             goto LAB_004c2cc1;
         }
         if (DAT_GameCore::instance.missionNumber1to20 == 0x12) {
-            if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 0) {
+            if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
                 if (DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy) {}
                 if (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                     DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
@@ -423,11 +423,11 @@ namespace Map {
             if (DAT_GameCore::instance.missionNumber1to20 != 0x14) {}
             bVar6 = false;
             bVar4 = false;
-            if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 0) {
+            if (DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
                 if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 1) {}
                 if (DAT_GameState::instance.playerDataArray[3].lordKilledByPlayerID != 0) {
                     bVar6 = true;
-                    if ((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 1U) == 0) {
+                    if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 1U)) {
                         DAT_GameState::instance.mapAndTime.militaryCampaignFlags
                             = DAT_GameState::instance.mapAndTime.militaryCampaignFlags | 1;
                         DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
@@ -437,7 +437,7 @@ namespace Map {
                             DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                         }
-                    } else if ((((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x10U) == 0)
+                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x10U))
                                    && (DAT_GameState::instance.mapAndTime.month
                                        == DAT_GameState::instance.mapAndTime.monthCopy))
                         && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
@@ -459,7 +459,7 @@ namespace Map {
                 if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID != 0) {
                     bVar3 = true;
                     bVar2 = bVar3;
-                    if ((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 2U) == 0) {
+                    if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 2U)) {
                         DAT_GameState::instance.mapAndTime.militaryCampaignFlags
                             = DAT_GameState::instance.mapAndTime.militaryCampaignFlags | 2;
                         DAT_GameState::instance.mapAndTime.monthCopy
@@ -471,7 +471,7 @@ namespace Map {
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                             bVar2 = bVar3;
                         }
-                    } else if ((((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x20U) == 0)
+                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x20U))
                                    && (DAT_GameState::instance.mapAndTime.month
                                        == DAT_GameState::instance.mapAndTime.monthCopy))
                         && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
@@ -493,7 +493,7 @@ namespace Map {
                 }
                 if (DAT_GameState::instance.playerDataArray[4].lordKilledByPlayerID != 0) {
                     bVar4 = true;
-                    if ((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 4U) == 0) {
+                    if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 4U)) {
                         DAT_GameState::instance.mapAndTime.militaryCampaignFlags
                             = DAT_GameState::instance.mapAndTime.militaryCampaignFlags | 4;
                         DAT_GameState::instance.mapAndTime.monthCopy
@@ -503,7 +503,7 @@ namespace Map {
                             DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                         }
-                    } else if ((((DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x40U) == 0)
+                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x40U))
                                    && (DAT_GameState::instance.mapAndTime.month
                                        == DAT_GameState::instance.mapAndTime.monthCopy))
                         && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
@@ -524,7 +524,7 @@ namespace Map {
                     }
                 }
                 if ((1 < DAT_GameState::instance.playerDataArray[5].aiPlayerState)
-                    && (DAT_GameState::instance.mapAndTime.field3183_0x27dc == 0)) {
+                    && (!DAT_GameState::instance.mapAndTime.field3183_0x27dc)) {
                     pcVar9 = "Ap_Milit42.wav";
                     pcVar8 = "good_soldier_taunt.bik";
                     DAT_GameState::instance.mapAndTime.field3183_0x27dc = 1;
@@ -590,7 +590,7 @@ namespace Map {
             MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                 pcVar9, pcVar5, pcVar8);
         }
-        if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 0) {
+        if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
             if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                 && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
                 pcVar9 = "Ap_Milit34.wav";

@@ -41,7 +41,7 @@ namespace Map {
                 this->tribes[param_1].unknownCounter01 = 4000;
             }
             sVar2 = this->tribes[param_1].countdown;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 if ((BVar5 != FALSE)
                     && (BVar6 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
                             param_1, 500, Map::Units::UT_LIONSHWOLF),
@@ -50,7 +50,7 @@ namespace Map {
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                 }
                 sVar2 = this->tribes[param_1].field64_0x204;
-                if (sVar2 == 0) {
+                if (!sVar2) {
                     sVar2 = this->tribes[param_1].selectionTargetUnitID;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                     this->tribes[param_1].field64_0x204 = 2;
@@ -87,7 +87,7 @@ namespace Map {
                     sVar4 = this->tribes[param_1].unknownAttackRelatedUpdateCounter;
                     sVar2 = sVar4 + 1;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = sVar2;
-                    if (sVar4 == 0) {
+                    if (!sVar4) {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                             DAT_WildlifeState::ptr)(param_1, 2, 0);
                         if (0 < this->tribes[param_1].rallyPointCount) {

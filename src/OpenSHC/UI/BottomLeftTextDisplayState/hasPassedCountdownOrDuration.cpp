@@ -12,11 +12,11 @@ namespace UI {
         DWORD _now;
         bool _hasTime;
         DWORD _textRelatedTime;
-        if (this->currentlyDisplayedTextIsDisplayedUnk == 0) {
-            if (this->unknownCountdown01 != 0) {
+        if (!this->currentlyDisplayedTextIsDisplayedUnk) {
+            if (this->unknownCountdown01) {
                 this->unknownCountdown01 = this->unknownCountdown01 + -1;
             }
-        } else if (this->textMessageDurationUnk == 0) {
+        } else if (!this->textMessageDurationUnk) {
             this->textMessageDurationUnk = -1;
         } else {
             if (this->textMessageDurationUnk != -1) {

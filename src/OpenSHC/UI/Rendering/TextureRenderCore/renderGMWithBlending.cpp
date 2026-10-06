@@ -26,7 +26,7 @@ namespace UI {
                 = (ushort*)(DAT_GMImageOffsets::instance[iVar1 + -1 + imageID] + (int)this->gmProcessedImageData);
             if (blendStrengthUnk != 0x20) {
                 _imageType = this->gmFileHeaderColorpaletteArray[GmID].ImageType;
-                if (blendStrengthUnk == 0) {
+                if (!blendStrengthUnk) {
                     if ((_imageType == IO::Graphics::GIT_InterfaceElement)
                         || (_imageType == IO::Graphics::GIT_CompressedImage)) {
                         MACRO_CALL_MEMBER(

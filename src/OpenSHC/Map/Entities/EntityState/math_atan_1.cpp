@@ -26,14 +26,14 @@ namespace Map {
                              - ((fVar5 + fVar5) * (double)(heightDifference / 2)) / (fVar6 * fVar6 * (double)9.812))
                 - (double)1.0);
             fVar6 = (double)dVar1 - fVar5;
-            if (((double)DOUBLE_00b941c0::instance == fVar6) || (iVar2 = _isnan((double)fVar6), iVar2 != 0)) {
+            if (((double)DOUBLE_00b941c0::instance == fVar6) || (iVar2 = _isnan((double)fVar6), iVar2)) {
                 iVar2 = 1000;
             } else {
                 fVar6 = atan((double)fVar6);
                 iVar2 = (long)((fVar6 * (double)180.0) / (double)3.1415926535 + (double)0.4999000132083893);
             }
             dVar1 = (double)fVar5 + dVar1;
-            if ((DOUBLE_00b941c0::instance == dVar1) || (iVar3 = _isnan(dVar1), iVar3 != 0)) {
+            if ((DOUBLE_00b941c0::instance == dVar1) || (iVar3 = _isnan(dVar1), iVar3)) {
                 iVar3 = 1000;
             } else {
                 fVar5 = atan((double)dVar1);

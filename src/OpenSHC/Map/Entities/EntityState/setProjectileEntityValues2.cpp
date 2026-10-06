@@ -30,7 +30,7 @@ namespace Map {
             this->entityArray[entityID].unkOne_1
                 = (short)DAT_EntityDefinedData::instance.EntityPropertyArray_3[entityType];
             iVar3 = DAT_EntityDefinedData::instance.EntityArrayCurveTypeForProjectileType[entityType];
-            if (((iVar3 == 0) || (iVar3 == 6)) || (iVar3 == 9)) {
+            if (((!iVar3) || (iVar3 == 6)) || (iVar3 == 9)) {
                 this->entityArray[entityID].velocityUnk
                     = (short)DAT_EntityDefinedData::instance.EntityArrayProjectileVelocityForProjectileType[entityType];
             } else {

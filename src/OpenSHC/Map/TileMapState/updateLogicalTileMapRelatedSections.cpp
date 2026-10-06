@@ -38,7 +38,7 @@ namespace Map {
         int* local_28;
         int local_20;
         int local_8;
-        if (this->forceUpdateLogicalAndMiscDisplayLayers != 0) {
+        if (this->forceUpdateLogicalAndMiscDisplayLayers) {
             this->forceUpdateLogicalAndMiscDisplayLayers = 0;
             _tile = DAT_ViewportRenderState::instance.translationMatrix[DAT_PathFindingState::instance.mappingYRelated]
                         .firstTileOfRow;
@@ -49,16 +49,16 @@ namespace Map {
                 local_8 = 0;
                 if (0 < iVar2) {
                     do {
-                        if (((this->LogicLayer[_tile] & 0x30) == 0) && (this->ChangedLayer[_tile] != 0)) {
+                        if ((!(this->LogicLayer[_tile] & 0x30)) && (this->ChangedLayer[_tile] != 0)) {
                             uVar8 = (uint)this->HeightLayer[_tile];
                             iVar3 = this->heightBasedScreenYOffset[uVar8];
                             this->ShowHiLayer[_tile] = '\0';
                             this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] & 0xffef;
-                            if (uVar8 == 0) {
+                            if (!uVar8) {
                                 uVar4 = this->LogicLayer[_tile];
-                                if ((((uVar4 & Map::LogicHelpers::L_RIVER) == 0)
-                                        && ((this->Logic2Layer[_tile] & Map::LogicHelpers::L2_BEACH) != 0))
-                                    || ((uVar4 & Map::LogicHelpers::L_MOAT) != 0)) {
+                                if (((!(uVar4 & Map::LogicHelpers::L_RIVER))
+                                        && ((this->Logic2Layer[_tile] & Map::LogicHelpers::L2_BEACH)))
+                                    || ((uVar4 & Map::LogicHelpers::L_MOAT))) {
                                 LAB_004f71ea:
                                     this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
                                 } else {
@@ -69,14 +69,14 @@ namespace Map {
                                 if (uVar8 < 9)
                                     goto LAB_004f71ea;
                                 bVar1 = this->Logic2Layer[_tile];
-                                if ((bVar1 & 4) == 0) {
-                                    if ((bVar1 & 8) == 0) {
-                                        if ((bVar1 & 2) == 0) {
-                                            if ((bVar1 & 0x10) == 0) {
-                                                if ((bVar1 & 1) == 0) {
+                                if (!(bVar1 & 4)) {
+                                    if (!(bVar1 & 8)) {
+                                        if (!(bVar1 & 2)) {
+                                            if (!(bVar1 & 0x10)) {
+                                                if (!(bVar1 & 1)) {
                                                     if ((char)bVar1 < '\0') {
                                                         this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
-                                                    } else if ((bVar1 & 0x40) == 0) {
+                                                    } else if (!(bVar1 & 0x40)) {
                                                         this->LogicLayer[_tile] = this->LogicLayer[_tile]
                                                             & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                                     } else {
@@ -105,9 +105,8 @@ namespace Map {
                                 iVar9 = (*paiVar12)[0] + _tile;
                                 if (((8 < uVar8) || (this->HeightLayer[iVar9] == 0))
                                     && (uVar8 != this->HeightLayer[iVar9])) {
-                                    if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_RIVER
-                                            | Map::LogicHelpers::L_MOAT)
-                                        == 0) {
+                                    if (!(this->LogicLayer[iVar9] & Map::LogicHelpers::L_RIVER
+                                            | Map::LogicHelpers::L_MOAT)) {
                                         this->LogicLayer[_tile] = this->LogicLayer[_tile]
                                             & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                     }
@@ -121,13 +120,13 @@ namespace Map {
                                     == Map::Buildings::BT_DRAWBRIDGE)) {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
-                            if (this->field93_0x5548c8 == 0) {
+                            if (!this->field93_0x5548c8) {
                                 local_28 = this->directionTranslationMatrix[iVar11] + this->screenSouthEastDirection;
                                 iVar9 = 0;
                                 iVar15 = _tile;
                                 do {
                                     iVar15 = iVar15 + *local_28;
-                                    if ((this->LogicLayer[iVar15] & 0x30) != 0)
+                                    if ((this->LogicLayer[iVar15] & 0x30))
                                         break;
                                     if (iVar3 <= (this->heightBasedScreenYOffset[this->HeightLayer[iVar15]] - iVar9)
                                             + -0x10) {
@@ -137,20 +136,18 @@ namespace Map {
                                     local_28 = local_28 + this->orientedRowStep * 8;
                                     iVar9 = iVar9 + 0x10;
                                 } while (iVar9 < 0x80);
-                                if ((uVar8 == 0) || (this->ShowHiLayer[_tile] == 0xff))
+                                if ((!uVar8) || (this->ShowHiLayer[_tile] == 0xff))
                                     goto LAB_004f793d;
                             } else {
                                 this->ShowHiLayer[_tile] = '\b';
                             }
                             uVar4 = this->LogicLayer[_tile];
-                            if ((uVar4 & Map::LogicHelpers::L_BUILDING
-                                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                == 0) {
-                                if ((uVar4 & Map::LogicHelpers::L_TREE_VARIATION) == 0) {
-                                    if ((uVar4 & Map::LogicHelpers::L_FARM_FIELD_WHEAT) == 0) {
-                                        if ((uVar4 & Map::LogicHelpers::L_FARM_FIELD_HOP) == 0) {
-                                            if ((uVar4 & Map::LogicHelpers::L_CRENEL) == 0) {
-                                                if ((uVar4 & Map::LogicHelpers::L_STAIRS) == 0) {
+                            if (!(uVar4 & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
+                                if (!(uVar4 & Map::LogicHelpers::L_TREE_VARIATION)) {
+                                    if (!(uVar4 & Map::LogicHelpers::L_FARM_FIELD_WHEAT)) {
+                                        if (!(uVar4 & Map::LogicHelpers::L_FARM_FIELD_HOP)) {
+                                            if (!(uVar4 & Map::LogicHelpers::L_CRENEL)) {
+                                                if (!(uVar4 & Map::LogicHelpers::L_STAIRS)) {
                                                     this->MiscDisplayLayer[_tile]
                                                         = this->MiscDisplayLayer[_tile] | 0x10;
                                                     bVar7 = false;
@@ -181,10 +178,10 @@ namespace Map {
                                     this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] & 0xffef;
                                     break;
                                 }
-                                if ((uVar4 & 0x1000000) != 0) {
+                                if ((uVar4 & 0x1000000)) {
                                     bVar7 = true;
                                 }
-                                if ((uVar4 & 0x2000000) != 0) {
+                                if ((uVar4 & 0x2000000)) {
                                     bVar7 = true;
                                 }
                                 iVar15 = iVar15 + 1;
@@ -203,84 +200,70 @@ namespace Map {
                             if (iVar14 < iVar15) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                            if (!(this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)) {
                                 if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
-                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                        != 0)
-                                    && (iVar15 = MACRO_CALL_MEMBER(
-                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                    && (iVar15
+                                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11][this->screenSouthDirection] + _tile;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11][this->screenEastDirection] + _tile;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[this->orientedRowStep + iVar11]
                                                                          [this->screenSouthDirection]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[this->orientedRowStep + iVar11]
                                                                          [this->screenEastDirection]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
                                     + this->directionTranslationMatrix[this->orientedRowStep + iVar11]
                                                                       [this->screenSouthEastDirection];
                                 if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
-                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                        != 0)
-                                    && (iVar15 = MACRO_CALL_MEMBER(
-                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                    && (iVar15
+                                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
@@ -289,40 +272,33 @@ namespace Map {
                                                                          [this->screenSouthDirection]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar15 = this->directionTranslationMatrix[iVar11 + this->orientedRowStep * 2]
                                                                          [this->screenEastDirection]
                                     + iVar9;
                                 if ((((this->LogicLayer[iVar15] & Map::LogicHelpers::L_BUILDING
-                                          | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        && (iVar10 = MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        && (iVar10
+                                            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                                 DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar15]),
                                             iVar10 != 0))
                                     || (((this->LogicLayer[iVar15] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
-                                            != 0
-                                        && ((this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk)
-                                            == 0)))) {
+                                        && (!(this->LogicLayer[iVar15] & Map::LogicHelpers::L_STOCKPILEUnk))))) {
                                     bVar7 = true;
                                 }
                                 iVar9 = iVar9
                                     + this->directionTranslationMatrix[iVar11 + this->orientedRowStep * 2]
                                                                       [this->screenSouthEastDirection];
                                 if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
-                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                    != 0) {
+                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                                     iVar15 = MACRO_CALL_MEMBER(
                                         Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                         DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]);
@@ -357,12 +333,11 @@ namespace Map {
                             if ((iVar3 <= iVar15) && (bVar5 = true, iVar14 < iVar15)) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                            if (!(this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)) {
                                 if (((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
-                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                        != 0)
-                                    && (iVar15 = MACRO_CALL_MEMBER(
-                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                    && (iVar15
+                                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 != 0)) {
                                     bVar7 = true;
@@ -384,14 +359,12 @@ namespace Map {
                             if ((iVar3 <= iVar15) && (bVar6 = true, iVar14 < iVar15)) {
                                 bVar7 = true;
                             }
-                            if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
-                                if ((((this->LogicLayer[_tile] & Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                         != 0)
-                                        || ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
-                                                | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
-                                            == 0))
-                                    || (iVar15 = MACRO_CALL_MEMBER(
-                                            Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                            if (!(this->LogicLayer[_tile] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)) {
+                                if ((((this->LogicLayer[_tile] & Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
+                                        || (!(this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
+                                            | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)))
+                                    || (iVar15
+                                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                             DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]),
                                         iVar15 == 0))
                                     goto LAB_004f79a8;
@@ -410,10 +383,10 @@ namespace Map {
                                 this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 0x10;
                             }
                             if (local_20 < iVar3) {
-                                if (this->field93_0x5548c8 == 0) {
+                                if (!this->field93_0x5548c8) {
                                     this->ShowHiLayer[_tile] = (char)iVar3 - (char)local_20;
                                 }
-                                if ((this->LogicLayer[_tile] & Map::LogicHelpers::L_SEA) == 0) {
+                                if (!(this->LogicLayer[_tile] & Map::LogicHelpers::L_SEA)) {
                                     if (bVar5) {
                                         this->MiscDisplayLayer[_tile] = this->MiscDisplayLayer[_tile] | 1;
                                     }

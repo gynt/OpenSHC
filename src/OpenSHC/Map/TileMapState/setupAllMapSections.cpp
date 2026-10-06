@@ -121,7 +121,7 @@ namespace Map {
             piVar4 = piVar4 + 6;
             puVar1 = puVar1 + 6;
             iVar5 = iVar5 + -1;
-        } while (iVar5 != 0);
+        } while (iVar5);
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
             80400, 1, (void*)((int)(DAT_TileMapState::instance.PillarGFXLayer)));
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(

@@ -79,7 +79,7 @@ namespace Map {
                       .SpriteOffsets1[(short)DAT_BuildingsState::instance.buildings[buildingID].buildingType][1][0];
         }
         sVar5 = DAT_BuildingsState::instance.buildings[buildingID].state;
-        if (sVar5 == 0) {
+        if (!sVar5) {
             sVar5 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
             if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                 bVar4 = DAT_BuildingDefinedData::instance.AnimTannerSolitary[sVar5];
@@ -98,7 +98,7 @@ namespace Map {
         if (((sVar5 == 1) || (sVar5 == 3)) || (sVar5 == 5)) {
             if (DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0) {
                 sVar5 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex;
-                if (((sVar5 == 0) || (sVar5 == 0xe)) || ((sVar5 == 0x1a || (sVar5 == 0x29)))) {
+                if (((!sVar5) || (sVar5 == 0xe)) || ((sVar5 == 0x1a || (sVar5 == 0x29)))) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[buildingID].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
@@ -250,7 +250,7 @@ namespace Map {
             LAB_00414530:
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar7) = 0;
                 sVar5 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8);
-                if (sVar5 == 0) {
+                if (!sVar5) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 1;
                 } else if (sVar5 == 1) {
                     *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 2;
@@ -289,7 +289,7 @@ namespace Map {
         }
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar7) = 0;
         iVar6 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar7);
-        if (iVar6 != 0) {
+        if (iVar6) {
             UVar2 = DAT_UnitsState::instance.units[iVar6].state.generic;
             if (UVar2 == Map::Units::States::US_FIRE_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar7) = 1;

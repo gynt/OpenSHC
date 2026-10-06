@@ -74,7 +74,7 @@ namespace UI {
                 DWORD_00ed3138::instance = timeGetTime();
             }
             DVar3 = timeGetTime();
-            if ((DWORD_00ed311c::instance != 0) && (DVar4 = timeGetTime(), 1000 < DVar4 - DWORD_00ed311c::instance)) {
+            if ((DWORD_00ed311c::instance) && (DVar4 = timeGetTime(), 1000 < DVar4 - DWORD_00ed311c::instance)) {
                 DWORD_00ed311c::instance = 0;
                 /*
                   "Afraid?"
@@ -88,7 +88,7 @@ namespace UI {
                 DWORD_00ed3138::instance = timeGetTime();
             }
             piVar8 = local_4;
-            if (INT_00eb9b48::instance == 0) {
+            if (!INT_00eb9b48::instance) {
                 uVar10 = (DVar3 - DWORD_00ed27a8::instance) / 100;
                 if (21 < uVar10) {
                     uVar10 = 0;

@@ -41,7 +41,7 @@ namespace UI {
                     DVar1 = timeGetTime();
                     if ((DVar1 - DAT_GameCore::instance.unknownTime_0x11c < 0x3e9)
                         && (DAT_MouseState::instance.draggingStopped == FALSE)) {
-                        if (DAT_MouseState::instance.rightClickStop == 0) {
+                        if (!DAT_MouseState::instance.rightClickStop) {
                             return;
                         }
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(

@@ -24,7 +24,7 @@ namespace IO {
             for (int i = 0; i < _numReadUnk; ++i) {
                 _total += _first1024chars[i];
             }
-        } while (_numReadUnk != 0);
+        } while (_numReadUnk);
         MACRO_CALL(OS_Func::_ucrt_close)(_fileHandle);
         return _total;
     }

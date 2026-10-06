@@ -142,7 +142,7 @@ namespace Map {
                             _tile = DAT_ViewportRenderState::instance.translationMatrix[uVar9].addXgetTile + local_358
                                 + local_35c;
                             _areaID = (int)(short)DAT_TileMapState::instance.PathConnectionLayer[_tile];
-                            if (_areaID == 0) {
+                            if (!_areaID) {
                                 this->grid[_x10][_y10].unclaimedArea = this->grid[_x10][_y10].unclaimedArea + 1;
                             }
                             iVar8 = 0;
@@ -158,7 +158,7 @@ namespace Map {
                                 }
                                 iVar8 = iVar8 + 1;
                             } while (iVar8 < 100);
-                            if (_areaID != 0) {
+                            if (_areaID) {
                                 if (_areaID == local_348) {
                                     this->grid[_x10][_y10].chimps = this->grid[_x10][_y10].chimps + 1;
                                 }
@@ -187,26 +187,26 @@ namespace Map {
                             this->grid[_x10][_y10].field28_0x70 = this->grid[_x10][_y10].field28_0x70
                                 + (uint)DAT_TileMapState::instance.HeightLayer[_tile];
                             uVar6 = DAT_TileMapState::instance.LogicLayer[_tile];
-                            if ((uVar6 & 0x100) != 0) {
+                            if ((uVar6 & 0x100)) {
                                 this->grid[_x10][_y10].field5_0x14 = this->grid[_x10][_y10].field5_0x14 + 1;
                                 this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                             }
-                            if ((uVar6 & 0x20000000) != 0) {
+                            if ((uVar6 & 0x20000000)) {
                                 this->grid[_x10][_y10].field16_0x40 = this->grid[_x10][_y10].field16_0x40 + 1;
                             }
-                            if ((uVar6 & 0x20000) != 0) {
+                            if ((uVar6 & 0x20000)) {
                                 this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
                             if ((char)uVar6 < '\0') {
                                 this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
-                            if ((uVar6 & 0x40000) != 0) {
+                            if ((uVar6 & 0x40000)) {
                                 this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
                             }
-                            if ((uVar6 & 0x1000000) != 0) {
+                            if ((uVar6 & 0x1000000)) {
                                 this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
                             }
-                            if ((uVar6 & 0x2000000) != 0) {
+                            if ((uVar6 & 0x2000000)) {
                                 this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
                             }
                             if (((int)DAT_TileMapState::instance.OrganismLayer[_tile] - 1U < 1999)
@@ -251,7 +251,7 @@ namespace Map {
                                 }
                             }
                             _unitID = (int)(short)DAT_TileMapState::instance.UnitLayer[_tile];
-                            if (_unitID != 0) {
+                            if (_unitID) {
                                 this->grid[_x10][_y10].unitCount = this->grid[_x10][_y10].unitCount + 1;
                                 if (DAT_UnitsState::instance.units[_unitID].isStalked == 0) {
                                     this->grid[_x10][_y10].field12_0x30 = this->grid[_x10][_y10].field12_0x30 + 1;

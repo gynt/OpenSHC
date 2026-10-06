@@ -46,7 +46,7 @@ namespace Map {
                     && (((_treeType = (int)(short)this->trees[treeID].treeType, _treeType < 5 || (0x13 < _treeType))
                         && (this->trees[treeID].zeroUpTo2 == 0))))))
             && ((((short)this->trees[treeID].stageRelated2 <= (short)this->trees[treeID].stageRelated1
-                     && (this->field1_0x4 != 0))
+                     && (this->field1_0x4))
                 && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)))) {
             piVar1 = &this->trees[treeID].stageTracker;
             *piVar1 = *piVar1 + 1;
@@ -83,7 +83,7 @@ namespace Map {
                         (int)((int)((short)this->trees[treeID].treeType)),
                         (uint)((int)((int)(short)this->trees[treeID].xPosition)),
                         (uint)((int)((int)(short)this->trees[treeID].yPosition)));
-                    if (iVar3 != 0) {
+                    if (iVar3) {
                         size = MACRO_CALL_MEMBER(
                             Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage, this)(
                             (int)(short)this->trees[treeID].treeType, 0);

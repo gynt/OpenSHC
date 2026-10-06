@@ -79,7 +79,7 @@ namespace Audio {
                 int _relative2 = MACRO_CALL(SFX_Func::UpdateUnitLossSpeechFeedback_RelativeValueForGenie)(
                     playerUnitLossesSum, totalEnemyUnitLossesSum);
 
-                if (_relative1 == 0 && _relative2 == 0) {
+                if (!_relative1 && !_relative2) {
                     if (DAT_GameCore::instance.genieVoiceActive) {
                         /* "A Valliant Effort" */
                         MACRO_CALL_MEMBER(SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Genie_29_wav_005a4ecc);

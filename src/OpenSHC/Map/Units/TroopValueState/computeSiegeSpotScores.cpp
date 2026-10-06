@@ -64,8 +64,8 @@ namespace Map {
                             Map::Units::UnitsState_Func::ifAnyUnitOnSameTileIsLadderInRightDirection,
                             DAT_UnitsState::ptr)(_tile3,
                             (int)((int)(DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_tile3])));
-                        if (iVar2 == 0) {
-                            if (_pathFindingCost == 0) {
+                        if (!iVar2) {
+                            if (!_pathFindingCost) {
                                 *puVar3 = 9999;
                             } else {
                                 iVar2 = *(int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + _offset + -0x1c);
@@ -107,7 +107,7 @@ namespace Map {
                         _pathFindingCost = (uint)
                             * (byte*)(puVar3[-2] + 0x1ee2998
                                 + *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -0x10) * 0x13a10);
-                        if (_pathFindingCost == 0) {
+                        if (!_pathFindingCost) {
                             *puVar3 = 100;
                         } else {
                             *puVar3 = _pathFindingCost;
@@ -171,7 +171,7 @@ namespace Map {
                         _pathFindingCost = (uint)
                             * (byte*)(puVar3[-2] + 0x1ee2998
                                 + *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + _offset + -0x10) * 0x13a10);
-                        if (_pathFindingCost == 0) {
+                        if (!_pathFindingCost) {
                         LAB_00519ca1:
                             *puVar3 = 9999;
                         } else if (_pathFindingCost < 0xb) {

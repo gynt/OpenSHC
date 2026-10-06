@@ -346,7 +346,7 @@ namespace Map {
             this->entityArray[param_1].someMicroX = (ushort)((int)x <= iVar5) * 2 + -1;
             this->entityArray[param_1].pathTargetY = sVar7;
             this->entityArray[param_1].someMicroY = (ushort)((int)y <= iVar9) * 2 + -1;
-            if (sVar8 == 0) {
+            if (!sVar8) {
                 if (this->entityArray[param_1].pathDeltaY == 0) {
                     this->entityArray[param_1].pathAxisCase = 0;
                 } else {
@@ -354,7 +354,7 @@ namespace Map {
                 }
             } else {
                 sVar4 = this->entityArray[param_1].pathDeltaY;
-                if (sVar4 == 0) {
+                if (!sVar4) {
                     this->entityArray[param_1].pathAxisCase = 2;
                 } else if (sVar8 < sVar4) {
                     this->entityArray[param_1].pathAxisCase = 3;

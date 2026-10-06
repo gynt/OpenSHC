@@ -48,9 +48,9 @@ namespace Map {
         }
         _tile = DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile + _x;
         _rng = DAT_TileMapState::instance.LogicLayer[_tile];
-        if ((_rng & 0x10300131) == 0) {
+        if (!(_rng & 0x10300131)) {
             _buildingID = DAT_TileMapState::instance.BuildingLayer[_tile];
-            if (_buildingID != 0) {
+            if (_buildingID) {
                 _buildingType = DAT_BuildingsState::instance.buildings[_buildingID].buildingType;
                 if (((_buildingType != Map::Buildings::BT_TUNNEL)
                         && (_buildingType != Map::Buildings::BT_KILLINGPIT))
@@ -62,20 +62,20 @@ namespace Map {
             }
             _entityID = MACRO_CALL_MEMBER(
                 Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
-            if (_entityID == 0) {
-                if ((_rng & 0x1000) != 0) {
+            if (!_entityID) {
+                if ((_rng & 0x1000)) {
                     MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
                         _tile, param_1);
                 }
                 _fireEntityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
                     Map::Entities::ET_FIRE, 0);
-                if ((2 < param_5) && ((DAT_TileMapState::instance.RandomLayer[_tile] & 3) == 0)) {
+                if ((2 < param_5) && (!(DAT_TileMapState::instance.RandomLayer[_tile] & 3))) {
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                         DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
                         Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
-                if (_fireEntityID != 0) {
+                if (_fireEntityID) {
                     DAT_EntityState::instance.entityArray[_fireEntityID].fireParameter_0xb6 = (short)param_5;
                 }
                 return _fireEntityID;

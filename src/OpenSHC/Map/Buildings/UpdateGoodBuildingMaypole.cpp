@@ -61,7 +61,7 @@ namespace Map {
                 *piVar1 = *piVar1 + 1;
                 DAT_BuildingsState::instance.buildings[iVar4].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar4].animationFrame = 1;
-                if ((DAT_BuildingsState::instance.buildings[iVar4].animationCycleCount & 7) == 0) {
+                if (!(DAT_BuildingsState::instance.buildings[iVar4].animationCycleCount & 7)) {
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                         (int)(short)DAT_BuildingsState::instance.buildings[iVar4].x,
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y)),

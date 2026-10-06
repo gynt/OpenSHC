@@ -87,7 +87,7 @@ namespace Map {
             this->entityArray[entityID].graphicRotationUnk = (word)iVar6;
             iVar6 = _dx - this->entityArray[entityID].travelledDistance;
             this->entityArray[entityID].speedUnk = (int)(_accum_2 + _speed_2);
-            if (iVar6 != 0) {
+            if (iVar6) {
                 local_10 = (iVar5 - _height) / iVar6;
             }
             sVar2 = this->entityArray[entityID].travelledDistance;
@@ -96,7 +96,7 @@ namespace Map {
                 *psVar1 = *psVar1 + 1;
                 psVar1 = &this->entityArray[entityID].field80_0xba;
                 *psVar1 = *psVar1 + -1;
-                if (entityID != 0) {
+                if (entityID) {
                     MACRO_CALL_MEMBER(
                         Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(entityID);
                 }
@@ -115,7 +115,7 @@ namespace Map {
                 }
                 iVar6 = MACRO_CALL_MEMBER(
                     Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
-                if (iVar6 == 0) {
+                if (!iVar6) {
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
                         entityID);
                     return TRUE;

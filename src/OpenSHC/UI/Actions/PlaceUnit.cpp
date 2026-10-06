@@ -218,7 +218,7 @@ namespace UI {
                 bVar4 = false;
             }
             if (DAT_MouseState::instance.draggingStopped == FALSE) {
-                if (((DAT_TileMapState::instance.LogicLayer[_tile] & local_18) == 0) && (bVar4)) {
+                if ((!(DAT_TileMapState::instance.LogicLayer[_tile] & local_18)) && (bVar4)) {
                     if (_gmID == IO::Graphics::GID_BODY_SIEGE_TOWER) {
                         if (0 < iVar3) {
                             MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
@@ -251,7 +251,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                     DAT_ViewportRenderState::ptr)(_gmID, local_10, 0, 0, _tile, 0x18000d);
             }
-            if (((DAT_TileMapState::instance.LogicLayer[_tile] & local_18) == 0) && (bVar4)) {
+            if ((!(DAT_TileMapState::instance.LogicLayer[_tile] & local_18)) && (bVar4)) {
                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
                     MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::getBuildingCost, DAT_BuildingsState::ptr)(

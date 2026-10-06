@@ -22,7 +22,7 @@ namespace Map {
             short _oldIndex;
             _index = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSupportPointIndex,
                 DAT_PathFindingState::ptr)(200, x, y, tribeID);
-            if (_index != 0) {
+            if (_index) {
                 _oldIndex = DAT_TribesState::instance.tribes[tribeID].supportPointIndex;
                 DAT_TribesState::instance.tribes[tribeID].oldSupportPointIndex = _oldIndex;
                 this->attackInfo.supportPointsArray[_oldIndex].tribeID = 0;

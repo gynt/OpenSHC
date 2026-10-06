@@ -41,7 +41,7 @@ void Rendering::RenderActiveCreditsElements()
     CreditsRelatedStructure* piVar5;
     uint color;
     int local_4;
-    if (INT_00ed27a4::instance == 0) {
+    if (!INT_00ed27a4::instance) {
         MACRO_CALL(UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
     }
     if (INT_00ed27a4::instance == 1) {
@@ -62,7 +62,7 @@ void Rendering::RenderActiveCreditsElements()
         piVar5 = DAT_ARRAY_00ec0348::ptr[0];
         do {
             iVar3 = piVar5.isValid;
-            if ((iVar3 != 0) && (piVar5->field7_0x1c == local_4)) {
+            if ((iVar3) && (piVar5->field7_0x1c == local_4)) {
                 if (iVar3 == 1) {
                     iVar3 = piVar5->xSpace;
                     if (piVar5->field11_0x2c != -1) {
@@ -80,7 +80,7 @@ void Rendering::RenderActiveCreditsElements()
                             }
                         }
                     }
-                    if (piVar5->field6_0x18 == 0) {
+                    if (!piVar5->field6_0x18) {
                         MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(iVar3, piVar5->ySpace, piVar5->someX);
                     } else {
                         iVar4 = (long)((double)(float)piVar5->flag);
@@ -103,7 +103,7 @@ void Rendering::RenderActiveCreditsElements()
                 } else if (iVar3 == 4) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = Rendering::Enums::RT_SCREEN_MENU;
-                    if (piVar5->field6_0x18 == 0) {
+                    if (!piVar5->field6_0x18) {
                         MACRO_CALL_MEMBER(
                             UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
@@ -141,7 +141,7 @@ void Rendering::RenderActiveCreditsElements()
                     } else {
                         color = 0xccfaff;
                     }
-                    if (piVar5->field6_0x18 == 0) {
+                    if (!piVar5->field6_0x18) {
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelper)(piVar5->xSpace,
                             piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)));
@@ -186,10 +186,10 @@ void Rendering::RenderActiveCreditsElements()
         } while ((int)piVar5 < 0xec0840);
         local_4 = local_4 + 1;
         if (7 < local_4) {
-            if (DWORD_00eb9ac4::instance != 0) {
+            if (DWORD_00eb9ac4::instance) {
                 MACRO_CALL(UI::Rendering_Func::RenderTextPageProgressBar)();
             }
-            if ((DAT_00eb0e40::instance != 0) && (DAT_00eb0e40::instance != 5)) {
+            if ((DAT_00eb0e40::instance) && (DAT_00eb0e40::instance != 5)) {
                 if (DAT_00eb0e40::instance < 3) {
                     blendStrengh = (long)((double)FLOAT_00eb0e2c::instance);
                     iVar3 = DAT_WindowAndDirectDraw::instance.resolutionY + -1;

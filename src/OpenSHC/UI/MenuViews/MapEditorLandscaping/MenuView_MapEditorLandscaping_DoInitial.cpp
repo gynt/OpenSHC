@@ -53,7 +53,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(2);
             }
-            if (DAT_WindowAndDirectDraw::instance.field37_0xdc != 0) {
+            if (DAT_WindowAndDirectDraw::instance.field37_0xdc) {
                 DAT_WindowAndDirectDraw::instance.field37_0xdc = 0;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;

@@ -22,7 +22,7 @@ namespace Map {
         int _treeID;
         _treeID = MACRO_CALL_MEMBER(Map::LandscapeState_Func::createTree, this)(
             treeX, (undefined4)((int)(treeY)), Map::Trees::TT_APPLEUnk, 1, 0, 0, 0);
-        if (_treeID != 0) {
+        if (_treeID) {
             this->trees[_treeID].appleFarmID = (short)buildingID;
             iVar1 = DAT_BuildingsState::instance.buildings[buildingID].uid;
             this->trees[_treeID].stageTracker = this->trees[_treeID].rng1 & 0x1f;

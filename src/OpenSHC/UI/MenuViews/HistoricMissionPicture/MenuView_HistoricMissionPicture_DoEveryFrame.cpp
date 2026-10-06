@@ -39,8 +39,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playAmbientSoundStreamUnk, DAT_SFXState::ptr)(
                     Audio::SFX::ASFXT_WIND_0);
             }
-            if (DAT_MouseState::instance.leftClickStart != 0) {
-                if (DAT_00ed2780::instance == 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
+                if (!DAT_00ed2780::instance) {
                     FLOAT_00ec0834::instance = 0.0;
                 } else {
                     if (DAT_00ed2780::instance != 1)
@@ -51,10 +51,10 @@ namespace UI {
             }
         LAB_004db652:
             _blendStrength = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (_blendStrength != 0) {
+            if (_blendStrength) {
                 MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
                 MACRO_CALL(UI::Rendering_Func::RenderHistoryBookEdgeUnk)();
-                if (DAT_00ed2780::instance == 0) {
+                if (!DAT_00ed2780::instance) {
                     MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(DAT_00eb0b20::instance, 0x3e, 0x67);
                 }
                 if (DAT_00ed2780::instance == 1) {
@@ -78,7 +78,7 @@ namespace UI {
                     0, 400, 0x46, 0, 0, 0x10, TRUE, _blendStrength);
                 MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelperWithBlending)(
                     1, 400, 0x6e, 0, 0, 0x10, TRUE, _blendStrength);
-                if ((DAT_00ed2780::instance != 0)
+                if ((DAT_00ed2780::instance)
                     && (FLOAT_00ec0834::instance = FLOAT_Between1And5::instance + FLOAT_00ec0834::instance,
                         32.0 < FLOAT_00ec0834::instance != (FLOAT_00ec0834::instance == 32.0))) {
                     if (DAT_00ed2780::instance == 2) {

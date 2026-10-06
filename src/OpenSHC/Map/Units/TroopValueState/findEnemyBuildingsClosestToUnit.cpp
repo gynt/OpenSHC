@@ -32,7 +32,7 @@ namespace Map {
                 piVar2 = (AttackInfoSubArrayElement2*)((int)&DAT_TroopValueState::instance.attackInfo.townValuesArray
                     + iVar1 + 4);
                 do {
-                    if (piVar2->unitID == 0) {
+                    if (!piVar2->unitID) {
                         fromYPosition
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[piVar2->tile2];
                         fromXPosition = piVar2->tile2

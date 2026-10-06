@@ -30,7 +30,7 @@ namespace UI {
         integer = (valueUnk * 4) / 100;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         if (integer < 1) {
-            imageID = (integer != 0) + 0x81;
+            imageID = (integer) + 0x81;
         } else {
             imageID = 0x80;
         }
@@ -41,7 +41,7 @@ namespace UI {
             iVar2 = -4;
         }
         if (integer < 1) {
-            color = (-(uint)(integer != 0) & 0xff471204) + 0xb8eefb;
+            color = (-(uint)(integer) & 0xff471204) + 0xb8eefb;
         } else {
             color = 0xff00;
         }

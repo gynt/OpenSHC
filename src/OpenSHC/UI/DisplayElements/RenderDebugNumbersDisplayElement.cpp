@@ -90,7 +90,7 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 _averageMillisecLoopMain, posX + 0x30, posY, Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
         }
-        if (_averageMillisecLoopMain == 0) {
+        if (!_averageMillisecLoopMain) {
             _averageMillisecLoopMain = 1;
         }
         if (elementState != 0xfffffc18) {
@@ -99,11 +99,11 @@ namespace UI {
                 0x80ff, 0, 0x11, FALSE, 0);
         }
         DAT_CurrentFramerate::instance = (int)(1000 / (longlong)_averageMillisecLoopMain);
-        if (_tickRateSum == 0) {
+        if (!_tickRateSum) {
             _tickRateSum = 1;
         }
         _someRelationBetweenLoopDurationAndTickrate = _gameLoopDurationBufferSum / _tickRateSum;
-        if (_someRelationBetweenLoopDurationAndTickrate == 0) {
+        if (!_someRelationBetweenLoopDurationAndTickrate) {
             _someRelationBetweenLoopDurationAndTickrate = 1;
         }
         if (elementState != 0xfffffc18) {

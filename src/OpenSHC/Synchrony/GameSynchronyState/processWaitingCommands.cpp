@@ -19,7 +19,7 @@ namespace Synchrony {
         int (*paiVar1)[2];
         _gameCommandID = MACRO_CALL_MEMBER(
             Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
-        if ((_gameCommandID != 0) && (_gameCommandID = 0, 0 < this->MBR_someIndex)) {
+        if ((_gameCommandID) && (_gameCommandID = 0, 0 < this->MBR_someIndex)) {
             paiVar1 = this->MBR_SelectedGameCommands;
             do {
                 /*

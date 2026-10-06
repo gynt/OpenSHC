@@ -69,7 +69,7 @@ namespace UI {
                     Audio::MSS::enums::SND_STR_SPEECH_2);
                 ;
             }
-            if (((param_1 == 1) && (DAT_00df5560::instance != 0)) && (DAT_00df5540::instance == 0)) {
+            if (((param_1 == 1) && (DAT_00df5560::instance)) && (!DAT_00df5540::instance)) {
                 DAT_00df5558::instance = DAT_00df5558::instance + 1;
                 DAT_00df5560::instance = 0;
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(

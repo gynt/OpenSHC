@@ -52,9 +52,8 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_IN_BLACKSMITHS_WORKSHOP, 0xb, DAT_MenuHandlerState::instance.x + 0xaf,
                 DAT_MenuHandlerState::instance.y + 0x1f9, Text::TTA_LEFT, 0, 0x12, FALSE);
-        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType
-                        == Map::Buildings::BT_POLETURNER)
-                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0))
+        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType == Map::Buildings::BT_POLETURNER)
+                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1))
             && ((DAT_UnitsState::instance.units[iVar1].state.generic == Map::Units::States::US_IDLEUnk
                 && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {
             /*
@@ -63,9 +62,8 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_IN_BLACKSMITHS_WORKSHOP, 0xb, DAT_MenuHandlerState::instance.x + 0xaf,
                 DAT_MenuHandlerState::instance.y + 0x1f9, Text::TTA_LEFT, 0, 0x12, FALSE);
-        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType
-                        == Map::Buildings::BT_BLACKSMITH)
-                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0))
+        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType == Map::Buildings::BT_BLACKSMITH)
+                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1))
             && ((DAT_UnitsState::instance.units[iVar1].state.generic
                     == (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)
                 && (BVar2 = MACRO_CALL(Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {

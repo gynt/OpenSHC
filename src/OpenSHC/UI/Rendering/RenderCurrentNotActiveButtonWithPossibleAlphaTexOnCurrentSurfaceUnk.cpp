@@ -30,7 +30,7 @@ namespace UI {
         int iVar3;
         iVar3 = DAT_CurrentButtonGmDataIndex::instance;
         iVar2 = 0;
-        if (DAT_ButtonUnknownZero::instance != 0) {
+        if (DAT_ButtonUnknownZero::instance) {
             iVar2 = 2;
         }
         buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;

@@ -80,7 +80,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_3f0, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (_receivedCurrentPlayerSlotID != 0) {
+            if (_receivedCurrentPlayerSlotID) {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                     DAT_GameSynchronyState::ptr)(local_3ec, 500, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);

@@ -11,7 +11,7 @@ namespace UI {
     {
         int iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[0xf];
-        if (iVar1 == 0) {
+        if (!iVar1) {
             return 0x1d;
         }
         if (999 < iVar1) {
@@ -51,7 +51,7 @@ namespace UI {
         }
         iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .currentPopulation;
-        if (iVar1 == 0) {
+        if (!iVar1) {
             return 0x22;
         }
         return (uint)(4 < iVar1) * 4 + 0x23;

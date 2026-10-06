@@ -143,7 +143,7 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
-                    if (((*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]) != 0)
+                    if (((*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]))
                         && ((*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0])
                             = (*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]) + -1,
                             (*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]) == 0)) {

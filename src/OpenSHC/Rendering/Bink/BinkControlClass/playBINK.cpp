@@ -35,7 +35,7 @@ namespace Rendering {
                     binkObjIndex);
             }
             if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 == FALSE)
-                || (DAT_SoundSystemState::instance.soundActiveUnk_0x0 == 0)) {
+                || (!DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                 _videoFileName = MACRO_CALL_MEMBER(
                     IO::ResourceManager_Func::getFileNameOfCurrentActiveResource, DAT_ResourceManager::ptr)();
                 /*
@@ -55,7 +55,7 @@ namespace Rendering {
                 this->binkObjPtrArray[binkObjIndex] = _binkObjPtr;
             }
             if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE)
-                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)) {
+                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                 _fileSoundVolumne = MACRO_CALL_MEMBER(
                     Audio::SFX::SFXState_Func::getSoundVolumeForFilename, DAT_SFXState::ptr)(binkFileName);
                 BinkSetVolume(this->binkObjPtrArray[binkObjIndex], 0, (long)((int)(_fileSoundVolumne * 0xfa)));

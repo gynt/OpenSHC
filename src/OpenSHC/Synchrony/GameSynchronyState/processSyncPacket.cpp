@@ -47,7 +47,7 @@ namespace Synchrony {
         if ((this->commandDelay < _newDiff2) && (this->commandDelay = _newDiff2, _countDown + 5 <= _newDiff2)) {
             this->commandDelay = _countDown + 5;
         }
-        if (this->syncRelatedCountdown != 0) {
+        if (this->syncRelatedCountdown) {
             this->commandDelay = 1;
         }
     }

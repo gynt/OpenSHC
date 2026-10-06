@@ -74,10 +74,9 @@ namespace UI {
         char local_24[32];
         uint local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_48;
         local_48 = DAT_00df5560::instance;
-        if (((INT_DisableTutorialRestrictions::instance != 0)
+        if (((INT_DisableTutorialRestrictions::instance)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_TUTORIAL_BOX))
-            && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                != UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE))
+            && (DAT_MenuModalComposition1::instance.activeModalDialogID != UI::Enums::MMT_TUTORIAL_BOX_WITH_LEAVE))
             goto LAB_004bd764;
         DWORD _now = timeGetTime();
         if (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE) {
@@ -95,7 +94,7 @@ namespace UI {
             INT_00df5654::instance = iVar3;
             DWORD_00df564c::instance = timeGetTime();
         }
-        if (((INT_00df5650::instance == 0) && (0 < DAT_00df5558::instance))
+        if (((!INT_00df5650::instance) && (0 < DAT_00df5558::instance))
             && ((DAT_00df5558::instance < DAT_00df555c::instance
                 && (DVar1 = timeGetTime(), 1000 < DVar1 - DWORD_00df564c::instance)))) {
             INT_00df5650::instance = 1;
@@ -107,11 +106,11 @@ namespace UI {
                     DAT_SoundSystemState::ptr)(local_44);
             }
         }
-        if ((DAT_00df5564::instance != 0) && (1000 < _now - DWORD_00df5568::instance)) {
+        if ((DAT_00df5564::instance) && (1000 < _now - DWORD_00df5568::instance)) {
             DAT_00df5564::instance = 0;
         }
         if ((DAT_FileDoesntExist::instance == FALSE)
-            && (((DAT_00df5558::instance == 0 || (INT_00df5650::instance != 0)) && (DAT_00df5540::instance == 0)))) {
+            && (((!DAT_00df5558::instance || (INT_00df5650::instance)) && (!DAT_00df5540::instance)))) {
             uVar4 = DAT_00df5544::instance;
             if (DAT_00df5558::instance < DAT_00df555c::instance + -1) {
                 BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
@@ -121,14 +120,14 @@ namespace UI {
                                 DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_2),
                             BVar2 == FALSE))
                     && ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE
-                        && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)))) {
+                        && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)))) {
                     MACRO_CALL(UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
                 }
                 goto LAB_004bd354;
             }
         LAB_004bd3e9:
             DAT_00df5544::instance = uVar4;
-            if (DAT_00df5560::instance != 0)
+            if (DAT_00df5560::instance)
                 goto LAB_004bd764;
         } else {
         LAB_004bd354:
@@ -153,14 +152,14 @@ namespace UI {
             if (DAT_00df5540::instance != 2)
                 goto LAB_004bd3e9;
             uVar4 = _now - DWORD_00df5548::instance >> 5;
-            if (uVar4 == 0) {
+            if (!uVar4) {
                 uVar4 = 1;
                 goto LAB_004bd3e9;
             }
             if (uVar4 < 0x20)
                 goto LAB_004bd3e9;
             DAT_TutorialCurrentStep::instance = DAT_TutorialCurrentStep::instance + 1;
-            if (INT_DisableTutorialRestrictions::instance != 0) {
+            if (INT_DisableTutorialRestrictions::instance) {
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
                 uVar4 = DAT_00df5544::instance;
@@ -179,14 +178,14 @@ namespace UI {
             DAT_00df5560::instance = 0;
             DAT_00df5558::instance = 0;
         }
-        if ((INT_DisableTutorialRestrictions::instance != 0) || (DAT_00df5540::instance == 2))
+        if ((INT_DisableTutorialRestrictions::instance) || (DAT_00df5540::instance == 2))
             goto LAB_004bd764;
         switch (DAT_TutorialCurrentStep::instance) {
         case 1:
             iVar3 = INT_00df5574::instance;
             goto joined_r0x004bd699;
         case 2:
-            if (DAT_00df5558::instance == 0) {
+            if (!DAT_00df5558::instance) {
                 bVar5 = DAT_00df5588::instance == 6;
             } else {
                 iVar3 = DAT_00df5558::instance;
@@ -200,7 +199,7 @@ namespace UI {
             }
             break;
         case 5:
-            if (DAT_00df5558::instance == 0) {
+            if (!DAT_00df5558::instance) {
                 if (DAT_00df5588::instance != 6) {
                     bVar5 = DAT_00df5588::instance == 7;
                     goto LAB_004bd514;
@@ -224,7 +223,7 @@ namespace UI {
             }
             break;
         case 8:
-            if (DAT_00df5558::instance != 0)
+            if (DAT_00df5558::instance)
                 goto joined_r0x004bd57e;
             if (DAT_00df5588::instance == 0xc) {
                 bVar5 = DAT_00df558c::instance == 4;
@@ -232,7 +231,7 @@ namespace UI {
             }
             break;
         case 9:
-            if (DAT_00df5558::instance != 0)
+            if (DAT_00df5558::instance)
                 goto joined_r0x004bd57e;
             if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                 bVar5 = DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_KEEP_OR_MPMENU_IPX;
@@ -305,7 +304,7 @@ namespace UI {
             /*
               hold right click to show extra interface controls
              */
-            if (iVar3 != 0)
+            if (iVar3)
                 goto switchD_004bd41e_caseD_0;
             break;
         case 0x1c:
@@ -339,8 +338,8 @@ namespace UI {
         switchD_004bd41e_caseD_0:
             DAT_00df5560::instance = 1;
         }
-        if (local_48 == 0) {
-            if (DAT_00df5560::instance == 0)
+        if (!local_48) {
+            if (!DAT_00df5560::instance)
                 goto LAB_004bd764;
             if (DAT_MissionAestheticsDefinedData::instance.field1251_0x5464[DAT_TutorialCurrentStep::instance] == 2) {
                 iVar3 = DAT_00df556c::instance * 0x60;
@@ -353,7 +352,7 @@ namespace UI {
                 }
             }
         }
-        if (((DAT_00df5560::instance != 0)
+        if (((DAT_00df5560::instance)
                 && (DAT_MissionAestheticsDefinedData::instance.field1250_0x53c4[DAT_TutorialCurrentStep::instance]
                     != 0))
             && (DAT_00df555c::instance + -1 <= DAT_00df5558::instance)) {

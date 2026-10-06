@@ -108,9 +108,9 @@ namespace Map {
             bVar8 = true;
         }
         _buildingOwnerZeroBased = DAT_TileMapState::instance.LogicLayer[tile];
-        if (((_buildingOwnerZeroBased & 0x10000400) == 0) && (DAT_TileMapState::instance.BuildingLayer[tile] == 0)) {
-            if ((_buildingOwnerZeroBased & 0x100) != 0) {
-                if (((_buildingOwnerZeroBased & 2) != 0)
+        if ((!(_buildingOwnerZeroBased & 0x10000400)) && (DAT_TileMapState::instance.BuildingLayer[tile] == 0)) {
+            if ((_buildingOwnerZeroBased & 0x100)) {
+                if (((_buildingOwnerZeroBased & 2))
                     || ((_buildingOwnerZeroBased = DAT_TileMapState::instance.WallOwnerLayer[tile] & 7,
                         bVar7
                             && (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
@@ -119,7 +119,7 @@ namespace Map {
                 }
                 DAT_GameState::instance.playerDataArray[_buildingOwnerZeroBased + 1].defensesDamagedByPlayer
                     = (short)playerID;
-                if (unitID != 0) {
+                if (unitID) {
                     if (DAT_GameState::instance.mapAndTime.playerTeams[_buildingOwnerZeroBased + 1]
                         == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
                         DAT_UnitsState::instance.units[unitID].friendlyFireCounterUnk
@@ -138,17 +138,16 @@ namespace Map {
                 } else if (2 < DAT_TileMapState::instance.DAT_CardinalTilesAroundTile) {
                     damageUnk = damageUnk / 2;
                 }
-                if (param_5 != 0) {
+                if (param_5) {
                     damageUnk = 0;
                 }
                 DAT_TroopValueState::instance.attackInfo.field128059_0x469e0
                     = DAT_TroopValueState::instance.attackInfo.field128059_0x469e0 + 1;
                 DAT_GameCore::instance.cowPoisonTrackerUnk
                     = DAT_GameCore::instance.cowPoisonTrackerUnk + damageUnk * 10;
-                if ((((param_5 == 0)
-                         && ((DAT_TileMapState::instance.LogicLayer[tile]
-                                 & Map::LogicHelpers::L_UNKNOWN_WALL_RELATED)
-                             == 0))
+                if ((((!param_5)
+                         && (!(
+                             DAT_TileMapState::instance.LogicLayer[tile] & Map::LogicHelpers::L_UNKNOWN_WALL_RELATED)))
                         && (DAT_TileMapState::instance.DamageLayer[tile] == 0))
                     && (DAT_TileMapState::instance.DefaultHeightLayer[tile] + 60
                         < (uint)DAT_TileMapState::instance.HeightLayer[tile])) {
@@ -196,7 +195,7 @@ namespace Map {
         _buildingIDAtTile = (int)DAT_TileMapState::instance.BuildingLayer[tile];
         _logicalState = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].logicalState;
         if (((_logicalState == ((BuildingLogicalState)0)) || (_logicalState == Map::Buildings::BLS_REMOVE))
-            || (_health = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth, _health == 0)) {
+            || (_health = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth, !_health)) {
             return TRUE;
         }
         DAT_GameCore::instance.cowPoisonTrackerUnk = DAT_GameCore::instance.cowPoisonTrackerUnk + damageUnk * 10;
@@ -204,7 +203,7 @@ namespace Map {
         if (DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[(short)_buildingType] == 0) {
             return TRUE;
         }
-        if ((DAT_TileMapState::instance.LogicLayer[tile] & 0xf000000U) != 0) {
+        if ((DAT_TileMapState::instance.LogicLayer[tile] & 0xf000000U)) {
             return TRUE;
         }
         if ((bVar8)
@@ -237,7 +236,7 @@ namespace Map {
                 ((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                 ((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
                 Map::Buildings::BT_DRAWBRIDGE, _drawbridgeBuildingID);
-            if (_drawbridgeBuildingID_2 != 0) {
+            if (_drawbridgeBuildingID_2) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeBuildingID_2].buildingType]
@@ -261,7 +260,7 @@ namespace Map {
         default:
             break;
         }
-        if (unitID != 0) {
+        if (unitID) {
             if (DAT_GameState::instance.mapAndTime
                     .playerTeams[DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner]
                 == DAT_GameState::instance.mapAndTime.playerTeams[playerID]) {
@@ -274,10 +273,10 @@ namespace Map {
         _health2 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentHealth;
         if (0 < _health2) {
             if (((_buildingType2 == Map::Buildings::BT_SIEGETOWER_PLACED)
-                    && (_owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID, _owner != 0))
+                    && (_owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID, _owner))
                 && ((DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefUID
                         == DAT_UnitsState::instance.units[_owner].uid
-                    && (sVar6 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].maxHealth, sVar6 != 0)))) {
+                    && (sVar6 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].maxHealth, sVar6)))) {
                 DAT_UnitsState::instance.units[_owner].health
                     = ((int)_health2 * DAT_UnitsState::instance.units[_owner].maxHealth) / (int)sVar6;
             }
@@ -343,7 +342,7 @@ namespace Map {
         switch (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType) {
         case Map::Buildings::BT_OILSMELTER:
             _pitch = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].resources[7];
-            if (_pitch != 0) {
+            if (_pitch) {
                 _x = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x;
                 _owner2 = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner;
                 _buildingOwnerZeroBased
@@ -380,7 +379,7 @@ namespace Map {
                 ((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                 ((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
                 Map::Buildings::BT_DRAWBRIDGE, 0);
-            if (_drawbridgeID != 0) {
+            if (_drawbridgeID) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeID].buildingType]
@@ -393,7 +392,7 @@ namespace Map {
                     ((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y)),
                     ((int)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].widthOrHeight)),
                     Map::Buildings::BT_DRAWBRIDGE, _drawbridgeID);
-                if (_owner != 0) {
+                if (_owner) {
                     DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                         = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                     [(short)DAT_BuildingsState::instance.buildings[_owner].buildingType]
@@ -432,7 +431,7 @@ namespace Map {
             goto switchD_00517137_caseD_1d;
         case Map::Buildings::BT_SIEGETOWER_PLACED:
             _owner = (int)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefID;
-            if ((_owner != 0)
+            if ((_owner)
                 && (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].unitRefUID
                     == DAT_UnitsState::instance.units[_owner].uid)) {
                 DAT_UnitsState::instance.units[_owner].state.generic = Map::Units::States::US_DISAPPEAR;

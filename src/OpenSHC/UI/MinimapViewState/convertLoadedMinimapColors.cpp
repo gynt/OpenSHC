@@ -51,7 +51,7 @@ namespace UI {
             psVar1 = psVar1 + 5;
             pbVar3 = pbVar3 + 5;
             iVar2 = iVar2 + -1;
-        } while (iVar2 != 0);
+        } while (iVar2);
         MACRO_CALL(OpenSHC::OS_Func::_free_base)(local_214);
         ;
     }

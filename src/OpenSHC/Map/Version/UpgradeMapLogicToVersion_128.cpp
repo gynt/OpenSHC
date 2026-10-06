@@ -13,10 +13,10 @@ namespace Map {
     {
         int targetedTile;
         for (targetedTile = 0; targetedTile < 0x13a10; targetedTile++) {
-            if ((DAT_TileMapState::instance.LogicLayer[targetedTile] & 0x40000000U) != 0) {
+            if ((DAT_TileMapState::instance.LogicLayer[targetedTile] & 0x40000000U)) {
                 int iVar1 = MACRO_CALL_MEMBER(
                     Map::TileMapState_Func::returnOwnedMoatAtTile, DAT_TileMapState::ptr)(targetedTile);
-                if (((iVar1 != 0) && (DAT_TileMapState::instance.moats[iVar1].stage == 2))
+                if (((iVar1) && (DAT_TileMapState::instance.moats[iVar1].stage == 2))
                     && (DAT_TileMapState::instance.moats[iVar1].fillProgress == 4)) {
                     DAT_TileMapState::instance.HeightLayer[targetedTile] = 0;
                 }

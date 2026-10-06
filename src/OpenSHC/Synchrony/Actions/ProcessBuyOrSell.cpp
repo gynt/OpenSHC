@@ -22,7 +22,7 @@ namespace Synchrony {
         BOOLEnum BVar2;
         int _salesCount;
         int _salesPrice;
-        if (buyOrSell == 0) {
+        if (!buyOrSell) {
             /*
               buying?
              */

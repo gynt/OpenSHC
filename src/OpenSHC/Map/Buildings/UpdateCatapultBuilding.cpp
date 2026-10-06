@@ -70,7 +70,7 @@ namespace Map {
                 iVar4 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(iVar5);
                 iVar7 = DAT_CurrentBuildingID::instance;
-                if (iVar4 == 0) {
+                if (!iVar4) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
@@ -95,7 +95,7 @@ namespace Map {
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar7].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[iVar7].terrainHeightUnk)),
                 Map::Units::UT_S_CATAPULT);
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 piVar6 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingProgress;
                 *piVar6 = *piVar6
                     - (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount;
@@ -115,7 +115,7 @@ namespace Map {
                     psVar2 = psVar2 + 1;
                     iVar7 = iVar7 + -1;
                     DAT_UnitsState::instance.units[sVar1].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
-                } while (iVar7 != 0);
+                } while (iVar7);
             } else {
                 iVar7 = 0;
                 if (0 < sVar1) {
@@ -161,7 +161,7 @@ namespace Map {
             } else {
                 iVar7 = DAT_GameState::instance.playerDataArray[iVar5].keep.id;
                 DAT_UnitsState::instance.units[iVar4].facingDirection = 0;
-                if (iVar7 == 0) {
+                if (!iVar7) {
                     piVar6 = &DAT_GameState::instance.playerDataArray[iVar5].counter;
                     *piVar6 = *piVar6 + 2;
                 }
@@ -194,7 +194,7 @@ namespace Map {
                     piVar8 = piVar8 + 1;
                     iVar5 = iVar5 + -1;
                     iVar7 = DAT_CurrentBuildingID::instance;
-                } while (iVar5 != 0);
+                } while (iVar5);
             }
             bVar9 = DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU;
             DAT_UnitsState::instance.units[iVar4].digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300

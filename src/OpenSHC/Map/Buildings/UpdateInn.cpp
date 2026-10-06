@@ -47,7 +47,7 @@ namespace Map {
         iVar5 = DAT_CurrentBuildingID::instance;
         iVar9 = DAT_CurrentBuildingID::instance * 0x32c;
         iVar7 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[0];
-        if (iVar7 == 0) {
+        if (!iVar7) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive = 0;
         } else if ((DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                            .flagonsOfAleOrCheeseOrReleaseDogs
@@ -60,7 +60,7 @@ namespace Map {
         sVar6 = DAT_BuildingsState::instance.buildings[iVar5].buildingIsVisuallyActive;
         MACRO_CALL_MEMBER(
             Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(iVar5);
-        if (sVar6 == 0) {
+        if (!sVar6) {
             DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = 0;
             DAT_BuildingsState::instance.buildings[iVar5].renderAnimation = 0;
             DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock = 0;
@@ -120,10 +120,10 @@ namespace Map {
                 }
             }
             sVar6 = DAT_BuildingsState::instance.buildings[iVar5].field204_0x28a;
-            if (sVar6 != 0) {
+            if (sVar6) {
                 sVar6 = sVar6 + -1;
                 DAT_BuildingsState::instance.buildings[iVar5].field204_0x28a = sVar6;
-                if (sVar6 == 0) {
+                if (!sVar6) {
                     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::spawnDrunkard, DAT_GameState::ptr)(
                         DAT_CurrentBuildingID::instance);
                 }
@@ -143,7 +143,7 @@ namespace Map {
             }
         }
         if (0 < *(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x1a)) {
-            if ((iVar7 != 0)
+            if ((iVar7)
                 && (psVar2
                     = (short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x18),
                     *psVar2 = *psVar2 + 1,

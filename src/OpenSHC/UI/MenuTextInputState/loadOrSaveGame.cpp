@@ -80,7 +80,7 @@ namespace UI {
             DAT_MouseState::instance.waitCursorToggle = 0;
             this->fileListSortOrder = 0;
             this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
-            if (this->fileListEntryCount == 0) {
+            if (!this->fileListEntryCount) {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = -1;
             } else {
                 this->DAT_MenuLoadGameRelativeSelectionIndex = 0;

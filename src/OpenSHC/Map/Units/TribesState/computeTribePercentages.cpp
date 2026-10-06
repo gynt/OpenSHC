@@ -104,31 +104,31 @@ namespace Map {
                 } while (iVar4 < this->tribes[tribeID].size);
             }
             _tribeSize = (int)this->tribes[tribeID].size;
-            if (_tribeSize == 0) {
+            if (!_tribeSize) {
                 _percentage = 100;
             } else {
                 _percentage = (short)((_countDying * 100) / _tribeSize);
             }
             this->tribes[tribeID].percentageDyingUnk = _percentage;
-            if (_tribeSize == 0) {
+            if (!_tribeSize) {
                 _percentage = 100;
             } else {
                 _percentage = (short)((_countMoving * 100) / _tribeSize);
             }
             this->tribes[tribeID].percentageMovingUnk = _percentage;
-            if (_tribeSize == 0) {
+            if (!_tribeSize) {
                 _percentage = 100;
             } else {
                 _percentage = (short)((_countAttackingUnk * 100) / _tribeSize);
             }
             this->tribes[tribeID].percentageAttackingUnk = _percentage;
-            if (_tribeSize == 0) {
+            if (!_tribeSize) {
                 _percentage = 100;
             } else {
                 _percentage = (short)((_countRangeUnk * 100) / _tribeSize);
             }
             this->tribes[tribeID].percentageShootingUnk = _percentage;
-            if (_tribeSize != 0) {
+            if (_tribeSize) {
                 this->tribes[tribeID].percentageSomething = (short)((local_8 * 100) / _tribeSize);
             }
             this->tribes[tribeID].percentageSomething = 100;

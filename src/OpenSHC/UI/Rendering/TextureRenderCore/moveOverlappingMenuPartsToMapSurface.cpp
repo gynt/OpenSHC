@@ -28,7 +28,7 @@ namespace UI {
             int* _yPosPtr;
             undefined2 _ignoreColor;
             int _width;
-            if ((this->activeMenuTabIndex != 0)
+            if ((this->activeMenuTabIndex)
                 && (DAT_BlendingDefinedData::instance.field166_0x2dfc[this->activeMenuTabIndex * 0x28 + 0x5e] != -1)) {
                 _widthPtr = DAT_BlendingDefinedData::instance.field166_0x2dfc + this->activeMenuTabIndex * 0x28 + 0x60;
                 _xPosPtr = DAT_BlendingDefinedData::instance.field166_0x2dfc + this->activeMenuTabIndex * 0x28 + 0x5e;
@@ -66,12 +66,12 @@ namespace UI {
                             _screenSurfacePtr = _screenSurfacePtr + 1;
                             _mapSurfacePtr = _mapSurfacePtr + 1;
                             _runWidth = _runWidth + -1;
-                        } while (_runWidth != 0);
+                        } while (_runWidth);
                         _screenSurfacePtr = (ushort*)((int)_screenSurfacePtr + _lineJumpBytes);
                         _mapSurfacePtr = _mapSurfacePtr + (0xfd8 - _width);
                         _height = _height + -1;
                         _runWidth = _width;
-                    } while (_height != 0);
+                    } while (_height);
                     _yPosPtr = _yPosPtr + 4;
                     _hightPtr = _hightPtr + 4;
                     _widthPtr = _widthPtr + 4;

@@ -59,7 +59,7 @@ namespace Map {
                 local_1c = 3;
                 _pKeep = &DAT_GameState::instance.playerDataArray[1];
                 do {
-                    if ((local_1c + -2 != _playerID) && ((_pKeep->keep).id != 0)) {
+                    if ((local_1c + -2 != _playerID) && ((_pKeep->keep).id)) {
                         iVar5 = (_pKeep->keep).xEntry;
                         iVar8 = (_pKeep->keep).yEntry;
                         uVar2 = DAT_UnitsState::instance.units[unitID].x - iVar5;

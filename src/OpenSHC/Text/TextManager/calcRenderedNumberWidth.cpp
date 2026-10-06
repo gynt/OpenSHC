@@ -19,7 +19,7 @@ namespace Text {
         int iVar2;
         int iVar3 = 0;
         if (param_1 == -1) {
-            if (param_2 == 0) {
+            if (!param_2) {
                 iVar3 = 10;
             } else if (param_2 == 1) {
                 iVar3 = 0x15;
@@ -29,7 +29,7 @@ namespace Text {
             return DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x92] + iVar3].width + -2;
         }
         int iVar1 = param_1 / 100000;
-        if (iVar1 != 0) {
+        if (iVar1) {
             iVar3 = (int)((ulonglong)((longlong)iVar1 * -0x66666667) >> 0x20);
             iVar1 = iVar1 + ((iVar3 >> 2) - (iVar3 >> 0x1f)) * 10;
             if (param_2 == 1) {
@@ -42,7 +42,7 @@ namespace Text {
             iVar3 = DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width + -2;
         }
         iVar1 = param_1 / 10000;
-        if (iVar1 != 0) {
+        if (iVar1) {
             iVar2 = (int)((ulonglong)((longlong)iVar1 * -0x66666667) >> 0x20);
             iVar1 = iVar1 + ((iVar2 >> 2) - (iVar2 >> 0x1f)) * 10;
             if (param_2 == 1) {
@@ -56,7 +56,7 @@ namespace Text {
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 1000;
-        if (iVar1 != 0) {
+        if (iVar1) {
             iVar2 = (int)((ulonglong)((longlong)iVar1 * -0x66666667) >> 0x20);
             iVar1 = iVar1 + ((iVar2 >> 2) - (iVar2 >> 0x1f)) * 10;
             if (param_2 == 1) {
@@ -70,7 +70,7 @@ namespace Text {
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 100;
-        if (iVar1 != 0) {
+        if (iVar1) {
             iVar2 = (int)((ulonglong)((longlong)iVar1 * -0x66666667) >> 0x20);
             iVar1 = iVar1 + ((iVar2 >> 2) - (iVar2 >> 0x1f)) * 10;
             if (param_2 == 1) {
@@ -84,7 +84,7 @@ namespace Text {
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 10;
-        if (iVar1 != 0) {
+        if (iVar1) {
             iVar2 = (int)((ulonglong)((longlong)iVar1 * -0x66666667) >> 0x20);
             iVar1 = iVar1 + ((iVar2 >> 2) - (iVar2 >> 0x1f)) * 10;
             if (param_2 == 1) {

@@ -54,7 +54,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, imageID,
                 (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
             if (param_1 == 0x15) {
-                if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {}
+                if (DAT_GameCore::instance.selectedLordTypeUnk) {}
             } else {
                 if (param_1 != 0x16) {}
                 if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {}

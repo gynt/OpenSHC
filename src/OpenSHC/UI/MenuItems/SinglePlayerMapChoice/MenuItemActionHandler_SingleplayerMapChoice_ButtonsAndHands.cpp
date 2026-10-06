@@ -54,7 +54,7 @@ namespace UI {
                         DAT_StopHandlingMenuItems::instance = 0;
                     }
                 switchD_0042d6cf_caseD_2:
-                    if (DAT_MapMissionType::instance == 0) {
+                    if (!DAT_MapMissionType::instance) {
                         menuID = UI::Enums::MVT_MAIN_MENU;
                     } else {
                         menuID = UI::Enums::MVT_CUSTOM_SCENARIOS;
@@ -70,7 +70,7 @@ namespace UI {
                  */
                 if (-1 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
-                    if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
+                    if ((!DAT_MapMissionType::instance) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
                     }
                     MACRO_CALL(UI::Actions_Func::LaunchSinglePlayerGameUnk)(0);
@@ -85,7 +85,7 @@ namespace UI {
                     /*
                       castle builder and landscape mode
                      */
-                    if (DAT_MapMissionType::instance != 0) {
+                    if (DAT_MapMissionType::instance) {
                         DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_MapMissionType::instance = 0;
@@ -114,7 +114,7 @@ namespace UI {
                     /*
                       difficulty button
                      */
-                    if ((DAT_GameCore::instance.mapU4Int1_2 == 0) && (DAT_MapMissionType::instance != 0)) {
+                    if ((!DAT_GameCore::instance.mapU4Int1_2) && (DAT_MapMissionType::instance)) {
                         DAT_GameState::instance.mapAndTime.difficulty
                             = DAT_GameState::instance.mapAndTime.difficulty + 1;
                         if (3 < DAT_GameState::instance.mapAndTime.difficulty) {
@@ -127,7 +127,7 @@ namespace UI {
                     /*
                       Advanced?
                      */
-                    if (((DAT_GameCore::instance.mapU4Int1_2 == 0) && (DAT_MapMissionType::instance == 2))
+                    if (((!DAT_GameCore::instance.mapU4Int1_2) && (DAT_MapMissionType::instance == 2))
                         && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2)) {
                         DAT_SH1_SiegeAdvancedMode::instance = DAT_SH1_SiegeAdvancedMode::instance ^ 1;
                     }
@@ -143,7 +143,7 @@ namespace UI {
                     /*
                       "Attacking" or "Defending"
                      */
-                    if ((DAT_MapMissionType::instance == 2) && (DAT_GameCore::instance.mapU4Int1_2 == 0)) {
+                    if ((DAT_MapMissionType::instance == 2) && (!DAT_GameCore::instance.mapU4Int1_2)) {
                         if (DAT_GameSynchronyState::instance.currentPlayerSlotID != 1) {
                             DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                             DAT_SH1_SiegeAdvancedMode::instance = 0;

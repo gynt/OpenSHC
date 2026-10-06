@@ -55,10 +55,10 @@ namespace Map {
                     *piVar6 = 0;
                     piVar6 = piVar6 + 0x640;
                     iVar3 = iVar3 + -1;
-                } while (iVar3 != 0);
+                } while (iVar3);
                 piVar4 = piVar4 + 0x28;
                 iVar12 = iVar12 + -1;
-            } while (iVar12 != 0);
+            } while (iVar12);
             this->DAT_Y10_Array_Section1034[0] = (short)local_1c;
             this->DAT_X10_Array_Section1034[0] = (short)iVar5;
             this->grid[iVar5][local_1c].casDisRelated2 = this->grid[iVar5][local_1c].field20_0x50;
@@ -177,7 +177,7 @@ namespace Map {
                     uVar9 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar8)
                         + iVar5;
                     if ((((uVar9 < 0x28) && (uVar11 < 0x28)) && (0 < this->grid[uVar9][uVar11].firstMember))
-                        && ((iVar8 = this->grid[uVar9][uVar11].casDisRelated2, iVar8 != 0 && (param_2 < iVar8)))) {
+                        && ((iVar8 = this->grid[uVar9][uVar11].casDisRelated2, iVar8 && (param_2 < iVar8)))) {
                         this->grid[uVar9][uVar11].casDisRelated2 = 0;
                         param_2 = iVar8;
                         local_14 = iVar10;
@@ -213,7 +213,7 @@ namespace Map {
                     uVar9 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar10)
                         + iVar5;
                     if ((((uVar9 < 0x28) && (uVar11 < 0x28)) && (0 < this->grid[uVar9][uVar11].firstMember))
-                        && ((iVar10 = this->grid[uVar9][uVar11].casDisRelated2, iVar10 != 0 && (param_2 < iVar10)))) {
+                        && ((iVar10 = this->grid[uVar9][uVar11].casDisRelated2, iVar10 && (param_2 < iVar10)))) {
                         this->grid[uVar9][uVar11].casDisRelated2 = 0;
                         param_2 = iVar10;
                         local_14 = iVar8;
@@ -221,7 +221,7 @@ namespace Map {
                     iVar3 = iVar3 + 0x20;
                     iVar12 = iVar12 + 4;
                     local_10 = local_10 + -1;
-                } while (local_10 != 0);
+                } while (local_10);
                 if (local_14 < 0)
                     break;
                 iVar5

@@ -45,7 +45,7 @@ namespace Map {
                 this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
             }
             sVar5 = this->tribes[param_1].field64_0x204;
-            if (sVar5 == 0) {
+            if (!sVar5) {
                 sVar5 = this->tribes[param_1].selectionTargetUnitID;
                 this->tribes[param_1].unknownAttackRelatedUpdateCounter = 0;
                 this->tribes[param_1].field64_0x204 = 2;
@@ -79,7 +79,7 @@ namespace Map {
                 if (SVar2 == ((SomeTribeBehaviorType)0)) {
                     sVar5 = this->tribes[param_1].unknownAttackRelatedUpdateCounter;
                     this->tribes[param_1].unknownAttackRelatedUpdateCounter = sVar5 + 1;
-                    if (sVar5 == 0) {
+                    if (!sVar5) {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                             DAT_WildlifeState::ptr)(param_1, 2, 1);
                         if (0 < this->tribes[param_1].rallyPointCount) {

@@ -22,7 +22,7 @@ namespace UI {
         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
             UI::Enums::MMT_NONE, TRUE);
         MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
-        if (this->field42_0x9c != 0) {
+        if (this->field42_0x9c) {
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;
         }

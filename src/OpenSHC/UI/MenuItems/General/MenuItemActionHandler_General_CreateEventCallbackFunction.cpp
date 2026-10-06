@@ -347,7 +347,7 @@ namespace UI {
                 case 0x91:
                     iVar8 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::findRecentOrSignpostSpawnLocation,
                         DAT_TribesState::ptr)(&dStack_4, (uint*)&param_1);
-                    if ((iVar8 == 0)
+                    if ((!iVar8)
                         || (BVar4 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                 DAT_ViewportRenderState::ptr)(dStack_4, (uint)((int)(param_1))),
                             iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID, BVar4 == FALSE))
@@ -508,13 +508,13 @@ namespace UI {
                     iVar8 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::findFirstBuildingOfType, DAT_BuildingsState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_WELL);
-                    if (iVar8 == 0) {
+                    if (!iVar8) {
                         iVar8 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findFirstBuildingOfType,
                             DAT_BuildingsState::ptr)(
                             DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_WATERPOT);
                         pcVar10 = "general_message3.wav";
                         pcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
-                        if (iVar8 == 0) {
+                        if (!iVar8) {
                             iVar8 = 0x11;
                         } else {
                             iVar8 = 0xf;
@@ -644,16 +644,15 @@ namespace UI {
                 iVar8
                     = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::hasAvailableSpawnSlotForWildlifeOrMercs,
                         DAT_TribesState::ptr)();
-                if ((iVar8 == 0)
-                    || ((iVar8
-                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
-                            DAT_BuildingsState::ptr)(
-                            DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_HOPFARM),
+                if ((!iVar8)
+                    || ((iVar8 = MACRO_CALL_MEMBER(
+                             Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer, DAT_BuildingsState::ptr)(
+                             DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_HOPFARM),
                         iVar8 == 0
-                            && (iVar8 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
-                                    DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                    Map::Buildings::BT_WHEATFARM),
+                            && (iVar8
+                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
+                                    DAT_BuildingsState::ptr)(
+                                    DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_WHEATFARM),
                                 iVar8 == 0))))
                     goto LAB_004c19d6;
                 DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation = 1200;

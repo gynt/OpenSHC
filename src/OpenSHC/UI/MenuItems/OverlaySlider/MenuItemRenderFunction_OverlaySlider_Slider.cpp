@@ -57,7 +57,7 @@ namespace UI {
                     pcVar2, iVar1, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
             }
             color = COL_DARK_LIME::instance.shortValue;
-            if (isDragged == 0) {
+            if (!isDragged) {
                 color = COL_GREYISH_YELLOW::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(

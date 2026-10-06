@@ -44,12 +44,12 @@ namespace Map {
         if (param_1 == Commands::M_MAPPER_DOG_CAGE) {
             if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameState::instance.mapAndTime.skirmishNoDogs != 0)) {
+                && (DAT_GameState::instance.mapAndTime.skirmishNoDogs)) {
                 return FALSE;
             }
         } else if (((param_1 == Commands::M_MAPPER_HUNTER)
                        && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY))
-            && (DAT_GameState::instance.mapAndTime.rawDeerCount == 0)) {
+            && (!DAT_GameState::instance.mapAndTime.rawDeerCount)) {
             return FALSE;
         }
         return (int)this->buildingAvailabilityRelatedFlags[param_1];

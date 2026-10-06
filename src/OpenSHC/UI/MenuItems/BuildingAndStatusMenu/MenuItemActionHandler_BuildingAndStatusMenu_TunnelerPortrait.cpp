@@ -38,7 +38,7 @@ namespace UI {
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .tunnelersGuild.id)),
                     (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .currentResources[0xf]
                         < 0x1e) {

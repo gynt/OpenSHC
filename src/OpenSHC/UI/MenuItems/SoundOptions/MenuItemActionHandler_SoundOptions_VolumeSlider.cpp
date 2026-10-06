@@ -20,7 +20,7 @@ namespace UI {
                 break;
             case 2:
             case 3:
-                if (param_1 == 0) {
+                if (!param_1) {
                     if (DAT_MenuTextInputState::instance.pendingStreamVolume0 != *currentValue) {
                         MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(0, (int)((int)(*currentValue)));
@@ -52,7 +52,7 @@ namespace UI {
             default:
                 return;
             }
-            if (param_1 == 0) {
+            if (!param_1) {
                 *currentValue = DAT_MenuTextInputState::instance.pendingStreamVolume0;
             }
             if (param_1 == 1) {

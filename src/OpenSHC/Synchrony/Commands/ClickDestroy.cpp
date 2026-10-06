@@ -46,7 +46,7 @@ namespace Synchrony {
                 _moatID = MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::returnOwnedMoatAtTile,
                     DAT_TileMapState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
                 iVar1 = DAT_GameSynchronyState::instance.DAT_GameCommandParam0;
-                if (_moatID != 0) {
+                if (_moatID) {
                     DAT_TileMapState::instance.moats[_moatID].fillProgress = 0;
                     MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::removeMoat, DAT_TileMapState::ptr)(
                         _moatID, iVar1);

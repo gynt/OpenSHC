@@ -92,7 +92,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 + 0x222,
                     (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-                if (iVar2 == 0) {
+                if (!iVar2) {
                     if (DAT_GameCore::instance.lordIcons[iVar1] == 0) {
                         iVar2 = 0x21b;
                         goto LAB_004ad609;

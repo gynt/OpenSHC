@@ -54,7 +54,7 @@ namespace UI {
                         MenuItemActionHandler_BuildingAndStatusMenu_SelectBuySellGoods)(_buyingPrice);
             }
             BOOL_CurrentMenuClickState::instance = FALSE;
-            if (param_1 == 0) {
+            if (!param_1) {
                 /*
                   Buying
                  */

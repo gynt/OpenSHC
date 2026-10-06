@@ -60,10 +60,10 @@ namespace Map {
             short _yPosition;
             sVar4 = this->seagullArray[seagullID].someCountDown;
             _entityID = (int)this->seagullArray[seagullID].entityID;
-            if (sVar4 != 0) {
+            if (sVar4) {
                 sVar4 = sVar4 + -1;
                 this->seagullArray[seagullID].someCountDown = sVar4;
-                if (sVar4 != 0) {
+                if (sVar4) {
                     return;
                 }
                 _y = this->entityArray[_entityID].microY;
@@ -98,15 +98,14 @@ namespace Map {
                         _oldBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_oldX, _oldY);
                         if (((_oldBounds != FALSE)
-                                && ((DAT_TileMapState::instance.LogicLayer
-                                            [DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile
-                                                + _newX]
-                                        & 1)
-                                    != 0))
-                            && ((DAT_TileMapState::instance.LogicLayer
-                                        [DAT_ViewportRenderState::instance.translationMatrix[_oldY].addXgetTile + _oldX]
-                                    & 1)
-                                != 0)) {
+                                && ((
+                                    DAT_TileMapState::instance.LogicLayer
+                                        [DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile + _newX]
+                                    & 1)))
+                            && ((DAT_TileMapState::instance
+                                     .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[_oldY].addXgetTile
+                                         + _oldX]
+                                & 1))) {
                             this->seagullArray[seagullID].someCountDown = 160;
                             MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition,
                                 this)(_entityID, (int)((int)(this->entityArray[_entityID].microX)),
@@ -216,7 +215,7 @@ namespace Map {
                     sVar2 = this->seagullArray[seagullID].field22_0x2e;
                     this->seagullArray[seagullID].field25_0x34 = 10;
                     this->seagullArray[seagullID].field27_0x38 = sVar5 + -1;
-                    if (sVar2 != 0) {
+                    if (sVar2) {
                         if (sVar2 == 2) {
                             this->seagullArray[seagullID].x = this->seagullArray[seagullID].field23_0x30 + sVar4;
                             return;

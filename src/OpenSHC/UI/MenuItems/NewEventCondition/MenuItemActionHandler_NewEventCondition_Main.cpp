@@ -271,7 +271,7 @@ namespace UI {
                                                       .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                                       .data
                                 + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe);
-                            if (iVar7 == 0) {
+                            if (!iVar7) {
                                 *(undefined1*)((int)&DAT_MapPropertiesState::instance
                                                    .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                                    .data
@@ -374,7 +374,7 @@ namespace UI {
                 case 0x1405:
                     if ((DAT_MenuModalComposition2::instance.activeModalDialogID == UI::Enums::MMT_NONE)
                         && ((DVar5 = timeGetTime(),
-                            1000 < DVar5 - DAT_UnknownTime_01::instance || (DAT_UnknownTime_01::instance == 0)))) {
+                            1000 < DVar5 - DAT_UnknownTime_01::instance || (!DAT_UnknownTime_01::instance)))) {
                         DAT_UnknownTime_01::instance = 0;
                         (&DAT_UnitsState::instance.units[0x9bb]
                                 .field_0x3e3)[(DAT_MapPropertiesState::instance.currentEventID * 0x39 + param_1) * 4]

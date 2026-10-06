@@ -43,7 +43,7 @@ namespace Map {
                 if (unitType == Map::Units::UT_ANTELOPESHDEER) {
                     _finalTargetUnitID
                         = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getNonDyingUnit, this)(tribeID);
-                    if (_finalTargetUnitID == 0) {
+                    if (!_finalTargetUnitID) {
                         _finalTargetUnitID = (int)_targetUnitID;
                     }
                 }
@@ -62,7 +62,7 @@ namespace Map {
                     && (sVar2 = this->tribes[tribeID].field138_0x282, this->tribes[tribeID].field139_0x284 = 0,
                         _tribeSize < sVar2)) {
                     if ((unitType == Map::Units::UT_RABBIT)
-                        && (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation != 0)) {
+                        && (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation)) {
                         iVar3 = 110;
                     } else {
                         iVar3 = ((_unknown <= _tribeSize) - 1 & 0xffffffb5) + 100;
@@ -71,7 +71,7 @@ namespace Map {
                         _rng2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                             0, 0, (int)((int)(_unitX * 8)), (int)((int)(_unitY * 8)), (int)((int)(_terrainHeight)),
                             unitType);
-                        if (_rng2 != 0) {
+                        if (_rng2) {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(
                                 _rng2, tribeID);
                             DAT_UnitsState::instance.units[_rng2].substate

@@ -41,7 +41,8 @@ namespace Map {
         local_10 = 2;
         local_1c = 0;
         local_18 = 0;
-        if ((_logicTile & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE | Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) != 0) {}
+        if ((_logicTile & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE | Map::LogicHelpers::L_BUILDING
+                | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {}
         switch (this->mapOrientation) {
         case 0:
             local_24 = 5;
@@ -70,8 +71,8 @@ namespace Map {
         uVar4 = (uint)this->HeightLayer[tile];
         iVar6 = tile;
         iVar7 = param_2;
-        if ((_logicTile & Map::LogicHelpers::L_TREE) == 0) {
-            if ((_logicTile & Map::LogicHelpers::L_TREE_VARIATION) != 0) {
+        if (!(_logicTile & Map::LogicHelpers::L_TREE)) {
+            if ((_logicTile & Map::LogicHelpers::L_TREE_VARIATION)) {
                 local_28 = 5;
                 local_2c = 6;
                 goto LAB_004f7ba5;
@@ -89,15 +90,16 @@ namespace Map {
             iVar6 = iVar6 + this->directionTranslationMatrix[iVar7][local_24];
             iVar7 = iVar7
                 + *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + local_24 * 8 + 4);
-            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) != 0)
+            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE))
                 break;
-            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) == 0) {
+            if (!(this->LogicLayer[iVar6] & Map::LogicHelpers::L_BUILDING
+                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                 uVar5 = (uint)this->HeightLayer[iVar6];
             } else {
                 iVar8 = (int)this->BuildingLayer[iVar6];
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     iVar1 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
@@ -111,8 +113,8 @@ namespace Map {
                     }
                 }
             }
-            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_TREE) == 0) {
-                if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_TREE_VARIATION) != 0) {
+            if (!(this->LogicLayer[iVar6] & Map::LogicHelpers::L_TREE)) {
+                if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_TREE_VARIATION)) {
                     uVar5 = uVar5 + 0x28;
                 }
             } else {
@@ -154,15 +156,16 @@ namespace Map {
         iVar6 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar6 + 4) + param_2;
         local_2c = uVar5;
         do {
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) != 0)
+            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE))
                 break;
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) == 0) {
+            if (!(this->LogicLayer[iVar7] & Map::LogicHelpers::L_BUILDING
+                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                 local_2c = (uint)this->HeightLayer[iVar7];
             } else {
                 iVar8 = (int)this->BuildingLayer[iVar7];
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     iVar1 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
@@ -176,8 +179,8 @@ namespace Map {
                     }
                 }
             }
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE) == 0) {
-                if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE_VARIATION) != 0) {
+            if (!(this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE)) {
+                if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE_VARIATION)) {
                     local_2c = local_2c + 0x28;
                 }
             } else {
@@ -213,15 +216,16 @@ namespace Map {
         local_18 = 4;
         iVar6 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar6 + 4) + param_2;
         do {
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) != 0)
+            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE))
                 break;
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) == 0) {
+            if (!(this->LogicLayer[iVar7] & Map::LogicHelpers::L_BUILDING
+                    | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                 local_2c = (uint)this->HeightLayer[iVar7];
             } else {
                 iVar8 = (int)this->BuildingLayer[iVar7];
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     iVar1 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
@@ -235,8 +239,8 @@ namespace Map {
                     }
                 }
             }
-            if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE) == 0) {
-                if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE_VARIATION) != 0) {
+            if (!(this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE)) {
+                if ((this->LogicLayer[iVar7] & Map::LogicHelpers::L_TREE_VARIATION)) {
                     local_2c = local_2c + 0x28;
                 }
             } else {
@@ -272,15 +276,16 @@ namespace Map {
         } else if (local_28 == 2) {
             iVar6 = this->directionTranslationMatrix[param_2][local_24] + tile;
             uVar5 = uVar4;
-            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) == 0) {
-                if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) == 0) {
+            if (!(this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE)) {
+                if (!(this->LogicLayer[iVar6] & Map::LogicHelpers::L_BUILDING
+                        | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                     uVar5 = (uint)this->HeightLayer[iVar6];
                 } else {
                     iVar1 = (int)this->BuildingLayer[iVar6];
                     iVar7 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar1);
                     uVar5 = local_2c;
-                    if (iVar7 == 0) {
+                    if (!iVar7) {
                         iVar7 = MACRO_CALL_MEMBER(
                             Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar1);
@@ -297,14 +302,14 @@ namespace Map {
             }
             iVar6 = this->directionTranslationMatrix[param_2][local_14] + tile;
             uVar2 = uVar4;
-            if ((this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) == 0) {
+            if (!(this->LogicLayer[iVar6] & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE)) {
                 uVar2 = (uint)this->HeightLayer[iVar6];
             }
             cVar3 = (int)uVar5 < (int)(uVar4 - 4);
             if (uVar4 + 4 < uVar2) {
                 cVar3 = cVar3 + '\x01';
             }
-            if ((this->LogicLayer[tile] & Map::LogicHelpers::L_MOAT) == 0) {
+            if (!(this->LogicLayer[tile] & Map::LogicHelpers::L_MOAT)) {
                 if (cVar3 == '\x01') {
                     local_28 = 1;
                 } else if (cVar3 == '\x02') {

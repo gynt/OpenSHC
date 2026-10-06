@@ -46,7 +46,7 @@ namespace Map {
                 tribeID, this->tribes[tribeID].uid);
             this->tribes[tribeID].unkIsAnimalTribe = 1;
             iVar8 = 80;
-            if (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation != 0) {
+            if (DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation) {
                 iVar8 = 3;
             }
             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnDeerLionOrRabbit, this)(
@@ -65,13 +65,13 @@ namespace Map {
                 this->tribes[tribeID].unknownCounter01 = 0;
             }
             sVar2 = this->tribes[tribeID].field133_0x278;
-            if (sVar2 == 0) {
+            if (!sVar2) {
                 SVar3 = this->tribes[tribeID].tribeBehaviorType;
                 if (SVar3 == ((SomeTribeBehaviorType)0)) {
                     sVar4 = this->tribes[tribeID].unknownAttackRelatedUpdateCounter;
                     sVar2 = sVar4 + 1;
                     this->tribes[tribeID].unknownAttackRelatedUpdateCounter = sVar2;
-                    if (sVar4 == 0) {
+                    if (!sVar4) {
                         BVar7 = MACRO_CALL_MEMBER(Map::WildlifeState_Func::buildRallyPointPathForTribe,
                             DAT_WildlifeState::ptr)(tribeID, 4);
                         if (BVar7 == FALSE) {
@@ -97,7 +97,7 @@ namespace Map {
                         this->tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
                     }
                 } else if (SVar3 == Map::Units::STBT_1) {
-                    if (iVar6 == 0) {
+                    if (!iVar6) {
                         if (iVar5 < 0x15) {
                             this->tribes[tribeID].field136_0x27e = 400;
                         } else {

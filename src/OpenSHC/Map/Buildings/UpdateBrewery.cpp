@@ -50,7 +50,7 @@ namespace Map {
         buildingID = DAT_CurrentBuildingID::instance;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field138_0x1c2 = 1;
         iVar7 = (int)DAT_BuildingsState::instance.buildings[buildingID].workerID[0];
-        if (iVar7 == 0) {
+        if (!iVar7) {
         LAB_00414bea:
             DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
         } else {
@@ -80,7 +80,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
-        if (sVar5 == 0) {
+        if (!sVar5) {
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
         } else {
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation
@@ -99,7 +99,7 @@ namespace Map {
         }
         iVar7 = buildingID * 0x32c;
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].state;
-        if (sVar3 == 0) {
+        if (!sVar3) {
             if ((DAT_BuildingsState::instance.buildings[buildingID].animationActive != 0)
                 && ((((((sVar3 = DAT_BuildingsState::instance.buildings[buildingID].animationIndex,
                             sVar3 == 5 || (sVar3 == 0x34))
@@ -207,7 +207,7 @@ namespace Map {
         }
         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar7) = 0;
         sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8);
-        if (sVar3 == 0) {
+        if (!sVar3) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 1;
         } else if (sVar3 == 1) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = 2;
@@ -229,7 +229,7 @@ namespace Map {
             *(ushort*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -8) = -(ushort)bVar8 & 4;
         }
     LAB_00415004:
-        if (sVar5 == 0) {
+        if (!sVar5) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar7) = 0;
         } else {
             if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationActive + iVar7) != 0) {

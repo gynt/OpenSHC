@@ -16,7 +16,7 @@ namespace IO {
                 unsigned short blue = this->palette[index][0] >> 3;
 
                 unsigned short green = this->palette[index][1];
-                if (this->mbr_0x18 == 0 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
+                if (!this->mbr_0x18 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
                     green >>= 2;
                 } else {
                     green >>= 3;
@@ -24,14 +24,14 @@ namespace IO {
                 green <<= 5;
 
                 unsigned short red = this->palette[index][2] >> 3;
-                if (this->mbr_0x18 == 0 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
+                if (!this->mbr_0x18 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
                     red <<= 11;
                 } else {
                     red <<= 10;
                 }
 
                 unsigned short _outcome = red + green + blue;
-                if (DAT_WindowAndDirectDraw::instance.colorBitMode != Rendering::RGB_565 || this->mbr_0x18 != 0) {
+                if (DAT_WindowAndDirectDraw::instance.colorBitMode != Rendering::RGB_565 || this->mbr_0x18) {
                     _outcome |= 0x8000;
                     if (_outcome == 0xfc1f) {
                         _outcome = 0xf81f; // NOTE: Standard Magenta for RGB555 instead of the value of COL_MAGENTA
@@ -41,7 +41,7 @@ namespace IO {
                 ++this->surface;
                 ++_counter;
             }
-            if (param_1 != 0) {
+            if (param_1) {
                 this->surface += (this->mbr_0x47c - _counter);
             }
         }

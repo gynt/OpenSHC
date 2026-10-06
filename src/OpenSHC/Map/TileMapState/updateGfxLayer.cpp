@@ -89,9 +89,9 @@ namespace Map {
                             for (local_30 = 0; local_30 < 10; local_30 = local_30 + 1) {
                                 bVar9 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
-                                if ((bVar9 != 0)
-                                    && (this->DAT_SomeTile = MACRO_CALL_MEMBER(
-                                            Rendering::ViewportRenderState_Func::translateXYToTile,
+                                if ((bVar9)
+                                    && (this->DAT_SomeTile
+                                        = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                             DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
                                         this->ChangedLayer[this->DAT_SomeTile] != 0)) {
                                     if (this->BuildingLayer[this->DAT_SomeTile] == 0) {
@@ -103,22 +103,19 @@ namespace Map {
                                             = this->MiscDisplayLayer[this->DAT_SomeTile] & 0xfc3f;
                                         this->MiscDisplayLayer[this->DAT_SomeTile]
                                             = this->MiscDisplayLayer[this->DAT_SomeTile] & 0xf7ff;
-                                        if ((this->LogicLayer[this->DAT_SomeTile] & L_RIVER) == 0) {
-                                            if ((this->LogicLayer[this->DAT_SomeTile] & L_FORD) == 0) {
-                                                if ((this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_WHEAT) == 0) {
-                                                    if ((this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_HOP)
-                                                        == 0) {
-                                                        if ((this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_APPLE
-                                                                | L_FARM_FIELD_DAIRY)
-                                                            == 0) {
-                                                            if ((((this->LogicLayer[this->DAT_SomeTile]
-                                                                          & L_WALL_OR_GATEHOUSE
-                                                                      | L_BUILDING | L_KEEP_NON_MANOR_HOUSE)
-                                                                     == 0)
+                                        if (!(this->LogicLayer[this->DAT_SomeTile] & L_RIVER)) {
+                                            if (!(this->LogicLayer[this->DAT_SomeTile] & L_FORD)) {
+                                                if (!(this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_WHEAT)) {
+                                                    if (!(this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_HOP)) {
+                                                        if (!(this->LogicLayer[this->DAT_SomeTile] & L_FARM_FIELD_APPLE
+                                                                | L_FARM_FIELD_DAIRY)) {
+                                                            if (((!(this->LogicLayer[this->DAT_SomeTile]
+                                                                         & L_WALL_OR_GATEHOUSE
+                                                                     | L_BUILDING | L_KEEP_NON_MANOR_HOUSE))
                                                                     && (this->BuildingWasLayer[this->DAT_SomeTile]
                                                                         != '\0'))
-                                                                && ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x10)
-                                                                    != 0)) {
+                                                                && ((this->MiscDisplayLayer[this->DAT_SomeTile]
+                                                                    & 0x10))) {
                                                                 local_44 = 0;
                                                                 switch (this->BuildingWasLayer[this->DAT_SomeTile]) {
                                                                 case '\t':
@@ -147,9 +144,8 @@ namespace Map {
                                                                 case 'j':
                                                                     local_44 = 0xc;
                                                                 }
-                                                                if ((this->MiscDisplayLayer[this->DAT_SomeTile]
-                                                                        & 0x2000)
-                                                                    == 0) {
+                                                                if (!(this->MiscDisplayLayer[this->DAT_SomeTile]
+                                                                        & 0x2000)) {
                                                                     this->GfxLayer[this->DAT_SomeTile]
                                                                         = (short)
                                                                               GMTotalPicturesProcessed::instance[0x95]
@@ -162,16 +158,14 @@ namespace Map {
                                                                         + local_44
                                                                         + (this->RandomLayer[this->DAT_SomeTile] & 7);
                                                                 }
-                                                            } else if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                           & L_WALL_OR_GATEHOUSE)
-                                                                == 0) {
-                                                                if ((this->LogicLayer[this->DAT_SomeTile] & L_SEA
+                                                            } else if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                           & L_WALL_OR_GATEHOUSE)) {
+                                                                if (!(this->LogicLayer[this->DAT_SomeTile] & L_SEA
                                                                         | L_ROCKY | L_WALL_OR_GATEHOUSE | L_BUILDING
                                                                         | L_BOULDERS | L_PEBBLES | L_IRON | L_RIVER
                                                                         | L_FARM_FIELD_WHEAT | L_FARM_FIELD_HOP
                                                                         | L_FARM_FIELD_APPLE | L_FARM_FIELD_DAIRY
-                                                                        | L_KEEP_NON_MANOR_HOUSE | L_MARSH | L_OIL)
-                                                                    == 0) {
+                                                                        | L_KEEP_NON_MANOR_HOUSE | L_MARSH | L_OIL)) {
                                                                     local_48 = 0;
                                                                     this->WallOwnerLayer[this->DAT_SomeTile]
                                                                         = this->WallOwnerLayer[this->DAT_SomeTile]
@@ -179,14 +173,12 @@ namespace Map {
                                                                     bVar19 = 0;
                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                              + this->DAT_SomeTile * 4 + 4)
-                                                                            & L_WALL_OR_GATEHOUSE)
-                                                                        != 0) {
+                                                                            & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = 0x20;
                                                                     }
                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                              + this->DAT_SomeTile * 4 + -4)
-                                                                            & L_WALL_OR_GATEHOUSE)
-                                                                        != 0) {
+                                                                            & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 2;
                                                                     }
                                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -194,13 +186,13 @@ namespace Map {
                                                                               + this->DAT_SomeY * 0x20)
                                                                             * 4
                                                                         + this->DAT_SomeTile * 4);
-                                                                    if ((puVar18[-1] & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((puVar18[-1] & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 1;
                                                                     }
-                                                                    if ((puVar18[1] & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((puVar18[1] & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 0x40;
                                                                     }
-                                                                    if ((*puVar18 & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((*puVar18 & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 0x80;
                                                                     }
                                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -209,26 +201,24 @@ namespace Map {
                                                                               + 0x10)
                                                                             * 4
                                                                         + this->DAT_SomeTile * 4);
-                                                                    if ((puVar18[-1] & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((puVar18[-1] & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 4;
                                                                     }
-                                                                    if ((puVar18[1] & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((puVar18[1] & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 0x10;
                                                                     }
-                                                                    if ((*puVar18 & L_WALL_OR_GATEHOUSE) != 0) {
+                                                                    if ((*puVar18 & L_WALL_OR_GATEHOUSE)) {
                                                                         bVar19 = bVar19 | 8;
                                                                     }
                                                                     this->bitFlag = 0;
                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                              + this->DAT_SomeTile * 4 + 4)
-                                                                            & 2)
-                                                                        != 0) {
+                                                                            & 2)) {
                                                                         this->bitFlag = 0x20;
                                                                     }
                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                              + this->DAT_SomeTile * 4 + -4)
-                                                                            & 2)
-                                                                        != 0) {
+                                                                            & 2)) {
                                                                         this->bitFlag = this->bitFlag | 2;
                                                                     }
                                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -236,13 +226,13 @@ namespace Map {
                                                                               + this->DAT_SomeY * 0x20)
                                                                             * 4
                                                                         + this->DAT_SomeTile * 4);
-                                                                    if ((puVar18[-1] & L_STOCKPILEUnk) != 0) {
+                                                                    if ((puVar18[-1] & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 1;
                                                                     }
-                                                                    if ((puVar18[1] & L_STOCKPILEUnk) != 0) {
+                                                                    if ((puVar18[1] & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 0x40;
                                                                     }
-                                                                    if ((*puVar18 & L_STOCKPILEUnk) != 0) {
+                                                                    if ((*puVar18 & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 0x80;
                                                                     }
                                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -251,17 +241,17 @@ namespace Map {
                                                                               + 0x10)
                                                                             * 4
                                                                         + this->DAT_SomeTile * 4);
-                                                                    if ((puVar18[-1] & L_STOCKPILEUnk) != 0) {
+                                                                    if ((puVar18[-1] & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 4;
                                                                     }
-                                                                    if ((puVar18[1] & L_STOCKPILEUnk) != 0) {
+                                                                    if ((puVar18[1] & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 0x10;
                                                                     }
-                                                                    if ((*puVar18 & L_STOCKPILEUnk) != 0) {
+                                                                    if ((*puVar18 & L_STOCKPILEUnk)) {
                                                                         this->bitFlag = this->bitFlag | 8;
                                                                     }
                                                                     bVar19 = ~this->bitFlag & bVar19;
-                                                                    if (bVar19 != 0) {
+                                                                    if (bVar19) {
                                                                         switch (bVar19 & 0xaa) {
                                                                         case 10:
                                                                             local_48 = 2;
@@ -284,18 +274,16 @@ namespace Map {
                                                                                 local_48 = 0;
                                                                             }
                                                                         }
-                                                                        if (local_48 != 0) {
+                                                                        if (local_48) {
                                                                             this->bitFlag = 0;
                                                                             if ((*(uint*)(this->ptr_LogicLayer
                                                                                      + this->DAT_SomeTile * 4 + 4)
-                                                                                    & 0x800)
-                                                                                != 0) {
+                                                                                    & 0x800)) {
                                                                                 this->bitFlag = 0x20;
                                                                             }
                                                                             if ((*(uint*)(this->ptr_LogicLayer
                                                                                      + this->DAT_SomeTile * 4 + -4)
-                                                                                    & 0x800)
-                                                                                != 0) {
+                                                                                    & 0x800)) {
                                                                                 this->bitFlag = this->bitFlag | 2;
                                                                             }
                                                                             puVar18 = (uint*)(this->ptr_LogicLayer
@@ -303,13 +291,13 @@ namespace Map {
                                                                                       + this->DAT_SomeY * 0x20)
                                                                                     * 4
                                                                                 + this->DAT_SomeTile * 4);
-                                                                            if ((puVar18[-1] & L_STAIRS) != 0) {
+                                                                            if ((puVar18[-1] & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 1;
                                                                             }
-                                                                            if ((puVar18[1] & L_STAIRS) != 0) {
+                                                                            if ((puVar18[1] & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 0x40;
                                                                             }
-                                                                            if ((*puVar18 & L_STAIRS) != 0) {
+                                                                            if ((*puVar18 & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 0x80;
                                                                             }
                                                                             puVar18 = (uint*)(this->ptr_LogicLayer
@@ -318,20 +306,20 @@ namespace Map {
                                                                                       + 0x10)
                                                                                     * 4
                                                                                 + this->DAT_SomeTile * 4);
-                                                                            if ((puVar18[-1] & L_STAIRS) != 0) {
+                                                                            if ((puVar18[-1] & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 4;
                                                                             }
-                                                                            if ((puVar18[1] & L_STAIRS) != 0) {
+                                                                            if ((puVar18[1] & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 0x10;
                                                                             }
-                                                                            if ((*puVar18 & L_STAIRS) != 0) {
+                                                                            if ((*puVar18 & L_STAIRS)) {
                                                                                 this->bitFlag = this->bitFlag | 8;
                                                                             }
-                                                                            if (this->bitFlag != 0) {
+                                                                            if (this->bitFlag) {
                                                                                 local_48 = 0;
                                                                             }
                                                                         }
-                                                                        if (local_48 != 0) {
+                                                                        if (local_48) {
                                                                             if (local_48 - 1 < 4) {
                                                                                 ((void (*)())PTR_ARRAY_00510d94::instance
                                                                                         [local_48 - 1])();
@@ -340,8 +328,8 @@ namespace Map {
                                                                             bVar19 = this->HeightLayer[local_68];
                                                                             bVar16 = this->HeightLayer[local_60];
                                                                             bVar7 = this->HeightLayer[local_54];
-                                                                            if ((this->LogicLayer[local_54] & 0x100U)
-                                                                                == 0) {
+                                                                            if (!(this->LogicLayer[local_54]
+                                                                                    & 0x100U)) {
                                                                                 bVar7 = bVar16;
                                                                             }
                                                                             bVar6 = bVar16;
@@ -362,8 +350,7 @@ namespace Map {
                                                                                     || ((
                                                                                         this->DamageLayer[local_54] != 0
                                                                                         && ((this->LogicLayer[local_54]
-                                                                                                & 0x100U)
-                                                                                            != 0)))) {
+                                                                                            & 0x100U))))) {
                                                                                     this->WallOwnerLayer[this
                                                                                             ->DAT_SomeTile]
                                                                                         = this->WallOwnerLayer[this
@@ -373,7 +360,7 @@ namespace Map {
                                                                             } else {
                                                                                 local_48 = 0;
                                                                             }
-                                                                            if (local_48 != 0) {
+                                                                            if (local_48) {
                                                                                 uVar12 = (local_48 + 3)
                                                                                         - this->mapOrientation / 2
                                                                                     & 0x80000003;
@@ -432,11 +419,10 @@ namespace Map {
                                                                     + (short)this->wallCornerRotation;
                                                                 sVar4 = (short)GMTotalPicturesProcessed::instance[0xc];
                                                                 if (this->DamageLayer[this->DAT_SomeTile] == 0) {
-                                                                    if ((this->LogicLayer[this->DAT_SomeTile] & 0x200U)
-                                                                        == 0) {
-                                                                        if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                                & 0x800U)
-                                                                            == 0) {
+                                                                    if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                            & 0x200U)) {
+                                                                        if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                                & 0x800U)) {
                                                                             if (this->LuminesenceLayer[this
                                                                                         ->DAT_SomeTile]
                                                                                 < 4) {
@@ -600,19 +586,19 @@ namespace Map {
                                                                                         isWallCornerForDiagonalDirection,
                                                                                     this)(this->DAT_SomeTile,
                                                                                     this->DAT_SomeY, 1);
-                                                                                if (uVar12 == 0) {
+                                                                                if (!uVar12) {
                                                                                     uVar12 = MACRO_CALL_MEMBER(
                                                                                         Map::TileMapState_Func::
                                                                                             isWallCornerForDiagonalDirection,
                                                                                         this)(this->DAT_SomeTile,
                                                                                         this->DAT_SomeY, 3);
-                                                                                    if (uVar12 == 0) {
+                                                                                    if (!uVar12) {
                                                                                         uVar12 = MACRO_CALL_MEMBER(
                                                                                             Map::TileMapState_Func::
                                                                                                 isWallCornerForDiagonalDirection,
                                                                                             this)(this->DAT_SomeTile,
                                                                                             this->DAT_SomeY, 5);
-                                                                                        if (uVar12 == 0) {
+                                                                                        if (!uVar12) {
                                                                                             uVar12 = MACRO_CALL_MEMBER(
                                                                                                 Map::
                                                                                                     TileMapState_Func::
@@ -623,7 +609,7 @@ namespace Map {
                                                                                             sVar4 = (short)
                                                                                                 GMTotalPicturesProcessed::
                                                                                                     instance[0xc];
-                                                                                            if (uVar12 == 0) {
+                                                                                            if (!uVar12) {
                                                                                                 this->GfxLayer[this
                                                                                                         ->DAT_SomeTile]
                                                                                                     = sVar4 + 0x84;
@@ -633,8 +619,8 @@ namespace Map {
                                                                                                           [this->DAT_SomeTile]
                                                                                                     | 0x400000;
                                                                                             } else {
-                                                                                                if (this->mapOrientation
-                                                                                                    == 0) {
+                                                                                                if (!this
+                                                                                                        ->mapOrientation) {
                                                                                                     this->GfxLayer[this
                                                                                                             ->DAT_SomeTile]
                                                                                                         = sVar4 + 0x81;
@@ -667,8 +653,7 @@ namespace Map {
                                                                                             sVar4 = (short)
                                                                                                 GMTotalPicturesProcessed::
                                                                                                     instance[0xc];
-                                                                                            if (this->mapOrientation
-                                                                                                == 0) {
+                                                                                            if (!this->mapOrientation) {
                                                                                                 this->GfxLayer[this
                                                                                                         ->DAT_SomeTile]
                                                                                                     = sVar4 + 0x80;
@@ -701,7 +686,7 @@ namespace Map {
                                                                                         sVar4 = (short)
                                                                                             GMTotalPicturesProcessed::
                                                                                                 instance[0xc];
-                                                                                        if (this->mapOrientation == 0) {
+                                                                                        if (!this->mapOrientation) {
                                                                                             this->GfxLayer[this
                                                                                                     ->DAT_SomeTile]
                                                                                                 = sVar4 + 0x83;
@@ -731,7 +716,7 @@ namespace Map {
                                                                                     sVar4 = (short)
                                                                                         GMTotalPicturesProcessed::
                                                                                             instance[0xc];
-                                                                                    if (this->mapOrientation == 0) {
+                                                                                    if (!this->mapOrientation) {
                                                                                         this->GfxLayer[this
                                                                                                 ->DAT_SomeTile]
                                                                                             = sVar4 + 0x82;
@@ -760,12 +745,11 @@ namespace Map {
                                                                                 sVar4
                                                                                     = (short)GMTotalPicturesProcessed::
                                                                                         instance[0xc];
-                                                                                if ((this->mapOrientation == 0)
+                                                                                if ((!this->mapOrientation)
                                                                                     || (this->mapOrientation == 4)) {
-                                                                                    if ((this->LogicLayer[this
-                                                                                                 ->DAT_SomeTile]
-                                                                                            & 0x400000U)
-                                                                                        == 0) {
+                                                                                    if (!(this->LogicLayer[this
+                                                                                                  ->DAT_SomeTile]
+                                                                                            & 0x400000U)) {
                                                                                         this->GfxLayer[this
                                                                                                 ->DAT_SomeTile] = sVar4
                                                                                             + 0x70
@@ -780,10 +764,9 @@ namespace Map {
                                                                                                        ->DAT_SomeTile]
                                                                                                 & 3);
                                                                                     }
-                                                                                } else if ((this->LogicLayer[this
-                                                                                                    ->DAT_SomeTile]
-                                                                                               & 0x400000U)
-                                                                                    == 0) {
+                                                                                } else if (!(this->LogicLayer[this
+                                                                                                     ->DAT_SomeTile]
+                                                                                               & 0x400000U)) {
                                                                                     this->GfxLayer[this->DAT_SomeTile]
                                                                                         = sVar4 + 0x74
                                                                                         + (this->RandomLayer[this
@@ -800,12 +783,11 @@ namespace Map {
                                                                         } else {
                                                                             sVar4 = (short)
                                                                                 GMTotalPicturesProcessed::instance[0xc];
-                                                                            if ((this->mapOrientation == 0)
+                                                                            if ((!this->mapOrientation)
                                                                                 || (this->mapOrientation == 4)) {
-                                                                                if ((this->LogicLayer[this
-                                                                                             ->DAT_SomeTile]
-                                                                                        & 0x400000U)
-                                                                                    == 0) {
+                                                                                if (!(this->LogicLayer[this
+                                                                                              ->DAT_SomeTile]
+                                                                                        & 0x400000U)) {
                                                                                     this->GfxLayer[this->DAT_SomeTile]
                                                                                         = sVar4 + 0x74
                                                                                         + (this->RandomLayer[this
@@ -818,10 +800,9 @@ namespace Map {
                                                                                                    ->DAT_SomeTile]
                                                                                             & 3);
                                                                                 }
-                                                                            } else if ((this->LogicLayer[this
-                                                                                                ->DAT_SomeTile]
-                                                                                           & 0x400000U)
-                                                                                == 0) {
+                                                                            } else if (!(this->LogicLayer[this
+                                                                                                 ->DAT_SomeTile]
+                                                                                           & 0x400000U)) {
                                                                                 this->GfxLayer[this->DAT_SomeTile]
                                                                                     = sVar4 + 0x70
                                                                                     + (this->RandomLayer[this
@@ -927,15 +908,15 @@ namespace Map {
                                 BVar11 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
                                 if ((((BVar11 != FALSE)
-                                         && (this->DAT_SomeTile = MACRO_CALL_MEMBER(
-                                                 Rendering::ViewportRenderState_Func::translateXYToTile,
+                                         && (this->DAT_SomeTile
+                                             = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                                  DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
                                              (this->LogicLayer[this->DAT_SomeTile] & 0x100201U) != 0))
                                         && (this->ChangedLayer[this->DAT_SomeTile] != 0))
                                     && ((this->BuildingLayer[this->DAT_SomeTile] == 0
-                                        && ((this->LogicLayer[this->DAT_SomeTile] & 0x10000030U) == 0)))) {
-                                    if ((this->LogicLayer[this->DAT_SomeTile] & 1U) == 0) {
-                                        if ((this->LogicLayer[this->DAT_SomeTile] & 0x100000U) != 0) {
+                                        && (!(this->LogicLayer[this->DAT_SomeTile] & 0x10000030U))))) {
+                                    if (!(this->LogicLayer[this->DAT_SomeTile] & 1U)) {
+                                        if ((this->LogicLayer[this->DAT_SomeTile] & 0x100000U)) {
                                             MACRO_CALL_MEMBER(
                                                 Map::TileMapState_Func::computeTileCliffEdgeFlags, this)(
                                                 this->DAT_SomeTile, this->DAT_SomeX, this->DAT_SomeY);
@@ -946,10 +927,10 @@ namespace Map {
                                         iVar17 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][this->mapOrientation];
                                         this->field218_0x554a50 = (ushort)this->HeightLayer[iVar17];
-                                        if ((this->LogicLayer[iVar17] & 1U) != 0) {
+                                        if ((this->LogicLayer[iVar17] & 1U)) {
                                             this->field218_0x554a50 = 0;
                                         }
-                                        if ((this->LogicLayer[iVar17] & 0x80U) != 0) {
+                                        if ((this->LogicLayer[iVar17] & 0x80U)) {
                                             this->field218_0x554a50 = 0x14;
                                         }
                                         if (0x13 < this->field218_0x554a50) {
@@ -974,24 +955,24 @@ namespace Map {
                                             iVar17 = this->DAT_SomeTile
                                                 + this->directionTranslationMatrix[this->DAT_SomeY][local_70];
                                             if (this->HeightLayer[iVar17] < 0x14) {
-                                                if ((this->LogicLayer[iVar17] & 0x100031U) == 0) {
+                                                if (!(this->LogicLayer[iVar17] & 0x100031U)) {
                                                     this->bitFlag
                                                         = this->bitFlag | (byte)(0x80 >> ((byte)local_70 & 0x1f));
                                                 }
-                                                if (((this->LogicLayer[iVar17] & 0x100001U) == 0)
-                                                    && ((this->Logic2Layer[iVar17] & 0x20) != 0)) {
+                                                if ((!(this->LogicLayer[iVar17] & 0x100001U))
+                                                    && ((this->Logic2Layer[iVar17] & 0x20))) {
                                                     local_74 = 0x80 >> ((byte)local_70 & 0x1f) | local_74;
                                                 }
                                             }
                                         }
-                                        if (this->bitFlag != 0) {
+                                        if (this->bitFlag) {
                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x100;
                                             this->CertainPathLayer[this->DAT_SomeTile]
                                                 = (ushort)this->bitFlag | (ushort)(local_74 << 8);
                                         }
                                     }
-                                    if ((this->LogicLayer[this->DAT_SomeTile] & 0x200U) != 0) {
+                                    if ((this->LogicLayer[this->DAT_SomeTile] & 0x200U)) {
                                         uVar12 = this->screenSouthEastDirection + 7U & 0x80000007;
                                         if ((int)uVar12 < 0) {
                                             uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
@@ -1004,9 +985,9 @@ namespace Map {
                                         }
                                         iVar13 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        if (((((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U) == 0)
-                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0) != 0))
-                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0) != 0)) {
+                                        if (((!((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U))
+                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0)))
+                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0))) {
                                             if (this->LuminesenceLayer[this->DAT_SomeTile] < 4) {
                                                 this->GfxLayer[this->DAT_SomeTile]
                                                     = (short)GMTotalPicturesProcessed::instance[0xc] + 0x60
@@ -1029,10 +1010,10 @@ namespace Map {
                                         }
                                         iVar13 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        if (((((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U) == 0)
-                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0) != 0))
-                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0) != 0)) {
-                                            if ((this->DAT_SomeY & 1U) == 0) {
+                                        if (((!((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U))
+                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0)))
+                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0))) {
+                                            if (!(this->DAT_SomeY & 1U)) {
                                                 this->GfxLayer[this->DAT_SomeTile]
                                                     = (short)GMTotalPicturesProcessed::instance[0xc] + 0x138;
                                             } else {
@@ -1054,10 +1035,10 @@ namespace Map {
                                         }
                                         iVar13 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        if (((((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U) == 0)
-                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0) != 0))
-                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0) != 0)) {
-                                            if ((this->DAT_SomeY & 1U) == 0) {
+                                        if (((!((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U))
+                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0)))
+                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0))) {
+                                            if (!(this->DAT_SomeY & 1U)) {
                                                 this->GfxLayer[this->DAT_SomeTile]
                                                     = (short)GMTotalPicturesProcessed::instance[0xc] + 0x13a;
                                             } else {
@@ -1079,9 +1060,9 @@ namespace Map {
                                         }
                                         iVar13 = this->DAT_SomeTile
                                             + this->directionTranslationMatrix[this->DAT_SomeY][uVar12];
-                                        if (((((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U) == 0)
-                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0) != 0))
-                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0) != 0)) {
+                                        if (((!((this->LogicLayer[iVar17] | this->LogicLayer[iVar13]) & 1U))
+                                                && ((this->MiscDisplayLayer[iVar17] & 0x3c0)))
+                                            && ((this->MiscDisplayLayer[iVar13] & 0x3c0))) {
                                             uVar12 = this->DAT_SomeY & 0x80000007;
                                             if ((int)uVar12 < 0) {
                                                 uVar12 = (uVar12 - 1 | 0xfffffff8) + 1;
@@ -1113,60 +1094,56 @@ namespace Map {
                                 BVar11 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->DAT_SomeX, (uint)((int)(this->DAT_SomeY)));
                                 if (((BVar11 != FALSE)
-                                        && (this->DAT_SomeTile = MACRO_CALL_MEMBER(
-                                                Rendering::ViewportRenderState_Func::translateXYToTile,
+                                        && (this->DAT_SomeTile
+                                            = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::translateXYToTile,
                                                 DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
                                             (this->LogicLayer[this->DAT_SomeTile] & 1U) != 0))
                                     && (((this->ChangedLayer[this->DAT_SomeTile] != 0
-                                             && (((this->LogicLayer[this->DAT_SomeTile] & 0x10000030U) == 0
+                                             && ((!(this->LogicLayer[this->DAT_SomeTile] & 0x10000030U)
                                                  && (this->BuildingLayer[this->DAT_SomeTile] == 0))))
-                                        && ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x40) == 0)))) {
+                                        && (!(this->MiscDisplayLayer[this->DAT_SomeTile] & 0x40))))) {
                                     bVar19 = 0;
-                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2) & 0x80)
-                                        != 0) {
+                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2) & 0x80)) {
                                         bVar19 = 0x20;
                                     }
-                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2) & 0x80)
-                                        != 0) {
+                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2) & 0x80)) {
                                         bVar19 = bVar19 | 2;
                                     }
                                     puVar18 = (uint*)(this->ptr_MiscDisplayLayer
                                         + *(int*)(this->ptr_MovementDirectionTranslationMatrix + this->DAT_SomeY * 0x20)
                                             * 2
                                         + this->DAT_SomeTile * 2);
-                                    if ((*(uint*)((int)puVar18 + -2) & 0x80) != 0) {
+                                    if ((*(uint*)((int)puVar18 + -2) & 0x80)) {
                                         bVar19 = bVar19 | 1;
                                     }
-                                    if ((*(uint*)((int)puVar18 + 2) & 0x80) != 0) {
+                                    if ((*(uint*)((int)puVar18 + 2) & 0x80)) {
                                         bVar19 = bVar19 | 0x40;
                                     }
-                                    if ((*puVar18 & 0x80) != 0) {
+                                    if ((*puVar18 & 0x80)) {
                                         bVar19 = bVar19 | 0x80;
                                     }
                                     bVar16 = 0;
-                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2) & 0x40)
-                                        != 0) {
+                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2) & 0x40)) {
                                         bVar16 = 0x20;
                                     }
-                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2) & 0x40)
-                                        != 0) {
+                                    if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2) & 0x40)) {
                                         bVar16 = bVar16 | 2;
                                     }
                                     puVar18 = (uint*)(this->ptr_MiscDisplayLayer
                                         + *(int*)(this->ptr_MovementDirectionTranslationMatrix + this->DAT_SomeY * 0x20)
                                             * 2
                                         + this->DAT_SomeTile * 2);
-                                    if ((*(uint*)((int)puVar18 + -2) & 0x40) != 0) {
+                                    if ((*(uint*)((int)puVar18 + -2) & 0x40)) {
                                         bVar16 = bVar16 | 1;
                                     }
-                                    if ((*(uint*)((int)puVar18 + 2) & 0x40) != 0) {
+                                    if ((*(uint*)((int)puVar18 + 2) & 0x40)) {
                                         bVar16 = bVar16 | 0x40;
                                     }
-                                    if ((*puVar18 & 0x40) != 0) {
+                                    if ((*puVar18 & 0x40)) {
                                         bVar16 = bVar16 | 0x80;
                                     }
                                     this->bitFlag = bVar16 & ~bVar19;
-                                    if (this->bitFlag != 0) {
+                                    if (this->bitFlag) {
                                         this->GfxLayer[this->DAT_SomeTile]
                                             = (short)GMTotalPicturesProcessed::instance[0xa6] + 0x5d0;
                                         this->PillarGFXLayer[this->DAT_SomeTile]
@@ -1201,10 +1178,10 @@ namespace Map {
                                     && (this->ChangedLayer[this->DAT_SomeTile] != 0)) {
                                     this->ChangedLayer[this->DAT_SomeTile] = this->ChangedLayer[this->DAT_SomeTile] - 1;
                                     iVar17 = this->DAT_SomeX;
-                                    if ((this->LogicLayer[this->DAT_SomeTile] & L_SEA) == 0) {
-                                        if ((this->LogicLayer[this->DAT_SomeTile] & L_RIVER) == 0) {
-                                            if ((this->LogicLayer[this->DAT_SomeTile] & L_FORD) == 0) {
-                                                if ((this->LogicLayer[this->DAT_SomeTile] & L_PLAIN2_AND_PITCH) == 0) {
+                                    if (!(this->LogicLayer[this->DAT_SomeTile] & L_SEA)) {
+                                        if (!(this->LogicLayer[this->DAT_SomeTile] & L_RIVER)) {
+                                            if (!(this->LogicLayer[this->DAT_SomeTile] & L_FORD)) {
+                                                if (!(this->LogicLayer[this->DAT_SomeTile] & L_PLAIN2_AND_PITCH)) {
                                                     if (this->BuildingLayer[this->DAT_SomeTile] != 0) {
                                                         iVar13 = (int)this->BuildingLayer[this->DAT_SomeTile];
                                                         if (DAT_BuildingsState::instance.buildings[iVar13].buildingType
@@ -1225,7 +1202,7 @@ namespace Map {
                                                                     .buildingType;
                                                         if (((BVar1 == Map::Buildings::BT_FIREBALLISTA)
                                                                 || ((0x4f < (short)BVar1 && ((short)BVar1 < 0x55))))
-                                                            && (iVar14 == 0)) {
+                                                            && (!iVar14)) {
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)(((((int)(uint)this
                                                                                     ->HeightLayer[this->DAT_SomeTile]
@@ -1259,9 +1236,8 @@ namespace Map {
                                                                 BVar11 == FALSE
                                                                     && (DAT_GameCore::instance.gameMode_2
                                                                         != Game::GM_EDITOR)))) {
-                                                            if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                    & L_DEFAULT_EARTH_OR_TEXTURE)
-                                                                == 0)
+                                                            if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                    & L_DEFAULT_EARTH_OR_TEXTURE))
                                                                 goto LAB_00510585;
                                                             this->GfxLayer[this->DAT_SomeTile] = 0;
                                                         } else {
@@ -1280,61 +1256,52 @@ namespace Map {
                                                         }
                                                         goto LAB_0050c199;
                                                     }
-                                                    if ((this->LogicLayer[this->DAT_SomeTile] & L_KEEP_NON_MANOR_HOUSE)
-                                                        == 0) {
-                                                        if (((this->LogicLayer[this->DAT_SomeTile] & L_ROCKY) == 0)
+                                                    if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                            & L_KEEP_NON_MANOR_HOUSE)) {
+                                                        if ((!(this->LogicLayer[this->DAT_SomeTile] & L_ROCKY))
                                                             || ((this->LogicLayer[this->DAT_SomeTile]
-                                                                    & L_WALL_OR_GATEHOUSE)
-                                                                != 0)) {
-                                                            if ((this->LogicLayer[this->DAT_SomeTile] & L_BOULDERS)
-                                                                == 0) {
-                                                                if ((this->LogicLayer[this->DAT_SomeTile] & L_PEBBLES)
-                                                                    == 0) {
-                                                                    if ((this->LogicLayer[this->DAT_SomeTile] & L_IRON)
-                                                                        == 0) {
-                                                                        if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                                & L_OIL)
-                                                                            == 0) {
-                                                                            if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                                    & L_MOAT)
-                                                                                == 0) {
-                                                                                if (((this->LogicLayer[this
-                                                                                              ->DAT_SomeTile]
-                                                                                             & L_WALL_OR_GATEHOUSE
-                                                                                         | L_FARM_FIELD_WHEAT
-                                                                                         | L_FARM_FIELD_HOP
-                                                                                         | L_FARM_FIELD_APPLE
-                                                                                         | L_FARM_FIELD_DAIRY)
-                                                                                        == 0)
+                                                                & L_WALL_OR_GATEHOUSE))) {
+                                                            if (!(this->LogicLayer[this->DAT_SomeTile] & L_BOULDERS)) {
+                                                                if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                        & L_PEBBLES)) {
+                                                                    if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                            & L_IRON)) {
+                                                                        if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                                & L_OIL)) {
+                                                                            if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                                    & L_MOAT)) {
+                                                                                if ((!(this->LogicLayer[this
+                                                                                               ->DAT_SomeTile]
+                                                                                            & L_WALL_OR_GATEHOUSE
+                                                                                        | L_FARM_FIELD_WHEAT
+                                                                                        | L_FARM_FIELD_HOP
+                                                                                        | L_FARM_FIELD_APPLE
+                                                                                        | L_FARM_FIELD_DAIRY))
                                                                                     || ((this->LogicLayer[this
                                                                                                  ->DAT_SomeTile]
-                                                                                            & L_FARM_FIELD_APPLE)
-                                                                                        != 0)) {
+                                                                                        & L_FARM_FIELD_APPLE))) {
                                                                                     sVar8 = 0;
                                                                                     if ((this->WallOwnerLayer[this
                                                                                                  ->DAT_SomeTile]
-                                                                                            & 8)
-                                                                                        != 0) {
+                                                                                            & 8)) {
                                                                                         sVar8 = 0x2d;
                                                                                     }
                                                                                     if ((this->MiscDisplayLayer[this
                                                                                                  ->DAT_SomeTile]
-                                                                                            & 0x80)
-                                                                                        != 0)
+                                                                                            & 0x80))
                                                                                         goto LAB_0050ffbc;
                                                                                     if ((((this->LogicLayer[this
                                                                                                    ->DAT_SomeTile]
-                                                                                                  & L_WALL_OR_GATEHOUSE
-                                                                                              | L_BUILDING
-                                                                                              | L_KEEP_NON_MANOR_HOUSE)
-                                                                                             != 0)
+                                                                                                 & L_WALL_OR_GATEHOUSE
+                                                                                             | L_BUILDING
+                                                                                             | L_KEEP_NON_MANOR_HOUSE))
                                                                                             || (this->BuildingWasLayer
                                                                                                     [this->DAT_SomeTile]
                                                                                                 == '\0'))
-                                                                                        || ((this->MiscDisplayLayer[this
-                                                                                                     ->DAT_SomeTile]
-                                                                                                & 0x10)
-                                                                                            == 0))
+                                                                                        || (!(
+                                                                                            this->MiscDisplayLayer[this
+                                                                                                    ->DAT_SomeTile]
+                                                                                            & 0x10)))
                                                                                         goto LAB_00510585;
                                                                                 }
                                                                             } else {
@@ -1345,9 +1312,8 @@ namespace Map {
                                                                                         + this->directionTranslationMatrix
                                                                                               [this->DAT_SomeY]
                                                                                               [local_d4];
-                                                                                    if ((this->LogicLayer[iVar13]
-                                                                                            & L_MOAT)
-                                                                                        == 0) {
+                                                                                    if (!(this->LogicLayer[iVar13]
+                                                                                            & L_MOAT)) {
                                                                                         if (((this->BuildingLayer
                                                                                                      [iVar13]
                                                                                                  != 0)
@@ -1379,7 +1345,7 @@ namespace Map {
                                                                                     }
                                                                                 }
                                                                                 this->bitFlag = ~this->bitFlag & 0xaa;
-                                                                                if (this->bitFlag == 0) {
+                                                                                if (!this->bitFlag) {
                                                                                     this->bitFlag = 0;
                                                                                     for (local_d4 = 1; local_d4 < 8;
                                                                                         local_d4 = local_d4 + 2) {
@@ -1387,9 +1353,8 @@ namespace Map {
                                                                                             + this->directionTranslationMatrix
                                                                                                   [this->DAT_SomeY]
                                                                                                   [local_d4];
-                                                                                        if ((this->LogicLayer[iVar13]
-                                                                                                & L_MOAT)
-                                                                                            == 0) {
+                                                                                        if (!(this->LogicLayer[iVar13]
+                                                                                                & L_MOAT)) {
                                                                                             if (((this->BuildingLayer
                                                                                                          [iVar13]
                                                                                                      != 0)
@@ -1426,7 +1391,7 @@ namespace Map {
                                                                                     this->bitFlag
                                                                                         = ~this->bitFlag & 0x55;
                                                                                 }
-                                                                                if (this->mapOrientation == 0) {
+                                                                                if (!this->mapOrientation) {
                                                                                     this->bitFlag = MACRO_CALL_MEMBER(
                                                                                         Map::Navigation::
                                                                                             DirectionAlgorithmState_Func::
@@ -1518,8 +1483,7 @@ namespace Map {
                                                                                 }
                                                                                 if ((this->MiscDisplayLayer[this
                                                                                              ->DAT_SomeTile]
-                                                                                        & 0x80)
-                                                                                    != 0) {
+                                                                                        & 0x80)) {
                                                                                 LAB_0050ffbc:
                                                                                     uVar12 = 0xdU - this->mapOrientation
                                                                                         & 0x80000007;
@@ -1540,24 +1504,22 @@ namespace Map {
                                                                                               [this->DAT_SomeY][uVar15];
                                                                                     uVar2 = (ushort)iVar17;
                                                                                     uVar3 = (ushort)this->DAT_SomeY;
-                                                                                    if ((this->MiscDisplayLayer[this->DAT_SomeTile
-                                                                                             + this
-                                                                                                 ->directionTranslationMatrix
-                                                                                                     [this->DAT_SomeY]
-                                                                                                     [uVar12]]
-                                                                                            & 0x80)
-                                                                                        == 0) {
-                                                                                        if ((this->MiscDisplayLayer
+                                                                                    if (!(this->MiscDisplayLayer
+                                                                                                [this->DAT_SomeTile
+                                                                                                    + this->directionTranslationMatrix
+                                                                                                        [this->DAT_SomeY]
+                                                                                                        [uVar12]]
+                                                                                            & 0x80)) {
+                                                                                        if (!(this->MiscDisplayLayer
                                                                                                     [iVar13]
-                                                                                                & 0x80)
-                                                                                            == 0) {
+                                                                                                & 0x80)) {
                                                                                             this->AlphaGFXLayer[this
                                                                                                     ->DAT_SomeTile]
                                                                                                 = this->AlphaGFXLayer[this
                                                                                                           ->DAT_SomeTile]
                                                                                                 + ((uVar2 ^ uVar3) & 1);
-                                                                                        } else if ((this->mapOrientation
-                                                                                                       == 0)
+                                                                                        } else if (
+                                                                                            (!this->mapOrientation)
                                                                                             || (this->mapOrientation
                                                                                                 == 4)) {
                                                                                             this->AlphaGFXLayer[this
@@ -1570,11 +1532,10 @@ namespace Map {
                                                                                                 = ((uVar2 ^ uVar3) & 1)
                                                                                                 + 0x35 + sVar8;
                                                                                         }
-                                                                                    } else if ((this->MiscDisplayLayer
+                                                                                    } else if (!(this->MiscDisplayLayer
                                                                                                        [iVar13]
-                                                                                                   & 0x80)
-                                                                                        == 0) {
-                                                                                        if ((this->mapOrientation == 0)
+                                                                                                   & 0x80)) {
+                                                                                        if ((!this->mapOrientation)
                                                                                             || (this->mapOrientation
                                                                                                 == 4)) {
                                                                                             this->AlphaGFXLayer[this
@@ -1587,8 +1548,7 @@ namespace Map {
                                                                                                 = ((uVar2 ^ uVar3) & 1)
                                                                                                 + 0x33 + sVar8;
                                                                                         }
-                                                                                    } else if ((this->mapOrientation
-                                                                                                   == 0)
+                                                                                    } else if ((!this->mapOrientation)
                                                                                         || (this->mapOrientation
                                                                                             == 6)) {
                                                                                         uVar12 = this->DAT_SomeY
@@ -1619,15 +1579,13 @@ namespace Map {
                                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                                              + this->DAT_SomeTile * 4
                                                                                              + 4)
-                                                                                            & 0x200)
-                                                                                        != 0) {
+                                                                                            & 0x200)) {
                                                                                         this->bitFlag = 0x20;
                                                                                     }
                                                                                     if ((*(uint*)(this->ptr_LogicLayer
                                                                                              + this->DAT_SomeTile * 4
                                                                                              + -4)
-                                                                                            & 0x200)
-                                                                                        != 0) {
+                                                                                            & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 2;
                                                                                     }
@@ -1636,15 +1594,15 @@ namespace Map {
                                                                                               + this->DAT_SomeY * 0x20)
                                                                                             * 4
                                                                                         + this->DAT_SomeTile * 4);
-                                                                                    if ((puVar18[-1] & 0x200) != 0) {
+                                                                                    if ((puVar18[-1] & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 1;
                                                                                     }
-                                                                                    if ((puVar18[1] & 0x200) != 0) {
+                                                                                    if ((puVar18[1] & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 0x40;
                                                                                     }
-                                                                                    if ((*puVar18 & 0x200) != 0) {
+                                                                                    if ((*puVar18 & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 0x80;
                                                                                     }
@@ -1655,19 +1613,19 @@ namespace Map {
                                                                                               + 0x10)
                                                                                             * 4
                                                                                         + this->DAT_SomeTile * 4);
-                                                                                    if ((puVar18[-1] & 0x200) != 0) {
+                                                                                    if ((puVar18[-1] & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 4;
                                                                                     }
-                                                                                    if ((puVar18[1] & 0x200) != 0) {
+                                                                                    if ((puVar18[1] & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 0x10;
                                                                                     }
-                                                                                    if ((*puVar18 & 0x200) != 0) {
+                                                                                    if ((*puVar18 & 0x200)) {
                                                                                         this->bitFlag
                                                                                             = this->bitFlag | 8;
                                                                                     }
-                                                                                    if (this->bitFlag != 0) {
+                                                                                    if (this->bitFlag) {
                                                                                         switch (this->mapOrientation) {
                                                                                         case 0:
                                                                                             if ((this->bitFlag & 0x82)
@@ -1710,11 +1668,10 @@ namespace Map {
                                                                                             }
                                                                                         }
                                                                                     }
-                                                                                    if ((this->LogicLayer[this
-                                                                                                 ->DAT_SomeTile]
+                                                                                    if (!(this->LogicLayer[this
+                                                                                                  ->DAT_SomeTile]
                                                                                                 & L_PLAIN2_AND_PITCH
-                                                                                            | L_MOAT)
-                                                                                        == 0)
+                                                                                            | L_MOAT))
                                                                                         goto LAB_00510585;
                                                                                 }
                                                                             }
@@ -1733,7 +1690,7 @@ namespace Map {
                                                                                 + (short)(this->wallCornerRotation << 4);
                                                                             sVar4 = (short)this->DAT_SomeY;
                                                                             sVar5 = (short)this->DAT_SomeX;
-                                                                            if (this->wallCornerRotation == 0) {
+                                                                            if (!this->wallCornerRotation) {
                                                                                 this->WallGFXLayer[this->DAT_SomeTile]
                                                                                     = this->RandomLayer[this
                                                                                               ->DAT_SomeTile]
@@ -1906,7 +1863,7 @@ namespace Map {
                                                     iVar13 = MACRO_CALL_MEMBER(
                                                         Map::TileMapState_Func::getPitchDitchIDForTile, this)(
                                                         this->DAT_SomeTile);
-                                                    if (iVar13 != 0) {
+                                                    if (iVar13) {
                                                         if (((this->pitchDitches[iVar13].state < 2)
                                                                 && (BVar11 = MACRO_CALL_MEMBER(
                                                                         Game::GameStateStructures_Func::
@@ -1918,9 +1875,8 @@ namespace Map {
                                                                     BVar11 == FALSE))
                                                             && (DAT_GameCore::instance.gameMode_2
                                                                 != Game::GM_EDITOR)) {
-                                                            if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                    & L_DEFAULT_EARTH_OR_TEXTURE)
-                                                                == 0)
+                                                            if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                    & L_DEFAULT_EARTH_OR_TEXTURE))
                                                                 goto LAB_00510585;
                                                             this->GfxLayer[this->DAT_SomeTile] = 0;
                                                         } else {
@@ -1938,8 +1894,7 @@ namespace Map {
                                                                 + (short)GMTotalPicturesProcessed::instance[0x8c];
                                                             this->MiscDisplayLayer[this->DAT_SomeTile]
                                                                 = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x2000;
-                                                            if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x80)
-                                                                != 0)
+                                                            if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x80))
                                                                 goto LAB_0050ffbc;
                                                         }
                                                         goto LAB_0050c199;
@@ -1956,8 +1911,7 @@ namespace Map {
                                                         Map::TileMapState_Func::computeClimbRampRotation,
                                                         this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                         (uint)((int)(this->DAT_SomeY)));
-                                                    if ((this->HeightLayer[this->DAT_SomeTile] < 0x88)
-                                                        && (iVar13 == 0)) {
+                                                    if ((this->HeightLayer[this->DAT_SomeTile] < 0x88) && (!iVar13)) {
                                                         if (local_8 < 1) {
                                                             local_8 = 1;
                                                         }
@@ -1983,9 +1937,9 @@ namespace Map {
                                                             = this->MiscDisplayLayer[this->DAT_SomeTile] | 0x800;
                                                         bVar10 = true;
                                                     }
-                                                    if ((this->Logic2Layer[this->DAT_SomeTile] & 0x20) == 0) {
+                                                    if (!(this->Logic2Layer[this->DAT_SomeTile] & 0x20)) {
                                                         if (this->HeightLayer[this->DAT_SomeTile] < 8) {
-                                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 2) == 0) {
+                                                            if (!(this->Logic2Layer[this->DAT_SomeTile] & 2)) {
                                                                 this->GfxLayer[this->DAT_SomeTile]
                                                                     = (short)GMTotalPicturesProcessed::instance[2]
                                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile]
@@ -1997,9 +1951,8 @@ namespace Map {
                                                                     + 0xb4
                                                                     + (this->RandomLayer[this->DAT_SomeTile] & 7);
                                                             }
-                                                        } else if ((this->LogicLayer[this->DAT_SomeTile]
-                                                                       & L_DEFAULT_EARTH_OR_TEXTURE)
-                                                            == 0) {
+                                                        } else if (!(this->LogicLayer[this->DAT_SomeTile]
+                                                                       & L_DEFAULT_EARTH_OR_TEXTURE)) {
                                                             if ((bVar10)
                                                                 && (DAT_GameCore::instance.gameMode_2
                                                                     == Game::GM_EDITOR)) {
@@ -2036,14 +1989,12 @@ namespace Map {
                                                 bVar19 = 0;
                                                 if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
                                                             & L_RIVER
-                                                        | L_FORD)
-                                                    != 0) {
+                                                        | L_FORD)) {
                                                     bVar19 = 0x20;
                                                 }
                                                 if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4)
                                                             & L_RIVER
-                                                        | L_FORD)
-                                                    != 0) {
+                                                        | L_FORD)) {
                                                     bVar19 = bVar19 | 2;
                                                 }
                                                 if ((*(uint*)(this->ptr_LogicLayer
@@ -2052,8 +2003,7 @@ namespace Map {
                                                              * 4
                                                          + this->DAT_SomeTile * 4)
                                                             & L_RIVER
-                                                        | L_FORD)
-                                                    != 0) {
+                                                        | L_FORD)) {
                                                     bVar19 = bVar19 | 0x80;
                                                 }
                                                 if ((*(uint*)(this->ptr_LogicLayer
@@ -2063,12 +2013,11 @@ namespace Map {
                                                              * 4
                                                          + this->DAT_SomeTile * 4)
                                                             & L_RIVER
-                                                        | L_FORD)
-                                                    != 0) {
+                                                        | L_FORD)) {
                                                     bVar19 = bVar19 | 8;
                                                 }
                                                 this->bitFlag = ~bVar19 & 0xaa;
-                                                if (this->bitFlag == 0) {
+                                                if (!this->bitFlag) {
                                                     bVar19 = (*(uint*)(this->ptr_LogicLayer
                                                                   + *(int*)(this->ptr_MovementDirectionTranslationMatrix
                                                                         + this->DAT_SomeY * 0x20)
@@ -2082,8 +2031,7 @@ namespace Map {
                                                                    + this->DAT_SomeY * 0x20)
                                                                  * 4
                                                              + this->DAT_SomeTile * 4 + 4)
-                                                            & 0x300000)
-                                                        != 0) {
+                                                            & 0x300000)) {
                                                         bVar19 = bVar19 | 0x40;
                                                     }
                                                     if ((*(uint*)(this->ptr_LogicLayer
@@ -2092,8 +2040,7 @@ namespace Map {
                                                                    + 0x10)
                                                                  * 4
                                                              + this->DAT_SomeTile * 4 + -4)
-                                                            & 0x300000)
-                                                        != 0) {
+                                                            & 0x300000)) {
                                                         bVar19 = bVar19 | 4;
                                                     }
                                                     if ((*(uint*)(this->ptr_LogicLayer
@@ -2102,13 +2049,12 @@ namespace Map {
                                                                    + 0x10)
                                                                  * 4
                                                              + this->DAT_SomeTile * 4 + 4)
-                                                            & 0x300000)
-                                                        != 0) {
+                                                            & 0x300000)) {
                                                         bVar19 = bVar19 | 0x10;
                                                     }
                                                     this->bitFlag = ~bVar19 & 0x55;
                                                 }
-                                                if (this->mapOrientation == 0) {
+                                                if (!this->mapOrientation) {
                                                     this->bitFlag = MACRO_CALL_MEMBER(
                                                         Map::Navigation::DirectionAlgorithmState_Func::
                                                             rotateByteLeft,
@@ -2163,12 +2109,10 @@ namespace Map {
                                             this->Logic2Layer[this->DAT_SomeTile]
                                                 = this->Logic2Layer[this->DAT_SomeTile] & 0xf7;
                                             bVar19 = 0;
-                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4) & 1)
-                                                != 0) {
+                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4) & 1)) {
                                                 bVar19 = 0x20;
                                             }
-                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4) & 1)
-                                                != 0) {
+                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4) & 1)) {
                                                 bVar19 = bVar19 | 2;
                                             }
                                             if ((*(uint*)(this->ptr_LogicLayer
@@ -2176,8 +2120,7 @@ namespace Map {
                                                            + this->DAT_SomeY * 0x20)
                                                          * 4
                                                      + this->DAT_SomeTile * 4)
-                                                    & 1)
-                                                != 0) {
+                                                    & 1)) {
                                                 bVar19 = bVar19 | 0x80;
                                             }
                                             if ((*(uint*)(this->ptr_LogicLayer
@@ -2186,11 +2129,10 @@ namespace Map {
                                                            + 0x10)
                                                          * 4
                                                      + this->DAT_SomeTile * 4)
-                                                    & 1)
-                                                != 0) {
+                                                    & 1)) {
                                                 bVar19 = bVar19 | 8;
                                             }
-                                            if ((bVar19 != 0)
+                                            if ((bVar19)
                                                 && (this->Logic2Layer[this->DAT_SomeTile]
                                                     = this->Logic2Layer[this->DAT_SomeTile] | 8,
                                                     (this->Logic2Layer[this->DAT_SomeTile] & 0x20) != 0)) {
@@ -2200,13 +2142,12 @@ namespace Map {
                                                     = this->RandomLayer[this->DAT_SomeTile] & 7;
                                             }
                                             bVar19 = 0;
-                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4) & 0x100031)
-                                                != 0) {
+                                            if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
+                                                    & 0x100031)) {
                                                 bVar19 = 0x20;
                                             }
                                             if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4)
-                                                    & 0x100031)
-                                                != 0) {
+                                                    & 0x100031)) {
                                                 bVar19 = bVar19 | 2;
                                             }
                                             if ((*(uint*)(this->ptr_LogicLayer
@@ -2214,8 +2155,7 @@ namespace Map {
                                                            + this->DAT_SomeY * 0x20)
                                                          * 4
                                                      + this->DAT_SomeTile * 4)
-                                                    & 0x100031)
-                                                != 0) {
+                                                    & 0x100031)) {
                                                 bVar19 = bVar19 | 0x80;
                                             }
                                             if ((*(uint*)(this->ptr_LogicLayer
@@ -2224,12 +2164,11 @@ namespace Map {
                                                            + 0x10)
                                                          * 4
                                                      + this->DAT_SomeTile * 4)
-                                                    & 0x100031)
-                                                != 0) {
+                                                    & 0x100031)) {
                                                 bVar19 = bVar19 | 8;
                                             }
                                             this->bitFlag = ~bVar19 & 0xaa;
-                                            if (this->bitFlag == 0) {
+                                            if (!this->bitFlag) {
                                                 bVar19 = (*(uint*)(this->ptr_LogicLayer
                                                               + *(int*)(this->ptr_MovementDirectionTranslationMatrix
                                                                     + this->DAT_SomeY * 0x20)
@@ -2242,8 +2181,7 @@ namespace Map {
                                                                + this->DAT_SomeY * 0x20)
                                                              * 4
                                                          + this->DAT_SomeTile * 4 + 4)
-                                                        & 0x100031)
-                                                    != 0) {
+                                                        & 0x100031)) {
                                                     bVar19 = bVar19 | 0x40;
                                                 }
                                                 if ((*(uint*)(this->ptr_LogicLayer
@@ -2252,8 +2190,7 @@ namespace Map {
                                                                + 0x10)
                                                              * 4
                                                          + this->DAT_SomeTile * 4 + -4)
-                                                        & 0x100031)
-                                                    != 0) {
+                                                        & 0x100031)) {
                                                     bVar19 = bVar19 | 4;
                                                 }
                                                 if ((*(uint*)(this->ptr_LogicLayer
@@ -2262,13 +2199,12 @@ namespace Map {
                                                                + 0x10)
                                                              * 4
                                                          + this->DAT_SomeTile * 4 + 4)
-                                                        & 0x100031)
-                                                    != 0) {
+                                                        & 0x100031)) {
                                                     bVar19 = bVar19 | 0x10;
                                                 }
                                                 this->bitFlag = ~bVar19 & 0x55;
                                             }
-                                            if (this->mapOrientation == 0) {
+                                            if (!this->mapOrientation) {
                                                 this->bitFlag = MACRO_CALL_MEMBER(
                                                     Map::Navigation::DirectionAlgorithmState_Func::
                                                         rotateByteLeft,
@@ -2302,14 +2238,12 @@ namespace Map {
                                                         == this->bitFlag) {
                                                         this->bitFlag = 0;
                                                         if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
-                                                                & 0x200000)
-                                                            != 0) {
+                                                                & 0x200000)) {
                                                             this->bitFlag = 0x20;
                                                         }
                                                         if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4
                                                                  + -4)
-                                                                & 0x200000)
-                                                            != 0) {
+                                                                & 0x200000)) {
                                                             this->bitFlag = this->bitFlag | 2;
                                                         }
                                                         if ((*(uint*)(this->ptr_LogicLayer
@@ -2317,8 +2251,7 @@ namespace Map {
                                                                        + this->DAT_SomeY * 0x20)
                                                                      * 4
                                                                  + this->DAT_SomeTile * 4)
-                                                                & 0x200000)
-                                                            != 0) {
+                                                                & 0x200000)) {
                                                             this->bitFlag = this->bitFlag | 0x80;
                                                         }
                                                         if ((*(uint*)(this->ptr_LogicLayer
@@ -2327,13 +2260,12 @@ namespace Map {
                                                                        + 0x10)
                                                                      * 4
                                                                  + this->DAT_SomeTile * 4)
-                                                                & 0x200000)
-                                                            != 0) {
+                                                                & 0x200000)) {
                                                             this->bitFlag = this->bitFlag | 8;
                                                         }
                                                         sVar4 = (short)GMTotalPicturesProcessed::instance[5];
                                                         if (local_14 < 4) {
-                                                            if (this->bitFlag == 0) {
+                                                            if (!this->bitFlag) {
                                                                 this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x234
                                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile]
                                                                         * 4
@@ -2348,7 +2280,7 @@ namespace Map {
                                                                           .field2298_0x1d64[local_14]
                                                                           .unk2;
                                                             }
-                                                        } else if (this->bitFlag == 0) {
+                                                        } else if (!this->bitFlag) {
                                                             if (local_14 == 4) {
                                                                 this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x254
                                                                     + (ushort)this->LuminesenceLayer[this->DAT_SomeTile]
@@ -2369,10 +2301,10 @@ namespace Map {
                                                     }
                                                 }
                                             }
-                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 0x20) != 0) {
+                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 0x20)) {
                                                 sVar4 = (this->WallGFXLayer[this->DAT_SomeTile] & 8) * 8 + 0x38d;
                                                 sVar5 = (short)GMTotalPicturesProcessed::instance[5];
-                                                if (this->mapOrientation == 0) {
+                                                if (!this->mapOrientation) {
                                                     this->GfxLayer[this->DAT_SomeTile] = sVar5 + sVar4 + -1
                                                         + (short)((int)(this->WallGFXLayer[this->DAT_SomeTile] & 0x3e0)
                                                               >> 5)
@@ -2401,11 +2333,11 @@ namespace Map {
                                                 }
                                             }
                                             sVar4 = (short)GMTotalPicturesProcessed::instance[5];
-                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 0x50) == 0) {
-                                                if (((int)(char)this->Logic2Layer[this->DAT_SomeTile] & 0x88U) == 0) {
-                                                    if ((this->Logic2Layer[this->DAT_SomeTile] & 1) == 0) {
-                                                        if ((this->Logic2Layer[this->DAT_SomeTile] & 2) == 0) {
-                                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 4) != 0) {
+                                            if (!(this->Logic2Layer[this->DAT_SomeTile] & 0x50)) {
+                                                if (!((int)(char)this->Logic2Layer[this->DAT_SomeTile] & 0x88U)) {
+                                                    if (!(this->Logic2Layer[this->DAT_SomeTile] & 1)) {
+                                                        if (!(this->Logic2Layer[this->DAT_SomeTile] & 2)) {
+                                                            if ((this->Logic2Layer[this->DAT_SomeTile] & 4)) {
                                                                 this->GfxLayer[this->DAT_SomeTile] = sVar4 + 0x41c;
                                                             }
                                                         } else {
@@ -2417,13 +2349,11 @@ namespace Map {
                                                 } else {
                                                     bVar19 = 0;
                                                     if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
-                                                            & 1)
-                                                        != 0) {
+                                                            & 1)) {
                                                         bVar19 = 0x20;
                                                     }
                                                     if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4)
-                                                            & 1)
-                                                        != 0) {
+                                                            & 1)) {
                                                         bVar19 = bVar19 | 2;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -2431,13 +2361,13 @@ namespace Map {
                                                               + this->DAT_SomeY * 0x20)
                                                             * 4
                                                         + this->DAT_SomeTile * 4);
-                                                    if ((puVar18[-1] & 1) != 0) {
+                                                    if ((puVar18[-1] & 1)) {
                                                         bVar19 = bVar19 | 1;
                                                     }
-                                                    if ((puVar18[1] & 1) != 0) {
+                                                    if ((puVar18[1] & 1)) {
                                                         bVar19 = bVar19 | 0x40;
                                                     }
-                                                    if ((*puVar18 & 1) != 0) {
+                                                    if ((*puVar18 & 1)) {
                                                         bVar19 = bVar19 | 0x80;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_LogicLayer
@@ -2446,38 +2376,36 @@ namespace Map {
                                                               + 0x10)
                                                             * 4
                                                         + this->DAT_SomeTile * 4);
-                                                    if ((puVar18[-1] & 1) != 0) {
+                                                    if ((puVar18[-1] & 1)) {
                                                         bVar19 = bVar19 | 4;
                                                     }
-                                                    if ((puVar18[1] & 1) != 0) {
+                                                    if ((puVar18[1] & 1)) {
                                                         bVar19 = bVar19 | 0x10;
                                                     }
-                                                    if ((*puVar18 & 1) != 0) {
+                                                    if ((*puVar18 & 1)) {
                                                         bVar19 = bVar19 | 8;
                                                     }
                                                     bVar16 = 0;
                                                     if ((*(uint*)(this->ptr_TerrainTypeTileMap + this->DAT_SomeTile + 1)
-                                                            & 0x50)
-                                                        != 0) {
+                                                            & 0x50)) {
                                                         bVar16 = 0x20;
                                                     }
                                                     if ((*(uint*)(this->ptr_TerrainTypeTileMap + this->DAT_SomeTile
                                                              + -1)
-                                                            & 0x50)
-                                                        != 0) {
+                                                            & 0x50)) {
                                                         bVar16 = bVar16 | 2;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_TerrainTypeTileMap
                                                         + *(int*)(this->ptr_MovementDirectionTranslationMatrix
                                                             + this->DAT_SomeY * 0x20)
                                                         + this->DAT_SomeTile);
-                                                    if ((*(uint*)((int)puVar18 + -1) & 0x50) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + -1) & 0x50)) {
                                                         bVar16 = bVar16 | 1;
                                                     }
-                                                    if ((*(uint*)((int)puVar18 + 1) & 0x50) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + 1) & 0x50)) {
                                                         bVar16 = bVar16 | 0x40;
                                                     }
-                                                    if ((*puVar18 & 0x50) != 0) {
+                                                    if ((*puVar18 & 0x50)) {
                                                         bVar16 = bVar16 | 0x80;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_TerrainTypeTileMap
@@ -2485,28 +2413,26 @@ namespace Map {
                                                                       + this->DAT_SomeY * 0x20)
                                                             + 0x10)
                                                         + this->DAT_SomeTile);
-                                                    if ((*(uint*)((int)puVar18 + -1) & 0x50) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + -1) & 0x50)) {
                                                         bVar16 = bVar16 | 4;
                                                     }
-                                                    if ((*(uint*)((int)puVar18 + 1) & 0x50) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + 1) & 0x50)) {
                                                         bVar16 = bVar16 | 0x10;
                                                     }
-                                                    if ((*puVar18 & 0x50) != 0) {
+                                                    if ((*puVar18 & 0x50)) {
                                                         bVar16 = bVar16 | 8;
                                                     }
                                                     this->bitFlag = bVar16 | bVar19;
                                                     local_c0 = 0xffffffff;
-                                                    if (this->bitFlag == 0) {
+                                                    if (!this->bitFlag) {
                                                         this->bitFlag = 0;
                                                         if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4)
-                                                                & 0x100000)
-                                                            != 0) {
+                                                                & 0x100000)) {
                                                             this->bitFlag = 0x20;
                                                         }
                                                         if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4
                                                                  + -4)
-                                                                & 0x100000)
-                                                            != 0) {
+                                                                & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 2;
                                                         }
                                                         puVar18 = (uint*)(this->ptr_LogicLayer
@@ -2514,13 +2440,13 @@ namespace Map {
                                                                   + this->DAT_SomeY * 0x20)
                                                                 * 4
                                                             + this->DAT_SomeTile * 4);
-                                                        if ((puVar18[-1] & 0x100000) != 0) {
+                                                        if ((puVar18[-1] & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 1;
                                                         }
-                                                        if ((puVar18[1] & 0x100000) != 0) {
+                                                        if ((puVar18[1] & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 0x40;
                                                         }
-                                                        if ((*puVar18 & 0x100000) != 0) {
+                                                        if ((*puVar18 & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 0x80;
                                                         }
                                                         puVar18 = (uint*)(this->ptr_LogicLayer
@@ -2529,20 +2455,19 @@ namespace Map {
                                                                   + 0x10)
                                                                 * 4
                                                             + this->DAT_SomeTile * 4);
-                                                        if ((puVar18[-1] & 0x100000) != 0) {
+                                                        if ((puVar18[-1] & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 4;
                                                         }
-                                                        if ((puVar18[1] & 0x100000) != 0) {
+                                                        if ((puVar18[1] & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 0x10;
                                                         }
-                                                        if ((*puVar18 & 0x100000) != 0) {
+                                                        if ((*puVar18 & 0x100000)) {
                                                             this->bitFlag = this->bitFlag | 8;
                                                         }
-                                                        if (this->bitFlag != 0) {
+                                                        if (this->bitFlag) {
                                                             for (local_14 = 0; local_14 < 8; local_14 = local_14 + 1) {
                                                                 if ((((uint)this->bitFlag
-                                                                         & 1 << ((byte)local_14 & 0x1f))
-                                                                        != 0)
+                                                                        & 1 << ((byte)local_14 & 0x1f)))
                                                                     && (this->HeightLayer[this->DAT_SomeTile
                                                                             + this->directionTranslationMatrix
                                                                                 [this->DAT_SomeY]
@@ -2553,11 +2478,11 @@ namespace Map {
                                                                         & ~(byte)(1 << ((byte)local_14 & 0x1f));
                                                                 }
                                                             }
-                                                            if (this->bitFlag != 0) {
-                                                                if ((this->bitFlag & 0x80) == 0) {
-                                                                    if ((this->bitFlag & 0x20) == 0) {
-                                                                        if ((this->bitFlag & 8) == 0) {
-                                                                            if ((this->bitFlag & 2) == 0) {
+                                                            if (this->bitFlag) {
+                                                                if (!(this->bitFlag & 0x80)) {
+                                                                    if (!(this->bitFlag & 0x20)) {
+                                                                        if (!(this->bitFlag & 8)) {
+                                                                            if (!(this->bitFlag & 2)) {
                                                                                 if (this->bitFlag == 0x41) {
                                                                                     local_c0 = 4;
                                                                                 } else if (this->bitFlag == 0x50) {
@@ -2566,12 +2491,11 @@ namespace Map {
                                                                                     local_c0 = 0;
                                                                                 } else if (this->bitFlag == 5) {
                                                                                     local_c0 = 2;
-                                                                                } else if ((this->bitFlag & 0x40)
-                                                                                    == 0) {
-                                                                                    if ((this->bitFlag & 1) == 0) {
-                                                                                        if ((this->bitFlag & 4) == 0) {
-                                                                                            if ((this->bitFlag & 0x10)
-                                                                                                != 0) {
+                                                                                } else if (!(this->bitFlag & 0x40)) {
+                                                                                    if (!(this->bitFlag & 1)) {
+                                                                                        if (!(this->bitFlag & 4)) {
+                                                                                            if ((this->bitFlag
+                                                                                                    & 0x10)) {
                                                                                                 local_c0 = 7;
                                                                                             }
                                                                                         } else {
@@ -2583,8 +2507,8 @@ namespace Map {
                                                                                 } else {
                                                                                     local_c0 = 5;
                                                                                 }
-                                                                            } else if ((this->bitFlag & 0x80) == 0) {
-                                                                                if ((this->bitFlag & 8) == 0) {
+                                                                            } else if (!(this->bitFlag & 0x80)) {
+                                                                                if (!(this->bitFlag & 8)) {
                                                                                     if ((this->bitFlag & 5) == 5) {
                                                                                         local_c0 = 2;
                                                                                     } else {
@@ -2596,8 +2520,8 @@ namespace Map {
                                                                             } else {
                                                                                 local_c0 = 3;
                                                                             }
-                                                                        } else if ((this->bitFlag & 2) == 0) {
-                                                                            if ((this->bitFlag & 0x20) == 0) {
+                                                                        } else if (!(this->bitFlag & 2)) {
+                                                                            if (!(this->bitFlag & 0x20)) {
                                                                                 if ((this->bitFlag & 0x14) == 0x14) {
                                                                                     local_c0 = 0;
                                                                                 } else {
@@ -2609,8 +2533,8 @@ namespace Map {
                                                                         } else {
                                                                             local_c0 = 1;
                                                                         }
-                                                                    } else if ((this->bitFlag & 8) == 0) {
-                                                                        if ((this->bitFlag & 0x80) == 0) {
+                                                                    } else if (!(this->bitFlag & 8)) {
+                                                                        if (!(this->bitFlag & 0x80)) {
                                                                             if ((this->bitFlag & 0x50) == 0x50) {
                                                                                 local_c0 = 6;
                                                                             } else {
@@ -2622,8 +2546,8 @@ namespace Map {
                                                                     } else {
                                                                         local_c0 = 7;
                                                                     }
-                                                                } else if ((this->bitFlag & 0x20) == 0) {
-                                                                    if ((this->bitFlag & 2) == 0) {
+                                                                } else if (!(this->bitFlag & 0x20)) {
+                                                                    if (!(this->bitFlag & 2)) {
                                                                         if ((this->bitFlag & 0x41) == 0x41) {
                                                                             local_c0 = 4;
                                                                         } else {
@@ -2653,10 +2577,10 @@ namespace Map {
                                                                 = this->Logic2Layer[this->DAT_SomeTile] & 0x7f;
                                                         }
                                                     } else {
-                                                        if ((this->bitFlag & 0x80) == 0) {
-                                                            if ((this->bitFlag & 0x20) == 0) {
-                                                                if ((this->bitFlag & 8) == 0) {
-                                                                    if ((this->bitFlag & 2) == 0) {
+                                                        if (!(this->bitFlag & 0x80)) {
+                                                            if (!(this->bitFlag & 0x20)) {
+                                                                if (!(this->bitFlag & 8)) {
+                                                                    if (!(this->bitFlag & 2)) {
                                                                         if (this->bitFlag == 0x40) {
                                                                             local_c0 = 5;
                                                                         } else if (this->bitFlag == 1) {
@@ -2674,8 +2598,8 @@ namespace Map {
                                                                         } else if (this->bitFlag == 5) {
                                                                             local_c0 = 2;
                                                                         }
-                                                                    } else if ((this->bitFlag & 0x80) == 0) {
-                                                                        if ((this->bitFlag & 8) == 0) {
+                                                                    } else if (!(this->bitFlag & 0x80)) {
+                                                                        if (!(this->bitFlag & 8)) {
                                                                             if ((this->bitFlag & 5) == 5) {
                                                                                 local_c0 = 2;
                                                                             } else {
@@ -2687,8 +2611,8 @@ namespace Map {
                                                                     } else {
                                                                         local_c0 = 3;
                                                                     }
-                                                                } else if ((this->bitFlag & 2) == 0) {
-                                                                    if ((this->bitFlag & 0x20) == 0) {
+                                                                } else if (!(this->bitFlag & 2)) {
+                                                                    if (!(this->bitFlag & 0x20)) {
                                                                         if ((this->bitFlag & 0x14) == 0x14) {
                                                                             local_c0 = 0;
                                                                         } else {
@@ -2700,8 +2624,8 @@ namespace Map {
                                                                 } else {
                                                                     local_c0 = 1;
                                                                 }
-                                                            } else if ((this->bitFlag & 8) == 0) {
-                                                                if ((this->bitFlag & 0x80) == 0) {
+                                                            } else if (!(this->bitFlag & 8)) {
+                                                                if (!(this->bitFlag & 0x80)) {
                                                                     if ((this->bitFlag & 0x50) == 0x50) {
                                                                         local_c0 = 6;
                                                                     } else {
@@ -2713,8 +2637,8 @@ namespace Map {
                                                             } else {
                                                                 local_c0 = 7;
                                                             }
-                                                        } else if ((this->bitFlag & 0x20) == 0) {
-                                                            if ((this->bitFlag & 2) == 0) {
+                                                        } else if (!(this->bitFlag & 0x20)) {
+                                                            if (!(this->bitFlag & 2)) {
                                                                 if ((this->bitFlag & 0x41) == 0x41) {
                                                                     local_c0 = 4;
                                                                 } else {
@@ -2747,7 +2671,7 @@ namespace Map {
                                             }
                                         }
                                     LAB_005109e8:
-                                        if ((this->LogicLayer[this->DAT_SomeTile] & 0x10000100U) != 0) {
+                                        if ((this->LogicLayer[this->DAT_SomeTile] & 0x10000100U)) {
                                             bVar19 = this->DefaultHeightLayer[this->DAT_SomeTile];
                                             iVar17 = MACRO_CALL_MEMBER(
                                                 Map::TileMapState_Func::computeClimbRampRotation, this)(
@@ -2756,8 +2680,8 @@ namespace Map {
                                             sVar5 = (short)GMTotalPicturesProcessed::instance[9];
                                             sVar4 = (short)this->wallCornerRotation;
                                             if (this->DefaultHeightLayer[this->DAT_SomeTile] < 0x88) {
-                                                if (iVar17 == 0) {
-                                                    if ((this->Logic2Layer[this->DAT_SomeTile] & 2) == 0) {
+                                                if (!iVar17) {
+                                                    if (!(this->Logic2Layer[this->DAT_SomeTile] & 2)) {
                                                         this->PillarGFXLayer[this->DAT_SomeTile]
                                                             = (short)(((((int)(uint)bVar19 >> 3) + -1) * 0x40) / 2)
                                                             + (short)GMTotalPicturesProcessed::instance[3]
@@ -2783,12 +2707,10 @@ namespace Map {
                                         this->Logic2Layer[this->DAT_SomeTile]
                                             = this->Logic2Layer[this->DAT_SomeTile] & 0xf7;
                                         this->bitFlag = 0;
-                                        if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4) & 0x100000)
-                                            != 0) {
+                                        if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + 4) & 0x100000)) {
                                             this->bitFlag = 0x20;
                                         }
-                                        if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4) & 0x100000)
-                                            != 0) {
+                                        if ((*(uint*)(this->ptr_LogicLayer + this->DAT_SomeTile * 4 + -4) & 0x100000)) {
                                             this->bitFlag = this->bitFlag | 2;
                                         }
                                         if ((*(uint*)(this->ptr_LogicLayer
@@ -2796,8 +2718,7 @@ namespace Map {
                                                        + this->DAT_SomeY * 0x20)
                                                      * 4
                                                  + this->DAT_SomeTile * 4)
-                                                & 0x100000)
-                                            != 0) {
+                                                & 0x100000)) {
                                             this->bitFlag = this->bitFlag | 0x80;
                                         }
                                         if ((*(uint*)(this->ptr_LogicLayer
@@ -2806,21 +2727,18 @@ namespace Map {
                                                        + 0x10)
                                                      * 4
                                                  + this->DAT_SomeTile * 4)
-                                                & 0x100000)
-                                            != 0) {
+                                                & 0x100000)) {
                                             this->bitFlag = this->bitFlag | 8;
                                         }
-                                        if (this->bitFlag == 0) {
-                                            if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0xc0) == 0) {
+                                        if (!this->bitFlag) {
+                                            if (!(this->MiscDisplayLayer[this->DAT_SomeTile] & 0xc0)) {
                                                 bVar19 = 0;
                                                 if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2)
-                                                        & 0x40)
-                                                    != 0) {
+                                                        & 0x40)) {
                                                     bVar19 = 0x20;
                                                 }
                                                 if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2)
-                                                        & 0x40)
-                                                    != 0) {
+                                                        & 0x40)) {
                                                     bVar19 = bVar19 | 2;
                                                 }
                                                 puVar18 = (uint*)(this->ptr_MiscDisplayLayer
@@ -2828,24 +2746,22 @@ namespace Map {
                                                           + this->DAT_SomeY * 0x20)
                                                         * 2
                                                     + this->DAT_SomeTile * 2);
-                                                if ((*(uint*)((int)puVar18 + -2) & 0x40) != 0) {
+                                                if ((*(uint*)((int)puVar18 + -2) & 0x40)) {
                                                     bVar19 = bVar19 | 1;
                                                 }
-                                                if ((*(uint*)((int)puVar18 + 2) & 0x40) != 0) {
+                                                if ((*(uint*)((int)puVar18 + 2) & 0x40)) {
                                                     bVar19 = bVar19 | 0x40;
                                                 }
-                                                if ((*puVar18 & 0x40) != 0) {
+                                                if ((*puVar18 & 0x40)) {
                                                     bVar19 = bVar19 | 0x80;
                                                 }
                                                 bVar16 = 0;
                                                 if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + 2)
-                                                        & 0x80)
-                                                    != 0) {
+                                                        & 0x80)) {
                                                     bVar16 = 0x20;
                                                 }
                                                 if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2 + -2)
-                                                        & 0x80)
-                                                    != 0) {
+                                                        & 0x80)) {
                                                     bVar16 = bVar16 | 2;
                                                 }
                                                 puVar18 = (uint*)(this->ptr_MiscDisplayLayer
@@ -2853,17 +2769,17 @@ namespace Map {
                                                           + this->DAT_SomeY * 0x20)
                                                         * 2
                                                     + this->DAT_SomeTile * 2);
-                                                if ((*(uint*)((int)puVar18 + -2) & 0x80) != 0) {
+                                                if ((*(uint*)((int)puVar18 + -2) & 0x80)) {
                                                     bVar16 = bVar16 | 1;
                                                 }
-                                                if ((*(uint*)((int)puVar18 + 2) & 0x80) != 0) {
+                                                if ((*(uint*)((int)puVar18 + 2) & 0x80)) {
                                                     bVar16 = bVar16 | 0x40;
                                                 }
-                                                if ((*puVar18 & 0x80) != 0) {
+                                                if ((*puVar18 & 0x80)) {
                                                     bVar16 = bVar16 | 0x80;
                                                 }
                                                 this->bitFlag = bVar16 & ~bVar19;
-                                                if (this->bitFlag != 0) {
+                                                if (this->bitFlag) {
                                                     this->GfxLayer[this->DAT_SomeTile]
                                                         = (short)GMTotalPicturesProcessed::instance[0xa6] + 0x5c4;
                                                     this->PillarGFXLayer[this->DAT_SomeTile]
@@ -2883,19 +2799,17 @@ namespace Map {
                                                 local_38 = 0;
                                             }
                                             sVar4 = (short)local_38;
-                                            if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0xc0) == 0) {
-                                                if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x100) == 0) {
+                                            if (!(this->MiscDisplayLayer[this->DAT_SomeTile] & 0xc0)) {
+                                                if (!(this->MiscDisplayLayer[this->DAT_SomeTile] & 0x100)) {
                                                     this->bitFlag = 0;
                                                     if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2
                                                              + 2)
-                                                            & 0x100)
-                                                        != 0) {
+                                                            & 0x100)) {
                                                         this->bitFlag = 0x20;
                                                     }
                                                     if ((*(uint*)(this->ptr_MiscDisplayLayer + this->DAT_SomeTile * 2
                                                              + -2)
-                                                            & 0x100)
-                                                        != 0) {
+                                                            & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 2;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_MiscDisplayLayer
@@ -2903,13 +2817,13 @@ namespace Map {
                                                               + this->DAT_SomeY * 0x20)
                                                             * 2
                                                         + this->DAT_SomeTile * 2);
-                                                    if ((*(uint*)((int)puVar18 + -2) & 0x100) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + -2) & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 1;
                                                     }
-                                                    if ((*(uint*)((int)puVar18 + 2) & 0x100) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + 2) & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 0x40;
                                                     }
-                                                    if ((*puVar18 & 0x100) != 0) {
+                                                    if ((*puVar18 & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 0x80;
                                                     }
                                                     puVar18 = (uint*)(this->ptr_MiscDisplayLayer
@@ -2918,16 +2832,16 @@ namespace Map {
                                                               + 0x10)
                                                             * 2
                                                         + this->DAT_SomeTile * 2);
-                                                    if ((*(uint*)((int)puVar18 + -2) & 0x100) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + -2) & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 4;
                                                     }
-                                                    if ((*(uint*)((int)puVar18 + 2) & 0x100) != 0) {
+                                                    if ((*(uint*)((int)puVar18 + 2) & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 0x10;
                                                     }
-                                                    if ((*puVar18 & 0x100) != 0) {
+                                                    if ((*puVar18 & 0x100)) {
                                                         this->bitFlag = this->bitFlag | 8;
                                                     }
-                                                    if (this->bitFlag != 0) {
+                                                    if (this->bitFlag) {
                                                         local_ac = 2;
                                                         uVar12 = (uint)this->bitFlag
                                                             << ((byte)this->mapOrientation & 0x1f);
@@ -2949,7 +2863,7 @@ namespace Map {
                                                         default:
                                                             local_b4 = 0;
                                                             for (local_b8 = 0; local_b8 < 8; local_b8 = local_b8 + 1) {
-                                                                if ((1 << ((byte)local_b8 & 0x1f) & uVar12) != 0) {
+                                                                if ((1 << ((byte)local_b8 & 0x1f) & uVar12)) {
                                                                     local_b4 = local_b4 + 1;
                                                                 }
                                                             }
@@ -3041,7 +2955,7 @@ namespace Map {
                                                     default:
                                                         local_a0 = 0;
                                                         for (local_a4 = 0; local_a4 < 8; local_a4 = local_a4 + 1) {
-                                                            if ((1 << ((byte)local_a4 & 0x1f) & uVar12) != 0) {
+                                                            if ((1 << ((byte)local_a4 & 0x1f) & uVar12)) {
                                                                 local_a0 = local_a0 + 1;
                                                             }
                                                         }
@@ -3116,7 +3030,7 @@ namespace Map {
                                                         + 0x2a + sVar4 * 0xf6;
                                                 }
                                             }
-                                            if ((this->MiscDisplayLayer[this->DAT_SomeTile] & 0x3c0) == 0) {
+                                            if (!(this->MiscDisplayLayer[this->DAT_SomeTile] & 0x3c0)) {
                                                 this->GfxLayer[this->DAT_SomeTile]
                                                     = (this->RandomLayer[this->DAT_SomeTile] & 7)
                                                     + (short)GMTotalPicturesProcessed::instance[0xa6] + sVar4 * 0xf6;

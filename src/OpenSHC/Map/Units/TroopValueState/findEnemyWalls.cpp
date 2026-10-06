@@ -28,7 +28,7 @@ namespace Map {
             if (0 < *(int*)((int)this->attackInfo.hackValuesArray + _offset + -8)) {
                 piVar2 = (AttackInfoSubArrayElement2*)((int)&this->attackInfo.hackValuesArray + _offset + 4);
                 do {
-                    if ((piVar2->size < 9999) && (piVar2->unitID == 0)) {
+                    if ((piVar2->size < 9999) && (!piVar2->unitID)) {
                         fromYPosition
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[piVar2->tile2];
                         iVar1 = piVar2->tile2

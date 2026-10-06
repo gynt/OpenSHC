@@ -77,10 +77,10 @@ namespace Map {
                     this->tribes[tribeID].unknownCounter01 = 0;
                 }
                 sVar2 = this->tribes[tribeID].field133_0x278;
-                if (sVar2 == 0) {
+                if (!sVar2) {
                     SVar3 = this->tribes[tribeID].tribeBehaviorType;
                     if (SVar3 == ((SomeTribeBehaviorType)0)) {
-                        if (iVar5 != 0) {
+                        if (iVar5) {
                             this->tribes[tribeID].field136_0x27e = 200;
                         }
                         if (0x14 < iVar8) {

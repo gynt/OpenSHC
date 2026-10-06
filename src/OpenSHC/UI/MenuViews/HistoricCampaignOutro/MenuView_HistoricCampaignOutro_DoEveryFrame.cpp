@@ -44,8 +44,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playAmbientSoundStreamUnk, DAT_SFXState::ptr)(
                     Audio::SFX::ASFXT_WIND_0);
             }
-            if (DAT_MouseState::instance.leftClickStart != 0) {
-                if (DAT_00ed2780::instance == 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
+                if (!DAT_00ed2780::instance) {
                     FLOAT_00ec0834::instance = 0.0;
                 } else {
                     if (DAT_00ed2780::instance != 1)
@@ -56,7 +56,7 @@ namespace UI {
             }
         LAB_004dbf52:
             iVar2 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (iVar2 != 0) {
+            if (iVar2) {
                 MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
                 MACRO_CALL(UI::Rendering_Func::RenderHistoryBookEdgeUnk)();
                 iVar2 = 0;
@@ -71,11 +71,11 @@ namespace UI {
                     DAT_ArrayOfStoredMenuStrings::instance[1],
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x118, 0x2e4, 0, 0x11, iVar2);
-                if ((((DAT_00ed2780::instance != 0)
-                         || (MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(DAT_00eb0b20::instance, 0x2b, 0x3f,
-                             DAT_00ed2780::instance != 0)))
-                        && (MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(DAT_00eb0b20::instance, 0x2b, 0x3f, iVar2,
-                            DAT_00ed2780::instance != 0)))
+                if ((((DAT_00ed2780::instance)
+                         || (MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
+                             DAT_00eb0b20::instance, 0x2b, 0x3f, DAT_00ed2780::instance != 0)))
+                        && (MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(
+                            DAT_00eb0b20::instance, 0x2b, 0x3f, iVar2, DAT_00ed2780::instance != 0)))
                     && (FLOAT_00ec0834::instance = FLOAT_Between1And5::instance + FLOAT_00ec0834::instance,
                         32.0 < FLOAT_00ec0834::instance != (FLOAT_00ec0834::instance == 32.0))) {
                     if (DAT_00ed2780::instance == 2) {

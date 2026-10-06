@@ -114,7 +114,7 @@ namespace Map {
                     DAT_TroopValueState::instance.attackInfo.macemenTribeArray[local_14] = _tribeID1;
                     DAT_TribesState::instance.tribes[_tribeID1].tribeType = AI::Tribes::AITT_MACEMEN;
                     _limitCounter = 0;
-                    if (_macemenLimit != 0) {
+                    if (_macemenLimit) {
                         _pUnit1 = &DAT_UnitsState::instance.units[_unitID1].owner;
                         do {
                             _unitID1 = _unitID1 + 1;
@@ -147,7 +147,7 @@ namespace Map {
                     _limitCounter2 = 0;
                     DAT_TroopValueState::instance.attackInfo.knightTribeArray[local_14] = _tribeID2;
                     DAT_TribesState::instance.tribes[_tribeID2].tribeType = AI::Tribes::AITT_KNIGHTS;
-                    if (_knightLimit != 0) {
+                    if (_knightLimit) {
                         psVar2 = &DAT_UnitsState::instance.units[_unitID2].owner;
                         do {
                             _unitID2 = _unitID2 + 1;

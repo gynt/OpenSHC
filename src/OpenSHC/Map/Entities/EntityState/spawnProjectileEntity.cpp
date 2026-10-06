@@ -229,7 +229,7 @@ namespace Map {
                     goto LAB_00404f8c;
                 }
                 if (entityType == ((EntityType)0x1f)) {
-                    if (unitID != 0) {
+                    if (unitID) {
                         this->entityArray[entityID].unkOne_1 = 2;
                     }
                     goto LAB_00404f8c;
@@ -262,7 +262,7 @@ namespace Map {
             if (bVar1) {
                 this->entityArray[entityID].gmLookupValue = 1;
             }
-            if (entityID != 0) {
+            if (entityID) {
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
                     entityID);
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);

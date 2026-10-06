@@ -36,13 +36,13 @@ namespace UI {
                  */
                 MACRO_CALL(UI::DisplayElements_Func::RenderDebugNumbersDisplayElement)(0, 0, 0xfffffc18);
             }
-            if (DAT_MouseState::instance.selectionBoxMode != 0) {}
+            if (DAT_MouseState::instance.selectionBoxMode) {}
             if (DAT_MouseState::instance.rightClickState != FALSE) {}
             _scrollDistance = MACRO_CALL_MEMBER(
                 UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
-            if (_scrollDistance == 0) {}
+            if (!_scrollDistance) {}
             if ((DAT_CurrentFramerate::instance < DAT_GameCore::instance.gameSpeedLevel)
-                && (DAT_CurrentFramerate::instance != 0)) {
+                && (DAT_CurrentFramerate::instance)) {
                 _scrollDistance = (int)(DAT_GameCore::instance.gameSpeedLevel * _scrollDistance)
                     / ((int)(DAT_GameCore::instance.gameSpeedLevel - DAT_CurrentFramerate::instance) / 2
                         + DAT_CurrentFramerate::instance);

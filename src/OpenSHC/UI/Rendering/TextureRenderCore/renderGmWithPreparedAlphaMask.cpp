@@ -92,7 +92,7 @@ namespace UI {
                                     _stillHeightLeft = 0 < iVar7;
                                     y = _heightRangeStart;
                                     iVar7 = _remainingHeight;
-                                } while (_remainingHeight != 0 && _stillHeightLeft);
+                                } while (_remainingHeight && _stillHeightLeft);
                             }
                             _currentRenderSurfacePtr
                                 = (ushort*)((int)this->currentRenderSurface + y * _byteWidth + x * 2);
@@ -116,7 +116,7 @@ namespace UI {
                                         do {
                                             puVar9 = _alphaAndButtonSurfacePtr + 1;
                                             _anotherLengthUnk = (*_alphaAndButtonSurfacePtr & 0x1f) - blendStrength;
-                                            if (_anotherLengthUnk != 0
+                                            if (_anotherLengthUnk
                                                 && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
                                                 if (_anotherLengthUnk == 0x1f) {
                                                     *_currentRenderSurfacePtr = *imageDataPtr;
@@ -148,7 +148,7 @@ namespace UI {
                                             _currentRenderSurfacePtr = _currentRenderSurfacePtr + 1;
                                             _someLength = _someLength + -1;
                                             _alphaAndButtonSurfacePtr = puVar9;
-                                        } while (_someLength != 0);
+                                        } while (_someLength);
                                     }
                                     if (_tgxToken2 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                         break;
@@ -156,7 +156,7 @@ namespace UI {
                                     do {
                                         puVar9 = _alphaAndButtonSurfacePtr + 1;
                                         _remainingHeight = (*_alphaAndButtonSurfacePtr & 0x1f) - blendStrength;
-                                        if (_remainingHeight != 0
+                                        if (_remainingHeight
                                             && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
                                             if (_remainingHeight == 0x1f) {
                                                 *_currentRenderSurfacePtr = *(undefined2*)_currentTgxDataPtr;
@@ -185,7 +185,7 @@ namespace UI {
                                         _currentRenderSurfacePtr = _currentRenderSurfacePtr + 1;
                                         iVar7 = iVar7 + -1;
                                         _alphaAndButtonSurfacePtr = puVar9;
-                                    } while (iVar7 != 0);
+                                    } while (iVar7);
                                     imageDataPtr = (ushort*)((int)imageDataPtr + 3);
                                 }
                                 _currentRenderSurfacePtr = (ushort*)((int)_currentRenderSurfacePtr + _jumpLineByteSize);
@@ -193,7 +193,7 @@ namespace UI {
                                 _stillHeightLeft = 0 < height;
                                 height = iVar7;
                                 imageDataPtr = (ushort*)_currentTgxDataPtr;
-                            } while (iVar7 != 0 && _stillHeightLeft);
+                            } while (iVar7 && _stillHeightLeft);
                         }
                     }
                     if (-1 < x) {
@@ -209,7 +209,7 @@ namespace UI {
                                             bVar6 = (byte)*puVar9 & 0xe0;
                                             imageDataPtr = (ushort*)((int)puVar9 + 1);
                                         } while (bVar6 == 0x20);
-                                        if (bVar6 != 0)
+                                        if (bVar6)
                                             break;
                                         imageDataPtr = imageDataPtr + ((byte)*puVar9 & 0x1f) + 1;
                                     }
@@ -222,7 +222,7 @@ namespace UI {
                                 _stillHeightLeft = 0 < iVar7;
                                 y = _heightRangeStart;
                                 iVar7 = _remainingHeight;
-                            } while (_remainingHeight != 0 && _stillHeightLeft);
+                            } while (_remainingHeight && _stillHeightLeft);
                         }
                         puVar9 = (ushort*)((int)this->currentRenderSurface + y * _byteWidth + x * 2);
                         do {
@@ -238,14 +238,14 @@ namespace UI {
                                         imageDataPtr = puVar8;
                                         _alphaAndButtonSurfacePtr = _alphaAndButtonSurfacePtr + _pixelLength + 1;
                                     }
-                                    if (bVar6 != 0)
+                                    if (bVar6)
                                         break;
                                     iVar7 = _pixelLength + 1;
                                     imageDataPtr = puVar8;
                                     do {
                                         puVar8 = _alphaAndButtonSurfacePtr + 1;
                                         _remainingHeight = (*_alphaAndButtonSurfacePtr & 0x1f) - blendStrength;
-                                        if (_remainingHeight != 0
+                                        if (_remainingHeight
                                             && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
                                             if (_remainingHeight == 0x1f) {
                                                 *puVar9 = *imageDataPtr;
@@ -269,7 +269,7 @@ namespace UI {
                                         puVar9 = puVar9 + 1;
                                         iVar7 = iVar7 + -1;
                                         _alphaAndButtonSurfacePtr = puVar8;
-                                    } while (iVar7 != 0);
+                                    } while (iVar7);
                                 }
                                 if (bVar6 != 0x40)
                                     break;
@@ -277,8 +277,7 @@ namespace UI {
                                 do {
                                     puVar1 = _alphaAndButtonSurfacePtr + 1;
                                     _remainingHeight = (*_alphaAndButtonSurfacePtr & 0x1f) - blendStrength;
-                                    if (_remainingHeight != 0
-                                        && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
+                                    if (_remainingHeight && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
                                         if (_remainingHeight == 0x1f) {
                                             *puVar9 = *puVar8;
                                         } else {
@@ -300,7 +299,7 @@ namespace UI {
                                     puVar9 = puVar9 + 1;
                                     iVar7 = iVar7 + -1;
                                     _alphaAndButtonSurfacePtr = puVar1;
-                                } while (iVar7 != 0);
+                                } while (iVar7);
                                 imageDataPtr = (ushort*)((int)imageDataPtr + 3);
                             }
                             puVar9 = (ushort*)((int)puVar9 + _jumpLineByteSize);
@@ -308,7 +307,7 @@ namespace UI {
                             _stillHeightLeft = 0 < height;
                             height = iVar7;
                             imageDataPtr = puVar8;
-                        } while (iVar7 != 0 && _stillHeightLeft);
+                        } while (iVar7 && _stillHeightLeft);
                     }
                 }
             }

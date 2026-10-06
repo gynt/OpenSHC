@@ -31,7 +31,7 @@ namespace Map {
             _allAssassins
                 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribeAllAssassins, this)(tribeID);
             this->tribes[tribeID].someUnitID = 0;
-            if (storeAsRallyPoint != 0) {
+            if (storeAsRallyPoint) {
                 _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
                 this->tribes[tribeID].isRallyingUnk = (short)isRallying;
                 this->tribes[tribeID].rallyPointArray[0][0] = DAT_UnitsState::instance.units[_targetUnitID].x;

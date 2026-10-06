@@ -37,7 +37,7 @@ namespace Text {
             this->integerTextBuffer[2] = '\0';
             this->integerTextBuffer[3] = '\0';
             iVar2 = 1;
-        } else if ((numberInt < 1) || (this->field8_0x20 == 0)) {
+        } else if ((numberInt < 1) || (!this->field8_0x20)) {
             iVar2 = 0;
         } else {
             this->integerTextBuffer[0] = 43;
@@ -50,7 +50,7 @@ namespace Text {
         do {
             if (numberInt <= DAT_TextInputDefinedData::instance.field5_0x684[iVar1][0]) {
                 iVar1 = DAT_TextInputDefinedData::instance.field5_0x684[iVar1][1];
-                if (iVar1 != 0)
+                if (iVar1)
                     goto LAB_0046a014;
                 break;
             }

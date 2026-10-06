@@ -62,8 +62,7 @@ namespace UI {
             int microY;
             int microX;
             UnitTypeShort _unitType;
-            if ((((DAT_GameSynchronyState::instance.syncStatus == 0)
-                     && (DAT_GameSynchronyState::instance.saveRelated == 0))
+            if ((((!DAT_GameSynchronyState::instance.syncStatus) && (!DAT_GameSynchronyState::instance.saveRelated))
                     && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_DELETE))
                 && (DAT_TileMapState::instance.field194_0x554a20 = 0,
                     DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0)) {
@@ -87,16 +86,15 @@ namespace UI {
                     DAT_TileMapState::instance.field194_0x554a20 = 1;
                 }
                 iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID;
-                if ((DAT_MouseState::instance.leftClickStart == 0)
-                    && (((DAT_TileMapState::instance.placementOnWall == 0
-                             && (DAT_TileMapState::instance.placementOnMoat == 0))
+                if ((!DAT_MouseState::instance.leftClickStart)
+                    && (((!DAT_TileMapState::instance.placementOnWall && (!DAT_TileMapState::instance.placementOnMoat))
                         || (DAT_MouseState::instance.leftClickState == FALSE)))) {
                     DAT_TileMapState::instance.placementOnWall = 0;
                     DAT_TileMapState::instance.placementOnMoat = 0;
                     return;
                 }
                 if (((((DAT_GameCore::instance.solitaryAltUDungeon != FALSE)
-                          && (DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID != 0))
+                          && (DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID))
                          && (DAT_UnitsState::instance
                                  .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                  .health
@@ -166,7 +164,7 @@ namespace UI {
                     DAT_TileMapState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileX)),
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
-                if (iVar2 != 0) {
+                if (iVar2) {
                     DAT_WallAndPitchState::instance.countdown = 0;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                         = DAT_TileMapState::instance.DAT_ClickedTileX;
@@ -182,11 +180,11 @@ namespace UI {
                     (uint)((int)(DAT_TileMapState::instance.DAT_ClickedTileY)));
                 if (DAT_TileMapState::instance.buildingPlacementFail == FALSE) {
                     DAT_WallAndPitchState::instance.countdown = 0;
-                    if (DAT_TileMapState::instance.placementOnMoat == 0) {
+                    if (!DAT_TileMapState::instance.placementOnMoat) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 50;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_ViewportRenderState::instance.viewportState.field21_0x54;
-                        if (DAT_TileMapState::instance.placementOnWall == 0) {
+                        if (!DAT_TileMapState::instance.placementOnWall) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                                 = DAT_TileMapState::instance.field131_0x554954;
                             if (-1 < DAT_TileMapState::instance.field131_0x554954) {

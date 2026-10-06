@@ -96,9 +96,9 @@ namespace UI {
                         ((SoundEffectID)0x101));
                 }
             } else if (param_1 == -2) {
-                if (((((DAT_GameSynchronyState::instance.syncStatus == 0)
-                          && (DAT_GameSynchronyState::instance.saveRelated == 0))
-                         && (DAT_GameCore::instance.gamePausedLogical == 0))
+                if (((((!DAT_GameSynchronyState::instance.syncStatus)
+                          && (!DAT_GameSynchronyState::instance.saveRelated))
+                         && (!DAT_GameCore::instance.gamePausedLogical))
                         && ((DAT_GameCore::instance.currentMenuViewType
                                 != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
                             || ((DAT_GameCore::instance.activeMenuTab.tabType
@@ -116,9 +116,9 @@ namespace UI {
                         DAT_WallAndPitchState::ptr)();
                 }
             } else if (param_1 == -3) {
-                if ((((((DAT_GameSynchronyState::instance.syncStatus == 0)
-                           && (DAT_GameSynchronyState::instance.saveRelated == 0))
-                          && (DAT_GameCore::instance.gamePausedLogical == 0))
+                if ((((((!DAT_GameSynchronyState::instance.syncStatus)
+                           && (!DAT_GameSynchronyState::instance.saveRelated))
+                          && (!DAT_GameCore::instance.gamePausedLogical))
                          && ((DAT_GameCore::instance.currentMenuViewType
                                  != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
                              || ((DAT_GameCore::instance.activeMenuTab.tabType
@@ -224,8 +224,8 @@ namespace UI {
                             }
                         }
                     } else if (param_1 - 0x47U < 9) {
-                        if ((DAT_GameSynchronyState::instance.syncStatus == 0)
-                            && (DAT_GameCore::instance.gamePausedLogical == 0)) {
+                        if ((!DAT_GameSynchronyState::instance.syncStatus)
+                            && (!DAT_GameCore::instance.gamePausedLogical)) {
                             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                                 DAT_StopHandlingMenuItems::instance = 0;
                             }

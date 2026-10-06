@@ -15,7 +15,7 @@ namespace Map {
         DAT_CurrentTreeID::instance = 1;
         do {
             sVar1 = this->trees[DAT_CurrentTreeID::instance].state;
-            if ((sVar1 != 0) && (sVar1 != 3)) {
+            if ((sVar1) && (sVar1 != 3)) {
                 this->trees[DAT_CurrentTreeID::instance].field8_0x14 = DAT_00ed31a0::instance;
             }
             DAT_CurrentTreeID::instance = DAT_CurrentTreeID::instance + 1;

@@ -78,7 +78,7 @@ namespace Synchrony {
                 _counter2 = _counter2 + 1;
             }
             _counter = _counter + -1;
-        } while (_counter != 0);
+        } while (_counter);
         _counter = 1;
     LAB_0048c857:
         iVar3 = local_38[_counter];
@@ -92,7 +92,7 @@ namespace Synchrony {
                         *_playerGroupArray = 0;
                     }
                     iVar3 = iVar3 + -1;
-                } while (iVar3 != 0);
+                } while (iVar3);
                 local_38[_counter] = 0;
             LAB_0048c8b5:
                 _counter3 = 1;
@@ -147,7 +147,7 @@ namespace Synchrony {
                         do {
                             bVar4 = _playerGroupArray[-1];
                             if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[-1] == 0)) {
-                                if (bVar4 == 0) {
+                                if (!bVar4) {
                                     bVar4 = 10;
                                 }
                                 if (((char)bVar4 < (char)_group) || (pcVar2 == (char*)0xffffffff)) {
@@ -157,7 +157,7 @@ namespace Synchrony {
                             }
                             bVar4 = *_playerGroupArray;
                             if ((-1 < (char)bVar4) && (*_currentPlayerFullIdArray == 0)) {
-                                if (bVar4 == 0) {
+                                if (!bVar4) {
                                     bVar4 = 10;
                                 }
                                 if (((char)bVar4 < (char)_group) || (pcVar2 == (char*)0xffffffff)) {
@@ -167,7 +167,7 @@ namespace Synchrony {
                             }
                             bVar4 = _playerGroupArray[1];
                             if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[1] == 0)) {
-                                if (bVar4 == 0) {
+                                if (!bVar4) {
                                     bVar4 = 10;
                                 }
                                 if (((char)bVar4 < (char)_group) || (pcVar2 == (char*)0xffffffff)) {
@@ -177,7 +177,7 @@ namespace Synchrony {
                             }
                             bVar4 = _playerGroupArray[2];
                             if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[2] == 0)) {
-                                if (bVar4 == 0) {
+                                if (!bVar4) {
                                     bVar4 = 10;
                                 }
                                 if (((char)bVar4 < (char)_group) || (pcVar2 == (char*)0xffffffff)) {
@@ -213,7 +213,7 @@ namespace Synchrony {
                         *_playerGroupArray = 0;
                     }
                     iVar3 = iVar3 + -1;
-                } while (iVar3 != 0);
+                } while (iVar3);
                 local_38[_counter] = 0;
             }
         }

@@ -29,13 +29,13 @@ namespace UI {
     {
         HICON__* _previousCursor;
         BOOLEnum BVar1;
-        if (DAT_MouseState::instance.waitCursorToggle != 0) {
+        if (DAT_MouseState::instance.waitCursorToggle) {
             _previousCursor = MACRO_CALL_MEMBER(Input::MouseState_Func::setCursor, DAT_MouseState::ptr)(3);
             return _previousCursor;
         }
         if (((DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU)
-                && (DAT_TextEditorState::instance.helpDialogVariant == 0))
-            && (DAT_TextEditorState::instance.isDialogStateInitialized == 0)) {
+                && (!DAT_TextEditorState::instance.helpDialogVariant))
+            && (!DAT_TextEditorState::instance.isDialogStateInitialized)) {
             if (((uint)DAT_MouseState::instance.field68_0x1dc < 1000)
                 || (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_INTRO_LOGOS)) {
                 _previousCursor = MACRO_CALL_MEMBER(Input::MouseState_Func::setCursor, DAT_MouseState::ptr)(1);
@@ -43,7 +43,7 @@ namespace UI {
             }
             if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU)
                 && (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_DELETE)) {
-                if (DAT_TileMapState::instance.field194_0x554a20 == 0) {
+                if (!DAT_TileMapState::instance.field194_0x554a20) {
                     _previousCursor
                         = MACRO_CALL_MEMBER(Input::MouseState_Func::setCursor, DAT_MouseState::ptr)(2);
                     return _previousCursor;

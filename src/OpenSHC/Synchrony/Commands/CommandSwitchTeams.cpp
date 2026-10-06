@@ -54,7 +54,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             iVar6 = DAT_GameSynchronyState::instance.DAT_GameCommandParam0;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = (int)(char)local_28[0];
-            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_GameCommandParam1) {
                 if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                     == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                     aiStack_24[1] = 0;

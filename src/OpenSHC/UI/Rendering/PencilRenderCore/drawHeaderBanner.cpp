@@ -22,14 +22,14 @@ namespace UI {
             int iVar1 = xPos + 8;
             int iVar2 = width + -0x10;
             for (xPos = 0; xPos < 0x40; xPos += 8) {
-                if (xPos == 0) {
+                if (!xPos) {
                     iVar4 = 0x30;
                 } else {
                     iVar4 = (-(uint)(xPos != 0x38) & 0xfffffffa) + 0x3c;
                 }
                 for (iVar3 = 0; iVar3 < iVar2; iVar3 += 8) {
                     int _imageID = iVar4;
-                    if ((iVar3 != 0) && (_imageID = iVar4 + 2, iVar3 != width + -0x18)) {
+                    if ((iVar3) && (_imageID = iVar4 + 2, iVar3 != width + -0x18)) {
                         _imageID = iVar4 + 1;
                     }
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,

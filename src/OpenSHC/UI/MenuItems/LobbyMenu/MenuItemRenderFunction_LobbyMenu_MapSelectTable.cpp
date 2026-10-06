@@ -69,7 +69,7 @@ namespace UI {
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                                 + param_1 + -1]);
                     iVar3 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(pcVar2, (char const*)((int)(_Str2)));
-                    if (iVar3 == 0) {
+                    if (!iVar3) {
                         iVar4 = 1;
                         BVar1 = TRUE;
                         goto LAB_0042b579;

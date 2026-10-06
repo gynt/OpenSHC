@@ -29,7 +29,7 @@ namespace Map {
         int _attempts;
         _randomNumber = (byte)SEC_RNG::instance.currentNumber2 & 7;
         local_8 = 3;
-        if ((treeID & 1) != 0) {
+        if ((treeID & 1)) {
             local_8 = 4;
         }
         DAT_PathFindingState::instance.ALG_ResultTile = 0;
@@ -54,11 +54,11 @@ namespace Map {
                 bVar2 = *(byte*)(iVar3 + 0x1c471e8 + _newX);
                 _newTile = iVar3 + _newX;
                 if (((DAT_TileMapState::instance.OrganismLayer[_newTile] == 0)
-                        && ((DAT_TileMapState::instance.LogicLayer[_newTile] & 0x703e25b5U) == 0))
+                        && (!(DAT_TileMapState::instance.LogicLayer[_newTile] & 0x703e25b5U)))
                     && ((DAT_TileMapState::instance.UnitLayer[_newTile] == 0
                         && (DAT_TileMapState::instance.BuildingLayer[_newTile] == 0)))) {
                     if (treeType == 1) {
-                        if ((bVar2 & 0x90) == 0) {
+                        if (!(bVar2 & 0x90)) {
                         LAB_004f2f32:
                             if ((((uint)DAT_TileMapState::instance.HeightLayer[_newTile] <= uVar5 + 0x40)
                                     && ((int)(uVar5 - 0x40)
@@ -73,7 +73,7 @@ namespace Map {
                                 return (undefined4)(1);
                             }
                         }
-                    } else if ((bVar2 & 0x90) != 0)
+                    } else if ((bVar2 & 0x90))
                         goto LAB_004f2f32;
                 }
             }

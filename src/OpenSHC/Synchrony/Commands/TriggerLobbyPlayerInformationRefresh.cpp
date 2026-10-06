@@ -43,7 +43,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&_senderIsHost, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (_senderIsHost != 0) {
+            if (_senderIsHost) {
                 DAT_GameSynchronyState::instance.DAT_HostPlayerSlotID
                     = DAT_GameSynchronyState::instance.protocolInvokerPlayerID;
             }

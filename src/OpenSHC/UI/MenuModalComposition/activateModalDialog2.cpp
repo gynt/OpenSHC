@@ -34,8 +34,7 @@ namespace UI {
         MenuModalComposition* pMVar2;
         int _y2;
         int _x2;
-        if ((this->slot == 0)
-            && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
+        if ((!this->slot) && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
         }
@@ -43,7 +42,7 @@ namespace UI {
             this->activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
             _startedPlayingAIMessage = MACRO_CALL_MEMBER(
                 OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, DAT_VideoBikQueue::ptr)();
-            if (_startedPlayingAIMessage != 0) {}
+            if (_startedPlayingAIMessage) {}
         }
         this->activeModalDialogID = modalDialogID;
         if (modalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
@@ -52,13 +51,13 @@ namespace UI {
             /*
               Makes found current. - TheRedDaemon
              */
-            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1 != 0; iVar1 = iVar1 + -1) {
+            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1; iVar1 = iVar1 + -1) {
                 ((MenuModal*)pMVar2)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
         }
         this->modalDragDropUnk = 0;
-        if ((this->modalMenu.borderStyle & 0x220U) != 0) {
+        if ((this->modalMenu.borderStyle & 0x220U)) {
             this->modalMenu.width = ((this->modalMenu.width + -1) / 0x18 + 1) * 0x18;
             this->modalMenu.height = ((this->modalMenu.height + -1) / 0x18 + 1) * 0x18;
         }
@@ -91,7 +90,7 @@ namespace UI {
         this->disappearAfter = 0x20;
         this->mbr_0x6c = 0;
         this->timeItIsSet = timeGetTime();
-        if ((this->modalMenu.borderStyle & 0x400U) != 0) {
+        if ((this->modalMenu.borderStyle & 0x400U)) {
             this->disappearAfter = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::renderMenuModal, this)();

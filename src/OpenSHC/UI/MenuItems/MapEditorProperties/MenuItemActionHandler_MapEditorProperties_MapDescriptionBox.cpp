@@ -21,11 +21,10 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042EDF0
         void MapEditorProperties::MenuItemActionHandler_MapEditorProperties_MapDescriptionBox()
         {
-            if ((((DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
-                     && (DAT_GameCore::instance.field115_0x1d98 != 0))
+            if ((((DAT_GameCore::instance.U2_mapType_singleOrMulti) && (DAT_GameCore::instance.field115_0x1d98))
                     && (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU))
                 && ((DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE
-                    && (INT_00b95f68::instance = 1, DAT_GameCore::instance.unknownAlwaysZero03 == 0)))) {
+                    && (INT_00b95f68::instance = 1, !DAT_GameCore::instance.unknownAlwaysZero03)))) {
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     9);
                 DAT_TextEditorState::instance.customTextMaxLength = 1000;

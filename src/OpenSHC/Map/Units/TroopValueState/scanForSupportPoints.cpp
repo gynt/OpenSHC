@@ -34,7 +34,7 @@ namespace Map {
                     paiVar4 = DAT_TileMapState::instance.directionTranslationMatrix + y;
                     do {
                         if (((*(byte*)((*paiVar4)[0] + 0x1ea7b68 + tile) & 0xf) == 2)
-                            && ((DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + tile] & 3) == 0)) {
+                            && (!(DAT_TileMapState::instance.RandomLayer[(*paiVar4)[0] + tile] & 3))) {
                             x = tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
                             BVar2 = MACRO_CALL_MEMBER(
                                 Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
@@ -45,7 +45,7 @@ namespace Map {
                                 iVar3 = MACRO_CALL_MEMBER(
                                     Map::Units::TroopValueState_Func::getSupportPointIndex, this)(tile);
                                 iVar1 = this->attackInfo.supportPointsNext;
-                                if (iVar3 == 0) {
+                                if (!iVar3) {
                                     this->attackInfo.supportPointsArray[this->attackInfo.supportPointsNext].x = x;
                                     this->attackInfo.supportPointsArray[iVar1].y = y;
                                     this->attackInfo.supportPointsArray[iVar1].tile = tile;

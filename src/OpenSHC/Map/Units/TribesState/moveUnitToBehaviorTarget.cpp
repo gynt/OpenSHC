@@ -57,14 +57,14 @@ namespace Map {
                 iVar4 = MACRO_CALL_MEMBER(
                     Map::Units::TroopValueState_Func::findEnemyWalls, DAT_TroopValueState::ptr)(unitID);
             LAB_0052130b:
-                if (iVar4 == 0)
+                if (!iVar4)
                     goto LAB_0052143b;
                 local_c = DAT_TroopValueState::instance.y;
             } else if (param_2 == 0x3f5) {
                 iVar4 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findEnemyBuildingsClosestToUnit,
                     DAT_TroopValueState::ptr)(unitID);
             LAB_00521333:
-                if (iVar4 == 0)
+                if (!iVar4)
                     goto LAB_0052143b;
                 local_c = DAT_TroopValueState::instance.y;
             } else {
@@ -72,10 +72,10 @@ namespace Map {
                     iVar4 = MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::calculateTile2PeoplValueClosestToUnit,
                         DAT_TroopValueState::ptr)(unitID);
-                    if (iVar4 == 0) {
+                    if (!iVar4) {
                         iVar4 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findEnemyWalls,
                             DAT_TroopValueState::ptr)(unitID);
-                        if (iVar4 == 0)
+                        if (!iVar4)
                             goto LAB_0052143b;
                         if (DAT_TribesState::instance.tribes[sVar1].selectionTargetUnitID == unitID) {
                             DAT_TribesState::instance.tribes[sVar1].tribeBehaviorType = Map::Units::STBT_0x3f2;
@@ -112,7 +112,7 @@ namespace Map {
                             = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::findNearestDiggableMoatPoint,
                                 DAT_TroopValueState::ptr)(unitID);
                     }
-                    if (iVar4 == 0)
+                    if (!iVar4)
                         goto LAB_0052143b;
                 }
                 local_c = DAT_TroopValueState::instance.y;
@@ -139,7 +139,7 @@ namespace Map {
             }
             iVar4 = MACRO_CALL_MEMBER(
                 Map::Units::UnitsState_Func::stopUnitIfNextToTarget, DAT_UnitsState::ptr)(unitID);
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
                     unitID, x, local_c, 0);
             }

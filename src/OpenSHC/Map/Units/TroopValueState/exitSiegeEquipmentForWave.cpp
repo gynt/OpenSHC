@@ -30,7 +30,7 @@ namespace Map {
             _tribeID = 1;
             _tribe = &DAT_TribesState::instance.tribes[1];
             do {
-                if ((((_tribe->tribeState != 0) && (_tribe->attackWave == wave))
+                if ((((_tribe->tribeState) && (_tribe->attackWave == wave))
                         && ((AVar1 = _tribe->tribeType,
                             AVar1 == ((AITribeType)0x13)
                                 || ((((AVar1 == ((AITribeType)0x14) || (AVar1 == ((AITribeType)0x15)))

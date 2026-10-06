@@ -57,7 +57,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
                     DAT_ButtonX::instance + -0x6e, iVar1, local_4, iVar8, (iVar4 / 32) + 0x20);
-                if (DAT_ButtonBackgroundBlendStrength::instance == 0) {
+                if (!DAT_ButtonBackgroundBlendStrength::instance) {
                     local_4 = iVar7 + -0x6f;
                     MACRO_CALL_MEMBER(
                         UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(local_4,
@@ -82,7 +82,7 @@ namespace UI {
                         DAT_PencilRenderCore::ptr)(local_4, iVar8 + -0x14, iVar6, iVar8 + -0x14,
                         (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
                 }
-                if ((DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber != 0)
+                if ((DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1)) {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(iVar2 + 7, DAT_ButtonH::instance + 0x79 + iVar2);
@@ -105,7 +105,7 @@ namespace UI {
                         "-", iVar7 + -0x5e, (iVar2 - DAT_00b960f4::instance) + -8, Text::TTA_LEFT, 0xc2f0eb,
                         0x13, TRUE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    if (DAT_GameCore::instance.savedMapBalance == 0) {
+                    if (!DAT_GameCore::instance.savedMapBalance) {
                         iVar8 = 0x19b;
                     } else {
                         iVar8 = 0x19c;
@@ -114,8 +114,8 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, iVar8, iVar7 + -0x58,
                         (iVar2 - DAT_00b960f4::instance) + -8, Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE,
                         (iVar6 / 32) + 0x20);
-                    if (DAT_GameCore::instance.mapDescUseStringTable != 0) {
-                        if (DAT_GameCore::instance.mapDescUseStringTableIndex != 0) {
+                    if (DAT_GameCore::instance.mapDescUseStringTable) {
+                        if (DAT_GameCore::instance.mapDescUseStringTableIndex) {
                             iVar7 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineTextUnk,
                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES,

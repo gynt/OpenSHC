@@ -74,7 +74,7 @@ namespace UI {
                     _textAddress, _xPos, _yParam, alignment, _color, _fontSIze, _keepOffsetX, _blendStrength);
             }
             _currentTime = timeGetTime();
-            if (DAT_IntroTransitionStep::instance == 0) {
+            if (!DAT_IntroTransitionStep::instance) {
                 DAT_IntroBlendStrength::instance = (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14;
                 if (DAT_IntroBlendStrength::instance < 0x20)
                     goto LAB_0042496a;
@@ -96,7 +96,7 @@ namespace UI {
             } else if ((DAT_IntroTransitionStep::instance == 2)
                 && (DAT_IntroBlendStrength::instance = 0x20 - (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14,
                     DAT_IntroBlendStrength::instance < 1)) {
-                if (DAT_IntroStep::instance == 0) {
+                if (!DAT_IntroStep::instance) {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;
                     DAT_IntroStep::instance = 1;

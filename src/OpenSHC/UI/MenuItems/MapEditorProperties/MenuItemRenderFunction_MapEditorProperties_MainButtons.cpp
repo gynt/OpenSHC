@@ -56,17 +56,17 @@ namespace UI {
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 if (param_1 == 0x19) {
                     if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {}
-                    if (DAT_GameCore::instance.field115_0x1d98 == 0) {}
+                    if (!DAT_GameCore::instance.field115_0x1d98) {}
                 } else if (param_1 == 5) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                if ((DAT_GameCore::instance.U2_mapType_singleOrMulti == 0)
+                if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
                     && (((param_1 == 9 || (param_1 == -1)) || (param_1 == -2)))) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
                 if (param_1 == 9) {
-                    if (DAT_GameCore::instance.unknownAlwaysZero03 != 0) {
+                    if (DAT_GameCore::instance.unknownAlwaysZero03) {
                         param_1 = 0x20;
                     }
                     iVar3 = 0x12;
@@ -76,7 +76,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {
                         DAT_ButtonUnknownZero::instance = 0;
-                        if (DAT_GameCore::instance.mapU4Int3_balanced == 0) {
+                        if (!DAT_GameCore::instance.mapU4Int3_balanced) {
                             bVar4 = param_1 == -3;
                         } else {
                             bVar4 = param_1 == -4;
@@ -107,10 +107,10 @@ namespace UI {
                     }
                 } else if (param_1 + 6U < 2) {
                     DAT_ButtonUnknownZero::instance = 1;
-                    if ((DAT_GameCore::instance.U2_mapType_singleOrMulti == 0)
+                    if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
                         && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION)) {
                         DAT_ButtonUnknownZero::instance = 0;
-                        if (DAT_GameCore::instance.mapU3EndInt == 0) {
+                        if (!DAT_GameCore::instance.mapU3EndInt) {
                             bVar4 = param_1 == -5;
                         } else {
                             bVar4 = param_1 == -6;

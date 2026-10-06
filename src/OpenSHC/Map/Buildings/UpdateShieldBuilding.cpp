@@ -84,7 +84,7 @@ namespace Map {
                 iVar11 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(playerID);
                 iVar8 = DAT_CurrentBuildingID::instance;
-                if (iVar11 == 0) {
+                if (!iVar11) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
@@ -106,7 +106,7 @@ namespace Map {
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar8].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[iVar8].terrainHeightUnk)),
                 Map::Units::UT_S_SHIELD);
-            if (iVar8 == 0) {
+            if (!iVar8) {
                 piVar13 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingProgress;
                 *piVar13 = *piVar13
                     - (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount;
@@ -118,7 +118,7 @@ namespace Map {
                     psVar9 = psVar9 + 1;
                     iVar12 = iVar12 + -1;
                     DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
-                } while (iVar12 != 0);
+                } while (iVar12);
             } else {
                 uVar14 = (int)SEC_RNG::instance.currentNumber2 & 0x8000000f;
                 if ((int)uVar14 < 0) {
@@ -217,7 +217,7 @@ namespace Map {
                     piVar13 = piVar13 + 1;
                     piVar15 = piVar15 + 1;
                     local_c = local_c + -1;
-                } while (local_c != 0);
+                } while (local_c);
             }
             iVar12 = DAT_CurrentBuildingID::instance;
             bVar16 = DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU;

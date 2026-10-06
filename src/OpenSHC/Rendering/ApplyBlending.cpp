@@ -38,7 +38,7 @@ void Rendering::ApplyBlending(int param_1)
     int* local_8;
     pvVar4 = DAT_TextureRenderCoreObject::instance.gmProcessedImageData;
     uVar12 = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + DAT_RenderMap_DrawSomeY::instance;
-    if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
+    if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
         local_8 = DAT_BlendingDefinedData::instance.field164_0x27fc;
         if ((DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)uVar12)
             && ((int)uVar12 < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)) {
@@ -69,7 +69,7 @@ void Rendering::ApplyBlending(int param_1)
                     puVar8 = puVar8 + 1;
                     local_8 = local_8 + 1;
                     sVar11 = sVar11 + -1;
-                } while (sVar11 != 0);
+                } while (sVar11);
             }
             puVar13 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
                 + uVar12 * 0xfd8;
@@ -90,7 +90,7 @@ void Rendering::ApplyBlending(int param_1)
                 puVar8 = puVar8 + 1;
                 local_8 = local_8 + 1;
                 sVar11 = sVar11 + -1;
-            } while (sVar11 != 0);
+            } while (sVar11);
         }
     } else {
         local_8 = DAT_BlendingDefinedData::instance.field166_0x2dfc;
@@ -105,7 +105,7 @@ void Rendering::ApplyBlending(int param_1)
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_555) {
                 puVar14 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                     + (uVar12 >> 1) * 0x1fb0 + (DAT_RenderMap_DrawSomeX::instance & 0xfffffffe));
-                if ((uVar12 & 1) == 0) {
+                if (!(uVar12 & 1)) {
                     local_8 = DAT_BlendingDefinedData::instance.field165_0x2bfc;
                 }
                 sVar11 = 0x40;
@@ -124,11 +124,11 @@ void Rendering::ApplyBlending(int param_1)
                     *(ushort*)(puVar14 + iVar3) = *(short*)(puVar14 + iVar3) + (uVar6 & 0x3ff | uVar5);
                     local_8 = local_8 + 2;
                     sVar11 = sVar11 + -1;
-                } while (sVar11 != 0);
+                } while (sVar11);
             }
             puVar14 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                 + (uVar12 >> 1) * 0x1fb0 + (DAT_RenderMap_DrawSomeX::instance & 0xfffffffe));
-            if ((uVar12 & 1) == 0) {
+            if (!(uVar12 & 1)) {
                 local_8 = DAT_BlendingDefinedData::instance.field165_0x2bfc;
             }
             sVar11 = 0x40;
@@ -146,7 +146,7 @@ void Rendering::ApplyBlending(int param_1)
                 *(ushort*)(puVar14 + iVar3) = *(short*)(puVar14 + iVar3) + (uVar6 & 0x7ff | uVar5);
                 local_8 = local_8 + 2;
                 sVar11 = sVar11 + -1;
-            } while (sVar11 != 0);
+            } while (sVar11);
         }
     }
 }

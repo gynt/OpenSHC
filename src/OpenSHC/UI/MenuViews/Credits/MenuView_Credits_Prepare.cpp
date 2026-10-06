@@ -27,7 +27,7 @@ namespace UI {
             int iVar1;
             char* tgxFileName;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            if (DAT_00b95954::instance == 0) {
+            if (!DAT_00b95954::instance) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("credits_1.tgx");
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,

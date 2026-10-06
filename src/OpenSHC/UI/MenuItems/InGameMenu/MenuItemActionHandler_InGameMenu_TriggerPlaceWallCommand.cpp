@@ -32,17 +32,14 @@ namespace UI {
         {
             UI::TextMessageBLLookupStructUnion _noBlLookup;
             _noBlLookup.buildingType = (Commands::MappersEnum)0;
-            if ((((DAT_GameSynchronyState::instance.syncStatus == 0)
-                     && (DAT_GameSynchronyState::instance.saveRelated == 0))
+            if ((((!DAT_GameSynchronyState::instance.syncStatus) && (!DAT_GameSynchronyState::instance.saveRelated))
                     && ((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_WALL
                         || (((DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_WOODWALL
-                                 || (DAT_TileMapState::instance.currentMapperCommand
-                                     == Commands::M_MAPPER_STAIR))
-                            || (DAT_TileMapState::instance.currentMapperCommand
-                                == Commands::M_MAPPER_CRENAL))))))
-                && (DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0)) {
+                                 || (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_STAIR))
+                            || (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_CRENAL))))))
+                && (DAT_ViewportRenderState::instance.viewportState.field0_0x0)) {
                 DAT_MouseState::instance.field68_0x1dc = 1000;
-                if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
+                if (!DAT_TileMapState::instance.flatViewToggleValue1) {
                     /*
                       set up currently hovering x and y
                      */
@@ -52,7 +49,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupMouseTileXY2,
                         DAT_ViewportRenderState::ptr)();
                 }
-                if (DAT_MouseState::instance.leftClickStart == 0) {
+                if (!DAT_MouseState::instance.leftClickStart) {
                     if ((DAT_MouseState::instance.draggingStopped == FALSE)
                         && (DAT_MouseState::instance.leftClickState == FALSE)) {
                         if (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE) {}

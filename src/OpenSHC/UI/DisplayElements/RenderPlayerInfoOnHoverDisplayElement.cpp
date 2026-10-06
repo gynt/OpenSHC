@@ -68,10 +68,10 @@ namespace UI {
                 posY = posY + -0x14;
             }
         }
-        if ((DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID == 0)
-            || (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0)) {
-            if ((DAT_ViewportRenderState::instance.viewportState.field21_0x54 != 0)
-                && (((DAT_ViewportRenderState::instance.viewportState.field0_0x0 != 0
+        if ((!DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID)
+            || (!DAT_ViewportRenderState::instance.viewportState.field0_0x0)) {
+            if ((DAT_ViewportRenderState::instance.viewportState.field21_0x54)
+                && (((DAT_ViewportRenderState::instance.viewportState.field0_0x0
                          && (iVar3
                              = (DAT_TileMapState::instance
                                        .WallOwnerLayer[DAT_ViewportRenderState::instance.viewportState.field21_0x54]
@@ -86,7 +86,7 @@ namespace UI {
             if (_buildingType == Map::Buildings::BT_PITCHDITCH) {}
             if (_buildingType == Map::Buildings::BT_KILLINGPIT) {}
             if (_buildingType == Map::Buildings::BT_SIGNPOST) {}
-            if ((DAT_GameCore::instance.mapU4Int0 != 0)
+            if ((DAT_GameCore::instance.mapU4Int0)
                 && (DAT_BuildingsState::instance
                         .buildings[DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID]
                         .owner
@@ -100,8 +100,8 @@ namespace UI {
             DAT_00df5530::instance = 0;
         }
         blendStrength = 0;
-        if (iVar3 == 0) {
-            if (DAT_00df5530::instance != 0) {
+        if (!iVar3) {
+            if (DAT_00df5530::instance) {
                 DVar1 = timeGetTime();
                 uVar2 = DVar1 - INT_00df552c::instance;
                 if (uVar2 < 0x2d0) {
@@ -118,7 +118,7 @@ namespace UI {
         }
         if ((DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU)
             && (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)) {
-            if (DAT_00df5530::instance == 0) {}
+            if (!DAT_00df5530::instance) {}
             MACRO_CALL_MEMBER(
                 Text::TextManager_Func::computeTextWidthForTextGroup, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, DAT_00df5530::instance + 0xcc, 0x10);
@@ -126,10 +126,10 @@ namespace UI {
                 DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, DAT_00df5530::instance + 0xcc, posX, posY + -0x14,
                 Text::TTA_CENTER, 0xc2f0eb, 0, 0x10, FALSE);
         }
-        if (DAT_00df5530::instance == 0) {}
+        if (!DAT_00df5530::instance) {}
         iVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
             DAT_GameSynchronyState::instance.DAT_PlayerNames[DAT_00df5530::instance], 0x10);
-        if (blendStrength != 0) {
+        if (blendStrength) {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.DAT_PlayerNames[DAT_00df5530::instance], posX + 0x28, posY,
                 Text::TTA_CENTER, 0xc2f0eb, 0, 0x10, FALSE, (int)((int)(blendStrength)));
@@ -142,7 +142,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                 DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_2,
                 DAT_00df5530::instance + 0x222, iVar3, iVar5, (int)((int)(blendStrength)));
-            if (iVar4 == 0) {
+            if (!iVar4) {
                 if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
                     iVar4 = 0x21b;
                 } else {
@@ -183,7 +183,7 @@ namespace UI {
         iVar5 = posY + -0x26;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             DE::SHCDE::GM_INTERFACE_ICONS2, DAT_00df5530::instance + 0x222, iVar3, iVar5);
-        if (iVar4 == 0) {
+        if (!iVar4) {
             if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
                 iVar4 = 0x21b;
             } else {

@@ -16,7 +16,7 @@ namespace Rendering {
         {
             DWORD _currentSysTime;
             if ((DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE)
-                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)) {
+                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                 this->soundStreamIndex[binkObjIndex] = soundStreamIndexUnk;
                 _currentSysTime = timeGetTime();
                 this->startTime[binkObjIndex] = _currentSysTime;

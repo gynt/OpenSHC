@@ -72,7 +72,7 @@ void Rendering::ProcessCreditsScriptCommands()
                     goto LAB_004e0b74;
                 iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].field6_0x18;
             LAB_004e0b8e:
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     DAT_UnknownBinkIndex::instance = iVar9 + 1;
                     iVar10 = DAT_UnknownBinkIndex::instance;
                 }
@@ -289,7 +289,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 }
                 pCVar4 = DAT_ARRAY_00ec0348::instance;
                 do {
-                    if (pCVar4->isValid != 0) {
+                    if (pCVar4->isValid) {
                         pCVar4->isValid = 0;
                     }
                     pCVar4 = pCVar4 + 1;

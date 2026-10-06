@@ -159,11 +159,11 @@ namespace Map {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .playerDeathRelated
                         == 0) {
-                        if ((this->SEC_Section1081 != 0) && (0 < this->SEC_Section1080)) {
+                        if ((this->SEC_Section1081) && (0 < this->SEC_Section1080)) {
                             this->SEC_Section1080 = this->SEC_Section1080 + -1;
                         }
                         if (DAT_GameState::instance.mapAndTime.startOfDay != FALSE) {
-                            if (DAT_GameCore::instance.unknownAlwaysZero != 0) {
+                            if (DAT_GameCore::instance.unknownAlwaysZero) {
                                 DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .playerDeathRelated = 1;
@@ -209,7 +209,7 @@ namespace Map {
                             if ((((DAT_GameState::instance.mapAndTime.month == this->SEC_StartingMonth)
                                      && (DAT_GameState::instance.mapAndTime.year == this->SEC_StartingYear + 1))
                                     && (DAT_GameState::instance.gameTicksLoadBalancer == 1))
-                                && ((DAT_GameState::instance.mapAndTime.week == 0
+                                && ((!DAT_GameState::instance.mapAndTime.week
                                     && (bVar23 = false, 0 < this->eventsCount)))) {
                                 _pConditionIsMet = &this->scenarioEvents[0].data.scenario.ScenarioEventType;
                                 iVar18 = this->eventsCount;
@@ -219,7 +219,7 @@ namespace Map {
                                     }
                                     _pConditionIsMet = _pConditionIsMet + 0x39;
                                     iVar18 = iVar18 + -1;
-                                } while (iVar18 != 0);
+                                } while (iVar18);
                                 if (bVar23) {
                                     /*
                                       if a fire warning event
@@ -310,7 +310,7 @@ namespace Map {
                                              */
                                             iVar18 = *(
                                                 int*)((int)&this->scenarioEvents[_eventIndex].data + _subIndex * 4 + 4);
-                                            if (iVar18 == 0)
+                                            if (!iVar18)
                                                 goto LAB_004c5db4;
                                             _unitAIBehaviourTypeUnk = 0;
                                             _unitType = ((UnitType)0);
@@ -424,7 +424,7 @@ namespace Map {
                                             _unitSpawnTotalAdjustment = 10;
                                         switchD_004c5b0c_default:
                                             _invasionAmplifier = 100;
-                                            if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+                                            if (!DAT_GameState::instance.mapAndTime.difficulty) {
                                                 _invasionAmplifier = 50;
                                             } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
                                                 _invasionAmplifier = 140;
@@ -505,12 +505,12 @@ namespace Map {
                                             DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                             DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y);
                                         DAT_TroopValueState::instance.attackInfo.inv_count = local_80;
-                                        if ((DAT_GameCore::instance.section1076 == 0)
+                                        if ((!DAT_GameCore::instance.section1076)
                                             && (_crusaderOrArabian
                                                 = this->scenarioEvents[_eventIndex].data.invasion.crusaderArabian,
                                                 local_70[_crusaderOrArabian] == 0)) {
                                             local_70[_crusaderOrArabian] = 1;
-                                            if (_crusaderOrArabian == 0) {
+                                            if (!_crusaderOrArabian) {
                                                 pcVar25 = "infidel_attack.wav";
                                                 pcVar10 = "sultan_nervous.bik";
                                             LAB_004c5e44:
@@ -546,7 +546,7 @@ namespace Map {
                                             }
                                         }
                                         _repeatMonths = this->scenarioEvents[_eventIndex].data.invasion.repeatMonths;
-                                        if (_repeatMonths == 0) {
+                                        if (!_repeatMonths) {
                                             this->scenarioEvents[_eventIndex].header.done = 1;
                                         } else {
                                             _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
@@ -573,7 +573,7 @@ namespace Map {
                                     if (_eventType != 3)
                                         goto LAB_004c5f28;
                                     iVar18 = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
-                                    if ((iVar18 == 0) || (iVar18 == 0x1a)) {
+                                    if ((!iVar18) || (iVar18 == 0x1a)) {
                                         if (_previousScenarioEventIndex != -1) {
                                             this->scenarioEvents[_previousScenarioEventIndex].header.done = 1;
                                         }
@@ -622,7 +622,7 @@ namespace Map {
                                                          .playerDataArray[DAT_GameSynchronyState::instance
                                                                  .currentPlayerSlotID]
                                                          .lordKilledByPlayerID;
-                                            if (iVar18 == 0)
+                                            if (!iVar18)
                                                 break;
                                             cVar17 = *(char*)((int)&this->scenarioEvents[_eventIndex].data
                                                 + _conditionOffset + 0xe);
@@ -797,7 +797,7 @@ namespace Map {
                                                 == 0) {
                                                 _scenarioEventType
                                                     = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
-                                                if (((_scenarioEventType == 0x1a) || (_scenarioEventType == 0))
+                                                if (((_scenarioEventType == 0x1a) || (!_scenarioEventType))
                                                     || (_scenarioEventType == 0x17)) {
                                                     iVar18 = _eventIndex + 1;
                                                     if (iVar18 < this->eventsCount) {
@@ -844,8 +844,8 @@ namespace Map {
                                                 }
                                                 pUVar12 = pUVar12 + 0x248;
                                                 iVar22 = iVar22 + -1;
-                                            } while (iVar22 != 0);
-                                            if (iVar18 != 0)
+                                            } while (iVar22);
+                                            if (iVar18)
                                                 goto LAB_004c37cd;
                                             *_pConditionIsMet = 1;
                                             local_a0 = local_a0 + 1;
@@ -889,8 +889,8 @@ namespace Map {
                                                 }
                                                 pUVar12 = pUVar12 + 0x248;
                                                 iVar22 = iVar22 + -1;
-                                            } while (iVar22 != 0);
-                                            if (iVar18 != 0)
+                                            } while (iVar22);
+                                            if (iVar18)
                                                 goto LAB_004c37cd;
                                             *_pConditionIsMet = 1;
                                             local_a0 = local_a0 + 1;
@@ -1014,7 +1014,7 @@ namespace Map {
                                                     }
                                                     pBVar13 = pBVar13 + 0x196;
                                                     iVar22 = iVar22 + -1;
-                                                } while (iVar22 != 0);
+                                                } while (iVar22);
                                                 bVar24 = (iVar18 < 4);
                                                 bVar23 = iVar18 + -4 < 0;
                                                 goto LAB_004c3fc7;
@@ -1036,7 +1036,7 @@ namespace Map {
                                                     }
                                                     pBVar13 = pBVar13 + 0x196;
                                                     iVar22 = iVar22 + -1;
-                                                } while (iVar22 != 0);
+                                                } while (iVar22);
                                                 bVar24 = (iVar18 < 2);
                                                 bVar23 = iVar18 + -2 < 0;
                                                 goto LAB_004c3fc7;
@@ -1097,7 +1097,7 @@ namespace Map {
                                                 MACRO_CALL(UI::DisplayElements_Func::
                                                         CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                                     UI::Enums::DEID_TIME_UNTIL_VICTORY, 1);
-                                                if (this->SEC_Section1081 == 0) {
+                                                if (!this->SEC_Section1081) {
                                                     this->SEC_Section1080
                                                         = *(short*)((int)&this->scenarioEvents[_eventIndex].data + 0xa8)
                                                         * 800;
@@ -1109,7 +1109,7 @@ namespace Map {
                                                     local_a0 = local_a0 + 1;
                                                 }
                                             } else {
-                                                if (this->SEC_Section1081 != 0) {
+                                                if (this->SEC_Section1081) {
                                                     MACRO_CALL(UI::DisplayElements_Func::
                                                             CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                                         UI::Enums::DEID_TIME_UNTIL_VICTORY, 0);
@@ -1121,7 +1121,7 @@ namespace Map {
                                         _spawnUnitCount = _counter;
                                     }
                                     if (((*(short*)((int)&this->scenarioEvents[_eventIndex].data + 8) != 0)
-                                            || (local_a0 == 0))
+                                            || (!local_a0))
                                         && (local_a0 < _spawnUnitCount))
                                         goto LAB_004c5f28;
                                     iVar18 = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
@@ -1294,7 +1294,7 @@ namespace Map {
                                         break;
                                     case 4:
                                         iVar18 = this->scenarioEvents[_eventIndex].data.scenario.actionData;
-                                        if (iVar18 == 0) {
+                                        if (!iVar18) {
                                             iVar18 = 1;
                                         }
                                         MACRO_CALL_MEMBER(
@@ -1412,7 +1412,7 @@ namespace Map {
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1497,7 +1497,7 @@ namespace Map {
                                             = DAT_GameState::instance
                                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                   .lordID;
-                                        if ((iVar18 == 0)
+                                        if ((!iVar18)
                                             || (DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
                                                             .currentPlayerSlotID]
@@ -1541,7 +1541,7 @@ namespace Map {
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1574,7 +1574,7 @@ namespace Map {
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_WHEATFARM);
-                                        if (iVar18 != 0) {
+                                        if (iVar18) {
                                             MACRO_CALL_MEMBER(
                                                 Map::Buildings::BuildingsState_Func::harmWheatFarmsOfPlayer,
                                                 DAT_BuildingsState::ptr)(
@@ -1592,7 +1592,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1625,7 +1625,7 @@ namespace Map {
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_HOPFARM);
-                                        if (iVar18 != 0) {
+                                        if (iVar18) {
                                             MACRO_CALL_MEMBER(
                                                 Map::Buildings::BuildingsState_Func::harmHopFarmsOfPlayer,
                                                 DAT_BuildingsState::ptr)(
@@ -1644,7 +1644,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1677,7 +1677,7 @@ namespace Map {
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_APPLEFARM);
-                                        if (iVar18 != 0) {
+                                        if (iVar18) {
                                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
                                                                   harmAppleFarmTreesOfPlayer,
                                                 DAT_BuildingsState::ptr)(
@@ -1701,7 +1701,7 @@ namespace Map {
                                                 "");
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1744,7 +1744,7 @@ namespace Map {
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1775,17 +1775,15 @@ namespace Map {
                                         iVar18 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::
                                                                        hasAvailableSpawnSlotForWildlifeOrMercs,
                                             DAT_TribesState::ptr)();
-                                        if ((iVar18 != 0)
-                                            && ((iVar18
-                                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
-                                                                        findBuildingOfTypeForPlayer,
-                                                    DAT_BuildingsState::ptr)(
-                                                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                                    Map::Buildings::BT_HOPFARM),
+                                        if ((iVar18)
+                                            && ((iVar18 = MACRO_CALL_MEMBER(
+                                                     Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
+                                                     DAT_BuildingsState::ptr)(
+                                                     DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                                     Map::Buildings::BT_HOPFARM),
                                                 iVar18 != 0
-                                                    || (iVar18 = MACRO_CALL_MEMBER(
-                                                            Map::Buildings::BuildingsState_Func::
-                                                                findBuildingOfTypeForPlayer,
+                                                    || (iVar18 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
+                                                                                       findBuildingOfTypeForPlayer,
                                                             DAT_BuildingsState::ptr)(
                                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                             Map::Buildings::BT_WHEATFARM),
@@ -1811,7 +1809,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1842,9 +1840,9 @@ namespace Map {
                                         iVar18 = MACRO_CALL_MEMBER(
                                             Map::Units::TribesState_Func::findRecentOrSignpostSpawnLocation,
                                             DAT_TribesState::ptr)(&uStack_78, &uStack_7c);
-                                        if ((iVar18 != 0)
-                                            && (BVar11 = MACRO_CALL_MEMBER(
-                                                    Rendering::ViewportRenderState_Func::xyAreValid,
+                                        if ((iVar18)
+                                            && (BVar11
+                                                = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                                     DAT_ViewportRenderState::ptr)(uStack_78, uStack_7c),
                                                 iVar18 = DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                 BVar11 != FALSE)) {
@@ -1894,7 +1892,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar25, pcVar27);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -1981,7 +1979,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -2014,7 +2012,7 @@ namespace Map {
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_DAIRYFARM);
-                                        if (iVar18 != 0) {
+                                        if (iVar18) {
                                             MACRO_CALL_MEMBER(
                                                 Map::Units::UnitsState_Func::setRandomNumberOnCows,
                                                 DAT_UnitsState::ptr)(
@@ -2042,7 +2040,7 @@ namespace Map {
                                                 "");
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -2187,7 +2185,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -2404,7 +2402,7 @@ namespace Map {
                                                 DAT_VideoBikQueue::ptr)(pcVar25, pcVar26, pcVar10);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -2444,13 +2442,13 @@ namespace Map {
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_WELL);
-                                        if (iVar18 == 0) {
+                                        if (!iVar18) {
                                             iVar18 = MACRO_CALL_MEMBER(
                                                 Map::Buildings::BuildingsState_Func::findFirstBuildingOfType,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                 Map::Buildings::BT_WATERPOT);
-                                            if (iVar18 == 0) {
+                                            if (!iVar18) {
                                                 iVar18 = 0x11;
                                             } else {
                                                 iVar18 = 0xf;
@@ -2471,7 +2469,7 @@ namespace Map {
                                             Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
-                                        if ((bVar4 == 0)
+                                        if ((!bVar4)
                                             || (bVar5 = this->scenarioEvents[_eventIndex].data.scenario.repeatMonths,
                                                 bVar5 == 1))
                                             goto switchD_004c382e_caseD_2;
@@ -2522,7 +2520,7 @@ namespace Map {
                                 psVar21 = &this->scenarioEvents[0];
                                 do {
                                     if ((((local_88 == psVar21->header.year) && (iVar18 == psVar21->header.month))
-                                            && ((psVar21->header.pre_done == 0
+                                            && ((!psVar21->header.pre_done
                                                 && ((iVar22 = psVar21->header.tl_type, psVar21->header.pre_done = 1,
                                                     iVar22 == 1
                                                         && (DAT_GameState::instance.mapAndTime.field3171_0x27a8 = 1,
@@ -2538,7 +2536,7 @@ namespace Map {
                                                 + _pConditionIsMet[-1] + _pConditionIsMet[1] + *_pConditionIsMet;
                                             iVar21 = iVar21 + -1;
                                             _pConditionIsMet = _pConditionIsMet + 5;
-                                        } while (iVar21 != 0);
+                                        } while (iVar21);
                                         if (0x18 < iVar20) {
                                             if (iVar20 < 0x4b) {
                                                 numInGroup = iVar1 + 2;
@@ -2549,7 +2547,7 @@ namespace Map {
                                             }
                                         }
                                         local_70[iVar22] = 1;
-                                        if (iVar22 == 0) {
+                                        if (!iVar22) {
                                             pcVar26 = (&DAT_MissionAestheticsDefinedData::instance
                                                     .field59_0xec)[numInGroup];
                                             pcVar10 = "good_arab_nervous.bik";
@@ -2597,11 +2595,11 @@ namespace Map {
                         }
                     } else {
                         if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
-                            && (DAT_VideoBikQueue::instance.storedMessages_0x924 == 0)) {
+                            && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
                             DAT_GameState::instance.mapAndTime.unknownCountdown01
                                 = DAT_GameState::instance.mapAndTime.unknownCountdown01 + -1;
                         }
-                        if (DAT_GameState::instance.mapAndTime.unknownCountdown01 == 0) {
+                        if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
                             DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
                             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
@@ -2638,7 +2636,7 @@ namespace Map {
                             }
                             if (DAT_GameCore::instance.gameMode_2 != Game::GM_ECONOMIC_CAMPAIGN_SH1) {
                                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk) {
-                                    if (DAT_GameCore::instance.field24_0x6c != 0) {
+                                    if (DAT_GameCore::instance.field24_0x6c) {
                                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                                         MACRO_CALL(UI::MenuItems::General_Func::
                                                 MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);

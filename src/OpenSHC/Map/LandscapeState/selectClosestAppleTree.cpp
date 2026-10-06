@@ -41,7 +41,7 @@ namespace Map {
             if ((_minimumDistance < 30) && (0 < _selectedTreeID)) {
                 this->x = (int)(short)this->trees[_selectedTreeID].xPosition;
                 this->y = (int)(short)this->trees[_selectedTreeID].yPosition;
-                if (param_3 == 0) {
+                if (!param_3) {
                     this->x = this->x + -2;
                     return _selectedTreeID;
                 }

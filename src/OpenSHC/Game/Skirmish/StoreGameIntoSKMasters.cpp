@@ -37,7 +37,7 @@ namespace Game {
             _count = DAT_SkMasters2Data_Count::instance;
         }
         iVar6 = _count;
-        if (_count != 0) {
+        if (_count) {
             iVar2 = 0;
             if (0 < DAT_SkMasters2Data_Count::instance) {
                 piVar4 = &DAT_SkMasters2DataArray::instance[0].skMasterScore;

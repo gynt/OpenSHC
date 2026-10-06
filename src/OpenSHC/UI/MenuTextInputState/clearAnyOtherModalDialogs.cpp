@@ -23,14 +23,14 @@ namespace UI {
         DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
             this->DAT_SomeTextArrayIndex);
-        if (this->DAT_SomeTextArrayIndex != 0) {
+        if (this->DAT_SomeTextArrayIndex) {
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
         }
         this->currentModalDialog = UI::Enums::MMT_NO_MENU;
         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
             UI::Enums::MMT_NONE, TRUE);
         MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
-        if (this->field42_0x9c != 0) {
+        if (this->field42_0x9c) {
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;
         }

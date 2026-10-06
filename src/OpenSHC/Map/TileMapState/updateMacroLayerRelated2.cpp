@@ -57,7 +57,8 @@ namespace Map {
                                                     .addXgetTile
                                                 + this->DAT_SomeX,
                                             this->ChangedLayer[this->DAT_SomeTile] != 0
-                                                && ((this->LogicLayer[this->DAT_SomeTile] & Map::LogicHelpers::L_SEA) != 0)))) {
+                                                && ((this->LogicLayer[this->DAT_SomeTile]
+                                                    & Map::LogicHelpers::L_SEA))))) {
                                         this->MacroLayer[this->DAT_SomeTile] = 0x800;
                                     }
                                     uVar2 = this->DAT_SomeX + 1;
@@ -67,7 +68,8 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA))) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -82,7 +84,8 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA))) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -97,7 +100,8 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA))) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -112,7 +116,8 @@ namespace Map {
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
                                         if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1] & Map::LogicHelpers::L_SEA) != 0)) {
+                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA))) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -122,7 +127,7 @@ namespace Map {
                                     this->DAT_SomeX = uVar2;
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
                                     local_8 = local_8 + -1;
-                                } while (local_8 != 0);
+                                } while (local_8);
                                 iVar8 = iVar8 + 1;
                             } while (iVar8 < 10);
                             iVar7 = 0;
@@ -162,7 +167,8 @@ namespace Map {
                                                         .translationMatrix[this->DAT_SomeY]
                                                         .addXgetTile,
                                                 this->MacroLayer[this->DAT_SomeTile] == 0x800
-                                                    && ((this->LogicLayer[this->DAT_SomeTile] & Map::LogicHelpers::L_SEA) != 0)))))) {
+                                                    && ((this->LogicLayer[this->DAT_SomeTile]
+                                                        & Map::LogicHelpers::L_SEA))))))) {
                                         uVar4 = this->RandomLayer[this->DAT_SomeTile];
                                         _someX = this->DAT_SomeTile
                                             - DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
@@ -208,7 +214,7 @@ namespace Map {
                                 LAB_004ff539:
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
                                     local_8 = local_8 + -1;
-                                } while (local_8 != 0);
+                                } while (local_8);
                             }
                         }
                         local_c = local_c + 10;
@@ -305,7 +311,7 @@ namespace Map {
                                     this->DAT_SomeX = uVar2;
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
                                     local_8 = local_8 + -1;
-                                } while (local_8 != 0);
+                                } while (local_8);
                                 iVar8 = iVar8 + 1;
                             } while (iVar8 < 10);
                             iVar7 = 0;

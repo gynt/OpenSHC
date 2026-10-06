@@ -56,13 +56,13 @@ namespace UI {
             if (8 < DAT_GameCore::instance.numOfAIsWithCastleUnk) {
                 yPos = y + 0xba;
             }
-            if (DAT_MouseState::instance.rightClickStart != 0) {
+            if (DAT_MouseState::instance.rightClickStart) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
             }
             iVar1 = x + 0x18;
             iVar2 = 0;
-            if (DAT_LobbyAddAICurrentlyHoveredAI::instance == 0) {
+            if (!DAT_LobbyAddAICurrentlyHoveredAI::instance) {
                 maxWidth = 450;
                 iVar2 = 401;
             } else {

@@ -49,7 +49,7 @@ namespace UI {
                     iVar4 = iVar4 + local_c;
                     iVar6 = iVar6 + local_c;
                     local_4 = local_4 + -1;
-                } while (local_4 != 0);
+                } while (local_4);
                 local_10 = local_10 + 1;
                 local_c = local_c + 4;
                 local_8 = local_8 + 0x100;
@@ -70,7 +70,7 @@ namespace UI {
                 psVar3 = psVar3 + 4;
                 iVar4 = iVar4 + _someCounterUnk;
                 iVar6 = iVar6 + -1;
-            } while (iVar6 != 0);
+            } while (iVar6);
             _shortPtr = _shortPtr + 0x100;
             _someCounterUnk = _someCounterUnk + 1;
         } while ((int)_shortPtr < 0xd814da);

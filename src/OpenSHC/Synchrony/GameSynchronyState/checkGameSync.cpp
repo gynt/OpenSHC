@@ -21,7 +21,7 @@ namespace Synchrony {
         int _currentHash;
         _currentHash = 0;
         _currentMatchTime = 0;
-        if (this->DAT_HashCountdown == 0) {
+        if (!this->DAT_HashCountdown) {
             piVar1 = this->unknownPlayerInfo_03 + 1;
             this->DAT_GameHalted = 0;
             _playerID = 1;
@@ -35,7 +35,7 @@ namespace Synchrony {
                 _playerID = _playerID + 1;
                 piVar2 = piVar2 + 1;
             } while (_playerID < 9);
-            if ((this->isHost != FALSE) && (this->flag_0xbec == 0)) {
+            if ((this->isHost != FALSE) && (!this->flag_0xbec)) {
                 iVar3 = 1;
                 piVar2 = piVar1;
                 do {
@@ -60,7 +60,7 @@ namespace Synchrony {
                             /*
                               hash mismatch for same game time
                              */
-                            if (this->syncRelatedCountdown != 0) {
+                            if (this->syncRelatedCountdown) {
                                 this->syncRelatedCountdown = 0;
                                 this->commandDelay = 0x1e;
                             }

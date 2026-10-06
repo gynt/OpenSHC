@@ -109,7 +109,7 @@ namespace Map {
             this->attackInfo.tribeIDArraySize = 0;
             psVar1 = &DAT_TribesState::instance.tribes[1];
             do {
-                if (((((psVar1->tribeState != 0) && (psVar1->tribeState != 3))
+                if (((((psVar1->tribeState) && (psVar1->tribeState != 3))
                          && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[psVar1->owner] == -1))
                         && ((psVar1->attackWave == attackWave
                             && (psVar1->attackInfo_someCounter1 != this->attackInfo.someCounter1))))
@@ -199,7 +199,7 @@ namespace Map {
                         _index2 = _index2 + 1;
                     } while (_index2 < this->attackInfo.tribeIDArraySize + -1);
                     _index = this->attackInfo.tribeIDArraySize;
-                } while (_swapped != 0);
+                } while (_swapped);
                 _counter2 = 0;
                 if (0 < _index) {
                     do {

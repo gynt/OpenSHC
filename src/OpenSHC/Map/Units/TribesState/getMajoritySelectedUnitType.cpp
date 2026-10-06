@@ -36,15 +36,15 @@ namespace Map {
                     /*
                       bug: shouldn't this check if the unit is part of the tribe !? It checks for   being selected I see
                      */
-                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (!_pUnit->dying))
                             && (_pUnit->owner == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                        && ((_pUnit->isSelected != 0 && ((short)_pUnit->unitType < 0x50)))) {
+                        && ((_pUnit->isSelected && ((short)_pUnit->unitType < 0x50)))) {
                         *(int*)((int)_countOfUnitTypes + (short)_pUnit->unitType * 4)
                             = *(int*)((int)_countOfUnitTypes + (short)_pUnit->unitType * 4) + 1;
                     }
                     _pUnit = _pUnit + 0x248;
                     _countInclusive = _countInclusive + -1;
-                } while (_countInclusive != 0);
+                } while (_countInclusive);
             }
             _maximumTroopType = 0;
             _maximumCount = -1;

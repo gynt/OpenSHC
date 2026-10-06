@@ -31,7 +31,7 @@ namespace UI {
             int iVar2;
             int iVar3;
             dword dVar4;
-            if ((buildingID < 1) || (DAT_GameCore::instance.gamePausedLogical != 0)) {
+            if ((buildingID < 1) || (DAT_GameCore::instance.gamePausedLogical)) {
                 return FALSE;
             }
             sVar1 = DAT_BuildingsState::instance.buildings[buildingID].owner;
@@ -200,7 +200,7 @@ namespace UI {
                         ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].y)),
                         ((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)),
                         Map::Buildings::BT_GATEHOUSELARGE, 0);
-                    if (((iVar3 != 0)
+                    if (((iVar3)
                             || (iVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[buildingID].owner,
                                     ((int)((short)DAT_BuildingsState::instance.buildings[buildingID].x)),
@@ -340,9 +340,8 @@ namespace UI {
                     dVar4 = 0x2d;
                 }
             } else {
-                if ((sVar1 != 0)
-                    || (DAT_BuildingsState::instance.buildings[buildingID].buildingType
-                        != Map::Buildings::BT_STATUE)) {
+                if ((sVar1)
+                    || (DAT_BuildingsState::instance.buildings[buildingID].buildingType != Map::Buildings::BT_STATUE)) {
                     switch (DAT_BuildingsState::instance.buildings[buildingID].buildingType) {
                     case Map::Buildings::BT_HOVEL:
                     case Map::Buildings::BT_HOUSE:

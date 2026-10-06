@@ -14,7 +14,7 @@ namespace Map {
             int iVar1;
             int iVar2;
             short* psVar3;
-            if (param_2 == 0) {
+            if (!param_2) {
                 DAT_Tribe_HighestID::instance = (int)this->tribes[tribeID].highestID;
                 DAT_00ee0fb4::instance = 0;
             }
@@ -25,7 +25,7 @@ namespace Map {
                 do {
                     if ((*psVar3 != 0) && (iVar2 < 0x10)) {
                         do {
-                            if (((int)*psVar3 & 1 << ((byte)iVar2 & 0x1f)) != 0) {
+                            if (((int)*psVar3 & 1 << ((byte)iVar2 & 0x1f))) {
                                 DAT_00ee0fb4::instance = iVar2 + 1;
                                 if (iVar2 + 1 != 0x10) {
                                     DAT_Tribe_HighestID::instance = iVar1;

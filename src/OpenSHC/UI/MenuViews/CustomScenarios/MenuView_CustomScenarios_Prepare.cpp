@@ -45,7 +45,7 @@ namespace UI {
             DAT_GameCore::instance.field115_0x1d98 = 0;
             DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
             INT_00b960e4::instance = 0;
-            if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 0) {
+            if (!DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
             }
             DAT_GameSynchronyState::instance

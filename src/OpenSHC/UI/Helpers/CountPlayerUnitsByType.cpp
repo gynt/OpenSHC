@@ -29,7 +29,7 @@ namespace UI {
             _unit = &DAT_UnitsState::instance.units[1];
             do {
                 if ((((_unit->logicalState != Map::Units::ULS_INVISIBLE) && (_unit->owner == iVar1))
-                        && (_unit->isStalked == 0))
+                        && (!_unit->isStalked))
                     && ((_unitType = (UnitTypeInt)(short)_unit->unitType,
                         0 < (int)_unitType && (((int)_unitType < 66 || (70 < (int)_unitType)))))) {
                     DAT_UnitTypeRelatedCounter::instance[_unitType]
@@ -37,7 +37,7 @@ namespace UI {
                 }
                 _unit = _unit + 0x248;
                 iVar2 = iVar2 + -1;
-            } while (iVar2 != 0);
+            } while (iVar2);
         }
     }
 

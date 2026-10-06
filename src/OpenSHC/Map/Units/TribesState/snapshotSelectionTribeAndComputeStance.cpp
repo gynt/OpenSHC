@@ -43,7 +43,7 @@ namespace Map {
                 _tribeID_1 = -1;
                 do {
                     _tribeID_chosen = _tribeID_1;
-                    if (((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if (((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (!_pUnit->dying))
                              && (_pUnit->ifSelectedThenPlayerID == playerID))
                             && ((_unitTribeID = (int)_pUnit->tribeID,
                                 0 < _unitTribeID
@@ -59,7 +59,7 @@ namespace Map {
                     _pUnit = _pUnit + 0x248;
                     _unitIDCountdown = _unitIDCountdown + -1;
                     _tribeID_1 = _tribeID_chosen;
-                } while (_unitIDCountdown != 0);
+                } while (_unitIDCountdown);
                 _countAggressive = _stanceCount[2];
                 _countDefensive = _stanceCount[1];
                 _countStandground = _stanceCount[0];

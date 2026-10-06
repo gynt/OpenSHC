@@ -10,7 +10,7 @@ int Rendering::ViewportBasedTileNumber()
 {
     int iVar1;
     iVar1 = 8;
-    if (DAT_TileMapState::instance.mapOrientation != 0) {
+    if (DAT_TileMapState::instance.mapOrientation) {
         if (DAT_TileMapState::instance.mapOrientation == 6) {
             iVar1 = 80408;
         } else if (DAT_TileMapState::instance.mapOrientation == 4) {

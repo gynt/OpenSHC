@@ -11,7 +11,7 @@ namespace Map {
         switch (this->trees[param_1].treeType) {
         case ((TreeType)1):
             iVar1 = this->trees[param_1].stage;
-            if (iVar1 != 0) {
+            if (iVar1) {
                 if (iVar1 == 1) {
                     return (undefined4)(2);
                 }
@@ -25,7 +25,7 @@ namespace Map {
         case ((TreeType)3):
         case ((TreeType)4):
             iVar1 = this->trees[param_1].stage;
-            if ((iVar1 != 0) && (iVar1 != 1)) {
+            if ((iVar1) && (iVar1 != 1)) {
                 if (iVar1 != 2) {
                     return (undefined4)(3);
                 }

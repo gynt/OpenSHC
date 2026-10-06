@@ -125,7 +125,7 @@ namespace IO {
 
                         // Map.u2 size
                         MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &_size, sizeof(_size));
-                        if (_size != 0) {
+                        if (_size) {
                             MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor,
                                 &DAT_GameCore::instance.U2_mapType_singleOrMulti,
                                 sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti));

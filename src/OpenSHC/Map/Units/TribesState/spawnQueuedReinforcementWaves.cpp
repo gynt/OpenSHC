@@ -71,23 +71,23 @@ namespace Map {
                     pSVar8 = &DAT_GameState::instance.mapAndTime.siegeInformation;
                     do {
                         iVar3 = 100;
-                        if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+                        if (!DAT_GameState::instance.mapAndTime.difficulty) {
                             if (_playerID_2 == 1) {
                                 iVar3 = 0x43;
-                            } else if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
+                            } else if (!DAT_SH1_SiegeAdvancedMode::instance) {
                             LAB_005279a0:
                                 iVar3 = 167;
                             }
                         } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
                             if (_playerID_2 == 1) {
                                 iVar3 = 133;
-                            } else if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
+                            } else if (!DAT_SH1_SiegeAdvancedMode::instance) {
                                 iVar3 = 75;
                             }
                         } else if (DAT_GameState::instance.mapAndTime.difficulty == 3) {
                             if (_playerID_2 == 1)
                                 goto LAB_005279a0;
-                            if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
+                            if (!DAT_SH1_SiegeAdvancedMode::instance) {
                                 iVar3 = 50;
                             }
                         }
@@ -194,12 +194,12 @@ namespace Map {
                                 _newCount = DAT_GameState::instance.mapAndTime.startGoods[_siegeInfoSubIndex + 0x19];
                                 this->tribes[_tribeID1].unknownAttackRelatedUpdateCounter = 0x32;
                                 _destinationIndexTracker = _nextDestination;
-                            } while (_newCount != 0);
+                            } while (_newCount);
                         }
                         _siegeInfoSubIndex = _siegeInfoSubIndex + 1;
                         iVar3 = DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount;
                     } while (_siegeInfoSubIndex < 20);
-                    while (iVar3 != 0) {
+                    while (iVar3) {
                         iVar6 = iVar3;
                         if (9 < iVar3) {
                             iVar6 = 9;
@@ -360,9 +360,8 @@ namespace Map {
                             DAT_GameState::instance.mapAndTime.countUpTo201 = -1;
                         }
                     }
-                } else if ((DAT_GameSynchronyState::instance.currentGameMode
-                               == Game::GM_SKIRMISH_SINGLE_PLAYER)
-                    || (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0)) {
+                } else if ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)
+                    || (!DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
                     DAT_GameState::instance.mapAndTime.countUpTo201
                         = DAT_GameState::instance.mapAndTime.countUpTo201 + 1;
                     iVar3 = 200;

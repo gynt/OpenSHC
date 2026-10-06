@@ -22,12 +22,12 @@ namespace Map {
         PlayerData* piVar1;
         piVar1 = &DAT_GameState::instance.playerDataArray[1];
         do {
-            if ((piVar1->ladyIDUnk != 0)
+            if ((piVar1->ladyIDUnk)
                 && (piVar1->someUnitIDSelfRef != DAT_UnitsState::instance.units[piVar1->ladyIDUnk].uid)) {
                 piVar1->ladyIDUnk = 0;
                 piVar1->someUnitIDSelfRef = 0;
             }
-            if ((piVar1->jesterIDUnk != 0)
+            if ((piVar1->jesterIDUnk)
                 && (piVar1->someUnitIDSelfRef_2 != DAT_UnitsState::instance.units[piVar1->jesterIDUnk].uid)) {
                 piVar1->jesterIDUnk = 0;
                 piVar1->someUnitIDSelfRef_2 = 0;

@@ -21,7 +21,7 @@ namespace UI {
         {
             int _imageID;
             _imageID = 0x51;
-            if (isDownButtonUnk == 0) {
+            if (!isDownButtonUnk) {
                 _imageID = 0x55;
             }
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {

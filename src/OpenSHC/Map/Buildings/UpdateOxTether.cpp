@@ -83,7 +83,7 @@ namespace Map {
                     DAT_BuildingsState::ptr)(iVar6, 1, TRUE);
                 sVar2 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryX;
                 iVar6 = DAT_CurrentBuildingID::instance;
-                if ((sVar2 != 0)
+                if ((sVar2)
                     && (sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingEntryY,
                         sVar3 != 0)) {
                     iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
@@ -93,7 +93,7 @@ namespace Map {
                                 .terrainHeightUnk)),
                         Map::Units::UT_QUARRYOX);
                     iVar6 = DAT_CurrentBuildingID::instance;
-                    if (iVar5 != 0) {
+                    if (iVar5) {
                         DAT_UnitsState::instance.units[iVar5].workplaceBuildingUID
                             = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].uid;
                         DAT_UnitsState::instance.units[iVar5].targetX_2

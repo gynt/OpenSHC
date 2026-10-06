@@ -25,11 +25,11 @@ namespace UI {
         {
             int iVar1;
             iVar1 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (iVar1 != 0) {
-                if (DAT_MouseState::instance.rightClickStop != 0) {
+            if (iVar1) {
+                if (DAT_MouseState::instance.rightClickStop) {
                     MACRO_CALL(UI::Credits_Func::StopCreditsPlaybackAndSounds)();
                 }
-                if (DAT_MouseState::instance.leftClickStart != 0) {
+                if (DAT_MouseState::instance.leftClickStart) {
                     MACRO_CALL(UI::Credits_Func::EndCreditsSegmentAndAdvanceToNext)();
                 }
                 MACRO_CALL(Rendering_Func::ProcessCreditsScriptCommands)();
@@ -48,7 +48,7 @@ namespace UI {
                                 UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk, 0);
                             DAT_GameCore::instance.section1066 = 0;
                         }
-                        if (INT_00ed3114::instance == 0) {
+                        if (!INT_00ed3114::instance) {
                             DAT_00b95954::instance = 1;
                             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 UI::Enums::MVT_CREDITS, 0);

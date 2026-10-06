@@ -73,7 +73,7 @@ namespace UI {
                 pcVar2, xPos, iVar3, iVar6, uVar7, iVar5, iVar8);
             iVar3 = 100;
             DAT_CurrentlyRenderedSpriteID::instance = 100;
-            if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {
+            if (DAT_GameCore::instance.selectedLordTypeUnk) {
                 iVar3 = 0xcd;
                 DAT_CurrentlyRenderedSpriteID::instance = 0xcd;
             }

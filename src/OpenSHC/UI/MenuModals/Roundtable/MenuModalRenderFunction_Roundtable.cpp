@@ -35,7 +35,7 @@ namespace UI {
             int blendStrengthUnk;
             int local_40[16];
             iVar1 = y;
-            if (DAT_MouseState::instance.rightClickStart != 0) {
+            if (DAT_MouseState::instance.rightClickStart) {
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
             }
@@ -78,7 +78,7 @@ namespace UI {
                     gfxIndex = iVar4 + 2;
                 } else {
                 LAB_004b1ba5:
-                    if (iVar2 == 0) {
+                    if (!iVar2) {
                         blendStrengthUnk = 0x10;
                         gfxIndex = iVar4 + 2;
                     } else {
@@ -95,7 +95,7 @@ namespace UI {
             DAT_ButtonX::instance = x + 0x18;
             DAT_ButtonW::instance = 0x17c;
             DAT_ButtonH::instance = 0x28;
-            if (DAT_00df4288::instance != 0) {
+            if (DAT_00df4288::instance) {
                 MACRO_CALL_MEMBER(
                     UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
                     DAT_BottomLeftTextDisplayState::ptr)(0);

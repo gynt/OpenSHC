@@ -22,7 +22,7 @@ namespace Map {
             if (0 < _scale2) {
                 piVar2 = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + iVar1 + 0xc);
                 do {
-                    if ((piVar2[-1] < 5999) && ((*piVar2 == 0 || (one != 0)))) {
+                    if ((piVar2[-1] < 5999) && ((*piVar2 == 0 || (one)))) {
                         _ptrScale3
                             = (int*)((int)DAT_TroopValueState::instance.attackInfo.scaleValuesArray + iVar1 + -4);
                         *_ptrScale3 = *_ptrScale3 + 1;

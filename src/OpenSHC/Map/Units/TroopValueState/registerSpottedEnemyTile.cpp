@@ -41,7 +41,7 @@ namespace Map {
                 do {
                     iVar1 = this->attackInfo.spottedEnemyTiles[iVar3].tile;
                     if (iVar1 == param_1) {}
-                    if ((iVar1 == 0) && (iVar2 == -1)) {
+                    if ((!iVar1) && (iVar2 == -1)) {
                         iVar2 = iVar3;
                     }
                     iVar3 = iVar3 + 1;

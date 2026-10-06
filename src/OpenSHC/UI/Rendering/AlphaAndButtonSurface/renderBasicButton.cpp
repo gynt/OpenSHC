@@ -85,7 +85,7 @@ namespace UI {
                         }
                         iVar2 = iVar2 + 10;
                         iVar1 = iVar1 + -1;
-                    } while (iVar1 != 0);
+                    } while (iVar1);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
@@ -165,7 +165,7 @@ namespace UI {
                             }
                             _drawX_01 = _drawX_01 + 10;
                             iVar1 = iVar1 + -1;
-                        } while (iVar1 != 0);
+                        } while (iVar1);
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(
@@ -210,7 +210,7 @@ namespace UI {
                         }
                         iVar2 = iVar2 + 10;
                         iVar1 = iVar1 + -1;
-                    } while (iVar1 != 0);
+                    } while (iVar1);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(

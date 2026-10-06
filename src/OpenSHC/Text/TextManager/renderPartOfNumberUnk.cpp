@@ -23,7 +23,7 @@ namespace Text {
             = MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::transformBGR24ToScreenColor,
                 DAT_TextureRenderCoreObject::ptr)(bgr24);
         RenderTargetInt RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
-        if (useCurrentXOffsetUnk == 0) {
+        if (!useCurrentXOffsetUnk) {
             this->currentXOffset_0x0 = 0;
         }
         switch (integerPartToRenderUnk) {
@@ -32,7 +32,7 @@ namespace Text {
             break;
         case 1:
             _decimalNumberToRender = numberToRenderUnk / 10;
-            if (_decimalNumberToRender == 0) {
+            if (!_decimalNumberToRender) {
                 return numberToRenderUnk * 0x66666667;
             }
             iVar2 = (int)((ulonglong)((longlong)_decimalNumberToRender * -0x66666667) >> 0x20);
@@ -40,7 +40,7 @@ namespace Text {
             break;
         case 2:
             _decimalNumberToRender = numberToRenderUnk / 100;
-            if (_decimalNumberToRender == 0) {
+            if (!_decimalNumberToRender) {
                 return numberToRenderUnk * 0x51eb851f;
             }
             iVar2 = (int)((ulonglong)((longlong)_decimalNumberToRender * -0x66666667) >> 0x20);
@@ -48,7 +48,7 @@ namespace Text {
             break;
         case 3:
             _decimalNumberToRender = numberToRenderUnk / 1000;
-            if (_decimalNumberToRender == 0) {
+            if (!_decimalNumberToRender) {
                 return numberToRenderUnk * 0x10624dd3;
             }
             iVar2 = (int)((ulonglong)((longlong)_decimalNumberToRender * -0x66666667) >> 0x20);
@@ -56,7 +56,7 @@ namespace Text {
             break;
         case 4:
             _decimalNumberToRender = numberToRenderUnk / 10000;
-            if (_decimalNumberToRender == 0) {
+            if (!_decimalNumberToRender) {
                 return numberToRenderUnk * 0x68db8bad;
             }
             iVar2 = (int)((ulonglong)((longlong)_decimalNumberToRender * -0x66666667) >> 0x20);
@@ -64,7 +64,7 @@ namespace Text {
             break;
         case 5:
             _decimalNumberToRender = numberToRenderUnk / 100000;
-            if (_decimalNumberToRender == 0) {
+            if (!_decimalNumberToRender) {
                 return numberToRenderUnk * 0x14f8b589;
             }
             iVar2 = (int)((ulonglong)((longlong)_decimalNumberToRender * -0x66666667) >> 0x20);

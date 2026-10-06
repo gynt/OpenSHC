@@ -40,11 +40,11 @@ namespace UI {
             int iVar4;
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {
+                && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_DisableMercPostPortraits::instance == 0) {
+            if (!DAT_DisableMercPostPortraits::instance) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -74,7 +74,7 @@ namespace UI {
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                     (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar4].gmId_0x0, iVar2,
                     iVar1, iVar3);
-            } else if (((iVar1 == 0) || (iVar1 == 4)) || (iVar1 == 3)) {
+            } else if (((!iVar1) || (iVar1 == 4)) || (iVar1 == 3)) {
                 iVar2 = 0x10;
                 buttonGmData
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;

@@ -41,7 +41,7 @@ namespace UI {
                         DAT_MenuModalComposition1::instance.activeModalDialogID = UI::Enums::MMT_NONE;
                     }
                 }
-                if (iVar1 != 0) {
+                if (iVar1) {
                     DAT_GameSynchronyState::instance.currentAIArray[iVar1] = DAT_LobbyAddAICurrentlyHoveredAI::instance;
                     MACRO_CALL(Synchrony_Func::ResetAiVariationArrayValue)(iVar1);
                     DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[iVar1] = 1;

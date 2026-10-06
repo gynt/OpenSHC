@@ -41,7 +41,7 @@ namespace UI {
         int iVar8 = 1;
         int local_58 = 1;
         local_3c = 2;
-        if ((param_1 & 4) != 0) {
+        if ((param_1 & 4)) {
             local_58 = 2;
             iVar8 = 2;
         }
@@ -53,7 +53,7 @@ namespace UI {
         }
         int iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
         int iVar12 = 8;
-        if (DAT_TileMapState::instance.mapOrientation != 0) {
+        if (DAT_TileMapState::instance.mapOrientation) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar12 = 80408;
             } else if (DAT_TileMapState::instance.mapOrientation == 4) {
@@ -84,7 +84,7 @@ namespace UI {
                 }
                 if (_yOffset / 100 <= (int)uVar10) {
                     if ((_paramSum * 400) / 100 <= (int)uVar10) {}
-                    if ((local_58 != 2) || ((local_48 & 1) == 0)) {
+                    if ((local_58 != 2) || (!(local_48 & 1))) {
                         int iVar11 = uVar3 - 2;
                         local_2c = iVar1 / local_3c - uVar3;
                         if (iVar11 < local_2c) {
@@ -96,12 +96,12 @@ namespace UI {
                                 _tile = *local_50;
                                 _tile1003 = DAT_TileMapState::instance.LogicLayer[_tile];
                                 iVar12 = 0;
-                                if ((_tile1003 & 0x40000000) == 0) {
-                                    if ((_tile1003 & 0x3000) == 0) {
+                                if (!(_tile1003 & 0x40000000)) {
+                                    if (!(_tile1003 & 0x3000)) {
                                         uVar9 = DAT_MiniMapDefinedData::instance.field90_0x27c[0].integer;
-                                        if ((_tile1003 & 8) == 0) {
-                                            while ((uVar9 & _tile1003) == 0) {
-                                                if (uVar9 == 0)
+                                        if (!(_tile1003 & 8)) {
+                                            while (!(uVar9 & _tile1003)) {
+                                                if (!uVar9)
                                                     goto LAB_004b55d3;
                                                 iVar11 = iVar12 + 1;
                                                 iVar12 = iVar12 + 1;
@@ -109,7 +109,7 @@ namespace UI {
                                             }
                                             param_4 = (uint)DAT_MiniMapDefinedData::instance.field90_0x27c[iVar12]
                                                           .colorModeSpecificValue[_isRGB565];
-                                        } else if ((DAT_TileMapState::instance.MiscDisplayLayer[_tile] & 0x2000) == 0) {
+                                        } else if (!(DAT_TileMapState::instance.MiscDisplayLayer[_tile] & 0x2000)) {
                                         LAB_004b55d3:
                                             param_4 = 0;
                                         } else {
@@ -124,10 +124,10 @@ namespace UI {
                                         + ((int)(short)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
                                 }
                                 if (((DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) && ((short)param_4 != 0))
-                                    && ((_tile1003 & 2) == 0)) {
+                                    && (!(_tile1003 & 2))) {
                                     iVar12 = DAT_MiniMapDefinedData::instance
                                                  .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
-                                    if (_isRGB565 == 0) {
+                                    if (!_isRGB565) {
                                         uVar9 = (int)((param_4 & 0x7c00) * iVar12) / 100;
                                         if (0x7c00 < (int)uVar9) {
                                             uVar9 = 0x7c00;
@@ -200,13 +200,13 @@ namespace UI {
                                             }
                                             iVar12 = iVar12 + 2;
                                             iVar11 = iVar11 + -1;
-                                        } while (iVar11 != 0);
+                                        } while (iVar11);
                                     }
                                 }
                                 uVar6 = uVar6 + param_2;
                                 local_50 = local_50 + 1;
                                 local_2c = local_2c + -1;
-                            } while (local_2c != 0);
+                            } while (local_2c);
                         }
                     }
                 }

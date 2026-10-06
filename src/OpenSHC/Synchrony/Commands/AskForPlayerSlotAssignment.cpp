@@ -90,7 +90,7 @@ namespace Synchrony {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::clearGameCommandEntry,
                     DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.DAT_CurrentGameCommandID);
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID = _commandOriginPlayer;
-                if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 0) {
+                if (!DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                     DAT_GameSynchronyState::instance.currentPlayerSlotID = _commandOriginPlayer;
                     if (1 < DAT_GameCore::instance.lordIconUnk) {
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,

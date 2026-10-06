@@ -58,7 +58,7 @@ namespace Synchrony {
             _deadPlayerID = 1;
             psVar9 = &DAT_GameState::instance.playerDataArray[1].commemorationShrinePlacementCountdown;
             do {
-                if ((0 < *psVar9) && (sVar2 = *psVar9 + -1, *psVar9 = sVar2, sVar2 == 0)) {
+                if ((0 < *psVar9) && (sVar2 = *psVar9 + -1, *psVar9 = sVar2, !sVar2)) {
                     MACRO_CALL_MEMBER(
                         Map::Navigation::PathFindingState_Func::placeCommemoratingStatueAtGoodLocation,
                         DAT_PathFindingState::ptr)(_deadPlayerID);
@@ -68,7 +68,7 @@ namespace Synchrony {
             } while ((int)psVar9 < 0x1180150);
             if ((DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION)
                 && (DAT_GameState::instance.mapAndTime.gameOver == FALSE)) {
-                if (DAT_GameCore::instance.unknownAlwaysZero != 0) {
+                if (DAT_GameCore::instance.unknownAlwaysZero) {
                     DAT_GameCore::instance.unknownAlwaysZero = 0;
                     piVar3 = &DAT_GameState::instance.playerDataArray[1].playerDeathRelated;
                     psVar3 = (Game::Player::PlayerData *)(&DAT_GameState::instance.mapAndTime.playerIsAlive + 1);
@@ -114,7 +114,7 @@ namespace Synchrony {
                     if ((piVar3[-0x1a] != -1) || (piVar3[1] != 0)) {
                         iVar7 = piVar3[-0x1e824c];
                         (&iStack_48)[iVar7 * 2] = (&iStack_48)[iVar7 * 2] + 1;
-                        if (piVar5->lordKilledByPlayerID != 0) {
+                        if (piVar5->lordKilledByPlayerID) {
                             local_44[iVar7 * 2] = local_44[iVar7 * 2] + 1;
                         }
                     }
@@ -184,7 +184,7 @@ namespace Synchrony {
                 local_44[6] = 0;
                 local_44[7] = 0;
                 if (iVar5 < iVar10 + -1) {
-                    if (DAT_GameCore::instance.mapU4Int0 == 0) {}
+                    if (!DAT_GameCore::instance.mapU4Int0) {}
                     piVar4 = &DAT_GameState::instance.playerDataArray[2];
                     bVar1 = false;
                     piVar3 = local_68;
@@ -193,7 +193,7 @@ namespace Synchrony {
                             iVar7 = piVar3[-0x1e824d];
                             bVar1 = true;
                         }
-                        if (((piVar3[-0x1a] != -1) || (piVar3[1] != 0)) && (piVar4->lordKilledByPlayerID == 0)) {
+                        if (((piVar3[-0x1a] != -1) || (piVar3[1] != 0)) && (!piVar4->lordKilledByPlayerID)) {
                             iVar7 = piVar3[-0x1e824c];
                             bVar1 = true;
                         }

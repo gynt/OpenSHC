@@ -35,7 +35,7 @@ namespace Map {
                 iVar6 = iVar7;
                 if (param_4 == 0x2c) {
                     iVar6 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getNonDyingUnit, this)(param_1);
-                    if (iVar6 == 0) {
+                    if (!iVar6) {
                         iVar6 = iVar7;
                     }
                 }

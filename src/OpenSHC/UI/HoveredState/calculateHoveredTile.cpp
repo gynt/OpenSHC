@@ -140,7 +140,7 @@ namespace UI {
             LAB_00511c12:
                 piVar6 = piVar6 + 6;
                 local_8 = local_8 + -1;
-            } while (local_8 != 0);
+            } while (local_8);
         }
         DAT_TileMapState::instance.uiBuildingRotation = iVar1;
     }

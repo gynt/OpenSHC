@@ -75,7 +75,7 @@ namespace UI {
                 if ((((param_1 == 7) || (param_1 == 8))
                         && (DAT_GameCore::instance.activeMenuTab.tabType
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM))
-                    && (DAT_GameSynchronyState::instance.modemScrollbarCount == 0)) {
+                    && (!DAT_GameSynchronyState::instance.modemScrollbarCount)) {
                     DAT_ButtonUnknownZero::instance = 1;
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -105,7 +105,7 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             if (param_1 == -10) {
-                if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable != 0) {
+                if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }

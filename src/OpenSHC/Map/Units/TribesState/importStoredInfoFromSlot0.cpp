@@ -11,7 +11,7 @@ namespace Map {
             short (*_ptrStoredRallyPoints)[2];
             int iVar1;
             short (*_ptrRallyPoints)[2];
-            if (this->tribeCopiedToSlot0 != 0) {
+            if (this->tribeCopiedToSlot0) {
                 this->tribes[tribeID].field168_0x2be = this->tribes[0].field168_0x2be;
                 this->tribes[tribeID].someUnitID = this->tribes[0].someUnitID;
                 this->tribes[tribeID].someUnitUID = this->tribes[0].someUnitUID;
@@ -38,7 +38,7 @@ namespace Map {
                     _ptrStoredRallyPoints = (short (*)[2])(*_ptrStoredRallyPoints + 1);
                     _ptrRallyPoints = (short (*)[2])(*_ptrRallyPoints + 1);
                     iVar1 = iVar1 + -1;
-                } while (iVar1 != 0);
+                } while (iVar1);
             }
             this->tribes[tribeID].unitStance = this->tribes[0].unitStance;
         }

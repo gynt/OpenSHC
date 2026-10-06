@@ -85,7 +85,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3, iVar8, iVar6);
             }
-            if (DAT_MouseState::instance.leftClickStart != 0) {
+            if (DAT_MouseState::instance.leftClickStart) {
                 iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _positionPtr->x + iVar4, _positionPtr->y + iVar1,

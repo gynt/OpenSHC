@@ -61,7 +61,7 @@ namespace UI {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                 x + 0x14, y + 0xbf, x + -0x14a + width, y + 0xd8, OpenSHC::UI::Enums::RBERL_SLIGHT);
-            if (DAT_GameSynchronyState::instance.DAT_InsultTextIndex == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_InsultTextIndex) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(x + 0x19 + iVar5, y + 0xc1, x + 0x1a + iVar5, y + 0xd5,
                     (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
@@ -70,7 +70,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     4);
             }
-            if (DAT_GameSynchronyState::instance.DAT_InsultTextIndex == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_InsultTextIndex) {
                 _fontSize_2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::UserTextHandler_Func::getCurrentFontSize, DAT_UserTextHandlerState::ptr)();
                 pcVar1 = MACRO_CALL_MEMBER(

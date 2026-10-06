@@ -42,7 +42,7 @@ namespace UI {
             if ((DAT_GameCore::instance.activeMenuTab.buildMenuTab != OpenSHC::UI::Enums::BMTT_MENU_HIDDEN)
                 && (DAT_GameCore::instance.activeMenuTab.buildMenuTab
                     != (OpenSHC::UI::Enums::BuildMenuTabTypeShort)0x3e)) {
-                if (DAT_MinimapViewState::instance.field3_0xc == 0) {
+                if (!DAT_MinimapViewState::instance.field3_0xc) {
                     DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
                 }
                 if (DAT_MenuHandlerState::instance.isBuildMenuTransitioning_0x18 != FALSE) {
@@ -89,12 +89,12 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
                 DAT_MinimapViewState::instance.needsRedraw = 1;
-                if (DAT_GameCore::instance.isBinkVideoPlaying == 0) {
+                if (!DAT_GameCore::instance.isBinkVideoPlaying) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::MinimapViewState_Func::renderMinimapMain, DAT_MinimapViewState::ptr)();
                 }
             }
-            if (DAT_GameCore::instance.isVictoryOrDefeatUnk != 0) {
+            if (DAT_GameCore::instance.isVictoryOrDefeatUnk) {
                 DAT_GameCore::instance.isVictoryOrDefeatUnk = 0;
                 DAT_GameState::instance.mapAndTime.gameOver = TRUE;
                 _currentTime = timeGetTime();

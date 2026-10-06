@@ -26,7 +26,7 @@ namespace Audio {
             DAT_SoundEffectsHelperData1::ptr->DAT_SomeSoundTime2 = timeGetTime();
 
             if (param_1 != 2) {
-                if (DAT_TroopValueState::ptr->attackInfo.pendingAttackWaveCount == 0) {
+                if (!DAT_TroopValueState::ptr->attackInfo.pendingAttackWaveCount) {
                     MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::recountTotalTroopValue, DAT_TroopValueState::ptr)();
                 }
@@ -74,7 +74,7 @@ namespace Audio {
                 if (DAT_GameSynchronyState::ptr->currentGameMode != Game::GM_SOLITARY) {
                     iVar1 = SEC_RNG::ptr->currentNumber1 % 5;
                 }
-                if ((iVar1 == 0) || (iVar1 == 1)) {
+                if ((!iVar1) || (iVar1 == 1)) {
                     param_1 = 0;
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel = 0;
                     DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel = (iVar1 + 1);
@@ -112,11 +112,11 @@ namespace Audio {
             if (4 < DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.incrementorUpTo4) {
                 DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.incrementorUpTo4 = 1;
             }
-            if (this->sec_Section1055_0x3274 != 0) {
+            if (this->sec_Section1055_0x3274) {
                 MACRO_CALL_MEMBER(SoundSystem_Func::setSomeSoundTime, this)();
             }
 
-            if (param_1 == 0) {
+            if (!param_1) {
                 switch (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel) {
                 case 1:
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_BATTLE1A);

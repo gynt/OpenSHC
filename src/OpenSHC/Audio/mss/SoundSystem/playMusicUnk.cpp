@@ -102,7 +102,7 @@ namespace Audio {
                 } else if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 1) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::stopMusicPlayback, this)();
                     return;
-                } else if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                } else if (!(this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD)) {
                     MACRO_CALL(OS_Func::_ucrt_lseek)(this->musicSampleFileHandleUnk_0x174, 0, FILE_BEGIN);
                     readFileBytes += MACRO_CALL(OS_Func::_ucrt_read)(this->musicSampleFileHandleUnk_0x174,
                         (void*)((int)this->sampleBufferPtrUnk_0x17c[_buffNum] + readFileBytes),

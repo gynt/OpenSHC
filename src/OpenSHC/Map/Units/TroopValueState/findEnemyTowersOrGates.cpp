@@ -33,7 +33,7 @@ namespace Map {
                 _p1 = (AttackInfoSubArrayElement1*)((int)&DAT_TroopValueState::instance.attackInfo.gateValuesArray
                     + iVar4 + 4);
                 do {
-                    if ((_p1->buildingID < 5999) && (_p1->unitID == 0)) {
+                    if ((_p1->buildingID < 5999) && (!_p1->unitID)) {
                         iVar5 = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_p1->tile2];
                         iVar2 = _p1->tile2 - DAT_ViewportRenderState::instance.translationMatrix[iVar5].addXgetTile;
                         MACRO_CALL_MEMBER(
@@ -74,7 +74,7 @@ namespace Map {
                 _p2 = (AttackInfoSubArrayElement1*)((int)&DAT_TroopValueState::instance.attackInfo.gateValuesArray
                     + iVar4 + 4);
                 do {
-                    if ((_p2->buildingID < 5999) && (_p2->unitID == 0)) {
+                    if ((_p2->buildingID < 5999) && (!_p2->unitID)) {
                         iVar5 = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_p2->tile2];
                         iVar2 = _p2->tile2 - DAT_ViewportRenderState::instance.translationMatrix[iVar5].addXgetTile;
                         MACRO_CALL_MEMBER(

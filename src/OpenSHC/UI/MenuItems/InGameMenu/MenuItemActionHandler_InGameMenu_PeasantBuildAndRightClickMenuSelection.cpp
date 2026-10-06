@@ -59,12 +59,12 @@ namespace UI {
             int iVar2;
             BOOLEnum BVar3;
             dword elementState;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus) {}
+            if (DAT_GameSynchronyState::instance.saveRelated) {}
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (DAT_00b960f8::instance != 0x42)) {
-                if (INT_00b960f0::instance == 0) {
+                if (!INT_00b960f0::instance) {
                     DVar1 = timeGetTime();
                     INT_00b960f0::instance = DVar1 + 20000;
                 } else {
@@ -95,7 +95,7 @@ namespace UI {
                 if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU) {
                     iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getArmySize, DAT_UnitsState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                    if (iVar2 == 0) {
+                    if (!iVar2) {
                         if (DAT_GameCore::instance.activeMenuTab.buildMenuTab
                             == OpenSHC::UI::Enums::BMTT_CASTLE_KEEPS) {
                             if (DAT_GameCore::instance.menuSwitchDelay == -1) {
@@ -139,9 +139,8 @@ namespace UI {
                 iVar2 = 4;
             } else if ((((DAT_MouseState::instance.rightClickState == FALSE)
                             || (DAT_MouseState::instance.mouseBasedEvent == 2))
-                           && ((DAT_ModifierKeyState::instance.ctrl == 0
-                               || (DAT_ModifierKeyState::instance.downArrow == 0))))
-                && (DAT_ModifierKeyState::instance.v == 0)) {
+                           && ((!DAT_ModifierKeyState::instance.ctrl || (!DAT_ModifierKeyState::instance.downArrow))))
+                && (!DAT_ModifierKeyState::instance.v)) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::triggerLoweredView, DAT_TileMapState::ptr)(4);
                 if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL)
                     goto LAB_004345e4;
@@ -157,7 +156,7 @@ namespace UI {
                 DAT_MouseState::instance.field51_0x198 = 2;
                 MACRO_CALL_MEMBER(
                     OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport, DAT_ViewportRenderState::ptr)(
-                    (uint)(DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk == 0));
+                    (uint)(!DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk));
                 DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
                 DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
                 DAT_GameCore::instance.field83_0x15c = 1;
@@ -177,17 +176,17 @@ namespace UI {
             }
             MACRO_CALL(OpenSHC::UI::Helpers_Func::RecordTutorialPlayerAction)(iVar2);
         LAB_004345e4:
-            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {
-                if (DAT_MouseState::instance.rightClickStart != 0) {
+            if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {
+                if (DAT_MouseState::instance.rightClickStart) {
                     DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
                     DAT_GameCore::instance.field83_0x15c = 0;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
             }
-            if (DAT_MouseState::instance.rightClickStart == 0) {
-                if (((DAT_MouseState::instance.rightClickStop != 0)
+            if (!DAT_MouseState::instance.rightClickStart) {
+                if (((DAT_MouseState::instance.rightClickStop)
                         && (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_MOAT))
-                    && (DAT_GameCore::instance.field83_0x15c == 0)) {
+                    && (!DAT_GameCore::instance.field83_0x15c)) {
                     DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::noop1, DAT_TileMapState::ptr)(
@@ -203,7 +202,7 @@ namespace UI {
                     if (DAT_MouseState::instance.draggingStopped == FALSE) {}
                     if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {}
                 } else if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
-                    if ((DAT_MouseState::instance.leftClickStart == 0)
+                    if ((!DAT_MouseState::instance.leftClickStart)
                         && (DAT_ViewportRenderState::instance.viewportState.previousMouseTile
                             == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
                     DAT_ViewportRenderState::instance.viewportState.previousMouseTile
@@ -217,8 +216,8 @@ namespace UI {
                           && (DAT_UnitsState::instance.totalUnitsInSelection < 1))
                          && ((DVar1 = timeGetTime(),
                              DAT_MouseState::instance.draggingStopped != FALSE
-                                 && ((((DAT_MouseState::instance.selectionBoxState == 0
-                                           && (DAT_MouseState::instance.savedSelectionBoxState == 0))
+                                 && ((((!DAT_MouseState::instance.selectionBoxState
+                                           && (!DAT_MouseState::instance.savedSelectionBoxState))
                                           && (BVar3
                                               = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::
                                                                       SelectUnitAndOpenStatusMenu,
@@ -242,7 +241,6 @@ namespace UI {
                                 && (((DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
                                               .viewportState.mouseAtomRefFloorTile]
                                          & 2)
-                                        != 0
                                     && ((DAT_TileMapState::instance.WallOwnerLayer[DAT_ViewportRenderState::instance
                                                  .viewportState.mouseAtomRefFloorTile]
                                             & 7)

@@ -33,12 +33,12 @@ namespace Synchrony {
             || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             this->commandDelay = 0;
         }
-        if (this->shouldSendAnnouncementUnk != 0) {
+        if (this->shouldSendAnnouncementUnk) {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                 (Commands::GameCommandType)Commands::M_MAPPER_HEALER);
             this->shouldSendAnnouncementUnk = 0;
         }
-        if ((this->syncStatus == 0) && (this->saveRelated == 0)) {
+        if ((!this->syncStatus) && (!this->saveRelated)) {
             BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 != FALSE) {
                 iVar2 = 0;
@@ -52,7 +52,7 @@ namespace Synchrony {
                     if (((piVar3[-1] != -1) && (iVar2 != this->currentPlayerSlotID)) && (piVar6[-1].checkFor0 == 0)) {
                         _anyIsZero = false;
                     }
-                    if (((*piVar3 != -1) && (iVar2 + 1 != this->currentPlayerSlotID)) && (piVar6->checkFor0 == 0)) {
+                    if (((*piVar3 != -1) && (iVar2 + 1 != this->currentPlayerSlotID)) && (!piVar6->checkFor0)) {
                         _anyIsZero = false;
                     }
                     if (((piVar3[1] != -1) && (iVar2 + 2 != this->currentPlayerSlotID)) && (piVar6[1].checkFor0 == 0)) {
@@ -68,9 +68,9 @@ namespace Synchrony {
                     pDVar7 = &this->connectionLagInfoArray[0];
                     piVar3 = this->currentPlayerFullIDArray;
                     do {
-                        if (((*piVar3 != -1) && (_playerID != this->currentPlayerSlotID)) && (pDVar7->time != 0)) {
+                        if (((*piVar3 != -1) && (_playerID != this->currentPlayerSlotID)) && (pDVar7->time)) {
                             if (((15000 < (int)(_now - pDVar7->time)) && (this->isHost != FALSE))
-                                && (this->laggingPlayerIDUnk == 0)) {
+                                && (!this->laggingPlayerIDUnk)) {
                                 this->laggingPlayerIDUnk = _playerID;
                                 this->DAT_GameCommandParam0 = _playerID;
                                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(

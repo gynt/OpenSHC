@@ -61,7 +61,7 @@ namespace UI {
             }
             if (param_1 < 0) {
                 if (param_1 == -3) {
-                    if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting == 0) {
+                    if (!DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
                         param_1 = 0x14;
                     } else if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting == 1) {
                         param_1 = 0x15;
@@ -182,7 +182,7 @@ namespace UI {
                             break;
                         }
                     }
-                    if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 == 0) {
+                    if (!DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01) {
                         param_1 = 0xe;
                     } else {
                         if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 != 1) {}

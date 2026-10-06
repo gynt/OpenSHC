@@ -32,7 +32,7 @@ namespace Map {
             short _size;
             AITribeTypeShort _tribeType;
             iVar1 = 0x10;
-            if (param_1 == 0) {
+            if (!param_1) {
                 iVar1 = DAT_TroopValueState::instance.attackInfo.counter;
             }
             DAT_TroopValueState::instance.attackInfo.counter = iVar1 + 1;
@@ -54,7 +54,7 @@ namespace Map {
                 DAT_TroopValueState::instance.attackInfo.ranged = 0;
                 _pTribe = &DAT_TribesState::instance.tribes[1];
                 do {
-                    if (_pTribe->tribeState != 0) {
+                    if (_pTribe->tribeState) {
                         BVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
                             DAT_GameState::ptr)(_pTribe->owner);
                         if (BVar2 == FALSE) {
@@ -125,16 +125,16 @@ namespace Map {
                     }
                     _pTribe = _pTribe + 0x19a;
                 } while ((int)_pTribe < 0x17623a2);
-                if (DAT_TroopValueState::instance.attackInfo.knights != 0) {
-                    if (DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen != 0) {
+                if (DAT_TroopValueState::instance.attackInfo.knights) {
+                    if (DAT_TroopValueState::instance.attackInfo.spearmenAndMacemen) {
                         DAT_TroopValueState::instance.attackInfo.knights = 0;
                     }
-                    if (DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore != 0) {
+                    if (DAT_TroopValueState::instance.attackInfo.pikemenSwordsmenAndMore) {
                         DAT_TroopValueState::instance.attackInfo.knights = 0;
                     }
                 }
                 _limit = 6;
-                if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+                if (!DAT_GameState::instance.mapAndTime.difficulty) {
                     _limit = 3;
                 }
                 if ((DAT_TroopValueState::instance.attackInfo.aiTroops < 1) || (DAT_TroopValueState::instance.attackInfo.field86974_0x20f74 < 1)) {

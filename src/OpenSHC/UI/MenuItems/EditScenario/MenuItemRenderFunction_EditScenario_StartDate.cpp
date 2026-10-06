@@ -36,14 +36,14 @@ namespace UI {
                 iVar1 = 0x27;
             } else {
                 if (param_1 != -1) {
-                    if (param_1 == 0) {}
+                    if (!param_1) {}
                     iVar1 = DAT_ButtonX::instance;
-                    if (DAT_ButtonW::instance != 0) {
+                    if (DAT_ButtonW::instance) {
                         iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     }
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         DE::SHCDE::TEXT_SCENARIO, param_1, iVar1, (int)((int)(DAT_ButtonY::instance + 6)),
-                        (TextAlignment)((int)((uint)(DAT_ButtonW::instance != 0))), 0xccfaff, 0x12, FALSE);
+                        (TextAlignment)((int)((uint)(DAT_ButtonW::instance))), 0xccfaff, 0x12, FALSE);
                 }
                 iVar1 = 0x20;
             }

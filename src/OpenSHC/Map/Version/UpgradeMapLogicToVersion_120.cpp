@@ -25,9 +25,9 @@ namespace Map {
             bVar3 = DAT_TileMapState::instance.HeightLayer[_tile];
             DAT_TileMapState::instance.DefaultHeightLayer[_tile] = bVar3;
             uVar2 = DAT_TileMapState::instance.LogicLayer[_tile];
-            if ((uVar2 & 0x200) == 0) {
-                if ((uVar2 & 0x800) == 0) {
-                    if ((uVar2 & 0x100) != 0) {
+            if (!(uVar2 & 0x200)) {
+                if (!(uVar2 & 0x800)) {
+                    if ((uVar2 & 0x100)) {
                         bVar3 = bVar3 + 0xa6;
                         goto LAB_005016a8;
                     }
@@ -42,10 +42,10 @@ namespace Map {
                                     [sVar1][DAT_UnitPropertiesDefinedData::instance.field84_0x11cb4[iVar5]]
                             + iVar5;
                         uVar2 = DAT_TileMapState::instance.LogicLayer[iVar6];
-                        if ((uVar2 & 0x800) == 0) {
+                        if (!(uVar2 & 0x800)) {
                             uVar7 = (uint)DAT_TileMapState::instance.HeightLayer[iVar6];
-                            if ((uVar2 & 0x200) == 0) {
-                                if ((uVar2 & 0x100) == 0) {
+                            if (!(uVar2 & 0x200)) {
+                                if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
                                     iVar4 = iVar4 + -0x5a + uVar7;
@@ -58,10 +58,10 @@ namespace Map {
                         iVar6 = DAT_TileMapState::instance.directionTranslationMatrix
                                     [sVar1][DAT_UnitPropertiesDefinedData::instance.field84_0x11cb4[iVar5 + 1]];
                         uVar2 = DAT_TileMapState::instance.LogicLayer[iVar5 + iVar6 + 1];
-                        if ((uVar2 & 0x800) == 0) {
+                        if (!(uVar2 & 0x800)) {
                             uVar7 = (uint)DAT_TileMapState::instance.HeightLayer[iVar6 + 1 + iVar5];
-                            if ((uVar2 & 0x200) == 0) {
-                                if ((uVar2 & 0x100) == 0) {
+                            if (!(uVar2 & 0x200)) {
+                                if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
                                     iVar4 = iVar4 + -0x5a + uVar7;
@@ -74,10 +74,10 @@ namespace Map {
                         iVar6 = DAT_TileMapState::instance.directionTranslationMatrix
                                     [sVar1][DAT_UnitPropertiesDefinedData::instance.field84_0x11cb4[iVar5 + 2]];
                         uVar2 = DAT_TileMapState::instance.LogicLayer[iVar5 + iVar6 + 2];
-                        if ((uVar2 & 0x800) == 0) {
+                        if (!(uVar2 & 0x800)) {
                             uVar7 = (uint)DAT_TileMapState::instance.HeightLayer[iVar6 + 2 + iVar5];
-                            if ((uVar2 & 0x200) == 0) {
-                                if ((uVar2 & 0x100) == 0) {
+                            if (!(uVar2 & 0x200)) {
+                                if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
                                     iVar4 = iVar4 + -0x5a + uVar7;
@@ -90,10 +90,10 @@ namespace Map {
                         iVar6 = DAT_TileMapState::instance.directionTranslationMatrix
                                     [sVar1][DAT_UnitPropertiesDefinedData::instance.field84_0x11cb4[iVar5 + 3]];
                         uVar2 = DAT_TileMapState::instance.LogicLayer[iVar5 + iVar6 + 3];
-                        if ((uVar2 & 0x800) == 0) {
+                        if (!(uVar2 & 0x800)) {
                             uVar7 = (uint)DAT_TileMapState::instance.HeightLayer[iVar6 + 3 + iVar5];
-                            if ((uVar2 & 0x200) == 0) {
-                                if ((uVar2 & 0x100) == 0) {
+                            if (!(uVar2 & 0x200)) {
+                                if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
                                     iVar4 = iVar4 + -0x5a + uVar7;
@@ -105,7 +105,7 @@ namespace Map {
                         }
                         iVar6 = iVar5 + 4;
                     } while (iVar5 + 4 < 8);
-                    if (iVar8 == 0) {
+                    if (!iVar8) {
                         DAT_TileMapState::instance.DefaultHeightLayer[iVar5 + 4] = 8;
                     } else {
                         DAT_TileMapState::instance.DefaultHeightLayer[iVar5 + 4] = (byte)(iVar4 / iVar8);

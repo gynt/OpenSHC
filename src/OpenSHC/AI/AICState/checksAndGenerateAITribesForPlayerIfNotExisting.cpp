@@ -23,7 +23,7 @@ namespace AI {
             }
             int _tribe = (int)DAT_GameState::instance.playerDataArray[playerID]
                              .aiTribeIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset];
-            if ((_tribe == 0)
+            if ((!_tribe)
                 || (DAT_TribesState::instance.tribes[_tribe].uid
                     != DAT_GameState::instance.playerDataArray[playerID]
                         .aiTribeUIDs[DAT_SkirmishDefinedData::instance.AITribeIDOffsetForAIVUnitType[1] + _offset])) {

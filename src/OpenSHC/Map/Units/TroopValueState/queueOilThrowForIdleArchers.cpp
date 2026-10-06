@@ -52,7 +52,7 @@ namespace Map {
                         iVar2 = DAT_PathFindingState::instance.field34_0x64;
                         if (((9 < DAT_PathFindingState::instance.ALGO_TotalTroopValue)
                                 && (1 < DAT_PathFindingState::instance.ALGO_TotalTroopCount))
-                            && (DAT_PathFindingState::instance.field34_0x64 != 0)) {
+                            && (DAT_PathFindingState::instance.field34_0x64)) {
                             psVar3[0x183] = Map::Units::UIT_THROW_OIL;
                             psVar3[0x1a9] = DAT_UnitsState::instance.units[iVar2].x;
                             psVar3[0x1aa] = DAT_UnitsState::instance.units[iVar2].y;

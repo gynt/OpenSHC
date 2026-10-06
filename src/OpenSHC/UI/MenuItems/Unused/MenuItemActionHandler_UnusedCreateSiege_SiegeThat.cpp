@@ -134,7 +134,7 @@ namespace UI {
                 INT_00b960ec::instance = 1;
                 return;
             case 5:
-                if (INT_00b95f68::instance == 0) {
+                if (!INT_00b95f68::instance) {
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 }
@@ -143,7 +143,7 @@ namespace UI {
                     DAT_MenuTextInputState::ptr)(UI::Enums::MMT_QUIT_DIALOG);
                 return;
             case 0x23:
-                if (INT_00b960ec::instance != 0) {
+                if (INT_00b960ec::instance) {
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                         DAT_MapPropertiesState::ptr)();
@@ -156,7 +156,7 @@ namespace UI {
                 }
                 break;
             case 0x24:
-                if (INT_00b960ec::instance != 0) {
+                if (INT_00b960ec::instance) {
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = Map::MT_SIEGE;
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                         DAT_MapPropertiesState::ptr)();

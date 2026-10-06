@@ -29,13 +29,13 @@ namespace Map {
                     && ((99 < (int)this->attackInfo.field_0x2c854
                         || (0 < DAT_GameState::instance.playerDataArray[this->attackInfo.playerID_0x2c850]
                                 .previousSiegeWeaponsCount))))
-                && (((byte)SEC_RNG::instance.currentNumber2 & 7) == 0)) {
+                && (!((byte)SEC_RNG::instance.currentNumber2 & 7))) {
                 tribeID = this->attackInfo.macemenTribeArray[this->attackInfo.knightTribeCount + 99];
                 iVar1 = DAT_GameState::instance.playerDataArray[this->attackInfo.playerID_0x2c850]
                             .previousSiegeWeaponsCount;
                 this->attackInfo.knightTribeCount = this->attackInfo.knightTribeCount + -1;
                 DAT_TribesState::instance.tribes[tribeID].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
-                if (iVar1 == 0) {
+                if (!iVar1) {
                     iVar2 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(iVar2);
                 } else {

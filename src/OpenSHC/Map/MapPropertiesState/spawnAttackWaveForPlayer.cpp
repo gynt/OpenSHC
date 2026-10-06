@@ -54,7 +54,7 @@ namespace Map {
         do {
             iVar4 = param_2;
             iVar5 = param_3;
-            if ((local_8 != 0) && (iVar4 = param_4, iVar5 = param_5, param_4 < 1)) {}
+            if ((local_8) && (iVar4 = param_4, iVar5 = param_5, param_4 < 1)) {}
             switch (iVar4) {
             case 5:
                 iVar8 = 2;
@@ -163,7 +163,7 @@ namespace Map {
             iVar7 = 10;
         switchD_004bc254_caseD_6:
             iVar4 = 100;
-            if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+            if (!DAT_GameState::instance.mapAndTime.difficulty) {
                 iVar4 = 0x32;
             } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
                 iVar4 = 0x8c;

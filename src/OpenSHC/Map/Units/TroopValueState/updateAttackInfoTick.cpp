@@ -32,7 +32,7 @@ namespace Map {
                     = MACRO_CALL(Map::Units_Func::FindFirstOpponentWithKeep)();
                 this->attackInfo.playerID_0x2c850 = 1;
             }
-            if (this->attackInfo.field127522_0x2b574 == 0) {
+            if (!this->attackInfo.field127522_0x2b574) {
                 this->attackInfo.field127523_0x2b578 = this->attackInfo.field127522_0x2b574;
                 this->attackInfo.field_0x2c854 = this->attackInfo.field127522_0x2b574;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::collectArcherUnitsByLocation, this)();
@@ -48,7 +48,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::trySendKnightTribeToAttack, this)();
                 }
             }
-            if ((this->attackInfo.field127522_0x2b574 & 0xfU) == 0) {
+            if (!(this->attackInfo.field127522_0x2b574 & 0xfU)) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::queueOilThrowForIdleArchers, this)();
             }
             if (((byte)this->attackInfo.field127522_0x2b574 & 0xf) == 8) {
@@ -63,7 +63,7 @@ namespace Map {
             BVar1
                 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::unitsCanMoveFromKeepOfPlayerToAnotherArea,
                     DAT_GameState::ptr)(1);
-            if ((BVar1 != FALSE) && (this->attackInfo.field127523_0x2b578 == 0)) {
+            if ((BVar1 != FALSE) && (!this->attackInfo.field127523_0x2b578)) {
                 this->attackInfo.field127523_0x2b578 = 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::commandUnitsToMoveToKeep, this)();
             }

@@ -20,11 +20,11 @@ namespace UI {
         {
             int iVar1;
             iVar1 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (iVar1 != 0) {
-                if (DAT_MouseState::instance.rightClickStop != 0) {
+            if (iVar1) {
+                if (DAT_MouseState::instance.rightClickStop) {
                     MACRO_CALL(UI::Credits_Func::StopCreditsPlaybackAndSounds)();
                 }
-                if (DAT_MouseState::instance.leftClickStart != 0) {
+                if (DAT_MouseState::instance.leftClickStart) {
                     iVar1 = MACRO_CALL(UI::Helpers_Func::FindCampaignMapHotspotAtMouse)();
                     if (iVar1 == 1) {
                         MACRO_CALL(UI::Credits_Func::EndCreditsSegmentAndAdvanceToNext)();

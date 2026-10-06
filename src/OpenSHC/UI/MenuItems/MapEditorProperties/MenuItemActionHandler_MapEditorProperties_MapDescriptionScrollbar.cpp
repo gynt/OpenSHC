@@ -13,7 +13,7 @@ namespace UI {
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
             int iVar1;
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0) {
+            if (DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                 switch (param_2) {
                 case 1:
                     *minValue = 0;

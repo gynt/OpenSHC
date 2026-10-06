@@ -42,7 +42,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                if (((param_1 == 0x23) || (param_1 == 0x24)) && (INT_00b960ec::instance == 0)) {
+                if (((param_1 == 0x23) || (param_1 == 0x24)) && (!INT_00b960ec::instance)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderNonInteractingButtonBackground,
                         AlphaAndButtonSurfaceObj::ptr)(0);

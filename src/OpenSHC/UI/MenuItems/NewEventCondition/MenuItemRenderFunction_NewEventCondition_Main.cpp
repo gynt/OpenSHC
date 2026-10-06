@@ -315,7 +315,7 @@ namespace UI {
             iVar1 = DAT_MissionAestheticsDefinedData::instance
                         .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex];
         joined_r0x004c072d:
-            if (iVar1 == 0) {
+            if (!iVar1) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {

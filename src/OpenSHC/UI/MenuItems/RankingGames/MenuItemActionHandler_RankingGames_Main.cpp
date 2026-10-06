@@ -67,7 +67,7 @@ namespace UI {
                     DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
                     DAT_GameSynchronyState::instance.currentGameMode
                         = Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER;
-                    if (iVar3 == 0) {
+                    if (!iVar3) {
                         iVar1 = DAT_SkMasters2DataArray::instance[iVar1].lordType;
                         pcVar5 = "lose_screen_crusader.tgx";
                         pcVar7 = CHAR_ARRAY_00eb9ac8::instance;
@@ -77,7 +77,7 @@ namespace UI {
                             pcVar7 = pcVar7 + 4;
                         }
                         *pcVar7 = *pcVar5;
-                        if (iVar1 != 0) {
+                        if (iVar1) {
                             memcpy(CHAR_ARRAY_00eb9ac8::instance, "lose_screen_arab.tgx", 20);
                             (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20)) = (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20)) & 0xffffff00;
                         }

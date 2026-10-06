@@ -34,7 +34,7 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             numInGroup = -1;
-            if (param_1 == 0) {
+            if (!param_1) {
                 numInGroup = 0x1b;
             } else if (param_1 == 1) {
                 numInGroup = 0x1c;

@@ -24,11 +24,11 @@ namespace Map {
             short _unitID2;
             int _xOff;
             short _y;
-            if (((this->attackInfo.field127523_0x2b578 == 0) && (0 < this->attackInfo.unitIDIndex_0x2bd4c))
+            if (((!this->attackInfo.field127523_0x2b578) && (0 < this->attackInfo.unitIDIndex_0x2bd4c))
                 && (_index = 0, 0 < this->attackInfo.unitIDIndex_0x2c520)) {
                 do {
                     _unitID = (int)this->attackInfo.unitIDArray_0x2c070[_index];
-                    if (((_unitID == 0)
+                    if (((!_unitID)
                             || (DAT_UnitsState::instance.units[_unitID].uid
                                 != this->attackInfo.uidArray_0x2c200[_index]))
                         && (_tile = this->attackInfo.tileArray_0x2bd50[_index],

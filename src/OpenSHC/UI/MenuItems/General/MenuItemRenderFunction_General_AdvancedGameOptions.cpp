@@ -139,7 +139,7 @@ namespace UI {
                 /*
                   "Free"
                  */
-                if (DAT_GameSynchronyState::instance.skirmishTroopsCostGold != 0) {
+                if (DAT_GameSynchronyState::instance.skirmishTroopsCostGold) {
                     /*
                       "Cost Gold"
                      */
@@ -161,7 +161,7 @@ namespace UI {
                     OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x6d, (int)((int)(DAT_ButtonX::instance + 0x14)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, _color, 0x12, FALSE,
                     (iVar1 / 32) + 0x20);
-                if (DAT_GameState::instance.mapAndTime.skirmishFogOfWar == 0) {
+                if (!DAT_GameState::instance.mapAndTime.skirmishFogOfWar) {
                     /*
                       OFF
                      */
@@ -202,7 +202,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, _color, 0x12, FALSE, iVar1);
                 iVar1 = DAT_GameSynchronyState::instance.skirmishNoCowThrowing;
             LAB_00428ffd:
-                if (iVar1 != 0) {
+                if (iVar1) {
                     iVar1 = DAT_ButtonW::instance + -0x32 + DAT_ButtonX::instance;
                     iVar2 = 0xce;
                     goto LAB_00429039;
@@ -220,7 +220,7 @@ namespace UI {
                 LAB_00429086:
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    if (iVar1 == 0) {
+                    if (!iVar1) {
                         iVar1 = 0xd0;
                     } else {
                         iVar1 = 0xce;
@@ -242,7 +242,7 @@ namespace UI {
                         OpenSHC::Text::TTA_LEFT, _color, 0x12, FALSE, iVar1);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    if (DAT_GameSynchronyState::instance.skirmishExtremeMode == 0) {
+                    if (!DAT_GameSynchronyState::instance.skirmishExtremeMode) {
                         iVar1 = 0xd0;
                     } else {
                         iVar1 = 0xce;
@@ -261,7 +261,7 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 7,
                                 (int)((int)(DAT_ButtonX::instance + 0x14)), (int)((int)(DAT_ButtonY::instance + 7)),
                                 OpenSHC::Text::TTA_LEFT, _color, 0x12, FALSE, iVar1);
-                            if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 0) {
+                            if (!DAT_GameSynchronyState::instance.skirmishNoRushSetting) {
                                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f,
@@ -341,7 +341,7 @@ namespace UI {
                                 FALSE, (iVar1 / 32) + 0x20);
                         }
                         if (param_1 == 0x5e) {
-                            if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0) {
+                            if (!DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes) {
                                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f,
@@ -379,7 +379,7 @@ namespace UI {
                         /*
                           "Alliances"
                          */
-                        if (DAT_GameSynchronyState::instance.skirmishAlliances == 0) {
+                        if (!DAT_GameSynchronyState::instance.skirmishAlliances) {
                             /*
                               "Anytime"
                              */
@@ -409,7 +409,7 @@ namespace UI {
                     OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC, 0xe, (int)((int)(DAT_ButtonX::instance + 0x14)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, _color, 0x12, FALSE, iVar1);
                 iVar1 = DAT_GameSynchronyState::instance.skirmishExtremeMode;
-                if (DAT_GameSynchronyState::instance.skirmishExtremeMode2 != 0)
+                if (DAT_GameSynchronyState::instance.skirmishExtremeMode2)
                     goto LAB_00428ffd;
             }
             iVar1 = DAT_ButtonW::instance + -0x32 + DAT_ButtonX::instance;

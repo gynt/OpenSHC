@@ -14,7 +14,7 @@ namespace Text {
     // FUNCTION: STRONGHOLDCRUSADER 0x00474110
     void UserTextHandler::handleCharacterCode(byte characterCode)
     {
-        if (this->unknown01 == 0) {
+        if (!this->unknown01) {
             return;
         }
 
@@ -42,7 +42,7 @@ namespace Text {
             return;
         }
 
-        if ((DAT_InsertKeyState::instance.insert != 0)
+        if ((DAT_InsertKeyState::instance.insert)
             && (this->textContentLengthArray[this->textArrayIndex]
                 < this->textBoxMaxCharactersArray[this->textArrayIndex])) {
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::shiftTextRightAtCursor, this)(

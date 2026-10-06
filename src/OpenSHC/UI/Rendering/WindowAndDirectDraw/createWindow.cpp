@@ -31,7 +31,7 @@ namespace UI {
             _wndClassA.lpszMenuName = (CHAR*)0x0;
             _wndClassA.lpszClassName = "FFwinClass";
             _atom = RegisterClassA(&_wndClassA);
-            if (_atom == 0) {
+            if (!_atom) {
                 return FALSE;
             }
             lpParam = (void*)0x0;

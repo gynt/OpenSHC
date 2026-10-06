@@ -47,7 +47,7 @@ namespace UI {
         }
         BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
         if ((((BVar1 != FALSE) && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY))
-                && (TIME_ReceivedMessage_1::instance == 0))
+                && (!TIME_ReceivedMessage_1::instance))
             && (_now = timeGetTime(), 9999 < _now - DWORD_0242746c::instance)) {
             DWORD_0242746c::instance = _now;
             MACRO_CALL(OS_Func::__time64)(&_time64);
@@ -102,92 +102,81 @@ namespace UI {
                 FLAG_JokeAIMessage12::instance = TRUE;
             }
             if (((FLAG_JokeAIMessage09::instance == FALSE)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(9),
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(9),
                         BVar1 != FALSE))
                 && ((7200000 < _now - TIME_Sum_1::instance
-                    && ((_localtime64->tm_hour == 2 && (_localtime64->tm_min == 0)))))) {
+                    && ((_localtime64->tm_hour == 2 && (!_localtime64->tm_min)))))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 9);
                 FLAG_JokeAIMessage09::instance = TRUE;
             }
-            if (((INT_00ee238c::instance == 0)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xf),
+            if (((!INT_00ee238c::instance)
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xf),
                         BVar1 != FALSE))
                 && (14400000 < _now - TIME_Sum_1::instance)) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 0xf);
                 INT_00ee238c::instance = 1;
             }
-            if (((INT_00ee2384::instance == 0)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xd),
+            if (((!INT_00ee2384::instance)
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xd),
                         BVar1 != FALSE))
                 && ((7200000 < _now - TIME_Sum_1::instance
-                    && ((_localtime64->tm_hour == 3 && (_localtime64->tm_min == 0)))))) {
+                    && ((_localtime64->tm_hour == 3 && (!_localtime64->tm_min)))))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 0xd);
                 INT_00ee2384::instance = 1;
             }
-            if ((((INT_00ee2378::instance == 0)
-                     && (BVar1
-                         = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(10),
+            if ((((!INT_00ee2378::instance)
+                     && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(10),
                          BVar1 != FALSE))
                     && (7200000 < _now - TIME_Sum_1::instance))
-                && ((_localtime64->tm_hour == 0 && (_localtime64->tm_min == 0)))) {
+                && ((!_localtime64->tm_hour && (!_localtime64->tm_min)))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 10);
                 INT_00ee2378::instance = 1;
             }
-            if (((INT_00ee2370::instance == 0)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(8),
+            if (((!INT_00ee2370::instance)
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(8),
                         BVar1 != FALSE))
                 && ((7200000 < _now - TIME_Sum_1::instance
-                    && ((_localtime64->tm_hour == 4 && (_localtime64->tm_min == 0)))))) {
+                    && ((_localtime64->tm_hour == 4 && (!_localtime64->tm_min)))))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 8);
                 INT_00ee2370::instance = 1;
             }
             if ((((FLAG_JokeAIMessage05::instance == FALSE)
-                     && (BVar1
-                         = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(5),
+                     && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(5),
                          BVar1 != FALSE))
                     && (7200000 < _now - TIME_Sum_1::instance))
-                && ((_localtime64->tm_hour == 5 && (_localtime64->tm_min == 0)))) {
+                && ((_localtime64->tm_hour == 5 && (!_localtime64->tm_min)))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 5);
                 FLAG_JokeAIMessage05::instance = TRUE;
             }
-            if (((INT_00ee2388::instance == 0)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xe),
+            if (((!INT_00ee2388::instance)
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xe),
                         BVar1 != FALSE))
                 && ((12000000 < _now - TIME_Sum_1::instance
-                    && (iVar2 = MACRO_CALL(UI::GreatestLord_Func::IfAiGreatestLordGetAiType)(),
-                        iVar2 == 0xe)))) {
+                    && (iVar2 = MACRO_CALL(UI::GreatestLord_Func::IfAiGreatestLordGetAiType)(), iVar2 == 0xe)))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 0xe);
                 INT_00ee2388::instance = 1;
             }
-            if ((((INT_00ee236c::instance == 0)
-                     && (BVar1
-                         = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(7),
+            if ((((!INT_00ee236c::instance)
+                     && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(7),
                          BVar1 != FALSE))
                     && (7200000 < _now - TIME_Sum_1::instance))
-                && ((_localtime64->tm_hour == 1 && (_localtime64->tm_min == 0)))) {
+                && ((_localtime64->tm_hour == 1 && (!_localtime64->tm_min)))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 7);
                 INT_00ee236c::instance = 1;
             }
-            if (((INT_00ee237c::instance == 0)
-                    && (BVar1
-                        = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xb),
+            if (((!INT_00ee237c::instance)
+                    && (BVar1 = MACRO_CALL_MEMBER(AI::AICState_Func::aiOfTypeInCurrentGame, DAT_AICState::ptr)(0xb),
                         BVar1 != FALSE))
                 && ((12600000 < _now - TIME_Sum_1::instance
-                    && (iVar2 = MACRO_CALL(UI::GreatestLord_Func::IfAiGreatestLordGetAiType)(),
-                        iVar2 == 0xb)))) {
+                    && (iVar2 = MACRO_CALL(UI::GreatestLord_Func::IfAiGreatestLordGetAiType)(), iVar2 == 0xb)))) {
                 MACRO_CALL_MEMBER(AI::AICState_Func::playJokeBikFromAIToHuman, DAT_AICState::ptr)(
                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 0xb);
                 INT_00ee237c::instance = 1;

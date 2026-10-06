@@ -44,7 +44,7 @@ namespace UI {
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if ((BVar1 == FALSE)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)) {
-                if (param_1 == 0) {
+                if (!param_1) {
                     numInGroup = 0x3e;
                     iVar3 = 8;
                 } else if (param_1 == 1) {

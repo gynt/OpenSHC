@@ -20,7 +20,7 @@ namespace UI {
         void InGameMenu::MenuItemRenderFunction_InGameMenu_BikMessagePlayerShield(int param_1, ...)
         {
             dword dVar1;
-            if (DAT_VideoBikQueue::instance.mbr_0x928 != 0) {
+            if (DAT_VideoBikQueue::instance.mbr_0x928) {
                 dVar1 = DAT_VideoBikQueue::instance.mbr_0x928;
                 if ((int)DAT_VideoBikQueue::instance.mbr_0x928 < 0) {
                     dVar1 = -DAT_VideoBikQueue::instance.mbr_0x928;

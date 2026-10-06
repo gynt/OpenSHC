@@ -40,7 +40,7 @@ namespace Map {
         } else {
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2 = 0x10;
         }
-        if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 3) == 0) {
+        if (!(DAT_EntityState::instance.entityArray[uVar2].rng_1 & 3)) {
             DAT_EntityState::instance.entityArray[uVar2].graphicType2
                 = DAT_EntityState::instance.entityArray[uVar2].graphicType2 + 0x10;
         }

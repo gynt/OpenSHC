@@ -20,12 +20,12 @@ namespace Synchrony {
         local_8 = 0x200;
         this->gameSpyArcadeAvailable = 0;
         LVar2 = RegOpenKeyExA((HKEY__*)0x80000001, "Software\\GameSpy\\GameSpy Arcade", 0, 0x20019, &local_c);
-        if (LVar2 == 0) {
+        if (!LVar2) {
             LVar2 = RegQueryValueExA(
                 local_c, "InstDir", (DWORD*)0x0, &local_4, (BYTE*)this->shellExecuteTarget, &local_8);
             RegCloseKey(local_c);
             pcVar1 = this->shellExecuteTarget;
-            if (LVar2 == 0) {
+            if (!LVar2) {
                 do {
                     pcVar3 = pcVar1;
                     pcVar1 = pcVar3 + 1;

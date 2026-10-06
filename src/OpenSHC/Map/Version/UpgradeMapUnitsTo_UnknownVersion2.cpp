@@ -33,7 +33,7 @@ namespace Map {
                     iVar1 = DAT_UnitPropertiesDefinedData::instance.BASE_HP[(short)psVar3->unitType];
                     psVar3->maxHealth = iVar1;
                     psVar3->health = iVar1;
-                    if (psVar3->maxHealth == 0) {
+                    if (!psVar3->maxHealth) {
                         sVar2 = 100;
                     } else {
                         sVar2 = (short)((iVar1 * 100) / psVar3->maxHealth);

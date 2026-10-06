@@ -29,7 +29,7 @@ namespace UI {
             int iVar3;
             iVar3 = DAT_ButtonY::instance;
             iVar2 = DAT_ButtonX::instance;
-            if (DAT_UnitsState::instance.nHasOwnedUnitInSelection == 0) {
+            if (!DAT_UnitsState::instance.nHasOwnedUnitInSelection) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             iVar1 = DAT_UnitsState::instance.selectionSlots[param_1];

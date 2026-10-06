@@ -36,11 +36,10 @@ namespace Map {
                 pUVar2 = &DAT_UnitsState::instance.units[1];
                 iVar2 = DAT_UnitsState::instance.maxUnitCount - 1;
                 do {
-                    if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE) && (pUVar2->dying == 0))
-                            && (pUVar2->isSelectable_OR_matchTime != 0))
+                    if ((((pUVar2->logicalState != Map::Units::ULS_INVISIBLE) && (!pUVar2->dying))
+                            && (pUVar2->isSelectable_OR_matchTime))
                         && (((_troopType = pUVar2->unitType,
-                                 _troopType != Map::Units::UT_E_ENGINEER
-                                     && (_troopType != Map::Units::UT_TUNNELER))
+                                 _troopType != Map::Units::UT_E_ENGINEER && (_troopType != Map::Units::UT_TUNNELER))
                             && (_troopType != Map::Units::UT_E_LADDER)))) {
                         _playerID = pUVar2->owner;
                         _troopTypeValue
@@ -51,7 +50,7 @@ namespace Map {
                     }
                     pUVar2 = pUVar2 + 0x248;
                     iVar2 = iVar2 + -1;
-                } while (iVar2 != 0);
+                } while (iVar2);
             }
         }
 

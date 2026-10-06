@@ -70,7 +70,7 @@ namespace UI {
             local_38 = x + 0x10;
             local_34 = width + -0x20;
             keepOffsetX = FALSE;
-            if (DAT_00df5540::instance != 0) {
+            if (DAT_00df5540::instance) {
                 keepOffsetX = DAT_00df5544::instance;
             }
             iVar3 = ((height + -1) / 0x18 + 1) * 0x18;
@@ -80,7 +80,7 @@ namespace UI {
             local_2c = iVar3;
             if (0 < iVar3) {
                 do {
-                    if (local_30 == 0) {
+                    if (!local_30) {
                         iVar5 = 1;
                     } else {
                         iVar5 = (-(uint)(local_30 != iVar3 + -0x18) & 0xfffffffa) + 0xd;
@@ -90,7 +90,7 @@ namespace UI {
                         iVar9 = local_30 + y;
                         do {
                             iVar3 = iVar5;
-                            if (iVar4 == 0) {
+                            if (!iVar4) {
                             LAB_004bcca6:
                                 iVar13 = iVar3 + 3;
                             } else {
@@ -118,7 +118,7 @@ namespace UI {
                 } while (local_30 < iVar3);
             }
             iVar3 = local_28;
-            if ((DAT_00df5564::instance != 0) && (INT_00df5648::instance == 0)) {
+            if ((DAT_00df5564::instance) && (!INT_00df5648::instance)) {
                 DAT_00df5644::instance = DAT_00df5644::instance + 1;
                 if (1 < DAT_00df5644::instance) {
                     DAT_00df5644::instance = 0;
@@ -150,7 +150,7 @@ namespace UI {
                 pcVar2, iVar5, iVar13, TVar6, BVar8, iVar9, keepOffsetX_00, (int)((int)(BVar1)));
             iVar13 = local_34;
             iVar5 = y + 0x26;
-            if (DAT_00df5564::instance == 0) {
+            if (!DAT_00df5564::instance) {
                 iVar11 = 0x13;
                 uVar10 = 0xc2f0eb;
                 iVar9 = local_38;
@@ -162,7 +162,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     pcVar2, iVar9, iVar7, iVar12, uVar10, iVar11, (int)((int)(BVar1)));
                 iVar5 = iVar5 + DAT_TextManagerObject::instance.field1_0x4;
-                if (DAT_00df5564::instance != 0)
+                if (DAT_00df5564::instance)
                     goto LAB_004bce14;
             } else {
             LAB_004bce14:

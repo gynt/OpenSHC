@@ -52,7 +52,7 @@ namespace UI {
                 break;
             case 1:
                 DAT_TextEditorState::instance.helpDialogSubMode
-                    = (uint)(DAT_TextEditorState::instance.helpDialogSubMode == 0);
+                    = (uint)(!DAT_TextEditorState::instance.helpDialogSubMode);
                 MACRO_CALL_MEMBER(
                     Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                 return;
@@ -85,7 +85,7 @@ namespace UI {
                 }
                 break;
             case 4:
-                if (DAT_TextEditorState::instance.customHelpTextLength != 0) {
+                if (DAT_TextEditorState::instance.customHelpTextLength) {
                     pacVar5 = DAT_UserHelpDefinedData::instance.HelpSections
                         + DAT_TextEditorState::instance.currentHelpSectionID;
                     pacVar4 = pacVar5;
@@ -415,7 +415,7 @@ namespace UI {
                 break;
             case 0x14:
                 DAT_TextEditorState::instance.useWideHelpLayout = DAT_TextEditorState::instance.useWideHelpLayout ^ 1;
-                if (DAT_TextEditorState::instance.useWideHelpLayout == 0) {
+                if (!DAT_TextEditorState::instance.useWideHelpLayout) {
                     MACRO_CALL_MEMBER(Text::TextEditorState_Func::setHelpWindowBounds,
                         DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.dialogX + 10,
                         (undefined4)((int)(DAT_TextEditorState::instance.dialogY + 10)),
@@ -618,7 +618,7 @@ namespace UI {
                 }
                 break;
             case -3:
-                if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
+                if (!DAT_TextEditorState::instance.useAlternateHelpTab) {
                     if (-1 < DAT_TextEditorState::instance.field50_0x23968) {
                         MACRO_CALL_MEMBER(Text::TextEditorState_Func::openUnusedHelpTextEditorDialog,
                             DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.field50_0x23968);

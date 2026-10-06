@@ -37,7 +37,7 @@ namespace UI {
         int iVar6;
         int iVar7;
         int iVar8;
-        if (this->iconDeactivatedUnk_0x36 == 0) {
+        if (!this->iconDeactivatedUnk_0x36) {
             if (this->menuItemRenderFunctionType == UI::Enums::MIRFT_GM_DATA_IMAGE) {
                 iVar7 = GMTotalPicturesProcessed::instance[DAT_UIButtonDefinedData::instance
                         .ButtonGmDataArray[(this->firstItemTypeData).gmDataIndex]
@@ -57,11 +57,11 @@ namespace UI {
             DAT_ButtonCurrentlyInteracting::instance = (BOOLEnum)(short)(this->clicked | this->hovering);
             DAT_ButtonBlendStrength::instance = 0;
             DAT_ButtonUnknownZero::instance = (int)this->unknownZero;
-            if (DAT_GameCore::instance.hasMenuRenderedUnk != 0) {
+            if (DAT_GameCore::instance.hasMenuRenderedUnk) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             iVar7 = this->menuPointer->currentBuildMenuButtonShiftUnk_0x14;
-            if (iVar7 != 0) {
+            if (iVar7) {
                 iVar5 = (this->position).position.x;
                 if (iVar5 - iVar7 < (int)DAT_MenuHandlerState::instance.const017) {
                     DAT_ButtonBlendStrength::instance = 0;
@@ -83,7 +83,7 @@ namespace UI {
             }
             MVar3 = this->menuItemRenderFunctionType;
             if (MVar3 == UI::Enums::MIRFT_SLIDER_OR_SCROLLBAR) {
-                if (this->menuPointer->one != 0) {
+                if (this->menuPointer->one) {
                     piVar1 = &(this->secondItemTypeData).buttonState.countTo100;
                     piVar2 = &(this->secondItemTypeData).buttonState.clickTimestamp_0x4;
                     (*(this->menuItemActionHandler).slider)(

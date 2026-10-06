@@ -71,7 +71,7 @@ namespace UI {
             iVar5, 1);
         local_c = 0;
         iVar3 = ((100 < DAT_GameState::instance.playerDataArray[iVar3].crowding) - 1 & 0x7c3f) + 0xff;
-        if (iVar2 == 0) {
+        if (!iVar2) {
             iVar3 = 0x7d3e;
         } else {
             if (99 < iVar2) {

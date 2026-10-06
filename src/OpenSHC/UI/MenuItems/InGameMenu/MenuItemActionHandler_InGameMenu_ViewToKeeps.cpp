@@ -86,7 +86,7 @@ namespace UI {
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .keep.id;
                         DWORD_00b98410::instance = DVar2;
-                        if (iVar4 != 0) {
+                        if (iVar4) {
                             MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
                                 DAT_ViewportRenderState::ptr)(
                                 (short)DAT_BuildingsState::instance.buildings[iVar4].x + 2,
@@ -113,7 +113,7 @@ namespace UI {
                                     .keep.id;
                         DAT_00b9840c::instance = 0;
                         DWORD_00b98410::instance = DVar2;
-                        if (iVar4 != 0) {
+                        if (iVar4) {
                             MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::focusOnCoordinate,
                                 DAT_ViewportRenderState::ptr)(
                                 (short)DAT_BuildingsState::instance.buildings[iVar4].x + 2,

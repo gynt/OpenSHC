@@ -52,7 +52,7 @@ namespace Synchrony {
         this->displayYourIP = FALSE;
         this->lanOrWan = FALSE;
         _wsaReturnCode1 = WSAStartup(257, &_wsaData);
-        if (_wsaReturnCode1 == 0) {
+        if (!_wsaReturnCode1) {
             _wsaReturnCode2 = gethostname(_hostNameBuffer, 0x50);
             if (((_wsaReturnCode2 != -1) && (_hostent = gethostbyname(_hostNameBuffer), _hostent != (hostent*)0x0))
                 && (*_hostent->h_addr_list != (char*)0x0)) {

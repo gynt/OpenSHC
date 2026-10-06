@@ -39,7 +39,7 @@ namespace UI {
             int iVar2;
             iVar2 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
-            if (((DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
+            if (((DAT_GameCore::instance.U2_mapType_singleOrMulti)
                     && (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU))
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 right_00 = DAT_ButtonW::instance + 0x18 + DAT_ButtonX::instance;
@@ -73,11 +73,11 @@ namespace UI {
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     right, top_00, right_00, top_00, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                if (DAT_GameCore::instance.field115_0x1d98 != 0) {
+                if (DAT_GameCore::instance.field115_0x1d98) {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(
                         DAT_ButtonY::instance + 7, (int)((int)(DAT_ButtonH::instance + -0x2a + DAT_ButtonY::instance)));
-                    if (DAT_GameCore::instance.descriptionUseStringTable == 0) {
+                    if (!DAT_GameCore::instance.descriptionUseStringTable) {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk,
                             DAT_TextManagerObject::ptr)(DAT_GameCore::instance.temporaryTextBufferOfSize1000,
                             (int)((int)(DAT_ButtonX::instance + 5)),
@@ -86,7 +86,7 @@ namespace UI {
                             UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,
                             DAT_TextureRenderCoreObject::ptr)();
                     }
-                    if (DAT_GameCore::instance.descriptionStringTableIndex != 0) {
+                    if (DAT_GameCore::instance.descriptionStringTableIndex) {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText2Unk,
                             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES,
                             (int)((int)(DAT_GameCore::instance.descriptionStringTableIndex)),

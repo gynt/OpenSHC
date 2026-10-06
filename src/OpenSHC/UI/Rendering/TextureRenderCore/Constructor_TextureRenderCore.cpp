@@ -21,7 +21,7 @@ namespace UI {
              */
             this->gmProcessedImageDataBufferSize_0x74 = processedImageDataBufferSize;
             this->gmAndGfxImageDataBufferSize_0x8c = gmAndGfxImageDataBufferSize;
-            if (unknownMemSize == 0) {
+            if (!unknownMemSize) {
                 this->unknownMemSize_1_0x7c = 0;
                 this->unknownMemSize_2_0x84 = 0;
             } else {
@@ -40,7 +40,7 @@ namespace UI {
             this->gmProcessedImageData
                 = MACRO_CALL(OpenSHC::OS_Func::_malloc)(this->gmProcessedImageDataBufferSize_0x74);
             if (this->gmProcessedImageData != (void*)0x0) {
-                if (unknownMemSize == 0) {
+                if (!unknownMemSize) {
                     this->unknownMemPtr_1_0x80 = (void*)0x0;
                     this->address2 = (void*)0x0;
                 } else {

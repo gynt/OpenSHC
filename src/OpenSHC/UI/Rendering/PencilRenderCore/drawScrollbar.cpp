@@ -55,7 +55,7 @@ namespace UI {
                             DE::SHCDE::GM_INTERFACE_ICONS3, 0x65, (int)((int)(xPos)), _yPos + yPos);
                         _yPos = _yPos + 1;
                         _yPosEnd = _yPosEnd + -1;
-                    } while (_yPosEnd != 0);
+                    } while (_yPosEnd);
                 }
                 MACRO_CALL_MEMBER(
                     UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
@@ -80,7 +80,7 @@ namespace UI {
                             blendStrength);
                         _yPos = _yPos + 1;
                         thumbYPos = thumbYPos + -1;
-                    } while (thumbYPos != 0);
+                    } while (thumbYPos);
                 }
                 alphaImageID = 0x69;
                 _yPosEnd = 0x66;

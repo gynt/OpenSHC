@@ -19,9 +19,9 @@ namespace UI {
             int iVar4;
             int iVar5;
             iVar5 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
-            if (param_1 == 0) {
+            if (!param_1) {
                 iVar3 = 0;
-                if (DAT_MenuTextInputState::instance.fileListSortOrder == 0) {
+                if (!DAT_MenuTextInputState::instance.fileListSortOrder) {
                     if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         puVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                             + DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + 0x1f2;
@@ -62,7 +62,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                 } else {
                     do {
@@ -81,7 +81,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                 }
             } else if (param_1 == 2) {
@@ -104,7 +104,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 6;
                 } else {
                     do {
@@ -124,7 +124,7 @@ namespace UI {
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
-                    } while (iVar4 != 0);
+                    } while (iVar4);
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                 }
             }

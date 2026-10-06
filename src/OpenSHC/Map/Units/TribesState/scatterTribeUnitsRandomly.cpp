@@ -25,7 +25,7 @@ namespace Map {
             int iVar4;
             int unitSelectionIndex;
             int index;
-            if (param_1 == 0) {
+            if (!param_1) {
                 return 0;
             }
             sVar1 = this->tribes[param_1].selectionTargetUnitID;

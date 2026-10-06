@@ -49,7 +49,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(iVar2);
-                if (DAT_WindowAndDirectDraw::instance.field37_0xdc == 0) {}
+                if (!DAT_WindowAndDirectDraw::instance.field37_0xdc) {}
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_MenuHandlerState::instance.y + 406)),
                     DAT_WindowAndDirectDraw::instance.resolutionX + -1,
@@ -409,7 +409,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(iVar2);
-                if (DAT_WindowAndDirectDraw::instance.field37_0xdc == 0) {}
+                if (!DAT_WindowAndDirectDraw::instance.field37_0xdc) {}
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,

@@ -55,7 +55,7 @@ namespace Map {
             this->entityArray[entityID].pathTargetY = sVar5;
             this->entityArray[entityID].someMicroX = (ushort)(x <= targetX) * 2 + -1;
             this->entityArray[entityID].someMicroY = (ushort)(y <= targetY) * 2 + -1;
-            if (sVar9 == 0) {
+            if (!sVar9) {
                 if (this->entityArray[entityID].pathDeltaY == 0) {
                     this->entityArray[entityID].pathAxisCase = 0;
                 } else {
@@ -63,7 +63,7 @@ namespace Map {
                 }
             } else {
                 sVar5 = this->entityArray[entityID].pathDeltaY;
-                if (sVar5 == 0) {
+                if (!sVar5) {
                     this->entityArray[entityID].pathAxisCase = 2;
                 } else if (sVar9 < sVar5) {
                     this->entityArray[entityID].pathAxisCase = 3;
@@ -89,7 +89,7 @@ namespace Map {
             }
             iVar7 = DAT_EntityDefinedData::instance
                         .EntityArrayCurveTypeForProjectileType[(short)this->entityArray[entityID].entityType];
-            if (iVar7 == 0) {
+            if (!iVar7) {
                 uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
                     x, y, height, targetX, targetY, targetZ, 1);
                 sVar5 = (short)uVar6;
@@ -153,7 +153,7 @@ namespace Map {
                     }
                     sVar5 = (short)(((int)uVar6 >> 8) % 0x14) + 0x10;
                     this->entityArray[entityID].velocityUnk = sVar5;
-                    if ((uVar6 & 0x8000) == 0) {
+                    if (!(uVar6 & 0x8000)) {
                         return;
                     }
                     this->entityArray[entityID].velocityUnk = -sVar5;
@@ -176,7 +176,7 @@ namespace Map {
                     }
                     if (iVar7 == 8) {
                         sVar5 = this->entityArray[entityID].unitID_OR_seaGullID;
-                        if (sVar5 == 0) {
+                        if (!sVar5) {
                             this->entityArray[entityID].startingAngle
                                 = (short)(this->entityArray[entityID].rng_1 % 0x3c) + 8;
                             this->entityArray[entityID].velocityUnk

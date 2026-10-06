@@ -49,7 +49,7 @@ namespace Map {
                                 BVar1 != FALSE))
                         && ((_pUnit->unitType == Map::Units::UT_E_ARCHER
                             || (_pUnit->unitType == Map::Units::UT_E_XBOW)))) {
-                        if ((DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U) == 0) {
+                        if (!(DAT_TileMapState::instance.LogicLayer[_pUnit->tile] & 0x10000100U)) {
                             /*
                               not on the keep or gatehouse, or towers?
                              */
@@ -61,7 +61,7 @@ namespace Map {
                                 this->attackInfo.unitIDIndex_0x2bd4c = this->attackInfo.unitIDIndex_0x2bd4c + 1;
                             }
                         } else if ((_index < 200)
-                            && ((_pUnit->tribeID == 0
+                            && ((!_pUnit->tribeID
                                 || (DAT_TribesState::instance.tribes[_pUnit->tribeID].isRallyingUnk == 0)))) {
                             /*
                               not rallying or part of tribe

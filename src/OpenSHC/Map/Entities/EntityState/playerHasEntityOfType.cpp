@@ -28,7 +28,7 @@ namespace Map {
             }
             iVar1 = 1;
             pEVar1 = &this->entityArray[1];
-            while (((pEVar1->logicalState == 0 || ((int)(short)pEVar1->entityType != entityType))
+            while (((!pEVar1->logicalState || ((int)(short)pEVar1->entityType != entityType))
                 || (pEVar1->owner != playerID))) {
                 iVar1 = iVar1 + 1;
                 pEVar1 = pEVar1 + 0x74;

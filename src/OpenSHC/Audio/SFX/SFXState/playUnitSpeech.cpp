@@ -78,7 +78,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_CATAPULT:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(1);
                     return;
                 }
@@ -93,7 +93,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_TREBUCHET:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(2);
                     return;
                 }
@@ -107,7 +107,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_MANGONEL:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(0);
                     return;
                 }
@@ -121,7 +121,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_TOWER:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(3);
                     return;
                 }
@@ -132,7 +132,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_BATTERINGRAM:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(4);
                     return;
                 }
@@ -147,7 +147,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_SHIELD:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(5);
                     return;
                 }
@@ -159,7 +159,7 @@ namespace Audio {
                 break;
             case Map::Units::UT_S_BALLISTA:
             case Map::Units::UT_S_FBALLISTA:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(6);
                     return;
                 }

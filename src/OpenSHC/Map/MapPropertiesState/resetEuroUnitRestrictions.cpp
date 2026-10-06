@@ -34,7 +34,7 @@ namespace Map {
             *psVar2 = 1;
             psVar2 = psVar2 + 1;
             iVar3 = iVar3 + -1;
-        } while (iVar3 != 0);
+        } while (iVar3);
     }
 
 }

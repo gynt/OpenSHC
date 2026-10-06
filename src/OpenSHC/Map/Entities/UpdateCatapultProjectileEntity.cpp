@@ -15,7 +15,7 @@ namespace Map {
         int iVar3;
         uVar1 = DAT_CurrentEntityID::instance;
         sVar2 = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround;
-        if (sVar2 == 0) {
+        if (!sVar2) {
             if (7 < DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated) {
                 DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated = 0;
             }

@@ -84,7 +84,7 @@ namespace Map {
                 iVar10 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(playerID);
                 iVar11 = DAT_CurrentBuildingID::instance;
-                if (iVar10 == 0) {
+                if (!iVar10) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
@@ -106,7 +106,7 @@ namespace Map {
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar11].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[iVar11].terrainHeightUnk)),
                 Map::Units::UT_S_TOWER);
-            if (iVar10 == 0) {
+            if (!iVar10) {
                 piVar12 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingProgress;
                 *piVar12 = *piVar12
                     - (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount;
@@ -119,7 +119,7 @@ namespace Map {
                     psVar8 = psVar8 + 1;
                     iVar11 = iVar11 + -1;
                     DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
-                } while (iVar11 != 0);
+                } while (iVar11);
             } else {
                 uVar13 = (int)SEC_RNG::instance.currentNumber2 & 0x8000000f;
                 if ((int)uVar13 < 0) {
@@ -218,7 +218,7 @@ namespace Map {
                     piVar12 = piVar12 + 1;
                     piVar14 = piVar14 + 1;
                     local_c = local_c + -1;
-                } while (local_c != 0);
+                } while (local_c);
             }
             iVar11 = DAT_CurrentBuildingID::instance;
             bVar15 = DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU;

@@ -81,7 +81,7 @@ namespace UI {
                     RVar1
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .marketSelectedResourceType;
-                    if (param_1 == 0) {
+                    if (!param_1) {
                         iVar4 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
                             DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                     } else {
@@ -112,7 +112,7 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, TVar6, uVar7, uVar8, iVar9, BVar10, iVar12);
                 RVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType;
-                if (param_1 == 0) {
+                if (!param_1) {
                     iVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(RVar1));
                 } else {
@@ -133,7 +133,7 @@ namespace UI {
                 }
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState;
-                if (iVar5 == 0) {
+                if (!iVar5) {
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         DE::SHCDE::TEXT_IN_TRADEPOST, iVar4, DAT_MenuHandlerState::instance.x + 0xdc,
                         DAT_MenuHandlerState::instance.y + 0x243, Text::TTA_LEFT, 0, 0x12, FALSE);

@@ -57,7 +57,7 @@ namespace Map {
         LAB_00405715:
             DAT_EntityState::instance.entityArray[uVar2].graphicType2 = iVar3;
         } else {
-            if (_height0 == 0) {
+            if (!_height0) {
                 _height0 = DAT_EntityState::instance.entityArray[uVar2].fireParameter_0xb6;
                 if (_height0 < 3) {
                 LAB_004058a7:
@@ -68,7 +68,7 @@ namespace Map {
                         iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames2
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
                     }
-                } else if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
+                } else if (!(DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80)) {
                     DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
                     iVar3
                         = (int)(char)DAT_EntityDefinedData::instance
@@ -86,7 +86,7 @@ namespace Map {
                     _height0 = DAT_EntityState::instance.entityArray[uVar2].fireParameter_0xb6;
                     if (_height0 < 3)
                         goto LAB_004058a7;
-                    if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
+                    if (!(DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80)) {
                         DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
                         iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames8
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
@@ -100,7 +100,7 @@ namespace Map {
                     _height0 = DAT_EntityState::instance.entityArray[uVar2].fireParameter_0xb6;
                     if (_height0 < 3)
                         goto LAB_004058a7;
-                    if ((DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80) == 0) {
+                    if (!(DAT_EntityState::instance.entityArray[uVar2].rng_1 & 0x80)) {
                         DAT_EntityState::instance.entityArray[uVar2].gmID = 0x90;
                         iVar3 = (int)(char)DAT_EntityDefinedData::instance.FireAnimationFrames6
                                     [DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated];
@@ -113,7 +113,7 @@ namespace Map {
             }
             DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated = 0;
             _height0 = DAT_EntityState::instance.entityArray[uVar2].someTracker;
-            if (_height0 == 0) {
+            if (!_height0) {
                 DAT_EntityState::instance.entityArray[uVar2].someTracker = 1;
             } else if (_height0 == 1) {
                 psVar1 = &DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround;
@@ -128,11 +128,10 @@ namespace Map {
                     DAT_EntityState::instance.entityArray[uVar2].someTracker = 2;
                 }
                 if ((DAT_TileMapState::instance.BuildingLayer[DAT_EntityState::instance.entityArray[uVar2].tile] != 0)
-                    && (iVar3
-                        = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlammabilityFactor,
+                    && (iVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlammabilityFactor,
                             DAT_BuildingsState::ptr)((int)DAT_TileMapState::instance
                                 .BuildingLayer[DAT_EntityState::instance.entityArray[uVar2].tile]),
-                        uVar2 = DAT_CurrentEntityID::instance, iVar3 != 0)) {
+                        uVar2 = DAT_CurrentEntityID::instance, iVar3)) {
                     if (DAT_BuildingsState::instance
                             .buildings[DAT_TileMapState::instance.BuildingLayer
                                     [DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].tile]]
@@ -162,7 +161,7 @@ namespace Map {
         if ((3 < _height0)
             || (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].fireParameter_0xb6 < 2))
             goto LAB_00405b3d;
-        if (_height0 == 0) {
+        if (!_height0) {
             _totalHeightAtTile = MACRO_CALL_MEMBER(
                 Map::TileMapState_Func::getTotalHeightAtTile, DAT_TileMapState::ptr)(_tile + -1);
             _heightDerivative = (int)(_height - _totalHeightAtTile) >> 0x1f;
@@ -232,7 +231,7 @@ namespace Map {
         *psVar1 = *psVar1 + 1;
     LAB_00405b3d:
         iVar3 = *(int*)(DAT_EntityState::instance.entityArray[0].unused_0x48 + _entityOffset + 4);
-        if ((DAT_TileMapState::instance.LogicLayer[iVar3] & 0xba7001b1U) == 0) {
+        if (!(DAT_TileMapState::instance.LogicLayer[iVar3] & 0xba7001b1U)) {
             MACRO_CALL_MEMBER(
                 Map::Entities::EntityState_Func::processFireDamageToUnitsAtTile, DAT_EntityState::ptr)(iVar3,
                 (int)*(short*)(DAT_EntityState::instance.entityArray[0].unused_0x2e + _entityOffset + -2),

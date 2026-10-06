@@ -35,25 +35,24 @@ namespace UI {
             switch (param_1) {
             case 2:
                 if ((DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_KEEP1)
-                    && (DAT_00df5560::instance == 0)) {
+                    && (!DAT_00df5560::instance)) {
                     MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x78, 0x203);
                 }
                 break;
             case 5:
-                if (((DAT_00df5558::instance == 0)
+                if (((!DAT_00df5558::instance)
                         && (DAT_TileMapState::instance.currentMapperCommand != Commands::M_MAPPER_GRANARY))
-                    && (DAT_00df5560::instance == 0)) {
+                    && (!DAT_00df5560::instance)) {
                     MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x3c, 0x203);
                 }
                 break;
             case 8:
-                if (((DAT_00df5558::instance == 0)
+                if (((!DAT_00df5558::instance)
                         && (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .rationsSetting
                             != 4))
-                    && (DAT_GameCore::instance.activeMenuTab.tabType
-                        == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP)) {
+                    && (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP)) {
                     MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x18b, 0x23a);
                 }
                 break;
@@ -67,7 +66,7 @@ namespace UI {
                 }
                 break;
             case 0xb:
-                if ((DAT_00df5558::instance == 1) && (DAT_00df5560::instance == 0)) {
+                if ((DAT_00df5558::instance == 1) && (!DAT_00df5560::instance)) {
                     MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x2df, 0x210);
                 }
                 break;
@@ -80,7 +79,7 @@ namespace UI {
                 MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x78, 0x226);
                 return;
             case 0x11:
-                if (DAT_00df5560::instance == 0) {
+                if (!DAT_00df5560::instance) {
                     if (DAT_GameCore::instance.activeMenuTab.tabType != UI::Enums::BASMTT_QUARRY) {
                         MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x44, 0x246);
                     }
@@ -90,7 +89,7 @@ namespace UI {
                 }
                 break;
             case 0x15:
-                if (DAT_00df5560::instance == 0) {
+                if (!DAT_00df5560::instance) {
                     if (DAT_GameCore::instance.activeMenuTab.tabType != UI::Enums::BASMTT_WATERPOT) {
                         MACRO_CALL(UI::Rendering_Func::RenderAnimatedTutorialFloatOverlay)(0x69, 0x246);
                     }

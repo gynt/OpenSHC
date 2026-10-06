@@ -26,7 +26,7 @@ namespace UI {
             void* pvVar2;
             RenderTargetInt _tempBufferChoiceValueUnk;
             pvVar2 = DAT_TextureRenderCoreObject::instance.gmProcessedImageData;
-            if (DAT_TextureRenderCoreObject::instance.isZoom2 != 0) {
+            if (DAT_TextureRenderCoreObject::instance.isZoom2) {
                 iVar1 = GMTotalPicturesProcessed::instance[gmID];
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderInterfaceOrBuildingOccupationArea, this)(xPos,

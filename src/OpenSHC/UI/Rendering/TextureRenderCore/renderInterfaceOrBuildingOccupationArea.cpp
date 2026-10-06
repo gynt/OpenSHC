@@ -60,7 +60,7 @@ namespace UI {
                 iVar7 = blendStrengthUnk * 0x200;
                 iVar2 = blendStrengthUnk * -0x200;
                 iVar9 = iVar2 + 0xd812d8;
-                if (this->isZoom2 == 0) {
+                if (!this->isZoom2) {
                     if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                         this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                         _jumpLineBytes = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
@@ -105,7 +105,7 @@ namespace UI {
                                         _verticalSpaceLeftUnk = 0 < _surfaceHeightEnd;
                                         y = _surfaceHeightStart;
                                         _surfaceHeightEnd = _remainingVerticalSpace;
-                                    } while (_remainingVerticalSpace != 0 && _verticalSpaceLeftUnk);
+                                    } while (_remainingVerticalSpace && _verticalSpaceLeftUnk);
                                 }
                                 _renderSurfacePtr
                                     = (ushort*)((int)this->currentRenderSurface + y * blendStrengthUnk + x * 2);
@@ -143,7 +143,7 @@ namespace UI {
                                                 imageDataPtr = (ushort*)((int)imageDataPtr + 2);
                                                 _renderSurfacePtr = _renderSurfacePtr + 1;
                                                 _surfaceHeightStart = _surfaceHeightStart + -1;
-                                            } while (_surfaceHeightStart != 0);
+                                            } while (_surfaceHeightStart);
                                         }
                                         if (_tgxToken2 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                             break;
@@ -163,14 +163,14 @@ namespace UI {
                                                 + (_surfaceColor | uVar6 | uVar8);
                                             _renderSurfacePtr = _renderSurfacePtr + 1;
                                             _surfaceHeightStart = _surfaceHeightStart + -1;
-                                        } while (_surfaceHeightStart != 0);
+                                        } while (_surfaceHeightStart);
                                     }
                                     _renderSurfacePtr = (ushort*)((int)_renderSurfacePtr + _jumpLineBytes);
                                     _surfaceHeightStart = height + -1;
                                     _verticalSpaceLeftUnk = 0 < height;
                                     height = _surfaceHeightStart;
                                     imageDataPtr = (ushort*)_imageDataPtr;
-                                } while (_surfaceHeightStart != 0 && _verticalSpaceLeftUnk);
+                                } while (_surfaceHeightStart && _verticalSpaceLeftUnk);
                             }
                         }
                         if (-1 < x) {
@@ -240,7 +240,7 @@ namespace UI {
                                             _surfaceDataPtr = _surfaceDataPtr + 1;
                                             _surfaceHeightStart = _surfaceHeightStart + -1;
                                             imageDataPtr = (ushort*)_imageDataPtr;
-                                        } while (_surfaceHeightStart != 0);
+                                        } while (_surfaceHeightStart);
                                     }
                                     if (_tgxToken2 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                         break;
@@ -262,7 +262,7 @@ namespace UI {
                                             + (uVar5 & 0x3ff | uVar4);
                                         _surfaceDataPtr = _surfaceDataPtr + 1;
                                         _surfaceHeightStart = _surfaceHeightStart + -1;
-                                    } while (_surfaceHeightStart != 0);
+                                    } while (_surfaceHeightStart);
                                 }
                                 _surfaceDataPtr = (ushort*)((int)_surfaceDataPtr + _jumpLineBytes);
                                 height = height + -1;
@@ -307,7 +307,7 @@ namespace UI {
                                         _verticalSpaceLeftUnk = 0 < iVar10;
                                         y = this->mapGameSurfaceHeightRange.start;
                                         iVar10 = _jumpLineBytes;
-                                    } while (_jumpLineBytes != 0 && _verticalSpaceLeftUnk);
+                                    } while (_jumpLineBytes && _verticalSpaceLeftUnk);
                                 }
                                 iVar10 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                                     + ((uint)y >> 1) * 0x1fb0 + (x & 0xfffffffeU);
@@ -333,7 +333,7 @@ namespace UI {
                                             _jumpLineBytes = _tgxPixelLength + 1;
                                             _tgxPixelLength = local_c + _jumpLineBytes;
                                             do {
-                                                if ((local_c & 1) == 0) {
+                                                if (!(local_c & 1)) {
                                                     uVar11 = (((uint)((short)(local_c >> 0x10)) << 0x10)
                                                                  | (uint)(ushort)(*(undefined2*)_imageDataPtr))
                                                         & 0xffff001f;
@@ -365,7 +365,7 @@ namespace UI {
                                                 _imageDataPtr = _imageDataPtr + 2;
                                                 _jumpLineBytes = _jumpLineBytes + -1;
                                                 imageDataPtr = (ushort*)_imageDataPtr;
-                                            } while (_jumpLineBytes != 0);
+                                            } while (_jumpLineBytes);
                                         }
                                         if (bVar4 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                             break;
@@ -381,7 +381,7 @@ namespace UI {
                                         _jumpLineBytes = _tgxPixelLength + 1;
                                         _tgxPixelLength = local_c + _jumpLineBytes;
                                         do {
-                                            if ((local_c & 1) == 0) {
+                                            if (!(local_c & 1)) {
                                                 _surfaceColor = *(ushort*)(iVar10 + local_c) & 0xffe0
                                                     | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                      [*(ushort*)(iVar10 + local_c)
@@ -397,7 +397,7 @@ namespace UI {
                                             }
                                             local_c = local_c + 1;
                                             _jumpLineBytes = _jumpLineBytes + -1;
-                                        } while (_jumpLineBytes != 0);
+                                        } while (_jumpLineBytes);
                                     }
                                     iVar10 = iVar10 + 0x1fb0;
                                     _jumpLineBytes = height + -1;
@@ -422,7 +422,7 @@ namespace UI {
                                     height = height + -2;
                                     imageDataPtr = (ushort*)_imageDataPtr;
                                     _tgxPixelLength = local_c;
-                                } while (height != 0 && 0 < _jumpLineBytes);
+                                } while (height && 0 < _jumpLineBytes);
                             }
                         }
                         if (-1 < x) {
@@ -441,7 +441,7 @@ namespace UI {
                                                 bVar3 = (byte)*puVar13 & 0xe0;
                                                 imageDataPtr = (ushort*)((int)puVar13 + 1);
                                             } while (bVar3 == 0x20);
-                                            if (bVar3 != 0)
+                                            if (bVar3)
                                                 break;
                                             imageDataPtr = imageDataPtr + ((byte)*puVar13 & 0x1f) + 1;
                                         }
@@ -453,7 +453,7 @@ namespace UI {
                                     _verticalSpaceLeftUnk = 0 < iVar10;
                                     y = this->mapGameSurfaceHeightRange.start;
                                     iVar10 = _jumpLineBytes;
-                                } while (_jumpLineBytes != 0 && _verticalSpaceLeftUnk);
+                                } while (_jumpLineBytes && _verticalSpaceLeftUnk);
                             }
                             iVar10 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                                 + ((uint)y >> 1) * 0x1fb0 + (x & 0xfffffffeU);
@@ -472,12 +472,12 @@ namespace UI {
                                             imageDataPtr = puVar13;
                                             _tgxPixelLength = local_c + _tgxPixelLength + 1;
                                         }
-                                        if (bVar3 != 0)
+                                        if (bVar3)
                                             break;
                                         _jumpLineBytes = _tgxPixelLength + 1;
                                         _tgxPixelLength = local_c + _jumpLineBytes;
                                         do {
-                                            if ((local_c & 1) == 0) {
+                                            if (!(local_c & 1)) {
                                                 uVar11 = (((uint)((short)(local_c >> 0x10)) << 0x10)
                                                              | (uint)(ushort)(*puVar13))
                                                     & 0xffff001f;
@@ -508,7 +508,7 @@ namespace UI {
                                             puVar13 = puVar13 + 1;
                                             _jumpLineBytes = _jumpLineBytes + -1;
                                             imageDataPtr = puVar13;
-                                        } while (_jumpLineBytes != 0);
+                                        } while (_jumpLineBytes);
                                     }
                                     if (bVar3 != 0x40)
                                         break;
@@ -520,7 +520,7 @@ namespace UI {
                                     _jumpLineBytes = _tgxPixelLength + 1;
                                     _tgxPixelLength = local_c + _jumpLineBytes;
                                     do {
-                                        if ((local_c & 1) == 0) {
+                                        if (!(local_c & 1)) {
                                             uVar8 = *(ushort*)(iVar10 + local_c) & 0xffe0
                                                 | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                  [*(ushort*)(iVar10 + local_c) & 0x1f]
@@ -534,7 +534,7 @@ namespace UI {
                                         }
                                         local_c = local_c + 1;
                                         _jumpLineBytes = _jumpLineBytes + -1;
-                                    } while (_jumpLineBytes != 0);
+                                    } while (_jumpLineBytes);
                                 }
                                 iVar10 = iVar10 + 0x1fb0;
                                 _jumpLineBytes = height + -1;
@@ -546,7 +546,7 @@ namespace UI {
                                             bVar3 = (byte)*puVar14 & 0xe0;
                                             puVar13 = (ushort*)((int)puVar14 + 1);
                                         } while (bVar3 == 0x20);
-                                        if (bVar3 != 0)
+                                        if (bVar3)
                                             break;
                                         puVar13 = puVar13 + ((byte)*puVar14 & 0x1f) + 1;
                                     }
@@ -558,7 +558,7 @@ namespace UI {
                                 height = height + -2;
                                 imageDataPtr = puVar13;
                                 _tgxPixelLength = local_c;
-                            } while (height != 0 && 0 < _jumpLineBytes);
+                            } while (height && 0 < _jumpLineBytes);
                         }
                     }
                 }

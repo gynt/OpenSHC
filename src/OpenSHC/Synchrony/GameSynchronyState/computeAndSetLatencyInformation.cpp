@@ -32,7 +32,7 @@ namespace Synchrony {
                                                     ->SendEx(this->DPLAYX_PlayerHandle, this->DPLAYX_ReceivedPlayerID,
                                                         DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED,
                                                         (void*)0x1998398, 2, 65000, 0, (void*)0x0, (DWORD_PTR*)0x0);
-            if (this->DPLAYX_SendAndReceiveREsult == 0) {}
+            if (!this->DPLAYX_SendAndReceiveREsult) {}
             if (this->DPLAYX_SendAndReceiveREsult == -0x7ffffff6) {}
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
         }
@@ -80,7 +80,7 @@ namespace Synchrony {
         this->counter = 0;
     LAB_00488429:
         _sum = 0;
-        if (this->limit != 0) {
+        if (this->limit) {
             if (0 < this->limit) {
                 piVar3 = this->historicalLagInfoPerPlayer[uVar1][2] + 1;
                 _countdown = this->limit;
@@ -89,7 +89,7 @@ namespace Synchrony {
                     _sum = _sum + *piVar3;
                     piVar3 = piVar3 + 2;
                     _countdown = _countdown + -1;
-                } while (_countdown != 0);
+                } while (_countdown);
             }
             _div = _sum_2 / this->limit;
             this->connectionLagInfoArray[uVar1].average2 = _sum / this->limit;

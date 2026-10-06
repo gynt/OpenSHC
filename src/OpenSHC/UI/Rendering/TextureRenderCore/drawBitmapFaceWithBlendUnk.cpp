@@ -36,7 +36,7 @@ namespace UI {
             int local_c;
             int local_8;
             iVar7 = colorOrBlendOrGammaUnk;
-            if (colorOrBlendOrGammaUnk == 0) {
+            if (!colorOrBlendOrGammaUnk) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace, this)(
                     bitmapFaceIndex, xPos, yPos);
             }
@@ -119,10 +119,10 @@ namespace UI {
                             _surfacePtr = _surfacePtr + 4;
                             local_c = local_c + -1;
                             colorOrBlendOrGammaUnk = (int)_bitmapFacePtr;
-                        } while (local_c != 0);
+                        } while (local_c);
                         _surfacePtr = _surfacePtr + _pixelToLineJump;
                         local_8 = local_8 + -1;
-                    } while (local_8 != 0);
+                    } while (local_8);
                 }
                 yPos = 0x42;
                 do {
@@ -140,10 +140,10 @@ namespace UI {
                         }
                         _surfacePtr = _surfacePtr + 1;
                         bitmapFaceIndex = bitmapFaceIndex + -1;
-                    } while (bitmapFaceIndex != 0);
+                    } while (bitmapFaceIndex);
                     _surfacePtr = _surfacePtr + _pixelToLineJump;
                     yPos = yPos + -1;
-                } while (yPos != 0);
+                } while (yPos);
             }
         }
 

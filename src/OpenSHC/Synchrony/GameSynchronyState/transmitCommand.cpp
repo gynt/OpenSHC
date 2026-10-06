@@ -93,7 +93,7 @@ namespace Synchrony {
                       ->SendEx(this->DPLAYX_PlayerHandle, idTo, _dwFlags, &this->DAT_Packet, _packetSize + 4,
                           _dwPriority, 0, (void*)0x0, (DWORD_PTR*)0x0);
         }
-        if ((this->DPLAYX_SendAndReceiveREsult != 0) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
+        if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
             /*
               unsuccessfull transmission?
              */

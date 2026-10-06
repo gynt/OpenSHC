@@ -30,14 +30,14 @@ namespace Map {
             do {
                 _state = this->tribes[DAT_CurrentTribeID::instance].tribeState;
                 _tribeUnitIndex = 0;
-                if (_state != 0) {
+                if (_state) {
                     _tribeID = DAT_CurrentTribeID::instance;
                     if (_state != 3) {
                         _tribeSize = this->tribes[DAT_CurrentTribeID::instance].size;
                         if (_tribeSize < 1) {
                             _tribeTime = this->tribes[DAT_CurrentTribeID::instance].time;
-                            if (((_tribeTime != 0) && ((int)DAT_GameCore::instance.mapTimeInTicks <= (int)_tribeTime))
-                                && (_tribeTime != 0))
+                            if (((_tribeTime) && ((int)DAT_GameCore::instance.mapTimeInTicks <= (int)_tribeTime))
+                                && (_tribeTime))
                                 goto LAB_00527425;
                         } else {
                             local_4 = 0;
@@ -60,7 +60,7 @@ namespace Map {
                                         local_4 = local_4 + 1;
                                     }
                                 } while (_tribeUnitIndex < _tribeSize);
-                                if (local_4 != 0) {
+                                if (local_4) {
                                     this->clans = this->clans + 1;
                                     this->field2_0x8 = DAT_CurrentTribeID::instance;
                                     goto LAB_00527425;

@@ -50,7 +50,7 @@ namespace UI {
         this->DAT_MapU4B64.keepPositions[6].y = -1;
         this->DAT_MapU4B64.keepPositions[7].x = -1;
         this->DAT_MapU4B64.keepPositions[7].y = -1;
-        if ((param_1 & 4) != 0) {
+        if ((param_1 & 4)) {
             local_34 = 2;
             iVar8 = 2;
         }
@@ -59,7 +59,7 @@ namespace UI {
             local_24 = 1;
         }
         iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
-        if (DAT_TileMapState::instance.mapOrientation != 0) {
+        if (DAT_TileMapState::instance.mapOrientation) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar7 = 0x13a18;
             } else if (DAT_TileMapState::instance.mapOrientation == 4) {
@@ -87,14 +87,14 @@ namespace UI {
                 }
                 if (-1 < (int)local_2c) {
                     if (399 < (int)local_2c) {}
-                    if (((local_34 != 2) || ((local_28 & 1) == 0))
+                    if (((local_34 != 2) || (!(local_28 & 1)))
                         && (local_20 = ((int)(400 / (longlong)param_2) * iVar8) / local_24 - uVar5,
                             (int)uVar5 < local_20)) {
                         local_20 = local_20 - uVar5;
                         piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 + -8;
                         do {
                             iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
-                            if (((iVar3 != 0)
+                            if (((iVar3)
                                     && ((int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U
                                         < 5))
                                 && (iVar3 = (int)DAT_BuildingsState::instance.buildings[iVar3].owner,
@@ -111,7 +111,7 @@ namespace UI {
                             iVar10 = iVar10 + param_2;
                             piVar6 = piVar6 + 1;
                             local_20 = local_20 + -1;
-                        } while (local_20 != 0);
+                        } while (local_20);
                     }
                 }
                 iVar7 = iVar7 + local_18;

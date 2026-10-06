@@ -59,19 +59,19 @@ namespace UI {
             int iVar12;
             int local_4;
             local_4 = 0;
-            if ((INT_00ed3134::instance & 1U) == 0) {
+            if (!(INT_00ed3134::instance & 1U)) {
                 INT_00ed3134::instance = INT_00ed3134::instance | 1;
                 INT_00ed3130::instance = timeGetTime();
             }
             _currentTime = timeGetTime();
             iVar1 = MACRO_CALL(UI::Helpers_Func::TicksSinceCounterStart)();
-            if (iVar1 == 0) {
+            if (!iVar1) {
                 return;
             }
             MACRO_CALL(UI::Helpers_Func::ColorEntireScreen)(COL_BLACK::instance.shortValue);
             MACRO_CALL(UI::Rendering_Func::DrawOuterMenuBorder)();
             MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
-            if (((DAT_00ed2794::instance != 0) && (0x5dc < (int)(_currentTime - DAT_00ed2794::instance)))
+            if (((DAT_00ed2794::instance) && (0x5dc < (int)(_currentTime - DAT_00ed2794::instance)))
                 && (DAT_00ed2794::instance = 0, DAT_GameCore::instance.missionNumber1to20 + -1 < 0x14)) {
                 MACRO_CALL_MEMBER(
                     Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
@@ -107,7 +107,7 @@ namespace UI {
                 local_4 = 0x28;
                 goto LAB_004dd68d;
             }
-            if (DAT_00ed2798::instance == 0) {
+            if (!DAT_00ed2798::instance) {
                 local_4 = MACRO_CALL(UI::Rendering_Func::RenderMissionObjectivesUnk)();
                 local_4 = local_4 + (-0x1e - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight);
             }
@@ -200,7 +200,7 @@ namespace UI {
                     }
                 }
             }
-            if (DAT_00ed2798::instance != 0) {
+            if (DAT_00ed2798::instance) {
                 return;
             }
         LAB_004dd68d:

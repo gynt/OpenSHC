@@ -58,7 +58,7 @@ namespace UI {
         MenuItemTypeInt local_8;
         int iStack_4;
         MVar10 = this->menuItemType & OpenSHC::UI::Enums::MIT_MENU_ITEM_TYPE_ID_PARTUnk;
-        if ((this->iconDeactivatedUnk_0x36 == 0) && (this->unknownZero == 0)) {
+        if ((!this->iconDeactivatedUnk_0x36) && (!this->unknownZero)) {
             this->hovering = 0;
             local_8 = MVar10;
             if (MVar10 != ((MenuItemType)0)) {
@@ -66,14 +66,14 @@ namespace UI {
                     (*(this->menuItemActionHandler).simple)((this->callbackParameter).parameter);
                     return 0;
                 }
-                if ((this->clicked != 0)
+                if ((this->clicked)
                     && (DVar5 = timeGetTime(),
                         this->menuPointer->thousand
                             < (int)(DVar5 - (this->secondItemTypeData).buttonState.clickTimestamp_0x4))) {
                     this->clicked = 0;
                 }
                 if ((MVar10 == OpenSHC::UI::Enums::MIT_SLIDERUnk) || (MVar10 == OpenSHC::UI::Enums::MIT_SCROLLBARUnk)) {
-                    if (this->menuPointer->one == 0) {
+                    if (!this->menuPointer->one) {
                         iVar8 = (this->secondItemTypeData).buttonState.someTimestamp_1_0x0;
                         pMVar3 = &this->secondItemTypeData;
                         piVar1 = &(this->secondItemTypeData).buttonState.countTo100;
@@ -105,7 +105,7 @@ namespace UI {
                         if (iVar8 < *piVar1) {
                             *piVar1 = iVar8;
                         }
-                        if ((DAT_MouseState::instance.leftClickStart == 0)
+                        if ((!DAT_MouseState::instance.leftClickStart)
                             && (DAT_MouseState::instance.leftClickState == FALSE)) {
                             (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc = -1000;
                             return 0;
@@ -153,7 +153,7 @@ namespace UI {
                         if (BVar6 != FALSE) {
                             iStack_10 = 1;
                         }
-                        if (DAT_MouseState::instance.leftClickStart == 0) {
+                        if (!DAT_MouseState::instance.leftClickStart) {
                             if ((DAT_MouseState::instance.leftClickState != FALSE)
                                 && (-1000 < (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc)) {
                                 iVar8 = (pMVar3->buttonState).someTimestamp_1_0x0;
@@ -190,12 +190,12 @@ namespace UI {
                                     }
                                 }
                             }
-                        } else if (this->hovering != 0) {
-                            if (iStack_10 == 0) {
+                        } else if (this->hovering) {
+                            if (!iStack_10) {
                                 if (iStack_14 < iStack_18 + iStack_1c) {
                                     iStack_10 = ((*piVar2 - (pMVar3->buttonState).someTimestamp_1_0x0) * iVar7)
                                         / (iVar9 - iVar7);
-                                    if (iStack_10 == 0) {
+                                    if (!iStack_10) {
                                         iStack_10 = 1;
                                     }
                                     (*(this->menuItemActionHandler).slider)(
@@ -209,7 +209,7 @@ namespace UI {
                                 } else {
                                     iStack_10 = ((*piVar2 - (pMVar3->buttonState).someTimestamp_1_0x0) * iVar7)
                                         / (iVar9 - iVar7);
-                                    if (iStack_10 == 0) {
+                                    if (!iStack_10) {
                                         iStack_10 = 1;
                                     }
                                     (*(this->menuItemActionHandler).slider)(
@@ -290,11 +290,11 @@ namespace UI {
                             }
                         }
                         if (((*(int*)&this->textMessageLookupIndex) != -1)
-                            && (DAT_MenuModalComposition1::instance.mbr_0x78 == 0)) {
+                            && (!DAT_MenuModalComposition1::instance.mbr_0x78)) {
                             this->menuPointer->hoveredItem = this;
                         }
                         pMVar4 = this->menuPointer;
-                        if ((pMVar4->someMenuItemPtr_0x3c != this) && (pMVar4->field16_0x40 == 0)) {
+                        if ((pMVar4->someMenuItemPtr_0x3c != this) && (!pMVar4->field16_0x40)) {
                             iVar8 = (int)(this->textMessageLookupIndex).field1_0x2;
                             if (iVar8 == 1) {
                                 pMVar4->someMenuItemPtr_0x3c = this;
@@ -313,7 +313,7 @@ namespace UI {
                         }
                         this->hovering = 1;
                         if (MVar10 == OpenSHC::UI::Enums::MIT_TEXT_OR_STATE_OR_PLAYER_DEPENDENTUnk) {
-                            if (DAT_MouseState::instance.rightClickStart != 0) {
+                            if (DAT_MouseState::instance.rightClickStart) {
                             LAB_004f444b:
                                 DVar5 = timeGetTime();
                                 (this->secondItemTypeData).buttonState.clickTimestamp_0x4 = DVar5;
@@ -326,7 +326,7 @@ namespace UI {
                                 return (int)(DAT_StopHandlingMenuItems::instance);
                             }
                         } else {
-                            if (DAT_MouseState::instance.leftClickStart != 0)
+                            if (DAT_MouseState::instance.leftClickStart)
                                 goto LAB_004f444b;
                             if ((DAT_MouseState::instance.leftClickState == FALSE) || (MVar10 != ((MenuItemType)2))) {
                                 if ((DAT_MouseState::instance.draggingStopped != FALSE)
@@ -361,13 +361,13 @@ namespace UI {
                                         do {
                                             (*(this->menuItemActionHandler).simple)(iVar8);
                                             iVar9 = iVar9 + -1;
-                                        } while (iVar9 != 0);
+                                        } while (iVar9);
                                     } else {
                                         iVar9 = 100;
                                         do {
                                             (*(this->menuItemActionHandler).simple)(iVar8);
                                             iVar9 = iVar9 + -1;
-                                        } while (iVar9 != 0);
+                                        } while (iVar9);
                                     }
                                     (this->secondItemTypeData).buttonState.countTo100 = 0;
                                     this->clicked = (undefined2)BOOL_CurrentMenuClickState::instance;

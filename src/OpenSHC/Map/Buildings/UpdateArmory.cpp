@@ -58,7 +58,7 @@ namespace Map {
         if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_NULL) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].someResourceNumber = 0;
         }
-        if ((((((byte)DAT_GameCore::instance.mapTimeInTicks & 3) == 0)
+        if ((((!((byte)DAT_GameCore::instance.mapTimeInTicks & 3))
                  && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
             && (DAT_GameState::instance.playerDataArray[_playerID].someCountdown01 == 0)) {
@@ -297,7 +297,7 @@ namespace Map {
                     local_8 = local_8 - iVar5;
                     iVar7 = iVar5 + 0x80;
                 }
-                if (iVar8 == 0) {
+                if (!iVar8) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage1 = iVar7;
                 } else if (iVar8 == 1) {
                     DAT_BuildingsState::instance.buildings[buildingID].extraOverlayImage3 = iVar7;

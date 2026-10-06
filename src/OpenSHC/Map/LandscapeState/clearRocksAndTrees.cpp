@@ -26,7 +26,7 @@ namespace Map {
                 156, '\0', (void*)((int)(destination)));
             destination = destination + 1;
             iVar1 = iVar1 + -1;
-        } while (iVar1 != 0);
+        } while (iVar1);
         destination_00 = this->rocks;
         iVar1 = 4000;
         do {
@@ -34,7 +34,7 @@ namespace Map {
                 32, '\0', (void*)((int)(destination_00)));
             destination_00 = destination_00 + 1;
             iVar1 = iVar1 + -1;
-        } while (iVar1 != 0);
+        } while (iVar1);
         this->maxTreeCount = 2000;
     }
 

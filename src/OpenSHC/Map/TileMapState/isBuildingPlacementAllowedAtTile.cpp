@@ -41,7 +41,7 @@ namespace Map {
         _wallOrGate = _tileLogic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
         bVar1 = false;
         _height = (uint)this->HeightLayer[tile];
-        if ((_wallOrGate != 0) && ((this->WallOwnerLayer[tile] & 7) + 1 == playerID)) {
+        if ((_wallOrGate) && ((this->WallOwnerLayer[tile] & 7) + 1 == playerID)) {
             switch (commandBuildingType) {
             case Commands::M_MAPPER_GATEHOUSE:
             case Commands::M_MAPPER_GATE_MAIN:
@@ -90,14 +90,14 @@ namespace Map {
         if (this->buildingMaxHeightDifference + this->buildingMinHeight < (int)_height) {
             return 1;
         }
-        if (((_tileLogic & 8) != 0) && (commandBuildingType == Commands::M_MAPPER_PITCH_DITCH)) {
+        if (((_tileLogic & 8)) && (commandBuildingType == Commands::M_MAPPER_PITCH_DITCH)) {
             return 1;
         }
         if (this->BuildingLayer[tile] != 0) {
             return 2;
         }
         _unitID = this->UnitLayer[tile];
-        if (_unitID != 0) {
+        if (_unitID) {
             _isAI2 = MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
             if (_isAI2 == FALSE) {
@@ -117,20 +117,20 @@ namespace Map {
         /*
           is sea
          */
-        if ((_tileLogic & Map::LogicHelpers::L_SEA) != 0) {
+        if ((_tileLogic & Map::LogicHelpers::L_SEA)) {
             return 1;
         }
         /*
           is any border
          */
-        if ((_tileLogic & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE) == 0) {
+        if (!(_tileLogic & Map::LogicHelpers::L_BORDER | Map::LogicHelpers::L_BORDER_EDGE)) {
             /*
               is river
              */
-            if ((_tileLogic & Map::LogicHelpers::L_RIVER) != 0) {
+            if ((_tileLogic & Map::LogicHelpers::L_RIVER)) {
                 return 1;
             }
-            if (_wallOrGate != 0) {
+            if (_wallOrGate) {
                 /*
                   other people's buildings
                  */
@@ -161,13 +161,13 @@ namespace Map {
                         return 1;
                 }
             }
-            if ((((_tileLogic & Map::LogicHelpers::L_PLAIN1_AND_FARM) == 0) || (param_4 != 0))
-                && ((_tileLogic & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE) == 0)) {
+            if (((!(_tileLogic & Map::LogicHelpers::L_PLAIN1_AND_FARM)) || (param_4))
+                && (!(_tileLogic & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))) {
                 /*
                   not a keep and not a building
                  */
-                if ((((_tileLogic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION) != 0)
-                        && (_orgID = (int)this->OrganismLayer[tile], _orgID != 0))
+                if ((((_tileLogic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION))
+                        && (_orgID = (int)this->OrganismLayer[tile], _orgID))
                     && (_orgID < 2000)) {
                     /*
                       tree or tree_variation
@@ -195,7 +195,7 @@ namespace Map {
                         }
                         _isAI = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
                             DAT_GameSynchronyState::ptr)(playerID);
-                        if (_isAI == 0) {
+                        if (!_isAI) {
                             return 1;
                         }
                     }
@@ -203,18 +203,18 @@ namespace Map {
                 /*
                   not any farms or fords
                  */
-                if ((((_tileLogic & Map::LogicHelpers::L_FARM_FIELD_WHEAT | Map::LogicHelpers::L_FARM_FIELD_HOP | Map::LogicHelpers::L_FARM_FIELD_APPLE | Map::LogicHelpers::L_FARM_FIELD_DAIRY)
-                         == 0)
-                        || (param_4 != 0))
-                    && ((_tileLogic & Map::LogicHelpers::L_FORD) == 0)) {
-                    if (((char)_tileLogic < 0) && (_wallOrGate == 0)) {
+                if (((!(_tileLogic & Map::LogicHelpers::L_FARM_FIELD_WHEAT | Map::LogicHelpers::L_FARM_FIELD_HOP
+                         | Map::LogicHelpers::L_FARM_FIELD_APPLE | Map::LogicHelpers::L_FARM_FIELD_DAIRY))
+                        || (param_4))
+                    && (!(_tileLogic & Map::LogicHelpers::L_FORD))) {
+                    if (((char)_tileLogic < 0) && (!_wallOrGate)) {
                         bVar1 = true;
                     }
                     _result = 1;
-                    if ((((!bVar1) || (this->buildingPlacementProperty_4 != 0))
-                            && (((_tileLogic & Map::LogicHelpers::L_MOAT) == 0 || (this->buildingPlacementProperty_7 != 0))))
-                        && (((this->buildingPlacementProperty_6 == 2 || ((_tileLogic & Map::LogicHelpers::L_MARSH) == 0))
-                            || (this->buildingPlacementProperty_6 != 0)))) {
+                    if ((((!bVar1) || (this->buildingPlacementProperty_4))
+                            && ((!(_tileLogic & Map::LogicHelpers::L_MOAT) || (this->buildingPlacementProperty_7))))
+                        && (((this->buildingPlacementProperty_6 == 2 || (!(_tileLogic & Map::LogicHelpers::L_MARSH)))
+                            || (this->buildingPlacementProperty_6)))) {
                         /*
                           not moat and marsh
                          */

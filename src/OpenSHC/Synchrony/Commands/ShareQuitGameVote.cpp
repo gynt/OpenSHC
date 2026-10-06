@@ -73,7 +73,7 @@ namespace Synchrony {
                         DAT_GameSynchronyState::ptr)(subjectPlayerID, 0);
                 }
             } else if (DAT_GameSynchronyState::instance.quitGameVoteRelated == 2) {
-                if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 != 0) {}
+                if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0) {}
                 DAT_GameSynchronyState::instance
                     .quitGameVoteArray[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
                 if ((DAT_GameSynchronyState::instance.quitGameVoteArray[8] != 0)
@@ -89,7 +89,7 @@ namespace Synchrony {
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_KILL_GAME);
                 }
             }
-            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 == 0) {
+            if (!DAT_GameSynchronyState::instance.DAT_GameCommandParam0) {
                 /*
                   added by script: "Yes"
                  */

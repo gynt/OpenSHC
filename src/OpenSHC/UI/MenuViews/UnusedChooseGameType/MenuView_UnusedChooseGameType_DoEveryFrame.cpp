@@ -81,7 +81,7 @@ namespace UI {
             local_1c = DAT_MenuHandlerState::instance.y + 0x122;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             _mapSize = DAT_TileMapState::instance.mapSize;
-            if (DAT_TileMapState::instance.mapSize == 0) {
+            if (!DAT_TileMapState::instance.mapSize) {
                 _mapSize = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;

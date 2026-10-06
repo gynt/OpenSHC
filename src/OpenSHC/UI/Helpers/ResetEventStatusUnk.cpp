@@ -204,7 +204,7 @@ namespace UI {
                 }
                 _event = _event + 0xe4;
                 iVar5 = iVar5 + -1;
-            } while (iVar5 != 0);
+            } while (iVar5);
         }
         iVar5 = 0;
         if (DAT_MapPropertiesState::instance.eventsCount < 1) {
@@ -377,7 +377,7 @@ namespace UI {
                     INT_00ec02e8::instance = 1;
                 }
                 iVar4 = (_event2->data).scenario.ScenarioEventType;
-                if ((iVar4 == 0) || (iVar4 == 0x1a)) {
+                if ((!iVar4) || (iVar4 == 0x1a)) {
                     if ((DAT_GameCore::instance.field22_0x64 != 1)
                         || (iVar4 = iVar5 + 1, DAT_MapPropertiesState::instance.eventsCount <= iVar4))
                         goto LAB_004d7613;
@@ -398,7 +398,7 @@ namespace UI {
                 break;
             iVar3 = iVar5;
             if (((pIVar4->header.tl_type == 3)
-                    && ((iVar2 = (pIVar4->data).scenario.ScenarioEventType, iVar2 == 0 || (iVar2 == 0x1a))))
+                    && ((iVar2 = (pIVar4->data).scenario.ScenarioEventType, !iVar2 || (iVar2 == 0x1a))))
                 && ((iVar2 = pIVar4->header.year,
                     DAT_GameState::instance.mapAndTime.year < iVar2
                         || ((iVar3 = iVar4,

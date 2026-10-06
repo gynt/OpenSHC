@@ -111,7 +111,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             number = DAT_MapPropertiesState::instance.invasionEventContent.unitCountsPerUnitType[param_1];
-            if (number != 0) {
+            if (number) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color = 0xc2f0eb;
                 } else {

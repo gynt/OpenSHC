@@ -108,7 +108,7 @@ namespace UI {
                                 pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
                                     DAT_UserTextHandlerState::ptr)(5);
                                 iVar4 = MACRO_CALL(OS_Func::__stricmp)(pcVar3, (char const*)((int)(*pacVar5)));
-                                if (iVar4 == 0)
+                                if (!iVar4)
                                     goto LAB_00490c30;
                                 pacVar6 = pacVar6 + 1;
                             } while ((int)pacVar6 < 0x1a274f4);
@@ -308,7 +308,7 @@ namespace UI {
                 }
             } else if ((int)param_1 < -9) {
                 if (param_1 == ((ChooseNetworkServiceProviderButtonActions)0xfffffff6)) {
-                    if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable != 0) {
+                    if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable) {
                         DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                         DAT_GameSynchronyState::instance.openOnClose = TRUE;
                     }

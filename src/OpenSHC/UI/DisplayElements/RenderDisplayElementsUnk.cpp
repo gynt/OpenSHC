@@ -32,7 +32,7 @@ namespace UI {
         for (_displayElementPtr = DAT_PointerToDisplayElementStackTop::instance;
             _displayElementPtr != (DisplayElement*)0x0;
             _displayElementPtr = _displayElementPtr->nextDisplayElement_0x20) {
-            if (_displayElementPtr->elementStateUnk_0xc != 0) {
+            if (_displayElementPtr->elementStateUnk_0xc) {
                 _xPos
                     = _displayElementPtr->x_0x0 + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX;
                 _yPos

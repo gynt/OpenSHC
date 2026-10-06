@@ -43,14 +43,14 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             numInGroup = 1;
-            if (DAT_00df5540::instance == 0) {
+            if (!DAT_00df5540::instance) {
                 if (param_1 == 2) {
                     numInGroup = 2;
                 } else {
-                    if (DAT_00df5560::instance == 0) {}
+                    if (!DAT_00df5560::instance) {}
                     if (((DAT_00df5558::instance < DAT_00df555c::instance + -1)
                             && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
-                        && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)) {
+                        && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
                         numInGroup = 5;
                     }
                 }

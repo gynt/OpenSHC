@@ -86,7 +86,7 @@ namespace UI {
         sVar1
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58;
         uVar10 = uVar11;
-        if (sVar1 != 0) {
+        if (sVar1) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_18 = uVar11;
@@ -94,7 +94,7 @@ namespace UI {
         sVar2
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount59;
         uVar11 = uVar10;
-        if (sVar2 != 0) {
+        if (sVar2) {
             bVar13 = bVar13 + 1;
             uVar11 = uVar10 + 1;
             local_14 = uVar10;
@@ -102,7 +102,7 @@ namespace UI {
         sVar3
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount54;
         uVar10 = uVar11;
-        if (sVar3 != 0) {
+        if (sVar3) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_10 = uVar11;
@@ -110,7 +110,7 @@ namespace UI {
         sVar4
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount55;
         uVar11 = uVar10;
-        if (sVar4 != 0) {
+        if (sVar4) {
             bVar13 = bVar13 + 1;
             uVar11 = uVar10 + 1;
             local_c = uVar10;
@@ -118,14 +118,14 @@ namespace UI {
         sVar5
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount56;
         uVar10 = uVar11;
-        if (sVar5 != 0) {
+        if (sVar5) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_8 = uVar11;
         }
         sVar6
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount57;
-        if (sVar6 != 0) {
+        if (sVar6) {
             bVar13 = bVar13 + 1;
             local_4 = uVar10;
         }
@@ -137,7 +137,7 @@ namespace UI {
         if (BVar20 != FALSE) {
             local_2c = local_2c + 400;
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -174,14 +174,14 @@ namespace UI {
                 uVar10 = 0xffffff9c;
             } else {
                 uVar10 = 0xffffff38;
-                if (iVar7 != 0) {
+                if (iVar7) {
                     uVar10 = local_4;
                 }
             }
         }
         iVar7 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .foodTypesCurrentlyEaten;
-        if ((iVar7 != 0) && (iVar7 != 1)) {
+        if ((iVar7) && (iVar7 != 1)) {
             if (iVar7 == 2) {
                 uVar10 = uVar10 + 0x19;
             } else if (iVar7 == 3) {
@@ -190,12 +190,12 @@ namespace UI {
                 uVar10 = uVar10 + 0x4b;
             }
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)((int)(uVar10)),
                 FALSE);
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -223,7 +223,7 @@ namespace UI {
         } else {
             iVar12 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                          .taxesSetting;
-            if (iVar12 == 0) {
+            if (!iVar12) {
                 iVar12 = 0xaf;
             } else if (iVar12 == 1) {
                 iVar12 = 0x7d;
@@ -247,11 +247,11 @@ namespace UI {
                 iVar12 = (-(uint)(iVar12 != 10) & 0xffffff9c) - 500;
             }
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1f2, iVar12, FALSE);
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x20b);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -286,11 +286,11 @@ namespace UI {
                 iVar7 = ((0xb4 < iVar7) - 1 & 0x32) - 0xfa;
             }
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x20a, iVar7, FALSE);
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar17 = 0x12;
             iVar16 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x223);
             iVar21 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -317,11 +317,11 @@ namespace UI {
         } else {
             iVar9 = uVar11 * 0x19;
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x222, iVar9, FALSE);
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar18 = 0x12;
             iVar21 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar17 = DAT_MenuHandlerState::instance.x + 0x163;
@@ -357,11 +357,11 @@ namespace UI {
             != 0) {
             iVar16 = iVar16 + 0x32;
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1da, iVar16, FALSE);
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             iVar19 = 0x12;
             iVar17 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar18 = DAT_MenuHandlerState::instance.x + 0x163;
@@ -388,7 +388,7 @@ namespace UI {
         } else {
             iVar21 = ((99 < iVar21) - 1 & 0xffffffce) + 200;
         }
-        if (DAT_GameCore::instance.field77_0x144 == 0) {
+        if (!DAT_GameCore::instance.field77_0x144) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1f2, iVar21, FALSE);
         }

@@ -79,7 +79,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.playerPositionsArray, 8,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (_isHost != 0) {
+            if (_isHost) {
                 DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[0] = local_10[0];
                 DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1] = local_10[1];
                 DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2] = local_10[2];

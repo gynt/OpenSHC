@@ -34,7 +34,7 @@ namespace Audio {
                 _playerPointsArray[_arrayIndex][0] = _playerID;
                 int _isAlive = MACRO_CALL_MEMBER(
                     Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
-                if (_isAlive == 0) {
+                if (!_isAlive) {
                     if (_playerID == playerID) {
                         return 0;
                     }

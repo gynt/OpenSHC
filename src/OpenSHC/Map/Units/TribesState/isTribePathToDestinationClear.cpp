@@ -47,15 +47,13 @@ namespace Map {
                         local_4 = local_4 + 1;
                     } while ((DAT_UnitsState::instance.units[iVar2].logicalState != Map::Units::ULS_NORMAL)
                         || (DAT_UnitsState::instance.units[iVar2].dying != 0));
-                    iVar3 = MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::findClosestTileToStartingTile,
-                        DAT_PathFindingState::ptr)(2 - (uint)((uVar1 & 0x100) != 0));
+                    iVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findClosestTileToStartingTile,
+                        DAT_PathFindingState::ptr)(2 - (uint)((uVar1 & 0x100)));
                     this->ALG_ResultTileIndex = this->ALG_ResultTileIndex + 1;
                     if (499 < this->ALG_ResultTileIndex)
                         break;
                     iVar3 = (int)(short)DAT_TileMapState::instance.UnitLayer[iVar3];
-                    if ((((iVar3 != 0) && (iVar2 != iVar3))
-                            && (DAT_UnitsState::instance.units[iVar3].tribeID != param_1))
+                    if ((((iVar3) && (iVar2 != iVar3)) && (DAT_UnitsState::instance.units[iVar3].tribeID != param_1))
                         && (DAT_UnitsState::instance.units[iVar3].tunnelerFinishedDigging != 2)) {
                         return (undefined4)(0);
                     }

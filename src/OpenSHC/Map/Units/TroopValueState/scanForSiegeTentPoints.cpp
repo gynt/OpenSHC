@@ -43,7 +43,7 @@ namespace Map {
                                 || (DAT_TileMapState::instance.UnitLayer[iVar8] != 0))
                             || (((short)DAT_TileMapState::instance.PathConnectionLayer[iVar8]
                                     != DAT_TroopValueState::instance.attackInfo.startCon
-                                || ((DAT_TileMapState::instance.LogicLayer[iVar8] & 0xa0002400U) != 0))))
+                                || ((DAT_TileMapState::instance.LogicLayer[iVar8] & 0xa0002400U)))))
                             break;
                         uVar1 = uVar5 + 8;
                         local_14 = 0;
@@ -55,7 +55,7 @@ namespace Map {
                                 || ((DAT_TileMapState::instance.UnitLayer[iVar2] != 0
                                     || (((short)DAT_TileMapState::instance.PathConnectionLayer[iVar2]
                                             != DAT_TroopValueState::instance.attackInfo.startCon
-                                        || ((DAT_TileMapState::instance.LogicLayer[iVar2] & 0xa0002400U) != 0))))))
+                                        || ((DAT_TileMapState::instance.LogicLayer[iVar2] & 0xa0002400U)))))))
                                 break;
                             uVar4 = (uint) * (byte*)(*piVar6 + 0x1d32c38 + iVar8);
                             iVar2 = *piVar6 + iVar8;
@@ -65,9 +65,9 @@ namespace Map {
                                               || ((short)DAT_TileMapState::instance.PathConnectionLayer[iVar2]
                                                   != DAT_TroopValueState::instance.attackInfo.startCon))
                                              || ((uVar4 = DAT_TileMapState::instance.LogicLayer[iVar2],
-                                                 (uVar4 & 0x2000) != 0 || ((uVar4 & 0x20000000) != 0))))
+                                                 (uVar4 & 0x2000) != 0 || ((uVar4 & 0x20000000)))))
                                         || ((int)uVar4 < 0))))
-                                || ((uVar4 & 0x400) != 0)) {
+                                || ((uVar4 & 0x400))) {
                                 iVar7 = iVar7 + 1;
                                 break;
                             }
@@ -79,8 +79,8 @@ namespace Map {
                                                      != DAT_TroopValueState::instance.attackInfo.startCon
                                                  || (uVar4 = DAT_TileMapState::instance.LogicLayer[iVar2],
                                                      (uVar4 & 0x2000) != 0))
-                                            || ((uVar4 & 0x20000000) != 0))))))
-                                || (((int)uVar4 < 0 || ((uVar4 & 0x400) != 0)))) {
+                                            || ((uVar4 & 0x20000000)))))))
+                                || (((int)uVar4 < 0 || ((uVar4 & 0x400))))) {
                                 iVar7 = iVar7 + 2;
                                 break;
                             }
@@ -92,8 +92,8 @@ namespace Map {
                                                      != DAT_TroopValueState::instance.attackInfo.startCon
                                                  || (uVar4 = DAT_TileMapState::instance.LogicLayer[iVar2],
                                                      (uVar4 & 0x2000) != 0))
-                                            || ((uVar4 & 0x20000000) != 0))))))
-                                || (((int)uVar4 < 0 || ((uVar4 & 0x400) != 0)))) {
+                                            || ((uVar4 & 0x20000000)))))))
+                                || (((int)uVar4 < 0 || ((uVar4 & 0x400))))) {
                                 iVar7 = iVar7 + 3;
                                 break;
                             }
@@ -114,7 +114,7 @@ namespace Map {
                             int _sIndex = MACRO_CALL_MEMBER(
                                 Map::Units::TroopValueState_Func::getSiegeIndexForTile, this)(_candidateTile);
                             _index = DAT_TroopValueState::instance.attackInfo.tentPointsNext;
-                            if (_sIndex == 0) {
+                            if (!_sIndex) {
                                 DAT_TroopValueState::instance.attackInfo
                                     .tentPointsValues[DAT_TroopValueState::instance.attackInfo.tentPointsNext]
                                     .x = _x;

@@ -190,7 +190,7 @@ namespace UI {
             pcVar4, iVar8, iVar5, TVar6, BVar7, iVar10, BVar9, iVar11);
         iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .ownsCathedralUnk;
-        if (iVar5 == 0) {
+        if (!iVar5) {
         LAB_00440111:
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .ownsChurchUnk
@@ -200,7 +200,7 @@ namespace UI {
         } else if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                        .ownsChurchUnk
             == 0) {
-            if (iVar5 == 0)
+            if (!iVar5)
                 goto LAB_00440111;
             iVar5 = 0x14;
         } else {
@@ -230,7 +230,7 @@ namespace UI {
             != 0) {
             iVar3 = iVar3 + 0x32;
         }
-        if (iVar3 != 0) {
+        if (iVar3) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_TextManagerObject::instance.currentXOffset_0x0 + 0xfa + iVar1, iVar2 + 0x23c, iVar3, TRUE);
         }

@@ -61,7 +61,7 @@ namespace UI {
                 iVar12 = DAT_GameState::instance.playerDataArray[iVar1].rationsSetting3;
                 if (iVar12 == 4) {
                     iVar12 = 2;
-                } else if (iVar12 == 0) {
+                } else if (!iVar12) {
                     iVar12 = 3;
                 } else {
                     iVar12 = 1;
@@ -214,14 +214,14 @@ namespace UI {
                     OpenSHC::Audio::SFX::SEID_GENERAL_MESSAGE3 | OpenSHC::Audio::SFX::SEID_TAXES_RATE6));
             } else {
                 SVar7 = ((SpeechEffectID)0xffffff38);
-                if (iVar5 != 0) {}
+                if (iVar5) {}
             }
         }
         MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
             DAT_MenuHandlerState::instance.x + 0x208, DAT_MenuHandlerState::instance.y + 0x1e3, (int)(SVar7), FALSE);
         iVar5 = DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel;
         if (iVar5 != -1) {
-            if (iVar5 == 0) {
+            if (!iVar5) {
                 iVar5 = DAT_MenuHandlerState::instance.y + 0x224;
                 iVar6 = DAT_MenuHandlerState::instance.x + 0xe;
                 iVar12 = 0xb;
@@ -289,7 +289,7 @@ namespace UI {
         iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
             pcVar3, iVar6);
         iVar5 = DAT_GameState::instance.playerDataArray[iVar1].foodTypesCurrentlyEaten;
-        if ((iVar5 == 0) || (iVar5 == 1)) {
+        if ((!iVar5) || (iVar5 == 1)) {
             SVar7 = OpenSHC::Audio::SFX::SEID_GENERAL_STARTGAME;
         } else if (iVar5 == 2) {
             SVar7 = OpenSHC::Audio::SFX::SEID_TAXES_CONSTANT;

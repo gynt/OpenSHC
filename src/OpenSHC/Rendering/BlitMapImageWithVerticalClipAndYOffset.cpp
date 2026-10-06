@@ -67,7 +67,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
         local_14 = local_14 + -0x1e0;
     }
     iVar5 = DAT_GMImageOffsets::instance[DAT_00ed316c::instance];
-    if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
+    if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
         local_14 = local_14 + DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance];
         puVar9 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
             + uVar6 * 0xfd8;
@@ -170,7 +170,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
         puVar11 = puVar10;
         if (DAT_00ed317c::instance == 1) {
             do {
-                while ((uVar6 & 1) != 0) {
+                while ((uVar6 & 1)) {
                     puVar10 = puVar11 + 0xfd8;
                     uVar1 = puVar8[0x12];
                     puVar11[0x3f67] = puVar8[0xe];
@@ -198,7 +198,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
             } while (0 < local_c);
         } else if (DAT_00ed317c::instance == 2) {
             do {
-                while ((uVar6 & 1) != 0) {
+                while ((uVar6 & 1)) {
                     uVar1 = puVar8[6];
                     puVar11[0xfd9] = puVar8[2];
                     puVar11[0x1fb3] = uVar1;
@@ -226,7 +226,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
             } while (0 < local_c);
         } else if (DAT_00ed317c::instance == 3) {
             do {
-                while ((uVar6 & 1) != 0) {
+                while ((uVar6 & 1)) {
                     puVar11[0x3f67] = puVar8[0xe];
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
@@ -243,7 +243,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
             } while (0 < local_c);
         } else {
             do {
-                while ((uVar6 & 1) != 0) {
+                while ((uVar6 & 1)) {
                     uVar1 = puVar8[6];
                     puVar11[0xfd9] = puVar8[2];
                     puVar11[0x1fb3] = uVar1;

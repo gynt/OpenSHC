@@ -34,7 +34,7 @@ namespace UI {
                 _endOfFilenameArray2 = _currentGmFilename;
                 _endOfFilenameArray = "null";
                 do {
-                    if (_lengthToCompare == 0)
+                    if (!_lengthToCompare)
                         break;
                     _lengthToCompare = _lengthToCompare + -1;
                     bVar1 = *_endOfFilenameArray2 == *_endOfFilenameArray;
@@ -62,7 +62,7 @@ namespace UI {
                 _currentGmFilename = fileNameArray;
                 _endOfFilenameArray2 = "null";
                 do {
-                    if (_lengthToCompare == 0)
+                    if (!_lengthToCompare)
                         break;
                     _lengthToCompare = _lengthToCompare + -1;
                     _reachedFilenameArrayEnd = *_currentGmFilename == *_endOfFilenameArray2;

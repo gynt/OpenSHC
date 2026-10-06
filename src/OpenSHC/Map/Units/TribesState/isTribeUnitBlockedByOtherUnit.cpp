@@ -49,7 +49,7 @@ namespace Map {
                     return (undefined4)(0);
                 }
                 iVar3 = (int)(short)DAT_TileMapState::instance.UnitLayer[DAT_UnitsState::instance.units[iVar2].tile];
-                if (((iVar3 != 0) && (iVar2 != iVar3))
+                if (((iVar3) && (iVar2 != iVar3))
                     && (DAT_UnitsState::instance.units[iVar3].tunnelerFinishedDigging != 2)) {
                     return (undefined4)(1);
                 }

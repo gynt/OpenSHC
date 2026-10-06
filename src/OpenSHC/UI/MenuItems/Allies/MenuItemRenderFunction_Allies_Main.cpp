@@ -85,7 +85,7 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
             }
             if (param_1 == 200) {
-                if (DAT_00df51f4::instance == 0) {}
+                if (!DAT_00df51f4::instance) {}
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_ALLIES, DAT_00df51f0::instance, (int)((int)(DAT_ButtonX::instance)),
@@ -116,7 +116,7 @@ namespace UI {
                 iVar6 = 0;
                 if (0 < DAT_ButtonH::instance) {
                     do {
-                        if (iVar6 == 0) {
+                        if (!iVar6) {
                             iVar5 = 1;
                         } else {
                             iVar5 = (-(uint)(iVar6 != DAT_ButtonH::instance + -0x18) & 0xfffffffa) + 0xd;
@@ -124,7 +124,7 @@ namespace UI {
                         iVar7 = 0;
                         do {
                             iVar4 = iVar5;
-                            if (iVar7 == 0) {
+                            if (!iVar7) {
                             LAB_004acbeb:
                                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
@@ -340,7 +340,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar2 + 0x222,
                     (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-                if (iVar6 == 0) {
+                if (!iVar6) {
                     if (DAT_GameCore::instance.lordIcons[iVar2] == 0) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21b,
@@ -363,7 +363,7 @@ namespace UI {
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
                 }
             } else {
-                if (iVar6 == 0) {
+                if (!iVar6) {
                     if (DAT_GameCore::instance.lordIcons[iVar2] == 0) {
                         iVar6 = 0x21b;
                     } else {

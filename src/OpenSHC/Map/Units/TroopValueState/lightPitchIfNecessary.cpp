@@ -33,13 +33,13 @@ namespace Map {
                 if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] == -1)
                     && (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
                     _unit2Tile = DAT_UnitsState::instance.units[unitID2].tile;
-                    if (((DAT_TileMapState::instance.LogicLayer[_unit2Tile] & 8) != 0)
-                        && ((_targetID = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile,
-                                 DAT_TileMapState::ptr)(_unit2Tile),
+                    if (((DAT_TileMapState::instance.LogicLayer[_unit2Tile] & 8))
+                        && ((_targetID = MACRO_CALL_MEMBER(
+                                 Map::TileMapState_Func::getPitchDitchIDForTile, DAT_TileMapState::ptr)(_unit2Tile),
                             _targetID != 0
                                 && (_yes = MACRO_CALL_MEMBER(
-                                        Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue,
-                                        this)(_unit2Tile, _playerID,
+                                        Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
+                                        _unit2Tile, _playerID,
                                         (int)((int)(DAT_UnitsState::instance.units[unitID2].owner))),
                                     _yes != FALSE)))) {
                         _y = DAT_TileMapState::instance.pitchDitches[_targetID].y;

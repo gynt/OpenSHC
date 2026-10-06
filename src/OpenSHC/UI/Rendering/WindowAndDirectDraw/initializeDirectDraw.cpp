@@ -55,7 +55,7 @@ namespace UI {
              */
             if (this->pointerToIDirectDrawInterface == (IDirectDraw*)0x0) {
                 _osVersionTest = MACRO_CALL(Global_Func::TestOSVersion)();
-                if (_osVersionTest == 0) {
+                if (!_osVersionTest) {
                     _hResult = DirectDrawCreate(
                         (GUID*)0x0, (IDirectDraw**)((int)(&this->pointerToIDirectDrawInterface)), (IUnknown*)0x0);
                 } else {
@@ -66,7 +66,7 @@ namespace UI {
                 /*
                   HRESULT not really enumerable. This "if" is executed if the Interface   creation fails.
                  */
-                if (_hResult != 0) {
+                if (_hResult) {
                     return FALSE;
                 }
             }
@@ -81,7 +81,7 @@ namespace UI {
               stream   individually."   Seems it sets some flag based on this condtion. But I am not sure what it means.
               -TheRedDaemon
              */
-            if ((_ddcaps.dwCaps2 & DDCAPS2_CANBOBHARDWARE) == 0) {
+            if (!(_ddcaps.dwCaps2 & DDCAPS2_CANBOBHARDWARE)) {
                 this->not_DDCAPS2_CANBOBHARDWARE_0xe0 = TRUE;
             }
             /*
@@ -104,12 +104,12 @@ namespace UI {
                 } while (0 < (int)_intendedRes);
                 this->currentGameResolution = _runRes;
                 if (this->currentGameResolution == Rendering::SRE_neg1) {
-                    if (this->resolutionSupported_0x68.1360x768 == 0) {
+                    if (!this->resolutionSupported_0x68.1360x768) {
                         /*
                           If I am not mistaken, then if 1024x600 supported then use this, else 800x600.   -TheRedDaemon
                          */
-                        this->currentGameResolution = (-(uint)(this->resolutionSupported_0x68.1024x600 != 0) & 0xe)
-                            + Rendering::SRE_800x600;
+                        this->currentGameResolution
+                            = (-(uint)(this->resolutionSupported_0x68.1024x600) & 0xe) + Rendering::SRE_800x600;
                     } else {
                         this->currentGameResolution = Rendering::SRE_1360x768;
                     }
@@ -128,7 +128,7 @@ namespace UI {
                   behaviour.      Signature Overwrite
                  */
                 _hResult2 = this->pointerToIDirectDrawInterface->SetCooperativeLevel(this->windowHandle, 0x13);
-                if (_hResult2 != 0)
+                if (_hResult2)
                     goto LAB_0046fbca;
                 /*
                   Signature Overwrite
@@ -138,7 +138,7 @@ namespace UI {
             /*
               If it fails:
              */
-            if (_hResultScreenSetting != 0) {
+            if (_hResultScreenSetting) {
             LAB_0046fbca:
                 MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(
                     TRUE);
@@ -158,7 +158,7 @@ namespace UI {
                  */
                 _hResult3 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawBackbufferSurfacePointer,
                     (IUnknown*)0x0);
-                if (_hResult3 != 0) {
+                if (_hResult3) {
                     MACRO_CALL_MEMBER(
                         UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(TRUE);
                     return FALSE;
@@ -174,7 +174,7 @@ namespace UI {
                  */
                 _hResult8 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawPrimarySurfacePointer,
                     (IUnknown*)0x0);
-                if (_hResult8 != 0)
+                if (_hResult8)
                     goto LAB_0046fe31;
                 MACRO_CALL(OS_Func::_memset)(&_ddsurfacedesc, 0, 0x6c);
                 _ddsurfacedesc.dwSize = 0x6c;
@@ -188,7 +188,7 @@ namespace UI {
                  */
                 _hResult9 = this->directDrawPrimarySurfacePointer->GetAttachedSurface(&_ddsurfacedesc.ddsCaps,
                     &this->directDrawBackbufferSurfacePointer);
-                if (_hResult9 != 0)
+                if (_hResult9)
                     goto LAB_0046fe31;
             }
             MACRO_CALL(OS_Func::_memset)(&_ddsurfacedesc, 0, (size_t)((int)(108)));
@@ -202,7 +202,7 @@ namespace UI {
              */
             _hResult4
                 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawOffscreenSurfacePointer_screenMenu, (IUnknown*)0x0);
-            if (_hResult4 == 0) {
+            if (!_hResult4) {
                 DAT_BinkControlState::instance.screenMenuSurfaceType_0x5c
                     = BinkDDSurfaceType(this->directDrawOffscreenSurfacePointer_screenMenu);
                 _surfacePtrGame = this->directDrawOffscreenSurfacePointer_screenMenu;
@@ -219,7 +219,7 @@ namespace UI {
                  */
                 _hResult5
                     = (*_surfacePtrGame->vTable->Lock)(_surfacePtrGame, (tagRECT*)0x0, &_ddsurfacedesc, 1, (void*)0x0);
-                if (_hResult5 == 0) {
+                if (!_hResult5) {
                     this->surfacePointer_screenMenu = _ddsurfacedesc.lpSurface;
                     /*
                       Would break, since ghidra is unable to resolve the stack ptr changes.      Signature Overwrite to
@@ -237,7 +237,7 @@ namespace UI {
                      */
                     _hResult6 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc,
                         &this->directDrawOffscreenSurfacePointer_mapGame, (IUnknown*)0x0);
-                    if (_hResult6 == 0) {
+                    if (!_hResult6) {
                         DAT_BinkControlState::instance.mapGameSurfaceType
                             = BinkDDSurfaceType(this->directDrawOffscreenSurfacePointer_mapGame);
                         _surfacePtrMap = this->directDrawOffscreenSurfacePointer_mapGame;
@@ -254,7 +254,7 @@ namespace UI {
                          */
                         _hResult7 = (*_surfacePtrMap->vTable->Lock)(
                             _surfacePtrMap, (tagRECT*)0x0, &_ddsurfacedesc, 1, (void*)0x0);
-                        if (_hResult7 == 0) {
+                        if (!_hResult7) {
                             this->surfacePointer_mapGame = _ddsurfacedesc.lpSurface;
                             /*
                               Same, also breaks stack ptr.      Signature Overwrite

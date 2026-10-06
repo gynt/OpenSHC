@@ -44,12 +44,11 @@ namespace Map {
             if (1 < this->maxEntityCount) {
                 pEVar6 = &this->entityArray[1];
                 do {
-                    if ((((pEVar6->logicalState == 2)
-                             && (pEVar6->entityType == Map::Entities::ET_COW_POISON_CLOUD))
+                    if ((((pEVar6->logicalState == 2) && (pEVar6->entityType == Map::Entities::ET_COW_POISON_CLOUD))
                             && (pEVar6->unknownAnimationFrameRelated < 0x3e9))
-                        && (pEVar6->unknownDistanceRelatedValue == 0)) {
+                        && (!pEVar6->unknownDistanceRelatedValue)) {
                         sVar1 = pEVar6->unitID_healer;
-                        if (sVar1 != 0) {
+                        if (sVar1) {
                             if ((pEVar6->unitUID == DAT_UnitsState::instance.units[sVar1].uid)
                                 && ((UVar2 = DAT_UnitsState::instance.units[sVar1].state.generic,
                                     UVar2 == Map::Units::States::US_AIM_WEAPONUnk

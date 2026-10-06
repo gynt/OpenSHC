@@ -61,11 +61,11 @@ namespace Map {
                         local_14, size);
                     iVar14 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile
                         + this->buildingX + x;
-                    if ((this->LogicLayer[iVar14] & 0x10000500U) == 0) {
+                    if (!(this->LogicLayer[iVar14] & 0x10000500U)) {
                         iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                             this)(iVar14, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                             (Commands::MappersEnum)(type), 0);
-                        this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15 != 0) & 0xfff9) + 0x3e;
+                        this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15) & 0xfff9) + 0x3e;
                     }
                     local_14 = local_14 + 1;
                 } while (local_14 < this->constructionTileCount);
@@ -79,16 +79,16 @@ namespace Map {
                     do {
                         iVar14 = DAT_ViewportRenderState::instance.translationMatrix[piVar12[1] + y].addXgetTile
                             + *piVar12 + iVar1;
-                        if ((this->LogicLayer[iVar14] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar14] & 0x10000500U)) {
                             iVar15
                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                     this)(iVar14, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                     (Commands::MappersEnum)(type), 0);
-                            this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15 != 0) & 0xfff9) + 0x3e;
+                            this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15) & 0xfff9) + 0x3e;
                         }
                         piVar12 = piVar12 + 2;
                         x = x + -1;
-                    } while (x != 0);
+                    } while (x);
                     iVar3 = ((short)(undefined2)type + -0x3c) * 0x20;
                     iVar14 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar3 + 900);
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar3 + 0x388);
@@ -99,11 +99,11 @@ namespace Map {
                         iVar13 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y + iVar15]
                                      .addXgetTile
                             + this->buildingX + iVar1 + iVar14;
-                        if ((this->LogicLayer[iVar13] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar13] & 0x10000500U)) {
                             iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                 this)(iVar13, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                 (Commands::MappersEnum)(type), 0);
-                            this->ConstructionGFXLayer[iVar13] = (-(ushort)(iVar4 != 0) & 0xfff9) + 0x3e;
+                            this->ConstructionGFXLayer[iVar13] = (-(ushort)(iVar4) & 0xfff9) + 0x3e;
                         }
                         local_14 = local_14 + 1;
                     } while (local_14 < this->constructionTileCount);
@@ -116,12 +116,12 @@ namespace Map {
                         iVar13 = this->buildingY + iVar15 + y;
                         iVar4 = DAT_ViewportRenderState::instance.translationMatrix[iVar13].addXgetTile
                             + this->buildingX + iVar14 + iVar1;
-                        if ((this->LogicLayer[iVar4] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar4] & 0x10000500U)) {
                             iVar13
                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                     this)(iVar4, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                     (Commands::MappersEnum)(type), 0);
-                            iVar13 = (-(uint)(iVar13 != 0) & 0xfffffff9) + 0x3e;
+                            iVar13 = (-(uint)(iVar13) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar4] = (ushort)iVar13;
                         }
                         uVar8 = (undefined2)((uint)iVar13 >> 0x10);
@@ -147,7 +147,7 @@ namespace Map {
                         iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                             this)(iVar5, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
                         iVar13 = iVar13 + 1;
-                        this->ConstructionGFXLayer[iVar5] = (-(ushort)(iVar4 != 0) & 0xfff9) + 0x3e;
+                        this->ConstructionGFXLayer[iVar5] = (-(ushort)(iVar4) & 0xfff9) + 0x3e;
                     } while (iVar13 < this->constructionTileCount);
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar14 + 0x578);
                     iVar14 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar14 + 0x57c);
@@ -161,7 +161,7 @@ namespace Map {
                         iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                             this)(iVar4, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
                         iVar3 = iVar3 + 1;
-                        this->ConstructionGFXLayer[iVar4] = (-(ushort)(iVar13 != 0) & 0xfff9) + 0x3e;
+                        this->ConstructionGFXLayer[iVar4] = (-(ushort)(iVar13) & 0xfff9) + 0x3e;
                     } while (iVar3 < this->constructionTileCount);
                     piVar12 = (int*)((int)DAT_TerrainDefinedData::ptr + (MVar10 * 3 + -0x1a4) * 0x10 + 0x5cc);
                     type = Commands::M_MAPPER_FOREST;
@@ -171,7 +171,7 @@ namespace Map {
                         iVar14 = MACRO_CALL_MEMBER(
                             Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
                             iVar15, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
-                        iVar14 = (Commands::MappersEnum)((-(uint)(iVar14 != 0) & 0xfffffff9) + 0x3e);
+                        iVar14 = (Commands::MappersEnum)((-(uint)(iVar14) & 0xfffffff9) + 0x3e);
                         piVar12 = piVar12 + 2;
                         type = (Commands::MappersEnum)(type - Commands::M_MAPPER_AREA);
                         this->ConstructionGFXLayer[iVar15] = (ushort)iVar14;
@@ -186,14 +186,14 @@ namespace Map {
                             iVar14, 5);
                         iVar3 = this->buildingX;
                         iVar15 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile;
-                        if ((this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U)) {
                             iVar13
                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                     this)(iVar15 + this->buildingX + iVar1 + 5,
                                     (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                     (Commands::MappersEnum)(type), 0);
                             this->ConstructionGFXLayer[iVar1 + iVar3 + iVar15 + 5]
-                                = (-(ushort)(iVar13 != 0) & 0xfff9) + 0x3e;
+                                = (-(ushort)(iVar13) & 0xfff9) + 0x3e;
                         }
                         iVar14 = iVar14 + 1;
                     } while (iVar14 < this->constructionTileCount);
@@ -204,11 +204,11 @@ namespace Map {
                         iVar15
                             = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile
                             + this->buildingX + iVar1;
-                        if ((this->LogicLayer[iVar15] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar15] & 0x10000500U)) {
                             iVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                 this)(iVar15, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                 (Commands::MappersEnum)(type), 0);
-                            this->ConstructionGFXLayer[iVar15] = (-(ushort)(iVar3 != 0) & 0xfff9) + 0x3e;
+                            this->ConstructionGFXLayer[iVar15] = (-(ushort)(iVar3) & 0xfff9) + 0x3e;
                         }
                         iVar14 = iVar14 + 1;
                     } while (iVar14 < this->constructionTileCount);
@@ -220,13 +220,13 @@ namespace Map {
                         iVar13 = this->buildingY + y + 5;
                         iVar15
                             = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile;
-                        if ((this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U)) {
                             iVar13
                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                     this)(iVar15 + this->buildingX + iVar1 + 5,
                                     (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                     (Commands::MappersEnum)(type), 0);
-                            iVar13 = (-(uint)(iVar13 != 0) & 0xfffffff9) + 0x3e;
+                            iVar13 = (-(uint)(iVar13) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar1 + iVar3 + iVar15 + 5] = (ushort)iVar13;
                         }
                         iVar14 = iVar14 + 1;
@@ -245,12 +245,12 @@ namespace Map {
                         iVar15 = this->buildingY + y + 4;
                         iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 4].addXgetTile
                             + this->buildingX + iVar1;
-                        if ((this->LogicLayer[iVar3] & 0x10000500U) == 0) {
+                        if (!(this->LogicLayer[iVar3] & 0x10000500U)) {
                             iVar15
                                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                                     this)(iVar3, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                     Commands::M_MAPPER_OIL_SMELTER, 0);
-                            iVar15 = (-(uint)(iVar15 != 0) & 0xfffffff9) + 0x3e;
+                            iVar15 = (-(uint)(iVar15) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar3] = (ushort)iVar15;
                         }
                         iVar14 = iVar14 + 1;
@@ -264,11 +264,11 @@ namespace Map {
                     iVar15 = (this->buildingY + y + 5) * 3;
                     iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile
                         + this->buildingX + iVar1;
-                    if ((this->LogicLayer[iVar3] & 0x10000500U) == 0) {
+                    if (!(this->LogicLayer[iVar3] & 0x10000500U)) {
                         iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
                             this)(iVar3, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                             (Commands::MappersEnum)(type), 0);
-                        iVar15 = (-(uint)((Commands::MappersEnum)(iVar15 != 0)) & 0xfffffff9) + 0x3e;
+                        iVar15 = (-(uint)((Commands::MappersEnum)(iVar15)) & 0xfffffff9) + 0x3e;
                         this->ConstructionGFXLayer[iVar3] = (ushort)iVar15;
                     }
                     iVar14 = iVar14 + 1;
@@ -323,7 +323,7 @@ namespace Map {
             LAB_00505714:
                 (*(short*)&x) = (short)this->buildingSpriteID2;
             }
-            if (((undefined2)type == Commands::M_MAPPER_DRAWBRIDGE) && (iVar15 != 0)) {
+            if (((undefined2)type == Commands::M_MAPPER_DRAWBRIDGE) && (iVar15)) {
                 if (iVar15 == 2) {
                     iVar15 = 3;
                 } else if (iVar15 == 4) {
@@ -359,7 +359,7 @@ namespace Map {
                           + (short)this->buildingRotationRelatedValue)
                     - 1;
             }
-            if (iVar14 != 0) {
+            if (iVar14) {
                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
             }
             local_14 = local_14 + 1;
@@ -389,7 +389,7 @@ namespace Map {
                             + this->buildingX + iVar15 + iVar1;
                         this->ConstructionGFXLayer[iVar6] = (short)this->buildingRotationRelatedValue
                             + (short)GMTotalPicturesProcessed::instance[0x34];
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar6] = this->MiscDisplayLayer[iVar6] | 0x8000;
                         }
                         iVar5 = iVar5 + 1;
@@ -411,7 +411,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar6] = (short)GMTotalPicturesProcessed::instance[0x34]
                                 + (short)(iVar7 / 2) * 4 + 0x60e + (short)iVar5;
                         }
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar6] = this->MiscDisplayLayer[iVar6] | 0x8000;
                         }
                         iVar5 = iVar5 + 1;
@@ -429,7 +429,7 @@ namespace Map {
                             + this->buildingX + iVar15 + iVar1;
                         this->ConstructionGFXLayer[iVar5] = (short)this->buildingRotationRelatedValue
                             + (short)GMTotalPicturesProcessed::instance[0x34];
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar5] = this->MiscDisplayLayer[iVar5] | 0x8000;
                         }
                         iVar4 = iVar4 + 1;
@@ -451,7 +451,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar5] = (short)GMTotalPicturesProcessed::instance[0x34]
                                 + (short)(iVar6 / 2) * 4 + 0x60e + (short)iVar4;
                         }
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar5] = this->MiscDisplayLayer[iVar5] | 0x8000;
                         }
                         iVar4 = iVar4 + 1;
@@ -464,7 +464,7 @@ namespace Map {
                             + *piVar12;
                         this->ConstructionGFXLayer[iVar15] = ((byte)this->RandomLayer[iVar15] & 3) + 0x138
                             + (short)GMTotalPicturesProcessed::instance[6];
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                         }
                         piVar12 = piVar12 + 2;
@@ -484,7 +484,7 @@ namespace Map {
                                 + DAT_TerrainDefinedData::instance.WheatFarmTiles[iVar3][iVar15].x + iVar1;
                             this->ConstructionGFXLayer[iVar3]
                                 = ((byte)this->RandomLayer[iVar3] & 3) + (short)GMTotalPicturesProcessed::instance[0xe];
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -504,7 +504,7 @@ namespace Map {
                                 + DAT_TerrainDefinedData::instance.HopFarmProperty1[iVar3][iVar15].x + iVar1;
                             this->ConstructionGFXLayer[iVar3] = ((byte)this->RandomLayer[iVar3] & 1) * 9 + 0x25
                                 + (short)GMTotalPicturesProcessed::instance[0xe];
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -529,7 +529,7 @@ namespace Map {
                                 DAT_TerrainDefinedData::instance.field1009_0xf5c[iVar3][iVar15 + 4].property);
                             iVar3 = iVar3 + 0x37 + GMTotalPicturesProcessed::instance[0xe];
                             this->ConstructionGFXLayer[iVar13] = (ushort)iVar3;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar13] = this->MiscDisplayLayer[iVar13] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -542,7 +542,7 @@ namespace Map {
                             iVar15 = DAT_ViewportRenderState::instance.translationMatrix[pXVar11->y + y].addXgetTile
                                 + pXVar11->x + iVar1;
                             this->ConstructionGFXLayer[iVar15] = (short)GMTotalPicturesProcessed::instance[0xe] + 0x3d;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                             }
                             pXVar11 = pXVar11 + 1;
@@ -561,7 +561,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar1 + this->buildingX + iVar3 + 5]
                                 = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x48;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar1 + iVar13 + iVar3 + 5]
                                     = this->MiscDisplayLayer[iVar1 + iVar13 + iVar3 + 5] | 0x8000;
                             }
@@ -576,7 +576,7 @@ namespace Map {
                                 + this->buildingX + iVar1;
                             this->ConstructionGFXLayer[iVar3] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x7a;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -592,7 +592,7 @@ namespace Map {
                             this->ConstructionGFXLayer[iVar1 + this->buildingX + iVar3 + 5]
                                 = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x61;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar1 + iVar13 + iVar3 + 5]
                                     = this->MiscDisplayLayer[iVar1 + iVar13 + iVar3 + 5] | 0x8000;
                             }
@@ -610,7 +610,7 @@ namespace Map {
                                 + this->buildingX + iVar1;
                             this->ConstructionGFXLayer[iVar3] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x93;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -627,7 +627,7 @@ namespace Map {
                                 + this->buildingX + iVar1;
                             this->ConstructionGFXLayer[iVar3] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0xac;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -644,7 +644,7 @@ namespace Map {
                                 + this->buildingX + iVar1;
                             this->ConstructionGFXLayer[iVar3] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x128;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -659,7 +659,7 @@ namespace Map {
                             + DAT_TerrainDefinedData::instance.field130_0x264[0][0].x + iVar1;
                         this->ConstructionGFXLayer[iVar15]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x523 + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                         }
                         iVar15 = DAT_ViewportRenderState::instance
@@ -668,7 +668,7 @@ namespace Map {
                             + DAT_TerrainDefinedData::instance.field130_0x264[0][1].x + iVar1;
                         this->ConstructionGFXLayer[iVar15]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x52e + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                         }
                         iVar15 = DAT_ViewportRenderState::instance
@@ -677,7 +677,7 @@ namespace Map {
                             + DAT_TerrainDefinedData::instance.field130_0x264[0][2].x + iVar1;
                         this->ConstructionGFXLayer[iVar15]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x527 + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                         }
                         iVar3 = iVar1 + DAT_TerrainDefinedData::instance.unkXYOffsets_0x384[0].xOffset;
@@ -691,7 +691,7 @@ namespace Map {
                                 + this->buildingX + iVar3;
                             this->ConstructionGFXLayer[iVar4] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x17;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar4] = this->MiscDisplayLayer[iVar4] | 0x8000;
                             }
                             iVar15 = iVar15 + 1;
@@ -707,7 +707,7 @@ namespace Map {
                                 + this->buildingX + iVar1;
                             this->ConstructionGFXLayer[iVar13] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[7] + 0x19;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar13] = this->MiscDisplayLayer[iVar13] | 0x8000;
                             }
                             iVar3 = iVar3 + 1;
@@ -724,7 +724,7 @@ namespace Map {
                             + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar15 + 0x264) + iVar1;
                         this->ConstructionGFXLayer[iVar3]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x521 + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                         }
                         iVar3 = DAT_ViewportRenderState::instance
@@ -733,7 +733,7 @@ namespace Map {
                             + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar15 + 0x26c) + iVar1;
                         this->ConstructionGFXLayer[iVar3]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x529 + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar3] = this->MiscDisplayLayer[iVar3] | 0x8000;
                         }
                         iVar15 = DAT_ViewportRenderState::instance
@@ -742,7 +742,7 @@ namespace Map {
                             + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar15 + 0x274) + iVar1;
                         this->ConstructionGFXLayer[iVar15]
                             = (short)GMTotalPicturesProcessed::instance[0x34] + 0x525 + uVar9;
-                        if (iVar14 != 0) {
+                        if (iVar14) {
                             this->MiscDisplayLayer[iVar15] = this->MiscDisplayLayer[iVar15] | 0x8000;
                         }
                         iVar13 = (MVar10 - Commands::M_MAPPER_KEEP1) * 0x20;
@@ -757,7 +757,7 @@ namespace Map {
                                 + this->buildingX + iVar1 + iVar15;
                             this->ConstructionGFXLayer[iVar5] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[6] + 0x17;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar5] = this->MiscDisplayLayer[iVar5] | 0x8000;
                             }
                             iVar4 = iVar4 + 1;
@@ -773,7 +773,7 @@ namespace Map {
                                 + this->buildingX + iVar15 + iVar1;
                             this->ConstructionGFXLayer[iVar4] = (short)this->buildingRotationRelatedValue
                                 + (short)GMTotalPicturesProcessed::instance[7] + 0x19;
-                            if (iVar14 != 0) {
+                            if (iVar14) {
                                 this->MiscDisplayLayer[iVar4] = this->MiscDisplayLayer[iVar4] | 0x8000;
                             }
                             iVar13 = iVar13 + 1;

@@ -68,7 +68,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             color = COL_DARK_LIME::instance.shortValue;
-            if (isDragged == 0) {
+            if (!isDragged) {
                 color = COL_GREYISH_YELLOW::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(

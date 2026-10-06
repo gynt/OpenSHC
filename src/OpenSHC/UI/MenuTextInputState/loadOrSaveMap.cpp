@@ -40,7 +40,7 @@ namespace UI {
                 piVar2 = piVar2 + 1;
             } while (iVar1 < DAT_ResourceManager::instance.mapFileCounter);
         }
-        this->DAT_MenuLoadGameRelativeSelectionIndex = (this->fileListEntryCount != 0) - 1;
+        this->DAT_MenuLoadGameRelativeSelectionIndex = (this->fileListEntryCount) - 1;
         this->fileListSortOrder = 0;
         this->DAT_MenuLoadGameRelativeSelectionOffset = 0;
         DAT_MouseState::instance.waitCursorToggle = 0;

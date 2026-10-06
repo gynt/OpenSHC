@@ -31,7 +31,7 @@ namespace Map {
             if (1 < DAT_UnitsState::instance.maxUnitCount) {
                 _pUnit = &DAT_UnitsState::instance.units[1];
                 do {
-                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (_pUnit->dying == 0))
+                    if ((((_pUnit->logicalState == Map::Units::ULS_NORMAL) && (!_pUnit->dying))
                             && (_pUnit->ifSelectedThenPlayerID == playerID))
                         && (_unitTribeID = (int)_pUnit->tribeID, 0 < _unitTribeID)) {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromThisTribeIfInTribe,

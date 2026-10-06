@@ -18,7 +18,7 @@ namespace Map {
                 + piVar1->unitCountsPerUnitType[4] + piVar1->unitCountsPerUnitType[3];
             iVar1 = iVar1 + -1;
             piVar1 = (IngameInvasionEventItemContent*)(piVar1->unitCountsPerUnitType + 8);
-        } while (iVar1 != 0);
+        } while (iVar1);
     }
 
 }

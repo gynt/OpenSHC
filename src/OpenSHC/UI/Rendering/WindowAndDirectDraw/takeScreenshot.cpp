@@ -108,9 +108,8 @@ namespace UI {
 MACRO_CALL_MEMBER(HoldStrong_lib::std::basic_ofstream<char,_struct_std::char_traits<char>_>_Func::basic_ofstream<char,_struct_std::char_traits<char>_>, ()()basic_ofstream<char,_struct_std::char_traits<char>_> *)(&_ofstream,local_7e0,0x20,0x40,
 1));
 local_4 = 0;
-if (((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, _struct_std::char_traits<char> _> _0]
-        & 6)
-    == 0) {
+if (!((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, _struct_std::char_traits<char> _> _0]
+        & 6)) {
     MACRO_CALL_MEMBER(
         UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreenMenuSurfaceComplete, this)();
     MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
@@ -167,9 +166,11 @@ if (((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, _
     _ofstream._4_4_ = std::basic_filebuf<char, struct_std::char_traits<char> _>::vftable::instance;
     local_4 = 2;
     if (_ofstream._76_1_ != '\0') {
-        if (_ofstream._80_4_ != 0) {
-MACRO_CALL_MEMBER(HoldStrong_lib::stdLib::ios::basic_streambuf<char,_struct_std::char_traits<char>_>_Func::meth_0x476680, (basic_streambuf<char,_struct_std::char_traits<char>_>*)local_8c4)();
-MACRO_CALL(OS_Func::_fclose)((FILE*)_ofstream._80_4_);
+        if (_ofstream._80_4_) {
+            MACRO_CALL_MEMBER(HoldStrong_lib::stdLib::ios::basic_streambuf<char, _struct_std::char_traits<char> _>
+                                  _Func::meth_0x476680,
+                (basic_streambuf<char, _struct_std::char_traits<char> _>*)local_8c4)();
+            MACRO_CALL(OS_Func::_fclose)((FILE*)_ofstream._80_4_);
         }
         _ofstream._20_4_ = &_ofstream.field_0xc;
         _ofstream._24_4_ = &_ofstream.field_0x10;

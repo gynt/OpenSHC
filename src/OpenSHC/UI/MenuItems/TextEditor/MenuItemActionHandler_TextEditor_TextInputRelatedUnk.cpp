@@ -25,7 +25,7 @@ namespace UI {
             int iVar5;
             int iVar6;
             WCHAR* pWVar7;
-            if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
+            if (!DAT_TextEditorState::instance.useAlternateHelpTab) {
                 uVar2 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::dequeueInputBufferChar, DAT_UserTextHandlerState::ptr)();
                 if ((int)uVar2 < 0xf0) {}
@@ -98,7 +98,7 @@ namespace UI {
                             = DAT_TextEditorState::instance.activeHelpHotspotIndex + iVar3;
                         DAT_TextEditorState::instance.pendingTokenTypeToSkip = ((HelpTextToken)0);
                     }
-                    if ((DAT_TextEditorState::instance.isCustomTextMode != 0)
+                    if ((DAT_TextEditorState::instance.isCustomTextMode)
                         && (-1 < DAT_TextEditorState::instance.customTextMaxLength)) {
                         pWVar4 = pWVar7;
                         do {
@@ -132,13 +132,13 @@ namespace UI {
                 } else {
                     switch (uVar2) {
                     case 0xf0:
-                        if (DAT_TextEditorState::instance.isCustomTextMode == 0) {
+                        if (!DAT_TextEditorState::instance.isCustomTextMode) {
                             uVar2 = 9;
                             goto LAB_004616f7;
                         }
                         break;
                     case 0xf1:
-                        if (DAT_TextEditorState::instance.isCustomTextMode == 0) {
+                        if (!DAT_TextEditorState::instance.isCustomTextMode) {
                             uVar2 = 6;
                             goto LAB_004616f7;
                         }

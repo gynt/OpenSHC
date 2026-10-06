@@ -145,7 +145,7 @@ namespace UI {
             if (0 < DAT_ButtonH::instance) {
                 iVar2 = 0;
                 do {
-                    if (iVar2 == 0) {
+                    if (!iVar2) {
                         iVar3 = 1;
                     } else {
                         iVar3 = (-(uint)(iVar2 != DAT_ButtonH::instance + -0x18) & 0xfffffffa) + 0xd;
@@ -153,7 +153,7 @@ namespace UI {
                     iVar4 = 0;
                     do {
                         imageID = iVar3;
-                        if (iVar4 == 0) {
+                        if (!iVar4) {
                         LAB_004adacf:
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
@@ -180,7 +180,7 @@ namespace UI {
             if (DAT_RequestedGoodsByWhoArray::instance[0] == 6) {
                 iVar1 = 7;
             LAB_004adb48:
-                if (DAT_SentOrRequestedGoodsAmount::instance != 0) {
+                if (DAT_SentOrRequestedGoodsAmount::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         DAT_SentOrRequestedGoodsAmount::instance, (int)((int)(DAT_ButtonX::instance + 0x24)),
                         (int)((int)(DAT_ButtonY::instance + 0x24)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0, 0x11, FALSE,

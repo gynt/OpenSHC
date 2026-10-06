@@ -42,7 +42,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     DAT_SkirmishTrailRelated1::instance, (int)((int)(DAT_ButtonX::instance + 0x35)),
                     (int)((int)(DAT_ButtonY::instance + 0x62)), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0, 0xf, FALSE, 0);
-                if (INT_00ed2bdc::instance != 0) {
+                if (INT_00ed2bdc::instance) {
                     blendStrength = 0;
                     keepOffsetX = FALSE;
                     fontSize = 0x12;

@@ -23,14 +23,14 @@ namespace Map {
                 this->entityArray[param_1].nextEntityOnThisTileByID = 0;
             }
             iVar4 = iVar3;
-            if (iVar3 != 0) {
+            if (iVar3) {
                 while ((iVar1 = iVar3, iVar5 = iVar5 + 1, iVar3 = iVar4,
                     iVar5 < 100
                         && (iVar2 = (int)this->entityArray[iVar1].nextEntityOnThisTileByID, iVar3 = iVar1,
                             iVar2 != param_1))) {
                     iVar3 = iVar2;
                     iVar4 = iVar1;
-                    if (iVar2 == 0) {}
+                    if (!iVar2) {}
                 }
             }
             this->entityArray[iVar3].nextEntityOnThisTileByID = this->entityArray[param_1].nextEntityOnThisTileByID;

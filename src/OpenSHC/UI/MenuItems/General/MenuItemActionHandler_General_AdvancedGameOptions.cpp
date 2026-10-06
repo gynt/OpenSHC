@@ -278,7 +278,7 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x5e) {
-                if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0) {
+                if (!DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes) {
                     DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes = 5;
                 } else if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 5) {
                     DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes = 10;
@@ -289,7 +289,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0) {
+                if (!DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes) {
                     /*
                       added by script: "Off"
                      */
@@ -372,7 +372,7 @@ namespace UI {
                     = DAT_GameSynchronyState::instance.skirmishStrongWalls ^ 1;
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                if (DAT_GameSynchronyState::instance.skirmishStrongWalls == 0) {
+                if (!DAT_GameSynchronyState::instance.skirmishStrongWalls) {
                     iVar5 = 0x5f;
                     eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                 } else {
@@ -471,7 +471,7 @@ namespace UI {
                         = DAT_GameSynchronyState::instance.skirmishNoCowThrowing ^ 1;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                    if (DAT_GameSynchronyState::instance.skirmishNoCowThrowing == 0) {
+                    if (!DAT_GameSynchronyState::instance.skirmishNoCowThrowing) {
                         iVar5 = 0x5f;
                         eVar4 = DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                     } else {
@@ -490,7 +490,7 @@ namespace UI {
                             = DAT_GameSynchronyState::instance.skirmishNoDogs ^ 1;
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                        if (DAT_GameSynchronyState::instance.skirmishNoDogs == 0) {
+                        if (!DAT_GameSynchronyState::instance.skirmishNoDogs) {
                             /*
                               added by script: "Off"
                              */
@@ -512,7 +512,7 @@ namespace UI {
                             = DAT_GameSynchronyState::instance.skirmishExtremeMode ^ 1;
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                        if (DAT_GameSynchronyState::instance.skirmishExtremeMode == 0) {
+                        if (!DAT_GameSynchronyState::instance.skirmishExtremeMode) {
                             /*
                               added by script: "Off"
                              */
@@ -551,7 +551,7 @@ namespace UI {
                         }
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                        if (DAT_GameSynchronyState::instance.skirmishNoRushSetting == 0) {
+                        if (!DAT_GameSynchronyState::instance.skirmishNoRushSetting) {
                             iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameText2,
                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5f,
@@ -649,7 +649,7 @@ namespace UI {
                         = DAT_GameSynchronyState::instance.skirmishExtremeMode2 ^ 1;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                    if (DAT_GameSynchronyState::instance.skirmishExtremeMode == 0) {
+                    if (!DAT_GameSynchronyState::instance.skirmishExtremeMode) {
                         /*
                           added by script: "Off"
                          */

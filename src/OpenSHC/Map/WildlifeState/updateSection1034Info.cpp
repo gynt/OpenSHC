@@ -31,10 +31,9 @@ namespace Map {
                     do {
                         piVar4->unknownNonZero01 = 0;
                         piVar4->field27_0x6c = 0;
-                        if ((piVar4->castlebuildings != 0)
-                            && (iVar1
-                                = MACRO_CALL_MEMBER(Map::WildlifeState_Func::hasAdjacentCellWithField24Or25,
-                                    this)(iVar6, iVar2),
+                        if ((piVar4->castlebuildings)
+                            && (iVar1 = MACRO_CALL_MEMBER(
+                                    Map::WildlifeState_Func::hasAdjacentCellWithField24Or25, this)(iVar6, iVar2),
                                 iVar1 != 0)) {
                             piVar4->field25_0x64 = piVar4->field25_0x64 + 1;
                         }

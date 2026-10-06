@@ -39,7 +39,7 @@ namespace UI {
             int blendStrengthUnk;
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {
+                && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
             DAT_ButtonUnknownZero::instance = 0;

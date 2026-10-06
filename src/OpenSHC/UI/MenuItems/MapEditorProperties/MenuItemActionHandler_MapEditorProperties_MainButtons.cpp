@@ -77,8 +77,8 @@ namespace UI {
                         UI::MenuTextInputState_Func::activateLoadOrSaveMapUI, DAT_MenuTextInputState::ptr)(9);
                     return;
                 case 3:
-                    if ((DAT_GameCore::instance.U2_mapType_singleOrMulti == 0)
-                        || (DAT_GameCore::instance.field115_0x1d98 != 0)) {
+                    if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
+                        || (DAT_GameCore::instance.field115_0x1d98)) {
                         MACRO_CALL_MEMBER(
                             Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                             DAT_MapPropertiesState::ptr)();
@@ -96,7 +96,7 @@ namespace UI {
                         UI::Enums::MVT_NEW_MAP_MAPTYPE, 0);
                     return;
                 case 5:
-                    if (INT_00b95f68::instance != 0) {
+                    if (INT_00b95f68::instance) {
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2b;
                         MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                             DAT_MenuTextInputState::ptr)(UI::Enums::MMT_QUIT_DIALOG);
@@ -107,7 +107,7 @@ namespace UI {
                         UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                     return;
                 case 6:
-                    if (DAT_GameCore::instance.field115_0x1d98 != 0) {
+                    if (DAT_GameCore::instance.field115_0x1d98) {
                         INT_00b95f68::instance = 1;
                         DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                         DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
@@ -133,7 +133,7 @@ namespace UI {
                             DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xef;
                         } else if (DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo != 0xef)
                             goto LAB_00443214;
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+                        if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                             DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xed;
                         }
                     LAB_00443214:
@@ -148,7 +148,7 @@ namespace UI {
                     return;
                 case 0x19:
                     if ((DAT_GameCore::instance.U2_mapType_singleOrMulti != 1)
-                        && (DAT_GameCore::instance.field115_0x1d98 != 0)) {
+                        && (DAT_GameCore::instance.field115_0x1d98)) {
                         INT_00b95f68::instance = 1;
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_EDIT_SCENARIO, 0);
@@ -156,7 +156,7 @@ namespace UI {
                     }
                     break;
                 case 0x1f:
-                    if (DAT_GameCore::instance.field115_0x1d98 != 0) {
+                    if (DAT_GameCore::instance.field115_0x1d98) {
                         DAT_GameCore::instance.missionNumber1to20 = 27;
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x20;
                         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,

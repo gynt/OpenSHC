@@ -58,13 +58,13 @@ namespace Map {
                     param_1, 1000, 10000, Map::Units::STBT_0x418);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                     Map::Units::STBT_0x418, Map::Units::STBT_1, 0x14, 0x46);
-                if ((this->attackInfo.people3 != 0) && (9 < this->attackInfo.field86974_0x20f74)) {
+                if ((this->attackInfo.people3) && (9 < this->attackInfo.field86974_0x20f74)) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, 1, this->attackInfo.people3, Map::Units::STBT_0x3fb);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3fb, Map::Units::STBT_1, 5, 0xf);
                 }
-                if (this->attackInfo.lord2 != 0) {
+                if (this->attackInfo.lord2) {
                     MACRO_CALL_MEMBER(
                         Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(param_1,
                         (int)((int)(this->attackInfo.field_0x20f3c)),
@@ -72,26 +72,26 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::assignBehaviorTypeToNearbyTribes,
                         this)(Map::Units::STBT_0x3fd, 1, 0, 5);
                 }
-                if (this->attackInfo.high3 != 0) {
+                if (this->attackInfo.high3) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, this->attackInfo.high3, 10000, Map::Units::STBT_0x3f8);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3f8, Map::Units::STBT_1, 0x14, 10);
                 }
-                if (this->attackInfo.arch3 != 0) {
+                if (this->attackInfo.arch3) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, this->attackInfo.arch3, 10000, Map::Units::STBT_0x3f9);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3f9, Map::Units::STBT_1, 0x14, 10);
                 }
-                if (this->attackInfo.people3 != 0) {
+                if (this->attackInfo.people3) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, 2, this->attackInfo.people3, Map::Units::STBT_0x3fb);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                         Map::Units::STBT_0x3fb, Map::Units::STBT_1, 0, 10);
                 }
                 tribeSizeSumLimit = *(int*)((int)this->attackInfo.townValuesArray + iVar4 * 0x177bc + -4);
-                if (tribeSizeSumLimit != 0) {
+                if (tribeSizeSumLimit) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn,
                         this)(param_1, 1, tribeSizeSumLimit, Map::Units::STBT_0x3f5);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(

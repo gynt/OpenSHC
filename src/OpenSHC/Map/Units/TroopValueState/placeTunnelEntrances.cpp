@@ -33,7 +33,7 @@ namespace Map {
             iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
                 DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].x)),
                 (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)), tribeID);
-            if (iVar4 != 0) {
+            if (iVar4) {
                 sVar1 = DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1;
                 iVar2 = DAT_TribesState::instance.tribes[tribeID].uid;
                 DAT_TribesState::instance.tribes[tribeID].siegeIndexValue2 = sVar1;

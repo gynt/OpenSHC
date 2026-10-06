@@ -64,7 +64,7 @@ namespace Rendering {
                 if (BVar2 != FALSE) {
                     iVar6 = iVar6 + -0x28;
                 }
-                if (this->currentMessageUnknownValue_0x4 == 0) {
+                if (!this->currentMessageUnknownValue_0x4) {
                     iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineWideTextUnk,
                         &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                         (WCHAR*)this->currentMessageText_0x8, 0, 0, 0x244, 0, 0, 1);
@@ -109,7 +109,7 @@ namespace Rendering {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2,
                         (int)((int)(this->currentMessageUnknownValue2_0xd4 + 0x222)), iVar5, iVar3);
-                    if (iVar6 == 0) {
+                    if (!iVar6) {
                         iVar6 = 0x21b;
                     } else {
                         iVar6 = iVar6 + 0x20a;
@@ -122,15 +122,15 @@ namespace Rendering {
                 if (BVar2 == FALSE) {
                     this->mbr_0x92c = 1;
                 }
-                if ((10000 < (int)(DVar1 - this->videoStartTimeUnk_0xd8)) || (iVar4 == 0)) {
+                if ((10000 < (int)(DVar1 - this->videoStartTimeUnk_0xd8)) || (!iVar4)) {
                     if (this->currentMessageVfxFile_0xc[0] == '\0') {
                         if ((((this->currentMessageSfxFile_0x70[0] != '\0')
                                  && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
-                                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0))
-                            && (this->mbr_0x92c == 0)) {}
+                                && (DAT_SoundSystemState::instance.soundActiveUnk_0x0))
+                            && (!this->mbr_0x92c)) {}
                     } else if (DAT_BinkControlState::instance.binkObjPtrArray[1] != (HBINK)0x0) {
                     }
-                    if (DAT_GameCore::instance.gamePausedLogical == 0) {
+                    if (!DAT_GameCore::instance.gamePausedLogical) {
                         this->mbr_0x928 = 0;
                         DAT_GameCore::instance.countdown = 2;
                         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,

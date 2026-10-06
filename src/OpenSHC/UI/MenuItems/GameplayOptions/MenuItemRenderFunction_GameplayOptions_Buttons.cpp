@@ -44,7 +44,7 @@ namespace UI {
                     param_1 = 0xe - (uint)(DAT_MenuTextInputState::instance.pendingUnusedOption1 != '\0');
                 } else {
                     if (param_1 != -1) {}
-                    if (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp == 0) {
+                    if (!DAT_MenuTextInputState::instance.pendingSettingBubbleHelp) {
                         param_1 = 0xe;
                     } else {
                         if (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp != 1) {}

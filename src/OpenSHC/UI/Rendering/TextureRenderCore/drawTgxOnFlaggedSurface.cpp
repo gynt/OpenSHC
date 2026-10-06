@@ -107,7 +107,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6 != 0);
+                                } while (iVar6);
                             } else {
                                 iVar4 = (iVar6 + _xRenderPos) - LVar3;
                                 iVar6 = iVar6 - iVar4;
@@ -117,7 +117,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6 != 0);
+                                } while (iVar6);
                                 _xRenderPos = _xRenderPos + iVar4;
                                 _renderPtr = _renderPtr + iVar4;
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + iVar4 * 2);
@@ -147,7 +147,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6 != 0);
+                                } while (iVar6);
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + 3);
                             } else {
                                 iVar4 = (iVar6 + _xRenderPos) - LVar3;
@@ -158,7 +158,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6 != 0);
+                                } while (iVar6);
                                 _xRenderPos = _xRenderPos + iVar4;
                                 _renderPtr = _renderPtr + iVar4;
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + 3);

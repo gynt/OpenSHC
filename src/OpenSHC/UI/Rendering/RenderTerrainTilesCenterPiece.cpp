@@ -30,7 +30,7 @@ namespace UI {
             && (DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)_drawYTileRow)) {
             puVar7 = (undefined4*)(DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance]
                 + (int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData);
-            if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
+            if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
                 puVar8 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
                     + _drawYTileRow * 0xfd8;
                 uVar4 = puVar7[1];
@@ -262,7 +262,7 @@ namespace UI {
             puVar9 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                 + (_drawYTileRow >> 1) * 0x1fb0 + (DAT_RenderMap_DrawSomeX::instance & 0xfffffffe));
             DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = puVar9;
-            if ((_drawYTileRow & 1) == 0) {
+            if (!(_drawYTileRow & 1)) {
                 *(undefined2*)(puVar9 + 0xe) = *(undefined2*)puVar7;
                 uVar1 = *(undefined2*)(puVar7 + 5);
                 uVar2 = *(undefined2*)(puVar7 + 6);

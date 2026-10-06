@@ -182,7 +182,7 @@ namespace UI {
             local_f4[8] = 0;
             local_f4[9] = 0;
             local_f4[10] = 0;
-            if (DAT_GameCore::instance.field22_0x64 == 0) {
+            if (!DAT_GameCore::instance.field22_0x64) {
                 dVar3 = DAT_GameCore::instance.extremeTrailProgress;
                 if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
                     && (dVar3 = DAT_GameCore::instance.skirmishTrailProgress,
@@ -195,7 +195,7 @@ namespace UI {
             _offset = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x238;
             iVar6 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10;
-            if (INT_00eb9ae8::instance == 0) {
+            if (!INT_00eb9ae8::instance) {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ReadMapHeaderFromFile)(CHAR_ARRAY_00eb0ab0::instance);
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -424,7 +424,7 @@ namespace UI {
                     if (!bVar8)
                         goto LAB_004de066;
                 } else {
-                    if ((dVar3 == 0) && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_offset] == -1)) {
+                    if ((!dVar3) && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_offset] == -1)) {
                         bVar8 = DAT_GameSynchronyState::instance.currentAIArray[_offset] == 0;
                         goto LAB_004de064;
                     }
@@ -435,7 +435,7 @@ namespace UI {
                         iVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_offset);
                         dVar3 = DAT_GameCore::instance.field22_0x64;
-                        if (iVar6 == 0) {
+                        if (!iVar6) {
                             local_10c = local_10c + 3;
                             *piVar5 = 0;
                             *local_108 = 0;

@@ -45,7 +45,7 @@ namespace Map {
             local_c = (int)(char)DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray[attackWave];
             _nTunnelers = 0;
             _nTunnels = 0;
-            if (local_c == 0) {
+            if (!local_c) {
                 local_c = 2;
             }
             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
@@ -57,23 +57,22 @@ namespace Map {
                 iVar3 = DAT_UnitsState::instance.maxUnitCount - 1;
                 do {
                     if ((((psVar3->logicalState == Map::Units::ULS_NORMAL) && (psVar3->owner == local_c))
-                            && (psVar3->dying == 0))
+                            && (!psVar3->dying))
                         && (psVar3->unitType == Map::Units::UT_TUNNELER)) {
                         _nTunnelers = _nTunnelers + 1;
                     }
                     psVar3 = psVar3 + 0x248;
                     iVar3 = iVar3 + -1;
                     _nTunnels = _nTunnelers;
-                } while (iVar3 != 0);
+                } while (iVar3);
             }
             iVar4 = 0;
             iVar3 = 1;
             DAT_TroopValueState::instance.attackInfo.tribeIDArraySize = 0;
             piVar3 = &DAT_TribesState::instance.tribes[1];
             do {
-                if (((piVar3->tribeState != 0) && (piVar3->owner == local_c))
-                    && ((piVar3->attackWave == attackWave
-                        && (piVar3->tribeType == AI::Tribes::AITT_TUNNELERS)))) {
+                if (((piVar3->tribeState) && (piVar3->owner == local_c))
+                    && ((piVar3->attackWave == attackWave && (piVar3->tribeType == AI::Tribes::AITT_TUNNELERS)))) {
                     DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar4] = iVar3;
                     iVar4 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize + 1;
                     DAT_TroopValueState::instance.attackInfo.tribeIDArraySize = iVar4;
@@ -81,13 +80,13 @@ namespace Map {
                 piVar3 = piVar3 + 0xcd;
                 iVar3 = iVar3 + 1;
             } while ((int)piVar3 < 0x176238c);
-            if (iVar4 != 0) {
+            if (iVar4) {
                 iVar5 = 0;
                 if (0 < iVar4) {
                     do {
                         iVar3 = DAT_TroopValueState::instance.attackInfo.tribeIDArray[iVar5];
                         sVar1 = DAT_TribesState::instance.tribes[iVar3].size;
-                        while (sVar1 != 0) {
+                        while (sVar1) {
                             MACRO_CALL_MEMBER(
                                 Map::Units::TribesState_Func::popUnitFromTribe, DAT_TribesState::ptr)(iVar3);
                             iVar4 = DAT_TroopValueState::instance.attackInfo.tribeIDArraySize;
@@ -112,9 +111,8 @@ namespace Map {
                         if ((int)uVar2 <= (int)unitID) {}
                         psVar4 = &DAT_UnitsState::instance.units[unitID];
                         while (((psVar4->logicalState != Map::Units::ULS_NORMAL || (psVar4->owner != local_c))
-                            || ((psVar4->dying != 0
-                                || ((psVar4->unitType != Map::Units::UT_TUNNELER
-                                    || (psVar4->tribeID != 0))))))) {
+                            || ((psVar4->dying
+                                || ((psVar4->unitType != Map::Units::UT_TUNNELER || (psVar4->tribeID))))))) {
                             unitID = unitID + 1;
                             psVar4 = psVar4 + 0x248;
                             if ((int)uVar2 <= (int)unitID) {}

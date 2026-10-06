@@ -50,7 +50,7 @@ namespace Map {
                 _currentBuildingID = DAT_CurrentBuildingID::instance;
             }
         }
-        if ((DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile == 0)
+        if ((!DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile)
             || (DAT_TileMapState::instance
                     .BuildingLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
                 != _currentBuildingID)) {

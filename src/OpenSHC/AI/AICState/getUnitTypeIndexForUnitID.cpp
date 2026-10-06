@@ -32,12 +32,11 @@ namespace AI {
             _unitType = DAT_UnitsState::instance.units[unitID].unitTypeToChangeInto;
         }
         _unitType2 = (UnitTypeInt)(short)_unitType;
-        if ((((DAT_GameState::instance.playerDataArray[_playerID].aiType != AI::AIT_CALIPH) && (param_2 != 0))
+        if ((((DAT_GameState::instance.playerDataArray[_playerID].aiType != AI::AIT_CALIPH) && (param_2))
                 && (0 < DAT_GameState::instance.playerDataArray[_playerID].aivUnitLocationSlotLocationCount[0xd]))
             && (((_unitType2 == Map::Units::UT_E_ARCHER || (_unitType2 == Map::Units::UT_E_XBOW))
                 || ((_unitType2 == Map::Units::UT_A_ARCHER
-                    || ((_unitType2 == Map::Units::UT_A_SLINGER
-                        || (_unitType2 == Map::Units::UT_A_FIRETHROWER)))))))) {
+                    || ((_unitType2 == Map::Units::UT_A_SLINGER || (_unitType2 == Map::Units::UT_A_FIRETHROWER)))))))) {
             /*
               slave
              */

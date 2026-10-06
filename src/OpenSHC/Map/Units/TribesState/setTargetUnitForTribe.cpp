@@ -29,7 +29,7 @@ namespace Map {
                     if ((DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL)
                         && (DAT_UnitsState::instance.units[_unitID].dying == 0)) {
                         _tribeTargetUnitID = this->tribes[tribeID].selectionTargetUnitID;
-                        if (_tribeTargetUnitID == 0) {
+                        if (!_tribeTargetUnitID) {
                             this->tribes[tribeID].selectionTargetUnitID = (short)_unitID;
                             DAT_UnitsState::instance.units[_unitID].selectionTargetUnitID = (short)_unitID;
                         } else {
