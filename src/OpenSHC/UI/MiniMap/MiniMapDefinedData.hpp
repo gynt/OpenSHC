@@ -110,9 +110,9 @@ namespace UI {
             ushort field87_0x276; // 0x00000276 length: 2
             ushort field88_0x278; // 0x00000278 length: 2
             ushort field89_0x27a; // 0x0000027A length: 2
-            MapColorRelatedStructure1 field90_0x27c[8]; // 0x0000027C length: 64
-            int field91_0x2bc; // 0x000002BC length: 4
-            int field92_0x2c0; // 0x000002C0 length: 4
+            MapColorRelatedStructure1 MinimapColorByLogicBit[8]; // 0x0000027C length: 64
+            int cachedKeepEnclosed; // 0x000002BC length: 4
+            int cachedMapOrientation; // 0x000002C0 length: 4
 
         } MiniMapDefinedData;
 #pragma pack(pop)

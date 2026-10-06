@@ -98,17 +98,19 @@ namespace UI {
                                 iVar12 = 0;
                                 if (!(_tile1003 & 0x40000000)) {
                                     if (!(_tile1003 & 0x3000)) {
-                                        uVar9 = DAT_MiniMapDefinedData::instance.field90_0x27c[0].integer;
+                                        uVar9 = DAT_MiniMapDefinedData::instance.MinimapColorByLogicBit[0].integer;
                                         if (!(_tile1003 & 8)) {
                                             while (!(uVar9 & _tile1003)) {
                                                 if (!uVar9)
                                                     goto LAB_004b55d3;
                                                 iVar11 = iVar12 + 1;
                                                 iVar12 = iVar12 + 1;
-                                                uVar9 = DAT_MiniMapDefinedData::instance.field90_0x27c[iVar11].integer;
+                                                uVar9 = DAT_MiniMapDefinedData::instance.MinimapColorByLogicBit[iVar11]
+                                                            .integer;
                                             }
-                                            param_4 = (uint)DAT_MiniMapDefinedData::instance.field90_0x27c[iVar12]
-                                                          .colorModeSpecificValue[_isRGB565];
+                                            param_4
+                                                = (uint)DAT_MiniMapDefinedData::instance.MinimapColorByLogicBit[iVar12]
+                                                      .colorModeSpecificValue[_isRGB565];
                                         } else if (!(DAT_TileMapState::instance.MiscDisplayLayer[_tile] & 0x2000)) {
                                         LAB_004b55d3:
                                             param_4 = 0;

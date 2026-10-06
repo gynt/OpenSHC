@@ -216,7 +216,7 @@ namespace Audio {
                 }
 
                 if (timeGetTime() - this->lastMusicChangeTime <= DAT_SFXDefinedData::instance
-                        .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
+                        .MusicDelays[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }
 
@@ -291,7 +291,7 @@ namespace Audio {
                 }
 
                 if (timeGetTime() - this->lastMusicChangeTime <= DAT_SFXDefinedData::instance
-                        .field4_0x4c4[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
+                        .MusicDelays[DAT_SoundEffectsHelperData1::instance.musicDelayIndex]) {
                     return;
                 }
 

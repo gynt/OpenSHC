@@ -92,13 +92,13 @@ namespace UI {
             iVar6 = iVar13 / 2;
             local_30 = iVar14;
         }
-        if (DAT_MiniMapDefinedData::instance.field92_0x2c0 != DAT_TileMapState::instance.mapOrientation) {
+        if (DAT_MiniMapDefinedData::instance.cachedMapOrientation != DAT_TileMapState::instance.mapOrientation) {
             /*
               this is run when you first? load a map
              */
             MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, this)(0, 100);
             MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, this)(0, 100);
-            DAT_MiniMapDefinedData::instance.field92_0x2c0 = DAT_TileMapState::instance.mapOrientation;
+            DAT_MiniMapDefinedData::instance.cachedMapOrientation = DAT_TileMapState::instance.mapOrientation;
         }
         if (this->field14_0x38) {
             if (!this->field13_0x34) {
