@@ -43,9 +43,9 @@ namespace Map {
             sVar2 = this->tribes[tribeID].selectionTargetUnitID;
             _x10 = (int)DAT_UnitsState::instance.units[sVar2].x / 10;
             _y10 = (int)DAT_UnitsState::instance.units[sVar2].y / 10;
-            iVar8 = DAT_WildlifeState::instance.grid[_x10][_y10].field17_0x44;
+            iVar8 = DAT_WildlifeState::instance.grid[_x10][_y10].rockyTiles;
             iVar4 = DAT_WildlifeState::instance.grid[_x10][_y10].lionCount;
-            iVar5 = DAT_WildlifeState::instance.grid[_x10][_y10].field16_0x40;
+            iVar5 = DAT_WildlifeState::instance.grid[_x10][_y10].marshTiles;
             iVar6 = DAT_WildlifeState::instance.grid[_x10][_y10].field18_0x48;
             sVar2 = this->tribes[tribeID].size;
             this->tribes[tribeID].unkIsAnimalTribe = 1;

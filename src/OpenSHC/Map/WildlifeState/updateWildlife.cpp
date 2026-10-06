@@ -56,8 +56,8 @@ namespace Map {
                 iVar6 = 0;
                 piVar2 = piVar4;
                 do {
-                    if (!piVar2->field12_0x30) {
-                        if (piVar2->field3_0xc) {
+                    if (!piVar2->unstalkedUnitCount) {
+                        if (piVar2->buildingTiles) {
                             iVar7 = 2;
                             goto LAB_0052dfdf;
                         }
@@ -71,7 +71,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField13FromCell, this)(
                             iVar6, iVar3, iVar7);
                     }
-                    if (piVar2->field19_0x4c) {
+                    if (piVar2->farmFieldTiles) {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField20FromCell, this)(
                             iVar6, iVar3, 6);
                     }

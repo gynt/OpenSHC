@@ -107,21 +107,21 @@ namespace Map {
                 pWVar7->firstMember = 0;
                 this->grid[_x10][_y10].separateAreaID = 0;
                 this->grid[_x10][_y10].unclaimedArea = 0;
-                this->grid[_x10][_y10].field3_0xc = 0;
+                this->grid[_x10][_y10].buildingTiles = 0;
                 this->grid[_x10][_y10].keeps = 0;
-                this->grid[_x10][_y10].field5_0x14 = 0;
+                this->grid[_x10][_y10].wallTiles = 0;
                 this->grid[_x10][_y10].trees = 0;
                 this->grid[_x10][_y10].unitCount = 0;
-                this->grid[_x10][_y10].field12_0x30 = 0;
-                this->grid[_x10][_y10].field8_0x20 = 0;
+                this->grid[_x10][_y10].unstalkedUnitCount = 0;
+                this->grid[_x10][_y10].stalkedUnitCount = 0;
                 this->grid[_x10][_y10].camelCount = 0;
                 this->grid[_x10][_y10].lionCount = 0;
                 this->grid[_x10][_y10].deerCount = 0;
                 this->grid[_x10][_y10].rabbitCount = 0;
-                this->grid[_x10][_y10].field16_0x40 = 0;
-                this->grid[_x10][_y10].field17_0x44 = 0;
+                this->grid[_x10][_y10].marshTiles = 0;
+                this->grid[_x10][_y10].rockyTiles = 0;
                 this->grid[_x10][_y10].field18_0x48 = 0;
-                this->grid[_x10][_y10].field19_0x4c = 0;
+                this->grid[_x10][_y10].farmFieldTiles = 0;
                 this->grid[_x10][_y10].chimps = 0;
                 this->grid[_x10][_y10].castlebuildings = 0;
                 this->grid[_x10][_y10].field28_0x70 = 0;
@@ -188,26 +188,26 @@ namespace Map {
                                 + (uint)DAT_TileMapState::instance.HeightLayer[_tile];
                             uVar6 = DAT_TileMapState::instance.LogicLayer[_tile];
                             if ((uVar6 & 0x100)) {
-                                this->grid[_x10][_y10].field5_0x14 = this->grid[_x10][_y10].field5_0x14 + 1;
+                                this->grid[_x10][_y10].wallTiles = this->grid[_x10][_y10].wallTiles + 1;
                                 this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                             }
                             if ((uVar6 & 0x20000000)) {
-                                this->grid[_x10][_y10].field16_0x40 = this->grid[_x10][_y10].field16_0x40 + 1;
+                                this->grid[_x10][_y10].marshTiles = this->grid[_x10][_y10].marshTiles + 1;
                             }
                             if ((uVar6 & 0x20000)) {
-                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
+                                this->grid[_x10][_y10].rockyTiles = this->grid[_x10][_y10].rockyTiles + 1;
                             }
                             if ((char)uVar6 < '\0') {
-                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
+                                this->grid[_x10][_y10].rockyTiles = this->grid[_x10][_y10].rockyTiles + 1;
                             }
                             if ((uVar6 & 0x40000)) {
-                                this->grid[_x10][_y10].field17_0x44 = this->grid[_x10][_y10].field17_0x44 + 1;
+                                this->grid[_x10][_y10].rockyTiles = this->grid[_x10][_y10].rockyTiles + 1;
                             }
                             if ((uVar6 & 0x1000000)) {
-                                this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
+                                this->grid[_x10][_y10].farmFieldTiles = this->grid[_x10][_y10].farmFieldTiles + 1;
                             }
                             if ((uVar6 & 0x2000000)) {
-                                this->grid[_x10][_y10].field19_0x4c = this->grid[_x10][_y10].field19_0x4c + 1;
+                                this->grid[_x10][_y10].farmFieldTiles = this->grid[_x10][_y10].farmFieldTiles + 1;
                             }
                             if (((int)DAT_TileMapState::instance.OrganismLayer[_tile] - 1U < 1999)
                                 && (((TVar3 = DAT_LandscapeState::instance
@@ -247,18 +247,20 @@ namespace Map {
                                     this->grid[_x10][_y10].castlebuildings = this->grid[_x10][_y10].castlebuildings + 1;
                                 }
                                 if (*pBVar2 != Map::Buildings::BT_SIGNPOST) {
-                                    this->grid[_x10][_y10].field3_0xc = this->grid[_x10][_y10].field3_0xc + 1;
+                                    this->grid[_x10][_y10].buildingTiles = this->grid[_x10][_y10].buildingTiles + 1;
                                 }
                             }
                             _unitID = (int)(short)DAT_TileMapState::instance.UnitLayer[_tile];
                             if (_unitID) {
                                 this->grid[_x10][_y10].unitCount = this->grid[_x10][_y10].unitCount + 1;
                                 if (DAT_UnitsState::instance.units[_unitID].isStalked == 0) {
-                                    this->grid[_x10][_y10].field12_0x30 = this->grid[_x10][_y10].field12_0x30 + 1;
+                                    this->grid[_x10][_y10].unstalkedUnitCount
+                                        = this->grid[_x10][_y10].unstalkedUnitCount + 1;
                                 LAB_0052be68:
                                     this->grid[_x10][_y10].field18_0x48 = this->grid[_x10][_y10].field18_0x48 + 1;
                                 } else {
-                                    this->grid[_x10][_y10].field8_0x20 = this->grid[_x10][_y10].field8_0x20 + 1;
+                                    this->grid[_x10][_y10].stalkedUnitCount
+                                        = this->grid[_x10][_y10].stalkedUnitCount + 1;
                                     UVar5 = DAT_UnitsState::instance.units[_unitID].unitType;
                                     if (UVar5 == Map::Units::UT_ANTELOPESHDEER) {
                                         this->grid[_x10][_y10].deerCount = this->grid[_x10][_y10].deerCount + 1;

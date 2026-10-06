@@ -94,8 +94,8 @@ namespace Map {
                                     }
                                 }
                             }
-                        } else if (this->grid[uVar6][uVar10].field12_0x30 == 0) {
-                            _count = this->grid[uVar6][uVar10].field3_0xc;
+                        } else if (this->grid[uVar6][uVar10].unstalkedUnitCount == 0) {
+                            _count = this->grid[uVar6][uVar10].buildingTiles;
                         LAB_0052cc5e:
                             if ((!_count) && (this->grid[uVar6][uVar10].lionCount == 0))
                                 goto LAB_0052cc66;

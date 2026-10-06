@@ -121,7 +121,7 @@ namespace Map {
                         } else if (this->DAT_DebugDataMapDataDisplayType == 2) {
                             if ((((this->grid[iVar6][iVar8].separateAreaID != 0)
                                      && (uVar5 = COL_DARK_GREEN::instance.shortValue,
-                                         this->grid[iVar6][iVar8].field19_0x4c == 0))
+                                         this->grid[iVar6][iVar8].farmFieldTiles == 0))
                                     && (uVar5 = COL_RED::instance.shortValue,
                                         this->grid[iVar6][iVar8].rabbitCount == 0))
                                 && (uVar5 = COL_WHITE::instance.shortValue,
@@ -132,14 +132,15 @@ namespace Map {
                             }
                         } else if (this->DAT_DebugDataMapDataDisplayType == 3) {
                             if (this->grid[iVar6][iVar8].separateAreaID != 0) {
-                                iVar7 = this->grid[iVar6][iVar8].field12_0x30;
+                                iVar7 = this->grid[iVar6][iVar8].unstalkedUnitCount;
                                 uVar5 = COL_RED::instance.shortValue;
                                 goto joined_r0x0052c335;
                             }
                         } else if (this->DAT_DebugDataMapDataDisplayType == 4) {
                             if ((this->grid[iVar6][iVar8].separateAreaID != 0)
-                                && (uVar5 = COL_RED::instance.shortValue, this->grid[iVar6][iVar8].field12_0x30 == 0)) {
-                                iVar7 = this->grid[iVar6][iVar8].field3_0xc;
+                                && (uVar5 = COL_RED::instance.shortValue,
+                                    this->grid[iVar6][iVar8].unstalkedUnitCount == 0)) {
+                                iVar7 = this->grid[iVar6][iVar8].buildingTiles;
                             joined_r0x0052c3aa:
                                 if (!iVar7) {
                                     iVar7 = this->grid[iVar6][iVar8].field13_0x34;
@@ -150,8 +151,8 @@ namespace Map {
                         } else if (this->DAT_DebugDataMapDataDisplayType == 5) {
                             if (((this->grid[iVar6][iVar8].separateAreaID != 0)
                                     && (uVar5 = COL_RED::instance.shortValue,
-                                        this->grid[iVar6][iVar8].field12_0x30 == 0))
-                                && ((this->grid[iVar6][iVar8].field3_0xc == 0
+                                        this->grid[iVar6][iVar8].unstalkedUnitCount == 0))
+                                && ((this->grid[iVar6][iVar8].buildingTiles == 0
                                     && ((uVar5 = COL_BLACK::instance.shortValue,
                                         this->grid[iVar6][iVar8].lionCount == 0
                                             && (this->grid[iVar6][iVar8].camelCount == 0)))))) {
