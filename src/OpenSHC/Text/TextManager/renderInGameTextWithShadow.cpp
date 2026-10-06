@@ -12,14 +12,14 @@ namespace Text {
     {
         int iVar2 = this->field9_0x24;
         int iVar1 = this->currentXOffset_0x0;
-        this->field11_0x2c = 1;
+        this->drawingTextShadow = 1;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)((char*)textAddress, xParam, yParam,
             alignment, (BGR24)((int)(backgroundColor)), fontSize, keepOffsetX, blendStrength);
         this->field10_0x28 = iVar2;
         this->currentXOffset_0x0 = iVar1;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)((char*)textAddress, xParam + -2,
             yParam + -1, alignment, (BGR24)((int)(foregroundColor)), fontSize, keepOffsetX, blendStrength);
-        this->field11_0x2c = 0;
+        this->drawingTextShadow = 0;
         return;
     }
 

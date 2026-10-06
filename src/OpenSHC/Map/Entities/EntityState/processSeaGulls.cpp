@@ -176,7 +176,7 @@ namespace Map {
                 fVar10 = cos((double)dVar3);
                 _targetYPart2 = (long)(fVar10 * (double)iVar8);
                 sVar4 = this->seagullArray[seagullID].angle_2;
-                sVar5 = this->seagullArray[seagullID].field15_0x20 + sVar4;
+                sVar5 = this->seagullArray[seagullID].angleStep + sVar4;
                 this->seagullArray[seagullID].angle_2 = sVar5;
                 fVar10 = ((double)(sVar4 + -0xb4) * (double)3.1415926535) / (double)180.0;
                 if (sVar5 >= 0x168) {
@@ -210,10 +210,10 @@ namespace Map {
                     || (uVar7 = (int)this->seagullArray[seagullID].y - (int)this->seagullArray[seagullID].y_3,
                         uVar9 = (int)uVar7 >> 0x1f, 1 < (int)((uVar7 ^ uVar9) - uVar9)))
                 && (sVar5 = this->seagullArray[seagullID].pathMajorLength, 0 < sVar5)) {
-                this->seagullArray[seagullID].field25_0x34 = this->seagullArray[seagullID].field25_0x34 + -1;
-                if (this->seagullArray[seagullID].field25_0x34 < 1) {
+                this->seagullArray[seagullID].pathStepDelay = this->seagullArray[seagullID].pathStepDelay + -1;
+                if (this->seagullArray[seagullID].pathStepDelay < 1) {
                     sVar2 = this->seagullArray[seagullID].pathAxisCase;
-                    this->seagullArray[seagullID].field25_0x34 = 10;
+                    this->seagullArray[seagullID].pathStepDelay = 10;
                     this->seagullArray[seagullID].pathMajorLength = sVar5 + -1;
                     if (sVar2) {
                         if (sVar2 == 2) {
@@ -278,7 +278,7 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
                 seagullID, (int)((int)(sVar5)), (int)((int)(this->seagullArray[seagullID].y)), (int)((int)(sVar4)),
                 (int)((int)(sVar2)));
-            this->seagullArray[seagullID].field25_0x34 = 10;
+            this->seagullArray[seagullID].pathStepDelay = 10;
             return;
         }
 

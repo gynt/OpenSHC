@@ -16,7 +16,7 @@ namespace Text {
             this->field12_0x30 = (dword)_wideText;
             return;
         }
-        this->field11_0x2c = 1;
+        this->drawingTextShadow = 1;
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineWideTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
             _wideText, xPos, yPos, maxWidth, color2, blendStrength, 0);
@@ -24,7 +24,7 @@ namespace Text {
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineWideTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
             _wideText, xPos + -2, yPos + -1, maxWidth, color1, blendStrength, 0);
-        this->field11_0x2c = 0;
+        this->drawingTextShadow = 0;
         this->field12_0x30 = 0;
         return;
     }

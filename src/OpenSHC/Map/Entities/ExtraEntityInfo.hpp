@@ -31,7 +31,7 @@ namespace Map {
             short field12_0x1a; // 0x0000001A length: 2
             short angle_2; // 0x0000001C length: 2
             short numberBetween60And100; // 0x0000001E length: 2
-            short field15_0x20; // 0x00000020 length: 2
+            short angleStep; // 0x00000020 length: 2
             short rngMax799_countdown; // 0x00000022 length: 2
             short x_3; // 0x00000024 length: 2
             short y_3; // 0x00000026 length: 2
@@ -41,7 +41,7 @@ namespace Map {
             short pathAxisCase; // 0x0000002E length: 2
             short pathStepX; // 0x00000030 length: 2
             short pathStepY; // 0x00000032 length: 2
-            short field25_0x34; // 0x00000034 length: 2
+            short pathStepDelay; // 0x00000034 length: 2
             short someCountDown; // 0x00000036 length: 2
             short pathMajorLength; // 0x00000038 length: 2
             short field28_0x3a; // 0x0000003A length: 2

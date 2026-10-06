@@ -43,7 +43,7 @@ namespace UI {
             if ((!DAT_TextManagerObject::instance.field9_0x24) && (!DAT_TextManagerObject::instance.field10_0x28))
                 goto LAB_0045566a;
             yPos = 0;
-            if (DAT_TextManagerObject::instance.field11_0x2c) {
+            if (DAT_TextManagerObject::instance.drawingTextShadow) {
                 yPos = 2;
             }
             if (lineHeight == 0x1b) {
