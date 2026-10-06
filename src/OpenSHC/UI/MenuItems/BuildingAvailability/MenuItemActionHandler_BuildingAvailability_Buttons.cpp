@@ -22,12 +22,12 @@ namespace UI {
                 if (param_1 < 2000)
                     goto LAB_004bb359;
             } else if (param_1 < 2000) {
-                DAT_MapPropertiesState::instance.buildingAvailability[DAT_MissionAestheticsDefinedData::instance
-                        .field1234_0x312c[DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                            + param_1]]
-                    = DAT_MapPropertiesState::instance.buildingAvailability[DAT_MissionAestheticsDefinedData::instance
-                              .field1234_0x312c[DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                                  + param_1]]
+                DAT_MapPropertiesState::instance
+                    .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
+                            [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]]
+                    = DAT_MapPropertiesState::instance
+                          .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
+                                  [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]]
                     ^ 1;
             }
             if (param_1 < 3000) {

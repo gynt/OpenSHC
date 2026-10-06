@@ -265,7 +265,7 @@ namespace Map {
             XYPairShort EngineersParagroundOffsets[25]; // 0x00009FA4 length: 100
             undefined1 padding_0xa008[4]; // 0x0000A008 length: 4
             XYPairShort field412_0xa00c[16]; // 0x0000A00C length: 64
-            int field413_0xa04c[16][13]; // 0x0000A04C length: 832
+            int SpawnUnitProperties[16][13]; // 0x0000A04C length: 832
             int DrawBridgeAnimationFrames[4]; // 0x0000A38C length: 16
             int field415_0xa39c[52]; // 0x0000A39C length: 208
             int field416_0xa46c[52]; // 0x0000A46C length: 208

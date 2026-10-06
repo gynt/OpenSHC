@@ -424,23 +424,23 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].tribeID = (short)_tribeID;
             DAT_BuildingsState::instance.buildings[iVar9].tribeUID = _tribeUID;
             iVar6 = (int)SEC_RNG::instance.currentNumber2;
-            iVar8 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][3];
+            iVar8 = DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][3];
             sVar3 = DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk2;
             DAT_TribesState::instance.tribes[_tribeID].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;
             DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk05
-                = ((short)(iVar6 % iVar8) + (short)DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][2])
+                = ((short)(iVar6 % iVar8) + (short)DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][2])
                 * (sVar3 + 1);
             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             iVar8 = DAT_CurrentBuildingID::instance;
-            iVar9 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][0xc];
+            iVar9 = DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][0xc];
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field273_0x312 = 1;
             DAT_TribesState::instance.tribes[_tribeID].tribeSubtype1 = (short)iVar9;
             DAT_BuildingsState::instance.buildings[iVar8].field268_0x308 = 2000;
         }
         iVar8 = DAT_CurrentBuildingID::instance;
-        iVar6 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][0]
+        iVar6 = DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][0]
             - (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].incByFourUnk;
-        iVar9 = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][1];
+        iVar9 = DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][1];
         if (iVar6 < iVar9) {
             iVar6 = iVar9;
         }
@@ -460,26 +460,26 @@ namespace Map {
                 || ((int)DAT_TribesState::instance.tribes[_tribeID].size
                     < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk05
                         + -1)) {
-                uVar12 = (uint)(DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][4] != 0);
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][5] != 0) {
+                uVar12 = (uint)(DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][4] != 0);
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][5] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][6] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][6] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][7] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][7] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][8] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][8] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][9] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][9] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][10] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][10] != 0) {
                     uVar12 = uVar12 + 1;
                 }
-                if (DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][0xb] != 0) {
+                if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][0xb] != 0) {
                     uVar12 = uVar12 + 1;
                 }
                 if (((local_10 == 7) || (local_10 == 6))
@@ -490,7 +490,7 @@ namespace Map {
                 }
                 _randomUnitType
                     = DAT_BuildingDefinedData::instance
-                          .field413_0xa04c[local_10][(int)SEC_RNG::instance.currentNumber2 % (int)uVar12 + 4];
+                          .SpawnUnitProperties[local_10][(int)SEC_RNG::instance.currentNumber2 % (int)uVar12 + 4];
                 MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 local_18 = (char*)0x1;
                 if (((0 < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3)
@@ -504,7 +504,7 @@ namespace Map {
                     }
                     if (((local_10 == 7) || (local_10 == 6))
                         && ((1 < (int)local_18 && (_randomUnitType == Map::Units::UT_S_CATAPULT)))) {
-                        _randomUnitType = DAT_BuildingDefinedData::instance.field413_0xa04c[local_10][5];
+                        _randomUnitType = DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][5];
                     }
                 }
                 if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)

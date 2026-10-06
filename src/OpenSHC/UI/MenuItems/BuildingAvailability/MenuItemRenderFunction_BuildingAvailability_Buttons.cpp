@@ -48,9 +48,10 @@ namespace UI {
                 if (param_1 < 2000)
                     goto LAB_004bb22b;
             } else if (param_1 < 2000) {
-                sVar1 = DAT_MapPropertiesState::instance.buildingAvailability[DAT_MissionAestheticsDefinedData::instance
-                        .field1234_0x312c[DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                            + param_1]];
+                sVar1
+                    = DAT_MapPropertiesState::instance
+                          .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
+                                  [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]];
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 blendStrength = 0;

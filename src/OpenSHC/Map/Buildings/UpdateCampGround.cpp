@@ -73,7 +73,7 @@ namespace Map {
                 = *(int*)((int)DAT_BuildingDefinedData::ptr + _vclock * -4 + 0xa46c) + 51;
         } else {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
-                = DAT_BuildingDefinedData::instance.field413_0xa04c[0xc][iVar4 + 6];
+                = DAT_BuildingDefinedData::instance.SpawnUnitProperties[0xc][iVar4 + 6];
         }
         if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270 == 0) {
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field193_0x272 != 0) {

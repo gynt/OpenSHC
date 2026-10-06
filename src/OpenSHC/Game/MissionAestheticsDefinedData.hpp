@@ -1253,7 +1253,7 @@ namespace Game {
         byte field1231_0x2444[32][100]; // 0x00002444 length: 3200
         int field1232_0x30c4[25]; // 0x000030C4 length: 100
         int field1233_0x3128; // 0x00003128 length: 4
-        int field1234_0x312c[174]; // 0x0000312C length: 696
+        int BuildingAvailabilityRowOrder[174]; // 0x0000312C length: 696
         int EventConditionOptionTextOffsets[25]; // 0x000033E4 length: 100
         int field1236_0x3448[5]; // 0x00003448 length: 20
         int field1237_0x345c[22]; // 0x0000345C length: 88
