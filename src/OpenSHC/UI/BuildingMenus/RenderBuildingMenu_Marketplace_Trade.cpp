@@ -45,8 +45,8 @@ namespace UI {
         ResourceTypeInt RVar1
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                   .marketSelectedResourceType;
-        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         ResourceType RVar4 = (OpenSHC::Game::Resources::ResourceType)(RVar1);
+        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         if (RVar1 == OpenSHC::Game::Resources::RT_PITCH) {
             RVar4 = OpenSHC::Game::Resources::RT_PARTIALPITCH;
         }
