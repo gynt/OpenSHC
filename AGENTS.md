@@ -234,6 +234,23 @@ of the switch leaving the value it should have set uninitialised. Fixing them wa
 suspicious dead store is worth decompiling for rather than deleting. Note this is the opposite of the duplicate-tail
 pattern below, where our shared block should have been two separate branches - check the predecessor count either way.
 
+Ghidra also drops the `return` at the end of an `if` body, because a `return` there carries no data flow. The guard
+survives as a plain `if (cond) { ... }`, which still compiles - and when the body's last statement is a store that the
+code after the `if` repeats, MSVC deletes that store as dead and the *whole guard disappears from our binary*. An
+"unchanged" guard that generates no instructions at all is the symptom. This was the largest single source of
+mismatch across `UI::MenuItems`, worth 10-30 points per function and two normalized 100%s on its own
+(`MenuItemRenderFunction_InGameMenu_KeepEnclosedSymbol` 72.7% -> 100%,
+`MenuItemRenderFunction_BuildingAndStatusMenu_ArmyStatusReturn` 83.9% -> 100%). Two shapes give it away:
+
+- `if (cond) { ...; X = A; }` immediately followed by `X = B;` at the enclosing level - the inner store is dead, so
+  the original returned out of the guard.
+- `if (cond) {}` with an *empty* body - the `return` was the block's only statement.
+
+`try_returns.py` tries a `return;` at every `if` body that could carry one and keeps the sites `quick_diff.py` scores
+better, so a function settles in about a minute. Where the guard wraps the rest of the function, prefer the inverted
+`if (hot) { ...; return; } cold;` shape over a guard at the top: the original's `je` jumps *forward* to the cold block,
+which is what MSVC emits only when the cold path is written last (same lever as `diff_triage.py`'s `RET` flag).
+
 Diff patterns that were reliable (more in the cheat sheet):
 
 - Absolute `DAT_*` addresses in the original asm where the source uses `this->` mean the original accessed the global instance.
