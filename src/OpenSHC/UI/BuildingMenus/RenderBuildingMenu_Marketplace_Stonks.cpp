@@ -76,7 +76,7 @@ namespace UI {
         do {
             _resourceType = (OpenSHC::Game::Resources::ResourceType)(DAT_RenderingDefinedData::instance
                     .MarketStonksOrder[_index]);
-            if (_resourceType != ((ResourceType)0)) {
+            if (_resourceType != (ResourceType)0) {
                 if (13 <= _index) {
                     iVar1 = _index + -0xb;
                     iVar4 = 100;
