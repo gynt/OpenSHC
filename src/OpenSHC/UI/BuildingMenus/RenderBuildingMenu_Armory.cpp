@@ -131,7 +131,7 @@ namespace UI {
             _positionPtr = _positionPtr + 1;
             iVar4 = iVar4 + 0x3c;
             iVar5 = iVar5 + 4;
-        } while ((int)_positionPtr < 0x617fd0);
+        } while (_positionPtr < DAT_RenderingDefinedData::instance.field1043_0x55524 + 8);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 
