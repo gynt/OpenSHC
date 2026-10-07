@@ -90,9 +90,6 @@ namespace UI {
             char** ppcVar9;
             char* pcVar10;
             dword dStack_4;
-            iVar7 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            iVar8 = DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8;
-            unitSelectionIndex = 0;
             switch (param_1) {
             case 9:
             case 0xdd:
@@ -311,13 +308,17 @@ namespace UI {
                 case 0x8b:
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount48 = 0x18;
-                    iVar8 = DAT_GameState::instance.playerDataArray[iVar7].popularity;
+                    iVar8
+                        = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                              .popularity;
                     if (6000 < iVar8) {
-                        DAT_GameState::instance.playerDataArray[iVar7].popularity = (iVar8 + -6000) / 2 + 6000;
+                        DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .popularity = (iVar8 + -6000) / 2 + 6000;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
-                        DAT_GameState::ptr)(iVar7, DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
+                        DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                        DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
                     pcVar10 = "Random_Events2.wav";
                     iVar8 = 2;
                     ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field1_0x4;
@@ -423,6 +424,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                         DAT_GameState::instance.mapAndTime.signpostEntryData[iVar8].x,
                         DAT_GameState::instance.mapAndTime.signpostEntryData[iVar8].y);
+                    unitSelectionIndex = 0;
                     if (0 < DAT_TribesState::instance.tribes[dVar5].size) {
                         do {
                             iVar8 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getUnitIDForIndexInTribe,
@@ -519,7 +521,8 @@ namespace UI {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount51 = 8;
                     MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::spreadFireRandomlyToBuildings,
-                        DAT_BuildingsState::ptr)(iVar7, iVar8);
+                        DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                        DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
                     iVar8 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::findFirstBuildingOfType, DAT_BuildingsState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID, OpenSHC::Map::Buildings::BT_WELL);
@@ -685,8 +688,11 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .someCount52 = 0xc;
-                if (10000 < DAT_GameState::instance.playerDataArray[iVar7].popularity) {
-                    DAT_GameState::instance.playerDataArray[iVar7].popularity = 10000;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
                 }
                 pcVar3 = "Random_Events12.wav";
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field11_0x2c;
@@ -707,8 +713,11 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.unitJesterRelated = 1;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .someCount53 = 0x30;
-                if (10000 < DAT_GameState::instance.playerDataArray[iVar7].popularity) {
-                    DAT_GameState::instance.playerDataArray[iVar7].popularity = 10000;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
                 }
                 pcVar10 = "Random_Events13.wav";
                 iVar8 = 0xd;
