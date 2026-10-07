@@ -141,7 +141,13 @@ def function_body_span(text, start=0):
 
 def run_reccmp():
     result = subprocess.run(
-        ["cmd", "/c", r"reccmp\dll\run.bat", "reccmp-reccmp", "--target", "STRONGHOLDCRUSADER", "--json", "diff.json"],
+        ["cmd", "/c", r"reccmp\dll\run.bat", "--wrap-quiet", "reccmp-reccmp",
+         "--target", "STRONGHOLDCRUSADER", "--json", "diff.json",
+         # --resolve-wrapped-calls: a call routed through a function resolver counts as a
+         # match, so the raw % stops punishing every unreimplemented callee.
+         # --cache: reuse the cvdump output for an unchanged PDB (most of reccmp's runtime).
+         # --quiet: keep the report, drop progress and warning noise.
+         "--resolve-wrapped-calls", "--cache", "--quiet"],
         capture_output=True, text=True, stdin=subprocess.DEVNULL)
     if result.returncode:
         sys.exit("reccmp failed:\n" + result.stdout[-800:] + result.stderr[-800:])
