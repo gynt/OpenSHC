@@ -355,6 +355,23 @@ Diff patterns that were reliable (more in the cheat sheet):
   lost its offset and so cannot be found this way - `undefined4 _dpSessionDesc2[6]` plus `GUID aGStack_3c[3]` was
   one 80-byte `DPSESSIONDESC2` (`guidApplication` is at +24), caught only by its `_memset(.., 0x50)` overrunning a
   24-byte array.
+- The same split affects **struct fields**, and an index whose constant part alone exceeds the declared length is
+  proof of it. `MapAndTimeState::scenarioEventTimers[32]` was 32 separate `int` fields, recovered from the walk's own
+  terminating address (`while (p < 0x117ee60)` against a base of `0x117EDE0` gives exactly 128 bytes), and
+  `playerKeepTile[10]` was declared `int[2][5]`. When fixing a shape, the accesses change with it: `field[0]` decays
+  to `int*` under `int[2][5]` but is an `int` under `int[10]`, so surrounding `(int)... + idx` byte arithmetic
+  silently changes meaning unless the `[0]` goes too.
+  A scan for this is cheap but needs three guards, each of which produced false positives when missing: `+ -0x12` is
+  a *subtraction* and says nothing about the top end; digits inside identifiers (`field94_0x14560`,
+  `unitIDIndex_0x2bd4c`) are not values and must be stripped before reading constants; and the field name needs a
+  word boundary or `_playerTeams[9]`, a local *declaration*, matches `playerTeams`. A scaled index (`i * 0x28 + 0x5e`)
+  is also not evidence, since the scale is a record stride and the declared length is then in the wrong unit.
+  Not every hit is fixable. `SkirmishStatistics::finalDateOfDeathInMonths[9]` at `0x6E8` is written at
+  `[idx + 9]` for `idx` 0..8, i.e. `0x70C..0x72C`, which is exactly where `yearStart`, `monthStart`, `yearEnd` and
+  `monthEnd` live - and those four are well evidenced, set from a start date in `SetupSkirmishMode` and differenced
+  in `ComputeSkMasterScore`. The two readings occupy the same bytes and cannot both be right, and
+  `LaunchSkirmishGame` is absent from the build list, so reccmp cannot adjudicate. Leave such a case flagged rather
+  than picking a side.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`
