@@ -55,6 +55,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, param_1),
                     xParam, yParam, TVar2, color, fontSize, keepOffsetX, blendStrength);
+                return;
             }
             backgroundColor = 0;
             foregroundColor = 0xccfaff;

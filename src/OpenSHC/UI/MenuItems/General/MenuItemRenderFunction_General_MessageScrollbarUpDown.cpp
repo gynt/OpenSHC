@@ -23,6 +23,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
                     DAT_PencilRenderCore::ptr)(0, 0);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk, DAT_PencilRenderCore::ptr)(1, 0);

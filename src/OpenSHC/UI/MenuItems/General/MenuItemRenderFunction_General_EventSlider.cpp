@@ -82,6 +82,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)("-", (int)((int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(param_3,
                 (int)((int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance)),
