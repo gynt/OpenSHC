@@ -24,48 +24,36 @@ namespace UI {
     /*
       decompilerscript: committed: 2025-01-30 21:57:43.216000
      */
-    // FUNCTION: STRONGHOLDCRUSADER 0x0043E350
+        // FUNCTION: STRONGHOLDCRUSADER 0x0043E350
     void BuildingMenus::RenderBuildingMenu_RenderTowerAndGateHealth()
     {
-        short sVar1;
-        int local_20;
-        ColorUnion local_18;
-        char local_14[16];
-        int iVar4 = DAT_MenuHandlerState::instance.y;
-        int iVar2 = DAT_MenuHandlerState::instance.x;
-        uint local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_20;
-        int local_1c = DAT_BuildingsState::instance.menuSelectedBuildingID * 0x32c;
-        int iVar3 = (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
-                        .currentHealth;
-        local_18.shortValue = COL_LIME::instance.shortValue;
-        if ((iVar3 < 1)
-            || (sVar1
-                = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].maxHealth,
-                sVar1 < 1)) {
-            iVar3 = 0;
+        int buildingID = DAT_BuildingsState::instance.menuSelectedBuildingID;
+        int healthPercent = (int)DAT_BuildingsState::instance.buildings[buildingID].currentHealth;
+        short maxHealth = DAT_BuildingsState::instance.buildings[buildingID].maxHealth;
+        ColorUnion barColor;
+        barColor.shortValue = COL_LIME::instance.shortValue;
+        if (healthPercent <= 0 || maxHealth <= 0) {
+            healthPercent = 0;
         } else {
-            iVar3 = (iVar3 * 100) / (int)sVar1;
+            healthPercent = (healthPercent * 100) / (int)maxHealth;
         }
         int left = DAT_MenuHandlerState::instance.x + 0x1d6;
-        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(left,
-            DAT_MenuHandlerState::instance.y + 0x1d3, DAT_MenuHandlerState::instance.x + 0x209,
-            DAT_MenuHandlerState::instance.y + 0x1de, (ushort)(COL_BLACK::instance.shortValue));
-        int bottom = iVar4 + 0x1dd;
-        iVar4 = iVar4 + 0x1d4;
-        local_20 = iVar2 + 0x1d7;
+        int top = DAT_MenuHandlerState::instance.y + 0x1d3;
+        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+            left, top, left + 0x33, top + 0xb, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-            local_20, iVar4, iVar2 + 0x208, bottom, (ushort)(COL_RED::instance.shortValue));
-        if (1 < iVar3) {
+            left + 1, top + 1, left + 0x32, top + 0xa, (ushort)(COL_RED::instance.shortValue));
+        if (healthPercent >= 2) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                local_20, iVar4, (iVar3 >> 1) + left, bottom, local_18.shortValue);
+                left + 1, top + 1, (healthPercent >> 1) + left, top + 0xa, barColor.shortValue);
         }
-        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_14, "%d/%d",
-            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x14),
-            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x12));
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,
+        char healthText[16];
+        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(healthText, "%d/%d",
+            (int)DAT_BuildingsState::instance.buildings[buildingID].currentHealth,
+            (int)DAT_BuildingsState::instance.buildings[buildingID].maxHealth);
+        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(healthText,
             DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2,
             OpenSHC::Text::TTA_CENTER, 0, 0x12, FALSE, 0);
-        ;
     }
 
 }
