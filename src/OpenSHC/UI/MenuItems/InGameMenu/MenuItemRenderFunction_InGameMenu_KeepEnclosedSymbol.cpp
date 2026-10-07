@@ -37,6 +37,7 @@ namespace UI {
             DAT_MiniMapDefinedData::instance.field91_0x2bc = BVar1;
             if (BVar1 == FALSE) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
