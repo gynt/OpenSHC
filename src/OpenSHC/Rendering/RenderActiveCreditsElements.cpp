@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
@@ -27,6 +28,7 @@
 namespace OpenSHC {
 
 using Rendering::Enums::RenderTarget;
+using WindowsHelper::Enums::BOOLEnum;
 
 // FUNCTION: STRONGHOLDCRUSADER 0x004E12C0
 void Rendering::RenderActiveCreditsElements()
@@ -61,7 +63,7 @@ void Rendering::RenderActiveCreditsElements()
     do {
         piVar5 = DAT_ARRAY_00ec0348::ptr[0];
         do {
-            iVar3 = piVar5.isValid;
+            iVar3 = piVar5->isValid;
             if ((iVar3) && (piVar5->field7_0x1c == local_4)) {
                 if (iVar3 == 1) {
                     iVar3 = piVar5->xSpace;
@@ -93,7 +95,7 @@ void Rendering::RenderActiveCreditsElements()
                             if ((piVar5->fadeMode == 2)
                                 && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
                                     31.0 < fVar1)) {
-                                piVar5.isValid = 0;
+                                piVar5->isValid = 0;
                             }
                         } else {
                         LAB_004e1692:
@@ -125,7 +127,7 @@ void Rendering::RenderActiveCreditsElements()
                             1.0 <= fVar2)) {
                         if ((piVar5->fadeMode == 2)
                             && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
-                            piVar5.isValid = 0;
+                            piVar5->isValid = 0;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = Rendering::Enums::RT_MAP_GAME;
                             goto LAB_004e1696;
@@ -157,7 +159,7 @@ void Rendering::RenderActiveCreditsElements()
                             goto LAB_004e1692;
                         if ((piVar5->fadeMode == 2)
                             && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
-                            piVar5.isValid = 0;
+                            piVar5->isValid = 0;
                         }
                     }
                 } else if (iVar3 == 3) {
