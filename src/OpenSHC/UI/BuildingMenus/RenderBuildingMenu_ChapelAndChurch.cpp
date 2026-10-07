@@ -173,8 +173,10 @@ namespace UI {
                 DAT_00b9843c::instance = 0;
             }
             if ((int)(short)DAT_UnitsState::instance.units[DAT_WifeID::instance].unitType
-                == DAT_WifeUnitType::instance) {
-                if (DAT_00b9843c::instance != 0) {
+                != DAT_WifeUnitType::instance) {
+                DAT_00b9843c::instance = 0;
+            }
+            if (DAT_00b9843c::instance != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
                         DAT_TextureRenderCoreObject::ptr)(
                         1, DAT_MenuHandlerState::instance.x + 0x173, DAT_MenuHandlerState::instance.y + 0x1e0);
@@ -182,7 +184,19 @@ namespace UI {
                     iVar5 = 0x12;
                     color = 0;
                     iVar4 = 0x15e;
-                    if (DAT_WifeUnitType::instance == OpenSHC::Map::Units::UT_BREWER) {
+                    if (DAT_WifeUnitType::instance != OpenSHC::Map::Units::UT_BREWER) {
+                        if (DAT_WifeUnitType::instance == OpenSHC::Map::Units::UT_TANNER) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineTextUnk,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MARRIAGE,
+                                DAT_00b9842c::instance + 0xc, DAT_MenuHandlerState::instance.x + 0xb4,
+                                DAT_MenuHandlerState::instance.y + 0x22f, 0x15e, 0, 0x12, 0);
+                        } else {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineTextUnk,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MARRIAGE,
+                                DAT_00b98430::instance + 0x17, DAT_MenuHandlerState::instance.x + 0xb4,
+                                DAT_MenuHandlerState::instance.y + 0x22f, 0x15e, 0, 0x12, 0);
+                        }
+                    } else {
                         iVar11 = DAT_MenuHandlerState::instance.y + 0x22f;
                         iVar10 = DAT_MenuHandlerState::instance.x + 0xb4;
                         MACRO_CALL_MEMBER(
@@ -191,16 +205,6 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_MARRIAGE, DAT_00b98428::instance + 1),
                             iVar10, iVar11, iVar4, color, iVar5, iVar8);
-                    } else if (DAT_WifeUnitType::instance == OpenSHC::Map::Units::UT_TANNER) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineTextUnk,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MARRIAGE, DAT_00b9842c::instance + 0xc,
-                            DAT_MenuHandlerState::instance.x + 0xb4, DAT_MenuHandlerState::instance.y + 0x22f, 0x15e, 0,
-                            0x12, 0);
-                    } else {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineTextUnk,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MARRIAGE,
-                            DAT_00b98430::instance + 0x17, DAT_MenuHandlerState::instance.x + 0xb4,
-                            DAT_MenuHandlerState::instance.y + 0x22f, 0x15e, 0, 0x12, 0);
                     }
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -268,10 +272,7 @@ namespace UI {
                                 OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE);
                         }
                     }
-                    if (DAT_00b9843c::instance != 0) {}
-                }
-            } else {
-                DAT_00b9843c::instance = 0;
+                if (DAT_00b9843c::instance != 0) {}
             }
         }
         iVar11 = 0;
