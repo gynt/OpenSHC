@@ -56,6 +56,7 @@ namespace UI {
                         OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
                     BVar2 == FALSE)) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
