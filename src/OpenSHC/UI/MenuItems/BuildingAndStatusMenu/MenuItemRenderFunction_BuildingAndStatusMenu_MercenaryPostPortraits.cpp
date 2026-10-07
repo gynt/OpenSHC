@@ -51,38 +51,49 @@ namespace UI {
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0)) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             if (DAT_DisableMercPostPortraits::instance == 0) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                return;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
-            iVar4 = DAT_CurrentButtonGmDataIndex::instance;
             buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
-            iVar3 = DAT_ButtonY::instance;
-            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+            if (buttonIsInteracting != FALSE) {
                 DAT_00df3350::instance = param_1 + -0x46;
             }
             if (iVar1 == 1) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                        .stateTransitionTimeBaseUnk_0x18 = 0;
-                    buttonIsInteracting = FALSE;
-                } else {
-                    if ((param_1 < 0x46) || (0x4c < param_1))
+                if (buttonIsInteracting != FALSE) {
+                    if (param_1 < 0x46)
+                        goto LAB_00466bec;
+                    if (0x4c < param_1)
                         goto LAB_00466bec;
                     DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                         .stateTransitionTimeBaseUnk_0x18 = 0;
-                    iVar3 = DAT_ButtonY::instance;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                        (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                            .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            .gmId_0x0,
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                            &DAT_UIButtonDefinedData::instance
+                                 .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(buttonIsInteracting),
+                        DAT_ButtonX::instance, DAT_ButtonY::instance);
+                } else {
+                    DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                        .stateTransitionTimeBaseUnk_0x18 = 0;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                        (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                            .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            .gmId_0x0,
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                            &DAT_UIButtonDefinedData::instance
+                                 .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(FALSE),
+                        DAT_ButtonX::instance, DAT_ButtonY::instance);
                 }
-                iVar1 = DAT_ButtonX::instance;
-                iVar2 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
-                    &DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar4])(buttonIsInteracting);
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar4].gmId_0x0, iVar2,
-                    iVar1, iVar3);
             } else if (((iVar1 == 0) || (iVar1 == 4)) || (iVar1 == 3)) {
                 iVar2 = 0x10;
                 buttonGmData
