@@ -39,6 +39,7 @@ namespace UI {
             int iVar3;
             if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             if ((char)INT_00eb0e44::instance != '\0') {
