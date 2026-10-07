@@ -62,6 +62,7 @@ namespace UI {
                 DAT_MapPropertiesState::ptr)((OpenSHC::Commands::MappersEnum)mapperValue);
             if (BVar1 == FALSE) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             if (0x22e < DAT_CurrentButtonGmDataIndex::instance) {
