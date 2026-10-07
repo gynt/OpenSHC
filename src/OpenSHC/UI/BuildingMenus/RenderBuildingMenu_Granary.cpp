@@ -146,22 +146,20 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(SVar7), DAT_MenuHandlerState::instance.x + 0x159 + iVar6,
             DAT_MenuHandlerState::instance.y + 0x20f + iVar5);
-        iVar12 = DAT_MenuHandlerState::instance.y;
-        iVar6 = DAT_MenuHandlerState::instance.x;
         iVar4 = DAT_MenuHandlerState::instance.x + 0x17;
-        iVar5 = DAT_MenuHandlerState::instance.y + 0x1f2;
+        iVar5 = DAT_MenuHandlerState::instance.y + 0x1ee;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-            OpenSHC::DE::SHCDE::GM_INTERFACE_SLIDER, 6, DAT_MenuHandlerState::instance.x + 0x1f, iVar5);
+            OpenSHC::DE::SHCDE::GM_INTERFACE_SLIDER, 6, iVar4 + 8, iVar5 + 4);
         MACRO_CALL_MEMBER(
             OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRect, DAT_TextureRenderCoreObject::ptr)(0, 0,
-            (DAT_GameState::instance.playerDataArray[iVar1].foodClock * 162) / 15000 + 0x10 + iVar4,
+            (DAT_GameState::instance.playerDataArray[iVar1].foodClock * 162) / 12800 + 0x10 + iVar4,
             DAT_WindowAndDirectDraw::instance.resolutionY);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawTgxGmOnFlaggedSurface,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 8, iVar6 + 0x1f, iVar5);
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 8, iVar4 + 8, iVar5 + 4);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRectToGameResolution,
             DAT_TextureRenderCoreObject::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 5, iVar4, iVar12 + 0x1ed,
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 5, iVar4, iVar5 + -1,
             OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 7, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             DAT_GameState::instance.playerDataArray[iVar1].totalFood, DAT_MenuHandlerState::instance.x + 0x18,
@@ -173,18 +171,20 @@ namespace UI {
         iVar6 = DAT_MenuHandlerState::instance.x + 0x1c;
         BVar9 = 0;
         TVar8 = OpenSHC::Text::TTA_LEFT;
-        if (DAT_GameState::instance.playerDataArray[iVar1].totalFood == 1) {
-            iVar10 = 2;
-        } else {
-            iVar10 = 1;
-        }
         /*
           added by script: "unit of food."
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar10),
-            iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        if (DAT_GameState::instance.playerDataArray[iVar1].totalFood != 1) {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 1),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        } else {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 2),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        }
         iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .rationsSetting3;
         if (iVar5 == 3) {
@@ -222,9 +222,8 @@ namespace UI {
             } else if (iVar5 == 1) {
                 SVar7 = (OpenSHC::Audio::SFX::SpeechEffectID)(~(
                     OpenSHC::Audio::SFX::SEID_GENERAL_MESSAGE3 | OpenSHC::Audio::SFX::SEID_TAXES_RATE6));
-            } else {
+            } else if (iVar5 == 0) {
                 SVar7 = ((SpeechEffectID)0xffffff38);
-                if (iVar5 != 0) {}
             }
         }
         MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
@@ -241,10 +240,10 @@ namespace UI {
                     OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
                 iVar5 = DAT_MenuHandlerState::instance.y + 0x224;
                 iVar6 = DAT_MenuHandlerState::instance.x + 0x1c;
-                if (DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel == 1) {
-                    iVar12 = 10;
-                } else {
+                if (DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel != 1) {
                     iVar12 = 9;
+                } else {
+                    iVar12 = 10;
                 }
             }
             iVar10 = 0;
