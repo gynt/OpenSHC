@@ -235,6 +235,7 @@ namespace UI {
                 if (iVar8 < 0) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar8;
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = 0;
+                    return;
                 }
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = iVar8;
                 if (7 < iVar8) {
