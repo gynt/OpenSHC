@@ -13411,7 +13411,7 @@ SHC_3BB0A8C1_0x0043A9F0 | 48.7% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0043AF40 | 85.5% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x0043B3B0 | 45.0% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043B3B0 | 52.8% | Register allocation
 
 SHC_3BB0A8C1_0x0043B8E4 | 0.0% | Pending
 

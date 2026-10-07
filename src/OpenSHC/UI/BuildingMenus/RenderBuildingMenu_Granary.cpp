@@ -69,35 +69,35 @@ namespace UI {
             if (2000 < DVar2 - DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange) {
                 iVar12 = DAT_GameState::instance.playerDataArray[iVar1].rationsSetting3;
                 if (iVar12 == 4) {
-                    iVar12 = 2;
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(2);
                 } else if (iVar12 == 0) {
-                    iVar12 = 3;
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(3);
                 } else {
-                    iVar12 = 1;
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(1);
                 }
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(iVar12);
             }
             DVar2 = timeGetTime();
             if (2500 < DVar2 - DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange) {
                 iVar12 = DAT_GameState::instance.playerDataArray[iVar1].rationsSetting3;
                 DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange = 0;
+                SpeechEffectID rationsSpeech;
                 switch (iVar12) {
                 case 0:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_NONE;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_NONE;
                     break;
                 case 1:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_HALF;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_HALF;
                     break;
                 case 2:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_NORMAL;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_NORMAL;
                     break;
                 case 3:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_EXTRA;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_EXTRA;
                     break;
                 case 4:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_DOUBLE;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_DOUBLE;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(SVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(rationsSpeech);
             }
         }
         blendStrength = 0;
@@ -119,28 +119,29 @@ namespace UI {
                 .rationsSetting3) {
         case 0:
             iVar6 = -1;
-            iVar5 = -5;
             SVar7 = ((SpeechEffectID)0x11f);
+            iVar5 = -5;
             break;
         case 1:
             iVar6 = -1;
-            iVar5 = 1;
             SVar7 = ((SpeechEffectID)0x120);
+            iVar5 = 1;
             break;
         case 2:
             iVar6 = 10;
-            iVar5 = -10;
             SVar7 = ((SpeechEffectID)0x11c);
+            iVar5 = -10;
+            break;
+
+        case 4:
+            iVar6 = 9;
+            SVar7 = ((SpeechEffectID)0x11e);
+            iVar5 = -5;
             break;
         case 3:
             iVar6 = 0;
-            iVar5 = 0;
             SVar7 = ((SpeechEffectID)0x11d);
-            break;
-        case 4:
-            iVar6 = 9;
-            iVar5 = -5;
-            SVar7 = ((SpeechEffectID)0x11e);
+            iVar5 = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(SVar7), DAT_MenuHandlerState::instance.x + 0x159 + iVar6,
