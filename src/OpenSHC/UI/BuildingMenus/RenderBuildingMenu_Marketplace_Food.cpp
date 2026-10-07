@@ -42,7 +42,6 @@ namespace UI {
     {
         char* textAddress;
         int iVar2;
-        ResourceTypeInt* pRVar3;
         TextAlignment alignment;
         BGR24 color;
         int fontSize;
@@ -63,22 +62,21 @@ namespace UI {
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, 2),
             iVar2, iVar1, alignment, color, fontSize, BVar4, blendStrength);
         iVar1 = 0;
-        pRVar3 = DAT_RenderingDefinedData::instance.FoodTypes;
-        do {
-            ResourceType resourceType = (OpenSHC::Game::Resources::ResourceType)(*pRVar3);
-            iVar2 = DAT_MenuHandlerState::instance.x + 0x78;
+        for (int i = 0; i < 8; i++) {
+            ResourceType resourceType = (OpenSHC::Game::Resources::ResourceType)(
+                DAT_RenderingDefinedData::instance.FoodTypes[i]);
+            iVar2 = DAT_MenuHandlerState::instance.x + iVar1 + 0x78;
             BVar4 = MACRO_CALL_MEMBER(
                 OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(resourceType);
             if (BVar4 != FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[resourceType],
-                    iVar2 + iVar1, DAT_MenuHandlerState::instance.y + 0x232, OpenSHC::Text::TTA_CENTER, 0, 0x11, FALSE,
+                    iVar2, DAT_MenuHandlerState::instance.y + 0x232, OpenSHC::Text::TTA_CENTER, 0, 0x11, FALSE,
                     0);
             }
-            pRVar3 = pRVar3 + 1;
             iVar1 = iVar1 + 0x34;
-        } while ((int)pRVar3 < 0x618040);
+        }
     }
 
 }
