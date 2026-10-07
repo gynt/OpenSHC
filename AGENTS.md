@@ -366,22 +366,23 @@ Diff patterns that were reliable (more in the cheat sheet):
   `unitIDIndex_0x2bd4c`) are not values and must be stripped before reading constants; and the field name needs a
   word boundary or `_playerTeams[9]`, a local *declaration*, matches `playerTeams`. A scaled index (`i * 0x28 + 0x5e`)
   is also not evidence, since the scale is a record stride and the declared length is then in the wrong unit.
-  Not every hit means the array is under-declared, and when reccmp cannot adjudicate (the writing function is
-  absent from the build list) the **addressing mode in the original asm** decides it instead. For
-  `SkirmishStatistics::finalDateOfDeathInMonths[9]` at `0x6E8`, written at `[idx + 9]` for `idx` 0..8, the two
-  candidate readings of `0x70C` are both real and the original genuinely aliases the bytes:
-  - the reset loop's own store is `mov dword ptr [EAX*0x4 + 0x1a27438], EBX` (`0x442453` in `LaunchSkirmishGame`) -
-    a *base* with a scaled index, so `0x70C` really starts a per-player array and the `+ 9` is Ghidra anchoring the
-    access to the nearest preceding named array. `initMultiplayerLobbyState` (`0x48c425`) then shows four bases a
-    stride of `0x24` apart (`0x6E8`, `0x70C`, `0x730`, `0x754`), i.e. four parallel `int[9]` arrays ending at `0x778`
-    = `sizeof`, so the trailing `padding3[92]` is not padding.
-  - but `yearStart` and `monthStart` at `0x70C`/`0x710` are written **absolutely**, mirroring the global clock
-    (`mov [0x01a27438], EAX` at `0x4c6b13` in `SetupSkirmishMode`, again at `0x44249c`), and `ComputeSkMasterScore`
-    reads `0x70C` and `0x714` absolutely to difference them.
-  The aliasing is latent rather than broken: the reset loop always runs before the date stores, 31 bytes earlier in
-  `LaunchSkirmishGame`. So the faithful shape is a **named union** over `0x70C`, not a choice between the two. The
-  general lesson: an indexed base and an absolute scalar at the same address are both evidence, and a scaled index
-  off a field's address proves an array starts there even when a later field is independently named.
+  Not every hit is fixable, and **a scaled-index store cannot tell you where the array starts**: MSVC folds the
+  constant into the displacement, so `mov [EAX*0x4 + 0x1a27438], EBX` is what both `arr_70C[i] = 0` and
+  `arr_6E8[i + 9] = 0` compile to (`0x1a27414 + 9*4 == 0x1a27438`). An out-of-range index in the decompilation is
+  therefore *not* evidence of an anchoring artefact on its own - the original may really have had the off-by-N.
+  `SkirmishStatistics::finalDateOfDeathInMonths[9]` at `0x6E8`, written at `[idx + 9]` for `idx` 1..8, is the
+  worked example, and it stays unresolved on purpose:
+  - `initMultiplayerLobbyState` (`0x48c3e4` onward) stores through twelve displacements exactly `0x24` apart, and
+    eleven of them land on already-named `int[9]` arrays (`0x548` `finalStoneProduced` ... `0x6E8`
+    `finalDateOfDeathInMonths`); the last three are `0x70C`, `0x730`, `0x754`, and `0x754 + 0x24` is `0x778`,
+    which is `sizeof` to the byte. That is good evidence the trailing `padding3[92]` is three more per-player
+    arrays.
+  - but `yearStart`, `monthStart`, `yearEnd` and `monthEnd` at `0x70C..0x718` are written and read **absolutely**
+    and non-indexed in three functions (`0x4c6b13` in `SetupSkirmishMode`, `0x442491` in `LaunchSkirmishGame`,
+    and the difference in `ComputeSkMasterScore`), so those four names are not in doubt either.
+  The two readings overlap and the asm cannot separate them, so leave the header alone rather than trading four
+  evidenced names for a union whose other members nothing reads. Behaviour is identical either way - the same
+  bytes are zeroed - and `LaunchSkirmishGame` is absent from the build list, so reccmp cannot adjudicate.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`
