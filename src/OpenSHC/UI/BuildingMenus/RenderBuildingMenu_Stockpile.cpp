@@ -135,7 +135,7 @@ namespace UI {
             _nudges = _nudges + 1;
             _x = _x + 0x3c;
             _index4 = _index4 + 4;
-        } while ((int)_nudges < 0x617f50);
+        } while (_nudges < DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges + 8);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 
