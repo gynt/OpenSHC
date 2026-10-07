@@ -70,7 +70,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 if ((((CreditsRelatedStructure*)(piVar7 + -1))->isValid != 1)
                     || (*piVar7 != DAT_ARRAY_00eb9b68::instance[iVar9].soundStream))
                     goto LAB_004e0b74;
-                iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].field6_0x18;
+                iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].fadeMode;
             LAB_004e0b8e:
                 if (!iVar1) {
                     DAT_UnknownBinkIndex::instance = iVar9 + 1;
@@ -83,7 +83,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 do {
                     if ((((CreditsRelatedStructure*)(piVar7 + -1))->isValid == 2)
                         && (*piVar7 == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)) {
-                        iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].field6_0x18;
+                        iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].fadeMode;
                         goto LAB_004e0b8e;
                     }
                     piVar7 = piVar7 + 0xd;
@@ -362,7 +362,7 @@ void Rendering::ProcessCreditsScriptCommands()
                     if ((piVar6.isValid == 4)
                         && (piVar6->xSpace == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)) {
                         piVar6->blendStrength = 1.0f;
-                        piVar6->field6_0x18 = 2;
+                        piVar6->fadeMode = 2;
                     }
                     piVar6 = piVar6 + 0xd;
                 } while ((int)piVar6 < 0xec082c);

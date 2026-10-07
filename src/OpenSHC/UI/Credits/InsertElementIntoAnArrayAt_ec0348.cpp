@@ -30,7 +30,7 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].someX = someX;
                 DAT_ARRAY_00ec0348::instance[iVar1].someY = someY;
                 DAT_ARRAY_00ec0348::instance[iVar1].field5_0x14 = param_7;
-                DAT_ARRAY_00ec0348::instance[iVar1].field6_0x18 = param_8;
+                DAT_ARRAY_00ec0348::instance[iVar1].fadeMode = param_8;
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_9;
                 if (param_8 == 1) {
                     DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 31.0f;

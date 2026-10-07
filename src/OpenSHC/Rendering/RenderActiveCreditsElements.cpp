@@ -80,30 +80,30 @@ void Rendering::RenderActiveCreditsElements()
                             }
                         }
                     }
-                    if (!piVar5->field6_0x18) {
+                    if (!piVar5->fadeMode) {
                         MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(iVar3, piVar5->ySpace, piVar5->someX);
                     } else {
                         iVar4 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(iVar3, piVar5->ySpace, piVar5->someX, iVar4);
                         fVar1 = FLOAT_Between1And5::instance;
-                        if ((piVar5->field6_0x18 != 1)
+                        if ((piVar5->fadeMode != 1)
                             || (fVar2 = piVar5->blendStrength
                                     - (FLOAT_Between1And5::instance * 0.5 + FLOAT_Between1And5::instance * 0.5),
                                 piVar5->blendStrength = fVar2, 1.0 <= fVar2)) {
-                            if ((piVar5->field6_0x18 == 2)
+                            if ((piVar5->fadeMode == 2)
                                 && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
                                     31.0 < fVar1)) {
                                 piVar5.isValid = 0;
                             }
                         } else {
                         LAB_004e1692:
-                            piVar5->field6_0x18 = 0;
+                            piVar5->fadeMode = 0;
                         }
                     }
                 } else if (iVar3 == 4) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = Rendering::Enums::RT_SCREEN_MENU;
-                    if (!piVar5->field6_0x18) {
+                    if (!piVar5->fadeMode) {
                         MACRO_CALL_MEMBER(
                             UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
@@ -120,10 +120,10 @@ void Rendering::RenderActiveCreditsElements()
                             piVar5->field5_0x14, iVar3);
                     }
                     fVar1 = FLOAT_Between1And5::instance;
-                    if ((piVar5->field6_0x18 != 1)
+                    if ((piVar5->fadeMode != 1)
                         || (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5, piVar5->blendStrength = fVar2,
                             1.0 <= fVar2)) {
-                        if ((piVar5->field6_0x18 == 2)
+                        if ((piVar5->fadeMode == 2)
                             && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
                             piVar5.isValid = 0;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -131,7 +131,7 @@ void Rendering::RenderActiveCreditsElements()
                             goto LAB_004e1696;
                         }
                     } else {
-                        piVar5->field6_0x18 = 0;
+                        piVar5->fadeMode = 0;
                     }
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = Rendering::Enums::RT_MAP_GAME;
@@ -141,7 +141,7 @@ void Rendering::RenderActiveCreditsElements()
                     } else {
                         color = 0xccfaff;
                     }
-                    if (!piVar5->field6_0x18) {
+                    if (!piVar5->fadeMode) {
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelper)(piVar5->xSpace,
                             piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)));
@@ -151,11 +151,11 @@ void Rendering::RenderActiveCreditsElements()
                             piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)), iVar3);
                         fVar1 = FLOAT_Between1And5::instance;
-                        if ((piVar5->field6_0x18 == 1)
+                        if ((piVar5->fadeMode == 1)
                             && (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5,
                                 piVar5->blendStrength = fVar2, fVar2 < 1.0))
                             goto LAB_004e1692;
-                        if ((piVar5->field6_0x18 == 2)
+                        if ((piVar5->fadeMode == 2)
                             && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
                             piVar5.isValid = 0;
                         }

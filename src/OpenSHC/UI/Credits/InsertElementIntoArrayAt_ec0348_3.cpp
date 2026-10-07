@@ -29,7 +29,7 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].someX = param_4;
                 DAT_ARRAY_00ec0348::instance[iVar1].someY = param_5;
                 DAT_ARRAY_00ec0348::instance[iVar1].field5_0x14 = param_6;
-                DAT_ARRAY_00ec0348::instance[iVar1].field6_0x18 = param_7;
+                DAT_ARRAY_00ec0348::instance[iVar1].fadeMode = param_7;
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_8;
             }
         }

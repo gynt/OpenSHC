@@ -31,7 +31,7 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[_index].field9_0x24 = param_9;
                 DAT_ARRAY_00ec0348::instance[_index].field10_0x28 = param_4;
                 DAT_ARRAY_00ec0348::instance[_index].isValid = 2;
-                DAT_ARRAY_00ec0348::instance[_index].field6_0x18 = param_7;
+                DAT_ARRAY_00ec0348::instance[_index].fadeMode = param_7;
                 DAT_ARRAY_00ec0348::instance[_index].field7_0x1c = 7;
                 if (param_7 == 1) {
                     DAT_ARRAY_00ec0348::instance[_index].blendStrength = 31.0f;
