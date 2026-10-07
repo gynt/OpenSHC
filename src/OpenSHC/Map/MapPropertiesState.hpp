@@ -97,36 +97,18 @@ namespace Map {
         undefined4 missionScore; // 0x00014554 length: 4
         undefined4 monthsRemaining; // 0x00014558 length: 4
         undefined4 timeBonusScore; // 0x0001455C length: 4
-        undefined4 field94_0x14560; // 0x00014560 length: 4
-        undefined4 field95_0x14564; // 0x00014564 length: 4
-        undefined4 field96_0x14568; // 0x00014568 length: 4
-        undefined4 field97_0x1456c; // 0x0001456C length: 4
-        undefined4 field98_0x14570; // 0x00014570 length: 4
-        undefined4 field99_0x14574; // 0x00014574 length: 4
-        undefined4 field100_0x14578; // 0x00014578 length: 4
-        undefined4 field101_0x1457c; // 0x0001457C length: 4
-        undefined4 field102_0x14580; // 0x00014580 length: 4
-        undefined4 field103_0x14584; // 0x00014584 length: 4
-        undefined4 field104_0x14588; // 0x00014588 length: 4
-        undefined4 field105_0x1458c; // 0x0001458C length: 4
-        undefined4 field106_0x14590; // 0x00014590 length: 4
-        undefined4 field107_0x14594; // 0x00014594 length: 4
-        undefined1 padding_0x14598[4]; // 0x00014598 length: 4
-        undefined4 field112_0x1459c; // 0x0001459C length: 4
-        undefined4 field113_0x145a0; // 0x000145A0 length: 4
-        undefined4 field114_0x145a4; // 0x000145A4 length: 4
-        undefined4 field115_0x145a8; // 0x000145A8 length: 4
-        undefined4 field116_0x145ac; // 0x000145AC length: 4
-        undefined4 field117_0x145b0; // 0x000145B0 length: 4
-        undefined1 padding_0x145b4[4]; // 0x000145B4 length: 4
-        undefined4 field122_0x145b8; // 0x000145B8 length: 4
-        undefined4 field123_0x145bc; // 0x000145BC length: 4
-        undefined4 field124_0x145c0; // 0x000145C0 length: 4
-        undefined4 field125_0x145c4; // 0x000145C4 length: 4
-        undefined4 field126_0x145c8; // 0x000145C8 length: 4
-        undefined4 field127_0x145cc; // 0x000145CC length: 4
-        undefined4 field131_0x145d0; // 0x000145D0 length: 4
-        undefined4 field132_0x145d4; // 0x000145D4 length: 4
+        int objectiveGoodsCount; // 0x00014560 length: 4
+        int objectiveGoodsSurplus[7]; // 0x00014564 length: 28
+        int objectiveGoodsScore[7]; // 0x00014580 length: 28
+        int objectiveGoodsType[7]; // 0x0001459C length: 28
+        int troopSurvivalScore; // 0x000145B8 length: 4
+        int troopLossPercent; // 0x000145BC length: 4
+        int enemyTroopValueTotal; // 0x000145C0 length: 4
+        int enemyTroopValueSurviving; // 0x000145C4 length: 4
+        int enemyTroopValueLost; // 0x000145C8 length: 4
+        int sliderPopupDelay; // 0x000145CC length: 4
+        int sliderPopupX; // 0x000145D0 length: 4
+        int sliderPopupY; // 0x000145D4 length: 4
         undefined4 field133_0x145d8; // 0x000145D8 length: 4
         undefined4 eventType; // 0x000145DC length: 4
         IngameEventHeader invasionEvent; // 0x000145E0 length: 16

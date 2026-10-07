@@ -18,10 +18,10 @@ namespace UI {
 
             int isValid; // 0x00000000 length: 4
             int xSpace; // 0x00000004 length: 4
-            int ySpace; // 0x00000008 length: 4
-            int someX; // 0x0000000C length: 4
-            int someY; // 0x00000010 length: 4
-            int field5_0x14; // 0x00000014 length: 4
+            int x; // 0x00000008 length: 4
+            int y; // 0x0000000C length: 4
+            int width; // 0x00000010 length: 4
+            int height; // 0x00000014 length: 4
             int fadeMode; // 0x00000018 length: 4
             int field7_0x1c; // 0x0000001C length: 4
             int field8_0x20; // 0x00000020 length: 4

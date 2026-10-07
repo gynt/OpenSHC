@@ -26,8 +26,8 @@ namespace UI {
             SHC_SoundStreamInt soundStream; // 0x00000004 length: 4
             int x; // 0x00000008 length: 4
             int y; // 0x0000000C length: 4
-            int field4_0x10; // 0x00000010 length: 4
-            int field5_0x14; // 0x00000014 length: 4
+            int width; // 0x00000010 length: 4
+            int height; // 0x00000014 length: 4
             int field6_0x18; // 0x00000018 length: 4
             int field_0x1c; // 0x0000001C length: 4
             SoundFlagsAndLoopCount flagLoopCount; // 0x00000020 length: 4
