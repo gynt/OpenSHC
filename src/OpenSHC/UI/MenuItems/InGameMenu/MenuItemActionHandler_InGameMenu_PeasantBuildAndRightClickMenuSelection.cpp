@@ -209,7 +209,7 @@ namespace UI {
                     if (DAT_UnitsState::instance
                             .unitCountOfSelection[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         < 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::ProcessBuildingClickBonus,
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::processBuildingClickBonus,
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID);
                     }
@@ -233,8 +233,7 @@ namespace UI {
                                  && ((((DAT_MouseState::instance.field31_0x94 == 0
                                            && ((*(int*)&DAT_MouseState::instance.padding_0x98[0]) == 0))
                                           && (BVar3
-                                              = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::
-                                                                      SelectUnitAndOpenStatusMenu,
+                                              = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::selectUnitAndOpenStatusMenu,
                                                   AlphaAndButtonSurfaceObj::ptr)(
                                                   DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID),
                                               BVar3 == FALSE))
@@ -242,7 +241,7 @@ namespace UI {
                                               - DAT_ViewportRenderState::instance.viewportState.field13_0x34)
                                          || (BVar3
                                              = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::
-                                                                     SelectUnitAndOpenStatusMenu,
+                                                                     selectUnitAndOpenStatusMenu,
                                                  AlphaAndButtonSurfaceObj::ptr)(
                                                  DAT_ViewportRenderState::instance.viewportState.mouseRayLastUnitID),
                                              BVar3 == FALSE))))))))

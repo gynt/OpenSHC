@@ -125,7 +125,7 @@ namespace UI {
                     != OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(1, 0x4d,
-                        (int)((int)(DAT_TileMapState::instance.buildingPlacementFailReason)), _noBlLookup, 100, 6000);
+                        (int)((int)(DAT_TileMapState::instance.buildingPlacementFailReason)), (int)_noBlLookup.buildingType, 100, 6000);
                 }
             }
         }
