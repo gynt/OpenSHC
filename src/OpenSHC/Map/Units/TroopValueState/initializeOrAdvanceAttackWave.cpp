@@ -23,7 +23,7 @@ namespace Map {
                 this->attackInfo.attackWaveTicker[param_1] = 1;
                 this->attackInfo.pendingAttackWaveCount = this->attackInfo.pendingAttackWaveCount + 1;
                 this->attackInfo.someCounter1 = 1;
-                this->attackInfo.field86987_0x20f9c = 0;
+                this->attackInfo.attackAlarmPlayed = 0;
                 this->attackInfo.attackWaveRetargetCount = 0;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(1);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::computeAttackWaveTroopComposition, this)();

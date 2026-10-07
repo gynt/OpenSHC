@@ -31,7 +31,7 @@ namespace Map {
             }
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playOnSpeechSfxStream, DAT_SFXState::ptr)(filename);
         switchD_0051b6d7_caseD_4:
-            this->attackInfo.field86987_0x20f9c = 1;
+            this->attackInfo.attackAlarmPlayed = 1;
         }
 
     }

@@ -238,10 +238,10 @@ namespace Map {
                     }
                 }
             LAB_0052ac8d:
-                if (this->tribes[tribeID].field134_0x27a != 0) {
+                if (this->tribes[tribeID].pendingScatterMove != 0) {
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::moveTribeToIndexedNearbyTile, this)(
                         tribeID);
-                    this->tribes[tribeID].field134_0x27a = 0;
+                    this->tribes[tribeID].pendingScatterMove = 0;
                 }
             }
         }

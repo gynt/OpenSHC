@@ -82,7 +82,7 @@ namespace Map {
         int unknownOne_0x20f90; // 0x00020F90 length: 4
         int scaleZone; // 0x00020F94 length: 4
         int field86986_0x20f98; // 0x00020F98 length: 4
-        int field86987_0x20f9c; // 0x00020F9C length: 4
+        int attackAlarmPlayed; // 0x00020F9C length: 4
         int someCounter1; // 0x00020FA0 length: 4
         undefined1 padding_0x20fa4[4]; // 0x00020FA4 length: 4
         short nof_fpointsArray[50][8]; // 0x00020FA8 length: 800
@@ -111,7 +111,7 @@ namespace Map {
         int someIntArray2[50]; // 0x0002AB50 length: 200
         undefined1 padding_0x2ac18[1596]; // 0x0002AC18 length: 1596
         AttackInfoPitchRelated spottedEnemyTiles[100]; // 0x0002B254 length: 800
-        int field127522_0x2b574; // 0x0002B574 length: 4
+        int aiTickPhase; // 0x0002B574 length: 4
         int field127523_0x2b578; // 0x0002B578 length: 4
         short unitIDArray_0x2b57c[1000]; // 0x0002B57C length: 2000
         int unitIDIndex_0x2bd4c; // 0x0002BD4C length: 4

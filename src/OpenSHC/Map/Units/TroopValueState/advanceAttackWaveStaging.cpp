@@ -16,7 +16,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0051D690
         void TroopValueState::advanceAttackWaveStaging(int param_1)
         {
-            this->attackInfo.field86987_0x20f9c = 0;
+            this->attackInfo.attackAlarmPlayed = 0;
             this->attackInfo.value3Array01[param_1] = 2;
             this->attackInfo.attackWaveTicker[param_1] = 0;
             MACRO_CALL_MEMBER(

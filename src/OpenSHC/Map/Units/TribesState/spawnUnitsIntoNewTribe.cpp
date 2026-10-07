@@ -53,7 +53,7 @@ namespace Map {
                         y = y + -1;
                     } while (y);
                 }
-                this->tribes[_tribeID].field134_0x27a = 1;
+                this->tribes[_tribeID].pendingScatterMove = 1;
                 return (dword)(_tribeID);
             }
             return (dword)(0);

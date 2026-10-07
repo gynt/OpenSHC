@@ -81,7 +81,7 @@ namespace Map {
             short rallyPointCount; // 0x00000262 length: 2
             undefined1 padding_0x264[20]; // 0x00000264 length: 20
             short predatorNearby; // 0x00000278 length: 2
-            short field134_0x27a; // 0x0000027A length: 2
+            short pendingScatterMove; // 0x0000027A length: 2
             short unkIsAnimalTribe; // 0x0000027C length: 2
             short wanderIntervalTicks; // 0x0000027E length: 2
             short herdMinSize; // 0x00000280 length: 2

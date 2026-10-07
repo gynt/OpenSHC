@@ -21,7 +21,7 @@ namespace Map {
             this->attackInfo.someIntArray2[param_1 + -1] = 0;
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 10, '\0', (void*)((int)(this->attackInfo.someSinglePlayerScore + param_1)));
-            this->attackInfo.field127522_0x2b574 = 0;
+            this->attackInfo.aiTickPhase = 0;
             this->attackInfo.counter = 0x10;
             this->attackInfo.field_0x20e00 = 0xffffffff;
             this->attackInfo.field128057_0x469d8 = 0;

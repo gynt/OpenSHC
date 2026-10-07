@@ -2094,8 +2094,8 @@ namespace Map {
                                                 DAT_MinimapViewState::ptr)(
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y);
-                                            DAT_TribesState::instance.tribes[dVar14].field134_0x27a = 0;
-                                            DAT_TribesState::instance.tribes[tribeID].field134_0x27a = 0;
+                                            DAT_TribesState::instance.tribes[dVar14].pendingScatterMove = 0;
+                                            DAT_TribesState::instance.tribes[tribeID].pendingScatterMove = 0;
                                             if (0 < DAT_TribesState::instance.tribes[dVar14].size) {
                                                 do {
                                                     iVar18 = MACRO_CALL_MEMBER(
@@ -2268,7 +2268,7 @@ namespace Map {
                                                 (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
                                                 Map::Units::UT_E_ARCHER, 0x14);
                                             sVar7 = DAT_TribesState::instance.tribes[dVar14].size;
-                                            DAT_TribesState::instance.tribes[dVar14].field134_0x27a = 3;
+                                            DAT_TribesState::instance.tribes[dVar14].pendingScatterMove = 3;
                                             if (0 < sVar7) {
                                                 iVar18 = 0;
                                                 do {

@@ -446,9 +446,9 @@ namespace UI {
                     MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                         DAT_GameState::instance.mapAndTime.signpostEntryData[iVar8].x,
                         DAT_GameState::instance.mapAndTime.signpostEntryData[iVar8].y);
-                    DAT_TribesState::instance.tribes[dVar5].field134_0x27a = 0;
+                    DAT_TribesState::instance.tribes[dVar5].pendingScatterMove = 0;
                     iVar8 = 0;
-                    DAT_TribesState::instance.tribes[dVar6].field134_0x27a = 0;
+                    DAT_TribesState::instance.tribes[dVar6].pendingScatterMove = 0;
                     if (0 < DAT_TribesState::instance.tribes[dVar5].size) {
                         do {
                             iVar7 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe,

@@ -32,33 +32,32 @@ namespace Map {
                     = MACRO_CALL(Map::Units_Func::FindFirstOpponentWithKeep)();
                 this->attackInfo.playerID_0x2c850 = 1;
             }
-            if (!this->attackInfo.field127522_0x2b574) {
-                this->attackInfo.field127523_0x2b578 = this->attackInfo.field127522_0x2b574;
-                this->attackInfo.field_0x2c854 = this->attackInfo.field127522_0x2b574;
+            if (!this->attackInfo.aiTickPhase) {
+                this->attackInfo.field127523_0x2b578 = this->attackInfo.aiTickPhase;
+                this->attackInfo.field_0x2c854 = this->attackInfo.aiTickPhase;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::collectArcherUnitsByLocation, this)();
                 MACRO_CALL_MEMBER(
                     Map::Units::TroopValueState_Func::assignMacemenAndKnightsNotFromPlayer1ToTribes, this)();
-            } else if (this->attackInfo.field127522_0x2b574 == 1) {
+            } else if (this->attackInfo.aiTickPhase == 1) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateArcherBrazierProximityFlags, this)();
-            } else if ((this->attackInfo.field127522_0x2b574 != 0x32)
-                && (this->attackInfo.field127522_0x2b574 != 100)) {
-                if (this->attackInfo.field127522_0x2b574 == 0x46) {
+            } else if ((this->attackInfo.aiTickPhase != 0x32) && (this->attackInfo.aiTickPhase != 100)) {
+                if (this->attackInfo.aiTickPhase == 0x46) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::trySendMacemenTribeToAttack, this)();
-                } else if (this->attackInfo.field127522_0x2b574 == 0x3c) {
+                } else if (this->attackInfo.aiTickPhase == 0x3c) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::trySendKnightTribeToAttack, this)();
                 }
             }
-            if (!(this->attackInfo.field127522_0x2b574 & 0xfU)) {
+            if (!(this->attackInfo.aiTickPhase & 0xfU)) {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::queueOilThrowForIdleArchers, this)();
             }
-            if (((byte)this->attackInfo.field127522_0x2b574 & 0xf) == 8) {
+            if (((byte)this->attackInfo.aiTickPhase & 0xf) == 8) {
                 MACRO_CALL_MEMBER(
                     Map::Units::TroopValueState_Func::redeployArchersToDefensivePositions, this)();
             }
-            this->attackInfo.field127522_0x2b574 = this->attackInfo.field127522_0x2b574 + 1;
-            if (100 < this->attackInfo.field127522_0x2b574) {
+            this->attackInfo.aiTickPhase = this->attackInfo.aiTickPhase + 1;
+            if (100 < this->attackInfo.aiTickPhase) {
                 this->attackInfo.field_0x2c854 = this->attackInfo.field_0x2c854 + 1;
-                this->attackInfo.field127522_0x2b574 = 2;
+                this->attackInfo.aiTickPhase = 2;
             }
             BVar1
                 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::unitsCanMoveFromKeepOfPlayerToAnotherArea,

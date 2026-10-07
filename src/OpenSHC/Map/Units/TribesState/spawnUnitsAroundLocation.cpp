@@ -28,7 +28,7 @@ namespace Map {
                 DAT_PathFindingState::ptr)(aroundX, aroundY, -1, -1, 2000, 0);
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::spawnUnitAndAddToTribe,
                 DAT_PathFindingState::ptr)(playerID, playerID, count, unitType, (undefined4)((int)(_tribeID)));
-            this->tribes[_tribeID].field134_0x27a = 1;
+            this->tribes[_tribeID].pendingScatterMove = 1;
             return (dword)(_tribeID);
         }
 
