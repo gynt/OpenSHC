@@ -7,7 +7,7 @@ namespace UI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004DAE90
     void Credits::InsertElementIntoArrayAt_ec0348_2(
-        int param_1, int xSpace, int param_3, int param_4, int ySpace, int someX, int param_7, int someY, int param_9)
+        int param_1, int xSpace, int param_3, int param_4, int x, int y, int param_7, int width, int param_9)
     {
         int _index;
         CreditsRelatedStructure* pCVar1;
@@ -25,9 +25,9 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[_index].xSpace = xSpace;
                 DAT_ARRAY_00ec0348::instance[_index].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[_index].field8_0x20 = param_3;
-                DAT_ARRAY_00ec0348::instance[_index].ySpace = ySpace;
-                DAT_ARRAY_00ec0348::instance[_index].someX = someX;
-                DAT_ARRAY_00ec0348::instance[_index].someY = someY;
+                DAT_ARRAY_00ec0348::instance[_index].x = x;
+                DAT_ARRAY_00ec0348::instance[_index].y = y;
+                DAT_ARRAY_00ec0348::instance[_index].width = width;
                 DAT_ARRAY_00ec0348::instance[_index].field9_0x24 = param_9;
                 DAT_ARRAY_00ec0348::instance[_index].field10_0x28 = param_4;
                 DAT_ARRAY_00ec0348::instance[_index].isValid = 2;

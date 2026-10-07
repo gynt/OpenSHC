@@ -7,7 +7,7 @@ namespace UI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004DAD40
     void Credits::InsertElementIntoAnArrayAt_ec0348(
-        int state, int xSpace, int param_3, int ySpace, int someX, int someY, int param_7, int param_8, int param_9)
+        int state, int xSpace, int param_3, int x, int y, int width, int param_7, int param_8, int param_9)
     {
         int iVar1;
         CreditsRelatedStructure* pCVar2;
@@ -26,10 +26,10 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[iVar1].xSpace = xSpace;
                 DAT_ARRAY_00ec0348::instance[iVar1].field11_0x2c = param_3;
-                DAT_ARRAY_00ec0348::instance[iVar1].ySpace = ySpace;
-                DAT_ARRAY_00ec0348::instance[iVar1].someX = someX;
-                DAT_ARRAY_00ec0348::instance[iVar1].someY = someY;
-                DAT_ARRAY_00ec0348::instance[iVar1].field5_0x14 = param_7;
+                DAT_ARRAY_00ec0348::instance[iVar1].x = x;
+                DAT_ARRAY_00ec0348::instance[iVar1].y = y;
+                DAT_ARRAY_00ec0348::instance[iVar1].width = width;
+                DAT_ARRAY_00ec0348::instance[iVar1].height = param_7;
                 DAT_ARRAY_00ec0348::instance[iVar1].fadeMode = param_8;
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_9;
                 if (param_8 == 1) {

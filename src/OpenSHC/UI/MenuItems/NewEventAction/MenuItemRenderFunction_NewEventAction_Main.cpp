@@ -143,14 +143,14 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
-                    if (((*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]))
-                        && ((*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0])
-                            = (*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]) + -1,
-                            (*(int*)&DAT_MapPropertiesState::instance.padding_0x145cc[0]) == 0)) {
+                    if ((DAT_MapPropertiesState::instance.sliderPopupDelay)
+                        && (DAT_MapPropertiesState::instance.sliderPopupDelay
+                            = DAT_MapPropertiesState::instance.sliderPopupDelay + -1,
+                            DAT_MapPropertiesState::instance.sliderPopupDelay == 0)) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
                             DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
-                            (int)((int)(DAT_MapPropertiesState::instance.field131_0x145d0)),
-                            (int)((int)(DAT_MapPropertiesState::instance.field132_0x145d4)));
+                            (int)((int)(DAT_MapPropertiesState::instance.sliderPopupX)),
+                            (int)((int)(DAT_MapPropertiesState::instance.sliderPopupY)));
                     }
                     switch (param_1) {
                     case 0x84:

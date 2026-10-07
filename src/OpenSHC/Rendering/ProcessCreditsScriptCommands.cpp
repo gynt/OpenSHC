@@ -107,8 +107,8 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field17_0x38)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field5_0x14)), 0,
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].height)), 0,
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field13_0x28)));
                 break;
             case 6:
@@ -117,8 +117,8 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field17_0x38)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field5_0x14)), 1,
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].height)), 1,
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field13_0x28)));
                 break;
             case 7:
@@ -189,7 +189,7 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field16_0x34)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)), 0,
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field15_0x30)));
                 break;
             case 0xf:
@@ -199,7 +199,7 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field16_0x34)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)), 1,
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field15_0x30)));
                 break;
             case 0x10:
@@ -235,27 +235,27 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field5_0x14)), 0,
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].height)), 0,
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field13_0x28)));
                 break;
             case 0x16:
                 if (!DAT_MouseState::instance.draggingStopped) {
                     return;
                 }
-                piVar4 = &DAT_ARRAY_00ec0348::instance[0].ySpace;
+                piVar4 = &DAT_ARRAY_00ec0348::instance[0].x;
                 do {
                     if (((CreditsRelatedStructure*)(piVar4 - 2))->isValid == 3) {
                         if ((((CreditsRelatedStructure*)(piVar4 - 2))->xSpace <= DAT_MouseState::instance.screenSpaceX
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth)
                             && (DAT_MouseState::instance.screenSpaceX
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                                < ((CreditsRelatedStructure*)(piVar4 - 2))->someX + ((CreditsRelatedStructure*)(piVar4 - 2))->xSpace)) {
-                            if ((((CreditsRelatedStructure*)(piVar4 - 2))->ySpace <= DAT_MouseState::instance.screenSpaceY
+                                < ((CreditsRelatedStructure*)(piVar4 - 2))->y + ((CreditsRelatedStructure*)(piVar4 - 2))->xSpace)) {
+                            if ((((CreditsRelatedStructure*)(piVar4 - 2))->x <= DAT_MouseState::instance.screenSpaceY
                                         - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight)
                                 && (DAT_MouseState::instance.screenSpaceY
                                         - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
-                                    < ((CreditsRelatedStructure*)(piVar4 - 2))->someY + ((CreditsRelatedStructure*)(piVar4 - 2))->ySpace))
+                                    < ((CreditsRelatedStructure*)(piVar4 - 2))->width + ((CreditsRelatedStructure*)(piVar4 - 2))->x))
                                 break;
                         }
                     }
@@ -322,8 +322,8 @@ void Rendering::ProcessCreditsScriptCommands()
             LAB_004e0f3c:
                 DAT_RenderRelatedX::instance = DAT_ARRAY_00eb9b68::instance[iVar9].x;
                 DAT_RenderRelatedY::instance = DAT_ARRAY_00eb9b68::instance[iVar9].y;
-                DAT_00eb1234::instance = DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10;
-                INT_00eb0e30::instance = DAT_ARRAY_00eb9b68::instance[iVar9].field5_0x14;
+                DAT_00eb1234::instance = DAT_ARRAY_00eb9b68::instance[iVar9].width;
+                INT_00eb0e30::instance = DAT_ARRAY_00eb9b68::instance[iVar9].height;
                 break;
             case 0x27:
                 if (DAT_SoundSystemState::instance.sec_Section1055_0x3274
@@ -352,8 +352,8 @@ void Rendering::ProcessCreditsScriptCommands()
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)), 0,
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].x)),
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].y)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field4_0x10)),
-                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field5_0x14)), 0,
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].width)),
+                    (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].height)), 0,
                     (undefined4)((int)(DAT_ARRAY_00eb9b68::instance[iVar9].field13_0x28)));
                 break;
             case 0x2a:

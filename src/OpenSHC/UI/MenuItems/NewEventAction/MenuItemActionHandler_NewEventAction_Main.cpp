@@ -122,9 +122,9 @@ namespace UI {
                     UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(1,
                     iVar2, (destination->scenario).actionData, (undefined*)((int)(destination)),
                     (void*)MACRO_CALL(UI::Helpers_Func::CaptureCurrentTimeToUnknownTime01));
-                DAT_MapPropertiesState::instance.field131_0x145d0 = DAT_ButtonX::instance + 0x3a;
-                DAT_MapPropertiesState::instance.field132_0x145d4 = DAT_ButtonY::instance + 0x1c;
-                DAT_MapPropertiesState::instance.field127_0x145cc = 2;
+                DAT_MapPropertiesState::instance.sliderPopupX = DAT_ButtonX::instance + 0x3a;
+                DAT_MapPropertiesState::instance.sliderPopupY = DAT_ButtonY::instance + 0x1c;
+                DAT_MapPropertiesState::instance.sliderPopupDelay = 2;
             }
         switchD_004b9c26_caseD_26:
             return;

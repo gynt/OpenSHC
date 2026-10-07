@@ -18,8 +18,8 @@ namespace UI {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].y = param_4;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field13_0x28 = param_8;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field_0x1c = 0;
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field4_0x10 = param_5;
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field5_0x14 = param_6;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].width = param_5;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].height = param_6;
             DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;
         }
         return;

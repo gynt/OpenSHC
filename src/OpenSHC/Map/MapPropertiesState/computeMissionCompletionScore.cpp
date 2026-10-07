@@ -34,7 +34,7 @@ namespace Map {
         local_4 = 0;
         local_8 = 0;
         this->missionScore = 0xffffffff;
-        this->field94_0x14560 = 0;
+        this->objectiveGoodsCount = 0;
         iVar5 = 0;
         if (0 < this->eventsCount) {
             pcVar7 = (char*)((int)&this->scenarioEvents[0].data + 0xf);
@@ -60,30 +60,30 @@ namespace Map {
                 }
                 if (pcVar7[0x18] == '\0')
                     goto LAB_004bdfd7;
-                this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x17];
-                iVar5 = this->field94_0x14560;
+                this->objectiveGoodsType[this->objectiveGoodsCount] = (int)pcVar7[0x17];
+                iVar5 = this->objectiveGoodsCount;
                 iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x15));
-                this->unknownArray_01[iVar5 + 0x3f1]
+                this->objectiveGoodsSurplus[iVar5]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                          .currentResources[this->invasionEventContent.unitCountsPerUnitType[iVar5 + -0x16]]
+                          .currentResources[this->objectiveGoodsType[iVar5]]
                     - iVar3;
-                switch (this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16]) {
+                switch (this->objectiveGoodsType[this->objectiveGoodsCount]) {
                 case 2:
                 case 10:
                 case 0xb:
                 case 0xc:
                 case 0xd:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 5;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 5;
                     goto LAB_004bdfb7;
                 default:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 10;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 10;
                 LAB_004bdfb7:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d] = iVar5;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount] = iVar5;
                     break;
                 case 6:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x14;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x14;
                     break;
                 case 0x11:
                 case 0x12:
@@ -93,39 +93,39 @@ namespace Map {
                 case 0x16:
                 case 0x17:
                 case 0x18:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x32;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x32;
                 }
-                if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                    this->field94_0x14560 = this->field94_0x14560 + 1;
+                if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                    this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                 }
             LAB_004bdfd7:
                 if (pcVar7[0x44] == '\0')
                     goto LAB_004be0ae;
-                this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x43];
-                iVar5 = this->field94_0x14560;
+                this->objectiveGoodsType[this->objectiveGoodsCount] = (int)pcVar7[0x43];
+                iVar5 = this->objectiveGoodsCount;
                 iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x41));
-                this->unknownArray_01[iVar5 + 0x3f1]
+                this->objectiveGoodsSurplus[iVar5]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                          .currentResources[this->invasionEventContent.unitCountsPerUnitType[iVar5 + -0x16]]
+                          .currentResources[this->objectiveGoodsType[iVar5]]
                     - iVar3;
-                switch (this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16]) {
+                switch (this->objectiveGoodsType[this->objectiveGoodsCount]) {
                 case 2:
                 case 10:
                 case 0xb:
                 case 0xc:
                 case 0xd:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 5;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 5;
                     goto LAB_004be08e;
                 default:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 10;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 10;
                 LAB_004be08e:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d] = iVar5;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount] = iVar5;
                     break;
                 case 6:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x14;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x14;
                     break;
                 case 0x11:
                 case 0x12:
@@ -135,39 +135,39 @@ namespace Map {
                 case 0x16:
                 case 0x17:
                 case 0x18:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x32;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x32;
                 }
-                if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                    this->field94_0x14560 = this->field94_0x14560 + 1;
+                if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                    this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                 }
             LAB_004be0ae:
                 if (pcVar7[0x14] == '\0')
                     goto LAB_004be185;
-                this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x13];
-                iVar5 = this->field94_0x14560;
+                this->objectiveGoodsType[this->objectiveGoodsCount] = (int)pcVar7[0x13];
+                iVar5 = this->objectiveGoodsCount;
                 iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x11));
-                this->unknownArray_01[iVar5 + 0x3f1]
+                this->objectiveGoodsSurplus[iVar5]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                          .currentResources[this->invasionEventContent.unitCountsPerUnitType[iVar5 + -0x16]]
+                          .currentResources[this->objectiveGoodsType[iVar5]]
                     - iVar3;
-                switch (this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16]) {
+                switch (this->objectiveGoodsType[this->objectiveGoodsCount]) {
                 case 2:
                 case 10:
                 case 0xb:
                 case 0xc:
                 case 0xd:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 5;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 5;
                     goto LAB_004be165;
                 default:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 10;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 10;
                 LAB_004be165:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d] = iVar5;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount] = iVar5;
                     break;
                 case 6:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x14;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x14;
                     break;
                 case 0x11:
                 case 0x12:
@@ -177,39 +177,39 @@ namespace Map {
                 case 0x16:
                 case 0x17:
                 case 0x18:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x32;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x32;
                 }
-                if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                    this->field94_0x14560 = this->field94_0x14560 + 1;
+                if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                    this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                 }
             LAB_004be185:
                 if (pcVar7[0x1c] == '\0')
                     goto LAB_004be25c;
-                this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = (int)pcVar7[0x1b];
-                iVar5 = this->field94_0x14560;
+                this->objectiveGoodsType[this->objectiveGoodsCount] = (int)pcVar7[0x1b];
+                iVar5 = this->objectiveGoodsCount;
                 iVar3 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
                     (int)*(short*)(pcVar7 + 0x19));
-                this->unknownArray_01[iVar5 + 0x3f1]
+                this->objectiveGoodsSurplus[iVar5]
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                          .currentResources[this->invasionEventContent.unitCountsPerUnitType[iVar5 + -0x16]]
+                          .currentResources[this->objectiveGoodsType[iVar5]]
                     - iVar3;
-                switch (this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16]) {
+                switch (this->objectiveGoodsType[this->objectiveGoodsCount]) {
                 case 2:
                 case 10:
                 case 0xb:
                 case 0xc:
                 case 0xd:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 5;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 5;
                     goto LAB_004be23c;
                 default:
-                    iVar5 = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 10;
+                    iVar5 = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 10;
                 LAB_004be23c:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d] = iVar5;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount] = iVar5;
                     break;
                 case 6:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x14;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x14;
                     break;
                 case 0x11:
                 case 0x12:
@@ -219,39 +219,39 @@ namespace Map {
                 case 0x16:
                 case 0x17:
                 case 0x18:
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1] * 0x32;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount] * 0x32;
                 }
-                if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                    this->field94_0x14560 = this->field94_0x14560 + 1;
+                if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                    this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                 }
             LAB_004be25c:
                 if (pcVar7[0x10] != '\0') {
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = 0xf;
+                    this->objectiveGoodsType[this->objectiveGoodsCount] = 0xf;
                     iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
                         this)((int)*(short*)(pcVar7 + 0xd));
-                    this->unknownArray_01[this->field94_0x14560 + 0x3f1]
+                    this->objectiveGoodsSurplus[this->objectiveGoodsCount]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .currentResources[0xf]
                         - iVar5;
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1];
-                    if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                        this->field94_0x14560 = this->field94_0x14560 + 1;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount];
+                    if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                        this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                     }
                 }
                 if (pcVar7[4] != '\0') {
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x16] = -1;
+                    this->objectiveGoodsType[this->objectiveGoodsCount] = -1;
                     iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
                         this)((int)*(short*)(pcVar7 + 1));
-                    this->unknownArray_01[this->field94_0x14560 + 0x3f1]
+                    this->objectiveGoodsSurplus[this->objectiveGoodsCount]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .currentPopulation
                         - iVar5;
-                    this->invasionEventContent.unitCountsPerUnitType[this->field94_0x14560 + -0x1d]
-                        = this->unknownArray_01[this->field94_0x14560 + 0x3f1];
-                    if (0 < this->unknownArray_01[this->field94_0x14560 + 0x3f1]) {
-                        this->field94_0x14560 = this->field94_0x14560 + 1;
+                    this->objectiveGoodsScore[this->objectiveGoodsCount]
+                        = this->objectiveGoodsSurplus[this->objectiveGoodsCount];
+                    if (0 < this->objectiveGoodsSurplus[this->objectiveGoodsCount]) {
+                        this->objectiveGoodsCount = this->objectiveGoodsCount + 1;
                     }
                 }
             LAB_004be33e:
@@ -274,15 +274,15 @@ namespace Map {
                                  .MissionScoreByDifficulty[DAT_GameState::instance.mapAndTime.difficulty]
             + this->timeBonusScore;
         iVar5 = 0;
-        if (0 < this->field94_0x14560) {
-            piVar2 = (int *)(&this->field102_0x14580);
+        if (0 < this->objectiveGoodsCount) {
+            piVar2 = this->objectiveGoodsScore;
             do {
                 this->missionScore = this->missionScore + *piVar2;
                 iVar5 = iVar5 + 1;
                 piVar2 = piVar2 + 1;
-            } while (iVar5 < this->field94_0x14560);
+            } while (iVar5 < this->objectiveGoodsCount);
         }
-        this->field122_0x145b8 = 0;
+        this->troopSurvivalScore = 0;
         if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
             || ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
                 && ((int)this->SEC_U3_MapType2_1 < 2)))) {
@@ -301,9 +301,9 @@ namespace Map {
             iVar5 = DAT_GameState::instance.playerDataArray[iVar5].weightedLosses;
             iVar6 = iVar5 + iVar6;
             if (iVar6) {
-                this->field123_0x145bc = (iVar5 * 100) / iVar6;
-                this->field122_0x145b8 = (100 - this->field123_0x145bc) * 100;
-                this->missionScore = this->missionScore + this->field122_0x145b8;
+                this->troopLossPercent = (iVar5 * 100) / iVar6;
+                this->troopSurvivalScore = (100 - this->troopLossPercent) * 100;
+                this->missionScore = this->missionScore + this->troopSurvivalScore;
             }
         }
         if (DAT_GameCore::instance.mapU4Int1) {
@@ -317,9 +317,9 @@ namespace Map {
                 }
                 psVar8 = psVar8 + 0x248;
             } while ((int)psVar8 < 0x1651422);
-            this->field126_0x145c8 = DAT_GameState::instance.playerDataArray[2].weightedLosses;
-            this->field124_0x145c0 = DAT_GameState::instance.playerDataArray[2].weightedLosses + iVar5;
-            this->field125_0x145c4 = iVar5;
+            this->enemyTroopValueLost = DAT_GameState::instance.playerDataArray[2].weightedLosses;
+            this->enemyTroopValueTotal = DAT_GameState::instance.playerDataArray[2].weightedLosses + iVar5;
+            this->enemyTroopValueSurviving = iVar5;
         }
     }
 

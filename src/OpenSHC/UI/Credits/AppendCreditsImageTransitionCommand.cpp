@@ -24,8 +24,8 @@ namespace UI {
             iVar1 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[param_2].width;
             iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[param_2].height;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field_0x1c = 0;
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field4_0x10 = iVar1;
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field5_0x14 = iVar2;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].width = iVar1;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].height = iVar2;
             if (param_1 == 6) {
                 pCVar3 = DAT_ARRAY_00eb9b68::instance + DAT_UnknownBinkCount::instance;
                 DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;

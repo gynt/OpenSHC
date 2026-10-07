@@ -25,10 +25,10 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].isValid = 3;
                 DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[iVar1].xSpace = param_2;
-                DAT_ARRAY_00ec0348::instance[iVar1].ySpace = param_3;
-                DAT_ARRAY_00ec0348::instance[iVar1].someX = param_4;
-                DAT_ARRAY_00ec0348::instance[iVar1].someY = param_5;
-                DAT_ARRAY_00ec0348::instance[iVar1].field5_0x14 = param_6;
+                DAT_ARRAY_00ec0348::instance[iVar1].x = param_3;
+                DAT_ARRAY_00ec0348::instance[iVar1].y = param_4;
+                DAT_ARRAY_00ec0348::instance[iVar1].width = param_5;
+                DAT_ARRAY_00ec0348::instance[iVar1].height = param_6;
                 DAT_ARRAY_00ec0348::instance[iVar1].fadeMode = param_7;
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_8;
             }

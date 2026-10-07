@@ -49,7 +49,7 @@ namespace UI {
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NEW_EVENT_CONDITION, FALSE);
                 return;
             case 0x65:
-                DAT_MapPropertiesState::instance.field127_0x145cc = 0;
+                DAT_MapPropertiesState::instance.sliderPopupDelay = 0;
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NEW_EVENT_ACTION, FALSE);
                 break;

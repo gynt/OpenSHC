@@ -68,25 +68,25 @@ void Rendering::RenderActiveCreditsElements()
                 if (iVar3 == 1) {
                     iVar3 = piVar5->xSpace;
                     if (piVar5->field11_0x2c != -1) {
-                        if ((piVar5->ySpace <= DAT_MouseState::instance.screenSpaceX
+                        if ((piVar5->x <= DAT_MouseState::instance.screenSpaceX
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth)
                             && (DAT_MouseState::instance.screenSpaceX
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                                < piVar5->someY + piVar5->ySpace)) {
-                            if ((piVar5->someX <= DAT_MouseState::instance.screenSpaceY
+                                < piVar5->width + piVar5->x)) {
+                            if ((piVar5->y <= DAT_MouseState::instance.screenSpaceY
                                         - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight)
                                 && (DAT_MouseState::instance.screenSpaceY
                                         - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
-                                    < piVar5->field5_0x14 + piVar5->someX)) {
+                                    < piVar5->height + piVar5->y)) {
                                 iVar3 = piVar5->field11_0x2c;
                             }
                         }
                     }
                     if (!piVar5->fadeMode) {
-                        MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(iVar3, piVar5->ySpace, piVar5->someX);
+                        MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(iVar3, piVar5->x, piVar5->y);
                     } else {
                         iVar4 = (long)((double)piVar5->blendStrength);
-                        MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(iVar3, piVar5->ySpace, piVar5->someX, iVar4);
+                        MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(iVar3, piVar5->x, piVar5->y, iVar4);
                         fVar1 = FLOAT_Between1And5::instance;
                         if ((piVar5->fadeMode != 1)
                             || (fVar2 = piVar5->blendStrength
@@ -109,17 +109,17 @@ void Rendering::RenderActiveCreditsElements()
                         MACRO_CALL_MEMBER(
                             UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
-                            piVar5->ySpace + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,
-                            piVar5->someX + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->someY,
-                            piVar5->field5_0x14);
+                            piVar5->x + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,
+                            piVar5->y + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->width,
+                            piVar5->height);
                     } else {
                         iVar3 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL_MEMBER(
                             UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithCustomBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
-                            piVar5->ySpace + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,
-                            piVar5->someX + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->someY,
-                            piVar5->field5_0x14, iVar3);
+                            piVar5->x + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,
+                            piVar5->y + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->width,
+                            piVar5->height, iVar3);
                     }
                     fVar1 = FLOAT_Between1And5::instance;
                     if ((piVar5->fadeMode != 1)
@@ -145,12 +145,12 @@ void Rendering::RenderActiveCreditsElements()
                     }
                     if (!piVar5->fadeMode) {
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelper)(piVar5->xSpace,
-                            piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
+                            piVar5->x, piVar5->y, piVar5->width, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)));
                     } else {
                         iVar3 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelperWithBlending)(piVar5->xSpace,
-                            piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
+                            piVar5->x, piVar5->y, piVar5->width, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)), iVar3);
                         fVar1 = FLOAT_Between1And5::instance;
                         if ((piVar5->fadeMode == 1)
@@ -163,24 +163,24 @@ void Rendering::RenderActiveCreditsElements()
                         }
                     }
                 } else if (iVar3 == 3) {
-                    iVar3 = piVar5->ySpace;
+                    iVar3 = piVar5->x;
                     if ((iVar3 <= DAT_MouseState::instance.screenSpaceX
                                 - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth)
                         && (DAT_MouseState::instance.screenSpaceX
                                 - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                            < piVar5->someY + iVar3)) {
-                        iVar4 = piVar5->someX;
+                            < piVar5->width + iVar3)) {
+                        iVar4 = piVar5->y;
                         if ((iVar4 <= DAT_MouseState::instance.screenSpaceY
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight)
                             && (DAT_MouseState::instance.screenSpaceY
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
-                                < piVar5->field5_0x14 + iVar4)) {
+                                < piVar5->height + iVar4)) {
                             MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
                                 piVar5->xSpace + 1, iVar3, iVar4);
                             goto LAB_004e1696;
                         }
                     }
-                    MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(piVar5->xSpace, iVar3, piVar5->someX);
+                    MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(piVar5->xSpace, iVar3, piVar5->y);
                 }
             }
         LAB_004e1696:
