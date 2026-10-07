@@ -543,3 +543,153 @@ Naturally, the stack reserved for the function indicated by `sub esp, <number>` 
 At best, not only the stack fits, but variables are also at the correct positions and sizes within.
 
 If the stack usage shows a proper order in the function (i.e. the initial array occupies the first part in the allocated function stack, which means it requires the highest `[esp + <number>]` to reach), it might be sometimes good to fit one "side" of the stack first and then experiment with the rest of the function that has a non-fitting stack usage.
+
+## Findings from UI::BuildingMenus
+
+A style and correctness pass over the 14 `RenderBuildingMenu_*` functions took the namespace
+from 70.6% to 88.8% average, with six functions reaching 100%. The patterns below were each
+worth several percent and most of them recur across the whole family.
+
+### Hardcoded absolute addresses as loop bounds
+
+Ghidra renders a pointer loop over a global array as a comparison against the array's **original
+address**:
+
+```cpp
+} while ((int)_nudges < 0x617f50);          // wrong: the original game's address
+} while ((int)_nudges < (int)(DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges + 8));
+```
+
+With the struct resolvers active the literal points into the original game's memory, so this is a
+real bug and not only a match problem. Two things matter when rewriting it:
+
+- The bound has to be derived from the array, not from the literal.
+- The comparison is **signed** in the original (`cmp esi, G; jl`). A plain pointer comparison is
+  unsigned and emits `jb`, so cast both sides through `(int)`. On `RenderBuildingMenu_Stockpile`
+  the signed cast alone was worth 18 points (43.6% -> 62.1%).
+
+An index loop (`for (int i = 0; i < 8; i++)` with `array[i]`) compiles identically to the
+decompiler's byte-offset walk and reads far better, so prefer it - it is an exact tie, measured on
+both `Armory` and `Stockpile`.
+
+### A conditional that only feeds one call argument
+
+Where the original selects between two or three literals for a single call argument, it duplicates
+the **call** into each branch and cross-jumps the tails:
+
+```asm
+cmp eax, 4
+jne +5
+push 2
+jmp +0xa
+...
+push 1
+call <OFFSET>        ; one shared call
+```
+
+Writing that as a variable makes MSVC if-convert the selection into `sete`/`setge`/`sbb`/`lea`
+arithmetic, which loses the whole block:
+
+```cpp
+if (x == 4) { arg = 2; } else if (x == 0) { arg = 3; } else { arg = 1; }
+f(arg);                                     // -> xor ecx, ecx; sete cl; lea ecx, [ecx+ecx+1]
+```
+
+Write the call out in each branch instead and let the compiler merge the tails:
+
+```cpp
+if (x == 4) { f(2); } else if (x == 0) { f(3); } else { f(1); }
+```
+
+This was worth points on `Granary`, `Keep` and `Stables` (the last reached 100%). The same applies
+to the mask-and-add form AGENTS.md describes from the other direction: `neg`/`sbb`/`and MASK`/`add
+BASE` on *our* side against branches in the original is this pattern, not a missing conditional.
+
+Which arm MSVC places first is decided by the condition's sense, so read the original's `jcc`:
+`je <far>` means the *equal* arm is the second physical block, so write the test inverted
+(`if (x != 1) { ... } else { ... }`). Getting this backwards leaves every other instruction matching
+and still costs the block.
+
+### Switch and if/else-if arm order follows source order
+
+The physical layout of a jump table's arms, and of an if/else-if chain's blocks, is the order the
+cases appear in the source. Read the arm order off the original and reorder the cases to match:
+`RenderBuildingMenu_WorkshopWeaponProduction` went from 89.1% to 100% purely by reordering six
+`case` labels, and `Granary`'s second switch needed `case 3` moved last.
+
+### Reading the divisor out of a magic multiply
+
+A signed division by a non-power-of-two compiles to `mov eax, M; imul <reg>; sar edx, s` plus a sign
+correction. The divisor is `2^(32+s) / M`, so the original's constant is recoverable and Ghidra's
+rendering of it is not trustworthy. Two wrong divisors were found this way:
+
+| function | magic / shift | original | Ghidra said |
+|---|---|---|---|
+| `RenderBuildingMenu_Inn` | `0x51EB851F`, `sar 6` | `/ 200` | `/ 0xa0` (160) |
+| `RenderBuildingMenu_Granary` | `0x51EB851F`, `sar 0xc` | `/ 12800` | `/ 15000` |
+
+Both corrections made the `mov`/`sar` pair match exactly, which is how to confirm the arithmetic.
+
+### Early returns the decompiler dropped
+
+A `pop`/`ret` sequence in the *middle* of the original's instruction stream is an early return our
+source is missing. `RenderBuildingMenu_ChapelAndChurch` returns after rendering the "No wedding this
+month" notice, and `RenderBuildingMenu_Inn` returns after "Maximum bonus achieved"; both carried on
+rendering in our version, so these were behaviour bugs as well as match losses.
+
+Where the early return is the *rare* arm, the original outlines it past the function's `ret`. An
+`if (rare) { ...; return; }` places it inline; phrasing it as the else of the common case puts it
+out of line and matches:
+
+```cpp
+} else if (iVar3 < 100) {       // common path falls through
+    iVar3 = 100;
+} else {                        // rare path outlined after the epilogue
+    render(...);
+    return;
+}
+```
+
+### Two base locals instead of per-call coordinates
+
+A run of `lea` instructions sharing a register (`lea ebp, [ebx + 4]`, `add ebx, -1`,
+`lea eax, [esi + 8]`) means the original kept one base local per axis and wrote every other
+coordinate as an offset from it. `RenderBuildingMenu_RenderTowerAndGateHealth` went from 45.3% to
+95% once `left`/`top` were introduced and the other seven coordinates derived from them; the same
+shape appears in `Granary`'s slider block.
+
+Conversely, a coordinate the original computes in a *single* `lea` (`lea ebx, [ecx + edi + 0x1e5]`)
+must be one expression in the source. Splitting it across two statements (`t = y + 0x1e5;` then
+`t + offset`) emits two adds. Keep the local - removing it also removes a stack slot the original
+has - but assign the folded expression to it (`t = y + 0x1e5 + offset;`). Worth 20 points on
+`RenderBuildingMenu_Marketplace_Stonks`.
+
+### `xor reg, reg` plus `push reg` is not reachable from C
+
+Several of these functions materialise zero once and push the register for every zero-valued
+argument:
+
+```asm
+xor edi, edi
+push edi
+push edi
+push 0x10
+push edi
+```
+
+Our builds emit `push 0` instead. This was chased and is a dead end - none of these reproduced it:
+
+- a single `int zero = 0;` local cast to each argument's type (MSVC constant-propagates it anyway),
+- hoisting the loop index so its `xor` dominates the pushes,
+- `#pragma optimize("s", on)`, which made `Stockpile` substantially worse overall.
+
+It costs about five instructions per function and shifts the register assignment of everything
+after it, which is most of the residual gap on `Armory`, `Granary`, `Keep` and `Stockpile`. Treat it
+as a known blocker rather than something to keep hunting.
+
+### A colour literal that reccmp symbolizes
+
+`push 0xc2f0eb` in `RenderBuildingMenu_Marketplace_Stonks` is a BGR24 colour argument, but the value
+also falls inside a data section, so reccmp renders the original's operand as
+`ImageHeaders::instance+616795` and reports three unavoidable mismatches. Check the callee's
+parameter type before treating such an operand as an address.
