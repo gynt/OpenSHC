@@ -16,7 +16,7 @@ namespace IO {
                 unsigned short blue = ((unsigned char*)(this->address + this->stride24bit * y + x * 3))[0] >> 3;
 
                 unsigned short green = ((unsigned char*)(this->address + this->stride24bit * y + x * 3))[1];
-                if (this->mbr_0x18 == 0 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
+                if (!this->mbr_0x18 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
                     green >>= 2;
                 } else {
                     green >>= 3;
@@ -24,14 +24,14 @@ namespace IO {
                 green <<= 5;
 
                 unsigned short red = ((unsigned char*)(this->address + this->stride24bit * y + x * 3))[2] >> 3;
-                if (this->mbr_0x18 == 0 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
+                if (!this->mbr_0x18 && DAT_WindowAndDirectDraw::instance.colorBitMode == Rendering::RGB_565) {
                     red <<= 11;
                 } else {
                     red <<= 10;
                 }
 
                 unsigned short uVar3 = red + green + blue;
-                if (DAT_WindowAndDirectDraw::instance.colorBitMode != Rendering::RGB_565 || this->mbr_0x18 != 0) {
+                if (DAT_WindowAndDirectDraw::instance.colorBitMode != Rendering::RGB_565 || this->mbr_0x18) {
                     uVar3 |= 0x8000;
                     if (uVar3 == 0xfc1f) {
                         uVar3 = COL_MAGENTA::instance.shortValue;
@@ -41,7 +41,7 @@ namespace IO {
                 ++this->surface;
                 ++local_4;
             }
-            if (addExtra != 0) {
+            if (addExtra) {
                 this->surface += (this->mbr_0x47c - local_4);
             }
         }

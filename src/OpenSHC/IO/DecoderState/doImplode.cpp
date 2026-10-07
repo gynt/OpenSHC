@@ -33,7 +33,7 @@ namespace IO {
         unsigned int const _pkware_status = implode(MACRO_CALL(DecoderBuffer_Func::ReadBufferAndComputeHash),
             MACRO_CALL(DecoderBuffer_Func::WriteBufferAndComputeHash), (char*)_work_buf, &_param, &this->implodingType,
             &this->implodingTypeSize);
-        if (_pkware_status == CMP_NO_ERROR && _param.underflow == FALSE) {
+        if (_pkware_status == CMP_NO_ERROR && !_param.underflow) {
             _param.hash = ~_param.hash;
             *ptrHash = _param.hash;
             *ptrSize = _param.compressedSize;

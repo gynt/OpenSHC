@@ -27,7 +27,7 @@ namespace Map {
         undefined1 padding_0x3e90[16]; // 0x00003E90 length: 16
         int someMinimumDistance; // 0x00003EA0 length: 4
         int field22_0x3ea4; // 0x00003EA4 length: 4
-        undefined1 padding_0x3ea8[4]; // 0x00003EA8 length: 4
+        int field_0x3ea8; // 0x00003EA8 length: 4
         int stone1; // 0x00003EAC length: 4
         int scale1; // 0x00003EB0 length: 4
         int scale2; // 0x00003EB4 length: 4

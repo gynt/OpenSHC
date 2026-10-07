@@ -53,8 +53,8 @@ namespace IO {
             return;
         }
 
-        if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 == 5) {
-            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field0_0x0 = 1;
+        if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
+            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState = 1;
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
         }
 
@@ -125,7 +125,7 @@ namespace IO {
 
                         // Map.u2 size
                         MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &_size, sizeof(_size));
-                        if (_size != 0) {
+                        if (_size) {
                             MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor,
                                 &DAT_GameCore::instance.U2_mapType_singleOrMulti,
                                 sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti));

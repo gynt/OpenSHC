@@ -33,7 +33,7 @@ namespace IO {
         _param.buffer2.size = sizeUncompressed;
         unsigned int const _pkware_status = explode(MACRO_CALL(DecoderBuffer_Func::ReadBufferAndComputeHash),
             MACRO_CALL(DecoderBuffer_Func::WriteBufferAndComputeHash), (char*)_work_buf, &_param);
-        if (_pkware_status == CMP_NO_ERROR && _param.underflow == FALSE) {
+        if (_pkware_status == CMP_NO_ERROR && !_param.underflow) {
             _param.hash = ~_param.hash;
             *hash = _param.hash;
         } else {

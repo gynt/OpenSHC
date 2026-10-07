@@ -26,18 +26,18 @@ void IO::WriteSkMasters2()
     strcpy(path, DAT_ResourceManager::instance.paths_getDocumentsFolderString(true).c_str());
     strcat(path, s_skmasters2_dat_005aad80);
 
-    FILE* _File = MACRO_CALL(OpenSHC::OS_Func::_fopen)(path, s_wb_005a5510);
+    FILE* _File = MACRO_CALL(OS_Func::_fopen)(path, s_wb_005a5510);
     if (!_File) {
         return;
     }
 
-    MACRO_CALL(OpenSHC::OS_Func::_fwrite)(
+    MACRO_CALL(OS_Func::_fwrite)(
         DAT_SkMasters2Data_Version::ptr, sizeof(DAT_SkMasters2Data_Version::instance), 1, _File);
-    MACRO_CALL(OpenSHC::OS_Func::_fwrite)(
+    MACRO_CALL(OS_Func::_fwrite)(
         DAT_SkMasters2Data_Count::ptr, sizeof(DAT_SkMasters2Data_Count::instance), 1, _File);
-    MACRO_CALL(OpenSHC::OS_Func::_fwrite)(DAT_SkMasters2DataArray::instance,
+    MACRO_CALL(OS_Func::_fwrite)(DAT_SkMasters2DataArray::instance,
         sizeof(DAT_SkMasters2DataArray::instance[0]), DAT_SkMasters2Data_Count::instance, _File);
-    MACRO_CALL(OpenSHC::OS_Func::_fclose)(_File);
+    MACRO_CALL(OS_Func::_fclose)(_File);
 }
 
 }

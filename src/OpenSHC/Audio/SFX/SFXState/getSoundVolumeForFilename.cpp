@@ -10,7 +10,7 @@ namespace Audio {
         int SFXState::getSoundVolumeForFilename(char* soundFileName)
         {
             for (int _runCounter = 0; _runCounter < this->DAT_SoundTotalCount; ++_runCounter) {
-                if (!MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
+                if (!MACRO_CALL(OS_Func::__stricmp)(
                         soundFileName, this->DAT_SoundFileNamePointersArray[_runCounter])) {
                     return this->DAT_SoundVolumeArray[_runCounter];
                 }

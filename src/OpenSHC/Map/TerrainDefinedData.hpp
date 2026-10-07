@@ -59,7 +59,12 @@ namespace Map {
         XYPair field370_0x5cc; // 0x000005CC length: 8
         undefined1 padding_0x5d4[184]; // 0x000005D4 length: 184
         XYPair field555_0x68c; // 0x0000068C length: 8
-        undefined1 padding_0x694[440]; // 0x00000694 length: 440
+        undefined1 padding_0x694[308]; // 0x00000694 length: 308
+        // setConstructionGFXLayerBasedOnPlacementChecks reads this as
+        // `table[shape * 4 + part] - mapOrientation`, wrapped by adding 8 when negative,
+        // so the entries are rotations in eighths. The inner index is 1-based, which is
+        // why there are 33 and not 32 entries.
+        int ConstructionSpriteRotationTable[33]; // 0x000007C8 length: 132
         int field996_0x84c[25]; // 0x0000084C length: 100
         undefined1 padding_0x8b0[4]; // 0x000008B0 length: 4
         int field1001_0x8b4[25]; // 0x000008B4 length: 100
@@ -71,13 +76,13 @@ namespace Map {
         undefined1 padding_0x146c[1280]; // 0x0000146C length: 1280
         XYPair field2290_0x196c[4]; // 0x0000196C length: 32
         XYPair field2291_0x198c[9]; // 0x0000198C length: 72
-        XYPair field2292_0x19d4[16]; // 0x000019D4 length: 128
+        XYPair MacroLayerScanOffsets[16]; // 0x000019D4 length: 128
         int field2293_0x1a54[4][16]; // 0x00001A54 length: 256
         int field2294_0x1b54[4][16]; // 0x00001B54 length: 256
         int field2295_0x1c54[4][16]; // 0x00001C54 length: 256
         byte field2296_0x1d54[4][2]; // 0x00001D54 length: 8
         byte field2297_0x1d5c[4][2]; // 0x00001D5C length: 8
-        UnkBytePair field2298_0x1d64[8]; // 0x00001D64 length: 16
+        UnkBytePair TerrainFlagGraphicLookup[8]; // 0x00001D64 length: 16
         int MapSizes[5]; // 0x00001D74 length: 20
         undefined1 padding_0x1d88[164]; // 0x00001D88 length: 164
         int SomeOrientationOrderArray[8]; // 0x00001E2C length: 32

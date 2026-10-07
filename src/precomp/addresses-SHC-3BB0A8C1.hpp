@@ -66757,6 +66757,8 @@ enum {
     SHC_3BB0A8C1_0x0053F07C = 0x0053F07C,
     // type: /pointer
     SHC_3BB0A8C1_0x0053F084 = 0x0053F084,
+    // type: int
+    SHC_3BB0A8C1_0x0053F088 = 0x0053F088,
     // type: function
     SHC_3BB0A8C1_0x0053F08F = 0x0053F08F,
     // type: /pointer

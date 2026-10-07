@@ -115,16 +115,16 @@ namespace Audio {
                     if (DAT_SpeechDefinedData::instance.currentStreamID == 6) {
                         MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
                             DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.field5_0x41eb04[4].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.field5_0x41eb04[4].field3_0x44]
+                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[4].volumeUnk_0x28
+                                          [DAT_SpeechDefinedData::instance.AmbientSounds[4].variationIndex]
                                       * FLOAT_00b986f8::instance)
                                 / 100.0));
                     }
                     if (DAT_SpeechDefinedData::instance.currentStreamID == 5) {
                         MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
                             DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.field5_0x41eb04[3].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.field5_0x41eb04[3].field3_0x44]
+                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[3].volumeUnk_0x28
+                                          [DAT_SpeechDefinedData::instance.AmbientSounds[3].variationIndex]
                                       * FLOAT_00b986f8::instance)
                                 / 100.0));
                     }
@@ -142,16 +142,16 @@ namespace Audio {
                     if (DAT_SpeechDefinedData::instance.currentStreamID == 6) {
                         MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
                             DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.field5_0x41eb04[4].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.field5_0x41eb04[4].field3_0x44]
+                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[4].volumeUnk_0x28
+                                          [DAT_SpeechDefinedData::instance.AmbientSounds[4].variationIndex]
                                       * FLOAT_00b986f8::instance)
                                 / 100.0));
                     }
                     if (DAT_SpeechDefinedData::instance.currentStreamID == 5) {
                         MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
                             DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.field5_0x41eb04[3].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.field5_0x41eb04[3].field3_0x44]
+                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[3].volumeUnk_0x28
+                                          [DAT_SpeechDefinedData::instance.AmbientSounds[3].variationIndex]
                                       * FLOAT_00b986f8::instance)
                                 / 100.0));
                     }
@@ -182,7 +182,7 @@ namespace Audio {
                 if (DAT_SFXAmbientEventCountersRescaled::instance[iVar9] == 0) {
                     continue;
                 }
-                if (iVar8 == 0) {
+                if (!iVar8) {
                     _prioritySortedList[iVar8].index = iVar9;
                     _prioritySortedList[iVar8].ambientEventCounterRescaled
                         = DAT_SFXAmbientEventCountersRescaled::instance[iVar9];
@@ -243,7 +243,7 @@ namespace Audio {
                 DAT_SpeechDefinedData::instance.field11_0x49d4b8 = 0xffffffff;
                 return;
             }
-            if (iVar8 == 0) {
+            if (!iVar8) {
                 return;
             }
             if (DAT_SpeechDefinedData::instance.currentStreamID == 5
@@ -277,8 +277,8 @@ namespace Audio {
             if (_pick == DAT_SpeechDefinedData::instance.currentStreamID) {
                 return;
             }
-            if (_pick == 4 && DAT_LandscapeState::instance.wind.valueIs2 == 0
-                && DAT_LandscapeState::instance.wind.valueIs1 == 0) {
+            if (_pick == 4 && !DAT_LandscapeState::instance.wind.valueIs2
+                && !DAT_LandscapeState::instance.wind.valueIs1) {
                 return;
             }
             if (DAT_SFXFadeDeltaAccumulator::instance < 300.0 && _pick != 6 && _pick != 5) {
@@ -293,9 +293,9 @@ namespace Audio {
                 && DAT_SpeechDefinedData::instance.currentStreamID != 5) {
                 switch (_pick) {
                 case 4:
-                    if (DAT_LandscapeState::instance.wind.valueIs2 != 0) {
+                    if (DAT_LandscapeState::instance.wind.valueIs2) {
                         MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_WIND_1);
-                    } else if (DAT_LandscapeState::instance.wind.valueIs1 != 0) {
+                    } else if (DAT_LandscapeState::instance.wind.valueIs1) {
                         MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_WIND_0);
                     }
                     DAT_SpeechDefinedData::instance.currentStreamID = 4;

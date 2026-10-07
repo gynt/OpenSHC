@@ -49,7 +49,7 @@ namespace Audio {
                         (eMusicIDs)(DAT_SoundEffectsHelperData1::instance.DAT_RandomVariationCurrentPlayingMusic_02
                             + DE::SHCDE::MUSIC_FLUTE1));
                 }
-                this->mbr_0x3288 = 0;
+                this->lastMusicChangeTime = 0;
                 return;
             }
 
@@ -62,7 +62,7 @@ namespace Audio {
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_MAIN);
                     break;
                 case 1:
-                    if (DAT_SoundEffectsHelperData1::instance.field8_0x3c != 0) {
+                    if (DAT_SoundEffectsHelperData1::instance.field8_0x3c) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_AVG2);
                         break;
                     }
@@ -77,7 +77,7 @@ namespace Audio {
                     break;
                 }
             } else {
-                if (DAT_SoundEffectsHelperData1::instance.field18_0x64 == 0) {
+                if (!DAT_SoundEffectsHelperData1::instance.field18_0x64) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_HAPPY);
                 }
                 if (DAT_SoundEffectsHelperData1::instance.field18_0x64 == 1) {
@@ -92,9 +92,9 @@ namespace Audio {
                     DAT_SoundEffectsHelperData1::instance.field18_0x64 = 0;
                 }
             }
-            this->mbr_0x3288 = 0;
+            this->lastMusicChangeTime = 0;
             ++DAT_SoundEffectsHelperData1::instance.field8_0x3c;
-            this->mbr_0x3288 = 0;
+            this->lastMusicChangeTime = 0;
         }
 
     }

@@ -23,7 +23,7 @@ namespace Audio {
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
                 return;
             }
-            if ((DAT_VictoryMusicVariation::instance == 0 || DAT_VictoryMusicVariation::instance == 2)
+            if ((!DAT_VictoryMusicVariation::instance || DAT_VictoryMusicVariation::instance == 2)
                 && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .campground.id
                         <= 0
@@ -32,16 +32,16 @@ namespace Audio {
                         <= 0)) {
                 DAT_VictoryMusicVariation::instance = 1;
             }
-            if (DAT_VictoryMusicVariation::instance == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, this)(
+            if (!DAT_VictoryMusicVariation::instance) {
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, this)(
                     s_general_victory6_wav_005a4dc0);
             }
             if (DAT_VictoryMusicVariation::instance == 1) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, this)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, this)(
                     s_general_victory7_wav_005a4da8);
             }
             if (DAT_VictoryMusicVariation::instance == 2) {
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, this)(
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, this)(
                     s_general_victory8_wav_005a4d90);
             }
             ++DAT_VictoryMusicVariation::instance;

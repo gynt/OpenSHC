@@ -22,7 +22,7 @@ namespace IO {
                 for (int _counter = 0; _counter < _lengthUnk; ++_counter) {
                     _byteValueSumUnk += _buf[_counter];
                 }
-            } while (_lengthUnk != 0);
+            } while (_lengthUnk);
 
             MACRO_CALL(OS_Func::_ucrt_close)(_fileHandle);
         }

@@ -12,7 +12,7 @@ namespace Random {
         this->index2 = 0;
         this->index1 = 0;
         for (int i = 0; i < 20000; i++) {
-            this->randomNumbers[i] = MACRO_CALL(OpenSHC::OS_Func::_rand)();
+            this->randomNumbers[i] = MACRO_CALL(OS_Func::_rand)();
         }
 
         this->currentNumber2 = this->randomNumbers[this->index2];

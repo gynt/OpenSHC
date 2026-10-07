@@ -78,7 +78,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_CATAPULT:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(1);
                     return;
                 }
@@ -93,7 +93,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_TREBUCHET:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(2);
                     return;
                 }
@@ -107,7 +107,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_MANGONEL:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(0);
                     return;
                 }
@@ -121,7 +121,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_TOWER:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(3);
                     return;
                 }
@@ -132,7 +132,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_BATTERINGRAM:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(4);
                     return;
                 }
@@ -147,7 +147,7 @@ namespace Audio {
                 _soundSet = 10;
                 break;
             case Map::Units::UT_S_SHIELD:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(5);
                     return;
                 }
@@ -159,7 +159,7 @@ namespace Audio {
                 break;
             case Map::Units::UT_S_BALLISTA:
             case Map::Units::UT_S_FBALLISTA:
-                if (actionID == 0) {
+                if (!actionID) {
                     MACRO_CALL_MEMBER(SFXState_Func::playUnitSpeechEffect, this)(6);
                     return;
                 }
@@ -177,23 +177,22 @@ namespace Audio {
             }
 
             if (actionID < 0 || _soundSet >= 18 || actionID >= 42
-                || !DAT_SpeechDefinedData::instance.field6_0x41edd4[actionID].numberOfVariations) {
+                || !DAT_SpeechDefinedData::instance.UnitSpeech[actionID].numberOfVariations) {
                 return;
             }
 
-            int numberOfVariations = DAT_SpeechDefinedData::instance.field6_0x41edd4[actionID].numberOfVariations;
+            int numberOfVariations = DAT_SpeechDefinedData::instance.UnitSpeech[actionID].numberOfVariations;
             if (1 < numberOfVariations) {
                 /* Calculate action speech variation. */
-                variationIndex
-                    = DAT_SpeechDefinedData::instance.field6_0x41edd4[actionID].variationCounter[_soundSet]++;
-                if (DAT_SpeechDefinedData::instance.field6_0x41edd4[actionID].variationCounter[_soundSet]
+                variationIndex = DAT_SpeechDefinedData::instance.UnitSpeech[actionID].variationCounter[_soundSet]++;
+                if (DAT_SpeechDefinedData::instance.UnitSpeech[actionID].variationCounter[_soundSet]
                     >= numberOfVariations) {
-                    DAT_SpeechDefinedData::instance.field6_0x41edd4[actionID].variationCounter[_soundSet] = 0;
+                    DAT_SpeechDefinedData::instance.UnitSpeech[actionID].variationCounter[_soundSet] = 0;
                 }
             }
             char _filename[64];
             MACRO_CALL(OS_Func::_sprintf)(_filename, s_fx_speech_s_005a4d68,
-                DAT_SpeechDefinedData::instance.field6_0x41edd4[variationIndex + actionID].filenames[_soundSet]);
+                DAT_SpeechDefinedData::instance.UnitSpeech[variationIndex + actionID].filenames[_soundSet]);
             if (MACRO_CALL(OS_Func::__stricmp)(_filename, DAT_LastSpeechSFXFilename::instance)
                 || (!MACRO_CALL_MEMBER(MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
                         MSS::enums::SND_STR_SPEECH_1)

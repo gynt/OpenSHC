@@ -1,0 +1,10 @@
+#include "../Meta.func.hpp"
+
+#include "OpenSHC/Global.func.hpp"
+
+namespace OpenSHC {
+
+// FUNCTION: STRONGHOLDCRUSADER 0x0059D4D0
+void Meta::Destructor_0059d4d0() { MACRO_CALL(Global_Func::DoNothing)(); }
+
+}

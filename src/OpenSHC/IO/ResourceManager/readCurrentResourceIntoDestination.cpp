@@ -14,7 +14,7 @@ namespace IO {
             return FALSE;
         }
         this->loadPositionInCurrentResource = MACRO_CALL(OS_Func::_ucrt_read)(this->fileHandle, destination, size);
-        MACRO_CALL(OpenSHC::OS_Func::_ucrt_close)(this->fileHandle);
+        MACRO_CALL(OS_Func::_ucrt_close)(this->fileHandle);
         return TRUE;
     }
 

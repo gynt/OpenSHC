@@ -59,8 +59,11 @@ namespace Input {
         undefined4 hitboxXEnd; // 0x00000088 length: 4
         undefined4 hitboxYEnd; // 0x0000008C length: 4
         int selectionBoxMode; // 0x00000090 length: 4
-        undefined4 field31_0x94; // 0x00000094 length: 4
-        undefined1 padding_0x98[4]; // 0x00000098 length: 4
+        // beginPointSelectionBox and extendSelectionBoxToMouse set this, drawMouseBasedBox
+        // reads it and resetMouseCursorState clears it, so it is the drag-selection box's
+        // state; the unit-selection handler saves it alongside before starting an action.
+        undefined4 selectionBoxState; // 0x00000094 length: 4
+        int savedSelectionBoxState; // 0x00000098 length: 4
         int previewEnabled; // 0x0000009C length: 4
         MouseXYUUStruct mouseXY[10]; // 0x000000A0 length: 160
         int mouseXY8[10]; // 0x00000140 length: 40
