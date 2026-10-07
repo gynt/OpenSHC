@@ -23,7 +23,7 @@ namespace UI {
             }
             if (iVar1 != -1) {
                 DAT_ARRAY_00ec0348::instance[iVar1].isValid = state;
-                DAT_ARRAY_00ec0348::instance[iVar1].flag = 0;
+                DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[iVar1].xSpace = xSpace;
                 DAT_ARRAY_00ec0348::instance[iVar1].field11_0x2c = param_3;
                 DAT_ARRAY_00ec0348::instance[iVar1].ySpace = ySpace;
@@ -33,11 +33,11 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].field6_0x18 = param_8;
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_9;
                 if (param_8 == 1) {
-                    DAT_ARRAY_00ec0348::instance[iVar1].flag = 0x41f80000;
+                    DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 31.0f;
                     return;
                 }
                 if (param_8 == 2) {
-                    DAT_ARRAY_00ec0348::instance[iVar1].flag = 0x3f800000;
+                    DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 1.0f;
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace UI {
             }
             if (_index != -1) {
                 DAT_ARRAY_00ec0348::instance[_index].xSpace = xSpace;
-                DAT_ARRAY_00ec0348::instance[_index].flag = 0;
+                DAT_ARRAY_00ec0348::instance[_index].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[_index].field8_0x20 = param_3;
                 DAT_ARRAY_00ec0348::instance[_index].ySpace = ySpace;
                 DAT_ARRAY_00ec0348::instance[_index].someX = someX;
@@ -34,11 +34,11 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[_index].field6_0x18 = param_7;
                 DAT_ARRAY_00ec0348::instance[_index].field7_0x1c = 7;
                 if (param_7 == 1) {
-                    DAT_ARRAY_00ec0348::instance[_index].flag = 0x41f80000;
+                    DAT_ARRAY_00ec0348::instance[_index].blendStrength = 31.0f;
                     return;
                 }
                 if (param_7 == 2) {
-                    DAT_ARRAY_00ec0348::instance[_index].flag = 0x3f800000;
+                    DAT_ARRAY_00ec0348::instance[_index].blendStrength = 1.0f;
                 }
             }
         }

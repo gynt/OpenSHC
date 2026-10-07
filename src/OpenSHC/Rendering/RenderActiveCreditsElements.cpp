@@ -83,15 +83,15 @@ void Rendering::RenderActiveCreditsElements()
                     if (!piVar5->field6_0x18) {
                         MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(iVar3, piVar5->ySpace, piVar5->someX);
                     } else {
-                        iVar4 = (long)((double)(float)piVar5->flag);
+                        iVar4 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(iVar3, piVar5->ySpace, piVar5->someX, iVar4);
                         fVar1 = FLOAT_Between1And5::instance;
                         if ((piVar5->field6_0x18 != 1)
-                            || (fVar2 = (float)piVar5->flag
+                            || (fVar2 = piVar5->blendStrength
                                     - (FLOAT_Between1And5::instance * 0.5 + FLOAT_Between1And5::instance * 0.5),
-                                piVar5->flag = (int)fVar2, 1.0 <= fVar2)) {
+                                piVar5->blendStrength = fVar2, 1.0 <= fVar2)) {
                             if ((piVar5->field6_0x18 == 2)
-                                && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + (float)piVar5->flag, piVar5->flag = (int)fVar1,
+                                && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
                                     31.0 < fVar1)) {
                                 piVar5.isValid = 0;
                             }
@@ -111,7 +111,7 @@ void Rendering::RenderActiveCreditsElements()
                             piVar5->someX + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->someY,
                             piVar5->field5_0x14);
                     } else {
-                        iVar3 = (long)((double)(float)piVar5->flag);
+                        iVar3 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL_MEMBER(
                             UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithCustomBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
@@ -121,10 +121,10 @@ void Rendering::RenderActiveCreditsElements()
                     }
                     fVar1 = FLOAT_Between1And5::instance;
                     if ((piVar5->field6_0x18 != 1)
-                        || (fVar2 = (float)piVar5->flag - FLOAT_Between1And5::instance * 0.5, piVar5->flag = (int)fVar2,
+                        || (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5, piVar5->blendStrength = fVar2,
                             1.0 <= fVar2)) {
                         if ((piVar5->field6_0x18 == 2)
-                            && (fVar1 = fVar1 * 0.5 + (float)piVar5->flag, piVar5->flag = (int)fVar1, 31.0 < fVar1)) {
+                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
                             piVar5.isValid = 0;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = Rendering::Enums::RT_MAP_GAME;
@@ -146,17 +146,17 @@ void Rendering::RenderActiveCreditsElements()
                             piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)));
                     } else {
-                        iVar3 = (long)((double)(float)piVar5->flag);
+                        iVar3 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelperWithBlending)(piVar5->xSpace,
                             piVar5->ySpace, piVar5->someX, piVar5->someY, color, piVar5->field8_0x20,
                             (BOOLEnum)((int)(piVar5->field9_0x24)), iVar3);
                         fVar1 = FLOAT_Between1And5::instance;
                         if ((piVar5->field6_0x18 == 1)
-                            && (fVar2 = (float)piVar5->flag - FLOAT_Between1And5::instance * 0.5,
-                                piVar5->flag = (int)fVar2, fVar2 < 1.0))
+                            && (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5,
+                                piVar5->blendStrength = fVar2, fVar2 < 1.0))
                             goto LAB_004e1692;
                         if ((piVar5->field6_0x18 == 2)
-                            && (fVar1 = fVar1 * 0.5 + (float)piVar5->flag, piVar5->flag = (int)fVar1, 31.0 < fVar1)) {
+                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
                             piVar5.isValid = 0;
                         }
                     }

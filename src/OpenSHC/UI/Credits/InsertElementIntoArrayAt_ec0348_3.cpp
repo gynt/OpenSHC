@@ -23,7 +23,7 @@ namespace UI {
             }
             if (iVar1 != -1) {
                 DAT_ARRAY_00ec0348::instance[iVar1].isValid = 3;
-                DAT_ARRAY_00ec0348::instance[iVar1].flag = 0;
+                DAT_ARRAY_00ec0348::instance[iVar1].blendStrength = 0.0f;
                 DAT_ARRAY_00ec0348::instance[iVar1].xSpace = param_2;
                 DAT_ARRAY_00ec0348::instance[iVar1].ySpace = param_3;
                 DAT_ARRAY_00ec0348::instance[iVar1].someX = param_4;

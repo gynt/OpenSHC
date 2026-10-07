@@ -28,7 +28,7 @@ namespace UI {
             int field9_0x24; // 0x00000024 length: 4
             int field10_0x28; // 0x00000028 length: 4
             int field11_0x2c; // 0x0000002C length: 4
-            int flag; // 0x00000030 length: 4
+            float blendStrength; // 0x00000030 length: 4
 
         } CreditsRelatedStructure;
 #pragma pack(pop)

@@ -361,7 +361,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 do {
                     if ((piVar6.isValid == 4)
                         && (piVar6->xSpace == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)) {
-                        piVar6->flag = 0x3f800000;
+                        piVar6->blendStrength = 1.0f;
                         piVar6->field6_0x18 = 2;
                     }
                     piVar6 = piVar6 + 0xd;
