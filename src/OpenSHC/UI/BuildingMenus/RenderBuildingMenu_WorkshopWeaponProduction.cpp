@@ -41,13 +41,12 @@ namespace UI {
         int iVar8;
         int iVar9;
         iVar4 = DAT_BuildingsState::instance.menuSelectedBuildingID;
-        if ((((DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].buildingType
-                  == OpenSHC::Map::Buildings::BT_FLETCHER)
-                 && (iVar1
-                     = (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
-                         .workerID[0],
-                     iVar1 != 0))
-                && (DAT_UnitsState::instance.units[iVar1].state.generic == OpenSHC::Map::Units::States::US_STAND_UPUnk))
+        if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].buildingType
+                == OpenSHC::Map::Buildings::BT_FLETCHER
+            && (iVar1 = (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
+                    .workerID[0],
+                iVar1 != 0)
+            && DAT_UnitsState::instance.units[iVar1].state.generic == OpenSHC::Map::Units::States::US_STAND_UPUnk
             && (BVar2 = MACRO_CALL(OpenSHC::Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)) {
             /*
               added by script: "Not producing - No Wood"
@@ -55,23 +54,21 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_IN_BLACKSMITHS_WORKSHOP, 0xb, DAT_MenuHandlerState::instance.x + 0xaf,
                 DAT_MenuHandlerState::instance.y + 0x1f9, OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType
-                        == OpenSHC::Map::Buildings::BT_POLETURNER)
-                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0))
-            && ((DAT_UnitsState::instance.units[iVar1].state.generic == OpenSHC::Map::Units::States::US_IDLEUnk
-                && (BVar2 = MACRO_CALL(OpenSHC::Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {
+        } else if (DAT_BuildingsState::instance.buildings[iVar4].buildingType == OpenSHC::Map::Buildings::BT_POLETURNER
+            && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0)
+            && DAT_UnitsState::instance.units[iVar1].state.generic == OpenSHC::Map::Units::States::US_IDLEUnk
+            && (BVar2 = MACRO_CALL(OpenSHC::Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)) {
             /*
               added by script: "Not producing - No Wood"
              */
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_IN_BLACKSMITHS_WORKSHOP, 0xb, DAT_MenuHandlerState::instance.x + 0xaf,
                 DAT_MenuHandlerState::instance.y + 0x1f9, OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-        } else if (((DAT_BuildingsState::instance.buildings[iVar4].buildingType
-                        == OpenSHC::Map::Buildings::BT_BLACKSMITH)
-                       && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0))
-            && ((DAT_UnitsState::instance.units[iVar1].state.generic
-                    == (OpenSHC::Map::Units::States::US_STAND_UPUnk | OpenSHC::Map::Units::States::US_IDLEUnk)
-                && (BVar2 = MACRO_CALL(OpenSHC::Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)))) {
+        } else if (DAT_BuildingsState::instance.buildings[iVar4].buildingType == OpenSHC::Map::Buildings::BT_BLACKSMITH
+            && (iVar1 = (int)DAT_BuildingsState::instance.buildings[iVar4].workerID[0], iVar1 != 0)
+            && DAT_UnitsState::instance.units[iVar1].state.generic
+                == (OpenSHC::Map::Units::States::US_STAND_UPUnk | OpenSHC::Map::Units::States::US_IDLEUnk)
+            && (BVar2 = MACRO_CALL(OpenSHC::Map::Units_Func::CheckUnitProductionPaused)(iVar1), BVar2 == FALSE)) {
             /*
               added by script: "Not producing - No Iron"
              */
