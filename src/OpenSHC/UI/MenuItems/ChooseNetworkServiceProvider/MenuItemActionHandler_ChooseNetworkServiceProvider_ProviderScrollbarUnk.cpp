@@ -37,6 +37,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
                         = DAT_GameSynchronyState::instance.scrollBarItemOffset + -1;
                     *currentValue = DAT_GameSynchronyState::instance.scrollBarItemOffset;
+                    return;
                 }
                 break;
             case 6:
