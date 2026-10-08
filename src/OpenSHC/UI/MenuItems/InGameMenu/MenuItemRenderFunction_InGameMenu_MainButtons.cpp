@@ -159,6 +159,7 @@ namespace UI {
                 if (((param_1 < -9) && (param_1 != -0x5a)) && (param_1 != -0x5b)) {
                     if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR) {
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                     if (-100 < param_1) {
                         iVar1 = -9 - param_1;
@@ -265,6 +266,7 @@ namespace UI {
                             DAT_CurrentButtonPictureInGm::instance = iVar3;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                            return;
                         }
                         MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -302,6 +304,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonX::instance + -2)),
                     (int)((int)(DAT_ButtonH::instance + -1 + DAT_ButtonY::instance)),
                     (ushort)((int)(COL_BLACK::instance.shortValue)));
+                return;
             }
             if (param_1 != 0x47) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
