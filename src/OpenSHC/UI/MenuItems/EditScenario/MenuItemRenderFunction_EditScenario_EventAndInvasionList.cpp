@@ -107,7 +107,9 @@ namespace UI {
                 if (DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.invasion.repeatMonths
-                    == 0) {}
+                    == 0) {
+                        return;
+                    }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
@@ -129,6 +131,7 @@ namespace UI {
                 iVar4 = iVar3 + 0x80;
                 if (0x9b < iVar4) {
                     iVar4 = iVar3 + 0x95;
+                    return;
                 }
                 blendStrength = 0;
                 BVar9 = FALSE;
@@ -144,11 +147,15 @@ namespace UI {
                 if (DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.scenario.repeat
-                    == 0) {}
+                    == 0) {
+                        return;
+                    }
                 if (DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.scenario.repeatMonths
-                    == 1) {}
+                    == 1) {
+                        return;
+                    }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(",
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
