@@ -70,6 +70,7 @@ namespace UI {
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
                         "Genie_26.wav");
+                    return;
                 }
                 if (_recruitableState != OpenSHC::Map::Units::ERS_UNABLE_MISSING_PEASANTS) {
                     if ((int)_unitCost
@@ -105,7 +106,9 @@ namespace UI {
                     goto LAB_00467488;
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 2)
                     goto LAB_004674a0;
-                if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason != 3) {}
+                if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason != 3) {
+                    return;
+                }
                 goto LAB_00467424;
             }
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = barrackUnitIdUnk;
