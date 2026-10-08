@@ -52,6 +52,7 @@ namespace UI {
                 *(undefined4*)((int)DAT_GameSynchronyState::ptr + param_1 * -4 + 0x109264) = 1;
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
+                return;
             }
             switch (param_1) {
             case 0x1f:
