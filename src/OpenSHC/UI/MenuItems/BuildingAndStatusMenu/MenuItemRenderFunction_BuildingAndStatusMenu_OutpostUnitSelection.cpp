@@ -72,6 +72,7 @@ namespace UI {
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 backgroundColor = 0;
                 uVar1 = 0xccfaff;
+                return;
             }
             blendStrength = 0;
             keepOffsetX = FALSE;
