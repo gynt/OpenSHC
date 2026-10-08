@@ -63,7 +63,7 @@ namespace UI {
             }
             if (param_1 < 0x15) {
                 DAT_RequestedGoodsByWhoArray::instance[0] = param_1;
-                if (3 < param_1) {
+                if (4 <= param_1) {
                     DAT_RequestedGoodsByWhoArray::instance[0] = param_1 + 1;
                 }
                 if (4 < param_1) {
