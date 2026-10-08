@@ -44,6 +44,7 @@ namespace UI {
             if (0x14b < (int)param_1) {
                 DAT_GameSynchronyState::instance.field299_0x109e7c = 1;
                 DAT_TileMapState::instance.currentMapperCommand = param_1;
+                return;
             }
             if (param_1 == OpenSHC::Commands::M_MAPPER_AREA_BACK) {
                 DAT_TileMapState::instance.editorActiveBrush = DAT_TileMapState::instance.editorActiveBrush + -1;
@@ -69,6 +70,7 @@ namespace UI {
             LAB_004315c1:
                 DAT_TileMapState::instance.unknownBrushRelated = DAT_TileMapState::instance.editorActiveBrush >> 1;
                 DAT_StopHandlingMenuItems::instance = 0;
+                return;
             }
             switch (param_1) {
             case OpenSHC::Commands::M_MAPPER_AREA:
@@ -151,6 +153,7 @@ namespace UI {
                 DAT_TileMapState::instance.rockOrientation = 4;
                 if (DAT_TileMapState::instance.editorActiveBrush == 2) {
                     DAT_TileMapState::instance.editorActiveBrush = 3;
+                    return;
                 }
                 goto LAB_00431642;
             case OpenSHC::Commands::M_MAPPER_BIGROCK4:
