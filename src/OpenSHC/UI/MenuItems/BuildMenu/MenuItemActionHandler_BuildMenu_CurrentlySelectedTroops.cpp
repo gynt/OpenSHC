@@ -31,6 +31,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::filterUnitSelectionForUnitType,
                     DAT_UnitsState::ptr)(_unitType);
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::recountUnitsInSelection, DAT_UnitsState::ptr)();
+                return;
             }
             unitType = DAT_RenderingDefinedData::instance
                            .field1030_0x54a5c[DAT_UnitsState::instance.selectionSlots[slotID + -0x14]];
