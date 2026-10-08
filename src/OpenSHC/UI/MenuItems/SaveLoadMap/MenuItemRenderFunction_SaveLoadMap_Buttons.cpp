@@ -98,6 +98,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 color = 0xccfaff;
+                return;
             }
         LAB_00492b46:
             blendStrength = 0;
