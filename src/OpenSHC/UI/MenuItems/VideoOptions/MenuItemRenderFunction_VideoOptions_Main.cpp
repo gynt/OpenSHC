@@ -69,12 +69,16 @@ namespace UI {
                     } else if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting == 1) {
                         param_1 = 0x15;
                     } else {
-                        if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting != 2) {}
+                        if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting != 2) {
+                            return;
+                        }
                         param_1 = 0x13;
                     }
                 } else {
                     if (param_1 != -2) {
-                        if (param_1 != -1) {}
+                        if (param_1 != -1) {
+                            return;
+                        }
                         switch (DAT_MenuTextInputState::instance.menuCurrentlySelectedResolution) {
                         case 1:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
