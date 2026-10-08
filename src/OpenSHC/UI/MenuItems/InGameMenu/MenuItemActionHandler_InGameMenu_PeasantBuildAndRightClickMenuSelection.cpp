@@ -72,7 +72,9 @@ namespace UI {
             BOOLEnum BVar3;
             dword elementState;
             if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.saveRelated != 0) {
+                return;
+            }
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (DAT_00b960f8::instance != 0x42)) {
@@ -218,7 +220,9 @@ namespace UI {
                 } else if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
                     if ((DAT_MouseState::instance.leftClickStart == 0)
                         && (DAT_ViewportRenderState::instance.viewportState.field4_0x10
-                            == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
+                            == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {
+                                return;
+                            }
                     DAT_ViewportRenderState::instance.viewportState.field4_0x10
                         = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                     MACRO_CALL_MEMBER(
