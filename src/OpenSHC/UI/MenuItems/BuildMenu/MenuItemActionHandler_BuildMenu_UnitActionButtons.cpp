@@ -108,6 +108,7 @@ namespace UI {
                     DAT_UnitsState::instance.unitControlsRelated = 0x14;
                     DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
                     DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                    return;
                 }
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::selectionContainsTunnelersOnly, DAT_UnitsState::ptr)();
@@ -115,6 +116,7 @@ namespace UI {
                     MACRO_CALL(
                         OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_ToolbarButtonPressed)(
                         OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION);
+                    return;
                 }
                 UVar3 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
