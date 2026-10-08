@@ -59,6 +59,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
@@ -81,6 +82,7 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1),
                         xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
