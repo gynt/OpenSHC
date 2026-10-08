@@ -42,6 +42,7 @@ namespace UI {
                 if (param_1 == 7) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
                 if (param_1 < 0) {
                     if (*(int*)((int)DAT_GameCore::ptr + param_1 * -4 + 0x1534) == 0) {
@@ -49,6 +50,7 @@ namespace UI {
                     }
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
                 if ((((param_1 != 0xe) && (param_1 != 0xf)) && (param_1 != 0x10))
                     && ((param_1 != 0x11 && (param_1 != 0x12)))) {
@@ -71,6 +73,7 @@ namespace UI {
                         color = 0xc2f0eb;
                     } else {
                         color = 0xccfaff;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
