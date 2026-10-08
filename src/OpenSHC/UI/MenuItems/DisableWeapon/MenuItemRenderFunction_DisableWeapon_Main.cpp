@@ -55,22 +55,34 @@ namespace UI {
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 switch (param_1) {
                 case 0:
-                    if (DAT_MapPropertiesState::instance.SEC_XbowProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_XbowProducible_save != 0) {
+                        return;
+                    }
                     goto LAB_004bb841;
                 case 1:
-                    if (DAT_MapPropertiesState::instance.SEC_PikeProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_PikeProducible_save != 0) {
+                        return;
+                    }
                     break;
                 case 2:
-                    if (DAT_MapPropertiesState::instance.SEC_SwordProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_SwordProducible_save != 0) {
+                        return;
+                    }
                     break;
                 case 3:
-                    if (DAT_MapPropertiesState::instance.SEC_BowProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_BowProducible_save != 0) {
+                        return;
+                    }
                     break;
                 case 4:
-                    if (DAT_MapPropertiesState::instance.SEC_SpearProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_SpearProducible_save != 0) {
+                        return;
+                    }
                     break;
                 case 5:
-                    if (DAT_MapPropertiesState::instance.SEC_MaceProducible_save != 0) {}
+                    if (DAT_MapPropertiesState::instance.SEC_MaceProducible_save != 0) {
+                        return;
+                    }
                     break;
                 default:
                     if (param_1 == 0)
