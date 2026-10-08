@@ -29,6 +29,7 @@ namespace UI {
                 *minValue = 0x14;
                 *maxValue = 0x5a;
                 *currentValue = DAT_GameSynchronyState::instance.skirmishGameSpeedLevel;
+                return;
             }
             switch (param_2) {
             case 1:
