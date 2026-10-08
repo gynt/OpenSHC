@@ -43,10 +43,11 @@ namespace UI {
                     return;
                 case 6:
                     iVar1 = DAT_00b95b74::instance + -0xe7;
-                    if (((int)DAT_00b960f4::instance < iVar1)
-                        && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe,
-                               iVar1 < (int)DAT_00b960f4::instance)) {
-                        DAT_00b960f4::instance = iVar1;
+                    if ((int)DAT_00b960f4::instance < iVar1) {
+                        DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe;
+                        if ((int)DAT_00b960f4::instance > iVar1) {
+                            DAT_00b960f4::instance = iVar1;
+                        }
                     }
                     *currentValue = DAT_00b960f4::instance;
                     break;
