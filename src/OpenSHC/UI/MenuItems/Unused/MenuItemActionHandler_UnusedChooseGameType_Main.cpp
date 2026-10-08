@@ -24,7 +24,9 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004305D0
         void Unused::MenuItemActionHandler_UnusedChooseGameType_Main(int param_1, ...)
         {
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
+            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
+                return;
+            }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 switch (param_1) {
                 case 7:
@@ -43,6 +45,7 @@ namespace UI {
                     break;
                 case 0x21:
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_JUST_BUILD;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
