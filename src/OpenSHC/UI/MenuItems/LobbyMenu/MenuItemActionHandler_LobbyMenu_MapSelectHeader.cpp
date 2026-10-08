@@ -75,6 +75,7 @@ namespace UI {
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
                     DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    return;
                 }
                 iVar1 = param_1;
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
@@ -207,6 +208,7 @@ namespace UI {
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
+                                return;
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar1);
@@ -218,6 +220,7 @@ namespace UI {
                 INT_00b95ab8::instance = 1;
                 MACRO_CALL(OpenSHC::UI::MenuItems::LobbyMenu_Func::MenuItemActionHandler_LobbyMenu_MapSelectTable)(
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
+                return;
             }
             iVar8 = 0;
             if (0 < iVar2) {
