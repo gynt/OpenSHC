@@ -28,7 +28,9 @@ namespace UI {
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
             int iVar1;
-            if ((DAT_00b960dc::instance != 0) && (param_2 != 1)) {}
+            if ((DAT_00b960dc::instance != 0) && (param_2 != 1)) {
+                return;
+            }
             switch (param_2) {
             case 1:
                 *minValue = 0;
