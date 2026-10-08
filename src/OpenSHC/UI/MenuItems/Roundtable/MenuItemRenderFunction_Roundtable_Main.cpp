@@ -105,6 +105,7 @@ namespace UI {
                             DAT_00df423c::instance = 0;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                            return;
                         }
                         iVar3 = (int)(char)
                                     DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance];
@@ -219,6 +220,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                     DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                     (int)((int)(DAT_ButtonX::instance + 0x47)), (int)((int)(DAT_ButtonY::instance + 0x47)));
+                return;
             }
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 if (DAT_00df423c::instance == 0) {
@@ -236,6 +238,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                     (int)((int)((char)bVar1 * 2 + 0x1ed)), (int)((int)(DAT_ButtonX::instance + -10)),
                     (int)((int)(DAT_ButtonY::instance + -8)));
+                return;
             }
             iVar4 = 0;
             BVar6 = FALSE;
@@ -255,6 +258,7 @@ namespace UI {
                     OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                     textAddress, iVar5, iVar2, alignment, foregroundColor, backgroundColor, fontSize, BVar6, iVar4);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.DAT_PlayerNames[iVar3], (int)((int)(DAT_ButtonX::instance + 0x20)),
