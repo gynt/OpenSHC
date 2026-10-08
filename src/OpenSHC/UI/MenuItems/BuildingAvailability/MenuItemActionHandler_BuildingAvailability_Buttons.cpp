@@ -55,6 +55,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DISABLE_EURO_TROOPS, FALSE);
                 }
+                return;
             }
         LAB_004bb359:
             if (param_1 == -2) {
