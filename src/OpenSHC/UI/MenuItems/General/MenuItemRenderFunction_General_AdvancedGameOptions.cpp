@@ -67,15 +67,25 @@ namespace UI {
                                  && ((param_1 != 0x6d && (param_1 != 0x52))))
                             && (param_1 != 0x5e)))))) {}
             } else {
-                if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {}
+                if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
+                    return;
+                }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {}
+                    == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
+                        return;
+                    }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {}
+                    == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                        return;
+                    }
             }
             if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                if (param_1 == 0x5d) {}
-                if (param_1 == 0x1f) {}
+                if (param_1 == 0x5d) {
+                    return;
+                }
+                if (param_1 == 0x1f) {
+                    return;
+                }
             }
             if ((param_1 == 0x67)
                 && (DAT_ButtonUnknownZero::instance = 0,
@@ -86,7 +96,9 @@ namespace UI {
                 if (param_1 == 0x67) {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
-                if (param_1 == 0x5d) {}
+                if (param_1 == 0x5d) {
+                    return;
+                }
             }
             if (param_1 == -1) {
                 DAT_ButtonUnknownZero::instance = 1;
@@ -314,7 +326,9 @@ namespace UI {
                                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0,
                                     0x12, FALSE, ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                             }
-                            if (DAT_GameSynchronyState::instance.skirmishNoRushSetting != 5) {}
+                            if (DAT_GameSynchronyState::instance.skirmishNoRushSetting != 5) {
+                                return;
+                            }
                             iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             /*
                               "1 Hour"
@@ -378,7 +392,9 @@ namespace UI {
                                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0,
                                     0x12, FALSE, ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                             }
-                            if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes != 0x14) {}
+                            if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes != 0x14) {
+                                return;
+                            }
                             iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x62,
@@ -386,7 +402,9 @@ namespace UI {
                                 (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12,
                                 FALSE, ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                         }
-                        if (param_1 != 100) {}
+                        if (param_1 != 100) {
+                            return;
+                        }
                         iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
                         /*
