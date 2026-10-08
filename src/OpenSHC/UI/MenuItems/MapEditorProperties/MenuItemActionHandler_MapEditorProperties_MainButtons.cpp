@@ -195,29 +195,29 @@ namespace UI {
                         }
                         MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
                             DAT_TroopValueState::ptr)(DAT_TroopValueState::instance.attackInfo.inv_count, 1);
-                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field0_0x0;
+                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[0];
                         DAT_TroopValueState::instance.attackInfo
                             .attackWavePlayerIDArray[DAT_TroopValueState::instance.attackInfo.inv_count] = 2;
-                        cVar4 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field1_0x4;
+                        cVar4 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[1];
                         pabVar1 = DAT_TroopValueState::instance.attackInfo.someSinglePlayerScore
                             + DAT_TroopValueState::instance.attackInfo.inv_count;
                         (*pabVar1)[0] = (*pabVar1)[0] + cVar3;
-                        cVar5 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field3_0xc;
+                        cVar5 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[3];
                         pbVar2 = DAT_TroopValueState::instance.attackInfo
                                      .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                             + 1;
                         *pbVar2 = *pbVar2 + cVar4;
-                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field2_0x8;
+                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[2];
                         pbVar2 = DAT_TroopValueState::instance.attackInfo
                                      .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                             + 2;
                         *pbVar2 = *pbVar2 + cVar5;
-                        cVar4 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field4_0x10;
+                        cVar4 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[4];
                         pbVar2 = DAT_TroopValueState::instance.attackInfo
                                      .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                             + 3;
                         *pbVar2 = *pbVar2 + cVar3;
-                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.field5_0x14;
+                        cVar3 = (char)DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[5];
                         pbVar2 = DAT_TroopValueState::instance.attackInfo
                                      .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                             + 4;

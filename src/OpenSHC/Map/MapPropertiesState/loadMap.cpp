@@ -58,7 +58,7 @@ namespace Map {
         int iVar6;
         int* piVar7;
         SiegeUnitCounts* pSVar8;
-        InGameEventExtra* pIVar9;
+        int* pIVar9;
         int local_34;
         int local_30;
         int local_2c;
@@ -158,10 +158,10 @@ namespace Map {
         } else if (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1) {
             MACRO_CALL_MEMBER(Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
         }
-        pIVar9 = this->SEC_EventsExtra;
+        pIVar9 = this->SEC_EventsExtra[0].conditionIsTrue;
         for (iVar6 = 8000; iVar6 != 0; iVar6 = iVar6 + -1) {
-            pIVar9->conditionOneIsTrue = 0;
-            pIVar9 = (InGameEventExtra*)&pIVar9->conditionTwoIsTrue;
+            *pIVar9 = 0;
+            pIVar9 = pIVar9 + 1;
         }
         DAT_GameState::instance.mapAndTime.month = this->SEC_StartingMonth;
         DAT_GameState::instance.mapAndTime.year = this->SEC_StartingYear;

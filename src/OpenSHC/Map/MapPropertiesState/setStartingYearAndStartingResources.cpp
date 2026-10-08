@@ -98,12 +98,12 @@ namespace Map {
         DAT_MapPropertiesState::instance.SEC_SiegeInformation.fireBallistas = 0;
         DAT_MapPropertiesState::instance.SEC_SiegeInformation.field18_0x48 = 0;
         DAT_MapPropertiesState::instance.SEC_SiegeInformation.field19_0x4c = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field0_0x0 = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field1_0x4 = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field2_0x8 = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field3_0xc = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field4_0x10 = 0;
-        DAT_MapPropertiesState::instance.SEC_Section1067.field5_0x14 = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[0] = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[1] = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[2] = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[3] = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[4] = 0;
+        DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[5] = 0;
         DAT_MapPropertiesState::instance.SEC_StartingPopularity = 100;
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);

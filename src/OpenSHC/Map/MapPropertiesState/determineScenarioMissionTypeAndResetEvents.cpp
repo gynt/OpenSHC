@@ -25,8 +25,8 @@ namespace Map {
         byte bVar3;
         Unit* psVar5;
         Unit* psVar4;
-        SiegeUnitCounts* pSVar4;
-        SiegeGameModeRelatedSection* pSVar5;
+        int* piVar4;
+        int* piVar5;
         int iVar6;
         bVar2 = false;
         bVar3 = 0;
@@ -49,22 +49,22 @@ namespace Map {
         } while ((int)psVar5 < 0x1651422);
         if (this->SEC_U3_MapType2_1 == Map::MT_SIEGE) {
             iVar6 = 0;
-            pSVar4 = &this->SEC_SiegeInformation;
+            piVar4 = &this->SEC_SiegeInformation.archers;
             do {
-                if (pSVar4->archers) {
+                if (*piVar4) {
                     bVar2 = true;
                     break;
                 }
                 iVar6 = iVar6 + 1;
-                pSVar4 = (SiegeUnitCounts*)&pSVar4->crossbowmen;
+                piVar4 = piVar4 + 1;
             } while (iVar6 < 0x14);
             iVar6 = 0;
-            pSVar5 = &this->SEC_Section1067;
+            piVar5 = this->SEC_Section1067.siegeEngineCounts;
             do {
-                if (pSVar5->field0_0x0)
+                if (*piVar5)
                     goto LAB_004b7a45;
                 iVar6 = iVar6 + 1;
-                pSVar5 = (SiegeGameModeRelatedSection*)&pSVar5->field1_0x4;
+                piVar5 = piVar5 + 1;
             } while (iVar6 < 6);
         }
         if (bVar2) {

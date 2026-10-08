@@ -39,7 +39,7 @@ namespace UI {
         {
             int iVar1;
             int iVar2;
-            InGameEventExtra* pIVar3;
+            int* pIVar3;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
@@ -93,10 +93,10 @@ namespace UI {
                         DAT_MapPropertiesState::ptr)((char*)DAT_GameCore::instance.missionNumber1to20);
                 }
                 iVar2 = DAT_GameCore::instance.missionNumber1to20;
-                pIVar3 = DAT_MapPropertiesState::instance.SEC_EventsExtra;
+                pIVar3 = DAT_MapPropertiesState::instance.SEC_EventsExtra[0].conditionIsTrue;
                 for (iVar1 = 8000; iVar1 != 0; iVar1 = iVar1 + -1) {
-                    pIVar3->conditionOneIsTrue = 0;
-                    pIVar3 = (InGameEventExtra*)&pIVar3->conditionTwoIsTrue;
+                    *pIVar3 = 0;
+                    pIVar3 = pIVar3 + 1;
                 }
                 DAT_GameState::instance.mapAndTime.field43_0xf0 = 0;
                 DAT_GameState::instance.mapAndTime.field44_0xf4 = 0;

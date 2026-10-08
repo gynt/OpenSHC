@@ -598,7 +598,7 @@ namespace Map {
                                           Extra event info at: 0x0165f028
                                          */
                                         _pConditionIsMet
-                                            = &this->SEC_EventsExtra[_eventIndex].conditionOneIsTrue + _subIndex;
+                                            = &this->SEC_EventsExtra[_eventIndex].conditionIsTrue[_subIndex];
                                         *_pConditionIsMet = 0;
                                         switch (_subIndex) {
                                         case 0:
@@ -920,7 +920,7 @@ namespace Map {
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[6] = 0;
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[7] = 0;
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[8] = 0;
-                                                    this->SEC_EventsExtra[_eventIndex].field13_0x34 = 1;
+                                                    this->SEC_EventsExtra[_eventIndex].conditionIsTrue[13] = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
                                             } else if (((byte)(cVar17 - 1U) < 4)
@@ -958,7 +958,7 @@ namespace Map {
                                                     DAT_GameState::instance.mapAndTime.emenyHitArray[6] = 0;
                                                     DAT_GameState::instance.mapAndTime.emenyHitArray[7] = 0;
                                                     DAT_GameState::instance.mapAndTime.emenyHitArray[8] = 0;
-                                                    this->SEC_EventsExtra[_eventIndex].field14_0x38 = 1;
+                                                    this->SEC_EventsExtra[_eventIndex].conditionIsTrue[14] = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
                                             } else if (((byte)(cVar17 - 1U) < 4)

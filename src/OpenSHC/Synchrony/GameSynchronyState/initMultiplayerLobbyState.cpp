@@ -50,7 +50,7 @@ namespace Synchrony {
         byte* pbVar1;
         int* piVar2;
         int* piVar3;
-        byte* pbVar4;
+        char* pbVar4;
         int* piVar5;
         int (*local_14)[20];
         int (*local_10)[100][2];

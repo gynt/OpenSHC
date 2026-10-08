@@ -123,7 +123,7 @@ namespace UI {
                     eVar5 = DAT_GameCore::instance.missionNumber1to20 + DE::SHCDE::TEXT_MISSION15_HINTS;
                 } else {
                     iVar3
-                        = DAT_MissionDefinedData::instance.field25_0xae4[DAT_GameCore::instance.missionNumber1to20 + 5];
+                        = DAT_MissionDefinedData::instance.MissionHintCounts[DAT_GameCore::instance.missionNumber1to20 - 1];
                     eVar5 = DAT_GameCore::instance.missionNumber1to20 * 4
                         + (DE::SHCDE::TEXT_TUTORIAL_BUTTONS | DE::SHCDE::TEXT_GOODS);
                 }

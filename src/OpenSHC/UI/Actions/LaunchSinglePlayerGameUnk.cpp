@@ -265,7 +265,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
                     DAT_TroopValueState::ptr)(DAT_TroopValueState::instance.attackInfo.inv_count, 1);
-                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.field0_0x0;
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[0];
                 DAT_TroopValueState::instance.attackInfo
                     .attackWavePlayerIDArray[DAT_TroopValueState::instance.attackInfo.inv_count] = 4;
                 iVar8 = iVar8 * _pointsMultiplier;
@@ -273,8 +273,8 @@ namespace UI {
                     + DAT_TroopValueState::instance.attackInfo.inv_count;
                 (*pabVar1)[0] = (*pabVar1)[0]
                     + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
-                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.field1_0x4 * _pointsMultiplier;
-                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.field3_0xc * _pointsMultiplier;
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[1] * _pointsMultiplier;
+                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[3] * _pointsMultiplier;
                 pbVar2 = DAT_TroopValueState::instance.attackInfo
                              .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                     + 1;
@@ -285,8 +285,8 @@ namespace UI {
                     + 2;
                 *pbVar2 = *pbVar2
                     + (((char)(iVar9 / 100) + (char)(iVar9 >> 0x1f)) - (char)((longlong)iVar9 * 0x51eb851f >> 0x3f));
-                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.field2_0x8 * _pointsMultiplier;
-                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.field4_0x10 * _pointsMultiplier;
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[2] * _pointsMultiplier;
+                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[4] * _pointsMultiplier;
                 pbVar2 = DAT_TroopValueState::instance.attackInfo
                              .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                     + 3;
@@ -297,7 +297,7 @@ namespace UI {
                     + 4;
                 *pbVar2 = *pbVar2
                     + (((char)(iVar9 / 100) + (char)(iVar9 >> 0x1f)) - (char)((longlong)iVar9 * 0x51eb851f >> 0x3f));
-                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.field5_0x14 * _pointsMultiplier;
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[5] * _pointsMultiplier;
                 pbVar2 = DAT_TroopValueState::instance.attackInfo
                              .someSinglePlayerScore[DAT_TroopValueState::instance.attackInfo.inv_count]
                     + 8;

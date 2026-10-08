@@ -137,6 +137,7 @@ namespace UI {
         PlayerData* piVar14;
         int _playerID;
         StartingResourceStructureInt* pSVar24;
+        int* piVar26;
         int (*_startingTroopsPlayerData)[20];
         int iVar25;
         SkirmishStatistics* pSVar26;
@@ -682,10 +683,11 @@ namespace UI {
          */
         pSVar24 = DAT_RenderingDefinedData::instance.StartGoods
             + DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1;
+        piVar26 = &pSVar24->invalid1;
         piVar27 = DAT_GameState::instance.mapAndTime.startGoods;
         for (_counter = 0x19; _counter != 0; _counter = _counter + -1) {
-            *piVar27 = pSVar24->invalid1;
-            pSVar24 = (StartingResourceStructureInt*)&pSVar24->invalid2;
+            *piVar27 = *piVar26;
+            piVar26 = piVar26 + 1;
             piVar27 = piVar27 + 1;
         }
         DAT_GameState::instance.mapAndTime.euroRecruitable[0] = 1;

@@ -18,7 +18,7 @@ namespace Synchrony {
     undefined4 GameSynchronyState::reorderTeamsAndPositions()
     {
         char* pcVar1;
-        byte* _playerGroupArray;
+        char* _playerGroupArray;
         char* pcVar2;
         int iVar3;
         byte bVar4;
@@ -28,7 +28,7 @@ namespace Synchrony {
         int _counter;
         int* piVar6;
         int local_4c;
-        byte* local_44;
+        char* local_44;
         int local_38[6];
         int local_20[8];
         int* _currentPlayerFullIdArray;
@@ -65,7 +65,7 @@ namespace Synchrony {
               fullIdArray == -1 && AI == 0
              */
             if ((*_currentPlayerFullIdArray == -1) && (_currentPlayerFullIdArray[0x1b] == 0)) {
-                *_playerGroupArray = 0xff;
+                *_playerGroupArray = (char)0xff;
             } else {
                 if ((char)*_playerGroupArray < '\0') {
                     *_playerGroupArray = 0;

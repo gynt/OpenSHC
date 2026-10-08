@@ -411,7 +411,7 @@ namespace UI {
         pSVar7 = DAT_MapPropertiesState::instance.scenarioEvents[iVar5].data.scenario.conditions;
         pIVar6 = DAT_MapPropertiesState::instance.SEC_EventsExtra + iVar5;
         do {
-            iVar5 = pIVar6->conditionOneIsTrue;
+            iVar5 = pIVar6->conditionIsTrue[iVar4];
             INT_ARRAY_00ed2630::instance[iVar4] = (int)(char)pSVar7->enabled;
             sVar1 = pSVar7->value;
             INT_ARRAY_00ed3070::instance[iVar4] = iVar5;
@@ -424,7 +424,6 @@ namespace UI {
             }
             INT_ARRAY_00eb1238::instance[iVar4] = (int)(char)pSVar7->subType;
             iVar4 = iVar4 + 1;
-            pIVar6 = (InGameEventExtra*)&pIVar6->conditionTwoIsTrue;
             pSVar7 = pSVar7 + 1;
         } while (iVar4 < 0x28);
     }
