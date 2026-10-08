@@ -23,6 +23,7 @@ namespace UI {
                     *maxValue = (iVar1 * 3) / 5 + iVar1;
                     *minValue = 0;
                     *currentValue = DAT_MenuModalComposition2::instance.sliderValue;
+                    return;
                 }
                 *minValue = DAT_MenuModalComposition2::instance.sliderMinimum;
                 *maxValue = DAT_MenuModalComposition2::instance.sliderMaximum;
@@ -78,6 +79,7 @@ namespace UI {
                 if (200 < (int)(DAT_MenuModalComposition2::instance.sliderMaximum
                         - DAT_MenuModalComposition2::instance.sliderMinimum)) {
                     *currentValue = (*currentValue <= *maxValue / 2) ? 4 : 1;
+                    return;
                 }
                 *currentValue = 1;
                 return;
