@@ -39,11 +39,17 @@ namespace UI {
                  */
                 MACRO_CALL(OpenSHC::UI::DisplayElements_Func::RenderDebugNumbersDisplayElement)(0, 0, 0xfffffc18);
             }
-            if (DAT_MouseState::instance.selectionBoxMode != 0) {}
-            if (DAT_MouseState::instance.rightClickState != FALSE) {}
+            if (DAT_MouseState::instance.selectionBoxMode != 0) {
+                return;
+            }
+            if (DAT_MouseState::instance.rightClickState != FALSE) {
+                return;
+            }
             _scrollDistance = MACRO_CALL_MEMBER(
                 OpenSHC::UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
-            if (_scrollDistance == 0) {}
+            if (_scrollDistance == 0) {
+                return;
+            }
             if ((DAT_CurrentFramerate::instance < (int)DAT_GameCore::instance.gameSpeedLevel)
                 && (DAT_CurrentFramerate::instance != 0)) {
                 _scrollDistance = (int)(DAT_GameCore::instance.gameSpeedLevel * _scrollDistance)
