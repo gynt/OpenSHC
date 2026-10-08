@@ -71,6 +71,7 @@ namespace UI {
             } else {
                 blendStrength = 2;
                 color = 0xccfaff;
+                return;
             }
             keepOffsetX = FALSE;
             fontSize = 0x12;
