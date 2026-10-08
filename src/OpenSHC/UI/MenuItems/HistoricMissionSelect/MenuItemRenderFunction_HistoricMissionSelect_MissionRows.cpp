@@ -88,6 +88,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         textAddress, iVar2, iVar1, alignment, color, iVar3, keepOffsetX, blendStrength);
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(
@@ -99,6 +100,7 @@ namespace UI {
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                         iVar1, iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
                     color_00 = 0xccfaff;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) + -1,
