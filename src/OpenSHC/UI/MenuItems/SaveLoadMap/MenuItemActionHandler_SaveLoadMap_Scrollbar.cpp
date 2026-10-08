@@ -32,6 +32,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
                     *currentValue = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
+                    return;
                 }
                 break;
             case 6:
