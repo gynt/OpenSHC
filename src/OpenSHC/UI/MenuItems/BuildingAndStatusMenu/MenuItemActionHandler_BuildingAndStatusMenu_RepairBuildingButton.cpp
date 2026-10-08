@@ -61,12 +61,14 @@ namespace UI {
                     < DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
                         DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_WOOD);
+                    return;
                 }
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[4]
                     < DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
                         DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
+                    return;
                 }
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost;
