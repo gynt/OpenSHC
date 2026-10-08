@@ -268,8 +268,8 @@ namespace Synchrony {
         undefined4 chatScrollOffset; // 0x001072F0 length: 4
         BOOLEnum reparseMaps; // 0x001072F4 length: 4
         int mapExistenceAckCountdown; // 0x001072F8 length: 4
-        undefined4 DAT_MapSelectionScrollOffset; // 0x001072FC length: 4
-        undefined4 DAT_MapSelectionTotalNumber; // 0x00107300 length: 4
+        int DAT_MapSelectionScrollOffset; // 0x001072FC length: 4
+        int DAT_MapSelectionTotalNumber; // 0x00107300 length: 4
         int DAT_MapSelectionRelativeSelected; // 0x00107304 length: 4
         byte unused04[8]; // 0x00107308 length: 8
         int unknownMapRelatedReceivedDataArray[500]; // 0x00107310 length: 2000
