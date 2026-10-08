@@ -118,6 +118,7 @@ namespace UI {
                         iVar8 = 0x19b;
                     } else {
                         iVar8 = 0x19c;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, iVar8, iVar7 + -0x58,
