@@ -94,6 +94,7 @@ namespace UI {
                             .isNotNervousByEnemyTroopValue
                         == 0)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 DAT_ButtonUnknownZero::instance = 0;
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
