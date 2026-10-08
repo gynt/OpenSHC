@@ -437,10 +437,10 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk);
-                if (DAT_TileMapState::instance.rockFlagStartNumber + 1 < 4) {
-                    DAT_TileMapState::instance.rockFlagStartNumber = DAT_TileMapState::instance.rockFlagStartNumber + 1;
+                DAT_TileMapState::instance.rockFlagStartNumber = DAT_TileMapState::instance.rockFlagStartNumber + 1;
+                if (4 <= (int)DAT_TileMapState::instance.rockFlagStartNumber) {
+                    DAT_TileMapState::instance.rockFlagStartNumber = 0;
                 }
-                DAT_TileMapState::instance.rockFlagStartNumber = 0;
                 return;
             case OpenSHC::Commands::M_MAPPER_DEER:
             case OpenSHC::Commands::M_MAPPER_LION:
