@@ -54,6 +54,7 @@ namespace UI {
                         if (DAT_MapPropertiesState::instance.field50_0x13568 != 3)
                             goto LAB_004b8bdc;
                         menuModalID = OpenSHC::UI::Enums::MMT_NEW_EVENT;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(menuModalID, FALSE);
