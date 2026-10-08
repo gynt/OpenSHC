@@ -50,6 +50,7 @@ namespace UI {
                 }
                 MACRO_CALL(OpenSHC::UI::MenuItems::BuildingAndStatusMenu_Func::
                         MenuItemActionHandler_BuildingAndStatusMenu_SelectBuySellGoods)(_buyingPrice);
+                return;
             }
             if (param_1 == 3) {
                 _buyingPrice = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getNextGoodFilteringUnallowed,
@@ -83,6 +84,7 @@ namespace UI {
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "space_warning8.wav");
+                    return;
                 }
                 int _space = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getResourceSpace,
                     DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
@@ -114,7 +116,9 @@ namespace UI {
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
-                        != 7) {}
+                        != 7) {
+                            return;
+                        }
                     /*
                       "No Armory built"
                      */
@@ -146,7 +150,9 @@ namespace UI {
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
-                        != 10) {}
+                        != 10) {
+                            return;
+                        }
                     /*
                       "No space in the armory"
                      */
