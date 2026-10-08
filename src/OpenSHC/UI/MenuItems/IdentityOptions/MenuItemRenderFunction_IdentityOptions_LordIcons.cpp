@@ -58,10 +58,13 @@ namespace UI {
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, imageID,
                 (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
             if (param_1 == 0x15) {
-                if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {}
+                if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {
+                    return;
+                }
             } else {
                 if (param_1 != 0x16) {}
                 if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {}
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
