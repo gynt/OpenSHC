@@ -257,7 +257,7 @@ namespace Synchrony {
         int skirmishBalanceRelatedArrayUnk1[10]; // 0x00106E94 length: 40
         byte unused03[40]; // 0x00106EBC length: 40
         int field225_0x106ee4; // 0x00106EE4 length: 4
-        undefined4 skirmishTechLevel; // 0x00106EE8 length: 4
+        int skirmishTechLevel; // 0x00106EE8 length: 4
         undefined1 padding_0x106eec[4]; // 0x00106EEC length: 4
         undefined4 skirmishWinCondition; // 0x00106EF0 length: 4
         undefined4 skirmishTroopsCostGold; // 0x00106EF4 length: 4

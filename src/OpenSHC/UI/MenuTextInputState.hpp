@@ -57,10 +57,10 @@ namespace UI {
         MenuModalTypeInt modalDialog_4; // 0x00000068 length: 4
         MenuModalTypeInt modalDialog_5; // 0x0000006C length: 4
         MenuModalTypeInt modalDialog_6; // 0x00000070 length: 4
-        undefined4 fileListEntryCount; // 0x00000074 length: 4
+        int fileListEntryCount; // 0x00000074 length: 4
         undefined4 fileListSortOrder; // 0x00000078 length: 4
-        undefined4 DAT_MenuLoadGameRelativeSelectionIndex; // 0x0000007C length: 4
-        undefined4 DAT_MenuLoadGameRelativeSelectionOffset; // 0x00000080 length: 4
+        int DAT_MenuLoadGameRelativeSelectionIndex; // 0x0000007C length: 4
+        int DAT_MenuLoadGameRelativeSelectionOffset; // 0x00000080 length: 4
         undefined4 fileListVisibleRowCount; // 0x00000084 length: 4
         undefined4 DAT_SomeTextArrayIndex; // 0x00000088 length: 4
         undefined4 lastClickedListIndex; // 0x0000008C length: 4
