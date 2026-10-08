@@ -44,7 +44,9 @@ namespace UI {
         {
             int iVar1;
             MenuViewType menuID;
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
+            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
+                return;
+            }
             DAT_StopHandlingMenuItems::instance = 0;
             if (param_1 < -100) {
                 if (param_1 == -0x65) {
@@ -57,21 +59,25 @@ namespace UI {
                         DAT_StopHandlingMenuItems::instance = 0;
                     }
                     DAT_00b960f4::instance = iVar1;
+                    return;
                 }
                 if (param_1 != -0x44c) {
                     if (param_1 != -1000) {
                         DAT_StopHandlingMenuItems::instance = 0;
+                        return;
                     }
                 switchD_0042d6cf_caseD_2:
                     if (DAT_MapMissionType::instance == 0) {
                         menuID = OpenSHC::UI::Enums::MVT_MAIN_MENU;
                     } else {
                         menuID = OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 10000);
                     DWORD_00b95b1c::instance = timeGetTime();
                     DAT_00b960dc::instance = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                    return;
                 }
             switchD_0042d6cf_caseD_41:
                 /*
@@ -81,6 +87,7 @@ namespace UI {
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                     if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
+                        return;
                     }
                     MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSinglePlayerGameUnk)(0);
                 }
