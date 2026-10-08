@@ -103,6 +103,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 7;
                 xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
+                return;
             }
             blendStrength = 0;
             keepOffsetX = FALSE;
