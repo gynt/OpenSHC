@@ -39,6 +39,7 @@ namespace UI {
                     goto LAB_004ae736;
                 }
                 bVar3 = DAT_GreatestLordDefinedData::instance.tableSortBy == 0;
+                return;
             }
             if (bVar3) {
             LAB_004ae757:
