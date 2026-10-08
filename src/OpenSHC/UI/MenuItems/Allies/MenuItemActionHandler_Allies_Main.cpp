@@ -58,6 +58,7 @@ namespace UI {
                         } else {
                             if (param_1 != 0x6f) {}
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 5;
+                            return;
                         }
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                             = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance];
@@ -65,6 +66,7 @@ namespace UI {
                             = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SEND_PLAYER_TO_PLAYER_REQUEST);
+                        return;
                     }
                     DAT_RequestedGoodsByWhoArray::instance[0] = -1;
                     sVar1
@@ -79,10 +81,12 @@ namespace UI {
                                   .requestedGoodsArray2Unk
                                       [DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance]];
                         DAT_RequestedGoodsByWhoArray::instance[0] = sVar1 + -1;
+                        return;
                     }
                     DAT_00df4284::instance = (uint)(1 < sVar1);
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES_SEND_GOODS, FALSE);
+                    return;
                 }
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::RecalculateAllies)();
                 if (param_1 + -1 < DAT_AlliesCount::instance) {
