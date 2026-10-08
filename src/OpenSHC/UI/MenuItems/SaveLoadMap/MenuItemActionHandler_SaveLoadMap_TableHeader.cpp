@@ -48,6 +48,7 @@ namespace UI {
                     }
                     DAT_MenuTextInputState::instance.field33_0x78 = 1;
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
+                    return;
                 }
                 if (0 < DAT_MenuTextInputState::instance.field32_0x74) {
                     do {
