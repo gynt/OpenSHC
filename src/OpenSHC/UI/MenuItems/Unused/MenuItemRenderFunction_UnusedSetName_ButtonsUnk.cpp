@@ -51,6 +51,7 @@ namespace UI {
             }
             if (bVar1) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
         LAB_00426777:
             DAT_ButtonUnknownZero::instance = 0;
@@ -65,6 +66,7 @@ namespace UI {
                 color = 0xc2f0eb;
             } else {
                 color = 0xccfaff;
+                return;
             }
             alignment = OpenSHC::Text::TTA_CENTER;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
