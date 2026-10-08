@@ -45,7 +45,9 @@ namespace UI {
                     goto LAB_00465259;
                 bVar1 = DAT_GameCore::instance.maceProducible_logic == 0;
             }
-            if (bVar1) {}
+            if (bVar1) {
+                return;
+            }
         LAB_00465259:
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                 = DAT_BuildingsState::instance.menuSelectedBuildingID;
