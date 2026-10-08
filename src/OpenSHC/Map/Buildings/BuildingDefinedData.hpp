@@ -34,7 +34,7 @@ namespace Map {
         // SIZE: 0x0000B0F4
         typedef struct BuildingDefinedData {
 
-            byte FletchersWorkshopAnimationFrames1[52]; // 0x00000000 length: 52
+            char FletchersWorkshopAnimationFrames1[52]; // 0x00000000 length: 52
             NoArgCallback* BuildingUpdateFunctions[110]; // 0x00000034 length: 440
             BuildingTypeShort BuildingPrioritiesWhenNoFire[32]; // 0x000001EC length: 64
             BuildingTypeShort BuildingPrioritiesWhenFire[32]; // 0x0000022C length: 64
@@ -81,12 +81,12 @@ namespace Map {
             byte FletcherWorkshopAnimationCycle[160]; // 0x00004444 length: 160
             byte field45_0x44e4[400]; // 0x000044E4 length: 400
             byte field46_0x4674[608]; // 0x00004674 length: 608
-            byte FletchersWorkshopAnimationFrames2[56]; // 0x000048D4 length: 56
+            char FletchersWorkshopAnimationFrames2[56]; // 0x000048D4 length: 56
             byte ArmorersWorkshopAnimationFrames1[448]; // 0x0000490C length: 448
             byte ArmorersWorkshopAnimationFrames2[112]; // 0x00004ACC length: 112
             byte ArmorersWorkshopAnimationFrames3[20]; // 0x00004B3C length: 20
             byte HuntersPostAnimationFrames1[24]; // 0x00004B50 length: 24
-            byte HuntersPostAnimationFrames2[40]; // 0x00004B68 length: 40
+            char HuntersPostAnimationFrames2[40]; // 0x00004B68 length: 40
             byte HuntersPostAnimationFrames3[28]; // 0x00004B90 length: 28
             byte WoodcuttersHutAnimationFrames[104]; // 0x00004BAC length: 104
             byte BakeryAnimationFrames1[396]; // 0x00004C14 length: 396
@@ -94,34 +94,34 @@ namespace Map {
             byte BreweryAnimationFrames1[420]; // 0x00004DB4 length: 420
             byte BreweryAnimationFrames2[44]; // 0x00004F58 length: 44
             byte BreweryAnimationFrames3[48]; // 0x00004F84 length: 48
-            byte BreweryAnimationFrames4[36]; // 0x00004FB4 length: 36
-            byte BreweryAnimationFrames5[36]; // 0x00004FD8 length: 36
-            byte BlacksmithsWorkshopAnimationFrames1[20]; // 0x00004FFC length: 20
-            byte BlacksmithsWorkshopAnimationFrames2[44]; // 0x00005010 length: 44
-            byte BlacksmithsWorkshopAnimationFrames3[88]; // 0x0000503C length: 88
-            byte BlacksmithsWorkshopAnimationFrames4[44]; // 0x00005094 length: 44
-            byte BlacksmithsWorkshopAnimationFrames5[12]; // 0x000050C0 length: 12
-            byte BlacksmithsWorkshopAnimationFrames6[64]; // 0x000050CC length: 64
-            byte BlacksmithsWorkshopAnimationFrames7[56]; // 0x0000510C length: 56
-            byte BlacksmithsWorkshopAnimationFrames8[72]; // 0x00005144 length: 72
-            byte BlacksmithsWorkshopAnimationFrames9[80]; // 0x0000518C length: 80
-            byte BlacksmithsWorkshopAnimationFrames10[244]; // 0x000051DC length: 244
-            byte BlacksmithsWorkshopAnimationFrames11[36]; // 0x000052D0 length: 36
-            byte BlacksmithsWorkshopAnimationFrames12[112]; // 0x000052F4 length: 112
+            char BreweryAnimationFrames4[36]; // 0x00004FB4 length: 36
+            char BreweryAnimationFrames5[36]; // 0x00004FD8 length: 36
+            char BlacksmithsWorkshopAnimationFrames1[20]; // 0x00004FFC length: 20
+            char BlacksmithsWorkshopAnimationFrames2[44]; // 0x00005010 length: 44
+            char BlacksmithsWorkshopAnimationFrames3[88]; // 0x0000503C length: 88
+            char BlacksmithsWorkshopAnimationFrames4[44]; // 0x00005094 length: 44
+            char BlacksmithsWorkshopAnimationFrames5[12]; // 0x000050C0 length: 12
+            char BlacksmithsWorkshopAnimationFrames6[64]; // 0x000050CC length: 64
+            char BlacksmithsWorkshopAnimationFrames7[56]; // 0x0000510C length: 56
+            char BlacksmithsWorkshopAnimationFrames8[72]; // 0x00005144 length: 72
+            char BlacksmithsWorkshopAnimationFrames9[80]; // 0x0000518C length: 80
+            char BlacksmithsWorkshopAnimationFrames10[244]; // 0x000051DC length: 244
+            char BlacksmithsWorkshopAnimationFrames11[36]; // 0x000052D0 length: 36
+            char BlacksmithsWorkshopAnimationFrames12[112]; // 0x000052F4 length: 112
             byte PoleturnersWorkshopAnimationFrames1[88]; // 0x00005364 length: 88
             byte field75_0x53bc[200]; // 0x000053BC length: 200
             byte PoleturnersWorkshopAnimationFrames2[36]; // 0x00005484 length: 36
-            byte PoleturnersWorkshopAnimationFrames3[36]; // 0x000054A8 length: 36
+            char PoleturnersWorkshopAnimationFrames3[36]; // 0x000054A8 length: 36
             byte field78_0x54cc[144]; // 0x000054CC length: 144
             byte PoleturnersWorkshopAnimationFrames4[72]; // 0x0000555C length: 72
             byte PoleturnersWorkshopAnimationFrames5[28]; // 0x000055A4 length: 28
             char SecondaryOverlayAnimationFrames[20]; // 0x000055C0 length: 20
-            byte BreweryAnimationFrames6[260]; // 0x000055D4 length: 260
+            char BreweryAnimationFrames6[260]; // 0x000055D4 length: 260
             byte AnimTannerSolitary[44]; // 0x000056D8 length: 44
             byte AnimTanner[12]; // 0x00005704 length: 12
-            byte AnimTanner3[28]; // 0x00005710 length: 28
-            byte AnimTanner4[32]; // 0x0000572C length: 32
-            byte AnimTannerSolitary2[56]; // 0x0000574C length: 56
+            char AnimTanner3[28]; // 0x00005710 length: 28
+            char AnimTanner4[32]; // 0x0000572C length: 32
+            char AnimTannerSolitary2[56]; // 0x0000574C length: 56
             byte AnimTanner2[16]; // 0x00005784 length: 16
             byte TannersWorkshopAnimationFrames1[92]; // 0x00005794 length: 92
             byte TannersWorkshopAnimationFrames2[36]; // 0x000057F0 length: 36
@@ -168,7 +168,7 @@ namespace Map {
             char PitchRigAnimationFrames1[52]; // 0x00006948 length: 52
             byte PitchRigAnimationFrames2[56]; // 0x0000697C length: 56
             byte PitchRigAnimationFrames3[104]; // 0x000069B4 length: 104
-            byte MillAnimationFrames1[16]; // 0x00006A1C length: 16
+            char MillAnimationFrames1[16]; // 0x00006A1C length: 16
             byte MillAnimationFrames2[16]; // 0x00006A2C length: 16
             byte MillAnimationFrames3[16]; // 0x00006A3C length: 16
             byte MillAnimationFrames4[136]; // 0x00006A4C length: 136
@@ -181,7 +181,7 @@ namespace Map {
             byte DairyFarmAnimationFrames2[664]; // 0x00006C6C length: 664
             byte DairyFarmAnimationFrames3[448]; // 0x00006F04 length: 448
             byte DairyFarmAnimationFrames4[152]; // 0x000070C4 length: 152
-            byte StablesAnimationFrames[644]; // 0x0000715C length: 644
+            char StablesAnimationFrames[644]; // 0x0000715C length: 644
             byte OilSmelterAnimationFrames1[52]; // 0x000073E0 length: 52
             byte OilSmelterAnimationFrames2[80]; // 0x00007414 length: 80
             byte OilSmelterAnimationFrames3[48]; // 0x00007464 length: 48
@@ -211,7 +211,7 @@ namespace Map {
             byte InnAnimationFrames3[140]; // 0x00007D1C length: 140
             byte InnAnimationFrames4[36]; // 0x00007DA8 length: 36
             byte InnAnimationFrames5[80]; // 0x00007DCC length: 80
-            byte SharedOverlayAnimationFrames[52]; // 0x00007E1C length: 52
+            char SharedOverlayAnimationFrames[52]; // 0x00007E1C length: 52
             int BuildingAccessibleTilesCountForOneLarger[15]; // 0x00007E50 length: 60
             XYPair field179_0x7e8c[8]; // 0x00007E8C length: 64
             XYPair field180_0x7ecc[12]; // 0x00007ECC length: 96
