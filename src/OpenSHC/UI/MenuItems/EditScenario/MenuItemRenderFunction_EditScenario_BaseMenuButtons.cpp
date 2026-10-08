@@ -46,6 +46,7 @@ namespace UI {
             if (param_1 == 3) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                return;
             }
             if (((param_1 == 0x3d) || (param_1 == 0xa6)) || (param_1 == 0xa7)) {
                 if (DAT_GameState::instance.mapAndTime.editScenarioExtraOptions != 0) {
@@ -192,6 +193,7 @@ namespace UI {
                                     (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
                                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12,
                                     FALSE, 0);
+                                return;
                             }
                             /*
                               added by script: "Popularity"
