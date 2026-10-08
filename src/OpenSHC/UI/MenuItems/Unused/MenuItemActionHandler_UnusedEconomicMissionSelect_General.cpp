@@ -36,10 +36,12 @@ namespace UI {
                     DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1;
                     DAT_GameCore::instance.field26_0x74 = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();
+                    return;
                 }
                 if (param_1 == 0x12) {
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    return;
                 }
                 if (param_1 == 0x14) {
                     DAT_GameState::instance.mapAndTime.difficulty = DAT_GameState::instance.mapAndTime.difficulty + 1;
