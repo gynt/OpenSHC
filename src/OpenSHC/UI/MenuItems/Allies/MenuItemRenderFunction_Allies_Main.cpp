@@ -66,7 +66,7 @@ namespace UI {
             int iVar5;
             int iVar6;
             int iVar7;
-            bool bVar8;
+            int bVar8;
             eTextSections textOffsetIndex;
             int xParam;
             iVar2 = DAT_ButtonY::instance;
@@ -334,7 +334,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 textOffsetIndex, iVar2, xParam, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
-                (BOOLEnum)((int)((uint)bVar8)));
+                (BOOLEnum)bVar8);
             iVar2 = iVar7 + 0x58;
             if (DAT_GameState::instance.playerDataArray[iVar3].requestStateUnk == 0) {
                 /*
