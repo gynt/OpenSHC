@@ -251,6 +251,14 @@ better, so a function settles in about a minute. Where the guard wraps the rest 
 `if (hot) { ...; return; } cold;` shape over a guard at the top: the original's `je` jumps *forward* to the cold block,
 which is what MSVC emits only when the cold path is written last (same lever as `diff_triage.py`'s `RET` flag).
 
+These returns often only pay **in combination**, which a greedy per-site search misses.
+`MenuItemRenderFunction_VideoOptions_Main` needed three at once - two from empty bodies and one after a render call -
+because every intermediate state still had the control flow wrong somewhere, so no single site improved the score and
+`try_returns.py` accepted none of them. `try_empty_returns.py` tries a whole file's empty bodies together first and
+falls back to one at a time. Read the jump target before trusting a big winner: an empty body is a `return` only when
+the original's `jne` goes to the shared `pop/ret` epilogue (`orig_disasm.py` labels it, and in VideoOptions all three
+went to `L15`, which *is* the epilogue). A jump to any other block compiles just as happily and is simply wrong.
+
 Diff patterns that were reliable (more in the cheat sheet):
 
 - Absolute `DAT_*` addresses in the original asm where the source uses `this->` mean the original accessed the global instance.
