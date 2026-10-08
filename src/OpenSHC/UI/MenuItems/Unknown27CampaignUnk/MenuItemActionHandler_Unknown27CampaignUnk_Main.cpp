@@ -27,6 +27,7 @@ namespace UI {
                 if (DAT_GameCore::instance.missionNumber1to20 == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk, 0);
