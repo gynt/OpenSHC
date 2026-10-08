@@ -180,7 +180,7 @@ namespace Synchrony {
         undefined4 DAT_CurrentGameCommandID; // 0x0002D824 length: 4
         GameCommandSchedulingInt DAT_CommandActionPlan; // 0x0002D828 length: 4
         undefined4 DAT_PlayerIDReceiver; // 0x0002D82C length: 4
-        undefined4 DAT_CommandSize; // 0x0002D830 length: 4
+        int DAT_CommandSize; // 0x0002D830 length: 4
         byte DAT_GameCommandFixedParameterLocation[61000]; // 0x0002D834 length: 61000
         GameCommand DAT_GameCommandArray[200]; // 0x0003C67C length: 254400
         short DAT_LagIndicatorPerPlayer[9]; // 0x0007A83C length: 18
@@ -351,7 +351,7 @@ namespace Synchrony {
         undefined4 DAT_CommandParameterOffset; // 0x00109EE4 length: 4
         undefined4 commandDelay; // 0x00109EE8 length: 4
         int MBR_SelectedGameCommands[100][2]; // 0x00109EEC length: 800
-        undefined4 MBR_someIndex; // 0x0010A20C length: 4
+        int MBR_someIndex; // 0x0010A20C length: 4
         int DPLAYX_SendAndReceiveREsult; // 0x0010A210 length: 4
         undefined4 DAT_TickCount; // 0x0010A214 length: 4
 
