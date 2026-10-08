@@ -73,9 +73,11 @@ namespace UI {
                         }
                         MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                        return;
                     }
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_00eb9af8::instance = param_1;
+                        return;
                     }
                     if (param_1 != DAT_FinalResultsOrderByColumn::instance)
                         goto LAB_004d6d83;
@@ -103,6 +105,7 @@ namespace UI {
                 }
                 if ((DAT_00ec082c::instance != 1) && (DAT_00ec082c::instance != 3))
                     goto LAB_004d6d83;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 1;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
