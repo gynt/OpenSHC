@@ -37,6 +37,7 @@ namespace UI {
                 BOOLEnum BVar1 = MACRO_CALL(OpenSHC::Game_Func::Tutorial_IsActionAllowed)(3, param_1);
                 if (BVar1 == FALSE) {
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
+                    return;
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialBuildingActionState)(
                     0xc, (BuildingType)((int)(param_1)));
