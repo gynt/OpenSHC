@@ -83,6 +83,7 @@ namespace UI {
                             bVar4 = param_1 == -3;
                         } else {
                             bVar4 = param_1 == -4;
+                            return;
                         }
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -118,6 +119,7 @@ namespace UI {
                             bVar4 = param_1 == -5;
                         } else {
                             bVar4 = param_1 == -6;
+                            return;
                         }
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -155,6 +157,7 @@ namespace UI {
                             DAT_PencilRenderCore::ptr)((uint)(param_1 != -1), 0);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
