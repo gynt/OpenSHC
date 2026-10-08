@@ -35,6 +35,7 @@ namespace UI {
                     DAT_MapPropertiesState::instance.field47_0x1355c
                         = DAT_MapPropertiesState::instance.field47_0x1355c + -1;
                     *currentValue = DAT_MapPropertiesState::instance.field47_0x1355c;
+                    return;
                 }
                 break;
             case 6:
