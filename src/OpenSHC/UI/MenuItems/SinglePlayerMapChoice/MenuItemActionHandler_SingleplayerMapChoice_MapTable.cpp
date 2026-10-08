@@ -189,6 +189,7 @@ namespace UI {
                     DAT_GameState::instance.mapAndTime.difficulty = 1;
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::SomeSiegeUnitsComputation)(1);
                     iVar6 = 1;
+                    return;
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SomeSiegeRelatedCopying)(iVar6);
             }
