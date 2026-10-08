@@ -86,7 +86,9 @@ namespace UI {
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
                 != 0) {}
-            if (DAT_GameCore::instance.gamePausedLogical != 0) {}
+            if (DAT_GameCore::instance.gamePausedLogical != 0) {
+                return;
+            }
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL) {
                 BVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
@@ -191,6 +193,7 @@ namespace UI {
                 if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                     DAT_TribesState::instance.rallyCount = 1;
+                    return;
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(1);
                 DAT_TribesState::instance.rallyCount = 1;
