@@ -58,7 +58,9 @@ namespace UI {
             ResourceTypeMin1Int _resource;
             int _sendAmount;
             playerID = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance];
-            if (param_1 == 0x28) {}
+            if (param_1 == 0x28) {
+                return;
+            }
             if (param_1 < 0x15) {
                 DAT_RequestedGoodsByWhoArray::instance[0] = param_1;
                 if (3 < param_1) {
@@ -67,8 +69,11 @@ namespace UI {
                 if (4 < param_1) {
                     DAT_RequestedGoodsByWhoArray::instance[0] = DAT_RequestedGoodsByWhoArray::instance[0] + 1;
                 }
-                if (DAT_RequestedGoodsByWhoArray::instance[0] != 14) {}
+                if (DAT_RequestedGoodsByWhoArray::instance[0] != 14) {
+                    return;
+                }
                 DAT_RequestedGoodsByWhoArray::instance[0] = 23;
+                return;
             }
             if (param_1 == 0x15) {
                 DAT_RequestedGoodsByWhoArray::instance[0] = 14;
@@ -104,13 +109,16 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = playerID;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SEND_PLAYER_TO_PLAYER_REQUEST);
+                    return;
                 }
                 if (param_1 != 100) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
                 }
                 if (-1 < DAT_RequestedGoodsByWhoArray::instance[0]) {
-                    if (DAT_SentOrRequestedGoodsAmount::instance < 1) {}
+                    if (DAT_SentOrRequestedGoodsAmount::instance < 1) {
+                        return;
+                    }
                     if (DAT_MenuModalComposition1::instance.activeModalDialogID
                         == OpenSHC::UI::Enums::MMT_ALLIES_REQUEST_GOODS) {
                         if ((int*)(DAT_RequestedGoodsByWhoArray::instance[0] + 1) == (int*)0xf) {
@@ -195,6 +203,7 @@ namespace UI {
                                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                                     "space_warning6.wav");
                                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
+                                return;
                             }
                             BVar1 = MACRO_CALL_MEMBER(
                                 OpenSHC::AI::AICState_Func::isResourceLargerOrEqualThanMinimumGoodsRequiredAfterTrade,
@@ -235,15 +244,21 @@ namespace UI {
                         if (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .currentResources[0xf]
-                            < DAT_SentOrRequestedGoodsAmount::instance) {}
+                            < DAT_SentOrRequestedGoodsAmount::instance) {
+                                return;
+                            }
                     } else {
                         _space = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getResourceSpace,
                             DAT_BuildingsState::ptr)(playerID, (int*)((int)(_resourceType)));
                         if (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .currentResources[_resourceType]
-                            < _sendAmount) {}
-                        if (_space < 0) {}
+                            < _sendAmount) {
+                                return;
+                            }
+                        if (_space < 0) {
+                            return;
+                        }
                         if (_space < _sendAmount) {
                             _sendAmount = _space;
                         }
@@ -259,6 +274,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                 }
+                return;
             }
             DAT_SentOrRequestedGoodsAmount::instance = DAT_SentOrRequestedGoodsAmount::instance + 500;
         }
