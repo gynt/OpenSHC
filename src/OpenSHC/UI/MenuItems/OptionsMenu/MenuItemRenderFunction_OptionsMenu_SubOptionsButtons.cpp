@@ -55,6 +55,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
                     xParam, yParam, TVar2, color, iVar3, BVar4, iVar5);
+                return;
             }
             iVar5 = 2;
             BVar4 = FALSE;
