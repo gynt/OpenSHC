@@ -123,6 +123,7 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)((int)sVar2, (int)(DAT_ButtonX::instance + 8),
                                 (int)(DAT_ButtonY::instance + 0x28), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
                         }
+                        return;
                     }
                     DAT_CurrentButtonPictureInGm::instance
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
@@ -198,6 +199,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     iVar8, (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 0x28),
                     OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
+                return;
             }
         LAB_00464d4f:
             DAT_CurrentButtonPictureInGm::instance
