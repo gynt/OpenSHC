@@ -22,7 +22,7 @@ namespace Map {
     void Buildings::UpdateStables()
     {
         short* psVar1;
-        byte* pbVar2;
+        char* pbVar2;
         int* piVar3;
         int buildingID;
         MACRO_CALL_MEMBER(AI::AICState_Func::addBuildingToTargetableBuildings, DAT_AICState::ptr)(
