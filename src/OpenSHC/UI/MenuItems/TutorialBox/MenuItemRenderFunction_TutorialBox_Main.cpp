@@ -50,7 +50,9 @@ namespace UI {
                 if (param_1 == 2) {
                     numInGroup = 2;
                 } else {
-                    if (DAT_00df5560::instance == 0) {}
+                    if (DAT_00df5560::instance == 0) {
+                        return;
+                    }
                     if (((DAT_00df5558::instance < DAT_00df555c::instance + -1)
                             && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
                         && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)) {
@@ -68,6 +70,7 @@ namespace UI {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;
+                    return;
                 }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
