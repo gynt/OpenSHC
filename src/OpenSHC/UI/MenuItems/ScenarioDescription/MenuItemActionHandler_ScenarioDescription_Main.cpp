@@ -104,6 +104,7 @@ namespace UI {
                     if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk) {
                         if (DAT_GameCore::instance.missionNumber1to20 < 1) {
                             DAT_GameCore::instance.missionNumber1to20 = 1;
+                            return;
                         }
                         DAT_GameCore::instance.section1066 = 1;
                         DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xe7;
@@ -222,11 +223,13 @@ namespace UI {
                             = DAT_GameState::instance.mapAndTime.difficulty + 1;
                         if (3 < DAT_GameState::instance.mapAndTime.difficulty) {
                             DAT_GameState::instance.mapAndTime.difficulty = 0;
+                            return;
                         }
                         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
                             DAT_GameCore::instance.missionDifficulty = DAT_GameState::instance.mapAndTime.difficulty;
                             MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetEventStatusUnk)();
                             ;
+                            return;
                         }
                         DAT_GameCore::instance.missionDifficulty2 = DAT_GameState::instance.mapAndTime.difficulty;
                         MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetEventStatusUnk)();
