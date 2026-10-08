@@ -54,64 +54,64 @@ namespace UI {
                 return;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_DisableMercPostPortraits::instance == 0) {
-                DAT_ButtonCurrentlyInteracting::instance = FALSE;
+            if (DAT_DisableMercPostPortraits::instance != 0) {
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
+                buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
+                if (buttonIsInteracting != FALSE) {
+                    DAT_00df3350::instance = param_1 + -0x46;
+                }
+                if (iVar1 == 1) {
+                    if (buttonIsInteracting != FALSE) {
+                        if (param_1 < 0x46)
+                            goto LAB_00466bec;
+                        if (0x4c < param_1)
+                            goto LAB_00466bec;
+                        DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            .stateTransitionTimeBaseUnk_0x18 = 0;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                            (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                                .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                                .gmId_0x0,
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                                &DAT_UIButtonDefinedData::instance
+                                     .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(buttonIsInteracting),
+                            DAT_ButtonX::instance, DAT_ButtonY::instance);
+                    } else {
+                        DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            .stateTransitionTimeBaseUnk_0x18 = 0;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                            (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                                .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                                .gmId_0x0,
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                                &DAT_UIButtonDefinedData::instance
+                                     .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(FALSE),
+                            DAT_ButtonX::instance, DAT_ButtonY::instance);
+                    }
+                } else if (((iVar1 == 0) || (iVar1 == 4)) || (iVar1 == 3)) {
+                    iVar2 = 0x10;
+                    buttonGmData
+                        = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
+                    DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                    iVar3 = DAT_ButtonX::instance;
+                    iVar4 = DAT_ButtonY::instance;
+                    iVar1 = MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        (OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0, iVar1 + 7, iVar3, iVar4, iVar2);
+                }
+            LAB_00466bec:
+                DAT_CurrentButtonPictureInGm::instance
+                    = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                          .pictureInGm_0x4;
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             }
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
-            buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
-            if (buttonIsInteracting != FALSE) {
-                DAT_00df3350::instance = param_1 + -0x46;
-            }
-            if (iVar1 == 1) {
-                if (buttonIsInteracting != FALSE) {
-                    if (param_1 < 0x46)
-                        goto LAB_00466bec;
-                    if (0x4c < param_1)
-                        goto LAB_00466bec;
-                    DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                        .stateTransitionTimeBaseUnk_0x18 = 0;
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
-                            .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                            .gmId_0x0,
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
-                            &DAT_UIButtonDefinedData::instance
-                                 .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(buttonIsInteracting),
-                        DAT_ButtonX::instance, DAT_ButtonY::instance);
-                } else {
-                    DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                        .stateTransitionTimeBaseUnk_0x18 = 0;
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
-                            .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                            .gmId_0x0,
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
-                            &DAT_UIButtonDefinedData::instance
-                                 .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(FALSE),
-                        DAT_ButtonX::instance, DAT_ButtonY::instance);
-                }
-            } else if (((iVar1 == 0) || (iVar1 == 4)) || (iVar1 == 3)) {
-                iVar2 = 0x10;
-                buttonGmData
-                    = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
-                DAT_ButtonCurrentlyInteracting::instance = FALSE;
-                iVar3 = DAT_ButtonX::instance;
-                iVar4 = DAT_ButtonY::instance;
-                iVar1 = MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(
-                    (OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0, iVar1 + 7, iVar3, iVar4, iVar2);
-            }
-        LAB_00466bec:
-            DAT_CurrentButtonPictureInGm::instance
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                      .pictureInGm_0x4;
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+            DAT_ButtonCurrentlyInteracting::instance = FALSE;
         }
 
     }
