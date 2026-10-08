@@ -125,6 +125,7 @@ namespace UI {
                                     * DAT_MissionAestheticsDefinedData::instance.unknown3[iVar1 + 0x386],
                                 (int)((int)(DAT_ButtonW::instance + -8 + DAT_ButtonX::instance)),
                                 (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, uVar2, 0x12, FALSE);
+                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, (int)((int)(DAT_ButtonX::instance + 5)),
@@ -311,6 +312,7 @@ namespace UI {
                             + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
                         (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                    return;
                 }
             switchD_004c01f4_caseD_0:
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
