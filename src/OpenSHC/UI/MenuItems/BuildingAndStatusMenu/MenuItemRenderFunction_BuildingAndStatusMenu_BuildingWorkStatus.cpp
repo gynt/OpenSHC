@@ -40,7 +40,9 @@ namespace UI {
             int _unit;
             int iVar7;
             int iVar8;
-            if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_PEASANT) {}
+            if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_PEASANT) {
+                return;
+            }
             short sVar1 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentEmployeeCount;
             bool bVar4 = true;
@@ -65,6 +67,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 9, (int)(DAT_ButtonX::instance + 0x96),
                     (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                return;
             }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].sleeping
                 == false) {
@@ -106,6 +109,7 @@ namespace UI {
                             OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 4, (int)(DAT_ButtonX::instance + 0x96),
                             (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                     }
+                    return;
                 }
                 switch (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .buildingType) {
