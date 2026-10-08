@@ -146,6 +146,7 @@ namespace UI {
                                 if (iVar7 == 0x270) {
                                     iVar4 = iVar5 + 2;
                                     goto LAB_004acbeb;
+                                    return;
                                 }
                                 if (iVar5 != 7) {
                                     iVar4 = iVar5 + 1;
@@ -335,6 +336,7 @@ namespace UI {
                                     [DAT_GameState::instance.playerDataArray[iVar2].requestedAttackTargetUnk]
                         + 700)),
                     iVar6, iVar5);
+                return;
             }
             if (param_1 == 1) {
                 DAT_00df51f4::instance = 0;
@@ -347,6 +349,7 @@ namespace UI {
             iVar6 = 0;
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar2] == -1) {
                 iVar6 = DAT_GameSynchronyState::instance.currentAIArray[iVar2];
+                return;
             }
             if (iVar3 == DAT_LastTeamMemberIndex::instance) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -401,6 +404,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, iVar6,
                     (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)), 0xc);
+                return;
             }
         LAB_004aca47:
             if (iVar3 == DAT_LastTeamMemberIndex::instance) {
@@ -408,6 +412,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                     (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),
                     OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
+                return;
             }
             iVar6 = 0;
             if (iVar3 != DAT_LastTeamMemberIndex::instance) {
@@ -417,6 +422,7 @@ namespace UI {
                         .requestedGoodsArray1Unk[iVar2];
             if (iVar3 == 7) {
                 iVar3 = 8;
+                return;
             }
             if (-1 < iVar3 + -2) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
