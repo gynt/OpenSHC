@@ -38,6 +38,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
                         = DAT_GameSynchronyState::instance.scrollBarItemOffset + -1;
                     *currentValue = DAT_GameSynchronyState::instance.scrollBarItemOffset;
+                    return;
                 }
                 break;
             case 6:
@@ -45,6 +46,7 @@ namespace UI {
                     < DAT_GameSynchronyState::instance.DPLAY_SessionsCount + -10) {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
                         = DAT_GameSynchronyState::instance.scrollBarItemOffset + 1;
+                    return;
                 }
                 break;
             default:
