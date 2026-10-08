@@ -46,7 +46,7 @@ namespace UI {
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .tacticalPowersBarLevel,
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)(),
-                    (param_1 + 1) * 0x27c <= iVar1
+                    iVar1 >= (param_1 + 1) * 0x27c
                         && (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .lordKilledByPlayerID
