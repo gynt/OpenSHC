@@ -69,11 +69,13 @@ namespace UI {
             switchD_00438c35_caseD_d9:
                 if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 goto LAB_00438ec1;
             }
@@ -81,11 +83,13 @@ namespace UI {
             switchD_00438c35_caseD_d3:
                 if (DAT_UnitsState::instance.hasEngineerSelected != TRUE) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 uVar3 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
                 if (uVar3 == 0) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
             LAB_00438ec1:
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
@@ -102,11 +106,13 @@ namespace UI {
             case 0xd8:
                 if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 UVar4 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
@@ -234,6 +240,7 @@ namespace UI {
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_STAND_GROUND) {
@@ -250,6 +257,7 @@ namespace UI {
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_DEFENSIVE) {
@@ -307,6 +315,7 @@ namespace UI {
                 }
             }
             DAT_ButtonUnknownZero::instance = 1;
+            return;
         }
 
     }
