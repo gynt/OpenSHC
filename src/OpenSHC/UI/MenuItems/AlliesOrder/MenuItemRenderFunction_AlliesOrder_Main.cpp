@@ -84,7 +84,7 @@ namespace UI {
                 return;
             }
             iVar1 = param_1;
-            if (param_1 < 7) {
+            if (param_1 <= 6) {
                 if (param_1 == -1)
                     goto LAB_004ad69c;
                 iVar1 = param_1 + -1;
