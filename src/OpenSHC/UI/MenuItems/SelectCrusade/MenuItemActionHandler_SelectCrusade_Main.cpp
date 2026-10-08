@@ -57,6 +57,7 @@ namespace UI {
                     DAT_GameCore::instance.currentTrailType = OpenSHC::Game::TT_EXTREME;
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_CRUSADE_MAP, 0);
+                    return;
                 }
                 DAT_GameCore::instance.currentTrailType = (TrailTypeInt)(param_1 == 3);
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
