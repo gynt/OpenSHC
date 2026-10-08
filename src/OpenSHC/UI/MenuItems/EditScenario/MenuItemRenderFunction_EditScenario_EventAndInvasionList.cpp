@@ -52,8 +52,8 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
                 (uint)(param_1 == DAT_MapPropertiesState::instance.field48_0x13560), param_1, 0);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if (DAT_MapPropertiesState::instance.eventsCount
-                <= DAT_MapPropertiesState::instance.field47_0x1355c + param_1) {
+            if (DAT_MapPropertiesState::instance.field47_0x1355c + param_1
+                >= DAT_MapPropertiesState::instance.eventsCount) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
             if ((param_1 == DAT_MapPropertiesState::instance.field48_0x13560)
