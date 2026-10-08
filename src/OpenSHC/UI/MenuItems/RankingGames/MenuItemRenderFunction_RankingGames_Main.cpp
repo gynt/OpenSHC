@@ -75,6 +75,7 @@ namespace UI {
                     DAT_CurrentButtonPictureInGm::instance = iVar1;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (param_1 == 0x1e) {
                     if (DAT_00ed3124::instance == 1)
