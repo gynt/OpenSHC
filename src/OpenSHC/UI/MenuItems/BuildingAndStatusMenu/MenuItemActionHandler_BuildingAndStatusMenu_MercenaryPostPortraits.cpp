@@ -102,6 +102,7 @@ namespace UI {
                 LAB_0046764f:
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
                         DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_GOLD);
+                    return;
                 }
                 bVar5 = DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 3;
             } else {
@@ -111,12 +112,15 @@ namespace UI {
                     iVar4 = 0;
                 }
                 if (iVar3 == 3) {
-                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {}
+                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {
+                        return;
+                    }
                     /*
                       "Your army is at its maximum size"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
                         "Genie_26.wav");
+                    return;
                 }
                 if (iVar3 == 4)
                     goto LAB_004675eb;
