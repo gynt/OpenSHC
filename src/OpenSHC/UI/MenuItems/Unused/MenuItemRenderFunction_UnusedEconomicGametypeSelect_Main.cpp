@@ -58,6 +58,7 @@ namespace UI {
                 DAT_CurrentButtonPictureInGm::instance
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                           .pictureInGm_0x4;
+                return;
             }
             switch (param_1) {
             case 1:
