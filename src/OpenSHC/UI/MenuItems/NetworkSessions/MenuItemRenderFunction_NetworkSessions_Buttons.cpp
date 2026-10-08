@@ -57,6 +57,7 @@ namespace UI {
             if (param_1 == -10000) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                return;
             }
             if (param_1 == 10000) {
                 param_1 = 8;
@@ -78,6 +79,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 8),
                         xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    return;
                 }
             LAB_0047c73a:
                 DAT_ButtonUnknownZero::instance = 0;
@@ -109,6 +111,7 @@ namespace UI {
                     OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1,
                     (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
+                return;
             }
             if ((param_1 == 9) || (param_1 == 10)) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -122,6 +125,7 @@ namespace UI {
                 if (param_1 == -1000) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                    return;
                 }
                 if (-1 < param_1)
                     goto LAB_0047c73a;
@@ -131,6 +135,7 @@ namespace UI {
                         DAT_PencilRenderCore::ptr)(0, 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
                     DAT_PencilRenderCore::ptr)(1, 0);
