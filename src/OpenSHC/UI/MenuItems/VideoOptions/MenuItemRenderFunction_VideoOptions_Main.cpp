@@ -52,7 +52,9 @@ namespace UI {
                     }
                     iVar1 = iVar1 + 0xb6;
                 } else {
-                    if (param_1 != -0x14) {}
+                    if (param_1 != -0x14) {
+                        return;
+                    }
                     if (DAT_MenuTextInputState::instance.menuCursorType == 1) {
                         iVar1 = 2;
                     }
@@ -61,6 +63,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, iVar1,
                     (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                return;
             }
             if (param_1 < 0) {
                 if (param_1 == -3) {
@@ -192,7 +195,9 @@ namespace UI {
                     if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 == 0) {
                         param_1 = 0xe;
                     } else {
-                        if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 != 1) {}
+                        if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 != 1) {
+                            return;
+                        }
                         param_1 = 0xd;
                     }
                 }
