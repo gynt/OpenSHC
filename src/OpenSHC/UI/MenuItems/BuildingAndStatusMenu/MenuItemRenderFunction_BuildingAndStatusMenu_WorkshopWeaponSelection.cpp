@@ -57,6 +57,7 @@ namespace UI {
                 if (_weapon != OpenSHC::Game::Resources::RT_MACE)
                     goto LAB_00465173;
                 _weaponIsDisabled = DAT_GameCore::instance.maceProducible_logic == 0;
+                return;
             }
             if (_weaponIsDisabled) {
                 DAT_ButtonUnknownZero::instance = 1;
