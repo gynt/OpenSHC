@@ -178,6 +178,33 @@ means the field's signedness is wrong in the generated header, and `add` against
 error in a formula - that is how `2400 / n + 40` was caught being `- 40`, which Ghidra had decompiled with the wrong
 sign. It carries only those two rules on purpose: a third, "same instruction with a different constant", was tried and
 dropped because every hit it produced was a loop-induction stride rather than a constant the source chose.
+`diff_signcmp.py` is the comparison counterpart that pays best on *headers* rather than bodies: it pairs the
+conditional jumps per replacement block and reports where the original is signed (`jl`/`jge`/`jg`/`jle`) and we are
+unsigned (`jb`/`jae`/`ja`/`jbe`). Every hit it has produced pointed the same way, and the cause is always a field
+declared `undefined4`/`uint`/`dword` that the game treats as signed - so fixing the declaration fixes every site at
+once instead of sprinkling `(int)` casts. It found a real bug this way:
+`MenuItemActionHandler_SingleplayerMapChoice_ButtonsAndHands` guards starting the game with
+`if (-1 < DAT_MapSelectionScrollOffset + DAT_MapSelectionRelativeSelected)`, and because the first two were
+`undefined4` the sum promoted to unsigned, making the test `0xffffffff < x` and the whole branch dead. Nine such
+fields took four functions to 100% and `InitSkirmishLobbyData` from 50.9 to 70.1, at 0 WORSE throughout. Two
+caveats: a `0 < x` guard is the commonest tell but an *existing* `(int)` cast at most read sites is just as strong
+(that is the workaround for the wrong declaration), and the pairing is positional, so confirm a hit against
+`reccmp_report.py diff` before editing - it reported one `SIGNFLIP` on a scrollbar that was really case 5's `sub`
+paired against case 6's `add` across two switch arms, with both arms correct.
+
+`walkscan.py` finds the split-array shape `arrayscan.py` structurally cannot see. `arrayscan.py` needs a constant
+index to compare against a declared length; a pointer walk has none:
+
+    pIVar9 = (InGameEventExtra*)&pIVar9->conditionTwoIsTrue;
+
+re-casts a pointer to its own struct type while aiming it at a non-first member, so it steps by that *member's*
+offset rather than `sizeof(struct)`. Ghidra emits this when the real object is a flat array it has split into
+fields. Two directions follow, and which one applies is decided by whether the fields are named: where they are
+anonymous, collapse them (`InGameEventExtra`'s 40 ints became `conditionIsTrue[40]`, `SiegeGameModeRelatedSection`'s
+six became `siegeEngineCounts[6]`); where they already carry good names, keep the struct and only retype the
+walking pointer to `int*`, because collapsing `SiegeUnitCounts` or `StartingResourceStructureInt` would throw away
+18 and 23 meaningful field names to gain nothing.
+
 `reorder_search.py FILE NAME` hill-climbs the match % by reordering independent statements,
 which is the only lever left once a function is `alloc-only`; it pays about one move in ten, and mostly where the
 statements sit between two calls or on a loop back-edge.
