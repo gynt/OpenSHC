@@ -27,6 +27,7 @@ namespace UI {
         {
             if (DAT_MouseState::instance.leftClickStart != 0) {
                 BOOLEnum_00b98404::instance = TRUE;
+                return;
             }
             if ((DAT_MouseState::instance.draggingStopped != FALSE) && (BOOLEnum_00b98404::instance != FALSE)) {
                 BOOLEnum_00b98404::instance = FALSE;
@@ -37,6 +38,7 @@ namespace UI {
                     DAT_IntroTimestamp::instance = timeGetTime();
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
+                    return;
                 }
                 if (DAT_IntroStep::instance == 1) {
                     DAT_IntroTransitionStep::instance = 0;
