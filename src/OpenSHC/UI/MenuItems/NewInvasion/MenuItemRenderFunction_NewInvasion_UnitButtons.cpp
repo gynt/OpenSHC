@@ -122,6 +122,7 @@ namespace UI {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     number, (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
