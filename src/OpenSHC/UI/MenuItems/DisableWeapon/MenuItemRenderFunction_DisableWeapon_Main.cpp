@@ -59,6 +59,7 @@ namespace UI {
                         color = 0xc2f0eb;
                     } else {
                         color = 0xccfaff;
+                        return;
                     }
                     alignment = OpenSHC::Text::TTA_CENTER;
                     /*
@@ -69,6 +70,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 }
+                return;
             }
             if ((param_1 == 1) && (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 1;
