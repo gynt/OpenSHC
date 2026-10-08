@@ -57,6 +57,7 @@ namespace UI {
                 bVar2 = (DAT_GameCore::instance.skirmishTrailProgress < 50);
                 bVar1 = (int)(DAT_GameCore::instance.skirmishTrailProgress - 50) < 0;
                 skirmishTrailMission = DAT_GameCore::instance.skirmishTrailProgress;
+                return;
             }
             if (bVar2 != bVar1) {
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::SetupSkirmishMode)(skirmishTrailMission);
