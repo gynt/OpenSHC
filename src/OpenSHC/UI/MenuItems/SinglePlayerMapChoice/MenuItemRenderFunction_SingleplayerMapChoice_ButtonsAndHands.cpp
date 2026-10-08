@@ -84,6 +84,7 @@ namespace UI {
                     uVar2 = 0xc2f0eb;
                 } else {
                     uVar2 = 0xccfaff;
+                    return;
                 }
                 /*
                   Difficulty
@@ -111,6 +112,7 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.currentPlayerSlotID != 2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
