@@ -242,6 +242,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 goto LAB_00438f47;
             case 0x173:
@@ -264,6 +265,7 @@ namespace UI {
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                 if (UVar4 == ((UnitType)0xffffffff)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
