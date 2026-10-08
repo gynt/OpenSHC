@@ -111,6 +111,7 @@ namespace UI {
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                                 iVar4 = iVar4 + 1;
+                                return;
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < iVar5);
