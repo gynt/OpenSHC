@@ -47,6 +47,7 @@ namespace UI {
                 if (param_1 == 7) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     if (param_1 == INT_00b95abc::instance) {
