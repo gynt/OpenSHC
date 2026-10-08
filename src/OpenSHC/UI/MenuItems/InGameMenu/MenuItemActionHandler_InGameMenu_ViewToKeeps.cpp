@@ -47,68 +47,68 @@ namespace UI {
                     if (DAT_00b9840c::instance < 0) {
                         DAT_00b9840c::instance = 0;
                     }
-                    if (DAT_00b9840c::instance + 1 != 2) {
-                        DAT_00b9840c::instance = DAT_00b9840c::instance + 1;
-                    }
-                    DAT_00b9840c::instance = 0;
-                    dVar5 = 1;
-                    iVar4 = -1;
-                    piVar5 = DAT_GameState::instance.mapAndTime.field22_0x58[0] + 1;
-                    iVar3 = 2;
-                    do {
-                        if (-1 < piVar5[-1]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
-                                iVar4 = iVar3 + -2;
+                    DAT_00b9840c::instance = DAT_00b9840c::instance + 1;
+                    if (DAT_00b9840c::instance == 2) {
+                        DAT_00b9840c::instance = 0;
+                        dVar5 = 1;
+                        iVar4 = -1;
+                        piVar5 = DAT_GameState::instance.mapAndTime.field22_0x58[0] + 1;
+                        iVar3 = 2;
+                        do {
+                            if (-1 < piVar5[-1]) {
+                                if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                                    iVar4 = iVar3 + -2;
+                                }
+                                dVar5 = dVar5 + 1;
                             }
-                            dVar5 = dVar5 + 1;
-                        }
-                        if (-1 < *piVar5) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
-                                iVar4 = iVar3 + -1;
+                            if (-1 < *piVar5) {
+                                if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                                    iVar4 = iVar3 + -1;
+                                }
+                                dVar5 = dVar5 + 1;
                             }
-                            dVar5 = dVar5 + 1;
-                        }
-                        if (-1 < piVar5[1]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
-                                iVar4 = iVar3;
+                            if (-1 < piVar5[1]) {
+                                if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                                    iVar4 = iVar3;
+                                }
+                                dVar5 = dVar5 + 1;
                             }
-                            dVar5 = dVar5 + 1;
-                        }
-                        if (-1 < piVar5[2]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
-                                iVar4 = iVar3 + 1;
+                            if (-1 < piVar5[2]) {
+                                if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                                    iVar4 = iVar3 + 1;
+                                }
+                                dVar5 = dVar5 + 1;
                             }
-                            dVar5 = dVar5 + 1;
-                        }
-                        if (-1 < piVar5[3]) {
-                            if (dVar5 == DAT_GameCore::instance.field29_0x80) {
-                                iVar4 = iVar3 + 2;
+                            if (-1 < piVar5[3]) {
+                                if (dVar5 == DAT_GameCore::instance.field29_0x80) {
+                                    iVar4 = iVar3 + 2;
+                                }
+                                dVar5 = dVar5 + 1;
                             }
-                            dVar5 = dVar5 + 1;
+                            iVar1 = iVar3 + 3;
+                            piVar5 = piVar5 + 5;
+                            iVar3 = iVar3 + 5;
+                        } while (iVar1 < 10);
+                        if (iVar4 == -1) {
+                            iVar4 = DAT_GameState::instance
+                                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                        .keep.id;
+                            DWORD_00b98410::instance = DVar2;
+                            if (iVar4 != 0) {
+                                MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
+                                    DAT_ViewportRenderState::ptr)(
+                                    (short)DAT_BuildingsState::instance.buildings[iVar4].x + 2,
+                                    (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y + 2)));
+                            }
+                        } else {
+                            DWORD_00b98410::instance = DVar2;
+                            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
+                                DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.field22_0x58[0][iVar4]);
                         }
-                        iVar1 = iVar3 + 3;
-                        piVar5 = piVar5 + 5;
-                        iVar3 = iVar3 + 5;
-                    } while (iVar1 < 10);
-                    if (iVar4 == -1) {
-                        iVar4 = DAT_GameState::instance
-                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                    .keep.id;
-                        DWORD_00b98410::instance = DVar2;
-                        if (iVar4 != 0) {
-                            MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
-                                DAT_ViewportRenderState::ptr)(
-                                (short)DAT_BuildingsState::instance.buildings[iVar4].x + 2,
-                                (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar4].y + 2)));
+                        DAT_GameCore::instance.field29_0x80 = DAT_GameCore::instance.field29_0x80 + 1;
+                        if ((int)dVar5 <= (int)DAT_GameCore::instance.field29_0x80) {
+                            DAT_GameCore::instance.field29_0x80 = 0;
                         }
-                    } else {
-                        DWORD_00b98410::instance = DVar2;
-                        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
-                            DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.field22_0x58[0][iVar4]);
-                    }
-                    DAT_GameCore::instance.field29_0x80 = DAT_GameCore::instance.field29_0x80 + 1;
-                    if ((int)dVar5 <= (int)DAT_GameCore::instance.field29_0x80) {
-                        DAT_GameCore::instance.field29_0x80 = 0;
                     }
                 }
                 if (DAT_MouseState::instance.scrollEventData == 8) {
