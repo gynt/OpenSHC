@@ -71,7 +71,9 @@ namespace UI {
             int iVar2;
             BOOLEnum BVar3;
             dword elementState;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus != 0) {
+                return;
+            }
             if (DAT_GameSynchronyState::instance.saveRelated != 0) {
                 return;
             }
@@ -215,8 +217,12 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID);
                     }
-                    if (DAT_MouseState::instance.draggingStopped == FALSE) {}
-                    if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {}
+                    if (DAT_MouseState::instance.draggingStopped == FALSE) {
+                        return;
+                    }
+                    if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
+                        return;
+                    }
                 } else if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_NULL) {
                     if ((DAT_MouseState::instance.leftClickStart == 0)
                         && (DAT_ViewportRenderState::instance.viewportState.field4_0x10
