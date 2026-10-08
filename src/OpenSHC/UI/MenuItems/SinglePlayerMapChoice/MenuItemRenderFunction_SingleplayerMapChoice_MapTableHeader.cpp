@@ -69,6 +69,7 @@ namespace UI {
                     color = 0xccfaff;
                 } else {
                     color = 0xffffff;
+                    return;
                 }
                 alignment = OpenSHC::Text::TTA_LEFT;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
