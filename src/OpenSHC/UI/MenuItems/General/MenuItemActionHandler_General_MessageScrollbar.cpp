@@ -31,6 +31,7 @@ namespace UI {
                 if (0 < DAT_MapPropertiesState::instance.offset) {
                     DAT_MapPropertiesState::instance.offset = DAT_MapPropertiesState::instance.offset + -1;
                     *currentValue = DAT_MapPropertiesState::instance.offset;
+                    return;
                 }
                 break;
             case 6:
