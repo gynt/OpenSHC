@@ -53,6 +53,7 @@ namespace UI {
                         if (DAT_MenuTextInputState::instance.field14_0x38 != 1) {}
                         param_1 = 0xd;
                     }
+                    return;
                 }
                 backgroundColor = 0;
             } else {
@@ -71,6 +72,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xf),
                         iVar1, iVar3, TVar4, color, iVar5, BVar6, iVar7);
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
