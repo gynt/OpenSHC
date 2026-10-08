@@ -34,8 +34,12 @@ namespace UI {
             DWORD _currentTime;
             int iVar2;
             iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {}
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {}
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+                return;
+            }
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
+                return;
+            }
             if (DAT_GameCore::instance.taxesSettingUnk != 0) {
                 _currentTime = timeGetTime();
                 if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {
