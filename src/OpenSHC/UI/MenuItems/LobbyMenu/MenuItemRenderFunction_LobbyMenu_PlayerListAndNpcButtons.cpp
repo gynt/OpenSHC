@@ -190,6 +190,7 @@ namespace UI {
                         uVar8 = 0xc2f0eb;
                     } else {
                         uVar8 = 0x7caaaf;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText4Unk,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x192,
@@ -203,6 +204,7 @@ namespace UI {
                     (int)((int)(DAT_GameSynchronyState::instance.currentAIArray[iVar3] * 9 + 0xe6)),
                     (int)((int)(DAT_ButtonX::instance + 10)), (int)((int)(DAT_ButtonY::instance + 5)), 0x46, 0x7caaaf,
                     0x13, ((int)(iVar6 + (iVar6 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                return;
             }
             if (0 < param_1) {
                 iVar3 = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1];
@@ -268,6 +270,7 @@ namespace UI {
                     iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                         ((int)(iVar3 + (iVar3 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                    return;
                 }
                 if (DAT_GameSynchronyState::instance.currentAIArray[iVar3] == 0) {
                     DAT_ButtonUnknownZero::instance = 0;
