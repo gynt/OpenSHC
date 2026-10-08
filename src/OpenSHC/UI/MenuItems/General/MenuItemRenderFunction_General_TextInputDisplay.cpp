@@ -42,7 +42,9 @@ namespace UI {
             int xParam;
             int iVar2;
             int _textArrayIndex;
-            if ((param_1 == 3) && (DAT_GameCore::instance.unknownFlag_0x118 == TRUE)) {}
+            if ((param_1 == 3) && (DAT_GameCore::instance.unknownFlag_0x118 == TRUE)) {
+                return;
+            }
             _textWidth = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
