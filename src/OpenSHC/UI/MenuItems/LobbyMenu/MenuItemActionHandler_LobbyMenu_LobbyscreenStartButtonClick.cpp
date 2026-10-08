@@ -71,6 +71,7 @@ namespace UI {
                         | OpenSHC::Audio::SFX::SEID_ARROW_SHOOT));
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_RANKING_GAMES, 0);
+                return;
             }
             if (param_1 == 0x69) {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0
