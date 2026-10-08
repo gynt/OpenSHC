@@ -265,6 +265,7 @@ namespace UI {
                 } else {
                     DAT_TextManagerObject::instance.textColor = 0xff;
                     DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
+                    return;
                 }
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
                 case 1:
@@ -435,6 +436,7 @@ namespace UI {
                     } else {
                         DAT_TextManagerObject::instance.textColor = 0xff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
