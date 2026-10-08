@@ -34,12 +34,14 @@ namespace UI {
             iVar2 = DAT_ButtonX::instance;
             if (DAT_UnitsState::instance.nHasOwnedUnitInSelection == 0) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             iVar1 = DAT_UnitsState::instance.selectionSlots[param_1];
             DAT_ButtonUnknownZero::instance = 0;
             if (iVar1 == -1) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                return;
             }
             switch (iVar1) {
             case 0:
