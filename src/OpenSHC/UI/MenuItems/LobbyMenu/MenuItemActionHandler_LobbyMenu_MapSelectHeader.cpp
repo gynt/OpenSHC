@@ -67,20 +67,19 @@ namespace UI {
                 }
             } else {
                 if (DAT_00b960dc::instance != 0) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    return;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    return;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
                     return;
                 }
                 iVar1 = param_1;
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
-                    DAT_GameSynchronyState::instance.field239_0x1072f8 = 0;
+                    return;
                 }
             }
             if (iVar1 == 0) {
