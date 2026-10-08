@@ -32,6 +32,7 @@ namespace UI {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + -1;
                     *currentValue = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset;
+                    return;
                 }
                 break;
             case 6:
@@ -39,6 +40,7 @@ namespace UI {
                     < DAT_MapPropertiesState::instance.field8_0x224 + -0x13) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + 1;
+                    return;
                 }
                 break;
             default:
