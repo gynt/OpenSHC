@@ -49,6 +49,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     ;
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     if (param_1 == INT_00b95abc::instance) {
@@ -56,6 +57,7 @@ namespace UI {
                     }
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
+                        return;
                     }
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -83,6 +85,7 @@ namespace UI {
                     uVar1 = 300;
                 } else {
                     uVar1 = 400;
+                    return;
                 }
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", uVar1, uVar1);
                 MACRO_CALL_MEMBER(
