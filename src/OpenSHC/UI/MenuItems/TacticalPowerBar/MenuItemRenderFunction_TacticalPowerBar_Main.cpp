@@ -88,7 +88,9 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iVar1 + 0x121,
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonBlendStrength::instance)));
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {}
+                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                        return;
+                    }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x129,
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
