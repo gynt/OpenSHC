@@ -124,6 +124,7 @@ namespace UI {
                         (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x12, FALSE);
                 }
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -135,6 +136,7 @@ namespace UI {
             } else {
                 blendStrength = 2;
                 color = 0xccfaff;
+                return;
             }
         LAB_00491904:
             keepOffsetX = FALSE;
