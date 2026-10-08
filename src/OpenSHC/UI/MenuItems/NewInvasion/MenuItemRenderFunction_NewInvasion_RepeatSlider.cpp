@@ -52,6 +52,7 @@ namespace UI {
             color = COL_GREYISH_YELLOW::instance.shortValue;
             if (isDragged != FALSE) {
                 color = COL_DARK_LIME::instance.shortValue;
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 thumbXPos + DAT_ButtonX::instance + 1, (int)((int)(DAT_ButtonY::instance + 2)),
