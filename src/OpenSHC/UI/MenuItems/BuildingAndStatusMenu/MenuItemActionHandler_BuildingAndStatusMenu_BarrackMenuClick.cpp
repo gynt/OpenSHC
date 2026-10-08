@@ -64,7 +64,9 @@ namespace UI {
                     _unitCost = ((ResourceType)0);
                 }
                 if (_recruitableState == OpenSHC::Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY) {
-                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {}
+                    if (DAT_GameCore::instance.genieVoiceActive == FALSE) {
+                        return;
+                    }
                     /*
                       @TheRedDaemon: Army is Max Size Message
                      */
@@ -76,7 +78,9 @@ namespace UI {
                     if ((int)_unitCost
                         <= DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .currentResources[0xf]) {
-                        if (_recruitableState != OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT) {}
+                        if (_recruitableState != OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT) {
+                            return;
+                        }
                     LAB_004674a0:
                         /*
                           "Weapons needed sire"
@@ -142,7 +146,9 @@ namespace UI {
             }
             DWORD_00df3378::instance = DVar2;
             DWORD_00df3370::instance = DVar1;
-            if (_now - DWORD_00df3370::instance < 0x1f41) {}
+            if (_now - DWORD_00df3370::instance < 0x1f41) {
+                return;
+            }
         LAB_004673e5:
             /*
               Plays unit recruitment message
