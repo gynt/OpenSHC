@@ -151,6 +151,7 @@ namespace UI {
                     } else {
                         uVar4 = 0xccfaff;
                         iVar2 = *(int*)((int)DAT_MapPropertiesState::ptr + iVar3 * 4 + 0x9c);
+                        return;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar2,
