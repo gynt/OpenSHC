@@ -52,7 +52,9 @@ namespace UI {
             int iVar4;
             TextAlignment _aligntment;
             uint _color;
-            if (DAT_UnknownGFXIndex::instance == 1) {}
+            if (DAT_UnknownGFXIndex::instance == 1) {
+                return;
+            }
             if (param_1 == 5) {
                 if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (BOOL_WasInteracting::instance == FALSE)) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
@@ -64,6 +66,7 @@ namespace UI {
                 if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE)
                     && (((param_1 == 1 || (param_1 == 2)) || ((param_1 == 3 || (param_1 == 9)))))) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
+                    return;
                 }
                 if (param_1 < 10) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
@@ -138,6 +141,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x1e),
                     _x, _y, _aligntment, _color, uVar1, iVar2, BVar3, iVar4);
             } else if (4 < param_1) {
+                return;
             }
         LAB_00425150:
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
