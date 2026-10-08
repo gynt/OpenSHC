@@ -360,7 +360,9 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
             }
         LAB_00427f4c:
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {}
+            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                return;
+            }
             iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                 ((int)(iVar3 + (iVar3 >> 0x1f & 0x1fU)) >> 5) + 0x20);
