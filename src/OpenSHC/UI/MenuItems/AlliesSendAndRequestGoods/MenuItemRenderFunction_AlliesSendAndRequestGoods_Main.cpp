@@ -99,6 +99,7 @@ namespace UI {
                     iVar1 = 0x285;
                 } else {
                     iVar1 = 0x286;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1,
@@ -108,6 +109,7 @@ namespace UI {
                         .currentResources[0xf],
                     (int)((int)(DAT_ButtonX::instance + 0x15)), (int)((int)(DAT_ButtonY::instance + 0x14)),
                     OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x13, FALSE, 0);
+                return;
             }
             iVar5 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
@@ -177,6 +179,7 @@ namespace UI {
                                 imageID = iVar3 + 1;
                                 goto LAB_004adacf;
                             }
+                            return;
                         }
                         iVar4 = iVar4 + 0x18;
                     } while (iVar4 < 0x228);
