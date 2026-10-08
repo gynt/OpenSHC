@@ -64,6 +64,7 @@ namespace UI {
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_ACTIVATE_TACTICAL_POWERS);
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         ((SoundEffectID)0x100));
+                    return;
                 }
                 DAT_TileMapState::instance.field178_0x5549ec = param_1;
                 DAT_TileMapState::instance.shiftRelated0or3 = 5;
