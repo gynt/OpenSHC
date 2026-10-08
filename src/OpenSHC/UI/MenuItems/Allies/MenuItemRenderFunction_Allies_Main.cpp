@@ -71,7 +71,9 @@ namespace UI {
             int xParam;
             iVar2 = DAT_ButtonY::instance;
             iVar3 = DAT_ButtonX::instance;
-            if (param_1 == 100) {}
+            if (param_1 == 100) {
+                return;
+            }
             if ((DAT_AlliesCount::instance < 1) && (param_1 != -1)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -97,7 +99,9 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
             }
             if (param_1 == 200) {
-                if (DAT_00df51f4::instance == 0) {}
+                if (DAT_00df51f4::instance == 0) {
+                    return;
+                }
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_ALLIES, DAT_00df51f0::instance, (int)((int)(DAT_ButtonX::instance)),
@@ -108,7 +112,9 @@ namespace UI {
             if (0x13 < (uint)param_1) {
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {}
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    return;
+                }
                 if (param_1 == 0x14) {
                     DAT_00df51f4::instance = 1;
                     DAT_00df51f0::instance = 5;
@@ -117,7 +123,9 @@ namespace UI {
                     DAT_00df51f4::instance = 1;
                     DAT_00df51f0::instance = 6;
                 }
-                if (param_1 != 0x16) {}
+                if (param_1 != 0x16) {
+                    return;
+                }
                 DAT_00df51f4::instance = 1;
                 DAT_00df51f0::instance = 7;
             }
@@ -279,7 +287,9 @@ namespace UI {
             if ((iVar2 == -1)
                 && (BVar1 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
                         DAT_GameSynchronyState::ptr)(iVar3),
-                    BVar1 == FALSE)) {}
+                    BVar1 == FALSE)) {
+                        return;
+                    }
             iVar7 = DAT_ButtonY::instance;
             iVar5 = DAT_ButtonX::instance;
             iVar6 = DAT_ButtonX::instance + 0x18;
@@ -414,11 +424,17 @@ namespace UI {
             iVar2 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .requestStateUnk
-                != 1) {}
+                != 1) {
+                    return;
+                }
             iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .playerID_askerUnk;
-            if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar5] == -1) {}
-            if (iVar5 != iVar3) {}
+            if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar5] == -1) {
+                return;
+            }
+            if (iVar5 != iVar3) {
+                return;
+            }
             /*
               added by script: "Attack"
              */
