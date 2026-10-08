@@ -32,6 +32,7 @@ namespace UI {
             if (param_1 == 100) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                return;
             }
             if (param_1 == 1) {
                 DAT_LobbyAddAICurrentlyHoveredAI::instance = 0;
