@@ -92,6 +92,7 @@ namespace UI {
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                    return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -170,6 +171,7 @@ namespace UI {
                         menuID = OpenSHC::UI::Enums::MVT_CRUSADE_MISSION_INTRO;
                     } else {
                         menuID = OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -182,6 +184,7 @@ namespace UI {
             } else {
                 if (param_1 == -4) {
                     DAT_StopHandlingMenuItems::instance = 0;
+                    return;
                 }
                 if (param_1 == -90) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -198,6 +201,7 @@ namespace UI {
                         DAT_GreatestLordDefinedData::instance.tableSortBy = -1;
                         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                             DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_GREATEST_LORD, FALSE);
+                        return;
                     }
                     if (param_1 < -9) {
                         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
@@ -213,6 +217,7 @@ namespace UI {
                                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] = -1;
                                 *(undefined4*)((int)DAT_GameSynchronyState::ptr + (-9 - param_1) * 4 + 0x6a8) = 1;
                                 DAT_GameSynchronyState::instance.currentPlayerSlotID = -9 - param_1;
+                                return;
                             }
                             if (param_1 != -100) {
                                 if (param_1 == -0x65) {
@@ -251,6 +256,7 @@ namespace UI {
                                 == OpenSHC::UI::Enums::MMT_BUILDING_HELP_TEXT) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
                                     DAT_TextEditorState::ptr)();
+                                return;
                             }
                             if ((((((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
                                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL))
