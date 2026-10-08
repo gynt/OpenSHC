@@ -55,6 +55,7 @@ namespace UI {
                 } else {
                     backgroundColor = 0;
                     foregroundColor = 0xffffff;
+                    return;
                 }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 MACRO_CALL_MEMBER(
