@@ -88,11 +88,11 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
                         return;
                     case OpenSHC::Commands::M_MAPPER_AFFECT_TYPE:
-                        if (DAT_TileMapState::instance.unknownZero_0x554904 + 1 < 2) {
-                            DAT_TileMapState::instance.unknownZero_0x554904
-                                = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
+                        DAT_TileMapState::instance.unknownZero_0x554904
+                            = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
+                        if (1 < DAT_TileMapState::instance.unknownZero_0x554904) {
+                            DAT_TileMapState::instance.unknownZero_0x554904 = 0;
                         }
-                        DAT_TileMapState::instance.unknownZero_0x554904 = 0;
                         return;
                     case OpenSHC::Commands::M_MAPPER_TO_MAP_EDIT:
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -104,11 +104,12 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                         return;
                     case OpenSHC::Commands::M_MAPPER_SNAP_TO:
-                        if (DAT_TileMapState::instance.unknownZero_0x5548fc != 0) {
-                            DAT_TileMapState::instance.unknownZero_0x5548fc
-                                = (-(uint)(DAT_TileMapState::instance.unknownZero_0x5548fc != 1) & 0xfffffffe) + 2;
+                        if (DAT_TileMapState::instance.unknownZero_0x5548fc == 0) {
+                            DAT_TileMapState::instance.unknownZero_0x5548fc = 1;
+                            return;
                         }
-                        DAT_TileMapState::instance.unknownZero_0x5548fc = 1;
+                        DAT_TileMapState::instance.unknownZero_0x5548fc
+                            = DAT_TileMapState::instance.unknownZero_0x5548fc == 1 ? 2 : 0;
                         return;
                     case OpenSHC::Commands::M_MAPPER_BIGROCK1:
                         DAT_TileMapState::instance.field80_0x554894 = 1;
