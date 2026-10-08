@@ -46,68 +46,68 @@ namespace UI {
             BOOLEnum keepOffsetX;
             int blendStrength;
             iVar1 = 0;
-            if (7 < (uint)param_1) {
-                if (param_1 == -3) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                        AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    blendStrength = 0;
-                    iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                    yParam = DAT_ButtonY::instance + 6;
-                    keepOffsetX = FALSE;
-                    fontSize = 0x12;
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        color = 0xc2f0eb;
-                    } else {
-                        color = 0xccfaff;
-                        return;
-                    }
-                    alignment = OpenSHC::Text::TTA_CENTER;
-                    /*
-                      added by script: "Exit"
-                     */
-                    textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 3);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+            if (7 >= (uint)param_1) {
+                if ((param_1 == 1) && (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
+                    DAT_ButtonY::instance = DAT_ButtonY::instance + 1;
+                    iVar1 = -1;
                 }
+                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                        MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                switch (param_1) {
+                case 0:
+                    if (DAT_MapPropertiesState::instance.SEC_XbowProducible_save != 0) {}
+                    goto LAB_004bb841;
+                case 1:
+                    if (DAT_MapPropertiesState::instance.SEC_PikeProducible_save != 0) {}
+                    break;
+                case 2:
+                    if (DAT_MapPropertiesState::instance.SEC_SwordProducible_save != 0) {}
+                    break;
+                case 3:
+                    if (DAT_MapPropertiesState::instance.SEC_BowProducible_save != 0) {}
+                    break;
+                case 4:
+                    if (DAT_MapPropertiesState::instance.SEC_SpearProducible_save != 0) {}
+                    break;
+                case 5:
+                    if (DAT_MapPropertiesState::instance.SEC_MaceProducible_save != 0) {}
+                    break;
+                default:
+                    if (param_1 == 0)
+                        goto LAB_004bb841;
+                }
+                DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
+            LAB_004bb841:
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d,
+                    (int)((int)(DAT_ButtonX::instance + 6)), DAT_ButtonY::instance + -5 + iVar1, 0xc);
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             }
-            if ((param_1 == 1) && (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
-                DAT_ButtonY::instance = DAT_ButtonY::instance + 1;
-                iVar1 = -1;
+            if (param_1 == -3) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                    AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                blendStrength = 0;
+                iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                yParam = DAT_ButtonY::instance + 6;
+                keepOffsetX = FALSE;
+                fontSize = 0x12;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    color = 0xc2f0eb;
+                } else {
+                    color = 0xccfaff;
+                    return;
+                }
+                alignment = OpenSHC::Text::TTA_CENTER;
+                /*
+                  added by script: "Exit"
+                 */
+                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 3);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
             }
-            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                    MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-            switch (param_1) {
-            case 0:
-                if (DAT_MapPropertiesState::instance.SEC_XbowProducible_save != 0) {}
-                goto LAB_004bb841;
-            case 1:
-                if (DAT_MapPropertiesState::instance.SEC_PikeProducible_save != 0) {}
-                break;
-            case 2:
-                if (DAT_MapPropertiesState::instance.SEC_SwordProducible_save != 0) {}
-                break;
-            case 3:
-                if (DAT_MapPropertiesState::instance.SEC_BowProducible_save != 0) {}
-                break;
-            case 4:
-                if (DAT_MapPropertiesState::instance.SEC_SpearProducible_save != 0) {}
-                break;
-            case 5:
-                if (DAT_MapPropertiesState::instance.SEC_MaceProducible_save != 0) {}
-                break;
-            default:
-                if (param_1 == 0)
-                    goto LAB_004bb841;
-            }
-            DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
-        LAB_004bb841:
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d,
-                (int)((int)(DAT_ButtonX::instance + 6)), DAT_ButtonY::instance + -5 + iVar1, 0xc);
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         }
 
     }
