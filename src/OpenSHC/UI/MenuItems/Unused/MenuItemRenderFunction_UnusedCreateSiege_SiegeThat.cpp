@@ -44,6 +44,7 @@ namespace UI {
                 if (param_1 == 5) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
                 if (((param_1 == 0x23) || (param_1 == 0x24)) && (INT_00b960ec::instance == 0)) {
                     MACRO_CALL_MEMBER(
@@ -61,6 +62,7 @@ namespace UI {
                         color_00 = 0xccfaff;
                         yParam = DAT_ButtonY::instance + 10;
                     }
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
