@@ -31,14 +31,18 @@ namespace UI {
                     DAT_MenuTextInputState::instance.field20_0x44 = *currentValue;
                 }
                 if (param_1 != 1) {
-                    if (param_1 != 2) {}
+                    if (param_1 != 2) {
+                        return;
+                    }
                     if (DAT_MenuTextInputState::instance.field22_0x4c != *currentValue) {
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(3, (int)((int)(*currentValue)));
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(4, (int)((int)(*currentValue)));
+                        return;
                     }
                     DAT_MenuTextInputState::instance.field22_0x4c = *currentValue;
+                    return;
                 }
                 if (DAT_MenuTextInputState::instance.field21_0x48 != *currentValue) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
