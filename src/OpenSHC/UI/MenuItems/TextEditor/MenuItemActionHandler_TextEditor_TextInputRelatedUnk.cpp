@@ -31,7 +31,9 @@ namespace UI {
             if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
                 uVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::UserTextHandler_Func::dequeueInputBufferChar, DAT_UserTextHandlerState::ptr)();
-                if ((int)uVar2 < 0xf0) {}
+                if ((int)uVar2 < 0xf0) {
+                    return;
+                }
                 switch (uVar2) {
                 case 0xf4:
                     if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY < 0x12) {
@@ -81,11 +83,13 @@ namespace UI {
                     DAT_TextEditorState::instance.helpContentScrollOffsetY
                         = DAT_TextEditorState::instance.helpContentScrollOffsetY
                         + DAT_TextEditorState::instance.dialogContentHeight;
+                    return;
                 }
                 if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY
                     <= (int)(((int)uVar2 < 1) - 1 & uVar2)) {}
             LAB_004615e1:
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar2 < 1) - 1 & uVar2;
+                return;
             }
             uVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::dequeueInputBufferChar, DAT_UserTextHandlerState::ptr)();
@@ -260,6 +264,7 @@ namespace UI {
                 DAT_TextEditorState::instance.field52_0x23970
                     = (uint)(ushort)DAT_TextEditorState::instance
                           .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex];
+                return;
             }
             DAT_TextEditorState::instance.field52_0x23970 = 0;
         }
