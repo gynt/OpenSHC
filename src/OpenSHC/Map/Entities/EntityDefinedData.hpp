@@ -27,19 +27,19 @@ namespace Map {
             int field0_0x0[9]; // 0x00000000 length: 36
             pointer EntityCallbacks[44]; // 0x00000024 length: 176
             GmIDInt EntityPropertyArray_1[45]; // 0x000000D4 length: 180
-            byte FireAnimationFrames1[36]; // 0x00000188 length: 36
+            char FireAnimationFrames1[36]; // 0x00000188 length: 36
             int EntityPropertyArray_2[45]; // 0x000001AC length: 180
-            byte FireAnimationFrames2[16]; // 0x00000260 length: 16
+            char FireAnimationFrames2[16]; // 0x00000260 length: 16
             int field6_0x270[15]; // 0x00000270 length: 60
             int field7_0x2ac[35]; // 0x000002AC length: 140
             byte FireAnimationFrames3[28]; // 0x00000338 length: 28
             uint EntityTypeArrayForProjectileRange[38]; // 0x00000354 length: 152
             undefined1 padding_0x3ec[28]; // 0x000003EC length: 28
-            byte FireAnimationFrames4[28]; // 0x00000408 length: 28
+            char FireAnimationFrames4[28]; // 0x00000408 length: 28
             int EntityArrayCurveTypeForProjectileType[45]; // 0x00000424 length: 180
             byte FireAnimationFrames5[28]; // 0x000004D8 length: 28
             int EntityArrayProjectileVelocityForProjectileType[45]; // 0x000004F4 length: 180
-            byte FireAnimationFrames6[28]; // 0x000005A8 length: 28
+            char FireAnimationFrames6[28]; // 0x000005A8 length: 28
             float ProjectileGravityPerEntityType[46]; // 0x000005C4 length: 184
             int EntityPropertyArray_3[56]; // 0x0000067C length: 224
             int field45_0x75c[36]; // 0x0000075C length: 144
@@ -53,8 +53,8 @@ namespace Map {
             int EntityGraphicOffsets[92]; // 0x00000A14 length: 368
             Point4ShortXY EntitySubTileDrawOffsets[128]; // 0x00000B84 length: 512
             Point8IntXY EntityBlastTileOffsets[16]; // 0x00000D84 length: 128
-            byte FireAnimationFrames7[48]; // 0x00000E04 length: 48
-            byte FireAnimationFrames8[56]; // 0x00000E34 length: 56
+            char FireAnimationFrames7[48]; // 0x00000E04 length: 48
+            char FireAnimationFrames8[56]; // 0x00000E34 length: 56
             int XYOffsetsInAllDirections[64][2]; // 0x00000E6C length: 512
             int field59_0x106c[4]; // 0x0000106C length: 16
             int SharedEntityAnimationFrames[58]; // 0x0000107C length: 232

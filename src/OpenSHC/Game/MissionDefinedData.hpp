@@ -44,8 +44,7 @@ namespace Game {
         int field25_0xae4[5]; // 0x00000AE4 length: 20
         bool field26_0xaf8; // 0x00000AF8 length: 1
         byte field27_0xaf9[3]; // 0x00000AF9 length: 3
-        int field28_0xafc; // 0x00000AFC length: 4
-        int field29_0xb00[20]; // 0x00000B00 length: 80
+        int MissionHintCounts[21]; // 0x00000AFC length: 84
         int sortColumn; // 0x00000B50 length: 4
         int ScenarioDescriptionSpriteIDs[26]; // 0x00000B54 length: 104
         int SkirmishTrailMissionPositions[50][2]; // 0x00000BBC length: 400

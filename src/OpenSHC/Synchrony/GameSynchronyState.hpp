@@ -315,8 +315,8 @@ namespace Synchrony {
         FILE* FILEPTR_ReceivedMapFile; // 0x00109DF8 length: 4
         int mapTransferTicksPerPlayer[9]; // 0x00109DFC length: 36
         int mapSendRequestStatePerPlayer[9]; // 0x00109E20 length: 36
-        byte DAT_RoundTableOrderArray[9]; // 0x00109E44 length: 9
-        byte DAT_PlayerGroupArray[9]; // 0x00109E4D length: 9
+        char DAT_RoundTableOrderArray[9]; // 0x00109E44 length: 9
+        char DAT_PlayerGroupArray[9]; // 0x00109E4D length: 9
         byte playerGroupArray2Unk[9]; // 0x00109E56 length: 9
         byte slotActionPending[9]; // 0x00109E5F length: 9
         char playerPositionsArray[8]; // 0x00109E68 length: 8
