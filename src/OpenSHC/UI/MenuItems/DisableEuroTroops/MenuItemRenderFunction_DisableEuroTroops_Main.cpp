@@ -75,6 +75,7 @@ namespace UI {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;
+                    return;
                 }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 /*
