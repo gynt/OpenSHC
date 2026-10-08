@@ -97,7 +97,9 @@ namespace UI {
                         || (DAT_GameSynchronyState::instance.currentAIArray[8] != 0)) {
                         iVar1 = iVar1 + 1;
                     }
-                    if (iVar1 != 8) {}
+                    if (iVar1 != 8) {
+                        return;
+                    }
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
