@@ -63,6 +63,7 @@ namespace UI {
             if (param_1 == -2) {
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
+                return;
             }
             if (9 < param_1) {
                 if (param_1 == 10) {
@@ -80,6 +81,7 @@ namespace UI {
                         DAT_00df51fc::instance = 9;
                     }
                 }
+                return;
             }
             iVar1 = param_1;
             if (param_1 < 7) {
