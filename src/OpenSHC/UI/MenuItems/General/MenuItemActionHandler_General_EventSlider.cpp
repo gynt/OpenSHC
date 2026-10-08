@@ -291,6 +291,7 @@ namespace UI {
                             DAT_MapPropertiesState::instance
                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                 .data.scenario.repeat = (byte)*maxValue;
+                            return;
                         }
                         if (*currentValue < *minValue) {
                             *currentValue = *minValue;
