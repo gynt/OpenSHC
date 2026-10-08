@@ -38,7 +38,9 @@ namespace UI {
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {}
             if (DAT_GameCore::instance.taxesSettingUnk != 0) {
                 _currentTime = timeGetTime();
-                if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {}
+                if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {
+                    return;
+                }
                 DAT_GameCore::instance.taxestimeUnk = _currentTime;
                 if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 == FALSE) {
                     if (DAT_GameCore::instance.scribeAnimationFrame < 6) {
@@ -66,6 +68,7 @@ namespace UI {
                         DAT_GameCore::instance.scribeAnimationFrame = 6;
                     }
                 }
+                return;
             }
             iVar2 = DAT_GameCore::instance.scribeAnimationFrame;
             switch (DAT_GameCore::instance.taxesSettingUnk) {
@@ -96,6 +99,7 @@ namespace UI {
             if (iVar2 == 0) {
                 DAT_GameCore::instance.taxesSettingUnk = 0;
                 iVar2 = DAT_GameCore::instance.scribeAnimationFrame;
+                return;
             }
         switchD_00433499_caseD_4:
             DAT_GameCore::instance.scribeAnimationFrame = iVar2;
