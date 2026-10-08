@@ -55,7 +55,9 @@ namespace UI {
             if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_LOAD_MAP)
                     || (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_SEND_MAP_TO))
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM)) {}
+                    == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM)) {
+                        return;
+                    }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
                 == OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS) {
                 if ((((param_1 != -1000) && (param_1 != -10))
@@ -187,6 +189,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12, FALSE,
                     ((int)(iVar2 + (iVar2 >> 0x1f & 0x1fU)) >> 5) + 0x20);
+                return;
             }
             if (param_1 == -1000) {
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -233,6 +236,7 @@ namespace UI {
                         iVar1 = 0xd0;
                     } else {
                         iVar1 = 0xce;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, iVar1,
@@ -406,6 +410,7 @@ namespace UI {
                             (int)((int)(DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xb8e6f5, 0, 0x12, FALSE,
                             iVar1);
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 99,
