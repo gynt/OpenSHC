@@ -174,7 +174,9 @@ namespace UI {
                 }
             }
             if (0x154 < (int)DAT_TileMapState::instance.currentMapperCommand) {
-                if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_SCRUBGRASS) {}
+                if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_SCRUBGRASS) {
+                    return;
+                }
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0xffffff80;
                 goto LAB_00444270;
             }
