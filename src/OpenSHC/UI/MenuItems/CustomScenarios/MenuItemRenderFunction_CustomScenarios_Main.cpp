@@ -45,7 +45,9 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            if (DAT_UnknownGFXIndex::instance == 1) {}
+            if (DAT_UnknownGFXIndex::instance == 1) {
+                return;
+            }
             if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                 if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x161;
@@ -77,7 +79,9 @@ namespace UI {
                 numInGroup = 0;
             } else {
                 if (param_1 != 2) {
-                    if (4 < param_1) {}
+                    if (4 < param_1) {
+                        return;
+                    }
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_MAP_TITLES, param_1 + -1,
