@@ -69,10 +69,6 @@ namespace UI {
                 DAT_TileMapState::instance.field178_0x5549ec = param_1;
                 DAT_TileMapState::instance.shiftRelated0or3 = 5;
                 switch (param_1) {
-                case 1:
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                        OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
-                    return;
                 case 2:
                 case 3:
                 case 4:
@@ -81,6 +77,10 @@ namespace UI {
                 case 0x10:
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         ((SoundEffectID)0x104));
+                    return;
+                case 1:
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                        OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
                     return;
                 case 7:
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
