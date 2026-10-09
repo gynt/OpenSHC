@@ -177,7 +177,7 @@ namespace UI {
                             }
                             iVar7 = iVar7 + 1;
                         } while (iVar7 < 8);
-                        if (-1 < DAT_00b95960::instance) {
+                        if (-1 < (int)DAT_00b95960::instance) {
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
