@@ -33,8 +33,6 @@ namespace UI {
             int iVar9;
             undefined4 uVar10;
             HelpTextToken token;
-            iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
-            pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
             switch (param_1) {
             case 0:
             case 0x10:
@@ -528,29 +526,29 @@ namespace UI {
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 2:
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
                     iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::getPrevHelpSectionID,
-                        DAT_TextEditorState::ptr)((uint)(ushort)DAT_TextEditorState::instance
-                            .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                + 1]);
+                        DAT_TextEditorState::ptr)((uint)(ushort)pWVar2[iVar6 + 1]);
                     pWVar2[iVar6 + 1] = (WCHAR)iVar9;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 3:
                 case 10:
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
                     iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::getPrevHelpColorEntryIndex,
-                        DAT_TextEditorState::ptr)((uint)(ushort)DAT_TextEditorState::instance
-                            .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                + 1]);
+                        DAT_TextEditorState::ptr)((uint)(ushort)pWVar2[iVar6 + 1]);
                     pWVar2[iVar6 + 1] = (WCHAR)iVar9;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 0xc:
-                    DAT_TextEditorState::instance
-                        .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex + 1]
-                        = (WCHAR)((ulonglong)((ushort)DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                                  [DAT_TextEditorState::instance.activeHelpHotspotIndex + 1]
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                    pWVar2[iVar6 + 1]
+                        = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1]
                                       + 0x13)
                             % 0x14);
                 }
@@ -565,29 +563,29 @@ namespace UI {
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 2:
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
                     iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::getNextHelpSectionID,
-                        DAT_TextEditorState::ptr)((uint)(ushort)DAT_TextEditorState::instance
-                            .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                + 1]);
+                        DAT_TextEditorState::ptr)((uint)(ushort)pWVar2[iVar6 + 1]);
                     pWVar2[iVar6 + 1] = (WCHAR)iVar9;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 3:
                 case 10:
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
                     iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::getNextHelpColorEntryIndex,
-                        DAT_TextEditorState::ptr)((uint)(ushort)DAT_TextEditorState::instance
-                            .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                + 1]);
+                        DAT_TextEditorState::ptr)((uint)(ushort)pWVar2[iVar6 + 1]);
                     pWVar2[iVar6 + 1] = (WCHAR)iVar9;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                     return;
                 case 0xc:
-                    DAT_TextEditorState::instance
-                        .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex + 1]
-                        = (WCHAR)((ulonglong)((ushort)DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                                  [DAT_TextEditorState::instance.activeHelpHotspotIndex + 1]
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                    iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                    pWVar2[iVar6 + 1]
+                        = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1]
                                       + 1)
                             % 0x14);
                 }
