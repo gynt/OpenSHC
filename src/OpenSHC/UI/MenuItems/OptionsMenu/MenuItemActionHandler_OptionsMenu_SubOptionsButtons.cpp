@@ -26,6 +26,13 @@ namespace UI {
         void OptionsMenu::MenuItemActionHandler_OptionsMenu_SubOptionsButtons(int param_1, ...)
         {
             switch (param_1) {
+            case 0x19:
+                DAT_MenuTextInputState::instance.field12_0x30 = DAT_GameCore::instance.gameSpeedLevel;
+                DAT_MenuTextInputState::instance.field14_0x38 = DAT_GameCore::instance.settingBubbleHelp;
+                DAT_MenuTextInputState::instance.field15_0x3c = DAT_GameCore::instance.unusedOption1;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_GAMEPLAY_OPTIONS);
+                break;
             case 4:
                 DAT_MenuTextInputState::instance.menuCurrentlySelectedResolution
                     = DAT_WindowAndDirectDraw::instance.currentGameResolution;
@@ -47,20 +54,6 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_SOUND_OPTIONS);
                 return;
-            case 6:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_NETWORK_OPTIONS);
-                return;
-            case 0x11:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
-                return;
-            case 0x19:
-                DAT_MenuTextInputState::instance.field12_0x30 = DAT_GameCore::instance.gameSpeedLevel;
-                DAT_MenuTextInputState::instance.field14_0x38 = DAT_GameCore::instance.settingBubbleHelp;
-                DAT_MenuTextInputState::instance.field15_0x3c = DAT_GameCore::instance.unusedOption1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_GAMEPLAY_OPTIONS);
-                break;
             case 0x2d:
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
@@ -70,6 +63,13 @@ namespace UI {
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_IDENTITY_OPTIONS);
+            case 6:
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_NETWORK_OPTIONS);
+                return;
+            case 0x11:
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                return;
             }
         }
 
