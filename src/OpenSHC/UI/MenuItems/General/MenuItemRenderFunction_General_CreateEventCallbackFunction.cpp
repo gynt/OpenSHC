@@ -107,7 +107,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                iVar1 = DAT_ButtonW::instance / 2 + -0xf + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 + -0xf + DAT_ButtonX::instance;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color = 0xc2f0eb;
                 } else {
@@ -125,11 +125,11 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ",
                     (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0xf
-                        + DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        + (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar2 + 0x80,
-                    (int)((int)(DAT_ButtonW::instance / 2 + -9
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + -9
                         + (DAT_TextManagerObject::instance.currentXOffset_0x0 + iVar1) / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 3)));
                 return;
@@ -141,7 +141,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
                 }
             }
