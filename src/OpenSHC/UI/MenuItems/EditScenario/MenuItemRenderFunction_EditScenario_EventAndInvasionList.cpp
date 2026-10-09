@@ -108,8 +108,8 @@ namespace UI {
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.invasion.repeatMonths
                     == 0) {
-                        return;
-                    }
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
@@ -124,7 +124,9 @@ namespace UI {
                             .data.invasion.repeatMonths
                     == 1;
             } else {
-                if (iVar3 != 3) {}
+                if (iVar3 != 3) {
+                    return;
+                }
                 iVar3 = DAT_MapPropertiesState::instance
                             .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                             .data.scenario.ScenarioEventType;
@@ -148,14 +150,14 @@ namespace UI {
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.scenario.repeat
                     == 0) {
-                        return;
-                    }
+                    return;
+                }
                 if (DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.field47_0x1355c + param_1]
                         .data.scenario.repeatMonths
                     == 1) {
-                        return;
-                    }
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(",
                     (int)((int)(DAT_ButtonX::instance + 0x154)), (int)((int)(DAT_ButtonY::instance + 4)),
                     OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
