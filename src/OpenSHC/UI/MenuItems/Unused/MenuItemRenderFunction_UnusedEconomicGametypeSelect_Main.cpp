@@ -46,7 +46,7 @@ namespace UI {
                           - DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar1].stateTransitionTimeBaseUnk_0x18)
                         / 100
                     & 0x3f;
-                if (0xf < uVar2) {
+                if (0x10 <= (int)uVar2) {
                     uVar2 = 0;
                 }
                 MACRO_CALL_MEMBER(
