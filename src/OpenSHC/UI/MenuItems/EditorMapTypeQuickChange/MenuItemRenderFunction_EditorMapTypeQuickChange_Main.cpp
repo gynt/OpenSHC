@@ -146,7 +146,7 @@ namespace UI {
                 return;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                textAddress, (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + 4)), OpenSHC::Text::TTA_CENTER, color, 0x11, FALSE, 0);
         }
 
