@@ -91,7 +91,7 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 + -0x3f0,
-                        (int)((int)(DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 7)));
                     DAT_ButtonY::instance = DAT_ButtonY::instance + 0x48;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -141,7 +141,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 + -0x3f0,
-                    (int)((int)(DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance)),
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 7)));
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 0x48;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -154,7 +154,7 @@ namespace UI {
         LAB_004babe5:
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_SCENARIO, textNumInGroup,
-                (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE);
         }
 
