@@ -178,7 +178,7 @@ namespace UI {
                                     .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                     .header.month
                                 + 0xc,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
                     }
                 }
@@ -297,7 +297,7 @@ namespace UI {
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
                                 + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
                     }
                     if (DAT_MissionAestheticsDefinedData::instance
@@ -314,7 +314,7 @@ namespace UI {
                                        .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                        .data
                             + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
                     return;
                 }
