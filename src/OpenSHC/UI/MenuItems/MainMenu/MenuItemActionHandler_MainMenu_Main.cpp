@@ -152,15 +152,13 @@ namespace UI {
                 DAT_GameCore::instance.maceProducible_logic = 1;
                 menuID = OpenSHC::UI::Enums::MVT_MP_CONNECTION;
                 break;
-            case 5:
+            case 9:
                 /*
-                  quit
+                  custom scenarios
                  */
-                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 9;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
+                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_EDITOR;
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 return;
             case 6:
                 /*
@@ -205,14 +203,6 @@ namespace UI {
                 } while (iVar3 < 128);
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
                 return;
-            case 7:
-                /*
-                  credits
-                 */
-                DAT_00b95954::instance = 0;
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_CREDITS, 0);
-                return;
             case 8:
                 /*
                   options
@@ -225,13 +215,23 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     ((SoundEffectID)0x101));
                 return;
-            case 9:
+            case 5:
                 /*
-                  custom scenarios
+                  quit
                  */
-                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_EDITOR;
+                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 9;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
+                return;
+            case 7:
+                /*
+                  credits
+                 */
+                DAT_00b95954::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                    OpenSHC::UI::Enums::MVT_CREDITS, 0);
                 return;
             default:
                 break;
