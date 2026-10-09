@@ -343,6 +343,7 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
                                     | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_BREAK));
+                                    break;
                         case 0x19:
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
