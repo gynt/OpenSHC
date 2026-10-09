@@ -86,6 +86,7 @@ namespace UI {
                         DAT_MouseState::instance.field52_0x19c = 2;
                         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::toggleFlatView, DAT_TileMapState::ptr)(
                             DAT_TileMapState::instance.flatViewToggleValue1 ^ 1);
+                        return;
                     }
                     goto LAB_00443aed;
                 }
@@ -104,6 +105,7 @@ namespace UI {
             if (DAT_MouseState::instance.rightClickStop != 0) {
                 if (INT_00b9844c::instance == 0) {
                     DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                    return;
                 }
                 INT_00b9844c::instance = 0;
             }
@@ -125,6 +127,7 @@ namespace UI {
                         DAT_TileMapState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                         (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)),
                         DAT_TileMapState::instance.currentMapperCommand);
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::renderWallPlacementPreview, DAT_TileMapState::ptr)(
                     DAT_ViewportRenderState::instance.viewportState.mouseTileX,
