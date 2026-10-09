@@ -33,84 +33,104 @@ namespace UI {
             int iVar1;
             DWORD _currentTime;
             int iVar2;
-            iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+            int iVar3;
+            BOOLEnum BVar4;
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                 return;
             }
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                 return;
             }
+            iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+            BVar4 = DAT_GameCore::instance.unknownScribeRelatedFlag_0x130;
+            iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
             if (DAT_GameCore::instance.taxesSettingUnk != 0) {
                 _currentTime = timeGetTime();
                 if ((int)(_currentTime - DAT_GameCore::instance.taxestimeUnk) < 0x3c) {
                     return;
                 }
+                BVar4 = DAT_GameCore::instance.unknownScribeRelatedFlag_0x130;
                 DAT_GameCore::instance.taxestimeUnk = _currentTime;
-                if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 == FALSE) {
-                    if (DAT_GameCore::instance.scribeAnimationFrame < 6) {
-                        DAT_GameCore::instance.scribeAnimationFrame = DAT_GameCore::instance.scribeAnimationFrame + 1;
-                    } else if (DAT_GameCore::instance.scribeAnimationFrame < 7) {
-                        DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 = TRUE;
+                switch (BVar4) {
+                case FALSE:
+                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
+                    if (iVar3 < 6) {
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + 1;
+                    } else if (iVar3 > 6) {
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
                     } else {
-                        DAT_GameCore::instance.scribeAnimationFrame = DAT_GameCore::instance.scribeAnimationFrame + -1;
+                        BVar4 = TRUE;
+                        DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 = TRUE;
                     }
-                } else if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 == TRUE) {
+                    break;
+                case TRUE:
                     DAT_GameCore::instance.scribeAnimationFrame2 = DAT_GameCore::instance.scribeAnimationFrame2 + 1;
-                } else if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 == 2) {
+                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
+                    break;
+                case 2:
                     iVar2 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
-                    if (DAT_GameCore::instance.scribeAnimationFrame < 0xc) {
-                        if (iVar2 < DAT_GameCore::instance.scribeAnimationFrame) {
-                            DAT_GameCore::instance.scribeAnimationFrame
-                                = DAT_GameCore::instance.scribeAnimationFrame + -1;
-                        } else if (DAT_GameCore::instance.scribeAnimationFrame < iVar2) {
-                            DAT_GameCore::instance.scribeAnimationFrame
-                                = DAT_GameCore::instance.scribeAnimationFrame + 1;
-                        } else {
+                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
+                    if (iVar3 <= 0xb) {
+                        if (iVar3 > iVar2) {
+                            DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
+                        } else if (iVar3 >= iVar2) {
                             DAT_GameCore::instance.taxesSettingUnk = 0;
+                        } else {
+                            DAT_GameCore::instance.scribeAnimationFrame = iVar3 + 1;
                         }
                     } else {
+                        iVar3 = 6;
                         DAT_GameCore::instance.scribeAnimationFrame = 6;
                     }
+                    break;
                 }
-                return;
             }
-            iVar2 = DAT_GameCore::instance.scribeAnimationFrame;
             switch (DAT_GameCore::instance.taxesSettingUnk) {
             case 0:
-                iVar2 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
-                goto switchD_00433499_caseD_4;
+                iVar3 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
+                DAT_GameCore::instance.scribeAnimationFrame = iVar3;
+                break;
             case 1:
-                if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
-                    goto switchD_00433499_caseD_4;
-                iVar2 = DAT_RenderingDefinedData::instance
-                            .field1027_0x5493c[DAT_GameCore::instance.scribeAnimationFrame2];
+                if (BVar4 == TRUE) {
+                    iVar2 = DAT_RenderingDefinedData::instance
+                                .field1027_0x5493c[DAT_GameCore::instance.scribeAnimationFrame2];
+                    if (iVar2 == 0) {
+                        DAT_GameCore::instance.taxesSettingUnk = 0;
+                    } else {
+                        iVar3 = iVar2;
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar2;
+                    }
+                }
                 break;
             case 2:
-                if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
-                    goto switchD_00433499_caseD_4;
-                iVar2 = DAT_RenderingDefinedData::instance
-                            .field1028_0x5499c[DAT_GameCore::instance.scribeAnimationFrame2];
+                if (BVar4 == TRUE) {
+                    iVar2 = DAT_RenderingDefinedData::instance
+                                .field1028_0x5499c[DAT_GameCore::instance.scribeAnimationFrame2];
+                    if (iVar2 == 0) {
+                        DAT_GameCore::instance.taxesSettingUnk = 0;
+                    } else {
+                        iVar3 = iVar2;
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar2;
+                    }
+                }
                 break;
             case 3:
-                if (DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 != TRUE)
-                    goto switchD_00433499_caseD_4;
-                iVar2 = DAT_RenderingDefinedData::instance
-                            .field1029_0x549fc[DAT_GameCore::instance.scribeAnimationFrame2];
+                if (BVar4 == TRUE) {
+                    iVar2 = DAT_RenderingDefinedData::instance
+                                .field1029_0x549fc[DAT_GameCore::instance.scribeAnimationFrame2];
+                    if (iVar2 == 0) {
+                        DAT_GameCore::instance.taxesSettingUnk = 0;
+                    } else {
+                        iVar3 = iVar2;
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar2;
+                    }
+                }
                 break;
-            default:
-                goto switchD_00433499_caseD_4;
             }
-            if (iVar2 == 0) {
-                DAT_GameCore::instance.taxesSettingUnk = 0;
-                iVar2 = DAT_GameCore::instance.scribeAnimationFrame;
-                return;
-            }
-        switchD_00433499_caseD_4:
-            DAT_GameCore::instance.scribeAnimationFrame = iVar2;
-            if ((DAT_GameCore::instance.scribeAnimationFrameCopy != DAT_GameCore::instance.scribeAnimationFrame)
+            if ((DAT_GameCore::instance.scribeAnimationFrameCopy != iVar3)
                 || (DAT_GameState::instance.mapAndTime.monthChanged != 0)) {
                 DAT_GameCore::instance.countdown = 1;
-                DAT_GameCore::instance.scribeAnimationFrameCopy = DAT_GameCore::instance.scribeAnimationFrame;
+                DAT_GameCore::instance.scribeAnimationFrameCopy = iVar3;
             }
         }
 
