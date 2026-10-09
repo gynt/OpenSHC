@@ -172,8 +172,8 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)), DAT_ButtonY::instance + iVar2,
-                        OpenSHC::Text::TTA_CENTER, color, iVar3, FALSE);
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        DAT_ButtonY::instance + iVar2, OpenSHC::Text::TTA_CENTER, color, iVar3, FALSE);
                 }
             }
         }
