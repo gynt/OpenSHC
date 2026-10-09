@@ -26,46 +26,37 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BAC90
         void EditScenario::MenuItemRenderFunction_EditScenario_StartDate(int param_1, ...)
         {
-            char* textAddress;
-            int iVar1;
-            int xParam;
-            int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            if (param_1 == -5) {
-                iVar1 = 0x27;
-            } else {
+            if (param_1 != -5) {
                 if (param_1 != -1) {
-                    if (param_1 == 0) {
-                        return;
+                    if (param_1 != 0) {
+                        if (DAT_ButtonW::instance == 0) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                                OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, DAT_ButtonX::instance,
+                                (int)((int)(DAT_ButtonY::instance + 6)), (TextAlignment)0, 0xccfaff, 0x12, FALSE);
+                            return;
+                        }
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1,
+                            (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance,
+                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
                     }
-                    iVar1 = DAT_ButtonX::instance;
-                    if (DAT_ButtonW::instance != 0) {
-                        iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                    }
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, iVar1, (int)((int)(DAT_ButtonY::instance + 6)),
-                        (TextAlignment)((int)((uint)(DAT_ButtonW::instance != 0))), 0xccfaff, 0x12, FALSE);
+                    return;
                 }
-                iVar1 = 0x20;
+                /*
+                  added by script: "Start Date"
+                 */
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x20),
+                    (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, DAT_ButtonY::instance + 6,
+                    OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
+                return;
             }
-            yParam = DAT_ButtonY::instance + 6;
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_CENTER;
-            /*
-              added by script: "Start Date"
-             */
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, iVar1),
-                xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x27),
+                (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, DAT_ButtonY::instance + 6,
+                OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
         }
 
     }
