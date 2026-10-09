@@ -376,6 +376,13 @@ Diff patterns that were reliable (more in the cheat sheet):
 - Trust the asm over the decompilation for constants and their sign. Ghidra rendered `2400 / n + 40` where the binary
   has `sub eax, 0x28`, so the formula is `- 40`; the function reached 100% once corrected (`diff_types.py` finds these).
   A `(longlong)` in a Ghidra division is usually spurious too - it emits `_alldiv` where the original has a plain `idiv`.
+- A long run of single-byte assignments between two array rows is a **dword** copy in the original: MSVC copies a
+  20-byte entry as five `mov`s through registers, and Ghidra renders each byte separately. 80 byte statements shifting
+  four 20-byte entries became 20 `((int*)row)[w] = ...` statements, which is also what the binary does - that alone was
+  most of `MenuItemActionHandler_ChooseNetworkServiceProvider_Buttons` going from 18.9% to 72.8%, together with its
+  dispatch. The tell is our function being far longer than the original (335 instructions against 234) with the excess
+  all in one block. The cast is raw, but a byte loop and a `memcpy` both compile to something the original does not
+  have, and the generated header cannot express the row as a struct.
 - MSVC1400 at `/O2` never unrolls a loop, so a body repeated N times in the asm means the source was written out N
   times. A plain loop where the original is unrolled has cost 80 points on its own.
 - A flag stored with `mov dword ptr [..], 0/1` is an `int`, not a `bool`, which stores a byte.
