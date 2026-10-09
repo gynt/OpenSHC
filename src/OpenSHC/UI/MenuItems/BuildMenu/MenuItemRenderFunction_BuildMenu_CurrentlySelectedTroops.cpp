@@ -111,8 +111,8 @@ namespace UI {
             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                DAT_UnitsState::instance.selectionSlots[iVar1 + -0x1b], DAT_ButtonW::instance / 2 + iVar2, iVar3 + 0x53,
-                OpenSHC::Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
+                DAT_UnitsState::instance.selectionSlots[iVar1 + -0x1b], (int)DAT_ButtonW::instance / 2 + iVar2,
+                iVar3 + 0x53, OpenSHC::Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
         }
 
     }
