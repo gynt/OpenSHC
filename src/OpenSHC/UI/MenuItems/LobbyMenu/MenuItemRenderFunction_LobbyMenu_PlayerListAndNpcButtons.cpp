@@ -160,8 +160,8 @@ namespace UI {
                         && (DAT_MouseState::instance.screenSpaceX
                                 - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
                             < 0x15e))
-                    && ((DAT_ButtonY::instance <= DAT_MouseState::instance.screenSpaceY
-                        && (DAT_MouseState::instance.screenSpaceY < DAT_ButtonY::instance + 0x14)))) {
+                    && (((int)DAT_ButtonY::instance <= DAT_MouseState::instance.screenSpaceY
+                        && (DAT_MouseState::instance.screenSpaceY < (int)DAT_ButtonY::instance + 0x14)))) {
                     if (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                         iVar6 = 0x193;
                     } else if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] == -1) {
