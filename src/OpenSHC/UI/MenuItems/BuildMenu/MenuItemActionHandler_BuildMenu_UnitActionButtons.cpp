@@ -43,7 +43,6 @@ namespace UI {
             int iVar1;
             uint uVar2;
             UnitType UVar3;
-            int extraout_ECX;
             undefined4 uVar4;
             if (DAT_GameSynchronyState::instance.syncStatus != 0) {
                 return;
@@ -166,7 +165,8 @@ namespace UI {
                 DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                 return;
             case 0x16:
-                if (0 < *(int*)((int)DAT_GameState::instance.playerDataArray[0].isFoodTypeBanned + extraout_ECX + -8)) {
+                if (0 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .counter) {
                     UVar3 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
                     uVar2
