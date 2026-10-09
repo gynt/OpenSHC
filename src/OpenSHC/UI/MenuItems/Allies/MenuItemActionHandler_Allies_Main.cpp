@@ -56,7 +56,9 @@ namespace UI {
                         if (param_1 == 0x6e) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 4;
                         } else {
-                            if (param_1 != 0x6f) {}
+                            if (param_1 != 0x6f) {
+                                return;
+                            }
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 5;
                             return;
                         }
