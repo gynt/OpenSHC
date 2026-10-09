@@ -64,7 +64,7 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0xb,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 10)), OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x11, FALSE);
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -77,7 +77,7 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 10)), OpenSHC::Text::TTA_CENTER, color, 0x11, FALSE);
                 }
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -85,7 +85,7 @@ namespace UI {
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 10)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
             }
         }
