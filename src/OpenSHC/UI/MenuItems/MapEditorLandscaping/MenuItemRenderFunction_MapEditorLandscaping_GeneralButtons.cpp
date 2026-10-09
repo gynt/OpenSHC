@@ -61,7 +61,9 @@ namespace UI {
                 } else if (param_1 != 0x20)
                     goto LAB_004648f1;
             } else {
-                if (param_1 == 0x14b) {}
+                if (param_1 == 0x14b) {
+                    return;
+                }
             LAB_004648f1:
                 if (DAT_TileMapState::instance.currentMapperCommand == param_1) {
                     uVar2 = 2;
