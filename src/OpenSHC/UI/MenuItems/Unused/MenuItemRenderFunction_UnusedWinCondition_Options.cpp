@@ -58,7 +58,7 @@ namespace UI {
                 keepOffsetX = FALSE;
                 fontSize = 0x13;
                 alignment = OpenSHC::Text::TTA_CENTER;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
                 textAddress = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
