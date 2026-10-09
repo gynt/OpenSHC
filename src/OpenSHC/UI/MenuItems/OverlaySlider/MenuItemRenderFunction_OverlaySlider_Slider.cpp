@@ -50,7 +50,7 @@ namespace UI {
                 iVar6 = 0x13;
                 BVar5 = 0xc2f0eb;
                 TVar4 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 iVar3 = DAT_ButtonY::instance + 4;
                 pcVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
@@ -73,7 +73,7 @@ namespace UI {
                 iVar6 = 0x13;
                 BVar5 = 0xccfaff;
                 TVar4 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 iVar3 = DAT_ButtonY::instance + 4;
                 pcVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
