@@ -59,7 +59,9 @@ namespace UI {
                     DAT_CurrentButtonPictureInGm::instance
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                               .pictureInGm_0x4;
-                    if (4 < param_1) {}
+                    if (4 < param_1) {
+                        return;
+                    }
                     if (INT_00b95abc::instance != param_1) {
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                             (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
