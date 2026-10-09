@@ -43,8 +43,7 @@ namespace UI {
                 DAT_MenuModalComposition2::instance.sliderValue = *currentValue;
                 iVar1 = *currentValue;
                 if (iVar1 <= *maxValue / 2) {
-                    iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 3U)) >> 2)
-                        + DAT_MenuModalComposition2::instance.sliderMinimum;
+                    iVar1 = (iVar1 / 4) + DAT_MenuModalComposition2::instance.sliderMinimum;
                     if (DAT_MenuModalComposition2::instance.destination != (int*)0x0) {
                         *DAT_MenuModalComposition2::instance.destination = iVar1;
                     }
