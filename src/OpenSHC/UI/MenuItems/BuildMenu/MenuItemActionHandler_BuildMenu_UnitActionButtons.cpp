@@ -45,17 +45,27 @@ namespace UI {
             UnitType UVar3;
             int extraout_ECX;
             undefined4 uVar4;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus != 0) {
+                return;
+            }
+            if (DAT_GameSynchronyState::instance.saveRelated != 0) {
+                return;
+            }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
-                != 0) {}
+                != 0) {
+                return;
+            }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated
                 != 0) {
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {}
+                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                    return;
+                }
                 if (DAT_GameState::instance.mapAndTime.gameOver
-                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {}
+                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
+                    return;
+                }
             }
             MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
             switch (param_1) {
