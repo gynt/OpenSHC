@@ -92,11 +92,11 @@ namespace UI {
                     DAT_00df5558::instance = 2;
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
-                if (DAT_00df555c::instance <= DAT_00df5558::instance) {
+                if ((int)DAT_00df555c::instance <= (int)DAT_00df5558::instance) {
                     DAT_00df5558::instance = DAT_00df5558::instance + -1;
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::InitTutorialStepTransition)(2);
                     DAT_00df5560::instance = 0;
-                    if (DAT_TutorialCurrentStep::instance >= DAT_00df5554::instance + -1) {
+                    if ((int)DAT_TutorialCurrentStep::instance >= (int)DAT_00df5554::instance + -1) {
                         INT_DisableTutorialRestrictions::instance = 1;
                     }
                     if (DAT_MissionAestheticsDefinedData::instance.field1251_0x5464[DAT_TutorialCurrentStep::instance]
@@ -106,7 +106,7 @@ namespace UI {
                         MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar1 + 0xb3d810);
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                             DAT_SoundSystemState::ptr)(local_24);
-                        if (0x27 < DAT_00df556c::instance) {
+                        if (0x27 < (int)DAT_00df556c::instance) {
                             DAT_00df556c::instance = 0x24;
                         }
                     }
