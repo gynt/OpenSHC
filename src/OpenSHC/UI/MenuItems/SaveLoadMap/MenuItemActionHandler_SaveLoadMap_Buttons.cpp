@@ -63,6 +63,20 @@ namespace UI {
             pcVar8 = local_3f4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             switch (param_1) {
+            case -1:
+                if (0 < DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
+                    DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
+                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
+                    ;
+                }
+            case -2:
+                if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
+                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
+                    DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
+                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
+                    ;
+                }
+                break;
             case 2:
                 /*
                   "Load"
@@ -307,20 +321,6 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                 DAT_MenuTextInputState::instance.dialogResult = 0xffffffff;
                 break;
-            case -2:
-                if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
-                    DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
-                    ;
-                }
-                break;
-            case -1:
-                if (0 < DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
-                    DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
-                    ;
-                }
             };
         }
 
