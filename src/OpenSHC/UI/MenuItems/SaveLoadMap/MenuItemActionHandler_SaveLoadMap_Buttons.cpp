@@ -57,10 +57,6 @@ namespace UI {
             char local_3f4[4];
             char local_3f0[1004];
             uint local_4;
-            pcVar6 = local_3f4;
-            _mapName = local_3f4;
-            pcVar7 = local_3f4;
-            pcVar8 = local_3f4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             switch (param_1) {
             case -1:
@@ -194,6 +190,7 @@ namespace UI {
                     if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
                         pcVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                        pcVar8 = local_3f4;
                         do {
                             cVar2 = *pcVar6;
                             *pcVar8 = cVar2;
@@ -216,6 +213,7 @@ namespace UI {
                             == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         pcVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                        pcVar7 = local_3f4;
                         do {
                             cVar2 = *pcVar6;
                             *pcVar7 = cVar2;
