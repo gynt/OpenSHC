@@ -35,61 +35,61 @@ namespace UI {
                     return;
                 }
                 switch (uVar2) {
-                case 0xf4:
-                    if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY < 0x12) {
-                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
-                    }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + -0x12;
-                    return;
                 case 0xf5:
-                    uVar2 = DAT_TextEditorState::instance.topVisibleLineIndex
+                    iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
-                    if ((int)((((int)uVar2 < 1) - 1 & uVar2) - 0x12)
-                        <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)
-                        goto LAB_004615e1;
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + 0x12;
-                    break;
+                    iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                    if (iVar3 < (((iVar5 < 1) - 1 & iVar5) - 0x12)) {
+                        iVar3 = iVar3 + 0x12;
+                        if (iVar3 <= ((iVar5 < 1) - 1 & iVar5)) {
+                            DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
+                            return;
+                        }
+                    }
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                    return;
+                case 0xf4:
+                    iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                    if (iVar3 < 0x12) {
+                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
+                        return;
+                    }
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - 0x12;
+                    return;
                 case 0xf6:
                     DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
                     return;
                 case 0xf7:
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.topVisibleLineIndex
-                            - DAT_TextEditorState::instance.dialogContentHeight
-                        & (DAT_TextEditorState::instance.topVisibleLineIndex
-                                  - DAT_TextEditorState::instance.dialogContentHeight
-                              < 1)
-                            - 1;
-                    return;
-                default:
-                    break;
-                case 0xfa:
-                    if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        < DAT_TextEditorState::instance.dialogContentHeight) {
-                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
-                    }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY
+                    iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
                     return;
                 case 0xfb:
-                    uVar2 = DAT_TextEditorState::instance.topVisibleLineIndex
+                    iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
-                    if ((int)((((int)uVar2 < 1) - 1 & uVar2) - DAT_TextEditorState::instance.dialogContentHeight)
-                        <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)
-                        goto LAB_004615e1;
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        + DAT_TextEditorState::instance.dialogContentHeight;
+                    iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                    if (iVar3
+                        < (((iVar5 < 1) - 1 & iVar5) - DAT_TextEditorState::instance.dialogContentHeight)) {
+                        iVar3 = iVar3 + DAT_TextEditorState::instance.dialogContentHeight;
+                        if (iVar3 <= ((iVar5 < 1) - 1 & iVar5)) {
+                            DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
+                            return;
+                        }
+                    }
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                    return;
+                case 0xfa:
+                    iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                    iVar6 = DAT_TextEditorState::instance.dialogContentHeight;
+                    if (iVar3 < iVar6) {
+                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
+                        return;
+                    }
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - iVar6;
+                    return;
+                default:
                     return;
                 }
-                if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY
-                    <= (int)(((int)uVar2 < 1) - 1 & uVar2)) {}
-            LAB_004615e1:
-                DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar2 < 1) - 1 & uVar2;
-                return;
             }
             uVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::dequeueInputBufferChar, DAT_UserTextHandlerState::ptr)();
