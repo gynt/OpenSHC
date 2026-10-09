@@ -48,7 +48,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     color = 0xc2f0eb;
                     yParam = DAT_ButtonY::instance + 7;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     iVar1 = 0xc;
                     offsetIndex = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
                 } else {
@@ -56,7 +56,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     color = 0xccfaff;
                     yParam = DAT_ButtonY::instance + 7;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     iVar1 = 0xc;
                     offsetIndex = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
                 }
@@ -72,7 +72,7 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
                     }
                     if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
@@ -80,14 +80,14 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
                 }
                 iVar1 = DAT_MenuTextInputState::instance.DAT_GenieVoiceActiveMenuVar;
@@ -105,7 +105,7 @@ namespace UI {
                 }
                 color = 0xccfaff;
                 yParam = DAT_ButtonY::instance + 7;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
                 return;
             }
