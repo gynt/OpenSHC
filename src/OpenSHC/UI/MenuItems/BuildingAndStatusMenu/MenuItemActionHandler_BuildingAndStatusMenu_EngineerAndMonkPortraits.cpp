@@ -47,7 +47,9 @@ namespace UI {
                     <= DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .count_2
                         + DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .armySize)) {}
+                            .armySize)) {
+                return;
+            }
             int iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::nonEuroRecruit, DAT_UnitsState::ptr)(
                 (OpenSHC::Map::Units::UnitType)param_1,
                 (undefined4)((
@@ -64,7 +66,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     OpenSHC::Audio::SFX::SEID_BUTTON_CLICK_01);
                 if ((param_1 == INT_00df3368::instance)
-                    && (DVar2 = timeGetTime(), DVar2 - DWORD_00df3364::instance < 0x1f41)) {}
+                    && (DVar2 = timeGetTime(), DVar2 - DWORD_00df3364::instance < 0x1f41)) {
+                    return;
+                }
                 if (param_1 == 0x1d) {
                     /*
                        "Okay, sir"
