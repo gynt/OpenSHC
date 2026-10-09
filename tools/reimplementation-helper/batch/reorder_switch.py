@@ -23,7 +23,7 @@ the switch region is what caught it, so keep that check if you extend this to ne
 switches.
 
 usage:
-  reorder_switch.py FILE.cpp... [--apply]
+  reorder_switch.py FILE.cpp... [--apply] [--add-break]
 """
 
 import io
@@ -141,25 +141,10 @@ def arms(lines, start):
     return groups, end
 
 
-def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    apply_ = "--apply" in sys.argv
-    if not args:
-        raise SystemExit(__doc__)
-    enums = enum_text()
-    for rel in args:
-        path = rel if os.path.isabs(rel) else os.path.join(common.ROOT, rel.replace("/", os.sep))
-        name = os.path.basename(path)
-        try:
-            ins = od.disasm(od.address_of(path))
-        except Exception as exc:                                   # noqa: BLE001
-            print("--     %s  (%s)" % (name, exc))
-            continue
-        ds = so.dispatches(ins)
-        if len(ds) != 1:
-            print("--     %s  (%d jump tables)" % (name, len(ds)))
-            continue
-        base, count, bt, dt, default = ds[0]
+def tables_of(ins):
+    """(values, ranked, default_rank, arm_count) per jump table in the function."""
+    out = []
+    for base, count, bt, dt, default in so.dispatches(ins):
         order = {}
         for k in range(count):
             slot = so.read(bt + k, 1) if bt else k
@@ -171,63 +156,128 @@ def main():
                 default_rank = rank
             for v in order[target]:
                 ranked[v] = rank
+        non_default = set(v for v in ranked
+                          if default_rank is None or ranked[v] != default_rank)
+        out.append((non_default, ranked, default_rank, len(order)))
+    return out
 
-        lines = io.open(path, encoding="utf-8").read().split("\n")
-        starts = [j for j, l in enumerate(lines) if re.match(r"^\s*switch \(", l)]
-        done = False
-        for start in starts:
-            groups, end = arms(lines, start)
-            if not groups:
+
+def keys_for(groups, table, enums):
+    """One rank per arm group, or None when this table does not describe this switch.
+
+    The switch's own `case` values must cover exactly the table's non-default values.
+    Matching on "every label is somewhere in the table" is not enough: a nested switch
+    over the same small range matches its parent's table and gets reordered instead.
+    """
+    non_default, ranked, default_rank, arm_count = table
+    keys = []
+    seen = set()
+    for labels, _ in groups:
+        vals = []
+        for lab in labels:
+            m = CASE.match(lab)
+            if not m:
                 continue
-            keys = []
-            ok = True
-            for labels, _ in groups:
-                vals = []
-                for lab in labels:
-                    m = CASE.match(lab)
-                    if not m:
-                        continue
-                    v = value_of(m.group(2), enums)
-                    if v is None:
-                        ok = False
-                    else:
-                        vals.append(v)
-                if not vals and any(DEFAULT.match(l) for l in labels):
-                    # values outside the table's range do not appear in it, so the
-                    # `default` arm has no rank of its own: MSVC emits it last
-                    keys.append(len(order) if default_rank is None else default_rank)
-                    continue
-                if not vals or any(v not in ranked for v in vals):
-                    ok = False
-                keys.append(min(ranked[v] for v in vals) if ok and vals else None)
-            if not ok or len(set(keys)) != len(keys):
+            v = value_of(m.group(2), enums)
+            if v is None or v not in ranked:
+                return None
+            vals.append(v)
+            seen.add(v)
+        if not vals:
+            if any(DEFAULT.match(l) for l in labels):
+                keys.append(arm_count if default_rank is None else default_rank)
                 continue
-            if keys == sorted(keys):
-                print("--     %s  (already in the original's order)" % name)
-                done = True
-                break
-            # weld fall-through arms to their successors and order the chains by the
-            # rank of their first arm; a chain whose members are not ranked in order
-            # cannot be placed faithfully, so the function is skipped
+            if keys:
+                return None
+            keys.append(-1)
+            continue
+        keys.append(min(ranked[v] for v in vals))
+    if seen != non_default:
+        return None
+    return keys if len(set(keys)) == len(keys) else None
+
+
+def reorder_one(lines, tables, used, enums, name, add_break=False):
+    """Reorder the first switch that matches an unused table. -> (lines, changed, note)."""
+    for start in [j for j, l in enumerate(lines) if re.match(r"^\s*switch \(", l)]:
+        groups, end = arms(lines, start)
+        if not groups:
+            continue
+        for ti in range(len(tables)):
+            if ti in used:
+                continue
+            keys = keys_for(groups, tables[ti], enums)
+            if keys is None:
+                continue
+            used.add(ti)
+            # A last arm that runs off its end falls out of the switch. That is harmless
+            # only while it stays last: move it and it falls into whatever follows, which
+            # is a silent behaviour change and exactly the bug this guard exists for.
+            # Falling out of the switch is what `break;` means, so say so explicitly and
+            # the arm becomes free to move; without the statement, refuse the switch.
+            if groups[-1][1] and falls_through(groups[-1][1]):
+                if not add_break:
+                    return lines, False, ("the last arm falls out of the switch"
+                                          " (pass --add-break to close it)")
+                labs, body = groups[-1]
+                k = len(body) - 1
+                while k >= 0 and not body[k].strip():
+                    k -= 1
+                ind = len(body[k]) - len(body[k].lstrip())
+                groups[-1] = (labs, body[:k + 1] + [" " * ind + "break;"] + body[k + 1:])
             ch = chains(groups)
-            if any(any(k is None for k in (keys[i] for i in c)) for c in ch):
-                continue
             if any(sorted(keys[i] for i in c) != [keys[i] for i in c] for c in ch):
-                print("--     %s  (a fall-through chain is out of order in the table)" % name)
-                done = True
-                break
+                return lines, False, "a fall-through chain is out of the table's order"
+            if keys == sorted(keys):
+                return lines, False, None
             new = []
             for c in sorted(ch, key=lambda c: keys[c[0]]):
                 for i in c:
                     new += groups[i][0] + groups[i][1]
-            print("reorder %-62s %d arm(s), %d chain(s)" % (name, len(groups), len(ch)))
-            if apply_:
-                lines[start + 1:end] = new
-                io.open(path, "w", encoding="utf-8", newline="\n").write("\n".join(lines))
-            done = True
-            break
-        if not done:
-            print("--     %s  (no switch matches the table)" % name)
+            out = lines[:start + 1] + new + lines[end:]
+            # a rewrite that is not a pure permutation of the region is a bug, not a
+            # reordering: refuse it rather than write it out
+            if sorted(l.strip() for l in lines) != sorted(l.strip() for l in out):
+                return lines, False, "rewrite would not be a pure permutation, refused"
+            return out, True, "switch at %-5d %d arm(s), %d chain(s)" % (
+                start + 1, len(groups), len(ch))
+    return lines, False, ""
+
+
+def main():
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    apply_ = "--apply" in sys.argv
+    add_break = "--add-break" in sys.argv
+    if not args:
+        raise SystemExit(__doc__)
+    enums = enum_text()
+    for rel in args:
+        path = rel if os.path.isabs(rel) else os.path.join(common.ROOT, rel.replace("/", os.sep))
+        name = os.path.basename(path)
+        try:
+            ins = od.disasm(od.address_of(path))
+        except Exception as exc:                                   # noqa: BLE001
+            print("--     %s  (%s)" % (name, exc))
+            continue
+        tables = tables_of(ins)
+        if not tables:
+            print("--     %s  (no jump table)" % name)
+            continue
+        lines = io.open(path, encoding="utf-8").read().split(chr(10))
+        used = set()
+        any_change = False
+        for _ in range(len(tables)):
+            lines, changed, note = reorder_one(lines, tables, used, enums, name, add_break)
+            if note:
+                print(("reorder %-58s " % name) + note if changed else "--     %s  (%s)" % (name, note))
+            if changed:
+                any_change = True
+            if note == "":
+                break
+        if any_change and apply_:
+            io.open(path, "w", encoding="utf-8", newline=chr(10)).write(chr(10).join(lines))
+        if not any_change and not used:
+            print("--     %s  (no switch matches a table)" % name)
 
 
 if __name__ == "__main__":
