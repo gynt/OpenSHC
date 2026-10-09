@@ -59,7 +59,7 @@ namespace UI {
                 } else {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    if (DAT_00df3350::instance < 0) {
+                    if ((int)DAT_00df3350::instance < 0) {
                     LAB_00464ad9:
                         if (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -137,7 +137,7 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            if (DAT_00df3350::instance < 0) {
+            if ((int)DAT_00df3350::instance < 0) {
             LAB_00464c0f:
                 if (!bVar3) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
