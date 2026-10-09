@@ -62,8 +62,12 @@ namespace UI {
                     return;
                 }
             } else {
-                if (param_1 != 0x16) {}
-                if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {}
+                if (param_1 != 0x16) {
+                    return;
+                }
+                if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {
+                    return;
+                }
                 return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
