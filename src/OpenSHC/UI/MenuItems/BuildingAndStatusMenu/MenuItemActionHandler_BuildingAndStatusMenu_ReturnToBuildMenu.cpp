@@ -54,16 +54,24 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
             }
-            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {}
+            if (DAT_ViewportRenderState::instance.viewportState.field0_0x0 == 0) {
+                return;
+            }
             if (DAT_GameCore::instance.activeMenuTab.inBuildingTab == OpenSHC::DE::SHCDE::IBM_INSIDE_BARRACKS) {
-                if ((0x14b < (int)DAT_TileMapState::instance.currentMapperCommand)
-                    && ((int)DAT_TileMapState::instance.currentMapperCommand < 0x153)) {}
+                if ((0x14c <= (int)DAT_TileMapState::instance.currentMapperCommand)
+                    && ((int)DAT_TileMapState::instance.currentMapperCommand <= 0x152)) {
+                    return;
+                }
             } else if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST) {
-                if ((0x167 < (int)DAT_TileMapState::instance.currentMapperCommand)
-                    && ((int)DAT_TileMapState::instance.currentMapperCommand < 0x16f)) {}
+                if ((0x168 <= (int)DAT_TileMapState::instance.currentMapperCommand)
+                    && ((int)DAT_TileMapState::instance.currentMapperCommand <= 0x16e)) {
+                    return;
+                }
             } else if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_ENGINEERSGUILD) {
-                if ((0x16e < (int)DAT_TileMapState::instance.currentMapperCommand)
-                    && ((int)DAT_TileMapState::instance.currentMapperCommand < 0x171)) {}
+                if ((0x16f <= (int)DAT_TileMapState::instance.currentMapperCommand)
+                    && ((int)DAT_TileMapState::instance.currentMapperCommand <= 0x170)) {
+                    return;
+                }
             } else {
                 if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD) {
                     bVar1 = DAT_TileMapState::instance.currentMapperCommand
@@ -74,7 +82,9 @@ namespace UI {
                     bVar1 = DAT_TileMapState::instance.currentMapperCommand
                         == OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTK1;
                 }
-                if (bVar1) {}
+                if (bVar1) {
+                    return;
+                }
             }
         LAB_00440340:
             if (DAT_MouseState::instance.leftClickStart != 0) {
