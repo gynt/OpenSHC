@@ -81,6 +81,7 @@ namespace UI {
                          && (param_1 != 0x47))
                     && ((param_1 != -4 && (-10 < param_1)))))) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             if (DAT_GameCore::instance.activeMenuTab.tabType == param_1) {
                 if (param_1 != 0x47) {
@@ -91,9 +92,11 @@ namespace UI {
             LAB_0046444e:
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
             } else {
             LAB_00464449:
@@ -104,6 +107,7 @@ namespace UI {
                 if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR)
                     && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 goto LAB_00464732;
             }
@@ -119,6 +123,7 @@ namespace UI {
                     LAB_004644dc:
                         DAT_ButtonUnknownZero::instance = 1;
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                        return;
                     }
                 } else {
                     if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
@@ -133,12 +138,14 @@ namespace UI {
                     && (DAT_GameCore::instance.activeMenuTab.tabType
                         == OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
             LAB_004645c8:
                 if ((param_1 == -0x5a) || (param_1 == -0x5b)) {
                     if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                     if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CAMPAIGN_MISSION)
                         || (DAT_GameSynchronyState::instance.currentGameMode
@@ -147,6 +154,7 @@ namespace UI {
                     if (param_1 == -0x5a) {
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                 } else {
                 LAB_004645f5:
@@ -167,6 +175,7 @@ namespace UI {
                             if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION) {
                                 if (5 < iVar1) {
                                     DAT_ButtonUnknownZero::instance = 1;
+                                    return;
                                 }
                             } else if (iVar1 != 1) {
                                 DAT_ButtonUnknownZero::instance = 1;
@@ -182,11 +191,13 @@ namespace UI {
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_ButtonUnknownZero::instance = 1;
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                        return;
                     }
                     if ((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_QUIT_DIALOG)
                         && (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x2f)) {
                         DAT_ButtonUnknownZero::instance = 1;
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                        return;
                     }
                     goto LAB_004645b6;
                 }
@@ -205,6 +216,7 @@ namespace UI {
                         && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                 LAB_004645ad:
                     if ((param_1 < 0) && (-10 < param_1))
@@ -220,11 +232,13 @@ namespace UI {
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                     if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS) {
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                 } else {
                     if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
                         && (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS)) {
                         DAT_ButtonUnknownZero::instance = 1;
+                        return;
                     }
                     iVar1
                         = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::singlePlayerHasKeepAndGranaryCheck,
@@ -308,6 +322,7 @@ namespace UI {
             }
             if (param_1 != 0x47) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScribeFrame)();
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGoldValue)();
