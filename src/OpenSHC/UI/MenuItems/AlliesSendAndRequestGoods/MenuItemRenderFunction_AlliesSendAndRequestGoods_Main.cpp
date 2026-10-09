@@ -153,7 +153,7 @@ namespace UI {
             /*
               action param < 50
              */
-            if (0 < DAT_ButtonH::instance) {
+            if (0 < (int)DAT_ButtonH::instance) {
                 iVar2 = 0;
                 do {
                     if (iVar2 == 0) {
@@ -184,7 +184,7 @@ namespace UI {
                         iVar4 = iVar4 + 0x18;
                     } while (iVar4 < 0x228);
                     iVar2 = iVar2 + 24;
-                } while (iVar2 < DAT_ButtonH::instance);
+                } while (iVar2 < (int)DAT_ButtonH::instance);
             }
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
