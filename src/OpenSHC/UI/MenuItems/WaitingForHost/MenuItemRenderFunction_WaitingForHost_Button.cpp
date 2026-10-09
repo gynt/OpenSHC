@@ -45,7 +45,7 @@ namespace UI {
             keepOffsetX = FALSE;
             fontSize = 0x11;
             color = 0xc2f0eb;
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 6;
             alignment = OpenSHC::Text::TTA_CENTER;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
