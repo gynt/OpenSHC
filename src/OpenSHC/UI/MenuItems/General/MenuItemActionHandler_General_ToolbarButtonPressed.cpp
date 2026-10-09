@@ -133,6 +133,7 @@ namespace UI {
                             DAT_UnitsState::ptr)();
                         if (iVar3 == 0) {
                             DAT_StopHandlingMenuItems::instance = 0;
+                            return;
                         }
                         if (iVar3 == 1) {
                             /*
@@ -190,6 +191,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
                         DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
                     DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                    return;
                 }
                 break;
             case OpenSHC::Commands::M_MAPPER_TOTEST:
@@ -383,6 +385,7 @@ namespace UI {
         joined_r0x00444948:
             if (uVar5 == 0) {
                 DAT_StopHandlingMenuItems::instance = 0;
+                return;
             }
             MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
             goto switchD_00444907_caseD_122;
