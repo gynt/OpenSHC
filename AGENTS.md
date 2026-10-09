@@ -364,6 +364,17 @@ Diff patterns that were reliable (more in the cheat sheet):
   for two values. `diff_slots.py` says the lowest-access extra slot is usually the culprit, so a function whose
   extra slots are all heavily used has genuine live values rather than a stray local, and needs structural
   understanding rather than a rule.
+- When both sides have a jump table, the **order of the arms** still has to match. MSVC emits them in source order,
+  so the physical order of the arm bodies in the binary is the original's `case` order, and `switch_order.py` reads it
+  out of the byte and dword tables. A different order moves every arm and the comparison drifts from the dispatch
+  onwards, which no work inside the arms recovers: `reorder_switch.py` was worth 19 functions with no regressions,
+  including `MenuItemActionHandler_General_CreateEventCallbackFunction` 27.8% -> 45.9%,
+  `MenuItemActionHandler_SaveLoadMap_Scrollbar` 64.2% -> 96.3%, `OptionsMenu_Buttons` 44.9% -> 77.0% and
+  `TacticalPowerBar_Main` to 100%. Two cautions. An arm that falls through into the next must move with it - Ghidra
+  emits that shape wherever the original shared a tail, and 16 such arms across 11 files would otherwise be reordered
+  past the arm they fall into, which is a silent behaviour change; reassuringly, every fall-through chain turned out to
+  be consecutively ranked in the original's table too. And the rule has exceptions for very small arms: six
+  scrollbar-style functions measured worse and were reverted, so gate per function.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`

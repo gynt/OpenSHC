@@ -39,6 +39,9 @@ Analysis helpers, for deciding *what* to change when a function is stuck below 1
 | `orig_disasm.py 0xADDR\|FILE.cpp [--raw]` | One original function disassembled from `_original/` with capstone, every operand resolved: globals to their `Globals/*.hpp` resolver name (`Name+0xN` for a field inside a big instance), call targets to the `*.func.hpp` name, in-function jumps to labels. Needs no Ghidra and no reccmp run, and keeps the operands `quick_diff.py` normalizes away. |
 | `epilogue_jumps.py FILE.cpp...` | Every conditional jump in the original that lands on a `pop`/`ret` block, in address order. This is what decides an empty `if (cond) {}`: it is the dropped `return` only when the original's jump goes to the epilogue, and the two `try_*returns.py` scripts can only guess at that from the score. Compare the count with our `return;` count - a deficit is missing control flow, not a style question. |
 
+| `switch_order.py FILE.cpp` | The order a jump-table `switch`'s arms were written in, read from the original's byte and dword tables: case values grouped by target, groups ordered by target address. MSVC lays the arms out in source order, so that *is* the original's `case` order. |
+| `reorder_switch.py FILE.cpp... [--apply]` | Permute our `case` groups into that order, keeping each group's labels and body untouched. An arm that falls through into the next is welded to it, so no fall-through pair can be separated - that check is the whole safety of the pass, and without it 16 arms across 11 files would have been silently reordered past the arm they fall into. Verify afterwards that the switch region is a pure permutation (same multiset of lines) and gate on reccmp: 19 of 25 functions improved, and the 6 that did not were small-armed scrollbars where MSVC does not follow source order. |
+
 ### Choosing what to work on
 
 | Script | Purpose |
