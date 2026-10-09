@@ -174,16 +174,19 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                     ((int)(iVar4 + (iVar4 >> 0x1f & 0x1fU)) >> 5) + 0x20);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             iVar3 = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1];
             if (iVar3 < 1) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[iVar3];
             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] == -1)
                 && (DAT_GameSynchronyState::instance.currentAIArray[iVar3] == 0)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             DAT_ButtonUnknownZero::instance = (int)(DAT_GameSynchronyState::instance.isHost == FALSE);
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] == -1) {
