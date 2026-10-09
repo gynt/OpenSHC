@@ -64,42 +64,15 @@ namespace UI {
         {
             int iVar1;
             switch (param_1) {
-            case 2:
-                DAT_MenuTextInputState::instance.field42_0x9c = 1;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
-                    OpenSHC::UI::Enums::MMT_LOAD_MAP);
-                INT_00b960ec::instance = 1;
+            case 5:
+                if (INT_00b95f68::instance == 0) {
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                }
+                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2b;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_QUIT_DIALOG);
                 return;
-            case 3:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 0xb:
-            case 0xc:
-            case 0xd:
-            case 0xe:
-            case 0xf:
-            case 0x10:
-            case 0x11:
-            case 0x12:
-            case 0x13:
-            case 0x14:
-            case 0x15:
-            case 0x16:
-            case 0x17:
-            case 0x18:
-            case 0x19:
-            case 0x1a:
-            case 0x1b:
-            case 0x1c:
-            case 0x1d:
-            case 0x1e:
-            case 0x1f:
-            case 0x20:
-            case 0x21:
-            case 0x22:
-                break;
             case 4:
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
@@ -145,14 +118,11 @@ namespace UI {
                         MenuItemActionHandler_MapEditorLandscaping_GeneralButtons)(OpenSHC::Commands::M_MAPPER_TOMAIN);
                 INT_00b960ec::instance = 1;
                 return;
-            case 5:
-                if (INT_00b95f68::instance == 0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
-                }
-                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2b;
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_QUIT_DIALOG);
+            case 2:
+                DAT_MenuTextInputState::instance.field42_0x9c = 1;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::loadOrSaveMap, DAT_MenuTextInputState::ptr)(
+                    OpenSHC::UI::Enums::MMT_LOAD_MAP);
+                INT_00b960ec::instance = 1;
                 return;
             case 0x23:
                 if (INT_00b960ec::instance != 0) {
@@ -179,6 +149,36 @@ namespace UI {
                         OpenSHC::UI::MenuTextInputState_Func::activateLoadOrSaveMapUI, DAT_MenuTextInputState::ptr)(10);
                     INT_00b960e4::instance = 1;
                 }
+                break;
+            case 3:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 0xb:
+            case 0xc:
+            case 0xd:
+            case 0xe:
+            case 0xf:
+            case 0x10:
+            case 0x11:
+            case 0x12:
+            case 0x13:
+            case 0x14:
+            case 0x15:
+            case 0x16:
+            case 0x17:
+            case 0x18:
+            case 0x19:
+            case 0x1a:
+            case 0x1b:
+            case 0x1c:
+            case 0x1d:
+            case 0x1e:
+            case 0x1f:
+            case 0x20:
+            case 0x21:
+            case 0x22:
                 break;
             default:
                 break;
