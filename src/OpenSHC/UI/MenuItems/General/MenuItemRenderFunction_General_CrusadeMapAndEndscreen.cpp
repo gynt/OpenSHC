@@ -56,9 +56,9 @@ namespace UI {
                     /*
                       added by script: "Skip Current Mission"
                      */
-                    textAddress = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_CHEATS, (int)((int)((uint)(DAT_SkirmishTrailRelated1::instance < 1))));
+                    textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_CHEATS,
+                        (int)((int)((uint)((int)DAT_SkirmishTrailRelated1::instance < 1))));
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 }
