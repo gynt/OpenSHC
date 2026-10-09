@@ -33,7 +33,9 @@ namespace UI {
                                  + DAT_MenuModalComposition2::instance.modalMenu.x))
                         && (DAT_MenuModalComposition2::instance.modalMenu.y <= DAT_MouseState::instance.screenSpaceY))
                     && (DAT_MouseState::instance.screenSpaceY < DAT_MenuModalComposition2::instance.modalMenu.height
-                            + DAT_MenuModalComposition2::instance.modalMenu.y)) {}
+                            + DAT_MenuModalComposition2::instance.modalMenu.y)) {
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                 if (DAT_MenuModalComposition2::instance.sliderCallbackFunction != (undefined*)0x0) {
