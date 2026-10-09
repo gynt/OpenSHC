@@ -38,6 +38,7 @@ namespace UI {
             if (param_1 == 100) {
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
+                return;
             }
             if (param_1 <= DAT_GameCore::instance.numOfAIsWithCastleUnk) {
                 DAT_LobbyAddAICurrentlyHoveredAI::instance
