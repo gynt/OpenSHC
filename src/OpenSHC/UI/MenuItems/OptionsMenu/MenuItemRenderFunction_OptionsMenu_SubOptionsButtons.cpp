@@ -43,7 +43,7 @@ namespace UI {
             int iVar5;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 iVar5 = 4;
