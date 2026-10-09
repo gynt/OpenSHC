@@ -135,6 +135,7 @@ namespace UI {
             if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
                 || (DAT_GameState::instance.mapAndTime.euroRecruitable[param_1 + -10] == 0)) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                return;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if ((int)DAT_00df3350::instance < 0) {
