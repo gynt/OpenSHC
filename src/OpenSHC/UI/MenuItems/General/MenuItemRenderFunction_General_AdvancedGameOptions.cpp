@@ -56,8 +56,8 @@ namespace UI {
                     || (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_SEND_MAP_TO))
                 || (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM)) {
-                        return;
-                    }
+                return;
+            }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
                 == OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS) {
                 if ((((param_1 != -1000) && (param_1 != -10))
@@ -65,19 +65,21 @@ namespace UI {
                     && ((param_1 != -0xe
                         && (((((param_1 != 99 && (param_1 != 100)) && (param_1 != 0x53))
                                  && ((param_1 != 0x6d && (param_1 != 0x52))))
-                            && (param_1 != 0x5e)))))) {}
+                            && (param_1 != 0x5e)))))) {
+                    return;
+                }
             } else {
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
                     return;
                 }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
-                        return;
-                    }
+                    return;
+                }
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
-                        return;
-                    }
+                    return;
+                }
             }
             if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
                 if (param_1 == 0x5d) {
