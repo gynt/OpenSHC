@@ -136,6 +136,16 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                         _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance));
                     return;
+                case OpenSHC::Map::Buildings::BT_MILL:
+                    goto switchD_00447874_caseD_22;
+                case OpenSHC::Map::Buildings::BT_QUARRY:
+                    /*
+                      added by script: "Currently Functioning"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 2, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    return;
                 case OpenSHC::Map::Buildings::BT_FLETCHER:
                 case OpenSHC::Map::Buildings::BT_BLACKSMITH:
                 case OpenSHC::Map::Buildings::BT_POLETURNER:
@@ -148,16 +158,6 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                         _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance + 10));
                     return;
-                case OpenSHC::Map::Buildings::BT_QUARRY:
-                    /*
-                      added by script: "Currently Functioning"
-                     */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 2, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-                    return;
-                case OpenSHC::Map::Buildings::BT_MILL:
-                    goto switchD_00447874_caseD_22;
                 }
             }
             /*
