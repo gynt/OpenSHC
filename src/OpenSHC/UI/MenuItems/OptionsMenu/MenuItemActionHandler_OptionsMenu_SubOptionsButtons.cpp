@@ -63,6 +63,7 @@ namespace UI {
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_IDENTITY_OPTIONS);
+                    break;
             case 6:
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_NETWORK_OPTIONS);
