@@ -370,11 +370,19 @@ Diff patterns that were reliable (more in the cheat sheet):
   onwards, which no work inside the arms recovers: `reorder_switch.py` was worth 19 functions with no regressions,
   including `MenuItemActionHandler_General_CreateEventCallbackFunction` 27.8% -> 45.9%,
   `MenuItemActionHandler_SaveLoadMap_Scrollbar` 64.2% -> 96.3%, `OptionsMenu_Buttons` 44.9% -> 77.0% and
-  `TacticalPowerBar_Main` to 100%. Two cautions. An arm that falls through into the next must move with it - Ghidra
+  `TacticalPowerBar_Main` to 100%. Three cautions. An arm that falls through into the next must move with it - Ghidra
   emits that shape wherever the original shared a tail, and 16 such arms across 11 files would otherwise be reordered
   past the arm they fall into, which is a silent behaviour change; reassuringly, every fall-through chain turned out to
   be consecutively ranked in the original's table too. And the rule has exceptions for very small arms: six
-  scrollbar-style functions measured worse and were reverted, so gate per function.
+  scrollbar-style functions measured worse and were reverted, so gate per function. The **last** arm needs
+  its own guard: running off its end there falls out of the switch, which is harmless only while it stays
+  last, and moving it makes it fall into whatever follows. Five committed functions had that bug before it
+  was caught, in arms the original ends with `ret`. The repair keeps both the behaviour and the gain, because
+  falling out of a switch is what `break;` means: closing the arm explicitly frees it to move and *improved*
+  the match (`OptionsMenu_SubOptionsButtons` to normalized 100%, `UnusedChooseAvailableKeeps_Main` 77.2% ->
+  89.5%), which is what one expects if the original terminates those arms too. Verify any such rewrite by
+  comparing **token** multisets rather than lines: `clang-format` reflows the moved code, so a line-level
+  comparison reports a false difference.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`
