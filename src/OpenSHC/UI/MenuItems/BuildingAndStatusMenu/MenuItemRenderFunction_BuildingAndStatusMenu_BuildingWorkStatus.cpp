@@ -49,15 +49,23 @@ namespace UI {
             if ((sVar1 == 0)
                 && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .currentlyNeededEmployeeCount
-                    == 0)) {}
+                    == 0)) {
+                return;
+            }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                     .buildingTypeBasedEmployeeCount
-                < 1) {}
+                <= 0) {
+                return;
+            }
             BuildingTypeShort BVar2
                 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                       .buildingType;
-            if ((0x27 < (short)BVar2) && ((short)BVar2 < 0x2d)) {}
-            if ((0x23 < (short)BVar2) && ((short)BVar2 < 0x27)) {}
+            if ((0x28 <= (short)BVar2) && ((short)BVar2 <= 0x2c)) {
+                return;
+            }
+            if ((0x24 <= (short)BVar2) && ((short)BVar2 <= 0x26)) {
+                return;
+            }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                     .hasAccessToKeep
                 == 0) {
