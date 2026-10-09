@@ -74,7 +74,7 @@ namespace UI {
             if (param_1 == 100) {
                 return;
             }
-            if ((DAT_AlliesCount::instance < 1) && (param_1 != -1)) {
+            if (((int)DAT_AlliesCount::instance < 1) && (param_1 != -1)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
@@ -135,7 +135,7 @@ namespace UI {
                     DAT_00df51f4::instance = 0;
                 }
                 iVar3 = param_1 + -1;
-                if (DAT_AlliesCount::instance <= iVar3) {
+                if ((int)DAT_AlliesCount::instance <= iVar3) {
                     DAT_ButtonUnknownZero::instance = 0;
                 }
                 iVar2 = DAT_SomeTeamMemberPlayerIDArray::instance[iVar3];
@@ -177,15 +177,16 @@ namespace UI {
                         } else {
                             if (DAT_GameCore::instance.lordIcons[iVar2] != 1) {
                                 if (0 < DAT_TextureRenderCoreObject::instance.field69_0x98[iVar2 + 0x13]) {
-                                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                                    MACRO_CALL_MEMBER(
+                                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
                                         0x21d, (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
                                         0xc);
                                     MACRO_CALL_MEMBER(
                                         OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFaceWithBlendUnk,
                                         DAT_TextureRenderCoreObject::ptr)(iVar2 + 0x13,
-                                        (int)((int)(DAT_ButtonX::instance + 4)), (int)((int)(DAT_ButtonY::instance + 4)),
-                                        0xc);
+                                        (int)((int)(DAT_ButtonX::instance + 4)),
+                                        (int)((int)(DAT_ButtonY::instance + 4)), 0xc);
                                 }
                                 goto LAB_004aca47;
                             }
@@ -211,8 +212,9 @@ namespace UI {
                 if (iVar3 != DAT_LastTeamMemberIndex::instance) {
                     iVar6 = 8;
                 }
-                iVar3 = (int)DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .requestedGoodsArray1Unk[iVar2];
+                iVar3
+                    = (int)DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                          .requestedGoodsArray1Unk[iVar2];
                 if (iVar3 == 7) {
                     iVar3 = 8;
                     return;
@@ -248,7 +250,7 @@ namespace UI {
                 DAT_ButtonUnknownZero::instance = 0;
             }
             iVar6 = 0;
-            if (0 < DAT_ButtonH::instance) {
+            if (0 < (int)DAT_ButtonH::instance) {
                 do {
                     if (iVar6 == 0) {
                         iVar5 = 1;
@@ -261,9 +263,9 @@ namespace UI {
                         if (iVar7 == 0) {
                         LAB_004acbeb:
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
-                                iVar4, iVar7 + iVar3, iVar2 + iVar6, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
-                                iVar4 + 3, 0);
+                                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iVar4,
+                                iVar7 + iVar3, iVar2 + iVar6, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iVar4 + 3,
+                                0);
                         } else {
                             if (iVar7 == 0x270) {
                                 iVar4 = iVar5 + 2;
@@ -278,7 +280,7 @@ namespace UI {
                         iVar7 = iVar7 + 0x18;
                     } while (iVar7 < 0x288);
                     iVar6 = iVar6 + 0x18;
-                } while (iVar6 < DAT_ButtonH::instance);
+                } while (iVar6 < (int)DAT_ButtonH::instance);
             }
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
@@ -286,11 +288,11 @@ namespace UI {
             iVar3 = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance];
             iVar2 = DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3];
             if ((iVar2 == -1)
-                && (BVar1 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer,
-                        DAT_GameSynchronyState::ptr)(iVar3),
+                && (BVar1 = MACRO_CALL_MEMBER(
+                        OpenSHC::Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(iVar3),
                     BVar1 == FALSE)) {
-                        return;
-                    }
+                return;
+            }
             iVar7 = DAT_ButtonY::instance;
             iVar5 = DAT_ButtonX::instance;
             iVar6 = DAT_ButtonX::instance + 0x18;
@@ -311,9 +313,8 @@ namespace UI {
                             .ColorTable1[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[iVar3]])),
                     0, 0x11, FALSE);
             }
-            iVar2
-                = (int)DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .requestedGoodsArray1Unk[iVar3];
+            iVar2 = (int)DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .requestedGoodsArray1Unk[iVar3];
             if (iVar2 == 7) {
                 iVar2 = 8;
             }
@@ -324,12 +325,10 @@ namespace UI {
                   added by script: "Requests"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 0xc, iVar6, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
-                    FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 0xc, iVar6, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE);
                 MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::renderLeftAlignedNumberToScreen, DAT_TextManagerObject::ptr)(
-                    (int)DAT_GameState::instance
-                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    (int)DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .requestedGoodsArray2Unk[iVar3],
                     iVar5 + 0x1d, iVar4, 0xccfaff, 0x12, 1);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
@@ -344,16 +343,14 @@ namespace UI {
                 xParam = iVar6;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                textOffsetIndex, iVar2, xParam, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
-                (BOOLEnum)bVar8);
+                textOffsetIndex, iVar2, xParam, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, (BOOLEnum)bVar8);
             iVar2 = iVar7 + 0x58;
             if (DAT_GameState::instance.playerDataArray[iVar3].requestStateUnk == 0) {
                 /*
                   added by script: "No Orders"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 2, iVar6, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
-                    FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 2, iVar6, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE);
             } else {
                 /*
                   added by script: "Orders:"
@@ -374,8 +371,8 @@ namespace UI {
                       added by script: "Defend"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_ALLIES, 0x11, iVar5 + 0x1d, iVar2, OpenSHC::Text::TTA_LEFT,
-                        0xccfaff, 0x12, TRUE);
+                        OpenSHC::DE::SHCDE::TEXT_ALLIES, 0x11, iVar5 + 0x1d, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff,
+                        0x12, TRUE);
                 } else {
                     iVar4 = DAT_GameState::instance.playerDataArray[iVar3].requestedAttackTargetUnk;
                     if (iVar4 == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
@@ -419,15 +416,15 @@ namespace UI {
                   added by script: "Help Needed!"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 4, iVar6, iVar7 + 0x78, OpenSHC::Text::TTA_LEFT, 0xccfaff,
-                    0x12, FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_ALLIES, 4, iVar6, iVar7 + 0x78, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
+                    FALSE);
             }
             iVar2 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .requestStateUnk
                 != 1) {
-                    return;
-                }
+                return;
+            }
             iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .playerID_askerUnk;
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar5] == -1) {
@@ -457,13 +454,12 @@ namespace UI {
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                     iVar6, iVar5, iVar6 + 0x23, iVar7 + 0x96, (ushort)((int)(COL_BLACK::instance.shortValue)));
             }
-            MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3 + 0x2ce, iVar6, iVar5);
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3 + 0x2ce, iVar6, iVar5);
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                (int)((int)(DAT_GameSynchronyState::instance.currentAIArray
-                                [DAT_GameState::instance.playerDataArray[iVar2].requestedAttackTargetUnk]
+                (int)((int)(DAT_GameSynchronyState::instance
+                                .currentAIArray[DAT_GameState::instance.playerDataArray[iVar2].requestedAttackTargetUnk]
                     + 700)),
                 iVar6, iVar5);
         }
