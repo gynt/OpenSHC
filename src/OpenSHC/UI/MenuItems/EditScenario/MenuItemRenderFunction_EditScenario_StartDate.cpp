@@ -39,7 +39,9 @@ namespace UI {
                 iVar1 = 0x27;
             } else {
                 if (param_1 != -1) {
-                    if (param_1 == 0) {}
+                    if (param_1 == 0) {
+                        return;
+                    }
                     iVar1 = DAT_ButtonX::instance;
                     if (DAT_ButtonW::instance != 0) {
                         iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
