@@ -88,7 +88,7 @@ namespace UI {
                 if (param_1 == -1)
                     goto LAB_004ad69c;
                 iVar1 = param_1 + -1;
-                if (DAT_EnemyArrayIndex::instance <= iVar1) {
+                if ((int)DAT_EnemyArrayIndex::instance <= iVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonX::instance + 0x47)), (int)((int)(DAT_ButtonY::instance + 0x47)),
