@@ -50,6 +50,34 @@ namespace UI {
             bool bVar1;
             MenuModalType dialogID;
             switch (param_1) {
+            case 0x27:
+                /*
+                  "Briefing"
+                 */
+                if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL))
+                    && (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
+                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1))
+                        || ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk
+                            && (DAT_MapPropertiesState::instance.scenarionMissionType != 0)))))) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                    DAT_GameCore::instance.field22_0x64 = 1;
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                        DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                }
+                break;
+            case 10:
+                /*
+                  "Resume Game"
+                 */
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                return;
             case 2:
                 /*
                   "Load"
@@ -99,6 +127,21 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
                 break;
+            case 0x1a:
+                /*
+                  "Help"
+                 */
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openInGameHelpDialog, DAT_TextEditorState::ptr)(
+                    0);
+                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                return;
+            case 0x18:
+                dialogID = OpenSHC::UI::Enums::MMT_PAUSE_MENU_OPTIONS;
+                goto LAB_00496db0;
             case 7:
                 /*
                   "Quit mission"
@@ -126,49 +169,6 @@ namespace UI {
                  */
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                     DAT_MenuTextInputState::ptr)(dialogID);
-                break;
-            case 10:
-                /*
-                  "Resume Game"
-                 */
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
-                return;
-            case 0x18:
-                dialogID = OpenSHC::UI::Enums::MMT_PAUSE_MENU_OPTIONS;
-                goto LAB_00496db0;
-            case 0x1a:
-                /*
-                  "Help"
-                 */
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openInGameHelpDialog, DAT_TextEditorState::ptr)(
-                    0);
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
-                return;
-            case 0x27:
-                /*
-                  "Briefing"
-                 */
-                if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                        && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CRUSADER_TUTORIAL))
-                    && (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
-                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1))
-                        || ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk
-                            && (DAT_MapPropertiesState::instance.scenarionMissionType != 0)))))) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                    DAT_GameCore::instance.field22_0x64 = 1;
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
-                    MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
-                }
                 break;
             case 0x2c:
                 /*
