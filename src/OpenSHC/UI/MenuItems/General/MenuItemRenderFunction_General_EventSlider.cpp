@@ -36,17 +36,6 @@ namespace UI {
         {
             undefined2 color;
             switch (param_1) {
-            case 5:
-            case 0xc:
-            case 0x12:
-            case 0x13:
-            case 0x15:
-                if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                        .data.scenario.ScenarioEventType
-                    != param_1 + -1) {
-                    return;
-                }
-                break;
             case -2:
             case -1:
                 switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -68,6 +57,17 @@ namespace UI {
                 default:
                     return;
                 }
+            case 5:
+            case 0xc:
+            case 0x12:
+            case 0x13:
+            case 0x15:
+                if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                        .data.scenario.ScenarioEventType
+                    != param_1 + -1) {
+                    return;
+                }
+                break;
             }
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
