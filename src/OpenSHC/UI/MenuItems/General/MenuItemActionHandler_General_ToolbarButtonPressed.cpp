@@ -74,18 +74,28 @@ namespace UI {
             UnitType UVar4;
             uint uVar5;
             undefined4 uVar6;
-            if (DAT_GameSynchronyState::instance.syncStatus != 0) {}
-            if (DAT_GameSynchronyState::instance.saveRelated != 0) {}
+            if (DAT_GameSynchronyState::instance.syncStatus != 0) {
+                return;
+            }
+            if (DAT_GameSynchronyState::instance.saveRelated != 0) {
+                return;
+            }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated
                 != 0) {
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {}
+                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                    return;
+                }
                 if (DAT_GameState::instance.mapAndTime.gameOver
-                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {}
+                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
+                    return;
+                }
             }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
-                != 0) {}
+                != 0) {
+                return;
+            }
             if (DAT_GameCore::instance.gamePausedLogical != 0) {
                 return;
             }
@@ -189,7 +199,9 @@ namespace UI {
             case OpenSHC::Commands::M_MAPPER_PATROL:
                 UVar4 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                if (UVar4 == ((UnitType)0xffffffff)) {}
+                if (UVar4 == ((UnitType)0xffffffff)) {
+                    return;
+                }
                 if (DAT_TribesState::instance.patrolButtonPressed != FALSE) {
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                     DAT_TribesState::instance.rallyCount = 1;
