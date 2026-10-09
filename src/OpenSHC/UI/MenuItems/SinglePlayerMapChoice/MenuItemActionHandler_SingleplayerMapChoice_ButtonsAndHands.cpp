@@ -105,6 +105,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_MapMissionType::instance = 0;
+                        return;
                     }
                     break;
                 case 0x43:
@@ -115,6 +116,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_MapMissionType::instance = 1;
+                        return;
                     }
                     break;
                 case 0x44:
@@ -124,6 +126,7 @@ namespace UI {
                     if (DAT_MapMissionType::instance != 2) {
                         DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                         DAT_MapMissionType::instance = 2;
+                        return;
                     }
                     break;
                 case 0x45:
@@ -147,6 +150,7 @@ namespace UI {
                     if (((DAT_GameCore::instance.mapU4Int1_2 == 0) && (DAT_MapMissionType::instance == 2))
                         && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2)) {
                         DAT_SH1_SiegeAdvancedMode::instance = DAT_SH1_SiegeAdvancedMode::instance ^ 1;
+                        return;
                     }
                     break;
                 case 0x4c:
@@ -154,6 +158,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_MapMissionType::instance = 3;
+                        return;
                     }
                     break;
                 case 0x4d:
@@ -164,14 +169,17 @@ namespace UI {
                         if (DAT_GameSynchronyState::instance.currentPlayerSlotID != 1) {
                             DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                             DAT_SH1_SiegeAdvancedMode::instance = 0;
+                            return;
                         }
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 2;
+                        return;
                     }
                     break;
                 case -100:
                     DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
                     if ((int)DAT_00b960f4::instance < 0) {
                         DAT_00b960f4::instance = 0;
+                        return;
                     }
                     break;
                 case -0xb:
@@ -182,6 +190,7 @@ namespace UI {
                         MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
                                 MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
+                        return;
                     }
                     break;
                 case -10:
