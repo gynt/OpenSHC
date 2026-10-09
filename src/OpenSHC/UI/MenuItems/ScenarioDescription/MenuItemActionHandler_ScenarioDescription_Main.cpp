@@ -62,37 +62,6 @@ namespace UI {
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
             if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
                 switch (param_1) {
-                case 6:
-                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
-                        DAT_00ed2798::instance = 0;
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
-                            DAT_TextEditorState::ptr)();
-                        ;
-                    }
-                    break;
-                case 8:
-                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
-                        DAT_00ed2798::instance = 2;
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
-                            DAT_TextEditorState::ptr)();
-                        ;
-                    }
-                    break;
-                case 9:
-                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
-                        DAT_00ed2798::instance = 3;
-                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
-                            local_68, "mission%d.hlp", DAT_GameCore::instance.missionNumber1to20);
-                        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
-                            DAT_TextEditorState::ptr)(local_68);
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openScenarioHelpDialog,
-                            DAT_TextEditorState::ptr)(iVar1);
-                        ;
-                    }
-                    break;
                 case 10:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
                         DAT_TextEditorState::ptr)();
@@ -198,22 +167,37 @@ namespace UI {
                         DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
                     ;
                     return;
-                case -4:
-                    DAT_00eb0b24::instance = DAT_00eb0b24::instance + 1;
-                    if (INT_00ed27c4::instance <= (int)DAT_00eb0b24::instance) {
-                        DAT_00eb0b24::instance = 0;
+                case 6:
+                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
+                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
+                        DAT_00ed2798::instance = 0;
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
+                            DAT_TextEditorState::ptr)();
+                        ;
                     }
                     break;
-                case -3:
-                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2c;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
-                    ;
-                    return;
-                case -2:
-                    DAT_00ed27bc::instance = 1;
-                    ;
-                    return;
+                case 8:
+                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
+                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
+                        DAT_00ed2798::instance = 2;
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
+                            DAT_TextEditorState::ptr)();
+                        ;
+                    }
+                    break;
+                case 9:
+                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
+                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1)) {
+                        DAT_00ed2798::instance = 3;
+                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                            local_68, "mission%d.hlp", DAT_GameCore::instance.missionNumber1to20);
+                        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
+                            DAT_TextEditorState::ptr)(local_68);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openScenarioHelpDialog,
+                            DAT_TextEditorState::ptr)(iVar1);
+                        ;
+                    }
+                    break;
                 case -1:
                     if ((DAT_00ed2798::instance == 0)
                         && (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
@@ -235,6 +219,22 @@ namespace UI {
                         MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetEventStatusUnk)();
                         ;
                     }
+                case -2:
+                    DAT_00ed27bc::instance = 1;
+                    ;
+                    return;
+                case -3:
+                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2c;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
+                    ;
+                    return;
+                case -4:
+                    DAT_00eb0b24::instance = DAT_00eb0b24::instance + 1;
+                    if (INT_00ed27c4::instance <= (int)DAT_00eb0b24::instance) {
+                        DAT_00eb0b24::instance = 0;
+                    }
+                    break;
                 }
             };
         }
