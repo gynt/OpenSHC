@@ -15,6 +15,13 @@ Only the one `switch` whose label set matches the table is touched, and only whe
 arm in the table can be paired with one in the source, so a function whose dispatch has
 drifted further than ordering is left alone and reported.
 
+One table per function, on purpose. A generalisation that paired every table in a function
+with its switch corrupted `MenuItemActionHandler_TextEditor_Buttons`, whose 28-arm switch
+contains a second switch: rewriting the outer arms moves the inner one, and the second
+pass then spliced at stale offsets. Verifying that each rewrite is a pure permutation of
+the switch region is what caught it, so keep that check if you extend this to nested
+switches.
+
 usage:
   reorder_switch.py FILE.cpp... [--apply]
 """

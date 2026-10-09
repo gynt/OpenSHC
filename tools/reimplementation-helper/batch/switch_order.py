@@ -61,13 +61,16 @@ def dispatches(ins):
             ml = re.match(r"lea \w+, \[\w+ ([-+]) (0x[0-9a-f]+|\d+)\]$", t)
             if ml:
                 v = int(ml.group(2), 16 if ml.group(2).startswith("0x") else 10)
-                base = v if ml.group(1) == "-" else -v
+                # a large displacement is a global's address, not an index adjustment
+                if v < 0x10000:
+                    base = v if ml.group(1) == "-" else -v
             ma = re.match(r"add \w+, (0x[0-9a-f]+|-?\d+)$", t)
             if ma:
                 v = int(ma.group(1), 16 if ma.group(1).startswith("0x") else 10)
                 if v > 0x7FFFFFFF:
                     v -= 0x100000000
-                base = -v
+                if abs(v) < 0x10000:
+                    base = -v
         if count is None:
             continue
         out.append((base, count, byte_table, dword_table, default))
