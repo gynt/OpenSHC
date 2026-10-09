@@ -171,7 +171,9 @@ namespace UI {
                 || (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION)) {
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
                     if (param_1 != 0x26) {
-                        if (param_1 == 0x4f) {}
+                        if (param_1 == 0x4f) {
+                            return;
+                        }
                     LAB_004beed3:
                         if (param_1 == 0x29) {
                             if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
