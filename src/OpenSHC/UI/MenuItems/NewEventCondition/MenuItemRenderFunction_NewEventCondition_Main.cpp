@@ -65,6 +65,7 @@ namespace UI {
                                 + 0xc,
                             (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                            break;
                     case 0x7e:
                         if (*(char*)((int)&DAT_MapPropertiesState::instance
                                          .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
