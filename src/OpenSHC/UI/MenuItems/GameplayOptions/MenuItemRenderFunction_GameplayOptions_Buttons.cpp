@@ -71,7 +71,7 @@ namespace UI {
                     color = 0xccfaff;
                     TVar4 = OpenSHC::Text::TTA_CENTER;
                     iVar3 = DAT_ButtonY::instance + 7;
-                    iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xf),
@@ -96,7 +96,7 @@ namespace UI {
             iVar5 = 0x12;
             TVar4 = OpenSHC::Text::TTA_CENTER;
             iVar3 = DAT_ButtonY::instance + 7;
-            iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
