@@ -90,19 +90,9 @@ namespace UI {
             char* pcVar10;
             dword dStack_4;
             switch (param_1) {
-            case 9:
-            case 0xdd:
-                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 0;
-                return;
-            case 10:
-            case 0xde:
-                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 1;
-                return;
-            case 0xb:
-                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 2;
-                return;
-            case 0xc:
-                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 3;
+            case 0x17:
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT);
                 return;
             case 0xd:
             case 0xe:
@@ -297,9 +287,194 @@ namespace UI {
             case 0xdb:
             case 0xdc:
                 return;
-            case 0x17:
+            case 0x2e:
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT);
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_CREATE_OR_TRIGGER_INVASION);
+                return;
+            case 0xd4:
+                /*
+                  Invasion
+                 */
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Map::MapPropertiesState_Func::spawnInvasionEventAttackWave, DAT_MapPropertiesState::ptr)();
+            case 0x24:
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                return;
+            case 9:
+            case 0xdd:
+                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 0;
+                return;
+            case 10:
+            case 0xde:
+                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 1;
+                return;
+            case 0xb:
+                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 2;
+                return;
+            case 0xc:
+                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 3;
+                return;
+            case 0x57:
+                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 4;
+                return;
+            case 0x85:
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                    (int)((int)(SEC_RNG::instance.currentNumber2 % 9)),
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.xEntry
+                        * 8,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.yEntry
+                        * 8,
+                    (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.tileEntry])),
+                    OpenSHC::Map::Units::UT_JUGGLER);
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 3) % 9,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.xEntry
+                        * 8,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.yEntry
+                        * 8,
+                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.tileEntry])),
+                    OpenSHC::Map::Units::UT_JUGGLER);
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 6) % 9,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.xEntry
+                        * 8,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.yEntry
+                        * 8,
+                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.tileEntry])),
+                    OpenSHC::Map::Units::UT_JUGGLER);
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 9) % 9,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.xEntry
+                        * 8,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.yEntry
+                        * 8,
+                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.tileEntry])),
+                    OpenSHC::Map::Units::UT_FIREEATER);
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 0xc) % 9,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.xEntry
+                        * 8,
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.yEntry
+                        * 8,
+                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .campground.tileEntry])),
+                    OpenSHC::Map::Units::UT_FIREEATER);
+                pcVar10 = "Random_Events1.wav";
+                iVar8 = 1;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field0_0x0;
+                break;
+            case 0x90:
+                iVar8
+                    = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::hasAvailableSpawnSlotForWildlifeOrMercs,
+                        DAT_TribesState::ptr)();
+                if ((iVar8 == 0)
+                    || ((iVar8
+                        = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
+                            DAT_BuildingsState::ptr)(
+                            DAT_GameSynchronyState::instance.currentPlayerSlotID, OpenSHC::Map::Buildings::BT_HOPFARM),
+                        iVar8 == 0
+                            && (iVar8 = MACRO_CALL_MEMBER(
+                                    OpenSHC::Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
+                                    DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                    OpenSHC::Map::Buildings::BT_WHEATFARM),
+                                iVar8 == 0))))
+                    goto LAB_004c19d6;
+                DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation = 1200;
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::TribesState_Func::spawnWildlifeOrMercAtAvailableSlot, DAT_TribesState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
+                    DAT_TribesState::instance.unknownX_01, DAT_TribesState::instance.unknownY_01);
+                pcVar10 = "Random_Events7.wav";
+                iVar8 = 7;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field6_0x18;
+                break;
+            case 0x8f:
+                MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
+                pcVar10 = "Random_Events6.wav";
+                iVar8 = 6;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field5_0x14;
+                break;
+            case 0x95:
+                DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
+                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .someCount52 = 0xc;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
+                }
+                pcVar3 = "Random_Events12.wav";
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field11_0x2c;
+                /*
+                  added by script: "The people rejoice at your forthcoming marriage, Sire."
+                 */
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ACTION, 0xc),
+                    (char*)((int)(ppcVar9)), pcVar3);
+                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                    OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                return;
+            case 0x96:
+                DAT_GameState::instance.mapAndTime.unitJesterRelated = 1;
+                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .someCount53 = 0x30;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
+                }
+                pcVar10 = "Random_Events13.wav";
+                iVar8 = 0xd;
+                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field12_0x30;
+                break;
+            case 0x8b:
+            case 0x91:
+            case 0x92:
+            case 0x94:
+            case 0xb3:
+                DAT_MapPropertiesState::instance.invasionEventContent.field44_0xa0 = param_1;
+                DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8 = 1;
+                switch (param_1) {
+                case 0x8b:
+                case 0x91:
+                case 0xb3:
+                    (*(int*)&DAT_MapPropertiesState::instance.invasionEventContent.padding_0xa4[0]) = 10;
+                    break;
+                case 0x92:
+                case 0x94:
+                    (*(int*)&DAT_MapPropertiesState::instance.invasionEventContent.padding_0xa4[0]) = 0x32;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT_SLIDER);
+                }
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT_SLIDER);
                 return;
             case 0x25:
                 switch (DAT_MapPropertiesState::instance.invasionEventContent.field44_0xa0) {
@@ -553,181 +728,6 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ACTION, iVar8),
                     (char*)((int)(ppcVar9)), pcVar10);
             switchD_004c1bae_caseD_8c:
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                return;
-            case 0x2e:
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_CREATE_OR_TRIGGER_INVASION);
-                return;
-            case 0x57:
-                DAT_MapPropertiesState::instance.invasionEventContent.crusaderArabian = 4;
-                return;
-            case 0x85:
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                    (int)((int)(SEC_RNG::instance.currentNumber2 % 9)),
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.xEntry
-                        * 8,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.yEntry
-                        * 8,
-                    (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.tileEntry])),
-                    OpenSHC::Map::Units::UT_JUGGLER);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 3) % 9,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.xEntry
-                        * 8,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.yEntry
-                        * 8,
-                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.tileEntry])),
-                    OpenSHC::Map::Units::UT_JUGGLER);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 6) % 9,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.xEntry
-                        * 8,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.yEntry
-                        * 8,
-                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.tileEntry])),
-                    OpenSHC::Map::Units::UT_JUGGLER);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 9) % 9,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.xEntry
-                        * 8,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.yEntry
-                        * 8,
-                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.tileEntry])),
-                    OpenSHC::Map::Units::UT_FIREEATER);
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (SEC_RNG::instance.currentNumber2 >> 0xc) % 9,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.xEntry
-                        * 8,
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.yEntry
-                        * 8,
-                    (UnitType)((int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .campground.tileEntry])),
-                    OpenSHC::Map::Units::UT_FIREEATER);
-                pcVar10 = "Random_Events1.wav";
-                iVar8 = 1;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field0_0x0;
-                break;
-            case 0x8b:
-            case 0x91:
-            case 0x92:
-            case 0x94:
-            case 0xb3:
-                DAT_MapPropertiesState::instance.invasionEventContent.field44_0xa0 = param_1;
-                DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8 = 1;
-                switch (param_1) {
-                case 0x8b:
-                case 0x91:
-                case 0xb3:
-                    (*(int*)&DAT_MapPropertiesState::instance.invasionEventContent.padding_0xa4[0]) = 10;
-                    break;
-                case 0x92:
-                case 0x94:
-                    (*(int*)&DAT_MapPropertiesState::instance.invasionEventContent.padding_0xa4[0]) = 0x32;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT_SLIDER);
-                }
-                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT_SLIDER);
-                return;
-            case 0x8f:
-                MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
-                pcVar10 = "Random_Events6.wav";
-                iVar8 = 6;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field5_0x14;
-                break;
-            case 0x90:
-                iVar8
-                    = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::hasAvailableSpawnSlotForWildlifeOrMercs,
-                        DAT_TribesState::ptr)();
-                if ((iVar8 == 0)
-                    || ((iVar8
-                        = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
-                            DAT_BuildingsState::ptr)(
-                            DAT_GameSynchronyState::instance.currentPlayerSlotID, OpenSHC::Map::Buildings::BT_HOPFARM),
-                        iVar8 == 0
-                            && (iVar8 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
-                                    DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                    OpenSHC::Map::Buildings::BT_WHEATFARM),
-                                iVar8 == 0))))
-                    goto LAB_004c19d6;
-                DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation = 1200;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::TribesState_Func::spawnWildlifeOrMercAtAvailableSlot, DAT_TribesState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
-                    DAT_TribesState::instance.unknownX_01, DAT_TribesState::instance.unknownY_01);
-                pcVar10 = "Random_Events7.wav";
-                iVar8 = 7;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field6_0x18;
-                break;
-            case 0x95:
-                DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
-                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .someCount52 = 0xc;
-                if (10000
-                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .popularity) {
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .popularity = 10000;
-                }
-                pcVar3 = "Random_Events12.wav";
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field11_0x2c;
-                /*
-                  added by script: "The people rejoice at your forthcoming marriage, Sire."
-                 */
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ACTION, 0xc),
-                    (char*)((int)(ppcVar9)), pcVar3);
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                    OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                return;
-            case 0x96:
-                DAT_GameState::instance.mapAndTime.unitJesterRelated = 1;
-                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .someCount53 = 0x30;
-                if (10000
-                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .popularity) {
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .popularity = 10000;
-                }
-                pcVar10 = "Random_Events13.wav";
-                iVar8 = 0xd;
-                ppcVar9 = DAT_MissionAestheticsDefinedData::instance.field12_0x30;
-                break;
-            case 0xd4:
-                /*
-                  Invasion
-                 */
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Map::MapPropertiesState_Func::spawnInvasionEventAttackWave, DAT_MapPropertiesState::ptr)();
-            case 0x24:
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                 return;
