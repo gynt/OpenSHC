@@ -32,6 +32,7 @@ namespace UI {
                 case -1:
                     puVar1 = (uint*)((int)DAT_GameCore::ptr + param_1 * -4 + 0x1534);
                     *puVar1 = *puVar1 ^ 1;
+                    return;
                 case 7:
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
