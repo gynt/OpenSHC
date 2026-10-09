@@ -199,7 +199,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_SCENARIO, textNumInGroup, (int)((int)(DAT_ButtonX::instance + 0xe)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
-                if (iVar2 < 0) {}
+                if (iVar2 < 0) {
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ", (int)((int)(DAT_ButtonX::instance + 0x14)), (int)((int)(DAT_ButtonY::instance + 7)),
                     OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, TRUE, 0);
