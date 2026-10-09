@@ -264,6 +264,20 @@ falls back to one at a time. Read the jump target before trusting a big winner: 
 the original's `jne` goes to the shared `pop/ret` epilogue (`orig_disasm.py` labels it, and in VideoOptions all three
 went to `L15`, which *is* the epilogue). A jump to any other block compiles just as happily and is simply wrong.
 
+The epilogue is often not a bare `pop`/`ret`. A menu render function sets
+`drawBufferChoiceValue = RT_MAP_GAME` on the way out, so that store sits in the same block, and a guard jumping there
+decompiles as `if (cond) { ...; X = <epilogue value>; }` with the `return` gone. The store survives, the following code
+does not repeat it, and `find_dead_store.py` therefore cannot see any of these - 49 functions across `UI::MenuItems`
+had the deficit. `epilogue_jumps.py` reports what each `ret` block stores, and `try_epilogue_returns.py` appends the
+`return;` at every guard body in the source that ends in one of those stores.
+
+Unlike the empty-body case this one **must be gated per function and most of it thrown away**: an empty
+`if (cond) {}` compiles to nothing, so filling it is unambiguous, but a guard that already emits the store is valid
+code either way and the counting argument is not per-site evidence. Of 195 sites, 21 functions improved and 29
+measured worse; keeping only the 21 was worth 0.5 of namespace average (`AiLordSelect_Main` 84.4% -> 95.3%,
+`EngineerAndMonkPortraits` 44.8% -> 67.1%) while the blanket application lost 0.65. Do not keep a site the
+measurement does not support.
+
 `epilogue_jumps.py FILE.cpp` answers that question for a whole file at once, from the binary rather than from a
 score: it prints every conditional jump in the original that lands on a `pop`/`ret` block, in address order, which is
 the order the guards appear in. Compare the count with our `return;` count before trying anything - a function with

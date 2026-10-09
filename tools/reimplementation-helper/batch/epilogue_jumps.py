@@ -25,17 +25,38 @@ import common  # noqa: F401  (chdir to the repository root)
 import orig_disasm as od
 
 
+TAIL = ("pop", "leave", "add", "mov", "xor", "or")
+
+
+def _is_tail(i):
+    """An instruction a `ret` block may carry: a stack adjustment or a plain store."""
+    if i.mnemonic in ("pop", "leave"):
+        return True
+    if i.mnemonic == "add" and i.op_str.startswith("esp,"):
+        return True
+    # a store into memory, which is how a render function sets its draw target on the
+    # way out; anything reading or writing a register only would be real work
+    return i.mnemonic in ("mov", "xor", "or") and i.op_str.startswith(("dword ptr [", "word ptr [", "byte ptr ["))
+
+
 def epilogue_blocks(ins):
-    """Addresses belonging to a block that only pops and returns."""
-    out = set()
+    """{address: [stores]} for every block that only unwinds, stores and returns.
+
+    A bare `pop`/`ret` block is the common case, but a function that sets a global on
+    the way out - `drawBufferChoiceValue = RT_MAP_GAME` in the menu render functions -
+    puts that store in the same block, and a guard jumping there has to carry the store
+    as well as the `return`. The stores are reported so the caller can write both.
+    """
+    out = {}
     for n, i in enumerate(ins):
         if i.mnemonic != "ret":
             continue
         k = n
-        while k > 0 and ins[k - 1].mnemonic in ("pop", "leave"):
+        while k > 0 and _is_tail(ins[k - 1]):
             k -= 1
+        stores = [x.mnemonic + " " + x.op_str for x in ins[k:n] if x.mnemonic != "pop"]
         for j in range(k, n + 1):
-            out.add(ins[j].address)
+            out[ins[j].address] = stores
     return out
 
 
@@ -56,7 +77,9 @@ def main():
             except ValueError:
                 continue
             if t in eps:
-                print("  %08x  %-4s -> 0x%x  RETURNS" % (i.address, i.mnemonic, t))
+                tail = eps[t]
+                print("  %08x  %-4s -> 0x%x  RETURNS%s"
+                      % (i.address, i.mnemonic, t, ("  after  " + "; ".join(tail)) if tail else ""))
 
 
 if __name__ == "__main__":
