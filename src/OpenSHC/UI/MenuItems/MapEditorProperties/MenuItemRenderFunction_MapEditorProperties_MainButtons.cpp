@@ -58,8 +58,12 @@ namespace UI {
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 if (param_1 == 0x19) {
-                    if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {}
-                    if (DAT_GameCore::instance.field115_0x1d98 == 0) {}
+                    if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {
+                        return;
+                    }
+                    if (DAT_GameCore::instance.field115_0x1d98 == 0) {
+                        return;
+                    }
                 } else if (param_1 == 5) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
