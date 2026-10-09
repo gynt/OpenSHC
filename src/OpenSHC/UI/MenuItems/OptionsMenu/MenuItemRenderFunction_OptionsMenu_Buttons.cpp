@@ -85,7 +85,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     blendStrength = 0;
                     yParam = DAT_ButtonY::instance + 7;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     color = 0x7f7f7f;
                     goto LAB_00491904;
                 }
@@ -121,14 +121,14 @@ namespace UI {
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0x2c,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                        (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x12, FALSE);
                 }
                 return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 blendStrength = 4;
