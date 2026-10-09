@@ -200,7 +200,7 @@ namespace UI {
                     return;
                 case -4:
                     DAT_00eb0b24::instance = DAT_00eb0b24::instance + 1;
-                    if (INT_00ed27c4::instance <= DAT_00eb0b24::instance) {
+                    if (INT_00ed27c4::instance <= (int)DAT_00eb0b24::instance) {
                         DAT_00eb0b24::instance = 0;
                     }
                     break;
