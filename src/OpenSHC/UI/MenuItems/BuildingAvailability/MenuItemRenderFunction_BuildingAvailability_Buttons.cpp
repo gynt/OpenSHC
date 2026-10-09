@@ -57,7 +57,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 blendStrength = 0;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x13;
@@ -114,7 +114,7 @@ namespace UI {
                 BVar2 = 0xccfaff;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("!",
-                (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, BVar2, 0x13, FALSE, 0);
         }
 
