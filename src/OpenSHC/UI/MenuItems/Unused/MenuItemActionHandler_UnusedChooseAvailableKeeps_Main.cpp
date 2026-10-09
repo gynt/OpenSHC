@@ -25,6 +25,13 @@ namespace UI {
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 switch (param_1) {
+                case -5:
+                case -4:
+                case -3:
+                case -2:
+                case -1:
+                    puVar1 = (uint*)((int)DAT_GameCore::ptr + param_1 * -4 + 0x1534);
+                    *puVar1 = *puVar1 ^ 1;
                 case 7:
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
@@ -39,13 +46,6 @@ namespace UI {
                         DAT_GameCore::instance.field115_0x1d98 = 1;
                     }
                     break;
-                case -5:
-                case -4:
-                case -3:
-                case -2:
-                case -1:
-                    puVar1 = (uint*)((int)DAT_GameCore::ptr + param_1 * -4 + 0x1534);
-                    *puVar1 = *puVar1 ^ 1;
                 }
             }
         }
