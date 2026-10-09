@@ -127,7 +127,7 @@ namespace UI {
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x4f,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar4, 0x12, FALSE);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
