@@ -28,18 +28,27 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042B470
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_MapSelectTable(int param_1, ...)
         {
-            if ((((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
-                     && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                         != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
-                    && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                        != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                && ((DAT_GameSynchronyState::instance.isHost != FALSE
-                    && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                        < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber)))) {
-                DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = param_1;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
+                return;
             }
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID
+                == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT) {
+                return;
+            }
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID
+                == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                return;
+            }
+            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                return;
+            }
+            if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
+                >= DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                return;
+            }
+            DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = param_1;
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
         }
 
     }
