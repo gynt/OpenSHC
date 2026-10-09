@@ -54,6 +54,7 @@ namespace UI {
                         OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
                     DAT_MouseState::instance.previewEnabled = 1;
                     DAT_GameSynchronyState::instance.field299_0x109e7c = 1;
+                    return;
                 }
                 DAT_MouseState::instance.previewEnabled = 0;
             }
