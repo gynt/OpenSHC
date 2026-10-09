@@ -74,29 +74,6 @@ namespace UI {
                 DAT_TileMapState::instance.field162_0x5549c4 = 0;
                 DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
                 return;
-            case 2:
-            case 6:
-            case 7:
-            case 9:
-            case 10:
-            case 0xb:
-            case 0xc:
-            case 0xd:
-            case 0xe:
-            case 0xf:
-            case 0x10:
-            case 0x11:
-            case 0x12:
-            case 0x13:
-            case 0x15:
-            case 0x17:
-            case 0x18:
-            case 0x19:
-            case 0x1a:
-            case 0x1b:
-            case 0x1c:
-            case 0x1d:
-                break;
             case 3:
                 uVar4 = 3;
                 DAT_UnitsState::instance.unitControlsRelated = TRUE;
@@ -107,6 +84,18 @@ namespace UI {
                 DAT_UnitsState::instance.unitControlsRelated = 4;
                 DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
                 DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                return;
+            case 0x14:
+                uVar2 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                if (uVar2 == 0) {
+                    DAT_StopHandlingMenuItems::instance = 0;
+                }
+                DAT_UnitsState::instance.unitControlsRelated = 0x14;
+                DAT_UnitsState::instance.field5_0x14 = 0x14;
+                DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
+                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                 return;
             case 5:
                 uVar2 = MACRO_CALL_MEMBER(
@@ -142,28 +131,6 @@ namespace UI {
                     DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
                 }
                 break;
-            case 8:
-                DAT_UnitsState::instance.unitControlsRelated = 8;
-                uVar4 = 8;
-            LAB_00446b3b:
-                DAT_UnitsState::instance.field5_0x14 = DAT_UnitsState::instance.unitControlsRelated;
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
-                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
-                DAT_TileMapState::instance.field162_0x5549c4 = 0;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
-                return;
-            case 0x14:
-                uVar2 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                if (uVar2 == 0) {
-                    DAT_StopHandlingMenuItems::instance = 0;
-                }
-                DAT_UnitsState::instance.unitControlsRelated = 0x14;
-                DAT_UnitsState::instance.field5_0x14 = 0x14;
-                DAT_TileMapState::instance.field162_0x5549c4 = 0x20;
-                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
-                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                return;
             case 0x16:
                 if (0 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .counter) {
@@ -185,6 +152,16 @@ namespace UI {
                     }
                 }
                 break;
+            case 8:
+                DAT_UnitsState::instance.unitControlsRelated = 8;
+                uVar4 = 8;
+            LAB_00446b3b:
+                DAT_UnitsState::instance.field5_0x14 = DAT_UnitsState::instance.unitControlsRelated;
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
+                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
+                DAT_TileMapState::instance.field162_0x5549c4 = 0;
+                DAT_TileMapState::instance.field163_0x5549c8 = 0x6b;
+                return;
             case 0x1e:
                 UVar3 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
@@ -199,6 +176,29 @@ namespace UI {
             case 0x1f:
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
                     DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x1f);
+                break;
+            case 2:
+            case 6:
+            case 7:
+            case 9:
+            case 10:
+            case 0xb:
+            case 0xc:
+            case 0xd:
+            case 0xe:
+            case 0xf:
+            case 0x10:
+            case 0x11:
+            case 0x12:
+            case 0x13:
+            case 0x15:
+            case 0x17:
+            case 0x18:
+            case 0x19:
+            case 0x1a:
+            case 0x1b:
+            case 0x1c:
+            case 0x1d:
                 break;
             default:
                 break;
