@@ -334,15 +334,6 @@ namespace UI {
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
                                     | OpenSHC::Audio::SFX::SEID_INN));
                             return;
-                        case 0x19:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                                (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
-                                    | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_LIFT_01));
-                            return;
-                        case 0x1c:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                                ((SoundEffectID)0x80));
-                            return;
                         case 0x1e:
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
@@ -352,6 +343,15 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
                                     | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_BREAK));
+                        case 0x19:
+                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                                (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
+                                    | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_LIFT_01));
+                            return;
+                        case 0x1c:
+                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                                ((SoundEffectID)0x80));
+                            return;
                         }
                     }
                 }
