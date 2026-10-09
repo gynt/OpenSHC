@@ -197,7 +197,7 @@ namespace UI {
                 break;
             case -0xc9:
                 if (DAT_GameSynchronyState::instance.isHost != FALSE) {
-                    if (-1 < DAT_00b95960::instance) {
+                    if (-1 < (int)DAT_00b95960::instance) {
                         iVar3 = 0;
                         while (((iVar4 = DAT_GameCore::instance.keepPositions[iVar3].x,
                                     iVar4 < 0
@@ -442,14 +442,14 @@ namespace UI {
                 break;
             case -0x65:
                 iVar3 = DAT_00b95b74::instance + -0x72;
-                if ((DAT_00b960f4::instance < iVar3)
-                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar3 < DAT_00b960f4::instance)) {
+                if (((int)DAT_00b960f4::instance < iVar3)
+                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar3 < (int)DAT_00b960f4::instance)) {
                     DAT_00b960f4::instance = iVar3;
                 }
                 break;
             case -100:
                 DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
-                if (DAT_00b960f4::instance < -0x13) {
+                if ((int)DAT_00b960f4::instance < -0x13) {
                     DAT_00b960f4::instance = 0xffffffed;
                 }
                 break;
