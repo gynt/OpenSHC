@@ -60,7 +60,7 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if (numInGroup != -1) {
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                iVar1 = (iVar1 / 32) + 0x20;
                 yParam = DAT_ButtonY::instance + 3;
                 xParam = DAT_ButtonX::instance + 8;
                 keepOffsetX = FALSE;
