@@ -36,6 +36,7 @@ namespace UI {
                         DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
                         DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)((int)(COL_BLACK::instance.shortValue)));
                     *(char*)&INT_00eb0e44::instance = 0;
+                    break;
                 case -100:
                     if ((char)INT_00eb0e44::instance == '\0') {
                         if (1 < (int)DAT_00ec082c::instance) {
