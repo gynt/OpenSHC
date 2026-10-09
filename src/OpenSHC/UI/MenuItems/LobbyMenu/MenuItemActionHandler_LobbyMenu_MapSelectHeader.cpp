@@ -231,7 +231,9 @@ namespace UI {
                     if (iVar2 == 0)
                         break;
                     iVar8 = iVar8 + 1;
-                    if (DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {}
+                    if (DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {
+                        return;
+                    }
                 }
                 DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = 0;
                 if (iVar8 < 0) {
