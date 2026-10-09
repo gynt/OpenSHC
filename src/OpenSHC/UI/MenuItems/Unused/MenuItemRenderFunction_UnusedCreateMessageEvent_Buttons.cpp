@@ -41,25 +41,32 @@ namespace UI {
             if (DAT_MapPropertiesState::instance.field69_0x13590 == 4) {
                 if (param_1 == 9) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 10) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0xb) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0xc) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
             } else {
                 if (param_1 == 0x3f1) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0x3f2) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0x3f3) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0x3f4) {
                     DAT_ButtonUnknownZero::instance = 1;
@@ -74,6 +81,7 @@ namespace UI {
                         } else {
                             if (param_1 != 10) {
                                 DAT_ButtonUnknownZero::instance = 1;
+                                return;
                             }
                             param_1 = 0x19;
                         }
@@ -113,10 +121,12 @@ namespace UI {
                 LAB_004bab10:
                     if (0xc < param_1) {
                         DAT_ButtonUnknownZero::instance = 0;
+                        return;
                     }
                 } else {
                     if ((DAT_MapPropertiesState::instance.field69_0x13590 < 3) && (8 < param_1)) {
                         DAT_ButtonUnknownZero::instance = 0;
+                        return;
                     }
                     if (DAT_MapPropertiesState::instance.field69_0x13590 < 4)
                         goto LAB_004bab10;
@@ -127,6 +137,7 @@ namespace UI {
                     } else {
                         if (param_1 != 10) {
                             DAT_ButtonUnknownZero::instance = 1;
+                            return;
                         }
                         param_1 = 0x19;
                     }
