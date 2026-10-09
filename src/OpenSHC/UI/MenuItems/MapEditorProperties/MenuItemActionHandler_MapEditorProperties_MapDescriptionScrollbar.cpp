@@ -33,10 +33,10 @@ namespace UI {
                     *currentValue = DAT_00b960f4::instance;
                     return;
                 case 5:
-                    if (0 < DAT_00b960f4::instance) {
+                    if (0 < (int)DAT_00b960f4::instance) {
                         DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
                     }
-                    if (DAT_00b960f4::instance < 0) {
+                    if ((int)DAT_00b960f4::instance < 0) {
                         DAT_00b960f4::instance = 0;
                     }
                     *currentValue = DAT_00b960f4::instance;
