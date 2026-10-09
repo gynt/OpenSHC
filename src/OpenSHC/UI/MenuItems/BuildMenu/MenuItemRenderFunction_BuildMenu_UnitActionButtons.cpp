@@ -65,7 +65,7 @@ namespace UI {
                 return;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (0x22e < DAT_CurrentButtonGmDataIndex::instance) {
+            if (0x22e < (int)DAT_CurrentButtonGmDataIndex::instance) {
             switchD_00438c35_caseD_d9:
                 if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
                     DAT_ButtonUnknownZero::instance = 1;
