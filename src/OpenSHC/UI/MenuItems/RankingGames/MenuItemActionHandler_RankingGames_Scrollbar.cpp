@@ -38,6 +38,8 @@ namespace UI {
                     *currentValue = DAT_00ed3120::instance;
                 }
                 break;
+            case 7:
+                *currentValue = 6;
             case 5:
                 if (0 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
@@ -51,8 +53,6 @@ namespace UI {
             LAB_004d9be7:
                 *currentValue = DAT_00ed3120::instance;
                 break;
-            case 7:
-                *currentValue = 6;
             }
         }
 
