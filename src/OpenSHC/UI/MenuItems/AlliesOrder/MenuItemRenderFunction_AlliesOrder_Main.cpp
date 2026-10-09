@@ -142,7 +142,9 @@ namespace UI {
                 }
             }
         LAB_004ad693:
-            if (iVar1 != -1) {}
+            if (iVar1 != -1) {
+                return;
+            }
         LAB_004ad69c:
             iVar2 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
