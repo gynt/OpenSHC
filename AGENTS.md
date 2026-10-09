@@ -285,7 +285,12 @@ where every other `case` is unreachable. Rebuilding it from the original's jump 
 Diff patterns that were reliable (more in the cheat sheet):
 
 - Absolute `DAT_*` addresses in the original asm where the source uses `this->` mean the original accessed the global instance.
-- Signed `jl/jge` vs our unsigned `jb/jae` on `undefined4`/`uint` fields: compare through `(int)`.
+- Signed `jl/jge` vs our unsigned `jb/jae` on `undefined4`/`uint` fields: compare through `(int)`. This is worth
+  sweeping rather than chasing one diff at a time. Collect the resolvers declared `MACRO_STRUCT_RESOLVER(undefined4`
+  or `(uint`, then cast every relational comparison against one: 51 sites across `UI::MenuItems` gained 10
+  functions with **no regressions at all**, including two normalized 100%s
+  (`MenuItemRenderFunction_BuildingAndStatusMenu_HorizontalSlider`, and `MapDescriptionScrollbar` 79.1% -> 88.2%).
+  `==` and `!=` are unaffected, so only `<`, `>`, `<=`, `>=` need it.
 - `cmp x, N; ja` means `<= N`; write the literal the asm shows.
 - `mov r, [x]; sub r, 1; je` inside a loop is a `switch` on `x`.
 - A tail call to the same callee from our code but a jump back to a shared block in the original means separate
