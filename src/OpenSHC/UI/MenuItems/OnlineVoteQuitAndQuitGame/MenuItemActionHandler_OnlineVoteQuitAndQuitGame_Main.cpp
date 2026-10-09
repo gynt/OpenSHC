@@ -37,6 +37,14 @@ namespace UI {
         {
             byte bVar1;
             switch (param_1) {
+            case 1:
+                DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
+                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
+                MACRO_CALL(
+                    OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(
+                    0x16);
+                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                return;
             case 2:
                 bVar1 = DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] != -1;
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[2] != -1) {
@@ -89,22 +97,14 @@ namespace UI {
                     DAT_GameSynchronyState::instance.quitGameVoteRequestTime = timeGetTime();
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 }
-            case 1:
-                DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
-                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
-                MACRO_CALL(
-                    OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(
-                    0x16);
-                MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
-                return;
-            case 3:
-                goto switchD_00495871_caseD_3;
             case 4:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
                 break;
             case 5:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                 break;
+            case 3:
+                goto switchD_00495871_caseD_3;
             default:
             switchD_00495871_caseD_5:
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
