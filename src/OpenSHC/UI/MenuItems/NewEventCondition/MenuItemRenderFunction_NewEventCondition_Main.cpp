@@ -49,8 +49,33 @@ namespace UI {
                 if (param_1 != 0xd1) {
                     iVar1 = param_1;
                     switch (param_1) {
-                    default:
-                        goto switchD_004c01f4_caseD_0;
+                    case -1:
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                            AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                            uVar2 = 0xc2f0eb;
+                        } else {
+                            uVar2 = 0xccfaff;
+                        }
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_MONTHS,
+                            DAT_MapPropertiesState::instance
+                                    .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                    .header.month
+                                + 0xc,
+                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                    case 0x7e:
+                        if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                         .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                         .data
+                                + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xf)
+                            == '\0') {
+                            param_1 = 0x7f;
+                        }
+                    case 0x13:
+                        MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
+                        return;
                     case 0x68:
                         if (*(short*)((int)&DAT_MapPropertiesState::instance
                                           .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -61,6 +86,26 @@ namespace UI {
                         }
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
                         return;
+                    case 0xbe:
+                    case 0xbf:
+                    case 0xc0:
+                    case 0xc1:
+                    case 0xc2:
+                    case 0xc3:
+                    case 0xc4:
+                    case 0xc5:
+                    case 0xc6:
+                    case 199:
+                    case 200:
+                    case 0xc9:
+                    case 0xca:
+                    case 0xcb:
+                    case 0xcc:
+                    case 0xcd:
+                    case 0xce:
+                    case 0xcf:
+                    case 0xd0:
+                        goto switchD_004c01f4_caseD_be;
                     case 0x6a:
                     case 0x6b:
                     case 0x6c:
@@ -133,53 +178,8 @@ namespace UI {
                             OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, (int)((int)(DAT_ButtonX::instance + 5)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, 0x7f7f7f, 0x12, FALSE);
                         return;
-                    case 0x7e:
-                        if (*(char*)((int)&DAT_MapPropertiesState::instance
-                                         .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                         .data
-                                + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xf)
-                            == '\0') {
-                            param_1 = 0x7f;
-                        }
-                    case 0x13:
-                        MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
-                        return;
-                    case 0xbe:
-                    case 0xbf:
-                    case 0xc0:
-                    case 0xc1:
-                    case 0xc2:
-                    case 0xc3:
-                    case 0xc4:
-                    case 0xc5:
-                    case 0xc6:
-                    case 199:
-                    case 200:
-                    case 0xc9:
-                    case 0xca:
-                    case 0xcb:
-                    case 0xcc:
-                    case 0xcd:
-                    case 0xce:
-                    case 0xcf:
-                    case 0xd0:
-                        goto switchD_004c01f4_caseD_be;
-                    case -1:
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                            AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                            uVar2 = 0xc2f0eb;
-                        } else {
-                            uVar2 = 0xccfaff;
-                        }
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_MONTHS,
-                            DAT_MapPropertiesState::instance
-                                    .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                    .header.month
-                                + 0xc,
-                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                    default:
+                        goto switchD_004c01f4_caseD_0;
                     }
                 }
                 if ((*(char*)((int)&DAT_MapPropertiesState::instance
