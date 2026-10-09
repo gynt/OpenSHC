@@ -83,6 +83,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
                 INT_00df3368::instance = param_1;
                 DWORD_00df3364::instance = timeGetTime();
+                return;
             }
             if (param_1 == 0x1d) {
                 iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
