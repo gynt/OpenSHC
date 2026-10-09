@@ -50,6 +50,9 @@ namespace UI {
                           < 1)
                         - 1;
                 return;
+            case 7:
+                *currentValue = DAT_TextEditorState::instance.dialogContentHeight + -0x14;
+                return;
             case 5:
                 break;
             case 6:
@@ -66,9 +69,6 @@ namespace UI {
                     DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar2 < 1) - 1 & uVar2;
                 }
                 *currentValue = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                return;
-            case 7:
-                *currentValue = DAT_TextEditorState::instance.dialogContentHeight + -0x14;
                 return;
             default:
                 break;
