@@ -134,7 +134,9 @@ namespace UI {
                 /*
                   multiplayer
                  */
-                if ((int)DAT_GameCore::instance.directDrawStatus < 0x700) {}
+                if ((int)DAT_GameCore::instance.directDrawStatus < 0x700) {
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(5);
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(6);
                 DAT_GameSynchronyState::instance.nextModalDialog
