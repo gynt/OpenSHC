@@ -53,7 +53,7 @@ namespace UI {
                     if (DAT_00df5560::instance == 0) {
                         return;
                     }
-                    if (((DAT_00df5558::instance < DAT_00df555c::instance + -1)
+                    if ((((int)DAT_00df5558::instance < (int)DAT_00df555c::instance + -1)
                             && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE))
                         && (DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0)) {
                         numInGroup = 5;
@@ -62,7 +62,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 blendStrength = 0;
-                xParam = (DAT_ButtonW::instance >> 1) + DAT_ButtonX::instance;
+                xParam = ((int)DAT_ButtonW::instance >> 1) + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
