@@ -30,7 +30,7 @@ namespace UI {
                 switch (param_1) {
                 case -0x65:
                     if ((char)INT_00eb0e44::instance == '\0') {
-                        if (DAT_00ec082c::instance < 2) {
+                        if ((int)DAT_00ec082c::instance < 2) {
                             DAT_00ec082c::instance = 1;
                             DAT_GameCore::instance.activeMenuTab.tabType
                                 = OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
@@ -41,7 +41,7 @@ namespace UI {
                     break;
                 case -100:
                     if ((char)INT_00eb0e44::instance == '\0') {
-                        if (1 < DAT_00ec082c::instance) {
+                        if (1 < (int)DAT_00ec082c::instance) {
                             DAT_00ec082c::instance = 2;
                             DAT_GameCore::instance.activeMenuTab.tabType
                                 = (OpenSHC::UI::Enums::BuildingsAndStatusMenuTabTypeInt)2;
