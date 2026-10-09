@@ -118,7 +118,9 @@ namespace UI {
                     && ((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK4
                         && (DAT_TileMapState::instance.currentMapperCommand
                             != OpenSHC::Commands::M_MAPPER_BIGROCK5)))) {
-                    if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_NULL) {}
+                    if (DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_NULL) {
+                        return;
+                    }
                     MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::renderPreviewMapperWithBrush,
                         DAT_TileMapState::ptr)(DAT_ViewportRenderState::instance.viewportState.mouseTileX,
                         (uint)((int)(DAT_ViewportRenderState::instance.viewportState.mouseTileY)),
@@ -132,7 +134,9 @@ namespace UI {
             }
             if ((DAT_MouseState::instance.leftClickStart == 0)
                 && (DAT_ViewportRenderState::instance.viewportState.field4_0x10
-                    == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {}
+                    == DAT_ViewportRenderState::instance.viewportState.mouseTile)) {
+                return;
+            }
             DAT_ViewportRenderState::instance.viewportState.field4_0x10
                 = DAT_ViewportRenderState::instance.viewportState.mouseTile;
             MACRO_CALL_MEMBER(
