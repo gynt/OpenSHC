@@ -54,12 +54,6 @@ namespace UI {
             case 7:
                 DAT_ButtonX::instance = DAT_ButtonX::instance + 1;
                 break;
-            default:
-                if (0x12 < iVar1) {
-                    DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
-                    goto LAB_004391d6;
-                }
-                break;
             case 4:
                 DAT_ButtonX::instance = DAT_ButtonX::instance + 2;
                 DAT_ButtonY::instance = DAT_ButtonY::instance + -0x14;
@@ -105,6 +99,12 @@ namespace UI {
                 DAT_ButtonX::instance = DAT_ButtonX::instance + -6;
                 DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
                 goto LAB_004391d6;
+            default:
+                if (0x12 < iVar1) {
+                    DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
+                    goto LAB_004391d6;
+                }
+                break;
             }
             DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x17c;
         LAB_004391d6:
