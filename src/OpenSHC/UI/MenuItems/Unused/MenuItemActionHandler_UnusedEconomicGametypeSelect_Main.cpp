@@ -119,13 +119,13 @@ namespace UI {
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[8]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
                 return;
-            case 4:
-                goto switchD_00425c32_caseD_4;
             case 5:
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
             switchD_00425c32_caseD_4:
                 return;
+            case 4:
+                goto switchD_00425c32_caseD_4;
             default:
                 break;
             }
