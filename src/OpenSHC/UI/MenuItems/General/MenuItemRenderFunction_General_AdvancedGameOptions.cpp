@@ -147,7 +147,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
                     (int)((int)(DAT_GameSynchronyState::instance.skirmishWinCondition + 0x24)),
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, _color, 0x12, FALSE,
                     ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
             }
@@ -209,7 +209,7 @@ namespace UI {
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0x11,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, _color, 0x12, FALSE,
                     ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20);
             }
