@@ -82,7 +82,6 @@ namespace UI {
             dword dVar5;
             dword dVar6;
             int iVar7;
-            dword _param_1;
             uint x1;
             int unitSelectionIndex;
             uint y1;
@@ -303,7 +302,6 @@ namespace UI {
                     DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_TRIGGER_EVENT);
                 return;
             case 0x25:
-                dStack_4 = _param_1;
                 switch (DAT_MapPropertiesState::instance.invasionEventContent.field44_0xa0) {
                 case 0x8b:
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
