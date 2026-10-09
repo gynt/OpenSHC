@@ -136,7 +136,9 @@ namespace UI {
                 if (param_1 == 0x1e) {
                     DAT_00ed3124::instance = (uint)(DAT_00ed3124::instance != 1);
                 } else {
-                    if (param_1 != 0x1f) {}
+                    if (param_1 != 0x1f) {
+                        return;
+                    }
                     DAT_00ed3124::instance = -(uint)(DAT_00ed3124::instance != 2) & 2;
                 }
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
