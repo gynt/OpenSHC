@@ -86,7 +86,7 @@ namespace UI {
             fontSize = 0x12;
             alignment = OpenSHC::Text::TTA_CENTER;
             yParam = DAT_ButtonY::instance + 7;
-            iVar3 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            iVar3 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             /*
               added by script: "Repair"
              */
