@@ -248,7 +248,12 @@ mismatch across `UI::MenuItems`, worth 10-30 points per function and two normali
 
 `try_returns.py` tries a `return;` at every `if` body that could carry one and keeps the sites `quick_diff.py` scores
 better, so a function settles in about a minute. Where the guard wraps the rest of the function, prefer the inverted
-`if (hot) { ...; return; } cold;` shape over a guard at the top: the original's `je` jumps *forward* to the cold block,
+`if (hot) { ...; return; } cold;` shape over a guard at the top - and when the original's arm sits
+*after* the fall-through path, write the condition in the `!=` sense with the special case in an `else`:
+`if (param_1 != -5) { hot } else { cold }` is what makes MSVC emit the original's forward `je` and place the arm out of
+line, where `if (param_1 == -5) { cold; return; } hot;` emits `jne` and inlines it.
+`MenuItemRenderFunction_EditScenario_StartDate` went 0.41 -> 0.80 on `quick_diff.py`'s ratio from that one change of
+sense, with nothing else altered: the original's `je` jumps *forward* to the cold block,
 which is what MSVC emits only when the cold path is written last (same lever as `diff_triage.py`'s `RET` flag).
 
 These returns often only pay **in combination**, which a greedy per-site search misses.
