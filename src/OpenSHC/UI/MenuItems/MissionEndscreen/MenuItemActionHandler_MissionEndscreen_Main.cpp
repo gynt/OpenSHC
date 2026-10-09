@@ -28,17 +28,14 @@ namespace UI {
         {
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 switch (param_1) {
-                case -0x65:
+                case -1:
                     if ((char)INT_00eb0e44::instance == '\0') {
-                        if ((int)DAT_00ec082c::instance < 2) {
-                            DAT_00ec082c::instance = 1;
-                            DAT_GameCore::instance.activeMenuTab.tabType
-                                = OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
-                        }
-                        DAT_00ec082c::instance = 3;
-                        DAT_GameCore::instance.activeMenuTab.tabType = OpenSHC::UI::Enums::BASMTT_INN_OR_MPMMENU_UNK;
+                        INT_00ed279c::instance = 1;
                     }
-                    break;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
+                        DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
+                        DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                    *(char*)&INT_00eb0e44::instance = 0;
                 case -100:
                     if ((char)INT_00eb0e44::instance == '\0') {
                         if (1 < (int)DAT_00ec082c::instance) {
@@ -50,7 +47,16 @@ namespace UI {
                         DAT_GameCore::instance.activeMenuTab.tabType = ((BuildingsAndStatusMenuTabType)0);
                     }
                     break;
-                case -10:
+                case -0x65:
+                    if ((char)INT_00eb0e44::instance == '\0') {
+                        if ((int)DAT_00ec082c::instance < 2) {
+                            DAT_00ec082c::instance = 1;
+                            DAT_GameCore::instance.activeMenuTab.tabType
+                                = OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
+                        }
+                        DAT_00ec082c::instance = 3;
+                        DAT_GameCore::instance.activeMenuTab.tabType = OpenSHC::UI::Enums::BASMTT_INN_OR_MPMMENU_UNK;
+                    }
                     break;
                 case -2:
                     param_1 = 0;
@@ -58,14 +64,8 @@ namespace UI {
                     *(char*)&INT_00eb0e44::instance = 0;
                     DAT_FinalResultsOrderByColumn::instance = param_1;
                     break;
-                case -1:
-                    if ((char)INT_00eb0e44::instance == '\0') {
-                        INT_00ed279c::instance = 1;
-                    }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                        DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
-                        DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)((int)(COL_BLACK::instance.shortValue)));
-                    *(char*)&INT_00eb0e44::instance = 0;
+                case -10:
+                    break;
                 }
             }
         }
