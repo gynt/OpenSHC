@@ -90,7 +90,9 @@ namespace UI {
                     }
                     TIME_MercPostAudio::instance = DVar2;
                     TIME_ClickedMercUnitTypeMoment::instance = DVar1;
-                    if (_now - TIME_ClickedMercUnitTypeMoment::instance < 0x1f41) {}
+                    if (_now - TIME_ClickedMercUnitTypeMoment::instance < 0x1f41) {
+                        return;
+                    }
                 LAB_004675b5:
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         (char const*)((int)DAT_UIButtonDefinedData::instance.ButtonGmDataArray + param_1 * 0x20
@@ -130,7 +132,9 @@ namespace UI {
                     goto LAB_0046764f;
                 bVar5 = iVar3 == 0;
             }
-            if (!bVar5) {}
+            if (!bVar5) {
+                return;
+            }
         LAB_004675eb:
             /*
               "Recruits needed sire"
