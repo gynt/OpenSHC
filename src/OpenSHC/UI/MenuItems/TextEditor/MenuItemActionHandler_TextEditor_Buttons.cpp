@@ -34,23 +34,46 @@ namespace UI {
             undefined4 uVar10;
             HelpTextToken token;
             switch (param_1) {
-            case 0:
-            case 0x10:
-            case 0x11:
-            case 0x12:
-            case 0x13:
-            case 0x15:
-            case 0x16:
-            case 0x17:
-            case 0x18:
-            case 0x19:
-            case 0x1a:
-            case 0x1b:
-            case 0x1c:
-            case 0x1d:
-            case 0x1e:
-            case 0x1f:
+            case -1:
+                if (0x11 < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY) {
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY
+                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + -0x12;
+                }
+                DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
+                return;
+            case -2:
+                uVar3 = DAT_TextEditorState::instance.topVisibleLineIndex
+                    - DAT_TextEditorState::instance.dialogContentHeight;
+                if (((int)((((int)uVar3 < 1) - 1 & uVar3) - 0x12)
+                        <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)
+                    || (DAT_TextEditorState::instance.helpContentScrollOffsetY
+                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + 0x12,
+                        (int)(((int)uVar3 < 1) - 1 & uVar3)
+                            < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)) {
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar3 < 1) - 1 & uVar3;
+                }
+                return;
+            case -3:
+                if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
+                    if (-1 < DAT_TextEditorState::instance.field50_0x23968) {
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog,
+                            DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.field50_0x23968);
+                    }
+                } else if (-1 < DAT_TextEditorState::instance.field49_0x23964) {
+                    DAT_TextEditorState::instance.activeHelpHotspotIndex
+                        = DAT_TextEditorState::instance.field49_0x23964;
+                }
                 break;
+            case -4:
+                if (DAT_TextEditorState::instance.helpSectionHistoryStack[0] != -1) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextEditorState_Func::popHelpDialogStack, DAT_TextEditorState::ptr)();
+                }
+                break;
+            case -5:
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog, DAT_TextEditorState::ptr)(-1);
+                return;
             case 1:
                 DAT_TextEditorState::instance.helpDialogSubMode
                     = (uint)(DAT_TextEditorState::instance.helpDialogSubMode == 0);
@@ -434,6 +457,40 @@ namespace UI {
                 return;
             case 0x20:
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
+                case 4:
+                    DAT_ResourceManager::instance.strFileTitle[0] = '\0';
+                    DAT_ResourceManager::instance.strFile[0] = '\0';
+                    BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
+                        DAT_ResourceManager::ptr)("Select help file to link to");
+                    if (BVar7 != FALSE) {
+                        pcVar8 = DAT_ResourceManager::instance.strFileTitle;
+                        do {
+                            cVar1 = *pcVar8;
+                            pcVar8 = pcVar8 + 1;
+                        } while (cVar1 != '\0');
+                    LAB_00462c09:
+                        if (pcVar8 != DAT_ResourceManager::instance.strFileTitle + 1) {
+                            iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
+                                DAT_TextEditorState::ptr)(DAT_ResourceManager::instance.strFileTitle);
+                            DAT_TextEditorState::instance
+                                .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
+                                    + 1] = (WCHAR)iVar6;
+                        }
+                    }
+                    break;
+                case 0xe:
+                    DAT_ResourceManager::instance.strFileTitle[0] = '\0';
+                    DAT_ResourceManager::instance.strFile[0] = '\0';
+                    BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
+                        DAT_ResourceManager::ptr)("Select help file to include");
+                    if (BVar7 != FALSE) {
+                        pcVar8 = DAT_ResourceManager::instance.strFileTitle;
+                        do {
+                            cVar1 = *pcVar8;
+                            pcVar8 = pcVar8 + 1;
+                        } while (cVar1 != '\0');
+                        goto LAB_00462c09;
+                    }
                 case 1:
                     DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                     DAT_ResourceManager::instance.strFile[0] = '\0';
@@ -455,27 +512,6 @@ namespace UI {
                                 DAT_TextEditorState::ptr)();
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText,
                                 DAT_TextEditorState::ptr)();
-                        }
-                    }
-                    break;
-                case 4:
-                    DAT_ResourceManager::instance.strFileTitle[0] = '\0';
-                    DAT_ResourceManager::instance.strFile[0] = '\0';
-                    BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                        DAT_ResourceManager::ptr)("Select help file to link to");
-                    if (BVar7 != FALSE) {
-                        pcVar8 = DAT_ResourceManager::instance.strFileTitle;
-                        do {
-                            cVar1 = *pcVar8;
-                            pcVar8 = pcVar8 + 1;
-                        } while (cVar1 != '\0');
-                    LAB_00462c09:
-                        if (pcVar8 != DAT_ResourceManager::instance.strFileTitle + 1) {
-                            iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName,
-                                DAT_TextEditorState::ptr)(DAT_ResourceManager::instance.strFileTitle);
-                            DAT_TextEditorState::instance
-                                .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                    + 1] = (WCHAR)iVar6;
                         }
                     }
                     break;
@@ -501,19 +537,6 @@ namespace UI {
                         }
                     }
                     break;
-                case 0xe:
-                    DAT_ResourceManager::instance.strFileTitle[0] = '\0';
-                    DAT_ResourceManager::instance.strFile[0] = '\0';
-                    BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                        DAT_ResourceManager::ptr)("Select help file to include");
-                    if (BVar7 != FALSE) {
-                        pcVar8 = DAT_ResourceManager::instance.strFileTitle;
-                        do {
-                            cVar1 = *pcVar8;
-                            pcVar8 = pcVar8 + 1;
-                        } while (cVar1 != '\0');
-                        goto LAB_00462c09;
-                    }
                 }
                 break;
             case 0x21:
@@ -547,11 +570,25 @@ namespace UI {
                 case 0xc:
                     pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
                     iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
-                    pWVar2[iVar6 + 1]
-                        = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1]
-                                      + 0x13)
-                            % 0x14);
+                    pWVar2[iVar6 + 1] = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1] + 0x13) % 0x14);
                 }
+                break;
+            case 0:
+            case 0x10:
+            case 0x11:
+            case 0x12:
+            case 0x13:
+            case 0x15:
+            case 0x16:
+            case 0x17:
+            case 0x18:
+            case 0x19:
+            case 0x1a:
+            case 0x1b:
+            case 0x1c:
+            case 0x1d:
+            case 0x1e:
+            case 0x1f:
                 break;
             case 0x22:
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
@@ -584,10 +621,7 @@ namespace UI {
                 case 0xc:
                     pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
                     iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
-                    pWVar2[iVar6 + 1]
-                        = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1]
-                                      + 1)
-                            % 0x14);
+                    pWVar2[iVar6 + 1] = (WCHAR)((int)((ushort)pWVar2[iVar6 + 1] + 1) % 0x14);
                 }
                 break;
             case 0x23:
@@ -608,46 +642,6 @@ namespace UI {
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                 }
                 break;
-            case -5:
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog, DAT_TextEditorState::ptr)(-1);
-                return;
-            case -4:
-                if (DAT_TextEditorState::instance.helpSectionHistoryStack[0] != -1) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextEditorState_Func::popHelpDialogStack, DAT_TextEditorState::ptr)();
-                }
-                break;
-            case -3:
-                if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
-                    if (-1 < DAT_TextEditorState::instance.field50_0x23968) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog,
-                            DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.field50_0x23968);
-                    }
-                } else if (-1 < DAT_TextEditorState::instance.field49_0x23964) {
-                    DAT_TextEditorState::instance.activeHelpHotspotIndex
-                        = DAT_TextEditorState::instance.field49_0x23964;
-                }
-                break;
-            case -2:
-                uVar3 = DAT_TextEditorState::instance.topVisibleLineIndex
-                    - DAT_TextEditorState::instance.dialogContentHeight;
-                if (((int)((((int)uVar3 < 1) - 1 & uVar3) - 0x12)
-                        <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)
-                    || (DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + 0x12,
-                        (int)(((int)uVar3 < 1) - 1 & uVar3)
-                            < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)) {
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar3 < 1) - 1 & uVar3;
-                }
-                return;
-            case -1:
-                if (0x11 < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY) {
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + -0x12;
-                }
-                DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
-                return;
             default:
                 break;
             }
