@@ -99,6 +99,7 @@ namespace UI {
                             + 0x3f38));
                     TIME_ClickedMercUnitTypeMoment::instance = _now;
                     DAT_ClickedMercUnitType::instance = param_1;
+                    return;
                 }
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 1) {
                 LAB_0046764f:
