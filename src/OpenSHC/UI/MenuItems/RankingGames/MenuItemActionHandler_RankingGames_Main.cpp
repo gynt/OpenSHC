@@ -55,15 +55,15 @@ namespace UI {
             SkirmishStatistics* pSVar6;
             char* pcVar7;
             if (param_1 == -10) {
-                if (0 < DAT_00ed3120::instance) {
+                if (0 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
                 }
             } else if (param_1 == -0xb) {
-                if (DAT_00ed3120::instance < DAT_00eb9b60::instance + -8) {
+                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
                 }
             } else {
-                if ((param_1 < 8) && (DAT_00ed3120::instance + param_1 < DAT_00eb9b60::instance)) {
+                if ((param_1 < 8) && (DAT_00ed3120::instance + param_1 < (int)DAT_00eb9b60::instance)) {
                     iVar1 = INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + param_1];
                     iVar3 = DAT_SkMasters2DataArray::instance[iVar1].aliveArray[1];
                     pSVar4 = &DAT_SkMasters2DataArray::instance[iVar1].results;
@@ -102,7 +102,7 @@ namespace UI {
                         OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
                 }
                 if ((0x27 < param_1)
-                    && (iVar1 = DAT_00ed3120::instance + -0x28 + param_1, iVar1 < DAT_00eb9b60::instance)) {
+                    && (iVar1 = DAT_00ed3120::instance + -0x28 + param_1, iVar1 < (int)DAT_00eb9b60::instance)) {
                     DAT_00ed2788::instance = INT_ARRAY_00eb96d8::instance[iVar1];
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DELETE_GAME_RECORD, FALSE);
@@ -129,7 +129,7 @@ namespace UI {
                     if (iVar1 < 0) {
                         iVar1 = 0;
                     }
-                    if (iVar1 < DAT_00ed3120::instance) {
+                    if (iVar1 < (int)DAT_00ed3120::instance) {
                         DAT_00ed3120::instance = iVar1;
                     }
                 }
@@ -146,7 +146,7 @@ namespace UI {
                 if (iVar1 < 0) {
                     iVar1 = 0;
                 }
-                if (iVar1 < DAT_00ed3120::instance) {
+                if (iVar1 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = iVar1;
                 }
             }
