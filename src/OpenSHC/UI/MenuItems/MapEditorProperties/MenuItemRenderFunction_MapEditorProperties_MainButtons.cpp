@@ -71,6 +71,7 @@ namespace UI {
                 if ((DAT_GameCore::instance.U2_mapType_singleOrMulti == 0)
                     && (((param_1 == 9 || (param_1 == -1)) || (param_1 == -2)))) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 9) {
                     if (DAT_GameCore::instance.unknownAlwaysZero03 != 0) {
@@ -153,6 +154,7 @@ namespace UI {
                 } else {
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_MapEditorProperties_ClickedButton::instance = param_1;
+                        return;
                     }
                     if (param_1 < 0) {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
