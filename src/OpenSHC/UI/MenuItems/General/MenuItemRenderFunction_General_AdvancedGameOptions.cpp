@@ -93,10 +93,12 @@ namespace UI {
                 && (DAT_ButtonUnknownZero::instance = 0,
                     DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                 if (param_1 == 0x67) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 0x5d) {
                     return;
@@ -104,6 +106,7 @@ namespace UI {
             }
             if (param_1 == -1) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             if (param_1 != 0x67) {
                 if ((DAT_ButtonCurrentlyInteracting::instance == FALSE)
