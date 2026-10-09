@@ -43,7 +43,9 @@ namespace UI {
             case 0x15:
                 if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.ScenarioEventType
-                    != param_1 + -1) {}
+                    != param_1 + -1) {
+                    return;
+                }
                 break;
             case -2:
             case -1:
