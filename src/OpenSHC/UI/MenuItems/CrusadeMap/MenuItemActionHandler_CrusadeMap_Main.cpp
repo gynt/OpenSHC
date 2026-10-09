@@ -48,7 +48,7 @@ namespace UI {
             int _clickY;
             int iVar5;
             if (param_1 == 1000) {
-                if (DAT_SkirmishTrailRelated1::instance <= 0) {
+                if ((int)DAT_SkirmishTrailRelated1::instance <= 0) {
                     return;
                 }
                 if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
