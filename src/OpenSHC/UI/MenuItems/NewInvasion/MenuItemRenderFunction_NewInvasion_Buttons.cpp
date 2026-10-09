@@ -96,6 +96,8 @@ namespace UI {
                 iVar1 = 0xe;
             }
             switch (param_1) {
+            case -1:
+                break;
             case 9:
             case 10:
             case 0xb:
@@ -127,8 +129,6 @@ namespace UI {
             default:
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
                 return;
-            case -1:
-                break;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
