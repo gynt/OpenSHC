@@ -62,10 +62,16 @@ namespace UI {
             int _f1;
             int iVar4;
             int _f0;
-            if (DAT_00b960dc::instance != 0) {}
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
+            if (DAT_00b960dc::instance != 0) {
+                return;
+            }
+            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
+                return;
+            }
             if (0x69 < param_1) {
-                if (param_1 != 0x19d) {}
+                if (param_1 != 0x19d) {
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3
                         | OpenSHC::Audio::SFX::SEID_ARROW_SHOOT));
@@ -232,7 +238,9 @@ namespace UI {
                             DAT_MouseState::instance.screenSpaceY < _f1 + 3
                                 || (_f1 + 0x23 < DAT_MouseState::instance.screenSpaceY))))) {
                         iVar3 = iVar3 + 1;
-                        if (7 < iVar3) {}
+                        if (7 < iVar3) {
+                            return;
+                        }
                     }
                     DAT_00b95960::instance = (int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar3];
                     DAT_00b95f64::instance = iVar3;
