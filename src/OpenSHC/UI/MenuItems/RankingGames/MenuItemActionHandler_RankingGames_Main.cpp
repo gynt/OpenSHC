@@ -57,10 +57,12 @@ namespace UI {
             if (param_1 == -10) {
                 if (0 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
+                    return;
                 }
             } else if (param_1 == -0xb) {
                 if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
+                    return;
                 }
             } else {
                 if ((param_1 < 8) && (DAT_00ed3120::instance + param_1 < (int)DAT_00eb9b60::instance)) {
@@ -112,10 +114,12 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_LOBBY_MENU, 0);
                         DAT_GameSynchronyState::instance.currentGameMode = DAT_StoredGameMode::instance;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_CRUSADE_MAP, 0);
                     DAT_GameSynchronyState::instance.currentGameMode = DAT_StoredGameMode::instance;
+                    return;
                 }
                 if (param_1 - 0x14U < 10) {
                     if (DAT_MissionDefinedData::instance.sortColumn == param_1 + -0x13) {
