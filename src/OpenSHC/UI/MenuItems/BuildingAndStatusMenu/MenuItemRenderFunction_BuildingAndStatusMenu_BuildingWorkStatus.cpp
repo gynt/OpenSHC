@@ -119,6 +119,7 @@ namespace UI {
                     }
                     return;
                 }
+                _unit = param_1;
                 switch (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .buildingType) {
                 case OpenSHC::Map::Buildings::BT_IRONMINE:
