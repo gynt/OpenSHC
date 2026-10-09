@@ -99,7 +99,9 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1, (int)((int)(DAT_ButtonX::instance + 5)),
                                 (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE);
-                            if (DAT_MissionAestheticsDefinedData::instance.unknown3[iVar1 + 0x35e] == 0) {}
+                            if (DAT_MissionAestheticsDefinedData::instance.unknown3[iVar1 + 0x35e] == 0) {
+                                return;
+                            }
                             if (DAT_MissionAestheticsDefinedData::instance.field1227_0x21c4[iVar1 + 0xe] == 1) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2,
                                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
@@ -300,7 +302,9 @@ namespace UI {
                     }
                     if (DAT_MissionAestheticsDefinedData::instance
                             .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                        != 2) {}
+                        != 2) {
+                        return;
+                    }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
