@@ -44,7 +44,7 @@ namespace UI {
                     DWORD_00b98410::instance = DVar2;
                 }
                 if (DAT_MouseState::instance.scrollEventData == 7) {
-                    if (DAT_00b9840c::instance < 0) {
+                    if ((int)DAT_00b9840c::instance < 0) {
                         DAT_00b9840c::instance = 0;
                     }
                     DAT_00b9840c::instance = DAT_00b9840c::instance + 1;
@@ -103,7 +103,8 @@ namespace UI {
                         } else {
                             DWORD_00b98410::instance = DVar2;
                             MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
-                                DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.field22_0x58[0][iVar4]);
+                                DAT_ViewportRenderState::ptr)(
+                                DAT_GameState::instance.mapAndTime.field22_0x58[0][iVar4]);
                         }
                         DAT_GameCore::instance.field29_0x80 = DAT_GameCore::instance.field29_0x80 + 1;
                         if ((int)dVar5 <= (int)DAT_GameCore::instance.field29_0x80) {
@@ -112,7 +113,7 @@ namespace UI {
                     }
                 }
                 if (DAT_MouseState::instance.scrollEventData == 8) {
-                    if (0 < DAT_00b9840c::instance) {
+                    if (0 < (int)DAT_00b9840c::instance) {
                         DAT_00b9840c::instance = 0;
                     }
                     DAT_00b9840c::instance = DAT_00b9840c::instance + -1;
