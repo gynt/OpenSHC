@@ -66,7 +66,7 @@ namespace UI {
                 if (4 <= param_1) {
                     DAT_RequestedGoodsByWhoArray::instance[0] = param_1 + 1;
                 }
-                if (4 < param_1) {
+                if (5 <= param_1) {
                     DAT_RequestedGoodsByWhoArray::instance[0] = DAT_RequestedGoodsByWhoArray::instance[0] + 1;
                 }
                 if (DAT_RequestedGoodsByWhoArray::instance[0] != 14) {
@@ -116,7 +116,7 @@ namespace UI {
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
                 }
                 if (-1 < DAT_RequestedGoodsByWhoArray::instance[0]) {
-                    if (DAT_SentOrRequestedGoodsAmount::instance < 1) {
+                    if ((int)DAT_SentOrRequestedGoodsAmount::instance < 1) {
                         return;
                     }
                     if (DAT_MenuModalComposition1::instance.activeModalDialogID
@@ -167,7 +167,7 @@ namespace UI {
                                     "space_warning3.wav");
                                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                             }
-                            if (iVar2 < DAT_SentOrRequestedGoodsAmount::instance) {
+                            if (iVar2 < (int)DAT_SentOrRequestedGoodsAmount::instance) {
                                 MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(
                                     4, (ResourceType)((int)(DAT_RequestedGoodsByWhoArray::instance[0])));
                                 if (DAT_GameState::instance
@@ -244,9 +244,9 @@ namespace UI {
                         if (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .currentResources[0xf]
-                            < DAT_SentOrRequestedGoodsAmount::instance) {
-                                return;
-                            }
+                            < (int)DAT_SentOrRequestedGoodsAmount::instance) {
+                            return;
+                        }
                     } else {
                         _space = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getResourceSpace,
                             DAT_BuildingsState::ptr)(playerID, (int*)((int)(_resourceType)));
@@ -254,8 +254,8 @@ namespace UI {
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .currentResources[_resourceType]
                             < _sendAmount) {
-                                return;
-                            }
+                            return;
+                        }
                         if (_space < 0) {
                             return;
                         }
