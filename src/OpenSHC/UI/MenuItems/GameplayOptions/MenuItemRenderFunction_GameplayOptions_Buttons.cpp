@@ -46,11 +46,15 @@ namespace UI {
                 if (param_1 == -2) {
                     param_1 = 0xe - (uint)(DAT_MenuTextInputState::instance.field15_0x3c != '\0');
                 } else {
-                    if (param_1 != -1) {}
+                    if (param_1 != -1) {
+                        return;
+                    }
                     if (DAT_MenuTextInputState::instance.field14_0x38 == 0) {
                         param_1 = 0xe;
                     } else {
-                        if (DAT_MenuTextInputState::instance.field14_0x38 != 1) {}
+                        if (DAT_MenuTextInputState::instance.field14_0x38 != 1) {
+                            return;
+                        }
                         param_1 = 0xd;
                     }
                     return;
