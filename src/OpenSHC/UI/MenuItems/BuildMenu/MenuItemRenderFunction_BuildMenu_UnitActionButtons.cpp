@@ -95,6 +95,7 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 DAT_ButtonUnknownZero::instance = 0;
+                return;
             }
             switch (DAT_CurrentButtonGmDataIndex::instance) {
             case 0xd3:
@@ -119,6 +120,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 goto LAB_00438ec1;
             default:
@@ -134,6 +136,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 break;
             case 0xdb:
@@ -152,6 +155,7 @@ namespace UI {
                             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
+                            return;
                         }
                         uVar3
                             = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getFirstSelectedUnitOfEitherType,
@@ -188,6 +192,7 @@ namespace UI {
                             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
+                            return;
                         }
                     } else {
                         uVar3 = MACRO_CALL_MEMBER(
@@ -233,6 +238,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber, DAT_TextManagerObject::ptr)(
                         iVar2, xPosition, yPosition, uVar3, color2, fontSize, BVar1);
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 break;
             case 0x172:
@@ -266,6 +272,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
                 goto LAB_00438f47;
             case 0x174:
@@ -282,6 +289,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
             LAB_00438f47:
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
