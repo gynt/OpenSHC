@@ -29,11 +29,6 @@ namespace UI {
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 switch (param_1) {
-                case 7:
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
-                default:
-                    return;
                 case 0x1c:
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
                     break;
@@ -45,6 +40,11 @@ namespace UI {
                     break;
                 case 0x21:
                     DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_JUST_BUILD;
+                    return;
+                case 7:
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_NEW_MAP_MAPSIZE, 0);
+                default:
                     return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
