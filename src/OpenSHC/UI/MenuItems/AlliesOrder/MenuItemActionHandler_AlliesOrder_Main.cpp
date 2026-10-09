@@ -35,7 +35,7 @@ namespace UI {
         {
             int _allyID;
             if (param_1 != -2) {
-                if (((6 < param_1) || (param_1 + -1 < DAT_EnemyArrayIndex::instance))
+                if (((6 < param_1) || (param_1 + -1 < (int)DAT_EnemyArrayIndex::instance))
                     && ((_allyID = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance],
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_allyID] != -1
                             || (DAT_GameSynchronyState::instance.currentAIArray[_allyID] != 0)))) {
