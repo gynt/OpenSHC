@@ -153,6 +153,7 @@ namespace UI {
                                 DAT_GameCore::instance.skirmishTrailProgress = dVar3;
                                 INT_00eb9b48::instance = 1;
                                 DWORD_00ed27a8::instance = timeGetTime();
+                                return;
                             }
                             dVar3 = dVar3 + 1;
                         } while ((int)dVar3 < 50);
