@@ -89,11 +89,13 @@ def resolve_global(va, globals_):
     if va in globals_:
         return globals_[va]
     # a field inside a struct instance: take the nearest resolver below it
-    near = [a for a in globals_ if 0 < va - a <= 0x60000]
+    # a game state struct can be megabytes wide, so the window is generous; the
+    # printed +N is the struct offset, which the type header maps to a field name.
+    near = [a for a in globals_ if 0 < va - a <= 0x800000]
     if not near:
         return None
     a = max(near)
-    return "%s+%d" % (globals_[a], va - a)
+    return "%s+0x%x" % (globals_[a], va - a)
 
 
 def disasm(va, limit=0x6000):

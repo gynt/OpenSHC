@@ -121,7 +121,19 @@ def candidates(lines):
             continue
         if "if" not in head and "else" not in head:
             continue
-        out.append((j, ind))
+        out.append(("after", j, ind))
+
+    # An `if (cond) {}` with an empty body is the same artefact one step further on:
+    # the `return` was the block's only statement, so dropping it left the block empty
+    # and our build emits nothing at all for the guard.
+    for j in range(start, end):
+        s = lines[j].rstrip()
+        if not s.endswith("{}"):
+            continue
+        head = " ".join(lines[max(start, j - 3):j + 1])
+        if "if" not in head:
+            continue
+        out.append(("empty", j, len(lines[j]) - len(lines[j].lstrip())))
     return out
 
 
@@ -139,17 +151,28 @@ def main():
         sites = candidates(lines)
         print("##### %s  %d candidate site(s)" % (os.path.basename(path), len(sites)))
         if dry:
-            for j, ind in sites:
-                print("   line %d" % (j + 1))
+            for kind, j, ind in sites:
+                print("   line %-5d %s" % (j + 1, kind))
             continue
 
         base = ratio_for(path)
+        if base is None:
+            print("   compile failed, skipped")
+            continue
         print("   base %.4f" % base)
         kept = []
         # work bottom-up so earlier line numbers stay valid
-        for j, ind in sorted(sites, reverse=True):
+        for kind, j, ind in sorted(sites, key=lambda s: s[1], reverse=True):
             cur = io.open(path, encoding="utf-8").read().split("\n")
-            trial = cur[:j] + [" " * (ind + 4) + "return;"] + cur[j:]
+            if kind == "after":
+                trial = cur[:j] + [" " * (ind + 4) + "return;"] + cur[j:]
+            else:
+                trial = list(cur)
+                trial[j:j + 1] = [
+                    cur[j].rstrip()[:-2] + "{",
+                    " " * (ind + 4) + "return;",
+                    " " * ind + "}",
+                ]
             io.open(path, "w", encoding="utf-8", newline="\n").write("\n".join(trial))
             r = ratio_for(path)
             if r is not None and r > base + gain:

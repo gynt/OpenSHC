@@ -259,6 +259,24 @@ falls back to one at a time. Read the jump target before trusting a big winner: 
 the original's `jne` goes to the shared `pop/ret` epilogue (`orig_disasm.py` labels it, and in VideoOptions all three
 went to `L15`, which *is* the epilogue). A jump to any other block compiles just as happily and is simply wrong.
 
+`epilogue_jumps.py FILE.cpp` answers that question for a whole file at once, from the binary rather than from a
+score: it prints every conditional jump in the original that lands on a `pop`/`ret` block, in address order, which is
+the order the guards appear in. Compare the count with our `return;` count before trying anything - a function with
+more epilogue jumps than we have returns is missing control flow, and the empty bodies can simply be filled. This
+turned the lever from a search into a check and cleared 63 sites across `UI::MenuItems` in one pass, including every
+site `try_empty_returns.py` had rejected on its quick_diff gate. The same guard shape also hides at the top of a
+function as one `if (A && B && C) { entire body }`: where the original shows one epilogue jump per conjunct, the
+original wrote them as separate early returns (`MenuItemActionHandler_InGameMenu_TriggerPlaceWallCommand`), and the
+nested form costs the whole prologue.
+
+Ghidra drops the fall-through out of a block as readily as the `return` out of a guard. In
+`MenuItemActionHandler_InGameMenu_ProcessScribeAnimationChange` the time-gated animation block ends in `jmp` to the
+function's `switch`, and Ghidra had closed it with a `return` instead, so our build was 94 instructions against the
+original's 129 and the whole switch ran only for one value of the variable it dispatches on. The tell is a `switch`
+whose value a preceding guard has already constrained - here `if (x != 0) { ...; return; } switch (x) { case 0: ...`,
+where every other `case` is unreachable. Rebuilding it from the original's jump targets took the function from 0.41 to
+0.54 on `quick_diff.py`'s ratio with the lengths nearly equal.
+
 Diff patterns that were reliable (more in the cheat sheet):
 
 - Absolute `DAT_*` addresses in the original asm where the source uses `this->` mean the original accessed the global instance.
