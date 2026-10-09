@@ -39,13 +39,13 @@ namespace UI {
                 }
                 break;
             case 5:
-                if (0 < DAT_00ed3120::instance) {
+                if (0 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
                     *currentValue = DAT_00ed3120::instance;
                 }
                 goto LAB_004d9be7;
             case 6:
-                if (DAT_00ed3120::instance < DAT_00eb9b60::instance + -8) {
+                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
                 }
             LAB_004d9be7:
