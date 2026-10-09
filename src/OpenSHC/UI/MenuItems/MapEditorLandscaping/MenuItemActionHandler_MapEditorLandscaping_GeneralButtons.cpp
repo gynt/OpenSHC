@@ -48,11 +48,14 @@ namespace UI {
                         DAT_TileMapState::instance.editorActiveBrush = DAT_TileMapState::instance.editorActiveBrush + 1;
                         if (7 < DAT_TileMapState::instance.editorActiveBrush) {
                             DAT_TileMapState::instance.editorActiveBrush = 1;
+                            return;
                         }
                         if (((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK1)
-                                && (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK2))
+                                && (DAT_TileMapState::instance.currentMapperCommand
+                                    != OpenSHC::Commands::M_MAPPER_BIGROCK2))
                             && ((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK3
-                                && ((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK4
+                                && ((DAT_TileMapState::instance.currentMapperCommand
+                                        != OpenSHC::Commands::M_MAPPER_BIGROCK4
                                     && (DAT_TileMapState::instance.currentMapperCommand
                                         != OpenSHC::Commands::M_MAPPER_BIGROCK5))))))
                             goto LAB_004315c1;
@@ -64,6 +67,7 @@ namespace UI {
                         if (DAT_TileMapState::instance.editorActiveBrush != 4) {
                             if (DAT_TileMapState::instance.editorActiveBrush == 6) {
                                 DAT_TileMapState::instance.editorActiveBrush = 7;
+                                return;
                             }
                             goto LAB_004315c1;
                         }
@@ -83,7 +87,8 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_UNUSED_OLD_TITLE_MENU, 0);
                         return;
                     case OpenSHC::Commands::M_MAPPER_TOMAIN:
-                        DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
+                        DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
+                            = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
                         return;
@@ -101,7 +106,8 @@ namespace UI {
                     case OpenSHC::Commands::M_MAPPER_TEST:
                         break;
                     case OpenSHC::Commands::M_MAPPER_REBUILD:
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                         return;
                     case OpenSHC::Commands::M_MAPPER_SNAP_TO:
                         if (DAT_TileMapState::instance.unknownZero_0x5548fc == 0) {
@@ -140,21 +146,25 @@ namespace UI {
                             DAT_TileMapState::instance.rockOrientation = 0;
                             DAT_TileMapState::instance.field80_0x554894 = 5;
                             DAT_TileMapState::instance.editorActiveBrush = 3;
+                            return;
                         }
                         if (DAT_TileMapState::instance.editorActiveBrush == 4) {
                             DAT_TileMapState::instance.editorActiveBrush = 5;
+                            return;
                         }
                         goto LAB_00431652;
                     case OpenSHC::Commands::M_MAPPER_MAP_SIZE:
                         if (DAT_TileMapState::instance.mapSize == 0) {
                             DAT_TileMapState::instance.mapSize = 400;
+                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapSize, DAT_TileMapState::ptr)(
                             DAT_TileMapState::instance.mapSize);
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(
-                            DAT_TileMapState::instance.mapSize);
+                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::resetHeightAndMapBorders,
+                            DAT_TileMapState::ptr)(DAT_TileMapState::instance.mapSize);
                         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
-                        MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                         MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setTileColorsDependingOnMapSize,
                             DAT_MinimapViewState::ptr)(0, 100);
                         MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize,
@@ -178,15 +188,18 @@ namespace UI {
                                     + OpenSHC::Commands::M_MAPPER_KEEP1);
                         }
                         DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_KEEP3;
+                        return;
                     }
                     if (DAT_TileMapState::instance.editorActiveBrush == 2) {
                         DAT_TileMapState::instance.currentMapperCommand = param_1;
                         DAT_TileMapState::instance.editorActiveBrush = 3;
+                        return;
                     }
                 LAB_00431642:
                     DAT_TileMapState::instance.currentMapperCommand = param_1;
                     if (DAT_TileMapState::instance.editorActiveBrush == 4) {
                         DAT_TileMapState::instance.editorActiveBrush = 5;
+                        return;
                     }
                 LAB_00431652:
                     DAT_TileMapState::instance.currentMapperCommand = param_1;
@@ -198,6 +211,7 @@ namespace UI {
                 DAT_TileMapState::instance.editorActiveBrush = DAT_TileMapState::instance.editorActiveBrush + -1;
                 if (DAT_TileMapState::instance.editorActiveBrush < 1) {
                     DAT_TileMapState::instance.editorActiveBrush = 7;
+                    return;
                 }
                 if ((((DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK1)
                          && (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_BIGROCK2))
