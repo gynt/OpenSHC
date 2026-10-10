@@ -58,7 +58,7 @@ namespace UI {
                 }
                 break;
             case 5:
-                if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
+                if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
                 LAB_0042b8a4:
@@ -69,8 +69,8 @@ namespace UI {
                 }
                 goto LAB_0042b8b9;
             case 6:
-                if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
+                if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                     goto LAB_0042b8a4;
