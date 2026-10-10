@@ -195,6 +195,7 @@ namespace UI {
                     case 4:
                         if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                             DAT_ButtonUnknownZero::instance = 1;
+                            return;
                         }
                         piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
                         while ((piVar2[-0x419c2] == -1 || (*piVar2 != 0))) {
