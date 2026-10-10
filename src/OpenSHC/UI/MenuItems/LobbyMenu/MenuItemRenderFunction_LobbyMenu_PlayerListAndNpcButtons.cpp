@@ -189,16 +189,11 @@ namespace UI {
                 }
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] != -1) {
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    if (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                        uVar8 = 0xc2f0eb;
-                    } else {
-                        uVar8 = 0x7caaaf;
-                        return;
-                    }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText4Unk,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x192,
-                        (int)((int)(DAT_ButtonX::instance + 10)), (int)((int)(DAT_ButtonY::instance + 5)), 0x3c, uVar8,
-                        0x13, (iVar6 / 32) + 0x20);
+                        (int)((int)(DAT_ButtonX::instance + 10)), (int)((int)(DAT_ButtonY::instance + 5)), 0x3c,
+                        (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID ? 0xc2f0eb : 0x7caaaf), 0x13,
+                        (iVar6 / 32) + 0x20);
                 }
                 if (DAT_GameSynchronyState::instance.currentAIArray[iVar3] == 0) {
                     return;
@@ -250,14 +245,11 @@ namespace UI {
                 }
                 iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
-                if (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-                    uVar8 = 0xc2f0eb;
-                } else {
-                    uVar8 = 0x7caaaf;
-                }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     DAT_GameSynchronyState::instance.DAT_PlayerNames[iVar3], (int)((int)(DAT_ButtonX::instance + 0x14)),
-                    (int)((int)(DAT_ButtonY::instance + 5)), 0x118, uVar8, 0x13, (iVar6 / 32) + 0x20);
+                    (int)((int)(DAT_ButtonY::instance + 5)), 0x118,
+                    (iVar3 == DAT_GameSynchronyState::instance.currentPlayerSlotID ? 0xc2f0eb : 0x7caaaf), 0x13,
+                    (iVar6 / 32) + 0x20);
             }
             if (-10 < param_1) {
                 if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
