@@ -81,15 +81,24 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                if (param_1 == 1) {
-                    uVar1 = 0xa0;
-                } else if (param_1 == 2) {
-                    uVar1 = 200;
-                } else if (param_1 == 3) {
-                    uVar1 = 300;
-                } else {
+                /*
+                  the original picks the size with a `sub eax, 1; je` chain (0x42f8bb),
+                  MSVC's sparse switch, and the 400 arm falls into the sprintf at 0x42f8ca
+                  instead of returning
+                 */
+                switch (param_1) {
+                default:
                     uVar1 = 400;
-                    return;
+                    break;
+                case 3:
+                    uVar1 = 300;
+                    break;
+                case 2:
+                    uVar1 = 200;
+                    break;
+                case 1:
+                    uVar1 = 0xa0;
+                    break;
                 }
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", uVar1, uVar1);
                 MACRO_CALL_MEMBER(
