@@ -37,9 +37,16 @@ namespace UI {
             uint uVar2;
             int drawX;
             int drawY;
-            uVar2 = (uint)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                               .gateOpenOrCloseClick
-                == param_1);
+            /*
+              the original branches on the comparison (`xor esi, esi; jne; mov esi, 1`)
+              rather than materialising it with `sete`
+             */
+            uVar2 = 0;
+            if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .gateOpenOrCloseClick
+                == param_1) {
+                uVar2 = 1;
+            }
             buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             drawX = DAT_ButtonX::instance;
