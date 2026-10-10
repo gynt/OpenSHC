@@ -121,8 +121,7 @@ namespace UI {
             if (10 < param_1) {
                 iVar3 = (int)*(char*)((int)DAT_GameSynchronyState::instance.field290_0x109e20 + param_1 + 0x1a);
                 DAT_ButtonUnknownZero::instance = 1;
-                if (iVar3 <= 0) {
-                    DAT_ButtonUnknownZero::instance = 1;
+                if (iVar3 < 1) {
                     return;
                 }
                 bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[iVar3];
@@ -215,8 +214,7 @@ namespace UI {
             if (0 < param_1) {
                 iVar3 = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[param_1];
                 DAT_ButtonUnknownZero::instance = 1;
-                if (iVar3 <= 0) {
-                    DAT_ButtonUnknownZero::instance = 1;
+                if (iVar3 < 1) {
                     return;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -270,7 +268,6 @@ namespace UI {
                 iVar3 = (int)*(char*)((int)DAT_GameSynchronyState::ptr + (0x109e44 - param_1));
                 DAT_ButtonUnknownZero::instance = 0;
                 if (iVar3 < 1) {
-                    DAT_ButtonUnknownZero::instance = 0;
                     return;
                 }
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3] != -1) {
@@ -359,7 +356,6 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             } else {
                 if (param_1 == -0x66) {
-                    DAT_ButtonUnknownZero::instance = 1;
                     if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                         DAT_ButtonUnknownZero::instance = 1;
                         return;
