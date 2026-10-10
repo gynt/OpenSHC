@@ -459,6 +459,20 @@ Diff patterns that were reliable (more in the cheat sheet):
   (`MenuItemRenderFunction_NewEventAction_Main`) is a silent behaviour change, so only the sites where the
   block really ends in `pop`/`ret` qualify, plus the free ones where an `if` arm's `return` is reached at the
   end of the function or before a mutually exclusive test.
+- `flag = (uint)(a == b);` compiles to `sete`, and the original usually **branches** instead
+  (`xor edx, edx; cmp ...; jne; mov edx, 1`). Decide it per function with one grep: no `setcc` anywhere in
+  the original's disassembly means every such site wants the default-plus-one-armed-`if` form. It was worth
+  `DrawbridgeOpenClose` and `GatehouseOpenClose` 33.8% -> 51.9% each,
+  `MenuItemRenderFunction_General_CrusadeMapAndEndscreen` 44.6% -> 64.3% and
+  `MenuItemActionHandler_Chat_MostButtons` 47.1% -> 57.6%, where the original zeroes all nine slots of
+  `DAT_ChatMessageReceiverArray` and then sets each with its own branch (0x48f6af..0x48f741) - Ghidra had
+  kept the branch for the last slot only, which is the tell. Where the original *does* use `setcc`
+  (`OnlineVoteQuitAndQuitGame_Main` has eight of them for eight sites) leave it alone.
+- A chain of `sub reg, K; je` with no loop around it is MSVC's **sparse switch**, not an if/else chain:
+  `sub eax, 0xd; je; sub eax, 5; je; sub eax, 2; je` is `switch (x) { case 0xd: case 0x12: case 0x14: }`.
+  The arm that is reached by falling through the chain is `default:`, and the physical order of the bodies
+  is still the source order, so read it off the addresses. `MenuItemActionHandler_HistoricMissionSelect_General`
+  and its twin `UnusedEconomicMissionSelect_General` went **24.7% -> 91.1%** from that alone.
 - Two bools compared against each other - `bVar2 = (x < K); bVar1 = (x - K) < 0; if (bVar2 != bVar1)` - is the
   decompiler's rendering of one `cmp` whose `jl` is **shared** between the arms of an `if`/`else` chain, each
   arm comparing its own value against its own bound. The bound travels with the value, so the source holds
