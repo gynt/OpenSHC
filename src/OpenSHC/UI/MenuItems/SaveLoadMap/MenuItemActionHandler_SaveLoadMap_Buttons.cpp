@@ -203,13 +203,9 @@ namespace UI {
                             _mapName = pcVar6 + 1;
                             pcVar6 = pcVar6 + 1;
                         } while (*_mapName != '\0');
-                        /*
-                          ".map" stored as one dword, which is what the original writes
-                         */
-                        uVar5 = 0x70616d2e;
-                        goto LAB_0049477a;
-                    }
-                    if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
+                        strcpy(pcVar6, ".map");
+                        FVar9 = OpenSHC::IO::FRT_MAPS;
+                    } else if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
                             == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         pcVar6 = MACRO_CALL_MEMBER(
@@ -261,13 +257,7 @@ namespace UI {
                         _mapName = pcVar6 + 1;
                         pcVar6 = pcVar6 + 1;
                     } while (*_mapName != '\0');
-                    /*
-                      ".tmp" stored as one dword, which is what the original writes
-                     */
-                    uVar5 = 0x706d742e;
-                LAB_0049477a:
-                    *(undefined4*)pcVar6 = uVar5;
-                    pcVar6[4] = '\0';
+                    strcpy(pcVar6, ".tmp");
                     FVar9 = OpenSHC::IO::FRT_MAPS;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
