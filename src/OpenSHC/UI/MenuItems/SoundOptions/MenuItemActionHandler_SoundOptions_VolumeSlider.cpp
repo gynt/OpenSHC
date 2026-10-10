@@ -23,50 +23,63 @@ namespace UI {
                 break;
             case 2:
             case 3:
-                if (param_1 == 0) {
-                    if (DAT_MenuTextInputState::instance.field20_0x44 != *currentValue) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
-                            DAT_SoundSystemState::ptr)(0, (int)((int)(*currentValue)));
-                    }
-                    DAT_MenuTextInputState::instance.field20_0x44 = *currentValue;
-                }
-                if (param_1 != 1) {
-                    if (param_1 != 2) {
-                        return;
-                    }
+                /*
+                  the original tests param_1 with a `sub eax, K; je` chain (0x4928d5),
+                  MSVC's sparse switch, whose arms are written in the reverse of the test
+                  order, and each arm writes its field back at the shared label
+                 */
+                switch (param_1) {
+                case 2:
                     if (DAT_MenuTextInputState::instance.field22_0x4c != *currentValue) {
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(3, (int)((int)(*currentValue)));
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
                             DAT_SoundSystemState::ptr)(4, (int)((int)(*currentValue)));
-                        return;
                     }
                     DAT_MenuTextInputState::instance.field22_0x4c = *currentValue;
                     return;
+                case 1:
+                    if (DAT_MenuTextInputState::instance.field21_0x48 != *currentValue) {
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                            DAT_SoundSystemState::ptr)(1, (int)((int)(*currentValue)));
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                            DAT_SoundSystemState::ptr)(2, (int)((int)(*currentValue)));
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                            DAT_SoundSystemState::ptr)(-1, (int)((int)(*currentValue)));
+                    }
+                    DAT_MenuTextInputState::instance.field21_0x48 = *currentValue;
+                    return;
+                case 0:
+                    if (DAT_MenuTextInputState::instance.field20_0x44 != *currentValue) {
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk,
+                            DAT_SoundSystemState::ptr)(0, (int)((int)(*currentValue)));
+                    }
+                    DAT_MenuTextInputState::instance.field20_0x44 = *currentValue;
+                    return;
+                default:
+                    return;
                 }
-                if (DAT_MenuTextInputState::instance.field21_0x48 != *currentValue) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
-                        1, (int)((int)(*currentValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
-                        2, (int)((int)(*currentValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setVolumeUnk, DAT_SoundSystemState::ptr)(
-                        -1, (int)((int)(*currentValue)));
-                }
-                DAT_MenuTextInputState::instance.field21_0x48 = *currentValue;
-                return;
             case 4:
                 break;
             default:
                 return;
             }
-            if (param_1 == 0) {
-                *currentValue = DAT_MenuTextInputState::instance.field20_0x44;
-            }
-            if (param_1 == 1) {
-                *currentValue = DAT_MenuTextInputState::instance.field21_0x48;
-            }
-            if (param_1 == 2) {
+            /*
+              the read-back dispatch is the same sparse switch (0x49297f), shared between
+              `case 1` and `case 4`
+             */
+            switch (param_1) {
+            case 2:
                 *currentValue = DAT_MenuTextInputState::instance.field22_0x4c;
+                break;
+            case 1:
+                *currentValue = DAT_MenuTextInputState::instance.field21_0x48;
+                break;
+            case 0:
+                *currentValue = DAT_MenuTextInputState::instance.field20_0x44;
+                break;
+            default:
+                break;
             }
         }
 
