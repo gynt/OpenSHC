@@ -90,7 +90,7 @@ namespace UI {
                 break;
             case 0:
                 if (sortMode == 0) {
-                    for (iVar2 = 0; iVar2 < DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
+                    for (iVar2 = 0; iVar2 < (int)DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
                         DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
                             = (DAT_MenuTextInputState::instance.field32_0x74 - iVar2) + -1;
                     }
@@ -98,7 +98,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
                     return;
                 }
-                for (iVar2 = 0; iVar2 < DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
+                for (iVar2 = 0; iVar2 < (int)DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
                     DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
                 }
                 DAT_MenuTextInputState::instance.field33_0x78 = 0;
