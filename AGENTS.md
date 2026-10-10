@@ -701,7 +701,14 @@ Diff patterns that were reliable (more in the cheat sheet):
   accident. Re-run the scan after every batch: it finds sites that the previous build's code did not
   have. Roughly half the sites measure as exact ties and are kept, because the cast is what the
   original's signed jump says.
-  Two shapes the field-name scan misses and the jump pairing catches:
+  The seam was driven to exhaustion over three builds - 44 sites to 4, and those 4 are false
+  positives whose comparisons are already `int`, because the scan's pairing is deliberately loose.
+  Seven functions reached 100% in total (`EditScenario_Scrollbar`, `General_MessageScrollbar`,
+  `InGameMenu_MapEventIconUnk`, `UnusedChooseMessageBox_Unknown`, `LoadMap_TableContent`,
+  `LobbyMenu_MapSelectTable`, `SaveMap_TableContent`) with no regression in any of the 34 files
+  touched, which makes this the only pass in the whole file that can be run on every function and
+  kept wholesale.
+  Three shapes hide the same bug, which is why it survived every earlier sweep:
   - **a mixed-type sum**: `undefined4_field + param_1 < (int)other` makes the whole comparison
     unsigned, so the cast belongs on the *field inside the sum*
     (`MenuItemActionHandler_RankingGames_Main`).

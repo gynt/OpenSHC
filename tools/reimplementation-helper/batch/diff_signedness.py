@@ -6,9 +6,12 @@ resolver field being compared without an `(int)` cast. AGENTS records one such
 sweep as 51 sites, 10 functions better and no regressions, so the seam is worth
 re-scanning after every batch of rewrites.
 
-Prints one line per adjacent pair in the diff where the original's conditional
-jump is signed and ours is the unsigned jump of the same direction, with the
-source line reccmp attributes to our side when it has one.
+Pairs each signed jump on the original's side of a slice with any unsigned jump
+of the same direction on ours, which is deliberately loose: it is what found all
+44 real sites in `UI::MenuItems`, but it leaves a residue of false positives
+once the real ones are fixed (a function whose comparisons are all already
+`int` can still pair two unrelated jumps). Confirm a hit by reading the
+comparison and the field's declared type before casting anything.
 """
 import json
 import re
