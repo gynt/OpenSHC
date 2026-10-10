@@ -459,6 +459,17 @@ Diff patterns that were reliable (more in the cheat sheet):
   (`MenuItemRenderFunction_NewEventAction_Main`) is a silent behaviour change, so only the sites where the
   block really ends in `pop`/`ret` qualify, plus the free ones where an `if` arm's `return` is reached at the
   end of the function or before a mutually exclusive test.
+- Which arm of an `if`/`else` the source wrote first is **readable straight off the branch**, and Ghidra gets
+  it wrong often enough to be worth a sweep: for `if (DAT_ButtonCurrentlyInteracting::instance == FALSE)` with
+  an `else`, a `je` after the original's `cmp` puts the `== FALSE` body *out of line*, so the interacting arm
+  is the one written first and our source has them backwards. Scan it by pairing each
+  `cmp ... DAT_ButtonCurrentlyInteracting` in the printed disassembly with the instruction after it; 9 of the
+  45 functions with that shape came back `je` and swapping them was 5 better with no regressions
+  (`NewMapMaptype_Buttons` 85.1% -> 94.1%, `UnusedOldTitleMenu_ContinueButton` and `_TestMapButton`
+  78.4% -> 91.9%, `UnusedOldTitleMenu_ExitButton` 75.7% -> 89.2%, `NewMapMapsize_Buttons` 67.0% -> 74.9%).
+  The four that did not move are still worth keeping for being the shape the binary shows. Note the operand
+  text only carries the global's name in `orig_disasm.py`'s *output* - capstone's own `op_str` has the raw
+  address - so match on the printed line.
 - `flag = (uint)(a == b);` compiles to `sete`, and the original usually **branches** instead
   (`xor edx, edx; cmp ...; jne; mov edx, 1`). Decide it per function with one grep: no `setcc` anywhere in
   the original's disassembly means every such site wants the default-plus-one-armed-`if` form. It was worth
