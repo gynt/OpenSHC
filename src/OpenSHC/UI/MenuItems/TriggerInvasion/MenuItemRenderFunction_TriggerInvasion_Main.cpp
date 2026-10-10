@@ -116,14 +116,16 @@ namespace UI {
             number = DAT_MapPropertiesState::instance.invasionEventContent.unitCountsPerUnitType[param_1];
             if (number != 0) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    color = 0xc2f0eb;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(number,
+                        (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                 } else {
-                    color = 0xccfaff;
-                    return;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(number,
+                        (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    number, (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, color, 0x12, FALSE, 0);
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ARMY_UNITS, imageID,
