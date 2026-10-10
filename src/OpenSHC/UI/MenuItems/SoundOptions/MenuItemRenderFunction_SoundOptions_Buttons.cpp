@@ -95,19 +95,24 @@ namespace UI {
                     && (iVar1 = DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar, param_1 != -1)) {
                     return;
                 }
-                if (iVar1 == 0) {
-                    iVar1 = 0xe;
-                } else {
-                    if (iVar1 != 1) {
-                        return;
-                    }
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x49282b), MSVC's
+                  sparse switch, and the `case 1` body sits first
+                 */
+                switch (iVar1) {
+                case 1:
                     iVar1 = 0xd;
+                    break;
+                case 0:
+                    iVar1 = 0xe;
+                    break;
+                default:
+                    return;
                 }
                 color = 0xccfaff;
                 yParam = DAT_ButtonY::instance + 7;
                 xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
-                return;
             }
             blendStrength = 0;
             keepOffsetX = FALSE;
