@@ -74,6 +74,7 @@ namespace UI {
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
                             (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
+                        return;
                     }
                     if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -82,6 +83,7 @@ namespace UI {
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
                             (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                             (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
