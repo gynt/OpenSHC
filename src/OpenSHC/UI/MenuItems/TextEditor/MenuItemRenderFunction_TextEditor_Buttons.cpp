@@ -375,11 +375,11 @@ namespace UI {
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
                 case 1:
                     DAT_TextManagerObject::instance.textColor
-                        = (-(uint)(DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                       [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
-                               != L'\0')
-                              & 0xffff00)
-                        + 0xff;
+                        = (DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
+                                        [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
+                                    == L'\0'
+                                ? 0xff
+                                : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         "Left", (int)((int)(DAT_ButtonX::instance + 3)), (int)((int)(DAT_ButtonY::instance + 3)),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
@@ -416,11 +416,11 @@ namespace UI {
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
                 case 1:
                     DAT_TextManagerObject::instance.textColor
-                        = (-(uint)(DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                       [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
-                               != L'\x01')
-                              & 0xffff00)
-                        + 0xff;
+                        = (DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
+                                        [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
+                                    == L'\x01'
+                                ? 0xff
+                                : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         "Centre", (int)((int)(DAT_ButtonX::instance + 3)), (int)((int)(DAT_ButtonY::instance + 3)),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
@@ -457,11 +457,11 @@ namespace UI {
                     (ushort)((int)(COL_BLACK::instance.shortValue)));
                 if (DAT_TextEditorState::instance.field52_0x23970 == 1) {
                     DAT_TextManagerObject::instance.textColor
-                        = (-(uint)(DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                       [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
-                               != L'\x02')
-                              & 0xffff00)
-                        + 0xff;
+                        = (DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
+                                        [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
+                                    == L'\x02'
+                                ? 0xff
+                                : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         "Right", (int)((int)(DAT_ButtonX::instance + 3)), (int)((int)(DAT_ButtonY::instance + 3)),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
@@ -476,11 +476,11 @@ namespace UI {
                     (ushort)((int)(COL_BLACK::instance.shortValue)));
                 if (DAT_TextEditorState::instance.field52_0x23970 == 1) {
                     DAT_TextManagerObject::instance.textColor
-                        = (-(uint)(DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                       [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
-                               != L'\x03')
-                              & 0xffff00)
-                        + 0xff;
+                        = (DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
+                                        [DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
+                                    == L'\x03'
+                                ? 0xff
+                                : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         "Here", (int)((int)(DAT_ButtonX::instance + 3)), (int)((int)(DAT_ButtonY::instance + 3)),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
