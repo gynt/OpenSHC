@@ -31,7 +31,7 @@ namespace UI {
                 *currentValue = DAT_MenuTextInputState::instance.field36_0x84 + -1;
                 return;
             case 5:
-                if (0 < DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
+                if (0 < (int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
                     *currentValue = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
@@ -39,8 +39,8 @@ namespace UI {
                 }
                 break;
             case 6:
-                if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
+                if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
+                    < (int)DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
                 }
