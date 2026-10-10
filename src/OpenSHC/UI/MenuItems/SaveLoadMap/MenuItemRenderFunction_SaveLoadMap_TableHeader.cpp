@@ -27,36 +27,30 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00492FD0
         void SaveLoadMap::MenuItemRenderFunction_SaveLoadMap_TableHeader(int param_1, ...)
         {
-            int yParam;
-            char* textAddress;
-            int xParam;
             int numInGroup;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             numInGroup = -1;
-            if (param_1 == 0) {
-                numInGroup = 0x1b;
-            } else if (param_1 == 1) {
-                numInGroup = 0x1c;
-            } else if (param_1 == 2) {
+            /*
+              the original dispatches with a `sub eax, K; je` chain (0x492fd8), which is
+              MSVC's sparse switch, and the arm bodies sit in the order 2, 1, 0
+             */
+            switch (param_1) {
+            case 2:
                 numInGroup = 0x1d;
+                break;
+            case 1:
+                numInGroup = 0x1c;
+                break;
+            case 0:
+                numInGroup = 0x1b;
+                break;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
                 DAT_PencilRenderCore::ptr)(FALSE, 1, 0);
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_LEFT;
-            yParam = DAT_ButtonY::instance + 3;
-            xParam = DAT_ButtonX::instance + 8;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, numInGroup),
-                xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                DAT_ButtonX::instance + 8, DAT_ButtonY::instance + 3, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12,
+                FALSE, 0);
         }
 
     }
