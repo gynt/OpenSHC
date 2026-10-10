@@ -54,6 +54,7 @@ namespace UI {
                             DAT_00ec082c::instance = 1;
                             DAT_GameCore::instance.activeMenuTab.tabType
                                 = OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM;
+                            return;
                         }
                         DAT_00ec082c::instance = 3;
                         DAT_GameCore::instance.activeMenuTab.tabType = OpenSHC::UI::Enums::BASMTT_INN_OR_MPMMENU_UNK;
