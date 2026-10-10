@@ -82,46 +82,49 @@ namespace UI {
                     return;
                 }
             }
-            if (iVar1 == 0) {
+            /*
+              the original dispatches the sort column with a `sub eax, K; je` chain
+              (0x440a9e), MSVC's sparse switch, and the arm bodies sit in the order
+              2, 1, 0
+             */
+            switch (iVar1) {
+            case 2:
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_GameSynchronyState::instance.field248_0x109250 == 1) {
+                if (DAT_GameSynchronyState::instance.field248_0x109250 == 3) {
                     do {
                         iVar7 = 0;
-                        iVar3 = 0;
-                        if (iVar1 < 1)
-                            break;
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
                             iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if (iVar4 < (int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]) {
+                            if (DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]
+                                < DAT_GameSynchronyState::instance
+                                    .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar1);
+                        }
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 2;
+                    DAT_GameSynchronyState::instance.field248_0x109250 = 4;
                 } else {
                     do {
                         iVar7 = 0;
-                        iVar3 = 0;
-                        if (iVar1 < 1)
-                            break;
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
                             iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if ((int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] < iVar4) {
+                            if (DAT_GameSynchronyState::instance
+                                    .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
+                                < DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar1);
+                        }
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 1;
+                    DAT_GameSynchronyState::instance.field248_0x109250 = 3;
                 }
-            } else if (iVar1 == 1) {
+                break;
+            case 1:
                 if (DAT_GameSynchronyState::instance.field248_0x109250 < 5) {
                     DAT_GameSynchronyState::instance.field248_0x109250 = 5;
                 }
@@ -131,11 +134,8 @@ namespace UI {
                     iVar3 = DAT_GameSynchronyState::instance.field248_0x109250 + -5;
                     do {
                         iVar9 = 0;
-                        iVar4 = 0;
                         iVar7 = DAT_GameSynchronyState::instance.field248_0x109250;
-                        if (iVar1 < 1)
-                            break;
-                        do {
+                        for (iVar4 = 0; iVar4 < iVar1; iVar4 = iVar4 + 1) {
                             iVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4 + -1];
                             uVar5 = DAT_GameSynchronyState::instance.mapPlayerCountArray[iVar2] + iVar3 & 0x80000007;
                             if ((int)uVar5 < 0) {
@@ -155,9 +155,8 @@ namespace UI {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4] = iVar2;
                                 iVar9 = iVar9 + 1;
                             }
-                            iVar4 = iVar4 + 1;
                             iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                        } while (iVar4 < iVar1);
+                        }
                         iVar7 = DAT_GameSynchronyState::instance.field248_0x109250;
                         iVar2 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
                     } while (iVar9 != 0);
@@ -170,49 +169,39 @@ namespace UI {
                                   .DAT_MapSelectionPreloadMapIndexMapping]
                              != 0xd - iVar7)
                     && (0 < param_1));
-            } else if (iVar1 == 2) {
+                break;
+            case 0:
                 iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
-                if (DAT_GameSynchronyState::instance.field248_0x109250 == 3) {
+                if (DAT_GameSynchronyState::instance.field248_0x109250 == 1) {
                     do {
                         iVar7 = 0;
-                        iVar3 = 0;
-                        if (iVar1 < 1)
-                            break;
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
                             iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if (DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]
-                                < DAT_GameSynchronyState::instance
-                                    .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
+                            if (iVar4 < (int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar1);
+                        }
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 4;
+                    DAT_GameSynchronyState::instance.field248_0x109250 = 2;
                 } else {
                     do {
                         iVar7 = 0;
-                        iVar3 = 0;
-                        if (iVar1 < 1)
-                            break;
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
                             iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if (DAT_GameSynchronyState::instance
-                                    .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
-                                < DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]) {
+                            if ((int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] < iVar4) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar1);
+                        }
                     } while (iVar7 != 0);
-                    DAT_GameSynchronyState::instance.field248_0x109250 = 3;
+                    DAT_GameSynchronyState::instance.field248_0x109250 = 1;
                 }
+                break;
             }
             if (-1 < iVar8) {
                 INT_00b95ab8::instance = 1;
