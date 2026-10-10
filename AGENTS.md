@@ -785,6 +785,28 @@ Diff patterns that were reliable (more in the cheat sheet):
   (`MenuItemActionHandler_SaveLoadMap_Buttons`, three sites). Writing `strcpy` back per path was worth
   0.5930 -> 0.6077 on the ratio and measured an exact tie on reccmp, so keep it for being the binary's
   form rather than for the number.
+- **A single-use Ghidra local inside an argument list that contains a nested call costs a stack slot
+  the original does not have.** This is the one actionable form of `diff_triage.py`'s `FRAME` flag, and
+  `diff_slots.py` names it exactly: an extra slot of ours with one or two uses. The shape is
+  `x = DAT_ButtonX::instance; y = DAT_ButtonY::instance; r = inner(); outer(..., r, x, y);` - the two
+  coordinates have to survive `inner()`, so they get spilled, while the original pushes them straight
+  into the argument list before calling `inner` (`mov eax, dword ptr [DAT_ButtonY]; push eax` at
+  0x464746). Inlining them removes the slot: `MenuItemRenderFunction_InGameMenu_MainButtons`
+  **42.6% -> 48.7%** (norm 31.6% -> 43.8%), `BuildingAndStatusMenu_OutpostUnitSelection` 69.6% -> 76.8%,
+  `LobbyMenu_SkirmishTypeAndBalance` 57.3% -> 63.1%, `General_TextInputDisplay` 70.4% -> 73.6%,
+  `BuildingAndStatusMenu_AvailablePeasantsTextUpperRight` 80.6% -> 83.3% (36 = 36 instructions),
+  `DisableWeapon_Main` 57.8% -> 58.8% - six functions, no regressions.
+  `inline_once.py` finds and rewrites the sites, but **the nested call is the whole predicate and the
+  source shape alone is not enough**: of 36 files with a single-use coordinate local, 4 improved, 29
+  were exact ties and 3 were worse (`SaveMap_InputTextDisplay` 0.8846 -> 0.7647). The ties are the
+  evidence - MSVC eliminates such a local by itself whenever nothing is live across it - so gate per
+  file and reach for `diff_slots.py` first rather than grepping the source.
+  The related register evidence does **not** generalise: `MainButtons` loads `[DAT_GameCore+0x68]` once
+  at 0x464431 and compares `ecx` against constants sixteen times afterwards, which looks exactly like a
+  source local, but introducing one is an exact tie because MSVC enregisters it from the repeated field
+  form anyway. That is consistent with the note above about values feeding comparisons against
+  constants; a register reused across a *call* is the case that needs a source change, not a register
+  reused across comparisons.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
