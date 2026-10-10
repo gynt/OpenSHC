@@ -53,19 +53,27 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                            uVar2 = 0xc2f0eb;
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                                OpenSHC::DE::SHCDE::TEXT_MONTHS,
+                                DAT_MapPropertiesState::instance
+                                        .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                        .header.month
+                                    + 0xc,
+                                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12,
+                                FALSE);
                         } else {
-                            uVar2 = 0xccfaff;
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                                OpenSHC::DE::SHCDE::TEXT_MONTHS,
+                                DAT_MapPropertiesState::instance
+                                        .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                        .header.month
+                                    + 0xc,
+                                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12,
+                                FALSE);
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_MONTHS,
-                            DAT_MapPropertiesState::instance
-                                    .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                    .header.month
-                                + 0xc,
-                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
-                            break;
+                        break;
                     case 0x7e:
                         if (*(char*)((int)&DAT_MapPropertiesState::instance
                                          .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
