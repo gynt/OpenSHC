@@ -125,7 +125,7 @@ namespace UI {
                 }
                 break;
             case 1:
-                if (DAT_GameSynchronyState::instance.field248_0x109250 < 5) {
+                if ((int)DAT_GameSynchronyState::instance.field248_0x109250 < 5) {
                     DAT_GameSynchronyState::instance.field248_0x109250 = 5;
                 }
                 param_1 = 7;
@@ -219,7 +219,7 @@ namespace UI {
                     if (iVar2 == 0)
                         break;
                     iVar8 = iVar8 + 1;
-                    if (DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {
+                    if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {
                         return;
                     }
                 }
