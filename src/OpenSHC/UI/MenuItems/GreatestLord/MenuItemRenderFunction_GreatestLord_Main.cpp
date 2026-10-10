@@ -27,22 +27,15 @@ namespace UI {
         {
             int iVar1;
             int iVar2;
-            bool bVar3;
             int drawX;
             int drawY;
-            if (param_1 == 0xb) {
-                bVar3 = DAT_GreatestLordDefinedData::instance.tableSortBy == 1;
-            } else {
-                if (param_1 != 0xc) {
-                    if ((param_1 == 10) && (DAT_GreatestLordDefinedData::instance.tableSortBy == -1))
-                        goto LAB_004ae757;
-                    goto LAB_004ae736;
-                }
-                bVar3 = DAT_GreatestLordDefinedData::instance.tableSortBy == 0;
-                return;
-            }
-            if (bVar3) {
-            LAB_004ae757:
+            /*
+              the original branches straight off each comparison into the shared block
+              (`cmp [data], ecx; je L5` at 0x4ae734) rather than materialising a flag
+             */
+            if (((param_1 == 0xb) && (DAT_GreatestLordDefinedData::instance.tableSortBy == 1))
+                || (((param_1 == 0xc) && (DAT_GreatestLordDefinedData::instance.tableSortBy == 0))
+                    || ((param_1 == 10) && (DAT_GreatestLordDefinedData::instance.tableSortBy == -1)))) {
                 iVar2 = 0xe;
                 if (param_1 == 0xc) {
                     iVar2 = 1;
@@ -58,7 +51,6 @@ namespace UI {
                                                           .gmId_0x0,
                     iVar1 + iVar2, drawX, drawY);
             }
-        LAB_004ae736:
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
         }
 
