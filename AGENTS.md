@@ -441,7 +441,11 @@ Diff patterns that were reliable (more in the cheat sheet):
   count exactly equal (36 = 36), against 0.706 for the ternary. `Chat_TauntButtons`, where the arms choose
   an *x coordinate* rather than a colour, went 0.721 -> **0.941** and 27 instructions -> 34 = 34.
   `split_call_arms.py` does the rewrite; run `undrop_fallthrough.py` first, since the stray `return;` hides
-  the `if`/`else` from it.
+  the `if`/`else` from it. `split_ternary_call.py` is the same rewrite for an argument that is *already* a
+  ternary - whether Ghidra emitted one or an earlier pass folded one - and that pass was 11 functions better
+  with **no regressions at all**: `DisableEuroTroops_Main` 84.6% -> 93.4%, `DisableArabTroops_Main`
+  82.9% -> 92.7%, `TutorialBox_Main` 84.5% -> 91.7%, `SendReceiveMap_Main` 82.7% -> 89.2%,
+  `LobbyMenu_MapSelectHeader` 52.9% -> 61.7%. It is the one pass in this family that can be run blind.
   Which form a given function used is decidable from the original: the constants **pushed**
   (`push DAT_GMImageSizes+0x3556f`, `push DAT_GMImageHeaders+0x9695b`) mean one argument per arm and this
   rewrite, while the constants moved into a **register** - `mov edi, <colour>` followed by a conditional

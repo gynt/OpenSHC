@@ -66,6 +66,13 @@ def _statements(lines, n, ind):
     return out
 
 
+def _read_before_write(text, var, word):
+    """True when `var` is read again before it is written again."""
+    for occ in re.finditer(r"\b" + re.escape(var) + r"\b(\s*=[^=])?", text):
+        return not occ.group(1)
+    return False
+
+
 def rewrite(text):
     """-> (text, [variable]) for every arm pair whose call was written out twice."""
     lines = text.split("\n")
@@ -105,7 +112,9 @@ def rewrite(text):
             i += 1
             continue
         after = "\n".join(lines[target[1]:])
-        if any(w.search(after) for _, w in words):
+        # a later *read* would make the duplicated value live past the call; a later
+        # write is fine, and these decompiled temporaries get reused all over a function
+        if any(_read_before_write(after, v, w) for v, w in words):
             i += 1
             continue
         arms = []
