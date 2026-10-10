@@ -114,14 +114,14 @@ namespace UI {
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE,
                                 DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1),
                             xParam, iVar3, alignment, color, fontSize, BVar1, iVar2);
-                        if (DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
+                        if ((int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
                             iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 3,
                                 (int)((int)(DAT_ButtonX::instance + 0xb4)), (int)((int)(DAT_ButtonY::instance + 0x1a)),
                                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, (iVar2 / 32) + 0x20);
                         }
-                        if (3 < DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance) {
+                        if (3 < (int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance) {
                             iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 4,
