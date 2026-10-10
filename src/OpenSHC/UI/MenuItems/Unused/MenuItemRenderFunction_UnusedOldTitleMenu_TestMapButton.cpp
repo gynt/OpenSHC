@@ -30,12 +30,16 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DF40
         void Unused::MenuItemRenderFunction_UnusedOldTitleMenu_TestMapButton(int param_1, ...)
         {
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                DAT_TextManagerObject::instance.textColor = 0;
-                DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
-            } else {
+            /*
+              the original jumps out of line on `== FALSE`, so the interacting
+              arm is the one the source wrote first
+             */
+            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 DAT_TextManagerObject::instance.textColor = 0xff;
                 DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
+            } else {
+                DAT_TextManagerObject::instance.textColor = 0;
+                DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
