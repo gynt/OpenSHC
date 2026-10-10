@@ -16,7 +16,7 @@ namespace UI {
             int iVar2;
             DVar1 = timeGetTime();
             iVar2 = DAT_MapPropertiesState::instance.offset + param_1;
-            if (iVar2 < DAT_MapPropertiesState::instance.total) {
+            if (iVar2 < (int)DAT_MapPropertiesState::instance.total) {
                 DAT_MapPropertiesState::instance.indexStored = param_1;
                 DAT_MapPropertiesState::instance.value = DAT_MapPropertiesState::instance.unknownArray_01[iVar2];
                 DAT_MapPropertiesState::instance.selectedAbsoluteIndex = iVar2;
