@@ -6791,7 +6791,7 @@ SHC_3BB0A8C1_0x00426CA0 | 90.7% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00426D30 | 43.5% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x00426ED0 | 24.7% | Style pass, asm differs
+SHC_3BB0A8C1_0x00426ED0 | 91.1% | sparse switch, not an if chain
 
 SHC_3BB0A8C1_0x00426F80 | 100.0% | Reimplemented
 
