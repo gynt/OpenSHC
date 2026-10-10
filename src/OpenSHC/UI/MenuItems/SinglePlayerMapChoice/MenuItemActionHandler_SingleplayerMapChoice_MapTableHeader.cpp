@@ -109,7 +109,7 @@ namespace UI {
             case 0:
                 iVar3 = 0;
                 if (DAT_MenuTextInputState::instance.field33_0x78 == 0) {
-                    if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                    if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         puVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                             + DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + 0x1f2;
                         do {
@@ -120,7 +120,7 @@ namespace UI {
                     }
                     DAT_MenuTextInputState::instance.field33_0x78 = 1;
                 } else {
-                    if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                    if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         do {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + 499];
