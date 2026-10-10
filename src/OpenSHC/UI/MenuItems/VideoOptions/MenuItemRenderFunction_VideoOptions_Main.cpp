@@ -67,15 +67,23 @@ namespace UI {
             }
             if (param_1 < 0) {
                 if (param_1 == -3) {
-                    if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting == 0) {
-                        param_1 = 0x14;
-                    } else if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting == 1) {
-                        param_1 = 0x15;
-                    } else {
-                        if (DAT_MenuTextInputState::instance.menuScrollSpeedSetting != 2) {
-                            return;
-                        }
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x4925be),
+                      MSVC's sparse switch, whose arms are written in the reverse of the
+                      test order
+                     */
+                    switch (DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
+                    case 2:
                         param_1 = 0x13;
+                        break;
+                    case 1:
+                        param_1 = 0x15;
+                        break;
+                    case 0:
+                        param_1 = 0x14;
+                        break;
+                    default:
+                        return;
                     }
                 } else {
                     if (param_1 != -2) {
@@ -192,13 +200,18 @@ namespace UI {
                             break;
                         }
                     }
-                    if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 == 0) {
-                        param_1 = 0xe;
-                    } else {
-                        if (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01 != 1) {
-                            return;
-                        }
+                    /*
+                      the same sparse switch on the zoom flag (0x4925a3), `case 1` first
+                     */
+                    switch (DAT_MenuTextInputState::instance.unknownZoomRelatedFlag01) {
+                    case 1:
                         param_1 = 0xd;
+                        break;
+                    case 0:
+                        param_1 = 0xe;
+                        break;
+                    default:
+                        return;
                     }
                 }
                 yParam = DAT_ButtonY::instance + 7;
