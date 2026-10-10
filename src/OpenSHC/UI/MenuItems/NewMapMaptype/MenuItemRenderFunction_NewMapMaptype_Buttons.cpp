@@ -49,16 +49,11 @@ namespace UI {
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     return;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    if (param_1 == INT_00b95abc::instance) {
-                        INT_00b95abc::instance = -1;
-                    }
-                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
-                        DAT_CurrentButtonGmDataIndex::instance = 0x161;
-                    }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                            MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                } else {
+                /*
+                  the original jumps out of line on `== FALSE`, so the interacting
+                  arm is the one the source wrote first
+                 */
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
@@ -73,6 +68,15 @@ namespace UI {
                                 | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
+                } else {
+                    if (param_1 == INT_00b95abc::instance) {
+                        INT_00b95abc::instance = -1;
+                    }
+                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
+                        DAT_CurrentButtonGmDataIndex::instance = 0x161;
+                    }
+                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
                 iVar1 = 0x13;
                 fontSize = 0x11;
