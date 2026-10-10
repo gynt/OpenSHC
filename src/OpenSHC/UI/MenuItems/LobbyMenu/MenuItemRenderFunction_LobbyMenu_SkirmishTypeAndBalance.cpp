@@ -62,7 +62,6 @@ namespace UI {
             int iVar2;
             char* textAddress;
             int iVar3;
-            int xParam;
             int _goldMultiplier;
             TextAlignment alignment;
             BGR24 color;
@@ -107,13 +106,12 @@ namespace UI {
                         color = 0xccfaff;
                         alignment = OpenSHC::Text::TTA_CENTER;
                         iVar3 = DAT_ButtonY::instance + 1;
-                        xParam = DAT_ButtonX::instance + 0xb4;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE,
                                 DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1),
-                            xParam, iVar3, alignment, color, fontSize, BVar1, iVar2);
+                            DAT_ButtonX::instance + 0xb4, iVar3, alignment, color, fontSize, BVar1, iVar2);
                         if ((int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
                             iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
