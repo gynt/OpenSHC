@@ -71,20 +71,21 @@ namespace UI {
                 if (DAT_MapMissionType::instance == 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(
                     DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    uVar2 = 0xc2f0eb;
-                } else {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     uVar2 = 0xccfaff;
-                    return;
+                } else {
+                    uVar2 = 0xc2f0eb;
                 }
                 /*
                   Difficulty
@@ -108,6 +109,7 @@ namespace UI {
                 if (DAT_MapMissionType::instance != 2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (DAT_GameSynchronyState::instance.currentPlayerSlotID != 2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -117,6 +119,7 @@ namespace UI {
                 if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if ((DAT_SH1_SiegeAdvancedMode::instance != 0) && (DAT_00b960dc::instance == 0)) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
@@ -144,6 +147,7 @@ namespace UI {
                         (iVar1 / 32) + 0x20);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(
@@ -156,6 +160,7 @@ namespace UI {
                 if (DAT_MapMissionType::instance != 2) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1) {
                     param_1 = 0x4e;
@@ -163,6 +168,7 @@ namespace UI {
                 if (DAT_GameCore::instance.mapU4Int1_2 != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
