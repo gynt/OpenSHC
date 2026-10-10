@@ -51,22 +51,12 @@ namespace UI {
                 }
                 BVar4 = DAT_GameCore::instance.unknownScribeRelatedFlag_0x130;
                 DAT_GameCore::instance.taxestimeUnk = _currentTime;
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x4333c2),
+                  MSVC's sparse switch, whose arms are written in the reverse of the
+                  test order
+                 */
                 switch (BVar4) {
-                case FALSE:
-                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
-                    if (iVar3 < 6) {
-                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + 1;
-                    } else if (iVar3 > 6) {
-                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
-                    } else {
-                        BVar4 = TRUE;
-                        DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 = TRUE;
-                    }
-                    break;
-                case TRUE:
-                    DAT_GameCore::instance.scribeAnimationFrame2 = DAT_GameCore::instance.scribeAnimationFrame2 + 1;
-                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
-                    break;
                 case 2:
                     iVar2 = (100 - DAT_GameState::instance.playerDataArray[iVar1].popularity / 100) / 10 + 1;
                     iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
@@ -81,6 +71,21 @@ namespace UI {
                     } else {
                         iVar3 = 6;
                         DAT_GameCore::instance.scribeAnimationFrame = 6;
+                    }
+                    break;
+                case TRUE:
+                    DAT_GameCore::instance.scribeAnimationFrame2 = DAT_GameCore::instance.scribeAnimationFrame2 + 1;
+                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
+                    break;
+                case FALSE:
+                    iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
+                    if (iVar3 < 6) {
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + 1;
+                    } else if (iVar3 > 6) {
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
+                    } else {
+                        BVar4 = TRUE;
+                        DAT_GameCore::instance.unknownScribeRelatedFlag_0x130 = TRUE;
                     }
                     break;
                 }
