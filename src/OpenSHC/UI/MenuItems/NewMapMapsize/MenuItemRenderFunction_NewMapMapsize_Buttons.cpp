@@ -51,17 +51,11 @@ namespace UI {
                     ;
                     return;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    if (param_1 == INT_00b95abc::instance) {
-                        INT_00b95abc::instance = -1;
-                    }
-                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
-                        DAT_CurrentButtonGmDataIndex::instance = 0x161;
-                        return;
-                    }
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                            MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                } else {
+                /*
+                  the original jumps out of line on `== FALSE` (0x42f840), so the
+                  interacting arm is the one written first
+                 */
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
                         DAT_CurrentButtonGmDataIndex::instance = 0x161;
                     }
@@ -76,6 +70,16 @@ namespace UI {
                                 | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
+                } else {
+                    if (param_1 == INT_00b95abc::instance) {
+                        INT_00b95abc::instance = -1;
+                    }
+                    if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) {
+                        DAT_CurrentButtonGmDataIndex::instance = 0x161;
+                        return;
+                    }
+                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
                 if (param_1 == 1) {
                     uVar1 = 0xa0;
