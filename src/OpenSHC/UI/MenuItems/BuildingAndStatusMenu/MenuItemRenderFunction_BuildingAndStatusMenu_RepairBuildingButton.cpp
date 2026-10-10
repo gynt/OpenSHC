@@ -64,9 +64,7 @@ namespace UI {
                 DAT_PathFindingState::ptr)((int)DAT_BuildingsState::instance.buildings[iVar3].owner,
                 (uint)((short)DAT_BuildingsState::instance.buildings[iVar3].x),
                 (uint)((short)DAT_BuildingsState::instance.buildings[iVar3].y),
-                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                          & 0xfffffff1)
-                    + 0x1e));
+                (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY ? 0x1e : 0xf));
             if ((BVar2 == FALSE) && (BVar1 != FALSE)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_SCREEN_MENU);
