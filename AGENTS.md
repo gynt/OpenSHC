@@ -380,7 +380,12 @@ Diff patterns that were reliable (more in the cheat sheet):
   emits that shape wherever the original shared a tail, and 16 such arms across 11 files would otherwise be reordered
   past the arm they fall into, which is a silent behaviour change; reassuringly, every fall-through chain turned out to
   be consecutively ranked in the original's table too. And the rule has exceptions for very small arms: six
-  scrollbar-style functions measured worse and were reverted, so gate per function. The **last** arm needs
+  scrollbar-style functions measured worse and were reverted, so gate per function.
+  `MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus` is a settled exception: its
+  five-arm switch has been reordered into its table's order twice, once before the index-base fix and
+  once after, and both times measured exactly 39.7% -> 39.5%. Reproducing to the decimal is the
+  evidence that it is not a tooling artefact - that switch simply does not follow source order, so
+  leave it alone and look elsewhere in the function. The **last** arm needs
   its own guard: running off its end there falls out of the switch, which is harmless only while it stays
   last, and moving it makes it fall into whatever follows. Five committed functions had that bug before it
   was caught, in arms the original ends with `ret`. The repair keeps both the behaviour and the gain, because
