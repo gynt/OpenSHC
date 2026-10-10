@@ -459,6 +459,21 @@ Diff patterns that were reliable (more in the cheat sheet):
   (`MenuItemRenderFunction_NewEventAction_Main`) is a silent behaviour change, so only the sites where the
   block really ends in `pop`/`ret` qualify, plus the free ones where an `if` arm's `return` is reached at the
   end of the function or before a mutually exclusive test.
+- Two bools compared against each other - `bVar2 = (x < K); bVar1 = (x - K) < 0; if (bVar2 != bVar1)` - is the
+  decompiler's rendering of one `cmp` whose `jl` is **shared** between the arms of an `if`/`else` chain, each
+  arm comparing its own value against its own bound. The bound travels with the value, so the source holds
+  both: `if (trail == TT_EXTREME) { mission = extremeTrailProgress; missionCount = 20; } else if (...)` and
+  then one `if (mission < missionCount)`. Finding it is also how you find the control flow Ghidra lost around
+  it: `MenuItemActionHandler_CrusadeMissionIntro_Main` ran its `field22_0x64` check for both button values and
+  the trail dispatch unconditionally, where the original returns out of each arm (0x4d8c35 and 0x4d8c9d are
+  both tail calls), and `MenuItemRenderFunction_CrusadeMissionIntro_Main` had the whole thing wrapped so that
+  a trail type outside the three still reached the comparison. Rebuilding both from the instruction stream was
+  worth 46.2% -> 76.4% and **6.9% -> 60.9%**. `bVar2 == bVar1` is the same thing in the other sense (the `jl`
+  not taken, i.e. `>=`).
+  Where the original instead compares inside each arm and shares only the branch
+  (`MenuItemActionHandler_BuildingAndStatusMenu_EngineerAndMonkPortraits`, 0x466efd and 0x466f16 both
+  `cmp [gold], <literal>` before a common `jl`), Ghidra's two-bool form already *is* the matching shape and
+  only its `goto` is an artefact - leave it alone. Read which of the two the original did before rewriting.
 - Ghidra puts a `return;` inside a bubble sort's swap, right after the "something moved" counter
   (`iVar7 = iVar7 + 1; return;`), which aborts the sort after its first swap. The original has `add esi, 1`
   and falls into the loop increment. Two such bugs sat in the map-list sorts
