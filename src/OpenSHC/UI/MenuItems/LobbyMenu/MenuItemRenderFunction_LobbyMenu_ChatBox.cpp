@@ -111,6 +111,7 @@ namespace UI {
                                 .DAT_PlayerNames[DAT_GameSynchronyState::instance.currentPlayerSlotID],
                             (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance + 6)),
                             OpenSHC::Text::TTA_LEFT, 0xa2ff, 0x3e66, 0x11, FALSE, iVar2);
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1, (int)((int)(DAT_ButtonX::instance)),
