@@ -114,14 +114,9 @@ namespace UI {
                         "-", iVar7 + -0x5e, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
                         0x13, TRUE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    if (DAT_GameCore::instance.savedMapBalance == 0) {
-                        iVar8 = 0x19b;
-                    } else {
-                        iVar8 = 0x19c;
-                        return;
-                    }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, iVar8, iVar7 + -0x58,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
+                        (DAT_GameCore::instance.savedMapBalance == 0 ? 0x19b : 0x19c), iVar7 + -0x58,
                         (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE,
                         (iVar6 / 32) + 0x20);
                     if (DAT_GameCore::instance.mapDescUseStringTable != 0) {
