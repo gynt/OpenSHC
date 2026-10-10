@@ -43,7 +43,7 @@ namespace UI {
                 return;
             }
             if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                >= DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                >= (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                 return;
             }
             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = param_1;
