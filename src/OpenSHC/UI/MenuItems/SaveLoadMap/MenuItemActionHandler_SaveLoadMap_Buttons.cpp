@@ -60,14 +60,15 @@ namespace UI {
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
             switch (param_1) {
             case -1:
-                if (0 < DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
+                if (0 < (int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
                     ;
                 }
             case -2:
-                if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.field32_0x74 - DAT_MenuTextInputState::instance.field36_0x84) {
+                if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
+                    < (int)(DAT_MenuTextInputState::instance.field32_0x74
+                        - DAT_MenuTextInputState::instance.field36_0x84)) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
                     ;
