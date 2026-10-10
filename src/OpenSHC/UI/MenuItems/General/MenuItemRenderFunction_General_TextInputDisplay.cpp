@@ -39,7 +39,6 @@ namespace UI {
         {
             int _textWidth;
             char* pcVar1;
-            int xParam;
             int iVar2;
             int _textArrayIndex;
             if ((param_1 == 3) && (DAT_GameCore::instance.unknownFlag_0x118 == TRUE)) {
@@ -113,11 +112,10 @@ namespace UI {
                 break;
             }
             iVar2 = DAT_ButtonY::instance + 6;
-            xParam = DAT_ButtonX::instance + 6;
             pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
                 DAT_UserTextHandlerState::ptr)(_textArrayIndex);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, xParam, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
+                pcVar1, DAT_ButtonX::instance + 6, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
         }
 
     }
