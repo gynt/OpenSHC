@@ -400,6 +400,20 @@ Diff patterns that were reliable (more in the cheat sheet):
   base reads as 0; the base of another table in the function with the same bound is this one's too
   (`MenuItemActionHandler_General_EventSlider`'s second switch, base -10, whose arms turned out to be in a
   different order from ours). A printed base of 0 on a function with several tables is the tell.
+  Two more things stop a jump table from being read correctly, and both are silent. The index
+  adjustment's operand can be a **register**: these functions pin small constants
+  (`xor ebx, ebx; mov esi, 1; lea edi, [ebx + 2]`), so the dispatch is `mov edi, 2` followed by
+  `sub edx, edi` rather than a `sub` against an immediate, the walk-back matched neither, and the base
+  read as 0 - which shifts every value the table reports by a constant and stops the switch matching.
+  `switch_order.py` now resolves such an operand from the `mov` that loaded it. And a switch written
+  with **enum constants** can never match a table, because the match compares the numeric values the
+  switch names: `reorder_enum_switch.py` resolves them from the enum header first, and recovers the
+  base by finding the offset that maps each of our arms to exactly one table arm. Between them these
+  two uncovered `MenuItemActionHandler_MapEditorLandscaping_QueueCommandCallback`, whose 34 arms were
+  all in the wrong order behind a base that was 2 too low; reordering them was 16.4% -> 22.8% and it
+  was the second-largest single loss in the namespace. A function that is both large and far below the
+  namespace average, with a `switch` the reorder pass says has "no switch matches a table", is the
+  shape to re-check.
   Where the original has a jump table and we do not, the usual cause is that our `switch` leaves a block of
   the table's values to `default:`, so the remaining labels are sparse and MSVC emits compares. Give each of
   those values a `case` of its own on the `default:` arm - 24 of them in
@@ -452,6 +466,28 @@ Diff patterns that were reliable (more in the cheat sheet):
   second `mov`, as in `MenuItemRenderFunction_NewEventCondition_Main` at 0x4c0365 - mean a default
   assignment and then a one-armed `if`, which is a third shape again. Classify before rewriting: grep the
   disassembly for `mov \w+, DAT_GMImage` against `push DAT_GMImage`.
+  **Writing the call out twice only works for two arms.** Where the original's arms each push some of
+  a call's arguments and then meet part-way down the argument list, that convergence can be MSVC
+  cross-jumping identical call sites rather than the source having written the call once. With two
+  arms the rewrite reproduces it exactly (`GameOptionsTextButton` 36 = 36 instructions); with three it
+  does not, because MSVC1400 merges the tails of two successors and not of three.
+  `MenuItemRenderFunction_OptionsMenu_Buttons` has three sites pushing blend strength, keepOffsetX,
+  font size and colour and meeting at `push 1` (0x491904), and writing the call out at all three went
+  0.745 -> 0.653 on `quick_diff.py`'s ratio while *growing* our function from 139 to 151 instructions
+  against the original's 143 - so there the `goto` and the locals Ghidra invented are the closer match
+  and should be left alone. Count the predecessors of the shared tail before rewriting.
+  A related shape is the clamp whose store Ghidra duplicated into the inner arm:
+  `if (v < M - S) { v = v + S; if (v <= M) { FIELD = v; return; } } FIELD = M;` is one store at the
+  label both paths converge on (0x4623c9, 0x4615ee), so the clamp belongs inside the arm and the store
+  behind it (`merge_clamp.py`). Gate it per function - it was worth
+  `MenuItemActionHandler_TextEditor_TextInputRelatedUnk` 27.4% -> 31.8% and cost
+  `MenuItemActionHandler_TextEditor_Buttons` 71.5% -> 68.0%.
+  A clamp is also a place to check for the dropped fall-through itself, because the arm that clamps
+  usually continues: both brush blocks of
+  `MenuItemActionHandler_MapEditorLandscaping_GeneralButtons` fall out of `mov eax, 1` / `mov eax, 7`
+  (0x431565, 0x4317d5) into the big-rock adjustment, where Ghidra returns, so a brush that wrapped
+  past 7 or below 1 skipped that adjustment, the `unknownBrushRelated` update and
+  `StopHandlingMenuItems = 0` entirely.
   The mirror image also exists and is *not* a dropped return: a guard that ends in
   `drawBufferChoiceValue = RT_MAP_GAME` looks identical but in `MenuItemRenderFunction_General_MenuMiniMap`
   the original continues the loop (`mov [..+4], 1; add esi, 1; cmp esi, 8; jl`). Read the instruction after
