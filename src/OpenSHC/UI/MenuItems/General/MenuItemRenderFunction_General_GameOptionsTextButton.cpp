@@ -35,7 +35,6 @@ namespace UI {
             char* textAddress;
             int yParam;
             TextAlignment alignment;
-            BGR24 color;
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
@@ -46,17 +45,22 @@ namespace UI {
             yParam = DAT_ButtonY::instance + 7;
             keepOffsetX = FALSE;
             fontSize = 0x12;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                color = 0xc2f0eb;
-            } else {
-                color = 0xccfaff;
-                return;
-            }
             alignment = OpenSHC::Text::TTA_CENTER;
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
-                xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+            /*
+              the original pushes this call's arguments inside each arm and converges only on
+              the inner call (`push 0x4a` at 0x493544), so the call was written out twice
+             */
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                    xParam, yParam, alignment, 0xc2f0eb, fontSize, keepOffsetX, blendStrength);
+            } else {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                    xParam, yParam, alignment, 0xccfaff, fontSize, keepOffsetX, blendStrength);
+            }
         }
 
     }
