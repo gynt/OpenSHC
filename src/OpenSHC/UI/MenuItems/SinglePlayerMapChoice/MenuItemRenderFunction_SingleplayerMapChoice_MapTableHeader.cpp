@@ -42,16 +42,23 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             numInGroup = -1;
-            if (param_1 == 0) {
-                /*
-                  Name
-                 */
-                numInGroup = 0x1b;
-            } else if (param_1 == 1) {
+            /*
+              the original dispatches with a `sub eax, K; je` chain (0x42dbb8), MSVC's
+              sparse switch, and the `case 1` body sits first
+             */
+            switch (param_1) {
+            case 1:
                 /*
                   Date
                  */
                 numInGroup = 0x1c;
+                break;
+            case 0:
+                /*
+                  Name
+                 */
+                numInGroup = 0x1b;
+                break;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
