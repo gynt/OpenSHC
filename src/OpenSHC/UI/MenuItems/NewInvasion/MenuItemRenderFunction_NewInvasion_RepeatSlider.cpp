@@ -50,9 +50,13 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             color = COL_GREYISH_YELLOW::instance.shortValue;
+            /*
+              the original keeps the colour in a register and overwrites it in the one
+              armed `if` (0x4b9568), then shares the single drawColorBox call, so the
+              `return;` Ghidra put here is its own - with it the dragged thumb draws nothing
+             */
             if (isDragged != FALSE) {
                 color = COL_DARK_LIME::instance.shortValue;
-                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 thumbXPos + DAT_ButtonX::instance + 1, (int)((int)(DAT_ButtonY::instance + 2)),
