@@ -66,11 +66,17 @@ namespace UI {
                 BVar1 = FALSE;
                 fontSize = 0x13;
                 alignment = OpenSHC::Text::TTA_LEFT;
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup),
-                    iVar3, yParam, alignment, (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff),
-                    fontSize, BVar1, iVar2);
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup),
+                        iVar3, yParam, alignment, 0xc2f0eb, fontSize, BVar1, iVar2);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup),
+                        iVar3, yParam, alignment, 0xccfaff, fontSize, BVar1, iVar2);
+                }
             }
         }
 
