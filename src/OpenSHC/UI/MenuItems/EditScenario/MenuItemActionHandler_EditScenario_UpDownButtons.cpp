@@ -21,7 +21,7 @@ namespace UI {
                 return;
             }
             if (param_1 == -2) {
-                if (DAT_MapPropertiesState::instance.field47_0x1355c
+                if ((int)DAT_MapPropertiesState::instance.field47_0x1355c
                     < DAT_MapPropertiesState::instance.eventsCount + -0x14) {
                     DAT_MapPropertiesState::instance.field47_0x1355c
                         = DAT_MapPropertiesState::instance.field47_0x1355c + 1;
