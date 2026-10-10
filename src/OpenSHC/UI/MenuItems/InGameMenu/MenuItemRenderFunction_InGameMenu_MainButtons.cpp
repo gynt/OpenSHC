@@ -67,11 +67,8 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int iVar1;
             int iVar2;
-            int _digitSet2;
-            int _color2;
             int iVar3;
             bool bVar4;
-            int drawY;
             iVar3 = 0;
             DAT_ButtonUnknownZero::instance = 0;
             if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU)
@@ -296,13 +293,12 @@ namespace UI {
         LAB_00464732:
             buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            iVar1 = DAT_ButtonX::instance;
-            drawY = DAT_ButtonY::instance;
             iVar2 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(
                 DAT_ButtonCurrentlyInteracting::instance);
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                (OpenSHC::DE::SHCDE::eGM)(buttonGmData->gmId_0x0), iVar2 + iVar3, iVar1, drawY);
+                (OpenSHC::DE::SHCDE::eGM)(buttonGmData->gmId_0x0), iVar2 + iVar3, DAT_ButtonX::instance,
+                DAT_ButtonY::instance);
             DAT_CurrentButtonPictureInGm::instance
                 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                       .pictureInGm_0x4
