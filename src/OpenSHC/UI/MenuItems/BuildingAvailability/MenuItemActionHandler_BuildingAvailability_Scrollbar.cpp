@@ -37,7 +37,7 @@ namespace UI {
                 break;
             case 6:
                 if (DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                    < DAT_MapPropertiesState::instance.field8_0x224 + -0x13) {
+                    < (int)DAT_MapPropertiesState::instance.field8_0x224 + -0x13) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + 1;
                     return;
