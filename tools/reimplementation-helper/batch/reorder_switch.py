@@ -23,7 +23,7 @@ the switch region is what caught it, so keep that check if you extend this to ne
 switches.
 
 usage:
-  reorder_switch.py FILE.cpp... [--apply] [--add-break]
+  reorder_switch.py FILE.cpp... [--apply] [--add-break] [--loose]
 """
 
 import io
@@ -162,7 +162,7 @@ def tables_of(ins):
     return out
 
 
-def keys_for(groups, table, enums):
+def keys_for(groups, table, enums, loose=False):
     """One rank per arm group, or None when this table does not describe this switch.
 
     The switch's own `case` values must cover exactly the table's non-default values.
@@ -193,11 +193,22 @@ def keys_for(groups, table, enums):
             continue
         keys.append(min(ranked[v] for v in vals))
     if seen != non_default:
-        return None
+        # `--loose`: the original gave a block of values an arm of its own where our
+        # source leaves them to the end of the switch, so our `case` labels cover every
+        # arm but that one. Accept it only when the values we do not name all belong to
+        # that single arm - which still rules out a nested switch matching its parent's
+        # table, because a nested switch leaves several arms unaccounted for.
+        if not loose or len(groups) < 6:
+            return None
+        missing = set(ranked[v] for v in non_default - seen)
+        if not seen or not seen <= non_default or len(missing) != 1:
+            return None
+        if missing & set(ranked[v] for v in seen):
+            return None
     return keys if len(set(keys)) == len(keys) else None
 
 
-def reorder_one(lines, tables, used, enums, name, add_break=False):
+def reorder_one(lines, tables, used, enums, name, add_break=False, loose=False):
     """Reorder the first switch that matches an unused table. -> (lines, changed, note)."""
     for start in [j for j, l in enumerate(lines) if re.match(r"^\s*switch \(", l)]:
         groups, end = arms(lines, start)
@@ -206,7 +217,7 @@ def reorder_one(lines, tables, used, enums, name, add_break=False):
         for ti in range(len(tables)):
             if ti in used:
                 continue
-            keys = keys_for(groups, tables[ti], enums)
+            keys = keys_for(groups, tables[ti], enums, loose)
             if keys is None:
                 continue
             used.add(ti)
@@ -248,6 +259,7 @@ def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     apply_ = "--apply" in sys.argv
     add_break = "--add-break" in sys.argv
+    loose = "--loose" in sys.argv
     if not args:
         raise SystemExit(__doc__)
     enums = enum_text()
@@ -267,7 +279,7 @@ def main():
         used = set()
         any_change = False
         for _ in range(len(tables)):
-            lines, changed, note = reorder_one(lines, tables, used, enums, name, add_break)
+            lines, changed, note = reorder_one(lines, tables, used, enums, name, add_break, loose)
             if note:
                 print(("reorder %-58s " % name) + note if changed else "--     %s  (%s)" % (name, note))
             if changed:

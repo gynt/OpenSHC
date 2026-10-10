@@ -383,6 +383,88 @@ Diff patterns that were reliable (more in the cheat sheet):
   89.5%), which is what one expects if the original terminates those arms too. Verify any such rewrite by
   comparing **token** multisets rather than lines: `clang-format` reflows the moved code, so a line-level
   comparison reports a false difference.
+  Two things stopped `switch_order.py` matching a switch at all and are worth knowing about if a large
+  jump-table function still reads as unordered. The index adjustment is the instruction *closest* to the
+  dispatch (`lea edx, [esi - 0x19]`, or a `sub`), and the walk-back used to keep scanning past it and
+  overwrite the base with an unrelated `add esp, 8` or `add eax, 0x92`, which shifts every value the table
+  reports by a constant - the arms are still in the right order, so a hand reordering off the printed values
+  works, but `keys_for` rejects the switch. And where the original gave a block of values an arm of its own
+  that our source leaves to the end of the switch, our `case` labels cover every arm but that one; the
+  strict "cover exactly the table's non-default values" test refuses it, and `--loose` accepts it when the
+  values we do not name all belong to that *single* missing arm (still enough to keep a nested switch from
+  matching its parent's table, since a nested switch leaves several arms unaccounted for). Between them
+  these unlocked `MenuItemActionHandler_General_ToolbarButtonPressed` 42.3% -> 53.6% on `quick_diff.py`'s
+  ratio with a 202-instruction block in the wrong place, `LobbyMenu_NonBoxedButtons` 0.20 -> 0.41, and
+  `MenuItemRenderFunction_BuildMenu_UnitActionButtons`. A third case: a *second* dispatch on the same value
+  reuses the register the first one adjusted, so its own `lea` is far above the walk-back's reach and the
+  base reads as 0; the base of another table in the function with the same bound is this one's too
+  (`MenuItemActionHandler_General_EventSlider`'s second switch, base -10, whose arms turned out to be in a
+  different order from ours). A printed base of 0 on a function with several tables is the tell.
+  Where the original has a jump table and we do not, the usual cause is that our `switch` leaves a block of
+  the table's values to `default:`, so the remaining labels are sparse and MSVC emits compares. Give each of
+  those values a `case` of its own on the `default:` arm - 24 of them in
+  `MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus`, where the table covers
+  `BT_IRONMINE`..`BT_MILL` - and keep `default:` for what is outside the table's range.
+- An assignment whose branch then ends in `return;`, where the code *after* the enclosing block is what reads
+  the variable, is a dropped fall-through: the store is dead, so the original cannot have returned there.
+  The shape is all over the render functions -
+  `if (interacting == FALSE) { color = 0xc2f0eb; } else { color = 0xccfaff; return; }` followed by the one
+  render call that wants `color` - and where it is real it is a **behaviour bug**, not just a mismatch: the
+  button draws nothing at all while it is hovered. It is confirmed in
+  `MenuItemRenderFunction_General_GameOptionsTextButton`, which is 36 instructions with a single `ret`: both
+  colour paths converge on `push 0x4a; call getTextStringInGroupAtOffset` at 0x493544, and in
+  `MenuItemRenderFunction_SingleplayerMapChoice_ButtonsAndHands`, where they converge at 0x42d28c.
+  **Do not sweep it.** `undrop_fallthrough.py` finds the sites (43 across `UI::MenuItems`) and removing all
+  of them measured **worse in every single function**, several of them disastrously
+  (`WorkshopWeaponSelection` 31.2% -> 7.1%, `MapEditorProperties_MainButtons` 53.2% -> 17.6%): the `return`
+  goes away but the source form that matches what the original did with those two arms is still unknown, so
+  the whole function re-schedules. `fold_ternary.py` folds the pair into a ternary at the argument, which is
+  what makes MSVC push the argument list inside each arm and share only the call's tail - it took
+  `GameOptionsTextButton` from 0.647 to 0.706 on `quick_diff.py`'s ratio and recovered 21 functions, but
+  still left 40 below where they started, so it is a thing to try per function and not a pass to run. This
+  is also the clearest case so far of `quick_diff.py`'s ratio disagreeing with reccmp: it liked the fold
+  everywhere, reccmp liked it in half the functions.
+  The per-function evidence that settles whether the `return` belongs is a **`ret` count**: disassemble the
+  original (`orig_disasm.py`) and count its `ret`s against our exits (`return;` plus the implicit one at the
+  end of a `void`). `MenuItemRenderFunction_BuildingAndStatusMenu_OutpostUnitSelection`,
+  `Chat_TauntButtons` and `GreatestLord_Main` each have exactly **one** `ret` in the binary where our source
+  had two exits, which is direct evidence and needs no score; `MenuItemActionHandler_InGameMenu_MainButtons`
+  has 15 against our 12, so there the extra `return;` is ours to keep. Tail calls make the count an
+  undercount (`HistoricAndEconomicMissionSelect_NextAndBackHands` jumps instead of returning and shows 0),
+  so read the function when the two numbers are equal.
+  **The form that actually matches is the call written out in both arms.** Ghidra's
+  `if (c) { X = k1; } else { X = k2; }` plus one call is its *merge* of two calls: the original pushes the
+  argument list inside each arm and converges only on the shared tail, which is why neither the local nor a
+  ternary reproduces it. `MenuItemRenderFunction_General_GameOptionsTextButton` is the clean example - both
+  arms push five arguments and meet at `push 0x4a; call getTextStringInGroupAtOffset` (0x493544) - and
+  writing the call twice took it from 0.647 to **0.889** on `quick_diff.py`'s ratio with the instruction
+  count exactly equal (36 = 36), against 0.706 for the ternary. `Chat_TauntButtons`, where the arms choose
+  an *x coordinate* rather than a colour, went 0.721 -> **0.941** and 27 instructions -> 34 = 34.
+  `split_call_arms.py` does the rewrite; run `undrop_fallthrough.py` first, since the stray `return;` hides
+  the `if`/`else` from it.
+  Which form a given function used is decidable from the original: the constants **pushed**
+  (`push DAT_GMImageSizes+0x3556f`, `push DAT_GMImageHeaders+0x9695b`) mean one argument per arm and this
+  rewrite, while the constants moved into a **register** - `mov edi, <colour>` followed by a conditional
+  second `mov`, as in `MenuItemRenderFunction_NewEventCondition_Main` at 0x4c0365 - mean a default
+  assignment and then a one-armed `if`, which is a third shape again. Classify before rewriting: grep the
+  disassembly for `mov \w+, DAT_GMImage` against `push DAT_GMImage`.
+  The mirror image also exists and is *not* a dropped return: a guard that ends in
+  `drawBufferChoiceValue = RT_MAP_GAME` looks identical but in `MenuItemRenderFunction_General_MenuMiniMap`
+  the original continues the loop (`mov [..+4], 1; add esi, 1; cmp esi, 8; jl`). Read the instruction after
+  the store before adding a `return;` there; a `return` that skips a countdown or a `switch` the arms share
+  (`MenuItemRenderFunction_NewEventAction_Main`) is a silent behaviour change, so only the sites where the
+  block really ends in `pop`/`ret` qualify, plus the free ones where an `if` arm's `return` is reached at the
+  end of the function or before a mutually exclusive test.
+- Ghidra puts a `return;` inside a bubble sort's swap, right after the "something moved" counter
+  (`iVar7 = iVar7 + 1; return;`), which aborts the sort after its first swap. The original has `add esi, 1`
+  and falls into the loop increment. Two such bugs sat in the map-list sorts
+  (`MenuItemActionHandler_LobbyMenu_MapSelectHeader`, `SingleplayerMapChoice_MapTableHeader`); grep for an
+  increment immediately followed by `return;`.
+- Where several arms each store *their own* field and then share a tail, Ghidra merges the stores into one
+  block that writes all of them, and preloads the other fields' current values so the merge is harmless.
+  `MenuItemActionHandler_CrusadeMap_Main` wrote all three trail-progress fields on every hit; the original
+  has one `mov` per arm (0x4d90ea, 0x4d913b, ...) and no preloads. Move the store into its arm and leave only
+  the genuinely shared tail behind the label.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`

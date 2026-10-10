@@ -58,23 +58,43 @@ def dispatches(ins):
                     default = int(ins[j].op_str, 16)
                 except ValueError:
                     pass
-            ml = re.match(r"lea \w+, \[\w+ ([-+]) (0x[0-9a-f]+|\d+)\]$", t)
-            if ml:
-                v = int(ml.group(2), 16 if ml.group(2).startswith("0x") else 10)
-                # a large displacement is a global's address, not an index adjustment
-                if v < 0x10000:
-                    base = v if ml.group(1) == "-" else -v
-            ma = re.match(r"add \w+, (0x[0-9a-f]+|-?\d+)$", t)
-            if ma:
-                v = int(ma.group(1), 16 if ma.group(1).startswith("0x") else 10)
-                if v > 0x7FFFFFFF:
-                    v -= 0x100000000
-                if abs(v) < 0x10000:
-                    base = -v
+            # the index adjustment is the *closest* one walking back from the jump;
+            # keep the first hit. Scanning on used to overwrite it with an unrelated
+            # `add esp, 8` or `add eax, 0x92` further up, which shifted every value the
+            # table reports by a constant and stopped the switch matching at all.
+            if base == 0:
+                ml = re.match(r"lea \w+, \[\w+ ([-+]) (0x[0-9a-f]+|\d+)\]$", t)
+                if ml:
+                    v = int(ml.group(2), 16 if ml.group(2).startswith("0x") else 10)
+                    # a large displacement is a global's address, not an index adjustment
+                    if v < 0x10000:
+                        base = v if ml.group(1) == "-" else -v
+                ms = re.match(r"sub (?!esp)(\w+), (0x[0-9a-f]+|\d+)$", t)
+                if ms:
+                    v = int(ms.group(2), 16 if ms.group(2).startswith("0x") else 10)
+                    if v < 0x10000:
+                        base = v
+                ma = re.match(r"add (?!esp)(\w+), (0x[0-9a-f]+|-?\d+)$", t)
+                if ma:
+                    v = int(ma.group(2), 16 if ma.group(2).startswith("0x") else 10)
+                    if v > 0x7FFFFFFF:
+                        v -= 0x100000000
+                    if abs(v) < 0x10000:
+                        base = -v
         if count is None:
             continue
         out.append((base, count, byte_table, dword_table, default))
-    return out
+    # A second dispatch on the same value reuses the register the first one adjusted, so
+    # its `lea`/`sub` is far above and the walk-back cannot see it. Where another table in
+    # the function has the same bound, that table's base is this one's too - without this
+    # the values come out as raw indices and the switch never matches
+    # (`MenuItemActionHandler_General_EventSlider`'s second switch, base -10).
+    known = {}
+    for base, count, bt, dt, default in out:
+        if base and count not in known:
+            known[count] = base
+    return [(base or known.get(count, 0), count, bt, dt, default)
+            for base, count, bt, dt, default in out]
 
 
 def read(va, size):
