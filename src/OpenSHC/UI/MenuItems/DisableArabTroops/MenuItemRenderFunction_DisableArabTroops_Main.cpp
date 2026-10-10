@@ -56,6 +56,7 @@ namespace UI {
                         (int)((int)(DAT_ButtonX::instance + 9)), (int)((int)(DAT_ButtonY::instance + 3)), 0xc);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
             } else if (param_1 == -3) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -65,12 +66,6 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    color = 0xc2f0eb;
-                } else {
-                    color = 0xccfaff;
-                    return;
-                }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 /*
                   added by script: "Exit"
@@ -78,7 +73,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 3),
-                    xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    xParam, yParam, alignment,
+                    (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff), fontSize, keepOffsetX,
+                    blendStrength);
             }
         }
 
