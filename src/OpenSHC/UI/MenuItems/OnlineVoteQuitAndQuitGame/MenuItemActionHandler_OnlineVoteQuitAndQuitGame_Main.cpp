@@ -35,7 +35,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00495860
         void OnlineVoteQuitAndQuitGame::MenuItemActionHandler_OnlineVoteQuitAndQuitGame_Main(int param_1, ...)
         {
-            byte bVar1;
+            int bVar1;
             switch (param_1) {
             case 1:
                 DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
