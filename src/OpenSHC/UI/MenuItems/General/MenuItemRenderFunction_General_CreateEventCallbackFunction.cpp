@@ -123,11 +123,17 @@ namespace UI {
                 /*
                   "Bandits"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
-                    iVar1, yParam, alignment, (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff),
-                    fontSize, keepOffsetX, blendStrength);
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
+                        iVar1, yParam, alignment, 0xc2f0eb, fontSize, keepOffsetX, blendStrength);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
+                        iVar1, yParam, alignment, 0xccfaff, fontSize, keepOffsetX, blendStrength);
+                }
                 iVar1 = DAT_TextManagerObject::instance.currentXOffset_0x0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ",
