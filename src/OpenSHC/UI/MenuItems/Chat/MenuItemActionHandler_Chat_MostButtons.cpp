@@ -114,22 +114,40 @@ namespace UI {
             case 0x23:
                 iVar4 = DAT_GameState::instance.mapAndTime
                             .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID];
+                /*
+                  the original zeroes all nine slots and then sets each with a branch
+                  (0x48f6af..0x48f741); there is no `sete` anywhere in the function
+                 */
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 0;
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[1] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[2] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[3] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[4] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[5] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[6] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[7] == iVar4);
+                if (DAT_GameState::instance.mapAndTime.playerTeams[1] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[2] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[3] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[4] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[5] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[6] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[7] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 1;
+                }
                 if (DAT_GameState::instance.mapAndTime.playerTeams[8] == iVar4) {
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 1;
                     DAT_GameSynchronyState::instance
