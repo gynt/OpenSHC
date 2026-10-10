@@ -67,13 +67,10 @@ namespace UI {
                         return;
                     }
                 switchD_0042d6cf_caseD_2:
-                    if (DAT_MapMissionType::instance == 0) {
-                        menuID = OpenSHC::UI::Enums::MVT_MAIN_MENU;
-                    } else {
-                        menuID = OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS;
-                        return;
-                    }
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 10000);
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        (DAT_MapMissionType::instance == 0 ? OpenSHC::UI::Enums::MVT_MAIN_MENU
+                                                           : OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS),
+                        10000);
                     DWORD_00b95b1c::instance = timeGetTime();
                     DAT_00b960dc::instance = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
