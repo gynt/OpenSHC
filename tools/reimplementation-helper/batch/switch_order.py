@@ -74,6 +74,23 @@ def dispatches(ins):
                     v = int(ms.group(2), 16 if ms.group(2).startswith("0x") else 10)
                     if v < 0x10000:
                         base = v
+                # these functions pin small constants in registers
+                # (`mov edi, 2` then `sub edx, edi`, as in
+                # `MenuItemActionHandler_MapEditorLandscaping_QueueCommandCallback` at
+                # 0x443cd3), so the adjustment's operand is a register and the base
+                # reads as 0 - resolve it from the `mov` that loaded it
+                mr = re.match(r"sub (?!esp)\w+, ([a-z]{2,3})$", t)
+                if mr:
+                    for k in range(j - 1, max(-1, j - 12), -1):
+                        u = ins[k].mnemonic + " " + ins[k].op_str
+                        mi = re.match(r"mov %s, (0x[0-9a-f]+|\d+)$" % mr.group(1), u)
+                        if mi:
+                            v = int(mi.group(1), 16 if mi.group(1).startswith("0x") else 10)
+                            if v < 0x10000:
+                                base = v
+                            break
+                        if re.match(r"(xor|lea|mov|add|sub) %s," % mr.group(1), u):
+                            break
                 ma = re.match(r"add (?!esp)(\w+), (0x[0-9a-f]+|-?\d+)$", t)
                 if ma:
                     v = int(ma.group(2), 16 if ma.group(2).startswith("0x") else 10)
