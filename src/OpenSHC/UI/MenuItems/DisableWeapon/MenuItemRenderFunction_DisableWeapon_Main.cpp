@@ -105,11 +105,15 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    color = 0xc2f0eb;
-                } else {
+                /*
+                  the original jumps out of line on `== FALSE`, so the interacting
+                  arm is the one the source wrote first
+                 */
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     color = 0xccfaff;
                     return;
+                } else {
+                    color = 0xc2f0eb;
                 }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 /*
