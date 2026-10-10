@@ -61,17 +61,14 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x13;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    BVar2 = 0xc2f0eb;
-                } else {
-                    BVar2 = 0xccfaff;
-                }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 textAddress = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_SCENARIO, (int)((int)(0xad - (uint)(sVar1 != 0))));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, xParam, yParam, alignment, BVar2, fontSize, keepOffsetX, blendStrength);
+                    textAddress, xParam, yParam, alignment,
+                    (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff), fontSize, keepOffsetX,
+                    blendStrength);
             }
             if (param_1 < 3000) {
                 switch (DAT_MissionAestheticsDefinedData::instance
@@ -110,14 +107,10 @@ namespace UI {
             DAT_ButtonUnknownZero::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                BVar2 = 0xc2f0eb;
-            } else {
-                BVar2 = 0xccfaff;
-            }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("!",
                 (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, BVar2, 0x13, FALSE, 0);
+                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER,
+                (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff), 0x13, FALSE, 0);
         }
 
     }
