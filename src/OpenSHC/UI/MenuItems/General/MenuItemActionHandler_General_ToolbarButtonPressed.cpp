@@ -383,12 +383,12 @@ namespace UI {
             uVar5 = MACRO_CALL_MEMBER(
                 OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
         joined_r0x00444948:
-            if (uVar5 == 0) {
-                DAT_StopHandlingMenuItems::instance = 0;
+            if (uVar5 != 0) {
+                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
+                goto switchD_00444907_caseD_122;
                 return;
             }
-            MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
-            goto switchD_00444907_caseD_122;
+            DAT_StopHandlingMenuItems::instance = 0;
         }
 
     }
