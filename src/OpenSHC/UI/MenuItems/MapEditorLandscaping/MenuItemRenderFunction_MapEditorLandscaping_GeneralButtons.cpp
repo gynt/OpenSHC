@@ -37,7 +37,10 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int iVar1;
             uint uVar2;
-            uVar2 = (uint)(DAT_ButtonCurrentlyInteracting::instance != FALSE);
+            uVar2 = 0;
+            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                uVar2 = 1;
+            }
             if (param_1 - 0xe7U < 7) {
                 if (DAT_GameCore::instance.activeMenuTab.tabType == param_1) {
                     uVar2 = 2;
