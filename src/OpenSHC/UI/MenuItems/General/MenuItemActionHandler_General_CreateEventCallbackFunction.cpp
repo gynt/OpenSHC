@@ -579,7 +579,7 @@ namespace UI {
                         .someCount50 = 0x10;
                     DAT_TroopValueState::instance.attackInfo.inv_count
                         = DAT_TroopValueState::instance.attackInfo.inv_count + 1;
-                    if (0x31 < DAT_TroopValueState::instance.attackInfo.inv_count) {
+                    if (0x32 <= DAT_TroopValueState::instance.attackInfo.inv_count) {
                         DAT_TroopValueState::instance.attackInfo.inv_count = 1;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
