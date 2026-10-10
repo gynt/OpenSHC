@@ -741,6 +741,50 @@ Diff patterns that were reliable (more in the cheat sheet):
     function in the whole namespace, and widening *that* one's `bool` (set only from constants, 9 byte
     slots to the original's 0) measured 0.3808 -> 0.3791 on `quick_diff.py` and was reverted - so the
     column is not the way to find this shape; the signed/unsigned jump pairing is.
+- **The `ret` count is the soundest check for missing exits, and it only works in one direction.**
+  `diff_ret_count.py` counts the original's `ret` instructions against our `return;` statements plus
+  the implicit one. Where the original has *more*, that many exits are missing from our source, and the
+  epilogue-jump deficit does not tell you this: a conditional jump to a shared epilogue is one `ret`
+  but many jumps, which is why `epilogue_jumps.py` called 81 functions short including one already at
+  100%, while the `ret` count names 25. Feeding that list to `try_returns.py` was the single most
+  productive pass of the night after the signedness sweep: of 19 functions tried, 9 improved and the
+  two that regressed were caught by the reccmp gate
+  (`MenuItemActionHandler_MissionEndscreen_Main` **74.3% -> 87.6% from one `return;`**,
+  `MenuItemRenderFunction_EditScenario_BaseMenuButtons` 50.3% -> 62.4% from three,
+  `MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick` 65.7% -> 69.0%,
+  `ScenarioDescription_Main` 56.9% -> 59.6%, `SoundOptions_Buttons` 61.4% -> 63.9%,
+  `Chat_MostButtons` 57.6% -> 59.6%, `LobbyMenu_ChatBox` 53.6% -> 54.5%).
+  The **reverse direction is worthless**: our `return;` statements collapse onto a shared epilogue, so
+  "ours > theirs" measures how much MSVC cross-jumped, not that we have extra exits. The scan's own top
+  entries prove it - `BuildingAndStatusMenu_WorkshopWeaponSelection` reads "6 extra" (1 `ret` against
+  our 7) and is at 97.5%, its six weapon arms funnelling through one `je L8` to the single `ret` at
+  0x442aff. Do not use it to look for dropped fall-throughs.
+- A far-forward `jg`/`je` to a block placed physically last does **not** always mean that block was
+  written last in the source, which is the one place the forward-jump rule above has been seen to fail.
+  `MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick` dispatches
+  `cmp eax, 0x69; jg L21; je L20` with both bodies at the very end of the function (0x442ad8, 0x442b00),
+  after every switch arm; moving them there cost 42 instructions of our own output (328 -> 286) and
+  0.026 of ratio, with and without the `return;` fix that arm needed. The `return;` alone was worth
+  +0.047. Read the length as well as the ratio: a rewrite that *shrinks* our function well below the
+  original's is eliminating something, not re-laying it out.
+- Where the original reads a field **once into a register** and uses it for a guard, a subscript and a
+  store, Ghidra hoists that read and then leaves a stale local behind in one of the places that used it.
+  `MenuItemActionHandler_TextEditor_TextInputRelatedUnk`'s arm 0xf2 (0x461798) had three different
+  expressions for one register: two re-reads of `activeHelpHotspotIndex` and one use of an `iVar3` set
+  before the switch. The arm also reads the character once into `eax` and pushes that same register as
+  the call's argument, and puts the `>= 0x20` case in the fall-through with the token case out of line
+  at L13 - Ghidra had the two arms the other way round. Rebuilding the two arms that way was worth
+  0.4604 -> 0.5028, on top of 0.4383 -> 0.4604 for writing `(x <= 0)` where the original has
+  `cmp eax, ebp; setle` (nine sites). That is the `setcc` form of the `x < 1` rule above, which had only
+  ever been applied to the `jcc` form.
+- MSVC's inline `strcpy` of a short literal **loads it out of .rdata**:
+  `mov ecx, dword ptr [lit]; mov dl, byte ptr [lit + 4]; mov [eax], ecx; mov [eax + 4], dl` is
+  `strcpy(p, ".map")`, repeated per path. Ghidra renders it as
+  `*(undefined4*)p = 0x70616d2e; p[4] = 0;` and will hoist it behind a `goto` so that several paths
+  share one copy, which writes immediates instead of loading the literal
+  (`MenuItemActionHandler_SaveLoadMap_Buttons`, three sites). Writing `strcpy` back per path was worth
+  0.5930 -> 0.6077 on the ratio and measured an exact tie on reccmp, so keep it for being the binary's
+  form rather than for the number.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
