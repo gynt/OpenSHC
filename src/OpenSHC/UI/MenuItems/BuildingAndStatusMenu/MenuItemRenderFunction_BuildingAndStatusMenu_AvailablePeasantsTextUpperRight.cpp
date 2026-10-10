@@ -33,7 +33,6 @@ namespace UI {
             int param_1, ...)
         {
             char* textAddress;
-            int yParam;
             TextAlignment alignment;
             uint foregroundColor;
             uint backgroundColor;
@@ -46,15 +45,13 @@ namespace UI {
             backgroundColor = 0;
             foregroundColor = 0xb8eefb;
             alignment = OpenSHC::Text::TTA_RIGHT;
-            int xParam = DAT_ButtonX::instance + -5;
-            yParam = DAT_ButtonY::instance;
             /*
               added by script: "Available Peasants"
              */
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_BARRACKS, 3),
-                xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
+                DAT_ButtonX::instance + -5, DAT_ButtonY::instance, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .availablePeasantsOrHousedPeasants
