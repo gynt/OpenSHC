@@ -17,6 +17,7 @@ namespace UI {
             int iVar2;
             int iVar3;
             int iVar4;
+            int sortMode;
             if (param_1 < 0) {
                 param_1 = -1 - param_1;
                 switch (param_1) {
@@ -36,78 +37,73 @@ namespace UI {
                     param_1 = 1;
                 }
             }
-            if (param_1 == 0) {
-                iVar2 = 0;
-                if (DAT_MenuTextInputState::instance.field33_0x78 == 0) {
-                    if (0 < DAT_MenuTextInputState::instance.field32_0x74) {
-                        do {
-                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
-                                = (DAT_MenuTextInputState::instance.field32_0x74 - iVar2) + -1;
-                            iVar2 = iVar2 + 1;
-                        } while (iVar2 < DAT_MenuTextInputState::instance.field32_0x74);
-                    }
-                    DAT_MenuTextInputState::instance.field33_0x78 = 1;
-                    DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
-                    return;
-                }
-                if (0 < DAT_MenuTextInputState::instance.field32_0x74) {
-                    do {
-                        DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
-                        iVar2 = iVar2 + 1;
-                    } while (iVar2 < DAT_MenuTextInputState::instance.field32_0x74);
-                }
-                DAT_MenuTextInputState::instance.field33_0x78 = 0;
-                DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
-            } else if (param_1 == 1) {
+            sortMode = DAT_MenuTextInputState::instance.field33_0x78;
+            /*
+              the original dispatches the two actions with a `sub eax, K; je` chain
+              (0x492e3a), MSVC's sparse switch, and places the `case 1` body first
+             */
+            switch (param_1) {
+            case 1:
                 iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
-                if (DAT_MenuTextInputState::instance.field33_0x78 != 2) {
+                /*
+                  the original tests the mode once (0x492e4c) and writes the `== 2` pass
+                  first, returning out of it at 0x492eca; the inner pass is a counted loop
+                  whose zero-trip test is the `test eax, eax; jle` at 0x492e67, not the
+                  guard Ghidra duplicated into the loop body
+                 */
+                if (sortMode == 2) {
                     do {
                         iVar4 = 0;
-                        iVar3 = 0;
-                        if (iVar2 == 1 || iVar2 + -1 < 0) {
-                            DAT_MenuTextInputState::instance.field33_0x78 = 2;
-                            DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
-                        }
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar2 + -1; iVar3 = iVar3 + 1) {
                             iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if ((int)DAT_ResourceManager::instance.mapFileTimes[iVar1]
-                                < (int)DAT_ResourceManager::instance
-                                    .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
+                            if ((int)DAT_ResourceManager::instance
+                                    .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
+                                < (int)DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                                 iVar4 = iVar4 + 1;
                                 iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar2 + -1);
+                        }
                     } while (iVar4 != 0);
-                    DAT_MenuTextInputState::instance.field33_0x78 = 2;
+                    DAT_MenuTextInputState::instance.field33_0x78 = 3;
                     DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
+                    return;
                 }
                 do {
                     iVar4 = 0;
-                    iVar3 = 0;
-                    if (iVar2 == 1 || iVar2 + -1 < 0) {
-                        DAT_MenuTextInputState::instance.field33_0x78 = 3;
-                        DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
-                    }
-                    do {
+                    for (iVar3 = 0; iVar3 < iVar2 + -1; iVar3 = iVar3 + 1) {
                         iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                        if ((int)DAT_ResourceManager::instance
-                                .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
-                            < (int)DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
+                        if ((int)DAT_ResourceManager::instance.mapFileTimes[iVar1] < (int)DAT_ResourceManager::instance
+                                .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                             iVar4 = iVar4 + 1;
                             iVar2 = DAT_MenuTextInputState::instance.field32_0x74;
                         }
-                        iVar3 = iVar3 + 1;
-                    } while (iVar3 < iVar2 + -1);
+                    }
                 } while (iVar4 != 0);
-                DAT_MenuTextInputState::instance.field33_0x78 = 3;
+                DAT_MenuTextInputState::instance.field33_0x78 = 2;
                 DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
+                break;
+            case 0:
+                if (sortMode == 0) {
+                    for (iVar2 = 0; iVar2 < DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
+                        DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
+                            = (DAT_MenuTextInputState::instance.field32_0x74 - iVar2) + -1;
+                    }
+                    DAT_MenuTextInputState::instance.field33_0x78 = 1;
+                    DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
+                    return;
+                }
+                for (iVar2 = 0; iVar2 < DAT_MenuTextInputState::instance.field32_0x74; iVar2 = iVar2 + 1) {
+                    DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
+                }
+                DAT_MenuTextInputState::instance.field33_0x78 = 0;
+                DAT_MenuTextInputState::instance.field43_0xa0 = 0xffffffff;
+                break;
             }
         }
 
