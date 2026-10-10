@@ -40,33 +40,47 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int iVar1;
             uint uVar2;
-            bool _weaponIsDisabled;
             int drawX;
             int drawY;
             if (_weapon == OpenSHC::Game::Resources::RT_CROSSBOW) {
-                _weaponIsDisabled = DAT_GameCore::instance.xbowProducible_logic == 0;
+                if (DAT_GameCore::instance.xbowProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
             } else if (_weapon == OpenSHC::Game::Resources::RT_PIKE) {
-                _weaponIsDisabled = DAT_GameCore::instance.pikeProducible_logic == 0;
+                if (DAT_GameCore::instance.pikeProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
             } else if (_weapon == OpenSHC::Game::Resources::RT_SWORD) {
-                _weaponIsDisabled = DAT_GameCore::instance.swordProducible_logic == 0;
+                if (DAT_GameCore::instance.swordProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
             } else if (_weapon == OpenSHC::Game::Resources::RT_BOW) {
-                _weaponIsDisabled = DAT_GameCore::instance.bowProducible_logic == 0;
+                if (DAT_GameCore::instance.bowProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
             } else if (_weapon == OpenSHC::Game::Resources::RT_SPEAR) {
-                _weaponIsDisabled = DAT_GameCore::instance.spearProducible_logic == 0;
-            } else {
-                if (_weapon != OpenSHC::Game::Resources::RT_MACE)
-                    goto LAB_00465173;
-                _weaponIsDisabled = DAT_GameCore::instance.maceProducible_logic == 0;
-                return;
+                if (DAT_GameCore::instance.spearProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
+            } else if (_weapon == OpenSHC::Game::Resources::RT_MACE) {
+                if (DAT_GameCore::instance.maceProducible_logic == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
             }
-            if (_weaponIsDisabled) {
-                DAT_ButtonUnknownZero::instance = 1;
-            }
-        LAB_00465173:
             DAT_ButtonUnknownZero::instance = 0;
-            uVar2 = (uint)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                               .weaponRelated
-                == _weapon);
+            uVar2 = 0;
+            if (DAT_GameState::instance
+                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .weaponRelated
+                == _weapon) {
+                uVar2 = 1;
+            }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             drawX = DAT_ButtonX::instance;
