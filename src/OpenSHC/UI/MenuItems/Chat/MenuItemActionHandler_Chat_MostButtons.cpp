@@ -97,6 +97,7 @@ namespace UI {
                             DAT_GameSynchronyState::instance
                                 .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                         }
+                        return;
                     }
                     DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
