@@ -49,15 +49,20 @@ namespace UI {
                     if (param_1 != -1) {
                         return;
                     }
-                    if (DAT_MenuTextInputState::instance.field14_0x38 == 0) {
-                        param_1 = 0xe;
-                    } else {
-                        if (DAT_MenuTextInputState::instance.field14_0x38 != 1) {
-                            return;
-                        }
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x491f5a),
+                      MSVC's sparse switch, and the `case 1` body sits first
+                     */
+                    switch (DAT_MenuTextInputState::instance.field14_0x38) {
+                    case 1:
                         param_1 = 0xd;
+                        break;
+                    case 0:
+                        param_1 = 0xe;
+                        break;
+                    default:
+                        return;
                     }
-                    return;
                 }
                 backgroundColor = 0;
             } else {
