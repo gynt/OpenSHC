@@ -85,8 +85,28 @@ def main():
     names = enum_values(os.path.join(ROOT, enum.replace("/", os.sep)))
     order = table_order(rel)
 
-    # the switch is the outermost one whose first label indent we can find
-    si = next(i for i, l in enumerate(lines) if re.match(r"^ *switch \(", l))
+    # a function can hold several switches; take the one with the most labels, which is
+    # the one a jump table of this size belongs to
+    cands = [i for i, l in enumerate(lines) if re.match(r"^ *switch \(", l)]
+    if not cands:
+        raise SystemExit("no switch")
+
+    def labels(i):
+        nxt = [l for l in lines[i + 1:] if LABEL.match(l)]
+        if not nxt:
+            return 0
+        ind = len(nxt[0]) - len(nxt[0].lstrip())
+        n = 0
+        depth = 0
+        for l in lines[i:]:
+            depth += l.count("{") - l.count("}")
+            if LABEL.match(l) and len(l) - len(l.lstrip()) == ind:
+                n += 1
+            if depth == 0 and n:
+                break
+        return n
+
+    si = max(cands, key=labels)
     # the labels may sit at the switch's own indent or one level in
     nxt = next(l for l in lines[si + 1:] if LABEL.match(l))
     ind = len(nxt) - len(nxt.lstrip())
