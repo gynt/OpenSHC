@@ -29,26 +29,31 @@ namespace UI {
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_WorkshopWeaponSelection(
             ResourceType weapon, ...)
         {
-            bool bVar1;
             if (weapon == OpenSHC::Game::Resources::RT_CROSSBOW) {
-                bVar1 = DAT_GameCore::instance.xbowProducible_logic == 0;
+                if (DAT_GameCore::instance.xbowProducible_logic == 0) {
+                    return;
+                }
             } else if (weapon == OpenSHC::Game::Resources::RT_BOW) {
-                bVar1 = DAT_GameCore::instance.bowProducible_logic == 0;
+                if (DAT_GameCore::instance.bowProducible_logic == 0) {
+                    return;
+                }
             } else if (weapon == OpenSHC::Game::Resources::RT_PIKE) {
-                bVar1 = DAT_GameCore::instance.pikeProducible_logic == 0;
+                if (DAT_GameCore::instance.pikeProducible_logic == 0) {
+                    return;
+                }
             } else if (weapon == OpenSHC::Game::Resources::RT_SPEAR) {
-                bVar1 = DAT_GameCore::instance.spearProducible_logic == 0;
+                if (DAT_GameCore::instance.spearProducible_logic == 0) {
+                    return;
+                }
             } else if (weapon == OpenSHC::Game::Resources::RT_SWORD) {
-                bVar1 = DAT_GameCore::instance.swordProducible_logic == 0;
-            } else {
-                if (weapon != OpenSHC::Game::Resources::RT_MACE)
-                    goto LAB_00465259;
-                bVar1 = DAT_GameCore::instance.maceProducible_logic == 0;
+                if (DAT_GameCore::instance.swordProducible_logic == 0) {
+                    return;
+                }
+            } else if (weapon == OpenSHC::Game::Resources::RT_MACE) {
+                if (DAT_GameCore::instance.maceProducible_logic == 0) {
+                    return;
+                }
             }
-            if (bVar1) {
-                return;
-            }
-        LAB_00465259:
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                 = DAT_BuildingsState::instance.menuSelectedBuildingID;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam2
