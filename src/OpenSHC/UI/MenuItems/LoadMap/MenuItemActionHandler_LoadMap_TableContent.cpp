@@ -16,7 +16,7 @@ namespace UI {
         {
             DWORD DVar1;
             DVar1 = timeGetTime();
-            if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
+            if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
                 < (int)DAT_MenuTextInputState::instance.field32_0x74) {
                 DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex = param_1;
                 if ((DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
