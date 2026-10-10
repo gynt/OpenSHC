@@ -47,15 +47,23 @@ namespace UI {
             BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if ((BVar1 == FALSE)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)) {
-                if (param_1 == 0) {
-                    numInGroup = 0x3e;
-                    iVar3 = 8;
-                } else if (param_1 == 1) {
-                    numInGroup = 0x3d;
-                    iVar3 = 2;
-                } else if (param_1 == 2) {
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x427765), MSVC's
+                  sparse switch, and the arm bodies sit in the order 2, 1, 0
+                 */
+                switch (param_1) {
+                case 2:
                     numInGroup = 0x19a;
                     iVar3 = 2;
+                    break;
+                case 1:
+                    numInGroup = 0x3d;
+                    iVar3 = 2;
+                    break;
+                case 0:
+                    numInGroup = 0x3e;
+                    iVar3 = 8;
+                    break;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
                     DAT_PencilRenderCore::ptr)(FALSE, 1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
