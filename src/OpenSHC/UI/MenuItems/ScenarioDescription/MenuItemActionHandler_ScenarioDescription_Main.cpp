@@ -69,6 +69,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
                         ;
+                        return;
                     }
                     if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk) {
                         if (DAT_GameCore::instance.missionNumber1to20 < 1) {
@@ -137,6 +138,7 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 OpenSHC::UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE, 0);
                             ;
+                            return;
                         }
                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0xfffffff9;
                         MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
@@ -157,6 +159,7 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_SELECT, 0);
                             ;
+                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk, 0);
