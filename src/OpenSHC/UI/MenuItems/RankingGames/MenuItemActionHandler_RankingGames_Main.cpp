@@ -65,7 +65,7 @@ namespace UI {
                     return;
                 }
             } else {
-                if ((param_1 < 8) && (DAT_00ed3120::instance + param_1 < (int)DAT_00eb9b60::instance)) {
+                if ((param_1 < 8) && ((int)DAT_00ed3120::instance + param_1 < (int)DAT_00eb9b60::instance)) {
                     iVar1 = INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + param_1];
                     iVar3 = DAT_SkMasters2DataArray::instance[iVar1].aliveArray[1];
                     pSVar4 = &DAT_SkMasters2DataArray::instance[iVar1].results;
