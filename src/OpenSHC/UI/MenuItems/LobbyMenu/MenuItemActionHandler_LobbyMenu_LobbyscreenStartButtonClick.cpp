@@ -88,6 +88,7 @@ namespace UI {
                     OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                     (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SHARE_GAME_STATE_PARTIAL_HASHES
                         | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                return;
             }
             switch (param_1) {
             case -1:
@@ -413,6 +414,7 @@ namespace UI {
                             MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)(0);
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                            return;
                         }
                         /*
                           start game by sending seed?   Here: DAT_CurrentGameMode is MULTIPLAYER
@@ -503,6 +505,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.playerPositionsArray[iVar3] = cVar1;
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
+                        return;
                     }
                     DAT_00b95960::instance = 0xffffffff;
                 }
