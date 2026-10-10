@@ -65,21 +65,20 @@ namespace UI {
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                blendStrength = 4;
-                color = 0xc2f0eb;
-            } else {
-                blendStrength = 2;
-                color = 0xccfaff;
-                return;
-            }
             keepOffsetX = FALSE;
             fontSize = 0x12;
             alignment = OpenSHC::Text::TTA_CENTER;
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(offsetIndex, numInGroup),
-                xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(offsetIndex, numInGroup),
+                    xParam, yParam, alignment, 0xc2f0eb, fontSize, keepOffsetX, 4);
+            } else {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(offsetIndex, numInGroup),
+                    xParam, yParam, alignment, 0xccfaff, fontSize, keepOffsetX, 2);
+            }
         }
 
     }
