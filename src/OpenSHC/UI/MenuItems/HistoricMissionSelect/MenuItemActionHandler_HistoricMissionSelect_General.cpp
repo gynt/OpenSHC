@@ -49,7 +49,8 @@ namespace UI {
                     goto LAB_00426c1c;
                 case 0x14:
                     DAT_GameState::instance.mapAndTime.difficulty = DAT_GameState::instance.mapAndTime.difficulty + 1;
-                    if (3 < DAT_GameState::instance.mapAndTime.difficulty) {
+                    /* the original compares against 4 (`cmp eax, 4; jl`), not 3 */
+                    if (4 <= DAT_GameState::instance.mapAndTime.difficulty) {
                         DAT_GameState::instance.mapAndTime.difficulty = 0;
                     }
                     return;
