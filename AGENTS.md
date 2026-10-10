@@ -246,6 +246,17 @@ mismatch across `UI::MenuItems`, worth 10-30 points per function and two normali
   the original returned out of the guard.
 - `if (cond) {}` with an *empty* body - the `return` was the block's only statement.
 
+`try_invert.py`'s own gate is `quick_diff.py`'s ratio, so its keeps still have to be
+confirmed with reccmp: of the six it kept across the 102 `RET`-flagged functions in `UI::MenuItems`,
+two measured worse on raw match and were reverted
+(`MenuItemRenderFunction_MissionEndscreen_Main` 43.1% -> 42.9%,
+`MenuItemRenderFunction_SiegeAttackingForceAndStartGoods_Main` 52.8% -> 52.6%, both with normalized
+match *rising*). The four that held were worth a great deal -
+`MenuItemRenderFunction_AlliesSendAndRequestGoods_Main` 28.9% -> 48.6%,
+`MenuItemRenderFunction_BuildingAvailability_Buttons` 55.3% -> 60.1%,
+`MenuItemActionHandler_General_ToolbarButtonPressed` 54.3% -> 56.9% - so the flag is worth sweeping,
+at about one function in six, with a reccmp gate behind it.
+
 `try_returns.py` tries a `return;` at every `if` body that could carry one and keeps the sites `quick_diff.py` scores
 better, so a function settles in about a minute. Where the guard wraps the rest of the function, prefer the inverted
 `if (hot) { ...; return; } cold;` shape over a guard at the top - and when the original's arm sits
