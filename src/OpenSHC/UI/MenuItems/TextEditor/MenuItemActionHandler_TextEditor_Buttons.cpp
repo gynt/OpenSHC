@@ -27,6 +27,8 @@ namespace UI {
             uint uVar3;
             char (*pacVar4)[1000];
             char (*pacVar5)[1000];
+            int iVar4;
+            int iVar5;
             int iVar6;
             BOOLEnum BVar7;
             char* pcVar8;
@@ -35,23 +37,25 @@ namespace UI {
             HelpTextToken token;
             switch (param_1) {
             case -1:
-                if (0x11 < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY) {
+                if (0x12 <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY) {
                     DAT_TextEditorState::instance.helpContentScrollOffsetY
                         = DAT_TextEditorState::instance.helpContentScrollOffsetY + -0x12;
+                    return;
                 }
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
                 return;
             case -2:
-                uVar3 = DAT_TextEditorState::instance.topVisibleLineIndex
+                iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                     - DAT_TextEditorState::instance.dialogContentHeight;
-                if (((int)((((int)uVar3 < 1) - 1 & uVar3) - 0x12)
-                        <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)
-                    || (DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + 0x12,
-                        (int)(((int)uVar3 < 1) - 1 & uVar3)
-                            < (int)DAT_TextEditorState::instance.helpContentScrollOffsetY)) {
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = ((int)uVar3 < 1) - 1 & uVar3;
+                iVar4 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                if (iVar4 < (((iVar5 < 1) - 1 & iVar5) - 0x12)) {
+                    iVar4 = iVar4 + 0x12;
+                    if (iVar4 <= ((iVar5 < 1) - 1 & iVar5)) {
+                        DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar4;
+                        return;
+                    }
                 }
+                DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
                 return;
             case -3:
                 if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
