@@ -43,7 +43,7 @@ namespace UI {
             uint uVar2;
             DAT_ButtonUnknownZero::instance = 0;
             if (5000 < param_1) {
-                DAT_ButtonUnknownZero::instance = 0;
+                return;
             }
             if (param_1 < 0xd2) {
                 if (param_1 != 0xd1) {
@@ -191,162 +191,184 @@ namespace UI {
                         goto switchD_004c01f4_caseD_0;
                     }
                 }
-                if ((*(char*)((int)&DAT_MapPropertiesState::instance
-                                  .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                  .data
-                         + 0x6b)
-                        == '\0')
-                    && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                     .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                     .data
-                            + 0x67)
-                            == '\0'
-                        && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                         .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                         .data
-                                + 99)
-                                == '\0'
-                            && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                             .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                             .data
-                                    + 0x5f)
-                                    == '\0'
-                                && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                                 .data
-                                        + 0x53)
-                                        == '\0'
-                                    && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                                     .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                                     .data
-                                            + 0x2b)
-                                            == '\0'
-                                        && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                                         .scenarioEvents[DAT_MapPropertiesState::instance
-                                                                 .currentEventID]
-                                                         .data
-                                                + 0x27)
-                                                == '\0'
-                                            && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                                             .scenarioEvents[DAT_MapPropertiesState::instance
-                                                                     .currentEventID]
-                                                             .data
-                                                    + 0x23)
-                                                    == '\0'
-                                                && (*(char*)((int)&DAT_MapPropertiesState::instance
-                                                                 .scenarioEvents[DAT_MapPropertiesState::instance
-                                                                         .currentEventID]
-                                                                 .data
-                                                        + 0x1f)
-                                                        == '\0'
-                                                    && *(char*)((int)&DAT_MapPropertiesState::instance
-                                                                    .scenarioEvents[DAT_MapPropertiesState::instance
-                                                                            .currentEventID]
-                                                                    .data
-                                                           + 0x13)
-                                                        == '\0'))))))))) {
+                int iVar3 = 0;
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x13) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x1f) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x23) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x27) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x2b) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x53) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x5f) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 99) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x67) != '\0') {
+                    iVar3 = 1;
+                }
+                if (*(char*)((int)&DAT_MapPropertiesState::instance
+                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                 .data
+                        + 0x6b) == '\0' && iVar3 == 0) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
             switchD_004c01f4_caseD_be:
                 iVar1 = param_1 + -0x40;
                 goto switchD_004c01f4_caseD_6a;
             }
-            if (param_1 < 2000) {
-                if (param_1 == 2000) {
-                    if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                        == 0) {
-                        DAT_ButtonUnknownZero::instance = 0;
-                    }
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
-                            DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                            (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                            OpenSHC::UI::Enums::RBERL_SLIGHT);
-                    }
-                } else {
-                    if (param_1 != 1000) {
-                        if (param_1 != 1001)
-                            goto switchD_004c01f4_caseD_0;
-                        iVar1 = DAT_MissionAestheticsDefinedData::instance
-                                    .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex];
-                        goto joined_r0x004c072d;
-                    }
-                    if (DAT_MissionAestheticsDefinedData::instance
-                            .field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                        == 0) {
-                        DAT_ButtonUnknownZero::instance = 0;
-                    }
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
-                            DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                            (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                            OpenSHC::UI::Enums::RBERL_SLIGHT);
-                    }
+            switch (param_1) {
+            case 1001:
+                if (DAT_MissionAestheticsDefinedData::instance.field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex] == 0) {
+                    return;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                    (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                    (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
-            }
-            if (param_1 != 2001) {
-                if (param_1 == 0x7d2) {
-                    if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                        == 1) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                            AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[*(
-                                char*)(&DAT_MapPropertiesState::instance
-                                           .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                           .data
-                                + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
-                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
-                    }
-                    if (DAT_MissionAestheticsDefinedData::instance
-                            .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
-                        != 2) {
-                        return;
-                    }
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        OpenSHC::UI::Enums::RBERL_SLIGHT);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                }
+                return;
+            case 1000:
+                if (DAT_MissionAestheticsDefinedData::instance.field1228_0x2264[DAT_MapPropertiesState::instance.invasionTroopIndex] == 0) {
+                    return;
+                }
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        OpenSHC::UI::Enums::RBERL_SLIGHT);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                }
+                return;
+            case 2000:
+                if (DAT_MissionAestheticsDefinedData::instance.field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex] == 0) {
+                    return;
+                }
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        OpenSHC::UI::Enums::RBERL_SLIGHT);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                }
+                return;
+            default:
+            switchD_004c01f4_caseD_0:
+                MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
+                return;
+            case 0x7d2:
+                if (DAT_MissionAestheticsDefinedData::instance
+                        .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                    == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                        (int)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[*(
+                        (int)((int)(DAT_MissionAestheticsDefinedData::instance.field1235_0x33e4[*(
                             char*)(&DAT_MapPropertiesState::instance
                                        .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                        .data
                             + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
                         (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
                         (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                }
+                if (DAT_MissionAestheticsDefinedData::instance
+                        .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex]
+                    != 2) {
                     return;
                 }
-            switchD_004c01f4_caseD_0:
-                MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                    AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_SCENARIO,
+                    (int)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[*(
+                        char*)(&DAT_MapPropertiesState::instance
+                                   .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                   .data
+                        + DAT_MapPropertiesState::instance.invasionTroopIndex * 4 + 0xe)])),
+                    (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                return;
+                return;
+            case 0x7d1:
+                if (DAT_MissionAestheticsDefinedData::instance.field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex] == 0) {
+                    return;
+                }
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        OpenSHC::UI::Enums::RBERL_SLIGHT);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
+                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
+                        (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                }
+                return;
             }
-            iVar1 = DAT_MissionAestheticsDefinedData::instance
-                        .field1230_0x23a4[DAT_MapPropertiesState::instance.invasionTroopIndex];
-        joined_r0x004c072d:
-            if (iVar1 == 0) {
-                DAT_ButtonUnknownZero::instance = 0;
-            }
-            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                    (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), OpenSHC::UI::Enums::RBERL_SLIGHT);
-            }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
-                DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                (ushort)((int)(COL_BLUE::instance.shortValue)), OpenSHC::UI::Enums::RBERL_SLIGHT);
         }
 
     }
