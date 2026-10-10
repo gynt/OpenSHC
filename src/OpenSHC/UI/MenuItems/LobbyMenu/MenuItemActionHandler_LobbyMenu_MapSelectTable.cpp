@@ -42,7 +42,7 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                 return;
             }
-            if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
+            if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
                 >= (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                 return;
             }
