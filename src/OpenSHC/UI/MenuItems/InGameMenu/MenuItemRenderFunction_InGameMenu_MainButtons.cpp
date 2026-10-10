@@ -259,17 +259,18 @@ namespace UI {
                             case 0x14:
                                 iVar3 = 0x37;
                                 break;
-                            case 0x19:
-                                iVar3 = 0x3b;
-                                break;
-                            case 0x1c:
-                                iVar3 = 0x3a;
+                            case 0x28:
+                                iVar3 = 0x38;
                                 break;
                             case 0x1e:
                                 iVar3 = 0x39;
                                 break;
-                            case 0x28:
-                                iVar3 = 0x38;
+                            case 0x1c:
+                                iVar3 = 0x3a;
+                                break;
+                            case 0x19:
+                                iVar3 = 0x3b;
+                                break;
                             }
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                 DAT_TextureRenderCoreObject::ptr)(
