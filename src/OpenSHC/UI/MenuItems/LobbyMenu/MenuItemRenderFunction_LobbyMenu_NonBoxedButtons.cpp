@@ -117,12 +117,19 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
-                            (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER,
-                            (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff), 0x12, FALSE,
-                            (iVar4 / 32) + 0x20);
+                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12,
+                                FALSE, (iVar4 / 32) + 0x20);
+                        } else {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12,
+                                FALSE, (iVar4 / 32) + 0x20);
+                        }
                     }
                 } else {
                     switch (param_1) {
@@ -170,12 +177,19 @@ namespace UI {
                                 AlphaAndButtonSurfaceObj::ptr)(DAT_ButtonBackgroundBlendStrength::instance,
                                 OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
-                                (int)((int)((int)DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER,
-                                (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff), 0x12, FALSE,
-                                (iVar4 / 32) + 0x20);
+                            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
+                                    (int)((int)((int)DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
+                                    (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12,
+                                    FALSE, (iVar4 / 32) + 0x20);
+                            } else {
+                                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
+                                    (int)((int)((int)DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
+                                    (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12,
+                                    FALSE, (iVar4 / 32) + 0x20);
+                            }
                         }
                         break;
                     case 4:
