@@ -124,11 +124,11 @@ namespace UI {
                         return;
                     }
                 } else {
-                    if ((DAT_MapPropertiesState::instance.field69_0x13590 < 3) && (8 < param_1)) {
+                    if (((int)DAT_MapPropertiesState::instance.field69_0x13590 < 3) && (8 < param_1)) {
                         DAT_ButtonUnknownZero::instance = 0;
                         return;
                     }
-                    if (DAT_MapPropertiesState::instance.field69_0x13590 < 4)
+                    if ((int)DAT_MapPropertiesState::instance.field69_0x13590 < 4)
                         goto LAB_004bab10;
                 }
                 if ((DAT_MapPropertiesState::instance.field69_0x13590 == 3) && (8 < param_1)) {
