@@ -48,32 +48,38 @@ namespace UI {
                 goto LAB_0046490e;
             }
             uVar2 = 0;
-            if (param_1 < 0xcd) {
-                if (param_1 == 0xcc) {
-                    if (DAT_TileMapState::instance.unknownZero_0x5548fc == 0) {
-                        uVar2 = 6;
-                    } else if (DAT_TileMapState::instance.unknownZero_0x5548fc != 1) {
-                        uVar2 = 3;
-                    }
-                } else if (param_1 == 1) {
-                    if ((7 < DAT_TileMapState::instance.editorActiveBrush)
-                        || (DAT_TileMapState::instance.editorActiveBrush < 1)) {
-                        DAT_TileMapState::instance.editorActiveBrush = 1;
-                    }
-                    uVar2 = DAT_TileMapState::instance.editorActiveBrush * 3 - 3;
-                } else if (param_1 != 0x20)
-                    goto LAB_004648f1;
-            } else {
-                if (param_1 == 0x14b) {
-                    return;
+            /*
+              the original dispatches with a binary search on 0xcc (`jg` / `je` at
+              0x464896) over a `sub ecx, 1; je; sub ecx, 0x1f; je` chain, which is MSVC's
+              sparse switch over 1, 0x20, 0xcc and 0x14b
+             */
+            switch (param_1) {
+            case 1:
+                if ((7 < DAT_TileMapState::instance.editorActiveBrush)
+                    || (DAT_TileMapState::instance.editorActiveBrush < 1)) {
+                    DAT_TileMapState::instance.editorActiveBrush = 1;
                 }
-            LAB_004648f1:
+                uVar2 = DAT_TileMapState::instance.editorActiveBrush * 3 - 3;
+                break;
+            case 0x20:
+                break;
+            case 0xcc:
+                if (DAT_TileMapState::instance.unknownZero_0x5548fc == 0) {
+                    uVar2 = 6;
+                } else if (DAT_TileMapState::instance.unknownZero_0x5548fc != 1) {
+                    uVar2 = 3;
+                }
+                break;
+            case 0x14b:
+                return;
+            default:
                 if (DAT_TileMapState::instance.currentMapperCommand == param_1) {
                     uVar2 = 2;
                     if (DAT_ButtonCurrentlyInteracting::instance == FALSE)
                         goto LAB_0046490e;
                     uVar2 = 1;
                 }
+                break;
             }
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 uVar2 = uVar2 + 1;
@@ -83,15 +89,7 @@ namespace UI {
             buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             if (DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                     .alphaGmIdUnk_0xc
-                == ((GmID)0)) {
-                iVar1 = MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
-                iVar1 = iVar1 + uVar2;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    (OpenSHC::DE::SHCDE::eGM)((OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0), iVar1,
-                    (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-            } else {
+                != ((GmID)0)) {
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
                 iVar1 = iVar1 + uVar2;
@@ -103,10 +101,19 @@ namespace UI {
                     DAT_CurrentButtonPictureInGm::instance = iVar1;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
+            } else {
+                iVar1 = MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
+                iVar1 = iVar1 + uVar2;
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    (OpenSHC::DE::SHCDE::eGM)((OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0), iVar1,
+                    (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
             }
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             DAT_CurrentButtonPictureInGm::instance = iVar1;
+            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         }
 
     }
