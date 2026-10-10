@@ -58,6 +58,18 @@ namespace UI {
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 backgroundColor = 0x3e66;
                 uVar1 = 0xc2f0eb;
+                blendStrength = 0;
+                keepOffsetX = FALSE;
+                fontSize = 0x12;
+                alignment = OpenSHC::Text::TTA_CENTER;
+                yParam = DAT_ButtonY::instance + 7;
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_OUTPOST, iVar2 + 1 + param_1),
+                    DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, yParam, alignment, uVar1, backgroundColor,
+                    fontSize, keepOffsetX, blendStrength);
+                return;
             } else {
                 if ((DAT_BuildingsState::instance.menuSelectedBuildingID == 0)
                     || (DAT_ButtonCurrentlyInteracting::instance = TRUE,
@@ -72,7 +84,6 @@ namespace UI {
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 backgroundColor = 0;
                 uVar1 = 0xccfaff;
-                return;
             }
             blendStrength = 0;
             keepOffsetX = FALSE;
