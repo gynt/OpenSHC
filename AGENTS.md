@@ -520,6 +520,30 @@ Diff patterns that were reliable (more in the cheat sheet):
   The arm that is reached by falling through the chain is `default:`, and the physical order of the bodies
   is still the source order, so read it off the addresses. `MenuItemActionHandler_HistoricMissionSelect_General`
   and its twin `UnusedEconomicMissionSelect_General` went **24.7% -> 91.1%** from that alone.
+  **The arm order of a sparse switch is the exact reverse of the test order**, with the arm reached by
+  falling out of the chain written first. That held in every one of the eleven functions it was checked
+  against, so the addresses never need reading: `sub eax, 0; je A; sub eax, 1; je B; sub eax, 1; jne D`
+  is `switch (x) { case 2: ...; case 1: ...; case 0: ... }` (the `case 2` body being the one that falls
+  out of the chain), and a chain testing 0xd then 0xe is `case 0xe:` before `case 0xd:`. Where the
+  fall-through arm is `default:`, that is what goes first (`NewMapMapsize_Buttons`,
+  `HistoricMissionSelect_General`). This was worth
+  `MenuItemActionHandler_ChooseNetworkServiceProvider_ProviderTableRows` and
+  `MenuItemActionHandler_UnusedSomeMissionStartUnk_General` to **100%**,
+  `MenuItemRenderFunction_SingleplayerMapChoice_MapTableHeader` 81.6% -> 98.1%, its action handler
+  18.8% -> 64.5%, `MenuItemActionHandler_EditScenario_EventAndInvasionList` 52.4% -> 70.8%,
+  `MenuItemRenderFunction_LobbyMenu_MapSelectHeader` 61.7% -> 74.8% and its action handler
+  21.2% -> 32.7%.
+  When scanning for the chain, do **not** require the `je` to sit immediately after the `sub`: MSVC
+  interleaves the prologue's register pushes between them (`sub eax, 0; push ebx; push ebp; push esi;
+  push edi; je ...` at 0x449294), and an adjacency test misses most of the family - it found 1 candidate
+  where a six-instruction window found 7, every one of them a real mismatch.
+  The map-list sorts behind two of those functions carry a second shape worth knowing. Ghidra renders
+  MSVC's zero-trip test as a `break` inside the outer loop -
+  `do { moved = 0; i = 0; if (bound < 1) break; do { ... } while (i < bound); } while (moved != 0);` -
+  but `test edi, edi; jle` (0x440ad4, 0x4492d4) is the *inner* loop's entry test, so the inner loop is a
+  counted `for` and the outer loop has no early exit at all (`uncount_loop.py`). The sort functions also
+  keep the sort mode in a register across the dispatch, so a local for it is what reproduces the
+  `test ecx, ecx` the original compares against rather than a reload of the field.
 - Two bools compared against each other - `bVar2 = (x < K); bVar1 = (x - K) < 0; if (bVar2 != bVar1)` - is the
   decompiler's rendering of one `cmp` whose `jl` is **shared** between the arms of an `if`/`else` chain, each
   arm comparing its own value against its own bound. The bound travels with the value, so the source holds
