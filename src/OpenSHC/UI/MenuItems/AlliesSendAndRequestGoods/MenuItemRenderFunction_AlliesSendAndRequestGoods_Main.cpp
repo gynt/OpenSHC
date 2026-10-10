@@ -99,7 +99,6 @@ namespace UI {
                     iVar1 = 0x285;
                 } else {
                     iVar1 = 0x286;
-                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1,
@@ -117,41 +116,52 @@ namespace UI {
               then draw the rest
              */
             if (actionParam != 40) {
-                if (99 < actionParam) {
+                if (0x64 <= actionParam) {
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
+                    return;
                 }
-                if (50 < actionParam) {
+                /*
+                  the original ends this bound with `jl`, so 0x32 is inside it; written as
+                  `50 <` the `actionParam == 0x32` test below could never be true
+                 */
+                if (0x32 <= actionParam) {
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::
                             RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
                     if (actionParam == 0x32) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             10, (int)((int)(DAT_ButtonX::instance + 0x12)), (int)((int)(DAT_ButtonY::instance + 0x10)),
                             OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
+                        return;
                     }
                     if (actionParam == 0x33) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             25, (int)((int)(DAT_ButtonX::instance + 0xf)), (int)((int)(DAT_ButtonY::instance + 0x10)),
                             OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
+                        return;
                     }
                     if (actionParam == 0x34) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             100, (int)((int)(DAT_ButtonX::instance + 0xc)), (int)((int)(DAT_ButtonY::instance + 0x10)),
                             OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
+                        return;
                     }
                     if (actionParam == 0x35) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(5,
                             (int)((int)(DAT_ButtonX::instance + 0x15)), (int)((int)(DAT_ButtonY::instance + 0x10)),
                             OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
+                        return;
                     }
                     if (actionParam == 0x36) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             500, (int)((int)(DAT_ButtonX::instance + 0xb)), (int)((int)(DAT_ButtonY::instance + 0x10)),
                             OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
+                        return;
                     }
                 }
+                return;
             }
             /*
-              action param < 50
+              everything below belongs to actionParam == 40 only
              */
             if (0 < (int)DAT_ButtonH::instance) {
                 iVar2 = 0;
