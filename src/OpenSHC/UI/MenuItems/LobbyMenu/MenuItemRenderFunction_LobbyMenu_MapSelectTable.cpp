@@ -73,7 +73,7 @@ namespace UI {
                 iVar4 = -1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                    < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                     _Str2 = DAT_GameSynchronyState::instance.mapName;
                     pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
@@ -94,7 +94,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
                 DAT_PencilRenderCore::ptr)(BVar1, param_1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
             if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
+                < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                 iVar3 = 0;
                 if (DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
