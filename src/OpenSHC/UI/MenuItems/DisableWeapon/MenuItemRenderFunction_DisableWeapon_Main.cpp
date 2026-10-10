@@ -38,7 +38,6 @@ namespace UI {
         void DisableWeapon::MenuItemRenderFunction_DisableWeapon_Main(int param_1, ...)
         {
             char* textAddress;
-            int yParam;
             int iVar1;
             TextAlignment alignment;
             BGR24 color;
@@ -102,7 +101,6 @@ namespace UI {
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 blendStrength = 0;
                 iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 6;
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
                 /*
@@ -122,7 +120,7 @@ namespace UI {
                 textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 3);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    textAddress, iVar1, DAT_ButtonY::instance + 6, alignment, color, fontSize, keepOffsetX, blendStrength);
             }
         }
 
