@@ -686,6 +686,33 @@ Diff patterns that were reliable (more in the cheat sheet):
   as a plain guard and left the normal render unconditional, so a hovered Gold or Rations button drew
   twice and the second draw overwrote the highlight. Writing the original's two mutually exclusive arms
   costs **51.7% -> 50.3%** of match and is kept anyway, per the priority order at the top of this file.
+- **Signedness, as opposed to strictness, had no scanner and is the most productive seam left.**
+  `diff_jcc.py` reports a comparison one strictness step off the original (`jl` against `jle`);
+  `diff_signedness.py` reports the original's signed jump against our *unsigned* jump of the same
+  direction (`jl` against `jb`, `jge` against `jae`), which is an `undefined4`/`uint` resolver field or
+  local compared without an `(int)` cast. 44 sites across 19 functions were still open after every
+  earlier sweep; casting them was **four new 100%s and no regressions at all**
+  (`MenuItemActionHandler_EditScenario_Scrollbar` and `General_MessageScrollbar` 96.4% -> 100%,
+  `InGameMenu_MapEventIconUnk` and `UnusedChooseMessageBox_Unknown` 91.7% -> 100%,
+  `SaveLoadMap_Scrollbar` 96.3% -> 98.1%, `SaveLoadMap_TableHeader` 47.8% -> 49.4%,
+  `LobbyMenu_MapSelectScrollbar` 91.0% -> 93.6%), and a second pass over the remaining 25 sites added
+  `OnlineVoteQuitAndQuitGame_Main` 66.7% -> **80.9%**. `signcast.py FILE FIELD...` does the rewrite for
+  named fields only, and only inside a relational comparison, so it cannot change a condition by
+  accident. Re-run the scan after every batch: it finds sites that the previous build's code did not
+  have. Roughly half the sites measure as exact ties and are kept, because the cast is what the
+  original's signed jump says.
+  Two shapes the field-name scan misses and the jump pairing catches:
+  - **a mixed-type sum**: `undefined4_field + param_1 < (int)other` makes the whole comparison
+    unsigned, so the cast belongs on the *field inside the sum*
+    (`MenuItemActionHandler_RankingGames_Main`).
+  - **a `byte` local used as a counter**: `byte bVar1 = (x != -1); ... bVar1 = bVar1 + 1; if (1 < bVar1)`
+    compares unsigned where the original has `jle`. Widening it to `int` was
+    `MenuItemActionHandler_OnlineVoteQuitAndQuitGame_Main` 66.7% -> 80.9% from that one declaration.
+    This is a third case for the byte-local rule above, distinct from the flag-set-from-constants one:
+    here the local is *incremented*, so widening is unambiguous. Note the `BYTE` column flags only one
+    function in the whole namespace, and widening *that* one's `bool` (set only from constants, 9 byte
+    slots to the original's 0) measured 0.3808 -> 0.3791 on `quick_diff.py` and was reverted - so the
+    column is not the way to find this shape; the signed/unsigned jump pairing is.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
