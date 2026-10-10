@@ -167,10 +167,14 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        color = 0xc2f0eb;
-                    } else {
+                    /*
+                      the original jumps out of line on `== FALSE`, so the interacting
+                      arm is the one the source wrote first
+                     */
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         color = 0xccfaff;
+                    } else {
+                        color = 0xc2f0eb;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
