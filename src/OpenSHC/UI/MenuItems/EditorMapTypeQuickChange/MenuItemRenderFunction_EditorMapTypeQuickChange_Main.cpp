@@ -140,14 +140,14 @@ namespace UI {
                 textAddress = "400x400";
             }
             if (BVar2 == FALSE) {
-                color = 0xc2f0eb;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)(DAT_ButtonY::instance + 4)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
             } else {
-                color = 0xccfaff;
-                return;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
+                    (int)((int)(DAT_ButtonY::instance + 4)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE, 0);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, (int)((int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 4)), OpenSHC::Text::TTA_CENTER, color, 0x11, FALSE, 0);
         }
 
     }
