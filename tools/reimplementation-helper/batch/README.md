@@ -56,6 +56,8 @@ Analysis helpers, for deciding *what* to change when a function is stuck below 1
 | `rank_functions.py [filter] [--top N]` | Rank by source lines x (1 - match), so the big badly-matching functions come first instead of the small ones with a low percentage. |
 | `scan_dispatch.py [filter]` | Functions whose dispatch form disagrees with the original (jump table on one side, if/else-if chain on the other), and which way to fix each. |
 | `scan_chains.py [filter] [--min N]` | `if/else if` chains comparing one expression against several constants: the candidates to convert when `scan_dispatch.py` says the original has a table we do not. |
+| `scan_sparse.py` | Every function whose original holds an MSVC sparse switch - a `sub reg, K` with a `je`/`jne` within six instructions, at least three links - and whether our source already has a `switch`. The six-instruction window matters: MSVC schedules the prologue pushes between the `sub` and its `je` (0x449294), and an adjacency test found 1 candidate where this finds 7. As of this writing all ten candidates in `UI::MenuItems` already have a switch. |
+| `find_dup_store.py` | A store repeated as the first statement of the guard that follows it: `X = V; if (cond) { X = V; ... }` is Ghidra duplicating one store across a branch, since the original stores once before the test (0x427941, 0x427c2b). Removing the inner copy is behaviour-preserving. |
 | `try_styles.py FUNC [style...]` | Compile and measure several hand-written variants of one function, restore the winner, print the table. Variants live in `build-RelWithDebInfo/batch/variants/FUNC/*.cpp`. |
 
 ### Readability passes

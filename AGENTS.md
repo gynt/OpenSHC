@@ -613,6 +613,44 @@ Diff patterns that were reliable (more in the cheat sheet):
 - MSVC1400 at `/O2` never unrolls a loop, so a body repeated N times in the asm means the source was written out N
   times. A plain loop where the original is unrolled has cost 80 points on its own.
 - A flag stored with `mov dword ptr [..], 0/1` is an `int`, not a `bool`, which stores a byte.
+- A run of `cmp byte ptr [base + K], 0; je <next>; mov ecx, 1` at consecutive offsets, ending in one
+  `jne` out and a `test ecx, ecx; jne` out, is a **flag accumulated over several fields** and not the
+  `&&` chain Ghidra renders. The source is `int flag = 0;` then one `if (field != 0) { flag = 1; }` per
+  offset, with the last field tested together with the flag:
+  `if (data[0x6b] == 0 && flag == 0) { X = 1; return; }`. Ghidra's single nested conjunction compiles to
+  early-out jumps instead and is about twenty instructions short.
+  `MenuItemRenderFunction_NewEventCondition_Main` (0x4c02af..0x4c0346) had ten such fields; it also shows
+  the two other things Ghidra loses around this shape - the store the chain guards ends in `pop ebx; ret`
+  (0x4c0351), so the guard carries a `return;` our source did not have, and an earlier
+  `cmp edx, 0x1388; jg` guard had decompiled as a second, dead `X = 0;` rather than an early return.
+- Ghidra will emit a test that **cannot be true** when it loses a three-way compare: `cmp edx, 0x7d0;
+  jg L29; je L27` became `if (param_1 < 2000) { if (param_1 == 2000) {` in
+  `MenuItemRenderFunction_NewEventCondition_Main`, with the real `== 2000` arm inside the `< 2000` branch.
+  An inner `== N` inside an `if (x < N)` is the tell, and it means the surrounding dispatch is a sparse
+  switch whose halves have been nested rather than flattened. Rebuilding that one function's dispatch as a
+  single `switch` with its arms in the order the addresses give - 1001, 1000, 2000, `default`, 2002, 2001,
+  which is the reverse of the test order in each half with the fall-out arm between them - was worth
+  0.4276 -> 0.5309 on `quick_diff.py`'s ratio with the length gap closing from -19 to -3.
+- A store repeated as the **first statement of the guard that follows it** is Ghidra duplicating one store
+  across a branch whose shape it lost: `X = V;` then `if (cond) { X = V; return; }` is
+  `X = V; if (cond) return;`, because the original stores once before the test
+  (`cmp edi, ebx; mov dword ptr [DAT_ButtonUnknownZero], ebx; jl`, 0x427941 and 0x427c2b). Removing the
+  inner copy is behaviour-preserving and restores the shape. Only three sites across `UI::MenuItems`, all
+  real, so it is worth one scan rather than a tool.
+- Where several arms each store *their own* field and then share a tail, read the store addresses before
+  trusting the merge: `MenuItemActionHandler_CrusadeMap_Main` has one `mov` per trail
+  (0x4d90ea skirmish, 0x4d913b warchest, 0x4d918a extreme) each falling into the shared tail at 0x4d9190,
+  while our source wrote all three on every hit and preloaded the two it was not setting to keep that
+  harmless. The preloads are the tell that the merge is Ghidra's and not the original's.
+- A block reached from **two different jump tables** is not in either table's source order.
+  `MenuItemActionHandler_General_ToolbarButtonPressed` has 0x444615 as the eighth arm of its 0x19..0xc2
+  table *and* as the default of its 0x120..0x166 table; moving our `default:` arm to that eighth position
+  measured 0.5763 -> 0.5481 and was reverted. Both of that function's switches are otherwise in their
+  table's order, so its remaining loss is not arm ordering.
+- The sparse-switch seam is **exhausted in `UI::MenuItems`**: a scan tolerating interleaved instructions
+  (a `sub reg, K` with a `je`/`jne` within six instructions, at least three links) finds ten functions and
+  every one of them already has a `switch` in the source. Re-run that scan after a batch of rewrites
+  rather than reading addresses by hand.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
