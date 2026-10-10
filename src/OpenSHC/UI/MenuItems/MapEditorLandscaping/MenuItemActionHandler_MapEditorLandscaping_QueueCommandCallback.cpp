@@ -197,6 +197,13 @@ namespace UI {
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
             }
             switch (DAT_TileMapState::instance.currentMapperCommand) {
+            case OpenSHC::Commands::M_MAPPER_DELETE:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_UNIT_ERASE);
+                return;
             case OpenSHC::Commands::M_MAPPER_RAISE:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 1;
@@ -205,10 +212,25 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RAISE_LAND);
                 return;
+            case OpenSHC::Commands::M_MAPPER_MOUNTAIN:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_LAND;
+                commandType = OpenSHC::Commands::GCT_RAISE_LAND2Unk;
+                break;
+            case OpenSHC::Commands::M_MAPPER_HILL:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_LOWER;
+                commandType = OpenSHC::Commands::GCT_RAISE_LAND2Unk;
+                break;
             case OpenSHC::Commands::M_MAPPER_LOWER:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0xffffffff;
                 commandType = OpenSHC::Commands::GCT_RAISE_LAND;
                 goto LAB_0044427c;
+            case OpenSHC::Commands::M_MAPPER_LAND:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_LAND);
+                return;
             case OpenSHC::Commands::M_MAPPER_SEA:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 1;
@@ -218,27 +240,55 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
                 return;
-            case OpenSHC::Commands::M_MAPPER_LAND:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_LAND);
-                return;
-            default:
-                break;
-            case OpenSHC::Commands::M_MAPPER_SCRUB:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 1;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
-                return;
             case OpenSHC::Commands::M_MAPPER_BEACH:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0x20;
                 goto LAB_00444270;
+            case OpenSHC::Commands::M_MAPPER_EQUALISE:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 1;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TERRAIN_EQUALIZE);
+                return;
+            case OpenSHC::Commands::M_MAPPER_PLAIN1:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 4;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CREATE_PLATEAU);
+                return;
+            case OpenSHC::Commands::M_MAPPER_PLAIN2:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 8;
+                commandType = OpenSHC::Commands::GCT_CREATE_PLATEAU;
+                goto LAB_0044427c;
+            case OpenSHC::Commands::M_MAPPER_MIN:
+            case OpenSHC::Commands::M_MAPPER_MAX:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = DAT_TileMapState::instance.mapperMax;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TERRAIN_MIN_MAX);
+                return;
+            case OpenSHC::Commands::M_MAPPER_BIGROCK1:
+            case OpenSHC::Commands::M_MAPPER_BIGROCK2:
+            case OpenSHC::Commands::M_MAPPER_BIGROCK3:
+            case OpenSHC::Commands::M_MAPPER_BIGROCK4:
+            case OpenSHC::Commands::M_MAPPER_BIGROCK5:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = DAT_TileMapState::instance.rockFlagStartNumber
+                    + DAT_TileMapState::instance.unknownBrushRelated * 4;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 0x14;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk);
+                DAT_TileMapState::instance.rockFlagStartNumber = DAT_TileMapState::instance.rockFlagStartNumber + 1;
+                if (4 <= (int)DAT_TileMapState::instance.rockFlagStartNumber) {
+                    DAT_TileMapState::instance.rockFlagStartNumber = 0;
+                }
+                return;
             case OpenSHC::Commands::M_MAPPER_ROCKY:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x80;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
@@ -247,24 +297,6 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0x40;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
-                return;
-            case OpenSHC::Commands::M_MAPPER_BOULDERS:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 131072;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
-                return;
-            case OpenSHC::Commands::M_MAPPER_PEBBLES:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
@@ -296,14 +328,58 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x200000;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
                 goto LAB_0044427a;
+            case OpenSHC::Commands::M_MAPPER_BOULDERS:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 131072;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                return;
+            case OpenSHC::Commands::M_MAPPER_PEBBLES:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                return;
             case OpenSHC::Commands::M_MAPPER_IRON:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x80000;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
                 goto LAB_0044427a;
+            case OpenSHC::Commands::M_MAPPER_OIL:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x80000000;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                return;
             case OpenSHC::Commands::M_MAPPER_MARSH:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x20000000;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                return;
+            case OpenSHC::Commands::M_MAPPER_DUGMOAT:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000000;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 2;
+            LAB_0044427a:
+                commandType = OpenSHC::Commands::GCT_SET_TERRAIN;
+            LAB_0044427c:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                break;
+            case OpenSHC::Commands::M_MAPPER_UNDUGMOAT:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000000;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 3;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
@@ -323,37 +399,14 @@ namespace UI {
             LAB_00444270:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
                 goto LAB_0044427a;
-            case OpenSHC::Commands::M_MAPPER_MIN:
-            case OpenSHC::Commands::M_MAPPER_MAX:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = DAT_TileMapState::instance.mapperMax;
+            case OpenSHC::Commands::M_MAPPER_SCRUB:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 1;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TERRAIN_MIN_MAX);
-                return;
-            case OpenSHC::Commands::M_MAPPER_EQUALISE:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 1;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TERRAIN_EQUALIZE);
-                return;
-            case OpenSHC::Commands::M_MAPPER_MOUNTAIN:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_LAND;
-                commandType = OpenSHC::Commands::GCT_RAISE_LAND2Unk;
-                break;
-            case OpenSHC::Commands::M_MAPPER_HILL:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_LOWER;
-                commandType = OpenSHC::Commands::GCT_RAISE_LAND2Unk;
-                break;
-            case OpenSHC::Commands::M_MAPPER_DELETE:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_UNIT_ERASE);
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
                 return;
             case OpenSHC::Commands::M_MAPPER_CHESTNUT:
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_CHESTNUT;
@@ -365,54 +418,6 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
                 commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
                 break;
-            case OpenSHC::Commands::M_MAPPER_PINE:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_PINE;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
-                commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
-                break;
-            case OpenSHC::Commands::M_MAPPER_BIRCH:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_BIRCH;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
-                commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
-                break;
-            case OpenSHC::Commands::M_MAPPER_UNDUGMOAT:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000000;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 3;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
-                return;
-            case OpenSHC::Commands::M_MAPPER_DUGMOAT:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x40000000;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 2;
-            LAB_0044427a:
-                commandType = OpenSHC::Commands::GCT_SET_TERRAIN;
-            LAB_0044427c:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                break;
-            case OpenSHC::Commands::M_MAPPER_PLAIN1:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 4;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CREATE_PLATEAU);
-                return;
-            case OpenSHC::Commands::M_MAPPER_PLAIN2:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 8;
-                commandType = OpenSHC::Commands::GCT_CREATE_PLATEAU;
-                goto LAB_0044427c;
-            case OpenSHC::Commands::M_MAPPER_OIL:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = DAT_TileMapState::instance.editorActiveBrush;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x80000000;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
-                return;
             case OpenSHC::Commands::M_MAPPER_SHRUB1A:
             case OpenSHC::Commands::M_MAPPER_SHRUB1B:
             case OpenSHC::Commands::M_MAPPER_SHRUB1C:
@@ -432,23 +437,16 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
                 commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
                 break;
-            case OpenSHC::Commands::M_MAPPER_BIGROCK1:
-            case OpenSHC::Commands::M_MAPPER_BIGROCK2:
-            case OpenSHC::Commands::M_MAPPER_BIGROCK3:
-            case OpenSHC::Commands::M_MAPPER_BIGROCK4:
-            case OpenSHC::Commands::M_MAPPER_BIGROCK5:
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = DAT_TileMapState::instance.rockFlagStartNumber
-                    + DAT_TileMapState::instance.unknownBrushRelated * 4;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 0x14;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
-                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk);
-                DAT_TileMapState::instance.rockFlagStartNumber = DAT_TileMapState::instance.rockFlagStartNumber + 1;
-                if (4 <= (int)DAT_TileMapState::instance.rockFlagStartNumber) {
-                    DAT_TileMapState::instance.rockFlagStartNumber = 0;
-                }
-                return;
+            case OpenSHC::Commands::M_MAPPER_PINE:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_PINE;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
+                commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
+                break;
+            case OpenSHC::Commands::M_MAPPER_BIRCH:
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = OpenSHC::Commands::M_MAPPER_BIRCH;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0;
+                commandType = OpenSHC::Commands::GCT_PLACE_TREE_OR_ROCKUnk;
+                break;
             case OpenSHC::Commands::M_MAPPER_DEER:
             case OpenSHC::Commands::M_MAPPER_LION:
             case OpenSHC::Commands::M_MAPPER_RABBIT:
@@ -458,6 +456,8 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                     = DAT_TileMapState::instance.currentMapperCommand;
                 commandType = OpenSHC::Commands::GCT_CREATE_ANIMAL;
+            default:
+                break;
             }
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
