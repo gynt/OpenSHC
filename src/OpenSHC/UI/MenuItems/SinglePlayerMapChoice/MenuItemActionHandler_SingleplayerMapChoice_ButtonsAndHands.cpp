@@ -80,7 +80,7 @@ namespace UI {
                 /*
                   Start game
                  */
-                if (-1 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                if (-1 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                     if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
@@ -180,8 +180,8 @@ namespace UI {
                     }
                     break;
                 case -0xb:
-                    if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
+                    if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                        < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                             = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                         MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
@@ -191,7 +191,7 @@ namespace UI {
                     }
                     break;
                 case -10:
-                    if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
+                    if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                             = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
                         MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
