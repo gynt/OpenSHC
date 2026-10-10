@@ -106,10 +106,10 @@ namespace UI {
                         _mapName = pcVar6 + 1;
                         pcVar6 = pcVar6 + 1;
                     } while (*_mapName != '\0');
-                    (*(char*)&uVar4) = '.';
-                    (*(char*)((char*)&uVar4 + 1)) = 't';
-                    (*(char*)((char*)&uVar4 + 2)) = 'm';
-                    (*(char*)((char*)&uVar4 + 3)) = 'p';
+                    /*
+                      ".tmp" stored as one dword, which is what the original writes
+                     */
+                    uVar4 = 0x706d742e;
                 LAB_00494566:
                     *(undefined4*)pcVar6 = uVar4;
                     pcVar6[4] = '\0';
@@ -121,10 +121,10 @@ namespace UI {
                             _mapName = pcVar6 + 1;
                             pcVar6 = pcVar6 + 1;
                         } while (*_mapName != '\0');
-                        (*(char*)&uVar4) = '.';
-                        (*(char*)((char*)&uVar4 + 1)) = 'm';
-                        (*(char*)((char*)&uVar4 + 2)) = 'a';
-                        (*(char*)((char*)&uVar4 + 3)) = 'p';
+                        /*
+                          ".map" stored as one dword, which is what the original writes
+                         */
+                        uVar4 = 0x70616d2e;
                         goto LAB_00494566;
                     }
                     if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
@@ -202,10 +202,10 @@ namespace UI {
                             _mapName = pcVar6 + 1;
                             pcVar6 = pcVar6 + 1;
                         } while (*_mapName != '\0');
-                        (*(char*)&uVar5) = '.';
-                        (*(char*)((char*)&uVar5 + 1)) = 'm';
-                        (*(char*)((char*)&uVar5 + 2)) = 'a';
-                        (*(char*)((char*)&uVar5 + 3)) = 'p';
+                        /*
+                          ".map" stored as one dword, which is what the original writes
+                         */
+                        uVar5 = 0x70616d2e;
                         goto LAB_0049477a;
                     }
                     if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
@@ -230,6 +230,7 @@ namespace UI {
                     } else {
                         pcVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                        _mapName = local_3f4;
                         do {
                             cVar2 = *pcVar6;
                             *_mapName = cVar2;
@@ -247,6 +248,7 @@ namespace UI {
                 } else {
                     _mapName = MACRO_CALL_MEMBER(
                         OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                    pcVar6 = local_3f4;
                     do {
                         cVar2 = *_mapName;
                         *pcVar6 = cVar2;
@@ -258,10 +260,10 @@ namespace UI {
                         _mapName = pcVar6 + 1;
                         pcVar6 = pcVar6 + 1;
                     } while (*_mapName != '\0');
-                    (*(char*)&uVar5) = '.';
-                    (*(char*)((char*)&uVar5 + 1)) = 't';
-                    (*(char*)((char*)&uVar5 + 2)) = 'm';
-                    (*(char*)((char*)&uVar5 + 3)) = 'p';
+                    /*
+                      ".tmp" stored as one dword, which is what the original writes
+                     */
+                    uVar5 = 0x706d742e;
                 LAB_0049477a:
                     *(undefined4*)pcVar6 = uVar5;
                     pcVar6[4] = '\0';
