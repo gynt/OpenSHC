@@ -169,7 +169,11 @@ namespace UI {
                     if (iVar2 == 0) {
                         iVar3 = 1;
                     } else {
-                        iVar3 = (iVar2 == DAT_ButtonH::instance + -0x18 ? 0xd : 0x7);
+                        if (iVar2 == DAT_ButtonH::instance + -0x18) {
+                            iVar3 = 0xd;
+                        } else {
+                            iVar3 = 0x7;
+                        }
                     }
                     iVar4 = 0;
                     do {
