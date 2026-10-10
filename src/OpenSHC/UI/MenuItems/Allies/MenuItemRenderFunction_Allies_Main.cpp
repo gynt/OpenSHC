@@ -142,7 +142,6 @@ namespace UI {
                 iVar6 = 0;
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar2] == -1) {
                     iVar6 = DAT_GameSynchronyState::instance.currentAIArray[iVar2];
-                    return;
                 }
                 if (iVar3 == DAT_LastTeamMemberIndex::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -217,7 +216,6 @@ namespace UI {
                           .requestedGoodsArray1Unk[iVar2];
                 if (iVar3 == 7) {
                     iVar3 = 8;
-                    return;
                 }
                 if (-1 < iVar3 + -2) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
@@ -255,7 +253,7 @@ namespace UI {
                     if (iVar6 == 0) {
                         iVar5 = 1;
                     } else {
-                        iVar5 = (-(uint)(iVar6 != DAT_ButtonH::instance + -0x18) & 0xfffffffa) + 0xd;
+                        iVar5 = (iVar6 == DAT_ButtonH::instance + -0x18 ? 0xd : 0x7);
                     }
                     iVar7 = 0;
                     do {
