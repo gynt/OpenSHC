@@ -363,7 +363,13 @@ Diff patterns that were reliable (more in the cheat sheet):
   declaration order, array element type, widening unsigned locals, and splitting a local the decompiler had reused
   for two values. `diff_slots.py` says the lowest-access extra slot is usually the culprit, so a function whose
   extra slots are all heavily used has genuine live values rather than a stray local, and needs structural
-  understanding rather than a rule.
+ One more confirmation of that, this time with a concrete
+  hypothesis that failed: `MenuItemRenderFunction_Allies_Main` reported `FRAME 0xc`, exactly three
+  slots more than the original, and had exactly three locals that Ghidra had invented for a shared
+  `renderText2` call (a text section, an x coordinate and a flag). Writing the call out in both arms
+  removed all three locals - and the function still had six slots to the original's four, with the
+  extra ones now heavily used (7 and 8 accesses), while the match fell 47.1% -> 38.3%. The slots were
+  genuine live values all along; the local count and the slot count are not the same quantity.
 - When both sides have a jump table, the **order of the arms** still has to match. MSVC emits them in source order,
   so the physical order of the arm bodies in the binary is the original's `case` order, and `switch_order.py` reads it
   out of the byte and dword tables. A different order moves every arm and the comparison drifts from the dispatch
