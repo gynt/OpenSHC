@@ -637,11 +637,15 @@ Diff patterns that were reliable (more in the cheat sheet):
   (`cmp edi, ebx; mov dword ptr [DAT_ButtonUnknownZero], ebx; jl`, 0x427941 and 0x427c2b). Removing the
   inner copy is behaviour-preserving and restores the shape. Only three sites across `UI::MenuItems`, all
   real, so it is worth one scan rather than a tool.
-- Where several arms each store *their own* field and then share a tail, read the store addresses before
-  trusting the merge: `MenuItemActionHandler_CrusadeMap_Main` has one `mov` per trail
-  (0x4d90ea skirmish, 0x4d913b warchest, 0x4d918a extreme) each falling into the shared tail at 0x4d9190,
-  while our source wrote all three on every hit and preloaded the two it was not setting to keep that
-  harmless. The preloads are the tell that the merge is Ghidra's and not the original's.
+- Where several arms each store *their own* field and then share a tail, the store addresses are **not**
+  enough to justify rewriting. `MenuItemActionHandler_CrusadeMap_Main` has one `mov` per trail
+  (0x4d90ea skirmish, 0x4d913b warchest, 0x4d918a extreme), each falling into the shared tail at
+  0x4d9190, and our source wrote all three fields on every hit with preloads of the two it was not
+  setting. Moving each store into its arm and dropping the preloads - which is what the binary appears
+  to say - measured **33.5% -> 31.2%** and was reverted: MSVC sinks the store into the arms by itself,
+  so Ghidra's merged form is the closer *source* match even though the binary stores once per arm.
+  This is the counter-example to the `CrusadeMap_Main` advice given earlier in this file; prefer the
+  measurement.
 - A block reached from **two different jump tables** is not in either table's source order.
   `MenuItemActionHandler_General_ToolbarButtonPressed` has 0x444615 as the eighth arm of its 0x19..0xc2
   table *and* as the default of its 0x120..0x166 table; moving our `default:` arm to that eighth position
@@ -651,6 +655,37 @@ Diff patterns that were reliable (more in the cheat sheet):
   (a `sub reg, K` with a `je`/`jne` within six instructions, at least three links) finds ten functions and
   every one of them already has a `switch` in the source. Re-run that scan after a batch of rewrites
   rather than reading addresses by hand.
+- `quick_diff.py`'s ratio can be **mis-scaled**, not merely noisy, and
+  `MenuItemRenderFunction_LobbyMenu_NonBoxedButtons` is the case to remember: its reccmp raw match was
+  51.4% where the ratio read 0.3408, and a `reorder_switch.py --loose` pass that took the ratio to
+  0.3862 measured **51.4% -> 24.2%** on reccmp. When the ratio and the reccmp percentage disagree by
+  more than a few points in *absolute* terms, the ratio is not a usable gate for that function at all.
+  The six scrollbar-style reorder regressions already noted are the same family.
+- `unwrap_guard.py` paid nothing in `UI::MenuItems`. Of the nine functions with no `return;` at all and
+  three or more epilogue jumps, only three had the single-guard shape, two of those
+  (`MenuItemActionHandler_InGameMenu_ViewToKeeps` 0.4755, `BuildingAndStatusMenu_TunnelerPortrait`
+  0.6667) compiled to code identical to four decimals, and `BuildingAndStatusMenu_TaxArrowButtons` has
+  an `else` on its guard that the tool turns into a syntax error. The epilogue-jump deficit also
+  over-reports badly on its own: 81 functions read as short, including
+  `MenuItemActionHandler_UnusedSomeMissionStartUnk_General`, which is at 100%.
+- Moving a switch's out-of-table arms behind the switch to match a far-forward `jg`/`je` is an exact
+  tie: `MenuItemRenderFunction_BuildMenu_UnitActionButtons` dispatches
+  `cmp eax, 0x22e; jg 0x439; je 0x40b; sub eax, 0xd3; cmp eax, 0xa5; ja; jmp [table]`, and writing the
+  two special arms after the switch (with `goto`s into them) compiled to the same instructions as
+  Ghidra's inline-ahead-of-the-switch form. MSVC places those blocks where it likes; the arm *order*
+  inside the table is the only placement the source controls.
+- A dispatch bound one value short of the original's means the original gave that value an arm of its
+  own, and **adding it to the `default:` arm does not recover it**: MSVC1400 folds a `case` that shares
+  the default's body, so the table does not widen.
+  `MenuItemRenderFunction_SingleplayerMapChoice_ButtonsAndHands` has `lea eax, [esi + 0x65]` then
+  `cmp eax, 0xb3` against our `cmp eax, 0xb2`, so value 0x4e had its own body in the original - one
+  that was then cross-jumped onto the default block at 0x42d544, which is why the table lists it there.
+- `MenuItemRenderFunction_EditScenario_BaseMenuButtons`'s Gold (0x3d) and Rations (0xa6) arms each have
+  one `cmp interacting, 0; jne` whose fall-through renders in 0xc2f0eb and **returns** (0x4bf067,
+  0x4bf131), with the 0xccfaff copy out of line at L15/L17 returning too. Ghidra kept the hover render
+  as a plain guard and left the normal render unconditional, so a hovered Gold or Rations button drew
+  twice and the second draw overwrote the highlight. Writing the original's two mutually exclusive arms
+  costs **51.7% -> 50.3%** of match and is kept anyway, per the priority order at the top of this file.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
