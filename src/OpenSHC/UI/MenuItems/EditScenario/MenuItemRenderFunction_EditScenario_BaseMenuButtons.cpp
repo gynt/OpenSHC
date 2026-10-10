@@ -108,6 +108,7 @@ namespace UI {
                             color = 0xc2f0eb;
                         } else {
                             color = 0xccfaff;
+                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_IN_KEEP, iVar1 + 7,
@@ -163,6 +164,7 @@ namespace UI {
                             OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xa9, (int)((int)(DAT_ButtonX::instance + 10)),
                             (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
                         iVar1 = DAT_ButtonW::instance + -10 + DAT_ButtonX::instance;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(DAT_MapPropertiesState::instance.SEC_StartingResources[8], iVar1,
@@ -213,6 +215,7 @@ namespace UI {
                                 (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
                                 (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12,
                                 FALSE, 0);
+                            return;
                         }
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
                     }
