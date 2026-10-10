@@ -99,9 +99,15 @@ namespace UI {
             }
             switch (DAT_CurrentButtonGmDataIndex::instance) {
             case 0x178:
+                /*
+                  the original tail-jumps to the render here (`pop edi; pop esi; jmp` after
+                  the `cmp [hasEngineerSelected], esi`), so this arm returns rather than
+                  falling into `case 0x176` and rendering the button a second time
+                 */
                 if (DAT_UnitsState::instance.hasEngineerSelected == TRUE) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
             case 0x176:
                 DAT_00ee1094::instance = 0x123;
