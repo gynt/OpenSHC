@@ -26,7 +26,7 @@ namespace UI {
                     DAT_MapPropertiesState::instance.field47_0x1355c
                         = DAT_MapPropertiesState::instance.field47_0x1355c + 1;
                 }
-            } else if ((param_1 == -1) && (0 < DAT_MapPropertiesState::instance.field47_0x1355c)) {
+            } else if ((param_1 == -1) && (0 < (int)DAT_MapPropertiesState::instance.field47_0x1355c)) {
                 DAT_MapPropertiesState::instance.field47_0x1355c
                     = DAT_MapPropertiesState::instance.field47_0x1355c + -1;
             }
