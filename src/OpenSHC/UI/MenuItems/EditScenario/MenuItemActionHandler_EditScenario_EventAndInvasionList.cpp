@@ -25,7 +25,6 @@ namespace UI {
         void EditScenario::MenuItemActionHandler_EditScenario_EventAndInvasionList(int param_1, ...)
         {
             int iVar1;
-            MenuModalType menuModalID;
             char local_10[12];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_10;
@@ -43,24 +42,30 @@ namespace UI {
                             .header.year);
                     MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray,
                         DAT_UserTextHandlerState::ptr)(local_10);
-                    if (DAT_MapPropertiesState::instance.field50_0x13568 == 1) {
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x4b8ba3),
+                      MSVC's sparse switch, and pushes the modal id inside each arm
+                      (0x4b8bae, 0x4b8bd0) before the one shared `call activateModalDialog`
+                     */
+                    switch (DAT_MapPropertiesState::instance.field50_0x13568) {
+                    case 3:
+                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NEW_EVENT, FALSE);
+                        break;
+                    case 1:
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
                         DAT_MapPropertiesState::instance.field_0x1356c = 0;
                         DAT_MapPropertiesState::instance.offset = 0;
                         DAT_MapPropertiesState::instance.indexStored = 0;
-                        menuModalID = OpenSHC::UI::Enums::MMT_NEW_INVASION;
-                    } else {
-                        if (DAT_MapPropertiesState::instance.field50_0x13568 != 3)
-                            goto LAB_004b8bdc;
-                        menuModalID = OpenSHC::UI::Enums::MMT_NEW_EVENT;
-                        return;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                            DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NEW_INVASION, FALSE);
+                        break;
+                    default:
+                        break;
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
-                        DAT_MenuModalComposition1::ptr)(menuModalID, FALSE);
                 }
             }
-        LAB_004b8bdc:;
         }
 
     }
