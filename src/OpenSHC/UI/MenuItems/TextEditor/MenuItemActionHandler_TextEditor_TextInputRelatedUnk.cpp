@@ -41,20 +41,21 @@ namespace UI {
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
                     if (iVar3 < (((iVar5 < 1) - 1 & iVar5) - 0x12)) {
                         iVar3 = iVar3 + 0x12;
-                        if (iVar3 <= ((iVar5 < 1) - 1 & iVar5)) {
-                            DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
-                            return;
+                        if (((iVar5 < 1) - 1 & iVar5) < iVar3) {
+                            iVar3 = (iVar5 < 1) - 1 & iVar5;
                         }
+                    } else {
+                        iVar3 = (iVar5 < 1) - 1 & iVar5;
                     }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                     return;
                 case 0xf4:
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                    if (iVar3 < 0x12) {
-                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
+                    if (0x12 <= iVar3) {
+                        DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - 0x12;
                         return;
                     }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - 0x12;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
                     return;
                 case 0xf6:
                     DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
@@ -68,24 +69,24 @@ namespace UI {
                     iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                    if (iVar3
-                        < (((iVar5 < 1) - 1 & iVar5) - DAT_TextEditorState::instance.dialogContentHeight)) {
+                    if (iVar3 < (((iVar5 < 1) - 1 & iVar5) - DAT_TextEditorState::instance.dialogContentHeight)) {
                         iVar3 = iVar3 + DAT_TextEditorState::instance.dialogContentHeight;
-                        if (iVar3 <= ((iVar5 < 1) - 1 & iVar5)) {
-                            DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
-                            return;
+                        if (((iVar5 < 1) - 1 & iVar5) < iVar3) {
+                            iVar3 = (iVar5 < 1) - 1 & iVar5;
                         }
+                    } else {
+                        iVar3 = (iVar5 < 1) - 1 & iVar5;
                     }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                     return;
                 case 0xfa:
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
                     iVar6 = DAT_TextEditorState::instance.dialogContentHeight;
-                    if (iVar3 < iVar6) {
-                        DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
+                    if (iVar6 <= iVar3) {
+                        DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - iVar6;
                         return;
                     }
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - iVar6;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
                     return;
                 default:
                     return;
