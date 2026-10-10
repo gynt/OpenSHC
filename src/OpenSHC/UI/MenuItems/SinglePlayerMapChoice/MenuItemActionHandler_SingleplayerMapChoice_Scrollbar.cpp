@@ -47,8 +47,9 @@ namespace UI {
                 return;
             case 5:
                 if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
+                    /* the original decrements in place (`sub [..], 1` at 0x442ff5) */
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
+                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1;
                     MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
                             MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
