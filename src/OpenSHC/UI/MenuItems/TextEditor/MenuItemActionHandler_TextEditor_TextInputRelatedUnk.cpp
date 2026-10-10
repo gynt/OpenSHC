@@ -39,13 +39,13 @@ namespace UI {
                     iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                    if (iVar3 < (((iVar5 < 1) - 1 & iVar5) - 0x12)) {
+                    if (iVar3 < (((iVar5 <= 0) - 1 & iVar5) - 0x12)) {
                         iVar3 = iVar3 + 0x12;
-                        if (((iVar5 < 1) - 1 & iVar5) < iVar3) {
-                            iVar3 = (iVar5 < 1) - 1 & iVar5;
+                        if (((iVar5 <= 0) - 1 & iVar5) < iVar3) {
+                            iVar3 = (iVar5 <= 0) - 1 & iVar5;
                         }
                     } else {
-                        iVar3 = (iVar5 < 1) - 1 & iVar5;
+                        iVar3 = (iVar5 <= 0) - 1 & iVar5;
                     }
                     DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                     return;
@@ -63,19 +63,19 @@ namespace UI {
                 case 0xf7:
                     iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 <= 0) - 1 & iVar5;
                     return;
                 case 0xfb:
                     iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                         - DAT_TextEditorState::instance.dialogContentHeight;
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                    if (iVar3 < (((iVar5 < 1) - 1 & iVar5) - DAT_TextEditorState::instance.dialogContentHeight)) {
+                    if (iVar3 < (((iVar5 <= 0) - 1 & iVar5) - DAT_TextEditorState::instance.dialogContentHeight)) {
                         iVar3 = iVar3 + DAT_TextEditorState::instance.dialogContentHeight;
-                        if (((iVar5 < 1) - 1 & iVar5) < iVar3) {
-                            iVar3 = (iVar5 < 1) - 1 & iVar5;
+                        if (((iVar5 <= 0) - 1 & iVar5) < iVar3) {
+                            iVar3 = (iVar5 <= 0) - 1 & iVar5;
                         }
                     } else {
-                        iVar3 = (iVar5 < 1) - 1 & iVar5;
+                        iVar3 = (iVar5 <= 0) - 1 & iVar5;
                     }
                     DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                     return;
@@ -153,40 +153,32 @@ namespace UI {
                         }
                         break;
                     case 0xf2:
-                        if (0 < DAT_TextEditorState::instance.activeHelpHotspotIndex) {
-                            if ((ushort)DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                    [DAT_TextEditorState::instance.activeHelpHotspotIndex + -1]
-                                < ((HelpTextToken)0x20)) {
-                                iVar5 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
-                                    DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)
-                                        DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                            [DAT_TextEditorState::instance.activeHelpHotspotIndex + -1]);
-                                DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 - iVar5;
-                            } else {
-                                DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                    = DAT_TextEditorState::instance.activeHelpHotspotIndex + -1;
-                            }
+                        iVar3 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                        if (iVar3 <= 0)
+                            break;
+                        iVar6 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3 + -1];
+                        if (((HelpTextToken)0x20) <= iVar6) {
+                            DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 + -1;
+                            break;
                         }
+                        iVar5 = MACRO_CALL_MEMBER(
+                                OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
+                                DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)iVar6);
+                        DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 - iVar5;
                         break;
                     case 0xf3:
-                        if (DAT_TextEditorState::instance.activeHelpHotspotIndex
-                            < DAT_TextEditorState::instance.customHelpTextLength) {
-                            if ((ushort)DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                    [DAT_TextEditorState::instance.activeHelpHotspotIndex]
-                                < ((HelpTextToken)0x20)) {
-                                iVar5 = MACRO_CALL_MEMBER(
-                                    OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
-                                    DAT_TextEditorState::ptr)(
-                                    (OpenSHC::Text::Enums::HelpTextToken)DAT_TextEditorState::instance
-                                        .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance
-                                                .activeHelpHotspotIndex]);
-                                DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 + iVar5;
-                            } else {
-                                DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                    = DAT_TextEditorState::instance.activeHelpHotspotIndex + 1;
-                            }
+                        iVar3 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                        if (DAT_TextEditorState::instance.customHelpTextLength <= iVar3)
+                            break;
+                        iVar6 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3];
+                        if (((HelpTextToken)0x20) <= iVar6) {
+                            DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 + 1;
+                            break;
                         }
+                        iVar5 = MACRO_CALL_MEMBER(
+                                OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
+                                DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)iVar6);
+                        DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 + iVar5;
                         break;
                     case 0xf4:
                         DAT_TextEditorState::instance.field51_0x2396c = -1;
@@ -206,31 +198,30 @@ namespace UI {
                             = DAT_TextEditorState::instance.customHelpTextLength;
                         break;
                     case 0xf8:
-                        if (0 < DAT_TextEditorState::instance.activeHelpHotspotIndex) {
-                            iVar5 = MACRO_CALL_MEMBER(
-                                OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
-                                DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)
-                                    DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory
-                                        [DAT_TextEditorState::instance.activeHelpHotspotIndex + -1]);
-                            if (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5) {
-                                iVar6 = (iVar3 - iVar5) * 2;
-                                do {
-                                    /*
-                                      delete character in memory
-                                     */
-                                    *(WCHAR*)(iVar6 + (int)pWVar7) = pWVar7[iVar3];
-                                    if (DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3] == L'\0')
-                                        break;
-                                    iVar3 = iVar3 + 1;
-                                    iVar6 = iVar6 + 2;
-                                    pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
-                                } while (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5);
-                            }
-                            DAT_TextEditorState::instance.customHelpTextLength
-                                = DAT_TextEditorState::instance.customHelpTextLength - iVar5;
-                            DAT_TextEditorState::instance.activeHelpHotspotIndex
-                                = DAT_TextEditorState::instance.activeHelpHotspotIndex - iVar5;
+                        iVar3 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                        if (iVar3 <= 0)
+                            break;
+                        pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                        iVar6 = pWVar7[iVar3 + -1];
+                        iVar5 = MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
+                            DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)iVar6);
+                        if (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5) {
+                            iVar6 = (iVar3 - iVar5) * 2;
+                            do {
+                                /*
+                                  delete character in memory
+                                 */
+                                *(WCHAR*)(iVar6 + (int)pWVar7) = pWVar7[iVar3];
+                                pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
+                                if (pWVar7[iVar3] == L' ')
+                                    break;
+                                iVar3 = iVar3 + 1;
+                                iVar6 = iVar6 + 2;
+                            } while (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5);
                         }
+                        DAT_TextEditorState::instance.customHelpTextLength = DAT_TextEditorState::instance.customHelpTextLength - iVar5;
+                        DAT_TextEditorState::instance.activeHelpHotspotIndex = DAT_TextEditorState::instance.activeHelpHotspotIndex - iVar5;
                         break;
                     case 0xf9:
                         iVar5 = MACRO_CALL_MEMBER(
