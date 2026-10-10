@@ -38,7 +38,16 @@ namespace UI {
         {
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                if (param_1 == 0xd) {
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x427096),
+                  MSVC's sparse switch, and the `case 0xe` body sits first
+                 */
+                switch (param_1) {
+                case 0xe:
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    break;
+                case 0xd:
                     DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
@@ -50,9 +59,7 @@ namespace UI {
                         OpenSHC::UI::MenuTextInputState_Func::clearModalDialog2to6, DAT_MenuTextInputState::ptr)();
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
-                } else if (param_1 == 0xe) {
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    break;
                 }
             }
         }
