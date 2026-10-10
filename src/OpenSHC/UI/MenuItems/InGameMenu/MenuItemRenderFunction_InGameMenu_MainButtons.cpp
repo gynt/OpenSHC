@@ -320,12 +320,12 @@ namespace UI {
                     (ushort)((int)(COL_BLACK::instance.shortValue)));
                 return;
             }
-            if (param_1 != 0x47) {
-                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+            if (param_1 == 0x47) {
+                MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScribeFrame)();
+                MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGoldValue)();
                 return;
             }
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScribeFrame)();
-            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGoldValue)();
+            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         }
 
     }
