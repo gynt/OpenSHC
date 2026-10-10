@@ -537,6 +537,27 @@ Diff patterns that were reliable (more in the cheat sheet):
   `DAT_ChatMessageReceiverArray` and then sets each with its own branch (0x48f6af..0x48f741) - Ghidra had
   kept the branch for the last slot only, which is the tell. Where the original *does* use `setcc`
   (`OnlineVoteQuitAndQuitGame_Main` has eight of them for eight sites) leave it alone.
+  `scan_setcc.py` lists every function with a comparison-assignment and no `setcc` in the original,
+  but the absence of `setcc` is necessary and **not** sufficient, and the extra condition is what makes
+  the check decidable: the flag has to be used as a *number*. A flag that is only **tested**
+  (`if (bVar4)`, `if (!bVar4)`) folds into a branch by itself, emits no `setcc` either way and has
+  nothing to fix - that is what `InGameMenu_MainButtons`, `BuildingAndStatusMenu_MercenaryPostPortraits`,
+  `UnusedSetName_ButtonsUnk` and `MapEditorLandscaping_QueueCommandCallback` all turned out to be. A
+  flag used in arithmetic may also already match: `MenuItemRenderFunction_GameplayOptions_Buttons` has
+  `0xe - (uint)(field != 0)` and the original does `neg al; sbb eax, eax; add eax, 0xe`, which is that
+  same expression. Of twelve candidates only two were real, and both were large:
+  `MenuItemRenderFunction_BuildingAndStatusMenu_WorkshopWeaponSelection` **31.2% -> 61.2%** and its
+  action handler 90.2% -> 97.5%. There the six weapon arms each do their own
+  `cmp dword ptr [DAT_GameCore+N], 0` and jump to one shared tail (L1 at 0x465124, L6 at 0x465257),
+  which is MSVC cross-jumping six identical `if (field == 0) { ...; return; }` bodies - and the `return`
+  Ghidra dropped there made the store dead, so **a weapon that could not be produced was never greyed
+  out in the workshop menu**.
+  `MenuItemRenderFunction_MapEditorProperties_MainButtons` is the counter-example to keep in mind: its
+  flag *is* used numerically (`iVar1 + (uint)bVar4`) and the original *does* use the branch form
+  (`xor edi, edi` ... `jne L9; mov edi, ebp` at 0x42e9ab), yet writing that form measured
+  0.5415 -> 0.4483 on `quick_diff.py`'s ratio, and 0.4428 with the stray `return`s left in to isolate
+  the change. That function now has two separate rewrites that read correctly off the binary and both
+  lose, the other being `undrop_fallthrough` (53.2% -> 17.6%); treat it as settled.
 - A chain of `sub reg, K; je` with no loop around it is MSVC's **sparse switch**, not an if/else chain:
   `sub eax, 0xd; je; sub eax, 5; je; sub eax, 2; je` is `switch (x) { case 0xd: case 0x12: case 0x14: }`.
   The arm that is reached by falling through the chain is `default:`, and the physical order of the bodies
