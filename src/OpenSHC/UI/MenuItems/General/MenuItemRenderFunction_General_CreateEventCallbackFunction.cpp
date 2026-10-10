@@ -119,11 +119,6 @@ namespace UI {
                 keepOffsetX = FALSE;
                 fontSize = 0x12;
                 iVar1 = (int)DAT_ButtonW::instance / 2 + -0xf + DAT_ButtonX::instance;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    color = 0xc2f0eb;
-                } else {
-                    color = 0xccfaff;
-                }
                 alignment = OpenSHC::Text::TTA_CENTER;
                 /*
                   "Bandits"
@@ -131,7 +126,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
-                    iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    iVar1, yParam, alignment, (DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff),
+                    fontSize, keepOffsetX, blendStrength);
                 iVar1 = DAT_TextManagerObject::instance.currentXOffset_0x0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ",
