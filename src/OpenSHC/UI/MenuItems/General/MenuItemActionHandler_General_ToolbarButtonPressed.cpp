@@ -115,6 +115,8 @@ namespace UI {
             DAT_00b96110::instance = 0;
             if (0x11f < (int)buttonID) {
                 switch (buttonID) {
+                default:
+                    goto switchD_00444907_caseD_122;
                 case OpenSHC::Commands::M_MAPPER_STANCE_DEFENSIVE:
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
                         DAT_TribesState::instance.DAT_CurrentTribeID, 1);
@@ -122,8 +124,8 @@ namespace UI {
                 case OpenSHC::Commands::M_MAPPER_STANCE_AGGRESSIVE:
                     uVar6 = 2;
                     goto LAB_00444927;
-                default:
-                    goto switchD_00444907_caseD_122;
+                case OpenSHC::Commands::M_MAPPER_ARAB_BALLISTA:
+                    goto switchD_00444907_caseD_166;
                 case OpenSHC::Commands::M_MAPPER_ENGINEER_BUILD:
                     uVar5 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
@@ -170,8 +172,6 @@ namespace UI {
                 case OpenSHC::Commands::M_MAPPER_BUILD_BACK:
                     DAT_UnitsState::instance.hasEngineerSelected = FALSE;
                     return;
-                case OpenSHC::Commands::M_MAPPER_ARAB_BALLISTA:
-                    goto switchD_00444907_caseD_166;
                 }
             }
             if (buttonID == OpenSHC::Commands::M_MAPPER_STANCE_STAND) {
@@ -194,6 +194,21 @@ namespace UI {
                     return;
                 }
                 break;
+            case OpenSHC::Commands::M_MAPPER_DELETE:
+                DAT_TileMapState::instance.field151_0x554998 = 0;
+                break;
+            case OpenSHC::Commands::M_MAPPER_MOAT:
+                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
+                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
+                    buttonID = OpenSHC::Commands::M_MAPPER_DUGMOAT;
+                }
+                break;
+            case OpenSHC::Commands::M_MAPPER_ANTIMOAT:
+                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
+                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
+                    buttonID = OpenSHC::Commands::M_MAPPER_UNDUGMOAT;
+                }
+                break;
             case OpenSHC::Commands::M_MAPPER_TOTEST:
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING, 0);
@@ -212,30 +227,17 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(1);
                 DAT_TribesState::instance.rallyCount = 1;
                 return;
-            case OpenSHC::Commands::M_MAPPER_DELETE:
-                DAT_TileMapState::instance.field151_0x554998 = 0;
-                break;
-            case OpenSHC::Commands::M_MAPPER_STORES:
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
-                    DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 1);
-                iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .stockpile.id;
-                goto LAB_004445d7;
-            case OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION:
-                uVar5 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected, DAT_UnitsState::ptr)();
-                goto joined_r0x00444948;
-            case OpenSHC::Commands::M_MAPPER_TRADEPOST:
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
-                    DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 7);
-                iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .marketplace.id;
-                goto LAB_004445d7;
             case OpenSHC::Commands::M_MAPPER_GRANARY:
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
                     DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 2);
                 iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .granary.id;
+                goto LAB_004445d7;
+            case OpenSHC::Commands::M_MAPPER_STORES:
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
+                    DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 1);
+                iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .stockpile.id;
                 goto LAB_004445d7;
             case OpenSHC::Commands::M_MAPPER_ARMOURY:
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
@@ -275,22 +277,20 @@ namespace UI {
                         (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar3].y + 1)));
                 }
                 break;
-            case OpenSHC::Commands::M_MAPPER_MOAT:
-                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
-                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                    buttonID = OpenSHC::Commands::M_MAPPER_DUGMOAT;
-                }
-                break;
-            case OpenSHC::Commands::M_MAPPER_ANTIMOAT:
-                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
-                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                    buttonID = OpenSHC::Commands::M_MAPPER_UNDUGMOAT;
-                }
-                break;
+            case OpenSHC::Commands::M_MAPPER_TRADEPOST:
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::validateBuildingCategoryReference,
+                    DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, 7);
+                iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .marketplace.id;
+                goto LAB_004445d7;
             case OpenSHC::Commands::M_MAPPER_HEADS:
                 DAT_TileMapState::instance.field193_0x554a1c = (int)SEC_RNG::instance.currentNumber1 % 7;
                 MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                 break;
+            case OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION:
+                uVar5 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected, DAT_UnitsState::ptr)();
+                goto joined_r0x00444948;
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1A:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1B:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1C:
