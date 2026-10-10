@@ -95,9 +95,9 @@ namespace UI {
                         }
                         goto LAB_004315c1;
                     case OpenSHC::Commands::M_MAPPER_AFFECT_TYPE:
-                        DAT_TileMapState::instance.unknownZero_0x554904
-                            = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
-                        if (1 < (int)DAT_TileMapState::instance.unknownZero_0x554904) {
+                        brush = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
+                        DAT_TileMapState::instance.unknownZero_0x554904 = brush;
+                        if (1 < brush) {
                             DAT_TileMapState::instance.unknownZero_0x554904 = 0;
                         }
                         return;
@@ -156,7 +156,6 @@ namespace UI {
                     case OpenSHC::Commands::M_MAPPER_MAP_SIZE:
                         if (DAT_TileMapState::instance.mapSize == 0) {
                             DAT_TileMapState::instance.mapSize = 400;
-                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setMapSize, DAT_TileMapState::ptr)(
                             DAT_TileMapState::instance.mapSize);
@@ -186,27 +185,28 @@ namespace UI {
                             DAT_TileMapState::instance.currentMapperCommand
                                 = (OpenSHC::Commands::MappersEnum)((DAT_GameCore::instance.mapU2MiddleBytes[1] != 0)
                                     + OpenSHC::Commands::M_MAPPER_KEEP1);
+                            return;
                         }
                         DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_KEEP3;
                         return;
                     default:
-                        break;
-                    case OpenSHC::Commands::M_MAPPER_TEST:
-                        break;
-                    }
-                    if (DAT_TileMapState::instance.editorActiveBrush == 2) {
+                        DAT_GameSynchronyState::instance.field299_0x109e7c = 1;
                         DAT_TileMapState::instance.currentMapperCommand = param_1;
+                        return;
+                    case OpenSHC::Commands::M_MAPPER_TEST:
+                        return;
+                    }
+                    DAT_TileMapState::instance.currentMapperCommand = param_1;
+                    if (DAT_TileMapState::instance.editorActiveBrush == 2) {
                         DAT_TileMapState::instance.editorActiveBrush = 3;
                         return;
                     }
                 LAB_00431642:
-                    DAT_TileMapState::instance.currentMapperCommand = param_1;
                     if (DAT_TileMapState::instance.editorActiveBrush == 4) {
                         DAT_TileMapState::instance.editorActiveBrush = 5;
                         return;
                     }
                 LAB_00431652:
-                    DAT_TileMapState::instance.currentMapperCommand = param_1;
                     if (DAT_TileMapState::instance.editorActiveBrush == 6) {
                         DAT_TileMapState::instance.editorActiveBrush = 7;
                     }
