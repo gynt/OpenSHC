@@ -55,8 +55,8 @@ namespace UI {
              */
             switch (param_1) {
             case 1:
-                if ((7 < DAT_TileMapState::instance.editorActiveBrush)
-                    || (DAT_TileMapState::instance.editorActiveBrush < 1)) {
+                if ((7 < (int)DAT_TileMapState::instance.editorActiveBrush)
+                    || ((int)DAT_TileMapState::instance.editorActiveBrush < 1)) {
                     DAT_TileMapState::instance.editorActiveBrush = 1;
                 }
                 uVar2 = DAT_TileMapState::instance.editorActiveBrush * 3 - 3;
