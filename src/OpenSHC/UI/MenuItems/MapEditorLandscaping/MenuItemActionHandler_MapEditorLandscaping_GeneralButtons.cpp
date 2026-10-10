@@ -97,7 +97,7 @@ namespace UI {
                     case OpenSHC::Commands::M_MAPPER_AFFECT_TYPE:
                         DAT_TileMapState::instance.unknownZero_0x554904
                             = DAT_TileMapState::instance.unknownZero_0x554904 + 1;
-                        if (1 < DAT_TileMapState::instance.unknownZero_0x554904) {
+                        if (1 < (int)DAT_TileMapState::instance.unknownZero_0x554904) {
                             DAT_TileMapState::instance.unknownZero_0x554904 = 0;
                         }
                         return;
