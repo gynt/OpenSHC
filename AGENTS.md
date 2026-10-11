@@ -854,6 +854,31 @@ Diff patterns that were reliable (more in the cheat sheet):
   22.8% -> **22.2%**, i.e. the proxy preferred the wrong structure by a wide margin. That is the second
   function where `quick_diff.py` moves confidently in the opposite direction to reccmp, after
   `MenuItemRenderFunction_LobbyMenu_NonBoxedButtons`; both are large switches with a shared tail.
+- `MenuItemRenderFunction_General_AdvancedGameOptions` is the fourth failed attempt, but the *cause* of
+  its 490-instruction displacement is now identified, so the next attempt can start from evidence
+  instead of guessing. The original's two cross-jumps run **forward**: `jmp L25` at 0x428eef from the
+  end of the `-0xa` arm into the `-0xe` arm's tail, and `jmp L29` at 0x428f23 from the end of the `-0xb`
+  arm into the `0x63` arm's tail. Our source owns both tails in the *opposite* arms
+  (`LAB_00428ffd` inside `-0xa`, `LAB_00429086` inside `-0xb`) with `-0xe` and `99` jumping backwards to
+  them, which is what puts half the function in the wrong place; Ghidra also renders the flat chain
+  inside-out as `if (param_1 != -0xe) { if (param_1 != 99) { <the other eight arms> } <99 body> }
+  <-0xe body>`, where the original tests `-0xb, -0xd, -0xe, 0x63, -0xc, 0xe, 0xf, 0x52, 0x5e, 0x64` flat
+  (L20, L21, L24, L28, L32, L39, L40, L41, L45). Swapping label ownership across three interlocking
+  tails in a 464-line chain is the work; the `-0xe` arm tests two flags where `-0xa` tests one, so the
+  shared block is not textually identical in the two arms.
+  One behaviour bug in it is fixed and cost 1.3 points: the icon-choice block shared by the No Dogs and
+  Strong Walls toggles had `else { iVar1 = 0xce; return; }`, but L29 (0x429086) is
+  `mov [drawBuffer], ebx; je L30` and both paths converge on the renderGM at L31 (0x4290c8), so the
+  store was dead and the icon never drew in its on state.
+- **Check upstream before doing the work.** Every `reimplement:` commit subject carries the match
+  percentage its author measured, so `git log -1 --format=%s upstream/reimpl/UI-MenuItems -- <file>`
+  says how good their version is. Across all 228 functions of this namespace upstream was ahead on
+  exactly one, `MenuItemRenderFunction_CustomScenarios_Main` at 64.0% against our 61.2% - and only
+  because it still has the empty-guard artefact we deliberately fixed (`if (DAT_UnknownGFXIndex == 1)
+  {}` where 0x426060 is `cmp dword ptr [DAT_UnknownGFXIndex], 1; je L12` and L12 at 0x4261dc is a bare
+  `ret`). Note the MenuItems work exists only on that branch: `upstream/main` and `upstream/development`
+  do not contain these files at all. The percentages were measured on another build, so treat them as a
+  pointer to a version worth reading rather than as comparable numbers.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
