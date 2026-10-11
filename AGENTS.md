@@ -901,6 +901,22 @@ Diff patterns that were reliable (more in the cheat sheet):
   were correct and led me to close this function as "not arm ordering"; the preamble says the split
   itself was the artefact. The same habit found `QueueCommandCallback`'s `default: return;` and
   `AdvancedGameOptions`' displacement.
+  The rule generalises, and the **jump-table count is the discriminator**: scan for two `switch (X)` on
+  the same expression, then compare with the number of tables `switch_order.py` reports. One table
+  against two switches means the split is MSVC's and they should be merged; two tables means they are
+  genuinely two switches. Of twelve files in `UI::MenuItems` with two switches on one expression, only
+  two were real merges - this one and `MenuItemRenderFunction_NewEventCondition_Main`, whose preamble
+  `cmp edx, 0x1388; jg L22; cmp edx, 0xd1; jg L24; je L5; lea eax, [edx + 1]` is one switch spanning
+  -1..2002, worth **59.2% -> 61.7%** merged in address order (-1, 0x7e, 0x13, 0x68, 0xd1, the 0xbe
+  group, the 0x6a group, 1001, 1000, 2000, `default`, 2002, 2001). Two of its `goto`s become
+  fall-throughs once it is one switch. The other ten are not mergeable for three distinct reasons worth
+  recognising: the original has two tables; the two switches sit in different arms of an *outer* switch
+  (`SoundOptions_VolumeSlider`); or the switched variable is reassigned between them
+  (`SaveLoadMap_TableHeader`'s `param_1 = -1 - param_1`).
+  Two compile errors are the normal hazards of the merge. A declaration with an initialiser inside an
+  arm (`int iVar3 = 0;`) cannot be jumped over by the later `case` labels - C2360 - so hoist it to the
+  locals. And two `default:`s give C2048; where both targeted the same block, keep the one at the
+  position the table gives.
 - A single `jmp <callee>` in the original where we emit `call` at the same place **is** sound evidence
   of a dropped `return;`, even though the aggregate tail-call count is not (see the artefact note
   above). `MenuItemActionHandler_General_ToolbarButtonPressed` at 0x44449f is
