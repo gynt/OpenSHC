@@ -879,6 +879,34 @@ Diff patterns that were reliable (more in the cheat sheet):
   `ret`). Note the MenuItems work exists only on that branch: `upstream/main` and `upstream/development`
   do not contain these files at all. The percentages were measured on another build, so treat them as a
   pointer to a version worth reading rather than as comparable numbers.
+- **Two switches on the same value are often one switch in the original.** MSVC splits a sparse
+  `switch` by binary search, so a single switch whose cases span a wide range emits a three-way compare
+  *before* a table that covers only part of the case set - which reads exactly like a hand-written
+  `if (K < x) { switch (x) {...} } switch (x) {...}`. `MenuItemActionHandler_General_ToolbarButtonPressed`
+  dispatches `cmp esi, 0x11f; jg L15; je L14; lea edx, [esi - 0x19]; cmp edx, 0xa9; ja L8;
+  jmp [lower table]` at 0x4444c8, with the upper table's own dispatch at L15 (0x4448f1) and the single
+  `== 0x11f` case at L14 (0x4448ee). Merging our two switches into one - lower arms, then the `== 0x11f`
+  case, then the upper arms, in the order the addresses give - reproduced that preamble instruction for
+  instruction and was worth **56.9% -> 65.0%** (normalized 41.7% -> 50.8%).
+  The tell is a table whose `cmp <bound>` covers fewer values than the function has cases, with a
+  `jg`/`je` pair in front of it. Moving the blocks without merging only reached 0.5858 on
+  `quick_diff.py` against 0.6121 for the merge, because MSVC lays the *first-tested* branch inline and
+  an `if (K < x) goto` makes that the wrong one - so check the generated dispatch, not just the score.
+  Two preconditions made the merge safe: every arm of the upper switch exits (six `return;`/`goto`, no
+  `break;`), and the two `default:`s already agreed - the lower switch had none and fell into
+  `switchD_00444907_caseD_122`, which is where the upper switch's `default:` went. Also note the shared
+  `queueUnitStance` call is L16, *inside* the upper arms, with L14 jumping forward into it; ours owned
+  it in the `== 0x11f` block, the same tail-ownership inversion as `AdvancedGameOptions`.
+  **Read the dispatch preamble before the arms.** Checking each switch's arm order separately said both
+  were correct and led me to close this function as "not arm ordering"; the preamble says the split
+  itself was the artefact. The same habit found `QueueCommandCallback`'s `default: return;` and
+  `AdvancedGameOptions`' displacement.
+- A single `jmp <callee>` in the original where we emit `call` at the same place **is** sound evidence
+  of a dropped `return;`, even though the aggregate tail-call count is not (see the artefact note
+  above). `MenuItemActionHandler_General_ToolbarButtonPressed` at 0x44449f is
+  `pop edi; pop esi; pop ebx; jmp SetTutorialHintActiveWithTimestamp`, so that guard returns; ours
+  showed the tutorial hint and then went on to handle the button, letting an action the tutorial
+  disallows execute anyway.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
