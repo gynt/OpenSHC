@@ -195,6 +195,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SET_TERRAIN);
+                return;
             }
             switch (DAT_TileMapState::instance.currentMapperCommand) {
             case OpenSHC::Commands::M_MAPPER_DELETE:
@@ -456,8 +457,9 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                     = DAT_TileMapState::instance.currentMapperCommand;
                 commandType = OpenSHC::Commands::GCT_CREATE_ANIMAL;
-            default:
                 break;
+            default:
+                return;
             }
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _clickedX;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _clickedY;
