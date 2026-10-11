@@ -125,6 +125,7 @@ namespace UI {
                         MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                         DAT_ButtonUnknownZero::instance = 0;
+                        return;
                     }
                 }
                 break;
@@ -240,6 +241,7 @@ namespace UI {
                             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
+                            return;
                         }
                     }
                 }
