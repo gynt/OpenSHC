@@ -253,7 +253,6 @@ namespace UI {
                         iVar1 = 0xd0;
                     } else {
                         iVar1 = 0xce;
-                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, iVar1,
