@@ -48,14 +48,14 @@ namespace UI {
                 iVar5 = DAT_TextEditorState::instance.topVisibleLineIndex
                     - DAT_TextEditorState::instance.dialogContentHeight;
                 iVar4 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                if (iVar4 < (((iVar5 < 1) - 1 & iVar5) - 0x12)) {
+                if (iVar4 < (((iVar5 <= 0) - 1 & iVar5) - 0x12)) {
                     iVar4 = iVar4 + 0x12;
-                    if (iVar4 <= ((iVar5 < 1) - 1 & iVar5)) {
+                    if (iVar4 <= ((iVar5 <= 0) - 1 & iVar5)) {
                         DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar4;
                         return;
                     }
                 }
-                DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 < 1) - 1 & iVar5;
+                DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 <= 0) - 1 & iVar5;
                 return;
             case -3:
                 if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
