@@ -823,6 +823,17 @@ Diff patterns that were reliable (more in the cheat sheet):
   since an arm that jumps past the tail is correct as written
   (`MenuItemRenderFunction_BuildMenu_CurrentlySelectedTroops`'s `default:` arm is that case). With that
   filter the namespace is clean apart from the two fixed here.
+- **Do not build a check on tail calls.** Counting `jmp <callee>` against `call <callee>` looks like it
+  should find dropped `return;`s, and it produces a confident-looking ranking - 57 functions "short",
+  led by `MenuItemActionHandler_TextEditor_Buttons` at 14 against our 0 - but every number in it is a
+  rendering artefact. `quick_diff.py` normalises a jump target to the bare letter `L` and a call target
+  to `F`, so a regex written for one side counts internal jumps on the other; `orig_disasm.py` prints
+  real symbol names; and `reccmp_report.py diff` renders the *original's* tail jump as a relative
+  displacement (`jmp 0x3b`) while giving *ours* the symbol
+  (`jmp <OpenSHC::Text::TextEditorState::initializeAndLayoutHelpText>`). In `TextEditor_Buttons` both
+  sides tail-call about fifteen times; the deficit was never real. Check any cross-tool count against a
+  second renderer before trusting it - this is the same trap as the note above about `orig_disasm.py`'s
+  operand text versus capstone's raw `op_str`.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
