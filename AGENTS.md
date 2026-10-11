@@ -807,6 +807,22 @@ Diff patterns that were reliable (more in the cheat sheet):
   form anyway. That is consistent with the note above about values feeding comparisons against
   constants; a register reused across a *call* is the case that needs a source change, not a register
   reused across comparisons.
+- The dead-store shape has a **third form** that none of the existing checks can see: an arm that
+  stores `X = A` and then **`break`s**, where the statement after the switch's closing brace is
+  `X = B`. MSVC deletes the arm's store, so the flag ends up `B` where the original leaves it `A`.
+  `find_dead_store.py` cannot see it because the two stores are not adjacent; `diff_ret_count.py`
+  cannot, because `break` and `return` both count as exits; and `quick_diff.py`'s ratio does not move
+  at all (0.5751 either way on the function below). Only the arm's last instruction in the binary
+  settles it. In `MenuItemRenderFunction_BuildMenu_UnitActionButtons` the catapult/trebuchet path
+  (0x438cb8) and the engineer-carrying-a-resource path (0x438e19) both end
+  `mov dword ptr [DAT_ButtonUnknownZero], edi; pop edi; pop esi; ret` with `edi` zero, while the
+  `= 1` tail is `L11` at 0x439048 (`mov dword ptr [DAT_ButtonUnknownZero], esi` with `esi` one) - which
+  is exactly what `break` compiles to. Two build-menu buttons were greyed out as a result. The fix
+  costs 0.6 points (39.7% -> 39.1%) and is kept under the priority order at the top of this file.
+  `find_break_dead_store.py` finds the sites; it must ignore a store followed by `return;` or `goto`,
+  since an arm that jumps past the tail is correct as written
+  (`MenuItemRenderFunction_BuildMenu_CurrentlySelectedTroops`'s `default:` arm is that case). With that
+  filter the namespace is clean apart from the two fixed here.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
