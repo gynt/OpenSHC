@@ -834,6 +834,26 @@ Diff patterns that were reliable (more in the cheat sheet):
   sides tail-call about fifteen times; the deficit was never real. Check any cross-tool count against a
   second renderer before trusting it - this is the same trap as the note above about `orig_disasm.py`'s
   operand text versus capstone's raw `op_str`.
+- A `switch` whose `default:` is `break;` hides two things at once, and
+  `MenuItemActionHandler_MapEditorLandscaping_QueueCommandCallback` had both. Read the dispatch
+  preamble, not just the table: 0x443cc0 is
+  `cmp edx, 0x154; jg L29; je L28; mov edi, 2; sub edx, edi; cmp edx, 0xdf; ja L34; jmp [table]`, and
+  L34 (0x44429d) is a bare `pop/pop/pop/ret`.
+  - **`default:` is a `return;`**, not a fall-through into the shared tail. Ours fell through with the
+    command-type local never assigned, so any mapper command outside 2..0xe1 queued a garbage command.
+  - **the `== 0x154` arm (`M_MAPPER_DUNES`, L28 at 0x444223) ends in `ret`** at 0x44425d. Ours queued
+    `GCT_SET_TERRAIN` and then fell into the switch, where 0x154 is out of the table's range, reaching
+    `default: break;` and queueing a *second* command with the unassigned type. Painting dunes fired
+    two commands.
+  Changing `default: break;` to `default: return;` is **not** a local edit: any arm that falls into
+  `default:` loses its path to the tail. Here `M_MAPPER_SEAGULL` set the command type and fell through,
+  so it needed its own `break;` first - without it the animal command would never have been queued, a
+  new bug introduced while fixing one. This is the same hazard as the last arm of a reordered switch.
+  Worth 22.8% -> 23.3%, and the faithful form also scored best; an earlier variant that duplicated L29
+  into `default:` read 0.3274 on `quick_diff.py` against the faithful 0.3363, and on reccmp measured
+  22.8% -> **22.2%**, i.e. the proxy preferred the wrong structure by a wide margin. That is the second
+  function where `quick_diff.py` moves confidently in the opposite direction to reccmp, after
+  `MenuItemRenderFunction_LobbyMenu_NonBoxedButtons`; both are large switches with a shared tail.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
