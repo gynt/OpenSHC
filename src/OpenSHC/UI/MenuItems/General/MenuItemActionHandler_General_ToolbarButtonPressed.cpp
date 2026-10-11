@@ -106,6 +106,7 @@ namespace UI {
                 BVar2 = MACRO_CALL(OpenSHC::Game_Func::Tutorial_IsActionAllowed)(1, (int)((int)(BVar1)));
                 if (BVar2 == FALSE) {
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
+                    return;
                 }
                 BVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
@@ -113,73 +114,6 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTutorialBuildingActionState)(6, BVar1);
             }
             DAT_00b96110::instance = 0;
-            if (0x11f < (int)buttonID) {
-                switch (buttonID) {
-                default:
-                    goto switchD_00444907_caseD_122;
-                case OpenSHC::Commands::M_MAPPER_STANCE_DEFENSIVE:
-                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
-                        DAT_TribesState::instance.DAT_CurrentTribeID, 1);
-                    return;
-                case OpenSHC::Commands::M_MAPPER_STANCE_AGGRESSIVE:
-                    uVar6 = 2;
-                    goto LAB_00444927;
-                case OpenSHC::Commands::M_MAPPER_ARAB_BALLISTA:
-                    goto switchD_00444907_caseD_166;
-                case OpenSHC::Commands::M_MAPPER_ENGINEER_BUILD:
-                    uVar5 = MACRO_CALL_MEMBER(
-                        OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                    if (uVar5 == 0) {
-                        iVar3 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::countSelectedCatapultsAndTrebuchets,
-                            DAT_UnitsState::ptr)();
-                        if (iVar3 == 0) {
-                            DAT_StopHandlingMenuItems::instance = 0;
-                            return;
-                        }
-                        if (iVar3 == 1) {
-                            /*
-                              Maybe refill catapult/tripok stones? - TheRedDaemon
-                             */
-                            if (DAT_GameState::instance
-                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                    .currentResources[4]
-                                < 10) {
-                                MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
-                                    DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
-                            }
-                            DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                = DAT_UnitsState::instance.field15_0x560;
-                            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0;
-                            MACRO_CALL_MEMBER(
-                                OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                                (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN2
-                                    | OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
-                        }
-                        if (iVar3 == 2) {
-                            DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                = DAT_TribesState::instance.DAT_CurrentTribeID;
-                            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 1;
-                            MACRO_CALL_MEMBER(
-                                OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                                (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN2
-                                    | OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
-                        }
-                    }
-                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
-                    DAT_UnitsState::instance.hasEngineerSelected = TRUE;
-                    return;
-                case OpenSHC::Commands::M_MAPPER_BUILD_BACK:
-                    DAT_UnitsState::instance.hasEngineerSelected = FALSE;
-                    return;
-                }
-            }
-            if (buttonID == OpenSHC::Commands::M_MAPPER_STANCE_STAND) {
-                uVar6 = 0;
-            LAB_00444927:
-                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
-                    DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar6)));
-            }
             switch (buttonID) {
             case OpenSHC::Commands::M_MAPPER_WALL:
             case OpenSHC::Commands::M_MAPPER_CRENAL:
@@ -316,6 +250,66 @@ namespace UI {
             case OpenSHC::Commands::M_MAPPER_BATTERING_RAM:
             case OpenSHC::Commands::M_MAPPER_PORTABLE_SHIELD:
                 goto switchD_00444907_caseD_166;
+            case OpenSHC::Commands::M_MAPPER_STANCE_STAND:
+                uVar6 = 0;
+                goto LAB_00444927;
+            case OpenSHC::Commands::M_MAPPER_STANCE_DEFENSIVE:
+                uVar6 = 1;
+            LAB_00444927:
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::queueUnitStance, DAT_TribesState::ptr)(
+                    DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar6)));
+                return;
+            case OpenSHC::Commands::M_MAPPER_STANCE_AGGRESSIVE:
+                uVar6 = 2;
+                goto LAB_00444927;
+            case OpenSHC::Commands::M_MAPPER_ARAB_BALLISTA:
+                goto switchD_00444907_caseD_166;
+            case OpenSHC::Commands::M_MAPPER_ENGINEER_BUILD:
+                uVar5 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                if (uVar5 == 0) {
+                    iVar3 = MACRO_CALL_MEMBER(
+                        OpenSHC::Map::Units::UnitsState_Func::countSelectedCatapultsAndTrebuchets,
+                        DAT_UnitsState::ptr)();
+                    if (iVar3 == 0) {
+                        DAT_StopHandlingMenuItems::instance = 0;
+                        return;
+                    }
+                    if (iVar3 == 1) {
+                        /*
+                          Maybe refill catapult/tripok stones? - TheRedDaemon
+                         */
+                        if (DAT_GameState::instance
+                                .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                .currentResources[4]
+                            < 10) {
+                            MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
+                                DAT_MissingResourceState::ptr)(1, OpenSHC::Audio::SFX::RLSFX_STONE);
+                        }
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0
+                            = DAT_UnitsState::instance.field15_0x560;
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                            (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN2
+                                | OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
+                    }
+                    if (iVar3 == 2) {
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0
+                            = DAT_TribesState::instance.DAT_CurrentTribeID;
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 1;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                            (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_UNKNOWN2
+                                | OpenSHC::Commands::GCT_MULTIPLAYER_INITIATE_ANNOUNCE_HOST));
+                    }
+                }
+                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
+                DAT_UnitsState::instance.hasEngineerSelected = TRUE;
+                return;
+            case OpenSHC::Commands::M_MAPPER_BUILD_BACK:
+                DAT_UnitsState::instance.hasEngineerSelected = FALSE;
+                return;
             }
         switchD_00444907_caseD_122:
             BVar1 = MACRO_CALL_MEMBER(
