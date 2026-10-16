@@ -45,7 +45,7 @@ namespace Synchrony {
             int iVar3 = this->chatMessageRenderIndex;
             if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
                 DWORD DVar1 = timeGetTime();
-                if ((int)(DVar1 - this->DAT_ChatEventArray[iVar3].time) < 0x2711) {
+                if ((int)(DVar1 - this->DAT_ChatEventArray[iVar3].time) <= 0x2710) {
                     iVar5 = this->DAT_ChatEventArray[iVar3].subjectPlayer;
                     _lordID = DAT_GameState::instance.playerDataArray[iVar5].lordID;
                     iVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
