@@ -21,6 +21,7 @@
 #include "OpenSHC/Globals/Menu_LobbyMenu.hpp"
 
 #include "stdlib.h"
+#include "string.h"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -120,37 +121,8 @@ namespace Synchrony {
                             } else {
                                 _connectArgLength = 0x1d;
                             }
-                            this->connectTarget[0] = '\0';
-                            this->connectTarget[1] = '\0';
-                            this->connectTarget[2] = '\0';
-                            this->connectTarget[3] = '\0';
-                            this->connectTarget[4] = '\0';
-                            this->connectTarget[5] = '\0';
-                            this->connectTarget[6] = '\0';
-                            this->connectTarget[7] = '\0';
-                            this->connectTarget[8] = '\0';
-                            this->connectTarget[9] = '\0';
-                            this->connectTarget[10] = '\0';
-                            this->connectTarget[0xb] = '\0';
-                            this->connectTarget[0xc] = '\0';
-                            this->connectTarget[0xd] = '\0';
-                            this->connectTarget[0xe] = '\0';
-                            this->connectTarget[0xf] = '\0';
-                            this->connectTarget[0x10] = '\0';
-                            this->connectTarget[0x11] = '\0';
-                            this->connectTarget[0x12] = '\0';
-                            this->connectTarget[0x13] = '\0';
-                            this->connectTarget[0x14] = '\0';
-                            this->connectTarget[0x15] = '\0';
-                            this->connectTarget[0x16] = '\0';
-                            this->connectTarget[0x17] = '\0';
+                            memset(this->connectTarget, 0, 30);
                             _charIndex3 = 0;
-                            this->connectTarget[0x18] = '\0';
-                            this->connectTarget[0x19] = '\0';
-                            this->connectTarget[0x1a] = '\0';
-                            this->connectTarget[0x1b] = '\0';
-                            this->connectTarget[0x1c] = '\0';
-                            this->connectTarget[0x1d] = '\0';
                             if (0 < _connectArgLength) {
                                 do {
                                     _char = _candidates[1][_charIndex3];
