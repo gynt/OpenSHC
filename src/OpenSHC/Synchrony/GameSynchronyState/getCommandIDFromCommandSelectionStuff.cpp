@@ -46,7 +46,7 @@ namespace Synchrony {
                     this->selectedGameCommands[this->someIndex][0] = _currentIndexCounter;
                     this->selectedGameCommands[this->someIndex][1] = this->protocolInvokerPlayerID;
                     this->someIndex = this->someIndex + 1;
-                    if (99 < this->someIndex)
+                    if (this->someIndex >= 100)
                         break;
                 }
                 _currentIndexCounter = _currentIndexCounter + 1;
