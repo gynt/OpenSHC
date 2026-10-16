@@ -113,7 +113,8 @@ namespace Synchrony {
             pHVar6 = (HashContainerElement*)&pHVar6->domain02;
             pbVar5 = pbVar5 + 1;
             if (14 < (int)puVar1) {
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(
                     Commands::GCT_SHARE_SYNC_STATUS);
             }
         } while (true);

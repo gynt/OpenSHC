@@ -22,6 +22,8 @@
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+
 namespace OpenSHC {
 namespace Synchrony {
 
@@ -464,7 +466,8 @@ namespace Synchrony {
         this->HASH_HashTotal[this->currentPlayerSlotID]
             = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
         if (!dontSendSyncCommand) {
-            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                DAT_GameSynchronyState::ptr)(
                 Commands::GCT_ANNOUNCE_PLAYER_INFORMATION_AVAILABLE_AIVSSPECIALTRANSMITLOGIC);
         }
     }

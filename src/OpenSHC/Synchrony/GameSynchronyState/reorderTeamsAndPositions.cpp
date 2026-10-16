@@ -148,10 +148,10 @@ namespace Synchrony {
                 }
                 if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)
                     && (DAT_GameSynchronyState::instance.isHost)) {
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                         (Commands::GameCommandType)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
                             | Commands::GCT_HOST_SHARE_LOBBY_STATE));
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                         Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
                 }
                 return (undefined4)(1);

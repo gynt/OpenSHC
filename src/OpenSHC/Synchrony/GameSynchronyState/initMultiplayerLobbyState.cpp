@@ -26,6 +26,8 @@
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_VideoBikQueue.hpp"
 
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+
 namespace OpenSHC {
 namespace Synchrony {
 
@@ -221,7 +223,8 @@ namespace Synchrony {
         this->field225_0x106ee4 = 1;
         MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDirectPlaySessionDescription, this)();
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+            DAT_GameSynchronyState::ptr)(
             Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
         DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(UI::Enums::MVT_LOBBY_MENU, 0);
