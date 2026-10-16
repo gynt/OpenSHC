@@ -17,20 +17,16 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048C7B0
     undefined4 GameSynchronyState::reorderTeamsAndPositions()
     {
-        char* pcVar1;
-        char* _playerGroupArray;
-        char* pcVar2;
         int iVar3;
         byte bVar4;
         int _counter2;
         int _counter3;
-        int* piVar5;
         int _counter;
+        int* piVar5;
         int* piVar6;
         int local_4c;
-        char* local_44;
+        int _bestSlot;
         int local_38[14];
-        int* _currentPlayerFullIdArray;
         byte _group;
         _counter2 = 0;
         for (int _slotIndex = 1; _slotIndex < 9; _slotIndex = _slotIndex + 1) {
@@ -72,56 +68,51 @@ namespace Synchrony {
         iVar3 = local_38[_counter];
         if (0 < iVar3) {
             if (iVar3 == local_38[0]) {
-                _playerGroupArray = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray;
-                iVar3 = 8;
-                do {
-                    _playerGroupArray = _playerGroupArray + 1;
-                    if (-1 < (char)*_playerGroupArray) {
-                        *_playerGroupArray = 0;
+                for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
+                    if (-1 < this->DAT_PlayerGroupArray[iVar3]) {
+                        this->DAT_PlayerGroupArray[iVar3] = 0;
                     }
-                    iVar3 = iVar3 + -1;
-                } while (iVar3);
+                }
                 local_38[_counter] = 0;
             LAB_0048c8b5:
                 _counter3 = 1;
-                _currentPlayerFullIdArray = local_38 + 2;
                 do {
-                    if ((_currentPlayerFullIdArray[-1] == 0) && (*_currentPlayerFullIdArray != 0)) {
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1] - 1;
+                    if ((local_38[_counter3] == 0) && (local_38[_counter3 + 1] != 0)) {
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[1]) {
+                            this->DAT_PlayerGroupArray[1]
+                                = this->DAT_PlayerGroupArray[1] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[2]) {
+                            this->DAT_PlayerGroupArray[2]
+                                = this->DAT_PlayerGroupArray[2] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[3]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[3]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[3] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[3]) {
+                            this->DAT_PlayerGroupArray[3]
+                                = this->DAT_PlayerGroupArray[3] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[4]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[4]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[4] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[4]) {
+                            this->DAT_PlayerGroupArray[4]
+                                = this->DAT_PlayerGroupArray[4] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[5]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[5]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[5] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[5]) {
+                            this->DAT_PlayerGroupArray[5]
+                                = this->DAT_PlayerGroupArray[5] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[6]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[6]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[6] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[6]) {
+                            this->DAT_PlayerGroupArray[6]
+                                = this->DAT_PlayerGroupArray[6] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[7]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[7]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[7] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[7]) {
+                            this->DAT_PlayerGroupArray[7]
+                                = this->DAT_PlayerGroupArray[7] - 1;
                         }
-                        if (_counter3 < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[8]) {
-                            DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[8]
-                                = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[8] - 1;
+                        if (_counter3 < (char)this->DAT_PlayerGroupArray[8]) {
+                            this->DAT_PlayerGroupArray[8]
+                                = this->DAT_PlayerGroupArray[8] - 1;
                         }
                         if (_counter3 + 1 < 5) {
-                            piVar5 = _currentPlayerFullIdArray;
-                            piVar6 = _currentPlayerFullIdArray + -1;
+                            piVar5 = local_38 + _counter3 + 1;
+                            piVar6 = local_38 + _counter3;
                             for (_counter = 5 - (_counter3 + 1); _counter != 0; _counter = _counter + -1) {
                                 *piVar6 = *piVar5;
                                 piVar5 = piVar5 + 1;
@@ -130,66 +121,29 @@ namespace Synchrony {
                         }
                     }
                     _counter3 = _counter3 + 1;
-                    _currentPlayerFullIdArray = _currentPlayerFullIdArray + 1;
                 } while (_counter3 < 4);
                 local_4c = 1;
                 if (0 < _counter2) {
-                    local_44 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray + 2;
                     do {
-                        pcVar2 = (char*)0xffffffff;
+                        _bestSlot = -1;
                         _group = 0xff;
-                        _currentPlayerFullIdArray = local_38 + 7;
-                        _playerGroupArray = local_44;
-                        do {
-                            bVar4 = _playerGroupArray[-1];
-                            if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[-1] == 0)) {
+                        for (_counter3 = 1; _counter3 < 9; _counter3 = _counter3 + 1) {
+                            bVar4 = this->DAT_PlayerGroupArray[_counter3];
+                            if ((-1 < (char)bVar4) && (local_38[_counter3 + 5] == 0)) {
                                 if (!bVar4) {
                                     bVar4 = 10;
                                 }
-                                if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b6);
+                                if ((char)bVar4 < (char)_group || _bestSlot == -1) {
+                                    _bestSlot = _counter3;
                                     _group = bVar4;
                                 }
                             }
-                            bVar4 = *_playerGroupArray;
-                            if ((-1 < (char)bVar4) && (*_currentPlayerFullIdArray == 0)) {
-                                if (!bVar4) {
-                                    bVar4 = 10;
-                                }
-                                if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b5);
-                                    _group = bVar4;
-                                }
-                            }
-                            bVar4 = _playerGroupArray[1];
-                            if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[1] == 0)) {
-                                if (!bVar4) {
-                                    bVar4 = 10;
-                                }
-                                if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b4);
-                                    _group = bVar4;
-                                }
-                            }
-                            bVar4 = _playerGroupArray[2];
-                            if ((-1 < (char)bVar4) && (_currentPlayerFullIdArray[2] == 0)) {
-                                if (!bVar4) {
-                                    bVar4 = 10;
-                                }
-                                if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b3);
-                                    _group = bVar4;
-                                }
-                            }
-                            pcVar1 = (char*)(_playerGroupArray + -0x1a275b2);
-                            _currentPlayerFullIdArray = _currentPlayerFullIdArray + 4;
-                            _playerGroupArray = _playerGroupArray + 4;
-                        } while ((int)pcVar1 < 9);
-                        if ((int)pcVar2 < 0)
+                        }
+                        if (_bestSlot < 0)
                             break;
-                        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[local_4c] = (byte)pcVar2;
+                        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[local_4c] = (byte)_bestSlot;
                         local_4c = local_4c + 1;
-                        local_38[(int)(pcVar2 + 5)] = 1;
+                        local_38[_bestSlot + 5] = 1;
                     } while (local_4c <= _counter2);
                 }
                 if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)
@@ -203,15 +157,11 @@ namespace Synchrony {
                 return (undefined4)(1);
             }
             if (iVar3 == 1) {
-                _playerGroupArray = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray;
-                iVar3 = 8;
-                do {
-                    _playerGroupArray = _playerGroupArray + 1;
-                    if ((char)*_playerGroupArray == _counter) {
-                        *_playerGroupArray = 0;
+                for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
+                    if (this->DAT_PlayerGroupArray[iVar3] == _counter) {
+                        this->DAT_PlayerGroupArray[iVar3] = 0;
                     }
-                    iVar3 = iVar3 + -1;
-                } while (iVar3);
+                }
                 local_38[_counter] = 0;
             }
         }

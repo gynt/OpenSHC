@@ -7,6 +7,7 @@
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -23,18 +24,21 @@ namespace Synchrony {
             BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 && !this->syncStatus && !this->saveRelated) {
                 DWORD DVar2 = timeGetTime();
-                if (this->skirmishAutoSaveEveryMinutes * 60000 < (int)(DVar2 - this->timeSkirmishGameStart)) {
+                if ((int)(DVar2 - this->timeSkirmishGameStart)
+                    > this->skirmishAutoSaveEveryMinutes * 60000) {
                     /*
                       autosave
                      */
-                    strcpy(this->shortMapName, "autosave");
-                    this->DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
                     this->lastAutoSaveTime = DVar2;
                     this->timeSkirmishGameStart = DVar2;
-                    this->DAT_GameCommandParam1
-                        = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray, this)();
-                    this->DAT_GameCommandParam2 = 1;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_SAVE);
+                    strcpy(DAT_GameSynchronyState::instance.shortMapName, "autosave");
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = MACRO_CALL_MEMBER(
+                        Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray,
+                        DAT_GameSynchronyState::ptr)();
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 1;
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(Commands::GCT_SAVE);
                 }
             }
         }
