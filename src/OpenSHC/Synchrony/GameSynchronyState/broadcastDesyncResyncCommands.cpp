@@ -514,7 +514,7 @@ namespace Synchrony {
         if (iVar6 < 2) {
             this->resyncPacketBudget = 40000;
         } else {
-            this->resyncPacketBudget = (-(uint)(iVar6 != 2) & 0xffff8ad0) + 40000;
+            this->resyncPacketBudget = (iVar6 == 2) ? 40000 : 10000;
         }
         this->somePacketSubTypeUnk = 0;
         this->resyncResumeOuterIndex = 0;
