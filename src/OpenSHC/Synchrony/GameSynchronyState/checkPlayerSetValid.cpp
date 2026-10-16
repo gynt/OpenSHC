@@ -30,15 +30,15 @@ namespace Synchrony {
         _teamMemberCounts[7] = 0;
         _teamMemberCounts[8] = 0;
         for (_somePlayerID = 1; _somePlayerID < 9; _somePlayerID = _somePlayerID + 1) {
-            if (this->currentPlayerFullIDArray[_somePlayerID] == -1) {
-                /*
-                  no human player in this slot
-                 */
-                if (this->currentAIArray[_somePlayerID] == 0) {
-                    continue;
-                }
-            } else {
+            if (this->currentPlayerFullIDArray[_somePlayerID] != -1) {
                 _someCounter = _someCounter + 1;
+            }
+            /*
+              no human player and no AI in this slot
+             */
+            if ((this->currentPlayerFullIDArray[_somePlayerID] == -1)
+                && (this->currentAIArray[_somePlayerID] == 0)) {
+                continue;
             }
             _teamMemberCounts[DAT_GameState::instance.mapAndTime.playerTeams[_somePlayerID]]
                 = _teamMemberCounts[DAT_GameState::instance.mapAndTime.playerTeams[_somePlayerID]] + 1;
