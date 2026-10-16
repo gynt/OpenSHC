@@ -19,8 +19,8 @@ namespace Synchrony {
         int (*paiVar1)[2];
         _gameCommandID = MACRO_CALL_MEMBER(
             Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
-        if ((_gameCommandID) && (_gameCommandID = 0, 0 < this->MBR_someIndex)) {
-            paiVar1 = this->MBR_SelectedGameCommands;
+        if ((_gameCommandID) && (_gameCommandID = 0, 0 < this->someIndex)) {
+            paiVar1 = this->selectedGameCommands;
             do {
                 /*
                   process all commands that should have been executed by now
@@ -43,7 +43,7 @@ namespace Synchrony {
                 _gameCommandID = _gameCommandID + 1;
                 this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_PROCESSED;
                 paiVar1 = paiVar1 + 1;
-            } while (_gameCommandID < this->MBR_someIndex);
+            } while (_gameCommandID < this->someIndex);
         }
     }
 

@@ -109,24 +109,22 @@ namespace Synchrony {
         this->DAT_PlayerMatchTimes[this->currentPlayerSlotID] = DAT_GameCore::instance.mapTimeInTicks;
         _hashSubTotal = 0;
         _unitIndex = 0;
-        piVar40 = &DAT_UnitsState::instance.units[0];
-        do {
-            iVar39 = piVar40->field309_0x420;
-            iVar45 = piVar40->field308_0x41c;
-            piVar40->field309_0x420 = 0;
-            piVar40->field308_0x41c = 0;
+        for (_unitIndex = 0; _unitIndex < 2500; _unitIndex = _unitIndex + 1) {
+            iVar39 = DAT_UnitsState::instance.units[_unitIndex].field309_0x420;
+            iVar45 = DAT_UnitsState::instance.units[_unitIndex].field308_0x41c;
+            DAT_UnitsState::instance.units[_unitIndex].field309_0x420 = 0;
+            DAT_UnitsState::instance.units[_unitIndex].field308_0x41c = 0;
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                DAT_DirectionAlgorithmState::ptr)(1028, (int*)((int)(&piVar40->logicalState)));
-            piVar44 = piVar40 + 0x124;
-            iVar20 = uVar19 + piVar40->animationLeapTicksTotal + piVar40->animationSpeed
-                + piVar40->animationTicker;
+                DAT_DirectionAlgorithmState::ptr)(
+                1028, (int*)&DAT_UnitsState::instance.units[_unitIndex].logicalState);
+            iVar20 = uVar19 + DAT_UnitsState::instance.units[_unitIndex].animationLeapTicksTotal
+                + DAT_UnitsState::instance.units[_unitIndex].animationSpeed
+                + DAT_UnitsState::instance.units[_unitIndex].animationTicker;
             _hashSubTotal = _hashSubTotal + iVar20;
             this->HASH_Units[this->currentPlayerSlotID][_unitIndex] = iVar20;
-            piVar40->field308_0x41c = iVar45;
-            piVar40->field309_0x420 = iVar39;
-            _unitIndex = _unitIndex + 1;
-            piVar40 = piVar44;
-        } while ((int)piVar44 < 0x16513cc);
+            DAT_UnitsState::instance.units[_unitIndex].field308_0x41c = iVar45;
+            DAT_UnitsState::instance.units[_unitIndex].field309_0x420 = iVar39;
+        }
         this->DAT_PlayerMatchTimes[this->currentPlayerSlotID * 0xc + 9] = _hashSubTotal;
         this->HASH_HashTotal[this->currentPlayerSlotID]
             = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;

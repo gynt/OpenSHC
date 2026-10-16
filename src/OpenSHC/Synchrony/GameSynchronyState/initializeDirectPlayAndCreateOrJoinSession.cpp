@@ -86,7 +86,7 @@ namespace Synchrony {
             DPLAY_CurrentSessionGUID::instance.Data1 = 0;
             DPLAY_CurrentSessionGUID::instance.Data2 = 0;
             DPLAY_CurrentSessionGUID::instance.Data3 = 0;
-            DPLAY_InterfacePointer::instance = _dplay4;
+            DPLAY_InterfacePointer::instance = (IDirectPlay4A**)_dplay4;
             DPLAY_CurrentSessionGUID::instance.Data4[0] = '\0';
             DPLAY_CurrentSessionGUID::instance.Data4[1] = '\0';
             DPLAY_CurrentSessionGUID::instance.Data4[2] = '\0';

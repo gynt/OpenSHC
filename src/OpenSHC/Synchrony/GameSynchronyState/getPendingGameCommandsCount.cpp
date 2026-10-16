@@ -15,7 +15,7 @@ namespace Synchrony {
     {
         GameCommandStateByte* pGVar3;
         int iVar1 = 0;
-        int iVar3 = this->MBR_GameCommandID;
+        int iVar3 = this->gameCommandID;
         if (iVar3 < 200) {
             pGVar3 = &this->DAT_GameCommandArray[iVar3].stateUnk;
             int iVar2 = 200 - iVar3;

@@ -24,12 +24,12 @@ namespace Synchrony {
         int _nextPlayerID;
         int _playerID;
         bool _reorderedAnyoneUnk;
-        this->MBR_someIndex = 0;
+        this->someIndex = 0;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            800, '\0', (void*)((int)(this->MBR_SelectedGameCommands)));
-        if ((int)this->MBR_GameCommandID < 200) {
-            _stateAddress = &this->DAT_GameCommandArray[this->MBR_GameCommandID].stateUnk;
-            _currentIndexCounter = this->MBR_GameCommandID;
+            800, '\0', (void*)((int)(this->selectedGameCommands)));
+        if ((int)this->gameCommandID < 200) {
+            _stateAddress = &this->DAT_GameCommandArray[this->gameCommandID].stateUnk;
+            _currentIndexCounter = this->gameCommandID;
             do {
                 /*
                   stateAddress - 9 = time address
@@ -43,10 +43,10 @@ namespace Synchrony {
                     this->protocolInvokerPlayerID
                         = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
                             this)(*(int*)(_stateAddress + -5));
-                    this->MBR_SelectedGameCommands[this->MBR_someIndex][0] = _currentIndexCounter;
-                    this->MBR_SelectedGameCommands[this->MBR_someIndex][1] = this->protocolInvokerPlayerID;
-                    this->MBR_someIndex = this->MBR_someIndex + 1;
-                    if (99 < this->MBR_someIndex)
+                    this->selectedGameCommands[this->someIndex][0] = _currentIndexCounter;
+                    this->selectedGameCommands[this->someIndex][1] = this->protocolInvokerPlayerID;
+                    this->someIndex = this->someIndex + 1;
+                    if (99 < this->someIndex)
                         break;
                 }
                 _currentIndexCounter = _currentIndexCounter + 1;
@@ -60,7 +60,7 @@ namespace Synchrony {
           reorder the selected commands list so that player ids with a lower number are   processed first.
          */
         int _counter2 = 0;
-        if (0 < this->MBR_someIndex) {
+        if (0 < this->someIndex) {
             _reorderedAnyoneUnk = true;
             do {
                 if (!_reorderedAnyoneUnk)
@@ -68,8 +68,8 @@ namespace Synchrony {
                 _currentIndexCounter = 1;
                 _counter2 = _counter2 + 1;
                 _reorderedAnyoneUnk = false;
-                if (1 < this->MBR_someIndex) {
-                    _selectedPlayerIDAddress = this->MBR_SelectedGameCommands[0] + 1;
+                if (1 < this->someIndex) {
+                    _selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
                     do {
                         _nextPlayerID = _selectedPlayerIDAddress[2];
                         _commandID = (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0];
@@ -86,7 +86,7 @@ namespace Synchrony {
                         }
                         _currentIndexCounter = _currentIndexCounter + 1;
                         _selectedPlayerIDAddress = _selectedPlayerIDAddress + 2;
-                    } while (_currentIndexCounter < this->MBR_someIndex);
+                    } while (_currentIndexCounter < this->someIndex);
                 }
             } while (_counter2 < 100);
             _counter2 = 1;
