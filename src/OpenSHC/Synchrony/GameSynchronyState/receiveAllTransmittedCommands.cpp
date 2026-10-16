@@ -37,6 +37,7 @@ namespace Synchrony {
         int iVar5;
         char* pcVar6;
         char acStack_68[100];
+        uint* _pSystemMessage;
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)acStack_68;
         this->lastCommandReceiveTime = timeGetTime();
@@ -58,20 +59,21 @@ namespace Synchrony {
                     goto LAB_00490905;
                 if (this->DPLAYX_SendAndReceiveREsult)
                     goto LAB_004908fc;
+                _pSystemMessage = (uint*)&this->DPLAY_ReceiveData;
                 if (!this->DPLAYX_ReceivedPlayerID) {
                     /*
                       received system message
                      */
-                    if ((*(uint*)&this->DPLAY_ReceiveData) != 3) {
-                        if ((*(uint*)&this->DPLAY_ReceiveData) == 5) {
+                    if (_pSystemMessage[0] != 3) {
+                        if (_pSystemMessage[0] == 5) {
                             this->kickDueToLagStatusUnk = 0x3d;
                             _playerID = MACRO_CALL_MEMBER(
                                 Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
-                                this)((*(uint*)((char*)&this->DPLAY_ReceiveData + 8)));
+                                this)(_pSystemMessage[2]);
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::removePlayerFromLobby, this)(
                                 _playerID);
-                        } else if ((*(uint*)&this->DPLAY_ReceiveData) != 49) {
-                            if ((*(uint*)&this->DPLAY_ReceiveData) == 257) {
+                        } else if (_pSystemMessage[0] != 49) {
+                            if (_pSystemMessage[0] == 257) {
                                 DAT_GameSynchronyState::instance.isHost = TRUE;
                                 this->DAT_HashCountdown = 2;
                                 this->timeSkirmishGameStart = timeGetTime();
@@ -114,7 +116,7 @@ namespace Synchrony {
                                 }
                             } else {
                                 MACRO_CALL(OS_Func::_sprintf)(
-                                    acStack_68, "DP SYS Message: %x", (*(uint*)&this->DPLAY_ReceiveData));
+                                    acStack_68, "DP SYS Message: %x", _pSystemMessage[0]);
                             }
                         }
                     }
