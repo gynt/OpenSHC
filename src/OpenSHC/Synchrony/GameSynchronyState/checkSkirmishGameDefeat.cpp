@@ -39,22 +39,14 @@ namespace Synchrony {
     void GameSynchronyState::checkSkirmishGameDefeat()
     {
         bool bVar1;
-        short sVar2;
-        PlayerData* psVar3;
         int* piVar3;
-        int* piVar4;
         int iVar4;
-        int* piVar5;
         int _deadPlayerID;
         int iVar5;
-        int* piVar6;
         int iVar7;
         int iVar8;
-        short* psVar9;
         int iVar10;
-        int* local_68;
-        int iStack_48;
-        int local_44[17];
+        int local_48[18];
         if (this->currentGameMode != Game::GM_SOLITARY) {
             for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
                 if (0 < DAT_GameState::instance.playerDataArray[_deadPlayerID].commemorationShrinePlacementCountdown) {
@@ -85,59 +77,22 @@ namespace Synchrony {
                         UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
                     return;
                 }
-                piVar3 = this->currentAIArray + 1;
-                local_44[2] = 0;
-                local_44[1] = 0;
-                local_44[4] = 0;
-                local_44[3] = 0;
-                local_44[6] = 0;
-                local_44[5] = 0;
-                local_44[8] = 0;
-                local_44[7] = 0;
-                local_44[10] = 0;
-                local_44[9] = 0;
-                local_44[0xc] = 0;
-                local_44[0xb] = 0;
-                local_44[0xe] = 0;
-                local_44[0xd] = 0;
-                local_44[0x10] = 0;
-                local_44[0xf] = 0;
-                piVar5 = &DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID;
-                local_68 = this->currentAIArray + 1;
-                do {
-                    if ((piVar3[-0x1b] != -1) || (*piVar3 != 0)) {
-                        iVar7 = piVar3[-0x1e824d];
-                        (&iStack_48)[iVar7 * 2] = (&iStack_48)[iVar7 * 2] + 1;
-                        if (piVar5[-0xe7d] != 0) {
-                            local_44[iVar7 * 2] = local_44[iVar7 * 2] + 1;
+                for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
+                    local_48[_deadPlayerID * 2] = 0;
+                    local_48[_deadPlayerID * 2 + 1] = 0;
+                }
+                for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
+                    if ((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
+                        || (this->currentAIArray[_deadPlayerID] != 0)) {
+                        iVar7 = DAT_GameState::instance.mapAndTime.playerTeams[_deadPlayerID];
+                        local_48[iVar7 * 2] = local_48[iVar7 * 2] + 1;
+                        if (DAT_GameState::instance.playerDataArray[_deadPlayerID].lordKilledByPlayerID != 0) {
+                            local_48[iVar7 * 2 + 1] = local_48[iVar7 * 2 + 1] + 1;
                         }
                     }
-                    if ((piVar3[-0x1a] != -1) || (piVar3[1] != 0)) {
-                        iVar7 = piVar3[-0x1e824c];
-                        (&iStack_48)[iVar7 * 2] = (&iStack_48)[iVar7 * 2] + 1;
-                        if (*piVar5 != 0) {
-                            local_44[iVar7 * 2] = local_44[iVar7 * 2] + 1;
-                        }
-                    }
-                    if ((piVar3[-0x19] != -1) || (piVar3[2] != 0)) {
-                        iVar7 = piVar3[-0x1e824b];
-                        (&iStack_48)[iVar7 * 2] = (&iStack_48)[iVar7 * 2] + 1;
-                        if (piVar5[0xe7d] != 0) {
-                            local_44[iVar7 * 2] = local_44[iVar7 * 2] + 1;
-                        }
-                    }
-                    if ((piVar3[-0x18] != -1) || (piVar3[3] != 0)) {
-                        iVar7 = piVar3[-0x1e824a];
-                        (&iStack_48)[iVar7 * 2] = (&iStack_48)[iVar7 * 2] + 1;
-                        if (piVar5[0x1cfa] != 0) {
-                            local_44[iVar7 * 2] = local_44[iVar7 * 2] + 1;
-                        }
-                    }
-                    piVar5 = piVar5 + 0x39f4;
-                    piVar3 = piVar3 + 4;
-                } while ((int)piVar5 < 0x1182390);
+                }
                 iVar7 = 0;
-                piVar3 = local_44 + 1;
+                piVar3 = local_48 + 2;
                 iVar5 = 0;
                 iVar10 = 0;
                 iVar4 = 3;
@@ -176,64 +131,40 @@ namespace Synchrony {
                     piVar3 = piVar3 + 8;
                     iVar4 = iVar4 + 4;
                 } while (iVar8 < 9);
-                local_44[0] = 0;
-                local_44[1] = 0;
-                local_44[2] = 0;
-                local_44[3] = 0;
-                local_44[4] = 0;
-                local_44[5] = 0;
-                local_44[6] = 0;
-                local_44[7] = 0;
+                for (_deadPlayerID = 0; _deadPlayerID < 8; _deadPlayerID = _deadPlayerID + 1) {
+                    local_48[_deadPlayerID + 1] = 0;
+                }
                 if (iVar5 < iVar10 + -1) {
                     if (!DAT_GameCore::instance.mapU4Int0) {
                         return;
                     }
-                    piVar4 = &DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID;
                     bVar1 = false;
-                    piVar3 = local_68;
-                    do {
-                        if (((piVar3[-0x1b] != -1) || (*piVar3 != 0)) && (piVar4[-0xe7d] == 0)) {
-                            iVar7 = piVar3[-0x1e824d];
+                    for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
+                        if (((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
+                                || (this->currentAIArray[_deadPlayerID] != 0))
+                            && (DAT_GameState::instance.playerDataArray[_deadPlayerID].lordKilledByPlayerID == 0)) {
+                            iVar7 = DAT_GameState::instance.mapAndTime.playerTeams[_deadPlayerID];
                             bVar1 = true;
                         }
-                        if (((piVar3[-0x1a] != -1) || (piVar3[1] != 0)) && (*piVar4 == 0)) {
-                            iVar7 = piVar3[-0x1e824c];
-                            bVar1 = true;
-                        }
-                        if (((piVar3[-0x19] != -1) || (piVar3[2] != 0)) && (piVar4[0xe7d] == 0)) {
-                            iVar7 = piVar3[-0x1e824b];
-                            bVar1 = true;
-                        }
-                        if (((piVar3[-0x18] != -1) || (piVar3[3] != 0)) && (piVar4[0x1cfa] == 0)) {
-                            iVar7 = piVar3[-0x1e824a];
-                            bVar1 = true;
-                        }
-                        piVar4 = piVar4 + 0x39f4;
-                        piVar3 = piVar3 + 4;
-                    } while ((int)piVar4 < 0x118241c);
+                    }
                     if (!bVar1) {
                         return;
                     }
                 } else {
                     DAT_GameCore::instance.unknownAlwaysZero = 0;
                 }
-                iVar4 = 1;
-                piVar3 = local_68;
-                do {
-                    if (((piVar3[-0x1b] != -1) || (*piVar3 != 0)) && (piVar3[-0x1e824d] == iVar7)) {
-                        (&iStack_48)[iVar4] = 1;
+                for (iVar4 = 1; iVar4 < 9; iVar4 = iVar4 + 1) {
+                    if (((this->currentPlayerFullIDArray[iVar4] != -1) || (this->currentAIArray[iVar4] != 0))
+                        && (DAT_GameState::instance.mapAndTime.playerTeams[iVar4] == iVar7)) {
+                        local_48[iVar4] = 1;
                     }
-                    iVar4 = iVar4 + 1;
-                    piVar3 = piVar3 + 1;
-                } while (iVar4 < 9);
-                piVar6 = &DAT_GameState::instance.playerDataArray[1].playerDeathRelated;
-                psVar9 = DAT_GameState::instance.mapAndTime.playerIsAlive + 1;
-                piVar3 = local_44;
-                do {
-                    if ((local_68[-0x1b] != -1) || (*local_68 != 0)) {
-                        *psVar9 = (short)*piVar3;
+                }
+                for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
+                    if ((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
+                        || (this->currentAIArray[_deadPlayerID] != 0)) {
+                        DAT_GameState::instance.mapAndTime.playerIsAlive[_deadPlayerID] = (short)local_48[_deadPlayerID];
                         DAT_GameState::instance.mapAndTime.gameOver = TRUE;
-                        *piVar6 = 1;
+                        DAT_GameState::instance.playerDataArray[_deadPlayerID].playerDeathRelated = 1;
                         DAT_GameState::instance.mapAndTime.gameOverTime = timeGetTime();
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
@@ -256,11 +187,7 @@ namespace Synchrony {
                                 Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                         }
                     }
-                    psVar9 = psVar9 + 1;
-                    local_68 = local_68 + 1;
-                    piVar3 = piVar3 + 1;
-                    piVar6 = piVar6 + 0xe7d;
-                } while ((int)psVar9 < 0x117ef52);
+                }
             }
         }
     }
