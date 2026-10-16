@@ -7,6 +7,10 @@
 #include "OpenSHC/WindowsHelper/Enums/GlobalAllocFlag.hpp"
 
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
+#include "OpenSHC/Globals/GUID_DPAID_INet.hpp"
+#include "OpenSHC/Globals/GUID_DPAID_Modem.hpp"
+#include "OpenSHC/Globals/GUID_DPAID_Phone.hpp"
+#include "OpenSHC/Globals/GUID_DPAID_ServiceProvider.hpp"
 #include "OpenSHC/Globals/GUID_DPSPGUID_IPX.hpp"
 #include "OpenSHC/Globals/GUID_DPSPGUID_MODEM.hpp"
 #include "OpenSHC/Globals/GUID_DPSPGUID_TCPIP.hpp"
@@ -24,7 +28,6 @@ namespace Synchrony {
     int GameSynchronyState::createCompoundAddressBasedOnSelectedProvider(LPVOID* pCompoundAddress, SIZE_T* param_2)
     {
         char cVar1;
-        int iVar2;
         BOOLEnum BVar3;
         uint uVar4;
         int _status;
@@ -38,11 +41,7 @@ namespace Synchrony {
         DWORD _pSize;
         uint local_2bc;
         SIZE_T* local_2b8;
-        GUID local_2b4;
-        int local_2a4;
-        GUID* local_2a0;
-        GUID local_29c;
-        int aiStack_28c[8];
+        DPCOMPOUNDADDRESSELEMENT local_2b4[3];
         GUID local_26c;
         char local_25c[200];
         char local_194[200];
@@ -54,128 +53,27 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)(
             (GUID*)&local_26c);
         BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
-        if (!BVar3) {
-            BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
-            if (!BVar3) {
-                BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_IPX::ptr);
-                local_2a4 = 0x10;
-                DVar9 = 1;
-                if (!BVar3) {
-                    local_2b4.Data1 = 0x7d916c0;
-                    local_2b4.Data2 = 0xe0af;
-                    local_2b4.Data3 = 0x11cf;
-                    local_2a0 = &local_26c;
-                    local_2b4.Data4[0] = 0x9c;
-                    local_2b4.Data4[1] = 0x4e;
-                    local_2b4.Data4[2] = 0;
-                    local_2b4.Data4[3] = 0xa0;
-                    local_2b4.Data4[4] = 0xc9;
-                    local_2b4.Data4[5] = 5;
-                    local_2b4.Data4[6] = 0x42;
-                    local_2b4.Data4[7] = 0x5e;
-                } else {
-                    local_2b4.Data1 = 0x7d916c0;
-                    local_2b4.Data2 = 0xe0af;
-                    local_2b4.Data3 = 0x11cf;
-                    local_2b4.Data4[0] = 0x9c;
-                    local_2b4.Data4[1] = 0x4e;
-                    local_2b4.Data4[2] = 0;
-                    local_2b4.Data4[3] = 0xa0;
-                    local_2b4.Data4[4] = 0xc9;
-                    local_2b4.Data4[5] = 5;
-                    local_2b4.Data4[6] = 0x42;
-                    local_2b4.Data4[7] = 0x5e;
-                    local_2a0 = (GUID*)GUID_DPSPGUID_IPX::ptr;
-                }
-            } else {
-                local_2b4.Data1 = 0x7d916c0;
-                local_2b4.Data4[4] = 0xc9;
-                local_2b4.Data4[5] = 5;
-                local_2b4.Data4[6] = 0x42;
-                local_2b4.Data4[7] = 0x5e;
-                local_2b4.Data2 = 0xe0af;
-                local_2b4.Data3 = 0x11cf;
-                local_2b4.Data4[0] = 0x9c;
-                local_2b4.Data4[1] = 0x4e;
-                local_2b4.Data4[2] = 0;
-                local_2b4.Data4[3] = 0xa0;
-                local_2a4 = 0x10;
-                local_2a0 = (GUID*)GUID_DPSPGUID_TCPIP::ptr;
-                pcVar6 = MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
-                pcVar7 = local_cc;
-                do {
-                    cVar1 = *pcVar6;
-                    *pcVar7 = cVar1;
-                    pcVar6 = pcVar6 + 1;
-                    pcVar7 = pcVar7 + 1;
-                } while (cVar1 != '\0');
-                local_29c.Data1 = 0xc4a54da0;
-                local_29c.Data2 = 0xe0af;
-                local_29c.Data3 = 0x11cf;
-                pcVar7 = local_cc;
-                local_29c.Data4[4] = 0xc9;
-                local_29c.Data4[5] = 5;
-                local_29c.Data4[6] = 0x42;
-                local_29c.Data4[7] = 0x5e;
-                local_29c.Data4[0] = 0x9c;
-                local_29c.Data4[1] = 0x4e;
-                local_29c.Data4[2] = 0;
-                local_29c.Data4[3] = 0xa0;
-                do {
-                    cVar1 = *pcVar7;
-                    pcVar7 = pcVar7 + 1;
-                } while (cVar1 != '\0');
-                DVar9 = 2;
-                pcVar7 = MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(6);
-                uVar4 = atol(pcVar7);
-                local_2bc = uVar4 & 0xffff;
-                if ((short)uVar4 != 0) {
-                    DVar9 = 3;
-                }
-            }
-        } else {
-            local_2b4.Data2 = 0xe0af;
-            local_2b4.Data3 = 0x11cf;
-            local_2b4.Data1 = 0x7d916c0;
-            local_2b4.Data4[0] = 0x9c;
-            local_2b4.Data4[1] = 0x4e;
-            local_2b4.Data4[2] = 0;
-            local_2b4.Data4[3] = 0xa0;
-            local_2b4.Data4[4] = 0xc9;
-            local_2b4.Data4[5] = 5;
-            local_2b4.Data4[6] = 0x42;
-            local_2b4.Data4[7] = 0x5e;
-            local_2a4 = 0x10;
-            local_2a0 = (GUID*)GUID_DPSPGUID_MODEM::ptr;
+        if (BVar3) {
+            local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
+            local_2b4[0].dwDataSize = 0x10;
+            local_2b4[0].lpData = GUID_DPSPGUID_MODEM::ptr;
             pcVar6 = this->stringPointerArray[this->modemScrollbarIndex + this->modemScrollBarOffset];
             iVar8 = 1;
             pcVar7 = local_25c;
             do {
                 cVar1 = *pcVar6;
                 *pcVar7 = cVar1;
-                pcVar6 = pcVar6 + 1;
-                pcVar7 = pcVar7 + 1;
+                pcVar6 = pcVar6 + iVar8;
+                pcVar7 = pcVar7 + iVar8;
             } while (cVar1 != '\0');
             pcVar7 = local_25c;
             do {
                 cVar1 = *pcVar7;
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
-            if (pcVar7 != local_25c + 1) {
-                local_29c.Data1 = 0xf6dcc200;
-                local_29c.Data2 = 0xa2fe;
-                local_29c.Data3 = 0x11d0;
+            if ((int)(pcVar7 - (local_25c + 1)) != 0) {
+                local_2b4[1].guidDataType = GUID_DPAID_Modem::instance;
                 pcVar7 = local_25c;
-                local_29c.Data4[4] = 0xc9;
-                local_29c.Data4[5] = 5;
-                local_29c.Data4[6] = 0x42;
-                local_29c.Data4[7] = 0x5e;
-                local_29c.Data4[0] = 0x9c;
-                local_29c.Data4[1] = 0x4f;
-                local_29c.Data4[2] = 0;
-                local_29c.Data4[3] = 0xa0;
                 do {
                     cVar1 = *pcVar7;
                     pcVar7 = pcVar7 + 1;
@@ -191,28 +89,69 @@ namespace Synchrony {
                 pcVar6 = pcVar6 + 1;
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
-            iVar2 = iVar8 * 0x18;
-            *(undefined4*)((int)&local_2b4 + iVar2) = 0x78ec89a0;
-            *(undefined4*)((int)&local_2b4 + iVar2 + 4) = 0x11cfe0af;
-            *(undefined4*)((int)&local_2b4 + iVar2 + 8) = 0xa0004e9c;
-            *(undefined4*)((int)&local_2b4 + iVar2 + 0xc) = 0x5e4205c9;
+            local_2b4[iVar8].guidDataType = GUID_DPAID_Phone::instance;
             pcVar7 = local_194;
             do {
                 cVar1 = *pcVar7;
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
-            (&local_2a4)[iVar8 * 6] = (int)(pcVar7 + (1 - (int)(local_194 + 1)));
-            *(char**)((int)&local_29c + iVar2 + -4) = local_194;
+            local_2b4[iVar8].dwDataSize = (int)(pcVar7 + (1 - (int)(local_194 + 1)));
+            local_2b4[iVar8].lpData = local_194;
             DVar9 = iVar8 + 1;
+        } else {
+            BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
+            if (BVar3) {
+                local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
+                local_2b4[0].dwDataSize = 0x10;
+                local_2b4[0].lpData = GUID_DPSPGUID_TCPIP::ptr;
+                pcVar6 = MACRO_CALL_MEMBER(
+                    Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
+                pcVar7 = local_cc;
+                do {
+                    cVar1 = *pcVar6;
+                    *pcVar7 = cVar1;
+                    pcVar6 = pcVar6 + 1;
+                    pcVar7 = pcVar7 + 1;
+                } while (cVar1 != '\0');
+                local_2b4[1].guidDataType = GUID_DPAID_INet::instance;
+                pcVar7 = local_cc;
+                do {
+                    cVar1 = *pcVar7;
+                    pcVar7 = pcVar7 + 1;
+                } while (cVar1 != '\0');
+                local_2b4[1].dwDataSize = (int)(pcVar7 + (1 - (int)(local_cc + 1)));
+                local_2b4[1].lpData = local_cc;
+                DVar9 = 2;
+                pcVar7 = MACRO_CALL_MEMBER(
+                    Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(6);
+                uVar4 = atol(pcVar7);
+                local_2bc = uVar4 & 0xffff;
+                if ((ushort)uVar4 != 0) {
+                    local_2b4[2].dwDataSize = 2;
+                    local_2b4[2].lpData = &local_2bc;
+                    DVar9 = 3;
+                }
+            } else {
+                BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_IPX::ptr);
+                local_2b4[0].dwDataSize = 0x10;
+                DVar9 = 1;
+                if (BVar3) {
+                    local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
+                    local_2b4[0].lpData = GUID_DPSPGUID_IPX::ptr;
+                } else {
+                    local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
+                    local_2b4[0].lpData = &local_26c;
+                }
+            }
         }
-        _status = this->DPLAYX_LOBBY->CreateCompoundAddress((LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, (void*)0x0, &_pSize);
+        _status = this->DPLAYX_LOBBY->CreateCompoundAddress(local_2b4, DVar9, (void*)0x0, &_pSize);
         if (_status == -2005467106) {
             _pMemNoLock = GlobalAlloc(WindowsHelper::Enums::GAF_GHND, _pSize);
             _pMem = GlobalLock(_pMemNoLock);
             if (_pMem == (void*)0x0) {
                 _status = DPERR_NOMEMORY;
             } else {
-                _status = this->DPLAYX_LOBBY->CreateCompoundAddress((LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, _pMem, &_pSize);
+                _status = this->DPLAYX_LOBBY->CreateCompoundAddress(local_2b4, DVar9, _pMem, &_pSize);
                 if (_status < DP_OK) {
                     pvVar5 = GlobalHandle(_pMem);
                     GlobalUnlock(pvVar5);
