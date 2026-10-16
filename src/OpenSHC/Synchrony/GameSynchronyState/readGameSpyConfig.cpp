@@ -17,6 +17,7 @@ namespace Synchrony {
         HKEY__* local_c;
         DWORD local_8;
         DWORD local_4;
+        char* _pathSeparator = "\\";
         local_8 = 0x200;
         this->gameSpyArcadeAvailable = 0;
         LVar2 = RegOpenKeyExA((HKEY__*)0x80000001, "Software\\GameSpy\\GameSpy Arcade", 0, 0x20019, &local_c);
@@ -37,7 +38,7 @@ namespace Synchrony {
                         cVar4 = pcVar1[1];
                         pcVar1 = pcVar1 + 1;
                     } while (cVar4 != '\0');
-                    strcpy(pcVar1, "\\");
+                    strcpy(pcVar1, _pathSeparator);
                 }
                 pcVar1 = this->shellExecuteTarget + -1;
                 do {
