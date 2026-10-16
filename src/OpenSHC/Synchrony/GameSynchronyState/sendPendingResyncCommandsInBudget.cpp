@@ -39,31 +39,32 @@ namespace Synchrony {
         local_14 = 0;
         iVar2 = 1;
         piVar7 = this->syncRelatedStatusArray + 1;
-        while (*piVar7 != 0) {
-            iVar2 = iVar2 + 1;
-            piVar7 = piVar7 + 1;
-            if (9 <= iVar2)
-                goto LAB_0048e72e;
-        }
-        if (!this->announcementReceivedBool) {
-            return;
-        }
-        DVar3 = timeGetTime();
-        if (DVar3 - this->announcementReceiveTime <= 0xafc8) {
-            return;
-        }
-        iVar2 = 1;
-        local_10 = this->syncRelatedStatusArray + 1;
         do {
-            if (*local_10 == 0) {
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar2;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                *local_10 = 1;
+            if (*piVar7 == 0) {
+                if (!this->announcementReceivedBool) {
+                    return;
+                }
+                DVar3 = timeGetTime();
+                if (DVar3 - this->announcementReceiveTime <= 0xafc8) {
+                    return;
+                }
+                iVar2 = 1;
+                local_10 = this->syncRelatedStatusArray + 1;
+                do {
+                    if (*local_10 == 0) {
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar2;
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
+                        *local_10 = 1;
+                    }
+                    iVar2 = iVar2 + 1;
+                    local_10 = local_10 + 1;
+                } while (iVar2 < 9);
+                break;
             }
             iVar2 = iVar2 + 1;
-            local_10 = local_10 + 1;
+            piVar7 = piVar7 + 1;
         } while (iVar2 < 9);
     LAB_0048e72e:
         switch (this->somePacketSubTypeUnk) {
