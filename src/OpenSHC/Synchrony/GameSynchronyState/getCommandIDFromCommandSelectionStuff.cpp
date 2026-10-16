@@ -23,7 +23,7 @@ namespace Synchrony {
         int _commandID;
         int _nextPlayerID;
         int _playerID;
-        bool _reorderedAnyoneUnk;
+        int _reorderedAnyoneUnk;
         this->someIndex = 0;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             800, '\0', (void*)((int)(this->selectedGameCommands)));
@@ -61,13 +61,13 @@ namespace Synchrony {
          */
         int _counter2 = 0;
         if (0 < this->someIndex) {
-            _reorderedAnyoneUnk = true;
+            _reorderedAnyoneUnk = 1;
             do {
                 if (!_reorderedAnyoneUnk)
                     break;
                 _currentIndexCounter = 1;
                 _counter2 = _counter2 + 1;
-                _reorderedAnyoneUnk = false;
+                _reorderedAnyoneUnk = 0;
                 if (1 < this->someIndex) {
                     _selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
                     do {
@@ -82,7 +82,7 @@ namespace Synchrony {
                             *_selectedPlayerIDAddress = _nextPlayerID;
                             _selectedPlayerIDAddress[1] = _commandID;
                             _selectedPlayerIDAddress[2] = _playerID;
-                            _reorderedAnyoneUnk = true;
+                            _reorderedAnyoneUnk = 1;
                         }
                         _currentIndexCounter = _currentIndexCounter + 1;
                         _selectedPlayerIDAddress = _selectedPlayerIDAddress + 2;
