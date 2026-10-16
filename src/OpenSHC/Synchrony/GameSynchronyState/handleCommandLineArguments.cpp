@@ -42,9 +42,7 @@ namespace Synchrony {
         int _isConnect;
         int _connectArgLength;
         char* pcVar2;
-        int _nextArgCharIndex;
         int _charIndex;
-        int _charIndex2;
         int _candidateIndex;
         undefined1 auStack_40c[2];
         bool _quotation;
@@ -75,33 +73,29 @@ namespace Synchrony {
             do {
                 _argChar = arguments[_charIndex3];
                 if (_argChar == '\"') {
-                    _nextArgCharIndex = _charIndex3 + 1;
+                    _charIndex3 = _charIndex3 + 1;
                     _quotation = _quotation == false;
-                    _charIndex2 = _charIndex;
                     if (!_quotation) {
                         _candidates[_candidateIndex][_charIndex] = '\0';
-                        if (arguments[_charIndex3 + 2] != '+') {
-                            if (arguments[_charIndex3 + 2] == '\"') {
-                                _char = arguments[_charIndex3 + 3];
+                        _charIndex = 0;
+                        if (arguments[_charIndex3 + 1] != '+') {
+                            if (arguments[_charIndex3 + 1] == '\"') {
+                                _char = arguments[_charIndex3 + 2];
                             LAB_004910e8:
                                 if (_char == '+')
                                     goto LAB_004910fb;
                             }
                         LAB_004910ea:
-                            _charIndex2 = 0;
-                            _nextArgCharIndex = _charIndex3 + 1;
                             if (_candidateIndex != 1) {
                                 _candidateIndex = _candidateIndex + 1;
                                 local_408 = _candidateIndex;
-                                goto LAB_004912f7;
+                                continue;
                             }
                         }
                     LAB_004910fb:
                         _candidateIndex = 0;
                         local_408 = 0;
-                        _nextArgCharIndex = _charIndex3 + 1;
                     LAB_00491101:
-                        _charIndex2 = 0;
                         _charIndex3 = 0;
                         do {
                             _char = _candidates[0][_charIndex3];
@@ -218,35 +212,34 @@ namespace Synchrony {
                 } else {
                     if (_argChar == '\0') {
                         _candidates[_candidateIndex][_charIndex] = '\0';
+                        _charIndex = 0;
                         local_409 = '\x01';
-                        _nextArgCharIndex = _charIndex3;
                         goto LAB_00491101;
                     }
                     if (_argChar == ' ') {
                         if (_quotation == false) {
                             _char = arguments[_charIndex3 + 1];
                             _candidates[_candidateIndex][_charIndex] = '\0';
+                            _charIndex3 = _charIndex3 + 1;
+                            _charIndex = 0;
                             if (_char != '+') {
                                 if (_char == '\"') {
-                                    _char = arguments[_charIndex3 + 2];
+                                    _char = arguments[_charIndex3 + 1];
                                     goto LAB_004910e8;
                                 }
                                 goto LAB_004910ea;
                             }
                             goto LAB_004910fb;
                         }
-                        _charIndex2 = _charIndex + 1;
                         _candidates[_candidateIndex][_charIndex] = ' ';
-                        _nextArgCharIndex = _charIndex3 + 1;
+                        _charIndex = _charIndex + 1;
+                        _charIndex3 = _charIndex3 + 1;
                     } else {
-                        _charIndex2 = _charIndex + 1;
                         _candidates[_candidateIndex][_charIndex] = _argChar;
-                        _nextArgCharIndex = _charIndex3 + 1;
+                        _charIndex = _charIndex + 1;
+                        _charIndex3 = _charIndex3 + 1;
                     }
                 }
-            LAB_004912f7:
-                _charIndex3 = _nextArgCharIndex;
-                _charIndex = _charIndex2;
             } while (local_409 == '\0');
             if (this->useTCPIP) {
                 pcVar2 = MACRO_CALL_MEMBER(
