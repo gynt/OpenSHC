@@ -66,10 +66,10 @@ namespace Synchrony {
         _counter = 1;
     LAB_0048c857:
         iVar3 = local_38[_counter];
-        if (0 < iVar3) {
+        if (1 <= iVar3) {
             if (iVar3 == local_38[0]) {
                 for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
-                    if (-1 < this->DAT_PlayerGroupArray[iVar3]) {
+                    if (0 <= this->DAT_PlayerGroupArray[iVar3]) {
                         this->DAT_PlayerGroupArray[iVar3] = 0;
                     }
                 }
@@ -78,35 +78,35 @@ namespace Synchrony {
                 _counter3 = 1;
                 do {
                     if ((local_38[_counter3] == 0) && (local_38[_counter3 + 1] != 0)) {
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[1]) {
+                        if ((char)this->DAT_PlayerGroupArray[1] > _counter3) {
                             this->DAT_PlayerGroupArray[1]
                                 = this->DAT_PlayerGroupArray[1] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[2]) {
+                        if ((char)this->DAT_PlayerGroupArray[2] > _counter3) {
                             this->DAT_PlayerGroupArray[2]
                                 = this->DAT_PlayerGroupArray[2] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[3]) {
+                        if ((char)this->DAT_PlayerGroupArray[3] > _counter3) {
                             this->DAT_PlayerGroupArray[3]
                                 = this->DAT_PlayerGroupArray[3] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[4]) {
+                        if ((char)this->DAT_PlayerGroupArray[4] > _counter3) {
                             this->DAT_PlayerGroupArray[4]
                                 = this->DAT_PlayerGroupArray[4] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[5]) {
+                        if ((char)this->DAT_PlayerGroupArray[5] > _counter3) {
                             this->DAT_PlayerGroupArray[5]
                                 = this->DAT_PlayerGroupArray[5] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[6]) {
+                        if ((char)this->DAT_PlayerGroupArray[6] > _counter3) {
                             this->DAT_PlayerGroupArray[6]
                                 = this->DAT_PlayerGroupArray[6] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[7]) {
+                        if ((char)this->DAT_PlayerGroupArray[7] > _counter3) {
                             this->DAT_PlayerGroupArray[7]
                                 = this->DAT_PlayerGroupArray[7] - 1;
                         }
-                        if (_counter3 < (char)this->DAT_PlayerGroupArray[8]) {
+                        if ((char)this->DAT_PlayerGroupArray[8] > _counter3) {
                             this->DAT_PlayerGroupArray[8]
                                 = this->DAT_PlayerGroupArray[8] - 1;
                         }
@@ -121,7 +121,7 @@ namespace Synchrony {
                         }
                     }
                     _counter3 = _counter3 + 1;
-                } while (_counter3 < 4);
+                } while (_counter3 <= 3);
                 local_4c = 1;
                 if (0 < _counter2) {
                     do {
