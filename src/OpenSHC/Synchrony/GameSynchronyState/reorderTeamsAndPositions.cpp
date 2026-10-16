@@ -29,56 +29,44 @@ namespace Synchrony {
         int* piVar6;
         int local_4c;
         char* local_44;
-        int local_38[6];
-        int local_20[8];
+        int local_38[14];
         int* _currentPlayerFullIdArray;
         byte _group;
         _counter2 = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[1] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[2] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[3] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[4] = 0;
-        local_20[0] = 0;
-        local_20[1] = 0;
-        local_20[2] = 0;
-        local_20[3] = 0;
-        local_20[4] = 0;
-        local_20[5] = 0;
-        local_20[6] = 0;
-        local_20[7] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[5] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[6] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[7] = 0;
-        DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[8] = 0;
+        for (int _slotIndex = 1; _slotIndex < 9; _slotIndex = _slotIndex + 1) {
+            this->DAT_RoundTableOrderArray[_slotIndex] = 0;
+        }
+        local_38[6] = 0;
+        local_38[7] = 0;
+        local_38[8] = 0;
+        local_38[9] = 0;
+        local_38[10] = 0;
+        local_38[11] = 0;
+        local_38[12] = 0;
+        local_38[13] = 0;
         local_38[0] = 0;
         local_38[1] = 0;
         local_38[2] = 0;
         local_38[3] = 0;
         local_38[4] = 0;
-        _playerGroupArray = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray;
-        _currentPlayerFullIdArray = DAT_GameSynchronyState::instance.currentPlayerFullIDArray;
-        _counter = 8;
-        do {
-            _currentPlayerFullIdArray = _currentPlayerFullIdArray + 1;
-            _playerGroupArray = _playerGroupArray + 1;
+        for (_counter = 1; _counter < 9; _counter = _counter + 1) {
             /*
               fullIdArray == -1 && AI == 0
              */
-            if ((*_currentPlayerFullIdArray == -1) && (_currentPlayerFullIdArray[0x1b] == 0)) {
-                *_playerGroupArray = (char)0xff;
+            if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_counter] == -1) && (DAT_GameSynchronyState::instance.currentAIArray[_counter] == 0)) {
+                this->DAT_PlayerGroupArray[_counter] = (char)0xff;
             } else {
-                if ((char)*_playerGroupArray < '\0') {
-                    *_playerGroupArray = 0;
+                if (this->DAT_PlayerGroupArray[_counter] < '\0') {
+                    this->DAT_PlayerGroupArray[_counter] = 0;
                 }
-                _group = *_playerGroupArray;
+                _group = this->DAT_PlayerGroupArray[_counter];
                 local_38[(char)_group] = local_38[(char)_group] + 1;
                 if ((char)_group != 0) {
                     local_38[0] = local_38[0] + 1;
                 }
                 _counter2 = _counter2 + 1;
             }
-            _counter = _counter + -1;
-        } while (_counter);
+        }
         _counter = 1;
     LAB_0048c857:
         iVar3 = local_38[_counter];
