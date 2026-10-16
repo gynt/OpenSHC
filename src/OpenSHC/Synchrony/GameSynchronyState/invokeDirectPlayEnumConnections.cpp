@@ -53,15 +53,15 @@ namespace Synchrony {
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
             }
-            ppGVar2 = this->guids;
+            ppGVar2 = this->guids + 1;
             if (this->guids[1] == (GUID*)0x0) {
                 iVar3 = 1;
                 if (1 < this->scrollBarItemCount) {
                     do {
-                        ppGVar2 = ppGVar2 + 1;
                         *ppGVar2 = ppGVar2[1];
                         ppGVar2[10] = ppGVar2[0xb];
                         iVar3 = iVar3 + 1;
+                        ppGVar2 = ppGVar2 + 1;
                     } while (iVar3 < this->scrollBarItemCount);
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
