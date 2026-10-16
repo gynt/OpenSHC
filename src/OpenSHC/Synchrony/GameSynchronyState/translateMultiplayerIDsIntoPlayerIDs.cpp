@@ -16,11 +16,13 @@ namespace Synchrony {
     uint GameSynchronyState::translateMultiplayerIDsIntoPlayerIDs(int multiplayerID)
     {
         uint _playerID = 0;
-        if ((this->currentGameMode == Game::GM_SOLITARY)
-            || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+        if (this->currentGameMode == Game::GM_SOLITARY) {
             /*
               Used in singleplayer
              */
+            return (uint)(this->currentPlayerSlotID);
+        }
+        if (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
             return (uint)(this->currentPlayerSlotID);
         }
         /*
