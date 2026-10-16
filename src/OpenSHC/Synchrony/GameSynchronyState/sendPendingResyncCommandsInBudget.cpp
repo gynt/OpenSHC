@@ -137,10 +137,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 0xf;
-                            LAB_0048e84b:
                                 this->resyncResumeOuterIndex = iVar8 + 1;
                                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                     Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -175,7 +175,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 0;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -205,7 +208,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 1;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -235,7 +241,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 2;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -265,7 +274,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 3;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -295,7 +307,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 4;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -325,7 +340,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 5;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -355,7 +373,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 6;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -389,7 +410,10 @@ namespace Synchrony {
                             iVar4 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 7;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -419,7 +443,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 8;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -449,7 +476,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 9;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -479,7 +509,10 @@ namespace Synchrony {
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 10;
-                                goto LAB_0048e84b;
+                                this->resyncResumeOuterIndex = iVar8 + 1;
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                    Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                return;
                             }
                             break;
                         }
@@ -515,7 +548,10 @@ namespace Synchrony {
                                 local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                                 if (local_14 > (int)this->resyncPacketBudget) {
                                     this->somePacketSubTypeUnk = 0xb;
-                                    goto LAB_0048e84b;
+                                    this->resyncResumeOuterIndex = iVar8 + 1;
+                                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                        Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                    return;
                                 }
                                 break;
                             }
@@ -598,7 +634,10 @@ namespace Synchrony {
                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
                         if (local_14 > (int)this->resyncPacketBudget) {
                             this->somePacketSubTypeUnk = 0xe;
-                            goto LAB_0048e84b;
+                            this->resyncResumeOuterIndex = iVar8 + 1;
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                Commands::GCT_QUIT_MULTIPLAYERGAME);
+                            return;
                         }
                         break;
                     }
