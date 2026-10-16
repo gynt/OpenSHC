@@ -76,10 +76,11 @@ namespace Synchrony {
             } else {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                     this->DAT_CommandSize, address, (void*)((int)(this->DAT_GameCommandFixedParameterLocation)));
-                int iVar1 = this->DAT_CurrentGameCommandID;
+                Commands::GameCommand* _pCommand
+                    = &this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID];
                 this->protocolInvokerPlayerID = MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
-                    this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk);
+                    _pCommand->playerUnk);
                 this->DAT_GameCommandParam5 = 0;
                 this->DAT_GameCommandParam4 = 0;
                 this->DAT_GameCommandParam3 = 0;
@@ -89,7 +90,7 @@ namespace Synchrony {
                 this->DAT_CommandActionPlan = Commands::GCS_EXECUTE;
                 this->DAT_CommandParameterOffset = 0;
                 ((void (*)())DAT_ProtocolDefinedData::instance
-                        .commandFunctions[this->DAT_GameCommandArray[iVar1].commandType + 0x15])();
+                        .commandFunctions[_pCommand->commandType + 0x15])();
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
                     this->DAT_CurrentGameCommandID);
             }
