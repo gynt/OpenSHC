@@ -8,6 +8,7 @@
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -23,7 +24,7 @@ namespace Synchrony {
         ConnectionLagInfo* piVar6;
         ConnectionLagInfo* pDVar7;
         int _playerID;
-        bool _anyIsZero;
+        int _anyIsZero;
         this->currentGameModeCopy_SEC_Section1106 = this->currentGameMode;
         if ((this->currentGameMode == Game::GM_SOLITARY)
             || (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
@@ -40,19 +41,19 @@ namespace Synchrony {
                 int iVar2 = 0;
                 piVar6 = &this->connectionLagInfoArray[1];
                 piVar3 = this->currentPlayerFullIDArray + 1;
-                _anyIsZero = true;
+                _anyIsZero = 1;
                 do {
                     /*
                       this code does three at a time
                      */
-                    if (piVar3[-1] != -1 && iVar2 != this->currentPlayerSlotID && piVar6[-1].checkFor0 == 0) {
-                        _anyIsZero = false;
+                    if (piVar3[-1] != -1 && iVar2 != DAT_GameSynchronyState::instance.currentPlayerSlotID && piVar6[-1].checkFor0 == 0) {
+                        _anyIsZero = 0;
                     }
-                    if (*piVar3 != -1 && iVar2 + 1 != this->currentPlayerSlotID && !piVar6->checkFor0) {
-                        _anyIsZero = false;
+                    if (*piVar3 != -1 && iVar2 + 1 != DAT_GameSynchronyState::instance.currentPlayerSlotID && !piVar6->checkFor0) {
+                        _anyIsZero = 0;
                     }
-                    if (piVar3[1] != -1 && iVar2 + 2 != this->currentPlayerSlotID && piVar6[1].checkFor0 == 0) {
-                        _anyIsZero = false;
+                    if (piVar3[1] != -1 && iVar2 + 2 != DAT_GameSynchronyState::instance.currentPlayerSlotID && piVar6[1].checkFor0 == 0) {
+                        _anyIsZero = 0;
                     }
                     iVar2 = iVar2 + 3;
                     piVar3 = piVar3 + 3;
@@ -64,7 +65,7 @@ namespace Synchrony {
                     pDVar7 = &this->connectionLagInfoArray[0];
                     piVar3 = this->currentPlayerFullIDArray;
                     do {
-                        if (*piVar3 != -1 && _playerID != this->currentPlayerSlotID && pDVar7->time) {
+                        if (*piVar3 != -1 && _playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID && pDVar7->time) {
                             if (15000 < (int)(_now - pDVar7->time) && this->isHost && !this->laggingPlayerIDUnk) {
                                 this->laggingPlayerIDUnk = _playerID;
                                 this->DAT_GameCommandParam0 = _playerID;
