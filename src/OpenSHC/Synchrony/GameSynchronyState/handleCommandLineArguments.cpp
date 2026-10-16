@@ -59,11 +59,12 @@ namespace Synchrony {
         local_409 = '\0';
         this->useTCPIP = FALSE;
         _pArguments = arguments;
+        _pCandidatePlus1 = arguments + 1;
         do {
             _char = *_pArguments;
             _pArguments = _pArguments + 1;
         } while (_char != '\0');
-        if (_pArguments != arguments + 1) {
+        if ((int)_pArguments - (int)_pCandidatePlus1 != 0) {
             _candidates[0][0] = '\0';
             _candidates[1][0] = '\0';
             _charIndex3 = 0;
