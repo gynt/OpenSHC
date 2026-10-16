@@ -79,9 +79,7 @@ namespace Synchrony {
                         _charIndex = 0;
                         if (arguments[_charIndex3 + 1] != '+') {
                             if (arguments[_charIndex3 + 1] == '\"') {
-                                _char = arguments[_charIndex3 + 2];
-                            LAB_004910e8:
-                                if (_char == '+')
+                                if (arguments[_charIndex3 + 2] == '+')
                                     goto LAB_004910fb;
                             }
                         LAB_004910ea:
@@ -219,8 +217,8 @@ namespace Synchrony {
                             _charIndex = 0;
                             if (_char != '+') {
                                 if (_char == '\"') {
-                                    _char = arguments[_charIndex3 + 1];
-                                    goto LAB_004910e8;
+                                    if (arguments[_charIndex3 + 1] == '+')
+                                        goto LAB_004910fb;
                                 }
                                 goto LAB_004910ea;
                             }
