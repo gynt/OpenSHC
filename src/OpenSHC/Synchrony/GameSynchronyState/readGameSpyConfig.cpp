@@ -12,8 +12,8 @@ namespace Synchrony {
         char* pcVar1;
         LONG LVar2;
         char* pcVar3;
+        char cVar4;
         FILE* _File;
-        undefined2* puVar4;
         HKEY__* local_c;
         DWORD local_8;
         DWORD local_4;
@@ -26,24 +26,25 @@ namespace Synchrony {
             RegCloseKey(local_c);
             pcVar1 = this->shellExecuteTarget;
             if (!LVar2) {
+                pcVar3 = pcVar1 + 1;
                 do {
-                    pcVar3 = pcVar1;
-                    pcVar1 = pcVar3 + 1;
-                } while (*pcVar3 != '\0');
-                if (*pcVar3 != '\\') {
-                    puVar4 = (undefined2*)((int)&this->willHost + 3);
+                    cVar4 = *pcVar1;
+                    pcVar1 = pcVar1 + 1;
+                } while (cVar4 != '\0');
+                if (this->shellExecuteTarget[pcVar1 - pcVar3] != '\\') {
+                    pcVar1 = this->shellExecuteTarget + -1;
                     do {
-                        pcVar1 = (char*)((int)puVar4 + 1);
-                        puVar4 = (undefined2*)((int)puVar4 + 1);
-                    } while (*pcVar1 != '\0');
-                    *puVar4 = 0x5c;
+                        cVar4 = pcVar1[1];
+                        pcVar1 = pcVar1 + 1;
+                    } while (cVar4 != '\0');
+                    strcpy(pcVar1, "\\");
                 }
-                pcVar1 = (char*)((int)&this->willHost + 3);
+                pcVar1 = this->shellExecuteTarget + -1;
                 do {
-                    pcVar3 = pcVar1;
-                    pcVar1 = pcVar3 + 1;
-                } while (pcVar3[1] != '\0');
-                strcpy(pcVar3 + 1, "aphex.exe");
+                    cVar4 = pcVar1[1];
+                    pcVar1 = pcVar1 + 1;
+                } while (cVar4 != '\0');
+                strcpy(pcVar1, "aphex.exe");
                 _File = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, "rb");
                 if (_File != (FILE*)0x0) {
                     this->gameSpyArcadeAvailable = 1;
