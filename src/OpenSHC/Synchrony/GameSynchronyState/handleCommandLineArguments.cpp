@@ -40,6 +40,7 @@ namespace Synchrony {
     {
         char* _pArguments;
         int _charIndex3;
+        int _copyIndex;
         int _isConnect;
         int _connectArgLength;
         char* pcVar2;
@@ -91,33 +92,35 @@ namespace Synchrony {
                     LAB_004910fb:
                         _candidateIndex = 0;
                     LAB_00491101:
-                        _charIndex3 = 0;
+                        _copyIndex = 0;
                         do {
-                            _char = _candidates[0][_charIndex3];
-                            _candidates[2][_charIndex3] = _char;
-                            _charIndex3 = _charIndex3 + 1;
-                        } while (_char != '\0');
-                        _charIndex3 = 0;
+                            _char = _candidates[0][_copyIndex];
+                            _candidates[2][_copyIndex] = _char;
+                            _copyIndex = _copyIndex + 1;
+                        } while (_char != 0);
+                        _copyIndex = 0;
                         do {
-                            _char = _candidates[1][_charIndex3];
-                            _candidates[3][_charIndex3] = _char;
-                            _charIndex3 = _charIndex3 + 1;
-                        } while (_char != '\0');
+                            _char = _candidates[1][_copyIndex];
+                            _candidates[3][_copyIndex] = _char;
+                            _copyIndex = _copyIndex + 1;
+                        } while (_char != 0);
                         _isConnect = MACRO_CALL(OS_Func::__stricmp)("+connect", (char const*)((int)(_candidates[0])));
                         if (!_isConnect) {
                             _pConnectTarget = _candidates[1];
                             this->useTCPIP = TRUE;
+                            _pCandidatePlus1 = _pConnectTarget + 1;
                             do {
                                 _char = *_pConnectTarget;
                                 _pConnectTarget = _pConnectTarget + 1;
                             } while (_char != '\0');
-                            if ((uint)((int)_pConnectTarget - (int)(_candidates[1] + 1)) < 29) {
-                                _pCandidatePlus1 = _candidates[1];
+                            if ((uint)((int)_pConnectTarget - (int)_pCandidatePlus1) < 29) {
+                                _pConnectTarget = _candidates[1];
+                                _pCandidatePlus1 = _pConnectTarget + 1;
                                 do {
-                                    _char = *_pCandidatePlus1;
-                                    _pCandidatePlus1 = _pCandidatePlus1 + 1;
+                                    _char = *_pConnectTarget;
+                                    _pConnectTarget = _pConnectTarget + 1;
                                 } while (_char != '\0');
-                                _connectArgLength = (int)_pCandidatePlus1 - (int)(_candidates[1] + 1);
+                                _connectArgLength = (int)_pConnectTarget - (int)_pCandidatePlus1;
                             } else {
                                 _connectArgLength = 0x1d;
                             }
