@@ -25,41 +25,39 @@ namespace Synchrony {
         DWORD DVar2;
         int iVar3;
         this->receivedSyncStatusByPlayerUnk[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 2;
-        iVar3 = 1;
-        while (this->currentPlayerFullIDArray[iVar3] == -1 || this->receivedSyncStatusByPlayerUnk[iVar3] == 2) {
-            iVar3 = iVar3 + 1;
-            if (9 <= iVar3) {
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                    Commands::GCT_SET_SYNC_STATUS_0);
-                return;
-            }
-        }
-        if (this->announcementReceivedBool) {
-            DVar2 = timeGetTime();
-            if (DVar2 - this->announcementReceiveTime <= 0xafc8) {
-                return;
-            }
-            for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
-                if ((this->currentPlayerFullIDArray[iVar3] != -1)
-                    && (this->receivedSyncStatusByPlayerUnk[iVar3] != 2)) {
-                    DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar3;
-                    DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                    this->receivedSyncStatusByPlayerUnk[iVar3] = 2;
+        for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
+            if ((this->currentPlayerFullIDArray[iVar3] != -1)
+                && (this->receivedSyncStatusByPlayerUnk[iVar3] != 2)) {
+                if (this->announcementReceivedBool) {
+                    DVar2 = timeGetTime();
+                    if (DVar2 - this->announcementReceiveTime <= 0xafc8) {
+                        return;
+                    }
+                    for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
+                        if ((this->currentPlayerFullIDArray[iVar3] != -1)
+                            && (this->receivedSyncStatusByPlayerUnk[iVar3] != 2)) {
+                            DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar3;
+                            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
+                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
+                                DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
+                            this->receivedSyncStatusByPlayerUnk[iVar3] = 2;
+                        }
+                    }
+                    break;
                 }
-            }
-            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                Commands::GCT_SET_SYNC_STATUS_0);
-            return;
-        }
-        DVar2 = timeGetTime();
-        if (DVar2 - this->announcementReceiveTime <= 0xea60) {
-            return;
-        }
+                DVar2 = timeGetTime();
+                if (DVar2 - this->announcementReceiveTime <= 0xea60) {
+                    return;
+                }
         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
             Commands::GCT_KILL_GAME);
+                return;
+            }
+        }
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+            Commands::GCT_SET_SYNC_STATUS_0);
+        return;
     }
 
 }
