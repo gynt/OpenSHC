@@ -110,7 +110,6 @@ namespace Synchrony {
         this->HASH_HashTotal[this->currentPlayerSlotID] = 0;
         this->DAT_PlayerMatchTimes[this->currentPlayerSlotID] = DAT_GameCore::instance.mapTimeInTicks;
         _hashSubTotal = 0;
-        _unitIndex = 0;
         for (_unitIndex = 0; _unitIndex < 2500; _unitIndex = _unitIndex + 1) {
             iVar39 = DAT_UnitsState::instance.units[_unitIndex].field309_0x420;
             iVar45 = DAT_UnitsState::instance.units[_unitIndex].field308_0x41c;
