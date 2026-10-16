@@ -25,8 +25,6 @@ namespace Synchrony {
         size_t local_3f0;
         char local_3ec[1000];
         uint local_4;
-        DWORD _dwFlags;
-        DWORD _dwPriority;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_src;
         _src = addressOfFullCommandObjectOrCommandParameters;
         if (this->currentGameMode == Game::GM_SOLITARY || this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER
@@ -57,33 +55,31 @@ namespace Synchrony {
         this->DAT_CurrentTransmitCommandPacketSize = size;
         if (commandCategory == 117) {
             BOOLEnum BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            _dwPriority = 0xfffd;
-            if (!BVar2) {
-            LAB_00487dc7:
-                _dwFlags = 1536 | 1536;
-                goto LAB_00487dda;
-            }
+            if (BVar2) {
             /*
               SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
              */
             this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                1537 | 1537 | 1537, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
+                DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
+            } else {
+            /*
+              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
+             */
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                1536 | 1536, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
+            }
+        } else if (commandCategory == 12) {
+            /*
+              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
+             */
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                1536 | 1536, &this->DAT_Packet, size + 4, 0xfffe, 0, (void*)0x0, (DWORD_PTR*)0x0);
         } else {
             /*
-              0xc
+              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
              */
-            if (commandCategory == 12) {
-                _dwPriority = 0xfffe;
-                goto LAB_00487dc7;
-            }
-            _dwPriority = 0xffff;
-            _dwFlags = DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED;
-        LAB_00487dda:
-            /*
-              DPLAYX.DirectPlayEnumerate+88C0
-             */
-            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo, _dwFlags,
-                &this->DAT_Packet, size + 4, _dwPriority, 0, (void*)0x0, (DWORD_PTR*)0x0);
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xffff, 0, (void*)0x0, (DWORD_PTR*)0x0);
         }
         if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
             /*
