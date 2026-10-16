@@ -37,7 +37,6 @@ namespace Synchrony {
         IDirectPlay4A* _dplay4;
         SIZE_T local_58;
         DPSESSIONDESC2 _session;
-        ppIVar1 = this->DPLAYX_4A;
         uVar2 = MSVC_SecurityCookie::instance ^ (uint)&_dplay4;
         _dplay4 = (IDirectPlay4A*)0x0;
         local_58 = 0;
@@ -96,7 +95,8 @@ namespace Synchrony {
             DPLAY_CurrentSessionGUID::instance.Data4[6] = '\0';
             DPLAY_CurrentSessionGUID::instance.Data4[7] = '\0';
         } else {
-            _dplay4 = this->DPLAYX_4A;
+            ppIVar1 = this->DPLAYX_4A;
+            _dplay4 = ppIVar1;
             MACRO_CALL(OS_Func::_memset)(&_session, 0, (size_t)((int)(80)));
             _session.guidApplication = GUID_UNKNOWN::instance;
             _session.guidInstance.Data1 = DPLAY_CurrentSessionGUID::instance.Data1;
