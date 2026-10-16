@@ -55,9 +55,9 @@ namespace Synchrony {
                 if (this->DAT_PlayerGroupArray[_counter] < '\0') {
                     this->DAT_PlayerGroupArray[_counter] = 0;
                 }
-                _group = this->DAT_PlayerGroupArray[_counter];
-                local_38[(char)_group] = local_38[(char)_group] + 1;
-                if ((char)_group != 0) {
+                int _groupIndex = this->DAT_PlayerGroupArray[_counter];
+                local_38[_groupIndex] = local_38[_groupIndex] + 1;
+                if (_groupIndex != 0) {
                     local_38[0] = local_38[0] + 1;
                 }
                 _counter2 = _counter2 + 1;

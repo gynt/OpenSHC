@@ -19,3 +19,5 @@ src/OpenSHC/Map/Navigation/DirectionAlgorithmState/getMouseVectorLengthBasedOnDi
 src/OpenSHC/Input/MouseState/updateRightDragCameraControl.cpp
 src/OpenSHC/Synchrony/GameSynchronyState/processSyncPacket.cpp
 src/OpenSHC/Synchrony/GameSynchronyState/translateMultiplayerIDsIntoPlayerIDs.cpp
+src/OpenSHC/Synchrony/GameSynchronyState/determineGameTicksToPerform.cpp
+src/OpenSHC/Synchrony/GameSynchronyState/computeLatencyAdjustmentFromMatchTimes.cpp
