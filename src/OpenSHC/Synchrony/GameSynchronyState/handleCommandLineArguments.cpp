@@ -47,7 +47,6 @@ namespace Synchrony {
         undefined1 auStack_40c[2];
         bool _quotation;
         char local_409;
-        int local_408;
         char _candidates[4][256];
         char* _pConnectTarget;
         int _argCharIndex;
@@ -67,7 +66,6 @@ namespace Synchrony {
         if (_pArguments != arguments + 1) {
             _candidates[0][0] = '\0';
             _candidates[1][0] = '\0';
-            local_408 = 0;
             _charIndex3 = 0;
             _charIndex = 0;
             do {
@@ -88,13 +86,11 @@ namespace Synchrony {
                         LAB_004910ea:
                             if (_candidateIndex != 1) {
                                 _candidateIndex = _candidateIndex + 1;
-                                local_408 = _candidateIndex;
                                 continue;
                             }
                         }
                     LAB_004910fb:
                         _candidateIndex = 0;
-                        local_408 = 0;
                     LAB_00491101:
                         _charIndex3 = 0;
                         do {
@@ -172,13 +168,11 @@ namespace Synchrony {
                                 Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);
                             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                                 DAT_UserTextHandlerState::ptr)(_candidates[3]);
-                            _candidateIndex = local_408;
                             if (this->connectPort) {
                                 MACRO_CALL_MEMBER(
                                     Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(6);
                                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
                                     DAT_UserTextHandlerState::ptr)(_candidates[3] + _charIndex3 + 1);
-                                _candidateIndex = local_408;
                             }
                         } else {
                             _charIndex3 = MACRO_CALL(OS_Func::__stricmp)("+host", (char const*)((int)(_candidates[0])));
