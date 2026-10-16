@@ -26,6 +26,7 @@ namespace Synchrony {
     {
         char* textAddress;
         int iVar4;
+        int* _pMatchTime;
         int iVar5;
         int iVar6;
         TextAlignment TVar7;
@@ -74,9 +75,9 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "Timings ", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
         x = 1;
-        y = 0x1997fe0;
+        _pMatchTime = this->matchTimesArray;
         do {
-            if (*(int*)(y + -0x7a1cc) != -1) {
+            if (this->currentPlayerFullIDArray[x] != -1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " p", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -84,9 +85,9 @@ namespace Synchrony {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     ":", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    *(int*)y, x, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+                    *_pMatchTime, x, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
             }
-            y = y + 4;
+            _pMatchTime = _pMatchTime + 1;
             x = x + -1;
         } while (x < 9);
         bool bVar3 = -1 < this->relativeTickTime;
