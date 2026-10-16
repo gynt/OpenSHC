@@ -106,23 +106,24 @@ namespace Synchrony {
                 }
                 if ((int)this->ticksBehindFastestPlayer < 0) {
                     this->field318_0x109eb8 = 1;
-                    iVar3 = 0;
-                    do {
-                        if (DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][0] < (int)this->ticksBehindFastestPlayer) {
+                    for (iVar3 = 0; iVar3 < 0xc; iVar3 = iVar3 + 1) {
+                        if ((int)this->ticksBehindFastestPlayer
+                            > DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][0]) {
                             this->field318_0x109eb8 = DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][1];
+                            return;
                         }
-                        iVar3 = iVar3 + 1;
-                    } while (iVar3 < 0xc);
+                    }
+                    return;
                 }
-                paiVar1 = DAT_ProtocolDefinedData::instance.field5_0x64;
-                do {
-                    if ((int)this->ticksAheadOfSlowestPlayer <= (*paiVar1)[0]) {
+                for (iVar3 = 0; iVar3 < 40; iVar3 = iVar3 + 1) {
+                    if ((int)this->ticksAheadOfSlowestPlayer
+                        <= DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][0]) {
                         this->field316_0x109eb0 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][1];
                         this->field317_0x109eb4 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][2];
+                        return;
                     }
-                    paiVar1 = paiVar1 + 1;
-                    iVar3 = iVar3 + 1;
-                } while ((int)paiVar1 < 0xb38dc0);
+                }
+                return;
             }
         } while (true);
     }
