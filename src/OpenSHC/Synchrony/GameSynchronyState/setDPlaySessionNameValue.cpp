@@ -25,7 +25,7 @@ namespace Synchrony {
         local_4 = MSVC_SecurityCookie::instance ^ (uint)local_100;
         if (this->useTCPIP) {
             MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
-            ;
+            return;
         }
         pcVar1 = MACRO_CALL_MEMBER(
             Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
