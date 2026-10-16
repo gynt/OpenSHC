@@ -54,7 +54,6 @@ namespace Synchrony {
         char _char;
         char* _pCandidatePlus1;
         uint uVar1 = MSVC_SecurityCookie::instance ^ (uint)auStack_40c;
-        _candidateIndex = 0;
         _quotation = false;
         local_409 = '\0';
         this->useTCPIP = FALSE;
@@ -66,6 +65,7 @@ namespace Synchrony {
         if ((int)_pArguments - (int)(arguments + 1) != 0) {
             _candidates[0][0] = '\0';
             _candidates[1][0] = '\0';
+            _candidateIndex = 0;
             _charIndex3 = 0;
             _charIndex = 0;
             do {
