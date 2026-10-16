@@ -42,29 +42,27 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.relativeTickTime = 0;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeLatencyAdjustmentFromMatchTimes, this)(
                 currentPlayerSlotID);
-            _relativeTickTime = this->ticksBehindFastestPlayer;
-            if (-1 < (int)this->ticksBehindFastestPlayer
-                && (iVar1 = this->ticksAheadOfSlowestPlayer, _relativeTickTime = DAT_GameSynchronyState::instance.relativeTickTime, 0 < iVar1)) {
-                int iVar2 = this->ticksAheadOfSlowestPlayer;
-                if (iVar2 > (int)this->commandDelay + 0x4b) {
-                    DAT_GameSynchronyState::instance.relativeTickTime = iVar1;
-                    if ((int)this->unknownIncrementBy40_01 < 1) {
-                        this->unknownIncrementBy40_01 = 1;
-                    }
-                    _gameSpeedLevel = this->unknownIncrementBy40_01;
-                    _relativeTickTime = DAT_GameSynchronyState::instance.relativeTickTime;
-                    if ((int)this->unknownIncrementBy40_01 > this->skirmishGameSpeedLevel) {
-                        _gameSpeedLevel = this->skirmishGameSpeedLevel;
-                    }
-                } else {
-                    _relativeTickTime = iVar1;
-                    if (5 < iVar2
-                        && (_gameSpeedLevel = ((5 - iVar2) * 2) / 3 + this->skirmishGameSpeedLevel,
-                            (int)_gameSpeedLevel < 15)) {
-                        _gameSpeedLevel = 15;
+            if (0 <= (int)this->ticksBehindFastestPlayer) {
+                if (0 < this->ticksAheadOfSlowestPlayer) {
+                    DAT_GameSynchronyState::instance.relativeTickTime = this->ticksAheadOfSlowestPlayer;
+                    if (this->ticksAheadOfSlowestPlayer > (int)this->commandDelay + 0x4b) {
+                        if ((int)this->unknownIncrementBy40_01 < 1) {
+                            this->unknownIncrementBy40_01 = 1;
+                        }
+                        _gameSpeedLevel = this->unknownIncrementBy40_01;
+                        if ((int)this->unknownIncrementBy40_01 > this->skirmishGameSpeedLevel) {
+                            _gameSpeedLevel = this->skirmishGameSpeedLevel;
+                        }
+                    } else if (5 < this->ticksAheadOfSlowestPlayer) {
+                        _gameSpeedLevel = ((5 - this->ticksAheadOfSlowestPlayer) * 2) / 3
+                            + this->skirmishGameSpeedLevel;
+                        if ((int)_gameSpeedLevel < 15) {
+                            _gameSpeedLevel = 15;
+                        }
                     }
                 }
             }
+            _relativeTickTime = DAT_GameSynchronyState::instance.relativeTickTime;
         }
         DAT_GameSynchronyState::instance.relativeTickTime = _relativeTickTime;
         if (DAT_GameCore::instance.gameSpeedMultiplicator < 0) {
