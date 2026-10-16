@@ -22,7 +22,7 @@ namespace Synchrony {
         int iVar1;
         int _durationOfOneTick;
         int _relativeTickTime;
-        dword _gameSpeedLevel = this->skirmishGameSpeedLevel;
+        dword _gameSpeedLevel;
         if (!DAT_GameCore::instance.gameSpeedLevel) {
             DAT_GameCore::instance.gameSpeedLevel = 40;
         }
@@ -39,13 +39,14 @@ namespace Synchrony {
               Calculate multiplayer game speed.
              */
             DAT_GameCore::instance.gameSpeedMultiplicator = 1;
+            _gameSpeedLevel = this->skirmishGameSpeedLevel;
             DAT_GameSynchronyState::instance.relativeTickTime = 0;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeLatencyAdjustmentFromMatchTimes, this)(
                 currentPlayerSlotID);
             if (0 <= (int)this->ticksBehindFastestPlayer) {
-                if (0 < this->ticksAheadOfSlowestPlayer) {
-                    DAT_GameSynchronyState::instance.relativeTickTime = this->ticksAheadOfSlowestPlayer;
-                    if (this->ticksAheadOfSlowestPlayer > (int)this->commandDelay + 0x4b) {
+                if (0 < (int)this->ticksAheadOfSlowestPlayer) {
+                    DAT_GameSynchronyState::instance.relativeTickTime = (int)this->ticksAheadOfSlowestPlayer;
+                    if ((int)this->ticksAheadOfSlowestPlayer > (int)this->commandDelay + 0x4b) {
                         if ((int)this->unknownIncrementBy40_01 < 1) {
                             this->unknownIncrementBy40_01 = 1;
                         }
@@ -53,8 +54,8 @@ namespace Synchrony {
                         if ((int)this->unknownIncrementBy40_01 > this->skirmishGameSpeedLevel) {
                             _gameSpeedLevel = this->skirmishGameSpeedLevel;
                         }
-                    } else if (5 < this->ticksAheadOfSlowestPlayer) {
-                        _gameSpeedLevel = ((5 - this->ticksAheadOfSlowestPlayer) * 2) / 3
+                    } else if (5 < (int)this->ticksAheadOfSlowestPlayer) {
+                        _gameSpeedLevel = ((5 - (int)this->ticksAheadOfSlowestPlayer) * 2) / 3
                             + this->skirmishGameSpeedLevel;
                         if ((int)_gameSpeedLevel < 15) {
                             _gameSpeedLevel = 15;
