@@ -38,10 +38,10 @@ namespace Synchrony {
         if ((!this->syncStatus) && (!this->saveRelated)) {
             BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1) {
+                _anyIsZero = 1;
                 int iVar2 = 0;
                 piVar6 = &this->connectionLagInfoArray[1];
                 piVar3 = this->currentPlayerFullIDArray + 1;
-                _anyIsZero = 1;
                 do {
                     /*
                       this code does three at a time
@@ -81,7 +81,7 @@ namespace Synchrony {
                         }
                         _playerID = _playerID + 1;
                         piVar3 = piVar3 + 1;
-                        pDVar7 = pDVar7 + 9;
+                        pDVar7 = pDVar7 + 1;
                     } while (_playerID < 9);
                 }
             }
