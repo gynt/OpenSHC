@@ -59,7 +59,10 @@ namespace Synchrony {
             x = 10;
             do {
                 piVar3 = piVar3 + 1;
-                uint color = (-(uint)(piVar3[-0x9c4] != *piVar3) & 0xff000100) + 0xffffff;
+                uint color = 0xffffff;
+                if (piVar3[-0x9c4] != *piVar3) {
+                    color = 0xff;
+                }
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     piVar3[-0x9c4], xParam, y + 0x46, Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
