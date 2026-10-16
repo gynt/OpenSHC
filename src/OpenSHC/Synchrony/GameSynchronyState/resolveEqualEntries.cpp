@@ -4,6 +4,8 @@
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+
 namespace OpenSHC {
 namespace Synchrony {
 
@@ -15,25 +17,30 @@ namespace Synchrony {
         BOOLEnum _equality;
         int _count = this->DPLAY_SessionsCount;
         int _index = 0;
-        if (0 < this->DPLAY_SessionsCount) {
+        if (0 < _count) {
             do {
-                _equality = MACRO_CALL(OS_Func::isEqualGUID)(pGUID, (GUID*)((int)(this->DPLAY_SessionGUIDs[_index])));
+                _equality = MACRO_CALL(OS_Func::isEqualGUID)(
+                    pGUID, DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[_index]);
                 if (_equality) {
-                    if ((_index <= this->scrollBarItemOffset) || (this->scrollBarItemOffset + 10 <= _index)) {
-                        uint uVar1 = _count - 10;
-                        if (_index <= (int)uVar1) {
-                            this->scrollBarItemOffset = _index;
-                            this->scrollBarIndex = 0;
+                    int _offset = this->scrollBarItemOffset;
+                    if ((_index <= _offset) || (_index >= _offset + 10)) {
+                        _offset = _count - 10;
+                        this->scrollBarItemOffset = _index;
+                        this->scrollBarIndex = 0;
+                        if (_index <= _offset) {
+                            return;
                         }
-                        this->scrollBarItemOffset = uVar1 & ((int)uVar1 <= 0) - 1;
+                        _offset = _offset & ((_offset <= 0) - 1);
+                        this->scrollBarItemOffset = _offset;
                     }
-                    this->scrollBarIndex = _index - this->scrollBarItemOffset;
+                    this->scrollBarIndex = _index - _offset;
+                    return;
                 }
                 _index = _index + 1;
             } while (_index < _count);
         }
-        this->scrollBarIndex = -1;
         this->scrollBarItemOffset = 0;
+        this->scrollBarIndex = -1;
     }
 
 }

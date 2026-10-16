@@ -12,15 +12,12 @@ namespace Synchrony {
     undefined4 GameSynchronyState::checkAllPlayersReadyAndCleanupSlots()
     {
         if (this->isHost) {
-            int iVar2 = 1;
-            int* piVar1 = this->unknownPlayerInfo_01 + 1;
-            do {
-                if ((piVar1[-0x419c2] != -1) && (*piVar1 == 0)) {
+            for (int iVar2 = 1; iVar2 < 9; iVar2 = iVar2 + 1) {
+                if ((this->DAT_CurrentPlayerFullIDArray2[iVar2] != -1)
+                    && (this->unknownPlayerInfo_01[iVar2] == 0)) {
                     return (undefined4)(0);
                 }
-                iVar2 = iVar2 + 1;
-                piVar1 = piVar1 + 1;
-            } while (iVar2 < 9);
+            }
             if (this->somePlayerRelatedArray[1] == 0) {
                 this->currentPlayerFullIDArray[1] = -1;
             }

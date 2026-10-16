@@ -55,13 +55,11 @@ namespace Synchrony {
         int local_c;
         HashData* local_8;
         HashData* local_4;
-        piVar29 = this->receivedSyncStatusByPlayerUnk + 1;
         this->receivedSyncStatusByPlayerUnk[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
         iVar6 = 1;
-        piVar1 = piVar29;
-        while (piVar1[-0x404f9] == -1 || *piVar1 != 0) {
+        while (this->currentPlayerFullIDArray[iVar6] == -1
+            || this->receivedSyncStatusByPlayerUnk[iVar6] != 0) {
             iVar6 = iVar6 + 1;
-            piVar1 = piVar1 + 1;
             if (9 <= iVar6)
                 goto LAB_0048dc9c;
         }
@@ -70,18 +68,16 @@ namespace Synchrony {
             if (DVar3 - this->announcementReceiveTime <= 0xafc8) {
                 return;
             }
-            iVar6 = 1;
-            do {
-                if ((piVar29[-0x404f9] != -1) && (*piVar29 == 0)) {
+            for (iVar6 = 1; iVar6 < 9; iVar6 = iVar6 + 1) {
+                if ((this->currentPlayerFullIDArray[iVar6] != -1)
+                    && (this->receivedSyncStatusByPlayerUnk[iVar6] == 0)) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar6;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                    *piVar29 = 2;
+                    this->receivedSyncStatusByPlayerUnk[iVar6] = 2;
                 }
-                iVar6 = iVar6 + 1;
-                piVar29 = piVar29 + 1;
-            } while (iVar6 < 9);
+            }
             goto LAB_0048dc9c;
         }
         DVar3 = timeGetTime();

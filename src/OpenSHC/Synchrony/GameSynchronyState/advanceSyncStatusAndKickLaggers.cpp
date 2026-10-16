@@ -22,17 +22,12 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048F3D0
     void GameSynchronyState::advanceSyncStatusAndKickLaggers()
     {
-        int* piVar1;
         DWORD DVar2;
         int iVar3;
-        int* piVar4;
-        piVar4 = this->receivedSyncStatusByPlayerUnk + 1;
         this->receivedSyncStatusByPlayerUnk[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 2;
         iVar3 = 1;
-        piVar1 = piVar4;
-        while (piVar1[-0x404f9] == -1 || *piVar1 == 2) {
+        while (this->currentPlayerFullIDArray[iVar3] == -1 || this->receivedSyncStatusByPlayerUnk[iVar3] == 2) {
             iVar3 = iVar3 + 1;
-            piVar1 = piVar1 + 1;
             if (9 <= iVar3) {
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                     Commands::GCT_SET_SYNC_STATUS_0);
@@ -44,18 +39,16 @@ namespace Synchrony {
             if (DVar2 - this->announcementReceiveTime <= 0xafc8) {
                 return;
             }
-            iVar3 = 1;
-            do {
-                if ((piVar4[-0x404f9] != -1) && (*piVar4 != 2)) {
+            for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
+                if ((this->currentPlayerFullIDArray[iVar3] != -1)
+                    && (this->receivedSyncStatusByPlayerUnk[iVar3] != 2)) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar3;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                    *piVar4 = 2;
+                    this->receivedSyncStatusByPlayerUnk[iVar3] = 2;
                 }
-                iVar3 = iVar3 + 1;
-                piVar4 = piVar4 + 1;
-            } while (iVar3 < 9);
+            }
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                 Commands::GCT_SET_SYNC_STATUS_0);
             return;
