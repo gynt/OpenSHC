@@ -16,8 +16,8 @@ namespace Synchrony {
     void GameSynchronyState::checkGameSync()
     {
         int _playerID;
-        int _currentMatchTime = 0;
         int _currentHash = 0;
+        int _currentMatchTime = 0;
         if (this->DAT_HashCountdown) {
             return;
         }
