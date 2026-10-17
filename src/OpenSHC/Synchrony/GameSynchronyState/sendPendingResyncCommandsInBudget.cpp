@@ -22,7 +22,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048E680
     void GameSynchronyState::sendPendingResyncCommandsInBudget()
     {
-        int (*paiVar1)[160];
         int iVar2;
         DWORD DVar3;
         int iVar4;
@@ -98,8 +97,8 @@ namespace Synchrony {
                                         this->resyncResumeInnerIndex = iVar4 + 1;
                                         this->somePacketSubTypeUnk = 0xd;
                                         this->resyncResumeOuterIndex = iVar8;
-                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                            Commands::GCT_QUIT_MULTIPLAYERGAME);
                                     }
                                     break;
                                 }
@@ -128,7 +127,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_HeatMaps[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_HeatMaps[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_HOST_SHARE_HEATMAP);
@@ -152,8 +153,7 @@ namespace Synchrony {
                     piVar7 = piVar7 + 1;
                 } while (iVar8 < 0x50);
             }
-            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                Commands::GCT_CHECK_GAME_SYNCUnk);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_CHECK_GAME_SYNCUnk);
             DAT_GameSynchronyState::instance.syncStatus = 3;
             return;
         default:
@@ -166,7 +166,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Units[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Units[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_UNIT);
@@ -199,7 +201,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Buildings[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Buildings[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_BUILDING);
@@ -232,7 +236,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Trees[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Trees[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_TREE);
@@ -265,7 +271,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Tribes[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Tribes[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_UNITSELECTION);
@@ -298,7 +306,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_PlayerDatas[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_PlayerDatas[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_PLAYERDATA);
@@ -331,7 +341,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Section1023[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Section1023[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_UNKNOWN);
@@ -364,7 +376,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Entities[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Entities[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_ENTITY);
@@ -398,16 +412,13 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1)
-                            && (paiVar1 = this->HASH_Moats + iVar4, iVar4 = DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                (*paiVar1)[iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1) && (this->HASH_Moats[iVar4][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_MOAT);
                             this->currentPacketTotalSize
                                 = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                             local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
-                            iVar4 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                             if (local_14 > (int)this->resyncPacketBudget) {
                                 this->somePacketSubTypeUnk = 7;
                                 this->resyncResumeOuterIndex = iVar8 + 1;
@@ -434,7 +445,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_ClimbData[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_ClimbData[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_CLIMB_DATA);
@@ -467,7 +480,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_PitchDitches[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_PitchDitches[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_PITCH_DITCH);
@@ -500,7 +515,9 @@ namespace Synchrony {
                     piVar5 = this->currentPlayerFullIDArray + 1;
                     piVar6 = piVar7;
                     do {
-                        if ((*piVar5 != -1) && (this->HASH_Unknown2[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                        if ((*piVar5 != -1)
+                            && (this->HASH_Unknown2[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
+                                != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                                 Commands::GCT_SEND_RESYNC_UNKNOWN2);
@@ -578,14 +595,15 @@ namespace Synchrony {
                                 piVar5 = local_c;
                                 do {
                                     if ((*piVar7 != -1)
-                                        && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                        && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance
+                                                                          .currentPlayerSlotID]
                                                 .hashDataArray[iVar8]
                                                 .componentArray[iVar4]
                                             != *piVar5)) {
                                         this->DAT_GameCommandParam0 = iVar8;
                                         this->DAT_GameCommandParam1 = iVar4;
-                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                            Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
                                         this->currentPacketTotalSize
                                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -593,8 +611,8 @@ namespace Synchrony {
                                             this->resyncResumeInnerIndex = iVar4 + 1;
                                             this->somePacketSubTypeUnk = 0xc;
                                             this->resyncResumeOuterIndex = iVar8;
-                                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                                this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                                Commands::GCT_QUIT_MULTIPLAYERGAME);
                                         }
                                         break;
                                     }
@@ -625,7 +643,8 @@ namespace Synchrony {
                 piVar5 = this->currentPlayerFullIDArray + 1;
                 piVar6 = piVar7;
                 do {
-                    if ((*piVar5 != -1) && (this->HASH_AIVS[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
+                    if ((*piVar5 != -1)
+                        && (this->HASH_AIVS[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
                         this->DAT_GameCommandParam0 = iVar8;
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                             Commands::GCT_HOST_SHARE_AIV);
