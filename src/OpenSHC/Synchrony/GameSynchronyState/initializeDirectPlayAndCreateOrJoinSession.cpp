@@ -125,6 +125,7 @@ namespace Synchrony {
                 return (int)(_dpStatus);
             }
             this->DPLAY_PlayerNameStructure.dwFlags = 0;
+            this->DPLAY_PlayerNameStructure.lpszShortName = (WCHAR*)0x0;
             this->DPLAY_PlayerNameStructure.lpszLongName = (WCHAR*)0x0;
             this->DPLAY_PlayerNameStructure.dwSize = 0x10;
             this->DPLAY_PlayerNameStructure.lpszShortName = this->DPLAY_PlayerShortName;
