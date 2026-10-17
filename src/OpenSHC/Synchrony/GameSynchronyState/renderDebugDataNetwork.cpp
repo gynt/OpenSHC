@@ -88,7 +88,7 @@ namespace Synchrony {
                     *_pMatchTime, x, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
             }
             _pMatchTime = _pMatchTime + 1;
-            x = x + -1;
+            x = x + 1;
         } while (x < 9);
         bool bVar3 = -1 < this->relativeTickTime;
         iVar1 = iVar2 + 0x1c;
@@ -118,7 +118,7 @@ namespace Synchrony {
                     *(uint*)y & 0xfff, x, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
             }
             y = y + 4;
-            x = x + -1;
+            x = x + 1;
         } while (x < 9);
         iVar1 = iVar2 + 0x38;
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
@@ -137,7 +137,7 @@ namespace Synchrony {
                     *(int*)y, x, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
             }
             y = y + 4;
-            x = x + -1;
+            x = x + 1;
         } while (x < 9);
         if (!this->syncStatus) {
             if (!this->DAT_GameHalted) {
