@@ -45,7 +45,7 @@ namespace Synchrony {
         int iVar7;
         int iVar8;
         int iVar10;
-        int local_48[18];
+        int local_48[21];
         if (this->currentGameMode != Game::GM_SOLITARY) {
             for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
                 if (0 < DAT_GameState::instance.playerDataArray[_deadPlayerID].commemorationShrinePlacementCountdown) {
@@ -77,16 +77,16 @@ namespace Synchrony {
                     return;
                 }
                 for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
-                    local_48[_deadPlayerID * 2] = 0;
-                    local_48[_deadPlayerID * 2 + 1] = 0;
+                    local_48[_deadPlayerID * 2 + 3] = 0;
+                    local_48[_deadPlayerID * 2 + 4] = 0;
                 }
                 for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
                     if ((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
                         || (this->currentAIArray[_deadPlayerID] != 0)) {
                         iVar7 = DAT_GameState::instance.mapAndTime.playerTeams[_deadPlayerID];
-                        local_48[iVar7 * 2] = local_48[iVar7 * 2] + 1;
+                        local_48[iVar7 * 2 + 3] = local_48[iVar7 * 2 + 3] + 1;
                         if (DAT_GameState::instance.playerDataArray[_deadPlayerID].lordKilledByPlayerID != 0) {
-                            local_48[iVar7 * 2 + 1] = local_48[iVar7 * 2 + 1] + 1;
+                            local_48[iVar7 * 2 + 4] = local_48[iVar7 * 2 + 4] + 1;
                         }
                     }
                 }
@@ -94,9 +94,9 @@ namespace Synchrony {
                 iVar5 = 0;
                 iVar10 = 0;
                 for (iVar4 = 1; iVar4 < 9; iVar4 = iVar4 + 1) {
-                    if (local_48[iVar4 * 2] != 0) {
+                    if (local_48[iVar4 * 2 + 3] != 0) {
                         iVar10 = iVar10 + 1;
-                        if (local_48[iVar4 * 2 + 1] == local_48[iVar4 * 2]) {
+                        if (local_48[iVar4 * 2 + 4] == local_48[iVar4 * 2 + 3]) {
                             iVar5 = iVar5 + 1;
                         } else {
                             iVar7 = iVar4;
@@ -104,7 +104,7 @@ namespace Synchrony {
                     }
                 }
                 for (_deadPlayerID = 0; _deadPlayerID < 8; _deadPlayerID = _deadPlayerID + 1) {
-                    local_48[_deadPlayerID + 1] = 0;
+                    local_48[_deadPlayerID + 4] = 0;
                 }
                 if (iVar5 < iVar10 + -1) {
                     if (!DAT_GameCore::instance.mapU4Int0) {
@@ -128,14 +128,14 @@ namespace Synchrony {
                 for (iVar4 = 1; iVar4 < 9; iVar4 = iVar4 + 1) {
                     if (((this->currentPlayerFullIDArray[iVar4] != -1) || (this->currentAIArray[iVar4] != 0))
                         && DAT_GameState::instance.mapAndTime.playerTeams[iVar4] == iVar7) {
-                        local_48[iVar4] = 1;
+                        local_48[iVar4 + 3] = 1;
                     }
                 }
                 for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
                     if ((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
                         || (this->currentAIArray[_deadPlayerID] != 0)) {
                         DAT_GameState::instance.mapAndTime.playerIsAlive[_deadPlayerID]
-                            = (short)local_48[_deadPlayerID];
+                            = (short)local_48[_deadPlayerID + 3];
                         DAT_GameState::instance.mapAndTime.gameOver = TRUE;
                         DAT_GameState::instance.playerDataArray[_deadPlayerID].playerDeathRelated = 1;
                         DAT_GameState::instance.mapAndTime.gameOverTime = timeGetTime();
