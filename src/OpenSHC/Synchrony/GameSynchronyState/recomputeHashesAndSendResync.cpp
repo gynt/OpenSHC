@@ -369,13 +369,9 @@ namespace Synchrony {
             psVar38[7] = 0;
             address->graphicType2 = 0;
             psVar38[10] = 0;
-            psVar38[0x61] = 0;
-            psVar38[0x60] = 0;
-            psVar38[0x5f] = 0;
-            psVar38[0x5e] = 0;
+            memset(&psVar38[0x5e], 0, 8);
             *(int*)(psVar38 + 0x5c) = 0;
-            psVar38[0x5a] = 0;
-            psVar38[0x59] = 0;
+            memset(&psVar38[0x59], 0, 4);
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                 DAT_DirectionAlgorithmState::ptr)(0xe8, (int*)((int)(address)));
             psVar38[8] = sVar5;
