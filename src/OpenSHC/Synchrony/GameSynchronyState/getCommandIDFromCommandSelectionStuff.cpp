@@ -72,13 +72,13 @@ namespace Synchrony {
                     _selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
                     do {
                         _nextPlayerID = _selectedPlayerIDAddress[2];
-                        _commandID = (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0];
+                        _commandID = _selectedPlayerIDAddress[-1];
                         _playerID = *_selectedPlayerIDAddress;
                         if (!_nextPlayerID) {
                             return 0;
                         }
                         if (_nextPlayerID < _playerID) {
-                            (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0] = _selectedPlayerIDAddress[1];
+                            _selectedPlayerIDAddress[-1] = _selectedPlayerIDAddress[1];
                             *_selectedPlayerIDAddress = _nextPlayerID;
                             _selectedPlayerIDAddress[1] = _commandID;
                             _selectedPlayerIDAddress[2] = _playerID;
