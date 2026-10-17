@@ -22,9 +22,11 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047FB50
     void GameSynchronyState::renderChatMessageList(int xPos, int yPos, int param_3)
     {
-        this->chatMessageRenderIndex = this->DAT_ChatMessageArrayIndex - param_3;
-        if (this->chatMessageRenderIndex < 0) {
-            this->chatMessageRenderIndex = this->chatMessageRenderIndex + 0x14;
+        int _renderIndex = this->DAT_ChatMessageArrayIndex - param_3;
+        this->chatMessageRenderIndex = _renderIndex;
+        if (_renderIndex < 0) {
+            _renderIndex = _renderIndex + 0x14;
+            this->chatMessageRenderIndex = _renderIndex;
         }
         int iVar2 = 0;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
