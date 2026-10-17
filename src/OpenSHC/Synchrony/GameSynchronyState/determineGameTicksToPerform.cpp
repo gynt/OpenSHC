@@ -91,7 +91,7 @@ namespace Synchrony {
               Execute game ticks
              */
             if (DAT_GameCore::instance.averageTimePerGameTick > _durationOfOneTick
-                && _durationOfOneTick * 2 <= _relativeTickTime
+                && _relativeTickTime >= _durationOfOneTick * 2
                 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
                   Slow down
@@ -100,7 +100,7 @@ namespace Synchrony {
                 return 2;
             }
             if (DAT_GameCore::instance.averageTimePerGameTick > (_durationOfOneTick * 7) / 10
-                && _durationOfOneTick * 2 <= _relativeTickTime
+                && _relativeTickTime >= _durationOfOneTick * 2
                 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
                   Slow down
