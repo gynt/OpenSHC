@@ -490,25 +490,25 @@ namespace Synchrony {
         if ((this->currentPlayerFullIDArray[1] != -1) && (0 < this->connectionLagInfoArray[1].average1)) {
             iVar6 = this->connectionLagInfoArray[1].average1;
         }
-        if ((this->currentPlayerFullIDArray[2] != -1) && (iVar6 < this->connectionLagInfoArray[2].average1)) {
+        if ((this->currentPlayerFullIDArray[2] != -1) && (this->connectionLagInfoArray[2].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[2].average1;
         }
-        if ((this->currentPlayerFullIDArray[3] != -1) && (iVar6 < this->connectionLagInfoArray[3].average1)) {
+        if ((this->currentPlayerFullIDArray[3] != -1) && (this->connectionLagInfoArray[3].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[3].average1;
         }
-        if ((this->currentPlayerFullIDArray[4] != -1) && (iVar6 < this->connectionLagInfoArray[4].average1)) {
+        if ((this->currentPlayerFullIDArray[4] != -1) && (this->connectionLagInfoArray[4].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[4].average1;
         }
-        if ((this->currentPlayerFullIDArray[5] != -1) && (iVar6 < this->connectionLagInfoArray[5].average1)) {
+        if ((this->currentPlayerFullIDArray[5] != -1) && (this->connectionLagInfoArray[5].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[5].average1;
         }
-        if ((this->currentPlayerFullIDArray[6] != -1) && (iVar6 < this->connectionLagInfoArray[6].average1)) {
+        if ((this->currentPlayerFullIDArray[6] != -1) && (this->connectionLagInfoArray[6].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[6].average1;
         }
-        if ((this->currentPlayerFullIDArray[7] != -1) && (iVar6 < this->connectionLagInfoArray[7].average1)) {
+        if ((this->currentPlayerFullIDArray[7] != -1) && (this->connectionLagInfoArray[7].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[7].average1;
         }
-        if ((this->currentPlayerFullIDArray[8] != -1) && (iVar6 < this->connectionLagInfoArray[8].average1)) {
+        if ((this->currentPlayerFullIDArray[8] != -1) && (this->connectionLagInfoArray[8].average1 > iVar6)) {
             iVar6 = this->connectionLagInfoArray[8].average1;
         }
         if (iVar6 < 2) {
