@@ -4,6 +4,8 @@
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 
+#include "stdlib.h"
+
 namespace OpenSHC {
 namespace Synchrony {
 
@@ -25,8 +27,7 @@ namespace Synchrony {
         }
         uint _difference = (DAT_GameCore::instance.mapTimeInTicks - this->receivedCommandMapTimeInTicks)
             - this->connectionLagInfoArray[_player].average1;
-        uint _min1IfNegative = (int)_difference >> 0x1f;
-        int _absoluteDifference = (_difference ^ _min1IfNegative) - _min1IfNegative;
+        int _absoluteDifference = abs((int)_difference);
         if ((int)this->clTimeDiff < _absoluteDifference) {
             int _newDiff = this->clTimeDiff + 5;
             if (_absoluteDifference >= _newDiff) {
