@@ -92,45 +92,18 @@ namespace Synchrony {
                     }
                 }
                 iVar7 = 0;
-                piVar3 = local_48 + 2;
                 iVar5 = 0;
                 iVar10 = 0;
-                iVar4 = 3;
-                do {
-                    iVar8 = iVar7;
-                    if (*piVar3 != 0) {
+                for (iVar4 = 1; iVar4 < 9; iVar4 = iVar4 + 1) {
+                    if (local_48[iVar4 * 2] != 0) {
                         iVar10 = iVar10 + 1;
-                        if (piVar3[1] == *piVar3) {
+                        if (local_48[iVar4 * 2 + 1] == local_48[iVar4 * 2]) {
                             iVar5 = iVar5 + 1;
                         } else {
-                            iVar8 = iVar4 + -2;
+                            iVar7 = iVar4;
                         }
                     }
-                    if (piVar3[2] != 0) {
-                        iVar10 = iVar10 + 1;
-                        if (piVar3[3] == piVar3[2]) {
-                            iVar5 = iVar5 + 1;
-                        } else {
-                            iVar8 = iVar4 + -1;
-                        }
-                    }
-                    iVar7 = iVar8;
-                    if ((piVar3[4] != 0) && (iVar10 = iVar10 + 1, iVar7 = iVar4, piVar3[5] == piVar3[4])) {
-                        iVar5 = iVar5 + 1;
-                        iVar7 = iVar8;
-                    }
-                    if (piVar3[6] != 0) {
-                        iVar10 = iVar10 + 1;
-                        if (piVar3[7] == piVar3[6]) {
-                            iVar5 = iVar5 + 1;
-                        } else {
-                            iVar7 = iVar4 + 1;
-                        }
-                    }
-                    iVar8 = iVar4 + 2;
-                    piVar3 = piVar3 + 8;
-                    iVar4 = iVar4 + 4;
-                } while (iVar8 < 9);
+                }
                 for (_deadPlayerID = 0; _deadPlayerID < 8; _deadPlayerID = _deadPlayerID + 1) {
                     local_48[_deadPlayerID + 1] = 0;
                 }
