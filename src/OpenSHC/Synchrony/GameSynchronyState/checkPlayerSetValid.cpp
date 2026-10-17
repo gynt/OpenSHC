@@ -15,11 +15,9 @@ namespace Synchrony {
     int GameSynchronyState::checkPlayerSetValid()
     {
         int _somePlayerID;
-        int _someCounter;
-        int _validPlayerCount;
         int _teamMemberCounts[9];
-        _someCounter = 0;
-        _validPlayerCount = 0;
+        int _someCounter = 0;
+        int _validPlayerCount = 0;
         _teamMemberCounts[0] = 0;
         _teamMemberCounts[1] = 0;
         _teamMemberCounts[2] = 0;
@@ -36,8 +34,7 @@ namespace Synchrony {
             /*
               no human player and no AI in this slot
              */
-            if ((this->currentPlayerFullIDArray[_somePlayerID] == -1)
-                && (this->currentAIArray[_somePlayerID] == 0)) {
+            if ((this->currentPlayerFullIDArray[_somePlayerID] == -1) && (this->currentAIArray[_somePlayerID] == 0)) {
                 continue;
             }
             _teamMemberCounts[DAT_GameState::instance.mapAndTime.playerTeams[_somePlayerID]]

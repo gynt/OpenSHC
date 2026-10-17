@@ -28,9 +28,6 @@ namespace Synchrony {
     int GameSynchronyState::createCompoundAddressBasedOnSelectedProvider(LPVOID* pCompoundAddress, SIZE_T* param_2)
     {
         char cVar1;
-        BOOLEnum BVar3;
-        uint uVar4;
-        int _status;
         void* _pMemNoLock;
         void* _pMem;
         void* pvVar5;
@@ -50,9 +47,8 @@ namespace Synchrony {
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_pSize;
         local_2b8 = param_2;
         _pSize = 0;
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)(
-            (GUID*)&local_26c);
-        BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&local_26c);
+        BOOLEnum BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
         if (BVar3) {
             local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
             local_2b4[0].dwDataSize = 0x10;
@@ -80,8 +76,8 @@ namespace Synchrony {
                 } while (cVar1 != '\0');
                 iVar8 = 2;
             }
-            pcVar6 = MACRO_CALL_MEMBER(
-                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
+            pcVar6
+                = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
             pcVar7 = local_194;
             do {
                 cVar1 = *pcVar6;
@@ -124,7 +120,7 @@ namespace Synchrony {
                 DVar9 = 2;
                 pcVar7 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(6);
-                uVar4 = atol(pcVar7);
+                uint uVar4 = atol(pcVar7);
                 local_2bc = uVar4 & 0xffff;
                 if ((ushort)uVar4 != 0) {
                     local_2b4[2].dwDataSize = 2;
@@ -144,7 +140,7 @@ namespace Synchrony {
                 }
             }
         }
-        _status = this->DPLAYX_LOBBY->CreateCompoundAddress(local_2b4, DVar9, (void*)0x0, &_pSize);
+        int _status = this->DPLAYX_LOBBY->CreateCompoundAddress(local_2b4, DVar9, (void*)0x0, &_pSize);
         if (_status == -2005467106) {
             _pMemNoLock = GlobalAlloc(WindowsHelper::Enums::GAF_GHND, _pSize);
             _pMem = GlobalLock(_pMemNoLock);

@@ -14,13 +14,11 @@ namespace Synchrony {
     int GameSynchronyState::addPlayerToCurrentPlayerArray(int playerFullID)
     {
         int _slot;
-        int _slot_2 = 1;
-        do {
+        for (int _slot_2 = 1; _slot_2 < 9; _slot_2 = _slot_2 + 1) {
             if (this->currentPlayerFullIDArray[_slot_2] == playerFullID) {
-                return _slot_2;
+            return _slot_2;
             }
-            _slot_2 = _slot_2 + 1;
-        } while (_slot_2 < 9);
+        }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER) {
             _slot = 1;
             do {

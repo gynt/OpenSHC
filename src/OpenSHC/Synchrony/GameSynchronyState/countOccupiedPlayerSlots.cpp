@@ -7,10 +7,9 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E890
     int GameSynchronyState::countOccupiedPlayerSlots()
     {
-        int _sum;
         int* _aiPtr;
         int iVar1;
-        _sum = 0;
+        int _sum = 0;
         _aiPtr = this->currentAIArray + 1;
         iVar1 = 2;
         do {

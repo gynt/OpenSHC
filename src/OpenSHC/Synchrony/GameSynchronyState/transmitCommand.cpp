@@ -20,7 +20,6 @@ namespace Synchrony {
     void GameSynchronyState::transmitCommand(byte commandCategory, undefined4 time,
         char* addressOfFullCommandObjectOrCommandParameters, size_t size, undefined4 idTo)
     {
-        int iVar1;
         char* _src;
         size_t local_3f0;
         char local_3ec[1000];
@@ -43,43 +42,44 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 &time, (void*)((int)(((int)&this->DAT_Packet + 2))));
             local_3f0 = size;
-            size = MACRO_CALL_MEMBER(
-                              Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
-                              size, _src, (void*)((int)(((int)&this->DAT_Packet + 5))))
+            size = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk, this)(
+                       size, _src, (void*)((int)(((int)&this->DAT_Packet + 5))))
                 + 1;
             if ((int)size > (int)local_3f0) {
-                MACRO_CALL(OS_Func::_sprintf)(local_3ec, "packet size:%d new size:%d type:%d", local_3f0, size,
-                    (int)(char)commandCategory);
+                MACRO_CALL(OS_Func::_sprintf)(
+                    local_3ec, "packet size:%d new size:%d type:%d", local_3f0, size, (int)(char)commandCategory);
             }
         }
         this->DAT_CurrentTransmitCommandPacketSize = size;
         if (commandCategory == 117) {
             BOOLEnum BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar2) {
-            /*
-              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
-             */
-            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
+                /*
+                  SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
+                 */
+                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                    DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xfffd, 0,
+                    (void*)0x0, (DWORD_PTR*)0x0);
             } else {
-            /*
-              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
-             */
-            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                1536 | 1536, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
+                /*
+                  SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
+                 */
+                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                    1536 | 1536, &this->DAT_Packet, size + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
             }
         } else if (commandCategory == 12) {
             /*
               SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
              */
-            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                1536 | 1536, &this->DAT_Packet, size + 4, 0xfffe, 0, (void*)0x0, (DWORD_PTR*)0x0);
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo, 1536 | 1536,
+                &this->DAT_Packet, size + 4, 0xfffe, 0, (void*)0x0, (DWORD_PTR*)0x0);
         } else {
             /*
               SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
              */
             this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xffff, 0, (void*)0x0, (DWORD_PTR*)0x0);
+                DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC | DPSEND_GUARANTEED, &this->DAT_Packet, size + 4, 0xffff, 0,
+                (void*)0x0, (DWORD_PTR*)0x0);
         }
         if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
             /*

@@ -17,10 +17,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048C7B0
     undefined4 GameSynchronyState::reorderTeamsAndPositions()
     {
-        int iVar3;
-        byte bVar4;
-        int _counter2;
-        int _counter3;
         int _counter;
         int* piVar5;
         int* piVar6;
@@ -28,7 +24,7 @@ namespace Synchrony {
         int _bestSlot;
         int local_38[14];
         byte _group;
-        _counter2 = 0;
+        int _counter2 = 0;
         for (int _slotIndex = 1; _slotIndex < 9; _slotIndex = _slotIndex + 1) {
             this->DAT_RoundTableOrderArray[_slotIndex] = 0;
         }
@@ -49,7 +45,8 @@ namespace Synchrony {
             /*
               fullIdArray == -1 && AI == 0
              */
-            if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_counter] == -1) && (DAT_GameSynchronyState::instance.currentAIArray[_counter] == 0)) {
+            if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_counter] == -1)
+                && (DAT_GameSynchronyState::instance.currentAIArray[_counter] == 0)) {
                 this->DAT_PlayerGroupArray[_counter] = (char)0xff;
             } else {
                 if (this->DAT_PlayerGroupArray[_counter] < '\0') {
@@ -65,7 +62,7 @@ namespace Synchrony {
         }
         _counter = 1;
     LAB_0048c857:
-        iVar3 = local_38[_counter];
+        int iVar3 = local_38[_counter];
         if (1 <= iVar3) {
             if (iVar3 == local_38[0]) {
                 for (iVar3 = 1; iVar3 < 9; iVar3 = iVar3 + 1) {
@@ -75,40 +72,32 @@ namespace Synchrony {
                 }
                 local_38[_counter] = 0;
             LAB_0048c8b5:
-                _counter3 = 1;
+                int _counter3 = 1;
                 do {
                     if ((local_38[_counter3] == 0) && (local_38[_counter3 + 1] != 0)) {
                         if ((char)this->DAT_PlayerGroupArray[1] > _counter3) {
-                            this->DAT_PlayerGroupArray[1]
-                                = this->DAT_PlayerGroupArray[1] - 1;
+                            this->DAT_PlayerGroupArray[1] = this->DAT_PlayerGroupArray[1] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[2] > _counter3) {
-                            this->DAT_PlayerGroupArray[2]
-                                = this->DAT_PlayerGroupArray[2] - 1;
+                            this->DAT_PlayerGroupArray[2] = this->DAT_PlayerGroupArray[2] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[3] > _counter3) {
-                            this->DAT_PlayerGroupArray[3]
-                                = this->DAT_PlayerGroupArray[3] - 1;
+                            this->DAT_PlayerGroupArray[3] = this->DAT_PlayerGroupArray[3] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[4] > _counter3) {
-                            this->DAT_PlayerGroupArray[4]
-                                = this->DAT_PlayerGroupArray[4] - 1;
+                            this->DAT_PlayerGroupArray[4] = this->DAT_PlayerGroupArray[4] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[5] > _counter3) {
-                            this->DAT_PlayerGroupArray[5]
-                                = this->DAT_PlayerGroupArray[5] - 1;
+                            this->DAT_PlayerGroupArray[5] = this->DAT_PlayerGroupArray[5] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[6] > _counter3) {
-                            this->DAT_PlayerGroupArray[6]
-                                = this->DAT_PlayerGroupArray[6] - 1;
+                            this->DAT_PlayerGroupArray[6] = this->DAT_PlayerGroupArray[6] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[7] > _counter3) {
-                            this->DAT_PlayerGroupArray[7]
-                                = this->DAT_PlayerGroupArray[7] - 1;
+                            this->DAT_PlayerGroupArray[7] = this->DAT_PlayerGroupArray[7] - 1;
                         }
                         if ((char)this->DAT_PlayerGroupArray[8] > _counter3) {
-                            this->DAT_PlayerGroupArray[8]
-                                = this->DAT_PlayerGroupArray[8] - 1;
+                            this->DAT_PlayerGroupArray[8] = this->DAT_PlayerGroupArray[8] - 1;
                         }
                         if (_counter3 + 1 < 5) {
                             piVar5 = local_38 + _counter3 + 1;
@@ -128,7 +117,7 @@ namespace Synchrony {
                         _bestSlot = -1;
                         _group = 0xff;
                         for (_counter3 = 1; _counter3 < 9; _counter3 = _counter3 + 1) {
-                            bVar4 = this->DAT_PlayerGroupArray[_counter3];
+                            byte bVar4 = this->DAT_PlayerGroupArray[_counter3];
                             if ((0 <= (char)bVar4) && (local_38[_counter3 + 5] == 0)) {
                                 if (!bVar4) {
                                     bVar4 = 10;

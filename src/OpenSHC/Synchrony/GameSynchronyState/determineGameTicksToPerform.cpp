@@ -6,9 +6,8 @@
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameLoopStopwatch.hpp"
-#include "OpenSHC/Globals/DAT_MillisecCarry.hpp"
-
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+#include "OpenSHC/Globals/DAT_MillisecCarry.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -19,7 +18,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x00487A30
     int GameSynchronyState::determineGameTicksToPerform(int currentPlayerSlotID)
     {
-        int iVar1;
         int _durationOfOneTick;
         int _relativeTickTime;
         dword _gameSpeedLevel;
@@ -55,8 +53,8 @@ namespace Synchrony {
                             _gameSpeedLevel = this->skirmishGameSpeedLevel;
                         }
                     } else if (5 < (int)this->ticksAheadOfSlowestPlayer) {
-                        _gameSpeedLevel = ((5 - (int)this->ticksAheadOfSlowestPlayer) * 2) / 3
-                            + this->skirmishGameSpeedLevel;
+                        _gameSpeedLevel
+                            = ((5 - (int)this->ticksAheadOfSlowestPlayer) * 2) / 3 + this->skirmishGameSpeedLevel;
                         if ((int)_gameSpeedLevel < 15) {
                             _gameSpeedLevel = 15;
                         }
@@ -67,8 +65,7 @@ namespace Synchrony {
         }
         DAT_GameSynchronyState::instance.relativeTickTime = _relativeTickTime;
         if (DAT_GameCore::instance.gameSpeedMultiplicator < 0) {
-            _durationOfOneTick
-                = -1000 / (int)_gameSpeedLevel * DAT_GameCore::instance.gameSpeedMultiplicator;
+            _durationOfOneTick = -1000 / (int)_gameSpeedLevel * DAT_GameCore::instance.gameSpeedMultiplicator;
         } else {
             _durationOfOneTick = 1000 / (int)_gameSpeedLevel;
             if (1 < DAT_GameCore::instance.gameSpeedMultiplicator) {
@@ -91,8 +88,7 @@ namespace Synchrony {
               Execute game ticks
              */
             if (DAT_GameCore::instance.averageTimePerGameTick > _durationOfOneTick
-                && _relativeTickTime >= _durationOfOneTick * 2
-                && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
+                && _relativeTickTime >= _durationOfOneTick * 2 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
                   Slow down
                  */
@@ -100,8 +96,7 @@ namespace Synchrony {
                 return 2;
             }
             if (DAT_GameCore::instance.averageTimePerGameTick > (_durationOfOneTick * 7) / 10
-                && _relativeTickTime >= _durationOfOneTick * 2
-                && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
+                && _relativeTickTime >= _durationOfOneTick * 2 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
                   Slow down
                  */

@@ -18,11 +18,9 @@ namespace Synchrony {
         DWORD DVar3;
         int _player;
         int _domain;
-        int _hash;
         this->syncStatus10Related[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
         for (_player = 1; _player < 9; _player = _player + 1) {
-            if ((this->currentPlayerFullIDArray[_player] != -1)
-                && (this->syncStatus10Related[_player] == 0)) {
+            if ((this->currentPlayerFullIDArray[_player] != -1) && (this->syncStatus10Related[_player] == 0)) {
                 if (this->announcementReceivedBool) {
                     DVar3 = timeGetTime();
                     if (DVar3 - this->announcementReceiveTime <= 0xafc8) {
@@ -45,12 +43,12 @@ namespace Synchrony {
                     return;
                 }
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(Commands::GCT_KILL_GAME);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                    Commands::GCT_KILL_GAME);
                 return;
             }
         }
-        _hash = 0;
+        int _hash = 0;
         DAT_GameSynchronyState::instance.syncStatus = 1;
         DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.resyncStartTime;
         DAT_GameSynchronyState::instance.announcementReceiveTime = DAT_GameSynchronyState::instance.resyncStartTime;
@@ -64,8 +62,8 @@ namespace Synchrony {
                 }
             }
             for (_player = 1; _player < 9; _player = _player + 1) {
-                if ((this->currentPlayerFullIDArray[_player] != -1)
-                    && (_hash != ((int*)&this->HASH_PartialHashPerPlayer)[_player * 12 + _domain])) {
+                if (this->currentPlayerFullIDArray[_player] != -1
+                    && _hash != ((int*)&this->HASH_PartialHashPerPlayer)[_player * 12 + _domain]) {
                     this->sharedDesyncFlags[_domain] = 1;
                 }
             }

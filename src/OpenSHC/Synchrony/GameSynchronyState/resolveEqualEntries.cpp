@@ -14,12 +14,11 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E050
     void GameSynchronyState::resolveEqualEntries(GUID* pGUID)
     {
-        BOOLEnum _equality;
         int _count = this->DPLAY_SessionsCount;
         int _index = 0;
         if (0 < _count) {
             do {
-                _equality = MACRO_CALL(OS_Func::isEqualGUID)(
+                BOOLEnum _equality = MACRO_CALL(OS_Func::isEqualGUID)(
                     pGUID, DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[_index]);
                 if (_equality) {
                     int _offset = this->scrollBarItemOffset;

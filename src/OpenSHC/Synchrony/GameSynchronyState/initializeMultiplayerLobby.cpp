@@ -14,8 +14,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048BF80
     void GameSynchronyState::initializeMultiplayerLobby()
     {
-        int _wsaReturnCode1;
-        int _wsaReturnCode2;
         hostent* _hostent;
         int _hostAddressIndex;
         IN_ADDR* p_Var1;
@@ -48,17 +46,17 @@ namespace Synchrony {
         DAT_GameSynchronyState::instance.selectedProviderIndex = 0;
         DAT_GameSynchronyState::instance.modemScrollBarOffset = 0;
         DAT_GameSynchronyState::instance.modemScrollbarIndex = 0;
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::invokeDirectPlayEnumConnections,
-            DAT_GameSynchronyState::ptr)();
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::createDirectPlayInterfaceModem,
-            DAT_GameSynchronyState::ptr)();
+        MACRO_CALL_MEMBER(
+            Synchrony::GameSynchronyState_Func::invokeDirectPlayEnumConnections, DAT_GameSynchronyState::ptr)();
+        MACRO_CALL_MEMBER(
+            Synchrony::GameSynchronyState_Func::createDirectPlayInterfaceModem, DAT_GameSynchronyState::ptr)();
         this->displayYourIP = FALSE;
         this->lanOrWan = FALSE;
-        _wsaReturnCode1 = WSAStartup(257, &_wsaData);
+        int _wsaReturnCode1 = WSAStartup(257, &_wsaData);
         if (!_wsaReturnCode1) {
-            _wsaReturnCode2 = gethostname(_hostNameBuffer, 0x50);
-            if (((_wsaReturnCode2 != -1) && (_hostent = gethostbyname(_hostNameBuffer), _hostent != (hostent*)0x0))
-                && (*_hostent->h_addr_list != (char*)0x0)) {
+            int _wsaReturnCode2 = gethostname(_hostNameBuffer, 0x50);
+            if (_wsaReturnCode2 != -1 && (_hostent = gethostbyname(_hostNameBuffer), _hostent != (hostent*)0x0)
+                && *_hostent->h_addr_list != (char*)0x0) {
                 _hostAddressIndex = 0;
                 p_Var1 = &this->lanIP;
                 do {

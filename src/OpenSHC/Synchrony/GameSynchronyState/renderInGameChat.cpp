@@ -29,7 +29,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047F860
     void GameSynchronyState::renderInGameChat(int param_1, int param_2, int param_3)
     {
-        int iVar2;
         char* pcVar4;
         int iVar5;
         TextAlignment alignment;
@@ -48,7 +47,7 @@ namespace Synchrony {
                 if ((int)(DVar1 - this->DAT_ChatEventArray[iVar3].time) <= 0x2710) {
                     iVar5 = this->DAT_ChatEventArray[iVar3].subjectPlayer;
                     _lordID = DAT_GameState::instance.playerDataArray[iVar5].lordID;
-                    iVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+                    int iVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
                         this->DAT_ChatMessageSubjectPlayerNameArray[iVar3], 0x13);
                     iVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
                         this->DAT_ChatMessageArray[this->chatMessageRenderIndex], 0x13);

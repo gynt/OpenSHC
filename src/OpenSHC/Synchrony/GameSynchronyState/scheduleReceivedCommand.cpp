@@ -24,13 +24,12 @@ namespace Synchrony {
     void GameSynchronyState::scheduleReceivedCommand(
         GameCommandType commandCategory, DWORD dxPlayerHandle, dword time, void* address)
     {
-        uint _playerID;
         if ((int)this->DAT_GameCommandArrayIndex < 200) {
             if ((undefined1)commandCategory
                 == (Commands::GCT_SEND_RESYNC_TILEMAPDATA2 | Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS)) {
                 DAT_GameSynchronyState::instance.unknownIncrementBy40_01
                     = DAT_GameSynchronyState::instance.unknownIncrementBy40_01 + 40;
-                _playerID = MACRO_CALL_MEMBER(
+                uint _playerID = MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(dxPlayerHandle);
                 if (_playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                     this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time
@@ -49,26 +48,19 @@ namespace Synchrony {
                 }
             }
             this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;
-            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(0x4ec, '\0',
-                (void*)((int)(&this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex]
-                        .parameters)));
-            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk
-                = Commands::GCS_UNPROCESSED;
-            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk
-                = dxPlayerHandle;
-            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType
-                = (undefined1)commandCategory;
+            MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
+                0x4ec, '\0', (void*)((int)(&this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters)));
+            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_UNPROCESSED;
+            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk = dxPlayerHandle;
+            this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType = (undefined1)commandCategory;
             this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time = time;
             this->DAT_CommandParameterOffset = 0;
             this->DAT_CommandActionPlan = Commands::GCS_SCHEDULE_RECEIVED_COMMAND;
-            ((void (*)())DAT_ProtocolDefinedData::instance.commandFunctions
-                    [this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType
-                        + 0x15])();
+            ((void (*)())DAT_ProtocolDefinedData::instance
+                    .commandFunctions[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType + 0x15])();
             if (0 < (int)this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time) {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(this->DAT_CommandSize,
-                    address,
-                    (void*)((int)(&this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID]
-                            .parameters)));
+                    address, (void*)((int)(&this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].parameters)));
                 this->DAT_GameCommandArrayIndex = this->DAT_GameCommandArrayIndex + 1;
                 if (200 <= (int)this->DAT_GameCommandArrayIndex) {
                     this->DAT_GameCommandArrayIndex = 0;
@@ -76,11 +68,10 @@ namespace Synchrony {
             } else {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                     this->DAT_CommandSize, address, (void*)((int)(this->DAT_GameCommandFixedParameterLocation)));
-                Commands::GameCommand* _pCommand
-                    = &this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID];
-                this->protocolInvokerPlayerID = MACRO_CALL_MEMBER(
-                    Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
-                    _pCommand->playerUnk);
+                Commands::GameCommand* _pCommand = &this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID];
+                this->protocolInvokerPlayerID
+                    = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+                        _pCommand->playerUnk);
                 this->DAT_GameCommandParam5 = 0;
                 this->DAT_GameCommandParam4 = 0;
                 this->DAT_GameCommandParam3 = 0;
@@ -89,8 +80,7 @@ namespace Synchrony {
                 this->DAT_GameCommandParam0 = 0;
                 this->DAT_CommandActionPlan = Commands::GCS_EXECUTE;
                 this->DAT_CommandParameterOffset = 0;
-                ((void (*)())DAT_ProtocolDefinedData::instance
-                        .commandFunctions[_pCommand->commandType + 0x15])();
+                ((void (*)())DAT_ProtocolDefinedData::instance.commandFunctions[_pCommand->commandType + 0x15])();
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
                     this->DAT_CurrentGameCommandID);
             }

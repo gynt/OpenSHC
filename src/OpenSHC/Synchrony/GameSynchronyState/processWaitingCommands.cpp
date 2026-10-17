@@ -15,10 +15,9 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x004892F0
     void GameSynchronyState::processWaitingCommands()
     {
-        int _gameCommandID;
         int (*paiVar1)[2];
-        _gameCommandID = MACRO_CALL_MEMBER(
-            Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
+        int _gameCommandID
+            = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getCommandIDFromCommandSelectionStuff, this)();
         if ((_gameCommandID) && (_gameCommandID = 0, 0 < this->someIndex)) {
             paiVar1 = this->selectedGameCommands;
             do {
@@ -26,9 +25,9 @@ namespace Synchrony {
                   process all commands that should have been executed by now
                  */
                 this->DAT_CurrentGameCommandID = (*paiVar1)[0];
-                this->protocolInvokerPlayerID = MACRO_CALL_MEMBER(
-                    Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
-                    this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk);
+                this->protocolInvokerPlayerID
+                    = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+                        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk);
                 this->DAT_GameCommandParam5 = 0;
                 this->DAT_GameCommandParam4 = 0;
                 this->DAT_GameCommandParam3 = 0;
