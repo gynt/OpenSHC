@@ -90,7 +90,7 @@ namespace Synchrony {
             /*
               Execute game ticks
              */
-            if (_durationOfOneTick < DAT_GameCore::instance.averageTimePerGameTick
+            if (DAT_GameCore::instance.averageTimePerGameTick > _durationOfOneTick
                 && _durationOfOneTick * 2 <= _relativeTickTime
                 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
@@ -99,7 +99,7 @@ namespace Synchrony {
                 DAT_MillisecCarry::instance = 0;
                 return 2;
             }
-            if ((_durationOfOneTick * 7) / 10 < DAT_GameCore::instance.averageTimePerGameTick
+            if (DAT_GameCore::instance.averageTimePerGameTick > (_durationOfOneTick * 7) / 10
                 && _durationOfOneTick * 2 <= _relativeTickTime
                 && _durationOfOneTick == 1000 / (int)_gameSpeedLevel) {
                 /*
@@ -108,14 +108,14 @@ namespace Synchrony {
                 DAT_MillisecCarry::instance = 0;
                 return 3;
             }
-            if (_durationOfOneTick * 10 < _relativeTickTime) {
+            if (_relativeTickTime > _durationOfOneTick * 10) {
                 /*
                   Cap game ticks per rendering
                  */
                 DAT_MillisecCarry::instance = 0;
                 return (int)(11);
             }
-            if (_durationOfOneTick < _relativeTickTime) {
+            if (_relativeTickTime > _durationOfOneTick) {
                 DAT_MillisecCarry::instance
                     = _relativeTickTime - (_relativeTickTime / _durationOfOneTick) * _durationOfOneTick;
                 return _relativeTickTime / _durationOfOneTick + 1;
