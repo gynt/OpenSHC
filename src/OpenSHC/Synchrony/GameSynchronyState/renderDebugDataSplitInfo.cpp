@@ -70,6 +70,7 @@ namespace Synchrony {
                 xParam = xParam + 0x28;
                 x = x + -1;
             } while (x);
+            return;
         }
         if (this->splinterType == 1) {
             iVar1 = y + 0x2a;
@@ -81,6 +82,7 @@ namespace Synchrony {
                 "First split structure:  ", x + 0xc8, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 this->firstSplitStructures, x + 0xd2, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+            return;
         }
         if (this->splinterType == 2) {
             iVar1 = y + 0x2a;
@@ -92,6 +94,19 @@ namespace Synchrony {
                 "First split veg:  ", x + 0xc8, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 this->firstSplitVeg, x + 0xd2, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+            return;
+        }
+        if (this->splinterType == 3) {
+            iVar1 = y + 0x2a;
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                "Total split tribes:  ", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                this->totalSplitTribes, xParam, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                "First split tribe:  ", x + 0xc8, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                this->firstSplitTribe, x + 0xd2, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+            return;
         }
         if (this->splinterType != 3) {
             if (this->splinterType == 4) {
@@ -171,15 +186,6 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderLeftAlignedNumberToScreen, DAT_TextManagerObject::ptr)(
                 x, x + 0xd2, y + 0x2a, 0x80ff, 0x12, 1);
         }
-        iVar1 = y + 0x2a;
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            "Total split tribes:  ", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-            this->totalSplitTribes, xParam, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            "First split tribe:  ", x + 0xc8, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-            this->firstSplitTribe, x + 0xd2, iVar1, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
     }
 
 }
