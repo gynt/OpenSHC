@@ -11,7 +11,7 @@
 #include "OpenSHC/Globals/GUID_IID_IDirectPlay4.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
-#include "OpenSHC/Globals/GUID_UNKNOWN.hpp"
+#include "OpenSHC/Globals/GUID_APP.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -71,7 +71,7 @@ namespace Synchrony {
                 goto LAB_release;
             if (this->isHost) {
                 MACRO_CALL(OS_Func::_memset)(&_session, 0, (size_t)((int)(80)));
-                _session.guidApplication = GUID_UNKNOWN::instance;
+                _session.guidApplication = GUID_APP::instance;
                 _session.dwSize = 80;
                 _session.dwFlags = DPSESSION_OPTIMIZELATENCY
                     | DPSESSION_DIRECTPLAYPROTOCOL | DPSESSION_KEEPALIVE
@@ -98,7 +98,7 @@ namespace Synchrony {
             ppIVar1 = this->DPLAYX_4A;
             _dplay4 = ppIVar1;
             MACRO_CALL(OS_Func::_memset)(&_session, 0, (size_t)((int)(80)));
-            _session.guidApplication = GUID_UNKNOWN::instance;
+            _session.guidApplication = GUID_APP::instance;
             _session.guidInstance.Data1 = DPLAY_CurrentSessionGUID::instance.Data1;
             _session.guidInstance.Data4[0] = DPLAY_CurrentSessionGUID::instance.Data4[0];
             _session.guidInstance.Data4[1] = DPLAY_CurrentSessionGUID::instance.Data4[1];

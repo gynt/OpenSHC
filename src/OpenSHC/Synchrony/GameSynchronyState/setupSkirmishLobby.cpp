@@ -150,8 +150,8 @@ namespace Synchrony {
         this->skirmishDefaultPopularity = 100;
         this->skirmishGameSpeedLevel = 0x28;
         this->skirmishCurrentAdvantageBalance = 3;
-        this->field235_0x1072e8 = -1;
-        this->field236_0x1072ec = -1;
+        this->field234_0x1072e8 = -1;
+        this->field235_0x1072ec = -1;
         DAT_TextureRenderCoreObject::instance.unknownPlayerDependentRenderValue[0] = 0;
         DAT_TextureRenderCoreObject::instance.unknownPlayerDependentRenderValue[1] = 0;
         DAT_TextureRenderCoreObject::instance.unknownPlayerDependentRenderValue[2] = 0;

@@ -33,7 +33,7 @@ namespace Synchrony {
             /*
               matchTime
              */
-            this->matchTimesArray[_playerID - 1] = DAT_GameCore::instance.mapTimeInTicks;
+            this->matchTimes[_playerID] = DAT_GameCore::instance.mapTimeInTicks;
             this->receivedMatchTimesTrackerUnk = this->receivedMatchTimesTrackerUnk + 1;
             if (6 < this->receivedMatchTimesTrackerUnk) {
                 this->commandDelay = this->commandDelay + -1;

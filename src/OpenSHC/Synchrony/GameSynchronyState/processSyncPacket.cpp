@@ -12,7 +12,7 @@ namespace Synchrony {
     {
         uint _player = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
             this)(this->DPLAYX_ReceivedPlayerID);
-        this->matchTimesArray[_player - 1]
+        this->matchTimes[_player]
             = this->receivedCommandMapTimeInTicks + this->connectionLagInfoArray[_player].average1;
         int _countDown = this->commandDelay;
         int iVar2 = (char)this->DPLAY_ReceiveData.packet.payload[0] + 10;

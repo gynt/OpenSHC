@@ -6,7 +6,7 @@
 
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
-#include "OpenSHC/Globals/GUID_UNKNOWN.hpp"
+#include "OpenSHC/Globals/GUID_APP.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -23,7 +23,7 @@ namespace Synchrony {
             local_54.dwSize = 0x50;
             local_54.dwFlags = DPSESSION_OPTIMIZELATENCY | DPSESSION_DIRECTPLAYPROTOCOL | DPSESSION_KEEPALIVE
                 | DPSESSION_MIGRATEHOST;
-            local_54.guidApplication = GUID_UNKNOWN::instance;
+            local_54.guidApplication = GUID_APP::instance;
             local_54.dwMaxPlayers = 8;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDPlaySessionNameValue, this)();
             local_54.lpszSessionName = this->DPLAYX_SessionName;

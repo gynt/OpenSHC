@@ -75,7 +75,7 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "Timings ", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
         x = 1;
-        _pMatchTime = this->matchTimesArray;
+        _pMatchTime = this->matchTimes + 1;
         do {
             if (this->currentPlayerFullIDArray[x] != -1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(

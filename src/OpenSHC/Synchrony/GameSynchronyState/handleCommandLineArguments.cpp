@@ -247,7 +247,7 @@ namespace Synchrony {
                     if (_candidateIndex < 0) {
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay, this)();
                     } else {
-                        this->field225_0x106ee4 = 1;
+                        this->field224_0x106ee4 = 1;
                         DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_LOBBY_MENU, 0);

@@ -10,8 +10,8 @@
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 #include "OpenSHC/Globals/TIME_EnumerateSessionsMoment.hpp"
 
-#include "OpenSHC/Globals/GUID_NULL_CONSTANT.hpp"
-#include "OpenSHC/Globals/GUID_UNKNOWN.hpp"
+#include "OpenSHC/Globals/GUID_NULL.hpp"
+#include "OpenSHC/Globals/GUID_APP.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -26,14 +26,14 @@ namespace Synchrony {
         DPSESSIONDESC2 _dpSessionDesc2;
         uint local_4 = MSVC_SecurityCookie::instance ^ (uint)&_pGUID;
         DWORD _now = timeGetTime();
-        _pGUID = GUID_NULL_CONSTANT::instance;
+        _pGUID = GUID_NULL::instance;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::fetchSessionGUID, this)(&_pGUID);
         if (this->unkEnumerationRelatedBool == false
             && (respectTimeout != TRUE || (int)(_now - TIME_EnumerateSessionsMoment::instance) >= 3000)) {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
             MACRO_CALL(OS_Func::_memset)(&_dpSessionDesc2, 0, 0x50);
             _dpSessionDesc2.dwSize = 0x50;
-            _dpSessionDesc2.guidApplication = GUID_UNKNOWN::instance;
+            _dpSessionDesc2.guidApplication = GUID_APP::instance;
             this->unkEnumerationRelatedBool = true;
             if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A*)0x0) {
                 /*

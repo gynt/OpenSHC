@@ -17,18 +17,18 @@ namespace Synchrony {
     GameSynchronyState* GameSynchronyState::Constructor_GameSynchronyState()
     {
         this->currentGameMode = Game::GM_SOLITARY;
-        DAT_GameSynchronyState::instance.field304_0x109e8c = 1;
+        DAT_GameSynchronyState::instance.field303_0x109e8c = 1;
         this->DPLAYX_ReceivedPlayerID = 0;
         this->DPLAY_ToID = 0;
         this->DPLAYX_PlayerHandle = 0xffffffff;
         this->currentPlayerSlotID = 0;
-        this->field326_0x109ecc = GetTickCount();
+        this->field325_0x109ecc = GetTickCount();
         this->now2 = GetTickCount();
-        this->field329_0x109ed8 = timeGetTime();
-        this->field319_0x109ebc = 0;
-        this->field320_0x109ec0 = 0;
-        this->field316_0x109eb0 = 1;
-        this->field317_0x109eb4 = 1;
+        this->field328_0x109ed8 = timeGetTime();
+        this->field318_0x109ebc = 0;
+        this->field319_0x109ec0 = 0;
+        this->field315_0x109eb0 = 1;
+        this->field316_0x109eb4 = 1;
         this->DAT_HostAnnounced = 0;
         for (int _index = 0; _index < 4; _index = _index + 1) {
             this->field57_0x79c[_index] = 0;

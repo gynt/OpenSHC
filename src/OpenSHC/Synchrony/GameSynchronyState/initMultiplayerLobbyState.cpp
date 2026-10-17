@@ -85,7 +85,7 @@ namespace Synchrony {
         pbVar4 = this->DAT_PlayerGroupArray;
         piVar5 = &this->connectionLagInfoArray[0].checkFor0;
         piVar3 = &this->HASH_PartialHashPerPlayer.player0.domain02;
-        piVar2 = &this->matchTime;
+        piVar2 = this->matchTimes;
         local_4 = 9;
         do {
             piVar2[0x23161] = 0;
@@ -160,8 +160,8 @@ namespace Synchrony {
         this->skirmishStartGold = 0;
         this->skirmishDefaultPopularity = 100;
         this->skirmishGameSpeedLevel = 0x28;
-        this->field235_0x1072e8 = -1;
-        this->field236_0x1072ec = -1;
+        this->field234_0x1072e8 = -1;
+        this->field235_0x1072ec = -1;
         this->skirmishCurrentAdvantageBalance = 3;
         this->skirmishTechLevel = 4;
         this->skirmishGameIntensityType = 1;
@@ -220,7 +220,7 @@ namespace Synchrony {
             = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[7];
         DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[8]
             = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[8];
-        this->field225_0x106ee4 = 1;
+        this->field224_0x106ee4 = 1;
         MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDirectPlaySessionDescription, this)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,

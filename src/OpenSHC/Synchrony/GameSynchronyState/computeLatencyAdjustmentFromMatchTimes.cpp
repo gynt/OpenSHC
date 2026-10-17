@@ -16,7 +16,7 @@ namespace Synchrony {
         int iVar3;
         this->minPlayerMapTime = -1;
         this->mapTimeInTicksSinglePlayer = -1;
-        _matchTime = this->matchTimesArray;
+        _matchTime = this->matchTimes + 1;
         iVar3 = 2;
         do {
             if (_matchTime[-0x1e873] != -1) {
@@ -95,7 +95,7 @@ namespace Synchrony {
             iVar3 = iVar3 + -1;
             if (!iVar3) {
                 this->playerMapTimeSpread = this->mapTimeInTicksSinglePlayer - this->minPlayerMapTime;
-                this->localPlayerMapTime = this->matchTimesArray[param_1 + -1];
+                this->localPlayerMapTime = this->matchTimes[param_1];
                 iVar3 = 0;
                 this->ticksAheadOfSlowestPlayer = 0;
                 this->ticksBehindFastestPlayer = 0;
@@ -105,11 +105,11 @@ namespace Synchrony {
                     this->ticksAheadOfSlowestPlayer = this->localPlayerMapTime - this->minPlayerMapTime;
                 }
                 if ((int)this->ticksBehindFastestPlayer < 0) {
-                    this->field318_0x109eb8 = 1;
+                    this->field317_0x109eb8 = 1;
                     for (iVar3 = 0; iVar3 < 0xc; iVar3 = iVar3 + 1) {
                         if ((int)this->ticksBehindFastestPlayer
                             > DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][0]) {
-                            this->field318_0x109eb8 = DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][1];
+                            this->field317_0x109eb8 = DAT_ProtocolDefinedData::instance.field4_0x4[iVar3][1];
                             return;
                         }
                     }
@@ -118,8 +118,8 @@ namespace Synchrony {
                 for (iVar3 = 0; iVar3 < 40; iVar3 = iVar3 + 1) {
                     if ((int)this->ticksAheadOfSlowestPlayer
                         <= DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][0]) {
-                        this->field316_0x109eb0 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][1];
-                        this->field317_0x109eb4 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][2];
+                        this->field315_0x109eb0 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][1];
+                        this->field316_0x109eb4 = DAT_ProtocolDefinedData::instance.field5_0x64[iVar3][2];
                         return;
                     }
                 }
