@@ -13,6 +13,7 @@
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
@@ -227,7 +228,7 @@ namespace Synchrony {
                         _pCandidatePlus1);
                     MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
                 }
-                this->isHost = this->willHost;
+                DAT_GameSynchronyState::instance.isHost = this->willHost;
                 if (!this->willHost) {
                     this->nextModalDialog = 21;
                     /*

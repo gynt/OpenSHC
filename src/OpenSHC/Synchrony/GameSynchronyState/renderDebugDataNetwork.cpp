@@ -293,7 +293,7 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "Multi Op: ", iVar4, iVar2, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-            this->currentGameMode, iVar4, iVar2, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
+            DAT_GameSynchronyState::instance.currentGameMode, iVar4, iVar2, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             "GT: ", iVar6, iVar2, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(

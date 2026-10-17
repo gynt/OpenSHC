@@ -5,6 +5,7 @@
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
 
 namespace OpenSHC {
@@ -16,7 +17,7 @@ namespace Synchrony {
     GameSynchronyState* GameSynchronyState::Constructor_GameSynchronyState()
     {
         this->currentGameMode = Game::GM_SOLITARY;
-        this->field304_0x109e8c = 1;
+        DAT_GameSynchronyState::instance.field304_0x109e8c = 1;
         this->DPLAYX_ReceivedPlayerID = 0;
         this->DPLAY_ToID = 0;
         this->DPLAYX_PlayerHandle = 0xffffffff;
@@ -32,7 +33,7 @@ namespace Synchrony {
         for (int _index = 0; _index < 4; _index = _index + 1) {
             this->field57_0x79c[_index] = 0;
         }
-        this->relativeTickTime = 0;
+        DAT_GameSynchronyState::instance.relativeTickTime = 0;
         MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
             0xc, "Contestant", (void*)((int)(this->DPLAY_PlayerShortName)));

@@ -154,7 +154,7 @@ namespace Synchrony {
             }
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
                 Commands::GCT_CHECK_GAME_SYNCUnk);
-            this->syncStatus = 3;
+            DAT_GameSynchronyState::instance.syncStatus = 3;
             return;
         default:
             iVar8 = 0;
