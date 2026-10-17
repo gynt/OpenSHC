@@ -19,30 +19,31 @@ namespace Synchrony {
     void GameSynchronyState::disconnectDPlay()
     {
         void* pvVar1;
-        int iVar2;
+        int _providerIndex;
+        int _modemIndex;
         DAT_MouseState::instance.waitCursorToggle = 1;
         MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
-        iVar2 = 0;
+        _providerIndex = 0;
         if (0 < this->scrollBarItemCount) {
             do {
-                MACRO_CALL(OS_Func::_free_base)((void*)(DAT_GameSynchronyState::instance.providerNames[iVar2]));
-                pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[iVar2]);
+                MACRO_CALL(OS_Func::_free_base)((void*)(DAT_GameSynchronyState::instance.providerNames[_providerIndex]));
+                pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[_providerIndex]);
                 GlobalUnlock(pvVar1);
-                pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[iVar2]);
+                pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[_providerIndex]);
                 GlobalFree(pvVar1);
-                DAT_GameSynchronyState::instance.providerNames[iVar2] = (WCHAR*)0x0;
-                DAT_GameSynchronyState::instance.guids[iVar2] = (GUID*)0x0;
-                iVar2 = iVar2 + 1;
-            } while (iVar2 < this->scrollBarItemCount);
+                DAT_GameSynchronyState::instance.providerNames[_providerIndex] = (WCHAR*)0x0;
+                DAT_GameSynchronyState::instance.guids[_providerIndex] = (GUID*)0x0;
+                _providerIndex = _providerIndex + 1;
+            } while (_providerIndex < this->scrollBarItemCount);
         }
-        iVar2 = 0;
+        _modemIndex = 0;
         this->scrollBarItemCount = 0;
         if (0 < this->modemScrollbarCount) {
             do {
-                MACRO_CALL(OS_Func::_free_base)(DAT_GameSynchronyState::instance.stringPointerArray[iVar2]);
-                iVar2 = iVar2 + 1;
-            } while (iVar2 < this->modemScrollbarCount);
+                MACRO_CALL(OS_Func::_free_base)(DAT_GameSynchronyState::instance.stringPointerArray[_modemIndex]);
+                _modemIndex = _modemIndex + 1;
+            } while (_modemIndex < this->modemScrollbarCount);
         }
         this->modemScrollbarCount = 0;
         if (this->DPLAYX_4A != (IDirectPlay4A*)0x0) {
