@@ -44,12 +44,12 @@ namespace Synchrony {
         int* piVar3;
         int* piVar4;
         Entity* address;
-        short sVar5;
-        short sVar6;
-        short sVar7;
-        short sVar8;
-        short sVar9;
-        short sVar10;
+        int sVar5;
+        int sVar6;
+        int sVar7;
+        int sVar8;
+        int sVar9;
+        int sVar10;
         short sVar11;
         short sVar12;
         short sVar13;
@@ -365,13 +365,13 @@ namespace Synchrony {
             memset(&address->field82_0xbe, 0, 4);
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                 DAT_DirectionAlgorithmState::ptr)(0xe8, (int*)address);
-            address->screenDirection = sVar5;
-            address->x1 = sVar6;
-            address->y1 = sVar7;
-            address->originX = sVar8;
-            address->originY = sVar9;
+            address->screenDirection = (short)sVar5;
+            address->x1 = (short)sVar6;
+            address->y1 = (short)sVar7;
+            address->originX = (short)sVar8;
+            address->originY = (short)sVar9;
             address->graphicType2 = iVar39;
-            address->imageID = sVar10;
+            address->imageID = (short)sVar10;
             address->field82_0xbe = sVar11;
             _hashSubTotal = _hashSubTotal + uVar19;
             address->displayValue = iVar45;
