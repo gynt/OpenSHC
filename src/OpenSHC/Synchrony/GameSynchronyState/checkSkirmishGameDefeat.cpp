@@ -46,6 +46,7 @@ namespace Synchrony {
         int iVar8;
         int iVar10;
         int local_48[21];
+        int (*_teamCounts)[2] = (int (*)[2])(local_48 + 3);
         if (this->currentGameMode != Game::GM_SOLITARY) {
             for (_deadPlayerID = 1; _deadPlayerID < 9; _deadPlayerID = _deadPlayerID + 1) {
                 if (0 < DAT_GameState::instance.playerDataArray[_deadPlayerID].commemorationShrinePlacementCountdown) {
@@ -84,9 +85,9 @@ namespace Synchrony {
                     if ((this->currentPlayerFullIDArray[_deadPlayerID] != -1)
                         || (this->currentAIArray[_deadPlayerID] != 0)) {
                         iVar7 = DAT_GameState::instance.mapAndTime.playerTeams[_deadPlayerID];
-                        local_48[iVar7 * 2 + 3] = local_48[iVar7 * 2 + 3] + 1;
+                        _teamCounts[iVar7][0] = _teamCounts[iVar7][0] + 1;
                         if (DAT_GameState::instance.playerDataArray[_deadPlayerID].lordKilledByPlayerID != 0) {
-                            local_48[iVar7 * 2 + 4] = local_48[iVar7 * 2 + 4] + 1;
+                            _teamCounts[iVar7][1] = _teamCounts[iVar7][1] + 1;
                         }
                     }
                 }
