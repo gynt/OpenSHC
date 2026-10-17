@@ -171,8 +171,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 "First split pitch ditch:  ", x + 0xc8, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
             x = this->firstSplitPitchDitch;
-        } else {
-            if (this->splinterType != 0xb) {}
+        } else if (this->splinterType == 0xb) {
             iVar1 = y + 0x2a;
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 "Total split zones:  ", x, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
