@@ -29,11 +29,18 @@ DECL = re.compile(r"^(?P<type>(?:unsigned\s+|const\s+)*[A-Za-z_][\w:]*)\s+"
 
 
 def depths(lines):
+    """Brace depth per line, a closing line counted at the depth it closes *into*.
+
+    Taking the depth before the braces would put `} while (cond);` at the depth of the
+    block it ends, so a declaration could be moved inside a do-block whose condition
+    still reads the variable - which does not compile.
+    """
     out, d = [], 0
     for line in lines:
-        out.append(d)
         code = re.sub(r"//.*", "", line)
-        d += code.count("{") - code.count("}")
+        after = d + code.count("{") - code.count("}")
+        out.append(min(d, after))
+        d = after
     return out
 
 
