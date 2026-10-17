@@ -131,12 +131,12 @@ namespace Synchrony {
             = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
         _hashSubTotal = 0;
         for (_buildingIndex = 0; _buildingIndex < 2000; _buildingIndex = _buildingIndex + 1) {
-            sVar6 = DAT_BuildingsState::instance.buildings[_buildingIndex].animationIndex;
             sVar5 = *(short*)DAT_BuildingsState::instance.buildings[_buildingIndex].padding_0x2fc;
             *(short*)DAT_BuildingsState::instance.buildings[_buildingIndex].padding_0x2fc = 0;
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                 DAT_DirectionAlgorithmState::ptr)(0x25c, (int*)&DAT_BuildingsState::instance.buildings[_buildingIndex].logicalState);
             *(short*)DAT_BuildingsState::instance.buildings[_buildingIndex].padding_0x2fc = sVar5;
+            sVar6 = DAT_BuildingsState::instance.buildings[_buildingIndex].animationIndex;
             iVar39 = (int)sVar6 + uVar19 + DAT_BuildingsState::instance.buildings[_buildingIndex].extraAnimationFrame3 + DAT_BuildingsState::instance.buildings[_buildingIndex].extraAnimationFrame2
                 + DAT_BuildingsState::instance.buildings[_buildingIndex].extraAnimationFrame1 + DAT_BuildingsState::instance.buildings[_buildingIndex].campgroundVclock + DAT_BuildingsState::instance.buildings[_buildingIndex].animAdvanceThrottle;
             _hashSubTotal = _hashSubTotal + iVar39;
