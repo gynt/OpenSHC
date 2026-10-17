@@ -9,8 +9,8 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047EA40
     int GameSynchronyState::countPlayersInSameTeam(int playerID)
     {
-        int iVar1 = DAT_GameState::instance.mapAndTime.playerTeams[playerID];
         int iVar2 = 0;
+        int iVar1 = DAT_GameState::instance.mapAndTime.playerTeams[playerID];
         if ((this->currentPlayerFullIDArray[1] != -1) && (DAT_GameState::instance.mapAndTime.playerTeams[1] == iVar1)) {
             iVar2 = 1;
         }
