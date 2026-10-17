@@ -37,7 +37,6 @@ namespace Synchrony {
         }
         this->playerMapTimeSpread = this->mapTimeInTicksSinglePlayer - this->minPlayerMapTime;
         this->localPlayerMapTime = this->matchTimes[param_1];
-        iVar3 = 0;
         this->ticksAheadOfSlowestPlayer = 0;
         this->ticksBehindFastestPlayer = 0;
         if (this->localPlayerMapTime == this->minPlayerMapTime) {
