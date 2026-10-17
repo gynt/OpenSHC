@@ -10,6 +10,8 @@
 #include "OpenSHC/Map/PitchDitch.hpp"
 #include "OpenSHC/Map/Units/Unit.hpp"
 
+#include "string.h"
+
 #include "OpenSHC/Globals/DAT_AIVState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_DirectionAlgorithmState.hpp"
@@ -113,8 +115,7 @@ namespace Synchrony {
         for (_unitIndex = 0; _unitIndex < 2500; _unitIndex = _unitIndex + 1) {
             iVar39 = DAT_UnitsState::instance.units[_unitIndex].field309_0x420;
             iVar45 = DAT_UnitsState::instance.units[_unitIndex].field308_0x41c;
-            DAT_UnitsState::instance.units[_unitIndex].field309_0x420 = 0;
-            DAT_UnitsState::instance.units[_unitIndex].field308_0x41c = 0;
+            memset(&DAT_UnitsState::instance.units[_unitIndex].field308_0x41c, 0, 8);
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                 DAT_DirectionAlgorithmState::ptr)(
                 1028, (int*)&DAT_UnitsState::instance.units[_unitIndex].logicalState);
@@ -174,10 +175,7 @@ namespace Synchrony {
             iVar17 = DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown3;
             uVar18 = DAT_GameState::instance.playerDataArray[_playerDataIndex].ignitionTime;
             DAT_GameState::instance.playerDataArray[_playerDataIndex].ignitionTime = 0;
-            DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown6 = 0;
-            DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown5 = 0;
-            DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown4 = 0;
-            DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown3 = 0;
+            memset(&DAT_GameState::instance.playerDataArray[_playerDataIndex].someAiCountdown3, 0, 16);
             uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
                 DAT_DirectionAlgorithmState::ptr)(14748, (int*)DAT_GameState::instance.playerDataArray[_playerDataIndex].padding_0x58);
             _hashSubTotal = _hashSubTotal + uVar19;
