@@ -129,7 +129,7 @@ namespace Synchrony {
                         _group = 0xff;
                         for (_counter3 = 1; _counter3 < 9; _counter3 = _counter3 + 1) {
                             bVar4 = this->DAT_PlayerGroupArray[_counter3];
-                            if ((-1 < (char)bVar4) && (local_38[_counter3 + 5] == 0)) {
+                            if ((0 <= (char)bVar4) && (local_38[_counter3 + 5] == 0)) {
                                 if (!bVar4) {
                                     bVar4 = 10;
                                 }
