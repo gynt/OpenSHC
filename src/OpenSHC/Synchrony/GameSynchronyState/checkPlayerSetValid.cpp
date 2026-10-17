@@ -3,6 +3,8 @@
 
 #include "OpenSHC/Game/GameMode.hpp"
 
+#include "string.h"
+
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
@@ -18,15 +20,7 @@ namespace Synchrony {
         int _teamMemberCounts[9];
         int _someCounter = 0;
         int _validPlayerCount = 0;
-        _teamMemberCounts[0] = 0;
-        _teamMemberCounts[1] = 0;
-        _teamMemberCounts[2] = 0;
-        _teamMemberCounts[3] = 0;
-        _teamMemberCounts[4] = 0;
-        _teamMemberCounts[5] = 0;
-        _teamMemberCounts[6] = 0;
-        _teamMemberCounts[7] = 0;
-        _teamMemberCounts[8] = 0;
+        memset(_teamMemberCounts, 0, sizeof(_teamMemberCounts));
         for (_somePlayerID = 1; _somePlayerID < 9; _somePlayerID = _somePlayerID + 1) {
             if (this->currentPlayerFullIDArray[_somePlayerID] != -1) {
                 _someCounter = _someCounter + 1;
