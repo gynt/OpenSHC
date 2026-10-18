@@ -9,6 +9,9 @@
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_MouseState.hpp"
 
+// /O2 implies /Ob2, and the inlining it then does is not in the original here. 66.0% -> 86.5%.
+#pragma inline_depth(0)
+
 namespace OpenSHC {
 namespace Synchrony {
 
