@@ -63,7 +63,6 @@ namespace Synchrony {
                 return;
             }
         }
-        return;
     }
 
 }

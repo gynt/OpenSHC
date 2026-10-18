@@ -20,10 +20,10 @@ namespace Synchrony {
             /*
               Used in singleplayer
              */
-            return (uint)(this->currentPlayerSlotID);
+            return this->currentPlayerSlotID;
         }
         if (this->currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
-            return (uint)(this->currentPlayerSlotID);
+            return this->currentPlayerSlotID;
         }
         /*
           if in multiplayer

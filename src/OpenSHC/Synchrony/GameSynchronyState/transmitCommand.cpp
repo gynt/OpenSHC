@@ -88,7 +88,6 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
         }
     LAB_00487e0f:;
-        return;
     }
 
 }

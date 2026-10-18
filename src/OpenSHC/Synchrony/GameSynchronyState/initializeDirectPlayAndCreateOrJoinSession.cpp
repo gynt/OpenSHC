@@ -43,7 +43,7 @@ namespace Synchrony {
         if (this->DPLAYX_LOBBY == (IDirectPlayLobby3*)0x0) {
             _lobbyStatus = DPERR_INVALIDOBJECT;
             ;
-            return (int)(_lobbyStatus);
+            return _lobbyStatus;
         }
         if (!join) {
             if (this->DPLAYX_Connection != (void*)0x0) {
@@ -122,7 +122,7 @@ namespace Synchrony {
                 _dplay4->Release();
                 this->DPLAYX_4A = (IDirectPlay4A*)0x0;
                 ;
-                return (int)(_dpStatus);
+                return _dpStatus;
             }
             this->DPLAY_PlayerNameStructure.dwFlags = 0;
             this->DPLAY_PlayerNameStructure.lpszShortName = (WCHAR*)0x0;
@@ -134,7 +134,7 @@ namespace Synchrony {
             if (_cpStatus != DP_OK) {
                 _setStatus = DPERR_ABORTED;
                 ;
-                return (int)(_setStatus);
+                return _setStatus;
             }
         }
         _status = 0;

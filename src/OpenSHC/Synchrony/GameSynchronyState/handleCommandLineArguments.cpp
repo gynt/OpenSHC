@@ -255,7 +255,6 @@ namespace Synchrony {
                 }
             }
         };
-        return;
     }
 
 }

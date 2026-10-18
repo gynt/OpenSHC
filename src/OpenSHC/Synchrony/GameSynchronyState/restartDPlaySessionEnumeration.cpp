@@ -47,7 +47,6 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::resolveEqualEntries, this)((GUID*)&_pGUID);
             TIME_EnumerateSessionsMoment::instance = timeGetTime();
         };
-        return;
     }
 
 }

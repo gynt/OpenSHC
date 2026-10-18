@@ -82,7 +82,6 @@ namespace Synchrony {
             this->DPLAYX_LOBBY = _dplaylobby3;
             _dplay4->Release();
         }
-        return;
     }
 
 }

@@ -15,7 +15,7 @@ namespace Synchrony {
             for (int iVar2 = 1; iVar2 < 9; iVar2 = iVar2 + 1) {
                 if ((this->DAT_CurrentPlayerFullIDArray2[iVar2] != -1)
                     && (this->unknownPlayerInfo_01[iVar2] == 0)) {
-                    return (undefined4)(0);
+                    return 0;
                 }
             }
             if (this->somePlayerRelatedArray[1] == 0) {
@@ -42,12 +42,12 @@ namespace Synchrony {
             if (this->somePlayerRelatedArray[8] == 0) {
                 this->currentPlayerFullIDArray[8] = -1;
             }
-            return (undefined4)(1);
+            return 1;
         }
         if (this->lobbyStateReceived) {
-            return (undefined4)(1);
+            return 1;
         }
-        return (undefined4)(0);
+        return 0;
     }
 
 }

@@ -153,7 +153,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                 Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
         }
-        return (undefined4)(1);
+        return 1;
     }
 
 }

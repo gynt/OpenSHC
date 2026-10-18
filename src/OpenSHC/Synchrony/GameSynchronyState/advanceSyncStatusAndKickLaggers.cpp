@@ -57,7 +57,6 @@ namespace Synchrony {
         }
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
             Commands::GCT_SET_SYNC_STATUS_0);
-        return;
     }
 
 }

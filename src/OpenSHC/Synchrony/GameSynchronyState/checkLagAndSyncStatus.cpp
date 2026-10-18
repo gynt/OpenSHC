@@ -70,7 +70,6 @@ namespace Synchrony {
         }
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
             Commands::GCT_SHARE_SYNC_STATUS);
-        return;
     }
 
 }

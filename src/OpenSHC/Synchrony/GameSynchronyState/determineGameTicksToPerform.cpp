@@ -108,7 +108,7 @@ namespace Synchrony {
                   Cap game ticks per rendering
                  */
                 DAT_MillisecCarry::instance = 0;
-                return (int)(11);
+                return 11;
             }
             if (_relativeTickTime > _durationOfOneTick) {
                 DAT_MillisecCarry::instance

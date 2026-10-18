@@ -51,7 +51,6 @@ namespace Synchrony {
         }
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
             Commands::GCT_CLOSE_MODAL_DIALOG_FOR_ALL);
-        return;
     }
 
 }

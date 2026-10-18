@@ -32,7 +32,7 @@ namespace Synchrony {
         if (this->currentPlayerFullIDArray[8] != -1) {
             uVar1 = uVar1 + 1;
         }
-        return (int)(uVar1);
+        return uVar1;
     }
 
 }
