@@ -61,12 +61,7 @@ namespace Synchrony {
         _quotation = false;
         local_409 = '\0';
         this->useTCPIP = FALSE;
-        _pArguments = arguments;
-        do {
-            _char = *_pArguments;
-            _pArguments = _pArguments + 1;
-        } while (_char != '\0');
-        if ((int)_pArguments - (int)(arguments + 1) != 0) {
+        if (strlen(arguments) != 0) {
             _candidates[0][0] = '\0';
             _candidates[1][0] = '\0';
             _candidateIndex = 0;
@@ -93,20 +88,14 @@ namespace Synchrony {
                     LAB_004910fb:
                         _candidateIndex = 0;
                     LAB_00491101:
-                        _copyIndex = 0;
-                        do {
-                            _char = _candidates[0][_copyIndex];
-                            _candidates[2][_copyIndex] = _char;
-                            _copyIndex = _copyIndex + 1;
-                        } while (_char != 0);
-                        _copyIndex = 0;
-                        do {
-                            _char = _candidates[1][_copyIndex];
-                            _candidates[3][_copyIndex] = _char;
-                            _copyIndex = _copyIndex + 1;
-                        } while (_char != 0);
+                        strcpy(_candidates[2], _candidates[0]);
+                        strcpy(_candidates[3], _candidates[1]);
                         _isConnect = MACRO_CALL(OS_Func::__stricmp)("+connect", (char const*)((int)(_candidates[0])));
                         if (!_isConnect) {
+                            /*
+                              These two walks stay as do-whiles: writing them as strlen measures
+                              42.7% -> 39.7%.
+                             */
                             _pConnectTarget = _candidates[1];
                             this->useTCPIP = TRUE;
                             _pCandidatePlus1 = _pConnectTarget + 1;
@@ -115,13 +104,7 @@ namespace Synchrony {
                                 _pConnectTarget = _pConnectTarget + 1;
                             } while (_char != '\0');
                             if ((uint)((int)_pConnectTarget - (int)_pCandidatePlus1) < 29) {
-                                _pConnectTarget = _candidates[1];
-                                _pCandidatePlus1 = _pConnectTarget + 1;
-                                do {
-                                    _char = *_pConnectTarget;
-                                    _pConnectTarget = _pConnectTarget + 1;
-                                } while (_char != '\0');
-                                _connectArgLength = (int)_pConnectTarget - (int)_pCandidatePlus1;
+                                _connectArgLength = (int)strlen(_candidates[1]);
                             } else {
                                 _connectArgLength = 0x1d;
                             }
