@@ -55,9 +55,7 @@ namespace Synchrony {
                 "First split chimp:  ", x + 0xc8, y + 0x2a, Text::TTA_LEFT, 0xffffff, 0x12, FALSE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 this->firstSplitChimps, x + 0xd2, y + 0x2a, Text::TTA_LEFT, 0x80ff, 0x12, TRUE, 0);
-            piVar3 = this->HASH_Units[2] + 1;
-            x = 10;
-            do {
+            for (piVar3 = this->HASH_Units[2] + 1, x = 10; x; xParam = xParam + 0x28, piVar3 = piVar3 + 1, x = x + -1) {
                 uint color = 0xffffff;
                 if (piVar3[-0x9c4] != *piVar3) {
                     color = 0xff;
@@ -66,10 +64,7 @@ namespace Synchrony {
                     piVar3[-0x9c4], xParam, y + 0x46, Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     *piVar3, xParam, y + 0x54, Text::TTA_LEFT, color, 0x12, FALSE, 0);
-                xParam = xParam + 0x28;
-                piVar3 = piVar3 + 1;
-                x = x + -1;
-            } while (x);
+            }
             return;
         }
         if (this->splinterType == 1) {

@@ -39,8 +39,7 @@ namespace Synchrony {
         int local_4;
         int _lordID;
         this->chatMessageRenderIndex = this->DAT_ChatMessageArrayIndex;
-        local_4 = 4;
-        do {
+        for (local_4 = 4; local_4; param_2 = param_2 + -0xe, local_4 = local_4 + -1) {
             int iVar3 = this->chatMessageRenderIndex;
             if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
                 DWORD DVar1 = timeGetTime();
@@ -128,9 +127,7 @@ namespace Synchrony {
             if (this->chatMessageRenderIndex < 0) {
                 this->chatMessageRenderIndex = 0x13;
             }
-            param_2 = param_2 + -0xe;
-            local_4 = local_4 + -1;
-        } while (local_4);
+        }
     }
 
 }

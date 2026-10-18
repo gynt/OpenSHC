@@ -33,6 +33,9 @@ namespace Synchrony {
             DAT_TextureRenderCoreObject::ptr)(yPos + -0x48, yPos + 0x12);
         DAT_TextManagerObject::instance.field13_0x34 = 0x11;
         param_3 = 0;
+        /*
+          Measured: rewriting this do-while as a for loop costs the match (80.1% -> 74.0%), so it stays.
+         */
         do {
             if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
                 int iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;

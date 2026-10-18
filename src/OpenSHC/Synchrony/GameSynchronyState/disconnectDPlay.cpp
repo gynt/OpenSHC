@@ -29,24 +29,23 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearSessionsList, this)();
         _providerIndex = 0;
         if (0 < this->scrollBarItemCount) {
-            do {
-                MACRO_CALL(OS_Func::_free_base)((void*)(DAT_GameSynchronyState::instance.providerNames[_providerIndex]));
+            for (; _providerIndex < this->scrollBarItemCount; _providerIndex = _providerIndex + 1) {
+                MACRO_CALL(OS_Func::_free_base)(
+                    (void*)(DAT_GameSynchronyState::instance.providerNames[_providerIndex]));
                 pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[_providerIndex]);
                 GlobalUnlock(pvVar1);
                 pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.guids[_providerIndex]);
                 GlobalFree(pvVar1);
                 DAT_GameSynchronyState::instance.providerNames[_providerIndex] = (WCHAR*)0x0;
                 DAT_GameSynchronyState::instance.guids[_providerIndex] = (GUID*)0x0;
-                _providerIndex = _providerIndex + 1;
-            } while (_providerIndex < this->scrollBarItemCount);
+            }
         }
         _modemIndex = 0;
         this->scrollBarItemCount = 0;
         if (0 < this->modemScrollbarCount) {
-            do {
+            for (; _modemIndex < this->modemScrollbarCount; _modemIndex = _modemIndex + 1) {
                 MACRO_CALL(OS_Func::_free_base)(DAT_GameSynchronyState::instance.stringPointerArray[_modemIndex]);
-                _modemIndex = _modemIndex + 1;
-            } while (_modemIndex < this->modemScrollbarCount);
+            }
         }
         this->modemScrollbarCount = 0;
         if (this->DPLAYX_4A != (IDirectPlay4A*)0x0) {

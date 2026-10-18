@@ -16,26 +16,22 @@ namespace Synchrony {
         int _slot;
         for (int _slot_2 = 1; _slot_2 < 9; _slot_2 = _slot_2 + 1) {
             if (this->currentPlayerFullIDArray[_slot_2] == playerFullID) {
-            return _slot_2;
+                return _slot_2;
             }
         }
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER) {
-            _slot = 1;
-            do {
+            for (_slot = 1; _slot < 9; _slot = _slot + 1) {
                 if (((this->currentPlayerFullIDArray[_slot] == -1)
                         || (this->currentPlayerFullIDArray[_slot] == playerFullID))
                     && this->currentAIArray[_slot] <= 0)
                     goto LAB_0047ebf4;
-                _slot = _slot + 1;
-            } while (_slot < 9);
+            }
         }
-        _slot = 1;
-        do {
+        for (_slot = 1; _slot < 9; _slot = _slot + 1) {
             if ((this->currentPlayerFullIDArray[_slot] == -1)
                 || (this->currentPlayerFullIDArray[_slot] == playerFullID))
                 goto LAB_0047ebf4;
-            _slot = _slot + 1;
-        } while (_slot < 9);
+        }
         _slot = 0;
     LAB_0047ebf4:
         this->currentPlayerFullIDArray[_slot] = playerFullID;

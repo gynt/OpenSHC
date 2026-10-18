@@ -10,9 +10,7 @@ namespace Synchrony {
         int* _aiPtr;
         int iVar1;
         int _sum = 0;
-        _aiPtr = this->currentAIArray + 1;
-        iVar1 = 2;
-        do {
+        for (_aiPtr = this->currentAIArray + 1, iVar1 = 2; iVar1; _aiPtr = _aiPtr + 4, iVar1 = iVar1 + -1) {
             if ((_aiPtr[-0x1b] != -1) || (*_aiPtr != 0)) {
                 _sum = _sum + 1;
             }
@@ -25,9 +23,7 @@ namespace Synchrony {
             if ((_aiPtr[-0x18] != -1) || (_aiPtr[3] != 0)) {
                 _sum = _sum + 1;
             }
-            _aiPtr = _aiPtr + 4;
-            iVar1 = iVar1 + -1;
-        } while (iVar1);
+        }
         return _sum;
     }
 

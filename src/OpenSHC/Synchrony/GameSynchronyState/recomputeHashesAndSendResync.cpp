@@ -340,6 +340,9 @@ namespace Synchrony {
         _hashSubTotal = 0;
         _entityIndex = 25;
         address = DAT_EntityState::instance.entityArray + 0x19;
+        /*
+          Measured: rewriting this do-while as a for loop costs the match (58.8% -> 58.7%), so it stays.
+         */
         do {
             sVar5 = address->screenDirection;
             sVar6 = address->x1;

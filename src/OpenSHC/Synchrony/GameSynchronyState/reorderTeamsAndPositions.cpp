@@ -83,7 +83,7 @@ namespace Synchrony {
             }
         }
         int _counter3 = 1;
-        do {
+        for (; _counter3 <= 3; _counter3 = _counter3 + 1) {
             if ((local_38[_counter3] == 0) && (local_38[_counter3 + 1] != 0)) {
                 if ((char)this->DAT_PlayerGroupArray[1] > _counter3) {
                     this->DAT_PlayerGroupArray[1] = this->DAT_PlayerGroupArray[1] - 1;
@@ -119,8 +119,7 @@ namespace Synchrony {
                     }
                 }
             }
-            _counter3 = _counter3 + 1;
-        } while (_counter3 <= 3);
+        }
         local_4c = 1;
         if (0 < _counter2) {
             do {

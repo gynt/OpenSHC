@@ -73,9 +73,8 @@ namespace Synchrony {
         piVar3 = &this->HASH_PartialHashPerPlayer.player0.domain02;
         local_14 = this->DAT_PlayerNames;
         local_18 = this->DAT_ReceivedAIVFileAvailabilityPerAIArray;
-        piVar4 = this->currentAIArray;
-        local_4 = 9;
-        do {
+        for (piVar4 = this->currentAIArray, local_4 = 9; local_4; local_10 = local_10 + 1, local_8 = local_8 + 9,
+            piVar4 = piVar4 + 1, piVar3 = piVar3 + 0xc, local_4 = local_4 + -1, local_1c = local_1c + 1) {
             piVar4[-0x1b] = -1;
             piVar4[0x1e858] = -1;
             *piVar4 = 0;
@@ -101,12 +100,10 @@ namespace Synchrony {
             piVar3[2] = 0;
             piVar3[3] = 0;
             piVar3[4] = 0;
-            iVar2 = 100;
-            do {
+            for (iVar2 = 100; iVar2; iVar2 = iVar2 + -1) {
                 (*local_c)[0][0] = 0;
                 local_c = (int (*)[100][2])(*local_c + 1);
-                iVar2 = iVar2 + -1;
-            } while (iVar2);
+            }
             local_18 = local_18 + 1;
             local_14 = local_14 + 1;
             local_8[-4] = 0;
@@ -135,13 +132,7 @@ namespace Synchrony {
             piVar4[0x42578] = 0;
             piVar4[0x42581] = 0;
             piVar4[0x425b0] = 0;
-            local_10 = local_10 + 1;
-            local_8 = local_8 + 9;
-            piVar4 = piVar4 + 1;
-            piVar3 = piVar3 + 0xc;
-            local_4 = local_4 + -1;
-            local_1c = local_1c + 1;
-        } while (local_4);
+        }
         this->skirmishUnknownSetting1[0] = 1;
         this->skirmishUnknownSetting1[1] = 1;
         this->skirmishUnknownSetting1[2] = 1;

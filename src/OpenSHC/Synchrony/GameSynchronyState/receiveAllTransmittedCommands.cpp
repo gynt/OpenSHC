@@ -78,14 +78,11 @@ namespace Synchrony {
                                 DAT_GameSynchronyState::instance.isHost = TRUE;
                                 this->DAT_HashCountdown = 2;
                                 this->timeSkirmishGameStart = timeGetTime();
-                                piVar2 = this->DAT_PlayerMatchTimes;
-                                iVar5 = 9;
-                                do {
+                                for (piVar2 = this->DAT_PlayerMatchTimes, iVar5 = 9; iVar5;
+                                    piVar2 = piVar2 + 1, iVar5 = iVar5 + -1) {
                                     piVar2[-9] = 0;
                                     *piVar2 = 0;
-                                    piVar2 = piVar2 + 1;
-                                    iVar5 = iVar5 + -1;
-                                } while (iVar5);
+                                }
                                 /*
                                   added by script: "You are now Host"
                                  */

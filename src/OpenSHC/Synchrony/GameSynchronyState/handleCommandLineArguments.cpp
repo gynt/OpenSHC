@@ -128,15 +128,14 @@ namespace Synchrony {
                             memset(this->connectTarget, 0, 30);
                             _charIndex3 = 0;
                             if (0 < _connectArgLength) {
-                                do {
+                                for (; _charIndex3 < _connectArgLength; _charIndex3 = _charIndex3 + 1) {
                                     _char = _candidates[1][_charIndex3];
                                     this->connectTarget[_charIndex3] = _char;
                                     if (_char == ':') {
                                         this->connectPort = atol(_candidates[1] + _charIndex3 + 1);
                                         break;
                                     }
-                                    _charIndex3 = _charIndex3 + 1;
-                                } while (_charIndex3 < _connectArgLength);
+                                }
                             }
                             MACRO_CALL_MEMBER(
                                 Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);

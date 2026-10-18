@@ -29,8 +29,8 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
             return;
         }
-        uint uVar1 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
-            this)(this->DPLAYX_ReceivedPlayerID);
+        uint uVar1 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+            this->DPLAYX_ReceivedPlayerID);
         /*
           playerID is never 0 in this logic, but it could be 0 with a mod
          */
@@ -58,8 +58,7 @@ namespace Synchrony {
             for (int _index = 0; _index < (int)this->limit; _index = _index + 1) {
                 this->historicalLagInfoPerPlayer[uVar1][_index][0]
                     = this->connectionLagInfoArray[uVar1].subtractedMapTicks;
-                this->historicalLagInfoPerPlayer[uVar1][_index][1]
-                    = this->connectionLagInfoArray[uVar1].subtractedTime;
+                this->historicalLagInfoPerPlayer[uVar1][_index][1] = this->connectionLagInfoArray[uVar1].subtractedTime;
             }
         } else {
             this->historicalLagInfoPerPlayer[uVar1][this->counter][1]
@@ -77,6 +76,9 @@ namespace Synchrony {
             if (0 < _limit) {
                 int _countdown = this->limit;
                 int* piVar3 = this->historicalLagInfoPerPlayer[uVar1][2] + 1;
+                /*
+                  Measured: rewriting this do-while as a for loop costs the match (87.8% -> 86.7%), so it stays.
+                 */
                 do {
                     _sum_2 = _sum_2 + piVar3[-5];
                     _sum = _sum + *piVar3;

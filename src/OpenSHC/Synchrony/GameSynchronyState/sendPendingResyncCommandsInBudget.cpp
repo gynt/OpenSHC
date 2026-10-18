@@ -36,9 +36,7 @@ namespace Synchrony {
         iVar4 = this->resyncResumeInnerIndex;
         iVar8 = this->resyncResumeOuterIndex;
         local_14 = 0;
-        iVar2 = 1;
-        piVar7 = this->syncRelatedStatusArray + 1;
-        do {
+        for (iVar2 = 1, piVar7 = this->syncRelatedStatusArray + 1; iVar2 < 9; iVar2 = iVar2 + 1, piVar7 = piVar7 + 1) {
             if (*piVar7 == 0) {
                 if (!this->announcementReceivedBool) {
                     return;
@@ -47,9 +45,8 @@ namespace Synchrony {
                 if (DVar3 - this->announcementReceiveTime <= 0xafc8) {
                     return;
                 }
-                iVar2 = 1;
-                local_10 = this->syncRelatedStatusArray + 1;
-                do {
+                for (iVar2 = 1, local_10 = this->syncRelatedStatusArray + 1; iVar2 < 9;
+                    iVar2 = iVar2 + 1, local_10 = local_10 + 1) {
                     if (*local_10 == 0) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar2;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
@@ -57,14 +54,10 @@ namespace Synchrony {
                             DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
                         *local_10 = 1;
                     }
-                    iVar2 = iVar2 + 1;
-                    local_10 = local_10 + 1;
-                } while (iVar2 < 9);
+                }
                 break;
             }
-            iVar2 = iVar2 + 1;
-            piVar7 = piVar7 + 1;
-        } while (iVar2 < 9);
+        }
     LAB_0048e72e:
         switch (this->somePacketSubTypeUnk) {
         case 0xc:
@@ -75,12 +68,11 @@ namespace Synchrony {
                 local_c = (int*)(iVar8 << 7);
                 do {
                     if (iVar4 < 0x20) {
-                        local_8 = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + (int)local_c + iVar4;
-                        do {
-                            iVar2 = 1;
-                            piVar7 = this->currentPlayerFullIDArray + 1;
-                            piVar5 = local_8;
-                            do {
+                        for (local_8
+                            = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + (int)local_c + iVar4;
+                            iVar4 < 0x20; local_8 = local_8 + 1, iVar4 = iVar4 + 1) {
+                            for (iVar2 = 1, piVar7 = this->currentPlayerFullIDArray + 1, piVar5 = local_8; iVar2 < 9;
+                                iVar2 = iVar2 + 1, piVar7 = piVar7 + 1, piVar5 = piVar5 + 0xf00) {
                                 if ((*piVar7 != -1)
                                     && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                             .hashDataArray[iVar8]
@@ -102,13 +94,8 @@ namespace Synchrony {
                                     }
                                     break;
                                 }
-                                iVar2 = iVar2 + 1;
-                                piVar7 = piVar7 + 1;
-                                piVar5 = piVar5 + 0xf00;
-                            } while (iVar2 < 9);
-                            local_8 = local_8 + 1;
-                            iVar4 = iVar4 + 1;
-                        } while (iVar4 < 0x20);
+                            }
+                        }
                     }
                     local_c = (int*)((int)local_c + 0x80);
                     iVar8 = iVar8 + 1;
@@ -121,12 +108,9 @@ namespace Synchrony {
         case 0xf:
         switchD_0048e739_caseD_f:
             if ((this->sharedDesyncFlags[0xd] != 0) && (iVar8 < 0x50)) {
-                piVar7 = this->HASH_HeatMaps[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_HeatMaps[1] + iVar8; iVar8 < 0x50; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x50) {
                         if ((*piVar5 != -1)
                             && (this->HASH_HeatMaps[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -145,13 +129,8 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x50;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x50);
+                    }
+                }
             }
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_CHECK_GAME_SYNCUnk);
             DAT_GameSynchronyState::instance.syncStatus = 3;
@@ -160,12 +139,9 @@ namespace Synchrony {
             iVar8 = 0;
         case 0:
             if ((this->sharedDesyncFlags[0] != 0) && (iVar8 < 0x9c4)) {
-                piVar7 = this->HASH_Units[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Units[1] + iVar8; iVar8 < 0x9c4; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x9c4) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Units[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -184,23 +160,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x9c4;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x9c4);
+                    }
+                }
             }
             iVar8 = 0;
         case 1:
             if ((this->sharedDesyncFlags[1] != 0) && (iVar8 < 2000)) {
-                piVar7 = this->HASH_Buildings[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Buildings[1] + iVar8; iVar8 < 2000; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 2000) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Buildings[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -219,23 +187,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 2000;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 2000);
+                    }
+                }
             }
             iVar8 = 0;
         case 2:
             if ((this->sharedDesyncFlags[2] != 0) && (iVar8 < 2000)) {
-                piVar7 = this->HASH_Trees[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Trees[1] + iVar8; iVar8 < 2000; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 2000) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Trees[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -254,23 +214,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 2000;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 2000);
+                    }
+                }
             }
             iVar8 = 0;
         case 3:
             if ((this->sharedDesyncFlags[3] != 0) && (iVar8 < 0x4e2)) {
-                piVar7 = this->HASH_Tribes[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Tribes[1] + iVar8; iVar8 < 0x4e2; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x4e2) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Tribes[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -289,23 +241,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x4e2;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x4e2);
+                    }
+                }
             }
             iVar8 = 0;
         case 4:
             if ((this->sharedDesyncFlags[4] != 0) && (iVar8 < 9)) {
-                piVar7 = this->HASH_PlayerDatas[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_PlayerDatas[1] + iVar8; iVar8 < 9; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 9) {
                         if ((*piVar5 != -1)
                             && (this->HASH_PlayerDatas[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -324,23 +268,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 9;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 9);
+                    }
+                }
             }
             iVar8 = 0;
         case 5:
             if ((this->sharedDesyncFlags[5] != 0) && (iVar8 < 0x14)) {
-                piVar7 = this->HASH_Section1023[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Section1023[1] + iVar8; iVar8 < 0x14; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x14) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Section1023[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -359,23 +295,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x14;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x14);
+                    }
+                }
             }
             iVar8 = 0;
         case 6:
             if ((this->sharedDesyncFlags[7] != 0) && (iVar8 < 3000)) {
-                piVar7 = this->HASH_Entities[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Entities[1] + iVar8; iVar8 < 3000; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 3000) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Entities[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -394,24 +322,17 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 3000;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 3000);
+                    }
+                }
             }
             iVar8 = 0;
         case 7:
             if ((this->sharedDesyncFlags[8] != 0) && (iVar8 < 0xa0)) {
                 piVar7 = this->HASH_Moats[1] + iVar8;
                 iVar4 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-                do {
-                    iVar2 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (; iVar8 < 0xa0; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar2 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar2 < 9;
+                        iVar2 = iVar2 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0xa0) {
                         if ((*piVar5 != -1) && (this->HASH_Moats[iVar4][iVar8] != *piVar6)) {
                             this->DAT_GameCommandParam0 = iVar8;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
@@ -428,23 +349,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar2 = iVar2 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0xa0;
-                    } while (iVar2 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0xa0);
+                    }
+                }
             }
             iVar8 = 0;
         case 8:
             if ((this->sharedDesyncFlags[9] != 0) && (iVar8 < 200)) {
-                piVar7 = this->HASH_ClimbData[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_ClimbData[1] + iVar8; iVar8 < 200; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 200) {
                         if ((*piVar5 != -1)
                             && (this->HASH_ClimbData[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -463,23 +376,16 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 200;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 200);
+                    }
+                }
             }
             iVar8 = 0;
         case 9:
             if ((this->sharedDesyncFlags[10] != 0) && (iVar8 < 0x28)) {
-                piVar7 = this->HASH_PitchDitches[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_PitchDitches[1] + iVar8; iVar8 < 0x28;
+                    iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x28) {
                         if ((*piVar5 != -1)
                             && (this->HASH_PitchDitches[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -498,23 +404,15 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x28;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x28);
+                    }
+                }
             }
             iVar8 = 0;
         case 10:
             if ((this->sharedDesyncFlags[0xb] != 0) && (iVar8 < 0x28)) {
-                piVar7 = this->HASH_Unknown2[1] + iVar8;
-                do {
-                    iVar4 = 1;
-                    piVar5 = this->currentPlayerFullIDArray + 1;
-                    piVar6 = piVar7;
-                    do {
+                for (piVar7 = this->HASH_Unknown2[1] + iVar8; iVar8 < 0x28; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                    for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                        iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0x28) {
                         if ((*piVar5 != -1)
                             && (this->HASH_Unknown2[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8]
                                 != *piVar6)) {
@@ -533,24 +431,17 @@ namespace Synchrony {
                             }
                             break;
                         }
-                        iVar4 = iVar4 + 1;
-                        piVar5 = piVar5 + 1;
-                        piVar6 = piVar6 + 0x28;
-                    } while (iVar4 < 9);
-                    iVar8 = iVar8 + 1;
-                    piVar7 = piVar7 + 1;
-                } while (iVar8 < 0x28);
+                    }
+                }
             }
             iVar8 = 0;
         case 0xb:
             if (this->sharedDesyncFlags[6] != 0) {
                 if (iVar8 < 0x80) {
-                    piVar7 = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + iVar8;
-                    do {
-                        iVar4 = 1;
-                        piVar5 = this->currentPlayerFullIDArray + 1;
-                        piVar6 = piVar7;
-                        do {
+                    for (piVar7 = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + iVar8; iVar8 < 0x80;
+                        iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                        for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                            iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 0xf00) {
                             if ((*piVar5 != -1)
                                 && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                         .hashDataArray[0]
@@ -572,13 +463,8 @@ namespace Synchrony {
                                 }
                                 break;
                             }
-                            iVar4 = iVar4 + 1;
-                            piVar5 = piVar5 + 1;
-                            piVar6 = piVar6 + 0xf00;
-                        } while (iVar4 < 9);
-                        iVar8 = iVar8 + 1;
-                        piVar7 = piVar7 + 1;
-                    } while (iVar8 < 0x80);
+                        }
+                    }
                 }
                 iVar8 = 1;
                 iVar4 = 0;
@@ -589,11 +475,9 @@ namespace Synchrony {
                         if (iVar4 < 0x40) {
                             local_c
                                 = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + (int)local_8 + iVar4;
-                            do {
-                                iVar2 = 1;
-                                piVar7 = this->currentPlayerFullIDArray + 1;
-                                piVar5 = local_c;
-                                do {
+                            for (; iVar4 < 0x40; local_c = local_c + 1, iVar4 = iVar4 + 1) {
+                                for (iVar2 = 1, piVar7 = this->currentPlayerFullIDArray + 1, piVar5 = local_c;
+                                    iVar2 < 9; iVar2 = iVar2 + 1, piVar7 = piVar7 + 1, piVar5 = piVar5 + 0xf00) {
                                     if ((*piVar7 != -1)
                                         && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance
                                                                           .currentPlayerSlotID]
@@ -616,13 +500,8 @@ namespace Synchrony {
                                         }
                                         break;
                                     }
-                                    iVar2 = iVar2 + 1;
-                                    piVar7 = piVar7 + 1;
-                                    piVar5 = piVar5 + 0xf00;
-                                } while (iVar2 < 9);
-                                local_c = local_c + 1;
-                                iVar4 = iVar4 + 1;
-                            } while (iVar4 < 0x40);
+                                }
+                            }
                         }
                         local_8 = (int*)((int)local_8 + 0x80);
                         iVar8 = iVar8 + 1;
@@ -637,12 +516,9 @@ namespace Synchrony {
         iVar8 = 0;
     switchD_0048e739_caseD_e:
         if ((this->sharedDesyncFlags[0xc] != 0) && (iVar8 < 9)) {
-            piVar7 = this->HASH_AIVS[1] + iVar8;
-            do {
-                iVar4 = 1;
-                piVar5 = this->currentPlayerFullIDArray + 1;
-                piVar6 = piVar7;
-                do {
+            for (piVar7 = this->HASH_AIVS[1] + iVar8; iVar8 < 9; iVar8 = iVar8 + 1, piVar7 = piVar7 + 1) {
+                for (iVar4 = 1, piVar5 = this->currentPlayerFullIDArray + 1, piVar6 = piVar7; iVar4 < 9;
+                    iVar4 = iVar4 + 1, piVar5 = piVar5 + 1, piVar6 = piVar6 + 9) {
                     if ((*piVar5 != -1)
                         && (this->HASH_AIVS[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar8] != *piVar6)) {
                         this->DAT_GameCommandParam0 = iVar8;
@@ -660,13 +536,8 @@ namespace Synchrony {
                         }
                         break;
                     }
-                    iVar4 = iVar4 + 1;
-                    piVar5 = piVar5 + 1;
-                    piVar6 = piVar6 + 9;
-                } while (iVar4 < 9);
-                iVar8 = iVar8 + 1;
-                piVar7 = piVar7 + 1;
-            } while (iVar8 < 9);
+                }
+            }
         }
         iVar8 = 0;
         goto switchD_0048e739_caseD_f;

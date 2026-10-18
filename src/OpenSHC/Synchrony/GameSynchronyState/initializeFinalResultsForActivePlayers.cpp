@@ -21,8 +21,7 @@ namespace Synchrony {
         undefined2* local_c;
         int local_8;
         char (*local_4)[250];
-        pcVar3 = MACRO_CALL_MEMBER(
-            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
         pacVar5 = this->DAT_PlayerNames + 1;
         do {
             cVar2 = *pcVar3;
@@ -30,12 +29,11 @@ namespace Synchrony {
             pcVar3 = pcVar3 + 1;
             pacVar5 = (char (*)[250])(*pacVar5 + 1);
         } while (cVar2 != '\0');
-        iVar6 = 1;
-        local_c = (undefined2*)((int)this->finalResults.unusedUnk + 2);
-        local_4 = this->DAT_PlayerNames + 1;
-        local_8 = (int)this + 0x10961e;
-        piVar4 = this->currentPlayerFullIDArray + 1;
-        do {
+        for (iVar6 = 1, local_c = (undefined2*)((int)this->finalResults.unusedUnk + 2),
+            local_4 = this->DAT_PlayerNames + 1, local_8 = (int)this + 0x10961e,
+            piVar4 = this->currentPlayerFullIDArray + 1;
+            iVar6 < 9; iVar6 = iVar6 + 1, piVar4 = piVar4 + 1, local_4 = local_4 + 1, local_c = local_c + 1,
+            local_8 = local_8 + 0x5a) {
             if ((*piVar4 == -1) && (piVar4[0x1b] == 0)) {
                 this->finalResults.active[iVar6] = 0;
             } else {
@@ -72,12 +70,7 @@ namespace Synchrony {
                 piVar4[0x42593] = 0;
                 piVar4[0x4259c] = 0;
             }
-            iVar6 = iVar6 + 1;
-            piVar4 = piVar4 + 1;
-            local_4 = local_4 + 1;
-            local_c = local_c + 1;
-            local_8 = local_8 + 0x5a;
-        } while (iVar6 < 9);
+        }
         paiVar7 = this->finalResults.finalKillMatrix;
         for (iVar6 = 0x51; iVar6 != 0; iVar6 = iVar6 + -1) {
             (*paiVar7)[0] = 0;

@@ -17,7 +17,7 @@ namespace Synchrony {
         int _count = this->DPLAY_SessionsCount;
         int _index = 0;
         if (0 < _count) {
-            do {
+            for (; _index < _count; _index = _index + 1) {
                 BOOLEnum _equality = MACRO_CALL(OS_Func::isEqualGUID)(
                     pGUID, DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[_index]);
                 if (_equality) {
@@ -35,8 +35,7 @@ namespace Synchrony {
                     this->scrollBarIndex = _index - _offset;
                     return;
                 }
-                _index = _index + 1;
-            } while (_index < _count);
+            }
         }
         this->scrollBarItemOffset = 0;
         this->scrollBarIndex = -1;

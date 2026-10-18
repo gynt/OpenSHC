@@ -20,15 +20,12 @@ namespace Synchrony {
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             5000, '\0', (void*)((int)(this->DAT_ChatMessageSubjectPlayerNameArray)));
         this->DAT_ChatMessageArrayIndex = 0;
-        _chatEventPtr = &this->DAT_ChatEventArray[0].time;
-        _chatEventCounter = 0x14;
-        do {
+        for (_chatEventPtr = &this->DAT_ChatEventArray[0].time, _chatEventCounter = 0x14; _chatEventCounter;
+            _chatEventPtr = _chatEventPtr + 4, _chatEventCounter = _chatEventCounter + -1) {
             _chatEventPtr[-1] = 0;
             _chatEventPtr[0] = 0;
             _chatEventPtr[1] = 0;
-            _chatEventPtr = _chatEventPtr + 4;
-            _chatEventCounter = _chatEventCounter + -1;
-        } while (_chatEventCounter);
+        }
         this->chatScrollOffset = 0;
     }
 

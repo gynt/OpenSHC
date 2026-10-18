@@ -57,8 +57,7 @@ namespace Synchrony {
         HashData* local_4;
         this->receivedSyncStatusByPlayerUnk[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
         iVar6 = 1;
-        while (this->currentPlayerFullIDArray[iVar6] == -1
-            || this->receivedSyncStatusByPlayerUnk[iVar6] != 0) {
+        while (this->currentPlayerFullIDArray[iVar6] == -1 || this->receivedSyncStatusByPlayerUnk[iVar6] != 0) {
             iVar6 = iVar6 + 1;
             if (9 <= iVar6)
                 goto LAB_0048dc9c;
@@ -73,8 +72,8 @@ namespace Synchrony {
                     && (this->receivedSyncStatusByPlayerUnk[iVar6] == 0)) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = iVar6;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0x3f;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_LEAVE_GAME);
                     this->receivedSyncStatusByPlayerUnk[iVar6] = 2;
                 }
             }
@@ -97,21 +96,18 @@ namespace Synchrony {
         if (this->sharedDesyncFlags[0] != 0) {
             paiVar18 = this->HASH_Units + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar7 = paiVar18;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Units[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar7)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar7 = paiVar18; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar7 = paiVar7 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Units[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar7)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_UNIT);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar7 = paiVar7 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar18 = (int (*)[2500])(*paiVar18 + 1);
             } while (iVar6 < 0x9c4);
@@ -120,21 +116,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar19 = this->HASH_Buildings + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar8 = paiVar19;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Buildings[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar8)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar8 = paiVar19; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar8 = paiVar8 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Buildings[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar8)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_BUILDING);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar8 = paiVar8 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar19 = (int (*)[2000])(*paiVar19 + 1);
             } while (iVar6 < 2000);
@@ -143,21 +136,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar19 = this->HASH_Trees + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar8 = paiVar19;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Trees[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar8)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar8 = paiVar19; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar8 = paiVar8 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Trees[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar8)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_TREE);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar8 = paiVar8 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar19 = (int (*)[2000])(*paiVar19 + 1);
             } while (iVar6 < 2000);
@@ -166,21 +156,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar20 = this->HASH_Tribes + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar9 = paiVar20;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Tribes[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar9)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar9 = paiVar20; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar9 = paiVar9 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Tribes[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar9)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_UNITSELECTION);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar9 = paiVar9 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar20 = (int (*)[1250])(*paiVar20 + 1);
             } while (iVar6 < 0x4e2);
@@ -189,22 +176,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar26 = this->HASH_PlayerDatas + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar15 = paiVar26;
-                do {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar15 = paiVar26; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar15 = paiVar15 + 1) {
                     if ((*piVar29 != -1)
-                        && (this->HASH_PlayerDatas[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar15)[0])) {
+                        && (this->HASH_PlayerDatas[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar15)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_PLAYERDATA);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar15 = paiVar15 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar26 = (int (*)[9])(*paiVar26 + 1);
             } while (iVar6 < 9);
@@ -213,22 +196,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar21 = this->HASH_Section1023 + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar10 = paiVar21;
-                do {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar10 = paiVar21; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar10 = paiVar10 + 1) {
                     if ((*piVar29 != -1)
-                        && (this->HASH_Section1023[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar10)[0])) {
+                        && (this->HASH_Section1023[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar10)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_UNKNOWN);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar10 = paiVar10 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar21 = (int (*)[20])(*paiVar21 + 1);
             } while (iVar6 < 0x14);
@@ -237,21 +216,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar22 = this->HASH_Entities + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar11 = paiVar22;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Entities[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar11)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar11 = paiVar22; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar11 = paiVar11 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Entities[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar11)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_ENTITY);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar11 = paiVar11 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar22 = (int (*)[3000])(*paiVar22 + 1);
             } while (iVar6 < 3000);
@@ -260,21 +236,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar23 = this->HASH_Moats + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar12 = paiVar23;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Moats[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar12)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar12 = paiVar23; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar12 = paiVar12 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Moats[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar12)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_MOAT);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar12 = paiVar12 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar23 = (int (*)[160])(*paiVar23 + 1);
             } while (iVar6 < 0xa0);
@@ -283,22 +256,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar24 = this->HASH_ClimbData + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar13 = paiVar24;
-                do {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar13 = paiVar24; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar13 = paiVar13 + 1) {
                     if ((*piVar29 != -1)
-                        && (this->HASH_ClimbData[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar13)[0])) {
+                        && (this->HASH_ClimbData[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar13)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_CLIMB_DATA);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar13 = paiVar13 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar24 = (int (*)[200])(*paiVar24 + 1);
             } while (iVar6 < 200);
@@ -307,22 +276,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar25 = this->HASH_PitchDitches + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar14 = paiVar25;
-                do {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar14 = paiVar25; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar14 = paiVar14 + 1) {
                     if ((*piVar29 != -1)
-                        && (this->HASH_PitchDitches[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar14)[0])) {
+                        && (this->HASH_PitchDitches[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar14)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_PITCH_DITCH);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar14 = paiVar14 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar25 = (int (*)[40])(*paiVar25 + 1);
             } while (iVar6 < 0x28);
@@ -331,21 +296,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar25 = this->HASH_Unknown2 + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar14 = paiVar25;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_Unknown2[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar14)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar14 = paiVar25; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar14 = paiVar14 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_Unknown2[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar14)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_SEND_RESYNC_UNKNOWN2);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar14 = paiVar14 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar25 = (int (*)[40])(*paiVar25 + 1);
             } while (iVar6 < 0x28);
@@ -354,21 +316,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar26 = this->HASH_AIVS + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar15 = paiVar26;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_AIVS[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar15)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar15 = paiVar26; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar15 = paiVar15 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_AIVS[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar15)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_HOST_SHARE_AIV);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar15 = paiVar15 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar26 = (int (*)[9])(*paiVar26 + 1);
             } while (iVar6 < 9);
@@ -377,21 +336,18 @@ namespace Synchrony {
             iVar6 = 0;
             paiVar27 = this->HASH_HeatMaps + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                paiVar16 = paiVar27;
-                do {
-                    if ((*piVar29 != -1) && (this->HASH_HeatMaps[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6] != (*paiVar16)[0])) {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar16 = paiVar27; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar16 = paiVar16 + 1) {
+                    if ((*piVar29 != -1)
+                        && (this->HASH_HeatMaps[DAT_GameSynchronyState::instance.currentPlayerSlotID][iVar6]
+                            != (*paiVar16)[0])) {
                         this->DAT_GameCommandParam0 = iVar6;
                         iVar2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendLongerDataSuchAsResync, this)(
                             Commands::GCT_HOST_SHARE_HEATMAP);
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    paiVar16 = paiVar16 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 paiVar27 = (int (*)[80])(*paiVar27 + 1);
             } while (iVar6 < 0x50);
@@ -400,12 +356,12 @@ namespace Synchrony {
             iVar6 = 0;
             pHVar28 = this->HASH_LogicalTileMap + 1;
             do {
-                iVar2 = 1;
-                piVar29 = this->currentPlayerFullIDArray + 1;
-                pHVar17 = pHVar28;
-                do {
+                for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar17 = pHVar28; iVar2 < 9;
+                    iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar17 = pHVar17 + 1) {
                     if ((*piVar29 != -1)
-                        && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID].hashDataArray[0].componentArray[iVar6]
+                        && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                .hashDataArray[0]
+                                .componentArray[iVar6]
                             != pHVar17->hashDataArray[0].componentArray[0])) {
                         this->DAT_GameCommandParam0 = 0;
                         this->DAT_GameCommandParam1 = iVar6;
@@ -414,23 +370,17 @@ namespace Synchrony {
                         local_10 = local_10 + iVar2;
                         break;
                     }
-                    iVar2 = iVar2 + 1;
-                    piVar29 = piVar29 + 1;
-                    pHVar17 = pHVar17 + 1;
-                } while (iVar2 < 9);
+                }
                 iVar6 = iVar6 + 1;
                 pHVar28 = (HashDataContainer*)(pHVar28->hashDataArray[0].componentArray + 1);
             } while (iVar6 < 128);
-            local_c = 1;
-            local_4 = this->HASH_LogicalTileMap[1].hashDataArray + 1;
-            do {
+            for (local_c = 1, local_4 = this->HASH_LogicalTileMap[1].hashDataArray + 1; local_c < 10;
+                local_c = local_c + 1, local_4 = local_4 + 1) {
                 iVar6 = 0;
                 pHVar4 = local_4;
                 do {
-                    iVar2 = 1;
-                    piVar29 = this->currentPlayerFullIDArray + 1;
-                    pHVar5 = pHVar4;
-                    do {
+                    for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar5 = pHVar4; iVar2 < 9;
+                        iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar5 = pHVar5 + 0x1e) {
                         if ((*piVar29 != -1)
                             && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .hashDataArray[local_c]
@@ -443,26 +393,18 @@ namespace Synchrony {
                             local_10 = local_10 + iVar2;
                             break;
                         }
-                        iVar2 = iVar2 + 1;
-                        piVar29 = piVar29 + 1;
-                        pHVar5 = pHVar5 + 0x1e;
-                    } while (iVar2 < 9);
+                    }
                     iVar6 = iVar6 + 1;
                     pHVar4 = (HashData*)(pHVar4->componentArray + 1);
                 } while (iVar6 < 0x40);
-                local_c = local_c + 1;
-                local_4 = local_4 + 1;
-            } while (local_c < 10);
-            local_c = 10;
-            local_8 = this->HASH_LogicalTileMap[1].hashDataArray + 10;
-            do {
+            }
+            for (local_c = 10, local_8 = this->HASH_LogicalTileMap[1].hashDataArray + 10; local_c < 0x1e;
+                local_c = local_c + 1, local_8 = local_8 + 1) {
                 iVar6 = 0;
                 pHVar4 = local_8;
                 do {
-                    iVar2 = 1;
-                    piVar29 = this->currentPlayerFullIDArray + 1;
-                    pHVar5 = pHVar4;
-                    do {
+                    for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar5 = pHVar4; iVar2 < 9;
+                        iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar5 = pHVar5 + 0x1e) {
                         if ((*piVar29 != -1)
                             && (this->HASH_LogicalTileMap[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .hashDataArray[local_c]
@@ -475,16 +417,11 @@ namespace Synchrony {
                             local_10 = local_10 + iVar2;
                             break;
                         }
-                        iVar2 = iVar2 + 1;
-                        piVar29 = piVar29 + 1;
-                        pHVar5 = pHVar5 + 0x1e;
-                    } while (iVar2 < 9);
+                    }
                     iVar6 = iVar6 + 1;
                     pHVar4 = (HashData*)(pHVar4->componentArray + 1);
                 } while (iVar6 < 0x20);
-                local_c = local_c + 1;
-                local_8 = local_8 + 1;
-            } while (local_c < 0x1e);
+            }
         }
         iVar6 = 0;
         if ((this->currentPlayerFullIDArray[1] != -1) && (0 < this->connectionLagInfoArray[1].average1)) {

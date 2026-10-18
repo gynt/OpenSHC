@@ -19,6 +19,9 @@ namespace Synchrony {
         if (iVar3 < 200) {
             pGVar3 = &this->DAT_GameCommandArray[iVar3].stateUnk;
             int iVar2 = 200 - iVar3;
+            /*
+              Measured: rewriting this do-while as a for loop costs the match (100.0% -> 91.7%), so it stays.
+             */
             do {
                 if (*pGVar3 != (GameCommandState)0 && (char)*pGVar3 < '\n') {
                     iVar1 = iVar1 + 1;

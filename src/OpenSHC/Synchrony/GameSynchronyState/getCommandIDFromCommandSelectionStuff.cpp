@@ -69,8 +69,9 @@ namespace Synchrony {
                 _counter2 = _counter2 + 1;
                 _reorderedAnyoneUnk = 0;
                 if (1 < this->someIndex) {
-                    _selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
-                    do {
+                    for (_selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
+                        _currentIndexCounter < this->someIndex; _currentIndexCounter = _currentIndexCounter + 1,
+                        _selectedPlayerIDAddress = _selectedPlayerIDAddress + 2) {
                         _nextPlayerID = _selectedPlayerIDAddress[2];
                         _commandID = _selectedPlayerIDAddress[-1];
                         _playerID = *_selectedPlayerIDAddress;
@@ -84,9 +85,7 @@ namespace Synchrony {
                             _selectedPlayerIDAddress[2] = _playerID;
                             _reorderedAnyoneUnk = 1;
                         }
-                        _currentIndexCounter = _currentIndexCounter + 1;
-                        _selectedPlayerIDAddress = _selectedPlayerIDAddress + 2;
-                    } while (_currentIndexCounter < this->someIndex);
+                    }
                 }
             } while (_counter2 < 100);
             _counter2 = 1;

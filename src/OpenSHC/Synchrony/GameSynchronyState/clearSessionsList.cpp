@@ -15,14 +15,13 @@ namespace Synchrony {
         int iVar2;
         iVar2 = 0;
         if (0 < this->DPLAY_SessionsCount) {
-            do {
+            for (; iVar2 < this->DPLAY_SessionsCount; iVar2 = iVar2 + 1) {
                 MACRO_CALL(OS_Func::_free_base)(DAT_GameSynchronyState::instance.DPLAY_SessionNames[iVar2]);
                 pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[iVar2]);
                 GlobalUnlock(pvVar1);
                 pvVar1 = GlobalHandle(DAT_GameSynchronyState::instance.DPLAY_SessionGUIDs[iVar2]);
                 GlobalFree(pvVar1);
-                iVar2 = iVar2 + 1;
-            } while (iVar2 < this->DPLAY_SessionsCount);
+            }
         }
         this->DPLAY_SessionsCount = 0;
     }

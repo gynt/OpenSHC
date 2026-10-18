@@ -57,16 +57,14 @@ namespace Synchrony {
             int _wsaReturnCode2 = gethostname(_hostNameBuffer, 0x50);
             if (_wsaReturnCode2 != -1 && (_hostent = gethostbyname(_hostNameBuffer), _hostent != (hostent*)0x0)
                 && *_hostent->h_addr_list != (char*)0x0) {
-                _hostAddressIndex = 0;
-                p_Var1 = &this->lanIP;
-                do {
+                for (_hostAddressIndex = 0, p_Var1 = &this->lanIP;
+                    *(int*)(_hostAddressIndex + (int)_hostent->h_addr_list) != 0;
+                    _hostAddressIndex = _hostAddressIndex + 4, p_Var1 = p_Var1 + 1) {
                     if (8 <= _hostAddressIndex)
                         break;
                     p_Var1[-2].S_un.S_addr = 1;
                     *p_Var1 = **(IN_ADDR**)(_hostAddressIndex + (int)_hostent->h_addr_list);
-                    _hostAddressIndex = _hostAddressIndex + 4;
-                    p_Var1 = p_Var1 + 1;
-                } while (*(int*)(_hostAddressIndex + (int)_hostent->h_addr_list) != 0);
+                }
             }
             WSACleanup();
         }

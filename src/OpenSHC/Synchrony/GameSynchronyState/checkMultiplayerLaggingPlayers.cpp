@@ -43,32 +43,31 @@ namespace Synchrony {
             if (BVar1) {
                 _anyIsZero = 1;
                 int iVar2 = 0;
-                piVar6 = &this->connectionLagInfoArray[1];
-                piVar3 = this->currentPlayerFullIDArray + 1;
-                do {
+                for (piVar6 = &this->connectionLagInfoArray[1], piVar3 = this->currentPlayerFullIDArray + 1; iVar2 < 9;
+                    iVar2 = iVar2 + 3, piVar3 = piVar3 + 3, piVar6 = piVar6 + 3) {
                     /*
                       this code does three at a time
                      */
-                    if (piVar3[-1] != -1 && iVar2 != DAT_GameSynchronyState::instance.currentPlayerSlotID && piVar6[-1].checkFor0 == 0) {
+                    if (piVar3[-1] != -1 && iVar2 != DAT_GameSynchronyState::instance.currentPlayerSlotID
+                        && piVar6[-1].checkFor0 == 0) {
                         _anyIsZero = 0;
                     }
-                    if (*piVar3 != -1 && iVar2 + 1 != DAT_GameSynchronyState::instance.currentPlayerSlotID && !piVar6->checkFor0) {
+                    if (*piVar3 != -1 && iVar2 + 1 != DAT_GameSynchronyState::instance.currentPlayerSlotID
+                        && !piVar6->checkFor0) {
                         _anyIsZero = 0;
                     }
-                    if (piVar3[1] != -1 && iVar2 + 2 != DAT_GameSynchronyState::instance.currentPlayerSlotID && piVar6[1].checkFor0 == 0) {
+                    if (piVar3[1] != -1 && iVar2 + 2 != DAT_GameSynchronyState::instance.currentPlayerSlotID
+                        && piVar6[1].checkFor0 == 0) {
                         _anyIsZero = 0;
                     }
-                    iVar2 = iVar2 + 3;
-                    piVar3 = piVar3 + 3;
-                    piVar6 = piVar6 + 3;
-                } while (iVar2 < 9);
+                }
                 if (_anyIsZero) {
                     DWORD _now = timeGetTime();
-                    _playerID = 0;
-                    pDVar7 = &this->connectionLagInfoArray[0];
-                    piVar3 = this->currentPlayerFullIDArray;
-                    do {
-                        if (*piVar3 != -1 && _playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID && pDVar7->time) {
+                    for (_playerID = 0, pDVar7 = &this->connectionLagInfoArray[0],
+                        piVar3 = this->currentPlayerFullIDArray;
+                        _playerID < 9; _playerID = _playerID + 1, piVar3 = piVar3 + 1, pDVar7 = pDVar7 + 1) {
+                        if (*piVar3 != -1 && _playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID
+                            && pDVar7->time) {
                             if (15000 < (int)(_now - pDVar7->time) && this->isHost && !this->laggingPlayerIDUnk) {
                                 this->laggingPlayerIDUnk = _playerID;
                                 this->DAT_GameCommandParam0 = _playerID;
@@ -82,10 +81,7 @@ namespace Synchrony {
                                     _playerID);
                             }
                         }
-                        _playerID = _playerID + 1;
-                        piVar3 = piVar3 + 1;
-                        pDVar7 = pDVar7 + 1;
-                    } while (_playerID < 9);
+                    }
                 }
             }
             DWORD _now2 = timeGetTime();

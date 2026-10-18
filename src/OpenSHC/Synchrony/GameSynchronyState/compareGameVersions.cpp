@@ -37,9 +37,8 @@ namespace Synchrony {
         iVar7 = 4294967295;
         _gameVersion = 0x7fffffff;
         this->flag_0x7aad8 = TRUE;
-        iVar9 = 1;
-        piVar6 = this->DAT_MultiplayerGameVersions + 1;
-        do {
+        for (iVar9 = 1, piVar6 = this->DAT_MultiplayerGameVersions + 1; iVar9 < 9;
+            iVar9 = iVar9 + 1, piVar6 = piVar6 + 1) {
             if (piVar6[-0x1e8fa] != -1) {
                 if (!piVar6[9]) {
                     this->flag_0x7aad8 = TRUE;
@@ -54,11 +53,11 @@ namespace Synchrony {
                     _gameVersion = *piVar6;
                 }
             }
-            iVar9 = iVar9 + 1;
-            piVar6 = piVar6 + 1;
-        } while (iVar9 < 9);
+        }
         if (!this->flag_0x7aad8) {
-            if ((BVar4) && (this->DAT_MultiplayerGameVersions[DAT_GameSynchronyState::instance.currentPlayerSlotID] > _gameVersion)) {
+            if ((BVar4)
+                && (this->DAT_MultiplayerGameVersions[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    > _gameVersion)) {
                 /*
                   added by script: "Someone has an old version, please get him or her to   upgrade"
                  */
@@ -73,20 +72,18 @@ namespace Synchrony {
                 } while (cVar1 != '\0');
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                     DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0, 0);
-                piVar6 = this->DAT_ChatMessageReceiverArray;
-                iVar7 = 0;
-                do {
+                for (piVar6 = this->DAT_ChatMessageReceiverArray, iVar7 = 0; iVar7 < 9;
+                    iVar7 = iVar7 + 1, piVar6 = piVar6 + 1) {
                     int iVar2 = *piVar6;
                     *piVar6 = 0;
                     int iVar3 = this->currentPlayerFullIDArray[iVar9];
                     local_8c[iVar7] = iVar2;
                     if ((iVar3 != -1)
-                        && (this->DAT_MultiplayerGameVersions[DAT_GameSynchronyState::instance.currentPlayerSlotID] > piVar6[-0x239f5])) {
+                        && (this->DAT_MultiplayerGameVersions[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            > piVar6[-0x239f5])) {
                         *piVar6 = 1;
                     }
-                    iVar7 = iVar7 + 1;
-                    piVar6 = piVar6 + 1;
-                } while (iVar7 < 9);
+                }
                 this->DAT_ChatTauntOrMessage = 0;
                 pcVar8 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                 pcVar5 = local_68;
@@ -117,8 +114,11 @@ namespace Synchrony {
                 this->DAT_ChatMessageReceiverArray[7] = local_8c[7];
                 this->DAT_ChatMessageReceiverArray[8] = local_8c[8];
             }
-            if (DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID] != 0) {
-                DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
+            if (DAT_GameSynchronyState::instance
+                    .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                != 0) {
+                DAT_GameSynchronyState::instance
+                    .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 0;
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                     Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
             }

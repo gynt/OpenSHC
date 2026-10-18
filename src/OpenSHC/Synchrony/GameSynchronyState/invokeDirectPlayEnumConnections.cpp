@@ -43,12 +43,10 @@ namespace Synchrony {
             if (this->guids[2] == (GUID*)0x0) {
                 iVar3 = 2;
                 if (2 < this->scrollBarItemCount) {
-                    do {
+                    for (; iVar3 < this->scrollBarItemCount; iVar3 = iVar3 + 1, ppGVar2 = ppGVar2 + 1) {
                         *ppGVar2 = ppGVar2[1];
                         ppGVar2[10] = ppGVar2[11];
-                        iVar3 = iVar3 + 1;
-                        ppGVar2 = ppGVar2 + 1;
-                    } while (iVar3 < this->scrollBarItemCount);
+                    }
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
             }
@@ -56,12 +54,10 @@ namespace Synchrony {
             if (this->guids[1] == (GUID*)0x0) {
                 iVar3 = 1;
                 if (1 < this->scrollBarItemCount) {
-                    do {
+                    for (; iVar3 < this->scrollBarItemCount; iVar3 = iVar3 + 1, ppGVar2 = ppGVar2 + 1) {
                         *ppGVar2 = ppGVar2[1];
                         ppGVar2[10] = ppGVar2[0xb];
-                        iVar3 = iVar3 + 1;
-                        ppGVar2 = ppGVar2 + 1;
-                    } while (iVar3 < this->scrollBarItemCount);
+                    }
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
             }
@@ -69,12 +65,10 @@ namespace Synchrony {
             if (this->guids[0] == (GUID*)0x0) {
                 iVar3 = 0;
                 if (0 < this->scrollBarItemCount) {
-                    do {
+                    for (; iVar3 < this->scrollBarItemCount; iVar3 = iVar3 + 1, ppGVar2 = ppGVar2 + 1) {
                         *ppGVar2 = ppGVar2[1];
                         ppGVar2[10] = ppGVar2[0xb];
-                        iVar3 = iVar3 + 1;
-                        ppGVar2 = ppGVar2 + 1;
-                    } while (iVar3 < this->scrollBarItemCount);
+                    }
                 }
                 this->scrollBarItemCount = this->scrollBarItemCount + -1;
             }
