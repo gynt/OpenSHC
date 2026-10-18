@@ -6,6 +6,8 @@
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
 #include "OpenSHC/Util/WideCharMultiByteState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
+#include "OpenSHC/wstring-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_WideCharMultiByteState.hpp"
@@ -24,14 +26,13 @@ namespace Synchrony {
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)local_100;
         if (this->useTCPIP) {
-            MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
+            MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, u_Crusader_005a6f40);
             return;
         }
-        pcVar1 = MACRO_CALL_MEMBER(
-            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
-        MACRO_CALL(OS_Func::_sprintf)(local_100, "Stronghold-%s", pcVar1);
-        MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter,
-            DAT_WideCharMultiByteState::ptr)(this->DPLAYX_SessionName, (LPCSTR)((int)(local_100)));
+        pcVar1 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        MACRO_CALL(OS_Func::_sprintf)(local_100, s_Stronghold_s_005a6f30, pcVar1);
+        MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter, DAT_WideCharMultiByteState::ptr)(
+            this->DPLAYX_SessionName, (LPCSTR)((int)(local_100)));
         ;
     }
 

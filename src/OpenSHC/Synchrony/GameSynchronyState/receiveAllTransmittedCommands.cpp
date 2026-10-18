@@ -9,6 +9,7 @@
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -100,7 +101,8 @@ namespace Synchrony {
                                         DAT_GameSynchronyState::ptr)();
                                 }
                             } else {
-                                MACRO_CALL(OS_Func::_sprintf)(acStack_68, "DP SYS Message: %x", _pSystemMessage[0]);
+                                MACRO_CALL(OS_Func::_sprintf)(
+                                    acStack_68, s_DP_SYS_Message___x_005a74c0, _pSystemMessage[0]);
                             }
                         }
                     }

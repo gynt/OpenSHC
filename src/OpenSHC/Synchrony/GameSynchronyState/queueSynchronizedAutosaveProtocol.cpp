@@ -24,21 +24,22 @@ namespace Synchrony {
             BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             if (BVar1 && !this->syncStatus && !this->saveRelated) {
                 DWORD DVar2 = timeGetTime();
-                if ((int)(DVar2 - this->timeSkirmishGameStart)
-                    > this->skirmishAutoSaveEveryMinutes * 60000) {
+                if ((int)(DVar2 - this->timeSkirmishGameStart) > this->skirmishAutoSaveEveryMinutes * 60000) {
                     /*
                       autosave
                      */
                     this->lastAutoSaveTime = DVar2;
                     this->timeSkirmishGameStart = DVar2;
+                    /*
+                      Kept as a literal: s_autosave_005a74b4 from string-literals.hpp measures 100% -> 62.2%.
+                     */
                     strcpy(DAT_GameSynchronyState::instance.shortMapName, "autosave");
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = MACRO_CALL_MEMBER(
-                        Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray,
-                        DAT_GameSynchronyState::ptr)();
+                        Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray, DAT_GameSynchronyState::ptr)();
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 1;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_SAVE);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_SAVE);
                 }
             }
         }

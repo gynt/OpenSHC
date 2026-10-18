@@ -4,6 +4,8 @@
 #include "OpenSHC/IO/LowLevelMemory.func.hpp"
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
+#include "OpenSHC/string-literals.hpp"
+#include "OpenSHC/wstring-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
@@ -34,9 +36,9 @@ namespace Synchrony {
             this->field57_0x79c[_index] = 0;
         }
         DAT_GameSynchronyState::instance.relativeTickTime = 0;
-        MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
+        MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, u_Crusader_005a6f40);
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
-            0xc, "Contestant", (void*)((int)(this->DPLAY_PlayerShortName)));
+            0xc, (void*)s_Contestant_005a74a8, (void*)((int)(this->DPLAY_PlayerShortName)));
         this->scrollBarItemCount = 0;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setupSkirmishLobby, this)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::readGameSpyConfig, this)();

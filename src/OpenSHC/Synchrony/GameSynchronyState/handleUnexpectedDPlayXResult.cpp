@@ -2,6 +2,7 @@
 #include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/OS.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
@@ -34,7 +35,8 @@ namespace Synchrony {
             && this->DPLAYX_SendAndReceiveREsult != -0x7788fef2 && this->DPLAYX_SendAndReceiveREsult != -0x7788fec0
             && this->DPLAYX_SendAndReceiveREsult != -0x7788fee8 && this->DPLAYX_SendAndReceiveREsult != -0x7788feca
             && this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6 && this->DPLAYX_SendAndReceiveREsult != -0x7788fe98) {
-            MACRO_CALL(OS_Func::_sprintf)(local_68, "Error:DirectPlay unknown %x", this->DPLAYX_SendAndReceiveREsult);
+            MACRO_CALL(OS_Func::_sprintf)(
+                local_68, s_Error_DirectPlay_unknown__x_005a6f8c, this->DPLAYX_SendAndReceiveREsult);
         };
     }
 

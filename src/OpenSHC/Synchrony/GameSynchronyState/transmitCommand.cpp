@@ -6,6 +6,7 @@
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
@@ -47,7 +48,7 @@ namespace Synchrony {
                 + 1;
             if ((int)size > (int)local_3f0) {
                 MACRO_CALL(OS_Func::_sprintf)(
-                    local_3ec, "packet size:%d new size:%d type:%d", local_3f0, size, (int)(char)commandCategory);
+                    local_3ec, s_packet_size_d_new_size_d_type__005a72b4, local_3f0, size, (int)(char)commandCategory);
             }
         }
         this->DAT_CurrentTransmitCommandPacketSize = size;
