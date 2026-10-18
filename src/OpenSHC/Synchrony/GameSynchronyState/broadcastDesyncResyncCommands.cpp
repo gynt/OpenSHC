@@ -422,9 +422,8 @@ namespace Synchrony {
                 pHVar28 = (HashDataContainer*)(pHVar28->hashDataArray[0].componentArray + 1);
             } while (iVar6 < 128);
             local_c = 1;
-            local_4 = this->HASH_LogicalTileMap[1].hashDataArray;
+            local_4 = this->HASH_LogicalTileMap[1].hashDataArray + 1;
             do {
-                local_4 = local_4 + 1;
                 iVar6 = 0;
                 pHVar4 = local_4;
                 do {
@@ -452,6 +451,7 @@ namespace Synchrony {
                     pHVar4 = (HashData*)(pHVar4->componentArray + 1);
                 } while (iVar6 < 0x40);
                 local_c = local_c + 1;
+                local_4 = local_4 + 1;
             } while (local_c < 10);
             local_c = 10;
             local_8 = this->HASH_LogicalTileMap[1].hashDataArray + 10;
