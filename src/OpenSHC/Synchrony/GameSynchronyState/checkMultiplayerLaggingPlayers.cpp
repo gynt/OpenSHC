@@ -10,6 +10,9 @@
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
+// /O2 implies /Ob2, and the inlining it then does is not in the original here. 90.6% -> 91.0%.
+#pragma inline_depth(1)
+
 namespace OpenSHC {
 namespace Synchrony {
 

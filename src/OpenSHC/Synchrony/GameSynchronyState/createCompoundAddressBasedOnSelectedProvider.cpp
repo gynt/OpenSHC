@@ -19,7 +19,7 @@
 #include "stdlib.h"
 
 // /O2 implies /Ob2, and the inlining it then does is not in the original here. 54.1% -> 60.3%.
-#pragma inline_depth(0)
+#pragma inline_depth(1)
 
 namespace OpenSHC {
 namespace Synchrony {
