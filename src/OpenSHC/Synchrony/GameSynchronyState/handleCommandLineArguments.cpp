@@ -164,13 +164,7 @@ namespace Synchrony {
                                 _charIndex3
                                     = MACRO_CALL(OS_Func::__stricmp)("+name", (char const*)((int)(_candidates[0])));
                                 if (!_charIndex3) {
-                                    _pCandidatePlus1 = _candidates[1];
-                                    _charIndex3 = 0x191dc80 - (int)_pCandidatePlus1;
-                                    do {
-                                        _char = *_pCandidatePlus1;
-                                        _pCandidatePlus1[_charIndex3] = _char;
-                                        _pCandidatePlus1 = _pCandidatePlus1 + 1;
-                                    } while (_char != '\0');
+                                    strcpy((char*)DAT_GameSynchronyState::instance.connectName, _candidates[1]);
                                 }
                             }
                         }
