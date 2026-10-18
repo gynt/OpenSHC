@@ -19,14 +19,13 @@
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition2.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition3.hpp"
 #include "OpenSHC/Globals/DAT_MouseState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_VideoBikQueue.hpp"
-
-#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -111,13 +110,10 @@ namespace Synchrony {
             piVar3[2] = 0;
             piVar3[3] = 0;
             piVar3[4] = 0;
-            local_10 = local_c;
-            local_c = (int (*)[100][2])0x64;
-            do {
+            for (local_10 = local_c, local_c = (int (*)[100][2])0x64; local_c != (int (*)[100][2])0x0;
+                local_10 = (int (*)[100][2])(*local_10 + 1), local_c = (int (*)[100][2])((int)local_c + -1)) {
                 (*local_10)[0][0] = 0;
-                local_10 = (int (*)[100][2])(*local_10 + 1);
-                local_c = (int (*)[100][2])((int)local_c + -1);
-            } while (local_c != (int (*)[100][2])0x0);
+            }
             local_14 = local_14 + 1;
             piVar5[-4] = 0;
             *piVar5 = 0;
@@ -223,8 +219,7 @@ namespace Synchrony {
         this->field224_0x106ee4 = 1;
         MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setDirectPlaySessionDescription, this)();
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-            DAT_GameSynchronyState::ptr)(
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
             Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
         DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(UI::Enums::MVT_LOBBY_MENU, 0);

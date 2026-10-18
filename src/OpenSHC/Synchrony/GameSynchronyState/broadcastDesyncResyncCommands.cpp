@@ -94,8 +94,8 @@ namespace Synchrony {
         this->field67_0xba4 = 1;
         local_10 = 0;
         if (this->sharedDesyncFlags[0] != 0) {
-            paiVar18 = this->HASH_Units + 1;
-            do {
+            for (paiVar18 = this->HASH_Units + 1; iVar6 < 0x9c4;
+                iVar6 = iVar6 + 1, paiVar18 = (int (*)[2500])(*paiVar18 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar7 = paiVar18; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar7 = paiVar7 + 1) {
                     if ((*piVar29 != -1)
@@ -108,14 +108,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar18 = (int (*)[2500])(*paiVar18 + 1);
-            } while (iVar6 < 0x9c4);
+            }
         }
         if (this->sharedDesyncFlags[1] != 0) {
-            iVar6 = 0;
-            paiVar19 = this->HASH_Buildings + 1;
-            do {
+            for (iVar6 = 0, paiVar19 = this->HASH_Buildings + 1; iVar6 < 2000;
+                iVar6 = iVar6 + 1, paiVar19 = (int (*)[2000])(*paiVar19 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar8 = paiVar19; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar8 = paiVar8 + 1) {
                     if ((*piVar29 != -1)
@@ -128,14 +125,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar19 = (int (*)[2000])(*paiVar19 + 1);
-            } while (iVar6 < 2000);
+            }
         }
         if (this->sharedDesyncFlags[2] != 0) {
-            iVar6 = 0;
-            paiVar19 = this->HASH_Trees + 1;
-            do {
+            for (iVar6 = 0, paiVar19 = this->HASH_Trees + 1; iVar6 < 2000;
+                iVar6 = iVar6 + 1, paiVar19 = (int (*)[2000])(*paiVar19 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar8 = paiVar19; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar8 = paiVar8 + 1) {
                     if ((*piVar29 != -1)
@@ -148,14 +142,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar19 = (int (*)[2000])(*paiVar19 + 1);
-            } while (iVar6 < 2000);
+            }
         }
         if (this->sharedDesyncFlags[3] != 0) {
-            iVar6 = 0;
-            paiVar20 = this->HASH_Tribes + 1;
-            do {
+            for (iVar6 = 0, paiVar20 = this->HASH_Tribes + 1; iVar6 < 0x4e2;
+                iVar6 = iVar6 + 1, paiVar20 = (int (*)[1250])(*paiVar20 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar9 = paiVar20; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar9 = paiVar9 + 1) {
                     if ((*piVar29 != -1)
@@ -168,14 +159,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar20 = (int (*)[1250])(*paiVar20 + 1);
-            } while (iVar6 < 0x4e2);
+            }
         }
         if (this->sharedDesyncFlags[4] != 0) {
-            iVar6 = 0;
-            paiVar26 = this->HASH_PlayerDatas + 1;
-            do {
+            for (iVar6 = 0, paiVar26 = this->HASH_PlayerDatas + 1; iVar6 < 9;
+                iVar6 = iVar6 + 1, paiVar26 = (int (*)[9])(*paiVar26 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar15 = paiVar26; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar15 = paiVar15 + 1) {
                     if ((*piVar29 != -1)
@@ -188,14 +176,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar26 = (int (*)[9])(*paiVar26 + 1);
-            } while (iVar6 < 9);
+            }
         }
         if (this->sharedDesyncFlags[5] != 0) {
-            iVar6 = 0;
-            paiVar21 = this->HASH_Section1023 + 1;
-            do {
+            for (iVar6 = 0, paiVar21 = this->HASH_Section1023 + 1; iVar6 < 0x14;
+                iVar6 = iVar6 + 1, paiVar21 = (int (*)[20])(*paiVar21 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar10 = paiVar21; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar10 = paiVar10 + 1) {
                     if ((*piVar29 != -1)
@@ -208,14 +193,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar21 = (int (*)[20])(*paiVar21 + 1);
-            } while (iVar6 < 0x14);
+            }
         }
         if (this->sharedDesyncFlags[7] != 0) {
-            iVar6 = 0;
-            paiVar22 = this->HASH_Entities + 1;
-            do {
+            for (iVar6 = 0, paiVar22 = this->HASH_Entities + 1; iVar6 < 3000;
+                iVar6 = iVar6 + 1, paiVar22 = (int (*)[3000])(*paiVar22 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar11 = paiVar22; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar11 = paiVar11 + 1) {
                     if ((*piVar29 != -1)
@@ -228,14 +210,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar22 = (int (*)[3000])(*paiVar22 + 1);
-            } while (iVar6 < 3000);
+            }
         }
         if (this->sharedDesyncFlags[8] != 0) {
-            iVar6 = 0;
-            paiVar23 = this->HASH_Moats + 1;
-            do {
+            for (iVar6 = 0, paiVar23 = this->HASH_Moats + 1; iVar6 < 0xa0;
+                iVar6 = iVar6 + 1, paiVar23 = (int (*)[160])(*paiVar23 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar12 = paiVar23; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar12 = paiVar12 + 1) {
                     if ((*piVar29 != -1)
@@ -248,14 +227,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar23 = (int (*)[160])(*paiVar23 + 1);
-            } while (iVar6 < 0xa0);
+            }
         }
         if (this->sharedDesyncFlags[9] != 0) {
-            iVar6 = 0;
-            paiVar24 = this->HASH_ClimbData + 1;
-            do {
+            for (iVar6 = 0, paiVar24 = this->HASH_ClimbData + 1; iVar6 < 200;
+                iVar6 = iVar6 + 1, paiVar24 = (int (*)[200])(*paiVar24 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar13 = paiVar24; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar13 = paiVar13 + 1) {
                     if ((*piVar29 != -1)
@@ -268,14 +244,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar24 = (int (*)[200])(*paiVar24 + 1);
-            } while (iVar6 < 200);
+            }
         }
         if (this->sharedDesyncFlags[10] != 0) {
-            iVar6 = 0;
-            paiVar25 = this->HASH_PitchDitches + 1;
-            do {
+            for (iVar6 = 0, paiVar25 = this->HASH_PitchDitches + 1; iVar6 < 0x28;
+                iVar6 = iVar6 + 1, paiVar25 = (int (*)[40])(*paiVar25 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar14 = paiVar25; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar14 = paiVar14 + 1) {
                     if ((*piVar29 != -1)
@@ -288,14 +261,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar25 = (int (*)[40])(*paiVar25 + 1);
-            } while (iVar6 < 0x28);
+            }
         }
         if (this->sharedDesyncFlags[0xb] != 0) {
-            iVar6 = 0;
-            paiVar25 = this->HASH_Unknown2 + 1;
-            do {
+            for (iVar6 = 0, paiVar25 = this->HASH_Unknown2 + 1; iVar6 < 0x28;
+                iVar6 = iVar6 + 1, paiVar25 = (int (*)[40])(*paiVar25 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar14 = paiVar25; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar14 = paiVar14 + 1) {
                     if ((*piVar29 != -1)
@@ -308,14 +278,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar25 = (int (*)[40])(*paiVar25 + 1);
-            } while (iVar6 < 0x28);
+            }
         }
         if (this->sharedDesyncFlags[0xc] != 0) {
-            iVar6 = 0;
-            paiVar26 = this->HASH_AIVS + 1;
-            do {
+            for (iVar6 = 0, paiVar26 = this->HASH_AIVS + 1; iVar6 < 9;
+                iVar6 = iVar6 + 1, paiVar26 = (int (*)[9])(*paiVar26 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar15 = paiVar26; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar15 = paiVar15 + 1) {
                     if ((*piVar29 != -1)
@@ -328,14 +295,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar26 = (int (*)[9])(*paiVar26 + 1);
-            } while (iVar6 < 9);
+            }
         }
         if (this->sharedDesyncFlags[0xd] != 0) {
-            iVar6 = 0;
-            paiVar27 = this->HASH_HeatMaps + 1;
-            do {
+            for (iVar6 = 0, paiVar27 = this->HASH_HeatMaps + 1; iVar6 < 0x50;
+                iVar6 = iVar6 + 1, paiVar27 = (int (*)[80])(*paiVar27 + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, paiVar16 = paiVar27; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, paiVar16 = paiVar16 + 1) {
                     if ((*piVar29 != -1)
@@ -348,14 +312,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                paiVar27 = (int (*)[80])(*paiVar27 + 1);
-            } while (iVar6 < 0x50);
+            }
         }
         if (this->sharedDesyncFlags[6] != 0) {
-            iVar6 = 0;
-            pHVar28 = this->HASH_LogicalTileMap + 1;
-            do {
+            for (iVar6 = 0, pHVar28 = this->HASH_LogicalTileMap + 1; iVar6 < 128;
+                iVar6 = iVar6 + 1, pHVar28 = (HashDataContainer*)(pHVar28->hashDataArray[0].componentArray + 1)) {
                 for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar17 = pHVar28; iVar2 < 9;
                     iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar17 = pHVar17 + 1) {
                     if ((*piVar29 != -1)
@@ -371,14 +332,11 @@ namespace Synchrony {
                         break;
                     }
                 }
-                iVar6 = iVar6 + 1;
-                pHVar28 = (HashDataContainer*)(pHVar28->hashDataArray[0].componentArray + 1);
-            } while (iVar6 < 128);
+            }
             for (local_c = 1, local_4 = this->HASH_LogicalTileMap[1].hashDataArray + 1; local_c < 10;
                 local_c = local_c + 1, local_4 = local_4 + 1) {
-                iVar6 = 0;
-                pHVar4 = local_4;
-                do {
+                for (iVar6 = 0, pHVar4 = local_4; iVar6 < 0x40;
+                    iVar6 = iVar6 + 1, pHVar4 = (HashData*)(pHVar4->componentArray + 1)) {
                     for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar5 = pHVar4; iVar2 < 9;
                         iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar5 = pHVar5 + 0x1e) {
                         if ((*piVar29 != -1)
@@ -394,15 +352,12 @@ namespace Synchrony {
                             break;
                         }
                     }
-                    iVar6 = iVar6 + 1;
-                    pHVar4 = (HashData*)(pHVar4->componentArray + 1);
-                } while (iVar6 < 0x40);
+                }
             }
             for (local_c = 10, local_8 = this->HASH_LogicalTileMap[1].hashDataArray + 10; local_c < 0x1e;
                 local_c = local_c + 1, local_8 = local_8 + 1) {
-                iVar6 = 0;
-                pHVar4 = local_8;
-                do {
+                for (iVar6 = 0, pHVar4 = local_8; iVar6 < 0x20;
+                    iVar6 = iVar6 + 1, pHVar4 = (HashData*)(pHVar4->componentArray + 1)) {
                     for (iVar2 = 1, piVar29 = this->currentPlayerFullIDArray + 1, pHVar5 = pHVar4; iVar2 < 9;
                         iVar2 = iVar2 + 1, piVar29 = piVar29 + 1, pHVar5 = pHVar5 + 0x1e) {
                         if ((*piVar29 != -1)
@@ -418,9 +373,7 @@ namespace Synchrony {
                             break;
                         }
                     }
-                    iVar6 = iVar6 + 1;
-                    pHVar4 = (HashData*)(pHVar4->componentArray + 1);
-                } while (iVar6 < 0x20);
+                }
             }
         }
         iVar6 = 0;
