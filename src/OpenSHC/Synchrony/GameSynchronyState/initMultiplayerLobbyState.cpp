@@ -85,8 +85,8 @@ namespace Synchrony {
         piVar5 = &this->connectionLagInfoArray[0].checkFor0;
         piVar3 = &this->HASH_PartialHashPerPlayer.player0.domain02;
         piVar2 = this->matchTimes;
-        local_4 = 9;
-        do {
+        for (local_4 = 9; local_4;
+            piVar3 = piVar3 + 0xc, piVar5 = piVar5 + 9, local_4 = local_4 + -1, local_c = local_10) {
             piVar2[0x23161] = 0;
             *piVar2 = -1;
             pbVar4[0x33] = 0;
@@ -144,11 +144,7 @@ namespace Synchrony {
             piVar2[0x23d58] = 0;
             piVar2 = piVar2 + 1;
             pbVar4 = pbVar4 + 1;
-            piVar3 = piVar3 + 0xc;
-            piVar5 = piVar5 + 9;
-            local_4 = local_4 + -1;
-            local_c = local_10;
-        } while (local_4);
+        }
         this->skirmishUnknownSetting1[0] = 1;
         this->skirmishUnknownSetting1[1] = 1;
         this->skirmishUnknownSetting1[2] = 1;

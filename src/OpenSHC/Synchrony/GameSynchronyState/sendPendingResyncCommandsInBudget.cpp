@@ -65,8 +65,8 @@ namespace Synchrony {
         case 0xd:
         switchD_0048e739_caseD_d:
             if (iVar8 < 0x1e) {
-                local_c = (int*)(iVar8 << 7);
-                do {
+                for (local_c = (int*)(iVar8 << 7); (int)local_c < 0xf00;
+                    local_c = (int*)((int)local_c + 0x80), iVar8 = iVar8 + 1, iVar4 = 0) {
                     if (iVar4 < 0x20) {
                         for (local_8
                             = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + (int)local_c + iVar4;
@@ -97,10 +97,7 @@ namespace Synchrony {
                             }
                         }
                     }
-                    local_c = (int*)((int)local_c + 0x80);
-                    iVar8 = iVar8 + 1;
-                    iVar4 = 0;
-                } while ((int)local_c < 0xf00);
+                }
             }
             break;
         case 0xe:
@@ -470,8 +467,8 @@ namespace Synchrony {
                 iVar4 = 0;
             switchD_0048e739_caseD_c:
                 if (iVar8 < 10) {
-                    local_8 = (int*)(iVar8 << 7);
-                    do {
+                    for (local_8 = (int*)(iVar8 << 7); (int)local_8 < 0x500;
+                        local_8 = (int*)((int)local_8 + 0x80), iVar8 = iVar8 + 1, iVar4 = 0) {
                         if (iVar4 < 0x40) {
                             local_c
                                 = this->HASH_LogicalTileMap[1].hashDataArray[0].componentArray + (int)local_8 + iVar4;
@@ -503,10 +500,7 @@ namespace Synchrony {
                                 }
                             }
                         }
-                        local_8 = (int*)((int)local_8 + 0x80);
-                        iVar8 = iVar8 + 1;
-                        iVar4 = 0;
-                    } while ((int)local_8 < 0x500);
+                    }
                 }
                 iVar8 = 10;
                 iVar4 = 0;
