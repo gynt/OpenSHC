@@ -33,7 +33,7 @@ namespace Synchrony {
         char* local_1c;
         int (*local_18)[20];
         char (*local_14)[250];
-        undefined2* local_10;
+        short* local_10;
         int (*local_c)[100][2];
         int* local_8;
         int local_4;
@@ -67,7 +67,7 @@ namespace Synchrony {
         this->DAT_TwoIfNotHost = 2;
         MACRO_CALL_MEMBER(IO::BitMapState_Func::setBMPFacesToMagenta, DAT_BitMapState::ptr)();
         local_1c = this->DAT_PlayerGroupArray;
-        local_10 = (undefined2*)((int)this->finalResults.unusedUnk + 0x12);
+        local_10 = this->finalResults.field26_0x6d6;
         local_8 = &this->connectionLagInfoArray[0].checkFor0;
         local_c = this->historicalLagInfoPerPlayer;
         piVar3 = &this->HASH_PartialHashPerPlayer.player0.domain02;

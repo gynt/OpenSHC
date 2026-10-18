@@ -56,7 +56,7 @@ namespace Synchrony {
         int (*local_14)[20];
         int (*local_10)[100][2];
         int (*local_c)[100][2];
-        undefined2* local_8;
+        short* local_8;
         int local_4;
         this->transmissionCounterUnk = 0;
         this->DAT_GameHalted = 0;
@@ -78,7 +78,7 @@ namespace Synchrony {
         if (DAT_GameSynchronyState::instance.isHost) {
             this->DAT_TwoIfNotHost = 2;
         }
-        local_8 = (undefined2*)((int)this->finalResults.unusedUnk + 0x12);
+        local_8 = this->finalResults.field26_0x6d6;
         local_c = this->historicalLagInfoPerPlayer;
         local_14 = this->DAT_ReceivedAIVFileAvailabilityPerAIArray;
         pbVar4 = this->DAT_PlayerGroupArray;

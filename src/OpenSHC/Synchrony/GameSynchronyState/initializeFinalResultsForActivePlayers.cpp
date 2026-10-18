@@ -17,30 +17,25 @@ namespace Synchrony {
         int* piVar4;
         int iVar6;
         int (*paiVar7)[9];
-        undefined2* local_c;
         int local_8;
         char (*local_4)[250];
         strcpy(this->DAT_PlayerNames[1],
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0));
         /*
-          piVar4 and local_c stay as walkers. Naming the fields they reach - finalGold, finalMaxPopulation,
-          finalBuildingsBurned and the rest, all at [iVar6] - is measured at 88.5% -> 38.3%, so do not retry it.
-          Four of them are not nameable anyway: the generated SkirmishStatistics has three more int[9] arrays at
-          0x70C, 0x730 and 0x754 where it declares yearStart/monthStart/yearEnd/monthEnd + padding3, and
-          unusedUnk[9] is really two short[9] arrays at 0x6C4 and 0x6D6.
+          piVar4 stays a walker. Naming the fields it reaches - finalGold, finalBuildingsBurned and the rest,
+          all at [iVar6] - is measured at 88.5% -> 38.3%, and the last three alone at 88.5% -> 70.4%, so do
+          not retry it.
          */
-        for (iVar6 = 1, local_c = (undefined2*)((int)this->finalResults.unusedUnk + 2),
-            local_4 = this->DAT_PlayerNames + 1, local_8 = (int)this + 0x10961e,
+        for (iVar6 = 1, local_4 = this->DAT_PlayerNames + 1, local_8 = (int)this + 0x10961e,
             piVar4 = this->currentPlayerFullIDArray + 1;
-            iVar6 < 9; iVar6 = iVar6 + 1, piVar4 = piVar4 + 1, local_4 = local_4 + 1, local_c = local_c + 1,
-            local_8 = local_8 + 0x5a) {
+            iVar6 < 9; iVar6 = iVar6 + 1, piVar4 = piVar4 + 1, local_4 = local_4 + 1, local_8 = local_8 + 0x5a) {
             if ((*piVar4 == -1) && (piVar4[0x1b] == 0)) {
                 this->finalResults.active[iVar6] = 0;
             } else {
                 this->finalResults.active[iVar6] = 1;
                 strcpy((char*)local_8, *local_4);
                 piVar4[0x42494] = 0;
-                local_c[-0x1b6] = 0;
+                this->finalResults.finalMaxPopulation[iVar6] = 0;
                 this->finalResults.finalMaxGoodThings[iVar6] = 0;
                 this->finalResults.finalMaxBadThings[iVar6] = 0;
                 piVar4[0x424fe] = 0;
@@ -58,8 +53,8 @@ namespace Synchrony {
                 piVar4[0x4255d] = 0;
                 piVar4[0x42566] = 0;
                 piVar4[0x4256f] = 0;
-                *local_c = 0;
-                local_c[9] = 0;
+                this->finalResults.field25_0x6c4[iVar6] = 0;
+                this->finalResults.field26_0x6d6[iVar6] = 0;
                 piVar4[0x42581] = 0;
                 piVar4[0x4258a] = 0;
                 piVar4[0x42593] = 0;
