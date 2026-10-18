@@ -36,7 +36,7 @@ namespace Synchrony {
                 goto LAB_0047ebf4;
             _slot = _slot + 1;
         } while (_slot < 9);
-        return 0;
+        _slot = 0;
     LAB_0047ebf4:
         this->currentPlayerFullIDArray[_slot] = playerFullID;
         return _slot;
