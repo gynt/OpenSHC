@@ -17,7 +17,6 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x00480440
     int GameSynchronyState::getCommandIDFromCommandSelectionStuff()
     {
-        int* _selectedPlayerIDAddress;
         GameCommandStateByte* _stateAddress;
         int _currentIndexCounter;
         int _commandID;
@@ -29,16 +28,17 @@ namespace Synchrony {
             800, '\0', (void*)((int)(this->selectedGameCommands)));
         if ((int)this->gameCommandID < 200) {
             _stateAddress = &this->DAT_GameCommandArray[this->gameCommandID].stateUnk;
-            _currentIndexCounter = this->gameCommandID;
-            do {
+            for (_currentIndexCounter = this->gameCommandID; _currentIndexCounter < 200;
+                _currentIndexCounter = _currentIndexCounter + 1, _stateAddress = _stateAddress + 0x4f8) {
                 /*
-                  stateAddress - 9 = time address
+                  _stateAddress points at GameCommand::stateUnk, which the header puts at +9, so -9 reaches
+                  ::time and -5 reaches ::playerUnk. Walking a GameCommand* and naming the three members
+                  instead reads better but measures 72.8% -> 70.7%, so the pointer stays.
                  */
                 if (*_stateAddress != (GameCommandState)0 && (char)*_stateAddress < '\n'
                     && (int)((GameCommand*)(_stateAddress + -9))->time <= (int)DAT_GameCore::instance.mapTimeInTicks) {
                     /*
-                      if this command has not been processed, but should be processed, and it has   been its time state
-                      address - 5 = player
+                      the command has not been processed yet, should be processed, and its time has come
                      */
                     this->protocolInvokerPlayerID
                         = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
@@ -49,12 +49,7 @@ namespace Synchrony {
                     if (this->someIndex >= 100)
                         break;
                 }
-                _currentIndexCounter = _currentIndexCounter + 1;
-                /*
-                  move to next command
-                 */
-                _stateAddress = _stateAddress + 0x4f8;
-            } while (_currentIndexCounter < 200);
+            }
         }
         /*
           reorder the selected commands list so that player ids with a lower number are   processed first.
@@ -62,32 +57,30 @@ namespace Synchrony {
         int _counter2 = 0;
         if (0 < this->someIndex) {
             _reorderedAnyoneUnk = 1;
-            do {
+            for (_counter2 = 0; _counter2 < 100; _counter2 = _counter2 + 1) {
                 if (!_reorderedAnyoneUnk)
                     break;
-                _currentIndexCounter = 1;
-                _counter2 = _counter2 + 1;
                 _reorderedAnyoneUnk = 0;
                 if (1 < this->someIndex) {
-                    for (_selectedPlayerIDAddress = this->selectedGameCommands[0] + 1;
-                        _currentIndexCounter < this->someIndex; _currentIndexCounter = _currentIndexCounter + 1,
-                        _selectedPlayerIDAddress = _selectedPlayerIDAddress + 2) {
-                        _nextPlayerID = _selectedPlayerIDAddress[2];
-                        _commandID = _selectedPlayerIDAddress[-1];
-                        _playerID = *_selectedPlayerIDAddress;
+                    for (_currentIndexCounter = 1; _currentIndexCounter < this->someIndex;
+                        _currentIndexCounter = _currentIndexCounter + 1) {
+                        _nextPlayerID = this->selectedGameCommands[_currentIndexCounter][1];
+                        _commandID = this->selectedGameCommands[_currentIndexCounter - 1][0];
+                        _playerID = this->selectedGameCommands[_currentIndexCounter - 1][1];
                         if (!_nextPlayerID) {
                             return 0;
                         }
                         if (_nextPlayerID < _playerID) {
-                            _selectedPlayerIDAddress[-1] = _selectedPlayerIDAddress[1];
-                            *_selectedPlayerIDAddress = _nextPlayerID;
-                            _selectedPlayerIDAddress[1] = _commandID;
-                            _selectedPlayerIDAddress[2] = _playerID;
+                            this->selectedGameCommands[_currentIndexCounter - 1][0]
+                                = this->selectedGameCommands[_currentIndexCounter][0];
+                            this->selectedGameCommands[_currentIndexCounter - 1][1] = _nextPlayerID;
+                            this->selectedGameCommands[_currentIndexCounter][0] = _commandID;
+                            this->selectedGameCommands[_currentIndexCounter][1] = _playerID;
                             _reorderedAnyoneUnk = 1;
                         }
                     }
                 }
-            } while (_counter2 < 100);
+            }
             _counter2 = 1;
         }
         return _counter2;
