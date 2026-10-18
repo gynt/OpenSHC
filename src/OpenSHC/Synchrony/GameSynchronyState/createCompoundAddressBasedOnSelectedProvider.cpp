@@ -17,6 +17,7 @@
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 #include "stdlib.h"
+#include "string.h"
 
 // /O2 implies /Ob2, and the inlining it then does is not in the original here. 54.1% -> 60.3%.
 #pragma inline_depth(1)
@@ -49,6 +50,10 @@ namespace Synchrony {
         local_2b8 = param_2;
         _pSize = 0;
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&local_26c);
+        /*
+          The remaining "walk to the terminator" loops stay as they are: writing them as strlen, the way
+          readGameSpyConfig does, measures 62.9% -> 45.1% here.
+         */
         BOOLEnum BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
         if (BVar3) {
             local_2b4[0].guidDataType = GUID_DPAID_ServiceProvider::instance;
@@ -56,13 +61,7 @@ namespace Synchrony {
             local_2b4[0].lpData = GUID_DPSPGUID_MODEM::ptr;
             pcVar6 = this->stringPointerArray[this->modemScrollbarIndex + this->modemScrollBarOffset];
             iVar8 = 1;
-            pcVar7 = _addressStrings[0];
-            do {
-                cVar1 = *pcVar6;
-                *pcVar7 = cVar1;
-                pcVar6 = pcVar6 + iVar8;
-                pcVar7 = pcVar7 + iVar8;
-            } while (cVar1 != '\0');
+            strcpy(_addressStrings[0], pcVar6);
             pcVar7 = _addressStrings[0];
             do {
                 cVar1 = *pcVar7;
@@ -79,13 +78,7 @@ namespace Synchrony {
             }
             pcVar6
                 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
-            pcVar7 = _addressStrings[1];
-            do {
-                cVar1 = *pcVar6;
-                *pcVar7 = cVar1;
-                pcVar6 = pcVar6 + 1;
-                pcVar7 = pcVar7 + 1;
-            } while (cVar1 != '\0');
+            strcpy(_addressStrings[1], pcVar6);
             local_2b4[iVar8].guidDataType = GUID_DPAID_Phone::instance;
             pcVar7 = _addressStrings[1];
             do {
@@ -103,13 +96,7 @@ namespace Synchrony {
                 local_2b4[0].lpData = GUID_DPSPGUID_TCPIP::ptr;
                 pcVar6 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
-                pcVar7 = _addressStrings[2];
-                do {
-                    cVar1 = *pcVar6;
-                    *pcVar7 = cVar1;
-                    pcVar6 = pcVar6 + 1;
-                    pcVar7 = pcVar7 + 1;
-                } while (cVar1 != '\0');
+                strcpy(_addressStrings[2], pcVar6);
                 local_2b4[1].guidDataType = GUID_DPAID_INet::instance;
                 pcVar7 = _addressStrings[2];
                 do {
