@@ -81,6 +81,7 @@ namespace Synchrony {
         int _treeIndex;
         int _playerDataIndex;
         int _someIndex;
+        int _climbIndex;
         uint _pitchDitchIndex;
         int _unitIndex;
         int _buildingIndex;
@@ -399,12 +400,12 @@ namespace Synchrony {
         this->HASH_HashTotal[this->currentPlayerSlotID]
             = this->HASH_HashTotal[this->currentPlayerSlotID] + _hashSubTotal;
         _hashSubTotal = 0;
-        for (iVar39 = 0; iVar39 < 200; iVar39 = iVar39 + 1) {
+        for (_climbIndex = 0; _climbIndex < 200; _climbIndex = _climbIndex + 1) {
             uVar19 = MACRO_CALL_MEMBER(
                 Map::Navigation::DirectionAlgorithmState_Func::computeHash, DAT_DirectionAlgorithmState::ptr)(
-                516, (int*)&DAT_PathFindingState::instance.climbData[iVar39].canBeUsed);
+                516, (int*)&DAT_PathFindingState::instance.climbData[_climbIndex].canBeUsed);
             _hashSubTotal = _hashSubTotal + uVar19;
-            this->HASH_ClimbData[this->currentPlayerSlotID][iVar39] = uVar19;
+            this->HASH_ClimbData[this->currentPlayerSlotID][_climbIndex] = uVar19;
         }
         this->DAT_PlayerMatchTimes[this->currentPlayerSlotID * 0xc + 0x12] = _hashSubTotal;
         this->HASH_HashTotal[this->currentPlayerSlotID]
