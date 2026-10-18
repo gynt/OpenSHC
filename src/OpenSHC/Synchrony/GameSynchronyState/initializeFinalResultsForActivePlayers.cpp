@@ -5,6 +5,8 @@
 
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 
+#include "string.h"
+
 namespace OpenSHC {
 namespace Synchrony {
 
@@ -12,23 +14,21 @@ namespace Synchrony {
     void GameSynchronyState::initializeFinalResultsForActivePlayers()
     {
         byte* pbVar1;
-        char cVar2;
-        char* pcVar3;
         int* piVar4;
-        char (*pacVar5)[250];
         int iVar6;
         int (*paiVar7)[9];
         undefined2* local_c;
         int local_8;
         char (*local_4)[250];
-        pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
-        pacVar5 = this->DAT_PlayerNames + 1;
-        do {
-            cVar2 = *pcVar3;
-            (*pacVar5)[0] = cVar2;
-            pcVar3 = pcVar3 + 1;
-            pacVar5 = (char (*)[250])(*pacVar5 + 1);
-        } while (cVar2 != '\0');
+        strcpy(this->DAT_PlayerNames[1],
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0));
+        /*
+          piVar4 and local_c stay as walkers. Naming the fields they reach - finalGold, finalMaxPopulation,
+          finalBuildingsBurned and the rest, all at [iVar6] - is measured at 88.5% -> 38.3%, so do not retry it.
+          Four of them are not nameable anyway: the generated SkirmishStatistics has three more int[9] arrays at
+          0x70C, 0x730 and 0x754 where it declares yearStart/monthStart/yearEnd/monthEnd + padding3, and
+          unusedUnk[9] is really two short[9] arrays at 0x6C4 and 0x6D6.
+         */
         for (iVar6 = 1, local_c = (undefined2*)((int)this->finalResults.unusedUnk + 2),
             local_4 = this->DAT_PlayerNames + 1, local_8 = (int)this + 0x10961e,
             piVar4 = this->currentPlayerFullIDArray + 1;
@@ -38,12 +38,7 @@ namespace Synchrony {
                 this->finalResults.active[iVar6] = 0;
             } else {
                 this->finalResults.active[iVar6] = 1;
-                pacVar5 = local_4;
-                do {
-                    cVar2 = (*pacVar5)[0];
-                    *(char*)((int)pacVar5 + (local_8 - (int)local_4)) = cVar2;
-                    pacVar5 = (char (*)[250])(*pacVar5 + 1);
-                } while (cVar2 != '\0');
+                strcpy((char*)local_8, *local_4);
                 piVar4[0x42494] = 0;
                 local_c[-0x1b6] = 0;
                 this->finalResults.finalMaxGoodThings[iVar6] = 0;
