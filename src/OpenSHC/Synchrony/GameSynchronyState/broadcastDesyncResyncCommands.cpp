@@ -210,8 +210,8 @@ namespace Synchrony {
             } while (iVar6 < 9);
         }
         if (this->sharedDesyncFlags[5] != 0) {
-            paiVar21 = this->HASH_Section1023 + 1;
             iVar6 = 0;
+            paiVar21 = this->HASH_Section1023 + 1;
             do {
                 iVar2 = 1;
                 piVar29 = this->currentPlayerFullIDArray + 1;
@@ -374,8 +374,8 @@ namespace Synchrony {
             } while (iVar6 < 9);
         }
         if (this->sharedDesyncFlags[0xd] != 0) {
-            paiVar27 = this->HASH_HeatMaps + 1;
             iVar6 = 0;
+            paiVar27 = this->HASH_HeatMaps + 1;
             do {
                 iVar2 = 1;
                 piVar29 = this->currentPlayerFullIDArray + 1;
