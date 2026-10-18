@@ -12,6 +12,11 @@
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
 
+// /O2 implies /Oy, which lets the optimizer keep ebp as a general register and cross-jump the two
+// identical `DAT_HostAnnounced = 1` returns into one. The original keeps both and pins the constant in
+// eax instead. The /Oy- command line flag does not reproduce this; only the pragma does. 87.0% -> 98.9%.
+#pragma optimize("y", off)
+
 namespace OpenSHC {
 namespace Synchrony {
 
