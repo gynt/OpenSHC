@@ -3,16 +3,15 @@
 
 #include "OpenSHC/OS.func.hpp"
 
+#include "string.h"
+
 namespace OpenSHC {
 namespace Synchrony {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E490
     void GameSynchronyState::readGameSpyConfig()
     {
-        char* pcVar1;
         LONG LVar2;
-        char* pcVar3;
-        char cVar4;
         FILE* _File;
         HKEY__* local_c;
         DWORD local_8;
@@ -25,27 +24,15 @@ namespace Synchrony {
             LVar2 = RegQueryValueExA(
                 local_c, "InstDir", (DWORD*)0x0, &local_4, (BYTE*)this->shellExecuteTarget, &local_8);
             RegCloseKey(local_c);
-            pcVar1 = this->shellExecuteTarget;
             if (!LVar2) {
-                pcVar3 = pcVar1 + 1;
-                do {
-                    cVar4 = *pcVar1;
-                    pcVar1 = pcVar1 + 1;
-                } while (cVar4 != '\0');
-                if (this->shellExecuteTarget[pcVar1 - pcVar3] != '\\') {
-                    pcVar1 = this->shellExecuteTarget + -1;
-                    do {
-                        cVar4 = pcVar1[1];
-                        pcVar1 = pcVar1 + 1;
-                    } while (cVar4 != '\0');
-                    strcpy(pcVar1, _pathSeparator);
+                /*
+                  The original indexes with the full length, so this reads the terminator and the branch is
+                  always taken; a trailing-separator test would have wanted length - 1.
+                 */
+                if (this->shellExecuteTarget[strlen(this->shellExecuteTarget)] != '\\') {
+                    strcat(this->shellExecuteTarget, _pathSeparator);
                 }
-                pcVar1 = this->shellExecuteTarget + -1;
-                do {
-                    cVar4 = pcVar1[1];
-                    pcVar1 = pcVar1 + 1;
-                } while (cVar4 != '\0');
-                strcpy(pcVar1, "aphex.exe");
+                strcat(this->shellExecuteTarget, "aphex.exe");
                 _File = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, "rb");
                 if (_File != (FILE*)0x0) {
                     this->gameSpyArcadeAvailable = 1;
