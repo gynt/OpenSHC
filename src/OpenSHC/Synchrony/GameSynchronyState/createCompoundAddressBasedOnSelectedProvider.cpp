@@ -43,9 +43,7 @@ namespace Synchrony {
         SIZE_T* local_2b8;
         DPCOMPOUNDADDRESSELEMENT local_2b4[3];
         GUID local_26c;
-        char local_25c[200];
-        char local_194[200];
-        char local_cc[200];
+        char _addressStrings[3][200];
         uint local_4;
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_pSize;
         local_2b8 = param_2;
@@ -58,21 +56,21 @@ namespace Synchrony {
             local_2b4[0].lpData = GUID_DPSPGUID_MODEM::ptr;
             pcVar6 = this->stringPointerArray[this->modemScrollbarIndex + this->modemScrollBarOffset];
             iVar8 = 1;
-            pcVar7 = local_25c;
+            pcVar7 = _addressStrings[0];
             do {
                 cVar1 = *pcVar6;
                 *pcVar7 = cVar1;
                 pcVar6 = pcVar6 + iVar8;
                 pcVar7 = pcVar7 + iVar8;
             } while (cVar1 != '\0');
-            pcVar7 = local_25c;
+            pcVar7 = _addressStrings[0];
             do {
                 cVar1 = *pcVar7;
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
-            if ((int)(pcVar7 - (local_25c + 1)) != 0) {
+            if ((int)(pcVar7 - (_addressStrings[0] + 1)) != 0) {
                 local_2b4[1].guidDataType = GUID_DPAID_Modem::instance;
-                pcVar7 = local_25c;
+                pcVar7 = _addressStrings[0];
                 do {
                     cVar1 = *pcVar7;
                     pcVar7 = pcVar7 + 1;
@@ -81,7 +79,7 @@ namespace Synchrony {
             }
             pcVar6
                 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
-            pcVar7 = local_194;
+            pcVar7 = _addressStrings[1];
             do {
                 cVar1 = *pcVar6;
                 *pcVar7 = cVar1;
@@ -89,13 +87,13 @@ namespace Synchrony {
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
             local_2b4[iVar8].guidDataType = GUID_DPAID_Phone::instance;
-            pcVar7 = local_194;
+            pcVar7 = _addressStrings[1];
             do {
                 cVar1 = *pcVar7;
                 pcVar7 = pcVar7 + 1;
             } while (cVar1 != '\0');
-            local_2b4[iVar8].dwDataSize = (int)(pcVar7 + (1 - (int)(local_194 + 1)));
-            local_2b4[iVar8].lpData = local_194;
+            local_2b4[iVar8].dwDataSize = (int)(pcVar7 + (1 - (int)(_addressStrings[1] + 1)));
+            local_2b4[iVar8].lpData = _addressStrings[1];
             DVar9 = iVar8 + 1;
         } else {
             BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
@@ -105,7 +103,7 @@ namespace Synchrony {
                 local_2b4[0].lpData = GUID_DPSPGUID_TCPIP::ptr;
                 pcVar6 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(5);
-                pcVar7 = local_cc;
+                pcVar7 = _addressStrings[2];
                 do {
                     cVar1 = *pcVar6;
                     *pcVar7 = cVar1;
@@ -113,13 +111,13 @@ namespace Synchrony {
                     pcVar7 = pcVar7 + 1;
                 } while (cVar1 != '\0');
                 local_2b4[1].guidDataType = GUID_DPAID_INet::instance;
-                pcVar7 = local_cc;
+                pcVar7 = _addressStrings[2];
                 do {
                     cVar1 = *pcVar7;
                     pcVar7 = pcVar7 + 1;
                 } while (cVar1 != '\0');
-                local_2b4[1].dwDataSize = (int)(pcVar7 + (1 - (int)(local_cc + 1)));
-                local_2b4[1].lpData = local_cc;
+                local_2b4[1].dwDataSize = (int)(pcVar7 + (1 - (int)(_addressStrings[2] + 1)));
+                local_2b4[1].lpData = _addressStrings[2];
                 DVar9 = 2;
                 pcVar7 = MACRO_CALL_MEMBER(
                     Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(6);
