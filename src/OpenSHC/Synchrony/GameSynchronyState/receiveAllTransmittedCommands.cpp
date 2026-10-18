@@ -28,13 +28,10 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x00490690
     void GameSynchronyState::receiveAllTransmittedCommands()
     {
-        char cVar1;
         int* piVar2;
-        char* pcVar3;
         BOOLEnum BVar4;
         uint _sentByPlayerID;
         int iVar5;
-        char* pcVar6;
         char acStack_68[100];
         uint* _pSystemMessage;
         uint local_4;
@@ -86,15 +83,9 @@ namespace Synchrony {
                                 /*
                                   added by script: "You are now Host"
                                  */
-                                pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x3c);
-                                pcVar6 = DAT_GameSynchronyState::instance.receivedChatMessage;
-                                do {
-                                    cVar1 = *pcVar3;
-                                    *pcVar6 = cVar1;
-                                    pcVar3 = pcVar3 + 1;
-                                    pcVar6 = pcVar6 + 1;
-                                } while (cVar1 != '\0');
+                                strcpy(DAT_GameSynchronyState::instance.receivedChatMessage,
+                                    MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x3c));
                                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                                     DAT_GameSynchronyState::ptr)(
                                     DAT_GameSynchronyState::instance.currentPlayerSlotID, 0);

@@ -22,11 +22,9 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048BD40
     void GameSynchronyState::compareGameVersions()
     {
-        char cVar1;
         char* pcVar5;
         int* piVar6;
         int iVar7;
-        char* pcVar8;
         int iVar9;
         int _gameVersion;
         char local_68[100];
@@ -61,15 +59,9 @@ namespace Synchrony {
                 /*
                   added by script: "Someone has an old version, please get him or her to   upgrade"
                  */
-                pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MP_VERSION_CONTROL, 2);
-                pcVar8 = DAT_GameSynchronyState::instance.receivedChatMessage;
-                do {
-                    cVar1 = *pcVar5;
-                    *pcVar8 = cVar1;
-                    pcVar5 = pcVar5 + 1;
-                    pcVar8 = pcVar8 + 1;
-                } while (cVar1 != '\0');
+                strcpy(DAT_GameSynchronyState::instance.receivedChatMessage,
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_MP_VERSION_CONTROL, 2));
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                     DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0, 0);
                 for (piVar6 = this->DAT_ChatMessageReceiverArray, iVar7 = 0; iVar7 < 9;
@@ -85,14 +77,8 @@ namespace Synchrony {
                     }
                 }
                 this->DAT_ChatTauntOrMessage = 0;
-                pcVar8 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
-                pcVar5 = local_68;
-                do {
-                    cVar1 = *pcVar8;
-                    *pcVar5 = cVar1;
-                    pcVar8 = pcVar8 + 1;
-                    pcVar5 = pcVar5 + 1;
-                } while (cVar1 != '\0');
+                strcpy(local_68,
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)());
                 /*
                   added by script: "You have an old version, please upgrade to the latest   version"
                  */
