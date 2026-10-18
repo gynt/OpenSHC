@@ -28,29 +28,14 @@ namespace Synchrony {
         /*
           if in multiplayer
          */
-        if (this->currentPlayerFullIDArray[1] == multiplayerID) {
-            _playerID = 1;
-        }
-        if (this->currentPlayerFullIDArray[2] == multiplayerID) {
-            _playerID = 2;
-        }
-        if (this->currentPlayerFullIDArray[3] == multiplayerID) {
-            _playerID = 3;
-        }
-        if (this->currentPlayerFullIDArray[4] == multiplayerID) {
-            _playerID = 4;
-        }
-        if (this->currentPlayerFullIDArray[5] == multiplayerID) {
-            _playerID = 5;
-        }
-        if (this->currentPlayerFullIDArray[6] == multiplayerID) {
-            _playerID = 6;
-        }
-        if (this->currentPlayerFullIDArray[7] == multiplayerID) {
-            _playerID = 7;
-        }
-        if (this->currentPlayerFullIDArray[8] == multiplayerID) {
-            _playerID = 8;
+        /*
+          Do not stop at the first match: the original lets the last matching slot win, including
+          duplicate or sentinel-valued IDs.
+         */
+        for (int _slot = 1; _slot < 9; _slot = _slot + 1) {
+            if (this->currentPlayerFullIDArray[_slot] == multiplayerID) {
+                _playerID = _slot;
+            }
         }
         return _playerID;
     }
