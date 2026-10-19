@@ -17,8 +17,6 @@ src/OpenSHC/Game/GameStateStructures/getSellResourceAmount.cpp
 src/OpenSHC/Map/TileMapState/determineBuildingPlacementRotation.cpp
 src/OpenSHC/Map/Navigation/DirectionAlgorithmState/getMouseVectorLengthBasedOnDirection.cpp
 src/OpenSHC/Input/MouseState/updateRightDragCameraControl.cpp
-src/OpenSHC/Synchrony/GameSynchronyState/processSyncPacket.cpp
-src/OpenSHC/Synchrony/GameSynchronyState/translateMultiplayerIDsIntoPlayerIDs.cpp
 src/OpenSHC/Synchrony/GameSynchronyState/determineGameTicksToPerform.cpp
 src/OpenSHC/Synchrony/GameSynchronyState/computeLatencyAdjustmentFromMatchTimes.cpp
 src/OpenSHC/Synchrony/GameSynchronyState/receiveAllTransmittedCommands.cpp
