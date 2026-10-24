@@ -35,17 +35,10 @@ namespace UI {
         void NewMapMapsize::MenuView_NewMapMapsize_DoEveryFrame()
         {
             int iVar1;
-            char* textAddress;
             int iVar2;
-            int iVar3;
             int iVar4;
-            TextAlignment alignment;
-            BGR24 color;
             int iVar5;
-            BOOLEnum keepOffsetX;
-            int iVar6;
             int local_20;
-            int local_1c;
             char local_18[20];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_20;
@@ -69,9 +62,10 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x14),
                 DAT_MenuHandlerState::instance.x + 400, DAT_MenuHandlerState::instance.y + 0x3b,
                 OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x10, FALSE, 0);
-            iVar3 = DAT_MenuHandlerState::instance.y;
-            iVar1 = DAT_MenuHandlerState::instance.x;
-            local_1c = DAT_MenuHandlerState::instance.y + 0x122;
+            int minimapX = DAT_MenuHandlerState::instance.x + 0x258;
+            int minimapY = DAT_MenuHandlerState::instance.y + 0x122;
+            int centerX = minimapX;
+            int centerY = minimapY;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             iVar5 = DAT_TileMapState::instance.mapSize;
             if (!DAT_TileMapState::instance.mapSize) {
@@ -81,85 +75,78 @@ namespace UI {
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar5, iVar5);
             switch (iVar5) {
             case 100:
-                iVar3 = iVar3 + 0xf0;
-                iVar6 = iVar1 + 0x226;
+                minimapY = minimapY + -0x32;
+                minimapX = minimapX + -0x32;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapEditor, DAT_MinimapViewState::ptr)(
-                    iVar6, iVar3, iVar5, iVar5);
+                    minimapX, minimapY, iVar5, iVar5);
                 local_20 = 100;
                 break;
             default:
                 iVar4 = 200;
                 goto LAB_0042f577;
             case 0xa0:
-                iVar3 = iVar3 + 0xd2;
-                iVar6 = iVar1 + 0x208;
+                minimapY = minimapY + -0x50;
+                minimapX = minimapX + -0x50;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapEditor, DAT_MinimapViewState::ptr)(
-                    iVar6, iVar3, iVar5, iVar5);
+                    minimapX, minimapY, iVar5, iVar5);
                 local_20 = 0xa0;
                 break;
             case 200:
                 iVar4 = iVar5;
             LAB_0042f577:
-                iVar3 = iVar3 + 0xbe;
-                iVar6 = iVar1 + 500;
+                minimapY = minimapY + -0x64;
+                minimapX = minimapX + -0x64;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapEditor, DAT_MinimapViewState::ptr)(
-                    iVar6, iVar3, iVar4, iVar4);
+                    minimapX, minimapY, iVar4, iVar4);
                 local_20 = 200;
                 break;
             case 300:
-                iVar3 = iVar3 + 0xd7;
-                iVar6 = iVar1 + 0x20d;
+                minimapY = minimapY + -0x4b;
+                minimapX = minimapX + -0x4b;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapEditor, DAT_MinimapViewState::ptr)(
-                    iVar6, iVar3, 0x96, 0x96);
+                    minimapX, minimapY, 0x96, 0x96);
                 local_20 = 0x96;
             }
-            iVar4 = local_1c;
             if (iVar5 == 0xa0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(iVar1 + 0x20a, local_1c + -0x4f, iVar1 + 0x2a6, local_1c + 0x4d,
-                    (ushort)((int)(COL_BLACK::instance.shortValue)));
-                iVar5 = iVar4 + 0x4e;
-                iVar2 = iVar1 + 0x2a7;
-                iVar4 = iVar4 + -0x50;
-                iVar1 = iVar1 + 0x209;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    centerX + -0x4e, centerY + -0x4f, centerX + 0x4e, centerY + 0x4d, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                iVar5 = centerY + 0x4e;
+                iVar2 = centerX + 0x4f;
+                iVar4 = centerY + -0x50;
+                iVar1 = centerX + -0x4f;
             } else if (iVar5 == 200) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(iVar1 + 0x1f6, local_1c + -99, iVar1 + 699, local_1c + 99,
-                    (ushort)((int)(COL_BLACK::instance.shortValue)));
-                iVar5 = iVar4 + 100;
-                iVar2 = iVar1 + 700;
-                iVar4 = iVar4 + -100;
-                iVar1 = iVar1 + 0x1f5;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    centerX + -0x62, centerY + -0x63, centerX + 0x63, centerY + 0x63, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                iVar5 = centerY + 0x64;
+                iVar2 = centerX + 0x64;
+                iVar4 = centerY + -0x64;
+                iVar1 = centerX + -0x63;
             } else if (iVar5 == 300) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(iVar1 + 0x20d, local_1c + -0x4b, iVar1 + 0x2a1, local_1c + 0x4a,
-                    (ushort)((int)(COL_BLACK::instance.shortValue)));
-                iVar5 = iVar4 + 0x4b;
-                iVar2 = iVar1 + 0x2a2;
-                iVar4 = iVar4 + -0x4c;
-                iVar1 = iVar1 + 0x20c;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    centerX + -0x4b, centerY + -0x4b, centerX + 0x49, centerY + 0x4a, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                iVar5 = centerY + 0x4b;
+                iVar2 = centerX + 0x4a;
+                iVar4 = centerY + -0x4c;
+                iVar1 = centerX + -0x4c;
             } else {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(iVar1 + 500, local_1c + -100, iVar1 + 699, local_1c + 100,
-                    (ushort)((int)(COL_BLACK::instance.shortValue)));
-                iVar5 = iVar4 + 0x65;
-                iVar2 = iVar1 + 700;
-                iVar4 = iVar4 + -0x65;
-                iVar1 = iVar1 + 499;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    centerX + -0x64, centerY + -0x64, centerX + 0x63, centerY + 0x64, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                iVar5 = centerY + 0x65;
+                iVar2 = centerX + 0x64;
+                iVar4 = centerY + -0x65;
+                iVar1 = centerX + -0x65;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 iVar1, iVar4, iVar2, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
-            iVar6 = iVar6 + local_20;
-            iVar1 = iVar3 + -0xf;
-            iVar5 = iVar6;
-            iVar4 = iVar3;
-            iVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
-                local_18, 0x13);
+            minimapX = minimapX + local_20;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                (iVar6 - iVar2) + -0xf, iVar1, iVar5, iVar4);
+                (minimapX
+                    - MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+                        local_18, 0x13))
+                    + -0xf,
+                minimapY + -0xf, minimapX, minimapY);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                local_18, iVar6 + -5, iVar3 + -0xb, OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0, 0x13, FALSE, 0);
-            ;
+                local_18, minimapX + -5, minimapY + -0xb, OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0, 0x13, FALSE, 0);
             return;
         }
 
