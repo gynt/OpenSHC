@@ -81,7 +81,7 @@ namespace UI {
                     goto LAB_004dc5a5;
                 }
                 DVar2 = timeGetTime();
-                if (DVar2 - DWORD_00ed27b4::instance < 0x1389)
+                if (DVar2 - DWORD_00ed27b4::instance <= 0x1388)
                     goto LAB_004dc5a5;
             } else {
             LAB_004dc5a5:
