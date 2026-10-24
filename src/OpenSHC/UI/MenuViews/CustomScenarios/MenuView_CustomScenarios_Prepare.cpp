@@ -32,13 +32,12 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 = timeGetTime();
+            DWORD DVar1 = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16c].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 - 0x12c0;
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16e].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 - 0x640;
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16d].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 - 0xc80;
+                = DVar1 - 0x12c0;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16d].stateTransitionTimeBaseUnk_0x18 = DVar1 - 0xc80;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16e].stateTransitionTimeBaseUnk_0x18 = DVar1 - 0x640;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 = DVar1;
             INT_00b95abc::instance = -1;
             DAT_MenuTextInputState::instance.dialogResult = 0;
             DAT_GameCore::instance.missionNumber1to20 = 0;
