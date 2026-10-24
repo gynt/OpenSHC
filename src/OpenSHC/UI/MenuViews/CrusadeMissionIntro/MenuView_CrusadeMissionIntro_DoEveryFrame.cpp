@@ -55,7 +55,6 @@ namespace UI {
             char* pcVar2;
             char* _pExtremeTrailName;
             int _extremeTrailNameWidth;
-            char* _pTitle;
             dword dVar3;
             int iVar4;
             int _offset;
@@ -396,10 +395,10 @@ namespace UI {
             _titleAlignment = OpenSHC::Text::TTA_LEFT;
             _titleY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e;
             _titleX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x23;
-            _pTitle = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, _offset);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                _pTitle, _titleX, _titleY, (TextAlignment)((int)(_titleAlignment)), _titleFG, _titleBG, _titleFontSize,
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, _offset),
+                _titleX, _titleY, (TextAlignment)((int)(_titleAlignment)), _titleFG, _titleBG, _titleFontSize,
                 _titleRetainX, _blendStrength);
             local_108 = local_f4 + 0x21;
             _blendStrength = 0;
