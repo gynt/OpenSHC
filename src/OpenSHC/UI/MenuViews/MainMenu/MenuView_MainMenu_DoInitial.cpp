@@ -35,12 +35,13 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[DAT_UnknownGFXIndex::instance].height)
                     / 2);
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             _menu = DAT_MenuHandlerState::instance.currentMenu;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            _menu->yPosition = DAT_MenuHandlerState::instance.y;
+            _menu->xPosition = borderWidth;
+            _menu->yPosition = borderHeight;
+            DAT_MenuHandlerState::instance.x = borderWidth;
+            DAT_MenuHandlerState::instance.y = borderHeight;
             INT_00b95f68::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
                 "richard_swordswing.bik", 0, 0,
