@@ -43,7 +43,7 @@ namespace UI {
             DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 1;
             iVar1 = MACRO_CALL_MEMBER(
                 Map::MapPropertiesState_Func::getEventIDForTimeUntilDefeatEventType, DAT_MapPropertiesState::ptr)();
-            if (-1 < iVar1) {
+            if (0 <= iVar1) {
                 MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                     UI::Enums::DEID_TIME_UNTIL_DEFEAT, 1);
             }
