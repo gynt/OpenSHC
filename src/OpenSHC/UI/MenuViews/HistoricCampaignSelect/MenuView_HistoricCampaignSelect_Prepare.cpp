@@ -31,8 +31,8 @@ namespace UI {
             DWORD DVar1 = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x163].stateTransitionTimeBaseUnk_0x18
                 = DVar1 - 0x12c0;
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x165].stateTransitionTimeBaseUnk_0x18 = DVar1 - 0x640;
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x164].stateTransitionTimeBaseUnk_0x18 = DVar1 - 0xc80;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x165].stateTransitionTimeBaseUnk_0x18 = DVar1 - 0x640;
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 = DVar1;
             INT_00b95abc::instance = -1;
             DAT_UnknownGFXIndex::instance = 0;
