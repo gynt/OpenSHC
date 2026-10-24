@@ -105,7 +105,7 @@ namespace UI {
                     }
                 }
                 FLOAT_00ec0834::instance = FLOAT_Between1And5::instance + FLOAT_00ec0834::instance;
-                if (32.0 < FLOAT_00ec0834::instance != (FLOAT_00ec0834::instance == 32.0)) {
+                if (32.0 <= FLOAT_00ec0834::instance) {
                     if (DAT_00ed2780::instance == 2) {
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_HISTORIC_MISSION_PICTURE, 0);
