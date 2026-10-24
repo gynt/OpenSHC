@@ -21,7 +21,7 @@ namespace UI {
         void IntroVideo::MenuView_IntroVideo_DoEveryFrame()
         {
             DWORD DVar1 = timeGetTime();
-            if (399 < DVar1 - TIME_IntroVideo_Prepare::instance) {
+            if (400 <= DVar1 - TIME_IntroVideo_Prepare::instance) {
                 if (DAT_MouseState::instance.draggingStopped) {
                     MACRO_CALL_MEMBER(
                         Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
