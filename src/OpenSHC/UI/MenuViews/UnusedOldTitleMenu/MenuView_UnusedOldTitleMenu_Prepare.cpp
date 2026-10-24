@@ -17,14 +17,14 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DCB0
         void UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_Prepare()
         {
-            Menu* pMVar1;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+            pMVar1->yPosition = borderHeight;
+            pMVar1->xPosition = borderWidth;
+            DAT_MenuHandlerState::instance.y = borderHeight;
+            DAT_MenuHandlerState::instance.x = borderWidth;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("gm_fly.tgx");
