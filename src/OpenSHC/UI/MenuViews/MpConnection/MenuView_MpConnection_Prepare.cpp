@@ -28,12 +28,13 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+            pMVar1->xPosition = borderWidth;
+            pMVar1->yPosition = borderHeight;
+            DAT_MenuHandlerState::instance.x = borderWidth;
+            DAT_MenuHandlerState::instance.y = borderHeight;
             MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby, DAT_GameSynchronyState::ptr)();
             MACRO_CALL_MEMBER(
