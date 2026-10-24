@@ -153,7 +153,7 @@ namespace UI {
                     if ((pcVar6 != DAT_GameCore::instance.standaloneFilename + 1) && (iVar8 = 0, -1 < iVar7)) {
                         while (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = iVar7,
                             DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar8,
-                            0xc < DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
+                            0xd <= DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                             iVar8 = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                             iVar7 = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1;
                         }
