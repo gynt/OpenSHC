@@ -38,7 +38,7 @@ namespace UI {
                     MACRO_CALL(Rendering_Func::RenderActiveCreditsElements)();
                 }
                 INT_00ed3140::instance = INT_00ed3140::instance + 1;
-                if (DAT_UnknownBinkCount::instance <= DAT_UnknownBinkIndex::instance) {
+                if (DAT_UnknownBinkIndex::instance >= DAT_UnknownBinkCount::instance) {
                     DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                 }
             }
