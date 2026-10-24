@@ -398,8 +398,10 @@ namespace UI {
                     0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
                 iVar2 = 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height;
             } else {
-                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {}
-                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == ((OpenSHC::UI::Enums::BuildMenuTabType)0x3e)) {
+                if ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN)
+                    || (DAT_GameCore::instance.activeMenuTab.buildMenuTab
+                        == ((OpenSHC::UI::Enums::BuildMenuTabType)0x3e))) {
+                    return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                     iVar2 = 9;
