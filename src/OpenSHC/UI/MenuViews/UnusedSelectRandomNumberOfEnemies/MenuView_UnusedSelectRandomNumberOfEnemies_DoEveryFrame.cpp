@@ -28,7 +28,6 @@ namespace UI {
         void UnusedSelectRandomNumberOfEnemies::MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame()
         {
             int iVar1;
-            char* pcVar2;
             int iVar3;
             TextAlignment alignment;
             BGR24 color;
@@ -60,10 +59,10 @@ namespace UI {
             /*
               added by script: "How many opponents can you handle!"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 1);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 1),
+                iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
             blendStrength = 0;
             iVar5 = 0x12;
             color_00 = 0xccfaff;
@@ -74,10 +73,10 @@ namespace UI {
               added by script: "This will create some random opponents for you. You can   still change opponent types
               afterwards."
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2),
+                iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
             return;
         }
 
