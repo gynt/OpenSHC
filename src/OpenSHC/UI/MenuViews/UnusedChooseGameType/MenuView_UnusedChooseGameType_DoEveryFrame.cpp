@@ -62,20 +62,14 @@ namespace UI {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner, DAT_PencilRenderCore::ptr)(
                 DAT_MenuHandlerState::instance.x + 100, DAT_MenuHandlerState::instance.y + 0x1e, 600, 0x32);
-            iVar6 = 0;
-            keepOffsetX = FALSE;
-            iVar4 = 0x10;
-            color = 0xc2f0eb;
-            alignment = OpenSHC::Text::TTA_CENTER;
-            iVar1 = DAT_MenuHandlerState::instance.y + 0x3b;
-            iVar3 = DAT_MenuHandlerState::instance.x + 400;
             /*
               added by script: "Select Game Type"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1b);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar6);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1b),
+                DAT_MenuHandlerState::instance.x + 400, DAT_MenuHandlerState::instance.y + 0x3b,
+                OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x10, FALSE, 0);
             iVar3 = DAT_MenuHandlerState::instance.y;
             iVar1 = DAT_MenuHandlerState::instance.x;
             local_1c = DAT_MenuHandlerState::instance.y + 0x122;
