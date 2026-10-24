@@ -93,60 +93,32 @@ namespace UI {
             int _textX_01;
             int _fontSize;
             int _blendStrength;
-            if (!DAT_MissionDefinedData::instance.field26_0xaf8) {}
+            if (!DAT_MissionDefinedData::instance.field26_0xaf8) {
+                return;
+            }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
             iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             _textX_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                if (0x13 < DAT_GameCore::instance.extremeTrailProgress) {
-                    _offset = 0;
-                    BVar14 = FALSE;
-                    iVar13 = 0x10;
-                    BVar12 = 0xccfaff;
-                    TVar10 = OpenSHC::Text::TTA_CENTER;
-                    iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                    iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
-                    /*
-                      added by script: "Crusader Trail Completed!"
-                     */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
+                if (0x14 <= DAT_GameCore::instance.extremeTrailProgress) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        _textX_01 + 400, iVar1 + 0x32, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x10, FALSE, 0);
                 }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                if (0x1d < DAT_GameCore::instance.warchestTrailProgress) {
-                    _offset = 0;
-                    BVar14 = FALSE;
-                    iVar13 = 0x10;
-                    BVar12 = 0xccfaff;
-                    TVar10 = OpenSHC::Text::TTA_CENTER;
-                    iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                    iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
-                    /*
-                      added by script: "Crusader Trail Completed!"
-                     */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
+                if (0x1e <= DAT_GameCore::instance.warchestTrailProgress) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        _textX_01 + 400, iVar1 + 0x32, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x10, FALSE, 0);
                 }
             } else if ((DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION)
-                && (0x31 < DAT_GameCore::instance.skirmishTrailProgress)) {
-                _offset = 0;
-                BVar14 = FALSE;
-                iVar13 = 0x10;
-                BVar12 = 0xccfaff;
-                TVar10 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
-                /*
-                  added by script: "Crusader Trail Completed!"
-                 */
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
+                && (0x32 <= DAT_GameCore::instance.skirmishTrailProgress)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                    _textX_01 + 400, iVar1 + 0x32, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x10, FALSE, 0);
             }
             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x20;
             _textY_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x156;
