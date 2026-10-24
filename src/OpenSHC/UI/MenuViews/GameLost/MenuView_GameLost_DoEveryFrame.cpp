@@ -65,9 +65,11 @@ namespace UI {
                         goto LAB_004dca69;
                 }
             }
-            if (((!DAT_MouseState::instance.draggingStopped)
-                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                && (!INT_00ed279c::instance)) {}
+            if (((DAT_MouseState::instance.draggingStopped)
+                    && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
+                || (INT_00ed279c::instance)) {
+                return;
+            }
         LAB_004dca69:
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;
