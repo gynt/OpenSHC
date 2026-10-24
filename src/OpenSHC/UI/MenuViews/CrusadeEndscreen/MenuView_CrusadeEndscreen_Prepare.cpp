@@ -28,7 +28,6 @@ namespace UI {
         void CrusadeEndscreen::MenuView_CrusadeEndscreen_Prepare()
         {
             undefined4 uVar2;
-            SHC_SoundStream SVar3;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
                 "sktrail_win.tgx");
@@ -161,15 +160,16 @@ namespace UI {
                     0xf, 4, (undefined4)((int)(uVar2)), 1, 0x106, 0xee, 0x11a, 0);
                 MACRO_CALL(UI::Credits_Func::AppendCreditsTextCommand)(
                     0xf, 4, (undefined4)((int)(uVar2)), 0, 0x104, 0xec, 0x11a, 0);
-                SVar3 = Audio::MSS::enums::SND_STR_SPEECH_2;
+                MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(
+                    3, Audio::MSS::enums::SND_STR_SPEECH_2);
             } else {
                 MACRO_CALL(UI::Credits_Func::AppendCreditsTextCommand)(
                     0xf, 3, (undefined4)((int)(uVar2)), 1, 0x106, 0xee, 0x11a, 0);
                 MACRO_CALL(UI::Credits_Func::AppendCreditsTextCommand)(
                     0xf, 3, (undefined4)((int)(uVar2)), 0, 0x104, 0xec, 0x11a, 0);
-                SVar3 = Audio::MSS::enums::SND_STR_SPEECH_1;
+                MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(
+                    3, Audio::MSS::enums::SND_STR_SPEECH_1);
             }
-            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(3, SVar3);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(8, Audio::MSS::enums::SND_STR_SFX_1Unk);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 9, 0x6a, 0x35, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "action_jester.bik", 0x6a, 0x35, 0, 0);
