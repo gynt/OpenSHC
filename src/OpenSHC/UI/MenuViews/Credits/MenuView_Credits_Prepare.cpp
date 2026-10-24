@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004261E0
         void Credits::MenuView_Credits_Prepare()
         {
-            char* tgxFileName;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (!DAT_00b95954::instance) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
@@ -33,12 +32,12 @@ namespace UI {
                     "credits_2.tgx");
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
                     "credits_3.tgx");
-                tgxFileName = "credits_4.tgx";
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                    "credits_4.tgx");
             } else {
-                tgxFileName = "end_credit.tgx";
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                    "end_credit.tgx");
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                tgxFileName);
             MACRO_CALL_MEMBER(Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(
                 MACRO_CALL_MEMBER(Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)(
                     "credits.hlp"));
