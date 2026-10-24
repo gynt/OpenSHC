@@ -27,16 +27,18 @@ namespace UI {
             DAT_GameCore::instance.section1066 = 0;
             DAT_MenuTextInputState::instance.lastListClickTime = 0;
             DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
+            int iVar1;
             if (DAT_GameCore::instance.missionNumber1to20 < 6) {
-                DAT_00b95b2c::instance = 0;
-                DAT_00b96100::instance = 1;
+                iVar1 = 0;
+            } else if (DAT_GameCore::instance.missionNumber1to20 < 0xb) {
+                iVar1 = 1;
+            } else if (DAT_GameCore::instance.missionNumber1to20 < 0x10) {
+                iVar1 = 2;
+            } else {
+                iVar1 = 3;
             }
-            if (DAT_GameCore::instance.missionNumber1to20 < 0xb) {
-                DAT_00b95b2c::instance = 1;
-                DAT_00b96100::instance = 6;
-            }
-            DAT_00b95b2c::instance = (0xf < DAT_GameCore::instance.missionNumber1to20) + 2;
-            DAT_00b96100::instance = DAT_00b95b2c::instance * 5 + 1;
+            DAT_00b95b2c::instance = iVar1;
+            DAT_00b96100::instance = iVar1 * 5 + 1;
         }
 
     }
