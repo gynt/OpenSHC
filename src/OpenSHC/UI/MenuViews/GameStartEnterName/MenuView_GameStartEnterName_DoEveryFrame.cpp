@@ -37,7 +37,7 @@ namespace UI {
                         / 2);
                 if (DAT_GameCore::instance.isNameEntryActive == TRUE) {
                     DWORD DVar1 = timeGetTime();
-                    if ((DVar1 - DAT_GameCore::instance.nameEntryStartTime < 0x3e9)
+                    if ((DVar1 - DAT_GameCore::instance.nameEntryStartTime <= 0x3e8)
                         && (!DAT_MouseState::instance.draggingStopped)) {
                         if (!DAT_MouseState::instance.rightClickStop) {
                             return;
