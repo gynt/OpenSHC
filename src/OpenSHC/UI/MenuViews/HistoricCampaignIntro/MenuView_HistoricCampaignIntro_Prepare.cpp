@@ -27,23 +27,26 @@ namespace UI {
             MACRO_CALL(UI::Helpers_Func::PrepareHistoryBook)();
             switch (DAT_GameCore::instance.historicCampaignNumber) {
             case 1:
-                pcVar1 = "c1pic.tgx";
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
+                    UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c1pic.tgx");
                 break;
             case 2:
-                pcVar1 = "c2pic.tgx";
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
+                    UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c2pic.tgx");
                 break;
             case 3:
-                pcVar1 = "c3pic.tgx";
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
+                    UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c3pic.tgx");
                 break;
             case 4:
-                pcVar1 = "c4pic.tgx";
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
+                    UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c4pic.tgx");
                 break;
-            default:
-                goto switchD_004dbb02_caseD_4;
             }
-            DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
-                UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(pcVar1);
-        switchD_004dbb02_caseD_4:
             DAT_NumberOfStoredMenuStrings::instance = 0;
             pcVar1
                 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
