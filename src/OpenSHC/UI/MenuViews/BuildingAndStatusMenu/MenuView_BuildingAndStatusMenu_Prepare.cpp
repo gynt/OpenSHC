@@ -355,7 +355,7 @@ namespace UI {
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .fearFactorLevel;
                 if (iVar5) {
-                    if (iVar5 < -4) {
+                    if (iVar5 <= -5) {
                         /*
                           "You are truly the cruelest tyrant in the kingdom your lordship"
                          */
