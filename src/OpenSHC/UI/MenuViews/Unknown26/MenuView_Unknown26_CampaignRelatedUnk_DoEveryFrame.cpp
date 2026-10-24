@@ -36,7 +36,7 @@ namespace UI {
                     MACRO_CALL(Rendering_Func::RenderActiveCreditsElements)();
                 }
                 INT_00ed3144::instance = INT_00ed3144::instance + 1;
-                if (DAT_UnknownBinkCount::instance <= DAT_UnknownBinkIndex::instance) {
+                if (DAT_UnknownBinkIndex::instance >= DAT_UnknownBinkCount::instance) {
                     if (DAT_GameCore::instance.missionNumber1to20 == 1000) {
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_INTRO_VIDEO, 0);
