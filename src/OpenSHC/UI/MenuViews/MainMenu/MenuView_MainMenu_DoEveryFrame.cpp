@@ -35,18 +35,14 @@ namespace UI {
             char local_68[100];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
-            if (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
-                DAT_UnknownGFXIndex::instance = 1;
-                if (DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0) {
-                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
-                        DAT_BinkControlState::ptr)(0);
-                }
-            } else {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 DAT_UnknownGFXIndex::instance = 0;
                 if ((DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0)
                     && (DAT_GameCore::instance.menuViewToSwitchTo
                         == DAT_GameCore::instance.currentMenuViewType)) {
-                    if (!DAT_MainMenuSwingSwordBool::instance) {
+                    if (DAT_MainMenuSwingSwordBool::instance) {
+                        DAT_MainMenuSwingSwordBool::instance = 0;
+                    } else {
                         DAT_MainMenuSwingSwordBool::instance = (int)SEC_RNG::instance.currentNumber1 % 3;
                         if (0 < DAT_MainMenuSwingSwordBool::instance) {
                             DAT_MainMenuSwingSwordBool::instance = 0;
@@ -54,8 +50,6 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                         if (DAT_MainMenuSwingSwordBool::instance)
                             goto LAB_00424e9c;
-                    } else {
-                        DAT_MainMenuSwingSwordBool::instance = 0;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
@@ -70,6 +64,12 @@ namespace UI {
                             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1fc,
                             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x16, 0);
                     }
+                }
+            } else {
+                DAT_UnknownGFXIndex::instance = 1;
+                if (DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0) {
+                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
+                        DAT_BinkControlState::ptr)(0);
                 }
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
