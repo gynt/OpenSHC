@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004261E0
         void Credits::MenuView_Credits_Prepare()
         {
-            int iVar1;
             char* tgxFileName;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (!DAT_00b95954::instance) {
@@ -40,9 +39,9 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
                 tgxFileName);
-            iVar1 = MACRO_CALL_MEMBER(Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)(
-                "credits.hlp");
-            MACRO_CALL_MEMBER(Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(iVar1);
+            MACRO_CALL_MEMBER(Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(
+                MACRO_CALL_MEMBER(Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)(
+                    "credits.hlp"));
             DAT_TextEditorState::instance.helpContentScrollOffsetY = 0xfffffda8;
             DAT_00b95b3c::instance = 0;
             INT_00b960d0::instance = timeGetTime();

@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace IntroVideo_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424A50,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424A50,
                 &OpenSHC::UI::MenuViews::IntroVideo::MenuView_IntroVideo_Prepare)
             MenuView_IntroVideo_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424AD0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424AD0,
                 &OpenSHC::UI::MenuViews::IntroVideo::MenuView_IntroVideo_DoEveryFrame)
             MenuView_IntroVideo_DoEveryFrame;
 

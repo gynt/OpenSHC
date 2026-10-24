@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace SelectCrusade_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042BB90,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042BB90,
                 &OpenSHC::UI::MenuViews::SelectCrusade::MenuView_SelectCrusade_DoInitial)
             MenuView_SelectCrusade_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042BBF0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042BBF0,
                 &OpenSHC::UI::MenuViews::SelectCrusade::MenuView_SelectCrusade_DoEveryFrame)
             MenuView_SelectCrusade_DoEveryFrame;
 

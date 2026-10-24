@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace EditScenario_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004B8080,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004B8080,
                 &OpenSHC::UI::MenuViews::EditScenario::MenuView_EditScenario_DoEveryFrame)
             MenuView_EditScenario_DoEveryFrame;
 

@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedDemoBuyItScreen_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00426570,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00426570,
                 &OpenSHC::UI::MenuViews::UnusedDemoBuyItScreen::MenuView_UnusedDemoBuyItScreen_Prepare)
             MenuView_UnusedDemoBuyItScreen_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00426600,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00426600,
                 &OpenSHC::UI::MenuViews::UnusedDemoBuyItScreen::MenuView_UnusedDemoBuyItScreen_DoInitial)
             MenuView_UnusedDemoBuyItScreen_DoInitial;
 

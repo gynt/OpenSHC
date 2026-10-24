@@ -15,6 +15,10 @@ call back where it belongs restores the order:
 
     renderTextToScreen(getTextStringInGroupAtOffset(TEXT_MONTHS, month), x, y, ...);
 
+The temp may sit at any argument position, not only the first: MSVC evaluates
+argument k after arguments k+1 and later, which is exactly where the inlined
+call lands.
+
 A temp is only rewritten when *every* reference to it is one of these pairs and
 it has exactly one declaration, so the move cannot change evaluation order
 relative to anything else; the declaration is then dropped.  Dry run unless
@@ -29,6 +33,21 @@ import common
 
 ASSIGN = re.compile(r"^(\s*)([A-Za-z_]\w*) = (MACRO_CALL\w*\()")
 CALL = re.compile(r"^(\s*)MACRO_CALL\w*\(")
+
+
+def top_level_args(arglist):
+    """Split an argument list on the commas that are not nested in brackets."""
+    out, depth, start = [], 0, 0
+    for k, ch in enumerate(arglist):
+        if ch in "([":
+            depth += 1
+        elif ch in ")]":
+            depth -= 1
+        elif ch == "," and depth == 0:
+            out.append(arglist[start:k])
+            start = k + 1
+    out.append(arglist[start:])
+    return out
 
 
 def statement(lines, i):
@@ -66,12 +85,14 @@ def candidates(lines):
             i = end
             continue
         obj, arglist = args[:split + 2], args[split + 2:-1]
-        first, sep, tail = arglist.partition(",")
-        if first.strip() != var or not sep:
+        parts = top_level_args(arglist)
+        hits = [k for k, a in enumerate(parts) if a.strip() == var]
+        if len(hits) != 1:
             i = end
             continue
+        parts[hits[0]] = expr
         joined = re.sub(r"\s+", " ",
-                        m.group(1) + callee + "(" + obj + expr + sep + tail)
+                        m.group(1) + callee + "(" + obj + ", ".join(parts))
         out.append((i, use_end, var, joined + ");\n"))
         i = use_end
     return out

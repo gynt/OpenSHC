@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace MpConnection_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00427110,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00427110,
                 &OpenSHC::UI::MenuViews::MpConnection::MenuView_MpConnection_Prepare)
             MenuView_MpConnection_Prepare;
 

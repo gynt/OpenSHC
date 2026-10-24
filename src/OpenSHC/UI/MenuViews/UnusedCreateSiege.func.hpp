@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedCreateSiege_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00430690,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00430690,
                 &OpenSHC::UI::MenuViews::UnusedCreateSiege::MenuView_UnusedCreateSiege_Prepare)
             MenuView_UnusedCreateSiege_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004306D0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004306D0,
                 &OpenSHC::UI::MenuViews::UnusedCreateSiege::MenuView_UnusedCreateSiege_DoEveryFrame)
             MenuView_UnusedCreateSiege_DoEveryFrame;
 

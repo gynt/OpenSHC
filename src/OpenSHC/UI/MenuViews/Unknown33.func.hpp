@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace Unknown33_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042C090,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042C090,
                 &OpenSHC::UI::MenuViews::Unknown33::MenuView_Unknown33_DoEveryFrame)
             MenuView_Unknown33_DoEveryFrame;
 
