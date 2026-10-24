@@ -103,7 +103,7 @@ namespace UI {
                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xd2, 400, 0, 0x11, iVar2);
             if ((DAT_00ed2780::instance)
                 && (FLOAT_00ec0834::instance = FLOAT_Between1And5::instance + FLOAT_00ec0834::instance,
-                    32.0 < FLOAT_00ec0834::instance != (FLOAT_00ec0834::instance == 32.0))) {
+                    32.0 <= FLOAT_00ec0834::instance)) {
                 if (DAT_00ed2780::instance == 2) {
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
