@@ -425,6 +425,28 @@ the join. Duplicating the call into each arm took `MenuView_IntroLogos_Prepare`,
 `MenuView_BuildMenu_Prepare`, `MenuView_CrusadeEndscreen_Prepare` and
 `MenuView_HistoricCampaignIntro_Prepare` to 100%.
 
+### What the decompiler's argument temps are *not*
+
+Ghidra also lifts the plain arguments of a call into temps, one per push:
+
+```cpp
+iVar10 = 0;
+iVar8 = 0x11;
+color1 = 0xccfaff;
+iVar1 = MenuHandlerState.y + 0x76;
+iVar4 = MenuHandlerState.x + 0x12;
+renderMultilineText6Unk(text, iVar4, iVar1, 0x1c8, color1, 0, iVar8, iVar10);
+```
+
+It is tempting to read that the same way as a hoisted nested call and write every
+expression at the call. **Measured across UI::MenuViews that is neutral at best.** A
+script that did it at all 32 sites in the namespace moved nothing on seven functions and
+took `MenuView_SelectCrusade_DoEveryFrame` and
+`MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame` from 100% down to 85.6% and
+84.1%: where one set of temps feeds a run of successive calls, MSVC keeps them in
+registers across the whole run and the original did the same, so the temps are real.
+Only the *nested call* is worth moving (`inline_arg.py`), never the literals around it.
+
 ### Box geometry is expressed relative to a base, not to the origin
 
 Drawing code computes a corner once and takes every other coordinate from it. Ghidra loses the
