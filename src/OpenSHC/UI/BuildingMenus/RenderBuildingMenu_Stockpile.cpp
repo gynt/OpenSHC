@@ -44,64 +44,56 @@ namespace UI {
     void BuildingMenus::RenderBuildingMenu_Stockpile()
     {
         int number;
-        char* _pText;
         BOOLEnum BVar2;
         int _textY;
         int _x;
         Position* _nudges;
         int _index4;
-        int _fontSize;
-        BOOLEnum _retainX;
-        int _blendStrength;
-        TextAlignment _alignment;
-        BGR24 _color;
         int _y;
         _index4 = 0;
-        _blendStrength = 0;
-        _retainX = FALSE;
-        _fontSize = 0x10;
-        _color = 0;
         _y = DAT_MenuHandlerState::instance.y + 0x200;
-        _alignment = OpenSHC::Text::TTA_LEFT;
         _textY = DAT_MenuHandlerState::instance.y + 0x1d3;
         _x = DAT_MenuHandlerState::instance.x + 0x1e;
         int _textX = DAT_MenuHandlerState::instance.x + 0x19;
         /*
           Render stockpile title
          */
-        _pText = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GOODS_YARD, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            _pText, _textX, _textY, _alignment, _color, _fontSize, _retainX, _blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GOODS_YARD, 0),
+            _textX, _textY, OpenSHC::Text::TTA_LEFT, 0, 0x10, FALSE, 0);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         _nudges = DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges;
         do {
             number
                 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
+                      .currentResources[DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes[_index4]];
             /*
               Render resource image
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + _index4), _nudges->x + _x,
+                DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons[_index4], _nudges->x + _x,
                 _nudges->y + _y);
-            if (DAT_MouseState::instance.leftClickStart) {
-                int iVar1 = *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + _index4);
+            if (DAT_MouseState::instance.leftClickStart != 0) {
                 BVar2 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _nudges->x + _x, _nudges->y + _y,
-                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
+                    (int)(DAT_GMImageHeaders::instance
+                            .imh[DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons[_index4]
+                                + GMTotalPicturesProcessed::instance[0x2e] + -1]
                             .width),
-                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
+                    (int)(DAT_GMImageHeaders::instance
+                            .imh[DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons[_index4]
+                                + GMTotalPicturesProcessed::instance[0x2e] + -1]
                             .height));
-                if ((BVar2)
+                if ((BVar2 != FALSE)
                     && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketplace.id
                         != 0)) {
                     BVar2 = MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(
-                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4));
-                    if (BVar2) {
+                        (ResourceType)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes[_index4]);
+                    if (BVar2 != FALSE) {
                         DAT_BuildingsState::instance.newSelectedBuildingID
                             = DAT_GameState::instance
                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -111,7 +103,7 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4);
+                            = DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes[_index4];
                     }
                 }
             }
@@ -122,8 +114,8 @@ namespace UI {
                 number, _x + 0xc, DAT_MenuHandlerState::instance.y + 0x22f, OpenSHC::Text::TTA_LEFT, 0, 0x11, FALSE, 0);
             _nudges = _nudges + 1;
             _x = _x + 0x3c;
-            _index4 = _index4 + 4;
-        } while ((int)_nudges < 0x617f50);
+            _index4 = _index4 + 1;
+        } while ((int)_nudges < (int)(DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges + 8));
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 

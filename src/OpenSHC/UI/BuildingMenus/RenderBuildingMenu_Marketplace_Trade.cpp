@@ -33,8 +33,8 @@ namespace UI {
         ResourceTypeInt RVar1
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                   .marketSelectedResourceType;
-        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         ResourceType RVar4 = (OpenSHC::Game::Resources::ResourceType)(RVar1);
+        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         if (RVar1 == OpenSHC::Game::Resources::RT_PITCH) {
             RVar4 = OpenSHC::Game::Resources::RT_PARTIALPITCH;
         }
@@ -59,7 +59,7 @@ namespace UI {
             0, 0x11, FALSE, 0);
         BOOLEnum BVar2 = MACRO_CALL_MEMBER(
             OpenSHC::Game::GameStateStructures_Func::anyGoodsAreAllowedForSale, DAT_GameState::ptr)();
-        if (BVar2) {
+        if (BVar2 != FALSE) {
             int iVar3 = MACRO_CALL_MEMBER(
                 OpenSHC::Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed, DAT_GameState::ptr)(RVar4);
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,

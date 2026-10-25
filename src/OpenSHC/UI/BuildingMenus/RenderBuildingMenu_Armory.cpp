@@ -45,13 +45,10 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043C840
     void BuildingMenus::RenderBuildingMenu_Armory()
     {
-        char* textAddress;
         int iVar3;
         int iVar4;
         Position* _positionPtr;
         int iVar5;
-        TextAlignment alignment;
-        BGR24 color;
         int iVar6;
         BOOLEnum BVar7;
         int iVar8;
@@ -59,24 +56,22 @@ namespace UI {
         iVar8 = 0;
         BVar7 = FALSE;
         iVar6 = 0x10;
-        color = 0;
-        alignment = OpenSHC::Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1fb;
         iVar3 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar4 = DAT_MenuHandlerState::instance.x + 0x1e;
         int iVar2 = DAT_MenuHandlerState::instance.x + 0x19;
-        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_ARMOURY, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            textAddress, iVar2, iVar3, alignment, color, iVar6, BVar7, iVar8);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_ARMOURY, 0),
+            iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0, iVar6, BVar7, iVar8);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         _positionPtr = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
+                        .currentResources[DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes[iVar5]];
             iVar6 = _positionPtr->y + iVar1;
             iVar8 = _positionPtr->x + iVar4;
-            iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
+            iVar3 = DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons[iVar5];
             if (iVar2 < 1) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(
@@ -85,22 +80,22 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3, iVar8, iVar6);
             }
-            if (DAT_MouseState::instance.leftClickStart) {
-                iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
+            if (DAT_MouseState::instance.leftClickStart != 0) {
+                iVar3 = DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons[iVar5];
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _positionPtr->x + iVar4, _positionPtr->y + iVar1,
                     (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 + -1]
                             .width),
                     (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 + -1]
                             .height));
-                if ((BVar7)
+                if ((BVar7 != FALSE)
                     && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketplace.id
                         != 0)) {
                     BVar7 = MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable, DAT_GameState::ptr)(
-                        *(ResourceType*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5));
-                    if (BVar7) {
+                        (ResourceType)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes[iVar5]);
+                    if (BVar7 != FALSE) {
                         DAT_BuildingsState::instance.newSelectedBuildingID
                             = DAT_GameState::instance
                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -110,7 +105,7 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
+                            = (ResourceTypeInt)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes[iVar5];
                     }
                 }
             }
@@ -118,8 +113,8 @@ namespace UI {
                 iVar4 + 0xc, DAT_MenuHandlerState::instance.y + 0x22f, OpenSHC::Text::TTA_LEFT, 0, 0x11, FALSE, 0);
             _positionPtr = _positionPtr + 1;
             iVar4 = iVar4 + 0x3c;
-            iVar5 = iVar5 + 4;
-        } while ((int)_positionPtr < 0x617fd0);
+            iVar5 = iVar5 + 1;
+        } while ((int)_positionPtr < (int)(DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges + 8));
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 
