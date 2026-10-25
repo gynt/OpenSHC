@@ -25,7 +25,7 @@ namespace UI {
             Menu* _menu;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
-                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL(OpenSHC::UI::Rendering_Func::DrawOuterMenuBorder)();
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(DAT_UnknownGFXIndex::instance,
@@ -43,9 +43,8 @@ namespace UI {
             _menu->yPosition = DAT_MenuHandlerState::instance.y;
             INT_00b95f68::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                "richard_swordswing.bik", 0, 0,
-                (int)((int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 508)),
-                (int)((int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 22)), 0);
+                "richard_swordswing.bik", 0, 0, (int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 508),
+                (int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 22), 0);
             DAT_MainMenuSwingSwordBool::instance = 0;
             return;
         }
