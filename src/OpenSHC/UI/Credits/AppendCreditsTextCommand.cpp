@@ -12,7 +12,7 @@ namespace UI {
         int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8)
     {
         CreditsRelatedStructure2* pCVar1;
-        if (((DAT_UnknownBinkCount::instance < 0x120) && (-1 < param_2))
+        if ((((int)DAT_UnknownBinkCount::instance < 0x120) && (-1 < param_2))
             && (param_2 < DAT_NumberOfStoredMenuStrings::instance)) {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = param_1;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].soundStream = param_2;
