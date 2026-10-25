@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace HistoricCampaignSelect_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00425500,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00425500,
                 &OpenSHC::UI::MenuViews::HistoricCampaignSelect::MenuView_HistoricCampaignSelect_Prepare)
             MenuView_HistoricCampaignSelect_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00425580,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00425580,
                 &OpenSHC::UI::MenuViews::HistoricCampaignSelect::MenuView_HistoricCampaignSelect_DoEveryFrame)
             MenuView_HistoricCampaignSelect_DoEveryFrame;
 

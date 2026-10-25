@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace CrusadeMap_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004D8CB0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D8CB0,
                 &OpenSHC::UI::MenuViews::CrusadeMap::MenuView_CrusadeMap_Prepare)
             MenuView_CrusadeMap_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DE300,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DE300,
                 &OpenSHC::UI::MenuViews::CrusadeMap::MenuView_CrusadeMap_DoEveryFrame)
             MenuView_CrusadeMap_DoEveryFrame;
 

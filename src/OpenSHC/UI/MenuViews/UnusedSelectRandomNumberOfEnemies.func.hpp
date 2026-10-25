@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedSelectRandomNumberOfEnemies_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042B960,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042B960,
                 &OpenSHC::UI::MenuViews::UnusedSelectRandomNumberOfEnemies::
                     MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame)
             MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame;

@@ -14,15 +14,15 @@ namespace UI {
     namespace MenuViews {
         namespace MainMenu_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424C40,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424C40,
                 &OpenSHC::UI::MenuViews::MainMenu::MenuView_MainMenu_Prepare)
             MenuView_MainMenu_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424CD0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424CD0,
                 &OpenSHC::UI::MenuViews::MainMenu::MenuView_MainMenu_DoInitial)
             MenuView_MainMenu_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424DA0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424DA0,
                 &OpenSHC::UI::MenuViews::MainMenu::MenuView_MainMenu_DoEveryFrame)
             MenuView_MainMenu_DoEveryFrame;
 
