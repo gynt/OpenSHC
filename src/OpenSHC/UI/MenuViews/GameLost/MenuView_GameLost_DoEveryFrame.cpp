@@ -48,10 +48,12 @@ namespace UI {
         void GameLost::MenuView_GameLost_DoEveryFrame()
         {
             DWORD DVar1;
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
+            if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
+                if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
+                    DAT_MouseState::instance.draggingStopped = TRUE;
+                }
+            } else {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGreatestLordScreen)();
-            } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
-                DAT_MouseState::instance.draggingStopped = TRUE;
             }
             if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
                     && (DAT_GameSynchronyState::instance.currentGameMode
