@@ -11,13 +11,13 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using UI::Enums::MenuModalType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB740
         void DisableWeapon::MenuItemActionHandler_DisableWeapon_Main(int param_1, ...)
         {
-            if (!param_1) {
+            if (param_1 == 0) {
                 DAT_MapPropertiesState::instance.SEC_XbowProducible_save
                     = DAT_MapPropertiesState::instance.SEC_XbowProducible_save ^ 1;
             }
@@ -42,8 +42,8 @@ namespace UI {
                     = DAT_MapPropertiesState::instance.SEC_MaceProducible_save ^ 1;
             }
             if (param_1 == -3) {
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_BUILDING_AVAILABILITY, FALSE);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_BUILDING_AVAILABILITY, FALSE);
             }
         }
 

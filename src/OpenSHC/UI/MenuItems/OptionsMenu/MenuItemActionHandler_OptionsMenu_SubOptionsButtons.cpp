@@ -17,12 +17,19 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using UI::Enums::MenuModalType;
+        using OpenSHC::UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00493BD0
         void OptionsMenu::MenuItemActionHandler_OptionsMenu_SubOptionsButtons(int param_1, ...)
         {
             switch (param_1) {
+            case 0x19:
+                DAT_MenuTextInputState::instance.pendingGameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel;
+                DAT_MenuTextInputState::instance.pendingSettingBubbleHelp = DAT_GameCore::instance.settingBubbleHelp;
+                DAT_MenuTextInputState::instance.pendingUnusedOption1 = DAT_GameCore::instance.unusedOption1;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_GAMEPLAY_OPTIONS);
+                break;
             case 4:
                 DAT_MenuTextInputState::instance.menuCurrentlySelectedResolution
                     = DAT_WindowAndDirectDraw::instance.currentGameResolution;
@@ -30,8 +37,8 @@ namespace UI {
                     = DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk;
                 DAT_MenuTextInputState::instance.menuScrollSpeedSetting
                     = DAT_ScrollingHandler::instance.scrollSpeedSetting_0x38;
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_VIDEO_OPTIONS);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_VIDEO_OPTIONS);
                 DAT_MenuTextInputState::instance.menuCursorType = DAT_MouseState::instance.cursorType;
                 return;
             case 5:
@@ -41,32 +48,26 @@ namespace UI {
                 DAT_MenuTextInputState::instance.pendingStreamVolume0 = DAT_SoundSystemState::instance.streamVolume[0];
                 DAT_MenuTextInputState::instance.pendingStreamVolume1 = DAT_SoundSystemState::instance.streamVolume[1];
                 DAT_MenuTextInputState::instance.pendingStreamVolume3 = DAT_SoundSystemState::instance.streamVolume[3];
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_SOUND_OPTIONS);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_SOUND_OPTIONS);
                 return;
-            case 6:
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_NETWORK_OPTIONS);
-                return;
-            case 0x11:
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
-                return;
-            case 0x19:
-                DAT_MenuTextInputState::instance.pendingGameSpeedLevel = DAT_GameCore::instance.gameSpeedLevel;
-                DAT_MenuTextInputState::instance.pendingSettingBubbleHelp = DAT_GameCore::instance.settingBubbleHelp;
-                DAT_MenuTextInputState::instance.pendingUnusedOption1 = DAT_GameCore::instance.unusedOption1;
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_GAMEPLAY_OPTIONS);
-                break;
             case 0x2d:
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     0);
                 MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
+                    OpenSHC::Text::UserTextHandler_Func::moveCursorToEnd, DAT_UserTextHandlerState::ptr)();
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_IDENTITY_OPTIONS);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_IDENTITY_OPTIONS);
+                    break;
+            case 6:
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_NETWORK_OPTIONS);
+                return;
+            case 0x11:
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                return;
             }
         }
 

@@ -25,16 +25,15 @@ namespace UI {
             DAT_ButtonUnknownZero::instance = 0;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)), (int)((int)(DAT_ButtonX::instance + 0x13)),
-                (int)((int)(DAT_ButtonH::instance + -1 + DAT_ButtonY::instance)),
-                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                DAT_ButtonX::instance, (int)(DAT_ButtonY::instance), (int)(DAT_ButtonX::instance + 0x13),
+                (int)(DAT_ButtonY::instance + DAT_ButtonH::instance + -1), (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawScrollbar, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)), (int)((int)(DAT_ButtonH::instance)),
-                thumbYPos, isDragged, thumbHeight, 0);
+                DAT_ButtonX::instance, (int)(DAT_ButtonY::instance), (int)(DAT_ButtonH::instance), thumbYPos, isDragged,
+                thumbHeight, 0);
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonX::instance - 1, (int)((int)(DAT_ButtonY::instance + -1)),
-                (int)((int)(DAT_ButtonX::instance + 0x14)), (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                DAT_ButtonX::instance - 1, (int)(DAT_ButtonY::instance + -1), (int)(DAT_ButtonX::instance + 0x14),
+                (int)(DAT_ButtonY::instance + DAT_ButtonH::instance),
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
         }
 
     }
