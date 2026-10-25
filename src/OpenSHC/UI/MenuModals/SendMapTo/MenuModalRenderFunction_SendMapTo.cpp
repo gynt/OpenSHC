@@ -25,9 +25,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC310
         void SendMapTo::MenuModalRenderFunction_SendMapTo(int x, int y, int width, int height)
         {
-            int iVar1;
-            int iVar2;
-            int local_10;
             char (*local_c)[250];
             short* local_8;
             /*
@@ -35,10 +32,10 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6a, x, y, width, height);
-            iVar1 = 0;
+            int iVar1 = 0;
             local_c = DAT_GameSynchronyState::instance.DAT_PlayerNames;
             local_8 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
-            local_10 = 0;
+            int local_10 = 0;
             do {
                 local_c = local_c + 1;
                 if (*local_8 == 1) {
@@ -47,11 +44,11 @@ namespace UI {
                         (BGR24)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(
                             int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_10 + 4)])),
                         0x11, FALSE, 0);
-                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
-                        iVar2 = width / 2;
+                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
+                        int iVar2 = width / 2;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x + -1, iVar1 + 0x52 + y, width + -0x13 + x,
-                            iVar1 + 99 + y, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                            iVar1 + 99 + y, (ushort)(COL_BLACK::instance.shortValue));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x, iVar1 + 0x53 + y,
                             ((iVar2 + -0x14)
@@ -59,13 +56,13 @@ namespace UI {
                                     + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
                                 + iVar2 + x,
-                            iVar1 + 0x62 + y, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                            iVar1 + 0x62 + y, (ushort)(COL_DARK_LIME::instance.shortValue));
                     }
                     iVar1 = iVar1 + 0x1e;
                 }
                 local_10 = local_10 + 4;
                 local_8 = local_8 + 1;
-            } while ((int)local_8 < 0x1a27512);
+            } while ((int)local_8 < (int)&DAT_GameSynchronyState::instance + 0x109daa);
             return;
         }
 

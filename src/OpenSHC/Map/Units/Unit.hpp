@@ -282,7 +282,7 @@ namespace Map {
             int blessedAmount; // 0x000003E4 length: 4
             short attackAtTileX; // 0x000003E8 length: 2
             short attackAtTileY; // 0x000003EA length: 2
-            byte firstNameIndex; // 0x000003EC length: 1
+            char firstNameIndex; // 0x000003EC length: 1
             byte rng1_to_70; // 0x000003ED length: 1
             char nextAttackHurtsWall; // 0x000003EE length: 1
             undefined1 poleturner_spearOrPike; // 0x000003EF length: 1
