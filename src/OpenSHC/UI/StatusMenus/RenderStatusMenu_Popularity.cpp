@@ -35,8 +35,6 @@ namespace UI {
         short sVar4;
         short sVar5;
         short sVar6;
-        int iVar7;
-        char* pcVar8;
         int iVar9;
         uint uVar10;
         uint uVar11;
@@ -66,16 +64,16 @@ namespace UI {
         iVar16 = 0x11;
         BVar15 = 0;
         TVar14 = OpenSHC::Text::TTA_LEFT;
-        iVar7 = DAT_MenuHandlerState::instance.y + 0x1d3;
+        int iVar7 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar9 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
           added by script: "Popularity"
          */
-        pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 1);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar8, iVar9, iVar7, TVar14, BVar15, iVar16, BVar20, iVar21);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 1),
+            iVar9, iVar7, TVar14, BVar15, iVar16, BVar20, iVar21);
         BVar20 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                      .areCarnivalUnitsPresent;
         bVar13 = BVar20 != FALSE;
@@ -86,7 +84,7 @@ namespace UI {
         sVar1
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58;
         uVar10 = uVar11;
-        if (sVar1) {
+        if (sVar1 != 0) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_18 = uVar11;
@@ -94,7 +92,7 @@ namespace UI {
         sVar2
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount59;
         uVar11 = uVar10;
-        if (sVar2) {
+        if (sVar2 != 0) {
             bVar13 = bVar13 + 1;
             uVar11 = uVar10 + 1;
             local_14 = uVar10;
@@ -102,7 +100,7 @@ namespace UI {
         sVar3
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount54;
         uVar10 = uVar11;
-        if (sVar3) {
+        if (sVar3 != 0) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_10 = uVar11;
@@ -110,7 +108,7 @@ namespace UI {
         sVar4
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount55;
         uVar11 = uVar10;
-        if (sVar4) {
+        if (sVar4 != 0) {
             bVar13 = bVar13 + 1;
             uVar11 = uVar10 + 1;
             local_c = uVar10;
@@ -118,14 +116,14 @@ namespace UI {
         sVar5
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount56;
         uVar10 = uVar11;
-        if (sVar5) {
+        if (sVar5 != 0) {
             bVar13 = bVar13 + 1;
             uVar10 = uVar11 + 1;
             local_8 = uVar11;
         }
         sVar6
             = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount57;
-        if (sVar6) {
+        if (sVar6 != 0) {
             bVar13 = bVar13 + 1;
             local_4 = uVar10;
         }
@@ -134,10 +132,10 @@ namespace UI {
             DAT_GameCore::instance.popularityMessagePage = 0;
         }
         local_2c = (int)sVar6 + (int)sVar5 + (int)sVar4 + (int)sVar3 + (int)sVar2 + (int)sVar1;
-        if (BVar20) {
+        if (BVar20 != FALSE) {
             local_2c = local_2c + 400;
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -148,10 +146,10 @@ namespace UI {
             /*
               added by script: "Food"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 5);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 5),
+                iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .currentPopulation
@@ -174,14 +172,14 @@ namespace UI {
                 uVar10 = 0xffffff9c;
             } else {
                 uVar10 = 0xffffff38;
-                if (iVar7) {
+                if (iVar7 != 0) {
                     uVar10 = local_4;
                 }
             }
         }
         iVar7 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .foodTypesCurrentlyEaten;
-        if ((iVar7) && (iVar7 != 1)) {
+        if ((iVar7 != 0) && (iVar7 != 1)) {
             if (iVar7 == 2) {
                 uVar10 = uVar10 + 0x19;
             } else if (iVar7 == 3) {
@@ -190,12 +188,12 @@ namespace UI {
                 uVar10 = uVar10 + 0x4b;
             }
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)((int)(uVar10)),
+                DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)(uVar10),
                 FALSE);
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -206,10 +204,10 @@ namespace UI {
             /*
               added by script: "Tax"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 6);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 6),
+                iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .currentPopulation
@@ -223,7 +221,7 @@ namespace UI {
         } else {
             iVar12 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                          .taxesSetting;
-            if (!iVar12) {
+            if (iVar12 == 0) {
                 iVar12 = 0xaf;
             } else if (iVar12 == 1) {
                 iVar12 = 0x7d;
@@ -247,11 +245,11 @@ namespace UI {
                 iVar12 = (-(uint)(iVar12 != 10) & 0xffffff9c) - 500;
             }
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1f2, iVar12, FALSE);
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar21 = 0x12;
             iVar9 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x20b);
             iVar16 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -262,10 +260,10 @@ namespace UI {
             /*
               added by script: "Crowding"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 7);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 7),
+                iVar16, iVar9, TVar14, BVar15, iVar21, BVar20, iVar7);
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .currentPopulation
@@ -274,23 +272,23 @@ namespace UI {
         } else {
             iVar7 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .crowding;
-            if (iVar7 < 0x65) {
+            if (iVar7 <= 0x64) {
                 iVar7 = 0;
-            } else if (iVar7 < 0x79) {
+            } else if (iVar7 <= 0x78) {
                 iVar7 = -0x32;
-            } else if (iVar7 < 0x8d) {
+            } else if (iVar7 <= 0x8c) {
                 iVar7 = -100;
-            } else if (iVar7 < 0xa1) {
+            } else if (iVar7 <= 0xa0) {
                 iVar7 = -0x96;
             } else {
                 iVar7 = ((0xb4 < iVar7) - 1 & 0x32) - 0xfa;
             }
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x20a, iVar7, FALSE);
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar17 = 0x12;
             iVar16 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x223);
             iVar21 = DAT_MenuHandlerState::instance.x + 0xc1;
@@ -301,14 +299,14 @@ namespace UI {
             /*
               added by script: "Fear Factor"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 0xc);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar21, iVar16, TVar14, BVar15, iVar17, BVar20, iVar9);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 0xc),
+                iVar21, iVar16, TVar14, BVar15, iVar17, BVar20, iVar9);
         }
         uVar11 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                      .fearFactorLevel;
-        if ((int)uVar11 < 1) {
+        if ((int)uVar11 <= 0) {
             if (uVar11 < 0x80000000) {
                 iVar9 = 0;
             } else {
@@ -317,11 +315,11 @@ namespace UI {
         } else {
             iVar9 = uVar11 * 0x19;
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x222, iVar9, FALSE);
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar18 = 0x12;
             iVar21 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 0x1db);
             iVar17 = DAT_MenuHandlerState::instance.x + 0x163;
@@ -332,10 +330,10 @@ namespace UI {
             /*
               added by script: "Religion"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 10);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar17, iVar21, TVar14, BVar15, iVar18, BVar20, iVar16);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 10),
+                iVar17, iVar21, TVar14, BVar15, iVar18, BVar20, iVar16);
         }
         iVar16 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                      .blessedPeoplePercentage;
@@ -357,11 +355,11 @@ namespace UI {
             != 0) {
             iVar16 = iVar16 + 0x32;
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1da, iVar16, FALSE);
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             iVar19 = 0x12;
             iVar17 = (OpenSHC::Text::TextAlignment)(DAT_MenuHandlerState::instance.y + 499);
             iVar18 = DAT_MenuHandlerState::instance.x + 0x163;
@@ -372,10 +370,10 @@ namespace UI {
             /*
               added by script: "Ale coverage"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 0xb);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar21);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 0xb),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar21);
         }
         iVar21 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::computeAleCoverage, DAT_GameState::ptr)(
             DAT_GameSynchronyState::instance.currentPlayerSlotID);
@@ -386,14 +384,15 @@ namespace UI {
         } else if (iVar21 < 0x4b) {
             iVar21 = 100;
         } else {
-            iVar21 = ((99 < iVar21) - 1 & 0xffffffce) + 200;
+            iVar21 = ((100 <= iVar21) - 1 & 0xffffffce) + 200;
         }
-        if (!DAT_GameCore::instance.popularityMessagePage) {
+        if (DAT_GameCore::instance.popularityMessagePage == 0) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_MenuHandlerState::instance.x + 0x14d, DAT_MenuHandlerState::instance.y + 0x1f2, iVar21, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .areCarnivalUnitsPresent)
+                    .areCarnivalUnitsPresent
+                != FALSE)
             && (DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][0]
                 == DAT_GameCore::instance.popularityMessagePage)) {
             iVar17 = DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2]
@@ -408,14 +407,14 @@ namespace UI {
             /*
               added by script: "Fair"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 9);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 9),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
                     + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y + -1
-                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2])),
+                (int)(DAT_MenuHandlerState::instance.y + -1
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2]),
                 400, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58
@@ -434,10 +433,10 @@ namespace UI {
             /*
               added by script: "Marriage"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x95);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x95),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
@@ -464,10 +463,10 @@ namespace UI {
             /*
               added by script: "Jester"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x96);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x96),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
@@ -494,10 +493,10 @@ namespace UI {
             /*
               added by script: "Plague"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x8b);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x8b),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
@@ -524,14 +523,14 @@ namespace UI {
             /*
               added by script: "Lion Attack"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x91);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x91),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
                     + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y + -1
-                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2])),
+                (int)(DAT_MenuHandlerState::instance.y + -1
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2]),
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount55)),
@@ -553,10 +552,10 @@ namespace UI {
             /*
               added by script: "Bandits"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x92);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x92),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
@@ -583,10 +582,10 @@ namespace UI {
             /*
               added by script: "Fire!"
              */
-            pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xb3);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xb3),
+                iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
                 DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][1] + -0x16
                     + DAT_MenuHandlerState::instance.x,
@@ -607,10 +606,10 @@ namespace UI {
         /*
           added by script: "In the coming month"
          */
-        pcVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 4);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORTS, 4),
+            iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
         MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
             DAT_TextManagerObject::instance.currentXOffset_0x0 + 0xfa + DAT_MenuHandlerState::instance.x,
             DAT_MenuHandlerState::instance.y + 0x241, local_2c + uVar10 + iVar12 + iVar7 + iVar9 + iVar16 + iVar21,

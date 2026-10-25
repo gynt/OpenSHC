@@ -29,10 +29,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043FD30
     void StatusMenus::RenderStatusMenu_Resources()
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
-        char* textAddress;
         int yParam;
         int iVar4;
         Position* pPVar5;
@@ -42,29 +38,30 @@ namespace UI {
         int fontSize;
         BOOLEnum keepOffsetX;
         int blendStrength;
-        iVar2 = DAT_MenuHandlerState::instance.y;
+        int iVar2 = DAT_MenuHandlerState::instance.y;
         iVar4 = 0;
         blendStrength = 0;
         keepOffsetX = FALSE;
         fontSize = 0x11;
         color = 0;
-        iVar1 = DAT_MenuHandlerState::instance.y + 0x1fb;
+        int iVar1 = DAT_MenuHandlerState::instance.y + 0x1fb;
         alignment = OpenSHC::Text::TTA_LEFT;
         yParam = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar6 = DAT_MenuHandlerState::instance.x + 0x69;
-        iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
+        int iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
           added by script: "Stores"
          */
-        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 6);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            textAddress, iVar3, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 6),
+            iVar3, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
         pPVar5 = DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges;
         do {
             iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + iVar4)];
+                        .currentResources[*(
+                            int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + iVar4)];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                 *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + iVar4), pPVar5->x + iVar6,
@@ -74,7 +71,7 @@ namespace UI {
             pPVar5 = pPVar5 + 1;
             iVar6 = iVar6 + 0x34;
             iVar4 = iVar4 + 4;
-        } while ((int)pPVar5 < 0x617f50);
+        } while ((int)pPVar5 < (int)&DAT_RenderingDefinedData::instance + 0x554e4);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 

@@ -13593,19 +13593,19 @@ SHC_3BB0A8C1_0x0043E5A0 | 58.3% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x0043E5F0 | 65.2% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x0043E6C0 | 48.6% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043E6C0 | 65.0% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x0043F2B0 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x0043F2C0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0043F2F0 | 33.5% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043F2F0 | 75.1% | Reimplemented, asm differs
 
-SHC_3BB0A8C1_0x0043F6A0 | 59.2% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043F6A0 | 73.2% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x0043F930 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0043FAC0 | 57.5% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043FAC0 | 82.7% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x0043FBB0 | 92.9% | Style pass, asm differs
 
@@ -13617,13 +13617,13 @@ SHC_3BB0A8C1_0x0043FCA0 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x0043FCB0 | 74.2% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x0043FD30 | 36.1% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043FD30 | 56.9% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x0043FD90 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0043FE10 | 45.5% | Style pass, asm differs
+SHC_3BB0A8C1_0x0043FE10 | 85.2% | Reimplemented, asm differs
 
-SHC_3BB0A8C1_0x004401A0 | 36.1% | Style pass, asm differs
+SHC_3BB0A8C1_0x004401A0 | 56.9% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x00440200 | 0.0% | Pending
 
@@ -16365,15 +16365,15 @@ SHC_3BB0A8C1_0x00447A48 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x00447A4C | 0.0% | Pending
 
-SHC_3BB0A8C1_0x00447A50 | 47.6% | Style pass, asm differs
+SHC_3BB0A8C1_0x00447A50 | 56.7% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x00447CF0 | 33.3% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00447D30 | 42.7% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x00447DC0 | 58.4% | Style pass, asm differs
+SHC_3BB0A8C1_0x00447DC0 | 85.0% | Reimplemented, asm differs
 
-SHC_3BB0A8C1_0x00447FA0 | 25.7% | Style pass, asm differs
+SHC_3BB0A8C1_0x00447FA0 | 36.8% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x004482F0 | 52.1% | Style pass, asm differs
 
