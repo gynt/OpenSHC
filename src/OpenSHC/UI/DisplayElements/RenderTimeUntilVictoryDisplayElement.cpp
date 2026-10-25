@@ -32,18 +32,10 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1EB0
     void DisplayElements::RenderTimeUntilVictoryDisplayElement(int posX, int posY, DWORD elementState)
     {
-        int iVar1;
-        char* pcVar2;
         int left;
         int iVar3;
         int xParam;
         int yParam;
-        TextAlignment alignment;
-        uint foregroundColor;
-        uint backgroundColor;
-        int fontSize;
-        BOOLEnum keepOffsetX;
-        int blendStrength;
         int iVar4;
         if (DAT_GameCore::instance.section1095 == 2) {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
@@ -53,10 +45,10 @@ namespace UI {
         /*
           added by script: "Time Until Victory"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x19);
         iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
-            pcVar2, iVar4);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x19),
+            iVar4);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
             posX = posX + -0x70;
@@ -89,27 +81,21 @@ namespace UI {
         }
         DAT_00df4290::instance = iVar4 + 0x10;
         iVar3 = iVar4 / 2;
-        iVar1 = posX + 10 + iVar3;
+        int iVar1 = posX + 10 + iVar3;
         left = iVar1 - iVar3;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
             DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar3 + 5 + iVar1, posY + 0x1e, 0x10);
-        blendStrength = 0;
-        keepOffsetX = FALSE;
-        fontSize = 0x12;
-        backgroundColor = 0;
-        foregroundColor = 0xc2f0eb;
-        alignment = OpenSHC::Text::TTA_CENTER;
         xParam = iVar1;
         yParam = posY;
         /*
           added by script: "Time Until Victory"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x19);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-            pcVar2, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x19),
+            xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x12, FALSE, 0);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left + -1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            left + -1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)(COL_BLACK::instance.shortValue));
         if (DAT_MapPropertiesState::instance.SEC_Section1080 != DAT_MapPropertiesState::instance.SEC_Section1090) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13,
@@ -118,7 +104,7 @@ namespace UI {
                         / DAT_MapPropertiesState::instance.SEC_Section1090
                     - iVar3)
                     + iVar1,
-                posY + 0x17, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                posY + 0x17, (ushort)(COL_DARK_LIME::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         return;
