@@ -19,14 +19,12 @@ namespace UI {
         void TextureRenderCore::drawBitmapFaceWithBlendUnk(
             int bitmapFaceIndex, int xPos, int yPos, int colorOrBlendOrGammaUnk)
         {
-            ushort uVar1;
             int _pixelToLineJump;
             int iVar2;
             int iVar3;
             int iVar4;
             int iVar5;
             int iVar6;
-            int iVar7;
             int _widthInByte;
             ushort* _surfacePtr;
             ushort* _bitmapFacePtr;
@@ -35,8 +33,8 @@ namespace UI {
             int iVar10;
             int local_c;
             int local_8;
-            iVar7 = colorOrBlendOrGammaUnk;
-            if (!colorOrBlendOrGammaUnk) {
+            int iVar7 = colorOrBlendOrGammaUnk;
+            if (colorOrBlendOrGammaUnk == 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace, this)(
                     bitmapFaceIndex, xPos, yPos);
             }
@@ -119,16 +117,16 @@ namespace UI {
                             _surfacePtr = _surfacePtr + 4;
                             local_c = local_c + -1;
                             colorOrBlendOrGammaUnk = (int)_bitmapFacePtr;
-                        } while (local_c);
+                        } while (local_c != 0);
                         _surfacePtr = _surfacePtr + _pixelToLineJump;
                         local_8 = local_8 + -1;
-                    } while (local_8);
+                    } while (local_8 != 0);
                 }
                 yPos = 0x42;
                 do {
                     bitmapFaceIndex = 0x40;
                     do {
-                        uVar1 = *_bitmapFacePtr;
+                        ushort uVar1 = *_bitmapFacePtr;
                         _bitmapFacePtr = _bitmapFacePtr + 1;
                         if (uVar1 != COL_MAGENTA::instance.shortValue) {
                             uVar8 = (uint)uVar1;
@@ -140,10 +138,10 @@ namespace UI {
                         }
                         _surfacePtr = _surfacePtr + 1;
                         bitmapFaceIndex = bitmapFaceIndex + -1;
-                    } while (bitmapFaceIndex);
+                    } while (bitmapFaceIndex != 0);
                     _surfacePtr = _surfacePtr + _pixelToLineJump;
                     yPos = yPos + -1;
-                } while (yPos);
+                } while (yPos != 0);
             }
         }
 

@@ -12,8 +12,8 @@ namespace UI {
             int iVar1 = this->currentWidth_0x28 * 2;
             int _negativeHeightX2 = this->currentHeight_0x2c * -2;
             int iVar3 = iVar1 - this->currentHeight_0x2c;
-            for (; -1 < this->currentHeight_0x2c; this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
-                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawCurrentPixel, this)();
+            for (; 0 <= this->currentHeight_0x2c; this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawCurrentPixel, this)();
                 int iVar2 = iVar1;
                 if (0 < iVar3) {
                     this->currentX = this->currentX + this->moveDirectionXUnk_0x20;

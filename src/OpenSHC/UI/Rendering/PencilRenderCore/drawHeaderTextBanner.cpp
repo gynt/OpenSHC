@@ -15,64 +15,58 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using IO::Graphics::GmID;
-        using Text::TextAlignment;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::IO::Graphics::GmID;
+        using OpenSHC::Text::TextAlignment;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00475CC0
         void PencilRenderCore::drawHeaderTextBanner(
             int textGroupIndex, int textNumInGroup, int xPos, int yPos, int width, int param_6)
         {
-            char* _textAddress;
             int _textY;
             int _width;
             int iVar2;
             int iVar3;
             int iVar4;
-            int _blendStrength;
             int _textX;
-            int _fontSize;
-            TextAlignment _alignment;
-            BGR24 _color;
-            BOOLEnum _keepOffsetX;
             int iVar1 = xPos;
             iVar2 = xPos + 8;
             _width = width + -0x10;
-            for (xPos = 0; xPos < 0x40; xPos += 8) {
-                if (!xPos) {
-                    iVar4 = 0x30;
+            for (int xPos = 0; xPos < 0x40; xPos = xPos + 8) {
+                if (xPos == 0) {
+                iVar4 = 0x30;
                 } else {
-                    iVar4 = (-(uint)(xPos != 0x38) & 0xfffffffa) + 0x3c;
+                iVar4 = (-(uint)(xPos != 0x38) & 0xfffffffa) + 0x3c;
                 }
-                for (iVar3 = 0; iVar3 < _width; iVar3 += 8) {
+                iVar3 = 0;
+                if (0 < _width) {
+                do {
                     int imageID = iVar4;
-                    if ((iVar3) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
+                    if ((iVar3 != 0) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
                         imageID = iVar4 + 1;
                     }
-                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
-                        iVar3 + iVar2, xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3, 0);
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
+                        iVar3 + iVar2, xPos + yPos + 8, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
+                        0);
+                    iVar3 = iVar3 + 8;
+                } while (iVar3 < _width);
                 }
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, iVar1 + 0xb,
-                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, iVar1 + 0xb,
+                yPos + 0x11, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
                 (iVar2 - DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x9c] + 0x5a].width) + -3
                     + _width,
-                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
-            _blendStrength = 0;
-            _keepOffsetX = FALSE;
-            _fontSize = 0xf;
-            _color = 0xc2f0eb;
-            _alignment = Text::TTA_CENTER;
+                yPos + 0x11, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
             _textY = yPos + 0x16;
             _textX = _width / 2 + iVar2;
-            _textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)((DE::SHCDE::eTextSections)textGroupIndex, textNumInGroup);
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                _textAddress, _textX, _textY, _alignment, _color, _fontSize, _keepOffsetX, _blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)textGroupIndex, textNumInGroup),
+                _textX, _textY, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0xf, FALSE, 0);
         }
 
     }

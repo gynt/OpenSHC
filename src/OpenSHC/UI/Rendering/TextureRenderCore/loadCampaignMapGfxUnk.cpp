@@ -7,7 +7,6 @@
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -19,16 +18,12 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00454CB0
         void TextureRenderCore::loadCampaignMapGfxUnk()
         {
-            byte bVar1;
-            short sVar2;
             ushort uVar3;
             byte* pbVar4;
             int iVar5;
             ushort* _campaignMapPtrUnk;
             undefined** _campaignActGfx8Ptr;
             byte local_304[768];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)&_campaignActGfx8Ptr;
             _campaignActGfx8Ptr = (undefined**)(DAT_BlendingDefinedData::instance.campaign_map_england);
             _campaignMapPtrUnk = this->campaignMapColorMapsUnk_0x16c886[0] + 1;
             do {
@@ -39,7 +34,7 @@ namespace UI {
                 pbVar4 = local_304;
                 iVar5 = 0x40;
                 do {
-                    sVar2 = (*pbVar4 & 0xfff8) * 0x20;
+                    short sVar2 = (*pbVar4 & 0xfff8) * 0x20;
                     if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {
                         uVar3 = (ushort)(pbVar4[2] >> 3) + (sVar2 + (pbVar4[1] & 0xfffc)) * 8;
                     } else {
@@ -48,7 +43,7 @@ namespace UI {
                     if (uVar3 == 0xfc1f) {
                         uVar3 = 0xf81f;
                     }
-                    bVar1 = pbVar4[3];
+                    byte bVar1 = pbVar4[3];
                     _campaignMapPtrUnk[-1] = uVar3;
                     sVar2 = (bVar1 & 0xfff8) * 0x20;
                     if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {
@@ -85,9 +80,9 @@ namespace UI {
                     _campaignMapPtrUnk = _campaignMapPtrUnk + 4;
                     pbVar4 = pbVar4 + 0xc;
                     iVar5 = iVar5 + -1;
-                } while (iVar5);
+                } while (iVar5 != 0);
                 _campaignActGfx8Ptr = _campaignActGfx8Ptr + 1;
-            } while ((int)_campaignActGfx8Ptr < 0xab8730);
+            } while ((int)_campaignActGfx8Ptr < (int)&DAT_BlendingDefinedData::instance + 0x3014);
             ;
         }
 

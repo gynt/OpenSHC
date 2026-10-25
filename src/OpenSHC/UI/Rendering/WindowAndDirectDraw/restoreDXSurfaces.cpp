@@ -6,7 +6,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467EC0
         BOOLEnum WindowAndDirectDraw::restoreDXSurfaces()
@@ -17,16 +17,16 @@ namespace UI {
                     return FALSE;
                 }
                 HVar1 = this->directDrawPrimarySurfacePointer->Restore();
-                if (HVar1) {
+                if (HVar1 != 0) {
                     return FALSE;
                 }
             }
             if (this->directDrawBackbufferSurfacePointer != (IDirectDrawSurface*)0x0
-                && (HVar1 = this->directDrawBackbufferSurfacePointer->Restore(), !HVar1)
+                && (HVar1 = this->directDrawBackbufferSurfacePointer->Restore(), HVar1 == 0)
                 && this->directDrawOffscreenSurfacePointer_screenMenu != (IDirectDrawSurface*)0x0
                 && (HVar1 = this->directDrawOffscreenSurfacePointer_screenMenu->Restore(),
                     HVar1 == 0 && (this->directDrawOffscreenSurfacePointer_mapGame != (IDirectDrawSurface*)0x0))
-                && (HVar1 = this->directDrawOffscreenSurfacePointer_mapGame->Restore(), !HVar1)) {
+                && (HVar1 = this->directDrawOffscreenSurfacePointer_mapGame->Restore(), HVar1 == 0)) {
                 return TRUE;
             }
             return FALSE;

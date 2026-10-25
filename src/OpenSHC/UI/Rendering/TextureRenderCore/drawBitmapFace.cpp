@@ -54,10 +54,10 @@ namespace UI {
                     }
                     _ptrInSurface = _ptrInSurface + 1;
                     _facePixelWidth = _facePixelWidth + -1;
-                } while (_facePixelWidth);
+                } while (_facePixelWidth != 0);
                 _ptrInSurface = _ptrInSurface + _pixelToJump;
                 _widthInByte = _widthInByte + -1;
-            } while (_widthInByte);
+            } while (_widthInByte != 0);
         }
 
     }

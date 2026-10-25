@@ -209,7 +209,7 @@ namespace Game {
             int field3171_0x27a8; // 0x000027A8 length: 4
             int field3172_0x27ac; // 0x000027AC length: 4
             int somePlayerID; // 0x000027B0 length: 4
-            short playerIsAlive[9]; // 0x000027B4 length: 18
+            ushort playerIsAlive[9]; // 0x000027B4 length: 18
             short field3175_0x27c6; // 0x000027C6 length: 2
             int burningTreeCount; // 0x000027C8 length: 4
             int aliveDeerCount; // 0x000027CC length: 4

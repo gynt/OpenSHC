@@ -33,7 +33,7 @@ namespace UI {
             int iVar3;
             iVar1 = DAT_CurrentButtonPictureInGm::instance;
             dst = this->surfacePtr;
-            if (-1 < DAT_CurrentButtonPictureInGm::instance) {
+            if (0 <= DAT_CurrentButtonPictureInGm::instance) {
                 iVar3 = GMTotalPicturesProcessed::instance[DAT_UIButtonDefinedData::instance
                         .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                         .gmId_0x0];
@@ -42,14 +42,14 @@ namespace UI {
                 this->currentImageWidth = iVar2;
                 MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
                     DAT_GMImageHeaders::instance.imh[iVar1 + iVar3 + -1].height * iVar2 * 2,
-                    (ushort)((int)(COL_MAGENTA::instance.shortValue)), (void*)((int)(dst)));
+                    (ushort)(COL_MAGENTA::instance.shortValue), (void*)((int)(dst)));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                     = OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
                                                           .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                                           .gmId_0x0,
-                    (int)((int)((OpenSHC::DE::SHCDE::eGM)DAT_CurrentButtonPictureInGm::instance)), 0, 0);
+                    (int)((OpenSHC::DE::SHCDE::eGM)DAT_CurrentButtonPictureInGm::instance), 0, 0);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return (
                     uint)(dst[((DAT_MouseState::instance.screenSpaceY - DAT_ButtonY::instance) * this->currentImageWidth
@@ -67,22 +67,22 @@ namespace UI {
             this->currentImageWidth = iVar3;
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
                 *(short*)((int)DAT_GMImageHeaders::ptr + iVar1 + 2) * iVar3 * 2,
-                (ushort)((int)(COL_MAGENTA::instance.shortValue)), (void*)((int)(this->surfacePtr)));
+                (ushort)(COL_MAGENTA::instance.shortValue), (void*)((int)(this->surfacePtr)));
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                 = OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
                                                       .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                                       .alphaGmIdUnk_0xc,
-                (int)((int)(DAT_CurrentButtonPictureInGm::instance)), 0, 0);
+                (int)(DAT_CurrentButtonPictureInGm::instance), 0, 0);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if ((dst[this->currentImageWidth * (DAT_MouseState::instance.screenSpaceY - DAT_ButtonY::instance)
-                     + (DAT_MouseState::instance.screenSpaceX - DAT_ButtonX::instance)]
-                    != COL_MAGENTA::instance.shortValue)
-                && (0x1e < ((byte)dst[this->currentImageWidth
-                                    * (DAT_MouseState::instance.screenSpaceY - DAT_ButtonY::instance)
-                                + (DAT_MouseState::instance.screenSpaceX - DAT_ButtonX::instance)]
-                        & 0x1f))) {
+            if (dst[this->currentImageWidth * (DAT_MouseState::instance.screenSpaceY - DAT_ButtonY::instance)
+                    + (DAT_MouseState::instance.screenSpaceX - DAT_ButtonX::instance)]
+                    != COL_MAGENTA::instance.shortValue
+                && 0x1f <= ((byte)dst[this->currentImageWidth
+                                   * (DAT_MouseState::instance.screenSpaceY - DAT_ButtonY::instance)
+                               + (DAT_MouseState::instance.screenSpaceX - DAT_ButtonX::instance)]
+                       & 0x1f)) {
                 return TRUE;
             }
             return FALSE;

@@ -6,12 +6,12 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467E50
         void WindowAndDirectDraw::adjustForNotExclusiveFullscreenUnk(LPRECT destinationRect, LPRECT sourceRect)
         {
-            if (!this->runGameAsExclusiveFullscreen) {
+            if (this->runGameAsExclusiveFullscreen == FALSE) {
                 int _screenWidth = GetSystemMetrics(SM_CXSCREEN);
                 int _screenHeight = GetSystemMetrics(SM_CYSCREEN);
                 if (destinationRect->left < 0) {

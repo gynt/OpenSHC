@@ -20,9 +20,8 @@ namespace UI {
         void WindowAndDirectDraw::prepareWindowAndDDraw_2Unk(
             BOOLEnum runAsExclusiveFullscreen, ScreenResolutionEnum resEnum)
         {
-            dword dVar1;
-            dVar1 = this->pendingBltMode;
-            if (this->drawingReady_0x0) {
+            dword dVar1 = this->pendingBltMode;
+            if (this->drawingReady_0x0 != FALSE) {
                 this->pendingBltMode = 0;
                 MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     this->byteSizeofScreenResolution, '\0', (void*)((int)(this->surfacePointer_screenMenu)));
@@ -39,7 +38,7 @@ namespace UI {
             this->drawingReady_0x0
                 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::initializeDirectDraw, this)();
             do {
-                if (this->drawingReady_0x0) {
+                if (this->drawingReady_0x0 != FALSE) {
                 LAB_00472a5f:
                     this->unk_resetViewportRelated = 2;
                     this->pendingMenuRedraw = 1;

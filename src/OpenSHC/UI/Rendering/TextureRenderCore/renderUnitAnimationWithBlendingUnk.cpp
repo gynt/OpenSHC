@@ -6,11 +6,11 @@
 #include "OpenSHC/Rendering/ColorMode.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
-#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_BlendFilterArrays.hpp"
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_CurrentlyRenderedSpriteID.hpp"
 #include "OpenSHC/Globals/DAT_RenderedUnitOwner.hpp"
+#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 
 namespace OpenSHC {
@@ -23,19 +23,16 @@ namespace UI {
         using OpenSHC::Rendering::Enums::RenderTarget;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00451E00
+#pragma optimize("y", off)
         void TextureRenderCore::renderUnitAnimationWithBlendingUnk(
             int xPosition, int yPosition, int width, int height, byte* imageAddress, int blendStrengthUnk)
         {
-            ushort uVar1;
-            int iVar2;
             TgxTokenByte TVar3;
             ushort uVar4;
             ushort uVar5;
-            int iVar6;
             uint uVar7;
             int iVar8;
             ushort uVar9;
-            int iVar10;
             uint uVar11;
             byte bVar13;
             TgxTokenByte bVar12;
@@ -64,34 +61,39 @@ namespace UI {
                 + DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[DAT_RenderedUnitOwner::instance] * 0x200
                 + 0x1fea604);
             if (0 < height) {
-                if (DAT_TextureRenderCoreObject::instance.colorPaletteOverride) {
+                if (DAT_TextureRenderCoreObject::instance.colorPaletteOverride != 0) {
                     _colorPaletteRef = (ushort*)DAT_TextureRenderCoreObject::instance.colorPaletteOverride;
                 }
                 if (blendStrengthUnk < 0x20) {
                     if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::InitBlendFilterArraysUnk)();
                     }
-                    iVar6 = blendStrengthUnk * 0x200;
-                    iVar2 = blendStrengthUnk * -0x200;
-                    iVar10 = iVar2 + 0xd812d8;
-                    if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
-                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                    int iVar6 = blendStrengthUnk * 0x200;
+                    int iVar2 = blendStrengthUnk * -0x200;
+                    int iVar10 = iVar2 + 0xd812d8;
+                    if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
+                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                             local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                             local_c = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
                         } else {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                             local_8 = 0x1fb0;
                             local_c = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
                         }
                         if ((yPosition + height <= iVar14) || (height = iVar14 - yPosition, 0 < height)) {
                             if (DAT_WindowAndDirectDraw::instance.colorBitMode != OpenSHC::Rendering::RGB_555) {
-                                if (-1 < xPosition) {
+                                if (0 <= xPosition) {
                                     if (yPosition < local_c) {
                                         iVar14 = local_c - yPosition;
-                                        if (height <= iVar14) {}
+                                        if (height <= iVar14) {
+                                            return;
+                                        }
                                         height = height - iVar14;
                                         do {
                                             while (true) {
@@ -113,8 +115,8 @@ namespace UI {
                                             yPosition = local_c;
                                         } while (0 < iVar14);
                                     }
-                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8
-                                        + xPosition * 2);
+                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                        + yPosition * local_8 + xPosition * 2);
                                     puVar20 = puVar19;
                                     do {
                                         while (true) {
@@ -147,7 +149,7 @@ namespace UI {
                                                     imageAddress = imageAddress + 1;
                                                     puVar19 = puVar19 + 1;
                                                     iVar14 = iVar14 + -1;
-                                                } while (iVar14);
+                                                } while (iVar14 != 0);
                                             }
                                             if (TVar3 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                                 break;
@@ -158,7 +160,7 @@ namespace UI {
                                             uVar9 = *(ushort*)(iVar2 + 0xd812da + (uVar4 >> 5 & 0xffff003f) * 8);
                                             uVar4 = *(ushort*)(iVar2 + 0xd812dc + (uint)(uVar4 >> 0xb) * 8);
                                             do {
-                                                uVar1 = *puVar19;
+                                                ushort uVar1 = *puVar19;
                                                 *puVar19
                                                     = (DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                       [uVar1 & 0xffff001f][0]
@@ -167,7 +169,7 @@ namespace UI {
                                                     + (uVar5 | uVar9 | uVar4);
                                                 puVar19 = puVar19 + 1;
                                                 iVar14 = iVar14 + -1;
-                                            } while (iVar14);
+                                            } while (iVar14 != 0);
                                         }
                                         puVar19 = (ushort*)((int)puVar20 + local_8);
                                         height = height + -1;
@@ -176,10 +178,12 @@ namespace UI {
                                     } while (0 < height);
                                 }
                             }
-                            if (-1 < xPosition) {
+                            if (0 <= xPosition) {
                                 if (yPosition < local_c) {
                                     iVar14 = local_c - yPosition;
-                                    if (height <= iVar14) {}
+                                    if (height <= iVar14) {
+                                        return;
+                                    }
                                     height = height - iVar14;
                                     do {
                                         while (true) {
@@ -189,7 +193,7 @@ namespace UI {
                                                     bVar13 = *pbVar16 & 0xe0;
                                                     imageAddress = pbVar16 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13)
+                                                if (bVar13 != 0)
                                                     break;
                                                 imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                             }
@@ -201,8 +205,8 @@ namespace UI {
                                         yPosition = local_c;
                                     } while (0 < iVar14);
                                 }
-                                puVar19
-                                    = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8 + xPosition * 2);
+                                puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                    + yPosition * local_8 + xPosition * 2);
                                 puVar20 = puVar19;
                                 do {
                                     while (true) {
@@ -216,7 +220,7 @@ namespace UI {
                                                 puVar19 = puVar19 + uVar11 + 1;
                                                 imageAddress = pbVar16;
                                             }
-                                            if (bVar13)
+                                            if (bVar13 != 0)
                                                 break;
                                             iVar14 = uVar11 + 1;
                                             do {
@@ -241,7 +245,7 @@ namespace UI {
                                                 puVar19 = puVar19 + 1;
                                                 iVar14 = iVar14 + -1;
                                                 imageAddress = pbVar16;
-                                            } while (iVar14);
+                                            } while (iVar14 != 0);
                                         }
                                         if (bVar13 != 0x40)
                                             break;
@@ -264,7 +268,7 @@ namespace UI {
                                                 + (uVar5 & 0x3ff | uVar4);
                                             puVar19 = puVar19 + 1;
                                             iVar14 = iVar14 + -1;
-                                        } while (iVar14);
+                                        } while (iVar14 != 0);
                                     }
                                     puVar19 = (ushort*)((int)puVar20 + local_8);
                                     height = height + -1;
@@ -274,14 +278,19 @@ namespace UI {
                             }
                         }
                     } else {
-                        DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                        DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                            = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                         uVar11 = xPosition & 1;
                         if ((yPosition + height <= DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)
-                            || (height = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition, 0 < height)) {
+                            || (height
+                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition,
+                                0 < height)) {
                             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
-                                if (-1 < xPosition) {
-                                    if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                if (0 <= xPosition) {
+                                    if (yPosition
+                                        < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
+                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                            - yPosition;
                                         if (height <= iVar14) {
                                             DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                                 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -295,7 +304,7 @@ namespace UI {
                                                         bVar13 = *pbVar16 & 0xe0;
                                                         imageAddress = pbVar16 + 1;
                                                     } while (bVar13 == 0x20);
-                                                    if (bVar13)
+                                                    if (bVar13 != 0)
                                                         break;
                                                     imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                                 }
@@ -304,7 +313,8 @@ namespace UI {
                                                 imageAddress = pbVar16 + 2;
                                             }
                                             iVar14 = iVar14 + -1;
-                                            yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                            yPosition
+                                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                         } while (0 < iVar14);
                                     }
                                     iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -323,12 +333,12 @@ namespace UI {
                                                     imageAddress = pbVar16;
                                                     uVar7 = local_14 + uVar7 + 1;
                                                 }
-                                                if (bVar13)
+                                                if (bVar13 != 0)
                                                     break;
                                                 iVar8 = uVar7 + 1;
                                                 uVar7 = local_14 + iVar8;
                                                 do {
-                                                    if (!(local_14 & 1)) {
+                                                    if ((local_14 & 1) == 0) {
                                                         uStack_36 = (undefined2)(local_14 >> 0x10);
                                                         uVar15 = (((uint)(uStack_36) << 0x10)
                                                                      | (uint)(ushort)(_colorPaletteRef[*pbVar16]))
@@ -362,7 +372,7 @@ namespace UI {
                                                     local_14 = local_14 + 1;
                                                     iVar8 = iVar8 + -1;
                                                     imageAddress = pbVar16;
-                                                } while (iVar8);
+                                                } while (iVar8 != 0);
                                             }
                                             if (bVar13 != 0x40)
                                                 break;
@@ -375,7 +385,7 @@ namespace UI {
                                             iVar8 = uVar7 + 1;
                                             uVar7 = local_14 + iVar8;
                                             do {
-                                                if (!(local_14 & 1)) {
+                                                if ((local_14 & 1) == 0) {
                                                     uVar9 = *(ushort*)(iVar14 + local_14) & 0xffe0
                                                         | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                          [*(ushort*)(iVar14 + local_14)
@@ -390,10 +400,12 @@ namespace UI {
                                                 }
                                                 local_14 = local_14 + 1;
                                                 iVar8 = iVar8 + -1;
-                                            } while (iVar8);
+                                            } while (iVar8 != 0);
                                         }
                                         iVar14 = iVar14 + 0x1fb0;
-                                        if (height + -1 < 1) {}
+                                        if (height + -1 < 1) {
+                                            return;
+                                        }
                                         while (true) {
                                             while (true) {
                                                 do {
@@ -401,7 +413,7 @@ namespace UI {
                                                     bVar13 = *pbVar18 & 0xe0;
                                                     pbVar16 = pbVar18 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13)
+                                                if (bVar13 != 0)
                                                     break;
                                                 pbVar16 = pbVar16 + (*pbVar18 & 0xffffff1f) + 1;
                                             }
@@ -415,9 +427,10 @@ namespace UI {
                                     } while (0 < height);
                                 }
                             }
-                            if (-1 < xPosition) {
+                            if (0 <= xPosition) {
                                 if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                        - yPosition;
                                     if (height <= iVar14) {
                                         DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                             = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -431,7 +444,7 @@ namespace UI {
                                                     bVar13 = *pbVar16 & 0xe0;
                                                     imageAddress = pbVar16 + 1;
                                                 } while (bVar13 == 0x20);
-                                                if (bVar13)
+                                                if (bVar13 != 0)
                                                     break;
                                                 imageAddress = imageAddress + (*pbVar16 & 0xffffff1f) + 1;
                                             }
@@ -440,7 +453,8 @@ namespace UI {
                                             imageAddress = pbVar16 + 2;
                                         }
                                         iVar14 = iVar14 + -1;
-                                        yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                        yPosition
+                                            = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                     } while (0 < iVar14);
                                 }
                                 iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -459,12 +473,12 @@ namespace UI {
                                                 imageAddress = pbVar16;
                                                 uVar7 = local_14 + uVar7 + 1;
                                             }
-                                            if (bVar13)
+                                            if (bVar13 != 0)
                                                 break;
                                             iVar8 = uVar7 + 1;
                                             uVar7 = local_14 + iVar8;
                                             do {
-                                                if (!(local_14 & 1)) {
+                                                if ((local_14 & 1) == 0) {
                                                     uStack_36 = (undefined2)(local_14 >> 0x10);
                                                     uVar15 = (((uint)(uStack_36) << 0x10)
                                                                  | (uint)(ushort)(_colorPaletteRef[*pbVar16]))
@@ -494,7 +508,7 @@ namespace UI {
                                                 local_14 = local_14 + 1;
                                                 iVar8 = iVar8 + -1;
                                                 imageAddress = pbVar16;
-                                            } while (iVar8);
+                                            } while (iVar8 != 0);
                                         }
                                         if (bVar13 != 0x40)
                                             break;
@@ -507,7 +521,7 @@ namespace UI {
                                         iVar8 = uVar7 + 1;
                                         uVar7 = local_14 + iVar8;
                                         do {
-                                            if (!(local_14 & 1)) {
+                                            if ((local_14 & 1) == 0) {
                                                 uVar9 = *(ushort*)(iVar14 + local_14) & 0xffe0
                                                     | DAT_BlendFilterArrays::instance[blendStrengthUnk]
                                                                                      [*(ushort*)(iVar14 + local_14)
@@ -521,10 +535,12 @@ namespace UI {
                                             }
                                             local_14 = local_14 + 1;
                                             iVar8 = iVar8 + -1;
-                                        } while (iVar8);
+                                        } while (iVar8 != 0);
                                     }
                                     iVar14 = iVar14 + 0x1fb0;
-                                    if (height + -1 < 1) {}
+                                    if (height + -1 < 1) {
+                                        return;
+                                    }
                                     while (true) {
                                         while (true) {
                                             do {
@@ -532,7 +548,7 @@ namespace UI {
                                                 bVar13 = *pbVar18 & 0xe0;
                                                 pbVar16 = pbVar18 + 1;
                                             } while (bVar13 == 0x20);
-                                            if (bVar13)
+                                            if (bVar13 != 0)
                                                 break;
                                             pbVar16 = pbVar16 + (*pbVar18 & 0xffffff1f) + 1;
                                         }
@@ -550,6 +566,7 @@ namespace UI {
                 }
             }
         }
+#pragma optimize("y", on)
 
     }
 }

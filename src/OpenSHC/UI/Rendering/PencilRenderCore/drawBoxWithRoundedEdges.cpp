@@ -10,8 +10,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using UI::Enums::RoundedBoxEdgeRoundingLevel;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::UI::Enums::RoundedBoxEdgeRoundingLevel;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         /*
           Found no moment, where this one was used. --TheRedDaemon   decompilerscript: committed: 2025-01-30
@@ -24,18 +24,18 @@ namespace UI {
             BOOLEnum _drawReady;
             TextInputDefinedData* pTVar3;
             int iVar4;
-            if (roundingLevel == UI::Enums::RBERL_SLIGHT) {
+            if (roundingLevel == OpenSHC::UI::Enums::RBERL_SLIGHT) {
                 pTVar3 = DAT_TextInputDefinedData::ptr;
             } else {
-                if (roundingLevel != UI::Enums::RBERL_STRONG) {}
+                if (roundingLevel != OpenSHC::UI::Enums::RBERL_STRONG) {}
                 pTVar3 = (TextInputDefinedData*)0xb37ce8;
             }
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
-            _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
+            _drawReady = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 left, top, right, bottom, 0);
             dword dVar2 = this->drawEndX;
             dword dVar1 = this->drawStartX;
-            if (_drawReady && (int)(roundingLevel * 2) <= (int)(this->drawEndY - this->drawStartY)) {
+            if (_drawReady != FALSE && (int)(roundingLevel * 2) <= (int)(this->drawEndY - this->drawStartY)) {
                 iVar4 = 0;
                 this->drawStartX = dVar1;
                 this->drawEndX = dVar2;
@@ -47,7 +47,7 @@ namespace UI {
                             break;
                         this->drawStartX = pTVar3->field0_0x0[iVar4] + dVar1;
                         this->drawEndX = dVar2 - pTVar3->field0_0x0[iVar4];
-                        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
                         this->currentHeight_0x2c = this->currentHeight_0x2c + -1;
                         this->drawStartY = this->drawStartY + 1;
                         iVar4 = iVar4 + 1;
@@ -57,15 +57,15 @@ namespace UI {
                 }
                 for (; (int)roundingLevel <= this->currentHeight_0x2c;
                     this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
-                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
                     this->drawStartY = this->drawStartY + 1;
                 }
                 for (;
-                    (-1 < (int)(roundingLevel - ((RoundedBoxEdgeRoundingLevel)1)) && (-1 < this->currentHeight_0x2c));
+                    (0 <= (int)(roundingLevel - ((RoundedBoxEdgeRoundingLevel)1)) && (0 <= this->currentHeight_0x2c));
                     this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
                     this->drawStartX = pTVar3->field0_0x0[roundingLevel - 1] + dVar1;
                     this->drawEndX = dVar2 - pTVar3->field0_0x0[roundingLevel - 1];
-                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
                     this->drawStartY = this->drawStartY + 1;
                     roundingLevel = (RoundedBoxEdgeRoundingLevel)(roundingLevel - 1);
                 }

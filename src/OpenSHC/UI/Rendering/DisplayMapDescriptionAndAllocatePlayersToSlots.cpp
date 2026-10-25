@@ -9,6 +9,7 @@
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b74.hpp"
@@ -22,7 +23,6 @@
 #include "OpenSHC/Globals/INT_00b95ab8.hpp"
 #include "OpenSHC/Globals/INT_00b960b0.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -30,13 +30,12 @@ namespace UI {
     using OpenSHC::Commands::GameCommandType;
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::IO::FileResourceType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
     using OpenSHC::Rendering::Colors::BGR24;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004410D0
     void Rendering::DisplayMapDescriptionAndAllocatePlayersToSlots()
     {
-        uint uVar1;
         char* _mapName;
         int _index;
         char* puVar1;
@@ -46,14 +45,13 @@ namespace UI {
         int _width;
         int _blendStrength;
         int _mode;
-        char* _mapDescription;
         BGR24 _color;
         char _mapChar;
-        uVar1 = MSVC_SecurityCookie::instance ^ (uint)_mapResourceLoadName;
+        uint uVar1 = MSVC_SecurityCookie::instance ^ (uint)_mapResourceLoadName;
         if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
                 + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
             < 0) {
-            if (DAT_GameSynchronyState::instance.isHost)
+            if (DAT_GameSynchronyState::instance.isHost != FALSE)
                 goto LAB_00441251;
             _mapName = DAT_GameSynchronyState::instance.mapName;
             do {
@@ -81,7 +79,7 @@ namespace UI {
         INT_00b95958::instance = 1;
         DAT_00b95b74::instance = 0;
         DAT_00b960f4::instance = 0xffffffed;
-        if (!DAT_GameCore::instance.mapDescUseStringTable) {
+        if (DAT_GameCore::instance.mapDescUseStringTable == 0) {
             _mode = 1;
             _blendStrength = 0;
             _color = 0;
@@ -93,7 +91,7 @@ namespace UI {
             DAT_00b95b74::instance = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(
                 _mapName, _x, _y, _width, _color, _blendStrength, _mode);
-        } else if (DAT_GameCore::instance.mapDescUseStringTableIndex) {
+        } else if (DAT_GameCore::instance.mapDescUseStringTableIndex != 0) {
             _mode = 1;
             _blendStrength = 0;
             _color = 0;
@@ -105,11 +103,11 @@ namespace UI {
                 OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, DAT_GameCore::instance.mapDescUseStringTableIndex);
             goto LAB_004411d1;
         }
-        if ((DAT_GameSynchronyState::instance.isHost)
-            && ((INT_00b960b0::instance
+        if (DAT_GameSynchronyState::instance.isHost != FALSE
+            && (INT_00b960b0::instance
                     != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                || (INT_00b95ab8::instance)))) {
+                || (INT_00b95ab8::instance != 0))) {
             DAT_GameSynchronyState::instance.playerPositionsArray[0] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[1] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[2] = -10;

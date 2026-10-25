@@ -28,23 +28,21 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004BC790
     void Rendering::RenderAnimatedTutorialFloatOverlay(int param_1, int param_2)
     {
-        RenderTargetInt RVar1;
-        DWORD DVar2;
-        uint uVar3;
-        int iVar4;
-        if (DAT_00df5540::instance) {}
-        if (!(INT_00df5640::instance & 1U)) {
+        if (DAT_00df5540::instance != 0) {
+            return;
+        }
+        if ((INT_00df5640::instance & 1U) == 0) {
             INT_00df5640::instance = INT_00df5640::instance | 1;
             INT_00df563c::instance = timeGetTime();
         }
-        DVar2 = timeGetTime();
-        RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
-        uVar3 = (DVar2 - INT_00df563c::instance) / 0x3c;
+        DWORD DVar2 = timeGetTime();
+        RenderTargetInt RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
+        uint uVar3 = (DVar2 - INT_00df563c::instance) / 0x3c;
         if (9 < uVar3) {
             uVar3 = 0;
             INT_00df563c::instance = DVar2;
         }
-        iVar4 = 0;
+        int iVar4 = 0;
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
         LAB_004bc7fc:
             iVar4 = 0xa8;
@@ -92,16 +90,16 @@ namespace UI {
     LAB_004bc873:
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)((int)(uVar3 + 0x105)),
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)(uVar3 + 0x105),
             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + param_1 + -0x24, param_2 + -0x65 + iVar4,
-            OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)((int)(uVar3 + 0x10f)), 0);
+            OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)(uVar3 + 0x10f), 0);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)((int)(uVar3 + 0x105)),
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)(uVar3 + 0x105),
             DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX
                 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + param_1 + -0x24,
             DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY + iVar4 + param_2 + -0x65,
-            OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)((int)(uVar3 + 0x10f)), 0);
+            OpenSHC::IO::Graphics::GID_FLOATS_NEW, (int)(uVar3 + 0x10f), 0);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = RVar1;
     }
 

@@ -17,8 +17,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0044CBE0
         RGB15 TextureRenderCore::transformBGR24ToScreenColor(BGR24 color)
         {
-            ushort uVar1;
-            uVar1 = (ushort)(color >> 0x13) & 0x1f;
+            ushort uVar1 = (ushort)(color >> 0x13) & 0x1f;
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
                 return (ushort)(color >> 6) & 0x3e0 | uVar1 | (ushort)((color & 0xf8) << 7);
             }

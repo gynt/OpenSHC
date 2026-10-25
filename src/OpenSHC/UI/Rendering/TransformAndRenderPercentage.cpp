@@ -21,27 +21,25 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x00433C20
     void Rendering::TransformAndRenderPercentage(int xPos, int yPos, int valueUnk, BOOLEnum otherImageFlagUnk)
     {
-        int integer;
-        RenderTargetInt RVar1;
         uint color;
         int imageID;
         int iVar2;
-        RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
-        integer = (valueUnk * 4) / 100;
+        RenderTargetInt RVar1 = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
+        int integer = (valueUnk * 4) / 100;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (integer < 1) {
-            imageID = (integer) + 0x81;
+        if (integer <= 0) {
+            imageID = (integer != 0) + 0x81;
         } else {
             imageID = 0x80;
         }
-        if (!otherImageFlagUnk) {
+        if (otherImageFlagUnk == FALSE) {
             imageID = imageID + 3;
             iVar2 = 1;
         } else {
             iVar2 = -4;
         }
-        if (integer < 1) {
-            color = (-(uint)(integer) & 0xff471204) + 0xb8eefb;
+        if (integer <= 0) {
+            color = (-(uint)(integer != 0) & 0xff471204) + 0xb8eefb;
         } else {
             color = 0xff00;
         }
