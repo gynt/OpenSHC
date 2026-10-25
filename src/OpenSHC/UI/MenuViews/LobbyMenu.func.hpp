@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace LobbyMenu_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00427320,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00427320,
                 &OpenSHC::UI::MenuViews::LobbyMenu::MenuView_LobbyMenu_Prepare)
             MenuView_LobbyMenu_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004482F0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004482F0,
                 &OpenSHC::UI::MenuViews::LobbyMenu::MenuView_LobbyMenu_DoEveryFrame)
             MenuView_LobbyMenu_DoEveryFrame;
 

@@ -14,15 +14,15 @@ namespace UI {
     namespace MenuViews {
         namespace Credits_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004261E0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004261E0,
                 &OpenSHC::UI::MenuViews::Credits::MenuView_Credits_Prepare)
             MenuView_Credits_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004262B0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004262B0,
                 &OpenSHC::UI::MenuViews::Credits::MenuView_Credits_DoInitial)
             MenuView_Credits_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00426340,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00426340,
                 &OpenSHC::UI::MenuViews::Credits::MenuView_Credits_DoEveryFrame)
             MenuView_Credits_DoEveryFrame;
 

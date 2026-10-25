@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace MissionSelect_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004268C0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004268C0,
                 &OpenSHC::UI::MenuViews::MissionSelect::MenuView_MissionSelect_DoEveryFrame)
             MenuView_MissionSelect_DoEveryFrame;
 

@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedOldTitleMenu_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042DCB0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042DCB0,
                 &OpenSHC::UI::MenuViews::UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_Prepare)
             MenuView_UnusedOldTitleMenu_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042DD00,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042DD00,
                 &OpenSHC::UI::MenuViews::UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_DoInitial)
             MenuView_UnusedOldTitleMenu_DoInitial;
 

@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace HistoricMissionSelect_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00426830,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00426830,
                 &OpenSHC::UI::MenuViews::HistoricMissionSelect::MenuView_HistoricMissionSelect_Prepare)
             MenuView_HistoricMissionSelect_Prepare;
 

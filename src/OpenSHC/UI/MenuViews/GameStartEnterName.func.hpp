@@ -14,15 +14,15 @@ namespace UI {
     namespace MenuViews {
         namespace GameStartEnterName_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424B10,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424B10,
                 &OpenSHC::UI::MenuViews::GameStartEnterName::MenuView_GameStartEnterName_DoEveryFrame)
             MenuView_GameStartEnterName_DoEveryFrame;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00440560,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00440560,
                 &OpenSHC::UI::MenuViews::GameStartEnterName::MenuView_GameStartEnterName_Prepare)
             MenuView_GameStartEnterName_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004406F0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004406F0,
                 &OpenSHC::UI::MenuViews::GameStartEnterName::MenuView_GameStartEnterName_DoInitial)
             MenuView_GameStartEnterName_DoInitial;
 

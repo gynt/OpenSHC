@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace IntroLogos_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00424720,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00424720,
                 &OpenSHC::UI::MenuViews::IntroLogos::MenuView_IntroLogos_Prepare)
             MenuView_IntroLogos_Prepare;
 
@@ -22,7 +22,7 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::IntroLogos::MenuView_IntroLogos_DoInitial)
             MenuView_IntroLogos_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004247A0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004247A0,
                 &OpenSHC::UI::MenuViews::IntroLogos::MenuView_IntroLogos_DoEveryFrame)
             MenuView_IntroLogos_DoEveryFrame;
 

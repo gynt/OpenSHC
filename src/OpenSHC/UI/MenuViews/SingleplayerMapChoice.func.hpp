@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace SingleplayerMapChoice_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00448D40,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00448D40,
                 &OpenSHC::UI::MenuViews::SingleplayerMapChoice::MenuView_SingleplayerMapChoice_Prepare)
             MenuView_SingleplayerMapChoice_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00448E90,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00448E90,
                 &OpenSHC::UI::MenuViews::SingleplayerMapChoice::MenuView_SingleplayerMapChoice_DoEveryFrame)
             MenuView_SingleplayerMapChoice_DoEveryFrame;
 

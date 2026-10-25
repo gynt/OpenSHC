@@ -18,7 +18,7 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::UnusedChooseAvailableKeeps::MenuView_UnusedChooseAvailableKeeps_Prepare)
             MenuView_UnusedChooseAvailableKeeps_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042FAC0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042FAC0,
                 &OpenSHC::UI::MenuViews::UnusedChooseAvailableKeeps::MenuView_UnusedChooseAvailableKeeps_DoEveryFrame)
             MenuView_UnusedChooseAvailableKeeps_DoEveryFrame;
 

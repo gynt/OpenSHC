@@ -18,11 +18,11 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::MapEditorLandscaping::MenuView_MapEditorLandscaping_Prepare)
             MenuView_MapEditorLandscaping_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00430CE0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00430CE0,
                 &OpenSHC::UI::MenuViews::MapEditorLandscaping::MenuView_MapEditorLandscaping_DoInitial)
             MenuView_MapEditorLandscaping_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004313C0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004313C0,
                 &OpenSHC::UI::MenuViews::MapEditorLandscaping::MenuView_MapEditorLandscaping_DoEveryFrame)
             MenuView_MapEditorLandscaping_DoEveryFrame;
 

@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedChooseGameType_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00430150,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00430150,
                 &OpenSHC::UI::MenuViews::UnusedChooseGameType::MenuView_UnusedChooseGameType_DoEveryFrame)
             MenuView_UnusedChooseGameType_DoEveryFrame;
 

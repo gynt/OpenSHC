@@ -18,11 +18,11 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::UnusedExtremeAd::MenuView_UnusedExtremeAd_Prepare)
             MenuView_UnusedExtremeAd_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004E1A50,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004E1A50,
                 &OpenSHC::UI::MenuViews::UnusedExtremeAd::MenuView_UnusedExtremeAd_DoInitial)
             MenuView_UnusedExtremeAd_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004E1AA0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004E1AA0,
                 &OpenSHC::UI::MenuViews::UnusedExtremeAd::MenuView_UnusedExtremeAd_DoEveryFrame)
             MenuView_UnusedExtremeAd_DoEveryFrame;
 
