@@ -12,35 +12,24 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using DE::SHCDE::eTextSections;
-        using Rendering::Colors::BGR24;
-        using Text::TextAlignment;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::DE::SHCDE::eTextSections;
+        using OpenSHC::Rendering::Colors::BGR24;
+        using OpenSHC::Text::TextAlignment;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004ADD90
         void AlliesSendGoods::MenuModalRenderFunction_AlliesSendGoods(int x, int y, int width, int height)
         {
-            char* textAddress;
             int xParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0xf;
-            color = 0xccfaff;
-            alignment = Text::TTA_LEFT;
             int yParam = y + 0x19;
             xParam = x + 0x14;
             /*
               "Send goods"   added by script: "Send Goods"
              */
-            textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ALLIES, 6);
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_ALLIES, 6),
+                xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0xf, FALSE, 0);
         }
 
     }

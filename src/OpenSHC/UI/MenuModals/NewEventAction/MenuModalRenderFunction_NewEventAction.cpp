@@ -23,7 +23,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004ABAB0
         void NewEventAction::MenuModalRenderFunction_NewEventAction(int x, int y, int width, int height)
         {
-            char* pcVar1;
             int xParam;
             int iVar2;
             TextAlignment TVar3;
@@ -31,7 +30,6 @@ namespace UI {
             int iVar5;
             int iVar6;
             BOOLEnum BVar7;
-            int blendStrength;
             /*
               added by script: "Event Actions"
              */
@@ -52,7 +50,6 @@ namespace UI {
             case 0x14:
             case 0x1d:
             case 0x1e:
-                blendStrength = 0;
                 BVar7 = FALSE;
                 iVar5 = 0x12;
                 BVar4 = 0xccfaff;
@@ -63,10 +60,7 @@ namespace UI {
                 /*
                   added by script: "Repeat (months)"
                  */
-                pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xaf);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar1, iVar6, iVar2, TVar3, BVar4, iVar5, BVar7, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xaf), iVar6, iVar2, TVar3, BVar4, iVar5, BVar7, 0);
                 iVar5 = 0;
                 BVar7 = FALSE;
                 iVar6 = 0x12;
@@ -76,10 +70,7 @@ namespace UI {
                 /*
                   added by script: "Repeat Count"
                  */
-                pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xb0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar1, xParam, iVar2, TVar3, BVar4, iVar6, BVar7, iVar5);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xb0), xParam, iVar2, TVar3, BVar4, iVar6, BVar7, iVar5);
             }
         }
 

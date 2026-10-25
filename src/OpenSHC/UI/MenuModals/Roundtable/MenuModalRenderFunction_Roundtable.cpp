@@ -21,8 +21,8 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using UI::Enums::MenuModalType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B1AC0
         void Roundtable::MenuModalRenderFunction_Roundtable(int x, int y, int width, int height)
@@ -33,12 +33,12 @@ namespace UI {
             int blendStrengthUnk;
             int local_40[16];
             int iVar1 = y;
-            if (DAT_MouseState::instance.rightClickStart) {
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-                    UI::Enums::MMT_NONE, FALSE);
+            if (DAT_MouseState::instance.rightClickStart != 0) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(
-                2, x + 8, y + 8);
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                DAT_TextureRenderCoreObject::ptr)(2, x + 8, y + 8);
             local_40[4] = 0x18e;
             local_40[8] = 0x18e;
             int iVar2 = 1;
@@ -63,7 +63,7 @@ namespace UI {
                 if ((char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4] < 1
                     || (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[(
                            char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4]]
-                        <= '\0')
+                        < '\x01')
                     break;
                 if (y < (char)DAT_GameSynchronyState::instance
                         .DAT_PlayerGroupArray[(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4]]) {
@@ -76,7 +76,7 @@ namespace UI {
                     gfxIndex = iVar4 + 2;
                 } else {
                 LAB_004b1ba5:
-                    if (!iVar2) {
+                    if (iVar2 == 0) {
                         blendStrengthUnk = 0x10;
                         gfxIndex = iVar4 + 2;
                     } else {
@@ -84,7 +84,7 @@ namespace UI {
                         gfxIndex = iVar4 + 2 + iVar2 * 8;
                     }
                 }
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + x, piVar3[1] + iVar1, blendStrengthUnk);
                 iVar4 = iVar4 + 1;
                 piVar3 = piVar3 + 2;
@@ -93,8 +93,9 @@ namespace UI {
             DAT_ButtonX::instance = x + 0x18;
             DAT_ButtonW::instance = 0x17c;
             DAT_ButtonH::instance = 0x28;
-            if (DAT_00df4288::instance) {
-                MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
+            if (DAT_00df4288::instance != 0) {
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
                     DAT_BottomLeftTextDisplayState::ptr)(0);
                 DAT_00df4288::instance = 0;
             }
