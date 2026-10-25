@@ -46,12 +46,7 @@ namespace UI {
             DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
             DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SOLITARY;
             DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
-            if (INT_00b95b64::instance == 0) {
-                MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
-                        MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
-                    DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
-                DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
-            } else {
+            if (INT_00b95b64::instance != 0) {
                 DAT_MenuTextInputState::instance.fileListSortOrder = 0;
                 DAT_GameSynchronyState::instance.isHost = TRUE;
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
@@ -64,18 +59,23 @@ namespace UI {
                 DAT_GameSynchronyState::instance.reparseMaps = TRUE;
                 DAT_SH1_SiegeAdvancedMode::instance = 0;
                 DAT_SiegeRemainingPoints::instance = 0;
+            } else {
+                MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
+                        MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
+                    DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
+                DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
             }
             DAT_ButtonBackgroundBlendStrength::instance = 0x20;
             DAT_00b960dc::instance = 0xfffffffd;
             DWORD_00b95b1c::instance = timeGetTime();
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            if (DAT_MapMissionType::instance < 2) {
-                tgxFileName = "frontend_economics2.tgx";
+            if ((int)DAT_MapMissionType::instance < 2) {
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("frontend_economics2.tgx");
             } else {
-                tgxFileName = "frontend_combat2.tgx";
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("frontend_combat2.tgx");
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
