@@ -387,7 +387,9 @@ namespace UI {
             }
             iVar5 = iVar5 + 1;
             _event2 = _event2 + 0xe4;
-            if (DAT_MapPropertiesState::instance.eventsCount <= iVar5) {}
+            if (DAT_MapPropertiesState::instance.eventsCount <= iVar5) {
+                break;
+            }
         } while (true);
         while (true) {
             iVar5 = iVar3;

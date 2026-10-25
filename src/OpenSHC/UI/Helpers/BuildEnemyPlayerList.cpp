@@ -36,7 +36,9 @@ namespace UI {
                 && _team != DAT_GameState::instance.mapAndTime.playerTeams[_playerID]) {
                 DAT_RequestedGoodsByWhoArray::instance[DAT_EnemyArrayIndex::instance + 1] = _playerID;
                 DAT_EnemyArrayIndex::instance = DAT_EnemyArrayIndex::instance + 1;
-                if (5 < DAT_EnemyArrayIndex::instance) {}
+                if (6 <= DAT_EnemyArrayIndex::instance) {
+                    break;
+                }
             }
         }
     }
