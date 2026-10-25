@@ -30,21 +30,20 @@ namespace UI {
         void GameplayOptions::MenuItemRenderFunction_GameplayOptions_SpeedSlider(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOL isDragged)
         {
-            undefined2 color;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            color = COL_GREYISH_YELLOW::instance.shortValue;
-            if (isDragged) {
+            undefined2 color = COL_GREYISH_YELLOW::instance.shortValue;
+            if (isDragged != 0) {
                 color = COL_DARK_LIME::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                thumbYPos + DAT_ButtonX::instance + 1, (int)((int)(DAT_ButtonY::instance + 2)),
+                thumbYPos + DAT_ButtonX::instance + 1, (int)(DAT_ButtonY::instance + 2),
                 thumbYPos + DAT_ButtonX::instance + -2 + thumbHeight,
-                (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)), (ushort)((int)(color)));
+                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                param_3, (int)((int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
+                param_3, (int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 7),
+                OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
         }
 
     }

@@ -46,28 +46,27 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042AE90
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_NonBoxedButtons(int param_1, ...)
         {
-            BOOLEnum BVar1;
             int* piVar2;
             int iVar3;
             int iVar4;
             bool bVar5;
-            uint uVar6;
-            BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (BVar1) {}
+            BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
+            if (BVar1 != FALSE) {
+                return;
+            }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE) {
-                if (((param_1 != 2) && (param_1 != 3)) && ((param_1 != -0x14 && (param_1 != -1)))) {
+                if (param_1 != 2 && param_1 != 3 && param_1 != -0x14 && param_1 != -1) {
                     bVar5 = param_1 == -2;
                 LAB_0042aef2:
                     if (!bVar5) {
                         DAT_ButtonUnknownZero::instance = 1;
                     }
                 }
-            } else if ((((DAT_MenuModalComposition1::instance.activeModalDialogID
-                             == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT)
-                            || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                                == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                           && (param_1 != 2))
-                && (((param_1 != -0x14 && (param_1 != -1)) && ((param_1 != -2 && (param_1 != -200)))))) {
+            } else if (((DAT_MenuModalComposition1::instance.activeModalDialogID
+                            == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT)
+                           || (DAT_MenuModalComposition1::instance.activeModalDialogID
+                               == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
+                && param_1 != 2 && param_1 != -0x14 && param_1 != -1 && param_1 != -2 && param_1 != -200) {
                 bVar5 = param_1 == -0xc9;
                 goto LAB_0042aef2;
             }
@@ -77,7 +76,7 @@ namespace UI {
             if (param_1 < 0x6a) {
                 if (param_1 == 0x69) {
                     if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                        if (!DAT_GameSynchronyState::instance.isHost) {
+                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                             DAT_ButtonUnknownZero::instance = 1;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -97,7 +96,7 @@ namespace UI {
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         }
-                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
+                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
                             DAT_ButtonUnknownZero::instance = 1;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -106,29 +105,32 @@ namespace UI {
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                        if (!DAT_ButtonCurrentlyInteracting::instance) {
-                            uVar6 = 0xc2f0eb;
+                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE,
+                                (iVar4 / 32) + 0x20);
                         } else {
-                            uVar6 = 0xccfaff;
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE,
+                                (iVar4 / 32) + 0x20);
                         }
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar6, 0x12, FALSE,
-                            (iVar4 / 32) + 0x20);
                     }
                 } else {
                     switch (param_1) {
                     case 1:
                         if (DAT_GameSynchronyState::instance.currentGameMode
                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                            if (!DAT_GameSynchronyState::instance.isHost) {
+                            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                                 DAT_ButtonUnknownZero::instance = 1;
                                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                     = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                             }
                             piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
-                            while ((piVar2[-0x419c2] == -1 || (*piVar2 != 0))) {
+                            while (piVar2[-0x419c2] == -1 || *piVar2 != 0) {
                                 piVar2 = piVar2 + 1;
                                 if (0x1a2453b < (int)piVar2) {
                                 LAB_0042afea:
@@ -163,24 +165,28 @@ namespace UI {
                                 AlphaAndButtonSurfaceObj::ptr)(DAT_ButtonBackgroundBlendStrength::instance,
                                 OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                            if (!DAT_ButtonCurrentlyInteracting::instance) {
-                                uVar6 = 0xc2f0eb;
+                            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
+                                    (int)((int)DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance),
+                                    (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE,
+                                    (iVar4 / 32) + 0x20);
                             } else {
-                                uVar6 = 0xccfaff;
+                                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
+                                    (int)((int)DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance),
+                                    (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE,
+                                    (iVar4 / 32) + 0x20);
                             }
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, param_1,
-                                (int)((int)(DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
-                                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, uVar6, 0x12, FALSE,
-                                (iVar4 / 32) + 0x20);
                         }
                         break;
                     case 4:
-                        if (!DAT_GameSynchronyState::instance.isHost) {
+                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                             DAT_ButtonUnknownZero::instance = 1;
+                            return;
                         }
                         piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
-                        while ((piVar2[-0x419c2] == -1 || (*piVar2 != 0))) {
+                        while (piVar2[-0x419c2] == -1 || *piVar2 != 0) {
                             piVar2 = piVar2 + 1;
                             if (0x1a2453b < (int)piVar2) {
                             LAB_0042b17a:
@@ -191,18 +197,18 @@ namespace UI {
                                     bVar5 = false;
                                 }
                                 iVar4 = 0x20;
-                                if (((!bVar5)
-                                        || (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                                + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                                            < 0))
-                                    || (DAT_GameSynchronyState::instance
+                                if (!bVar5
+                                    || DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
+                                        < 0
+                                    || DAT_GameSynchronyState::instance
                                             .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
                                                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
                                                                                .DAT_MapSelectionScrollOffset
                                                         + DAT_GameSynchronyState::instance
                                                             .DAT_MapSelectionRelativeSelected
                                                         + -1]]
-                                        < 1)) {
+                                        < 1) {
                                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                                     iVar4 = 0x10;
                                 }
@@ -217,15 +223,15 @@ namespace UI {
                         iVar4 = 0;
                         do {
                             iVar3 = DAT_GameCore::instance.keepPositions[iVar4].x;
-                            if ((((-1 < iVar3)
-                                     && (iVar3 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                                         <= DAT_MouseState::instance.screenSpaceX))
-                                    && (DAT_MouseState::instance.screenSpaceX
-                                        <= iVar3 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth))
-                                && ((iVar3 = DAT_GameCore::instance.keepPositions[iVar4].y
+                            if (-1 < iVar3
+                                && iVar3 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
+                                    <= DAT_MouseState::instance.screenSpaceX
+                                && DAT_MouseState::instance.screenSpaceX
+                                    <= iVar3 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
+                                && (iVar3 = DAT_GameCore::instance.keepPositions[iVar4].y
                                         + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight,
                                     iVar3 + 3 <= DAT_MouseState::instance.screenSpaceY
-                                        && (DAT_MouseState::instance.screenSpaceY <= iVar3 + 0x23)))) {
+                                        && (DAT_MouseState::instance.screenSpaceY <= iVar3 + 0x23))) {
                                 INT_00b95950::instance = iVar4;
                             }
                             iVar4 = iVar4 + 1;
@@ -234,12 +240,12 @@ namespace UI {
                     case -0x65:
                     case -0xb:
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
-                            DAT_PencilRenderCore::ptr)(1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                            DAT_PencilRenderCore::ptr)(1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                         return;
                     case -100:
                     switchD_0042af3a_caseD_ffffff9c:
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
-                            DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                            DAT_PencilRenderCore::ptr)(0, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                         return;
                     case -0x14:
                         if (DAT_GameSynchronyState::instance.currentGameMode
@@ -263,14 +269,13 @@ namespace UI {
                         return;
                     case -10:
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
-                            DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                            DAT_PencilRenderCore::ptr)(0, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                         return;
                     case -2:
                         if (DAT_GameSynchronyState::instance.currentGameMode
                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
-                                DAT_PencilRenderCore::ptr)(
-                                1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                                DAT_PencilRenderCore::ptr)(1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                         }
                         break;
                     case -1:

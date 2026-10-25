@@ -27,42 +27,32 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AA970
         void Unused::MenuItemRenderFunction_UnusedWinCondition_Options(int param_1, ...)
         {
-            int xParam;
             char* textAddress;
             int yParam;
             BGR24 color;
-            TextAlignment alignment;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if (param_1 < (int)DAT_MenuModalComposition1::instance.mbr_0x64) {
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color = 0xc2f0eb;
                 } else {
                     color = 0xccfaff;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                        (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                        (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)),
-                        (ushort)((int)(COL_GREYISH_YELLOW::instance.shortValue)));
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                        (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance),
+                        (ushort)(COL_GREYISH_YELLOW::instance.shortValue));
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                    (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                    (int)((int)((OpenSHC::DE::SHCDE::eTextSections)(DAT_ButtonH::instance + DAT_ButtonY::instance))),
-                    0xc);
-                blendStrength = 0;
-                keepOffsetX = FALSE;
-                fontSize = 0x13;
-                alignment = OpenSHC::Text::TTA_CENTER;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                    (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
+                    (int)((OpenSHC::DE::SHCDE::eTextSections)(DAT_ButtonH::instance + DAT_ButtonY::instance)), 0xc);
+                int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
                 textAddress = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                     (OpenSHC::DE::SHCDE::eTextSections)DAT_MenuModalComposition1::instance.textGroup,
                     DAT_MenuModalComposition1::instance.textIndex + param_1);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                    textAddress, xParam, yParam, OpenSHC::Text::TTA_CENTER, color, 0x13, FALSE, 0);
             }
         }
 

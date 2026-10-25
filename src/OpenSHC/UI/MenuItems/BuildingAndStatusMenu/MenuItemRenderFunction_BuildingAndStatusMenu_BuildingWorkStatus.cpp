@@ -21,13 +21,13 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using DE::SHCDE::eTextSections;
-        using Map::Buildings::BuildingTypeShort;
-        using Map::Units::UnitType;
-        using Map::Units::States::UnitState;
-        using Text::TextAlignment;
-        using UI::Enums::BuildingsAndStatusMenuTabType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::DE::SHCDE::eTextSections;
+        using OpenSHC::Map::Buildings::BuildingTypeShort;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::States::UnitState;
+        using OpenSHC::Text::TextAlignment;
+        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004476B0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus(int param_1, ...)
@@ -37,49 +37,61 @@ namespace UI {
             int _unit;
             int iVar7;
             int iVar8;
-            if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_PEASANT) {}
+            if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_PEASANT) {
+                return;
+            }
             short sVar1 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentEmployeeCount;
             bool bVar4 = true;
-            if ((!sVar1)
+            if ((sVar1 == 0)
                 && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .currentlyNeededEmployeeCount
-                    == 0)) {}
+                    == 0)) {
+                return;
+            }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                     .buildingTypeBasedEmployeeCount
-                <= 0) {}
+                <= 0) {
+                return;
+            }
             BuildingTypeShort BVar2
                 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                       .buildingType;
-            if (0x27 < (short)BVar2 && (short)BVar2 < 0x2d) {}
-            if (0x23 < (short)BVar2 && (short)BVar2 < 0x27) {}
+            if (0x28 <= (short)BVar2 && (short)BVar2 <= 0x2c) {
+                return;
+            }
+            if (0x24 <= (short)BVar2 && (short)BVar2 <= 0x26) {
+                return;
+            }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                     .hasAccessToKeep
                 == 0) {
                 /*
                   added by script: "No access to keep"
                  */
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 9, (int)(DAT_ButtonX::instance + 0x96),
-                    (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 9, (int)(DAT_ButtonX::instance + 0x96),
+                    (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                return;
             }
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].sleeping
                 == false) {
                 short sVar3
                     = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                           .currentlyNeededEmployeeCount;
-                if (sVar3) {
-                    if (sVar1) {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, (int)(sVar3 + 4), (int)(DAT_ButtonX::instance + 0x96),
-                            (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                if (sVar3 != 0) {
+                    if (sVar1 != 0) {
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, (int)(sVar3 + 4),
+                            (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT,
+                            0, 0x12, FALSE);
                     }
                     /*
                       added by script: "No labour"
                      */
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                 }
                 iVar7 = (int)sVar1;
                 if (0 < iVar7) {
@@ -88,24 +100,26 @@ namespace UI {
                     iVar8 = iVar7;
                     do {
                         _unit = (int)*psVar5;
-                        if (DAT_UnitsState::instance.units[_unit].unitType == Map::Units::UT_PEASANT) {
+                        if (DAT_UnitsState::instance.units[_unit].unitType == OpenSHC::Map::Units::UT_PEASANT) {
                             bVar4 = false;
                         }
                         psVar5 = psVar5 + 1;
                         iVar8 = iVar8 + -1;
-                    } while (iVar8);
+                    } while (iVar8 != 0);
                     if (!bVar4) {
                         /*
                           added by script: "Peasant on his way"
                          */
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 4, (int)(DAT_ButtonX::instance + 0x96),
-                            (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 4, (int)(DAT_ButtonX::instance + 0x96),
+                            (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                     }
+                    return;
                 }
+                _unit = param_1;
                 switch (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .buildingType) {
-                case Map::Buildings::BT_IRONMINE:
+                case OpenSHC::Map::Buildings::BT_IRONMINE:
                     _unit = (int)DAT_BuildingsState::instance
                                 .buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                                 .workerID[1];
@@ -113,42 +127,42 @@ namespace UI {
                     /*
                       added by script: "Worker:"
                      */
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance + -0x14), Text::TTA_LEFT, 0, 0x12, FALSE);
-                    MACRO_CALL(UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance + -0x14), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                         _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance));
                     return;
-                case Map::Buildings::BT_FLETCHER:
-                case Map::Buildings::BT_BLACKSMITH:
-                case Map::Buildings::BT_POLETURNER:
-                    /*
-                      added by script: "Worker:"
-                     */
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance + -10), Text::TTA_LEFT, 0, 0x12, FALSE);
-                    MACRO_CALL(UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
-                        _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance + 10));
-                    return;
-                case Map::Buildings::BT_QUARRY:
+                case OpenSHC::Map::Buildings::BT_MILL:
+                    goto switchD_00447874_caseD_22;
+                case OpenSHC::Map::Buildings::BT_QUARRY:
                     /*
                       added by script: "Currently Functioning"
                      */
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 2, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 2, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                     return;
-                case Map::Buildings::BT_MILL:
-                    goto switchD_00447874_caseD_22;
+                case OpenSHC::Map::Buildings::BT_FLETCHER:
+                case OpenSHC::Map::Buildings::BT_BLACKSMITH:
+                case OpenSHC::Map::Buildings::BT_POLETURNER:
+                    /*
+                      added by script: "Worker:"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance + -10), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
+                        _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance + 10));
+                    return;
                 }
             }
             /*
               added by script: "Turned off"
              */
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 7, (int)(DAT_ButtonX::instance + 0x96),
-                (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 7, (int)(DAT_ButtonX::instance + 0x96),
+                (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
             return;
         switchD_00447874_caseD_22:
             /*
@@ -160,15 +174,15 @@ namespace UI {
                              .workerID;
                 do {
                     switch (DAT_UnitsState::instance.units[*psVar5].state.generic) {
-                    case Map::Units::States::US_DETERMINE_NEXT_STATEUnk:
+                    case OpenSHC::Map::Units::States::US_DETERMINE_NEXT_STATEUnk:
                     case ((UnitState)2):
-                    case Map::Units::States::US_FIRE_WEAPONUnk:
-                    case Map::Units::States::US_LOOK_AROUNDUnk:
+                    case OpenSHC::Map::Units::States::US_FIRE_WEAPONUnk:
+                    case OpenSHC::Map::Units::States::US_LOOK_AROUNDUnk:
                         if (4 < uVar6) {
                             uVar6 = 4;
                         }
                         break;
-                    case Map::Units::States::US_IDLEUnk:
+                    case OpenSHC::Map::Units::States::US_IDLEUnk:
                         if (5 < uVar6) {
                             uVar6 = 5;
                         }
@@ -178,26 +192,26 @@ namespace UI {
                             uVar6 = 3;
                         }
                         break;
-                    case Map::Units::States::US_RELOAD_WEAPONUnk:
+                    case OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk:
                         if (2 < uVar6) {
                             uVar6 = 2;
                         }
                         break;
-                    case Map::Units::States::US_AIM_WEAPONUnk:
+                    case OpenSHC::Map::Units::States::US_AIM_WEAPONUnk:
                         uVar6 = 0;
                         break;
-                    case Map::Units::States::US_STAND_UPUnk:
+                    case OpenSHC::Map::Units::States::US_STAND_UPUnk:
                         if (1 < uVar6) {
                             uVar6 = 1;
                         }
                     }
                     psVar5 = psVar5 + 1;
                     iVar7 = iVar7 + -1;
-                } while (iVar7);
+                } while (iVar7 != 0);
                 if (uVar6 < 100) {
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        DE::SHCDE::TEXT_IN_MILL, (int)(uVar6 + 3), (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_MILL, (int)(uVar6 + 3), (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                 }
             }
         }

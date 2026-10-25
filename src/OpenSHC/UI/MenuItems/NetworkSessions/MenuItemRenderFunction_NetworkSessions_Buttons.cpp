@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/AlphaAndButtonSurface.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
@@ -21,33 +22,26 @@
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
         using OpenSHC::DE::SHCDE::eTextSections;
+        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047C670
         void NetworkSessions::MenuItemRenderFunction_NetworkSessions_Buttons(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if (param_1 == -10000) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                return;
             }
             if (param_1 == 10000) {
                 param_1 = 8;
@@ -55,27 +49,23 @@ namespace UI {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    blendStrength = 0;
-                    keepOffsetX = FALSE;
-                    fontSize = 0x11;
-                    color = 0x7f7f7f;
-                    alignment = OpenSHC::Text::TTA_CENTER;
                     yParam = DAT_ButtonY::instance + 6;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     /*
                       Text:   0x8 => Join
                      */
-                    textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 8);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 8),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x11, FALSE, 0);
+                    return;
                 }
             LAB_0047c73a:
                 DAT_ButtonUnknownZero::instance = 0;
-                if ((((param_1 == 7) || (param_1 == 8))
-                        && (DAT_GameCore::instance.activeMenuTab.tabType
-                            == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM))
-                    && (!DAT_GameSynchronyState::instance.modemScrollbarCount)) {
+                if (((param_1 == 7) || (param_1 == 8))
+                    && DAT_GameCore::instance.activeMenuTab.tabType
+                        == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
+                    && DAT_GameSynchronyState::instance.modemScrollbarCount == 0) {
                     DAT_ButtonUnknownZero::instance = 1;
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -85,27 +75,28 @@ namespace UI {
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                        (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x11, FALSE);
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                        OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x11, FALSE);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                        (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                        OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
+                    (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                    OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
+                return;
             }
             if ((param_1 == 9) || (param_1 == 10)) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             if (param_1 == -10) {
-                if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable) {
+                if (DAT_GameSynchronyState::instance.gameSpyArcadeAvailable != 0) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
@@ -113,8 +104,9 @@ namespace UI {
                 if (param_1 == -1000) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                    return;
                 }
-                if (-1 < param_1)
+                if (0 <= param_1)
                     goto LAB_0047c73a;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 if (param_1 == -1) {
@@ -122,6 +114,7 @@ namespace UI {
                         DAT_PencilRenderCore::ptr)(0, 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
                     DAT_PencilRenderCore::ptr)(1, 0);

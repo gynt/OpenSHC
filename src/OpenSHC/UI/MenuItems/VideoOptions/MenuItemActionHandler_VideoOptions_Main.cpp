@@ -73,7 +73,7 @@ namespace UI {
             case 0x10:
                 DAT_MenuTextInputState::instance.menuScrollSpeedSetting
                     = DAT_MenuTextInputState::instance.menuScrollSpeedSetting + OpenSHC::UI::SS_FAST;
-                if (2 < (int)DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
+                if (3 <= (int)DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
                     DAT_MenuTextInputState::instance.menuScrollSpeedSetting = 0;
                 }
                 break;

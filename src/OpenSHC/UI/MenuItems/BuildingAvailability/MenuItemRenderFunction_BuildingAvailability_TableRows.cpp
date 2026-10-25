@@ -30,25 +30,16 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB3E0
         void BuildingAvailability::MenuItemRenderFunction_BuildingAvailability_TableRows(int param_1, ...)
         {
-            int yParam;
-            char* textAddress;
             int xParam;
-            TextAlignment alignment;
             BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             int _structIndex;
             _structIndex = DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityStructIndexForNameArray
                                [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1];
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
                 DAT_PencilRenderCore::ptr)(FALSE, param_1, 0);
-            blendStrength = 0;
-            keepOffsetX = FALSE;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            fontSize = 0x13;
-            if (!DAT_ButtonCurrentlyInteracting::instance) {
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 if (DAT_MapPropertiesState::instance.buildingAvailability[_structIndex] == 0) {
                     color = 0x7f7f7f;
                 } else {
@@ -57,15 +48,14 @@ namespace UI {
             } else {
                 color = 0xccfaff;
             }
-            alignment = OpenSHC::Text::TTA_LEFT;
-            yParam = DAT_ButtonY::instance + 6;
+            int yParam = DAT_ButtonY::instance + 6;
             xParam = DAT_ButtonX::instance + 0x14;
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT,
-                DAT_MissionAestheticsDefinedData::instance.BuildingNameRelatedStructArray[_structIndex]
-                    .nameNumberInTextGroup);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT,
+                    DAT_MissionAestheticsDefinedData::instance.BuildingNameRelatedStructArray[_structIndex]
+                        .nameNumberInTextGroup),
+                xParam, yParam, OpenSHC::Text::TTA_LEFT, color, 0x13, FALSE, 0);
         }
 
     }

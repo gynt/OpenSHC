@@ -32,10 +32,9 @@ namespace UI {
         void MissionEndscreen::MenuItemRenderFunction_MissionEndscreen_Main(int param_1, ...)
         {
             int iVar1;
-            int iVar2;
-            int iVar3;
             if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
             if ((char)INT_00eb0e44::instance != '\0') {
@@ -49,16 +48,16 @@ namespace UI {
             if (param_1 == -2) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
-            iVar2 = DAT_ButtonX::instance;
-            iVar3 = DAT_ButtonY::instance;
+            int iVar2 = DAT_ButtonX::instance;
+            int iVar3 = DAT_ButtonY::instance;
             if (param_1 == -100) {
-                if ((DAT_00ec082c::instance) && (DAT_00ec082c::instance != 2))
+                if ((DAT_00ec082c::instance != 0) && (DAT_00ec082c::instance != 2))
                     goto LAB_004d6d83;
             } else {
                 if (param_1 != -0x65) {
                     if (0xf < (uint)param_1) {
                     LAB_004d6d83:
-                        if (DAT_ButtonCurrentlyInteracting::instance) {
+                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                             if (param_1 == -10) {
                                 DAT_00eb9af8::instance = 0x11;
                             } else if (param_1 == -1) {
@@ -69,9 +68,11 @@ namespace UI {
                         }
                         MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                 MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                        return;
                     }
-                    if (DAT_ButtonCurrentlyInteracting::instance) {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_00eb9af8::instance = param_1;
+                        return;
                     }
                     if (param_1 != DAT_FinalResultsOrderByColumn::instance)
                         goto LAB_004d6d83;
@@ -99,6 +100,7 @@ namespace UI {
                 }
                 if ((DAT_00ec082c::instance != 1) && (DAT_00ec082c::instance != 3))
                     goto LAB_004d6d83;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 1;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;

@@ -34,18 +34,11 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426D30
         void Unused::MenuItemRenderFunction_UnusedEconomicMissionSelect_MissionSelect(int param_1, ...)
         {
-            int yParam;
-            char* textAddress;
             int xParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
             uint color_00;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                if ((!DAT_GameCore::instance.unlockAllHistoricalCampaigns)
+                if ((DAT_GameCore::instance.unlockAllHistoricalCampaigns == 0)
                     && (-DAT_GameCore::instance.furthestMission != param_1
                         && (int)DAT_GameCore::instance.furthestMission <= -param_1)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -56,6 +49,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
@@ -64,35 +58,35 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 if (-DAT_GameCore::instance.missionNumber1to20 == param_1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)((int)(DAT_ButtonX::instance + 8)),
-                        (int)((int)(DAT_ButtonY::instance + 5)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
-                    blendStrength = 0;
-                    keepOffsetX = FALSE;
-                    fontSize = 0x13;
-                    color = 0xccfaff;
-                    alignment = OpenSHC::Text::TTA_LEFT;
-                    yParam = DAT_ButtonY::instance + 5;
+                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)(DAT_ButtonX::instance + 8),
+                        (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
+                    int yParam = DAT_ButtonY::instance + 5;
                     xParam = DAT_ButtonX::instance + 0x1e;
-                    textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1),
+                        xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                /*
+                  the original jumps out of line on `== FALSE`, so the interacting
+                  arm is the one the source wrote first
+                 */
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)((int)(DAT_ButtonX::instance + 8)),
-                        (int)((int)(DAT_ButtonY::instance + 5)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
-                    color_00 = 0xc2f0eb;
+                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)(DAT_ButtonX::instance + 8),
+                        (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
+                    color_00 = 0xccfaff;
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)((int)(DAT_ButtonX::instance + 8)),
-                        (int)((int)(DAT_ButtonY::instance + 5)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
-                    color_00 = 0xccfaff;
+                        DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)(DAT_ButtonX::instance + 8),
+                        (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
+                    color_00 = 0xc2f0eb;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1, (int)((int)(DAT_ButtonX::instance + 0x1e)),
-                    (int)((int)(DAT_ButtonY::instance + 5)), OpenSHC::Text::TTA_LEFT, color_00, 0x13, FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1, (int)(DAT_ButtonX::instance + 0x1e),
+                    (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT, color_00, 0x13, FALSE);
                 DAT_ButtonUnknownZero::instance = 0;
             }
         }

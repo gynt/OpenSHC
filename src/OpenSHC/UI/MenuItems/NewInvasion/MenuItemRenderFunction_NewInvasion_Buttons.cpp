@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/AlphaAndButtonSurface.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -15,30 +16,22 @@
 #include "OpenSHC/Globals/DAT_ButtonY.hpp"
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
         using OpenSHC::DE::SHCDE::eTextSections;
+        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BFA60
         void NewInvasion::MenuItemRenderFunction_NewInvasion_Buttons(int param_1, ...)
         {
-            int iVar1;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            iVar1 = -1;
+            int iVar1 = -1;
             switch (param_1) {
             case 9:
             case 0x5b:
@@ -93,6 +86,8 @@ namespace UI {
                 iVar1 = 0xe;
             }
             switch (param_1) {
+            case -1:
+                break;
             case 9:
             case 10:
             case 0xb:
@@ -109,42 +104,35 @@ namespace UI {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    blendStrength = 0;
-                    keepOffsetX = FALSE;
-                    fontSize = 0x12;
-                    color = 0xccfaff;
-                    alignment = OpenSHC::Text::TTA_CENTER;
                     yParam = DAT_ButtonY::instance + 6;
                     iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                    textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
+                        iVar1, yParam, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                 }
             default:
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
                 return;
-            case -1:
-                break;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            if (!DAT_ButtonCurrentlyInteracting::instance) {
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MONTHS,
                     DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.month
                         + 0xc,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                    (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                    OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_MONTHS,
                 DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .header.month
                     + 0xc,
-                (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
+                (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
         }
 
     }

@@ -33,44 +33,37 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BD0F0
         void TutorialBox::MenuItemRenderFunction_TutorialBox_Main(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
             int numInGroup;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             numInGroup = 1;
-            if (!DAT_00df5540::instance) {
+            if (DAT_00df5540::instance == 0) {
                 if (param_1 == 2) {
                     numInGroup = 2;
                 } else {
-                    if (!DAT_00df5560::instance) {}
-                    if (((DAT_00df5558::instance < DAT_00df555c::instance + -1)
-                            && (DAT_SoundSystemState::instance.waveOutOpenUnk_0x8))
-                        && (DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {
+                    if (DAT_00df5560::instance == 0) {
+                        return;
+                    }
+                    if ((int)DAT_00df5558::instance < (int)DAT_00df555c::instance + -1
+                        && DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE
+                        && DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0) {
                         numInGroup = 5;
                     }
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                blendStrength = 0;
-                xParam = (DAT_ButtonW::instance >> 1) + DAT_ButtonX::instance;
+                int xParam = ((int)DAT_ButtonW::instance >> 1) + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
-                keepOffsetX = FALSE;
-                fontSize = 0x12;
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xc2f0eb;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, numInGroup),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 0);
                 } else {
-                    color = 0xccfaff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, numInGroup),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                 }
-                alignment = OpenSHC::Text::TTA_CENTER;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, numInGroup);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
             }
         }
 

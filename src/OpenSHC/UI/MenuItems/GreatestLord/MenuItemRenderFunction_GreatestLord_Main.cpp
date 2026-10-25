@@ -17,25 +17,19 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AE720
         void GreatestLord::MenuItemRenderFunction_GreatestLord_Main(int param_1, ...)
         {
             int iVar1;
-            bool bVar3;
-            if (param_1 == 0xb) {
-                bVar3 = DAT_GreatestLordDefinedData::instance.tableSortBy == 1;
-            } else {
-                if (param_1 != 0xc) {
-                    if ((param_1 == 10) && (DAT_GreatestLordDefinedData::instance.tableSortBy == -1))
-                        goto LAB_004ae757;
-                    goto LAB_004ae736;
-                }
-                bVar3 = DAT_GreatestLordDefinedData::instance.tableSortBy == 0;
-            }
-            if (bVar3) {
-            LAB_004ae757:
+            /*
+              the original branches straight off each comparison into the shared block
+              (`cmp [data], ecx; je L5` at 0x4ae734) rather than materialising a flag
+             */
+            if (((param_1 == 0xb) && (DAT_GreatestLordDefinedData::instance.tableSortBy == 1))
+                || ((param_1 == 0xc) && (DAT_GreatestLordDefinedData::instance.tableSortBy == 0))
+                || ((param_1 == 10) && (DAT_GreatestLordDefinedData::instance.tableSortBy == -1))) {
                 int iVar2 = 0xe;
                 if (param_1 == 0xc) {
                     iVar2 = 1;
@@ -43,16 +37,15 @@ namespace UI {
                 DAT_ButtonCurrentlyInteracting::instance = TRUE;
                 int drawX = DAT_ButtonX::instance;
                 int drawY = DAT_ButtonY::instance;
-                iVar1 = MACRO_CALL_MEMBER(UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
+                iVar1 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
                     &DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(TRUE);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    (DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
-                        .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
-                        .gmId_0x0,
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
+                                                          .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                                                          .gmId_0x0,
                     iVar1 + iVar2, drawX, drawY);
             }
-        LAB_004ae736:
-            MACRO_CALL(UI::Rendering_Func::RenderButtonImageWithBlending)();
+            MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderButtonImageWithBlending)();
         }
 
     }

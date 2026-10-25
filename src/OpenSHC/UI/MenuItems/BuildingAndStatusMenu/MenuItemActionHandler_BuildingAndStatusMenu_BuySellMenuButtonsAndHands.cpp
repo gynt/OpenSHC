@@ -20,9 +20,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Audio::SFX::SoundEffectID;
-        using Commands::GameCommandType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Audio::SFX::SoundEffectID;
+        using OpenSHC::Commands::GameCommandType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00467040
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_BuySellMenuButtonsAndHands(
@@ -32,56 +32,58 @@ namespace UI {
             int _player;
             if (param_1 == 2) {
                 _buyingPrice
-                    = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed,
-                        DAT_GameState::ptr)((Game::Resources::ResourceType)DAT_GameState::instance
+                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed,
+                        DAT_GameState::ptr)((OpenSHC::Game::Resources::ResourceType)DAT_GameState::instance
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType);
                 if (_buyingPrice == 8) {
                     _buyingPrice = 7;
                 }
-                MACRO_CALL(UI::MenuItems::BuildingAndStatusMenu_Func::
+                MACRO_CALL(OpenSHC::UI::MenuItems::BuildingAndStatusMenu_Func::
                         MenuItemActionHandler_BuildingAndStatusMenu_SelectBuySellGoods)(_buyingPrice);
+                return;
             }
             if (param_1 == 3) {
-                _buyingPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getNextGoodFilteringUnallowed,
-                    DAT_GameState::ptr)((Game::Resources::ResourceType)DAT_GameState::instance
+                _buyingPrice = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getNextGoodFilteringUnallowed,
+                    DAT_GameState::ptr)((OpenSHC::Game::Resources::ResourceType)DAT_GameState::instance
                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .marketSelectedResourceType);
                 if (_buyingPrice == 8) {
                     _buyingPrice = 7;
                 }
-                MACRO_CALL(UI::MenuItems::BuildingAndStatusMenu_Func::
+                MACRO_CALL(OpenSHC::UI::MenuItems::BuildingAndStatusMenu_Func::
                         MenuItemActionHandler_BuildingAndStatusMenu_SelectBuySellGoods)(_buyingPrice);
             }
             BOOL_CurrentMenuClickState::instance = FALSE;
-            if (!param_1) {
+            if (param_1 == 0) {
                 /*
                   Buying
                  */
-                _buyingPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
+                _buyingPrice = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::getBatchBuyPrice,
                     DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType));
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[0xf]
                     < _buyingPrice) {
-                    MACRO_CALL(UI::Actions_Func::SetStorageMarketFailState)(1,
+                    MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(1,
                         (ResourceType)((int)(DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .marketSelectedResourceType)));
                     /*
                       "Not enough gold"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "space_warning8.wav");
+                    return;
                 }
-                int _space = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getResourceSpace,
+                int _space = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getResourceSpace,
                     DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (int*)((int)(DAT_GameState::instance
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType)));
                 if (_space == -1) {
-                    MACRO_CALL(UI::Actions_Func::SetStorageMarketFailState)(3,
+                    MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(3,
                         (ResourceType)((int)(DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .marketSelectedResourceType)));
@@ -91,7 +93,7 @@ namespace UI {
                         /*
                           "No stockpile built"
                          */
-                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "space_warning2.wav");
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -100,20 +102,22 @@ namespace UI {
                         /*
                           "No Granary built"
                          */
-                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "space_warning1.wav");
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
-                        != 7) {}
+                        != 7) {
+                            return;
+                        }
                     /*
                       "No Armory built"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "space_warning3.wav");
                 }
                 if (_space < 5) {
-                    MACRO_CALL(UI::Actions_Func::SetStorageMarketFailState)(4,
+                    MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(4,
                         (ResourceType)((int)(DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .marketSelectedResourceType)));
@@ -123,7 +127,7 @@ namespace UI {
                         /*
                           "No space in the stockpile"
                          */
-                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "space_warning5.wav");
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -132,16 +136,18 @@ namespace UI {
                         /*
                           "No space in the granary"
                          */
-                        MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             "space_warning4.wav");
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
-                        != 10) {}
+                        != 10) {
+                            return;
+                        }
                     /*
                       "No space in the armory"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "space_warning6.wav");
                 }
             } else {
@@ -151,22 +157,22 @@ namespace UI {
                  */
                 if (param_1 != 1)
                     goto LAB_004672c0;
-                ResourceType _resource = (Game::Resources::ResourceType)DAT_GameState::instance
+                ResourceType _resource = (OpenSHC::Game::Resources::ResourceType)DAT_GameState::instance
                                              .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                              .marketSelectedResourceType;
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[_resource]
-                    <= 0) {
-                    MACRO_CALL(UI::Actions_Func::SetStorageMarketFailState)(2, _resource);
+                    < 1) {
+                    MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(2, _resource);
                     /*
                       "Not enough goods"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "space_warning7.wav");
                 }
             }
-            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                Audio::SFX::SEID_DRAWBRIDGE_CONTROL);
+            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                OpenSHC::Audio::SFX::SEID_DRAWBRIDGE_CONTROL);
             _player = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .storageMarketFailState = 0;
@@ -174,8 +180,8 @@ namespace UI {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                 = DAT_GameState::instance.playerDataArray[_player].marketSelectedResourceType;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                Commands::GCT_BUY_OR_SELL);
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                OpenSHC::Commands::GCT_BUY_OR_SELL);
         }
 
     }

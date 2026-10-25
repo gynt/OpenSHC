@@ -3,6 +3,8 @@
 #include "OpenSHC/Text/TextManager.func.hpp"
 #include "OpenSHC/UI/Rendering/AlphaAndButtonSurface.func.hpp"
 #include "OpenSHC/Map/MapLockState.hpp"
+#include "OpenSHC/Map/MapLockStateInt.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -16,30 +18,25 @@
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
-#include "OpenSHC/Map/MapLockStateInt.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
         using OpenSHC::Map::MapLockState;
+        using OpenSHC::Map::MapLockStateInt;
+        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Map::MapLockStateInt;
-        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC040
         void EditorMapTypeQuickChange::MenuItemRenderFunction_EditorMapTypeQuickChange_Main(int param_1, ...)
         {
-            MapLockStateInt MVar1;
-            BOOLEnum BVar2;
             char* textAddress;
-            BGR24 color;
-            BVar2 = DAT_ButtonCurrentlyInteracting::instance;
+            BOOLEnum BVar2 = DAT_ButtonCurrentlyInteracting::instance;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
-            MVar1 = DAT_GameCore::instance.U3_mapLockedState;
+            MapLockStateInt MVar1 = DAT_GameCore::instance.U3_mapLockedState;
             if (param_1 < 3) {
             joined_r0x004ac081:
                 if (param_1 != MVar1)
@@ -52,15 +49,15 @@ namespace UI {
                 }
                 if (param_1 < 0x14) {
                     if (param_1 == 0xc) {
-                        if (!DAT_GameCore::instance.U2_mapType_singleOrMulti) {
+                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
                             DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         }
-                        if (!DAT_GameCore::instance.mapU4Int0)
+                        if (DAT_GameCore::instance.mapU4Int0 == 0)
                             goto switchD_004ac099_caseD_4;
                     } else if (param_1 == 10) {
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti)
+                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
                             goto switchD_004ac099_caseD_4;
-                    } else if ((param_1 != 0xb) || (DAT_GameCore::instance.U2_mapType_singleOrMulti < 1))
+                    } else if (param_1 != 0xb || (int)DAT_GameCore::instance.U2_mapType_singleOrMulti <= 0)
                         goto switchD_004ac099_caseD_4;
                 } else {
                     switch (param_1) {
@@ -133,14 +130,15 @@ namespace UI {
             case 0x17:
                 textAddress = "400x400";
             }
-            if (!BVar2) {
-                color = 0xc2f0eb;
+            if (BVar2 == FALSE) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                    (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
             } else {
-                color = 0xccfaff;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                    (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE, 0);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 4)), OpenSHC::Text::TTA_CENTER, color, 0x11, FALSE, 0);
         }
 
     }

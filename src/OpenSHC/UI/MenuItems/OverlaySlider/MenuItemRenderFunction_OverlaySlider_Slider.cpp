@@ -38,16 +38,16 @@ namespace UI {
             undefined2 color;
             int iVar8;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                (int)((int)(DAT_ButtonW::instance + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), 0xc);
-            if (-1 < DAT_MenuModalComposition2::instance.textGroup) {
+                DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
+                (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), 0xc);
+            if (0 <= DAT_MenuModalComposition2::instance.textGroup) {
                 iVar8 = 0;
                 BVar7 = FALSE;
                 iVar6 = 0x13;
                 BVar5 = 0xc2f0eb;
                 TVar4 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 iVar3 = DAT_ButtonY::instance + 4;
                 pcVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
@@ -57,20 +57,20 @@ namespace UI {
                     pcVar2, iVar1, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
             }
             color = COL_DARK_LIME::instance.shortValue;
-            if (!isDragged) {
+            if (isDragged == 0) {
                 color = COL_GREYISH_YELLOW::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonX::instance + thumbYPos, (int)((int)(DAT_ButtonY::instance)),
-                DAT_ButtonX::instance + thumbYPos + thumbHeight,
-                (int)((int)(DAT_ButtonH::instance + DAT_ButtonY::instance)), (ushort)((int)(color)));
-            if ((thumbHeight == DAT_ButtonW::instance) && (-1 < DAT_MenuModalComposition2::instance.textGroup)) {
+                DAT_ButtonX::instance + thumbYPos, (int)(DAT_ButtonY::instance),
+                DAT_ButtonX::instance + thumbYPos + thumbHeight, (int)(DAT_ButtonH::instance + DAT_ButtonY::instance),
+                (ushort)(color));
+            if ((thumbHeight == DAT_ButtonW::instance) && (0 <= DAT_MenuModalComposition2::instance.textGroup)) {
                 iVar8 = 0;
                 BVar7 = FALSE;
                 iVar6 = 0x13;
                 BVar5 = 0xccfaff;
                 TVar4 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 iVar3 = DAT_ButtonY::instance + 4;
                 pcVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(

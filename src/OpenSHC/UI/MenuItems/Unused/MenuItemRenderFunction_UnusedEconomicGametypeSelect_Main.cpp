@@ -28,33 +28,32 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00425AD0
         void Unused::MenuItemRenderFunction_UnusedEconomicGametypeSelect_Main(int param_1, ...)
         {
-            int iVar1;
-            DWORD _currentTime;
             uint uVar2;
-            iVar1 = DAT_CurrentButtonGmDataIndex::instance;
-            if ((param_1 != 5) && (!DAT_ButtonCurrentlyInteracting::instance)) {
+            int iVar1 = DAT_CurrentButtonGmDataIndex::instance;
+            if ((param_1 != 5) && (DAT_ButtonCurrentlyInteracting::instance == FALSE)) {
                 if (param_1 == INT_00b95abc::instance) {
                     INT_00b95abc::instance = -1;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                _currentTime = timeGetTime();
+                DWORD _currentTime = timeGetTime();
                 uVar2
                     = (_currentTime
                           - DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar1].stateTransitionTimeBaseUnk_0x18)
                         / 100
                     & 0x3f;
-                if (0xf < uVar2) {
+                if (0x10 <= (int)uVar2) {
                     uVar2 = 0;
                 }
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                     (OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar1].gmId_0x0,
-                    (int)((int)(DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar1].pictureInGm_0x4 + uVar2)),
-                    (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                    (int)(DAT_UIButtonDefinedData::instance.ButtonGmDataArray[iVar1].pictureInGm_0x4 + uVar2),
+                    (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_CurrentButtonPictureInGm::instance
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                           .pictureInGm_0x4;
+                return;
             }
             switch (param_1) {
             case 1:

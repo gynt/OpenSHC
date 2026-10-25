@@ -37,13 +37,14 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int _yPosition;
             int _xPosition;
-            if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks)) {
+            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
+                && DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                && DAT_GameState::instance.mapAndTime.skirmishNoRushTicks != 0) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (!DAT_EnoughGoldForRequestedUnit::instance) {
+            if (DAT_EnoughGoldForRequestedUnit::instance == FALSE) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -51,11 +52,11 @@ namespace UI {
             int iVar2 = DAT_CurrentButtonGmDataIndex::instance;
             BOOLEnum buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
             _yPosition = DAT_ButtonY::instance;
-            if (DAT_ButtonCurrentlyInteracting::instance) {
+            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 DAT_00df3350::instance = param_1 + -0x16;
             }
             if (EVar1 == OpenSHC::Map::Units::ERS_CAN_RECRUITUnk) {
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                         .stateTransitionTimeBaseUnk_0x18 = 0;
                     buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + iVar2;
@@ -75,9 +76,9 @@ namespace UI {
                             buttonGmData)(buttonIsInteracting);
                 }
             } else {
-                if (((EVar1 != OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT)
-                        && (EVar1 != OpenSHC::Map::Units::ERS_UNABLE_MISSING_PEASANTS))
-                    && (EVar1 != OpenSHC::Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY))
+                if (EVar1 != OpenSHC::Map::Units::ERS_CAN_NOT_RECRUIT
+                    && EVar1 != OpenSHC::Map::Units::ERS_UNABLE_MISSING_PEASANTS
+                    && EVar1 != OpenSHC::Map::Units::ERS_UNABLE_BECAUSE_MAX_ARMY)
                     goto LAB_00466a7d;
                 buttonGmData
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;

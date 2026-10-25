@@ -157,8 +157,8 @@ namespace Map {
             short field127_0x194; // 0x00000194 length: 2
             short numberOfPopulationProvided; // 0x00000196 length: 2
             short buildingTypeBasedEmployeeCount; // 0x00000198 length: 2
-            short currentEmployeeCount; // 0x0000019A length: 2
-            short currentlyNeededEmployeeCount; // 0x0000019C length: 2
+            ushort currentEmployeeCount; // 0x0000019A length: 2
+            ushort currentlyNeededEmployeeCount; // 0x0000019C length: 2
             short workerID[4]; // 0x0000019E length: 8
             undefined1 padding_0x1a6[2]; // 0x000001A6 length: 2
             int workerUID[4]; // 0x000001A8 length: 16

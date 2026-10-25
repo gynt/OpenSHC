@@ -77,6 +77,7 @@ namespace UI {
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES, 0);
+                    return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -89,52 +90,48 @@ namespace UI {
                                 != OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             && (DAT_GameCore::instance.activeMenuTab.tabType
                                 != OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))))
-                    && (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)) {
+                    && DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
                         DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_PAUSE_MENU);
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         ((SoundEffectID)0x101));
                 }
             } else if (param_1 == -2) {
-                if (((((!DAT_GameSynchronyState::instance.syncStatus)
-                          && (!DAT_GameSynchronyState::instance.saveRelated))
-                         && (!DAT_GameCore::instance.gamePausedLogical))
-                        && ((DAT_GameCore::instance.currentMenuViewType
-                                != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
-                            || ((DAT_GameCore::instance.activeMenuTab.tabType
-                                    != OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
-                                && (DAT_GameCore::instance.activeMenuTab.tabType
-                                    != OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))))))
-                    && ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                .lordKilledByPlayerID
-                            == 0
-                        && (DAT_GameState::instance
-                                .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                .playerDeathRelated
-                            == 0)))) {
+                if (DAT_GameSynchronyState::instance.syncStatus == 0
+                    && DAT_GameSynchronyState::instance.saveRelated == 0
+                    && DAT_GameCore::instance.gamePausedLogical == 0
+                    && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
+                        || ((DAT_GameCore::instance.activeMenuTab.tabType
+                                != OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
+                            && (DAT_GameCore::instance.activeMenuTab.tabType
+                                != OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))))
+                    && DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .lordKilledByPlayerID
+                        == 0
+                    && DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .playerDeathRelated
+                        == 0) {
                     MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::confirmAndQueueDestructionCommand,
                         DAT_WallAndPitchState::ptr)();
                 }
             } else if (param_1 == -3) {
-                if ((((((!DAT_GameSynchronyState::instance.syncStatus)
-                           && (!DAT_GameSynchronyState::instance.saveRelated))
-                          && (!DAT_GameCore::instance.gamePausedLogical))
-                         && ((DAT_GameCore::instance.currentMenuViewType
-                                 != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
-                             || ((DAT_GameCore::instance.activeMenuTab.tabType
-                                     != OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
-                                 && (DAT_GameCore::instance.activeMenuTab.tabType
-                                     != OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))))))
-                        && (DAT_GameState::instance
-                                .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                .lordKilledByPlayerID
-                            == 0))
-                    && ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                if (DAT_GameSynchronyState::instance.syncStatus == 0
+                    && DAT_GameSynchronyState::instance.saveRelated == 0
+                    && DAT_GameCore::instance.gamePausedLogical == 0
+                    && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
+                        || ((DAT_GameCore::instance.activeMenuTab.tabType
+                                != OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
+                            && (DAT_GameCore::instance.activeMenuTab.tabType
+                                != OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))))
+                    && DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .lordKilledByPlayerID
+                        == 0
+                    && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .playerDeathRelated
                             == 0
                         || ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
                             && (DAT_GameState::instance.mapAndTime.gameOver
-                                == DAT_GameSynchronyState::instance.currentPlayerSlotID)))))) {
+                                == DAT_GameSynchronyState::instance.currentPlayerSlotID))))) {
                     MACRO_CALL(
                         OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_ToolbarButtonPressed)(
                         OpenSHC::Commands::M_MAPPER_DELETE);
@@ -155,6 +152,7 @@ namespace UI {
                         menuID = OpenSHC::UI::Enums::MVT_CRUSADE_MISSION_INTRO;
                     } else {
                         menuID = OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -167,11 +165,12 @@ namespace UI {
             } else {
                 if (param_1 == -4) {
                     DAT_StopHandlingMenuItems::instance = 0;
+                    return;
                 }
                 if (param_1 == -90) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
-                    if (DAT_GameCore::instance.genieVoiceActive) {
+                    if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                         /*
                           "Your allies"
                          */
@@ -183,6 +182,7 @@ namespace UI {
                         DAT_GreatestLordDefinedData::instance.tableSortBy = -1;
                         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                             DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_GREATEST_LORD, FALSE);
+                        return;
                     }
                     if (param_1 < -9) {
                         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
@@ -198,6 +198,7 @@ namespace UI {
                                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] = -1;
                                 *(undefined4*)((int)DAT_GameSynchronyState::ptr + (-9 - param_1) * 4 + 0x6a8) = 1;
                                 DAT_GameSynchronyState::instance.currentPlayerSlotID = -9 - param_1;
+                                return;
                             }
                             if (param_1 != -100) {
                                 if (param_1 == -0x65) {
@@ -224,8 +225,8 @@ namespace UI {
                             }
                         }
                     } else if (param_1 - 0x47U < 9) {
-                        if ((!DAT_GameSynchronyState::instance.syncStatus)
-                            && (!DAT_GameCore::instance.gamePausedLogical)) {
+                        if ((DAT_GameSynchronyState::instance.syncStatus == 0)
+                            && (DAT_GameCore::instance.gamePausedLogical == 0)) {
                             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                                 DAT_StopHandlingMenuItems::instance = 0;
                             }
@@ -236,6 +237,7 @@ namespace UI {
                                 == OpenSHC::UI::Enums::MMT_BUILDING_HELP_TEXT) {
                                 MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::closeHelpDialogAndReturnToMenu,
                                     DAT_TextEditorState::ptr)();
+                                return;
                             }
                             if ((((((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk)
                                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CRUSADER_TUTORIAL))
@@ -256,7 +258,7 @@ namespace UI {
                                 && (BVar2
                                     = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                                         OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                                    !BVar2)) {
+                                    BVar2 == FALSE)) {
                                 param_1 = 0x4c;
                             }
                             DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
@@ -313,15 +315,6 @@ namespace UI {
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
                                     | OpenSHC::Audio::SFX::SEID_INN));
                             return;
-                        case 0x19:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                                (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
-                                    | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_LIFT_01));
-                            return;
-                        case 0x1c:
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                                ((SoundEffectID)0x80));
-                            return;
                         case 0x1e:
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
@@ -331,6 +324,16 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                                 (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
                                     | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_BREAK));
+                            break;
+                        case 0x19:
+                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                                (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_SIEGE_EQUIPMENT_DESTROYED
+                                    | OpenSHC::Audio::SFX::SEID_QUARRY_STONE_LIFT_01));
+                            return;
+                        case 0x1c:
+                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                                ((SoundEffectID)0x80));
+                            return;
                         }
                     }
                 }

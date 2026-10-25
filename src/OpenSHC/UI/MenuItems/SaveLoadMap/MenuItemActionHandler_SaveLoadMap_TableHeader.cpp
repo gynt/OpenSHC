@@ -11,7 +11,6 @@ namespace UI {
         void SaveLoadMap::MenuItemActionHandler_SaveLoadMap_TableHeader(int param_1, ...)
         {
             int iVar1;
-            int iVar2;
             int iVar3;
             int iVar4;
             if (param_1 < 0) {
@@ -33,76 +32,77 @@ namespace UI {
                     param_1 = 1;
                 }
             }
-            if (!param_1) {
-                iVar2 = 0;
-                if (!DAT_MenuTextInputState::instance.fileListSortOrder) {
-                    if (0 < DAT_MenuTextInputState::instance.fileListEntryCount) {
-                        do {
-                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
-                                = (DAT_MenuTextInputState::instance.fileListEntryCount - iVar2) + -1;
-                            iVar2 = iVar2 + 1;
-                        } while (iVar2 < DAT_MenuTextInputState::instance.fileListEntryCount);
-                    }
-                    DAT_MenuTextInputState::instance.fileListSortOrder = 1;
-                    DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
-                }
-                if (0 < DAT_MenuTextInputState::instance.fileListEntryCount) {
-                    do {
-                        DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
-                        iVar2 = iVar2 + 1;
-                    } while (iVar2 < DAT_MenuTextInputState::instance.fileListEntryCount);
-                }
-                DAT_MenuTextInputState::instance.fileListSortOrder = 0;
-                DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
-            } else if (param_1 == 1) {
+            int sortMode = DAT_MenuTextInputState::instance.fileListSortOrder;
+            /*
+              the original dispatches the two actions with a `sub eax, K; je` chain
+              (0x492e3a), MSVC's sparse switch, and places the `case 1` body first
+             */
+            int iVar2;
+            switch (param_1) {
+            case 1:
+            {
                 iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
-                if (DAT_MenuTextInputState::instance.fileListSortOrder != 2) {
+                /*
+                  the original tests the mode once (0x492e4c) and writes the `== 2` pass
+                  first, returning out of it at 0x492eca; the inner pass is a counted loop
+                  whose zero-trip test is the `test eax, eax; jle` at 0x492e67, not the
+                  guard Ghidra duplicated into the loop body
+                 */
+                if (sortMode == 2) {
                     do {
                         iVar4 = 0;
-                        iVar3 = 0;
-                        if (iVar2 == 1 || iVar2 + -1 < 0) {
-                            DAT_MenuTextInputState::instance.fileListSortOrder = 2;
-                            DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
-                        }
-                        do {
+                        for (iVar3 = 0; iVar3 < iVar2 + -1; iVar3 = iVar3 + 1) {
                             iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                            if (DAT_ResourceManager::instance.mapFileTimes[iVar1] < (int)DAT_ResourceManager::instance
-                                    .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
+                            if ((int)DAT_ResourceManager::instance
+                                    .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
+                                < (int)DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                                 iVar4 = iVar4 + 1;
                                 iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
                             }
-                            iVar3 = iVar3 + 1;
-                        } while (iVar3 < iVar2 + -1);
-                    } while (iVar4);
-                    DAT_MenuTextInputState::instance.fileListSortOrder = 2;
+                        }
+                    } while (iVar4 != 0);
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 3;
                     DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
+                    return;
                 }
                 do {
                     iVar4 = 0;
-                    iVar3 = 0;
-                    if (iVar2 == 1 || iVar2 + -1 < 0) {
-                        DAT_MenuTextInputState::instance.fileListSortOrder = 3;
-                        DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
-                    }
-                    do {
+                    for (iVar3 = 0; iVar3 < iVar2 + -1; iVar3 = iVar3 + 1) {
                         iVar1 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
-                        if ((int)DAT_ResourceManager::instance
-                                .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
-                            < DAT_ResourceManager::instance.mapFileTimes[iVar1]) {
+                        if ((int)DAT_ResourceManager::instance.mapFileTimes[iVar1] < (int)DAT_ResourceManager::instance
+                                .mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar1;
                             iVar4 = iVar4 + 1;
                             iVar2 = DAT_MenuTextInputState::instance.fileListEntryCount;
                         }
-                        iVar3 = iVar3 + 1;
-                    } while (iVar3 < iVar2 + -1);
-                } while (iVar4);
-                DAT_MenuTextInputState::instance.fileListSortOrder = 3;
+                    }
+                } while (iVar4 != 0);
+                DAT_MenuTextInputState::instance.fileListSortOrder = 2;
                 DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
+                break;
+            }
+            case 0:
+                if (sortMode == 0) {
+                    for (iVar2 = 0; iVar2 < (int)DAT_MenuTextInputState::instance.fileListEntryCount;
+                        iVar2 = iVar2 + 1) {
+                        DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1]
+                            = (DAT_MenuTextInputState::instance.fileListEntryCount - iVar2) + -1;
+                    }
+                    DAT_MenuTextInputState::instance.fileListSortOrder = 1;
+                    DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
+                    return;
+                }
+                for (iVar2 = 0; iVar2 < (int)DAT_MenuTextInputState::instance.fileListEntryCount; iVar2 = iVar2 + 1) {
+                    DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar2 + -1] = iVar2;
+                }
+                DAT_MenuTextInputState::instance.fileListSortOrder = 0;
+                DAT_MenuTextInputState::instance.previewedListIndex = 0xffffffff;
+                break;
             }
         }
 

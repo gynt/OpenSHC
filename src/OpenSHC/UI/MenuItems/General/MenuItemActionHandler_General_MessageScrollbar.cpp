@@ -25,14 +25,15 @@ namespace UI {
                 *maxValue = DAT_MapPropertiesState::instance.total - DAT_MapPropertiesState::instance.visibleRowCount;
                 return;
             case 5:
-                if (0 < DAT_MapPropertiesState::instance.offset) {
+                if (0 < (int)DAT_MapPropertiesState::instance.offset) {
                     DAT_MapPropertiesState::instance.offset = DAT_MapPropertiesState::instance.offset + -1;
                     *currentValue = DAT_MapPropertiesState::instance.offset;
+                    return;
                 }
                 break;
             case 6:
-                if (DAT_MapPropertiesState::instance.offset
-                    < DAT_MapPropertiesState::instance.total - DAT_MapPropertiesState::instance.visibleRowCount) {
+                if ((int)DAT_MapPropertiesState::instance.offset
+                    < (int)DAT_MapPropertiesState::instance.total - DAT_MapPropertiesState::instance.visibleRowCount) {
                     DAT_MapPropertiesState::instance.offset = DAT_MapPropertiesState::instance.offset + 1;
                 }
                 break;

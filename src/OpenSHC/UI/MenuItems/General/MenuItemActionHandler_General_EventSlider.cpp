@@ -10,8 +10,7 @@ namespace UI {
         void General::MenuItemActionHandler_General_EventSlider(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
-            int iVar1;
-            iVar1 = 0;
+            int iVar1 = 0;
             switch (param_1) {
             case 5:
                 iVar1 = 10;
@@ -58,6 +57,116 @@ namespace UI {
                 break;
             }
             switch (param_1) {
+            case -1:
+                switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                        .data.scenario.ScenarioEventType) {
+                case 5:
+                case 0xb:
+                case 0xc:
+                case 0xd:
+                case 0xe:
+                case 0xf:
+                case 0x10:
+                case 0x11:
+                case 0x12:
+                case 0x13:
+                case 0x14:
+                case 0x1d:
+                case 0x1e:
+                    switch (param_2) {
+                    case 1:
+                        *minValue = 0;
+                        *maxValue = 0x3c;
+                        *currentValue = (uint)DAT_MapPropertiesState::instance
+                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                            .data.scenario.repeat;
+                        return;
+                    case 2:
+                    case 3:
+                        *minValue = 0;
+                        DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                            .data.scenario.repeat = (byte)*currentValue;
+                        return;
+                    case 4:
+                        *currentValue = (uint)DAT_MapPropertiesState::instance
+                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                            .data.scenario.repeat;
+                        *minValue = 0;
+                        *maxValue = 0x3c;
+                        if (0x3c < *currentValue) {
+                            *currentValue = 0x3c;
+                            DAT_MapPropertiesState::instance
+                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                .data.scenario.repeat = (byte)*maxValue;
+                            return;
+                        }
+                        if (*currentValue < *minValue) {
+                            *currentValue = *minValue;
+                            DAT_MapPropertiesState::instance
+                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                .data.scenario.repeat = (byte)*minValue;
+                        }
+                        break;
+                    case 7:
+                        goto switchD_004b9fd6_caseD_7;
+                    }
+                }
+                break;
+            case -2:
+                switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                        .data.scenario.ScenarioEventType) {
+                case 5:
+                case 0xb:
+                case 0xc:
+                case 0xd:
+                case 0xe:
+                case 0xf:
+                case 0x10:
+                case 0x11:
+                case 0x12:
+                case 0x13:
+                case 0x14:
+                case 0x1d:
+                case 0x1e:
+                    switch (param_2) {
+                    case 1:
+                        *minValue = 1;
+                        *maxValue = 10;
+                        *currentValue = (uint)DAT_MapPropertiesState::instance
+                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                            .data.scenario.repeatMonths;
+                        return;
+                    case 2:
+                    case 3:
+                        *minValue = 1;
+                        DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                            .data.scenario.repeatMonths = (byte)*currentValue;
+                        return;
+                    case 4:
+                        *currentValue = (uint)DAT_MapPropertiesState::instance
+                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                            .data.scenario.repeatMonths;
+                        *minValue = 1;
+                        *maxValue = 10;
+                        if (10 < *currentValue) {
+                            *currentValue = 10;
+                            DAT_MapPropertiesState::instance
+                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                .data.scenario.repeatMonths = (byte)*maxValue;
+                        }
+                        if (*currentValue < *minValue) {
+                            *currentValue = *minValue;
+                            DAT_MapPropertiesState::instance
+                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                                .data.scenario.repeatMonths = (byte)*minValue;
+                        }
+                        break;
+                    case 7:
+                    switchD_004b9fd6_caseD_7:
+                        *currentValue = 1;
+                    }
+                }
+                break;
             case 5:
             case 0xc:
             case 0x12:
@@ -191,115 +300,6 @@ namespace UI {
             case 0x10:
             case 0x11:
             case 0x14:
-                break;
-            case -2:
-                switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                        .data.scenario.ScenarioEventType) {
-                case 5:
-                case 0xb:
-                case 0xc:
-                case 0xd:
-                case 0xe:
-                case 0xf:
-                case 0x10:
-                case 0x11:
-                case 0x12:
-                case 0x13:
-                case 0x14:
-                case 0x1d:
-                case 0x1e:
-                    switch (param_2) {
-                    case 1:
-                        *minValue = 1;
-                        *maxValue = 10;
-                        *currentValue = (uint)DAT_MapPropertiesState::instance
-                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                            .data.scenario.repeatMonths;
-                        return;
-                    case 2:
-                    case 3:
-                        *minValue = 1;
-                        DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                            .data.scenario.repeatMonths = (byte)*currentValue;
-                        return;
-                    case 4:
-                        *currentValue = (uint)DAT_MapPropertiesState::instance
-                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                            .data.scenario.repeatMonths;
-                        *minValue = 1;
-                        *maxValue = 10;
-                        if (10 < *currentValue) {
-                            *currentValue = 10;
-                            DAT_MapPropertiesState::instance
-                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                .data.scenario.repeatMonths = (byte)*maxValue;
-                        }
-                        if (*currentValue < *minValue) {
-                            *currentValue = *minValue;
-                            DAT_MapPropertiesState::instance
-                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                .data.scenario.repeatMonths = (byte)*minValue;
-                        }
-                        break;
-                    case 7:
-                    switchD_004b9fd6_caseD_7:
-                        *currentValue = 1;
-                    }
-                }
-                break;
-            case -1:
-                switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                        .data.scenario.ScenarioEventType) {
-                case 5:
-                case 0xb:
-                case 0xc:
-                case 0xd:
-                case 0xe:
-                case 0xf:
-                case 0x10:
-                case 0x11:
-                case 0x12:
-                case 0x13:
-                case 0x14:
-                case 0x1d:
-                case 0x1e:
-                    switch (param_2) {
-                    case 1:
-                        *minValue = 0;
-                        *maxValue = 0x3c;
-                        *currentValue = (uint)DAT_MapPropertiesState::instance
-                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                            .data.scenario.repeat;
-                        return;
-                    case 2:
-                    case 3:
-                        *minValue = 0;
-                        DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                            .data.scenario.repeat = (byte)*currentValue;
-                        return;
-                    case 4:
-                        *currentValue = (uint)DAT_MapPropertiesState::instance
-                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                            .data.scenario.repeat;
-                        *minValue = 0;
-                        *maxValue = 0x3c;
-                        if (0x3c < *currentValue) {
-                            *currentValue = 0x3c;
-                            DAT_MapPropertiesState::instance
-                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                .data.scenario.repeat = (byte)*maxValue;
-                        }
-                        if (*currentValue < *minValue) {
-                            *currentValue = *minValue;
-                            DAT_MapPropertiesState::instance
-                                .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                .data.scenario.repeat = (byte)*minValue;
-                        }
-                        break;
-                    case 7:
-                        goto switchD_004b9fd6_caseD_7;
-                    }
-                }
                 break;
             default:
                 break;

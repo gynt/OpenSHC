@@ -12,8 +12,7 @@ namespace UI {
         void MapEditorProperties::MenuItemActionHandler_MapEditorProperties_MapDescriptionScrollbar(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
-            int iVar1;
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti) {
+            if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0) {
                 switch (param_2) {
                 case 1:
                     *minValue = 0;
@@ -30,22 +29,26 @@ namespace UI {
                     *currentValue = DAT_00b960f4::instance;
                     return;
                 case 5:
-                    if (0 < DAT_00b960f4::instance) {
+                    if (0 < (int)DAT_00b960f4::instance) {
                         DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
                     }
-                    if (DAT_00b960f4::instance < 0) {
+                    if ((int)DAT_00b960f4::instance < 0) {
                         DAT_00b960f4::instance = 0;
                     }
                     *currentValue = DAT_00b960f4::instance;
                     return;
                 case 6:
-                    iVar1 = DAT_00b95b74::instance + -0xe7;
-                    if ((DAT_00b960f4::instance < iVar1)
-                        && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar1 < DAT_00b960f4::instance)) {
-                        DAT_00b960f4::instance = iVar1;
+                {
+                    int iVar1 = DAT_00b95b74::instance + -0xe7;
+                    if ((int)DAT_00b960f4::instance < iVar1) {
+                        DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe;
+                        if ((int)DAT_00b960f4::instance > iVar1) {
+                            DAT_00b960f4::instance = iVar1;
+                        }
                     }
                     *currentValue = DAT_00b960f4::instance;
                     break;
+                }
                 case 7:
                     *currentValue = 0xfc;
                 }

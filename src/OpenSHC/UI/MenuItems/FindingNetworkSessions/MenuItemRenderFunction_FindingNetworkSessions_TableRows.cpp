@@ -34,14 +34,14 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1
                 < DAT_GameSynchronyState::instance.DPLAY_SessionsCount) {
                 if ((param_1 == DAT_GameSynchronyState::instance.scrollBarIndex)
-                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
+                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                     color = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderWideText, DAT_TextManagerObject::ptr)(
                     DAT_GameSynchronyState::instance
                         .DPLAY_SessionNames[DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1],
-                    (int)((int)(DAT_ButtonX::instance + 8)), (int)((int)(DAT_ButtonY::instance + 4)),
-                    OpenSHC::Text::TTA_LEFT, color, 0x12, 0, 0);
+                    (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT, color,
+                    0x12, 0, 0);
             }
         }
 

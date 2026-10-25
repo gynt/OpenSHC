@@ -26,20 +26,23 @@ namespace UI {
             ButtonGmData* buttonGmData;
             int iVar1;
             uint uVar2;
-            int drawX;
-            int drawY;
-            uVar2 = (uint)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                               .openOrCloseGateClick
-                == param_1);
+            /*
+              the original branches on the comparison (`xor esi, esi; jne; mov esi, 1`)
+              rather than materialising it with `sete`
+             */
+            uVar2 = 0;
+            if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .openOrCloseGateClick
+                == param_1) {
+                uVar2 = 1;
+            }
             buttonGmData = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-            drawX = DAT_ButtonX::instance;
-            drawY = DAT_ButtonY::instance;
             iVar1 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(
                 DAT_ButtonCurrentlyInteracting::instance);
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                (OpenSHC::DE::SHCDE::eGM)buttonGmData->gmId_0x0, (int)(iVar1 + uVar2), drawX, drawY);
+                (OpenSHC::DE::SHCDE::eGM)buttonGmData->gmId_0x0, (int)(iVar1 + uVar2), DAT_ButtonX::instance, DAT_ButtonY::instance);
             DAT_CurrentButtonPictureInGm::instance
                 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                       .pictureInGm_0x4

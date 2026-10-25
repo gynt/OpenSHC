@@ -29,32 +29,23 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC440
         void SendReceiveMap::MenuItemRenderFunction_SendReceiveMap_Main(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            if ((!DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) || (param_1 != 0x44)) {
+            if ((DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 0) || (param_1 != 0x44)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                blendStrength = 0;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 6;
-                keepOffsetX = FALSE;
-                fontSize = 0x12;
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xc2f0eb;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 0);
                 } else {
-                    color = 0xccfaff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                 }
-                alignment = OpenSHC::Text::TTA_CENTER;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
             }
         }
 

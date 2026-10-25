@@ -17,46 +17,59 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using DE::SHCDE::eGM;
-        using IO::Graphics::GmID;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::DE::SHCDE::eGM;
+        using OpenSHC::IO::Graphics::GmID;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00491D70
         void IdentityOptions::MenuItemRenderFunction_IdentityOptions_LordIcons(int param_1, ...)
         {
-            if (0x27 < param_1) {
-                BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-                if (!BVar1) {
-                    MACRO_CALL(UI::MenuItems::General_Func::
+            if (0x28 <= param_1) {
+                BOOLEnum BVar1
+                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+                if (BVar1 == FALSE) {
+                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                MACRO_CALL(UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
+                MACRO_CALL(
+                    OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
+                return;
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                DE::SHCDE::GM_INTERFACE_ICONS2, 0x22b, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x22b,
+                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
             if (param_1 == 0x17) {
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
                     DAT_TextureRenderCoreObject::ptr)(DAT_GameCore::instance.lordIconUnk + -2,
                     (int)(DAT_ButtonX::instance + 4), (int)(DAT_ButtonY::instance + 4));
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d,
+                    (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
             }
             int imageID = 0x21b;
             if (param_1 == 0x16) {
                 imageID = 0x21c;
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                DE::SHCDE::GM_INTERFACE_ICONS2, imageID, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, imageID,
+                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
             if (param_1 == 0x15) {
-                if (DAT_GameCore::instance.selectedLordTypeUnk) {}
+                if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {
+                    return;
+                }
             } else {
-                if (param_1 != 0x16) {}
-                if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {}
+                if (param_1 != 0x16) {
+                    return;
+                }
+                if (DAT_GameCore::instance.selectedLordTypeUnk != 1) {
+                    return;
+                }
+                return;
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
                 (int)(DAT_ButtonX::instance + -6), (int)(DAT_ButtonY::instance + -6),
-                IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
+                OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
         }
 
     }

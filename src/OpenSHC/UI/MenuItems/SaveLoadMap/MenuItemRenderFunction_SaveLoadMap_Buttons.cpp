@@ -34,14 +34,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00492A90
         void SaveLoadMap::MenuItemRenderFunction_SaveLoadMap_Buttons(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
             BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
                 || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 if (param_1 != 2)
@@ -57,7 +51,7 @@ namespace UI {
                                             + -1]
                                     + 499]
                             == 0))
-                    || (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex == -1)) {
+                    || DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex == -1) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -81,7 +75,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::renderUpDownButtonUnk,
                     DAT_PencilRenderCore::ptr)(1, 0);
             }
-            if (!DAT_ButtonCurrentlyInteracting::instance) {
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 color = 0xc2f0eb;
@@ -89,18 +83,15 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 color = 0xccfaff;
+                return;
             }
         LAB_00492b46:
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            alignment = OpenSHC::Text::TTA_CENTER;
             yParam = DAT_ButtonY::instance + 7;
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1);
+            int xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                xParam, yParam, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE, 0);
         }
 
     }

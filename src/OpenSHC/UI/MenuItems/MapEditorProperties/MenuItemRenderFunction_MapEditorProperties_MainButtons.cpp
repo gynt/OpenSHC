@@ -46,27 +46,30 @@ namespace UI {
         void MapEditorProperties::MenuItemRenderFunction_MapEditorProperties_MainButtons(int param_1, ...)
         {
             int iVar1;
-            int iVar2;
-            int iVar3;
             bool bVar4;
             uint color;
-            iVar3 = 0x11;
-            iVar2 = 10;
+            int iVar3 = 0x11;
+            int iVar2 = 10;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 if (param_1 == 0x19) {
-                    if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {}
-                    if (!DAT_GameCore::instance.mapLoadedForEditor) {}
+                    if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {
+                        return;
+                    }
+                    if (DAT_GameCore::instance.mapLoadedForEditor == 0) {
+                        return;
+                    }
                 } else if (param_1 == 5) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }
-                if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
-                    && (((param_1 == 9 || (param_1 == -1)) || (param_1 == -2)))) {
+                if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0
+                    && ((param_1 == 9 || (param_1 == -1)) || (param_1 == -2))) {
                     DAT_ButtonUnknownZero::instance = 1;
+                    return;
                 }
                 if (param_1 == 9) {
-                    if (DAT_GameCore::instance.unknownAlwaysZero03) {
+                    if (DAT_GameCore::instance.unknownAlwaysZero03 != 0) {
                         param_1 = 0x20;
                     }
                     iVar3 = 0x12;
@@ -76,10 +79,11 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                     if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 1) {
                         DAT_ButtonUnknownZero::instance = 0;
-                        if (!DAT_GameCore::instance.mapU4Int3_balanced) {
+                        if (DAT_GameCore::instance.mapU4Int3_balanced == 0) {
                             bVar4 = param_1 == -3;
                         } else {
                             bVar4 = param_1 == -4;
+                            return;
                         }
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -91,7 +95,8 @@ namespace UI {
                             DAT_ButtonCurrentlyInteracting::instance);
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                            (OpenSHC::DE::SHCDE::eGM)(DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            (OpenSHC::DE::SHCDE::eGM)(DAT_UIButtonDefinedData::instance
+                                    .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                     .gmId_0x0),
                             iVar1 + (uint)bVar4, iVar2, iVar3);
                         DAT_CurrentButtonPictureInGm::instance
@@ -101,19 +106,20 @@ namespace UI {
                             + (uint)bVar4;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        if (DAT_ButtonCurrentlyInteracting::instance) {
+                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                             DAT_MapEditorProperties_ClickedButton::instance = param_1;
                         }
                     }
                 } else if (param_1 + 6U < 2) {
                     DAT_ButtonUnknownZero::instance = 1;
-                    if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
+                    if ((DAT_GameCore::instance.U2_mapType_singleOrMulti == 0)
                         && (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION)) {
                         DAT_ButtonUnknownZero::instance = 0;
-                        if (!DAT_GameCore::instance.mapU3EndInt) {
+                        if (DAT_GameCore::instance.mapU3EndInt == 0) {
                             bVar4 = param_1 == -5;
                         } else {
                             bVar4 = param_1 == -6;
+                            return;
                         }
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -125,7 +131,8 @@ namespace UI {
                             DAT_ButtonCurrentlyInteracting::instance);
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                            (OpenSHC::DE::SHCDE::eGM)(DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
+                            (OpenSHC::DE::SHCDE::eGM)(DAT_UIButtonDefinedData::instance
+                                    .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                     .gmId_0x0),
                             iVar1 + (uint)bVar4, iVar2, iVar3);
                         DAT_CurrentButtonPictureInGm::instance
@@ -135,13 +142,14 @@ namespace UI {
                             + (uint)bVar4;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        if (DAT_ButtonCurrentlyInteracting::instance) {
+                        if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                             DAT_MapEditorProperties_ClickedButton::instance = param_1;
                         }
                     }
                 } else {
-                    if (DAT_ButtonCurrentlyInteracting::instance) {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_MapEditorProperties_ClickedButton::instance = param_1;
+                        return;
                     }
                     if (param_1 < 0) {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -150,17 +158,22 @@ namespace UI {
                             DAT_PencilRenderCore::ptr)((uint)(param_1 != -1), 0);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (!DAT_ButtonCurrentlyInteracting::instance) {
-                        color = 0xc2f0eb;
-                    } else {
+                    /*
+                      the original jumps out of line on `== FALSE`, so the interacting
+                      arm is the one the source wrote first
+                     */
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         color = 0xccfaff;
+                    } else {
+                        color = 0xc2f0eb;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)), DAT_ButtonY::instance + iVar2,
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), DAT_ButtonY::instance + iVar2,
                         OpenSHC::Text::TTA_CENTER, color, iVar3, FALSE);
                 }
             }

@@ -14,23 +14,24 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B65A0
         void InGameMenu::MenuItemRenderFunction_InGameMenu_KeepEnclosedSymbol(int param_1, ...)
         {
             BOOLEnum BVar1;
-            BVar1 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::checkKeepEnclosed, DAT_GameState::ptr)(
+            BVar1 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::checkKeepEnclosed, DAT_GameState::ptr)(
                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
             if (BVar1 != DAT_MiniMapDefinedData::instance.cachedKeepEnclosed) {
                 DAT_GameCore::instance.countdown = 2;
             }
             DAT_MiniMapDefinedData::instance.cachedKeepEnclosed = BVar1;
-            if (!BVar1) {
+            if (BVar1 == FALSE) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            MACRO_CALL(UI::MenuItems::General_Func::
+            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
         }
 
