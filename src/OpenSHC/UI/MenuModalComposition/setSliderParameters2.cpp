@@ -9,15 +9,13 @@ namespace UI {
     void MenuModalComposition::setSliderParameters2(
         dword minimum, dword maximum, dword value, dword destination, undefined* callbackFunction)
     {
-        int iVar1;
-        int iVar2;
-        iVar1 = maximum - minimum;
+        int iVar1 = maximum - minimum;
         this->sliderMinimum = minimum;
         this->sliderMaximum = maximum;
-        if (iVar1 < 0xc9) {
+        if (iVar1 <= 0xc8) {
             this->sliderValue = value;
         } else {
-            iVar2 = value - minimum;
+            int iVar2 = value - minimum;
             if (iVar1 / 5 < iVar2) {
                 this->sliderValue = (iVar1 * 3) / 5 + iVar2;
             } else {

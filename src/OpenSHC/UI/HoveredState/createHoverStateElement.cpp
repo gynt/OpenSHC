@@ -9,17 +9,17 @@
 namespace OpenSHC {
 namespace UI {
 
-    using Commands::MappersEnum;
-    using Game::GameMode;
+    using OpenSHC::Commands::MappersEnum;
+    using OpenSHC::Game::GameMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00501110
     void HoveredState::createHoverStateElement(int x, int y, MappersEnum type, int size, int flag)
     {
         MappersEnumInt* _pElement;
-        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
+        if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) {
             int _index = 0;
             _pElement = &this->elements[0].type;
-            while (*_pElement != Commands::M_MAPPER_NULL) {
+            while (*_pElement != OpenSHC::Commands::M_MAPPER_NULL) {
                 _index = _index + 1;
                 _pElement = _pElement + 6;
                 if (20 < _index) {}
@@ -30,7 +30,7 @@ namespace UI {
             this->elements[_index].size = size;
             this->elements[_index].time
                 = DAT_GameSynchronyState::instance.commandDelay + 5 + DAT_GameCore::instance.mapTimeInTicks;
-            if (80 <= flag) {
+            if (80 < flag) {
                 flag = 15;
             }
             this->elements[_index].rotationOrExtraInfo = flag;

@@ -10,27 +10,28 @@
 #include "OpenSHC/Globals/DAT_UIDragDropDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
+#include "OpenSHC/Globals/DAT_MenuTextInputState.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
-    using UI::Enums::MenuModalType;
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::UI::Enums::MenuModalType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00491750
     void MenuTextInputState::clearAnyOtherModalDialogs()
     {
+        MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
+            DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex);
         DAT_UserTextHandlerState::instance.allowUserTextInput = 0;
-        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
-            this->DAT_SomeTextArrayIndex);
-        if (this->DAT_SomeTextArrayIndex) {
-            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+        if (DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex != 0) {
+            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
         }
-        this->currentModalDialog = UI::Enums::MMT_NO_MENU;
-        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-            UI::Enums::MMT_NONE, TRUE);
-        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
-        if (this->field42_0x9c) {
+        this->currentModalDialog = OpenSHC::UI::Enums::MMT_NO_MENU;
+        MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+            OpenSHC::UI::Enums::MMT_NONE, TRUE);
+        MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::clearModalDialog2to6, this)();
+        if (this->field42_0x9c != 0) {
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;
         }

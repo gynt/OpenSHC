@@ -26,7 +26,7 @@ namespace UI {
             + (DAT_ViewportRenderState::instance.viewportState.viewportX / 32);
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);
-        if (((this->needsRedraw) || (xOffset != this->lastRenderedXOffset)) || (yOffset != this->lastRenderedYOffset)) {
+        if (this->needsRedraw != 0 || xOffset != this->lastRenderedXOffset || yOffset != this->lastRenderedYOffset) {
             if (DAT_TileMapState::instance.mapSize < 200) {
                 heightFactor = 2;
                 widthFactor = 4;
@@ -35,18 +35,18 @@ namespace UI {
                 widthFactor = 2;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::drawMinimap, this)(
-                DAT_MenuHandlerState::instance.x + 571, (int)((int)(DAT_MenuHandlerState::instance.y + 465)),
-                (int)((int)(126)), (int)((int)(126)), 7, xOffset, yOffset, widthFactor, heightFactor, 0);
+                DAT_MenuHandlerState::instance.x + 571, (int)(DAT_MenuHandlerState::instance.y + 465), (int)(126),
+                (int)(126), 7, xOffset, yOffset, widthFactor, heightFactor, 0);
         }
         this->DAT_SomeMiniMapCounterTill4 = this->DAT_SomeMiniMapCounterTill4 + 1 & 0x80000003;
         this->needsRedraw = 0;
         this->field3_0xc = 0;
-        if (this->DAT_SomeMiniMapCounterTill4 < 0) {
+        if ((int)this->DAT_SomeMiniMapCounterTill4 < 0) {
             this->DAT_SomeMiniMapCounterTill4 = (this->DAT_SomeMiniMapCounterTill4 - 1 | 0xfffffffc) + 1;
         }
         this->lastRenderedXOffset = xOffset;
         this->lastRenderedYOffset = yOffset;
-        if ((DAT_TileMapState::instance.DAT_SelectionIconType) && (this->minimapClickEnabled)) {
+        if ((DAT_TileMapState::instance.DAT_SelectionIconType != 0) && (this->minimapClickEnabled != 0)) {
             if ((DAT_MenuHandlerState::instance.x + 571 <= DAT_MouseState::instance.screenSpaceX)
                 && (DAT_MouseState::instance.screenSpaceX < DAT_MenuHandlerState::instance.x + 697)) {
                 if ((DAT_MenuHandlerState::instance.y + 465 <= DAT_MouseState::instance.screenSpaceY)
@@ -55,7 +55,7 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)153,
-                        (int)((int)(DAT_TileMapState::instance.DAT_SelectionIconType)),
+                        (int)(DAT_TileMapState::instance.DAT_SelectionIconType),
                         DAT_MouseState::instance.screenSpaceX
                             - DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[0x99].originX,
                         DAT_MouseState::instance.screenSpaceY

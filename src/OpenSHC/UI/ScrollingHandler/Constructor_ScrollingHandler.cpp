@@ -7,9 +7,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using UI::ScrollDirection;
-    using UI::ScrollSpeed;
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::UI::ScrollDirection;
+    using OpenSHC::UI::ScrollSpeed;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00468A90
     ScrollingHandler* ScrollingHandler::Constructor_ScrollingHandler()
@@ -23,11 +23,11 @@ namespace UI {
         this->downKeyDown_0x20 = FALSE;
         this->scrollUp = FALSE;
         this->upKeyDown_0x24 = FALSE;
-        this->scrollDirection_0x4 = UI::SD_NONE;
+        this->scrollDirection_0x4 = OpenSHC::UI::SD_NONE;
         this->scrollAccelerationInterval = 0x14;
         this->scrollDistanceLimit = 0x28;
         this->scrollDistanceMin = 1;
-        this->scrollSpeedSetting_0x38 = UI::SS_NORMAL;
+        this->scrollSpeedSetting_0x38 = OpenSHC::UI::SS_NORMAL;
         return this;
     }
 

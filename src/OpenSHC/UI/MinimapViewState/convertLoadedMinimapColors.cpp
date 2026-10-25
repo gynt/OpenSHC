@@ -4,7 +4,6 @@
 #include "OpenSHC/Rendering/ColorMode.hpp"
 
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -12,6 +11,7 @@ namespace UI {
     using OpenSHC::Rendering::ColorMode;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B6320
+#pragma optimize("y", off)
     void MinimapViewState::convertLoadedMinimapColors()
     {
         short* psVar1;
@@ -21,8 +21,6 @@ namespace UI {
         ushort* puVar5;
         void* local_214;
         ushort local_210[258];
-        uint local_c;
-        local_c = MSVC_SecurityCookie::instance ^ (uint)&local_214;
         local_214 = MACRO_CALL(OpenSHC::OS_Func::_malloc)(40000);
         pasVar4 = this->loadedMiniMap;
         puVar5 = local_210;
@@ -51,10 +49,11 @@ namespace UI {
             psVar1 = psVar1 + 5;
             pbVar3 = pbVar3 + 5;
             iVar2 = iVar2 + -1;
-        } while (iVar2);
+        } while (iVar2 != 0);
         MACRO_CALL(OpenSHC::OS_Func::_free_base)(local_214);
         ;
     }
+#pragma optimize("y", on)
 
 }
 }

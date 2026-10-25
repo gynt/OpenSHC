@@ -10,14 +10,15 @@
 namespace OpenSHC {
 namespace UI {
 
-    using Map::Buildings::BuildingType;
+    using OpenSHC::Map::Buildings::BuildingType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00465DB0
     void Actions::SetStorageMarketFailState(int state, ResourceType resource)
     {
         BuildingType _building;
-        _building = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingStorageTypeForResourceType,
-            DAT_BuildingsState::ptr)(resource);
+        _building
+            = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingStorageTypeForResourceType,
+                DAT_BuildingsState::ptr)(resource);
         int _playerSlot = DAT_GameSynchronyState::instance.currentPlayerSlotID;
         DWORD _currentTime = timeGetTime();
         DAT_GameState::instance.playerDataArray[_playerSlot].timeStorageMarketFailState = _currentTime;
@@ -25,26 +26,26 @@ namespace UI {
             /*
               missing stock building
              */
-            if (_building == Map::Buildings::BT_STOCKPILE) {
+            if (_building == OpenSHC::Map::Buildings::BT_STOCKPILE) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 6;
             }
-            if (_building == Map::Buildings::BT_GRANARY) {
+            if (_building == OpenSHC::Map::Buildings::BT_GRANARY) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 5;
             }
-            if (_building == Map::Buildings::BT_ARMORY) {
+            if (_building == OpenSHC::Map::Buildings::BT_ARMORY) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 7;
             }
         } else if (state == 4) {
             /*
               not enough space
              */
-            if (_building == Map::Buildings::BT_STOCKPILE) {
+            if (_building == OpenSHC::Map::Buildings::BT_STOCKPILE) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 9;
             }
-            if (_building == Map::Buildings::BT_GRANARY) {
+            if (_building == OpenSHC::Map::Buildings::BT_GRANARY) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 8;
             }
-            if (_building == Map::Buildings::BT_ARMORY) {
+            if (_building == OpenSHC::Map::Buildings::BT_ARMORY) {
                 DAT_GameState::instance.playerDataArray[_playerSlot].storageMarketFailState = 10;
             }
         } else {
