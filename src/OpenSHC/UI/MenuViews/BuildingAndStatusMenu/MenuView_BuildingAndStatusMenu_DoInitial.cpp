@@ -47,17 +47,19 @@ namespace UI {
             if ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                 || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
-                    iVar5 = 7;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(7);
                 } else {
-                    iVar5 = 3;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(3);
                 }
             } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
-                iVar5 = 6;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                    DAT_TextureRenderCoreObject::ptr)(6);
             } else {
-                iVar5 = 1;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                    DAT_TextureRenderCoreObject::ptr)(1);
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                DAT_TextureRenderCoreObject::ptr)(iVar5);
             if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 MACRO_CALL_MEMBER(
