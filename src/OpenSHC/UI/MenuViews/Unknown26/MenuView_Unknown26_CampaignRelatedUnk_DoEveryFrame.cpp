@@ -40,9 +40,10 @@ namespace UI {
                     if (DAT_GameCore::instance.missionNumber1to20 == 1000) {
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_INTRO_VIDEO, 0);
+                        return;
                     }
                     if (DAT_GameCore::instance.section1066 == 2) {
-                        if (DAT_GameCore::instance.missionNumber1to20 < 0x16) {
+                        if (DAT_GameCore::instance.missionNumber1to20 <= 0x15) {
                             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk, 0);
                             DAT_GameCore::instance.section1066 = 0;
