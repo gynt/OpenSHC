@@ -53,8 +53,8 @@ void Rendering::ProcessCreditsScriptCommands()
     int iVar10;
     bool bVar11;
     if ((DAT_GameCore::instance.menuViewToSwitchTo == DAT_GameCore::instance.currentMenuViewType)
-        && (iVar9 = DAT_UnknownBinkIndex::instance, -1 < (int)DAT_UnknownBinkIndex::instance)) {
-        while (iVar9 < (int)DAT_UnknownBinkCount::instance) {
+        && (iVar9 = DAT_UnknownBinkIndex::instance, -1 < DAT_UnknownBinkIndex::instance)) {
+        while (iVar9 < DAT_UnknownBinkCount::instance) {
             iVar10 = iVar9;
             switch (DAT_ARRAY_00eb9b68::instance[iVar9].commandType) {
             case 1:

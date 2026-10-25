@@ -50,7 +50,7 @@ namespace UI {
             pCVar1 = pCVar1 + 1;
         } while ((int)pCVar1 < (int)&INT_00ec0828::instance);
         DAT_UnknownBinkIndex::instance = DAT_UnknownBinkIndex::instance + 1;
-        if ((int)DAT_UnknownBinkIndex::instance < (int)DAT_UnknownBinkCount::instance) {
+        if (DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance) {
             do {
                 if (DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].commandType == 0x27) {
                     MACRO_CALL_MEMBER(
@@ -62,7 +62,7 @@ namespace UI {
                 }
             } while ((DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkIndex::instance].commandType != 0x1f)
                 && (DAT_UnknownBinkIndex::instance = DAT_UnknownBinkIndex::instance + 1,
-                    (int)DAT_UnknownBinkIndex::instance < (int)DAT_UnknownBinkCount::instance));
+                    DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance));
         }
         return;
     }
