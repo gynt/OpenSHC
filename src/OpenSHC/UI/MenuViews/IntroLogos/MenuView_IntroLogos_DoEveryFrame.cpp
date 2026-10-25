@@ -38,11 +38,6 @@ namespace UI {
             DWORD _currentTime;
             int _yParam;
             int _introStepDuration;
-            TextAlignment alignment;
-            int _blendStrength;
-            BGR24 _color;
-            int _fontSIze;
-            BOOLEnum _keepOffsetX;
             MenuViewType _menuID;
             int _xPos;
             if (DAT_IntroStep::instance < 2) {
@@ -57,24 +52,19 @@ namespace UI {
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
-                    DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)((int)(COL_BLACK::instance.shortValue)));
-                _blendStrength = 0;
-                _keepOffsetX = FALSE;
-                _fontSIze = 0x10;
-                _color = 0xffffff;
-                alignment = OpenSHC::Text::TTA_CENTER;
+                    DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)(COL_BLACK::instance.shortValue));
                 _yParam = DAT_WindowAndDirectDraw::instance.resolutionY / 2 + -0x1e;
                 _xPos = DAT_WindowAndDirectDraw::instance.resolutionX / 2;
                 /*
                   added by script: "Gameplay may change during online play"
                  */
-                _textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAMEPLAY_ONLINE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    _textAddress, _xPos, _yParam, alignment, _color, _fontSIze, _keepOffsetX, _blendStrength);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAMEPLAY_ONLINE, 0),
+                    _xPos, _yParam, OpenSHC::Text::TTA_CENTER, 0xffffff, 0x10, FALSE, 0);
             }
             _currentTime = timeGetTime();
-            if (!DAT_IntroTransitionStep::instance) {
+            if (DAT_IntroTransitionStep::instance == 0) {
                 DAT_IntroBlendStrength::instance = (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14;
                 if (DAT_IntroBlendStrength::instance < 0x20)
                     goto LAB_0042496a;
@@ -96,7 +86,7 @@ namespace UI {
             } else if ((DAT_IntroTransitionStep::instance == 2)
                 && (DAT_IntroBlendStrength::instance = 0x20 - (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14,
                     DAT_IntroBlendStrength::instance < 1)) {
-                if (!DAT_IntroStep::instance) {
+                if (DAT_IntroStep::instance == 0) {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;
                     DAT_IntroStep::instance = 1;
@@ -111,14 +101,14 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(_menuID, 0);
             }
-            if (0x1f < DAT_IntroBlendStrength::instance) {
+            if (0x20 <= DAT_IntroBlendStrength::instance) {
                 return;
             }
         LAB_0042496a:
             timeGetTime();
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
-                DAT_WindowAndDirectDraw::instance.resolutionY, (int)((int)(DAT_IntroBlendStrength::instance)));
+                DAT_WindowAndDirectDraw::instance.resolutionY, (int)(DAT_IntroBlendStrength::instance));
             return;
         }
 

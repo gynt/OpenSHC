@@ -52,9 +52,7 @@ namespace UI {
         void MissionFinishedTransition::MenuView_MissionFinishedTransition_DoEveryFrame()
         {
             short sVar1;
-            DWORD DVar2;
             int iVar3;
-            dword dVar4;
             MenuViewType menuID;
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 if (DAT_GameSynchronyState::instance.currentGameMode
@@ -72,22 +70,22 @@ namespace UI {
             } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
                 DAT_MouseState::instance.draggingStopped = TRUE;
             }
-            if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                    && (DAT_GameSynchronyState::instance.currentGameMode
-                        != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER))
-                && (DAT_BinkControlState::instance.unknown02_zero[0] != 0)) {
-                if (!DWORD_00ed27b4::instance) {
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
+                && DAT_GameSynchronyState::instance.currentGameMode
+                    != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER
+                && DAT_BinkControlState::instance.unknown02_zero[0] != 0) {
+                if (DWORD_00ed27b4::instance == 0) {
                     DWORD_00ed27b4::instance = timeGetTime();
                     goto LAB_004dc5a5;
                 }
-                DVar2 = timeGetTime();
-                if (DVar2 - DWORD_00ed27b4::instance < 0x1389)
+                DWORD DVar2 = timeGetTime();
+                if (DVar2 - DWORD_00ed27b4::instance <= 0x1388)
                     goto LAB_004dc5a5;
             } else {
             LAB_004dc5a5:
-                if (((!DAT_MouseState::instance.draggingStopped)
+                if (((DAT_MouseState::instance.draggingStopped == FALSE)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                    && (!INT_00ed279c::instance)) {
+                    && INT_00ed279c::instance == 0) {
                     return;
                 }
             }
@@ -116,7 +114,7 @@ namespace UI {
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1) {
                     DAT_GameCore::instance.gameSuspended = 0;
-                    if (DAT_GameCore::instance.missionNumber1to20 < 0x26) {
+                    if (DAT_GameCore::instance.missionNumber1to20 <= 0x25) {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
@@ -147,7 +145,7 @@ namespace UI {
                     DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                    if (!DAT_GameSynchronyState::instance.isHost) {
+                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
@@ -163,8 +161,8 @@ namespace UI {
                 menuID = OpenSHC::UI::Enums::MVT_RANKING_GAMES;
                 goto LAB_004dc9bd;
             }
-            if (!DAT_GameCore::instance.isSkirmishTrail) {
-                if (!DAT_GameCore::instance.skipStoreSKMasters) {
+            if (DAT_GameCore::instance.isSkirmishTrail == FALSE) {
+                if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(0);
                 }
                 MACRO_CALL(OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(2);
@@ -175,7 +173,7 @@ namespace UI {
                 DAT_GameCore::instance.skipStoreSKMasters = 0;
                 return;
             }
-            if (!DAT_GameCore::instance.skipStoreSKMasters) {
+            if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
                 if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                     iVar3 = DAT_GameCore::instance.extremeTrailProgress + 0x51;
                 } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
@@ -185,7 +183,7 @@ namespace UI {
                 }
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(iVar3);
             }
-            dVar4 = DAT_GameCore::instance.extremeTrailProgress;
+            dword dVar4 = DAT_GameCore::instance.extremeTrailProgress;
             if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
                 && (dVar4 = DAT_GameCore::instance.skirmishTrailProgress,
                     DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST)) {
@@ -198,7 +196,7 @@ namespace UI {
                 LAB_004dc768:
                     sVar1 = DAT_GameState::instance.mapAndTime
                                 .playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID];
-                    if (!sVar1) {
+                    if (sVar1 == 0) {
                     LAB_004dc7be:
                         MACRO_CALL(
                             OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(4);
@@ -207,7 +205,7 @@ namespace UI {
                     }
                     if (DAT_GameCore::instance.extremeTrailProgress
                         < DAT_GameCore::instance.furthestExtremeTrailMission) {
-                        if (!sVar1)
+                        if (sVar1 == 0)
                             goto LAB_004dc7be;
                     } else {
                         DAT_GameCore::instance.furthestExtremeTrailMission
@@ -216,42 +214,42 @@ namespace UI {
                     if (DAT_GameCore::instance.extremeTrailProgress < 0x13) {
                         DAT_GameCore::instance.extremeTrailProgress = DAT_GameCore::instance.extremeTrailProgress + 1;
                     }
-                    if (((!sVar1) || (DAT_GameCore::instance.extremeTrailProgress != 0x13)) || (dVar4 != 0x13))
+                    if (sVar1 == 0 || DAT_GameCore::instance.extremeTrailProgress != 0x13 || dVar4 != 0x13)
                         goto LAB_004dc7be;
                 } else {
                     if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST)
                         goto LAB_004dc7d9;
                     sVar1 = DAT_GameState::instance.mapAndTime
                                 .playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID];
-                    if (!sVar1) {
+                    if (sVar1 == 0) {
                     LAB_004dc88c:
                         MACRO_CALL(
                             OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(1);
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
-                    if (DAT_GameCore::instance.skirmishTrailProgress
+                    if ((int)DAT_GameCore::instance.skirmishTrailProgress
                         < DAT_GameCore::instance.furthestSkirmishTrailMission) {
-                        if (!sVar1)
+                        if (sVar1 == 0)
                             goto LAB_004dc88c;
                     } else {
                         DAT_GameCore::instance.furthestSkirmishTrailMission
                             = DAT_GameCore::instance.skirmishTrailProgress + 1;
                     }
-                    if (DAT_GameCore::instance.skirmishTrailProgress < 0x31) {
+                    if ((int)DAT_GameCore::instance.skirmishTrailProgress < 0x31) {
                         DAT_GameCore::instance.skirmishTrailProgress = DAT_GameCore::instance.skirmishTrailProgress + 1;
                     }
-                    if (((!sVar1) || (DAT_GameCore::instance.skirmishTrailProgress != 0x31)) || (dVar4 != 0x31))
+                    if (sVar1 == 0 || DAT_GameCore::instance.skirmishTrailProgress != 0x31 || dVar4 != 0x31)
                         goto LAB_004dc88c;
                 }
             } else {
                 iVar3 = DAT_GameState::instance.mapAndTime.month + DAT_GameState::instance.mapAndTime.year * 0xc;
                 if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                    if (((int)(iVar3 - DAT_GameCore::instance.extremeTrailStartDateMonths) < DAT_GameCore::instance
-                                .extremeTrailMonthsTakenOrChicken[DAT_GameCore::instance.extremeTrailProgress])
-                        || (DAT_GameCore::instance
+                    if ((int)(iVar3 - DAT_GameCore::instance.extremeTrailStartDateMonths) < DAT_GameCore::instance
                                 .extremeTrailMonthsTakenOrChicken[DAT_GameCore::instance.extremeTrailProgress]
-                            < 0)) {
+                        || DAT_GameCore::instance
+                                .extremeTrailMonthsTakenOrChicken[DAT_GameCore::instance.extremeTrailProgress]
+                            < 0) {
                         DAT_GameCore::instance
                             .extremeTrailMonthsTakenOrChicken[DAT_GameCore::instance.extremeTrailProgress]
                             = iVar3 - DAT_GameCore::instance.extremeTrailStartDateMonths;
@@ -261,11 +259,11 @@ namespace UI {
                     goto LAB_004dc768;
                 }
                 if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_WARCHEST) {
-                    if ((DAT_GameCore::instance
+                    if (DAT_GameCore::instance
                                 .skirmishTrailMonthsTakenOrChicken[DAT_GameCore::instance.skirmishTrailProgress]
-                            <= (int)(iVar3 - DAT_GameCore::instance.skirmishTrailStartDateMonths))
-                        && (-1 < DAT_GameCore::instance
-                                .skirmishTrailMonthsTakenOrChicken[DAT_GameCore::instance.skirmishTrailProgress]))
+                            <= (int)(iVar3 - DAT_GameCore::instance.skirmishTrailStartDateMonths)
+                        && 0 <= DAT_GameCore::instance
+                                .skirmishTrailMonthsTakenOrChicken[DAT_GameCore::instance.skirmishTrailProgress])
                         goto LAB_004dc763;
                     DAT_GameCore::instance
                         .skirmishTrailMonthsTakenOrChicken[DAT_GameCore::instance.skirmishTrailProgress]
@@ -275,11 +273,11 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::setStartDateUnk, DAT_GameCore::ptr)(iVar3);
                     goto LAB_004dc763;
                 }
-                if (((int)(iVar3 - DAT_GameCore::instance.warchestTrailStartDateMonths) < DAT_GameCore::instance
-                            .warchestTrailMonthsTakenOrChicken[DAT_GameCore::instance.warchestTrailProgress])
-                    || (DAT_GameCore::instance
+                if ((int)(iVar3 - DAT_GameCore::instance.warchestTrailStartDateMonths) < DAT_GameCore::instance
                             .warchestTrailMonthsTakenOrChicken[DAT_GameCore::instance.warchestTrailProgress]
-                        < 0)) {
+                    || DAT_GameCore::instance
+                            .warchestTrailMonthsTakenOrChicken[DAT_GameCore::instance.warchestTrailProgress]
+                        < 0) {
                     DAT_GameCore::instance
                         .warchestTrailMonthsTakenOrChicken[DAT_GameCore::instance.warchestTrailProgress]
                         = iVar3 - DAT_GameCore::instance.warchestTrailStartDateMonths;
@@ -289,24 +287,24 @@ namespace UI {
             LAB_004dc7d9:
                 sVar1 = DAT_GameState::instance.mapAndTime
                             .playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID];
-                if (!sVar1) {
+                if (sVar1 == 0) {
                 LAB_004dc826:
                     MACRO_CALL(OpenSHC::UI::MenuItems::SelectCrusade_Func::MenuItemActionHandler_SelectCrusade_Main)(3);
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
                     return;
                 }
-                if (DAT_GameCore::instance.warchestTrailProgress
+                if ((int)DAT_GameCore::instance.warchestTrailProgress
                     < DAT_GameCore::instance.furthestWarchestTrailMission) {
-                    if (!sVar1)
+                    if (sVar1 == 0)
                         goto LAB_004dc826;
                 } else {
                     DAT_GameCore::instance.furthestWarchestTrailMission
                         = DAT_GameCore::instance.warchestTrailProgress + 1;
                 }
-                if (DAT_GameCore::instance.warchestTrailProgress < 0x1d) {
+                if ((int)DAT_GameCore::instance.warchestTrailProgress < 0x1d) {
                     DAT_GameCore::instance.warchestTrailProgress = DAT_GameCore::instance.warchestTrailProgress + 1;
                 }
-                if (((!sVar1) || (DAT_GameCore::instance.warchestTrailProgress != 0x1d)) || (dVar4 != 0x1d))
+                if (sVar1 == 0 || DAT_GameCore::instance.warchestTrailProgress != 0x1d || dVar4 != 0x1d)
                     goto LAB_004dc826;
             }
             menuID = OpenSHC::UI::Enums::MVT_CRUSADE_ENDSCREEN;

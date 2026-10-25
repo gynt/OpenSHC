@@ -51,7 +51,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DD7B0
         void CrusadeMissionIntro::MenuView_CrusadeMissionIntro_DoEveryFrame()
         {
-            int iVar1;
             char* pcVar2;
             char* _pExtremeTrailName;
             int _extremeTrailNameWidth;
@@ -76,27 +75,15 @@ namespace UI {
             int _textY_01;
             int local_f4[33];
             int local_70[4];
-            undefined4 local_60;
-            undefined4 local_54;
-            undefined4 local_48;
-            undefined4 local_3c;
-            undefined4 local_30;
-            undefined4 local_24;
-            undefined4 local_18;
-            undefined4 local_c;
             int _titleX;
             int _titleY;
             TextAlignmentInt _titleAlignment;
-            uint _titleFG;
-            uint _titleBG;
             int _titleFontSize;
-            BOOLEnum _titleRetainX;
             int _textX_01;
-            int _fontSize;
             int _blendStrength;
             if (!DAT_MissionDefinedData::instance.field26_0xaf8) {}
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
-            iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             _textX_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 if (0x13 < DAT_GameCore::instance.extremeTrailProgress) {
@@ -110,13 +97,13 @@ namespace UI {
                     /*
                       added by script: "Crusader Trail Completed!"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
                 }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                if (0x1d < DAT_GameCore::instance.warchestTrailProgress) {
+                if (0x1d < (int)DAT_GameCore::instance.warchestTrailProgress) {
                     _offset = 0;
                     BVar14 = FALSE;
                     iVar13 = 0x10;
@@ -127,13 +114,13 @@ namespace UI {
                     /*
                       added by script: "Crusader Trail Completed!"
                      */
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
                 }
             } else if ((DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION)
-                && (0x31 < DAT_GameCore::instance.skirmishTrailProgress)) {
+                && (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress)) {
                 _offset = 0;
                 BVar14 = FALSE;
                 iVar13 = 0x10;
@@ -144,10 +131,10 @@ namespace UI {
                 /*
                   added by script: "Crusader Trail Completed!"
                  */
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar2, iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                    iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
             }
             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x20;
             _textY_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x156;
@@ -182,7 +169,7 @@ namespace UI {
             local_f4[8] = 0;
             local_f4[9] = 0;
             local_f4[10] = 0;
-            if (!DAT_GameCore::instance.gameSuspended) {
+            if (DAT_GameCore::instance.gameSuspended == 0) {
                 dVar3 = DAT_GameCore::instance.extremeTrailProgress;
                 if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
                     && (dVar3 = DAT_GameCore::instance.skirmishTrailProgress,
@@ -195,7 +182,7 @@ namespace UI {
             _offset = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x238;
             iVar6 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10;
-            if (!INT_00eb9ae8::instance) {
+            if (INT_00eb9ae8::instance == 0) {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ReadMapHeaderFromFile)(CHAR_ARRAY_00eb0ab0::instance);
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -207,13 +194,13 @@ namespace UI {
             _offset = 0;
             do {
                 _blendStrength = DAT_GameCore::instance.keepPositions[_offset].x;
-                if (-1 < _blendStrength) {
+                if (0 <= _blendStrength) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     if (DAT_GameSynchronyState::instance.playerPositionsArray[_offset] != -10) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                            (int)((int)(DAT_GameSynchronyState::instance.playerPositionsArray[_offset] + 0x1d6)),
+                            (int)(DAT_GameSynchronyState::instance.playerPositionsArray[_offset] + 0x1d6),
                             _blendStrength + 5 + iVar7, DAT_GameCore::instance.keepPositions[_offset].y + 1 + iVar6);
                     }
                 }
@@ -234,10 +221,10 @@ namespace UI {
             /*
               added by script: "Human Lord"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 7);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                pcVar2, _blendStrength, _offset, TVar10, uVar9, uVar11, iVar6, BVar14, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 7),
+                _blendStrength, _offset, TVar10, uVar9, uVar11, iVar6, BVar14, iVar7);
             iVar7 = 0;
             BVar14 = FALSE;
             iVar6 = 0x11;
@@ -249,10 +236,10 @@ namespace UI {
             /*
               added by script: "Computer Lords"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 8);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                pcVar2, _blendStrength, _offset, TVar10, uVar9, uVar11, iVar6, BVar14, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 8),
+                _blendStrength, _offset, TVar10, uVar9, uVar11, iVar6, BVar14, iVar7);
             _goldMultiplier = 1;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 _goldMultiplier = 3;
@@ -295,13 +282,13 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x10,
                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xee, 0x300, 0x120);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            _fontSize = 0xf;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                _pExtremeTrailName = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, DAT_GameCore::instance.extremeTrailProgress + 0x51);
-                _extremeTrailNameWidth = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
-                    DAT_TextManagerObject::ptr)(_pExtremeTrailName, _fontSize);
+                _extremeTrailNameWidth
+                    = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
+                            DAT_GameCore::instance.extremeTrailProgress + 0x51),
+                        0xf);
                 if (445 < _extremeTrailNameWidth) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         DAT_GameCore::instance.extremeTrailProgress + 1,
@@ -327,11 +314,12 @@ namespace UI {
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.extremeTrailProgress + 0x51;
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
-                    (int)((int)(DAT_GameCore::instance.warchestTrailProgress + 0x33)));
-                _offset = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
+                _offset
+                    = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
+                            (int)(DAT_GameCore::instance.warchestTrailProgress + 0x33)),
+                        0xf);
                 if (0x1bd < _offset) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         DAT_GameCore::instance.warchestTrailProgress + 0x33,
@@ -357,11 +345,12 @@ namespace UI {
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
             } else {
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
-                    (int)((int)(DAT_GameCore::instance.skirmishTrailProgress + 1)));
-                _offset = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
+                _offset
+                    = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
+                            (int)(DAT_GameCore::instance.skirmishTrailProgress + 1)),
+                        0xf);
                 if (0x1bd < _offset) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         DAT_GameCore::instance.skirmishTrailProgress + 1,
@@ -390,30 +379,19 @@ namespace UI {
             _titleFontSize = 0xf;
         LAB_004ddfa0:
             _blendStrength = 0;
-            _titleRetainX = TRUE;
-            _titleBG = 0;
-            _titleFG = 0xccfaff;
             _titleAlignment = OpenSHC::Text::TTA_LEFT;
             _titleY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e;
             _titleX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x23;
-            _pTitle = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, _offset);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                _pTitle, _titleX, _titleY, (TextAlignment)((int)(_titleAlignment)), _titleFG, _titleBG, _titleFontSize,
-                _titleRetainX, _blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, _offset),
+                _titleX, _titleY, (TextAlignment)((int)(_titleAlignment)), 0xccfaff, 0, _titleFontSize, TRUE,
+                _blendStrength);
             local_108 = local_f4 + 0x21;
             _blendStrength = 0;
             local_10c = local_f4 + 0x1f;
             local_f4[0x1f] = 0;
             local_70[1] = 0;
-            local_60 = 0;
-            local_54 = 0;
-            local_48 = 0;
-            local_3c = 0;
-            local_30 = 0;
-            local_24 = 0;
-            local_18 = 0;
-            local_c = 0;
             _offset = 1;
             piVar5 = local_f4 + 0x20;
             dVar3 = DAT_GameCore::instance.gameSuspended;
@@ -424,7 +402,7 @@ namespace UI {
                     if (!bVar8)
                         goto LAB_004de066;
                 } else {
-                    if ((!dVar3) && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_offset] == -1)) {
+                    if ((dVar3 == 0) && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_offset] == -1)) {
                         bVar8 = DAT_GameSynchronyState::instance.currentAIArray[_offset] == 0;
                         goto LAB_004de064;
                     }
@@ -435,7 +413,7 @@ namespace UI {
                         iVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_offset);
                         dVar3 = DAT_GameCore::instance.gameSuspended;
-                        if (!iVar6) {
+                        if (iVar6 == 0) {
                             local_10c = local_10c + 3;
                             *piVar5 = 0;
                             *local_108 = 0;
@@ -463,7 +441,7 @@ namespace UI {
                     iVar7 = 0;
                     piVar5 = local_f4 + 0x1f;
                     do {
-                        if ((*piVar5 != 0) && ((iVar6 == -1 || (local_f4[iVar7 + 1] < local_f4[0])))) {
+                        if (*piVar5 != 0 && (iVar6 == -1 || (local_f4[iVar7 + 1] < local_f4[0]))) {
                             local_f4[0] = local_f4[iVar7 + 1];
                             iVar6 = iVar7;
                         }
@@ -504,31 +482,31 @@ namespace UI {
                     local_104 = local_104 + 0x24;
                     local_10c = (int*)((int)local_10c + 0x24);
                 }
-                if ((local_f4[_blendStrength + 0xb] != 0)
-                    && ((int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks)) {
+                if (local_f4[_blendStrength + 0xb] != 0
+                    && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar4, (int)((int)(local_108)));
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar4, (int)(local_108));
                 }
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPlayerAvatars)(_blendStrength, local_104, iVar13);
-                if ((local_f4[_blendStrength + 0xb] != 0)
-                    && ((int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks)) {
+                if (local_f4[_blendStrength + 0xb] != 0
+                    && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                         (int)local_10c, iVar1 + 0x100, local_104 + 0x45, iVar1 + 0x143);
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, (int)((int)(local_10c)), iVar1 + 0x100);
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, (int)(local_10c), iVar1 + 0x100);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(DAT_GameSynchronyState::instance.DAT_PlayerNames[_blendStrength],
                     _textX_01 + 0x4c, _textY_01, OpenSHC::Text::TTA_LEFT,
-                    (uint)((int)(DAT_RenderingDefinedData::instance
-                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_blendStrength]])),
+                    (uint)(DAT_RenderingDefinedData::instance
+                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_blendStrength]]),
                     0, 0x12, FALSE, 0);
                 iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
-                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)((int)(local_108)), (iVar6 / 32) + 0x20);
+                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)(local_108), (iVar6 / 32) + 0x20);
                 _offset = _offset + 1;
             } while (_offset < 9);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;

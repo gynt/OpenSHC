@@ -16,8 +16,8 @@ namespace UI {
         void UnusedExtremeAd::MenuView_UnusedExtremeAd_DoInitial()
         {
             Menu* pMVar1;
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0, 0,
-                DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+                0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
@@ -25,7 +25,7 @@ namespace UI {
             (DAT_MenuHandlerState::instance.currentMenu)->xPosition
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
-            MACRO_CALL(Rendering_Func::RenderActiveCreditsElements)();
+            MACRO_CALL(OpenSHC::Rendering_Func::RenderActiveCreditsElements)();
         }
 
     }

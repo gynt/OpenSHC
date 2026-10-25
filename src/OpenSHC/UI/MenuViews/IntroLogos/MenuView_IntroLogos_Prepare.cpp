@@ -15,7 +15,7 @@ namespace UI {
         void IntroLogos::MenuView_IntroLogos_Prepare()
         {
             char* tgxFileName;
-            if (!DAT_IntroStep::instance) {
+            if (DAT_IntroStep::instance == 0) {
                 tgxFileName = "logo1.tgx";
             } else {
                 if (DAT_IntroStep::instance != 1)
@@ -23,7 +23,7 @@ namespace UI {
                 tgxFileName = "logo2.tgx";
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)(tgxFileName);
         LAB_0042474e:
             DAT_IntroBlendStrength::instance = 0;

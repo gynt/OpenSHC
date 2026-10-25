@@ -27,16 +27,10 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042B960
         void UnusedSelectRandomNumberOfEnemies::MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame()
         {
-            int iVar1;
             char* pcVar2;
             int iVar3;
-            TextAlignment alignment;
-            BGR24 color;
             int iVar4;
-            uint color_00;
-            BOOLEnum keepOffsetX;
             int iVar5;
-            int blendStrength;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(0,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
@@ -50,23 +44,18 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 100,
                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 100, 600, 400);
             iVar5 = 0;
-            keepOffsetX = FALSE;
             iVar4 = 0x11;
-            color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_CENTER;
-            iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 200;
+            int iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 200;
             iVar3 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             /*
               added by script: "How many opponents can you handle!"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 1);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
-            blendStrength = 0;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 1),
+                iVar3, iVar1, OpenSHC::Text::TTA_CENTER, 0xccfaff, iVar4, FALSE, iVar5);
             iVar5 = 0x12;
-            color_00 = 0xccfaff;
             iVar4 = 400;
             iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 400;
             iVar3 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 200;
@@ -74,10 +63,10 @@ namespace UI {
               added by script: "This will create some random opponents for you. You can   still change opponent types
               afterwards."
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2),
+                iVar3, iVar1, iVar4, 0xccfaff, iVar5, 0);
             return;
         }
 

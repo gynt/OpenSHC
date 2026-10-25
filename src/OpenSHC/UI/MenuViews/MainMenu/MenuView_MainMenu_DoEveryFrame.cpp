@@ -33,8 +33,7 @@ namespace UI {
         void MainMenu::MenuView_MainMenu_DoEveryFrame()
         {
             char local_68[100];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
+            uint local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
             if (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
                 DAT_UnknownGFXIndex::instance = 1;
                 if (DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0) {
@@ -47,13 +46,13 @@ namespace UI {
             if ((DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0)
                 || (DAT_GameCore::instance.menuViewToSwitchTo != DAT_GameCore::instance.currentMenuViewType))
                 goto LAB_00424eb2;
-            if (!DAT_MainMenuSwingSwordBool::instance) {
+            if (DAT_MainMenuSwingSwordBool::instance == 0) {
                 DAT_MainMenuSwingSwordBool::instance = (int)SEC_RNG::instance.currentNumber1 % 3;
                 if (0 < DAT_MainMenuSwingSwordBool::instance) {
                     DAT_MainMenuSwingSwordBool::instance = 0;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
-                if (!DAT_MainMenuSwingSwordBool::instance)
+                if (DAT_MainMenuSwingSwordBool::instance == 0)
                     goto LAB_00424e2e;
             } else {
                 DAT_MainMenuSwingSwordBool::instance = 0;
@@ -78,7 +77,7 @@ namespace UI {
                     / 2);
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "V1.%d", 41);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_68,
-                DAT_MenuHandlerState::instance.x + 2, (int)((int)(DAT_MenuHandlerState::instance.y + 588)),
+                DAT_MenuHandlerState::instance.x + 2, (int)(DAT_MenuHandlerState::instance.y + 588),
                 OpenSHC::Text::TTA_LEFT, 0x7caaaf, 0x13, FALSE, 0);
             ;
             return;

@@ -57,12 +57,12 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                 DAT_TextureRenderCoreObject::ptr)(iVar5);
-            if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
+            if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw != 0) {
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
-                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     if ((DAT_GameCore::instance.activeMenuTab.tabType
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
@@ -206,10 +206,10 @@ namespace UI {
                         iVar5, 0, 0x400 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x400;
                     } else {
@@ -254,10 +254,10 @@ namespace UI {
                         iVar5, 0, 0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x4a0;
                     } else {
@@ -302,10 +302,10 @@ namespace UI {
                         iVar5, 0, 0x2d0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x400;
                     } else {
@@ -350,10 +350,10 @@ namespace UI {
                         iVar5, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x450;
                     } else {
@@ -398,10 +398,10 @@ namespace UI {
                         iVar5, 0, 0x438 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x540;
                     } else {
@@ -446,10 +446,10 @@ namespace UI {
                         iVar5, 0, 0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x540;
                     } else {
@@ -494,10 +494,10 @@ namespace UI {
                         iVar5, 0, 0x5a0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x680;
                     } else {
@@ -542,10 +542,10 @@ namespace UI {
                         iVar5, 0, 0x640 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x680;
                     } else {
@@ -590,10 +590,10 @@ namespace UI {
                         iVar5, 0, 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x42a;
                     } else {
@@ -638,10 +638,10 @@ namespace UI {
                         iVar5, 0, 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x428;
                     } else {
@@ -686,10 +686,10 @@ namespace UI {
                         iVar5, 0, 0x41a - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x4c8;
                     } else {
@@ -734,10 +734,10 @@ namespace UI {
                         iVar5, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                     if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT))
-                        && ((DAT_GameCore::instance.activeMenuTab.tabType
+                        && (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
-                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)))) {
+                                == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
                         iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
                         iVar3 = 0x4a0;
                     } else {
