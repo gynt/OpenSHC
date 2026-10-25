@@ -75,7 +75,7 @@ namespace UI {
             _currentTime = timeGetTime();
             if (!DAT_IntroTransitionStep::instance) {
                 DAT_IntroBlendStrength::instance = (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14;
-                if (DAT_IntroBlendStrength::instance < 0x20)
+                if ((int)DAT_IntroBlendStrength::instance < 0x20)
                     goto LAB_0042496a;
                 DAT_IntroBlendStrength::instance = 0x20;
                 DAT_IntroTransitionStep::instance = 1;
@@ -88,13 +88,13 @@ namespace UI {
                      */
                     _introStepDuration = 6000;
                 }
-                if (_introStepDuration < (int)(_currentTime - DAT_IntroTimestamp::instance)) {
+                if ((int)(_currentTime - DAT_IntroTimestamp::instance) > _introStepDuration) {
                     DAT_IntroTransitionStep::instance = 2;
                     DAT_IntroTimestamp::instance = timeGetTime();
                 }
             } else if ((DAT_IntroTransitionStep::instance == 2)
                 && (DAT_IntroBlendStrength::instance = 0x20 - (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14,
-                    DAT_IntroBlendStrength::instance < 1)) {
+                    (int)DAT_IntroBlendStrength::instance < 1)) {
                 if (!DAT_IntroStep::instance) {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;
