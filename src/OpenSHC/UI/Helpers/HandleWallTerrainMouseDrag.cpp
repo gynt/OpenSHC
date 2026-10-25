@@ -26,7 +26,9 @@ namespace UI {
     {
         int iVar2;
         int iVar3;
-        if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {}
+        if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {
+            return;
+        }
         if (!DAT_TileMapState::instance.flatViewToggleValue1) {
             MACRO_CALL_MEMBER(
                 Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
@@ -40,7 +42,9 @@ namespace UI {
                 DAT_TileMapState::instance.dragEndY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
                 goto LAB_00437d7f;
             }
-            if (DAT_ScrollingHandler::instance.isScrolling_0x0) {}
+            if (DAT_ScrollingHandler::instance.isScrolling_0x0) {
+                return;
+            }
             DAT_TileMapState::instance.dragStartX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
             DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             DAT_TileMapState::instance.dragEndX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
