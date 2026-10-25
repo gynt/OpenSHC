@@ -1,7 +1,6 @@
-#include "../../Synchrony.func.hpp"
+#include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/IO/LowLevelMemory.func.hpp"
-#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Commands/GameCommandScheduling.hpp"
 #include "OpenSHC/Commands/GameCommandState.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
@@ -19,32 +18,35 @@ namespace Synchrony {
     int GameSynchronyState::sendLongerDataSuchAsResync(GameCommandType commandCategory)
     {
         this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;
+        // No sizeof fits: GameCommand::parameters is typed as a single undefined1
+        // followed by padding_0xb[1261], so neither the field nor the struct gives the
+        // 1260 bytes the original clears. Needs the parameter block typed in Ghidra.
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            0x4ec, '\0', (void*)((int)(&this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters)));
+            1260, '\0', &this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters);
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_UNPROCESSED;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk = this->DPLAYX_PlayerHandle;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType = (undefined1)commandCategory;
         this->DAT_CommandActionPlan = Commands::GCS_SCHEDULE_AND_SEND;
         this->DAT_PlayerIDReceiver = 0;
         this->DAT_CommandParameterOffset = 0;
-        ((void (*)())DAT_ProtocolDefinedData::instance
-                .commandFunctions[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType + 0x15])();
+        (&DAT_ProtocolDefinedData::instance
+                .commandFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
         this->DAT_CommandParameterOffset = 0;
-        int iVar1 = this->DAT_CommandSize;
+        int _size = this->DAT_CommandSize;
         if (200 < this->DAT_CommandSize && (undefined1)commandCategory != Commands::GCT_SEND_RESYNC_LOGICALTILEMAP) {
-            this->DAT_Packet.packet.commandProtocol = 0x7d;
+            this->DAT_Packet.packet.commandProtocol = 125;
             this->DAT_Packet.prefixedPacket.packet.commandProtocol = (undefined1)commandCategory;
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 this->DAT_GameCommandArray + this->DAT_CurrentGameCommandID,
-                (void*)((int)(((int)&this->DAT_Packet + 2))));
-            iVar1 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk,
-                this)(this->DAT_CommandSize, (char*)((int)(this->DAT_GameCommandFixedParameterLocation)),
-                (void*)((int)(((int)&this->DAT_Packet + 5))));
-            iVar1 = iVar1 + 1;
+                &this->DAT_Packet.prefixedPacket.packet.time);
+            _size = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk,
+                this)(this->DAT_CommandSize, (char*)this->DAT_GameCommandFixedParameterLocation,
+                this->DAT_Packet.prefixedPacket.packet.payload);
+            ++_size;
         }
         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
             this->DAT_CurrentGameCommandID);
-        return iVar1;
+        return _size;
     }
 
 }

@@ -14,17 +14,8 @@ namespace Map {
 
 #pragma pack(push, 1)
         // SIZE: 0x00000004
-        // Building offset 0x80, which two kinds of building use differently.
-        // Most types run it as the owner flag's animation clock: the Update*
-        // functions increment it and index
-        // BuildingDefinedData.SharedOverlayAnimationFrames by `ownerFlagFrame / 2`, putting
-        // the resolved image in overlayImageID at 0x84.
-        // UpdateGranary instead treats 0x80 as slot 14 of the overlay family
-        // and writes a GM image index there, which renderGmOverlayBuilding
-        // pushes as an imageID like any other slot.
-        typedef union BuildingFlagSlot {
+        typedef struct BuildingFlagSlot {
 
-            int ownerFlagFrame; // 0x00000000 length: 4
             int overlayImage; // 0x00000000 length: 4
 
         } BuildingFlagSlot;

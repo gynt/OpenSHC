@@ -1,6 +1,4 @@
-#include "../../Synchrony.func.hpp"
-
-#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
+#include "../GameSynchronyState.func.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -17,7 +15,7 @@ namespace Synchrony {
             this->now2 = _now;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendSomeMultiplayerSyncMessageWithType, this)(0);
             if (0 < this->syncRelatedCountdown) {
-                this->syncRelatedCountdown = this->syncRelatedCountdown + -1;
+                --this->syncRelatedCountdown;
             }
         }
     }

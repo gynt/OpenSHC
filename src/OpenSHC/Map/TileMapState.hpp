@@ -9,7 +9,6 @@
 #pragma once
 
 #include "OpenSHC/Commands/MappersEnum.hpp"
-#include "OpenSHC/Game/Player/PlayerID.hpp"
 #include "OpenSHC/IO/PackagedFileMagicNum.hpp"
 #include "OpenSHC/Map/Buildings/BuildingFailReasonEnumInt.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
@@ -23,7 +22,6 @@ namespace OpenSHC {
 namespace Map {
 
     using OpenSHC::Commands::MappersEnum;
-    using OpenSHC::Game::Player::PlayerID;
     using OpenSHC::IO::PackagedFileMagicNum;
     using OpenSHC::Map::Moat;
     using OpenSHC::Map::PitchDitch;
@@ -65,7 +63,7 @@ namespace Map {
         byte WallOwnerLayer[80400]; // 0x002C6E50 length: 80400
         uchar LuminesenceLayer[80400]; // 0x002DA860 length: 80400
         uchar ShowHiLayer[80400]; // 0x002EE270 length: 80400
-        ushort MiscDisplayLayer[80400]; // 0x00301C80 length: 160800
+        short MiscDisplayLayer[80400]; // 0x00301C80 length: 160800
         byte DamageLayer[80400]; // 0x003290A0 length: 80400
         ushort MacroLayer[80400]; // 0x0033CAB0 length: 160800
         ushort PathConnectionLayer[80400]; // 0x00363ED0 length: 160800
@@ -288,7 +286,7 @@ namespace Map {
 
         BOOLEnum isTileEnclosedByWallsOrGates(int param_1, int param_2);
 
-        undefined4 isTileEnclosedByWalls(int param_1, int param_2);
+        BOOLEnum isTileEnclosedByWalls(int param_1, int param_2);
 
         BOOLEnum isWallCornerForCardinalDirection(int param_1, int param_2, int param_3);
 
@@ -433,7 +431,7 @@ namespace Map {
 
         int setXYBasedOnMoatID(int tile, int param_2, uint x, uint y);
 
-        undefined4 advanceMoatDigProgress(int moatID);
+        BOOLEnum advanceMoatDigProgress(int moatID);
 
         void clearMoat(int tile);
 
@@ -459,7 +457,7 @@ namespace Map {
 
         void swapPitchOwnership(int param_1, int param_2);
 
-        undefined4 findNearestValidDigTileNearTarget(uint x1, uint y1, uint x2, uint y2);
+        BOOLEnum findNearestValidDigTileNearTarget(uint x1, uint y1, uint x2, uint y2);
 
         int computeTileAlongAxisOffset(int param_1, int param_2, uint param_3);
 
@@ -634,7 +632,7 @@ namespace Map {
         BOOLEnum prepareAreaForBuildingPlacement(
             int playerID, uint x, uint y, MappersEnum commandBuildingType, int buildingWidthOrHeight);
 
-        void placeBuilding(PlayerID playerID, int x, int y, MappersEnum cbt, int buildingSize, int buildingOrientation);
+        void placeBuilding(int playerID, int x, int y, MappersEnum cbt, int buildingSize, int buildingOrientation);
 
         BOOLEnum processDamageToBuilding(int tile, uint xPosition, uint yPosition, int damageUnk, int param_5,
             int playerID, BOOLEnum aiBuildDelayRelated, int unitID);

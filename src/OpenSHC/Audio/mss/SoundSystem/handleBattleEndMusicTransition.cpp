@@ -20,11 +20,11 @@ namespace Audio {
                 return;
             }
             if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicState != 5
-                || DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.battleEndHandled) {
+                || DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.battleEndHandled != 0) {
                 return;
             }
             DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.battleEndHandled = 1;
-            if (!DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel) {
+            if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel == 0) {
                 int const volumeLevel = DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.volumeLevel;
                 if (volumeLevel < 1 || volumeLevel > 5) {
                     return;
@@ -32,7 +32,7 @@ namespace Audio {
 
                 MACRO_CALL_MEMBER(SoundSystem_Func::setSomeSoundTime, this)();
                 DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.musicState = 1;
-                if (!DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel) {
+                if (DAT_SoundEffectsHelperData1::ptr->SEC_Section1079.troopValueLevel == 0) {
                     return;
                 }
             }

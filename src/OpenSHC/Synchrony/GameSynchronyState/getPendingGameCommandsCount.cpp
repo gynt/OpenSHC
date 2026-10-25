@@ -1,4 +1,3 @@
-#include "../../Synchrony.func.hpp"
 #include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/Commands/GameCommandState.hpp"
@@ -13,20 +12,14 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x00480580
     int GameSynchronyState::getPendingGameCommandsCount()
     {
-        GameCommandStateByte* pGVar3;
-        int iVar1 = 0;
-        if (this->MBR_GameCommandID < 200) {
-            pGVar3 = &this->DAT_GameCommandArray[this->MBR_GameCommandID].stateUnk;
-            int iVar2 = 200 - this->MBR_GameCommandID;
-            do {
-                if (*pGVar3 != (GameCommandState)0 && (char)*pGVar3 < '\n') {
-                    iVar1 = iVar1 + 1;
-                }
-                pGVar3 = pGVar3 + 0x4f8;
-                iVar2 = iVar2 + -1;
-            } while (iVar2);
+        int _pending = 0;
+        for (int _command = this->gameCommandID; _command < 200; ++_command) {
+            GameCommandStateByte _state = this->DAT_GameCommandArray[_command].stateUnk;
+            if (_state != 0 && _state < Commands::GCS_PROCESSED) {
+                ++_pending;
+            }
         }
-        return iVar1;
+        return _pending;
     }
 
 }

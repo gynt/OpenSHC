@@ -33,7 +33,7 @@ namespace Map {
         public:
             undefined4 totalEntityCount; // 0x00000000 length: 4
             undefined4 maxEntityCount; // 0x00000004 length: 4
-            int every10Ticks; // 0x00000008 length: 4
+            int everyTenTicks; // 0x00000008 length: 4
             int lineOfSightClearanceSteps; // 0x0000000C length: 4
             undefined4 fireCount; // 0x00000010 length: 4
             Entity entityArray[3000]; // 0x00000014 length: 696000
@@ -69,7 +69,7 @@ namespace Map {
 
             int getFireEntityIDAtTile(int tile);
 
-            int updateAllFireEntitiesAtTile(int tile);
+            BOOLEnum updateAllFireEntitiesAtTile(int tile);
 
             void processFireDamageToUnitsAtTile(int tile, int playerID, int fireLowIntensity);
 
@@ -85,7 +85,7 @@ namespace Map {
 
             void destroyEntitiesOnTile(int tile);
 
-            undefined4 isBrazierNearby(int unitX, int unitY, int unitZ);
+            BOOLEnum isBrazierNearby(int unitX, int unitY, int unitZ);
 
             void reassignEntitiesOwner(int param_1, undefined4 param_2);
 

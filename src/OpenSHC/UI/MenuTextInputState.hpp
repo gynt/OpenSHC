@@ -22,11 +22,6 @@ namespace UI {
     // SIZE: 0x00001828
     class MenuTextInputState {
     public:
-        // Which of the three saved list states below is the live one. The file dialog
-        // stores the scroll offset, selection and sort order it was left with per
-        // context, and restores them on re-entry: context 1 uses set 1, context 3 uses
-        // set 2 and context 2 uses set 3 (MenuModalRenderFunction_LoadMap saves them,
-        // activateLoadOrSaveMapUI restores them).
         undefined4 fileListContext; // 0x00000000 length: 4
         undefined4 savedListOffset1; // 0x00000004 length: 4
         undefined4 savedListSelection1; // 0x00000008 length: 4
@@ -59,8 +54,8 @@ namespace UI {
         MenuModalTypeInt modalDialog_6; // 0x00000070 length: 4
         int fileListEntryCount; // 0x00000074 length: 4
         undefined4 fileListSortOrder; // 0x00000078 length: 4
-        int DAT_MenuLoadGameRelativeSelectionIndex; // 0x0000007C length: 4
-        int DAT_MenuLoadGameRelativeSelectionOffset; // 0x00000080 length: 4
+        int menuLoadGameRelativeSelectionIndex; // 0x0000007C length: 4
+        int menuLoadGameRelativeSelectionOffset; // 0x00000080 length: 4
         undefined4 fileListVisibleRowCount; // 0x00000084 length: 4
         undefined4 DAT_SomeTextArrayIndex; // 0x00000088 length: 4
         undefined4 lastClickedListIndex; // 0x0000008C length: 4
@@ -71,7 +66,7 @@ namespace UI {
         undefined4 previewedListIndex; // 0x000000A0 length: 4
         int field44_0xa4; // 0x000000A4 length: 4
         int dialogResult; // 0x000000A8 length: 4
-        undefined4 field49_0xac; // 0x000000AC length: 4
+        undefined4 field46_0xac; // 0x000000AC length: 4
         int DAT_ArrayOfMapU3EndInt2[500]; // 0x000000B0 length: 2000
         undefined4 DAT_MapSelectionPreloadMapIndexMapping; // 0x00000880 length: 4
         int DAT_ArrayOfMapIndices[500]; // 0x00000884 length: 2000

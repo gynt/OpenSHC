@@ -31,7 +31,7 @@ namespace Map {
 
         BOOLEnum __cdecl ConsiderHavingABreakNowUnk(int unitID, UnitState nextUnitState);
 
-        undefined4 __cdecl SetStateToFreetimeWalking(int unitID, int shouldFindNewGoodThing, int param_3);
+        BOOLEnum __cdecl SetStateToFreetimeWalking(int unitID, int shouldFindNewGoodThing, int param_3);
 
         BOOLEnum __cdecl CheckUnitProductionPaused(int param_1);
 
@@ -183,7 +183,7 @@ namespace Map {
 
         void __cdecl UpdateAssassin();
 
-        void __cdecl UpdateHorseArcher_DoShooting(short* unitID);
+        void __cdecl UpdateHorseArcher_DoShooting(int unitID);
 
         void __cdecl UpdateArabianSwordsman();
 

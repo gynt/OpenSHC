@@ -1,12 +1,15 @@
-#include "../../Synchrony.func.hpp"
+#pragma warning(disable : 4996)
+
+#include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/Game/GameCore.func.hpp"
-#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -20,21 +23,22 @@ namespace Synchrony {
     {
         if (this->currentGameMode != Game::GM_SOLITARY && this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER
             && this->isHost && this->skirmishAutoSaveEveryMinutes && this->timeSkirmishGameStart) {
-            BOOLEnum BVar1 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (BVar1 && !this->syncStatus && !this->saveRelated) {
-                DWORD DVar2 = timeGetTime();
-                if (this->skirmishAutoSaveEveryMinutes * 60000 < (int)(DVar2 - this->timeSkirmishGameStart)) {
-                    /*
-                      autosave
-                     */
-                    strcpy(this->shortMapName, "autosave");
-                    this->DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
-                    this->lastAutoSaveTime = DVar2;
-                    this->timeSkirmishGameStart = DVar2;
-                    this->DAT_GameCommandParam1
-                        = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray, this)();
-                    this->DAT_GameCommandParam2 = 1;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_SAVE);
+            BOOLEnum _inGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            if (_inGameMenu && !this->syncStatus && !this->saveRelated) {
+                DWORD _now = timeGetTime();
+                int _elapsed = _now - this->timeSkirmishGameStart;
+                if (_elapsed > this->skirmishAutoSaveEveryMinutes * 60000) {
+                    this->lastAutoSaveTime = _now;
+                    this->timeSkirmishGameStart = _now;
+                    // The macro expands to the literal, so this keeps the match that the
+                    // s_autosave_005a74b4 *global* from string-literals.hpp costs (100% -> 62.2%).
+                    strcpy(DAT_GameSynchronyState::instance.shortMapName, S_AUTOSAVE_005A74B4);
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = MACRO_CALL_MEMBER(
+                        Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray, DAT_GameSynchronyState::ptr)();
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 1;
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_SAVE);
                 }
             }
         }

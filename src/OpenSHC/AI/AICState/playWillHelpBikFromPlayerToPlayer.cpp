@@ -2,7 +2,6 @@
 
 #include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Rendering/Bink/AIMessageQueue.func.hpp"
-#include "OpenSHC/AI/AIType.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -12,20 +11,18 @@
 namespace OpenSHC {
 namespace AI {
 
-    using AI::AIType;
-
     // FUNCTION: STRONGHOLDCRUSADER 0x004D0E50
     void AICState::playWillHelpBikFromPlayerToPlayer(int playerID, int targetPlayerID)
     {
-        int iVar1;
-        iVar1 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(
-            playerID);
-        if ((iVar1) && (targetPlayerID == DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
-            MACRO_CALL_MEMBER(
-                Rendering::Bink::AIMessageQueue_Func::playBikVideoFromPlayer, DAT_VideoBikQueue::ptr)(playerID,
-                (int)((int)(DAT_GameState::instance.playerDataArray[playerID].aiType + ~AI::AIT_NULL)), 0x20);
+        if (MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(playerID) == 0) {
+            return;
         }
-    }
+        if (targetPlayerID != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
+            return;
+        }
 
+        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playBikVideoFromPlayer, DAT_VideoBikQueue::ptr)(
+            playerID, DAT_GameState::instance.playerDataArray[playerID].aiType - 1, 0x20);
+    }
 }
 }

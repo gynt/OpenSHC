@@ -7,16 +7,18 @@
 namespace OpenSHC {
 namespace AI {
 
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CD070
     BOOLEnum AICState::checkTribeActivityPercentages(int tribeID, BOOLEnum ignoreShooting, BOOLEnum includeMoving)
     {
-        if (((!includeMoving) || (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 11))
-            && ((DAT_TribesState::instance.tribes[tribeID].percentageShootingUnk < 11 || (ignoreShooting == TRUE)))) {
-            return (uint)(10 < DAT_TribesState::instance.tribes[tribeID].percentageAttackingUnk);
+        if (includeMoving != FALSE && DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk > 10) {
+            return TRUE;
         }
-        return TRUE;
+        if (DAT_TribesState::instance.tribes[tribeID].percentageShootingUnk > 10 && ignoreShooting != TRUE) {
+            return TRUE;
+        }
+        return DAT_TribesState::instance.tribes[tribeID].percentageAttackingUnk > 10;
     }
 
 }

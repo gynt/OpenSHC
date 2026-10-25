@@ -1,7 +1,11 @@
-#include "../../Synchrony.func.hpp"
+#pragma warning(disable : 4996)
+
 #include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/OS.func.hpp"
+#include "OpenSHC/string-literals.hpp"
+
+#include "string.h"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -9,45 +13,26 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047E490
     void GameSynchronyState::readGameSpyConfig()
     {
-        char* pcVar1;
-        LONG LVar2;
-        char* pcVar3;
-        FILE* _File;
-        undefined2* puVar4;
-        HKEY__* local_c;
-        DWORD local_8;
-        DWORD local_4;
-        local_8 = 0x200;
+        HKEY__* _key;
+        DWORD _valueType;
+        DWORD _valueSize = 512;
         this->gameSpyArcadeAvailable = 0;
-        LVar2 = RegOpenKeyExA((HKEY__*)0x80000001, "Software\\GameSpy\\GameSpy Arcade", 0, 0x20019, &local_c);
-        if (!LVar2) {
-            LVar2 = RegQueryValueExA(
-                local_c, "InstDir", (DWORD*)0x0, &local_4, (BYTE*)this->shellExecuteTarget, &local_8);
-            RegCloseKey(local_c);
-            pcVar1 = this->shellExecuteTarget;
-            if (!LVar2) {
-                do {
-                    pcVar3 = pcVar1;
-                    pcVar1 = pcVar3 + 1;
-                } while (*pcVar3 != '\0');
-                if (*pcVar3 != '\\') {
-                    puVar4 = (undefined2*)((int)&this->willHost + 3);
-                    do {
-                        pcVar1 = (char*)((int)puVar4 + 1);
-                        puVar4 = (undefined2*)((int)puVar4 + 1);
-                    } while (*pcVar1 != '\0');
-                    *puVar4 = 0x5c;
+        LONG _result = RegOpenKeyExA(HKEY_CURRENT_USER, s_Software_GameSpy_GameSpy_Arcade_005a6f6c, 0, KEY_READ, &_key);
+        if (!_result) {
+            _result = RegQueryValueExA(
+                _key, s_InstDir_005a6f64, (DWORD*)0x0, &_valueType, (BYTE*)this->shellExecuteTarget, &_valueSize);
+            RegCloseKey(_key);
+            if (!_result) {
+                // The original indexes with the full length, so this reads the terminator and the
+                // branch is always taken; a trailing-separator test would have wanted length - 1.
+                if (this->shellExecuteTarget[strlen(this->shellExecuteTarget)] != '\\') {
+                    strcat(this->shellExecuteTarget, s___005a6f60);
                 }
-                pcVar1 = (char*)((int)&this->willHost + 3);
-                do {
-                    pcVar3 = pcVar1;
-                    pcVar1 = pcVar3 + 1;
-                } while (pcVar3[1] != '\0');
-                strcpy(pcVar3 + 1, "aphex.exe");
-                _File = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, "rb");
-                if (_File != (FILE*)0x0) {
+                strcat(this->shellExecuteTarget, s_aphex_exe_005a6f54);
+                FILE* _file = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, s_rb_005a4e18);
+                if (_file != (FILE*)0x0) {
                     this->gameSpyArcadeAvailable = 1;
-                    MACRO_CALL(OS_Func::_fclose)(_File);
+                    MACRO_CALL(OS_Func::_fclose)(_file);
                 }
             }
         }

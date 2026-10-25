@@ -35,13 +35,13 @@ namespace Audio {
                     DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount = 0;
                 } else {
                     if (0 < DAT_TroopValueState::instance.attackInfo.buildingDamageEventCount
-                        && DAT_TroopValueState::instance.attackInfo.field128057_0x469d8 == 1) {
-                        DAT_TroopValueState::instance.attackInfo.field128057_0x469d8 = 2;
+                        && DAT_TroopValueState::instance.attackInfo.delayedWaveAssignmentCount == 1) {
+                        DAT_TroopValueState::instance.attackInfo.delayedWaveAssignmentCount = 2;
                         /* "the enemy has breached the walls!" */
                         MACRO_CALL_MEMBER(SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                             s_General_Warning15_wav_005a6ce4);
                     }
-                    if (DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount) {
+                    if (DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount != 0) {
                         DAT_TroopValueState::instance.attackInfo.enemyUnitsInsideCastleCount = 0;
                         if (90000 < timeGetTime()
                                 - DAT_SoundEffectsHelperData1::instance
@@ -60,7 +60,7 @@ namespace Audio {
                 DAT_GameCore::instance.someSoundMatchTime_1 = DAT_GameCore::instance.mapTimeInTicks;
                 DAT_GameCore::instance.cowPoisonTrackerUnk = 0;
             }
-            if (0 < this->sec_Section1055_0x3274 && this->musicFadeState) {
+            if (0 < this->sec_Section1055_0x3274 && this->musicFadeState != 0) {
                 if (this->musicFadeState == 2) {
                     unsigned int const transitionPercent = (timeGetTime() - this->someSoundTime_0x158) / 10;
                     if (transitionPercent >= 100) {
@@ -108,10 +108,10 @@ namespace Audio {
 
             if ((MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)()
                     || (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_SCENARIO_DESCRIPTION
-                        && DAT_GameCore::instance.gameSuspended))
+                        && DAT_GameCore::instance.gameSuspended != 0))
                 && DAT_GameCore::instance.gameMode_2 != Game::GM_CRUSADER_TUTORIAL
                 && DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                if (DAT_TroopValueState::instance.attackInfo.pendingAttackWaveCount
+                if (DAT_TroopValueState::instance.attackInfo.pendingAttackWaveCount != 0
                     && 0 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .totalEnemyUnitsCount) {
                     if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c) {
@@ -125,11 +125,11 @@ namespace Audio {
                     if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .totalEnemyUnitsCount
                             == 0)
-                        && (!DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c)) {
+                        && (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c == 0)) {
                         MACRO_CALL_MEMBER(
                             SoundSystem_Func::handleBattleEndMusicTransition, DAT_SoundSystemState::ptr)();
                     }
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel
+                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel != 0
                         && DAT_SoundEffectsHelperData1::instance.SEC_Section1079.volumeLevel == 2
                         && 30000 < timeGetTime() - DAT_SoundEffectsHelperData1::instance.DAT_SomeSoundTime2) {
                         DAT_SoundEffectsHelperData1::instance.DAT_SomeSoundTime2 = timeGetTime();
@@ -182,12 +182,12 @@ namespace Audio {
                         return;
                     }
                 }
-                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c) {
+                if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.field7_0x1c != 0) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::playRandomMusic02, this)(2);
                 } else if (0
                         < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .totalEnemyUnitsCount
-                    && !DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated) {
+                    && DAT_TroopValueState::instance.attackInfo.lowTroopValueRelated == 0) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::playRandomMusic02, this)(1);
                     MACRO_CALL_MEMBER(SoundSystem_Func::playBattleGloryMusicIfConditionsMet, this)();
                 }
@@ -196,7 +196,7 @@ namespace Audio {
                     return;
                 }
 
-                if (this->sec_Section1055_0x3274) {
+                if (this->sec_Section1055_0x3274 != 0) {
                     if (!MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)(enums::SND_STR_MUSIC)) {
                         if (9 < this->sec_Section1055_0x3274) {
                             this->lastMusicChangeTime = timeGetTime();
@@ -204,14 +204,14 @@ namespace Audio {
                         this->sec_Section1055_0x3274 = 0;
                         this->currentSoundID_0x3278 = 0;
                     }
-                    if (this->sec_Section1055_0x3274) {
+                    if (this->sec_Section1055_0x3274 != 0) {
                         return;
                     }
                 }
-                if (!this->lastMusicChangeTime) {
+                if (this->lastMusicChangeTime == 0) {
                     this->lastMusicChangeTime = timeGetTime();
                 }
-                if (this->sec_Section1055_0x3274) {
+                if (this->sec_Section1055_0x3274 != 0) {
                     return;
                 }
 
@@ -253,12 +253,12 @@ namespace Audio {
                         MACRO_CALL_MEMBER(
                             SoundSystem_Func::handleBattleEndMusicTransition, DAT_SoundSystemState::ptr)();
                     }
-                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel
+                    if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.troopValueLevel != 0
                         && DAT_SoundEffectsHelperData1::instance.SEC_Section1079.volumeLevel == 2
                         && 30000 < timeGetTime() - DAT_SoundEffectsHelperData1::instance.DAT_SomeSoundTime2) {
                         MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                         int const randomNumber = SEC_RNG::instance.currentNumber1 % 3;
-                        if (!randomNumber)
+                        if (randomNumber == 0)
                             DAT_SoundEffectsHelperData1::instance.battleMoodState = 1;
                         else if (randomNumber == 1)
                             DAT_SoundEffectsHelperData1::instance.battleMoodState = 2;
@@ -271,7 +271,7 @@ namespace Audio {
                     return;
                 }
 
-                if (this->sec_Section1055_0x3274) {
+                if (this->sec_Section1055_0x3274 != 0) {
                     if (!MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)(enums::SND_STR_MUSIC)) {
                         if (9 < this->sec_Section1055_0x3274) {
                             this->lastMusicChangeTime = timeGetTime();
@@ -279,14 +279,14 @@ namespace Audio {
                         this->sec_Section1055_0x3274 = 0;
                         this->currentSoundID_0x3278 = 0;
                     }
-                    if (this->sec_Section1055_0x3274) {
+                    if (this->sec_Section1055_0x3274 != 0) {
                         return;
                     }
                 }
-                if (!this->lastMusicChangeTime) {
+                if (this->lastMusicChangeTime == 0) {
                     this->lastMusicChangeTime = timeGetTime();
                 }
-                if (this->sec_Section1055_0x3274) {
+                if (this->sec_Section1055_0x3274 != 0) {
                     return;
                 }
 

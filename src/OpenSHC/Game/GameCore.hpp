@@ -55,14 +55,14 @@ namespace Game {
         dword field8_0x20; // 0x00000020 length: 4
         ActiveMenuTab buildmenuMenuTabToSwitchTo; // 0x00000024 length: 4
         dword buildingandstatusmenuMenuTabToSwitchTo; // 0x00000028 length: 4
-        dword landscapingmenuMenuTabToSwitchTo; // 0x0000002C length: 4
+        ActiveMenuTab landscapingmenuMenuTabToSwitchTo; // 0x0000002C length: 4
         dword field12_0x30; // 0x00000030 length: 4
         ActiveMenuTab secondaryActiveMenuTabToSwitchTo; // 0x00000034 length: 4
         BuildMenuTabTypeShort tabTypeSiegeSubset; // 0x00000038 length: 4
         dword historicCampaignNumber; // 0x0000003C length: 4
         int missionNumber1to20; // 0x00000040 length: 4
         ScenarioProgress scenarioProgress; // 0x00000044 length: 16
-        dword furthestMission; // 0x00000054 length: 4
+        int furthestMission; // 0x00000054 length: 4
         dword unlockAllHistoricalCampaigns; // 0x00000058 length: 4
         dword unused1; // 0x0000005C length: 4
         dword section1066; // 0x00000060 length: 4
@@ -79,7 +79,7 @@ namespace Game {
         int someSoundMatchTime_1; // 0x0000008C length: 4
         dword field33_0x90; // 0x00000090 length: 4
         int battleLevel2; // 0x00000094 length: 4
-        dword mapTimeInTicks; // 0x00000098 length: 4
+        int mapTimeInTicks; // 0x00000098 length: 4
         dword section1127; // 0x0000009C length: 4
         dword field37_0xa0; // 0x000000A0 length: 4
         BOOLEnum currentlyInGameUnk_0xa4; // 0x000000A4 length: 4

@@ -1,6 +1,6 @@
 #include "../AICState.func.hpp"
 
-#include "OpenSHC/AI/AIType.hpp"
+#include "OpenSHC/AI/AITypeA.hpp"
 #include "OpenSHC/AI/AIVUnitType.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/Map/Units/UnitTypeInt.hpp"
@@ -13,43 +13,50 @@
 namespace OpenSHC {
 namespace AI {
 
-    using AI::AIType;
-    using AI::AIVUnitType;
-    using Map::Units::UnitType;
-    using Map::Units::UnitTypeInt;
-    using Map::Units::UnitTypeShort;
+    using OpenSHC::AI::AITypeA;
+    using OpenSHC::AI::AIVUnitType;
+    using OpenSHC::Map::Units::UnitTypeInt;
+    using OpenSHC::Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CC390
-    AIVUnitType AICState::getUnitTypeIndexForUnitID(int unitID, int param_2)
+    AIVUnitType AICState::getUnitTypeIndexForUnitID(int unitID, int allowSlaveSlotForRanged)
     {
-        AIVUnitType _someUnitTypeIndex;
-        UnitTypeInt _unitType2;
-        short _playerID;
-        UnitTypeShort _unitType;
-        _unitType = DAT_UnitsState::instance.units[unitID].unitType;
-        _playerID = DAT_UnitsState::instance.units[unitID].owner;
-        if (_unitType == Map::Units::UT_PEASANT) {
-            _unitType = DAT_UnitsState::instance.units[unitID].unitTypeToChangeInto;
+        UnitTypeShort const unitType = DAT_UnitsState::instance.units[unitID].unitType;
+        int const owner = DAT_UnitsState::instance.units[unitID].owner;
+        UnitTypeInt effectiveUnitType;
+        if (unitType == OpenSHC::Map::Units::UT_PEASANT) {
+            effectiveUnitType = DAT_UnitsState::instance.units[unitID].unitTypeToChangeInto;
+        } else {
+            effectiveUnitType = unitType;
         }
-        _unitType2 = (UnitTypeInt)(short)_unitType;
-        if ((((DAT_GameState::instance.playerDataArray[_playerID].aiType != AI::AIT_CALIPH) && (param_2))
-                && (0 < DAT_GameState::instance.playerDataArray[_playerID].aivUnitLocationSlotLocationCount[0xd]))
-            && (((_unitType2 == Map::Units::UT_E_ARCHER || (_unitType2 == Map::Units::UT_E_XBOW))
-                || ((_unitType2 == Map::Units::UT_A_ARCHER
-                    || ((_unitType2 == Map::Units::UT_A_SLINGER || (_unitType2 == Map::Units::UT_A_FIRETHROWER)))))))) {
-            /*
-              slave
-             */
-            return AI::AIVUT_SLAVE;
-        }
-        _someUnitTypeIndex = AI::AIVUT_NONE;
-        do {
-            if (DAT_SkirmishDefinedData::instance.SomeAIUnitTypeArray[_someUnitTypeIndex] == _unitType2) {
-                return _someUnitTypeIndex;
+
+        // The Caliph fields slaves rather than the ranged units listed below
+        if (DAT_GameState::instance.playerDataArray[owner].aiType - 1 != OpenSHC::AI::AITA_CALIPH
+            && allowSlaveSlotForRanged != 0
+            && DAT_GameState::instance.playerDataArray[owner].aivUnitLocationSlotLocationCount[0xd] > 0) {
+            if (effectiveUnitType == OpenSHC::Map::Units::UT_E_ARCHER) {
+                return OpenSHC::AI::AIVUT_SLAVE;
             }
-            _someUnitTypeIndex = (AI::AIVUnitType)(_someUnitTypeIndex + AI::AIVUT_ENGINEER);
-        } while ((int)_someUnitTypeIndex < 0x14);
-        return AI::AIVUT_NONE;
+            if (effectiveUnitType == OpenSHC::Map::Units::UT_E_XBOW) {
+                return OpenSHC::AI::AIVUT_SLAVE;
+            }
+            if (effectiveUnitType == OpenSHC::Map::Units::UT_A_ARCHER) {
+                return OpenSHC::AI::AIVUT_SLAVE;
+            }
+            if (effectiveUnitType == OpenSHC::Map::Units::UT_A_SLINGER) {
+                return OpenSHC::AI::AIVUT_SLAVE;
+            }
+            if (effectiveUnitType == OpenSHC::Map::Units::UT_A_FIRETHROWER) {
+                return OpenSHC::AI::AIVUT_SLAVE;
+            }
+        }
+
+        for (int someUnitTypeIndex = 0; someUnitTypeIndex < 20; someUnitTypeIndex++) {
+            if (DAT_SkirmishDefinedData::instance.SomeAIUnitTypeArray[someUnitTypeIndex] == effectiveUnitType) {
+                return (AIVUnitType)someUnitTypeIndex;
+            }
+        }
+        return OpenSHC::AI::AIVUT_NONE;
     }
 
 }

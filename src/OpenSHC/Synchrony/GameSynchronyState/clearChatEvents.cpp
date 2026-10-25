@@ -1,4 +1,3 @@
-#include "../../Synchrony.func.hpp"
 #include "../GameSynchronyState.func.hpp"
 
 #include "OpenSHC/IO/LowLevelMemory.func.hpp"
@@ -11,24 +10,20 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0047F7E0
     void GameSynchronyState::clearChatEvents()
     {
-        ChatEvent* _chatEventPtr;
-        int _chatEventCounter;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            0xfa, '\0', (void*)((int)(this->receivedChatMessage)));
+            sizeof(this->receivedChatMessage), '\0', this->receivedChatMessage);
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            5000, '\0', (void*)((int)(this->DAT_ChatMessageArray)));
+            sizeof(this->DAT_ChatMessageArray), '\0', this->DAT_ChatMessageArray);
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            5000, '\0', (void*)((int)(this->DAT_ChatMessageSubjectPlayerNameArray)));
+            sizeof(this->DAT_ChatMessageSubjectPlayerNameArray), '\0', this->DAT_ChatMessageSubjectPlayerNameArray);
         this->DAT_ChatMessageArrayIndex = 0;
-        _chatEventPtr = &this->DAT_ChatEventArray[0];
-        _chatEventCounter = 0x14;
-        do {
-            _chatEventPtr->subjectPlayer = 0;
-            _chatEventPtr->time = 0;
-            _chatEventPtr->flag = 0;
-            _chatEventPtr = _chatEventPtr + 4;
-            _chatEventCounter = _chatEventCounter + -1;
-        } while (_chatEventCounter);
+        // The original walks one pointer over &DAT_ChatEventArray[0].time and clears the three
+        // fields around it with negative and positive indices; objectPlayer stays untouched.
+        for (int _chatEvent = 0; _chatEvent < 20; ++_chatEvent) {
+            this->DAT_ChatEventArray[_chatEvent].subjectPlayer = 0;
+            this->DAT_ChatEventArray[_chatEvent].time = 0;
+            this->DAT_ChatEventArray[_chatEvent].flag = 0;
+        }
         this->chatScrollOffset = 0;
     }
 

@@ -13,12 +13,9 @@
 #include "OpenSHC/Game/Signpost/SignpostLocation.hpp"
 #include "OpenSHC/Game/Skirmish/AttackVector.hpp"
 #include "OpenSHC/Map/Location/Point4ShortXY.hpp"
-#include "OpenSHC/Map/Location/Point8IntXY.hpp"
 #include "OpenSHC/Map/Navigation/Algorithms/XYPair.hpp"
 #include "OpenSHC/Map/Navigation/Algorithms/XYTileObject.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
-
-#include "WinDef.h"
 
 namespace OpenSHC {
 namespace Game {
@@ -29,7 +26,6 @@ namespace Game {
         using OpenSHC::Game::Signpost::SignpostLocation;
         using OpenSHC::Game::Skirmish::AttackVector;
         using OpenSHC::Map::Location::Point4ShortXY;
-        using OpenSHC::Map::Location::Point8IntXY;
         using OpenSHC::Map::Navigation::Algorithms::XYPair;
         using OpenSHC::Map::Navigation::Algorithms::XYTileObject;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
@@ -71,18 +67,12 @@ namespace Game {
             int field30_0x9c; // 0x0000009C length: 4
             int field31_0xa0; // 0x000000A0 length: 4
             int field32_0xa4; // 0x000000A4 length: 4
-            // Per-player hit counts, the mirror of emenyHitArray below. Every combat
-            // unit's Update adds to one of the two: when the unit's owner is the local
-            // player (GameSynchronyState.currentPlayerSlotID) it adds here, indexed by
-            // the unit's lastEncounteredEnemyPlayerID; when instead that enemy is the
-            // local player it adds to emenyHitArray, indexed by the owner. Scenario
-            // event condition 0xD sums all nine and clears them when its value is met.
             int hitsDealtToPlayerArray[9]; // 0x000000A8 length: 36
             int emenyHitArray[9]; // 0x000000CC length: 36
             int field43_0xf0; // 0x000000F0 length: 4
             int field44_0xf4; // 0x000000F4 length: 4
             int multiplayerUnitSameTileLinkageTimeWindow; // 0x000000F8 length: 4
-            DWORD gameOverTime; // 0x000000FC length: 4
+            dword gameOverTime; // 0x000000FC length: 4
             int drunkenManStatus; // 0x00000100 length: 4
             undefined1 padding_0x104[144]; // 0x00000104 length: 144
             int syncedStateBase; // 0x00000194 length: 4
@@ -108,8 +98,7 @@ namespace Game {
             BOOLEnum startOfDay; // 0x00000364 length: 4
             int skirmishFogOfWar; // 0x00000368 length: 4
             undefined1 padding_0x36c[436]; // 0x0000036C length: 436
-            XYPair somePairArray; // 0x00000520 length: 8
-            undefined1 padding_0x528[312]; // 0x00000528 length: 312
+            XYPair somePairArray[40]; // 0x00000520 length: 320
             int startGoods[25]; // 0x00000660 length: 100
             SiegeUnitCounts siegeInformation; // 0x000006C4 length: 80
             int startingPopularity; // 0x00000714 length: 4
@@ -230,14 +219,9 @@ namespace Game {
             undefined1 padding_0x27fc[252]; // 0x000027FC length: 252
             int mercRecruitable[7]; // 0x000028F8 length: 28
             undefined1 padding_0x2914[4]; // 0x00002914 length: 4
-            int signpostIDs[8]; // 0x00002918 length: 32
-            undefined1 padding_0x2938[32]; // 0x00002938 length: 32
-            SignpostLocation signpostEntryData[8]; // 0x00002958 length: 128
-            undefined1 padding_0x29d8[124]; // 0x000029D8 length: 124
-            int strongWalls; // 0x00002A54 length: 4
-            XYTileObject signpostsMapEdge[7][50]; // 0x00002A58 length: 5600
-            undefined1 padding_0x4038[480]; // 0x00004038 length: 480
-            Point8IntXY aiTribeMoveDestinationXYPairArray1[5][8]; // 0x00004218 length: 320
+            int signpostIDs[16]; // 0x00002918 length: 64
+            SignpostLocation signpostEntryData[16]; // 0x00002958 length: 256
+            XYTileObject signpostsMapEdge[8][50]; // 0x00002A58 length: 6400
             XYPair unitMoveDestinationXYPairs[8][40]; // 0x00004358 length: 2560
             AttackVector attackVectors[9][50]; // 0x00004D58 length: 7200
             undefined1 padding_0x6978[800]; // 0x00006978 length: 800

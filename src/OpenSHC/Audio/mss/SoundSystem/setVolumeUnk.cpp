@@ -23,7 +23,7 @@ namespace Audio {
             if (!this->streamActiveUnk_0x20[streamIndex]) {
                 return;
             }
-            if (!streamIndex) {
+            if (streamIndex == 0) {
                 AIL_set_sample_volume(
                     this->musicSampleUnk_0x170, (this->streamFileVolumeCurrentUnk_0x5c[0] * volume) / 100);
                 return;
