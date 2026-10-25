@@ -28,16 +28,9 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00493850
         void OnlineVoteQuitAndQuitGame::MenuItemRenderFunction_OnlineVoteQuitAndQuitGame_Main(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
             eTextSections offsetIndex;
             int numInGroup;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             offsetIndex = ((eTextSections)0);
             numInGroup = 0;
             switch (param_1) {
@@ -60,22 +53,19 @@ namespace UI {
         switchD_00493862_caseD_5:
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             yParam = DAT_ButtonY::instance + 7;
-            if (!DAT_ButtonCurrentlyInteracting::instance) {
-                blendStrength = 4;
-                color = 0xc2f0eb;
+            if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(offsetIndex, numInGroup),
+                    xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 4);
             } else {
-                blendStrength = 2;
-                color = 0xccfaff;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(offsetIndex, numInGroup),
+                    xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 2);
             }
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            alignment = OpenSHC::Text::TTA_CENTER;
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(offsetIndex, numInGroup);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
         }
 
     }

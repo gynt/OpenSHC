@@ -46,25 +46,19 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042A480
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_SkirmishTypeAndBalance(int param_1, ...)
         {
-            BOOLEnum BVar1;
             int iVar2;
-            char* textAddress;
             int iVar3;
-            int xParam;
             int _goldMultiplier;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (!BVar1) {
+            BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
+            if (BVar1 == FALSE) {
                 _goldMultiplier = 1;
                 if (((((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
                           && (DAT_MenuModalComposition1::instance.activeModalDialogID
                               != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
                          && (DAT_MenuModalComposition1::instance.activeModalDialogID
                              != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT))
-                        || (DAT_ButtonUnknownZero::instance = 1, !DAT_GameSynchronyState::instance.isHost))
-                    && (DAT_ButtonUnknownZero::instance = 0, !DAT_GameSynchronyState::instance.isHost)) {
+                        || (DAT_ButtonUnknownZero::instance = 1, DAT_GameSynchronyState::instance.isHost == FALSE))
+                    && (DAT_ButtonUnknownZero::instance = 0, DAT_GameSynchronyState::instance.isHost == FALSE)) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     DAT_ButtonUnknownZero::instance = 1;
                 }
@@ -75,15 +69,14 @@ namespace UI {
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2a2,
-                            (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                            (iVar2 / 32) + 0x20);
+                            (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), (iVar2 / 32) + 0x20);
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
-                            (int)((int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance + 0x2a2)),
-                            (int)((int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance * 0x46 + -0x32
-                                + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance)), (iVar2 / 32) + 0x20);
+                            (int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance + 0x2a2),
+                            (int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance * 0x46 + -0x32
+                                + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonY::instance), (iVar2 / 32) + 0x20);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
@@ -91,43 +84,39 @@ namespace UI {
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         iVar2 = (iVar2 / 32) + 0x20;
                         BVar1 = FALSE;
-                        fontSize = 0x11;
-                        color = 0xccfaff;
-                        alignment = OpenSHC::Text::TTA_CENTER;
                         iVar3 = DAT_ButtonY::instance + 1;
-                        xParam = DAT_ButtonX::instance + 0xb4;
-                        textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE,
-                            DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                            textAddress, xParam, iVar3, alignment, color, fontSize, BVar1, iVar2);
-                        if (DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE,
+                                DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1),
+                            DAT_ButtonX::instance + 0xb4, iVar3, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, BVar1, iVar2);
+                        if ((int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
                             iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 3,
-                                (int)((int)(DAT_ButtonX::instance + 0xb4)), (int)((int)(DAT_ButtonY::instance + 0x1a)),
+                                (int)(DAT_ButtonX::instance + 0xb4), (int)(DAT_ButtonY::instance + 0x1a),
                                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, (iVar2 / 32) + 0x20);
                         }
-                        if (3 < DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance) {
+                        if (3 < (int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance) {
                             iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 4,
-                                (int)((int)(DAT_ButtonX::instance + 0xb4)), (int)((int)(DAT_ButtonY::instance + 0x1a)),
+                                (int)(DAT_ButtonX::instance + 0xb4), (int)(DAT_ButtonY::instance + 0x1a),
                                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, (iVar2 / 32) + 0x20);
                         }
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
-                            (int)((int)(730)), (int)((int)(DAT_ButtonX::instance + 0xa5)),
-                            (int)((int)(DAT_ButtonY::instance + 0x29)), (iVar2 / 32) + 0x20);
+                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, (int)(730),
+                            (int)(DAT_ButtonX::instance + 0xa5), (int)(DAT_ButtonY::instance + 0x29),
+                            (iVar2 / 32) + 0x20);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
-                                && (DAT_GameCore::instance.isSkirmishTrail == TRUE))
-                            && (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME)) {
+                        if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER
+                            && DAT_GameCore::instance.isSkirmishTrail == TRUE
+                            && DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                             _goldMultiplier = 3;
                         }
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -140,7 +129,7 @@ namespace UI {
                                             * 2
                                         + 0xc]
                                 * _goldMultiplier,
-                            (int)((int)(DAT_ButtonX::instance + 110)), (int)((int)(DAT_ButtonY::instance + 0x30)),
+                            (int)(DAT_ButtonX::instance + 110), (int)(DAT_ButtonY::instance + 0x30),
                             OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (iVar2 / 32) + 0x20);
                         iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                         MACRO_CALL_MEMBER(
@@ -152,7 +141,7 @@ namespace UI {
                                             * 2
                                         + 0xd]
                                 * _goldMultiplier,
-                            (int)((int)(DAT_ButtonX::instance + 250)), (int)((int)(DAT_ButtonY::instance + 0x30)),
+                            (int)(DAT_ButtonX::instance + 250), (int)(DAT_ButtonY::instance + 0x30),
                             OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (iVar2 / 32) + 0x20);
                     } else if (param_1 < 4) {
                         if (param_1 == DAT_GameSynchronyState::instance.skirmishGameIntensityType) {
@@ -168,8 +157,7 @@ namespace UI {
                                 (OpenSHC::IO::Graphics::GmID)(DAT_UIButtonDefinedData::instance
                                         .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                         .gmId_0x0),
-                                iVar3, (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                                (iVar2 / 32) + 0x20);
+                                iVar3, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), (iVar2 / 32) + 0x20);
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                             DAT_CurrentButtonPictureInGm::instance = iVar3;

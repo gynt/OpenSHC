@@ -30,48 +30,50 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00427740
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_MapSelectHeader(int param_1, ...)
         {
-            BOOLEnum BVar1;
-            int iVar2;
-            char* textAddress;
             int yParam;
             int numInGroup;
             int iVar3;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
             numInGroup = -1;
             iVar3 = 0;
-            BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if ((!BVar1)
+            BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
+            if ((BVar1 == FALSE)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)) {
-                if (!param_1) {
-                    numInGroup = 0x3e;
-                    iVar3 = 8;
-                } else if (param_1 == 1) {
-                    numInGroup = 0x3d;
-                    iVar3 = 2;
-                } else if (param_1 == 2) {
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x427765), MSVC's
+                  sparse switch, and the arm bodies sit in the order 2, 1, 0
+                 */
+                switch (param_1) {
+                case 2:
                     numInGroup = 0x19a;
                     iVar3 = 2;
+                    break;
+                case 1:
+                    numInGroup = 0x3d;
+                    iVar3 = 2;
+                    break;
+                case 0:
+                    numInGroup = 0x3e;
+                    iVar3 = 8;
+                    break;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
-                    DAT_PencilRenderCore::ptr)(FALSE, 1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
-                iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                iVar2 = ((int)(iVar2 + (iVar2 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                    DAT_PencilRenderCore::ptr)(FALSE, 1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
+                int iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar2 = (iVar2 / 32) + 0x20;
                 yParam = DAT_ButtonY::instance + 5;
                 iVar3 = DAT_ButtonX::instance + iVar3;
                 BVar1 = FALSE;
-                fontSize = 0x13;
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xc2f0eb;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup),
+                        iVar3, yParam, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, BVar1, iVar2);
                 } else {
-                    color = 0xccfaff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup),
+                        iVar3, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, BVar1, iVar2);
                 }
-                alignment = OpenSHC::Text::TTA_LEFT;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, numInGroup);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, iVar3, yParam, alignment, color, fontSize, BVar1, iVar2);
             }
         }
 

@@ -17,16 +17,16 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Commands::GameCommandType;
-        using UI::Enums::MenuModalType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Commands::GameCommandType;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B1410
         void AlliesOrder::MenuItemActionHandler_AlliesOrder_Main(int param_1, ...)
         {
             int _allyID;
             if (param_1 != -2) {
-                if (((6 < param_1) || (param_1 + -1 < DAT_EnemyArrayIndex::instance))
+                if (((6 < param_1) || (param_1 + -1 < (int)DAT_EnemyArrayIndex::instance))
                     && (_allyID = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance],
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_allyID] != -1
                             || (DAT_GameSynchronyState::instance.currentAIArray[_allyID] != 0))) {
@@ -41,16 +41,16 @@ namespace UI {
                         = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = param_1;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = _allyID;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                        Commands::GCT_SEND_PLAYER_TO_PLAYER_REQUEST);
+                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SEND_PLAYER_TO_PLAYER_REQUEST);
                     if (param_1 == 10)
                         goto LAB_004b14a1;
-                    DAT_MenuModalComposition1::instance.activeModalDialogID = UI::Enums::MMT_NONE;
+                    DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                 }
             }
         LAB_004b14a1:
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-                UI::Enums::MMT_ALLIES, FALSE);
+            MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
         }
 
     }

@@ -18,22 +18,24 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Text::TextAlignment;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Text::TextAlignment;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00439160
         void BuildMenu::MenuItemRenderFunction_BuildMenu_CurrentlySelectedTroops(int param_1, ...)
         {
             int iVar3 = DAT_ButtonY::instance;
             int iVar2 = DAT_ButtonX::instance;
-            if (!DAT_UnitsState::instance.nHasOwnedUnitInSelection) {
+            if (DAT_UnitsState::instance.nHasOwnedUnitInSelection == 0) {
                 DAT_ButtonUnknownZero::instance = 1;
+                return;
             }
             int iVar1 = DAT_UnitsState::instance.selectionSlots[param_1];
             DAT_ButtonUnknownZero::instance = 0;
             if (iVar1 == -1) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                return;
             }
             switch (iVar1) {
             case 0:
@@ -45,12 +47,6 @@ namespace UI {
             case 2:
             case 7:
                 DAT_ButtonX::instance = DAT_ButtonX::instance + 1;
-                break;
-            default:
-                if (0x12 < iVar1) {
-                    DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
-                    goto LAB_004391d6;
-                }
                 break;
             case 4:
                 DAT_ButtonX::instance = DAT_ButtonX::instance + 2;
@@ -97,14 +93,20 @@ namespace UI {
                 DAT_ButtonX::instance = DAT_ButtonX::instance + -6;
                 DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
                 goto LAB_004391d6;
+            default:
+                if (0x13 <= iVar1) {
+                    DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x209;
+                    goto LAB_004391d6;
+                }
+                break;
             }
             DAT_CurrentButtonGmDataIndex::instance = iVar1 + 0x17c;
         LAB_004391d6:
-            MACRO_CALL(UI::MenuItems::General_Func::
+            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                DAT_UnitsState::instance.selectionSlots[iVar1 + -0x1b], DAT_ButtonW::instance / 2 + iVar2, iVar3 + 0x53,
-                Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                DAT_UnitsState::instance.selectionSlots[iVar1 + -0x1b], (int)DAT_ButtonW::instance / 2 + iVar2,
+                iVar3 + 0x53, OpenSHC::Text::TTA_CENTER, 0xffffff, 0, 0x11, FALSE, 0);
         }
 
     }

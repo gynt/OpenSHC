@@ -27,21 +27,20 @@ namespace UI {
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_MapSelectScrollbar(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOLEnum isDragged)
         {
-            BOOLEnum BVar1;
-            BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            if (!BVar1) {
-                if (((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
-                        && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                            != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
-                    && (DAT_MenuModalComposition1::instance.activeModalDialogID
-                        != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
+            BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
+            if (BVar1 == FALSE) {
+                if (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE
+                    && DAT_MenuModalComposition1::instance.activeModalDialogID
+                        != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT
+                    && DAT_MenuModalComposition1::instance.activeModalDialogID
+                        != OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
                     DAT_ButtonUnknownZero::instance = 0;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawScrollbar,
-                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                        (int)((int)(DAT_ButtonH::instance)), thumbYPos, isDragged, thumbHeight,
-                        (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                        (int)(DAT_ButtonH::instance), thumbYPos, isDragged, thumbHeight,
+                        (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 }
                 DAT_ButtonUnknownZero::instance = 1;
             }

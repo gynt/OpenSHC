@@ -36,13 +36,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00466320
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_RepairBuildingButton(int param_1, ...)
         {
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
             BGR24 color_00;
-            int fontSize;
-            int blendStrength;
-            uint color;
             int iVar3 = DAT_BuildingsState::instance.menuSelectedBuildingID;
             DAT_ButtonUnknownZero::instance
                 = (int)(DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
@@ -55,13 +50,11 @@ namespace UI {
                 DAT_PathFindingState::ptr)((int)DAT_BuildingsState::instance.buildings[iVar3].owner,
                 (uint)((short)DAT_BuildingsState::instance.buildings[iVar3].x),
                 (uint)((short)DAT_BuildingsState::instance.buildings[iVar3].y),
-                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                          & 0xfffffff1)
-                    + 0x1e));
-            if ((!BVar2) && (BVar1)) {
+                (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY ? 0x1e : 0xf));
+            if ((BVar2 == FALSE) && (BVar1 != FALSE)) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_SCREEN_MENU);
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color_00 = 0xc2f0eb;
                 } else {
                     color_00 = 0xccfaff;
@@ -72,19 +65,16 @@ namespace UI {
                     AlphaAndButtonSurfaceObj::ptr)(8, OpenSHC::Rendering::Enums::RT_SCREEN_MENU);
                 color_00 = 0x7caaaf;
             }
-            blendStrength = 0;
             BVar1 = FALSE;
-            fontSize = 0x12;
-            alignment = OpenSHC::Text::TTA_CENTER;
             yParam = DAT_ButtonY::instance + 7;
-            iVar3 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+            iVar3 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             /*
               added by script: "Repair"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, 0x101);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, iVar3, yParam, alignment, color_00, fontSize, BVar1, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, 0x101),
+                iVar3, yParam, OpenSHC::Text::TTA_CENTER, color_00, 0x12, BVar1, 0);
         }
 
     }

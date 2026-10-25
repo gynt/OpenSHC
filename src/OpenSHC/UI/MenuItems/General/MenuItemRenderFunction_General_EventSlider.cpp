@@ -31,17 +31,7 @@ namespace UI {
         void General::MenuItemRenderFunction_General_EventSlider(
             int param_1, int thumbYPos, int param_3, int thumbHeight, BOOL isDragged)
         {
-            undefined2 color;
             switch (param_1) {
-            case 5:
-            case 0xc:
-            case 0x12:
-            case 0x13:
-            case 0x15:
-                if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                        .data.scenario.ScenarioEventType
-                    != param_1 + -1) {}
-                break;
             case -2:
             case -1:
                 switch (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -63,26 +53,38 @@ namespace UI {
                 default:
                     return;
                 }
+            case 5:
+            case 0xc:
+            case 0x12:
+            case 0x13:
+            case 0x15:
+                if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                        .data.scenario.ScenarioEventType
+                    != param_1 + -1) {
+                    return;
+                }
+                break;
             }
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            color = COL_DARK_LIME::instance.shortValue;
-            if (!isDragged) {
+            undefined2 color = COL_DARK_LIME::instance.shortValue;
+            if (isDragged == 0) {
                 color = COL_GREYISH_YELLOW::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonX::instance + thumbYPos + 1, (int)((int)(DAT_ButtonY::instance + 2)),
+                DAT_ButtonX::instance + thumbYPos + 1, (int)(DAT_ButtonY::instance + 2),
                 DAT_ButtonX::instance + thumbYPos + -2 + thumbHeight,
-                (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)), (ushort)((int)(color)));
+                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
             if ((param_1 == -2) && (param_3 == 10)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("-", (int)((int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
+                    DAT_TextManagerObject::ptr)("-", (int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance),
+                    (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
+                return;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(param_3,
-                (int)((int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
+                (int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
         }
 
     }

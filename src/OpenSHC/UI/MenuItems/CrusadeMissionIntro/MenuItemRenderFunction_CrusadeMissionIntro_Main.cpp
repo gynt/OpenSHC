@@ -12,40 +12,33 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Game::TrailType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Game::TrailType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D8BB0
         void CrusadeMissionIntro::MenuItemRenderFunction_CrusadeMissionIntro_Main(int param_1, ...)
         {
-            bool bVar2;
-            bool bVar3;
-            bool bVar1 = false;
+            /*
+              the original compares the trail's progress against its own length inside each
+              arm and shares only the `jl` (0x4d8be7); a trail type outside the three never
+              reaches it, so the flag stays clear
+             */
+            bool trailComplete = false;
             DAT_ButtonUnknownZero::instance = 0;
-            if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
-                bVar3 = (DAT_GameCore::instance.extremeTrailProgress < 0x14);
-                bVar2 = DAT_GameCore::instance.extremeTrailProgress + -0x14 < 0;
-            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
-                bVar3 = (DAT_GameCore::instance.warchestTrailProgress < 0x1e);
-                bVar2 = (int)(DAT_GameCore::instance.warchestTrailProgress - 0x1e) < 0;
-            } else {
-                if (DAT_GameCore::instance.currentTrailType != Game::TT_FIRST_EDITION)
-                    goto LAB_004d8bee;
-                bVar3 = (DAT_GameCore::instance.skirmishTrailProgress < 0x32);
-                bVar2 = (int)(DAT_GameCore::instance.skirmishTrailProgress - 0x32) < 0;
+            if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
+                trailComplete = 0x14 <= (int)DAT_GameCore::instance.extremeTrailProgress;
+            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
+                trailComplete = 0x1e <= (int)DAT_GameCore::instance.warchestTrailProgress;
+            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
+                trailComplete = 0x32 <= (int)DAT_GameCore::instance.skirmishTrailProgress;
             }
-            if (bVar3 == bVar2) {
-                bVar1 = true;
-            }
-        LAB_004d8bee:
-            if ((param_1 == 10) && (bVar1)) {
+            if ((param_1 == 10) && (trailComplete)) {
                 DAT_ButtonUnknownZero::instance = 1;
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
-            MACRO_CALL(UI::MenuItems::General_Func::
+            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
         }
-
     }
 }
 }

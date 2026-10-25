@@ -30,11 +30,9 @@ namespace UI {
         void GameplayOptions::MenuItemRenderFunction_GameplayOptions_Buttons(int param_1, ...)
         {
             int iVar1;
-            char* pcVar2;
             int iVar3;
             TextAlignment TVar4;
             uint foregroundColor;
-            BGR24 color;
             uint backgroundColor;
             int iVar5;
             BOOLEnum BVar6;
@@ -43,12 +41,22 @@ namespace UI {
                 if (param_1 == -2) {
                     param_1 = 0xe - (uint)(DAT_MenuTextInputState::instance.pendingUnusedOption1 != '\0');
                 } else {
-                    if (param_1 != -1) {}
-                    if (!DAT_MenuTextInputState::instance.pendingSettingBubbleHelp) {
-                        param_1 = 0xe;
-                    } else {
-                        if (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp != 1) {}
+                    if (param_1 != -1) {
+                        return;
+                    }
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x491f5a),
+                      MSVC's sparse switch, and the `case 1` body sits first
+                     */
+                    switch (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp) {
+                    case 1:
                         param_1 = 0xd;
+                        break;
+                    case 0:
+                        param_1 = 0xe;
+                        break;
+                    default:
+                        return;
                     }
                 }
                 backgroundColor = 0;
@@ -60,16 +68,16 @@ namespace UI {
                     iVar7 = 0;
                     BVar6 = FALSE;
                     iVar5 = 0x12;
-                    color = 0xccfaff;
                     TVar4 = OpenSHC::Text::TTA_CENTER;
                     iVar3 = DAT_ButtonY::instance + 7;
-                    iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                    pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xf);
+                    iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar1, iVar3, TVar4, color, iVar5, BVar6, iVar7);
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0xf),
+                        iVar1, iVar3, TVar4, 0xccfaff, iVar5, BVar6, iVar7);
+                    return;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     backgroundColor = 0;
@@ -87,11 +95,11 @@ namespace UI {
             iVar5 = 0x12;
             TVar4 = OpenSHC::Text::TTA_CENTER;
             iVar3 = DAT_ButtonY::instance + 7;
-            iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1);
+            iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar1, iVar3, TVar4, foregroundColor, backgroundColor, iVar5, BVar6, iVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                iVar1, iVar3, TVar4, foregroundColor, backgroundColor, iVar5, BVar6, iVar7);
         }
 
     }

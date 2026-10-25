@@ -23,7 +23,6 @@
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -46,18 +45,16 @@ namespace UI {
             int local_2c;
             int local_28;
             char local_24[32];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_2c;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
                 (uint)(param_1 == DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected), param_1,
-                (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                (int)(DAT_ButtonBackgroundBlendStrength::instance));
             if (DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber
                 <= DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1)
                 goto LAB_0042db95;
             if ((param_1 == DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected)
-                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
+                || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                 color = 0xccfaff;
             }
             if (DAT_MapMissionType::instance == 2) {
@@ -70,17 +67,17 @@ namespace UI {
                     == 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d7,
-                        (int)((int)(DAT_ButtonX::instance + 6)), (int)((int)(DAT_ButtonY::instance + 3)),
-                        (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                        (int)(DAT_ButtonX::instance + 6), (int)(DAT_ButtonY::instance + 3),
+                        (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x7c,
-                        (int)((int)(DAT_ButtonX::instance + 1)), (int)((int)(DAT_ButtonY::instance + 4)),
-                        (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                        (int)(DAT_ButtonX::instance + 1), (int)(DAT_ButtonY::instance + 4),
+                        (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 }
             } else {
                 local_2c = 0x172;
-                if (DAT_MapMissionType::instance)
+                if (DAT_MapMissionType::instance != 0)
                     goto LAB_0042da2d;
                 iVar4 = -0x10;
             }
@@ -92,8 +89,8 @@ namespace UI {
             iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
             DAT_TextManagerObject::instance.field12_0x30 = 1;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                pcVar2, DAT_ButtonX::instance + 0x18 + iVar4, (int)((int)(DAT_ButtonY::instance + 3)), local_2c, color,
-                0x12, (iVar3 / 32) + 0x20);
+                pcVar2, DAT_ButtonX::instance + 0x18 + iVar4, (int)(DAT_ButtonY::instance + 3), local_2c, color, 0x12,
+                (iVar3 / 32) + 0x20);
             dVar1 = DAT_ResourceManager::instance.mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                     [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1]];
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
@@ -101,8 +98,8 @@ namespace UI {
                 (int)dVar1 >> 5 & 0x3f);
             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_24,
-                (int)((int)(DAT_ButtonX::instance + 0x134)), (int)((int)(DAT_ButtonY::instance + 3)),
-                OpenSHC::Text::TTA_LEFT, (BGR24)((int)(color)), 0x12, FALSE, (iVar4 / 32) + 0x20);
+                (int)(DAT_ButtonX::instance + 0x134), (int)(DAT_ButtonY::instance + 3), OpenSHC::Text::TTA_LEFT,
+                (BGR24)((int)(color)), 0x12, FALSE, (iVar4 / 32) + 0x20);
         LAB_0042db95:
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             ;

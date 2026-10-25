@@ -29,36 +29,25 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9060
         void EditScenario::MenuItemRenderFunction_EditScenario_UpDownButtons(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
-            uint foregroundColor;
-            uint backgroundColor;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            if (-1 < param_1) {
+            if (0 <= param_1) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                blendStrength = 0;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 6;
-                keepOffsetX = FALSE;
-                fontSize = 0x12;
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    backgroundColor = 0x3e66;
-                    foregroundColor = 0xa2ff;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xa2ff, 0x3e66, 0x12, FALSE, 0);
                 } else {
-                    backgroundColor = 0;
-                    foregroundColor = 0xffffff;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1),
+                        xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xffffff, 0, 0x12, FALSE, 0);
                 }
-                alignment = OpenSHC::Text::TTA_CENTER;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, param_1);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
-                    backgroundColor, fontSize, keepOffsetX, blendStrength);
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (param_1 == -1) {

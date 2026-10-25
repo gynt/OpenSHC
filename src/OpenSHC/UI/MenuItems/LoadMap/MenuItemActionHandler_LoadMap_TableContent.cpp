@@ -12,13 +12,13 @@ namespace UI {
         void LoadMap::MenuItemActionHandler_LoadMap_TableContent(int param_1, ...)
         {
             DWORD DVar1 = timeGetTime();
-            if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
-                < DAT_MenuTextInputState::instance.fileListEntryCount) {
+            if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
+                < (int)DAT_MenuTextInputState::instance.fileListEntryCount) {
                 DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex = param_1;
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
                         == DAT_MenuTextInputState::instance.lastClickedListIndex
                     && (int)(DVar1 - DAT_MenuTextInputState::instance.lastListClickTime) < 500) {
-                    MACRO_CALL(UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_Buttons)(2);
+                    MACRO_CALL(OpenSHC::UI::MenuItems::SaveLoadMap_Func::MenuItemActionHandler_SaveLoadMap_Buttons)(2);
                 }
                 DAT_MenuTextInputState::instance.lastClickedListIndex
                     = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex

@@ -11,7 +11,6 @@ namespace UI {
         void RankingGames::MenuItemActionHandler_RankingGames_Scrollbar(
             int param_1, int param_2, int* minValue, int* maxValue, int* currentValue)
         {
-            int iVar1;
             switch (param_2) {
             case 1:
                 *minValue = 0;
@@ -25,8 +24,9 @@ namespace UI {
                 }
                 break;
             case 4:
+            {
                 *minValue = 0;
-                iVar1 = DAT_00eb9b60::instance + -8;
+                int iVar1 = DAT_00eb9b60::instance + -8;
                 *maxValue = iVar1;
                 if (iVar1 < 0) {
                     *maxValue = 0;
@@ -35,21 +35,26 @@ namespace UI {
                     *currentValue = DAT_00ed3120::instance;
                 }
                 break;
+            }
+            case 7:
+            {
+                *currentValue = 6;
+            }
             case 5:
-                if (0 < DAT_00ed3120::instance) {
+            {
+                if (0 < (int)DAT_00ed3120::instance) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
                     *currentValue = DAT_00ed3120::instance;
                 }
                 goto LAB_004d9be7;
+            }
             case 6:
-                if (DAT_00ed3120::instance < DAT_00eb9b60::instance + -8) {
+                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
                 }
             LAB_004d9be7:
                 *currentValue = DAT_00ed3120::instance;
                 break;
-            case 7:
-                *currentValue = 6;
             }
         }
 

@@ -19,9 +19,9 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Commands::GameCommandType;
-        using UI::Enums::MenuModalType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Commands::GameCommandType;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0048F590
         void Chat::MenuItemActionHandler_Chat_MostButtons(int param_1, ...)
@@ -43,6 +43,7 @@ namespace UI {
                 *(undefined4*)((int)DAT_GameSynchronyState::ptr + param_1 * -4 + 0x109264) = 1;
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
+                return;
             }
             switch (param_1) {
             case 0x1f:
@@ -73,7 +74,7 @@ namespace UI {
                 return;
             case 0x21:
                 pcVar2 = MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
+                    OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                 pcVar3 = pcVar2;
                 do {
                     cVar1 = *pcVar3;
@@ -87,39 +88,58 @@ namespace UI {
                             DAT_GameSynchronyState::instance
                                 .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                         }
+                        return;
                     }
                     DAT_GameSynchronyState::instance.DAT_ChatTauntOrMessage = 0;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_TAUNT_OR_CHAT);
+                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);
                     goto switchD_0048f603_caseD_22;
                 }
                 break;
             case 0x22:
             switchD_0048f603_caseD_22:
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                 return;
             case 0x23:
                 iVar4 = DAT_GameState::instance.mapAndTime
                             .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID];
+                /*
+                  the original zeroes all nine slots and then sets each with a branch
+                  (0x48f6af..0x48f741); there is no `sete` anywhere in the function
+                 */
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 0;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 0;
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[1] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[2] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[3] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[4] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[5] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[6] == iVar4);
-                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7]
-                    = (int)(DAT_GameState::instance.mapAndTime.playerTeams[7] == iVar4);
+                if (DAT_GameState::instance.mapAndTime.playerTeams[1] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[2] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[3] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[3] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[4] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[4] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[5] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[5] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[6] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 1;
+                }
+                if (DAT_GameState::instance.mapAndTime.playerTeams[7] == iVar4) {
+                    DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 1;
+                }
                 if (DAT_GameState::instance.mapAndTime.playerTeams[8] == iVar4) {
                     DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 1;
                     DAT_GameSynchronyState::instance
@@ -127,13 +147,13 @@ namespace UI {
                 }
                 break;
             case 0x45:
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ALLIES, FALSE);
-                if (DAT_GameCore::instance.genieVoiceActive) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_ALLIES, FALSE);
+                if (DAT_GameCore::instance.genieVoiceActive != FALSE) {
                     /*
                       "Your allies"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         "Genie_11.wav");
                 }
             }

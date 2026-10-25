@@ -29,49 +29,49 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DBB0
         void SinglePlayerMapChoice::MenuItemRenderFunction_SingleplayerMapChoice_MapTableHeader(int param_1, ...)
         {
-            int iVar1;
-            char* textAddress;
             int yParam;
             int xParam;
             int numInGroup;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
             numInGroup = -1;
-            if (!param_1) {
-                /*
-                  Name
-                 */
-                numInGroup = 0x1b;
-            } else if (param_1 == 1) {
+            /*
+              the original dispatches with a `sub eax, K; je` chain (0x42dbb8), MSVC's
+              sparse switch, and the `case 1` body sits first
+             */
+            switch (param_1) {
+            case 1:
                 /*
                   Date
                  */
                 numInGroup = 0x1c;
+                break;
+            case 0:
+                /*
+                  Name
+                 */
+                numInGroup = 0x1b;
+                break;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
-                DAT_ButtonCurrentlyInteracting::instance, 1, (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                DAT_ButtonCurrentlyInteracting::instance, 1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if (numInGroup != -1) {
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20;
+                int iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (iVar1 / 32) + 0x20;
                 yParam = DAT_ButtonY::instance + 3;
                 xParam = DAT_ButtonX::instance + 8;
-                keepOffsetX = FALSE;
-                fontSize = 0x12;
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xccfaff;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, numInGroup),
+                        xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, iVar1);
                 } else {
-                    color = 0xffffff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, numInGroup),
+                        xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xffffff, 0x12, FALSE, iVar1);
                 }
-                alignment = OpenSHC::Text::TTA_LEFT;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, numInGroup);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, iVar1);
             }
         }
 

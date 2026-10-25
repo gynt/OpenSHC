@@ -40,28 +40,20 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AD480
         void AlliesOrder::MenuItemRenderFunction_AlliesOrder_Main(int param_1, ...)
         {
-            char* textAddress;
             int iVar1;
             int iVar2;
-            int xParam;
-            int yParam;
-            TextAlignment alignment;
-            uint foregroundColor;
-            uint backgroundColor;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if (param_1 == -2) {
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
+                return;
             }
-            if (9 < param_1) {
+            if (10 <= param_1) {
                 if (param_1 == 10) {
                     DAT_00df5200::instance = ((eTextSections)0);
                 }
                 MACRO_CALL(
                     OpenSHC::UI::Rendering_Func::RenderCurrentNotActiveButtonWithPossibleAlphaTexOnCurrentSurfaceUnk)();
-                if (DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     if (param_1 == 10) {
                         DAT_00df5200::instance = 0xe0;
                         DAT_00df51fc::instance = 8;
@@ -71,17 +63,18 @@ namespace UI {
                         DAT_00df51fc::instance = 9;
                     }
                 }
+                return;
             }
             iVar1 = param_1;
-            if (param_1 < 7) {
+            if (param_1 <= 6) {
                 if (param_1 == -1)
                     goto LAB_004ad69c;
                 iVar1 = param_1 + -1;
-                if (DAT_EnemyArrayIndex::instance <= iVar1) {
+                if ((int)DAT_EnemyArrayIndex::instance <= iVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)((int)(DAT_ButtonY::instance)),
-                        (int)((int)(DAT_ButtonX::instance + 0x47)), (int)((int)(DAT_ButtonY::instance + 0x47)),
-                        (ushort)((int)(COL_BLACK::instance.shortValue)));
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                        (int)(DAT_ButtonX::instance + 0x47), (int)(DAT_ButtonY::instance + 0x47),
+                        (ushort)(COL_BLACK::instance.shortValue));
                     goto LAB_004ad693;
                 }
                 iVar1 = DAT_RequestedGoodsByWhoArray::instance[param_1];
@@ -91,8 +84,8 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 + 0x222,
-                    (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
-                if (!iVar2) {
+                    (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
+                if (iVar2 == 0) {
                     if (DAT_GameCore::instance.lordIcons[iVar1] == 0) {
                         iVar2 = 0x21b;
                         goto LAB_004ad609;
@@ -104,26 +97,26 @@ namespace UI {
                     if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[iVar1 + 0x13]) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d,
-                            (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                            (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
-                            DAT_TextureRenderCoreObject::ptr)(iVar1 + 0x13, (int)((int)(DAT_ButtonX::instance + 4)),
-                            (int)((int)(DAT_ButtonY::instance + 4)));
+                            DAT_TextureRenderCoreObject::ptr)(
+                            iVar1 + 0x13, (int)(DAT_ButtonX::instance + 4), (int)(DAT_ButtonY::instance + 4));
                     }
                 } else {
                     iVar2 = iVar2 + 0x20a;
                 LAB_004ad609:
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar2,
-                        (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                        (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
-                        (int)((int)(DAT_ButtonX::instance + -6)), (int)((int)(DAT_ButtonY::instance + -6)),
+                        (int)(DAT_ButtonX::instance + -6), (int)(DAT_ButtonY::instance + -6),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x23e,
-                        (int)((int)(DAT_ButtonX::instance + -10)), (int)((int)(DAT_ButtonY::instance + -8)),
+                        (int)(DAT_ButtonX::instance + -10), (int)(DAT_ButtonY::instance + -8),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x23f, 0);
                     DAT_00df5200::instance = OpenSHC::DE::SHCDE::TEXT_ALLIES;
                     DAT_00df51fc::instance = 10;
@@ -131,25 +124,20 @@ namespace UI {
                 }
             }
         LAB_004ad693:
-            if (iVar1 != -1) {}
+            if (iVar1 != -1) {
+                return;
+            }
         LAB_004ad69c:
             iVar2 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
-            if (DAT_00df5200::instance != ((eTextSections)0)) {
-                blendStrength = 0;
-                keepOffsetX = FALSE;
-                fontSize = 0x11;
-                backgroundColor = 0;
-                foregroundColor = 0xb8eefb;
-                alignment = OpenSHC::Text::TTA_LEFT;
+            if (DAT_00df5200::instance != (eTextSections)0) {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                xParam = DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)DAT_00df5200::instance, DAT_00df51fc::instance);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
-                    backgroundColor, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                        (OpenSHC::DE::SHCDE::eTextSections)DAT_00df5200::instance, DAT_00df51fc::instance),
+                    DAT_ButtonX::instance, DAT_ButtonY::instance, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, FALSE, 0);
                 if (DAT_00df51fc::instance == 10) {
                     if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[DAT_00df51f8::instance] != -1) {
                         MACRO_CALL_MEMBER(
@@ -160,8 +148,8 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
-                        (int)((int)(DAT_GameSynchronyState::instance.aiVariationArray[DAT_00df51f8::instance] + 0x67
-                            + DAT_GameSynchronyState::instance.currentAIArray[DAT_00df51f8::instance] * 8)),
+                        (int)(DAT_GameSynchronyState::instance.aiVariationArray[DAT_00df51f8::instance] + 0x67
+                            + DAT_GameSynchronyState::instance.currentAIArray[DAT_00df51f8::instance] * 8),
                         iVar1 + 5, iVar2, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11, TRUE);
                 }
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;

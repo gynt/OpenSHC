@@ -34,15 +34,14 @@ namespace UI {
         {
             int yParam;
             uint color_00;
-            uint color;
-            if (((param_1 != -1)
-                    && (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU))
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if (param_1 != -1 && DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU
+                && DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 if (param_1 == 5) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
-                if (((param_1 == 0x23) || (param_1 == 0x24)) && (!INT_00b960ec::instance)) {
+                if (((param_1 == 0x23) || (param_1 == 0x24)) && INT_00b960ec::instance == 0) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderNonInteractingButtonBackground,
                         AlphaAndButtonSurfaceObj::ptr)(0);
@@ -51,18 +50,18 @@ namespace UI {
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (!DAT_ButtonCurrentlyInteracting::instance) {
+                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                         color_00 = 0xc2f0eb;
                         yParam = DAT_ButtonY::instance + 10;
                     } else {
                         color_00 = 0xccfaff;
                         yParam = DAT_ButtonY::instance + 10;
                     }
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)), yParam, OpenSHC::Text::TTA_CENTER,
-                    color_00, 0x11, FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1, (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                    yParam, OpenSHC::Text::TTA_CENTER, color_00, 0x11, FALSE);
             }
         }
 

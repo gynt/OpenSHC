@@ -36,10 +36,11 @@ namespace UI {
         {
             int _textWidth;
             char* pcVar1;
-            int xParam;
             int iVar2;
             int _textArrayIndex;
-            if ((param_1 == 3) && (DAT_GameCore::instance.isNameEntryActive == TRUE)) {}
+            if ((param_1 == 3) && (DAT_GameCore::instance.isNameEntryActive == TRUE)) {
+                return;
+            }
             _textWidth = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -53,9 +54,9 @@ namespace UI {
                 if (DAT_UserTextHandlerState::instance.textArrayIndex == OpenSHC::Text::TAIT_FIVE__NUMERIC_DOT) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
-                        (int)((int)(DAT_ButtonY::instance + 3)), DAT_ButtonX::instance + 7 + _textWidth,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
-                        (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                        (int)(DAT_ButtonY::instance + 3), DAT_ButtonX::instance + 7 + _textWidth,
+                        (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                        (ushort)(COL_DARK_LIME::instance.shortValue));
                 }
                 _textArrayIndex = 5;
                 break;
@@ -63,38 +64,36 @@ namespace UI {
                 if (DAT_UserTextHandlerState::instance.textArrayIndex == OpenSHC::Text::TAIT_SIX__NUMERIC_ONLY) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
-                        (int)((int)(DAT_ButtonY::instance + 3)), DAT_ButtonX::instance + 7 + _textWidth,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
-                        (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                        (int)(DAT_ButtonY::instance + 3), DAT_ButtonX::instance + 7 + _textWidth,
+                        (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                        (ushort)(COL_DARK_LIME::instance.shortValue));
                 }
                 _textArrayIndex = 6;
                 break;
             case 2:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
-                    (int)((int)(DAT_ButtonY::instance + 3)), DAT_ButtonX::instance + 7 + _textWidth,
-                    (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
-                    (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = 7;
                 break;
             case 3:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
-                    (int)((int)(DAT_ButtonY::instance + 3)), DAT_ButtonX::instance + 7 + _textWidth,
-                    (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
-                    (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = 0;
                 break;
             case 4:
                 if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAIN_MENU) {
                     DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
-                    (int)((int)(DAT_ButtonY::instance + 3)), DAT_ButtonX::instance + 7 + _textWidth,
-                    (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
-                    (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = DAT_ButtonY::instance + 6;
                 iVar2 = DAT_ButtonX::instance + 6;
                 pcVar1 = MACRO_CALL_MEMBER(
@@ -107,11 +106,10 @@ namespace UI {
                 break;
             }
             iVar2 = DAT_ButtonY::instance + 6;
-            xParam = DAT_ButtonX::instance + 6;
             pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
                 DAT_UserTextHandlerState::ptr)(_textArrayIndex);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, xParam, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
+                pcVar1, DAT_ButtonX::instance + 6, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
         }
 
     }

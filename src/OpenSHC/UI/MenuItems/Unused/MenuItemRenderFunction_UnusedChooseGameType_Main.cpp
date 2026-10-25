@@ -31,24 +31,26 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00430550
         void Unused::MenuItemRenderFunction_UnusedChooseGameType_Main(int param_1, ...)
         {
-            uint color;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 if (param_1 == 7) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xc2f0eb;
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                        OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
                 } else {
-                    color = 0xccfaff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                        OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, color, 0x11, FALSE);
             }
         }
 

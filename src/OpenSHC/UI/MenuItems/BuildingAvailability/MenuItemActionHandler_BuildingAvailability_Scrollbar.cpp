@@ -29,13 +29,15 @@ namespace UI {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + -1;
                     *currentValue = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset;
+                    return;
                 }
                 break;
             case 6:
                 if (DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                    < DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13) {
+                    < (int)DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + 1;
+                    return;
                 }
                 break;
             default:

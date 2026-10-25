@@ -30,22 +30,17 @@ namespace UI {
         void SoundOptions::MenuItemRenderFunction_SoundOptions_Buttons(int param_1, ...)
         {
             int xParam;
-            char* textAddress;
             int yParam;
             eTextSections offsetIndex;
             int iVar1;
-            TextAlignment alignment;
             BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if (param_1 == -10) {
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     color = 0xc2f0eb;
                     yParam = DAT_ButtonY::instance + 7;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     iVar1 = 0xc;
                     offsetIndex = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
                 } else {
@@ -53,7 +48,7 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     color = 0xccfaff;
                     yParam = DAT_ButtonY::instance + 7;
-                    xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     iVar1 = 0xc;
                     offsetIndex = OpenSHC::DE::SHCDE::TEXT_SKIRMISH_MISC;
                 }
@@ -62,53 +57,61 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 }
-                if (-1 < param_1) {
-                    if (param_1 - 0x23U < 3) {
+                if (0 <= param_1) {
+                    if (param_1 - 0x23U <= 2) {
                         DAT_ButtonCurrentlyInteracting::instance = FALSE;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
+                            (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
+                        return;
                     }
-                    if (!DAT_ButtonCurrentlyInteracting::instance) {
+                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                             AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                            (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                            (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                            (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
+                        return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1,
-                        (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                        (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
+                        (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 7),
+                        OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE);
                 }
                 iVar1 = DAT_MenuTextInputState::instance.DAT_GenieVoiceActiveMenuVar;
                 if ((param_1 != -5)
-                    && (iVar1 = DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar, param_1 != -1)) {}
-                if (!iVar1) {
-                    iVar1 = 0xe;
-                } else {
-                    if (iVar1 != 1) {}
+                    && (iVar1 = DAT_MenuTextInputState::instance.DAT_SoundActiveMenuVar, param_1 != -1)) {
+                    return;
+                }
+                /*
+                  the original dispatches with a `sub eax, K; je` chain (0x49282b), MSVC's
+                  sparse switch, and the `case 1` body sits first
+                 */
+                switch (iVar1) {
+                case 1:
                     iVar1 = 0xd;
+                    break;
+                case 0:
+                    iVar1 = 0xe;
+                    break;
+                default:
+                    return;
                 }
                 color = 0xccfaff;
                 yParam = DAT_ButtonY::instance + 7;
-                xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
             }
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            alignment = OpenSHC::Text::TTA_CENTER;
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(offsetIndex, iVar1);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(offsetIndex, iVar1),
+                xParam, yParam, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE, 0);
         }
 
     }

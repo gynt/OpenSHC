@@ -20,6 +20,7 @@ namespace UI {
                     *maxValue = (iVar1 * 3) / 5 + iVar1;
                     *minValue = 0;
                     *currentValue = DAT_MenuModalComposition2::instance.sliderValue;
+                    return;
                 }
                 *minValue = DAT_MenuModalComposition2::instance.sliderMinimum;
                 *maxValue = DAT_MenuModalComposition2::instance.sliderMaximum;
@@ -27,44 +28,48 @@ namespace UI {
                 return;
             case 2:
             case 3:
+                /*
+                  rebuilt from 0x4aa680: the small-range path returns, and each of the
+                  three big-range paths writes either `destination` or `destination2`,
+                  never both
+                 */
                 if ((int)(DAT_MenuModalComposition2::instance.sliderMaximum
                         - DAT_MenuModalComposition2::instance.sliderMinimum)
-                    < 0xc9) {
+                    <= 0xc8) {
                     DAT_MenuModalComposition2::instance.sliderValue = *currentValue;
                     if (DAT_MenuModalComposition2::instance.destination != (int*)0x0) {
                         *DAT_MenuModalComposition2::instance.destination = *currentValue;
+                        return;
                     }
                     *DAT_MenuModalComposition2::instance.destination2 = (short)*currentValue;
+                    return;
                 }
                 DAT_MenuModalComposition2::instance.sliderValue = *currentValue;
-                iVar1 = *currentValue;
-                if (iVar1 <= *maxValue / 2) {
-                    iVar1 = ((int)(iVar1 + (iVar1 >> 0x1f & 3U)) >> 2)
-                        + DAT_MenuModalComposition2::instance.sliderMinimum;
+                if (*currentValue <= *maxValue / 2) {
+                    iVar1 = *currentValue / 4 + DAT_MenuModalComposition2::instance.sliderMinimum;
                     if (DAT_MenuModalComposition2::instance.destination != (int*)0x0) {
                         *DAT_MenuModalComposition2::instance.destination = iVar1;
+                        return;
                     }
                     *DAT_MenuModalComposition2::instance.destination2 = (short)iVar1;
+                    return;
                 }
-                if (DAT_MenuModalComposition2::instance.destination == (int*)0x0) {
-                    iVar1 = DAT_MenuModalComposition2::instance.sliderMaximum * 3;
-                    *DAT_MenuModalComposition2::instance.destination2
-                        = ((short)*currentValue
-                              - (((short)(iVar1 / 5) + (short)(iVar1 >> 0x1f))
-                                  - (short)((longlong)iVar1 * 0x66666667 >> 0x3f)))
-                        + (short)DAT_MenuModalComposition2::instance.sliderMinimum;
-                    if (*currentValue == *maxValue) {
-                        *DAT_MenuModalComposition2::instance.destination2
-                            = (short)DAT_MenuModalComposition2::instance.sliderMaximum;
-                    }
-                } else {
+                if (DAT_MenuModalComposition2::instance.destination != (int*)0x0) {
                     *DAT_MenuModalComposition2::instance.destination
-                        = (iVar1 - (int)(DAT_MenuModalComposition2::instance.sliderMaximum * 3) / 5)
+                        = (*currentValue - (DAT_MenuModalComposition2::instance.sliderMaximum * 3) / 5)
                         + DAT_MenuModalComposition2::instance.sliderMinimum;
                     if (*currentValue == *maxValue) {
                         *DAT_MenuModalComposition2::instance.destination
                             = DAT_MenuModalComposition2::instance.sliderMaximum;
                     }
+                    return;
+                }
+                *DAT_MenuModalComposition2::instance.destination2
+                    = ((short)*currentValue - (short)((DAT_MenuModalComposition2::instance.sliderMaximum * 3) / 5))
+                    + (short)DAT_MenuModalComposition2::instance.sliderMinimum;
+                if (*currentValue == *maxValue) {
+                    *DAT_MenuModalComposition2::instance.destination2
+                        = (short)DAT_MenuModalComposition2::instance.sliderMaximum;
                 }
                 return;
             case 4:
@@ -75,6 +80,7 @@ namespace UI {
                 if (200 < (int)(DAT_MenuModalComposition2::instance.sliderMaximum
                         - DAT_MenuModalComposition2::instance.sliderMinimum)) {
                     *currentValue = (*currentValue <= *maxValue / 2) ? 4 : 1;
+                    return;
                 }
                 *currentValue = 1;
                 return;

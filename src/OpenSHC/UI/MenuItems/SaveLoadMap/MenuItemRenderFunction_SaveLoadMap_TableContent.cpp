@@ -17,7 +17,6 @@
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -32,29 +31,25 @@ namespace UI {
         void SaveLoadMap::MenuItemRenderFunction_SaveLoadMap_TableContent(int param_1, ...)
         {
             int mapIndex;
-            dword dVar1;
             char* text;
             int yPos;
             int xPos;
             uint color;
             char local_24[32];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)local_24;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
                 (uint)(param_1 == DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex), param_1, 0);
-            if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
-                < DAT_MenuTextInputState::instance.fileListEntryCount) {
+            if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
+                < (int)DAT_MenuTextInputState::instance.fileListEntryCount) {
                 mapIndex
                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                           [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1];
-                dVar1 = DAT_ResourceManager::instance.mapFileTimes[mapIndex];
-                if (((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
-                        || (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                    || (DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[mapIndex + 499] != 0)) {
+                dword dVar1 = DAT_ResourceManager::instance.mapFileTimes[mapIndex];
+                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
+                    || DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                    || DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[mapIndex + 499] != 0) {
                     if ((param_1 == DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex)
-                        || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
+                        || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                         color = 0xccfaff;
                     }
                 } else {
@@ -71,7 +66,7 @@ namespace UI {
                     (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) + -0x14, (int)dVar1 >> 0xb & 0x1f,
                     (int)dVar1 >> 5 & 0x3f);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_24, (int)((int)(DAT_ButtonX::instance + 0xd0)), (int)((int)(DAT_ButtonY::instance + 3)),
+                    local_24, (int)(DAT_ButtonX::instance + 0xd0), (int)(DAT_ButtonY::instance + 3),
                     OpenSHC::Text::TTA_LEFT, (BGR24)((int)(color)), 0x12, FALSE, 0);
             };
         }

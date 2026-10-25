@@ -24,18 +24,18 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047FFE0
         void Chat::MenuItemRenderFunction_Chat_TauntButtons(int param_1, ...)
         {
-            int xParam;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             if (param_1 < 10) {
-                xParam = DAT_ButtonX::instance + 0xc;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                    param_1, DAT_ButtonX::instance + 0xc, (int)(DAT_ButtonY::instance + 9), OpenSHC::Text::TTA_LEFT,
+                    0xccfaff, 0x13, FALSE, 0);
             } else {
-                xParam = DAT_ButtonX::instance + 9;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                    param_1, DAT_ButtonX::instance + 9, (int)(DAT_ButtonY::instance + 9), OpenSHC::Text::TTA_LEFT,
+                    0xccfaff, 0x13, FALSE, 0);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                param_1, xParam, (int)((int)(DAT_ButtonY::instance + 9)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13,
-                FALSE, 0);
-            if (DAT_ButtonCurrentlyInteracting::instance) {
+            if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 DAT_GameSynchronyState::instance.DAT_InsultTextIndex = param_1;
             }
         }

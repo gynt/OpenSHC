@@ -36,20 +36,15 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004269E0
         void HistoricMissionSelect::MenuItemRenderFunction_HistoricMissionSelect_MissionRows(int param_1, ...)
         {
-            int iVar1;
             char* textAddress;
             int iVar2;
             int iVar3;
-            TextAlignment alignment;
-            BGR24 color;
             uint color_00;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                if ((!DAT_GameCore::instance.unlockAllHistoricalCampaigns)
-                    && ((&DAT_GameCore::instance.scenarioProgress.progressCallToArms)[DAT_00b95b2c::instance]
-                        < (DAT_00b96100::instance - param_1) + -1)) {
+                if (DAT_GameCore::instance.unlockAllHistoricalCampaigns == 0
+                    && (&DAT_GameCore::instance.scenarioProgress.progressCallToArms)[DAT_00b95b2c::instance]
+                        < (DAT_00b96100::instance - param_1) + -1) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -64,7 +59,7 @@ namespace UI {
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
                     (uint)((DAT_00b96100::instance - param_1) + -1 == DAT_GameCore::instance.missionNumber1to20),
                     param_1, 0);
-                iVar1 = -param_1;
+                int iVar1 = -param_1;
                 iVar3 = DAT_ButtonY::instance + 5;
                 iVar2 = DAT_ButtonX::instance + 8;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -72,35 +67,36 @@ namespace UI {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                         iVar1, iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
-                    blendStrength = 0;
-                    keepOffsetX = FALSE;
                     iVar3 = 0x13;
-                    color = 0xccfaff;
-                    alignment = OpenSHC::Text::TTA_LEFT;
                     iVar1 = DAT_ButtonY::instance + 5;
                     iVar2 = DAT_ButtonX::instance + 0x1e;
                     textAddress = MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) + -1);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        textAddress, iVar2, iVar1, alignment, color, iVar3, keepOffsetX, blendStrength);
+                        textAddress, iVar2, iVar1, OpenSHC::Text::TTA_LEFT, 0xccfaff, iVar3, FALSE, 0);
                     DAT_ButtonUnknownZero::instance = 0;
+                    return;
                 }
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                        iVar1, iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
-                    color_00 = 0xc2f0eb;
-                } else {
+                /*
+                  the original jumps out of line on `== FALSE`, so the interacting
+                  arm is the one the source wrote first
+                 */
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                         iVar1, iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
                     color_00 = 0xccfaff;
+                } else {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                        iVar1, iVar2, iVar3, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
+                    color_00 = 0xc2f0eb;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) + -1,
-                    (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance + 5)),
-                    OpenSHC::Text::TTA_LEFT, color_00, 0x13, FALSE);
+                    (int)(DAT_ButtonX::instance + 0x1e), (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT,
+                    color_00, 0x13, FALSE);
                 DAT_ButtonUnknownZero::instance = 0;
             }
         }

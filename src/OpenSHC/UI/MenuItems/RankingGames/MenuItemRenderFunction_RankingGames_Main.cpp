@@ -37,24 +37,24 @@ namespace UI {
                 if (param_1 == -10) {
                     iVar1 = 0x55;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     iVar1 = iVar1 + 1;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, iVar1,
-                    (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                    (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + -1, (int)((int)(DAT_ButtonY::instance + -1)),
-                    (int)((int)(DAT_ButtonX::instance + 0x14)), (int)((int)(DAT_ButtonY::instance + 0x14)),
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-            } else if (7 < param_1) {
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + -1, (int)(DAT_ButtonY::instance + -1),
+                    (int)(DAT_ButtonX::instance + 0x14), (int)(DAT_ButtonY::instance + 0x14),
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+            } else if (8 <= param_1) {
                 if (0xb < param_1 - 0x14U)
                     goto LAB_004d9a4f;
                 if (param_1 == 0x14) {
                     DAT_00ed27a0::instance = 0;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     DAT_00ed27a0::instance = param_1;
                 }
                 if ((param_1 < 0x1e) && (param_1 + -0x13 == DAT_MissionDefinedData::instance.sortColumn)) {
@@ -68,10 +68,11 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)DAT_UIButtonDefinedData::instance
                                                               .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                                               .gmId_0x0,
-                        iVar1, (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)));
+                        iVar1, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                     DAT_CurrentButtonPictureInGm::instance = iVar1;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    return;
                 }
                 if (param_1 == 0x1e) {
                     if (DAT_00ed3124::instance == 1)

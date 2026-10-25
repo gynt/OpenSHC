@@ -47,20 +47,18 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Audio::SFX::SoundEffectID;
-        using Commands::GameCommandType;
-        using Game::GameMode2;
-        using UI::Enums::BuildingsAndStatusMenuTabType;
-        using UI::Enums::BuildMenuTabType;
-        using UI::Enums::MenuModalType;
-        using UI::Enums::MenuViewType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Audio::SFX::SoundEffectID;
+        using OpenSHC::Commands::GameCommandType;
+        using OpenSHC::Game::GameMode2;
+        using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
+        using OpenSHC::UI::Enums::BuildMenuTabType;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::UI::Enums::MenuViewType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004251A0
         void MainMenu::MenuItemActionHandler_MainMenu_Main(int param_1, ...)
         {
-            int iVar2;
-            int iVar3;
             MenuViewType menuID;
             switch (param_1) {
             case 1:
@@ -69,8 +67,8 @@ namespace UI {
                  */
                 DAT_GameCore::instance.gameSuspended = 0;
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty;
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT, 0);
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                     = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
                 DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]
@@ -94,82 +92,85 @@ namespace UI {
                 /*
                   crusader
                  */
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    UI::Enums::MVT_SELECT_CRUSADE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_SELECT_CRUSADE, 0);
                 return;
             case 3:
                 /*
                   castle builder
                  */
                 DAT_GameCore::instance.missionNumber1to20 = 0;
-                DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
+                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_BUILDERUnk;
                 DAT_GameCore::instance.xbowProducible_logic = 1;
                 DAT_GameCore::instance.pikeProducible_logic = 1;
                 DAT_GameCore::instance.swordProducible_logic = 1;
                 DAT_GameCore::instance.bowProducible_logic = 1;
                 DAT_GameCore::instance.spearProducible_logic = 1;
                 DAT_GameCore::instance.maceProducible_logic = 1;
-                MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
                 DAT_MapMissionType::instance = 0;
                 INT_00b95b64::instance = 1;
                 DAT_GameCore::instance.standaloneFilename[0] = '\0';
                 DAT_GameState::instance.mapAndTime.difficulty = DAT_GameCore::instance.missionDifficulty_0;
                 DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
-                menuID = UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE;
+                menuID = OpenSHC::UI::Enums::MVT_SINGLEPLAYER_MAP_CHOICE;
                 break;
             case 4:
                 /*
                   multiplayer
                  */
-                if ((int)DAT_GameCore::instance.directDrawStatus < 0x700) {}
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(5);
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(6);
-                DAT_GameSynchronyState::instance.nextModalDialog = UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER;
+                if ((int)DAT_GameCore::instance.directDrawStatus < 0x700) {
+                    return;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(5);
+                MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::clearEntry, DAT_UserTextHandlerState::ptr)(6);
+                DAT_GameSynchronyState::instance.nextModalDialog
+                    = OpenSHC::UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER;
                 DAT_GameSynchronyState::instance.kickedAtTime = 0;
                 DAT_GameSynchronyState::instance.ipArrayIndex = 0;
-                DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
+                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
                 DAT_GameCore::instance.xbowProducible_logic = 1;
                 DAT_GameCore::instance.pikeProducible_logic = 1;
                 DAT_GameCore::instance.swordProducible_logic = 1;
                 DAT_GameCore::instance.bowProducible_logic = 1;
                 DAT_GameCore::instance.spearProducible_logic = 1;
                 DAT_GameCore::instance.maceProducible_logic = 1;
-                menuID = UI::Enums::MVT_MP_CONNECTION;
+                menuID = OpenSHC::UI::Enums::MVT_MP_CONNECTION;
                 break;
-            case 5:
+            case 9:
                 /*
-                  quit
+                  custom scenarios
                  */
-                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 9;
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_YES_NO_DIALOG);
-                MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(
-                    0);
+                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_EDITOR;
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 return;
             case 6:
+            {
                 /*
                   tutorial
                  */
                 DAT_GameCore::instance.missionNumber1to20 = 0x1e;
-                DAT_GameCore::instance.gameMode_2 = Game::GM_CRUSADER_TUTORIAL;
+                DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_CRUSADER_TUTORIAL;
                 DAT_GameCore::instance.xbowProducible_logic = 0;
                 DAT_GameCore::instance.pikeProducible_logic = 0;
                 DAT_GameCore::instance.swordProducible_logic = 0;
                 DAT_GameCore::instance.bowProducible_logic = 0;
                 DAT_GameCore::instance.spearProducible_logic = 0;
                 DAT_GameCore::instance.maceProducible_logic = 0;
-                MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
-                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMap, DAT_MapPropertiesState::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::loadMap, DAT_MapPropertiesState::ptr)(
                     "Crusader_tutorial.map");
-                DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab = UI::Enums::BMTT_CASTLE;
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    UI::Enums::MVT_BUILD_MENU, 0);
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, DAT_MenuTextInputState::ptr)();
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
-                    UI::Enums::MMT_TUTORIAL_BOX, FALSE);
-                MACRO_CALL(UI::Helpers_Func::InitTutorialStepTransition)(1);
+                DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab = OpenSHC::UI::Enums::BMTT_CASTLE;
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::MenuTextInputState_Func::clearModalDialog2to6, DAT_MenuTextInputState::ptr)();
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
+                    DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_TUTORIAL_BOX, FALSE);
+                MACRO_CALL(OpenSHC::UI::Helpers_Func::InitTutorialStepTransition)(1);
                 DAT_00df555c::instance = DAT_MissionAestheticsDefinedData::instance.TutorialStepActionCount[0];
                 INT_DisableTutorialRestrictions::instance = 0;
                 DAT_TutorialCurrentStep::instance = 0;
@@ -178,8 +179,8 @@ namespace UI {
                 DAT_00df5560::instance = 0;
                 DAT_00df5564::instance = 0;
                 DAT_00df556c::instance = 0x24;
-                iVar2 = 1;
-                iVar3 = 0;
+                int iVar2 = 1;
+                int iVar3 = 0;
                 do {
                     int iVar1
                         = *(int*)((int)DAT_MissionAestheticsDefinedData::instance.TutorialStepActionCount + iVar3);
@@ -187,42 +188,52 @@ namespace UI {
                     iVar3 = iVar3 + 4;
                     iVar2 = iVar2 + 2 + iVar1;
                 } while (iVar3 < 128);
-                MACRO_CALL(UI::Helpers_Func::ResetTutorialActionTrackers)();
+                MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
                 return;
-            case 7:
-                /*
-                  credits
-                 */
-                DAT_00b95954::instance = 0;
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(UI::Enums::MVT_CREDITS, 0);
-                return;
+            }
             case 8:
+            {
                 /*
                   options
                  */
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 0;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                    Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
-                MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                    DAT_MenuTextInputState::ptr)(UI::Enums::MMT_MAIN_MENU_OPTIONS);
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                    DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_MAIN_MENU_OPTIONS);
+                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     ((SoundEffectID)0x101));
                 return;
-            case 9:
+            }
+            case 5:
+            {
                 /*
-                  custom scenarios
+                  quit
                  */
-                DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
+                DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 9;
+                MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                    DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_YES_NO_DIALOG);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
                 return;
+            }
+            case 7:
+            {
+                /*
+                  credits
+                 */
+                DAT_00b95954::instance = 0;
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_CREDITS, 0);
+                return;
+            }
             default:
                 break;
             }
             /*
               castle builder or multiplayer
              */
-            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
+            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
             DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[0]
                 = DAT_BlendingDefinedData::instance.DefaultPlayerSlotUnitColor[0];
             DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1]

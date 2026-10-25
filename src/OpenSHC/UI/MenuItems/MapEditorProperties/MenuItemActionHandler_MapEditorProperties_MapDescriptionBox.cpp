@@ -16,24 +16,26 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using UI::Enums::MenuModalType;
+        using OpenSHC::UI::Enums::MenuModalType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042EDF0
         void MapEditorProperties::MenuItemActionHandler_MapEditorProperties_MapDescriptionBox()
         {
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti && DAT_GameCore::instance.mapLoadedForEditor
-                && DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU
-                && DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE
-                && (INT_00b95f68::instance = 1, !DAT_GameCore::instance.unknownAlwaysZero03)) {
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-                DAT_TextEditorState::instance.customTextMaxLength = 1000;
-                MACRO_CALL_MEMBER(Text::TextEditorState_Func::openMapDescriptionEditorDialog, DAT_TextEditorState::ptr)(
-                    0);
-                MACRO_CALL_MEMBER(Text::TextEditorState_Func::setCustomHelpText, DAT_TextEditorState::ptr)(
-                    DAT_GameCore::instance.temporaryTextBufferOfSize1000, 999);
-                MACRO_CALL(OS_Func::_memset)(DAT_GameCore::instance.temporaryTextBufferOfSize1000, 0, 1000);
-                DAT_GameCore::instance.descriptionUseStringTable = 0;
+            if (!((((DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
+                       && (DAT_GameCore::instance.mapLoadedForEditor != 0))
+                      && (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU))
+                    && ((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE
+                        && (INT_00b95f68::instance = 1, DAT_GameCore::instance.unknownAlwaysZero03 == 0))))) {
+                return;
             }
+            MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+            DAT_TextEditorState::instance.customTextMaxLength = 1000;
+            MACRO_CALL_MEMBER(
+                OpenSHC::Text::TextEditorState_Func::openMapDescriptionEditorDialog, DAT_TextEditorState::ptr)(0);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::setCustomHelpText, DAT_TextEditorState::ptr)(
+                DAT_GameCore::instance.temporaryTextBufferOfSize1000, 999);
+            MACRO_CALL(OpenSHC::OS_Func::_memset)(DAT_GameCore::instance.temporaryTextBufferOfSize1000, 0, 1000);
+            DAT_GameCore::instance.descriptionUseStringTable = 0;
         }
 
     }

@@ -32,9 +32,7 @@ namespace UI {
         void NewInvasion::MenuItemRenderFunction_NewInvasion_UnitButtons(int param_1, ...)
         {
             int number;
-            int imageID;
-            uint color;
-            imageID = 0;
+            int imageID = 0;
             switch (param_1) {
             case 0:
                 imageID = 1;
@@ -114,19 +112,20 @@ namespace UI {
                                  .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                  .data
                 + param_1 * 4 + 4);
-            if (number) {
-                if (!DAT_ButtonCurrentlyInteracting::instance) {
-                    color = 0xc2f0eb;
+            if (number != 0) {
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
+                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                 } else {
-                    color = 0xccfaff;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
+                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    number, (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 7)), OpenSHC::Text::TTA_RIGHT, color, 0x12, FALSE, 0);
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ARMY_UNITS, imageID,
-                (int)((int)(DAT_ButtonX::instance)),
+                (int)(DAT_ButtonX::instance),
                 (DAT_ButtonY::instance
                     - (int)*(short*)((int)PTR_ARRAY_Unknown_UnitGMHeights::instance
                           + (GMTotalPicturesProcessed::instance[0xae] + imageID) * 0x10 + 0x72)

@@ -12,20 +12,22 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using UI::Enums::MenuModalType;
-        using UI::Enums::MenuViewType;
+        using OpenSHC::UI::Enums::MenuModalType;
+        using OpenSHC::UI::Enums::MenuViewType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D6F20
         void Unknown27CampaignUnk::MenuItemActionHandler_Unknown27CampaignUnk_Main(int param_1, ...)
         {
-            if (DAT_MenuTextInputState::instance.currentModalDialog == UI::Enums::MMT_NO_MENU
-                && DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE && param_1 == 10) {
+            if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU
+                && DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE
+                && param_1 == 10) {
                 if (DAT_GameCore::instance.missionNumber1to20 == 1) {
-                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                    return;
                 }
-                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk, 0);
             }
         }
 

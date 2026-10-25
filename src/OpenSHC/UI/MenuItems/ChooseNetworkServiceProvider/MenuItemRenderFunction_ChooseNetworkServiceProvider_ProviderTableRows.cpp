@@ -29,8 +29,7 @@ namespace UI {
         {
             uint color;
             CHAR local_3ec[1000];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3ec;
+            uint local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3ec;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
@@ -39,7 +38,7 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1
                 < DAT_GameSynchronyState::instance.scrollBarItemCount) {
                 if ((param_1 == DAT_GameSynchronyState::instance.selectedProviderIndex)
-                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
+                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                     color = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::wideCharToMultiByteComplete,
@@ -48,8 +47,8 @@ namespace UI {
                             .providerNames[DAT_GameSynchronyState::instance.scrollBarItemOffset + param_1])));
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                    local_3ec, (int)((int)(DAT_ButtonX::instance + 8)), (int)((int)(DAT_ButtonY::instance + 4)), 0x180,
-                    color, 0x12, 0);
+                    local_3ec, (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 4), 0x180, color, 0x12,
+                    0);
             };
         }
 

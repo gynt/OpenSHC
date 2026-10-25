@@ -47,21 +47,27 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00442640
         void LobbyMenu::MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick(int param_1, ...)
         {
-            char cVar1;
             int* piVar2;
             int iVar3;
             int _f1;
             int iVar4;
             int _f0;
-            if (DAT_00b960dc::instance) {}
-            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {}
+            if (DAT_00b960dc::instance != 0) {
+                return;
+            }
+            if (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
+                return;
+            }
             if (0x69 < param_1) {
-                if (param_1 != 0x19d) {}
+                if (param_1 != 0x19d) {
+                    return;
+                }
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3
                         | OpenSHC::Audio::SFX::SEID_ARROW_SHOOT));
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_RANKING_GAMES, 0);
+                return;
             }
             if (param_1 == 0x69) {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0
@@ -72,160 +78,13 @@ namespace UI {
                     OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                     (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SHARE_GAME_STATE_PARTIAL_HASHES
                         | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                return;
             }
             switch (param_1) {
-            case 1:
-                /*
-                  click load game
-                 */
-                if (DAT_GameSynchronyState::instance.isHost) {
-                    piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
-                    do {
-                        if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
-                            break;
-                        piVar2 = piVar2 + 1;
-                    } while ((int)piVar2 < 0x1a2453c);
-                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkPlayerSetValid,
-                        DAT_GameSynchronyState::ptr)();
-                    if (1 < iVar3) {
-                        DAT_MenuTextInputState::instance.field42_0x9c = 1;
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
-                        DAT_GameSynchronyState::instance.reparseMaps = TRUE;
-                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                            = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    }
-                }
-                break;
-            case 2:
-                /*
-                  leave screen
-                 */
-                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
-                    if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE)
-                            || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                                == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
-                        || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                            == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
-                        DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
-                    }
-                } else {
-                    DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
-                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                            MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                    if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE)
-                            || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                                == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))
-                        || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                            == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT)) {
-                        DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
-                            DAT_GameSynchronyState::ptr)();
-                    }
-                }
-                break;
-            case 4:
-                /*
-                  start game
-                 */
-                if (DAT_GameSynchronyState::instance.isHost) {
-                    piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
-                    do {
-                        if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
-                            break;
-                        piVar2 = piVar2 + 1;
-                    } while ((int)piVar2 < 0x1a2453c);
-                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkPlayerSetValid,
-                        DAT_GameSynchronyState::ptr)();
-                    if (((1 < iVar3)
-                            && (-1 < DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                                    + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset))
-                        && (0 < DAT_GameSynchronyState::instance
-                                .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
-                                        .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
-                                                                   .DAT_MapSelectionRelativeSelected
-                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]])) {
-                        MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::setTimeBasedSeed, SEC_RNG::ptr)();
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                            OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
-                        if (DAT_GameSynchronyState::instance.currentGameMode
-                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                            DAT_GameCore::instance.isSkirmishTrail = FALSE;
-                            MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)(0);
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        }
-                        /*
-                          start game by sending seed?   Here: DAT_CurrentGameMode is MULTIPLAYER
-                         */
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_START_MULTIPLAYER_GAME);
-                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                            = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                    }
-                }
-                break;
-            case -0xc9:
-                if (DAT_GameSynchronyState::instance.isHost) {
-                    if (-1 < DAT_00b95960::instance) {
-                        iVar3 = 0;
-                        while (((iVar4 = DAT_GameCore::instance.keepPositions[iVar3].x,
-                                    iVar4 < 0
-                                        || (DAT_MouseState::instance.screenSpaceX
-                                            < iVar4 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth))
-                            || ((iVar4 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                                    < DAT_MouseState::instance.screenSpaceX
-                                || ((iVar4 = DAT_GameCore::instance.keepPositions[iVar3].y
-                                        + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight,
-                                    DAT_MouseState::instance.screenSpaceY < iVar4 + 3
-                                        || (iVar4 + 0x23 < DAT_MouseState::instance.screenSpaceY))))))) {
-                            iVar3 = iVar3 + 1;
-                            if (7 < iVar3) {
-                                DAT_00b95960::instance = 0xffffffff;
-                            }
-                        }
-                        cVar1 = DAT_GameSynchronyState::instance.playerPositionsArray[DAT_00b95f64::instance];
-                        DAT_GameSynchronyState::instance.playerPositionsArray[DAT_00b95f64::instance]
-                            = DAT_GameSynchronyState::instance.playerPositionsArray[iVar3];
-                        DAT_GameSynchronyState::instance.playerPositionsArray[iVar3] = cVar1;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
-                    }
-                    DAT_00b95960::instance = 0xffffffff;
-                }
-                break;
-            case -200:
-                if (DAT_GameSynchronyState::instance.isHost) {
-                    iVar3 = 0;
-                    while ((((_f0 = DAT_GameCore::instance.keepPositions[iVar3].x,
-                                 _f0 < 0
-                                     || (DAT_MouseState::instance.screenSpaceX
-                                         < _f0 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth))
-                                || (_f0 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
-                                    < DAT_MouseState::instance.screenSpaceX))
-                        || ((_f1 = DAT_GameCore::instance.keepPositions[iVar3].y
-                                + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight,
-                            DAT_MouseState::instance.screenSpaceY < _f1 + 3
-                                || (_f1 + 0x23 < DAT_MouseState::instance.screenSpaceY))))) {
-                        iVar3 = iVar3 + 1;
-                        if (7 < iVar3) {}
-                    }
-                    DAT_00b95960::instance = (int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar3];
-                    DAT_00b95f64::instance = iVar3;
+            case -1:
+                if ((int)DAT_GameSynchronyState::instance.chatScrollOffset < 0xf) {
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + 1;
                 }
                 break;
             case -199:
@@ -422,17 +281,68 @@ namespace UI {
             case -3:
             case 0:
                 break;
-            case -0x65:
-                iVar3 = DAT_00b95b74::instance + -0x72;
-                if ((DAT_00b960f4::instance < iVar3)
-                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar3 < DAT_00b960f4::instance)) {
-                    DAT_00b960f4::instance = iVar3;
+            case -2:
+                if (0 < (int)DAT_GameSynchronyState::instance.chatScrollOffset) {
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + -1;
                 }
                 break;
-            case -100:
-                DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
-                if (DAT_00b960f4::instance < -0x13) {
-                    DAT_00b960f4::instance = 0xffffffed;
+            case 1:
+                /*
+                  click load game
+                 */
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
+                    do {
+                        if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
+                            break;
+                        piVar2 = piVar2 + 1;
+                    } while ((int)piVar2 < (int)&DAT_GameSynchronyState::instance + 0x106dd4);
+                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkPlayerSetValid,
+                        DAT_GameSynchronyState::ptr)();
+                    if (1 < iVar3) {
+                        DAT_MenuTextInputState::instance.field42_0x9c = 1;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::MenuTextInputState_Func::loadOrSaveGame, DAT_MenuTextInputState::ptr)(9);
+                        DAT_GameSynchronyState::instance.reparseMaps = TRUE;
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                    }
+                }
+                break;
+            case 2:
+                /*
+                  leave screen
+                 */
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                    if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE
+                        || DAT_MenuModalComposition1::instance.activeModalDialogID
+                            == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT
+                        || DAT_MenuModalComposition1::instance.activeModalDialogID
+                            == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                        DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
+                    }
+                } else {
+                    DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_MULTIPLAYER_END_OF_GAME;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
+                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
+                    if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_ROUNDTABLE
+                        || DAT_MenuModalComposition1::instance.activeModalDialogID
+                            == OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT
+                        || DAT_MenuModalComposition1::instance.activeModalDialogID
+                            == OpenSHC::UI::Enums::MMT_EXTENDED_AI_LORD_SELECT) {
+                        DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
+                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
+                            DAT_GameSynchronyState::ptr)();
+                    }
                 }
                 break;
             case -0x14:
@@ -440,7 +350,7 @@ namespace UI {
                 /*
                   click ready button?
                  */
-                if ((DAT_GameSynchronyState::instance.flag_0x7aad8)
+                if ((DAT_GameSynchronyState::instance.flag_0x7aad8 != FALSE)
                     && (DAT_GameSynchronyState::instance.DAT_TwoIfNotHost == 2)) {
                     DAT_GameSynchronyState::instance
                         .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -450,7 +360,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
                 }
-                if ((DAT_GameSynchronyState::instance.isHost)
+                if ((DAT_GameSynchronyState::instance.isHost != FALSE)
                     && (DAT_GameSynchronyState::instance
                             .DAT_PlayerSlotArraySomeValue[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         != 0)) {
@@ -458,35 +368,136 @@ namespace UI {
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
                 }
                 break;
-            case -0xb:
-                if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
-                    DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
-                LAB_0044291e:
-                    if (DAT_GameSynchronyState::instance.isHost) {
+            case 4:
+                /*
+                  start game
+                 */
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    piVar2 = DAT_GameSynchronyState::instance.DAT_PlayerSlotArraySomeValue + 1;
+                    do {
+                        if ((piVar2[-0x419c2] != -1) && (*piVar2 == 0))
+                            break;
+                        piVar2 = piVar2 + 1;
+                    } while ((int)piVar2 < (int)&DAT_GameSynchronyState::instance + 0x106dd4);
+                    iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::checkPlayerSetValid,
+                        DAT_GameSynchronyState::ptr)();
+                    if (1 < iVar3
+                        && 0 <= DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
+                                + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                        && 0 < DAT_GameSynchronyState::instance
+                                .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
+                                        .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
+                                                                   .DAT_MapSelectionRelativeSelected
+                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]]) {
+                        MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::setTimeBasedSeed, SEC_RNG::ptr)();
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                            OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_GAME_INTENSITY_OR_BALANCE);
+                        if (DAT_GameSynchronyState::instance.currentGameMode
+                            == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                            DAT_GameCore::instance.isSkirmishTrail = FALSE;
+                            MACRO_CALL(OpenSHC::UI::Actions_Func::LaunchSkirmishGame)(0);
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                                = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                            return;
+                        }
+                        /*
+                          start game by sending seed?   Here: DAT_CurrentGameMode is MULTIPLAYER
+                         */
+                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_START_MULTIPLAYER_GAME);
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
                 }
                 break;
             case -10:
-                if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
+                if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
                     goto LAB_0044291e;
                 }
                 break;
-            case -2:
-                if (0 < DAT_GameSynchronyState::instance.chatScrollOffset) {
-                    DAT_GameSynchronyState::instance.chatScrollOffset
-                        = DAT_GameSynchronyState::instance.chatScrollOffset + -1;
+            case -0xb:
+                if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
+                    DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
+                LAB_0044291e:
+                    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
+                    }
                 }
                 break;
-            case -1:
-                if (DAT_GameSynchronyState::instance.chatScrollOffset < 0xf) {
-                    DAT_GameSynchronyState::instance.chatScrollOffset
-                        = DAT_GameSynchronyState::instance.chatScrollOffset + 1;
+            case -100:
+                DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
+                if ((int)DAT_00b960f4::instance < -0x13) {
+                    DAT_00b960f4::instance = 0xffffffed;
+                }
+                break;
+            case -0x65:
+                iVar3 = DAT_00b95b74::instance + -0x72;
+                if ((int)DAT_00b960f4::instance < iVar3
+                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar3 < (int)DAT_00b960f4::instance)) {
+                    DAT_00b960f4::instance = iVar3;
+                }
+                break;
+            case -200:
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    iVar3 = 0;
+                    while ((_f0 = DAT_GameCore::instance.keepPositions[iVar3].x,
+                               _f0 < 0
+                                   || (DAT_MouseState::instance.screenSpaceX
+                                       < _f0 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth))
+                        || _f0 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
+                            < DAT_MouseState::instance.screenSpaceX
+                        || (_f1 = DAT_GameCore::instance.keepPositions[iVar3].y
+                                + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight,
+                            DAT_MouseState::instance.screenSpaceY < _f1 + 3
+                                || (_f1 + 0x23 < DAT_MouseState::instance.screenSpaceY))) {
+                        iVar3 = iVar3 + 1;
+                        if (7 < iVar3) {
+                            return;
+                        }
+                    }
+                    DAT_00b95960::instance = (int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar3];
+                    DAT_00b95f64::instance = iVar3;
+                }
+                break;
+            case -0xc9:
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
+                    if (0 <= (int)DAT_00b95960::instance) {
+                        iVar3 = 0;
+                        while ((iVar4 = DAT_GameCore::instance.keepPositions[iVar3].x,
+                                   iVar4 < 0
+                                       || (DAT_MouseState::instance.screenSpaceX
+                                           < iVar4 + 0x23c + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth))
+                            || iVar4 + 0x253 + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth
+                                < DAT_MouseState::instance.screenSpaceX
+                            || (iVar4 = DAT_GameCore::instance.keepPositions[iVar3].y
+                                    + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight,
+                                DAT_MouseState::instance.screenSpaceY < iVar4 + 3
+                                    || (iVar4 + 0x23 < DAT_MouseState::instance.screenSpaceY))) {
+                            iVar3 = iVar3 + 1;
+                            if (7 < iVar3) {
+                                DAT_00b95960::instance = 0xffffffff;
+                            }
+                        }
+                        char cVar1 = DAT_GameSynchronyState::instance.playerPositionsArray[DAT_00b95f64::instance];
+                        DAT_GameSynchronyState::instance.playerPositionsArray[DAT_00b95f64::instance]
+                            = DAT_GameSynchronyState::instance.playerPositionsArray[iVar3];
+                        DAT_GameSynchronyState::instance.playerPositionsArray[iVar3] = cVar1;
+                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_ANNOUNCE_TEAMS_AND_POSITIONS);
+                        return;
+                    }
+                    DAT_00b95960::instance = 0xffffffff;
                 }
                 break;
             default:

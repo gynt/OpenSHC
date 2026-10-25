@@ -34,43 +34,35 @@ namespace UI {
         void NewInvasion::MenuItemRenderFunction_NewInvasion_RepeatSlider(
             int param_1, int thumbXPos, int sliderValue, int thumbWidth, BOOLEnum isDragged)
         {
-            undefined2 color;
-            int yParam;
-            char* textAddress;
             int xParam;
-            TextAlignment alignment;
-            BGR24 color_00;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            color = COL_GREYISH_YELLOW::instance.shortValue;
-            if (isDragged) {
+            undefined2 color = COL_GREYISH_YELLOW::instance.shortValue;
+            /*
+              the original keeps the colour in a register and overwrites it in the one
+              armed `if` (0x4b9568), then shares the single drawColorBox call, so the
+              `return;` Ghidra put here is its own - with it the dragged thumb draws nothing
+             */
+            if (isDragged != FALSE) {
                 color = COL_DARK_LIME::instance.shortValue;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                thumbXPos + DAT_ButtonX::instance + 1, (int)((int)(DAT_ButtonY::instance + 2)),
+                thumbXPos + DAT_ButtonX::instance + 1, (int)(DAT_ButtonY::instance + 2),
                 thumbXPos + DAT_ButtonX::instance + -2 + thumbWidth,
-                (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)), (ushort)((int)(color)));
+                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                sliderValue, (int)((int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance)),
-                (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            color_00 = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_LEFT;
-            yParam = DAT_ButtonY::instance + 6;
+                sliderValue, (int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance),
+                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
+            int yParam = DAT_ButtonY::instance + 6;
             xParam = DAT_ButtonX::instance + -0x96;
             /*
               added by script: "Repeat"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xa3);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color_00, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xa3),
+                xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
         }
 
     }

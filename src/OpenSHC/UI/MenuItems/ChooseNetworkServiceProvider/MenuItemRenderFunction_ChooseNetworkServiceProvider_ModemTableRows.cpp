@@ -37,14 +37,14 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.modemScrollBarOffset + param_1
                 < DAT_GameSynchronyState::instance.modemScrollbarCount) {
                 if ((param_1 == DAT_GameSynchronyState::instance.modemScrollbarIndex)
-                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance)) {
+                    || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                     color = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     DAT_GameSynchronyState::instance
                         .stringPointerArray[DAT_GameSynchronyState::instance.modemScrollBarOffset + param_1],
-                    (int)((int)(DAT_ButtonX::instance + 8)), (int)((int)(DAT_ButtonY::instance + 4)),
-                    OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
+                    (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT, color,
+                    0x12, FALSE, 0);
             }
         }
 

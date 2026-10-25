@@ -29,32 +29,15 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BAC20
         void EditScenario::MenuItemRenderFunction_EditScenario_StartDateMonth(int param_1, ...)
         {
-            int xParam;
-            char* textAddress;
-            int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-            blendStrength = 0;
-            xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 6;
-            keepOffsetX = FALSE;
-            fontSize = 0x12;
-            if (!DAT_ButtonCurrentlyInteracting::instance) {
-                color = 0xc2f0eb;
-            } else {
-                color = 0xccfaff;
-            }
-            alignment = OpenSHC::Text::TTA_CENTER;
-            textAddress = MACRO_CALL_MEMBER(
-                OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_MapPropertiesState::instance.SEC_StartingMonth + 0xc);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_MapPropertiesState::instance.SEC_StartingMonth + 0xc),
+                (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, DAT_ButtonY::instance + 6,
+                OpenSHC::Text::TTA_CENTER, DAT_ButtonCurrentlyInteracting::instance == FALSE ? 0xc2f0eb : 0xccfaff,
+                0x12, FALSE, 0);
         }
 
     }

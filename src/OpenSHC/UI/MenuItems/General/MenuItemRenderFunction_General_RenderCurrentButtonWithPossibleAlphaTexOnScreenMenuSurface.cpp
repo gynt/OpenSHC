@@ -32,7 +32,7 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                     .alphaGmIdUnk_0xc
-                != ((GmID)0)) {
+                != (GmID)0) {
                 if (DAT_ButtonBlendStrength::instance != 32) {
                     pBVar1
                         = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
@@ -49,6 +49,7 @@ namespace UI {
                     = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                           .pictureInGm_0x4;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                return;
             }
             pBVar1 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray + DAT_CurrentButtonGmDataIndex::instance;
             iVar3 = DAT_ButtonX::instance;

@@ -20,10 +20,10 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuItems {
 
-        using Commands::MappersEnum;
-        using Game::GameMode;
-        using Map::Units::UnitType;
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Commands::MappersEnum;
+        using OpenSHC::Game::GameMode;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00446920
         void BuildMenu::MenuItemActionHandler_BuildMenu_UnitActionButtons(int param_1, ...)
@@ -31,21 +31,30 @@ namespace UI {
             int iVar1;
             uint uVar2;
             UnitType UVar3;
-            int extraout_ECX;
-            undefined4 uVar4;
-            if (DAT_GameSynchronyState::instance.syncStatus) {}
-            if (DAT_GameSynchronyState::instance.saveRelated) {}
+            if (DAT_GameSynchronyState::instance.syncStatus != 0) {
+                return;
+            }
+            if (DAT_GameSynchronyState::instance.saveRelated != 0) {
+                return;
+            }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .lordKilledByPlayerID
-                != 0) {}
+                != 0) {
+                return;
+            }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated
                 != 0) {
-                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {}
+                if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
+                    return;
+                }
                 if (DAT_GameState::instance.mapAndTime.gameOver
-                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {}
+                    != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
+                    return;
+                }
             }
-            MACRO_CALL(UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
+            MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
+            undefined4 uVar4;
             switch (param_1) {
             case 1:
                 DAT_UnitsState::instance.unitControlsRelated = 1;
@@ -53,6 +62,117 @@ namespace UI {
                 DAT_TileMapState::instance.cursorOverlayImageBase = 0;
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
+            case 3: {
+                uVar4 = 3;
+                DAT_UnitsState::instance.unitControlsRelated = TRUE;
+                goto LAB_00446b3b;
+            }
+            case 4: {
+                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
+                DAT_UnitsState::instance.pendingUnitControlMode = 4;
+                DAT_UnitsState::instance.unitControlsRelated = 4;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                return;
+            }
+            case 0x14: {
+                uVar2 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                if (uVar2 == 0) {
+                    DAT_StopHandlingMenuItems::instance = 0;
+                }
+                DAT_UnitsState::instance.unitControlsRelated = 0x14;
+                DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
+                return;
+            }
+            case 5: {
+                uVar2 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource, DAT_UnitsState::ptr)();
+                if (uVar2 != 0) {
+                    DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
+                    DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
+                    DAT_UnitsState::instance.unitControlsRelated = 0x14;
+                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                    return;
+                }
+                iVar1 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::selectionContainsTunnelersOnly, DAT_UnitsState::ptr)();
+                if (iVar1 != 0) {
+                    MACRO_CALL(
+                        OpenSHC::UI::MenuItems::General_Func::MenuItemActionHandler_General_ToolbarButtonPressed)(
+                        OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION);
+                    return;
+                }
+                UVar3 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                uVar2 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getFirstSelectedCatapultOrTrebuchetID, DAT_UnitsState::ptr)();
+                if (((UVar3 != OpenSHC::Map::Units::UT_S_CATAPULT) && (UVar3 != OpenSHC::Map::Units::UT_S_TREBUCHET))
+                    || DAT_UnitsState::instance.units[uVar2]
+                            .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
+                        != 0) {
+                    DAT_UnitsState::instance.pendingUnitControlMode = 5;
+                    DAT_UnitsState::instance.unitControlsRelated = 5;
+                    DAT_TileMapState::instance.field185_0x554a08 = 0xf;
+                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                }
+                break;
+            }
+            case 0x16: {
+                if (0 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .counter) {
+                    UVar3 = MACRO_CALL_MEMBER(
+                        OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                    uVar2
+                        = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getFirstSelectedCatapultOrTrebuchetID,
+                            DAT_UnitsState::ptr)();
+                    if (((UVar3 == OpenSHC::Map::Units::UT_S_CATAPULT)
+                            || (UVar3 == OpenSHC::Map::Units::UT_S_TREBUCHET))
+                        && DAT_UnitsState::instance.units[uVar2]
+                                .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
+                            != 0) {
+                        DAT_UnitsState::instance.pendingUnitControlMode = 0x16;
+                        DAT_UnitsState::instance.unitControlsRelated = 0x16;
+                        DAT_TileMapState::instance.field185_0x554a08 = 0xf;
+                        DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
+                        DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                    }
+                }
+                break;
+            }
+            case 8: {
+                DAT_UnitsState::instance.unitControlsRelated = 8;
+                uVar4 = 8;
+            LAB_00446b3b:
+                DAT_UnitsState::instance.pendingUnitControlMode = DAT_UnitsState::instance.unitControlsRelated;
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
+                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
+                DAT_TileMapState::instance.cursorOverlayImageBase = 0;
+                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
+                return;
+            }
+            case 0x1e: {
+                UVar3 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                if (UVar3 == (UnitType)0xffffffff) {
+                    DAT_StopHandlingMenuItems::instance = 0;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
+                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x1e);
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::playPatrolCommandSpeech, DAT_TribesState::ptr)(
+                    DAT_TribesState::instance.DAT_CurrentTribeID);
+                return;
+            }
+            case 0x1f: {
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
+                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x1f);
+                break;
+            }
             case 2:
             case 6:
             case 7:
@@ -74,105 +194,9 @@ namespace UI {
             case 0x1a:
             case 0x1b:
             case 0x1c:
-            case 0x1d:
+            case 0x1d: {
                 break;
-            case 3:
-                uVar4 = 3;
-                DAT_UnitsState::instance.unitControlsRelated = TRUE;
-                goto LAB_00446b3b;
-            case 4:
-                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                DAT_UnitsState::instance.pendingUnitControlMode = 4;
-                DAT_UnitsState::instance.unitControlsRelated = 4;
-                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
-                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                return;
-            case 5:
-                uVar2 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource, DAT_UnitsState::ptr)();
-                if (uVar2) {
-                    DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                    DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
-                    DAT_UnitsState::instance.unitControlsRelated = 0x14;
-                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
-                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                }
-                iVar1 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::selectionContainsTunnelersOnly, DAT_UnitsState::ptr)();
-                if (iVar1) {
-                    MACRO_CALL(UI::MenuItems::General_Func::MenuItemActionHandler_General_ToolbarButtonPressed)(
-                        Commands::M_MAPPER_TUNNEL_CONSTRUCTION);
-                }
-                UVar3 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                uVar2 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::getFirstSelectedCatapultOrTrebuchetID, DAT_UnitsState::ptr)();
-                if (((UVar3 != Map::Units::UT_S_CATAPULT) && (UVar3 != Map::Units::UT_S_TREBUCHET))
-                    || DAT_UnitsState::instance.units[uVar2]
-                            .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
-                        != 0) {
-                    DAT_UnitsState::instance.pendingUnitControlMode = 5;
-                    DAT_UnitsState::instance.unitControlsRelated = 5;
-                    DAT_TileMapState::instance.field185_0x554a08 = 0xf;
-                    DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
-                    DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                }
-                break;
-            case 8:
-                DAT_UnitsState::instance.unitControlsRelated = 8;
-                uVar4 = 8;
-            LAB_00446b3b:
-                DAT_UnitsState::instance.pendingUnitControlMode = DAT_UnitsState::instance.unitControlsRelated;
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
-                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, (undefined4)((int)(uVar4)));
-                DAT_TileMapState::instance.cursorOverlayImageBase = 0;
-                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                return;
-            case 0x14:
-                uVar2 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                if (!uVar2) {
-                    DAT_StopHandlingMenuItems::instance = 0;
-                }
-                DAT_UnitsState::instance.unitControlsRelated = 0x14;
-                DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
-                DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
-                DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
-                return;
-            case 0x16:
-                if (0 < *(int*)((int)DAT_GameState::instance.playerDataArray[0].isFoodTypeBanned + extraout_ECX + -8)) {
-                    UVar3 = MACRO_CALL_MEMBER(
-                        Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                    uVar2 = MACRO_CALL_MEMBER(
-                        Map::Units::UnitsState_Func::getFirstSelectedCatapultOrTrebuchetID, DAT_UnitsState::ptr)();
-                    if (((UVar3 == Map::Units::UT_S_CATAPULT) || (UVar3 == Map::Units::UT_S_TREBUCHET))
-                        && DAT_UnitsState::instance.units[uVar2]
-                                .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
-                            != 0) {
-                        DAT_UnitsState::instance.pendingUnitControlMode = 0x16;
-                        DAT_UnitsState::instance.unitControlsRelated = 0x16;
-                        DAT_TileMapState::instance.field185_0x554a08 = 0xf;
-                        DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
-                        DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
-                    }
-                }
-                break;
-            case 0x1e:
-                UVar3 = MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                if (UVar3 == (UnitType)0xffffffff) {
-                    DAT_StopHandlingMenuItems::instance = 0;
-                }
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
-                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x1e);
-                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::playPatrolCommandSpeech, DAT_TribesState::ptr)(
-                    DAT_TribesState::instance.DAT_CurrentTribeID);
-                return;
-            case 0x1f:
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueDisbandAndAttackCommand2Params,
-                    DAT_UnitsState::ptr)(DAT_TribesState::instance.DAT_CurrentTribeID, 0x1f);
-                break;
+            }
             default:
                 break;
             }
