@@ -354,3 +354,213 @@ Naturally, the stack reserved for the function indicated by `sub esp, <number>` 
 At best, not only the stack fits, but variables are also at the correct positions and sizes within.
 
 If the stack usage shows a proper order in the function (i.e. the initial array occupies the first part in the allocated function stack, which means it requires the highest `[esp + <number>]` to reach), it might be sometimes good to fit one "side" of the stack first and then experiment with the rest of the function that has a non-fitting stack usage.
+
+### Reading a global field twice when a store may alias it
+
+MSVC cannot keep a global field in a register across a store through a pointer, because the
+store may alias it. The original therefore reads such a field once into a local and uses the
+local afterwards; Ghidra turns that local back into repeated field accesses, and every one of
+them becomes a reload in a different register, which drags the whole block out of alignment.
+
+The shape that pays is small and very common in `UI::MenuViews`:
+
+```cpp
+// Ghidra
+MenuHandlerState.y = WindowAndDirectDraw.mainMenuBorderHeight;
+MenuHandlerState.x = WindowAndDirectDraw.mainMenuBorderWidth;
+pMVar1 = MenuHandlerState.currentMenu;
+(MenuHandlerState.currentMenu)->xPosition = WindowAndDirectDraw.mainMenuBorderWidth;
+pMVar1->yPosition = MenuHandlerState.y;
+
+// original
+int borderHeight = WindowAndDirectDraw.mainMenuBorderHeight;
+int borderWidth = WindowAndDirectDraw.mainMenuBorderWidth;
+pMVar1 = MenuHandlerState.currentMenu;
+pMVar1->xPosition = borderWidth;
+pMVar1->yPosition = borderHeight;
+MenuHandlerState.x = borderWidth;
+MenuHandlerState.y = borderHeight;
+```
+
+Twenty-one functions carried that exact block; writing it this way took eighteen of them from
+56-93% to 100% in one build, at 0 WORSE. `diff_reloads.py` finds the remaining sites by counting
+global-field reads per side of the diff.
+
+**MSVC emits two adjacent independent statements in the opposite order to the source.** The same
+block in `MenuView_UnusedOldTitleMenu_Prepare` and
+`MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial` needed the declarations, the two `pMVar1`
+stores *and* the two `MenuHandlerState` stores all written the other way round (height before
+width, `yPosition` before `xPosition`) to come out in the original's order; that took them from
+54% and 82% to 100%. So when the diff shows a pair of stores swapped, swap them in the source
+rather than concluding the order is unreachable. It applies to longer runs too: four
+`UIButtonDefinedData` stores in `MenuView_CustomScenarios_Prepare` and
+`MenuView_HistoricCampaignSelect_Prepare` needed the middle pair swapped.
+
+### A nested call hoisted out of its argument list
+
+MSVC pushes arguments right to left, so a call in argument position *k* is evaluated after
+arguments *k+1* and later. Ghidra hoists it into a temp ahead of everything:
+
+```cpp
+// Ghidra
+pcVar5 = getTextStringInGroupAtOffset(TEXT_MONTHS, month);
+renderTextToScreen(pcVar5, x, y, alignment, color, size, keepOffsetX, blend);
+
+// original
+renderTextToScreen(getTextStringInGroupAtOffset(TEXT_MONTHS, month),
+    x, y, TTA_CENTER, 0xc2f0eb, 0x10, FALSE, 0);
+```
+
+With the temp in the way we evaluate the inner call first, which reorders every push. Writing it
+back took `MenuView_SelectCrusade_DoEveryFrame` and
+`MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame` from 53% and 63% to 100%, and
+`MenuView_CrusadeMissionIntro_DoEveryFrame` from 39% to 53%. `inline_arg.py` does it for the
+temps it can prove are used once per assignment. The decompiler's other argument temps
+(`alignment = TTA_CENTER; color = 0xc2f0eb; ...`) go the same way - write the literals at the
+call.
+
+The same applies to a value that only feeds one call in each arm of a branch: the original calls
+inside each arm and lets MSVC merge the tails, while Ghidra assigns a temp and calls once after
+the join. Duplicating the call into each arm took `MenuView_IntroLogos_Prepare`,
+`MenuView_BuildMenu_Prepare`, `MenuView_CrusadeEndscreen_Prepare` and
+`MenuView_HistoricCampaignIntro_Prepare` to 100%.
+
+### Box geometry is expressed relative to a base, not to the origin
+
+Drawing code computes a corner once and takes every other coordinate from it. Ghidra loses the
+base and writes each coordinate as its own offset from `MenuHandlerState.x`/`.y`, which turns one
+`lea` per corner into a fresh `add` from the origin:
+
+```cpp
+// Ghidra
+drawLine(iVar1 + 0x10d, iVar2 + 0x59, iVar1 + 0x303, iVar2 + 0x59, colour);
+drawLine(iVar1 + 0x2ee, iVar2 + 0x6e, iVar1 + 0x303, iVar2 + 0x6e, colour);
+
+// original
+int left = MenuHandlerState.x + 0x10e;
+int top = MenuHandlerState.y + 0x5a;
+int right = MenuHandlerState.x + 0x302;
+int x1 = left - 1, x2 = right + 1;
+drawLine(x1, top - 1, x2, top - 1, colour);
+drawLine(right - 0x14, top + 0x14, x2, top + 0x14, colour);
+```
+
+The tell in the diff is a run of `lea reg, [base + small]` on the original side against
+`add reg, large` on ours. `MenuView_EditScenario_DoEveryFrame` went from 50.8% to 99.2% and
+`MenuView_MissionSelect_DoEveryFrame` from 89% to 100% this way. Pick the base whose offsets the
+original uses as small constants - it is usually the first corner computed. Note the counterpart
+that did **not** pay: in `MenuView_NewMapMapsize_DoEveryFrame` the same rewrite raised the
+normalized match by 4 points and dropped the raw one by 0.5, because there the base has to stay
+live across a `switch` that mutates it and the allocator spills a different value than the
+original did. Measure this one per function.
+
+### Which arm of an `if` comes first
+
+The arm the original *falls through* to has to be written first. `jne <far>` on the condition
+means the far block is the second arm; `je <near>` means it is the first. Rewriting
+`MenuView_MainMenu_DoEveryFrame` so the modal-dialog case was the `else` (and the
+`SwingSwordBool != 0` case the `if`) took it from 83.5% to 97.2% without changing a single
+expression. A `goto` out of the middle of an arm compiles the same as the equivalent `else`, so
+the `goto` is not what costs the match - the order is.
+
+### An empty `if` body is a dropped guard, usually an early return
+
+`if (cond) {}` is Ghidra reporting a conditional branch whose target it could not place. Where the
+branch goes to the end of the function the original is an early return:
+
+```cpp
+// Ghidra
+if (GameCore.activeMenuTab.tabType == BASMTT_SIEGETENT_SIEGETOWER) {}
+if (GameCore.activeMenuTab.tabType == BASMTT_SIEGETENT_SHIELD) {}
+
+// original
+if ((GameCore.activeMenuTab.tabType == BASMTT_SIEGETENT_SIEGETOWER)
+    || (GameCore.activeMenuTab.tabType == BASMTT_SIEGETENT_SHIELD)) {
+    return;
+}
+```
+
+Both `je` targets are the same address, which is how you tell the two tests belong to one
+condition. `MenuView_MapEditorLandscaping_DoEveryFrame` went from 80.7% to 100%, and the same
+reading applied to `MenuView_GameLost_DoEveryFrame`'s empty `if` - there as the negated
+condition, because a `goto` from elsewhere enters the block the guard protects.
+
+### A guard written `K < x` where the original wrote `x < K + 1`
+
+`K < x` compiles to `cmp x, K; jle`-inverted, while the original's `x < K + 1` compiles to
+`cmp x, K+1; jl`. Both the literal and the strictness differ, so `diff_jcc.py` cannot pair them -
+`diff_offbyone.py` does. Write the literal and the operator the original shows: `cmp x, 0x3b; jl`
+is `x < 0x3b`, never `0x3a < x`. Six sites, all real, two of the functions went to 100%.
+`test eax, eax; jl` is a comparison against 0, so write `0 <= x`, not `-1 < x`.
+
+### An extra argument on a void call is a merged conditional call
+
+Three `Historic*_DoEveryFrame` bodies would not even compile, because Ghidra had merged a
+conditional call pair into one expression and carried the condition in as a trailing parameter:
+
+```cpp
+// Ghidra - RenderGfxHelperUnk takes three arguments, RenderMenuGfxHelper four
+if (((!DAT_00ed2780::instance)
+        && (RenderGfxHelperUnk(gfx, 0x2b, 0x3f, DAT_00ed2780::instance == 0)))
+    || (RenderMenuGfxHelper(gfx, 0x2b, 0x3f, blend, DAT_00ed2780::instance == 0))) {
+
+// original
+if (!DAT_00ed2780::instance) {
+    RenderGfxHelperUnk(gfx, 0x2b, 0x3f);
+} else {
+    RenderMenuGfxHelper(gfx, 0x2b, 0x3f, blend);
+}
+```
+
+The giveaway is the `&&`/`||` chaining of calls that return `void`, with the branch condition
+repeated as the last argument of each.
+
+### The floating-point equality artefact
+
+`32.0 < F != (F == 32.0)` is Ghidra's rendering of one `fcomp`; it is `32.0 <= F`, and written out
+it collapses two bool materialisations and a compare back into the original's single branch.
+Which side to put the constant on is worth measuring: in
+`MenuView_HistoricMissionPicture_DoEveryFrame` `32.0 < F` matched where `32.0 <= F` did not,
+because MSVC loads the left operand first and the original's `fld` is of the constant.
+
+### A `bool` temp holding a comparison
+
+```cpp
+bool bVar2 = UserTextHandler.returnPressed == 0;   // sete al; test al, al
+UserTextHandler.returnPressed = 0;
+if (bVar2) { ... }
+```
+
+compiles to a `sete`/`test` pair where the original has a plain `test`. The store between the
+comparison and the test is why Ghidra needed the temp; moving the store after the branch (and
+duplicating it into the taken path) removes it and recovers the original's single `test`
+(`MenuView_GameStartEnterName_DoEveryFrame`, 82.8% to 96.8%). The same shape with a resolution
+check in `MenuView_UnusedDemoBuyItScreen_DoInitial` was worth 8 points.
+
+### Two locals Ghidra reports as one, and one it reports as two
+
+A buffer whose first four bytes are also used as an `int` comes out as
+`undefined4 local_3f8; char local_3f4[1008];` with a `(char *)((int)&local_3f8 + 3)` walking
+across the boundary. That is one stack slot the compiler *merged* between two locals with
+disjoint lifetimes, not one object - merging them into a single array makes the frame four bytes
+*larger*, not smaller. Leave it alone unless `diff_slots.py` says the frame is short by exactly
+that much.
+
+### Differences that no source change can remove
+
+- `__security_cookie` and `__security_check_cookie` against the resolver symbol at the original's
+  cookie address. `/GS` generates the prologue itself and the DLL has its own cookie. Two
+  instructions per `/GS` function, and `MenuView_MainMenu_DoEveryFrame`,
+  `MenuView_HistoricMissionPicture_Prepare` and `MenuView_HistoricMissionIntro_Prepare` are
+  otherwise identical.
+- `_ftol2_sse` against the original's own float-to-long helper.
+- An immediate that happens to fall inside a resolver's address range, rendered as
+  `I<...>::instance+N` on the original side and as the literal on ours (`0xffffff` lands in
+  `BuildingsState`, `0x7caaaf` in `SpeechDefinedData`).
+- A global whose `MACRO_STRUCT_RESOLVER` type disagrees with the type recorded in its own
+  generated header comment: the two sides then print different symbol names for the same address
+  (`StructResolver::Instance<unsigned int,15440624>` against `I<int>`).
+  `MenuView_UnusedExtremeAd_DoEveryFrame` reaches normalized 100% with raw 86% for this reason
+  alone. Fixing it means editing `src/OpenSHC/Globals/*.hpp` and adding `(int)` casts at every
+  signed comparison site, so it belongs in its own commit with the whole namespace in the build
+  list.
