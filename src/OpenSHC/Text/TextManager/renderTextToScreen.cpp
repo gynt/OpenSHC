@@ -43,8 +43,8 @@ namespace Text {
                 _char = *_textLengthHelper;
                 _textLengthHelper = _textLengthHelper + 1;
             } while (_char != '\0');
-            MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderText,
-                &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
+            MACRO_CALL_MEMBER(
+                Text::FontSizeClass_Func::renderText, &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 textAddress, (int)_textLengthHelper - (int)(textAddress + 1), xPos, yParam, color, blendStrength);
         }
         return;

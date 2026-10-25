@@ -40,19 +40,17 @@ namespace UI {
             int iVar4;
             DAT_GameSynchronyState::instance.field225_0x106ee4 = 1;
             DAT_GameCore::instance.menuTabToSwitchTo.tabType = ((BuildingsAndStatusMenuTabType)0);
-            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                UI::Enums::MVT_LOBBY_MENU, 0);
+            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(UI::Enums::MVT_LOBBY_MENU, 0);
             MACRO_CALL(Synchrony_Func::InitSkirmishLobbyData)();
             Menu_LobbyMenu::instance.thousand = 0;
-            MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::setupSkirmishLobby, DAT_GameSynchronyState::ptr)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setupSkirmishLobby, DAT_GameSynchronyState::ptr)();
             DAT_GameSynchronyState::instance.isHost = TRUE;
             DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SKIRMISH_SINGLE_PLAYER;
             DAT_GameSynchronyState::instance.DPLAYX_ReceivedPlayerID = 1;
             DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
             MACRO_CALL(OS_Func::_memset)(DAT_GameSynchronyState::instance.DAT_PlayerNames, 0, 0x8ca);
-            pcVar2 = MACRO_CALL_MEMBER(
-                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+            pcVar2
+                = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
             pacVar3 = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
             do {
                 cVar1 = *pcVar2;

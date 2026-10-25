@@ -21,11 +21,10 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedCreateMessageEvent::ptr)(
             UI::Enums::MMT_UNUSED_CREATE_MESSAGE_EVENT, -1, -1, 700, 0x1cc, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(UI::MenuModals::UnusedCreateMessageEvent_Func::
-                    MenuModalRenderFunction_UnusedCreateMessageEvent),
+            (UI::MenuModalRenderFunction*)MACRO_CALL(
+                UI::MenuModals::UnusedCreateMessageEvent_Func::MenuModalRenderFunction_UnusedCreateMessageEvent),
             Menu_UnusedCreateMessageEvent::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedCreateMessageEvent));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedCreateMessageEvent));
         return;
     }
 

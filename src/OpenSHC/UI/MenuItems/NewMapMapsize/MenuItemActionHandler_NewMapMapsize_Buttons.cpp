@@ -47,30 +47,26 @@ namespace UI {
                             iVar1 = 300;
                         }
                         DAT_TileMapState::instance.mapSize = iVar1;
-                        MACRO_CALL_MEMBER(
-                            Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(iVar1);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(
+                            iVar1);
                         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
-                        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                              updatePathLinkageLayerForEachBuildingAtEachTile,
+                        MACRO_CALL_MEMBER(
+                            Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
                             DAT_PathFindingState::ptr)();
                         MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap,
                             DAT_PathFindingState::ptr)(1);
-                        MACRO_CALL_MEMBER(
-                            Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
+                        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
                             DAT_BuildingsState::ptr)();
                         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
                         DAT_TileMapState::instance.field68_0x55487c = 200;
-                        MACRO_CALL_MEMBER(
-                            Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
-                        MACRO_CALL_MEMBER(
-                            Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
+                        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
                         for (iVar1 = 0; iVar1 < 0x28; iVar1++) {
-                            MACRO_CALL_MEMBER(
-                                Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(iVar1);
+                            MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(
+                                iVar1);
                         }
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
-                        MACRO_CALL_MEMBER(
-                            Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateNofFpoints, DAT_WildlifeState::ptr)();
                         MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize,
                             DAT_MinimapViewState::ptr)(0, 100);

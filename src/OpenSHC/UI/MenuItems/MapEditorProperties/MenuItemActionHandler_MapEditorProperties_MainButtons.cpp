@@ -79,13 +79,12 @@ namespace UI {
                 case 3:
                     if ((!DAT_GameCore::instance.U2_mapType_singleOrMulti)
                         || (DAT_GameCore::instance.mapLoadedForEditor)) {
-                        MACRO_CALL_MEMBER(
-                            Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
+                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::determineScenarioMissionTypeAndResetEvents,
                             DAT_MapPropertiesState::ptr)();
                         DAT_MenuTextInputState::instance.field42_0x9c = 1;
                         DAT_MenuTextInputState::instance.field44_0xa4 = 0;
-                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::activateLoadOrSaveMapUI,
-                            DAT_MenuTextInputState::ptr)(10);
+                        MACRO_CALL_MEMBER(
+                            UI::MenuTextInputState_Func::activateLoadOrSaveMapUI, DAT_MenuTextInputState::ptr)(10);
                         INT_00b960e4::instance = 1;
                         return;
                     }
@@ -112,10 +111,9 @@ namespace UI {
                         DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                         DAT_GameCore::instance.gameMode_2 = Game::GM_EDITOR;
                         DAT_GameCore::instance.missionNumber1to20 = 0x1b;
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                         MACRO_CALL_MEMBER(
-                            Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs,
-                            DAT_UnitsState::ptr)();
+                            Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[0] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[2] = -1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[3] = -1;
@@ -163,10 +161,10 @@ namespace UI {
                             DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX, FALSE);
                         MACRO_CALL_MEMBER(
                             UI::MenuModalComposition_Func::renderMenuModal, DAT_MenuModalComposition1::ptr)();
-                        MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
-                            DAT_WindowAndDirectDraw::ptr)(0);
-                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName,
-                            DAT_ResourceManager::ptr)(IO::FRT_MAPS, "auto_backup_map.map");
+                        MACRO_CALL_MEMBER(
+                            UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip, DAT_WindowAndDirectDraw::ptr)(0);
+                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                            IO::FRT_MAPS, "auto_backup_map.map");
                         FilePackagerObj::instance.loadAndSaveBarFunc
                             = MACRO_CALL(UI::Rendering_Func::RenderLoadAndSaveBar);
                         MACRO_CALL_MEMBER(IO::FilePackager_Func::writeMapOrSaveFile, FilePackagerObj::ptr)(
@@ -176,8 +174,8 @@ namespace UI {
                             DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[2] = 2;
                         }
                         DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
-                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
-                            DAT_MenuTextInputState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                         DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                         DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
                         DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
@@ -354,12 +352,10 @@ namespace UI {
                         DAT_GameState::instance.mapAndTime.countUpTo201 = 0;
                         MACRO_CALL_MEMBER(
                             Map::MapPropertiesState_Func::importTradingCosts, DAT_MapPropertiesState::ptr)();
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                         MACRO_CALL_MEMBER(
-                            Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs,
-                            DAT_UnitsState::ptr)();
-                        DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                            = UI::Enums::BASMTT_HUNTERSHUT;
+                            Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+                        DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = UI::Enums::BASMTT_HUNTERSHUT;
                         MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             UI::Enums::MVT_BUILD_MENU, 0);
                         return;

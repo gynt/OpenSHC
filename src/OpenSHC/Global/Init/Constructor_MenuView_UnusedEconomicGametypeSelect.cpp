@@ -25,8 +25,7 @@ namespace Global {
             MACRO_CALL(
                 UI::MenuViews::UnusedEconomicGametypeSelect_Func::MenuView_UnusedEconomicGametypeSelect_DoInitial),
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicGametypeSelect));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicGametypeSelect));
         return;
     }
 

@@ -2,6 +2,7 @@
 #include "../TileMapState.func.hpp"
 
 #include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
+
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_TerrainDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"

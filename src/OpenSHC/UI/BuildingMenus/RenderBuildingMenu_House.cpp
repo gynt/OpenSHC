@@ -39,8 +39,8 @@ namespace UI {
         /*
           added by script: "Hovel"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_HOUSE, 0);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_HOUSE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
         blendStrength = 0;
@@ -52,8 +52,8 @@ namespace UI {
         /*
           added by script: "Provides space for 8 peasants."
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_HOUSE, 1);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_HOUSE, 1);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
     }

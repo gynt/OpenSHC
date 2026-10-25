@@ -15,7 +15,6 @@
 #include "OpenSHC/UI/MinimapViewState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_AICState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_EntityState.hpp"
@@ -25,6 +24,7 @@
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
 #include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
@@ -51,12 +51,12 @@ namespace Map {
         DAT_TileMapState::instance.SEC_Section1054 = 0;
         MACRO_CALL_MEMBER(Map::TileMapState_Func::setupTileMapSections, this)();
         DAT_WallAndPitchState::instance.countdown = 0;
-        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setTileSystemMemoryLookupArrays,
-            DAT_ViewportRenderState::ptr)();
-        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::tweakValidTilesToExcludeMapBorders,
-            DAT_ViewportRenderState::ptr)();
-        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupViewport, DAT_ViewportRenderState::ptr)(0,
-            0, (undefined4)((int)(DAT_WindowAndDirectDraw::instance.resolutionX)),
+        MACRO_CALL_MEMBER(
+            Rendering::ViewportRenderState_Func::setTileSystemMemoryLookupArrays, DAT_ViewportRenderState::ptr)();
+        MACRO_CALL_MEMBER(
+            Rendering::ViewportRenderState_Func::tweakValidTilesToExcludeMapBorders, DAT_ViewportRenderState::ptr)();
+        MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupViewport, DAT_ViewportRenderState::ptr)(0, 0,
+            (undefined4)((int)(DAT_WindowAndDirectDraw::instance.resolutionX)),
             (undefined4)((int)(DAT_WindowAndDirectDraw::instance.resolutionY + -128)));
         MACRO_CALL_MEMBER(Map::TileMapState_Func::setupLogicalMapBorders, this)();
         MACRO_CALL_MEMBER(Map::TileMapState_Func::updateShowHiLayerOrResetChangedLayer, this)();
@@ -131,8 +131,8 @@ namespace Map {
         DAT_PathFindingState::instance.searchGeneration = 1;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             160800, '\0', (void*)((int)(DAT_TileMapState::instance.WalkLayer)));
-        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::setChangedLayerZeroBasedOn40x40Layer,
-            DAT_PathFindingState::ptr)(0);
+        MACRO_CALL_MEMBER(
+            Map::Navigation::PathFindingState_Func::setChangedLayerZeroBasedOn40x40Layer, DAT_PathFindingState::ptr)(0);
         MACRO_CALL_MEMBER(Map::TileMapState_Func::updateLogicalTileMapRelatedSections, this)();
         MACRO_CALL_MEMBER(Map::TileMapState_Func::updateGfxLayer, this)();
         MACRO_CALL_MEMBER(Map::TileMapState_Func::updateGFXLayers, this)();
@@ -148,13 +148,10 @@ namespace Map {
         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearAllUnits, DAT_UnitsState::ptr)();
         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearAllTribes, DAT_TribesState::ptr)();
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearMapAndTimeAndPlayerData, DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(
-            Game::GameStateStructures_Func::resetVariousCountsAndStatisticsAndStartGoodsAndResources,
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetVariousCountsAndStatisticsAndStartGoodsAndResources,
             DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(
-            Game::GameStateStructures_Func::clearCurrentResourcesAndStrongWalls, DAT_GameState::ptr)();
-        MACRO_CALL_MEMBER(
-            Game::GameStateStructures_Func::initializeGameStateAfterMapLoad, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearCurrentResourcesAndStrongWalls, DAT_GameState::ptr)();
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::initializeGameStateAfterMapLoad, DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::fillWith0xFF, DAT_GameState::ptr)();
         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearAnimalSpawnLocationsUnk, DAT_TribesState::ptr)();
         piVar4 = DAT_AICState::instance.tribeUIDArray;
@@ -167,25 +164,23 @@ namespace Map {
         } while ((int)psVar2 < 0x24026cc);
         MACRO_CALL(Global_Func::DoNothing)();
         MACRO_CALL(Global_Func::DoNothing)();
-        MACRO_CALL_MEMBER(
-            Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, DAT_EntityState::ptr)();
+        MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::clearEntityArrayAndSeagullArray, DAT_EntityState::ptr)();
         MACRO_CALL_MEMBER(Map::TileMapState_Func::setChangedLayerToThreeAndMapping0x40x40, this)();
         DAT_TileMapState::instance.forceUpdateLogicalAndMiscDisplayLayers = 1;
         DAT_TileMapState::instance.forceUpdateTextureTilemap = 1;
         DAT_TileMapState::instance.forceUpdateGFXLayers = 1;
         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
         DAT_TileMapState::instance.field68_0x55487c = 200;
-        MACRO_CALL_MEMBER(
-            Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
             DAT_PathFindingState::ptr)();
-        MACRO_CALL_MEMBER(
-            Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(1);
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(
+            1);
         DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
         DAT_TileMapState::instance.field68_0x55487c = 500;
-        MACRO_CALL_MEMBER(
-            UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
-        MACRO_CALL_MEMBER(
-            UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
+        MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, DAT_MinimapViewState::ptr)(
+            0, 100);
+        MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, DAT_MinimapViewState::ptr)(
+            0, 100);
         DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
         MACRO_CALL(Map_Func::ResetSomeValuesFunctionUnk)();
     }

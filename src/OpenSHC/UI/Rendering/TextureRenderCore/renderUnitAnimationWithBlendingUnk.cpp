@@ -6,11 +6,11 @@
 #include "OpenSHC/Rendering/ColorMode.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
-#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_BlendFilterArrays.hpp"
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_CurrentlyRenderedSpriteID.hpp"
 #include "OpenSHC/Globals/DAT_RenderedUnitOwner.hpp"
+#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 
 namespace OpenSHC {
@@ -75,13 +75,16 @@ namespace UI {
                     iVar2 = blendStrengthUnk * -0x200;
                     iVar10 = iVar2 + 0xd812d8;
                     if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
-                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                             local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                             local_c = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
                         } else {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                             local_8 = 0x1fb0;
                             local_c = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
@@ -113,8 +116,8 @@ namespace UI {
                                             yPosition = local_c;
                                         } while (0 < iVar14);
                                     }
-                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8
-                                        + xPosition * 2);
+                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                        + yPosition * local_8 + xPosition * 2);
                                     puVar20 = puVar19;
                                     do {
                                         while (true) {
@@ -201,8 +204,8 @@ namespace UI {
                                         yPosition = local_c;
                                     } while (0 < iVar14);
                                 }
-                                puVar19
-                                    = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8 + xPosition * 2);
+                                puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                    + yPosition * local_8 + xPosition * 2);
                                 puVar20 = puVar19;
                                 do {
                                     while (true) {
@@ -274,14 +277,19 @@ namespace UI {
                             }
                         }
                     } else {
-                        DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                        DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                            = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                         uVar11 = xPosition & 1;
                         if ((yPosition + height <= DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)
-                            || (height = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition, 0 < height)) {
+                            || (height
+                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition,
+                                0 < height)) {
                             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
                                 if (-1 < xPosition) {
-                                    if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                    if (yPosition
+                                        < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
+                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                            - yPosition;
                                         if (height <= iVar14) {
                                             DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                                 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -304,7 +312,8 @@ namespace UI {
                                                 imageAddress = pbVar16 + 2;
                                             }
                                             iVar14 = iVar14 + -1;
-                                            yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                            yPosition
+                                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                         } while (0 < iVar14);
                                     }
                                     iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -417,7 +426,8 @@ namespace UI {
                             }
                             if (-1 < xPosition) {
                                 if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                        - yPosition;
                                     if (height <= iVar14) {
                                         DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                             = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -440,7 +450,8 @@ namespace UI {
                                             imageAddress = pbVar16 + 2;
                                         }
                                         iVar14 = iVar14 + -1;
-                                        yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                        yPosition
+                                            = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                     } while (0 < iVar14);
                                 }
                                 iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame

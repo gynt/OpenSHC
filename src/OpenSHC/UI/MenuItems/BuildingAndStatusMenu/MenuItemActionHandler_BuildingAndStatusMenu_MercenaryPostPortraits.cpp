@@ -49,8 +49,8 @@ namespace UI {
                     (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
                 if (iVar3) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_RECRUIT_UNIT);
                     MACRO_CALL(UI::Helpers_Func::DisableMercPostPortraits)();
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         Audio::SFX::SEID_BUTTON_CLICK_01);
@@ -74,8 +74,7 @@ namespace UI {
                             /*
                               "Your army is approaching its maximum size"
                              */
-                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                "Genie_27.wav");
+                            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_27.wav");
                             param_1 = DAT_ClickedMercUnitType::instance;
                         }
                     }
@@ -106,8 +105,7 @@ namespace UI {
                     /*
                       "Your army is at its maximum size"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
-                        "Genie_26.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)("Genie_26.wav");
                 }
                 if (iVar3 == 4)
                     goto LAB_004675eb;

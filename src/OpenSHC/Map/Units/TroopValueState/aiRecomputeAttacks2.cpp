@@ -30,8 +30,8 @@ namespace Map {
             int iVar4;
             int playerID;
             playerID = (int)(char)DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray[param_2];
-            BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZone,
-                DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, playerID, param_2);
+            BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::canKeepReachSignpostZone, DAT_GameState::ptr)(
+                DAT_GameSynchronyState::instance.currentPlayerSlotID, playerID, param_2);
             MACRO_CALL_MEMBER(Util::Timing::Stopwatch_Func::start, DAT_UnknownStopwatch::ptr)();
             piVar1 = (int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + playerID * 0x177bc + -0x10);
             *piVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;

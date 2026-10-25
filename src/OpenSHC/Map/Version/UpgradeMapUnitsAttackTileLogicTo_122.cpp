@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using Map::Units::UnitLogicState;
     using Map::Units::Unit;
+    using Map::Units::UnitLogicState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B4F0
     void Version::UpgradeMapUnitsAttackTileLogicTo_122()

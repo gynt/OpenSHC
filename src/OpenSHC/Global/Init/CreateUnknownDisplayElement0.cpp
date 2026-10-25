@@ -18,10 +18,8 @@ namespace Global {
     void Init::CreateUnknownDisplayElement0()
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, UnknownDisplayElement0::ptr)(
-            DE::SHCDE::OST_CHAT, 4, 0x198, 1,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(Global_Func::DoNothing),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_TOWARDS_MID_Y));
+            DE::SHCDE::OST_CHAT, 4, 0x198, 1, (UI::DisplayElementRenderFunc*)MACRO_CALL(Global_Func::DoNothing),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_TOWARDS_MID_Y));
         return;
     }
 

@@ -23,8 +23,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_Prepare),
             MACRO_CALL(UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoInitial),
             MACRO_CALL(UI::MenuViews::Unknown26_Func::MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown26_CampaignRelatedUnk));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown26_CampaignRelatedUnk));
         return;
     }
 

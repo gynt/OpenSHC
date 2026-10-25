@@ -55,8 +55,8 @@ namespace Audio {
         int _totalTroopValue;
         _currentGold = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xf];
         _totalTroopValue = DAT_GameState::instance.playerDataArray[playerID].totalTroopValue;
-        _appleSalesPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood,
-            DAT_GameState::ptr)(Game::Resources::RT_APPLE);
+        _appleSalesPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
+            Game::Resources::RT_APPLE);
         _currentApple = DAT_GameState::instance.playerDataArray[playerID].currentResources[0xd];
         iVar1 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
             Game::Resources::RT_MEAT);
@@ -109,8 +109,8 @@ namespace Audio {
         iVar17 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(
             Game::Resources::RT_HOPS);
         _currentHops = DAT_GameState::instance.playerDataArray[playerID].currentResources[3];
-        _woodSalesPriceDividedBy5 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getSalePriceOfGood,
-            DAT_GameState::ptr)(Game::Resources::RT_WOOD);
+        _woodSalesPriceDividedBy5 = MACRO_CALL_MEMBER(
+            Game::GameStateStructures_Func::getSalePriceOfGood, DAT_GameState::ptr)(Game::Resources::RT_WOOD);
         return (_woodSalesPriceDividedBy5 * DAT_GameState::instance.playerDataArray[playerID].currentResources[2]
                    + iVar17 * _currentHops + iVar16 * _currentStone + iVar15 * _currentIron
                    + iVar14 * _currentPartialPitch + iVar13 * _currentBeer + iVar12 * _currentFlour)

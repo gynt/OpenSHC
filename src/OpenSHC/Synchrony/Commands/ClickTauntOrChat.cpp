@@ -7,6 +7,7 @@
 #include "OpenSHC/Text/TextManager.func.hpp"
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
 #include "OpenSHC/Util/WideCharMultiByteState.func.hpp"
+#include "OpenSHC/Audio/mss/SoundFlagsAndLoopCount.hpp"
 #include "OpenSHC/Commands/GameCommandParameterLocation.hpp"
 #include "OpenSHC/Commands/GameCommandParameterReadWrite.hpp"
 #include "OpenSHC/Commands/GameCommandScheduling.hpp"
@@ -21,17 +22,16 @@
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_WideCharMultiByteState.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Audio/mss/SoundFlagsAndLoopCount.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
 
+    using OpenSHC::Audio::MSS::SoundFlagsAndLoopCount;
     using OpenSHC::Commands::GameCommandParameterLocation;
     using OpenSHC::Commands::GameCommandParameterReadWrite;
     using OpenSHC::Commands::GameCommandScheduling;
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::IO::FileResourceType;
-    using OpenSHC::Audio::MSS::SoundFlagsAndLoopCount;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004895E0
     void Commands::ClickTauntOrChat()

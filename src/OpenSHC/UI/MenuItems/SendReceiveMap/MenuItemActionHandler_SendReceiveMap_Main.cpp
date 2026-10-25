@@ -57,8 +57,8 @@ namespace UI {
                         pcVar3 = pcVar2 + 1;
                     } while (pcVar2[1] != '\0');
                     strcpy(pcVar2 + 1, ".map");
-                    MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName,
-                        DAT_ResourceManager::ptr)(IO::FRT_MAPS, (char const*)((int)(local_3f4)));
+                    MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                        IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                     DAT_GameSynchronyState::instance.mapSendingFileSize = MACRO_CALL_MEMBER(
                         IO::ResourceManager_Func::getCurrentResourceSize, DAT_ResourceManager::ptr)();
                     DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile = (FILE*)0x0;
@@ -70,8 +70,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[_addressee] = 0;
                         if (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[_addressee] == 1) {
-                            _fileName = MACRO_CALL_MEMBER(
-                                IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
+                            _fileName = MACRO_CALL_MEMBER(IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
                                 DAT_ResourceManager::ptr)();
                             _fileHandle = MACRO_CALL(OS_Func::_fopen)(_fileName, "rb");
                             DAT_GameSynchronyState::instance.mapSendingFileHandles[_addressee] = _fileHandle;
@@ -105,15 +104,14 @@ namespace UI {
                     MACRO_CALL(OS_Func::_fclose)(DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile);
                     DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile = (FILE*)0x0;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
-                    MACRO_CALL_MEMBER(
-                        Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                         (Commands::GameCommandType)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
                             | Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
                 }
                 goto LAB_004b1298;
             }
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
         LAB_004b12ab:;
         }
 

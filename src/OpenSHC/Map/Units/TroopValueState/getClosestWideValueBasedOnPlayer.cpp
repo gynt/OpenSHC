@@ -41,13 +41,11 @@ namespace Map {
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_ptr->tile2];
                         fromXPosition = _ptr->tile2
                             - DAT_ViewportRenderState::instance.translationMatrix[fromYPosition].addXgetTile;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[playerID].x,
                             (int)((int)(DAT_UnitsState::instance.units[playerID].y)), fromXPosition, fromYPosition);
                         iVar1 = DAT_DirectionAlgorithmState::instance.distanceHigh;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(
                             destinationXPosition, destinationYPosition, fromXPosition, fromYPosition);
                         if (iVar1 + DAT_DirectionAlgorithmState::instance.distanceHigh < local_18) {

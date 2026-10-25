@@ -24,8 +24,7 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::UnusedCreateTimedMessageEvent_Func::
                     MenuModalRenderFunction_UnusedCreateTimedMessageEvent),
             Menu_UnusedCreateTimedMessageEvent::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedCreateTimedMessageEvent));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedCreateTimedMessageEvent));
         return;
     }
 

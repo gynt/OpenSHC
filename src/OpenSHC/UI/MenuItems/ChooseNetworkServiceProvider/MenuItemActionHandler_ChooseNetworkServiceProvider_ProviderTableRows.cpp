@@ -23,14 +23,10 @@ namespace UI {
                 DAT_GameSynchronyState::instance.selectedProviderIndex = param_1;
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID,
                     DAT_GameSynchronyState::ptr)();
-                if (DAT_GameCore::instance.activeMenuTab.tabType
-                    == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(7);
-                } else if (DAT_GameCore::instance.activeMenuTab.tabType
-                    == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);
+                if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(7);
+                } else if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP) {
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(5);
                 }
             }
         }

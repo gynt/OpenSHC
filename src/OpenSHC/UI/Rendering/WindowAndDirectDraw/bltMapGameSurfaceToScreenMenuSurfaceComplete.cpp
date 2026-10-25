@@ -24,8 +24,8 @@ namespace UI {
             _destinationRect.right = DAT_WindowAndDirectDraw::instance.resolutionX;
             _destinationRect.left = 0;
             _destinationRect.top = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
-                this)(&_destinationRect, &_sourceRect);
+            MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                &_destinationRect, &_sourceRect);
             DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_screenMenu->Blt(&_destinationRect,
                 DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000,
                 (LPDDBLTFX)0x0);

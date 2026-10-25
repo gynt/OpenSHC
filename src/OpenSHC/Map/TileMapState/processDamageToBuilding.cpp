@@ -155,19 +155,17 @@ namespace Map {
                 }
                 if (damageUnk < 1) {
                 LAB_00516d9a:
-                    MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(yPosition, tile);
                 } else {
                     do {
                         if (DAT_TileMapState::instance.HeightLayer[tile]
                             <= DAT_TileMapState::instance.DefaultHeightLayer[tile]) {
-                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::destroyEntitiesOnTile,
-                                DAT_EntityState::ptr)(tile);
+                            MACRO_CALL_MEMBER(
+                                Map::Entities::EntityState_Func::destroyEntitiesOnTile, DAT_EntityState::ptr)(tile);
                             DAT_TileMapState::instance.LogicLayer[tile] = DAT_TileMapState::instance.LogicLayer[tile]
-                                & ~(Map::LogicHelpers::L_WALL_OR_GATEHOUSE
-                                    | Map::LogicHelpers::L_CRENEL | Map::LogicHelpers::L_STAIRS
-                                    | Map::LogicHelpers::L_UNKNOWN_WALL_RELATED
+                                & ~(Map::LogicHelpers::L_WALL_OR_GATEHOUSE | Map::LogicHelpers::L_CRENEL
+                                    | Map::LogicHelpers::L_STAIRS | Map::LogicHelpers::L_UNKNOWN_WALL_RELATED
                                     | Map::LogicHelpers::L_CRENEL_VARIATIONUnk);
                             DAT_TileMapState::instance.HeightLayer[tile]
                                 = DAT_TileMapState::instance.DefaultHeightLayer[tile];
@@ -184,8 +182,7 @@ namespace Map {
                         }
                         _owner = _owner + 1;
                     } while (_owner < damageUnk);
-                    MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(yPosition, tile);
                 }
                 goto LAB_0051769a;
@@ -241,8 +238,8 @@ namespace Map {
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeBuildingID_2].buildingType]
                         == 0);
-                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
-                    DAT_BuildingsState::ptr)(_drawbridgeBuildingID_2);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+                    _drawbridgeBuildingID_2);
             }
         }
         _buildingType2 = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType;
@@ -312,8 +309,7 @@ namespace Map {
         case Map::Buildings::BT_TOWER3:
         case Map::Buildings::BT_TOWER4:
         case Map::Buildings::BT_TOWER5:
-            MACRO_CALL_MEMBER(AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(
-                _owner, playerID);
+            MACRO_CALL_MEMBER(AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(_owner, playerID);
             break;
         default:
             MACRO_CALL_MEMBER(AI::AICState_Func::playVictory2BikFromPlayerToPlayer, DAT_AICState::ptr)(
@@ -348,8 +344,8 @@ namespace Map {
                     = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].currentTilePositionAdjusted;
                 DAT_BuildingsState::instance.buildings[_buildingIDAtTile].noRubble = 0;
                 _y = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
-                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
-                    DAT_BuildingsState::ptr)(_buildingIDAtTile);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding, DAT_BuildingsState::ptr)(
+                    _buildingIDAtTile);
                 if (_pitch < 5) {
                     MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_owner2, _x * 8 + 0x10, _y * 8 + 0x10,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 3);
@@ -358,8 +354,8 @@ namespace Map {
                     _microX = _x * 8 + 0x10;
                     MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_owner2, _microX, _microY,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 5);
-                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                        DAT_EntityState::ptr)(0, (undefined4)((int)(_owner2)), 0, _microX, _microY,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                        (undefined4)((int)(_owner2)), 0, _microX, _microY,
                         (int)((int)((uint)DAT_TileMapState::instance.HeightLayer[_buildingOwnerZeroBased])), 0, 0, 0,
                         Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
@@ -383,8 +379,8 @@ namespace Map {
                     = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                 [(short)DAT_BuildingsState::instance.buildings[_drawbridgeID].buildingType]
                         == 0);
-                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
-                    DAT_BuildingsState::ptr)(_drawbridgeID);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+                    _drawbridgeID);
                 _owner = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::findParticularBuilding,
                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.buildings[_buildingIDAtTile].owner,
                     ((int)((short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].x)),
@@ -396,8 +392,8 @@ namespace Map {
                         = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
                                     [(short)DAT_BuildingsState::instance.buildings[_owner].buildingType]
                             == 0);
-                    MACRO_CALL_MEMBER(
-                        Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(_owner);
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+                        _owner);
                 }
             }
             _gatehouseY = DAT_BuildingsState::instance.buildings[_buildingIDAtTile].y;
@@ -420,11 +416,10 @@ namespace Map {
                 != (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)) {
                 DAT_UnitsState::instance.units[_buildingOwnerZeroBased].totalSizeOfPathPlan
                     = DAT_UnitsState::instance.units[_buildingOwnerZeroBased].currentIndexInPathPlan;
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::applyTunnelDamageAlongPathPlan,
-                    DAT_UnitsState::ptr)(_buildingOwnerZeroBased);
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::applyTunnelDamageAlongPathPlan, DAT_UnitsState::ptr)(
+                    _buildingOwnerZeroBased);
             }
-            DAT_UnitsState::instance.units[_buildingOwnerZeroBased].state.generic
-                = Map::Units::States::US_DISAPPEAR;
+            DAT_UnitsState::instance.units[_buildingOwnerZeroBased].state.generic = Map::Units::States::US_DISAPPEAR;
             DAT_UnitsState::instance.units[_buildingOwnerZeroBased].disappearFadeAlphaCountdown = 0x20;
             DAT_UnitsState::instance.units[_buildingOwnerZeroBased].updateTickTracker = 0x20;
             goto switchD_00517137_caseD_1d;
@@ -507,15 +502,14 @@ namespace Map {
             iVar11 = 6;
             cbt = Commands::M_MAPPER_TOWER5_DESTROYED;
         }
-        MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)(
-            damageUnk, _owner, iVar12, cbt, iVar11, 0xf);
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)(damageUnk, _owner, iVar12, cbt, iVar11, 0xf);
         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
             _owner, iVar12, DE::SHCDE::FX_TOWER_SMASH);
         bVar9 = 1;
         local_8 = TRUE;
     LAB_0051769a:
-        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
-            DAT_PathFindingState::ptr)(7, xPosition, yPosition);
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
+            7, xPosition, yPosition);
         return ~-(uint)bVar9 & local_8;
     switchD_00517137_caseD_1d:
         _owner = (int)(short)DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType;

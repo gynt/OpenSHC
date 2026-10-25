@@ -43,8 +43,8 @@ namespace UI {
         /*
           added by script: "Engineer's Guild"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_ENGINEERS_GUILD, 0);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_ENGINEERS_GUILD, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, alignment, color, iVar4, keepOffsetX, iVar5);
         MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();

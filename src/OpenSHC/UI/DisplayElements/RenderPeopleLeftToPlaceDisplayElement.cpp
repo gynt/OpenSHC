@@ -40,13 +40,12 @@ namespace UI {
          */
         textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAPEDIT, 0x2c);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-            textAddress, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX,
-            blendStrength);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(textAddress,
+            xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
             2499 - DAT_UnitsState::instance.unitCount,
-            DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + 6 + posX, posY, Text::TTA_LEFT, 0xc2f0eb,
-            0, 0x11, FALSE, 0);
+            DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + 6 + posX, posY, Text::TTA_LEFT, 0xc2f0eb, 0, 0x11,
+            FALSE, 0);
     }
 
 }

@@ -20,8 +20,7 @@ namespace UI {
                 param_1 = param_1 + 1;
             } while (cVar1 != '\0');
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].binkObjIndex = param_2;
-            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].flagLoopCount
-                = 1 - param_3;
+            DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].flagLoopCount = 1 - param_3;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].volume = param_4;
             DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;
         }

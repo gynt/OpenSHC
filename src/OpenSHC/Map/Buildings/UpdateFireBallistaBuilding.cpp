@@ -84,8 +84,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[_fireballistaUnit].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[_fireballistaUnit].displayOwnerFlag = 0;
             if (_fullID == -1) {
-                _lordType = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
-                    DAT_GameSynchronyState::ptr)(_owner);
+                _lordType = MACRO_CALL_MEMBER(
+                    Synchrony::GameSynchronyState_Func::getLordTypeForPlayer, DAT_GameSynchronyState::ptr)(_owner);
                 _fireballistaUnit = DAT_CurrentBuildingID::instance;
                 if (!_lordType) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
@@ -111,8 +111,8 @@ namespace Map {
               if progress > 320
              */
             _owner2 = (int)DAT_BuildingsState::instance.buildings[_fireballistaUnit].owner;
-            _fireballistaUnit = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                _owner2, _owner2, (int)((int)((short)DAT_BuildingsState::instance.buildings[_fireballistaUnit].x * 8)),
+            _fireballistaUnit = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(_owner2,
+                _owner2, (int)((int)((short)DAT_BuildingsState::instance.buildings[_fireballistaUnit].x * 8)),
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[_fireballistaUnit].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[_fireballistaUnit].terrainHeightUnk)),
                 Map::Units::UT_S_FBALLISTA);
@@ -147,19 +147,17 @@ namespace Map {
                     do {
                         _engineer = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                         .workerID[_counter2];
-                        DAT_UnitsState::instance.units[_engineer].state.generic
-                            = Map::Units::States::US_JESTER_ROAM_TO;
+                        DAT_UnitsState::instance.units[_engineer].state.generic = Map::Units::States::US_JESTER_ROAM_TO;
                         DAT_UnitsState::instance.units[_engineer].disappearFadeAlphaCountdown = 0x20;
                         DAT_UnitsState::instance.units[_engineer].engineerManningSiegeStateRef_checkType = 0xfe;
                         DAT_UnitsState::instance.units[_engineer].cachedState
                             = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                         DAT_UnitsState::instance.units[_engineer].totalSizeOfPathPlan = 0;
                         DAT_UnitsState::instance.units[_engineer].movementCooldown = 0;
-                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::resetUnitMovementState,
-                            DAT_UnitsState::ptr)(_engineer);
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(
+                            _engineer);
                         sVar2 = DAT_UnitsState::instance.units[_engineer].aiUnitBehaviourType;
-                        DAT_UnitsState::instance.units[_engineer].targetingType
-                            = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
+                        DAT_UnitsState::instance.units[_engineer].targetingType = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
                         DAT_UnitsState::instance.units[_engineer].targetedUnitID__OR__engineerMannedSiegeEngineRef
                             = (short)_fireballistaUnit;
                         if (sVar2 == 0x16) {
@@ -171,8 +169,7 @@ namespace Map {
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount = 0;
             }
-            MACRO_CALL_MEMBER(
-                Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                 DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[_fireballistaUnit].x,
                 (int)((int)(DAT_UnitsState::instance.units[_fireballistaUnit].y)),
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

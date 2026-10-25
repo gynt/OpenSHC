@@ -55,8 +55,8 @@ namespace UI {
             local_10 = MSVC_SecurityCookie::instance ^ (uint)&_heightIndex;
             uVar2 = MSVC_SecurityCookie::instance ^ (uint)&stack0xfffff724;
             *unaff_FS_OFFSET = (int)&local_c;
-            pSVar3 = MACRO_CALL_MEMBER(IO::ResourceManager_Func::paths_getDocumentsFolderString,
-                DAT_ResourceManager::ptr)(&local_7fc, true);
+            pSVar3 = MACRO_CALL_MEMBER(
+                IO::ResourceManager_Func::paths_getDocumentsFolderString, DAT_ResourceManager::ptr)(&local_7fc, true);
             if (pSVar3->dataLength < 0x10) {
                 pCVar4 = &pSVar3->data;
             } else {
@@ -109,8 +109,7 @@ MACRO_CALL_MEMBER(HoldStrong_lib::std::basic_ofstream<char,_struct_std::char_tra
 local_4 = 0;
 if (!((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, _struct_std::char_traits<char> _> _0]
         & 6)) {
-    MACRO_CALL_MEMBER(
-        UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreenMenuSurfaceComplete, this)();
+    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreenMenuSurfaceComplete, this)();
     MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
         14, '\0', &_ptrBmpFileHeader);
     MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(2, "BM", &_ptrBmpFileHeader);
@@ -118,8 +117,7 @@ if (!((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, 
     _ptrBmpFileHeader.bfOffBits = 54;
     uVar2 = 0;
     do {
-        MACRO_CALL(OS_Func::basic_ofstream_write)(
-            &_ofstream, (uint) * (byte*)((int)&_ptrBmpFileHeader.bfType + uVar2));
+        MACRO_CALL(OS_Func::basic_ofstream_write)(&_ofstream, (uint) * (byte*)((int)&_ptrBmpFileHeader.bfType + uVar2));
         uVar2 = uVar2 + 1;
     } while (uVar2 < 0xe);
     MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
@@ -190,13 +188,16 @@ if (!((&_ofstream.field_0x8)[(int)_ofstream.vftptr_0x0[1].~basic_ofstream<char, 
         _ofstream._64_4_ = 0;
     }
     local_4 = CONCAT31(local_4._1_3_, 1);
-MACRO_CALL_MEMBER(HoldStrong_lib::stdLib::ios::basic_streambuf<char,_struct_std::char_traits<char>_>_Func::meth_0x472680, (basic_streambuf<char,_struct_std::char_traits<char>_>*)&_ofstream.field_0x4)();
-local_4 = -1;
-*(undefined***)(_ofstream.vftptr_0x0[1].~basic_ofstream<char, _struct_std::char_traits<char> _> _0
-    + (int)&_ofstream.vftptr_0x0) = std::basic_ostream<char, struct_std::char_traits<char> _>::vftable::instance;
+    MACRO_CALL_MEMBER(
+        HoldStrong_lib::stdLib::ios::basic_streambuf<char, _struct_std::char_traits<char> _> _Func::meth_0x472680,
+        (basic_streambuf<char, _struct_std::char_traits<char> _>*)&_ofstream.field_0x4)();
+    local_4 = -1;
+    *(undefined***)(_ofstream.vftptr_0x0[1].~basic_ofstream<char, _struct_std::char_traits<char> _> _0
+        + (int)&_ofstream.vftptr_0x0) = std::basic_ostream<char, struct_std::char_traits<char> _>::vftable::instance;
 } else {
     local_4 = -1;
-MACRO_CALL_MEMBER(HoldStrong_lib::std::basic_ofstream<char,_struct_std::char_traits<char>_>_Func::meth_0x478920, (basic_ofstream<char,_struct_std::char_traits<char>_>*)&_ofstream.mbr_0x54)();
+    MACRO_CALL_MEMBER(HoldStrong_lib::std::basic_ofstream<char, _struct_std::char_traits<char> _> _Func::meth_0x478920,
+        (basic_ofstream<char, _struct_std::char_traits<char> _>*)&_ofstream.mbr_0x54)();
 }
 _ofstream.mbr_0x54 = (dword)std::ios_base::vftable::instance;
 MACRO_CALL_MEMBER(HoldStrong_lib::stdLib::ios::ios_base_Func::_Ios_base_dtor, (ios_base*)&_ofstream.mbr_0x54)();

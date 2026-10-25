@@ -38,9 +38,8 @@ namespace UI {
                         _destinationRect.right = this->gameResolutionX;
                         _destinationRect.bottom = this->gameResolutionY;
                     }
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
-                        &_destinationRect, &_sourceRect);
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
+                        this)(&_destinationRect, &_sourceRect);
                     /*
                       Normal waiting blt. --TheRedDaemon
                      */

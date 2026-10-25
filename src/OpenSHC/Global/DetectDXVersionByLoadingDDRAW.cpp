@@ -1,10 +1,10 @@
-#include <ddraw.h>
-
 #include "../Global.func.hpp"
 
 #include "OpenSHC/Rendering/Enums/DirectDrawStatus.hpp"
 
 #include "OpenSHC/Globals/IID_IDirectDraw7.hpp"
+
+#include <ddraw.h>
 
 namespace OpenSHC {
 
@@ -27,8 +27,8 @@ DirectDrawStatus Global::DetectDXVersionByLoadingDDRAW()
     if (_funcAddress != (FARPROC)0x0) {
         _funcAddressEx = (DirectDrawCreateExFunc)GetProcAddress(hLibModule, "DirectDrawCreateEx");
         if (_funcAddressEx != (DirectDrawCreateExFunc)0x0) {
-            _foundDirectDraw = (*_funcAddressEx)(
-                (GUID*)0x0, (LPVOID*)&_testInterface, *IID_IDirectDraw7::ptr, (IUnknown*)0x0);
+            _foundDirectDraw
+                = (*_funcAddressEx)((GUID*)0x0, (LPVOID*)&_testInterface, *IID_IDirectDraw7::ptr, (IUnknown*)0x0);
             if (-1 < _foundDirectDraw) {
                 _testInterface->Release();
                 FreeLibrary(hLibModule);

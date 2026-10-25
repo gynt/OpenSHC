@@ -26,8 +26,7 @@ namespace Global {
                     MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial),
             MACRO_CALL(UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk_Func::
                     MenuView_Unknown61ReturnToSkrimishMenuUnk_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown61ReturnToSkrimishMenuUnk));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown61ReturnToSkrimishMenuUnk));
         return;
     }
 

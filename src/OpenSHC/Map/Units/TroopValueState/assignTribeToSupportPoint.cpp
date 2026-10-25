@@ -32,9 +32,9 @@ namespace Map {
                 this->attackInfo.supportPointsArray[_index].tribeUID = DAT_TribesState::instance.tribes[tribeID].uid;
                 this->attackInfo.supportPointsArray[_index].tribeID = tribeID;
                 this->attackInfo.supportPointsArray[_index].three = 3;
-                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                    DAT_TribesState::ptr)(tribeID, (uint)((int)(this->attackInfo.supportPointsArray[_index].x)), y1, 0,
-                    0, Map::Units::Instructions::UMSE_0);
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(tribeID,
+                    (uint)((int)(this->attackInfo.supportPointsArray[_index].x)), y1, 0, 0,
+                    Map::Units::Instructions::UMSE_0);
                 return _index;
             }
             return 0;

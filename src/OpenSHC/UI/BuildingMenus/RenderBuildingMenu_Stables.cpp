@@ -41,15 +41,15 @@ namespace UI {
         /*
           added by script: "Stables"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_STABLES, 0);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_STABLES, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar5, BVar6, iVar7, BVar8, iVar9);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             (int)(char)DAT_BuildingsState::instance.buildings[iVar4].numberOfAnimals
                 - (int)DAT_BuildingsState::instance.buildings[iVar4].randomOutpostField,
-            DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x205, Text::TTA_LEFT,
-            0, 0x12, FALSE, 0);
+            DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x205, Text::TTA_LEFT, 0, 0x12,
+            FALSE, 0);
         iVar7 = 0;
         BVar8 = TRUE;
         iVar3 = 0x12;
@@ -67,14 +67,14 @@ namespace UI {
         /*
           added by script: "Horse Available"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_STABLES, iVar9);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_STABLES, iVar9);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, xParam, iVar1, TVar5, BVar6, iVar3, BVar8, iVar7);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             (int)DAT_BuildingsState::instance.buildings[iVar4].randomOutpostField,
-            DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x219, Text::TTA_LEFT,
-            0, 0x12, FALSE, 0);
+            DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x219, Text::TTA_LEFT, 0, 0x12,
+            FALSE, 0);
         iVar3 = 0;
         BVar8 = TRUE;
         iVar1 = 0x12;
@@ -90,8 +90,8 @@ namespace UI {
         /*
           added by script: "Horse In Use"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_STABLES, iVar4);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_STABLES, iVar4);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar7, iVar9, TVar5, BVar6, iVar1, BVar8, iVar3);
     }

@@ -62,8 +62,7 @@ namespace Map {
                                 LAB_004f71ea:
                                     this->LogicLayer[_tile] = this->LogicLayer[_tile] | 32768;
                                 } else {
-                                    this->LogicLayer[_tile]
-                                        = uVar4 & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
+                                    this->LogicLayer[_tile] = uVar4 & ~(Map::LogicHelpers::L_DEFAULT_EARTH_OR_TEXTURE);
                                 }
                             } else {
                                 if (uVar8 < 9)
@@ -299,8 +298,7 @@ namespace Map {
                                                                       [this->screenSouthEastDirection];
                                 if ((this->LogicLayer[iVar9] & Map::LogicHelpers::L_BUILDING
                                         | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
-                                    iVar15 = MACRO_CALL_MEMBER(
-                                        Map::Buildings::BuildingsState_Func::getBuildingFlag1,
+                                    iVar15 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingFlag1,
                                         DAT_BuildingsState::ptr)((int)this->BuildingLayer[iVar9]);
                                     bVar16 = iVar15 == 0;
                                     goto LAB_004f77ae;
@@ -313,12 +311,13 @@ namespace Map {
                                     == Map::Buildings::BT_STOCKPILE) {
                                     bVar7 = true;
                                 }
-                                bVar16 = DAT_BuildingsState::instance
-                                             .buildings[this->BuildingLayer
-                                                     [this->directionTranslationMatrix[this->orientedRowStep + iVar11]
-                                                                                      [this->screenSouthEastDirection]
-                                                         + iVar9]]
-                                             .flag2
+                                bVar16
+                                    = DAT_BuildingsState::instance
+                                          .buildings[this
+                                                  ->BuildingLayer[this->directionTranslationMatrix[this->orientedRowStep
+                                                                      + iVar11][this->screenSouthEastDirection]
+                                                      + iVar9]]
+                                          .flag2
                                     == 0;
                             LAB_004f77ae:
                                 if (!bVar16) {

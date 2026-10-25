@@ -39,8 +39,8 @@ namespace Map {
             }
             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
                 param_1, Map::Units::UIT_NO_INSTRUCTION_OR_MOVEUnk, 0, 0, 0);
-            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(
-                param_1, (uint)((int)((int)DAT_BuildingsState::instance.buildings[iVar2].someX)),
+            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(param_1,
+                (uint)((int)((int)DAT_BuildingsState::instance.buildings[iVar2].someX)),
                 (uint)((int)((int)DAT_BuildingsState::instance.buildings[iVar2].someY)), 0, 0,
                 Map::Units::Instructions::UMSE_0);
             return (undefined4)(1);

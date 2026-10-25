@@ -10,6 +10,7 @@
 #include "OpenSHC/Globals/DAT_00eb0e40.hpp"
 #include "OpenSHC/Globals/DAT_00eb1234.hpp"
 #include "OpenSHC/Globals/DAT_00eb9af4.hpp"
+#include "OpenSHC/Globals/DAT_00ec082c.hpp"
 #include "OpenSHC/Globals/DAT_00ed2bd8.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00eb9b68.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
@@ -26,10 +27,9 @@
 #include "OpenSHC/Globals/FLOAT_00eb0e2c.hpp"
 #include "OpenSHC/Globals/FLOAT_Between1And5.hpp"
 #include "OpenSHC/Globals/INT_00eb0e30.hpp"
+#include "OpenSHC/Globals/INT_00ec0828.hpp"
 #include "OpenSHC/Globals/INT_00ec083c.hpp"
 #include "OpenSHC/Globals/INT_00ed27a4.hpp"
-#include "OpenSHC/Globals/DAT_00ec082c.hpp"
-#include "OpenSHC/Globals/INT_00ec0828.hpp"
 
 namespace OpenSHC {
 

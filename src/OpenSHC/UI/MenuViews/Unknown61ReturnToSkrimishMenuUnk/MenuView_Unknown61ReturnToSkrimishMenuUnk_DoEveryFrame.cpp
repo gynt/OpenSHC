@@ -20,8 +20,8 @@ namespace UI {
             (DAT_MenuHandlerState::instance.currentMenu)->yPosition
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             _menuPtr->xPosition = DAT_MenuHandlerState::instance.x;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
-                DAT_TextureRenderCoreObject::ptr)(0,
+            MACRO_CALL_MEMBER(
+                UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface, DAT_TextureRenderCoreObject::ptr)(0,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].width)
                     / 2,

@@ -23,13 +23,12 @@ namespace Map {
                         piVar3->tile = 0;
                     }
                     if (piVar3->value == 100) {
-                        BVar1 = MACRO_CALL_MEMBER(
-                            Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue, this)(
-                            iVar2, this->attackInfo.pitchRelatedPlayerID, this->attackInfo.playerID_0x2c850);
+                        BVar1 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::shouldLightPitchBasedOnTroopValue,
+                            this)(iVar2, this->attackInfo.pitchRelatedPlayerID, this->attackInfo.playerID_0x2c850);
                         if (BVar1) {
-                            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::
-                                                  giveLightPitchInstructionToUnitClosestToPitch,
-                                this)(iVar2);
+                            MACRO_CALL_MEMBER(
+                                Map::Units::TroopValueState_Func::giveLightPitchInstructionToUnitClosestToPitch, this)(
+                                iVar2);
                         }
                         piVar3->value = 99;
                     } else {

@@ -52,9 +52,9 @@ namespace Map {
                 if (0 < DAT_TileMapState::instance.placedBuildingID) {
                     DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
-                    MACRO_CALL_MEMBER(
-                        Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(tribeID,
-                        ((UnitInstructionType)0x15), iVar2, DAT_BuildingsState::instance.buildings[iVar2].uid, 0);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
+                        tribeID, ((UnitInstructionType)0x15), iVar2, DAT_BuildingsState::instance.buildings[iVar2].uid,
+                        0);
                     return iVar4;
                 }
             }

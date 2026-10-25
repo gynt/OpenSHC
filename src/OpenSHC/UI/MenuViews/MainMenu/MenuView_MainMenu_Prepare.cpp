@@ -29,22 +29,22 @@ namespace UI {
         void MainMenu::MenuView_MainMenu_Prepare()
         {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_main.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_main2.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_main.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_main2.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             INT_00b95abc::instance = -1;
             DAT_UnknownGFXIndex::instance = 0;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             DAT_GameCore::instance.gameMode_2 = Game::GM_CAMPAIGN_MISSION;
             DAT_MainMenuSwingSwordBool::instance = 0;
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition2::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition3::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
             DAT_GameState::instance.mapAndTime.difficulty = 1;
             DAT_GameCore::instance.missionDifficulty_3 = 1;
         }

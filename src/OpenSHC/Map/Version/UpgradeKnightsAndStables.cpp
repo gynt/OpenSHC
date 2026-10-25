@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using Map::Units::UnitType;
     using Map::Units::Unit;
+    using Map::Units::UnitType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A650
     void Version::UpgradeKnightsAndStables()

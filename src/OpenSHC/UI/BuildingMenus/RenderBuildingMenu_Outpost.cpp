@@ -43,8 +43,8 @@ namespace UI {
         TVar5 = Text::TTA_LEFT;
         int iVar1 = DAT_MenuHandlerState::instance.y + 0x1cf;
         iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, iVar4);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, iVar4);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar3, iVar1, TVar5, BVar6, iVar7, BVar8, blendStrength);
         iVar7 = 0;
@@ -57,8 +57,8 @@ namespace UI {
         /*
           added by script: "Size"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x12);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x12);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
         iVar7 = 0;
@@ -71,8 +71,8 @@ namespace UI {
         /*
           added by script: "Small"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x13);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x13);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
         iVar7 = 0;
@@ -85,8 +85,8 @@ namespace UI {
         /*
           added by script: "Large"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x14);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x14);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
         iVar7 = 0;
@@ -99,8 +99,8 @@ namespace UI {
         /*
           added by script: "Start Delay"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x15);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x15);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
         iVar7 = 0;
@@ -113,8 +113,8 @@ namespace UI {
         /*
           added by script: "None"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x16);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x16);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
         iVar7 = 0;
@@ -127,8 +127,8 @@ namespace UI {
         /*
           added by script: "10 Mins"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_OUTPOST, 0x17);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_OUTPOST, 0x17);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar4, TVar5, BVar6, iVar3, BVar8, iVar7);
     }

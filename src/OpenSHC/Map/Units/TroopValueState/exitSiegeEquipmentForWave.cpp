@@ -46,8 +46,7 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction,
                                 DAT_TribesState::ptr)(_tribeID, Map::Units::UIT_EXIT_SIEGE_EQUIPMENT, _unitID,
                                 DAT_UnitsState::instance.units[_unitID].uid, 0);
-                            DAT_UnitsState::instance.units[_unitID].state.generic
-                                = Map::Units::States::US_DISAPPEAR;
+                            DAT_UnitsState::instance.units[_unitID].state.generic = Map::Units::States::US_DISAPPEAR;
                         }
                     } while (_tribeUnitIndex < _tribe->size);
                 }

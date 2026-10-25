@@ -1,21 +1,21 @@
 #include "../TextureRenderCore.func.hpp"
 
 #include "OpenSHC/IO/Graphics/TgxToken.hpp"
+#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 #include "OpenSHC/Globals/PTR_ARRAY_00c9a510.hpp"
 #include "OpenSHC/Globals/PTR_ARRAY_00d7d250.hpp"
-#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
         using IO::Graphics::TgxToken;
-        using Rendering::Enums::RenderTarget;
         using IO::Graphics::TgxTokenByte;
+        using Rendering::Enums::RenderTarget;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044D3D0
         void TextureRenderCore::renderFunctionResponsibleForManyGameObjects(
@@ -164,8 +164,10 @@ namespace UI {
                                 while (true) {
                                     while (true) {
                                         while (true) {
-                                            _tgxToken = *(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_HEADER;
-                                            _tgxPixelLength = *(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_LENGTH;
+                                            _tgxToken
+                                                = *(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_HEADER;
+                                            _tgxPixelLength
+                                                = *(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_LENGTH;
                                             _length = (uint)_tgxPixelLength;
                                             _imageDataPtr = (TgxTokenByte*)((int)imageAddress + 1);
                                             if (_tgxToken != IO::Graphics::TT_TRANSPARENT_PIXELS)
@@ -1186,7 +1188,8 @@ namespace UI {
                                     while (true) {
                                         local_20 = uVar6;
                                         _tgxToken2 = *(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_HEADER;
-                                        uVar6 = (uint)(*(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_LENGTH);
+                                        uVar6
+                                            = (uint)(*(TgxTokenByte*)imageAddress & IO::Graphics::TT_TGX_PIXEL_LENGTH);
                                         _imageDataPtr = (TgxTokenByte*)((int)imageAddress + 1);
                                         if (_tgxToken2 != IO::Graphics::TT_TRANSPARENT_PIXELS)
                                             break;
@@ -1233,7 +1236,8 @@ namespace UI {
                                     } while (_tgxToken2 == IO::Graphics::TT_TRANSPARENT_PIXELS);
                                     if (_tgxToken2 != IO::Graphics::TT_STREAM_OF_PIXELS)
                                         break;
-                                    _imageDataPtr = _imageDataPtr + ((*pTVar7 & IO::Graphics::TT_TGX_PIXEL_LENGTH) + 1) * 2;
+                                    _imageDataPtr
+                                        = _imageDataPtr + ((*pTVar7 & IO::Graphics::TT_TGX_PIXEL_LENGTH) + 1) * 2;
                                 }
                                 if (_tgxToken2 != IO::Graphics::TT_REPEATING_PIXELS)
                                     break;

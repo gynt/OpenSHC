@@ -24,10 +24,8 @@ namespace Map {
         if (1 < this->maxTreeCount) {
             pTVar3 = &this->trees[1];
             do {
-                if (((pTVar3->state == 2) && (pTVar3->treeType == Map::Trees::TT_APPLEUnk))
-                    && (pTVar3->stage == 3)) {
-                    MACRO_CALL_MEMBER(
-                        Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                if (((pTVar3->state == 2) && (pTVar3->treeType == Map::Trees::TT_APPLEUnk)) && (pTVar3->stage == 3)) {
+                    MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                         DAT_DirectionAlgorithmState::ptr)(xPosition, yPosition, (int)((int)((short)pTVar3->xPosition)),
                         (int)((int)((short)pTVar3->yPosition)));
                     if (DAT_DirectionAlgorithmState::instance.distanceHigh < _minimumDistance) {

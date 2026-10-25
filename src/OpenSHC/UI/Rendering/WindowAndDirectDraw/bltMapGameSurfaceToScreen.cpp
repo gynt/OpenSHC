@@ -52,9 +52,8 @@ namespace UI {
                         _destinationRect.right = this->gameResolutionX;
                         _destinationRect.bottom = this->gameResolutionY;
                     }
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
-                        &_destinationRect, &_sourceRect);
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
+                        this)(&_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect,
                         this->directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000, (LPDDBLTFX)0x0);
                     if (this->NOTSelfBufferOrWindowMode_0xf8 == TRUE) {

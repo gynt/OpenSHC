@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace Map {
 
+    using Map::Buildings::Building;
     using Map::Buildings::BuildingLogicalState;
     using Map::Buildings::BuildingType;
-    using Map::Buildings::Building;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A420
     void Version::UpgradeLogicAndDisplayLayerForDairyFarms()

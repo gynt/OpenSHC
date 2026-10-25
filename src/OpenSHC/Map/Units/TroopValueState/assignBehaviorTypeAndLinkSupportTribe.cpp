@@ -61,8 +61,7 @@ namespace Map {
                 if ((((*psVar3 != 0) && (*psVar3 != 3))
                         && ((*(int*)(psVar3 + -10) == DAT_TribesState::instance.tribes[iVar1].owner
                             && (psVar3[0xf0] == 0))))
-                    && ((psVar3[1] == AI::Tribes::AITT_ARCHERS
-                        || (psVar3[1] == AI::Tribes::AITT_CROSSBOWMEN))))
+                    && ((psVar3[1] == AI::Tribes::AITT_ARCHERS || (psVar3[1] == AI::Tribes::AITT_CROSSBOWMEN))))
                     goto LAB_00518b70;
                 psVar3 = psVar3 + 0x19a;
                 iVar2 = iVar2 + 1;

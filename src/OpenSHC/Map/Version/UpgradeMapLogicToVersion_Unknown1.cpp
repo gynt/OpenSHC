@@ -10,7 +10,6 @@ namespace OpenSHC {
 namespace Map {
     using Map::Buildings::BuildingTypeShort;
 
-
     // FUNCTION: STRONGHOLDCRUSADER 0x005011F0
     void Version::UpgradeMapLogicToVersion_Unknown1()
     {

@@ -21,8 +21,7 @@ namespace Synchrony {
         undefined2* local_c;
         int local_8;
         char (*local_4)[250];
-        pcVar3 = MACRO_CALL_MEMBER(
-            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
         pacVar5 = this->DAT_PlayerNames + 1;
         do {
             cVar2 = *pcVar3;

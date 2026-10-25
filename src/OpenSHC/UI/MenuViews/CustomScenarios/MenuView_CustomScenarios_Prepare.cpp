@@ -27,10 +27,10 @@ namespace UI {
         void CustomScenarios::MenuView_CustomScenarios_Prepare()
         {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_builder.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_builder.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_builder2.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16c].stateTransitionTimeBaseUnk_0x18

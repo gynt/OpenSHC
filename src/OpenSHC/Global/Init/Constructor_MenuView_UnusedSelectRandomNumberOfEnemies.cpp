@@ -25,8 +25,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::UnusedSelectRandomNumberOfEnemies_Func::
                     MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedSelectRandomNumberOfEnemies));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedSelectRandomNumberOfEnemies));
         return;
     }
 

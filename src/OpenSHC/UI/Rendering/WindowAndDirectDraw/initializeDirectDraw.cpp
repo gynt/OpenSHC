@@ -3,8 +3,8 @@
 #include "OpenSHC/Global.func.hpp"
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/Rendering.func.hpp"
-#include "OpenSHC/UI/Rendering/WindowAndDirectDraw.func.hpp"
 #include "OpenSHC/Synchrony.func.hpp"
+#include "OpenSHC/UI/Rendering/WindowAndDirectDraw.func.hpp"
 #include "OpenSHC/Rendering/ColorMode.hpp"
 #include "OpenSHC/Rendering/ScreenResolutionEnum.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -87,8 +87,8 @@ namespace UI {
             /*
               Signature Overwrite
              */
-            this->pointerToIDirectDrawInterface->EnumDisplayModes(0,
-                (DDSURFACEDESC*)0x0, (void*)0x0, MACRO_CALL(Synchrony_Func::EnumDisplayModesCallback));
+            this->pointerToIDirectDrawInterface->EnumDisplayModes(
+                0, (DDSURFACEDESC*)0x0, (void*)0x0, MACRO_CALL(Synchrony_Func::EnumDisplayModesCallback));
             if (((int)this->currentGameResolution < 0)
                 || ((&this->resolutionSupported_0x68.noneUnk)[this->currentGameResolution] == 0)) {
                 this->currentGameResolution = Rendering::SRE_neg1;
@@ -114,8 +114,7 @@ namespace UI {
                         this->currentGameResolution = Rendering::SRE_1360x768;
                     }
                 }
-                MACRO_CALL_MEMBER(
-                    UI::Rendering::WindowAndDirectDraw_Func::setupPreferredScreenResolution, this)();
+                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::setupPreferredScreenResolution, this)();
             }
             if (!this->runGameAsExclusiveFullscreen) {
                 /*
@@ -133,15 +132,15 @@ namespace UI {
                 /*
                   Signature Overwrite
                  */
-                _hResultScreenSetting = this->pointerToIDirectDrawInterface->SetDisplayMode(this->resolutionX, this->resolutionY, 0x10);
+                _hResultScreenSetting
+                    = this->pointerToIDirectDrawInterface->SetDisplayMode(this->resolutionX, this->resolutionY, 0x10);
             }
             /*
               If it fails:
              */
             if (_hResultScreenSetting) {
             LAB_0046fbca:
-                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(
-                    TRUE);
+                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(TRUE);
                 return FALSE;
             }
             /*
@@ -156,11 +155,11 @@ namespace UI {
                   Caps valid. -> Primary surface.      In this case, the game draws directly on the otherwise
                   "backbuffer".   I assume they double buffer it themselves.   - TheRedDaemon      Signature Overwrite
                  */
-                _hResult3 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawBackbufferSurfacePointer,
-                    (IUnknown*)0x0);
+                _hResult3 = this->pointerToIDirectDrawInterface->CreateSurface(
+                    &_ddsurfacedesc, &this->directDrawBackbufferSurfacePointer, (IUnknown*)0x0);
                 if (_hResult3) {
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(TRUE);
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(
+                        TRUE);
                     return FALSE;
                 }
             } else {
@@ -172,8 +171,8 @@ namespace UI {
                 /*
                   Backbuffer count and caps valid. -> Primary, complex and flip      Signature Overwrite
                  */
-                _hResult8 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawPrimarySurfacePointer,
-                    (IUnknown*)0x0);
+                _hResult8 = this->pointerToIDirectDrawInterface->CreateSurface(
+                    &_ddsurfacedesc, &this->directDrawPrimarySurfacePointer, (IUnknown*)0x0);
                 if (_hResult8)
                     goto LAB_0046fe31;
                 MACRO_CALL(OS_Func::_memset)(&_ddsurfacedesc, 0, 0x6c);
@@ -186,8 +185,8 @@ namespace UI {
                 /*
                   Signature Overwrite
                  */
-                _hResult9 = this->directDrawPrimarySurfacePointer->GetAttachedSurface(&_ddsurfacedesc.ddsCaps,
-                    &this->directDrawBackbufferSurfacePointer);
+                _hResult9 = this->directDrawPrimarySurfacePointer->GetAttachedSurface(
+                    &_ddsurfacedesc.ddsCaps, &this->directDrawBackbufferSurfacePointer);
                 if (_hResult9)
                     goto LAB_0046fe31;
             }
@@ -200,8 +199,8 @@ namespace UI {
             /*
               Signature Overwrite
              */
-            _hResult4
-                = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc, &this->directDrawOffscreenSurfacePointer_screenMenu, (IUnknown*)0x0);
+            _hResult4 = this->pointerToIDirectDrawInterface->CreateSurface(
+                &_ddsurfacedesc, &this->directDrawOffscreenSurfacePointer_screenMenu, (IUnknown*)0x0);
             if (!_hResult4) {
                 DAT_BinkControlState::instance.screenMenuSurfaceType_0x5c
                     = BinkDDSurfaceType(this->directDrawOffscreenSurfacePointer_screenMenu);
@@ -235,8 +234,8 @@ namespace UI {
                     /*
                       Signature Overwrite
                      */
-                    _hResult6 = this->pointerToIDirectDrawInterface->CreateSurface(&_ddsurfacedesc,
-                        &this->directDrawOffscreenSurfacePointer_mapGame, (IUnknown*)0x0);
+                    _hResult6 = this->pointerToIDirectDrawInterface->CreateSurface(
+                        &_ddsurfacedesc, &this->directDrawOffscreenSurfacePointer_mapGame, (IUnknown*)0x0);
                     if (!_hResult6) {
                         DAT_BinkControlState::instance.mapGameSurfaceType
                             = BinkDDSurfaceType(this->directDrawOffscreenSurfacePointer_mapGame);
@@ -294,8 +293,7 @@ namespace UI {
                 }
             }
         LAB_0046fe31:
-            MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(
-                TRUE);
+            MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::releaseSurfacesAndDirectDraw, this)(TRUE);
             return FALSE;
         }
 

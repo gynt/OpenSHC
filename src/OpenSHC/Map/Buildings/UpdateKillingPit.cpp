@@ -39,8 +39,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].field117_0x11a = 0;
             DAT_BuildingsState::instance.buildings[buildingID].animationIndex = 0;
             if (DAT_BuildingsState::instance.buildings[buildingID].killingPitField != 0) {}
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                buildingID);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].killingPitField = 1;
             return;
         case 1:
@@ -70,8 +69,8 @@ namespace Map {
             *psVar1 = *psVar1 + 1;
             if (1999 < DAT_BuildingsState::instance.buildings[buildingID].field117_0x11a) {
                 DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
-                MACRO_CALL_MEMBER(
-                    Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(buildingID);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
+                    buildingID);
             }
             break;
         case -2:
@@ -93,14 +92,12 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].animationFrame
                 = (DAT_BuildingsState::instance.buildings[buildingID].fireRelatedRNG1 & 7U) * 4 + 4;
             DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 1;
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                buildingID);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
             return;
         default:
             return;
         }
-        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-            buildingID);
+        MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
     }
 
 }

@@ -96,13 +96,10 @@ namespace UI {
                     DAT_MapDefinedData::instance.MapSectionAddressArray);
                 DAT_GameCore::instance.section1095 = 0;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
-                MACRO_CALL_MEMBER(
-                    Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
+                MACRO_CALL_MEMBER(Game::GameStateStructures_Func::clearEnemyRelatedStructures, DAT_GameState::ptr)();
                 DAT_UnitsState::instance.lastSelectedUnitID = 0;
-                MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
                 iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .startResources[0xf] = 1500;
@@ -112,20 +109,16 @@ namespace UI {
                 DAT_GameState::instance.playerDataArray[iVar1].moatTileCount = 0;
                 DAT_GameCore::instance.mapU4Int1 = 1;
                 INT_00b960ec::instance = 1;
-                MACRO_CALL_MEMBER(
-                    Map::MapPropertiesState_Func::importTradingCosts, DAT_MapPropertiesState::ptr)();
-                MACRO_CALL_MEMBER(
-                    Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
+                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::importTradingCosts, DAT_MapPropertiesState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::clearAttackInfo, DAT_TroopValueState::ptr)();
                 MACRO_CALL_MEMBER(AI::AICState_Func::recomputeAIZonerLayer, DAT_AICState::ptr)();
             case 6:
                 INT_00b95f68::instance = 1;
                 DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                 DAT_GameCore::instance.gameMode_2 = Game::GM_SIEGE_THAT;
                 DAT_GameCore::instance.missionNumber1to20 = 0x1b;
-                MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearSelectionCountsAndPlayerIDs, DAT_UnitsState::ptr)();
                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                 DAT_GameCore::instance.missionNumber1to20 = 0x1f;

@@ -52,8 +52,7 @@ namespace Map {
                 + (int)(short)uVar1 + this->buildingX;
             if (!this->disableElevationRendering) {
                 BVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingType;
-                if ((BVar3 == Map::Buildings::BT_STOCKPILE)
-                    || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
+                if ((BVar3 == Map::Buildings::BT_STOCKPILE) || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
                     if (iVar7 < 1) {
                         uVar10 = (short)this->buildingRotationRelatedValue
                             + (short)GMTotalPicturesProcessed::instance[0xf] + 4;
@@ -74,8 +73,7 @@ namespace Map {
                     }
                     this->GfxLayer[targetedTile] = (short)GMTotalPicturesProcessed::instance[0xf]
                         + (short)DAT_TerrainDefinedData::instance.field996_0x84c[sVar5] + -1 + sVar6;
-                } else if (((BVar3 == Map::Buildings::BT_MERCENARYPOST)
-                               || (BVar3 == Map::Buildings::BT_BARRACKS))
+                } else if (((BVar3 == Map::Buildings::BT_MERCENARYPOST) || (BVar3 == Map::Buildings::BT_BARRACKS))
                     || (BVar3 == Map::Buildings::BT_OUTPOST_EUROPEAN)) {
                 LAB_005065bd:
                     this->GfxLayer[targetedTile]
@@ -198,8 +196,7 @@ namespace Map {
                         = DAT_TerrainDefinedData::instance.field2467_0x1fec
                               [(int)DAT_BuildingsState::instance.buildings[buildingID].buildingVariation / 2][local_c];
                     if (!iVar8) {
-                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(
-                            targetedTile);
+                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(targetedTile);
                         if (!iVar8) {
                             this->GfxLayer[targetedTile] = ((byte)this->RandomLayer[targetedTile] & 3)
                                 + (ushort)this->LuminesenceLayer[targetedTile] * 4

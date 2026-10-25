@@ -45,8 +45,7 @@ namespace Map {
             this->attackInfo.playerInfo[7].field_0x3ea8 = 0;
             iVar1 = MACRO_CALL_MEMBER(
                 Game::GameStateStructures_Func::pickRandomAccessibleSignpostEntry, DAT_GameState::ptr)();
-            iVar2 = MACRO_CALL_MEMBER(
-                Game::GameStateStructures_Func::countActiveSignposts, DAT_GameState::ptr)();
+            iVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::countActiveSignposts, DAT_GameState::ptr)();
             if ((param_2 <= iVar2) && (param_2)) {
                 (&this->attackInfo.unknownSignpostRelatedArray)[param_1] = param_2 + -1;
                 this->attackInfo.field128056_0x469d4 = param_2 + -1;

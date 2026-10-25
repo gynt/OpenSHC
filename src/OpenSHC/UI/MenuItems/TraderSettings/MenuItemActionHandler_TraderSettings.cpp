@@ -25,8 +25,8 @@ namespace UI {
                 *pBVar1 = *pBVar1 ^ TRUE;
             }
             if (param_1 == 0x25) {
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
             } else if (param_1 == 0x457) {
                 pBVar1 = DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray
                     + DAT_MissionAestheticsDefinedData::instance

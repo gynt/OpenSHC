@@ -46,8 +46,8 @@ namespace UI {
         /*
           added by script: "Tower"
          */
-        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TOWER, 0);
+        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_TOWER, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar3, iVar4, iVar2, alignment, color, iVar5, keepOffsetX, iVar6);
         blendStrength = 0;
@@ -56,8 +56,8 @@ namespace UI {
         iVar5 = 0x136;
         iVar2 = DAT_MenuHandlerState::instance.y + 0x1fb;
         iVar4 = DAT_MenuHandlerState::instance.x + 0xaf;
-        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_TOWER, (int)((short)BVar1 + -0x49));
+        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_TOWER, (int)((short)BVar1 + -0x49));
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             pcVar3, iVar4, iVar2, iVar5, color_00, iVar6, blendStrength);
         MACRO_CALL(UI::BuildingMenus_Func::RenderBuildingMenu_RenderTowerAndGateHealth)();

@@ -105,9 +105,8 @@ namespace Map {
                     }
                     if (64 < iVar7) {
                         _x = _candidateTile - DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile;
-                        BOOLEnum BVar3
-                            = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
-                                DAT_PathFindingState::ptr)(6, _x, _y, 0x80);
+                        BOOLEnum BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findAIZoneWithFlags,
+                            DAT_PathFindingState::ptr)(6, _x, _y, 0x80);
                         if (!BVar3) {
                             DAT_TileMapState::instance.AIInfoLayer[_candidateTile]
                                 = DAT_TileMapState::instance.AIInfoLayer[_candidateTile] | 0x80;

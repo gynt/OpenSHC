@@ -3,8 +3,8 @@
 
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/LandscapeState.func.hpp"
-
 #include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
+
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_LandscapeState.hpp"
 #include "OpenSHC/Globals/DAT_TerrainDefinedData.hpp"
@@ -78,8 +78,8 @@ namespace Map {
                 goto LAB_004f7ba5;
             }
         } else {
-            iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage,
-                DAT_LandscapeState::ptr)((int)this->OrganismLayer[tile]);
+            iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage, DAT_LandscapeState::ptr)(
+                (int)this->OrganismLayer[tile]);
             if (2 < iVar1) {
                 local_28 = iVar1;
             }
@@ -100,14 +100,12 @@ namespace Map {
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
                 if (!iVar1) {
-                    iVar1 = MACRO_CALL_MEMBER(
-                        Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                    iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
                     if (iVar1 < 0x10) {
                         uVar5 = this->HeightLayer[iVar6] + 0x10;
                     } else {
-                        iVar1 = MACRO_CALL_MEMBER(
-                            Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                        iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar8);
                         uVar5 = (uint)this->HeightLayer[iVar6] + iVar1;
                     }
@@ -118,8 +116,8 @@ namespace Map {
                     uVar5 = uVar5 + 0x28;
                 }
             } else {
-                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage,
-                    DAT_LandscapeState::ptr)((int)this->OrganismLayer[iVar6]);
+                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage, DAT_LandscapeState::ptr)(
+                    (int)this->OrganismLayer[iVar6]);
                 uVar5 = uVar5 + iVar1 * 7;
             }
             iVar1 = uVar5 - uVar4;
@@ -166,14 +164,12 @@ namespace Map {
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
                 if (!iVar1) {
-                    iVar1 = MACRO_CALL_MEMBER(
-                        Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                    iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
                     if (iVar1 < 0x10) {
                         local_2c = this->HeightLayer[iVar7] + 0x10;
                     } else {
-                        iVar1 = MACRO_CALL_MEMBER(
-                            Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                        iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar8);
                         local_2c = (uint)this->HeightLayer[iVar7] + iVar1;
                     }
@@ -184,8 +180,8 @@ namespace Map {
                     local_2c = local_2c + 0x28;
                 }
             } else {
-                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage,
-                    DAT_LandscapeState::ptr)((int)this->OrganismLayer[iVar7]);
+                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage, DAT_LandscapeState::ptr)(
+                    (int)this->OrganismLayer[iVar7]);
                 local_2c = local_2c + iVar1 * 7;
             }
             iVar1 = local_2c - uVar4;
@@ -226,14 +222,12 @@ namespace Map {
                 iVar1 = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar8);
                 if (!iVar1) {
-                    iVar1 = MACRO_CALL_MEMBER(
-                        Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                    iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
                     if (iVar1 < 0x10) {
                         local_2c = this->HeightLayer[iVar7] + 0x10;
                     } else {
-                        iVar1 = MACRO_CALL_MEMBER(
-                            Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                        iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar8);
                         local_2c = (uint)this->HeightLayer[iVar7] + iVar1;
                     }
@@ -244,8 +238,8 @@ namespace Map {
                     local_2c = local_2c + 0x28;
                 }
             } else {
-                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage,
-                    DAT_LandscapeState::ptr)((int)this->OrganismLayer[iVar7]);
+                iVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getTreeGrowthTargetStage, DAT_LandscapeState::ptr)(
+                    (int)this->OrganismLayer[iVar7]);
                 local_2c = local_2c + iVar1 * 7;
             }
             iVar1 = local_2c - uVar4;
@@ -286,15 +280,14 @@ namespace Map {
                         Map::Buildings::BuildingsState_Func::getBuildingFlag3, DAT_BuildingsState::ptr)(iVar1);
                     uVar5 = local_2c;
                     if (!iVar7) {
-                        iVar7 = MACRO_CALL_MEMBER(
-                            Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                        iVar7 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar1);
                         if (iVar7 < 0x10) {
                             uVar5 = this->HeightLayer[iVar6] + 0x10;
                         } else {
-                            iVar7 = MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
-                                DAT_BuildingsState::ptr)(iVar1);
+                            iVar7
+                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
+                                    DAT_BuildingsState::ptr)(iVar1);
                             uVar5 = (uint)this->HeightLayer[iVar6] + iVar7;
                         }
                     }

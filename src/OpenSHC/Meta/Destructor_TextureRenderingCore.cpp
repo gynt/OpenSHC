@@ -9,8 +9,8 @@ namespace OpenSHC {
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D620
 void Meta::Destructor_TextureRenderingCore()
 {
-    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::Destructor_TextureRenderCore,
-        DAT_TextureRenderCoreObject::ptr)();
+    MACRO_CALL_MEMBER(
+        UI::Rendering::TextureRenderCore_Func::Destructor_TextureRenderCore, DAT_TextureRenderCoreObject::ptr)();
 }
 
 }

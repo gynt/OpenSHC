@@ -21,8 +21,7 @@ namespace UI {
             if (_currentForegroundWindow == hWnd) {
                 this->isNotProcessingInputEvents = FALSE;
                 if (this->runGameAsExclusiveFullscreen) {
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::prepareWindowAndDDrawUnk, this)();
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::prepareWindowAndDDrawUnk, this)();
                     yBottom = GetSystemMetrics(SM_CYSCREEN);
                     xRight = GetSystemMetrics(SM_CXSCREEN);
                     SetRect(&this->clientOnScreenCoords, 0, 0, xRight, yBottom);

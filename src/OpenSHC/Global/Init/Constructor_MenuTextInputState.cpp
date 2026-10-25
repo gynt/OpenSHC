@@ -13,8 +13,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CC40
     void Init::Constructor_MenuTextInputState()
     {
-        MACRO_CALL_MEMBER(
-            UI::MenuTextInputState_Func::Constructor_MenuTextInputState, DAT_MenuTextInputState::ptr)();
+        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::Constructor_MenuTextInputState, DAT_MenuTextInputState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d770));
         return;
     }

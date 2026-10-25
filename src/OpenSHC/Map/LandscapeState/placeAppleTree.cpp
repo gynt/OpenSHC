@@ -30,8 +30,7 @@ namespace Map {
             DAT_TileMapState::instance.LogicLayer[uVar2] = DAT_TileMapState::instance.LogicLayer[uVar2] | 0x1000;
             DAT_TileMapState::instance.OrganismLayer[uVar2] = (short)_treeID;
             this->trees[_treeID].appleFarmUID = iVar1;
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
-                _treeID, 0);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(_treeID, 0);
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                 DAT_PathFindingState::ptr)(
                 (int)(short)this->trees[_treeID].yPosition, (int)((int)(this->trees[_treeID].tile)));

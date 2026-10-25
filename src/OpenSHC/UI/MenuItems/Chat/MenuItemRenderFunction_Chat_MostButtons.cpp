@@ -94,8 +94,8 @@ namespace UI {
             iVar5 = 0;
             if (0 < iVar3) {
                 do {
-                    iVar4 = MACRO_CALL_MEMBER(Text::TextManager_Func::getCharWidth,
-                        DAT_TextManagerObject::ptr)(*(char*)((int)&local_68 + iVar5), 0x12);
+                    iVar4 = MACRO_CALL_MEMBER(Text::TextManager_Func::getCharWidth, DAT_TextManagerObject::ptr)(
+                        *(char*)((int)&local_68 + iVar5), 0x12);
                     iVar6 = iVar6 + iVar4;
                     if (0xaa < iVar6) {
                         *(undefined1*)((int)&local_68 + iVar5) = 0;
@@ -115,19 +115,18 @@ namespace UI {
                 BVar7 = DAT_RenderingDefinedData::instance
                             .ColorArray[*(int*)((int)DAT_BlendingDefinedData::ptr + param_1 * -4 + 0x2738)];
             }
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                (char*)&local_68, (int)((int)(DAT_ButtonX::instance + 5)), (int)((int)(DAT_ButtonY::instance + 7)),
-                Text::0xaa, BVar7, 0x12, FALSE, 0);
-            iVar6 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::countPlayersInSameTeam,
-                DAT_GameSynchronyState::ptr)(-param_1);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)((char*)&local_68,
+                (int)((int)(DAT_ButtonX::instance + 5)), (int)((int)(DAT_ButtonY::instance + 7)), Text::0xaa, BVar7,
+                0x12, FALSE, 0);
+            iVar6 = MACRO_CALL_MEMBER(
+                Synchrony::GameSynchronyState_Func::countPlayersInSameTeam, DAT_GameSynchronyState::ptr)(-param_1);
             if (1 < iVar6) {
                 iVar6 = 0;
                 for (iVar3 = 0; iVar3 < 0x20; iVar3 += 4) {
                     if (*(int*)((int)DAT_GameState::instance.mapAndTime.playerTeams + iVar3 + 4)
                         == *(int*)((int)DAT_GameState::ptr + param_1 * -4 + 0x52490)) {
                         iVar5 = iVar6 + DAT_ButtonX::instance;
-                        color = MACRO_CALL_MEMBER(
-                            UI::Rendering::TextureRenderCore_Func::transformBGR24ToScreenColor,
+                        color = MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::transformBGR24ToScreenColor,
                             DAT_TextureRenderCoreObject::ptr)(DAT_RenderingDefinedData::instance.ColorArray[*(
                             int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + iVar3 + 4)]);
                         MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox,

@@ -30,10 +30,9 @@ namespace UI {
         /*
           added by script: "Game Speed"
          */
-        pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x52);
-        MACRO_CALL(OS_Func::_sprintf)(
-            DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%d", pcVar1, iVar2);
+        pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x52);
+        MACRO_CALL(OS_Func::_sprintf)(DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%d", pcVar1, iVar2);
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
             DAT_GameSynchronyState::instance.receivedChatMessage);
         DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;

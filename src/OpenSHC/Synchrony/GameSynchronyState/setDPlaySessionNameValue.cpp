@@ -27,11 +27,10 @@ namespace Synchrony {
             MACRO_CALL(Global_Func::PrintToDestination)(this->DPLAYX_SessionName, L"Crusader");
             ;
         }
-        pcVar1 = MACRO_CALL_MEMBER(
-            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        pcVar1 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
         MACRO_CALL(OS_Func::_sprintf)(local_100, "Stronghold-%s", pcVar1);
-        MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter,
-            DAT_WideCharMultiByteState::ptr)(this->DPLAYX_SessionName, (LPCSTR)((int)(local_100)));
+        MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter, DAT_WideCharMultiByteState::ptr)(
+            this->DPLAYX_SessionName, (LPCSTR)((int)(local_100)));
         ;
     }
 

@@ -67,7 +67,8 @@ namespace UI {
                         DPLAY_CurrentSessionGUID::instance.Data2 = pGVar1->Data2;
                         DPLAY_CurrentSessionGUID::instance.Data3 = pGVar1->Data3;
                         (*(int*)&DPLAY_CurrentSessionGUID::instance.Data4) = *(undefined4*)pGVar1->Data4;
-                        (*(int*)((char*)&DPLAY_CurrentSessionGUID::instance.Data4 + 4)) = *(undefined4*)(pGVar1->Data4 + 4);
+                        (*(int*)((char*)&DPLAY_CurrentSessionGUID::instance.Data4 + 4))
+                            = *(undefined4*)(pGVar1->Data4 + 4);
                         iVar3 = MACRO_CALL_MEMBER(
                             Synchrony::GameSynchronyState_Func::initializeDirectPlayAndCreateOrJoinSession,
                             DAT_GameSynchronyState::ptr)(TRUE);

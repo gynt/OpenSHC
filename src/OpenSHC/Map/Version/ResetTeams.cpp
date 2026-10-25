@@ -14,10 +14,7 @@ namespace Map {
       format.      renamed by: Claude Sonnet 4.6
      */
     // FUNCTION: STRONGHOLDCRUSADER 0x0045AE00
-    void Version::ResetTeams()
-    {
-        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)();
-    }
+    void Version::ResetTeams() { MACRO_CALL_MEMBER(Game::GameStateStructures_Func::resetTeams, DAT_GameState::ptr)(); }
 
 }
 }

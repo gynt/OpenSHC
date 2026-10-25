@@ -41,8 +41,7 @@ namespace UI {
                 (uint)((
                     short)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .y),
-                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                          & 0xfffffff1)
+                (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) & 0xfffffff1)
                     + 0x1e));
             if ((!_enemyTooClose) && (_buildingDamaged)) {
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
@@ -67,8 +66,8 @@ namespace UI {
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(Commands::GCT_REPAIR_TOWER);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                    Commands::GCT_REPAIR_TOWER);
             }
         }
 

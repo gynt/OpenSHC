@@ -25,8 +25,7 @@ namespace Global {
             (int)((int)(COL_WHITE::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::DebugDataAivStateUnk_Func::MenuModalRenderFunction_DebugDataAivStateUnk),
             Menu_DebugModals::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataAivStateUnk));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataAivStateUnk));
         return;
     }
 

@@ -61,8 +61,8 @@ namespace UI {
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_10c;
             MACRO_CALL(OS_Func::__time64)(&local_10c);
             MACRO_CALL(OS_Func::_localtime)(&local_10c);
-            pcVar2 = MACRO_CALL_MEMBER(
-                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+            pcVar2
+                = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
             pcVar3 = _playerLordNameUnk;
             do {
                 cVar1 = *pcVar2;
@@ -76,8 +76,7 @@ namespace UI {
                 _lordNameCallable = MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::isLordNameCallable,
                     DAT_LowLevelMemory::ptr)(_playerLordNameUnk, (char*)((int)(_callableLordNamePtr->name)));
                 if (_lordNameCallable) {
-                    MACRO_CALL_MEMBER(
-                        Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
+                    MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
                         DAT_SpeechDefinedData::instance.LordNameToCall[_callableLordNameIndex].source, 1);
                     goto LAB_004405eb;
                 }
@@ -87,8 +86,8 @@ namespace UI {
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                 Audio::SFX::SEID_GENERAL_STARTGAME);
         LAB_004405eb:
-            pcVar2 = MACRO_CALL_MEMBER(
-                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+            pcVar2
+                = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
             pcVar3 = pcVar2 + 1;
             do {
                 cVar1 = *pcVar2;
@@ -108,8 +107,8 @@ namespace UI {
                 ;
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_combat3.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_GameCore::instance.isNameEntryActive = FALSE;
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0);
@@ -118,10 +117,9 @@ namespace UI {
              */
             pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0x30);
-            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
-                pcVar3);
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, FALSE);
+            MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(pcVar3);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                UI::Enums::MMT_ENTER_TITLE_ON_GAME_START, FALSE);
             ;
         }
 

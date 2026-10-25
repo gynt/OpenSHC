@@ -103,7 +103,7 @@ namespace UI {
                         pcVar5 = pcVar5 + 1;
                     } while (cVar1 != '\0');
                     MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
-                        DAT_UserTextHandlerState::ptr)(2,(char *)(local_3f4));
+                        DAT_UserTextHandlerState::ptr)(2, (char*)(local_3f4));
                     pcVar5 = local_3f4 - 1;
                     do {
                         pcVar2 = pcVar5 + 1;
@@ -130,7 +130,7 @@ namespace UI {
                             pcVar5 = pcVar5 + 1;
                         } while (cVar1 != '\0');
                         MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
-                            DAT_UserTextHandlerState::ptr)(2,(char *)(local_3f4));
+                            DAT_UserTextHandlerState::ptr)(2, (char*)(local_3f4));
                         pcVar5 = local_3f4 - 1;
                         do {
                             pcVar2 = pcVar5 + 1;
@@ -156,7 +156,7 @@ namespace UI {
                             pcVar5 = pcVar5 + 1;
                         } while (cVar1 != '\0');
                         MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
-                            DAT_UserTextHandlerState::ptr)(2,(char *)(local_3f4));
+                            DAT_UserTextHandlerState::ptr)(2, (char*)(local_3f4));
                         pcVar5 = local_3f4 - 1;
                         do {
                             pcVar2 = pcVar5;
@@ -173,7 +173,7 @@ namespace UI {
                                 iVar3 = iVar3 + 1;
                             } while (cVar1 != '\0');
                             MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
-                                DAT_UserTextHandlerState::ptr)(2,(char *)(local_3f4));
+                                DAT_UserTextHandlerState::ptr)(2, (char*)(local_3f4));
                             pcVar5 = local_3f4 - 1;
                             do {
                                 pcVar2 = pcVar5 + 1;
@@ -186,7 +186,7 @@ namespace UI {
                                 iVar3 = iVar3 + 1;
                             } while (cVar1 != '\0');
                             MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::setTextEntryAndUpdateCursor,
-                                DAT_UserTextHandlerState::ptr)(2,(char *)(local_3f4));
+                                DAT_UserTextHandlerState::ptr)(2, (char*)(local_3f4));
                             pcVar5 = local_3f4 - 1;
                             do {
                                 pcVar2 = pcVar5 + 1;
@@ -209,7 +209,8 @@ namespace UI {
                     OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_2);
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                     OpenSHC::Audio::SFX::SEID_GENERAL_LOADING);
-                FilePackagerObj::instance.loadAndSaveBarFunc = MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderLoadAndSaveBar);
+                FilePackagerObj::instance.loadAndSaveBarFunc
+                    = MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderLoadAndSaveBar);
                 MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
                     DAT_MapDefinedData::instance.MapSectionAddressArray);
                 INT_00b95b64::instance = 1;
@@ -222,18 +223,23 @@ namespace UI {
                 if (DAT_SoundSystemState::instance.sec_Section1055_0x3274 < 0) {
                     DAT_SoundSystemState::instance.sec_Section1055_0x3274 = 0;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID,
-                    DAT_SoundSystemState::ptr)((OpenSHC::DE::SHCDE::eMusicIDs)(DAT_SoundSystemState::instance.sec_Section1055_0x3274));
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID, DAT_SoundSystemState::ptr)(
+                    (OpenSHC::DE::SHCDE::eMusicIDs)(DAT_SoundSystemState::instance.sec_Section1055_0x3274));
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::prepareMap, DAT_TileMapState::ptr)();
                 MACRO_CALL_MEMBER(
                     OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredBinkVideo, DAT_VideoBikQueue::ptr)();
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                 DAT_MenuTextInputState::instance.dialogResult = 1;
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_PLAYER_INFO_ON_HOVER, 0);
-                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
+                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    OpenSHC::UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO, 0);
+                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    OpenSHC::UI::Enums::DEID_PLAYER_INFO_ON_HOVER, 0);
+                MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                    OpenSHC::UI::Enums::DEID_WIN_DEFEAT_WINDOW, 0);
                 if (DAT_MenuModalComposition2::instance.activeModalDialogID
                     == OpenSHC::UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -424,7 +430,8 @@ namespace UI {
                 DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                     OpenSHC::Audio::SFX::SEID_GENERAL_SAVING);
-                FilePackagerObj::instance.loadAndSaveBarFunc = MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderLoadAndSaveBar);
+                FilePackagerObj::instance.loadAndSaveBarFunc
+                    = MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderLoadAndSaveBar);
                 MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::writeMapOrSaveFile, FilePackagerObj::ptr)(
                     DAT_MapDefinedData::instance.MapSectionAddressArray);
                 INT_00b95b64::instance = 1;

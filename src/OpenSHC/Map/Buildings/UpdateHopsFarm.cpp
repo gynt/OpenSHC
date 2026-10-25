@@ -44,8 +44,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar4].growCounter = 0;
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::growHops, DAT_BuildingsState::ptr)(iVar4);
         }
-        MACRO_CALL_MEMBER(
-            Map::Buildings::BuildingsState_Func::updateHopsFieldTileGraphics, DAT_BuildingsState::ptr)(iVar4);
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateHopsFieldTileGraphics, DAT_BuildingsState::ptr)(
+            iVar4);
         if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[iVar4].displayOwnerFlag = 1;
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].flagSlot.ownerFlagFrame;

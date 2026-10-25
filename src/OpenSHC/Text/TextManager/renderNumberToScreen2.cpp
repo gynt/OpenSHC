@@ -10,8 +10,8 @@ namespace Text {
         int fontSize, BOOLEnum keepOffsetX, int blendStrength)
     {
         MACRO_CALL_MEMBER(Text::TextManager_Func::fillIntegerTextBuffer, this)(number);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer, xParam,
-            yParam, alignment, (BGR24)((int)(color)), fontSize, keepOffsetX, blendStrength);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer, xParam, yParam,
+            alignment, (BGR24)((int)(color)), fontSize, keepOffsetX, blendStrength);
         return;
     }
 

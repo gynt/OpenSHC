@@ -21,8 +21,7 @@ namespace Text {
               write character
              */
             this->textArray[this->textArrayIndex][count + startIndex]
-                = this->textArray[this->textArrayIndex - Text::TAIT_ONE__FILTER_B]
-                                 [count + startIndex + 0xf9];
+                = this->textArray[this->textArrayIndex - Text::TAIT_ONE__FILTER_B][count + startIndex + 0xf9];
             count = next;
         } while (0 < next);
     }

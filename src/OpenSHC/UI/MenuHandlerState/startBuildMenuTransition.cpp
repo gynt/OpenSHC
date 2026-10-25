@@ -21,8 +21,7 @@ namespace UI {
         this->buildMenuTransitionProgress_0x38 = 0;
         this->buildMenuTransitionDirection_0x2c = (uint)(this->buildMenuTransitionDirection_0x2c < 0) * 2 + -1;
         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-            (Audio::SFX::SoundEffectID)(Audio::SFX::SEID_BURNING_MAN_SCREAM2
-                | Audio::SFX::SEID_WOOD_SAW));
+            (Audio::SFX::SoundEffectID)(Audio::SFX::SEID_BURNING_MAN_SCREAM2 | Audio::SFX::SEID_WOOD_SAW));
     }
 
 }

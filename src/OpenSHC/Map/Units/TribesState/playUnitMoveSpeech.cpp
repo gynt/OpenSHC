@@ -19,8 +19,8 @@ namespace Map {
         {
             int _unitID;
             UnitType _unitTypeID;
-            _unitID = MACRO_CALL_MEMBER(
-                Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
+            _unitID
+                = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
             /*
               bug: the second argument ("stack") does not want to be renamed, but is   sfxToPlay again.
              */
@@ -36,8 +36,7 @@ namespace Map {
                 /*
                   Any other ranged unit
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                    _unitTypeID, 0x1d);
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0x1d);
                 return;
             case Map::Units::UT_S_CATAPULT:
                 /*
@@ -51,8 +50,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                             Audio::SFX::SEID_RESOURCE_NEED25);
                     }
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                        _unitTypeID, 0x10);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0x10);
                 }
                 break;
             case Map::Units::UT_S_TREBUCHET:
@@ -67,8 +65,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                             Audio::SFX::SEID_RESOURCE_NEED25);
                     }
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                        _unitTypeID, 0x11);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0x11);
                 }
                 break;
             case Map::Units::UT_S_MANGONEL:
@@ -78,8 +75,7 @@ namespace Map {
                 if (DAT_UnitsState::instance.units[_unitID]
                         .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                     != 0) {
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                        _unitTypeID, 0xf);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0xf);
                 }
                 break;
             case Map::Units::UT_S_BATTERINGRAM:
@@ -89,8 +85,7 @@ namespace Map {
                 if (DAT_UnitsState::instance.units[_unitID]
                         .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                     != 0) {
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                        _unitTypeID, 0x13);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0x13);
                 }
                 break;
             case Map::Units::UT_S_BALLISTA:
@@ -101,8 +96,7 @@ namespace Map {
                 if (DAT_UnitsState::instance.units[_unitID]
                         .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
                     != 0) {
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
-                        _unitTypeID, 0x12);
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(_unitTypeID, 0x12);
                 }
             }
         }

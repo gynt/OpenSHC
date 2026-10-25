@@ -8,10 +8,10 @@
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
-#include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
 #include "OpenSHC/Globals/DAT_00eb0e40.hpp"
 #include "OpenSHC/Globals/DAT_00eb1234.hpp"
 #include "OpenSHC/Globals/DAT_00eb9af4.hpp"
+#include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
 #include "OpenSHC/Globals/DAT_MouseState.hpp"
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
 #include "OpenSHC/Globals/DAT_RenderRelatedX.hpp"
@@ -23,7 +23,6 @@
 #include "OpenSHC/Globals/FLOAT_Between1And5.hpp"
 #include "OpenSHC/Globals/INT_00eb0e30.hpp"
 #include "OpenSHC/Globals/INT_00ed27a4.hpp"
-
 
 namespace OpenSHC {
 
@@ -51,9 +50,9 @@ void Rendering::RenderActiveCreditsElements()
     }
     if (DAT_00eb0e40::instance == 5) {
         iVar3 = (long)((double)FLOAT_00eb0e2c::instance);
-        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-            DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
-            DAT_WindowAndDirectDraw::instance.resolutionY + -1, iVar3);
+        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(0, 0,
+            DAT_WindowAndDirectDraw::instance.resolutionX + -1, DAT_WindowAndDirectDraw::instance.resolutionY + -1,
+            iVar3);
         FLOAT_00eb0e2c::instance = FLOAT_00eb0e2c::instance - FLOAT_Between1And5::instance * 0.5;
         if (FLOAT_00eb0e2c::instance < 16.0) {
             FLOAT_00eb0e2c::instance = 16.0;
@@ -93,8 +92,8 @@ void Rendering::RenderActiveCreditsElements()
                                     - (FLOAT_Between1And5::instance * 0.5 + FLOAT_Between1And5::instance * 0.5),
                                 piVar5->blendStrength = fVar2, 1.0 <= fVar2)) {
                             if ((piVar5->fadeMode == 2)
-                                && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
-                                    31.0 < fVar1)) {
+                                && (fVar1 = fVar1 * 0.5 + fVar1 * 0.5 + piVar5->blendStrength,
+                                    piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
                                 piVar5->isValid = 0;
                             }
                         } else {
@@ -103,11 +102,9 @@ void Rendering::RenderActiveCreditsElements()
                         }
                     }
                 } else if (iVar3 == 4) {
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = Rendering::Enums::RT_SCREEN_MENU;
+                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_SCREEN_MENU;
                     if (!piVar5->fadeMode) {
-                        MACRO_CALL_MEMBER(
-                            UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
+                        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
                             DAT_PencilRenderCore::ptr)(
                             piVar5->x + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth,
                             piVar5->y + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight, piVar5->width,
@@ -123,20 +120,19 @@ void Rendering::RenderActiveCreditsElements()
                     }
                     fVar1 = FLOAT_Between1And5::instance;
                     if ((piVar5->fadeMode != 1)
-                        || (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5, piVar5->blendStrength = fVar2,
-                            1.0 <= fVar2)) {
+                        || (fVar2 = piVar5->blendStrength - FLOAT_Between1And5::instance * 0.5,
+                            piVar5->blendStrength = fVar2, 1.0 <= fVar2)) {
                         if ((piVar5->fadeMode == 2)
-                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
+                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
+                                31.0 < fVar1)) {
                             piVar5->isValid = 0;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = Rendering::Enums::RT_MAP_GAME;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                             goto LAB_004e1696;
                         }
                     } else {
                         piVar5->fadeMode = 0;
                     }
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = Rendering::Enums::RT_MAP_GAME;
+                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                 } else if (iVar3 == 2) {
                     if (piVar5->field10_0x28 == 1) {
                         color = 0;
@@ -144,9 +140,8 @@ void Rendering::RenderActiveCreditsElements()
                         color = 0xccfaff;
                     }
                     if (!piVar5->fadeMode) {
-                        MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelper)(piVar5->xSpace,
-                            piVar5->x, piVar5->y, piVar5->width, color, piVar5->field8_0x20,
-                            (BOOLEnum)((int)(piVar5->field9_0x24)));
+                        MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelper)(piVar5->xSpace, piVar5->x, piVar5->y,
+                            piVar5->width, color, piVar5->field8_0x20, (BOOLEnum)((int)(piVar5->field9_0x24)));
                     } else {
                         iVar3 = (long)((double)piVar5->blendStrength);
                         MACRO_CALL(UI::Rendering_Func::DrawLoadedMenuStringHelperWithBlending)(piVar5->xSpace,
@@ -158,7 +153,8 @@ void Rendering::RenderActiveCreditsElements()
                                 piVar5->blendStrength = fVar2, fVar2 < 1.0))
                             goto LAB_004e1692;
                         if ((piVar5->fadeMode == 2)
-                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1, 31.0 < fVar1)) {
+                            && (fVar1 = fVar1 * 0.5 + piVar5->blendStrength, piVar5->blendStrength = fVar1,
+                                31.0 < fVar1)) {
                             piVar5->isValid = 0;
                         }
                     }
@@ -175,8 +171,7 @@ void Rendering::RenderActiveCreditsElements()
                             && (DAT_MouseState::instance.screenSpaceY
                                     - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
                                 < piVar5->height + iVar4)) {
-                            MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
-                                piVar5->xSpace + 1, iVar3, iVar4);
+                            MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(piVar5->xSpace + 1, iVar3, iVar4);
                             goto LAB_004e1696;
                         }
                     }
@@ -207,8 +202,8 @@ void Rendering::RenderActiveCreditsElements()
                     top = DAT_RenderRelatedY::instance + DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                     left = DAT_RenderRelatedX::instance + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 }
-                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(left, top, iVar4, iVar3, blendStrengh);
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                    left, top, iVar4, iVar3, blendStrengh);
                 if ((DAT_00eb0e40::instance == 1) || (DAT_00eb0e40::instance == 3)) {
                     FLOAT_00eb0e2c::instance = FLOAT_00eb0e2c::instance + FLOAT_Between1And5::instance * 0.5;
                     if (DAT_00eb0e40::instance == 3) {

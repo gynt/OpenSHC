@@ -38,8 +38,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar5].displayOwnerFlag = (uint)(iVar4 < -3);
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock;
             *piVar1 = *piVar1 + 1;
-            bVar2 = DAT_BuildingDefinedData::instance
-                        .BadBuildingChoppingBlockAnimationFrames[DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock];
+            bVar2 = DAT_BuildingDefinedData::instance.BadBuildingChoppingBlockAnimationFrames
+                        [DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock];
             DAT_BuildingsState::instance.buildings[iVar5].extraAnimationSprite1 = (int)(char)bVar2;
             if ((char)bVar2 < 1) {
                 DAT_BuildingsState::instance.buildings[iVar5].campgroundVclock = 0;

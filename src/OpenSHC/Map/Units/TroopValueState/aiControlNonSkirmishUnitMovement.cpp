@@ -97,25 +97,22 @@ namespace Map {
                             iVar2 = DAT_TroopValueState::instance.attackInfo.value3Array01[_index];
                             if (!iVar2) {
                                 MACRO_CALL_MEMBER(
-                                    Map::Units::TroopValueState_Func::initializeOrAdvanceAttackWave, this)(
-                                    _index);
+                                    Map::Units::TroopValueState_Func::initializeOrAdvanceAttackWave, this)(_index);
                             } else if (iVar2 == 1) {
-                                MACRO_CALL_MEMBER(
-                                    Map::Units::TroopValueState_Func::advanceAttackWaveStaging, this)(_index);
+                                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::advanceAttackWaveStaging, this)(
+                                    _index);
                             } else if (iVar2 == 2) {
-                                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateInProgressAttackWave,
-                                    this)(_index);
+                                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateInProgressAttackWave, this)(
+                                    _index);
                             } else if (iVar2 == 3) {
                                 MACRO_CALL_MEMBER(
-                                    Map::Units::TroopValueState_Func::executeAttackWaveTargetAssignment, this)(
-                                    _index);
+                                    Map::Units::TroopValueState_Func::executeAttackWaveTargetAssignment, this)(_index);
                             } else if (iVar2 == 4) {
                                 MACRO_CALL_MEMBER(
-                                    Map::Units::TroopValueState_Func::executeDelayedAttackWaveTargetAssignment,
-                                    this)(_index);
+                                    Map::Units::TroopValueState_Func::executeDelayedAttackWaveTargetAssignment, this)(
+                                    _index);
                             } else if ((iVar2 != 5) && (iVar2 == 6)) {
-                                MACRO_CALL_MEMBER(
-                                    Map::Units::TroopValueState_Func::updateActiveAttackWaveState, this)(
+                                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateActiveAttackWaveState, this)(
                                     _index);
                             }
                         }

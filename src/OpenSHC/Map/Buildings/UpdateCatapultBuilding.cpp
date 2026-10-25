@@ -67,8 +67,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar7].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar7].displayOwnerFlag = 0;
             if (iVar4 == -1) {
-                iVar4 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
-                    DAT_GameSynchronyState::ptr)(iVar5);
+                iVar4 = MACRO_CALL_MEMBER(
+                    Synchrony::GameSynchronyState_Func::getLordTypeForPlayer, DAT_GameSynchronyState::ptr)(iVar5);
                 iVar7 = DAT_CurrentBuildingID::instance;
                 if (!iVar4) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 3;
@@ -78,8 +78,7 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[iVar7].animationFrame = 1;
             }
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                iVar7);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar7);
             iVar7 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState = 0;
         }
@@ -90,8 +89,8 @@ namespace Map {
               Spawn catapult.
              */
             iVar4 = (int)DAT_BuildingsState::instance.buildings[iVar7].owner;
-            iVar4 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar4,
-                iVar4, (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar7].x * 8)),
+            iVar4 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(iVar4, iVar4,
+                (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar7].x * 8)),
                 (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar7].y * 8)),
                 (int)((int)(DAT_BuildingsState::instance.buildings[iVar7].terrainHeightUnk)),
                 Map::Units::UT_S_CATAPULT);
@@ -122,19 +121,17 @@ namespace Map {
                     do {
                         unitID = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                      .workerID[iVar7];
-                        DAT_UnitsState::instance.units[unitID].state.generic
-                            = Map::Units::States::US_JESTER_ROAM_TO;
+                        DAT_UnitsState::instance.units[unitID].state.generic = Map::Units::States::US_JESTER_ROAM_TO;
                         DAT_UnitsState::instance.units[unitID].disappearFadeAlphaCountdown = 0x20;
                         DAT_UnitsState::instance.units[unitID].engineerManningSiegeStateRef_checkType = 0xfe;
                         DAT_UnitsState::instance.units[unitID].cachedState
                             = Map::Units::States::US_DETERMINE_NEXT_STATEUnk;
                         DAT_UnitsState::instance.units[unitID].totalSizeOfPathPlan = 0;
                         DAT_UnitsState::instance.units[unitID].movementCooldown = 0;
-                        MACRO_CALL_MEMBER(
-                            Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(unitID);
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::resetUnitMovementState, DAT_UnitsState::ptr)(
+                            unitID);
                         sVar1 = DAT_UnitsState::instance.units[unitID].aiUnitBehaviourType;
-                        DAT_UnitsState::instance.units[unitID].targetingType
-                            = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
+                        DAT_UnitsState::instance.units[unitID].targetingType = Map::Units::UIT_MAN_SIEGE_EQUIPMENT;
                         DAT_UnitsState::instance.units[unitID].targetedUnitID__OR__engineerMannedSiegeEngineRef
                             = (short)iVar4;
                         if (sVar1 == 0x16) {
@@ -146,8 +143,7 @@ namespace Map {
                 }
                 DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount = 0;
             }
-            MACRO_CALL_MEMBER(
-                Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
+            MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                 DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[iVar4].x,
                 (int)((int)(DAT_UnitsState::instance.units[iVar4].y)),
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -166,9 +162,9 @@ namespace Map {
                     *piVar6 = *piVar6 + 2;
                 }
             }
-            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::addUnitToNewTribe, DAT_TroopValueState::ptr)(
-                iVar4, DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].attackWave,
-                ((AITribeType)0x16), (undefined4)((int)(iVar5)));
+            MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::addUnitToNewTribe, DAT_TroopValueState::ptr)(iVar4,
+                DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].attackWave, ((AITribeType)0x16),
+                (undefined4)((int)(iVar5)));
             iVar7 = DAT_CurrentBuildingID::instance;
             sVar1 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].unknownSiegeTentRelated01;
             bVar9 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER;
@@ -204,8 +200,7 @@ namespace Map {
                 DAT_BuildingsState::instance.unitID = iVar4;
             }
             DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
-            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(
-                iVar7);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(iVar7);
         }
     }
 

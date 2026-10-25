@@ -836,8 +836,8 @@ namespace UI {
                                     _yDifference = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                          calculateCanPlayerUnitsNavigateToAreaFromArea,
                                         DAT_PathFindingState::ptr)(
-                                        (int)DAT_UnitsState::instance.units[_shooterID].owner,
-                                        (dword)uVar1, (dword)uVar2, _yDifference);
+                                        (int)DAT_UnitsState::instance.units[_shooterID].owner, (dword)uVar1,
+                                        (dword)uVar2, _yDifference);
                                     if (!_yDifference
                                         && (BVar8 = MACRO_CALL_MEMBER(
                                                 Map::Units::UnitsState_Func::selectionContainsOnlyArabAssassins,
@@ -1153,8 +1153,8 @@ namespace UI {
                                         && (!(DAT_TileMapState::instance.LogicLayer[DAT_ViewportRenderState::instance
                                                       .viewportState.mouseAtomRefFloorTile]
                                             & 2)))) {
-                                uVar1 = (short)DAT_TileMapState::instance.PathConnectionLayer[DAT_ViewportRenderState::instance
-                                        .viewportState.mouseAtomRefFloorTile];
+                                uVar1 = (short)DAT_TileMapState::instance.PathConnectionLayer
+                                            [DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile];
                                 local_18 = (int*)MACRO_CALL_MEMBER(
                                     Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(1);
                                 uVar2 = (short)DAT_TileMapState::instance
@@ -1180,8 +1180,7 @@ namespace UI {
                                                                     DAT_PathFindingState::ptr)(
                                                                     DAT_GameSynchronyState::instance
                                                                         .currentPlayerSlotID,
-                                                                    (dword)uVar1,
-                                                                    (dword)uVar2, 0),
+                                                                    (dword)uVar1, (dword)uVar2, 0),
                                                                 _shooterID == 0))))))
                                                 && (_shooterID = MACRO_CALL_MEMBER(
                                                         Map::Units::UnitsState_Func::selectionContainsShieldmenOnly,
@@ -1283,8 +1282,8 @@ namespace UI {
                                                 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                         calculateCanPlayerUnitsNavigateToAreaFromArea,
                                                     DAT_PathFindingState::ptr)(
-                                                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                                    (dword)uVar1, (dword)uVar2, 1);
+                                                    DAT_GameSynchronyState::instance.currentPlayerSlotID, (dword)uVar1,
+                                                    (dword)uVar2, 1);
                                             if (!_shooterID
                                                 && (DAT_TileMapState::instance
                                                            .WallOwnerLayer[DAT_ViewportRenderState::instance
@@ -1468,8 +1467,8 @@ namespace UI {
                     } else {
                         _shooterID = MACRO_CALL_MEMBER(
                             Map::Navigation::PathFindingState_Func::calculateCanPlayerUnitsNavigateToAreaFromArea,
-                            DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                            (dword)uVar1, (dword)uVar2, 1);
+                            DAT_PathFindingState::ptr)(
+                            DAT_GameSynchronyState::instance.currentPlayerSlotID, (dword)uVar1, (dword)uVar2, 1);
                         if (_shooterID) {
                             DAT_TileMapState::instance.pendingUnitCommand = 3;
                             DAT_TileMapState::instance.cursorOverlayImageBase = -3;

@@ -107,8 +107,7 @@ namespace Map {
         DAT_MapPropertiesState::instance.SEC_StartingPopularity = 100;
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);
-        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
-            local_10);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
         DAT_MapPropertiesState::instance.eventListSelection = -1;
         DAT_MapPropertiesState::instance.eventListScrollOffset = 0;
         psVar2 = DAT_MapPropertiesState::instance.buildingAvailability;

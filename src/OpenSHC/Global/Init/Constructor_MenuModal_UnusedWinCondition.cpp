@@ -20,8 +20,7 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedWinCondition::ptr)(
             UI::Enums::MMT_UNUSED_WIN_CONDITION, 0, 0, 0xf0, 0, 0, 0,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing),
-            Menu_UnusedWinCondition::ptr);
+            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing), Menu_UnusedWinCondition::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedWinCondition));
         return;
     }

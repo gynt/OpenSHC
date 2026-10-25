@@ -49,9 +49,8 @@ namespace Map {
         y_00 = y;
         uVar2 = x;
         if (this->clearKeepFootprintOnPlace) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::demolishBuildingsInKeepsConstructionFootprint, this)(
-                playerID, (int)((int)(x)), (int)((int)(y)), (undefined4)((int)(type)), (int)((int)(size)), orientation,
-                xyValue);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::demolishBuildingsInKeepsConstructionFootprint, this)(playerID,
+                (int)((int)(x)), (int)((int)(y)), (undefined4)((int)(type)), (int)((int)(size)), orientation, xyValue);
             this->clearKeepFootprintOnPlace = 0;
         }
         iVar6 = DAT_GameCore::instance.uniqueGameObjectTracker;
@@ -65,15 +64,13 @@ namespace Map {
         DAT_BuildingsState::instance.buildings[_buildingID].uidWhenPlaced = iVar6;
         sVar3 = (short)orientation;
         DAT_BuildingsState::instance.buildings[_buildingID].orientation = (short)orientation;
-        MACRO_CALL_MEMBER(
-            Game::GameStateStructures_Func::computeBuildingCategoryEntryPointAndDestroyEarlierBuilding,
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::computeBuildingCategoryEntryPointAndDestroyEarlierBuilding,
             DAT_GameState::ptr)(_buildingID, playerID, Game::Player::PDBCE_KEEP);
         if (orientation == 0xf) {
             orientation = 0;
         }
         do {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                y, (int)((int)(size)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(y, (int)((int)(size)));
             iVar4 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y_00].addXgetTile
                 + this->buildingX + uVar2;
             if ((int)y < 0x24) {
@@ -110,9 +107,9 @@ namespace Map {
         uVar9 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 * 0x18 + 0x268) + y_00;
         iVar5 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x264);
         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[uVar9].addXgetTile + iVar5 + uVar2;
-        iVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData,
-            DAT_BuildingsState::ptr)(playerID, iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)),
-            Map::Buildings::BT_KEEPDOOR_LEFT, 1, playerID, 0xf);
+        iVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(
+            playerID, iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)), Map::Buildings::BT_KEEPDOOR_LEFT, 1, playerID,
+            0xf);
         DAT_BuildingsState::instance.buildings[iVar5].uidWhenPlaced = iVar6;
         DAT_BuildingsState::instance.buildings[iVar5].unknownManorHouseOrStoneKeepRelated = local_18;
         DAT_BuildingsState::instance.buildings[iVar5].quarryStockpileID = (undefined2)this->placedBuildingID;
@@ -125,9 +122,9 @@ namespace Map {
         iVar5 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x26c);
         uVar9 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x270) + y_00;
         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[uVar9].addXgetTile + iVar5 + uVar2;
-        iVar5 = MACRO_CALL_MEMBER(
-            Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(playerID,
-            iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)), Map::Buildings::BT_KEEPDOOR, 1, playerID, 0xf);
+        iVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(
+            playerID, iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)), Map::Buildings::BT_KEEPDOOR, 1, playerID,
+            0xf);
         DAT_BuildingsState::instance.buildings[iVar5].uidWhenPlaced = iVar6;
         DAT_BuildingsState::instance.buildings[iVar5].unknownManorHouseOrStoneKeepRelated = local_18 / 2;
         DAT_BuildingsState::instance.buildings[iVar5].quarryStockpileID = (undefined2)this->placedBuildingID;
@@ -141,9 +138,9 @@ namespace Map {
         iVar5 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x274);
         uVar9 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x278) + y_00;
         iVar8 = DAT_ViewportRenderState::instance.translationMatrix[uVar9].addXgetTile + iVar5 + uVar2;
-        iVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData,
-            DAT_BuildingsState::ptr)(playerID, iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)),
-            Map::Buildings::BT_KEEPDOOR_RIGHT, 1, playerID, 0xf);
+        iVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(
+            playerID, iVar5 + uVar2, uVar9, (undefined4)((int)(xyValue)), Map::Buildings::BT_KEEPDOOR_RIGHT, 1,
+            playerID, 0xf);
         DAT_BuildingsState::instance.buildings[iVar5].uidWhenPlaced = iVar6;
         DAT_BuildingsState::instance.buildings[iVar5].unknownManorHouseOrStoneKeepRelated = local_18;
         DAT_BuildingsState::instance.buildings[iVar5].quarryStockpileID = (undefined2)this->placedBuildingID;
@@ -155,14 +152,12 @@ namespace Map {
             DAT_PathFindingState::ptr)((int)(short)DAT_BuildingsState::instance.buildings[iVar5].y, iVar8);
         y_01 = y_00 + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 * 8 + 0x388);
         x_00 = uVar2 + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 * 8 + 900);
-        uVar9 = MACRO_CALL_MEMBER(
-            Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(playerID, x_00,
-            y_01, (undefined4)((int)(xyValue)), Map::Buildings::BT_CAMPGROUND, 7, playerID, 0xf);
+        uVar9 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::setupBuildingData, DAT_BuildingsState::ptr)(
+            playerID, x_00, y_01, (undefined4)((int)(xyValue)), Map::Buildings::BT_CAMPGROUND, 7, playerID, 0xf);
         DAT_BuildingsState::instance.buildings[uVar9].uidWhenPlaced = iVar6;
         DAT_BuildingsState::instance.buildings[uVar9].quarryStockpileID = (undefined2)this->placedBuildingID;
         DAT_BuildingsState::instance.buildings[uVar9].orientation = sVar3;
-        MACRO_CALL_MEMBER(
-            Game::GameStateStructures_Func::computeBuildingCategoryEntryPointAndDestroyEarlierBuilding,
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::computeBuildingCategoryEntryPointAndDestroyEarlierBuilding,
             DAT_GameState::ptr)(uVar9, playerID, Game::Player::PDBCE_CAMPGROUND);
         y = 0;
         do {
@@ -223,8 +218,8 @@ namespace Map {
         } while ((int)y < this->constructionTileCount);
         MACRO_CALL_MEMBER(Map::TileMapState_Func::setMiscDisplayLayer, this)(uVar9);
         MACRO_CALL_MEMBER(Map::TileMapState_Func::updatePathLinkagesForBuilding, this)(uVar9);
-        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
-            DAT_PathFindingState::ptr)(10, x_00, y_01);
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
+            10, x_00, y_01);
         _xOffset = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 * 8 + 0x3e4);
         _yOffset = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 * 8 + 1000);
         y = 0;

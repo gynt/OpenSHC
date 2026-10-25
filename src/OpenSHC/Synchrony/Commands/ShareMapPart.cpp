@@ -56,7 +56,8 @@ namespace Synchrony {
                 local_40a = local_409;
                 if (DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile != (FILE*)0x0) {
                     if (-1 < (int)_buffer2) {
-                        MACRO_CALL(OpenSHC::OS_Func::_fwrite)(_buffer, 1, _buffer2, DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile);
+                        MACRO_CALL(OpenSHC::OS_Func::_fwrite)(
+                            _buffer, 1, _buffer2, DAT_GameSynchronyState::instance.FILEPTR_ReceivedMapFile);
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[0]
                             = DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[0] + _buffer2;
                     }
@@ -75,9 +76,10 @@ namespace Synchrony {
                 }
                 if (local_40a != '\0') {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)((OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
-                        | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk
+                            | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
                 }
             }
         LAB_0048bbc1:;

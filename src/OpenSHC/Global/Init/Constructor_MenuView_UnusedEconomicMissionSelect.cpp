@@ -25,8 +25,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::UnusedEconomicMissionSelect_Func::MenuView_UnusedEconomicMissionSelect_Prepare),
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicMissionSelect));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedEconomicMissionSelect));
         return;
     }
 

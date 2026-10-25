@@ -24,6 +24,10 @@
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
+#include "OpenSHC/Game/Market/BuySellPair.hpp"
+#include "OpenSHC/Game/Player/PlayerData.hpp"
+#include "OpenSHC/Game/Skirmish/SkirmishStatistics.hpp"
+#include "OpenSHC/Game/Skirmish/StartingResourceStructureInt.hpp"
 #include "OpenSHC/Game/TrailType.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/Map/Entities/EntityType.hpp"
@@ -31,10 +35,6 @@
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Game/Market/BuySellPair.hpp"
-#include "OpenSHC/Game/Player/PlayerData.hpp"
-#include "OpenSHC/Game/Skirmish/SkirmishStatistics.hpp"
-#include "OpenSHC/Game/Skirmish/StartingResourceStructureInt.hpp"
 #include "OpenSHC/Globals/DAT_00b960dc.hpp"
 #include "OpenSHC/Globals/DAT_00b960f8.hpp"
 #include "OpenSHC/Globals/DAT_AICState.hpp"
@@ -76,15 +76,15 @@ namespace UI {
     using Game::GameMode;
     using Game::GameMode2;
     using Game::TrailType;
+    using Game::Market::BuySellPair;
+    using Game::Player::PlayerData;
+    using Game::Skirmish::SkirmishStatistics;
+    using Game::Skirmish::StartingResourceStructureInt;
     using IO::FileResourceType;
     using Map::Entities::EntityType;
     using UI::Enums::BuildingsAndStatusMenuTabType;
     using UI::Enums::MenuViewType;
     using WindowsHelper::Enums::BOOLEnum;
-    using Game::Market::BuySellPair;
-    using Game::Player::PlayerData;
-    using Game::Skirmish::SkirmishStatistics;
-    using Game::Skirmish::StartingResourceStructureInt;
 
     /*
       This function stores a bunch of variables a .map file shouldn't overwrite, to then reapply those   stored info to
@@ -343,8 +343,7 @@ namespace UI {
         _storedCurrentAIArray[8] = DAT_GameSynchronyState::instance.currentAIArray[8];
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapOrSavFile, FilePackagerObj::ptr)(
             DAT_MapDefinedData::instance.MapSectionAddressArray);
-        MACRO_CALL_MEMBER(
-            Audio::MSS::SoundSystem_Func::mapLoadingAndLaunchGameRelated1, DAT_SoundSystemState::ptr)();
+        MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::mapLoadingAndLaunchGameRelated1, DAT_SoundSystemState::ptr)();
         puVar22 = local_b78;
         pSVar26 = &DAT_GameSynchronyState::instance.finalResults;
         for (_playerID = 0x1de; _playerID != 0; _playerID = _playerID + -1) {
@@ -480,8 +479,7 @@ namespace UI {
                 uVar19 = piVar14->lordID;
                 if (uVar19) {
                     if (piVar14->lordUID == DAT_UnitsState::instance.units[uVar19].uid) {
-                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(
-                            uVar19);
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(uVar19);
                     }
                     piVar14->lordID = 0;
                     piVar14->lordUID = 0;
@@ -501,8 +499,8 @@ namespace UI {
             do {
                 piVar27 = piVar27 + 2;
                 if ((DAT_GameSynchronyState::instance.playerPositionsArray[_playerID - 1] < 0) && (*piVar27 != -1)) {
-                    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::destroyPlayerCompletely,
-                        DAT_GameState::ptr)(_playerID);
+                    MACRO_CALL_MEMBER(Game::GameStateStructures_Func::destroyPlayerCompletely, DAT_GameState::ptr)(
+                        _playerID);
                 }
                 _playerID = _playerID + 1;
             } while (_playerID < 9);
@@ -564,8 +562,7 @@ namespace UI {
                       set aiType to 1 + ai
                      */
                     _ptrAIVID[1] = DAT_GameSynchronyState::instance.currentAIArray[_playerID] + 1;
-                    iVar25
-                        = MACRO_CALL_MEMBER(AI::AIVState_Func::setupAIVMetadata, DAT_AIVState::ptr)(_playerID);
+                    iVar25 = MACRO_CALL_MEMBER(AI::AIVState_Func::setupAIVMetadata, DAT_AIVState::ptr)(_playerID);
                     _s1023 = _playerTeams[_playerPosition * 2 + 1];
                     _autoSaveMinutes = _playerTeams[_playerPosition * 2];
                     *_ptrAIVID = iVar25;
@@ -578,9 +575,8 @@ namespace UI {
                         /*
                           local_d74 = param_1 - 4 or something
                          */
-                        _fitPercentage
-                            = MACRO_CALL_MEMBER(AI::AIVState_Func::tryPlaceAIVAndReturnFitPercentage,
-                                DAT_AIVState::ptr)(*_ptrAIVID, *(int*)(_section1093 + 0x191de10 + _playerID * 4));
+                        _fitPercentage = MACRO_CALL_MEMBER(AI::AIVState_Func::tryPlaceAIVAndReturnFitPercentage,
+                            DAT_AIVState::ptr)(*_ptrAIVID, *(int*)(_section1093 + 0x191de10 + _playerID * 4));
                         DAT_AIVPlacementFit::instance[_playerID] = _fitPercentage;
                     }
                     _anotherPlayerIDUnk = *_ptrAIVID;
@@ -596,9 +592,8 @@ namespace UI {
                          */
                         MACRO_CALL_MEMBER(AI::AIVState_Func::applyAIV, DAT_AIVState::ptr)(
                             _anotherPlayerIDUnk, _playerID);
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
-                            _playerID, DAT_AIVState::instance.keepX, DAT_AIVState::instance.keepY,
-                            Commands::M_MAPPER_KEEP2, 7,
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(_playerID,
+                            DAT_AIVState::instance.keepX, DAT_AIVState::instance.keepY, Commands::M_MAPPER_KEEP2, 7,
                             DAT_AIVState::instance.aivs[_anotherPlayerIDUnk].keepOrientation);
                         _keepBuildingID = _ptrAIVID[-0x89a];
                         if (_keepBuildingID) {
@@ -633,9 +628,9 @@ namespace UI {
                                  + _s1023]
                     + 0x5a;
                 iVar25 = _s1023 * 8 + 0x37;
-                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                    DAT_EntityState::ptr)(0, (undefined4)((int)(_playerID)), (uint)((int)(_playerID)), iVar25,
-                    iVar17 * 8, iVar18, iVar25, iVar17 * 8, iVar18, Map::Entities::ET_FLAG_4, 0);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                    (undefined4)((int)(_playerID)), (uint)((int)(_playerID)), iVar25, iVar17 * 8, iVar18, iVar25,
+                    iVar17 * 8, iVar18, Map::Entities::ET_FLAG_4, 0);
                 if (_playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                     MACRO_CALL_MEMBER(
                         Rendering::ViewportRenderState_Func::focusOnCoordinate, DAT_ViewportRenderState::ptr)(
@@ -759,8 +754,7 @@ namespace UI {
         DAT_GameState::instance.mapAndTime.yearCopy = 0;
         DAT_GameState::instance.mapAndTime.monthCopy = 0;
         DAT_GameState::instance.mapAndTime.field3184_0x27de = 0;
-        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::setMonthAndYear, DAT_GameState::ptr)(
-            6, (int)((int)(1181)));
+        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::setMonthAndYear, DAT_GameState::ptr)(6, (int)((int)(1181)));
         DAT_GameState::instance.mapAndTime.traderRelated1 = 4;
         DAT_GameState::instance.mapAndTime.traderRelatedCounter2 = 4;
         DAT_GameState::instance.mapAndTime.field1363_0x71c = 1;
@@ -890,12 +884,10 @@ namespace UI {
         for (_playerID = 1; _playerID < 9; _playerID++) {
             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] == -1)
                 && (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
-                MACRO_CALL_MEMBER(AI::AIVState_Func::recomputeAIAvailableGridTiles, DAT_AIVState::ptr)(
-                    _playerID);
+                MACRO_CALL_MEMBER(AI::AIVState_Func::recomputeAIAvailableGridTiles, DAT_AIVState::ptr)(_playerID);
             }
         }
-        MACRO_CALL_MEMBER(
-            Rendering::Bink::AIMessageQueue_Func::playNextStoredBinkVideo, DAT_VideoBikQueue::ptr)();
+        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playNextStoredBinkVideo, DAT_VideoBikQueue::ptr)();
         DAT_GameState::instance.mapAndTime.skirmishStrongWalls = DAT_GameSynchronyState::instance.skirmishStrongWalls;
         DAT_GameState::instance.mapAndTime.skirmishAlliances = DAT_GameSynchronyState::instance.skirmishAlliances;
         DAT_GameState::instance.mapAndTime.skirmishNoDogs = DAT_GameSynchronyState::instance.skirmishNoDogs;
@@ -918,8 +910,7 @@ namespace UI {
         } else {
             _delay = 10000;
         }
-        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-            UI::Enums::MVT_BUILD_MENU, _delay);
+        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, _delay);
         DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
         DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 1;
         DWORD_00b95b1c::instance = timeGetTime();

@@ -28,11 +28,9 @@ namespace UI {
         int iVar3;
         if (!DAT_ViewportRenderState::instance.viewportState.field0_0x0) {}
         if (!DAT_TileMapState::instance.flatViewToggleValue1) {
-            MACRO_CALL_MEMBER(
-                Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
+            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
         } else {
-            MACRO_CALL_MEMBER(
-                Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
+            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
         }
         if (!DAT_MouseState::instance.leftClickStart) {
             if ((DAT_MouseState::instance.draggingStopped) || (DAT_MouseState::instance.leftClickState)) {
@@ -69,8 +67,8 @@ namespace UI {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 1;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3 = 0x100000;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = 0x20;
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_SET_TERRAIN);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_SET_TERRAIN);
                 }
             }
         }

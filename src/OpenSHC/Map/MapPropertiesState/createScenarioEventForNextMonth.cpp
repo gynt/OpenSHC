@@ -17,8 +17,7 @@ namespace Map {
         _ptrEvent = this->scenarioEvents + this->eventsCount;
         this->editedEventType = 3;
         this->eventsCount = this->eventsCount + 1;
-        MACRO_CALL_MEMBER(
-            Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, _ptrEvent)();
+        MACRO_CALL_MEMBER(Game::ScenarioEvents::InGameEventUnionVersion_Func::initializeScenarioEvent, _ptrEvent)();
         this->scenarioEvents[this->currentEventID].header.month = DAT_GameState::instance.mapAndTime.month + 1;
         this->scenarioEvents[this->currentEventID].header.year = DAT_GameState::instance.mapAndTime.year;
         if (0xb < this->scenarioEvents[this->currentEventID].header.month) {

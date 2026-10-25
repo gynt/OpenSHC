@@ -43,8 +43,7 @@ namespace Map {
                         if (0x6e < psVar3[0x12]) {
                             iVar2 = 5;
                         }
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::PathFindingState_Func::computeTotalUnitsWithinDistance,
+                        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeTotalUnitsWithinDistance,
                             DAT_PathFindingState::ptr)(
                             this->attackInfo.pitchRelatedPlayerID, 0, 0, (int)((int)(*(int*)(psVar3 + 0x1f))), iVar2);
                         iVar2 = DAT_PathFindingState::instance.field34_0x64;

@@ -40,14 +40,14 @@ namespace UI {
         /*
           added by script: "Trebuchet"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_SIEGE_TENT, 2);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_SIEGE_TENT, 2);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar4, iVar1, TVar5, BVar6, iVar7, BVar8, blendStrength);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             (DAT_BuildingsState::instance.buildings[iVar3].buildingProgress * 100) / 0x280,
-            DAT_MenuHandlerState::instance.x + 0xb4, DAT_MenuHandlerState::instance.y + 0x209, Text::TTA_LEFT,
-            0, 0x11, FALSE, 0);
+            DAT_MenuHandlerState::instance.x + 0xb4, DAT_MenuHandlerState::instance.y + 0x209, Text::TTA_LEFT, 0, 0x11,
+            FALSE, 0);
         iVar7 = 0;
         BVar8 = TRUE;
         iVar4 = 0x11;
@@ -58,8 +58,8 @@ namespace UI {
         /*
           added by script: "% Complete"
          */
-        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_SIEGE_TENT, 6);
+        pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_SIEGE_TENT, 6);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar3, TVar5, BVar6, iVar4, BVar8, iVar7);
     }

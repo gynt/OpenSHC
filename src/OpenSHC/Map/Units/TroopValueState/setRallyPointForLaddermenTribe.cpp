@@ -36,8 +36,7 @@ namespace Map {
                     if (((BVar2) && (*(AITribeTypeShort*)((int)piVar4 + 0x16) == AI::Tribes::AITT_LADDERMEN))
                         && (iVar3 = iVar3 + 1, iVar3 == DAT_TribesState::instance.tribes[param_1].someCounter1 + 1)) {
                         sVar1 = DAT_TribesState::instance.tribes[iVar5].selectionTargetUnitID;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
+                        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
                             DAT_PathFindingState::ptr)(-1, (int)((int)(DAT_UnitsState::instance.units[sVar1].x)),
                             (int)((int)(DAT_UnitsState::instance.units[sVar1].y)));
                         sVar1 = (short)DAT_PathFindingState::instance.ALG_ResultY;

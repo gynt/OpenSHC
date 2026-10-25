@@ -49,7 +49,8 @@ namespace UI {
         int iVar6;
         int local_c;
         if (DAT_GameCore::instance.section1095 == 2) {
-            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
+            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
         }
         iVar6 = 0x12;
         /*
@@ -90,7 +91,8 @@ namespace UI {
         }
         iVar2 = iVar6 / 2;
         iVar3 = posX + 10 + iVar2;
-        _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
+        _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+            OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
         if (_stateNotZero) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
@@ -123,7 +125,8 @@ namespace UI {
                     - iVar4)
             * 800;
         if (!DAT_GameCore::instance.isTimeHalted) {
-            _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
+            _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
             if (!_stateNotZero) {
                 local_c = ((iVar4 + DAT_GameState::instance.mapAndTime.week * -200)
                               - DAT_GameState::instance.gameTicksLoadBalancer)

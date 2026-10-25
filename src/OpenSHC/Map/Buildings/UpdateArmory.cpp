@@ -167,12 +167,12 @@ namespace Map {
                 DAT_GameState::instance.playerDataArray[_playerID].currentResources[0x18] = 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_playerID);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(
+                _playerID);
         }
     LAB_00412a53:
-        uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
-            DAT_BuildingsState::ptr)(buildingID);
+        uVar4 = MACRO_CALL_MEMBER(
+            Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding, DAT_BuildingsState::ptr)(buildingID);
         if ((int)uVar4 < 10) {
             DAT_GameState::instance.playerDataArray[_playerID].isArmouryAlmostFilledUp = 0;
         }
@@ -190,8 +190,8 @@ namespace Map {
                 psVar1 = &DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown;
                 *psVar1 = *psVar1 + -1;
             }
-            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
-                DAT_BuildingsState::ptr)(buildingID);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
+                buildingID);
         }
         bVar9 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
@@ -225,8 +225,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                buildingID);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
             buildingID = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;

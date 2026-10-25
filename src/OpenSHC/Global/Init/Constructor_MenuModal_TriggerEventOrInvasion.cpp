@@ -20,10 +20,8 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_TriggerEventOrInvasion::ptr)(
             UI::Enums::MMT_TRIGGER_EVENT_OR_INVASION, -1, -1, 0x198, 0x90, 0x200, 6,
-            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing),
-            Menu_TriggerEventOrInvasion::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_TriggerEventOrInvasion));
+            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing), Menu_TriggerEventOrInvasion::ptr);
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TriggerEventOrInvasion));
         return;
     }
 

@@ -76,9 +76,9 @@ namespace UI {
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         _nudges = DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges;
         do {
-            number
-                = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
+            number = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                         .currentResources[*(
+                             int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
             /*
               Render resource image
              */
@@ -111,7 +111,8 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4);
+                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes
+                                + _index4);
                     }
                 }
             }

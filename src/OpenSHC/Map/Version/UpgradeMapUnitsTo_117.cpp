@@ -12,9 +12,9 @@
 namespace OpenSHC {
 namespace Map {
 
+    using Map::Units::Unit;
     using Map::Units::UnitLogicState;
     using Map::Units::UnitType;
-    using Map::Units::Unit;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053B1F0
     void Version::UpgradeMapUnitsTo_117()

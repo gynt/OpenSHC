@@ -43,8 +43,8 @@ namespace Synchrony {
         }
         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
     LAB_00466144:
-        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateAllBuildingsSnoozedState,
-            DAT_BuildingsState::ptr)(playerID, buildingType);
+        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateAllBuildingsSnoozedState, DAT_BuildingsState::ptr)(
+            playerID, buildingType);
     }
 
 }

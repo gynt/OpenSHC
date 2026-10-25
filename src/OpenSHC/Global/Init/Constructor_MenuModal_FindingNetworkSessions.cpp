@@ -25,8 +25,7 @@ namespace Global {
             (int)((int)(COL_WHITE::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::FindingNetworkSessions_Func::MenuModalRenderFunction_FindingNetworkSessions),
             Menu_FindingNetworkSessions::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_FindingNetworkSessions));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_FindingNetworkSessions));
         return;
     }
 

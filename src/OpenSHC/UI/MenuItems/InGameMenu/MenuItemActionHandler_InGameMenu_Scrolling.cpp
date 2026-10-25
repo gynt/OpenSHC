@@ -27,8 +27,8 @@ namespace UI {
         {
             BOOLEnum _debugNumbersDisplayed;
             int _scrollDistance;
-            _debugNumbersDisplayed = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-                UI::Enums::DEID_DEBUG_NUMBERS);
+            _debugNumbersDisplayed
+                = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(UI::Enums::DEID_DEBUG_NUMBERS);
             if (!_debugNumbersDisplayed) {
                 /*
                   This call uses the function to compute the needed numbers, but the given   element state indicates to
@@ -38,8 +38,8 @@ namespace UI {
             }
             if (DAT_MouseState::instance.selectionBoxMode) {}
             if (DAT_MouseState::instance.rightClickState) {}
-            _scrollDistance = MACRO_CALL_MEMBER(
-                UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
+            _scrollDistance
+                = MACRO_CALL_MEMBER(UI::ScrollingHandler_Func::getScrollDistanceBaseUnk, DAT_ScrollingHandler::ptr)();
             if (!_scrollDistance) {}
             if ((DAT_CurrentFramerate::instance < DAT_GameCore::instance.gameSpeedLevel)
                 && (DAT_CurrentFramerate::instance)) {
@@ -82,8 +82,8 @@ namespace UI {
                     = DAT_ViewportRenderState::instance.viewportState.viewportY - _scrollDistance;
                 goto switchD_004341a6_caseD_6;
             }
-            MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
-                DAT_ViewportRenderState::ptr)();
+            MACRO_CALL_MEMBER(
+                Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
                 MACRO_CALL(UI::Helpers_Func::RecordTutorialPlayerAction)(1);
             }

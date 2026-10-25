@@ -501,7 +501,8 @@ namespace UI {
             return yParam;
         }
         iVar5 = (yParam - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight) + -0x1e;
-        pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(DAT_GameCore::instance.standaloneFilename, &local_4);
+        pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(
+            DAT_GameCore::instance.standaloneFilename, &local_4);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(pcVar2,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11,

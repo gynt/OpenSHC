@@ -26,8 +26,7 @@ namespace Global {
             MACRO_CALL(
                 UI::MenuModals::ChooseRandomNumberOfEnemies_Func::MenuModalRenderFunction_ChooseRandomNumberOfEnemies),
             Menu_ChooseRandomNumberOfEnemies::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
         return;
     }
 

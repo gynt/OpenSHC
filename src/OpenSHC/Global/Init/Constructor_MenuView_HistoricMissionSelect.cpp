@@ -25,8 +25,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::HistoricMissionSelect_Func::MenuView_HistoricMissionSelect_Prepare),
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::MissionSelect_Func::MenuView_MissionSelect_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricMissionSelect));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricMissionSelect));
         return;
     }
 

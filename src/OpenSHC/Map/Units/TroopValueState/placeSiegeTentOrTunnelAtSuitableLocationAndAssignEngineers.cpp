@@ -29,8 +29,7 @@ namespace Map {
             int _targetUnitID;
             int _buildingID;
             _targetUnitID = (int)DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
-            _targetTile = MACRO_CALL_MEMBER(
-                Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
+            _targetTile = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findAppropriateLocationForSiegeTent,
                 DAT_PathFindingState::ptr)(100, (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].x)),
                 (uint)((int)((int)DAT_UnitsState::instance.units[_targetUnitID].y)), (undefined4)((int)(tribeID)),
                 strategicDistance, DAT_TribesState::instance.tribes[tribeID].owner);
@@ -61,8 +60,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
                     DAT_BuildingsState::instance.buildings[_buildingID].unknownSiegeTentRelated01 = 2;
-                    MACRO_CALL_MEMBER(
-                        Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
                         tribeID, instruction, _buildingID, DAT_BuildingsState::instance.buildings[_buildingID].uid, 0);
                     return TRUE;
                 }

@@ -15,8 +15,8 @@ namespace Map {
         void TroopValueState::playAttackAlarmSound()
         {
             char* filename;
-            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet,
-                DAT_SoundSystemState::ptr)();
+            MACRO_CALL_MEMBER(
+                Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet, DAT_SoundSystemState::ptr)();
             switch (this->attackInfo.attacker) {
             case 2:
             case 3:

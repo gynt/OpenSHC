@@ -17,8 +17,8 @@ namespace Text {
             yPosition, textShift, (BGR24)((int)(param_6)), fontSize, param_8, param_9);
         this->field10_0x28 = iVar2;
         this->currentXOffset_0x0 = iVar1;
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer,
-            xPosition + -1, yPosition + -1, textShift, (BGR24)((int)(color)), fontSize, param_8, param_9);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(this->integerTextBuffer, xPosition + -1,
+            yPosition + -1, textShift, (BGR24)((int)(color)), fontSize, param_8, param_9);
         this->drawingTextShadow = 0;
         return;
     }

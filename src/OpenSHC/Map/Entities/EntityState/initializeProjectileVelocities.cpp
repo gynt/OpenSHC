@@ -99,8 +99,8 @@ namespace Map {
                 sVar10 = this->entityArray[entityID].velocityUnk;
             } else {
                 if (iVar7 == 1) {
-                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
-                        this)(x, y, height, targetX, targetY, targetZ, 1);
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                        x, y, height, targetX, targetY, targetZ, 1);
                     iVar7 = this->entityArray[entityID].heightDifference;
                     sVar5 = (short)uVar6;
                     this->entityArray[entityID].field62_0x94 = sVar5;
@@ -113,8 +113,8 @@ namespace Map {
                     goto LAB_00403f37;
                 }
                 if (iVar7 == 2) {
-                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
-                        this)(x, y, height, targetX, targetY, targetZ, 1);
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                        x, y, height, targetX, targetY, targetZ, 1);
                     sVar5 = this->entityArray[entityID].height;
                     sVar10 = this->entityArray[entityID].targetZ;
                     sVar9 = (short)uVar6;
@@ -223,8 +223,7 @@ namespace Map {
             this->entityArray[entityID].startingAngle = (short)iVar7;
         LAB_00403f37:
             EVar4 = this->entityArray[entityID].entityType;
-            if ((((EVar4 == Map::Entities::ET_ARROW_AND_DEFAULT)
-                     || (EVar4 == Map::Entities::ET_CROSSBOWARROW))
+            if ((((EVar4 == Map::Entities::ET_ARROW_AND_DEFAULT) || (EVar4 == Map::Entities::ET_CROSSBOWARROW))
                     && (height + 0x36 < targetZ))
                 && (this->entityArray[entityID].rng_1 % 10 == 5)) {
                 this->entityArray[entityID].hasDoneEffectUnk = 1;
@@ -238,8 +237,7 @@ namespace Map {
             this->entityArray[entityID].vCos = (float)(fVar13 * (double)iVar7);
             fVar12 = sin((double)fVar12);
             this->entityArray[entityID].vSin = (float)(fVar12 * (double)iVar7);
-            uVar8
-                = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
+            uVar8 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
             this->entityArray[entityID].rotationFrameIndex = (short)uVar8;
             return;
         }

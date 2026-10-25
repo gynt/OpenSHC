@@ -37,10 +37,9 @@ namespace UI {
                     DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xe7;
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMissionMapAndSetLord,
                         DAT_MapPropertiesState::ptr)(DAT_GameCore::instance.missionNumber1to20);
-                    MACRO_CALL_MEMBER(
-                        UI::MenuTextInputState_Func::clearModalDialog2to6, DAT_MenuTextInputState::ptr)();
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                        DAT_GameSynchronyState::ptr)(Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearModalDialog2to6, DAT_MenuTextInputState::ptr)();
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
                 } else if (param_1 == 0xe) {
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_MAIN_MENU, 0);

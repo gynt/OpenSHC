@@ -67,8 +67,8 @@ namespace Map {
                 piVar7 = piVar5;
                 do {
                     if ((piVar7[-1] == 0)
-                        && (iVar1 = MACRO_CALL_MEMBER(
-                                Map::WildlifeState_Func::isSuitableWildlifeSpawnCell, this)(iVar6, iVar2),
+                        && (iVar1 = MACRO_CALL_MEMBER(Map::WildlifeState_Func::isSuitableWildlifeSpawnCell, this)(
+                                iVar6, iVar2),
                             iVar1 != 0)) {
                         *piVar7 = *piVar7 + 1;
                     }

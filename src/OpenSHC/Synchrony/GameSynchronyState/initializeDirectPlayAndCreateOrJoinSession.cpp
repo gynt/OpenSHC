@@ -53,8 +53,9 @@ namespace Synchrony {
                 GlobalFree(pvVar3);
                 this->DPLAYX_Connection = (void*)0x0;
             }
-            _status = MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::createCompoundAddressBasedOnSelectedProvider, this)((LPVOID*)&this->DPLAYX_Connection, &local_58);
+            _status
+                = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::createCompoundAddressBasedOnSelectedProvider,
+                    this)((LPVOID*)&this->DPLAYX_Connection, &local_58);
             if (_status < 0)
                 goto LAB_return;
             if (this->DPLAYX_4A != (IDirectPlay4A*)0x0) {
@@ -62,8 +63,8 @@ namespace Synchrony {
                 this->DPLAYX_4A->Release();
                 this->DPLAYX_4A = (IDirectPlay4A*)0x0;
             }
-            _status = CoCreateInstance(*GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1,
-                *GUID_IID_IDirectPlay4::ptr, (LPVOID*)&_dplay4);
+            _status = CoCreateInstance(
+                *GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1, *GUID_IID_IDirectPlay4::ptr, (LPVOID*)&_dplay4);
             if (_status < 0)
                 goto LAB_return;
             _dpStatus = _dplay4->InitializeConnection(this->DPLAYX_Connection, 0);
@@ -74,8 +75,7 @@ namespace Synchrony {
                 _session.guidApplication.Data1 = 0x1d5e2f48;
                 memcpy(_session.guidApplication.Data4 + 4, "ڞ0Y", 4);
                 _session.dwSize = 80;
-                _session.dwFlags = DPSESSION_OPTIMIZELATENCY
-                    | DPSESSION_DIRECTPLAYPROTOCOL | DPSESSION_KEEPALIVE
+                _session.dwFlags = DPSESSION_OPTIMIZELATENCY | DPSESSION_DIRECTPLAYPROTOCOL | DPSESSION_KEEPALIVE
                     | DPSESSION_MIGRATEHOST;
                 _session.guidApplication.Data2 = 0xe8c0;
                 _session.guidApplication.Data3 = 0x49e5;
@@ -141,8 +141,8 @@ namespace Synchrony {
             this->DPLAY_PlayerNameStructure.lpszLongName = (WCHAR*)0x0;
             this->DPLAY_PlayerNameStructure.dwSize = 0x10;
             this->DPLAY_PlayerNameStructure.lpszShortName = this->DPLAY_PlayerShortName;
-            _cpStatus = _dplay4->CreatePlayer((LPDPID)&this->DPLAYX_PlayerHandle,
-                &this->DPLAY_PlayerNameStructure, (void*)0x0, (void*)0x0, 0, 0);
+            _cpStatus = _dplay4->CreatePlayer(
+                (LPDPID) & this->DPLAYX_PlayerHandle, &this->DPLAY_PlayerNameStructure, (void*)0x0, (void*)0x0, 0, 0);
             if (_cpStatus != DP_OK) {
                 _setStatus = DPERR_ABORTED;
                 ;

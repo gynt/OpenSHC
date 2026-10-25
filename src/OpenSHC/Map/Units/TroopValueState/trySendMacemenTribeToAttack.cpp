@@ -37,8 +37,8 @@ namespace Map {
                 if ((bVar1) || (0xe < DAT_GameCore::instance.missionNumber1to20)) {
                     _unitID = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(_playerID);
-                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                        DAT_TribesState::ptr)(_macemen, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(
+                        _macemen, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
                         (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].y)), 0, 0,
                         Map::Units::Instructions::UMSE_0);
                 }

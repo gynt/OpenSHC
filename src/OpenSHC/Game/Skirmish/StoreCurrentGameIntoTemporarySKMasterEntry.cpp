@@ -26,8 +26,8 @@ namespace Game {
             DAT_SkMasterDataEntry::instance.mapName[iVar2] = cVar1;
             iVar2 = iVar2 + 1;
         } while (cVar1 != '\0');
-        DAT_SkMasterDataEntry::instance.skMasterScore = MACRO_CALL(
-            UI::GreatestLord_Func::ComputeSkMasterScore)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
+        DAT_SkMasterDataEntry::instance.skMasterScore = MACRO_CALL(UI::GreatestLord_Func::ComputeSkMasterScore)(
+            DAT_GameSynchronyState::instance.currentPlayerSlotID);
         DAT_SkMasterDataEntry::instance.activePlayerCount = 0;
         iVar2 = 1;
         do {

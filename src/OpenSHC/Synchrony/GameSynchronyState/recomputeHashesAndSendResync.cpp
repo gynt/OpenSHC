@@ -222,13 +222,13 @@ namespace Synchrony {
                     this->HASH_Section1023[this->currentPlayerSlotID][iVar45] = uVar19;
                     _someIndex = iVar45 + 1;
                 } while ((int)piVar41 < 0x11bc94c);
-                uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                    DAT_DirectionAlgorithmState::ptr)(0x10,
+                uVar19 = MACRO_CALL_MEMBER(
+                    Map::Navigation::DirectionAlgorithmState_Func::computeHash, DAT_DirectionAlgorithmState::ptr)(0x10,
                     (int*)((
                         int)(((int)DAT_GameState::instance.mapAndTime.signpostsMapEdge + iVar45 * 0x38e6 + 0x1022))));
                 this->HASH_Section1023[this->currentPlayerSlotID][iVar45 + 1] = uVar19;
-                uVar21 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                    DAT_DirectionAlgorithmState::ptr)(
+                uVar21 = MACRO_CALL_MEMBER(
+                    Map::Navigation::DirectionAlgorithmState_Func::computeHash, DAT_DirectionAlgorithmState::ptr)(
                     0x330, (int*)((int)(&DAT_AIVState::instance.mapExtraInfo.totalWoodAvailable)));
                 iVar39 = iVar39 + uVar19 + uVar21;
                 this->HASH_Section1023[this->currentPlayerSlotID][0x13] = uVar21;
@@ -301,9 +301,9 @@ namespace Synchrony {
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[10].componentArray[iVar39]
                         = uVar19;
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xb].componentArray[iVar39] = 0;
-                    uVar21 = MACRO_CALL_MEMBER(
-                        Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
-                        DAT_DirectionAlgorithmState::ptr)(2512, (uint*)((int)(pbVar42)), 0x7070707);
+                    uVar21
+                        = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
+                            DAT_DirectionAlgorithmState::ptr)(2512, (uint*)((int)(pbVar42)), 0x7070707);
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xc].componentArray[iVar39]
                         = uVar21;
                     uVar22 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,

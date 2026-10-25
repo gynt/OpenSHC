@@ -31,8 +31,7 @@ namespace Rendering {
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                 IO::FRT_BINKS, (char const*)((int)(binkFileName)));
             if (this->binkObjPtrArray[binkObjIndex] != (HBINK)0x0) {
-                MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(
-                    binkObjIndex);
+                MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(binkObjIndex);
             }
             if ((!DAT_SoundSystemState::instance.waveOutOpenUnk_0x8)
                 || (!DAT_SoundSystemState::instance.soundActiveUnk_0x0)) {

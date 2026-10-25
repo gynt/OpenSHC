@@ -24,8 +24,7 @@ namespace Map {
                     if ((((pEVar1[-1] == 2) && (*pEVar1 == Map::Entities::ET_COW_POISON_CLOUD))
                             && ((short)pEVar1[-0xb] < 0x3e9))
                         && ((pEVar1[0x54] == 0 && (pEVar1[0x58] == 0)))) {
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)(short)pEVar1[0xd], (int)((int)((short)pEVar1[0xe])),
                             (int)((int)(this->entityArray[param_1].xPosition)),
                             (int)((int)(this->entityArray[param_1].yPosition)));

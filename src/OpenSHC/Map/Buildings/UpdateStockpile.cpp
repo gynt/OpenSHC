@@ -188,8 +188,8 @@ namespace Map {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
             }
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_owner);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(
+                _owner);
         }
     }
 

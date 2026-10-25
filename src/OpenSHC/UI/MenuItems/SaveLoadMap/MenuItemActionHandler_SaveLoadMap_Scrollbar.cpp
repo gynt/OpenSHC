@@ -13,8 +13,8 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue
-                    = DAT_MenuTextInputState::instance.fileListEntryCount - DAT_MenuTextInputState::instance.fileListVisibleRowCount;
+                *maxValue = DAT_MenuTextInputState::instance.fileListEntryCount
+                    - DAT_MenuTextInputState::instance.fileListVisibleRowCount;
                 *currentValue = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
                 return;
             case 2:
@@ -33,7 +33,8 @@ namespace UI {
                 break;
             case 6:
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                    < DAT_MenuTextInputState::instance.fileListEntryCount - DAT_MenuTextInputState::instance.fileListVisibleRowCount) {
+                    < DAT_MenuTextInputState::instance.fileListEntryCount
+                        - DAT_MenuTextInputState::instance.fileListVisibleRowCount) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                         = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + 1;
                 }

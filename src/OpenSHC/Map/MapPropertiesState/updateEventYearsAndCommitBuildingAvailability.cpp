@@ -25,8 +25,7 @@ namespace Map {
         }
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
-        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
-            local_10);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
         this->eventListSelection = -1;
         this->eventListScrollOffset = 0;
         this->year_copy = this->SEC_StartingYear;

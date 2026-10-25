@@ -17,9 +17,9 @@
 #include "OpenSHC/UI/MenuItems/MainMenu.func.hpp"
 #include "OpenSHC/UI/MenuModalComposition.func.hpp"
 #include "OpenSHC/UI/MenuTextInputState.func.hpp"
+#include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/WindowAndDirectDraw.func.hpp"
-#include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/DE/SHCDE/eMusicIDs.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
@@ -87,14 +87,13 @@ namespace UI {
                     if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x2f) {
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .playerDeathRelated = 0;
-                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::activateScenarioTypeEvents,
-                            DAT_MapPropertiesState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            Map::MapPropertiesState_Func::activateScenarioTypeEvents, DAT_MapPropertiesState::ptr)();
                         MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::createScenarioEventForNextMonth,
                             DAT_MapPropertiesState::ptr)();
                         DAT_GameCore::instance.section1095 = 2;
                     }
-                    MACRO_CALL_MEMBER(
-                        UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                     MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                     return;
                 }
@@ -119,8 +118,7 @@ namespace UI {
                     return;
                 case 0x1e:
                     if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                        && (DAT_GameSynchronyState::instance.currentGameMode
-                            != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
+                        && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = DAT_GameCore::instance.mapTimeInTicks;
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                             = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeSomeHashOnUnitArray,
@@ -128,8 +126,8 @@ namespace UI {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = 0;
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_SAVE);
-                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
-                            DAT_MenuTextInputState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                         MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                         return;
                     }
@@ -164,8 +162,8 @@ namespace UI {
             } else {
                 if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter < 0x32) {
                     if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x31) {
-                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnInvasionEventAttackWave,
-                            DAT_MapPropertiesState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            Map::MapPropertiesState_Func::spawnInvasionEventAttackWave, DAT_MapPropertiesState::ptr)();
                     } else {
                         if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x2c) {
                             /*
@@ -179,45 +177,47 @@ namespace UI {
                                 DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
                             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
-                            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::stopAllActiveSounds,
-                                DAT_SoundSystemState::ptr)();
+                            MACRO_CALL_MEMBER(
+                                Audio::MSS::SoundSystem_Func::stopAllActiveSounds, DAT_SoundSystemState::ptr)();
                             DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState = 1;
                             MACRO_CALL_MEMBER(
                                 Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID,
                                 DAT_SoundSystemState::ptr)(DE::SHCDE::MUSIC_TUNE_NARR1);
-                            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
-                                DAT_MenuTextInputState::ptr)();
-                            if (DAT_GameSynchronyState::instance.currentGameMode
-                                == Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                            MACRO_CALL_MEMBER(
+                                UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                                 if (DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION) {
                                     if (DAT_GameCore::instance.isSkirmishTrail != TRUE) {
-                                        MACRO_CALL_MEMBER(Game::Skirmish::SkirmishLobbySetupStructure_Func::
-                                                              restoreSkirmishLobbySetup,
+                                        MACRO_CALL_MEMBER(
+                                            Game::Skirmish::SkirmishLobbySetupStructure_Func::restoreSkirmishLobbySetup,
                                             SEC_SkirmishLobbySetupStructure::ptr)();
                                         MACRO_CALL(UI::Actions_Func::LaunchSkirmishGame)(0);
-                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
-                                            DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, 0);
+                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                            UI::Enums::MVT_BUILD_MENU, 0);
                                         MACRO_CALL_MEMBER(
                                             Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                                         return;
                                     }
                                     if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                                         if (DAT_GameCore::instance.extremeTrailProgress < 0x14) {
-                                            MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(DAT_GameCore::instance.extremeTrailProgress);
-                                            MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2,
-                                                DAT_MouseState::ptr)();
+                                            MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(
+                                                DAT_GameCore::instance.extremeTrailProgress);
+                                            MACRO_CALL_MEMBER(
+                                                Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                                             return;
                                         }
                                     } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
                                         if (DAT_GameCore::instance.warchestTrailProgress < 0x1e) {
-                                            MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(DAT_GameCore::instance.warchestTrailProgress);
-                                            MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2,
-                                                DAT_MouseState::ptr)();
+                                            MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(
+                                                DAT_GameCore::instance.warchestTrailProgress);
+                                            MACRO_CALL_MEMBER(
+                                                Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                                             return;
                                         }
                                     } else if (DAT_GameCore::instance.skirmishTrailProgress < 0x32) {
-                                        MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(DAT_GameCore::instance.skirmishTrailProgress);
+                                        MACRO_CALL(Game::Skirmish_Func::SetupSkirmishMode)(
+                                            DAT_GameCore::instance.skirmishTrailProgress);
                                         MACRO_CALL_MEMBER(
                                             Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                                         return;
@@ -234,18 +234,15 @@ namespace UI {
                                         DAT_WindowAndDirectDraw::instance.resolutionY,
                                         (ushort)((int)(COL_BLACK::instance.shortValue)));
                                     MACRO_CALL(UI::Actions_Func::LaunchSinglePlayerGameUnk)(1);
-                                    MACRO_CALL_MEMBER(
-                                        Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
+                                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                                     return;
                                 }
                                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
-                                    MACRO_CALL_MEMBER(
-                                        Game::GameCore_Func::removeJesterAndLadyUnitsInCertainMissions,
+                                    MACRO_CALL_MEMBER(Game::GameCore_Func::removeJesterAndLadyUnitsInCertainMissions,
                                         DAT_GameCore::ptr)();
                                 }
                                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1) {
-                                    MACRO_CALL_MEMBER(
-                                        Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
+                                    MACRO_CALL_MEMBER(Game::GameCore_Func::removeLadyAndJester, DAT_GameCore::ptr)();
                                 }
                             }
                             DAT_GameCore::instance.gameSuspended = 0;
@@ -257,16 +254,15 @@ namespace UI {
                         if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x2f) {
                             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                 UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
-                            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
-                                DAT_MenuTextInputState::ptr)();
+                            MACRO_CALL_MEMBER(
+                                UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                             DAT_GameCore::instance.section1095 = 0;
                             MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                             return;
                         }
                     }
                 switchD_00494a01_caseD_fffffffa:
-                    MACRO_CALL_MEMBER(
-                        UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                    MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                     MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                     return;
                 }
@@ -278,14 +274,12 @@ namespace UI {
                             pcVar2 = pcVar3 + 1;
                         } while (pcVar3[1] != '\0');
                         strcpy(pcVar3 + 1, ".map");
-                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName,
-                            DAT_ResourceManager::ptr)(IO::FRT_MAPS,
-                            (char const*)((int)(DAT_GameSynchronyState::instance.unknownMapName_01)));
+                        MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                            IO::FRT_MAPS, (char const*)((int)(DAT_GameSynchronyState::instance.unknownMapName_01)));
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                             DAT_GameSynchronyState::ptr)(Commands::GCT_START_OR_STOP_SEND_MAP_FILEUnk);
-                        MACRO_CALL_MEMBER(
-                            UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
+                        MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::popModalDialog, DAT_MenuTextInputState::ptr)();
                         MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                         return;
                     }
@@ -293,31 +287,29 @@ namespace UI {
                 }
             }
             if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_MULTIPLAYER) {
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::initMultiplayerLobbyState,
-                    DAT_GameSynchronyState::ptr)();
+                MACRO_CALL_MEMBER(
+                    Synchrony::GameSynchronyState_Func::initMultiplayerLobbyState, DAT_GameSynchronyState::ptr)();
                 return;
             }
-            MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
             MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
             DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition2::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition3::ptr)(
+                UI::Enums::MMT_NONE, FALSE);
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::stopAllActiveSounds, DAT_SoundSystemState::ptr)();
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             if (DAT_GameCore::instance.field24_0x6c) {
                 DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x1f;
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_PROGRESS_BAR_BOX, FALSE);
-                MACRO_CALL_MEMBER(
-                    UI::MenuModalComposition_Func::renderMenuModal, DAT_MenuModalComposition1::ptr)();
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_PROGRESS_BAR_BOX, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::renderMenuModal, DAT_MenuModalComposition1::ptr)();
                 DAT_WindowAndDirectDraw::instance.pendingBltMode = 1;
-                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip,
-                    DAT_WindowAndDirectDraw::ptr)(0);
+                MACRO_CALL_MEMBER(
+                    UI::Rendering::WindowAndDirectDraw_Func::renderBltAndFlip, DAT_WindowAndDirectDraw::ptr)(0);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                     IO::FRT_MAPS, "auto_backup_map.map");
                 FilePackagerObj::instance.loadAndSaveBarFunc = MACRO_CALL(UI::Rendering_Func::RenderLoadAndSaveBar);
@@ -342,9 +334,7 @@ namespace UI {
                         goto LAB_00495046;
                     }
                     if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_INVASION) {
-                        MACRO_CALL(
-                            UI::MenuItems::CustomScenarios_Func::MenuItemActionHandler_CustomScenarios_Main)(
-                            4);
+                        MACRO_CALL(UI::MenuItems::CustomScenarios_Func::MenuItemActionHandler_CustomScenarios_Main)(4);
                     } else {
                         MACRO_CALL(UI::MenuItems::MainMenu_Func::MenuItemActionHandler_MainMenu_Main)(3);
                     }
@@ -358,11 +348,11 @@ namespace UI {
                         }
                         goto LAB_00495046;
                     }
-                    MACRO_CALL(UI::MenuItems::HistoricCampaignSelect_Func::
-                            MenuItemActionHandler_HistoricCampaignSelect_Main)(4);
+                    MACRO_CALL(
+                        UI::MenuItems::HistoricCampaignSelect_Func::MenuItemActionHandler_HistoricCampaignSelect_Main)(
+                        4);
                 } else {
-                    DAT_GameSynchronyState::instance.nextModalDialog
-                        = UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER;
+                    DAT_GameSynchronyState::instance.nextModalDialog = UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER;
                     DAT_GameCore::instance.gameMode_2 = Game::GM_SKIRMISH_AND_MULTIPLAYER;
                     DAT_GameCore::instance.xbowProducible_logic = 1;
                     DAT_GameCore::instance.pikeProducible_logic = 1;

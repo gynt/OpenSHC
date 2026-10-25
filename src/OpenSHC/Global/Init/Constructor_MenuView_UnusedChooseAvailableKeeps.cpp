@@ -25,8 +25,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_ScreenToBlack),
             (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
                 UI::MenuViews::UnusedChooseAvailableKeeps_Func::MenuView_UnusedChooseAvailableKeeps_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedChooseAvailableKeeps));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedChooseAvailableKeeps));
         return;
     }
 

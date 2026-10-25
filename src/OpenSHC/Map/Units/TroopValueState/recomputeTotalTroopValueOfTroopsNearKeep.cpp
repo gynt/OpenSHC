@@ -45,16 +45,14 @@ namespace Map {
                                  UVar2 != Map::Units::UT_E_ENGINEER && (UVar2 != Map::Units::UT_TUNNELER))
                             && (UVar2 != Map::Units::UT_E_LADDER)))) {
                         _playerID = ptrUnit->owner;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(
                             DAT_GameState::instance.playerDataArray[_playerID].campground.xEntry,
                             DAT_GameState::instance.playerDataArray[_playerID].campground.yEntry,
                             (int)((int)(ptrUnit->x)), (int)((int)(ptrUnit->y)));
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < 40) {
-                            _troopValue
-                                = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
-                                    this)((Map::Units::UnitType)(short)ptrUnit->unitType);
+                            _troopValue = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
+                                this)((Map::Units::UnitType)(short)ptrUnit->unitType);
                             piVar1 = this->attackInfo.playerTotalTroopValueOfTroopsNearKeep + _playerID;
                             *piVar1 = *piVar1 + _troopValue;
                         }

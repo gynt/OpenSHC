@@ -20,11 +20,9 @@ namespace UI {
                 CoInitialize((void*)0x0);
                 MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::getDeviceCapsAndSetup, this)();
                 if (-1 < (int)this->currentGameResolution) {
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::setupPreferredScreenResolution, this)();
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::setupPreferredScreenResolution, this)();
                 }
-                MACRO_CALL_MEMBER(
-                    UI::Rendering::WindowAndDirectDraw_Func::setWindowStyleRectAndPosition, this)();
+                MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::setWindowStyleRectAndPosition, this)();
                 this->windowRenderTimeUnk_0x1e0 = timeGetTime();
             }
         }

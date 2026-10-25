@@ -81,8 +81,8 @@ namespace Synchrony {
                 DAT_GameState::instance.playerDataArray[playerID].requestStateUnk = 1;
                 DAT_GameState::instance.playerDataArray[requestedByPlayerID].isNotNervousByEnemyTroopValue = 0;
             }
-            BVar3 = MACRO_CALL_MEMBER(AI::AICState_Func::determineAIPlayerAttackRequestResponse,
-                DAT_AICState::ptr)(playerID, (undefined4)((int)(targetPlayerID)), requestedByPlayerID);
+            BVar3 = MACRO_CALL_MEMBER(AI::AICState_Func::determineAIPlayerAttackRequestResponse, DAT_AICState::ptr)(
+                playerID, (undefined4)((int)(targetPlayerID)), requestedByPlayerID);
             if (BVar3) {
                 DAT_GameState::instance.playerDataArray[playerID].requestStateUnk = 1;
                 DAT_GameState::instance.playerDataArray[playerID].requestedAttackTargetUnk = targetPlayerID;

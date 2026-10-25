@@ -18,6 +18,7 @@
 #include "OpenSHC/Globals/DAT_00ed2794.hpp"
 #include "OpenSHC/Globals/DAT_00ed2798.hpp"
 #include "OpenSHC/Globals/DAT_00ed27bc.hpp"
+#include "OpenSHC/Globals/DAT_ARRAY_00ed26d0.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_MissionDefinedData.hpp"
@@ -28,7 +29,6 @@
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 #include "OpenSHC/Globals/INT_00ed3130.hpp"
 #include "OpenSHC/Globals/INT_00ed3134.hpp"
-#include "OpenSHC/Globals/DAT_ARRAY_00ed26d0.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -73,9 +73,10 @@ namespace UI {
             MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
             if (((DAT_00ed2794::instance) && (0x5dc < (int)(_currentTime - DAT_00ed2794::instance)))
                 && (DAT_00ed2794::instance = 0, DAT_GameCore::instance.missionNumber1to20 + -1 < 0x14)) {
-                MACRO_CALL_MEMBER(
-                    Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
-                    DAT_MissionDefinedData::instance.MissionSpeechFileNames[DAT_GameCore::instance.missionNumber1to20 + -1], 1);
+                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playSoundOnStream3Unk, DAT_SoundSystemState::ptr)(
+                    DAT_MissionDefinedData::instance
+                        .MissionSpeechFileNames[DAT_GameCore::instance.missionNumber1to20 + -1],
+                    1);
             }
             uVar4 = (_currentTime - INT_00ed3130::instance) / 0xfa;
             if (uVar4 < 0x3c) {
@@ -122,19 +123,18 @@ namespace UI {
                         + DAT_GameCore::instance.missionNumber1to20 * 4 + 0x1c);
                     eVar5 = DAT_GameCore::instance.missionNumber1to20 + DE::SHCDE::TEXT_MISSION15_HINTS;
                 } else {
-                    iVar3
-                        = DAT_MissionDefinedData::instance.MissionHintCounts[DAT_GameCore::instance.missionNumber1to20 - 1];
+                    iVar3 = DAT_MissionDefinedData::instance
+                                .MissionHintCounts[DAT_GameCore::instance.missionNumber1to20 - 1];
                     eVar5 = DAT_GameCore::instance.missionNumber1to20 * 4
                         + (DE::SHCDE::TEXT_TUTORIAL_BUTTONS | DE::SHCDE::TEXT_GOODS);
                 }
                 DAT_TextManagerObject::instance.field9_0x24 = 1;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     DE::SHCDE::TEXT_HINTS, 1, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32, Text::TTA_LEFT, 0xccfaff,
-                    0x11, FALSE);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText2Unk, DAT_TextManagerObject::ptr)(
-                    eVar5, 1, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28, iVar1 + 0x50, 0x2d0,
-                    0xc2f0eb, 0x12);
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32, Text::TTA_LEFT, 0xccfaff, 0x11,
+                    FALSE);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText2Unk, DAT_TextManagerObject::ptr)(eVar5, 1,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28, iVar1 + 0x50, 0x2d0, 0xc2f0eb, 0x12);
                 iVar1 = iVar1 + 0x6e + DAT_TextManagerObject::instance.field1_0x4;
                 if (0 < iVar3) {
                     DAT_TextManagerObject::instance.field9_0x24 = 1;
@@ -145,9 +145,8 @@ namespace UI {
                           added by script: "Hints"
                          */
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            DE::SHCDE::TEXT_HINTS, iVar8,
-                            DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e, iVar1,
-                            Text::TTA_LEFT, 0xccfaff, 0x11, FALSE);
+                            DE::SHCDE::TEXT_HINTS, iVar8, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
+                            iVar1, Text::TTA_LEFT, 0xccfaff, 0x11, FALSE);
                     } else if (1 < iVar3) {
                         iVar8 = 2;
                         goto LAB_004dd598;
@@ -162,8 +161,7 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS3, 0x14,
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28, iVar1 + -2);
                             iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x41;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = Rendering::Enums::RT_MAP_GAME;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                             if (*(char*)((int)DAT_GameState::instance.mapAndTime.emenyHitArray + iVar8 + 0x24)
                                 == '\0') {
                                 iVar12 = 0;
@@ -175,9 +173,8 @@ namespace UI {
                                 /*
                                   added by script: "Click to reveal a hint"
                                  */
-                                pcVar2
-                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_HINTS, 4);
+                                pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_HINTS, 4);
                                 MACRO_CALL_MEMBER(
                                     Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                     pcVar2, iVar11, iVar3, TVar6, BVar7, iVar10, BVar9, iVar12);
@@ -217,8 +214,8 @@ namespace UI {
             iVar11 = 0x2d0;
             iVar8 = 0;
             iVar3 = 0;
-            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(eVar5, iVar1);
+            pcVar2 = MACRO_CALL_MEMBER(
+                Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(eVar5, iVar1);
             iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                 pcVar2, iVar3, iVar8, iVar11, BVar7, iVar10, iVar12);
@@ -232,8 +229,8 @@ namespace UI {
             local_4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32 + local_4;
             iVar8 = 0x2d0;
             iVar3 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28;
-            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(eVar5, iVar1);
+            pcVar2 = MACRO_CALL_MEMBER(
+                Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(eVar5, iVar1);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar3, local_4, iVar8, uVar4, iVar11, iVar10);
             return;

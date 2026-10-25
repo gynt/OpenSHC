@@ -85,9 +85,8 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                 /*
                                   added by script: "A Mighty Oasis"
                                  */
-                                pcVar1
-                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x5d);
+                                pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x5d);
                                 return pcVar1;
                             }
                         } else {
@@ -100,8 +99,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                     /*
                                       added by script: "Armenia"
                                      */
-                                    pcVar1 = MACRO_CALL_MEMBER(
-                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x53);
                                     return pcVar1;
                                 }
@@ -115,8 +113,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                     /*
                                       added by script: "Arnon River"
                                      */
-                                    pcVar1 = MACRO_CALL_MEMBER(
-                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x7b);
                                     return pcVar1;
                                 }
@@ -205,8 +202,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                 if ((_charTest == 0x50)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Crete Peninsula"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Crete Peninsula"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x86;
                     DAT_GameCore::instance.mapDescUseStringTable = 1;
                     /*
@@ -296,8 +292,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                     } else {
                         _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                         if ((_charTest == 0x59)
-                            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Craggy Cliffs"),
-                                _charTest == 0)) {
+                            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Craggy Cliffs"), _charTest == 0)) {
                             *hardcodedMapDescriptionGroupNum = 0x84;
                             DAT_GameCore::instance.mapDescUseStringTable = 1;
                             /*
@@ -345,8 +340,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[1]);
                 if ((_charTest == 0x55)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Dunes of Nicaea"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Dunes of Nicaea"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x8c;
                     DAT_GameCore::instance.mapDescUseStringTable = 1;
                     /*
@@ -390,8 +384,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
     case 0x46:
         _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[1]);
         if ((_charTest == 0x4c)
-            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Flood Plains of Jordan"),
-                _charTest == 0)) {
+            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Flood Plains of Jordan"), _charTest == 0)) {
             *hardcodedMapDescriptionGroupNum = 0x8e;
             DAT_GameCore::instance.mapDescUseStringTable = 1;
             /*
@@ -433,8 +426,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                 if ((_charTest == 0x45)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Great Euphrates"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Great Euphrates"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x90;
                     DAT_GameCore::instance.mapDescUseStringTable = 1;
                     /*
@@ -515,24 +507,21 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                     /*
                                       added by script: "Halys River"
                                      */
-                                    pcVar1 = MACRO_CALL_MEMBER(
-                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x91);
                                     return pcVar1;
                                 }
                             } else {
                                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                                 if ((_charTest == 0x4f)
-                                    && (_charTest
-                                        = MACRO_CALL(OS_Func::__stricmp)(mapName, "Hills of Antioch"),
+                                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Hills of Antioch"),
                                         _charTest == 0)) {
                                     *hardcodedMapDescriptionGroupNum = 0x96;
                                     DAT_GameCore::instance.mapDescUseStringTable = 1;
                                     /*
                                       added by script: "Hills of Antioch"
                                      */
-                                    pcVar1 = MACRO_CALL_MEMBER(
-                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x95);
                                     return pcVar1;
                                 }
@@ -547,9 +536,8 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                 /*
                                   added by script: "Hidden Crater"
                                  */
-                                pcVar1
-                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x93);
+                                pcVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MAP_NAMES, 0x93);
                                 return pcVar1;
                             }
                         }
@@ -617,8 +605,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[4]);
                 if ((_charTest == 0x4a)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Its just not fair"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Its just not fair"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x7a;
                     _charTest = 0x79;
                     goto LAB_0046d83c;
@@ -708,8 +695,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                                 } else {
                                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                                     if ((_charTest == 0x20)
-                                        && (_charTest
-                                            = MACRO_CALL(OS_Func::__stricmp)(mapName, "Litani and Jordan"),
+                                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Litani and Jordan"),
                                             _charTest == 0)) {
                                         *hardcodedMapDescriptionGroupNum = 0x9e;
                                         _charTest = 0x9d;
@@ -799,8 +785,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[3]);
                 if ((_charTest == 0x56)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Province of Bodrum"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Province of Bodrum"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0xa4;
                     _charTest = 0xa3;
                     goto LAB_0046d83c;
@@ -847,8 +832,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                     } else {
                         _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                         if ((_charTest == 0x41)
-                            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Rock Face"),
-                                _charTest == 0)) {
+                            && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Rock Face"), _charTest == 0)) {
                             *hardcodedMapDescriptionGroupNum = 0xaa;
                             _charTest = 0xa9;
                             goto LAB_0046d83c;
@@ -888,8 +872,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                 } else {
                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                     if ((_charTest == 0x49)
-                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Small Island"),
-                            _charTest == 0)) {
+                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Small Island"), _charTest == 0)) {
                         *hardcodedMapDescriptionGroupNum = 0x6a;
                         _charTest = 0x69;
                         goto LAB_0046d83c;
@@ -913,8 +896,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             case 0x42:
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                 if ((_charTest == 0x55)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Bulls Eye"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Bulls Eye"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x16;
                     _charTest = 0x15;
                     goto LAB_0046d83c;
@@ -923,8 +905,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             case 0x43:
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[1]);
                 if ((_charTest == 0x4f)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Too Close For Comfort"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Too Close For Comfort"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 6;
                     _charTest = 5;
                     goto LAB_0046d83c;
@@ -951,8 +932,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                 } else {
                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[1]);
                     if ((_charTest == 0x52)
-                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Trapesac Island"),
-                            _charTest == 0)) {
+                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Trapesac Island"), _charTest == 0)) {
                         *hardcodedMapDescriptionGroupNum = 0xb2;
                         _charTest = 0xb1;
                         goto LAB_0046d83c;
@@ -971,8 +951,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                 } else {
                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[7]);
                     if ((_charTest == 0x45)
-                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Forest Oasis"),
-                            _charTest == 0)) {
+                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Forest Oasis"), _charTest == 0)) {
                         *hardcodedMapDescriptionGroupNum = 0x34;
                         _charTest = 0x33;
                         goto LAB_0046d83c;
@@ -991,8 +970,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                 } else {
                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                     if ((_charTest == 0x55)
-                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Guardians"),
-                            _charTest == 0)) {
+                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Guardians"), _charTest == 0)) {
                         *hardcodedMapDescriptionGroupNum = 0x30;
                         _charTest = 0x2f;
                         goto LAB_0046d83c;
@@ -1011,8 +989,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             case 0x4b:
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                 if ((_charTest == 0x49)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Killing Plains"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Killing Plains"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x24;
                     _charTest = 0x23;
                     goto LAB_0046d83c;
@@ -1021,8 +998,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             case 0x4c:
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                 if ((_charTest == 0x41)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Last Stand"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Last Stand"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x32;
                     _charTest = 0x31;
                     goto LAB_0046d83c;
@@ -1085,8 +1061,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             case 0x57:
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[5]);
                 if ((_charTest == 0x45)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Wet Lands"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "The Wet Lands"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x4c;
                     _charTest = 0x4b;
                     goto LAB_0046d83c;
@@ -1282,8 +1257,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[4]);
                 if ((_charTest == 0x4f)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Downhill Scrum"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Downhill Scrum"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x67;
                     /*
                       added by script: "MP-Downhill Scrum"
@@ -1310,8 +1284,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[6]);
                 if ((_charTest == 0x57)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-No Where to Hide"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-No Where to Hide"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x69;
                     /*
                       added by script: "MP-No Where to Hide"
@@ -1351,8 +1324,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
                 } else {
                     _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[4]);
                     if ((_charTest == 0x55)
-                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Surrounded"),
-                            _charTest == 0)) {
+                        && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Surrounded"), _charTest == 0)) {
                         *hardcodedMapDescriptionGroupNum = 0x6c;
                         /*
                           added by script: "MP-Surrounded"
@@ -1394,8 +1366,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
         case 0x56:
             _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[4]);
             if ((_charTest == 0x41)
-                && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Valley of the Lords"),
-                    _charTest == 0)) {
+                && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "MP-Valley of the Lords"), _charTest == 0)) {
                 *hardcodedMapDescriptionGroupNum = 0x6f;
                 /*
                   added by script: "MP-Valley of the Lords"
@@ -1459,8 +1430,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
             } else {
                 _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[1]);
                 if ((_charTest == 0x57)
-                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Swampy_Island"),
-                        _charTest == 0)) {
+                    && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Swampy_Island"), _charTest == 0)) {
                     *hardcodedMapDescriptionGroupNum = 0x56;
                     /*
                       added by script: "Swampy Island"
@@ -1488,8 +1458,7 @@ char* Global::GetStringBasedOnHardcodedMaps(char* mapName, int* hardcodedMapDesc
         } else {
             _charTest = MACRO_CALL(OS_Func::__toupper)((int)mapName[4]);
             if ((_charTest == 0x45)
-                && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Three_Little_Pigs"),
-                    _charTest == 0)) {
+                && (_charTest = MACRO_CALL(OS_Func::__stricmp)(mapName, "Three_Little_Pigs"), _charTest == 0)) {
                 *hardcodedMapDescriptionGroupNum = 0x62;
                 /*
                   added by script: "Three Little Pigs"

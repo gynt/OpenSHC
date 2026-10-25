@@ -18,10 +18,8 @@ namespace Global {
     void Init::CreateUnknownDisplayElement18()
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, UnknownDisplayElement18::ptr)(
-            ((eOnScreenText)0x12), 200, 4, 1,
-            (UI::DisplayElementRenderFunc*)MACRO_CALL(Global_Func::DoNothing),
-            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X
-                | UI::Enums::DEPM_RESOLUTION_Y));
+            ((eOnScreenText)0x12), 200, 4, 1, (UI::DisplayElementRenderFunc*)MACRO_CALL(Global_Func::DoNothing),
+            (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_RESOLUTION_Y));
         return;
     }
 

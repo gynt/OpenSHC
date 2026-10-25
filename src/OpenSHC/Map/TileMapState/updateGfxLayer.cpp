@@ -95,8 +95,8 @@ namespace Map {
                                             DAT_ViewportRenderState::ptr)(this->DAT_SomeX, this->DAT_SomeY),
                                         this->ChangedLayer[this->DAT_SomeTile] != 0)) {
                                     if (this->BuildingLayer[this->DAT_SomeTile] == 0) {
-                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileLuminescence,
-                                            this)(this->DAT_SomeTile, this->DAT_SomeY);
+                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileLuminescence, this)(
+                                            this->DAT_SomeTile, this->DAT_SomeY);
                                         iVar17 = this->DAT_SomeX;
                                         this->FloatingLayer[this->DAT_SomeTile] = 0;
                                         this->MiscDisplayLayer[this->DAT_SomeTile]
@@ -321,8 +321,8 @@ namespace Map {
                                                                         }
                                                                         if (local_48) {
                                                                             if (local_48 - 1 < 4) {
-                                                                                ((void (*)())PTR_ARRAY_00510d94::instance
-                                                                                        [local_48 - 1])();
+                                                                                ((void (*)())PTR_ARRAY_00510d94::
+                                                                                        instance[local_48 - 1])();
                                                                                 return;
                                                                             }
                                                                             bVar19 = this->HeightLayer[local_68];
@@ -464,34 +464,30 @@ namespace Map {
                                                                                             this->DAT_SomeY, 6);
                                                                                         if (!BVar11) {
                                                                                             BVar11 = MACRO_CALL_MEMBER(
-                                                                                                Map::
-                                                                                                    TileMapState_Func::
-                                                                                                        hasHigherPlainNeighborWithWallOrGatehouse,
+                                                                                                Map::TileMapState_Func::
+                                                                                                    hasHigherPlainNeighborWithWallOrGatehouse,
                                                                                                 this)(
                                                                                                 this->DAT_SomeTile,
                                                                                                 this->DAT_SomeY, 0);
                                                                                             if (!BVar11) {
                                                                                                 BVar11 = MACRO_CALL_MEMBER(
-                                                                                                    Map::
-                                                                                                        TileMapState_Func::
-                                                                                                            hasHigherPlainNeighborWithWallOrGatehouse,
+                                                                                                    Map::TileMapState_Func::
+                                                                                                        hasHigherPlainNeighborWithWallOrGatehouse,
                                                                                                     this)(
                                                                                                     this->DAT_SomeTile,
                                                                                                     this->DAT_SomeY, 2);
                                                                                                 if (!BVar11) {
                                                                                                     BVar11 = MACRO_CALL_MEMBER(
-                                                                                                        Map::
-                                                                                                            TileMapState_Func::
-                                                                                                                hasHigherPlainNeighborWithWallOrGatehouse,
+                                                                                                        Map::TileMapState_Func::
+                                                                                                            hasHigherPlainNeighborWithWallOrGatehouse,
                                                                                                         this)(
                                                                                                         this->DAT_SomeTile,
                                                                                                         this->DAT_SomeY,
                                                                                                         4);
                                                                                                     if (!BVar11) {
                                                                                                         BVar11 = MACRO_CALL_MEMBER(
-                                                                                                            Map::
-                                                                                                                TileMapState_Func::
-                                                                                                                    hasHigherPlainNeighborWithWallOrGatehouse,
+                                                                                                            Map::TileMapState_Func::
+                                                                                                                hasHigherPlainNeighborWithWallOrGatehouse,
                                                                                                             this)(
                                                                                                             this->DAT_SomeTile,
                                                                                                             this->DAT_SomeY,
@@ -598,9 +594,8 @@ namespace Map {
                                                                                             this->DAT_SomeY, 5);
                                                                                         if (!uVar12) {
                                                                                             uVar12 = MACRO_CALL_MEMBER(
-                                                                                                Map::
-                                                                                                    TileMapState_Func::
-                                                                                                        isWallCornerForDiagonalDirection,
+                                                                                                Map::TileMapState_Func::
+                                                                                                    isWallCornerForDiagonalDirection,
                                                                                                 this)(
                                                                                                 this->DAT_SomeTile,
                                                                                                 this->DAT_SomeY, 7);
@@ -823,8 +818,8 @@ namespace Map {
                                                         }
                                                     } else {
                                                         MACRO_CALL_MEMBER(
-                                                            Map::TileMapState_Func::computeClimbRampRotation,
-                                                            this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                                            Map::TileMapState_Func::computeClimbRampRotation, this)(
+                                                            this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                             (uint)((int)(this->DAT_SomeY)));
                                                         this->PillarGFXLayer[this->DAT_SomeTile]
                                                             = (short)GMTotalPicturesProcessed::instance[9] + -1
@@ -837,8 +832,7 @@ namespace Map {
                                                         DAT_BuildingsState::instance.field14_0x18e024 = 1;
                                                     }
                                                 } else {
-                                                    MACRO_CALL_MEMBER(
-                                                        Map::TileMapState_Func::computeClimbRampRotation,
+                                                    MACRO_CALL_MEMBER(Map::TileMapState_Func::computeClimbRampRotation,
                                                         this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                         (uint)((int)(this->DAT_SomeY)));
                                                     this->PillarGFXLayer[this->DAT_SomeTile]
@@ -853,8 +847,8 @@ namespace Map {
                                                 }
                                             } else {
                                                 BVar11 = MACRO_CALL_MEMBER(
-                                                    Map::TileMapState_Func::isTileSuitableForBrushPlacement,
-                                                    this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                                    Map::TileMapState_Func::isTileSuitableForBrushPlacement, this)(
+                                                    this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                     (uint)((int)(this->DAT_SomeY)));
                                                 if (!BVar11) {
                                                     this->PillarGFXLayer[this->DAT_SomeTile] = 0x20;
@@ -883,8 +877,8 @@ namespace Map {
                                                    .buildings[this->BuildingLayer[this->DAT_SomeTile]]
                                                    .buildingType
                                         == Map::Buildings::BT_DRAWBRIDGE) {
-                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileLuminescence,
-                                            this)(this->DAT_SomeTile, this->DAT_SomeY);
+                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileLuminescence, this)(
+                                            this->DAT_SomeTile, this->DAT_SomeY);
                                     }
                                 }
                                 this->DAT_SomeX = this->DAT_SomeX + 1;
@@ -915,8 +909,7 @@ namespace Map {
                                         && (!(this->LogicLayer[this->DAT_SomeTile] & 0x10000030U))))) {
                                     if (!(this->LogicLayer[this->DAT_SomeTile] & 1U)) {
                                         if ((this->LogicLayer[this->DAT_SomeTile] & 0x100000U)) {
-                                            MACRO_CALL_MEMBER(
-                                                Map::TileMapState_Func::computeTileCliffEdgeFlags, this)(
+                                            MACRO_CALL_MEMBER(Map::TileMapState_Func::computeTileCliffEdgeFlags, this)(
                                                 this->DAT_SomeTile, this->DAT_SomeX, this->DAT_SomeY);
                                         }
                                     } else {
@@ -1184,17 +1177,16 @@ namespace Map {
                                                         iVar13 = (int)this->BuildingLayer[this->DAT_SomeTile];
                                                         if (DAT_BuildingsState::instance.buildings[iVar13].buildingType
                                                             == Map::Buildings::BT_STOCKPILE) {
-                                                            this->wallCornerRotation
-                                                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                                        computeWallCornerRenderRotation,
-                                                                    this)(this->DAT_SomeX);
+                                                            this->wallCornerRotation = MACRO_CALL_MEMBER(
+                                                                Map::TileMapState_Func::computeWallCornerRenderRotation,
+                                                                this)(this->DAT_SomeX);
                                                             this->WallGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[10] + -1
                                                                 + (short)this->wallCornerRotation;
                                                         }
                                                         iVar14 = MACRO_CALL_MEMBER(
-                                                            Map::TileMapState_Func::computeClimbRampRotation,
-                                                            this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                                            Map::TileMapState_Func::computeClimbRampRotation, this)(
+                                                            this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                             (uint)((int)(this->DAT_SomeY)));
                                                         BVar1 = DAT_BuildingsState::instance.buildings[iVar13]
                                                                     .buildingType;
@@ -1245,8 +1237,8 @@ namespace Map {
                                                             if (DAT_BuildingsState::instance.buildings[iVar13]
                                                                     .currentTilePositionAdjusted
                                                                 == this->DAT_SomeTile) {
-                                                                MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                                      updateBuildingGraphicsLayer,
+                                                                MACRO_CALL_MEMBER(
+                                                                    Map::TileMapState_Func::updateBuildingGraphicsLayer,
                                                                     this)(iVar13);
                                                                 goto LAB_005109e8;
                                                             }
@@ -1318,14 +1310,12 @@ namespace Map {
                                                                                                         .buildings[this->BuildingLayer
                                                                                                                 [iVar13]]
                                                                                                         .buildingType
-                                                                                                    == Map::
-                                                                                                        Buildings::
-                                                                                                            BT_DRAWBRIDGE))
+                                                                                                    == Map::Buildings::
+                                                                                                        BT_DRAWBRIDGE))
                                                                                             && (iVar13
                                                                                                 = MACRO_CALL_MEMBER(
-                                                                                                    Map::
-                                                                                                        TileMapState_Func::
-                                                                                                            returnOwnedMoatAtTile,
+                                                                                                    Map::TileMapState_Func::
+                                                                                                        returnOwnedMoatAtTile,
                                                                                                     this)(iVar13),
                                                                                                 iVar13 != 0)) {
                                                                                             this->bitFlag
@@ -1360,14 +1350,12 @@ namespace Map {
                                                                                                                 [this->BuildingLayer
                                                                                                                         [iVar13]]
                                                                                                             .buildingType
-                                                                                                        == Map::
-                                                                                                            Buildings::
-                                                                                                                BT_DRAWBRIDGE))
+                                                                                                        == Map::Buildings::
+                                                                                                            BT_DRAWBRIDGE))
                                                                                                 && (iVar13
                                                                                                     = MACRO_CALL_MEMBER(
-                                                                                                        Map::
-                                                                                                            TileMapState_Func::
-                                                                                                                returnOwnedMoatAtTile,
+                                                                                                        Map::TileMapState_Func::
+                                                                                                            returnOwnedMoatAtTile,
                                                                                                         this)(iVar13),
                                                                                                     iVar13 != 0)) {
                                                                                                 this->bitFlag
@@ -1685,7 +1673,8 @@ namespace Map {
                                                                                 = (short)GMTotalPicturesProcessed::
                                                                                       instance[0x37]
                                                                                 + 0x428
-                                                                                + (short)(this->wallCornerRotation << 4);
+                                                                                + (short)(this->wallCornerRotation
+                                                                                    << 4);
                                                                             sVar4 = (short)this->DAT_SomeY;
                                                                             sVar5 = (short)this->DAT_SomeX;
                                                                             if (!this->wallCornerRotation) {
@@ -1739,9 +1728,8 @@ namespace Map {
                                                                             }
                                                                         }
                                                                     } else {
-                                                                        MACRO_CALL_MEMBER(
-                                                                            Map::TileMapState_Func::
-                                                                                computeClimbRampRotation,
+                                                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::
+                                                                                              computeClimbRampRotation,
                                                                             this)(this->DAT_SomeTile,
                                                                             (uint)((int)(this->DAT_SomeX)),
                                                                             (uint)((int)(this->DAT_SomeY)));
@@ -1791,8 +1779,8 @@ namespace Map {
                                                                     }
                                                                 }
                                                             } else {
-                                                                MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                                      computeClimbRampRotation,
+                                                                MACRO_CALL_MEMBER(
+                                                                    Map::TileMapState_Func::computeClimbRampRotation,
                                                                     this)(this->DAT_SomeTile,
                                                                     (uint)((int)(this->DAT_SomeX)),
                                                                     (uint)((int)(this->DAT_SomeY)));
@@ -1816,10 +1804,9 @@ namespace Map {
                                                                 }
                                                             }
                                                         } else {
-                                                            MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                                  computeClimbRampRotation,
-                                                                this)(this->DAT_SomeTile,
-                                                                (uint)((int)(this->DAT_SomeX)),
+                                                            MACRO_CALL_MEMBER(
+                                                                Map::TileMapState_Func::computeClimbRampRotation, this)(
+                                                                this->DAT_SomeTile, (uint)((int)(this->DAT_SomeX)),
                                                                 (uint)((int)(this->DAT_SomeY)));
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[9] + -1
@@ -1851,9 +1838,9 @@ namespace Map {
                                                                 .currentTilePositionAdjusted
                                                             != this->DAT_SomeTile)
                                                             goto LAB_0050c199;
-                                                        MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                              updateBuildingGraphicsLayer,
-                                                            this)((int)this->BuildingLayer[this->DAT_SomeTile]);
+                                                        MACRO_CALL_MEMBER(
+                                                            Map::TileMapState_Func::updateBuildingGraphicsLayer, this)(
+                                                            (int)this->BuildingLayer[this->DAT_SomeTile]);
                                                     }
                                                 } else {
                                                     this->MiscDisplayLayer[this->DAT_SomeTile]
@@ -1876,9 +1863,9 @@ namespace Map {
                                                                 goto LAB_00510585;
                                                             this->GfxLayer[this->DAT_SomeTile] = 0;
                                                         } else {
-                                                            MACRO_CALL_MEMBER(Map::TileMapState_Func::
-                                                                                  computeClimbRampRotation,
-                                                                this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                                            MACRO_CALL_MEMBER(
+                                                                Map::TileMapState_Func::computeClimbRampRotation, this)(
+                                                                this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                                 (uint)((int)(this->DAT_SomeY)));
                                                             this->PillarGFXLayer[this->DAT_SomeTile]
                                                                 = (short)GMTotalPicturesProcessed::instance[9] + -1
@@ -1904,8 +1891,8 @@ namespace Map {
                                                     }
                                                     local_8 = uVar12 * 0x40 + 1;
                                                     iVar13 = MACRO_CALL_MEMBER(
-                                                        Map::TileMapState_Func::computeClimbRampRotation,
-                                                        this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                                        Map::TileMapState_Func::computeClimbRampRotation, this)(
+                                                        this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                         (uint)((int)(this->DAT_SomeY)));
                                                     if ((this->HeightLayer[this->DAT_SomeTile] < 0x88) && (!iVar13)) {
                                                         if (local_8 < 1) {
@@ -1917,8 +1904,8 @@ namespace Map {
                                                             + (ushort)this->LuminesenceLayer[this->DAT_SomeTile] * 4
                                                             + (this->RandomLayer[this->DAT_SomeTile] & 3);
                                                         BVar11 = MACRO_CALL_MEMBER(
-                                                            Map::TileMapState_Func::isCliffDropInDirection,
-                                                            this)(this->DAT_SomeTile, (undefined4)((int)(iVar17)),
+                                                            Map::TileMapState_Func::isCliffDropInDirection, this)(
+                                                            this->DAT_SomeTile, (undefined4)((int)(iVar17)),
                                                             this->DAT_SomeY);
                                                         if (!BVar11) {
                                                             bVar10 = false;
@@ -2052,23 +2039,19 @@ namespace Map {
                                                 }
                                                 if (!this->mapOrientation) {
                                                     this->bitFlag = MACRO_CALL_MEMBER(
-                                                        Map::Navigation::DirectionAlgorithmState_Func::
-                                                            rotateByteLeft,
+                                                        Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                         DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 0);
                                                 } else if (this->mapOrientation == 2) {
                                                     this->bitFlag = MACRO_CALL_MEMBER(
-                                                        Map::Navigation::DirectionAlgorithmState_Func::
-                                                            rotateByteLeft,
+                                                        Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                         DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 2);
                                                 } else if (this->mapOrientation == 4) {
                                                     this->bitFlag = MACRO_CALL_MEMBER(
-                                                        Map::Navigation::DirectionAlgorithmState_Func::
-                                                            rotateByteLeft,
+                                                        Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                         DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 4);
                                                 } else if (this->mapOrientation == 6) {
                                                     this->bitFlag = MACRO_CALL_MEMBER(
-                                                        Map::Navigation::DirectionAlgorithmState_Func::
-                                                            rotateByteLeft,
+                                                        Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                         DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 6);
                                                 }
                                                 this->GfxLayer[this->DAT_SomeTile]
@@ -2204,28 +2187,24 @@ namespace Map {
                                             }
                                             if (!this->mapOrientation) {
                                                 this->bitFlag = MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        rotateByteLeft,
+                                                    Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                     DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 0);
                                             } else if (this->mapOrientation == 2) {
                                                 this->bitFlag = MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        rotateByteLeft,
+                                                    Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                     DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 2);
                                             } else if (this->mapOrientation == 4) {
                                                 this->bitFlag = MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        rotateByteLeft,
+                                                    Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                     DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 4);
                                             } else if (this->mapOrientation == 6) {
                                                 this->bitFlag = MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        rotateByteLeft,
+                                                    Map::Navigation::DirectionAlgorithmState_Func::rotateByteLeft,
                                                     DAT_DirectionAlgorithmState::ptr)(this->bitFlag, 6);
                                             }
                                             MACRO_CALL_MEMBER(
-                                                Map::TileMapState_Func::propagateCliffEdgeFlagFromNeighbor,
-                                                this)(this->DAT_SomeTile, iVar17, this->DAT_SomeY);
+                                                Map::TileMapState_Func::propagateCliffEdgeFlagFromNeighbor, this)(
+                                                this->DAT_SomeTile, iVar17, this->DAT_SomeY);
                                             if (this->Logic2Layer[this->DAT_SomeTile] == 0) {
                                                 this->GfxLayer[this->DAT_SomeTile]
                                                     = (short)GMTotalPicturesProcessed::instance[5] + 0x214
@@ -2673,9 +2652,8 @@ namespace Map {
                                     LAB_005109e8:
                                         if ((this->LogicLayer[this->DAT_SomeTile] & 0x10000100U)) {
                                             bVar19 = this->DefaultHeightLayer[this->DAT_SomeTile];
-                                            iVar17 = MACRO_CALL_MEMBER(
-                                                Map::TileMapState_Func::computeClimbRampRotation, this)(
-                                                this->DAT_SomeTile, (uint)((int)(iVar17)),
+                                            iVar17 = MACRO_CALL_MEMBER(Map::TileMapState_Func::computeClimbRampRotation,
+                                                this)(this->DAT_SomeTile, (uint)((int)(iVar17)),
                                                 (uint)((int)(this->DAT_SomeY)));
                                             sVar5 = (short)GMTotalPicturesProcessed::instance[9];
                                             sVar4 = (short)this->wallCornerRotation;

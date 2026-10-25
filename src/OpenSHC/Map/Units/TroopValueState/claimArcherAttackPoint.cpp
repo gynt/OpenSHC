@@ -24,11 +24,10 @@ namespace Map {
             uint x1;
             int iVar3;
             sVar1 = DAT_TribesState::instance.tribes[param_1].selectionTargetUnitID;
-            iVar3 = MACRO_CALL_MEMBER(
-                Map::Units::TribesState_Func::tribeHasActiveLaddermanUnit, DAT_TribesState::ptr)(param_1);
+            iVar3 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::tribeHasActiveLaddermanUnit, DAT_TribesState::ptr)(
+                param_1);
             if (!iVar3) {
-                iVar3 = MACRO_CALL_MEMBER(
-                    Map::Navigation::PathFindingState_Func::findArcherRelatedAttackInfoIndex,
+                iVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findArcherRelatedAttackInfoIndex,
                     DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)), param_1);
                 if (iVar3) {
@@ -43,8 +42,8 @@ namespace Map {
                     DAT_TribesState::instance.tribes[param_1].archerRelated = (short)iVar3;
                     this->attackInfo.arch2ValuesArray[iVar3 * 2 + 0x3ea].buildingID = param_1;
                     this->attackInfo.arch2ValuesArray[iVar3 * 2 + 0x3eb].tile = 3;
-                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                        DAT_TribesState::ptr)(param_1, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(
+                        param_1, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                     return iVar3;
                 }
             }

@@ -9,6 +9,7 @@
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
+#include "OpenSHC/Game/Player/PlayerData.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/DisplayElementID.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
@@ -20,7 +21,6 @@
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
-#include "OpenSHC/Game/Player/PlayerData.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -28,11 +28,11 @@ namespace Synchrony {
     using Commands::MappersEnum;
     using Game::GameMode;
     using Game::GameMode2;
+    using Game::Player::PlayerData;
     using UI::Enums::BuildingsAndStatusMenuTabType;
     using UI::Enums::DisplayElementID;
     using UI::Enums::MenuViewType;
     using WindowsHelper::Enums::BOOLEnum;
-    using Game::Player::PlayerData;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00486600
     void GameSynchronyState::checkSkirmishGameDefeat()
@@ -59,8 +59,7 @@ namespace Synchrony {
             psVar9 = &DAT_GameState::instance.playerDataArray[1].commemorationShrinePlacementCountdown;
             do {
                 if ((0 < *psVar9) && (sVar2 = *psVar9 + -1, *psVar9 = sVar2, !sVar2)) {
-                    MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::placeCommemoratingStatueAtGoodLocation,
+                    MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::placeCommemoratingStatueAtGoodLocation,
                         DAT_PathFindingState::ptr)(_deadPlayerID);
                 }
                 psVar9 = psVar9 + 0x1cfa;
@@ -71,18 +70,19 @@ namespace Synchrony {
                 if (DAT_GameCore::instance.unknownAlwaysZero) {
                     DAT_GameCore::instance.unknownAlwaysZero = 0;
                     piVar3 = &DAT_GameState::instance.playerDataArray[1].playerDeathRelated;
-                    psVar3 = (Game::Player::PlayerData *)(&DAT_GameState::instance.mapAndTime.playerIsAlive + 1);
+                    psVar3 = (Game::Player::PlayerData*)(&DAT_GameState::instance.mapAndTime.playerIsAlive + 1);
                     do {
                         psVar3->commemorationShrinePlacementCountdown = 0;
                         *piVar3 = 1;
-                        psVar3 = (Game::Player::PlayerData *)(&psVar3->someKeepRelatedX2);
+                        psVar3 = (Game::Player::PlayerData*)(&psVar3->someKeepRelatedX2);
                         piVar3 = piVar3 + 0xe7d;
                     } while ((int)psVar3 < 0x117ef52);
                     DAT_GameState::instance.mapAndTime.gameOver = TRUE;
                     DAT_GameState::instance.mapAndTime.gameOverTime = timeGetTime();
                     DAT_GameState::instance.mapAndTime.playerIsAlive[this->currentPlayerSlotID] = 1;
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
-                    MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
+                    MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                        UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
                 }
                 piVar3 = this->currentAIArray + 1;
                 local_44[2] = 0;
@@ -231,7 +231,8 @@ namespace Synchrony {
                         *piVar6 = 1;
                         DAT_GameState::instance.mapAndTime.gameOverTime = timeGetTime();
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
-                        MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
+                        MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                            UI::Enums::DEID_WIN_DEFEAT_WINDOW, 1);
                         if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                                 == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
                             || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
@@ -245,10 +246,8 @@ namespace Synchrony {
                         if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
                             MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
-                            MACRO_CALL_MEMBER(
-                                Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
-                            MACRO_CALL_MEMBER(
-                                Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
+                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
+                            MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                         }
                     }
                     psVar9 = psVar9 + 1;

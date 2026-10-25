@@ -52,7 +52,9 @@ namespace UI {
             if (DAT_UnknownGFXIndex::instance == 1) {}
             if (param_1 == 5) {
                 if ((DAT_ButtonCurrentlyInteracting::instance) && (!BOOL_WasInteracting::instance)) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)((OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3 | OpenSHC::Audio::SFX::SEID_WOOD_SAW));
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                        (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3
+                            | OpenSHC::Audio::SFX::SEID_WOOD_SAW));
                 }
                 BOOL_WasInteracting::instance = DAT_ButtonCurrentlyInteracting::instance;
             LAB_00424fed:
@@ -71,7 +73,9 @@ namespace UI {
                           .pictureInGm_0x4;
                 if (((param_1 < 5) || (param_1 == 9)) && (DAT_ButtonCurrentlyInteracting::instance)) {
                     if (INT_00b95abc::instance != param_1) {
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)((OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                            (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_CHILDREN_PLAY_MAYPOLE
+                                | OpenSHC::Audio::SFX::SEID_WOOD_CHOP));
                     }
                     INT_00b95abc::instance = param_1;
                 }

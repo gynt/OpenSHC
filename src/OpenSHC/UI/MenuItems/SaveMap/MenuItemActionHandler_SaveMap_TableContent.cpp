@@ -22,8 +22,7 @@ namespace UI {
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                         .DAT_ArrayOfMapIndices[DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                             + param_1 + -1]);
-                MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(pcVar1);
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(pcVar1);
             }
         }
 

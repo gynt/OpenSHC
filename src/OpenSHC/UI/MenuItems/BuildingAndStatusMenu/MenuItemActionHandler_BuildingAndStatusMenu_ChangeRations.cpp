@@ -29,8 +29,7 @@ namespace UI {
                 if (!BVar1) {
                     MACRO_CALL(UI::Helpers_Func::SetTutorialHintActiveWithTimestamp)();
                 }
-                MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(
-                    0xc, (BuildingType)((int)(param_1)));
+                MACRO_CALL(UI::Helpers_Func::SetTutorialBuildingActionState)(0xc, (BuildingType)((int)(param_1)));
             }
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(

@@ -9,8 +9,7 @@ namespace OpenSHC {
 // FUNCTION: STRONGHOLDCRUSADER 0x0059D790
 void Meta::Destructor_BinkControlClass()
 {
-    MACRO_CALL_MEMBER(
-        Rendering::Bink::BinkControlClass_Func::stopAllBinkPlaybackThunk, DAT_BinkControlState::ptr)();
+    MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopAllBinkPlaybackThunk, DAT_BinkControlState::ptr)();
 }
 
 }

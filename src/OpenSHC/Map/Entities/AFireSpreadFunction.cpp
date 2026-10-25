@@ -44,8 +44,8 @@ namespace Map {
         y_2 = microY / 8;
         if (((x_2 < 400) && (y_2 < 400)) && (*(char*)(y_2 * 400 + 0x21aec98 + x_2) != '\0')) {
             _tile = DAT_ViewportRenderState::instance.translationMatrix[y_2].addXgetTile + x_2;
-            _entityID = MACRO_CALL_MEMBER(
-                Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
+            _entityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(
+                _tile);
             if (_entityID) {
                 sVar1 = DAT_EntityState::instance.entityArray[_entityID].fireParameter_0xb6;
                 DAT_EntityState::instance.entityArray[_entityID].someTracker = 0;
@@ -64,16 +64,16 @@ namespace Map {
                     || (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
                             _tile, playerID),
                         BVar3)))) {
-                _entityID2 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                    DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
-                    Map::Entities::ET_FIRE, 0);
+                _entityID2
+                    = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                        (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0, Map::Entities::ET_FIRE, 0);
                 if (_entityID2) {
                     DAT_EntityState::instance.entityArray[_entityID2].fireParameter_0xb6 = (short)param_5;
                     DAT_EntityState::instance.entityArray[_entityID2].fireIntensity = (short)param_6;
                 }
                 if ((2 < param_5) && (!(DAT_TileMapState::instance.RandomLayer[_tile] & 3))) {
-                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                        DAT_EntityState::ptr)(0, (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                        (undefined4)((int)(playerID)), 0, microX, microY, height, 0, 0, 0,
                         Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
             }

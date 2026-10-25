@@ -64,7 +64,8 @@ namespace UI {
         pPVar5 = DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges;
         do {
             iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + iVar4)];
+                        .currentResources[*(
+                            int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + iVar4)];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                 *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + iVar4), pPVar5->x + iVar6,

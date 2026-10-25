@@ -38,8 +38,8 @@ namespace Map {
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].microX)),
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].microY)),
                 (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].height + 0x32)),
-                (_x + -0x32 + _rng % 100) * 8, (_y + -0x32 + (_rng >> 8) % 100) * 8, 0xfa, Map::Entities::EntityTypeInt__ET_CROW,
-                0);
+                (_x + -0x32 + _rng % 100) * 8, (_y + -0x32 + (_rng >> 8) % 100) * 8, 0xfa,
+                Map::Entities::EntityTypeInt__ET_CROW, 0);
         }
     }
 

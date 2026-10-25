@@ -39,11 +39,11 @@ namespace Map {
                     iVar2 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getLivingSelectableUnit, DAT_UnitsState::ptr)(iVar2);
                 } else {
-                    iVar2 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::findActiveSiegeEngineForTribe,
-                        DAT_UnitsState::ptr)(iVar2);
+                    iVar2 = MACRO_CALL_MEMBER(
+                        Map::Units::UnitsState_Func::findActiveSiegeEngineForTribe, DAT_UnitsState::ptr)(iVar2);
                 }
-                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                    DAT_TribesState::ptr)(tribeID, (uint)((int)((int)DAT_UnitsState::instance.units[iVar2].x)),
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(tribeID,
+                    (uint)((int)((int)DAT_UnitsState::instance.units[iVar2].x)),
                     (uint)((int)((int)DAT_UnitsState::instance.units[iVar2].y)), 0, 0,
                     Map::Units::Instructions::UMSE_0);
             }

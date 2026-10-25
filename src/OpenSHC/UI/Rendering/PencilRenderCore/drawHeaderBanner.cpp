@@ -33,13 +33,13 @@ namespace UI {
                         _imageID = iVar4 + 1;
                     }
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, _imageID,
-                        iVar3 + iVar1, xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 3, 0);
+                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, _imageID, iVar3 + iVar1,
+                        xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, _imageID + 3, 0);
                 }
             }
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, _x + 0xb,
-                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, _x + 0xb, yPos + 0x11,
+                IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                 DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
                 (iVar1 - DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x9c] + 0x5a].width) + -3

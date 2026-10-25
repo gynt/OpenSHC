@@ -5,9 +5,12 @@
 #include "OpenSHC/Text/TextManager.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/Coordinates/XYPairShort.hpp"
 #include "OpenSHC/DE/SHCDE/eGM.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Game/Player/PlayerData.hpp"
 #include "OpenSHC/IO/Graphics/GmID.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -21,22 +24,19 @@
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
-#include "OpenSHC/Coordinates/XYPairShort.hpp"
-#include "OpenSHC/Game/Player/PlayerData.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
+        using Coordinates::XYPairShort;
         using DE::SHCDE::eGM;
         using DE::SHCDE::eTextSections;
+        using Game::Player::PlayerData;
         using IO::Graphics::GmID;
+        using Rendering::Colors::BGR24;
         using Text::TextAlignment;
         using WindowsHelper::Enums::BOOLEnum;
-        using Coordinates::XYPairShort;
-        using Game::Player::PlayerData;
-        using Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AE0F0
         void GreatestLord::MenuModalRenderFunction_GreatestLord(int x, int y, int width, int height)
@@ -111,9 +111,9 @@ namespace UI {
                             if (!iVar9) {
                             LAB_004ae1c0:
                                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                                    DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3,
-                                    iVar6, iVar9 + 0x18 + x, iVar5 + 0x18 + y,
-                                    IO::Graphics::GID_INTERFACE_ICONS_3, iVar6 + 3, 0);
+                                    DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, iVar6,
+                                    iVar9 + 0x18 + x, iVar5 + 0x18 + y, IO::Graphics::GID_INTERFACE_ICONS_3, iVar6 + 3,
+                                    0);
                             } else {
                                 if (iVar9 == width + -0x48) {
                                     iVar6 = iVar8 + 2;
@@ -130,8 +130,8 @@ namespace UI {
                     iVar5 = iVar5 + 0x18;
                 } while (iVar5 < (int)XVar2);
             }
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                DAT_PencilRenderCore::ptr)(x + 0x30, y + 0x30, width + -0x31 + x, height + -0x61 + y, 0x14);
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                x + 0x30, y + 0x30, width + -0x31 + x, height + -0x61 + y, 0x14);
             local_78 = 0;
             local_70[1] = 0;
             local_60 = 0;
@@ -157,8 +157,8 @@ namespace UI {
                 do {
                     if (DAT_GameSynchronyState::instance.finalResults.active[_playerIndex_1] != 0) {
                         *(int*)local_d4 = _playerIndex_1;
-                        iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
-                            DAT_UnitsState::ptr)(_playerIndex_1);
+                        iVar5 = MACRO_CALL_MEMBER(
+                            Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerIndex_1);
                         if ((!iVar5)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
@@ -195,8 +195,8 @@ namespace UI {
                 do {
                     if (DAT_GameSynchronyState::instance.finalResults.active[_playerIndex_2] != 0) {
                         *(int*)local_d4 = _playerIndex_2;
-                        iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
-                            DAT_UnitsState::ptr)(_playerIndex_2);
+                        iVar5 = MACRO_CALL_MEMBER(
+                            Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerIndex_2);
                         if ((!iVar5)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
@@ -231,8 +231,8 @@ namespace UI {
                 do {
                     if (DAT_GameSynchronyState::instance.finalResults.active[_playerIndex_3] != 0) {
                         *(int*)local_d4 = _playerIndex_3;
-                        _zeroIfDead = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer,
-                            DAT_UnitsState::ptr)(_playerIndex_3);
+                        _zeroIfDead = MACRO_CALL_MEMBER(
+                            Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerIndex_3);
                         if ((!_zeroIfDead)
                             && ((int)(DAT_GameCore::instance.section1127 + 200)
                                 < (int)DAT_GameCore::instance.mapTimeInTicks)) {
@@ -300,9 +300,8 @@ namespace UI {
                             DE::SHCDE::GM_INTERFACE_ICONS2, iVar1 * 2 + 0x1ec, x + 0x26, iVar5 + -2);
                     }
                 } else {
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, x + 0x26, iVar5 + 2);
+                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
+                        DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, x + 0x26, iVar5 + 2);
                     iVar6 = 6;
                 }
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
@@ -316,12 +315,11 @@ namespace UI {
                     if (iVar9 < 0) {
                         iVar9 = 0;
                     }
-                    MACRO_CALL_MEMBER(
-                        Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                         iVar9, x + 0x16d, iVar5, Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(DAT_GameState::instance.playerDataArray[iVar8].armySize, x + 0x1ef,
-                        iVar5, Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                        DAT_GameState::instance.playerDataArray[iVar8].armySize, x + 0x1ef, iVar5, Text::TTA_LEFT,
+                        0xccfaff, 0x12, FALSE, 0);
                 }
                 local_d4 = (XYPairShort)((int)local_d4 + 1);
             } while ((int)local_d4 < 9);
@@ -340,8 +338,8 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MP_RANK, 2);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar4, iVar8, iVar5, TVar11, BVar12, iVar9, BVar13, iVar6);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x2da,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x2da,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 10 + xPos, y + 0x163);
             }
             if (!DAT_GreatestLordDefinedData::instance.tableSortBy) {
@@ -359,8 +357,8 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MP_RANK, 3);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar4, iVar8, iVar5, TVar11, BVar12, iVar9, BVar13, iVar6);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x298,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x298,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 10 + xPos, y + 0x15e);
             }
             if (DAT_GreatestLordDefinedData::instance.tableSortBy == -1) {

@@ -22,8 +22,7 @@ namespace Global {
             (int)((int)(4160)), (int)((int)(COL_WHITE::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::AiLordSelect_Func::MenuModalRenderFunction_AiLordSelect),
             Menu_ExtendedAiLordSelect::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_ExtendedAiLordSelect));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_ExtendedAiLordSelect));
         return;
     }
 

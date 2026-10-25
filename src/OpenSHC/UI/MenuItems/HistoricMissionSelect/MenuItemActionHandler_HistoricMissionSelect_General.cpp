@@ -29,8 +29,7 @@ namespace UI {
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == UI::Enums::MMT_NONE)) {
                 switch (param_1) {
                 case 0xd:
-                    DAT_GameCore::instance.missionNumber1to20
-                        = DAT_GameCore::instance.missionNumber1to20 + -1;
+                    DAT_GameCore::instance.missionNumber1to20 = DAT_GameCore::instance.missionNumber1to20 + -1;
                     DAT_GameCore::instance.gameMode_2 = Game::GM_CAMPAIGN_MISSION;
                     DAT_GameCore::instance.field26_0x74 = 1;
                     MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();
@@ -40,8 +39,7 @@ namespace UI {
                         UI::Enums::MVT_HISTORIC_CAMPAIGN_SELECT, 0);
                     break;
                 case 0x14:
-                    DAT_GameState::instance.mapAndTime.difficulty
-                        = DAT_GameState::instance.mapAndTime.difficulty + 1;
+                    DAT_GameState::instance.mapAndTime.difficulty = DAT_GameState::instance.mapAndTime.difficulty + 1;
                     if (4 <= DAT_GameState::instance.mapAndTime.difficulty) {
                         DAT_GameState::instance.mapAndTime.difficulty = 0;
                     }
@@ -53,8 +51,7 @@ namespace UI {
                     if (DAT_GameCore::instance.missionNumber1to20
                             == DAT_MenuTextInputState::instance.lastClickedListIndex
                         && (int)(DVar1 - DAT_MenuTextInputState::instance.lastListClickTime) < 500) {
-                        DAT_GameCore::instance.missionNumber1to20
-                            = DAT_GameCore::instance.missionNumber1to20 + -1;
+                        DAT_GameCore::instance.missionNumber1to20 = DAT_GameCore::instance.missionNumber1to20 + -1;
                         DAT_GameCore::instance.gameMode_2 = Game::GM_CAMPAIGN_MISSION;
                         DAT_GameCore::instance.field26_0x74 = 1;
                         MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();

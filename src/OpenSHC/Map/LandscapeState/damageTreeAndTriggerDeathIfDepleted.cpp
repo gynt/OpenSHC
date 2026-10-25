@@ -18,8 +18,7 @@ namespace Map {
             this->trees[treeID].stageRelated1 = 0;
             this->trees[treeID].zeroUpTo2 = 1;
             this->trees[treeID].animationFrameIndex = 0;
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
-                treeID, 1);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(treeID, 1);
             return (undefined4)(1);
         }
         return (undefined4)(0);

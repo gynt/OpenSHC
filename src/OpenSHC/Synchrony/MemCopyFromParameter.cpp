@@ -25,9 +25,9 @@ void Synchrony::MemCopyFromParameter(char* dest, size_t size, undefined4 playerI
     local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_3f0;
     destination = MACRO_CALL(OS_Func::_malloc)(size);
     local_3f0 = destination;
-    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
-        DAT_GameSynchronyState::ptr)(destination, size, Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
-        Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
+    MACRO_CALL_MEMBER(
+        Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter, DAT_GameSynchronyState::ptr)(
+        destination, size, Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
     iVar2 = 0;
     if (0 < (int)size) {
         iVar1 = (int)destination - (int)dest;

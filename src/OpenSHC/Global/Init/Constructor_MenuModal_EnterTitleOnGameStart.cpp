@@ -25,8 +25,7 @@ namespace Global {
             (int)((int)(COL_WHITE::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::EnterTitleOnGameStart_Func::MenuModalRenderFunction_EnterTitleOnGameStart),
             Menu_EnterTitleOnGameStart::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_EnterTitleOnGameStart));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_EnterTitleOnGameStart));
         return;
     }
 

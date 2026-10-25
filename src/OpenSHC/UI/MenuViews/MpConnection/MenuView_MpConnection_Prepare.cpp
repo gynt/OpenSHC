@@ -25,8 +25,8 @@ namespace UI {
             Menu* pMVar1;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "frontend_combat3.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
@@ -36,8 +36,7 @@ namespace UI {
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby, DAT_GameSynchronyState::ptr)();
-            MACRO_CALL_MEMBER(
-                UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                 (UI::Enums::MenuModalType)DAT_GameSynchronyState::instance.nextModalDialog, FALSE);
         }
 

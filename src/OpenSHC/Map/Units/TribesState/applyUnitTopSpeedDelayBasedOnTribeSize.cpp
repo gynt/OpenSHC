@@ -46,11 +46,9 @@ namespace Map {
                      */
                     _ptrMovementDistance = &this->someUnitIDMovementDistancePair[0].movementDistance;
                     do {
-                        _selectionUnit
-                            = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                                tribeID, _unitSelectionIndex);
-                        if ((DAT_UnitsState::instance.units[_selectionUnit].logicalState
-                                == Map::Units::ULS_NORMAL)
+                        _selectionUnit = MACRO_CALL_MEMBER(
+                            Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(tribeID, _unitSelectionIndex);
+                        if ((DAT_UnitsState::instance.units[_selectionUnit].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_selectionUnit].dying == 0)) {
                             this->someUnitIDArrayCount = this->someUnitIDArrayCount + 1;
                             /*
@@ -107,9 +105,8 @@ namespace Map {
                     /*
                       Set incremental delay on first 199 units, then set same value of 199
                      */
-                    _unitInSelection
-                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                            tribeID, _unitSelectionIndex);
+                    _unitInSelection = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, _unitSelectionIndex);
                     iVar1 = _unitSelectionIndex;
                     if (199 < _unitSelectionIndex) {
                         iVar1 = 199;

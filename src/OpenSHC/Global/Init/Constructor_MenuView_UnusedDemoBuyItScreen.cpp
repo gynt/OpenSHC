@@ -23,8 +23,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_Prepare),
             MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoInitial),
             MACRO_CALL(UI::MenuViews::UnusedDemoBuyItScreen_Func::MenuView_UnusedDemoBuyItScreen_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedDemoBuyItScreen));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedDemoBuyItScreen));
         return;
     }
 

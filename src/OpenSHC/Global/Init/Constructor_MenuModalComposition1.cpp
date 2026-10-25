@@ -13,8 +13,8 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CA60
     void Init::Constructor_MenuModalComposition1()
     {
-        MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::Constructor_MenuModalComposition,
-            DAT_MenuModalComposition1::ptr)(0);
+        MACRO_CALL_MEMBER(
+            UI::MenuModalComposition_Func::Constructor_MenuModalComposition, DAT_MenuModalComposition1::ptr)(0);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d680));
         return;
     }

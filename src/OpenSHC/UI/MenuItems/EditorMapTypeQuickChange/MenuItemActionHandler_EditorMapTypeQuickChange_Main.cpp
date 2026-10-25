@@ -61,8 +61,7 @@ namespace UI {
             case 0x15:
             case 0x16:
             case 0x17:
-                MACRO_CALL_MEMBER(
-                    Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
                 if (param_1 == 0x14) {
                     DAT_TileMapState::instance.mapSize = 0xa0;
                 } else if (param_1 == 0x15) {
@@ -77,14 +76,13 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::resetHeightAndMapBorders, DAT_TileMapState::ptr)(
                     DAT_TileMapState::instance.mapSize);
-                MACRO_CALL_MEMBER(
-                    Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::resetAreaBasedOnLogicalLayer, DAT_TileMapState::ptr)();
                 DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
                 MACRO_CALL_MEMBER(
                     Map::Navigation::PathFindingState_Func::updatePathLinkageLayerForEachBuildingAtEachTile,
                     DAT_PathFindingState::ptr)();
-                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap,
-                    DAT_PathFindingState::ptr)(1);
+                MACRO_CALL_MEMBER(
+                    Map::Navigation::PathFindingState_Func::updateSeparateAreaTileMap, DAT_PathFindingState::ptr)(1);
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
                     DAT_BuildingsState::ptr)();
                 DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
@@ -92,18 +90,17 @@ namespace UI {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::forceFullTileMapRedraw, DAT_TileMapState::ptr)();
                 MACRO_CALL_MEMBER(Game::GameStateStructures_Func::processGameTick, DAT_GameState::ptr)();
                 for (_y10 = 0; _y10 < 0x28; _y10++) {
-                    MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(
-                        _y10);
+                    MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlifeGrid, DAT_WildlifeState::ptr)(_y10);
                 }
                 MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateWildlife, DAT_WildlifeState::ptr)();
                 MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateSection1034Info, DAT_WildlifeState::ptr)();
                 MACRO_CALL_MEMBER(Map::WildlifeState_Func::updateNofFpoints, DAT_WildlifeState::ptr)();
-                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setTileColorsDependingOnMapSize,
-                    DAT_MinimapViewState::ptr)(0, 100);
-                MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize,
-                    DAT_MinimapViewState::ptr)(0, 100);
-                MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize,
-                    DAT_ViewportRenderState::ptr)();
+                MACRO_CALL_MEMBER(
+                    UI::MinimapViewState_Func::setTileColorsDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
+                MACRO_CALL_MEMBER(
+                    UI::MinimapViewState_Func::setMapPropertyDependingOnMapSize, DAT_MinimapViewState::ptr)(0, 100);
+                MACRO_CALL_MEMBER(
+                    Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
             }
         }
 

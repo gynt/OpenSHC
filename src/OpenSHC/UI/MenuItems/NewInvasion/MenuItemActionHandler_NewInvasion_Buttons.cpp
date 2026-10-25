@@ -36,8 +36,8 @@ namespace UI {
             int iVar6;
             switch (param_1) {
             case 0x13:
-                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
-                    DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
+                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex, DAT_MapPropertiesState::ptr)(
+                    DAT_MapPropertiesState::instance.currentEventID);
                 goto LAB_004bf791;
             case 0x25:
                 _Str = MACRO_CALL_MEMBER(
@@ -104,12 +104,10 @@ namespace UI {
                     iVar6 = iVar6 + 5;
                 } while (iVar6 < 25);
             LAB_004bf791:
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(
-                    Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
-                    0xf);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                 return;
             case 0x57:
                 DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]

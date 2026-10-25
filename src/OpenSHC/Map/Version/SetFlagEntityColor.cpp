@@ -11,8 +11,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using Map::Entities::EntityType;
     using Map::Entities::Entity;
+    using Map::Entities::EntityType;
     using Map::Entities::EntityTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004038B0

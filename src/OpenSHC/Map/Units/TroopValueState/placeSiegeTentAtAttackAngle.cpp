@@ -31,10 +31,9 @@ namespace Map {
             int _x;
             int _y;
             _unitID = DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
-            _attackLocationIndex
-                = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
-                    DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
-                    (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].y)), tribeID);
+            _attackLocationIndex = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
+                DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].x)),
+                (uint)((int)((int)DAT_UnitsState::instance.units[_unitID].y)), tribeID);
             if (_attackLocationIndex) {
                 _siegeIndex = DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1;
                 _tribeUID = DAT_TribesState::instance.tribes[tribeID].uid;
@@ -56,8 +55,8 @@ namespace Map {
                 _buildingID = DAT_TileMapState::instance.placedBuildingID;
                 DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                     = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
-                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
-                    tribeID, Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED, _buildingID,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(tribeID,
+                    Map::Units::UIT_CONSTRUCT_SIEGE_EQUIPMENTOIL_DUTYENGINEERRELATED, _buildingID,
                     DAT_BuildingsState::instance.buildings[_buildingID].uid, 0);
                 return _attackLocationIndex;
             }

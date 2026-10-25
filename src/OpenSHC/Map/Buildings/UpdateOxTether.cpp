@@ -42,8 +42,7 @@ namespace Map {
             + DAT_BuildingsState::instance.buildings[iVar5].resources[4] * 4;
         DAT_BuildingsState::instance.buildings[iVar5].spriteID = iVar6;
         if (iVar6 != DAT_BuildingsState::instance.buildings[iVar5].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                iVar5);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar5);
             iVar5 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = (short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spriteID;

@@ -43,8 +43,8 @@ namespace Map {
         if (0x31 < DAT_TroopValueState::instance.attackInfo.inv_count) {
             DAT_TroopValueState::instance.attackInfo.inv_count = 1;
         }
-        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
-            DAT_TroopValueState::ptr)(DAT_TroopValueState::instance.attackInfo.inv_count, 0);
+        MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::initializeAttackWaveSlot, DAT_TroopValueState::ptr)(
+            DAT_TroopValueState::instance.attackInfo.inv_count, 0);
         local_8 = 0;
         DAT_TroopValueState::instance.attackInfo
             .attackWavePlayerIDArray[DAT_TroopValueState::instance.attackInfo.inv_count] = (byte)param_1;
@@ -209,8 +209,7 @@ namespace Map {
                     }
                     iVar5 = (&DAT_TroopValueState::instance.attackInfo
                             .unknownSignpostRelatedArray)[DAT_TroopValueState::instance.attackInfo.inv_count];
-                    MACRO_CALL_MEMBER(
-                        Map::Units::TribesState_Func::spawnUnitsForAITribe, DAT_TribesState::ptr)(iVar8,
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnUnitsForAITribe, DAT_TribesState::ptr)(iVar8,
                         DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar5][local_c].x,
                         DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar5][local_c].y, param_1, UVar9, local_10,
                         param_6);

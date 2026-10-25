@@ -23,8 +23,7 @@ namespace Map {
                 _entityTypeAddress = &this->entityArray[1].entityType;
                 do {
                     if ((_entityTypeAddress[-1] == 2) && (*_entityTypeAddress == Map::Entities::ET_BRAZIER)) {
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(unitX, unitY,
                             (int)((int)((short)_entityTypeAddress[0xd])), (int)((int)((short)_entityTypeAddress[0xe])));
                         if ((DAT_DirectionAlgorithmState::instance.distanceHigh < 4)

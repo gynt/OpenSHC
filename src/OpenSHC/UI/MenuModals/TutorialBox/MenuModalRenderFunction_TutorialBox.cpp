@@ -9,6 +9,7 @@
 #include "OpenSHC/Audio/MSS/enums/SHC_SoundStream.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/IO/Graphics/GmID.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -24,7 +25,6 @@
 #include "OpenSHC/Globals/INT_00df5648.hpp"
 #include "OpenSHC/Globals/INT_ARRAY_00df5598.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -33,9 +33,9 @@ namespace UI {
         using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
         using OpenSHC::DE::SHCDE::eTextSections;
         using OpenSHC::IO::Graphics::GmID;
+        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BCBA0
         void TutorialBox::MenuModalRenderFunction_TutorialBox(int x, int y, int width, int height)

@@ -20,8 +20,8 @@ namespace Text {
             pcVar2 = pcVar1;
             pcVar1 = pcVar2 + 1;
         } while (*pcVar2 != '\0');
-        iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::getWidthOfText,
-            &DAT_TextManagerObject::instance.fontSizeClassArray[param_2])(
+        iVar3 = MACRO_CALL_MEMBER(
+            Text::FontSizeClass_Func::getWidthOfText, &DAT_TextManagerObject::instance.fontSizeClassArray[param_2])(
             this->integerTextBuffer, (int)(pcVar2 + -0x2158898));
         return iVar3;
     }

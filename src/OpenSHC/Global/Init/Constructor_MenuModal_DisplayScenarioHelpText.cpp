@@ -25,8 +25,7 @@ namespace Global {
             (int)((int)(COL_BLACK::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::TextEditor_Func::MenuModalRenderFunction_TextEditor),
             Menu_DisplayScenarioHelpText::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_DisplayScenarioHelpText));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DisplayScenarioHelpText));
         return;
     }
 

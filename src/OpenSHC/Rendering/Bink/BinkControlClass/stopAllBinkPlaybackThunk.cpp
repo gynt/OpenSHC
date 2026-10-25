@@ -11,8 +11,7 @@ namespace Rendering {
         {
             int binkObjIndex;
             for (binkObjIndex = 0; binkObjIndex < 2; binkObjIndex++) {
-                MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(
-                    binkObjIndex);
+                MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(binkObjIndex);
             }
         }
 

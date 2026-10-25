@@ -49,8 +49,8 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                    DAT_GameSynchronyState::ptr)(Commands::GCT_RECRUIT_UNIT);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                    Commands::GCT_RECRUIT_UNIT);
                 MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForLadderman)();
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                     Audio::SFX::SEID_BUTTON_CLICK_01);
@@ -93,8 +93,7 @@ namespace UI {
                 /*
                   "You do not have enough gold to train this unit"
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "units_warning3.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("units_warning3.wav");
             }
         LAB_00466f49:
             /*

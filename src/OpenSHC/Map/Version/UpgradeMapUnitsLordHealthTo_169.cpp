@@ -40,8 +40,7 @@ namespace Map {
                 && (DAT_GameSynchronyState::instance.currentAIArray[unit[0].owner] != 0)) {
                 AITypeInt const aiType = DAT_GameState::instance.playerDataArray[unit[0].owner].aiType;
                 unit[0].maxHealthRatingLord
-                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]
-                          .aiTypeA;
+                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL].aiTypeA;
                 if (unit[0].health == unit[0].maxHealth) {
                     int const multiplier
                         = DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]
@@ -56,8 +55,7 @@ namespace Map {
                 && (DAT_GameSynchronyState::instance.currentAIArray[unit[1].owner] != 0)) {
                 AITypeInt const aiType = DAT_GameState::instance.playerDataArray[unit[1].owner].aiType;
                 unit[1].maxHealthRatingLord
-                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]
-                          .aiTypeA;
+                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL].aiTypeA;
                 if (unit[1].health == unit[1].maxHealth) {
                     int const multiplier
                         = DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]
@@ -72,8 +70,7 @@ namespace Map {
                 && (DAT_GameSynchronyState::instance.currentAIArray[unit[2].owner] != 0)) {
                 AITypeInt const aiType = DAT_GameState::instance.playerDataArray[unit[2].owner].aiType;
                 unit[2].maxHealthRatingLord
-                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]
-                          .aiTypeA;
+                    = (short)DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL].aiTypeA;
                 if (unit[2].health == unit[2].maxHealth) {
                     int const multiplier
                         = DAT_SkirmishDefinedData::instance.MaxLordHealthMapping[aiType + ~AI::AIT_NULL]

@@ -73,7 +73,8 @@ namespace UI {
         _positionPtr = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
+                        .currentResources[*(
+                            int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
             iVar6 = _positionPtr->y + iVar1;
             iVar8 = _positionPtr->x + iVar4;
             iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
@@ -109,8 +110,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
+                            .marketSelectedResourceType = *(
+                            ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
                     }
                 }
             }

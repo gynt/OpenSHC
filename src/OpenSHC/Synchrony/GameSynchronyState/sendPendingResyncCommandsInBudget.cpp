@@ -52,8 +52,7 @@ namespace Synchrony {
             if (*local_10 == 0) {
                 this->DAT_GameCommandParam1 = 0x3f;
                 this->DAT_GameCommandParam0 = iVar2;
-                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                    Commands::GCT_LEAVE_GAME);
+                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_LEAVE_GAME);
                 *local_10 = 1;
             }
             iVar2 = iVar2 + 1;
@@ -91,8 +90,8 @@ namespace Synchrony {
                                         this->resyncResumeInnerIndex = iVar4 + 1;
                                         this->somePacketSubTypeUnk = 0xd;
                                         this->resyncResumeOuterIndex = iVar8;
-                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                            Commands::GCT_QUIT_MULTIPLAYERGAME);
                                     }
                                     break;
                                 }
@@ -144,8 +143,7 @@ namespace Synchrony {
                     piVar7 = piVar7 + 1;
                 } while (iVar8 < 0x50);
             }
-            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
-                Commands::GCT_CHECK_GAME_SYNCUnk);
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(Commands::GCT_CHECK_GAME_SYNCUnk);
             this->syncStatus = 3;
             return;
         default:
@@ -541,8 +539,8 @@ namespace Synchrony {
                                             != *piVar5)) {
                                         this->DAT_GameCommandParam0 = iVar8;
                                         this->DAT_GameCommandParam1 = iVar4;
-                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                            this)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
+                                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                            Commands::GCT_SEND_RESYNC_TILEMAPDATA2);
                                         this->currentPacketTotalSize
                                             = this->currentPacketTotalSize + this->DAT_CurrentTransmitCommandPacketSize;
                                         local_14 = local_14 + this->DAT_CurrentTransmitCommandPacketSize;
@@ -550,8 +548,8 @@ namespace Synchrony {
                                             this->resyncResumeInnerIndex = iVar4 + 1;
                                             this->somePacketSubTypeUnk = 0xc;
                                             this->resyncResumeOuterIndex = iVar8;
-                                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
-                                                this)(Commands::GCT_QUIT_MULTIPLAYERGAME);
+                                            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, this)(
+                                                Commands::GCT_QUIT_MULTIPLAYERGAME);
                                         }
                                         break;
                                     }

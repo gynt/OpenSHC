@@ -60,8 +60,8 @@ namespace UI {
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x14),
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x12));
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,
-            DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2,
-            Text::TTA_CENTER, 0, 0x12, FALSE, 0);
+            DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2, Text::TTA_CENTER, 0,
+            0x12, FALSE, 0);
         ;
     }
 

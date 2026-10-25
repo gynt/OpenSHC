@@ -10,6 +10,7 @@
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/IO/Graphics/GmID.hpp"
+#include "OpenSHC/Map/Buildings/BuildingType.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/GameLanguage.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
@@ -35,7 +36,6 @@
 #include "OpenSHC/Globals/DAT_TroopDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
-#include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -46,6 +46,7 @@ namespace UI {
     using Game::GameMode;
     using Game::GameMode2;
     using IO::Graphics::GmID;
+    using Map::Buildings::BuildingType;
     using Rendering::Enums::RenderTarget;
     using Text::GameLanguage;
     using Text::TextAlignment;
@@ -54,7 +55,6 @@ namespace UI {
     using UI::Enums::MenuModalType;
     using UI::Enums::MenuViewType;
     using WindowsHelper::Enums::BOOLEnum;
-    using Map::Buildings::BuildingType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4F60
     void BottomLeftTextDisplayState::renderCurrentlyDisplayedTextConstructionCost(int param_1)
@@ -107,17 +107,17 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_MAP_GAME;
                 DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             }
-            _requiredIron = MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText2,
-                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_PANEL_FEEDBACK,
-                (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), 0x1e0, 0x12);
+            _requiredIron = MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText2, DAT_TextManagerObject::ptr)(
+                DE::SHCDE::TEXT_PANEL_FEEDBACK, (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), 0x1e0,
+                0x12);
             _requiredWood = DAT_ButtonX::instance;
             _requiredIron = (DAT_ButtonY::instance - _requiredIron) + 0x18;
             iVar2 = 0x1e0;
             goto LAB_004f5302;
         case 2:
-            _buildingType = MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(this->currentlyDisplayedUnktextExtraObject.buildingType);
+            _buildingType
+                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+                    DAT_BuildingsState::ptr)(this->currentlyDisplayedUnktextExtraObject.buildingType);
             param_1 = DAT_BuildingsState::instance.buildingCosts[_buildingType].requiredStone_0x4;
             _requiredWood = DAT_BuildingsState::instance.buildingCosts[_buildingType].requiredWood;
             _requiredIron = DAT_BuildingsState::instance.buildingCosts[_buildingType].requiredIron_0x8;
@@ -148,8 +148,7 @@ namespace UI {
                 _requiredWood = 0;
                 _requiredPitch = 0;
                 _requiredIron = 0;
-                MACRO_CALL_MEMBER(
-                    Map::Buildings::BuildingsState_Func::getBuildingCost, DAT_BuildingsState::ptr)(
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingCost, DAT_BuildingsState::ptr)(
                     this->currentlyDisplayedUnktextExtraObject.buildingType, &param_1, &_requiredGold);
             }
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
@@ -158,88 +157,88 @@ namespace UI {
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
             iVar2 = 0x1e;
             if (_requiredWood) {
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                    _requiredWood, (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredWood,
+                    (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
                     (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x20 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + -6)));
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("(", (int)((int)(DAT_ButtonX::instance + 0x40)),
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[2],
-                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(")", (int)((int)(DAT_ButtonX::instance + 0x40)),
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(")",
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = 0x5e;
             }
             if (param_1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(param_1,
-                    DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
-                    0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
+                    DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0,
+                    0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + iVar2 + 2,
                     (int)((int)(DAT_ButtonY::instance + -4)));
                 _requiredWood = iVar2 + 0x22;
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("(", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(integer,
                     DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
                     0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(")", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(")",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x40;
             }
             if (_requiredIron) {
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                    _requiredIron, DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7d,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredIron,
+                    DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0,
+                    0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x7d,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + iVar2 + 2,
                     (int)((int)(DAT_ButtonY::instance + -4)));
                 _requiredWood = iVar2 + 0x22;
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("(", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[6],
                     DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
                     0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(")", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(")",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x40;
             }
             if (_requiredPitch) {
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                    _requiredPitch, DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x9b,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredPitch,
+                    DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0,
+                    0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x9b,
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + iVar2 + 2,
                     (int)((int)(DAT_ButtonY::instance + -10)));
                 _requiredWood = iVar2 + 0x1c;
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("(", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[7],
                     DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
                     0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(")", DAT_ButtonX::instance + _requiredWood,
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(")",
+                    DAT_ButtonX::instance + _requiredWood, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = iVar2 + 0x26;
             }
             if (!_requiredGold) {
@@ -247,19 +246,19 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             }
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredGold,
-                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb,
-                0, 0x12, TRUE, 0);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
                 DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + iVar2 + 2,
                 (int)((int)(DAT_ButtonY::instance + 6)));
             iVar2 = iVar2 + 0x22;
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "(", DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
-                0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(local_4,
-                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb,
-                0, 0x12, TRUE, 0);
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
             iVar2 = DAT_ButtonX::instance + iVar2;
             goto LAB_004f6193;
         case 3:
@@ -338,13 +337,13 @@ namespace UI {
                 this->currentlyDisplayedUnkTextGroupIndex_0x4,
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
                 (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x1e + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + -4)));
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "(", (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_SIEGE_THAT) {
                 _requiredWood
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -355,8 +354,8 @@ namespace UI {
                           .currentResources[4];
             }
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredWood,
-                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             iVar2 = DAT_ButtonX::instance + 0x3e;
             goto LAB_004f6193;
         case 5:
@@ -388,8 +387,7 @@ namespace UI {
                             .BarracksUnitCost[this->currentlyDisplayedUnktextExtraObject.buildingType],
                         (int)((int)(DAT_ButtonX::instance + 6)), (int)((int)(DAT_ButtonY::instance)), 0xb8eefb, 0, 0x12,
                         TRUE);
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = Rendering::Enums::RT_SCREEN_MENU;
+                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
                         (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 10 + DAT_ButtonX::instance)),
@@ -413,13 +411,13 @@ namespace UI {
                     if ((this->currentlyDisplayedUnkTextGroupIndex_0x4 == 8)
                         && ((this->currentlyDisplayedUnkTextNumInGroup_0x8 == 0xe5
                             && ((int)DAT_GameCore::instance.directDrawStatus < 0x700)))) {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk,
-                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, 0x158,
-                            (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
-                            (int)((int)(DAT_ButtonW::instance)), 0xccfaff, 0, 0x12, 0);
+                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)(
+                            DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, 0x158, (int)((int)(DAT_ButtonX::instance)),
+                            (int)((int)(DAT_ButtonY::instance)), (int)((int)(DAT_ButtonW::instance)), 0xccfaff, 0, 0x12,
+                            0);
                     } else {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk,
-                            DAT_TextManagerObject::ptr)(this->currentlyDisplayedUnkTextGroupIndex_0x4,
+                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)(
+                            this->currentlyDisplayedUnkTextGroupIndex_0x4,
                             (int)((int)((DE::SHCDE::eTextSections)(this->currentlyDisplayedUnkTextNumInGroup_0x8))),
                             (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
                             (int)((int)((DE::SHCDE::eTextSections)DAT_ButtonW::instance)), 0xccfaff, 0, 0x11, 0);
@@ -430,14 +428,14 @@ namespace UI {
                         (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8 - 0x135)),
                         (int)((int)(DAT_ButtonW::instance)), 0x12);
                     DAT_TextManagerObject::instance.field9_0x24 = 1;
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk,
-                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_BUBBLE_HELP_SUBTEXT,
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_BUBBLE_HELP_SUBTEXT,
                         (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8 - 0x135)),
                         (int)((int)(DAT_ButtonX::instance)), (int)((int)(DAT_ButtonY::instance)),
                         (int)((int)(DAT_ButtonW::instance)), 0xccfaff, 0, 0x12, 0);
                     DAT_TextManagerObject::instance.field9_0x24 = 1;
-                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk,
-                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_CHOOSE2,
+                    MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)(
+                        DE::SHCDE::TEXT_SKIRMISH_CHOOSE2,
                         (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8 - 0x12d)),
                         (int)((int)(DAT_ButtonX::instance)), DAT_ButtonY::instance + _requiredWood,
                         (int)((int)(DAT_ButtonW::instance)), 0xccfaff, 0, 0x12, 0);
@@ -453,24 +451,24 @@ namespace UI {
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
             iVar2 = 0x1e;
             if (_requiredWood) {
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                    _requiredWood, (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredWood,
+                    (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
                     (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x20 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + -6)));
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("(", (int)((int)(DAT_ButtonX::instance + 0x40)),
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .currentResources[2],
-                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)),
-                    Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(")", (int)((int)(DAT_ButtonX::instance + 0x40)),
-                    (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(")",
+                    (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                    0xb8eefb, 0, 0x12, TRUE, 0);
                 iVar2 = 0x5e;
             }
             if (!_requiredIron) {
@@ -478,21 +476,21 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             }
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredIron,
-                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb,
-                0, 0x12, TRUE, 0);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                DE::SHCDE::GM_INTERFACE_ICONS2, 0x7b,
                 DAT_TextManagerObject::instance.currentXOffset_0x0 + DAT_ButtonX::instance + iVar2 + 2,
                 (int)((int)(DAT_ButtonY::instance + -4)));
             iVar2 = iVar2 + 0x22;
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "(", DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
-                0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .currentResources[4],
-                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb,
-                0, 0x12, TRUE, 0);
+                DAT_ButtonX::instance + iVar2, (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
+                TRUE, 0);
             iVar2 = DAT_ButtonX::instance + iVar2;
             goto LAB_004f6193;
         case 9:
@@ -500,18 +498,18 @@ namespace UI {
                 this->currentlyDisplayedUnkTextGroupIndex_0x4,
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                DE::SHCDE::GM_INTERFACE_ICONS2, 0x7e,
                 (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x1e + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + -4)));
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "(", (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .currentResources[2],
-                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                (int)((int)(DAT_ButtonX::instance + 0x3e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             iVar2 = DAT_ButtonX::instance + 0x3e;
             goto LAB_004f6193;
         case 10:
@@ -543,20 +541,20 @@ namespace UI {
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), (int)((int)(DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(_requiredWood,
-                (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
+                (int)((int)(DAT_ButtonX::instance + 0x1e)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
                 (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x20 + DAT_ButtonX::instance)),
                 (int)((int)(DAT_ButtonY::instance + -4)));
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "(", (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)("(",
+                (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .currentResources[0xf],
-                (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)),
-                Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE, 0);
+                (int)((int)(DAT_ButtonX::instance + 0x40)), (int)((int)(DAT_ButtonY::instance)), Text::TTA_LEFT,
+                0xb8eefb, 0, 0x12, TRUE, 0);
             iVar2 = DAT_ButtonX::instance + 0x40;
         LAB_004f6193:
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
@@ -583,8 +581,8 @@ namespace UI {
                     (int)((int)(DAT_ButtonX::instance + 0x10)), (int)((int)(DAT_ButtonY::instance + 0x98)), 0xb8eefb, 0,
                     0x12, TRUE);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = Rendering::Enums::RT_SCREEN_MENU;
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x7c,
                     (int)((int)(DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x14 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 0x98)));
             }
@@ -601,7 +599,8 @@ namespace UI {
                 iVar2 = DAT_ButtonW::instance + 100;
             }
         LAB_004f5302:
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)((DE::SHCDE::eTextSections)(this->currentlyDisplayedUnkTextGroupIndex_0x4),
+            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText3Unk, DAT_TextManagerObject::ptr)(
+                (DE::SHCDE::eTextSections)(this->currentlyDisplayedUnkTextGroupIndex_0x4),
                 (int)((int)(this->currentlyDisplayedUnkTextNumInGroup_0x8)), _requiredWood, _requiredIron, iVar2,
                 0xb8eefb, 0, 0x12, 0);
         }

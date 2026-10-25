@@ -27,8 +27,7 @@ namespace UI {
             this->DAT_SomeTextArrayIndex = DAT_UserTextHandlerState::instance.textArrayIndex;
             DAT_UserTextHandlerState::instance.allowUserTextInput = 1;
             if (DAT_UserTextHandlerState::instance.textArrayIndex != Text::TAIT_ZERO) {
-                MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::clearTextAndCursor, DAT_UserTextHandlerState::ptr)();
             }
         }
         if (this->currentModalDialog != dialogID) {
@@ -38,8 +37,8 @@ namespace UI {
             this->modalDialog_3 = this->modalDialog_2;
             this->modalDialog_2 = this->currentModalDialog;
             this->currentModalDialog = dialogID;
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(dialogID, TRUE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                dialogID, TRUE);
         }
     }
 

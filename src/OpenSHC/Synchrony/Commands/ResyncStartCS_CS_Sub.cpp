@@ -38,8 +38,7 @@ namespace Synchrony {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_SOME_MULTIPLAYER_INFO_Unk_19, 1);
             DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.resyncStartTime;
-            DAT_GameSynchronyState::instance.announcementReceiveTime
-                = DAT_GameSynchronyState::instance.resyncStartTime;
+            DAT_GameSynchronyState::instance.announcementReceiveTime = DAT_GameSynchronyState::instance.resyncStartTime;
             DAT_GameSynchronyState::instance.announcementReceivedBool = FALSE;
         }
     }

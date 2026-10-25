@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
 
     using Map::Trees::TreeType;
-    using WindowsHelper::Enums::BOOLEnum;
     using Map::Trees::TreeTypeShort;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       fixme:todo:bug:Is this the origin of the not visualized foliage bug?   decompilerscript: committed: 2025-01-30

@@ -25,8 +25,7 @@ namespace Global {
             (int)((int)(COL_WHITE::instance.shortValue)),
             MACRO_CALL(UI::MenuModals::TutorialBox_Func::MenuModalRenderFunction_TutorialBox_Thunk),
             Menu_TutorialBoxWithLeave::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_TutorialBoxWithLeave));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TutorialBoxWithLeave));
         return;
     }
 

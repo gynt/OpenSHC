@@ -10,7 +10,6 @@ namespace OpenSHC {
 namespace Map {
     using Game::Player::PlayerData;
 
-
     /*
       Iterates all players and validates their lady and jester unit references. If a unit ID no longer   matches the
       stored UID in UnitsState (i.e. the unit was replaced or removed), both the unit ID   and its self-reference field

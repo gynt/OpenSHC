@@ -128,8 +128,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                 }
             }
-            MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
-                    MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
+            MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
             DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;
         }

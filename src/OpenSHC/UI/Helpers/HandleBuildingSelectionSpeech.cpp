@@ -34,8 +34,7 @@ namespace UI {
                     /*
                       "You do not have enough gold for apprentices"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "units_warning1.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("units_warning1.wav");
                 }
             } else if (_buildingType == Map::Buildings::BT_TUNNELERSGUILD) {
                 MACRO_CALL(UI::Helpers_Func::CheckIfEnoughGoldForTunneler)();
@@ -43,8 +42,7 @@ namespace UI {
                     /*
                       "You do not have enough gold to train a tunneler"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "units_warning2.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("units_warning2.wav");
                 }
             } else if (0x27 < (short)_buildingType) {
             }
@@ -52,8 +50,7 @@ namespace UI {
                 /*
                   "Work halted my lord"
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "other_warning12.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning12.wav");
             }
             short _currentEmployeeCount = DAT_BuildingsState::instance.buildings[buildingIndexUnk].currentEmployeeCount;
             if ((_currentEmployeeCount)

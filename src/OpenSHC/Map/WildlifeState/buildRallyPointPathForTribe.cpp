@@ -227,7 +227,9 @@ namespace Map {
                 this->grid[iVar5][local_1c].field15_0x3c = 1;
                 uVar9 = iVar5 * 10 + 5;
                 uVar11 = local_1c * 10 + 5;
-                if (uVar9 < 400 && uVar11 < 400 && *(char*)(uVar11 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + uVar9) != '\0') {
+                if (uVar9 < 400 && uVar11 < 400
+                    && *(char*)(uVar11 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + uVar9)
+                        != '\0') {
                     DAT_TribesState::instance.tribes[param_1]
                         .rallyPointArray[DAT_TribesState::instance.tribes[param_1].rallyPointCount][0]
                         = (short)iVar5 * 10 + 5;

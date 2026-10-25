@@ -84,9 +84,8 @@ namespace Map {
                         (uint)((int)((int)(short)this->trees[treeID].xPosition)),
                         (uint)((int)((int)(short)this->trees[treeID].yPosition)));
                     if (iVar3) {
-                        size = MACRO_CALL_MEMBER(
-                            Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage, this)(
-                            (int)(short)this->trees[treeID].treeType, 0);
+                        size = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage,
+                            this)((int)(short)this->trees[treeID].treeType, 0);
                         _treeID = MACRO_CALL_MEMBER(Map::LandscapeState_Func::createTree, this)(
                             DAT_PathFindingState::instance.ALG_ResultX,
                             (undefined4)((int)(DAT_PathFindingState::instance.ALG_ResultY)),
@@ -96,8 +95,8 @@ namespace Map {
                             = DAT_TileMapState::instance.LogicLayer[DAT_PathFindingState::instance.ALG_ResultTile]
                             | 0x1000;
                         DAT_TileMapState::instance.OrganismLayer[iVar3] = (short)_treeID;
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer,
-                            DAT_TileMapState::ptr)(_treeID, 0);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
+                            _treeID, 0);
                         MACRO_CALL_MEMBER(
                             Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                             DAT_PathFindingState::ptr)(

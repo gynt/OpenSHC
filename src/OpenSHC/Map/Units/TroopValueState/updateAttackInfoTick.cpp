@@ -28,8 +28,7 @@ namespace Map {
                 this->attackInfo.pitchRelatedPlayerID = 1;
                 this->attackInfo.playerID_0x2c850 = 2;
             } else {
-                this->attackInfo.pitchRelatedPlayerID
-                    = MACRO_CALL(Map::Units_Func::FindFirstOpponentWithKeep)();
+                this->attackInfo.pitchRelatedPlayerID = MACRO_CALL(Map::Units_Func::FindFirstOpponentWithKeep)();
                 this->attackInfo.playerID_0x2c850 = 1;
             }
             if (!this->attackInfo.aiTickPhase) {
@@ -51,17 +50,15 @@ namespace Map {
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::queueOilThrowForIdleArchers, this)();
             }
             if (((byte)this->attackInfo.aiTickPhase & 0xf) == 8) {
-                MACRO_CALL_MEMBER(
-                    Map::Units::TroopValueState_Func::redeployArchersToDefensivePositions, this)();
+                MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::redeployArchersToDefensivePositions, this)();
             }
             this->attackInfo.aiTickPhase = this->attackInfo.aiTickPhase + 1;
             if (100 < this->attackInfo.aiTickPhase) {
                 this->attackInfo.field_0x2c854 = this->attackInfo.field_0x2c854 + 1;
                 this->attackInfo.aiTickPhase = 2;
             }
-            BVar1
-                = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::unitsCanMoveFromKeepOfPlayerToAnotherArea,
-                    DAT_GameState::ptr)(1);
+            BVar1 = MACRO_CALL_MEMBER(
+                Game::GameStateStructures_Func::unitsCanMoveFromKeepOfPlayerToAnotherArea, DAT_GameState::ptr)(1);
             if ((BVar1) && (!this->attackInfo.field127523_0x2b578)) {
                 this->attackInfo.field127523_0x2b578 = 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::commandUnitsToMoveToKeep, this)();

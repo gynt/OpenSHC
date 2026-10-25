@@ -1,13 +1,13 @@
 #include "../../Map.func.hpp"
 #include "../LandscapeState.func.hpp"
 
-#include "OpenSHC/Globals/DAT_OrganismDefinedData.hpp"
 #include "OpenSHC/Map/Trees/TreeTypeShort.hpp"
+
+#include "OpenSHC/Globals/DAT_OrganismDefinedData.hpp"
 
 namespace OpenSHC {
 namespace Map {
     using Map::Trees::TreeTypeShort;
-
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F2020
     void LandscapeState::setTreeStageRelatedValues(int treeID, int stage)

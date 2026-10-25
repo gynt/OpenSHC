@@ -68,8 +68,8 @@ namespace UI {
                         if (*(char*)((int)&local_68 + iVar7) == '\n') {
                             *(undefined1*)((int)&local_68 + iVar7) = 0x20;
                         }
-                        iVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getCharWidth,
-                            DAT_TextManagerObject::ptr)(*(char*)((int)&local_68 + iVar7), 0x12);
+                        iVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getCharWidth, DAT_TextManagerObject::ptr)(
+                            *(char*)((int)&local_68 + iVar7), 0x12);
                         iVar8 = iVar8 + iVar5;
                         if (0xaa < iVar8) {
                             *(undefined1*)((int)&local_68 + iVar7) = 0;
@@ -79,12 +79,12 @@ namespace UI {
                     } while (iVar7 < iVar4);
                 }
                 DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_MAP_GAME;
-                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(iVar6, posY + -5, iVar6 + 0xbe, posY + 0x32, 0x10);
+                MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
+                    iVar6, posY + -5, iVar6 + 0xbe, posY + 0x32, 0x10);
                 bVar2 = false;
                 DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
-                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)((char const*)&local_68, iVar6 + 0x5f, posY, Text::TTA_CENTER,
+                MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                    (char const*)&local_68, iVar6 + 0x5f, posY, Text::TTA_CENTER,
                     (uint)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(
                         int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_80 + 4)])),
                     0, 0x12, FALSE, 0);
@@ -116,8 +116,8 @@ namespace UI {
                 do {
                     iVar8 = (*local_74 / iVar4) % 10;
                     if (((iVar8) || (bVar2)) || (!local_78)) {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                            iVar8, (local_84 / 2 - iVar7) + iVar6 + posX, posY + 0x19, Text::TTA_RIGHT,
+                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(iVar8,
+                            (local_84 / 2 - iVar7) + iVar6 + posX, posY + 0x19, Text::TTA_RIGHT,
                             (uint)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(
                                 int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_80 + 4)])),
                             0, 0x11, FALSE, 0);

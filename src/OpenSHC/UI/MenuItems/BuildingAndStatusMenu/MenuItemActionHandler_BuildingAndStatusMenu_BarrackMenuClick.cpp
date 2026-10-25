@@ -59,8 +59,7 @@ namespace UI {
                     /*
                       @TheRedDaemon: Army is Max Size Message
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
-                        "Genie_26.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)("Genie_26.wav");
                 }
                 if (_recruitableState != Map::Units::ERS_UNABLE_MISSING_PEASANTS) {
                     if ((int)_unitCost
@@ -82,11 +81,10 @@ namespace UI {
                 /*
                   "Recruits needed sire"
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "other_warning5.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
             }
-            int _recruitSuccess = MACRO_CALL_MEMBER(
-                Map::Units::UnitsState_Func::euroRecruit, DAT_UnitsState::ptr)(barrackUnitIdUnk,
+            int _recruitSuccess = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::euroRecruit, DAT_UnitsState::ptr)(
+                barrackUnitIdUnk,
                 (undefined4)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .barracks.id)),
@@ -123,8 +121,7 @@ namespace UI {
                     /*
                       "Your army is approaching its maximum size"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "Genie_27.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_27.wav");
                     barrackUnitIdUnk = DAT_00df3374::instance;
                 }
             }

@@ -5,10 +5,10 @@
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Map/Buildings/BuildingFailReasonEnum.hpp"
+#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -121,8 +121,8 @@ namespace Map {
                 case ((TreeType)0x12):
                 case ((TreeType)0x13):
                     break;
-                    default:
-                        return;
+                default:
+                    return;
                 }
             }
             if ((_logic & Map::LogicHelpers::L_RIVER | Map::LogicHelpers::L_FORD)) {}
@@ -156,8 +156,7 @@ namespace Map {
                 }
             }
             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)
-                && (iVar4
-                    = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                && (iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
                         DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), 7, -1, -1, -1),
                     iVar4 != 0)) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
@@ -173,8 +172,8 @@ namespace Map {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
             }
             if ((short)command == 0x1a) {
-                iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
-                    iVar1, (int)((int)(_y1)));
+                iVar1
+                    = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)((int)(_y1)));
                 if (!iVar1) {
                     *(undefined4*)(extraout_ECX_00 + 0x554938) = 0x13;
                 }

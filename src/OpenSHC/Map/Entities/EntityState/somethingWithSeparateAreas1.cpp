@@ -69,9 +69,8 @@ namespace Map {
                                 && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
                                     || ((iVar3 = (int)DAT_UnitsState::instance.units[unitID].workplaceBuildingID_1,
                                         iVar3 == 0
-                                            || (MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        setAxisBasedDistanceResult,
+                                            || (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
+                                                                      setAxisBasedDistanceResult,
                                                     DAT_DirectionAlgorithmState::ptr)(
                                                     (int)(short)DAT_BuildingsState::instance.buildings[iVar3].x,
                                                     (int)((

@@ -47,8 +47,8 @@ namespace UI {
             DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SOLITARY;
             DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
             if (INT_00b95b64::instance == 0) {
-                MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
-                        MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
+                MACRO_CALL(
+                    UI::MenuItems::SinglePlayerMapChoice_Func::MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
             } else {
@@ -74,8 +74,8 @@ namespace UI {
             } else {
                 tgxFileName = "frontend_combat2.tgx";
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                tgxFileName);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;

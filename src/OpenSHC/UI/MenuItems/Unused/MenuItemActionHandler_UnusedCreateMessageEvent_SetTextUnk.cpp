@@ -40,14 +40,12 @@ namespace UI {
                 }
             } else if (param_1 == 0x13) {
                 if (!DAT_MapPropertiesState::instance.flag) {
-                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
-                        DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex, DAT_MapPropertiesState::ptr)(
+                        DAT_MapPropertiesState::instance.currentEventID);
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-                    MACRO_CALL_MEMBER(
-                        Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
             } else if (param_1 == 0x25) {
@@ -56,18 +54,16 @@ namespace UI {
                         MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeEventAtIndex,
                             DAT_MapPropertiesState::ptr)(DAT_MapPropertiesState::instance.currentEventID);
                     } else {
-                        _Str = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer,
-                            DAT_UserTextHandlerState::ptr)(0xb);
+                        _Str = MACRO_CALL_MEMBER(
+                            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0xb);
                         lVar1 = atol(_Str);
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.year = lVar1;
                     }
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-                    MACRO_CALL_MEMBER(
-                        Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                    MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, DAT_MapPropertiesState::ptr)();
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
                 if (DAT_MapPropertiesState::instance.flag == 1) {
@@ -77,16 +73,14 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NEW_EVENT_ACTION, FALSE);
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                     return;
                 }
                 DAT_GameCore::instance.descriptionStringTableIndex = DAT_MapPropertiesState::instance.value;
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
                 DAT_MenuView_TriggerPrepare::instance = TRUE;
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
-                    0xf);
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                 return;
             }
             return;

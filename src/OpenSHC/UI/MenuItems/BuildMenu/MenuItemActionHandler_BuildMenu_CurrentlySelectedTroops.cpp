@@ -20,18 +20,17 @@ namespace UI {
             if (slotID < 0x14) {
                 _unitType = DAT_RenderingDefinedData::instance
                                 .SelectionSlotUnitTypes[DAT_UnitsState::instance.selectionSlots[slotID]];
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueClickNavigateMenuOrEscape,
-                    DAT_UnitsState::ptr)(_unitType);
-                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::filterUnitSelectionForUnitType,
-                    DAT_UnitsState::ptr)(_unitType);
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueClickNavigateMenuOrEscape, DAT_UnitsState::ptr)(
+                    _unitType);
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::filterUnitSelectionForUnitType, DAT_UnitsState::ptr)(
+                    _unitType);
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::recountUnitsInSelection, DAT_UnitsState::ptr)();
             }
             unitType = DAT_RenderingDefinedData::instance
                            .SelectionSlotUnitTypes[DAT_UnitsState::instance.selectionSlots[slotID + -0x14]];
-            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueUnitTypeCommand, DAT_UnitsState::ptr)(
+            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueUnitTypeCommand, DAT_UnitsState::ptr)(unitType);
+            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::filterUnitSelectionExcludeUnitType, DAT_UnitsState::ptr)(
                 unitType);
-            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::filterUnitSelectionExcludeUnitType,
-                DAT_UnitsState::ptr)(unitType);
             MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::recountUnitsInSelection, DAT_UnitsState::ptr)();
         }
 

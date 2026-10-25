@@ -51,7 +51,8 @@ namespace Synchrony {
                 /*
                   Receive(lpidFrom, lpidTo, dwFlags, lpData, lpdwDataSize)   DPRECEIVE_ALL = 1
                  */
-                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->Receive((LPDPID)0x191de04, (LPDPID)0x191de08, DPRECEIVE_ALL, (void*)0x191e440, (DWORD*)0x194af84);
+                this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->Receive(
+                    (LPDPID)0x191de04, (LPDPID)0x191de08, DPRECEIVE_ALL, (void*)0x191e440, (DWORD*)0x194af84);
                 if ((this->DPLAYX_SendAndReceiveREsult == -0x7ffffff6)
                     || (this->DPLAYX_SendAndReceiveREsult == -0x7788ff42))
                     goto LAB_00490905;
@@ -65,8 +66,8 @@ namespace Synchrony {
                         if ((*(uint*)&this->DPLAY_ReceiveData) == 5) {
                             this->kickDueToLagStatusUnk = 0x3d;
                             _playerID = MACRO_CALL_MEMBER(
-                                Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
-                                this)((*(uint*)((char*)&this->DPLAY_ReceiveData + 8)));
+                                Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs, this)(
+                                (*(uint*)((char*)&this->DPLAY_ReceiveData + 8)));
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::removePlayerFromLobby, this)(
                                 _playerID);
                         } else if ((*(uint*)&this->DPLAY_ReceiveData) != 49) {
@@ -85,8 +86,7 @@ namespace Synchrony {
                                 /*
                                   added by script: "You are now Host"
                                  */
-                                pcVar3 = MACRO_CALL_MEMBER(
-                                    Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x3c);
                                 pcVar6 = this->receivedChatMessage;
                                 do {
@@ -95,16 +95,14 @@ namespace Synchrony {
                                     pcVar3 = pcVar3 + 1;
                                     pcVar6 = pcVar6 + 1;
                                 } while (cVar1 != '\0');
-                                MACRO_CALL_MEMBER(
-                                    Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList, this)(
-                                    this->currentPlayerSlotID, 0);
+                                MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
+                                    this)(this->currentPlayerSlotID, 0);
                                 BVar4 = MACRO_CALL_MEMBER(
                                     Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
                                 if (!BVar4) {
                                     if (DAT_MenuModalComposition1::instance.activeModalDialogID
                                         == UI::Enums::MMT_ROUNDTABLE) {
-                                        DAT_MenuModalComposition1::instance.activeModalDialogID
-                                            = UI::Enums::MMT_NONE;
+                                        DAT_MenuModalComposition1::instance.activeModalDialogID = UI::Enums::MMT_NONE;
                                     }
                                     MACRO_CALL_MEMBER(
                                         Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
@@ -122,24 +120,23 @@ namespace Synchrony {
                          */
                         *(uint*)&this->DPLAY_ReceiveData = (*(uint*)&this->DPLAY_ReceiveData >> 8)
                             | ((uint)(uchar)this->DPLAY_ReceiveData.packet.payload[0] << 24);
-                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::decompressTooLongPacketData,
-                            this)(this->DPLAY_ReceiveData.packet.payload + 1,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::decompressTooLongPacketData, this)(
+                            this->DPLAY_ReceiveData.packet.payload + 1,
                             (byte*)((int)(this->DPLAY_ReceiveData.packet.payload)));
                     }
                     this->receivedCommandMapTimeInTicks = 0;
-                    MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2,
-                        DAT_LowLevelMemory::ptr)((void*)((int)&this->DPLAY_ReceiveData + 1),
+                    MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
+                        (void*)((int)&this->DPLAY_ReceiveData + 1),
                         (void*)((int)(&this->receivedCommandMapTimeInTicks)));
                     if (126 <= (char)this->DPLAY_ReceiveData.packet.commandProtocol) {
-                        MACRO_CALL_MEMBER(
-                            Synchrony::GameSynchronyState_Func::computeAndSetLatencyInformation, this)();
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::computeAndSetLatencyInformation, this)();
                     } else if ((char)this->DPLAY_ReceiveData.packet.commandProtocol < 2) {
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::processSyncPacket, this)(
                             (int)(char)this->DPLAY_ReceiveData.packet.commandProtocol);
                     } else {
                         this->packetsReceived = this->packetsReceived + 1;
-                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::scheduleReceivedCommand,
-                            this)((Commands::GameCommandType)this->DPLAY_ReceiveData.packet.commandProtocol,
+                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::scheduleReceivedCommand, this)(
+                            (Commands::GameCommandType)this->DPLAY_ReceiveData.packet.commandProtocol,
                             this->DPLAYX_ReceivedPlayerID, this->receivedCommandMapTimeInTicks,
                             (void*)((int)&this->DPLAY_ReceiveData + 4));
                     }

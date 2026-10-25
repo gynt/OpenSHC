@@ -119,8 +119,7 @@ void Synchrony::InitSkirmishLobbyData()
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[6] = 0xff;
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[7] = 0xff;
         DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[8] = 0xff;
-        MACRO_CALL_MEMBER(
-            Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, DAT_GameSynchronyState::ptr)();
     }
     DAT_00b960f8::instance = 0;
     INT_00b95958::instance = 0;

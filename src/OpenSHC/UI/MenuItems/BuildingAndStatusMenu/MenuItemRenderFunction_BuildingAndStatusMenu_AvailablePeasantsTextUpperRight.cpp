@@ -52,8 +52,8 @@ namespace UI {
                         .availablePeasantsOrHousedPeasants
                     - DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .count,
-                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0xb8eefb, 0, 0x12,
-                FALSE, 0);
+                (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), Text::TTA_LEFT, 0xb8eefb, 0, 0x12, FALSE,
+                0);
         }
 
     }

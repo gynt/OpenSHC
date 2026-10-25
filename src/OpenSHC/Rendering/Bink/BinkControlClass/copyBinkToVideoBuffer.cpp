@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Audio/MSS/enums/SHC_SoundStream.hpp"
 #include "OpenSHC/Rendering/Bink/UnsortedBinkFlag.hpp"
+#include "OpenSHC/UI/Menu.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
@@ -12,7 +13,6 @@
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/UI/Menu.hpp"
 
 namespace OpenSHC {
 namespace Rendering {
@@ -20,8 +20,8 @@ namespace Rendering {
 
         using Audio::MSS::enums::SHC_SoundStream;
         using Rendering::Bink::UnsortedBinkFlag;
-        using WindowsHelper::Enums::BOOLEnum;
         using UI::Menu;
+        using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00408FC0
         void BinkControlClass::copyBinkToVideoBuffer(dword param_1)
@@ -65,8 +65,8 @@ namespace Rendering {
                             if (_binkStructPtr->soundStreamIndex[0] == Audio::MSS::enums::SND_STR_MUSIC) {
                                 if (param_1 != 2) {
                                     _binkStructPtr->unknown01_zero[0] = 1;
-                                    MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback,
-                                        this)(_binkObjIndex);
+                                    MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, this)(
+                                        _binkObjIndex);
                                     goto LAB_004091dd;
                                 }
                             } else if (param_1 != 2)
@@ -170,8 +170,7 @@ namespace Rendering {
                                 DAT_WindowAndDirectDraw::instance.surfDescBink_offSurfMapGame.lpSurface,
                                 DAT_WindowAndDirectDraw::instance.surfDescBink_offSurfMapGame.pitchOrLinearSize.lPitch,
                                 _binkStructPtr->binkObjPtrArray[0]->height, _binkStructPtr->xPos[0],
-                                _binkStructPtr->yPos[0],
-                                this->mapGameSurfaceType | Rendering::Bink::UBF_BINKCOPYALL);
+                                _binkStructPtr->yPos[0], this->mapGameSurfaceType | Rendering::Bink::UBF_BINKCOPYALL);
                             _surfacePointer
                                 = DAT_WindowAndDirectDraw::instance.directDrawOffscreenSurfacePointer_mapGame;
                         }

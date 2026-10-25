@@ -30,8 +30,7 @@ namespace UI {
                 return;
             }
             if (param_1 == 0x10) {
-                DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field_0x1c
-                    = 2;
+                DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field_0x1c = 2;
             }
             DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;
         }

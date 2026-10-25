@@ -40,8 +40,8 @@ namespace UI {
         /*
           added by script: "Statue"
          */
-        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_IN_STATUE, 0);
+        pcVar3 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+            DE::SHCDE::TEXT_IN_STATUE, 0);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar3, iVar4, iVar2, TVar5, BVar6, iVar7, BVar8, iVar9);
         if (DAT_BuildingsState::instance.buildings[iVar1].owner == 0) {
@@ -62,8 +62,8 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.finalResults
                     .names[DAT_BuildingsState::instance.buildings[iVar1].statueCommemoratingPlayerID],
-                DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x214,
-                Text::TTA_LEFT, 0, 0x12, FALSE, 0);
+                DAT_MenuHandlerState::instance.x + 0xaf, DAT_MenuHandlerState::instance.y + 0x214, Text::TTA_LEFT, 0,
+                0x12, FALSE, 0);
         }
     }
 

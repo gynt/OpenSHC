@@ -42,8 +42,8 @@ namespace Map {
                         this->attackInfo.unitIDArray_0x2c070[_index] = _unitID2;
                         DAT_UnitsState::instance.units[_unitIDInt].state.generic
                             = Map::Units::States::US_MOVE_TO_DESTINATION;
-                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit,
-                            DAT_UnitsState::ptr)(_unitIDInt, (uint)((int)(_tile - _xOff)), (uint)((int)((int)_y)), 0);
+                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
+                            _unitIDInt, (uint)((int)(_tile - _xOff)), (uint)((int)((int)_y)), 0);
                     }
                     _index = _index + 1;
                 } while (_index < this->attackInfo.unitIDIndex_0x2c520);

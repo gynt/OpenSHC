@@ -24,8 +24,8 @@ namespace Map {
             short sVar1;
             dword dVar2;
             sVar1 = DAT_TribesState::instance.tribes[param_1].selectionTargetUnitID;
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::updatePathLinkageTileMap, DAT_BuildingsState::ptr)(1);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updatePathLinkageTileMap, DAT_BuildingsState::ptr)(
+                1);
             dVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::pathfindingRelated49ff20,
                 DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[sVar1].x,
                 (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)),
@@ -42,11 +42,10 @@ namespace Map {
                         (int)((int)(DAT_UnitsState::instance.units[sVar1].owner)), 0x32, 0);
                 }
             }
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::updatePathLinkageTileMap, DAT_BuildingsState::ptr)(0);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updatePathLinkageTileMap, DAT_BuildingsState::ptr)(
+                0);
             if (0 < (int)dVar2) {
-                MACRO_CALL_MEMBER(
-                    Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(param_1,
+                MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(param_1,
                     (uint)((int)(dVar2
                         - DAT_ViewportRenderState::instance
                             .translationMatrix[DAT_ViewportRenderState::instance

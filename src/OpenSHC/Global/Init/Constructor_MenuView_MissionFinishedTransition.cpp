@@ -24,8 +24,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             (WindowsHelper::cdeclVoidFunc*)MACRO_CALL(
                 UI::MenuViews::MissionFinishedTransition_Func::MenuView_MissionFinishedTransition_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Global::Init_Func::Destructor_MenuView_MissionFinishedTransition));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Global::Init_Func::Destructor_MenuView_MissionFinishedTransition));
         return;
     }
 

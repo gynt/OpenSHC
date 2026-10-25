@@ -22,10 +22,8 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_EditorMapTypeQuickChange::ptr)(
             UI::Enums::MMT_EDITOR_MAP_TYPE_QUICK_CHANGE, -1, -1, 400, 300, 0x200,
             (int)((int)(COL_BLACK::instance.shortValue)),
-            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing),
-            Menu_EditorMapTypeQuickChange::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_EditorMapTypeQuickChange));
+            (UI::MenuModalRenderFunction*)MACRO_CALL(Global_Func::DoNothing), Menu_EditorMapTypeQuickChange::ptr);
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_EditorMapTypeQuickChange));
         return;
     }
 

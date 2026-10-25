@@ -24,8 +24,7 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::HistoricCampaignIntro_Func::MenuView_HistoricCampaignIntro_Prepare),
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_BlackBorderAndGfx),
             MACRO_CALL(UI::MenuViews::HistoricCampaignIntro_Func::MenuView_HistoricCampaignIntro_DoEveryFrame));
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricCampaignIntro));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_HistoricCampaignIntro));
         return;
     }
 

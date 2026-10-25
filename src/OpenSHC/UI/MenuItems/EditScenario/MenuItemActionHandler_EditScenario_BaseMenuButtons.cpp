@@ -5,6 +5,7 @@
 #include "OpenSHC/Map/MapPropertiesState.func.hpp"
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
+#include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/MenuModalComposition.func.hpp"
 #include "OpenSHC/Map/MapType2.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
@@ -24,7 +25,6 @@
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
-#include "OpenSHC/UI/Helpers.func.hpp"
 #include "stdlib.h"
 
 namespace OpenSHC {
@@ -62,8 +62,7 @@ namespace UI {
             case 0x26:
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != Map::MT_SIEGE) {
                     DAT_MapPropertiesState::instance.indexStored = 0;
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_TRADER_SETTINGS, FALSE);
                     ;
@@ -73,34 +72,30 @@ namespace UI {
             case 0x29:
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE) {
                     DAT_MapPropertiesState::instance.indexStored = 0x14;
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xc);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xc);
                     MACRO_CALL(OS_Func::_sprintf)(local_10, "%d",
                         DAT_MapPropertiesState::instance
                             .SEC_StartingResources[DAT_MapPropertiesState::instance.indexStored + 5]);
-                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
-                        DAT_UserTextHandlerState::ptr)(local_10);
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-                    DAT_MapPropertiesState::instance.DAT_MapEditorUnitPointsSum = MACRO_CALL_MEMBER(
-                        Map::MapPropertiesState_Func::sumUnitPoints, DAT_MapPropertiesState::ptr)();
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+                        local_10);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                    DAT_MapPropertiesState::instance.DAT_MapEditorUnitPointsSum
+                        = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sumUnitPoints, DAT_MapPropertiesState::ptr)();
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_UNUSED_SIEGE_ATTACKING_FORCEUnk, FALSE);
                     ;
                     return;
                 }
                 DAT_MapPropertiesState::instance.indexStored = 0;
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
-                    0xc);
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xc);
                 MACRO_CALL(OS_Func::_sprintf)(local_10, "%d",
                     DAT_MapPropertiesState::instance.SEC_StartingResources[DAT_MissionAestheticsDefinedData::instance
                             .field1237_0x345c[DAT_MapPropertiesState::instance.indexStored]]);
-                MACRO_CALL_MEMBER(
-                    Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
-                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
-                    9);
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_START_GOODS, FALSE);
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+                    local_10);
+                MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_START_GOODS, FALSE);
                 ;
                 return;
             case 0x2a:
@@ -110,8 +105,7 @@ namespace UI {
                         + DAT_MapPropertiesState::instance.eventsCount;
                     DAT_MapPropertiesState::instance.editedEventType = 1;
                     DAT_MapPropertiesState::instance.eventsCount = DAT_MapPropertiesState::instance.eventsCount + 1;
-                    MACRO_CALL_MEMBER(
-                        Game::ScenarioEvents::InGameEventUnionVersion_Func::resetEvent, pIVar2)();
+                    MACRO_CALL_MEMBER(Game::ScenarioEvents::InGameEventUnionVersion_Func::resetEvent, pIVar2)();
                     pcVar1 = MACRO_CALL_MEMBER(
                         Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(10);
                     DAT_MapPropertiesState::instance.SEC_StartingYear = atol(pcVar1);
@@ -119,17 +113,14 @@ namespace UI {
                         .header.year = DAT_MapPropertiesState::instance.SEC_StartingYear;
                     DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .header.month = DAT_MapPropertiesState::instance.SEC_StartingMonth;
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xe);
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)("");
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xe);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)("");
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
                     MACRO_CALL(OS_Func::_sprintf)(local_10, "%d",
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.year);
-                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray,
-                        DAT_UserTextHandlerState::ptr)(local_10);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
+                        local_10);
                     DAT_MapPropertiesState::instance.field_0x1356c = 0;
                     DAT_MapPropertiesState::instance.offset = 0;
                     DAT_MapPropertiesState::instance.indexStored = 0;
@@ -196,8 +187,8 @@ namespace UI {
                 if (DAT_GameState::instance.mapAndTime.editScenarioExtraOptions) {
                     DAT_CopyOfScenarioGold::instance = (int)DAT_GameState::instance.mapAndTime.scenarioGold;
                     MACRO_CALL_MEMBER(
-                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0,
-                        10000, DAT_CopyOfScenarioGold::instance, (undefined*)DAT_CopyOfScenarioGold::ptr,
+                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0, 10000,
+                        DAT_CopyOfScenarioGold::instance, (undefined*)DAT_CopyOfScenarioGold::ptr,
                         (void*)MACRO_CALL(UI::Helpers_Func::RestoreScenarioGold));
                     DAT_MenuModalComposition2::instance.textIndex = 0x3d;
                 LAB_004b8756:
@@ -248,8 +239,8 @@ namespace UI {
             case 0xa8:
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE) {
                     MACRO_CALL_MEMBER(
-                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0,
-                        10000, (int)((int)(DAT_MapPropertiesState::instance.SEC_StartingResources[0xf])),
+                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0, 10000,
+                        (int)((int)(DAT_MapPropertiesState::instance.SEC_StartingResources[0xf])),
                         (undefined*)((int)((DAT_MapPropertiesState::instance.SEC_StartingResources + 0xf))),
                         (void*)MACRO_CALL(UI::Helpers_Func::SumUnitPoints));
                     DAT_MenuModalComposition2::instance.textIndex = 0xa8;
@@ -259,8 +250,8 @@ namespace UI {
             case 0xa9:
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE) {
                     MACRO_CALL_MEMBER(
-                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0,
-                        100, (int)((int)(DAT_MapPropertiesState::instance.SEC_StartingResources[8])),
+                        UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0, 100,
+                        (int)((int)(DAT_MapPropertiesState::instance.SEC_StartingResources[8])),
                         (undefined*)((int)((DAT_MapPropertiesState::instance.SEC_StartingResources + 8))),
                         (void*)MACRO_CALL(UI::Helpers_Func::SumUnitPoints));
                     DAT_MenuModalComposition2::instance.textIndex = 0xa9;
@@ -269,8 +260,8 @@ namespace UI {
                 break;
             case 0xab:
                 DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset = 0;
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_BUILDING_AVAILABILITY, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_BUILDING_AVAILABILITY, FALSE);
                 ;
                 return;
             case -1:

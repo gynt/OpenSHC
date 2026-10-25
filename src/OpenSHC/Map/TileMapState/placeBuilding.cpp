@@ -100,8 +100,7 @@ namespace Map {
             if (((this->LogicLayer[_tile] & 0x80)) && (1999 < this->OrganismLayer[_tile])) {
                 MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeRock, DAT_LandscapeState::ptr)(
                     this->OrganismLayer[_tile] + -2000);
-                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                    y, buildingSize);
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(y, buildingSize);
                 MACRO_CALL_MEMBER(
                     Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
                     8, (uint)((int)(this->buildingX + x)), (uint)((int)(this->buildingY + yPosition_param)));
@@ -134,8 +133,7 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
                         DAT_PathFindingState::ptr)(3, (uint)((int)(x)), (uint)((int)(yPosition_param)));
                 }
-                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                    y, buildingSize);
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(y, buildingSize);
             }
             if ((int)(short)this->UnitLayer[_tile] != 0) {
                 switch (_buildingType2) {
@@ -182,8 +180,7 @@ namespace Map {
         y = 1000;
         x = 0;
         do {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                iVar3, buildingSize);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar3, buildingSize);
             _height = (uint)this->HeightLayer[DAT_ViewportRenderState::instance
                                                   .translationMatrix[this->buildingY + yPosition_param]
                                                   .addXgetTile
@@ -261,11 +258,10 @@ namespace Map {
                 (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_UNKNOWN1:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::stampBuildingOntoTileMap, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType + ~Commands::M_MAPPER_MP_KEEP8)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::stampBuildingOntoTileMap, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType + ~Commands::M_MAPPER_MP_KEEP8)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_MANORHOUSE:
         case Map::Buildings::BT_STONEKEEP:
@@ -304,11 +300,10 @@ namespace Map {
                 buildingOrientation, (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_GARDEN:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_GARDEN1)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_GARDEN1)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_KILLINGPIT:
             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeKillingPit, this)(playerID, (uint)((int)(_x)),
@@ -334,40 +329,36 @@ namespace Map {
                 buildingOrientation, (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_CESSPIT:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_CESS_PIT1)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_CESS_PIT1)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_STATUE:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_STATUE1)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_STATUE1)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_SHRINE:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_SHRINE1)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_SHRINE1)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
             break;
         case Map::Buildings::BT_POND:
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID,
-                (uint)((int)(_x)), (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
-                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_POND1)),
-                (uint)((int)(buildingSize)), (undefined4)((int)(buildingOrientation)),
-                (undefined4)((int)(_averageHeight)));
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::placePositiveFearfactor, this)(playerID, (uint)((int)(_x)),
+                (uint)((int)(yPosition_param)), (undefined4)((int)(_buildingType_dup2)),
+                (undefined4)((int)(_commandBuildingType - Commands::M_MAPPER_POND1)), (uint)((int)(buildingSize)),
+                (undefined4)((int)(buildingOrientation)), (undefined4)((int)(_averageHeight)));
         }
         /*
          ** Now PlacedBuildingID has been set ***/
         if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
             if (_buildingType2 == Map::Buildings::BT_PITCHDITCH) {
                 if (local_4) {
-                    MACRO_CALL_MEMBER(
-                        Map::WallAndPitchState_Func::placePitchDitch, DAT_WallAndPitchState::ptr)(local_4);
+                    MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::placePitchDitch, DAT_WallAndPitchState::ptr)(
+                        local_4);
                 }
             } else {
                 MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::startBuildingDestructionConfirmation,
@@ -388,8 +379,8 @@ namespace Map {
         } else {
             iVar3 = buildingSize + 5;
         }
-        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
-            DAT_PathFindingState::ptr)(iVar3, (uint)((int)(_x)), (uint)((int)(yPosition_param)));
+        MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer, DAT_PathFindingState::ptr)(
+            iVar3, (uint)((int)(_x)), (uint)((int)(yPosition_param)));
         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
         this->field204_0x554a30 = 1;
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {

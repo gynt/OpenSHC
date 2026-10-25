@@ -18,44 +18,38 @@ namespace UI {
             case 0:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex
                     != (Text::TAIT_EIGHT__FILTER_B | Text::TAIT_SEVEN__NUMERIC_ONLY)) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xf);
                 }
                 break;
             case 1:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex
                     != (Text::TAIT_EIGHT__FILTER_B | Text::TAIT_TWO__FILTER_A)) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
                 }
                 break;
             case 2:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex
                     != (Text::TAIT_EIGHT__FILTER_B | Text::TAIT_THREE__FILTER_A)) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
                 }
                 break;
             case 3:
             case 4:
             case 7:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex != (Text::TextArrayIndexTypeInt)0xc) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xc);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xc);
                 }
                 break;
             case 5:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex
                     != (Text::TAIT_EIGHT__FILTER_B | Text::TAIT_FIVE__NUMERIC_DOT)) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xd);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xd);
                 }
                 break;
             case 6:
                 if (DAT_UserTextHandlerState::instance.textArrayIndex
                     != (Text::TAIT_EIGHT__FILTER_B | Text::TAIT_SIX__NUMERIC_ONLY)) {
-                    MACRO_CALL_MEMBER(
-                        Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xe);
+                    MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xe);
                 }
             }
         }

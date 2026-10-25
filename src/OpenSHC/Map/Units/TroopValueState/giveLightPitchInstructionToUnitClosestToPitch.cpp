@@ -41,8 +41,7 @@ namespace Map {
             int _minUnitID;
             int _ditchUID;
             byte _height;
-            _ditchID = MACRO_CALL_MEMBER(
-                Map::TileMapState_Func::getPitchDitchIDForTile, DAT_TileMapState::ptr)(tile);
+            _ditchID = MACRO_CALL_MEMBER(Map::TileMapState_Func::getPitchDitchIDForTile, DAT_TileMapState::ptr)(tile);
             _minUnitID = 0;
             _minDistance = 100000000;
             _unitID = 1;
@@ -63,8 +62,7 @@ namespace Map {
                         _unitX = _ditchX - _pUnit->x;
                         _distancePyth = _unitX * _unitX + _unitY * _unitY;
                         if (((_distancePyth < 2500)
-                                && (_shot
-                                    = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::arrowShootingRelated,
+                                && (_shot = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::arrowShootingRelated,
                                         DAT_EntityState::ptr)((int)_pUnit->microXPosition,
                                         (int)((int)(_pUnit->microYPosition)),
                                         (int)((int)(_pUnit->buildingHeight + 30 + _pUnit->terrainOrClimbHeight)),
@@ -97,11 +95,9 @@ namespace Map {
                     DAT_UnitsState::instance.units[_minUnitID].field253_0x3c5 = 0x22;
                     DAT_UnitsState::instance.units[_minUnitID].targetingType = Map::Units::UIT_LIGHT_PITCH;
                     DAT_UnitsState::instance.units[_minUnitID].field283_0x3f8 = 0;
-                    MACRO_CALL_MEMBER(
-                        Map::Units::UnitsState_Func::makeUnitStopWalkingByClearingPathProgressState,
+                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::makeUnitStopWalkingByClearingPathProgressState,
                         DAT_UnitsState::ptr)(_minUnitID);
-                    DAT_UnitsState::instance.units[_minUnitID].state.generic
-                        = Map::Units::States::US_FIRE_WEAPONUnk;
+                    DAT_UnitsState::instance.units[_minUnitID].state.generic = Map::Units::States::US_FIRE_WEAPONUnk;
                     DAT_UnitsState::instance.units[_minUnitID].field298_0x40e = true;
                     return (undefined4)(1);
                 }

@@ -293,12 +293,16 @@ namespace UI {
                 case 0x8b:
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount48 = 0x18;
-                    iVar8 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity;
+                    iVar8
+                        = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                              .popularity;
                     if (6000 < iVar8) {
-                        DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity = (iVar8 + -6000) / 2 + 6000;
+                        DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .popularity = (iVar8 + -6000) / 2 + 6000;
                     }
                     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
-                        DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
+                        DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                        DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
                     pcVar10 = "Random_Events2.wav";
                     iVar8 = 2;
                     pcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
@@ -492,7 +496,8 @@ namespace UI {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount51 = 8;
                     MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::spreadFireRandomlyToBuildings,
-                        DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
+                        DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                        DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
                     iVar8 = MACRO_CALL_MEMBER(
                         Map::Buildings::BuildingsState_Func::findFirstBuildingOfType, DAT_BuildingsState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID, Map::Buildings::BT_WELL);
@@ -654,8 +659,11 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .someCount52 = 0xc;
-                if (10000 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity) {
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity = 10000;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
                 }
                 pcVar3 = "Random_Events12.wav";
                 pcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
@@ -675,8 +683,11 @@ namespace UI {
                 DAT_GameState::instance.mapAndTime.unitJesterRelated = 1;
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .someCount53 = 0x30;
-                if (10000 < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity) {
-                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].popularity = 10000;
+                if (10000
+                    < DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity) {
+                    DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .popularity = 10000;
                 }
                 pcVar10 = "Random_Events13.wav";
                 iVar8 = 0xd;

@@ -21,8 +21,7 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004BB010
     BOOLEnum MapPropertiesState::isMapperAvailable(MappersEnum param_1)
     {
-        if ((param_1 == Commands::M_MAPPER_OUTPOST_EURO)
-            || (param_1 == Commands::M_MAPPER_OUTPOST_ARAB)) {
+        if ((param_1 == Commands::M_MAPPER_OUTPOST_EURO) || (param_1 == Commands::M_MAPPER_OUTPOST_ARAB)) {
             if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
                 return FALSE;
             }

@@ -31,26 +31,26 @@ namespace UI {
             undefined4 uVar2;
             SHC_SoundStream SVar3;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("sktrail_win.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe1.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe2.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe3.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe4.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe5.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe6.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe7.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("endframe8.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("jesterlast.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "sktrail_win.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe1.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe2.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe3.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe4.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe5.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe6.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe7.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "endframe8.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "jesterlast.tgx");
             MACRO_CALL(UI::Credits_Func::ResetCredits)();
             DAT_NumberOfStoredMenuStrings::instance = 0;
             /*
@@ -89,42 +89,50 @@ namespace UI {
             MACRO_CALL(UI::Credits_Func::AppendCreditsTextCommand)(0xf, 0, 0xf, 0, 400, 0xe8, 0, 1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 1, 0x6a, 0x35, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "rt_vict1.bik", 0x6a, 0x35, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\rt_anger_04.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\rt_anger_04.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 2, 0x14b, 0x18, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "sn_vict2.bik", 0x14b, 0x18, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\sn_add_player.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\sn_add_player.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 3, 0x22d, 0x35, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "pg_taunt2.bik", 0x22d, 0x35, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\pg_add_player.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\pg_add_player.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 4, 0x280, 0xdf, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "wf_anger1.bik", 0x280, 0xdf, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\wf_anger_04.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\wf_anger_04.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 5, 0x22d, 0x18a, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "saladin_angry.bik", 0x22d, 0x18a, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\sa_extra_01.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\sa_extra_01.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 6, 0x14c, 0x1b4, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "sultan_natural.bik", 0x14c, 0x1b4, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\su_congrats_01.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\su_congrats_01.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 7, 0x6a, 0x18a, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "richard_taunting.bik", 0x6a, 0x18a, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\ri_congrats_01.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\ri_congrats_01.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 8, 0x23, 0xdf, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "bad_arab_taunt.bik", 0x23, 0xdf, 0, 0);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)("fx\\speech\\ca_add_player_01.wav", 3, 0, 100);
+            MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoWithAudioCommand)(
+                "fx\\speech\\ca_add_player_01.wav", 3, 0, 100);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(4, Audio::MSS::enums::SND_STR_SPEECH_1);
             uVar2 = 0x10;
@@ -179,18 +187,21 @@ namespace UI {
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 9, 0x280, 0xdf, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "action_jester.bik", 0x280, 0xdf, 0, 0);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(
-                8, (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2 | Audio::MSS::enums::SND_STR_SFX_1Unk));
+            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(8,
+                (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2
+                    | Audio::MSS::enums::SND_STR_SFX_1Unk));
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 9, 0x22d, 0x18a, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "action_jester.bik", 0x22d, 0x18a, 0, 0);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(
-                8, (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2 | Audio::MSS::enums::SND_STR_SFX_2Unk));
+            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(8,
+                (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2
+                    | Audio::MSS::enums::SND_STR_SFX_2Unk));
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 9, 0x14c, 0x1b4, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "action_jester.bik", 0x14c, 0x1b4, 0, 0);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);
-            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(
-                8, (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2 | Audio::MSS::enums::SND_STR_SPEECH_1));
+            MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(8,
+                (Audio::MSS::enums::SHC_SoundStream)(Audio::MSS::enums::SND_STR_SPEECH_2
+                    | Audio::MSS::enums::SND_STR_SPEECH_1));
             MACRO_CALL(UI::Credits_Func::AppendCreditsImageTransitionCommand)(5, 9, 0x6a, 0x18a, 4);
             MACRO_CALL(UI::Credits_Func::AppendCreditsBinkVideoCommand)(0xc, "action_jester.bik", 0x6a, 0x18a, 0, 0);
             MACRO_CALL(UI::Credits_Func::AppendCreditsSoundStreamCommand)(0x18, Audio::MSS::enums::SND_STR_MUSIC);

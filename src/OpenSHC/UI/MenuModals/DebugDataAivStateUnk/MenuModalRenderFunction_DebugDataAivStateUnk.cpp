@@ -34,9 +34,9 @@ namespace UI {
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                             "File missing", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     } else if (integer == -2) {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                            DAT_TextManagerObject::ptr)("Can\'t place keep", _x1 + 0x28, yPosition,
-                            Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
+                        MACRO_CALL_MEMBER(
+                            Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                            "Can\'t place keep", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     } else if (integer == 100) {
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(

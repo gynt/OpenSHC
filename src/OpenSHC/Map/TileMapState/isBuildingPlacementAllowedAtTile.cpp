@@ -4,10 +4,10 @@
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
+#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_LandscapeState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
@@ -98,8 +98,8 @@ namespace Map {
         }
         _unitID = this->UnitLayer[tile];
         if (_unitID) {
-            _isAI2 = MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
+            _isAI2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(
+                playerID);
             if (!_isAI2) {
                 if (DAT_UnitsState::instance.units[(short)_unitID].unitType != Map::Units::UT_CHICKEN) {
                     return 1;
@@ -157,8 +157,8 @@ namespace Map {
                 case Commands::M_MAPPER_GATE_STONE2A:
                 case Commands::M_MAPPER_GATE_STONE2B:
                     break;
-                    default:
-                        return 1;
+                default:
+                    return 1;
                 }
             }
             if (((!(_tileLogic & Map::LogicHelpers::L_PLAIN1_AND_FARM)) || (param_4))
@@ -188,13 +188,12 @@ namespace Map {
                     case ((TreeType)0x12):
                     case ((TreeType)0x13):
                         break;
-                        default:
-                            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                        {
+                    default:
+                        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                             return 1;
                         }
-                        _isAI = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
-                            DAT_GameSynchronyState::ptr)(playerID);
+                        _isAI = MACRO_CALL_MEMBER(
+                            Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
                         if (!_isAI) {
                             return 1;
                         }

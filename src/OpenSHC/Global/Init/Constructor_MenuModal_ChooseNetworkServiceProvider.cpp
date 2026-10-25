@@ -26,8 +26,7 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::ChooseNetworkServiceProvider_Func::
                     MenuModalRenderFunction_ChooseNetworkServiceProvider),
             Menu_ChooseNetworkServiceProvider::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseNetworkServiceProvider));
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseNetworkServiceProvider));
         return;
     }
 

@@ -202,14 +202,12 @@ namespace Map {
                 DAT_DirectionAlgorithmState::ptr)(microX, microY, targetX, targetY);
             this->entityArray[entityID].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             this->entityArray[entityID].colorUnk = 0;
-            if ((((entityType == Map::Entities::ET_FLAG_1)
-                     || (entityType == Map::Entities::ET_FLAG_4))
+            if ((((entityType == Map::Entities::ET_FLAG_1) || (entityType == Map::Entities::ET_FLAG_4))
                     || (entityType == Map::Entities::ET_FLAG_2))
                 || (entityType == Map::Entities::ET_FLAG_3)) {
                 this->entityArray[entityID].colorUnk = ownerColorUnk;
             }
-            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(
-                entityID, entityType);
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(entityID, entityType);
             if (this->entityArray[entityID].rng_2 != 0) {
                 this->entityArray[entityID].gmID = 0x91;
             }
@@ -263,8 +261,7 @@ namespace Map {
                 this->entityArray[entityID].gmLookupValue = 1;
             }
             if (entityID) {
-                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
-                    entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
                 uVar5 = DAT_CurrentEntityID::instance;
                 DAT_CurrentEntityID::instance = entityID;

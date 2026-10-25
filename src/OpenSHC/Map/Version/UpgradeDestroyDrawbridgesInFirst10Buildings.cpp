@@ -17,10 +17,10 @@ namespace OpenSHC {
 namespace Map {
 
     using Commands::MappersEnum;
+    using Map::Buildings::Building;
     using Map::Buildings::BuildingLogicalState;
     using Map::Buildings::BuildingType;
     using WindowsHelper::Enums::BOOLEnum;
-    using Map::Buildings::Building;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A460
     void Version::UpgradeDestroyDrawbridgesInFirst10Buildings()
@@ -38,8 +38,8 @@ namespace Map {
                 && (puVar5->buildingType == Map::Buildings::BT_DRAWBRIDGE)) {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::clearDrawBridgeWater, DAT_TileMapState::ptr)(
                     (int)(short)puVar5->x, (int)((int)((short)puVar5->y)));
-                MACRO_CALL_MEMBER(Map::TileMapState_Func::clearBuildingDisplayFlagsAndEntities,
-                    DAT_TileMapState::ptr)(local_8, 1);
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::clearBuildingDisplayFlagsAndEntities, DAT_TileMapState::ptr)(
+                    local_8, 1);
                 sVar1 = puVar5->owner;
                 uVar2 = puVar5->x;
                 uVar3 = puVar5->y;

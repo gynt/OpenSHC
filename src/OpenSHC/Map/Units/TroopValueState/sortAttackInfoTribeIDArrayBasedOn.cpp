@@ -1,9 +1,9 @@
 #include "../../../Map.func.hpp"
 #include "../TroopValueState.func.hpp"
 
+#include "OpenSHC/AI/Tribes/AITribeTypeInt.hpp"
 #include "OpenSHC/Map/Units/SomeTribeBehaviorType.hpp"
 
-#include "OpenSHC/AI/Tribes/AITribeTypeInt.hpp"
 #include "OpenSHC/Globals/DAT_AttackInfoDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
@@ -21,7 +21,7 @@ namespace Map {
             int iVar1;
             Tribe* psVar1;
             int* piVar2;
-            const AI::Tribes::AITribeTypeInt* _tribeTypePriority;
+            AI::Tribes::AITribeTypeInt const* _tribeTypePriority;
             int iVar3;
             int _currentTribeType;
             int _nextValue;

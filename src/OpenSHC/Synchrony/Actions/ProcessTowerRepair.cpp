@@ -37,10 +37,10 @@ namespace Synchrony {
             } else {
                 DAT_BuildingsState::instance.buildings[buildingID].currentHealth
                     = DAT_BuildingsState::instance.buildings[buildingID].maxHealth;
-                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
-                    DAT_BuildingsState::ptr)(playerID, Game::Resources::RT_WOOD, requiredWood, 0);
-                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss,
-                    DAT_BuildingsState::ptr)(playerID, Game::Resources::RT_STONE, requiredStone, 0);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss, DAT_BuildingsState::ptr)(
+                    playerID, Game::Resources::RT_WOOD, requiredWood, 0);
+                MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processResourceLoss, DAT_BuildingsState::ptr)(
+                    playerID, Game::Resources::RT_STONE, requiredStone, 0);
             }
         }
     }

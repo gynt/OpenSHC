@@ -145,8 +145,9 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 xParam = DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)DAT_00df5200::instance, DAT_00df51fc::instance);
+                textAddress = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    (OpenSHC::DE::SHCDE::eTextSections)DAT_00df5200::instance, DAT_00df51fc::instance);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, alignment, foregroundColor,
                     backgroundColor, fontSize, keepOffsetX, blendStrength);

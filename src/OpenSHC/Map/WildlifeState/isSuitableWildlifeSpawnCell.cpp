@@ -29,13 +29,10 @@ namespace Map {
         }
         for (int direction = 0; direction < 8; direction += 2) {
             uint const x
-                = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.xOffset
-                + param_1;
+                = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.xOffset + param_1;
             uint const y
-                = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.yOffset
-                + param_2;
-            if (x <= 0x27 && y <= 0x27 && 0 < this->grid[x][y].firstMember
-                && this->grid[x][y].unknownNonZero01 != 0) {
+                = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.yOffset + param_2;
+            if (x <= 0x27 && y <= 0x27 && 0 < this->grid[x][y].firstMember && this->grid[x][y].unknownNonZero01 != 0) {
                 return (undefined4)(1);
             }
         }

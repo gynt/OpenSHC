@@ -135,8 +135,7 @@ namespace Map {
                     _microY = ((int)SEC_RNG::instance.currentNumber2 >> 8) % 100 + -0x32 + _y;
                     MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                 }
-                MACRO_CALL_MEMBER(
-                    Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(unitID,
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(unitID,
                     (undefined4)((int)((int)DAT_UnitsState::instance.units[unitID].owner)), 0,
                     (int)((int)((short)this->trees[_treeID].xPosition * 8)),
                     (int)((int)((short)this->trees[_treeID].yPosition * 8)),

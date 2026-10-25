@@ -51,8 +51,7 @@ namespace Synchrony {
         local_4 = MSVC_SecurityCookie::instance ^ (uint)&_pSize;
         local_2b8 = param_2;
         _pSize = 0;
-        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)(
-            (GUID*)&local_26c);
+        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::getGUIDForSelectedProvider, this)((GUID*)&local_26c);
         BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_MODEM::ptr);
         if (!BVar3) {
             BVar3 = MACRO_CALL(OS_Func::isEqualGUID)(&local_26c, (GUID*)GUID_DPSPGUID_TCPIP::ptr);
@@ -182,8 +181,8 @@ namespace Synchrony {
                 } while (cVar1 != '\0');
                 iVar8 = 2;
             }
-            pcVar6 = MACRO_CALL_MEMBER(
-                Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
+            pcVar6
+                = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(7);
             pcVar7 = local_194;
             do {
                 cVar1 = *pcVar6;
@@ -205,14 +204,16 @@ namespace Synchrony {
             *(char**)((int)&local_29c + iVar2 + -4) = local_194;
             DVar9 = iVar8 + 1;
         }
-        _status = this->DPLAYX_LOBBY->CreateCompoundAddress((LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, (void*)0x0, &_pSize);
+        _status = this->DPLAYX_LOBBY->CreateCompoundAddress(
+            (LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, (void*)0x0, &_pSize);
         if (_status == -2005467106) {
             _pMemNoLock = GlobalAlloc(WindowsHelper::Enums::GAF_GHND, _pSize);
             _pMem = GlobalLock(_pMemNoLock);
             if (_pMem == (void*)0x0) {
                 _status = DPERR_NOMEMORY;
             } else {
-                _status = this->DPLAYX_LOBBY->CreateCompoundAddress((LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, _pMem, &_pSize);
+                _status = this->DPLAYX_LOBBY->CreateCompoundAddress(
+                    (LPCDPCOMPOUNDADDRESSELEMENT)&local_2b4, DVar9, _pMem, &_pSize);
                 if (_status < DP_OK) {
                     pvVar5 = GlobalHandle(_pMem);
                     GlobalUnlock(pvVar5);

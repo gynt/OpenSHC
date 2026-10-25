@@ -68,12 +68,10 @@ namespace Map {
                     } else {
                         iVar7 = 2;
                     LAB_0052dfdf:
-                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField13FromCell, this)(
-                            iVar6, iVar3, iVar7);
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField13FromCell, this)(iVar6, iVar3, iVar7);
                     }
                     if (piVar2->farmFieldTiles) {
-                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField20FromCell, this)(
-                            iVar6, iVar3, 6);
+                        MACRO_CALL_MEMBER(Map::WildlifeState_Func::floodFillField20FromCell, this)(iVar6, iVar3, 6);
                     }
                     iVar6 = iVar6 + 1;
                     piVar2 = piVar2 + 0x640;

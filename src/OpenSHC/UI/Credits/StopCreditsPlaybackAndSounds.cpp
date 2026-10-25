@@ -27,10 +27,8 @@ namespace UI {
         MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
             Audio::MSS::enums::SND_STR_SPEECH_2);
         if (INT_00ed27a4::instance != 2) {
-            MACRO_CALL_MEMBER(
-                Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
-            MACRO_CALL_MEMBER(
-                Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
+            MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
+            MACRO_CALL_MEMBER(Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(1);
             DAT_UnknownBinkIndex::instance = DAT_UnknownBinkCount::instance;
         }
         DAT_UnknownBinkIndex::instance = DAT_UnknownBinkCount::instance;

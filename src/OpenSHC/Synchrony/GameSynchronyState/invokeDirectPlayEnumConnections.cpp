@@ -1,7 +1,7 @@
 #include "../../Synchrony.func.hpp"
 
-#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Synchrony.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 
 #include "OpenSHC/Globals/GUID_CLSID_DirectPlay.hpp"
 #include "OpenSHC/Globals/GUID_CLSID_DirectPlayLobby.hpp"
@@ -29,8 +29,8 @@ namespace Synchrony {
         _dplay4 = (IDirectPlay4A*)0x0;
         _dplaylobby3 = (IDirectPlayLobby3*)0x0;
         this->scrollBarItemCount = 3;
-        HVar1 = CoCreateInstance(*GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1, *GUID_IID_IDirectPlay4::ptr,
-            (LPVOID*)&_dplay4);
+        HVar1 = CoCreateInstance(
+            *GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1, *GUID_IID_IDirectPlay4::ptr, (LPVOID*)&_dplay4);
         if (-1 < HVar1) {
             HVar1 = CoCreateInstance(*GUID_CLSID_DirectPlayLobby::ptr, (IUnknown*)0x0, 1,
                 *GUID_IID_IDirectPlayLobby3::ptr, (LPVOID*)&_dplaylobby3);

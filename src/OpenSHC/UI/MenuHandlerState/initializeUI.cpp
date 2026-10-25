@@ -35,8 +35,8 @@ MACRO_CALL_MEMBER(UI::Menu_Func::loadMenuElements, menuIDMenuElementAddressPair)
 menuIDMenuElementAddressPair = menuIDMenuElementAddressPair + 1;
 _menuID = menuIDMenuElementAddressPair->menuID;
         }
-        MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::prepareButtonAndAlphaSurface,
-            AlphaAndButtonSurfaceObj::ptr)();
+        MACRO_CALL_MEMBER(
+            UI::Rendering::AlphaAndButtonSurface_Func::prepareButtonAndAlphaSurface, AlphaAndButtonSurfaceObj::ptr)();
         MACRO_CALL_MEMBER(
             UI::MenuModalComposition_Func::loadAllMenuElementsOfMenuModals, DAT_MenuModalComposition1::ptr)();
     }

@@ -43,8 +43,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].spriteOffetY = -0x2a;
                 DAT_BuildingsState::instance.buildings[buildingID].animationFrame = 0x22;
             }
-        } else if ((BVar2 == Map::Buildings::BT_STONEKEEP)
-            || (BVar2 == Map::Buildings::BT_STRONGHOLD)) {
+        } else if ((BVar2 == Map::Buildings::BT_STONEKEEP) || (BVar2 == Map::Buildings::BT_STRONGHOLD)) {
             bVar4 = DAT_TileMapState::instance.mapOrientation == 0;
             DAT_BuildingsState::instance.buildings[buildingID].gfxOffset = 0x52e;
             DAT_BuildingsState::instance.buildings[buildingID].spriteID = 0x52a;
@@ -61,8 +60,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].spriteID
             != (int)DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                buildingID);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = (short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spriteID;
         }

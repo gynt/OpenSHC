@@ -65,9 +65,8 @@ namespace Synchrony {
             } else if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                 != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A*)0x0) {
-                    DAT_GameSynchronyState::instance.DPLAYX_4A
-                        ->DestroyPlayer(DAT_GameSynchronyState::instance
-                                .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
+                    DAT_GameSynchronyState::instance.DPLAYX_4A->DestroyPlayer(DAT_GameSynchronyState::instance
+                            .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::destroyPlayerCompletely, DAT_GameState::ptr)(
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0);

@@ -127,8 +127,8 @@ namespace UI {
                                 }
                                 if (((DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) && ((short)param_4 != 0))
                                     && (!(_tile1003 & 2))) {
-                                    iVar12 = DAT_MiniMapDefinedData::instance
-                                                 .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                    iVar12 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
+                                                 [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
                                     if (!_isRGB565) {
                                         uVar9 = (int)((param_4 & 0x7c00) * iVar12) / 100;
                                         if (0x7c00 < (int)uVar9) {

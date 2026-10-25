@@ -25,10 +25,12 @@ namespace UI {
             default:
                 return;
             case 0x21:
-                DAT_MenuTextInputState::instance.pendingSettingBubbleHelp = DAT_MenuTextInputState::instance.pendingSettingBubbleHelp ^ 1;
+                DAT_MenuTextInputState::instance.pendingSettingBubbleHelp
+                    = DAT_MenuTextInputState::instance.pendingSettingBubbleHelp ^ 1;
                 return;
             case 0x34:
-                DAT_MenuTextInputState::instance.pendingUnusedOption1 = DAT_MenuTextInputState::instance.pendingUnusedOption1 == 0;
+                DAT_MenuTextInputState::instance.pendingUnusedOption1
+                    = DAT_MenuTextInputState::instance.pendingUnusedOption1 == 0;
             }
         }
 

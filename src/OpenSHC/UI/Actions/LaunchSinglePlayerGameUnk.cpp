@@ -332,31 +332,24 @@ namespace UI {
         } else {
             if (DAT_MapMissionType::instance == 2) {
                 DAT_GameState::instance.mapAndTime.siegeInformation.archers = DAT_SiegeInformationArray::instance[0];
-                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen = DAT_SiegeInformationArray::instance[1];
+                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen
+                    = DAT_SiegeInformationArray::instance[1];
                 DAT_GameState::instance.mapAndTime.siegeInformation.pikemen = DAT_SiegeInformationArray::instance[3];
-                DAT_GameState::instance.mapAndTime.siegeInformation.macemen
-                    = DAT_SiegeInformationArray::instance[4];
-                DAT_GameState::instance.mapAndTime.siegeInformation.knights
-                    = DAT_SiegeInformationArray::instance[6];
-                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen
-                    = DAT_SiegeInformationArray::instance[7];
-                DAT_GameState::instance.mapAndTime.siegeInformation.monks
-                    = DAT_SiegeInformationArray::instance[9];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slaves
-                    = DAT_SiegeInformationArray::instance[0xb];
+                DAT_GameState::instance.mapAndTime.siegeInformation.macemen = DAT_SiegeInformationArray::instance[4];
+                DAT_GameState::instance.mapAndTime.siegeInformation.knights = DAT_SiegeInformationArray::instance[6];
+                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen = DAT_SiegeInformationArray::instance[7];
+                DAT_GameState::instance.mapAndTime.siegeInformation.monks = DAT_SiegeInformationArray::instance[9];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slaves = DAT_SiegeInformationArray::instance[0xb];
                 DAT_GameState::instance.mapAndTime.siegeInformation.spearmen = DAT_SiegeInformationArray::instance[2];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slingers
-                    = DAT_SiegeInformationArray::instance[0xc];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slingers = DAT_SiegeInformationArray::instance[0xc];
                 DAT_GameState::instance.mapAndTime.siegeInformation.assassins
                     = DAT_SiegeInformationArray::instance[0xd];
-                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen
-                    = DAT_SiegeInformationArray::instance[5];
+                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen = DAT_SiegeInformationArray::instance[5];
                 DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers
                     = DAT_SiegeInformationArray::instance[0xe];
                 DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen
                     = DAT_SiegeInformationArray::instance[0xf];
-                DAT_GameState::instance.mapAndTime.siegeInformation.engineers
-                    = DAT_SiegeInformationArray::instance[8];
+                DAT_GameState::instance.mapAndTime.siegeInformation.engineers = DAT_SiegeInformationArray::instance[8];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers
                     = DAT_SiegeInformationArray::instance[0x10];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas

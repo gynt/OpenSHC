@@ -29,14 +29,13 @@ namespace Map {
             psVar3 = &DAT_TribesState::instance.tribes[1];
             do {
                 if (psVar3->tribeState) {
-                    BVar3 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::isFullIDEqualsToMinus1,
-                        DAT_GameState::ptr)(psVar3->owner);
+                    BVar3 = MACRO_CALL_MEMBER(
+                        Game::GameStateStructures_Func::isFullIDEqualsToMinus1, DAT_GameState::ptr)(psVar3->owner);
                     if (BVar3) {
                         if (((psVar3->tribeType == ((AITribeType)0x16)) || (psVar3->tribeType == ((AITribeType)0x17)))
                             && (sVar2 = psVar3->selectionTargetUnitID,
                                 0 < DAT_UnitsState::instance.units[sVar2].stoneAmmunition)) {
-                            MACRO_CALL_MEMBER(
-                                Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
+                            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::computeNextRallyPointDestination,
                                 DAT_PathFindingState::ptr)(-1, (int)((int)(DAT_UnitsState::instance.units[sVar2].x)),
                                 (int)((int)(DAT_UnitsState::instance.units[sVar2].y)));
                             DAT_TribesState::instance.tribes[tribeID]

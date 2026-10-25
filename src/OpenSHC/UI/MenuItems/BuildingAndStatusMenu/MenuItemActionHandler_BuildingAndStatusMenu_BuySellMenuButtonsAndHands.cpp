@@ -31,11 +31,10 @@ namespace UI {
             int _buyingPrice;
             int _player;
             if (param_1 == 2) {
-                _buyingPrice
-                    = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed,
-                        DAT_GameState::ptr)((Game::Resources::ResourceType)DAT_GameState::instance
-                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .marketSelectedResourceType);
+                _buyingPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getPreviousGoodsFilteringUnallowed,
+                    DAT_GameState::ptr)((Game::Resources::ResourceType)DAT_GameState::instance
+                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .marketSelectedResourceType);
                 if (_buyingPrice == 8) {
                     _buyingPrice = 7;
                 }
@@ -58,8 +57,8 @@ namespace UI {
                 /*
                   Buying
                  */
-                _buyingPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice,
-                    DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                _buyingPrice = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::getBatchBuyPrice, DAT_GameState::ptr)(
+                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
                     (int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType));
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -72,8 +71,7 @@ namespace UI {
                     /*
                       "Not enough gold"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning8.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("space_warning8.wav");
                 }
                 int _space = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getResourceSpace,
                     DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
@@ -109,8 +107,7 @@ namespace UI {
                     /*
                       "No Armory built"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning3.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("space_warning3.wav");
                 }
                 if (_space < 5) {
                     MACRO_CALL(UI::Actions_Func::SetStorageMarketFailState)(4,
@@ -141,8 +138,7 @@ namespace UI {
                     /*
                       "No space in the armory"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning6.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("space_warning6.wav");
                 }
             } else {
                 _player = DAT_GameSynchronyState::instance.currentPlayerSlotID;
@@ -161,8 +157,7 @@ namespace UI {
                     /*
                       "Not enough goods"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning7.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("space_warning7.wav");
                 }
             }
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(

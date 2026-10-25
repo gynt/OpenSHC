@@ -13,8 +13,7 @@ namespace Global {
     // FUNCTION: STRONGHOLDCRUSADER 0x0059CA40
     void Init::Constructor_MiniMapView()
     {
-        MACRO_CALL_MEMBER(
-            UI::MinimapViewState_Func::Constructor_MinimapViewState, DAT_MinimapViewState::ptr)();
+        MACRO_CALL_MEMBER(UI::MinimapViewState_Func::Constructor_MinimapViewState, DAT_MinimapViewState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d670));
         return;
     }
