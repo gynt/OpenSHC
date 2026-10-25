@@ -40,7 +40,28 @@ namespace UI {
             INT_00ed27b0::instance = 0;
             INT_00eb9b4c::instance = 0;
             INT_00eb9b44::instance = 0;
-            if (1 < DAT_GameCore::instance.missionNumber1to20) {
+            if (DAT_GameCore::instance.missionNumber1to20 < 2) {
+                DAT_00ec02f4::instance.field0_0x0 = DAT_MissionDefinedData::instance.field13_0x28.sub.field0_0x0;
+                DAT_00ec02f4::instance.field1_0x4 = DAT_MissionDefinedData::instance.field13_0x28.sub.field1_0x4;
+                DAT_00ec02f4::instance.field2_0x8 = DAT_MissionDefinedData::instance.field13_0x28.sub.field2_0x8;
+                DAT_00ec02f4::instance.field3_0xc = DAT_MissionDefinedData::instance.field13_0x28.sub.field3_0xc;
+                DAT_00ec02f4::instance.field4_0x10 = DAT_MissionDefinedData::instance.field13_0x28.sub.field4_0x10;
+                DAT_00ec02f4::instance.field5_0x14 = DAT_MissionDefinedData::instance.field13_0x28.sub.field5_0x14;
+                DAT_00ec02f4::instance.field6_0x18 = DAT_MissionDefinedData::instance.field13_0x28.sub.field6_0x18;
+                DAT_00ec02f4::instance.field7_0x1c = DAT_MissionDefinedData::instance.field13_0x28.sub.field7_0x1c;
+                DAT_00ec02f4::instance.field8_0x20 = DAT_MissionDefinedData::instance.field13_0x28.sub.field8_0x20;
+                DAT_00ec02f4::instance.field9_0x24 = DAT_MissionDefinedData::instance.field13_0x28.sub.field9_0x24;
+                DAT_00ec02f4::instance.field10_0x28 = DAT_MissionDefinedData::instance.field13_0x28.sub.field10_0x28;
+                DAT_00ec02f4::instance.field11_0x2c = DAT_MissionDefinedData::instance.field13_0x28.sub.field11_0x2c;
+                DAT_00ec02f4::instance.field12_0x30 = DAT_MissionDefinedData::instance.field13_0x28.sub.field12_0x30;
+                DAT_00ec02f4::instance.field13_0x34 = DAT_MissionDefinedData::instance.field13_0x28.sub.field13_0x34;
+                DAT_00ec02f4::instance.field14_0x38 = DAT_MissionDefinedData::instance.field13_0x28.sub.field14_0x38;
+                DAT_00ec02f4::instance.field15_0x3c = DAT_MissionDefinedData::instance.field13_0x28.sub.field15_0x3c;
+                DAT_00ec02f4::instance.field16_0x40 = DAT_MissionDefinedData::instance.field13_0x28.sub.field16_0x40;
+                DAT_00ec02f4::instance.field17_0x44 = DAT_MissionDefinedData::instance.field13_0x28.sub.field17_0x44;
+                DAT_00ec02f4::instance.field18_0x48 = DAT_MissionDefinedData::instance.field13_0x28.sub.field18_0x48;
+                DAT_00ec02f4::instance.field19_0x4c = DAT_MissionDefinedData::instance.field13_0x28.sub.field19_0x4c;
+            } else {
                 iVar6 = (DAT_GameCore::instance.missionNumber1to20 + -2) * 0x58;
                 piVar2 = (int*)((int)DAT_MissionDefinedData::ptr + iVar6 + 0x28);
                 iVar4 = 3;
@@ -94,27 +115,6 @@ namespace UI {
                 DAT_00ec02f4::instance.field18_0x48 = *(undefined4*)((int)DAT_MissionDefinedData::ptr + iVar6 + 0x70);
                 DAT_00ec02f4::instance.field19_0x4c = *(undefined4*)((int)DAT_MissionDefinedData::ptr + iVar6 + 0x74);
                 INT_00ed27b0::instance = iVar3;
-            } else {
-                DAT_00ec02f4::instance.field0_0x0 = DAT_MissionDefinedData::instance.field13_0x28.sub.field0_0x0;
-                DAT_00ec02f4::instance.field1_0x4 = DAT_MissionDefinedData::instance.field13_0x28.sub.field1_0x4;
-                DAT_00ec02f4::instance.field2_0x8 = DAT_MissionDefinedData::instance.field13_0x28.sub.field2_0x8;
-                DAT_00ec02f4::instance.field3_0xc = DAT_MissionDefinedData::instance.field13_0x28.sub.field3_0xc;
-                DAT_00ec02f4::instance.field4_0x10 = DAT_MissionDefinedData::instance.field13_0x28.sub.field4_0x10;
-                DAT_00ec02f4::instance.field5_0x14 = DAT_MissionDefinedData::instance.field13_0x28.sub.field5_0x14;
-                DAT_00ec02f4::instance.field6_0x18 = DAT_MissionDefinedData::instance.field13_0x28.sub.field6_0x18;
-                DAT_00ec02f4::instance.field7_0x1c = DAT_MissionDefinedData::instance.field13_0x28.sub.field7_0x1c;
-                DAT_00ec02f4::instance.field8_0x20 = DAT_MissionDefinedData::instance.field13_0x28.sub.field8_0x20;
-                DAT_00ec02f4::instance.field9_0x24 = DAT_MissionDefinedData::instance.field13_0x28.sub.field9_0x24;
-                DAT_00ec02f4::instance.field10_0x28 = DAT_MissionDefinedData::instance.field13_0x28.sub.field10_0x28;
-                DAT_00ec02f4::instance.field11_0x2c = DAT_MissionDefinedData::instance.field13_0x28.sub.field11_0x2c;
-                DAT_00ec02f4::instance.field12_0x30 = DAT_MissionDefinedData::instance.field13_0x28.sub.field12_0x30;
-                DAT_00ec02f4::instance.field13_0x34 = DAT_MissionDefinedData::instance.field13_0x28.sub.field13_0x34;
-                DAT_00ec02f4::instance.field14_0x38 = DAT_MissionDefinedData::instance.field13_0x28.sub.field14_0x38;
-                DAT_00ec02f4::instance.field15_0x3c = DAT_MissionDefinedData::instance.field13_0x28.sub.field15_0x3c;
-                DAT_00ec02f4::instance.field16_0x40 = DAT_MissionDefinedData::instance.field13_0x28.sub.field16_0x40;
-                DAT_00ec02f4::instance.field17_0x44 = DAT_MissionDefinedData::instance.field13_0x28.sub.field17_0x44;
-                DAT_00ec02f4::instance.field18_0x48 = DAT_MissionDefinedData::instance.field13_0x28.sub.field18_0x48;
-                DAT_00ec02f4::instance.field19_0x4c = DAT_MissionDefinedData::instance.field13_0x28.sub.field19_0x4c;
             }
             INT_00ed2778::instance = 0;
             if (!INT_00ed27b0::instance) {

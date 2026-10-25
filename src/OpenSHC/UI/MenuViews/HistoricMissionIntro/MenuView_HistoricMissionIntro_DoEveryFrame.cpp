@@ -80,13 +80,12 @@ namespace UI {
                 iVar2 = 0x1f - iVar2;
             } else if (DAT_00ed2780::instance == 2) {
                 iVar2 = (long)((double)FLOAT_00ec0834::instance);
-            }
-            if (!DAT_00ed2780::instance) {
-                MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(DAT_00eb0b20::instance, 0x24, 0x56);
-            } else {
-                MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(
-                    DAT_00eb0b20::instance, 0x24, 0x56, iVar2);
-            }
+            } else if ((!DAT_00ed2780::instance)
+                && (MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
+                    DAT_00eb0b20::instance, 0x24, 0x56, DAT_00ed2780::instance == 0)))
+                goto LAB_004db9a4;
+            MACRO_CALL(UI::Rendering_Func::RenderMenuGfxHelper)(DAT_00eb0b20::instance, 0x24, 0x56, iVar2);
+        LAB_004db9a4:
             if (DAT_00ed2780::instance == 2) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     DAT_ArrayOfStoredMenuStrings::instance[DAT_00eb9b2c::instance],
@@ -103,7 +102,7 @@ namespace UI {
                 DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xd2, 400, 0, 0x11, iVar2);
             if ((DAT_00ed2780::instance)
                 && (FLOAT_00ec0834::instance = FLOAT_Between1And5::instance + FLOAT_00ec0834::instance,
-                    32.0 <= FLOAT_00ec0834::instance)) {
+                    32.0 < FLOAT_00ec0834::instance != (FLOAT_00ec0834::instance == 32.0))) {
                 if (DAT_00ed2780::instance == 2) {
                     MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);

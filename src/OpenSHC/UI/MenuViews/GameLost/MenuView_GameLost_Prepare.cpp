@@ -77,13 +77,12 @@ namespace UI {
             MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreLocalTime)();
             DWORD_00ed27b4::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setupLossMusic, DAT_SoundSystemState::ptr)();
-            int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            pMVar1->xPosition = borderWidth;
-            pMVar1->yPosition = borderHeight;
-            DAT_MenuHandlerState::instance.x = borderWidth;
-            DAT_MenuHandlerState::instance.y = borderHeight;
+            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
+                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)((int)(COL_BLACK::instance.shortValue)));
@@ -91,28 +90,27 @@ namespace UI {
                 == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
                 goto LAB_004d575f;
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
-                if (DAT_GameCore::instance.missionNumber1to20 - 6U <= 4) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                        "arabian_lose.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
-                        DAT_MenuHandlerState::instance.y + 0x3c, 2);
+                if (DAT_GameCore::instance.missionNumber1to20 - 6U < 5) {
+                    iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
+                    xPos = DAT_MenuHandlerState::instance.x + 0x50;
+                    binkFileName = "arabian_lose.bik";
                 } else {
                 LAB_004d574d:
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                        "crusader_lose.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
-                        DAT_MenuHandlerState::instance.y + 0x3c, 2);
+                    iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
+                    xPos = DAT_MenuHandlerState::instance.x + 0x50;
+                    binkFileName = "crusader_lose.bik";
                 }
             } else {
                 iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                     DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
                 if (iVar3 != 1)
                     goto LAB_004d574d;
-                MACRO_CALL_MEMBER(
-                        OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                        "arabian_lose.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
-                        DAT_MenuHandlerState::instance.y + 0x3c, 2);
+                iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
+                xPos = DAT_MenuHandlerState::instance.x + 0x50;
+                binkFileName = "arabian_lose.bik";
             }
+            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
+                0, binkFileName, 0, 0, xPos, iVar3, 2);
         LAB_004d575f:
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;

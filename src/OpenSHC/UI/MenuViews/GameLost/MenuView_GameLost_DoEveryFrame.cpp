@@ -48,12 +48,10 @@ namespace UI {
         void GameLost::MenuView_GameLost_DoEveryFrame()
         {
             DWORD DVar1;
-            if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
-                if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
-                    DAT_MouseState::instance.draggingStopped = TRUE;
-                }
-            } else {
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGreatestLordScreen)();
+            } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
+                DAT_MouseState::instance.draggingStopped = TRUE;
             }
             if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
                     && (DAT_GameSynchronyState::instance.currentGameMode
@@ -67,11 +65,9 @@ namespace UI {
                         goto LAB_004dca69;
                 }
             }
-            if (((DAT_MouseState::instance.draggingStopped)
-                    && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                || (INT_00ed279c::instance)) {
-                return;
-            }
+            if (((!DAT_MouseState::instance.draggingStopped)
+                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
+                && (!INT_00ed279c::instance)) {}
         LAB_004dca69:
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;

@@ -26,38 +26,36 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00431B60
         void BuildMenu::MenuView_BuildMenu_DoInitial()
         {
+            Menu* pMVar1;
             int iVar2;
             char* pcVar3;
-            int menuTopY = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
-                Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-                pMVar1->xPosition = 0;
-                pMVar1->yPosition = menuTopY;
+                (DAT_MenuHandlerState::instance.currentMenu)->xPosition = 0;
+                pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
                 DAT_MenuHandlerState::instance.x = 0;
             } else {
-                int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-                pMVar1->xPosition = borderWidth;
-                pMVar1->yPosition = menuTopY;
-                DAT_MenuHandlerState::instance.x = borderWidth;
-                DAT_MenuHandlerState::instance.y = menuTopY;
+                (DAT_MenuHandlerState::instance.currentMenu)->xPosition
+                    = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+                pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             }
             if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS) {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(8);
+                    iVar2 = 8;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(4);
+                    iVar2 = 4;
                 }
-                if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                        DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_MenuHandlerState::instance.y + 406)),
-                        DAT_WindowAndDirectDraw::instance.resolutionX + -1,
-                        (int)((int)(DAT_MenuHandlerState::instance.y + 471)),
-                        (ushort)((int)(COL_MAGENTA::instance.shortValue)));
-                    DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
-                }
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                    DAT_TextureRenderCoreObject::ptr)(iVar2);
+                if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
+                    DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_MenuHandlerState::instance.y + 406)),
+                    DAT_WindowAndDirectDraw::instance.resolutionX + -1,
+                    (int)((int)(DAT_MenuHandlerState::instance.y + 471)),
+                    (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
@@ -399,28 +397,24 @@ namespace UI {
                     0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
                 iVar2 = 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height;
             } else {
-                if ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN)
-                    || (DAT_GameCore::instance.activeMenuTab.buildMenuTab
-                        == ((OpenSHC::UI::Enums::BuildMenuTabType)0x3e))) {
-                    return;
+                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {}
+                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == ((OpenSHC::UI::Enums::BuildMenuTabType)0x3e)) {
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(9);
+                    iVar2 = 9;
                 } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(5);
+                    iVar2 = 5;
                 } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(0);
+                    iVar2 = 0;
                 }
-                if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
-                        DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
-                        DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
-                    DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
-                }
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                    DAT_TextureRenderCoreObject::ptr)(iVar2);
+                if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+                    DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
+                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                     if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {

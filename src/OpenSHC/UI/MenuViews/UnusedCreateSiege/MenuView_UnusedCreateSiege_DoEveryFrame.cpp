@@ -8,7 +8,6 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/Map/MapType2.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
@@ -32,6 +31,8 @@
 #include "OpenSHC/Globals/INT_00b95f68.hpp"
 #include "OpenSHC/Globals/INT_00b960e4.hpp"
 #include "OpenSHC/Globals/INT_00b960ec.hpp"
+#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -39,11 +40,11 @@ namespace UI {
 
         using OpenSHC::DE::SHCDE::eTextSections;
         using OpenSHC::Map::MapType2;
-        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004306D0
         void UnusedCreateSiege::MenuView_UnusedCreateSiege_DoEveryFrame()
@@ -63,6 +64,8 @@ namespace UI {
             int local_20;
             int local_1c;
             char local_18[20];
+            uint local_4;
+            local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_20;
             DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 = OpenSHC::Map::MT_SIEGE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(0,
@@ -77,7 +80,7 @@ namespace UI {
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner, DAT_PencilRenderCore::ptr)(
                 DAT_MenuHandlerState::instance.x + 0x30, DAT_MenuHandlerState::instance.y + 6, 0x2c0, 0x32);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            if (DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk == 0) {
+            if (!DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk) {
                 iVar10 = 0;
                 iVar8 = 0x11;
                 color2 = 0;
@@ -86,10 +89,10 @@ namespace UI {
                 iVar1 = DAT_MenuHandlerState::instance.y + 0x76;
                 iVar4 = DAT_MenuHandlerState::instance.x + 0x12;
                 DAT_TextManagerObject::instance.field9_0x24 = 1;
+                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x25);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x25),
-                    iVar4, iVar1, iVar5, color1, color2, iVar8, iVar10);
+                    pcVar2, iVar4, iVar1, iVar5, color1, color2, iVar8, iVar10);
             }
             iVar8 = 0;
             BVar9 = FALSE;
@@ -98,14 +101,14 @@ namespace UI {
             TVar6 = OpenSHC::Text::TTA_LEFT;
             iVar1 = DAT_MenuHandlerState::instance.y + 0x23;
             iVar4 = DAT_MenuHandlerState::instance.x + 0x8c;
+            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x22);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x22),
-                iVar4, iVar1, TVar6, BVar7, iVar5, BVar9, iVar8);
+                pcVar2, iVar4, iVar1, TVar6, BVar7, iVar5, BVar9, iVar8);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(" - ",
                 DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
                 OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
-            if (INT_00b960e4::instance == 0) {
+            if (!INT_00b960e4::instance) {
                 iVar8 = 0;
                 BVar9 = TRUE;
                 iVar5 = 0x11;
@@ -134,7 +137,7 @@ namespace UI {
                 goto LAB_00430ac9;
             local_1c = DAT_MenuHandlerState::instance.y + 0xf0;
             iVar5 = DAT_TileMapState::instance.mapSize;
-            if (DAT_TileMapState::instance.mapSize == 0) {
+            if (!DAT_TileMapState::instance.mapSize) {
                 iVar5 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
@@ -177,7 +180,7 @@ namespace UI {
             if (iVar5 == 0xa0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                     DAT_PencilRenderCore::ptr)(iVar1 + 0x20a, local_1c + -0x4f, iVar1 + 0x2a6, local_1c + 0x4d,
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    (ushort)((int)(COL_BLACK::instance.shortValue)));
                 iVar5 = iVar10 + 0x4e;
                 iVar3 = iVar1 + 0x2a7;
                 iVar10 = iVar10 + -0x50;
@@ -185,7 +188,7 @@ namespace UI {
             } else if (iVar5 == 200) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                     DAT_PencilRenderCore::ptr)(iVar1 + 0x1f6, local_1c + -99, iVar1 + 699, local_1c + 99,
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    (ushort)((int)(COL_BLACK::instance.shortValue)));
                 iVar5 = iVar10 + 100;
                 iVar3 = iVar1 + 700;
                 iVar10 = iVar10 + -100;
@@ -193,7 +196,7 @@ namespace UI {
             } else if (iVar5 == 300) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                     DAT_PencilRenderCore::ptr)(iVar1 + 0x20d, local_1c + -0x4b, iVar1 + 0x2a1, local_1c + 0x4a,
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    (ushort)((int)(COL_BLACK::instance.shortValue)));
                 iVar5 = iVar10 + 0x4b;
                 iVar3 = iVar1 + 0x2a2;
                 iVar10 = iVar10 + -0x4c;
@@ -201,14 +204,14 @@ namespace UI {
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                     DAT_PencilRenderCore::ptr)(iVar1 + 500, local_1c + -100, iVar1 + 699, local_1c + 100,
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    (ushort)((int)(COL_BLACK::instance.shortValue)));
                 iVar5 = iVar10 + 0x65;
                 iVar3 = iVar1 + 700;
                 iVar10 = iVar10 + -0x65;
                 iVar1 = iVar1 + 499;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                iVar1, iVar10, iVar3, iVar5, (ushort)(COL_BLACK::instance.shortValue));
+                iVar1, iVar10, iVar3, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
             iVar8 = iVar8 + local_20;
             iVar1 = iVar4 + -0xf;
             iVar5 = iVar8;
@@ -220,7 +223,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 local_18, iVar8 + -5, iVar4 + -0xb, OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0, 0x13, FALSE, 0);
         LAB_00430ac9:
-            if (DAT_MenuTextInputState::instance.field44_0xa4 != 0) {
+            if (DAT_MenuTextInputState::instance.field44_0xa4) {
                 INT_00b95f68::instance = 0;
                 DAT_MenuTextInputState::instance.field44_0xa4 = 0;
             }

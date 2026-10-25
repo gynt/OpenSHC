@@ -10,7 +10,6 @@
 #include "OpenSHC/DE/SHCDE/eGM.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -38,8 +37,7 @@ namespace UI {
         using DE::SHCDE::eGM;
         using DE::SHCDE::eTextSections;
         using Game::GameMode2;
-        using OpenSHC::Rendering::Colors::BGR24;
-        using OpenSHC::Rendering::Enums::RenderTarget;
+        using Rendering::Enums::RenderTarget;
         using Text::TextAlignment;
         using WindowsHelper::Enums::BOOLEnum;
 
@@ -122,13 +120,12 @@ namespace UI {
                 if (DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1) {
                     iVar3 = *(int*)(DAT_MissionDefinedData::instance.MissionSpeechFileNames[0xf]
                         + DAT_GameCore::instance.missionNumber1to20 * 4 + 0x1c);
-                    eVar5 = (eTextSections)(DAT_GameCore::instance.missionNumber1to20
-                        + DE::SHCDE::TEXT_MISSION15_HINTS);
+                    eVar5 = DAT_GameCore::instance.missionNumber1to20 + DE::SHCDE::TEXT_MISSION15_HINTS;
                 } else {
                     iVar3
                         = DAT_MissionDefinedData::instance.MissionHintCounts[DAT_GameCore::instance.missionNumber1to20 - 1];
-                    eVar5 = (eTextSections)(DAT_GameCore::instance.missionNumber1to20 * 4
-                        + (DE::SHCDE::TEXT_TUTORIAL_BUTTONS | DE::SHCDE::TEXT_GOODS));
+                    eVar5 = DAT_GameCore::instance.missionNumber1to20 * 4
+                        + (DE::SHCDE::TEXT_TUTORIAL_BUTTONS | DE::SHCDE::TEXT_GOODS);
                 }
                 DAT_TextManagerObject::instance.field9_0x24 = 1;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
@@ -160,13 +157,13 @@ namespace UI {
                     if (0 < iVar3) {
                         do {
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                                = Rendering::Enums::RT_SCREEN_MENU;
                             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                                 DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS3, 0x14,
                                 DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28, iVar1 + -2);
                             iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x41;
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                                = Rendering::Enums::RT_MAP_GAME;
                             if (*(char*)((int)DAT_GameState::instance.mapAndTime.emenyHitArray + iVar8 + 0x24)
                                 == '\0') {
                                 iVar12 = 0;
@@ -211,8 +208,7 @@ namespace UI {
                 eVar5 = DE::SHCDE::TEXT_ECO_MISSION_BRIEFINGS;
                 iVar1 = DAT_GameCore::instance.missionNumber1to20 + -0x20;
             } else {
-                eVar5 = (eTextSections)(DAT_00ed2798::instance + 0x60
-                    + DAT_GameCore::instance.missionNumber1to20 * 4);
+                eVar5 = DAT_00ed2798::instance + 0x60 + DAT_GameCore::instance.missionNumber1to20 * 4;
                 iVar1 = 1;
             }
             iVar12 = 1;

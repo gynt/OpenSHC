@@ -54,11 +54,11 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
-            if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0) {
+            if (DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                 DAT_GameCore::instance.mapU2PlayersCount = 0;
                 piVar4 = DAT_GameState::instance.playerDataArray[1].startResources;
                 do {
-                    if (((BuildingEntryInfo*)(piVar4 + -0xf6))->id != 0) {
+                    if (((BuildingEntryInfo*)(piVar4 + -0xf6))->id) {
                         DAT_GameCore::instance.mapU2PlayersCount = DAT_GameCore::instance.mapU2PlayersCount + 1;
                     }
                     piVar2 = DAT_GameState::instance.mapAndTime.startGoods;
@@ -68,14 +68,14 @@ namespace UI {
                         *piVar2 = 0;
                         piVar2 = piVar2 + 1;
                         piVar3 = piVar3 + 1;
-                    } while ((int)piVar2 < (int)&DAT_GameState::instance + 0x51d98);
+                    } while ((int)piVar2 < 0x117ce50);
                     piVar4 = piVar4 + 0xe7d;
-                } while ((int)piVar4 < (int)&DAT_GameState::instance + 0x51b40);
+                } while ((int)piVar4 < 0x117cbf8);
             }
             DAT_00b95b74::instance = 0;
             DAT_00b960f4::instance = 0;
-            if (DAT_GameCore::instance.mapLoadedForEditor != 0) {
-                if (DAT_GameCore::instance.descriptionUseStringTable == 0) {
+            if (DAT_GameCore::instance.mapLoadedForEditor) {
+                if (!DAT_GameCore::instance.descriptionUseStringTable) {
                     modeUnk = 1;
                     blendStrength = 0;
                     color = 0;
@@ -84,7 +84,7 @@ namespace UI {
                     xPos = 0;
                     text = DAT_GameCore::instance.temporaryTextBufferOfSize1000;
                 } else {
-                    if (DAT_GameCore::instance.descriptionStringTableIndex == 0)
+                    if (!DAT_GameCore::instance.descriptionStringTableIndex)
                         goto LAB_0042e0bd;
                     modeUnk = 1;
                     blendStrength = 0;
@@ -92,9 +92,9 @@ namespace UI {
                     maxWidth = 0x168;
                     yPos = 0;
                     xPos = 0;
-                    text = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)(DAT_GameCore::instance.descriptionStringTableIndex));
+                    text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAP_NAMES,
+                        (int)((int)(DAT_GameCore::instance.descriptionStringTableIndex)));
                 }
                 DAT_00b95b74::instance = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(

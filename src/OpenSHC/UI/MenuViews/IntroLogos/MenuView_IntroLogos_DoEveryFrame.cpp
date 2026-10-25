@@ -34,6 +34,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004247A0
         void IntroLogos::MenuView_IntroLogos_DoEveryFrame()
         {
+            char* _textAddress;
             DWORD _currentTime;
             int _yParam;
             int _introStepDuration;
@@ -44,7 +45,7 @@ namespace UI {
             BOOLEnum _keepOffsetX;
             MenuViewType _menuID;
             int _xPos;
-            if ((int)DAT_IntroStep::instance < 2) {
+            if (DAT_IntroStep::instance < 2) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                     DAT_TextureRenderCoreObject::ptr)(0,
                     (DAT_WindowAndDirectDraw::instance.resolutionX
@@ -67,15 +68,15 @@ namespace UI {
                 /*
                   added by script: "Gameplay may change during online play"
                  */
+                _textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAMEPLAY_ONLINE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAMEPLAY_ONLINE, 0),
-                    _xPos, _yParam, alignment, _color, _fontSIze, _keepOffsetX, _blendStrength);
+                    _textAddress, _xPos, _yParam, alignment, _color, _fontSIze, _keepOffsetX, _blendStrength);
             }
             _currentTime = timeGetTime();
             if (!DAT_IntroTransitionStep::instance) {
                 DAT_IntroBlendStrength::instance = (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14;
-                if ((int)DAT_IntroBlendStrength::instance < 0x20)
+                if (DAT_IntroBlendStrength::instance < 0x20)
                     goto LAB_0042496a;
                 DAT_IntroBlendStrength::instance = 0x20;
                 DAT_IntroTransitionStep::instance = 1;
@@ -88,13 +89,13 @@ namespace UI {
                      */
                     _introStepDuration = 6000;
                 }
-                if ((int)(_currentTime - DAT_IntroTimestamp::instance) > _introStepDuration) {
+                if (_introStepDuration < (int)(_currentTime - DAT_IntroTimestamp::instance)) {
                     DAT_IntroTransitionStep::instance = 2;
                     DAT_IntroTimestamp::instance = timeGetTime();
                 }
             } else if ((DAT_IntroTransitionStep::instance == 2)
                 && (DAT_IntroBlendStrength::instance = 0x20 - (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14,
-                    (int)DAT_IntroBlendStrength::instance < 1)) {
+                    DAT_IntroBlendStrength::instance < 1)) {
                 if (!DAT_IntroStep::instance) {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;

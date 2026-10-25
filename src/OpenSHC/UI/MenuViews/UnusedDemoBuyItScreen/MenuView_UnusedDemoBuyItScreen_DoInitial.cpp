@@ -41,16 +41,16 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            pMVar1->yPosition = borderHeight;
-            if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
-                borderWidth = borderWidth + 0x18;
+            bVar3 = DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600;
+            (DAT_MenuHandlerState::instance.currentMenu)->yPosition
+                = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            if (bVar3) {
+                DAT_MenuHandlerState::instance.x = DAT_MenuHandlerState::instance.x + 0x18;
             }
-            pMVar1->xPosition = borderWidth;
-            DAT_MenuHandlerState::instance.y = borderHeight;
-            DAT_MenuHandlerState::instance.x = borderWidth;
+            pMVar1->xPosition = DAT_MenuHandlerState::instance.x;
             return;
         }
 

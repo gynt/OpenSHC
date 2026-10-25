@@ -40,28 +40,30 @@ namespace UI {
             int top;
             int bottom;
             DWORD DVar2 = timeGetTime();
-            if (0 < DAT_00b9610c::instance) {
+            if (DAT_00b9610c::instance <= 0) {
+                if (DAT_00b9610c::instance < 0) {
+                    DAT_00b95b70::instance = 0x20 - (int)(DVar2 - INT_00b960d0::instance) / 0x32;
+                    DAT_TextEditorState::instance.pendingCreditsFadeBorder = TRUE;
+                    if (DAT_00b95b70::instance <= 0) {
+                        DAT_00b95b3c::instance = DAT_00b95b3c::instance + 1;
+                        DAT_00b9610c::instance = 1;
+                        DAT_00b95b70::instance = 0;
+                        INT_00b960d0::instance = DVar2;
+                        if (3 < DAT_00b95b3c::instance) {
+                            DAT_00b95b3c::instance = 0;
+                        }
+                    }
+                } else if (20000 < (int)(DVar2 - INT_00b960d0::instance) && !DAT_00b95954::instance) {
+                    DAT_00b9610c::instance = -1;
+                    INT_00b960d0::instance = DVar2;
+                }
+            } else {
                 DAT_00b95b70::instance = (int)(DVar2 - INT_00b960d0::instance) / 0x32;
                 DAT_TextEditorState::instance.pendingCreditsFadeBorder = TRUE;
                 if (0x1f < DAT_00b95b70::instance) {
                     DAT_00b9610c::instance = 0;
                     INT_00b960d0::instance = DVar2;
                 }
-            } else if (DAT_00b9610c::instance < 0) {
-                DAT_00b95b70::instance = 0x20 - (int)(DVar2 - INT_00b960d0::instance) / 0x32;
-                DAT_TextEditorState::instance.pendingCreditsFadeBorder = TRUE;
-                if (DAT_00b95b70::instance <= 0) {
-                    DAT_00b95b3c::instance = DAT_00b95b3c::instance + 1;
-                    DAT_00b9610c::instance = 1;
-                    DAT_00b95b70::instance = 0;
-                    INT_00b960d0::instance = DVar2;
-                    if (3 < DAT_00b95b3c::instance) {
-                        DAT_00b95b3c::instance = 0;
-                    }
-                }
-            } else if (20000 < (int)(DVar2 - INT_00b960d0::instance) && !DAT_00b95954::instance) {
-                DAT_00b9610c::instance = -1;
-                INT_00b960d0::instance = DVar2;
             }
             SHORT SVar1 = GetAsyncKeyState(VK_DOWN);
             if (SVar1) {
