@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace MapEditorProperties_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042DFD0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042DFD0,
                 &OpenSHC::UI::MenuViews::MapEditorProperties::MenuView_MapEditorProperties_Prepare)
             MenuView_MapEditorProperties_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042E0D0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042E0D0,
                 &OpenSHC::UI::MenuViews::MapEditorProperties::MenuView_MapEditorProperties_DoEveryFrame)
             MenuView_MapEditorProperties_DoEveryFrame;
 

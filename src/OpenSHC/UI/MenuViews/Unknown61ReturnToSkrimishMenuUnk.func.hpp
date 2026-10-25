@@ -14,17 +14,17 @@ namespace UI {
     namespace MenuViews {
         namespace Unknown61ReturnToSkrimishMenuUnk_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00427240,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00427240,
                 &OpenSHC::UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk::
                     MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial)
             MenuView_Unknown61ReturnToSkrimishMenuUnk_DoInitial;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004272C0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004272C0,
                 &OpenSHC::UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk::
                     MenuView_Unknown61ReturnToSkrimishMenuUnk_DoEveryFrame)
             MenuView_Unknown61ReturnToSkrimishMenuUnk_DoEveryFrame;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004409C0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004409C0,
                 &OpenSHC::UI::MenuViews::Unknown61ReturnToSkrimishMenuUnk::
                     MenuView_Unknown61ReturnToSkrimishMenuUnk_Prepare)
             MenuView_Unknown61ReturnToSkrimishMenuUnk_Prepare;

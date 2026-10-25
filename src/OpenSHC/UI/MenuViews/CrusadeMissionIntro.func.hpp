@@ -18,7 +18,7 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::CrusadeMissionIntro::MenuView_CrusadeMissionIntro_Prepare)
             MenuView_CrusadeMissionIntro_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DD7B0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DD7B0,
                 &OpenSHC::UI::MenuViews::CrusadeMissionIntro::MenuView_CrusadeMissionIntro_DoEveryFrame)
             MenuView_CrusadeMissionIntro_DoEveryFrame;
 

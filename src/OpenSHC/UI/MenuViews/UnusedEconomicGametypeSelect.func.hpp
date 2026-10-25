@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedEconomicGametypeSelect_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004259D0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004259D0,
                 &OpenSHC::UI::MenuViews::UnusedEconomicGametypeSelect::MenuView_UnusedEconomicGametypeSelect_Prepare)
             MenuView_UnusedEconomicGametypeSelect_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00425A40,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00425A40,
                 &OpenSHC::UI::MenuViews::UnusedEconomicGametypeSelect::MenuView_UnusedEconomicGametypeSelect_DoInitial)
             MenuView_UnusedEconomicGametypeSelect_DoInitial;
 

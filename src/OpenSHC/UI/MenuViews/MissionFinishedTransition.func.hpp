@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace MissionFinishedTransition_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DC500,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DC500,
                 &OpenSHC::UI::MenuViews::MissionFinishedTransition::MenuView_MissionFinishedTransition_DoEveryFrame)
             MenuView_MissionFinishedTransition_DoEveryFrame;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004E1B30,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004E1B30,
                 &OpenSHC::UI::MenuViews::MissionFinishedTransition::MenuView_MissionFinishedTransition_Prepare)
             MenuView_MissionFinishedTransition_Prepare;
 

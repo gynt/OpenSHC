@@ -14,11 +14,11 @@ namespace UI {
     namespace MenuViews {
         namespace HistoricMissionIntro_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DB7B0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DB7B0,
                 &OpenSHC::UI::MenuViews::HistoricMissionIntro::MenuView_HistoricMissionIntro_Prepare)
             MenuView_HistoricMissionIntro_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DB8B0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DB8B0,
                 &OpenSHC::UI::MenuViews::HistoricMissionIntro::MenuView_HistoricMissionIntro_DoEveryFrame)
             MenuView_HistoricMissionIntro_DoEveryFrame;
 

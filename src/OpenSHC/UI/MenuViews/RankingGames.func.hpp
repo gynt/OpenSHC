@@ -18,7 +18,7 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::RankingGames::MenuView_RankingGames_Prepare)
             MenuView_RankingGames_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DFB90,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x004DFB90,
                 &OpenSHC::UI::MenuViews::RankingGames::MenuView_RankingGames_DoEveryFrame)
             MenuView_RankingGames_DoEveryFrame;
 

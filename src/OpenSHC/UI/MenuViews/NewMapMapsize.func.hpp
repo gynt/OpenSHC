@@ -18,7 +18,7 @@ namespace UI {
                 &OpenSHC::UI::MenuViews::NewMapMapsize::MenuView_NewMapMapsize_Prepare)
             MenuView_NewMapMapsize_Prepare;
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042F3F0,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x0042F3F0,
                 &OpenSHC::UI::MenuViews::NewMapMapsize::MenuView_NewMapMapsize_DoEveryFrame)
             MenuView_NewMapMapsize_DoEveryFrame;
 

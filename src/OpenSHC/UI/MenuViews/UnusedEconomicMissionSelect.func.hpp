@@ -14,7 +14,7 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedEconomicMissionSelect_Func {
 
-            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00426C50,
+            MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), true, Address::SHC_3BB0A8C1_0x00426C50,
                 &OpenSHC::UI::MenuViews::UnusedEconomicMissionSelect::MenuView_UnusedEconomicMissionSelect_Prepare)
             MenuView_UnusedEconomicMissionSelect_Prepare;
 
