@@ -37,15 +37,13 @@ namespace UI {
                     = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                        0, 0x1b2, 799, 599, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
+                        DAT_PencilRenderCore::ptr)(0, 0x1b2, 799, 599, (ushort)(COL_MAGENTA::instance.shortValue));
                 }
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x, 0x25a,
-                        DAT_MenuHandlerState::instance.x + 799, 0x2ff,
-                        (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                        DAT_MenuHandlerState::instance.x + 799, 0x2ff, (ushort)(COL_MAGENTA::instance.shortValue));
                 }
             }
             if ((DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_SIEGETOWER)
@@ -53,7 +51,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                     DAT_TextureRenderCoreObject::ptr)(2);
             }
-            if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
+            if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw != 0) {
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;

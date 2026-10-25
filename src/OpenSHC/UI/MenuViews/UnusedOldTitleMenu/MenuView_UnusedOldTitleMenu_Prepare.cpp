@@ -12,21 +12,21 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DCB0
         void UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_Prepare()
         {
-            Menu* pMVar1;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            int _borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            int _borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+            pMVar1->xPosition = _borderWidth;
+            pMVar1->yPosition = _borderHeight;
+            DAT_MenuHandlerState::instance.x = _borderWidth;
+            DAT_MenuHandlerState::instance.y = _borderHeight;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("gm_fly.tgx");
         }
 

@@ -16,18 +16,18 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuViews {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004262B0
         void Credits::MenuView_Credits_DoInitial()
         {
             Menu* pMVar1;
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0, 0,
-                DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
+                0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
-            MACRO_CALL(UI::Rendering_Func::DrawOuterMenuBorder)();
-            MACRO_CALL_MEMBER(
-                UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface, DAT_TextureRenderCoreObject::ptr)(0,
+            MACRO_CALL(OpenSHC::UI::Rendering_Func::DrawOuterMenuBorder)();
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
+                DAT_TextureRenderCoreObject::ptr)(0,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].width)
                     / 2,
