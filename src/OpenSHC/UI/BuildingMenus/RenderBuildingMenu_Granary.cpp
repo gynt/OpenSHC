@@ -38,7 +38,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043B3B0
     void BuildingMenus::RenderBuildingMenu_Granary()
     {
-        char* pcVar3;
         int iVar4;
         int iVar5;
         int iVar6;
@@ -48,7 +47,6 @@ namespace UI {
         int iVar10;
         BOOLEnum BVar11;
         int iVar12;
-        int blendStrength;
         int iVar1 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
         iVar5 = 0;
         iVar6 = 0;
@@ -60,38 +58,37 @@ namespace UI {
             if (2000 < DVar2 - DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange) {
                 iVar12 = DAT_GameState::instance.playerDataArray[iVar1].rationsSetting3;
                 if (iVar12 == 4) {
-                    iVar12 = 2;
-                } else if (!iVar12) {
-                    iVar12 = 3;
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(2);
+                } else if (iVar12 == 0) {
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(3);
                 } else {
-                    iVar12 = 1;
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(1);
                 }
-                MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTaxesSetting_unknown)(iVar12);
             }
             DVar2 = timeGetTime();
             if (2500 < DVar2 - DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange) {
                 iVar12 = DAT_GameState::instance.playerDataArray[iVar1].rationsSetting3;
                 DAT_GameState::instance.playerDataArray[iVar1].timeTaxesOrRationsChange = 0;
+                SpeechEffectID rationsSpeech;
                 switch (iVar12) {
                 case 0:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_NONE;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_NONE;
                     break;
                 case 1:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_HALF;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_HALF;
                     break;
                 case 2:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_NORMAL;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_NORMAL;
                     break;
                 case 3:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_EXTRA;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_EXTRA;
                     break;
                 case 4:
-                    SVar7 = OpenSHC::Audio::SFX::SEID_FOOD_DOUBLE;
+                    rationsSpeech = OpenSHC::Audio::SFX::SEID_FOOD_DOUBLE;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(SVar7);
+                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(rationsSpeech);
             }
         }
-        blendStrength = 0;
         BVar11 = FALSE;
         iVar10 = 0x10;
         BVar9 = 0;
@@ -101,57 +98,56 @@ namespace UI {
         /*
           added by script: "Granary"
          */
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar3, iVar4, iVar12, TVar8, BVar9, iVar10, BVar11, blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 0),
+            iVar4, iVar12, TVar8, BVar9, iVar10, BVar11, 0);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         switch (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .rationsSetting3) {
         case 0:
             iVar6 = -1;
-            iVar5 = -5;
             SVar7 = ((SpeechEffectID)0x11f);
+            iVar5 = -5;
             break;
         case 1:
             iVar6 = -1;
-            iVar5 = 1;
             SVar7 = ((SpeechEffectID)0x120);
+            iVar5 = 1;
             break;
         case 2:
             iVar6 = 10;
-            iVar5 = -10;
             SVar7 = ((SpeechEffectID)0x11c);
+            iVar5 = -10;
+            break;
+
+        case 4:
+            iVar6 = 9;
+            SVar7 = ((SpeechEffectID)0x11e);
+            iVar5 = -5;
             break;
         case 3:
             iVar6 = 0;
-            iVar5 = 0;
             SVar7 = ((SpeechEffectID)0x11d);
-            break;
-        case 4:
-            iVar6 = 9;
-            iVar5 = -5;
-            SVar7 = ((SpeechEffectID)0x11e);
+            iVar5 = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(SVar7), DAT_MenuHandlerState::instance.x + 0x159 + iVar6,
             DAT_MenuHandlerState::instance.y + 0x20f + iVar5);
-        iVar12 = DAT_MenuHandlerState::instance.y;
-        iVar6 = DAT_MenuHandlerState::instance.x;
         iVar4 = DAT_MenuHandlerState::instance.x + 0x17;
-        iVar5 = DAT_MenuHandlerState::instance.y + 0x1f2;
+        iVar5 = DAT_MenuHandlerState::instance.y + 0x1ee;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-            OpenSHC::DE::SHCDE::GM_INTERFACE_SLIDER, 6, DAT_MenuHandlerState::instance.x + 0x1f, iVar5);
+            OpenSHC::DE::SHCDE::GM_INTERFACE_SLIDER, 6, iVar4 + 8, iVar5 + 4);
         MACRO_CALL_MEMBER(
             OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRect, DAT_TextureRenderCoreObject::ptr)(0, 0,
-            (DAT_GameState::instance.playerDataArray[iVar1].foodClock * 162) / 15000 + 0x10 + iVar4,
+            (DAT_GameState::instance.playerDataArray[iVar1].foodClock * 162) / 12800 + 0x10 + iVar4,
             DAT_WindowAndDirectDraw::instance.resolutionY);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawTgxGmOnFlaggedSurface,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 8, iVar6 + 0x1f, iVar5);
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 8, iVar4 + 8, iVar5 + 4);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRectToGameResolution,
             DAT_TextureRenderCoreObject::ptr)();
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 5, iVar4, iVar12 + 0x1ed,
+            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 5, iVar4, iVar5 + -1,
             OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 7, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             DAT_GameState::instance.playerDataArray[iVar1].totalFood, DAT_MenuHandlerState::instance.x + 0x18,
@@ -163,18 +159,20 @@ namespace UI {
         iVar6 = DAT_MenuHandlerState::instance.x + 0x1c;
         BVar9 = 0;
         TVar8 = OpenSHC::Text::TTA_LEFT;
-        if (DAT_GameState::instance.playerDataArray[iVar1].totalFood == 1) {
-            iVar10 = 2;
-        } else {
-            iVar10 = 1;
-        }
         /*
           added by script: "unit of food."
          */
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar10);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar3, iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        if (DAT_GameState::instance.playerDataArray[iVar1].totalFood != 1) {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 1),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        } else {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 2),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+        }
         iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .rationsSetting3;
         if (iVar5 == 3) {
@@ -191,10 +189,10 @@ namespace UI {
         TVar8 = OpenSHC::Text::TTA_RIGHT;
         iVar6 = DAT_MenuHandlerState::instance.y + 0x1d1;
         iVar12 = DAT_MenuHandlerState::instance.x + 0x21c;
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar5);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar3, iVar12, iVar6, TVar8, BVar9, iVar4, BVar11, iVar10);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar5),
+            iVar12, iVar6, TVar8, BVar9, iVar4, BVar11, iVar10);
         if (DAT_GameState::instance.playerDataArray[iVar1].currentPopulation == 0) {
             SVar7 = OpenSHC::Audio::SFX::SEID_GENERAL_STARTGAME;
         } else if (DAT_GameState::instance.playerDataArray[iVar1].foodTypesInStock == 0) {
@@ -212,16 +210,15 @@ namespace UI {
             } else if (iVar5 == 1) {
                 SVar7 = (OpenSHC::Audio::SFX::SpeechEffectID)(~(
                     OpenSHC::Audio::SFX::SEID_GENERAL_MESSAGE3 | OpenSHC::Audio::SFX::SEID_TAXES_RATE6));
-            } else {
+            } else if (iVar5 == 0) {
                 SVar7 = ((SpeechEffectID)0xffffff38);
-                if (iVar5) {}
             }
         }
         MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
             DAT_MenuHandlerState::instance.x + 0x208, DAT_MenuHandlerState::instance.y + 0x1e3, (int)(SVar7), FALSE);
         iVar5 = DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel;
         if (iVar5 != -1) {
-            if (!iVar5) {
+            if (iVar5 == 0) {
                 iVar5 = DAT_MenuHandlerState::instance.y + 0x224;
                 iVar6 = DAT_MenuHandlerState::instance.x + 0xe;
                 iVar12 = 0xb;
@@ -231,10 +228,10 @@ namespace UI {
                     OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
                 iVar5 = DAT_MenuHandlerState::instance.y + 0x224;
                 iVar6 = DAT_MenuHandlerState::instance.x + 0x1c;
-                if (DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel == 1) {
-                    iVar12 = 10;
-                } else {
+                if (DAT_GameState::instance.playerDataArray[iVar1].foodStorageLevel != 1) {
                     iVar12 = 9;
+                } else {
+                    iVar12 = 10;
                 }
             }
             iVar10 = 0;
@@ -245,10 +242,10 @@ namespace UI {
             /*
               added by script: "month supply."
              */
-            pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar12);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar3, iVar6, iVar5, TVar8, BVar9, iVar4, BVar11, iVar10);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar12),
+                iVar6, iVar5, TVar8, BVar9, iVar4, BVar11, iVar10);
         }
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             DAT_GameState::instance.playerDataArray[iVar1].foodTypesCurrentlyEaten,
@@ -265,31 +262,31 @@ namespace UI {
             /*
               added by script: "food type eaten."
              */
-            pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 8);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar3, iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 8),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
             iVar5 = 8;
         } else {
             /*
               added by script: "food types eaten."
              */
-            pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 7);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar3, iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, 7),
+                iVar6, iVar5, TVar8, BVar9, iVar12, BVar11, iVar4);
             iVar5 = 7;
         }
         iVar6 = 0x12;
         /*
           added by script: "food type eaten."
          */
-        pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar5);
         iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
-            pcVar3, iVar6);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_GRANARY, iVar5),
+            iVar6);
         iVar5 = DAT_GameState::instance.playerDataArray[iVar1].foodTypesCurrentlyEaten;
-        if ((!iVar5) || (iVar5 == 1)) {
+        if ((iVar5 == 0) || (iVar5 == 1)) {
             SVar7 = OpenSHC::Audio::SFX::SEID_GENERAL_STARTGAME;
         } else if (iVar5 == 2) {
             SVar7 = OpenSHC::Audio::SFX::SEID_TAXES_CONSTANT;
