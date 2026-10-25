@@ -405,14 +405,15 @@ namespace UI {
                     return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-                    iVar2 = 9;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(9);
                 } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
-                    iVar2 = 5;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(5);
                 } else {
-                    iVar2 = 0;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                    DAT_TextureRenderCoreObject::ptr)(iVar2);
                 if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
