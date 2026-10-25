@@ -41,8 +41,8 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             int borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             pMVar1->yPosition = borderHeight;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
