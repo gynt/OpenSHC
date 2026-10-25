@@ -18,6 +18,7 @@ namespace UI {
         using OpenSHC::IO::Graphics::TgxTokenByte;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044F850
+#pragma optimize("y", off)
         void TextureRenderCore::renderTgxWithColorAndBlendingUnk(
             int xPos, int yPos, int width, int height, ushort* imageSource, ushort fillColorUnk, int blendStrengthUnk)
         {
@@ -55,10 +56,12 @@ namespace UI {
                     _greenOffset = 6;
                     (*(char*)&width) = 0xb;
                 }
-                if (-1 < xPos) {
+                if (0 <= xPos) {
                     if (yPos < _heightStart) {
                         iVar2 = _heightStart - yPos;
-                        if (height <= iVar2) {}
+                        if (height <= iVar2) {
+                            return;
+                        }
                         height = height - iVar2;
                         do {
                             while (true) {
@@ -123,7 +126,7 @@ namespace UI {
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = ((_length & 0xffff0000) | (uint)(ushort)iVar2) + -1;
                                     imageSource = (ushort*)pTVar3;
-                                    if (!iVar2)
+                                    if (iVar2 == 0)
                                         goto LAB_0044f97b;
                                 }
                                 *_drawPointer = fillColorUnk;
@@ -131,7 +134,7 @@ namespace UI {
                                 _drawPointer = _drawPointer + 1;
                                 iVar2 = iVar2 + -1;
                                 imageSource = (ushort*)pTVar3;
-                            } while (iVar2);
+                            } while (iVar2 != 0);
                             goto LAB_0044f97b;
                         }
                         if (_tgxToken2 == OpenSHC::IO::Graphics::TT_REPEATING_PIXELS) {
@@ -145,7 +148,7 @@ namespace UI {
                                     *_drawPointer = fillColorUnk;
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = iVar2 + -1;
-                                } while (iVar2);
+                                } while (iVar2 != 0);
                             } else {
                                 do {
                                     _length = (((iVar2 >> 0x10) << 0x10) | (uint)(ushort)*_drawPointer) & 0xffff001f;
@@ -168,7 +171,7 @@ namespace UI {
                                             & 0x1f);
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = ((_length & 0xffff0000) | (uint)(ushort)iVar2) + -1;
-                                } while (iVar2);
+                                } while (iVar2 != 0);
                             }
                             goto LAB_0044f97b;
                         }
@@ -179,6 +182,7 @@ namespace UI {
                 }
             }
         }
+#pragma optimize("y", on)
 
     }
 }

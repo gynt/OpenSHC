@@ -12,25 +12,26 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using IO::Graphics::GmImageType;
-        using IO::Graphics::GmImageTypeInt;
+        using OpenSHC::IO::Graphics::GmImageType;
+        using OpenSHC::IO::Graphics::GmImageTypeInt;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00455300
         void TextureRenderCore::renderGM(eGM gmID, int imageID, int drawX, int drawY)
         {
             int iVar1 = GMTotalPicturesProcessed::instance[gmID];
             GmImageTypeInt _imageType = this->gmFileHeaderColorpaletteArray[gmID].ImageType;
-            if ((_imageType != IO::Graphics::GIT_InterfaceElement)
-                && (_imageType != IO::Graphics::GIT_CompressedImage)) {
-                if (_imageType == IO::Graphics::GIT_Animation) {
-                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderUnitAnimationUnk, this)(drawX, drawY,
-                        (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width),
+            if ((_imageType != OpenSHC::IO::Graphics::GIT_InterfaceElement)
+                && (_imageType != OpenSHC::IO::Graphics::GIT_CompressedImage)) {
+                if (_imageType == OpenSHC::IO::Graphics::GIT_Animation) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderUnitAnimationUnk, this)(
+                        drawX, drawY, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width),
                         (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height),
                         (byte*)((int)((
                             DAT_GMImageOffsets::instance[iVar1 + -1 + imageID] + (int)this->gmProcessedImageData))));
                 }
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(
+            MACRO_CALL_MEMBER(
+                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(
                 drawX, drawY, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width),
                 (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height),
                 (ushort*)((int)(

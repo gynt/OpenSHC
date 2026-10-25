@@ -35,16 +35,9 @@ namespace UI {
     void Rendering::RenderScribeFrame()
     {
         BOOLEnum BVar1;
-        int yParam;
-        char* textAddress;
         int xParam;
-        TextAlignment alignment;
-        uint foregroundColor;
-        uint backgroundColor;
-        int fontSize;
-        int blendStrength;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (DAT_GameCore::instance.scribeAnimationFrame < 1) {
+        if (DAT_GameCore::instance.scribeAnimationFrame <= 0) {
             DAT_GameCore::instance.scribeAnimationFrame = 1;
         } else if (44 < DAT_GameCore::instance.scribeAnimationFrame) {
             DAT_GameCore::instance.scribeAnimationFrame = 44;
@@ -53,25 +46,20 @@ namespace UI {
             OpenSHC::DE::SHCDE::GM_SCRIBE, DAT_GameCore::instance.scribeAnimationFrame,
             DAT_MenuHandlerState::instance.x + 0x2c0, DAT_MenuHandlerState::instance.y + 399);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-        if ((((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
-                 && (DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM))
-                && (!DAT_GameCore::instance.isTimeHalted))
+        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
+            && DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+            && DAT_GameCore::instance.isTimeHalted == FALSE
             && (BVar1 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                     OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                !BVar1)) {
-            blendStrength = 0;
+                BVar1 == FALSE)) {
             BVar1 = FALSE;
-            fontSize = 0x12;
-            backgroundColor = 0;
-            foregroundColor = 0xb8eefb;
-            alignment = OpenSHC::Text::TTA_LEFT;
-            yParam = DAT_WindowAndDirectDraw::instance.resolutionY + -0x14;
+            int yParam = DAT_WindowAndDirectDraw::instance.resolutionY + -0x14;
             xParam = DAT_MenuHandlerState::instance.x + 0x124;
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_GameState::instance.mapAndTime.month);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                textAddress, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, BVar1,
-                blendStrength);
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_GameState::instance.mapAndTime.month),
+                xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x12, BVar1, 0);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.mapAndTime.year, DAT_MenuHandlerState::instance.x + 0x128,
                 DAT_WindowAndDirectDraw::instance.resolutionY + -0x14, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE,

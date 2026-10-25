@@ -13,29 +13,27 @@ namespace OpenSHC {
 namespace UI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00452900
+#pragma optimize("y", off)
     void Rendering::RenderTerrainTilesCenterPiece()
     {
         undefined2 uVar1;
         undefined2 uVar2;
         undefined2 uVar3;
-        undefined4 uVar4;
-        undefined4 uVar5;
-        undefined4 uVar6;
-        uint _drawYTileRow;
         undefined4* puVar7;
         ushort* puVar8;
         undefined* puVar9;
-        _drawYTileRow = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + DAT_RenderMap_DrawSomeY::instance;
-        if (((int)_drawYTileRow < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)
-            && (DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)_drawYTileRow)) {
+        uint _drawYTileRow
+            = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + DAT_RenderMap_DrawSomeY::instance;
+        if ((int)_drawYTileRow < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end
+            && DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)_drawYTileRow) {
             puVar7 = (undefined4*)(DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance]
                 + (int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData);
-            if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
+            if (DAT_TextureRenderCoreObject::instance.isZoom2 == 0) {
                 puVar8 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
                     + _drawYTileRow * 0xfd8;
-                uVar4 = puVar7[1];
-                uVar5 = puVar7[2];
-                uVar6 = puVar7[3];
+                undefined4 uVar4 = puVar7[1];
+                undefined4 uVar5 = puVar7[2];
+                undefined4 uVar6 = puVar7[3];
                 DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = (undefined*)puVar8;
                 *(undefined4*)(puVar8 + 0xe) = *puVar7;
                 *(undefined4*)(puVar8 + 0xfe4) = uVar4;
@@ -262,7 +260,7 @@ namespace UI {
             puVar9 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
                 + (_drawYTileRow >> 1) * 0x1fb0 + (DAT_RenderMap_DrawSomeX::instance & 0xfffffffe));
             DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = puVar9;
-            if (!(_drawYTileRow & 1)) {
+            if ((_drawYTileRow & 1) == 0) {
                 *(undefined2*)(puVar9 + 0xe) = *(undefined2*)puVar7;
                 uVar1 = *(undefined2*)(puVar7 + 5);
                 uVar2 = *(undefined2*)(puVar7 + 6);
@@ -483,6 +481,7 @@ namespace UI {
             }
         }
     }
+#pragma optimize("y", on)
 
 }
 }

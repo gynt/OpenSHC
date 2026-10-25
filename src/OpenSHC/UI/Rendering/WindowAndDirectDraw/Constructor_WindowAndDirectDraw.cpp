@@ -13,7 +13,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004679F0
         WindowAndDirectDraw* WindowAndDirectDraw::Constructor_WindowAndDirectDraw()
         {
-            int _screenHeight;
             this->runGameAsExclusiveFullscreen = TRUE;
             this->currentGameResolution = OpenSHC::Rendering::SRE_neg1;
             this->drawingReady_0x0 = FALSE;
@@ -24,7 +23,7 @@ namespace UI {
             this->mbr_0xcc = 0;
             this->not_DDCAPS2_CANBOBHARDWARE_0xe0 = FALSE;
             this->screenWidthOnInit_0x10 = GetSystemMetrics(SM_CXSCREEN);
-            _screenHeight = GetSystemMetrics(SM_CYSCREEN);
+            int _screenHeight = GetSystemMetrics(SM_CYSCREEN);
             this->postWindowCloseMessage = 0;
             this->pointerToIDirectDrawInterface = (IDirectDraw*)0x0;
             this->directDrawBackbufferSurfacePointer = (IDirectDrawSurface*)0x0;

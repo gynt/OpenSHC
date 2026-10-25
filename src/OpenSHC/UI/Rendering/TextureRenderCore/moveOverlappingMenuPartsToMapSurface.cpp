@@ -15,11 +15,9 @@ namespace UI {
         using OpenSHC::Rendering::ScreenResolutionEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00454F00
+#pragma optimize("y", off)
         void TextureRenderCore::moveOverlappingMenuPartsToMapSurface()
         {
-            int _lineJumpBytes;
-            int _height;
-            int _runWidth;
             ushort* _screenSurfacePtr;
             ushort* _mapSurfacePtr;
             int* _xPosPtr;
@@ -28,7 +26,7 @@ namespace UI {
             int* _yPosPtr;
             undefined2 _ignoreColor;
             int _width;
-            if ((this->activeMenuTabIndex)
+            if ((this->activeMenuTabIndex != 0)
                 && (DAT_BlendingDefinedData::instance.field166_0x2dfc[this->activeMenuTabIndex * 0x28 + 0x5e] != -1)) {
                 _widthPtr = DAT_BlendingDefinedData::instance.field166_0x2dfc + this->activeMenuTabIndex * 0x28 + 0x60;
                 _xPosPtr = DAT_BlendingDefinedData::instance.field166_0x2dfc + this->activeMenuTabIndex * 0x28 + 0x5e;
@@ -55,9 +53,9 @@ namespace UI {
                         + *_xPosPtr + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX
                         + DAT_MenuHandlerState::instance.x;
                     _width = *_widthPtr;
-                    _lineJumpBytes = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + _width * -2;
-                    _height = *_hightPtr;
-                    _runWidth = _width;
+                    int _lineJumpBytes = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + _width * -2;
+                    int _height = *_hightPtr;
+                    int _runWidth = _width;
                     do {
                         do {
                             if (*_screenSurfacePtr != _ignoreColor) {
@@ -66,12 +64,12 @@ namespace UI {
                             _screenSurfacePtr = _screenSurfacePtr + 1;
                             _mapSurfacePtr = _mapSurfacePtr + 1;
                             _runWidth = _runWidth + -1;
-                        } while (_runWidth);
+                        } while (_runWidth != 0);
                         _screenSurfacePtr = (ushort*)((int)_screenSurfacePtr + _lineJumpBytes);
                         _mapSurfacePtr = _mapSurfacePtr + (0xfd8 - _width);
                         _height = _height + -1;
                         _runWidth = _width;
-                    } while (_height);
+                    } while (_height != 0);
                     _yPosPtr = _yPosPtr + 4;
                     _hightPtr = _hightPtr + 4;
                     _widthPtr = _widthPtr + 4;
@@ -79,6 +77,7 @@ namespace UI {
                 } while (*_xPosPtr != -1);
             }
         }
+#pragma optimize("y", on)
 
     }
 }

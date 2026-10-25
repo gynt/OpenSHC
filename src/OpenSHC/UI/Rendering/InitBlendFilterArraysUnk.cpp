@@ -14,7 +14,6 @@ namespace UI {
     void Rendering::InitBlendFilterArraysUnk()
     {
         uint uVar1;
-        uint uVar2;
         short* psVar3;
         int _someCounterUnk;
         short* _shortPtr;
@@ -49,11 +48,11 @@ namespace UI {
                     iVar4 = iVar4 + local_c;
                     iVar6 = iVar6 + local_c;
                     local_4 = local_4 + -1;
-                } while (local_4);
+                } while (local_4 != 0);
                 local_10 = local_10 + 1;
                 local_c = local_c + 4;
                 local_8 = local_8 + 0x100;
-            } while ((int)local_8 < 0xd814dc);
+            } while ((int)local_8 < (int)&DAT_BlendFilterArrays::instance + 0x4204);
         }
         _shortPtr = DAT_BlendFilterArrays::instance[0][0] + 1;
         _someCounterUnk = 0;
@@ -63,17 +62,17 @@ namespace UI {
             psVar3 = _shortPtr;
             do {
                 uVar1 = iVar4 / 32;
-                uVar2 = uVar1 & 0xffff;
+                uint uVar2 = uVar1 & 0xffff;
                 psVar3[-1] = (short)uVar1;
                 *psVar3 = (short)(uVar2 << 5);
                 psVar3[1] = (short)(uVar2 << 10);
                 psVar3 = psVar3 + 4;
                 iVar4 = iVar4 + _someCounterUnk;
                 iVar6 = iVar6 + -1;
-            } while (iVar6);
+            } while (iVar6 != 0);
             _shortPtr = _shortPtr + 0x100;
             _someCounterUnk = _someCounterUnk + 1;
-        } while ((int)_shortPtr < 0xd814da);
+        } while ((int)_shortPtr < (int)&DAT_BlendFilterArrays::instance + 0x4202);
     }
 
 }

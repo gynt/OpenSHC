@@ -1,27 +1,26 @@
 #include "../TextureRenderCore.func.hpp"
 
 #include "OpenSHC/IO/Graphics/TgxToken.hpp"
+#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
         using OpenSHC::IO::Graphics::TgxToken;
-        using OpenSHC::Rendering::Enums::RenderTarget;
         using OpenSHC::IO::Graphics::TgxTokenByte;
+        using OpenSHC::Rendering::Enums::RenderTarget;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00454A60
+#pragma optimize("y", off)
         void TextureRenderCore::drawTgxOnFlaggedSurface(
             int xPos, int yPos, int gfxWidth, int gfxHeight, ushort* tgxSourcePtr)
         {
             undefined2 uVar1;
-            LONG LVar2;
-            LONG LVar3;
             TgxTokenByte _tgxToken;
             int iVar4;
             uint uVar5;
@@ -31,25 +30,32 @@ namespace UI {
             ushort* _renderPtr;
             int _byteWidth;
             int _xRenderPos;
-            LVar3 = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.right;
-            LVar2 = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.left;
-            if (DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8 == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+            LONG LVar3 = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.right;
+            LONG LVar2 = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.left;
+            if (DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8
+                == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+                DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                    = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                 /*
                   Could be "jump"-line needed to skip to start of next horizontal line.   --TheRedDaemon
                  */
                 gfxWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + gfxWidth * -2;
                 _byteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-            } else if (DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8 == OpenSHC::Rendering::Enums::RT_MAP_GAME) {
-                DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+            } else if (DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8
+                == OpenSHC::Rendering::Enums::RT_MAP_GAME) {
+                DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                    = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                 gfxWidth = (0xfd8 - gfxWidth) * 2;
                 _byteWidth = 0x1fb0;
             }
             if ((gfxHeight + yPos <= DAT_TextureRenderCoreObject::instance.renderingRect_16c854.bottom)
-                || (gfxHeight = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.bottom - yPos, 0 < gfxHeight)) {
+                || (gfxHeight = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.bottom - yPos,
+                    0 < gfxHeight)) {
                 if (yPos < DAT_TextureRenderCoreObject::instance.renderingRect_16c854.top) {
                     iVar6 = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.top - yPos;
-                    if (gfxHeight <= iVar6) {}
+                    if (gfxHeight <= iVar6) {
+                        return;
+                    }
                     gfxHeight = gfxHeight - iVar6;
                     do {
                         while (true) {
@@ -71,7 +77,8 @@ namespace UI {
                         yPos = DAT_TextureRenderCoreObject::instance.renderingRect_16c854.top;
                     } while (0 < iVar6);
                 }
-                _renderPtr = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPos * _byteWidth + xPos * 2);
+                _renderPtr = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                    + yPos * _byteWidth + xPos * 2);
                 _xRenderPos = xPos;
             LAB_00454b69:
                 do {
@@ -107,7 +114,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6);
+                                } while (iVar6 != 0);
                             } else {
                                 iVar4 = (iVar6 + _xRenderPos) - LVar3;
                                 iVar6 = iVar6 - iVar4;
@@ -117,7 +124,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6);
+                                } while (iVar6 != 0);
                                 _xRenderPos = _xRenderPos + iVar4;
                                 _renderPtr = _renderPtr + iVar4;
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + iVar4 * 2);
@@ -147,7 +154,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6);
+                                } while (iVar6 != 0);
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + 3);
                             } else {
                                 iVar4 = (iVar6 + _xRenderPos) - LVar3;
@@ -158,7 +165,7 @@ namespace UI {
                                     _renderPtr = _renderPtr + 1;
                                     _xRenderPos = _xRenderPos + 1;
                                     iVar6 = iVar6 + -1;
-                                } while (iVar6);
+                                } while (iVar6 != 0);
                                 _xRenderPos = _xRenderPos + iVar4;
                                 _renderPtr = _renderPtr + iVar4;
                                 tgxSourcePtr = (ushort*)((int)tgxSourcePtr + 3);
@@ -178,6 +185,7 @@ namespace UI {
                 } while (0 < gfxHeight);
             }
         }
+#pragma optimize("y", on)
 
     }
 }

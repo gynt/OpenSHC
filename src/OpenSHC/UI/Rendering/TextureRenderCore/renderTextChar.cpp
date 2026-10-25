@@ -18,8 +18,8 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using IO::Graphics::GmID;
-        using Text::FontRenderType;
+        using OpenSHC::IO::Graphics::GmID;
+        using OpenSHC::Text::FontRenderType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00455540
         void TextureRenderCore::renderTextChar(int xPos, int yPos, int imageId, FontRenderType renderType,
@@ -39,10 +39,11 @@ namespace UI {
             _imageSource = (ushort*)(DAT_GMImageOffsets::instance[imageId]
                 + (int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData);
             DAT_TextureRenderCoreObject::instance.mbr_0x6c = 0;
-            if ((!DAT_TextManagerObject::instance.field9_0x24) && (!DAT_TextManagerObject::instance.field10_0x28))
+            if ((DAT_TextManagerObject::instance.field9_0x24 == 0)
+                && (DAT_TextManagerObject::instance.field10_0x28 == 0))
                 goto LAB_0045566a;
             yPos = 0;
-            if (DAT_TextManagerObject::instance.drawingTextShadow) {
+            if (DAT_TextManagerObject::instance.drawingTextShadow != 0) {
                 yPos = 2;
             }
             if (lineHeight == 0x1b) {
@@ -52,9 +53,9 @@ namespace UI {
                 sVar1 = *(short*)(PTR_ARRAY_Unknown_UnitGMHeights::instance
                     + (GMTotalPicturesProcessed::instance[0x9c] + imageId) * 4 + 0x1c);
                 short sVar2 = DAT_GMImageHeaders::instance.imh[_imageId].width;
-                if ((DAT_TextManagerObject::instance.field9_0x24) && (blendStrength != 0x20)) {
-                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithBlending, this)(
-                        IO::Graphics::GID_INTERFACE_ICONS_3, imageId, xPos, (iVar3 - lineHeight) + _yPosUnk,
+                if ((DAT_TextManagerObject::instance.field9_0x24 != 0) && (blendStrength != 0x20)) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending, this)(
+                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageId, xPos, (iVar3 - lineHeight) + _yPosUnk,
                         blendStrength);
                 }
                 DAT_TextureRenderCoreObject::instance.mbr_0x6c
@@ -65,41 +66,44 @@ namespace UI {
                 iVar3 = 2;
                 goto LAB_004555b4;
             }
-            if (DAT_TextManagerObject::instance.field9_0x24) {
+            if (DAT_TextManagerObject::instance.field9_0x24 != 0) {
                 DAT_TextManagerObject::instance.field9_0x24 = 0;
             }
-            if (DAT_TextManagerObject::instance.field10_0x28) {
+            if (DAT_TextManagerObject::instance.field10_0x28 != 0) {
                 DAT_TextManagerObject::instance.field10_0x28 = 0;
             }
         LAB_0045566a:
             if (blendStrength != 0x20) {
-                if (!DAT_TextManagerObject::instance.field5_0x14) {
+                if (DAT_TextManagerObject::instance.field5_0x14 == 0) {
                     iVar3 = _yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset;
-                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                        xPos + -1, iVar3 + -2, DAT_GMImageHeaders::instance.imh[_imageId].width + 1 + xPos,
-                        iVar3 + 2 + lineHeight, (ushort)(COL_WHITE::instance.shortValue));
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
+                        DAT_PencilRenderCore::ptr)(xPos + -1, iVar3 + -2,
+                        DAT_GMImageHeaders::instance.imh[_imageId].width + 1 + xPos, iVar3 + 2 + lineHeight,
+                        (ushort)(COL_WHITE::instance.shortValue));
                 }
-                if (DAT_TextManagerObject::instance.field6_0x18) {
-                    MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(xPos,
+                if (DAT_TextManagerObject::instance.field6_0x18 != 0) {
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(xPos,
                         _yPosUnk + 2, DAT_GMImageHeaders::instance.imh[_imageId].width + xPos, _yPosUnk + 2, fillColor);
                 }
-                if (renderType == Text::FRT_COLOR) {
-                    MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderTgxWithColorUnk, this)(xPos,
+                if (renderType == OpenSHC::Text::FRT_COLOR) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderTgxWithColorUnk, this)(xPos,
                         (int)(_yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset),
                         (int)(DAT_GMImageHeaders::instance.imh[_imageId].width),
                         (int)(DAT_GMImageHeaders::instance.imh[_imageId].height), _imageSource, fillColor);
                 } else {
-                    if (renderType == Text::FRT_BLENDED_COLOR) {
-                        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderTgxWithColorAndBlendingUnk,
-                            this)(xPos, (int)(_yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset),
+                    if (renderType == OpenSHC::Text::FRT_BLENDED_COLOR) {
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderTgxWithColorAndBlendingUnk, this)(
+                            xPos, (int)(_yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset),
                             (int)(DAT_GMImageHeaders::instance.imh[_imageId].width),
                             (int)(DAT_GMImageHeaders::instance.imh[_imageId].height), _imageSource, fillColor,
                             blendStrength);
                     }
-                    if (renderType == Text::FRT_RAW) {
+                    if (renderType == OpenSHC::Text::FRT_RAW) {
                         MACRO_CALL_MEMBER(
-                            UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects, this)(
-                            xPos, (int)(_yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset),
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFunctionResponsibleForManyGameObjects,
+                            this)(xPos, (int)(_yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset),
                             (int)(DAT_GMImageHeaders::instance.imh[_imageId].width),
                             (int)(DAT_GMImageHeaders::instance.imh[_imageId].height), _imageSource);
                     }

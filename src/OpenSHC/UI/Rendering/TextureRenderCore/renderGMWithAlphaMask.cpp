@@ -26,12 +26,12 @@ namespace UI {
             void* pvVar2;
             RenderTargetInt _tempBufferChoiceValueUnk;
             pvVar2 = DAT_TextureRenderCoreObject::instance.gmProcessedImageData;
-            if (DAT_TextureRenderCoreObject::instance.isZoom2) {
+            if (DAT_TextureRenderCoreObject::instance.isZoom2 != 0) {
                 iVar1 = GMTotalPicturesProcessed::instance[gmID];
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderInterfaceOrBuildingOccupationArea, this)(xPos,
-                    yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
-                    (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
+                    yPos, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width),
+                    (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height),
                     (ushort*)((int)(
 
                         (DAT_GMImageOffsets::instance[iVar1 + -1 + imageID]
@@ -46,7 +46,7 @@ namespace UI {
                 DAT_GMImageHeaders::instance.imh[alphaImageID + GMTotalPicturesProcessed::instance[maskGmID] + -1]
                         .height
                     * AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2,
-                (ushort)((int)(COL_MAGENTA::instance.shortValue)),
+                (ushort)(COL_MAGENTA::instance.shortValue),
                 (void*)((int)(AlphaAndButtonSurfaceObj::instance.surfacePtr)));
             _tempBufferChoiceValueUnk = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -56,8 +56,8 @@ namespace UI {
             iVar1 = GMTotalPicturesProcessed::instance[gmID];
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = _tempBufferChoiceValueUnk;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGmWithPreparedAlphaMask, this)(xPos,
-                yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
-                (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
+                yPos, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width),
+                (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height),
                 (ushort*)((int)((DAT_GMImageOffsets::instance[iVar1 + -1 + imageID] + (int)pvVar2))), blendStrength);
         }
 

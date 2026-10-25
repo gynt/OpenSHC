@@ -10,17 +10,17 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00471000
         void PencilRenderCore::drawBlendedBlackBox(int left, int top, int right, int bottom, int blendStrengh)
         {
             BOOLEnum _drawReady;
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
-            _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencilSurface, this)();
+            _drawReady = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 left, top, right, bottom, 0);
-            if (_drawReady) {
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderBlendedBlackBox,
+            if (_drawReady != FALSE) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderBlendedBlackBox,
                     DAT_TextureRenderCoreObject::ptr)(this->drawStartX, (int)(this->drawStartY), (int)(this->drawEndX),
                     (int)(this->drawEndY), blendStrengh);
             }

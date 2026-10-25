@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using IO::Graphics::GmID;
+        using OpenSHC::IO::Graphics::GmID;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00471440
         void PencilRenderCore::drawBorderedBoxWithCustomBlendedBackground(
@@ -22,7 +22,7 @@ namespace UI {
             int iVar3 = 0;
             if (0 < iVar2) {
                 do {
-                    if (!iVar3) {
+                    if (iVar3 == 0) {
                         iVar4 = 1;
                     } else {
                         iVar4 = (-(uint)(iVar3 != iVar2 + -0x18) & 0xfffffffa) + 0xd;
@@ -31,12 +31,12 @@ namespace UI {
                     if (0 < iVar1) {
                         do {
                             int imageID = iVar4;
-                            if (!iVar5) {
+                            if (iVar5 == 0) {
                             LAB_004714da:
-                                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                                    DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
-                                    iVar5 + xPos, iVar3 + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
-                                    blendStrength);
+                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
+                                    imageID, iVar5 + xPos, iVar3 + yPos, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
+                                    imageID + 3, blendStrength);
                             } else {
                                 if (iVar5 == iVar1 + -0x18) {
                                     imageID = iVar4 + 2;
@@ -54,7 +54,7 @@ namespace UI {
                 } while (iVar3 < iVar2);
             }
             iVar3 = (blendStrength + -0x20) * 0x10;
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(
                 xPos + 0x18, yPos + 0x18, xPos + -0x19 + iVar1, yPos + -0x19 + iVar2, (iVar3 / 32) + 0x20);
         }
 

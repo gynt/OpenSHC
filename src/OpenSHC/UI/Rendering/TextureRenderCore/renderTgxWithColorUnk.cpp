@@ -39,10 +39,12 @@ namespace UI {
                 _lineByteWidth = 0x1fb0;
                 iVar1 = this->mapGameSurfaceHeightRange.end;
             }
-            if (((height + yPos <= iVar1) || (height = iVar1 - yPos, 0 < height)) && (-1 < xPos)) {
+            if (((height + yPos <= iVar1) || (height = iVar1 - yPos, 0 < height)) && -1 < xPos) {
                 if (yPos < _heightStart) {
                     iVar1 = _heightStart - yPos;
-                    if (height <= iVar1) {}
+                    if (height <= iVar1) {
+                        return;
+                    }
                     height = height - iVar1;
                     do {
                         while (true) {
@@ -86,7 +88,7 @@ namespace UI {
                                 _drawingPosition = _drawingPosition + 1;
                                 iVar1 = iVar1 + -1;
                                 imageSource = (ushort*)_tgxHeader;
-                            } while (iVar1);
+                            } while (iVar1 != 0);
                         }
                         if (_tgxToken2 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                             break;
@@ -96,7 +98,7 @@ namespace UI {
                             *_drawingPosition = fillColorUnk;
                             _drawingPosition = _drawingPosition + 1;
                             iVar1 = iVar1 + -1;
-                        } while (iVar1);
+                        } while (iVar1 != 0);
                     }
                     _drawingPosition = (ushort*)((int)_drawingPosition + width);
                     height = height + -1;

@@ -5,6 +5,7 @@ namespace UI {
     namespace Rendering {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044C940
+#pragma optimize("y", off)
         void TextureRenderCore::transformRawWithMarkerUnkToRGB555To565(int imageOffset, int imageSize)
         {
             ushort* _colorPtr;
@@ -18,6 +19,7 @@ namespace UI {
                 _colorPtr = _colorPtr + 1;
             }
         }
+#pragma optimize("y", on)
 
     }
 }

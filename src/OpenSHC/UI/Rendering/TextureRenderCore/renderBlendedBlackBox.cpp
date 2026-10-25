@@ -18,17 +18,16 @@ namespace UI {
           21:57:43.216000
          */
         // FUNCTION: STRONGHOLDCRUSADER 0x0044F020
+#pragma optimize("y", off)
         void TextureRenderCore::renderBlendedBlackBox(
             int drawX, int drawY, int drawXEnd, int drawYEnd, int blendStrengthUnk)
         {
-            int iVar1;
             ushort uVar2;
             int iVar3;
-            int iVar4;
             ushort* _drawPtr;
-            iVar1 = (DAT_PencilRenderCore::instance.horizontalByteSize - 2) + (drawX - drawXEnd) * 2;
-            if (blendStrengthUnk < 0x41) {
-                if (blendStrengthUnk < 0x21)
+            int iVar1 = (DAT_PencilRenderCore::instance.horizontalByteSize - 2) + (drawX - drawXEnd) * 2;
+            if (blendStrengthUnk <= 0x40) {
+                if (blendStrengthUnk <= 0x20)
                     goto LAB_0044f057;
             } else {
                 blendStrengthUnk = 0x40;
@@ -38,7 +37,7 @@ namespace UI {
             if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::InitBlendFilterArraysUnk)();
             }
-            iVar4 = blendStrengthUnk * 0x200;
+            int iVar4 = blendStrengthUnk * 0x200;
             if (DAT_WindowAndDirectDraw::instance.colorBitMode != OpenSHC::Rendering::RGB_555) {
                 _drawPtr = (ushort*)((int)DAT_PencilRenderCore::instance.surfacePtr
                     + drawY * DAT_PencilRenderCore::instance.horizontalByteSize + drawX * 2);
@@ -46,7 +45,7 @@ namespace UI {
                 do {
                     for (; iVar3 <= drawXEnd; iVar3 = iVar3 + 1) {
                         uVar2 = *_drawPtr;
-                        if (uVar2) {
+                        if (uVar2 != 0) {
                             *_drawPtr = DAT_BlendFilterArrays::instance[blendStrengthUnk][uVar2 & 0x1f][0]
                                 | *(ushort*)(iVar4 + 0xd7d2da + (uint)(uVar2 >> 5 & 0x3f) * 8)
                                 | *(ushort*)(iVar4 + 0xd7d2dc + (uint)(uVar2 >> 0xb) * 8);
@@ -64,7 +63,7 @@ namespace UI {
             do {
                 for (; iVar3 <= drawXEnd; iVar3 = iVar3 + 1) {
                     uVar2 = *_drawPtr;
-                    if (uVar2) {
+                    if (uVar2 != 0) {
                         *_drawPtr = DAT_BlendFilterArrays::instance[blendStrengthUnk][uVar2 & 0x1f][0]
                             | *(ushort*)(iVar4 + 0xd7d2da + (uint)(uVar2 >> 5 & 0x1f) * 8)
                             | *(ushort*)(iVar4 + 0xd7d2dc + (uVar2 >> 10 & 0x1f) * 8);
@@ -76,6 +75,7 @@ namespace UI {
                 iVar3 = drawX;
             } while (drawY <= drawYEnd);
         }
+#pragma optimize("y", on)
 
     }
 }

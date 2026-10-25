@@ -12,8 +12,8 @@
 namespace OpenSHC {
 namespace UI {
 
-    using UI::Enums::MenuViewType;
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::UI::Enums::MenuViewType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F6210
     void Rendering::RenderCurrentMenuView()
@@ -24,19 +24,19 @@ namespace UI {
               menu id
              */
             if (DAT_GameCore::instance.currentMenuViewType == pMVar1->menuID) {
-                if (pMVar1->menuID == UI::Enums::MVT_NO_VIEW) {
-                    if (DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial) {
-                        MACRO_CALL(UI::Rendering_Func::RenderNoViewsFoundWarning)();
+                if (pMVar1->menuID == OpenSHC::UI::Enums::MVT_NO_VIEW) {
+                    if (DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial != FALSE) {
+                        MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderNoViewsFoundWarning)();
                     }
                 } else {
-                    if (DAT_MenuView_TriggerPrepare::instance) {
+                    if (DAT_MenuView_TriggerPrepare::instance != FALSE) {
                         /*
                           renderMenuBackground
                          */
                         (*pMVar1->prepare)();
                     }
-                    if ((DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial)
-                        || (DAT_MenuView_TriggerPrepare::instance)) {
+                    if ((DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial != FALSE)
+                        || (DAT_MenuView_TriggerPrepare::instance != FALSE)) {
                         /*
                           someRenderFunction
                          */
@@ -52,8 +52,8 @@ namespace UI {
               move up in the menu linked list
              */
         }
-        DAT_MenuView_TriggerPrepare::instance = FALSE;
         DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = FALSE;
+        DAT_MenuView_TriggerPrepare::instance = FALSE;
     }
 
 }

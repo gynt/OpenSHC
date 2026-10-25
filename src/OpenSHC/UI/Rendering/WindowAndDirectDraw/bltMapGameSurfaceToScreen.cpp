@@ -9,7 +9,7 @@ namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
-        using WindowsHelper::Enums::BOOLEnum;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004706E0
         void WindowAndDirectDraw::bltMapGameSurfaceToScreen(
@@ -18,10 +18,10 @@ namespace UI {
             HWND__* _windowHandle;
             tagRECT _sourceRect;
             tagRECT _destinationRect;
-            if (this->drawingReady_0x0) {
+            if (this->drawingReady_0x0 != FALSE) {
                 _windowHandle = GetForegroundWindow();
                 if (_windowHandle == this->windowHandle) {
-                    if (!this->NOTSelfBufferOrWindowMode_0xf8) {
+                    if (this->NOTSelfBufferOrWindowMode_0xf8 == FALSE) {
                         _sourceRect.left = windowedX + -0x20;
                         _sourceRect.top = windowedY + -8;
                         _sourceRect.right = windowedWidth + 0x20;
@@ -53,7 +53,7 @@ namespace UI {
                         _destinationRect.bottom = this->gameResolutionY;
                     }
                     MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
+                        OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
                         &_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect,
                         this->directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000, (LPDDBLTFX)0x0);
