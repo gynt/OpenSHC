@@ -28,8 +28,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043FAC0
     void StatusMenus::RenderStatusMenu_Food()
     {
-        int iVar1;
-        char* pcVar2;
         int iVar3;
         int iVar4;
         int* piVar5;
@@ -47,15 +45,15 @@ namespace UI {
         BVar8 = 0;
         TVar7 = OpenSHC::Text::TTA_LEFT;
         iVar3 = DAT_MenuHandlerState::instance.y + 0x1d3;
-        iVar1 = DAT_MenuHandlerState::instance.x + 0x19;
+        int iVar1 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
           added by script: "Food"
          */
-        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 4);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar2, iVar1, iVar3, TVar7, BVar8, iVar9, BVar10, blendStrength);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 4),
+            iVar1, iVar3, TVar7, BVar8, iVar9, BVar10, blendStrength);
         if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
             iVar9 = 0;
             BVar10 = FALSE;
@@ -67,10 +65,10 @@ namespace UI {
             /*
               added by script: "Clicking on a food toggles consumption"
              */
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0x17);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar1, iVar4, TVar7, BVar8, iVar3, BVar10, iVar9);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0x17),
+                iVar1, iVar4, TVar7, BVar8, iVar3, BVar10, iVar9);
         }
         iVar6 = iVar6 + 0xbe;
         piVar5 = DAT_RenderingDefinedData::instance.field1050_0x55720;
@@ -81,7 +79,7 @@ namespace UI {
                 iVar6, DAT_MenuHandlerState::instance.y + 0x225, OpenSHC::Text::TTA_LEFT, 0, 0x11, FALSE, 0);
             piVar5 = piVar5 + 1;
             iVar6 = iVar6 + 0x50;
-        } while ((int)piVar5 < 0x61819c);
+        } while ((int)piVar5 < (int)&DAT_RenderingDefinedData::instance + 0x55730);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
     }
 
