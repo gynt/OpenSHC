@@ -1,6 +1,7 @@
 #include "../MinimapViewState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_MiniMapDefinedData.hpp"
+#include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
@@ -8,6 +9,9 @@
 namespace OpenSHC {
 namespace UI {
 
+    /*
+      WARNING: Enum "MappersEnum": Some values do not have unique names
+     */
     /*
       Renders a horizontal strip of minimap pixels for a given map row range. For each tile, determines   the base
       colour from LogicLayer flags (water, trees, terrain type) and MiniMapDefinedData colour   tables, then applies a
@@ -18,7 +22,6 @@ namespace UI {
     void MinimapViewState::renderMinimapTileStripWithLuminescence(
         uint param_1, int param_2, int param_3, uint param_4, int param_5)
     {
-        int iVar7;
         uint uVar9;
         uint uVar13;
         int* local_50;
@@ -41,7 +44,7 @@ namespace UI {
         int iVar8 = 1;
         int local_58 = 1;
         local_3c = 2;
-        if ((param_1 & 4)) {
+        if ((param_1 & 4) != 0) {
             local_58 = 2;
             iVar8 = 2;
         }
@@ -53,7 +56,7 @@ namespace UI {
         }
         int iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
         int iVar12 = 8;
-        if (DAT_TileMapState::instance.mapOrientation) {
+        if (DAT_TileMapState::instance.mapOrientation != 0) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar12 = 80408;
             } else if (DAT_TileMapState::instance.mapOrientation == 4) {
@@ -84,7 +87,7 @@ namespace UI {
                 }
                 if (_yOffset / 100 <= (int)uVar10) {
                     if ((_paramSum * 400) / 100 <= (int)uVar10) {}
-                    if ((local_58 != 2) || (!(local_48 & 1))) {
+                    if (local_58 != 2 || (local_48 & 1) == 0) {
                         int iVar11 = uVar3 - 2;
                         local_2c = iVar1 / local_3c - uVar3;
                         if (iVar11 < local_2c) {
@@ -96,12 +99,12 @@ namespace UI {
                                 _tile = *local_50;
                                 _tile1003 = DAT_TileMapState::instance.LogicLayer[_tile];
                                 iVar12 = 0;
-                                if (!(_tile1003 & 0x40000000)) {
-                                    if (!(_tile1003 & 0x3000)) {
+                                if ((_tile1003 & 0x40000000) == 0) {
+                                    if ((_tile1003 & 0x3000) == 0) {
                                         uVar9 = DAT_MiniMapDefinedData::instance.MinimapColorByLogicBit[0].integer;
-                                        if (!(_tile1003 & 8)) {
-                                            while (!(uVar9 & _tile1003)) {
-                                                if (!uVar9)
+                                        if ((_tile1003 & 8) == 0) {
+                                            while ((uVar9 & _tile1003) == 0) {
+                                                if (uVar9 == 0)
                                                     goto LAB_004b55d3;
                                                 iVar11 = iVar12 + 1;
                                                 iVar12 = iVar12 + 1;
@@ -111,7 +114,7 @@ namespace UI {
                                             param_4
                                                 = (uint)DAT_MiniMapDefinedData::instance.MinimapColorByLogicBit[iVar12]
                                                       .colorModeSpecificValue[_isRGB565];
-                                        } else if (!(DAT_TileMapState::instance.MiscDisplayLayer[_tile] & 0x2000)) {
+                                        } else if ((DAT_TileMapState::instance.MiscDisplayLayer[_tile] & 0x2000) == 0) {
                                         LAB_004b55d3:
                                             param_4 = 0;
                                         } else {
@@ -119,17 +122,17 @@ namespace UI {
                                         }
                                     } else {
                                         param_4 = (uint)DAT_MiniMapDefinedData::instance.field16_0x144[_isRGB565
-                                            + ((int)(short)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
+                                            + ((int)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
                                     }
                                 } else {
                                     param_4 = (uint)DAT_MiniMapDefinedData::instance.field6_0x74[_isRGB565
-                                        + ((int)(short)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
+                                        + ((int)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
                                 }
-                                if (((DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) && ((short)param_4 != 0))
-                                    && (!(_tile1003 & 2))) {
-                                    iVar12 = DAT_MiniMapDefinedData::instance
-                                                 .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
-                                    if (!_isRGB565) {
+                                if (DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2 && (short)param_4 != 0
+                                    && (_tile1003 & 2) == 0) {
+                                    iVar12 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
+                                                 [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                    if (_isRGB565 == 0) {
                                         uVar9 = (int)((param_4 & 0x7c00) * iVar12) / 100;
                                         if (0x7c00 < (int)uVar9) {
                                             uVar9 = 0x7c00;
@@ -163,8 +166,8 @@ namespace UI {
                                     uVar9 = param_4;
                                     if (0 < param_2) {
                                         do {
-                                            if (((-1 < (int)(uVar6 + local_38))
-                                                    && ((int)(uVar6 + local_38) < iVar1 * param_2))
+                                            if (0 <= (int)(uVar6 + local_38)
+                                                && (int)(uVar6 + local_38) < iVar1 * param_2
                                                 && (local_4c = 0, 0 < param_3)) {
                                                 do {
                                                     if ((short)uVar9 == 0) {
@@ -174,7 +177,8 @@ namespace UI {
                                                                       + uVar6 + local_38];
                                                         param_4 = uVar9;
                                                     }
-                                                    *(undefined2*)((uVar6 + local_38) * 2 + 0x1a31654
+                                                    *(undefined2*)((uVar6 + local_38) * 2
+                                                        + (int)DAT_MinimapViewState::instance.field17_0x44
                                                         + (param_5 + local_4c) * 400) = (undefined2)param_4;
                                                     local_4c = local_4c + 1;
                                                 } while (local_4c < param_3);
@@ -189,27 +193,32 @@ namespace UI {
                                         iVar12 = uVar6 + uVar9;
                                         uVar9 = param_4;
                                         do {
-                                            if ((-1 < iVar12) && (iVar12 < iVar1 * param_2)) {
-                                                for (iVar7 = 0; iVar7 < param_3; iVar7++) {
-                                                    int iVar5 = (param_5 + iVar7) / local_58;
-                                                    if ((short)uVar9 == 0) {
-                                                        uVar9 = (uint)this->minimapPixelBuffer[(iVar5 * 400) / 2
-                                                            + iVar12 / local_58];
-                                                        param_4 = uVar9;
-                                                    }
-                                                    *(undefined2*)((iVar12 / local_58) * 2 + 0x1a31654 + iVar5 * 400)
-                                                        = (undefined2)param_4;
+                                            if ((0 <= iVar12) && (iVar12 < iVar1 * param_2)) {
+                                                int iVar7 = 0;
+                                                if (0 < param_3) {
+                                                    do {
+                                                        int iVar5 = (param_5 + iVar7) / local_58;
+                                                        if ((short)uVar9 == 0) {
+                                                            uVar9 = (uint)this->minimapPixelBuffer[(iVar5 * 400) / 2
+                                                                + iVar12 / local_58];
+                                                            param_4 = uVar9;
+                                                        }
+                                                        *(undefined2*)((iVar12 / local_58) * 2
+                                                            + (int)DAT_MinimapViewState::instance.field17_0x44
+                                                            + iVar5 * 400) = (undefined2)param_4;
+                                                        iVar7 = iVar7 + 1;
+                                                    } while (iVar7 < param_3);
                                                 }
                                             }
                                             iVar12 = iVar12 + 2;
                                             iVar11 = iVar11 + -1;
-                                        } while (iVar11);
+                                        } while (iVar11 != 0);
                                     }
                                 }
                                 uVar6 = uVar6 + param_2;
                                 local_50 = local_50 + 1;
                                 local_2c = local_2c + -1;
-                            } while (local_2c);
+                            } while (local_2c != 0);
                         }
                     }
                 }

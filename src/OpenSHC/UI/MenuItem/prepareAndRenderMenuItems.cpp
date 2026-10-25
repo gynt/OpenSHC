@@ -22,9 +22,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using UI::Enums::MenuItemRenderFunctionType;
-    using UI::Enums::MenuItemType;
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::UI::Enums::MenuItemRenderFunctionType;
+    using OpenSHC::UI::Enums::MenuItemType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F49D0
     void MenuItem::prepareAndRenderMenuItems()
@@ -37,8 +37,8 @@ namespace UI {
         int iVar6;
         int iVar7;
         int iVar8;
-        if (!this->iconDeactivatedUnk_0x36) {
-            if (this->menuItemRenderFunctionType == UI::Enums::MIRFT_GM_DATA_IMAGE) {
+        if (this->iconDeactivatedUnk_0x36 == 0) {
+            if (this->menuItemRenderFunctionType == OpenSHC::UI::Enums::MIRFT_GM_DATA_IMAGE) {
                 iVar7 = GMTotalPicturesProcessed::instance[DAT_UIButtonDefinedData::instance
                         .ButtonGmDataArray[(this->firstItemTypeData).gmDataIndex]
                         .gmId_0x0];
@@ -57,11 +57,11 @@ namespace UI {
             DAT_ButtonCurrentlyInteracting::instance = (BOOLEnum)(short)(this->clicked | this->hovering);
             DAT_ButtonBlendStrength::instance = 0;
             DAT_ButtonUnknownZero::instance = (int)this->unknownZero;
-            if (DAT_GameCore::instance.hasMenuRenderedUnk) {
+            if (DAT_GameCore::instance.hasMenuRenderedUnk != 0) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
             }
             iVar7 = this->menuPointer->currentBuildMenuButtonShiftUnk_0x14;
-            if (iVar7) {
+            if (iVar7 != 0) {
                 iVar5 = (this->position).position.x;
                 if (iVar5 - iVar7 < (int)DAT_MenuHandlerState::instance.const017) {
                     DAT_ButtonBlendStrength::instance = 0;
@@ -82,8 +82,8 @@ namespace UI {
                 }
             }
             MVar3 = this->menuItemRenderFunctionType;
-            if (MVar3 == UI::Enums::MIRFT_SLIDER_OR_SCROLLBAR) {
-                if (this->menuPointer->one) {
+            if (MVar3 == OpenSHC::UI::Enums::MIRFT_SLIDER_OR_SCROLLBAR) {
+                if (this->menuPointer->one != 0) {
                     piVar1 = &(this->secondItemTypeData).buttonState.countTo100;
                     piVar2 = &(this->secondItemTypeData).buttonState.clickTimestamp_0x4;
                     (*(this->menuItemActionHandler).slider)(
@@ -100,13 +100,14 @@ namespace UI {
                 }
                 iVar7 = this->itemWidth;
                 iVar5 = 0;
-                if ((this->menuItemType & UI::Enums::MIT_MENU_ITEM_TYPE_ID_PARTUnk) == UI::Enums::MIT_SCROLLBARUnk) {
+                if ((this->menuItemType & OpenSHC::UI::Enums::MIT_MENU_ITEM_TYPE_ID_PARTUnk)
+                    == OpenSHC::UI::Enums::MIT_SCROLLBARUnk) {
                     iVar7 = this->itemHeight;
                 }
                 iVar4 = (this->secondItemTypeData).buttonState.someTimestamp_1_0x0;
                 iVar8 = (this->secondItemTypeData).buttonState.clickTimestamp_0x4 - iVar4;
                 iVar6 = iVar7;
-                if (0 < iVar8) {
+                if (1 <= iVar8) {
                     iVar6 = iVar7 / (iVar8 + 1);
                     if (iVar6 <= (this->firstItemTypeData).itemsToSkip) {
                         iVar6 = (this->firstItemTypeData).itemsToSkip;
@@ -116,9 +117,9 @@ namespace UI {
                 (*(this->menuItemRenderFunction).slider)((this->callbackParameter).parameter, iVar5,
                     (this->secondItemTypeData).buttonState.countTo100, iVar6,
                     -1000 < (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc);
-            } else if (MVar3 == UI::Enums::MIRFT_SIMPLE_RENDERUnk) {
+            } else if (MVar3 == OpenSHC::UI::Enums::MIRFT_SIMPLE_RENDERUnk) {
                 (*(this->menuItemRenderFunction).simple)((this->callbackParameter).parameter);
-            } else if (MVar3 == UI::Enums::MIRFT_GM_DATA_IMAGE) {
+            } else if (MVar3 == OpenSHC::UI::Enums::MIRFT_GM_DATA_IMAGE) {
                 (*(this->menuItemRenderFunction).gmDataImage)((this->callbackParameter).parameter);
                 (this->secondItemTypeData).buttonState.currentButtonPictureInGm_0xc
                     = DAT_CurrentButtonPictureInGm::instance;

@@ -43,24 +43,17 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B0B30
     void MenuModalComposition::renderMenuModal()
     {
-        uint uVar1;
         BOOLEnum _areWeInAnInGameMenu;
-        int _width;
         DWORD _currentTime;
-        int imageID;
-        int _top;
         int _left;
-        int _color;
-        int _height;
-        int _top2;
         Menu* _menu;
         int _x;
         if ((this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
             && (this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NO_MENU)) {
-            if (this->mbr_0x6c) {
+            if (this->mbr_0x6c != 0) {
                 _currentTime = timeGetTime();
                 this->disappearAfter = this->disappearAfter - (_currentTime - this->timeItIsSet) / 75;
-                if (this->disappearAfter < 1) {
+                if ((int)this->disappearAfter <= 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, this)(
                         OpenSHC::UI::Enums::MMT_NONE, FALSE);
                     this->disappearAfter = 0;
@@ -69,21 +62,21 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            _top = (this->modalMenu).y;
-            if (!_areWeInAnInGameMenu) {
+            int _top = (this->modalMenu).y;
+            if (_areWeInAnInGameMenu == FALSE) {
                 _left = (this->modalMenu).x;
             } else {
                 _left = (this->modalMenu).x + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX;
                 _top = _top + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            _width = (this->modalMenu).width;
+            int _width = (this->modalMenu).width;
             _x = (this->modalMenu).x;
             if (DAT_WindowAndDirectDraw::instance.resolutionX < _x + _width) {
                 _width = DAT_WindowAndDirectDraw::instance.resolutionX - _x;
             }
-            _height = (this->modalMenu).height;
-            _color = (this->modalMenu).backgroundColourIndex;
+            int _height = (this->modalMenu).height;
+            int _color = (this->modalMenu).backgroundColourIndex;
             switch (_color) {
             case 1:
                 _color = (int)COL_RED::instance.shortValue;
@@ -114,64 +107,65 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (!_areWeInAnInGameMenu) {
+            if (_areWeInAnInGameMenu == FALSE) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             } else {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            if (((((this->modalMenu).borderStyle & 0x400U)) && (this->disappearAfter < 32)) && (!this->mbr_0x6c)) {
+            if (((this->modalMenu).borderStyle & 0x400U) != 0 && (int)this->disappearAfter < 32
+                && this->mbr_0x6c == 0) {
                 _currentTime = timeGetTime();
                 /*
                   fixme
                  */
                 this->disappearAfter = this->disappearAfter + (_currentTime - this->timeItIsSet) / 75;
             }
-            _top2 = _top;
-            if (((this->modalMenu).borderStyle & 2)) {
+            int _top2 = _top;
+            if (((this->modalMenu).borderStyle & 2) != 0) {
                 _top2 = _top + 0xc;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                    _left, _top, _width + _left, _top2, (ushort)((int)(COL_DARK_CYAN_GREY::instance.shortValue)));
+                    _left, _top, _width + _left, _top2, (ushort)(COL_DARK_CYAN_GREY::instance.shortValue));
                 _height = _height + -0xc;
             }
-            if (((this->modalMenu).borderStyle & 1)) {
+            if (((this->modalMenu).borderStyle & 1) != 0) {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(_left,
-                    _top2, _width + _left, _height + _top2, (ushort)((int)((this->modalMenu).backgroundColourIndex)));
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
+                    _left, _top2, _width + _left, _height + _top2, (ushort)((this->modalMenu).backgroundColourIndex));
             }
-            if (((this->modalMenu).borderStyle & 8)) {
+            if (((this->modalMenu).borderStyle & 8) != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                     _left, _top2, _width + _left, _height + _top2);
             }
-            if (((this->modalMenu).borderStyle & 0x10)) {
+            if (((this->modalMenu).borderStyle & 0x10) != 0) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                     _left, _top2, _width + _left, _height + _top2, OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            if (((this->modalMenu).borderStyle & 0x20)) {
+            if (((this->modalMenu).borderStyle & 0x20) != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::drawBorderStyle0x20, DAT_TextEditorState::ptr)(
                     _left, _top2, _width, _height);
             }
-            if (((this->modalMenu).borderStyle & 0x80)) {
+            if (((this->modalMenu).borderStyle & 0x80) != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
-                    DAT_PencilRenderCore::ptr)(_left, _top2, _width + _left, _height + _top2, (ushort)((int)(_color)),
-                    OpenSHC::UI::Enums::RBERL_STRONG);
+                    DAT_PencilRenderCore::ptr)(
+                    _left, _top2, _width + _left, _height + _top2, (ushort)(_color), OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            if (((this->modalMenu).borderStyle & 0x100U)) {
+            if (((this->modalMenu).borderStyle & 0x100U) != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                     DAT_PencilRenderCore::ptr)(_left, _top2, _width + _left, _height + _top2,
-                    (ushort)((int)(COL_BLACK::instance.shortValue)), OpenSHC::UI::Enums::RBERL_STRONG);
+                    (ushort)(COL_BLACK::instance.shortValue), OpenSHC::UI::Enums::RBERL_STRONG);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                     DAT_PencilRenderCore::ptr)(_left + 3, _top2 + 3, _width + _left + -3, _height + _top2 + -3,
-                    (ushort)((int)(_color)), OpenSHC::UI::Enums::RBERL_STRONG);
+                    (ushort)(_color), OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            uVar1 = (this->modalMenu).borderStyle;
-            if (((uVar1 & 0x200)) || ((uVar1 & 0x20))) {
+            uint uVar1 = (this->modalMenu).borderStyle;
+            if ((uVar1 & 0x200) != 0 || (uVar1 & 0x20) != 0) {
                 _height = 0;
                 if (0 < (this->modalMenu).height) {
                     do {
-                        if (!_height) {
+                        if (_height == 0) {
                             _width = 1;
                         } else {
                             _width = (-(uint)(_height != (this->modalMenu).height + -0x18) & 0xfffffffa) + 0xd;
@@ -179,15 +173,15 @@ namespace UI {
                         _x = 0;
                         if (0 < (this->modalMenu).width) {
                             do {
-                                imageID = _width;
-                                if (!_x) {
+                                int imageID = _width;
+                                if (_x == 0) {
                                 LAB_004b0e31:
                                     MACRO_CALL_MEMBER(
                                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
                                         imageID, _x + _left, _height + _top2,
                                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
-                                        (int)((int)(0x20 - this->disappearAfter)));
+                                        (int)(0x20 - this->disappearAfter));
                                 } else {
                                     if (_x == (this->modalMenu).width + -0x18) {
                                         imageID = _width + 2;
@@ -211,7 +205,7 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu) {
+            if (_areWeInAnInGameMenu != FALSE) {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
@@ -219,7 +213,7 @@ namespace UI {
                 _left, _top2, (this->modalMenu).width, (this->modalMenu).height);
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (!_areWeInAnInGameMenu) {
+            if (_areWeInAnInGameMenu == FALSE) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             } else {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;

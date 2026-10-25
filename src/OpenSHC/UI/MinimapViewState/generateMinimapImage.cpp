@@ -4,7 +4,6 @@
 #include "OpenSHC/Rendering/ColorMode.hpp"
 
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -24,8 +23,6 @@ namespace UI {
         MinimapViewState* local_20c;
         uint local_208;
         ushort local_204[256];
-        uint local_4;
-        local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_20c;
         local_20c = this;
         iVar4 = 0;
         _Src = MACRO_CALL(OpenSHC::OS_Func::_malloc)(40000);
@@ -36,11 +33,15 @@ namespace UI {
         pasVar5 = this->loadedMiniMap;
         do {
             uVar2 = (ushort)(*pasVar5)[0] & local_208;
-            for (iVar1 = 0; iVar1 < iVar4; iVar1++) {
-                if (uVar2 == local_204[iVar1]) {
-                    *(char*)(iVar3 + (int)_Src) = (char)iVar1;
-                    goto LAB_004b6281;
-                }
+            iVar1 = 0;
+            if (0 < iVar4) {
+                do {
+                    if (uVar2 == local_204[iVar1]) {
+                        *(char*)(iVar3 + (int)_Src) = (char)iVar1;
+                        goto LAB_004b6281;
+                    }
+                    iVar1 = iVar1 + 1;
+                } while (iVar1 < iVar4);
             }
             if (iVar4 < 0x100) {
                 local_204[iVar4] = (ushort)uVar2;
@@ -52,7 +53,7 @@ namespace UI {
         LAB_004b6281:
             iVar3 = iVar3 + 1;
             pasVar5 = (short (*)[200])(*pasVar5 + 1);
-            if (39999 < iVar3) {
+            if (40000 <= iVar3) {
                 if ((DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565)
                     && (iVar3 = 0, 0 < iVar4)) {
                     do {

@@ -14,9 +14,9 @@
 namespace OpenSHC {
 namespace UI {
 
-    using UI::Enums::MenuModalType;
-    using UI::Enums::MenuViewType;
-    using WindowsHelper::Enums::BOOLEnum;
+    using OpenSHC::UI::Enums::MenuModalType;
+    using OpenSHC::UI::Enums::MenuViewType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA1F0
     void MenuModalComposition::update()
@@ -27,7 +27,7 @@ namespace UI {
         int _y;
         this->minus1 = 0;
         this->mbr_0x78 = 0;
-        if (this->activeModalDialogID == UI::Enums::MMT_NONE) {}
+        if (this->activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {}
         uint _borderStyle = (this->modalMenu).borderStyle;
         if ((_borderStyle & 4) == 0 || (_borderStyle & 2) == 0)
             goto LAB_004aa311;
@@ -48,7 +48,7 @@ namespace UI {
             }
             goto LAB_004aa272;
         }
-        if (!DAT_MouseState::instance.leftClickState) {
+        if (DAT_MouseState::instance.leftClickState == FALSE) {
             this->modalDragDropUnk = 0;
         } else {
             int _x2 = DAT_MouseState::instance.screenSpaceX - this->mouseRelativeX;
@@ -61,10 +61,11 @@ namespace UI {
             if (_y2 < 0) {
                 (this->modalMenu).y = 0;
             }
-            _areWeInAnInGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            _areWeInAnInGameMenu
+                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
             int _width = (this->modalMenu).width;
             int _x3 = (this->modalMenu).x + _width;
-            if (!_areWeInAnInGameMenu) {
+            if (_areWeInAnInGameMenu == FALSE) {
                 if (DAT_WindowAndDirectDraw::instance.gameResolutionX <= _x3) {
                     (this->modalMenu).x = DAT_WindowAndDirectDraw::instance.gameResolutionX - _width;
                 }
@@ -89,7 +90,7 @@ namespace UI {
             _y = (this->modalMenu).y;
             _menuPtr->xPosition = (this->modalMenu).x;
             _menuPtr->yPosition = _y;
-            MACRO_CALL_MEMBER(UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToMenu)();
+            MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToMenu)();
         }
         if (this->minus1 == -1) {
             this->minus1 = 0;
@@ -103,14 +104,15 @@ namespace UI {
                 || this->modalDragDropUnk != 0) {
                 this->minus1 = 1;
             }
-            _areWeInAnInGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if ((!_areWeInAnInGameMenu)
-                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
+            _areWeInAnInGameMenu
+                = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            if ((_areWeInAnInGameMenu == FALSE)
+                && (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION)) {
                 this->minus1 = 1;
             }
             if ((this->slot == 0)
                 && (_isInTickingGameMode
-                    = MACRO_CALL_MEMBER(Game::GameCore_Func::isGameHaltingMenuOpen, DAT_GameCore::ptr)(),
+                    = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::isGameHaltingMenuOpen, DAT_GameCore::ptr)(),
                     _isInTickingGameMode != 0)) {
                 this->minus1 = 1;
             }
@@ -120,7 +122,8 @@ namespace UI {
             this->minus1 = (uint)(DAT_MenuHandlerState::instance.field18_0x3c != 0);
         }
         if ((_borderStyle & 0x1000) != 0) {
-            if ((this->minus1 != 0) && (this->activeModalDialogID != UI::Enums::MMT_DISPLAY_SCENARIO_HELP_TEXT)) {
+            if ((this->minus1 != 0)
+                && (this->activeModalDialogID != OpenSHC::UI::Enums::MMT_DISPLAY_SCENARIO_HELP_TEXT)) {
                 this->mbr_0x78 = 1;
             }
             this->minus1 = 0;

@@ -21,15 +21,15 @@ namespace UI {
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);
         this->DAT_SomeMiniMapCounterTill4 = 0;
-        if (this->needsRedraw || xOffset != this->lastRenderedXOffset || yOffset != this->lastRenderedYOffset) {
-            if (DAT_TileMapState::instance.mapSize < 0xc9) {
+        if (this->needsRedraw != 0 || xOffset != this->lastRenderedXOffset || yOffset != this->lastRenderedYOffset) {
+            if (DAT_TileMapState::instance.mapSize <= 0xc8) {
                 heightFactor = 2;
                 widthFactor = 4;
             } else {
                 heightFactor = 1;
                 widthFactor = 2;
             }
-            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::drawMinimap, this)(
+            MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::drawMinimap, this)(
                 xPos, yPos, width, height, 5, xOffset, yOffset, widthFactor, heightFactor, -1);
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
         }

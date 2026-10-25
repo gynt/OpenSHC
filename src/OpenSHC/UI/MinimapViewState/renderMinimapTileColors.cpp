@@ -1,6 +1,7 @@
 #include "../MinimapViewState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_MiniMapDefinedData.hpp"
+#include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
@@ -23,7 +24,7 @@ namespace UI {
         int local_20;
         int _tile;
         uint _tile1003;
-        byte _tileTerrain;
+        int _tileTerrain;
         int _viewportWidth;
         _viewportWidth = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
         int iVar6 = param_4 * 400;
@@ -32,7 +33,7 @@ namespace UI {
         int iVar7 = 1;
         int local_54 = 1;
         local_38 = 2;
-        if ((param_1 & 4)) {
+        if ((param_1 & 4) != 0) {
             iVar7 = 2;
             local_54 = 2;
         }
@@ -43,7 +44,7 @@ namespace UI {
             local_38 = 1;
         }
         int iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
-        if (!DAT_TileMapState::instance.mapOrientation) {
+        if (DAT_TileMapState::instance.mapOrientation == 0) {
             iVar5 = 8;
         } else if (DAT_TileMapState::instance.mapOrientation == 6) {
             iVar5 = 80408;
@@ -75,7 +76,7 @@ namespace UI {
                 }
                 if (iVar6 / 100 <= (int)param_1) {
                     if ((iVar2 * 400) / 100 <= (int)param_1) {}
-                    if (((local_54 != 2) || (!(local_3c & 1)))
+                    if (((local_54 != 2) || ((local_3c & 1) == 0))
                         && (local_24 = iVar3 / local_38 - uVar4, (int)uVar4 < local_24)) {
                         local_40 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar4 + local_50 + -8;
                         local_24 = local_24 - uVar4;
@@ -83,53 +84,57 @@ namespace UI {
                             _tile = *local_40;
                             _tile1003 = DAT_TileMapState::instance.LogicLayer[_tile];
                             _tileTerrain = DAT_TileMapState::instance.Logic2Layer[_tile];
-                            uint _tileRandom = (uint)(short)DAT_TileMapState::instance.RandomLayer[_tile];
-                            if (!(_tile1003 & 0x30)) {
-                                if (!(_tile1003 & 1)) {
-                                    if (!(_tile1003 & 0x200000)) {
-                                        if (!(_tile1003 & 0x100000)) {
-                                            if (!(_tile1003 & 0x20000)) {
+                            uint _tileRandom = (uint)DAT_TileMapState::instance.RandomLayer[_tile];
+                            if ((_tile1003 & 0x30) == 0) {
+                                if ((_tile1003 & 1) == 0) {
+                                    if ((_tile1003 & 0x200000) == 0) {
+                                        if ((_tile1003 & 0x100000) == 0) {
+                                            if ((_tile1003 & 0x20000) == 0) {
                                                 if ((char)_tile1003 < '\0') {
                                                     _tileColor
                                                         = (uint)DAT_MiniMapDefinedData::instance
                                                               .MinimapColorArray[_colorMode + (_tileRandom & 3) * 2];
-                                                } else if (!(_tile1003 & 0x40000)) {
-                                                    if (!(_tileTerrain & 0x40)) {
-                                                        if (!(_tileTerrain & 0x20)) {
-                                                            if ((!(_tileTerrain & 0x10)) || (!(_tile1003 & 0x8000))) {
-                                                                if (((char)_tileTerrain < '\0')
-                                                                    && ((_tile1003 & 0x8000))) {
+                                                } else if ((_tile1003 & 0x40000) == 0) {
+                                                    if ((_tileTerrain & 0x40) == 0) {
+                                                        if ((_tileTerrain & 0x20) == 0) {
+                                                            if ((_tileTerrain & 0x10) == 0
+                                                                || (_tile1003 & 0x8000) == 0) {
+                                                                if (_tileTerrain < '\0'
+                                                                    && (_tile1003 & 0x8000) != 0) {
                                                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
                                                                                      .ThickScrubMinimapColors[_colorMode
                                                                                          + (_tileRandom & 3) * 2];
-                                                                } else if ((!(_tileTerrain & 1))
-                                                                    || (!(_tile1003 & 0x8000))) {
-                                                                    if (!(_tile1003 & 0x80000)) {
-                                                                        if (!(_tile1003 & 0xa0000000)) {
+                                                                } else if ((_tileTerrain & 1) == 0
+                                                                    || (_tile1003 & 0x8000) == 0) {
+                                                                    if ((_tile1003 & 0x80000) == 0) {
+                                                                        if ((_tile1003 & 0xa0000000) == 0) {
                                                                             if (0x10 < DAT_TileMapState::instance
                                                                                     .HeightLayer[_tile])
                                                                                 goto LAB_004b5bbe;
-                                                                            if ((!(_tileTerrain & 2))
-                                                                                && (!(_tile1003 & 8))) {
+                                                                            if ((_tileTerrain & 2) == 0
+                                                                                && (_tile1003 & 8) == 0) {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
-                                                                                          instance
-                                                                                              .EarthMinimapColors[_colorMode
+                                                                                          instance.EarthMinimapColors
+                                                                                              [_colorMode
                                                                                                   + (_tileRandom & 7)
                                                                                                       * 2];
                                                                             } else {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
                                                                                           instance
-                                                                                              .EarthAndStonesMinimapColors[_colorMode
-                                                                                                  + (_tileRandom & 7)
-                                                                                                      * 2];
+                                                                                              .EarthAndStonesMinimapColors
+                                                                                                  [_colorMode
+                                                                                                      + (_tileRandom
+                                                                                                            & 7)
+                                                                                                          * 2];
                                                                             }
                                                                         } else {
                                                                             _tileColor
                                                                                 = (uint)DAT_MiniMapDefinedData::instance
-                                                                                      .MarshOrOilMinimapColors[_colorMode
-                                                                                          + (_tileRandom & 3) * 2];
+                                                                                      .MarshOrOilMinimapColors
+                                                                                          [_colorMode
+                                                                                              + (_tileRandom & 3) * 2];
                                                                         }
                                                                     } else {
                                                                         _tileColor
@@ -148,23 +153,25 @@ namespace UI {
                                                                                      + (_tileRandom & 3) * 2];
                                                             }
                                                         } else {
-                                                            _tileColor
-                                                                = (uint)DAT_MiniMapDefinedData::instance
-                                                                      .BeachMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                            _tileColor = (uint)DAT_MiniMapDefinedData::instance
+                                                                             .BeachMinimapColors[_colorMode
+                                                                                 + (_tileRandom & 3) * 2];
                                                         }
                                                     } else {
                                                     LAB_004b5bbe:
-                                                        _tileColor
-                                                            = (uint)DAT_MiniMapDefinedData::instance
-                                                                  .StonesOrDrivenSandMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                        _tileColor = (uint)DAT_MiniMapDefinedData::instance
+                                                                         .StonesOrDrivenSandMinimapColors[_colorMode
+                                                                             + (_tileRandom & 3) * 2];
                                                     }
                                                 } else {
-                                                    _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                     .PebblesMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                    _tileColor
+                                                        = (uint)DAT_MiniMapDefinedData::instance
+                                                              .PebblesMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                                 }
                                             } else {
-                                                _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                 .BouldersMinimapColors[_colorMode + (_tileRandom & 7) * 2];
+                                                _tileColor
+                                                    = (uint)DAT_MiniMapDefinedData::instance
+                                                          .BouldersMinimapColors[_colorMode + (_tileRandom & 7) * 2];
                                             }
                                         } else {
                                             _tileColor = (uint)DAT_MiniMapDefinedData::instance
@@ -183,9 +190,9 @@ namespace UI {
                             }
                             (*(short*)&param_4) = (ushort)_tileColor;
                             if (DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) {
-                                iVar5 = DAT_MiniMapDefinedData::instance
-                                            .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
-                                if (!_colorMode) {
+                                iVar5 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
+                                            [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                if (_colorMode == 0) {
                                     iVar8 = (int)((_tileColor & 0x7c00) * iVar5) / 100;
                                     if (0x7c00 < iVar8) {
                                         iVar8 = 31744;
@@ -218,16 +225,21 @@ namespace UI {
                                 }
                             }
                             if (local_54 == 1) {
-                                for (local_2c = 0; local_2c < param_2; local_2c++) {
-                                    if (((-1 < (int)(param_5 + local_2c))
-                                            && ((int)(param_5 + local_2c) < iVar3 * param_2))
-                                        && (local_30 = 0, 0 < param_3)) {
-                                        do {
-                                            *(ushort*)((param_5 + local_2c) * 2 + 0x1a58754
-                                                + (local_4c + local_30) * 400) = (ushort)param_4;
-                                            local_30 = local_30 + 1;
-                                        } while (local_30 < param_3);
-                                    }
+                                local_2c = 0;
+                                if (0 < param_2) {
+                                    do {
+                                        if (-1 < (int)(param_5 + local_2c)
+                                            && (int)(param_5 + local_2c) < iVar3 * param_2
+                                            && (local_30 = 0, 0 < param_3)) {
+                                            do {
+                                                *(ushort*)((param_5 + local_2c) * 2
+                                                    + (int)DAT_MinimapViewState::instance.minimapPixelBuffer
+                                                    + (local_4c + local_30) * 400) = (ushort)param_4;
+                                                local_30 = local_30 + 1;
+                                            } while (local_30 < param_3);
+                                        }
+                                        local_2c = local_2c + 1;
+                                    } while (local_2c < param_2);
                                 }
                             } else {
                                 _tileColor = param_5 & 1;
@@ -236,20 +248,25 @@ namespace UI {
                                     iVar8 = ((param_2 - _tileColor) - 1 >> 1) + 1;
                                     do {
                                         if ((-1 < iVar5) && (iVar5 < iVar3 * param_2)) {
-                                            for (iVar9 = 0; iVar9 < param_3; iVar9++) {
-                                                *(ushort*)((iVar5 / local_54) * 2 + 0x1a58754
-                                                    + ((local_4c + iVar9) / local_54) * 400) = (ushort)param_4;
+                                            iVar9 = 0;
+                                            if (0 < param_3) {
+                                                do {
+                                                    *(ushort*)((iVar5 / local_54) * 2
+                                                        + (int)DAT_MinimapViewState::instance.minimapPixelBuffer
+                                                        + ((local_4c + iVar9) / local_54) * 400) = (ushort)param_4;
+                                                    iVar9 = iVar9 + 1;
+                                                } while (iVar9 < param_3);
                                             }
                                         }
                                         iVar5 = iVar5 + 2;
                                         iVar8 = iVar8 + -1;
-                                    } while (iVar8);
+                                    } while (iVar8 != 0);
                                 }
                             }
                             local_40 = local_40 + 1;
                             param_5 = param_5 + param_2;
                             local_24 = local_24 + -1;
-                        } while (local_24);
+                        } while (local_24 != 0);
                     }
                 }
                 local_3c = local_3c + param_3;

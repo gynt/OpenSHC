@@ -6,26 +6,24 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B6480
     void MinimapViewState::clearOldSpawnMoment()
     {
-        DWORD _now;
-        int* piVar1;
-        int _index;
-        int _nextIndex;
-        DWORD* _ptrMoment;
-        if (this->spawnMomentCount) {
-            _now = timeGetTime();
-            if (0 < this->spawnMomentCount) {
-                _ptrMoment = this->spawnMoment;
-                _index = 0;
-                while (_nextIndex = _index + 1, (int)(_now - *_ptrMoment) < 20000) {
-                    _ptrMoment = _ptrMoment + 1;
-                    _index = _nextIndex;
-                    if (this->spawnMomentCount <= _nextIndex) {}
-                }
-                /*
-                  If there is a spawnmoment after 20 seconds
-                 */
-                if (_nextIndex < this->spawnMomentCount) {
-                    piVar1 = this->spawnMomentX + _index;
+        if (this->spawnMomentCount == 0) {
+            return;
+        }
+        DWORD _now = timeGetTime();
+        int _count = this->spawnMomentCount;
+        int _nextIndex = 0;
+        if (_count <= 0) {
+            return;
+        }
+        DWORD* _ptrMoment = this->spawnMoment;
+        do {
+            _nextIndex = _nextIndex + 1;
+            /*
+              If there is a spawnmoment older than 20 seconds, drop it and shift the rest down
+             */
+            if (20000 < (int)(_now - *_ptrMoment)) {
+                if (_nextIndex < _count) {
+                    int* piVar1 = this->spawnMomentX + _nextIndex + -1;
                     do {
                         *piVar1 = piVar1[1];
                         piVar1[0x14] = piVar1[0x15];
@@ -35,8 +33,10 @@ namespace UI {
                     } while (_nextIndex < this->spawnMomentCount);
                 }
                 this->spawnMomentCount = this->spawnMomentCount + -1;
+                return;
             }
-        }
+            _ptrMoment = _ptrMoment + 1;
+        } while (_nextIndex < _count);
     }
 
 }

@@ -20,15 +20,13 @@ namespace UI {
         _ranking[6] = -1;
         _ranking[7] = -1;
         _ranking[8] = -1;
-        int _playerID = 0;
-        do {
+        for (int _playerID = 0; _playerID < 9; _playerID = _playerID + 1) {
             if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1)
-                || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
-                int _rank = MACRO_CALL(Audio::SFX_Func::ComputePlayerRanking)(_playerID);
-                _ranking[_rank] = _playerID;
+            || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)) {
+            int _rank = MACRO_CALL(OpenSHC::Audio::SFX_Func::ComputePlayerRanking)(_playerID);
+            _ranking[_rank] = _playerID;
             }
-            _playerID = _playerID + 1;
-        } while (_playerID < 9);
+        }
         return _ranking[rankingPosition + 1];
     }
 

@@ -8,10 +8,12 @@ namespace OpenSHC {
 namespace UI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B5280
+#pragma optimize("y", off)
     void MinimapViewState::renderMinimapPreview(int screenX, int screenY)
     {
         int iVar5;
-        MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
+        MACRO_CALL_MEMBER(
+            OpenSHC::UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
         iVar5 = (int)DAT_PencilRenderCore::instance.surfacePtr
             + screenY * DAT_PencilRenderCore::instance.horizontalByteSize + screenX * 2;
         int iVar4 = 0x1a7f854;
@@ -25,12 +27,13 @@ namespace UI {
                 }
                 iVar3 = iVar3 + 2;
                 iVar1 = iVar1 + -1;
-            } while (iVar1);
+            } while (iVar1 != 0);
             iVar4 = iVar4 + 400;
             iVar5 = iVar5 + DAT_PencilRenderCore::instance.horizontalByteSize;
             iVar2 = iVar2 + -1;
-        } while (iVar2);
+        } while (iVar2 != 0);
     }
+#pragma optimize("y", on)
 
 }
 }

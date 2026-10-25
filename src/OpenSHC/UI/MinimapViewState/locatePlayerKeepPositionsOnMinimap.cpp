@@ -10,11 +10,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B5F70
     void MinimapViewState::locatePlayerKeepPositionsOnMinimap(uint param_1, int param_2, int param_3)
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
-        uint uVar4;
-        uint uVar5;
         int* piVar6;
         int iVar7;
         int iVar8;
@@ -28,7 +23,7 @@ namespace UI {
         int local_24;
         int local_20;
         int local_18;
-        iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
+        int iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
         iVar8 = 1;
         local_2c = 0;
         iVar7 = 8;
@@ -50,7 +45,7 @@ namespace UI {
         this->DAT_MapU4B64.keepPositions[6].y = -1;
         this->DAT_MapU4B64.keepPositions[7].x = -1;
         this->DAT_MapU4B64.keepPositions[7].y = -1;
-        if ((param_1 & 4)) {
+        if ((param_1 & 4) != 0) {
             local_34 = 2;
             iVar8 = 2;
         }
@@ -58,8 +53,8 @@ namespace UI {
             local_2c = 100;
             local_24 = 1;
         }
-        iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
-        if (DAT_TileMapState::instance.mapOrientation) {
+        int iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
+        if (DAT_TileMapState::instance.mapOrientation != 0) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar7 = 0x13a18;
             } else if (DAT_TileMapState::instance.mapOrientation == 4) {
@@ -68,7 +63,7 @@ namespace UI {
                 iVar7 = 0x3ae38;
             }
         }
-        uVar5 = local_2c / 2;
+        uint uVar5 = local_2c / 2;
         iVar9 = iVar8 * 200 - local_2c;
         iVar7 = uVar5 * 0x191 + 1 + iVar7;
         if ((int)local_2c < iVar9) {
@@ -85,21 +80,20 @@ namespace UI {
                     local_18 = 0xc9;
                     local_30 = iVar2;
                 }
-                if (-1 < (int)local_2c) {
-                    if (399 < (int)local_2c) {}
-                    if (((local_34 != 2) || (!(local_28 & 1)))
+                if (0 <= (int)local_2c) {
+                    if (400 <= (int)local_2c) {}
+                    if (((local_34 != 2) || ((local_28 & 1) == 0))
                         && (local_20 = ((int)(400 / (longlong)param_2) * iVar8) / local_24 - uVar5,
                             (int)uVar5 < local_20)) {
                         local_20 = local_20 - uVar5;
                         piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 + -8;
                         do {
-                            iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
-                            if (((iVar3)
-                                    && ((int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U
-                                        < 5))
+                            int iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
+                            if (iVar3 != 0
+                                && (int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U < 5
                                 && (iVar3 = (int)DAT_BuildingsState::instance.buildings[iVar3].owner,
                                     this->DAT_MapU4B64.keepPositions[iVar3 + -1].x == -1)) {
-                                uVar4 = param_1;
+                                uint uVar4 = param_1;
                                 iVar11 = iVar10;
                                 if (local_34 != 1) {
                                     uVar4 = (int)param_1 / local_34;
@@ -111,7 +105,7 @@ namespace UI {
                             iVar10 = iVar10 + param_2;
                             piVar6 = piVar6 + 1;
                             local_20 = local_20 + -1;
-                        } while (local_20);
+                        } while (local_20 != 0);
                     }
                 }
                 iVar7 = iVar7 + local_18;

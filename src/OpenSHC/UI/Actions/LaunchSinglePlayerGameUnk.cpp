@@ -38,7 +38,6 @@
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 #include "OpenSHC/Globals/DWORD_00b95b1c.hpp"
-#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -71,11 +70,9 @@ namespace UI {
         MenuViewType menuID;
         int local_7e8;
         undefined4 local_7e4;
-        char local_7e0[1008];
+        char local_7e0[4];
         char _mapU3StringCopy[1004];
-        uint local_4;
         iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_7e8;
         DAT_GameCore::instance.section1066 = 1;
         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
             OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
@@ -91,8 +88,8 @@ namespace UI {
             (((OpenSHC::Game::Scenario::BarracksRecruitabilityShort*)(psVar4 + -7))->recruitability).archers = 1;
             *psVar4 = 1;
             psVar4 = psVar4 + 1;
-        } while ((int)psVar4 < 0x1653df6);
-        if (!param_1) {
+        } while (psVar4 < DAT_MapPropertiesState::instance.SEC_MercRecruitable + 7);
+        if (param_1 == 0) {
             pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -217,7 +214,7 @@ namespace UI {
         }
         DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c
             = (int)(DAT_GameState::instance.mapAndTime.euroRecruitable[6] != 0);
-        if (!param_1) {
+        if (param_1 == 0) {
             pcVar10 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -251,7 +248,7 @@ namespace UI {
             }
             if ((DAT_MapMissionType::instance == 2) && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1)) {
                 _pointsMultiplier = 100;
-                if (!DAT_GameState::instance.mapAndTime.difficulty) {
+                if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
                     _pointsMultiplier = 66;
                 } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
                     _pointsMultiplier = 133;
@@ -305,16 +302,14 @@ namespace UI {
                     + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
             }
         }
-        if (!DAT_SH1_SiegeAdvancedMode::instance) {
+        if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
             if (DAT_MapMissionType::instance != 2)
                 goto LAB_0042ce38;
             if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2) {
-                iVar8 = 0;
-                do {
+                for (int iVar8 = 0; iVar8 < 0x50; iVar8 = iVar8 + 4) {
                     *(int*)((int)DAT_GameState::instance.mapAndTime.startGoods + iVar8 + 100)
                         = (*(int*)((int)DAT_MapPropertiesState::instance.SEC_StartingResources + iVar8 + 100) * 7) / 10;
-                    iVar8 = iVar8 + 4;
-                } while (iVar8 < 0x50);
+                }
                 DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount
                     = (DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount * 7) / 10;
             }
@@ -328,35 +323,28 @@ namespace UI {
                 }
                 pUVar11 = pUVar11 + 0x248;
                 uVar12 = uVar12 + 1;
-            } while ((int)pUVar11 < 0x165141a);
+            } while (pUVar11 < &DAT_UnitsState::instance.units[2500].unitType);
         } else {
             if (DAT_MapMissionType::instance == 2) {
                 DAT_GameState::instance.mapAndTime.siegeInformation.archers = DAT_SiegeInformationArray::instance[0];
-                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen = DAT_SiegeInformationArray::instance[1];
+                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen
+                    = DAT_SiegeInformationArray::instance[1];
                 DAT_GameState::instance.mapAndTime.siegeInformation.pikemen = DAT_SiegeInformationArray::instance[3];
-                DAT_GameState::instance.mapAndTime.siegeInformation.macemen
-                    = DAT_SiegeInformationArray::instance[4];
-                DAT_GameState::instance.mapAndTime.siegeInformation.knights
-                    = DAT_SiegeInformationArray::instance[6];
-                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen
-                    = DAT_SiegeInformationArray::instance[7];
-                DAT_GameState::instance.mapAndTime.siegeInformation.monks
-                    = DAT_SiegeInformationArray::instance[9];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slaves
-                    = DAT_SiegeInformationArray::instance[0xb];
+                DAT_GameState::instance.mapAndTime.siegeInformation.macemen = DAT_SiegeInformationArray::instance[4];
+                DAT_GameState::instance.mapAndTime.siegeInformation.knights = DAT_SiegeInformationArray::instance[6];
+                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen = DAT_SiegeInformationArray::instance[7];
+                DAT_GameState::instance.mapAndTime.siegeInformation.monks = DAT_SiegeInformationArray::instance[9];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slaves = DAT_SiegeInformationArray::instance[0xb];
                 DAT_GameState::instance.mapAndTime.siegeInformation.spearmen = DAT_SiegeInformationArray::instance[2];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slingers
-                    = DAT_SiegeInformationArray::instance[0xc];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slingers = DAT_SiegeInformationArray::instance[0xc];
                 DAT_GameState::instance.mapAndTime.siegeInformation.assassins
                     = DAT_SiegeInformationArray::instance[0xd];
-                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen
-                    = DAT_SiegeInformationArray::instance[5];
+                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen = DAT_SiegeInformationArray::instance[5];
                 DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers
                     = DAT_SiegeInformationArray::instance[0xe];
                 DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen
                     = DAT_SiegeInformationArray::instance[0xf];
-                DAT_GameState::instance.mapAndTime.siegeInformation.engineers
-                    = DAT_SiegeInformationArray::instance[8];
+                DAT_GameState::instance.mapAndTime.siegeInformation.engineers = DAT_SiegeInformationArray::instance[8];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers
                     = DAT_SiegeInformationArray::instance[0x10];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas
@@ -373,28 +361,28 @@ namespace UI {
             }
         LAB_0042ce38:
             if (DAT_MapMissionType::instance == 3) {
-                if (DAT_GameState::instance.mapAndTime.difficulty) {
+                if (DAT_GameState::instance.mapAndTime.difficulty != 0) {
                     BVar6 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
-                    if (!BVar6) {
+                    if (BVar6 == FALSE) {
                         iVar9 = 0;
                         iVar8 = 0;
                         local_7e8 = 0;
                         psVar4 = &DAT_UnitsState::instance.units[1].dying;
                         do {
-                            if ((((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
-                                    && (psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                                && (psVar4[2] != 0)) {
+                            if (psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL && *psVar4 == 0
+                                && psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                && psVar4[2] != 0) {
                                 iVar7
                                     = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
                                         DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
                                 iVar9 = iVar9 + iVar7;
                             }
                             psVar4 = psVar4 + 0x248;
-                        } while ((int)psVar4 < 0x165162c);
+                        } while (psVar4 < &DAT_UnitsState::instance.units[2500].dying);
                         if (DAT_GameState::instance.mapAndTime.difficulty == 1) {
                             local_7e8 = 4;
-                            iVar7 = (int)(iVar9 * -3 + (iVar9 * -3 >> 0x1f & 3U)) >> 2;
+                            iVar7 = iVar9 * -3 / 4;
                         LAB_0042cf15:
                             iVar9 = iVar9 + iVar7;
                         } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
@@ -405,13 +393,14 @@ namespace UI {
                             iVar7 = -(iVar9 / 2);
                             goto LAB_0042cf15;
                         }
-                        for (local_7e4 = 0; local_7e4 < 3; local_7e4++) {
+                        local_7e4 = 0;
+                        do {
                             uVar12 = 1;
                             psVar4 = &DAT_UnitsState::instance.units[1].dying;
                             do {
-                                if (((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
-                                    && ((psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                                        && ((psVar4[2] != 0 && (iVar8 = iVar8 + 1, iVar8 == local_7e8)))))) {
+                                if (psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL && *psVar4 == 0
+                                    && psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                    && psVar4[2] != 0 && (iVar8 = iVar8 + 1, iVar8 == local_7e8)) {
                                     iVar7 = MACRO_CALL_MEMBER(
                                         OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
                                         DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
@@ -420,13 +409,13 @@ namespace UI {
                                         OpenSHC::Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(uVar12);
                                     if (((psVar4[-0x109] == OpenSHC::Map::Units::UT_S_MANGONEL)
                                             || (psVar4[-0x109] == OpenSHC::Map::Units::UT_S_BALLISTA))
-                                        && (DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 + -0xe6)] != 0)) {
+                                        && DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 + -0xe6)] != 0) {
                                         DAT_BuildingsState::instance
                                             .buildings[DAT_TileMapState::instance
                                                     .BuildingLayer[*(int*)(psVar4 + -0xe6)]]
                                             .containsSiegeMangonel1OrBallista2 = 0;
                                     }
-                                    if (iVar9 < 1) {
+                                    if (iVar9 <= 0) {
                                         local_7e4 = 10;
                                         break;
                                     }
@@ -434,8 +423,9 @@ namespace UI {
                                 }
                                 psVar4 = psVar4 + 0x248;
                                 uVar12 = uVar12 + 1;
-                            } while ((int)psVar4 < 0x165162c);
-                        }
+                            } while (psVar4 < &DAT_UnitsState::instance.units[2500].dying);
+                            local_7e4 = local_7e4 + 1;
+                        } while (local_7e4 < 3);
                     }
                     goto LAB_0042cff9;
                 }
@@ -467,11 +457,11 @@ namespace UI {
             DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount = 0;
         }
         iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        if (!DAT_MapMissionType::instance) {
+        if (DAT_MapMissionType::instance == 0) {
             DAT_GameState::instance.mapAndTime.unitJesterRelated = 0;
             iVar9 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .jesterIDUnk;
-            if ((iVar9)
+            if ((iVar9 != 0)
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someUnitIDSelfRef_2)) {
@@ -482,7 +472,7 @@ namespace UI {
             }
             DAT_GameState::instance.mapAndTime.unitLadyRelated = 0;
             iVar9 = DAT_GameState::instance.playerDataArray[iVar8].ladyIDUnk;
-            if ((iVar9)
+            if ((iVar9 != 0)
                 && (DAT_UnitsState::instance.units[iVar9].uid
                     == DAT_GameState::instance.playerDataArray[iVar8].someUnitIDSelfRef)) {
                 DAT_GameState::instance.playerDataArray[iVar8].ladyIDUnk = 0;
@@ -500,7 +490,7 @@ namespace UI {
             DAT_GameState::instance.playerDataArray[2].lastMonthsGold
                 = (short)DAT_GameState::instance.playerDataArray[2].currentResources[0xf];
         }
-        if (DAT_GameCore::instance.mapU4Int1) {
+        if (DAT_GameCore::instance.mapU4Int1 != 0) {
             DAT_GameState::instance.playerDataArray[iVar8].currentResources[0xf] = 600;
             DAT_GameState::instance.playerDataArray[iVar8].startResources[0xf] = 0;
         }
@@ -522,7 +512,7 @@ namespace UI {
     LAB_0042d095:
         MACRO_CALL_MEMBER(
             OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
-        if (DAT_GameCore::instance.mapU4Int1) {
+        if (DAT_GameCore::instance.mapU4Int1 != 0) {
             MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::pathfindingUpdate_0x4a8ab0,
                 DAT_PathFindingState::ptr)(0x1e);
         }

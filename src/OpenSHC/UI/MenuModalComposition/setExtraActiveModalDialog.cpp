@@ -22,14 +22,14 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA0A0
     void MenuModalComposition::setExtraActiveModalDialog(MenuModalType menuModalID, int dialogX, int dialogY)
     {
-        uint uVar1;
         BOOLEnum BVar2;
         MenuModal* _modalMenu;
         DWORD DVar3;
         int iVar4;
         MenuModalComposition* pMVar5;
         Menu* _menuPtr;
-        if ((!this->slot) && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
+        if ((this->slot == 0)
+            && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
         }
@@ -37,7 +37,7 @@ namespace UI {
             this->activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
             BVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, DAT_VideoBikQueue::ptr)();
-            if (BVar2) {}
+            if (BVar2 != FALSE) {}
         }
         this->activeModalDialogID = menuModalID;
         if (menuModalID != OpenSHC::UI::Enums::MMT_NONE) {
@@ -46,16 +46,16 @@ namespace UI {
             /*
               Just memcopies it into current modal menu? -TheRedDaemon
              */
-            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4; iVar4 = iVar4 + -1) {
+            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4 != 0; iVar4 = iVar4 + -1) {
                 ((MenuModal*)pMVar5)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
         }
-        uVar1 = (this->modalMenu).borderStyle;
+        uint uVar1 = (this->modalMenu).borderStyle;
         this->modalDragDropUnk = 0;
         (this->modalMenu).x = dialogX;
         (this->modalMenu).y = dialogY;
-        if ((uVar1 & 0x220)) {
+        if ((uVar1 & 0x220) != 0) {
             (this->modalMenu).width = (((this->modalMenu).width + -1) / 0x18 + 1) * 0x18;
             (this->modalMenu).height = (((this->modalMenu).height + -1) / 0x18 + 1) * 0x18;
         }
@@ -78,7 +78,7 @@ namespace UI {
         DVar3 = timeGetTime();
         uVar1 = (this->modalMenu).borderStyle;
         this->timeItIsSet = DVar3;
-        if ((uVar1 & 0x400)) {
+        if ((uVar1 & 0x400) != 0) {
             this->disappearAfter = 0;
         }
         _menuPtr = (this->modalMenu).pointerToMenu;

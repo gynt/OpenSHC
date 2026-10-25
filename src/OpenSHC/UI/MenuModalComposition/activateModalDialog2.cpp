@@ -32,9 +32,8 @@ namespace UI {
         BOOLEnum _areWeInAnInGameMenu;
         int iVar1;
         MenuModalComposition* pMVar2;
-        int _y2;
-        int _x2;
-        if ((!this->slot) && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
+        if ((this->slot == 0)
+            && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
         }
@@ -42,7 +41,7 @@ namespace UI {
             this->activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
             _startedPlayingAIMessage = MACRO_CALL_MEMBER(
                 OpenSHC::Rendering::Bink::AIMessageQueue_Func::playNextStoredAIMessage, DAT_VideoBikQueue::ptr)();
-            if (_startedPlayingAIMessage) {}
+            if (_startedPlayingAIMessage != 0) {}
         }
         this->activeModalDialogID = modalDialogID;
         if (modalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
@@ -51,19 +50,19 @@ namespace UI {
             /*
               Makes found current. - TheRedDaemon
              */
-            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1; iVar1 = iVar1 + -1) {
+            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1 != 0; iVar1 = iVar1 + -1) {
                 ((MenuModal*)pMVar2)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
         }
         this->modalDragDropUnk = 0;
-        if ((this->modalMenu.borderStyle & 0x220U)) {
+        if ((this->modalMenu.borderStyle & 0x220U) != 0) {
             this->modalMenu.width = ((this->modalMenu.width + -1) / 0x18 + 1) * 0x18;
             this->modalMenu.height = ((this->modalMenu.height + -1) / 0x18 + 1) * 0x18;
         }
         _areWeInAnInGameMenu
             = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-        if (!_areWeInAnInGameMenu) {
+        if (_areWeInAnInGameMenu == FALSE) {
             if (this->modalMenu.x == -1) {
                 this->modalMenu.x = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - this->modalMenu.width / 2;
             } else {
@@ -90,7 +89,7 @@ namespace UI {
         this->disappearAfter = 0x20;
         this->mbr_0x6c = 0;
         this->timeItIsSet = timeGetTime();
-        if ((this->modalMenu.borderStyle & 0x400U)) {
+        if ((this->modalMenu.borderStyle & 0x400U) != 0) {
             this->disappearAfter = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::renderMenuModal, this)();
@@ -98,7 +97,7 @@ namespace UI {
             DWORD_00df5534::instance = this->timeItIsSet;
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            if (_areWeInAnInGameMenu) {
+            if (_areWeInAnInGameMenu != FALSE) {
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::bltMapGameSurfaceToScreen,
                     DAT_WindowAndDirectDraw::ptr)(

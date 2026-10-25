@@ -7,6 +7,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
+#include "OpenSHC/UI/Enums/TextMessageBLLookupStructTypeEnum.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/COL_GREYISH_YELLOW.hpp"
@@ -18,7 +19,6 @@
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/UI/Enums/TextMessageBLLookupStructTypeEnum.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -27,115 +27,113 @@ namespace UI {
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
     using OpenSHC::UI::Enums::MenuViewType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
     using OpenSHC::UI::Enums::TextMessageBLLookupStructTypeEnum;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F64A0
     void Menu::renderConstructionMenu()
     {
-        DWORD _currentTime;
         char* text;
         int iVar1;
         uint _index;
         int _group;
         int _groupIndex;
         MenuItem* _menuItem;
-        _currentTime = timeGetTime();
+        DWORD _currentTime = timeGetTime();
         _menuItem = this->hoveredItem;
-        if (((_menuItem != (MenuItem*)0x0)
-                && (_index = (uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0, _index))
-            && ((((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
-                      || ((((DAT_GameCore::instance.activeMenuTab.tabType
-                                    == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
-                                || (DAT_GameCore::instance.activeMenuTab.tabType
-                                    == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))
-                               || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TOWER))
-                          || ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_GATEHOUSE
-                              || (DAT_GameCore::instance.activeMenuTab.tabType
-                                  == OpenSHC::UI::Enums::BASMTT_ENGINEERSGUILD))))))
-                     || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD))
-                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_CATHEDRAL)))) {
+        if (_menuItem != (MenuItem*)0x0
+            && (_index = (uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0, _index != 0)
+            && (((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
+                     || ((((DAT_GameCore::instance.activeMenuTab.tabType
+                                   == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
+                               || (DAT_GameCore::instance.activeMenuTab.tabType
+                                   == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))
+                              || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TOWER))
+                         || ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_GATEHOUSE
+                             || (DAT_GameCore::instance.activeMenuTab.tabType
+                                 == OpenSHC::UI::Enums::BASMTT_ENGINEERSGUILD))))))
+                    || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD))
+                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_CATHEDRAL))) {
             switch (DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].messageType) {
             case ((TextMessageBLLookupStructTypeEnum)0):
                 return;
-                default:
-                    if (((!DAT_MouseState::instance.leftClickState) && (!DAT_MouseState::instance.rightClickState))
-                        && ((!DAT_MouseState::instance.midClickState && (DAT_GameCore::instance.settingBubbleHelp)))) {
-                        iVar1 = this->zero;
-                        if (!iVar1) {
-                            this->zero = 1;
-                            this->someTimestampUnk = _currentTime;
-                            this->mouseXScreenSpace = DAT_MouseState::instance.screenSpaceX;
-                            this->mouseYScreenSpace = DAT_MouseState::instance.screenSpaceY;
-                        }
-                        if (((iVar1 == 1) && (DAT_MouseState::instance.screenSpaceX == this->mouseXScreenSpace))
-                            && (DAT_MouseState::instance.screenSpaceY == this->mouseYScreenSpace)) {
-                            if ((int)(_currentTime - this->someTimestampUnk) < 0xc9) {}
-                            this->zero = 2;
-                            _group = DAT_RenderingDefinedData::instance
-                                         .TextMessageLookupTable[(
-                                             uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
-                                         .textIndexInGroup;
-                            this->textIndexInGroup = _group;
-                            _groupIndex = DAT_RenderingDefinedData::instance
-                                              .TextMessageLookupTable[(
-                                                  uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
-                                              .textGroupIndex;
-                            this->textGroupIndex = _groupIndex;
-                            if (((_group == 0x12e) && (_groupIndex == 8))
-                                && (DAT_GameCore::instance.gameSuspended == 1)) {
-                                /*
-                                  "Resume Game"
-                                 */
-                                this->textGroupIndex = 0x4a;
-                                this->textIndexInGroup = 10;
-                            }
-                            this->someMenuItemPtr_0x3c = _menuItem;
-                        }
-                        if ((iVar1 == 2) && (this->someMenuItemPtr_0x3c == _menuItem)) {
-                            text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(
-                                (OpenSHC::DE::SHCDE::eTextSections)(this->textGroupIndex), this->textIndexInGroup);
-                            iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
-                                DAT_TextManagerObject::ptr)(text, 0x11);
-                            if ((DAT_GameCore::instance.currentMenuViewType
-                                    == OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION)
-                                || (DAT_GameCore::instance.currentMenuViewType
-                                    == OpenSHC::UI::Enums::MVT_GAME_LOSTUnk)) {
-                                this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
-                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + 0x10;
-                            } else {
-                                this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
-                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x44;
-                            }
-                            if (DAT_WindowAndDirectDraw::instance.resolutionY < this->hoverTextY + 0x17) {
-                                this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x17;
-                            }
-                            if (DAT_WindowAndDirectDraw::instance.resolutionX < this->hoverTextX + 0x14 + iVar1) {
-                                this->hoverTextX = (DAT_WindowAndDirectDraw::instance.resolutionX - iVar1) + -0x14;
-                            }
-                            if (this->hoverTextX < 0) {
-                                this->hoverTextX = 0;
-                            }
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox,
-                                DAT_PencilRenderCore::ptr)(this->hoverTextX, this->hoverTextY,
-                                this->hoverTextX + 0x12 + iVar1, this->hoverTextY + 0x1a);
-                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                                DAT_PencilRenderCore::ptr)(this->hoverTextX + -1, this->hoverTextY + -1,
-                                this->hoverTextX + 0x13 + iVar1, this->hoverTextY + 0x1b,
-                                (ushort)((int)(COL_GREYISH_YELLOW::instance.shortValue)));
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)(text, this->hoverTextX + 0xb, this->hoverTextY + 3,
-                                OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, FALSE, 0);
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                        }
+            default:
+                if (DAT_MouseState::instance.leftClickState == FALSE
+                    && DAT_MouseState::instance.rightClickState == FALSE
+                    && DAT_MouseState::instance.midClickState == FALSE
+                    && DAT_GameCore::instance.settingBubbleHelp != 0) {
+                    iVar1 = this->zero;
+                    if (iVar1 == 0) {
+                        this->zero = 1;
+                        this->someTimestampUnk = _currentTime;
+                        this->mouseXScreenSpace = DAT_MouseState::instance.screenSpaceX;
+                        this->mouseYScreenSpace = DAT_MouseState::instance.screenSpaceY;
                     }
+                    if (iVar1 == 1 && DAT_MouseState::instance.screenSpaceX == this->mouseXScreenSpace
+                        && DAT_MouseState::instance.screenSpaceY == this->mouseYScreenSpace) {
+                        if ((int)(_currentTime - this->someTimestampUnk) <= 0xc8) {}
+                        this->zero = 2;
+                        _group = DAT_RenderingDefinedData::instance
+                                     .TextMessageLookupTable[(uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
+                                     .textIndexInGroup;
+                        this->textIndexInGroup = _group;
+                        _groupIndex
+                            = DAT_RenderingDefinedData::instance
+                                  .TextMessageLookupTable[(uint)(ushort)_menuItem->textMessageLookupIndex.field0_0x0]
+                                  .textGroupIndex;
+                        this->textGroupIndex = _groupIndex;
+                        if (_group == 0x12e && _groupIndex == 8 && DAT_GameCore::instance.gameSuspended == 1) {
+                            /*
+                              "Resume Game"
+                             */
+                            this->textGroupIndex = 0x4a;
+                            this->textIndexInGroup = 10;
+                        }
+                        this->someMenuItemPtr_0x3c = _menuItem;
+                    }
+                    if ((iVar1 == 2) && (this->someMenuItemPtr_0x3c == _menuItem)) {
+                        text = MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                            (OpenSHC::DE::SHCDE::eTextSections)(this->textGroupIndex), this->textIndexInGroup);
+                        iVar1 = MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(text, 0x11);
+                        if ((DAT_GameCore::instance.currentMenuViewType
+                                == OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION)
+                            || (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_GAME_LOSTUnk)) {
+                            this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
+                            this->hoverTextY = DAT_MouseState::instance.screenSpaceY + 0x10;
+                        } else {
+                            this->hoverTextX = (DAT_MouseState::instance.screenSpaceX - iVar1 / 2) + 8;
+                            this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x44;
+                        }
+                        if (DAT_WindowAndDirectDraw::instance.resolutionY < this->hoverTextY + 0x17) {
+                            this->hoverTextY = DAT_MouseState::instance.screenSpaceY + -0x17;
+                        }
+                        if (DAT_WindowAndDirectDraw::instance.resolutionX < this->hoverTextX + 0x14 + iVar1) {
+                            this->hoverTextX = (DAT_WindowAndDirectDraw::instance.resolutionX - iVar1) + -0x14;
+                        }
+                        if (this->hoverTextX < 0) {
+                            this->hoverTextX = 0;
+                        }
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox,
+                            DAT_PencilRenderCore::ptr)(this->hoverTextX, this->hoverTextY,
+                            this->hoverTextX + 0x12 + iVar1, this->hoverTextY + 0x1a);
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
+                            DAT_PencilRenderCore::ptr)(this->hoverTextX + -1, this->hoverTextY + -1,
+                            this->hoverTextX + 0x13 + iVar1, this->hoverTextY + 0x1b,
+                            (ushort)(COL_GREYISH_YELLOW::instance.shortValue));
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                            DAT_TextManagerObject::ptr)(text, this->hoverTextX + 0xb, this->hoverTextY + 3,
+                            OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, FALSE, 0);
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    }
+                }
                 break;
             case OpenSHC::UI::Enums::TMBLLSTE_BUTTON_TEXT:
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(1,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -144,7 +142,7 @@ namespace UI {
                 }
                 break;
             case OpenSHC::UI::Enums::TMBLLSTE_BUILDING_TEXT:
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(2,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -154,7 +152,7 @@ namespace UI {
                 }
                 break;
             case OpenSHC::UI::Enums::TMBLLSTE_POPULARITY_HELP_TEXT:
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(3,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -164,7 +162,7 @@ namespace UI {
                 }
                 break;
             case OpenSHC::UI::Enums::TMBLLSTE_WALL_TEXT:
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(4,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -190,7 +188,7 @@ namespace UI {
                 this->zero = 0;
                 return;
             case ((TextMessageBLLookupStructTypeEnum)8):
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(8,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -200,7 +198,7 @@ namespace UI {
                 }
                 break;
             case ((TextMessageBLLookupStructTypeEnum)9):
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(9,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -210,7 +208,7 @@ namespace UI {
                 }
                 break;
             case ((TextMessageBLLookupStructTypeEnum)10):
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(10,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -220,7 +218,7 @@ namespace UI {
                 }
                 break;
             case ((TextMessageBLLookupStructTypeEnum)0xb):
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(0xb,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
@@ -238,7 +236,7 @@ namespace UI {
                 this->zero = 0;
                 return;
             case ((TextMessageBLLookupStructTypeEnum)0xd):
-                if (DAT_GameCore::instance.settingBubbleHelp) {
+                if (DAT_GameCore::instance.settingBubbleHelp != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                         DAT_BottomLeftTextDisplayState::ptr)(0xd,
                         DAT_RenderingDefinedData::instance.TextMessageLookupTable[_index].textGroupIndex,
