@@ -25,7 +25,6 @@ namespace UI {
         void Credits::MenuView_Credits_Prepare()
         {
             int iVar1;
-            char* tgxFileName;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (DAT_00b95954::instance == 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
@@ -34,12 +33,12 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)("credits_2.tgx");
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("credits_3.tgx");
-                tgxFileName = "credits_4.tgx";
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("credits_4.tgx");
             } else {
-                tgxFileName = "end_credit.tgx";
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("end_credit.tgx");
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             iVar1 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)("credits.hlp");
             MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(
