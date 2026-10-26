@@ -55,7 +55,7 @@ namespace UI {
             NameSpeechPair* _callableLordNamePtr;
             int _callableLordNameIndex;
             __time64_t local_10c;
-            char _playerLordNameUnk[252];
+            char _playerLordNameUnk[256];
             MACRO_CALL(OpenSHC::OS_Func::__time64)(&local_10c);
             MACRO_CALL(OpenSHC::OS_Func::_localtime)(&local_10c);
             pcVar2 = MACRO_CALL_MEMBER(
@@ -91,7 +91,7 @@ namespace UI {
                 cVar1 = *pcVar2;
                 pcVar2 = pcVar2 + 1;
             } while (cVar1 != '\0');
-            if (pcVar2 != pcVar3) {
+            if (pcVar2 - pcVar3 != 0) {
                 DAT_GameCore::instance.isNameEntryActive = TRUE;
                 DAT_GameCore::instance.nameEntryStartTime = timeGetTime();
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
