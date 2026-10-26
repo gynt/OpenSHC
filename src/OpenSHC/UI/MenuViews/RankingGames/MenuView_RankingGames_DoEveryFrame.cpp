@@ -195,12 +195,12 @@ namespace UI {
                         iVar9 + 0x56, iVar11, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, TRUE, 0);
                     iVar8 = DAT_SkMasters2DataArray::instance[iVar2].gameDurationInMinutes % 0x3c;
                     if (iVar8 < 10) {
-                        pcVar1 = "%d:0%d";
+                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_64, (char const*)((int)("%d:0%d")),
+                            DAT_SkMasters2DataArray::instance[iVar2].gameDurationInMinutes / 0x3c, iVar8);
                     } else {
-                        pcVar1 = "%d:%d";
+                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_64, (char const*)((int)("%d:%d")),
+                            DAT_SkMasters2DataArray::instance[iVar2].gameDurationInMinutes / 0x3c, iVar8);
                     }
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_64, (char const*)((int)(pcVar1)),
-                        DAT_SkMasters2DataArray::instance[iVar2].gameDurationInMinutes / 0x3c, iVar8);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         local_64, iVar9 + 0xc6, iVar11, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
                     iVar14 = iVar9 + 0xf9;
@@ -225,13 +225,14 @@ namespace UI {
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                         OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x2cf, iVar14, iVar4);
                     if (DAT_SkMasters2DataArray::instance[iVar2].lordType == 0) {
-                        iVar11 = 0x2cd;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x2cd, iVar14, iVar4);
                     } else {
-                        iVar11 = 0x2ce;
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x2ce, iVar14, iVar4);
                     }
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar11, iVar14, iVar4);
                     if (DAT_SkMasters2DataArray::instance[iVar2].results.finalDateOfDeathInMonths[1] != 0) {
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
@@ -289,55 +290,55 @@ namespace UI {
                     }
                     for (int local_8c = 1; local_8c <= 4; local_8c = local_8c + 1) {
                         if (local_8c != local_84) {
-                        iVar9 = DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount;
-                        iVar8 = 2;
-                        if (2 <= iVar9) {
-                            piVar3 = DAT_SkMasters2DataArray::instance[iVar2].array1 + 2;
-                            do {
-                                if (*piVar3 == local_8c)
-                                    break;
-                                iVar8 = iVar8 + 1;
-                                piVar3 = piVar3 + 1;
-                            } while (iVar8 <= iVar9);
-                            if (iVar8 <= iVar9) {
-                                local_b4 = 2;
-                                if (2 <= iVar9) {
-                                    piVar3 = DAT_SkMasters2DataArray::instance[iVar2].aiArray + 2;
-                                    do {
-                                        if (piVar3[-9] == local_8c) {
-                                            MACRO_CALL_MEMBER(
-                                                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                                DAT_TextureRenderCoreObject::ptr)(
-                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, local_b4 + 0x2ce, iVar14,
-                                                iVar4);
-                                            MACRO_CALL_MEMBER(
-                                                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                                DAT_TextureRenderCoreObject::ptr)(
-                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*piVar3 + 700),
-                                                iVar14, iVar4);
-                                            if (piVar3[0x1d2] != 0) {
+                            iVar9 = DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount;
+                            iVar8 = 2;
+                            if (2 <= iVar9) {
+                                piVar3 = DAT_SkMasters2DataArray::instance[iVar2].array1 + 2;
+                                do {
+                                    if (*piVar3 == local_8c)
+                                        break;
+                                    iVar8 = iVar8 + 1;
+                                    piVar3 = piVar3 + 1;
+                                } while (iVar8 <= iVar9);
+                                if (iVar8 <= iVar9) {
+                                    local_b4 = 2;
+                                    if (2 <= iVar9) {
+                                        piVar3 = DAT_SkMasters2DataArray::instance[iVar2].aiArray + 2;
+                                        do {
+                                            if (piVar3[-9] == local_8c) {
                                                 MACRO_CALL_MEMBER(
                                                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                     DAT_TextureRenderCoreObject::ptr)(
-                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar14 + 0x16,
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, local_b4 + 0x2ce, iVar14,
                                                     iVar4);
+                                                MACRO_CALL_MEMBER(
+                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                                    DAT_TextureRenderCoreObject::ptr)(
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*piVar3 + 700),
+                                                    iVar14, iVar4);
+                                                if (piVar3[0x1d2] != 0) {
+                                                    MACRO_CALL_MEMBER(
+                                                        OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                                        DAT_TextureRenderCoreObject::ptr)(
+                                                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar14 + 0x16,
+                                                        iVar4);
+                                                }
+                                                iVar14 = iVar14 + local_90;
+                                                local_b0 = local_b0 + 1;
                                             }
-                                            iVar14 = iVar14 + local_90;
-                                            local_b0 = local_b0 + 1;
-                                        }
-                                        local_b4 = local_b4 + 1;
-                                        piVar3 = piVar3 + 1;
-                                    } while (
-                                        local_b4 <= DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount);
+                                            local_b4 = local_b4 + 1;
+                                            piVar3 = piVar3 + 1;
+                                        } while (
+                                            local_b4 <= DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount);
+                                    }
+                                    if (DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount <= local_b0)
+                                        break;
+                                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                        DAT_TextureRenderCoreObject::ptr)(
+                                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x2d7, iVar14, local_ac);
+                                    iVar14 = iVar14 + local_9c;
                                 }
-                                if (DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount <= local_b0)
-                                    break;
-                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                    DAT_TextureRenderCoreObject::ptr)(
-                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x2d7, iVar14, local_ac);
-                                iVar14 = iVar14 + local_9c;
                             }
-                        }
                         }
                     }
                     if ((local_b0 < DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount)
