@@ -50,14 +50,12 @@ namespace UI {
         int iVar2;
         GameMode2Int _currentGameModeUnk;
         int iVar3;
-        int _yOffset;
         int yParam;
         uint uVar4;
         uint uVar5;
         TextAlignmentInt _alignment;
         int _x;
         int _currentPlayerSlotID;
-        _yOffset = 0;
         iVar3 = 0;
         if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)
             return;
@@ -190,6 +188,7 @@ namespace UI {
             DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount45 = 0;
         }
     LAB_00433fe5:
+        int _yOffset = 0;
         iVar3 = 0;
         _currentPlayerSlotID = 0x8d;
         do {
