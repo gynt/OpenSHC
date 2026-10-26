@@ -69,12 +69,12 @@ namespace UI {
             DWORD_00b95b1c::instance = timeGetTime();
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (DAT_MapMissionType::instance < 2) {
-                tgxFileName = "frontend_economics2.tgx";
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("frontend_economics2.tgx");
             } else {
-                tgxFileName = "frontend_combat2.tgx";
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("frontend_combat2.tgx");
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
             int menuY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
