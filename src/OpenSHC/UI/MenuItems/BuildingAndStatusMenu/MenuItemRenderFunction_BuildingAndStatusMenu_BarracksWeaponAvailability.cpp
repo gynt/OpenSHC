@@ -34,7 +34,7 @@ namespace UI {
             int param_1, ...)
         {
             ButtonGmData* pBVar1;
-            short sVar2;
+            int sVar2;
             bool bVar3;
             int iVar4;
             int iVar8;
@@ -85,7 +85,7 @@ namespace UI {
                                     .availableHorses;
                         if (sVar2 != 0) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                                DAT_TextManagerObject::ptr)((int)sVar2, (int)(DAT_ButtonX::instance + 8),
+                                DAT_TextManagerObject::ptr)(sVar2, (int)(DAT_ButtonX::instance + 8),
                                 (int)(DAT_ButtonY::instance + 0x28), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE, 0);
                         }
                     } else if (DAT_GameState::instance
