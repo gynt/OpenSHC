@@ -47,10 +47,12 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DC9E0
         void GameLost::MenuView_GameLost_DoEveryFrame()
         {
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
+            if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
+                if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
+                    DAT_MouseState::instance.draggingStopped = TRUE;
+                }
+            } else {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGreatestLordScreen)();
-            } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
-                DAT_MouseState::instance.draggingStopped = TRUE;
             }
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
                 && DAT_GameSynchronyState::instance.currentGameMode
@@ -66,7 +68,9 @@ namespace UI {
             }
             if (((DAT_MouseState::instance.draggingStopped == FALSE)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                && INT_00ed279c::instance == 0) {}
+                && INT_00ed279c::instance == 0) {
+                return;
+            }
         LAB_004dca69:
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;
