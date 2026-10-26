@@ -165,9 +165,8 @@ namespace UI {
             int right = iVar8 + 0x294;
             int top = iVar4 + 0xfd;
             bottom = iVar4 + 0x216;
-            MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
-                iVar7, top, right + -0x14, bottom,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
+                DAT_PencilRenderCore::ptr)(iVar7, top, right + -0x14, bottom,
                 ((((int)DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10) / 32) + 0x20);
             if (DAT_00b960dc::instance == 0) {
                 iVar8 = right + 1;
@@ -185,7 +184,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     right + -0x14, top, right + -0x14, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    right + -0x13, bottom + -0x14, right, bottom + -0x14, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    right + -0x13, bottom + -0x14, right, bottom + -0x14,
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             };
             return;
         }
