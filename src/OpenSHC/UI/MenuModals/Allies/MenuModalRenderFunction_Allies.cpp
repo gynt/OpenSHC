@@ -34,8 +34,8 @@ namespace UI {
             MACRO_CALL(OpenSHC::Game::Skirmish_Func::RecalculateAllies)();
             DWORD _now = timeGetTime();
             if (500 < _now - DAT_Time_Allies1::instance) {
-                DAT_00df42b0::instance = DAT_00df42b0::instance + 1;
                 DAT_Time_Allies1::instance = _now;
+                DAT_00df42b0::instance = DAT_00df42b0::instance + 1;
                 if (1 < DAT_00df42b0::instance) {
                     DAT_00df42b0::instance = 0;
                 }
