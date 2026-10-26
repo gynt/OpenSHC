@@ -71,7 +71,7 @@ namespace UI {
             int* local_400;
             MenuModalTypeInt local_3fc;
             undefined4 local_3f8;
-            char local_3f4[4];
+            char local_3f4[0x3f0];
             MenuModalTypeInt MVar2 = timeGetTime();
             local_3fc = MVar2;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
@@ -89,14 +89,14 @@ namespace UI {
                         = (int)((ulonglong)((longlong)(int)(MVar2 - DWORD_00b95b1c::instance) * -0x66666667) >> 0x20);
                     DAT_ButtonBackgroundBlendStrength::instance
                         = DAT_ButtonBackgroundBlendStrength::instance + ((iVar10 >> 4) - (iVar10 >> 0x1f));
-                    if (DAT_ButtonBackgroundBlendStrength::instance <= 0) {
+                    if ((int)DAT_ButtonBackgroundBlendStrength::instance <= 0) {
                         DAT_ButtonBackgroundBlendStrength::instance = 0;
                         DAT_00b960dc::instance = 0;
                     }
                 } else {
                     DAT_ButtonBackgroundBlendStrength::instance
                         = DAT_ButtonBackgroundBlendStrength::instance + (int)(MVar2 - DWORD_00b95b1c::instance) / 0x28;
-                    if (0x20 <= DAT_ButtonBackgroundBlendStrength::instance) {
+                    if (0x20 <= (int)DAT_ButtonBackgroundBlendStrength::instance) {
                         DAT_ButtonBackgroundBlendStrength::instance = 0x20;
                         DAT_GameCore::instance.menuSwitchDelay = 0;
                     }
@@ -276,19 +276,8 @@ namespace UI {
                         pcVar11
                             = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                                 DAT_ResourceManager::ptr)(_mapID);
-                        pcVar6 = local_3f4;
-                        do {
-                            cVar1 = *pcVar11;
-                            *pcVar6 = cVar1;
-                            pcVar11 = pcVar11 + 1;
-                            pcVar6 = pcVar6 + 1;
-                        } while (cVar1 != '\0');
-                        pcVar6 = (char*)((int)&local_3f8 + 3);
-                        do {
-                            pcVar11 = pcVar6;
-                            pcVar6 = pcVar11 + 1;
-                        } while (pcVar11[1] != '\0');
-                        strcpy(pcVar11 + 1, ".map");
+strcpy(local_3f4, pcVar11);
+                        strcat(local_3f4, ".map");
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
                             DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(
