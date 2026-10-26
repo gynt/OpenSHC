@@ -18,6 +18,7 @@
 #include "OpenSHC/Globals/DAT_00df5558.hpp"
 #include "OpenSHC/Globals/DAT_00df5564.hpp"
 #include "OpenSHC/Globals/DAT_00df5644.hpp"
+#include "OpenSHC/Globals/DAT_MissionAestheticsDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
@@ -93,8 +94,8 @@ namespace UI {
                             DAT_SoundSystemState::ptr)(OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_2)
                         == FALSE)) {
                     char speechFileName[32];
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
-                        speechFileName, "%s%s", "fx\\speech\\", DAT_00df5644::instance * 0x60 + 0xb3e4d0);
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(speechFileName, "%s%s", "fx\\speech\\",
+                        DAT_MissionAestheticsDefinedData::instance.field1248_0x41e4[DAT_00df5644::instance + 34][0]);
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                         DAT_SoundSystemState::ptr)(speechFileName);
                 }
