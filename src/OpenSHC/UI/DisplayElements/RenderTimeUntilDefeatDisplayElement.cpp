@@ -39,15 +39,16 @@ namespace UI {
         if (DAT_GameCore::instance.section1095 == 2) {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
+            return;
         }
-        int iVar6 = 0x12;
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
-        iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+        int iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
+            DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x11),
-            iVar6);
+            0x12);
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
             posX = posX + -0x70;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x1024) {
@@ -88,37 +89,34 @@ namespace UI {
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
             DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
-        _stateNotZero = FALSE;
-        int iVar5 = 0x12;
-        int iVar4 = iVar3;
-        int iVar1 = posY;
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x11),
-            iVar4, iVar1, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, iVar5, _stateNotZero, 0);
-        iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getEventIDForTimeUntilDefeatEventType,
+            iVar3, posY, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x12, FALSE, 0);
+        int iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::getEventIDForTimeUntilDefeatEventType,
             DAT_MapPropertiesState::ptr)();
-        iVar4 = DAT_MapPropertiesState::instance.SEC_StartingMonth
+        int _startMonths = DAT_MapPropertiesState::instance.SEC_StartingMonth
             + DAT_MapPropertiesState::instance.SEC_StartingYear * 0xc;
-        iVar5 = (DAT_GameState::instance.mapAndTime.year * 0xc - iVar4) + DAT_GameState::instance.mapAndTime.month;
-        iVar4 = ((DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.month
-                     + DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.year * 0xc)
-                    - iVar4)
+        int iVar4 = ((DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.month
+                         + DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.year * 0xc)
+                        - _startMonths)
+            * 800;
+        int iVar5 = ((DAT_GameState::instance.mapAndTime.year * 0xc - _startMonths)
+                        + DAT_GameState::instance.mapAndTime.month)
             * 800;
         if (DAT_GameCore::instance.isTimeHalted == FALSE) {
             _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                 OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
             if (_stateNotZero == FALSE) {
-                local_c = ((iVar4 + DAT_GameState::instance.mapAndTime.week * -200)
-                              - DAT_GameState::instance.gameTicksLoadBalancer)
-                    + iVar5 * -800;
+                local_c = iVar4 - DAT_GameState::instance.mapAndTime.week * 200
+                    - DAT_GameState::instance.gameTicksLoadBalancer - iVar5;
                 goto LAB_004b24b1;
             }
         }
-        local_c = iVar4 + iVar5 * -800;
+        local_c = iVar4 - iVar5;
     LAB_004b24b1:
         if (local_c < 0) {
             local_c = 0;
