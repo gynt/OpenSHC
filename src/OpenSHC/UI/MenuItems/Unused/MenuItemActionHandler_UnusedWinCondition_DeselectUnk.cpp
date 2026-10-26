@@ -26,10 +26,10 @@ namespace UI {
                 DAT_MenuModalComposition1::instance.minus1 = -1;
             }
             if (DAT_MouseState::instance.leftClickStart != 0) {
-                if (DAT_MenuModalComposition2::instance.modalMenu.x <= DAT_MouseState::instance.screenSpaceX
+                if (DAT_MouseState::instance.screenSpaceX >= DAT_MenuModalComposition2::instance.modalMenu.x
                     && DAT_MouseState::instance.screenSpaceX < DAT_MenuModalComposition2::instance.modalMenu.width
                             + DAT_MenuModalComposition2::instance.modalMenu.x
-                    && DAT_MenuModalComposition2::instance.modalMenu.y <= DAT_MouseState::instance.screenSpaceY
+                    && DAT_MouseState::instance.screenSpaceY >= DAT_MenuModalComposition2::instance.modalMenu.y
                     && DAT_MouseState::instance.screenSpaceY < DAT_MenuModalComposition2::instance.modalMenu.height
                             + DAT_MenuModalComposition2::instance.modalMenu.y) {
                     return;
