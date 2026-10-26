@@ -94,7 +94,6 @@ namespace UI {
                 goto LAB_00433e2b;
             posY = posY + 0x46;
         }
-        _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
         _currentPlayerSlotID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
         piVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                      .startResources
@@ -119,6 +118,7 @@ namespace UI {
             piVar1 = piVar1 + 5;
             iVar2 = iVar2 + -1;
         } while (iVar2 != 0);
+        _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
             if (iVar3 == 0)
                 return;
@@ -133,59 +133,59 @@ namespace UI {
             DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = 0x1e;
         }
         iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount45;
-        if (iVar3 == 0) {
+        if (iVar3 != 0) {
+            if (_currentGameModeUnk == OpenSHC::Game::GM_SIEGE_THAT) {
+                _currentPlayerSlotID = 0;
+                _stackMenuStateNotZero = FALSE;
+                iVar3 = 0x11;
+                uVar5 = 0;
+                uVar4 = 0xb8eefb;
+                _alignment = OpenSHC::Text::TTA_LEFT;
+                _y = posY + 5;
+                _x = posX;
+                /*
+                  added by script: "Available Goods"
+                 */
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_STARTUP, 1),
+                    _x, _y, (TextAlignment)((int)(_alignment)), uVar4, uVar5, iVar3, _stackMenuStateNotZero,
+                    _currentPlayerSlotID);
+                _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
+            } else {
+                if (iVar3 == 1) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_STARTUP, 0, posX, posY + 0x1e, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0,
+                        0x11, FALSE);
+                    _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
+                } else if (iVar3 == 2) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_STARTUP, 2, posX, posY + 0x1e, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0,
+                        0x11, FALSE);
+                    _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
+                }
+            }
+            _currentPlayerSlotID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+            DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
+                = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
+                + 2;
+            iVar2 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47;
+            iVar3 = iVar2 >> 2;
+            iVar2 -= 0x28;
+            if (iVar2 < DAT_WindowAndDirectDraw::instance.resolutionX) {
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3 + (0x22 - iVar3 / 6) * 6, iVar2 + posX, posY);
+            } else if (_currentGameModeUnk != OpenSHC::Game::GM_SIEGE_THAT) {
+                DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47 = 0;
+                DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount45 = 0;
+            }
+        } else {
             iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset;
             if (iVar3 != 0) {
                 DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = iVar3 + -1;
             }
             goto LAB_00433fe5;
-        }
-        if (_currentGameModeUnk == OpenSHC::Game::GM_SIEGE_THAT) {
-            _currentPlayerSlotID = 0;
-            _stackMenuStateNotZero = FALSE;
-            iVar3 = 0x11;
-            uVar5 = 0;
-            uVar4 = 0xb8eefb;
-            _alignment = OpenSHC::Text::TTA_LEFT;
-            _y = posY + 5;
-            _x = posX;
-            /*
-              added by script: "Available Goods"
-             */
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_STARTUP, 1),
-                _x, _y, (TextAlignment)((int)(_alignment)), uVar4, uVar5, iVar3, _stackMenuStateNotZero,
-                _currentPlayerSlotID);
-            _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
-        } else {
-            if (iVar3 == 1) {
-                iVar3 = 0;
-            } else {
-                if (iVar3 != 2)
-                    goto LAB_00433f65;
-                iVar3 = 2;
-            }
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
-                OpenSHC::DE::SHCDE::TEXT_STARTUP, iVar3, posX, posY + 0x1e, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x11,
-                FALSE);
-            _currentGameModeUnk = DAT_GameCore::instance.gameMode_2;
-        }
-    LAB_00433f65:
-        _currentPlayerSlotID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
-            = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
-            + 2;
-        iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47;
-        iVar2 = iVar3 + -0x28;
-        iVar3 = iVar3 >> 2;
-        if (iVar2 < DAT_WindowAndDirectDraw::instance.resolutionX) {
-            MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar3 + (0x22 - iVar3 / 6) * 6, iVar2 + posX, posY);
-        } else if (_currentGameModeUnk != OpenSHC::Game::GM_SIEGE_THAT) {
-            DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47 = 0;
-            DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount45 = 0;
         }
     LAB_00433fe5:
         int _yOffset = 0;
