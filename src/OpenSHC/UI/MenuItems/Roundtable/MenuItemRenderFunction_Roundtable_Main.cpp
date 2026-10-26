@@ -224,7 +224,7 @@ namespace UI {
                             iVar4 = 0x21b;
                         } else {
                             if (DAT_GameCore::instance.lordIcons[iVar3] != 1) {
-                                if (DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[iVar3 + 0x13] < 1) {
+                                if (DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[iVar3 + 0x13] <= 0) {
                                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                                 }
