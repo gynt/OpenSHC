@@ -25935,7 +25935,7 @@ SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004AFE10 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004B0390 | 56.2% | blend if/else, inverted arms
+SHC_3BB0A8C1_0x004B0390 | 56.2% | clang-format only
 
 SHC_3BB0A8C1_0x004B07C0 | 94.3% | Reimplemented, asm differs
 
