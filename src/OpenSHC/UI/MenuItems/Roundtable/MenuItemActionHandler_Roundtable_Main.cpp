@@ -91,7 +91,7 @@ namespace UI {
                             DAT_00df4298::instance = 1;
                         }
                     }
-                    byte bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID];
+                    int bVar1 = DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID];
                     if ((DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] != bVar1)
                         || (DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[playerID_01] == 0)) {
                         if (bVar1 == 0) {
@@ -222,7 +222,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,
                     DAT_GameSynchronyState::ptr)();
-                char cVar2 = '\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1];
+                int cVar2 = '\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[1];
                 if ('\0' < (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[2]) {
                     cVar2 = cVar2 + '\x01';
                 }

@@ -25879,7 +25879,7 @@ SHC_3BB0A8C1_0x004AE950 | 95.7% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x004AEA10 | 36.4% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004AEA50 | 61.2% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004AEA50 | 66.5% | char locals widened
 
 SHC_3BB0A8C1_0x004AEB20 | 0.0% | Pending
 
