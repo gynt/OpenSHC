@@ -41,14 +41,8 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B2530
     void DisplayElements::RenderSomeMultiplayerInfoUnkDisplayElement28(int posX, int posY, DWORD elementState)
     {
-        int iVar2;
         eTextSections offsetIndex;
-        int iVar3;
-        TextAlignment TVar4;
         BGR24 BVar5;
-        int iVar6;
-        BOOLEnum BVar7;
-        int iVar8;
         DWORD _currentTime = timeGetTime();
         if (DAT_GameCore::instance.mapU4Int0 != 0) {
             posY = posY + 0x41;
@@ -58,96 +52,82 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance
                         .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
                     == -1) {
+                    DAT_GameSynchronyState::instance.DAT_SomeTime = _currentTime;
                     DAT_GameSynchronyState::instance.lagNotificationCode = 0x41;
-                } else {
-                    if (10000 < _currentTime
-                            - DAT_GameSynchronyState::instance
-                                .connectionLagInfoArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
-                                .time)
-                        goto LAB_004b2593;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2
+                            | OpenSHC::Commands::GCT_CHANGE_RATIONS));
+                } else if (_currentTime
+                        - DAT_GameSynchronyState::instance
+                            .connectionLagInfoArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
+                            .time
+                    <= 10000) {
+                    DAT_GameSynchronyState::instance.DAT_SomeTime = _currentTime;
                     DAT_GameSynchronyState::instance.lagNotificationCode = 0x43;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                        (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2
+                            | OpenSHC::Commands::GCT_CHANGE_RATIONS));
                 }
-                DAT_GameSynchronyState::instance.DAT_SomeTime = _currentTime;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                    (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SEND_RESYNC_TILEMAPDATA2
-                        | OpenSHC::Commands::GCT_CHANGE_RATIONS));
             }
         } else if (2000 < _currentTime - DAT_GameSynchronyState::instance.DAT_SomeTime) {
             DAT_GameSynchronyState::instance.DAT_SomeTime = 0;
             DAT_GameSynchronyState::instance.laggingPlayerIDUnk = 0;
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_SOME_MULTIPLAYER_INFO_Unk_28, 0);
+            return;
         }
-    LAB_004b2593:
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
             DAT_PencilRenderCore::ptr)(posX + -0xcc, posY, 0x198, 0x60);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        iVar2 = posY + 0x14;
-        iVar3 = posX + -0xbe;
+        int iVar2 = posY + 0x14;
+        int iVar3 = posX + -0xbe;
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             DAT_GameSynchronyState::instance.finalResults.names[DAT_GameSynchronyState::instance.laggingPlayerIDUnk],
             iVar3, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE, 0);
-        iVar8 = 0;
-        BVar7 = TRUE;
-        iVar6 = 0x12;
-        BVar5 = 0xc2f0eb;
-        TVar4 = OpenSHC::Text::TTA_LEFT;
         /*
           ": Not Responding"   added by script: ": Not Responding"
          */
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x40),
-            iVar3, iVar2, TVar4, BVar5, iVar6, BVar7, iVar8);
+            iVar3, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, TRUE, 0);
         if (DAT_GameSynchronyState::instance.DAT_SomeTime == 0) {
-            DAT_ButtonY::instance = posY + 0x34;
             DAT_ButtonX::instance = posX;
+            DAT_ButtonY::instance = posY + 0x34;
             DAT_ButtonW::instance = 0xb4;
             DAT_ButtonH::instance = 0x1c;
-            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                BVar5 = 0x7f7f7f;
-                posX = posX + 0x5a;
-                offsetIndex = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
-                iVar2 = 0x5b;
-            } else {
+            if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                 iVar2 = 0x3c
                     - (_currentTime
                           - DAT_GameSynchronyState::instance
                               .connectionLagInfoArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
                               .time)
                         / 1000;
-                if (iVar2 <= 0x32) {
-                    if (iVar2 < 0) {
-                        iVar2 = 0;
-                    }
-                } else {
+                if (0x32 < iVar2) {
                     iVar2 = 0x32;
+                } else if (iVar2 < 0) {
+                    iVar2 = 0;
                 }
                 iVar3 = posY + 0x3a;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     iVar2, posX + -0x66, iVar3, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 0);
-                BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
-                    posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX,
+                BOOLEnum BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox,
+                    DAT_MouseState::ptr)(posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX,
                     (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0x34, 0xb4, 0x1c);
                 if (BVar7 != FALSE) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    iVar8 = 0;
-                    BVar7 = FALSE;
-                    iVar6 = 0x12;
-                    BVar5 = 0xccfaff;
-                    TVar4 = OpenSHC::Text::TTA_CENTER;
-                    iVar2 = posX + 0x5a;
                     /*
                       "Eject"   added by script: "Eject"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5b),
-                        iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
+                        posX + 0x5a, iVar3, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                     if (DAT_MouseState::instance.leftClickStart == 0)
                         return;
                     DAT_GameSynchronyState::instance.DAT_SomeTime = timeGetTime();
@@ -164,21 +144,21 @@ namespace UI {
                 posX = posX + 0x5a;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
                 iVar2 = 0x5b;
+            } else {
+                BVar5 = 0x7f7f7f;
+                posX = posX + 0x5a;
+                offsetIndex = OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM;
+                iVar2 = 0x5b;
             }
         } else {
             BVar5 = 0xc2f0eb;
             offsetIndex = OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION;
             iVar2 = DAT_GameSynchronyState::instance.lagNotificationCode;
         }
-        iVar3 = posY + 0x3a;
-        iVar8 = 0;
-        BVar7 = FALSE;
-        iVar6 = 0x12;
-        TVar4 = OpenSHC::Text::TTA_CENTER;
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(offsetIndex, iVar2),
-            posX, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
+            posX, posY + 0x3a, OpenSHC::Text::TTA_CENTER, BVar5, 0x12, FALSE, 0);
     }
 
 }
