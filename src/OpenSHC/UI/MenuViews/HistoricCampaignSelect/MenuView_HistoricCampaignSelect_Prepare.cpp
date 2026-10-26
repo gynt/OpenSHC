@@ -28,13 +28,14 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                 DAT_TextureRenderCoreObject::ptr)("frontend_combat2.tgx");
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 = timeGetTime();
+            DWORD transitionBase = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x163].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 - 0x12c0;
-            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x165].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 - 0x640;
+                = transitionBase - 0x12c0;
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x164].stateTransitionTimeBaseUnk_0x18
-                = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 - 0xc80;
+                = transitionBase - 0xc80;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x165].stateTransitionTimeBaseUnk_0x18
+                = transitionBase - 0x640;
+            DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x166].stateTransitionTimeBaseUnk_0x18 = transitionBase;
             INT_00b95abc::instance = -1;
             DAT_UnknownGFXIndex::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
