@@ -128,18 +128,6 @@ restores the list *and* rebuilds before exiting, because restoring the list alon
 the narrowed one, so `diff.json` keeps reporting a single function at the last variant's score and `--run` cannot
 repair it. That rebuild costs a few minutes per invocation and is worth paying.
 
-**A `BUILD_OK` is not by itself evidence that a measurement is valid - read the coverage line.** A link can fail with
-`LNK1318: Unexpected PDB error; RPC (23)` when `mspdbsrv.exe` drops its connection; that is toolchain flakiness, not a
-source error, and it happens at link time after every object has compiled. Killing the stale `mspdbsrv.exe` processes
-and rebuilding then reports `BUILD_OK` and writes a DLL and PDB, but the PDB can come out with no symbols reccmp can
-read. `diff.json` is then `function_count: 0` with empty `data`, and `reccmp_report.py` prints
-
-    warning: the last reccmp run covers only 0 of the 805 functions in the build list.
-
-while still reporting `0 WORSE` - which is indistinguishable from a genuine clean result if the warning is skipped.
-Deleting the DLL and the PDB to force a clean relink fixes it. So after any build that did not succeed first time,
-confirm the report covers the whole list before believing a number.
-
 `try_styles.py` reports four decimals, and its tie test is exact. It used to parse the one-decimal percentage
 `reccmp_report.py` prints, so anything sharing a first decimal compared as a tie - which is how a variant 0.02
 points *below* its baseline got kept as "identical, so pick the readable one". Treat a tie from an older run as
@@ -150,6 +138,12 @@ interleaved diff `reccmp_report.py diff` gives you. Use it when the diff comes b
 original's own jump targets and fall-through order to reconstruct control flow. It reads `reccmp/dll/diff.json`, so it
 works with no Ghidra connection.
 
+reccmp cuts the original's stream at the length of *our* function, so when ours is shorter the original's tail is
+simply missing from the diff (it reads as "the original has no `ret`"). `quick_diff.py FILE.cpp` disassembles the whole
+original function from `_original/` and diffs it against a `/FA` compile of that one file in about six seconds, with
+no link and no reccmp run. Use it to try source variants - it is what broke the `AI::AICState` plateau that
+`try_styles.py` at several minutes per variant had declared allocator-bound - and confirm the result with reccmp.
+
 `orig_asm.py NAME --stats` reports the signals that decide *how* a function has to be reimplemented. Check it before
 restyling anything large:
 
@@ -157,12 +151,17 @@ restyling anything large:
   `__asm` block rather than C++. Functions are never `__declspec(naked)`: write a normal function, keep the
   compiler-generated statements as C++, and refer to parameters, locals and `this` by name. Prettify offsets with
   MSVC's struct-member asm syntax (`mov esi, dword ptr [eax]TileMapState.ptr_LogicLayer`) - `::` is not parseable in an
-  asm operand, so a resolver global cannot be named there.
-- a frame pointer plus a `this` spill - the original was built without optimisation. Add `#pragma optimize(, off)`
-  around the function; inline asm alone does not disable optimisation. Then match the reported **frame size** exactly,
-  which is usually the single biggest win, because every local displacement shifts otherwise. Merge locals that share a
-  slot and reproduce dead stores. At `/Od` prefer a nested `if` over an early `continue` (the original inverts the test
-  and jumps to the loop's continue trampoline), and declare locals together at the top of the function.
+  asm operand, so a resolver global cannot be named there. Where the handwritten block reaches a *global* layer rather
+  than a `this` field, give it a C++ pointer local and name that local in the asm; the original caches the same bases in
+  stack slots anyway, so the inner loop still matches. `mov eax, 0` followed by `mov ax, word ptr [..]` is the giveaway
+  in its own right - that is a hand-rolled `movzx`, which the compiler always emits as one instruction.
+  Such a block is usually a **macro**: the same instruction stream appears verbatim in several functions and never as a
+  call, so it belongs in a hand-written `*Asm.hpp` beside them (`NeighbourFlagsAsm.hpp`, `LinkageNeighbourAsm.hpp`).
+  This has been worth ~45 points per function, three times over.
+- a frame pointer plus a `this` spill - the original was built without optimisation, **unless the same function also
+  reports `mov reg, 0`**. MSVC keeps `ebp` in any function containing an `__asm` block, so for a function with
+  handwritten assembly the frame pointer says nothing about the optimisation level: reimplement the handwritten part as
+  inline asm.
 - a jump table - Ghidra usually renders the dispatch as a call through an unnamed pointer array and drops the arms, so
   rebuild the `switch` from the byte and jump tables instead of restyling the decompiler output.
 
@@ -178,33 +177,6 @@ means the field's signedness is wrong in the generated header, and `add` against
 error in a formula - that is how `2400 / n + 40` was caught being `- 40`, which Ghidra had decompiled with the wrong
 sign. It carries only those two rules on purpose: a third, "same instruction with a different constant", was tried and
 dropped because every hit it produced was a loop-induction stride rather than a constant the source chose.
-`diff_signcmp.py` is the comparison counterpart that pays best on *headers* rather than bodies: it pairs the
-conditional jumps per replacement block and reports where the original is signed (`jl`/`jge`/`jg`/`jle`) and we are
-unsigned (`jb`/`jae`/`ja`/`jbe`). Every hit it has produced pointed the same way, and the cause is always a field
-declared `undefined4`/`uint`/`dword` that the game treats as signed - so fixing the declaration fixes every site at
-once instead of sprinkling `(int)` casts. It found a real bug this way:
-`MenuItemActionHandler_SingleplayerMapChoice_ButtonsAndHands` guards starting the game with
-`if (-1 < DAT_MapSelectionScrollOffset + DAT_MapSelectionRelativeSelected)`, and because the first two were
-`undefined4` the sum promoted to unsigned, making the test `0xffffffff < x` and the whole branch dead. Nine such
-fields took four functions to 100% and `InitSkirmishLobbyData` from 50.9 to 70.1, at 0 WORSE throughout. Two
-caveats: a `0 < x` guard is the commonest tell but an *existing* `(int)` cast at most read sites is just as strong
-(that is the workaround for the wrong declaration), and the pairing is positional, so confirm a hit against
-`reccmp_report.py diff` before editing - it reported one `SIGNFLIP` on a scrollbar that was really case 5's `sub`
-paired against case 6's `add` across two switch arms, with both arms correct.
-
-`walkscan.py` finds the split-array shape `arrayscan.py` structurally cannot see. `arrayscan.py` needs a constant
-index to compare against a declared length; a pointer walk has none:
-
-    pIVar9 = (InGameEventExtra*)&pIVar9->conditionTwoIsTrue;
-
-re-casts a pointer to its own struct type while aiming it at a non-first member, so it steps by that *member's*
-offset rather than `sizeof(struct)`. Ghidra emits this when the real object is a flat array it has split into
-fields. Two directions follow, and which one applies is decided by whether the fields are named: where they are
-anonymous, collapse them (`InGameEventExtra`'s 40 ints became `conditionIsTrue[40]`, `SiegeGameModeRelatedSection`'s
-six became `siegeEngineCounts[6]`); where they already carry good names, keep the struct and only retype the
-walking pointer to `int*`, because collapsing `SiegeUnitCounts` or `StartingResourceStructureInt` would throw away
-18 and 23 meaningful field names to gain nothing.
-
 `reorder_search.py FILE NAME` hill-climbs the match % by reordering independent statements,
 which is the only lever left once a function is `alloc-only`; it pays about one move in ten, and mostly where the
 statements sit between two calls or on a loop back-edge.
@@ -223,12 +195,23 @@ of namespace average this way, and a snapshot taken on one side of that change c
 with anything measured on the other. `tools/reimplementation-control/enable_reimplemented_data.py`
 turns them back on; `git checkout -- src/OpenSHC/Globals/` turns them off again.
 
+**The function resolvers are a second, separate switch, and they matter just as much.** Every
+`MACRO_FUNCTION_RESOLVER(..., false, Address::...)` in a `*.func.hpp` routes `MACRO_CALL`/`MACRO_CALL_MEMBER` to the
+*original binary*, so with it off the compiler never sees our callee. It cannot then know the callee leaves `ecx`
+alone, and the caller spills `this` into a callee-saved register, which renames every register downstream of the
+call. `processSyncPacket` read 26.2% for that reason alone; enabling its (already 100%) callee took it to 79.2%,
+and enabling all 23 finished functions of `GameSynchronyState` moved the namespace average 84.6% -> 85.7% with
+nothing getting worse. It is also the missing precondition for `cmake/compiler-flags-gl.txt`: `/GL` on both sides
+does nothing while the callee is still proxied. `tools/reimplementation-control/Enable-Reimplemented-Functions.ps1`
+flips them; like the struct resolvers they are never committed. Only enable a callee that is itself finished.
+
 ## Working on Many Functions
 
 When restyling or improving a large set of functions, work in batches (e.g. per folder) and verify each batch:
 
-0. Switch the global data reimplementations on (the `MACRO_STRUCT_RESOLVER` flag in `src/OpenSHC/Globals/*.hpp`)
-   before measuring anything, and never commit those files. With the resolvers inactive, reccmp collapses every
+0. Switch **both** sets of reimplementations on before measuring anything, and never commit those files: the
+   global data (the `MACRO_STRUCT_RESOLVER` flag in `src/OpenSHC/Globals/*.hpp`) and the finished functions
+   (the `MACRO_FUNCTION_RESOLVER` flag in the `*.func.hpp` files). With the resolvers inactive, reccmp collapses every
    absolute address to one token, so a `this->` that should be the global instance, and a wrong field offset, both
    look like a match.
 1. Save a baseline: `reccmp_report.py --run save base.json`.
@@ -254,21 +237,16 @@ Style expected of reimplemented code:
   two rows helped one function and hurt its near-identical neighbour. Use `try_styles.py` rather than reasoning about it.
 - Use `for` loops (loop variable declared in the `for`), early returns instead of nested if/else, no `goto`,
   no pointer variables walking over arrays or structs, named fields and enum constants instead of offsets and magic numbers.
-  The "no pointer variables" preference does **not** extend to the read-modify-write idiom
-  `piVar1 = &x.field; *piVar1 = *piVar1 + 1;`: there the original often did compute the address once, and removing the
-  pointer measurably loses. See the `unptr.py` note among the diff patterns below - decide that one per function.
   The early-return preference has one known exception, still tentative - see the note on arms sharing a tail among the
   diff patterns below.
-  The `for` preference applies to loops that are already counted; **do not sweep the tree converting `while`**. All
-  217 standalone `while` loops were classified and none converts safely: 108 are `while (true)` with no induction
-  variable, 64 have a sentinel, flag or comma-expression condition, 11 never modify the condition variable in the
-  body, 6 contain `continue`/`goto`, and 1 increments before the end. The relational-looking ones each fail for a
-  concrete reason - `loadWavSounds` consumes the variable *after* incrementing it (`loadingBar = i * 80`), so
-  hoisting the increment changes the result; `MenuItemActionHandler_CrusadeMap_Main` has a trailing `if (20 < i) {}`
-  bound check that must stay after the increment; the `FilePackager` inner scans never touch their condition
-  variable; and `copyData`/`fillMemory`/`compressRLE`/`computeHash` are block-stride routines. Note that a `while`
-  with a trailing increment and a `continue` is **not** equivalent to the `for`: the `for` header always runs the
-  increment.
+- Prefer `const` on a local that is assigned once, spelled with `const` *after* the type (`int const tribeID = ...`).
+  This is not free: a `const` local whose initialiser is a **compile-time literal** lets MSVC fold the value into its
+  use sites and drop instructions the original still has, so leave those non-const. A `const` local initialised from a
+  memory read or a call is code-generation neutral. Over `AI::AICState` 165 of 172 candidates were neutral and 7 were
+  not - every one of them an `int tribeIndex = <literal>` feeding an array index, each costing 4 instructions and
+  0.18-0.50 of match (`setTribe0x11ToAggressiveAndAttackIfConditionMet` went 1.0000 -> 0.5000). Isolate before
+  blaming the qualifier: in `aiCommandTribe13DefensiveWave`, keeping `int const tribeID = <array read>` while
+  reverting `int tribeIndex = 13` alone restored 1.0000.
 - Never change the `// FUNCTION:` address line; keep generated headers untouched unless asked.
 - Write sources as UTF-8 with LF line endings.
 
@@ -280,6 +258,13 @@ of the switch leaving the value it should have set uninitialised. Fixing them wa
 suspicious dead store is worth decompiling for rather than deleting. Note this is the opposite of the duplicate-tail
 pattern below, where our shared block should have been two separate branches - check the predecessor count either way.
 
+Duplicating a `LAB_*` is correct C++ but not automatically a better match, so **measure every `goto` removal**. A
+`goto` in the decompiler output usually marks a block the original compiler emitted once and jumped to, and writing
+the block out twice makes MSVC emit it twice: duplicating the single shared tail in
+`setClimbBasedOnClosestClimbData` - two `if` arms that set a coordinate pair and then share the distance test - was
+semantically identical and cost **35 points**. Keep the `goto` where the measurement says the original shared the
+block, and record that in the commit remark rather than trading match for style.
+
 Diff patterns that were reliable (more in the cheat sheet):
 
 - Absolute `DAT_*` addresses in the original asm where the source uses `this->` mean the original accessed the global instance.
@@ -289,8 +274,12 @@ Diff patterns that were reliable (more in the cheat sheet):
 - A tail call to the same callee from our code but a jump back to a shared block in the original means separate
   `if` branches with identical bodies, not a combined condition.
 - Callee-saved registers reused after a call without reload (`ecx`/`edx`) indicate LTCG (`cmake/compiler-flags-gl.txt`),
-  not a source difference.
+  not a source difference. Investigate by adding the caller and callee to the txt and enabling their reimplementation in the .func.hpp files.
+  Only makes sense if the callee is 100% matching (e.g. ECX not touched).
 - A mismatching argument count or `ret N` usually means the generated header is wrong; report it instead of working around it.
+- Instruction order is not statement order: the compiler schedules freely inside a boundary, so a long run of
+  independent stores into one object says nothing about the order the fields were assigned in the original source
+  (see the cheat sheet's *Statement Order*). Reordering the body to follow the asm makes the match worse.
 - Diffs can reveal real bugs in existing reimplementations (wrong constants, wrong strides); fix those.
 - `(-(uint)(c) & MASK) + BASE` in the decompiler output is a conditional it has already turned into mask-and-add:
   it is `c ? BASE + MASK : BASE`. Writing the conditional out recovers the same instructions and stops the constants
@@ -306,30 +295,9 @@ Diff patterns that were reliable (more in the cheat sheet):
   always complement each other. The repair proves the operand is signed, so the dividend has to stay signed in our
   source too: the decompiler's `uint` locals and its `+ 4U` make the sum unsigned, and an unsigned `%` compiles to a
   bare `and` with no repair, which loses the match instead of gaining it.
-- `piVar1 = &x.field; *piVar1 = *piVar1 + 1;` is `x.field = x.field + 1` (`unptr.py`). Only rewrite it when the store
-  immediately follows the pointer: a pointer freezes the address while the field form re-evaluates the index, so with a
-  call or a write to the index in between the two forms differ. It was worth 1.2% over 60 sites in one function, but
-  **do not run it as a blanket pass** - which of the two forms matches is decided per function and swings up to 8
-  points either way. Measured over 20 functions with `try_styles.py`: 10 preferred the pointer, 5 preferred the field
-  form, 5 tied exactly. Largest wins for the pointer `UpdateMill` +3.3 (42.4850% against 39.2000%) and `UpdateIronMine`
-  +3.5; largest wins for the field form `processDeerMoving` +7.8 (36.4729% -> 44.3114%) and `UpdateWheatFarm` +3.2
-  (56.0748% -> 59.2593%). So neither "remove the pointer walks" nor "keep them" is right on its own, and both
-  directions are real rather than allocator noise - they reproduce exactly to four decimals.
-  Five ways of predicting the winner from the source were tried and **all failed**; do not spend time re-deriving them:
-  what the pointer targets (a variable-indexed global array element, a `this->` member or a global scalar), how many
-  sites the function has, what fraction of its RMW sites already match the original, how many `[DAT_*::instance]`
-  indices it contains, and whether the index variable is loaded from a global or is a local or parameter. The last
-  looked strong in-sample (global-indexed preferred the pointer 7 of 10, mean +1.0) and was then falsified
-  out-of-sample by `UpdateWheatFarm`, which is global-indexed and prefers the field form by 3.2.
-  Two things are settled, and both save builds:
-  - `x = x + 1`, `x += 1` and `x++` compile **identically** - exact ties on two functions (three ways at 39.2000% on
-    `UpdateMill`, again at 24.9578% on `UpdatePoleturnersWorkshop`). There are only ever two candidates, so a
-    `try_styles.py` run here needs exactly two variants, and compound assignment is not a lever.
-  - Never hoist an **object pointer** to a global array element (`Building* b = &...buildings[id];` then `b->field`).
-    On `UpdateMill` that scored 18.5263% against 42.4850% for the per-field pointer, **24 points worse**. The original
-    folds the global's address into the instruction displacement and keeps only the scaled index in a register
-    (`add dword ptr [esi + BuildingsState+108], ecx`); an explicit `T*` forces `[ptr + 108]` and loses the folding.
-    That `esi` is the compiler's own CSE of the index computation, not a pointer the source held.
+- `piVar1 = &x.field; *piVar1 = *piVar1 + 1;` is `x.field = x.field + 1` (`unptr.py`), worth 1.2% over 60 sites in one
+  function. Only rewrite it when the store immediately follows the pointer: a pointer freezes the address while the
+  field form re-evaluates the index, so with a call or a write to the index in between the two forms differ.
 - Our `movzx` against the original's `movsx` on a `ushort` layer (`PathConnectionLayer`) means the original cast the
   read: `dword x = (short)layer[i]`, one `movsx`. Declaring the local `short` does not do it - the signedness comes
   from the cast on the array access, not from the destination.
@@ -361,55 +329,6 @@ Diff patterns that were reliable (more in the cheat sheet):
   for two values. `diff_slots.py` says the lowest-access extra slot is usually the culprit, so a function whose
   extra slots are all heavily used has genuine live values rather than a stray local, and needs structural
   understanding rather than a rule.
-  There is one mechanically actionable case, and it is worth checking first because it is a real bug rather than a
-  style difference: **our frame being far *smaller* than the original's** (8 bytes, or `-`, against 0x3f4). That
-  means a local was declared and never referenced, so MSVC deleted it -- and the usual reason is that Ghidra split
-  one stack object into two locals. Nine files had the same split of a 1008-byte filename buffer:
-
-      char local_3f4[4];      // the filename is copied in here through a pointer walk
-      char local_3f0[1004];   // never referenced anywhere, so MSVC drops it
-
-  The code then copies a map or save name into what is left and appends an extension, i.e. it writes an arbitrary
-  length string past the end of the frame. Merging the pieces into one `char local_3f4[1008]` fixed the corruption
-  and moved every one of the nine closer to the original; four landed on the original's frame size exactly, and the
-  match gains ran +1.2 to +16.0 (average +6.6 over the last six). `MenuView_LobbyMenu_DoEveryFrame` went from a
-  16-byte frame to the original's 0x400 and is now `alloc-only`.
-  To find them: Ghidra names a stack local after its frame offset (`local_3f4` is -0x3f4, `aGStack_3c` is -0x3c),
-  so the pieces of one object are exactly contiguous - `offset(next) == offset(prev) - sizeof(prev)`. Look for two
-  adjacent arrays of the same element type where the second is never referenced, and confirm the merge by watching
-  `frmU` converge on `frmO` rather than by the percentage. Note the trailing `local_4`/`local_c` in such a run is
-  the security cookie, not part of the object, and that a local which has already been given a meaningful name has
-  lost its offset and so cannot be found this way - `undefined4 _dpSessionDesc2[6]` plus `GUID aGStack_3c[3]` was
-  one 80-byte `DPSESSIONDESC2` (`guidApplication` is at +24), caught only by its `_memset(.., 0x50)` overrunning a
-  24-byte array.
-- The same split affects **struct fields**, and an index whose constant part alone exceeds the declared length is
-  proof of it. `MapAndTimeState::scenarioEventTimers[32]` was 32 separate `int` fields, recovered from the walk's own
-  terminating address (`while (p < 0x117ee60)` against a base of `0x117EDE0` gives exactly 128 bytes), and
-  `playerKeepTile[10]` was declared `int[2][5]`. When fixing a shape, the accesses change with it: `field[0]` decays
-  to `int*` under `int[2][5]` but is an `int` under `int[10]`, so surrounding `(int)... + idx` byte arithmetic
-  silently changes meaning unless the `[0]` goes too.
-  A scan for this is cheap but needs three guards, each of which produced false positives when missing: `+ -0x12` is
-  a *subtraction* and says nothing about the top end; digits inside identifiers (`field94_0x14560`,
-  `unitIDIndex_0x2bd4c`) are not values and must be stripped before reading constants; and the field name needs a
-  word boundary or `_playerTeams[9]`, a local *declaration*, matches `playerTeams`. A scaled index (`i * 0x28 + 0x5e`)
-  is also not evidence, since the scale is a record stride and the declared length is then in the wrong unit.
-  Not every hit is fixable, and **a scaled-index store cannot tell you where the array starts**: MSVC folds the
-  constant into the displacement, so `mov [EAX*0x4 + 0x1a27438], EBX` is what both `arr_70C[i] = 0` and
-  `arr_6E8[i + 9] = 0` compile to (`0x1a27414 + 9*4 == 0x1a27438`). An out-of-range index in the decompilation is
-  therefore *not* evidence of an anchoring artefact on its own - the original may really have had the off-by-N.
-  `SkirmishStatistics::finalDateOfDeathInMonths[9]` at `0x6E8`, written at `[idx + 9]` for `idx` 1..8, is the
-  worked example, and it stays unresolved on purpose:
-  - `initMultiplayerLobbyState` (`0x48c3e4` onward) stores through twelve displacements exactly `0x24` apart, and
-    eleven of them land on already-named `int[9]` arrays (`0x548` `finalStoneProduced` ... `0x6E8`
-    `finalDateOfDeathInMonths`); the last three are `0x70C`, `0x730`, `0x754`, and `0x754 + 0x24` is `0x778`,
-    which is `sizeof` to the byte. That is good evidence the trailing `padding3[92]` is three more per-player
-    arrays.
-  - but `yearStart`, `monthStart`, `yearEnd` and `monthEnd` at `0x70C..0x718` are written and read **absolutely**
-    and non-indexed in three functions (`0x4c6b13` in `SetupSkirmishMode`, `0x442491` in `LaunchSkirmishGame`,
-    and the difference in `ComputeSkMasterScore`), so those four names are not in doubt either.
-  The two readings overlap and the asm cannot separate them, so leave the header alone rather than trading four
-  evidenced names for a union whose other members nothing reads. Behaviour is identical either way - the same
-  bytes are zeroed - and `LaunchSkirmishGame` is absent from the build list, so reccmp cannot adjudicate.
 - `jmp dword ptr [reg*4 + table]` on one side only is a dispatch-form mismatch: a `switch` over contiguous values
   becomes a jump table, an if/else-if chain becomes compares. Both directions have been worth several percent
   (`scan_dispatch.py` finds them). Handing some of a switch's values to `default:` and re-testing them with an `if`
@@ -422,24 +341,28 @@ Diff patterns that were reliable (more in the cheat sheet):
 - Trust the asm over the decompilation for constants and their sign. Ghidra rendered `2400 / n + 40` where the binary
   has `sub eax, 0x28`, so the formula is `- 40`; the function reached 100% once corrected (`diff_types.py` finds these).
   A `(longlong)` in a Ghidra division is usually spurious too - it emits `_alldiv` where the original has a plain `idiv`.
-- MSVC1400 at `/O2` never unrolls a loop, so a body repeated N times in the asm means the source was written out N
-  times. A plain loop where the original is unrolled has cost 80 points on its own.
-- A flag stored with `mov dword ptr [..], 0/1` is an `int`, not a `bool`, which stores a byte.
-- `BOOLEnum` is `typedef BOOL`, i.e. `int`, so `x == FALSE` is exactly `!x` but **`x == TRUE` is `x == 1`** and is
-  not `x` for any other nonzero value. The decompiler writes `== TRUE` wherever the constant happens to be 1, which
-  is how `currentPlayerSlotID == TRUE` (an `int` player slot 0..8) and `unitControlsRelated == TRUE` (an
-  `undefined4` holding 4, 5, 0x14, 0x16, 0x20) both appear in the sources: those are genuine `== 1` tests and
-  rewriting them to a truth test is a behaviour change. Check the operand's declared type before touching one.
-  The two forms also differ in codegen - `cmp x, 1; je` against `test x, x; jne` - so the asm says which the
-  original used. Note too that `bVar = x != FALSE;` is an assignment rather than a condition, and there the
-  `!= FALSE` is load-bearing: it emits the 0/1 normalisation a raw store does not.
-- **A generated `BOOLEnum` field that is assigned a non-boolean constant is mis-typed**, and the wrong type is worth
-  fixing because it is what makes the `== TRUE` above look rewritable. Two cases so far, both found by noticing one
-  odd assignment: `GameCore::scribeAnimationPhase` is compared against `2` as well as `TRUE`, so it is a three-state
-  animation phase; `UnitsState::pendingUnitControlMode` is assigned `0x14` and two parameters, and its only consumer
-  copies it into `unitControlsRelated`, an `undefined4` at the adjacent offset. Scan for an assignment or comparison
-  that is neither `TRUE`, `FALSE`, `0` nor `1`; when the field is really an int, the `= TRUE` assignments can stay,
-  since `TRUE` is `1` and `1` is usually a legitimate value.
+- MSVC1400 at `/O2` does unroll small constant-trip loops (`applyAIV`'s 10-iteration unit loop comes out five copies
+  wide from a plain `for`), and `!=` as the bound suppresses it - see the cheat sheet. A body repeated N times in the
+  asm is therefore not proof that the source wrote it out N times; compile the plain loop first and compare.
+  What the asm pins down is the unroll *factor*, and the way to hit a factor the compiler will not pick on its own is
+  an outer loop stepping by N with the inner N left to it: that compiles identically to writing the N copies out by
+  hand, down to everything but MSVC's label numbering. Read the factor off how the index is held. Once the whole trip
+  count is visible the compiler constant-folds every index, so each body carries absolute addresses and an immediate;
+  an original that instead keeps the index in a register and computes stored values with `lea` still had an induction
+  variable, so its source had a loop. `someChatMessageSelection` is the worked case: a plain 1..8 loop and 8
+  hand-written copies both give 154 instructions at 0.6745, while outer-step-4 plus an inner 0..3 gives 132 at 0.9198
+  against the original's 119. Do not bother varying the loop variable - a fresh `int i`, the function's already
+  declared `i`, a fresh name and a pre-declared one all produced byte-identical code.
+- A flag stored with `mov dword ptr [..], 0/1` is four bytes wide, so it is not a `bool`, which stores a byte. It
+  does not follow that it is a plain `int`: `BOOLEnum` is a typedef of `BOOL` and so of `int`, which means a dword
+  store is exactly what a `BOOLEnum` field looks like and is no evidence against one. Decide from the writes, not
+  the width - xref the field's address and read every store. `PlayerData::isNotNervousByEnemyTroopValue` is written
+  7 times across the image and every store is 0 or 1 (three through a register: two `xor eax, eax` and an `ebx` the
+  decompiler renders as `= 1`), and its 6 reads are all boolean tests - five `cmp .., 0x0` plus one against a zeroed
+  register that Ghidra prints as `== FALSE` - so the field is a `BOOLEnum`. Grepping our own sources would have
+  missed this, because 3 of its 4 writing functions are not reimplemented yet. Check Ghidra's own type for the
+  field too; it already had this one as `BOOLEnum`. Correcting such a field is free: the underlying type is the
+  same, so the match does not move.
 - Tentative, one clear case so far: where two arms of a condition share a tail, the nested `if/else` shape the
   decompiler emits can beat the early returns the style list above asks for, because it decides *which* arm holds the
   physical copy of the shared block. In `calculateTaxIncomeForPlayer` the original keeps the shared `(tax * 150) / 100`
@@ -449,39 +372,6 @@ Diff patterns that were reliable (more in the cheat sheet):
   measured *worse* on `updateCrowding` (all three nested variants lost 9-14 points) and made no difference at all on
   `showPopAndGoldPopup` and `createStatsPopUpEntities`, where every shape tied to the decimal because the gap there is
   the loop base-pointer anchor. `try_styles.py` settles it per function; prefer the early-return form on a tie.
-
-## Naming Struct Fields
-
-Naming a `field*_0x*` or `padding*` slot is an evidence problem, not a guessing one. Three traps have each
-cost real work:
-
-- **A Ghidra DATA xref to a field's address can be a loop terminator, not a use.** `ResetAiVariationArrayValue`
-  and `SetAIPlayerNickNames` both reference `GameSynchronyState+0x75c`, which looks like strong evidence that
-  the field is the AI variation array. It is not: the decompilation ends its loop with
-  `while ((int)piVar1 < 0x191dec4)`, and `0x0191DEC4` *is* that field's address - it is the exclusive end bound
-  of a walk over the preceding `aiVariationArray[9]` (`0x738-0x75B`). Read the decompilation before treating an
-  xref as a use, and check whether the address is simply the end of the field before it.
-- **Read the field's whole site list before naming it.** `Building+0x298` assigns `0` and `1` in its first three
-  sites and reads as `if (!x)`, which reads exactly like a boolean; the full list also assigns `2` and `3`, so it
-  is a stage machine. A name taken from a sample of the sites will be confidently wrong.
-- **Write-only across the whole binary is common, and is the right reason to leave a field unnamed.** Verify it
-  with Ghidra xrefs on the resolved address, not with the reimplemented subset: a field can look write-only to us
-  simply because its reader is not reimplemented yet. Of `GameSynchronyState`'s 38 referenced unnamed fields, 19
-  turned out to have no reader anywhere, including `0xba4`, which `SyncPacketSizeAnnouncement` serialises onto the
-  wire and which neither side ever reads. Prefer leaving these alone over inventing semantics for them.
-
-Two further notes:
-
-- Compute the address as the resolver's base plus the field offset and confirm it against a field whose name is
-  already known. Mis-attributing one slot shifts every conclusion: `[0x01fe7bc8]` in `renderMap` is
-  `TileMapState+0x5549C0`, so it is `field161`, not the `field162` an off-by-one makes it look like.
-- A struct's own header shows which convention a new name should follow - PascalCase beside
-  `MissionSpeechFileNames` for a predefined table, camelCase beside `sortColumn` for mutable state - and the
-  offsets chain exactly, so a `[50][4]` table at `0xFF4` following `SkirmishTrailIconOffsets[50]` at `0xF2C`
-  (`0xF2C + 200 = 0xFF4`) is confirmation that it belongs to the same family.
-
-Where a slot is shared between building types, name it after the type that uses it and expect the name to be
-extended later, as `flagonsOfAleOrCheeseOrReleaseDogs` already was.
 
 ## Agent Skills
 
