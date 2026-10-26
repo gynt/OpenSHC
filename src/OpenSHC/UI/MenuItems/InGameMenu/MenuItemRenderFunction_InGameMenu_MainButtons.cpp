@@ -62,7 +62,7 @@ namespace UI {
             if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
                 && (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                     || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))
-                && param_1 != 0x47 && param_1 != -4 && -10 < param_1) {
+                && param_1 != 0x47 && param_1 != -4 && -param_1 > 10) {
                 DAT_ButtonUnknownZero::instance = 1;
                 return;
             }
