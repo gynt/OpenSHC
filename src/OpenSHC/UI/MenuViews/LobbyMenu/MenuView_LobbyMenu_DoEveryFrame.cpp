@@ -276,7 +276,7 @@ namespace UI {
                         pcVar11
                             = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                                 DAT_ResourceManager::ptr)(_mapID);
-strcpy(local_3f4, pcVar11);
+                        strcpy(local_3f4, pcVar11);
                         strcat(local_3f4, ".map");
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
                             DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
