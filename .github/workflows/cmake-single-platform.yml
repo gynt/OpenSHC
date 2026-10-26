@@ -44,7 +44,7 @@ jobs:
       shell: pwsh
     - name: Compute progress
       run: >
-        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 3699
+        .\reccmp\dll\run.bat reccmp-reccmp --target STRONGHOLDCRUSADER --json progress.json --html progress.html --total 3699 --resolve-wrapped-calls --quiet --cache
       shell: pwsh
     - uses: actions/upload-artifact@v7
       with:
