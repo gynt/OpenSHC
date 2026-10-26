@@ -101,8 +101,8 @@ namespace UI {
             && (DAT_GameSynchronyState::instance.resyncTransferTotalSize != 0)) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 posX + -0xaa, posY + 0x4b,
-                (DAT_GameSynchronyState::instance.currentPacketTotalSize * 0x154)
-                        / DAT_GameSynchronyState::instance.resyncTransferTotalSize
+                ((int)(DAT_GameSynchronyState::instance.currentPacketTotalSize) * 0x154)
+                        / (int)(DAT_GameSynchronyState::instance.resyncTransferTotalSize)
                     + -0xaa + posX,
                 posY + 0x5a, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
         }

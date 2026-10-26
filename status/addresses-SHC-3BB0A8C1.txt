@@ -25933,7 +25933,7 @@ SHC_3BB0A8C1_0x004AFB30 | 65.2% | signed div, split calls
 
 SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004AFE10 | 62.0% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004AFE10 | 65.2% | signed division
 
 SHC_3BB0A8C1_0x004B0390 | 50.4% | if/else split, early return
 
