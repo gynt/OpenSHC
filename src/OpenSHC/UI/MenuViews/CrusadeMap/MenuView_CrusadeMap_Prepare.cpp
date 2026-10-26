@@ -22,18 +22,20 @@ namespace UI {
         void CrusadeMap::MenuView_CrusadeMap_Prepare()
         {
             int iVar1;
-            char* tgxFileName;
             DWORD_00ed311c::instance = 0;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                tgxFileName = "shcx_map.tgx";
+                DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("shcx_map.tgx");
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                tgxFileName = "skirmish_trail2.tgx";
+                DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("skirmish_trail2.tgx");
             } else {
-                tgxFileName = "skirmish_trail.tgx";
+                DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("skirmish_trail.tgx");
             }
-            DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
             if (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress) {
                 DAT_GameCore::instance.skirmishTrailProgress = 0x31;
