@@ -89,7 +89,7 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                                 + param_1 + -1]]
-                    < 1) {
+                    <= 0) {
                     color = 0x7f7f7f;
                 } else if ((((param_1 != DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected)
                                 && (DAT_ButtonCurrentlyInteracting::instance == FALSE))
