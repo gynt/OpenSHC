@@ -43,8 +43,16 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x = w;
                 DAT_MenuHandlerState::instance.y = y;
             }
-            if ((DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
-                || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
+            if (DAT_GameCore::instance.activeMenuTab.tabType
+                == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
+                if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(7);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(3);
+                }
+            } else if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST) {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                         DAT_TextureRenderCoreObject::ptr)(7);
