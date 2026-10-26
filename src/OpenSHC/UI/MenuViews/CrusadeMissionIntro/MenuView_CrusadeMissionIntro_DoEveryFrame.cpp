@@ -70,8 +70,7 @@ namespace UI {
             int* local_108;
             int local_104;
             int _textY_01;
-            int local_f4[33];
-            int local_70[4];
+            int local_100[60];
             int _titleX;
             int _titleY;
             TextAlignmentInt _titleAlignment;
@@ -138,36 +137,36 @@ namespace UI {
             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x20;
             _textY_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x156;
             iVar13 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xfe;
-            local_f4[0x15] = 0;
-            local_f4[0x16] = 0;
-            local_f4[0x17] = 0;
-            local_f4[0x18] = 0;
-            local_f4[0x19] = 0;
-            local_f4[0x1a] = 0;
-            local_f4[0x1b] = 0;
-            local_f4[0x1c] = 0;
-            local_f4[0x1d] = 0;
-            local_f4[0x1e] = 0;
-            local_f4[0xb] = 0;
-            local_f4[0xc] = 0;
-            local_f4[0xd] = 0;
-            local_f4[0xe] = 0;
-            local_f4[0xf] = 0;
-            local_f4[0x10] = 0;
-            local_f4[0x11] = 0;
-            local_f4[0x12] = 0;
-            local_f4[0x13] = 0;
-            local_f4[0x14] = 0;
-            local_f4[1] = 0;
-            local_f4[2] = 0;
-            local_f4[3] = 0;
-            local_f4[4] = 0;
-            local_f4[5] = 0;
-            local_f4[6] = 0;
-            local_f4[7] = 0;
-            local_f4[8] = 0;
-            local_f4[9] = 0;
-            local_f4[10] = 0;
+            local_100[0x18] = 0;
+            local_100[0x19] = 0;
+            local_100[0x1a] = 0;
+            local_100[0x1b] = 0;
+            local_100[0x1c] = 0;
+            local_100[0x1d] = 0;
+            local_100[0x1e] = 0;
+            local_100[0x1f] = 0;
+            local_100[0x20] = 0;
+            local_100[0x21] = 0;
+            local_100[0xe] = 0;
+            local_100[0xf] = 0;
+            local_100[0x10] = 0;
+            local_100[0x11] = 0;
+            local_100[0x12] = 0;
+            local_100[0x13] = 0;
+            local_100[0x14] = 0;
+            local_100[0x15] = 0;
+            local_100[0x16] = 0;
+            local_100[0x17] = 0;
+            local_100[0x4] = 0;
+            local_100[0x5] = 0;
+            local_100[0x6] = 0;
+            local_100[0x7] = 0;
+            local_100[0x8] = 0;
+            local_100[0x9] = 0;
+            local_100[0xa] = 0;
+            local_100[0xb] = 0;
+            local_100[0xc] = 0;
+            local_100[0xd] = 0;
             if (DAT_GameCore::instance.gameSuspended == 0) {
                 dVar3 = DAT_GameCore::instance.extremeTrailProgress;
                 if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
@@ -386,13 +385,13 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, _offset),
                 _titleX, _titleY, (TextAlignment)((int)(_titleAlignment)), 0xccfaff, 0, _titleFontSize, TRUE,
                 _blendStrength);
-            local_108 = local_f4 + 0x21;
+            local_108 = local_100 + 0x24;
             _blendStrength = 0;
-            local_10c = local_f4 + 0x1f;
-            local_f4[0x1f] = 0;
-            local_70[1] = 0;
+            local_10c = local_100 + 0x22;
+            local_100[0x22] = 0;
+            local_100[37] = 0;
             _offset = 1;
-            piVar5 = local_f4 + 0x20;
+            piVar5 = local_100 + 0x23;
             dVar3 = DAT_GameCore::instance.gameSuspended;
             do {
                 if (dVar3 == 1) {
@@ -408,7 +407,7 @@ namespace UI {
                 LAB_004de066:
                     *local_10c = _offset;
                     if (dVar3 == 1) {
-                        local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
+                        (local_100 + 3)[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
                         iVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_offset);
                         dVar3 = DAT_GameCore::instance.gameSuspended;
@@ -419,11 +418,11 @@ namespace UI {
                             _blendStrength = _blendStrength + 1;
                             piVar5 = piVar5 + 3;
                             local_108 = local_108 + 3;
-                            local_f4[_offset + 0xb] = 1;
+                            (local_100 + 3)[_offset + 0xb] = 1;
                             goto LAB_004de0d9;
                         }
                     } else {
-                        local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
+                        (local_100 + 3)[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
                     }
                     local_10c = local_10c + 3;
                     _blendStrength = _blendStrength + 1;
@@ -438,10 +437,10 @@ namespace UI {
                 do {
                     iVar6 = -1;
                     iVar7 = 0;
-                    piVar5 = local_f4 + 0x1f;
+                    piVar5 = local_100 + 0x22;
                     do {
-                        if (*piVar5 != 0 && (iVar6 == -1 || (local_f4[iVar7 + 1] < local_f4[0]))) {
-                            local_f4[0] = local_f4[iVar7 + 1];
+                        if (*piVar5 != 0 && (iVar6 == -1 || ((local_100 + 3)[iVar7 + 1] < local_100[0x3]))) {
+                            local_100[0x3] = (local_100 + 3)[iVar7 + 1];
                             iVar6 = iVar7;
                         }
                         iVar7 = iVar7 + 1;
@@ -449,15 +448,15 @@ namespace UI {
                     } while (iVar7 < _blendStrength);
                     if (iVar6 < 0)
                         break;
-                    local_f4[_offset + 0x16] = local_f4[iVar6 * 3 + 0x1f];
+                    (local_100 + 3)[_offset + 0x16] = (local_100 + 3)[iVar6 * 3 + 0x1f];
                     _offset = _offset + 1;
-                    local_f4[iVar6 * 3 + 0x1f] = 0;
+                    (local_100 + 3)[iVar6 * 3 + 0x1f] = 0;
                 } while (_offset < _blendStrength);
             }
             local_108 = (int*)(iVar1 + 0x152);
             _offset = 1;
             local_10c = (int*)(_textX_01 + 0x22);
-            local_f4[0] = 1;
+            local_100[0x3] = 1;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             local_104 = iVar4;
             do {
@@ -467,28 +466,28 @@ namespace UI {
                     local_104 = local_104 + 0x50;
                     local_10c = (int*)((int)local_10c + 0x50);
                 }
-                _blendStrength = local_f4[_offset + 0x15];
+                _blendStrength = (local_100 + 3)[_offset + 0x15];
                 if (_blendStrength < 1) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     return;
                 }
-                if (local_f4[0] < local_f4[_blendStrength]) {
-                    local_f4[0] = local_f4[_blendStrength];
+                if (local_100[0x3] < (local_100 + 3)[_blendStrength]) {
+                    local_100[0x3] = (local_100 + 3)[_blendStrength];
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                         OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x240, local_104, iVar1 + 0x117);
                     local_104 = local_104 + 0x24;
                     local_10c = (int*)((int)local_10c + 0x24);
                 }
-                if (local_f4[_blendStrength + 0xb] != 0
+                if ((local_100 + 3)[_blendStrength + 0xb] != 0
                     && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                         OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar4, (int)(local_108));
                 }
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPlayerAvatars)(_blendStrength, local_104, iVar13);
-                if (local_f4[_blendStrength + 0xb] != 0
+                if ((local_100 + 3)[_blendStrength + 0xb] != 0
                     && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                         (int)local_10c, iVar1 + 0x100, local_104 + 0x45, iVar1 + 0x143);
