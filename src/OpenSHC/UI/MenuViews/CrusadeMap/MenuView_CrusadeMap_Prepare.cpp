@@ -90,7 +90,7 @@ namespace UI {
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestExtremeTrailMission);
             }
-            if (DAT_SkirmishTrailRelated1::instance < 0) {
+            if ((int)DAT_SkirmishTrailRelated1::instance < 0) {
                 DAT_SkirmishTrailRelated1::instance = 0;
             }
             INT_00ed2bdc::instance = 0;
