@@ -148,10 +148,10 @@ namespace UI {
                 _currentPlayerGold = DAT_GameState::instance.playerDataArray[_playerId].currentResources[0xf];
                 iVar5 = DAT_GameState::instance.playerDataArray[_playerId].marketGold
                     + (int)DAT_GameState::instance.playerDataArray[_playerId].beforeLastMonthsGold;
-                if (iVar5 + 0x28 < _currentPlayerGold) {
+                if (_currentPlayerGold > iVar5 + 0x28) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_TAXES_INCREASE1);
-                } else if (iVar5 < _currentPlayerGold) {
+                } else if (_currentPlayerGold > iVar5) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_TAXES_INCREASE2);
                 } else if (_currentPlayerGold < iVar5 + -0x28) {
