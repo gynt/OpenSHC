@@ -462,7 +462,7 @@ namespace UI {
                             DAT_MouseState::instance.screenSpaceY < _f1 + 3
                                 || (_f1 + 0x23 < DAT_MouseState::instance.screenSpaceY))) {
                         iVar3 = iVar3 + 1;
-                        if (7 < iVar3) {
+                        if (iVar3 > 7) {
                             return;
                         }
                     }
