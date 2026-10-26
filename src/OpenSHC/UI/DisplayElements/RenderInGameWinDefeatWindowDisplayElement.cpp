@@ -36,13 +36,6 @@ namespace UI {
         char (*textAddress)[250];
         int iVar4;
         int* piVar5;
-        int iVar6;
-        int iVar7;
-        int yParam;
-        TextAlignment TVar8;
-        BGR24 BVar9;
-        BOOLEnum BVar10;
-        int iVar11;
         ushort* local_8;
         DWORD DVar1 = timeGetTime();
         if (8000 < DVar1 - DAT_GameState::instance.mapAndTime.gameOverTime) {
@@ -84,70 +77,66 @@ namespace UI {
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         int iVar3 = _alivePlayerCount * 0x1e - 6;
         iVar3 = iVar3 + (0x1d - (iVar3 + 0x1d) % 0x1e);
-        iVar4 = (-0x1c - iVar3 / 2) + posY;
+        iVar4 = posY + (-0x1c - iVar3 / 2);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
             DAT_PencilRenderCore::ptr)(posX + -0x108, iVar4 + -0x13, 0x210, iVar3 + 0x60);
-        iVar11 = 0;
-        BVar10 = FALSE;
-        iVar3 = 0xf;
-        BVar9 = 0xc2f0eb;
-        TVar8 = OpenSHC::Text::TTA_CENTER;
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (DAT_GameState::instance.mapAndTime.playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-            == 0) {
-            iVar6 = 0x11;
-        } else {
-            iVar6 = 0x10;
-        }
-        iVar7 = posX;
-        yParam = iVar4;
         /*
           added by script: "Defeat"
          */
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, iVar6),
-            iVar7, yParam, TVar8, BVar9, iVar3, BVar10, iVar11);
+        if (DAT_GameState::instance.mapAndTime.playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+            != 0) {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x10),
+                posX, iVar4, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0xf, FALSE, 0);
+        } else {
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x11),
+                posX, iVar4, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0xf, FALSE, 0);
+        }
         iVar4 = iVar4 + 0x39;
-        piVar5 = DAT_BlendingDefinedData::instance.PlayerSlotUnitColor;
-        textAddress = DAT_GameSynchronyState::instance.DAT_PlayerNames;
+        piVar5 = DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + 1;
+        textAddress = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
         local_8 = DAT_GameState::instance.mapAndTime.playerIsAlive + 1;
         do {
-            piVar5 = piVar5 + 1;
-            textAddress = textAddress + 1;
             if (*local_8 != 0) {
                 if ((DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_ENGLISH)
                     || (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_AMERICAN)) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(*textAddress, posX + -0x1c, iVar4, OpenSHC::Text::TTA_CENTER,
                         (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x11, FALSE, 0);
-                    BVar9 = DAT_RenderingDefinedData::instance.ColorArray[*piVar5];
-                    iVar3 = DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x16;
-                    iVar11 = 0x11;
+                    /*
+                      added by script: "Wins"
+                     */
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
+                        DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x16 + posX, iVar4,
+                        OpenSHC::Text::TTA_LEFT,
+                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x11, FALSE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(*textAddress, posX + -0x4e, iVar4, OpenSHC::Text::TTA_CENTER,
                         (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x12, FALSE, 0);
-                    BVar9 = DAT_RenderingDefinedData::instance.ColorArray[*piVar5];
-                    iVar3 = DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x48;
-                    iVar11 = 0x12;
+                    /*
+                      added by script: "Wins"
+                     */
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
+                        DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x48 + posX, iVar4,
+                        OpenSHC::Text::TTA_LEFT,
+                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x12, FALSE, 0);
                 }
-                iVar7 = 0;
-                BVar10 = FALSE;
-                iVar3 = iVar3 + posX;
-                TVar8 = OpenSHC::Text::TTA_LEFT;
-                iVar6 = iVar4;
-                /*
-                  added by script: "Wins"
-                 */
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
-                    iVar3, iVar6, TVar8, (uint)(BVar9), 0, iVar11, BVar10, iVar7);
                 iVar4 = iVar4 + 0x1e;
             }
             local_8 = local_8 + 1;
+            piVar5 = piVar5 + 1;
+            textAddress = textAddress + 1;
         } while ((int)local_8 < (int)&DAT_GameState::instance + 0x53e9a);
         ;
     }
