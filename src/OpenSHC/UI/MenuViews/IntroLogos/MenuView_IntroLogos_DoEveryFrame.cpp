@@ -84,7 +84,7 @@ namespace UI {
                 }
             } else if ((DAT_IntroTransitionStep::instance == 2)
                 && (DAT_IntroBlendStrength::instance = 0x20 - (int)(_currentTime - DAT_IntroTimestamp::instance) / 0x14,
-                    (int)DAT_IntroBlendStrength::instance < 1)) {
+                    (int)DAT_IntroBlendStrength::instance <= 0)) {
                 if (DAT_IntroStep::instance == 0) {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;
