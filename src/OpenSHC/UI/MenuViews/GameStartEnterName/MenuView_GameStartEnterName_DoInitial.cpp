@@ -17,7 +17,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004406F0
         void GameStartEnterName::MenuView_GameStartEnterName_DoInitial()
         {
-            Menu* pMVar1;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
@@ -30,12 +29,13 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+            int menuY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            pMVar1->xPosition = menuX;
+            pMVar1->yPosition = menuY;
+            DAT_MenuHandlerState::instance.y = menuY;
+            DAT_MenuHandlerState::instance.x = menuX;
             return;
         }
 
