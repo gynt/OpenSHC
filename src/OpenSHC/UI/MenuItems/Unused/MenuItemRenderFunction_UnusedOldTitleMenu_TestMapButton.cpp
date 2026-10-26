@@ -41,7 +41,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
                 (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
-                (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), DAT_PencilRenderCore::instance.otherColorUnk_0x0);
+                (int)(DAT_ButtonY::instance + DAT_ButtonH::instance), DAT_PencilRenderCore::instance.otherColorUnk_0x0);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 "Test map", (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
                 (TextAlignment)((int)(DAT_ButtonW::instance)),
