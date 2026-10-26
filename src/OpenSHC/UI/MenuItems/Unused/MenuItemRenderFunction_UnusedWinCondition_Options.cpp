@@ -38,7 +38,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
                         (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
-                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance),
+                        (int)(DAT_ButtonY::instance + DAT_ButtonH::instance),
                         (ushort)(COL_GREYISH_YELLOW::instance.shortValue));
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,

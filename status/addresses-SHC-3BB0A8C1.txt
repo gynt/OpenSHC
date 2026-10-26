@@ -25517,7 +25517,7 @@ SHC_3BB0A8C1_0x004AA800 | 53.6% | button rect operand order
 
 SHC_3BB0A8C1_0x004AA930 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004AA970 | 43.6% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004AA970 | 54.1% | button rect operand order
 
 SHC_3BB0A8C1_0x004AAA40 | 0.0% | Pending
 
