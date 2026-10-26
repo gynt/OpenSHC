@@ -22,24 +22,26 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4a, 2, x, y, 0x130, height);
+            int rightColumnX = x + 0x29e;
             int y1 = y + 0x22;
-            int x2 = x + 0x29f;
-            int x1 = x + 0x135;
             int y2 = y + 0x177;
+            int x2 = rightColumnX + 1;
+            int x1 = x + 0x135;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x21, x2, y + 0x21, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x1, y1 - 1, x2, y1 - 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x178, x2, y + 0x178, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x1, y2 + 1, x2, y2 + 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x36, x2, y + 0x36, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x1, y1 + 0x14, x2, y1 + 0x14, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, y1, x1, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x2, y1, x2, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x28a, y1, x + 0x28a, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                rightColumnX - 0x14, y1, rightColumnX - 0x14, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x28b, y + 0x163, x + 0x29e, y + 0x163, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                rightColumnX - 0x13, y2 - 0x14, rightColumnX, y2 - 0x14,
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL(OpenSHC::UI::Helpers_Func::SetupPreviewMinimapDataUnk)();
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapPreview, DAT_MinimapViewState::ptr)(
                 x + 0x37, y + 0x5f);
