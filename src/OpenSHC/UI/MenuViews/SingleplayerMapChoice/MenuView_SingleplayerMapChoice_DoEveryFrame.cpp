@@ -56,7 +56,7 @@ namespace UI {
                     / 2);
             if (DAT_00b960dc::instance != 0) {
                 DAT_GameCore::instance.hasMenuRenderedUnk = 1;
-                if (DAT_00b960dc::instance < 0) {
+                if ((int)DAT_00b960dc::instance < 0) {
                     DVar2 = timeGetTime();
                     DAT_ButtonBackgroundBlendStrength::instance
                         = DAT_ButtonBackgroundBlendStrength::instance - (DVar2 - DWORD_00b95b1c::instance) / 0x28;
