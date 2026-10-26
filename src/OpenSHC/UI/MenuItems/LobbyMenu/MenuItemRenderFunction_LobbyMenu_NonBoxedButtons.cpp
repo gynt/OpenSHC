@@ -49,7 +49,7 @@ namespace UI {
             int* piVar2;
             int iVar3;
             int iVar4;
-            bool bVar5;
+            int bVar5;
             BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if (BVar1 != FALSE) {
                 return;
