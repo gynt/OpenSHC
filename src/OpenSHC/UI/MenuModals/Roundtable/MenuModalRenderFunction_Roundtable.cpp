@@ -43,8 +43,7 @@ namespace UI {
             int iVar2 = 1;
             local_40[2] = 0xd8;
             local_40[10] = 0xd8;
-            int iVar1 = y;
-            y = 0;
+            width = 0;
             local_40[0] = 0xc;
             local_40[1] = 0xc;
             local_40[3] = 0xc;
@@ -60,16 +59,14 @@ namespace UI {
             piVar3 = local_40;
             iVar4 = 1;
             do {
-                if ((char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4] < 1
-                    || (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[(
-                           char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4]]
-                        < '\x01')
+                int roundTablePlayer = (char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4];
+                if (roundTablePlayer < 1
+                    || (char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[roundTablePlayer] < 1)
                     break;
-                if (y < (char)DAT_GameSynchronyState::instance
-                        .DAT_PlayerGroupArray[(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[iVar4]]) {
-                    y = y + 1;
+                if ((char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[roundTablePlayer] > width) {
+                    width = width + 1;
                     iVar2 = iVar2 + 1;
-                    if (iVar2 < 2)
+                    if (iVar2 <= 1)
                         goto LAB_004b1ba5;
                     iVar2 = 0;
                     blendStrengthUnk = 0x10;
@@ -85,11 +82,11 @@ namespace UI {
                     }
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + x, piVar3[1] + iVar1, blendStrengthUnk);
+                    DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + x, piVar3[1] + y, blendStrengthUnk);
                 iVar4 = iVar4 + 1;
                 piVar3 = piVar3 + 2;
             } while (iVar4 < 9);
-            DAT_ButtonY::instance = iVar1 + 0x17c;
+            DAT_ButtonY::instance = y + 0x17c;
             DAT_ButtonX::instance = x + 0x18;
             DAT_ButtonW::instance = 0x17c;
             DAT_ButtonH::instance = 0x28;
