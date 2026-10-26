@@ -64,12 +64,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                        pcVar3 = "edge_military_1024l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1024r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -93,12 +93,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                        pcVar3 = "edge_military_1024l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1024r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -123,12 +123,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1280l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1280r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -147,12 +147,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1600l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1600r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -171,12 +171,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1280l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1280r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -195,12 +195,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1440l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1440l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1440r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1440r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -219,12 +219,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1920l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1920r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -243,12 +243,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1920l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1920r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -267,12 +267,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_2560l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560l.tgx");
                     } else {
-                        pcVar3 = "edge_military_2560r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -291,12 +291,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_2560l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560l.tgx");
                     } else {
-                        pcVar3 = "edge_military_2560r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -315,12 +315,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1366l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1366l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1366r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1366r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -339,12 +339,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1360l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1360l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1360r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1360r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -363,12 +363,12 @@ namespace UI {
                     if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                         || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                        pcVar3 = "edge_military_1680l.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1680l.tgx");
                     } else {
-                        pcVar3 = "edge_military_1680r.tgx";
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1680r.tgx");
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)(pcVar3);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -387,12 +387,12 @@ namespace UI {
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                    pcVar3 = "edge_military_1600l.tgx";
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                        DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
                 } else {
-                    pcVar3 = "edge_military_1600r.tgx";
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                        DAT_TextureRenderCoreObject::ptr)("edge_military_1600r.tgx");
                 }
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)(pcVar3);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(
