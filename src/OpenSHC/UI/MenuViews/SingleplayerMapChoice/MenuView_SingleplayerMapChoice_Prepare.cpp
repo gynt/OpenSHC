@@ -68,7 +68,7 @@ namespace UI {
             DAT_00b960dc::instance = 0xfffffffd;
             DWORD_00b95b1c::instance = timeGetTime();
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            if (DAT_MapMissionType::instance < 2) {
+            if ((int)DAT_MapMissionType::instance < 2) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("frontend_economics2.tgx");
             } else {
