@@ -21,7 +21,7 @@ namespace UI {
             int iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::TicksSinceCounterStart)();
             if (iVar1 != 0) {
                 MACRO_CALL(OpenSHC::Rendering_Func::ProcessCreditsScriptCommands)();
-                if ((0x3b <= DAT_UnknownBinkIndex::instance) && (INT_00ed27b8::instance == 0)) {
+                if ((0x3b <= (int)DAT_UnknownBinkIndex::instance) && (INT_00ed27b8::instance == 0)) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::setupVolumeAndSoundID,
