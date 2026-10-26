@@ -87,6 +87,7 @@ namespace UI {
                 local_8 = 0;
                 DWORD_00ed3138::instance = timeGetTime();
             }
+            piVar8 = local_4;
             if (INT_00eb9b48::instance == 0) {
                 uVar10 = (DVar3 - DWORD_00ed27a8::instance) / 100;
                 if (21 < (int)uVar10) {
@@ -94,8 +95,6 @@ namespace UI {
                     DWORD_00ed27a8::instance = timeGetTime();
                 }
                 piVar8 = (int*)DAT_MissionDefinedData::instance.field37_0x1314[uVar10];
-            } else {
-                piVar8 = local_4;
             }
             if (1 <= INT_00eb9b48::instance) {
                 piVar8 = (int*)((DVar3 - DWORD_00ed27a8::instance) / 0x28);
