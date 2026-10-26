@@ -30,24 +30,27 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(0x4c, 0xb, x, y, width, height);
             int top = y + 0x55;
             int bottom = y + 0x11d;
+            int rightColumnX = x + 0x1cc;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                x + 0x28, top, x + 0x1b8, bottom);
-            int x2 = x + 0x1cd;
+                x + 0x28, top, rightColumnX - 0x14, bottom);
+            int x2 = rightColumnX + 1;
             int x1 = x + 0x27;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x54, x2, y + 0x54, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x1, top - 1, x2, top - 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x11e, x2, y + 0x11e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x1, bottom + 1, x2, bottom + 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b8, y + 0x69, x2, y + 0x69, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                rightColumnX - 0x14, top + 0x14, x2, top + 0x14, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, top, x1, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x2, top, x2, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b8, top, x + 0x1b8, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                rightColumnX - 0x14, top, rightColumnX - 0x14, bottom,
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b9, y + 0x109, x + 0x1cc, y + 0x109, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                rightColumnX - 0x13, bottom - 0x14, rightColumnX, bottom - 0x14,
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             UI_NetworkSessionsShadeLogic::instance = UI_NetworkSessionsShadeLogic::instance + 1;
             uint uVar1 = UI_NetworkSessionsShadeLogic::instance / 2 & 0x8000001f;
             if ((int)uVar1 < 0) {
