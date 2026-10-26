@@ -32,7 +32,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::UI::Credits_Func::EndCreditsSegmentAndAdvanceToNext)();
                 }
                 MACRO_CALL(OpenSHC::Rendering_Func::ProcessCreditsScriptCommands)();
-                if (DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance) {
+                if ((int)DAT_UnknownBinkIndex::instance < (int)DAT_UnknownBinkCount::instance) {
                     MACRO_CALL(OpenSHC::Rendering_Func::RenderActiveCreditsElements)();
                 }
                 INT_00ed3144::instance = INT_00ed3144::instance + 1;
