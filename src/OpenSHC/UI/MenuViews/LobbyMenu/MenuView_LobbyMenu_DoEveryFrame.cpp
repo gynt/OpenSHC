@@ -84,7 +84,7 @@ namespace UI {
                     / 2);
             if ((DAT_00b960dc::instance != 0) && (DAT_GameSynchronyState::instance.reparseMaps == FALSE)) {
                 DAT_GameCore::instance.hasMenuRenderedUnk = 1;
-                if (DAT_00b960dc::instance < 0) {
+                if ((int)DAT_00b960dc::instance < 0) {
                     iVar10
                         = (int)((ulonglong)((longlong)(int)(MVar2 - DWORD_00b95b1c::instance) * -0x66666667) >> 0x20);
                     DAT_ButtonBackgroundBlendStrength::instance
