@@ -35,19 +35,12 @@ namespace UI {
     void DisplayElements::RenderTimeUntilDefeatDisplayElement(int posX, int posY, DWORD elementState)
     {
         BOOLEnum _stateNotZero;
-        int iVar1;
-        int iVar2;
-        int iVar3;
-        int left;
-        int iVar4;
-        int iVar5;
-        int iVar6;
         int local_c;
         if (DAT_GameCore::instance.section1095 == 2) {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
         }
-        iVar6 = 0x12;
+        int iVar6 = 0x12;
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
@@ -84,21 +77,21 @@ namespace UI {
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1360x768) {
             posX = posX + -0x118;
         }
-        iVar2 = iVar6 / 2;
-        iVar3 = posX + 10 + iVar2;
+        int iVar2 = iVar6 / 2;
+        int iVar3 = posX + 10 + iVar2;
         _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
             OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
         if (_stateNotZero != FALSE) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
-        left = iVar3 - iVar2;
+        int left = iVar3 - iVar2;
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
             DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
         _stateNotZero = FALSE;
-        iVar5 = 0x12;
-        iVar4 = iVar3;
-        iVar1 = posY;
+        int iVar5 = 0x12;
+        int iVar4 = iVar3;
+        int iVar1 = posY;
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
