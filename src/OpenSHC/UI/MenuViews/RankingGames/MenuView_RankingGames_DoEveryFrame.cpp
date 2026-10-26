@@ -466,7 +466,7 @@ namespace UI {
                         0xccfaff, 0x12, FALSE, 0);
                 }
             }
-            if (0 < DAT_00eb9b60::instance) {
+            if (0 < (int)DAT_00eb9b60::instance) {
                 iVar8 = 0;
                 BVar13 = FALSE;
                 iVar9 = 0x11;
