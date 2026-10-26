@@ -29,41 +29,37 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00493560
         void ProgressBarBox::MenuModalRenderFunction_ProgressBarBox(int x, int y, int width, int height)
         {
-            int iVar1;
-            int yParam;
-            int iVar2;
-            if ((DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_ENGLISH)
-                || (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_AMERICAN)) {
-                iVar2 = 0x10;
+            if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_ENGLISH
+                || DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_AMERICAN) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS,
+                        (int)(DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter)),
+                    width / 2 + x, y + 0x19, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x10, FALSE, 0);
             } else {
-                iVar2 = 0x12;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS,
+                        (int)(DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter)),
+                    width / 2 + x, y + 0x19, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE, 0);
             }
-            yParam = y + 0x19;
-            iVar1 = width / 2 + x;
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS,
-                    (int)(DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter)),
-                iVar1, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, iVar2, FALSE, 0);
             if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
-                && DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                && DAT_GameSynchronyState::instance.currentGameMode
+                    != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
                 && DAT_GameSynchronyState::instance.saveRelated != 0) {
-                iVar1 = (width + -300) / 2;
-                iVar2 = iVar1 + x;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(iVar2,
-                    y + 0x41, (x - iVar1) + width, y + 0x50, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                int barInset = (width + -300) / 2;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(barInset + x, y + 0x41,
+                    (x - barInset) + width, y + 0x50, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
-                DAT_MenuTextInputState::instance.progressBarX = iVar2;
+                DAT_MenuTextInputState::instance.progressBarX = barInset + x;
+            } else {
+                int barInset = (width + -300) / 2;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(barInset + x, y + 0x41,
+                    (x - barInset) + width, y + 0x50);
+                DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
+                DAT_MenuTextInputState::instance.progressBarX = barInset + x;
             }
-            iVar1 = (width + -300) / 2;
-            iVar2 = iVar1 + x;
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                iVar2, y + 0x41, (x - iVar1) + width, y + 0x50);
-            DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
-            DAT_MenuTextInputState::instance.progressBarX = iVar2;
         }
-
     }
 }
 }
