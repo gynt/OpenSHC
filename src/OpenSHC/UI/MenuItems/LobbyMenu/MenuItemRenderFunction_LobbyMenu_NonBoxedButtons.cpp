@@ -208,7 +208,7 @@ namespace UI {
                                                         + DAT_GameSynchronyState::instance
                                                             .DAT_MapSelectionRelativeSelected
                                                         + -1]]
-                                        < 1) {
+                                        <= 0) {
                                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                                     iVar4 = 0x10;
                                 }
