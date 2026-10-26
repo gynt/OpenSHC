@@ -68,17 +68,19 @@ namespace UI {
             int _currentPlayerGold;
             ActiveMenuTab _menuTab;
             BuildingTypeShort* _ptrToSelectedBuildingType;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar3 = DAT_MenuHandlerState::instance.currentMenu;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            int menuY = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
-                (DAT_MenuHandlerState::instance.currentMenu)->xPosition = -0x2ba;
-                pMVar3->yPosition = DAT_MenuHandlerState::instance.y;
+                pMVar3 = DAT_MenuHandlerState::instance.currentMenu;
+                pMVar3->xPosition = -0x2ba;
+                pMVar3->yPosition = menuY;
                 DAT_MenuHandlerState::instance.x = -0x2ba;
             } else {
-                (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                    = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                pMVar3->yPosition = (undefined4)(DAT_MenuHandlerState::instance.y);
+                int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+                pMVar3 = DAT_MenuHandlerState::instance.currentMenu;
+                pMVar3->xPosition = menuX;
+                pMVar3->yPosition = menuY;
+                DAT_MenuHandlerState::instance.x = menuX;
+                DAT_MenuHandlerState::instance.y = menuY;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(4);
             _buildingIndex = DAT_BuildingsState::instance.menuSelectedBuildingID;
