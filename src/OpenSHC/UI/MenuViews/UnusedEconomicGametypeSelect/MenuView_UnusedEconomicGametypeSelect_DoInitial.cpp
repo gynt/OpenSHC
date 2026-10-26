@@ -35,8 +35,8 @@ namespace UI {
             Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             pMVar1->xPosition = menuX;
             pMVar1->yPosition = menuY;
-            DAT_MenuHandlerState::instance.y = menuY;
             DAT_MenuHandlerState::instance.x = menuX;
+            DAT_MenuHandlerState::instance.y = menuY;
             INT_00b95f68::instance = 0;
             return;
         }
