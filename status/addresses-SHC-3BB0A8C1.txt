@@ -36273,7 +36273,7 @@ SHC_3BB0A8C1_0x004DD750 | 73.5% | Reimplemented, asm differs
 
 SHC_3BB0A8C1_0x004DD7B0 | 40.2% | Reimplemented, asm differs
 
-SHC_3BB0A8C1_0x004DE300 | 42.2% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004DE300 | 42.4% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004DF2E0 | 97.8% | Reimplemented, asm differs
 

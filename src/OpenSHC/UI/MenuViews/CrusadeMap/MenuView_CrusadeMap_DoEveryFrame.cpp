@@ -83,18 +83,19 @@ namespace UI {
                     "ri_kick_player_01.wav");
             }
             local_8 = (DVar3 - DWORD_00ed3138::instance) / 0x32;
-            if (0xf < local_8) {
+            if (0xf < (int)local_8) {
                 local_8 = 0;
                 DWORD_00ed3138::instance = timeGetTime();
             }
-            piVar8 = local_4;
             if (INT_00eb9b48::instance == 0) {
                 uVar10 = (DVar3 - DWORD_00ed27a8::instance) / 100;
-                if (21 < uVar10) {
+                if (21 < (int)uVar10) {
                     uVar10 = 0;
                     DWORD_00ed27a8::instance = timeGetTime();
                 }
                 piVar8 = (int*)DAT_MissionDefinedData::instance.field37_0x1314[uVar10];
+            } else {
+                piVar8 = local_4;
             }
             if (1 <= INT_00eb9b48::instance) {
                 piVar8 = (int*)((DVar3 - DWORD_00ed27a8::instance) / 0x28);
