@@ -66,11 +66,11 @@ namespace UI {
             iVar3 = DAT_MenuHandlerState::instance.y + 0x122;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             iVar5 = DAT_TileMapState::instance.mapSize;
-            DAT_MinimapViewState::instance.needsRedraw = 1;
             if (iVar5 == 0) {
                 iVar5 = 400;
             }
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar5, iVar5);
+            DAT_MinimapViewState::instance.needsRedraw = 1;
             int boxX = iVar6;
             local_1c = iVar3;
             switch (iVar5) {
