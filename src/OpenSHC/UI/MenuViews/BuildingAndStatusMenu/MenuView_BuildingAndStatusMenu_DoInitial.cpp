@@ -55,10 +55,10 @@ namespace UI {
                 }
             } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(6);
+                    DAT_TextureRenderCoreObject::ptr)(6);
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
-                        DAT_TextureRenderCoreObject::ptr)(1);
+                    DAT_TextureRenderCoreObject::ptr)(1);
             }
             if (DAT_WindowAndDirectDraw::instance.pendingMenuRedraw != 0) {
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
