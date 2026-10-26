@@ -15,7 +15,8 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AFA80
     void DisplayElements::RenderSomeMissionNumberUnkDisplayElement9(int posX, int posY, DWORD MissionNumPlus1Unk)
     {
-        if (MissionNumPlus1Unk - 1 == 0) {
+        MissionNumPlus1Unk = MissionNumPlus1Unk + -1;
+        if (MissionNumPlus1Unk == 0) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 "Mission : Defaults", posX, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0xf, FALSE, 0);
             return;
@@ -23,7 +24,7 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             "Mission :", posX, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0xf, FALSE, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-            MissionNumPlus1Unk - 1, posX + 3, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0xf, TRUE, 0);
+            MissionNumPlus1Unk, posX + 3, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0xf, TRUE, 0);
     }
 
 }
