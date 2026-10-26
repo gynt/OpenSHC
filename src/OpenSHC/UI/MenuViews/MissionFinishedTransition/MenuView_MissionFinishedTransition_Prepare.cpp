@@ -65,7 +65,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004E1B30
         void MissionFinishedTransition::MenuView_MissionFinishedTransition_Prepare()
         {
-            Menu* pMVar1;
             DWORD DVar2;
             int iVar3;
             int xPos;
@@ -95,12 +94,13 @@ namespace UI {
                 DAT_MenuModalComposition3::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
             (*(char*)&INT_00eb0e44::instance) = 0;
             MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreLocalTime)();
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+            int menuY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            pMVar1->xPosition = menuX;
+            pMVar1->yPosition = menuY;
+            DAT_MenuHandlerState::instance.y = menuY;
+            DAT_MenuHandlerState::instance.x = menuX;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
