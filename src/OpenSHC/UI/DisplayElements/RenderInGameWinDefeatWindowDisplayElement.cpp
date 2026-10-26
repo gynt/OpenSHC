@@ -33,7 +33,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AFB30
     void DisplayElements::RenderInGameWinDefeatWindowDisplayElement(int posX, int posY, DWORD elementState)
     {
-        int iVar3;
         char (*textAddress)[250];
         int iVar4;
         int* piVar5;
@@ -44,20 +43,23 @@ namespace UI {
         BGR24 BVar9;
         BOOLEnum BVar10;
         int iVar11;
-        MenuViewType menuID;
         ushort* local_8;
         DWORD DVar1 = timeGetTime();
         if (8000 < DVar1 - DAT_GameState::instance.mapAndTime.gameOverTime) {
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                == 0) {
-                menuID = OpenSHC::UI::Enums::MVT_GAME_LOSTUnk;
-            } else {
+                != 0) {
                 DAT_GameCore::instance.isVictoryOrDefeatUnk = 0;
-                menuID = OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION;
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
+            } else {
+                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                    OpenSHC::UI::Enums::MVT_GAME_LOSTUnk, 0);
             }
-            MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
         }
-        uint _alivePlayerCount = (uint)(DAT_GameState::instance.mapAndTime.playerIsAlive[1] != 0);
+        int _alivePlayerCount = 0;
+        if (DAT_GameState::instance.mapAndTime.playerIsAlive[1] != 0) {
+            _alivePlayerCount = 1;
+        }
         if (DAT_GameState::instance.mapAndTime.playerIsAlive[2] != 0) {
             _alivePlayerCount = _alivePlayerCount + 1;
         }
@@ -80,8 +82,9 @@ namespace UI {
             _alivePlayerCount = _alivePlayerCount + 1;
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-        iVar3 = _alivePlayerCount * 0x1e + (0x17 - (_alivePlayerCount * 0x1e + 0x17) % 0x1e);
-        iVar4 = posY + (-0x1c - iVar3 / 2);
+        int iVar3 = _alivePlayerCount * 0x1e - 6;
+        iVar3 = iVar3 + (0x1d - (iVar3 + 0x1d) % 0x1e);
+        iVar4 = (-0x1c - iVar3 / 2) + posY;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
             DAT_PencilRenderCore::ptr)(posX + -0x108, iVar4 + -0x13, 0x210, iVar3 + 0x60);
         iVar11 = 0;
