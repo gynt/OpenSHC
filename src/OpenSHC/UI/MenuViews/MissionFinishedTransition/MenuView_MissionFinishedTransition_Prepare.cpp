@@ -116,26 +116,27 @@ namespace UI {
             } else {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
                     if (DAT_GameCore::instance.missionNumber1to20 - 7U <= 4) {
-                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = "arabian_win.bik";
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
+                            "arabian_win.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
+                            DAT_MenuHandlerState::instance.y + 0x3c, 2);
                     } else {
                     LAB_004e1cbd:
-                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = "crusader_win.bik";
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
+                            "crusader_win.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
+                            DAT_MenuHandlerState::instance.y + 0x3c, 2);
                     }
                 } else {
                     iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                         DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
                     if (iVar3 != 1)
                         goto LAB_004e1cbd;
-                    iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                    xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    pcVar5 = "arabian_win.bik";
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
+                        "arabian_win.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
+                        DAT_MenuHandlerState::instance.y + 0x3c, 2);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
-                    0, pcVar5, 0, 0, xPos, iVar3, 2);
                 if (DAT_GameSynchronyState::instance.currentGameMode
                     == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
                     goto LAB_004e1cdd;
