@@ -101,7 +101,7 @@ namespace UI {
                     (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
             }
             iVar7 = (int)sVar1;
-            if (0 < iVar7) {
+            if (iVar7 > 0) {
                 psVar5 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                              .workerID;
                 iVar8 = iVar7;
