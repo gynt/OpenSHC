@@ -28,12 +28,6 @@ namespace UI {
         void ChooseNetworkServiceProvider::MenuModalRenderFunction_ChooseNetworkServiceProvider(
             int x, int y, int width, int height)
         {
-            int iVar1;
-            DWORD DVar2;
-            int bottom;
-            int iVar3;
-            int iVar4;
-            int iVar5;
             /*
               added by script: "Service Providers"
              */
@@ -42,58 +36,55 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.kickedAtTime != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(x, y + -0x3c, x + width, y + -0x12, 0x10);
-                iVar5 = 0;
-                iVar4 = 0x10;
-                iVar3 = y + -0x32;
-                iVar1 = width / 2 + x;
                 /*
                   added by script: "You Were Ejected!"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5c),
-                    iVar1, iVar3, OpenSHC::Text::TTA_CENTER, 0xccfaff, iVar4, FALSE, iVar5);
-                DVar2 = timeGetTime();
-                if (5000 < DVar2 - DAT_GameSynchronyState::instance.kickedAtTime) {
+                    width / 2 + x, y + -0x32, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x10, FALSE, 0);
+                if (5000 < timeGetTime() - DAT_GameSynchronyState::instance.kickedAtTime) {
                     DAT_GameSynchronyState::instance.kickedAtTime = 0;
                 }
             }
-            iVar4 = y + 0xa5;
-            iVar3 = y + 0x55;
+            int const listBottom = y + 0xa5;
+            int const listTop = y + 0x55;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                x + 0x28, iVar3, x + 0x1b8, iVar4);
-            iVar1 = x + 0x27;
+                x + 0x28, listTop, x + 0x1b8, listBottom);
+            int const listLeft = x + 0x27;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                iVar1, y + 0x54, x + 0x1cd, y + 0x54, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                listLeft, listTop - 1, x + 0x1cd, listTop - 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                iVar1, y + 0xa6, x + 0x1cd, y + 0xa6, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                listLeft, listBottom + 1, x + 0x1cd, listBottom + 1,
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                iVar1, iVar3, iVar1, iVar4, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                listLeft, listTop, listLeft, listBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1cd, iVar3, x + 0x1cd, iVar4, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x + 0x1cd, listTop, x + 0x1cd, listBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b8, iVar3, x + 0x1b8, iVar4, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x + 0x1b8, listTop, x + 0x1b8, listBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
-                iVar3 = y + 0x109;
-                bottom = y + 0x159;
-                iVar1 = x + 0x1b8;
+                int const modemTop = y + 0x109;
+                int const modemBottom = y + 0x159;
+                int const modemRight = x + 0x1b8;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                    x + 0x28, iVar3, iVar1, bottom);
-                iVar5 = x + 0x1cd;
-                iVar4 = x + 0x27;
+                    x + 0x28, modemTop, modemRight, modemBottom);
+                int const modemX2 = x + 0x1cd;
+                int const modemLeft = x + 0x27;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar4, y + 0x108, iVar5, y + 0x108, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    modemLeft, modemTop - 1, modemX2, modemTop - 1,
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar4, y + 0x15a, iVar5, y + 0x15a, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    modemLeft, modemBottom + 1, modemX2, modemBottom + 1,
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar4, iVar3, iVar4, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    modemLeft, modemTop, modemLeft, modemBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar5, iVar3, iVar5, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    modemX2, modemTop, modemX2, modemBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar1, iVar3, iVar1, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    modemRight, modemTop, modemRight, modemBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             }
         }
-
     }
 }
 }
