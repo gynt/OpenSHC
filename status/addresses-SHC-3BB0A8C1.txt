@@ -25933,7 +25933,7 @@ SHC_3BB0A8C1_0x004AFB30 | 65.2% | signed div, split calls
 
 SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004AFE10 | 65.2% | signed division
+SHC_3BB0A8C1_0x004AFE10 | 67.8% | inverted arms, store order
 
 SHC_3BB0A8C1_0x004B0390 | 56.2% | blend if/else, inverted arms
 

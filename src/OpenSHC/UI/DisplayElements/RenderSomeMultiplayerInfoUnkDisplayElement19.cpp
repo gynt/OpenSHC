@@ -69,10 +69,10 @@ namespace UI {
         /*
           added by script: "Connection lost"
          */
-        pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x31);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            pcVar1, iVar9, iVar6, TVar3, BVar4, iVar5, BVar7, iVar8);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x31),
+            iVar9, iVar6, TVar3, BVar4, iVar5, BVar7, iVar8);
         iVar9 = 0;
         BVar7 = FALSE;
         iVar6 = 0x12;
@@ -107,24 +107,7 @@ namespace UI {
                 posY + 0x5a, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 0) {
-            iVar6 = 0x35;
-        LAB_004b0054:
-            iVar5 = posY + 0x6e;
-            iVar2 = 0;
-            BVar7 = FALSE;
-            iVar8 = 0x12;
-            BVar4 = 0xc2f0eb;
-            TVar3 = OpenSHC::Text::TTA_CENTER;
-            iVar9 = posX;
-            /*
-              added by script: "Auto save is off"
-             */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, iVar6);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, iVar9, iVar5, TVar3, BVar4, iVar8, BVar7, iVar2);
-        } else {
+        if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes != 0) {
             if (DAT_GameSynchronyState::instance.lastAutoSaveTime == 0
                 || DAT_GameSynchronyState::instance.field76_0xbe8 == 0
                 || DAT_GameSynchronyState::instance.field76_0xbe8
@@ -148,7 +131,7 @@ namespace UI {
             number
                 = (DAT_GameSynchronyState::instance.field76_0xbe8 - DAT_GameSynchronyState::instance.lastAutoSaveTime)
                 / 60000;
-            if (number == 0) {
+            if (number < 1) {
                 number = 1;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -159,15 +142,30 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x38, posX + 10, iVar6, OpenSHC::Text::TTA_LEFT,
                 0xc2f0eb, 0x12, TRUE);
+        } else {
+            iVar6 = 0x35;
+        LAB_004b0054:
+            iVar5 = posY + 0x6e;
+            iVar2 = 0;
+            BVar7 = FALSE;
+            iVar8 = 0x12;
+            BVar4 = 0xc2f0eb;
+            TVar3 = OpenSHC::Text::TTA_CENTER;
+            iVar9 = posX;
+            /*
+              added by script: "Auto save is off"
+             */
+            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, iVar6);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                pcVar1, iVar9, iVar5, TVar3, BVar4, iVar8, BVar7, iVar2);
         }
         iVar6 = posX + -100;
+        DAT_ButtonX::instance = iVar6;
         DAT_ButtonY::instance = posY + 0x96;
         DAT_ButtonW::instance = 200;
         DAT_ButtonH::instance = 0x1c;
-        DAT_ButtonX::instance = iVar6;
-        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-            BVar4 = 0x7f7f7f;
-        } else {
+        if (DAT_GameSynchronyState::instance.isHost != FALSE) {
             if (DAT_GameSynchronyState::instance.connectionInfoExpanded != 0) {
                 iVar2 = 0;
                 BVar7 = FALSE;
@@ -300,6 +298,8 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             BVar4 = 0xc2f0eb;
+        } else {
+            BVar4 = 0x7f7f7f;
         }
         iVar6 = posY + 0x9c;
         iVar9 = 0x34;
