@@ -56,7 +56,7 @@ namespace UI {
                                 }
                                 dVar5 = dVar5 + 1;
                             }
-                            if (-1 < piVar5[1]) {
+                            if (-piVar5[1] > 1) {
                                 if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
                                     iVar4 = iVar3;
                                 }
