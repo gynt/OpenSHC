@@ -17,8 +17,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DCB0
         void UnusedOldTitleMenu::MenuView_UnusedOldTitleMenu_Prepare()
         {
-            int _borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             int _borderHeight = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int _borderWidth = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             pMVar1->xPosition = _borderWidth;
