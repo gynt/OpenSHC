@@ -32,23 +32,19 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1EB0
     void DisplayElements::RenderTimeUntilVictoryDisplayElement(int posX, int posY, DWORD elementState)
     {
-        int left;
-        int iVar3;
-        int xParam;
-        int yParam;
-        int iVar4;
         if (DAT_GameCore::instance.section1095 == 2) {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY, 0);
+            return;
         }
-        iVar4 = 0x12;
         /*
           added by script: "Time Until Victory"
          */
-        iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
+        int iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
+            DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x19),
-            iVar4);
+            0x12);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
             posX = posX + -0x70;
@@ -80,13 +76,13 @@ namespace UI {
             posX = posX + -0x118;
         }
         DAT_00df4290::instance = iVar4 + 0x10;
-        iVar3 = iVar4 / 2;
+        int iVar3 = iVar4 / 2;
         int iVar1 = posX + 10 + iVar3;
-        left = iVar1 - iVar3;
+        int left = iVar1 - iVar3;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
             DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar3 + 5 + iVar1, posY + 0x1e, 0x10);
-        xParam = iVar1;
-        yParam = posY;
+        int xParam = iVar1;
+        int yParam = posY;
         /*
           added by script: "Time Until Victory"
          */
@@ -99,9 +95,10 @@ namespace UI {
         if (DAT_MapPropertiesState::instance.SEC_Section1080 != DAT_MapPropertiesState::instance.SEC_Section1090) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13,
-                (((DAT_MapPropertiesState::instance.SEC_Section1090 - DAT_MapPropertiesState::instance.SEC_Section1080)
+                (((int)(DAT_MapPropertiesState::instance.SEC_Section1090
+                      - DAT_MapPropertiesState::instance.SEC_Section1080)
                      * iVar4)
-                        / DAT_MapPropertiesState::instance.SEC_Section1090
+                        / (int)(DAT_MapPropertiesState::instance.SEC_Section1090)
                     - iVar3)
                     + iVar1,
                 posY + 0x17, (ushort)(COL_DARK_LIME::instance.shortValue));
