@@ -34,11 +34,11 @@ namespace UI {
                     }
                 }
                 MACRO_CALL(OpenSHC::Rendering_Func::ProcessCreditsScriptCommands)();
-                if (DAT_UnknownBinkIndex::instance < DAT_UnknownBinkCount::instance) {
+                if ((int)DAT_UnknownBinkIndex::instance < (int)DAT_UnknownBinkCount::instance) {
                     MACRO_CALL(OpenSHC::Rendering_Func::RenderActiveCreditsElements)();
                 }
                 INT_00ed3140::instance = INT_00ed3140::instance + 1;
-                if (DAT_UnknownBinkCount::instance <= DAT_UnknownBinkIndex::instance) {
+                if (!((int)DAT_UnknownBinkIndex::instance < (int)DAT_UnknownBinkCount::instance)) {
                     DAT_WindowAndDirectDraw::instance.postWindowCloseMessage = 1;
                 }
             }
