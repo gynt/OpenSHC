@@ -43,6 +43,7 @@ namespace UI {
                 int local_50 = -0x5a;
                 int local_54 = -0x3c;
                 int local_c = 0x1e;
+                int fadeCol3 = -0x78;
                 int iVar2 = y;
                 do {
                     iVar1 = iVar2 + 3;
@@ -53,7 +54,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                         DAT_PencilRenderCore::ptr)(x + 2, iVar2, x + 2, iVar1, local_50 / 0x14 + 0x20);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                        DAT_PencilRenderCore::ptr)(x + 3, iVar2, x + 3, iVar1, ((-0x78 - y) + iVar2) / 0x14 + 0x20);
+                        DAT_PencilRenderCore::ptr)(x + 3, iVar2, x + 3, iVar1, fadeCol3 / 0x14 + 0x20);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                         DAT_PencilRenderCore::ptr)(x + 4, iVar2, x + 4, iVar1, local_4c / 0x14 + 0x20);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
@@ -89,6 +90,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                         DAT_PencilRenderCore::ptr)(x + 0x14, iVar2, right, iVar1, local_58 + 2);
                     local_50 = local_50 + 3;
+                    fadeCol3 = fadeCol3 + 4;
                     local_4c = local_4c + 5;
                     local_48 = local_48 + 6;
                     local_44 = local_44 + 7;
