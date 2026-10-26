@@ -25921,7 +25921,7 @@ SHC_3BB0A8C1_0x004AF820 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004AF840 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004AF860 | 67.3% | p[0..4] walk, clang-format
+SHC_3BB0A8C1_0x004AF860 | 67.3% | no _alldiv, extra spill left
 
 SHC_3BB0A8C1_0x004AFA50 | 0.0% | Pending
 
@@ -25935,7 +25935,7 @@ SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004AFE10 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004B0390 | 56.2% | clang-format only
+SHC_3BB0A8C1_0x004B0390 | 56.2% | one local spilled, allocator
 
 SHC_3BB0A8C1_0x004B07C0 | 94.3% | Reimplemented, asm differs
 
