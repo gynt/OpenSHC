@@ -177,11 +177,12 @@ namespace UI {
                 if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                     iVar3 = DAT_GameCore::instance.extremeTrailProgress + 0x51;
                 } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                    iVar3 = DAT_GameCore::instance.warchestTrailProgress + 0x33;
+                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
+                        DAT_GameCore::instance.warchestTrailProgress + 0x33);
                 } else {
-                    iVar3 = DAT_GameCore::instance.skirmishTrailProgress + 1;
+                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
+                        DAT_GameCore::instance.skirmishTrailProgress + 1);
                 }
-                MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(iVar3);
             }
             dword dVar4 = DAT_GameCore::instance.extremeTrailProgress;
             if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
