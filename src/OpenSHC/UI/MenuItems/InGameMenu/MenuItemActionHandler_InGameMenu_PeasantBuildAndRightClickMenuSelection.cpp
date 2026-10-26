@@ -199,7 +199,7 @@ namespace UI {
                 if (DAT_MouseState::instance.leftClickState == FALSE) {
                     if (DAT_UnitsState::instance
                             .unitCountOfSelection[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        < 1) {
+                        <= 0) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::ProcessBuildingClickBonus,
                             AlphaAndButtonSurfaceObj::ptr)(
                             DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID);
