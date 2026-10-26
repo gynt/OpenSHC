@@ -24,18 +24,20 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00430CE0
         void MapEditorLandscaping::MenuView_MapEditorLandscaping_DoInitial()
         {
-            Menu* pMVar1;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            int menuY = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
-                (DAT_MenuHandlerState::instance.currentMenu)->xPosition = 0;
-                pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+                Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+                pMVar1->xPosition = 0;
+                pMVar1->yPosition = menuY;
                 DAT_MenuHandlerState::instance.x = 0;
+                DAT_MenuHandlerState::instance.y = menuY;
             } else {
-                (DAT_MenuHandlerState::instance.currentMenu)->xPosition
-                    = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
+                int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+                Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+                pMVar1->xPosition = menuX;
+                pMVar1->yPosition = menuY;
+                DAT_MenuHandlerState::instance.x = menuX;
+                DAT_MenuHandlerState::instance.y = menuY;
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(0, 0x1b2, 799, 599, (ushort)(COL_MAGENTA::instance.shortValue));
