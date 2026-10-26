@@ -35,42 +35,37 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004494E0
         void BuildingAndStatusMenu::MenuView_BuildingAndStatusMenu_DoEveryFrame()
         {
-            int drawY;
-            int imageID;
-            int drawX;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
-                drawY = DAT_MenuHandlerState::instance.y + 0x1d8;
-                imageID = 3;
-                drawX = 0;
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 3, 0, DAT_MenuHandlerState::instance.y + 0x1d8);
             } else if (DAT_GameCore::instance.activeMenuTab.tabType
                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x195, DAT_MenuHandlerState::instance.x + 799,
                     DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
-                drawY = DAT_MenuHandlerState::instance.y + 0x195;
-                imageID = 4;
-                drawX = DAT_MenuHandlerState::instance.x;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 4,
+                    DAT_MenuHandlerState::instance.x, DAT_MenuHandlerState::instance.y + 0x195);
             } else if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x195, DAT_MenuHandlerState::instance.x + 799,
                     DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
-                drawY = DAT_MenuHandlerState::instance.y + 0x195;
-                imageID = 6;
-                drawX = DAT_MenuHandlerState::instance.x;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 6,
+                    DAT_MenuHandlerState::instance.x, DAT_MenuHandlerState::instance.y + 0x195);
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_MenuHandlerState::instance.x + 799,
                     DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
-                drawY = DAT_MenuHandlerState::instance.y + 0x1b9;
-                imageID = 2;
-                drawX = DAT_MenuHandlerState::instance.x;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 2,
+                    DAT_MenuHandlerState::instance.x, DAT_MenuHandlerState::instance.y + 0x1b9);
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, imageID, drawX, drawY);
             if (DAT_00b96108::instance != 0) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(
