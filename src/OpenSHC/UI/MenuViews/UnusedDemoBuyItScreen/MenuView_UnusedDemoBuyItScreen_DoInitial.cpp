@@ -20,9 +20,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426600
         void UnusedDemoBuyItScreen::MenuView_UnusedDemoBuyItScreen_DoInitial()
         {
-            Menu* pMVar1;
             int iVar2;
-            bool bVar3;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
@@ -41,15 +39,16 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height)
                     / 2);
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-            pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            bVar3 = DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600;
-            (DAT_MenuHandlerState::instance.currentMenu)->yPosition
-                = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-            if (bVar3) {
-                DAT_MenuHandlerState::instance.x = DAT_MenuHandlerState::instance.x + 0x18;
+            int menuY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int menuX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+            Menu* pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
+            pMVar1->yPosition = menuY;
+            DAT_MenuHandlerState::instance.y = menuY;
+            if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
+                menuX = menuX + 0x18;
             }
+            pMVar1->xPosition = menuX;
+            DAT_MenuHandlerState::instance.x = menuX;
             pMVar1->xPosition = DAT_MenuHandlerState::instance.x;
             return;
         }
