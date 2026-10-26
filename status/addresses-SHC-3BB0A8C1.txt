@@ -6935,7 +6935,7 @@ SHC_3BB0A8C1_0x0042A470 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x0042A474 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x0042A480 | 61.7% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x0042A480 | 75.2% | truth test, not == TRUE
 
 SHC_3BB0A8C1_0x0042A840 | 97.6% | Reimplemented
 

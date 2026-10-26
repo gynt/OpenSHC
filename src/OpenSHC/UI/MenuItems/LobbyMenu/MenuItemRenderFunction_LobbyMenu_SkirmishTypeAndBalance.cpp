@@ -115,7 +115,7 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER
-                            && DAT_GameCore::instance.isSkirmishTrail == TRUE
+                            && DAT_GameCore::instance.isSkirmishTrail != FALSE
                             && DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                             _goldMultiplier = 3;
                         }
