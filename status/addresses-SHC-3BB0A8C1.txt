@@ -23553,7 +23553,7 @@ SHC_3BB0A8C1_0x004931A0 | 54.8% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004932A0 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004932E0 | 90.4% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004932E0 | 98.1% | button rect operand order
 
 SHC_3BB0A8C1_0x00493390 | 20.6% | Style pass, asm differs
 
