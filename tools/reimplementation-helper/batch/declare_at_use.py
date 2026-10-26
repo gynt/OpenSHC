@@ -13,7 +13,7 @@ Declaration position does not change code generation, so this is a readability p
 it before measuring, not instead of.
 
 usage:
-  declare_at_use.py [path-filter] [--apply]
+  declare_at_use.py [path-filter]
 """
 
 import re
@@ -21,86 +21,80 @@ import sys
 
 import common
 
-args = [a for a in sys.argv[1:] if a != "--apply"]
-apply_changes = "--apply" in sys.argv[1:]
-path_filter = args[0] if args else ""
+path_filter = sys.argv[1] if len(sys.argv) > 1 else ""
 
 DECL = re.compile(r"^(?P<type>(?:unsigned\s+|const\s+)*[A-Za-z_][\w:]*)\s+"
                   r"(?P<ptr>\**)\s*(?P<name>[A-Za-z_]\w*)\s*"
                   r"(?P<arr>\[[^\]]*\])?\s*;$")
 
 
-def is_case_label(line):
-    """True for a `case ...:` or `default:` label.
+def code_of(line):
+    return re.sub(r"//.*", "", line).rstrip()
 
-    Deliberately not a regex: an earlier version of this check compiled a literal
-    backspace where a word boundary was meant, so it matched nothing and the guard
-    below passed every switch it was written to reject.
+
+def top_level_comma(code):
+    depth = 0
+    for ch in code:
+        if ch in "([":
+            depth += 1
+        elif ch in ")]":
+            depth -= 1
+        elif ch == "," and depth == 0:
+            return True
+    return False
+
+
+def covers(lines, first, last):
+    """True when the block opened at `first` is still open at `last`.
+
+    Comparing brace depth per line is not enough: `} else if (...) {` closes one block
+    and opens another at the same depth, so a use in the sibling arm reads as covered
+    and the declaration moves out from under it ("C2065: undeclared identifier"). Scan
+    characters instead and fail on any drop below the starting depth, mid-line included.
     """
-    s = line.strip()
-    return s.startswith("case ") or s.startswith("default:") or s.startswith("default :")
-
-
-def depths(lines):
-    """Lowest brace depth each line's own code sits at.
-
-    A line is recorded at the minimum depth it reaches rather than the depth it opens at,
-    so a use on a closing-brace line is seen at the *outer* depth. `} while (cond);` is
-    the case that matters: recorded at the inner depth it slipped past the scope check
-    below, and a declaration moved into the do-block left the while condition referring
-    to an out-of-scope variable, which does not compile.
-    """
-    out, d = [], 0
-    for line in lines:
-        code = re.sub(r"//.*", "", line)
-        low = d
-        for ch in code:
+    depth = 0
+    for n in range(first, last + 1):
+        for ch in code_of(lines[n]):
             if ch == "{":
-                d += 1
+                depth += 1
             elif ch == "}":
-                d -= 1
-                low = min(low, d)
-        out.append(low)
-    return out
+                depth -= 1
+                if depth < 0:
+                    return False
+    return True
 
 
-def depths_after(lines):
-    """Brace depth *after* each line, which is what says where a block ends.
+def is_statement(lines, n):
+    """True only where a declaration may legally replace the assignment on line n.
 
-    depths() reports the lowest depth a line reaches so that a use on a closing line is
-    seen outside the block. That is the wrong measure for block extent: it makes an inner
-    `}` look like the end of the enclosing block, which stopped the case-label scan below
-    before it reached the label it was looking for.
+    The decompiler folds assignments into conditions as comma expressions, and
+    clang-format then wraps them so the assignment looks like a statement of its own:
+
+        if (iVar2 == 0
+            && (uVar3 = foo(),
+                uVar3 < 5)) {
+
+    Declaring there gives "C2275: illegal use of this type as an expression", which
+    compiles nowhere but is easy to miss - so require a real statement boundary: the
+    assignment has to be a balanced, semicolon-terminated line with no comma of its
+    own, following a line that ends a statement or opens a block.
     """
-    out, d = [], 0
-    for line in lines:
-        code = re.sub(r"//.*", "", line)
-        d += code.count("{") - code.count("}")
-        out.append(d)
-    return out
+    code = code_of(lines[n])
+    if not code.endswith(";"):
+        return False
+    body = code[:-1]
+    if body.count("(") != body.count(")") or body.count("{") != body.count("}"):
+        return False
+    if top_level_comma(body):
+        return False                              # x = 1, y = 2;
+    for k in range(n - 1, -1, -1):
+        if lines[k].strip():
+            prev = code_of(lines[k])
+            return prev.endswith((";", "{", "}", ":"))
+    return True                                   # first line of the body
 
 
-def paren_depth_before(lines):
-    """Round-bracket depth at the start of each line.
-
-    A declaration can only replace an assignment that is a statement in its own right.
-    Ghidra also emits assignments inside comma expressions in a condition, and a
-    continuation line of one starts with `var =` just like a statement does:
-
-        if ((-1 < x) && (i = p->idx, local_8 = n * 4, i < p->len)) {
-
-    predictUnitInterceptPosition got `int local_8 = ...` spliced in there, which is not
-    valid C++. A nonzero depth here says the line sits inside such an expression.
-    """
-    out, d = [], 0
-    for line in lines:
-        out.append(d)
-        code = re.sub(r"//.*", "", line)
-        d += code.count("(") - code.count(")")
-    return out
-
-
-def move(path, write=True):
+def move(path):
     text = common.read_text(path).replace("\r\n", "\n")
     brace = re.compile(r"\n[ \t]*\{[ \t]*\n").search(text, text.index("// FUNCTION:"))
     if not brace:
@@ -122,7 +116,7 @@ def move(path, write=True):
     if not decls:
         return None
 
-    drop = set()
+    drop, unsafe = set(), []
     for var, vtype, ptr, arr, decl_at in decls:
         word = re.compile(r"(?<![\w])%s(?![\w])" % re.escape(var))
         uses = [n for n in range(len(lines)) if n != decl_at and word.search(lines[n])]
@@ -134,25 +128,11 @@ def move(path, write=True):
         first = uses[0]
         if not re.match(r"^\s*%s\s*=[^=]" % re.escape(var), lines[first]):
             continue                              # first touch is not a plain assignment
-        stmt = re.sub(r"//.*", "", lines[first]).rstrip()
-        if paren_depth_before(lines)[first] or not stmt.endswith(";"):
-            continue                              # an assignment inside an expression
-        d = depths(lines)
-        if any(d[n] < d[first] for n in range(first, uses[-1] + 1)):
-            continue                              # the scope would not cover every use
-        # A `case` label reached after the declaration jumps over its initialisation,
-        # which MSVC rejects with C2360. Brace depth cannot see this on its own, since
-        # every arm of a switch shares one depth. The scan also has to run to the end of
-        # the block enclosing the first use rather than to the last use, because the
-        # variable stays in scope that far: in calculateHoveredTile the offending label
-        # sits three lines *after* the last use of imageX.
-        after = depths_after(lines)
-        end = first + 1
-        while end < len(lines) and after[end] >= d[first]:
-            end += 1
-        if any(d[n] == d[first] and is_case_label(lines[n])
-               for n in range(first + 1, end)):
+        if not is_statement(lines, first):
+            unsafe.append(var)                    # folded into a condition, not a statement
             continue
+        if not covers(lines, first, uses[-1]):
+            continue                              # the scope would not cover every use
         lines[first] = re.sub(r"^(\s*)%s\s*=" % re.escape(var),
                               lambda m: "%s%s %s%s =" % (m.group(1), vtype, ptr, var),
                               lines[first], count=1)
@@ -161,28 +141,21 @@ def move(path, write=True):
     if not drop:
         return None
     kept = [d[0] for d in decls if d[4] not in drop]
-    if write:
-        common.write_text(path, head + "\n".join(l for n, l in enumerate(lines) if n not in drop))
-    return len(decls), len(drop), kept
+    common.write_text(path, head + "\n".join(l for n, l in enumerate(lines) if n not in drop))
+    return len(decls), len(drop), kept, unsafe
 
 
-def main():
-    touched = 0
-    for f in common.list_files():
-        if path_filter not in f:
-            continue
-        result = move(f, write=apply_changes)
-        if not result:
-            continue
-        count, moved, kept = result
-        if apply_changes:
-            common.format_file(f)
-        touched += 1
-        print("%-52s %2d declarations, %2d moved, left: %s"
-              % (f.rsplit("/", 1)[-1][:-4], count, moved, " ".join(kept) or "-"))
-    print("%d file(s) changed%s"
-          % (touched, "" if apply_changes else " (dry run, pass --apply)"))
-
-
-if __name__ == "__main__":
-    main()
+touched = 0
+for f in common.list_files():
+    if path_filter not in f:
+        continue
+    result = move(f)
+    if not result:
+        continue
+    count, moved, kept, unsafe = result
+    common.format_file(f)
+    touched += 1
+    print("%-52s %2d declarations, %2d moved, left: %s%s"
+          % (f.rsplit("/", 1)[-1][:-4], count, moved, " ".join(kept) or "-",
+             ", in a condition: " + " ".join(unsafe) if unsafe else ""))
+print("%d file(s) changed" % touched)
