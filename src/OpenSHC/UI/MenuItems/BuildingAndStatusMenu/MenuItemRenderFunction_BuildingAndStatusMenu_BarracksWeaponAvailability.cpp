@@ -80,7 +80,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                             (OpenSHC::DE::SHCDE::eGM)pBVar1->gmId_0x0, iVar4 + 0x11f, iVar8, iVar9);
-                        sVar2 = DAT_GameState::instance
+                        sVar2 = (ushort)DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                     .availableHorses;
                         if (sVar2 != 0) {
