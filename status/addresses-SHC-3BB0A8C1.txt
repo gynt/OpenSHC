@@ -25935,7 +25935,7 @@ SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004AFE10 | 65.2% | signed division
 
-SHC_3BB0A8C1_0x004B0390 | 50.4% | if/else split, early return
+SHC_3BB0A8C1_0x004B0390 | 56.2% | blend if/else, inverted arms
 
 SHC_3BB0A8C1_0x004B07C0 | 94.3% | Reimplemented, asm differs
 

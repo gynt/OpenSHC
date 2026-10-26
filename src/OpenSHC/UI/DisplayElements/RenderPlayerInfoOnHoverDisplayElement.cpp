@@ -107,12 +107,10 @@ namespace UI {
             INT_00df552c::instance = timeGetTime();
         } else if (DAT_00df5530::instance != 0) {
             uint elapsed = timeGetTime() - INT_00df552c::instance;
-            if (elapsed < 0x2d0) {
-                if (400 < elapsed) {
-                    blendStrength = (elapsed - 400) / 10;
-                }
-            } else {
+            if (0x2d0 <= elapsed) {
                 DAT_00df5530::instance = 0;
+            } else if (400 < elapsed) {
+                blendStrength = (elapsed - 400) / 10;
             }
         }
         if ((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
@@ -132,11 +130,12 @@ namespace UI {
         int textWidth
             = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.DAT_PlayerNames[DAT_00df5530::instance], 0x10);
+        int halfWidth = textWidth / 2;
         if (blendStrength == 0) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.DAT_PlayerNames[DAT_00df5530::instance], posX + 0x28, posY,
                 OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x10, FALSE, 0);
-            int iconX = posX + (-0x30 - textWidth / 2);
+            int iconX = posX + (-0x30 - halfWidth);
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[DAT_00df5530::instance] == -1) {
                 aiIndex = DAT_GameSynchronyState::instance.currentAIArray[DAT_00df5530::instance];
             }
@@ -174,7 +173,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 DAT_GameSynchronyState::instance.DAT_PlayerNames[DAT_00df5530::instance], posX + 0x28, posY,
                 OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0, 0x10, FALSE, (int)(blendStrength));
-            int iconX = posX + (-0x30 - textWidth / 2);
+            int iconX = posX + (-0x30 - halfWidth);
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[DAT_00df5530::instance] == -1) {
                 aiIndex = DAT_GameSynchronyState::instance.currentAIArray[DAT_00df5530::instance];
             }
