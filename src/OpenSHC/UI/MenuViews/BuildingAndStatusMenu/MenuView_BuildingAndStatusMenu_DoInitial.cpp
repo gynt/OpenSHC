@@ -88,11 +88,13 @@ namespace UI {
                             iVar5, 0, 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            iVar2 = 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                            iVar3 = 0x380;
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                                DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x380,
+                                0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                         } else {
-                            iVar2 = 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                            iVar3 = 0x390;
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                                DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x390,
+                                0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                         }
                     } else {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
@@ -112,11 +114,10 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
                             DAT_TextureRenderCoreObject::ptr)(
                             iVar5, 0, 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
-                        iVar2 = 0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x390;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x390,
+                            0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -143,11 +144,13 @@ namespace UI {
                             iVar5, 0, 600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            iVar2 = 600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                            iVar3 = 0x380;
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                                DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x380,
+                                600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                         } else {
-                            iVar2 = 600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                            iVar3 = 0x390;
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                                DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x390,
+                                600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                         }
                     } else {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
@@ -167,11 +170,10 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
                             DAT_TextureRenderCoreObject::ptr)(
                             iVar5, 0, 600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5].height);
-                        iVar2 = 600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x390;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x390,
+                            600 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -214,14 +216,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x400;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x400,
+                            0x400 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x410;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x410,
+                            0x400 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x400 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -264,14 +266,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4a0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4a0,
+                            0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4b0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4b0,
+                            0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x4b0 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -314,14 +316,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x400;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x400,
+                            0x2d0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x410;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x410,
+                            0x2d0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x2d0 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -364,14 +366,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x450;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x450,
+                            900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x460;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x460,
+                            900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 900 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -414,14 +416,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x540;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x540,
+                            0x438 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x550;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x550,
+                            0x438 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x438 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -464,14 +466,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x540;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x540,
+                            0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x550;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x550,
+                            0x4b0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x4b0 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -514,14 +516,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x680;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x680,
+                            0x5a0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x690;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x690,
+                            0x5a0 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x5a0 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -564,14 +566,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x680;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x680,
+                            0x640 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x690;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x690,
+                            0x640 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x640 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -614,14 +616,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x42a;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x42a,
+                            0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x43a;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x43a,
+                            0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x300 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -664,14 +666,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x428;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x428,
+                            0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x438;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x438,
+                            0x300 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x300 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -714,14 +716,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4c8;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4c8,
+                            0x41a - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4d8;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4d8,
+                            0x41a - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 0x41a - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
@@ -764,14 +766,14 @@ namespace UI {
                                 == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                             || (DAT_GameCore::instance.activeMenuTab.tabType
                                 == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))) {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4a0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4a0,
+                            900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     } else {
-                        iVar2 = DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height;
-                        iVar3 = 0x4b0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, 0x4b0,
+                            900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[iVar5 + -1].height);
                     }
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(iVar5 + -1, iVar3, 900 - iVar2);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
