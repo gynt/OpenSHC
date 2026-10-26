@@ -21,7 +21,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AF860
     void DisplayElements::RenderDebugNumbersDisplayElement(int posX, int posY, DWORD elementState)
     {
-        int _loopEndCondition;
         int* _millisecLoopPointer;
         int _tickRateSum;
         int _averageMillisecLoopMain;
@@ -44,7 +43,6 @@ namespace UI {
          */
         _loopAddressByteCounter = 0;
         do {
-            _loopEndCondition = _loopAddressByteCounter + 0x14;
             _gameLoopDurationBufferSum = _gameLoopDurationBufferSum
                 + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter)
                 + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter + 4)
@@ -56,8 +54,8 @@ namespace UI {
                 + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 8)
                 + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 4)
                 + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter);
-            _loopAddressByteCounter = _loopEndCondition;
-        } while (_loopEndCondition < 400);
+            _loopAddressByteCounter = _loopAddressByteCounter + 0x14;
+        } while (_loopAddressByteCounter < 400);
         _averageMillisecLoopMain = _gameLoopDurationBufferSum / 100;
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
@@ -66,19 +64,19 @@ namespace UI {
         int _maxLoopDurationOfTheLast100 = -1;
         _millisecLoopPointer = DAT_GameLoopDurationBuffer::instance + 1;
         do {
-            if (_maxLoopDurationOfTheLast100 < _millisecLoopPointer[-1]) {
+            if (_millisecLoopPointer[-1] > _maxLoopDurationOfTheLast100) {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[-1];
             }
-            if (_maxLoopDurationOfTheLast100 < *_millisecLoopPointer) {
+            if (*_millisecLoopPointer > _maxLoopDurationOfTheLast100) {
                 _maxLoopDurationOfTheLast100 = *_millisecLoopPointer;
             }
-            if (_maxLoopDurationOfTheLast100 < _millisecLoopPointer[1]) {
+            if (_millisecLoopPointer[1] > _maxLoopDurationOfTheLast100) {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[1];
             }
-            if (_maxLoopDurationOfTheLast100 < _millisecLoopPointer[2]) {
+            if (_millisecLoopPointer[2] > _maxLoopDurationOfTheLast100) {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[2];
             }
-            if (_maxLoopDurationOfTheLast100 < _millisecLoopPointer[3]) {
+            if (_millisecLoopPointer[3] > _maxLoopDurationOfTheLast100) {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[3];
             }
             _millisecLoopPointer = _millisecLoopPointer + 5;
@@ -92,10 +90,10 @@ namespace UI {
         }
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                (int)(1000 / (longlong)_averageMillisecLoopMain), posX + 0x30, posY + 0x14, OpenSHC::Text::TTA_LEFT,
+                1000 / _averageMillisecLoopMain, posX + 0x30, posY + 0x14, OpenSHC::Text::TTA_LEFT,
                 0x80ff, 0, 0x11, FALSE, 0);
         }
-        DAT_CurrentFramerate::instance = (int)(1000 / (longlong)_averageMillisecLoopMain);
+        DAT_CurrentFramerate::instance = 1000 / _averageMillisecLoopMain;
         if (_tickRateSum == 0) {
             _tickRateSum = 1;
         }
@@ -105,7 +103,7 @@ namespace UI {
         }
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                (int)(1000 / (longlong)_someRelationBetweenLoopDurationAndTickrate), posX + 0x30, posY + 0x28,
+                1000 / _someRelationBetweenLoopDurationAndTickrate, posX + 0x30, posY + 0x28,
                 OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
         }
     }
