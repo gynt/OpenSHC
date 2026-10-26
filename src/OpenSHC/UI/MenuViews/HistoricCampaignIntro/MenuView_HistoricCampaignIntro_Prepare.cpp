@@ -26,24 +26,20 @@ namespace UI {
             MACRO_CALL(OpenSHC::UI::Helpers_Func::PrepareHistoryBook)();
             switch (DAT_GameCore::instance.historicCampaignNumber) {
             case 1:
-                DAT_00eb0b20::instance
-                    = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("c1pic.tgx");
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c1pic.tgx");
                 break;
             case 2:
-                DAT_00eb0b20::instance
-                    = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("c2pic.tgx");
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c2pic.tgx");
                 break;
             case 3:
-                DAT_00eb0b20::instance
-                    = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("c3pic.tgx");
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c3pic.tgx");
                 break;
             case 4:
-                DAT_00eb0b20::instance
-                    = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("c4pic.tgx");
+                DAT_00eb0b20::instance = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                    DAT_TextureRenderCoreObject::ptr)("c4pic.tgx");
                 break;
             }
             DAT_NumberOfStoredMenuStrings::instance = 0;
