@@ -14,10 +14,10 @@ namespace UI {
             uint uVar2;
             uVar2
                 = DAT_TextEditorState::instance.topVisibleLineIndex - DAT_TextEditorState::instance.dialogContentHeight;
-            if ((int)(((int)uVar2 < 1) - 1 & uVar2) / 0x14 <= 1) {
+            if ((int)(((int)uVar2 <= 0) - 1 & uVar2) / 0x14 <= 1) {
                 iVar1 = 1;
             } else {
-                iVar1 = (int)(((int)uVar2 < 1) - 1 & uVar2) / 0x14;
+                iVar1 = (int)(((int)uVar2 <= 0) - 1 & uVar2) / 0x14;
             }
             /*
               the jump table at 0x45ef6c sends every value outside 1..7 straight to the
@@ -30,8 +30,8 @@ namespace UI {
                 *minValue = 0;
                 uVar2 = DAT_TextEditorState::instance.topVisibleLineIndex
                     - DAT_TextEditorState::instance.dialogContentHeight;
-                *maxValue = (((int)uVar2 < 1) - 1 & uVar2);
-                if ((int)(((int)uVar2 < 1) - 1 & uVar2) < 0) {
+                *maxValue = (((int)uVar2 <= 0) - 1 & uVar2);
+                if ((int)(((int)uVar2 <= 0) - 1 & uVar2) < 0) {
                     *maxValue = 0;
                 }
                 *currentValue = DAT_TextEditorState::instance.helpContentScrollOffsetY;
@@ -44,7 +44,7 @@ namespace UI {
                 *currentValue = DAT_TextEditorState::instance.helpContentScrollOffsetY;
                 uVar2 = DAT_TextEditorState::instance.topVisibleLineIndex
                     - DAT_TextEditorState::instance.dialogContentHeight;
-                *maxValue = (((int)uVar2 < 1) - 1 & uVar2);
+                *maxValue = (((int)uVar2 <= 0) - 1 & uVar2);
                 return;
             case 7:
                 *currentValue = DAT_TextEditorState::instance.dialogContentHeight + -0x14;
@@ -61,16 +61,16 @@ namespace UI {
                 return;
             case 6:
                 int iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
-                if (iVar3 < (int)((((int)uVar2 < 1) - 1 & uVar2) - iVar1)) {
+                if (iVar3 < (int)((((int)uVar2 <= 0) - 1 & uVar2) - iVar1)) {
                     iVar3 = iVar3 + iVar1;
-                    if ((int)(((int)uVar2 < 1) - 1 & uVar2) < iVar3) {
-                        iVar3 = (((int)uVar2 < 1) - 1 & uVar2);
+                    if ((int)(((int)uVar2 <= 0) - 1 & uVar2) < iVar3) {
+                        iVar3 = (((int)uVar2 <= 0) - 1 & uVar2);
                         DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                         *currentValue = iVar3;
                         return;
                     }
                 } else {
-                    iVar3 = (((int)uVar2 < 1) - 1 & uVar2);
+                    iVar3 = (((int)uVar2 <= 0) - 1 & uVar2);
                 }
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3;
                 *currentValue = iVar3;
