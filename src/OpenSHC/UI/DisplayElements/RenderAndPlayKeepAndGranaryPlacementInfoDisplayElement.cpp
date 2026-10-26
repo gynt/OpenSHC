@@ -36,22 +36,18 @@ namespace UI {
             return;
         }
         int numInGroup = whichBuildingIsMissing + 9;
+        char* pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup);
         iVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
-            &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup),
-            0, 0, 0x244, 0, 0, 1);
+            &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(pcVar2, 0, 0, 0x244, 0, 0, 1);
+        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup);
         iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
-            &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup),
-            0, 0, 0x244, 0, 0, 2);
-        iVar3 = posY - iVar3;
-        iVar4 = posX - iVar4;
+            &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(pcVar2, 0, 0, 0x244, 0, 0, 2);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_FEEDBACK, numInGroup),
-            iVar4, iVar3, 0x244, 0xccfaff, 0, 0x12, 0);
+            posX - iVar4, posY - iVar3, 0x244, 0xccfaff, 0, 0x12, 0);
         if (whichBuildingIsMissing == 1) {
             if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance == FALSE) {
                 /*
