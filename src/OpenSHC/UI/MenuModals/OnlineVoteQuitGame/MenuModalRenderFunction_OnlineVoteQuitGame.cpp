@@ -24,8 +24,8 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4c, 0x3b, x, y, width, height);
-            DWORD DVar1 = timeGetTime();
-            int number = 10 - (DVar1 - DAT_GameSynchronyState::instance.quitGameVoteRequestTime) / 1000;
+            int number
+                = 10 - (timeGetTime() - DAT_GameSynchronyState::instance.quitGameVoteRequestTime) / 1000;
             if (number < 0) {
                 number = 0;
             }
