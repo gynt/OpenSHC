@@ -79,47 +79,7 @@ namespace UI {
             iVar3 = DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                         .header.tl_type;
-            if (iVar3 == 1) {
-                iVar10 = 0;
-                BVar9 = FALSE;
-                iVar8 = 0x12;
-                TVar6 = OpenSHC::Text::TTA_LEFT;
-                iVar3 = DAT_ButtonY::instance + 4;
-                iVar4 = DAT_ButtonX::instance + 0x50;
-                BVar7 = color;
-                /*
-                  added by script: "Invasion"
-                 */
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x2e),
-                    iVar4, iVar3, TVar6, BVar7, iVar8, BVar9, iVar10);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
-                        .data.scenario.actionData,
-                    (int)(DAT_ButtonX::instance + 0xfa), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    (uint)(color), 0x12, FALSE, 0);
-                if (DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
-                        .data.invasion.repeatMonths
-                    == 0) {
-                    return;
-                }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
-                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    color, 0x12, FALSE, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    DAT_MapPropertiesState::instance
-                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
-                        .data.invasion.repeatMonths,
-                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    (uint)(color), 0x12, TRUE, 0);
-                bVar5 = DAT_MapPropertiesState::instance
-                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
-                            .data.invasion.repeatMonths
-                    == 1;
-            } else {
+            if (iVar3 != 1) {
                 if (iVar3 != 3) {
                     return;
                 }
@@ -176,6 +136,46 @@ namespace UI {
                 bVar5 = DAT_MapPropertiesState::instance
                             .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.scenario.repeat
+                    == 1;
+            } else {
+                iVar10 = 0;
+                BVar9 = FALSE;
+                iVar8 = 0x12;
+                TVar6 = OpenSHC::Text::TTA_LEFT;
+                iVar3 = DAT_ButtonY::instance + 4;
+                iVar4 = DAT_ButtonX::instance + 0x50;
+                BVar7 = color;
+                /*
+                  added by script: "Invasion"
+                 */
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0x2e),
+                    iVar4, iVar3, TVar6, BVar7, iVar8, BVar9, iVar10);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                    DAT_MapPropertiesState::instance
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
+                        .data.scenario.actionData,
+                    (int)(DAT_ButtonX::instance + 0xfa), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
+                    (uint)(color), 0x12, FALSE, 0);
+                if (DAT_MapPropertiesState::instance
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
+                        .data.invasion.repeatMonths
+                    == 0) {
+                    return;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
+                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
+                    color, 0x12, FALSE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
+                    DAT_MapPropertiesState::instance
+                        .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
+                        .data.invasion.repeatMonths,
+                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
+                    (uint)(color), 0x12, TRUE, 0);
+                bVar5 = DAT_MapPropertiesState::instance
+                            .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
+                            .data.invasion.repeatMonths
                     == 1;
             }
             if (bVar5) {
