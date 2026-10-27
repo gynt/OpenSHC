@@ -40,11 +40,11 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner, DAT_PencilRenderCore::ptr)(
                     199, 2, DAT_MenuHandlerState::instance.x, DAT_MenuHandlerState::instance.y, 800, 0x3c);
+                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 int x1_00 = DAT_MenuHandlerState::instance.x + 0x10e;
                 int x2_00 = DAT_MenuHandlerState::instance.x + 0x302;
                 int top = DAT_MenuHandlerState::instance.y + 0x5a;
                 int bottom = DAT_MenuHandlerState::instance.y + 0x1e9;
-                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                     x1_00, top, x2_00 + -0x14, bottom);
                 int x2 = x2_00 + 1;
