@@ -53,39 +53,7 @@ namespace UI {
                 return;
             }
             DAT_ButtonUnknownZero::instance = 0;
-            if (0x22e < (int)DAT_CurrentButtonGmDataIndex::instance) {
-            switchD_00438c35_caseD_d9:
-                if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
-                    DAT_ButtonUnknownZero::instance = 1;
-                    return;
-                }
-                UVar4 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
-                if (UVar4 == (UnitType)0xffffffff) {
-                    DAT_ButtonUnknownZero::instance = 1;
-                    return;
-                }
-                goto LAB_00438ec1;
-            }
-            if (DAT_CurrentButtonGmDataIndex::instance == 0x22e) {
-            switchD_00438c35_caseD_d3:
-                if (DAT_UnitsState::instance.hasEngineerSelected != TRUE) {
-                    DAT_ButtonUnknownZero::instance = 1;
-                    return;
-                }
-                uVar3 = MACRO_CALL_MEMBER(
-                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-                if (uVar3 == 0) {
-                    DAT_ButtonUnknownZero::instance = 1;
-                    return;
-                }
-            LAB_00438ec1:
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                        MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                DAT_ButtonUnknownZero::instance = 0;
-                return;
-            }
-            switch (DAT_CurrentButtonGmDataIndex::instance) {
+            switch ((int)DAT_CurrentButtonGmDataIndex::instance) {
             case 0x178:
                 /*
                   the original tail-jumps to the render here (`pop edi; pop esi; jmp` after
@@ -314,9 +282,34 @@ namespace UI {
             case 0xd5:
             case 0xd6:
             case 0xd7:
-                goto switchD_00438c35_caseD_d3;
+            case 0x22e:
+                if (DAT_UnitsState::instance.hasEngineerSelected != TRUE) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
+                uVar3 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
+                if (uVar3 == 0) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
+                goto LAB_00438ec1;
             default:
-                goto switchD_00438c35_caseD_d9;
+                if (DAT_UnitsState::instance.hasEngineerSelected != FALSE) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
+                UVar4 = MACRO_CALL_MEMBER(
+                    OpenSHC::Map::Units::UnitsState_Func::getUnitTypeOfFirstSelectedUnit, DAT_UnitsState::ptr)();
+                if (UVar4 == (UnitType)0xffffffff) {
+                    DAT_ButtonUnknownZero::instance = 1;
+                    return;
+                }
+            LAB_00438ec1:
+                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                        MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                DAT_ButtonUnknownZero::instance = 0;
+                return;
             }
             DAT_ButtonUnknownZero::instance = 1;
             return;
