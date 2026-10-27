@@ -15,6 +15,11 @@ Moves:
   --pairs   swap every adjacent independent pair - 1 build per pair, much
             slower on a big function but finds things runs cannot
 
+`--quick` scores with `quick_diff.py` instead of a build and a reccmp run, which turns a trial from
+minutes into about a second and makes the whole selection reachable; the ratio it reports is not the
+reccmp percentage and is harsher on any change to the function's length, so confirm the moves it
+keeps with `reccmp_report.py --run cmp` and revert every WORSE.
+
 Two statements count as independent when neither contains a call, their
 left-hand sides differ, neither left-hand side appears in the other statement,
 no plain local written by one is mentioned by the other, and two writes through
@@ -37,6 +42,7 @@ import common  # noqa: F401  (chdirs to the repo root)
 
 CPP, FUNC = sys.argv[1], sys.argv[2]
 PAIRS = "--pairs" in sys.argv
+QUICK = "--quick" in sys.argv
 DRY = "--dry" in sys.argv
 ID = re.compile(r"[A-Za-z_]\w*")
 CALL = re.compile(r"\bMACRO_CALL\w*\s*\(|\b\w+\s*\([^)]")
@@ -45,6 +51,15 @@ LABEL = re.compile(r"^(case\b.*|default\s*|[A-Za-z_]\w*\s*):$")
 
 
 def build_and_score():
+    if QUICK:
+        # quick_diff compiles the one file and diffs it against the original: ~1.2s instead of a
+        # full build, at the cost of a stricter ratio that is not the reccmp percentage.  Good
+        # enough to hill-climb on, but confirm the kept moves with `reccmp_report.py --run cmp`:
+        # it punishes any change to the function's length harder than reccmp does.
+        r = subprocess.run([sys.executable, "tools/reimplementation-helper/batch/quick_diff.py", CPP],
+                           capture_output=True, text=True)
+        m = re.search(r"ratio (\d+\.\d+)", r.stdout)
+        return float(m.group(1)) if m else None
     r = subprocess.run([sys.executable, "tools/reimplementation-helper/batch/build_quiet.py"],
                        capture_output=True, text=True)
     if "BUILD_OK" not in r.stdout:
