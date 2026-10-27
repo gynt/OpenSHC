@@ -50,9 +50,6 @@ namespace UI {
         void GameLost::MenuView_GameLost_Prepare()
         {
             DWORD DVar2;
-            int iVar3;
-            int xPos;
-            char* binkFileName;
             DVar2 = timeGetTime();
             DAT_GameCore::instance.gameDuration = DVar2 - DAT_GameCore::instance.timeSum_2;
             INT_00ed279c::instance = 0;
@@ -87,31 +84,29 @@ namespace UI {
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
             if (DAT_GameSynchronyState::instance.currentGameMode
-                == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
-                goto LAB_004d575f;
-            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
-                if (DAT_GameCore::instance.missionNumber1to20 - 6U <= 4) {
-                    iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                    xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    binkFileName = "arabian_lose.bik";
+                != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER) {
+                if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
+                    if (DAT_GameCore::instance.missionNumber1to20 - 6U <= 4) {
+                        MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK,
+                            DAT_BinkControlState::ptr)(0, "arabian_lose.bik", 0, 0,
+                            DAT_MenuHandlerState::instance.x + 0x50, DAT_MenuHandlerState::instance.y + 0x3c, 2);
+                    } else {
+                        MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK,
+                            DAT_BinkControlState::ptr)(0, "crusader_lose.bik", 0, 0,
+                            DAT_MenuHandlerState::instance.x + 0x50, DAT_MenuHandlerState::instance.y + 0x3c, 2);
+                    }
+                } else if (MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
+                               DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID)
+                    == 1) {
+                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK,
+                        DAT_BinkControlState::ptr)(0, "arabian_lose.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
+                        DAT_MenuHandlerState::instance.y + 0x3c, 2);
                 } else {
-                LAB_004d574d:
-                    iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                    xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    binkFileName = "crusader_lose.bik";
+                    MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK,
+                        DAT_BinkControlState::ptr)(0, "crusader_lose.bik", 0, 0,
+                        DAT_MenuHandlerState::instance.x + 0x50, DAT_MenuHandlerState::instance.y + 0x3c, 2);
                 }
-            } else {
-                iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
-                    DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                if (iVar3 != 1)
-                    goto LAB_004d574d;
-                iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                binkFileName = "arabian_lose.bik";
             }
-            MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
-                0, binkFileName, 0, 0, xPos, iVar3, 2);
-        LAB_004d575f:
             MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
             MACRO_CALL_MEMBER(
