@@ -11111,7 +11111,7 @@ SHC_3BB0A8C1_0x00433BC0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x00433C20 | 84.1% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x00433D00 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x00433D00 | 84.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x00433DA0 | 99.6% | two call sites, inverted arms
 
@@ -25913,7 +25913,7 @@ SHC_3BB0A8C1_0x004AF6B0 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004AF6E0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004AF700 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x004AF700 | 52.0% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004AF800 | 0.0% | Pending
 
@@ -25931,17 +25931,17 @@ SHC_3BB0A8C1_0x004AFB00 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004AFB30 | 81.0% | security buffer, reg naming
 
-SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x004AFDA0 | 71.4% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004AFE10 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x004AFE10 | 57.2% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B0390 | 62.0% | one spilled local, alloc bound
 
-SHC_3BB0A8C1_0x004B07C0 | 94.3% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004B07C0 | 68.6% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B0820 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004B0AC0 | 95.0% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004B0AC0 | 82.5% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B0B30 | 54.3% | Style pass, asm differs
 
@@ -25991,13 +25991,13 @@ SHC_3BB0A8C1_0x004B19E0 | 35.1% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B1AC0 | 32.5% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004B1C30 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x004B1C30 | 55.9% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004B1D30 | 100.0% | Reimplemented
+SHC_3BB0A8C1_0x004B1D30 | 89.7% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B1D90 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004B1E60 | 95.8% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004B1E60 | 58.3% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004B1EB0 | 98.1% | lea operand order only
 
