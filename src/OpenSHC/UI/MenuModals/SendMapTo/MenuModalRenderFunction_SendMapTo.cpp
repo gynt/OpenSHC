@@ -58,8 +58,8 @@ namespace UI {
                     }
                     rowOffsetY = rowOffsetY + 0x1e;
                 }
-                playerByteOffset = playerByteOffset + 4;
                 playerName = playerName + 1;
+                playerByteOffset = playerByteOffset + 4;
                 transferState = transferState + 1;
             } while ((int)transferState < (int)&DAT_GameSynchronyState::instance + 0x109daa);
         }
