@@ -49,17 +49,15 @@ namespace UI {
             if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 2000) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner,
                     DAT_PencilRenderCore::ptr)(x, y, width, height);
-                int yParam = y + 0xf;
-                int xParam = width / 2 + x;
                 /*
                   added by script: "Receiving Map"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x6b),
-                    xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
+                    width / 2 + x, y + 0xf, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    DAT_GameSynchronyState::instance.unknownMapName_01, xParam, y + 0x2a, OpenSHC::Text::TTA_CENTER,
+                    DAT_GameSynchronyState::instance.unknownMapName_01, width / 2 + x, y + 0x2a, OpenSHC::Text::TTA_CENTER,
                     0xc2f0eb, 0x11, FALSE, 0);
                 (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
                 return;
@@ -67,6 +65,8 @@ namespace UI {
             if (bannerTextIndex != -1) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                     DAT_PencilRenderCore::ptr)(0x4a, bannerTextIndex, x, y, width, height);
+                (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
+                return;
             }
             (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
         }
