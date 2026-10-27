@@ -179,6 +179,7 @@ namespace UI {
             case 0xcf:
             case 0xd0: {
                 iVar1 = param_1 + -0x40;
+                goto switchD_004c01f4_caseD_6a;
             }
             case 0x6a:
             case 0x6b:
@@ -200,6 +201,7 @@ namespace UI {
             case 0x7b:
             case 0x7c:
             case 0x7d: {
+                iVar1 = param_1;
             switchD_004c01f4_caseD_6a:
                 DAT_ButtonCurrentlyInteracting::instance
                     = (BOOLEnum)(DAT_MapPropertiesState::instance.invasionTroopIndex == iVar1 + -0x6a);
