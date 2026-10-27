@@ -82,26 +82,31 @@ def score(path):
     return float(m.group(1)) if m else None
 
 
-files = sys.argv[1:] or [str(p) for p in common.list_files()]
-kept = tried = 0
-for path in files:
-    text = io.open(path, encoding="utf-8", newline="").read()
-    base = score(path)
-    if base is None:
-        continue
-    i = 0
-    while True:
-        found = sites(text)
-        if i >= len(found):
-            break
-        cand = swapped(text, found[i])
-        io.open(path, "w", encoding="utf-8", newline="").write(cand)
-        new = score(path)
-        tried += 1
-        if new is not None and new > base + 1e-9:
-            print("KEEP  %+.4f  %.4f -> %.4f  %s  %s" % (
-                new - base, base, new, os.path.basename(path), text[found[i][0]:found[i][1] - 1].strip()))
-            text, base, kept = cand, new, kept + 1
-        io.open(path, "w", encoding="utf-8", newline="").write(text)
-        i += 1
-print("kept %d of %d site(s) tried" % (kept, tried))
+def main():
+    files = sys.argv[1:] or [str(p) for p in common.list_files()]
+    kept = tried = 0
+    for path in files:
+        text = io.open(path, encoding="utf-8", newline="").read()
+        base = score(path)
+        if base is None:
+            continue
+        i = 0
+        while True:
+            found = sites(text)
+            if i >= len(found):
+                break
+            cand = swapped(text, found[i])
+            io.open(path, "w", encoding="utf-8", newline="").write(cand)
+            new = score(path)
+            tried += 1
+            if new is not None and new > base + 1e-9:
+                print("KEEP  %+.4f  %.4f -> %.4f  %s  %s" % (
+                    new - base, base, new, os.path.basename(path), text[found[i][0]:found[i][1] - 1].strip()))
+                text, base, kept = cand, new, kept + 1
+            io.open(path, "w", encoding="utf-8", newline="").write(text)
+            i += 1
+    print("kept %d of %d site(s) tried" % (kept, tried))
+
+
+if __name__ == "__main__":
+    main()
