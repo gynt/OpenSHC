@@ -101,10 +101,10 @@ namespace UI {
                             return;
                         }
                         if (*currentValue < *minValue) {
-                            *currentValue = *minValue;
                             DAT_MapPropertiesState::instance
                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                 .data.scenario.repeat = (byte)*minValue;
+                            *currentValue = *minValue;
                         }
                         break;
                     case 7:
@@ -130,17 +130,17 @@ namespace UI {
                 case 0x1e:
                     switch (param_2) {
                     case 1:
-                        *minValue = 1;
-                        *maxValue = 10;
                         *currentValue = (uint)DAT_MapPropertiesState::instance
                                             .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                             .data.scenario.repeatMonths;
+                        *maxValue = 10;
+                        *minValue = 1;
                         return;
                     case 2:
                     case 3:
-                        *minValue = 1;
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .data.scenario.repeatMonths = (byte)*currentValue;
+                        *minValue = 1;
                         return;
                     case 4:
                         *currentValue = (uint)DAT_MapPropertiesState::instance
@@ -178,10 +178,10 @@ namespace UI {
                     switch (param_2) {
                     case 1:
                         *minValue = 1;
-                        *maxValue = iVar1;
                         *currentValue = DAT_MapPropertiesState::instance
                                             .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                             .data.scenario.actionData;
+                        *maxValue = iVar1;
                         return;
                     case 2:
                     case 3:
