@@ -168,18 +168,19 @@ namespace UI {
             }
             if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
                 || (cVar4 != 0)) {
-                if ((int)SEC_RNG::instance.currentNumber1 % 3 == 0) {
-                    /*
-                      "We are victorious sire!"
-                     */
-                    pcVar5 = "general_victory2.wav";
-                } else {
+                if ((int)SEC_RNG::instance.currentNumber1 % 3 != 0) {
                     /*
                       "Victory!"
                      */
-                    pcVar5 = "general_victory1.wav";
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        "general_victory1.wav");
+                } else {
+                    /*
+                      "We are victorious sire!"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        "general_victory2.wav");
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar5);
             }
             MACRO_CALL_MEMBER(
                 OpenSHC::Audio::MSS::SoundSystem_Func::playWinMusicVariation, DAT_SoundSystemState::ptr)();
