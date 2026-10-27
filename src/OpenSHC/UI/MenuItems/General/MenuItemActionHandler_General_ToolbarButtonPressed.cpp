@@ -309,8 +309,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                     DAT_GameState::ptr)(buttonID, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), TRUE);
             }
-            DAT_TileMapState::instance.unitPlacementCount = 1;
             DAT_TileMapState::instance.currentMapperCommand = buttonID;
+            DAT_TileMapState::instance.unitPlacementCount = 1;
             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                 ((SoundEffectID)0x87));
             if (buttonID != OpenSHC::Commands::M_MAPPER_CATAPULT
