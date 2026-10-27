@@ -62,7 +62,7 @@ namespace UI {
             if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU
                 && (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM
                     || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST))
-                && param_1 != 0x47 && param_1 != -4 && -param_1 > 10) {
+                && param_1 != 0x47 && param_1 != -4 && param_1 <= -10) {
                 DAT_ButtonUnknownZero::instance = 1;
                 return;
             }
@@ -147,7 +147,7 @@ namespace UI {
                 if (param_1 == -0x5b || (10 <= param_1 && (param_1 <= 0x31)))
                     goto LAB_00464611;
             } else {
-                if (param_1 < -9 && param_1 != -0x5a && param_1 != -0x5b) {
+                if (param_1 <= -10 && param_1 != -0x5a && param_1 != -0x5b) {
                     if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_EDITOR) {
                         DAT_ButtonUnknownZero::instance = 1;
                         return;
