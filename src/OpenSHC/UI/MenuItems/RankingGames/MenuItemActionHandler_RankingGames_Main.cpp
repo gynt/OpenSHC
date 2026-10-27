@@ -123,7 +123,7 @@ namespace UI {
                     if (iVar1 < 0) {
                         iVar1 = 0;
                     }
-                    if (iVar1 < (int)DAT_00ed3120::instance) {
+                    if ((int)DAT_00ed3120::instance > iVar1) {
                         DAT_00ed3120::instance = iVar1;
                     }
                 }
@@ -140,7 +140,7 @@ namespace UI {
                 if (iVar1 < 0) {
                     iVar1 = 0;
                 }
-                if (iVar1 < (int)DAT_00ed3120::instance) {
+                if ((int)DAT_00ed3120::instance > iVar1) {
                     DAT_00ed3120::instance = iVar1;
                 }
             }
