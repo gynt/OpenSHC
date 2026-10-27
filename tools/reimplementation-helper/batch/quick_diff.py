@@ -152,18 +152,27 @@ def ours(f, cls, name):
             l = re.sub(r'(dword|word|byte) ptr G\b', r'\1 ptr [G]', l)
             l = re.sub(r'^imul (\w+), (0x[0-9a-f]+|-?\d+)$', r'imul \1, \1, \2', l)
             l = re.sub(r'^lea (\w+), dword ptr ', r'lea \1, ', l)
+            # orig() maps every immediate >= 0x400000 to 'G'; do the same here so a
+            # colour constant or a division magic is not reported as a difference
+            l = re.sub(r'(?<!-)0x[0-9a-f]+', lambda m: 'G' if int(m.group(0), 16) >= 0x400000 else m.group(0), l)
         res.append(l.strip())
     return res
 
 
 def canon(s):
+    # `ret` vs the listing's `ret 0`, and every call spelling, compare equal
+    if s.startswith('ret'):
+        return 'ret'
+    if s.startswith('call'):
+        return 'call F'
     # esp-relative slots and globals compare loosely
     if not keep_slots:
         s = re.sub(r'\[esp( [+-] 0x[0-9a-f]+)?\]', '[esp+N]', s)
     s = re.sub(r'tv\d+\[', '[', s)
     s = re.sub(r'_\w+\$\w*\[', '[', s)
-    s = s.replace('mov eax, G', 'mov eax, 0x51eb851f') if s == 'mov eax, G' else s
     s = re.sub(r'\[(\w+)\*(\d) [+] G\]', r'[\1*\2 + G]', s)
+    # a displacement next to a global is part of the global's address: [eax - 0xc + G] is [eax + G]
+    s = re.sub(r'\[([^\]]+?) [-+] 0x[0-9a-f]+ \+ G\]', r'[\1 + G]', s)
     return s
 
 
