@@ -141,15 +141,7 @@ namespace UI {
                 if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_SIEGE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        /*
-                          added by script: "Starting Pitch"
-                         */
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xa9, (int)(DAT_ButtonX::instance + 10),
-                            (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
-                        iVar1 = DAT_ButtonW::instance + -10 + DAT_ButtonX::instance;
-                    } else {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         /*
                           added by script: "Starting Pitch"
                          */
@@ -158,6 +150,14 @@ namespace UI {
                             (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
                         iVar1 = DAT_ButtonW::instance + -10 + DAT_ButtonX::instance;
                         return;
+                    } else {
+                        /*
+                          added by script: "Starting Pitch"
+                         */
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xa9, (int)(DAT_ButtonX::instance + 10),
+                            (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
+                        iVar1 = DAT_ButtonW::instance + -10 + DAT_ButtonX::instance;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
                         DAT_TextManagerObject::ptr)(DAT_MapPropertiesState::instance.SEC_StartingResources[8], iVar1,
