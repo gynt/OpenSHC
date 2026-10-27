@@ -26,7 +26,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00431B60
         void BuildMenu::MenuView_BuildMenu_DoInitial()
         {
-            int iVar2;
             char* pcVar3;
             int y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
@@ -382,24 +381,30 @@ namespace UI {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                if (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_1600x900) {}
-                DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
-                if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
-                    || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
+                if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                         DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
-                } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge_military_1600r.tgx");
+                    if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
+                        || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
+                        DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
+                    } else {
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600r.tgx");
+                    }
+                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                        = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        1, 0x4b0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height);
+                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                        = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
-                DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(
-                    0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
-                iVar2 = 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height;
             } else {
                 if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {}
                 if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == (OpenSHC::UI::Enums::BuildMenuTabType)0x3e) {}
@@ -644,18 +649,23 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
-                    if (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_1600x900) {}
-                    DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(
-                        0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
-                    iVar2 = 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height;
+                    if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
+                        DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(
+                            0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(
+                            1, 0x4b0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height);
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    }
                 } else {
                     if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
@@ -878,23 +888,25 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
-                    if (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_1600x900) {}
-                    DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600r.tgx");
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                        DAT_TextureRenderCoreObject::ptr)(
-                        0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
-                    iVar2 = 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height;
+                    if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
+                        DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
+                            DAT_TextureRenderCoreObject::ptr)("edge1600r.tgx");
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(
+                            0, 0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[0].height);
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                            DAT_TextureRenderCoreObject::ptr)(
+                            1, 0x4b0, 900 - DAT_TextureRenderCoreObject::instance.loadedGfxArray[1].height);
+                        DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                    }
                 }
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                DAT_TextureRenderCoreObject::ptr)(1, 0x4b0, iVar2);
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         }
 
     }
