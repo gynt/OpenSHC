@@ -82,7 +82,7 @@ namespace UI {
                     }
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + x, piVar3[1] + y, blendStrengthUnk);
+                    DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + width, piVar3[1] + y, blendStrengthUnk);
                 iVar4 = iVar4 + 1;
                 piVar3 = piVar3 + 2;
             } while (iVar4 < 9);
