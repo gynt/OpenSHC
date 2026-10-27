@@ -58,7 +58,7 @@ namespace UI {
             int* piVar5;
             char* pcVar6;
             int iVar7;
-            uint uVar8;
+            int uVar8;
             short* psVar9;
             int iVar10;
             char* pcVar11;
