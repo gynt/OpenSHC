@@ -101,7 +101,6 @@ namespace UI {
                             color = 0xc2f0eb;
                         } else {
                             color = 0xccfaff;
-                            return;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_IN_KEEP, iVar1 + 7,
