@@ -405,6 +405,28 @@ Diff patterns that were reliable (more in the cheat sheet):
   every later instruction, which `quick_diff`'s line-level ratio punishes while reccmp's own alignment
   does not; use the gate as a filter against disasters rather than as a predictor, and measure anything
   that changes a function's length on reccmp.
+- **Statement reordering is the best-paying lever found so far, once the trials are cheap.**
+  `reorder_search.py --quick` scores with `quick_diff.py` instead of a full build and a reccmp run,
+  which drops a trial from minutes to about a second and makes the whole selection reachable; it also
+  means the tool's own "about one move in ten pays" was measured under a budget that only allowed a
+  handful of moves. Over `UI/MenuItems` the sweep (`--pairs`, then the default run permutations) kept
+  47 moves on `quick_diff` across 29 of 171 functions, and **21 of 24 changed functions confirmed
+  better on reccmp**: `MenuItemActionHandler_EditScenario_EventAndInvasionList` 70.8% -> 96.4%,
+  `MenuItemRenderFunction_General_MenuMiniMap` 83.9% -> 94.0%,
+  `MenuItemRenderFunction_General_CreateEventCallbackFunction` 90.2% -> 95.3%,
+  `MenuItemActionHandler_General_EventSlider` 69.2% -> 83.3%,
+  `MenuItemActionHandler_AlliesOrder_Main` 72.0% -> 80.0%,
+  `MenuItemActionHandler_BuildingAndStatusMenu_RepairBuildingButton` 68.6% -> 77.4%,
+  `MenuItemActionHandler_TextEditor_Buttons` 69.7% -> 75.8%, `MenuItemRenderFunction_Allies_Main`
+  49.7% -> 52.3% - the last after arm swaps, locals and operand flips had all been tried on it and
+  reverted. Nearly every paying move is an adjacent swap of two independent stores, which is why it
+  is safe: the tool's independence test is conservative, but read the diff anyway.
+  Two caveats. It only looks like a contradiction of the *Statement Order* note above - the compiler
+  does schedule freely, so reordering to follow the asm is still pointless; what pays is that the
+  order decides which value becomes live first and so which register it lands in, which is not
+  readable off the diff and has to be searched. And a second pass finds nothing: after the first
+  sweep the only moves left were the four that had already measured as exact ties, so the search
+  reaches a local optimum in one pass and re-running it is wasted time.
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
