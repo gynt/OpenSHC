@@ -103,8 +103,8 @@ namespace UI {
                 default:
                     return;
                 }
-                color = 0xccfaff;
                 yParam = DAT_ButtonY::instance + 7;
+                color = 0xccfaff;
                 xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
             }
