@@ -96,7 +96,7 @@ namespace UI {
                                 DAT_GameState::instance.mapAndTime.playerKeepTile[iVar4]);
                         }
                         DAT_GameCore::instance.viewedKeepIndex = DAT_GameCore::instance.viewedKeepIndex + 1;
-                        if ((int)dVar5 <= (int)DAT_GameCore::instance.viewedKeepIndex) {
+                        if ((int)DAT_GameCore::instance.viewedKeepIndex >= (int)dVar5) {
                             DAT_GameCore::instance.viewedKeepIndex = 0;
                         }
                     }
