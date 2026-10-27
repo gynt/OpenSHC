@@ -210,7 +210,13 @@ namespace UI {
             case OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION:
                 uVar5 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getTunnelerIDOnlyIfFirstSelected, DAT_UnitsState::ptr)();
-                goto joined_r0x00444948;
+                if (uVar5 != 0) {
+                    MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
+                    goto switchD_00444907_caseD_122;
+                    return;
+                }
+                DAT_StopHandlingMenuItems::instance = 0;
+                return;
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1A:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1B:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1C:
@@ -341,7 +347,6 @@ namespace UI {
         switchD_00444907_caseD_166:
             uVar5 = MACRO_CALL_MEMBER(
                 OpenSHC::Map::Units::UnitsState_Func::returnFirstSelectedEngineer, DAT_UnitsState::ptr)();
-        joined_r0x00444948:
             if (uVar5 != 0) {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetTribesPatrolButtonPressed)(0);
                 goto switchD_00444907_caseD_122;
