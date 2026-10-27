@@ -99,6 +99,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
                         iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                    return;
                 }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 if (0x1d < (int)DAT_GameCore::instance.warchestTrailProgress) {
@@ -116,6 +117,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
                         iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                    return;
                 }
             } else if ((DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION)
                 && (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress)) {
@@ -133,6 +135,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
                     iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                return;
             }
             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x20;
             _textY_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x156;
