@@ -48,17 +48,20 @@ namespace UI {
                 return;
             }
             DAT_MouseState::instance.field68_0x1dc = 1000;
-            if (DAT_TileMapState::instance.flatViewToggleValue1 == 0) {
+            if (DAT_TileMapState::instance.flatViewToggleValue1 != 0) {
+                MACRO_CALL_MEMBER(
+                    OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
+            } else {
                 /*
                   set up currently hovering x and y
                  */
                 MACRO_CALL_MEMBER(
                     OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY, DAT_ViewportRenderState::ptr)();
-            } else {
-                MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::ViewportRenderState_Func::setupMouseTileXY2, DAT_ViewportRenderState::ptr)();
             }
-            if (DAT_MouseState::instance.leftClickStart == 0) {
+            if (DAT_MouseState::instance.leftClickStart != 0) {
+                DAT_TileMapState::instance.dragStartX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
+                DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
+            } else {
                 if ((DAT_MouseState::instance.draggingStopped == FALSE)
                     && (DAT_MouseState::instance.leftClickState == FALSE)) {
                     if (DAT_ScrollingHandler::instance.isScrolling_0x0 != FALSE) {
@@ -72,9 +75,6 @@ namespace UI {
                     DAT_TileMapState::instance.dragEndX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
                     DAT_TileMapState::instance.dragEndY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
                 }
-            } else {
-                DAT_TileMapState::instance.dragStartX = DAT_ViewportRenderState::instance.viewportState.mouseTileX;
-                DAT_TileMapState::instance.dragStartY = DAT_ViewportRenderState::instance.viewportState.mouseTileY;
             }
             DAT_TileMapState::instance.buildingPlacementFailReason
                 = OpenSHC::Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE;
