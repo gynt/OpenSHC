@@ -45,7 +45,7 @@ namespace UI {
             dword id;
             int iVar8;
             int bottom;
-            char local_3f4[0x3f4];
+            char local_3f4[0x3f0];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(0,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
