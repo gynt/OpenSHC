@@ -29091,7 +29091,7 @@ SHC_3BB0A8C1_0x004BA8B0 | 22.9% | loop shape
 
 SHC_3BB0A8C1_0x004BA910 | 25.7% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004BA980 | 53.8% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004BA980 | 54.5% | inlined shared tail
 
 SHC_3BB0A8C1_0x004BAC20 | 59.4% | Reimplemented, asm differs
 

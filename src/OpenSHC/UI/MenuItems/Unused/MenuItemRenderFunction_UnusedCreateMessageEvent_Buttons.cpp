@@ -103,7 +103,11 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
                 color = 0xccfaff;
-                goto LAB_004babe5;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_SCENARIO, textNumInGroup,
+                    (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                    OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE);
+                return;
             }
             if (DAT_MapPropertiesState::instance.field69_0x13590 == 4) {
                 if ((((param_1 < 0xd) || (1000 < param_1))
@@ -158,7 +162,6 @@ namespace UI {
             } else {
                 color = 0xccfaff;
             }
-        LAB_004babe5:
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_SCENARIO, textNumInGroup,
                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
