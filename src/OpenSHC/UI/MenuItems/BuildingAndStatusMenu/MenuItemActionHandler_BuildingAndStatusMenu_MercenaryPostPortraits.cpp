@@ -88,8 +88,8 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                         (char const*)((int)DAT_UIButtonDefinedData::instance.ButtonGmDataArray + param_1 * 0x20
                             + 0x3f38));
-                    TIME_ClickedMercUnitTypeMoment::instance = _now;
                     DAT_ClickedMercUnitType::instance = param_1;
+                    TIME_ClickedMercUnitTypeMoment::instance = _now;
                     return;
                 }
                 if (DAT_UnitsState::instance.euroUnitAcquisitionFailReason == 1) {
