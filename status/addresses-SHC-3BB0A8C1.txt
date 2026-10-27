@@ -25921,7 +25921,7 @@ SHC_3BB0A8C1_0x004AF820 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004AF840 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004AF860 | 78.7% | both loop sums spilled in original
+SHC_3BB0A8C1_0x004AF860 | 78.7% | alloc bound, loop form settled
 
 SHC_3BB0A8C1_0x004AFA50 | 0.0% | Pending
 
@@ -25935,7 +25935,7 @@ SHC_3BB0A8C1_0x004AFDA0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004AFE10 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004B0390 | 62.0% | shared epilogue, reg naming
+SHC_3BB0A8C1_0x004B0390 | 62.0% | one spilled local, alloc bound
 
 SHC_3BB0A8C1_0x004B07C0 | 94.3% | Reimplemented, asm differs
 
@@ -26003,7 +26003,7 @@ SHC_3BB0A8C1_0x004B1EB0 | 98.1% | lea operand order only
 
 SHC_3BB0A8C1_0x004B20B0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004B2280 | 70.9% | one extra stack slot left
+SHC_3BB0A8C1_0x004B2280 | 70.9% | LTCG keeps edx across a call
 
 SHC_3BB0A8C1_0x004B2530 | 99.5% | separate call sites, early ret
 
