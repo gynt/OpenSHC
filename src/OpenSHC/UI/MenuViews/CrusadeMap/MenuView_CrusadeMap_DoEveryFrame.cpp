@@ -174,22 +174,22 @@ namespace UI {
                             }
                         }
                         if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] != -0x4b0) {
-                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                             iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
                             iVar11 = (OpenSHC::DE::SHCDE::eGM)(DAT_MissionDefinedData::instance
                                                                    .SkirmishTrailIconOffsets[dVar9]
                                 + 0x21 + (int)local_4);
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                 | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
+                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                         } else {
-                            DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
-                            iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
-                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][2]
-                                + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
-                            DAT_CurrentlyRenderedSpriteID::instance
-                                = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][0];
                             iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
                                 + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
+                            DAT_CurrentlyRenderedSpriteID::instance
+                                = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][0];
+                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][2]
+                                + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
+                            iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
+                            DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -248,13 +248,13 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, TRUE, 0);
-                iVar14 = 0;
-                BVar19 = TRUE;
-                iVar13 = 0x10;
-                BVar17 = 0xccfaff;
-                TVar16 = OpenSHC::Text::TTA_LEFT;
-                iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10;
                 iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x10;
+                iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10;
+                TVar16 = OpenSHC::Text::TTA_LEFT;
+                BVar17 = 0xccfaff;
+                iVar13 = 0x10;
+                BVar19 = TRUE;
+                iVar14 = 0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
