@@ -75,8 +75,8 @@ namespace UI {
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1360x768) {
             posX = posX + -0x118;
         }
-        DAT_00df4290::instance = iVar4 + 0x10;
         int iVar3 = iVar4 / 2;
+        DAT_00df4290::instance = iVar4 + 0x10;
         int iVar1 = posX + 10 + iVar3;
         int left = iVar1 - iVar3;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
