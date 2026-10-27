@@ -92,11 +92,45 @@ class Image(object):
         return None
 
 
+_TABLE = re.compile(r'\[\w+\*4 \+ (0x[0-9a-f]+)\]')
+
+
+def jump_table(image, ops, lo, hi):
+    """Targets of a switch's `jmp dword ptr [reg*4 + TABLE]`, or [] if this is not one.
+
+    MSVC emits the table just past the function's last instruction, and for a sparse switch
+    puts a byte index table after it, so the dword entries are followed only while they point
+    back inside [lo, hi] - the first value that does not is the next table's data.
+    """
+    m = _TABLE.search(ops)
+    if not m:
+        return []
+    off = image.offset(int(m.group(1), 16))
+    if off is None:
+        return []
+    out = []
+    for i in range(256):
+        if off + 4 * i + 4 > len(image.data):
+            break
+        t = struct.unpack_from('<I', image.data, off + 4 * i)[0]
+        if not (lo <= t <= hi):
+            break
+        out.append(t)
+    return out
+
+
 def find_end(image, start, limit=0x4000):
     """First address past the function.
 
     Walks forward tracking the furthest forward branch target and stops at the first `ret` or
     `jmp` at or beyond it, because nothing branches over the end of a function.
+
+    A switch's `jmp dword ptr [reg*4 + TABLE]` names no target in its operands, so without
+    reading the table the first `ret` after the dispatch looks like the end and every case arm
+    is lost: `MenuItemActionHandler_General_CreateEventCallbackFunction` detected 20
+    instructions of 663 that way, which made `structural_diff.py` report 660 missing
+    instructions that are really there. The table's entries are forward targets like any other,
+    so they go into `furthest` too.
     """
     md = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
     off = image.offset(start)
@@ -108,6 +142,10 @@ def find_end(image, start, limit=0x4000):
             target = int(ins.op_str, 16)
             if target > furthest:
                 furthest = target
+        elif canon(ins.mnemonic) == 'jmp':
+            for target in jump_table(image, ins.op_str, start, start + limit):
+                if target > furthest:
+                    furthest = target
         if canon(ins.mnemonic) in ('ret', 'jmp') and ins.address >= furthest:
             return ins.address + ins.size
     return None

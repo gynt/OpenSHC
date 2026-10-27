@@ -64,6 +64,33 @@ def num(m):
     return 'G' if v >= 0x400000 else hex(v)
 
 
+def jump_table(ops, lo, hi):
+    """Targets of a switch's `jmp dword ptr [reg*4 + TABLE]`, or [] if this is not one.
+
+    An indirect dispatch names no target in its operands, so without reading the table the
+    first `ret` after it looks like the end of the function and every case arm is lost -
+    MenuItemActionHandler_General_CreateEventCallbackFunction came out 20 instructions of 663
+    that way, which is why a jump-table function could never be triaged with this tool. MSVC
+    puts the table just past the last instruction, and for a sparse switch a byte index table
+    after that, so entries are followed only while they point back inside the body.
+    """
+    m = re.search(r'\[\w+\*4 \+ (0x[0-9a-f]+)\]', ops)
+    if not m:
+        return []
+    o = off(int(m.group(1), 16))
+    if o is None:
+        return []
+    out = []
+    for k in range(256):
+        if o + 4 * k + 4 > len(d):
+            break
+        t = int.from_bytes(d[o + 4 * k:o + 4 * k + 4], 'little')
+        if not (lo <= t <= hi):
+            break
+        out.append(t)
+    return out
+
+
 def orig(va):
     o = off(va)
     res = []
@@ -86,7 +113,9 @@ def orig(va):
                 else:
                     s = i.mnemonic + ' F'
             except ValueError:
-                pass
+                if i.mnemonic == 'jmp':
+                    for t in jump_table(i.op_str, va, va + 20000):
+                        maxtarget = max(maxtarget, t)
         else:
             s = re.sub(r'0x[0-9a-f]+|\b\d+\b', num, s)
             s = re.sub(r'(\w+) [+] G\b', r'\1 + G', s)
