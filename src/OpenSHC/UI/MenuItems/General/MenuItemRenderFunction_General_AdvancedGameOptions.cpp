@@ -114,8 +114,8 @@ namespace UI {
                 }
             }
             if (param_1 == 0x1f) {
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 iVar2 = DAT_GameSynchronyState::instance.skirmishTechLevel / 2;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
                 /*
                   "Tech Level"
                  */
@@ -437,8 +437,8 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.skirmishExtremeMode2 != 0)
                     goto LAB_00428ffd;
             }
-            iVar1 = DAT_ButtonW::instance + -0x32 + DAT_ButtonX::instance;
             iVar2 = 0xd0;
+            iVar1 = DAT_ButtonW::instance + -0x32 + DAT_ButtonX::instance;
         LAB_00429039:
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             MACRO_CALL_MEMBER(
