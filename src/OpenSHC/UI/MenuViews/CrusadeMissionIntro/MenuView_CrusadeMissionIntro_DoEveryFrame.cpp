@@ -85,56 +85,41 @@ namespace UI {
             _textX_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 if (0x13 < DAT_GameCore::instance.extremeTrailProgress) {
-                    _offset = 0;
-                    BVar14 = FALSE;
-                    iVar13 = 0x10;
-                    BVar12 = 0xccfaff;
-                    TVar10 = OpenSHC::Text::TTA_CENTER;
-                    iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                    iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
                     /*
                       added by script: "Crusader Trail Completed!"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
-                        iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32, OpenSHC::Text::TTA_CENTER,
+                        0xccfaff, 0x10, FALSE, 0);
                     return;
                 }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 if (0x1d < (int)DAT_GameCore::instance.warchestTrailProgress) {
-                    _offset = 0;
-                    BVar14 = FALSE;
-                    iVar13 = 0x10;
-                    BVar12 = 0xccfaff;
-                    TVar10 = OpenSHC::Text::TTA_CENTER;
-                    iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                    iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
                     /*
                       added by script: "Crusader Trail Completed!"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
-                        iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32, OpenSHC::Text::TTA_CENTER,
+                        0xccfaff, 0x10, FALSE, 0);
                     return;
                 }
             } else if ((DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION)
                 && (0x31 < (int)DAT_GameCore::instance.skirmishTrailProgress)) {
-                _offset = 0;
-                BVar14 = FALSE;
-                iVar13 = 0x10;
-                BVar12 = 0xccfaff;
-                TVar10 = OpenSHC::Text::TTA_CENTER;
-                iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32;
-                iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
                 /*
                   added by script: "Crusader Trail Completed!"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
-                    iVar4, iVar1, TVar10, BVar12, iVar13, BVar14, _offset);
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x32, OpenSHC::Text::TTA_CENTER, 0xccfaff,
+                    0x10, FALSE, 0);
                 return;
             }
             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x20;
