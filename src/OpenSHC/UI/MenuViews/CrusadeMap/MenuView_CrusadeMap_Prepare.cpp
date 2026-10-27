@@ -51,10 +51,8 @@ namespace UI {
             DAT_SkirmishTrailRelated1::instance = 3;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
                 iVar1 = 0;
-                if (DAT_GameCore::instance.furthestSkirmishTrailMission < 1) {
-                    DAT_SkirmishTrailRelated1::instance = 3;
-                    INT_00ed2bdc::instance = 0;
-                }
+                if (DAT_GameCore::instance.furthestSkirmishTrailMission < 1)
+                    goto LAB_004d8de3;
                 do {
                     if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
                         DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
@@ -63,36 +61,31 @@ namespace UI {
                 } while (iVar1 < DAT_GameCore::instance.furthestSkirmishTrailMission);
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 iVar1 = 0;
-                if (DAT_GameCore::instance.furthestWarchestTrailMission < 1) {
-                    DAT_SkirmishTrailRelated1::instance = 3;
-                    INT_00ed2bdc::instance = 0;
-                }
+                if (DAT_GameCore::instance.furthestWarchestTrailMission < 1)
+                    goto LAB_004d8de3;
                 do {
                     if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
                         DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestWarchestTrailMission);
-            } else {
-                if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME) {
-                    DAT_SkirmishTrailRelated1::instance = 3;
-                    INT_00ed2bdc::instance = 0;
-                }
+            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 iVar1 = 0;
-                if (DAT_GameCore::instance.furthestExtremeTrailMission < 1) {
-                    DAT_SkirmishTrailRelated1::instance = 3;
-                    INT_00ed2bdc::instance = 0;
-                }
+                if (DAT_GameCore::instance.furthestExtremeTrailMission < 1)
+                    goto LAB_004d8de3;
                 do {
                     if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
                         DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestExtremeTrailMission);
+            } else {
+                goto LAB_004d8de3;
             }
             if ((int)DAT_SkirmishTrailRelated1::instance < 0) {
                 DAT_SkirmishTrailRelated1::instance = 0;
             }
+        LAB_004d8de3:
             INT_00ed2bdc::instance = 0;
         }
 
