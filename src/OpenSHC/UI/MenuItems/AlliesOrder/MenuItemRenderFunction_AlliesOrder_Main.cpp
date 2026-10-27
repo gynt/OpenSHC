@@ -128,8 +128,8 @@ namespace UI {
                 return;
             }
         LAB_004ad69c:
-            iVar2 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
+            iVar2 = DAT_ButtonY::instance;
             if (DAT_00df5200::instance != (eTextSections)0) {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(
