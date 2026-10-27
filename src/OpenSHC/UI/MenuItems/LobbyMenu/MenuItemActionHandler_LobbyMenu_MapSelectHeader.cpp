@@ -204,7 +204,7 @@ namespace UI {
                     if (iVar2 == 0)
                         break;
                     iVar8 = iVar8 + 1;
-                    if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber <= iVar8) {
+                    if (iVar8 >= (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber) {
                         return;
                     }
                 }
