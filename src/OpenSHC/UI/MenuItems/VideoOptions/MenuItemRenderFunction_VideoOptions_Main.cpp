@@ -57,27 +57,17 @@ namespace UI {
                     (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
                 return;
             }
-            if (param_1 < 0) {
-                if (param_1 == -3) {
-                    /*
-                      the original dispatches with a `sub eax, K; je` chain (0x4925be),
-                      MSVC's sparse switch, whose arms are written in the reverse of the
-                      test order
-                     */
-                    switch (DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
-                    case 2:
-                        param_1 = 0x13;
-                        break;
-                    case 1:
-                        param_1 = 0x15;
-                        break;
-                    case 0:
-                        param_1 = 0x14;
-                        break;
-                    default:
-                        return;
-                    }
-                } else {
+            if (param_1 >= 0) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                    AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                yParam = DAT_ButtonY::instance + 7;
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    color = 0xc2f0eb;
+                    goto LAB_00492602;
+                }
+            } else {
+                if (param_1 != -3) {
                     if (param_1 != -2) {
                         if (param_1 != -1) {
                             return;
@@ -190,18 +180,28 @@ namespace UI {
                     default:
                         return;
                     }
+                } else {
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x4925be),
+                      MSVC's sparse switch, whose arms are written in the reverse of the
+                      test order
+                     */
+                    switch (DAT_MenuTextInputState::instance.menuScrollSpeedSetting) {
+                    case 2:
+                        param_1 = 0x13;
+                        break;
+                    case 1:
+                        param_1 = 0x15;
+                        break;
+                    case 0:
+                        param_1 = 0x14;
+                        break;
+                    default:
+                        return;
+                    }
                 }
                 yParam = DAT_ButtonY::instance + 7;
                 iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            } else {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                    AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 7;
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    color = 0xc2f0eb;
-                    goto LAB_00492602;
-                }
             }
             color = 0xccfaff;
         LAB_00492602:
