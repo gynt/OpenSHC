@@ -31,8 +31,8 @@ namespace UI {
             int yParam;
             eTextSections offsetIndex;
             int numInGroup;
-            offsetIndex = ((eTextSections)0);
             numInGroup = 0;
+            offsetIndex = ((eTextSections)0);
             switch (param_1) {
             case 1:
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
