@@ -37,10 +37,10 @@ namespace UI {
                     } else {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 0;
                     }
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = _allyID;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam3
                         = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam4 = param_1;
-                    DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = _allyID;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_SEND_PLAYER_TO_PLAYER_REQUEST);
                     if (param_1 == 10)
