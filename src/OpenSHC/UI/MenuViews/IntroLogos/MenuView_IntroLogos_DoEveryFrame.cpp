@@ -37,7 +37,6 @@ namespace UI {
             DWORD _currentTime;
             int _yParam;
             int _introStepDuration;
-            MenuViewType _menuID;
             int _xPos;
             if ((int)DAT_IntroStep::instance < 2) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
@@ -78,7 +77,7 @@ namespace UI {
                      */
                     _introStepDuration = 6000;
                 }
-                if (_introStepDuration < (int)(_currentTime - DAT_IntroTimestamp::instance)) {
+                if ((int)(_currentTime - DAT_IntroTimestamp::instance) > _introStepDuration) {
                     DAT_IntroTransitionStep::instance = 2;
                     DAT_IntroTimestamp::instance = timeGetTime();
                 }
@@ -89,16 +88,18 @@ namespace UI {
                     DAT_IntroTransitionStep::instance = DAT_IntroStep::instance;
                     DAT_IntroBlendStrength::instance = DAT_IntroStep::instance;
                     DAT_IntroStep::instance = 1;
-                    _menuID = OpenSHC::UI::Enums::MVT_INTRO_LOGOS;
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
                 } else if (DAT_IntroStep::instance == 1) {
                     DAT_IntroTransitionStep::instance = 0;
                     DAT_IntroBlendStrength::instance = 0;
                     DAT_IntroStep::instance = 2;
-                    _menuID = OpenSHC::UI::Enums::MVT_INTRO_LOGOS;
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_INTRO_LOGOS, 0);
                 } else {
-                    _menuID = OpenSHC::UI::Enums::MVT_INTRO_VIDEO;
+                    MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                        OpenSHC::UI::Enums::MVT_INTRO_VIDEO, 0);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(_menuID, 0);
             }
             if (0x20 <= (int)DAT_IntroBlendStrength::instance) {
                 return;
