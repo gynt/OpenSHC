@@ -42,18 +42,17 @@ namespace UI {
                             int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + playerByteOffset + 4)],
                         0x11, FALSE, 0);
                     if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
-                        int halfWidth = width / 2;
-                        int barX = halfWidth + x;
+                        int barX = width / 2 + x;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                             DAT_PencilRenderCore::ptr)(barX + -1, rowOffsetY + 0x52 + y, width + -0x13 + x,
                             rowOffsetY + 99 + y, (ushort)(COL_BLACK::instance.shortValue));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                             DAT_PencilRenderCore::ptr)(barX, rowOffsetY + 0x53 + y,
-                            ((halfWidth + -0x14)
+                            ((width / 2 + -0x14)
                                 * *(int*)((int)DAT_GameSynchronyState::instance.mapSendingByteBufferAddress
                                     + playerByteOffset + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
-                                + halfWidth + x,
+                                + width / 2 + x,
                             rowOffsetY + 0x62 + y, (ushort)(COL_DARK_LIME::instance.shortValue));
                     }
                     rowOffsetY = rowOffsetY + 0x1e;
