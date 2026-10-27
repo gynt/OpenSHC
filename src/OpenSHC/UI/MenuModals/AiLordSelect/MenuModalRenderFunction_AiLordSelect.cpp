@@ -57,10 +57,11 @@ namespace UI {
                         DAT_LobbyAddAICurrentlyHoveredAI::instance * 9 + 0xe6),
                     textX, yPos, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
                 yPos = yPos + 0x1e;
+                int const descOffset = DAT_LobbyAddAICurrentlyHoveredAI::instance + 384;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, DAT_LobbyAddAICurrentlyHoveredAI::instance + 384),
+                        OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, descOffset),
                     textX, yPos, 0x236, 0xccfaff, 0x12, 0);
             }
         }
