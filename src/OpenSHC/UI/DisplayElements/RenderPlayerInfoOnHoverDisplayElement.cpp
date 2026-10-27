@@ -142,21 +142,23 @@ namespace UI {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                 OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, DAT_00df5530::instance + 0x222, iconX, iconY);
-            if (aiIndex != 0) {
+            if (aiIndex == 0) {
+                if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21b, iconX, iconY);
+                } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 1) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21c, iconX, iconY);
+                } else if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, iconX, iconY);
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
+                        DAT_TextureRenderCoreObject::ptr)(DAT_00df5530::instance + 0x13, iconX + 4, posY + -0x22);
+                }
+            } else {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                     OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, aiIndex + 0x20a, iconX, iconY);
-            } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21b, iconX, iconY);
-            } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 1) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21c, iconX, iconY);
-            } else if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, iconX, iconY);
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
-                    DAT_TextureRenderCoreObject::ptr)(DAT_00df5530::instance + 0x13, iconX + 4, posY + -0x22);
             }
             int playerGroup = DAT_GameState::instance.mapAndTime.playerGroupArray[DAT_00df5530::instance];
             if (playerGroup <= 0)
@@ -176,25 +178,27 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
                 DAT_00df5530::instance + 0x222, iconX, iconY, (int)(blendStrength));
-            if (aiIndex != 0) {
+            if (aiIndex == 0) {
+                if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21b, iconX, iconY, (int)(blendStrength));
+                } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 1) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21c, iconX, iconY, (int)(blendStrength));
+                } else if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21d, iconX, iconY, (int)(blendStrength));
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFaceWithBlendUnk,
+                        DAT_TextureRenderCoreObject::ptr)(
+                        DAT_00df5530::instance + 0x13, iconX + 4, posY + -0x22, (int)(blendStrength));
+                }
+            } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(
                     OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, aiIndex + 0x20a, iconX, iconY, (int)(blendStrength));
-            } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 0) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(
-                    OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21b, iconX, iconY, (int)(blendStrength));
-            } else if (DAT_GameCore::instance.lordIcons[DAT_00df5530::instance] == 1) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(
-                    OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21c, iconX, iconY, (int)(blendStrength));
-            } else if (0 < DAT_TextureRenderCoreObject::instance.bitmapFaceSizes[DAT_00df5530::instance + 0x13]) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(
-                    OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x21d, iconX, iconY, (int)(blendStrength));
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawBitmapFaceWithBlendUnk,
-                    DAT_TextureRenderCoreObject::ptr)(
-                    DAT_00df5530::instance + 0x13, iconX + 4, posY + -0x22, (int)(blendStrength));
             }
             int playerGroup = DAT_GameState::instance.mapAndTime.playerGroupArray[DAT_00df5530::instance];
             if (playerGroup <= 0)
