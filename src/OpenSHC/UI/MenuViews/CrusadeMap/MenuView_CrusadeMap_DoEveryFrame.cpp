@@ -62,7 +62,6 @@ namespace UI {
             int iVar12;
             int iVar13;
             int iVar14;
-            bool bVar15;
             TextAlignment TVar16;
             BGR24 BVar17;
             eGM eVar18;
@@ -98,12 +97,11 @@ namespace UI {
             }
             if (0 < INT_00eb9b48::instance) {
                 iVar8 = ((DVar3 - DWORD_00ed27a8::instance) / 0x28);
-                if (iVar8 <= 0x2c) {
-                    if (iVar8 <= 0x24)
-                        goto LAB_004de3ed;
-                } else {
+                if (0x2c < iVar8) {
                     INT_00eb9b48::instance = 0;
                     DWORD_00ed27a8::instance = timeGetTime();
+                } else if (iVar8 <= 0x24) {
+                    goto LAB_004de3ed;
                 }
                 iVar8 = 0x24;
             }
@@ -175,7 +173,15 @@ namespace UI {
                                     iVar8 + 0x39, iVar11 + iVar12, iVar6 + -0x1a + iVar14);
                             }
                         }
-                        if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
+                        if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] != -0x4b0) {
+                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
+                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
+                            iVar11 = (OpenSHC::DE::SHCDE::eGM)(DAT_MissionDefinedData::instance
+                                                                   .SkirmishTrailIconOffsets[dVar9]
+                                + 0x21 + (int)local_4);
+                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
+                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
+                        } else {
                             DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
                             iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
                             iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][2]
@@ -185,14 +191,6 @@ namespace UI {
                             iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
                                 + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
-                        } else {
-                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
-                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
-                            iVar11 = (OpenSHC::DE::SHCDE::eGM)(DAT_MissionDefinedData::instance
-                                                                   .SkirmishTrailIconOffsets[dVar9]
-                                + 0x21 + (int)local_4);
-                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
-                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(eVar18, iVar11, iVar7 + iVar12, iVar6 + iVar14);
@@ -303,7 +301,22 @@ namespace UI {
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, TRUE, 0);
-                bVar15 = DAT_GameCore::instance.furthestSkirmishTrailMission == 0x32;
+                if (DAT_GameCore::instance.furthestSkirmishTrailMission == 0x32) {
+                    iVar14 = 0;
+                    BVar19 = FALSE;
+                    iVar13 = 0x12;
+                    BVar17 = 0xccfaff;
+                    TVar16 = OpenSHC::Text::TTA_CENTER;
+                    iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x23e;
+                    iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xdc;
+                    /*
+                      added by script: "Crusader Trail Completed!"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
+                }
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 dVar9 = 0;
                 if (0 < DAT_GameCore::instance.furthestWarchestTrailMission) {
@@ -339,7 +352,12 @@ namespace UI {
                                     + iVar14);
                         }
                         iVar11 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1];
-                        if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
+                        if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[dVar9] != -0x4b0) {
+                            iVar13 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0];
+                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9] + 0x21;
+                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
+                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
+                        } else {
                             iVar11 = iVar11 + local_4[1];
                             DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 + -2))[0];
                             iVar13
@@ -347,11 +365,6 @@ namespace UI {
                             iVar6 = local_4[-1];
                             DAT_RenderedUnitOwner::instance = 0;
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
-                        } else {
-                            iVar13 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0];
-                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9] + 0x21;
-                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
-                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(eVar18, iVar6, iVar13 + iVar12, iVar11 + iVar14);
@@ -463,12 +476,23 @@ namespace UI {
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, TRUE, 0);
-                bVar15 = DAT_GameCore::instance.furthestWarchestTrailMission == 0x1e;
-            } else {
-                if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME) {
-                    DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                        = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                if (DAT_GameCore::instance.furthestWarchestTrailMission == 0x1e) {
+                    iVar14 = 0;
+                    BVar19 = FALSE;
+                    iVar13 = 0x12;
+                    BVar17 = 0xccfaff;
+                    TVar16 = OpenSHC::Text::TTA_CENTER;
+                    iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x23e;
+                    iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xdc;
+                    /*
+                      added by script: "Crusader Trail Completed!"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
                 }
+            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 iVar13 = 0;
                 if (0 < DAT_GameCore::instance.furthestExtremeTrailMission) {
                     local_4 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[0] + 2;
@@ -503,7 +527,12 @@ namespace UI {
                                     + iVar14);
                         }
                         iVar6 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1];
-                        if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar13] == -0x4b0) {
+                        if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar13] != -0x4b0) {
+                            drawX = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12;
+                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[iVar13] + 0x21;
+                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
+                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
+                        } else {
                             iVar6 = iVar6 + local_4[1];
                             DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 + -2))[0];
                             drawX = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12
@@ -511,11 +540,6 @@ namespace UI {
                             iVar7 = local_4[-1];
                             DAT_RenderedUnitOwner::instance = 0;
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
-                        } else {
-                            drawX = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12;
-                            iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[iVar13] + 0x21;
-                            eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
-                                | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(eVar18, iVar7, drawX, iVar6 + iVar14);
@@ -626,23 +650,22 @@ namespace UI {
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, TRUE, 0);
-                bVar15 = DAT_GameCore::instance.furthestExtremeTrailMission == 0x1e;
-            }
-            if (bVar15) {
-                iVar14 = 0;
-                BVar19 = FALSE;
-                iVar13 = 0x12;
-                BVar17 = 0xccfaff;
-                TVar16 = OpenSHC::Text::TTA_CENTER;
-                iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x23e;
-                iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xdc;
-                /*
-                  added by script: "Crusader Trail Completed!"
-                 */
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
-                    iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
+                if (DAT_GameCore::instance.furthestExtremeTrailMission == 0x1e) {
+                    iVar14 = 0;
+                    BVar19 = FALSE;
+                    iVar13 = 0x12;
+                    BVar17 = 0xccfaff;
+                    TVar16 = OpenSHC::Text::TTA_CENTER;
+                    iVar11 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x23e;
+                    iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xdc;
+                    /*
+                      added by script: "Crusader Trail Completed!"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE, 6),
+                        iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
+                }
             }
         }
 
