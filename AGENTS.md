@@ -207,7 +207,20 @@ walking pointer to `int*`, because collapsing `SiegeUnitCounts` or `StartingReso
 
 `reorder_search.py FILE NAME` hill-climbs the match % by reordering independent statements,
 which is the only lever left once a function is `alloc-only`; it pays about one move in ten, and mostly where the
-statements sit between two calls or on a loop back-edge.
+statements sit between two calls or on a loop back-edge. On per-frame menu rendering it does far better than that
+rate, because nearly every statement in such a function sits between two draw calls: across the 39 sub-100%
+functions of `UI::MenuViews` it paid on 6, twice for more than two points (`MenuView_CrusadeMap_DoEveryFrame`
++2.9 over four kept moves, `MenuView_SingleplayerMapChoice_DoEveryFrame` +2.8 on one), and it took
+`MenuView_EditScenario_DoEveryFrame` from 99.2% to **100%** by moving a single `drawBufferChoiceValue` store above
+the four coordinates Ghidra had emitted before it. Run it over a whole namespace once the structural work is done;
+the functions it finds nothing in are the ones whose diff is a whole-register permutation rather than a live-range
+difference, and those are genuinely finished.
+
+Narrowing `cmake/openshc-sources.txt.local` for it is not as simple as "put only the one file in": a file's
+function resolvers reference the other entry points of its own class, and sometimes of another class entirely
+(`GameStartEnterName` references `MainMenu`'s three), so a one-file list dies at link time with `LNK2019` and
+`reorder_search.py` then reports `baseline build failed` and skips the function. Narrow to the target's folder,
+and on a failure read the namespaces out of the unresolved-symbol names and add their folders too.
 
 ### Binary Comparison (`reccmp`)
 
