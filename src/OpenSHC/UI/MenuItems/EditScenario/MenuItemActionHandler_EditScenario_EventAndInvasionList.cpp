@@ -27,9 +27,9 @@ namespace UI {
                 int iVar1 = DAT_MapPropertiesState::instance.eventListScrollOffset + param_1;
                 if (iVar1 < DAT_MapPropertiesState::instance.eventsCount) {
                     DAT_MapPropertiesState::instance.eventListSelection = param_1;
+                    DAT_MapPropertiesState::instance.currentEventID = iVar1;
                     DAT_MapPropertiesState::instance.editedEventType
                         = DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.tl_type;
-                    DAT_MapPropertiesState::instance.currentEventID = iVar1;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
                     MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_10, "%d",
