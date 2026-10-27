@@ -494,6 +494,38 @@ Diff patterns that were reliable (more in the cheat sheet):
   - **A `case` that only prepares a value and falls through into `default:`.** That is what a
     DUPLICATION run of a whole call tail means. Move the arm to just before `default:` so
     `default:` stays last and the two-level jump table survives.
+- **Where `structural_diff.py` says the original computes a run N times and we compute it 0, the
+  decompiler's `color`/`uVar`/`blendStrength` locals have shared a render call the original wrote
+  out per arm.** The menu render functions are full of `if (interacting == FALSE) { color = A; }
+  else { color = B; }` ahead of one call; the original instead pushes its own colour in each arm
+  and jumps into a shared tail holding the last few pushes and the `call`. Unsharing both such
+  pairs took `MenuItemRenderFunction_TraderSettings` 54.7% -> 74.2% and its instruction count
+  from 169 to exactly the original's 186, and recovered
+  `MenuItemRenderFunction_OptionsMenu_Buttons` and
+  `MenuItemRenderFunction_UnusedCreateSiege_SiegeThat` after a correctness fix had cost them.
+  It is not free in either direction - `MenuItemRenderFunction_SaveLoadMap_Buttons` lost 0.9
+  unshared and kept the shared form - so measure per function. Where a third path reaches the
+  same tail by `goto`, leave that path sharing and unshare only the arms. MSVC's own partial
+  cross-jump (each arm pushing, one shared `call`) is **not** expressible in C++98 without a
+  `goto`: the fully shared form comes out 12 instructions short of the original and the fully
+  duplicated one 16 long, so a few points there are simply unreachable.
+  The same signal also tells you which prefix to share. In `TraderSettings` the original shares
+  exactly `lea eax, [GMTotal + iVar1 - 1]` across the arms and recomputes the height divide in
+  each, so that index - and only that index - belongs in a local; hoisting the whole `y`
+  expression is sharing more than it did.
+- **An automated sweep put six behavioural bugs into `UI/MenuItems` because they gained match,
+  and they sat there through later passes.** The shape is a `return;` as the last statement of an
+  `else` arm that only assigns a colour, which makes the render below it unreachable - so an
+  interacting button draws no text at all. `git blame` traces every one to commit `8725ec523`,
+  whose own message says each change was kept where it measured better. The asm settles it
+  outright: `MenuItemRenderFunction_OptionsMenu_Buttons` ends that arm `push 2 / push 0 /
+  push 0x12 / push 0xccfaff / jmp -0x123` and `MenuItemRenderFunction_UnusedCreateSiege_SiegeThat`
+  ends it `jmp 0x3f` - both push their arguments and jump *into* the shared call, and neither
+  returns. Removing all six cost 0.11 of namespace average before unsharing bought most of it
+  back. Two lessons: a sweep that may change control flow has to be read as a diff and not only
+  measured, and `grep -A3` for an assignment of a colour literal followed by `return;` finds this
+  class in seconds. `MenuItemRenderFunction_EditScenario_BaseMenuButtons` even gained 0.2 from the
+  fix, so the match these bugs bought was not reliable either.
 - **`quick_diff.py` cannot price a switch-arm reorder, and will talk you into one.** The original's
   jump-table arms in `NonBoxedButtons` run (arg 0, no guard), (guard, arg 0), (guard, arg 1),
   (arg 1, no guard) where ours ran `case 1`..`case 4` first, so reordering to match looked like
