@@ -34,7 +34,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B2280
     void DisplayElements::RenderTimeUntilDefeatDisplayElement(int posX, int posY, DWORD elementState)
     {
-        BOOLEnum _stateNotZero;
         int local_c;
         if (DAT_GameCore::instance.section1095 == 2) {
             MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
@@ -79,9 +78,9 @@ namespace UI {
         }
         int iVar2 = iVar6 / 2;
         int iVar3 = posX + 10 + iVar2;
-        _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-            OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
-        if (_stateNotZero != FALSE) {
+        if (MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY)
+            != FALSE) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
 
@@ -106,17 +105,15 @@ namespace UI {
         int iVar5 = ((DAT_GameState::instance.mapAndTime.year * 0xc - _startMonths)
                         + DAT_GameState::instance.mapAndTime.month)
             * 800;
-        if (DAT_GameCore::instance.isTimeHalted == FALSE) {
-            _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-                OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
-            if (_stateNotZero == FALSE) {
-                local_c = iVar4 - DAT_GameState::instance.mapAndTime.week * 200
-                    - DAT_GameState::instance.gameTicksLoadBalancer - iVar5;
-                goto LAB_004b24b1;
-            }
+        if (DAT_GameCore::instance.isTimeHalted == FALSE
+            && MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                   OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO)
+                == FALSE) {
+            local_c = iVar4 - DAT_GameState::instance.mapAndTime.week * 200
+                - DAT_GameState::instance.gameTicksLoadBalancer - iVar5;
+        } else {
+            local_c = iVar4 - iVar5;
         }
-        local_c = iVar4 - iVar5;
-    LAB_004b24b1:
         if (local_c < 0) {
             local_c = 0;
         }
