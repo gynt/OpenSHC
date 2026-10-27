@@ -36,8 +36,8 @@ namespace UI {
         void General::MenuItemRenderFunction_General_MenuMiniMap(int param_1, ...)
         {
             BOOLEnum BVar5 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
-            int iVar4 = DAT_ButtonY::instance;
             int iVar3 = DAT_ButtonX::instance;
+            int iVar4 = DAT_ButtonY::instance;
             if (BVar5 == FALSE) {
                 int iVar7 = 0;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
