@@ -301,6 +301,34 @@ Diff patterns that were reliable (more in the cheat sheet):
 - `mov r, [x]; sub r, 1; je` inside a loop is a `switch` on `x`.
 - A tail call to the same callee from our code but a jump back to a shared block in the original means separate
   `if` branches with identical bodies, not a combined condition.
+- **The original pushes a literal where we `mov` it into a register first** means MSVC tail-merged a call we share
+  and the original wrote out. The fingerprint is a mnemonic table with `mov` too high and `push` too low, and
+  `structural_diff.py` (from `upstream/docs/msvc-stack-slot-order`) names it `DUPLICATION: the original computes
+  this run N time(s), we compute it 0`. The shape in the source is always the same: an `if`/`else` chain that
+  assigns one local, then a single shared call using it. Write the call out in **every** arm with the literal, and
+  delete the local. This was the most productive single pattern across `UI::MenuViews` - `MenuView_IntroLogos_DoEveryFrame`
+  88.0 -> 99.3 (three arms setting `_menuID` before one `switchToMenuView`), `MenuView_CrusadeEndscreen_Prepare`
+  97.7 -> 99.9 and `MenuView_MissionFinishedTransition_Prepare` 95.1 -> 99.0 (both norm 100), the three map-size
+  `DoEveryFrame` twins 72.6 -> 83.5 each (a shared `drawBorderBox` after a four-arm switch), and
+  `MenuView_RankingGames_DoEveryFrame` 55.3 -> 62.9. Duplicating often exposes a **polarity** flip in the arms it
+  separated, so re-read the report afterwards: the six language tests in `MenuView_CrusadeMap_DoEveryFrame` only
+  showed up as `POLARITY` once the `" A.D."` render had been written into both arms, and fixing them was worth
+  another 1.1 on top.
+  Two things it is *not*. Folding the arguments of an already-duplicated call back into the call text is the
+  opposite change and loses heavily (`kind` 0.843 -> 0.607 on `MenuView_CrusadeMap_DoEveryFrame`): where the
+  original holds a call's arguments in stack slots, the decompiler's one-local-per-argument form is right. And
+  hoisting a shared sub-expression into a named local can let MSVC merge the arms that were correct, which is how
+  three separate `renderTextToScreen` blocks in `MenuView_CrusadeMissionIntro_DoEveryFrame` collapsed into one and
+  lost 40 instructions.
+- `if (cond) {}` with an **empty body** in decompiled output is a dropped `goto` or `return`, never a no-op. Read the
+  original's jump target: in `MenuView_BuildMenu_DoInitial` two such guards both jumped to the epilogue, so they are
+  early `return`s, and restoring them took it 98.9 -> 99.8 at `delta 0`. Grep the namespace for `) {}` and for an
+  `if` whose next line is its own closing brace before concluding a function is finished.
+- A `bool` or `char` local that holds a field read emits the 0/1 normalisation (`setne al`, `add al, 1`) the original
+  does not. Where the original shows `mov r, [field]; test r, r` or a 32-bit `add r, 1`, the local is an `int`:
+  `MenuView_GameStartEnterName_DoEveryFrame` 82.8 -> 87.8 on one `bool`, and the `char` alive-player counter in
+  `MenuView_MissionFinishedTransition_Prepare` 85.8 -> 95.1. `diff_triage.py`'s `BYTE` column finds the `char` case;
+  the `bool` case needs a grep, since a `bool` local is one byte but the column only counts stack slots.
 - Callee-saved registers reused after a call without reload (`ecx`/`edx`) indicate LTCG (`cmake/compiler-flags-gl.txt`),
   not a source difference.
 - A mismatching argument count or `ret N` usually means the generated header is wrong; report it instead of working around it.
