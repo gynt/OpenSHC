@@ -53,7 +53,7 @@ namespace UI {
                                 * *(int*)((int)DAT_GameSynchronyState::instance.mapSendingByteBufferAddress
                                     + playerByteOffset + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
-                                + barX,
+                                + halfWidth + x,
                             rowOffsetY + 0x62 + y, (ushort)(COL_DARK_LIME::instance.shortValue));
                     }
                     rowOffsetY = rowOffsetY + 0x1e;

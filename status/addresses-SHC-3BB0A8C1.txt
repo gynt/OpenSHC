@@ -25783,7 +25783,7 @@ SHC_3BB0A8C1_0x004AC250 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004AC280 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004AC310 | 73.5% | barX spill, allocator
+SHC_3BB0A8C1_0x004AC310 | 77.7% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004AC440 | 32.9% | Style pass, asm differs
 
