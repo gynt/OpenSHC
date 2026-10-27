@@ -108,31 +108,8 @@ namespace UI {
                 local_20 = 0x96;
             }
             iVar4 = local_1c;
-            if (mapSize == 0xa0) {
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                    boxX + -0x4e, iVar4 + -0x4f, boxX + 0x4e, iVar4 + 0x4d, (ushort)(COL_BLACK::instance.shortValue));
-                iVar5 = iVar4 + 0x4e;
-                iVar2 = boxX + 0x4f;
-                iVar4 = iVar4 + -0x50;
-                iVar1 = boxX + -0x4f;
-            } else if (mapSize == 200) {
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                    boxX + -0x62, iVar4 + -99, boxX + 0x63, iVar4 + 99, (ushort)(COL_BLACK::instance.shortValue));
-                iVar5 = iVar4 + 100;
-                iVar2 = boxX + 0x64;
-                iVar4 = iVar4 + -100;
-                iVar1 = boxX + -0x63;
-            } else if (mapSize == 300) {
-                MACRO_CALL_MEMBER(
-                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                    boxX + -0x4b, iVar4 + -0x4b, boxX + 0x49, iVar4 + 0x4a, (ushort)(COL_BLACK::instance.shortValue));
-                iVar5 = iVar4 + 0x4b;
-                iVar2 = boxX + 0x4a;
-                iVar4 = iVar4 + -0x4c;
-                iVar1 = boxX + -0x4c;
-            } else {
+            switch (mapSize) {
+            default:
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                     boxX + -0x64, iVar4 + -100, boxX + 0x63, iVar4 + 100, (ushort)(COL_BLACK::instance.shortValue));
@@ -140,9 +117,42 @@ namespace UI {
                 iVar2 = boxX + 0x64;
                 iVar4 = iVar4 + -0x65;
                 iVar1 = boxX + -0x65;
-            }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 iVar1, iVar4, iVar2, iVar5, (ushort)(COL_BLACK::instance.shortValue));
+                break;
+            case 300:
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    boxX + -0x4b, iVar4 + -0x4b, boxX + 0x49, iVar4 + 0x4a, (ushort)(COL_BLACK::instance.shortValue));
+                iVar5 = iVar4 + 0x4b;
+                iVar2 = boxX + 0x4a;
+                iVar4 = iVar4 + -0x4c;
+                iVar1 = boxX + -0x4c;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                iVar1, iVar4, iVar2, iVar5, (ushort)(COL_BLACK::instance.shortValue));
+                break;
+            case 200:
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    boxX + -0x62, iVar4 + -99, boxX + 0x63, iVar4 + 99, (ushort)(COL_BLACK::instance.shortValue));
+                iVar5 = iVar4 + 100;
+                iVar2 = boxX + 0x64;
+                iVar4 = iVar4 + -100;
+                iVar1 = boxX + -0x63;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                iVar1, iVar4, iVar2, iVar5, (ushort)(COL_BLACK::instance.shortValue));
+                break;
+            case 0xa0:
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                    boxX + -0x4e, iVar4 + -0x4f, boxX + 0x4e, iVar4 + 0x4d, (ushort)(COL_BLACK::instance.shortValue));
+                iVar5 = iVar4 + 0x4e;
+                iVar2 = boxX + 0x4f;
+                iVar4 = iVar4 + -0x50;
+                iVar1 = boxX + -0x4f;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
+                iVar1, iVar4, iVar2, iVar5, (ushort)(COL_BLACK::instance.shortValue));
+            }
             iVar6 = iVar6 + local_20;
             iVar1 = iVar3 + -0xf;
             iVar5 = iVar6;
