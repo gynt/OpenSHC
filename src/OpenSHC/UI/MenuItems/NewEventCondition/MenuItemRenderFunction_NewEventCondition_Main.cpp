@@ -361,17 +361,17 @@ namespace UI {
                     == 0) {
                     return;
                 }
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
-                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
-                        (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
-                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), OpenSHC::UI::Enums::RBERL_SLIGHT);
-                } else {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
                         (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
                         (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), (ushort)(COL_BLUE::instance.shortValue),
                         OpenSHC::UI::Enums::RBERL_SLIGHT);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                        (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), OpenSHC::UI::Enums::RBERL_SLIGHT);
                 }
                 return;
             }
