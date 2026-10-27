@@ -162,9 +162,9 @@ namespace UI {
             if (DAT_MapMissionType::instance != 2) {
                 iVar7 = iVar8 + 0x8c;
             }
-            int right = iVar8 + 0x294;
-            int top = iVar4 + 0xfd;
             bottom = iVar4 + 0x216;
+            int top = iVar4 + 0xfd;
+            int right = iVar8 + 0x294;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(iVar7, top, right + -0x14, bottom,
                 ((((int)DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10) / 32) + 0x20);
