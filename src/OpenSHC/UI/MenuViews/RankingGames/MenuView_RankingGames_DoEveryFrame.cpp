@@ -238,9 +238,9 @@ namespace UI {
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar9 + 0x10f, iVar4);
                     }
-                    iVar14 = iVar14 + iVar8;
-                    local_84 = DAT_SkMasters2DataArray::instance[iVar2].array1[1];
                     local_b0 = 1;
+                    local_84 = DAT_SkMasters2DataArray::instance[iVar2].array1[1];
+                    iVar14 = iVar14 + iVar8;
                     if (local_84 == 0) {
                         local_84 = -1;
                     }
