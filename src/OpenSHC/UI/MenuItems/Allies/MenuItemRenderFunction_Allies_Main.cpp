@@ -54,8 +54,8 @@ namespace UI {
             int iVar7;
             eTextSections textOffsetIndex;
             int xParam;
-            int iVar2 = DAT_ButtonY::instance;
-            int iVar3 = DAT_ButtonX::instance;
+            int iVar2;
+            int iVar3;
             if (param_1 == 100) {
                 return;
             }
@@ -230,6 +230,8 @@ namespace UI {
             if (param_1 != 10) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
+            iVar2 = DAT_ButtonY::instance;
+            iVar3 = DAT_ButtonX::instance;
             iVar6 = 0;
             if (0 < (int)DAT_ButtonH::instance) {
                 do {
