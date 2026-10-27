@@ -29,8 +29,7 @@ namespace UI {
         int _loopAddressByteCounter;
         _lastGameTickRate = DAT_GameCore::instance.gameTicksThisLoop;
         _lastGameLoopDuration = DAT_GameLoopStopwatch::instance.duration_0x0;
-        DAT_GameLoopDurationBuffer::instance[INT_GameLoopTimeDataIndex::instance]
-            = DAT_GameLoopStopwatch::instance.duration_0x0;
+        DAT_GameLoopDurationBuffer::instance[INT_GameLoopTimeDataIndex::instance] = _lastGameLoopDuration;
         DAT_TickRateBuffer::instance[INT_GameLoopTimeDataIndex::instance] = _lastGameTickRate;
         INT_GameLoopTimeDataIndex::instance = INT_GameLoopTimeDataIndex::instance + 1;
         _tickRateSum = 0;

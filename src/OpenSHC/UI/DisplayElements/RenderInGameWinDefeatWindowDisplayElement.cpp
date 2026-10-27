@@ -115,7 +115,7 @@ namespace UI {
                     || (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_AMERICAN)) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(*textAddress, posX + -0x1c, iVar4, OpenSHC::Text::TTA_CENTER,
-                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x11, FALSE, 0);
+                        DAT_RenderingDefinedData::instance.ColorArray[*piVar5], 0, 0x11, FALSE, 0);
                     /*
                       added by script: "Wins"
                      */
@@ -124,12 +124,12 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
                         DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x16 + posX, iVar4,
-                        OpenSHC::Text::TTA_LEFT, (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0,
-                        0x11, FALSE, 0);
+                        OpenSHC::Text::TTA_LEFT, DAT_RenderingDefinedData::instance.ColorArray[*piVar5], 0, 0x11, FALSE,
+                        0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(*textAddress, posX + -0x4e, iVar4, OpenSHC::Text::TTA_CENTER,
-                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x12, FALSE, 0);
+                        DAT_RenderingDefinedData::instance.ColorArray[*piVar5], 0, 0x12, FALSE, 0);
                     /*
                       added by script: "Wins"
                      */
@@ -138,8 +138,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
                         DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x48 + posX, iVar4,
-                        OpenSHC::Text::TTA_LEFT, (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0,
-                        0x12, FALSE, 0);
+                        OpenSHC::Text::TTA_LEFT, DAT_RenderingDefinedData::instance.ColorArray[*piVar5], 0, 0x12, FALSE,
+                        0);
                 }
                 iVar4 = iVar4 + 0x1e;
             }
