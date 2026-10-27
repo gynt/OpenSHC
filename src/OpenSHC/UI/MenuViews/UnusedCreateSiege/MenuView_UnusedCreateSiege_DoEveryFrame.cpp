@@ -78,11 +78,11 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x + 0x30, DAT_MenuHandlerState::instance.y + 6, 0x2c0, 0x32);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if (DAT_BottomLeftTextDisplayState::instance.currentlyDisplayedTextIsDisplayedUnk == 0) {
-                iVar10 = 0;
-                iVar8 = 0x11;
-                color2 = 0;
-                color1 = 0xccfaff;
                 iVar5 = 0x1c8;
+                color1 = 0xccfaff;
+                color2 = 0;
+                iVar8 = 0x11;
+                iVar10 = 0;
                 iVar1 = DAT_MenuHandlerState::instance.y + 0x76;
                 iVar4 = DAT_MenuHandlerState::instance.x + 0x12;
                 DAT_TextManagerObject::instance.field9_0x24 = 1;
