@@ -58,12 +58,12 @@ namespace UI {
             case 0xf:
             case 0x14:
                 if ((param_1 != -4) || (DAT_TextEditorState::instance.helpSectionHistoryStack[0] != -1)) {
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        DAT_TextManagerObject::instance.textColor = 0;
-                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
-                    } else {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_TextManagerObject::instance.textColor = 0xff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
+                    } else {
+                        DAT_TextManagerObject::instance.textColor = 0;
+                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
@@ -250,13 +250,13 @@ namespace UI {
                 }
                 break;
             case 0x20:
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    DAT_TextManagerObject::instance.textColor = 0xffffff;
-                    DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
-                } else {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     DAT_TextManagerObject::instance.textColor = 0xff;
                     DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
                     return;
+                } else {
+                    DAT_TextManagerObject::instance.textColor = 0xffffff;
+                    DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                 }
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
                 case 1:
@@ -368,12 +368,12 @@ namespace UI {
                 case 3:
                 case 10:
                 case 0xc:
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        DAT_TextManagerObject::instance.textColor = 0xffffff;
-                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
-                    } else {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_TextManagerObject::instance.textColor = 0xff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
+                    } else {
+                        DAT_TextManagerObject::instance.textColor = 0xffffff;
+                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
@@ -408,13 +408,13 @@ namespace UI {
                 case 3:
                 case 10:
                 case 0xc:
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        DAT_TextManagerObject::instance.textColor = 0xffffff;
-                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
-                    } else {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_TextManagerObject::instance.textColor = 0xff;
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_WHITE::instance.shortValue;
                         return;
+                    } else {
+                        DAT_TextManagerObject::instance.textColor = 0xffffff;
+                        DAT_PencilRenderCore::instance.otherColorUnk_0x0 = COL_BLACK::instance.shortValue;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
