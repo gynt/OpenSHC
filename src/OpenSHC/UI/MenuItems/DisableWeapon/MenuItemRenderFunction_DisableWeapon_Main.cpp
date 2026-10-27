@@ -93,13 +93,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                /*
-                  the original jumps out of line on `== FALSE`, so the interacting
-                  arm is the one the source wrote first
-                 */
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     color = 0xccfaff;
-                    return;
                 } else {
                     color = 0xc2f0eb;
                 }
