@@ -349,6 +349,21 @@ Diff patterns that were reliable (more in the cheat sheet):
   to 100% once the mouse coordinate went first in their four bounds tests. Mind that it is per site and not per
   function: `MenuItemRenderFunction_LobbyMenu_PlayerListAndNpcButtons` has the same bounds test and *loses* 0.1 by
   flipping it.
+- **The arm order of an `if`/`else` is a second free lever, and it has paid better than any other.** Ghidra
+  picks the arm order from the jump it decompiled and picks it the wrong way round often: where the original
+  takes `je` over a `cmp` and we take `jne`, our source has put the original's fall-through arm in the `else`.
+  Inverting the operator and swapping the arms cannot change behaviour, so, like the operand-order flip, it is
+  safe to try at every site and keep per site - `swaparms.py` does that. Over `UI/MenuItems` 39 of 210 sites
+  paid on `quick_diff` and 25 confirmed on reccmp, worth about a point of namespace average on its own:
+  `MenuItemRenderFunction_ChooseNetworkServiceProvider_YourIpDisplay` 68.4% -> 97.5%,
+  `MenuItemRenderFunction_General_MenuMiniMap` 56.7% -> 83.9%,
+  `MenuItemRenderFunction_EditScenario_EventAndInvasionList` 57.5% -> 79.2%,
+  `MenuItemRenderFunction_MainMenu_Main` 66.9% -> 81.4%, `MenuItemRenderFunction_VideoOptions_Main` 68.7% -> 75.7%.
+  Ten of the hits were one shape: a `DAT_ButtonCurrentlyInteracting::instance == FALSE` guard over two render
+  calls differing only in the colour literal, where the original always falls through into the *interacting*
+  arm - so the decompiler inverted that guard systematically across the menu render functions rather than by
+  chance in one or two. Measure anyway: two sites that gained on `quick_diff` lost on reccmp
+  (`MenuItemRenderFunction_Allies_Main` 49.7% -> 46.9%).
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
