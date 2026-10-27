@@ -136,7 +136,7 @@ namespace UI {
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                         return;
                     }
-                    if (9 < iVar1 - 0x29U) {
+                    if (iVar1 > 9 - 0x29U) {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                         return;
