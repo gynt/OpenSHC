@@ -385,6 +385,26 @@ Diff patterns that were reliable (more in the cheat sheet):
   makes MSVC hold the parameter in `edi` and the tab-type global in `esi` - the opposite of the
   original - and every downstream register follows. Neither the operand-order flip nor a snapshot
   local for the global recovers it. Keep the correct bound and say so in the commit remark.
+- **Inlining a decompiler `goto` is now mechanical, and it mostly loses.** `inline_goto.py` replaces a
+  forward `goto LAB;` with a copy of the label's block plus `return;`, for the one safe shape where the
+  label's enclosing block runs to the end of the function; it skips a body holding a `case`, a `default:`
+  or another label, because copying one redefines it (that is what three compile failures over
+  `UI/MenuItems` were). The numbers put a figure on the "measure every `goto` removal" rule above: 4 of
+  46 sites confirmed on reccmp - `MenuItemRenderFunction_GameplayOptions_Buttons` 68.5% -> 76.5%,
+  `MenuItemRenderFunction_VideoOptions_Main` 75.7% -> 80.0%,
+  `MenuItemActionHandler_General_ToolbarButtonPressed` 65.0% -> 67.6%,
+  `MenuItemRenderFunction_UnusedCreateMessageEvent_Buttons` 53.8% -> 54.4% - and a second pass that
+  applied one site per file blind paid at 1 of 21 (`BuildingAndStatusMenu_BarrackMenuClick` 46.4% ->
+  47.3%) while wrecking the rest: `MenuItemRenderFunction_RankingGames_Main` 97.6% -> 7.6%,
+  `MenuItemRenderFunction_SingleplayerMapChoice_MapTable` 96.8% -> 51.0%,
+  `MenuItemRenderFunction_MapEditorLandscaping_GeneralButtons` 67.3% -> 32.4%. So the `goto` really is
+  the original's own shared block nearly every time, and the gains are worth a sweep only because the
+  tool makes each trial cheap.
+- **`quick_diff.py` underrates block duplication.** `VideoOptions_Main` gained 0.0002 there and 4.3
+  points on reccmp, and five sites that gained on `quick_diff` lost on reccmp. Duplicating a block moves
+  every later instruction, which `quick_diff`'s line-level ratio punishes while reccmp's own alignment
+  does not; use the gate as a filter against disasters rather than as a predictor, and measure anything
+  that changes a function's length on reccmp.
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
