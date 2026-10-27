@@ -96,8 +96,8 @@ namespace UI {
                     0xc2f0eb, 0, 0x13, FALSE, 0);
                 return;
             }
-            iVar5 = DAT_ButtonY::instance;
             iVar1 = DAT_ButtonX::instance;
+            iVar5 = DAT_ButtonY::instance;
             /*
               then draw the rest
              */
