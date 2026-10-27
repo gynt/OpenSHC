@@ -32,8 +32,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00430BF0
         void Unused::MenuItemRenderFunction_UnusedCreateSiege_SiegeThat(int param_1, ...)
         {
-            int yParam;
-            uint color_00;
             if (param_1 != -1 && DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU
                 && DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 if (param_1 == 5) {
@@ -45,23 +43,22 @@ namespace UI {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderNonInteractingButtonBackground,
                         AlphaAndButtonSurfaceObj::ptr)(0);
-                    color_00 = 0x7f7f7f;
-                    yParam = DAT_ButtonY::instance + 10;
-                } else {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                        AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        color_00 = 0xc2f0eb;
-                        yParam = DAT_ButtonY::instance + 10;
-                    } else {
-                        color_00 = 0xccfaff;
-                        yParam = DAT_ButtonY::instance + 10;
-                    }
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1, (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0x7f7f7f, 0x11, FALSE);
+                    return;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                    AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1, (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
                     return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1, (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
-                    yParam, OpenSHC::Text::TTA_CENTER, color_00, 0x11, FALSE);
+                    (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
             }
         }
 
