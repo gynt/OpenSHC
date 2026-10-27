@@ -47,19 +47,7 @@ namespace UI {
                         + (OpenSHC::Map::MLS_MISSION | OpenSHC::Map::MLS_PLAYABLE);
                     goto joined_r0x004ac081;
                 }
-                if (param_1 < 0x14) {
-                    if (param_1 == 0xc) {
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
-                            DAT_ButtonCurrentlyInteracting::instance = FALSE;
-                        }
-                        if (DAT_GameCore::instance.mapU4Int0 == 0)
-                            goto switchD_004ac099_caseD_4;
-                    } else if (param_1 == 10) {
-                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
-                            goto switchD_004ac099_caseD_4;
-                    } else if (param_1 != 0xb || (int)DAT_GameCore::instance.U2_mapType_singleOrMulti <= 0)
-                        goto switchD_004ac099_caseD_4;
-                } else {
+                if (param_1 >= 0x14) {
                     switch (param_1) {
                     case 0x14:
                         if (DAT_TileMapState::instance.mapSize != 0xa0)
@@ -80,6 +68,18 @@ namespace UI {
                     default:
                         goto switchD_004ac099_caseD_4;
                     }
+                } else {
+                    if (param_1 == 0xc) {
+                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti == 0) {
+                            DAT_ButtonCurrentlyInteracting::instance = FALSE;
+                        }
+                        if (DAT_GameCore::instance.mapU4Int0 == 0)
+                            goto switchD_004ac099_caseD_4;
+                    } else if (param_1 == 10) {
+                        if (DAT_GameCore::instance.U2_mapType_singleOrMulti != 0)
+                            goto switchD_004ac099_caseD_4;
+                    } else if (param_1 != 0xb || (int)DAT_GameCore::instance.U2_mapType_singleOrMulti <= 0)
+                        goto switchD_004ac099_caseD_4;
                 }
             }
             DAT_ButtonCurrentlyInteracting::instance = TRUE;
@@ -130,14 +130,14 @@ namespace UI {
             case 0x17:
                 textAddress = "400x400";
             }
-            if (BVar2 == FALSE) {
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
-                    (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
-            } else {
+            if (BVar2 != FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                     (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE, 0);
+            } else {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    textAddress, (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                    (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE, 0);
             }
         }
 
