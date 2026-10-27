@@ -80,7 +80,7 @@ namespace UI {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[4];
             }
             _millisecLoopPointer = _millisecLoopPointer + 5;
-        } while ((int)_millisecLoopPointer < (int)&DAT_GameLoopDurationBuffer::instance + 0x190);
+        } while (_millisecLoopPointer < DAT_GameLoopDurationBuffer::instance + 100);
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 _averageMillisecLoopMain, posX + 0x30, posY, OpenSHC::Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
