@@ -62,19 +62,19 @@ namespace UI {
                     rowBaseIcon = 7;
                 }
                 for (int offsetX = 0; offsetX < boxWidth; offsetX = offsetX + 0x18) {
-                    int iconIndex;
-                    if (offsetX == 0) {
-                        iconIndex = rowBaseIcon;
-                    } else if (offsetX == boxWidth + -0x18) {
-                        iconIndex = rowBaseIcon + 2;
-                    } else if (rowBaseIcon == 7) {
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                            DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 8,
-                            offsetX + x, offsetY + y, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0xb,
-                            (int)(keepOffsetX));
-                        continue;
-                    } else {
-                        iconIndex = rowBaseIcon + 1;
+                    int iconIndex = rowBaseIcon;
+                    if (offsetX != 0) {
+                        if (offsetX == boxWidth + -0x18) {
+                            iconIndex = rowBaseIcon + 2;
+                        } else if (rowBaseIcon == 7) {
+                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 8,
+                                offsetX + x, offsetY + y, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, 0xb,
+                                (int)(keepOffsetX));
+                            continue;
+                        } else {
+                            iconIndex = rowBaseIcon + 1;
+                        }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iconIndex,
