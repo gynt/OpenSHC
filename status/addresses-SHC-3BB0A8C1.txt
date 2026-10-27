@@ -18897,7 +18897,7 @@ SHC_3BB0A8C1_0x00462150 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x00462190 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x00462340 | 68.8% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x00462340 | 69.7% | snapshot local, arm order
 
 SHC_3BB0A8C1_0x00462550 | 0.0% | Pending
 

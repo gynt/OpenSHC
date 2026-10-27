@@ -33,9 +33,9 @@ namespace UI {
             HelpTextToken token;
             switch (param_1) {
             case -1:
-                if (0x12 <= (int)DAT_TextEditorState::instance.helpContentScrollOffsetY) {
-                    DAT_TextEditorState::instance.helpContentScrollOffsetY
-                        = DAT_TextEditorState::instance.helpContentScrollOffsetY + -0x12;
+                iVar4 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
+                if (0x12 <= iVar4) {
+                    DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar4 - 0x12;
                     return;
                 }
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = 0;
@@ -54,14 +54,14 @@ namespace UI {
                 DAT_TextEditorState::instance.helpContentScrollOffsetY = (iVar5 <= 0) - 1 & iVar5;
                 return;
             case -3:
-                if (DAT_TextEditorState::instance.useAlternateHelpTab == 0) {
-                    if (0 <= DAT_TextEditorState::instance.field50_0x23968) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog,
-                            DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.field50_0x23968);
+                if (DAT_TextEditorState::instance.useAlternateHelpTab != 0) {
+                    if (0 <= DAT_TextEditorState::instance.field49_0x23964) {
+                        DAT_TextEditorState::instance.activeHelpHotspotIndex
+                            = DAT_TextEditorState::instance.field49_0x23964;
                     }
-                } else if (0 <= DAT_TextEditorState::instance.field49_0x23964) {
-                    DAT_TextEditorState::instance.activeHelpHotspotIndex
-                        = DAT_TextEditorState::instance.field49_0x23964;
+                } else if (0 <= DAT_TextEditorState::instance.field50_0x23968) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::openUnusedHelpTextEditorDialog,
+                        DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.field50_0x23968);
                 }
                 break;
             case -4:
