@@ -48,8 +48,8 @@ namespace UI {
                 iVar6 = DAT_ButtonW::instance + 0x65 + DAT_ButtonX::instance;
                 local_4 = iVar6 + -0x14;
                 int iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
-                iVar8 = DAT_ButtonH::instance + 0x7a + DAT_ButtonY::instance;
                 int iVar1 = DAT_ButtonY::instance + 3;
+                iVar8 = DAT_ButtonH::instance + 0x7a + DAT_ButtonY::instance;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
                     DAT_ButtonX::instance + -0x6e, iVar1, local_4, iVar8, (iVar4 / 32) + 0x20);
