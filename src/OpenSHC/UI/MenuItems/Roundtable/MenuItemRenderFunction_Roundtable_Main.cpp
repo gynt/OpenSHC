@@ -198,10 +198,10 @@ namespace UI {
                 }
                 iVar3 = (int)(char)DAT_GameSynchronyState::instance.DAT_RoundTableOrderArray[DAT_00df423c::instance];
                 if (0 < iVar3) {
-                    iVar2 = DAT_MouseState::instance.screenSpaceY
-                        - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                     iVar5
                         = DAT_MouseState::instance.screenSpaceX - DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+                    iVar2 = DAT_MouseState::instance.screenSpaceY
+                        - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                     if (iVar2 < 4) {
                         iVar2 = 4;
                     } else if (0x16c < iVar2) {
