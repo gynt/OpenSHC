@@ -468,6 +468,42 @@ Diff patterns that were reliable (more in the cheat sheet):
   `enable_local_functions.py` is what puts the flags back (not the project-wide PowerShell script,
   which enables every resolver with a `.cpp` anywhere in the tree and will not link while the build
   list is a subset - that is the `LNK2001` wall).
+- **The most productive hand work is reading the original's `ret`s and tail jumps, not its
+  registers.** Where the original ends a block with `pop .. / ret` or `mov [esp+4], eax / jmp F`
+  and our source falls on into the function's tail, our control flow is wrong - and it is usually
+  wrong in a way that is also a *bug*, which is why this pays more than any style lever. Two
+  functions, done by hand off `orig_asm.py` plus `quick_diff.py`'s aligned stream:
+  `MenuItemRenderFunction_LobbyMenu_NonBoxedButtons` 59.3% -> 76.5% and
+  `MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus` 61.5% -> 69.0%. The shapes
+  that keep recurring:
+  - **A loop-exit body the decompiler put inside the loop.** It writes the exit block under the
+    bound check and jumps into it with a `goto`, so after the block runs control falls back to
+    the loop test. Hoist the block out after the loop. Two sites in one function, and the
+    `goto` removal then leaves a `switch` arm falling into the next `case` - add the `return`
+    the original's epilogue shows.
+  - **A flag the original never materialised.** `bVar5 = param_1 == -2; goto LAB; if (!bVar5)`
+    compiles to `xor eax,eax / sete al / cmp eax, ebp / jne`, four instructions where the
+    original just lands on `je`. Both chains testing their own last value and falling into one
+    shared `{ store; return; }` is the same thing without the flag.
+  - **Arms we run in sequence that the original runs either/or.** Count the tail jumps: if every
+    epilogue in a region is a `jmp F`, each path makes exactly *one* call, so an `if (c) { A(); }
+    B();` that should be `if (c) { A(); return; } B();` shows up as one non-tail `call` among
+    them. Conversely a region where the original holds *two* copies of a call plus epilogue is
+    one we over-shared: in `BuildingWorkStatus` the "No labour" call belongs in both arms with
+    its own `return`, and the shared version was 10 instructions short of the original.
+  - **A `case` that only prepares a value and falls through into `default:`.** That is what a
+    DUPLICATION run of a whole call tail means. Move the arm to just before `default:` so
+    `default:` stays last and the two-level jump table survives.
+- **`quick_diff.py` cannot price a switch-arm reorder, and will talk you into one.** The original's
+  jump-table arms in `NonBoxedButtons` run (arg 0, no guard), (guard, arg 0), (guard, arg 1),
+  (arg 1, no guard) where ours ran `case 1`..`case 4` first, so reordering to match looked like
+  the obvious next move and the gate agreed - that edit gave the best ratio of the whole session,
+  0.7458 against 0.4567 at the start, with the instruction count landing on 384 against the
+  original's 383. reccmp then read **47.9%, eleven points below where the function started**,
+  while the identical tree with the reorder dropped read 76.5%. Reordering arms moves every
+  later instruction and renumbers the table, which the line-level ratio scores as alignment it
+  likes and reccmp scores as a different function. Bisect with reccmp before believing the gate
+  on anything that moves a block.
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
