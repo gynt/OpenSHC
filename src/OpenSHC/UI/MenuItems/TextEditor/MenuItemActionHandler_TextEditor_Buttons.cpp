@@ -428,11 +428,11 @@ namespace UI {
                         DAT_TextEditorState::instance
                             .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex + 1]
                             = (WCHAR)iVar6;
+                        token = (OpenSHC::Text::Enums::HelpTextToken)(OpenSHC::Text::Enums::HTT_ENDCENTRE
+                            | OpenSHC::Text::Enums::HTT_NEWPARAGRAPH);
                         DAT_TextEditorState::instance
                             .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance.activeHelpHotspotIndex + 2]
                             = L'\x0e';
-                        token = (OpenSHC::Text::Enums::HelpTextToken)(OpenSHC::Text::Enums::HTT_ENDCENTRE
-                            | OpenSHC::Text::Enums::HTT_NEWPARAGRAPH);
                         goto LAB_0046264e;
                     }
                 }
@@ -559,8 +559,8 @@ namespace UI {
                     return;
                 case 3:
                 case 10:
-                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
                     iVar6 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
+                    pWVar2 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
                     iVar9 = MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::getPrevHelpColorEntryIndex,
                         DAT_TextEditorState::ptr)((uint)(ushort)pWVar2[iVar6 + 1]);
                     pWVar2[iVar6 + 1] = (WCHAR)iVar9;
