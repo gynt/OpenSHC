@@ -19,16 +19,15 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6b, x, y, width, height);
-            int iVar1 = width / 4;
             y = y + 10;
-            int left = x + iVar1;
+            int left = x + width / 4;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 left + -1, y + 0x50, (width * 3 / 4) + 1 + x, y + 0x63, (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, y + 0x51,
                 ((width / 2) * DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[0])
                         / DAT_GameSynchronyState::instance.mapSendingFileSize
-                    + iVar1 + x,
+                    + width / 4 + x,
                 y + 0x62, (ushort)(COL_DARK_LIME::instance.shortValue));
             return;
         }
