@@ -406,8 +406,13 @@ namespace UI {
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 }
             } else {
-                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {}
-                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == (OpenSHC::UI::Enums::BuildMenuTabType)0x3e) {}
+                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {
+                    return;
+                }
+                if (DAT_GameCore::instance.activeMenuTab.buildMenuTab
+                    == (OpenSHC::UI::Enums::BuildMenuTabType)0x3e) {
+                    return;
+                }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                         DAT_TextureRenderCoreObject::ptr)(9);
