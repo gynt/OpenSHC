@@ -178,14 +178,14 @@ namespace UI {
             }
             if ((param_1 == 100) || (param_1 == 0x65)) {
                 DAT_ButtonUnknownZero::instance = (int)(DAT_00df423c::instance != 0);
-                if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                    DAT_ButtonUnknownZero::instance = 1;
-                } else {
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_00df4288::instance = 1;
                     }
+                } else {
+                    DAT_ButtonUnknownZero::instance = 1;
                 }
             }
             if (param_1 == 200 && (iVar4 = 0, DAT_00df423c::instance != 0)
