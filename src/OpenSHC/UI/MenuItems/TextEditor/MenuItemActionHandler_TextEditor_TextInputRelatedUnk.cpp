@@ -79,7 +79,7 @@ namespace UI {
                 case 0xfa:
                     iVar3 = DAT_TextEditorState::instance.helpContentScrollOffsetY;
                     iVar6 = DAT_TextEditorState::instance.dialogContentHeight;
-                    if (iVar6 <= iVar3) {
+                    if (iVar3 >= iVar6) {
                         DAT_TextEditorState::instance.helpContentScrollOffsetY = iVar3 - iVar6;
                         return;
                     }
@@ -122,7 +122,7 @@ namespace UI {
                             pWVar7[iVar3 + 1] = pWVar7[iVar3];
                             iVar3 = iVar3 + -1;
                             pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
-                        } while (DAT_TextEditorState::instance.activeHelpHotspotIndex <= iVar3);
+                        } while (iVar3 >= DAT_TextEditorState::instance.activeHelpHotspotIndex);
                     }
                     WVar1 = MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::singleMultiByteToWideChar,
                         DAT_WideCharMultiByteState::ptr)((char)uVar2);
@@ -165,7 +165,7 @@ namespace UI {
                         break;
                     case 0xf3:
                         iVar3 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
-                        if (DAT_TextEditorState::instance.customHelpTextLength <= iVar3)
+                        if (iVar3 >= DAT_TextEditorState::instance.customHelpTextLength)
                             break;
                         iVar6 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3];
                         if ((HelpTextToken)0x20 <= iVar6) {
@@ -203,7 +203,7 @@ namespace UI {
                         iVar5 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
                             DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)iVar6);
-                        if (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5) {
+                        if (DAT_TextEditorState::instance.customHelpTextLength > iVar3 + iVar5) {
                             iVar6 = (iVar3 - iVar5) * 2;
                             do {
                                 /*
@@ -229,7 +229,7 @@ namespace UI {
                                 .DAT_PointerToTemporaryTextMemory[DAT_TextEditorState::instance
                                         .activeHelpHotspotIndex]);
                         if (iVar3 < DAT_TextEditorState::instance.customHelpTextLength) {
-                            if (iVar3 < DAT_TextEditorState::instance.customHelpTextLength + iVar5) {
+                            if (DAT_TextEditorState::instance.customHelpTextLength > iVar3 + iVar5) {
                                 iVar6 = (iVar3 + iVar5) * 2;
                                 do {
                                     pWVar7[iVar3] = *(WCHAR*)(iVar6 + (int)pWVar7);
