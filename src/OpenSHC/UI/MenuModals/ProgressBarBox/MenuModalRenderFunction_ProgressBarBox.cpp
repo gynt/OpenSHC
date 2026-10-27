@@ -48,16 +48,20 @@ namespace UI {
                     != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
                 && DAT_GameSynchronyState::instance.saveRelated != 0) {
                 int barInset = (width + -300) / 2;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(barInset + x, y + 0x41,
-                    (x - barInset) + width, y + 0x50, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
-                DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
-                DAT_MenuTextInputState::instance.progressBarX = barInset + x;
+                int barY = y + 0x41;
+                int barBottom = y + 0x50;
+                height = barInset + x;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(height, barY, (x - barInset) + width, barBottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                DAT_MenuTextInputState::instance.progressBarY = barY;
+                DAT_MenuTextInputState::instance.progressBarX = height;
             } else {
                 int barInset = (width + -300) / 2;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(barInset + x, y + 0x41,
-                    (x - barInset) + width, y + 0x50);
-                DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
-                DAT_MenuTextInputState::instance.progressBarX = barInset + x;
+                int barY = y + 0x41;
+                int barBottom = y + 0x50;
+                height = barInset + x;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(height, barY, (x - barInset) + width, barBottom);
+                DAT_MenuTextInputState::instance.progressBarY = barY;
+                DAT_MenuTextInputState::instance.progressBarX = height;
             }
         }
     }

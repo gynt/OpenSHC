@@ -23623,7 +23623,7 @@ SHC_3BB0A8C1_0x004934E5 | 0.0% | Pending
 
 SHC_3BB0A8C1_0x004934F0 | 25.7% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x00493560 | 86.0% | one extra stack slot
+SHC_3BB0A8C1_0x00493560 | 96.3% | spill slot differs
 
 SHC_3BB0A8C1_0x00493690 | 66.2% | Style pass, asm differs
 
