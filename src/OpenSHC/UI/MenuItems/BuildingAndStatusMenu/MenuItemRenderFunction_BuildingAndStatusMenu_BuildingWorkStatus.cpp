@@ -179,8 +179,8 @@ namespace UI {
                                 uVar6 = 1;
                             }
                         }
-                        psVar5 = psVar5 + 1;
                         iVar7 = iVar7 + -1;
+                        psVar5 = psVar5 + 1;
                     } while (iVar7 != 0);
                     if (uVar6 < 100) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
