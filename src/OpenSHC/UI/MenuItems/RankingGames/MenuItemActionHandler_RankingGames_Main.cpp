@@ -58,8 +58,8 @@ namespace UI {
                 if (param_1 < 8 && (int)DAT_00ed3120::instance + param_1 < (int)DAT_00eb9b60::instance) {
                     iVar1 = INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + param_1];
                     int iVar3 = DAT_SkMasters2DataArray::instance[iVar1].aliveArray[1];
-                    pSVar4 = &DAT_SkMasters2DataArray::instance[iVar1].results;
                     pSVar6 = &DAT_GameSynchronyState::instance.finalResults;
+                    pSVar4 = &DAT_SkMasters2DataArray::instance[iVar1].results;
                     for (iVar2 = 0x1de; iVar2 != 0; iVar2 = iVar2 + -1) {
                         *(undefined4*)pSVar6->names[0] = *(undefined4*)pSVar4->names[0];
                         pSVar4 = (SkirmishStatistics*)(pSVar4->names[0] + 4);
@@ -113,8 +113,8 @@ namespace UI {
                 }
                 if (param_1 - 0x14U <= 9) {
                     if (DAT_MissionDefinedData::instance.sortColumn != param_1 + -0x13) {
-                        DAT_MissionDefinedData::instance.descending = 1;
                         DAT_MissionDefinedData::instance.sortColumn = param_1 + -0x13;
+                        DAT_MissionDefinedData::instance.descending = 1;
                     } else {
                         DAT_MissionDefinedData::instance.descending = 1 - DAT_MissionDefinedData::instance.descending;
                     }
