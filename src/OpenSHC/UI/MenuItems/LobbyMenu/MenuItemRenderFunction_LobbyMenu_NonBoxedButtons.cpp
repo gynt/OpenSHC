@@ -74,52 +74,7 @@ namespace UI {
             bVar5 = true;
             DAT_ButtonUnknownZero::instance = 0;
             if (param_1 < 0x6a) {
-                if (param_1 == 0x69) {
-                    if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                            DAT_ButtonUnknownZero::instance = 1;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                        }
-                        if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected < 0) {
-                            DAT_ButtonUnknownZero::instance = 1;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                        }
-                        if (DAT_GameSynchronyState::instance
-                                .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
-                                        .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
-                                                                   .DAT_MapSelectionScrollOffset
-                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]]
-                            != 0) {
-                            DAT_ButtonUnknownZero::instance = 1;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                        }
-                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
-                            DAT_ButtonUnknownZero::instance = 1;
-                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                        }
-                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
-                            AlphaAndButtonSurfaceObj::ptr)(
-                            DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                        iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
-                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
-                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE,
-                                (iVar4 / 32) + 0x20);
-                        } else {
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
-                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
-                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE,
-                                (iVar4 / 32) + 0x20);
-                        }
-                    }
-                } else {
+                if (param_1 != 0x69) {
                     switch (param_1) {
                     case 1:
                         if (DAT_GameSynchronyState::instance.currentGameMode
@@ -282,6 +237,51 @@ namespace UI {
                         if (DAT_GameSynchronyState::instance.currentGameMode
                             != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
                             goto switchD_0042af3a_caseD_ffffff9c;
+                    }
+                } else {
+                    if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
+                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                            DAT_ButtonUnknownZero::instance = 1;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        }
+                        if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected < 0) {
+                            DAT_ButtonUnknownZero::instance = 1;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        }
+                        if (DAT_GameSynchronyState::instance
+                                .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
+                                        .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
+                                                                   .DAT_MapSelectionScrollOffset
+                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]]
+                            != 0) {
+                            DAT_ButtonUnknownZero::instance = 1;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        }
+                        if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
+                            DAT_ButtonUnknownZero::instance = 1;
+                            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                                = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                        }
+                        MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
+                            AlphaAndButtonSurfaceObj::ptr)(
+                            DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
+                        iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE,
+                                (iVar4 / 32) + 0x20);
+                        } else {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x69,
+                                (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE,
+                                (iVar4 / 32) + 0x20);
+                        }
                     }
                 }
             } else if (param_1 == 0x19d) {
