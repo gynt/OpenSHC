@@ -423,9 +423,9 @@ namespace UI {
             _offset = 0;
             if (0 < _blendStrength) {
                 do {
+                    piVar5 = local_100 + 0x22;
                     iVar6 = -1;
                     iVar7 = 0;
-                    piVar5 = local_100 + 0x22;
                     do {
                         if (*piVar5 != 0 && (iVar6 == -1 || ((local_100 + 3)[iVar7 + 1] < local_100[0x3]))) {
                             local_100[0x3] = (local_100 + 3)[iVar7 + 1];
@@ -441,12 +441,12 @@ namespace UI {
                     (local_100 + 3)[iVar6 * 3 + 0x1f] = 0;
                 } while (_offset < _blendStrength);
             }
-            local_108 = (int*)(iVar1 + 0x152);
-            _offset = 1;
-            local_10c = (int*)(_textX_01 + 0x22);
-            local_100[0x3] = 1;
-            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             local_104 = iVar4;
+            DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+            local_100[0x3] = 1;
+            local_10c = (int*)(_textX_01 + 0x22);
+            _offset = 1;
+            local_108 = (int*)(iVar1 + 0x152);
             do {
                 if (1 < _offset) {
                     _textY_01 = _textY_01 + 0x16;
