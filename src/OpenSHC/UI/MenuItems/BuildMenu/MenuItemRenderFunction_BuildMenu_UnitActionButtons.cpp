@@ -139,7 +139,19 @@ namespace UI {
                     && DAT_UnitsState::instance.hasEngineerSelected == FALSE) {
                     BVar1 = MACRO_CALL_MEMBER(
                         OpenSHC::Map::Units::UnitsState_Func::selectionContainsEngineersOnly, DAT_UnitsState::ptr)();
-                    if (BVar1 == FALSE) {
+                    if (BVar1 != FALSE) {
+                        uVar3 = MACRO_CALL_MEMBER(
+                            OpenSHC::Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
+                            DAT_UnitsState::ptr)();
+                        if (uVar3 != 0) {
+                            DAT_CurrentButtonGmDataIndex::instance = 0xd2;
+                            DAT_00ee1090::instance = 0xc6;
+                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                                    MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+                            DAT_ButtonUnknownZero::instance = 0;
+                            return;
+                        }
+                    } else {
                         iVar2 = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectionContainsTunnelersOnly,
                             DAT_UnitsState::ptr)();
                         if (iVar2 != 0) {
@@ -182,18 +194,6 @@ namespace UI {
                                     OpenSHC::Map::Units::UnitsState_Func::selectionContainsShieldmenOnly,
                                     DAT_UnitsState::ptr)(),
                                 iVar2 == 0)) {
-                            MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                                    MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                            DAT_ButtonUnknownZero::instance = 0;
-                            return;
-                        }
-                    } else {
-                        uVar3 = MACRO_CALL_MEMBER(
-                            OpenSHC::Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource,
-                            DAT_UnitsState::ptr)();
-                        if (uVar3 != 0) {
-                            DAT_CurrentButtonGmDataIndex::instance = 0xd2;
-                            DAT_00ee1090::instance = 0xc6;
                             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                             DAT_ButtonUnknownZero::instance = 0;
