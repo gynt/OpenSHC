@@ -100,12 +100,11 @@ namespace UI {
                         DAT_SoundSystemState::ptr)(speechFileName);
                 }
             }
-            int titleX = (width >> 1) + x;
             INT_00df5648::instance = DAT_00df5564::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL, tutorialTextOffset),
-                titleX, y + 0xf, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (int)(keepOffsetX));
+                (width >> 1) + x, y + 0xf, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (int)(keepOffsetX));
             int bodyY = y + 0x26;
             if (DAT_00df5564::instance == 0) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
@@ -134,7 +133,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, DAT_00df5644::instance + 3),
-                        titleX, bodyY, OpenSHC::Text::TTA_CENTER, 0xff, 0x12, keepOffsetX, 0);
+                        (width >> 1) + x, bodyY, OpenSHC::Text::TTA_CENTER, 0xff, 0x12, keepOffsetX, 0);
                 }
             }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderTutorialFloatForUIElement)(DAT_TutorialCurrentStep::instance);
