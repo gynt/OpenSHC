@@ -25,7 +25,7 @@ namespace UI {
             do {
                 y = y + 0x14;
                 if (DAT_AIVPlacementFit::instance[aivIndex] != -10) {
-                    uint color = (-(uint)(DAT_AIVPlacementFit::instance[aivIndex] != 100) & 0xff3d1014) + 0xc2f0eb;
+                    uint color = DAT_AIVPlacementFit::instance[aivIndex] != 100 ? 0xff : 0xc2f0eb;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         aivIndex, x, y, OpenSHC::Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     int integer = DAT_AIVPlacementFit::instance[aivIndex];
