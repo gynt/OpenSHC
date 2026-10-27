@@ -27,10 +27,12 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00466160
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_RepairBuildingButton()
         {
-            BOOLEnum _buildingDamaged;
-            _buildingDamaged
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
-                    DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID);
+            int _buildingNotDamaged = 0;
+            if (MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
+                    DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID)
+                == FALSE) {
+                _buildingNotDamaged = 1;
+            }
             int _buildingID = DAT_BuildingsState::instance.menuSelectedBuildingID;
             BOOLEnum _enemyTooClose = MACRO_CALL_MEMBER(
                 OpenSHC::Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk, DAT_PathFindingState::ptr)(
@@ -44,7 +46,7 @@ namespace UI {
                 (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                           & 0xfffffff1)
                     + 0x1e));
-            if ((_enemyTooClose == FALSE) && (_buildingDamaged != FALSE)) {
+            if ((_enemyTooClose == FALSE) && (_buildingNotDamaged == 0)) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updateRepairCostAndReturnIfDamaged,
                     DAT_BuildingsState::ptr)(DAT_BuildingsState::instance.menuSelectedBuildingID);
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
