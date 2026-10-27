@@ -37,30 +37,7 @@ namespace UI {
             int iVar5;
             BOOLEnum BVar6;
             int iVar7;
-            if (param_1 < 0) {
-                if (param_1 == -2) {
-                    param_1 = 0xe - (uint)(DAT_MenuTextInputState::instance.pendingUnusedOption1 != '\0');
-                } else {
-                    if (param_1 != -1) {
-                        return;
-                    }
-                    /*
-                      the original dispatches with a `sub eax, K; je` chain (0x491f5a),
-                      MSVC's sparse switch, and the `case 1` body sits first
-                     */
-                    switch (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp) {
-                    case 1:
-                        param_1 = 0xd;
-                        break;
-                    case 0:
-                        param_1 = 0xe;
-                        break;
-                    default:
-                        return;
-                    }
-                }
-                backgroundColor = 0;
-            } else {
+            if (param_1 >= 0) {
                 if (param_1 == 0xf) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -87,6 +64,29 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 backgroundColor = 0x3e66;
+            } else {
+                if (param_1 != -2) {
+                    if (param_1 != -1) {
+                        return;
+                    }
+                    /*
+                      the original dispatches with a `sub eax, K; je` chain (0x491f5a),
+                      MSVC's sparse switch, and the `case 1` body sits first
+                     */
+                    switch (DAT_MenuTextInputState::instance.pendingSettingBubbleHelp) {
+                    case 1:
+                        param_1 = 0xd;
+                        break;
+                    case 0:
+                        param_1 = 0xe;
+                        break;
+                    default:
+                        return;
+                    }
+                } else {
+                    param_1 = 0xe - (uint)(DAT_MenuTextInputState::instance.pendingUnusedOption1 != '\0');
+                }
+                backgroundColor = 0;
             }
             foregroundColor = 0xc2f0eb;
         LAB_00491f8b:
