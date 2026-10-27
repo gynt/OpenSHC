@@ -40,7 +40,7 @@ namespace UI {
             if (param_1 < -100) {
                 if (param_1 == -0x65) {
                     int iVar1 = DAT_00b95b74::instance + -0xcc;
-                    if (iVar1 <= (int)DAT_00b960f4::instance) {
+                    if ((int)DAT_00b960f4::instance >= iVar1) {
                         DAT_StopHandlingMenuItems::instance = 0;
                     }
                     if (DAT_00b960f4::instance + 0xe <= iVar1) {
@@ -69,7 +69,7 @@ namespace UI {
                 /*
                   Start game
                  */
-                if (-1 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                if (-(int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset > 1
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                     if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
