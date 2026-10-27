@@ -63,8 +63,8 @@ namespace UI {
                 DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
                 return;
             case 3: {
-                uVar4 = 3;
                 DAT_UnitsState::instance.unitControlsRelated = TRUE;
+                uVar4 = 3;
                 goto LAB_00446b3b;
             }
             case 4: {
@@ -92,8 +92,8 @@ namespace UI {
                 uVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::Units::UnitsState_Func::getSelectedEngineerCarryingResource, DAT_UnitsState::ptr)();
                 if (uVar2 != 0) {
-                    DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                     DAT_UnitsState::instance.pendingUnitControlMode = 0x14;
+                    DAT_TileMapState::instance.uiSelectedUnitIDUnk = 0;
                     DAT_UnitsState::instance.unitControlsRelated = 0x14;
                     DAT_TileMapState::instance.cursorOverlayImageBase = 0x20;
                     DAT_TileMapState::instance.cursorOverlayGmID = 0x6b;
