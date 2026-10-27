@@ -60,8 +60,8 @@ namespace UI {
                     (uint)((DAT_00b96100::instance - param_1) + -1 == DAT_GameCore::instance.missionNumber1to20),
                     param_1, 0);
                 int iVar1 = -param_1;
-                iVar3 = DAT_ButtonY::instance + 5;
                 iVar2 = DAT_ButtonX::instance + 8;
+                iVar3 = DAT_ButtonY::instance + 5;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 if (-DAT_GameCore::instance.missionNumber1to20 == param_1) {
                     MACRO_CALL_MEMBER(
