@@ -47,9 +47,9 @@ namespace UI {
                         return;
                     }
                 } else {
-                    bool bVar2 = DAT_UserTextHandlerState::instance.returnPressed == 0;
+                    int iVar2 = DAT_UserTextHandlerState::instance.returnPressed;
                     DAT_UserTextHandlerState::instance.returnPressed = 0;
-                    if (bVar2) {
+                    if (iVar2 == 0) {
                         DAT_UserTextHandlerState::instance.returnPressed = 0;
                         return;
                     }
