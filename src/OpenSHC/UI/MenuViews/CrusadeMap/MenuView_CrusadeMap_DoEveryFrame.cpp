@@ -114,9 +114,9 @@ namespace UI {
                 - DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[0xcc].originX;
             iVar14 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
                 - DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[0xcc].originY;
-            iVar12 = iVar12 + -0xb;
-            iVar14 = iVar14 + 0x12;
             local_4 = (int*)0x0;
+            iVar14 = iVar14 + 0x12;
+            iVar12 = iVar12 + -0xb;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
                 dVar9 = 0;
                 if (0 < DAT_GameCore::instance.furthestSkirmishTrailMission) {
@@ -176,14 +176,14 @@ namespace UI {
                             }
                         }
                         if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
-                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
-                                + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
-                            DAT_CurrentlyRenderedSpriteID::instance
-                                = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][0];
+                            DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
+                            iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
                             iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][2]
                                 + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
-                            iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][1];
-                            DAT_RenderedUnitOwner::instance = (OpenSHC::DE::SHCDE::eGM)(0);
+                            DAT_CurrentlyRenderedSpriteID::instance
+                                = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][0];
+                            iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
+                                + DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
                         } else {
                             iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
