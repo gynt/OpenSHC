@@ -130,13 +130,13 @@ namespace UI {
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x193,
                         (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 }
-                iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
-                iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                local_400 = (int*)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x310);
-                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
-                iVar10 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15f;
-                iVar13 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x214;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
+                iVar13 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x214;
+                iVar10 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15f;
+                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+                local_400 = (int*)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x310);
+                iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
+                iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x234, iVar10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2fc, iVar13, (iVar4 / 32) + 0x20);
@@ -282,10 +282,10 @@ namespace UI {
                             DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(
                             _mapID);
-                        iVar4 = DAT_GameCore::instance.mapPlayerCount;
-                        iVar7 = DAT_GameCore::instance.mapU4Int0_2;
-                        DAT_00b95b74::instance = 0;
                         DAT_00b960f4::instance = 0;
+                        DAT_00b95b74::instance = 0;
+                        iVar7 = DAT_GameCore::instance.mapU4Int0_2;
+                        iVar4 = DAT_GameCore::instance.mapPlayerCount;
                         if ((DAT_GameCore::instance.mapType == 1) && (2 <= DAT_GameCore::instance.mapPlayerCount)) {
                             bVar14 = DAT_GameCore::instance.mapU4Int0_2 != 0;
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar12 + -1] = _mapID;
@@ -468,9 +468,9 @@ namespace UI {
                                 iVar10 = local_3f8;
                             }
                         }
-                        local_400 = local_400 + 1;
-                        iVar4 = iVar4 + 1;
                         local_3fc = local_3fc + -1;
+                        iVar4 = iVar4 + 1;
+                        local_400 = local_400 + 1;
                     } while (local_3fc != 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
