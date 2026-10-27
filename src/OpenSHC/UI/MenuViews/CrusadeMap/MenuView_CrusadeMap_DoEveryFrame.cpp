@@ -265,14 +265,14 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
@@ -293,14 +293,14 @@ namespace UI {
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MONTHS, (int)(DAT_GameCore::instance.skirmishTrailYearReached % 0xc)),
                     iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
@@ -444,14 +444,14 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
@@ -472,14 +472,14 @@ namespace UI {
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MONTHS, (int)(DAT_GameCore::instance.warchestTrailYearReached % 0xc)),
                     iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
@@ -622,14 +622,14 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
@@ -650,14 +650,14 @@ namespace UI {
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_MONTHS, (int)(DAT_GameCore::instance.extremeTrailYearReached % 0xc)),
                     iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
-                if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
+                if (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_GERMAN) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        " A.D.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
+                        " n. Chr.", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                         0x12, TRUE, 0);
                 }
