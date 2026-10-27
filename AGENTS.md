@@ -335,6 +335,44 @@ Diff patterns that were reliable (more in the cheat sheet):
   drops them out of the table, so give every value its own `case` and lift a shared tail out behind a flag instead.
 - `x < 1` compiles to `cmp x, 1; jl` but the original usually shows `test x, x; jle`, i.e. `x <= 0`. The two are
   identical for signed and unsigned alike; write the form the asm shows.
+  This one is worth sweeping rather than waiting for a diff to point at it: over `UI/MenuItems` 6 of the 10 files
+  holding a `< 1)` gained, `MenuItemRenderFunction_LobbyMenu_MapSelectTable` by 7.3 points, while the reverse
+  rewrite (`<= 0` to `< 1`) paid on 1 of 13 - so the asm's form really is `<= 0` and not merely a tie.
+- **A comparison's operand order is a free lever and pays more often than anything else mechanical.** Ghidra puts
+  whichever operand it likes on the left, usually the constant; the original source had the other one there, and
+  `cmp a, b` reads `a` into the register the condition destroys, so the two orders allocate differently
+  (`diff_jcc.py` reports the pair as `ORDER`). Flipping inverts the operator too, so behaviour cannot change -
+  which makes it safe to try everywhere and keep per site. `flipcmp.py` does that: 25 of 314 sites paid over
+  `UI/MenuItems`, taking `MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick` 67.7% -> 80.5% on one
+  `7 < iVar3`, `MenuItemRenderFunction_InGameMenu_MainButtons` 47.6% -> 57.7% on one `10 < param_1`, and
+  `MenuItemActionHandler_OverlaySlider_Deselect` and `MenuItemActionHandler_UnusedWinCondition_DeselectUnk` both
+  to 100% once the mouse coordinate went first in their four bounds tests. Mind that it is per site and not per
+  function: `MenuItemRenderFunction_LobbyMenu_PlayerListAndNpcButtons` has the same bounds test and *loses* 0.1 by
+  flipping it.
+- The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
+  of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
+  rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
+  `(int)(DAT_ButtonY::instance + DAT_ButtonH::instance)` - Y first, the opposite of what the decompiler emits - while
+  the third really is `DAT_ButtonW::instance + DAT_ButtonX::instance`, W first. Six of the twelve files holding the
+  `H + Y` form gained, three of them reaching 100% or near it, and the 15 sites in
+  `MenuItemRenderFunction_TextEditor_Buttons` all lost, so measure per file here too.
+- `x == TRUE` on a field that really is a boolean is often the decompiler's rendering of a truth test: `cmp x, 1`
+  against the original's `test x, x`. Rewriting it to `x != FALSE` took `MenuItemRenderFunction_LobbyMenu_SkirmishTypeAndBalance`
+  from 62.4% to 75.2%. Only do it where the asm agrees and the field is a flag - the note above about `== TRUE`
+  being a genuine `== 1` test still holds for int-typed fields, and 5 of the 7 files tried did not gain.
+- A `default:` arm in the middle of a `switch` is worth moving to the end even though the move is rarely worth
+  anything on its own (2 of 8 files over `UI/MenuItems`, both marginal). Where it does pay it pays with something
+  else: in `MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus` moving `default:` last restored the
+  original's two-level jump table over `buildingType` 5..34 (a byte table at `0x447a0c` indexing five arms at
+  `0x4479f8`), and together with inlining the mill arm in place of its `goto` and inverting the `sleeping` guard so
+  the cold "Turned off" arm comes first - the original jumps away on `== 0`, we jumped away on `!= 0` - it went
+  39.7% -> 58.5%.
+- **`undiv.py` can raise the normalized match and drop the raw match at the same time.** On
+  `MenuItemRenderFunction_General_AdvancedGameOptions` its 23 restored divisions took normalized 40.8% -> 48.1% and
+  brought the instruction count to 960 against the original's 961, while raw fell 39.6% -> 24.6%: the shorter body
+  flips one register choice (`edi` to `ebx`) across a 50-instruction dispatch chain, and every jump offset with it.
+  `perm_decls.py` over the three locals did not recover it. Decide which number the branch is reporting before
+  keeping such a change; the status file records raw.
 - A range's upper bound is half-open when the original ends it with `jge` and inclusive when it ends with `jg`.
   Writing `<= N-1` where the original has `< N` is a real off-by-one whenever the bound is a player or slot count -
   `processSingleTimeTick` had five, each calling a per-player routine one index out of range.
