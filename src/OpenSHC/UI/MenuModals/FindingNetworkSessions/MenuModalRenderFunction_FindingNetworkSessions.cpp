@@ -51,8 +51,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 rightColumnX - 0x13, bottom - 0x14, rightColumnX, bottom - 0x14,
                 (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
-            UI_NetworkSessionsShadeLogic::instance = UI_NetworkSessionsShadeLogic::instance + 1;
-            uint uVar1 = UI_NetworkSessionsShadeLogic::instance / 2 & 0x8000001f;
+            int const shadeTick = (int)UI_NetworkSessionsShadeLogic::instance + 1;
+            uint uVar1 = shadeTick / 2 & 0x8000001f;
+            UI_NetworkSessionsShadeLogic::instance = shadeTick;
             if ((int)uVar1 < 0) {
                 uVar1 = (uVar1 - 1 | 0xffffffe0) + 1;
             }
