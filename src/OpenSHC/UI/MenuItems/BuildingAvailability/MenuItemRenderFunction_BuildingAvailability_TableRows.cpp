@@ -48,8 +48,8 @@ namespace UI {
             } else {
                 color = 0xccfaff;
             }
-            int yParam = DAT_ButtonY::instance + 6;
             xParam = DAT_ButtonX::instance + 0x14;
+            int yParam = DAT_ButtonY::instance + 6;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT,
