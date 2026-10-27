@@ -33,7 +33,7 @@ namespace UI {
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_BuildingWorkStatus(int param_1, ...)
         {
             short* psVar5;
-            uint uVar6;
+            int uVar6;
             int _unit;
             int iVar7;
             int iVar8;
@@ -42,7 +42,7 @@ namespace UI {
             }
             short sVar1 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentEmployeeCount;
-            bool bVar4 = true;
+            int bVar4 = 1;
             if ((sVar1 == 0)
                 && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .currentlyNeededEmployeeCount
@@ -87,18 +87,26 @@ namespace UI {
             short sVar3 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentlyNeededEmployeeCount;
             if (sVar3 != 0) {
-                if (sVar1 != 0) {
+                if (sVar1 == 0) {
+                    /*
+                      added by script: "No labour"
+                     */
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, (int)(sVar3 + 4),
-                        (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0,
-                        0x12, FALSE);
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    return;
                 }
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, (int)(sVar3 + 4),
+                    (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12,
+                    FALSE);
                 /*
                   added by script: "No labour"
                  */
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
-                    (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
+                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                return;
             }
             iVar7 = (int)sVar1;
             if (iVar7 > 0) {
@@ -108,7 +116,7 @@ namespace UI {
                 do {
                     _unit = (int)*psVar5;
                     if (DAT_UnitsState::instance.units[_unit].unitType == OpenSHC::Map::Units::UT_PEASANT) {
-                        bVar4 = false;
+                        bVar4 = 0;
                     }
                     psVar5 = psVar5 + 1;
                     iVar8 = iVar8 + -1;
@@ -126,18 +134,6 @@ namespace UI {
             _unit = param_1;
             switch (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                     .buildingType) {
-            case OpenSHC::Map::Buildings::BT_IRONMINE:
-                _unit = (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
-                            .workerID[1];
-                /*
-                  added by script: "Worker:"
-                 */
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
-                    (int)(DAT_ButtonY::instance + -0x14), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-                MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
-                    _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance));
-                return;
             case OpenSHC::Map::Buildings::BT_MILL:
                 /*
                   Miller specific
@@ -148,6 +144,24 @@ namespace UI {
                                  .workerID;
                     do {
                         switch (DAT_UnitsState::instance.units[*psVar5].state.generic) {
+                        case OpenSHC::Map::Units::States::US_AIM_WEAPONUnk:
+                            uVar6 = 0;
+                            break;
+                        case OpenSHC::Map::Units::States::US_STAND_UPUnk:
+                            if (1 < uVar6) {
+                                uVar6 = 1;
+                            }
+                            break;
+                        case OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk:
+                            if (2 < uVar6) {
+                                uVar6 = 2;
+                            }
+                            break;
+                        case ((UnitState)3):
+                            if (3 < uVar6) {
+                                uVar6 = 3;
+                            }
+                            break;
                         case OpenSHC::Map::Units::States::US_DETERMINE_NEXT_STATEUnk:
                         case ((UnitState)2):
                         case OpenSHC::Map::Units::States::US_FIRE_WEAPONUnk:
@@ -159,24 +173,6 @@ namespace UI {
                         case OpenSHC::Map::Units::States::US_IDLEUnk:
                             if (5 < uVar6) {
                                 uVar6 = 5;
-                            }
-                            break;
-                        case ((UnitState)3):
-                            if (3 < uVar6) {
-                                uVar6 = 3;
-                            }
-                            break;
-                        case OpenSHC::Map::Units::States::US_RELOAD_WEAPONUnk:
-                            if (2 < uVar6) {
-                                uVar6 = 2;
-                            }
-                            break;
-                        case OpenSHC::Map::Units::States::US_AIM_WEAPONUnk:
-                            uVar6 = 0;
-                            break;
-                        case OpenSHC::Map::Units::States::US_STAND_UPUnk:
-                            if (1 < uVar6) {
-                                uVar6 = 1;
                             }
                         }
                         iVar7 = iVar7 + -1;
@@ -209,6 +205,9 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                     _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance + 10));
                 return;
+            case OpenSHC::Map::Buildings::BT_IRONMINE:
+                _unit = (int)DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
+                            .workerID[1];
             default:
                 /*
                   added by script: "Worker:"
