@@ -65,10 +65,10 @@ namespace UI {
                 }
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneRepairCost;
-                DAT_GameSynchronyState::instance.DAT_GameCommandParam3
-                    = DAT_BuildingsState::instance.buildings[_buildingID].uid;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                     = DAT_BuildingsState::instance.menuSelectedBuildingID;
+                DAT_GameSynchronyState::instance.DAT_GameCommandParam3
+                    = DAT_BuildingsState::instance.buildings[_buildingID].uid;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1
                     = DAT_BuildingsState::instance.INT_SelectedBuildingStoneWoodCost;
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
