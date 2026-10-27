@@ -121,7 +121,15 @@ namespace UI {
                 DVar1 = DWORD_00df3370::instance;
                 DVar2 = DWORD_00df3378::instance;
                 if (barrackUnitIdUnk != DAT_00df3374::instance)
-                    goto LAB_004673e5;
+                    /*
+                      Plays unit recruitment message
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        (char const*)((int)DAT_UIButtonDefinedData::instance.ButtonGmDataArray + barrackUnitIdUnk * 0x20
+                            + 0x4458));
+                DAT_00df3374::instance = barrackUnitIdUnk;
+                DWORD_00df3370::instance = _now;
+                return;
             } else {
                 barrackUnitIdUnk = DAT_00df3374::instance;
                 DVar1 = _now;
@@ -140,7 +148,6 @@ namespace UI {
             if (_now - DWORD_00df3370::instance <= 0x1f40) {
                 return;
             }
-        LAB_004673e5:
             /*
               Plays unit recruitment message
              */
