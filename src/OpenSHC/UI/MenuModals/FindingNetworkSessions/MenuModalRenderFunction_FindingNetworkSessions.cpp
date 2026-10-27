@@ -52,14 +52,11 @@ namespace UI {
                 rightColumnX - 0x13, bottom - 0x14, rightColumnX, bottom - 0x14,
                 (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             int const shadeTick = (int)UI_NetworkSessionsShadeLogic::instance + 1;
-            uint uVar1 = shadeTick / 2 & 0x8000001f;
+            int const shadeIndex = shadeTick / 2 % 32;
             UI_NetworkSessionsShadeLogic::instance = shadeTick;
-            if ((int)uVar1 < 0) {
-                uVar1 = (uVar1 - 1 | 0xffffffe0) + 1;
-            }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                (int)(DAT_ProtocolDefinedData::instance.field135_0x474[uVar1] + 0x18e), width / 2 + -0xe + x,
+                (int)(DAT_ProtocolDefinedData::instance.field135_0x474[shadeIndex] + 0x18e), width / 2 + -0xe + x,
                 y + 0x138);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if ((DAT_GameSynchronyState::instance.scrollBarIndex == -1)
