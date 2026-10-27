@@ -36273,7 +36273,7 @@ SHC_3BB0A8C1_0x004DD750 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004DD7B0 | 41.8% | Style pass, asm differs
 
-SHC_3BB0A8C1_0x004DE300 | 48.9% | Coord bases, asm differs
+SHC_3BB0A8C1_0x004DE300 | 50.0% | Sprite ids unscaled, asm diff
 
 SHC_3BB0A8C1_0x004DF2E0 | 97.8% | Reimplemented, asm differs
 
