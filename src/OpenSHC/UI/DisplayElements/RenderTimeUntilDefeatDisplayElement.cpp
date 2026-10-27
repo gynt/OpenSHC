@@ -44,8 +44,7 @@ namespace UI {
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
-        int iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
-            DAT_TextManagerObject::ptr)(
+        int iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x11),
             0x12);
@@ -85,10 +84,10 @@ namespace UI {
         if (_stateNotZero != FALSE) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
-        int left = iVar3 - iVar2;
+
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-            DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
+            DAT_PencilRenderCore::ptr)(iVar3 - iVar2 + -7, posY + -5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
         /*
           "Time Until Defeat"   added by script: "Time Until Defeat"
          */
@@ -122,10 +121,10 @@ namespace UI {
             local_c = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left + -1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)(COL_BLACK::instance.shortValue));
+            iVar3 - iVar2 + -1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)(COL_BLACK::instance.shortValue));
         if (local_c != iVar4) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                left, posY + 0x13, (((iVar4 - local_c) * iVar6) / iVar4 - iVar2) + iVar3, posY + 0x17,
+                iVar3 - iVar2, posY + 0x13, (((iVar4 - local_c) * iVar6) / iVar4 - iVar2) + iVar3, posY + 0x17,
                 (ushort)(COL_DARK_LIME::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;

@@ -26003,7 +26003,7 @@ SHC_3BB0A8C1_0x004B1EB0 | 77.8% | early return, signed div
 
 SHC_3BB0A8C1_0x004B20B0 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x004B2280 | 69.3% | early return, folded *800
+SHC_3BB0A8C1_0x004B2280 | 70.9% | one extra stack slot left
 
 SHC_3BB0A8C1_0x004B2530 | 99.5% | separate call sites, early ret
 
