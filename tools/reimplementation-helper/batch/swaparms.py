@@ -28,8 +28,8 @@ usage:
 every later instruction, which quick_diff's line diff punishes and `delta`'s mnemonic census
 does not - and it is **measurably worse**: over the 51 UI/MenuItems functions whose
 `structural_diff.py` report carries a POLARITY block it kept 22 swaps in 17 files, and on
-reccmp 24 functions came out WORSE and one better by 0.1 (`InGameMenu_MainButtons` 86.3% ->
-72.2%, `ReturnToBuildMenu` 75.2% -> 68.4%). The reason is that `delta` is a histogram: an arm
+reccmp 12 functions came out WORSE and one better by 0.1 (`InGameMenu_MainButtons` 86.3% ->
+72.9%, `ReturnToBuildMenu` 75.2% -> 68.4%, `NewEventCondition_Main` 72.2% -> 68.0%). The reason is that `delta` is a histogram: an arm
 swap barely changes which mnemonics are emitted, so a swap that lowers `delta` by one is
 mostly being rewarded for noise while it scrambles the register assignment. Prefer the default
 quick_diff gate, and keep this one for a transform that really does change the instruction mix.

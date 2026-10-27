@@ -444,8 +444,8 @@ Diff patterns that were reliable (more in the cheat sheet):
   compare - 94 sites over 51 `UI/MenuItems` functions - including the ones the decompiler wrote as
   an early return with no `else`, which `swaparms.py`'s pattern cannot match. A located site is a
   candidate and nothing more: gating the sweep on the structural score instead of `quick_diff`
-  kept 22 swaps and reccmp then made **24 functions worse and one better by 0.1**
-  (`InGameMenu_MainButtons` 86.3% -> 72.2%). `delta` is a mnemonic histogram and an arm swap
+  kept 22 swaps and reccmp then made **12 functions worse and one better by 0.1**
+  (`InGameMenu_MainButtons` 86.3% -> 72.9%). `delta` is a mnemonic histogram and an arm swap
   barely changes which mnemonics are emitted, so it rewards noise while the allocation scrambles.
   Keep the `quick_diff` gate for swaps; reccmp is the only arbiter.
 - **Both original-stream extractors used to stop at the first `ret` after a switch dispatch.** A
@@ -458,6 +458,16 @@ Diff patterns that were reliable (more in the cheat sheet):
   heuristic still fails where a function's arms end before a *later* function's table (it then
   walks on and returns nothing, as on `QueueCommandCallback` at `0x443a30`), which is what
   `--end 0xADDR` is for.
+- **`git checkout -- src/OpenSHC/<anything>` reverts the resolver flags with the sources**, because
+  the uncommitted `*.func.hpp` flags live in those same directories - so reverting a rejected
+  experiment that way silently disables the function resolvers and every number measured afterwards
+  is against a different build than the baseline. Revert with a `'*.cpp'` pathspec instead. The
+  tell is in the comparison itself: raw falls while **`norm` stays identical** (`93.5 -> 93.5`,
+  `100.0 -> 100.0`), and functions the experiment never touched appear in the WORSE list. That
+  mistake turned a real 12-function regression into an apparent 24-function one here, and
+  `enable_local_functions.py` is what puts the flags back (not the project-wide PowerShell script,
+  which enables every resolver with a `.cpp` anywhere in the tree and will not link while the build
+  list is a subset - that is the `LNK2001` wall).
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
