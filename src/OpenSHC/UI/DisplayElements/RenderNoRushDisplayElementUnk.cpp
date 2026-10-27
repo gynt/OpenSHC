@@ -34,7 +34,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004B20B0
         void RenderNoRushDisplayElementUnk(int posX, int posY, DWORD elementState)
         {
-            if (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0) {
+            if (DAT_GameState::instance.mapAndTime.skirmishNoRushTicksLeft == 0) {
                 // Plays pa paam pa pa pa paam
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     s_battlehorn_wav_005a77d8);
@@ -91,7 +91,7 @@ namespace UI {
                 left - 1, posY + 18, (barWidth / 2) + 1 + x, posY + 24, COL_BLACK::instance.shortValue);
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 19,
-                (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks * barWidth)
+                (DAT_GameState::instance.mapAndTime.skirmishNoRushTicksLeft * barWidth)
                         / DAT_GameState::instance.mapAndTime.skirmishNoRushTicksLeft
                     - (barWidth / 2) + x,
                 posY + 23, COL_DARK_LIME::instance.shortValue);

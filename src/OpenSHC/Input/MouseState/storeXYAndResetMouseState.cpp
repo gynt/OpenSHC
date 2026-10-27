@@ -24,28 +24,28 @@ namespace Input {
             this->mouseXY8[i] = 8;
         }
 
-        this->field43_0x184 = 0;
-        this->field39_0x174 = 0;
-        this->field44_0x188 = 8;
-        this->field48_0x198 = 0;
-        this->field49_0x19c = 0;
+        this->rightDragField184 = 0;
+        this->rightDragTickCount = 0;
+        this->rotateGestureRepeat = 8;
+        this->zoomGestureState = 0;
+        this->flatViewGestureState = 0;
 
         this->mapOrientationCopy1 = DAT_TileMapState::instance.mapOrientation;
         this->mapOrientationCopy2 = DAT_TileMapState::instance.mapOrientation;
         this->mapOrientationCopy3 = DAT_TileMapState::instance.mapOrientation;
 
-        this->field55_0x1b4 = 0;
+        this->rotateGestureFired = 0;
 
         this->currentTime1 = timeGetTime();
         this->currentTime2 = timeGetTime();
         this->currentTime3 = timeGetTime();
 
-        this->field53_0x1ac = 0;
-        this->field56_0x1b8 = 0;
-        this->field57_0x1bc = 0;
-        this->field58_0x1c0 = 0;
-        this->field59_0x1c4 = 0;
-        this->field60_0x1c8 = 0;
+        this->gestureElapsedMs = 0;
+        this->activeCameraGesture = 0;
+        this->rotateGestureLocked = 0;
+        this->scrollGestureLocked = 0;
+        this->flatViewGestureLocked = 0;
+        this->zoomGestureLocked = 0;
     }
 
 }

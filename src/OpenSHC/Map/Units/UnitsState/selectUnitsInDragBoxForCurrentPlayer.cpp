@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
@@ -11,6 +10,10 @@
 namespace OpenSHC {
 namespace Map {
     namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00534D10
         void UnitsState::selectUnitsInDragBoxForCurrentPlayer()
@@ -34,23 +37,23 @@ namespace Map {
                 _boxBottom = DAT_MouseState::instance.selectionBox.bottom;
             }
             this->totalUnitsInSelection = 0;
-            for (DAT_CurrentUnitSlotID::instance = 1; DAT_CurrentUnitSlotID::instance < this->maxUnitCount;
+            for (DAT_CurrentUnitSlotID::instance = 1; (int)DAT_CurrentUnitSlotID::instance < (int)this->maxUnitCount;
                 DAT_CurrentUnitSlotID::instance = DAT_CurrentUnitSlotID::instance + 1) {
                 this->units[DAT_CurrentUnitSlotID::instance].isSelected = 0;
                 if (this->units[DAT_CurrentUnitSlotID::instance].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
                     continue;
                 }
-                if (this->units[DAT_CurrentUnitSlotID::instance].dying) {
+                if (this->units[DAT_CurrentUnitSlotID::instance].dying != 0) {
                     continue;
                 }
                 if (this->units[DAT_CurrentUnitSlotID::instance].isSelectable_OR_matchTime == 0) {
                     continue;
                 }
-                if (this->units[DAT_CurrentUnitSlotID::instance].unknownTestAgainst0_2 != 0) {
+                if (this->units[DAT_CurrentUnitSlotID::instance].isHiddenInBuilding != 0) {
                     continue;
                 }
                 if (this->units[DAT_CurrentUnitSlotID::instance].state.generic
-                    == OpenSHC::Map::Units::States::US_JESTER_ROAM_TO) {
+                    == OpenSHC::Map::Units::States::US_FADE_TRANSITION) {
                     continue;
                 }
                 if (this->units[DAT_CurrentUnitSlotID::instance].ifSelectedThenPlayerID
@@ -69,13 +72,13 @@ namespace Map {
                         >= _boxBottom) {
                         continue;
                     }
-                    if (this->units[DAT_CurrentUnitSlotID::instance].spriteWidthUnk
+                    if (this->units[DAT_CurrentUnitSlotID::instance].hitboxWidth
                             + this->units[DAT_CurrentUnitSlotID::instance].drawX
                             + this->units[DAT_CurrentUnitSlotID::instance].drawXOffset
                         < _boxLeft) {
                         continue;
                     }
-                    if (this->units[DAT_CurrentUnitSlotID::instance].spriteHeightUnk
+                    if (this->units[DAT_CurrentUnitSlotID::instance].hitboxHeight
                             + this->units[DAT_CurrentUnitSlotID::instance].drawY
                             + this->units[DAT_CurrentUnitSlotID::instance].someDrawYOffset
                         < _boxTop) {

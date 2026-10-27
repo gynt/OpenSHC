@@ -12,7 +12,7 @@ namespace UI {
             void MenuModalRenderFunction_TextEditor(int x, int y, int width, int height)
             {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextEditorState_Func::setTextRenderingLogic, DAT_TextEditorState::ptr)();
+                    OpenSHC::Text::TextEditorState_Func::renderHelpTextContent, DAT_TextEditorState::ptr)();
             }
 
         }

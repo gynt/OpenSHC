@@ -8,6 +8,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Map::Logic1;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00534460

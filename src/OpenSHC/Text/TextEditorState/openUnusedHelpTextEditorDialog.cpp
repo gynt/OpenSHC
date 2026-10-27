@@ -11,7 +11,7 @@ namespace OpenSHC {
 namespace Text {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00462190
-    void TextEditorState::openUnusedHelpTextEditorDialog(int sectionId)
+    void TextEditorState::openHelpSection(int sectionId)
     {
         if (this->helpDialogVariant) {
             if (this->helpDialogVariant == 2) {
@@ -30,24 +30,24 @@ namespace Text {
             this->savedMenuViewType = DAT_GameCore::instance.currentMenuViewType;
             this->savedActiveMenuTab = DAT_GameCore::instance.activeMenuTab.tabType;
             this->savedMenuFlag = DAT_GameCore::instance.unknownAlwaysZero01;
-            this->field48_0x23960 = 1;
+            this->restoreScreenBltPending = 1;
             this->isDialogStateInitialized = TRUE;
             this->useInGameHelpHandler = FALSE;
             this->helpDialogVariant = 0;
-            this->helpDialogSubMode = 0;
-            this->useAlternateHelpTab = FALSE;
+            this->showTagSymbols = 0;
+            this->isEditorMode = FALSE;
             this->isCustomTextMode = FALSE;
             this->helpContentScrollX = 0;
             this->helpContentScrollY = 0;
             this->useWideHelpLayout = FALSE;
             DAT_UserTextHandlerState::instance.inputBufferIndex = 0;
         }
-        this->activeHelpHotspotIndex = 0;
+        this->caretTextPos = 0;
         if (sectionId == -1) {
             MACRO_CALL_MEMBER(TextEditorState_Func::closeHelpDialogAndReturnToMenu, this)();
             return;
         }
-        if (!this->useAlternateHelpTab) {
+        if (!this->isEditorMode) {
             this->isTextHelpDialogMode = TRUE;
             DAT_GameCore::instance.menuTabToSwitchTo.tabType = 0;
             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -58,7 +58,7 @@ namespace Text {
             MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                 UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR, 0);
         }
-        Menu_UnusedHelpTextEditor::instance.thousand = 0;
+        Menu_UnusedHelpTextEditor::instance.clickHighlightMs = 0;
 
         int const dialogX = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 80;
         int const dialogY = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 60;

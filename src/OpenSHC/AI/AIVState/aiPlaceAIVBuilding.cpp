@@ -16,7 +16,7 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004ED410
-    BOOLEnum AIVState::aiPlaceAIVBuilding(int playerID, int step, int isPausing)
+    BOOLEnum AIVState::aiPlaceAIVBuilding(PlayerID playerID, int step, int isPausing)
     {
         int const aivID = DAT_GameState::instance.playerDataArray[playerID].aivID;
         int x;
@@ -31,7 +31,7 @@ namespace AI {
         if (this->aivs[aivID].aivBuildingSteps[step].buildStatus == AIVBSS_disabled) {
             return FALSE;
         }
-        if (this->aivs[aivID].aivBuildingSteps[step].buildStatus == AIVBSS_insufficient_roomUnk) {
+        if (this->aivs[aivID].aivBuildingSteps[step].buildStatus == AIVBSS_insufficient_room) {
             return FALSE;
         }
         if (this->aivs[aivID].aivBuildingSteps[step].buildStatus == AIVBSS_insufficient_resources
@@ -48,7 +48,7 @@ namespace AI {
                        DAT_GameState::ptr)(mapper, playerID, FALSE)) {
             return FALSE;
         }
-        if (DAT_BuildingsState::instance.unknownCountdown01 < 20) {
+        if (DAT_BuildingsState::instance.freeBuildingSlots < 20) {
             return FALSE;
         }
         if (MACRO_CALL_MEMBER(AICState_Func::mapperIsWoodCuttersHutWhileNoWoodAvailable, DAT_AICState::ptr)(
@@ -93,8 +93,6 @@ namespace AI {
                     Commands::M_MAPPER_PITCH_DITCH,
                     MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeForCommandBuildingType,
                         DAT_TileMapState::ptr)(Commands::M_MAPPER_PITCH_DITCH),
-                    // rotation 15 is a magic value: the building ends up with rotation 0
-                    // unless DAT_TileMapState::skipPlacementCheck is set
                     15);
             }
             this->aivs[aivID].aivBuildingSteps[step].buildStatus = AIVBSS_built;
@@ -183,7 +181,7 @@ namespace AI {
             y = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[tile];
             x = tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
             int orientation = 15;
-            if (mapper == Commands::M_MAPPER_BARRACKS_ARAB || mapper == Commands::M_MAPPER_BARRACKS_EURO
+            if (mapper == Commands::M_MAPPER_BARRACKS_EURO || mapper == Commands::M_MAPPER_BARRACKS_ARAB
                 || mapper == Commands::M_MAPPER_ENGINEERS_GUILD || mapper == Commands::M_MAPPER_TUNNELERS_GUILD
                 || mapper == Commands::M_MAPPER_OIL_SMELTER) {
                 orientation = this->aivs[aivID].keepOrientation;
@@ -205,9 +203,9 @@ namespace AI {
                 || mapper == Commands::M_MAPPER_BREWER) {
                 orientation = 8;
             } else if (mapper == Commands::M_MAPPER_DRAWBRIDGE) {
-                DAT_TileMapState::instance.buildingPlacementFail = FALSE;
+                DAT_TileMapState::instance.buildingPlacementResult = FALSE;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::checkDrawbridgePlacement, DAT_TileMapState::ptr)(x, y);
-                if (DAT_TileMapState::instance.buildingPlacementFail) {
+                if (DAT_TileMapState::instance.buildingPlacementResult) {
                     return FALSE;
                 }
                 orientation = DAT_TileMapState::instance.uiBuildingRotation;
@@ -251,7 +249,7 @@ namespace AI {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareAreaForBuildingPlacement, DAT_TileMapState::ptr)(
                 playerID, x, y, mapper, buildingSize);
             // keep orientation is 0, 2, 4 or 6, halving it gives the index of the part offsets
-            if (mapper == Commands::M_MAPPER_BARRACKS_EURO || mapper == Commands::M_MAPPER_BARRACKS_ARAB) {
+            if (mapper == Commands::M_MAPPER_BARRACKS_ARAB || mapper == Commands::M_MAPPER_BARRACKS_EURO) {
                 // the three fields in front of the barracks
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareAreaForBuildingPlacement, DAT_TileMapState::ptr)(
                     playerID,
@@ -274,6 +272,7 @@ namespace AI {
                     DAT_TerrainDefinedData::instance.BuildingPartsOffsets[this->aivs[aivID].keepOrientation / 2][2].y
                         + y,
                     mapper, buildingSize);
+
             } else if (mapper == Commands::M_MAPPER_ENGINEERS_GUILD || mapper == Commands::M_MAPPER_TUNNELERS_GUILD) {
                 // the guild field
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareAreaForBuildingPlacement, DAT_TileMapState::ptr)(
@@ -286,8 +285,8 @@ namespace AI {
             } else if (mapper == Commands::M_MAPPER_OIL_SMELTER) {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::prepareAreaForBuildingPlacement, DAT_TileMapState::ptr)(
                     playerID,
-                    DAT_TerrainDefinedData::instance.field63_0x19c[this->aivs[aivID].keepOrientation / 2].x + x,
-                    DAT_TerrainDefinedData::instance.field63_0x19c[this->aivs[aivID].keepOrientation / 2].y + y, mapper,
+                    DAT_TerrainDefinedData::instance.oilSmelterPartOffsetByRot[this->aivs[aivID].keepOrientation / 2].x + x,
+                    DAT_TerrainDefinedData::instance.oilSmelterPartOffsetByRot[this->aivs[aivID].keepOrientation / 2].y + y, mapper,
                     buildingSize);
             }
 
@@ -296,21 +295,21 @@ namespace AI {
                     mapper),
                 orientation);
             int const placedID = DAT_TileMapState::instance.placedBuildingID;
-            if (!DAT_TileMapState::instance.buildingPlacementFail) {
-                DAT_BuildingsState::instance.buildings[placedID].field202_0x2c8 = 1;
+            if (!DAT_TileMapState::instance.buildingPlacementResult) {
+                DAT_BuildingsState::instance.buildings[placedID].placedByAIV = 1;
                 MACRO_CALL_MEMBER(AICState_Func::setupWorkshopProductionType, DAT_AICState::ptr)(playerID, placedID);
             }
-            if (!DAT_TileMapState::instance.buildingPlacementFail) {
+            if (!DAT_TileMapState::instance.buildingPlacementResult) {
                 this->aivs[aivID].aivBuildingSteps[step].buildStatus = AIVBSS_built;
             } else if (mapper == Commands::M_MAPPER_WHEATFARM || mapper == Commands::M_MAPPER_HOPSFARM
                 || mapper == Commands::M_MAPPER_APPLEFARM || mapper == Commands::M_MAPPER_CATTLEFARM) {
-                this->aivs[aivID].aivBuildingSteps[step].buildStatus = AIVBSS_insufficient_roomUnk;
+                this->aivs[aivID].aivBuildingSteps[step].buildStatus = AIVBSS_insufficient_room;
             } else {
                 this->aivs[aivID].aivBuildingSteps[step].buildStatus = AIVBSS_insufficient_resources;
             }
             this->aivs[aivID].aivBuildingSteps[step].wait
                 = this->aivs[aivID].aivBuildingSteps[step].buildStatus == AIVBSS_built ? 10 : 16;
-            if (!DAT_TileMapState::instance.buildingPlacementFail) {
+            if (!DAT_TileMapState::instance.buildingPlacementResult) {
                 return TRUE;
             }
         }

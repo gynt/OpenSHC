@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace VideoOptions {
 
+            /**
+             * Modal render callback: draws the 'Video Options' header banner and a blended black box (x+0x66..0xB2,
+             * y+0xD5..0xFC) behind one option widget.
+             */
             void __cdecl MenuModalRenderFunction_VideoOptions(int x, int y, int width, int height);
 
         } // namespace VideoOptions

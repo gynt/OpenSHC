@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479CF0
         void SoundSystem::setupSampleForNextSound(int soundIndex, int sampleVolumePercentage, int samplePan)
         {
-            if (!this->waveOutOpenUnk_0x8 || (this->soundFileCurrSampleNum_0x28c[soundIndex] < 0)) {
+            if (!this->soundSystemInitialized || (this->soundFileCurrSampleNum_0x28c[soundIndex] < 0)) {
                 return;
             }
 

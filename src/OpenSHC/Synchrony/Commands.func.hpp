@@ -46,8 +46,8 @@ namespace Synchrony {
         AnnounceTeamsAndPositions;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00480DB0,
-            &OpenSHC::Synchrony::Commands::ClickNavigateMenuOrEscape)
-        ClickNavigateMenuOrEscape;
+            &OpenSHC::Synchrony::Commands::ClearOrDeselectUnitSelection)
+        ClearOrDeselectUnitSelection;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00480E60, &OpenSHC::Synchrony::Commands::MakeUnitSelection)
@@ -130,8 +130,8 @@ namespace Synchrony {
         ClickGiveUnitsInstruction;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00482550,
-            &OpenSHC::Synchrony::Commands::ClickSomethingWithDrawBridgeUnk)
-        ClickSomethingWithDrawBridgeUnk;
+            &OpenSHC::Synchrony::Commands::ClickOpenOrCloseDrawbridge)
+        ClickOpenOrCloseDrawbridge;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00482620, &OpenSHC::Synchrony::Commands::ClickBuyOrSell)
@@ -194,8 +194,8 @@ namespace Synchrony {
         ResyncStatus2;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00484450,
-            &OpenSHC::Synchrony::Commands::ResetSyncStatusUnk)
-        ResetSyncStatusUnk;
+            &OpenSHC::Synchrony::Commands::ResetSyncStatus)
+        ResetSyncStatus;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004844A0, &OpenSHC::Synchrony::Commands::ClickRepairTower)
@@ -214,8 +214,8 @@ namespace Synchrony {
         ClickExtendRallyPoint;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00484960,
-            &OpenSHC::Synchrony::Commands::SiegeEngineRelated)
-        SiegeEngineRelated;
+            &OpenSHC::Synchrony::Commands::AddUnitToSelection)
+        AddUnitToSelection;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00484A00, &OpenSHC::Synchrony::Commands::TribeRelated1)
@@ -246,8 +246,8 @@ namespace Synchrony {
         ResyncZone;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00484F30, &OpenSHC::Synchrony::Commands::KickPlayerUnk)
-        KickPlayerUnk;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00484F30, &OpenSHC::Synchrony::Commands::KickPlayer)
+        KickPlayer;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00485020,
             &OpenSHC::Synchrony::Commands::CommandSelectionReplenishAmmo)
@@ -278,16 +278,16 @@ namespace Synchrony {
         SomePlayerNameUpdateCommand;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00485520,
-            &OpenSHC::Synchrony::Commands::FlagsAndBraziersCommandUnk)
-        FlagsAndBraziersCommandUnk;
+            &OpenSHC::Synchrony::Commands::ClickDeleteFlagsAndBraziers)
+        ClickDeleteFlagsAndBraziers;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004855C0,
             &OpenSHC::Synchrony::Commands::NotifyLaggingPlayer)
         NotifyLaggingPlayer;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00485650,
-            &OpenSHC::Synchrony::Commands::SomeKindOfMultiplayerPingUnk)
-        SomeKindOfMultiplayerPingUnk;
+            &OpenSHC::Synchrony::Commands::ShareNotRespondingResult)
+        ShareNotRespondingResult;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004856E0,
             &OpenSHC::Synchrony::Commands::ShareGameStatePartialHashes)
@@ -338,8 +338,8 @@ namespace Synchrony {
         ActiveTacticalPowers;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004893C0,
-            &OpenSHC::Synchrony::Commands::InitialAnnounceToHost)
-        InitialAnnounceToHost;
+            &OpenSHC::Synchrony::Commands::InitiateAnnounceHost)
+        InitiateAnnounceHost;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00489410,
             &OpenSHC::Synchrony::Commands::AssignPlayerIDToPlayerSlot)
@@ -354,8 +354,8 @@ namespace Synchrony {
         ClickTauntOrChat;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00489880, &OpenSHC::Synchrony::Commands::AutoSaveTriggered)
-        AutoSaveTriggered;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00489880, &OpenSHC::Synchrony::Commands::ExecuteSaveGameCommand)
+        ExecuteSaveGameCommand;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00489AC0, &OpenSHC::Synchrony::Commands::SetPlayerNameUnk)
@@ -390,8 +390,8 @@ namespace Synchrony {
         SendResyncPlayerData;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0048A510, &OpenSHC::Synchrony::Commands::SendResyncUnknown)
-        SendResyncUnknown;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0048A510, &OpenSHC::Synchrony::Commands::SendResyncGlobals)
+        SendResyncGlobals;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0048A710, &OpenSHC::Synchrony::Commands::SendResyncEntity)

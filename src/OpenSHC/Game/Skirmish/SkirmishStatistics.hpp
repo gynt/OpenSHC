@@ -23,16 +23,19 @@ namespace Game {
             short finalMaxPopulation[9]; // 0x00000358 length: 18
             byte finalMaxGoodThings[9]; // 0x0000036A length: 9
             byte padding1; // 0x00000373 length: 1
+            // measured in game speed * seconds
             int finalTimeAlive[9]; // 0x00000374 length: 36
             int finalKillMatrix[9][9]; // 0x00000398 length: 324
-            int finalBuildingsBurned[9]; // 0x000004DC length: 36
+            // [109 0x00517790] indexed by the attacker playerID and incremented when a building hit by this (non-
+            // fire) damage reaches 0 HP; finalBuidingsDestroyed[owner] is the victim-side counter
+            int finalBuildingsDestroyedByPlayer[9]; // 0x000004DC length: 36
             int finalFoodProduced[9]; // 0x00000500 length: 36
             int finalIronProduced[9]; // 0x00000524 length: 36
             int finalStoneProduced[9]; // 0x00000548 length: 36
             int finalWoodProduced[9]; // 0x0000056C length: 36
             int finalPitchProduced[9]; // 0x00000590 length: 36
             byte finalMaxBadThings[9]; // 0x000005B4 length: 9
-            char finalKilledLords[9]; // 0x000005BD length: 9
+            byte finalKilledLords[9]; // 0x000005BD length: 9
             byte padding2[2]; // 0x000005C6 length: 2
             int finalWeaponsProduced[9]; // 0x000005C8 length: 36
             int finalBuidingsDestroyed[9]; // 0x000005EC length: 36
@@ -41,8 +44,7 @@ namespace Game {
             int finalTroopsProduced[9]; // 0x00000658 length: 36
             int finalGoodsRecieved[9]; // 0x0000067C length: 36
             int finalGoodsSent[9]; // 0x000006A0 length: 36
-            short unknownShortArray1[9]; // 0x000006C4 length: 18
-            short unknownShortArray2[9]; // 0x000006D6 length: 18
+            int unusedUnk[9]; // 0x000006C4 length: 36
             int finalDateOfDeathInMonths[9]; // 0x000006E8 length: 36
             int yearStart; // 0x0000070C length: 4
             int monthStart; // 0x00000710 length: 4

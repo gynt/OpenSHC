@@ -28,7 +28,7 @@ namespace Map {
                 this->buildings[i].renderAnimation = 0;
                 // state/field117_0x11a and killingPitField/field119_0x11e are cleared as ints
                 *(int*)&this->buildings[i].state = 0;
-                *(int*)&this->buildings[i].killingPitField = 0;
+                *(int*)&this->buildings[i].subAnimState2 = 0;
                 for (int r = 0; r < 25; ++r) {
                     this->buildings[i].resources[r] = 0;
                 }

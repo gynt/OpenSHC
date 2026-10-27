@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 namespace OpenSHC {
@@ -11,10 +10,10 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00533960
         BOOLEnum UnitsState::isAtSecondaryDestination(int unitID)
         {
-            if (this->units[unitID].destinationX_2Unk != this->units[unitID].x) {
+            if (this->units[unitID].savedDestinationX != this->units[unitID].x) {
                 return FALSE;
             }
-            return (BOOLEnum)(this->units[unitID].destinationY_2Unk == this->units[unitID].y);
+            return (BOOLEnum)(this->units[unitID].savedDestinationY == this->units[unitID].y);
         }
 
     }

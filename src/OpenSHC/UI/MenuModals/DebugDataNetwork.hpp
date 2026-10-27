@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataNetwork {
 
+            /**
+             * Debug modal render function: forwards to GameSynchronyState::renderDebugDataNetwork.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataNetwork(int x, int y, int width, int height);
 
         } // namespace DebugDataNetwork

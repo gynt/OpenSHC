@@ -46,8 +46,8 @@ namespace Map {
             isAttackWaveComplete;
 
             MACRO_FUNCTION_RESOLVER(void (TroopValueState::*)(int, int, int, SomeTribeBehaviorType), false,
-                Address::SHC_3BB0A8C1_0x00518380, &TroopValueState::sortAttackInfoTribeIDArrayBasedOn)
-            sortAttackInfoTribeIDArrayBasedOn;
+                Address::SHC_3BB0A8C1_0x00518380, &TroopValueState::collectWaveTribesSortedByTypePriority)
+            collectWaveTribesSortedByTypePriority;
 
             MACRO_FUNCTION_RESOLVER(void (TroopValueState::*)(SomeTribeBehaviorType, SomeTribeBehaviorType, int, int),
                 false, Address::SHC_3BB0A8C1_0x00518870, &TroopValueState::applyTribeBehaviorTypes)
@@ -129,8 +129,8 @@ namespace Map {
                 &TroopValueState::calculateTile2PeoplValueClosestToUnit)
             calculateTile2PeoplValueClosestToUnit;
 
-            MACRO_FUNCTION_RESOLVER(
-                int (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051A220, &TroopValueState::findEnemyLord)
+            MACRO_FUNCTION_RESOLVER(int (TroopValueState::*)(undefined4), false, Address::SHC_3BB0A8C1_0x0051A220,
+                &TroopValueState::findEnemyLord)
             findEnemyLord;
 
             MACRO_FUNCTION_RESOLVER(void (TroopValueState::*)(int, int), false, Address::SHC_3BB0A8C1_0x0051A2D0,
@@ -146,8 +146,8 @@ namespace Map {
             setWide3;
 
             MACRO_FUNCTION_RESOLVER(undefined4 (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051A5B0,
-                &TroopValueState::getClosestWideValueBasedOnPlayer)
-            getClosestWideValueBasedOnPlayer;
+                &TroopValueState::findWideTargetClosestToUnitAndCamp)
+            findWideTargetClosestToUnitAndCamp;
 
             MACRO_FUNCTION_RESOLVER(void (TroopValueState::*)(int, int), false, Address::SHC_3BB0A8C1_0x0051A720,
                 &TroopValueState::setMoat3)
@@ -161,7 +161,7 @@ namespace Map {
                 &TroopValueState::findNearestDiggableMoatPoint)
             findNearestDiggableMoatPoint;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (TroopValueState::*)(), false, Address::SHC_3BB0A8C1_0x0051A920,
+            MACRO_FUNCTION_RESOLVER(undefined4 (TroopValueState::*)(), false, Address::SHC_3BB0A8C1_0x0051A920,
                 &TroopValueState::findTribeWithMoatAttackBehavior)
             findTribeWithMoatAttackBehavior;
 
@@ -282,7 +282,7 @@ namespace Map {
                 Address::SHC_3BB0A8C1_0x0051BF20, &TroopValueState::shouldLightPitchBasedOnTroopValue)
             shouldLightPitchBasedOnTroopValue;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051BF70,
+            MACRO_FUNCTION_RESOLVER(undefined4 (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051BF70,
                 &TroopValueState::giveLightPitchInstructionToUnitClosestToPitch)
             giveLightPitchInstructionToUnitClosestToPitch;
 
@@ -299,10 +299,10 @@ namespace Map {
             getValueOfTroopType;
 
             MACRO_FUNCTION_RESOLVER(void (TroopValueState::*)(), false, Address::SHC_3BB0A8C1_0x0051C470,
-                &TroopValueState::queueOilThrowForIdleArchers)
-            queueOilThrowForIdleArchers;
+                &TroopValueState::queueOilThrowForIdleEngineers)
+            queueOilThrowForIdleEngineers;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051C570,
+            MACRO_FUNCTION_RESOLVER(undefined4 (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051C570,
                 &TroopValueState::ifNecessaryThrowOilAutomatically)
             ifNecessaryThrowOilAutomatically;
 
@@ -342,7 +342,7 @@ namespace Map {
                 &TroopValueState::decideAndExecuteTribeAttackAction)
             decideAndExecuteTribeAttackAction;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051D450,
+            MACRO_FUNCTION_RESOLVER(undefined4 (TroopValueState::*)(int), false, Address::SHC_3BB0A8C1_0x0051D450,
                 &TroopValueState::moveTribeToNearbyGatehouse)
             moveTribeToNearbyGatehouse;
 

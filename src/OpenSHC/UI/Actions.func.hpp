@@ -17,8 +17,8 @@ namespace UI {
         using OpenSHC::Game::Resources::ResourceType;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x0042C620,
-            &OpenSHC::UI::Actions::LaunchSinglePlayerGameUnk)
-        LaunchSinglePlayerGameUnk;
+            &OpenSHC::UI::Actions::LaunchStandaloneMapGame)
+        LaunchStandaloneMapGame;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004381D0, &OpenSHC::UI::Actions::PlaceUnit)

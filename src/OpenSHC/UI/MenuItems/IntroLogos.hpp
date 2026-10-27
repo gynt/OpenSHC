@@ -13,6 +13,11 @@ namespace UI {
     namespace MenuItems {
         namespace IntroLogos {
 
+            /**
+             * Intro logos click handler: on mouse release after a click, advances the intro logo sequence (step 0
+             * -> 1 -> 2, resetting blend and timestamp and re-entering MVT_INTRO_LOGOS); after the last logo
+             * switches to the intro video view.
+             */
             void __cdecl MenuItemActionHandler_IntroLogos_General(int unused, ...);
 
         } // namespace IntroLogos

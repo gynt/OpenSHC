@@ -13,13 +13,14 @@ namespace IO {
     namespace Graphics {
         typedef enum GmImageType {
 
+            GIT_NONE = 0, // 0x00000000
             GIT_InterfaceElement = 1, // 0x00000001
             GIT_Animation = 2, // 0x00000002
             GIT_Tileset = 3, // 0x00000003
             GIT_Font = 4, // 0x00000004
             GIT_UncompressedImage = 5, // 0x00000005
             GIT_CompressedImage = 6, // 0x00000006
-            GIT_UncompressedImageUnk = 7 // 0x00000007
+            GIT_UncompressedImageWithColorKey = 7 // 0x00000007
 
         } GmImageType;
 

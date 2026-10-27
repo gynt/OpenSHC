@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace AlliesRequestGoods {
 
+            /**
+             * Renders the Allies 'Request Goods' modal title.
+             */
             void __cdecl MenuModalRenderFunction_AlliesRequestGoods(int x, int y, int width, int height);
 
         } // namespace AlliesRequestGoods

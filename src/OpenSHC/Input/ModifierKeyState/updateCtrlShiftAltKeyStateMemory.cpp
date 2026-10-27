@@ -4,7 +4,7 @@ namespace OpenSHC {
 namespace Input {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00468A20
-    void ModifierKeyState::updateCtrlShiftAltKeyStateMemory()
+    void ModifierKeyState::pollModifierKeyStates()
     {
         this->ctrl = FALSE;
         this->shift = FALSE;

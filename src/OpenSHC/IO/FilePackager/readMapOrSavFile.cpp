@@ -22,7 +22,7 @@
 #include "OpenSHC/Globals/DAT_SkirmishLobbySetupStructureLongMapName.hpp"
 #include "OpenSHC/Globals/DAT_SoundEffectsHelperData1.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
-#include "OpenSHC/Globals/TIME_ReceivedMessage_2.hpp"
+#include "OpenSHC/Globals/TIME_PausedSince.hpp"
 
 namespace OpenSHC {
 namespace IO {
@@ -53,8 +53,8 @@ namespace IO {
             return;
         }
 
-        if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState == 5) {
-            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicState = 1;
+        if (DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicMode == 5) {
+            DAT_SoundEffectsHelperData1::instance.SEC_Section1079.musicMode = 1;
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
         }
 
@@ -64,7 +64,7 @@ namespace IO {
             sizeof(DAT_GameState::instance.mapAndTime), 0, &DAT_GameState::instance.mapAndTime);
 
         DAT_GameCore::instance.temporaryTextBufferOfSize1000[0] = '\0';
-        DAT_GameCore::instance.mapU4Int0 = 0;
+        DAT_GameCore::instance.isKingOfTheHill = 0;
         DAT_GameCore::instance.mapU4Int1 = 0;
 
         for (int i = 0; i < 9; ++i) {
@@ -77,8 +77,8 @@ namespace IO {
         DAT_GameCore::instance.mapU4Int3_balanced = 0;
         DAT_GameState::instance.mapAndTime.skirmishExtremeMode = 0;
         DAT_GameState::instance.mapAndTime.skirmishExtremeMode2 = 0;
-        DAT_GameCore::instance.isVictoryOrDefeatUnk = 0;
-        DAT_GameCore::instance.altRToggleMinimapHideWildlife = 0;
+        DAT_GameCore::instance.pendingForcedVictory = 0;
+        DAT_GameCore::instance.minimapAllyEnemyColorMode = 0;
 
         for (int i = 0; i < 8; ++i) {
             DAT_MinimapViewState::instance.DAT_MapU4B64.keepPositions[i].x = -1;
@@ -129,8 +129,8 @@ namespace IO {
                             MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor,
                                 &DAT_GameCore::instance.U2_mapType_singleOrMulti,
                                 sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti));
-                            MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &DAT_GameCore::instance.mapU2MiddleBytes,
-                                sizeof(DAT_GameCore::instance.mapU2MiddleBytes));
+                            MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &DAT_GameCore::instance.availableKeepFlags,
+                                sizeof(DAT_GameCore::instance.availableKeepFlags));
                             MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &DAT_GameCore::instance.mapU2PlayersCount,
                                 sizeof(DAT_GameCore::instance.mapU2PlayersCount));
 
@@ -166,8 +166,8 @@ namespace IO {
 
                                 MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &_size, sizeof(_size));
                                 if (_size) {
-                                    MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &DAT_GameCore::instance.mapU4Int0,
-                                        sizeof(DAT_GameCore::instance.mapU4Int0));
+                                    MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, &DAT_GameCore::instance.isKingOfTheHill,
+                                        sizeof(DAT_GameCore::instance.isKingOfTheHill));
 
                                     if (_size > 4) {
                                         MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor,
@@ -216,7 +216,7 @@ namespace IO {
         {
             int _hardcodedMapTextAddressUnk;
             MACRO_CALL(Global_Func::GetStringBasedOnHardcodedMaps)(
-                MACRO_CALL_MEMBER(IO::ResourceManager_Func::getCurrentResourceCoreNameUnk, DAT_ResourceManager::ptr)(),
+                MACRO_CALL_MEMBER(IO::ResourceManager_Func::getCurrentResourceBaseName, DAT_ResourceManager::ptr)(),
                 &_hardcodedMapTextAddressUnk);
             if (_hardcodedMapTextAddressUnk) {
                 DAT_GameCore::instance.descriptionUseStringTable = 1;
@@ -224,92 +224,92 @@ namespace IO {
             }
         }
 
-        this->versionNumOfCurrentFileTypeUnk = this->directory.magicNumOfFileType;
+        this->currentFileFormatVersion = this->directory.fileFormatVersion;
         if (_loadAndSaveBarFunc) {
             (*_loadAndSaveBarFunc)(50);
         }
-        this->currentlyReadFileSectionIndex = 0;
+        this->currentSectionIndex = 0;
         this->directory.filePayloadSize = 0;
 
         MapSectionAddress* _sectionAddressListStart = mapSectionAddrArray;
-        while (this->currentlyReadFileSectionIndex < this->directory.sectionCount) {
+        while (this->currentSectionIndex < this->directory.sectionCount) {
             mapSectionAddrArray = _sectionAddressListStart;
 
-            if (this->directory.id[this->currentlyReadFileSectionIndex] == 1095
-                && this->directory.uncompressedSize[this->currentlyReadFileSectionIndex] > 4) {
-                ++this->currentlyReadFileSectionIndex;
+            if (this->directory.id[this->currentSectionIndex] == 1095
+                && this->directory.uncompressedSize[this->currentSectionIndex] > 4) {
+                ++this->currentSectionIndex;
                 continue;
             }
 
-            while (this->currentlyReadFileSectionIndex < 150) {
+            while (this->currentSectionIndex < 150) {
                 this->currentlyReadFileSectionMemory = mapSectionAddrArray->address;
                 this->currentlyReadFileSectionSize = mapSectionAddrArray->size;
                 if (this->currentlyReadFileSectionMemory <= NULL
-                    || this->directory.id[this->currentlyReadFileSectionIndex] == mapSectionAddrArray->sectionId) {
+                    || this->directory.id[this->currentSectionIndex] == mapSectionAddrArray->sectionId) {
                     break;
                 }
                 ++mapSectionAddrArray;
             }
 
             if (this->currentlyReadFileSectionMemory > NULL && !mapSectionAddrArray->unknown) {
-                if (!this->directory.isCompressed[this->currentlyReadFileSectionIndex]
-                    || this->CRASHES_saveUncompressedUnk) {
+                if (!this->directory.isCompressed[this->currentSectionIndex]
+                    || this->bypassCompression) {
 
                     if (mapSectionAddrArray->sectionId == 1124
-                        && this->directory.uncompressedSize[this->currentlyReadFileSectionIndex]
+                        && this->directory.uncompressedSize[this->currentSectionIndex]
                             == sizeof(SkirmishLobbySetupStructureLongName)) {
                         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                             sizeof(SkirmishLobbySetupStructureLongName),
-                            (void*)((int)this->tempMem + this->directory.offset[this->currentlyReadFileSectionIndex]),
+                            (void*)((int)this->tempMem + this->directory.offset[this->currentSectionIndex]),
                             DAT_SkirmishLobbySetupStructureLongMapName::ptr);
                         MACRO_CALL(Map::Version_Func::UpgradeOldSection1124)();
                     } else {
                         MACRO_CALL_MEMBER(LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
-                            this->directory.uncompressedSize[this->currentlyReadFileSectionIndex],
-                            (void*)((int)this->tempMem + this->directory.offset[this->currentlyReadFileSectionIndex]),
+                            this->directory.uncompressedSize[this->currentSectionIndex],
+                            (void*)((int)this->tempMem + this->directory.offset[this->currentSectionIndex]),
                             this->currentlyReadFileSectionMemory);
                     }
 
                 } else {
                     MACRO_CALL_MEMBER(DecoderState_Func::decodeData, DAT_DecoderState::ptr)(
-                        (void*)((int)this->tempMem + this->directory.offset[this->currentlyReadFileSectionIndex]),
+                        (void*)((int)this->tempMem + this->directory.offset[this->currentSectionIndex]),
                         this->currentlyReadFileSectionMemory);
                 }
             }
 
             if (_loadAndSaveBarFunc) {
                 (*_loadAndSaveBarFunc)(
-                    (this->currentlyReadFileSectionIndex * 950) / (this->directory.sectionCount + -1) + 50);
+                    (this->currentSectionIndex * 950) / (this->directory.sectionCount + -1) + 50);
             }
-            ++this->currentlyReadFileSectionIndex;
+            ++this->currentSectionIndex;
         }
 
         MACRO_CALL(OS_Func::_free_base)(this->tempMem);
         MACRO_CALL(OS_Func::_free_base)(_previewOrDescriptionUnk);
 
         this->tempMem = NULL;
-        DAT_SoundEffectsHelperData1::instance.DAT_NegativeCountdownMin1ToMin4Becomes0 = 0;
-        DAT_SoundEffectsHelperData1::instance.field13_0x50 = 0;
-        DAT_SoundSystemState::instance.currentSoundID_0x3278 = -1;
-        DAT_GameCore::instance.field37_0xa0 = DAT_GameCore::instance.mapTimeInTicks;
+        DAT_SoundEffectsHelperData1::instance.oudFollowUpTracksLeft = 0;
+        DAT_SoundEffectsHelperData1::instance.fluteFollowUpTracksRemaining = 0;
+        DAT_SoundSystemState::instance.pendingMusicId = -1;
+        DAT_GameCore::instance.mapTimeAtLoad = DAT_GameCore::instance.mapTimeInTicks;
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
             DAT_GameCore::instance.historicCampaignNumber = 4;
 
-            if (DAT_GameCore::instance.missionNumber1to20 <= 15) {
+            if (DAT_GameCore::instance.missionNumber <= 15) {
                 DAT_GameCore::instance.historicCampaignNumber = 3;
             }
 
-            if (DAT_GameCore::instance.missionNumber1to20 <= 10) {
+            if (DAT_GameCore::instance.missionNumber <= 10) {
                 DAT_GameCore::instance.historicCampaignNumber = 2;
             }
 
-            if (DAT_GameCore::instance.missionNumber1to20 <= 5) {
+            if (DAT_GameCore::instance.missionNumber <= 5) {
                 DAT_GameCore::instance.historicCampaignNumber = 1;
             }
         }
 
-        DAT_GameCore::instance.timeSum_2 = timeGetTime() - DAT_GameCore::instance.gameDuration;
-        TIME_ReceivedMessage_2::instance = 0;
+        DAT_GameCore::instance.gameStartTimeMs = timeGetTime() - DAT_GameCore::instance.gameDuration;
+        TIME_PausedSince::instance = 0;
     }
 
 } // namespace IO

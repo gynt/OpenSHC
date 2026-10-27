@@ -1,21 +1,21 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0040BEE0
         void BuildingsState::extendResourceCountdownForPlayerBuildingsOfType(
             BuildingType buildingType, int someCountdown, int playerID)
         {
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                    && this->buildings[buildingID].buildingType == buildingType
-                    && this->buildings[buildingID].owner == playerID
-                    && this->buildings[buildingID].resourceRelatedCountDown <= someCountdown) {
-                    this->buildings[buildingID].resourceRelatedCountDown = someCountdown;
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState == BLS_NORMAL && this->buildings[i].buildingType == buildingType
+                    && this->buildings[i].owner == playerID
+                    && this->buildings[i].deliveryActivityCountdown <= someCountdown) {
+                    this->buildings[i].deliveryActivityCountdown = someCountdown;
                 }
             }
         }

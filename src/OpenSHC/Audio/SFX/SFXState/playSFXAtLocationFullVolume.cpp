@@ -45,7 +45,7 @@ namespace Audio {
 
             this->DAT_SoundStructures[_soundStructureID].scheduledPlayCounter++;
             this->DAT_SoundStructures[_soundStructureID].volumePercentage
-                = this->DAT_SoundStructures[_soundStructureID].baseVolumePercentageUnk;
+                = this->DAT_SoundStructures[_soundStructureID].fileVolume;
             this->DAT_SoundStructures[_soundStructureID].samplePan = samplePan;
             ++this->DAT_SFXCounter1;
             if (this->DAT_SFXCounter1 > this->highestSFXCounter) {

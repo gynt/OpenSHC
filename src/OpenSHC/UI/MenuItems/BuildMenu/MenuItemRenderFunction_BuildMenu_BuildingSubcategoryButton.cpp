@@ -2,7 +2,7 @@
 #include "OpenSHC/UI/MenuItems/BuildMenu.func.hpp"
 #include "OpenSHC/UI/MenuItems/General.func.hpp"
 
-#include "OpenSHC/Globals/DAT_ButtonUnknownZero.hpp"
+#include "OpenSHC/Globals/DAT_ButtonDisabled.hpp"
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 
 namespace OpenSHC {
@@ -18,10 +18,10 @@ namespace UI {
                     != 0) {
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                    DAT_ButtonUnknownZero::instance = 0;
+                    DAT_ButtonDisabled::instance = 0;
                     return;
                 }
-                DAT_ButtonUnknownZero::instance = 1;
+                DAT_ButtonDisabled::instance = 1;
             }
 
         }

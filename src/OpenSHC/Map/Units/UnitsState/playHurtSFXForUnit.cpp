@@ -1,6 +1,5 @@
-#include "../UnitsState.func.hpp"
-
 #include "OpenSHC/Audio/SFX/SFXState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/DE/SHCDE/eSFX.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 
@@ -9,6 +8,9 @@
 namespace OpenSHC {
 namespace Map {
     namespace Units {
+
+        using OpenSHC::DE::SHCDE::eSFX;
+        using OpenSHC::Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005300B0
         void UnitsState::playHurtSFXForUnit(int unitID)
@@ -19,7 +21,7 @@ namespace Map {
             if (this->units[unitID].healthPercentage <= 0xa) {
                 return;
             }
-            if (this->units[unitID].isStalked != 0) {
+            if (this->units[unitID].isAnimalOrAmbient != 0) {
                 return;
             }
             int _unitType = this->units[unitID].unitType;

@@ -6,7 +6,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_00ed278c.hpp"
+#include "OpenSHC/Globals/g_extremeAdFrameCounter.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition3.hpp"
 
 namespace OpenSHC {
@@ -25,7 +25,7 @@ namespace UI {
                     DAT_MenuModalComposition3::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::BuildExtremeDemoIntroScript)();
                 MACRO_CALL(OpenSHC::Rendering_Func::TicksStartCounter)();
-                DAT_00ed278c::instance = 0;
+                g_extremeAdFrameCounter::instance = 0;
             }
 
         }

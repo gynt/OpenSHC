@@ -8,7 +8,7 @@ namespace Text {
     {
         if (this->isDialogStateInitialized) {
             MACRO_CALL_MEMBER(TextEditorState_Func::drawHelpWindowBackground, this)();
-            MACRO_CALL_MEMBER(TextEditorState_Func::setTextRenderingLogic, this)();
+            MACRO_CALL_MEMBER(TextEditorState_Func::renderHelpTextContent, this)();
         }
     }
 

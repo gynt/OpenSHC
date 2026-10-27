@@ -10,7 +10,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0044BCA0
         void SFXState::loadSFX(int param_1)
         {
-            if (!DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag) {
+            if (!DAT_TextureRenderCoreObject::instance.gmAllowRelativeAliasing) {
                 MACRO_CALL_MEMBER(SFXState_Func::loadWavSounds, this)(
                     (char*)DAT_SpeechDefinedData::instance.WavFileGroups[0]);
                 MACRO_CALL_MEMBER(SFXState_Func::readVolumeFileAndSetupSoundVolumes, this)();

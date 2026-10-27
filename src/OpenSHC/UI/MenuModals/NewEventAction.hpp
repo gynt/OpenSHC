@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace NewEventAction {
 
+            /**
+             * Renders the 'Event Actions' modal header and, for event types 5, 0xB-0x14, 0x1D and 0x1E (repeatable
+             * actions), the 'Repeat (months)' and 'Repeat Count' labels.
+             */
             void __cdecl MenuModalRenderFunction_NewEventAction(int x, int y, int width, int height);
 
         } // namespace NewEventAction

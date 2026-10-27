@@ -39,8 +39,8 @@ namespace UI {
             finalizeDirectDrawShutdown;
 
             MACRO_FUNCTION_RESOLVER(void (WindowAndDirectDraw::*)(LPRECT, LPRECT), false,
-                Address::SHC_3BB0A8C1_0x00467E50, &WindowAndDirectDraw::adjustForNotExclusiveFullscreenUnk)
-            adjustForNotExclusiveFullscreenUnk;
+                Address::SHC_3BB0A8C1_0x00467E50, &WindowAndDirectDraw::clipBlitRectsToScreenInWindowedMode)
+            clipBlitRectsToScreenInWindowedMode;
 
             MACRO_FUNCTION_RESOLVER(BOOLEnum (WindowAndDirectDraw::*)(), false, Address::SHC_3BB0A8C1_0x00467EC0,
                 &WindowAndDirectDraw::restoreDXSurfaces)
@@ -67,8 +67,8 @@ namespace UI {
             createCrusaderWindow;
 
             MACRO_FUNCTION_RESOLVER(void (WindowAndDirectDraw::*)(), false, Address::SHC_3BB0A8C1_0x0046FFB0,
-                &WindowAndDirectDraw::prepareWindowAndDDrawUnk)
-            prepareWindowAndDDrawUnk;
+                &WindowAndDirectDraw::recreateDirectDraw)
+            recreateDirectDraw;
 
             MACRO_FUNCTION_RESOLVER(void (WindowAndDirectDraw::*)(int), false, Address::SHC_3BB0A8C1_0x00470040,
                 &WindowAndDirectDraw::renderBltAndFlip)
@@ -95,8 +95,8 @@ namespace UI {
             reinitWindow;
 
             MACRO_FUNCTION_RESOLVER(void (WindowAndDirectDraw::*)(BOOLEnum, ScreenResolutionEnum), false,
-                Address::SHC_3BB0A8C1_0x004729B0, &WindowAndDirectDraw::prepareWindowAndDDraw_2Unk)
-            prepareWindowAndDDraw_2Unk;
+                Address::SHC_3BB0A8C1_0x004729B0, &WindowAndDirectDraw::changeResolution)
+            changeResolution;
 
             MACRO_FUNCTION_RESOLVER(void (WindowAndDirectDraw::*)(int), false, Address::SHC_3BB0A8C1_0x00479540,
                 &WindowAndDirectDraw::takeScreenshot)

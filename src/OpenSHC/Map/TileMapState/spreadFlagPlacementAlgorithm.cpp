@@ -9,7 +9,7 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x00501180
     int TileMapState::spreadFlagPlacementAlgorithm(int playerID, uint x, uint y)
     {
-        return MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::spreadAlgorithmForFlagsAndBraziersUnk,
+        return MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findOrRemoveOwnDecorationsInRange,
             DAT_PathFindingState::ptr)(playerID, x, y, 4, 0);
     }
 

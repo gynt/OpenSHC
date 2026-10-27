@@ -17,7 +17,7 @@ namespace IO {
         }
 
         this->surface = (unsigned short*)surface;
-        this->mbr_0x47c = 0;
+        this->destRowPixels = 0;
         char* _Filename
             = MACRO_CALL_MEMBER(ResourceManager_Func::getFileNameOfCurrentActiveResource, DAT_ResourceManager::ptr)();
         int _fileDescriptor = MACRO_CALL(OS_Func::_ucrt_open)(_Filename, _O_BINARY, 0);
@@ -27,8 +27,8 @@ namespace IO {
         if (this->biBitCount == 8) {
             MACRO_CALL_MEMBER(BitMapState_Func::copyBitmapToTextureBuffer, this)();
         }
-        this->step2 = 1;
-        this->step = 1;
+        this->colStep = 1;
+        this->rowStep = 1;
         if (this->biBitCount == 24) {
             MACRO_CALL_MEMBER(BitMapState_Func::blitBitmap24BitToSurface565, this)(0);
         } else if (this->biBitCount == 8) {

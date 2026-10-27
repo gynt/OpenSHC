@@ -1,7 +1,7 @@
 #include "OpenSHC/UI/Credits.func.hpp"
 
-#include "OpenSHC/Globals/DAT_00ed3120.hpp"
-#include "OpenSHC/Globals/DAT_00ed3124.hpp"
+#include "OpenSHC/Globals/g_rankingGamesScrollOffset.hpp"
+#include "OpenSHC/Globals/g_leaderboardFilterMode.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -10,8 +10,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9270
         void __cdecl SetActiveCreditsSequenceIndex(undefined4 sequenceIndex)
         {
-            DAT_00ed3124::instance = sequenceIndex;
-            DAT_00ed3120::instance = 0;
+            g_leaderboardFilterMode::instance = sequenceIndex;
+            g_rankingGamesScrollOffset::instance = 0;
         }
 
     }

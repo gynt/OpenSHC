@@ -12,7 +12,7 @@ namespace UI {
             void MenuModalRenderFunction_DisplayAiLordMessage(int x, int y, int width, int height)
             {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Rendering::Bink::AIMessageQueue_Func::playAiLordMessage, DAT_VideoBikQueue::ptr)(x, y);
+                    OpenSHC::Rendering::Bink::AIMessageQueue_Func::renderAiLordMessageModal, DAT_VideoBikQueue::ptr)(x, y);
             }
 
         }

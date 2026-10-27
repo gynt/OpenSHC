@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataMapData {
 
+            /**
+             * Debug modal render function: forwards to WildlifeState::renderDebugDataMapData.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataMapData(int x, int y, int width, int height);
 
         } // namespace DebugDataMapData

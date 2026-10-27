@@ -12,10 +12,9 @@ namespace OpenSHC {
 namespace Map {
     typedef enum MapConstants {
 
-        MC_MAP_XY_LIMIT_INCLUSIVE = 399, // 0x0000018F
-        MC_MAP_XY_LIMIT_MIN_1 = 399, // 0x0000018F
-        MC_MAP_XY_LIMIT = 400, // 0x00000190
-        MC_MAP_TILES_COUNT = 80400 // 0x00013A10
+        MAP_XY_LIMIT_INCLUSIVE = 399, // 0x0000018F
+        MAP_XY_LIMIT = 400, // 0x00000190
+        MAP_TILES_COUNT = 80400 // 0x00013A10
 
     } MapConstants;
 

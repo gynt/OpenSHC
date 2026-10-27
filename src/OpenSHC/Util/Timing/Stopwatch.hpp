@@ -21,6 +21,7 @@ namespace Util {
         // SIZE: 0x00000010
         class Stopwatch {
         public:
+            // Set after stop.
             dword duration_0x0; // 0x00000000 length: 4
             BOOLEnum running_0x4; // 0x00000004 length: 4
             dword startTime_0x8; // 0x00000008 length: 4
@@ -35,10 +36,19 @@ namespace Util {
             ~Stopwatch() {};
 
             // Constructor
+            /**
+             * Stopwatch constructor: not running, duration 0.
+             */
             Stopwatch* Constructor_Stopwatch();
 
+            /**
+             * Starts the stopwatch: stores timeGetTime() as start time and sets running.
+             */
             void start();
 
+            /**
+             * Stops a running stopwatch: stores stop time, clears running and sets duration = stop - start (ms).
+             */
             void stop();
         };
 

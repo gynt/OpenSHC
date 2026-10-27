@@ -7,10 +7,10 @@ namespace Synchrony {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004652A0
     void Actions::SetBuildingProductionType(
-        undefined4 playerID, int buildingID, ushort producedItemType, int buildingUID)
+        undefined4 playerID, int buildingID, int producedItemType, int buildingUID)
     {
         if (DAT_BuildingsState::instance.buildings[buildingID].uid == buildingUID) {
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemType = producedItemType;
+            DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = producedItemType;
         }
     }
 

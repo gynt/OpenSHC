@@ -12,8 +12,8 @@ namespace OpenSHC {
 namespace Commands {
     typedef enum GameCommandParameterReadWrite {
 
-        GCPRW_SERIALIZE_INTO_PARAM_1 = 0, // 0x00000000
-        GCPRW_DESERIALIZE_FROM_PARAM1 = 1 // 0x00000001
+        GCPRW_WRITE_VAR_TO_STREAM = 0, // 0x00000000
+        GCPRW_READ_STREAM_TO_VAR = 1 // 0x00000001
 
     } GameCommandParameterReadWrite;
 

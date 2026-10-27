@@ -3,7 +3,6 @@
 #include "OpenSHC/AI/AIVUnitType.hpp"
 #include "OpenSHC/AI/AIVUnitTypeInt.hpp"
 #include "OpenSHC/AI/Tribes/AIVUnitTypeMaxLocationPair.hpp"
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_SkirmishDefinedData.hpp"
@@ -17,17 +16,15 @@ namespace AI {
     using OpenSHC::AI::AIVUnitType;
     using OpenSHC::AI::AIVUnitTypeInt;
     using OpenSHC::AI::Tribes::AIVUnitTypeMaxLocationPair;
-    using OpenSHC::Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE;
-    using OpenSHC::Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D4130
     void AICState::sendRangedUnitTribesToAIVSlotsOrKeepIfNervous(int playerID)
     {
         for (int i = 0; i < 5; i++) {
-            int const count = DAT_GameState::instance.playerDataArray[playerID].aivUnitLocationSlotLocationCount
-                                  [DAT_SkirmishDefinedData::instance.MaxAIVLocationForRangedUnits[i].aivUnitType];
+            int count = DAT_GameState::instance.playerDataArray[playerID].aivUnitLocationSlotLocationCount
+                            [DAT_SkirmishDefinedData::instance.MaxAIVLocationForRangedUnits[i].aivUnitType];
             for (int j = 0; j < count; j++) {
-                int const tribeID
+                int tribeID
                     = DAT_GameState::instance.playerDataArray[playerID]
                           .aiTribeIDs[DAT_SkirmishDefinedData::instance.MaxAIVLocationForRangedUnits[i].tribeArrayOffset
                               + j];
@@ -43,9 +40,9 @@ namespace AI {
 
                 if (DAT_GameState::instance.playerDataArray[playerID].aiNervousActionsTracker > 0) {
                     if ((DAT_TileMapState::instance.LogicLayer[DAT_UnitsState::instance
-                                 .units[DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID]
+                                 .units[DAT_TribesState::instance.tribes[tribeID].leaderUnitID]
                                  .tile]
-                            & (L_KEEP_NON_MANOR_HOUSE | L_WALL_OR_GATEHOUSE))
+                            & 0x10000100U)
                         == 0) {
                         MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::sendUnitsToKeep, this)(tribeID, playerID);
                     }

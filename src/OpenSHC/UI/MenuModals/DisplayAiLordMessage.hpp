@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DisplayAiLordMessage {
 
+            /**
+             * AI lord message modal render function: plays/draws the current AI lord Bink message at (x, y).
+             */
             void __cdecl MenuModalRenderFunction_DisplayAiLordMessage(int x, int y, int width, int height);
 
         } // namespace DisplayAiLordMessage

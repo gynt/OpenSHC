@@ -12,7 +12,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00455250
         void TextureRenderCore::transformUncompressedImageWithMarkerUnkToRGB565(int imageIndex)
         {
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::transformRawWithMarkerUnkToRGB555To565,
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::transformRawSkippingMagentaRGB555To565,
                 this)(DAT_GMImageOffsets::instance[imageIndex], DAT_GMImageSizes::instance[imageIndex]);
         }
 

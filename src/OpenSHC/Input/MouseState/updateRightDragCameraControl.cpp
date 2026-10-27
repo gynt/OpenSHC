@@ -13,21 +13,21 @@ namespace Input {
         int iVar6 = this->mapOrientationCopy3;
 
         this->mouseBasedEvent = 0;
-        this->field41_0x17c = 0;
-        this->field40_0x178 = 0;
-        this->field56_0x1b8 = 0;
+        this->rightDragField17c = 0;
+        this->rightDragScrollSpeed = 0;
+        this->activeCameraGesture = 0;
 
         DWORD DVar4 = timeGetTime();
 
         this->currentTime3 = DVar4;
-        this->field53_0x1ac = DVar4 - this->currentTime2;
+        this->gestureElapsedMs = DVar4 - this->currentTime2;
 
-        ++this->field39_0x174;
-        if (this->field53_0x1ac > this->field54_0x1b0) {
+        ++this->rightDragTickCount;
+        if (this->gestureElapsedMs > this->gestureTimeoutMs) {
             this->currentTime2 = DVar4;
-            this->field55_0x1b4 = 0;
-            this->field48_0x198 = 0;
-            this->field49_0x19c = 0;
+            this->rotateGestureFired = 0;
+            this->zoomGestureState = 0;
+            this->flatViewGestureState = 0;
         }
 
         int iVar5
@@ -35,48 +35,48 @@ namespace Input {
                 DAT_DirectionAlgorithmState::ptr)(
                 this->storedScreenSpaceX, this->storedScreenSpaceY, this->screenSpaceX, this->screenSpaceY, 4);
 
-        if (iVar5 < 12 || this->field58_0x1c0) {
-            this->field40_0x178 = 0;
+        if (iVar5 < 12 || this->scrollGestureLocked) {
+            this->rightDragScrollSpeed = 0;
         } else if (iVar5 < 28) {
-            this->field40_0x178 = iVar5 / 2;
+            this->rightDragScrollSpeed = iVar5 / 2;
             this->mouseBasedEvent = 2;
         } else {
-            this->field56_0x1b8 = 1;
-            this->field57_0x1bc = 1;
-            this->field59_0x1c4 = 1;
-            this->field60_0x1c8 = 1;
-            this->field40_0x178 = 40;
+            this->activeCameraGesture = 1;
+            this->rotateGestureLocked = 1;
+            this->flatViewGestureLocked = 1;
+            this->zoomGestureLocked = 1;
+            this->rightDragScrollSpeed = 40;
             this->mouseBasedEvent = 1;
         }
 
         iVar5 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::getMouseVectorLengthBasedOnDirection,
             DAT_DirectionAlgorithmState::ptr)(
             this->storedScreenSpaceX, this->storedScreenSpaceY, this->screenSpaceX, this->screenSpaceY, 0);
-        if (iVar5 < 22 || this->field57_0x1bc) {
-            this->field39_0x174 = 0;
-            this->field55_0x1b4 = 0;
+        if (iVar5 < 22 || this->rotateGestureLocked) {
+            this->rightDragTickCount = 0;
+            this->rotateGestureFired = 0;
 
-            if (this->field56_0x1b8 == 2 || iVar5 < 22) {
+            if (this->activeCameraGesture == 2 || iVar5 < 22) {
                 this->currentTime2 = DVar4;
             }
         } else {
-            this->field58_0x1c0 = 1;
-            this->field59_0x1c4 = 1;
-            this->field60_0x1c8 = 1;
-            this->field56_0x1b8 = 2;
-            this->field54_0x1b0 = 1500;
+            this->scrollGestureLocked = 1;
+            this->flatViewGestureLocked = 1;
+            this->zoomGestureLocked = 1;
+            this->activeCameraGesture = 2;
+            this->gestureTimeoutMs = 1500;
 
-            if (!this->field55_0x1b4) {
-                this->field55_0x1b4 = 1;
+            if (!this->rotateGestureFired) {
+                this->rotateGestureFired = 1;
 
                 iVar6 = this->mapOrientationCopy3 + 6;
                 if (iVar6 >= 8) {
                     iVar6 -= 8;
                 }
 
-                this->field44_0x188 = 0;
+                this->rotateGestureRepeat = 0;
             } else {
-                this->field44_0x188 = 8;
+                this->rotateGestureRepeat = 8;
             }
         }
 
@@ -90,22 +90,22 @@ namespace Input {
                 DAT_DirectionAlgorithmState::ptr)(
                 this->storedScreenSpaceX, this->storedScreenSpaceY, this->screenSpaceX, this->screenSpaceY, 2)
                 < 55
-            || this->field60_0x1c8) {
+            || this->zoomGestureLocked) {
 
-            this->field39_0x174 = 0;
-            if (this->field56_0x1b8 == 3) {
+            this->rightDragTickCount = 0;
+            if (this->activeCameraGesture == 3) {
                 this->currentTime2 = DVar4;
             }
         } else {
-            this->field58_0x1c0 = 1;
-            this->field59_0x1c4 = 1;
-            this->field57_0x1bc = 1;
-            this->field54_0x1b0 = 2000;
-            this->field56_0x1b8 = 3;
+            this->scrollGestureLocked = 1;
+            this->flatViewGestureLocked = 1;
+            this->rotateGestureLocked = 1;
+            this->gestureTimeoutMs = 2000;
+            this->activeCameraGesture = 3;
 
-            if (this->field48_0x198 != 2) {
+            if (this->zoomGestureState != 2) {
                 this->mouseBasedEvent = 4;
-                this->field48_0x198 = 1;
+                this->zoomGestureState = 1;
             }
         }
 
@@ -113,22 +113,22 @@ namespace Input {
                 DAT_DirectionAlgorithmState::ptr)(
                 this->storedScreenSpaceX, this->storedScreenSpaceY, this->screenSpaceX, this->screenSpaceY, 6)
                 < 55
-            || this->field59_0x1c4) {
+            || this->flatViewGestureLocked) {
 
-            this->field39_0x174 = 0;
-            if (this->field56_0x1b8 == 4) {
+            this->rightDragTickCount = 0;
+            if (this->activeCameraGesture == 4) {
                 this->currentTime2 = DVar4;
             }
         } else {
-            this->field58_0x1c0 = 1;
-            this->field60_0x1c8 = 1;
-            this->field57_0x1bc = 1;
-            this->field54_0x1b0 = 2000;
-            this->field56_0x1b8 = 4;
+            this->scrollGestureLocked = 1;
+            this->zoomGestureLocked = 1;
+            this->rotateGestureLocked = 1;
+            this->gestureTimeoutMs = 2000;
+            this->activeCameraGesture = 4;
 
-            if (this->field49_0x19c != 2) {
+            if (this->flatViewGestureState != 2) {
                 this->mouseBasedEvent = 5;
-                this->field49_0x19c = 1;
+                this->flatViewGestureState = 1;
             }
         }
     }

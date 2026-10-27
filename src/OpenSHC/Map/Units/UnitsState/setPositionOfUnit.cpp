@@ -1,4 +1,4 @@
-#include "../UnitsState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 
@@ -9,16 +9,16 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0053E900
         void UnitsState::setPositionOfUnit(int unitID, uint x, uint y, undefined4 height)
         {
-            if (x > 399 || y > 399) {
+            if (x > 0x18f || y > 0x18f) {
                 return;
             }
             if (DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[y * 400 + x] == 0) {
                 return;
             }
             this->units[unitID].currentIndexInPathPlan = 0;
-            this->units[unitID].tunnelerFinishedDigging = 0;
-            this->units[unitID].field105_0xe8 = FALSE;
-            this->units[unitID].movementRelated = 8;
+            this->units[unitID].movementState = 0;
+            this->units[unitID].pendingPositionValid = 0;
+            this->units[unitID].subTileStepProgress = 8;
             MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setupUnitSharingCurrentTilePosition, this)(unitID);
             this->units[unitID].microXPosition = (short)x * 8 + 4;
             this->units[unitID].microYPosition = (short)y * 8 + 4;

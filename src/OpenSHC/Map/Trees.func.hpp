@@ -18,8 +18,8 @@ namespace Map {
         UpdateTree1;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2640, &OpenSHC::Map::Trees::UpdateTree5)
-        UpdateTree5;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2640, &OpenSHC::Map::Trees::updateTree5SwayAnimationFrame)
+        updateTree5SwayAnimationFrame;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F26C0, &OpenSHC::Map::Trees::UpdateAppleTree)

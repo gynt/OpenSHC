@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace SkirmishConnectionOptions {
 
+            /**
+             * Modal render callback: draws the 'Connection options' header banner (text group 0x4F entry 0x5D).
+             */
             void __cdecl MenuModalRenderFunction_SkirmishConnectionOptions(int x, int y, int width, int height);
 
         } // namespace SkirmishConnectionOptions

@@ -10,7 +10,7 @@ namespace Map {
             int i = 0;
             for (; i < 200; ++i) {
                 if (this->tribes[tribeID].unitSelectionBitMasked[i] != 0) {
-                    this->tribes[tribeID].highestID = i;
+                    this->tribes[tribeID].firstOccupiedMaskWord = i;
                     break;
                 }
             }

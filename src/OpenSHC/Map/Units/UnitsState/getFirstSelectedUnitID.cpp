@@ -13,7 +13,7 @@ namespace Map {
         using OpenSHC::Commands::GameCommandType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00535DF0
-        void UnitsState::getFirstSelectedUnitID(undefined4 param_1)
+        void UnitsState::queueAddUnitToSelectionCommand(undefined4 param_1)
         {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = DAT_TribesState::instance.DAT_CurrentTribeID;

@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuViews {
         namespace MissionSelect {
 
+            /**
+             * Per-frame handler of the mission-select view: draws the background and, when no modal dialog is open,
+             * a yellow frame and the "Mission" header banner.
+             */
             void __cdecl MenuView_MissionSelect_DoEveryFrame();
 
         } // namespace MissionSelect

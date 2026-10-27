@@ -31,7 +31,7 @@ namespace AI {
         int i;
         int playerID;
 
-        if ((MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)() != FALSE)
+        if ((MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::isInGameView, DAT_GameCore::ptr)() != FALSE)
             && (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
 
             if (this->aiTauntResponseTimeWindow == 0) {
@@ -43,21 +43,35 @@ namespace AI {
             }
 
             candidateCount = 0;
-            // Players 1..8, unrolled 4 at a time. The outer loop has to step by 4 and the inner 4 can be
-            // left to the compiler, which unrolls them into the same instructions as four written-out
-            // copies. A plain 1..8 loop does not work (0.92 -> 0.67, and the same for every spelling of
-            // it): MSVC unrolls all 8 and, with the trip count known, constant-folds every index into an
-            // absolute address and an immediate. The original keeps the index in a register, so its
-            // source had an induction variable surviving the unroll - which is what stepping by 4 gives.
+            // Players 1..8, manually unrolled by 4 in the original.
             for (playerID = 1; playerID < 9; playerID += 4) {
-                for (int offset = 0; offset < 4; offset++) {
-                    if (DAT_GameSynchronyState::instance.currentAIArray[playerID + offset] != 0
-                        && DAT_GameState::instance.mapAndTime.playerTeams[playerID + offset]
-                            != DAT_GameState::instance.mapAndTime
-                                .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
-                        candidates[candidateCount] = playerID + offset;
-                        candidateCount++;
-                    }
+                if ((DAT_GameSynchronyState::instance.currentAIArray[playerID] != 0)
+                    && (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
+                        != DAT_GameState::instance.mapAndTime
+                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID])) {
+                    candidates[candidateCount] = playerID;
+                    candidateCount++;
+                }
+                if ((DAT_GameSynchronyState::instance.currentAIArray[playerID + 1] != 0)
+                    && (DAT_GameState::instance.mapAndTime.playerTeams[playerID + 1]
+                        != DAT_GameState::instance.mapAndTime
+                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID])) {
+                    candidates[candidateCount] = playerID + 1;
+                    candidateCount++;
+                }
+                if ((DAT_GameSynchronyState::instance.currentAIArray[playerID + 2] != 0)
+                    && (DAT_GameState::instance.mapAndTime.playerTeams[playerID + 2]
+                        != DAT_GameState::instance.mapAndTime
+                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID])) {
+                    candidates[candidateCount] = playerID + 2;
+                    candidateCount++;
+                }
+                if ((DAT_GameSynchronyState::instance.currentAIArray[playerID + 3] != 0)
+                    && (DAT_GameState::instance.mapAndTime.playerTeams[playerID + 3]
+                        != DAT_GameState::instance.mapAndTime
+                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID])) {
+                    candidates[candidateCount] = playerID + 3;
+                    candidateCount++;
                 }
             }
 
@@ -68,7 +82,7 @@ namespace AI {
                     total += DAT_SkirmishDefinedData::instance
                                  .MaxBreachTribes[DAT_GameState::instance.playerDataArray[candidates[i]].aiType
                                      + OpenSHC::AI::AIT_FREDERICK]
-                                 .tribeType;
+                                 .firstTribeSlot;
                 }
 
                 if (total != 0) {
@@ -81,7 +95,7 @@ namespace AI {
                         roll -= DAT_SkirmishDefinedData::instance
                                     .MaxBreachTribes[DAT_GameState::instance.playerDataArray[playerID].aiType
                                         + OpenSHC::AI::AIT_FREDERICK]
-                                    .tribeType;
+                                    .firstTribeSlot;
                         if (roll < 0) {
                             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[1] = 1;
                             DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[2] = 1;
@@ -95,7 +109,7 @@ namespace AI {
                                 - DAT_SkirmishDefinedData::instance
                                       .MaxBreachTribes[DAT_GameState::instance.playerDataArray[playerID].aiType
                                           + OpenSHC::AI::AIT_FREDERICK]
-                                      .tribeCount;
+                                      .tribeSlotCount;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = playerID;
                             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TAUNT_OR_CHAT);

@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace WaitingForHost {
 
+            /**
+             * Modal render callback: prints centred 'Waiting for host...' (TEXT_MULTIPLAYER_CONNECTION 0x14).
+             */
             void __cdecl MenuModalRenderFunction_WaitingForHost(int x, int y, int width, int height);
 
         } // namespace WaitingForHost

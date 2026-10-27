@@ -13,22 +13,31 @@ namespace AI {
     namespace AIV {
         typedef enum AIVBuildingType2 {
 
+            AIVBT_NONE = 0, // 0x00000000
             AIVBT_HIGH_WALL = 10, // 0x0000000A
             AIVBT_LOW_WALL = 11, // 0x0000000B
             AIVBT_CRENEL = 12, // 0x0000000C
+            AIVBuildingType2Int__AIVBT_HIGH_CRENAL = 12, // 0x0000000C
             AIVBT_LOW_CRENEL = 13, // 0x0000000D
+            AIVBuildingType2Int__AIVBT_LOW_CRENAL = 13, // 0x0000000D
             AIVBT_STAIRS_1 = 14, // 0x0000000E
             AIVBT_STAIRS_2 = 15, // 0x0000000F
             AIVBT_STAIRS_3 = 16, // 0x00000010
             AIVBT_STAIRS_4 = 17, // 0x00000011
             AIVBT_STAIRS_5 = 18, // 0x00000012
-            AIVBT_STAIRS_6Unk = 19, // 0x00000013
+            AIVBT_STAIRS_6 = 19, // 0x00000013
+            AIVBuildingType2Int__AIVBT_STAIRS_6 = 19, // 0x00000013
             AIVBT_MOAT_A = 20, // 0x00000014
+            AIVBuildingType2Int__AIVBT_MOAT_a = 20, // 0x00000014
             AIVBT_MOAT_B = 21, // 0x00000015
+            AIVBuildingType2Int__AIVBT_MOAT_b = 21, // 0x00000015
             AIVBT_MOAT_C = 22, // 0x00000016
+            AIVBuildingType2Int__AIVBT_MOAT_c = 22, // 0x00000016
             AIVBT_MOAT_D = 23, // 0x00000017
+            AIVBuildingType2Int__AIVBT_MOAT_d = 23, // 0x00000017
             AIVBT_PITCHDITCH_2 = 24, // 0x00000018
             AIVBT_MAPPER_UNUSED_5 = 25, // 0x00000019
+            AIVBuildingType2Int__AIVBT_UNUSED_5 = 25, // 0x00000019
             AIVBT_TOWER1 = 30, // 0x0000001E
             AIVBT_TOWER2 = 31, // 0x0000001F
             AIVBT_TOWER3 = 32, // 0x00000020
@@ -94,15 +103,7 @@ namespace AI {
             AIVBT_STRETCHING_RACK = 105, // 0x00000069
             AIVBT_GIBBET = 106, // 0x0000006A
             AIVBT_CHOPPING_BLOCK = 107, // 0x0000006B
-            AIVBT_DUNKINGSTOOL = 108, // 0x0000006C
-            AIVBuildingType2Int__AIVBT_HIGH_CRENAL = 12, // 0x0000000C
-            AIVBuildingType2Int__AIVBT_LOW_CRENAL = 13, // 0x0000000D
-            AIVBuildingType2Int__AIVBT_STAIRS_6 = 19, // 0x00000013
-            AIVBuildingType2Int__AIVBT_MOAT_a = 20, // 0x00000014
-            AIVBuildingType2Int__AIVBT_MOAT_b = 21, // 0x00000015
-            AIVBuildingType2Int__AIVBT_MOAT_c = 22, // 0x00000016
-            AIVBuildingType2Int__AIVBT_MOAT_d = 23, // 0x00000017
-            AIVBuildingType2Int__AIVBT_UNUSED_5 = 25 // 0x00000019
+            AIVBT_DUNKINGSTOOL = 108 // 0x0000006C
 
         } AIVBuildingType2;
 

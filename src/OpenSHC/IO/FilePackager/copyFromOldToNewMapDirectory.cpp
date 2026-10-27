@@ -8,7 +8,7 @@ namespace IO {
     {
         this->directory.filePayloadSize = this->oldDirectory.fileSizeWithoutDirectory;
         this->directory.sectionCount = this->oldDirectory.sectionCount;
-        this->directory.magicNumOfFileType = this->oldDirectory.magicNumOfFileType;
+        this->directory.fileFormatVersion = this->oldDirectory.fileFormatVersion;
         this->directory.emptyConst0 = this->oldDirectory.emptyConst0;
         this->directory.emptyConst1 = this->oldDirectory.emptyConst1;
         this->directory.emptyConst2 = this->oldDirectory.emptyConst2;

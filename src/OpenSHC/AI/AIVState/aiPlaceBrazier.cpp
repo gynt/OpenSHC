@@ -13,7 +13,7 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004ED300
-    void AIVState::aiPlaceBrazier(int playerID)
+    void AIVState::aiPlaceBrazier(PlayerID playerID)
     {
         if (DAT_GameState::instance.playerDataArray[playerID].aivUnitLocationSlotLocationCount[AIVUT_BRAZIER] <= 0) {
             return;
@@ -33,7 +33,7 @@ namespace AI {
             if ((int)height <= 0) {
                 continue;
             }
-            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0, playerID,
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntity, DAT_EntityState::ptr)(0, playerID,
                 playerID,
                 (tile
                     - DAT_ViewportRenderState::instance

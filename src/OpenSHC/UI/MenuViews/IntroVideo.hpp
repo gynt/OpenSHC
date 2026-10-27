@@ -13,8 +13,16 @@ namespace UI {
     namespace MenuViews {
         namespace IntroVideo {
 
+            /**
+             * Prepare handler of the intro video view: positions the current menu, clears the screen, starts
+             * intro.bik and records the start time.
+             */
             void __cdecl MenuView_IntroVideo_Prepare();
 
+            /**
+             * Per-frame handler of the intro video: after 400 ms a click stops the Bink, and once playback has
+             * ended switches to the game-start enter-name view.
+             */
             void __cdecl MenuView_IntroVideo_DoEveryFrame();
 
         } // namespace IntroVideo

@@ -15,8 +15,8 @@ namespace Audio {
             typedef enum SHC_SoundStream {
 
                 SND_STR_MUSIC = 0, // 0x00000000
-                SND_STR_SFX_1Unk = 1, // 0x00000001
-                SND_STR_SFX_2Unk = 2, // 0x00000002
+                SND_STR_AMBIENT_1 = 1, // 0x00000001
+                SND_STR_AMBIENT_2 = 2, // 0x00000002
                 SND_STR_SPEECH_1 = 3, // 0x00000003
                 SND_STR_SPEECH_2 = 4 // 0x00000004
 

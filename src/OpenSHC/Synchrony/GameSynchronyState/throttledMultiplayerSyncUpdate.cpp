@@ -1,5 +1,4 @@
-#include "../GameSynchronyState.func.hpp"
-
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -17,8 +16,8 @@ namespace Synchrony {
             return;
         }
         DWORD const now = timeGetTime();
-        if (now - this->lastCommandReceiveTime > 10) {
-            this->lastCommandReceiveTime = now;
+        if (now - this->lastPeriodicSyncTime > 10) {
+            this->lastPeriodicSyncTime = now;
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::sendPeriodicSyncMessages, this)();
         }
     }

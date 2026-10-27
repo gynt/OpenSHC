@@ -1,4 +1,4 @@
-#include "../AICState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
@@ -11,7 +11,7 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CDFD0
     void AICState::setAttackPrimeInfo(int playerID, int attackedPlayerID)
     {
-        int const tile = DAT_GameState::instance.playerDataArray[playerID].shortestDistanceTile;
+        int tile = DAT_GameState::instance.playerDataArray[playerID].shortestDistanceTile;
         DAT_TroopValueState::instance.attackInfo.startZone = (char)DAT_TileMapState::instance.AIZoneLayer[tile];
         DAT_TroopValueState::instance.attackInfo.startCon = (short)DAT_TileMapState::instance.PathConnectionLayer[tile];
         DAT_TroopValueState::instance.attackInfo.zoneSize

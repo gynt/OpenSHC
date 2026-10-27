@@ -11,9 +11,9 @@
 #include "OpenSHC/Globals/DAT_SFXFadeState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_SpeechDefinedData.hpp"
-#include "OpenSHC/Globals/FLOAT_00b986f8.hpp"
-#include "OpenSHC/Globals/FLOAT_00b98704.hpp"
-#include "OpenSHC/Globals/FLOAT_00b98708.hpp"
+#include "OpenSHC/Globals/ambientFadeLevel.hpp"
+#include "OpenSHC/Globals/ambientLastTimeMs.hpp"
+#include "OpenSHC/Globals/ambientNowTimeMs.hpp"
 #include "OpenSHC/Globals/SEC_RNG.hpp"
 
 namespace OpenSHC {
@@ -30,29 +30,29 @@ namespace Audio {
         {
             int local_54 = -1;
             int iVar8 = 0;
-            FLOAT_00b98708::instance = (float)timeGetTime();
-            if (FLOAT_00b98708::instance == FLOAT_00b98704::instance) {
-                FLOAT_00b98704::instance = FLOAT_00b98708::instance - 1.0f;
+            ambientNowTimeMs::instance = (float)timeGetTime();
+            if (ambientNowTimeMs::instance == ambientLastTimeMs::instance) {
+                ambientLastTimeMs::instance = ambientNowTimeMs::instance - 1.0f;
             }
-            float _fadeDelta = (FLOAT_00b98708::instance - FLOAT_00b98704::instance) * 0.0625f;
+            float _fadeDelta = (ambientNowTimeMs::instance - ambientLastTimeMs::instance) * 0.0625f;
             if (_fadeDelta > 20.0) {
                 _fadeDelta = 20.0;
             }
-            FLOAT_00b98704::instance = FLOAT_00b98708::instance;
-            if (DAT_SpeechDefinedData::instance.currentStreamID == -1) {
+            ambientLastTimeMs::instance = ambientNowTimeMs::instance;
+            if (DAT_SpeechDefinedData::instance.currentAmbientType == -1) {
                 DAT_SFXFadeDeltaAccumulator::instance += _fadeDelta;
             } else {
                 DAT_SFXFadeDeltaAccumulator::instance = 0.0;
             }
-            if (!MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)()) {
+            if (!MACRO_CALL_MEMBER(Game::GameCore_Func::isInGameView, DAT_GameCore::ptr)()) {
                 for (int i = 0; i < 10; ++i) {
                     DAT_SFXAmbientEventCountersRescaled::instance[i] = 0;
                     this->ambientEventCounters[i][0] = 0;
                 }
                 MACRO_CALL_MEMBER(MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
-                    MSS::enums::SND_STR_SFX_1Unk);
+                    MSS::enums::SND_STR_AMBIENT_1);
                 DAT_SFXFadeState::instance = SFXFS_IDLE;
-                DAT_SpeechDefinedData::instance.currentStreamID = -1;
+                DAT_SpeechDefinedData::instance.currentAmbientType = -1;
             } else {
                 for (int i = 0; i < 10; ++i) {
                     int _datum = this->ambientEventCounters[i][0];
@@ -88,88 +88,88 @@ namespace Audio {
                 }
             }
             if (DAT_SFXAmbientEventCountersRescaled::instance[7] <= 3
-                || (DAT_SpeechDefinedData::instance.currentStreamID == 6
+                || (DAT_SpeechDefinedData::instance.currentAmbientType == 6
                     && DAT_SFXFadeState::instance != SFXFS_FADE_OUT)
                 || DAT_SFXAmbientEventCountersRescaled::instance[6] == 100) {
                 if (10 < DAT_SFXAmbientEventCountersRescaled::instance[8]) {
                     MACRO_CALL_MEMBER(SFX::SFXState_Func::tweakVolume, this)(
-                        8, _fadeDelta, DAT_SpeechDefinedData::instance.currentStreamID);
+                        8, _fadeDelta, DAT_SpeechDefinedData::instance.currentAmbientType);
                 } else {
                     MACRO_CALL_MEMBER(SFX::SFXState_Func::tweakVolume, this)(
-                        0, _fadeDelta, DAT_SpeechDefinedData::instance.currentStreamID);
+                        0, _fadeDelta, DAT_SpeechDefinedData::instance.currentAmbientType);
                 }
             } else if (DAT_SFXAmbientEventCountersRescaled::instance[7] > 28) {
                 MACRO_CALL_MEMBER(SFX::SFXState_Func::tweakVolume, this)(
-                    7, _fadeDelta, DAT_SpeechDefinedData::instance.currentStreamID);
+                    7, _fadeDelta, DAT_SpeechDefinedData::instance.currentAmbientType);
             } else {
                 MACRO_CALL_MEMBER(SFX::SFXState_Func::tweakVolume, this)(
-                    8, _fadeDelta, DAT_SpeechDefinedData::instance.currentStreamID);
+                    8, _fadeDelta, DAT_SpeechDefinedData::instance.currentAmbientType);
             }
 
-            if (DAT_SFXFadeState::instance == SFXFS_IDLE || DAT_SpeechDefinedData::instance.currentStreamID != -1) {
+            if (DAT_SFXFadeState::instance == SFXFS_IDLE || DAT_SpeechDefinedData::instance.currentAmbientType != -1) {
                 if (DAT_SFXFadeState::instance == SFXFS_FADE_IN) {
-                    FLOAT_00b986f8::instance += _fadeDelta + _fadeDelta;
-                    if (100.0 < FLOAT_00b986f8::instance) {
+                    ambientFadeLevel::instance += _fadeDelta + _fadeDelta;
+                    if (100.0 < ambientFadeLevel::instance) {
                         DAT_SFXFadeState::instance = 100;
                     }
-                    if (DAT_SpeechDefinedData::instance.currentStreamID == 6) {
-                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
-                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[4].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.AmbientSounds[4].variationIndex]
-                                      * FLOAT_00b986f8::instance)
+                    if (DAT_SpeechDefinedData::instance.currentAmbientType == 6) {
+                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamFileVolume,
+                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_AMBIENT_1,
+                            (int)((DAT_SpeechDefinedData::instance.ambientSfxTable[4].variationVolumes
+                                          [DAT_SpeechDefinedData::instance.ambientSfxTable[4].nextVariantIndex]
+                                      * ambientFadeLevel::instance)
                                 / 100.0));
                     }
-                    if (DAT_SpeechDefinedData::instance.currentStreamID == 5) {
-                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
-                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[3].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.AmbientSounds[3].variationIndex]
-                                      * FLOAT_00b986f8::instance)
+                    if (DAT_SpeechDefinedData::instance.currentAmbientType == 5) {
+                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamFileVolume,
+                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_AMBIENT_1,
+                            (int)((DAT_SpeechDefinedData::instance.ambientSfxTable[3].variationVolumes
+                                          [DAT_SpeechDefinedData::instance.ambientSfxTable[3].nextVariantIndex]
+                                      * ambientFadeLevel::instance)
                                 / 100.0));
                     }
-                    if (!(FLOAT_00b986f8::instance >= 100.0f)) {
+                    if (!(ambientFadeLevel::instance >= 100.0f)) {
                         return;
                     }
                     DAT_SFXFadeState::instance = SFXFS_IDLE;
                     return;
                 }
                 if (DAT_SFXFadeState::instance == SFXFS_FADE_OUT) {
-                    FLOAT_00b986f8::instance -= 2 * _fadeDelta;
-                    if (FLOAT_00b986f8::instance < 1.0) {
-                        FLOAT_00b986f8::instance = 1.0;
+                    ambientFadeLevel::instance -= 2 * _fadeDelta;
+                    if (ambientFadeLevel::instance < 1.0) {
+                        ambientFadeLevel::instance = 1.0;
                     }
-                    if (DAT_SpeechDefinedData::instance.currentStreamID == 6) {
-                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
-                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[4].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.AmbientSounds[4].variationIndex]
-                                      * FLOAT_00b986f8::instance)
+                    if (DAT_SpeechDefinedData::instance.currentAmbientType == 6) {
+                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamFileVolume,
+                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_AMBIENT_1,
+                            (int)((DAT_SpeechDefinedData::instance.ambientSfxTable[4].variationVolumes
+                                          [DAT_SpeechDefinedData::instance.ambientSfxTable[4].nextVariantIndex]
+                                      * ambientFadeLevel::instance)
                                 / 100.0));
                     }
-                    if (DAT_SpeechDefinedData::instance.currentStreamID == 5) {
-                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamAndSampleVolumeUnk,
-                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_SFX_1Unk,
-                            (int)((DAT_SpeechDefinedData::instance.AmbientSounds[3].volumeUnk_0x28
-                                          [DAT_SpeechDefinedData::instance.AmbientSounds[3].variationIndex]
-                                      * FLOAT_00b986f8::instance)
+                    if (DAT_SpeechDefinedData::instance.currentAmbientType == 5) {
+                        MACRO_CALL_MEMBER(MSS::SoundSystem_Func::setStreamFileVolume,
+                            DAT_SoundSystemState::ptr)(MSS::enums::SND_STR_AMBIENT_1,
+                            (int)((DAT_SpeechDefinedData::instance.ambientSfxTable[3].variationVolumes
+                                          [DAT_SpeechDefinedData::instance.ambientSfxTable[3].nextVariantIndex]
+                                      * ambientFadeLevel::instance)
                                 / 100.0));
                     }
-                    if (FLOAT_00b986f8::instance <= 1.0) {
+                    if (ambientFadeLevel::instance <= 1.0) {
                         DAT_SFXFadeState::instance = SFXFS_IDLE;
-                        local_54 = DAT_SpeechDefinedData::instance.field11_0x49d4b8;
+                        local_54 = DAT_SpeechDefinedData::instance.pendingAmbientTypeAfterFade;
                         MACRO_CALL_MEMBER(MSS::SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(
-                            MSS::enums::SND_STR_SFX_1Unk);
-                        DAT_SpeechDefinedData::instance.currentStreamID = -1;
+                            MSS::enums::SND_STR_AMBIENT_1);
+                        DAT_SpeechDefinedData::instance.currentAmbientType = -1;
                     }
                 }
-                if (DAT_SpeechDefinedData::instance.currentStreamID != -1) {
+                if (DAT_SpeechDefinedData::instance.currentAmbientType != -1) {
                     if (!MACRO_CALL_MEMBER(MSS::SoundSystem_Func::isSampleOrStreamPlaying, DAT_SoundSystemState::ptr)(
-                            MSS::enums::SND_STR_SFX_1Unk)) {
-                        DAT_SpeechDefinedData::instance.currentStreamID = -1;
-                    } else if (DAT_SpeechDefinedData::instance.currentStreamID != -1
-                        && DAT_SpeechDefinedData::instance.currentStreamID != 6
-                        && DAT_SpeechDefinedData::instance.currentStreamID != 5) {
+                            MSS::enums::SND_STR_AMBIENT_1)) {
+                        DAT_SpeechDefinedData::instance.currentAmbientType = -1;
+                    } else if (DAT_SpeechDefinedData::instance.currentAmbientType != -1
+                        && DAT_SpeechDefinedData::instance.currentAmbientType != 6
+                        && DAT_SpeechDefinedData::instance.currentAmbientType != 5) {
                         return;
                     }
                 }
@@ -231,22 +231,22 @@ namespace Audio {
             outerLoopEnd:;
             }
 
-            if ((DAT_SpeechDefinedData::instance.currentStreamID == 6
+            if ((DAT_SpeechDefinedData::instance.currentAmbientType == 6
                     && DAT_SFXAmbientEventCountersRescaled::instance[6] == 0)
-                || (DAT_SpeechDefinedData::instance.currentStreamID == 5
+                || (DAT_SpeechDefinedData::instance.currentAmbientType == 5
                     && DAT_SFXAmbientEventCountersRescaled::instance[5] == 0)) {
                 if (DAT_SFXFadeState::instance == SFXFS_FADE_OUT) {
                     return;
                 }
-                FLOAT_00b986f8::instance = 100.0;
+                ambientFadeLevel::instance = 100.0;
                 DAT_SFXFadeState::instance = SFXFS_FADE_OUT;
-                DAT_SpeechDefinedData::instance.field11_0x49d4b8 = 0xffffffff;
+                DAT_SpeechDefinedData::instance.pendingAmbientTypeAfterFade = 0xffffffff;
                 return;
             }
             if (iVar8 == 0) {
                 return;
             }
-            if (DAT_SpeechDefinedData::instance.currentStreamID == 5
+            if (DAT_SpeechDefinedData::instance.currentAmbientType == 5
                 && DAT_SFXAmbientEventCountersRescaled::instance[5] > 8) {
                 return;
             }
@@ -274,7 +274,7 @@ namespace Audio {
                     }
                 }
             }
-            if (_pick == DAT_SpeechDefinedData::instance.currentStreamID) {
+            if (_pick == DAT_SpeechDefinedData::instance.currentAmbientType) {
                 return;
             }
             if (_pick == 4 && DAT_LandscapeState::instance.wind.valueIs2 == 0
@@ -289,34 +289,34 @@ namespace Audio {
                     return;
                 }
             }
-            if (DAT_SpeechDefinedData::instance.currentStreamID != 6
-                && DAT_SpeechDefinedData::instance.currentStreamID != 5) {
+            if (DAT_SpeechDefinedData::instance.currentAmbientType != 6
+                && DAT_SpeechDefinedData::instance.currentAmbientType != 5) {
                 switch (_pick) {
                 case 4:
                     if (DAT_LandscapeState::instance.wind.valueIs2 != 0) {
-                        MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_WIND_1);
+                        MACRO_CALL_MEMBER(SFX::SFXState_Func::playNextAmbientSoundIfStreamIdle, this)(ASFXT_WIND_1);
                     } else if (DAT_LandscapeState::instance.wind.valueIs1 != 0) {
-                        MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_WIND_0);
+                        MACRO_CALL_MEMBER(SFX::SFXState_Func::playNextAmbientSoundIfStreamIdle, this)(ASFXT_WIND_0);
                     }
-                    DAT_SpeechDefinedData::instance.currentStreamID = 4;
+                    DAT_SpeechDefinedData::instance.currentAmbientType = 4;
                     return;
                 case 2:
-                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_UNKNOWN);
-                    DAT_SpeechDefinedData::instance.currentStreamID = 2;
+                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playNextAmbientSoundIfStreamIdle, this)(ASFXT_UNKNOWN);
+                    DAT_SpeechDefinedData::instance.currentAmbientType = 2;
                     return;
                 case 5:
-                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_HEAVY);
-                    DAT_SpeechDefinedData::instance.currentStreamID = 5;
-                    FLOAT_00b986f8::instance = 1.0;
+                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playNextAmbientSoundIfStreamIdle, this)(ASFXT_HEAVY);
+                    DAT_SpeechDefinedData::instance.currentAmbientType = 5;
+                    ambientFadeLevel::instance = 1.0;
                     DAT_SFXFadeState::instance = SFXFS_FADE_IN;
-                    DAT_SoundSystemState::instance.streamFileVolumeNextUnk_0x48[1] = 1;
+                    DAT_SoundSystemState::instance.streamUnduckedFileVolume[1] = 1;
                     return;
                 case 6:
-                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playAmbientSoundStreamUnk, this)(ASFXT_BATTLE_OR_INTENSE);
-                    DAT_SpeechDefinedData::instance.currentStreamID = 6;
-                    FLOAT_00b986f8::instance = 1.0;
+                    MACRO_CALL_MEMBER(SFX::SFXState_Func::playNextAmbientSoundIfStreamIdle, this)(ASFXT_BATTLE_OR_INTENSE);
+                    DAT_SpeechDefinedData::instance.currentAmbientType = 6;
+                    ambientFadeLevel::instance = 1.0;
                     DAT_SFXFadeState::instance = SFXFS_FADE_IN;
-                    DAT_SoundSystemState::instance.streamFileVolumeNextUnk_0x48[1] = 1;
+                    DAT_SoundSystemState::instance.streamUnduckedFileVolume[1] = 1;
                     return;
                 default:
                     return;
@@ -325,8 +325,8 @@ namespace Audio {
             if (DAT_SFXFadeState::instance == SFXFS_FADE_OUT) {
                 return;
             }
-            FLOAT_00b986f8::instance = 100.0;
-            DAT_SpeechDefinedData::instance.field11_0x49d4b8 = _pick;
+            ambientFadeLevel::instance = 100.0;
+            DAT_SpeechDefinedData::instance.pendingAmbientTypeAfterFade = _pick;
             DAT_SFXFadeState::instance = SFXFS_FADE_OUT;
         }
 

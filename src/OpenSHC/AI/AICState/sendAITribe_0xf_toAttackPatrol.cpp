@@ -1,6 +1,5 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/TroopValueState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 #include "OpenSHC/Map/Units/Behavior/UnitStanceEnum.hpp"
 
@@ -20,7 +19,7 @@ namespace AI {
         }
 
         // Bug: only tribe 15 is sent, although tribe 16 can also exist if 'AIC: AttUnitPatrolGroupsCount' is 2
-        int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex];
+        int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex];
         if (tribeID == 0) {
             return;
         }
@@ -28,7 +27,7 @@ namespace AI {
             != DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[tribeIndex]) {
             return;
         }
-        if (DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID == 0) {
+        if (DAT_TribesState::instance.tribes[tribeID].leaderUnitID == 0) {
             return;
         }
 

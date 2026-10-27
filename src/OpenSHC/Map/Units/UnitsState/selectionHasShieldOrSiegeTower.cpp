@@ -1,25 +1,21 @@
-#include "../UnitsState.func.hpp"
-
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005358C0
-        BOOLEnum UnitsState::selectionHasShieldOrSiegeTower()
+        undefined4 UnitsState::selectionContainsOnlyShieldsOrTowers()
         {
-            if (this->selectionUnitType[Selection::USE_E_SHIELDS] != 0
-                || this->selectionUnitType[Selection::USE_E_SIEGETOWERS] != 0) {
+            if (this->selectionShield != 0 || this->selectionSiegeTower != 0) {
                 for (int i = 0; i <= 26; ++i) {
-                    if (i != Selection::USE_E_SHIELDS && i != Selection::USE_E_SIEGETOWERS
-                        && this->selectionUnitType[i] != 0) {
-                        return FALSE;
+                    if (i != 15 && i != 14 && (&this->selectionEuropeanArchers)[i] != 0) {
+                        return 0;
                     }
                 }
-                return TRUE;
+                return 1;
             }
-            return FALSE;
+            return 0;
         }
 
     }

@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace SaveMap {
 
+            /**
+             * Modal render callback for the Save Map dialog: draws the 'Save' header banner (width 0x130) and soft-
+             * yellow frame lines outlining the file list table, its header row and its scrollbar column.
+             */
             void __cdecl MenuModalRenderFunction_SaveMap(int x, int y, int width, int height);
 
         } // namespace SaveMap

@@ -16,20 +16,29 @@ namespace Map {
     typedef struct ClimbData {
 
         int canBeUsed; // 0x00000000 length: 4
+        // If set to 0, units cant use it, nor will it be removed when the ladderman stops.
         int type; // 0x00000004 length: 4
-        int climbDataRelated; // 0x00000008 length: 4
+        // [093 0x004A9510] set from DAT_GameCore.uniqueGameObjectTracker++ on creation
+        int uid; // 0x00000008 length: 4
         int buildingID; // 0x0000000C length: 4
         int unitID; // 0x00000010 length: 4
         int sourceUID; // 0x00000014 length: 4
+        // Forced to be 1.
         int isRecognizedByPathfinding; // 0x00000018 length: 4
         int bottomXPosition; // 0x0000001C length: 4
         int bottomYPosition; // 0x00000020 length: 4
         int bottomTilePosition; // 0x00000024 length: 4
+        // Calculated.
         int topXPosition; // 0x00000028 length: 4
+        // Calculated.
         int topYPosition; // 0x0000002C length: 4
-        int topTilePositionUnk; // 0x00000030 length: 4
+        // [082 0x004A4D60] computed as tile index of (topX, topY) = bottomTile + direction offset
+        int topTilePosition; // 0x00000030 length: 4
+        // Forced to be 1.
         int area; // 0x00000034 length: 4
-        int wallGroupAreaID; // 0x00000038 length: 4
+        // [082 0x004A4D60] PathConnectionLayer value at the top tile, counterpart of area (bottom tile) Placing
+        // multiple wall blocks still make them one group.
+        int topArea; // 0x00000038 length: 4
         int numberOfUnitsUsing; // 0x0000003C length: 4
         int unitID1; // 0x00000040 length: 4
         int unitID2; // 0x00000044 length: 4

@@ -82,12 +82,12 @@ namespace UI {
             drawBorderBox;
 
             MACRO_FUNCTION_RESOLVER(void (PencilRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x00471220,
-                &PencilRenderCore::drawDiagonalHeigherThanWideUnk)
-            drawDiagonalHeigherThanWideUnk;
+                &PencilRenderCore::drawSteepLine)
+            drawSteepLine;
 
             MACRO_FUNCTION_RESOLVER(void (PencilRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x00471280,
-                &PencilRenderCore::drawDiagonalWiderThanHighUnk)
-            drawDiagonalWiderThanHighUnk;
+                &PencilRenderCore::drawShallowLine)
+            drawShallowLine;
 
             MACRO_FUNCTION_RESOLVER(void (PencilRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x004712E0,
                 &PencilRenderCore::drawPixelPattern4x4OverWholeScreen)

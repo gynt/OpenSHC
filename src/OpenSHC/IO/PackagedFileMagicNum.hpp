@@ -12,6 +12,7 @@ namespace OpenSHC {
 namespace IO {
     typedef enum PackagedFileMagicNum {
 
+        PFMN_NONE = 0, // 0x00000000
         PFMN_AIV = 200 // 0x000000C8
 
     } PackagedFileMagicNum;

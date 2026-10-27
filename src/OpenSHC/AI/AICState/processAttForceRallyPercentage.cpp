@@ -21,18 +21,18 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CEEA0
     BOOLEnum AICState::processAttForceRallyPercentage(int playerID)
     {
-        AITypeInt const aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
+        AITypeInt aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
         if (aiType == OpenSHC::AI::AIT_NULL) {
             return FALSE;
         }
 
-        int const aicIndex = aiType - 1;
+        int aicIndex = aiType - 1;
         int tribeTotal = 0;
         int notReallyMoving = 0;
 
         for (int i = 0; i < 11; i++) {
-            int const tribeIndex = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeCount;
+            int tribeIndex = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeSlotCount;
             if (tribeIndex == OpenSHC::AI::Tribes::AITI_BREACH_BASIC_07_01
                 || tribeIndex == OpenSHC::AI::Tribes::AITI_BREACH_10_01
                 || tribeIndex == OpenSHC::AI::Tribes::AITI_BREACH_BASIC_05_01) {
@@ -40,7 +40,7 @@ namespace AI {
             }
 
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex + j];
                 if (tribeID == 0) {
                     continue;
                 }
@@ -50,7 +50,7 @@ namespace AI {
                 }
 
                 tribeTotal++;
-                if (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 20) {
+                if (DAT_TribesState::instance.tribes[tribeID].percentageMoving < 20) {
                     notReallyMoving++;
                 }
                 DAT_TribesState::instance.tribes[tribeID].unitStance = OpenSHC::Map::Units::Behavior::USE_STAND_GROUND;

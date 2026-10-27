@@ -9,12 +9,12 @@ namespace Map {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00533920
-        BOOLEnum UnitsState::getDestination2EqualsGivenCoordinates(int unitID, int x, int y)
+        BOOLEnum UnitsState::destination2DiffersFrom(int unitID, int x, int y)
         {
-            if (this->units[unitID].destinationX_2Unk != x) {
+            if (this->units[unitID].savedDestinationX != x) {
                 return TRUE;
             }
-            return this->units[unitID].destinationY_2Unk != y;
+            return this->units[unitID].savedDestinationY != y;
         }
 
     }

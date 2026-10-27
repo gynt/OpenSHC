@@ -19,7 +19,8 @@ namespace Map {
             int gfx; // 0x00000000 length: 4
             uint tile; // 0x00000004 length: 4
             int uid; // 0x00000008 length: 4
-            short one; // 0x0000000C length: 2
+            // [077 0x004F2140] slot search treats 0 as free; set to 1 on creation
+            short inUse; // 0x0000000C length: 2
             short unknownGMID; // 0x0000000E length: 2
             short type; // 0x00000010 length: 2
             ushort x; // 0x00000012 length: 2

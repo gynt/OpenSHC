@@ -1,23 +1,17 @@
-#include "../UnitsState.func.hpp"
-
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00535980
-        BOOLEnum UnitsState::selectionHasFootSoldiers()
+        undefined4 UnitsState::selectionHasFootSoldiers()
         {
-            if (this->selectionUnitType[Selection::USE_E_ENGINEERS] == 0
-                && this->selectionUnitType[Selection::USE_A_SLAVES] == 0
-                && this->selectionUnitType[Selection::USE_E_SPEARMEN] == 0
-                && this->selectionUnitType[Selection::USE_E_ARCHERS] == 0
-                && this->selectionUnitType[Selection::USE_E_MACEMEN] == 0
-                && this->selectionUnitType[Selection::USE_E_PIKEMEN] == 0) {
-                return FALSE;
+            if (this->selectionEngineers == 0 && this->selectionArabSlave == 0 && this->selectionSpearmen == 0
+                && this->selectionEuropeanArchers == 0 && this->selectionMacemen == 0 && this->selectionPikemen == 0) {
+                return 0;
             }
-            return TRUE;
+            return 1;
         }
 
     }

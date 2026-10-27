@@ -4,7 +4,7 @@
 #include "OpenSHC/UI/Enums/DisplayElementID.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/BOOL_RelatedToInitialGranaryAndKeepPlacement.hpp"
+#include "OpenSHC/Globals/placementWarningVoicePlayed.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -20,10 +20,10 @@ namespace UI {
             DisplayElement* const displayElement
                 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::FindDisplayElementWithID)(displayElementID);
             if (displayElement != NULL) {
-                if (displayElement->elementStateUnk_0xc != elementState) {
-                    BOOL_RelatedToInitialGranaryAndKeepPlacement::instance = FALSE;
+                if (displayElement->displayState_0xc != elementState) {
+                    placementWarningVoicePlayed::instance = FALSE;
                 }
-                displayElement->elementStateUnk_0xc = elementState;
+                displayElement->displayState_0xc = elementState;
                 displayElement->displayDuration_0x14 = -1;
             }
         }

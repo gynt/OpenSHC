@@ -12,7 +12,7 @@ namespace UI {
             {
                 if (DAT_GameSynchronyState::instance.modemScrollBarOffset + row
                     < DAT_GameSynchronyState::instance.modemScrollbarCount) {
-                    DAT_GameSynchronyState::instance.modemScrollbarIndex = row;
+                    DAT_GameSynchronyState::instance.selectedModemRow = row;
                 }
             }
 

@@ -58,8 +58,8 @@ namespace UI {
         clearOldSpawnMoment;
 
         MACRO_FUNCTION_RESOLVER(void (MinimapViewState::*)(uint, int), false, Address::SHC_3BB0A8C1_0x004B6640,
-            &MinimapViewState::setMapPropertyDependingOnMapSize)
-        setMapPropertyDependingOnMapSize;
+            &MinimapViewState::redrawMinimapRowsForMapSize)
+        redrawMinimapRowsForMapSize;
 
         MACRO_FUNCTION_RESOLVER(void (MinimapViewState::*)(int, uint), false, Address::SHC_3BB0A8C1_0x004B6680,
             &MinimapViewState::setTileColorsDependingOnMapSize)

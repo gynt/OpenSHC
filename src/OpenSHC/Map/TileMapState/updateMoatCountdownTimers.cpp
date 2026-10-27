@@ -10,9 +10,9 @@ namespace Map {
     void TileMapState::updateMoatCountdownTimers()
     {
         MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::recountTotalOwnedMoats, this)();
-        for (int i = 0; i < this->currentMoatCount; ++i) {
-            if (this->moats[i].owner != 0 && this->moats[i].someCountDown > 0) {
-                this->moats[i].someCountDown -= 1;
+        for (int i = 0; i < this->maxMoatCount; ++i) {
+            if (this->moats[i].owner != 0 && this->moats[i].workerReservation > 0) {
+                this->moats[i].workerReservation -= 1;
             }
         }
     }

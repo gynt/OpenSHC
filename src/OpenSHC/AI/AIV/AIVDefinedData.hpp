@@ -27,7 +27,9 @@ namespace AI {
             undefined1 padding_0x0[4]; // 0x00000000 length: 4
             AIVSectionAddress AIVSectionAddressArray[14]; // 0x00000004 length: 224
             undefined1 padding_0xe4[16]; // 0x000000E4 length: 16
-            MappersEnum field21_0xf4[79]; // 0x000000F4 length: 316
+            // lookup table indexed by (AIV building type - AIVBT_TOWER1) giving the MappersEnum building/command
+            // type (convertAIVBuildingTypeToCommandBuildingType)
+            MappersEnum aivBuildingTypeToMapperCommand[79]; // 0x000000F4 length: 316
             undefined1 padding_0x230[4]; // 0x00000230 length: 4
             char AIVFileNames[16][8][50]; // 0x00000234 length: 6400
             XYPair OffsetsForFiveByFiveAreaSpotCheck[9]; // 0x00001B34 length: 72

@@ -17,7 +17,8 @@ namespace Input {
     class InsertKeyState {
     public:
         int insert; // 0x00000000 length: 4
-        int field1_0x4; // 0x00000004 length: 4
+        // zeroed in the InsertKeyState constructor; no other use seen
+        int ctorZeroed04; // 0x00000004 length: 4
 
     private:
         InsertKeyState(InsertKeyState const&);
@@ -28,6 +29,9 @@ namespace Input {
         ~InsertKeyState() {};
 
         // Constructor
+        /**
+         * InsertKeyState constructor: clears field1_0x4 and sets insert = 1.
+         */
         InsertKeyState* Constructor_InsertKeyState();
     };
 

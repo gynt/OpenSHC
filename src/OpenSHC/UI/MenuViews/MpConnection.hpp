@@ -13,6 +13,11 @@ namespace UI {
     namespace MenuViews {
         namespace MpConnection {
 
+            /**
+             * Prepare handler of the multiplayer-connection view: loads frontend_combat3.tgx and shc_back,
+             * positions the menu, initializes the multiplayer lobby and opens the pending modal dialog
+             * (nextModalDialog).
+             */
             void __cdecl MenuView_MpConnection_Prepare();
 
         } // namespace MpConnection

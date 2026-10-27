@@ -1,6 +1,5 @@
-#include "../UnitsState.func.hpp"
-
 #include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -9,6 +8,9 @@
 namespace OpenSHC {
 namespace Map {
     namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052F010
         void UnitsState::removeUnitFromItsTribe(uint unitID, int unitUID)

@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace CreateOrTriggerInvasion {
 
+            /**
+             * Renders the 'Invasion' header banner of the create/trigger invasion modal.
+             */
             void __cdecl MenuModalRenderFunction_CreateOrTriggerInvasion(int x, int y, int width, int height);
 
         } // namespace CreateOrTriggerInvasion

@@ -1,0 +1,119 @@
+#include "../../Synchrony.func.hpp"
+#include "../Commands.func.hpp"
+
+#include "OpenSHC/IO/ResourceManager.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
+#include "OpenSHC/UI/MenuTextInputState.func.hpp"
+#include "OpenSHC/Commands/GameCommandParameterLocation.hpp"
+#include "OpenSHC/Commands/GameCommandParameterReadWrite.hpp"
+#include "OpenSHC/Commands/GameCommandScheduling.hpp"
+#include "OpenSHC/Commands/GameCommandType.hpp"
+#include "OpenSHC/IO/FileResourceType.hpp"
+#include "OpenSHC/UI/Enums/MenuModalType.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+#include "OpenSHC/Globals/DAT_MenuTextInputState.hpp"
+#include "OpenSHC/Globals/DAT_ResourceManager.hpp"
+
+namespace OpenSHC {
+namespace Synchrony {
+
+    using OpenSHC::Commands::GameCommandParameterLocation;
+    using OpenSHC::Commands::GameCommandParameterReadWrite;
+    using OpenSHC::Commands::GameCommandScheduling;
+    using OpenSHC::Commands::GameCommandType;
+    using OpenSHC::IO::FileResourceType;
+    using OpenSHC::UI::Enums::MenuModalType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0048B6C0
+    void Commands::ShareMapHashForMapName()
+    {
+        char cVar1;
+        char* pcVar2;
+        char* pcVar3;
+        int iVar4;
+        int _mapHash_2;
+        size_t size;
+        GameCommandParameterLocation srcSwitch;
+        GameCommandParameterReadWrite destSwitch;
+        undefined4 _mapHash;
+        char mapName[1008];
+        DAT_GameSynchronyState::instance.DAT_CommandSize = 0x3ec;
+        DAT_GameSynchronyState::instance.DAT_GameCommandArray[DAT_GameSynchronyState::instance.DAT_CurrentGameCommandID]
+            .time = 0;
+        if (DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_SCHEDULE_AND_SEND) {
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
+                DAT_GameSynchronyState::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                    DAT_ResourceManager::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                1000, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_WRITE_VAR_TO_STREAM);
+            strcpy(mapName,
+                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                    DAT_ResourceManager::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0));
+            strcat(mapName, ".map");
+            MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                OpenSHC::IO::FRT_MAPS, mapName);
+            _mapHash = MACRO_CALL_MEMBER(
+                OpenSHC::IO::ResourceManager_Func::fileHashFunctionByteByByte, DAT_ResourceManager::ptr)();
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
+                DAT_GameSynchronyState::ptr)(&_mapHash, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
+                OpenSHC::Commands::GCPRW_WRITE_VAR_TO_STREAM);
+            iVar4 = 1;
+            DAT_GameSynchronyState::instance.DAT_CommandActionPlan = OpenSHC::Commands::GCS_EXECUTE;
+            do {
+                if ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar4] == -1)
+                    || (iVar4 == DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
+                    DAT_GameSynchronyState::instance.mapPossessionStatePerPlayer[iVar4] = 2;
+                } else {
+                    DAT_GameSynchronyState::instance.mapPossessionStatePerPlayer[iVar4] = 0;
+                }
+                iVar4 = iVar4 + 1;
+            } while (iVar4 < 9);
+            ;
+            return;
+        }
+        if (DAT_GameSynchronyState::instance.DAT_CommandActionPlan == OpenSHC::Commands::GCS_EXECUTE) {
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
+                DAT_GameSynchronyState::ptr)(mapName, 1000, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
+                OpenSHC::Commands::GCPRW_READ_STREAM_TO_VAR);
+            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
+                DAT_GameSynchronyState::ptr)(&_mapHash, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
+                OpenSHC::Commands::GCPRW_READ_STREAM_TO_VAR);
+            if (DAT_GameSynchronyState::instance.isHost == FALSE) {
+                iVar4 = 0;
+                do {
+                    cVar1 = mapName[iVar4];
+                    DAT_GameSynchronyState::instance.sharedMapName[iVar4] = cVar1;
+                    iVar4 = iVar4 + 1;
+                } while (cVar1 != '\0');
+                strcat(mapName, ".map");
+                MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
+                    OpenSHC::IO::FRT_MAPS, mapName);
+                _mapHash_2 = MACRO_CALL_MEMBER(
+                    OpenSHC::IO::ResourceManager_Func::fileHashFunctionByteByByte, DAT_ResourceManager::ptr)();
+                if (_mapHash_2 != _mapHash) {
+                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 2000;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                        DAT_MenuTextInputState::ptr)(OpenSHC::UI::Enums::MMT_QUIT_DIALOG);
+                } else {
+                    DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
+                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_REPORT_MAP_TRANSFER_NEED);
+                }
+            }
+        };
+    }
+
+}
+}

@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
@@ -7,6 +6,10 @@
 namespace OpenSHC {
 namespace Map {
     namespace Units {
+
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00530500
         void UnitsState::makeCourtMemberUnitsDisappearAndSwapAllOtherUnitsOwnership(
@@ -16,10 +19,10 @@ namespace Map {
                 if (this->units[unitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
                     continue;
                 }
-                if (this->units[unitID].dying) {
+                if (this->units[unitID].dying != 0) {
                     continue;
                 }
-                if (this->units[unitID].isStalked != 0) {
+                if (this->units[unitID].isAnimalOrAmbient != 0) {
                     switch (this->units[unitID].unitType) {
                     case OpenSHC::Map::Units::UT_QUARRYOX:
                     case OpenSHC::Map::Units::UT_COW:
@@ -43,8 +46,8 @@ namespace Map {
                         this->units[unitID].state.generic = OpenSHC::Map::Units::States::US_DISAPPEAR;
                     } else {
                         this->units[unitID].owner = (short)secondPlayerID;
-                        if (this->units[unitID].isStalked == 0 || this->units[unitID].calculatedOwnerPlayerIndex != 0) {
-                            this->units[unitID].calculatedOwnerPlayerIndex = secondPlayerID;
+                        if (this->units[unitID].isAnimalOrAmbient == 0 || this->units[unitID].ownerColorIndex != 0) {
+                            this->units[unitID].ownerColorIndex = secondPlayerID;
                         }
                     }
                 } else if (this->units[unitID].owner == secondPlayerID) {
@@ -56,8 +59,8 @@ namespace Map {
                         this->units[unitID].state.generic = OpenSHC::Map::Units::States::US_DISAPPEAR;
                     } else {
                         this->units[unitID].owner = (short)firstPlayerID;
-                        if (this->units[unitID].isStalked == 0 || this->units[unitID].calculatedOwnerPlayerIndex != 0) {
-                            this->units[unitID].calculatedOwnerPlayerIndex = firstPlayerID;
+                        if (this->units[unitID].isAnimalOrAmbient == 0 || this->units[unitID].ownerColorIndex != 0) {
+                            this->units[unitID].ownerColorIndex = firstPlayerID;
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 
@@ -9,15 +9,16 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00417450
         void BuildingsState::removeTetheredUnitFromBuilding(int buildingID, int unitID)
         {
-            for (int slot = 0; slot < 4; ++slot) {
-                if (this->buildings[buildingID].insideUnitID[slot] == unitID
-                    && this->buildings[buildingID].insideUnitUID[slot] == DAT_UnitsState::instance.units[unitID].uid) {
-                    this->buildings[buildingID].numberOfAnimals -= 1;
-                    this->buildings[buildingID].insideUnitID[slot] = 0;
-                    this->buildings[buildingID].insideUnitUID[slot] = 0;
+            for (int i = 0; i < 4; ++i) {
+                if (this->buildings[buildingID].insideUnitIDs[i] == unitID
+                    && this->buildings[buildingID].insideUnitUIDs[i] == DAT_UnitsState::instance.units[unitID].uid) {
+                    --this->buildings[buildingID].numberOfAnimals;
+                    this->buildings[buildingID].insideUnitIDs[i] = 0;
+                    this->buildings[buildingID].insideUnitUIDs[i] = 0;
                 }
             }
-            MACRO_CALL_MEMBER(BuildingsState_Func::validateBuildingTetheredUnits, this)(buildingID);
+            MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::validateBuildingTetheredUnits, this)(
+                buildingID);
         }
 
     }

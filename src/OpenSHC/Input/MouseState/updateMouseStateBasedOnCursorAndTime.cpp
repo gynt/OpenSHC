@@ -83,7 +83,7 @@ namespace Input {
         }
         this->midClickStart = 0;
         this->midClickStop = 0;
-        if (this->midClickState != this->previousMidClickStateUnk) {
+        if (this->midClickState != this->previousMidClickState) {
             this->anyActivity = TRUE;
 
             if (this->midClickState) {
@@ -96,18 +96,18 @@ namespace Input {
         if (this->mouseClickTypes & Mouse::CTBME_LEFT_DOWN) {
             if (!this->leftClickState) {
                 this->leftClickStartMoment = _now;
-                this->dragReleaseX = this->mouseWindowX;
+                this->leftPressX = this->mouseWindowX;
                 this->dragReleaseY = this->mouseWindowY;
                 this->leftClickState = TRUE;
             } else {
-                if (this->dragReleaseX != this->mouseWindowX || this->dragReleaseY != this->mouseWindowY) {
+                if (this->leftPressX != this->mouseWindowX || this->dragReleaseY != this->mouseWindowY) {
                     this->leftClickStartMoment = -1;
                 }
                 this->leftClickState = TRUE;
             }
         } else {
             this->leftClickState = FALSE;
-            if (this->dragReleaseX == this->mouseWindowX && this->dragReleaseY == this->mouseWindowY
+            if (this->leftPressX == this->mouseWindowX && this->dragReleaseY == this->mouseWindowY
                 && this->leftClickStartMoment != -1) {
                 this->leftClickStartMoment = -2;
             } else {
@@ -116,14 +116,14 @@ namespace Input {
         }
 
         this->leftClickStart = FALSE;
-        this->draggingStopped = FALSE;
+        this->leftClickStop = FALSE;
         if (this->leftClickState != this->previousLeftClickState) {
             this->anyActivity = TRUE;
 
             if (this->leftClickState) {
                 this->leftClickStart = TRUE;
             } else {
-                this->draggingStopped = TRUE;
+                this->leftClickStop = TRUE;
             }
         }
 

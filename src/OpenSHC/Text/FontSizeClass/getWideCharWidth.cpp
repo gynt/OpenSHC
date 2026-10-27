@@ -10,7 +10,7 @@ namespace Text {
     // FUNCTION: STRONGHOLDCRUSADER 0x00471670
     dword FontSizeClass::getWideCharWidth(WCHAR wChar)
     {
-        return MACRO_CALL_MEMBER(FontSizeClass_Func::getCharWidthUnk, this)(MACRO_CALL_MEMBER(
+        return MACRO_CALL_MEMBER(FontSizeClass_Func::getCharWidth, this)(MACRO_CALL_MEMBER(
             Util::WideCharMultiByteState_Func::singleWideCharToMultiByte, DAT_WideCharMultiByteState::ptr)(wChar));
     }
 

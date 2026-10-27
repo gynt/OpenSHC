@@ -46,8 +46,8 @@ namespace Text {
         loadHelpSectionGraphics;
 
         MACRO_FUNCTION_RESOLVER(uint (TextEditorState::*)(int*), false, Address::SHC_3BB0A8C1_0x0045D3C0,
-            &TextEditorState::getWideCharOrWideCharPointer)
-        getWideCharOrWideCharPointer;
+            &TextEditorState::readNextControlCharOrWord)
+        readNextControlCharOrWord;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(), false, Address::SHC_3BB0A8C1_0x0045D430,
             &TextEditorState::renderHelpImageHotspots)
@@ -58,8 +58,8 @@ namespace Text {
         bltTextToScreenIfNeedBe;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(int, int, int, int), false, Address::SHC_3BB0A8C1_0x0045D6C0,
-            &TextEditorState::drawBorderStyle0x20)
-        drawBorderStyle0x20;
+            &TextEditorState::setDialogRectAndContentArea)
+        setDialogRectAndContentArea;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(), false, Address::SHC_3BB0A8C1_0x0045D740,
             &TextEditorState::drawHelpWindowBackground)
@@ -74,16 +74,16 @@ namespace Text {
         findOrAddHelpGraphicName;
 
         MACRO_FUNCTION_RESOLVER(int (TextEditorState::*)(int), false, Address::SHC_3BB0A8C1_0x0045D950,
-            &TextEditorState::getNextHelpSectionID)
-        getNextHelpSectionID;
+            &TextEditorState::getNextHelpFontId)
+        getNextHelpFontId;
 
         MACRO_FUNCTION_RESOLVER(int (TextEditorState::*)(int), false, Address::SHC_3BB0A8C1_0x0045D990,
-            &TextEditorState::getPrevHelpSectionID)
-        getPrevHelpSectionID;
+            &TextEditorState::getPrevHelpFontId)
+        getPrevHelpFontId;
 
         MACRO_FUNCTION_RESOLVER(char* (TextEditorState::*)(int), false, Address::SHC_3BB0A8C1_0x0045D9E0,
-            &TextEditorState::getHelpSectionText)
-        getHelpSectionText;
+            &TextEditorState::getHelpFontName)
+        getHelpFontName;
 
         MACRO_FUNCTION_RESOLVER(int (TextEditorState::*)(int), false, Address::SHC_3BB0A8C1_0x0045DA20,
             &TextEditorState::getNextHelpColorEntryIndex)
@@ -134,8 +134,8 @@ namespace Text {
         processHelpRichTextTokens;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(), false, Address::SHC_3BB0A8C1_0x004613E0,
-            &TextEditorState::setTextRenderingLogic)
-        setTextRenderingLogic;
+            &TextEditorState::renderHelpTextContent)
+        renderHelpTextContent;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(), false, Address::SHC_3BB0A8C1_0x004614D0,
             &TextEditorState::initializeAndLayoutHelpText)
@@ -178,8 +178,8 @@ namespace Text {
         popHelpDialogStack;
 
         MACRO_FUNCTION_RESOLVER(void (TextEditorState::*)(int), false, Address::SHC_3BB0A8C1_0x00462190,
-            &TextEditorState::openUnusedHelpTextEditorDialog)
-        openUnusedHelpTextEditorDialog;
+            &TextEditorState::openHelpSection)
+        openHelpSection;
 
     } // namespace TextEditorState_Func
 } // namespace Text

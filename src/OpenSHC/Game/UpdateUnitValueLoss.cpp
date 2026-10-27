@@ -1,4 +1,4 @@
-#include "OpenSHC/Globals/DAT_CurrentPlayerUnitLosses.hpp"
+#include "OpenSHC/Globals/unitValueKilledByCurrentPlayer.hpp"
 
 namespace OpenSHC {
 namespace Game {
@@ -7,7 +7,7 @@ namespace Game {
     void UpdateUnitValueLoss(int value)
     {
         if (value > 0) {
-            DAT_CurrentPlayerUnitLosses::instance += value;
+            unitValueKilledByCurrentPlayer::instance += value;
         }
     }
 

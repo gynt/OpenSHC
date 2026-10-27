@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace NewEventCondition {
 
+            /**
+             * Renders the 'Event Conditions' modal header and, if the selected condition has a sub-type selector,
+             * its condition name label.
+             */
             void __cdecl MenuModalRenderFunction_NewEventCondition(int x, int y, int width, int height);
 
         } // namespace NewEventCondition

@@ -1,0 +1,54 @@
+#include "../PathFindingState.func.hpp"
+
+#include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
+
+#include "OpenSHC/Globals/DAT_GameState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Navigation {
+
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
+        // FUNCTION: STRONGHOLDCRUSADER 0x004A65E0
+        void PathFindingState::setDestinationPairsBasedOnPreviousSearch(int playerIDMin1, int attackedPlayerID)
+        {
+            int _pair = 0;
+            this->searchQueue.readIndex = 0;
+            if (this->searchQueue.writeIndex != 0) {
+                do {
+                    uint y = (uint)this->searchQueue.yQueue[this->searchQueue.readIndex];
+                    int _tile = this->searchQueue.tilesQueue[this->searchQueue.readIndex];
+                    uint x = _tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
+                    uint _attackedDistance = DAT_TileMapState::instance.aiZoneDistanceLayers[attackedPlayerID][_tile];
+                    int _distance = (int)DAT_TileMapState::instance.SearchDistanceLayer[_tile];
+                    if (DAT_TileMapState::instance.SearchGenerationLayer[_tile] == this->searchGeneration && _attackedDistance != 0
+                        && _attackedDistance - 0x48 <= 3 && _distance <= 0x4b && _distance != 100) {
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Map::Navigation::PathFindingState_Func::budgetFloodFillOnSearchDistanceLayer, this)(
+                            x, y, (int)(100), (int)(50));
+                        DAT_GameState::instance.mapAndTime.unitMoveDestinationXYPairs[playerIDMin1][_pair].x = x;
+                        DAT_GameState::instance.mapAndTime.unitMoveDestinationXYPairs[playerIDMin1][_pair].y = y;
+                        _pair = _pair + 1;
+                    }
+                    if (_pair >= 40) {
+                        return;
+                    }
+                    this->searchQueue.readIndex = this->searchQueue.readIndex + 1;
+                    if (0x13a10 <= (int)this->searchQueue.readIndex) {
+                        this->searchQueue.readIndex = 0;
+                    }
+                } while (this->searchQueue.readIndex != this->searchQueue.writeIndex);
+            }
+            return;
+        }
+
+    }
+}
+}

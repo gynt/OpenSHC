@@ -15,8 +15,8 @@ namespace UI {
         namespace InGameMenu_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00433230,
-                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_UnknownBinkRelated)
-            MenuItemActionHandler_InGameMenu_UnknownBinkRelated;
+                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_UpdateMessageVideoPlayingFlag)
+            MenuItemActionHandler_InGameMenu_UpdateMessageVideoPlayingFlag;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00433370,
                 &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_ProcessScribeAnimationChange)
@@ -48,8 +48,8 @@ namespace UI {
             MenuItemActionHandler_InGameMenu_TriggerPlaceWallCommand;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00438B60,
-                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_RightClickMenuAndMaybeResets)
-            MenuItemActionHandler_InGameMenu_RightClickMenuAndMaybeResets;
+                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_RightClickDragCamera)
+            MenuItemActionHandler_InGameMenu_RightClickDragCamera;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00444B80,
                 &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_MainButtons)
@@ -64,12 +64,12 @@ namespace UI {
             MenuItemRenderFunction_InGameMenu_MainButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B6500,
-                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemRenderFunction_InGameMenu_MapEventIconUnk)
-            MenuItemRenderFunction_InGameMenu_MapEventIconUnk;
+                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemRenderFunction_InGameMenu_SpawnEventLocatorButton)
+            MenuItemRenderFunction_InGameMenu_SpawnEventLocatorButton;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B6530,
-                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_MapEventIconUnk)
-            MenuItemActionHandler_InGameMenu_MapEventIconUnk;
+                &OpenSHC::UI::MenuItems::InGameMenu::MenuItemActionHandler_InGameMenu_SpawnEventLocatorButton)
+            MenuItemActionHandler_InGameMenu_SpawnEventLocatorButton;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B65A0,
                 &OpenSHC::UI::MenuItems::InGameMenu::MenuItemRenderFunction_InGameMenu_KeepEnclosedSymbol)

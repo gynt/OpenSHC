@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A080
         void SoundSystem::resumeAudioSample()
         {
-            if (!(this->waveOutOpenUnk_0x8 && this->digSndDriver_0x4)) {
+            if (!(this->soundSystemInitialized && this->digSndDriver_0x4)) {
                 return;
             }
 
@@ -17,7 +17,7 @@ namespace Audio {
                 }
                 this->streamPaused_0x15c[streamIndex] = false;
                 if (streamIndex == enums::SND_STR_MUSIC) {
-                    AIL_resume_sample(this->musicSampleUnk_0x170);
+                    AIL_resume_sample(this->musicSample);
                 } else {
                     AIL_pause_stream(this->stream_0xc[streamIndex], 1);
                 }

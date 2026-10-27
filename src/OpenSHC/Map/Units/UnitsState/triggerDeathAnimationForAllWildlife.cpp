@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
@@ -11,17 +10,22 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Game::GameMode;
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::States::UnitState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x00530310
         void UnitsState::triggerDeathAnimationForAllWildlife()
         {
             if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER) {
                 return;
             }
-            for (int unitID = 1; unitID < this->maxUnitCount; ++unitID) {
+            for (int unitID = 1; unitID < (int)this->maxUnitCount; ++unitID) {
                 if (this->units[unitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
                     continue;
                 }
-                if (this->units[unitID].dying) {
+                if (this->units[unitID].dying != 0) {
                     continue;
                 }
                 if (this->units[unitID].owner != 0) {

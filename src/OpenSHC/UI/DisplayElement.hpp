@@ -28,14 +28,22 @@ namespace UI {
     // SIZE: 0x00000024
     class DisplayElement {
     public:
+        // Unsigned Double-Word (ddw, 4-bytes)
         int x_0x0; // 0x00000000 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         int y_0x4; // 0x00000004 length: 4
         DisplayElementIDInt elementID_0x8; // 0x00000008 length: 4
-        dword elementStateUnk_0xc; // 0x0000000C length: 4
+        // Unsigned Double-Word (ddw, 4-bytes) [UNK PASS] was elementStateUnk_0xc
+        dword displayState_0xc; // 0x0000000C length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         dword activationTime_0x10; // 0x00000010 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         int displayDuration_0x14; // 0x00000014 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         DisplayElementRenderFunc* renderFunction_0x18; // 0x00000018 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         DisplayElementPositionModifierInt positionModifier_0x1c; // 0x0000001C length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         DisplayElement* nextDisplayElement_0x20; // 0x00000020 length: 4
 
     private:
@@ -47,6 +55,11 @@ namespace UI {
         ~DisplayElement() {};
 
         // Constructor
+        /**
+         * DisplayElement constructor: stores id, position, state, render callback and position modifier, sets
+         * activationTime 0 and displayDuration -1, and pushes the element onto the global display-element linked
+         * list (DAT_PointerToDisplayElementStackTop). Returns this.
+         */
         DisplayElement* Constructor_DisplayElement(eOnScreenText elementID, int xPos, int yPos, dword elementState,
             DisplayElementRenderFunc* renderFunction, DisplayElementPositionModifier positionModifier);
     };

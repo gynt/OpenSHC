@@ -64,13 +64,13 @@ namespace IO {
 
         MACRO_CALL(OS_Func::_fwrite)(&DAT_WindowAndDirectDraw::instance.currentGameResolution,
             sizeof(DAT_WindowAndDirectDraw::instance.currentGameResolution), 1, _File);
-        MACRO_CALL(OS_Func::_fwrite)(&DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk,
-            sizeof(DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk), 1, _File);
+        MACRO_CALL(OS_Func::_fwrite)(&DAT_ViewportRenderState::instance.viewportState.isZoomedOut,
+            sizeof(DAT_ViewportRenderState::instance.viewportState.isZoomedOut), 1, _File);
         MACRO_CALL(OS_Func::_fwrite)(&DAT_ScrollingHandler::instance.scrollSpeedSetting_0x38,
             sizeof(DAT_ScrollingHandler::instance.scrollSpeedSetting_0x38), 1, _File);
 
-        MACRO_CALL(OS_Func::_fwrite)(&DAT_SoundSystemState::instance.soundActiveUnk_0x0,
-            sizeof(DAT_SoundSystemState::instance.soundActiveUnk_0x0), 1, _File);
+        MACRO_CALL(OS_Func::_fwrite)(&DAT_SoundSystemState::instance.sfxEnabled,
+            sizeof(DAT_SoundSystemState::instance.sfxEnabled), 1, _File);
 
         MACRO_CALL(OS_Func::_fwrite)(&DAT_SoundSystemState::instance.streamVolume[0],
             sizeof(DAT_SoundSystemState::instance.streamVolume[0]), 1, _File);
@@ -104,43 +104,43 @@ namespace IO {
             &DAT_MouseState::instance.cursorType, sizeof(DAT_MouseState::instance.cursorType), 1, _File);
 
         MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
-            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.ipRelatedArray[0],
-            sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[0]));
+            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.recentJoinIpAddresses[0],
+            sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[0]));
         MACRO_CALL(OS_Func::_fwrite)(
-            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[0]), _File);
+            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[0]), _File);
 
         MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
-            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.ipRelatedArray[1],
-            sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[1]));
+            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.recentJoinIpAddresses[1],
+            sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[1]));
         MACRO_CALL(OS_Func::_fwrite)(
-            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[1]), _File);
+            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[1]), _File);
 
         MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
-            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.ipRelatedArray[2],
-            sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[2]));
+            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.recentJoinIpAddresses[2],
+            sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[2]));
         MACRO_CALL(OS_Func::_fwrite)(
-            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[2]), _File);
+            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[2]), _File);
 
         MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
-            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.ipRelatedArray[3],
-            sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[3]));
+            DAT_WideCharMultiByteState::ptr)(_wideCharBuffer, DAT_GameSynchronyState::instance.recentJoinIpAddresses[3],
+            sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[3]));
         MACRO_CALL(OS_Func::_fwrite)(
-            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[3]), _File);
+            _wideCharBuffer, sizeof(WCHAR), sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[3]), _File);
 
         MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.furthestSkirmishTrailMission,
             sizeof(DAT_GameCore::instance.furthestSkirmishTrailMission), 1, _File);
 
         MACRO_CALL(OS_Func::_fwrite)(
-            &DAT_GameCore::instance.lordIconUnk, sizeof(DAT_GameCore::instance.lordIconUnk), 1, _File);
+            &DAT_GameCore::instance.localLordIcon, sizeof(DAT_GameCore::instance.localLordIcon), 1, _File);
 
         MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.skirmishTrailProgress,
             sizeof(DAT_GameCore::instance.skirmishTrailProgress), 1, _File);
 
         MACRO_CALL(OS_Func::_fwrite)(
-            &DAT_GameCore::instance.selectedLordTypeUnk, sizeof(DAT_GameCore::instance.selectedLordTypeUnk), 1, _File);
+            &DAT_GameCore::instance.localSelectedLordType, sizeof(DAT_GameCore::instance.localSelectedLordType), 1, _File);
 
-        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.skirmishTrailYearReached,
-            sizeof(DAT_GameCore::instance.skirmishTrailYearReached), 1, _File);
+        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.skirmishTrailCurrentDateInMonths,
+            sizeof(DAT_GameCore::instance.skirmishTrailCurrentDateInMonths), 1, _File);
 
         MACRO_CALL(OS_Func::_fwrite)(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken,
             sizeof(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[0]),
@@ -155,8 +155,8 @@ namespace IO {
             sizeof(DAT_GameCore::instance.furthestWarchestTrailMission), 1, _File);
         MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.warchestTrailProgress,
             sizeof(DAT_GameCore::instance.warchestTrailProgress), 1, _File);
-        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.warchestTrailYearReached,
-            sizeof(DAT_GameCore::instance.warchestTrailYearReached), 1, _File);
+        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.warchestTrailCurrentDateInMonths,
+            sizeof(DAT_GameCore::instance.warchestTrailCurrentDateInMonths), 1, _File);
         MACRO_CALL(OS_Func::_fwrite)(DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken,
             sizeof(DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[0]), 30, _File);
 
@@ -164,8 +164,8 @@ namespace IO {
             sizeof(DAT_GameCore::instance.furthestExtremeTrailMission), 1, _File);
         MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.extremeTrailProgress,
             sizeof(DAT_GameCore::instance.extremeTrailProgress), 1, _File);
-        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.extremeTrailYearReached,
-            sizeof(DAT_GameCore::instance.extremeTrailYearReached), 1, _File);
+        MACRO_CALL(OS_Func::_fwrite)(&DAT_GameCore::instance.extremeTrailCurrentDateInMonths,
+            sizeof(DAT_GameCore::instance.extremeTrailCurrentDateInMonths), 1, _File);
         MACRO_CALL(OS_Func::_fwrite)(DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken,
             sizeof(DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[0]), 30, _File);
 

@@ -34,8 +34,8 @@ namespace IO {
         DAT_GameCore::instance.missionDifficulty_1 = 1;
         DAT_GameCore::instance.missionDifficulty_0 = 1;
 
-        MACRO_CALL(OS_Func::_memset)(DAT_GameSynchronyState::instance.ipRelatedArray, 0,
-            sizeof(DAT_GameSynchronyState::instance.ipRelatedArray));
+        MACRO_CALL(OS_Func::_memset)(DAT_GameSynchronyState::instance.recentJoinIpAddresses, 0,
+            sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses));
 
         DAT_GameCore::instance.furthestSkirmishTrailMission = 0;
         DAT_GameCore::instance.furthestWarchestTrailMission = 0;
@@ -45,16 +45,16 @@ namespace IO {
         DAT_GameCore::instance.warchestTrailProgress = 0;
         DAT_GameCore::instance.extremeTrailProgress = 0;
 
-        DAT_GameCore::instance.lordIconUnk = 2;
-        DAT_GameCore::instance.selectedLordTypeUnk = 0;
+        DAT_GameCore::instance.localLordIcon = 2;
+        DAT_GameCore::instance.localSelectedLordType = 0;
 
         DAT_GameCore::instance.genieVoiceActive = TRUE;
         DAT_GameCore::instance.tacticalPowersDisplayFlag = 0;
         DAT_GameCore::instance.unusedOption1 = 0;
 
-        DAT_GameCore::instance.skirmishTrailYearReached = 13200;
-        DAT_GameCore::instance.warchestTrailYearReached = 13560;
-        DAT_GameCore::instance.extremeTrailYearReached = 13920;
+        DAT_GameCore::instance.skirmishTrailCurrentDateInMonths = 13200;
+        DAT_GameCore::instance.warchestTrailCurrentDateInMonths = 13560;
+        DAT_GameCore::instance.extremeTrailCurrentDateInMonths = 13920;
 
         for (int i = 0; i < sizeof(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken)
                 / sizeof(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[0]);
@@ -156,13 +156,13 @@ namespace IO {
             MACRO_CALL(OS_Func::_fread)(
                 &DAT_GameCore::instance.settingBubbleHelp, sizeof(DAT_GameCore::instance.settingBubbleHelp), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&local_9cc, sizeof(local_9cc), 1, _File);
-            MACRO_CALL(OS_Func::_fread)(&DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk,
-                sizeof(DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_ViewportRenderState::instance.viewportState.isZoomedOut,
+                sizeof(DAT_ViewportRenderState::instance.viewportState.isZoomedOut), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&DAT_ScrollingHandler::instance.scrollSpeedSetting_0x38,
                 sizeof(DAT_ScrollingHandler::instance.scrollSpeedSetting_0x38), 1, _File);
 
-            MACRO_CALL(OS_Func::_fread)(&DAT_SoundSystemState::instance.soundActiveUnk_0x0,
-                sizeof(DAT_SoundSystemState::instance.soundActiveUnk_0x0), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_SoundSystemState::instance.sfxEnabled,
+                sizeof(DAT_SoundSystemState::instance.sfxEnabled), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&DAT_SoundSystemState::instance.streamVolume[0],
                 sizeof(DAT_SoundSystemState::instance.streamVolume[0]), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&DAT_SoundSystemState::instance.streamVolume[1],
@@ -201,42 +201,42 @@ namespace IO {
                 &DAT_MouseState::instance.cursorType, sizeof(DAT_MouseState::instance.cursorType), 1, _File);
 
             if (_fileLength < 1000) {
-                MACRO_CALL(OS_Func::_fread)(DAT_GameSynchronyState::instance.ipRelatedArray, 1,
-                    sizeof(DAT_GameSynchronyState::instance.ipRelatedArray), _File);
+                MACRO_CALL(OS_Func::_fread)(DAT_GameSynchronyState::instance.recentJoinIpAddresses, 1,
+                    sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses), _File);
             } else {
                 WCHAR ipRelatedArrayWideChar[4][20];
 
                 MACRO_CALL(OS_Func::_fread)(
                     ipRelatedArrayWideChar, sizeof(WCHAR), sizeof(ipRelatedArrayWideChar) / sizeof(WCHAR), _File);
                 MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
-                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.ipRelatedArray[0],
-                    ipRelatedArrayWideChar[0], sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[0]));
+                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.recentJoinIpAddresses[0],
+                    ipRelatedArrayWideChar[0], sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[0]));
                 MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
-                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.ipRelatedArray[1],
-                    ipRelatedArrayWideChar[1], sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[1]));
+                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.recentJoinIpAddresses[1],
+                    ipRelatedArrayWideChar[1], sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[1]));
                 MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
-                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.ipRelatedArray[2],
-                    ipRelatedArrayWideChar[2], sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[2]));
+                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.recentJoinIpAddresses[2],
+                    ipRelatedArrayWideChar[2], sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[2]));
                 MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
-                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.ipRelatedArray[3],
-                    ipRelatedArrayWideChar[3], sizeof(DAT_GameSynchronyState::instance.ipRelatedArray[3]));
+                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.recentJoinIpAddresses[3],
+                    ipRelatedArrayWideChar[3], sizeof(DAT_GameSynchronyState::instance.recentJoinIpAddresses[3]));
             }
 
             MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.furthestSkirmishTrailMission,
                 sizeof(DAT_GameCore::instance.furthestSkirmishTrailMission), 1, _File);
 
             MACRO_CALL(OS_Func::_fread)(
-                &DAT_GameCore::instance.lordIconUnk, sizeof(DAT_GameCore::instance.lordIconUnk), 1, _File);
-            if (DAT_GameCore::instance.lordIconUnk < 2) {
-                DAT_GameCore::instance.lordIconUnk = 2;
+                &DAT_GameCore::instance.localLordIcon, sizeof(DAT_GameCore::instance.localLordIcon), 1, _File);
+            if (DAT_GameCore::instance.localLordIcon < 2) {
+                DAT_GameCore::instance.localLordIcon = 2;
             }
 
             MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.skirmishTrailProgress,
                 sizeof(DAT_GameCore::instance.skirmishTrailProgress), 1, _File);
-            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.selectedLordTypeUnk,
-                sizeof(DAT_GameCore::instance.selectedLordTypeUnk), 1, _File);
-            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.skirmishTrailYearReached,
-                sizeof(DAT_GameCore::instance.skirmishTrailYearReached), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.localSelectedLordType,
+                sizeof(DAT_GameCore::instance.localSelectedLordType), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.skirmishTrailCurrentDateInMonths,
+                sizeof(DAT_GameCore::instance.skirmishTrailCurrentDateInMonths), 1, _File);
 
             MACRO_CALL(OS_Func::_fread)(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken,
                 sizeof(DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[0]),
@@ -251,8 +251,8 @@ namespace IO {
                 sizeof(DAT_GameCore::instance.furthestWarchestTrailMission), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.warchestTrailProgress,
                 sizeof(DAT_GameCore::instance.warchestTrailProgress), 1, _File);
-            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.warchestTrailYearReached,
-                sizeof(DAT_GameCore::instance.warchestTrailYearReached), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.warchestTrailCurrentDateInMonths,
+                sizeof(DAT_GameCore::instance.warchestTrailCurrentDateInMonths), 1, _File);
             MACRO_CALL(OS_Func::_fread)(DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken,
                 sizeof(DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[0]), 30, _File);
 
@@ -260,8 +260,8 @@ namespace IO {
                 sizeof(DAT_GameCore::instance.furthestExtremeTrailMission), 1, _File);
             MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.extremeTrailProgress,
                 sizeof(DAT_GameCore::instance.extremeTrailProgress), 1, _File);
-            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.extremeTrailYearReached,
-                sizeof(DAT_GameCore::instance.extremeTrailYearReached), 1, _File);
+            MACRO_CALL(OS_Func::_fread)(&DAT_GameCore::instance.extremeTrailCurrentDateInMonths,
+                sizeof(DAT_GameCore::instance.extremeTrailCurrentDateInMonths), 1, _File);
             MACRO_CALL(OS_Func::_fread)(DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken,
                 sizeof(DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[0]), 30, _File);
 
@@ -296,12 +296,12 @@ namespace IO {
 
             DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes = 10;
             DAT_MouseState::instance.cursorType = 0;
-            DAT_SoundSystemState::instance.soundActiveUnk_0x0 = 1;
+            DAT_SoundSystemState::instance.sfxEnabled = 1;
         }
         DAT_GameCore::instance.unusedOption1 = 0;
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
-        DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk = 0;
-        MACRO_CALL_MEMBER(Game::GameCore_Func::setStartDateUnk, DAT_GameCore::ptr)(0);
+        DAT_ViewportRenderState::instance.viewportState.isZoomedOut = 0;
+        MACRO_CALL_MEMBER(Game::GameCore_Func::recomputeTrailMissionStartDates, DAT_GameCore::ptr)(0);
     }
 
 }

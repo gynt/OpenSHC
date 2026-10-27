@@ -29,8 +29,8 @@ namespace UI {
         createHoverStateElement;
 
         MACRO_FUNCTION_RESOLVER(
-            void (HoveredState::*)(), false, Address::SHC_3BB0A8C1_0x005119D0, &HoveredState::calculateHoveredTile)
-        calculateHoveredTile;
+            void (HoveredState::*)(), false, Address::SHC_3BB0A8C1_0x005119D0, &HoveredState::renderPendingCommandPreviews)
+        renderPendingCommandPreviews;
 
     } // namespace HoveredState_Func
 } // namespace UI

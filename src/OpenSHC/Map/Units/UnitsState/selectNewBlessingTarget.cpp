@@ -1,6 +1,5 @@
-#include "../UnitsState.func.hpp"
-
 #include "OpenSHC/Map/Navigation/DirectionAlgorithmState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 
 #include "OpenSHC/Globals/DAT_DirectionAlgorithmState.hpp"
@@ -10,6 +9,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Map::Units::UnitLogicState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x005346D0
         int UnitsState::selectNewBlessingTarget(int unitID)
         {
@@ -18,11 +19,11 @@ namespace Map {
             int _playerID = this->units[unitID].owner;
             int _x = this->units[unitID].x;
             int _y = this->units[unitID].y;
-            for (int _targetUnitID = 1; _targetUnitID < this->maxUnitCount; ++_targetUnitID) {
+            for (int _targetUnitID = 1; _targetUnitID < (int)this->maxUnitCount; ++_targetUnitID) {
                 if (this->units[_targetUnitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
                     continue;
                 }
-                if (this->units[_targetUnitID].dying) {
+                if (this->units[_targetUnitID].dying != 0) {
                     continue;
                 }
                 if (this->units[_targetUnitID].owner != _playerID) {
@@ -43,7 +44,7 @@ namespace Map {
                 if (_distance > 40) {
                     continue;
                 }
-                _preference += _distance / -2;
+                _preference = _preference - _distance / 2;
                 if (_preference > _highestPreference) {
                     _highestPreference = _preference;
                     _bestUnitID = _targetUnitID;

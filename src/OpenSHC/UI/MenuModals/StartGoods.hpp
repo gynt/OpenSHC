@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace StartGoods {
 
+            /**
+             * Modal render callback: draws the 'Start Goods' header banner (text group 199, entry 0x29).
+             */
             void __cdecl MenuModalRenderFunction_StartGoods(int x, int y, int width, int height);
 
         } // namespace StartGoods

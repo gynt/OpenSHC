@@ -24,8 +24,8 @@ namespace UI {
         updateMenuButtons;
 
         MACRO_FUNCTION_RESOLVER(
-            void (Menu::*)(), false, Address::SHC_3BB0A8C1_0x004F64A0, &Menu::renderConstructionMenu)
-        renderConstructionMenu;
+            void (Menu::*)(), false, Address::SHC_3BB0A8C1_0x004F64A0, &Menu::renderMenuHoverHelp)
+        renderMenuHoverHelp;
 
         MACRO_FUNCTION_RESOLVER(void (Menu::*)(int), false, Address::SHC_3BB0A8C1_0x004F69D0, &Menu::loadMenuElements)
         loadMenuElements;

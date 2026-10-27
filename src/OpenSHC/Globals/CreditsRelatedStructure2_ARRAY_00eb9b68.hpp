@@ -1,0 +1,23 @@
+/**
+  THIS FILE IS AUTO GENERATED
+  Communicate changes to the dev team (e.g. via a Pull Request).
+  Changes get lost otherwise.
+
+  path: 'OpenSHC/Globals/CreditsRelatedStructure2_ARRAY_00eb9b68.hpp'
+*/
+
+#pragma once
+
+#include "OpenSHC/UI/Credits/CreditsRelatedStructure2.hpp"
+
+// GLOBAL: STRONGHOLDCRUSADER 0x00EB9B68
+// StructResolver::Instance<OpenSHC::UI::Credits::CreditsRelatedStructure2 [288],15440744>::instance
+
+namespace OpenSHC {
+
+using OpenSHC::UI::Credits::CreditsRelatedStructure2;
+
+MACRO_STRUCT_RESOLVER(CreditsRelatedStructure2[288], false, Address::SHC_3BB0A8C1_0x00EB9B68) CreditsRelatedStructure2_ARRAY_00eb9b68;
+} // namespace OpenSHC
+
+MACRO_STRUCT_INSTANCE(Address::SHC_3BB0A8C1_0x00EB9B68);

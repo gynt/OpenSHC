@@ -13,7 +13,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A690
         void SoundSystem::shutdownSoundSystem()
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
 
@@ -24,7 +24,7 @@ namespace Audio {
                 DAT_SFXDefinedData::ptr->SomeTimerIdentifier = UINT_MAX;
             }
             for (int i = 0; i < 5; ++i) {
-                this->streamFlagsUnkAndLoopCount_0x34[i] = 0;
+                this->streamFlagsAndLoopCount[i] = 0;
                 MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)((SHC_SoundStream)i);
             }
             for (int i = 1; i < 32; ++i) {
@@ -36,12 +36,12 @@ namespace Audio {
                     AIL_mem_free_lock(this->soundFileDataPointerArray_0x122c[i]);
                 }
             }
-            AIL_mem_free_lock(this->sampleBufferPtrUnk_0x17c[0]);
-            AIL_mem_free_lock(this->sampleBufferPtrUnk_0x17c[1]);
-            AIL_release_sample_handle(this->musicSampleUnk_0x170);
+            AIL_mem_free_lock(this->musicSampleBuffers[0]);
+            AIL_mem_free_lock(this->musicSampleBuffers[1]);
+            AIL_release_sample_handle(this->musicSample);
             AIL_close_digital_driver(this->digSndDriver_0x4);
             AIL_shutdown();
-            this->waveOutOpenUnk_0x8 = FALSE;
+            this->soundSystemInitialized = FALSE;
         }
 
     }

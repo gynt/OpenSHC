@@ -1,7 +1,7 @@
 #include "OpenSHC/UI/MenuItems/General.func.hpp"
 #include "OpenSHC/UI/MenuItems/InGameMenu.func.hpp"
 
-#include "OpenSHC/Globals/DAT_ButtonUnknownZero.hpp"
+#include "OpenSHC/Globals/DAT_ButtonDisabled.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 
@@ -13,10 +13,10 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x004B6500
             void MenuItemRenderFunction_InGameMenu_MapEventIconUnk(int param_1, ...)
             {
-                DAT_ButtonUnknownZero::instance = 1;
+                DAT_ButtonDisabled::instance = 1;
                 if (DAT_MinimapViewState::instance.spawnMomentCount != 0
                     && DAT_GameCore::instance.isBinkVideoPlaying == 0) {
-                    DAT_ButtonUnknownZero::instance = 0;
+                    DAT_ButtonDisabled::instance = 0;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 }

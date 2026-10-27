@@ -12,18 +12,18 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CEC80
     BOOLEnum AICState::aiChoiceAttForceRallyPercentage(int playerID)
     {
-        int const aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
+        int aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
         if (aiType == OpenSHC::AI::AIT_NULL)
             return FALSE;
-        int const aicIndex = aiType - 1;
+        int aicIndex = aiType - 1;
 
         int activeTribes = 0;
         int rallyingTribes = 0;
         for (int i = 0; i < 11; i++) {
-            int const tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeCount;
+            int tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeSlotCount;
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
                 if (tribeID == 0)
                     continue;
                 if (DAT_TribesState::instance.tribes[tribeID].uid
@@ -31,7 +31,7 @@ namespace AI {
                     continue;
 
                 activeTribes++;
-                if (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 20)
+                if (DAT_TribesState::instance.tribes[tribeID].percentageMoving < 20)
                     rallyingTribes++;
             }
         }

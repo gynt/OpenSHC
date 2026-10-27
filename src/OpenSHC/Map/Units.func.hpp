@@ -43,10 +43,10 @@ namespace Map {
         IncrementAndOptionalUpdateAVValueRelated;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(int unitID, UnitState nextUnitState), false,
-            Address::SHC_3BB0A8C1_0x00530C40, &OpenSHC::Map::Units::ConsiderHavingABreakNowUnk)
-        ConsiderHavingABreakNowUnk;
+            Address::SHC_3BB0A8C1_0x00530C40, &OpenSHC::Map::Units::ConsiderTakingFearFactorBreak)
+        ConsiderTakingFearFactorBreak;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(int unitID, int shouldFindNewGoodThing, int param_3), false,
+        MACRO_FUNCTION_RESOLVER(undefined4(__cdecl*)(int unitID, int shouldFindNewGoodThing, int param_3), false,
             Address::SHC_3BB0A8C1_0x00530CF0, &OpenSHC::Map::Units::SetStateToFreetimeWalking)
         SetStateToFreetimeWalking;
 
@@ -71,8 +71,8 @@ namespace Map {
         PlayArmoryIsFullWarning;
 
         MACRO_FUNCTION_RESOLVER(
-            BOOLEnum(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053A020, &OpenSHC::Map::Units::CurrentUnitHasHealer)
-        CurrentUnitHasHealer;
+            BOOLEnum(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053A020, &OpenSHC::Map::Units::LocalPlayerHasHealer)
+        LocalPlayerHasHealer;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053BC20, &OpenSHC::Map::Units::UpdateBurningMan)
@@ -87,8 +87,8 @@ namespace Map {
         UpdateShield;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(int unitID), false, Address::SHC_3BB0A8C1_0x0053CAC0,
-            &OpenSHC::Map::Units::UpdateWorker_ConsiderTakingABreakUnk)
-        UpdateWorker_ConsiderTakingABreakUnk;
+            &OpenSHC::Map::Units::UpdateWorker_ConsiderTakingFearFactorBreak)
+        UpdateWorker_ConsiderTakingFearFactorBreak;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053EAA0, &OpenSHC::Map::Units::UpdatePeasant)
@@ -195,8 +195,8 @@ namespace Map {
         UpdateQuarryMason;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00550D70, &OpenSHC::Map::Units::UpdateQuarryWorker)
-        UpdateQuarryWorker;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00550D70, &OpenSHC::Map::Units::UpdateOxTetherWorker)
+        UpdateOxTetherWorker;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00551980, &OpenSHC::Map::Units::UpdatePitchman)

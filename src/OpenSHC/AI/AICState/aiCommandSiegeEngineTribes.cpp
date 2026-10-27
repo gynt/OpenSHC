@@ -55,17 +55,20 @@ namespace AI {
                 int tribeID = DAT_UnitsState::instance.units[unitID].tribeID;
                 if (tribeID == 0)
                     continue;
-                if (DAT_TroopValueState::instance.attackInfo.playerInfo[playerID - 1].wide3 != 0)
+                if (*(int*)(((int)&DAT_TroopValueState::instance.attackInfo + 0x43aec /* old wideValuesArray: AttackInfoSubElement of player p at +0x301C0 + p*0x177BC */) + playerID * 0x177bc - 4)
+                    != 0)
                     MACRO_CALL_MEMBER(TribesState_Func::assignAttackTargetsForTribe, DAT_TribesState::ptr)(
                         tribeID, STBT_0x414);
             } else if (DAT_UnitsState::instance.units[unitID].unitType == UT_S_BATTERINGRAM) {
                 int tribeID = DAT_UnitsState::instance.units[unitID].tribeID;
                 if (tribeID == 0)
                     continue;
-                if (DAT_TroopValueState::instance.attackInfo.playerInfo[playerID - 1].gate2 != 0)
+                if (*(int*)(((int)&DAT_TroopValueState::instance.attackInfo + 0x3bdb4 /* old gateValuesArray: AttackInfoSubElement of player p at +0x301C0 + p*0x177BC */) + playerID * 0x177bc - 4)
+                    != 0)
                     MACRO_CALL_MEMBER(TribesState_Func::assignAttackTargetsForTribe, DAT_TribesState::ptr)(
                         tribeID, STBT_0x3f6);
-                else if (DAT_TroopValueState::instance.attackInfo.playerInfo[playerID - 1].wide3 != 0)
+                else if (*(int*)(((int)&DAT_TroopValueState::instance.attackInfo + 0x43aec /* old wideValuesArray: AttackInfoSubElement of player p at +0x301C0 + p*0x177BC */) + playerID * 0x177bc - 4)
+                    != 0)
                     MACRO_CALL_MEMBER(TribesState_Func::assignAttackTargetsForTribe, DAT_TribesState::ptr)(
                         tribeID, STBT_0x413);
             } else if (DAT_UnitsState::instance.units[unitID].unitType == UT_S_SHIELD) {
@@ -75,18 +78,18 @@ namespace AI {
                 if (shieldCount >= 3)
                     continue;
 
-                int const targetTribeID = shieldTargetTribeIDs[shieldCount];
-                DAT_TribesState::instance.tribes[tribeID].supportTribeID = targetTribeID;
-                DAT_TribesState::instance.tribes[tribeID].uid2 = DAT_TribesState::instance.tribes[targetTribeID].uid;
-                DAT_TribesState::instance.tribes[targetTribeID].tribeID = tribeID;
-                int const targetUnitID = DAT_TribesState::instance.tribes[targetTribeID].selectionTargetUnitID;
-                int const tile = DAT_UnitsState::instance.units[targetUnitID].tile;
+                int targetTribeID = shieldTargetTribeIDs[shieldCount];
+                DAT_TribesState::instance.tribes[tribeID].linkedTribeID = targetTribeID;
+                DAT_TribesState::instance.tribes[tribeID].linkedTribeUID = DAT_TribesState::instance.tribes[targetTribeID].uid;
+                DAT_TribesState::instance.tribes[targetTribeID].linkedByTribeID = tribeID;
+                int targetUnitID = DAT_TribesState::instance.tribes[targetTribeID].leaderUnitID;
+                int tile = DAT_UnitsState::instance.units[targetUnitID].tile;
                 shieldCount++;
                 if (tile <= 0)
                     continue;
 
-                int const y = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[tile];
-                int const x = tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
+                int y = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[tile];
+                int x = tile - DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile;
                 MACRO_CALL_MEMBER(TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(
                     tribeID, x, y, 0, 0, Instructions::UMSE_0);
                 MACRO_CALL_MEMBER(

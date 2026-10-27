@@ -20,10 +20,10 @@ namespace Text {
         }
         // FIXME:: This should overflow the buffer if filled to much. The counter can reach 500, which is one over the
         // buffer, ignoring that it will just overwrite this again and again.
-        helpSectionId = this->counter;
+        helpSectionId = this->helpSectionCount;
         strcpy(DAT_UserHelpDefinedData::instance.HelpSections[helpSectionId], param_1);
-        if (this->counter < 500) {
-            ++this->counter;
+        if (this->helpSectionCount < 500) {
+            ++this->helpSectionCount;
         }
         return helpSectionId;
     }

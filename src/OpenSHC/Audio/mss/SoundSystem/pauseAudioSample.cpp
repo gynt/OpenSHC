@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479FC0
         void SoundSystem::pauseAudioSample()
         {
-            if (!(this->waveOutOpenUnk_0x8 && this->digSndDriver_0x4)) {
+            if (!(this->soundSystemInitialized && this->digSndDriver_0x4)) {
                 return;
             }
 
@@ -15,7 +15,7 @@ namespace Audio {
                 if (MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)((SHC_SoundStream)streamIndex)) {
                     this->streamPaused_0x15c[streamIndex] = 1;
                     if (streamIndex == enums::SND_STR_MUSIC) {
-                        AIL_stop_sample(this->musicSampleUnk_0x170);
+                        AIL_stop_sample(this->musicSample);
                     } else {
                         AIL_pause_stream(this->stream_0xc[streamIndex], 0);
                     }

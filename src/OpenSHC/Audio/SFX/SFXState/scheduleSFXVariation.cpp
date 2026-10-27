@@ -13,7 +13,7 @@ namespace Audio {
             int const soundId = this->DAT_SoundStructures2[sfxGroupID].soundID + variationIndex;
             this->DAT_SoundStructures[soundId].scheduledPlayCounter++;
             this->DAT_SoundStructures[soundId].volumePercentage
-                = this->DAT_SoundStructures[soundId].baseVolumePercentageUnk;
+                = this->DAT_SoundStructures[soundId].fileVolume;
             this->DAT_SoundStructures[soundId].samplePan = 64;
             ++this->DAT_SFXCounter1 = this->DAT_SFXCounter1;
             if (this->DAT_SFXCounter1 > this->highestSFXCounter) {

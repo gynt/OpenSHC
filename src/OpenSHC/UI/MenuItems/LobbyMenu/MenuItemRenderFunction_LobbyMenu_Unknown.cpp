@@ -17,7 +17,7 @@ namespace UI {
             {
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
+                        OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedText,
                         DAT_BottomLeftTextDisplayState::ptr)(textID);
                 }
             }

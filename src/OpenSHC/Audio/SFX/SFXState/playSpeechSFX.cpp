@@ -21,7 +21,7 @@ namespace Audio {
         void SFXState::playSpeechSFX(SpeechEffectID speechID)
         {
             if (speechID < SEID_GENERAL_STARTGAME || SEID_GENERAL_MESSAGE3 < speechID
-                || (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
+                || (DAT_GameCore::instance.gameMode_2 == Game::GM_CUSTOM_MAP
                     && DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE
                     && SEID_POP_FALLING <= speechID && speechID <= SEID_TAXES_RATE8)) {
                 return;

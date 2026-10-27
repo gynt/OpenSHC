@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Map_Func {
 
     MACRO_FUNCTION_RESOLVER(
-        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00431990, &OpenSHC::Map::ResetSomeValuesFunctionUnk)
-    ResetSomeValuesFunctionUnk;
+        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00431990, &OpenSHC::Map::resetTransientGameStateOnMapLoad)
+    resetTransientGameStateOnMapLoad;
 
 } // namespace Map_Func
 } // namespace OpenSHC

@@ -17,7 +17,7 @@ namespace UI {
                 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::FindDisplayElementWithID)(displayElementID);
             if (displayElement != NULL) {
                 displayElement->displayDuration_0x14 = -1;
-                displayElement->elementStateUnk_0xc = displayElement->elementStateUnk_0xc != 0 ? 0 : toggleValue;
+                displayElement->displayState_0xc = displayElement->displayState_0xc != 0 ? 0 : toggleValue;
             }
         }
 

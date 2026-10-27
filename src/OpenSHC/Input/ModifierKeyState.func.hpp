@@ -14,8 +14,8 @@ namespace Input {
         Constructor_ModifierKeyState;
 
         MACRO_FUNCTION_RESOLVER(void (ModifierKeyState::*)(), false, Address::SHC_3BB0A8C1_0x00468A20,
-            &ModifierKeyState::updateCtrlShiftAltKeyStateMemory)
-        updateCtrlShiftAltKeyStateMemory;
+            &ModifierKeyState::pollModifierKeyStates)
+        pollModifierKeyStates;
 
     } // namespace ModifierKeyState_Func
 } // namespace Input

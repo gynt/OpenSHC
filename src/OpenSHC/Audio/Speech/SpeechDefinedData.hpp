@@ -28,14 +28,19 @@ namespace Audio {
 
             undefined1 padding_0x0[4]; // 0x00000000 length: 4
             char WavFileGroups[2][270][8][1000]; // 0x00000004 length: 4320000
-            AmbientSfx AmbientSounds[10]; // 0x0041EB04 length: 720
-            UnitSpeechData UnitSpeech[42]; // 0x0041EDD4 length: 6216
+            // 10 ambient sound types (AmbientSFXType: wind, battle, heavy...), each with wav variants and volumes
+            AmbientSfx ambientSfxTable[10]; // 0x0041EB04 length: 720
+            // UnitSpeechData per unit speech action ID (42), with numberOfVariations
+            UnitSpeechData unitSpeechTable[42]; // 0x0041EDD4 length: 6216
             SpeechEffectPath SpeechEffectPathArray[40]; // 0x0042061C length: 640
             char SpeechEffectFileArray[65][1000]; // 0x0042089C length: 65000
             NameSpeechPair LordNameToCall[223]; // 0x00430684 length: 446000
-            int field10_0x49d4b4; // 0x0049D4B4 length: 4
-            undefined4 field11_0x49d4b8; // 0x0049D4B8 length: 4
-            int currentStreamID; // 0x0049D4BC length: 4
+            // ambient type currently playing on SFX stream 2 (7 or 8), -1 = none (tweakVolume)
+            int stream2AmbientType; // 0x0049D4B4 length: 4
+            // ambient type to switch to after the SFX1 fade-out completes; -1 = none
+            undefined4 pendingAmbientTypeAfterFade; // 0x0049D4B8 length: 4
+            // [039 0x0044BCE0] holds ambient type 2/4/5/6 or -1, not a stream ID
+            int currentAmbientType; // 0x0049D4BC length: 4
             undefined1 padding_0x49d4c0[4]; // 0x0049D4C0 length: 4
 
         } SpeechDefinedData;

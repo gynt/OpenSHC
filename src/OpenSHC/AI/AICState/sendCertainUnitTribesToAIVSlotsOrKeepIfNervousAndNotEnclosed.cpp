@@ -23,14 +23,14 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004D4220
     void AICState::sendCertainUnitTribesToAIVSlotsOrKeepIfNervousAndNotEnclosed(int playerID)
     {
-        BOOLEnum const enclosed = MACRO_CALL_MEMBER(
+        BOOLEnum enclosed = MACRO_CALL_MEMBER(
             OpenSHC::Game::GameStateStructures_Func::checkKeepEnclosed, DAT_GameState::ptr)(playerID);
 
         for (int i = 0; i < 6; i++) {
-            int const count = DAT_GameState::instance.playerDataArray[playerID].aivUnitLocationSlotLocationCount
-                                  [DAT_SkirmishDefinedData::instance.MaxAIVLocationForGroundUnits[i].aivUnitType];
+            int count = DAT_GameState::instance.playerDataArray[playerID].aivUnitLocationSlotLocationCount
+                            [DAT_SkirmishDefinedData::instance.MaxAIVLocationForGroundUnits[i].aivUnitType];
             for (int j = 0; j < count; j++) {
-                int const tribeID
+                int tribeID
                     = DAT_GameState::instance.playerDataArray[playerID]
                           .aiTribeIDs[DAT_SkirmishDefinedData::instance.MaxAIVLocationForGroundUnits[i].tribeArrayOffset
                               + j];

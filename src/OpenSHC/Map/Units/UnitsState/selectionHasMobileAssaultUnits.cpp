@@ -1,25 +1,19 @@
-#include "../UnitsState.func.hpp"
-
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00535580
-        BOOLEnum UnitsState::selectionHasMobileAssaultUnits()
+        undefined4 UnitsState::selectionHasMobileAssaultUnits()
         {
-            if (this->selectionUnitType[Selection::USE_E_KNIGHTS] == 0
-                && this->selectionUnitType[Selection::USE_E_LADDERMEN] == 0
-                && this->selectionUnitType[Selection::USE_E_BATTERING_RAMS] == 0
-                && this->selectionUnitType[Selection::USE_E_TREBUCHETS] == 0
-                && this->selectionUnitType[Selection::USE_E_CATAPULTS] == 0
-                && this->selectionUnitType[Selection::USE_A_HORSE_ARCHERS] == 0
-                && this->selectionUnitType[Selection::USE_A_FIRE_BALLISTAS] == 0
-                && this->selectionUnitType[Selection::USE_E_SIEGETOWERS] == 0) {
-                return FALSE;
+            if (this->selectionKnights == 0 && this->selectionLaddermen == 0 && this->selectionBatteringRam == 0
+                && this->selectionTrebuchets == 0 && this->selectionCatapults == 0
+                && this->selectionArabHorseArchers == 0 && this->selectionFireBallista == 0
+                && this->selectionSiegeTower == 0) {
+                return 0;
             }
-            return TRUE;
+            return 1;
         }
 
     }

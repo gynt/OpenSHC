@@ -8,7 +8,7 @@ namespace Input {
     // FUNCTION: STRONGHOLDCRUSADER 0x004684D0
     void MouseState::setupHitBox(int width, int height)
     {
-        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk) {
+        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOut) {
             this->hitboxXStart = (this->screenSpaceX
                                      + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX - width / 2)
                 * 2;

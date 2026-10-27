@@ -1,6 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
-#include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -18,8 +16,8 @@ namespace Map {
                 return 2;
             case BT_TREBUCHET:
                 return 3;
-            case BT_BATTERINGRAM:
             case BT_SIEGETOWER:
+            case BT_BATTERINGRAM:
                 return 4;
             case BT_SHIELD:
                 return 1;

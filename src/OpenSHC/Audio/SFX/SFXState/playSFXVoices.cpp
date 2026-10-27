@@ -9,45 +9,45 @@
 #include "OpenSHC/UI/GreatestLord.func.hpp"
 #include "OpenSHC/string-literals.hpp"
 
-#include "OpenSHC/Globals/DAT_00b9869c.hpp"
+#include "OpenSHC/Globals/DAT_GenieFeedbackActive.hpp"
 #include "OpenSHC/Globals/DAT_AICState.hpp"
 #include "OpenSHC/Globals/DAT_CurrentPlayerRanking.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_IsKeepEnclosed.hpp"
-#include "OpenSHC/Globals/DAT_KeepEnclosementCooldown.hpp"
+#include "OpenSHC/Globals/lastKeepEnclosedCheckTime.hpp"
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DWORD_LatestPLayerStatusMessageTime.hpp"
-#include "OpenSHC/Globals/INT_00b98664.hpp"
+#include "OpenSHC/Globals/lastTeamBikMessageState.hpp"
 
 namespace OpenSHC {
 namespace Audio {
     namespace SFX {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044C410
-        void SFXState::playSFXVoices()
+        void SFXState::updateMultiplayerAdvisorVoices()
         {
             if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_BUILD_MENU
                 || DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .playerDeathRelated
+                    .gameOutcome
                 || DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .lordKilledByPlayerID
+                    .lordDeathStatusOrKiller
                 || DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
 
                 if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_BUILD_MENU
                     && DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
                     return;
                 }
-                DAT_00b9869c::instance = 0;
+                DAT_GenieFeedbackActive::instance = 0;
                 return;
             }
 
-            if (!DAT_00b9869c::instance) {
-                DAT_00b9869c::instance = 1;
-                MACRO_CALL(Audio_Func::ResetGreatestLordGenieSpeechState)();
+            if (!DAT_GenieFeedbackActive::instance) {
+                DAT_GenieFeedbackActive::instance = 1;
+                MACRO_CALL(Audio_Func::resetGenieSpeechFeedbackState)();
             }
 
             if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
@@ -59,7 +59,7 @@ namespace Audio {
                 return;
             }
 
-            if (1000 < _currentTime - DAT_KeepEnclosementCooldown::instance) {
+            if (1000 < _currentTime - lastKeepEnclosedCheckTime::instance) {
                 if (MACRO_CALL_MEMBER(Game::GameStateStructures_Func::checkKeepEnclosed, DAT_GameState::ptr)(
                         DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
                     if (!DAT_IsKeepEnclosed::instance) {
@@ -67,13 +67,13 @@ namespace Audio {
                             MACRO_CALL_MEMBER(SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Genie_45_wav_005a4f94);
                         }
                         DAT_IsKeepEnclosed::instance = 1;
-                        DAT_KeepEnclosementCooldown::instance = _currentTime;
+                        lastKeepEnclosedCheckTime::instance = _currentTime;
                         return;
                     }
                 } else if (DAT_IsKeepEnclosed::instance) {
                     DAT_IsKeepEnclosed::instance = 0;
                 }
-                DAT_KeepEnclosementCooldown::instance = _currentTime;
+                lastKeepEnclosedCheckTime::instance = _currentTime;
             }
 
             if (_currentTime - DWORD_LatestPLayerStatusMessageTime::instance < 300000) {
@@ -148,7 +148,7 @@ namespace Audio {
                         if (_teamMate
                             && MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_teamMate)) {
-                            if (INT_00b98664::instance) {
+                            if (lastTeamBikMessageState::instance) {
                                 MACRO_CALL_MEMBER(AI::AICState_Func::playTeamWinningBikFromPlayer, DAT_AICState::ptr)(
                                     _teamMate);
                             }
@@ -173,7 +173,7 @@ namespace Audio {
                             && MACRO_CALL_MEMBER(
                                 Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_teamMate)) {
                             iVar2 = 2;
-                            if (INT_00b98664::instance != 2) {
+                            if (lastTeamBikMessageState::instance != 2) {
                                 MACRO_CALL_MEMBER(AI::AICState_Func::playNoHelpBikFromPlayer, DAT_AICState::ptr)(
                                     _teamMate);
                             }
@@ -181,7 +181,7 @@ namespace Audio {
                     }
                 }
 
-                INT_00b98664::instance = iVar2;
+                lastTeamBikMessageState::instance = iVar2;
             }
             DWORD_LatestPLayerStatusMessageTime::instance = _currentTime;
         }

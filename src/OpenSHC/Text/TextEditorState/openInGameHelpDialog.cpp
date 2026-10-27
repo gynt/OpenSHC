@@ -2,12 +2,12 @@
 
 #include "OpenSHC/UI/MenuModalComposition.func.hpp"
 
-#include "OpenSHC/Globals/DAT_00df2964.hpp"
-#include "OpenSHC/Globals/DAT_00df296c.hpp"
+#include "OpenSHC/Globals/g_textDialogPaddingX.hpp"
+#include "OpenSHC/Globals/g_textDialogPaddingY.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
-#include "OpenSHC/Globals/INT_00df2968.hpp"
-#include "OpenSHC/Globals/INT_00df2970.hpp"
+#include "OpenSHC/Globals/g_textDialogMarginWidth.hpp"
+#include "OpenSHC/Globals/g_textDialogMarginHeight.hpp"
 
 namespace OpenSHC {
 namespace Text {
@@ -19,14 +19,14 @@ namespace Text {
             this->isDialogStateInitialized = TRUE;
             this->helpDialogVariant = 1;
             this->useInGameHelpHandler = TRUE;
-            this->helpDialogSubMode = 0;
-            this->useAlternateHelpTab = 0;
+            this->showTagSymbols = 0;
+            this->isEditorMode = 0;
             this->isCustomTextMode = 0;
             DAT_UserTextHandlerState::instance.inputBufferIndex = 0;
             this->helpContentScrollX = 0;
             this->helpContentScrollY = 0;
         }
-        this->activeHelpHotspotIndex = 0;
+        this->caretTextPos = 0;
         if (sectionId == -1) {
             MACRO_CALL_MEMBER(TextEditorState_Func::closeHelpDialogAndReturnToMenu, this)();
             return;
@@ -42,19 +42,19 @@ namespace Text {
         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::fillWithMenuModalDimensions, DAT_MenuModalComposition1::ptr)(
             &modalX, &modalY, &modalWidth, &modalHeight);
 
-        DAT_00df2964::instance = 15;
-        DAT_00df296c::instance = 13;
-        INT_00df2968::instance = 60;
-        INT_00df2970::instance = 65;
+        g_textDialogPaddingX::instance = 15;
+        g_textDialogPaddingY::instance = 13;
+        g_textDialogMarginWidth::instance = 60;
+        g_textDialogMarginHeight::instance = 65;
         this->dialogX = modalX;
         this->dialogY = modalY;
         this->dialogWidth = modalWidth;
         this->dialogHeight = modalHeight;
 
-        int const dialogContentX = this->dialogX + DAT_00df2964::instance;
-        int const dialogContentY = this->dialogY + DAT_00df296c::instance;
-        int const dialogContentHeight = this->dialogHeight - INT_00df2970::instance;
-        int const dialogContentWidth = this->dialogWidth - INT_00df2968::instance;
+        int const dialogContentX = this->dialogX + g_textDialogPaddingX::instance;
+        int const dialogContentY = this->dialogY + g_textDialogPaddingY::instance;
+        int const dialogContentHeight = this->dialogHeight - g_textDialogMarginHeight::instance;
+        int const dialogContentWidth = this->dialogWidth - g_textDialogMarginWidth::instance;
         this->dialogContentX = dialogContentX;
         this->dialogContentY = dialogContentY;
         this->dialogContentWidth = dialogContentWidth;

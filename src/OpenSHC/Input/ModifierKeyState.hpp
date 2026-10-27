@@ -32,9 +32,17 @@ namespace Input {
         ~ModifierKeyState() {};
 
         // Constructor
+        /**
+         * ModifierKeyState constructor: clears keyDownUnk, ctrl and shift of the global DAT_ModifierKeyState and
+         * returns it.
+         */
         ModifierKeyState* Constructor_ModifierKeyState();
 
-        void updateCtrlShiftAltKeyStateMemory();
+        /**
+         * Polls GetAsyncKeyState for Shift, Ctrl and Alt into DAT_ModifierKeyState and clears the downArrow and 'V'
+         * latch flags when those keys are not pressed.
+         */
+        void pollModifierKeyStates();
     };
 
     static_assert_cpp98_obj(sizeof(ModifierKeyState) == 24, ModifierKeyState);

@@ -58,8 +58,8 @@ namespace IO {
         setSoundFileFilter;
 
         MACRO_FUNCTION_RESOLVER(int (ResourceManager::*)(char*), false, Address::SHC_3BB0A8C1_0x0046C4E0,
-            &ResourceManager::getSimpleFirst1024ByteSumOfFile)
-        getSimpleFirst1024ByteSumOfFile;
+            &ResourceManager::getSignedByteSumOfFile)
+        getSignedByteSumOfFile;
 
         MACRO_FUNCTION_RESOLVER(void (ResourceManager::*)(), false, Address::SHC_3BB0A8C1_0x00471C10,
             &ResourceManager::mapNames_syncLoadedMapNames)
@@ -74,8 +74,8 @@ namespace IO {
         replaceMapNameWith;
 
         MACRO_FUNCTION_RESOLVER(char* (ResourceManager::*)(), false, Address::SHC_3BB0A8C1_0x00471D30,
-            &ResourceManager::getCurrentResourceCoreNameUnk)
-        getCurrentResourceCoreNameUnk;
+            &ResourceManager::getCurrentResourceBaseName)
+        getCurrentResourceBaseName;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (ResourceManager::*)(), false, Address::SHC_3BB0A8C1_0x00471DC0,
             &ResourceManager::doesFileOfActiveResourceExist)

@@ -1,6 +1,5 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 #include "OpenSHC/Map/Units/Behavior/UnitStanceEnum.hpp"
 #include "OpenSHC/Map/Units/SomeTribeBehaviorType.hpp"
@@ -17,13 +16,13 @@ namespace AI {
         int tribeIndex = 13;
         if (DAT_GameState::instance.playerDataArray[playerID].aiType == AITA_NULL)
             return;
-        int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex];
+        int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeIndex];
         if (tribeID == 0)
             return;
         if (DAT_TribesState::instance.tribes[tribeID].uid
             != DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[tribeIndex])
             return;
-        if (DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID == 0)
+        if (DAT_TribesState::instance.tribes[tribeID].leaderUnitID == 0)
             return;
 
         DAT_TribesState::instance.tribes[tribeID].unitStance = Map::Units::Behavior::USE_DEFENSIVE;

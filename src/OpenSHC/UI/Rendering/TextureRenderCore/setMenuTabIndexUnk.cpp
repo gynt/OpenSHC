@@ -5,7 +5,7 @@ namespace UI {
     namespace Rendering {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00454EE0
-        void TextureRenderCore::setMenuTabIndexUnk(int indexToSetToMinusOne)
+        void TextureRenderCore::setActiveMenuTabIndex(int indexToSetToMinusOne)
         {
             this->activeMenuTabIndex = indexToSetToMinusOne + 1;
         }

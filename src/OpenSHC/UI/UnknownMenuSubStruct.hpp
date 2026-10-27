@@ -16,7 +16,8 @@ namespace UI {
     typedef struct UnknownMenuSubStruct {
 
         short field0_0x0; // 0x00000000 length: 2
-        short field1_0x2; // 0x00000002 length: 2
+        // Hover feedback type of a menu item: 1 plays SFX 0x88, 2..7 other hover sounds
+        short hoverSoundType; // 0x00000002 length: 2
 
     } UnknownMenuSubStruct;
 #pragma pack(pop)

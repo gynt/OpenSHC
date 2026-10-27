@@ -17,6 +17,9 @@ namespace Map {
             // SIZE: 0x00000008
             typedef struct XYPair {
 
+                // XYPair offset 0 is always paired with .y as X (9 batches; review 379 instruction-level check at
+                // 0x4DDA30); textPageStartTime was propagated from one unrelated use [249 0x004DAFB0] holds
+                // timeGetTime() set in DisplayFullScreenTextPage and subtracted here
                 int x; // 0x00000000 length: 4
                 int y; // 0x00000004 length: 4
 

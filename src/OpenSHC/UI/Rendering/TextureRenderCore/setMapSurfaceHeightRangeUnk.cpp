@@ -5,7 +5,7 @@ namespace UI {
     namespace Rendering {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044ccc0
-        void TextureRenderCore::setMapSurfaceHeightRangeUnk()
+        void TextureRenderCore::resetMapSurfaceHeightRange()
         {
             this->mapGameSurfaceHeightRange.start = 0;
             this->mapGameSurfaceHeightRange.end = 2075;

@@ -10,7 +10,7 @@ namespace Map {
     void Entities::UpdateBrazierEntity()
     {
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2
-            = ((byte)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated
+            = ((byte)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].animFrameCounter
                   & 7)
             + DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
     }

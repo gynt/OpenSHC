@@ -5,7 +5,7 @@ namespace Audio {
     namespace MSS {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A290
-        void SoundSystem::markMusicChangePending() { this->mbr_0x3280 = 1; }
+        void SoundSystem::requestFadeInForNextTrack() { this->fadeInNextTrack = 1; }
 
     }
 }

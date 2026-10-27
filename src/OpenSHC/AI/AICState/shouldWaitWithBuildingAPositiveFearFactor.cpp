@@ -1,5 +1,4 @@
-#include "../AICState.func.hpp"
-
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -8,9 +7,9 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CB700
-    BOOLEnum AICState::shouldWaitWithBuildingAPositiveFearFactor(int playerID, Commands::MappersEnum mapper)
+    BOOLEnum AICState::shouldWaitWithBuildingAPositiveFearFactor(int playerID, Commands::MappersEnum param_2)
     {
-        switch (mapper) {
+        switch (param_2) {
         case Commands::M_MAPPER_GARDEN1:
         case Commands::M_MAPPER_GARDEN2:
         case Commands::M_MAPPER_GARDEN3:

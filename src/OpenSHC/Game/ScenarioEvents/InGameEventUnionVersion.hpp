@@ -11,7 +11,6 @@
 #include "OpenSHC/Game/ScenarioEvents/InGameEventUnion.hpp"
 #include "OpenSHC/Game/ScenarioEvents/IngameEventHeader.hpp"
 #include "OpenSHC/Game/ScenarioEvents/ScenarioEventCondition.hpp"
-#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 namespace OpenSHC {
 namespace Game {
@@ -20,7 +19,6 @@ namespace Game {
         using OpenSHC::Game::ScenarioEvents::IngameEventHeader;
         using OpenSHC::Game::ScenarioEvents::InGameEventUnion;
         using OpenSHC::Game::ScenarioEvents::ScenarioEventCondition;
-        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
 #pragma pack(push, 1)
 
@@ -38,8 +36,16 @@ namespace Game {
             InGameEventUnionVersion() {};
             ~InGameEventUnionVersion() {};
 
-            BOOLEnum resetEvent();
+            /**
+             * Resets an event to defaults: month 0, year 1181, type 1 (invasion) and zeroes all invasion/scenario
+             * data. Returns 0.
+             */
+            undefined4 resetEvent();
 
+            /**
+             * Initializes the event as a scenario event: month 0, year 1181, type 3, clears action data and repeat,
+             * sets a word at data+8 to 1 and disables all 40 conditions. Returns a pointer past the last condition.
+             */
             ScenarioEventCondition* initializeScenarioEvent();
         };
 

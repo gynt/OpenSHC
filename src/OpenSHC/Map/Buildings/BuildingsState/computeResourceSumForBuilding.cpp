@@ -1,4 +1,4 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 
@@ -11,14 +11,13 @@ namespace Map {
         {
             this->buildings[buildingID].currentNumberOfResource = 0;
             this->buildings[buildingID].currentLimitOfResource = 0;
-            for (int resourceType = 1; resourceType < 25; ++resourceType) {
-                this->buildings[buildingID].currentNumberOfResource
-                    += this->buildings[buildingID].resources[resourceType];
-                if (this->buildings[buildingID].resources[resourceType] != 0
+            for (int i = 1; i < 25; ++i) {
+                this->buildings[buildingID].currentNumberOfResource += this->buildings[buildingID].resources[i];
+                if (this->buildings[buildingID].resources[i] != 0
                     && this->buildings[buildingID].currentLimitOfResource == 0) {
                     this->buildings[buildingID].currentLimitOfResource
-                        = DAT_BuildingDefinedData::instance.StorageLimitResourceTypeArray[resourceType];
-                    this->buildings[buildingID].currentStoredResourceType = resourceType;
+                        = DAT_BuildingDefinedData::instance.StorageLimitResourceTypeArray[i];
+                    this->buildings[buildingID].currentStoredResourceType = i;
                 }
             }
             return this->buildings[buildingID].currentNumberOfResource;

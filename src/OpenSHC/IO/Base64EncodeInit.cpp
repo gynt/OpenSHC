@@ -7,7 +7,7 @@ void IO::Base64EncodeInit(Base64State* state)
 {
     state->phase = 0;
     state->carryByte = 0;
-    state->lineCharacterCounter = 0;
+    state->groupsOnLine = 0;
 }
 
 }

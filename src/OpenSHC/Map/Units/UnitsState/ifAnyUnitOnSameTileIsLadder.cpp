@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -10,6 +9,7 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Map::Units::UnitType;
         using OpenSHC::Map::Units::States::UnitState;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 

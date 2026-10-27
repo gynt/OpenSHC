@@ -12,7 +12,7 @@ namespace Map {
     void Buildings::UpdateBadBuildingRackFlogging()
     {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
+        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].showOverlays = 0;
         MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
     }

@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
@@ -7,6 +6,8 @@
 namespace OpenSHC {
 namespace Map {
     namespace Units {
+
+        using OpenSHC::Map::Units::UnitType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005334A0
         int UnitsState::getRemainingRequiredEngineers(int unitID)

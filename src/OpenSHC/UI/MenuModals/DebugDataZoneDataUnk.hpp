@@ -13,7 +13,11 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataZoneDataUnk {
 
-            void __cdecl MenuModalRenderFunction_DebugDataZoneDataUnk(int x, int y, int width, int height);
+            /**
+             * Debug modal render function: forwards to TroopValueState::renderAttackInfoDebugOverlay. NAME? it
+             * shows the troop-value attack-info overlay (per the callee name) rather than zone data.
+             */
+            void __cdecl MenuModalRenderFunction_DebugDataAttackInfo(int x, int y, int width, int height);
 
         } // namespace DebugDataZoneDataUnk
     } // namespace MenuModals

@@ -13,10 +13,10 @@ namespace Input {
     // FUNCTION: STRONGHOLDCRUSADER 0x00472A90
     void MouseState::drawMouseBasedBox()
     {
-        if (!DAT_MouseState::instance.selectionBoxState) {
+        if (!DAT_MouseState::instance.selectionBoxActive) {
             return;
         }
-        if (!DAT_MouseState::instance.leftClickState && !DAT_MouseState::instance.draggingStopped) {
+        if (!DAT_MouseState::instance.leftClickState && !DAT_MouseState::instance.leftClickStop) {
             MACRO_CALL_MEMBER(MouseState_Func::resetMouseCursorState, this)();
             return;
         }

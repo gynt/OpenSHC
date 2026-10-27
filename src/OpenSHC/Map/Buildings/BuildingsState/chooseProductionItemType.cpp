@@ -1,5 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Game/Resources/ResourceType.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
@@ -9,45 +8,48 @@ namespace Map {
     namespace Buildings {
 
         using OpenSHC::Game::Resources::ResourceType;
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0040A8A0
         int BuildingsState::chooseProductionItemType(int playerID, BuildingType buildingType)
         {
-            int matchingCount = 0;
-            int otherCount = 0;
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                    && this->buildings[buildingID].owner == playerID
-                    && this->buildings[buildingID].buildingType == buildingType) {
+            // Produce the item that the player's workshops of this type currently produce the least
+            int first = 0;
+            int second = 0;
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState == BLS_NORMAL && this->buildings[i].owner == playerID
+                    && this->buildings[i].buildingType == buildingType) {
                     if (buildingType == BT_BLACKSMITH) {
-                        if (this->buildings[buildingID].producedItemTypeNext == Game::Resources::RT_SWORD) {
-                            ++matchingCount;
+                        if (this->buildings[i].currentProducedItemType == OpenSHC::Game::Resources::RT_SWORD) {
+                            ++first;
                         } else {
-                            ++otherCount;
+                            ++second;
                         }
                     } else if (buildingType == BT_POLETURNER) {
-                        if (this->buildings[buildingID].producedItemTypeNext == Game::Resources::RT_SPEAR) {
-                            ++matchingCount;
+                        if (this->buildings[i].currentProducedItemType == OpenSHC::Game::Resources::RT_SPEAR) {
+                            ++first;
                         } else {
-                            ++otherCount;
+                            ++second;
                         }
                     } else if (buildingType == BT_FLETCHER) {
-                        if (this->buildings[buildingID].producedItemTypeNext == Game::Resources::RT_BOW) {
-                            ++matchingCount;
+                        if (this->buildings[i].currentProducedItemType == OpenSHC::Game::Resources::RT_BOW) {
+                            ++first;
                         } else {
-                            ++otherCount;
+                            ++second;
                         }
                     }
                 }
             }
+
             if (buildingType == BT_BLACKSMITH) {
-                return matchingCount <= otherCount ? Game::Resources::RT_SWORD : Game::Resources::RT_MACE;
+                return first <= second ? OpenSHC::Game::Resources::RT_SWORD : OpenSHC::Game::Resources::RT_MACE;
             }
             if (buildingType == BT_POLETURNER) {
-                return matchingCount > otherCount ? Game::Resources::RT_PIKE : Game::Resources::RT_SPEAR;
+                return first > second ? OpenSHC::Game::Resources::RT_PIKE : OpenSHC::Game::Resources::RT_SPEAR;
             }
             if (buildingType == BT_FLETCHER) {
-                return matchingCount > otherCount ? Game::Resources::RT_CROSSBOW : Game::Resources::RT_BOW;
+                return first > second ? OpenSHC::Game::Resources::RT_CROSSBOW : OpenSHC::Game::Resources::RT_BOW;
             }
             return 0;
         }

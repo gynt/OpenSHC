@@ -35,11 +35,11 @@ namespace Map {
                 OpenSHC::Commands::M_MAPPER_MOAT, &stone, &gold);
             int moatTileCount = DAT_TileMapState::instance.moatTileCount;
             int playerID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-            DAT_GameState::instance.playerDataArray[playerID].startResources[OpenSHC::Game::Resources::RT_GOLD]
+            DAT_GameState::instance.playerDataArray[playerID].pendingResources[OpenSHC::Game::Resources::RT_GOLD]
                 -= (moatTileCount - DAT_GameState::instance.playerDataArray[playerID].moatTileCount) * gold;
             MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingCost, this)(
                 OpenSHC::Commands::M_MAPPER_PITCH_DITCH, &stone, &gold);
-            DAT_GameState::instance.playerDataArray[playerID].startResources[OpenSHC::Game::Resources::RT_GOLD]
+            DAT_GameState::instance.playerDataArray[playerID].pendingResources[OpenSHC::Game::Resources::RT_GOLD]
                 -= (pitchDitchCount - DAT_GameState::instance.playerDataArray[playerID].pitchDitchTileCount) * gold;
             DAT_GameState::instance.playerDataArray[playerID].pitchDitchTileCount = pitchDitchCount;
             DAT_GameState::instance.playerDataArray[playerID].moatTileCount = moatTileCount;

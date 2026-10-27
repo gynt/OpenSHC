@@ -19,17 +19,17 @@ namespace AI {
         int y = 0;
         for (int i = 0; i < 11; i++) {
             int targetUnitID = 0;
-            int const tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeCount;
+            int tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeSlotCount;
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
                 if (tribeID == 0)
                     continue;
                 if (DAT_TribesState::instance.tribes[tribeID].uid
                     != DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[j + tribeType])
                     continue;
 
-                targetUnitID = DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
+                targetUnitID = DAT_TribesState::instance.tribes[tribeID].leaderUnitID;
                 x = DAT_UnitsState::instance.units[targetUnitID].x;
                 y = DAT_UnitsState::instance.units[targetUnitID].y;
                 break;
@@ -38,18 +38,18 @@ namespace AI {
                 break;
         }
 
-        DAT_GameState::instance.playerDataArray[playerID].someTile = 0;
+        DAT_GameState::instance.playerDataArray[playerID].regroupTile = 0;
         if (x == 0)
             return;
 
-        int const tile = MACRO_CALL_MEMBER(
-            OpenSHC::Map::Navigation::PathFindingState_Func::tracePathToFriendlyDefensesAndReturnTileUnk,
+        int tile = MACRO_CALL_MEMBER(
+            OpenSHC::Map::Navigation::PathFindingState_Func::findReachableTileNextToFriendlyDefense,
             DAT_PathFindingState::ptr)(playerID, x, y);
         if (tile <= 0)
             return;
 
-        int const tileY = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[tile];
-        DAT_GameState::instance.playerDataArray[playerID].someTile = tile;
+        int tileY = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[tile];
+        DAT_GameState::instance.playerDataArray[playerID].regroupTile = tile;
         DAT_GameState::instance.playerDataArray[playerID].someY = tileY;
         DAT_GameState::instance.playerDataArray[playerID].someX
             = tile - DAT_ViewportRenderState::instance.translationMatrix[tileY].addXgetTile;

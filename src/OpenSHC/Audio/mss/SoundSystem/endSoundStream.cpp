@@ -12,38 +12,38 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x004799A0
         void SoundSystem::endSoundStream(SHC_SoundStream sndStreamIndex)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
 
             if (sndStreamIndex == enums::SND_STR_MUSIC) {
-                this->streamActiveUnk_0x20[0] = 0;
-                DAT_SoundEffectsHelperData1::ptr->field14_0x54 = true;
-                if (this->musicSampleFileHandleUnk_0x174 != -1) {
-                    AIL_end_sample(this->musicSampleUnk_0x170);
-                    MACRO_CALL(OS_Func::_ucrt_close)(this->musicSampleFileHandleUnk_0x174);
+                this->streamOpen[0] = 0;
+                DAT_SoundEffectsHelperData1::ptr->musicStreamBusyMainThread = true;
+                if (this->currentMusicFileHandle != -1) {
+                    AIL_end_sample(this->musicSample);
+                    MACRO_CALL(OS_Func::_ucrt_close)(this->currentMusicFileHandle);
                 }
-                if (this->musicFileHandle_0x178 != -1) {
-                    MACRO_CALL(OS_Func::_ucrt_close)(this->musicFileHandle_0x178);
+                if (this->queuedMusicFileHandle != -1) {
+                    MACRO_CALL(OS_Func::_ucrt_close)(this->queuedMusicFileHandle);
                 }
-                this->musicFileHandle_0x178 = -1;
-                this->musicSampleFileHandleUnk_0x174 = -1;
-                this->mbr_0x188 = 1;
-                DAT_SoundEffectsHelperData1::ptr->field14_0x54 = false;
-                this->sec_Section1055_0x3274 = 0;
+                this->queuedMusicFileHandle = -1;
+                this->currentMusicFileHandle = -1;
+                this->musicStreamStopped = 1;
+                DAT_SoundEffectsHelperData1::ptr->musicStreamBusyMainThread = false;
+                this->playingMusicId = 0;
                 return;
             }
 
-            if (!this->streamActiveUnk_0x20[sndStreamIndex]) {
+            if (!this->streamOpen[sndStreamIndex]) {
                 return;
             }
 
-            if (this->streamFlagsUnkAndLoopCount_0x34[sndStreamIndex] & FLAG_SOUND_UNINTERRUPTABLE
+            if (this->streamFlagsAndLoopCount[sndStreamIndex] & FLAG_SOUND_UNINTERRUPTABLE
                 && AIL_stream_status(this->stream_0xc[sndStreamIndex]) == SMP_PLAYING) {
                 return;
             }
             AIL_close_stream(this->stream_0xc[sndStreamIndex]);
-            this->streamActiveUnk_0x20[sndStreamIndex] = 0;
+            this->streamOpen[sndStreamIndex] = 0;
             this->stream_0xc[sndStreamIndex] = 0x0;
         }
 

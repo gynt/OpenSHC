@@ -13,7 +13,7 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004D2660
     void AICState::assignUnitToATribe(int unitID)
     {
-        int const owner = DAT_UnitsState::instance.units[unitID].owner;
+        int owner = DAT_UnitsState::instance.units[unitID].owner;
         if (DAT_GameState::instance.playerDataArray[owner].aiType == AITA_NULL)
             return;
 
@@ -29,9 +29,9 @@ namespace AI {
         int tribeID;
         if (DAT_GameState::instance.playerDataArray[owner].aivUnitLocationSlotLocationCount[aivUnitType] <= 0) {
             if (MACRO_CALL_MEMBER(AICState_Func::unitIDIsRangedOrArmored, this)(unitID) != 0)
-                tribeID = MACRO_CALL_MEMBER(AICState_Func::createTribeForUnitType, this)(owner, 0);
+                tribeID = MACRO_CALL_MEMBER(AICState_Func::getOrCreateTribeForUnitType, this)(owner, 0);
             else
-                tribeID = MACRO_CALL_MEMBER(AICState_Func::createTribeForUnitType, this)(owner, 1);
+                tribeID = MACRO_CALL_MEMBER(AICState_Func::getOrCreateTribeForUnitType, this)(owner, 1);
         } else {
             tribeID = MACRO_CALL_MEMBER(AICState_Func::smallestTribeOfUnitType, this)(owner, aivUnitType);
         }

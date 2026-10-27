@@ -1,34 +1,25 @@
-#include "../UnitsState.func.hpp"
-
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005355E0
-        BOOLEnum UnitsState::selectionHasMixedAssaultAndInfantry()
+        undefined4 UnitsState::selectionContainsOnlyAssaultUnits()
         {
-            if (this->selectionUnitType[Selection::USE_E_KNIGHTS] != 0
-                || this->selectionUnitType[Selection::USE_E_LADDERMEN] != 0
-                || this->selectionUnitType[Selection::USE_E_BATTERING_RAMS] != 0
-                || this->selectionUnitType[Selection::USE_E_TREBUCHETS] != 0
-                || this->selectionUnitType[Selection::USE_E_CATAPULTS] != 0
-                || this->selectionUnitType[Selection::USE_A_HORSE_ARCHERS] != 0
-                || this->selectionUnitType[Selection::USE_A_FIRE_BALLISTAS] != 0
-                || this->selectionUnitType[Selection::USE_E_SIEGETOWERS] != 0) {
+            if (this->selectionKnights != 0 || this->selectionLaddermen != 0 || this->selectionBatteringRam != 0
+                || this->selectionTrebuchets != 0 || this->selectionCatapults != 0
+                || this->selectionArabHorseArchers != 0 || this->selectionFireBallista != 0
+                || this->selectionSiegeTower != 0) {
                 for (int i = 0; i <= 26; ++i) {
-                    if (i != Selection::USE_E_KNIGHTS && i != Selection::USE_E_LADDERMEN
-                        && i != Selection::USE_E_BATTERING_RAMS && i != Selection::USE_E_TREBUCHETS
-                        && i != Selection::USE_E_CATAPULTS && i != Selection::USE_A_HORSE_ARCHERS
-                        && i != Selection::USE_A_FIRE_BALLISTAS && i != Selection::USE_E_SIEGETOWERS
-                        && this->selectionUnitType[i] != 0) {
-                        return FALSE;
+                    if (i != 6 && i != 8 && i != 13 && i != 12 && i != 11 && i != 23 && i != 26 && i != 14
+                        && (&this->selectionEuropeanArchers)[i] != 0) {
+                        return 0;
                     }
                 }
-                return TRUE;
+                return 1;
             }
-            return FALSE;
+            return 0;
         }
 
     }

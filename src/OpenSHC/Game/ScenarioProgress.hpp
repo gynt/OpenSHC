@@ -16,8 +16,11 @@ namespace Game {
     typedef struct ScenarioProgress {
 
         int progressCallToArms; // 0x00000000 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         int progressSaladinsConquest; // 0x00000004 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         int progressTheKingsCrusade; // 0x00000008 length: 4
+        // Unsigned Double-Word (ddw, 4-bytes)
         int progressCrusaderStates; // 0x0000000C length: 4
 
     } ScenarioProgress;

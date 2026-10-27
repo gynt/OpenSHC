@@ -1,4 +1,4 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {

@@ -7,7 +7,7 @@ namespace Audio {
     namespace MSS {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00479C80
-        void SoundSystem::findSamplePlaceForSoundUnk(int soundIndex)
+        void SoundSystem::assignFreeSampleSlotToSound(int soundIndex)
         {
             if (this->soundFileCurrSampleNum_0x28c[soundIndex] >= 0) {
                 return;

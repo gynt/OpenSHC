@@ -1,7 +1,5 @@
 #include "../AICState.func.hpp"
 
-#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
-
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_TroopValueState.hpp"
@@ -9,16 +7,14 @@
 namespace OpenSHC {
 namespace AI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-
     // FUNCTION: STRONGHOLDCRUSADER 0x004D3780
     void AICState::computeNervousness(int playerID)
     {
-        int const troopValueNearKeep
+        int troopValueNearKeep
             = DAT_TroopValueState::instance.attackInfo.playerTotalTroopValueOfTroopsNearKeep[playerID];
-        int const enemyTroopValue = DAT_GameState::instance.playerDataArray[playerID].totalEnemyTroopValue;
+        int enemyTroopValue = DAT_GameState::instance.playerDataArray[playerID].totalEnemyTroopValue;
 
-        BOOLEnum isNotNervous = TRUE;
+        int isNotNervous = 1;
         int margin;
         if (enemyTroopValue < 50)
             margin = -20;
@@ -36,15 +32,15 @@ namespace AI {
             margin = 500;
 
         if (troopValueNearKeep > enemyTroopValue + margin) {
-            isNotNervous = FALSE;
-        } else if (!DAT_GameState::instance.playerDataArray[playerID].isNotNervousByEnemyTroopValue) {
+            isNotNervous = 0;
+        } else if (DAT_GameState::instance.playerDataArray[playerID].helpNeeded == 0) {
             if (DAT_GameState::instance.playerDataArray[playerID]
                     .totalEnemyTroopValueByPlayerID[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 > troopValueNearKeep)
                 MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::playNervous1BikFromPlayer, this)(playerID);
             MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::playRequestHelpBikFromPlayer, this)(playerID);
         }
-        DAT_GameState::instance.playerDataArray[playerID].isNotNervousByEnemyTroopValue = isNotNervous;
+        DAT_GameState::instance.playerDataArray[playerID].helpNeeded = isNotNervous;
     }
 
 }

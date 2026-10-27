@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace UnusedChooseMessageBox {
 
+            /**
+             * Modal render callback for the unused 'Select Message' dialog: draws the header banner and a dimmed
+             * list area.
+             */
             void __cdecl MenuModalRenderFunction_UnusedChooseMessageBox(int x, int y, int width, int height);
 
         } // namespace UnusedChooseMessageBox

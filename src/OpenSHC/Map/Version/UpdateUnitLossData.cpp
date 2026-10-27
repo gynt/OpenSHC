@@ -1,6 +1,6 @@
 #include "OpenSHC/Map/Version.func.hpp"
 
-#include "OpenSHC/Globals/DAT_UnitValueLossesPerEnemyPlayer.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostToPlayer.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -9,7 +9,7 @@ namespace Map {
     void Version::UpdateUnitLossData(int lossValue, int playerID)
     {
         if (lossValue < 0) {
-            DAT_UnitValueLossesPerEnemyPlayer::instance[playerID] -= lossValue;
+            currentPlayerUnitValueLostToPlayer::instance[playerID] -= lossValue;
         }
     }
 

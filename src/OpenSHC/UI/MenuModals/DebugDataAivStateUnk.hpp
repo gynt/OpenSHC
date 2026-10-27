@@ -13,7 +13,13 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataAivStateUnk {
 
-            void __cdecl MenuModalRenderFunction_DebugDataAivStateUnk(int x, int y, int width, int height);
+            /**
+             * Debug modal 'Village Placement Success': for players 1..8 lists the AIV castle placement result from
+             * DAT_AIVPlacementFit: skips -10, shows 'File missing' (-3), 'Can't place keep' (-2), 'Total Success'
+             * (100) or 'N% Success'; rows with values other than 100 are drawn in red (colour 0xff). NAME? shows
+             * AIV placement success, not a generic AIV state.
+             */
+            void __cdecl MenuModalRenderFunction_DebugDataAivPlacementSuccess(int x, int y, int width, int height);
 
         } // namespace DebugDataAivStateUnk
     } // namespace MenuModals

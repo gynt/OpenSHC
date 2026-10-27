@@ -1,6 +1,6 @@
 #include "OpenSHC/UI/MenuItems/BuildingAndStatusMenu.func.hpp"
 
-#include "OpenSHC/Globals/DAT_00b95b68.hpp"
+#include "OpenSHC/Globals/g_statusMenuArmyPage.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -10,9 +10,9 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x0043FC80
             void MenuItemActionHandler_BuildingAndStatusMenu_ArmySwitchButton()
             {
-                DAT_00b95b68::instance += 1;
-                if ((int)DAT_00b95b68::instance > 2) {
-                    DAT_00b95b68::instance = 0;
+                g_statusMenuArmyPage::instance += 1;
+                if ((int)g_statusMenuArmyPage::instance > 2) {
+                    g_statusMenuArmyPage::instance = 0;
                 }
             }
 

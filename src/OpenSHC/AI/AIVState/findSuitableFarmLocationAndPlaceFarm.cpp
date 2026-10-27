@@ -13,21 +13,21 @@ namespace AI {
 
     // breadth first search from the campground for an oasis grid cell and places the farm there
     // FUNCTION: STRONGHOLDCRUSADER 0x004EDDF0
-    BOOLEnum AIVState::findSuitableFarmLocationAndPlaceFarm(int playerID, MappersEnum farmType)
+    int AIVState::findSuitableFarmLocationAndPlaceFarm(PlayerID playerID, MappersEnum farmType)
     {
-        if (DAT_BuildingsState::instance.unknownCountdown01 < 20
+        if (DAT_BuildingsState::instance.freeBuildingSlots < 20
             || DAT_GameState::instance.playerDataArray[playerID].countFarms
                 >= DAT_GameState::instance.playerDataArray[playerID].availableOasisGridTiles) {
-            return FALSE;
+            return 0;
         }
-        if (DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldownUnk > 0) {
-            --DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldownUnk;
-            return FALSE;
+        if (DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldown > 0) {
+            --DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldown;
+            return 0;
         }
 
         this->visitCount = 1;
-        this->algAIndex = 0;
-        this->algBIndex = 1;
+        this->bfsQueueHead = 0;
+        this->bfsQueueTail = 1;
         // despite its declared type, farmType holds the BuildingType of the farm
         // the original leaves mapper untouched when farmType is none of the four below
         MappersEnum mapper;
@@ -46,45 +46,45 @@ namespace AI {
         ++this->mapExtraInfo.algorithmIterationNumber;
         this->heatMapYArray[0] = campY;
         this->heatMaps[campX][campY].algorithmIterationNumber = this->mapExtraInfo.algorithmIterationNumber;
-        this->heatMaps[campX][campY].algorithmVisitCountUnk = this->visitCount;
+        this->heatMaps[campX][campY].bfsDepth = this->visitCount;
 
-        while (this->algAIndex != this->algBIndex) {
-            int const x = this->heatMapXArray[this->algAIndex];
-            int const y = this->heatMapYArray[this->algAIndex];
-            this->visitCount = this->heatMaps[x][y].algorithmVisitCountUnk;
+        while (this->bfsQueueHead != this->bfsQueueTail) {
+            int const x = this->heatMapXArray[this->bfsQueueHead];
+            int const y = this->heatMapYArray[this->bfsQueueHead];
+            this->visitCount = (char)this->heatMaps[x][y].bfsDepth;
             if (this->visitCount > 40) {
                 break;
             }
             // only the four cardinal directions
             for (int direction = 0; direction < 8; direction += 2) {
                 uint const gridX
-                    = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.xOffset + x;
+                    = DAT_TerrainDefinedData::instance.clockwiseNeighbourOffsets[direction].int_.xOffset + x;
                 uint const gridY
-                    = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.yOffset + y;
-                if (this->heatMaps[x][y].isNotNearEdgeUnk && (gridX > 79 || gridY > 79)) {
+                    = DAT_TerrainDefinedData::instance.clockwiseNeighbourOffsets[direction].int_.yOffset + y;
+                if (this->heatMaps[x][y].isEdgeOrOffMapCell && (gridX > 79 || gridY > 79)) {
                     continue;
                 }
                 if (this->heatMaps[gridX][gridY].algorithmIterationNumber
                     == this->mapExtraInfo.algorithmIterationNumber) {
                     continue;
                 }
-                int const notInLargestArea = this->heatMaps[gridX][gridY].tilesNotPartOfLargestAreaCount;
+                int const notInLargestArea = (char)this->heatMaps[gridX][gridY].tilesNotPartOfLargestAreaCount;
                 this->heatMaps[gridX][gridY].algorithmIterationNumber = this->mapExtraInfo.algorithmIterationNumber;
                 if (notInLargestArea > 16) {
                     continue;
                 }
-                this->heatMaps[gridX][gridY].algorithmVisitCountUnk = this->visitCount + 1;
-                this->heatMapXArray[this->algBIndex] = gridX;
-                this->heatMapYArray[this->algBIndex] = gridY;
-                ++this->algBIndex;
-                if (this->algBIndex >= 6400) {
-                    this->algBIndex = 0;
+                this->heatMaps[gridX][gridY].bfsDepth = this->visitCount + 1;
+                this->heatMapXArray[this->bfsQueueTail] = gridX;
+                this->heatMapYArray[this->bfsQueueTail] = gridY;
+                ++this->bfsQueueTail;
+                if ((int)this->bfsQueueTail >= 6400) {
+                    this->bfsQueueTail = 0;
                 }
                 if (this->heatMaps[gridX][gridY].tilesNotPartOfLargestAreaCount
                     || this->heatMaps[gridX][gridY].structureCount || this->heatMaps[gridX][gridY].treeCount
                     || this->heatMaps[gridX][gridY].destructionBasedPlacementCooldown
-                    || this->heatMaps[gridX][gridY].oasisScrubCount < 25
-                    || this->heatMaps[gridX][gridY].oasisThickScrubCount < 14) {
+                    || (char)this->heatMaps[gridX][gridY].oasisScrubCount < 25
+                    || (char)this->heatMaps[gridX][gridY].oasisThickScrubCount < 14) {
                     continue;
                 }
                 int const xOffset
@@ -98,21 +98,19 @@ namespace AI {
                     xOffset + gridX * 5, yOffset + gridY * 5, mapper,
                     MACRO_CALL_MEMBER(
                         Map::TileMapState_Func::getBuildingSizeForCommandBuildingType, DAT_TileMapState::ptr)(mapper),
-                    // rotation 15 is a magic value: the building ends up with rotation 0
-                    // unless DAT_TileMapState::skipPlacementCheck is set
                     15);
-                if (!DAT_TileMapState::instance.buildingPlacementFail) {
+                if (!DAT_TileMapState::instance.buildingPlacementResult) {
                     this->heatMaps[gridX][gridY].structureCount = 1;
-                    return TRUE;
+                    return 1;
                 }
             }
-            ++this->algAIndex;
-            if (this->algAIndex >= 6400) {
-                this->algAIndex = 0;
+            ++this->bfsQueueHead;
+            if ((int)this->bfsQueueHead >= 6400) {
+                this->bfsQueueHead = 0;
             }
         }
-        DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldownUnk = 5;
-        return FALSE;
+        DAT_GameState::instance.playerDataArray[playerID].algoOasisCooldown = 5;
+        return 0;
     }
 
 }

@@ -23,8 +23,13 @@ namespace UI {
 
         undefined1 padding_0x0[4]; // 0x00000000 length: 4
         char HelpSections[500][1000]; // 0x00000004 length: 500000
-        UnkHelpTextRelatedFontStruct field5_0x7a124[9]; // 0x0007A124 length: 72
-        HelpTextRelatedColorStruct field6_0x7a16c[13]; // 0x0007A16C length: 208
+        // Verified in clean.exe: 0xB33290 holds {"Stronghold 14 aa",19}...{NULL,-1} font entries; colour table
+        // follows at +0x48 (=helpColorTable). Not sections. Help section descriptors iterated by
+        // get{Next,Prev}HelpSectionID / getHelpSectionText
+        UnkHelpTextRelatedFontStruct helpFontTable[9]; // 0x0007A124 length: 72
+        // Named color entries {name, r, g, b} used by help rich-text color tokens and the text editor (null name
+        // terminates)
+        HelpTextRelatedColorStruct helpColorTable[13]; // 0x0007A16C length: 208
 
     } UserHelpDefinedData;
 #pragma pack(pop)

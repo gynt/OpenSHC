@@ -1,5 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
@@ -9,39 +8,44 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingType;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x00422230
         int BuildingsState::getBuildingThatCanStoreThisResource(ResourceType resourceType, int amount, int playerID)
         {
-            BuildingType const storageType
-                = MACRO_CALL_MEMBER(BuildingsState_Func::getBuildingStorageTypeForResourceType, this)(resourceType);
+            // Granary or stockpile?
+            BuildingType storageType
+                = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getBuildingStorageTypeForResourceType,
+                    this)(resourceType);
             if (storageType == BT_STOCKPILE) {
-                for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                    if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                        && this->buildings[buildingID].buildingType == BT_STOCKPILE
-                        && this->buildings[buildingID].owner == playerID
-                        && this->buildings[buildingID].resources[resourceType] != 0
-                        && this->buildings[buildingID].resources[resourceType]
+                // Prefer a stockpile that already stores this resource but is not full yet
+                for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                    if (this->buildings[i].logicalState == BLS_NORMAL && this->buildings[i].buildingType == BT_STOCKPILE
+                        && this->buildings[i].owner == playerID && this->buildings[i].resources[resourceType] != 0
+                        && this->buildings[i].resources[resourceType]
                             < DAT_BuildingDefinedData::instance.StorageLimitResourceTypeArray[resourceType]) {
-                        return buildingID;
+                        return i;
                     }
                 }
-                for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                    if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                        && this->buildings[buildingID].buildingType == BT_STOCKPILE
-                        && this->buildings[buildingID].owner == playerID
-                        && this->buildings[buildingID].currentNumberOfResource <= 0) {
-                        return buildingID;
+                // Otherwise use an empty stockpile
+                for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                    if (this->buildings[i].logicalState == BLS_NORMAL && this->buildings[i].buildingType == BT_STOCKPILE
+                        && this->buildings[i].owner == playerID && this->buildings[i].currentNumberOfResource <= 0) {
+                        return i;
                     }
                 }
             } else if (storageType == BT_GRANARY) {
-                for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                    if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                        && this->buildings[buildingID].buildingType == BT_GRANARY
-                        && this->buildings[buildingID].owner == playerID
-                        && (int)MACRO_CALL_MEMBER(BuildingsState_Func::computeResourceSumForBuilding, this)(buildingID)
+                for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                    if (this->buildings[i].logicalState == BLS_NORMAL && this->buildings[i].buildingType == BT_GRANARY
+                        && this->buildings[i].owner == playerID
+                        && (int)MACRO_CALL_MEMBER(
+                               OpenSHC::Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding, this)(i)
                             < 250
-                        && MACRO_CALL_MEMBER(BuildingsState_Func::buildingIsAccessible, this)(buildingID, 0) != 0) {
-                        return buildingID;
+                        && MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::buildingIsAccessible, this)(
+                               i, 0)
+                            != 0) {
+                        return i;
                     }
                 }
             }

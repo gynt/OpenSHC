@@ -10,7 +10,7 @@ char IO::Base64Encode_CharacterLookup(char param_1)
     if ('?' < param_1) {
         return '=';
     }
-    return DAT_ProtocolDefinedData::instance.field136_0x4f4[param_1];
+    return DAT_ProtocolDefinedData::instance.base64Alphabet[param_1];
 }
 
 // FUNCTION: STRONGHOLDCRUSADER 0x004870B0
@@ -61,13 +61,13 @@ int IO::Base64Encode(char* input, int length, char* output, Base64State* state)
             carryByte = currentByte & 0x3f;
             *outputRunPtr = MACRO_CALL(OpenSHC::IO_Func::Base64Encode_CharacterLookup)(carryByte);
             ++outputRunPtr;
-            ++state->lineCharacterCounter;
-            if (state->lineCharacterCounter != 7200) {
+            ++state->groupsOnLine;
+            if (state->groupsOnLine != 7200) {
                 continue;
             }
             *outputRunPtr = '\n';
             ++outputRunPtr;
-            state->lineCharacterCounter = 0;
+            state->groupsOnLine = 0;
         }
         }
     }

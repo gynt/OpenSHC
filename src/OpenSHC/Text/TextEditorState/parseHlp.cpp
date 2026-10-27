@@ -5,8 +5,8 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/Util/WideCharMultiByteState.func.hpp"
 #include "OpenSHC/Text/Enums/HelpTextPicturePositionToken.hpp"
-#include "OpenSHC/string-literals.hpp"
 #include "OpenSHC/wstring-literals.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
 #include "OpenSHC/Globals/DAT_TextEditorState.hpp"
@@ -31,7 +31,7 @@ namespace Text {
         int _filePointerIndex = 0;
 
         int loadedGraphics[4] = { 0, 0, 0, 0 };
-        this->customHelpTextLength = 0;
+        this->helpTextLength = 0;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             40000, NULL, this->DAT_PointerToTemporaryTextMemory);
         filePointer[0] = MACRO_CALL_MEMBER(TextEditorState_Func::readCrusaderHelpHlp, this)(
@@ -117,16 +117,13 @@ namespace Text {
                                                 if (!MACRO_CALL(OS_Func::__wcsicmp)(u_left_005a5714, picPosition)) {
                                                     this->DAT_PointerToTemporaryTextMemory[textMemIndex++]
                                                         = Enums::HTPPT_LEFT;
-                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(
-                                                               u_right_005a5708, picPosition)) {
+                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(u_right_005a5708, picPosition)) {
                                                     this->DAT_PointerToTemporaryTextMemory[textMemIndex++]
                                                         = Enums::HTPPT_RIGHT;
-                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(
-                                                               u_centre_005a56f8, picPosition)) {
+                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(u_centre_005a56f8, picPosition)) {
                                                     this->DAT_PointerToTemporaryTextMemory[textMemIndex++]
                                                         = Enums::HTPPT_CENTRE;
-                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(
-                                                               u_here_005a56ec, picPosition)) {
+                                                } else if (!MACRO_CALL(OS_Func::__wcsicmp)(u_here_005a56ec, picPosition)) {
                                                     this->DAT_PointerToTemporaryTextMemory[textMemIndex++]
                                                         = Enums::HTPPT_HERE;
                                                 }
@@ -242,7 +239,7 @@ namespace Text {
 
                         } else if (!MACRO_CALL(OS_Func::__wcsicmp)(u_include_005a5658, hlpTag)) {
                             if (bodyActive) {
-                                if (DAT_TextEditorState::instance.useAlternateHelpTab) {
+                                if (DAT_TextEditorState::instance.isEditorMode) {
                                     wchar_t* includeName = MACRO_CALL_MEMBER(TextEditorState_Func::parseHLPPart, this)(
                                         filePointer[_filePointerIndex]);
                                     if (includeName) {
@@ -287,11 +284,11 @@ namespace Text {
                                     if (this->helpDialogVariant) {
                                         long const textIndex = MACRO_CALL(OS_Func::__wtol)(stringId);
 
-                                        if (this->intArray1[textIndex]) {
+                                        if (this->stringSubstitutions[textIndex]) {
                                             int i = 0;
                                             // Mismatch: wrong order of ptr access addition
-                                            while (this->intArray1[textIndex][i]) {
-                                                wchar_t const ch = this->intArray1[textIndex][i++];
+                                            while (this->stringSubstitutions[textIndex][i]) {
+                                                wchar_t const ch = this->stringSubstitutions[textIndex][i++];
                                                 if (ch == L'\n') {
                                                     this->DAT_PointerToTemporaryTextMemory[textMemIndex++]
                                                         = Enums::HTT_NEWPARAGRAPH;
@@ -349,7 +346,7 @@ namespace Text {
             headerActive = FALSE;
             --_filePointerIndex;
         }
-        this->customHelpTextLength = textMemIndex;
+        this->helpTextLength = textMemIndex;
     }
 
 }

@@ -1,7 +1,6 @@
 #include "../WallAndPitchState.func.hpp"
 
 #include "OpenSHC/Game/GameMode2.hpp"
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -17,7 +16,7 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00500F40
-    void WallAndPitchState::updateDestructionConfirmationCountdown()
+    void WallAndPitchState::updatePlacementUndoCountdown()
     {
         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
             this->countdown = 0;
@@ -70,10 +69,10 @@ namespace Map {
             }
             for (int i = 0; i < this->index; i++) {
                 int _tile = this->wallPlacementInfoArray[i].tile_OR_pitchID;
-                if ((DAT_TileMapState::instance.LogicLayer[_tile] & LogicHelpers::L_WALL_OR_GATEHOUSE) == 0) {
+                if ((DAT_TileMapState::instance.LogicLayer[_tile] & 0x100) == 0) {
                     this->countdown = 0;
                 }
-                if (DAT_TileMapState::instance.DamageLayer[_tile] != 0) {
+                if (DAT_TileMapState::instance.DamageOrCropStageLayer[_tile] != 0) {
                     this->countdown = 0;
                 }
             }
@@ -84,7 +83,7 @@ namespace Map {
                     || (DAT_TileMapState::instance.LogicLayer[DAT_TileMapState::instance
                                 .pitchDitches[this->wallPlacementInfoArray[i].tile_OR_pitchID]
                                 .tile]
-                           & LogicHelpers::L_PLAIN2_AND_PITCH)
+                           & 8)
                         == 0) {
                     this->countdown = 0;
                 }

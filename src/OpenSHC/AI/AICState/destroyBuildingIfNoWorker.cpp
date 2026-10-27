@@ -1,9 +1,7 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/AI/AIVState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
-#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_AIVState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -13,29 +11,27 @@
 namespace OpenSHC {
 namespace AI {
 
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-
     // FUNCTION: STRONGHOLDCRUSADER 0x004CB940
-    BOOLEnum AICState::destroyBuildingIfNoWorker(int buildingID)
+    undefined4 AICState::destroyBuildingIfNoWorker(int buildingID)
     {
-        short const countdown = DAT_BuildingsState::instance.buildings[buildingID].unknownTickRelatedValue;
-        int const owner = DAT_BuildingsState::instance.buildings[buildingID].owner;
+        short countdown = DAT_BuildingsState::instance.buildings[buildingID].aiAbandonCounter;
+        int owner = DAT_BuildingsState::instance.buildings[buildingID].owner;
         if (countdown <= 0)
-            return FALSE;
+            return 0;
         if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[owner] != -1)
-            return FALSE;
+            return 0;
         if (DAT_GameSynchronyState::instance.currentAIArray[owner] == 0)
-            return FALSE;
+            return 0;
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-            return FALSE;
+            return 0;
 
         if (DAT_BuildingsState::instance.buildings[buildingID].workers[0] != 0) {
             if (DAT_GameState::instance.mapAndTime.monthTicks == owner)
-                DAT_BuildingsState::instance.buildings[buildingID].unknownTickRelatedValue = countdown - 1;
-            return FALSE;
+                DAT_BuildingsState::instance.buildings[buildingID].aiAbandonCounter = countdown - 1;
+            return 0;
         }
         if (countdown < 20)
-            return FALSE;
+            return 0;
 
         MACRO_CALL_MEMBER(AIVState_Func::resetCountdownInHeatMap, DAT_AIVState::ptr)(
             (short)DAT_BuildingsState::instance.buildings[buildingID].x,
@@ -43,7 +39,7 @@ namespace AI {
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
             DAT_BuildingsState::ptr)(buildingID, owner, 50);
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(buildingID);
-        return TRUE;
+        return 1;
     }
 }
 }

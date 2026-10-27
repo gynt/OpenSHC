@@ -17,24 +17,24 @@ namespace AI {
     {
         if (DAT_GameState::instance.playerDataArray[playerID].aiType == OpenSHC::AI::AIT_NULL)
             return;
-        if (DAT_GameState::instance.playerDataArray[playerID].someTile == 0)
+        if (DAT_GameState::instance.playerDataArray[playerID].regroupTile == 0)
             return;
 
         for (int i = 0; i < 11; i++) {
-            int const tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeCount;
+            int tribeType = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeSlotCount;
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
                 if (tribeID == 0)
                     continue;
                 if (DAT_TribesState::instance.tribes[tribeID].uid
                     != DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[j + tribeType])
                     continue;
 
-                int const x = DAT_GameState::instance.playerDataArray[playerID].someX;
+                int x = DAT_GameState::instance.playerDataArray[playerID].someX;
                 DAT_TribesState::instance.tribes[tribeID].unitStance = OpenSHC::Map::Units::Behavior::USE_DEFENSIVE;
-                int const y = DAT_GameState::instance.playerDataArray[playerID].someY;
-                uint const result = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
+                int y = DAT_GameState::instance.playerDataArray[playerID].someY;
+                uint result = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
                     DAT_TribesState::ptr)(tribeID, x, y, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
                 if (result == 0)
                     MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::removeAllTribeUnits, DAT_TribesState::ptr)(

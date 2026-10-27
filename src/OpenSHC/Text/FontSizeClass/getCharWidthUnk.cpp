@@ -3,23 +3,23 @@
 #include "OpenSHC/Globals/DAT_GMImageHeaders.hpp"
 #include "OpenSHC/Globals/DAT_TextInputDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
-#include "OpenSHC/Globals/GMTotalPicturesProcessed.hpp"
+#include "OpenSHC/Globals/GMFirstPictureIndex.hpp"
 
 namespace OpenSHC {
 namespace Text {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00469E10
-    int FontSizeClass::getCharWidthUnk(byte charUnk)
+    int FontSizeClass::getCharWidth(byte charUnk)
     {
         int _width = 0;
         if (this->fontStartImageId_0x8 == -1) {
             this->fontStartImageId_0x8
-                = GMTotalPicturesProcessed::instance[this->fontGmID_0x0] + this->numberOfFontStartInGm_0x4 - 1;
+                = GMFirstPictureIndex::instance[this->fontGmID_0x0] + this->numberOfFontStartInGm_0x4 - 1;
         }
 
         int const imageSeqID
             = DAT_TextInputDefinedData::instance
-                  .CharToImageSeqIDMapping[DAT_TextManagerObject::instance.alternativeCodePageUsedUnk][charUnk];
+                  .CharToImageSeqIDMapping[DAT_TextManagerObject::instance.isCodePage1250][charUnk];
 
         if (imageSeqID == -1) {
             if (charUnk >= ' ') {

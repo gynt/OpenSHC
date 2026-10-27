@@ -15,8 +15,8 @@ namespace Map {
     {
         for (int buildingID = 1; buildingID < 2000; ++buildingID) {
             if (DAT_BuildingsState::instance.buildings[buildingID].logicalState != (BuildingLogicalState)0) {
-                DAT_BuildingsState::instance.buildings[buildingID].suppressDestroyRefund = 0;
-                DAT_BuildingsState::instance.buildings[buildingID].burningWorkerCountdown = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].noRefundOnDestroy = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].dogRespawnCooldown = 0;
             }
         }
     }

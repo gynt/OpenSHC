@@ -13,6 +13,8 @@ namespace Game {
     namespace Resources {
         typedef enum ResourceType {
 
+            RT_END_OF_LIST = -1, // 0xFFFFFFFF
+            RT_NONE = 0, // 0x00000000
             RT_LOGS = 1, // 0x00000001
             RT_WOOD = 2, // 0x00000002
             RT_HOPS = 3, // 0x00000003

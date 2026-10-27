@@ -16,8 +16,8 @@ namespace Rendering {
             playVideoOverMap;
 
             MACRO_FUNCTION_RESOLVER(void (AIMessageQueue::*)(int, int), false, Address::SHC_3BB0A8C1_0x004B7C90,
-                &AIMessageQueue::playAiLordMessage)
-            playAiLordMessage;
+                &AIMessageQueue::renderAiLordMessageModal)
+            renderAiLordMessageModal;
 
             MACRO_FUNCTION_RESOLVER(void (AIMessageQueue::*)(char*, char*, char*), false,
                 Address::SHC_3BB0A8C1_0x004BE7E0, &AIMessageQueue::playEventVideoBik)

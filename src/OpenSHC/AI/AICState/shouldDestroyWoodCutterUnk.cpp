@@ -1,7 +1,6 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/AI/AIVState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 #include "OpenSHC/Game/Resources/ResourceType.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
@@ -14,7 +13,7 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CB890
-    BOOLEnum AICState::shouldDestroyWoodCutterUnk(int playerID)
+    BOOLEnum AICState::tryDestroyWoodcuttersHut(int playerID)
     {
         if (DAT_GameState::instance.playerDataArray[playerID].aiType == AITA_NULL) {
             return FALSE;
@@ -34,7 +33,7 @@ namespace AI {
             if (DAT_GameState::instance.playerDataArray[playerID].someCount10 < 25) {
                 return FALSE;
             }
-            buildingID = DAT_GameState::instance.playerDataArray[playerID].someCount11;
+            buildingID = DAT_GameState::instance.playerDataArray[playerID].aiBuildingToDemolishID;
         }
 
         if (buildingID != 0) {

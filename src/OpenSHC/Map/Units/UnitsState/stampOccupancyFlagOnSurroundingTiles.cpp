@@ -1,4 +1,4 @@
-#include "../UnitsState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 
@@ -9,21 +9,32 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00534490
         void UnitsState::stampOccupancyFlagOnSurroundingTiles(int unitID)
         {
-            /* The 3x3 stamp is handwritten assembly in the original: the row centre is parked with
-               push/pop and the locals are reloaded from their stack slots. It ORs a word
-               into the byte layer, so the flag's (zero) high byte is applied to the next tile as well. */
-            uchar* _layer = DAT_TileMapState::instance.OccupancyLayer;
-            int _tile = this->units[unitID].tile;
-            int _y = this->units[unitID].y;
-            int _value = this->units[unitID].occupancyOrFlag;
+            /*
+                The original is a hand-written asm block. Equivalent C++:
+
+                uchar* row = DAT_TileMapState::instance.OccupancyLayer + this->units[unitID].tile;
+                int* directionRow = (int*)((uchar*)DAT_TileMapState::instance.ptr_MovementDirectionTranslationMatrix
+                                           + this->units[unitID].y * 0x20);
+                uchar value = this->units[unitID].ownerBitMask;
+                row[1] |= value; row[-1] |= value; row[0] |= value;
+                row[directionRow[0] - 1] |= value; row[directionRow[0] + 1] |= value; row[directionRow[0]] |= value;
+                row[directionRow[4] - 1] |= value; row[directionRow[4] + 1] |= value; row[directionRow[4]] |= value;
+
+                The ORs are word-sized with the high byte 0 (the value is zero-extended), so the byte after each
+                tile is read and written back unchanged.
+            */
+            uchar* occupancyLayer = DAT_TileMapState::instance.OccupancyLayer;
+            int tile = this->units[unitID].tile;
+            int y = this->units[unitID].y;
+            int value = this->units[unitID].ownerBitMask;
             __asm {
-                mov ebx, _value
-                mov esi, _layer
-                mov eax, _tile
+                mov ebx, value
+                mov esi, occupancyLayer
+                mov eax, tile
                 add esi, eax
                 push esi
-                mov edx, dword ptr [DAT_TileMapState::instance]TileMapState.ptr_MovementDirectionTranslationMatrix
-                mov eax, _y
+                mov edx, DAT_TileMapState::instance.ptr_MovementDirectionTranslationMatrix
+                mov eax, y
                 shl eax, 5
                 add edx, eax
                 or word ptr [esi + 1], bx

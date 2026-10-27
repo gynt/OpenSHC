@@ -31,8 +31,8 @@ namespace Text {
         wrapTextIntoLines;
 
         MACRO_FUNCTION_RESOLVER(
-            int (FontSizeClass::*)(byte), false, Address::SHC_3BB0A8C1_0x00469E10, &FontSizeClass::getCharWidthUnk)
-        getCharWidthUnk;
+            int (FontSizeClass::*)(byte), false, Address::SHC_3BB0A8C1_0x00469E10, &FontSizeClass::getCharWidth)
+        getCharWidth;
 
         MACRO_FUNCTION_RESOLVER(int (FontSizeClass::*)(LPWSTR, int), false, Address::SHC_3BB0A8C1_0x00471610,
             &FontSizeClass::getWidthOfWideText)
@@ -47,20 +47,20 @@ namespace Text {
         renderText;
 
         MACRO_FUNCTION_RESOLVER(int (FontSizeClass::*)(char*, int, int, int, BGR24, int, int), false,
-            Address::SHC_3BB0A8C1_0x00472EF0, &FontSizeClass::renderMultilineTextUnk)
-        renderMultilineTextUnk;
+            Address::SHC_3BB0A8C1_0x00472EF0, &FontSizeClass::renderOrMeasureWordWrappedText)
+        renderOrMeasureWordWrappedText;
 
         MACRO_FUNCTION_RESOLVER(int (FontSizeClass::*)(LPWSTR, int, int, int, uint, int, int), false,
-            Address::SHC_3BB0A8C1_0x00473300, &FontSizeClass::renderMultilineWideTextUnk)
-        renderMultilineWideTextUnk;
+            Address::SHC_3BB0A8C1_0x00473300, &FontSizeClass::renderOrMeasureWordWrappedWideText)
+        renderOrMeasureWordWrappedWideText;
 
         MACRO_FUNCTION_RESOLVER(void (FontSizeClass::*)(int, int, int, int, BGR24), false,
-            Address::SHC_3BB0A8C1_0x004733A0, &FontSizeClass::renderSomeSpecificTextUnk)
-        renderSomeSpecificTextUnk;
+            Address::SHC_3BB0A8C1_0x004733A0, &FontSizeClass::renderWrappedTextTypewriter)
+        renderWrappedTextTypewriter;
 
         MACRO_FUNCTION_RESOLVER(int (FontSizeClass::*)(byte, int, int, int, int), false,
-            Address::SHC_3BB0A8C1_0x00473640, &FontSizeClass::renderCharUnk)
-        renderCharUnk;
+            Address::SHC_3BB0A8C1_0x00473640, &FontSizeClass::renderChar)
+        renderChar;
 
         MACRO_FUNCTION_RESOLVER(int (FontSizeClass::*)(LPWSTR, int, int, int, BGR24, int), false,
             Address::SHC_3BB0A8C1_0x004737B0, &FontSizeClass::renderWideText)

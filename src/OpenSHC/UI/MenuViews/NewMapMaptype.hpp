@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuViews {
         namespace NewMapMaptype {
 
+            /**
+             * Prepare handler of the new-map type view: loads frontend_builder.tgx and shc_back and clears
+             * mapU3EndInt.
+             */
             void __cdecl MenuView_NewMapMaptype_Prepare();
 
         } // namespace NewMapMaptype

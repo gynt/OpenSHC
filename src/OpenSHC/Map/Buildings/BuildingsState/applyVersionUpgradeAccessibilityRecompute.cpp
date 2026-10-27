@@ -1,4 +1,4 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -6,9 +6,10 @@ namespace Map {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00424310
         void BuildingsState::applyVersionUpgradeAccessibilityRecompute(
-            PackagedFileMagicNum param_1, PackagedFileMagicNum param_2)
+            PackagedFileMagicNum receivedMapVersion, PackagedFileMagicNum packagerMapVersion)
         {
-            MACRO_CALL_MEMBER(BuildingsState_Func::recomputeAccessibilityForAllBuildings, this)();
+            MACRO_CALL_MEMBER(
+                OpenSHC::Map::Buildings::BuildingsState_Func::recomputeAccessibilityForAllBuildings, this)();
         }
 
     }

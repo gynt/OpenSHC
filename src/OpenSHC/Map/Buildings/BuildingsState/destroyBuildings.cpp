@@ -1,4 +1,5 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -8,16 +9,19 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0041A860
         void BuildingsState::destroyBuildings(int playerID)
         {
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (this->buildings[buildingID].logicalState != 0 && this->buildings[buildingID].owner == playerID) {
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState != 0 && this->buildings[i].owner == playerID) {
                     DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding
                         = DAT_BuildingDefinedData::instance
-                              .BuildingShowRubbleWhenDestroyed[this->buildings[buildingID].buildingType]
+                              .BuildingShowRubbleWhenDestroyed[this->buildings[i].buildingType]
                         == 0;
-                    MACRO_CALL_MEMBER(BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(buildingID);
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(i);
                 }
             }
         }

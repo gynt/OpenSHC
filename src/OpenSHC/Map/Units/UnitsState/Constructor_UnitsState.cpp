@@ -14,7 +14,7 @@ namespace Map {
             this->creationTime = timeGetTime();
             MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::clearAllUnits, this)();
             this->lastSelectedUnitID = 0;
-            this->unknownInitially0_01 = 0;
+            this->blockedMoveGiveUpCount = 0;
             this->lostChimps = 0;
             this->maxUnitCount = 2500;
             return this;

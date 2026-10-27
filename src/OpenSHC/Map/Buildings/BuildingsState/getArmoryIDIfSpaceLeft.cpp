@@ -1,11 +1,13 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Buildings {
+
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0040C060
         uint BuildingsState::getArmoryIDIfSpaceLeft(
@@ -20,14 +22,11 @@ namespace Map {
             if (this->buildings[buildingID].owner != playerID) {
                 return 0;
             }
-            int capacity = 50;
-            for (int resourceType = 0; resourceType < 25; ++resourceType) {
-                capacity -= this->buildings[buildingID].resources[resourceType];
+            int spaceLeft = 50;
+            for (int i = 0; i < 25; ++i) {
+                spaceLeft -= this->buildings[buildingID].resources[i];
             }
-            if (capacity < resourceCount) {
-                return 0;
-            }
-            return buildingID;
+            return spaceLeft < resourceCount ? 0 : buildingID;
         }
 
     }

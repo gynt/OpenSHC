@@ -18,9 +18,11 @@ namespace Audio {
 
             int volumePercentage; // 0x00000000 length: 4
             int samplePan; // 0x00000004 length: 4
+            // how many times we should play this sample?
             int scheduledPlayCounter; // 0x00000008 length: 4
             int field3_0xc; // 0x0000000C length: 4
-            int baseVolumePercentageUnk; // 0x00000010 length: 4
+            // [UNK PASS] was baseVolumePercentageUnk
+            int fileVolume; // 0x00000010 length: 4
             char* pointerToFilename; // 0x00000014 length: 4
 
         } SoundStructure1;

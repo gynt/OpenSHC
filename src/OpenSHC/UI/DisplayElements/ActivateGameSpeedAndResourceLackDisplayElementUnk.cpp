@@ -16,7 +16,7 @@ namespace UI {
             DisplayElement* const displayElement
                 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::FindDisplayElementWithID)(elementId);
             if (displayElement != NULL) {
-                displayElement->elementStateUnk_0xc = elementState;
+                displayElement->displayState_0xc = elementState;
                 displayElement->displayDuration_0x14 = displayDuration;
                 displayElement->activationTime_0x10 = timeGetTime();
             }

@@ -54,20 +54,20 @@ namespace Global {
         Constructor_MenuView_LobbyMenu;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A310,
-            &OpenSHC::Global::Init::Constructor_MenuView_Unknown33)
-        Constructor_MenuView_Unknown33;
+            &OpenSHC::Global::Init::Constructor_MenuView_MultiplayerWaitForPlayersReady)
+        Constructor_MenuView_MultiplayerWaitForPlayersReady;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A340,
-            &OpenSHC::Global::Init::Constructor_MenuView_Unknown61ReturnToSkrimishMenuUnk)
-        Constructor_MenuView_Unknown61ReturnToSkrimishMenuUnk;
+            &OpenSHC::Global::Init::Constructor_MenuView_ReturnToSkirmishLobby)
+        Constructor_MenuView_ReturnToSkirmishLobby;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A370,
             &OpenSHC::Global::Init::Constructor_MenuView_SingleplayerMapChoice)
         Constructor_MenuView_SingleplayerMapChoice;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A3A0,
-            &OpenSHC::Global::Init::Constructor_MenuView_Unknown49DoesNothingUnk)
-        Constructor_MenuView_Unknown49DoesNothingUnk;
+            &OpenSHC::Global::Init::Constructor_MenuView_RestartingCustomMap)
+        Constructor_MenuView_RestartingCustomMap;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A3D0,
             &OpenSHC::Global::Init::Constructor_MenuView_MapEditorLandscaping)
@@ -110,12 +110,12 @@ namespace Global {
         Constructor_MenuView_UnusedCreateSiege;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A5B0,
-            &OpenSHC::Global::Init::Constructor_MenuView_Unknown26_CampaignRelatedUnk)
-        Constructor_MenuView_Unknown26_CampaignRelatedUnk;
+            &OpenSHC::Global::Init::Constructor_MenuView_MissionIntroSequence)
+        Constructor_MenuView_MissionIntroSequence;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A5E0,
-            &OpenSHC::Global::Init::Constructor_MenuView_CampaignUnk)
-        Constructor_MenuView_CampaignUnk;
+            &OpenSHC::Global::Init::Constructor_MenuView_CampaignMap)
+        Constructor_MenuView_CampaignMap;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059A610,
             &OpenSHC::Global::Init::Constructor_MenuView_ScenarioDescription)
@@ -210,8 +210,8 @@ namespace Global {
         Constructor_MenuView_CrusadeEndscreen;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AA60,
-            &OpenSHC::Global::Init::Constructor_Menu_Unknown_ManyThings)
-        Constructor_Menu_Unknown_ManyThings;
+            &OpenSHC::Global::Init::Constructor_Menu_EmptyShared)
+        Constructor_Menu_EmptyShared;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AA70,
             &OpenSHC::Global::Init::Constructor_Menu_IntroLogos)
@@ -342,12 +342,12 @@ namespace Global {
         Constructor_Menu_UnusedCreateSiege;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AC70,
-            &OpenSHC::Global::Init::Constructor_Menu_Unknown26CampaignRelatedUnk)
-        Constructor_Menu_Unknown26CampaignRelatedUnk;
+            &OpenSHC::Global::Init::Constructor_Menu_MissionIntroSequence)
+        Constructor_Menu_MissionIntroSequence;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AC80,
-            &OpenSHC::Global::Init::Constructor_Menu_Unknown27CampaignUnk)
-        Constructor_Menu_Unknown27CampaignUnk;
+            &OpenSHC::Global::Init::Constructor_Menu_CampaignMap)
+        Constructor_Menu_CampaignMap;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AC90,
             &OpenSHC::Global::Init::Constructor_Menu_UnusedExtremeAd)
@@ -386,8 +386,8 @@ namespace Global {
         Constructor_Menu_MissionFinishedTransition;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AD20,
-            &OpenSHC::Global::Init::Constructor_Menu_GameLostUnk)
-        Constructor_Menu_GameLostUnk;
+            &OpenSHC::Global::Init::Constructor_Menu_GameLost)
+        Constructor_Menu_GameLost;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059AD30,
             &OpenSHC::Global::Init::Constructor_Menu_ChooseNetworkServiceProvider)
@@ -582,8 +582,8 @@ namespace Global {
         Constructor_Menu_StartGoods;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059B030,
-            &OpenSHC::Global::Init::Constructor_Menu_UnusedSiegeAttackingForceUnk)
-        Constructor_Menu_UnusedSiegeAttackingForceUnk;
+            &OpenSHC::Global::Init::Constructor_Menu_SiegeAttackingForce)
+        Constructor_Menu_SiegeAttackingForce;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059B040,
             &OpenSHC::Global::Init::Constructor_Menu_NewInvasion)
@@ -662,8 +662,8 @@ namespace Global {
         Constructor_MenuModal_DebugDataUnitData;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059B260,
-            &OpenSHC::Global::Init::Constructor_MenuModal_DebugDataZoneDataUnk)
-        Constructor_MenuModal_DebugDataZoneDataUnk;
+            &OpenSHC::Global::Init::Constructor_MenuModal_DebugDataAttackInfo)
+        Constructor_MenuModal_DebugDataAttackInfo;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059B2A0,
             &OpenSHC::Global::Init::Constructor_MenuModal_DebugDataNetwork)
@@ -782,8 +782,8 @@ namespace Global {
         Constructor_MenuModal_StartGoods;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059B9E0,
-            &OpenSHC::Global::Init::Constructor_MenuModal_UnusedSiegeAttackingForceUnk)
-        Constructor_MenuModal_UnusedSiegeAttackingForceUnk;
+            &OpenSHC::Global::Init::Constructor_MenuModal_SiegeAttackingForce)
+        Constructor_MenuModal_SiegeAttackingForce;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059BA20,
             &OpenSHC::Global::Init::Constructor_MenuModal_NewInvasion)
@@ -934,8 +934,8 @@ namespace Global {
         Constructor_MenuModal_TacticalPowerBar;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C380,
-            &OpenSHC::Global::Init::Constructor_MenuModal_DebugDataAivStateUnk)
-        Constructor_MenuModal_DebugDataAivStateUnk;
+            &OpenSHC::Global::Init::Constructor_MenuModal_DebugDataAivPlacementSuccess)
+        Constructor_MenuModal_DebugDataAivPlacementSuccess;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C3C0,
             &OpenSHC::Global::Init::CreateUnknownDisplayElement0)
@@ -958,8 +958,8 @@ namespace Global {
         CreateConnectAndPathLinkageInfoTextDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C460,
-            &OpenSHC::Global::Init::CreateInGameChatDisplayElementUnk)
-        CreateInGameChatDisplayElementUnk;
+            &OpenSHC::Global::Init::CreateInGameChatDisplayElement)
+        CreateInGameChatDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C480,
             &OpenSHC::Global::Init::CreateResourceMissing1DisplayElement)
@@ -974,12 +974,12 @@ namespace Global {
         CreateDebugNumbersDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C4E0,
-            &OpenSHC::Global::Init::CreateUnknownDisplayElement7)
-        CreateUnknownDisplayElement7;
+            &OpenSHC::Global::Init::CreateAiRecomputeAttacksTimerDisplayElement)
+        CreateAiRecomputeAttacksTimerDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C500,
-            &OpenSHC::Global::Init::CreateSomeMissionNumberUnkDisplayElement9)
-        CreateSomeMissionNumberUnkDisplayElement9;
+            &OpenSHC::Global::Init::CreateMissionNumberDisplayElement)
+        CreateMissionNumberDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C520,
             &OpenSHC::Global::Init::CreateNoTreeGrowthTextDisplayElement)
@@ -994,8 +994,8 @@ namespace Global {
         CreateMissionWinDefeatBannerDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C580,
-            &OpenSHC::Global::Init::CreateSomeMultiplayerInfoUnkDisplayElement19)
-        CreateSomeMultiplayerInfoUnkDisplayElement19;
+            &OpenSHC::Global::Init::CreateConnectionLostDisplayElement)
+        CreateConnectionLostDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C5A0,
             &OpenSHC::Global::Init::CreateKeepAndGranaryPlacementInfoDisplayElement)
@@ -1006,8 +1006,8 @@ namespace Global {
         CreatePlayerInfoOnHoverDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C5E0,
-            &OpenSHC::Global::Init::CreatePlayerPingUnkDisplayElement22)
-        CreatePlayerPingUnkDisplayElement22;
+            &OpenSHC::Global::Init::CreatePlayerPingDisplayElement)
+        CreatePlayerPingDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C600,
             &OpenSHC::Global::Init::CreateGamePausedTextDisplayElement)
@@ -1018,24 +1018,24 @@ namespace Global {
         CreateGameSpeedTextDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C640,
-            &OpenSHC::Global::Init::CreateUnknownDisplayElement25)
-        CreateUnknownDisplayElement25;
+            &OpenSHC::Global::Init::CreateKingOfTheHillScoresDisplayElement)
+        CreateKingOfTheHillScoresDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C660,
             &OpenSHC::Global::Init::CreateTimeUntilVictoryDisplayElement)
         CreateTimeUntilVictoryDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C680,
-            &OpenSHC::Global::Init::CreateNoRushDisplayElementUnk)
-        CreateNoRushDisplayElementUnk;
+            &OpenSHC::Global::Init::CreateNoRushCountdownDisplayElement)
+        CreateNoRushCountdownDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C6A0,
             &OpenSHC::Global::Init::CreateTimeUntilDefeatDisplayElement)
         CreateTimeUntilDefeatDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C6C0,
-            &OpenSHC::Global::Init::CreateSomeMultiplayerInfoUnkDisplayElement28)
-        CreateSomeMultiplayerInfoUnkDisplayElement28;
+            &OpenSHC::Global::Init::CreatePlayerNotRespondingDisplayElement)
+        CreatePlayerNotRespondingDisplayElement;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C6E0,
             &OpenSHC::Global::Init::CreatePeopleLeftToPlaceDisplayElement)
@@ -1114,8 +1114,8 @@ namespace Global {
         Constructor_Stopwatch_Gameloop;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C940,
-            &OpenSHC::Global::Init::Constructor_Stopwatch_Unknown)
-        Constructor_Stopwatch_Unknown;
+            &OpenSHC::Global::Init::Constructor_Stopwatch_AiRecomputeAttacks)
+        Constructor_Stopwatch_AiRecomputeAttacks;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0059C960, &OpenSHC::Global::Init::Constructor_FilePackager)

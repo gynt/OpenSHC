@@ -1,5 +1,4 @@
-#include "../AICState.func.hpp"
-
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"

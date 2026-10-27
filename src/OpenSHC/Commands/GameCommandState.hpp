@@ -12,6 +12,7 @@ namespace OpenSHC {
 namespace Commands {
     typedef enum GameCommandState {
 
+        GCS_NONE = 0, // 0x00000000
         GCS_UNPROCESSED = 1, // 0x00000001
         GCS_PROCESSED = 10 // 0x0000000A
 

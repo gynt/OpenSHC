@@ -25,7 +25,7 @@ namespace Text {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                 this->dialogX, this->dialogY, this->dialogWidth + this->dialogX, this->dialogHeight + this->dialogY,
                 UI::Enums::RBERL_SLIGHT);
-        } else if (!this->useAlternateHelpTab) {
+        } else if (!this->isEditorMode) {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 this->dialogX, this->dialogY, this->dialogWidth + this->dialogX, this->dialogHeight + this->dialogY,
                 COL_BLACK::instance.shortValue);

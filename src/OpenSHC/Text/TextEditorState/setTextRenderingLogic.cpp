@@ -10,7 +10,7 @@ namespace OpenSHC {
 namespace Text {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004613E0
-    void TextEditorState::setTextRenderingLogic()
+    void TextEditorState::renderHelpTextContent()
     {
         if (this->helpDialogVariant != 1) {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setRenderingRect,
@@ -29,7 +29,7 @@ namespace Text {
                 this->dialogContentY, this->dialogContentHeight + this->dialogContentY);
             DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_MAP_GAME;
             DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_MAP_GAME;
-            DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8 = Rendering::Enums::RT_MAP_GAME;
+            DAT_TextureRenderCoreObject::instance.flaggedSurfaceTarget = Rendering::Enums::RT_MAP_GAME;
         }
         MACRO_CALL_MEMBER(TextEditorState_Func::processHelpRichTextTokens, this)(TRUE);
         MACRO_CALL_MEMBER(TextEditorState_Func::renderHelpImageHotspots, this)();
@@ -41,12 +41,12 @@ namespace Text {
                 DAT_TextureRenderCoreObject::ptr)();
         } else {
             MACRO_CALL_MEMBER(
-                UI::Rendering::TextureRenderCore_Func::setMapSurfaceHeightRangeUnk, DAT_TextureRenderCoreObject::ptr)();
+                UI::Rendering::TextureRenderCore_Func::resetMapSurfaceHeightRange, DAT_TextureRenderCoreObject::ptr)();
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setRenderingRectToGameResolution,
                 DAT_TextureRenderCoreObject::ptr)();
             DAT_TextManagerObject::instance.textSurfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
             DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
-            DAT_TextureRenderCoreObject::instance.currentRenderSurfaceIdentifierUnk_0x8
+            DAT_TextureRenderCoreObject::instance.flaggedSurfaceTarget
                 = Rendering::Enums::RT_SCREEN_MENU;
         }
     }

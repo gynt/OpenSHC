@@ -9,16 +9,16 @@ namespace UI {
     using OpenSHC::UI::Enums::MenuItemTypeInt;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F4C30
-    void MenuItem::resetMenuItemStateUnk()
+    void MenuItem::resetMenuItemState()
     {
         this->hovering = 0;
         this->clicked = 0;
-        this->secondItemTypeData.buttonState.someTimestamp_1_0x0 = 0;
-        this->secondItemTypeData.buttonState.clickTimestamp_0x4 = 0;
-        this->secondItemTypeData.buttonState.countTo100 = 0;
-        MenuItemTypeInt const itemType = this->menuItemType & Enums::MIT_MENU_ITEM_TYPE_ID_PARTUnk;
-        if (itemType == OpenSHC::UI::Enums::MIT_SLIDERUnk || itemType == OpenSHC::UI::Enums::MIT_SCROLLBARUnk) {
-            this->secondItemTypeData.buttonState.currentButtonPictureInGm_0xc = -1000;
+        this->secondItemTypeData.buttonState.lastRepeatTimeOrMinValue = 0;
+        this->secondItemTypeData.buttonState.clickTimeOrMaxValue = 0;
+        this->secondItemTypeData.buttonState.repeatCountOrValue = 0;
+        MenuItemTypeInt const itemType = this->menuItemType & Enums::MIT_TYPE_ID_MASK;
+        if (itemType == OpenSHC::UI::Enums::MIT_HORIZONTAL_SLIDER || itemType == OpenSHC::UI::Enums::MIT_VERTICAL_SCROLLBAR) {
+            this->secondItemTypeData.buttonState.pictureOrDragOffset = -1000;
         }
     }
 

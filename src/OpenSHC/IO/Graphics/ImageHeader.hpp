@@ -20,7 +20,9 @@ namespace IO {
             short height; // 0x00000002 length: 2
             short offsetX; // 0x00000004 length: 2
             short offsetY; // 0x00000006 length: 2
-            short alternativeImageIndexUnk; // 0x00000008 length: 2
+            // [254 0x004559B0] signed short at header+8 added to the picture index to find the picture whose
+            // offset/size is reused (GM1 'relative data position')
+            short relativeDataPos; // 0x00000008 length: 2
             short tileOffset; // 0x0000000A length: 2
             byte direction; // 0x0000000C length: 1
             byte horizontalOffsetImage; // 0x0000000D length: 1

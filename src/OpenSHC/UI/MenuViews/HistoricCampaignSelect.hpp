@@ -13,8 +13,17 @@ namespace UI {
     namespace MenuViews {
         namespace HistoricCampaignSelect {
 
+            /**
+             * Prepare handler of the historic campaign select view: loads frontend_combat/frontend_combat2 and
+             * shc_back, staggers the four campaign button animation start times, sets DAT_LastHoveredMenuButtonId to -1, selects
+             * background 0 and closes modal dialog 3.
+             */
             void __cdecl MenuView_HistoricCampaignSelect_Prepare();
 
+            /**
+             * Per-frame handler of the historic campaign select view: draws background image 0, or 1 while a modal
+             * dialog is open, centred.
+             */
             void __cdecl MenuView_HistoricCampaignSelect_DoEveryFrame();
 
         } // namespace HistoricCampaignSelect

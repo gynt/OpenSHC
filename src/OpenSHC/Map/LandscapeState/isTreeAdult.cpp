@@ -12,7 +12,7 @@ namespace Map {
         if (this->trees[treeID].uid != treeUID) {
             return FALSE;
         }
-        return (short)this->trees[treeID].treeAdultHoodStageRelatedVisual3 > 0;
+        return (short)this->trees[treeID].woodChunksRemaining > 0;
     }
 
 }

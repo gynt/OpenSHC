@@ -18,7 +18,9 @@ namespace IO {
         int phase; // 0x00000000 length: 4
         char carryByte; // 0x00000004 length: 1
         byte unused[3]; // 0x00000005 length: 3
-        int lineCharacterCounter; // 0x00000008 length: 4
+        // [052 0x004870B0] incremented once per completed 3-byte group (4 output chars), newline after 0x1C20
+        // groups, so it counts groups, not characters
+        int groupsOnLine; // 0x00000008 length: 4
 
     } Base64State;
 #pragma pack(pop)

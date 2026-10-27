@@ -13,7 +13,8 @@ namespace Map {
     namespace Units {
         typedef enum UnitInstructionType {
 
-            UIT_NO_INSTRUCTION_OR_MOVEUnk = 3, // 0x00000003
+            UIT_NONE = 0, // 0x00000000
+            UIT_NO_INSTRUCTION_OR_MOVE = 3, // 0x00000003
             UIT_UNIT_ATTACK_UNIT = 4, // 0x00000004
             UIT_ATTACK_LAND = 5, // 0x00000005
             UIT_DIG_MOAT = 6, // 0x00000006
@@ -28,7 +29,7 @@ namespace Map {
             UIT_SET_LADDER = 24, // 0x00000018
             UIT_DISBAND = 30, // 0x0000001E
             UIT_STOP = 31, // 0x0000001F
-            UIT_SHOOT_TARGETUnk = 33, // 0x00000021
+            UIT_RANGED_ATTACK_UNIT = 33, // 0x00000021
             UIT_LIGHT_PITCH = 34 // 0x00000022
 
         } UnitInstructionType;

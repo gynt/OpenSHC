@@ -20,27 +20,51 @@ namespace UI {
         // SIZE: 0x000002C4
         typedef struct MiniMapDefinedData {
 
-            int LuminescenceBrightnessPercent[8]; // 0x00000000 length: 32
-            ushort field1_0x20[2]; // 0x00000020 length: 4
-            ushort SeaMinimapColors[16]; // 0x00000024 length: 32
-            ushort RiverMinimapColors[8]; // 0x00000044 length: 16
-            ushort FordMinimapColors[8]; // 0x00000054 length: 16
+            // Brightness percent per LuminesenceLayer value {120,110,100,90,80,70,60,50} applied to minimap pixel
+            // colors (level 2 = 100 = unchanged; bytes verified at 0xB39364)
+            int luminescenceBrightnessPct[8]; // 0x00000000 length: 32
+            // Minimap color {RGB555, RGB565} for L_PLAIN2_AND_PITCH tiles whose MiscDisplayLayer has bit 0x2000
+            // (such tiles are 0/black otherwise); the flag color table is not consulted for L_PLAIN2_AND_PITCH
+            // tiles
+            ushort plain2PitchColor[2]; // 0x00000020 length: 4
+            // Minimap color variants {555,565} for L_SEA tiles, picked by RandomLayer&7
+            ushort seaColors[16]; // 0x00000024 length: 32
+            // Minimap color variants for L_RIVER tiles (RandomLayer&3)
+            ushort riverColors[8]; // 0x00000044 length: 16
+            // Minimap color variants for L_FORD tiles (RandomLayer&7)
+            ushort fordColors[8]; // 0x00000054 length: 16
             ushort field5_0x64[8]; // 0x00000064 length: 16
-            ushort field6_0x74[8]; // 0x00000074 length: 16
-            ushort BouldersMinimapColors[16]; // 0x00000084 length: 32
+            // Minimap color variants for L_MOAT tiles in luminescence strip renderer
+            ushort moatColors[8]; // 0x00000074 length: 16
+            // Minimap color variants for L_BOULDERS tiles (RandomLayer&7)
+            ushort boulderColors[16]; // 0x00000084 length: 32
             ushort MinimapColorArray[8]; // 0x000000A4 length: 16
-            ushort PebblesMinimapColors[8]; // 0x000000B4 length: 16
+            // Minimap color variants for L_PEBBLES tiles
+            ushort pebbleColors[8]; // 0x000000B4 length: 16
             ushort field10_0xc4[8]; // 0x000000C4 length: 16
-            ushort BeachMinimapColors[8]; // 0x000000D4 length: 16
-            ushort IronMinimapColors[8]; // 0x000000E4 length: 16
-            ushort MarshOrOilMinimapColors[8]; // 0x000000F4 length: 16
-            ushort EarthMinimapColors[16]; // 0x00000104 length: 32
-            ushort EarthAndStonesMinimapColors[16]; // 0x00000124 length: 32
-            ushort field16_0x144[8]; // 0x00000144 length: 16
-            ushort StonesOrDrivenSandMinimapColors[8]; // 0x00000154 length: 16
-            ushort ScrubMinimapColors[8]; // 0x00000164 length: 16
-            ushort ThickScrubMinimapColors[8]; // 0x00000174 length: 16
-            ushort OasisGrassMinimapColors[52]; // 0x00000184 length: 104
+            // Minimap color variants for Logic2 L2_BEACH tiles
+            ushort beachColors[8]; // 0x000000D4 length: 16
+            // Minimap color variants for L_IRON tiles
+            ushort ironColors[8]; // 0x000000E4 length: 16
+            // Minimap color variants for L_MARSH / L_OIL tiles
+            ushort marshOrOilColors[8]; // 0x000000F4 length: 16
+            // Minimap color variants for plain ground (no Logic2 earth/stones, no L_PLAIN2), RandomLayer&7
+            ushort defaultGroundColors[16]; // 0x00000104 length: 32
+            // Minimap color variants for L2_EARTH_AND_STONES or L_PLAIN2_AND_PITCH ground
+            ushort earthGroundColors[16]; // 0x00000124 length: 32
+            // Minimap color variants for L_TREE/L_TREE_VARIATION tiles in luminescence strip renderer
+            ushort treeColors[8]; // 0x00000144 length: 16
+            // Minimap color variants for L2_STONES_OR_DRIVEN_SAND tiles and for plain ground with HeightLayer >
+            // 0x10
+            ushort stonesOrHighGroundColors[8]; // 0x00000154 length: 16
+            // Minimap color variants for L2_SCRUB on L_DEFAULT_EARTH_OR_TEXTURE tiles
+            ushort scrubColors[8]; // 0x00000164 length: 16
+            // Minimap color variants for L2_THICK_SCRUB on default earth tiles
+            ushort thickScrubColors[8]; // 0x00000174 length: 16
+            // Minimap color variants {555,565} x 4 for L2_OASIS_GRASS on L_DEFAULT_EARTH_OR_TEXTURE tiles
+            // (RandomLayer&3); only the first 8 of the declared 52 ushorts are indexed here, the rest are further
+            // unnamed tables
+            ushort oasisGrassColors[52]; // 0x00000184 length: 104
             ushort PlayerColorColors[2][2]; // 0x000001EC length: 8
             ushort AnimalMinimapColour_RGB15; // 0x000001F4 length: 2
             ushort AnimalMinimapColour_RGB16; // 0x000001F6 length: 2
@@ -110,9 +134,14 @@ namespace UI {
             ushort field87_0x276; // 0x00000276 length: 2
             ushort field88_0x278; // 0x00000278 length: 2
             ushort field89_0x27a; // 0x0000027A length: 2
-            MapColorRelatedStructure1 MinimapColorByLogicBit[8]; // 0x0000027C length: 64
-            int cachedKeepEnclosed; // 0x000002BC length: 4
-            int cachedMapOrientation; // 0x000002C0 length: 4
+            // Zero-terminated list of {Logic1 flag mask, color[555/565]}: first entry whose mask matches the tile
+            // LogicLayer gives the minimap color
+            MapColorRelatedStructure1 logicFlagColorTable[8]; // 0x0000027C length: 64
+            // Previous checkKeepEnclosed result for the local player; change triggers GameCore countdown redraw of
+            // the keep-enclosed symbol
+            int lastKeepEnclosedState; // 0x000002BC length: 4
+            // Map orientation the minimap colors were built for; mismatch rebuilds all tile colors/rows
+            int lastMapOrientation; // 0x000002C0 length: 4
 
         } MiniMapDefinedData;
 #pragma pack(pop)

@@ -12,7 +12,7 @@ namespace OpenSHC {
 namespace IO {
     typedef enum FileResourceType {
 
-        FRT_UNKNOWN = 1, // 0x00000001
+        FRT_SAVES = 1, // 0x00000001
         FRT_CASTLES = 2, // 0x00000002
         FRT_SCENARIOS = 6, // 0x00000006
         FRT_GM = 10, // 0x0000000A

@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuViews {
         namespace UnusedSomeMissionStartUnk {
 
+            /**
+             * Prepare of an unused mission-start menu: marks not in-game and loads multi_background.tgx, gm_fly.tgx
+             * and shc_back gfx.
+             */
             void __cdecl MenuView_UnusedSomeMissionStartUnk_Prepare();
 
         } // namespace UnusedSomeMissionStartUnk

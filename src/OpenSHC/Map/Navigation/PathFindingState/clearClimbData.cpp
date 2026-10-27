@@ -1,6 +1,5 @@
-#include "../PathFindingState.func.hpp"
-
 #include "OpenSHC/IO/LowLevelMemory.func.hpp"
+#include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_LowLevelMemory.hpp"
 

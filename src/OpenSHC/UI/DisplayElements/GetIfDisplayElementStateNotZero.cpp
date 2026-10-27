@@ -18,7 +18,7 @@ namespace UI {
             DisplayElement* const displayElement
                 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::FindDisplayElementWithID)(displayElementID);
             if (displayElement != NULL) {
-                return displayElement->elementStateUnk_0xc != 0;
+                return displayElement->displayState_0xc != 0;
             }
             return FALSE;
         }

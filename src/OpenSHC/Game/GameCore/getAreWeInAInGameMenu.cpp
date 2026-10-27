@@ -4,7 +4,7 @@ namespace OpenSHC {
 namespace Game {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0046BB60
-    BOOLEnum GameCore::getAreWeInAInGameMenu()
+    BOOLEnum GameCore::isInGameView()
     {
         return this->currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING
             || this->currentMenuViewType == UI::Enums::MVT_BUILD_MENU

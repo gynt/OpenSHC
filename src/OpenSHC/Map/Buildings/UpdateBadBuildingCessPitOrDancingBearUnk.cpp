@@ -7,10 +7,10 @@ namespace OpenSHC {
 namespace Map {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00418F70
-    void Buildings::UpdateBadBuildingCessPitOrDancingBearUnk()
+    void Buildings::UpdateCessPitBeehivePondBearCave()
     {
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 0;
+        DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].showOverlays = 0;
     }
 
 }

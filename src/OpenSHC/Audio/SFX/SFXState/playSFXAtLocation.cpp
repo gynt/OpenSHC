@@ -63,7 +63,7 @@ namespace Audio {
             }
             this->DAT_SoundStructures[_soundStructureID].scheduledPlayCounter++;
             this->DAT_SoundStructures[_soundStructureID].volumePercentage
-                = ((100 - _computedVolume) * this->DAT_SoundStructures[_soundStructureID].baseVolumePercentageUnk)
+                = ((100 - _computedVolume) * this->DAT_SoundStructures[_soundStructureID].fileVolume)
                 / 100;
             this->DAT_SoundStructures[_soundStructureID].samplePan = samplePan;
             ++this->DAT_SFXCounter1;

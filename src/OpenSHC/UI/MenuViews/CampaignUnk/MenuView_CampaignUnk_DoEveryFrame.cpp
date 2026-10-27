@@ -18,13 +18,13 @@ namespace UI {
                 if (MACRO_CALL(OpenSHC::UI::Helpers_Func::TicksSinceCounterStart)() == 0) {
                     return;
                 }
-                if (DAT_GameCore::instance.missionNumber1to20 == 1) {
+                if (DAT_GameCore::instance.missionNumber == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                         OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                     return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                    OpenSHC::UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk, 0);
+                    OpenSHC::UI::Enums::MVT_MISSION_INTRO_SEQUENCE, 0);
             }
 
         }

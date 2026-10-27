@@ -28,11 +28,11 @@ namespace Text {
     void TextEditorState::helpToken_insertSpaceForHelpTextToken(HelpTextToken token)
     {
         int tokenLength = MACRO_CALL_MEMBER(TextEditorState_Func::helpToken_getHelpTokenAdvanceLength, this)(token);
-        for (int textIndex = this->customHelpTextLength; textIndex >= this->activeHelpHotspotIndex; --textIndex) {
+        for (int textIndex = this->helpTextLength; textIndex >= this->caretTextPos; --textIndex) {
             this->DAT_PointerToTemporaryTextMemory[textIndex + tokenLength]
                 = this->DAT_PointerToTemporaryTextMemory[textIndex];
         }
-        this->customHelpTextLength += tokenLength;
+        this->helpTextLength += tokenLength;
     }
 
 }

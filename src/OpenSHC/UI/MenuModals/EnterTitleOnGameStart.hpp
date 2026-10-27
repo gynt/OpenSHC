@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace EnterTitleOnGameStart {
 
+            /**
+             * Renders the 'Enter Your Title' header banner of the title-entry modal shown on game start.
+             */
             void __cdecl MenuModalRenderFunction_EnterTitleOnGameStart(int x, int y, int width, int height);
 
         } // namespace EnterTitleOnGameStart

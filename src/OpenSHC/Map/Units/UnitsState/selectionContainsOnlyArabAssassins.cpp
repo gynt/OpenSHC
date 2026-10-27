@@ -1,6 +1,5 @@
 #include "../UnitsState.func.hpp"
 
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 namespace OpenSHC {
@@ -13,11 +12,16 @@ namespace Map {
         BOOLEnum UnitsState::selectionContainsOnlyArabAssassins()
         {
             BOOLEnum result = FALSE;
-            if (this->selectionUnitType[Selection::USE_A_ASSASSINS] != 0) {
+            // I tried simplifying this with an early-return but didn't work
+            if (this->selectionArabAssassin != 0) {
+                // This really is field pointer increment style. I tried a for loop over the fields as a int[]
+                // but that didn't work
+                int* pUnitSelection = (int*)&this->selectionEuropeanArchers;
                 for (int index = 0; index <= 26; index++) {
-                    if ((index != Selection::USE_A_ASSASSINS) && (this->selectionUnitType[index] != 0)) {
+                    if ((index != 22) && (*pUnitSelection != 0)) {
                         return FALSE;
                     }
+                    pUnitSelection++;
                 }
                 result = TRUE;
             }

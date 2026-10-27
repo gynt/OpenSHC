@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 namespace OpenSHC {
@@ -11,14 +10,14 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x005339A0
         BOOLEnum UnitsState::hasUnitReachedDestination(int unitID)
         {
-            if (this->units[unitID].tunnelerFinishedDigging != 0) {
+            if (this->units[unitID].movementState != 0) {
                 return FALSE;
             }
             if (this->units[unitID].climbDataID != 0) {
-                if (this->units[unitID].destinationX_2Unk != this->units[unitID].x) {
+                if (this->units[unitID].savedDestinationX != this->units[unitID].x) {
                     return FALSE;
                 }
-                if (this->units[unitID].destinationY_2Unk != this->units[unitID].y) {
+                if (this->units[unitID].savedDestinationY != this->units[unitID].y) {
                     return FALSE;
                 }
             }

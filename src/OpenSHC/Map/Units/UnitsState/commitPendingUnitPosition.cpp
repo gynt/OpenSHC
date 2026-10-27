@@ -1,4 +1,4 @@
-#include "../UnitsState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -7,8 +7,8 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0053BB10
         void UnitsState::commitPendingUnitPosition(int unitID)
         {
-            if (this->units[unitID].field105_0xe8) {
-                this->units[unitID].tile = this->units[unitID].nextTileUnk;
+            if (this->units[unitID].pendingPositionValid != 0) {
+                this->units[unitID].tile = this->units[unitID].moveToTile;
                 this->units[unitID].x = this->units[unitID].mimicCurrentXPosition;
                 this->units[unitID].y = this->units[unitID].mimicCurrentYPosition;
             }

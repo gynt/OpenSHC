@@ -1,6 +1,4 @@
-#include "../UnitsState.func.hpp"
-
-#include "OpenSHC/Map/Units/Selection/UnitSelectionEnumInt.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
@@ -12,7 +10,7 @@ namespace Map {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x005369F0
-        BOOLEnum UnitsState::selectionHasUnmannedSiegeEngine(int unitID)
+        BOOLEnum UnitsState::canSelectedEngineersManSiegeEngine(int unitID)
         {
             if (DAT_UnitsState::instance.units[unitID]
                     .digTileX__OR__countCurrentlyManningEnginers__OR__forCowsRandomBelow300
@@ -25,7 +23,7 @@ namespace Map {
             case OpenSHC::Map::Units::UT_S_TOWER:
             case OpenSHC::Map::Units::UT_S_BATTERINGRAM:
             case OpenSHC::Map::Units::UT_S_SHIELD:
-                return (BOOLEnum)(this->selectionUnitType[Selection::USE_E_ENGINEERS] != 0);
+                return (BOOLEnum)(this->selectionEngineers != 0);
             }
             return FALSE;
         }

@@ -42,9 +42,9 @@ namespace Game {
                 return;
             }
 
-            if (this->menuType7_MenuItemClickHandlerUnk != NULL) {
-                (*this->menuType7_MenuItemClickHandlerUnk)(0);
-                this->menuType7_MenuItemClickHandlerUnk = NULL;
+            if (this->onViewOrTabSwitchHandler != NULL) {
+                (*this->onViewOrTabSwitchHandler)(0);
+                this->onViewOrTabSwitchHandler = NULL;
             }
             if (this->menuViewToSwitchTo == UI::Enums::MVT_MAIN_MENU
                 && DAT_GameSynchronyState::instance.currentGameMode == GM_SKIRMISH_SINGLE_PLAYER) {
@@ -58,7 +58,7 @@ namespace Game {
                 Rendering::ViewportRenderState_Func::resetupViewportThunk, DAT_ViewportRenderState::ptr)();
             DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
             DAT_MenuView_TriggerPrepare::instance = TRUE;
-            DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
+            DAT_WindowAndDirectDraw::instance.pendingOverlayBltMode = 2;
             MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
             MACRO_CALL_MEMBER(UI::MenuHandlerState_Func::setupMenuForRendering, DAT_MenuHandlerState::ptr)(
                 (MenuViewType)this->currentMenuViewType);
@@ -75,7 +75,7 @@ namespace Game {
                 UI::Rendering::TextureRenderCore_Func::setActiveMenuTabIndexToZero, DAT_TextureRenderCoreObject::ptr)();
             this->menuSwitchDelay = -1;
             if (this->currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
-                DAT_GameCore::instance.currentlyInGameUnk_0xa4 = TRUE;
+                DAT_GameCore::instance.inGameViewActive_0xa4 = TRUE;
             }
         }
 

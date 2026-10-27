@@ -20,7 +20,8 @@ namespace Rendering {
     class WindowInformation {
     public:
         undefined1 padding_0x0[48]; // 0x00000000 length: 48
-        RECT RECT_SomeGameWindowRectUnk; // 0x00000030 length: 16
+        // [183 0x00467F60] only written by setGameWindowRect with the game window rectangle
+        RECT gameWindowRect; // 0x00000030 length: 16
 
     private:
         WindowInformation(WindowInformation const&);
@@ -30,7 +31,12 @@ namespace Rendering {
         WindowInformation() {};
         ~WindowInformation() {};
 
-        void storeWindowRectangleInfoUnk(LONG param_1, LONG param_2, LONG param_3, LONG param_4);
+        /**
+         * Stores four LONGs into DAT_WindowInformation.gameWindowRect. Parameter order is (left, right,
+         * top, bottom), not RECT order — param_2 goes to .right and param_3 to .top (matches the byte-exact OpenSHC
+         * source).
+         */
+        void setGameWindowRect(LONG left, LONG right, LONG top, LONG bottom);
     };
 
     static_assert_cpp98_obj(sizeof(WindowInformation) == 64, WindowInformation);

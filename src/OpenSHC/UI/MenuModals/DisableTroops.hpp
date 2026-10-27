@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DisableTroops {
 
+            /**
+             * Renders the 'Troops' header banner of the disable-troops (scenario editor) modal.
+             */
             void __cdecl MenuModalRenderFunction_DisableTroops(int x, int y, int width, int height);
 
         } // namespace DisableTroops

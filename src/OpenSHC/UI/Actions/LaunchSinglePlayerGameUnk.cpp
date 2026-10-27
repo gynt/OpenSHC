@@ -1,0 +1,565 @@
+#include "../Actions.func.hpp"
+
+#include "OpenSHC/Game/GameCore.func.hpp"
+#include "OpenSHC/IO/ResourceManager.func.hpp"
+#include "OpenSHC/Map/MapPropertiesState.func.hpp"
+#include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
+#include "OpenSHC/Map/Units/TroopValueState.func.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
+#include "OpenSHC/Rendering/ViewportRenderState.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
+#include "OpenSHC/Commands/GameCommandType.hpp"
+#include "OpenSHC/Game/Scenario/BarracksRecruitabilityShort.hpp"
+#include "OpenSHC/Map/MapType2.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+#include "OpenSHC/Map/Units/UnitTypeShort.hpp"
+#include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
+#include "OpenSHC/UI/Enums/MenuViewType.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+
+#include "OpenSHC/Globals/DAT_MenuFadeState.hpp"
+#include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
+#include "OpenSHC/Globals/DAT_GameCore.hpp"
+#include "OpenSHC/Globals/DAT_GameState.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+#include "OpenSHC/Globals/DAT_MapMissionType.hpp"
+#include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
+#include "OpenSHC/Globals/DAT_MenuTextInputState.hpp"
+#include "OpenSHC/Globals/DAT_PathFindingState.hpp"
+#include "OpenSHC/Globals/DAT_ResourceManager.hpp"
+#include "OpenSHC/Globals/DAT_SH1_SiegeAdvancedMode.hpp"
+#include "OpenSHC/Globals/DAT_SiegeInformationArray.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_TroopValueState.hpp"
+#include "OpenSHC/Globals/DAT_UIDragDropDefinedData.hpp"
+#include "OpenSHC/Globals/DAT_UnitsState.hpp"
+#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
+#include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
+#include "OpenSHC/Globals/DWORD_00b95b1c.hpp"
+#include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
+
+namespace OpenSHC {
+namespace UI {
+
+    using OpenSHC::Commands::GameCommandType;
+    using OpenSHC::Map::MapType2;
+    using OpenSHC::Map::Units::UnitLogicState;
+    using OpenSHC::Map::Units::UnitType;
+    using OpenSHC::Map::Units::UnitTypeShort;
+    using OpenSHC::UI::Enums::BuildingsAndStatusMenuTabType;
+    using OpenSHC::UI::Enums::MenuViewType;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
+    /*
+      WARNING: Enum "DPSEND_EnumInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "DPERRInt": Some values do not have unique names
+     */
+    /*
+      WARNING: Enum "MappersEnum": Some values do not have unique names
+     */
+    /*
+      decompilerscript: committed: 2025-01-30 21:57:43.216000
+     */
+    // FUNCTION: STRONGHOLDCRUSADER 0x0042C620
+    void Actions::LaunchStandaloneMapGame(int param_1)
+    {
+        byte(*pabVar1)[10];
+        byte* pbVar2;
+        char cVar3;
+        short* psVar4;
+        char* pcVar5;
+        BOOLEnum BVar6;
+        int iVar7;
+        int iVar8;
+        int iVar9;
+        char* pcVar10;
+        int _pointsMultiplier;
+        UnitTypeShort* pUVar11;
+        uint uVar12;
+        MenuViewType menuID;
+        int local_7e8;
+        undefined4 local_7e4;
+        char local_7e0[1008];
+        char _mapU3StringCopy[1004];
+        uint local_4;
+        iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+        local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_7e8;
+        DAT_GameCore::instance.section1066 = 1;
+        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+            OpenSHC::Commands::GCT_ASK_FOR_SLOT_ASSIGNMENT);
+        DAT_MapPropertiesState::instance.SEC_XbowProducible_save = 1;
+        DAT_MapPropertiesState::instance.SEC_PikeProducible_save = 1;
+        DAT_MapPropertiesState::instance.SEC_SwordProducible_save = 1;
+        DAT_MapPropertiesState::instance.SEC_BowProducible_save = 1;
+        DAT_MapPropertiesState::instance.SEC_SpearProducible_save = 1;
+        DAT_MapPropertiesState::instance.SEC_MaceProducible_save = 1;
+        psVar4 = DAT_MapPropertiesState::instance.SEC_MercRecruitable;
+        DAT_GameSynchronyState::instance.currentPlayerSlotID = iVar8;
+        do {
+            (((OpenSHC::Game::Scenario::BarracksRecruitabilityShort*)(psVar4 + -7))->recruitability).archers = 1;
+            *psVar4 = 1;
+            psVar4 = psVar4 + 1;
+        } while (psVar4 < DAT_MapPropertiesState::instance.SEC_MercRecruitable + 7);
+        if (param_1 == 0) {
+            pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
+                    .mapIndexList[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected]);
+            pcVar10 = local_7e0;
+            do {
+                cVar3 = *pcVar5;
+                *pcVar10 = cVar3;
+                pcVar5 = pcVar5 + 1;
+                pcVar10 = pcVar10 + 1;
+            } while (cVar3 != '\0');
+            pcVar10 = (char*)((int)&local_7e4 + 3);
+            do {
+                pcVar5 = pcVar10;
+                pcVar10 = pcVar5 + 1;
+            } while (pcVar5[1] != '\0');
+            strcpy(pcVar5 + 1, ".map");
+        } else {
+            iVar8 = 0;
+            do {
+                cVar3 = DAT_GameCore::instance.standaloneFilename[iVar8];
+                local_7e0[iVar8] = cVar3;
+                iVar8 = iVar8 + 1;
+            } while (cVar3 != '\0');
+            pcVar10 = (char*)((int)&local_7e4 + 3);
+            do {
+                pcVar5 = pcVar10;
+                pcVar10 = pcVar5 + 1;
+            } while (pcVar5[1] != '\0');
+            strcpy(pcVar5 + 1, ".map");
+            iVar8 = 0;
+            do {
+                cVar3 = DAT_GameCore::instance.standaloneFilename[iVar8];
+                _mapU3StringCopy[iVar8] = cVar3;
+                iVar8 = iVar8 + 1;
+            } while (cVar3 != '\0');
+        }
+        MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::loadMap, DAT_MapPropertiesState::ptr)(local_7e0);
+        DAT_GameCore::instance.singlePlayerMapLordType = DAT_GameCore::instance.localSelectedLordType;
+        DAT_MapPropertiesState::instance.SEC_XbowProducible_save = 1;
+        DAT_GameCore::instance.xbowProducible_logic = 1;
+        DAT_MapPropertiesState::instance.SEC_BowProducible_save = 1;
+        DAT_GameCore::instance.bowProducible_logic = 1;
+        DAT_MapPropertiesState::instance.SEC_PikeProducible_save = 1;
+        DAT_GameCore::instance.pikeProducible_logic = 1;
+        DAT_MapPropertiesState::instance.SEC_SpearProducible_save = 1;
+        DAT_GameCore::instance.spearProducible_logic = 1;
+        DAT_MapPropertiesState::instance.SEC_SwordProducible_save = 1;
+        DAT_GameCore::instance.swordProducible_logic = 1;
+        DAT_MapPropertiesState::instance.SEC_MaceProducible_save = 1;
+        DAT_GameCore::instance.maceProducible_logic = 1;
+        switch (DAT_MapMissionType::instance) {
+        case 0:
+            DAT_GameCore::instance.missionDifficulty_0 = DAT_GameState::instance.mapAndTime.difficulty;
+            break;
+        case 1:
+            DAT_GameCore::instance.missionDifficulty_1 = DAT_GameState::instance.mapAndTime.difficulty;
+            break;
+        case 2:
+            DAT_GameCore::instance.missionDifficulty_2 = DAT_GameState::instance.mapAndTime.difficulty;
+            break;
+        case 3:
+            DAT_GameCore::instance.missionDifficulty_3 = DAT_GameState::instance.mapAndTime.difficulty;
+        }
+        if (DAT_MapMissionType::instance == 2) {
+            MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::createChainedMissionOutcomeEvents,
+                DAT_MapPropertiesState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
+        }
+        DAT_GameState::instance.mapAndTime.mercRecruitable[0]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[0];
+        DAT_GameState::instance.mapAndTime.mercRecruitable[1]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[1];
+        DAT_GameState::instance.mapAndTime.mercRecruitable[2]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[2];
+        DAT_GameState::instance.mapAndTime.mercRecruitable[3]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[3];
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[0]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.archers;
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[5]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.swordsmen;
+        DAT_GameState::instance.mapAndTime.mercRecruitable[4]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[4];
+        DAT_GameState::instance.mapAndTime.mercRecruitable[5]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[5];
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[6]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.knights;
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[1]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.crossbowmen;
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[2]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.spearmen;
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[3]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.pikemen;
+        DAT_GameState::instance.mapAndTime.itemAvailableByResource[4]
+            = (int)DAT_MapPropertiesState::instance.barracksRecruitability.recruitability.macemen;
+        DAT_GameState::instance.mapAndTime.mercRecruitable[6]
+            = (int)DAT_MapPropertiesState::instance.SEC_MercRecruitable[6];
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_0
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[0] != 0);
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_a
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[1] != 0);
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_b
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[1] != 0);
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_2
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[2] != 0);
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_a_and_6_b
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[3] != 0);
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_b
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[3] != 0);
+        if (DAT_GameState::instance.mapAndTime.itemAvailableByResource[4] != 0) {
+            DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_1_a = 1;
+        }
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_4
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[4] != 0);
+        if (DAT_GameState::instance.mapAndTime.itemAvailableByResource[5] != 0) {
+            DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_a_and_6_b = 1;
+        }
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_a
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[5] != 0);
+        if (DAT_GameState::instance.mapAndTime.itemAvailableByResource[6] != 0) {
+            DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_a = 1;
+            DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_3_a_and_6_b = 1;
+        }
+        DAT_GameState::instance.mapAndTime.euroRecruitableCopy_index_6_c
+            = (int)(DAT_GameState::instance.mapAndTime.itemAvailableByResource[6] != 0);
+        if (param_1 == 0) {
+            pcVar10 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
+                DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
+                    .mapIndexList[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected]);
+            pcVar5 = DAT_GameCore::instance.standaloneFilename;
+            do {
+                cVar3 = *pcVar10;
+                *pcVar5 = cVar3;
+                pcVar10 = pcVar10 + 1;
+                pcVar5 = pcVar5 + 1;
+            } while (cVar3 != '\0');
+        } else {
+            iVar8 = 0;
+            do {
+                cVar3 = _mapU3StringCopy[iVar8];
+                DAT_GameCore::instance.standaloneFilename[iVar8] = cVar3;
+                iVar8 = iVar8 + 1;
+            } while (cVar3 != '\0');
+        }
+        DAT_GameState::instance.mapAndTime.jesterEnabled = 0;
+        DAT_GameState::instance.mapAndTime.ladyEnabled = 0;
+        if (DAT_MapMissionType::instance == 2) {
+            MACRO_CALL_MEMBER(
+                OpenSHC::Map::Units::UnitsState_Func::triggerDeathAnimationForAllWildlife, DAT_UnitsState::ptr)();
+            if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1) {
+                DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1] = 1;
+                DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[2] = 2;
+            } else {
+                DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[1] = 2;
+                DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[2] = 1;
+            }
+            if ((DAT_MapMissionType::instance == 2) && (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1)) {
+                _pointsMultiplier = 100;
+                if (DAT_GameState::instance.mapAndTime.difficulty == 0) {
+                    _pointsMultiplier = 66;
+                } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
+                    _pointsMultiplier = 133;
+                } else if (DAT_GameState::instance.mapAndTime.difficulty == 3) {
+                    _pointsMultiplier = 166;
+                }
+                DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot
+                    = DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot + 1;
+                if (0x32 <= DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot) {
+                    DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot = 1;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::initializeAttackWaveSlot,
+                    DAT_TroopValueState::ptr)(DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot, 1);
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.catapults;
+                DAT_TroopValueState::instance.attackInfo
+                    .attackWavePlayerIDArray[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot] = 4;
+                iVar8 = iVar8 * _pointsMultiplier;
+                pabVar1 = DAT_TroopValueState::instance.attackInfo.waveSiegeEngineCounts
+                    + DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot;
+                (*pabVar1)[0] = (*pabVar1)[0]
+                    + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.trebuchets * _pointsMultiplier;
+                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.batteringRams * _pointsMultiplier;
+                pbVar2 = DAT_TroopValueState::instance.attackInfo
+                             .waveSiegeEngineCounts[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot]
+                    + 1;
+                *pbVar2 = *pbVar2
+                    + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
+                pbVar2 = DAT_TroopValueState::instance.attackInfo
+                             .waveSiegeEngineCounts[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot]
+                    + 2;
+                *pbVar2 = *pbVar2
+                    + (((char)(iVar9 / 100) + (char)(iVar9 >> 0x1f)) - (char)((longlong)iVar9 * 0x51eb851f >> 0x3f));
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeTowers * _pointsMultiplier;
+                iVar9 = DAT_MapPropertiesState::instance.SEC_Section1067.portableShields * _pointsMultiplier;
+                pbVar2 = DAT_TroopValueState::instance.attackInfo
+                             .waveSiegeEngineCounts[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot]
+                    + 3;
+                *pbVar2 = *pbVar2
+                    + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
+                pbVar2 = DAT_TroopValueState::instance.attackInfo
+                             .waveSiegeEngineCounts[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot]
+                    + 4;
+                *pbVar2 = *pbVar2
+                    + (((char)(iVar9 / 100) + (char)(iVar9 >> 0x1f)) - (char)((longlong)iVar9 * 0x51eb851f >> 0x3f));
+                iVar8 = DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineSlot8Count * _pointsMultiplier;
+                pbVar2 = DAT_TroopValueState::instance.attackInfo
+                             .waveSiegeEngineCounts[DAT_TroopValueState::instance.attackInfo.currentAttackWaveSlot]
+                    + 8;
+                *pbVar2 = *pbVar2
+                    + (((char)(iVar8 / 100) + (char)(iVar8 >> 0x1f)) - (char)((longlong)iVar8 * 0x51eb851f >> 0x3f));
+            }
+        }
+        if (DAT_SH1_SiegeAdvancedMode::instance == 0) {
+            if (DAT_MapMissionType::instance != 2)
+                goto LAB_0042ce38;
+            if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2) {
+                iVar8 = 0;
+                do {
+                    *(int*)((int)DAT_GameState::instance.mapAndTime.startGoods + iVar8 + 100)
+                        = (*(int*)((int)DAT_MapPropertiesState::instance.SEC_StartingResources + iVar8 + 100) * 7) / 10;
+                    iVar8 = iVar8 + 4;
+                } while (iVar8 < 0x50);
+                DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount
+                    = (DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount * 7) / 10;
+            }
+        LAB_0042cc91:
+            uVar12 = 1;
+            pUVar11 = &DAT_UnitsState::instance.units[1].unitType;
+            do {
+                if ((pUVar11[-1] != OpenSHC::Map::Units::ULS_INVISIBLE)
+                    && (*pUVar11 == OpenSHC::Map::Units::UT_PEASANT)) {
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(uVar12);
+                }
+                pUVar11 = pUVar11 + 0x248;
+                uVar12 = uVar12 + 1;
+            } while (pUVar11 < &DAT_UnitsState::instance.units[2500].unitType);
+        } else {
+            if (DAT_MapMissionType::instance == 2) {
+                DAT_GameState::instance.mapAndTime.siegeInformation.archers = DAT_SiegeInformationArray::instance[0];
+                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen = DAT_SiegeInformationArray::instance[1];
+                DAT_GameState::instance.mapAndTime.siegeInformation.pikemen = DAT_SiegeInformationArray::instance[3];
+                DAT_GameState::instance.mapAndTime.siegeInformation.macemen
+                    = DAT_SiegeInformationArray::instance[4];
+                DAT_GameState::instance.mapAndTime.siegeInformation.knights
+                    = DAT_SiegeInformationArray::instance[6];
+                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen
+                    = DAT_SiegeInformationArray::instance[7];
+                DAT_GameState::instance.mapAndTime.siegeInformation.monks
+                    = DAT_SiegeInformationArray::instance[9];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slaves
+                    = DAT_SiegeInformationArray::instance[0xb];
+                DAT_GameState::instance.mapAndTime.siegeInformation.spearmen = DAT_SiegeInformationArray::instance[2];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slingers
+                    = DAT_SiegeInformationArray::instance[0xc];
+                DAT_GameState::instance.mapAndTime.siegeInformation.assassins
+                    = DAT_SiegeInformationArray::instance[0xd];
+                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen
+                    = DAT_SiegeInformationArray::instance[5];
+                DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers
+                    = DAT_SiegeInformationArray::instance[0xe];
+                DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen
+                    = DAT_SiegeInformationArray::instance[0xf];
+                DAT_GameState::instance.mapAndTime.siegeInformation.engineers
+                    = DAT_SiegeInformationArray::instance[8];
+                DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers
+                    = DAT_SiegeInformationArray::instance[0x10];
+                DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas
+                    = DAT_SiegeInformationArray::instance[0x11];
+                DAT_GameState::instance.mapAndTime.siegeInformation.arabianArchers
+                    = DAT_SiegeInformationArray::instance[10];
+                DAT_GameState::instance.mapAndTime.siegeInformation.unknownUnitCount18
+                    = DAT_SiegeInformationArray::instance[0x12];
+                DAT_GameState::instance.mapAndTime.siegeInformation.unknownUnitCount19
+                    = DAT_SiegeInformationArray::instance[0x13];
+                DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount
+                    = DAT_SiegeInformationArray::instance[10];
+                goto LAB_0042cc91;
+            }
+        LAB_0042ce38:
+            if (DAT_MapMissionType::instance == 3) {
+                if (DAT_GameState::instance.mapAndTime.difficulty != 0) {
+                    BVar6 = MACRO_CALL_MEMBER(
+                        OpenSHC::Map::MapPropertiesState_Func::mapHasCertainEvent, DAT_MapPropertiesState::ptr)();
+                    if (BVar6 == FALSE) {
+                        iVar9 = 0;
+                        iVar8 = 0;
+                        local_7e8 = 0;
+                        psVar4 = &DAT_UnitsState::instance.units[1].dying;
+                        do {
+                            if ((((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
+                                    && (psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID))
+                                && (psVar4[2] != 0)) {
+                                iVar7
+                                    = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
+                                        DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
+                                iVar9 = iVar9 + iVar7;
+                            }
+                            psVar4 = psVar4 + 0x248;
+                        } while (psVar4 < &DAT_UnitsState::instance.units[2500].dying);
+                        if (DAT_GameState::instance.mapAndTime.difficulty == 1) {
+                            local_7e8 = 4;
+                            iVar7 = (int)(iVar9 * -3 + (iVar9 * -3 >> 0x1f & 3U)) >> 2;
+                        LAB_0042cf15:
+                            iVar9 = iVar9 + iVar7;
+                        } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
+                            local_7e8 = 3;
+                            iVar9 = iVar9 + (iVar9 * -2) / 3;
+                        } else if (DAT_GameState::instance.mapAndTime.difficulty == 3) {
+                            local_7e8 = 2;
+                            iVar7 = -(iVar9 / 2);
+                            goto LAB_0042cf15;
+                        }
+                        local_7e4 = 0;
+                        do {
+                            uVar12 = 1;
+                            psVar4 = &DAT_UnitsState::instance.units[1].dying;
+                            do {
+                                if (((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
+                                    && ((psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                        && ((psVar4[2] != 0 && (iVar8 = iVar8 + 1, iVar8 == local_7e8)))))) {
+                                    iVar7 = MACRO_CALL_MEMBER(
+                                        OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
+                                        DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
+                                    iVar9 = iVar9 - iVar7;
+                                    MACRO_CALL_MEMBER(
+                                        OpenSHC::Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(uVar12);
+                                    if (((psVar4[-0x109] == OpenSHC::Map::Units::UT_S_MANGONEL)
+                                            || (psVar4[-0x109] == OpenSHC::Map::Units::UT_S_BALLISTA))
+                                        && (DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 + -0xe6)] != 0)) {
+                                        DAT_BuildingsState::instance
+                                            .buildings[DAT_TileMapState::instance
+                                                    .BuildingLayer[*(int*)(psVar4 + -0xe6)]]
+                                            .containsSiegeMangonel1OrBallista2 = 0;
+                                    }
+                                    if (iVar9 < 1) {
+                                        local_7e4 = 10;
+                                        break;
+                                    }
+                                    iVar8 = 0;
+                                }
+                                psVar4 = psVar4 + 0x248;
+                                uVar12 = uVar12 + 1;
+                            } while (psVar4 < &DAT_UnitsState::instance.units[2500].dying);
+                            local_7e4 = local_7e4 + 1;
+                        } while (local_7e4 < 3);
+                    }
+                    goto LAB_0042cff9;
+                }
+            } else {
+            LAB_0042cff9:
+                if (DAT_MapMissionType::instance == 2)
+                    goto LAB_0042cc91;
+            }
+            DAT_GameState::instance.mapAndTime.siegeInformation.archers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.spearmen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.pikemen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.macemen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.knights = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.laddermen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.engineers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.monks = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.arabianArchers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.slaves = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.slingers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.assassins = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.unknownUnitCount18 = 0;
+            DAT_GameState::instance.mapAndTime.siegeInformation.unknownUnitCount19 = 0;
+            DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount = 0;
+        }
+        iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+        if (DAT_MapMissionType::instance == 0) {
+            DAT_GameState::instance.mapAndTime.jesterEnabled = 0;
+            iVar9 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .jesterUnitID;
+            if ((iVar9 != 0)
+                && (DAT_UnitsState::instance.units[iVar9].uid
+                    == DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .jesterUnitUID)) {
+                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                    .jesterUnitID = 0;
+                DAT_UnitsState::instance.units[iVar9].logicalState = OpenSHC::Map::Units::ULS_REMOVE;
+                DAT_GameState::instance.playerDataArray[iVar8].jesterUnitUID = 0;
+            }
+            DAT_GameState::instance.mapAndTime.ladyEnabled = 0;
+            iVar9 = DAT_GameState::instance.playerDataArray[iVar8].ladyUnitID;
+            if ((iVar9 != 0)
+                && (DAT_UnitsState::instance.units[iVar9].uid
+                    == DAT_GameState::instance.playerDataArray[iVar8].ladyUnitUID)) {
+                DAT_GameState::instance.playerDataArray[iVar8].ladyUnitID = 0;
+                DAT_UnitsState::instance.units[iVar9].logicalState = OpenSHC::Map::Units::ULS_REMOVE;
+                DAT_GameState::instance.playerDataArray[iVar8].ladyUnitUID = 0;
+            }
+        }
+        if (iVar8 == 2) {
+            DAT_GameState::instance.playerDataArray[2].currentResources[0xf]
+                = DAT_GameState::instance.playerDataArray[2].currentResources[0xf]
+                + DAT_GameState::instance.playerDataArray[2].pendingResources[0xf];
+            DAT_GameState::instance.playerDataArray[2].pendingResources[0xf] = 0;
+            DAT_GameState::instance.playerDataArray[2].beforeLastMonthsGold
+                = (short)DAT_GameState::instance.playerDataArray[2].currentResources[0xf];
+            DAT_GameState::instance.playerDataArray[2].lastMonthsGold
+                = (short)DAT_GameState::instance.playerDataArray[2].currentResources[0xf];
+        }
+        if (DAT_GameCore::instance.mapU4Int1 != 0) {
+            DAT_GameState::instance.playerDataArray[iVar8].currentResources[0xf] = 600;
+            DAT_GameState::instance.playerDataArray[iVar8].pendingResources[0xf] = 0;
+        }
+        DAT_GameCore::instance.missionNumber = 0x1c;
+        if (iVar8 == 1) {
+            if (DAT_GameState::instance.playerDataArray[1].keep.id == 0)
+                goto LAB_0042d095;
+            iVar8 = (short)DAT_BuildingsState::instance.buildings[DAT_GameState::instance.playerDataArray[1].keep.id].x
+                + 2;
+            iVar9 = (short)DAT_BuildingsState::instance.buildings[DAT_GameState::instance.playerDataArray[1].keep.id].y
+                + 2;
+        } else if ((DAT_GameState::instance.mapAndTime.signpostEntryData[0].x == 0)
+            || (iVar8 = DAT_GameState::instance.mapAndTime.signpostEntryData[0].x,
+                iVar9 = DAT_GameState::instance.mapAndTime.signpostEntryData[0].y,
+                DAT_GameState::instance.mapAndTime.signpostEntryData[0].y == 0))
+            goto LAB_0042d095;
+        MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
+            DAT_ViewportRenderState::ptr)(iVar8, iVar9);
+    LAB_0042d095:
+        MACRO_CALL_MEMBER(
+            OpenSHC::Rendering::ViewportRenderState_Func::setViewportBasedOnMapSize, DAT_ViewportRenderState::ptr)();
+        if (DAT_GameCore::instance.mapU4Int1 != 0) {
+            MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::clearObstaclesAroundSignposts,
+                DAT_PathFindingState::ptr)(0x1e);
+        }
+        if ((DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_INVASION) && (param_1 != 1)) {
+            iVar8 = 10000;
+            DAT_GameCore::instance.briefingOpenedFromInGame = 0;
+            menuID = OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION;
+        } else {
+            DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_HUNTERSHUT;
+            if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_RESTARTING_CUSTOM_MAP) {
+                iVar8 = 0;
+            } else {
+                iVar8 = 10000;
+            }
+            menuID = OpenSHC::UI::Enums::MVT_BUILD_MENU;
+        }
+        MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, iVar8);
+        DAT_UIDragDropDefinedData::instance.MenuView_TriggerInitial = TRUE;
+        DAT_WindowAndDirectDraw::instance.pendingOverlayBltMode = 1;
+        DWORD_00b95b1c::instance = timeGetTime();
+        DAT_MenuFadeState::instance = 1;
+        ;
+    }
+
+}
+}

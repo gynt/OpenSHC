@@ -1,5 +1,4 @@
-#include "../UnitsState.func.hpp"
-
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
@@ -8,6 +7,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+        using OpenSHC::Map::Units::States::UnitState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x00530400
         void UnitsState::transferNonCourtUnitsToPlayer(int fromPlayer, int toPlayer)
         {
@@ -15,10 +18,10 @@ namespace Map {
                 if (this->units[unitID].logicalState != OpenSHC::Map::Units::ULS_NORMAL) {
                     continue;
                 }
-                if (this->units[unitID].dying) {
+                if (this->units[unitID].dying != 0) {
                     continue;
                 }
-                if (this->units[unitID].isStalked != 0) {
+                if (this->units[unitID].isAnimalOrAmbient != 0) {
                     switch (this->units[unitID].unitType) {
                     case OpenSHC::Map::Units::UT_QUARRYOX:
                     case OpenSHC::Map::Units::UT_COW:
@@ -44,8 +47,8 @@ namespace Map {
                     this->units[unitID].state.generic = OpenSHC::Map::Units::States::US_DISAPPEAR;
                 } else {
                     this->units[unitID].owner = (short)toPlayer;
-                    if (this->units[unitID].isStalked == 0 || this->units[unitID].calculatedOwnerPlayerIndex != 0) {
-                        this->units[unitID].calculatedOwnerPlayerIndex = toPlayer;
+                    if (this->units[unitID].isAnimalOrAmbient == 0 || this->units[unitID].ownerColorIndex != 0) {
+                        this->units[unitID].ownerColorIndex = toPlayer;
                     }
                 }
             }

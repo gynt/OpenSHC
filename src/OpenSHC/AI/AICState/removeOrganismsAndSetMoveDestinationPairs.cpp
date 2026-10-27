@@ -24,7 +24,7 @@ namespace AI {
     void AICState::removeOrganismsAndSetMoveDestinationPairs(int playerID)
     {
         // Clear a tree standing on the target tile
-        int const organismID
+        int organismID
             = (short)DAT_TileMapState::instance.OrganismLayer
                   [DAT_ViewportRenderState::instance
                           .translationMatrix[DAT_GameState::instance.playerDataArray[playerID].shortestDistanceY]
@@ -35,14 +35,14 @@ namespace AI {
         }
 
         // Hardcoded exception: the Sultan keeps a smaller distance than all other AIs
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
-        int const extraDistance = aicIndex == OpenSHC::AI::AIT_SULTAN - 1 ? 8 : 20;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int extraDistance = aicIndex == OpenSHC::AI::AIT_SULTAN - 1 ? 8 : 20;
         MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findLinkageBasedPathOrWalkRadius,
             DAT_PathFindingState::ptr)(DAT_GameState::instance.playerDataArray[playerID].shortestDistanceX,
             DAT_GameState::instance.playerDataArray[playerID].shortestDistanceY, -1, -1, 10000, FALSE);
         MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::setMoveDestinationPairs,
             DAT_PathFindingState::ptr)(playerID - 1, DAT_GameState::instance.playerDataArray[playerID].attackedPlayerID,
-            DAT_TroopValueState::instance.attackInfo.playerInfo[playerID - 1].someMinimumDistance + extraDistance);
+            DAT_TroopValueState::instance.attackInfo.playerInfo[playerID - 1].minHackLayerValue + extraDistance);
     }
 
 }

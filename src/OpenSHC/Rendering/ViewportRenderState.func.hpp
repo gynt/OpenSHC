@@ -38,7 +38,7 @@ namespace Rendering {
             &ViewportRenderState::tweakValidTilesToExcludeMapBorders)
         tweakValidTilesToExcludeMapBorders;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (ViewportRenderState::*)(), false, Address::SHC_3BB0A8C1_0x004E2600,
+        MACRO_FUNCTION_RESOLVER(int (ViewportRenderState::*)(), false, Address::SHC_3BB0A8C1_0x004E2600,
             &ViewportRenderState::resetBatchedRender)
         resetBatchedRender;
 
@@ -120,8 +120,8 @@ namespace Rendering {
         renderUnits;
 
         MACRO_FUNCTION_RESOLVER(void (ViewportRenderState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004E8430,
-            &ViewportRenderState::updateBuildingPreviewPosition)
-        updateBuildingPreviewPosition;
+            &ViewportRenderState::updateMouseHoverState)
+        updateMouseHoverState;
 
         MACRO_FUNCTION_RESOLVER(void (ViewportRenderState::*)(), false, Address::SHC_3BB0A8C1_0x004E8C50,
             &ViewportRenderState::saveFocusTileAndCenterPreview)

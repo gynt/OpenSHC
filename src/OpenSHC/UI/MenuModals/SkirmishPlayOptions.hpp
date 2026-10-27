@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace SkirmishPlayOptions {
 
+            /**
+             * Modal render callback: draws the 'Play Options' header banner (text group 0x4F entry 0x67).
+             */
             void __cdecl MenuModalRenderFunction_SkirmishPlayOptions(int x, int y, int width, int height);
 
         } // namespace SkirmishPlayOptions

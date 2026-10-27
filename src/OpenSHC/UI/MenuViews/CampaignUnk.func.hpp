@@ -15,16 +15,16 @@ namespace UI {
         namespace CampaignUnk_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D6EF0,
-                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignUnk_DoEveryFrame)
-            MenuView_CampaignUnk_DoEveryFrame;
+                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignMap_DoEveryFrame)
+            MenuView_CampaignMap_DoEveryFrame;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DCC90,
-                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignUnk_Prepare)
-            MenuView_CampaignUnk_Prepare;
+                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignMap_Prepare)
+            MenuView_CampaignMap_Prepare;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DD0C0,
-                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignUnk_DoInitial)
-            MenuView_CampaignUnk_DoInitial;
+                &OpenSHC::UI::MenuViews::CampaignUnk::MenuView_CampaignMap_DoInitial)
+            MenuView_CampaignMap_DoInitial;
 
         } // namespace CampaignUnk_Func
     } // namespace MenuViews

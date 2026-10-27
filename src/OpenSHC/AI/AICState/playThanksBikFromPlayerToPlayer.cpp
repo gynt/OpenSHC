@@ -1,13 +1,12 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Rendering/Bink/AIMessageQueue.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DAT_VideoBikQueue.hpp"
-#include "OpenSHC/Globals/TIME_LastThanksBikPlaybackTime.hpp"
+#include "OpenSHC/Globals/thanksBikLastPlayTime.hpp"
 
 namespace OpenSHC {
 namespace AI {
@@ -19,24 +18,24 @@ namespace AI {
             return;
         }
 
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
         DAT_GameState::instance.playerDataArray[playerID].aiRequestDelay = this->aics[aicIndex].aiRequestDelay;
 
         if (targetPlayerID != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
             return;
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                .lordKilledByPlayerID
+                .lordDeathStatusOrKiller
             != 0) {
             return;
         }
 
         DWORD now = timeGetTime();
-        if (TIME_LastThanksBikPlaybackTime::instance != 0 && now - TIME_LastThanksBikPlaybackTime::instance < 1200000) {
+        if (thanksBikLastPlayTime::instance != 0 && now - thanksBikLastPlayTime::instance < 1200000) {
             return;
         }
 
-        TIME_LastThanksBikPlaybackTime::instance = now;
+        thanksBikLastPlayTime::instance = now;
         MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playBikVideoFromPlayer, DAT_VideoBikQueue::ptr)(
             playerID, aicIndex, 15);
     }

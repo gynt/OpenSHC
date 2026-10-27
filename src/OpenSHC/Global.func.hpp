@@ -33,8 +33,8 @@ namespace Global_Func {
         &OpenSHC::Global::DetectDXVersionByLoadingDDRAW)
     DetectDXVersionByLoadingDDRAW;
 
-    MACRO_FUNCTION_RESOLVER(byte(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0046F570, &OpenSHC::Global::TestOSVersion)
-    TestOSVersion;
+    MACRO_FUNCTION_RESOLVER(byte(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0046F570, &OpenSHC::Global::isWindows8OrLater)
+    isWindows8OrLater;
 
     MACRO_FUNCTION_RESOLVER(LRESULT(__stdcall*)(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam), false,
         Address::SHC_3BB0A8C1_0x004B2AE0, &OpenSHC::Global::WindowMsgProcessingFunc)

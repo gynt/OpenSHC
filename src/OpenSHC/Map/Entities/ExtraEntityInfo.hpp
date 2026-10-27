@@ -19,31 +19,50 @@ namespace Map {
             short entityID; // 0x00000000 length: 2
             short randomNumber; // 0x00000002 length: 2
             int entityUID; // 0x00000004 length: 4
-            short field3_0x8; // 0x00000008 length: 2
-            short field4_0xa; // 0x0000000A length: 2
+            // Seagull slot state: 0 = free, 2 = active
+            short slotState; // 0x00000008 length: 2
+            // Zeroed in createSeagull; no reader seen
+            short unkResetOnCreateA; // 0x0000000A length: 2
             short x; // 0x0000000C length: 2
             short y; // 0x0000000E length: 2
             short x_2; // 0x00000010 length: 2
             short y_2; // 0x00000012 length: 2
             short angle; // 0x00000014 length: 2
-            short unknownCounter_0x16; // 0x00000016 length: 2
-            short someAngle; // 0x00000018 length: 2
-            short field12_0x1a; // 0x0000001A length: 2
+            // [075 0x00406650] random 24..39, multiplied by sin/cos of the angle to get the target offset
+            short circleRadius; // 0x00000016 length: 2
+            // +-1 factor of the 20-degree gull circling step (2 functions agree)
+            short circleDirection; // 0x00000018 length: 2
+            // Lap counter cycling -20..19 (one step per full circle); while negative the circle radius
+            // unknownCounter_0x16 grows by 1 per lap, while positive it shrinks (clamped 24..80)
+            short circlePhase; // 0x0000001A length: 2
             short angle_2; // 0x0000001C length: 2
-            short numberBetween60And100; // 0x0000001E length: 2
-            short angleStep; // 0x00000020 length: 2
-            short rngMax799_countdown; // 0x00000022 length: 2
+            // random 60..99, radius of the orbit-centre offset in processSeaGulls (2 functions agree); Center
+            // spelling as in types.h
+            short orbitCenterRadius; // 0x0000001E length: 2
+            // +1/-1 increment applied to angle_2 each tick
+            short angle2Step; // 0x00000020 length: 2
+            // init 400, reset 400..799; counts down before a new sea destination is picked (2 functions agree)
+            short retargetWaitCountdown; // 0x00000022 length: 2
             short x_3; // 0x00000024 length: 2
             short y_3; // 0x00000026 length: 2
-            short pathErrorStepStraight; // 0x00000028 length: 2
-            short pathErrorStepDiagonal; // 0x0000002A length: 2
-            short pathError; // 0x0000002C length: 2
-            short pathAxisCase; // 0x0000002E length: 2
-            short pathStepX; // 0x00000030 length: 2
-            short pathStepY; // 0x00000032 length: 2
-            short pathStepDelay; // 0x00000034 length: 2
-            short someCountDown; // 0x00000036 length: 2
-            short pathMajorLength; // 0x00000038 length: 2
+            // Bresenham increment 2*minor for seagull drift line
+            short lineStepIncMinor; // 0x00000028 length: 2
+            // Bresenham increment 2*minor - 2*major
+            short lineStepIncMajor; // 0x0000002A length: 2
+            // Bresenham error accumulator
+            short lineStepError; // 0x0000002C length: 2
+            // 0 none, 1 vertical, 2 horizontal, 3 Y-major, 4 X-major
+            short lineStepMode; // 0x0000002E length: 2
+            // +1/-1 X direction of drift line
+            short lineStepDirX; // 0x00000030 length: 2
+            // +1/-1 Y direction of drift line
+            short lineStepDirY; // 0x00000032 length: 2
+            // Ticks until the next centre step (5 after creation, reset to 10)
+            short lineStepDelay; // 0x00000034 length: 2
+            // set to 0xA0 when diving; at 0 gull resurfaces with FX_GULL_SURFACE
+            short diveCountdown; // 0x00000036 length: 2
+            // Remaining drift steps (major delta)
+            short lineStepsLeft; // 0x00000038 length: 2
             short field28_0x3a; // 0x0000003A length: 2
             short field29_0x3c; // 0x0000003C length: 2
             short field30_0x3e; // 0x0000003E length: 2

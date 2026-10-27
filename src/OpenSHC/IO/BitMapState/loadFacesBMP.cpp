@@ -16,7 +16,7 @@ namespace IO {
             FRT_BMP, s_faces_bmp_005a6500);
         MACRO_CALL_MEMBER(BitMapState_Func::loadBitmapHeader, this)();
 
-        unsigned char* surface = (unsigned char*)MACRO_CALL(OS_Func::_malloc)(this->stride16bit * this->high);
+        unsigned char* surface = (unsigned char*)MACRO_CALL(OS_Func::_malloc)(this->stride16bit * this->height);
         MACRO_CALL_MEMBER(BitMapState_Func::loadAndBlitBitmap, this)(surface);
         int x = 7;
         for (int faceIndex = 0; faceIndex < 10; ++faceIndex) {

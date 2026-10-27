@@ -19,10 +19,10 @@ namespace AI {
             if (i == 8)
                 continue;
 
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeCount;
-            int const tribeType = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeType;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeSlotCount;
+            int tribeType = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].firstTribeSlot;
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[tribeType + j];
                 if (tribeID == 0)
                     continue;
                 if (DAT_TribesState::instance.tribes[tribeID].uid

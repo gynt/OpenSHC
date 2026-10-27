@@ -24,14 +24,14 @@ namespace Text {
         int const whiteSpaceWidth = this->whiteSpaceWidth_0x1c;
         int lineIndex = 0;
 
-        DAT_TextManagerObject::instance.count1 = 0;
+        DAT_TextManagerObject::instance.wrappedLineCount = 0;
         if (_textLength <= 0) {
             return;
         }
 
         if (_textWidth <= allowedWidth && _textLength <= 127) {
-            strcpy(DAT_TextManagerObject::instance.stringArray1[0], text);
-            DAT_TextManagerObject::instance.count1 = 1;
+            strcpy(DAT_TextManagerObject::instance.wrappedLines[0], text);
+            DAT_TextManagerObject::instance.wrappedLineCount = 1;
         } else if (_textWidth > allowedWidth) {
             do {
                 char _wordReceiver[64];
@@ -48,12 +48,12 @@ namespace Text {
                     _wordReceiver, _wordLengthWithoutNull);
 
                 if (_wordWidth > allowedWidth) {
-                    DAT_TextManagerObject::instance.count1 = 0;
+                    DAT_TextManagerObject::instance.wrappedLineCount = 0;
                     return;
                 }
 
                 if (_wordWidth + currentWidthOfLine > allowedWidth && wordsInLine) {
-                    DAT_TextManagerObject::instance.stringArray1[lineIndex][currentIndexInLine] = '\0';
+                    DAT_TextManagerObject::instance.wrappedLines[lineIndex][currentIndexInLine] = '\0';
                     ++lineIndex;
 
                     currentWidthOfLine = 0;
@@ -66,15 +66,15 @@ namespace Text {
                 }
 
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
-                    &DAT_TextManagerObject::instance.stringArray1[lineIndex][currentIndexInLine], s__s_005a5a08,
+                    &DAT_TextManagerObject::instance.wrappedLines[lineIndex][currentIndexInLine], s__s_005a5a08,
                     _wordReceiver);
 
                 ++wordsInLine;
                 currentWidthOfLine += _wordWidth + whiteSpaceWidth; // printf adds "%s "
                 currentIndexInLine += 1 + _wordLengthWithoutNull; // printf adds "%s "
             } while (wordCutIndex < _textLength);
-            DAT_TextManagerObject::instance.stringArray1[lineIndex][currentIndexInLine] = '\0';
-            DAT_TextManagerObject::instance.count1 = lineIndex + 1;
+            DAT_TextManagerObject::instance.wrappedLines[lineIndex][currentIndexInLine] = '\0';
+            DAT_TextManagerObject::instance.wrappedLineCount = lineIndex + 1;
         }
     }
 

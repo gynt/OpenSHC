@@ -3,18 +3,18 @@
 #include "OpenSHC/OS.func.hpp"
 
 #include "OpenSHC/Globals/DAT_CurrentPlayerRanking.hpp"
-#include "OpenSHC/Globals/DAT_CurrentPlayerUnitLosses.hpp"
-#include "OpenSHC/Globals/DAT_CurrentPlayerUnitLossesHistory.hpp"
+#include "OpenSHC/Globals/unitValueKilledByCurrentPlayer.hpp"
+#include "OpenSHC/Globals/unitValueKilledByCurrentPlayerHistory.hpp"
 #include "OpenSHC/Globals/DAT_DestroyedBuildingsCountHistory.hpp"
 #include "OpenSHC/Globals/DAT_IsKeepEnclosed.hpp"
-#include "OpenSHC/Globals/DAT_KeepEnclosementCooldown.hpp"
-#include "OpenSHC/Globals/DAT_TotalUnitValueLossesEnemyHistory.hpp"
-#include "OpenSHC/Globals/DAT_UnitValueLossesPerEnemyPlayer.hpp"
+#include "OpenSHC/Globals/lastKeepEnclosedCheckTime.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostHistory.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostToPlayer.hpp"
 #include "OpenSHC/Globals/DWORD_KeepEnclosementTimer.hpp"
 #include "OpenSHC/Globals/DWORD_LatestPLayerStatusMessageTime.hpp"
-#include "OpenSHC/Globals/Dat_UnitValueLossesHistoryPerEnemyPlayer.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostToPlayerHistory.hpp"
 #include "OpenSHC/Globals/INT_00b98484.hpp"
-#include "OpenSHC/Globals/INT_00b98664.hpp"
+#include "OpenSHC/Globals/lastTeamBikMessageState.hpp"
 #include "OpenSHC/Globals/INT_00b98698.hpp"
 
 namespace OpenSHC {
@@ -31,19 +31,19 @@ namespace Audio {
         unsigned int currentTime = timeGetTime();
         DWORD_KeepEnclosementTimer::instance = currentTime;
         DWORD_LatestPLayerStatusMessageTime::instance = currentTime;
-        DAT_KeepEnclosementCooldown::instance = currentTime;
+        lastKeepEnclosedCheckTime::instance = currentTime;
 
-        DAT_CurrentPlayerUnitLosses::instance = 0;
+        unitValueKilledByCurrentPlayer::instance = 0;
         for (int i = 0; i < 9; i++) {
-            DAT_UnitValueLossesPerEnemyPlayer::instance[i] = 0;
+            currentPlayerUnitValueLostToPlayer::instance[i] = 0;
         }
-        memset(DAT_CurrentPlayerUnitLossesHistory::instance, 0, sizeof(DAT_CurrentPlayerUnitLossesHistory::instance));
+        memset(unitValueKilledByCurrentPlayerHistory::instance, 0, sizeof(unitValueKilledByCurrentPlayerHistory::instance));
         memset(
-            DAT_TotalUnitValueLossesEnemyHistory::instance, 0, sizeof(DAT_TotalUnitValueLossesEnemyHistory::instance));
-        MACRO_CALL(OS_Func::_memset)(Dat_UnitValueLossesHistoryPerEnemyPlayer::ptr, 0,
-            sizeof(Dat_UnitValueLossesHistoryPerEnemyPlayer::instance));
+            currentPlayerUnitValueLostHistory::instance, 0, sizeof(currentPlayerUnitValueLostHistory::instance));
+        MACRO_CALL(OS_Func::_memset)(currentPlayerUnitValueLostToPlayerHistory::ptr, 0,
+            sizeof(currentPlayerUnitValueLostToPlayerHistory::instance));
 
-        INT_00b98664::instance = 1;
+        lastTeamBikMessageState::instance = 1;
 
         memset(DAT_DestroyedBuildingsCountHistory::instance, 0, sizeof(DAT_DestroyedBuildingsCountHistory::instance));
     }

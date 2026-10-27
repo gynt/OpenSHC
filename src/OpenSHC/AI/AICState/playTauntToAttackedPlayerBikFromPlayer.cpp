@@ -1,7 +1,6 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Rendering/Bink/AIMessageQueue.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -20,7 +19,7 @@ namespace AI {
         }
 
         int bik = 0;
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
         if (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
             == DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
             bik = 23;

@@ -20,32 +20,31 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CE5F0
     void AICState::sendUnitsToPlayerIDsKeepIfPossible(int playerID1, int playerID2)
     {
-        uint const campfireX = DAT_GameState::instance.playerDataArray[playerID1].campground.xEntry;
-        uint const campfireY = DAT_GameState::instance.playerDataArray[playerID1].campground.yEntry;
+        uint campfireX = DAT_GameState::instance.playerDataArray[playerID1].campground.xEntry;
+        uint campfireY = DAT_GameState::instance.playerDataArray[playerID1].campground.yEntry;
 
         uint gatehouseX;
         uint gatehouseY;
         if (MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::canNavigateFromKeepToKeep, DAT_GameState::ptr)(
                 playerID1, playerID2)
             == FALSE) {
-            uint const gatehouseTile
-                = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findOwnedGatehouse,
-                    DAT_PathFindingState::ptr)(playerID2, campfireX, campfireY);
+            uint gatehouseTile = MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::findOwnedGatehouse,
+                DAT_PathFindingState::ptr)(playerID2, campfireX, campfireY);
             if (gatehouseTile != 0) {
                 gatehouseY = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[gatehouseTile];
                 gatehouseX
                     = gatehouseTile - DAT_ViewportRenderState::instance.translationMatrix[gatehouseY].addXgetTile;
             } else {
-                DAT_GameState::instance.playerDataArray[playerID1].requestStateUnk = 0;
+                DAT_GameState::instance.playerDataArray[playerID1].allyOrderState = 0;
                 return;
             }
         }
 
         for (int i = 0; i < 11; i++) {
-            int const tribeTypeStart = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeCount;
+            int tribeTypeStart = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxAttackTribes1[i].tribeSlotCount;
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID = DAT_GameState::instance.playerDataArray[playerID1].aiTribeIDs[tribeTypeStart + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[playerID1].aiTribeIDs[tribeTypeStart + j];
                 if (tribeID == 0) {
                     continue;
                 }

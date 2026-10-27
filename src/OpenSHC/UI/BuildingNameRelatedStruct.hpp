@@ -20,7 +20,11 @@ namespace UI {
     typedef struct BuildingNameRelatedStruct {
 
         int nameNumberInTextGroup; // 0x00000000 length: 4
-        BuildingNameRelatedSubStruct field1_0x4[3]; // 0x00000004 length: 36
+        // 3 x 3 ints read as a flat list of up to 9 ids (0 terminates): id>0 = BuildingType whose
+        // buildingAvailabilityRelatedFlags[id] follows this availability toggle; id<0 = special flag at
+        // MapPropertiesState+(0x290-id)*2. identifier1 of entry 0 is switched on (0x32, 0x52, 0x53 ...) by the
+        // availability buttons
+        BuildingNameRelatedSubStruct linkedBuildingTypes[3]; // 0x00000004 length: 36
 
     } BuildingNameRelatedStruct;
 #pragma pack(pop)

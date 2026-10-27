@@ -13,6 +13,7 @@ namespace Map {
     namespace Buildings {
         typedef enum BuildingType {
 
+            BT_NONE = 0, // 0x00000000
             BT_HOVEL = 1, // 0x00000001
             BT_HOUSE = 2, // 0x00000002
             BT_WOODCUTTERSHUT = 3, // 0x00000003
@@ -63,7 +64,7 @@ namespace Map {
             BT_WOODGATE2 = 48, // 0x00000030
             BT_DRAWBRIDGE = 49, // 0x00000031
             BT_TUNNEL = 50, // 0x00000032
-            BT_CAMPFIRE = 51, // 0x00000033
+            BT_OILSMELTER_PART = 51, // 0x00000033
             BT_SIGNPOST = 52, // 0x00000034
             BT_PARADEGROUND = 53, // 0x00000035
             BT_FIREBALLISTA = 54, // 0x00000036
@@ -91,17 +92,17 @@ namespace Map {
             BT_TOWER3 = 76, // 0x0000004C
             BT_TOWER4 = 77, // 0x0000004D
             BT_TOWER5 = 78, // 0x0000004E
-            BT_UNKNOWN3 = 79, // 0x0000004F
+            BT_TOWER5_RUIN = 79, // 0x0000004F
             BT_CATAPULT = 80, // 0x00000050
             BT_TREBUCHET = 81, // 0x00000051
-            BT_BATTERINGRAM = 82, // 0x00000052
-            BT_SIEGETOWER = 83, // 0x00000053
+            BT_SIEGETOWER = 82, // 0x00000052
+            BT_BATTERINGRAM = 83, // 0x00000053
             BT_SHIELD = 84, // 0x00000054
-            BT_UNKNOWN4 = 85, // 0x00000055
-            BT_MANGONEL = 86, // 0x00000056
-            BT_BALLISTA = 87, // 0x00000057
-            BT_UNKNOWN5 = 88, // 0x00000058
-            BT_UNKNOWN6 = 89, // 0x00000059
+            BT_TUNNEL_CONSTRUCTION = 85, // 0x00000055
+            BT_TOWER1_RUIN_OR_MANGONEL = 86, // 0x00000056
+            BT_TOWER2_RUIN_OR_BALLISTA = 87, // 0x00000057
+            BT_TOWER3_RUIN = 88, // 0x00000058
+            BT_TOWER4_RUIN = 89, // 0x00000059
             BT_UNKNOWN7 = 90, // 0x0000005A
             BT_CESSPIT = 91, // 0x0000005B
             BT_BURNINGSTAKE = 92, // 0x0000005C

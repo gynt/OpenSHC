@@ -9,10 +9,10 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00449B20
         void SFXState::freeMemoryAt()
         {
-            if (!this->DAT_SoundFileNameArrayMemoryPointer) {
+            if (!this->volumeFileBuffer) {
                 return;
             }
-            MACRO_CALL(OS_Func::_free_base)(this->DAT_SoundFileNameArrayMemoryPointer);
+            MACRO_CALL(OS_Func::_free_base)(this->volumeFileBuffer);
         }
 
     }

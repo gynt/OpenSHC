@@ -3,6 +3,7 @@
 */
 
 #include "OpenSHC/Commands/MappersEnum.hpp"
+#include "OpenSHC/Game/Player/PlayerID.hpp"
 #include "OpenSHC/IO/PackagedFileMagicNum.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 #include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
@@ -14,6 +15,7 @@ namespace Map {
     namespace TileMapState_Func {
 
         using OpenSHC::Commands::MappersEnum;
+        using OpenSHC::Game::Player::PlayerID;
         using OpenSHC::IO::PackagedFileMagicNum;
         using OpenSHC::Map::Buildings::BuildingType;
         using OpenSHC::Map::LogicHelpers::Logic1;
@@ -107,12 +109,12 @@ namespace Map {
         countLogicPropertyInSurroundingTiles;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004F85B0,
-            &TileMapState::isTileEnclosedByWallsOrGates)
-        isTileEnclosedByWallsOrGates;
+            &TileMapState::hasCardinalPlainWallNeighbourNoCrenel)
+        hasCardinalPlainWallNeighbourNoCrenel;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004F8640,
-            &TileMapState::isTileEnclosedByWalls)
-        isTileEnclosedByWalls;
+        MACRO_FUNCTION_RESOLVER(undefined4 (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004F8640,
+            &TileMapState::hasCardinalWallNeighbour)
+        hasCardinalWallNeighbour;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x004F86D0,
             &TileMapState::isWallCornerForCardinalDirection)
@@ -162,7 +164,7 @@ namespace Map {
             void (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x004F93E0, &TileMapState::destroyWallsOfPlayer)
         destroyWallsOfPlayer;
 
-        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, MappersEnum), false,
+        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, OpenSHC::Commands::MappersEnumShort), false,
             Address::SHC_3BB0A8C1_0x004F94A0, &TileMapState::validateWallPlacementAtTile)
         validateWallPlacementAtTile;
 
@@ -183,16 +185,16 @@ namespace Map {
         storeMinAndMaxHeightOfArea;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(int, int, MappersEnum, int), false,
-            Address::SHC_3BB0A8C1_0x004F9A60, &TileMapState::isBuildingPlacementAllowedAtTile)
-        isBuildingPlacementAllowedAtTile;
+            Address::SHC_3BB0A8C1_0x004F9A60, &TileMapState::isBuildingPlacementBlockedAtTile)
+        isBuildingPlacementBlockedAtTile;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x004F9DF0,
-            &TileMapState::validateBuildingPlacementAtTile)
-        validateBuildingPlacementAtTile;
+            &TileMapState::validateEraseTargetAtTile)
+        validateEraseTargetAtTile;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(undefined4, int), false, Address::SHC_3BB0A8C1_0x004F9F00,
-            &TileMapState::spawnEraserTileEffect)
-        spawnEraserTileEffect;
+            &TileMapState::eraseWallTile)
+        eraseWallTile;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004FA000,
             &TileMapState::determineBuildingPlacementRotation)
@@ -203,8 +205,8 @@ namespace Map {
         checkDrawbridgePlacement;
 
         MACRO_FUNCTION_RESOLVER(undefined4 (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x004FA460,
-            &TileMapState::getRubbleGraphicStageForDamageLevel)
-        getRubbleGraphicStageForDamageLevel;
+            &TileMapState::getViewRelativeDirectionFrame)
+        getViewRelativeDirectionFrame;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(MappersEnum), false, Address::SHC_3BB0A8C1_0x004FA550,
             &TileMapState::getBuildingSizeForCommandBuildingType)
@@ -283,8 +285,8 @@ namespace Map {
         clearRockFootprintFlags;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(uint, uint, short), false, Address::SHC_3BB0A8C1_0x004FB9E0,
-            &TileMapState::renderWallPlacementPreview)
-        renderWallPlacementPreview;
+            &TileMapState::renderBigRockPlacementPreview)
+        renderBigRockPlacementPreview;
 
         MACRO_FUNCTION_RESOLVER(undefined4 (TileMapState::*)(), false, Address::SHC_3BB0A8C1_0x004FBC30,
             &TileMapState::getCastleBuildRangeForMapSize)
@@ -295,8 +297,8 @@ namespace Map {
         getTileForBrush;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, uint, uint), false, Address::SHC_3BB0A8C1_0x004FBE70,
-            &TileMapState::isTileSuitableForBrushPlacement)
-        isTileSuitableForBrushPlacement;
+            &TileMapState::isTileHigherThanAnyNeighbour)
+        isTileHigherThanAnyNeighbour;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x004FC0B0,
             &TileMapState::computeTileCliffEdgeFlags)
@@ -307,8 +309,8 @@ namespace Map {
         propagateCliffEdgeFlagFromNeighbor;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(), false, Address::SHC_3BB0A8C1_0x004FC340,
-            &TileMapState::collectCliffEdgeTilesForClimbData)
-        collectCliffEdgeTilesForClimbData;
+            &TileMapState::collectDustCloudSourceTiles)
+        collectDustCloudSourceTiles;
 
         MACRO_FUNCTION_RESOLVER(
             void (TileMapState::*)(), false, Address::SHC_3BB0A8C1_0x004FC490, &TileMapState::generateDustClouds)
@@ -343,8 +345,8 @@ namespace Map {
         setBitFlagBasedOnWallTowerGatehouseOrKeep;
 
         MACRO_FUNCTION_RESOLVER(
-            uint (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004FF990, &TileMapState::returnSomeHeight)
-        returnSomeHeight;
+            uint (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004FF990, &TileMapState::getObstacleTopHeightAtTile)
+        getObstacleTopHeightAtTile;
 
         MACRO_FUNCTION_RESOLVER(
             uint (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x004FFB10, &TileMapState::getTotalHeightAtTile)
@@ -355,8 +357,8 @@ namespace Map {
         getTotalHeightAt;
 
         MACRO_FUNCTION_RESOLVER(uint (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004FFF10,
-            &TileMapState::getHeightAtTileIncludingOwnersBuildings)
-        getHeightAtTileIncludingOwnersBuildings;
+            &TileMapState::getWalkableStructureHeightAtTileForPlayer)
+        getWalkableStructureHeightAtTileForPlayer;
 
         MACRO_FUNCTION_RESOLVER(
             void (TileMapState::*)(), false, Address::SHC_3BB0A8C1_0x005000A0, &TileMapState::recountTotalOwnedMoats)
@@ -379,8 +381,8 @@ namespace Map {
         returnOwnedMoatAtTile;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x00500290,
-            &TileMapState::returnMoatIDForPlayerIDs)
-        returnMoatIDForPlayerIDs;
+            &TileMapState::findMoatIdByTileAndOwner)
+        findMoatIdByTileAndOwner;
 
         MACRO_FUNCTION_RESOLVER(
             void (TileMapState::*)(uint), false, Address::SHC_3BB0A8C1_0x005002D0, &TileMapState::clearMoatData)
@@ -391,14 +393,14 @@ namespace Map {
         clearMoatDataAtTile;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x00500370,
-            &TileMapState::findTileInSameAreaAndNoTooHeightDifference)
-        findTileInSameAreaAndNoTooHeightDifference;
+            &TileMapState::hasNeighborTileInSameAreaWithinHeightLimit)
+        hasNeighborTileInSameAreaWithinHeightLimit;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(int, int, uint, uint), false, Address::SHC_3BB0A8C1_0x005003D0,
-            &TileMapState::setXYBasedOnMoatID)
-        setXYBasedOnMoatID;
+            &TileMapState::computeMoatDigTarget)
+        computeMoatDigTarget;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x00500500,
+        MACRO_FUNCTION_RESOLVER(undefined4 (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x00500500,
             &TileMapState::advanceMoatDigProgress)
         advanceMoatDigProgress;
 
@@ -450,9 +452,9 @@ namespace Map {
             &TileMapState::swapPitchOwnership)
         swapPitchOwnership;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(uint, uint, uint, uint), false,
-            Address::SHC_3BB0A8C1_0x00500980, &TileMapState::findNearestValidDigTileNearTarget)
-        findNearestValidDigTileNearTarget;
+        MACRO_FUNCTION_RESOLVER(undefined4 (TileMapState::*)(uint, uint, uint, uint), false,
+            Address::SHC_3BB0A8C1_0x00500980, &TileMapState::findApproachTileNextToTarget)
+        findApproachTileNextToTarget;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(int, int, uint), false, Address::SHC_3BB0A8C1_0x00500B50,
             &TileMapState::computeTileAlongAxisOffset)
@@ -479,8 +481,8 @@ namespace Map {
         useEraserBrush;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(), false, Address::SHC_3BB0A8C1_0x00501A20,
-            &TileMapState::updateShowHiLayerOrResetChangedLayer)
-        updateShowHiLayerOrResetChangedLayer;
+            &TileMapState::stepHeightOffsetAnimationAndRefreshShowHi)
+        stepHeightOffsetAnimationAndRefreshShowHi;
 
         MACRO_FUNCTION_RESOLVER(
             void (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x00501B90, &TileMapState::changeMapOrientation)
@@ -507,8 +509,8 @@ namespace Map {
         setLand;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, uint, int), false, Address::SHC_3BB0A8C1_0x005024F0,
-            &TileMapState::isValidCastleSiteLocation)
-        isValidCastleSiteLocation;
+            &TileMapState::isMoatBrushPlacementValid)
+        isMoatBrushPlacementValid;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, undefined4), false,
             Address::SHC_3BB0A8C1_0x00502680, &TileMapState::useTerrainHeightBrush)
@@ -539,12 +541,12 @@ namespace Map {
         checkBuildingCanBePlacedHere;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint), false, Address::SHC_3BB0A8C1_0x00504A30,
-            &TileMapState::evaluateBuildingPlacementAtCursor)
-        evaluateBuildingPlacementAtCursor;
+            &TileMapState::evaluateDemolishTargetAtCursor)
+        evaluateDemolishTargetAtCursor;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x00504EE0,
-            &TileMapState::updateBuildingPlacementRotationPreview)
-        updateBuildingPlacementRotationPreview;
+            &TileMapState::computeWallFacingRotationAt)
+        computeWallFacingRotationAt;
 
         MACRO_FUNCTION_RESOLVER(int (TileMapState::*)(int, int, MappersEnum, int), false,
             Address::SHC_3BB0A8C1_0x00504F10, &TileMapState::setConstructionGFXLayerBasedOnPlacementChecks)
@@ -562,11 +564,11 @@ namespace Map {
             Address::SHC_3BB0A8C1_0x00506BD0, &TileMapState::placeWorkshopOrHovel)
         placeWorkshopOrHovel;
 
-        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, undefined4, uint, int, undefined4), false,
+        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, short, uint, int, undefined4), false,
             Address::SHC_3BB0A8C1_0x00506D40, &TileMapState::placeSiegetowerPlaced)
         placeSiegetowerPlaced;
 
-        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, undefined4, uint, int, undefined4), false,
+        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, short, uint, int, undefined4), false,
             Address::SHC_3BB0A8C1_0x00506E10, &TileMapState::placeSiegeTent)
         placeSiegeTent;
 
@@ -625,16 +627,16 @@ namespace Map {
         placeStockpile;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x00508760,
-            &TileMapState::clearSizeFiveBuildingFootprintAndMoats)
-        clearSizeFiveBuildingFootprintAndMoats;
+            &TileMapState::clearDrawbridgeFootprintAndMoat)
+        clearDrawbridgeFootprintAndMoat;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int), false, Address::SHC_3BB0A8C1_0x00508870,
             &TileMapState::clearDrawBridgeWater)
         clearDrawBridgeWater;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int), false, Address::SHC_3BB0A8C1_0x00508910,
-            &TileMapState::floodMoatUnderRemovedBuilding)
-        floodMoatUnderRemovedBuilding;
+            &TileMapState::floodMoatUnderRaisingDrawbridge)
+        floodMoatUnderRaisingDrawbridge;
 
         MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(uint, uint, MappersEnum), false,
             Address::SHC_3BB0A8C1_0x00508A00, &TileMapState::renderPreviewMapperWithBrush)
@@ -661,8 +663,8 @@ namespace Map {
         createMoatData;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (TileMapState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x005111D0,
-            &TileMapState::findNearestFriendlyMoatTileForDigging)
-        findNearestFriendlyMoatTileForDigging;
+            &TileMapState::findBestMoatTileForWork)
+        findBestMoatTileForWork;
 
         MACRO_FUNCTION_RESOLVER(
             BOOLEnum (TileMapState::*)(uint, int), false, Address::SHC_3BB0A8C1_0x005113F0, &TileMapState::removeMoat)
@@ -712,7 +714,7 @@ namespace Map {
             &TileMapState::planMoat)
         planMoat;
 
-        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, undefined4, uint, int, int), false,
+        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, uint, uint, short, uint, int, int), false,
             Address::SHC_3BB0A8C1_0x00514520, &TileMapState::placeKillingPit)
         placeKillingPit;
 
@@ -756,7 +758,7 @@ namespace Map {
             Address::SHC_3BB0A8C1_0x005160C0, &TileMapState::prepareAreaForBuildingPlacement)
         prepareAreaForBuildingPlacement;
 
-        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(int, int, int, MappersEnum, int, int), false,
+        MACRO_FUNCTION_RESOLVER(void (TileMapState::*)(PlayerID, int, int, MappersEnum, int, int), false,
             Address::SHC_3BB0A8C1_0x005162D0, &TileMapState::placeBuilding)
         placeBuilding;
 

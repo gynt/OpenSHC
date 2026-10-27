@@ -8,7 +8,7 @@ namespace Audio {
         {
             MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::endSoundStream, this)(enums::SND_STR_MUSIC);
             this->musicFadeState = 0;
-            this->sec_Section1055_0x3274 = 0;
+            this->playingMusicId = 0;
         }
 
     }

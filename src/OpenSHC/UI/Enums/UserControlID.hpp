@@ -13,6 +13,8 @@ namespace UI {
     namespace Enums {
         typedef enum UserControlID {
 
+            UCID_NONE = -1, // 0xFFFFFFFF
+            UCID_UNASSIGNED = 0, // 0x00000000
             UCID_TOWERS = 1, // 0x00000001
             UCID_GATEHOUSES = 2, // 0x00000002
             UCID_KEEPS = 3, // 0x00000003
@@ -63,6 +65,7 @@ namespace UI {
             UCID_BLD_FLETCHER = 48, // 0x00000030
             UCID_BLD_POLETURNER = 49, // 0x00000031
             UCID_BLD_BAKER = 50, // 0x00000032
+            UserControlIDShort__UCID__BLD_BAKER = 50, // 0x00000032
             UCID_BLD_BREWER = 51, // 0x00000033
             UCID_BLD_FARM_WHEAT = 52, // 0x00000034
             UCID_BLD_FARM_APPLE = 53, // 0x00000035
@@ -303,8 +306,7 @@ namespace UI {
             UCID_BLD_WATERPOT = 294, // 0x00000126
             UCID_BLD_ARAB_BALLISTA = 295, // 0x00000127
             UCID_BLD_OUTPOST = 296, // 0x00000128
-            UCID_BLD_OUTPOST_ARAB = 297, // 0x00000129
-            UserControlIDShort__UCID__BLD_BAKER = 50 // 0x00000032
+            UCID_BLD_OUTPOST_ARAB = 297 // 0x00000129
 
         } UserControlID;
 

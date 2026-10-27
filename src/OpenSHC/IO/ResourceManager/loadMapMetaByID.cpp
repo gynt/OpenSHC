@@ -14,8 +14,8 @@ namespace IO {
         DAT_GameCore::instance.savedMapBalance = this->mapMetaInfoArray[id].mapBalance;
         DAT_GameCore::instance.savedMapEndInt2 = this->mapMetaInfoArray[id].mapEndInt2;
         DAT_GameCore::instance.mapPlayerCount = this->mapMetaInfoArray[id].mapPlayerCount;
-        DAT_MapPropertiesState::instance.scenarionMissionType = this->mapMetaInfoArray[id].int0;
-        DAT_MapPropertiesState::instance.scenarioMissionSiegeOrInvasion = this->mapMetaInfoArray[id].mapType2;
+        DAT_MapPropertiesState::instance.scenarionMissionType = this->mapMetaInfoArray[id].scenarioMissionType;
+        DAT_MapPropertiesState::instance.scenarioMissionSiegeOrInvasion = this->mapMetaInfoArray[id].scenarioMissionSiegeOrInvasion;
         DAT_GameCore::instance.mapU4Int0_2 = 0;
     }
 

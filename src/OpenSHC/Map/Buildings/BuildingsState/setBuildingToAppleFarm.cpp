@@ -1,13 +1,13 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0040F3D0
-        void BuildingsState::setBuildingToAppleFarm(int buildingID)
+        void BuildingsState::setBuildingBlendLevelTo32(int buildingID)
         {
-            this->buildings[buildingID].renderBlendStrength = 32;
+            this->buildings[buildingID].animFadeAlpha = BT_APPLEFARM;
         }
 
     }

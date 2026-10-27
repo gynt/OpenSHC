@@ -17,8 +17,10 @@ namespace Audio {
         typedef struct SndStreamHelper {
 
             int music; // 0x00000000 length: 4
-            int sfx_1Unk; // 0x00000004 length: 4
-            int sfx_2Unk; // 0x00000008 length: 4
+            // [UNK PASS] was sfx_1Unk
+            int ambientSfx_1; // 0x00000004 length: 4
+            // [UNK PASS] was sfx_2Unk
+            int ambientSfx_2; // 0x00000008 length: 4
             int speech_1; // 0x0000000C length: 4
             int speech_2; // 0x00000010 length: 4
 

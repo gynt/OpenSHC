@@ -15,16 +15,16 @@ namespace UI {
         namespace Unknown26_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004DCC70,
-                &OpenSHC::UI::MenuViews::Unknown26::MenuView_Unknown26_CampaignRelatedUnk_Prepare)
-            MenuView_Unknown26_CampaignRelatedUnk_Prepare;
+                &OpenSHC::UI::MenuViews::Unknown26::MenuView_MissionIntroSequence_Prepare)
+            MenuView_MissionIntroSequence_Prepare;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004E1E30,
-                &OpenSHC::UI::MenuViews::Unknown26::MenuView_Unknown26_CampaignRelatedUnk_DoInitial)
-            MenuView_Unknown26_CampaignRelatedUnk_DoInitial;
+                &OpenSHC::UI::MenuViews::Unknown26::MenuView_MissionIntroSequence_DoInitial)
+            MenuView_MissionIntroSequence_DoInitial;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004E1E70,
-                &OpenSHC::UI::MenuViews::Unknown26::MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame)
-            MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame;
+                &OpenSHC::UI::MenuViews::Unknown26::MenuView_MissionIntroSequence_DoEveryFrame)
+            MenuView_MissionIntroSequence_DoEveryFrame;
 
         } // namespace Unknown26_Func
     } // namespace MenuViews

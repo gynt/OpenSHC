@@ -13,7 +13,7 @@ namespace IO {
         {
             uint bytesToWrite = *size;
             BufferHelper* bufferHelper = (BufferHelper*)param;
-            if (bufferHelper->underflow == 1) {
+            if (bufferHelper->overflow == 1) {
                 return;
             }
             Helpers::Buffer* _buffer;
@@ -26,13 +26,13 @@ namespace IO {
 
             if (_buffer->offset < _buffer->size) {
                 if (_buffer->size - _buffer->offset < bytesToWrite) {
-                    bufferHelper->underflow = 1;
+                    bufferHelper->overflow = 1;
                     return;
                 }
                 MACRO_CALL(OS_Func::_memcpy)(_buffer->data + _buffer->offset, buf, bytesToWrite);
                 _buffer->offset += bytesToWrite;
             } else if (bytesToWrite > 0) {
-                bufferHelper->underflow = 1;
+                bufferHelper->overflow = 1;
                 return;
             }
 

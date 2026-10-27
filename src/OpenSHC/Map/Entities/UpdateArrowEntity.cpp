@@ -1,0 +1,32 @@
+#include "OpenSHC/Map/Entities.func.hpp"
+
+#include "OpenSHC/Globals/DAT_CurrentEntityID.hpp"
+#include "OpenSHC/Globals/DAT_EntityState.hpp"
+
+namespace OpenSHC {
+namespace Map {
+
+    // FUNCTION: STRONGHOLDCRUSADER 0x00401BA0
+    void Entities::UpdateArrowEntity()
+    {
+        DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2
+            = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].pitchFrameIndex * 16
+            + DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].screenDirectionIndex
+            + DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].graphicType2RelatedOffset;
+        if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].burnCyclesOrImpactCountdown != 0) {
+            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].burnCyclesOrImpactCountdown--;
+            if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].variantOrLifetime != 0) {
+                DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].burnCyclesOrImpactCountdown = 0;
+            }
+            if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].burnCyclesOrImpactCountdown <= 0) {
+                DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].logicalState = 7;
+            }
+        }
+        if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].orientation == 0x4c) {
+            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].orientation = 0x3c;
+            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].logicalState = 7;
+        }
+    }
+
+}
+}

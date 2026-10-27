@@ -7,6 +7,7 @@
 #include "OpenSHC/AI/AIUnitBehaviourType.hpp"
 #include "OpenSHC/AI/AIVUnitType.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
+#include "OpenSHC/Game/Player/PlayerID.hpp"
 #include "OpenSHC/Game/Resources/ResourceType.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -18,6 +19,7 @@ namespace AI {
         using OpenSHC::AI::AIUnitBehaviourType;
         using OpenSHC::AI::AIVUnitType;
         using OpenSHC::Commands::MappersEnum;
+        using OpenSHC::Game::Player::PlayerID;
         using OpenSHC::Game::Resources::ResourceType;
         using OpenSHC::Map::Units::UnitType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
@@ -120,11 +122,11 @@ namespace AI {
         getResourceRebuildDelay;
 
         MACRO_FUNCTION_RESOLVER(
-            int (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB180, &AICState::aiFarmChoice)
+            int (AICState::*)(PlayerID), false, Address::SHC_3BB0A8C1_0x004CB180, &AICState::aiFarmChoice)
         aiFarmChoice;
 
         MACRO_FUNCTION_RESOLVER(
-            int (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB1B0, &AICState::setNextFarmTypeToBuild)
+            int (AICState::*)(PlayerID), false, Address::SHC_3BB0A8C1_0x004CB1B0, &AICState::setNextFarmTypeToBuild)
         setNextFarmTypeToBuild;
 
         MACRO_FUNCTION_RESOLVER(
@@ -136,22 +138,22 @@ namespace AI {
         aiShouldBuildWoodcutter;
 
         MACRO_FUNCTION_RESOLVER(
-            uint (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB330, &AICState::aiShouldBuildQuarry)
+            uint (AICState::*)(PlayerID), false, Address::SHC_3BB0A8C1_0x004CB330, &AICState::aiShouldBuildQuarry)
         aiShouldBuildQuarry;
 
         MACRO_FUNCTION_RESOLVER(
-            BOOLEnum (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB3A0, &AICState::aiRequiresExtraOxtethers)
+            undefined4 (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB3A0, &AICState::aiRequiresExtraOxtethers)
         aiRequiresExtraOxtethers;
 
         MACRO_FUNCTION_RESOLVER(
-            uint (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB4D0, &AICState::aiShouldBuildIronMine)
+            uint (AICState::*)(PlayerID), false, Address::SHC_3BB0A8C1_0x004CB4D0, &AICState::aiShouldBuildIronMine)
         aiShouldBuildIronMine;
 
         MACRO_FUNCTION_RESOLVER(
-            uint (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB540, &AICState::aiShouldBuildPitchrig)
+            uint (AICState::*)(PlayerID), false, Address::SHC_3BB0A8C1_0x004CB540, &AICState::aiShouldBuildPitchrig)
         aiShouldBuildPitchrig;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(int, MappersEnum), false, Address::SHC_3BB0A8C1_0x004CB5B0,
+        MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(PlayerID, MappersEnum), false, Address::SHC_3BB0A8C1_0x004CB5B0,
             &AICState::shouldNotBeBuildingHovel)
         shouldNotBeBuildingHovel;
 
@@ -168,11 +170,11 @@ namespace AI {
         destroyHouse;
 
         MACRO_FUNCTION_RESOLVER(
-            BOOLEnum (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB890, &AICState::shouldDestroyWoodCutterUnk)
-        shouldDestroyWoodCutterUnk;
+            BOOLEnum (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB890, &AICState::tryDestroyWoodcuttersHut)
+        tryDestroyWoodcuttersHut;
 
-        MACRO_FUNCTION_RESOLVER(
-            BOOLEnum (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB940, &AICState::destroyBuildingIfNoWorker)
+        MACRO_FUNCTION_RESOLVER(undefined4 (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004CB940,
+            &AICState::destroyBuildingIfNoWorker)
         destroyBuildingIfNoWorker;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(int, MappersEnum), false, Address::SHC_3BB0A8C1_0x004CB9F0,
@@ -240,8 +242,8 @@ namespace AI {
         unitIDIsRangedOrArmored;
 
         MACRO_FUNCTION_RESOLVER(
-            int (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CC910, &AICState::createTribeForUnitType)
-        createTribeForUnitType;
+            int (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CC910, &AICState::getOrCreateTribeForUnitType)
+        getOrCreateTribeForUnitType;
 
         MACRO_FUNCTION_RESOLVER(int (AICState::*)(int, AIVUnitType), false, Address::SHC_3BB0A8C1_0x004CC990,
             &AICState::smallestTribeOfUnitType)
@@ -252,8 +254,8 @@ namespace AI {
         getSmallestPatrolTribe;
 
         MACRO_FUNCTION_RESOLVER(
-            int (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CCBE0, &AICState::getDefensiveTribeForUnit)
-        getDefensiveTribeForUnit;
+            int (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CCBE0, &AICState::getRaidTribeForUnit)
+        getRaidTribeForUnit;
 
         MACRO_FUNCTION_RESOLVER(int (AICState::*)(undefined4, undefined4, undefined4), false,
             Address::SHC_3BB0A8C1_0x004CCD20, &AICState::addUnitToSmallestBehaviourTypeTribe)
@@ -460,7 +462,7 @@ namespace AI {
         clearOutdatedAITribes;
 
         MACRO_FUNCTION_RESOLVER(
-            BOOLEnum (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CF920, &AICState::giveSomeRaidCommand)
+            undefined4 (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004CF920, &AICState::giveSomeRaidCommand)
         giveSomeRaidCommand;
 
         MACRO_FUNCTION_RESOLVER(
@@ -631,7 +633,7 @@ namespace AI {
         decideOnTribeAttackLocation;
 
         MACRO_FUNCTION_RESOLVER(
-            void (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D1D60, &AICState::sellExcessGoods)
+            void (AICState::*)(int), true, Address::SHC_3BB0A8C1_0x004D1D60, &AICState::sellExcessGoods)
         sellExcessGoods;
 
         MACRO_FUNCTION_RESOLVER(void (AICState::*)(int, ResourceType, int), false, Address::SHC_3BB0A8C1_0x004D1F00,
@@ -655,8 +657,8 @@ namespace AI {
         addUnitToSmallestPatrolTribe;
 
         MACRO_FUNCTION_RESOLVER(
-            void (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D2790, &AICState::aiAssignUnitToDefensiveTribe)
-        aiAssignUnitToDefensiveTribe;
+            void (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D2790, &AICState::aiAssignUnitToRaidTribe)
+        aiAssignUnitToRaidTribe;
 
         MACRO_FUNCTION_RESOLVER(
             void (AICState::*)(int, int), false, Address::SHC_3BB0A8C1_0x004D27E0, &AICState::addUnitToItsTribe)
@@ -690,7 +692,7 @@ namespace AI {
             &AICState::moveAttackingUnitsToNextRallyPoint)
         moveAttackingUnitsToNextRallyPoint;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D30E0,
+        MACRO_FUNCTION_RESOLVER(undefined4 (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D30E0,
             &AICState::sendUnitsToAttackBreachedCastle)
         sendUnitsToAttackBreachedCastle;
 
@@ -715,7 +717,7 @@ namespace AI {
         makeOutpostTribesAttack;
 
         MACRO_FUNCTION_RESOLVER(
-            void (AICState::*)(int), false, Address::SHC_3BB0A8C1_0x004D39B0, &AICState::buyRequiredGoods)
+            void (AICState::*)(int), true, Address::SHC_3BB0A8C1_0x004D39B0, &AICState::buyRequiredGoods)
         buyRequiredGoods;
 
         MACRO_FUNCTION_RESOLVER(
@@ -782,7 +784,7 @@ namespace AI {
             &AICState::shouldNotBeBuildingGranary)
         shouldNotBeBuildingGranary;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(int, MappersEnum), false, Address::SHC_3BB0A8C1_0x004ECA60,
+        MACRO_FUNCTION_RESOLVER(BOOLEnum (AICState::*)(PlayerID, MappersEnum), false, Address::SHC_3BB0A8C1_0x004ECA60,
             &AICState::shouldNotBeBuildingArmoury)
         shouldNotBeBuildingArmoury;
 

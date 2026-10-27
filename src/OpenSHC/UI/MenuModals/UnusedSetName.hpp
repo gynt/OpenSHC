@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace UnusedSetName {
 
+            /**
+             * Modal render callback for the unused 'Enter Your Title' dialog: draws a 400-px rounded box near the
+             * top and the centred prompt text (TEXT_MAINOPTIONS 6).
+             */
             void __cdecl MenuModalRenderFunction_UnusedSetName(int x, int y, int width, int height);
 
         } // namespace UnusedSetName

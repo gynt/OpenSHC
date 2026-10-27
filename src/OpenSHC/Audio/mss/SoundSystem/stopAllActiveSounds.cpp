@@ -11,12 +11,12 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A9E0
         void SoundSystem::stopAllActiveSounds()
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
 
-            this->streamFlagsUnkAndLoopCount_0x34[3] &= ~FLAG_SOUND_UNINTERRUPTABLE;
-            this->streamFlagsUnkAndLoopCount_0x34[4] &= ~FLAG_SOUND_UNINTERRUPTABLE;
+            this->streamFlagsAndLoopCount[3] &= ~FLAG_SOUND_UNINTERRUPTABLE;
+            this->streamFlagsAndLoopCount[4] &= ~FLAG_SOUND_UNINTERRUPTABLE;
             // Strangely only produces matching code if not using "this"
             MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(enums::SND_STR_SPEECH_1);
             MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, DAT_SoundSystemState::ptr)(enums::SND_STR_SPEECH_2);

@@ -15,8 +15,8 @@ namespace UI {
         namespace EditorMapTypeQuickChange_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004ABEB0,
-                &OpenSHC::UI::MenuItems::EditorMapTypeQuickChange::MenuItemActionHandler_EditorMapTypeQuickChange_Main)
-            MenuItemActionHandler_EditorMapTypeQuickChange_Main;
+                &OpenSHC::UI::MenuItems::EditorMapTypeQuickChange::MenuItemActionHandler_EditorMapSettings_Main)
+            MenuItemActionHandler_EditorMapSettings_Main;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004AC040,
                 &OpenSHC::UI::MenuItems::EditorMapTypeQuickChange::MenuItemRenderFunction_EditorMapTypeQuickChange_Main)

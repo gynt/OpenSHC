@@ -1,7 +1,5 @@
-#include "../UnitsState.func.hpp"
-
 #include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
@@ -11,6 +9,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Units {
 
+        using OpenSHC::Map::Units::States::UnitState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x00533FC0
         void UnitsState::despawnUnreachableUnit(int unitID)
         {
@@ -18,20 +18,19 @@ namespace Map {
                 return;
             }
             int _unitType = this->units[unitID].unitType;
-            if (_unitType >= UT_LORD && _unitType <= UT_JESTER) {
+            if (_unitType >= 0x37 && _unitType <= 0x39) {
                 return;
             }
-            if ((DAT_TileMapState::instance.LogicLayer[this->units[unitID].tile] & LogicHelpers::L_WALL_OR_GATEHOUSE)
-                == 0) {
+            if ((DAT_TileMapState::instance.LogicLayer[this->units[unitID].tile] & 0x100U) == 0) {
                 return;
             }
-            if (MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::someBinaryAlgFunctionPathFinding,
+            if (MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::isUnitStrandedOnWallsOrKeep,
                     DAT_PathFindingState::ptr)(unitID)
                 == 0) {
                 return;
             }
             this->units[unitID].state.generic = OpenSHC::Map::Units::States::US_DISAPPEAR;
-            this->units[unitID].disappearFadeAlphaCountdown = 0;
+            this->units[unitID].fadeLevel = 0;
         }
 
     }
