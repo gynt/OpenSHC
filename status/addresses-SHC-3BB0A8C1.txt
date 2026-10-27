@@ -30173,7 +30173,7 @@ SHC_3BB0A8C1_0x004BCBA0 | 39.9% | Style pass, asm differs
 
 SHC_3BB0A8C1_0x004BCEC0 | 86.2% | comparison operand order
 
-SHC_3BB0A8C1_0x004BD0F0 | 87.5% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x004BD0F0 | 91.7% | if/else
 
 SHC_3BB0A8C1_0x004BD1B0 | 29.6% | 32 gotos still to remove
 
