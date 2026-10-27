@@ -21,7 +21,22 @@ operator flip. Confirm with `reccmp_report.py --run cmp` as usual and revert eve
 that gained on quick_diff lost on reccmp.
 
 usage:
-  swaparms.py [FILE.cpp...]
+  swaparms.py [--structural] [FILE.cpp...]
+
+`--structural` scores with `structural_diff.py --score` (minimise `delta`, then maximise
+`kind`) instead of quick_diff's line ratio. It sounds like the better gate - a swap moves
+every later instruction, which quick_diff's line diff punishes and `delta`'s mnemonic census
+does not - and it is **measurably worse**: over the 51 UI/MenuItems functions whose
+`structural_diff.py` report carries a POLARITY block it kept 22 swaps in 17 files, and on
+reccmp 24 functions came out WORSE and one better by 0.1 (`InGameMenu_MainButtons` 86.3% ->
+72.2%, `ReturnToBuildMenu` 75.2% -> 68.4%). The reason is that `delta` is a histogram: an arm
+swap barely changes which mnemonics are emitted, so a swap that lowers `delta` by one is
+mostly being rewarded for noise while it scrambles the register assignment. Prefer the default
+quick_diff gate, and keep this one for a transform that really does change the instruction mix.
+
+`structural_diff.py NAME` is still worth reading first - its POLARITY block names every branch
+where the original falls through and we jump, including the ones written as an early return
+with no `else` for `sites()` to match - but a located site is a candidate, not a win.
 """
 import io
 import os
@@ -75,7 +90,31 @@ def swapped(s, site):
             + s[b_close + 1:])
 
 
+STRUCTURAL = False
+
+
 def score(path):
+    """A number to maximise. quick_diff's line ratio by default; with --structural, the
+    structural objective from structural_diff.py - `-delta` first, then `kind`.
+
+    The structural score is the better gate when a transform can change the function's length,
+    because `delta` counts mismatched mnemonics instead of diffing lines: quick_diff punishes
+    every shifted instruction, which is why it rated the arm swap that took VideoOptions_Main
+    4.3 points on reccmp at +0.0002. `structural_diff.py NAME` also *locates* the sites worth
+    trying - its POLARITY block names every branch where the original falls through and we
+    jump, which is exactly this transform, and it finds the ones written as an early return
+    with no `else` for `sites()` to match.
+    """
+    if STRUCTURAL:
+        name = os.path.basename(path)[:-4]
+        r = subprocess.run([sys.executable, os.path.join(BATCH, "structural_diff.py"),
+                            name, "--score"], capture_output=True, text=True)
+        out = r.stdout.strip()
+        m = re.search(r"^(\d+\.\d+) (\d+)$", out.splitlines()[-1]) if out else None
+        if m is None:
+            return None
+        # delta dominates; `kind` only breaks ties between two orders of the same mnemonics
+        return -int(m.group(2)) + float(m.group(1)) / 1000.0
     r = subprocess.run([sys.executable, os.path.join(BATCH, "quick_diff.py"), path],
                        capture_output=True, text=True)
     m = re.search(r"ratio (\d+\.\d+)", r.stdout)
@@ -83,7 +122,9 @@ def score(path):
 
 
 def main():
-    files = sys.argv[1:] or [str(p) for p in common.list_files()]
+    global STRUCTURAL
+    STRUCTURAL = "--structural" in sys.argv[1:]
+    files = [a for a in sys.argv[1:] if not a.startswith("--")] or [str(p) for p in common.list_files()]
     kept = tried = 0
     for path in files:
         text = io.open(path, encoding="utf-8", newline="").read()
