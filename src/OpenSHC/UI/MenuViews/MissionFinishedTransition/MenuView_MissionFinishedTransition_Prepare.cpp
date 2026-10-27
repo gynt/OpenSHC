@@ -68,7 +68,7 @@ namespace UI {
             DWORD DVar2;
             int iVar3;
             int xPos;
-            char cVar4;
+            int cVar4;
             char* pcVar5;
             char local_104[256];
             DVar2 = timeGetTime();
@@ -141,30 +141,33 @@ namespace UI {
                     == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
                     goto LAB_004e1cdd;
             }
-            cVar4 = DAT_GameState::instance.mapAndTime.playerIsAlive[1] != 0;
+            cVar4 = 0;
+            if (DAT_GameState::instance.mapAndTime.playerIsAlive[1] != 0) {
+                cVar4 = 1;
+            }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[2] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[3] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[4] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[5] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[6] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[7] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[8] != 0) {
-                cVar4 = cVar4 + '\x01';
+                cVar4 = cVar4 + 1;
             }
             if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)
-                || (cVar4 != '\0')) {
+                || (cVar4 != 0)) {
                 if ((int)SEC_RNG::instance.currentNumber1 % 3 == 0) {
                     /*
                       "We are victorious sire!"
