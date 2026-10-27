@@ -79,10 +79,10 @@ namespace UI {
                             iVar3 = iVar3 + 5;
                         } while (iVar1 < 10);
                         if (iVar4 == -1) {
+                            DWORD_00b98410::instance = DVar2;
                             iVar4 = DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                         .keep.id;
-                            DWORD_00b98410::instance = DVar2;
                             if (iVar4 != 0) {
                                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnCoordinate,
                                     DAT_ViewportRenderState::ptr)(
