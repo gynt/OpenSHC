@@ -86,7 +86,7 @@ namespace UI {
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         int iVar3 = _alivePlayerCount * 0x1e - 6;
         iVar3 = iVar3 + (0x1d - (iVar3 + 0x1d) % 0x1e);
-        iVar4 = posY + (-0x1c - (int)((uint)iVar3 / 2));
+        iVar4 = posY + (-0x1c - iVar3 / 2);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
             DAT_PencilRenderCore::ptr)(posX + -0x108, iVar4 + -0x13, 0x210, iVar3 + 0x60);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
