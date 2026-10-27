@@ -427,6 +427,37 @@ Diff patterns that were reliable (more in the cheat sheet):
   readable off the diff and has to be searched. And a second pass finds nothing: after the first
   sweep the only moves left were the four that had already measured as exact ties, so the search
   reaches a local optimum in one pass and re-running it is wasted time.
+- **Triage before picking a target: `structural_diff.py --all`, and read
+  `tools/compiler-internals/finding-mismatches.md` first.** That walkthrough and the tools it
+  describes came from `upstream/docs/msvc-stack-slot-order`, which is a *branch*, not a path.
+  The order of work is frame (`slot_map.py`), then instruction mix (`structural_diff.py`), then
+  nothing - registers follow from the first two, and chasing them directly does not pay. Over the
+  201 `UI/MenuItems` functions `--all` classifies 157 `mix`, 16 `order` and **22 `allocation`**,
+  and that last group is the useful part: same instructions in the same order, so no source change
+  can move them and they should be left alone (`RankingGames_Main` 97.6%,
+  `SaveMap_InputTextDisplay` 98.1%, `EditScenario_EventAndInvasionList` 96.4%,
+  `OptionsMenu_SubOptionsButtons` 97.8% and 18 more). `delta 0` with a percentage below 100 means
+  the cause is outside the function - the build, a header, a resolver - and a *tie* across
+  unrelated functions says how far outside.
+- **`structural_diff.py`'s POLARITY block locates the arm-order lever instead of searching for
+  it.** It names every branch where the original takes `je` and we take `jne` over the same
+  compare - 94 sites over 51 `UI/MenuItems` functions - including the ones the decompiler wrote as
+  an early return with no `else`, which `swaparms.py`'s pattern cannot match. A located site is a
+  candidate and nothing more: gating the sweep on the structural score instead of `quick_diff`
+  kept 22 swaps and reccmp then made **24 functions worse and one better by 0.1**
+  (`InGameMenu_MainButtons` 86.3% -> 72.2%). `delta` is a mnemonic histogram and an arm swap
+  barely changes which mnemonics are emitted, so it rewards noise while the allocation scrambles.
+  Keep the `quick_diff` gate for swaps; reccmp is the only arbiter.
+- **Both original-stream extractors used to stop at the first `ret` after a switch dispatch.** A
+  `jmp dword ptr [reg*4 + TABLE]` names no target in its operands, so every case arm was invisible
+  and the original read as a fragment: `MenuItemActionHandler_General_CreateEventCallbackFunction`
+  came out 20 instructions of 663, which is why `quick_diff.py` could never triage it and why its
+  ratio was worthless as a gate on *any* jump-table function - it was comparing our whole function
+  against the dispatch prologue. `orig_body.find_end` and `quick_diff.orig` now read the table.
+  Six functions were affected; `structural_diff --all`'s verdicts were otherwise unchanged. The
+  heuristic still fails where a function's arms end before a *later* function's table (it then
+  walks on and returns nothing, as on `QueueCommandCallback` at `0x443a30`), which is what
+  `--end 0xADDR` is for.
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
