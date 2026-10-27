@@ -50,7 +50,7 @@ namespace UI {
         undefined4 pendingStreamVolume3; // 0x0000004C length: 4
         undefined4 menuCursorType; // 0x00000050 length: 4
         undefined4 DAT_GenieVoiceActiveMenuVar; // 0x00000054 length: 4
-        undefined4 DAT_MenuOptionsActionParameter; // 0x00000058 length: 4
+        int DAT_MenuOptionsActionParameter; // 0x00000058 length: 4
         MenuModalTypeInt currentModalDialog; // 0x0000005C length: 4
         MenuModalTypeInt modalDialog_2; // 0x00000060 length: 4
         MenuModalTypeInt modalDialog_3; // 0x00000064 length: 4

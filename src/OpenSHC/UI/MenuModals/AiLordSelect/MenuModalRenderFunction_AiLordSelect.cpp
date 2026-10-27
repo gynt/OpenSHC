@@ -29,68 +29,42 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004B19E0
         void AiLordSelect::MenuModalRenderFunction_AiLordSelect(int x, int y, int width, int height)
         {
-            int _textAddress;
-            char* text;
-            int yPos;
-            int maxWidth;
-            BGR24 color;
-            int iVar1;
-            uint color_00;
-            BOOLEnum keepOffsetX;
-            int fontSize;
-            int iVar2;
-            int blendStrength;
-            int _xParam;
-            int _yParam;
-            uint _shift;
-            undefined* _color;
-            uint _fontSize;
-            yPos = y + 0x6e;
-            if (DAT_GameCore::instance.numOfAIsWithCastleUnk < 9) {
-                iVar1 = 0x13;
+            int yPos = y + 0x6e;
+            if (DAT_GameCore::instance.numOfAIsWithCastleUnk <= 8) {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                    DAT_TextureRenderCoreObject::ptr)(0x13, x, y);
             } else {
-                iVar1 = 0x14;
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
+                    DAT_TextureRenderCoreObject::ptr)(0x14, x, y);
             }
-            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
-                DAT_TextureRenderCoreObject::ptr)(iVar1, x, y);
             if (8 < DAT_GameCore::instance.numOfAIsWithCastleUnk) {
-                yPos = y + 0xba;
+                yPos = yPos + 0x4c;
             }
-            if (DAT_MouseState::instance.rightClickStart) {
+            if (DAT_MouseState::instance.rightClickStart != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                     DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_NONE, FALSE);
             }
-            iVar1 = x + 0x18;
-            iVar2 = 0;
-            if (!DAT_LobbyAddAICurrentlyHoveredAI::instance) {
-                maxWidth = 450;
-                iVar2 = 401;
+            int textX = x + 0x18;
+            if (DAT_LobbyAddAICurrentlyHoveredAI::instance == 0) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 401),
+                    textX, yPos, 450, 0xccfaff, 0x12, 0);
             } else {
-                keepOffsetX = FALSE;
-                _fontSize = 0x11;
-                color = 0xccfaff;
-                _shift = 0;
-                _xParam = iVar1;
-                _yParam = yPos;
-                _textAddress = (int)MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
-                    (int)((int)(DAT_LobbyAddAICurrentlyHoveredAI::instance * 9 + 0xe6)));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    (char*)_textAddress, _xParam, _yParam, (TextAlignment)((int)(_shift)), color,
-                    (int)((int)(_fontSize)), keepOffsetX, iVar2);
-                iVar2 = DAT_LobbyAddAICurrentlyHoveredAI::instance + 384;
-                maxWidth = 0x236;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
+                        DAT_LobbyAddAICurrentlyHoveredAI::instance * 9 + 0xe6),
+                    textX, yPos, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
                 yPos = yPos + 0x1e;
+                int const descOffset = DAT_LobbyAddAICurrentlyHoveredAI::instance + 384;
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, descOffset),
+                    textX, yPos, 0x236, 0xccfaff, 0x12, 0);
             }
-            blendStrength = 0;
-            fontSize = 0x12;
-            color_00 = 0xccfaff;
-            text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, iVar2);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                text, iVar1, yPos, maxWidth, color_00, fontSize, blendStrength);
         }
-
     }
 }
 }

@@ -24,32 +24,20 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004266E0
         void UnusedSetName::MenuModalRenderFunction_UnusedSetName(int x, int y, int width, int height)
         {
-            int iVar1;
-            char* textAddress;
             int yParam;
-            TextAlignment alignment;
-            BGR24 color;
-            int fontSize;
-            BOOLEnum keepOffsetX;
-            int blendStrength;
-            iVar1 = (width + -400) / 2;
+            int iVar1 = (width + -400) / 2;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                 iVar1 + x, y + 10, (x - iVar1) + width, y + 0x3c, OpenSHC::UI::Enums::RBERL_STRONG);
-            blendStrength = 0;
-            keepOffsetX = FALSE;
-            fontSize = 0xf;
-            color = 0xccfaff;
-            alignment = OpenSHC::Text::TTA_CENTER;
             yParam = y + 0xf;
             iVar1 = width / 2 + x;
             /*
               added by script: "Enter Your Title"
              */
-            textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 6);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                textAddress, iVar1, yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 6),
+                iVar1, yParam, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0xf, FALSE, 0);
         }
 
     }

@@ -25,50 +25,43 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC310
         void SendMapTo::MenuModalRenderFunction_SendMapTo(int x, int y, int width, int height)
         {
-            int iVar1;
-            int iVar2;
-            int local_10;
-            char (*local_c)[250];
-            short* local_8;
             /*
               added by script: "Send Map To"
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6a, x, y, width, height);
-            iVar1 = 0;
-            local_c = DAT_GameSynchronyState::instance.DAT_PlayerNames;
-            local_8 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
-            local_10 = 0;
+            int rowOffsetY = 0;
+            int playerByteOffset = 0;
+            char (*playerName)[250] = DAT_GameSynchronyState::instance.DAT_PlayerNames + 1;
+            short* transferState = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
             do {
-                local_c = local_c + 1;
-                if (*local_8 == 1) {
+                if (*transferState == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        *local_c, x + 0x14, iVar1 + 0x50 + y, OpenSHC::Text::TTA_LEFT,
-                        (BGR24)((int)(DAT_RenderingDefinedData::instance.ColorArray[*(
-                            int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_10 + 4)])),
+                        *playerName, x + 0x14, rowOffsetY + 0x50 + y, OpenSHC::Text::TTA_LEFT,
+                        DAT_RenderingDefinedData::instance.ColorArray[*(
+                            int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + playerByteOffset + 4)],
                         0x11, FALSE, 0);
-                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
-                        iVar2 = width / 2;
+                    if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState != 0) {
+                        int barX = width / 2 + x;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                            DAT_PencilRenderCore::ptr)(iVar2 + x + -1, iVar1 + 0x52 + y, width + -0x13 + x,
-                            iVar1 + 99 + y, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                            DAT_PencilRenderCore::ptr)(barX + -1, rowOffsetY + 0x52 + y, width + -0x13 + x,
+                            rowOffsetY + 99 + y, (ushort)(COL_BLACK::instance.shortValue));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                            DAT_PencilRenderCore::ptr)(iVar2 + x, iVar1 + 0x53 + y,
-                            ((iVar2 + -0x14)
-                                * *(int*)((int)DAT_GameSynchronyState::instance.mapSendingByteBufferAddress + local_10
-                                    + 4))
+                            DAT_PencilRenderCore::ptr)(barX, rowOffsetY + 0x53 + y,
+                            ((width / 2 + -0x14)
+                                * *(int*)((int)DAT_GameSynchronyState::instance.mapSendingByteBufferAddress
+                                    + playerByteOffset + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
-                                + iVar2 + x,
-                            iVar1 + 0x62 + y, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                                + width / 2 + x,
+                            rowOffsetY + 0x62 + y, (ushort)(COL_DARK_LIME::instance.shortValue));
                     }
-                    iVar1 = iVar1 + 0x1e;
+                    rowOffsetY = rowOffsetY + 0x1e;
                 }
-                local_10 = local_10 + 4;
-                local_8 = local_8 + 1;
-            } while ((int)local_8 < 0x1a27512);
-            return;
+                playerName = playerName + 1;
+                playerByteOffset = playerByteOffset + 4;
+                transferState = transferState + 1;
+            } while ((int)transferState < (int)&DAT_GameSynchronyState::instance + 0x109daa);
         }
-
     }
 }
 }

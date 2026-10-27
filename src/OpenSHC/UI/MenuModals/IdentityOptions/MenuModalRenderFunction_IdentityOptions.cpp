@@ -18,73 +18,54 @@ namespace OpenSHC {
 namespace UI {
     namespace MenuModals {
 
-        using DE::SHCDE::eGM;
-        using DE::SHCDE::eTextSections;
+        using OpenSHC::DE::SHCDE::eGM;
+        using OpenSHC::DE::SHCDE::eTextSections;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00491AC0
         void IdentityOptions::MenuModalRenderFunction_IdentityOptions(int x, int y, int width, int height)
         {
-            char* pcVar2;
-            int iVar3;
-            uint uVar4;
-            int xPos;
-            int iVar5;
-            int iVar6;
-            uint uVar7;
-            int iVar8;
-            int blendStrength;
-            DWORD DVar1 = timeGetTime();
-            uVar4 = (DVar1 - TIME_IdentityOptions::instance) / 100;
-            if (0xf < uVar4) {
-                uVar4 = 0;
+            uint animFrame = (timeGetTime() - TIME_IdentityOptions::instance) / 100;
+            if (0xf < animFrame) {
+                animFrame = 0;
                 TIME_IdentityOptions::instance = timeGetTime();
             }
             /*
               added by script: "Set-up Identity"
              */
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner, DAT_PencilRenderCore::ptr)(
-                0x4a, 0x2d, x, y, width, height);
-            blendStrength = 0;
-            iVar8 = 0x12;
-            uVar7 = 0xccfaff;
-            iVar5 = 0xa5;
-            iVar3 = y + 0x6e;
-            xPos = x + 0x136;
-            iVar6 = xPos;
+            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
+                DAT_PencilRenderCore::ptr)(0x4a, 0x2d, x, y, width, height);
+            int const xPos = x + 0x136;
             /*
               added by script: "Crusader or Arabic Lord"
              */
-            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0x32);
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar6, iVar3, iVar5, uVar7, iVar8, blendStrength);
-            iVar8 = 0;
-            iVar5 = 0x12;
-            uVar7 = 0xccfaff;
-            iVar6 = 0xa5;
-            iVar3 = y + 0xd2;
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0x32),
+                xPos, y + 0x6e, 0xa5, 0xccfaff, 0x12, 0);
             /*
               added by script: "Choose Portrait"
              */
-            pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_GAME_OPTIONS, 0x33);
-            MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                pcVar2, xPos, iVar3, iVar6, uVar7, iVar5, iVar8);
-            iVar3 = 100;
-            DAT_CurrentlyRenderedSpriteID::instance = 100;
-            if (DAT_GameCore::instance.selectedLordTypeUnk) {
-                iVar3 = 0xcd;
-                DAT_CurrentlyRenderedSpriteID::instance = 0xcd;
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, 0x33),
+                xPos, y + 0xd2, 0xa5, 0xccfaff, 0x12, 0);
+            int spriteID = 100;
+            DAT_CurrentlyRenderedSpriteID::instance = spriteID;
+            if (DAT_GameCore::instance.selectedLordTypeUnk != 0) {
+                spriteID = 0xcd;
+                DAT_CurrentlyRenderedSpriteID::instance = spriteID;
             }
             DAT_RenderedUnitOwner::instance = 1;
-            if (iVar3 == 100) {
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    DE::SHCDE::GM_BODY_LORD, (int)(uVar4 * 8 + 0x83), x + 0x73, y + 0x4b);
-                iVar3 = DAT_CurrentlyRenderedSpriteID::instance;
+            if (spriteID == 100) {
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    OpenSHC::DE::SHCDE::GM_BODY_LORD, (int)(animFrame * 8 + 0x83), x + 0x73, y + 0x4b);
+                spriteID = DAT_CurrentlyRenderedSpriteID::instance;
             }
-            if (iVar3 == 0xcd) {
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    DE::SHCDE::GM_BODY_ARABIC_LORD, (int)(uVar4 * 8 + 5), x + 0x78, y + 0x4b);
+            if (spriteID == 0xcd) {
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                    OpenSHC::DE::SHCDE::GM_BODY_ARABIC_LORD, (int)(animFrame * 8 + 5), x + 0x78, y + 0x4b);
             }
         }
 
