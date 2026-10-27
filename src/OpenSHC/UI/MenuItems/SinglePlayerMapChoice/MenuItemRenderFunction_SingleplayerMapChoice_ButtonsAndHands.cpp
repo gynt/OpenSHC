@@ -193,8 +193,8 @@ namespace UI {
                 iVar1 = iVar1 + (iVar1 >> 0x1f & 0x1fU);
                 uVar2 = 0xccfaff;
             LAB_0042d4c2:
-                iVar1 = (iVar1 >> 5) + 0x20;
                 yParam = DAT_ButtonY::instance + 7;
+                iVar1 = (iVar1 >> 5) + 0x20;
             LAB_0042d4cd:
                 /*
                   "Attacking"
