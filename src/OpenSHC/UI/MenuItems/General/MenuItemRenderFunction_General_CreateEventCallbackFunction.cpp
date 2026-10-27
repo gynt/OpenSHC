@@ -36,8 +36,8 @@ namespace UI {
         {
             int yParam;
             int iVar2;
-            iVar2 = 2;
             int iVar1 = -1;
+            iVar2 = 2;
             switch (param_1) {
             case 0x5b:
             case 0xdd:
