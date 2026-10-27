@@ -39,7 +39,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00448D40
         void SingleplayerMapChoice::MenuView_SingleplayerMapChoice_Prepare()
         {
-            char* tgxFileName;
             Menu_SingleplayerMapChoice::instance.thousand = 0;
             DAT_MenuTextInputState::instance.lastListClickTime = 0;
             DAT_MenuTextInputState::instance.lastClickedListIndex = 0xffffffff;

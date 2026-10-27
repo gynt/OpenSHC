@@ -26,8 +26,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004398B0
         void BuildingAndStatusMenu::MenuView_BuildingAndStatusMenu_DoInitial()
         {
-            int iVar2;
-            int iVar3;
             int iVar5;
             int y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {

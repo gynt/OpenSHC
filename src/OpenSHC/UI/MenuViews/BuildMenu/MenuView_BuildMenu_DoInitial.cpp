@@ -404,7 +404,8 @@ namespace UI {
                 if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_MENU_HIDDEN) {}
                 if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == (OpenSHC::UI::Enums::BuildMenuTabType)0x3e) {}
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
-                    iVar2 = 9;
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
+                        DAT_TextureRenderCoreObject::ptr)(9);
                 } else if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setMenuTabIndexUnk,
                         DAT_TextureRenderCoreObject::ptr)(5);

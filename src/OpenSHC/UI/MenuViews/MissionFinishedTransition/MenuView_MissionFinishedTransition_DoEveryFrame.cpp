@@ -175,7 +175,8 @@ namespace UI {
             }
             if (DAT_GameCore::instance.skipStoreSKMasters == 0) {
                 if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
-                    iVar3 = DAT_GameCore::instance.extremeTrailProgress + 0x51;
+                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
+                        DAT_GameCore::instance.extremeTrailProgress + 0x51);
                 } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(
                         DAT_GameCore::instance.warchestTrailProgress + 0x33);
