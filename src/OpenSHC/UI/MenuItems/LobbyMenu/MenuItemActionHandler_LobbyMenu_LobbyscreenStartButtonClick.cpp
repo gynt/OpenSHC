@@ -444,7 +444,7 @@ namespace UI {
             case -0x65:
                 iVar3 = DAT_00b95b74::instance + -0x72;
                 if ((int)DAT_00b960f4::instance < iVar3
-                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, iVar3 < (int)DAT_00b960f4::instance)) {
+                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe,(int)DAT_00b960f4::instance > iVar3)) {
                     DAT_00b960f4::instance = iVar3;
                 }
                 break;
