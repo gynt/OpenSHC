@@ -23415,7 +23415,7 @@ SHC_3BB0A8C1_0x004917C0 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x00491810 | 0.0% | Pending
 
-SHC_3BB0A8C1_0x00491840 | 61.7% | Reimplemented, asm differs
+SHC_3BB0A8C1_0x00491840 | 62.5% | dead else return was a bug
 
 SHC_3BB0A8C1_0x00491A30 | 95.7% | Reimplemented, asm differs
 
