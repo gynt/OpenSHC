@@ -589,7 +589,7 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKMASTERS, 9),
                         iVar4, iVar2, TVar7, BVar10, iVar9, BVar13, iVar8);
                 }
-                if (DAT_00ed27a0::instance < 0x1e) {
+                if ((int)DAT_00ed27a0::instance < 0x1e) {
                     iVar8 = 0;
                     BVar13 = FALSE;
                     iVar9 = 0x11;
