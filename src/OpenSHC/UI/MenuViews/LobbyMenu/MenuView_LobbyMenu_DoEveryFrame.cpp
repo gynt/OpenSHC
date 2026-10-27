@@ -236,14 +236,12 @@ namespace UI {
                 goto LAB_00448a80;
             if (30000 < (int)(MVar2 - INT_00b960fc::instance)) {
                 INT_00b960fc::instance = MVar2;
-                if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                    if (INT_00b95958::instance == 0) {
-                        MACRO_CALL(OpenSHC::UI::Rendering_Func::DisplayMapDescriptionAndAllocatePlayersToSlots)();
-                    }
-                } else {
+                if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
+                } else if (INT_00b95958::instance == 0) {
+                    MACRO_CALL(OpenSHC::UI::Rendering_Func::DisplayMapDescriptionAndAllocatePlayersToSlots)();
                 }
             }
             if (DAT_GameSynchronyState::instance.reparseMaps != FALSE) {
@@ -254,9 +252,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.reparseMaps = FALSE;
                 MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::mapNames_syncLoadedMapNames, DAT_ResourceManager::ptr)();
-                if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected == -1) {
-                    DAT_MapNameCache::instance[0] = '\0';
-                } else {
+                if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1) {
                     pcVar6 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -268,6 +264,8 @@ namespace UI {
                         pcVar6 = pcVar6 + 1;
                         pcVar11 = pcVar11 + 1;
                     } while (cVar1 != '\0');
+                } else {
+                    DAT_MapNameCache::instance[0] = '\0';
                 }
                 iVar12 = 0;
                 _mapID = 0;
