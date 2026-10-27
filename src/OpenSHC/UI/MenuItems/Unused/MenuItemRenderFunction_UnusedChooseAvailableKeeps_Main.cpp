@@ -64,16 +64,16 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
-                            (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
-                            (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
-                    } else {
+                    if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
                             (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, FALSE);
+                    } else {
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                            OpenSHC::DE::SHCDE::TEXT_MAPEDIT, param_1,
+                            (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonY::instance + 10), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x11, FALSE);
                     }
                 }
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
