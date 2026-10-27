@@ -59,7 +59,18 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     backgroundColor = 0;
                     foregroundColor = 0xccfaff;
-                    goto LAB_00491f8b;
+                    iVar7 = 0;
+                    BVar6 = FALSE;
+                    iVar5 = 0x12;
+                    TVar4 = OpenSHC::Text::TTA_CENTER;
+                    iVar3 = DAT_ButtonY::instance + 7;
+                    iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                        iVar1, iVar3, TVar4, foregroundColor, backgroundColor, iVar5, BVar6, iVar7);
+                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -89,7 +100,6 @@ namespace UI {
                 backgroundColor = 0;
             }
             foregroundColor = 0xc2f0eb;
-        LAB_00491f8b:
             iVar7 = 0;
             BVar6 = FALSE;
             iVar5 = 0x12;
