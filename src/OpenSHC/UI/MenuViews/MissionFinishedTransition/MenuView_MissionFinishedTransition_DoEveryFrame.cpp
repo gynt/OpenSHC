@@ -196,8 +196,14 @@ namespace UI {
                             DAT_GameCore::instance.extremeTrailProgress
                                 = DAT_GameCore::instance.extremeTrailProgress + 1;
                         }
-                        if (sVar1 == 0 || DAT_GameCore::instance.extremeTrailProgress != 0x13 || dVar4 != 0x13)
+                        if (sVar1 == 0)
                             goto LAB_004dc7be;
+                        if (DAT_GameCore::instance.extremeTrailProgress != 0x13)
+                            goto LAB_004dc7be;
+                        if (dVar4 != DAT_GameCore::instance.extremeTrailProgress)
+                            goto LAB_004dc7be;
+                        menuID = OpenSHC::UI::Enums::MVT_CRUSADE_ENDSCREEN;
+                        goto LAB_004dc9bd;
                     } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                     LAB_004dc7d9:
                         sVar1 = DAT_GameState::instance.mapAndTime
@@ -222,8 +228,14 @@ namespace UI {
                             DAT_GameCore::instance.warchestTrailProgress
                                 = DAT_GameCore::instance.warchestTrailProgress + 1;
                         }
-                        if (sVar1 == 0 || DAT_GameCore::instance.warchestTrailProgress != 0x1d || dVar4 != 0x1d)
+                        if (sVar1 == 0)
                             goto LAB_004dc826;
+                        if (DAT_GameCore::instance.warchestTrailProgress != 0x1d)
+                            goto LAB_004dc826;
+                        if (dVar4 != DAT_GameCore::instance.warchestTrailProgress)
+                            goto LAB_004dc826;
+                        menuID = OpenSHC::UI::Enums::MVT_CRUSADE_ENDSCREEN;
+                        goto LAB_004dc9bd;
                     } else {
                         sVar1 = DAT_GameState::instance.mapAndTime
                                     .playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID];
@@ -247,68 +259,74 @@ namespace UI {
                             DAT_GameCore::instance.skirmishTrailProgress
                                 = DAT_GameCore::instance.skirmishTrailProgress + 1;
                         }
-                        if (sVar1 == 0 || DAT_GameCore::instance.skirmishTrailProgress != 0x31 || dVar4 != 0x31)
+                        if (sVar1 == 0)
                             goto LAB_004dc88c;
+                        if (DAT_GameCore::instance.skirmishTrailProgress != 0x31)
+                            goto LAB_004dc88c;
+                        if (dVar4 != DAT_GameCore::instance.skirmishTrailProgress)
+                            goto LAB_004dc88c;
+                        menuID = OpenSHC::UI::Enums::MVT_CRUSADE_ENDSCREEN;
+                        goto LAB_004dc9bd;
                     }
-                    menuID = OpenSHC::UI::Enums::MVT_CRUSADE_ENDSCREEN;
                 } else {
                     if (DAT_GameSynchronyState::instance.currentGameMode
-                        != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER) {
-                        DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
-                        MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                                MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                        if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                            DAT_GameCore::instance.skipStoreSKMasters = 0;
-                            return;
-                        }
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Game::Skirmish::SkirmishLobbySetupStructure_Func::restoreSkirmishLobbySetup,
-                            SEC_SkirmishLobbySetupStructure::ptr)();
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_SHARE_LOBBY_STATE);
+                        == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER) {
+                        DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER;
+                        menuID = OpenSHC::UI::Enums::MVT_RANKING_GAMES;
+                        goto LAB_004dc9bd;
+                    }
+                    DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
+                    MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                            MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
+                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
-                    DAT_GameSynchronyState::instance.currentGameMode = OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER;
-                    menuID = OpenSHC::UI::Enums::MVT_RANKING_GAMES;
-                    goto LAB_004dc9bd;
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::Game::Skirmish::SkirmishLobbySetupStructure_Func::restoreSkirmishLobbySetup,
+                        SEC_SkirmishLobbySetupStructure::ptr)();
+                    MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                        DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_HOST_SHARE_LOBBY_STATE);
+                    DAT_GameCore::instance.skipStoreSKMasters = 0;
+                    return;
                 }
             } else {
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
                     DAT_GameCore::instance.gameSuspended = 0;
-                    if (DAT_GameCore::instance.missionNumber1to20
-                        <= (int)(DAT_GameCore::instance.historicCampaignNumber * 5)) {
+                    if ((int)(DAT_GameCore::instance.historicCampaignNumber * 5)
+                        < DAT_GameCore::instance.missionNumber1to20) {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_PICTURE, 0);
+                            OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_OUTRO, 0);
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_HISTORIC_CAMPAIGN_OUTRO, 0);
+                        OpenSHC::UI::Enums::MVT_HISTORIC_MISSION_PICTURE, 0);
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
                     return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1) {
                     DAT_GameCore::instance.gameSuspended = 0;
-                    if (DAT_GameCore::instance.missionNumber1to20 <= 0x25) {
+                    if (0x25 < DAT_GameCore::instance.missionNumber1to20) {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                            OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
+                            OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                        OpenSHC::UI::Enums::MVT_MAIN_MENU, 0);
+                        OpenSHC::UI::Enums::MVT_SCENARIO_DESCRIPTION, 0);
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
                     return;
                 }
                 if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk) {
-                    if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == OpenSHC::Map::MT_ECONOMIC) {
-                        MACRO_CALL(OpenSHC::UI::MenuItems::MainMenu_Func::MenuItemActionHandler_MainMenu_Main)(3);
+                    if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != OpenSHC::Map::MT_ECONOMIC) {
+                        MACRO_CALL(
+                            OpenSHC::UI::MenuItems::CustomScenarios_Func::MenuItemActionHandler_CustomScenarios_Main)(
+                            4);
                         DAT_GameCore::instance.skipStoreSKMasters = 0;
                         return;
                     }
-                    MACRO_CALL(
-                        OpenSHC::UI::MenuItems::CustomScenarios_Func::MenuItemActionHandler_CustomScenarios_Main)(4);
+                    MACRO_CALL(OpenSHC::UI::MenuItems::MainMenu_Func::MenuItemActionHandler_MainMenu_Main)(3);
                     DAT_GameCore::instance.skipStoreSKMasters = 0;
                     return;
                 }
