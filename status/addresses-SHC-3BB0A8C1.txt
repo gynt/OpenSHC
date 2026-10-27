@@ -11145,7 +11145,7 @@ SHC_3BB0A8C1_0x00434300 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x00434340 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x00434350 | 65.8% | x <= 0 as the asm shows
+SHC_3BB0A8C1_0x00434350 | 67.1% | if/else
 
 SHC_3BB0A8C1_0x004347F0 | 15.8% | Style pass, asm differs
 

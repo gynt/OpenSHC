@@ -188,7 +188,12 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::storeXYAndResetMouseState, DAT_MouseState::ptr)();
             }
-            if (DAT_MouseState::instance.rightClickStart == 0) {
+            if (DAT_MouseState::instance.rightClickStart != 0) {
+                if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_MOAT) {
+                    DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
+                }
+                DAT_GameCore::instance.field83_0x15c = 0;
+            } else {
                 if (DAT_MouseState::instance.rightClickStop != 0
                     && DAT_TileMapState::instance.currentMapperCommand == OpenSHC::Commands::M_MAPPER_MOAT
                     && DAT_GameCore::instance.field83_0x15c == 0) {
@@ -264,11 +269,6 @@ namespace UI {
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .stockpile.id;
                 }
-            } else {
-                if (DAT_TileMapState::instance.currentMapperCommand != OpenSHC::Commands::M_MAPPER_MOAT) {
-                    DAT_TileMapState::instance.currentMapperCommand = OpenSHC::Commands::M_MAPPER_NULL;
-                }
-                DAT_GameCore::instance.field83_0x15c = 0;
             }
         }
 
