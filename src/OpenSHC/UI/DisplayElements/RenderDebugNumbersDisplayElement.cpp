@@ -41,21 +41,18 @@ namespace UI {
         /*
           Maybe this is an enrolled loop? -TheRedDaemon
          */
-        _loopAddressByteCounter = 0;
+        int _loopIndex = 0;
         do {
-            _gameLoopDurationBufferSum = _gameLoopDurationBufferSum
-                + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter)
-                + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter + 4)
-                + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter + 8)
-                + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter + 0x10)
-                + *(int*)((int)DAT_GameLoopDurationBuffer::instance + _loopAddressByteCounter + 0xc);
-            _tickRateSum = _tickRateSum + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 0x10)
-                + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 0xc)
-                + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 8)
-                + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter + 4)
-                + *(int*)((int)DAT_TickRateBuffer::instance + _loopAddressByteCounter);
-            _loopAddressByteCounter = _loopAddressByteCounter + 0x14;
-        } while (_loopAddressByteCounter < 400);
+            _gameLoopDurationBufferSum = _gameLoopDurationBufferSum + DAT_GameLoopDurationBuffer::instance[_loopIndex]
+                + DAT_GameLoopDurationBuffer::instance[_loopIndex + 1]
+                + DAT_GameLoopDurationBuffer::instance[_loopIndex + 2]
+                + DAT_GameLoopDurationBuffer::instance[_loopIndex + 4]
+                + DAT_GameLoopDurationBuffer::instance[_loopIndex + 3];
+            _tickRateSum = _tickRateSum + DAT_TickRateBuffer::instance[_loopIndex + 4]
+                + DAT_TickRateBuffer::instance[_loopIndex + 3] + DAT_TickRateBuffer::instance[_loopIndex + 2]
+                + DAT_TickRateBuffer::instance[_loopIndex + 1] + DAT_TickRateBuffer::instance[_loopIndex];
+            _loopIndex = _loopIndex + 5;
+        } while (_loopIndex < 100);
         _averageMillisecLoopMain = _gameLoopDurationBufferSum / 100;
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
