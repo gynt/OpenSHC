@@ -40,8 +40,8 @@ namespace UI {
                     param_1 = param_1 + 10;
                 }
                 if (param_1 < 9) {
-                    INT_00df4244::instance = 0;
                     DAT_00df423c::instance = param_1;
+                    INT_00df4244::instance = 0;
                 }
             }
             if ((param_1 - 0xbU < 8) && (DAT_00df423c::instance != 0)) {
