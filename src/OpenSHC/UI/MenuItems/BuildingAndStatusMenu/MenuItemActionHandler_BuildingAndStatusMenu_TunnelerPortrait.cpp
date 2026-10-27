@@ -38,22 +38,7 @@ namespace UI {
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .tunnelersGuild.id)),
                     (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), 1);
-                if (iVar1 == 0) {
-                    if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .currentResources[0xf]
-                        < 0x1e) {
-                        /*
-                          "You do not have enough gold to train this unit"
-                         */
-                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "units_warning3.wav");
-                    }
-                    /*
-                      "Recruits needed sire"
-                     */
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "other_warning5.wav");
-                } else {
+                if (iVar1 != 0) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECRUIT_UNIT);
@@ -69,6 +54,21 @@ namespace UI {
                             "tunnel_s2.wav");
                         DWORD_00df336c::instance = timeGetTime();
                     }
+                } else {
+                    if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                            .currentResources[0xf]
+                        < 0x1e) {
+                        /*
+                          "You do not have enough gold to train this unit"
+                         */
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                            "units_warning3.wav");
+                    }
+                    /*
+                      "Recruits needed sire"
+                     */
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                        "other_warning5.wav");
                 }
             }
         }
