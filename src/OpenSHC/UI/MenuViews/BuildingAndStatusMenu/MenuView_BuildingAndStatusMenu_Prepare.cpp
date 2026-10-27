@@ -317,15 +317,13 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)("popularity_sketch.tgx");
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .popularity;
-                iVar6 = iVar5 >> 0x1f;
-                iVar7 = iVar5 / 100 + iVar6;
-                iVar5 = iVar7 - iVar6;
+                            .popularity
+                    / 100;
                 DAT_00b96108::instance = 1;
                 if (iVar5 == 100) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_POP_POPULARITY1);
-                } else if (iVar7 == iVar6) {
+                } else if (iVar5 == 0) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_POP_POPULARITY8);
                 } else if (iVar5 < 0x14) {
