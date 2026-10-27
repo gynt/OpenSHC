@@ -128,12 +128,12 @@ namespace UI {
                     if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
                         dVar3 = 0;
                         do {
-                            if (DAT_GameCore::instance.furthestSkirmishTrailMission < (int)dVar3) {
+                            if ((int)dVar3 > DAT_GameCore::instance.furthestSkirmishTrailMission) {
                                 return;
                             }
                             iVar1 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][0];
                             iVar2 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][1];
-                            if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -10 <= _clickY
+                            if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
                                 && _clickY <= iVar2 + 10) {
                             LAB_004d9190:
                                 DAT_GameCore::instance.extremeTrailProgress = iVar5;
@@ -156,7 +156,7 @@ namespace UI {
                                     && _clickY <= iVar2 + 10)
                                     goto LAB_004d9190;
                                 dVar4 = dVar4 + 1;
-                                if (30 < (int)dVar4) {
+                                if ((int)dVar4 > 30) {
                                     return;
                                 }
                             }
@@ -165,7 +165,7 @@ namespace UI {
                             while (iVar5 <= DAT_GameCore::instance.furthestExtremeTrailMission) {
                                 iVar1 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][0];
                                 iVar2 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][1];
-                                if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -10 <= _clickY
+                                if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
                                     && _clickY <= iVar2 + 10)
                                     goto LAB_004d9190;
                                 iVar5 = iVar5 + 1;
