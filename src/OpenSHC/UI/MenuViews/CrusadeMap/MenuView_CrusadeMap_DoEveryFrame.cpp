@@ -57,7 +57,7 @@ namespace UI {
             int iVar7;
             int iVar8;
             dword dVar9;
-            uint uVar10;
+            int uVar10;
             int iVar11;
             int iVar12;
             int iVar13;
@@ -66,7 +66,7 @@ namespace UI {
             BGR24 BVar17;
             eGM eVar18;
             BOOLEnum BVar19;
-            uint local_8;
+            int local_8;
             int* local_4;
             if ((BOOLEnum_00ed313c::instance & TRUE) == FALSE) {
                 BOOLEnum_00ed313c::instance = BOOLEnum_00ed313c::instance | TRUE;
@@ -81,22 +81,22 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
                     "ri_kick_player_01.wav");
             }
-            local_8 = (DVar3 - DWORD_00ed3138::instance) / 0x32;
-            if (0xf < (int)local_8) {
+            local_8 = (int)(DVar3 - DWORD_00ed3138::instance) / 0x32;
+            if (0xf < local_8) {
                 local_8 = 0;
                 DWORD_00ed3138::instance = timeGetTime();
             }
             iVar8 = (int)local_4;
             if (INT_00eb9b48::instance == 0) {
-                uVar10 = (DVar3 - DWORD_00ed27a8::instance) / 100;
-                if (21 < (int)uVar10) {
+                uVar10 = (int)(DVar3 - DWORD_00ed27a8::instance) / 100;
+                if (21 < uVar10) {
                     uVar10 = 0;
                     DWORD_00ed27a8::instance = timeGetTime();
                 }
                 iVar8 = DAT_MissionDefinedData::instance.field37_0x1314[uVar10];
             }
             if (0 < INT_00eb9b48::instance) {
-                iVar8 = ((DVar3 - DWORD_00ed27a8::instance) / 0x28);
+                iVar8 = ((int)(DVar3 - DWORD_00ed27a8::instance) / 0x28);
                 if (0x2c < iVar8) {
                     INT_00eb9b48::instance = 0;
                     DWORD_00ed27a8::instance = timeGetTime();
