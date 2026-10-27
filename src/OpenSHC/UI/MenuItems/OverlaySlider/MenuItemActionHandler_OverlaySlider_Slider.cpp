@@ -22,8 +22,8 @@ namespace UI {
                     *currentValue = DAT_MenuModalComposition2::instance.sliderValue;
                     return;
                 }
-                *minValue = DAT_MenuModalComposition2::instance.sliderMinimum;
                 *maxValue = DAT_MenuModalComposition2::instance.sliderMaximum;
+                *minValue = DAT_MenuModalComposition2::instance.sliderMinimum;
                 *currentValue = DAT_MenuModalComposition2::instance.sliderValue;
                 return;
             case 2:
