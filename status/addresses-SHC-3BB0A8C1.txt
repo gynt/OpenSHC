@@ -25989,7 +25989,7 @@ SHC_3BB0A8C1_0x004B1990 | 100.0% | Reimplemented
 
 SHC_3BB0A8C1_0x004B19E0 | 100.0% | Reimplemented
 
-SHC_3BB0A8C1_0x004B1AC0 | 60.9% | Style pass, asm differs
+SHC_3BB0A8C1_0x004B1AC0 | 70.2% | y kept in reg by orig
 
 SHC_3BB0A8C1_0x004B1C30 | 55.9% | Style pass, asm differs
 

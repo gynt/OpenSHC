@@ -27,10 +27,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004B1AC0
         void Roundtable::MenuModalRenderFunction_Roundtable(int x, int y, int width, int height)
         {
-            int gfxIndex;
             int* piVar3;
             int iVar4;
-            int blendStrengthUnk;
             int local_40[16];
             if (DAT_MouseState::instance.rightClickStart != 0) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
@@ -66,23 +64,17 @@ namespace UI {
                 if ((char)DAT_GameSynchronyState::instance.DAT_PlayerGroupArray[roundTablePlayer] > width) {
                     width = width + 1;
                     iVar2 = iVar2 + 1;
-                    if (iVar2 <= 1)
-                        goto LAB_004b1ba5;
-                    iVar2 = 0;
-                    blendStrengthUnk = 0x10;
-                    gfxIndex = iVar4 + 2;
-                } else {
-                LAB_004b1ba5:
-                    if (iVar2 == 0) {
-                        blendStrengthUnk = 0x10;
-                        gfxIndex = iVar4 + 2;
-                    } else {
-                        blendStrengthUnk = 0x14;
-                        gfxIndex = iVar4 + 2 + iVar2 * 8;
+                    if (1 < iVar2) {
+                        iVar2 = 0;
                     }
                 }
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
-                    DAT_TextureRenderCoreObject::ptr)(gfxIndex, *piVar3 + width, piVar3[1] + y, blendStrengthUnk);
+                if (iVar2 == 0) {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(iVar4 + 2, *piVar3 + width, piVar3[1] + y, 0x10);
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGfxTgxWithBlending,
+                        DAT_TextureRenderCoreObject::ptr)(iVar4 + 2 + iVar2 * 8, *piVar3 + width, piVar3[1] + y, 0x14);
+                }
                 iVar4 = iVar4 + 1;
                 piVar3 = piVar3 + 2;
             } while (iVar4 < 9);
