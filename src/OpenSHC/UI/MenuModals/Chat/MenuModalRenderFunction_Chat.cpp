@@ -68,10 +68,10 @@ namespace UI {
             } else {
                 int fontSize = (int)MACRO_CALL_MEMBER(
                     OpenSHC::Text::UserTextHandler_Func::getCurrentFontSize, DAT_UserTextHandlerState::ptr)();
+                char* const currentText = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)(),
-                    x + 0x19, y + 199, OpenSHC::Text::TTA_LEFT, 0xccfaff, fontSize, FALSE, 0);
+                    currentText, x + 0x19, y + 199, OpenSHC::Text::TTA_LEFT, 0xccfaff, fontSize, FALSE, 0);
             }
             DAT_GameSynchronyState::instance.DAT_InsultTextIndex = 0;
         }
