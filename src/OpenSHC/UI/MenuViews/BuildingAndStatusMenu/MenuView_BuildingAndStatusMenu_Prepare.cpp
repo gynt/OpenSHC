@@ -136,10 +136,10 @@ namespace UI {
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::HandleBuildingSelectionSpeech)(_buildingIndex);
             }
-            _menuTab = DAT_GameCore::instance.activeMenuTab;
-            _playerId = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                 .timeTaxesOrRationsChange = 0;
+            _playerId = DAT_GameSynchronyState::instance.currentPlayerSlotID;
+            _menuTab = DAT_GameCore::instance.activeMenuTab;
             switch (_menuTab.tabType) {
             case OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM:
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::SetEnoughGoldForRequestedUnitToTrueUnk)();
