@@ -51,7 +51,20 @@ namespace UI {
             if (DAT_UnknownGFXIndex::instance == 1) {
                 return;
             }
-            if (param_1 == 5) {
+            if (param_1 != 5) {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE || param_1 == 6 || param_1 == 7 || param_1 == 8
+                    || param_1 == 9)
+                    goto LAB_00424fed;
+                if (param_1 == INT_00b95abc::instance) {
+                    INT_00b95abc::instance = -1;
+                }
+                if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE
+                    && ((param_1 == 1 || (param_1 == 2)) || (param_1 == 3))) {
+                    DAT_CurrentButtonGmDataIndex::instance = 0x161;
+                }
+                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
+                        MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
+            } else {
                 if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (BOOL_WasInteracting::instance == FALSE)) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         (OpenSHC::Audio::SFX::SoundEffectID)(OpenSHC::Audio::SFX::SEID_UNIT_DAMAGE3
@@ -81,19 +94,6 @@ namespace UI {
                     }
                     INT_00b95abc::instance = param_1;
                 }
-            } else {
-                if (DAT_ButtonCurrentlyInteracting::instance != FALSE || param_1 == 6 || param_1 == 7 || param_1 == 8
-                    || param_1 == 9)
-                    goto LAB_00424fed;
-                if (param_1 == INT_00b95abc::instance) {
-                    INT_00b95abc::instance = -1;
-                }
-                if (DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE
-                    && ((param_1 == 1 || (param_1 == 2)) || (param_1 == 3))) {
-                    DAT_CurrentButtonGmDataIndex::instance = 0x161;
-                }
-                MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
-                        MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
             }
             if (param_1 < 5) {
                 if (param_1 == 4 && (int)DAT_GameCore::instance.directDrawStatus < 0x700) {
