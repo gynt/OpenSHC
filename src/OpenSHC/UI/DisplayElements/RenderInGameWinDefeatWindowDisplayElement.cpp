@@ -37,6 +37,15 @@ namespace UI {
         int iVar4;
         int* piVar5;
         ushort* local_8;
+        /*
+          The original is built with /GS and sets up a security cookie here, so its source
+          declared a local buffer larger than 4 bytes whose address escaped. Nothing in the
+          original reads that buffer, so its element type and length cannot be recovered -
+          this is the smallest declaration that reproduces the cookie and the original's
+          8-byte frame exactly. It is a reconstruction of the frame, not a recovered name.
+         */
+        ushort _securityCookieBuffer[3];
+        local_8 = _securityCookieBuffer;
         DWORD DVar1 = timeGetTime();
         if (8000 < DVar1 - DAT_GameState::instance.mapAndTime.gameOverTime) {
             if (DAT_GameState::instance.mapAndTime.playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -115,8 +124,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
                         DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x16 + posX, iVar4,
-                        OpenSHC::Text::TTA_LEFT,
-                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x11, FALSE, 0);
+                        OpenSHC::Text::TTA_LEFT, (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0,
+                        0x11, FALSE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                         DAT_TextManagerObject::ptr)(*textAddress, posX + -0x4e, iVar4, OpenSHC::Text::TTA_CENTER,
@@ -129,8 +138,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x40),
                         DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0x48 + posX, iVar4,
-                        OpenSHC::Text::TTA_LEFT,
-                        (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0, 0x12, FALSE, 0);
+                        OpenSHC::Text::TTA_LEFT, (uint)(DAT_RenderingDefinedData::instance.ColorArray[*piVar5]), 0,
+                        0x12, FALSE, 0);
                 }
                 iVar4 = iVar4 + 0x1e;
             }
