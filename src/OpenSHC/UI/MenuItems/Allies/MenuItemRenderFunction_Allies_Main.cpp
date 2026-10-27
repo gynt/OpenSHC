@@ -123,8 +123,8 @@ namespace UI {
                 if ((int)DAT_AlliesCount::instance <= iVar3) {
                     DAT_ButtonUnknownZero::instance = 0;
                 }
-                iVar2 = DAT_SomeTeamMemberPlayerIDArray::instance[iVar3];
                 iVar6 = 0;
+                iVar2 = DAT_SomeTeamMemberPlayerIDArray::instance[iVar3];
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar2] == -1) {
                     iVar6 = DAT_GameSynchronyState::instance.currentAIArray[iVar2];
                 }
@@ -230,8 +230,8 @@ namespace UI {
             if (param_1 != 10) {
                 DAT_ButtonUnknownZero::instance = 0;
             }
-            iVar2 = DAT_ButtonY::instance;
             iVar3 = DAT_ButtonX::instance;
+            iVar2 = DAT_ButtonY::instance;
             iVar6 = 0;
             if (0 < (int)DAT_ButtonH::instance) {
                 do {
@@ -326,8 +326,8 @@ namespace UI {
                 textOffsetIndex = OpenSHC::DE::SHCDE::TEXT_GOODS;
             } else {
                 iVar2 = 1;
-                textOffsetIndex = OpenSHC::DE::SHCDE::TEXT_ALLIES;
                 xParam = iVar6;
+                textOffsetIndex = OpenSHC::DE::SHCDE::TEXT_ALLIES;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 textOffsetIndex, iVar2, xParam, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, (BOOLEnum)bVar8);
