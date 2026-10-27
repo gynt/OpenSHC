@@ -84,33 +84,31 @@ namespace UI {
                                                 iVar2 + -0x60 + iVar3,
                                                 DAT_GameCore::instance.keepPositions[iVar7].y + -100 + iVar4, 0xc);
                                         }
-                                        if (INT_00b95f6c::instance == 0) {
-                                            if (INT_00b95950::instance == iVar7) {
-                                                MACRO_CALL_MEMBER(
-                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                                    DAT_TextureRenderCoreObject::ptr)(
-                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3,
-                                                    (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
-                                                        + 0xd4),
-                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
-                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
-                                            } else {
-                                                MACRO_CALL_MEMBER(
-                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                                    DAT_TextureRenderCoreObject::ptr)(
-                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                                    (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
-                                                        + 0x1d6),
-                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
-                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
-                                            }
-                                        } else {
+                                        if (INT_00b95f6c::instance != 0) {
                                             iVar2 = DAT_GameCore::instance.keepPositions[iVar7].x + -0x71 + iVar3;
                                             int iVar6
                                                 = (int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar7];
                                             int drawY = DAT_GameCore::instance.keepPositions[iVar7].y + -0x74 + iVar4;
                                             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar6 + 1]
-                                                == -1) {
+                                                != -1) {
+                                                /*
+                                                  Render Player portrait
+                                                 */
+                                                MACRO_CALL_MEMBER(
+                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                                    DAT_TextureRenderCoreObject::ptr)(
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar6 + 0x2cf, iVar2,
+                                                    drawY);
+                                                MACRO_CALL_MEMBER(
+                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFacesSmallUnk,
+                                                    DAT_TextureRenderCoreObject::ptr)(
+                                                    DAT_GameSynchronyState::instance.playerPositionsArray[iVar7] + 20,
+                                                    iVar2 + 2, drawY + 2);
+                                                MACRO_CALL_MEMBER(
+                                                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
+                                                    DAT_PencilRenderCore::ptr)(iVar2, drawY, iVar2 + 0x23, drawY + 0x23,
+                                                    (ushort)(COL_BLACK::instance.shortValue));
+                                            } else {
                                                 if (DAT_GameSynchronyState::instance.currentAIArray[iVar6 + 1] != 0) {
                                                     /*
                                                       Render AI portrait
@@ -131,24 +129,26 @@ namespace UI {
                                                             + 700),
                                                         iVar2, drawY);
                                                 }
-                                            } else {
-                                                /*
-                                                  Render Player portrait
-                                                 */
+                                            }
+                                        } else {
+                                            if (INT_00b95950::instance == iVar7) {
                                                 MACRO_CALL_MEMBER(
                                                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                     DAT_TextureRenderCoreObject::ptr)(
-                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar6 + 0x2cf, iVar2,
-                                                    drawY);
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3,
+                                                    (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
+                                                        + 0xd4),
+                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
+                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
+                                            } else {
                                                 MACRO_CALL_MEMBER(
-                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFacesSmallUnk,
+                                                    OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                     DAT_TextureRenderCoreObject::ptr)(
-                                                    DAT_GameSynchronyState::instance.playerPositionsArray[iVar7] + 20,
-                                                    iVar2 + 2, drawY + 2);
-                                                MACRO_CALL_MEMBER(
-                                                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                                                    DAT_PencilRenderCore::ptr)(iVar2, drawY, iVar2 + 0x23, drawY + 0x23,
-                                                    (ushort)(COL_BLACK::instance.shortValue));
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
+                                                    (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
+                                                        + 0x1d6),
+                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
+                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
                                             }
                                         }
                                     }
