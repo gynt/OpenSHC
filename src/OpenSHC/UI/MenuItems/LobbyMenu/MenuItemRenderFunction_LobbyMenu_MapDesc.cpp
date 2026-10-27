@@ -82,13 +82,13 @@ namespace UI {
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1)) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(iVar2 + 7, DAT_ButtonH::instance + 0x79 + iVar2);
-                    if (DAT_GameSynchronyState::instance.isHost == FALSE) {
-                        pcVar5 = DAT_GameSynchronyState::instance.mapName;
-                    } else {
+                    if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                         pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                             DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                                 .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                                     + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]);
+                    } else {
+                        pcVar5 = DAT_GameSynchronyState::instance.mapName;
                     }
                     pcVar5 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar5, &local_4);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
@@ -101,14 +101,14 @@ namespace UI {
                         "-", iVar7 + -0x5e, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
                         0x13, TRUE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    if (DAT_GameCore::instance.savedMapBalance == 0) {
+                    if (DAT_GameCore::instance.savedMapBalance != 0) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x19b,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x19c,
                             iVar7 + -0x58, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
                             0x13, TRUE, (iVar6 / 32) + 0x20);
                     } else {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
-                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x19c,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x19b,
                             iVar7 + -0x58, (iVar2 - DAT_00b960f4::instance) + -8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
                             0x13, TRUE, (iVar6 / 32) + 0x20);
                     }
