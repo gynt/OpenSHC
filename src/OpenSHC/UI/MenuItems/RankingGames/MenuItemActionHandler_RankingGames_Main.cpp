@@ -68,7 +68,12 @@ namespace UI {
                     DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER;
                     DAT_GameSynchronyState::instance.currentGameMode
                         = OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER;
-                    if (iVar3 == 0) {
+                    if (iVar3 != 0) {
+                        strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_crusader.tgx");
+                        if (DAT_SkMasters2DataArray::instance[iVar1].lordType != 0) {
+                            strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_arab.tgx");
+                        }
+                    } else {
                         iVar1 = DAT_SkMasters2DataArray::instance[iVar1].lordType;
                         pcVar5 = "lose_screen_crusader.tgx";
                         pcVar7 = CHAR_ARRAY_00eb9ac8::instance;
@@ -82,11 +87,6 @@ namespace UI {
                             memcpy(CHAR_ARRAY_00eb9ac8::instance, "lose_screen_arab.tgx", 20);
                             (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20))
                                 = (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20)) & 0xffffff00;
-                        }
-                    } else {
-                        strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_crusader.tgx");
-                        if (DAT_SkMasters2DataArray::instance[iVar1].lordType != 0) {
-                            strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_arab.tgx");
                         }
                     }
                     DAT_GameCore::instance.skipStoreSKMasters = 1;
@@ -112,11 +112,11 @@ namespace UI {
                     return;
                 }
                 if (param_1 - 0x14U <= 9) {
-                    if (DAT_MissionDefinedData::instance.sortColumn == param_1 + -0x13) {
-                        DAT_MissionDefinedData::instance.descending = 1 - DAT_MissionDefinedData::instance.descending;
-                    } else {
+                    if (DAT_MissionDefinedData::instance.sortColumn != param_1 + -0x13) {
                         DAT_MissionDefinedData::instance.descending = 1;
                         DAT_MissionDefinedData::instance.sortColumn = param_1 + -0x13;
+                    } else {
+                        DAT_MissionDefinedData::instance.descending = 1 - DAT_MissionDefinedData::instance.descending;
                     }
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
                     iVar1 = DAT_00eb9b60::instance + -8;
