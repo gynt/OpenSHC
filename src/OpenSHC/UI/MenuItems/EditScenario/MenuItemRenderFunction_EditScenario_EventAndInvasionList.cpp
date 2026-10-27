@@ -39,7 +39,7 @@ namespace UI {
             int iVar8;
             BOOLEnum BVar9;
             int iVar10;
-            if (DAT_MapPropertiesState::instance.eventsCount <= DAT_MapPropertiesState::instance.eventListSelection) {
+            if (DAT_MapPropertiesState::instance.eventListSelection >= DAT_MapPropertiesState::instance.eventsCount) {
                 DAT_MapPropertiesState::instance.eventListSelection = DAT_MapPropertiesState::instance.eventsCount + -1;
             }
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
