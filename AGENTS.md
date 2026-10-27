@@ -364,6 +364,27 @@ Diff patterns that were reliable (more in the cheat sheet):
   arm - so the decompiler inverted that guard systematically across the menu render functions rather than by
   chance in one or two. Measure anyway: two sites that gained on `quick_diff` lost on reccmp
   (`MenuItemRenderFunction_Allies_Main` 49.7% -> 46.9%).
+  The De Morgan extension of the same lever - `if (A && B) {X} else {Y}` becoming
+  `if (!A || !B) {Y} else {X}` - is not worth a tool: `UI/MenuItems` holds only 4 compound
+  `if`/`else` sites and none of them paid, because the decompiler writes a compound guard as an
+  early return without an `else`.
+- Ghidra collapses a **negated flag** into its opposite: where the original builds
+  `int flag = 0; if (call() == FALSE) flag = 1;` (`xor edi,edi` / `test eax,eax` / `jne` /
+  `lea edi,[eax+1]`) and later tests `flag == 0`, the decompiler stores the call's result straight
+  into the local and inverts the later test instead. Writing the explicit negated flag back took
+  `MenuItemActionHandler_BuildingAndStatusMenu_RepairBuildingButton` 62.1% -> 68.6%; writing it as
+  `BOOLEnum x = (call() == FALSE)` did **not** (the cast adds the test that normalises the result to
+  0/1). The `lea reg,[reg+1]` signature appears nowhere else in the namespace, so look for it per
+  function rather than sweeping.
+- **Correcting an off-by-one can cost a lot of match, and the correction still wins.** In
+  `MenuItemRenderFunction_InGameMenu_MainButtons` the decompiler rendered one bound `-param_1 > 10`
+  (that is `param_1 <= -11`) where the binary has `cmp esi, -0xa; jg`, so the original runs the
+  guarded block at `param_1 == -10` and we did not; the same bound 80 lines later came out
+  `param_1 < -9`, which *is* `<= -10`, and the two spellings disagreeing for one `cmp` is what
+  identified the wrong one. Fixing it dropped the function 57.7% -> 47.6%, because `param_1 <= -10`
+  makes MSVC hold the parameter in `edi` and the tab-type global in `esi` - the opposite of the
+  original - and every downstream register follows. Neither the operand-order flip nor a snapshot
+  local for the global recovers it. Keep the correct bound and say so in the commit remark.
 - The same is **not** true of addition, although `diff_lea.py`'s `add`/`lea` pairs suggest it: swapping the operands
   of every `A + B` over `UI/MenuItems` paid at 1 of 220 sites, and that one by 0.3%. The exception is the button
   rectangle the menu render functions pass to `drawColorBox`/`drawBoxWithRoundedEdges`, where the fourth argument is
