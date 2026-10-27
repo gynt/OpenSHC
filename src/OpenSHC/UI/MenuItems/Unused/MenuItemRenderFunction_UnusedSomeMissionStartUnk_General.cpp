@@ -37,14 +37,7 @@ namespace UI {
             uint backgroundColor;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
-                if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
-                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
-                        (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
-                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), OpenSHC::UI::Enums::RBERL_SLIGHT);
-                    backgroundColor = 0x3e66;
-                    foregroundColor = 0xa2ff;
-                } else {
+                if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
                         (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
@@ -52,6 +45,13 @@ namespace UI {
                         OpenSHC::UI::Enums::RBERL_SLIGHT);
                     backgroundColor = 0;
                     foregroundColor = 0xffffff;
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges,
+                        DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
+                        (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
+                        (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), OpenSHC::UI::Enums::RBERL_SLIGHT);
+                    backgroundColor = 0x3e66;
+                    foregroundColor = 0xa2ff;
                 }
                 int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 8;
