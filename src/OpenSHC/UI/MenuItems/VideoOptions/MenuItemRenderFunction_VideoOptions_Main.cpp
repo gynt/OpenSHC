@@ -64,7 +64,11 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 7;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     color = 0xc2f0eb;
-                    goto LAB_00492602;
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
+                        iVar1, yParam, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE, 0);
+                    return;
                 }
             } else {
                 if (param_1 != -3) {
@@ -204,7 +208,6 @@ namespace UI {
                 iVar1 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             }
             color = 0xccfaff;
-        LAB_00492602:
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS, param_1),
