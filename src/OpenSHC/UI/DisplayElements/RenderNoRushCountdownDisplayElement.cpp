@@ -32,7 +32,7 @@ namespace UI {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B20B0
-        void RenderNoRushDisplayElementUnk(int posX, int posY, DWORD elementState)
+        void RenderNoRushCountdownDisplayElement(int posX, int posY, DWORD elementState)
         {
             if (DAT_GameState::instance.mapAndTime.skirmishNoRushTicksLeft == 0) {
                 // Plays pa paam pa pa pa paam

@@ -23,15 +23,15 @@ namespace Synchrony {
         // 1260 bytes the original clears. Needs the parameter block typed in Ghidra.
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             1260, '\0', &this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters);
-        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_UNPROCESSED;
-        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk = this->DPLAYX_PlayerHandle;
+        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].processingState = Commands::GCS_UNPROCESSED;
+        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].senderMultiplayerID = this->DPLAYX_PlayerHandle;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType = commandType;
-        if (DAT_GameCore::instance.mapTimeInTicks > this->mapTimeInTicksSinglePlayer) {
+        if (DAT_GameCore::instance.mapTimeInTicks > this->maxPlayerMatchTime) {
             this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time
                 = this->commandDelay + DAT_GameCore::instance.mapTimeInTicks;
         } else {
             this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time
-                = this->commandDelay + this->mapTimeInTicksSinglePlayer;
+                = this->commandDelay + this->maxPlayerMatchTime;
         }
         this->DAT_CommandActionPlan = Commands::GCS_SCHEDULE_AND_SEND;
         this->DAT_PlayerIDReceiver = 0;
@@ -39,7 +39,7 @@ namespace Synchrony {
         // Calls the callback function for a specific command. See "GameCommandType" for possible
         // commands: placing buildings, walls, moving units, ...
         (&DAT_ProtocolDefinedData::instance
-                .commandFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
+                .handleFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
         this->DAT_CommandParameterOffset = 0;
         dword _time = this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time;
         if (0 < (int)_time) {
@@ -65,7 +65,7 @@ namespace Synchrony {
                 this->DPLAYX_ReceivedPlayerID = this->DPLAYX_PlayerHandle;
                 this->protocolInvokerPlayerID = this->currentPlayerSlotID;
                 (&DAT_ProtocolDefinedData::instance
-                        .commandFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
+                        .handleFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
             }
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
                 this->DAT_CurrentGameCommandID);

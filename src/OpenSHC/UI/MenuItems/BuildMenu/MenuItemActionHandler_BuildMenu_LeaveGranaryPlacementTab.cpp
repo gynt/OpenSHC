@@ -18,7 +18,7 @@ namespace UI {
             using OpenSHC::UI::Enums::MenuViewType;
 
             // FUNCTION: STRONGHOLDCRUSADER 0x00433200
-            void MenuItemActionHandler_BuildMenu_SomeKeepAndGranaryCheckUnk(int param_1, ...)
+            void MenuItemActionHandler_BuildMenu_LeaveGranaryPlacementTab(int param_1, ...)
             {
                 if (DAT_GameCore::instance.activeMenuTab.buildMenuTab != (BuildMenuTabType)0x31) {
                     return;

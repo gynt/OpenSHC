@@ -12,8 +12,8 @@ namespace Synchrony {
     {
         uint _player = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
             this)(this->DPLAYX_ReceivedPlayerID);
-        this->matchTimes[_player]
-            = this->receivedCommandMapTimeInTicks + this->connectionLagInfoArray[_player].average1;
+        this->matchTimesArray[_player - 1]
+            = this->receivedCommandMapTimeInTicks + this->connectionLagInfoArray[_player].avgHalfRttTicks;
         int _countDown = this->commandDelay;
         int _delay = (char)this->DPLAY_ReceiveData.packet.payload[0] + 10;
         if (_delay > _countDown) {
@@ -24,7 +24,7 @@ namespace Synchrony {
             this->commandDelay = _delay;
         }
         uint _difference = (DAT_GameCore::instance.mapTimeInTicks - this->receivedCommandMapTimeInTicks)
-            - this->connectionLagInfoArray[_player].average1;
+            - this->connectionLagInfoArray[_player].avgHalfRttTicks;
         int _absoluteDifference = abs((int)_difference);
         if (this->clTimeDiff < _absoluteDifference) {
             int _newDiff = this->clTimeDiff + 5;

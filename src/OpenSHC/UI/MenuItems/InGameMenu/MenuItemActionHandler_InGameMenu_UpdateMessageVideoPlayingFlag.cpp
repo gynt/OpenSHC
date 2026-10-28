@@ -9,7 +9,7 @@ namespace UI {
         namespace InGameMenu {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x00433230
-            void MenuItemActionHandler_InGameMenu_UnknownBinkRelated(int param_1, ...)
+            void MenuItemActionHandler_InGameMenu_UpdateMessageVideoPlayingFlag(int param_1, ...)
             {
                 if (DAT_GameCore::instance.isBinkVideoPlaying == 0) {
                     return;

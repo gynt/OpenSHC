@@ -70,7 +70,7 @@ namespace Map {
         == FALSE) {                                                                                                  \
         MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::playSFXNoSpaceInTheStockPile, DAT_GameState::ptr)( \
             playerID);                                                                                               \
-    }
+            }
 
             if (buildingIDORIfNegResourceType == -3) {
                 // Mangonel on a tower

@@ -7,7 +7,7 @@ namespace UI {
     namespace Helpers {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004B9610
-        void CaptureCurrentTimeToUnknownTime01() { DAT_LastSliderChangeTime::instance = timeGetTime(); }
+        void CaptureCurrentTimeToLastSliderChangeTime() { DAT_LastSliderChangeTime::instance = timeGetTime(); }
 
     }
 }

@@ -101,7 +101,7 @@ namespace Text {
                 if (param_1 == 1) {
                     int xModify = 0;
                     if (local_120) {
-                        xModify = this->lineLayoutTable[lineY].unknown2 / 2;
+                        xModify = this->lineLayoutTable[lineY].widthForCentering / 2;
                     }
                     local_10c = local_114 - local_11c;
                     if (this->pendingCaretLineMove < 0) {
@@ -178,7 +178,7 @@ namespace Text {
                             this->imageHotspotTable[this->imageHotspotCount].yPos = lineY + 25;
                             this->imageHotspotTable[this->imageHotspotCount].graphicId
                                 = this->DAT_PointerToTemporaryTextMemory[textMemIndex];
-                            this->imageHotspotTable[this->imageHotspotCount].unknown3 = currentLinkId;
+                            this->imageHotspotTable[this->imageHotspotCount].linkIndex = currentLinkId;
                         }
                     }
                     Enums::HelpTextPicturePositionToken positionToken
@@ -218,7 +218,7 @@ namespace Text {
                         if (this->lineLayoutTable[lineY].rightBorder < imageWidth + leftPosition) {
                             local_f0 = FALSE;
                             if (local_120) {
-                                this->lineLayoutTable[lineY].unknown2
+                                this->lineLayoutTable[lineY].widthForCentering
                                     = this->lineLayoutTable[lineY].rightBorder - (short)leftPosition;
                                 local_120 = centreActive;
                             }
@@ -259,7 +259,7 @@ namespace Text {
                         continue;
                     }
                     ++this->imageHotspotCount;
-                    DAT_TextManagerObject::instance.field6_0x18 = 0;
+                    DAT_TextManagerObject::instance.underlineText = 0;
                     return FALSE;
                 }
             case Enums::HTT_FONT:
@@ -351,7 +351,7 @@ namespace Text {
                 } else {
                     currentLinkId = this->DAT_PointerToTemporaryTextMemory[textMemIndex];
                     if (param_1 == 1) {
-                        DAT_TextManagerObject::instance.field6_0x18 = 1;
+                        DAT_TextManagerObject::instance.underlineText = 1;
                     }
                     textMemIndex += 2;
                     continue;
@@ -395,7 +395,7 @@ namespace Text {
                 } else {
                     currentLinkId = -1;
                     if (param_1 == 1) {
-                        DAT_TextManagerObject::instance.field6_0x18 = 0;
+                        DAT_TextManagerObject::instance.underlineText = 0;
                     }
                     continue;
                 }
@@ -438,7 +438,7 @@ namespace Text {
                 }
             case Enums::HTT_NEWPARAGRAPH:
                 if (local_120) {
-                    this->lineLayoutTable[lineY].unknown2
+                    this->lineLayoutTable[lineY].widthForCentering
                         = this->lineLayoutTable[lineY].rightBorder - (short)leftPosition;
                     local_120 = centreActive;
                 }
@@ -448,7 +448,7 @@ namespace Text {
                     lineStartY = lineY;
                     if (param_1 == 1) {
                         if (local_120) {
-                            iVar12 = this->lineLayoutTable[lineY].unknown2 / 2;
+                            iVar12 = this->lineLayoutTable[lineY].widthForCentering / 2;
                         }
                         MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                             this->dialogContentX + iVar12 - 1 + leftPosition,
@@ -516,7 +516,7 @@ namespace Text {
                     if (this->lineLayoutTable[lineY].rightBorder < leftPosition + 30) {
                         local_f0 = FALSE;
                         if (local_120) {
-                            this->lineLayoutTable[lineY].unknown2
+                            this->lineLayoutTable[lineY].widthForCentering
                                 = this->lineLayoutTable[lineY].rightBorder - (short)leftPosition;
                             local_120 = centreActive;
                         }
@@ -564,15 +564,15 @@ namespace Text {
                         }
                         if (lineEndY > this->helpContentScrollOffsetY + this->dialogContentHeight) {
                             this->helpContentScrollOffsetY = (lineEndY - this->dialogContentHeight) + 5;
-                            DAT_TextManagerObject::instance.field6_0x18 = 0;
+                            DAT_TextManagerObject::instance.underlineText = 0;
                             return TRUE;
                         }
                     }
-                    DAT_TextManagerObject::instance.field6_0x18 = 0;
+                    DAT_TextManagerObject::instance.underlineText = 0;
                     return TRUE;
                 }
                 if (!this->isEditorMode) {
-                    DAT_TextManagerObject::instance.field6_0x18 = 0;
+                    DAT_TextManagerObject::instance.underlineText = 0;
                     return TRUE;
                 }
                 DAT_HelpEditorCursorColumn::instance = local_10c;
@@ -586,11 +586,11 @@ namespace Text {
                 if (!local_e4 && this->caretTextPos && DAT_HelpEditorCursorMoved::instance) {
                     --this->caretTextPos;
                     this->tokenTypeAtCursor = 0;
-                    DAT_TextManagerObject::instance.field6_0x18 = 0;
+                    DAT_TextManagerObject::instance.underlineText = 0;
                     return TRUE;
                 }
                 DAT_HelpEditorCursorMoved::instance = 0;
-                DAT_TextManagerObject::instance.field6_0x18 = 0;
+                DAT_TextManagerObject::instance.underlineText = 0;
                 return TRUE;
             }
             // NOTE: This is either the local text buffer, or the text directly from the text memory...
@@ -604,7 +604,7 @@ namespace Text {
                 if (this->lineLayoutTable[lineY].rightBorder < local_f4) {
                     local_f0 = FALSE;
                     if (local_120) {
-                        this->lineLayoutTable[lineY].unknown2
+                        this->lineLayoutTable[lineY].widthForCentering
                             = this->lineLayoutTable[lineY].rightBorder - (short)leftPosition;
                         local_120 = centreActive;
                     }
@@ -630,7 +630,7 @@ namespace Text {
                     if (this->lineLayoutTable[lineY].rightBorder < (int)local_f4) {
                         local_f8 = 0;
                         if (local_120) {
-                            local_f8 = this->lineLayoutTable[lineY].unknown2 / 2;
+                            local_f8 = this->lineLayoutTable[lineY].widthForCentering / 2;
                         }
                         int const wideStrLength = wcslen((wchar_t*)pwVar6);
                         for (local_118 = 0; local_118 < wideStrLength; ++local_118) {
@@ -639,7 +639,7 @@ namespace Text {
                             while (this->lineLayoutTable[lineY].rightBorder < leftPosition + wideCharWidth) {
                                 iVar5 = local_11c;
                                 if (local_120) {
-                                    this->lineLayoutTable[lineY].unknown2
+                                    this->lineLayoutTable[lineY].widthForCentering
                                         = this->lineLayoutTable[lineY].rightBorder - (short)leftPosition;
                                     local_120 = centreActive;
                                 }
@@ -661,7 +661,7 @@ namespace Text {
                                     leftPosition = this->lineLayoutTable[lineY++].leftBorder;
                                 } while (leftPosition == -1);
                                 if (local_120) {
-                                    local_f8 = this->lineLayoutTable[lineY].unknown2 / 2;
+                                    local_f8 = this->lineLayoutTable[lineY].widthForCentering / 2;
                                 }
                             }
                             if (!this->isEditorMode || local_114 + local_118 != this->caretTextPos) {
@@ -742,7 +742,7 @@ namespace Text {
                 iVar5 = this->dialogContentX + leftPosition;
                 local_104 = (this->dialogContentY - this->helpContentScrollOffsetY) + lineY;
                 if (local_120) {
-                    iVar5 += this->lineLayoutTable[lineY].unknown2 / 2;
+                    iVar5 += this->lineLayoutTable[lineY].widthForCentering / 2;
                 }
                 int const wideStrLength = wcslen((wchar_t*)pwVar6);
                 for (int i = 0; i < wideStrLength; ++i) {

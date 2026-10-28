@@ -9,7 +9,7 @@ namespace UI {
         namespace NetworkOptions {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x004941F0
-            void MenuItemActionHandler_NetworkOptions_LeaveButtonUnk(int action, ...)
+            void MenuItemActionHandler_NetworkOptions_BackButton(int action, ...)
             {
                 if (action == 17) {
                     MACRO_CALL_MEMBER(

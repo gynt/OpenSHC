@@ -9,7 +9,7 @@ namespace UI {
         namespace DebugDataZoneDataUnk {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x004AAAA0
-            void MenuModalRenderFunction_DebugDataZoneDataUnk(int x, int y, int width, int height)
+            void MenuModalRenderFunction_DebugDataAttackInfo(int x, int y, int width, int height)
             {
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::renderAttackInfoDebugOverlay,
                     DAT_TroopValueState::ptr)(x, y, width, height);

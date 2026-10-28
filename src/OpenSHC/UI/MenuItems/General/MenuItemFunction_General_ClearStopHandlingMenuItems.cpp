@@ -8,7 +8,7 @@ namespace UI {
         namespace General {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x00440410
-            void MenuItemFunction_General_Unknown(int param_1, ...) { DAT_StopHandlingMenuItems::instance = 0; }
+            void MenuItemFunction_General_ClearStopHandlingMenuItems(int param_1, ...) { DAT_StopHandlingMenuItems::instance = 0; }
 
         }
     }

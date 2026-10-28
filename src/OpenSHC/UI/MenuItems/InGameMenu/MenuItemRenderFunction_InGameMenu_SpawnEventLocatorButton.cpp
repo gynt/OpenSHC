@@ -11,7 +11,7 @@ namespace UI {
         namespace InGameMenu {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x004B6500
-            void MenuItemRenderFunction_InGameMenu_MapEventIconUnk(int param_1, ...)
+            void MenuItemRenderFunction_InGameMenu_SpawnEventLocatorButton(int param_1, ...)
             {
                 DAT_ButtonDisabled::instance = 1;
                 if (DAT_MinimapViewState::instance.spawnMomentCount != 0

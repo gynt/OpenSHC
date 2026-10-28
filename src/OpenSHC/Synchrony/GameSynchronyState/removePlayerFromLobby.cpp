@@ -20,10 +20,10 @@ namespace Synchrony {
     void GameSynchronyState::removePlayerFromLobby(int playerID)
     {
         this->syncRelatedStatusArray[playerID] = 1;
-        BOOLEnum _inGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+        BOOLEnum _inGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::isInGameView, DAT_GameCore::ptr)();
         if ((_inGameMenu) && (playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = playerID;
-            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = this->kickDueToLagStatusUnk;
+            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = this->leaveReasonTextIndex;
             if ((!this->syncStatus) && (!this->saveRelated)) {
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                     (Commands::GameCommandType)(Commands::GCT_SEND_RESYNC_TILEMAPDATA2
@@ -33,7 +33,7 @@ namespace Synchrony {
                     Commands::GCT_LEAVE_GAME);
             }
             this->unknownIncrementBy40_01 += 40;
-            this->unknownPlayerInfo_03[playerID] = 1;
+            this->excludedFromSyncCheck[playerID] = 1;
             return;
         }
         this->DAT_PlayerNames[playerID][0] = '\0';
@@ -45,7 +45,7 @@ namespace Synchrony {
         this->DAT_ReceivedAIVFileAvailabilityPerAIArray[playerID][0] = -1;
         MACRO_CALL(Synchrony::Actions_Func::RemovePositionOfPlayer)(playerID);
         this->DAT_MultiplayerGameVersions[playerID] = 0;
-        this->slotActionPending[playerID] = 0;
+        this->kickRequestedPerPlayer[playerID] = 0;
         if ((playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID) && (this->isHost)) {
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions, this)();
         }

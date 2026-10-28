@@ -11,7 +11,7 @@ namespace UI {
         namespace Unknown26 {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x004DCC70
-            void MenuView_Unknown26_CampaignRelatedUnk_Prepare()
+            void MenuView_MissionIntroSequence_Prepare()
             {
                 MACRO_CALL(OpenSHC::UI::Credits_Func::ResetCredits)();
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::BuildIntroLogoSequence)(

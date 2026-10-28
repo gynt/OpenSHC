@@ -30,9 +30,10 @@ namespace UI {
                     && (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU))
                 && ((DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS
                     || (DAT_TileMapState::instance.mapInteractionMode == 1)))) {
-                DAT_MinimapViewState::instance.field15_0x3c = 1;
+                DAT_MinimapViewState::instance.mouseOverMinimap = 1;
+                return;
             }
-            DAT_MinimapViewState::instance.field15_0x3c = 0;
+            DAT_MinimapViewState::instance.mouseOverMinimap = 0;
         }
 
     }

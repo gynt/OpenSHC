@@ -26,25 +26,25 @@ namespace Synchrony {
             // this value is derived from it.
             size_t const _packetSize = sizeof(this->syncPacket2Type) + sizeof(this->mapTimeInTicksLower3Bytes)
                 + sizeof(this->syncParamTimeDiff);
-            this->DPLAYX_SendAndReceiveREsult
+            this->DPLAYX_SendAndReceiveResult
                 = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, 0, DPSEND_NOSENDCOMPLETEMSG | DPSEND_ASYNC,
                     &this->syncPacket2Type, _packetSize, 65533, 0, (void*)0x0, (DWORD_PTR*)0x0);
-            if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
+            if ((this->DPLAYX_SendAndReceiveResult) && (this->DPLAYX_SendAndReceiveResult != -0x7ffffff6)) {
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::handleUnexpectedDPlayXResult, this)();
             }
             uint _playerID = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
                 this)(this->DPLAYX_PlayerHandle);
-            this->matchTimes[_playerID] = DAT_GameCore::instance.mapTimeInTicks;
-            ++this->receivedMatchTimesTrackerUnk;
-            if (6 < this->receivedMatchTimesTrackerUnk) {
+            this->matchTimesArray[_playerID - 1] = DAT_GameCore::instance.mapTimeInTicks;
+            ++this->syncSendCounter;
+            if (6 < this->syncSendCounter) {
                 --this->commandDelay;
-                this->receivedMatchTimesTrackerUnk = 0;
+                this->syncSendCounter = 0;
                 if (!this->syncRelatedCountdown) {
                     int _maxLatency = 0;
                     for (int _player = 1; _player < 9; ++_player) {
                         if ((this->currentPlayerFullIDArray[_player] != -1)
-                            && (this->connectionLagInfoArray[_player].average1 > _maxLatency)) {
-                            _maxLatency = this->connectionLagInfoArray[_player].average1;
+                            && (this->connectionLagInfoArray[_player].avgHalfRttTicks > _maxLatency)) {
+                            _maxLatency = this->connectionLagInfoArray[_player].avgHalfRttTicks;
                         }
                     }
                     int _countdown;

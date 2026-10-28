@@ -8,7 +8,7 @@ namespace UI {
         namespace General {
 
             // FUNCTION: STRONGHOLDCRUSADER 0x00434260
-            void MenuItemActionHandler_General_Unknown2(int param_1, ...)
+            void MenuItemActionHandler_General_SetToolbarRequestedBuildTab(int param_1, ...)
             {
                 DAT_GameCore::instance.toolbarRequestedBuildTab = param_1;
             }

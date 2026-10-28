@@ -11,7 +11,7 @@ namespace UI {
         using OpenSHC::UI::Enums::DisplayElementID;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AF6B0
-        void TogglePlayerPingDisplayElementUnk(DisplayElementID displayElementID, uint toggleValue)
+        void ToggleDisplayElementByID(DisplayElementID displayElementID, uint toggleValue)
         {
             DisplayElement* const displayElement
                 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::FindDisplayElementWithID)(displayElementID);

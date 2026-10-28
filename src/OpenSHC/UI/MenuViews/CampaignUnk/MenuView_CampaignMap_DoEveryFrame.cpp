@@ -13,7 +13,7 @@ namespace UI {
             using OpenSHC::UI::Enums::MenuViewType;
 
             // FUNCTION: STRONGHOLDCRUSADER 0x004D6EF0
-            void MenuView_CampaignUnk_DoEveryFrame()
+            void MenuView_CampaignMap_DoEveryFrame()
             {
                 if (MACRO_CALL(OpenSHC::UI::Helpers_Func::TicksSinceCounterStart)() == 0) {
                     return;

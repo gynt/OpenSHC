@@ -14,21 +14,21 @@ namespace Synchrony {
     // FUNCTION: STRONGHOLDCRUSADER 0x0048DA60
     void GameSynchronyState::checkLagAndSyncStatus()
     {
-        this->syncStatus10Related[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
+        this->hashReportReceivedBySlot[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
         for (int _player = 1; _player < 9; ++_player) {
-            if ((this->currentPlayerFullIDArray[_player] != -1) && (this->syncStatus10Related[_player] == 0)) {
+            if ((this->currentPlayerFullIDArray[_player] != -1) && (this->hashReportReceivedBySlot[_player] == 0)) {
                 if (this->announcementReceivedBool) {
                     if (timeGetTime() - this->announcementReceiveTime <= 45000) {
                         return;
                     }
                     for (int _laggard = 1; _laggard < 9; ++_laggard) {
                         if ((this->currentPlayerFullIDArray[_laggard] != -1)
-                            && (this->syncStatus10Related[_laggard] == 0)) {
+                            && (this->hashReportReceivedBySlot[_laggard] == 0)) {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _laggard;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 63;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                            this->syncStatus10Related[_laggard] = 1;
+                            this->hashReportReceivedBySlot[_laggard] = 1;
                         }
                     }
                     break;
@@ -44,7 +44,7 @@ namespace Synchrony {
         }
         int _hash = 0;
         DAT_GameSynchronyState::instance.syncStatus = 1;
-        DAT_GameSynchronyState::instance.field76_0xbe8 = DAT_GameSynchronyState::instance.resyncStartTime;
+        DAT_GameSynchronyState::instance.desyncDetectedTimeMs = DAT_GameSynchronyState::instance.resyncStartTime;
         DAT_GameSynchronyState::instance.announcementReceiveTime = DAT_GameSynchronyState::instance.resyncStartTime;
         DAT_GameSynchronyState::instance.announcementReceivedBool = FALSE;
         // A bug in the original, reproduced on purpose: HashContainerElement is 12 ints wide, so

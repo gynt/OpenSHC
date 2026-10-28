@@ -8,7 +8,7 @@ namespace UI {
     namespace Credits {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9270
-        void __cdecl SetActiveCreditsSequenceIndex(undefined4 sequenceIndex)
+        void __cdecl SetRankingGamesListMode(undefined4 sequenceIndex)
         {
             g_leaderboardFilterMode::instance = sequenceIndex;
             g_rankingGamesScrollOffset::instance = 0;

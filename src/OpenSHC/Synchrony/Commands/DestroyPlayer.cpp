@@ -69,7 +69,7 @@ namespace Synchrony {
                     != 0xffffffff)
                 && (DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                     != DAT_GameSynchronyState::instance.currentPlayerSlotID)) {
-                if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A**)0x0) {
+                if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A*)0x0) {
                     ((IDirectPlay4A*)DAT_GameSynchronyState::instance.DPLAYX_4A)
                         ->DestroyPlayer(DAT_GameSynchronyState::instance
                                 .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);

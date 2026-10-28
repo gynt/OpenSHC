@@ -13,7 +13,7 @@ namespace UI {
             using OpenSHC::UI::Enums::MenuModalType;
 
             // FUNCTION: STRONGHOLDCRUSADER 0x0042AC40
-            void MenuItemRenderFunction_LobbyMenu_Unknown(int textID, ...)
+            void MenuItemRenderFunction_LobbyMenu_BottomLeftText(int textID, ...)
             {
                 if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                     MACRO_CALL_MEMBER(

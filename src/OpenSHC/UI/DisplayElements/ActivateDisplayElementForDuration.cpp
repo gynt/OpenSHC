@@ -10,7 +10,7 @@ namespace UI {
         using OpenSHC::UI::Enums::DisplayElementID;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004AF680
-        void ActivateGameSpeedAndResourceLackDisplayElementUnk(
+        void ActivateDisplayElementForDuration(
             DisplayElementID elementId, dword elementState, int displayDuration)
         {
             DisplayElement* const displayElement

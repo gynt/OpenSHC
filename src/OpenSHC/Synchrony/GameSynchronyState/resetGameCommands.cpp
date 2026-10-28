@@ -11,7 +11,7 @@ namespace Synchrony {
     void GameSynchronyState::resetGameCommands()
     {
         this->DAT_CurrentGameCommandID = 0;
-        this->gameCommandID = 0;
+        this->MBR_GameCommandID = 0;
         this->DAT_GameCommandArrayIndex = 0;
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             sizeof(this->DAT_GameCommandArray), '\0', this->DAT_GameCommandArray);

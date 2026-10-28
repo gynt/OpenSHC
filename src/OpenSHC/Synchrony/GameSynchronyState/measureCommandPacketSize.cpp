@@ -15,7 +15,7 @@ namespace Synchrony {
     using Commands::GameCommandState;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004800E0
-    int GameSynchronyState::sendLongerDataSuchAsResync(GameCommandType commandCategory)
+    int GameSynchronyState::measureCommandPacketSize(GameCommandType commandCategory)
     {
         this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;
         // No sizeof fits: GameCommand::parameters is typed as a single undefined1
@@ -23,14 +23,14 @@ namespace Synchrony {
         // 1260 bytes the original clears. Needs the parameter block typed in Ghidra.
         MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
             1260, '\0', &this->DAT_GameCommandArray[this->DAT_GameCommandArrayIndex].parameters);
-        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].stateUnk = Commands::GCS_UNPROCESSED;
-        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].playerUnk = this->DPLAYX_PlayerHandle;
+        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].processingState = Commands::GCS_UNPROCESSED;
+        this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].senderMultiplayerID = this->DPLAYX_PlayerHandle;
         this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType = (undefined1)commandCategory;
         this->DAT_CommandActionPlan = Commands::GCS_SCHEDULE_AND_SEND;
         this->DAT_PlayerIDReceiver = 0;
         this->DAT_CommandParameterOffset = 0;
         (&DAT_ProtocolDefinedData::instance
-                .commandFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
+                .handleFunctions)[this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType]();
         this->DAT_CommandParameterOffset = 0;
         int _size = this->DAT_CommandSize;
         if (200 < this->DAT_CommandSize && (undefined1)commandCategory != Commands::GCT_SEND_RESYNC_LOGICALTILEMAP) {
@@ -39,7 +39,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::moveLowerThreeBytesIntoParam2, DAT_LowLevelMemory::ptr)(
                 this->DAT_GameCommandArray + this->DAT_CurrentGameCommandID,
                 &this->DAT_Packet.prefixedPacket.packet.time);
-            _size = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::compressOrCreateLengthPrefixedPacketUnk,
+            _size = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::compressPacketDataRLE,
                 this)(this->DAT_CommandSize, (char*)this->DAT_GameCommandFixedParameterLocation,
                 this->DAT_Packet.prefixedPacket.packet.payload);
             ++_size;

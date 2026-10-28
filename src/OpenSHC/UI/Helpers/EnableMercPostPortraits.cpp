@@ -7,7 +7,7 @@ namespace UI {
     namespace Helpers {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00466E10
-        void DisableMercPostPortraits() { g_mercPostPortraitsEnabled::instance = 1; }
+        void EnableMercPostPortraits() { g_mercPostPortraitsEnabled::instance = 1; }
 
     }
 }

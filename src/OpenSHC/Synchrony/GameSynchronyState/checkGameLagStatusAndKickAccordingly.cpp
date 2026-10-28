@@ -27,7 +27,7 @@ namespace Synchrony {
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = 63;
                             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::queueCommand,
                                 DAT_GameSynchronyState::ptr)(Commands::GCT_LEAVE_GAME);
-                            this->receivedSyncStatusByPlayerUnk[_player] = 2;
+                            this->resyncStatusByPlayer[_player] = 2;
                         }
                     }
                     break;
