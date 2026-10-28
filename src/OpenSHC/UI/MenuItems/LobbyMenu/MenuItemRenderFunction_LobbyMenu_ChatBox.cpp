@@ -128,7 +128,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::renderChatMessageList,
                     DAT_GameSynchronyState::ptr)(DAT_ButtonX::instance + 8,
                     (int)((int)(DAT_ButtonH::instance + -0x1f + DAT_ButtonY::instance)),
-                    (int)((int)(DAT_GameSynchronyState::instance.lobbyChatScrollOffset)));
+                    (int)((int)(DAT_GameSynchronyState::instance.chatScrollOffset)));
             }
         }
 

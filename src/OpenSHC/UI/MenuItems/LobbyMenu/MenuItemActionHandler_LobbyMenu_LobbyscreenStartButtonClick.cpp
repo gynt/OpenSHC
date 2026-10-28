@@ -499,15 +499,15 @@ namespace UI {
                 }
                 break;
             case -2:
-                if (0 < (int)DAT_GameSynchronyState::instance.lobbyChatScrollOffset) { // 0x44269E jle: signed
-                    DAT_GameSynchronyState::instance.lobbyChatScrollOffset
-                        = DAT_GameSynchronyState::instance.lobbyChatScrollOffset + -1;
+                if (0 < (int)DAT_GameSynchronyState::instance.chatScrollOffset) { // 0x44269E jle: signed
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + -1;
                 }
                 break;
             case -1:
-                if ((int)DAT_GameSynchronyState::instance.lobbyChatScrollOffset < 0xf) { // 0x44268A jge: signed
-                    DAT_GameSynchronyState::instance.lobbyChatScrollOffset
-                        = DAT_GameSynchronyState::instance.lobbyChatScrollOffset + 1;
+                if ((int)DAT_GameSynchronyState::instance.chatScrollOffset < 0xf) { // 0x44268A jge: signed
+                    DAT_GameSynchronyState::instance.chatScrollOffset
+                        = DAT_GameSynchronyState::instance.chatScrollOffset + 1;
                 }
                 break;
             default:
