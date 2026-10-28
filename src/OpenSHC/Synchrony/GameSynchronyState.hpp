@@ -336,7 +336,11 @@ namespace Synchrony {
         int unusedSettingsResetB; // 0x001072EC length: 4
         // Number of messages scrolled back in the lobby chat box; passed to renderChatMessageList, reset to 0 when
         // a new message arrives or chat is cleared. Range 0..15 (lobby chat scroll-up/-down buttons).
-        undefined4 lobbyChatScrollOffset; // 0x001072F0 length: 4
+        union {
+            undefined4 lobbyChatScrollOffset; // 0x001072F0 length: 4
+            undefined4 chatScrollOffset;
+        };
+
         BOOLEnum reparseMaps; // 0x001072F4 length: 4
         // Frame countdown: host sets 0x32 (50) in AcknowledgeMapExistence when a client reports it lacks the map;
         // decremented each lobby frame while non-zero, zeroed on map selection/lobby init. Nothing else reads it
@@ -799,11 +803,11 @@ namespace Synchrony {
         /**
          * Per-tick end-of-game check (skips solitary mode; shrine part runs for every non-solitary mode, the rest
          * not in campaign missions and not after game over): counts down each player's commemoration-shrine timer
-         * and places the statue when it reaches 0. If GameCore.forceLocalPlayerVictory is set, ends the game at once with
-         * only the local player as winner. Otherwise counts per team (teams 1..8) the occupied slots (human or AI)
+         * and places the statue when it reaches 0. If GameCore.forceLocalPlayerVictory is set, ends the game at once
+         * with only the local player as winner. Otherwise counts per team (teams 1..8) the occupied slots (human or AI)
          * and those whose lord is killed (lordKilledByPlayerID != 0); when at most one team is left undefeated (or,
-         * with GameCore.isKingOfTheHill set, some occupied player's field695_0x229c is 0 - then that player's team wins)
-         * it ends the game: for each occupied slot playerIsAlive[slot] = 1 if it belongs to the winning team else
+         * with GameCore.isKingOfTheHill set, some occupied player's field695_0x229c is 0 - then that player's team
+         * wins) it ends the game: for each occupied slot playerIsAlive[slot] = 1 if it belongs to the winning team else
          * 0, playerDeathRelated = 1, gameOver/gameOverTime set, win/defeat window shown, siege build tab, mapper
          * command and unit selection cancelled. NAME? decides winners as well as losers (checkSkirmishGameOver).
          */
@@ -919,8 +923,8 @@ namespace Synchrony {
          * map ticks and in ms for the sender's slot and, while in game, sets hasLatencySample, writes the sample
          * into a ring of lagHistoryLength entries (all entries on the very first sample; the ring index
          * lagHistoryIndex is one global shared by all slots) and recomputes avgHalfRttTicks and avgHalfRttMs. BUG
-         * (original game): the ms sum reads history entries 2..lagHistoryLength+1 instead of 0..lagHistoryLength-1, so two entries this
-         * code never writes enter avgHalfRttMs.
+         * (original game): the ms sum reads history entries 2..lagHistoryLength+1 instead of 0..lagHistoryLength-1, so
+         * two entries this code never writes enter avgHalfRttMs.
          */
         void computeAndSetLatencyInformation();
 
