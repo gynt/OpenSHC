@@ -34,12 +34,12 @@ namespace Map {
         UpdateRockFunc5;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2AC0, &OpenSHC::Map::Rocks::UpdateRockFunc6)
-        UpdateRockFunc6;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2AC0, &OpenSHC::Map::Rocks::setCurrentRockGfx0x1E1)
+        setCurrentRockGfx0x1E1;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2AE0, &OpenSHC::Map::Rocks::UpdateRockFunc7)
-        UpdateRockFunc7;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2AE0, &OpenSHC::Map::Rocks::setCurrentRockGfx0x1F1)
+        setCurrentRockGfx0x1F1;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F2B00, &OpenSHC::Map::Rocks::UpdateRockFunc8)

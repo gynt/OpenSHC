@@ -16,10 +16,12 @@ namespace Audio {
         // SIZE: 0x00000010
         typedef struct SpeechEffectPath {
 
-            int field0_0x0; // 0x00000000 length: 4
+            // number of consecutive speech entries (variations) starting at this ID; 0 = none
+            int variationCount; // 0x00000000 length: 4
             char* europeanSound; // 0x00000004 length: 4
             char* arabianSound; // 0x00000008 length: 4
-            int field3_0xc; // 0x0000000C length: 4
+            // cyclic counter selecting which variation (ID+index) plays next
+            int nextVariationIndex; // 0x0000000C length: 4
 
         } SpeechEffectPath;
 #pragma pack(pop)

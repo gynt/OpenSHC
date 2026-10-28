@@ -18,7 +18,7 @@ namespace Input {
         this->previousSelectionBox.bottom
             = this->screenSpaceY + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY + 1;
 
-        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk) {
+        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOut) {
             this->selectionBox.left
                 = (this->screenSpaceX + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) * 2 - 2;
             this->selectionBox.top
@@ -34,7 +34,7 @@ namespace Input {
             this->selectionBox.bottom = this->previousSelectionBox.bottom;
         }
 
-        DAT_MouseState::instance.selectionBoxState = 0;
+        DAT_MouseState::instance.selectionBoxActive = 0;
         DAT_MouseState::instance.selectionBoxMode = 1;
     }
 

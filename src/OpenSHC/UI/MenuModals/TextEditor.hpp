@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace TextEditor {
 
+            /**
+             * Modal render callback for the text editor dialog: delegates to
+             * TextEditorState::setTextRenderingLogic.
+             */
             void __cdecl MenuModalRenderFunction_TextEditor(int x, int y, int width, int height);
 
         } // namespace TextEditor

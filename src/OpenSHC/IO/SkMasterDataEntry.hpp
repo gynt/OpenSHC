@@ -19,11 +19,15 @@ namespace IO {
     // SIZE: 0x00000BF0
     typedef struct SkMasterDataEntry {
 
-        int score; // 0x00000000 length: 4
+        // [045 0x004D9400] 0 vs non-zero used as filter, used as string offset into TEXT_TRAIL_NAMES_CRU and as key
+        // 0x50-score
+        int trailMissionIndex; // 0x00000000 length: 4
         char mapName[1000]; // 0x00000004 length: 1000
         int skMasterScore; // 0x000003EC length: 4
         int activePlayerCount; // 0x000003F0 length: 4
-        int array1[9]; // 0x000003F4 length: 36
+        // per slot team value copied from mapAndTime.playerGroupArray[1..8]; grouped by equal value in the scores
+        // screen
+        int playerTeams[9]; // 0x000003F4 length: 36
         int aiArray[9]; // 0x00000418 length: 36
         int aliveArray[9]; // 0x0000043C length: 36
         int lordType; // 0x00000460 length: 4
@@ -32,6 +36,7 @@ namespace IO {
         uint localTimeYear; // 0x0000046C length: 4
         int gameDurationInMinutes; // 0x00000470 length: 4
         int mapTimeInTicks; // 0x00000474 length: 4
+        // Created by retype action
         SkirmishStatistics results; // 0x00000478 length: 1912
 
     } SkMasterDataEntry;

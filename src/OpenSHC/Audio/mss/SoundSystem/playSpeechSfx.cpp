@@ -15,32 +15,31 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047B670
         void SoundSystem::playSpeechSfx(char* soundFileName)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
-            if ((this->streamFlagsUnkAndLoopCount_0x34[enums::SND_STR_SPEECH_1] & FLAG_SOUND_UNINTERRUPTABLE)
+            if ((this->streamFlagsAndLoopCount[enums::SND_STR_SPEECH_1] & FLAG_SOUND_UNINTERRUPTABLE)
                 && MACRO_CALL_MEMBER(SoundSystem_Func::isSampleOrStreamPlaying, this)(enums::SND_STR_SPEECH_1)) {
                 return;
             }
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CRUSADER_TUTORIAL) {
                 return;
             }
-            ++DAT_SFXDefinedData::instance.speechStreamCursor;
-            if (DAT_SFXDefinedData::instance.speechStreamCursor > 4) {
-                DAT_SFXDefinedData::instance.speechStreamCursor = 3;
+            ++DAT_SFXDefinedData::instance.speechStreamRoundRobin;
+            if (DAT_SFXDefinedData::instance.speechStreamRoundRobin > 4) {
+                DAT_SFXDefinedData::instance.speechStreamRoundRobin = 3;
             }
-            if (this->streamActiveUnk_0x20[DAT_SFXDefinedData::instance.speechStreamCursor]) {
+            if (this->streamOpen[DAT_SFXDefinedData::instance.speechStreamRoundRobin]) {
                 MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)(
-                    (SHC_SoundStream)DAT_SFXDefinedData::instance.speechStreamCursor);
+                    (SHC_SoundStream)DAT_SFXDefinedData::instance.speechStreamRoundRobin);
             }
             int const nextVolume
                 = MACRO_CALL_MEMBER(SFX::SFXState_Func::getSoundVolumeForFilename, DAT_SFXState::ptr)(soundFileName);
-            this->streamFileVolumeNextUnk_0x48[3] = nextVolume;
-            this->streamFileVolumeNextUnk_0x48[4] = nextVolume;
-            MACRO_CALL_MEMBER(SoundSystem_Func::playSoundStreamUnk, this)(
-                (SHC_SoundStream)DAT_SFXDefinedData::instance.speechStreamCursor, soundFileName, 1);
-            DAT_SoundSystemState::instance.lastUsedSpeechStreamUnk_0x3284
-                = DAT_SFXDefinedData::instance.speechStreamCursor;
+            this->streamUnduckedFileVolume[3] = nextVolume;
+            this->streamUnduckedFileVolume[4] = nextVolume;
+            MACRO_CALL_MEMBER(SoundSystem_Func::startSoundStream, this)(
+                (SHC_SoundStream)DAT_SFXDefinedData::instance.speechStreamRoundRobin, soundFileName, 1);
+            DAT_SoundSystemState::instance.lastUsedSpeechStream = DAT_SFXDefinedData::instance.speechStreamRoundRobin;
         }
     }
 

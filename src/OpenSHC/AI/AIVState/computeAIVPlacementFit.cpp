@@ -2,7 +2,6 @@
 
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/TileMapState.func.hpp"
-#include "OpenSHC/Map/MapConstants.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -44,15 +43,14 @@ namespace AI {
                 ++this->buildingCounter;
                 uint const realX = this->aivs[playerID].keepXOffset + x;
                 uint const realY = this->aivs[playerID].keepYOffset + y;
-                if (realX > OpenSHC::Map::MC_MAP_XY_LIMIT_MIN_1 || realY > OpenSHC::Map::MC_MAP_XY_LIMIT_MIN_1
-                    || !DAT_ViewportRenderState::instance
-                        .DAT_BinaryTileMap400x400[realY * OpenSHC::Map::MC_MAP_XY_LIMIT + realX]) {
+                if (realX > 399 || realY > 399
+                    || !DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[realY * 400 + realX]) {
                     continue;
                 }
                 int const tile = DAT_ViewportRenderState::instance.translationMatrix[realY].addXgetTile + realX;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::storeMinAndMaxHeightOfArea, DAT_TileMapState::ptr)(
                     realX, realY, 1);
-                if (MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, DAT_TileMapState::ptr)(
+                if (MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementBlockedAtTile, DAT_TileMapState::ptr)(
                         tile, 0, mapper, 0)) {
                     this->isHandled[index] = 1;
                     // steps is accessed as a flat 100 * 100 array

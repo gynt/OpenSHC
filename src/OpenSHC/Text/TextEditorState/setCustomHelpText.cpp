@@ -15,7 +15,7 @@ namespace Text {
         this->customHelpTextBufferSize = bufferSize;
         MACRO_CALL_MEMBER(Util::WideCharMultiByteState_Func::multiByteToWideCharacter, DAT_WideCharMultiByteState::ptr)(
             this->DAT_PointerToTemporaryTextMemory, helpText);
-        this->customHelpTextLength = strlen(helpText);
+        this->helpTextLength = strlen(helpText);
         this->isTextHelpDialogMode = TRUE;
         MACRO_CALL_MEMBER(TextEditorState_Func::loadAndLayoutHelpContent, this)();
     }

@@ -212,6 +212,7 @@ namespace DE {
             GM_ANIM_CRUSADER_FLAG = 201, // 0x000000C9
             GM_BODY_INFO = 202, // 0x000000CA
             GM_BODY_WOLF = 203, // 0x000000CB
+            GM_TRAIL_MAP_ICONS = 204, // 0x000000CC
             GM_BODY_ARABIC_LORD = 205, // 0x000000CD
             GM_ADDITIONAL_GFX = 207, // 0x000000CF
             GM_BODY_BEDOUIN_CAMEL_LANCER = 208, // 0x000000D0

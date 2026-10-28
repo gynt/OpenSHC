@@ -16,8 +16,11 @@ namespace Game {
         // SIZE: 0x000004A0
         typedef struct SkirmishLobbySetupStructureLongName {
 
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mapu4int2; // 0x00000000 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mbr_0x4; // 0x00000004 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             char mapName[1000]; // 0x00000008 length: 1000
             byte roundTableOrderArray[9]; // 0x000003F0 length: 9
             byte playerGroupArray[9]; // 0x000003F9 length: 9
@@ -33,15 +36,21 @@ namespace Game {
             int currentPlayerSlotID; // 0x0000040C length: 4
             int currentAdvantageBalance; // 0x00000410 length: 4
             int currentAdvantageGroup; // 0x00000414 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mbr_0x80; // 0x00000418 length: 4
             int currentAIArray[9]; // 0x0000041C length: 36
             int aiVariationArray[9]; // 0x00000440 length: 36
             int playerLordTypeArray[9]; // 0x00000464 length: 36
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mbr_0xf0; // 0x00000488 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword selectedLordType; // 0x0000048C length: 4
             dword popularity; // 0x00000490 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mbr_0xfc; // 0x00000494 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mapSelectionScrollOffset; // 0x00000498 length: 4
+            // Unsigned Double-Word (ddw, 4-bytes)
             dword mapSelectionRelativeSelected; // 0x0000049C length: 4
 
         } SkirmishLobbySetupStructureLongName;

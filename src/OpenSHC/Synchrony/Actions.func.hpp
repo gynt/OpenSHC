@@ -25,7 +25,7 @@ namespace Synchrony {
         ProcessRecruitUnit;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(undefined4 playerID, int buildingID, ushort producedItemType, int buildingUID), false,
+            void(__cdecl*)(undefined4 playerID, int buildingID, int producedItemType, int buildingUID), false,
             Address::SHC_3BB0A8C1_0x004652A0, &OpenSHC::Synchrony::Actions::SetBuildingProductionType)
         SetBuildingProductionType;
 
@@ -75,8 +75,8 @@ namespace Synchrony {
         ProcessAllyAcceptsRequest;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, int param_2), false, Address::SHC_3BB0A8C1_0x004AD1E0,
-            &OpenSHC::Synchrony::Actions::ProcessAllyDeniesRequest2)
-        ProcessAllyDeniesRequest2;
+            &OpenSHC::Synchrony::Actions::processAllyDeniesAttackOrAidRequest)
+        processAllyDeniesAttackOrAidRequest;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int targetPlayerID, int playerID, int requestedByPlayerID, int param_4),
             false, Address::SHC_3BB0A8C1_0x004AD2F0, &OpenSHC::Synchrony::Actions::ProcessAllyRequestAttackDefense)
@@ -87,8 +87,8 @@ namespace Synchrony {
         ProcessAllyRequestingGoods;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ResourceType param_2, int param_3, int param_4), false,
-            Address::SHC_3BB0A8C1_0x004ADDD0, &OpenSHC::Synchrony::Actions::ProcessAllyGoodsRequest)
-        ProcessAllyGoodsRequest;
+            Address::SHC_3BB0A8C1_0x004ADDD0, &OpenSHC::Synchrony::Actions::ProcessAllySendsGoods)
+        ProcessAllySendsGoods;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, int param_2), false, Address::SHC_3BB0A8C1_0x004AE010,
             &OpenSHC::Synchrony::Actions::ProcessAllyDeniesRequest)

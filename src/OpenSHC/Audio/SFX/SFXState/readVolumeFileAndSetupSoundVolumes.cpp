@@ -12,8 +12,8 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0044AE90
         void SFXState::readVolumeFileAndSetupSoundVolumes()
         {
-            if (this->DAT_SoundFileNameArrayMemoryPointer) {
-                MACRO_CALL(OS_Func::_free_base)(this->DAT_SoundFileNameArrayMemoryPointer);
+            if (this->volumeFileBuffer) {
+                MACRO_CALL(OS_Func::_free_base)(this->volumeFileBuffer);
             }
             FILE* _File = MACRO_CALL(OS_Func::_fopen)(s_fx_volume_txt_005a4e08, s_rb_005a4e18);
             if (!_File) {
@@ -24,8 +24,8 @@ namespace Audio {
             long const _Size = MACRO_CALL(OS_Func::_ftell)(_File);
             MACRO_CALL(OS_Func::_fseek)(_File, 0, FILE_BEGIN);
 
-            this->DAT_SoundFileNameArrayMemoryPointer = (char*)MACRO_CALL(OS_Func::_malloc)(_Size);
-            MACRO_CALL(OS_Func::_fread)(this->DAT_SoundFileNameArrayMemoryPointer, 1, _Size, _File);
+            this->volumeFileBuffer = (char*)MACRO_CALL(OS_Func::_malloc)(_Size);
+            MACRO_CALL(OS_Func::_fread)(this->volumeFileBuffer, 1, _Size, _File);
             MACRO_CALL(OS_Func::_fclose)(_File);
 
             int fileIndex = 0;
@@ -33,13 +33,13 @@ namespace Audio {
             int volume = 0;
             while (fileIndex < _Size) {
                 while (fileIndex < _Size) {
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '-'
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\"') {
+                    while (this->volumeFileBuffer[fileIndex] != '-'
+                        && this->volumeFileBuffer[fileIndex] != '\"') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
                     }
-                    if (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '-') {
+                    if (this->volumeFileBuffer[fileIndex] != '-') {
                         break;
                     }
                     volume = 0;
@@ -47,11 +47,11 @@ namespace Audio {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
-                    } while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] < '0'
-                        || '9' < this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]);
+                    } while (this->volumeFileBuffer[fileIndex] < '0'
+                        || '9' < this->volumeFileBuffer[fileIndex]);
 
-                    while ('0' <= this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] <= '9') {
+                    while ('0' <= this->volumeFileBuffer[fileIndex]
+                        && this->volumeFileBuffer[fileIndex] <= '9') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
@@ -61,17 +61,17 @@ namespace Audio {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
-                    } while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] < '0'
-                        || '9' < this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]);
+                    } while (this->volumeFileBuffer[fileIndex] < '0'
+                        || '9' < this->volumeFileBuffer[fileIndex]);
 
                     int isNegative = FALSE;
-                    if (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex - 1] == '-') {
+                    if (this->volumeFileBuffer[fileIndex - 1] == '-') {
                         isNegative = TRUE;
                     }
-                    while ('0' <= this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] <= '9') {
+                    while ('0' <= this->volumeFileBuffer[fileIndex]
+                        && this->volumeFileBuffer[fileIndex] <= '9') {
                         volume *= 10;
-                        volume += this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] - 48;
+                        volume += this->volumeFileBuffer[fileIndex] - 48;
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
@@ -80,8 +80,8 @@ namespace Audio {
                         volume = -volume;
                     }
 
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\n'
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\r') {
+                    while (this->volumeFileBuffer[fileIndex] != '\n'
+                        && this->volumeFileBuffer[fileIndex] != '\r') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
@@ -89,28 +89,28 @@ namespace Audio {
                 }
 
                 while (fileIndex < _Size) {
-                    if (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\"') {
+                    if (this->volumeFileBuffer[fileIndex] != '\"') {
                         break;
                     }
                     ++fileIndex;
                     this->DAT_SoundFileNamePointersArray[soundIndex]
-                        = this->DAT_SoundFileNameArrayMemoryPointer + fileIndex;
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\"'
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\r'
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\n') {
+                        = this->volumeFileBuffer + fileIndex;
+                    while (this->volumeFileBuffer[fileIndex] != '\"'
+                        && this->volumeFileBuffer[fileIndex] != '\r'
+                        && this->volumeFileBuffer[fileIndex] != '\n') {
 
-                        this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] = (char)MACRO_CALL(OS_Func::__tolower)(
-                            this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]);
+                        this->volumeFileBuffer[fileIndex] = (char)MACRO_CALL(OS_Func::__tolower)(
+                            this->volumeFileBuffer[fileIndex]);
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
                     }
-                    if (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] == '\"') {
-                        this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] = '\0';
+                    if (this->volumeFileBuffer[fileIndex] == '\"') {
+                        this->volumeFileBuffer[fileIndex] = '\0';
                     }
                     ++fileIndex;
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] == ' '
-                        || this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] == '\t') {
+                    while (this->volumeFileBuffer[fileIndex] == ' '
+                        || this->volumeFileBuffer[fileIndex] == '\t') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
@@ -119,11 +119,11 @@ namespace Audio {
 
                     // Read numbers by: Reading first char, transform to int (-48) and then combine with previous
                     // int * 10, to handle number index.
-                    while ('0' <= this->DAT_SoundFileNameArrayMemoryPointer[fileIndex]
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] <= '9') {
+                    while ('0' <= this->volumeFileBuffer[fileIndex]
+                        && this->volumeFileBuffer[fileIndex] <= '9') {
                         this->DAT_SoundVolumeArray[soundIndex] *= 10;
                         this->DAT_SoundVolumeArray[soundIndex]
-                            += this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] - 48;
+                            += this->volumeFileBuffer[fileIndex] - 48;
                         ++fileIndex;
                         if (fileIndex < _Size) {
                             continue;
@@ -147,14 +147,14 @@ namespace Audio {
                     } else if (127 < volumeRef) {
                         volumeRef = 127;
                     }
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\n'
-                        && this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] != '\r') {
+                    while (this->volumeFileBuffer[fileIndex] != '\n'
+                        && this->volumeFileBuffer[fileIndex] != '\r') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
                     }
-                    while (this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] == '\n'
-                        || this->DAT_SoundFileNameArrayMemoryPointer[fileIndex] == '\r') {
+                    while (this->volumeFileBuffer[fileIndex] == '\n'
+                        || this->volumeFileBuffer[fileIndex] == '\r') {
                         ++fileIndex;
                         if (fileIndex >= _Size)
                             goto break_parse;
@@ -170,15 +170,15 @@ namespace Audio {
                 if (!this->DAT_SoundStructures[i].pointerToFilename) {
                     continue;
                 }
-                this->DAT_SoundStructures[i].baseVolumePercentageUnk = MACRO_CALL_MEMBER(
+                this->DAT_SoundStructures[i].fileVolume = MACRO_CALL_MEMBER(
                     SFXState_Func::getSoundVolumeForFilename, this)(this->DAT_SoundStructures[i].pointerToFilename);
             }
 
             for (int i = 0; i < 10; ++i) {
                 for (int j = 0; j < 8; ++j) {
-                    DAT_SpeechDefinedData::instance.AmbientSounds[i].volumeUnk_0x28[j]
+                    DAT_SpeechDefinedData::instance.ambientSfxTable[i].variationVolumes[j]
                         = MACRO_CALL_MEMBER(SFXState_Func::getSoundVolumeForFilename, this)(
-                            DAT_SpeechDefinedData::instance.AmbientSounds[i].ambientWavs_0x8[j]);
+                            DAT_SpeechDefinedData::instance.ambientSfxTable[i].ambientWavs_0x8[j]);
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479DF0
         void SoundSystem::playSound(int soundIndex)
         {
-            if (!this->waveOutOpenUnk_0x8 || !this->soundActiveUnk_0x0
+            if (!this->soundSystemInitialized || !this->sfxEnabled
                 || this->soundFileCurrSampleNum_0x28c[soundIndex] < 0) {
                 return;
             }

@@ -10,8 +10,8 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00424700
         void SoundSystem::endSpeechStreamsAndResetLoopFlags()
         {
-            this->streamFlagsUnkAndLoopCount_0x34[4] = 0;
-            this->streamFlagsUnkAndLoopCount_0x34[3] = 0;
+            this->streamFlagsAndLoopCount[4] = 0;
+            this->streamFlagsAndLoopCount[3] = 0;
             MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)(enums::SND_STR_SPEECH_1);
             MACRO_CALL_MEMBER(SoundSystem_Func::endSoundStream, this)(enums::SND_STR_SPEECH_2);
         }

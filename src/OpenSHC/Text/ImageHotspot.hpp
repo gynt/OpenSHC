@@ -17,8 +17,10 @@ namespace Text {
 
         short xPos; // 0x00000000 length: 2
         short yPos; // 0x00000002 length: 2
-        short imageIndex; // 0x00000004 length: 2
-        short linkId; // 0x00000006 length: 2
+        // [199 0x0045FDC0] assigned the PIC token's graphic id
+        short graphicId; // 0x00000004 length: 2
+        // [199 0x0045FDC0] assigned the active link index (local_ec) for the picture
+        short linkIndex; // 0x00000006 length: 2
 
     } ImageHotspot;
 #pragma pack(pop)

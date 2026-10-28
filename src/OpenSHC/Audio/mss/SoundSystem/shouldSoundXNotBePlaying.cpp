@@ -13,7 +13,7 @@ namespace Audio {
         BOOLEnum SoundSystem::shouldSoundXNotBePlaying()
         {
             if (DAT_GameState::ptr->playerDataArray[DAT_GameSynchronyState::ptr->currentPlayerSlotID]
-                    .playerDeathRelated) {
+                    .gameOutcome) {
                 return FALSE;
             }
 

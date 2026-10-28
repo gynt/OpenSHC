@@ -13,6 +13,7 @@ namespace Map {
     namespace Units {
         typedef enum UnitType {
 
+            UT_NONE = 0, // 0x00000000
             UT_PEASANT = 1, // 0x00000001
             UT_BURNINGMAN = 2, // 0x00000002
             UT_WOODCUTTER = 3, // 0x00000003
@@ -51,6 +52,7 @@ namespace Map {
             UT_INNKEEPER = 36, // 0x00000024
             UT_E_MONK = 37, // 0x00000025
             UT_E_ARCHER_DEBUG = 38, // 0x00000026
+            UnitTypeInt__UT_UNKNOWN1 = 38, // 0x00000026
             UT_S_CATAPULT = 39, // 0x00000027
             UT_S_TREBUCHET = 40, // 0x00000028
             UT_S_MANGONEL = 41, // 0x00000029
@@ -81,7 +83,9 @@ namespace Map {
             UT_FIREEATER = 66, // 0x00000042
             UT_CAGEDOG = 67, // 0x00000043
             UT_BURNING_ANIMAL_BIG = 68, // 0x00000044
+            UnitTypeInt__UT_BURNING_ANIMAL_1 = 68, // 0x00000044
             UT_BURNING_ANIMAL_SMALL = 69, // 0x00000045
+            UnitTypeInt__UT_BURNING_ANIMAL_2 = 69, // 0x00000045
             UT_A_ARCHER = 70, // 0x00000046
             UT_A_SLAVE = 71, // 0x00000047
             UT_A_SLINGER = 72, // 0x00000048
@@ -91,10 +95,7 @@ namespace Map {
             UT_A_FIRETHROWER = 76, // 0x0000004C
             UT_S_FBALLISTA = 77, // 0x0000004D
             UT_UNKNOWN2 = 78, // 0x0000004E
-            UT_UNKNOWN3 = 79, // 0x0000004F
-            UnitTypeInt__UT_UNKNOWN1 = 38, // 0x00000026
-            UnitTypeInt__UT_BURNING_ANIMAL_1 = 68, // 0x00000044
-            UnitTypeInt__UT_BURNING_ANIMAL_2 = 69 // 0x00000045
+            UT_UNKNOWN3 = 79 // 0x0000004F
 
         } UnitType;
 

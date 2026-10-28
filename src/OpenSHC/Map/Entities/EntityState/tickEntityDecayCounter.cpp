@@ -7,11 +7,11 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00401430
         void EntityState::tickEntityDecayCounter(int entityID)
         {
-            if (this->entityArray[entityID].unkMinusOne >= 31) {
+            if (this->entityArray[entityID].fadeLevel >= 31) {
                 this->entityArray[entityID].logicalState = 3;
                 return;
             }
-            this->entityArray[entityID].unkMinusOne += 1;
+            this->entityArray[entityID].fadeLevel += 1;
         }
 
     }

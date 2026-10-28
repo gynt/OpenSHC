@@ -12,7 +12,7 @@ namespace Map {
         using OpenSHC::Commands::GameCommandType;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00536CC0
-        void UnitsState::queueClickNavigateMenuOrEscape(undefined4 param_1)
+        void UnitsState::queueSelectOnlyUnitTypeCommand(undefined4 param_1)
         {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = -2;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = param_1;

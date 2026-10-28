@@ -1,6 +1,5 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Random/RNG.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -12,22 +11,23 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004D0110
     void AICState::setAttackCoordinationLevel(int playerID)
     {
-        int const aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
-        if (aiType == AITA_NULL) {
+        int const _aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
+        if (_aiType == AITA_NULL) {
             return;
         }
-        int willingnessPercentage = this->aics[aiType - 1].AttCoordinationPreference
+        int _willingnessPercentage = this->aics[_aiType - 1].AttCoordinationPreference
             + DAT_GameState::instance.playerDataArray[playerID].currentAttackWave * 4;
-        if (90 < willingnessPercentage) {
-            willingnessPercentage = 90;
+        if (90 < _willingnessPercentage) {
+            _willingnessPercentage = 90;
         }
-        int const rngMod100 = SEC_RNG::instance.currentNumber2 % 100;
+        int _rngMod100 = SEC_RNG::instance.currentNumber2 % 100;
         MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-        if (rngMod100 < willingnessPercentage / 2) {
+        if (_rngMod100 < _willingnessPercentage / 2) {
             DAT_GameState::instance.playerDataArray[playerID].aiAttackCoordinationLevel = 2;
             return;
         }
-        DAT_GameState::instance.playerDataArray[playerID].aiAttackCoordinationLevel = rngMod100 < willingnessPercentage;
+        DAT_GameState::instance.playerDataArray[playerID].aiAttackCoordinationLevel
+            = _rngMod100 < _willingnessPercentage;
     }
 }
 }

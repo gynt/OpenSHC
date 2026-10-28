@@ -11,10 +11,10 @@ namespace Audio {
     namespace SFX {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044C740
-        void SFXState::soundRelatedMethod1()
+        void SFXState::updateSoundPlaybackTick()
         {
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
-                MACRO_CALL_MEMBER(SFXState_Func::playSFXVoices, this)();
+                MACRO_CALL_MEMBER(SFXState_Func::updateMultiplayerAdvisorVoices, this)();
             }
             MACRO_CALL_MEMBER(
                 Audio::MSS::SoundSystem_Func::restoreMusicVolumeAfterSpeechEnds, DAT_SoundSystemState::ptr)();
@@ -32,7 +32,7 @@ namespace Audio {
                     || this->DAT_SoundStructures[_loadedSoundIndex].scheduledPlayCounter <= 0) {
                     continue;
                 }
-                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::findSamplePlaceForSoundUnk, DAT_SoundSystemState::ptr)(
+                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::assignFreeSampleSlotToSound, DAT_SoundSystemState::ptr)(
                     _loadedSoundIndex);
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupSampleForNextSound, DAT_SoundSystemState::ptr)(
                     _loadedSoundIndex, this->DAT_SoundStructures[_loadedSoundIndex].volumePercentage,

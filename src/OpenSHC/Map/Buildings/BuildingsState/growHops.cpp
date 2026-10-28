@@ -17,17 +17,17 @@ namespace Map {
             int ripe = 0;
             for (int i = 0; i < 24; ++i) {
                 int tile = this->buildings[buildingID].tileRefs[i];
-                if ((char)DAT_TileMapState::instance.DamageLayer[tile] >= 2) {
-                    if ((char)DAT_TileMapState::instance.DamageLayer[tile] > 84) {
-                        DAT_TileMapState::instance.DamageLayer[tile] = 0;
-                    } else if ((char)DAT_TileMapState::instance.DamageLayer[tile] < 80
-                        && (char)DAT_TileMapState::instance.DamageLayer[tile] >= 32) {
-                        DAT_TileMapState::instance.DamageLayer[tile] = 0;
+                if ((char)DAT_TileMapState::instance.DamageOrCropStageLayer[tile] >= 2) {
+                    if ((char)DAT_TileMapState::instance.DamageOrCropStageLayer[tile] > 84) {
+                        DAT_TileMapState::instance.DamageOrCropStageLayer[tile] = 0;
+                    } else if ((char)DAT_TileMapState::instance.DamageOrCropStageLayer[tile] < 80
+                        && (char)DAT_TileMapState::instance.DamageOrCropStageLayer[tile] >= 32) {
+                        DAT_TileMapState::instance.DamageOrCropStageLayer[tile] = 0;
                     } else {
-                        ++DAT_TileMapState::instance.DamageLayer[tile];
+                        ++DAT_TileMapState::instance.DamageOrCropStageLayer[tile];
                     }
                 }
-                char stage = DAT_TileMapState::instance.DamageLayer[tile];
+                char stage = DAT_TileMapState::instance.DamageOrCropStageLayer[tile];
                 if (stage < 2) {
                     ++empty;
                 } else if (stage < 14) {
@@ -42,14 +42,14 @@ namespace Map {
             }
 
             if (growing >= 6) {
-                this->buildings[buildingID].farmGrowState = 5;
+                *(short*)&this->buildings[buildingID].farmerNextWorkState = 5;
                 return;
             }
             if (growing != 0 && ripe != 0) {
-                this->buildings[buildingID].farmGrowState = 5;
+                *(short*)&this->buildings[buildingID].farmerNextWorkState = 5;
                 return;
             }
-            this->buildings[buildingID].farmGrowState = empty != 0 ? 3 : 2;
+            *(short*)&this->buildings[buildingID].farmerNextWorkState = empty != 0 ? 3 : 2;
         }
 
     }

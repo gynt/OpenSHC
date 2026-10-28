@@ -15,8 +15,8 @@ namespace Audio {
     // FUNCTION: STRONGHOLDCRUSADER 0x00471720
     void MissingResourceState::playResourceLackSFX(int resourceTextElement, ResourceLackSFX resourceType)
     {
-        MACRO_CALL(UI::DisplayElements_Func::ActivateGameSpeedAndResourceLackDisplayElementUnk)(
-            (UI::Enums::DisplayElementID)(resourceTextElement + UI::Enums::DEID_IN_GAME_CHAT_Unk), resourceType, 5000);
+        MACRO_CALL(UI::DisplayElements_Func::ActivateDisplayElementForDuration)(
+            (UI::Enums::DisplayElementID)(resourceTextElement + UI::Enums::DEID_IN_GAME_CHAT), resourceType, 5000);
         if (MACRO_CALL_MEMBER(MSS::SoundSystem_Func::shouldSoundXNotBePlaying, DAT_SoundSystemState::ptr)()) {
             return;
         }
@@ -39,7 +39,7 @@ namespace Audio {
             MACRO_CALL_MEMBER(SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                 (SFX::SpeechEffectID)(_randomIndex + SFX::SEID_RESOURCE_NEED16));
             break;
-        case SFX::RLSFX_PARTIAL_STONEUnk:
+        case SFX::RLSFX_WOOD_AND_STONE:
             MACRO_CALL_MEMBER(SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(SFX::SEID_RESOURCE_NEED20);
             break;
         case SFX::RLSFX_WOOD:

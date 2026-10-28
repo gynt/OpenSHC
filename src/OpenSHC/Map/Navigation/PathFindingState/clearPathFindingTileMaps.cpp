@@ -9,18 +9,24 @@ namespace OpenSHC {
 namespace Map {
     namespace Navigation {
 
+        /*
+          WARNING: Enum "MappersEnum": Some values do not have unique names
+         */
+        /*
+          decompilerscript: committed: 2025-01-30 21:57:43.216000
+         */
         // FUNCTION: STRONGHOLDCRUSADER 0x00496E40
         void PathFindingState::clearPathFindingTileMaps()
         {
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-                sizeof(DAT_TileMapState::instance.PathConnectionLayer), 0,
-                DAT_TileMapState::instance.PathConnectionLayer);
+                0x27420, '\0', (void*)((int)(DAT_TileMapState::instance.PathConnectionLayer)));
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-                sizeof(DAT_TileMapState::instance.PathLinkageLayer), 0, DAT_TileMapState::instance.PathLinkageLayer);
+                0x13a10, '\0', (void*)((int)(DAT_TileMapState::instance.PathLinkageLayer)));
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-                sizeof(DAT_TileMapState::instance.CertainPathLayer), 0, DAT_TileMapState::instance.CertainPathLayer);
+                0x27420, '\0', (void*)((int)(DAT_TileMapState::instance.SearchDistanceLayer)));
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-                sizeof(DAT_TileMapState::instance.WalkLayer), 0, DAT_TileMapState::instance.WalkLayer);
+                0x27420, '\0', (void*)((int)(DAT_TileMapState::instance.SearchGenerationLayer)));
+            return;
         }
 
     }

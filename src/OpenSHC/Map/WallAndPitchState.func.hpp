@@ -8,20 +8,20 @@ namespace Map {
     namespace WallAndPitchState_Func {
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(int), false, Address::SHC_3BB0A8C1_0x00500C20,
-            &WallAndPitchState::startBuildingDestructionConfirmation)
-        startBuildingDestructionConfirmation;
+            &WallAndPitchState::startBuildingPlacementUndoWindow)
+        startBuildingPlacementUndoWindow;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(), false, Address::SHC_3BB0A8C1_0x00500C80,
             &WallAndPitchState::resetWallAndPitchState)
         resetWallAndPitchState;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(int), false, Address::SHC_3BB0A8C1_0x00500CB0,
-            &WallAndPitchState::startEntityDestructionConfirmation)
-        startEntityDestructionConfirmation;
+            &WallAndPitchState::startEntityPlacementUndoWindow)
+        startEntityPlacementUndoWindow;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(int), false, Address::SHC_3BB0A8C1_0x00500CF0,
-            &WallAndPitchState::startUnitDestructionConfirmation)
-        startUnitDestructionConfirmation;
+            &WallAndPitchState::startUnitPlacementUndoWindow)
+        startUnitPlacementUndoWindow;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(), false, Address::SHC_3BB0A8C1_0x00500D30,
             &WallAndPitchState::resetWallPlacementInfo)
@@ -32,8 +32,8 @@ namespace Map {
         addWallPlacementInfoForTile;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(int), false, Address::SHC_3BB0A8C1_0x00500DD0,
-            &WallAndPitchState::placePitchDitch)
-        placePitchDitch;
+            &WallAndPitchState::recordPitchDitchForUndo)
+        recordPitchDitchForUndo;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(int, int, int, int), false,
             Address::SHC_3BB0A8C1_0x00500E20, &WallAndPitchState::destroyWall)
@@ -44,8 +44,8 @@ namespace Map {
         destroyPitch;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(), false, Address::SHC_3BB0A8C1_0x00500F40,
-            &WallAndPitchState::updateDestructionConfirmationCountdown)
-        updateDestructionConfirmationCountdown;
+            &WallAndPitchState::updatePlacementUndoCountdown)
+        updatePlacementUndoCountdown;
 
         MACRO_FUNCTION_RESOLVER(void (WallAndPitchState::*)(), false, Address::SHC_3BB0A8C1_0x005118C0,
             &WallAndPitchState::confirmAndQueueDestructionCommand)

@@ -14,14 +14,14 @@ namespace UI {
     void Menu::updateMenuButtons()
     {
         if (this->hoveredItem == NULL) {
-            this->someMenuItemPtr_0x3c = NULL;
+            this->tooltipItem = NULL;
         }
         this->hoveredItem = NULL;
-        this->field16_0x40 = 0;
-        DAT_MenuHandlerState::instance.field18_0x3c = 0;
+        this->hoverSoundPlayedThisFrame = 0;
+        DAT_MenuHandlerState::instance.mouseOverMenuItem = 0;
         MACRO_CALL_MEMBER(OpenSHC::UI::Menu_Func::handleMenuItems, this)(
-            OpenSHC::UI::Enums::MIHS_HANDLE_INPUT_CALLBACKSUnk);
-        this->one = 0;
+            OpenSHC::UI::Enums::MIHS_HANDLE_INPUT_CALLBACKS);
+        this->isFirstFrame = 0;
     }
 
 }

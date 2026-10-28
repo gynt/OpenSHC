@@ -64,6 +64,7 @@ namespace Game {
             ResourceAICResourceMappingEntry AIResourceTradeAICMapping[20]; // 0x00003954 length: 160
             ResourceTypeInt ResourceAcquisitionPreferenceOrder[20]; // 0x000039F4 length: 80
             int field25_0x3a44[6]; // 0x00003A44 length: 24
+            // not capitalized because it is written to as a scratch variable
             AIUnitBehaviourRequiredMapEntry attackUnitRequired[11]; // 0x00003A5C length: 88
             UnitTypeInt SomeAIUnitTypeArray[20]; // 0x00003AB4 length: 80
             int AITribeIDOffsetForAIVUnitType[20]; // 0x00003B04 length: 80
@@ -81,7 +82,9 @@ namespace Game {
             int SiegeEngineUnitType[6]; // 0x00003F0C length: 24
             int SiegeEngineTypeRequiredEngineers[6]; // 0x00003F24 length: 24
             AITribeTypeCountPair MaxBreachTribes[11]; // 0x00003F3C length: 88
-            int field43_0x3f94[34]; // 0x00003F94 length: 136
+            // [029 0x004D10B0] MaxBreachTribes has 11 entries; MaxBreachTribes[aiType+10] (aiType 1..16) lands in
+            // field43_0x3f94 as (weight, message id) pairs per AI character
+            int aiTauntWeightAndMessage[34]; // 0x00003F94 length: 136
 
         } SkirmishDefinedData;
 #pragma pack(pop)

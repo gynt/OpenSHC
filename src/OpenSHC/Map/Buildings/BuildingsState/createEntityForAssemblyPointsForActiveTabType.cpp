@@ -41,18 +41,18 @@ namespace Map {
                               .addXgetTile;
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                         DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
-                        (int)DAT_TileMapState::instance.flagAnimationFrame % 10 + 97, 18, -1, tile, 0xa0022);
+                        (int)DAT_TileMapState::instance.cursorAnimTick % 10 + 97, 18, -1, tile, 0xa0022);
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.field382_0x9e1c[i][0],
-                        DAT_BuildingDefinedData::instance.field382_0x9e1c[i][1],
-                        DAT_BuildingDefinedData::instance.field382_0x9e1c[i][2] + 41,
-                        DAT_BuildingDefinedData::instance.field382_0x9e1c[i][3] - 40, tile, 0xc0006);
+                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.barracksAssemblyUnitIcons[i][0],
+                        DAT_BuildingDefinedData::instance.barracksAssemblyUnitIcons[i][1],
+                        DAT_BuildingDefinedData::instance.barracksAssemblyUnitIcons[i][2] + 41,
+                        DAT_BuildingDefinedData::instance.barracksAssemblyUnitIcons[i][3] - 40, tile, 0xc0006);
                     if (i == 6) {
                         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                            DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.field383_0x9e8c[0],
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[1],
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[2] + 41,
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[3] - 40, tile, 0xc0006);
+                            DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.assemblyExtraIcon[0],
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[1],
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[2] + 41,
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[3] - 40, tile, 0xc0006);
                     }
                 }
                 return;
@@ -74,18 +74,18 @@ namespace Map {
                               .addXgetTile;
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                         DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
-                        (int)DAT_TileMapState::instance.flagAnimationFrame % 10 + 97, 18, -1, tile, 0xa0022);
+                        (int)DAT_TileMapState::instance.cursorAnimTick % 10 + 97, 18, -1, tile, 0xa0022);
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.field384_0x9e9c[i][0],
-                        DAT_BuildingDefinedData::instance.field384_0x9e9c[i][1],
-                        DAT_BuildingDefinedData::instance.field384_0x9e9c[i][2] + 41,
-                        DAT_BuildingDefinedData::instance.field384_0x9e9c[i][3] - 40, tile, 0xc0006);
+                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.mercenaryAssemblyUnitIcons[i][0],
+                        DAT_BuildingDefinedData::instance.mercenaryAssemblyUnitIcons[i][1],
+                        DAT_BuildingDefinedData::instance.mercenaryAssemblyUnitIcons[i][2] + 41,
+                        DAT_BuildingDefinedData::instance.mercenaryAssemblyUnitIcons[i][3] - 40, tile, 0xc0006);
                     if (i == 1) {
                         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                            DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.field383_0x9e8c[0],
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[1],
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[2] + 41,
-                            DAT_BuildingDefinedData::instance.field383_0x9e8c[3] - 40, tile, 0xc0006);
+                            DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.assemblyExtraIcon[0],
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[1],
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[2] + 41,
+                            DAT_BuildingDefinedData::instance.assemblyExtraIcon[3] - 40, tile, 0xc0006);
                     }
                 }
                 return;
@@ -93,74 +93,68 @@ namespace Map {
             if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_ENGINEERSGUILD) {
                 for (int i = 0; i < 2; ++i) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .specialBuildingAssemblyPoints[i]
+                            .engineersAssemblyPoints[i]
                             .x
                         == 0) {
                         continue;
                     }
                     int tile
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                              .specialBuildingAssemblyPoints[i]
+                              .engineersAssemblyPoints[i]
                               .x
                         + DAT_ViewportRenderState::instance
                               .translationMatrix[DAT_GameState::instance
                                       .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                      .specialBuildingAssemblyPoints[i]
+                                      .engineersAssemblyPoints[i]
                                       .y]
                               .addXgetTile;
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                         DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
-                        (int)DAT_TileMapState::instance.flagAnimationFrame % 10 + 97, 18, -1, tile, 0xa0022);
+                        (int)DAT_TileMapState::instance.cursorAnimTick % 10 + 97, 18, -1, tile, 0xa0022);
                     MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
-                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.field401_0x9f1c[i][0],
-                        DAT_BuildingDefinedData::instance.field401_0x9f1c[i][1],
-                        DAT_BuildingDefinedData::instance.field401_0x9f1c[i][2] + 41,
-                        DAT_BuildingDefinedData::instance.field401_0x9f1c[i][3] - 40, tile, 0xc0006);
+                        DAT_ViewportRenderState::ptr)((GmID)DAT_BuildingDefinedData::instance.engineersAssemblyUnitIcons[i][0],
+                        DAT_BuildingDefinedData::instance.engineersAssemblyUnitIcons[i][1],
+                        DAT_BuildingDefinedData::instance.engineersAssemblyUnitIcons[i][2] + 41,
+                        DAT_BuildingDefinedData::instance.engineersAssemblyUnitIcons[i][3] - 40, tile, 0xc0006);
                 }
                 return;
             }
             if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD) {
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .specialBuildingAssemblyPoints[2]
-                        .x
+                        .engineersAssemblyPoints[2].x
                     == 0) {
                     return;
                 }
                 int tile = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                               .specialBuildingAssemblyPoints[2]
-                               .x
+                               .engineersAssemblyPoints[2].x
                     + DAT_ViewportRenderState::instance
                           .translationMatrix[DAT_GameState::instance
                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                  .specialBuildingAssemblyPoints[2]
-                                  .y]
+                                  .engineersAssemblyPoints[2].y]
                           .addXgetTile;
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                     DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
-                    (int)DAT_TileMapState::instance.flagAnimationFrame % 10 + 97, 18, -1, tile, 0xa0022);
+                    (int)DAT_TileMapState::instance.cursorAnimTick % 10 + 97, 18, -1, tile, 0xa0022);
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                     DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_BODY_TUNNELOR, 3, 14, -40, tile, 0xc0006);
                 return;
             }
             if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_CATHEDRAL) {
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .specialBuildingAssemblyPoints[3]
-                        .x
+                        .engineersAssemblyPoints[3].x
                     == 0) {
                     return;
                 }
                 int tile = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                               .specialBuildingAssemblyPoints[3]
-                               .x
+                               .engineersAssemblyPoints[3].x
                     + DAT_ViewportRenderState::instance
                           .translationMatrix[DAT_GameState::instance
                                   .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                  .specialBuildingAssemblyPoints[3]
-                                  .y]
+                                  .engineersAssemblyPoints[3].y]
                           .addXgetTile;
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                     DAT_ViewportRenderState::ptr)(OpenSHC::IO::Graphics::GID_FLOATS_NEW,
-                    (int)DAT_TileMapState::instance.flagAnimationFrame % 10 + 97, 18, -1, tile, 0xa0022);
+                    (int)DAT_TileMapState::instance.cursorAnimTick % 10 + 97, 18, -1, tile, 0xa0022);
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                     DAT_ViewportRenderState::ptr)(
                     OpenSHC::IO::Graphics::GID_BODY_FIGHTING_MONK, 3, 14, -40, tile, 0xc0006);

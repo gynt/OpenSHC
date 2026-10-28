@@ -18,7 +18,7 @@ namespace Map {
         for (int unitID = 1; unitID < 2500; ++unitID) {
             DAT_CurrentUnitSlotID::instance += 1;
             if (DAT_UnitsState::instance.units[unitID].logicalState != Units::ULS_INVISIBLE) {
-                DAT_UnitsState::instance.units[unitID].killedFlagUnk = 0;
+                DAT_UnitsState::instance.units[unitID].isDisbanded = 0;
             }
         }
     }

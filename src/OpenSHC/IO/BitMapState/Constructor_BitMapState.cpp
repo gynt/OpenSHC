@@ -8,7 +8,7 @@ namespace IO {
     {
         this->address = 0;
         this->surface = 0;
-        this->mbr_0x18 = 0;
+        this->forceRgb555 = 0;
         return this;
     }
 

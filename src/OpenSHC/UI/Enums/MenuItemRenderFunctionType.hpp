@@ -13,7 +13,8 @@ namespace UI {
     namespace Enums {
         typedef enum MenuItemRenderFunctionType {
 
-            MIRFT_SIMPLE_RENDERUnk = 1, // 0x00000001
+            MIRFT_NONE = 0, // 0x00000000
+            MIRFT_SIMPLE_RENDER = 1, // 0x00000001
             MIRFT_GM_DATA_IMAGE = 3, // 0x00000003
             MIRFT_SLIDER_OR_SCROLLBAR = 4 // 0x00000004
 

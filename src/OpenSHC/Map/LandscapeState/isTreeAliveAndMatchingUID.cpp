@@ -12,7 +12,7 @@ namespace Map {
         if (this->trees[treeID].uid != treeUID) {
             return FALSE;
         }
-        return this->trees[treeID].zeroUpTo2 == 0;
+        return this->trees[treeID].fellState == 0;
     }
 
 }

@@ -39,7 +39,7 @@ namespace IO {
             strcat(this->resourceFileNameArray[resourceType], shortFileName);
             return;
 
-        case FRT_UNKNOWN: {
+        case FRT_SAVES: {
             // NOTE: Requires direct, non-resolved call due to copy elision.
             std::string savePath(this->paths_getSavesPath(true));
             strcpy(this->resourceFileNameArray[resourceType], savePath.c_str());

@@ -28,7 +28,8 @@ namespace IO {
             int imploding1orexploding2; // 0x00000024 length: 4
             ulong hash; // 0x00000028 length: 4
             int compressedSize; // 0x0000002C length: 4
-            BOOLEnum underflow; // 0x00000030 length: 4
+            // [052 0x0046D300] set to 1 when the output buffer has less room than the bytes to write
+            BOOLEnum overflow; // 0x00000030 length: 4
 
         } BufferHelper;
 #pragma pack(pop)

@@ -223,7 +223,7 @@ namespace DE {
             TEXT_NEW_CTEXT = 228, // 0x000000E4
             TEXT_MP_VERSION_CONTROL = 229, // 0x000000E5
             TEXT_NEW_TEXT = 230, // 0x000000E6
-            TEXT_HOT_KEYS = 231, // 0x000000E7
+            TEXT_AI_LORD_SPEECH = 231, // 0x000000E7
             TEXT_NEW_DEMO = 232, // 0x000000E8
             TEXT_NEW_TEXT2 = 233, // 0x000000E9
             TEXT_SANDS_OF_TIME = 234, // 0x000000EA

@@ -32,20 +32,20 @@ namespace UI {
             prepareButtonAndAlphaSurface;
 
             MACRO_FUNCTION_RESOLVER(BOOLEnum (AlphaAndButtonSurface::*)(), false, Address::SHC_3BB0A8C1_0x004630D0,
-                &AlphaAndButtonSurface::isMouseOnButtonImageUnk)
-            isMouseOnButtonImageUnk;
+                &AlphaAndButtonSurface::isMouseOverOpaqueButtonPixel)
+            isMouseOverOpaqueButtonPixel;
 
             MACRO_FUNCTION_RESOLVER(void (AlphaAndButtonSurface::*)(int), false, Address::SHC_3BB0A8C1_0x00463270,
-                &AlphaAndButtonSurface::processBuildingClickBonus)
-            processBuildingClickBonus;
+                &AlphaAndButtonSurface::ProcessBuildingClickBonus)
+            ProcessBuildingClickBonus;
 
             MACRO_FUNCTION_RESOLVER(BOOLEnum (AlphaAndButtonSurface::*)(int), false, Address::SHC_3BB0A8C1_0x00463310,
                 &AlphaAndButtonSurface::openBuildingStatusMenuForBuildingID)
             openBuildingStatusMenuForBuildingID;
 
             MACRO_FUNCTION_RESOLVER(BOOLEnum (AlphaAndButtonSurface::*)(int), false, Address::SHC_3BB0A8C1_0x00463A00,
-                &AlphaAndButtonSurface::selectUnitAndOpenStatusMenu)
-            selectUnitAndOpenStatusMenu;
+                &AlphaAndButtonSurface::SelectUnitAndOpenStatusMenu)
+            SelectUnitAndOpenStatusMenu;
 
             MACRO_FUNCTION_RESOLVER(void (AlphaAndButtonSurface::*)(int, RenderTarget), false,
                 Address::SHC_3BB0A8C1_0x00463A90, &AlphaAndButtonSurface::renderBasicButton)

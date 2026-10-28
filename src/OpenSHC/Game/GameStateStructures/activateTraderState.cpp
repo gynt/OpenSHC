@@ -6,8 +6,8 @@ namespace Game {
     // FUNCTION: STRONGHOLDCRUSADER 0x004586D0
     void GameStateStructures::activateTraderState()
     {
-        this->mapAndTime.traderRelated2 = 2;
-        this->mapAndTime.traderRelatedCounter1 = 0;
+        this->mapAndTime.traderState = 2;
+        this->mapAndTime.traderWeekCounter = 0;
     }
 
 }

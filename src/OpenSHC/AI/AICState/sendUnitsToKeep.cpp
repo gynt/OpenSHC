@@ -1,6 +1,5 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -12,7 +11,7 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CD0C0
     void AICState::sendUnitsToKeep(int tribeID, int playerID)
     {
-        int const keepID = DAT_GameState::instance.playerDataArray[playerID].keep.id;
+        int keepID = DAT_GameState::instance.playerDataArray[playerID].keep.id;
         if (keepID <= 0) {
             return;
         }

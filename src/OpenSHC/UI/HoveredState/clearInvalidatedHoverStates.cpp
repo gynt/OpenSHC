@@ -21,7 +21,7 @@ namespace UI {
         }
         for (int i = 0; i < 20; ++i) {
             if (this->elements[i].type != OpenSHC::Commands::M_MAPPER_NULL
-                && DAT_GameCore::instance.mapTimeInTicks >= this->elements[i].time) {
+                && (int)DAT_GameCore::instance.mapTimeInTicks >= this->elements[i].time) {
                 this->elements[i].type = OpenSHC::Commands::M_MAPPER_NULL;
             }
         }

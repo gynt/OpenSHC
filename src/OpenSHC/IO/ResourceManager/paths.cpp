@@ -19,8 +19,8 @@ namespace IO {
     // FUNCTION: STRONGHOLDCRUSADER 0x00477710
     static bool string_prependUserPathToString(std::string& out, char const* path, int csidl)
     {
-        if (DAT_ResourceManager::instance.configPathLoadedUnk_0x7da) {
-            std::string localStr(DAT_ResourceManager::instance.configPathUnk_0x7db);
+        if (DAT_ResourceManager::instance.hasConfigPath) {
+            std::string localStr(DAT_ResourceManager::instance.userPathOverride);
             out = localStr;
             out.append(path);
         } else {

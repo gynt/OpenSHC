@@ -28,7 +28,7 @@ namespace IO {
         int _rawSize = 0;
         int _secSizeSumUnk = 0;
 
-        this->currentlyReadFileSectionIndex = 0;
+        this->currentSectionIndex = 0;
         this->directory.sectionCount = 0;
         this->directory.filePayloadSize = 0;
 
@@ -44,44 +44,44 @@ namespace IO {
             return;
         }
         MapSectionAddress* tempSectionAddress = mapSectionAddressArray;
-        for (; this->currentlyReadFileSectionIndex < 150 && mapSectionAddressArray->address > 0;
+        for (; this->currentSectionIndex < 150 && mapSectionAddressArray->address > 0;
             ++mapSectionAddressArray) {
             _rawSize += mapSectionAddressArray->size;
-            ++this->currentlyReadFileSectionIndex;
+            ++this->currentSectionIndex;
         }
-        this->currentlyReadFileSectionIndex = 0;
+        this->currentSectionIndex = 0;
 
-        DAT_GameCore::instance.gameDuration = timeGetTime() - DAT_GameCore::instance.timeSum_2;
+        DAT_GameCore::instance.gameDuration = timeGetTime() - DAT_GameCore::instance.gameStartTimeMs;
 
         mapSectionAddressArray = tempSectionAddress;
-        for (; this->currentlyReadFileSectionIndex < 150 && mapSectionAddressArray->address > 0;
+        for (; this->currentSectionIndex < 150 && mapSectionAddressArray->address > 0;
             ++mapSectionAddressArray) {
             if (mapSectionAddressArray->unknown) {
                 continue;
             }
 
             _secSizeSumUnk += mapSectionAddressArray->size;
-            this->directory.uncompressedSize[this->currentlyReadFileSectionIndex] = mapSectionAddressArray->size;
-            this->directory.id[this->currentlyReadFileSectionIndex] = mapSectionAddressArray->sectionId;
-            this->directory.isCompressed[this->currentlyReadFileSectionIndex] = mapSectionAddressArray->compressed;
-            this->directory.compressedSize[this->currentlyReadFileSectionIndex]
-                = this->directory.uncompressedSize[this->currentlyReadFileSectionIndex];
-            this->directory.offset[this->currentlyReadFileSectionIndex] = this->directory.filePayloadSize;
+            this->directory.uncompressedSize[this->currentSectionIndex] = mapSectionAddressArray->size;
+            this->directory.id[this->currentSectionIndex] = mapSectionAddressArray->sectionId;
+            this->directory.isCompressed[this->currentSectionIndex] = mapSectionAddressArray->compressed;
+            this->directory.compressedSize[this->currentSectionIndex]
+                = this->directory.uncompressedSize[this->currentSectionIndex];
+            this->directory.offset[this->currentSectionIndex] = this->directory.filePayloadSize;
 
-            if (!this->directory.isCompressed[this->currentlyReadFileSectionIndex]
-                || this->CRASHES_saveUncompressedUnk) {
+            if (!this->directory.isCompressed[this->currentSectionIndex]
+                || this->bypassCompression) {
                 MACRO_CALL_MEMBER(LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
-                    this->directory.uncompressedSize[this->currentlyReadFileSectionIndex],
+                    this->directory.uncompressedSize[this->currentSectionIndex],
                     mapSectionAddressArray->address, (void*)((int)this->tempMem + this->directory.filePayloadSize));
                 this->directory.filePayloadSize
-                    += this->directory.uncompressedSize[this->currentlyReadFileSectionIndex];
+                    += this->directory.uncompressedSize[this->currentSectionIndex];
             } else {
-                this->directory.compressedSize[this->currentlyReadFileSectionIndex]
+                this->directory.compressedSize[this->currentSectionIndex]
                     = MACRO_CALL_MEMBER(DecoderState_Func::encodeData, DAT_DecoderState::ptr)(
-                        this->directory.uncompressedSize[this->currentlyReadFileSectionIndex],
+                        this->directory.uncompressedSize[this->currentSectionIndex],
                         (unsigned char*)mapSectionAddressArray->address,
                         (unsigned char*)((int)this->tempMem + this->directory.filePayloadSize));
-                this->directory.filePayloadSize += this->directory.compressedSize[this->currentlyReadFileSectionIndex];
+                this->directory.filePayloadSize += this->directory.compressedSize[this->currentSectionIndex];
             }
 
             if (loadAndSaveBarFunc) {
@@ -90,12 +90,12 @@ namespace IO {
 
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
                 && DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER
-                && this->currentlyReadFileSectionIndex % 10 == 0) {
+                && this->currentSectionIndex % 10 == 0) {
                 MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::sendPeriodicSyncMessages, DAT_GameSynchronyState::ptr)();
             }
             ++this->directory.sectionCount;
-            ++this->currentlyReadFileSectionIndex;
+            ++this->currentSectionIndex;
         }
 
         char* _filename
@@ -170,12 +170,12 @@ namespace IO {
         }
         {
             int playerDataSize = sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti)
-                + sizeof(DAT_GameCore::instance.mapU2MiddleBytes) + sizeof(DAT_GameCore::instance.mapU2PlayersCount);
+                + sizeof(DAT_GameCore::instance.availableKeepFlags) + sizeof(DAT_GameCore::instance.mapU2PlayersCount);
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &playerDataSize, sizeof(playerDataSize));
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.U2_mapType_singleOrMulti,
                 sizeof(DAT_GameCore::instance.U2_mapType_singleOrMulti));
-            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2MiddleBytes,
-                sizeof(DAT_GameCore::instance.mapU2MiddleBytes));
+            MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.availableKeepFlags,
+                sizeof(DAT_GameCore::instance.availableKeepFlags));
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &DAT_GameCore::instance.mapU2PlayersCount,
                 sizeof(DAT_GameCore::instance.mapU2PlayersCount));
         }
@@ -199,13 +199,13 @@ namespace IO {
                 _fileDescriptor, &DAT_GameCore::instance.mapU3EndInt, sizeof(DAT_GameCore::instance.mapU3EndInt));
         }
         {
-            int skirmishDataSize = sizeof(DAT_GameCore::instance.mapU4Int0) + sizeof(DAT_GameCore::instance.mapU4Int1)
+            int skirmishDataSize = sizeof(DAT_GameCore::instance.isKingOfTheHill) + sizeof(DAT_GameCore::instance.mapU4Int1)
                 + sizeof(DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes)
                 + sizeof(DAT_GameCore::instance.mapU4Int3_balanced)
                 + sizeof(DAT_MinimapViewState::instance.DAT_MapU4B64);
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &skirmishDataSize, sizeof(skirmishDataSize));
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(
-                _fileDescriptor, &DAT_GameCore::instance.mapU4Int0, sizeof(DAT_GameCore::instance.mapU4Int0));
+                _fileDescriptor, &DAT_GameCore::instance.isKingOfTheHill, sizeof(DAT_GameCore::instance.isKingOfTheHill));
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(
                 _fileDescriptor, &DAT_GameCore::instance.mapU4Int1, sizeof(DAT_GameCore::instance.mapU4Int1));
             MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor,
@@ -222,7 +222,7 @@ namespace IO {
         }
 
         this->directorySize = sizeof(this->directorySize) + sizeof(this->directory);
-        this->directory.magicNumOfFileType = 172;
+        this->directory.fileFormatVersion = 172;
         MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &this->directorySize, sizeof(this->directorySize));
         MACRO_CALL(OpenSHC::OS_Func::_ucrt_write)(_fileDescriptor, &this->directory, sizeof(this->directory));
 

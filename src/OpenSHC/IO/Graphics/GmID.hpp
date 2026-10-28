@@ -13,6 +13,7 @@ namespace IO {
     namespace Graphics {
         typedef enum GmID {
 
+            GID_NONE = 0, // 0x00000000
             GID_TILE_NULL_1 = 1, // 0x00000001
             GID_TILE_LAND_8 = 2, // 0x00000002
             GID_TILE_CHEVRONS = 3, // 0x00000003

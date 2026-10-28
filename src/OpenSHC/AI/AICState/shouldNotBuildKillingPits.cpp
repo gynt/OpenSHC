@@ -1,5 +1,4 @@
-#include "../AICState.func.hpp"
-
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_AIVState.hpp"

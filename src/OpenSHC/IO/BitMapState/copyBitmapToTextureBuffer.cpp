@@ -9,8 +9,8 @@ namespace IO {
     void BitMapState::copyBitmapToTextureBuffer()
     {
         unsigned char* dest = (unsigned char*)DAT_TextureRenderCoreObject::instance.address2;
-        for (int y = this->high - 1; y >= 0; --y) {
-            for (int x = 0; x < this->total; ++x) {
+        for (int y = this->height - 1; y >= 0; --y) {
+            for (int x = 0; x < this->width; ++x) {
                 *dest = *(unsigned char*)(this->stride8bit * y + this->address + x);
                 ++dest;
             }

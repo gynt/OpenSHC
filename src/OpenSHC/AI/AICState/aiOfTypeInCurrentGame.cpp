@@ -12,7 +12,7 @@ namespace AI {
         for (int playerID = 1; playerID < 9; playerID++) {
             if (DAT_GameSynchronyState::instance.currentAIArray[playerID] == 0)
                 continue;
-            if (DAT_GameState::instance.playerDataArray[playerID].lordKilledByPlayerID != 0)
+            if (DAT_GameState::instance.playerDataArray[playerID].lordDeathStatusOrKiller != 0)
                 continue;
             if (aicIndex != DAT_GameState::instance.playerDataArray[playerID].aiType - 1)
                 continue;

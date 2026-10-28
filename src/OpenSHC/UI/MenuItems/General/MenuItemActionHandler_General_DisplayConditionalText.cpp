@@ -12,7 +12,7 @@ namespace UI {
             void MenuItemActionHandler_General_DisplayConditionalText(int textID, ...)
             {
                 MACRO_CALL_MEMBER(
-                    OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedTextConstructionCost,
+                    OpenSHC::UI::BottomLeftTextDisplayState_Func::renderCurrentlyDisplayedText,
                     DAT_BottomLeftTextDisplayState::ptr)(textID);
             }
 

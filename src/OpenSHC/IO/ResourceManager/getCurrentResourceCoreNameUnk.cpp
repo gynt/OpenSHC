@@ -6,7 +6,7 @@ namespace OpenSHC {
 namespace IO {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00471D30
-    char* ResourceManager::getCurrentResourceCoreNameUnk()
+    char* ResourceManager::getCurrentResourceBaseName()
     {
         char const* _resourceName = MACRO_CALL_MEMBER(ResourceManager_Func::getFileNameOfCurrentActiveResource, this)();
         int basenameEnd = strlen(_resourceName);

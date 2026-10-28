@@ -16,8 +16,8 @@ namespace UI {
         prepareAndRenderMenuItems;
 
         MACRO_FUNCTION_RESOLVER(
-            void (MenuItem::*)(), false, Address::SHC_3BB0A8C1_0x004F4C30, &MenuItem::resetMenuItemStateUnk)
-        resetMenuItemStateUnk;
+            void (MenuItem::*)(), false, Address::SHC_3BB0A8C1_0x004F4C30, &MenuItem::resetMenuItemState)
+        resetMenuItemState;
 
     } // namespace MenuItem_Func
 } // namespace UI

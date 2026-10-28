@@ -13,7 +13,11 @@ namespace UI {
     namespace MenuModals {
         namespace DeleteGameRecord {
 
-            void __cdecl MenuModalRenderFunctionMenuModal_DeleteGameRecord(int x, int y, int width, int height);
+            /**
+             * Renders the 'Delete Game Record?' modal header: a text banner graphic, or for French/Spanish a plain
+             * banner with the text drawn from TEXT_SKMASTERS 0xd.
+             */
+            void __cdecl MenuModalRenderFunction_DeleteGameRecord(int x, int y, int width, int height);
 
         } // namespace DeleteGameRecord
     } // namespace MenuModals

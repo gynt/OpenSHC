@@ -13,8 +13,8 @@ namespace Map {
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (MapPropertiesState::*)(int), false, Address::SHC_3BB0A8C1_0x004B77E0,
-            &MapPropertiesState::isValueInRangeOneToTwenty)
-        isValueInRangeOneToTwenty;
+            &MapPropertiesState::isValueAtMostTwenty)
+        isValueAtMostTwenty;
 
         MACRO_FUNCTION_RESOLVER(void (MapPropertiesState::*)(), false, Address::SHC_3BB0A8C1_0x004B7800,
             &MapPropertiesState::importTradingCosts)
@@ -29,8 +29,8 @@ namespace Map {
         getEventIDForTimeUntilDefeatEventType;
 
         MACRO_FUNCTION_RESOLVER(void (MapPropertiesState::*)(), false, Address::SHC_3BB0A8C1_0x004B7930,
-            &MapPropertiesState::activateScenarioTypeEvents)
-        activateScenarioTypeEvents;
+            &MapPropertiesState::markScenarioGoalEventsDone)
+        markScenarioGoalEventsDone;
 
         MACRO_FUNCTION_RESOLVER(void (MapPropertiesState::*)(), false, Address::SHC_3BB0A8C1_0x004B7980,
             &MapPropertiesState::determineScenarioMissionTypeAndResetEvents)
@@ -113,8 +113,8 @@ namespace Map {
         updateEventYearsAndCommitBuildingAvailability;
 
         MACRO_FUNCTION_RESOLVER(void (MapPropertiesState::*)(), false, Address::SHC_3BB0A8C1_0x004C1320,
-            &MapPropertiesState::removeProcessedInvasionEvents)
-        removeProcessedInvasionEvents;
+            &MapPropertiesState::upgradeLegacyScenarioEventConditions)
+        upgradeLegacyScenarioEventConditions;
 
         MACRO_FUNCTION_RESOLVER(void (MapPropertiesState::*)(), false, Address::SHC_3BB0A8C1_0x004C13F0,
             &MapPropertiesState::spawnInvasionEventAttackWave)

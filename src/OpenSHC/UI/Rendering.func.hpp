@@ -25,24 +25,24 @@ namespace UI {
         RenderScribeFrame;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00433780, &OpenSHC::UI::Rendering::RenderGoldValue)
-        RenderGoldValue;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00433780, &OpenSHC::UI::Rendering::RenderGoldPopulationAndPopularity)
+        RenderGoldPopulationAndPopularity;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int xPos, int yPos, int valueUnk, BOOLEnum otherImageFlagUnk), false,
             Address::SHC_3BB0A8C1_0x00433C20, &OpenSHC::UI::Rendering::TransformAndRenderPercentage)
         TransformAndRenderPercentage;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int unitID, int xPos, int yPos), false, Address::SHC_3BB0A8C1_0x0043CC30,
-            &OpenSHC::UI::Rendering::RenderPeasantMenu_CurrentActionUnk)
-        RenderPeasantMenu_CurrentActionUnk;
+            &OpenSHC::UI::Rendering::RenderUnitCurrentActionText)
+        RenderUnitCurrentActionText;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004410D0,
             &OpenSHC::UI::Rendering::DisplayMapDescriptionAndAllocatePlayersToSlots)
         DisplayMapDescriptionAndAllocatePlayersToSlots;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0044E510,
-            &OpenSHC::UI::Rendering::InitBlendFilterArraysUnk)
-        InitBlendFilterArraysUnk;
+            &OpenSHC::UI::Rendering::InitBlendFilterArrays)
+        InitBlendFilterArrays;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00452900,
             &OpenSHC::UI::Rendering::RenderTerrainTilesCenterPiece)
@@ -61,8 +61,8 @@ namespace UI {
         RenderCurrentButtonOnScreenMenu;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int blendStrengthUnk), false, Address::SHC_3BB0A8C1_0x00464370,
-            &OpenSHC::UI::Rendering::RenderCurrentButtonToScreenMenuWithBlendingUnk)
-        RenderCurrentButtonToScreenMenuWithBlendingUnk;
+            &OpenSHC::UI::Rendering::RenderCurrentButtonOnScreenMenuWithBlending)
+        RenderCurrentButtonOnScreenMenuWithBlending;
 
         MACRO_FUNCTION_RESOLVER(uint(__cdecl*)(int red, int green, int blue), false, Address::SHC_3BB0A8C1_0x00467850,
             &OpenSHC::UI::Rendering::TransformToCurrentModeColor)
@@ -89,16 +89,16 @@ namespace UI {
         RenderGreatestLordScreen;
 
         MACRO_FUNCTION_RESOLVER(int(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D76A0,
-            &OpenSHC::UI::Rendering::RenderMissionObjectivesUnk)
-        RenderMissionObjectivesUnk;
+            &OpenSHC::UI::Rendering::RenderMissionObjectivesAndDescription)
+        RenderMissionObjectivesAndDescription;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int imageID, int x, int y), false, Address::SHC_3BB0A8C1_0x004D8AE0,
             &OpenSHC::UI::Rendering::RenderPlayerAvatars)
         RenderPlayerAvatars;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int loadedGfxIndex, int xPosInMenuRect, int yPosInMenuRect), false,
-            Address::SHC_3BB0A8C1_0x004DA570, &OpenSHC::UI::Rendering::RenderGfxHelperUnk)
-        RenderGfxHelperUnk;
+            Address::SHC_3BB0A8C1_0x004DA570, &OpenSHC::UI::Rendering::RenderLoadedGfxInMenuRect)
+        RenderLoadedGfxInMenuRect;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int gfxIndex, int x, int y, int blendStrength), false,
             Address::SHC_3BB0A8C1_0x004DA640, &OpenSHC::UI::Rendering::RenderMenuGfxHelper)

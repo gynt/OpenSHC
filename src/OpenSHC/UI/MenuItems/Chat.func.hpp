@@ -27,8 +27,8 @@ namespace UI {
             MenuItemRenderFunction_Chat_TauntButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x0048F590,
-                &OpenSHC::UI::MenuItems::Chat::MenuItemActionHandler_Chat_MostButtons)
-            MenuItemActionHandler_Chat_MostButtons;
+                &OpenSHC::UI::MenuItems::Chat::MenuItemActionHandler_Chat_RecipientAndSendButtons)
+            MenuItemActionHandler_Chat_RecipientAndSendButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x0048F850,
                 &OpenSHC::UI::MenuItems::Chat::MenuItemActionHandler_Chat_TauntButtons)

@@ -17,7 +17,7 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x00426F80
             void MenuView_UnusedSomeMissionStartUnk_Prepare()
             {
-                DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
+                DAT_GameCore::instance.inGameViewActive_0xa4 = FALSE;
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)(s_multi_background_tgx_005a211c);

@@ -7,7 +7,7 @@ namespace Input {
     void MouseState::resetMouseState2()
     {
         if (!this->resetPending) {
-            this->draggingStopped = FALSE;
+            this->leftClickStop = FALSE;
 
             this->midClickStop = FALSE;
             this->rightClickStop = FALSE;
@@ -21,7 +21,7 @@ namespace Input {
             this->rightClickState = FALSE;
 
             this->previousLeftClickState = FALSE;
-            this->previousMidClickStateUnk = FALSE;
+            this->previousMidClickState = FALSE;
             this->previousRightClickState = FALSE;
 
             this->mouseClickTypes = 0;

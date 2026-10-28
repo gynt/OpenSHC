@@ -7,7 +7,7 @@ namespace Rendering {
     void ViewportRenderState::resetupViewportThunk()
     {
         MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::resetupViewport, this)(
-            this->viewportState.isZoomedOutUnk);
+            this->viewportState.isZoomedOut);
     }
 
 }

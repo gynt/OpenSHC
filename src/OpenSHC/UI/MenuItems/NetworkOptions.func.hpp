@@ -15,8 +15,8 @@ namespace UI {
         namespace NetworkOptions_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004941F0,
-                &OpenSHC::UI::MenuItems::NetworkOptions::MenuItemActionHandler_NetworkOptions_LeaveButtonUnk)
-            MenuItemActionHandler_NetworkOptions_LeaveButtonUnk;
+                &OpenSHC::UI::MenuItems::NetworkOptions::MenuItemActionHandler_NetworkOptions_BackButton)
+            MenuItemActionHandler_NetworkOptions_BackButton;
 
         } // namespace NetworkOptions_Func
     } // namespace MenuItems

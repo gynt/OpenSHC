@@ -1,7 +1,6 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/UnitsState.func.hpp"
 #include "OpenSHC/Rendering/Bink/AIMessageQueue.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -17,18 +16,18 @@ namespace AI {
         if (MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(playerID) == 0) {
             return;
         }
-        if (DAT_GameState::instance.playerDataArray[playerID].someAiCountdown6 != 0) {
+        if (DAT_GameState::instance.playerDataArray[playerID].requestHelpBikCooldown != 0) {
             return;
         }
 
-        DAT_GameState::instance.playerDataArray[playerID].someAiCountdown6 = 48;
+        DAT_GameState::instance.playerDataArray[playerID].requestHelpBikCooldown = 48;
 
         if (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
             != DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
             return;
         }
         if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                .lordKilledByPlayerID
+                .lordDeathStatusOrKiller
             != 0) {
             return;
         }

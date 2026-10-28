@@ -10,7 +10,7 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x0043F2B0
             void MenuItemActionHandler_BuildingAndStatusMenu_PopularityMenuSwitchButtonUnk()
             {
-                DAT_GameCore::instance.popularityMessagePage ^= 1;
+                DAT_GameCore::instance.popularityReportPage ^= 1;
             }
 
         }

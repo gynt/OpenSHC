@@ -14,7 +14,7 @@ namespace Map {
         typedef enum EuroRecruitableState {
 
             ERS_CAN_NOT_RECRUIT = 0, // 0x00000000
-            ERS_CAN_RECRUITUnk = 1, // 0x00000001
+            ERS_CAN_RECRUIT = 1, // 0x00000001
             ERS_NOT_ALLOWED_TO_RECRUIT = 2, // 0x00000002
             ERS_UNABLE_BECAUSE_MAX_ARMY = 3, // 0x00000003
             ERS_UNABLE_MISSING_PEASANTS = 4, // 0x00000004

@@ -26,7 +26,7 @@ namespace Text {
             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                 UI::Enums::MMT_NONE, FALSE);
             for (int i = 0; i < 20; ++i) {
-                this->intArray1[i] = 0;
+                this->stringSubstitutions[i] = 0;
             }
             if (this->customHelpTextPointer) {
                 if (!this->isCustomHelpTextWide) {
@@ -48,7 +48,7 @@ namespace Text {
                     (UI::Enums::MenuViewType)this->savedMenuViewType, 0);
 
             } else if (this->savedMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
-                DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo.buildMenuTab = this->savedActiveMenuTab;
+                DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = this->savedActiveMenuTab;
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     (UI::Enums::MenuViewType)this->savedMenuViewType, 0);
 
@@ -67,7 +67,7 @@ namespace Text {
             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                 UI::Enums::MMT_NONE, FALSE);
             for (int i = 0; i < 20; ++i) {
-                this->intArray1[i] = 0;
+                this->stringSubstitutions[i] = 0;
             }
         }
 

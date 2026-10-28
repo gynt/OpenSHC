@@ -12,10 +12,10 @@ namespace Text {
     {
         this->isDialogStateInitialized = 0;
         this->helpDialogVariant = 0;
-        this->field48_0x23960 = 0;
-        this->helpDialogSubMode = 0;
-        this->useAlternateHelpTab = 0;
-        this->customHelpTextLength = 0;
+        this->restoreScreenBltPending = 0;
+        this->showTagSymbols = 0;
+        this->isEditorMode = 0;
+        this->helpTextLength = 0;
         this->pendingTokenTypeToSkip = 0;
         this->useWideHelpLayout = 0;
 
@@ -29,12 +29,12 @@ namespace Text {
             if (strlen(DAT_UserHelpDefinedData::instance.HelpSections[counter])) {
                 continue;
             }
-            this->counter = counter;
+            this->helpSectionCount = counter;
             break;
         }
 
         for (int i = 0; i < 20; ++i) {
-            this->intArray1[i] = 0;
+            this->stringSubstitutions[i] = 0;
         }
         return this;
     }

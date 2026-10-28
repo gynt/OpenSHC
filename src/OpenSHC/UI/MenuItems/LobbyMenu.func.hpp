@@ -50,8 +50,8 @@ namespace UI {
             MenuItemActionHandler_LobbyMenu_SkirmishTypeAndBalance;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x0042AC40,
-                &OpenSHC::UI::MenuItems::LobbyMenu::MenuItemRenderFunction_LobbyMenu_Unknown)
-            MenuItemRenderFunction_LobbyMenu_Unknown;
+                &OpenSHC::UI::MenuItems::LobbyMenu::MenuItemRenderFunction_LobbyMenu_BottomLeftText)
+            MenuItemRenderFunction_LobbyMenu_BottomLeftText;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x0042AC90,
                 &OpenSHC::UI::MenuItems::LobbyMenu::MenuItemRenderFunction_LobbyMenu_ChatBox)
@@ -90,8 +90,8 @@ namespace UI {
             MenuItemActionHandler_LobbyMenu_PlayerListAndNpcButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00442640,
-                &OpenSHC::UI::MenuItems::LobbyMenu::MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick)
-            MenuItemActionHandler_LobbyMenu_LobbyscreenStartButtonClick;
+                &OpenSHC::UI::MenuItems::LobbyMenu::MenuItemActionHandler_LobbyMenu_NonBoxedButtons)
+            MenuItemActionHandler_LobbyMenu_NonBoxedButtons;
 
         } // namespace LobbyMenu_Func
     } // namespace MenuItems

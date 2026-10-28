@@ -39,14 +39,14 @@ namespace Game {
         resetCountsAndStatistics;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (GameStateStructures::*)(int), false, Address::SHC_3BB0A8C1_0x004563B0,
-            &GameStateStructures::isFullIDEqualsToMinus1)
-        isFullIDEqualsToMinus1;
+            &GameStateStructures::isPlayerSlotNotHuman)
+        isPlayerSlotNotHuman;
 
         MACRO_FUNCTION_RESOLVER(void (GameStateStructures::*)(int, int), false, Address::SHC_3BB0A8C1_0x004563D0,
             &GameStateStructures::processUnitLossStatistic)
         processUnitLossStatistic;
 
-        MACRO_FUNCTION_RESOLVER(void (GameStateStructures::*)(int, int), false, Address::SHC_3BB0A8C1_0x004565A0,
+        MACRO_FUNCTION_RESOLVER(uint (GameStateStructures::*)(int, int), false, Address::SHC_3BB0A8C1_0x004565A0,
             &GameStateStructures::setLastEncounteredTroopUnit)
         setLastEncounteredTroopUnit;
 
@@ -67,8 +67,8 @@ namespace Game {
         computeSignPostEntryData;
 
         MACRO_FUNCTION_RESOLVER(void (GameStateStructures::*)(), false, Address::SHC_3BB0A8C1_0x00456870,
-            &GameStateStructures::nof_fpoints_locationFinder)
-        nof_fpoints_locationFinder;
+            &GameStateStructures::collectReachableLocationsFromFirstNofFPoint)
+        collectReachableLocationsFromFirstNofFPoint;
 
         MACRO_FUNCTION_RESOLVER(void (GameStateStructures::*)(int), false, Address::SHC_3BB0A8C1_0x004568B0,
             &GameStateStructures::calculateAttackVectorsToCampFireOfPlayer)
@@ -143,7 +143,7 @@ namespace Game {
             &GameStateStructures::destroyPlayerCompletely)
         destroyPlayerCompletely;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (GameStateStructures::*)(MappersEnum, int, BOOLEnum), false,
+        MACRO_FUNCTION_RESOLVER(undefined4 (GameStateStructures::*)(MappersEnum, int, BOOLEnum), false,
             Address::SHC_3BB0A8C1_0x00457B80, &GameStateStructures::checkRequiredResourcesForBuildingOrPlanToBuy)
         checkRequiredResourcesForBuildingOrPlanToBuy;
 
@@ -308,8 +308,8 @@ namespace Game {
         findAITeamMate;
 
         MACRO_FUNCTION_RESOLVER(uint (GameStateStructures::*)(int), false, Address::SHC_3BB0A8C1_0x00459740,
-            &GameStateStructures::teamToBitFlagsUnk)
-        teamToBitFlagsUnk;
+            &GameStateStructures::getEnemyPlayerMaskForUnit)
+        getEnemyPlayerMaskForUnit;
 
         MACRO_FUNCTION_RESOLVER(BOOLEnum (GameStateStructures::*)(), false, Address::SHC_3BB0A8C1_0x004597D0,
             &GameStateStructures::areActivePlayersMostlySameTeam)
@@ -320,8 +320,8 @@ namespace Game {
         recountStablesAndHorses;
 
         MACRO_FUNCTION_RESOLVER(int (GameStateStructures::*)(int, int), false, Address::SHC_3BB0A8C1_0x00459930,
-            &GameStateStructures::linkageBetweenHorseUnitAndStableUnk)
-        linkageBetweenHorseUnitAndStableUnk;
+            &GameStateStructures::takeHorseFromStableForUnit)
+        takeHorseFromStableForUnit;
 
         MACRO_FUNCTION_RESOLVER(void (GameStateStructures::*)(int), false, Address::SHC_3BB0A8C1_0x00459A20,
             &GameStateStructures::spawnPoisonCloudsAroundBuilding)

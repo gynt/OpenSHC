@@ -45,26 +45,26 @@ namespace UI {
         ClearSiegeInformationArray2;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x0042C1E0,
-            &OpenSHC::UI::Helpers::SomeSiegeUnitsComputation)
-        SomeSiegeUnitsComputation;
+            &OpenSHC::UI::Helpers::PropagateSiegeArmyToSlots)
+        PropagateSiegeArmyToSlots;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x0042C540,
-            &OpenSHC::UI::Helpers::SomeSiegeRelatedCopying)
-        SomeSiegeRelatedCopying;
+            &OpenSHC::UI::Helpers::LoadSiegeArmyFromSlot)
+        LoadSiegeArmyFromSlot;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042F010, &OpenSHC::UI::Helpers::InitializeBasicMap)
         InitializeBasicMap;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int taxesSettingUnk), false, Address::SHC_3BB0A8C1_0x00433560,
-            &OpenSHC::UI::Helpers::SetTaxesSetting_unknown)
-        SetTaxesSetting_unknown;
+            &OpenSHC::UI::Helpers::TriggerScribeReaction)
+        TriggerScribeReaction;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(BOOLEnum param_1), false, Address::SHC_3BB0A8C1_0x00434340,
             &OpenSHC::UI::Helpers::SetTribesPatrolButtonPressed)
         SetTribesPatrolButtonPressed;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(int unitID), false, Address::SHC_3BB0A8C1_0x004347F0,
+        MACRO_FUNCTION_RESOLVER(undefined4(__cdecl*)(int unitID), false, Address::SHC_3BB0A8C1_0x004347F0,
             &OpenSHC::UI::Helpers::SomeUnitAndViewportCheck)
         SomeUnitAndViewportCheck;
 
@@ -81,16 +81,16 @@ namespace UI {
         HandleBuildingSelectionSpeech;
 
         MACRO_FUNCTION_RESOLVER(int(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0043E540,
-            &OpenSHC::UI::Helpers::SomePopularityRelatedComputation)
-        SomePopularityRelatedComputation;
+            &OpenSHC::UI::Helpers::getPopularityDescriptionTextIndex)
+        getPopularityDescriptionTextIndex;
 
         MACRO_FUNCTION_RESOLVER(undefined4(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0043E5A0,
-            &OpenSHC::UI::Helpers::SomeFearFactorComputation)
-        SomeFearFactorComputation;
+            &OpenSHC::UI::Helpers::getFearFactorDescriptionTextIndex)
+        getFearFactorDescriptionTextIndex;
 
         MACRO_FUNCTION_RESOLVER(
-            int(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0043E5F0, &OpenSHC::UI::Helpers::SomeGoldRelatedComputation)
-        SomeGoldRelatedComputation;
+            int(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0043E5F0, &OpenSHC::UI::Helpers::getPlayerTraitDescriptionTextIndex)
+        getPlayerTraitDescriptionTextIndex;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00440360, &OpenSHC::UI::Helpers::CountPlayerUnitsByType)
@@ -101,8 +101,8 @@ namespace UI {
         SetCursorDependingOnProgramState;
 
         MACRO_FUNCTION_RESOLVER(EuroRecruitableState(__cdecl*)(int barrackUnitIdUnk), false,
-            Address::SHC_3BB0A8C1_0x00464DA0, &OpenSHC::UI::Helpers::IsEuroUnitRecruitableUnk)
-        IsEuroUnitRecruitableUnk;
+            Address::SHC_3BB0A8C1_0x00464DA0, &OpenSHC::UI::Helpers::GetEuroUnitRecruitState)
+        GetEuroUnitRecruitState;
 
         MACRO_FUNCTION_RESOLVER(int(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x00464E80,
             &OpenSHC::UI::Helpers::GetUnitRecruitPermission)
@@ -129,20 +129,20 @@ namespace UI {
         CheckIfEnoughGoldForTunneler;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00466E00,
-            &OpenSHC::UI::Helpers::SetEnoughGoldForRequestedUnitToTrueUnk)
-        SetEnoughGoldForRequestedUnitToTrueUnk;
+            &OpenSHC::UI::Helpers::SetEnoughGoldForRequestedUnitToTrue)
+        SetEnoughGoldForRequestedUnitToTrue;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00466E10, &OpenSHC::UI::Helpers::DisableMercPostPortraits)
-        DisableMercPostPortraits;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00466E10, &OpenSHC::UI::Helpers::EnableMercPostPortraits)
+        EnableMercPostPortraits;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0046CF90,
+        MACRO_FUNCTION_RESOLVER(undefined4(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0046CF90,
             &OpenSHC::UI::Helpers::TicksSinceCounterStart)
         TicksSinceCounterStart;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00493050,
-            &OpenSHC::UI::Helpers::SetupPreviewMinimapDataUnk)
-        SetupPreviewMinimapDataUnk;
+            &OpenSHC::UI::Helpers::LoadSelectedMapHeaderForPreview)
+        LoadSelectedMapHeaderForPreview;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x00495800,
             &OpenSHC::UI::Helpers::ShowProgressBarSaveLoadDialog)
@@ -169,8 +169,8 @@ namespace UI {
         RestoreScenarioGold;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004B9610,
-            &OpenSHC::UI::Helpers::CaptureCurrentTimeToUnknownTime01)
-        CaptureCurrentTimeToUnknownTime01;
+            &OpenSHC::UI::Helpers::CaptureCurrentTimeToLastSliderChangeTime)
+        CaptureCurrentTimeToLastSliderChangeTime;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1), false, Address::SHC_3BB0A8C1_0x004BC5F0,
             &OpenSHC::UI::Helpers::InitTutorialStepTransition)
@@ -205,8 +205,8 @@ namespace UI {
         ParseCampaignMapHotspotBitmap;
 
         MACRO_FUNCTION_RESOLVER(
-            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D7200, &OpenSHC::UI::Helpers::ResetEventStatusUnk)
-        ResetEventStatusUnk;
+            void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D7200, &OpenSHC::UI::Helpers::LoadCurrentScenarioEventConditions)
+        LoadCurrentScenarioEventConditions;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(char* param_1), false, Address::SHC_3BB0A8C1_0x004D8A20,
             &OpenSHC::UI::Helpers::ReadMapHeaderFromFile)

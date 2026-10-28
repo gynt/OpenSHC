@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A2A0
         void SoundSystem::setSomeSoundTime()
         {
-            if (!(0 < this->sec_Section1055_0x3274 && this->musicFadeState != 2)) {
+            if (!(0 < this->playingMusicId && this->musicFadeState != 2)) {
                 return;
             }
 
@@ -16,12 +16,12 @@ namespace Audio {
                 // This logic seems to smooth out a time difference by not having the timestamp jump directly on
                 //   bigger delays. Instead, it settles slightly behind the real time, basically pushing the current
                 //   timestamp back a small bit, but in such a way that is gets closer and closer to the real time.
-                this->someSoundTime_0x158
-                    = (_currentTime + ((_currentTime - this->someSoundTime_0x158) / 200) * -10) - 1;
+                this->musicFadeStartTime
+                    = (_currentTime + ((_currentTime - this->musicFadeStartTime) / 200) * -10) - 1;
                 this->musicFadeState = 2;
             } else {
                 this->musicFadeState = 2;
-                this->someSoundTime_0x158 = timeGetTime();
+                this->musicFadeStartTime = timeGetTime();
             }
         }
     }

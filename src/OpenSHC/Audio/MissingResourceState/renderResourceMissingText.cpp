@@ -32,12 +32,12 @@ namespace Audio {
         }
 
         int const iVar2 = MACRO_CALL_MEMBER(
-            Text::FontSizeClass_Func::renderMultilineTextUnk, &DAT_TextManagerObject::instance.fontSizeClassArray[17])(
+            Text::FontSizeClass_Func::renderOrMeasureWordWrappedText, &DAT_TextManagerObject::instance.fontSizeClassArray[17])(
             MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_FEEDBACK, textGroup),
             0, 0, 520, 0, 0, 1);
 
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderWrappedTextWithShadow, DAT_TextManagerObject::ptr)(
             MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_FEEDBACK, textGroup),
             posX, (posY - iVar2) + 32, 520, 0x00c2f0eb, 0, 17, 0);

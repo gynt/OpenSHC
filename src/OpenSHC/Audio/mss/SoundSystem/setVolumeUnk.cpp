@@ -5,9 +5,9 @@ namespace Audio {
     namespace MSS {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00479E60
-        void SoundSystem::setVolumeUnk(int streamIndex, int volume)
+        void SoundSystem::setStreamOrSfxVolume(int streamIndex, int volume)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
 
@@ -20,16 +20,16 @@ namespace Audio {
                 return;
             }
             this->streamVolume[streamIndex] = volume;
-            if (!this->streamActiveUnk_0x20[streamIndex]) {
+            if (!this->streamOpen[streamIndex]) {
                 return;
             }
             if (streamIndex == 0) {
                 AIL_set_sample_volume(
-                    this->musicSampleUnk_0x170, (this->streamFileVolumeCurrentUnk_0x5c[0] * volume) / 100);
+                    this->musicSample, (this->streamAppliedFileVolume[0] * volume) / 100);
                 return;
             }
             AIL_set_stream_volume(
-                this->stream_0xc[streamIndex], (this->streamFileVolumeCurrentUnk_0x5c[streamIndex] * volume) / 100);
+                this->stream_0xc[streamIndex], (this->streamAppliedFileVolume[streamIndex] * volume) / 100);
         }
 
     }

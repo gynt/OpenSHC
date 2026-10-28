@@ -18,7 +18,9 @@ namespace Map {
 
             int tile1; // 0x00000000 length: 4
             int tile2OrAHelper; // 0x00000004 length: 4
-            int tile3OrAnotherHelper; // 0x00000008 length: 4
+            // [151 0x00524930] filled with CertainPathLayer distance (or 10000000 if unreached) and used as the
+            // sort key
+            int pathCost; // 0x00000008 length: 4
 
         } PathHelper12;
 #pragma pack(pop)

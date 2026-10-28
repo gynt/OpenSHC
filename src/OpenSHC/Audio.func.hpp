@@ -13,8 +13,8 @@ namespace OpenSHC {
 namespace Audio_Func {
 
     MACRO_FUNCTION_RESOLVER(
-        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0044A720, &OpenSHC::Audio::ResetGreatestLordGenieSpeechState)
-    ResetGreatestLordGenieSpeechState;
+        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0044A720, &OpenSHC::Audio::resetGenieSpeechFeedbackState)
+    resetGenieSpeechFeedbackState;
 
 } // namespace Audio_Func
 } // namespace OpenSHC

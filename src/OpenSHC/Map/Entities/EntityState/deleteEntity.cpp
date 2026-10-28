@@ -11,7 +11,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x004039F0
         void EntityState::deleteEntity(uint entityID)
         {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
+            MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::unlinkEntityFromTile, this)(
                 entityID);
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 sizeof(Entity), 0, &this->entityArray[entityID]);

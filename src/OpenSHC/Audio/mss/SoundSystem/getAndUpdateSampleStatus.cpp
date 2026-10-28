@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479D90
         BOOLEnum SoundSystem::getAndUpdateSampleStatus(int soundIndex)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return FALSE;
             }
             if (this->soundFileCurrSampleNum_0x28c[soundIndex] < 0) {

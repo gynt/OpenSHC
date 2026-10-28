@@ -12,10 +12,10 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x0043F2C0
             void MenuItemRenderFunction_BuildingAndStatusMenu_PopularityMenuSwitchButton(int param_1, ...)
             {
-                if (DAT_GameCore::instance.popularityMessagePageCount == 1) {
+                if (DAT_GameCore::instance.popularityReportPageCount == 1) {
                     return;
                 }
-                if (DAT_GameCore::instance.popularityMessagePage == 1) {
+                if (DAT_GameCore::instance.popularityReportPage == 1) {
                     DAT_CurrentButtonGmDataIndex::instance = 0x73;
                 }
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::

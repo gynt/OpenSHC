@@ -32,16 +32,16 @@ namespace UI {
             Destructor_TextureRenderCore;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(GmID, int), false, Address::SHC_3BB0A8C1_0x0044C850,
-                &TextureRenderCore::drawLoadingBarUnk)
-            drawLoadingBarUnk;
+                &TextureRenderCore::drawLoadingProgressBar)
+            drawLoadingProgressBar;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int), false, Address::SHC_3BB0A8C1_0x0044C8F0,
                 &TextureRenderCore::transformGmColorTableFromRGB555To565IfRequired)
             transformGmColorTableFromRGB555To565IfRequired;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int), false, Address::SHC_3BB0A8C1_0x0044C940,
-                &TextureRenderCore::transformRawWithMarkerUnkToRGB555To565)
-            transformRawWithMarkerUnkToRGB555To565;
+                &TextureRenderCore::transformRawSkippingMagentaRGB555To565)
+            transformRawSkippingMagentaRGB555To565;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(ushort*, int), false, Address::SHC_3BB0A8C1_0x0044C9C0,
                 &TextureRenderCore::transformTgxFromRGB555ToRGB565)
@@ -68,16 +68,16 @@ namespace UI {
             setMapSurfaceHeightRange;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x0044CCC0,
-                &TextureRenderCore::setMapSurfaceHeightRangeUnk)
-            setMapSurfaceHeightRangeUnk;
+                &TextureRenderCore::resetMapSurfaceHeightRange)
+            resetMapSurfaceHeightRange;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x0044CCD0,
-                &TextureRenderCore::temporarySaveMapSurfaceHeightRangeUnk)
-            temporarySaveMapSurfaceHeightRangeUnk;
+                &TextureRenderCore::saveMapSurfaceHeightRange)
+            saveMapSurfaceHeightRange;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x0044CCF0,
-                &TextureRenderCore::restoreMapSurfaceHeightRangeFromTemporaryUnk)
-            restoreMapSurfaceHeightRangeFromTemporaryUnk;
+                &TextureRenderCore::restoreMapSurfaceHeightRange)
+            restoreMapSurfaceHeightRange;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int), false, Address::SHC_3BB0A8C1_0x0044CD10,
                 &TextureRenderCore::setScreenMenuSurfaceHeightRange)
@@ -92,20 +92,20 @@ namespace UI {
             drawBitmapFace;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x0044CE00,
-                &TextureRenderCore::renderFacesSmallUnk)
-            renderFacesSmallUnk;
+                &TextureRenderCore::drawBitmapFaceHalfSize)
+            drawBitmapFaceHalfSize;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int), false,
-                Address::SHC_3BB0A8C1_0x0044CEB0, &TextureRenderCore::drawBitmapFaceWithBlendUnk)
-            drawBitmapFaceWithBlendUnk;
+                Address::SHC_3BB0A8C1_0x0044CEB0, &TextureRenderCore::drawBitmapFaceWithBlend)
+            drawBitmapFaceWithBlend;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, ushort*), false,
-                Address::SHC_3BB0A8C1_0x0044D3D0, &TextureRenderCore::renderFunctionResponsibleForManyGameObjects)
-            renderFunctionResponsibleForManyGameObjects;
+                Address::SHC_3BB0A8C1_0x0044D3D0, &TextureRenderCore::renderTgxImage)
+            renderTgxImage;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, ushort*, int), false,
-                Address::SHC_3BB0A8C1_0x0044E630, &TextureRenderCore::renderInterfaceOrBuildingOccupationArea)
-            renderInterfaceOrBuildingOccupationArea;
+                Address::SHC_3BB0A8C1_0x0044E630, &TextureRenderCore::renderTgxWithBlending)
+            renderTgxWithBlending;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, int), false,
                 Address::SHC_3BB0A8C1_0x0044F020, &TextureRenderCore::renderBlendedBlackBox)
@@ -116,20 +116,20 @@ namespace UI {
             renderGmWithPreparedAlphaMask;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, ushort*, ushort), false,
-                Address::SHC_3BB0A8C1_0x0044F6F0, &TextureRenderCore::renderTgxWithColorUnk)
-            renderTgxWithColorUnk;
+                Address::SHC_3BB0A8C1_0x0044F6F0, &TextureRenderCore::renderTgxWithSolidColor)
+            renderTgxWithSolidColor;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, ushort*, ushort, int), false,
-                Address::SHC_3BB0A8C1_0x0044F850, &TextureRenderCore::renderTgxWithColorAndBlendingUnk)
-            renderTgxWithColorAndBlendingUnk;
+                Address::SHC_3BB0A8C1_0x0044F850, &TextureRenderCore::renderTgxWithColorAndBlending)
+            renderTgxWithColorAndBlending;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, byte*), false,
-                Address::SHC_3BB0A8C1_0x0044FBF0, &TextureRenderCore::renderUnitAnimationUnk)
-            renderUnitAnimationUnk;
+                Address::SHC_3BB0A8C1_0x0044FBF0, &TextureRenderCore::renderPalettedTgx)
+            renderPalettedTgx;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int, int, int, int, byte*, int), false,
-                Address::SHC_3BB0A8C1_0x00451E00, &TextureRenderCore::renderUnitAnimationWithBlendingUnk)
-            renderUnitAnimationWithBlendingUnk;
+                Address::SHC_3BB0A8C1_0x00451E00, &TextureRenderCore::renderPalettedTgxWithBlending)
+            renderPalettedTgxWithBlending;
 
             MACRO_FUNCTION_RESOLVER(int (TextureRenderCore::*)(char const*), false, Address::SHC_3BB0A8C1_0x00454620,
                 &TextureRenderCore::loadGfxFile)
@@ -172,12 +172,12 @@ namespace UI {
             drawTgxOnFlaggedSurface;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x00454CB0,
-                &TextureRenderCore::loadCampaignMapGfxUnk)
-            loadCampaignMapGfxUnk;
+                &TextureRenderCore::loadCampaignMapPalettes)
+            loadCampaignMapPalettes;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(int), false, Address::SHC_3BB0A8C1_0x00454EE0,
-                &TextureRenderCore::setMenuTabIndexUnk)
-            setMenuTabIndexUnk;
+                &TextureRenderCore::setActiveMenuTabIndex)
+            setActiveMenuTabIndex;
 
             MACRO_FUNCTION_RESOLVER(void (TextureRenderCore::*)(), false, Address::SHC_3BB0A8C1_0x00454EF0,
                 &TextureRenderCore::setActiveMenuTabIndexToZero)

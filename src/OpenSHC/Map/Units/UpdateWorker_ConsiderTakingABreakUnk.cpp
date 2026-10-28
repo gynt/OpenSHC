@@ -11,9 +11,9 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0053CAC0
-    BOOLEnum Units::UpdateWorker_ConsiderTakingABreakUnk(int unitID)
+    BOOLEnum Units::UpdateWorker_ConsiderTakingFearFactorBreak(int unitID)
     {
-        return MACRO_CALL(OpenSHC::Map::Units_Func::ConsiderHavingABreakNowUnk)(
+        return MACRO_CALL(OpenSHC::Map::Units_Func::ConsiderTakingFearFactorBreak)(
             unitID, (UnitState)(short)DAT_UnitsState::instance.units[unitID].state.generic);
     }
 

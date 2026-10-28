@@ -1,5 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
@@ -7,238 +6,241 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Commands::MappersEnum;
+        using OpenSHC::Map::Buildings::BuildingType;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x00409370
         BuildingType BuildingsState::convertCommandBuildingTypeToBuildingType(MappersEnum commandBuildingType)
         {
             switch (commandBuildingType) {
-            case Commands::M_MAPPER_FLETCHER:
+            case OpenSHC::Commands::M_MAPPER_FLETCHER:
                 return BT_FLETCHER;
-            case Commands::M_MAPPER_POLETURNER:
+            case OpenSHC::Commands::M_MAPPER_POLETURNER:
                 return BT_POLETURNER;
-            case Commands::M_MAPPER_BLACKSMITH:
+            case OpenSHC::Commands::M_MAPPER_BLACKSMITH:
                 return BT_BLACKSMITH;
-            case Commands::M_MAPPER_ARMOURER:
+            case OpenSHC::Commands::M_MAPPER_ARMOURER:
                 return BT_ARMOURER;
-            case Commands::M_MAPPER_TANNER:
+            case OpenSHC::Commands::M_MAPPER_TANNER:
                 return BT_TANNER;
-            case Commands::M_MAPPER_WOODSMAN:
+            case OpenSHC::Commands::M_MAPPER_WOODSMAN:
                 return BT_WOODCUTTERSHUT;
-            case Commands::M_MAPPER_OXENBASE:
+            case OpenSHC::Commands::M_MAPPER_OXENBASE:
                 return BT_OXTETHER;
-            case Commands::M_MAPPER_QUARRY:
+            case OpenSHC::Commands::M_MAPPER_QUARRY:
                 return BT_QUARRY;
-            case Commands::M_MAPPER_QUARRYPILE:
+            case OpenSHC::Commands::M_MAPPER_QUARRYPILE:
                 return BT_QUARRYSTOCKPILE;
-            case Commands::M_MAPPER_STORES:
+            case OpenSHC::Commands::M_MAPPER_STORES:
                 return BT_STOCKPILE;
-            case Commands::M_MAPPER_GRANARY:
+            case OpenSHC::Commands::M_MAPPER_GRANARY:
                 return BT_GRANARY;
-            case Commands::M_MAPPER_ARMOURY:
+            case OpenSHC::Commands::M_MAPPER_ARMOURY:
                 return BT_ARMORY;
-            case Commands::M_MAPPER_STABLES:
+            case OpenSHC::Commands::M_MAPPER_STABLES:
                 return BT_STABLES;
-            case Commands::M_MAPPER_OIL_SMELTER:
+            case OpenSHC::Commands::M_MAPPER_OIL_SMELTER:
                 return BT_OILSMELTER;
-            case Commands::M_MAPPER_BARRACKS_EURO:
+            case OpenSHC::Commands::M_MAPPER_BARRACKS_ARAB:
                 return BT_MERCENARYPOST;
-            case Commands::M_MAPPER_BARRACKS_ARAB:
+            case OpenSHC::Commands::M_MAPPER_BARRACKS_EURO:
                 return BT_BARRACKS;
-            case Commands::M_MAPPER_OUTPOST_EURO:
+            case OpenSHC::Commands::M_MAPPER_OUTPOST_EURO:
                 return BT_OUTPOST_EUROPEAN;
-            case Commands::M_MAPPER_OUTPOST_ARAB:
+            case OpenSHC::Commands::M_MAPPER_OUTPOST_ARAB:
                 return BT_OUTPOST_ARABIAN;
-            case Commands::M_MAPPER_OUTPOST_BEDOUIN:
+            case OpenSHC::Commands::M_MAPPER_HOUSE:
                 return BT_HOUSE;
-            case Commands::M_MAPPER_HOVEL:
+            case OpenSHC::Commands::M_MAPPER_HOVEL:
                 return BT_HOVEL;
-            case Commands::M_MAPPER_WHEATFARM:
+            case OpenSHC::Commands::M_MAPPER_WHEATFARM:
                 return BT_WHEATFARM;
-            case Commands::M_MAPPER_HOPSFARM:
+            case OpenSHC::Commands::M_MAPPER_HOPSFARM:
                 return BT_HOPFARM;
-            case Commands::M_MAPPER_APPLEFARM:
+            case OpenSHC::Commands::M_MAPPER_APPLEFARM:
                 return BT_APPLEFARM;
-            case Commands::M_MAPPER_CATTLEFARM:
+            case OpenSHC::Commands::M_MAPPER_CATTLEFARM:
                 return BT_DAIRYFARM;
-            case Commands::M_MAPPER_MILL:
+            case OpenSHC::Commands::M_MAPPER_MILL:
                 return BT_MILL;
-            case Commands::M_MAPPER_TRADEPOST:
+            case OpenSHC::Commands::M_MAPPER_TRADEPOST:
                 return BT_MARKETPLACE;
-            case Commands::M_MAPPER_HUNTER:
+            case OpenSHC::Commands::M_MAPPER_HUNTER:
                 return BT_HUNTERSHUT;
-            case Commands::M_MAPPER_BAKER:
+            case OpenSHC::Commands::M_MAPPER_BAKER:
                 return BT_BAKERY;
-            case Commands::M_MAPPER_BREWER:
+            case OpenSHC::Commands::M_MAPPER_BREWER:
                 return BT_BREWERY;
-            case Commands::M_MAPPER_INN:
+            case OpenSHC::Commands::M_MAPPER_INN:
                 return BT_INN;
-            case Commands::M_MAPPER_HEALER:
+            case OpenSHC::Commands::M_MAPPER_HEALER:
                 return BT_APOTHECARY;
-            case Commands::M_MAPPER_IRON_MINE:
+            case OpenSHC::Commands::M_MAPPER_IRON_MINE:
                 return BT_IRONMINE;
-            case Commands::M_MAPPER_PITCH_WORKINGS:
+            case OpenSHC::Commands::M_MAPPER_PITCH_WORKINGS:
                 return BT_PITCHRIG;
-            case Commands::M_MAPPER_TOWER:
+            case OpenSHC::Commands::M_MAPPER_TOWER:
                 return BT_TOWER;
-            case Commands::M_MAPPER_GATE_MAIN:
-            case Commands::M_MAPPER_GATE_STONE2A:
-            case Commands::M_MAPPER_GATE_STONE2B:
+            case OpenSHC::Commands::M_MAPPER_GATE_MAIN:
+            case OpenSHC::Commands::M_MAPPER_GATE_STONE2A:
+            case OpenSHC::Commands::M_MAPPER_GATE_STONE2B:
                 return BT_GATEHOUSELARGE;
-            case Commands::M_MAPPER_GATE_INNER:
-            case Commands::M_MAPPER_GATE_STONE1A:
-            case Commands::M_MAPPER_GATE_STONE1B:
+            case OpenSHC::Commands::M_MAPPER_GATE_INNER:
+            case OpenSHC::Commands::M_MAPPER_GATE_STONE1A:
+            case OpenSHC::Commands::M_MAPPER_GATE_STONE1B:
                 return BT_GATEHOUSESMALL;
-            case Commands::M_MAPPER_GATE_WOOD1A:
-            case Commands::M_MAPPER_GATE_WOOD1B:
-            case Commands::M_MAPPER_GATE_WOOD1C:
-            case Commands::M_MAPPER_GATE_WOOD1D:
+            case OpenSHC::Commands::M_MAPPER_GATE_WOOD1A:
+            case OpenSHC::Commands::M_MAPPER_GATE_WOOD1B:
+            case OpenSHC::Commands::M_MAPPER_GATE_WOOD1C:
+            case OpenSHC::Commands::M_MAPPER_GATE_WOOD1D:
                 return BT_WOODGATE1;
-            case Commands::M_MAPPER_GATE_POSTERN:
+            case OpenSHC::Commands::M_MAPPER_GATE_POSTERN:
                 return BT_WOODGATE2;
-            case Commands::M_MAPPER_DRAWBRIDGE:
+            case OpenSHC::Commands::M_MAPPER_DRAWBRIDGE:
                 return BT_DRAWBRIDGE;
-            case Commands::M_MAPPER_CHURCH1:
+            case OpenSHC::Commands::M_MAPPER_CHURCH1:
                 return BT_CHAPEL;
-            case Commands::M_MAPPER_CHURCH2:
+            case OpenSHC::Commands::M_MAPPER_CHURCH2:
                 return BT_CHURCH;
-            case Commands::M_MAPPER_CHURCH3:
+            case OpenSHC::Commands::M_MAPPER_CHURCH3:
                 return BT_CATHEDRAL;
-            case Commands::M_MAPPER_ENGINEERS_GUILD:
+            case OpenSHC::Commands::M_MAPPER_ENGINEERS_GUILD:
                 return BT_ENGINEERSGUILD;
-            case Commands::M_MAPPER_TUNNELERS_GUILD:
+            case OpenSHC::Commands::M_MAPPER_TUNNELERS_GUILD:
                 return BT_TUNNELERSGUILD;
-            case Commands::M_MAPPER_TUNNEL_CONSTRUCTION:
-                return BT_UNKNOWN4;
-            case Commands::M_MAPPER_TUNNEL:
+            case OpenSHC::Commands::M_MAPPER_TUNNEL_CONSTRUCTION:
+                return BT_TUNNEL_CONSTRUCTION;
+            case OpenSHC::Commands::M_MAPPER_TUNNEL:
                 return BT_TUNNEL;
-            case Commands::M_MAPPER_SIGNPOST:
+            case OpenSHC::Commands::M_MAPPER_SIGNPOST:
                 return BT_SIGNPOST;
-            case Commands::M_MAPPER_KEEP1:
+            case OpenSHC::Commands::M_MAPPER_KEEP1:
                 return BT_MANORHOUSE;
-            case Commands::M_MAPPER_KEEP2:
+            case OpenSHC::Commands::M_MAPPER_KEEP2:
                 return BT_STONEKEEP;
-            case Commands::M_MAPPER_KEEP3:
+            case OpenSHC::Commands::M_MAPPER_KEEP3:
                 return BT_STRONGHOLD;
-            case Commands::M_MAPPER_TOWER1:
+            case OpenSHC::Commands::M_MAPPER_TOWER1:
                 return BT_TOWER1;
-            case Commands::M_MAPPER_TOWER2:
+            case OpenSHC::Commands::M_MAPPER_TOWER2:
                 return BT_TOWER2;
-            case Commands::M_MAPPER_TOWER3:
+            case OpenSHC::Commands::M_MAPPER_TOWER3:
                 return BT_TOWER3;
-            case Commands::M_MAPPER_TOWER4:
+            case OpenSHC::Commands::M_MAPPER_TOWER4:
                 return BT_TOWER4;
-            case Commands::M_MAPPER_TOWER5:
+            case OpenSHC::Commands::M_MAPPER_TOWER5:
                 return BT_TOWER5;
-            case Commands::M_MAPPER_TOWER1_DESTROYED:
-            case Commands::M_MAPPER_MANGONEL:
-                return BT_MANGONEL;
-            case Commands::M_MAPPER_TOWER2_DESTROYED:
-            case Commands::M_MAPPER_BALLISTA:
-                return BT_BALLISTA;
-            case Commands::M_MAPPER_TOWER3_DESTROYED:
-                return BT_UNKNOWN5;
-            case Commands::M_MAPPER_TOWER4_DESTROYED:
-                return BT_UNKNOWN6;
-            case Commands::M_MAPPER_TOWER5_DESTROYED:
-                return BT_UNKNOWN3;
-            case Commands::M_MAPPER_GARDEN1:
-            case Commands::M_MAPPER_GARDEN2:
-            case Commands::M_MAPPER_GARDEN3:
-            case Commands::M_MAPPER_GARDEN4:
-            case Commands::M_MAPPER_GARDEN5:
-            case Commands::M_MAPPER_GARDEN6:
-            case Commands::M_MAPPER_GARDEN7:
-            case Commands::M_MAPPER_GARDEN8:
-            case Commands::M_MAPPER_GARDEN9:
-            case Commands::M_MAPPER_GARDEN10:
-            case Commands::M_MAPPER_GARDEN11:
-            case Commands::M_MAPPER_GARDEN12:
+            case OpenSHC::Commands::M_MAPPER_TOWER1_DESTROYED:
+            case OpenSHC::Commands::M_MAPPER_MANGONEL:
+                return BT_TOWER1_RUIN_OR_MANGONEL;
+            case OpenSHC::Commands::M_MAPPER_TOWER2_DESTROYED:
+            case OpenSHC::Commands::M_MAPPER_BALLISTA:
+                return BT_TOWER2_RUIN_OR_BALLISTA;
+            case OpenSHC::Commands::M_MAPPER_TOWER3_DESTROYED:
+                return BT_TOWER3_RUIN;
+            case OpenSHC::Commands::M_MAPPER_TOWER4_DESTROYED:
+                return BT_TOWER4_RUIN;
+            case OpenSHC::Commands::M_MAPPER_TOWER5_DESTROYED:
+                return BT_TOWER5_RUIN;
+            case OpenSHC::Commands::M_MAPPER_GARDEN1:
+            case OpenSHC::Commands::M_MAPPER_GARDEN2:
+            case OpenSHC::Commands::M_MAPPER_GARDEN3:
+            case OpenSHC::Commands::M_MAPPER_GARDEN4:
+            case OpenSHC::Commands::M_MAPPER_GARDEN5:
+            case OpenSHC::Commands::M_MAPPER_GARDEN6:
+            case OpenSHC::Commands::M_MAPPER_GARDEN7:
+            case OpenSHC::Commands::M_MAPPER_GARDEN8:
+            case OpenSHC::Commands::M_MAPPER_GARDEN9:
+            case OpenSHC::Commands::M_MAPPER_GARDEN10:
+            case OpenSHC::Commands::M_MAPPER_GARDEN11:
+            case OpenSHC::Commands::M_MAPPER_GARDEN12:
                 return BT_GARDEN;
-            case 248:
-            case 249:
-            case 250:
-            case 251:
-            case 252:
-            case 253:
-            case 254:
-            case 255:
-            case 256:
-            case 257:
-            case 258:
-            case 259:
-            case 260:
+            case (MappersEnum)248:
+            case (MappersEnum)249:
+            case (MappersEnum)250:
+            case (MappersEnum)251:
+            case (MappersEnum)252:
+            case (MappersEnum)253:
+            case (MappersEnum)254:
+            case (MappersEnum)255:
+            case (MappersEnum)256:
+            case (MappersEnum)257:
+            case (MappersEnum)258:
+            case (MappersEnum)259:
+            case (MappersEnum)260:
                 return BT_UNKNOWN1;
-            case Commands::M_MAPPER_MAYPOLE:
+            case OpenSHC::Commands::M_MAPPER_MAYPOLE:
                 return BT_MAYPOLE;
-            case Commands::M_MAPPER_GALLOWS:
+            case OpenSHC::Commands::M_MAPPER_GALLOWS:
                 return BT_GALLOWS;
-            case Commands::M_MAPPER_STOCKS:
+            case OpenSHC::Commands::M_MAPPER_STOCKS:
                 return BT_STOCKS;
-            case Commands::M_MAPPER_CATAPULT:
+            case OpenSHC::Commands::M_MAPPER_CATAPULT:
                 return BT_CATAPULT;
-            case Commands::M_MAPPER_PEOPLE_ARAB_BALLISTA:
-            case Commands::M_MAPPER_ARAB_BALLISTA:
+            case OpenSHC::Commands::M_MAPPER_PEOPLE_ARAB_BALLISTA:
+            case OpenSHC::Commands::M_MAPPER_ARAB_BALLISTA:
                 return BT_FIREBALLISTA;
-            case Commands::M_MAPPER_TREBUCHET:
+            case OpenSHC::Commands::M_MAPPER_TREBUCHET:
                 return BT_TREBUCHET;
-            case Commands::M_MAPPER_SIEGE_TOWER:
-                return BT_BATTERINGRAM;
-            case Commands::M_MAPPER_BATTERING_RAM:
+            case OpenSHC::Commands::M_MAPPER_SIEGE_TOWER:
                 return BT_SIEGETOWER;
-            case Commands::M_MAPPER_PORTABLE_SHIELD:
+            case OpenSHC::Commands::M_MAPPER_BATTERING_RAM:
+                return BT_BATTERINGRAM;
+            case OpenSHC::Commands::M_MAPPER_PORTABLE_SHIELD:
                 return BT_SHIELD;
-            case Commands::M_MAPPER_KILLING_PIT:
+            case OpenSHC::Commands::M_MAPPER_KILLING_PIT:
                 return BT_KILLINGPIT;
-            case Commands::M_MAPPER_PITCH_DITCH:
+            case OpenSHC::Commands::M_MAPPER_PITCH_DITCH:
                 return BT_PITCHDITCH;
-            case Commands::M_MAPPER_SIEGE_TOWER_BASE:
+            case OpenSHC::Commands::M_MAPPER_SIEGE_TOWER_BASE:
                 return BT_SIEGETOWER_PLACED;
-            case Commands::M_MAPPER_CESS_PIT1:
-            case Commands::M_MAPPER_CESS_PIT2:
-            case Commands::M_MAPPER_CESS_PIT3:
-            case Commands::M_MAPPER_CESS_PIT4:
+            case OpenSHC::Commands::M_MAPPER_CESS_PIT1:
+            case OpenSHC::Commands::M_MAPPER_CESS_PIT2:
+            case OpenSHC::Commands::M_MAPPER_CESS_PIT3:
+            case OpenSHC::Commands::M_MAPPER_CESS_PIT4:
                 return BT_CESSPIT;
-            case Commands::M_MAPPER_BURNING_STAKE:
+            case OpenSHC::Commands::M_MAPPER_BURNING_STAKE:
                 return BT_BURNINGSTAKE;
-            case Commands::M_MAPPER_GIBBET:
+            case OpenSHC::Commands::M_MAPPER_GIBBET:
                 return BT_GIBBET;
-            case Commands::M_MAPPER_DUNGEON:
+            case OpenSHC::Commands::M_MAPPER_DUNGEON:
                 return BT_DUNGEON;
-            case Commands::M_MAPPER_RACK_STRETCHING:
+            case OpenSHC::Commands::M_MAPPER_RACK_STRETCHING:
                 return BT_STRETCHINGRACK;
-            case Commands::M_MAPPER_RACK_FLOGGING:
+            case OpenSHC::Commands::M_MAPPER_RACK_FLOGGING:
                 return BT_RACKFLOGGING;
-            case Commands::M_MAPPER_CHOPPING_BLOCK:
+            case OpenSHC::Commands::M_MAPPER_CHOPPING_BLOCK:
                 return BT_CHOPPINGBLOCK;
-            case Commands::M_MAPPER_DUNKING_STOOL:
+            case OpenSHC::Commands::M_MAPPER_DUNKING_STOOL:
                 return BT_DUNKINGSTOOL;
-            case Commands::M_MAPPER_DOG_CAGE:
+            case OpenSHC::Commands::M_MAPPER_DOG_CAGE:
                 return BT_DOGCAGE;
-            case Commands::M_MAPPER_STATUE1:
-            case Commands::M_MAPPER_STATUE2:
-            case Commands::M_MAPPER_STATUE3:
-            case Commands::M_MAPPER_STATUE4:
-            case Commands::M_MAPPER_STATUE5:
+            case OpenSHC::Commands::M_MAPPER_STATUE1:
+            case OpenSHC::Commands::M_MAPPER_STATUE2:
+            case OpenSHC::Commands::M_MAPPER_STATUE3:
+            case OpenSHC::Commands::M_MAPPER_STATUE4:
+            case OpenSHC::Commands::M_MAPPER_STATUE5:
                 return BT_STATUE;
-            case Commands::M_MAPPER_SHRINE1:
-            case Commands::M_MAPPER_SHRINE2:
-            case Commands::M_MAPPER_SHRINE3:
-            case Commands::M_MAPPER_SHRINE4:
-            case Commands::M_MAPPER_SHRINE5:
+            case OpenSHC::Commands::M_MAPPER_SHRINE1:
+            case OpenSHC::Commands::M_MAPPER_SHRINE2:
+            case OpenSHC::Commands::M_MAPPER_SHRINE3:
+            case OpenSHC::Commands::M_MAPPER_SHRINE4:
+            case OpenSHC::Commands::M_MAPPER_SHRINE5:
                 return BT_SHRINE;
-            case Commands::M_MAPPER_BEE_HIVE:
+            case OpenSHC::Commands::M_MAPPER_BEE_HIVE:
                 return BT_BEEHIVE;
-            case Commands::M_MAPPER_DANCING_BEAR:
+            case OpenSHC::Commands::M_MAPPER_DANCING_BEAR:
                 return BT_DANCINGBEAR;
-            case Commands::M_MAPPER_POND1:
-            case Commands::M_MAPPER_POND2_SMALL:
-            case Commands::M_MAPPER_POND3_LARGE1:
-            case Commands::M_MAPPER_POND4_LARGE2:
+            case OpenSHC::Commands::M_MAPPER_POND1:
+            case OpenSHC::Commands::M_MAPPER_POND2_SMALL:
+            case OpenSHC::Commands::M_MAPPER_POND3_LARGE1:
+            case OpenSHC::Commands::M_MAPPER_POND4_LARGE2:
                 return BT_POND;
-            case Commands::M_MAPPER_BEAR_CAVE:
+            case OpenSHC::Commands::M_MAPPER_BEAR_CAVE:
                 return BT_BEARCAVE;
-            case Commands::M_MAPPER_WELL:
+            case OpenSHC::Commands::M_MAPPER_WELL:
                 return BT_WELL;
-            case Commands::M_MAPPER_WATERPOT:
+            case OpenSHC::Commands::M_MAPPER_WATERPOT:
                 return BT_WATERPOT;
             default:
                 return (BuildingType)0;

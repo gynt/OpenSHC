@@ -16,6 +16,8 @@ namespace Game {
         // SIZE: 0x000000A0
         typedef struct InGameEventExtra {
 
+            // ResetEventStatusUnk walks one event block with ebx = event*0xA0 + 0x165F028, reading [ebx] and
+            // stepping by 4 for 40 condition slots (cmp esi,0x28).
             int conditionIsTrue[40]; // 0x00000000 length: 160
 
         } InGameEventExtra;

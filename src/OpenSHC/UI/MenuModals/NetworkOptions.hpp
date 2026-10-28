@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace NetworkOptions {
 
+            /**
+             * Renders the 'Network Options' header banner.
+             */
             void __cdecl MenuModalRenderFunction_NetworkOptions(int x, int y, int width, int height);
 
         } // namespace NetworkOptions

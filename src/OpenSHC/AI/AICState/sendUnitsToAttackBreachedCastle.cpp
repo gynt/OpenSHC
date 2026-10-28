@@ -25,27 +25,26 @@ namespace AI {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D30E0
-    BOOLEnum AICState::sendUnitsToAttackBreachedCastle(int attackingPlayerIndex)
+    undefined4 AICState::sendUnitsToAttackBreachedCastle(int attackingPlayerIndex)
     {
         int vector = 0;
         if (DAT_GameState::instance.playerDataArray[attackingPlayerIndex].aiType == OpenSHC::AI::AIT_NULL) {
-            return TRUE;
+            return 1;
         }
 
         BOOLEnum sentUnitsToAttackLord = FALSE;
-        int const defendingLordID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer,
+        int defendingLordID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer,
             DAT_UnitsState::ptr)(DAT_GameState::instance.playerDataArray[attackingPlayerIndex].attackedPlayerID);
 
         for (int i = 0; i < 11; i++) {
-            int const tribeType = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeType;
-            int const tribeCount = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeCount;
+            int tribeType = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].firstTribeSlot;
+            int tribeCount = DAT_SkirmishDefinedData::instance.MaxBreachTribes[i].tribeSlotCount;
             if (tribeType == 18 || tribeType == 14 || tribeType == 13) {
                 continue;
             }
 
             for (int j = 0; j < tribeCount; j++) {
-                int const tribeID
-                    = DAT_GameState::instance.playerDataArray[attackingPlayerIndex].aiTribeIDs[tribeType + j];
+                int tribeID = DAT_GameState::instance.playerDataArray[attackingPlayerIndex].aiTribeIDs[tribeType + j];
                 if (tribeID == 0) {
                     continue;
                 }
@@ -54,7 +53,7 @@ namespace AI {
                     continue;
                 }
 
-                int const targetUnitID = (short)DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
+                int targetUnitID = (short)DAT_TribesState::instance.tribes[tribeID].leaderUnitID;
                 DAT_TribesState::instance.tribes[tribeID].unitStance = OpenSHC::Map::Units::Behavior::USE_DEFENSIVE;
 
                 if (sentUnitsToAttackLord != FALSE || defendingLordID == 0 || tribeType == 186) {
@@ -91,20 +90,20 @@ namespace AI {
                     vector += 1;
                 } else {
                     // Send units to attack lord
-                    int const lordY = DAT_UnitsState::instance.units[defendingLordID].y;
-                    int const lordX = DAT_UnitsState::instance.units[defendingLordID].x;
+                    int lordY = DAT_UnitsState::instance.units[defendingLordID].y;
+                    int lordX = DAT_UnitsState::instance.units[defendingLordID].x;
                     if (MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction, DAT_TribesState::ptr)(
                             tribeID, lordX, lordY, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0)
                         == 0) {
-                        return FALSE;
+                        return 0;
                     }
                     sentUnitsToAttackLord = TRUE;
                 }
             }
         }
 
-        return TRUE;
+        return 1;
     }
 
 }

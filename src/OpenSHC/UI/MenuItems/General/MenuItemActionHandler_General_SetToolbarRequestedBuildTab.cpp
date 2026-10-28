@@ -1,0 +1,19 @@
+#include "OpenSHC/UI/MenuItems/General.func.hpp"
+
+#include "OpenSHC/Globals/DAT_GameCore.hpp"
+
+namespace OpenSHC {
+namespace UI {
+    namespace MenuItems {
+        namespace General {
+
+            // FUNCTION: STRONGHOLDCRUSADER 0x00434260
+            void MenuItemActionHandler_General_SetToolbarRequestedBuildTab(int param_1, ...)
+            {
+                DAT_GameCore::instance.toolbarRequestedBuildTab = param_1;
+            }
+
+        }
+    }
+}
+}

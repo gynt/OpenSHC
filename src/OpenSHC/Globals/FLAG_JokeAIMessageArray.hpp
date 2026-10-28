@@ -11,7 +11,7 @@
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 // GLOBAL: STRONGHOLDCRUSADER 0x00EE2350
-// StructResolver::Instance<int,15606608>::instance
+// StructResolver::Instance<int [17],15606608>::instance
 
 namespace OpenSHC {
 

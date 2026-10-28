@@ -1,6 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
-#include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -9,7 +7,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00409E80
         undefined4 BuildingsState::getBuildingHeightForBuildingID2(int buildingID)
         {
-            if (this->buildings[buildingID].useOffsetGraphics == 0) {
+            if (this->buildings[buildingID].usesGfxOffsetLayer == 0) {
                 return 0;
             }
             switch (this->buildings[buildingID].buildingType) {
@@ -31,9 +29,8 @@ namespace Map {
             case BT_GATEHOUSELARGE:
             case BT_GATEHOUSESMALL:
                 return 108;
-            default:
-                return 0;
             }
+            return 0;
         }
 
     }

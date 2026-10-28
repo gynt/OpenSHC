@@ -1,7 +1,7 @@
 /**
-  THIS FILE IS AUTO GENERATED
-  Communicate changes to the dev team (e.g. via a Pull Request).
-  Changes get lost otherwise.
+  Enumerates the indexes of 'OpenSHC/Globals/FLAG_JokeAIMessageArray.hpp'.
+  The index is the AI type of the lord sending the joke message (see 'OpenSHC/AI/AITypeA.hpp').
+  The Christmas message is sent by the Rat, Snake, Pig or Wolf, who share the flag of the Rat.
 
   path: 'OpenSHC/UI/Enums/JokeAIMessageIndex.hpp'
 */

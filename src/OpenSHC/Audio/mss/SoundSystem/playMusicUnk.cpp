@@ -14,34 +14,34 @@ namespace Audio {
     namespace MSS {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A790
-        void SoundSystem::playMusicUnk()
+        void SoundSystem::refillMusicStreamBuffer()
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
             if (!this->digSndDriver_0x4) {
                 return;
             }
 
-            int const _buffNum = AIL_sample_buffer_ready(this->musicSampleUnk_0x170);
+            int const _buffNum = AIL_sample_buffer_ready(this->musicSample);
             if (_buffNum == -1) {
                 return;
             }
 
-            int readFileBytes = MACRO_CALL(OS_Func::_ucrt_read)(this->musicSampleFileHandleUnk_0x174,
-                this->sampleBufferPtrUnk_0x17c[_buffNum], this->sampleBufferSizeUnk_0x184);
+            int readFileBytes = MACRO_CALL(OS_Func::_ucrt_read)(this->currentMusicFileHandle,
+                this->musicSampleBuffers[_buffNum], this->musicSampleBufferSize);
 
             // if the buffer is not completely filled, it seems to go through potential options to fill it
-            if (this->sampleBufferSizeUnk_0x184 != readFileBytes) {
-                MACRO_CALL_MEMBER(SoundSystem_Func::playRandomBackgroundMusicUnk, this)();
+            if (this->musicSampleBufferSize != readFileBytes) {
+                MACRO_CALL_MEMBER(SoundSystem_Func::queueNextBattleMusicSegment, this)();
 
                 if (DAT_GameCore::ptr->currentMenuViewType == UI::Enums::MVT_HISTORIC_MISSION_PICTURE
                     || DAT_GameCore::ptr->currentMenuViewType == UI::Enums::MVT_HISTORIC_MISSION_INTRO
                     || DAT_GameCore::ptr->currentMenuViewType == UI::Enums::MVT_SCENARIO_DESCRIPTION) {
-                    if (this->sec_Section1055_0x3274 == 50) {
+                    if (this->playingMusicId == 50) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::ptr->Pointers[72].musicFile);
-                    } else if (this->sec_Section1055_0x3274 == 72) {
+                    } else if (this->playingMusicId == 72) {
                         MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                             DAT_SFXDefinedData::ptr->Pointers[50].musicFile);
                     }
@@ -51,9 +51,9 @@ namespace Audio {
                     MACRO_CALL_MEMBER(SoundSystem_Func::playDarMehqOrGlory, this)();
                 }
 
-                if (this->sec_Section1055_0x3274 >= 73) {
-                    if (this->sec_Section1055_0x3274 >= 97) {
-                        if (0 < DAT_SoundEffectsHelperData1::ptr->field13_0x50) {
+                if (this->playingMusicId >= 73) {
+                    if (this->playingMusicId >= 97) {
+                        if (0 < DAT_SoundEffectsHelperData1::ptr->fluteFollowUpTracksRemaining) {
                             int _selection;
                             for (int i = 0; i < 16; ++i) {
                                 /* this call is in a different thread! */
@@ -66,13 +66,13 @@ namespace Audio {
                             DAT_SoundEffectsHelperData1::ptr->DAT_RandomVariationCurrentPlayingMusic_02 = _selection;
                             MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                                 DAT_SFXDefinedData::ptr->Pointers[_selection + 97].musicFile);
-                            --DAT_SoundEffectsHelperData1::ptr->field13_0x50;
-                            if (DAT_SoundEffectsHelperData1::ptr->field13_0x50 > 3) {
-                                DAT_SoundEffectsHelperData1::ptr->field13_0x50 = 0;
+                            --DAT_SoundEffectsHelperData1::ptr->fluteFollowUpTracksRemaining;
+                            if (DAT_SoundEffectsHelperData1::ptr->fluteFollowUpTracksRemaining > 3) {
+                                DAT_SoundEffectsHelperData1::ptr->fluteFollowUpTracksRemaining = 0;
                             }
                         }
                     } else {
-                        if (0 < DAT_SoundEffectsHelperData1::ptr->DAT_NegativeCountdownMin1ToMin4Becomes0) {
+                        if (0 < DAT_SoundEffectsHelperData1::ptr->oudFollowUpTracksLeft) {
                             int _selection;
                             for (int i = 0; i < 16; ++i) {
                                 MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
@@ -84,33 +84,33 @@ namespace Audio {
                             DAT_SoundEffectsHelperData1::ptr->DAT_RandomVariationCurrentPlayingMusic_01 = _selection;
                             MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(
                                 DAT_SFXDefinedData::ptr->Pointers[_selection + 73].musicFile);
-                            DAT_SoundEffectsHelperData1::ptr->DAT_NegativeCountdownMin1ToMin4Becomes0 += -1;
-                            if (DAT_SoundEffectsHelperData1::ptr->DAT_NegativeCountdownMin1ToMin4Becomes0 > 3) {
-                                DAT_SoundEffectsHelperData1::ptr->DAT_NegativeCountdownMin1ToMin4Becomes0 = 0;
+                            DAT_SoundEffectsHelperData1::ptr->oudFollowUpTracksLeft += -1;
+                            if (DAT_SoundEffectsHelperData1::ptr->oudFollowUpTracksLeft > 3) {
+                                DAT_SoundEffectsHelperData1::ptr->oudFollowUpTracksLeft = 0;
                             }
                         }
                     }
                 }
 
-                if (this->musicFileHandle_0x178 != -1) {
-                    MACRO_CALL(OS_Func::_ucrt_close)(this->musicSampleFileHandleUnk_0x174);
-                    this->musicSampleFileHandleUnk_0x174 = this->musicFileHandle_0x178;
-                    this->musicFileHandle_0x178 = -1;
-                    readFileBytes += MACRO_CALL(OS_Func::_ucrt_read)(this->musicSampleFileHandleUnk_0x174,
-                        (void*)((int)this->sampleBufferPtrUnk_0x17c[_buffNum] + readFileBytes),
-                        this->sampleBufferSizeUnk_0x184 - readFileBytes);
-                } else if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 1) {
+                if (this->queuedMusicFileHandle != -1) {
+                    MACRO_CALL(OS_Func::_ucrt_close)(this->currentMusicFileHandle);
+                    this->currentMusicFileHandle = this->queuedMusicFileHandle;
+                    this->queuedMusicFileHandle = -1;
+                    readFileBytes += MACRO_CALL(OS_Func::_ucrt_read)(this->currentMusicFileHandle,
+                        (void*)((int)this->musicSampleBuffers[_buffNum] + readFileBytes),
+                        this->musicSampleBufferSize - readFileBytes);
+                } else if ((this->streamFlagsAndLoopCount[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 1) {
                     MACRO_CALL_MEMBER(SoundSystem_Func::stopMusicPlayback, this)();
                     return;
-                } else if ((this->streamFlagsUnkAndLoopCount_0x34[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
-                    MACRO_CALL(OS_Func::_ucrt_lseek)(this->musicSampleFileHandleUnk_0x174, 0, FILE_BEGIN);
-                    readFileBytes += MACRO_CALL(OS_Func::_ucrt_read)(this->musicSampleFileHandleUnk_0x174,
-                        (void*)((int)this->sampleBufferPtrUnk_0x17c[_buffNum] + readFileBytes),
-                        this->sampleBufferSizeUnk_0x184 - readFileBytes);
+                } else if ((this->streamFlagsAndLoopCount[0] & FLAG_SOUND_LOOP_COUNT_FIELD) == 0) {
+                    MACRO_CALL(OS_Func::_ucrt_lseek)(this->currentMusicFileHandle, 0, FILE_BEGIN);
+                    readFileBytes += MACRO_CALL(OS_Func::_ucrt_read)(this->currentMusicFileHandle,
+                        (void*)((int)this->musicSampleBuffers[_buffNum] + readFileBytes),
+                        this->musicSampleBufferSize - readFileBytes);
                 }
             }
             AIL_load_sample_buffer(
-                this->musicSampleUnk_0x170, _buffNum, this->sampleBufferPtrUnk_0x17c[_buffNum], readFileBytes);
+                this->musicSample, _buffNum, this->musicSampleBuffers[_buffNum], readFileBytes);
         }
 
     }

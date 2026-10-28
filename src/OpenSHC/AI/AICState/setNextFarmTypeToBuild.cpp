@@ -1,5 +1,4 @@
-#include "../AICState.func.hpp"
-
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -8,12 +7,12 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004CB1B0
-    int AICState::setNextFarmTypeToBuild(int playerID)
+    int AICState::setNextFarmTypeToBuild(PlayerID playerID)
     {
-        int const aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
+        int aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
         if (aiType == AITA_NULL)
             return 0;
-        int const aicIndex = aiType - 1;
+        int aicIndex = aiType - 1;
 
         DAT_GameState::instance.playerDataArray[playerID].aiFarmIndex++;
         if (DAT_GameState::instance.playerDataArray[playerID].aiFarmIndex >= 8)

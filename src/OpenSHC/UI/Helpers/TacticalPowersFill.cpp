@@ -11,8 +11,8 @@ namespace UI {
         void TacticalPowersFill()
         {
             if (DAT_TacticalPowersHelpTextDisplayBool::instance != 0) {
-                DAT_MissionDefinedData::instance.field39_0x1370 -= 1;
-                if (DAT_MissionDefinedData::instance.field39_0x1370 == 0) {
+                DAT_MissionDefinedData::instance.tacticalPowersHelpTextTimer -= 1;
+                if (DAT_MissionDefinedData::instance.tacticalPowersHelpTextTimer == 0) {
                     DAT_TacticalPowersHelpTextDisplayBool::instance = 0;
                 }
             }

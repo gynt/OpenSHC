@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataSplitInfo {
 
+            /**
+             * Debug modal render function: forwards to GameSynchronyState::renderDebugDataSplitInfo.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataSplitInfo(int x, int y, int width, int height);
 
         } // namespace DebugDataSplitInfo

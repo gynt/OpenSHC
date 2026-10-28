@@ -5,10 +5,10 @@ namespace UI {
     namespace Rendering {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044CCD0
-        void TextureRenderCore::temporarySaveMapSurfaceHeightRangeUnk()
+        void TextureRenderCore::saveMapSurfaceHeightRange()
         {
-            this->mapSurfaceRangeTemporaryUnk_0x16c864.start = this->mapGameSurfaceHeightRange.start;
-            this->mapSurfaceRangeTemporaryUnk_0x16c864.end = this->mapGameSurfaceHeightRange.end;
+            this->savedMapGameSurfaceHeightRange.start = this->mapGameSurfaceHeightRange.start;
+            this->savedMapGameSurfaceHeightRange.end = this->mapGameSurfaceHeightRange.end;
         }
 
     }

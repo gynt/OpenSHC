@@ -16,7 +16,7 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00522160
         void TribesState::playWorkCommandSpeech(undefined4 selectionID)
         {
-            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectionContainsCombatUnit, DAT_UnitsState::ptr)(
+            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getRepresentativeSelectedUnitID, DAT_UnitsState::ptr)(
                 1);
             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::getMajoritySelectedUnitType, this)(

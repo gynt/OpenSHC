@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace OptionsMenu {
 
+            /**
+             * Modal render callback for the Game Options dialog: draws the header banner with text group 0x4A entry
+             * 1 ("Game Options") over the dialog rectangle.
+             */
             void __cdecl MenuModalRenderFunction_OptionsMenu(int x, int y, int width, int height);
 
         } // namespace OptionsMenu

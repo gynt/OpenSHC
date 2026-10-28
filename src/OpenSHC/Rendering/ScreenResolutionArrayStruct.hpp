@@ -15,7 +15,8 @@ namespace Rendering {
     // SIZE: 0x00000040
     typedef struct ScreenResolutionArrayStruct {
 
-        int noneUnk; // 0x00000000 length: 4
+        // [UNK PASS] was noneUnk
+        int unusedSlot0; // 0x00000000 length: 4
         int _800x600; // 0x00000004 length: 4
         int _1024x768; // 0x00000008 length: 4
         int _1280x720; // 0x0000000C length: 4

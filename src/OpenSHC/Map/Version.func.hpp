@@ -134,24 +134,24 @@ namespace Map {
         UpdateFixTrees2;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F3840,
-            &OpenSHC::Map::Version::UpgradeRemoveCertainRockTypesUnk)
-        UpgradeRemoveCertainRockTypesUnk;
+            &OpenSHC::Map::Version::UpgradeRemoveOrphanedRocks)
+        UpgradeRemoveOrphanedRocks;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F38A0,
             &OpenSHC::Map::Version::UpdateTreesOfCertainTypes)
         UpdateTreesOfCertainTypes;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004F3900,
-            &OpenSHC::Map::Version::UpgradeRemoveRocksBeyond1000)
-        UpgradeRemoveRocksBeyond1000;
+            &OpenSHC::Map::Version::UpgradeClearRockSlots2000Plus)
+        UpgradeClearRockSlots2000Plus;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x005011C0,
             &OpenSHC::Map::Version::UpgradeMapLogicToVersion_125)
         UpgradeMapLogicToVersion_125;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x005011F0,
-            &OpenSHC::Map::Version::UpgradeMapLogicToVersion_Unknown1)
-        UpgradeMapLogicToVersion_Unknown1;
+            &OpenSHC::Map::Version::UpgradeMapLogic_ClearStaleGatehouseFlags)
+        UpgradeMapLogic_ClearStaleGatehouseFlags;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00501350,
             &OpenSHC::Map::Version::UpgradeMapLogicToVersion_Unknown2)
@@ -190,8 +190,8 @@ namespace Map {
         UpgradeMapTribesStateVersionTo_Unknown1;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00523EB0,
-            &OpenSHC::Map::Version::UpgradeMapTribesStateVersionTo_Unknown2)
-        UpgradeMapTribesStateVersionTo_Unknown2;
+            &OpenSHC::Map::Version::UpgradeMapTribesState_RecomputeContainsAnyUnits)
+        UpgradeMapTribesState_RecomputeContainsAnyUnits;
 
         MACRO_FUNCTION_RESOLVER(
             void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053B1F0, &OpenSHC::Map::Version::UpgradeMapUnitsTo_117)
@@ -214,8 +214,8 @@ namespace Map {
         UpgradeMapUnitsTo_100;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053B3E0,
-            &OpenSHC::Map::Version::UpgradeMapUnitsTo_UnknownVersion1)
-        UpgradeMapUnitsTo_UnknownVersion1;
+            &OpenSHC::Map::Version::UpgradeMapUnits_ReloadUnitTypeDefaults)
+        UpgradeMapUnits_ReloadUnitTypeDefaults;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0053B4F0,
             &OpenSHC::Map::Version::UpgradeMapUnitsAttackTileLogicTo_122)

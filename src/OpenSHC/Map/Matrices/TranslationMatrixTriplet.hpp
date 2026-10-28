@@ -16,8 +16,11 @@ namespace Map {
         // SIZE: 0x0000000C
         typedef struct TranslationMatrixTriplet {
 
+            // y distance to center
             int distanceToCenter; // 0x00000000 length: 4
+            // serialized tiles
             int firstTileOfRow; // 0x00000004 length: 4
+            // tile - x
             int addXgetTile; // 0x00000008 length: 4
 
         } TranslationMatrixTriplet;

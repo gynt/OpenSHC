@@ -20,9 +20,11 @@ namespace Commands {
     typedef struct GameCommand {
 
         dword time; // 0x00000000 length: 4
-        int playerUnk; // 0x00000004 length: 4
+        // [UNK PASS] was playerUnk
+        int senderMultiplayerID; // 0x00000004 length: 4
         char commandType; // 0x00000008 length: 1
-        GameCommandStateByte stateUnk; // 0x00000009 length: 1
+        // [UNK PASS] was stateUnk
+        GameCommandStateByte processingState; // 0x00000009 length: 1
         undefined1 parameters; // 0x0000000A length: 1
         undefined1 padding_0xb[1261]; // 0x0000000B length: 1261
 

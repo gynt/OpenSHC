@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace Map {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00523EB0
-    void Version::UpgradeMapTribesStateVersionTo_Unknown2()
+    void Version::UpgradeMapTribesState_RecomputeContainsAnyUnits()
     {
         for (int tribeID = 1; tribeID < 1250; ++tribeID) {
             if (DAT_TribesState::instance.tribes[tribeID].tribeState != 0) {

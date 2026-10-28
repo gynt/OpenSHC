@@ -6,7 +6,7 @@ namespace OpenSHC {
 namespace IO {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0046C4E0
-    int ResourceManager::getSimpleFirst1024ByteSumOfFile(char* filename)
+    int ResourceManager::getSignedByteSumOfFile(char* filename)
     {
         int _byteValueSumUnk = 0;
 

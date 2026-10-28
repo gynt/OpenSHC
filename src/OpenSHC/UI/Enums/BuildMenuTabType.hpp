@@ -13,6 +13,7 @@ namespace UI {
     namespace Enums {
         typedef enum BuildMenuTabType {
 
+            BMTT_NONE = 0, // 0x00000000
             BMTT_CASTLE = 10, // 0x0000000A
             BMTT_CASTLE_TOWERS = 11, // 0x0000000B
             BMTT_CASTLE_DEFENSES = 12, // 0x0000000C

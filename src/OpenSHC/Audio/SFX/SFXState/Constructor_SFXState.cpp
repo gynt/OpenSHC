@@ -17,7 +17,7 @@ namespace Audio {
             this->DAT_SFXCounter1 = 0;
             MACRO_CALL_MEMBER(SFXState_Func::Constructor_SFXState_resetAmbientEventCounters, this)();
             this->highestSFXCounter = 0;
-            MACRO_CALL(Audio_Func::ResetGreatestLordGenieSpeechState)();
+            MACRO_CALL(Audio_Func::resetGenieSpeechFeedbackState)();
             return this;
         }
 

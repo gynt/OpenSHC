@@ -6,8 +6,8 @@ namespace Game {
     // FUNCTION: STRONGHOLDCRUSADER 0x0046B320
     void GameCore::swapBuildMenuTab()
     {
-        if (this->buildmenuMenuTabToSwitchTo.tabType == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD) {
-            this->buildmenuMenuTabToSwitchTo.tabType = OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM;
+        if (this->buildmenuMenuTabToSwitchTo.buildMenuTab == 62) {
+            this->buildmenuMenuTabToSwitchTo.buildMenuTab = UI::Enums::BMTT_SOLDIERS;
             return;
         }
         this->buildmenuMenuTabToSwitchTo = this->secondaryActiveMenuTabToSwitchTo;

@@ -19,8 +19,8 @@ namespace UI {
             MenuItemActionHandler_EditScenario_BaseMenuButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B8990,
-                &OpenSHC::UI::MenuItems::EditScenario::MenuItemActionHandler_EditScenario_DateYearBox)
-            MenuItemActionHandler_EditScenario_DateYearBox;
+                &OpenSHC::UI::MenuItems::EditScenario::MenuItemActionHandler_EditScenario_TextInputBoxes)
+            MenuItemActionHandler_EditScenario_TextInputBoxes;
 
             MACRO_FUNCTION_RESOLVER(
                 void(__cdecl*)(int param_1, int param_2, int* minValue, int* maxValue, int* currentValue), false,
@@ -57,8 +57,8 @@ namespace UI {
             MenuItemRenderFunction_EditScenario_BaseMenuButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004BF1D0,
-                &OpenSHC::UI::MenuItems::EditScenario::MenuItemRenderFunction_EditScenario_TextBoxLike)
-            MenuItemRenderFunction_EditScenario_TextBoxLike;
+                &OpenSHC::UI::MenuItems::EditScenario::MenuItemRenderFunction_EditScenario_TextInputBoxes)
+            MenuItemRenderFunction_EditScenario_TextInputBoxes;
 
         } // namespace EditScenario_Func
     } // namespace MenuItems

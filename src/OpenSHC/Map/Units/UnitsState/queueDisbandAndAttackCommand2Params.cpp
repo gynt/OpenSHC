@@ -17,7 +17,7 @@ namespace Map {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = param_1;
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = param_2;
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
-                OpenSHC::Commands::GCT_DISBAND_AND_ATTACK_UNITS);
+                OpenSHC::Commands::GCT_GIVE_UNITS_INSTRUCTION);
         }
 
     }

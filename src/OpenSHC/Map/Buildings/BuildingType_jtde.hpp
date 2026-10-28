@@ -63,7 +63,7 @@ namespace Map {
             BT_UNKNOWN5SHPOSTERN_GATE = 48, // 0x00000030
             BT_DRAWBRIDGE = 49, // 0x00000031
             BT_TUNNEL = 50, // 0x00000032
-            BT_CAMPFIRE = 51, // 0x00000033
+            BT_OILSMELTER_PART = 51, // 0x00000033
             BT_SIGNPOST = 52, // 0x00000034
             BT_PARADEGROUND = 53, // 0x00000035
             BT_S_FIREBALLISTA = 54, // 0x00000036

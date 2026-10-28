@@ -26,8 +26,8 @@ namespace Audio {
             stopMusicPlayback;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x00467830, &SoundSystem::endSoundStreamsUnk)
-            endSoundStreamsUnk;
+                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x00467830, &SoundSystem::endSpeechStreams)
+            endSpeechStreams;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(SHC_SoundStream), false, Address::SHC_3BB0A8C1_0x004799A0,
                 &SoundSystem::endSoundStream)
@@ -42,8 +42,8 @@ namespace Audio {
             shouldSoundXNotBePlaying;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(SHC_SoundStream, int), false,
-                Address::SHC_3BB0A8C1_0x00479AF0, &SoundSystem::setStreamAndSampleVolumeUnk)
-            setStreamAndSampleVolumeUnk;
+                Address::SHC_3BB0A8C1_0x00479AF0, &SoundSystem::setStreamFileVolume)
+            setStreamFileVolume;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x00479B70,
                 &SoundSystem::restoreMusicVolumeAfterSpeechEnds)
@@ -54,8 +54,8 @@ namespace Audio {
             loadSoundFileAndGetIndex;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(int), false, Address::SHC_3BB0A8C1_0x00479C80,
-                &SoundSystem::findSamplePlaceForSoundUnk)
-            findSamplePlaceForSoundUnk;
+                &SoundSystem::assignFreeSampleSlotToSound)
+            assignFreeSampleSlotToSound;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x00479CF0,
                 &SoundSystem::setupSampleForNextSound)
@@ -70,12 +70,12 @@ namespace Audio {
             playSound;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SoundSystem::*)(int, int), false, Address::SHC_3BB0A8C1_0x00479E60, &SoundSystem::setVolumeUnk)
-            setVolumeUnk;
+                void (SoundSystem::*)(int, int), false, Address::SHC_3BB0A8C1_0x00479E60, &SoundSystem::setStreamOrSfxVolume)
+            setStreamOrSfxVolume;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x00479F30,
-                &SoundSystem::deactivateSoundFromMenuFuncUnk)
-            deactivateSoundFromMenuFuncUnk;
+                &SoundSystem::turnSoundOff)
+            turnSoundOff;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x00479FC0, &SoundSystem::pauseAudioSample)
@@ -98,8 +98,8 @@ namespace Audio {
             setupVolumeAndSoundIDWithMultiplier;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A290, &SoundSystem::markMusicChangePending)
-            markMusicChangePending;
+                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A290, &SoundSystem::requestFadeInForNextTrack)
+            requestFadeInForNextTrack;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A2A0, &SoundSystem::setSomeSoundTime)
@@ -138,8 +138,8 @@ namespace Audio {
             shutdownSoundSystem;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A790, &SoundSystem::playMusicUnk)
-            playMusicUnk;
+                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A790, &SoundSystem::refillMusicStreamBuffer)
+            refillMusicStreamBuffer;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047A9E0, &SoundSystem::stopAllActiveSounds)
@@ -158,28 +158,28 @@ namespace Audio {
             handleBattleEndMusicTransition;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(SHC_SoundStream, char*, SoundFlagsAndLoopCount), false,
-                Address::SHC_3BB0A8C1_0x0047B060, &SoundSystem::playSoundStreamUnk)
-            playSoundStreamUnk;
+                Address::SHC_3BB0A8C1_0x0047B060, &SoundSystem::startSoundStream)
+            startSoundStream;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*), false, Address::SHC_3BB0A8C1_0x0047B250,
                 &SoundSystem::playMusicFileByName)
             playMusicFileByName;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, int), false, Address::SHC_3BB0A8C1_0x0047B2F0,
-                &SoundSystem::playOrSetupMusicUnk)
-            playOrSetupMusicUnk;
+                &SoundSystem::playMusicFileByNameWithVolume)
+            playMusicFileByNameWithVolume;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, int), false, Address::SHC_3BB0A8C1_0x0047B3C0,
-                &SoundSystem::playOrEndMusicUnk)
-            playOrEndMusicUnk;
+                &SoundSystem::playMusicOnceWithVolume)
+            playMusicOnceWithVolume;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SoundSystem::*)(char*), false, Address::SHC_3BB0A8C1_0x0047B490, &SoundSystem::openSound)
             openSound;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*), false, Address::SHC_3BB0A8C1_0x0047B590,
-                &SoundSystem::playOnSfx1SoundStreamOnceOrOnRepeatUnk)
-            playOnSfx1SoundStreamOnceOrOnRepeatUnk;
+                &SoundSystem::playSoundOnSfxSoundStream1OnceUninterruptible)
+            playSoundOnSfxSoundStream1OnceUninterruptible;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*), false, Address::SHC_3BB0A8C1_0x0047B5C0,
                 &SoundSystem::playSoundOnSoundStream2)
@@ -198,32 +198,32 @@ namespace Audio {
             playAmbientStreamWithLoop;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, SoundFlagsAndLoopCount), false,
-                Address::SHC_3BB0A8C1_0x0047B760, &SoundSystem::playSomeMusicUnk)
-            playSomeMusicUnk;
+                Address::SHC_3BB0A8C1_0x0047B760, &SoundSystem::playMusicFile)
+            playMusicFile;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, SoundFlagsAndLoopCount), false,
-                Address::SHC_3BB0A8C1_0x0047B7D0, &SoundSystem::playOnSfx1SoundStreamUnk)
-            playOnSfx1SoundStreamUnk;
+                Address::SHC_3BB0A8C1_0x0047B7D0, &SoundSystem::playSoundOnSfxSoundStream1)
+            playSoundOnSfxSoundStream1;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, SoundFlagsAndLoopCount), false,
                 Address::SHC_3BB0A8C1_0x0047B800, &SoundSystem::playSoundOnSfxSoundStream2)
             playSoundOnSfxSoundStream2;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(char*, SoundFlagsAndLoopCount), false,
-                Address::SHC_3BB0A8C1_0x0047B830, &SoundSystem::playSoundOnStream3Unk)
-            playSoundOnStream3Unk;
+                Address::SHC_3BB0A8C1_0x0047B830, &SoundSystem::playSoundOnSpeechStream1)
+            playSoundOnSpeechStream1;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047B870,
-                &SoundSystem::activateSoundFromMenuFuncUnk)
-            activateSoundFromMenuFuncUnk;
+                &SoundSystem::enableSoundAndRestartMusic)
+            enableSoundAndRestartMusic;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047B890, &SoundSystem::playRandomAmbientMusic)
-            playRandomAmbientMusic;
+                void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047B890, &SoundSystem::updateMusic)
+            updateMusic;
 
             MACRO_FUNCTION_RESOLVER(void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047BF20,
-                &SoundSystem::playRandomBackgroundMusicUnk)
-            playRandomBackgroundMusicUnk;
+                &SoundSystem::queueNextBattleMusicSegment)
+            queueNextBattleMusicSegment;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SoundSystem::*)(), false, Address::SHC_3BB0A8C1_0x0047C400, &SoundSystem::initMiles)

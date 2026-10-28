@@ -210,8 +210,8 @@ namespace Map {
         UpdateTower1;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00418F70,
-            &OpenSHC::Map::Buildings::UpdateBadBuildingCessPitOrDancingBearUnk)
-        UpdateBadBuildingCessPitOrDancingBearUnk;
+            &OpenSHC::Map::Buildings::UpdateCessPitBeehivePondBearCave)
+        UpdateCessPitBeehivePondBearCave;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00418F90,
             &OpenSHC::Map::Buildings::UpdateBadBuildingBurningStake)

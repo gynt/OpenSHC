@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace AlliesOrder {
 
+            /**
+             * Renders the Allies 'Set Orders' modal: rebuilds the enemy player list and draws the title.
+             */
             void __cdecl MenuModalRenderFunction_AlliesOrder(int x, int y, int width, int height);
 
         } // namespace AlliesOrder

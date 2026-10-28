@@ -8,7 +8,7 @@
 #include "OpenSHC/Globals/DAT_TextInputDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
-#include "OpenSHC/Globals/GMTotalPicturesProcessed.hpp"
+#include "OpenSHC/Globals/GMFirstPictureIndex.hpp"
 
 namespace OpenSHC {
 namespace Text {
@@ -29,7 +29,7 @@ namespace Text {
 
         if (this->fontStartImageId_0x8 == -1) {
             this->fontStartImageId_0x8
-                = GMTotalPicturesProcessed::instance[this->fontGmID_0x0] + this->numberOfFontStartInGm_0x4 - 1;
+                = GMFirstPictureIndex::instance[this->fontGmID_0x0] + this->numberOfFontStartInGm_0x4 - 1;
         }
 
         for (int i = 0; i < textLength; ++i) {
@@ -37,14 +37,14 @@ namespace Text {
 
             int imageSeqId
                 = DAT_TextInputDefinedData::instance
-                      .CharToImageSeqIDMapping[DAT_TextManagerObject::instance.alternativeCodePageUsedUnk][currentChar];
+                      .CharToImageSeqIDMapping[DAT_TextManagerObject::instance.isCodePage1250][currentChar];
 
-            if (_xPos + this->whiteSpaceWidth_0x1c * 5 > DAT_TextManagerObject::instance.textClipMin
-                && _xPos < DAT_TextManagerObject::instance.textClipMax) {
+            if (_xPos + this->whiteSpaceWidth_0x1c * 5 > DAT_TextManagerObject::instance.textClipMinX
+                && _xPos < DAT_TextManagerObject::instance.textClipMaxX) {
 
                 if (imageSeqId == -1) {
                     if (currentChar >= ' ') {
-                        if (DAT_TextManagerObject::instance.helpTextLinkActive) {
+                        if (DAT_TextManagerObject::instance.underlineText) {
                             int const lineY = this->baselineOffset_0x10 + _yPos + 2;
                             MACRO_CALL_MEMBER(
                                 UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
@@ -62,7 +62,7 @@ namespace Text {
                         DAT_TextureRenderCoreObject::ptr)(_xPos, this->baselineOffset_0x10 + _yPos, imageSeqId,
                         (FontRenderType)this->renderType_0xc, this->lineHeight_0x14, fillColor, blendStrength);
                     _xPos += DAT_GMImageHeaders::instance.imh[imageSeqId].width + this->letterSpacing_0x18
-                        + DAT_TextureRenderCoreObject::instance.mbr_0x6c;
+                        + DAT_TextureRenderCoreObject::instance.extraGlyphAdvance;
                 }
             } else if (imageSeqId == -1) {
                 if (currentChar >= ' ') {

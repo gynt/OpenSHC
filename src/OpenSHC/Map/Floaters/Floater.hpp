@@ -26,7 +26,9 @@ namespace Map {
             int originY; // 0x0000000C length: 4
             int tile; // 0x00000010 length: 4
             int variation; // 0x00000014 length: 4
-            int id; // 0x00000018 length: 4
+            // [180 0x004E63A0] used as linked-list next pointer when walking floaters of the same tile; new entry
+            // gets the old head
+            int nextFloaterIndex; // 0x00000018 length: 4
 
         } Floater;
 #pragma pack(pop)

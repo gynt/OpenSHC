@@ -12,8 +12,8 @@ namespace AI {
         int playerID, AIGridComputationResourceType resourceType)
     {
         this->visitCount = 1;
-        this->algAIndex = 0;
-        this->algBIndex = 1;
+        this->bfsQueueHead = 0;
+        this->bfsQueueTail = 1;
         this->buildingApproriateGridXPosition = -1;
         this->buildingAppropriateGridYPosition = -1;
         if (resourceType == AIGCRT_OIL) {
@@ -51,22 +51,22 @@ namespace AI {
         ++this->mapExtraInfo.algorithmIterationNumber;
         this->heatMapYArray[0] = campY;
         this->heatMaps[campX][campY].algorithmIterationNumber = this->mapExtraInfo.algorithmIterationNumber;
-        this->heatMaps[campX][campY].algorithmVisitCountUnk = this->visitCount;
+        this->heatMaps[campX][campY].bfsDepth = this->visitCount;
 
-        while (this->algAIndex != this->algBIndex) {
-            int const x = this->heatMapXArray[this->algAIndex];
-            int const y = this->heatMapYArray[this->algAIndex];
-            this->visitCount = this->heatMaps[x][y].algorithmVisitCountUnk;
+        while (this->bfsQueueHead != this->bfsQueueTail) {
+            int const x = this->heatMapXArray[this->bfsQueueHead];
+            int const y = this->heatMapYArray[this->bfsQueueHead];
+            this->visitCount = (char)this->heatMaps[x][y].bfsDepth;
             if (this->visitCount > 40) {
                 break;
             }
             // only the four cardinal directions
             for (int direction = 0; direction < 8; direction += 2) {
                 uint const gridX
-                    = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.xOffset + x;
+                    = DAT_TerrainDefinedData::instance.clockwiseNeighbourOffsets[direction].int_.xOffset + x;
                 uint const gridY
-                    = DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[direction].int_.yOffset + y;
-                if (this->heatMaps[x][y].isNotNearEdgeUnk && (gridX > 79 || gridY > 79)) {
+                    = DAT_TerrainDefinedData::instance.clockwiseNeighbourOffsets[direction].int_.yOffset + y;
+                if (this->heatMaps[x][y].isEdgeOrOffMapCell && (gridX > 79 || gridY > 79)) {
                     continue;
                 }
                 if (this->heatMaps[gridX][gridY].algorithmIterationNumber
@@ -74,12 +74,12 @@ namespace AI {
                     continue;
                 }
                 this->heatMaps[gridX][gridY].algorithmIterationNumber = this->mapExtraInfo.algorithmIterationNumber;
-                int const blockedCount = this->heatMaps[gridX][gridY].tilesNotPartOfLargestAreaCount
-                    - this->heatMaps[gridX][gridY].impassableCount;
+                int const blockedCount = (char)this->heatMaps[gridX][gridY].tilesNotPartOfLargestAreaCount
+                    - (char)this->heatMaps[gridX][gridY].impassableCount;
                 if (blockedCount >= 16) {
                     continue;
                 }
-                int const owner = this->heatMaps[gridX][gridY].tileOwnership;
+                int const owner = (char)this->heatMaps[gridX][gridY].tileOwnership;
                 if ((blockedCount == 0 || resourceType == AIGCRT_IRON) && blockedCount <= 4
                     && !this->heatMaps[gridX][gridY].structureCount
                     && !this->heatMaps[gridX][gridY].destructionBasedPlacementCooldown
@@ -87,7 +87,8 @@ namespace AI {
                         || DAT_GameState::instance.mapAndTime.playerTeams[playerID]
                             == DAT_GameState::instance.mapAndTime.playerTeams[owner])) {
                     if (resourceType == AIGCRT_OIL) {
-                        if (this->heatMaps[gridX][gridY].oilCount > 2 && this->heatMaps[gridX][gridY].marshCount >= 10
+                        if ((char)this->heatMaps[gridX][gridY].oilCount > 2
+                            && (char)this->heatMaps[gridX][gridY].marshCount >= 10
                             && this->heatMaps[gridX][gridY].highestTerrainHeight
                                     - this->heatMaps[gridX][gridY].lowestTerrainHeight
                                 < 12) {
@@ -96,7 +97,7 @@ namespace AI {
                             return;
                         }
                     } else if (resourceType == AIGCRT_IRON) {
-                        if (this->heatMaps[gridX][gridY].ironCount > 6
+                        if ((char)this->heatMaps[gridX][gridY].ironCount > 6
                             && this->heatMaps[gridX][gridY].highestTerrainHeight
                                     - this->heatMaps[gridX][gridY].lowestTerrainHeight
                                 < 12) {
@@ -105,7 +106,7 @@ namespace AI {
                             return;
                         }
                     } else if (resourceType == AIGCRT_BOULDER) {
-                        if (this->heatMaps[gridX][gridY].bouldersCount >= 8
+                        if ((char)this->heatMaps[gridX][gridY].bouldersCount >= 8
                             && this->heatMaps[gridX][gridY].highestTerrainHeight
                                     - this->heatMaps[gridX][gridY].lowestTerrainHeight
                                 < 40) {
@@ -115,17 +116,17 @@ namespace AI {
                         }
                     }
                 }
-                this->heatMaps[gridX][gridY].algorithmVisitCountUnk = this->visitCount + 1;
-                this->heatMapXArray[this->algBIndex] = gridX;
-                this->heatMapYArray[this->algBIndex] = gridY;
-                ++this->algBIndex;
-                if (this->algBIndex >= 6400) {
-                    this->algBIndex = 0;
+                this->heatMaps[gridX][gridY].bfsDepth = this->visitCount + 1;
+                this->heatMapXArray[this->bfsQueueTail] = gridX;
+                this->heatMapYArray[this->bfsQueueTail] = gridY;
+                ++this->bfsQueueTail;
+                if ((int)this->bfsQueueTail >= 6400) {
+                    this->bfsQueueTail = 0;
                 }
             }
-            ++this->algAIndex;
-            if (this->algAIndex >= 6400) {
-                this->algAIndex = 0;
+            ++this->bfsQueueHead;
+            if ((int)this->bfsQueueHead >= 6400) {
+                this->bfsQueueHead = 0;
             }
         }
 

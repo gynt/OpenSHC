@@ -16,8 +16,8 @@ namespace UI {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int x, int y, int width, int height), false,
                 Address::SHC_3BB0A8C1_0x004AF4C0,
-                &OpenSHC::UI::MenuModals::DebugDataAivStateUnk::MenuModalRenderFunction_DebugDataAivStateUnk)
-            MenuModalRenderFunction_DebugDataAivStateUnk;
+                &OpenSHC::UI::MenuModals::DebugDataAivStateUnk::MenuModalRenderFunction_DebugDataAivPlacementSuccess)
+            MenuModalRenderFunction_DebugDataAivPlacementSuccess;
 
         } // namespace DebugDataAivStateUnk_Func
     } // namespace MenuModals

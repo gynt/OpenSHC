@@ -16,7 +16,7 @@ namespace UI {
             // FUNCTION: STRONGHOLDCRUSADER 0x004B1090
             void MenuItemActionHandler_UnusedWinCondition_Options(int value, ...)
             {
-                if (value >= (int)DAT_MenuModalComposition1::instance.mbr_0x64) {
+                if (value >= (int)DAT_MenuModalComposition1::instance.optionCount) {
                     return;
                 }
                 DAT_MenuModalComposition1::instance.sliderValue = value;

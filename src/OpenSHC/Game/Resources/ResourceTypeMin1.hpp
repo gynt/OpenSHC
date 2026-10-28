@@ -21,6 +21,7 @@ namespace Game {
             RTM_IRON = 5, // 0x00000005
             RTM_PITCH = 6, // 0x00000006
             RTM_PARTIALPITCH = 7, // 0x00000007
+            ResourceTypeMin1Byte__RTM_PITCH_REFINED = 7, // 0x00000007
             RTM_WHEAT = 8, // 0x00000008
             RTM_BREAD = 9, // 0x00000009
             RTM_CHEESE = 10, // 0x0000000A
@@ -36,8 +37,7 @@ namespace Game {
             RTM_MACE = 20, // 0x00000014
             RTM_SWORD = 21, // 0x00000015
             RTM_LEATHERARMOR = 22, // 0x00000016
-            RTM_IRONARMOR = 23, // 0x00000017
-            ResourceTypeMin1Byte__RTM_PITCH_REFINED = 7 // 0x00000007
+            RTM_IRONARMOR = 23 // 0x00000017
 
         } ResourceTypeMin1;
 

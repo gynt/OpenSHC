@@ -22,7 +22,7 @@ namespace AI {
             return;
 
         for (int i = 0; i < 2; i++) {
-            int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[190 + i];
+            int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[190 + i];
             if (tribeID == 0)
                 continue;
             if (DAT_TribesState::instance.tribes[tribeID].uid
@@ -35,17 +35,17 @@ namespace AI {
                 == FALSE)
                 continue;
 
-            DAT_TribesState::instance.tribes[tribeID].unknownAttackRelatedUpdateCounter = 0;
+            DAT_TribesState::instance.tribes[tribeID].behaviorTickCounter = 0;
             MACRO_CALL_MEMBER(OpenSHC::AI::AICState_Func::addRallyPointForTribe, this)(tribeID);
 
-            short const rallyPointCount = DAT_TribesState::instance.tribes[tribeID].rallyPointCount;
+            short rallyPointCount = DAT_TribesState::instance.tribes[tribeID].rallyPointCount;
             int rallyPointIndex = DAT_TribesState::instance.tribes[tribeID].currentRallyPointIndex + 1;
             if (rallyPointIndex >= rallyPointCount)
                 rallyPointIndex = 0;
 
-            int const x = DAT_TribesState::instance.tribes[tribeID].rallyPointArray[rallyPointIndex][0];
-            int const y = DAT_TribesState::instance.tribes[tribeID].rallyPointArray[rallyPointIndex][1];
-            int const targetUnitID = DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID;
+            int x = DAT_TribesState::instance.tribes[tribeID].rallyPointArray[rallyPointIndex][0];
+            int y = DAT_TribesState::instance.tribes[tribeID].rallyPointArray[rallyPointIndex][1];
+            int targetUnitID = DAT_TribesState::instance.tribes[tribeID].leaderUnitID;
             DAT_TribesState::instance.tribes[tribeID].currentRallyPointIndex = rallyPointIndex;
 
             if (rallyPointCount <= 0)

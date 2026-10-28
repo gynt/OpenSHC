@@ -24,7 +24,7 @@ namespace Synchrony {
                 _parameter = &this->DAT_GameCommandArray[this->DAT_CurrentGameCommandID].parameters
                     + this->DAT_CommandParameterOffset;
             }
-            if (destSwitch == Commands::GCPRW_SERIALIZE_INTO_PARAM_1) {
+            if (destSwitch == Commands::GCPRW_WRITE_VAR_TO_STREAM) {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                     size, destination, _parameter);
             } else {

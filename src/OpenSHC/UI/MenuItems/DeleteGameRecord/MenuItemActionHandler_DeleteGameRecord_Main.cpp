@@ -4,7 +4,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_00ed2788.hpp"
+#include "OpenSHC/Globals/g_rankingSelectedRecordId.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
 
 namespace OpenSHC {
@@ -19,7 +19,7 @@ namespace UI {
             void MenuItemActionHandler_DeleteGameRecord_Main(int action, ...)
             {
                 if (action == 22) {
-                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::SkirmishLeaderboard_DeleteEntry)(DAT_00ed2788::instance);
+                    MACRO_CALL(OpenSHC::Game::Skirmish_Func::SkirmishLeaderboard_DeleteEntry)(g_rankingSelectedRecordId::instance);
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,

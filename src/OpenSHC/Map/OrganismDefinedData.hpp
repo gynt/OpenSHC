@@ -46,7 +46,11 @@ namespace Map {
         int field25_0x848; // 0x00000848 length: 4
         int field26_0x84c; // 0x0000084C length: 4
         int field27_0x850; // 0x00000850 length: 4
-        int field28_0x854[20]; // 0x00000854 length: 80
+        // Per tree type value copied to Tree.animFrameIntervalMs in createTree = milliseconds between animation frames
+        // (updateTrees advances when timeGetTime() delta >= it)
+        // Per tree type value copied to Tree.treeTypeRelated2 in createTree = milliseconds between animation frames
+        // (updateTrees advances when timeGetTime() delta >= it)
+        int treeAnimFrameIntervalMs[20]; // 0x00000854 length: 80
         int Tree_2_B[124]; // 0x000008A4 length: 496
         int Tree_2_A[120]; // 0x00000A94 length: 480
         byte Tree_1_A[168]; // 0x00000C74 length: 168

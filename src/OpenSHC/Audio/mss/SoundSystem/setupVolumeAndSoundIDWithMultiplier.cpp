@@ -19,24 +19,24 @@ namespace Audio {
             // Indicator to handle as mission sound (?)
             if (soundIDInt == DE::SHCDE::MUSIC_TUNE_NARR1) {
                 // missionNumber1to20 might be unsigned, but found signs inconclusive
-                if (1 <= DAT_GameCore::ptr->missionNumber1to20 && DAT_GameCore::ptr->missionNumber1to20 <= 20) {
+                if (1 <= DAT_GameCore::ptr->missionNumber && DAT_GameCore::ptr->missionNumber <= 20) {
                     // This makes the soundID "missionNumber1to20 + 46", which would use the enums 47 to 66.
                     // These are only filled by 4 enums for 4 mission intros, so this space could be made for 20.
-                    soundIDInt = DAT_GameCore::ptr->missionNumber1to20 + 46;
+                    soundIDInt = DAT_GameCore::ptr->missionNumber + 46;
                 } else {
                     soundIDInt = DE::SHCDE::MUSIC_TUNE_OFF;
                 }
             }
 
-            if (soundIDInt == this->currentSoundID_0x3278) {
+            if (soundIDInt == this->pendingMusicId) {
                 return;
             }
-            this->currentSoundID_0x3278 = soundIDInt;
+            this->pendingMusicId = soundIDInt;
             int const fileVolume = MACRO_CALL_MEMBER(SFX::SFXState_Func::getSoundVolumeForFilename, DAT_SFXState::ptr)(
                 DAT_SFXDefinedData::ptr->Pointers[soundIDInt].musicFile);
             // 0x7f is the maximum volume of the MSS32 volume API.
-            this->currentSoundIDVolumeUnk_0x327c = (fileVolume * soundMultiplier) / 0x7f;
-            this->mbr_0x3280 = 0;
+            this->pendingMusicVolume = (fileVolume * soundMultiplier) / 0x7f;
+            this->fadeInNextTrack = 0;
         }
 
     }

@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DisableWeapon {
 
+            /**
+             * Renders the 'Weapons' header banner of the disable-weapons (scenario editor) modal.
+             */
             void __cdecl MenuModalRenderFunction_DisableWeapon(int x, int y, int width, int height);
 
         } // namespace DisableWeapon

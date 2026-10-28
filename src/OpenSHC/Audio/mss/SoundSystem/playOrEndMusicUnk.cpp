@@ -12,23 +12,23 @@ namespace Audio {
     namespace MSS {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0047B3C0
-        void SoundSystem::playOrEndMusicUnk(char* filename, int volume)
+        void SoundSystem::playMusicOnceWithVolume(char* filename, int volume)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
-            strcpy(this->currIdSoundFilenameUnk_0x84, filename);
-            this->currIdSoundFileVolumeUnk_0x150
+            strcpy(this->currentMusicFilename, filename);
+            this->currentMusicFileVolume
                 = MACRO_CALL_MEMBER(SFX::SFXState_Func::getSoundVolumeForFilename, DAT_SFXState::ptr)(filename);
             if (this->musicFadeState == 1) {
-                this->streamFileVolumeNextUnk_0x48[0] = 0;
+                this->streamUnduckedFileVolume[0] = 0;
             } else {
-                this->streamFileVolumeNextUnk_0x48[0]
-                    = (((this->currIdSoundFileVolumeUnk_0x150 * volume) / 100) * this->musicVolumePercent) / 100;
+                this->streamUnduckedFileVolume[0]
+                    = (((this->currentMusicFileVolume * volume) / 100) * this->musicVolumeScalePercent) / 100;
             }
-            MACRO_CALL_MEMBER(SoundSystem_Func::playSoundStreamUnk, this)(enums::SND_STR_MUSIC, filename, 1);
-            this->streamFileVolumeNextUnk_0x48[0]
-                = (((this->currIdSoundFileVolumeUnk_0x150 * volume) / 100) * this->musicVolumePercent) / 100;
+            MACRO_CALL_MEMBER(SoundSystem_Func::startSoundStream, this)(enums::SND_STR_MUSIC, filename, 1);
+            this->streamUnduckedFileVolume[0]
+                = (((this->currentMusicFileVolume * volume) / 100) * this->musicVolumeScalePercent) / 100;
         }
 
     }

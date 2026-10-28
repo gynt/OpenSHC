@@ -14,7 +14,7 @@ namespace Audio {
         namespace enums {
             typedef enum SHC_SoundFlag {
 
-                SND_NOT_OVERWRITEUnk = 2147483648 // 0x80000000
+                SND_UNINTERRUPTIBLE = 2147483648 // 0x80000000
 
             } SHC_SoundFlag;
 

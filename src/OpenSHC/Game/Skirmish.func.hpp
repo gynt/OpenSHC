@@ -45,8 +45,8 @@ namespace Game {
         SkirmishLeaderboard_DeleteEntry;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int reverseOrder), false, Address::SHC_3BB0A8C1_0x004D9290,
-            &OpenSHC::Game::Skirmish::Skirmish_SortAIOpponentOrder)
-        Skirmish_SortAIOpponentOrder;
+            &OpenSHC::Game::Skirmish::sortSkMastersRecordList)
+        sortSkMastersRecordList;
 
         MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004D9400,
             &OpenSHC::Game::Skirmish::Skirmish_PrepareLeaderboardView)

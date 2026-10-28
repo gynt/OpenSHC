@@ -12,9 +12,9 @@ namespace AI {
     {
         if (DAT_GameState::instance.playerDataArray[playerID].aiType == OpenSHC::AI::AIT_NULL)
             return FALSE;
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
 
-        if (DAT_GameState::instance.playerDataArray[playerID].isNotNervousByEnemyTroopValue) {
+        if (DAT_GameState::instance.playerDataArray[playerID].helpNeeded != 0) {
             MACRO_CALL_MEMBER(AICState_Func::playWillNotHelp1BikFromPlayerToPlayer, this)(
                 playerID, requestedByPlayerID);
             return FALSE;

@@ -221,15 +221,29 @@ namespace Rendering {
         int field202_0x4d0; // 0x000004D0 length: 4
         int field203_0x4d4; // 0x000004D4 length: 4
         int field204_0x4d8; // 0x000004D8 length: 4
-        int field205_0x4dc[12]; // 0x000004DC length: 48
+        // Identity table {0..11}: GFX offset for tiles with MiscDisplayLayer bit 0x80, indexed by
+        // (unknownCounterUntil_0x24 + WallGFXLayer/2) % 12 (bytes verified at 0xB446F8)
+        int tileAnimOffsetsMisc80[12]; // 0x000004DC length: 48
         undefined1 padding_0x50c[408]; // 0x0000050C length: 408
-        int field614_0x6a4[32]; // 0x000006A4 length: 128
-        byte field615_0x724[512]; // 0x00000724 length: 512
-        byte field616_0x924[512]; // 0x00000924 length: 512
-        byte field617_0xb24[256]; // 0x00000B24 length: 256
-        int field618_0xc24[16][16]; // 0x00000C24 length: 1024
-        int field619_0x1024[16][16]; // 0x00001024 length: 1024
-        int field620_0x1424[16][16]; // 0x00001424 length: 1024
+        // 32-step ping-pong cycle {0,0,0,1,1,1,2,2,2,1,1,1,0,...} (times 0x22) added to GfxLayer for tiles with
+        // MiscDisplayLayer bit 0x40, indexed by unknownCounterUntil_0x20
+        int tileAnimOffsetsMisc40[32]; // 0x000006A4 length: 128
+        // Sea/whitecap animation GFX offsets per per-tile counter (WallGFXLayer, 0..0x1fe) for tiles with
+        // RandomLayer&7 == 0.
+        byte seaAnimOffsetsVariant0[512]; // 0x00000724 length: 512
+        // Sea animation GFX offsets per per-tile counter (0..0x1fe) for RandomLayer&7 == 1.
+        byte seaAnimOffsetsVariant1[512]; // 0x00000924 length: 512
+        // Sea animation GFX offsets per per-tile counter for the other RandomLayer variants (0..0x7e, or 0..0xfe
+        // for 4/5).
+        byte seaAnimOffsetsVariant2[256]; // 0x00000B24 length: 256
+        // Indexed by pixel (y&15, x/2&15) inside a screen cell: 0..3 selects which neighbouring tile row/column the
+        // point belongs to (+200/+0xc9/+0x191) when converting screen to tile.
+        int screenCellTileAdjust[16][16]; // 0x00000C24 length: 1024
+        // Indexed by pixel position inside a screen cell: sub-tile X index of the mouse (stored in viewportState).
+        int screenCellSubTileX[16][16]; // 0x00001024 length: 1024
+        // Indexed by pixel position inside a screen cell: sub-tile Y index of the mouse;
+        // updateBuildingPreviewPosition also reads beyond it (menu hit-rectangles).
+        int screenCellSubTileY[16][16]; // 0x00001424 length: 1024
         XYPair BuildingPreviewPositionRelatedOffsets[110][2]; // 0x00001824 length: 1760
 
     } MapRenderDefinedData;

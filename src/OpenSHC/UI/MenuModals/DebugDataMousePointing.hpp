@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataMousePointing {
 
+            /**
+             * Debug modal render function: forwards to ViewportRenderState::renderDebugDataMousePointing.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataMousePointing(int x, int y, int width, int height);
 
         } // namespace DebugDataMousePointing

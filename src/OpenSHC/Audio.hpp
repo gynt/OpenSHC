@@ -11,7 +11,12 @@
 namespace OpenSHC {
 namespace Audio {
 
-    void __cdecl ResetGreatestLordGenieSpeechState();
+    /**
+     * Resets state used by the Genie advisor speech feedback: player ranking, keep-enclosed flag, unit-loss and
+     * destroyed-building histories; the keep-enclosure timer/cooldown and last status message time are all set to
+     * the current timeGetTime().
+     */
+    void __cdecl resetGenieSpeechFeedbackState();
 
 } // namespace Audio
 } // namespace OpenSHC

@@ -7,7 +7,7 @@ namespace OpenSHC {
 namespace Map {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F2AC0
-    void Rocks::UpdateRockFunc6() { DAT_LandscapeState::instance.rocks[DAT_CurrentRockID::instance].gfx = 0x1e1; }
+    void Rocks::setCurrentRockGfx0x1E1() { DAT_LandscapeState::instance.rocks[DAT_CurrentRockID::instance].gfx = 0x1e1; }
 
 }
 }

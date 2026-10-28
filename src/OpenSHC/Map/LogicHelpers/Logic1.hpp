@@ -15,11 +15,12 @@ namespace Map {
 
             L_NONE = 0, // 0x00000000
             L_SEA = 1, // 0x00000001
-            L_STOCKPILEUnk = 2, // 0x00000002
+            L_STOCKPILE = 2, // 0x00000002
             L_PLAIN1_AND_FARM = 4, // 0x00000004
             L_PLAIN2_AND_PITCH = 8, // 0x00000008
             L_BORDER = 16, // 0x00000010
             L_BORDER_EDGE = 32, // 0x00000020
+            L_UNNAMED_0x40 = 64, // 0x00000040
             L_ROCKY = 128, // 0x00000080
             L_WALL_OR_GATEHOUSE = 256, // 0x00000100
             L_CRENEL = 512, // 0x00000200
@@ -35,8 +36,9 @@ namespace Map {
             L_IRON = 524288, // 0x00080000
             L_RIVER = 1048576, // 0x00100000
             L_FORD = 2097152, // 0x00200000
-            L_CRENEL_VARIATIONUnk = 4194304, // 0x00400000
+            L_CRENEL_MERLON = 4194304, // 0x00400000
             L_CLIMBABLE = 8388608, // 0x00800000
+            Logic1Int__L_LADDER = 8388608, // 0x00800000
             L_FARM_FIELD_WHEAT = 16777216, // 0x01000000
             L_FARM_FIELD_HOP = 33554432, // 0x02000000
             L_FARM_FIELD_APPLE = 67108864, // 0x04000000
@@ -44,8 +46,7 @@ namespace Map {
             L_KEEP_NON_MANOR_HOUSE = 268435456, // 0x10000000
             L_MARSH = 536870912, // 0x20000000
             L_MOAT = 1073741824, // 0x40000000
-            L_OIL = 2147483648, // 0x80000000
-            Logic1Int__L_LADDER = 8388608 // 0x00800000
+            L_OIL = 2147483648 // 0x80000000
 
         } Logic1;
 

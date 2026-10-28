@@ -26,7 +26,9 @@ namespace Game {
         undefined1 padding_0xb0[4]; // 0x000000B0 length: 4
         int PeasantSpawnClockIncrementSkirmish[21]; // 0x000000B4 length: 84
         undefined1 padding_0x108[264]; // 0x00000108 length: 264
-        int field279_0x210[38]; // 0x00000210 length: 152
+        // gold cost per unit type; recruit refused when player gold < cost, shown on mercenary post portraits (0 in
+        // skirmish when troops cost no gold)
+        int unitRecruitGoldCost[38]; // 0x00000210 length: 152
         int field280_0x2a8; // 0x000002A8 length: 4
         ResourceTypeInt MarketResourceCycleArray[21]; // 0x000002AC length: 84
         uint BarracksUnitCost[7]; // 0x00000300 length: 28

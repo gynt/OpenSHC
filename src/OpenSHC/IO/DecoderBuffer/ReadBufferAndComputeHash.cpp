@@ -13,7 +13,7 @@ namespace IO {
         {
             uint bytesToLoad = *size;
             BufferHelper* bufferHelper = (BufferHelper*)param;
-            if (bufferHelper->underflow == 1) {
+            if (bufferHelper->overflow == 1) {
                 return 0;
             }
 

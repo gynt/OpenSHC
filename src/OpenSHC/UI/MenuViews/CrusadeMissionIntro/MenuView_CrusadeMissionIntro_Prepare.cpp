@@ -19,7 +19,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)("skirmish_background.tgx");
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::LoadTGX_shc_back)();
                 INT_00eb9ae8::instance = 0;
-                DAT_MissionDefinedData::instance.field26_0xaf8 = true;
+                DAT_MissionDefinedData::instance.crusadeMissionIntroActive = true;
             }
 
         }

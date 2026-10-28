@@ -16,7 +16,7 @@ namespace AI {
     {
         if (!MACRO_CALL_MEMBER(Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                 DAT_GameState::ptr)(Commands::M_MAPPER_QUARRY, playerID, FALSE)
-            || DAT_BuildingsState::instance.unknownCountdown01 < 20) {
+            || DAT_BuildingsState::instance.freeBuildingSlots < 20) {
             return;
         }
         MACRO_CALL_MEMBER(AIVState_Func::findAppropriateGridLocationForResourceTypeBuilding, this)(
@@ -39,10 +39,8 @@ namespace AI {
             quarryYOffset + this->buildingAppropriateGridYPosition * 5, Commands::M_MAPPER_QUARRY,
             MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeForCommandBuildingType, DAT_TileMapState::ptr)(
                 Commands::M_MAPPER_QUARRY),
-            // rotation 15 is a magic value: the building ends up with rotation 0
-            // unless DAT_TileMapState::skipPlacementCheck is set
             15);
-        if (DAT_TileMapState::instance.buildingPlacementFail) {
+        if (DAT_TileMapState::instance.buildingPlacementResult) {
             return;
         }
         int const quarryID = DAT_TileMapState::instance.placedBuildingID;
@@ -61,10 +59,8 @@ namespace AI {
                 yOffset + this->buildingAppropriateGridYPosition * 5, Commands::M_MAPPER_OXENBASE,
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeForCommandBuildingType, DAT_TileMapState::ptr)(
                     Commands::M_MAPPER_OXENBASE),
-                // rotation 15 is a magic value: the building ends up with rotation 0
-                // unless DAT_TileMapState::skipPlacementCheck is set
                 15);
-            if (!DAT_TileMapState::instance.buildingPlacementFail) {
+            if (!DAT_TileMapState::instance.buildingPlacementResult) {
                 int const oxTetherID = DAT_TileMapState::instance.placedBuildingID;
                 DAT_BuildingsState::instance.buildings[quarryID].quarryLinkedOxTethers[0] = (short)oxTetherID;
                 DAT_BuildingsState::instance.buildings[oxTetherID].oxtetherLinkedQuarryID = (short)quarryID;

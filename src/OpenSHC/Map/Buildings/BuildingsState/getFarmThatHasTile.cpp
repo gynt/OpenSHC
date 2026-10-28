@@ -1,5 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
@@ -7,19 +6,22 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+        using OpenSHC::Map::Buildings::BuildingType;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0040CB10
         int BuildingsState::getFarmThatHasTile(int tile)
         {
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (this->buildings[buildingID].logicalState == BLS_NORMAL
-                    && (this->buildings[buildingID].buildingType == BT_WHEATFARM
-                        || this->buildings[buildingID].buildingType == BT_HOPFARM
-                        || this->buildings[buildingID].buildingType == BT_APPLEFARM
-                        || this->buildings[buildingID].buildingType == BT_DAIRYFARM)) {
-                    for (int tileIndex = 0; tileIndex < 36; ++tileIndex) {
-                        if (this->buildings[buildingID].tileRefs[tileIndex] == tile) {
-                            return buildingID;
-                        }
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState != BLS_NORMAL
+                    || (this->buildings[i].buildingType != BT_WHEATFARM && this->buildings[i].buildingType != BT_HOPFARM
+                        && this->buildings[i].buildingType != BT_APPLEFARM
+                        && this->buildings[i].buildingType != BT_DAIRYFARM)) {
+                    continue;
+                }
+                for (int t = 0; t < 36; ++t) {
+                    if (this->buildings[i].tileRefs[t] == tile) {
+                        return i;
                     }
                 }
             }

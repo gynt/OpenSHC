@@ -12,15 +12,15 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004EFC30
-    void AIVState::aiPlaceAdditionalOxtether(int playerID)
+    void AIVState::aiPlaceAdditionalOxtether(PlayerID playerID)
     {
         if (!MACRO_CALL_MEMBER(Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                 DAT_GameState::ptr)(Commands::M_MAPPER_OXENBASE, playerID, FALSE)
-            || DAT_BuildingsState::instance.unknownCountdown01 < 20) {
+            || DAT_BuildingsState::instance.freeBuildingSlots < 20) {
             return;
         }
 
-        int const quarryID = DAT_GameState::instance.playerDataArray[playerID].highestLoadedQuarryUnk;
+        int const quarryID = DAT_GameState::instance.playerDataArray[playerID].quarryNeedingOxTether;
         MACRO_CALL_MEMBER(AIVState_Func::findSuitableGridLocationFittingCriteria, this)(
             (short)DAT_BuildingsState::instance.buildings[quarryID].x / 5
                 + DAT_AIVDefinedData::instance
@@ -40,8 +40,6 @@ namespace AI {
             Commands::M_MAPPER_OXENBASE,
             MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeForCommandBuildingType, DAT_TileMapState::ptr)(
                 Commands::M_MAPPER_OXENBASE),
-            // rotation 15 is a magic value: the building ends up with rotation 0
-            // unless DAT_TileMapState::skipPlacementCheck is set
             15);
 
         // link the new ox tether to the first free slot of the quarry

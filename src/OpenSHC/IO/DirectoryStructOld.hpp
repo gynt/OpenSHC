@@ -19,9 +19,11 @@ namespace IO {
     // SIZE: 0x000007F0
     typedef struct DirectoryStructOld {
 
+        // Value not validated.
         int fileSizeWithoutDirectory; // 0x00000000 length: 4
         int sectionCount; // 0x00000004 length: 4
-        PackagedFileMagicNumInt magicNumOfFileType; // 0x00000008 length: 4
+        // [RUNTIME] File format version (see FilePackager)
+        int fileFormatVersion; // 0x00000008 length: 4
         dword emptyConst0; // 0x0000000C length: 4
         dword emptyConst1; // 0x00000010 length: 4
         dword emptyConst2; // 0x00000014 length: 4

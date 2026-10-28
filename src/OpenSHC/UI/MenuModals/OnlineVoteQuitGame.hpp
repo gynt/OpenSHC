@@ -13,6 +13,10 @@ namespace UI {
     namespace MenuModals {
         namespace OnlineVoteQuitGame {
 
+            /**
+             * Renders the 'End this game?' vote modal with the remaining seconds (10 s countdown from
+             * quitGameVoteRequestTime, clamped at 0).
+             */
             void __cdecl MenuModalRenderFunction_OnlineVoteQuitGame(int x, int y, int width, int height);
 
         } // namespace OnlineVoteQuitGame

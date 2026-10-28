@@ -14,7 +14,7 @@ namespace Map {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00500CF0
-    void WallAndPitchState::startUnitDestructionConfirmation(int unitID)
+    void WallAndPitchState::startUnitPlacementUndoWindow(int unitID)
     {
         if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
             && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {

@@ -22,14 +22,14 @@ namespace Synchrony {
     void GameSynchronyState::queueSynchronizedAutosaveProtocol()
     {
         if (this->currentGameMode != Game::GM_SOLITARY && this->currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER
-            && this->isHost && this->skirmishAutoSaveEveryMinutes && this->timeSkirmishGameStart) {
-            BOOLEnum _inGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            && this->isHost && this->skirmishAutoSaveEveryMinutes && this->autosaveIntervalStartTime) {
+            BOOLEnum _inGameMenu = MACRO_CALL_MEMBER(Game::GameCore_Func::isInGameView, DAT_GameCore::ptr)();
             if (_inGameMenu && !this->syncStatus && !this->saveRelated) {
                 DWORD _now = timeGetTime();
-                int _elapsed = _now - this->timeSkirmishGameStart;
+                int _elapsed = _now - this->autosaveIntervalStartTime;
                 if (_elapsed > this->skirmishAutoSaveEveryMinutes * 60000) {
-                    this->lastAutoSaveTime = _now;
-                    this->timeSkirmishGameStart = _now;
+                    this->lastSaveTimeMs = _now;
+                    this->autosaveIntervalStartTime = _now;
                     // The macro expands to the literal, so this keeps the match that the
                     // s_autosave_005a74b4 *global* from string-literals.hpp costs (100% -> 62.2%).
                     strcpy(DAT_GameSynchronyState::instance.shortMapName, S_AUTOSAVE_005A74B4);

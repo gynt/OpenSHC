@@ -1,5 +1,4 @@
 #include "OpenSHC/Map/Version.func.hpp"
-#include "OpenSHC/Map/MapConstants.hpp"
 
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 
@@ -9,7 +8,7 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x00501730
     void Version::UpgradeMapLogicToVersion_147()
     {
-        for (int tile = 0; tile < OpenSHC::Map::MC_MAP_TILES_COUNT; ++tile) {
+        for (int tile = 0; tile < 80400; ++tile) {
             if (DAT_TileMapState::instance.DefaultHeightLayer[tile] > 156) {
                 DAT_TileMapState::instance.HeightLayer[tile]
                     += 156 - DAT_TileMapState::instance.DefaultHeightLayer[tile];

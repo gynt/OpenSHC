@@ -18,10 +18,12 @@ namespace Map {
         int x; // 0x00000000 length: 4
         int y; // 0x00000004 length: 4
         int tile; // 0x00000008 length: 4
-        int someCounter; // 0x0000000C length: 4
+        // [156 0x0051B110] entries whose value != attackInfo.someCounter1 are wiped by the prune passes
+        int attackCounterStamp; // 0x0000000C length: 4
         int tribeID; // 0x00000010 length: 4
         int tribeUID; // 0x00000014 length: 4
-        int three; // 0x00000018 length: 4
+        // [156 0x0051B110] set to 3 when a tribe reserves the point, decremented each prune pass
+        int reservationTimer; // 0x00000018 length: 4
         int zero; // 0x0000001C length: 4
 
     } AttackInfoSubArrayElement3;

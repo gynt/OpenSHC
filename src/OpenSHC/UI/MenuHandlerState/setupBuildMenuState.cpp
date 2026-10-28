@@ -12,8 +12,8 @@ namespace UI {
         this->isBuildMenuTransitioning_0x18 = FALSE;
         this->buildMenuBackgroundLeftShift_0x24 = 0;
         this->buildMenuTransitionDirection_0x2c = -1;
-        this->const017 = const017;
-        this->const516 = const516;
+        this->buildMenuClipLeft = const017;
+        this->buildMenuClipRight = const516;
     }
 
 }

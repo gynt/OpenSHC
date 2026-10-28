@@ -1,6 +1,6 @@
 #include "../BuildingsState.func.hpp"
 
-#include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
 
@@ -8,8 +8,10 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::WindowsHelper::Enums::BOOLEnum;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0040B900
-        BOOLEnum BuildingsState::getBuildingHasHealthProperty(uint buildingID, int param_2)
+        BOOLEnum BuildingsState::getBuildingHasHealthProperty(uint buildingID, int unused)
         {
             if (buildingID == 0) {
                 return FALSE;
@@ -24,8 +26,9 @@ namespace Map {
             case BT_TOWER5:
                 return TRUE;
             default:
-                return DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[this->buildings[buildingID].buildingType]
-                    != 0;
+                return (BOOLEnum)(DAT_BuildingDefinedData::instance
+                                      .BuildingTypeHasHealth[this->buildings[buildingID].buildingType]
+                    != 0);
             }
         }
 

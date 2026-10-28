@@ -23,12 +23,12 @@ namespace UI {
             MenuItemActionHandler_UnusedEconomicGametypeSelect_Main;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00426750,
-                &OpenSHC::UI::MenuItems::Unused::MenuItemRenderFunction_UnusedSetName_ButtonsUnk)
-            MenuItemRenderFunction_UnusedSetName_ButtonsUnk;
+                &OpenSHC::UI::MenuItems::Unused::MenuItemRenderFunction_UnusedSetName_OkAndChangeTitleButtons)
+            MenuItemRenderFunction_UnusedSetName_OkAndChangeTitleButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004267F0,
-                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedSetName_ButtonsUnk)
-            MenuItemActionHandler_UnusedSetName_ButtonsUnk;
+                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedSetName_OkAndChangeTitleButtons)
+            MenuItemActionHandler_UnusedSetName_OkAndChangeTitleButtons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00426D30,
                 &OpenSHC::UI::MenuItems::Unused::MenuItemRenderFunction_UnusedEconomicMissionSelect_MissionSelect)
@@ -95,24 +95,24 @@ namespace UI {
             MenuItemRenderFunction_UnusedWinCondition_Options;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B1000,
-                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedWinCondition_DeselectUnk)
-            MenuItemActionHandler_UnusedWinCondition_DeselectUnk;
+                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedWinCondition_CloseOnClickOutside)
+            MenuItemActionHandler_UnusedWinCondition_CloseOnClickOutside;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004B1090,
                 &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedWinCondition_Options)
             MenuItemActionHandler_UnusedWinCondition_Options;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int index, ...), false, Address::SHC_3BB0A8C1_0x004BA560,
-                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedCreateMessageEvent_Unknown)
-            MenuItemActionHandler_UnusedCreateMessageEvent_Unknown;
+                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedCreateMessageEvent_SelectListEntry)
+            MenuItemActionHandler_UnusedCreateMessageEvent_SelectListEntry;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004BA980,
                 &OpenSHC::UI::MenuItems::Unused::MenuItemRenderFunction_UnusedCreateMessageEvent_Buttons)
             MenuItemRenderFunction_UnusedCreateMessageEvent_Buttons;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004BF720,
-                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedChooseMessageBox_Unknown)
-            MenuItemActionHandler_UnusedChooseMessageBox_Unknown;
+                &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedChooseMessageBox_SelectListEntry)
+            MenuItemActionHandler_UnusedChooseMessageBox_SelectListEntry;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004BFE20,
                 &OpenSHC::UI::MenuItems::Unused::MenuItemActionHandler_UnusedCreateMessageEvent_SetTextUnk)

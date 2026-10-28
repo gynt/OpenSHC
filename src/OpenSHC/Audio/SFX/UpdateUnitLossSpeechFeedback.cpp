@@ -5,17 +5,17 @@
 #include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_AICState.hpp"
-#include "OpenSHC/Globals/DAT_CurrentPlayerUnitLosses.hpp"
-#include "OpenSHC/Globals/DAT_CurrentPlayerUnitLossesHistory.hpp"
+#include "OpenSHC/Globals/unitValueKilledByCurrentPlayer.hpp"
+#include "OpenSHC/Globals/unitValueKilledByCurrentPlayerHistory.hpp"
 #include "OpenSHC/Globals/DAT_DestroyedBuildingsCountHistory.hpp"
 #include "OpenSHC/Globals/DAT_GL_Counter.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
-#include "OpenSHC/Globals/DAT_TotalUnitValueLossesEnemyHistory.hpp"
-#include "OpenSHC/Globals/DAT_UnitValueLossesPerEnemyPlayer.hpp"
-#include "OpenSHC/Globals/Dat_UnitValueLossesHistoryPerEnemyPlayer.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostHistory.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostToPlayer.hpp"
+#include "OpenSHC/Globals/currentPlayerUnitValueLostToPlayerHistory.hpp"
 
 namespace OpenSHC {
 namespace Audio {
@@ -28,11 +28,11 @@ namespace Audio {
                 return;
             }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .playerDeathRelated) {
+                    .gameOutcome) {
                 return;
             }
             if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                    .lordKilledByPlayerID) {
+                    .lordDeathStatusOrKiller) {
                 return;
             }
             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
@@ -40,41 +40,41 @@ namespace Audio {
             }
             ++DAT_GL_Counter::instance;
             for (int _offset = 8; _offset >= 0; --_offset) {
-                DAT_CurrentPlayerUnitLossesHistory::instance[_offset + 1]
-                    = DAT_CurrentPlayerUnitLossesHistory::instance[_offset];
-                DAT_TotalUnitValueLossesEnemyHistory::instance[_offset + 1]
-                    = DAT_TotalUnitValueLossesEnemyHistory::instance[_offset];
+                unitValueKilledByCurrentPlayerHistory::instance[_offset + 1]
+                    = unitValueKilledByCurrentPlayerHistory::instance[_offset];
+                currentPlayerUnitValueLostHistory::instance[_offset + 1]
+                    = currentPlayerUnitValueLostHistory::instance[_offset];
                 for (int i = 0; i < 9; ++i) {
-                    Dat_UnitValueLossesHistoryPerEnemyPlayer::instance[i][_offset + 1]
-                        = Dat_UnitValueLossesHistoryPerEnemyPlayer::instance[i][_offset];
+                    currentPlayerUnitValueLostToPlayerHistory::instance[i][_offset + 1]
+                        = currentPlayerUnitValueLostToPlayerHistory::instance[i][_offset];
                 }
             }
-            DAT_CurrentPlayerUnitLossesHistory::instance[0] = DAT_CurrentPlayerUnitLosses::instance;
-            DAT_TotalUnitValueLossesEnemyHistory::instance[0] = 0;
+            unitValueKilledByCurrentPlayerHistory::instance[0] = unitValueKilledByCurrentPlayer::instance;
+            currentPlayerUnitValueLostHistory::instance[0] = 0;
             for (int i = 1; i < 9; ++i) {
-                DAT_TotalUnitValueLossesEnemyHistory::instance[0] += DAT_UnitValueLossesPerEnemyPlayer::instance[i];
-                Dat_UnitValueLossesHistoryPerEnemyPlayer::instance[i][0]
-                    = DAT_UnitValueLossesPerEnemyPlayer::instance[i];
+                currentPlayerUnitValueLostHistory::instance[0] += currentPlayerUnitValueLostToPlayer::instance[i];
+                currentPlayerUnitValueLostToPlayerHistory::instance[i][0]
+                    = currentPlayerUnitValueLostToPlayer::instance[i];
             }
             int iVar1
-                = DAT_CurrentPlayerUnitLossesHistory::instance[0] + DAT_TotalUnitValueLossesEnemyHistory::instance[0];
-            int iVar2 = DAT_CurrentPlayerUnitLossesHistory::instance[1]
-                + DAT_TotalUnitValueLossesEnemyHistory::instance[1] + DAT_CurrentPlayerUnitLossesHistory::instance[2]
-                + DAT_TotalUnitValueLossesEnemyHistory::instance[2];
+                = unitValueKilledByCurrentPlayerHistory::instance[0] + currentPlayerUnitValueLostHistory::instance[0];
+            int iVar2 = unitValueKilledByCurrentPlayerHistory::instance[1]
+                + currentPlayerUnitValueLostHistory::instance[1] + unitValueKilledByCurrentPlayerHistory::instance[2]
+                + currentPlayerUnitValueLostHistory::instance[2];
             if (DAT_GL_Counter::instance >= 2 && 50 > iVar1 && iVar2 > 150) {
 
                 int smallPlayerUnitLossesSum
-                    = DAT_CurrentPlayerUnitLossesHistory::instance[1] + DAT_CurrentPlayerUnitLossesHistory::instance[2];
-                int smallTotalEnemyUnitLossesSum = DAT_TotalUnitValueLossesEnemyHistory::instance[1]
-                    + DAT_TotalUnitValueLossesEnemyHistory::instance[2];
+                    = unitValueKilledByCurrentPlayerHistory::instance[1] + unitValueKilledByCurrentPlayerHistory::instance[2];
+                int smallTotalEnemyUnitLossesSum = currentPlayerUnitValueLostHistory::instance[1]
+                    + currentPlayerUnitValueLostHistory::instance[2];
                 int _relative1 = MACRO_CALL(SFX_Func::UpdateUnitLossSpeechFeedback_RelativeValueForGenie)(
                     smallPlayerUnitLossesSum, smallTotalEnemyUnitLossesSum);
 
                 int playerUnitLossesSum = 0;
                 int totalEnemyUnitLossesSum = 0;
                 for (int i = 1; i < 10; ++i) {
-                    playerUnitLossesSum += DAT_CurrentPlayerUnitLossesHistory::instance[i];
-                    totalEnemyUnitLossesSum += DAT_TotalUnitValueLossesEnemyHistory::instance[i];
+                    playerUnitLossesSum += unitValueKilledByCurrentPlayerHistory::instance[i];
+                    totalEnemyUnitLossesSum += currentPlayerUnitValueLostHistory::instance[i];
                 }
                 int _relative2 = MACRO_CALL(SFX_Func::UpdateUnitLossSpeechFeedback_RelativeValueForGenie)(
                     playerUnitLossesSum, totalEnemyUnitLossesSum);
@@ -135,7 +135,7 @@ namespace Audio {
                         for (int i = 1; i < 9; ++i) {
                             int summaryEnemyUnitLosses = 0;
                             for (int j = 1; j < 10; ++j) {
-                                summaryEnemyUnitLosses += Dat_UnitValueLossesHistoryPerEnemyPlayer::instance[i][j];
+                                summaryEnemyUnitLosses += currentPlayerUnitValueLostToPlayerHistory::instance[i][j];
                             }
                             if (summaryEnemyUnitLosses > maxLossesOfEnemy) {
                                 maxLossesOfEnemy = summaryEnemyUnitLosses;
@@ -153,9 +153,9 @@ namespace Audio {
                     DAT_GL_Counter::instance = 0;
                 }
             }
-            DAT_CurrentPlayerUnitLosses::instance = 0;
+            unitValueKilledByCurrentPlayer::instance = 0;
             for (int i = 0; i < 9; ++i) {
-                DAT_UnitValueLossesPerEnemyPlayer::instance[i] = 0;
+                currentPlayerUnitValueLostToPlayer::instance[i] = 0;
             }
             if (DAT_DestroyedBuildingsCountHistory::instance[0] > 1
                 && DAT_DestroyedBuildingsCountHistory::instance[4] + DAT_DestroyedBuildingsCountHistory::instance[3]

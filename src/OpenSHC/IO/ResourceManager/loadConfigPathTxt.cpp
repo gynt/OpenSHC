@@ -40,8 +40,8 @@ namespace IO {
             if (_configPathBufferUnk[index + -1] == '\\') {
                 _configPathBufferUnk[index + -1] = '\0';
             }
-            this->configPathLoadedUnk_0x7da = true;
-            strcpy(this->configPathUnk_0x7db, _configPathBufferUnk);
+            this->hasConfigPath = true;
+            strcpy(this->userPathOverride, _configPathBufferUnk);
         }
 
         MACRO_CALL(OS_Func::_fclose)(_File);

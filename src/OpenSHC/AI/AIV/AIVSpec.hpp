@@ -21,6 +21,7 @@ namespace AI {
         typedef struct AIVSpec {
 
             int playerID; // 0x00000000 length: 4
+            // Remember that this for Abbot is 0x11 (17)
             int aiType; // 0x00000004 length: 4
             int keepOrientation; // 0x00000008 length: 4
             int castleID; // 0x0000000C length: 4
@@ -29,9 +30,13 @@ namespace AI {
             int aivPoorCounter; // 0x00000018 length: 4
             int aivPoorLimit_OR_AIC_buildInterval; // 0x0000001C length: 4
             int totalSteps; // 0x00000020 length: 4
+            // Created by retype action
             int keepXOffset; // 0x00000024 length: 4
+            // Created by retype action
             int keepYOffset; // 0x00000028 length: 4
+            // Created by retype action
             int keepX; // 0x0000002C length: 4
+            // Created by retype action
             int keepY; // 0x00000030 length: 4
             AIVBuildingStep aivBuildingSteps[1000]; // 0x00000034 length: 12000
             int locationsArray[4000]; // 0x00002F14 length: 16000

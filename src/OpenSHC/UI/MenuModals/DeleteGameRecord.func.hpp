@@ -16,8 +16,8 @@ namespace UI {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int x, int y, int width, int height), false,
                 Address::SHC_3BB0A8C1_0x004D9CC0,
-                &OpenSHC::UI::MenuModals::DeleteGameRecord::MenuModalRenderFunctionMenuModal_DeleteGameRecord)
-            MenuModalRenderFunctionMenuModal_DeleteGameRecord;
+                &OpenSHC::UI::MenuModals::DeleteGameRecord::MenuModalRenderFunction_DeleteGameRecord)
+            MenuModalRenderFunction_DeleteGameRecord;
 
         } // namespace DeleteGameRecord_Func
     } // namespace MenuModals

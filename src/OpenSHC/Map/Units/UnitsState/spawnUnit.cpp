@@ -1,0 +1,111 @@
+#include "OpenSHC/Map/Units/UnitsState.func.hpp"
+#include "OpenSHC/Random/RNG.func.hpp"
+#include "OpenSHC/Game/GameMode.hpp"
+#include "OpenSHC/Map/Units/UnitInstructionType.hpp"
+#include "OpenSHC/Map/Units/UnitLogicState.hpp"
+#include "OpenSHC/Map/Units/UnitType.hpp"
+
+#include "OpenSHC/Globals/DAT_BuildingsState.hpp"
+#include "OpenSHC/Globals/DAT_GameCore.hpp"
+#include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+#include "OpenSHC/Globals/DAT_TileMapState.hpp"
+#include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
+#include "OpenSHC/Globals/SEC_RNG.hpp"
+
+namespace OpenSHC {
+namespace Map {
+    namespace Units {
+
+        using OpenSHC::Game::GameMode;
+        using OpenSHC::Map::Units::UnitInstructionType;
+        using OpenSHC::Map::Units::UnitLogicState;
+        using OpenSHC::Map::Units::UnitType;
+
+        // FUNCTION: STRONGHOLDCRUSADER 0x0053E440
+        int UnitsState::spawnUnit(int playerID, int displayColor, int microXPosition, int microYPosition,
+            int terrainHeight, UnitType unitType)
+        {
+            /* Loop until we find free slot. */
+            int _unitID = 1;
+            for (; _unitID < 0x9c4; ++_unitID) {
+                if (this->units[_unitID].logicalState == OpenSHC::Map::Units::ULS_INVISIBLE) {
+                    break;
+                }
+                if (_unitID >= 0x9c3) {
+                    return 0;
+                }
+            }
+            if (_unitID >= (int)this->maxUnitCount) {
+                this->maxUnitCount = _unitID + 1;
+            }
+            this->units[_unitID].uid = DAT_GameCore::instance.uniqueGameObjectTracker;
+            DAT_GameCore::instance.uniqueGameObjectTracker = DAT_GameCore::instance.uniqueGameObjectTracker + 1;
+            this->units[_unitID].logicalState = (UnitLogicState)1;
+            this->units[_unitID].owner = (short)playerID;
+            this->units[_unitID].terrainOrClimbHeight = (short)terrainHeight;
+            this->units[_unitID].microXPosition = (short)microXPosition + 4;
+            this->units[_unitID].time = DAT_GameCore::instance.mapTimeInTicks;
+            this->units[_unitID].microYPosition = (short)microYPosition + 4;
+            this->units[_unitID].ownerColorIndex = (short)displayColor;
+            this->units[_unitID].facingDirection = 0;
+            this->units[_unitID].displayColorPlayerID = (short)displayColor;
+            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::setUnitValues, this)(_unitID, unitType);
+            if (unitType == OpenSHC::Map::Units::UT_S_TOWER) {
+                this->units[_unitID].ownerColorIndex = 0;
+                this->units[_unitID].displayColorPlayerID = 0;
+            } else if (unitType == OpenSHC::Map::Units::UT_CAGEDOG) {
+                this->units[_unitID].ownerColorIndex = 0;
+            }
+            int _x = this->units[_unitID].microXPosition / 8;
+            int _y = this->units[_unitID].microYPosition / 8;
+            this->units[_unitID].mimicCurrentYPosition = (short)_y;
+            this->units[_unitID].y = (short)_y;
+            this->units[_unitID].savedDestinationY = (short)_y;
+            this->units[_unitID].mimicCurrentXPosition = (short)_x;
+            this->units[_unitID].x = (short)_x;
+            this->units[_unitID].savedDestinationX = (short)_x;
+            this->units[_unitID].subTileStepProgress = 8;
+            this->units[_unitID].pendingPositionValid = 0;
+            this->units[_unitID].targetingType_OR_performanceStep = (UnitInstructionType)0;
+            this->units[_unitID].tile = this->units[_unitID].x
+                + DAT_ViewportRenderState::instance.translationMatrix[this->units[_unitID].y].addXgetTile;
+            this->units[_unitID].fixedRng = SEC_RNG::instance.currentNumber2;
+            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            if (unitType == OpenSHC::Map::Units::UT_S_CATAPULT) {
+                if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID] != -1) {
+                    this->units[_unitID].stoneAmmunition = 0x14;
+                } else {
+                    this->units[_unitID].stoneAmmunition
+                        = (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) ? 0x14 : 0x28;
+                }
+            } else if (unitType == OpenSHC::Map::Units::UT_S_TREBUCHET) {
+                if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID] != -1) {
+                    this->units[_unitID].stoneAmmunition = 0x14;
+                } else {
+                    this->units[_unitID].stoneAmmunition
+                        = (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY) ? 0x14 : 0x28;
+                }
+            } else if (unitType == OpenSHC::Map::Units::UT_S_MANGONEL) {
+                int _buildingID = DAT_TileMapState::instance.BuildingLayer[this->units[_unitID].tile];
+                if (_buildingID != 0) {
+                    DAT_BuildingsState::instance.buildings[_buildingID].containsSiegeMangonel1OrBallista2 = 1;
+                }
+            } else if (unitType == OpenSHC::Map::Units::UT_S_BALLISTA) {
+                int _buildingID = DAT_TileMapState::instance.BuildingLayer[this->units[_unitID].tile];
+                if (_buildingID != 0) {
+                    DAT_BuildingsState::instance.buildings[_buildingID].containsSiegeMangonel1OrBallista2 = 2;
+                }
+            } else if (unitType == OpenSHC::Map::Units::UT_CHILD) {
+                if ((this->units[_unitID].fixedRng & 0x80) != 0) {
+                    this->units[_unitID].spriteID = 0x81;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::assignNameToUnit, this)(_unitID);
+            }
+            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::commitPendingUnitPosition, this)(_unitID);
+            MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::updateMicroPosition, this)(_unitID);
+            return _unitID;
+        }
+
+    }
+}
+}

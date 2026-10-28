@@ -1,4 +1,4 @@
-#include "../BuildingsState.func.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 
@@ -9,22 +9,25 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x0041BCA0
         void BuildingsState::addResourceToArmory(ResourceType resourceType, int playerID, int amount)
         {
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (MACRO_CALL_MEMBER(BuildingsState_Func::getArmoryIDIfSpaceLeft, this)(
-                        buildingID, resourceType, playerID, amount)
+            int buildingCount = this->maxBuildingsCount;
+            for (int i = 1; i < buildingCount; ++i) {
+                if (MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft, this)(
+                        i, resourceType, playerID, amount)
                     != 0) {
-                    MACRO_CALL_MEMBER(BuildingsState_Func::addResourceToStockpile, DAT_BuildingsState::ptr)(
-                        buildingID, this->buildings[buildingID].uid, resourceType, amount, 50, 1);
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::addResourceToStockpile,
+                        DAT_BuildingsState::ptr)(i, this->buildings[i].uid, resourceType, amount, 50, 1);
                     return;
                 }
             }
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                while (MACRO_CALL_MEMBER(BuildingsState_Func::getArmoryIDIfSpaceLeft, this)(
-                           buildingID, resourceType, playerID, 1)
+
+            // No single armory has enough space, spread the resources one by one
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                while (MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft, this)(
+                           i, resourceType, playerID, 1)
                     != 0) {
-                    MACRO_CALL_MEMBER(BuildingsState_Func::addResourceToStockpile, DAT_BuildingsState::ptr)(
-                        buildingID, this->buildings[buildingID].uid, resourceType, 1, 50, 1);
-                    amount -= 1;
+                    MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::addResourceToStockpile,
+                        DAT_BuildingsState::ptr)(i, this->buildings[i].uid, resourceType, 1, 50, 1);
+                    --amount;
                     if (amount == 0) {
                         return;
                     }

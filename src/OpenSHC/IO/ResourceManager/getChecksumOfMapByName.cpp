@@ -10,7 +10,7 @@ namespace IO {
     {
         for (int _mapIndex = 0; _mapIndex < this->loadedMapsCount; ++_mapIndex) {
             if (!MACRO_CALL(OS_Func::__stricmp)(this->mapNames[_mapIndex], mapNameAddress)) {
-                return this->mapMetaInfoArray[_mapIndex].loadedMapsChecksumArray;
+                return this->mapMetaInfoArray[_mapIndex].fileChecksum;
             }
         }
         return 0;

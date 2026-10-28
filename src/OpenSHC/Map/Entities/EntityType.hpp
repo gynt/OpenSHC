@@ -18,6 +18,8 @@ namespace Map {
             ET_CATAPULT = 2, // 0x00000002
             ET_TREBUCHET = 3, // 0x00000003
             ET_MANGONEL = 4, // 0x00000004
+            ET_TYPE_5Unk = 5, // 0x00000005
+            ET_TYPE_6Unk = 6, // 0x00000006
             ET_CROSSBOWARROW = 7, // 0x00000007
             ET_FIRE = 9, // 0x00000009
             ET_FLAG_1 = 10, // 0x0000000A
@@ -28,15 +30,18 @@ namespace Map {
             ET_HEADS_ON_SPIKES = 15, // 0x0000000F
             ET_BALLISTA = 20, // 0x00000014
             ET_DUST_CLOUD = 21, // 0x00000015
-            ET_COW_POISON_CLOUD = 22, // 0x00000016
+            ET_DISEASE_CLOUD = 22, // 0x00000016
             ET_COW_FLYING = 23, // 0x00000017
-            ET_SEAGULLUnk = 29, // 0x0000001D
+            ET_EXPLOSION = 26, // 0x0000001A
+            ET_WALL_DEBRIS = 27, // 0x0000001B
+            ET_CROW = 28, // 0x0000001C
+            ET_SEAGULL = 29, // 0x0000001D
+            ET_PUFF_EFFECT = 30, // 0x0000001E
             ET_SLINGER = 33, // 0x00000021
             ET_FIRETHROWER = 34, // 0x00000022
+            ET_SLINGER_UNTARGETED = 35, // 0x00000023
             ET_FIRETHROWER_UNTARGETED = 36, // 0x00000024
-            ET_FIREBALLISTA = 37, // 0x00000025
-            EntityTypeInt__ET_EXPLOSION = 26, // 0x0000001A
-            EntityTypeInt__ET_CROW = 28 // 0x0000001C
+            ET_FIREBALLISTA = 37 // 0x00000025
 
         } EntityType;
 

@@ -14,7 +14,7 @@ namespace Map {
         namespace Behavior {
             typedef enum TargetingType {
 
-                TT_BUILDINGUnk = 9 // 0x00000009
+                TT_ATTACK_BUILDING = 9 // 0x00000009
 
             } TargetingType;
 

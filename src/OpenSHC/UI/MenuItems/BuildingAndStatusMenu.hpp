@@ -74,6 +74,11 @@ namespace UI {
 
             void __cdecl MenuItemActionHandler_BuildingAndStatusMenu_GatehouseOpenClose(int param_1, ...);
 
+            /**
+             * Slider callback for the tax slider: event 1 sets range 0..11 and (falling through) returns the
+             * current PlayerData.taxesSliderUI, 4 returns it, 2/3 store the dragged value, 5/6 decrement/increment
+             * with clamping and return the new value.
+             */
             void __cdecl MenuItemActionHandler_BuildingAndStatusMenu_TaxSlider(
                 int param_1, int param_2, int* minValue, int* maxValue, int* currentValue);
 

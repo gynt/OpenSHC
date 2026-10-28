@@ -20,8 +20,11 @@ namespace AI {
         // SIZE: 0x00000008
         typedef struct AITribeTypeCountPair {
 
-            AITribeTypeInt tribeType; // 0x00000000 length: 4
-            int tribeCount; // 0x00000004 length: 4
+            // [RUNTIME] Start index into PlayerData.aiTribeIDs/aiTribeUIDs (values 12..192 at runtime), not an
+            // AITribeType
+            int firstTribeSlot; // 0x00000000 length: 4
+            // [RUNTIME] Number of consecutive tribe slots
+            int tribeSlotCount; // 0x00000004 length: 4
 
         } AITribeTypeCountPair;
 #pragma pack(pop)

@@ -13,7 +13,10 @@ namespace UI {
     namespace MenuItems {
         namespace NetworkOptions {
 
-            void __cdecl MenuItemActionHandler_NetworkOptions_LeaveButtonUnk(int param_1, ...);
+            /**
+             * Network options back button: item 0x11 pops the current modal dialog.
+             */
+            void __cdecl MenuItemActionHandler_NetworkOptions_BackButton(int param_1, ...);
 
         } // namespace NetworkOptions
     } // namespace MenuItems

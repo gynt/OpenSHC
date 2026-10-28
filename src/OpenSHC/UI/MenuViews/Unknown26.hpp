@@ -13,11 +13,25 @@ namespace UI {
     namespace MenuViews {
         namespace Unknown26 {
 
-            void __cdecl MenuView_Unknown26_CampaignRelatedUnk_Prepare();
+            /**
+             * Prepare handler of the mission intro sequence view: resets the credits engine, builds the intro
+             * logo/credits sequence for the current mission and section, and starts the tick counter.
+             */
+            void __cdecl MenuView_MissionIntroSequence_Prepare();
 
-            void __cdecl MenuView_Unknown26_CampaignRelatedUnk_DoInitial();
+            /**
+             * Initial-draw handler of the mission intro sequence view: positions the menu, clears the screen black
+             * and renders the active credits elements.
+             */
+            void __cdecl MenuView_MissionIntroSequence_DoInitial();
 
-            void __cdecl MenuView_Unknown26_CampaignRelatedUnk_DoEveryFrame();
+            /**
+             * Per-frame handler of the mission intro sequence: once ticks have elapsed, right click stops / left
+             * click advances the credits script, runs and renders it, and when all segments are done switches to
+             * the intro video (mission 1000); for section 2 to the campaign map view (mission < 22, clearing the
+             * section) or credits; otherwise to the scenario description, or the campaign map view for mission 1.
+             */
+            void __cdecl MenuView_MissionIntroSequence_DoEveryFrame();
 
         } // namespace Unknown26
     } // namespace MenuViews

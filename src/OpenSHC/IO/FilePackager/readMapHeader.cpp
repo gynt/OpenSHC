@@ -178,7 +178,7 @@ namespace IO {
         {
             int _hardcodedMapTextAddressUnk;
             MACRO_CALL(Global_Func::GetStringBasedOnHardcodedMaps)(
-                MACRO_CALL_MEMBER(ResourceManager_Func::getCurrentResourceCoreNameUnk, DAT_ResourceManager::ptr)(),
+                MACRO_CALL_MEMBER(ResourceManager_Func::getCurrentResourceBaseName, DAT_ResourceManager::ptr)(),
                 &_hardcodedMapTextAddressUnk);
         }
 

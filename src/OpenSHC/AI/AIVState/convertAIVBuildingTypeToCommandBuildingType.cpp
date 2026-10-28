@@ -27,7 +27,7 @@ namespace AI {
             return Commands::M_MAPPER_STAIR4;
         case AIV::AIVBT_STAIRS_5:
             return Commands::M_MAPPER_STAIR5;
-        case AIV::AIVBT_STAIRS_6Unk:
+        case AIV::AIVBT_STAIRS_6:
             return Commands::M_MAPPER_STAIR6;
         case AIV::AIVBT_MOAT_A:
         case AIV::AIVBT_MOAT_B:
@@ -41,7 +41,7 @@ namespace AI {
         if (aivBuildingType < AIV::AIVBT_TOWER1 || aivBuildingType > AIV::AIVBT_TOWER1 + 79) {
             return Commands::M_MAPPER_GENERIC;
         }
-        return DAT_AIVDefinedData::instance.field21_0xf4[aivBuildingType - AIV::AIVBT_TOWER1];
+        return DAT_AIVDefinedData::instance.aivBuildingTypeToMapperCommand[aivBuildingType - AIV::AIVBT_TOWER1];
     }
 
 }

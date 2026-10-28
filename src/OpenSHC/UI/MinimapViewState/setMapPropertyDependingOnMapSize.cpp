@@ -6,7 +6,7 @@ namespace OpenSHC {
 namespace UI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004B6640
-    void MinimapViewState::setMapPropertyDependingOnMapSize(uint x, int y)
+    void MinimapViewState::redrawMinimapRowsForMapSize(uint x, int y)
     {
         if (DAT_TileMapState::instance.mapSize > 200) {
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapTileStripWithLuminescence, this)(

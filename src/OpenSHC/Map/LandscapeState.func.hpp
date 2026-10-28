@@ -74,10 +74,10 @@ namespace Map {
         setTreeSpreadInterval;
 
         MACRO_FUNCTION_RESOLVER(
-            void (LandscapeState::*)(), false, Address::SHC_3BB0A8C1_0x004F2DA0, &LandscapeState::killEveryFifthTree)
-        killEveryFifthTree;
+            void (LandscapeState::*)(), false, Address::SHC_3BB0A8C1_0x004F2DA0, &LandscapeState::ageFourFifthsOfGrowingTrees)
+        ageFourFifthsOfGrowingTrees;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (LandscapeState::*)(uint, int, uint, uint), false,
+        MACRO_FUNCTION_RESOLVER(undefined4 (LandscapeState::*)(uint, int, uint, uint), false,
             Address::SHC_3BB0A8C1_0x004F2E00, &LandscapeState::setupBabyTreeLocation)
         setupBabyTreeLocation;
 
@@ -89,7 +89,7 @@ namespace Map {
             &LandscapeState::isTreeAdult)
         isTreeAdult;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (LandscapeState::*)(int, undefined4, int), false,
+        MACRO_FUNCTION_RESOLVER(undefined4 (LandscapeState::*)(int, undefined4, int), false,
             Address::SHC_3BB0A8C1_0x004F3010, &LandscapeState::damageTreeAndTriggerDeathIfDepleted)
         damageTreeAndTriggerDeathIfDepleted;
 

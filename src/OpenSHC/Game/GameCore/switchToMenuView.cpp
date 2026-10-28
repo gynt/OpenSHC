@@ -9,7 +9,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/MenuHandlerState.func.hpp"
 
-#include "OpenSHC/Globals/DAT_00b95954.hpp"
+#include "OpenSHC/Globals/DAT_CreditsAfterCampaignEnd.hpp"
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_CurrentMenuID_3.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -36,9 +36,9 @@ namespace Game {
 
         switch (menuID) {
         case UI::Enums::MVT_MAP_EDITOR_LANDSCAPING:
-            this->menuTabToSwitchTo = this->landscapingmenuMenuTabToSwitchTo;
-            DAT_TileMapState::instance.unknownBrushRelated = (int)DAT_TileMapState::instance.editorActiveBrush >> 1;
-            if (this->landscapingmenuMenuTabToSwitchTo.buildMenuTab != UI::Enums::BMTT_MENU_HIDDEN
+            this->menuTabToSwitchTo.tabType = this->landscapingmenuMenuTabToSwitchTo;
+            DAT_TileMapState::instance.editorBrushRadius = (int)DAT_TileMapState::instance.editorActiveBrush >> 1;
+            if (this->landscapingmenuMenuTabToSwitchTo != UI::Enums::BMTT_MENU_HIDDEN
                 && this->activeMenuTab.buildMenuTab != UI::Enums::BMTT_MENU_HIDDEN) {
                 DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
             }
@@ -56,7 +56,7 @@ namespace Game {
                     UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER)) {
                 this->buildmenuMenuTabToSwitchTo.buildMenuTab = 48;
                 this->menuTabToSwitchTo.buildMenuTab = 48;
-            } else if (((DAT_GameCore::instance.gameMode_2 == GM_BUILDERUnk
+            } else if (((DAT_GameCore::instance.gameMode_2 == GM_CUSTOM_MAP
                             || DAT_GameCore::instance.gameMode_2 == GM_CRUSADER_TUTORIAL)
                            && DAT_GameSynchronyState::instance.currentPlayerSlotID == 2)
                 || (DAT_GameSynchronyState::instance.currentPlayerSlotID == 1
@@ -66,7 +66,7 @@ namespace Game {
                     && MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::getArmySize, DAT_UnitsState::ptr)(
                            DAT_GameSynchronyState::instance.currentPlayerSlotID)
                         != 0)
-                || (DAT_GameCore::instance.gameMode_2 == GM_BUILDERUnk
+                || (DAT_GameCore::instance.gameMode_2 == GM_CUSTOM_MAP
                     && DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE)
                 || (DAT_GameCore::instance.gameMode_2 == GM_SKIRMISH_AND_MULTIPLAYER
                     && DAT_GameSynchronyState::instance.currentGameMode == GM_SKIRMISH_SINGLE_PLAYER
@@ -161,11 +161,11 @@ namespace Game {
             if (this->currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU
                 || this->currentMenuViewType == UI::Enums::MVT_MAP_EDITOR_LANDSCAPING
                 || (this->currentMenuViewType == UI::Enums::MVT_SCENARIO_DESCRIPTION
-                    && DAT_GameCore::instance.gameSuspended != 0)) {
+                    && DAT_GameCore::instance.briefingOpenedFromInGame != 0)) {
                 return;
             }
             if (this->gameMode_2 == GM_CRUSADER_TUTORIAL) {
-                if (DAT_SoundSystemState::instance.currentSoundID_0x3278 == 9) {
+                if (DAT_SoundSystemState::instance.pendingMusicId == 9) {
                     return;
                 }
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
@@ -174,8 +174,8 @@ namespace Game {
                 return;
             }
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
-            DAT_SoundSystemState::instance.lastMusicChangeTime = timeGetTime() >> 1;
-            DAT_SoundSystemState::instance.currentSoundID_0x3278 = -1;
+            DAT_SoundSystemState::instance.peaceMusicPauseStartTime = timeGetTime() >> 1;
+            DAT_SoundSystemState::instance.pendingMusicId = -1;
             return;
         case UI::Enums::MVT_CRUSADE_MAP:
             if (this->currentMenuViewType == UI::Enums::MVT_SELECT_CRUSADE
@@ -189,11 +189,11 @@ namespace Game {
             return;
         case UI::Enums::MVT_RANKING_GAMES:
             if (this->currentMenuViewType == UI::Enums::MVT_LOBBY_MENU) {
-                MACRO_CALL(UI::Credits_Func::SetActiveCreditsSequenceIndex)(2);
+                MACRO_CALL(UI::Credits_Func::SetRankingGamesListMode)(2);
                 DAT_CurrentMenuID_3::instance = this->currentMenuViewType;
             }
             if (this->currentMenuViewType == UI::Enums::MVT_CRUSADE_MAP) {
-                MACRO_CALL(UI::Credits_Func::SetActiveCreditsSequenceIndex)(1);
+                MACRO_CALL(UI::Credits_Func::SetRankingGamesListMode)(1);
                 DAT_CurrentMenuID_3::instance = this->currentMenuViewType;
             }
             return;
@@ -207,16 +207,16 @@ namespace Game {
                     DE::SHCDE::MUSIC_TUNE_NARR1);
                 return;
             }
-            if (DAT_GameCore::instance.missionNumber1to20 == 1000) {
-                if (DAT_SoundSystemState::instance.sec_Section1055_0x3274 != 7) {
+            if (DAT_GameCore::instance.missionNumber == 1000) {
+                if (DAT_SoundSystemState::instance.playingMusicId != 7) {
                     MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
                 }
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundIDWithMultiplier,
                     DAT_SoundSystemState::ptr)(DE::SHCDE::MUSIC_TUNE_CHOIR, 100);
                 return;
             }
-            if (DAT_SoundSystemState::instance.currentSoundID_0x3278 == 4 || DAT_GameCore::instance.gameSuspended != 0
-                || DAT_GameCore::instance.currentlyInGameUnk_0xa4 == TRUE) {
+            if (DAT_SoundSystemState::instance.pendingMusicId == 4 || DAT_GameCore::instance.briefingOpenedFromInGame != 0
+                || DAT_GameCore::instance.inGameViewActive_0xa4 == TRUE) {
                 return;
             }
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
@@ -235,18 +235,18 @@ namespace Game {
             return;
         case UI::Enums::MVT_CREDITS:
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
-            if (DAT_00b95954::instance == 0) {
+            if (DAT_CreditsAfterCampaignEnd::instance == 0) {
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundIDWithMultiplier,
                     DAT_SoundSystemState::ptr)((DE::SHCDE::eMusicIDs)15, 100);
             }
-            if (DAT_00b95954::instance == 1) {
+            if (DAT_CreditsAfterCampaignEnd::instance == 1) {
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundIDWithMultiplier,
                     DAT_SoundSystemState::ptr)((DE::SHCDE::eMusicIDs)38, 100);
-                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::markMusicChangePending, DAT_SoundSystemState::ptr)();
+                MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::requestFadeInForNextTrack, DAT_SoundSystemState::ptr)();
             }
             return;
         case UI::Enums::MVT_MISSION_FINISHED_TRANSITION:
-        case UI::Enums::MVT_GAME_LOSTUnk:
+        case UI::Enums::MVT_GAME_LOST:
             if (this->currentMenuViewType == UI::Enums::MVT_RANKING_GAMES) {
                 return;
             }
@@ -262,7 +262,7 @@ namespace Game {
         case UI::Enums::MVT_UNUSED_ECONOMIC_GAMETYPE_SELECT:
         case UI::Enums::MVT_CUSTOM_SCENARIOS:
         case UI::Enums::MVT_UNUSED_SELECT_RANDOM_NUMBER_OF_ENEMIES:
-            if (DAT_SoundSystemState::instance.currentSoundID_0x3278 == 3
+            if (DAT_SoundSystemState::instance.pendingMusicId == 3
                 && DAT_SoundSystemState::instance.musicFadeState == 0) {
                 return;
             }
@@ -271,7 +271,7 @@ namespace Game {
                 DAT_SoundSystemState::ptr)(DE::SHCDE::MUSIC_TUNE_INTRO, 100);
             return;
         case UI::Enums::MVT_UNUSED_EXTREME_AD:
-            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSoundStreamsUnk, DAT_SoundSystemState::ptr)();
+            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::endSpeechStreams, DAT_SoundSystemState::ptr)();
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setSomeSoundTime, DAT_SoundSystemState::ptr)();
             MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::setupVolumeAndSoundIDWithMultiplier,
                 DAT_SoundSystemState::ptr)(DE::SHCDE::MUSIC_TUNE_TUTORIAL, 50);
@@ -286,8 +286,8 @@ namespace Game {
         case UI::Enums::MVT_UNUSED_HELP_TEXT_EDITOR:
         case 23:
         case 24:
-        case UI::Enums::MVT_UNKNOWN_26_CAMPAIGN_RELATEDUnk:
-        case UI::Enums::MVT_UNKNOWN_27_CAMPAIGNUnk:
+        case UI::Enums::MVT_MISSION_INTRO_SEQUENCE:
+        case UI::Enums::MVT_CAMPAIGN_MAP:
         case UI::Enums::MVT_SCENARIO_DESCRIPTION:
         case UI::Enums::MVT_NEW_MAP_MAPSIZE:
         case UI::Enums::MVT_UNUSED_CHOOSE_AVAILABLE_KEEPS:
@@ -296,7 +296,7 @@ namespace Game {
         case 36:
         case UI::Enums::MVT_UNUSED_CHOOSE_GAME_TYPE:
         case UI::Enums::MVT_HISTORIC_MISSION_SELECT:
-        case UI::Enums::MVT_UNUSED_ECONOMIC_MISSION_SELECTUnk:
+        case UI::Enums::MVT_ECONOMIC_MISSION_SELECT:
         case UI::Enums::MVT_INTRO_VIDEO:
         case UI::Enums::MVT_HISTORIC_MISSION_INTRO:
         case UI::Enums::MVT_SELECT_CRUSADE:

@@ -663,7 +663,7 @@ namespace Rendering {
             GDI_NONE_647 = 647, // 0x00000287
             GDI_NONE_648 = 648, // 0x00000288
             GDI_NONE_649 = 649, // 0x00000289
-            GDI_USE_PIXEL_MOUSE_HIT_CHECKUnk = 1073741824 // 0x40000000
+            GDI_USE_PIXEL_MOUSE_HIT_CHECK = 1073741824 // 0x40000000
 
         } GmDataIndex;
 

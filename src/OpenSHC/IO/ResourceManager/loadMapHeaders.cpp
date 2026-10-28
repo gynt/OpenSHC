@@ -34,20 +34,20 @@ namespace IO {
                 FRT_MAPS, resourceFileName);
             MACRO_CALL_MEMBER(FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(FALSE);
 
-            this->mapMetaInfoArray[mapIndex].loadedMapsChecksumArray
+            this->mapMetaInfoArray[mapIndex].fileChecksum
                 = MACRO_CALL_MEMBER(ResourceManager_Func::fileHashFunctionByteByByte, DAT_ResourceManager::ptr)();
             this->mapMetaInfoArray[mapIndex].mapType = DAT_GameCore::instance.mapType;
             this->mapMetaInfoArray[mapIndex].mapLocked = DAT_GameCore::instance.savedMapLocked;
             this->mapMetaInfoArray[mapIndex].mapBalance = DAT_GameCore::instance.savedMapBalance;
             this->mapMetaInfoArray[mapIndex].mapEndInt2 = DAT_GameCore::instance.savedMapEndInt2;
             this->mapMetaInfoArray[mapIndex].mapPlayerCount = DAT_GameCore::instance.mapPlayerCount;
-            this->mapMetaInfoArray[mapIndex].int0 = DAT_MapPropertiesState::instance.scenarionMissionType;
-            this->mapMetaInfoArray[mapIndex].mapType2 = DAT_MapPropertiesState::instance.scenarioMissionSiegeOrInvasion;
+            this->mapMetaInfoArray[mapIndex].scenarioMissionType = DAT_MapPropertiesState::instance.scenarionMissionType;
+            this->mapMetaInfoArray[mapIndex].scenarioMissionSiegeOrInvasion = DAT_MapPropertiesState::instance.scenarioMissionSiegeOrInvasion;
 
             int _progress = mapIndex * 100;
             if (drawLoadingBar == TRUE) {
                 MACRO_CALL_MEMBER(
-                    UI::Rendering::TextureRenderCore_Func::drawLoadingBarUnk, DAT_TextureRenderCoreObject::ptr)(
+                    UI::Rendering::TextureRenderCore_Func::drawLoadingProgressBar, DAT_TextureRenderCoreObject::ptr)(
                     (Graphics::GmID)((_progress / this->mapFileCounter) + 80 + DAT_LoadingBarProgress::instance),
                     DAT_LoadingBarProgress::instance + 180);
             }

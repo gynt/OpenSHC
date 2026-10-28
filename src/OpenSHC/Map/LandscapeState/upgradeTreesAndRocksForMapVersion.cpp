@@ -13,9 +13,9 @@ namespace Map {
     {
         MACRO_CALL(OpenSHC::Map::Version_Func::UpdateTreesOfCertainTypes)();
         MACRO_CALL(OpenSHC::Map::Version_Func::UpdateFixTrees2)();
-        MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeRemoveCertainRockTypesUnk)();
+        MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeRemoveOrphanedRocks)();
         if (receivedMapVersion != packagerMapVersion && (int)receivedMapVersion < 165) {
-            MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeRemoveRocksBeyond1000)();
+            MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeClearRockSlots2000Plus)();
         }
     }
 

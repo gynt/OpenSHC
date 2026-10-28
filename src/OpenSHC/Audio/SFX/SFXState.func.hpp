@@ -34,8 +34,8 @@ namespace Audio {
             loadWavSounds;
 
             MACRO_FUNCTION_RESOLVER(void (SFXState::*)(SoundEffectID), false, Address::SHC_3BB0A8C1_0x00449C40,
-                &SFXState::setUpSFXToPlayUnk)
-            setUpSFXToPlayUnk;
+                &SFXState::scheduleSFX)
+            scheduleSFX;
 
             MACRO_FUNCTION_RESOLVER(
                 void (SFXState::*)(int, int), false, Address::SHC_3BB0A8C1_0x00449CC0, &SFXState::setSoundWithVariation)
@@ -66,12 +66,12 @@ namespace Audio {
             notifyAmbientSoundEvent;
 
             MACRO_FUNCTION_RESOLVER(void (SFXState::*)(AmbientSFXType), false, Address::SHC_3BB0A8C1_0x0044A0F0,
-                &SFXState::playAmbientSoundStreamUnk)
-            playAmbientSoundStreamUnk;
+                &SFXState::playNextAmbientSoundIfStreamIdle)
+            playNextAmbientSoundIfStreamIdle;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SFXState::*)(int), false, Address::SHC_3BB0A8C1_0x0044A1B0, &SFXState::playAmbientSoundStream2Unk)
-            playAmbientSoundStream2Unk;
+                void (SFXState::*)(int), false, Address::SHC_3BB0A8C1_0x0044A1B0, &SFXState::playNextAmbientSoundIfStream2Idle)
+            playNextAmbientSoundIfStream2Idle;
 
             MACRO_FUNCTION_RESOLVER(
                 int (SFXState::*)(char*), false, Address::SHC_3BB0A8C1_0x0044A240, &SFXState::getSoundVolumeForFilename)
@@ -126,12 +126,12 @@ namespace Audio {
             updateAmbientSoundStream;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SFXState::*)(), false, Address::SHC_3BB0A8C1_0x0044C410, &SFXState::playSFXVoices)
-            playSFXVoices;
+                void (SFXState::*)(), false, Address::SHC_3BB0A8C1_0x0044C410, &SFXState::updateMultiplayerAdvisorVoices)
+            updateMultiplayerAdvisorVoices;
 
             MACRO_FUNCTION_RESOLVER(
-                void (SFXState::*)(), false, Address::SHC_3BB0A8C1_0x0044C740, &SFXState::soundRelatedMethod1)
-            soundRelatedMethod1;
+                void (SFXState::*)(), false, Address::SHC_3BB0A8C1_0x0044C740, &SFXState::updateSoundPlaybackTick)
+            updateSoundPlaybackTick;
 
         } // namespace SFXState_Func
     } // namespace SFX

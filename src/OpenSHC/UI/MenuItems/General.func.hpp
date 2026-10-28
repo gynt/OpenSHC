@@ -34,12 +34,12 @@ namespace UI {
             MenuItemActionHandler_General_AdvancedGameOptions;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00434260,
-                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_Unknown2)
-            MenuItemActionHandler_General_Unknown2;
+                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_SetToolbarRequestedBuildTab)
+            MenuItemActionHandler_General_SetToolbarRequestedBuildTab;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00440410,
-                &OpenSHC::UI::MenuItems::General::MenuItemFunction_General_Unknown)
-            MenuItemFunction_General_Unknown;
+                &OpenSHC::UI::MenuItems::General::MenuItemFunction_General_ClearStopHandlingMenuItems)
+            MenuItemFunction_General_ClearStopHandlingMenuItems;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(MappersEnum buttonID), false, Address::SHC_3BB0A8C1_0x00444410,
                 &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_ToolbarButtonPressed)
@@ -63,8 +63,8 @@ namespace UI {
             MenuItemRenderFunction_General_GameOptionsTextButton;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00494950,
-                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)
-            MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk;
+                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_ConfirmDialogYesNo)
+            MenuItemActionHandler_General_ConfirmDialogYesNo;
 
             MACRO_FUNCTION_RESOLVER(
                 void(__cdecl*)(int param_1, int param_2, int* minValue, int* maxValue, int* currentValue), false,
@@ -103,8 +103,8 @@ namespace UI {
             MenuItemRenderFunction_General_EventButtonAndData;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004C1770,
-                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_CreateEventCallbackFunction)
-            MenuItemActionHandler_General_CreateEventCallbackFunction;
+                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_TriggerEventMenu)
+            MenuItemActionHandler_General_TriggerEventMenu;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004D8DF0,
                 &OpenSHC::UI::MenuItems::General::MenuItemRenderFunction_General_CrusadeMapAndEndscreen)
@@ -115,8 +115,8 @@ namespace UI {
             MenuItemActionHandler_General_DisplayConditionalText;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x004F6A70,
-                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_RemoveConditionalTextOrReleaseHoverUnk)
-            MenuItemActionHandler_General_RemoveConditionalTextOrReleaseHoverUnk;
+                &OpenSHC::UI::MenuItems::General::MenuItemActionHandler_General_TickBottomLeftTextExpiry)
+            MenuItemActionHandler_General_TickBottomLeftTextExpiry;
 
         } // namespace General_Func
     } // namespace MenuItems

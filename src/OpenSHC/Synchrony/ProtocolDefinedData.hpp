@@ -20,11 +20,19 @@ namespace Synchrony {
     typedef struct ProtocolDefinedData {
 
         undefined1 padding_0x0[4]; // 0x00000000 length: 4
-        int field4_0x4[12][2]; // 0x00000004 length: 96
-        int field5_0x64[39][3]; // 0x00000064 length: 468
+        // 12 x {behindThresholdTicks, catchUpMultiplier}; first row whose threshold < ticksBehindFastest sets
+        // catchUpTickMultiplier. Bytes @0xB38B80: {-5,2},{-7,3},{-10,4},{-15,5},{-24,6},{-40,10},{-100,20},{-
+        // 200,30},{-500,50},{-800,80},{-1200,120},{-1e9,500}
+        int catchUpThresholdTable[12][2]; // 0x00000004 length: 96
+        // 39 x {aheadThresholdTicks, paramA, paramB}; first row with ticksAheadOfSlowest <= threshold sets
+        // latencySlowdownParamA/B. Bytes @0xB38BE0: {5,9,1},{15,8,2},...,{50,1,9},...,{195,1,200},{1e9,0,2000000},
+        // last 2 rows zero
+        int slowdownThresholdTable[39][3]; // 0x00000064 length: 468
         undefined1 padding_0x238[8]; // 0x00000238 length: 8
-        char** insultWavFiles[21]; // 0x00000240 length: 84
-        NoArgCallback* commandFunctions; // 0x00000294 length: 4
+        // [189 0x004895E0] the indexed address 0xB38DBC is a table of 'insultN.wav' string pointers (entry 0 NULL),
+        // passed to resolveResourceFileName(FRT_GFX_SPEECH) before playing the taunt
+        char** tauntSpeechFileNames[21]; // 0x00000240 length: 84
+        NoArgCallback* handleFunctions; // 0x00000294 length: 4
         NoArgCallback* field16_0x298; // 0x00000298 length: 4
         NoArgCallback* field17_0x29c; // 0x0000029C length: 4
         NoArgCallback* field18_0x2a0; // 0x000002A0 length: 4
@@ -144,8 +152,12 @@ namespace Synchrony {
         NoArgCallback* field132_0x468; // 0x00000468 length: 4
         NoArgCallback* field133_0x46c; // 0x0000046C length: 4
         NoArgCallback* field134_0x470; // 0x00000470 length: 4
-        int field135_0x474[32]; // 0x00000474 length: 128
-        char* field136_0x4f4; // 0x000004F4 length: 4
+        // 32-entry ping-pong frame sequence (0..7,7,7..1, 8..15,15,15..9 @0xB38FF0) added to 0x18e in
+        // GM_INTERFACE_ICONS2 for the 'finding network sessions' spinner
+        int sessionSearchAnimFrames[32]; // 0x00000474 length: 128
+        // Pointer (0x5A7270) to the 64-char Base64 alphabet 'A-Za-z0-9+$' (non-standard: '$' instead of '/') used
+        // by Base64Encode_CharacterLookup
+        char* base64Alphabet; // 0x000004F4 length: 4
 
     } ProtocolDefinedData;
 #pragma pack(pop)

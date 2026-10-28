@@ -12,9 +12,9 @@ namespace Map {
         TribesState* TribesState::Constructor_TribesState()
         {
             this->constructorTime = timeGetTime();
-            this->clans = 0;
+            this->activeTribeCount = 0;
             this->fcn_mtribe = 0;
-            this->field2_0x8 = 1;
+            this->highestActiveTribeID = 1;
             return this;
         }
 

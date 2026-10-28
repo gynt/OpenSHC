@@ -8,14 +8,13 @@ namespace OpenSHC {
 namespace AI {
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004D38C0
-    BOOLEnum AICState::determineAIPlayerAttackRequestResponse(
-        int playerID, undefined4 targetPlayerID, int requestedByPlayerID)
+    BOOLEnum AICState::determineAIPlayerAttackRequestResponse(int playerID, undefined4 param_2, int requestedByPlayerID)
     {
         if (DAT_GameState::instance.playerDataArray[playerID].aiType == OpenSHC::AI::AIT_NULL)
             return FALSE;
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
 
-        if (DAT_GameState::instance.playerDataArray[playerID].isNotNervousByEnemyTroopValue) {
+        if (DAT_GameState::instance.playerDataArray[playerID].helpNeeded != 0) {
             MACRO_CALL_MEMBER(AICState_Func::playWillNotAttack1BikFromPlayerToPlayer, this)(
                 playerID, requestedByPlayerID);
             return FALSE;

@@ -14,21 +14,21 @@ namespace Input {
         int notAniDeleteNotCursorRef, int unused1, int unused2, int unused3, int unused4, int notAniUnknownCursorRef)
     {
         this->notAniDefaultCursor_0x24c
-            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDefaultCursorRef));
+            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDefaultCursorRef));
 
         this->notAniDeleteCursor_0x250
-            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDeleteCursorRef));
+            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDeleteCursorRef));
 
         this->notAniWaitCursor_0x258 = LoadCursorA(NULL, IDC_WAIT);
 
         this->notAniHandCursor_0x25c
-            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDefaultCursorRef));
+            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDefaultCursorRef));
 
         this->notAniDeleteNotCursor_0x260 = LoadCursorA(
-            DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDeleteNotCursorRef));
+            DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDeleteNotCursorRef));
 
         this->notAniDefaultArabCursor_0x264
-            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDefaultCursorRef));
+            = LoadCursorA(DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDefaultCursorRef));
 
         this->swordCursor_0x224 = LoadCursorFromFileA(s_sword_ani_005a625c);
         this->deleteCursor_0x228 = LoadCursorFromFileA(s_delete_ani_005a6250);
@@ -48,11 +48,11 @@ namespace Input {
 
         if (notAniDeleteNotCursorRef) {
             this->unknownNotAniDeleteNotCursor_0x204 = LoadCursorA(
-                DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniDeleteNotCursorRef));
+                DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniDeleteNotCursorRef));
         }
         if (notAniUnknownCursorRef) {
             this->unknownNotAniCursor_0x218 = LoadCursorA(
-                DAT_WindowAndDirectDraw::instance.hInstanceUnk_0xa8, MAKEINTRESOURCE(notAniUnknownCursorRef));
+                DAT_WindowAndDirectDraw::instance.hInstance, MAKEINTRESOURCE(notAniUnknownCursorRef));
         }
     }
 

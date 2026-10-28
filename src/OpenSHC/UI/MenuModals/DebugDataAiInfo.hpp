@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataAiInfo {
 
+            /**
+             * Debug modal render function: forwards to AICState::renderDebugDataAiInfo.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataAiInfo(int x, int y, int width, int height);
 
         } // namespace DebugDataAiInfo

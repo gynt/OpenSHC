@@ -10,7 +10,7 @@ namespace Map {
     using OpenSHC::Game::GameMode2;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00500DD0
-    void WallAndPitchState::placePitchDitch(int pitchID)
+    void WallAndPitchState::recordPitchDitchForUndo(int pitchID)
     {
         if ((DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER)
             && (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT)) {

@@ -26,14 +26,14 @@ namespace Audio {
                 return;
             }
 
-            int iVar2 = DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].field0_0x0;
+            int iVar2 = DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].variationCount;
             if (!iVar2) {
                 return;
             }
             if (1 < iVar2) {
-                iVar4 = DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].field3_0xc++;
-                if (DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].field3_0xc >= iVar2) {
-                    DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].field3_0xc = 0;
+                iVar4 = DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].nextVariationIndex++;
+                if (DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].nextVariationIndex >= iVar2) {
+                    DAT_SpeechDefinedData::instance.SpeechEffectPathArray[speechEffectID].nextVariationIndex = 0;
                 }
             }
 

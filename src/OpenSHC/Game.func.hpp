@@ -16,8 +16,8 @@ namespace Game_Func {
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     MACRO_FUNCTION_RESOLVER(
-        void(__cdecl*)(int value), false, Address::SHC_3BB0A8C1_0x0044AA70, &OpenSHC::Game::UpdateUnitValueLoss)
-    UpdateUnitValueLoss;
+        void(__cdecl*)(int value), false, Address::SHC_3BB0A8C1_0x0044AA70, &OpenSHC::Game::addUnitValueKilledByCurrentPlayer)
+    addUnitValueKilledByCurrentPlayer;
 
     MACRO_FUNCTION_RESOLVER(BOOLEnum(__cdecl*)(undefined4 actionType, int actionParam), false,
         Address::SHC_3BB0A8C1_0x004BD800, &OpenSHC::Game::Tutorial_IsActionAllowed)

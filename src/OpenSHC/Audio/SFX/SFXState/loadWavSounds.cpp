@@ -21,7 +21,7 @@ namespace Audio {
             int soundStructure2Index = 0;
             while (soundStructure2Index < 270) {
                 this->DAT_SoundStructures2[soundStructure2Index].soundID = 0;
-                this->DAT_SoundStructures2[soundStructure2Index].field1_0x4 = 0;
+                this->DAT_SoundStructures2[soundStructure2Index].declaredVariantCount = 0;
                 this->DAT_SoundStructures2[soundStructure2Index].variationCount = 0;
                 this->DAT_SoundStructures2[soundStructure2Index].variationCounter = 0;
 
@@ -30,7 +30,7 @@ namespace Audio {
                     if (!strcmp(variation, s_Null_wav_005a4cf8))
                         break;
 
-                    ++this->DAT_SoundStructures2[soundStructure2Index].field1_0x4;
+                    ++this->DAT_SoundStructures2[soundStructure2Index].declaredVariantCount;
                     variation += sizeof(char[1000]);
                 }
 
@@ -62,7 +62,7 @@ namespace Audio {
                 IO::Graphics::GmID currentGmId
                     = (IO::Graphics::GmID)(loadingBar / 270 + DAT_LoadingBarProgress::instance);
 
-                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawLoadingBarUnk,
+                MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawLoadingProgressBar,
                     DAT_TextureRenderCoreObject::ptr)(currentGmId, DAT_LoadingBarProgress::instance + 180);
             }
         }

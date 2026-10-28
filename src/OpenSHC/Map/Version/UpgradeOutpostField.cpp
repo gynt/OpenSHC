@@ -21,7 +21,7 @@ namespace Map {
                         == OpenSHC::Map::Buildings::BT_OUTPOST_EUROPEAN
                     || DAT_BuildingsState::instance.buildings[buildingID].buildingType
                         == OpenSHC::Map::Buildings::BT_OUTPOST_ARABIAN)) {
-                DAT_BuildingsState::instance.buildings[buildingID].randomOutpostField = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].horsesInUseOrOutpostArcherCap = 0;
             }
         }
     }

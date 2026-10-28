@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace DebugDataUnitData {
 
+            /**
+             * Debug modal render function: forwards to UnitsState::renderDebugDataUnitData.
+             */
             void __cdecl MenuModalRenderFunction_DebugDataUnitData(int x, int y, int width, int height);
 
         } // namespace DebugDataUnitData

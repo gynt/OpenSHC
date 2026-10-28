@@ -84,8 +84,8 @@ namespace Synchrony {
         computeLatencyAdjustmentFromMatchTimes;
 
         MACRO_FUNCTION_RESOLVER(int (GameSynchronyState::*)(int, char*, void*), false, Address::SHC_3BB0A8C1_0x0047E7E0,
-            &GameSynchronyState::compressOrCreateLengthPrefixedPacketUnk)
-        compressOrCreateLengthPrefixedPacketUnk;
+            &GameSynchronyState::compressPacketDataRLE)
+        compressPacketDataRLE;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(byte*, byte*), false, Address::SHC_3BB0A8C1_0x0047E800,
             &GameSynchronyState::decompressTooLongPacketData)
@@ -119,7 +119,7 @@ namespace Synchrony {
             &GameSynchronyState::handleUnexpectedDPlayXResult)
         handleUnexpectedDPlayXResult;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0047EDE0,
+        MACRO_FUNCTION_RESOLVER(undefined4 (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0047EDE0,
             &GameSynchronyState::checkAllPlayersReadyAndCleanupSlots)
         checkAllPlayersReadyAndCleanupSlots;
 
@@ -156,18 +156,18 @@ namespace Synchrony {
         clearGameCommandEntry;
 
         MACRO_FUNCTION_RESOLVER(int (GameSynchronyState::*)(GameCommandType), false, Address::SHC_3BB0A8C1_0x004800E0,
-            &GameSynchronyState::sendLongerDataSuchAsResync)
-        sendLongerDataSuchAsResync;
+            &GameSynchronyState::measureCommandPacketSize)
+        measureCommandPacketSize;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(GameCommandType, DWORD, dword, void*), false,
             Address::SHC_3BB0A8C1_0x00480210, &GameSynchronyState::scheduleReceivedCommand)
         scheduleReceivedCommand;
 
         MACRO_FUNCTION_RESOLVER(int (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x00480440,
-            &GameSynchronyState::getCommandIDFromCommandSelectionStuff)
-        getCommandIDFromCommandSelectionStuff;
+            &GameSynchronyState::selectDueCommandsSortedByPlayer)
+        selectDueCommandsSortedByPlayer;
 
-        MACRO_FUNCTION_RESOLVER(int (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x00480570,
+        MACRO_FUNCTION_RESOLVER(undefined4 (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x00480570,
             &GameSynchronyState::getGameCommandArrayIndex)
         getGameCommandArrayIndex;
 
@@ -181,8 +181,8 @@ namespace Synchrony {
         serializeOrDeserializeCommandParameter;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x00486600,
-            &GameSynchronyState::checkSkirmishGameDefeat)
-        checkSkirmishGameDefeat;
+            &GameSynchronyState::checkSkirmishGameOver)
+        checkSkirmishGameOver;
 
         MACRO_FUNCTION_RESOLVER(int (GameSynchronyState::*)(int), false, Address::SHC_3BB0A8C1_0x00486A70,
             &GameSynchronyState::getLordTypeForPlayer)
@@ -264,7 +264,7 @@ namespace Synchrony {
             &GameSynchronyState::sendPeriodicSyncMessages)
         sendPeriodicSyncMessages;
 
-        MACRO_FUNCTION_RESOLVER(BOOLEnum (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0048C7B0,
+        MACRO_FUNCTION_RESOLVER(undefined4 (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0048C7B0,
             &GameSynchronyState::reorderTeamsAndPositions)
         reorderTeamsAndPositions;
 
@@ -273,16 +273,16 @@ namespace Synchrony {
         checkGameSync;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(int), false, Address::SHC_3BB0A8C1_0x0048CC90,
-            &GameSynchronyState::recomputeHashesAndSendResync)
-        recomputeHashesAndSendResync;
+            &GameSynchronyState::computeStateHashesAndQueueSyncCheck)
+        computeStateHashesAndQueueSyncCheck;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0048DA60,
             &GameSynchronyState::checkLagAndSyncStatus)
         checkLagAndSyncStatus;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0048DC50,
-            &GameSynchronyState::broadcastDesyncResyncCommands)
-        broadcastDesyncResyncCommands;
+            &GameSynchronyState::measureResyncSizeAndStartResync)
+        measureResyncSizeAndStartResync;
 
         MACRO_FUNCTION_RESOLVER(void (GameSynchronyState::*)(), false, Address::SHC_3BB0A8C1_0x0048E680,
             &GameSynchronyState::sendPendingResyncCommandsInBudget)

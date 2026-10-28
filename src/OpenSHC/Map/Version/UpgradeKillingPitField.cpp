@@ -19,7 +19,7 @@ namespace Map {
             if (DAT_BuildingsState::instance.buildings[buildingID].logicalState != (BuildingLogicalState)0
                 && DAT_BuildingsState::instance.buildings[buildingID].buildingType
                     == OpenSHC::Map::Buildings::BT_KILLINGPIT) {
-                DAT_BuildingsState::instance.buildings[buildingID].killingPitField = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].subAnimState2 = 0;
             }
         }
     }

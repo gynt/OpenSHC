@@ -19,7 +19,7 @@ namespace Map {
     {
         if (this->countdown != 0) {
             this->countdown += 1;
-            MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::updateDestructionConfirmationCountdown, this)();
+            MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::updatePlacementUndoCountdown, this)();
             if (this->countdown != 0) {
                 switch (this->state) {
                 case 0: {

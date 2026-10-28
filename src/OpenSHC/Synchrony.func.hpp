@@ -45,31 +45,31 @@ namespace Synchrony_Func {
         Address::SHC_3BB0A8C1_0x00467BC0, &OpenSHC::Synchrony::EnumDisplayModesCallback)
     EnumDisplayModesCallback;
 
-    MACRO_FUNCTION_RESOLVER(BOOLEnum(__stdcall*)(LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize,
-                                LPCDPNAME lpName, DWORD dwFlags, LPVOID lpContext),
+    MACRO_FUNCTION_RESOLVER(BOOL(__stdcall*)(LPCGUID lpguidSP, LPVOID lpConnection, DWORD dwConnectionSize,
+                                DPNAME* lpName, DWORD dwFlags, LPVOID lpContext),
         false, Address::SHC_3BB0A8C1_0x0047D5B0, &OpenSHC::Synchrony::EnumConnectionsCallback)
     EnumConnectionsCallback;
 
     MACRO_FUNCTION_RESOLVER(
-        BOOLEnum(__stdcall*)(LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext), false,
+        bool(__stdcall*)(DPSESSIONDESC2* lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags, LPVOID lpContext), false,
         Address::SHC_3BB0A8C1_0x0047DF40, &OpenSHC::Synchrony::EnumSessionsCallback_addSession_async)
     EnumSessionsCallback_addSession_async;
 
     MACRO_FUNCTION_RESOLVER(BOOLEnum(__stdcall*)(int* param_1, undefined4 param_2, char* param_3), false,
-        Address::SHC_3BB0A8C1_0x0047E160, &OpenSHC::Synchrony::DirectPlayModemRelated_MemoryAllocationCallback)
-    DirectPlayModemRelated_MemoryAllocationCallback;
+        Address::SHC_3BB0A8C1_0x0047E160, &OpenSHC::Synchrony::EnumModemAddressCallback)
+    EnumModemAddressCallback;
 
     MACRO_FUNCTION_RESOLVER(void(__cdecl*)(char* dest, size_t size, undefined4 playerID), false,
-        Address::SHC_3BB0A8C1_0x00488480, &OpenSHC::Synchrony::MemCopyFromParameter)
-    MemCopyFromParameter;
+        Address::SHC_3BB0A8C1_0x00488480, &OpenSHC::Synchrony::deserializeCommandParamIntoBufferWithMismatchLog)
+    deserializeCommandParamIntoBufferWithMismatchLog;
 
     MACRO_FUNCTION_RESOLVER(
         void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00495840, &OpenSHC::Synchrony::ProgressBarRelated)
     ProgressBarRelated;
 
     MACRO_FUNCTION_RESOLVER(
-        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004AEA10, &OpenSHC::Synchrony::SyncPlayerGroupArrays)
-    SyncPlayerGroupArrays;
+        void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x004AEA10, &OpenSHC::Synchrony::syncPlayerGroupArrays)
+    syncPlayerGroupArrays;
 
     MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int missionID), false, Address::SHC_3BB0A8C1_0x004C6B20,
         &OpenSHC::Synchrony::LoadSkirmishCampaignData)

@@ -1,5 +1,4 @@
-#include "../BuildingsState.func.hpp"
-
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Random/RNG.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 
@@ -9,36 +8,35 @@ namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingLogicalState;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0040AFB0
         int BuildingsState::pickARandomBuildingIDOfTheseThreeTypes(
-            int playerID, BuildingType type1, BuildingType type2, BuildingType type3)
+            int playerID, BuildingType buildingType1, BuildingType buildingType2, BuildingType buildingType3)
         {
             int count = 0;
-            for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                if (this->buildings[buildingID].logicalState != 0
-                    && this->buildings[buildingID].logicalState != BLS_REMOVE
-                    && (this->buildings[buildingID].buildingType == type1
-                        || this->buildings[buildingID].buildingType == type2
-                        || this->buildings[buildingID].buildingType == type3)
-                    && this->buildings[buildingID].owner == playerID) {
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState != 0 && this->buildings[i].logicalState != BLS_REMOVE
+                    && (this->buildings[i].buildingType == buildingType1
+                        || this->buildings[i].buildingType == buildingType2
+                        || this->buildings[i].buildingType == buildingType3)
+                    && this->buildings[i].owner == playerID) {
                     ++count;
                 }
             }
-            if (count > 0) {
-                int selection = SEC_RNG::instance.currentNumber2 % count;
-                MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
-                for (int buildingID = 1; buildingID < this->maxBuildingsCount; ++buildingID) {
-                    if (this->buildings[buildingID].logicalState != 0
-                        && this->buildings[buildingID].logicalState != BLS_REMOVE
-                        && (this->buildings[buildingID].buildingType == type1
-                            || this->buildings[buildingID].buildingType == type2
-                            || this->buildings[buildingID].buildingType == type3)
-                        && this->buildings[buildingID].owner == playerID) {
-                        --selection;
-                        if (selection < 0) {
-                            return buildingID;
-                        }
-                    }
+            if (count <= 0) {
+                return 0;
+            }
+
+            int pick = SEC_RNG::instance.currentNumber2 % count;
+            MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
+            for (int i = 1; i < this->maxBuildingsCount; ++i) {
+                if (this->buildings[i].logicalState != 0 && this->buildings[i].logicalState != BLS_REMOVE
+                    && (this->buildings[i].buildingType == buildingType1
+                        || this->buildings[i].buildingType == buildingType2
+                        || this->buildings[i].buildingType == buildingType3)
+                    && this->buildings[i].owner == playerID && --pick < 0) {
+                    return i;
                 }
             }
             return 0;

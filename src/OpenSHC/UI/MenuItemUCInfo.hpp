@@ -21,6 +21,7 @@ namespace UI {
     // SIZE: 0x00000008
     typedef struct MenuItemUCInfo {
 
+        // Will be 0x80000000
         MenuItemUCMarkerInt ucMarker_0x0; // 0x00000000 length: 4
         UserControlIDInt ucIndex_0x4; // 0x00000004 length: 4
 

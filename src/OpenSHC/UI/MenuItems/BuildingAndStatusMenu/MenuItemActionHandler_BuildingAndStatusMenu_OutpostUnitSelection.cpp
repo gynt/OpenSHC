@@ -13,7 +13,7 @@ namespace UI {
                 // Toggle the bit selected by the menu action in the currently selected
                 // building's outpost unit-selection mask.
                 DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
-                    .outpostRelatedUnk1 ^= (ushort)(1 << bitIndex);
+                    .outpostTroopTableMask ^= (ushort)(1 << bitIndex);
             }
 
         }

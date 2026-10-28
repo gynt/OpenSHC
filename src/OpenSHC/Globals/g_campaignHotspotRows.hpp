@@ -1,0 +1,23 @@
+/**
+  THIS FILE IS AUTO GENERATED
+  Communicate changes to the dev team (e.g. via a Pull Request).
+  Changes get lost otherwise.
+
+  path: 'OpenSHC/Globals/g_campaignHotspotRows.hpp'
+*/
+
+#pragma once
+
+#include "OpenSHC/IO/Graphics/GFXRelatedBuffer1.hpp"
+
+// GLOBAL: STRONGHOLDCRUSADER 0x00EC0840
+// StructResolver::Instance<OpenSHC::IO::Graphics::GFXRelatedBuffer1,15468608>::instance
+
+namespace OpenSHC {
+
+using OpenSHC::IO::Graphics::GFXRelatedBuffer1;
+
+MACRO_STRUCT_RESOLVER(GFXRelatedBuffer1, false, Address::SHC_3BB0A8C1_0x00EC0840) g_campaignHotspotRows;
+} // namespace OpenSHC
+
+MACRO_STRUCT_INSTANCE(Address::SHC_3BB0A8C1_0x00EC0840);

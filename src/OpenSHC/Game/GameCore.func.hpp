@@ -43,8 +43,8 @@ namespace Game {
         viewportAndScrollingRelated;
 
         MACRO_FUNCTION_RESOLVER(
-            BOOLEnum (GameCore::*)(), false, Address::SHC_3BB0A8C1_0x0046BB60, &GameCore::getAreWeInAInGameMenu)
-        getAreWeInAInGameMenu;
+            BOOLEnum (GameCore::*)(), false, Address::SHC_3BB0A8C1_0x0046BB60, &GameCore::isInGameView)
+        isInGameView;
 
         MACRO_FUNCTION_RESOLVER(
             BOOLEnum (GameCore::*)(), false, Address::SHC_3BB0A8C1_0x0046BB80, &GameCore::isInBuildingTab)
@@ -63,8 +63,8 @@ namespace Game {
         isGameHaltingMenuOpen;
 
         MACRO_FUNCTION_RESOLVER(
-            void (GameCore::*)(int), false, Address::SHC_3BB0A8C1_0x0046BD50, &GameCore::setStartDateUnk)
-        setStartDateUnk;
+            void (GameCore::*)(int), false, Address::SHC_3BB0A8C1_0x0046BD50, &GameCore::recomputeTrailMissionStartDates)
+        recomputeTrailMissionStartDates;
 
         MACRO_FUNCTION_RESOLVER(
             void (GameCore::*)(), false, Address::SHC_3BB0A8C1_0x004718F0, &GameCore::incrementMissionProgress)

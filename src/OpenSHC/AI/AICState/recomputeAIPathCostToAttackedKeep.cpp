@@ -3,7 +3,6 @@
 #include "OpenSHC/Game/GameStateStructures.func.hpp"
 #include "OpenSHC/IO/LowLevelMemory.func.hpp"
 #include "OpenSHC/Map/Navigation/PathFindingState.func.hpp"
-#include "OpenSHC/Map/MapConstants.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -20,10 +19,9 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CE040
     void AICState::recomputeAIPathCostToAttackedKeep(int playerID, int useBorderDistance)
     {
-        int const attackedPlayerID = DAT_GameState::instance.playerDataArray[playerID].attackedPlayerID;
-        int const keepArea
-            = (short)DAT_TileMapState::instance
-                  .PathConnectionLayer[DAT_GameState::instance.playerDataArray[playerID].campground.tileEntry];
+        int attackedPlayerID = DAT_GameState::instance.playerDataArray[playerID].attackedPlayerID;
+        int keepArea = (short)DAT_TileMapState::instance
+                           .PathConnectionLayer[DAT_GameState::instance.playerDataArray[playerID].campground.tileEntry];
 
         int borderDistance;
         if (DAT_GameState::instance.playerDataArray[attackedPlayerID].unknownPathBorderDistanceRelated > 120) {
@@ -41,7 +39,7 @@ namespace AI {
             = attackedPlayerID;
 
         MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
-            sizeof(DAT_TileMapState::instance.AIZoneLayer), 0, DAT_TileMapState::instance.AIZoneLayer);
+            80400, '\0', DAT_TileMapState::instance.AIZoneLayer);
 
         if (MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::canNavigateFromKeepToKeep, DAT_GameState::ptr)(
                 playerID, DAT_GameState::instance.playerDataArray[playerID].attackedPlayerID)

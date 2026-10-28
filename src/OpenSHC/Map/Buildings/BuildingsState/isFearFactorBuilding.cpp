@@ -1,68 +1,68 @@
-#include "../BuildingsState.func.hpp"
-
-#include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
+#include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
 
 namespace OpenSHC {
 namespace Map {
     namespace Buildings {
 
+        using OpenSHC::Map::Buildings::BuildingType;
+
         // FUNCTION: STRONGHOLDCRUSADER 0x0040A400
-        BOOLEnum BuildingsState::isFearFactorBuilding(int buildingID)
+        uint BuildingsState::isFearFactorBuilding(int buildingID)
         {
             if (this->buildings[buildingID].buildingType == BT_GALLOWS) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_STOCKS) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_WITCHHOIST) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_CESSPIT) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_BURNINGSTAKE) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_GIBBET) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_DUNGEON) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_STRETCHINGRACK) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_RACKFLOGGING) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_CHOPPINGBLOCK) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_DUNKINGSTOOL) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_MAYPOLE) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_GARDEN) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_STATUE) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_SHRINE) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_DANCINGBEAR) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_POND) {
-                return TRUE;
+                return 1;
             }
             if (this->buildings[buildingID].buildingType == BT_WELL) {
-                return TRUE;
+                return 1;
             }
             return this->buildings[buildingID].buildingType == BT_BEEHIVE;
         }

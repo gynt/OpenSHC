@@ -10,7 +10,7 @@ namespace Map {
         int UnitsState::checkUnitHasPropertyBasedOnUnitType(int unitID, int property)
         {
             return DAT_UnitPropertiesDefinedData::instance
-                .UnitClimbStateFlags[property][(short)this->units[unitID].unitType];
+                .diseaseVulnerable[property][(short)this->units[unitID].unitType];
         }
 
     }

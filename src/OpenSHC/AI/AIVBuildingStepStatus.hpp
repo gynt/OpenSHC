@@ -15,7 +15,7 @@ namespace AI {
         AIVBSS_disabled = 0, // 0x00000000
         AIVBSS_unbuilt = 1, // 0x00000001
         AIVBSS_built = 3, // 0x00000003
-        AIVBSS_insufficient_roomUnk = 4, // 0x00000004
+        AIVBSS_insufficient_room = 4, // 0x00000004
         AIVBSS_insufficient_resources = 5 // 0x00000005
 
     } AIVBuildingStepStatus;

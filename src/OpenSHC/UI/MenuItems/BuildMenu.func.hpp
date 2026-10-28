@@ -15,8 +15,8 @@ namespace UI {
         namespace BuildMenu_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00433200,
-                &OpenSHC::UI::MenuItems::BuildMenu::MenuItemActionHandler_BuildMenu_SomeKeepAndGranaryCheckUnk)
-            MenuItemActionHandler_BuildMenu_SomeKeepAndGranaryCheckUnk;
+                &OpenSHC::UI::MenuItems::BuildMenu::MenuItemActionHandler_BuildMenu_LeaveGranaryPlacementTab)
+            MenuItemActionHandler_BuildMenu_LeaveGranaryPlacementTab;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00434230,
                 &OpenSHC::UI::MenuItems::BuildMenu::MenuItemRenderFunction_BuildMenu_BuildingKeepSubcategoryButton)

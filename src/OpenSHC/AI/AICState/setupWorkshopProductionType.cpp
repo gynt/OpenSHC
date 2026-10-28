@@ -21,24 +21,24 @@ namespace AI {
             return;
         }
 
-        int const aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
+        int aicIndex = DAT_GameState::instance.playerDataArray[playerID].aiType - 1;
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingType == Map::Buildings::BT_BLACKSMITH) {
             int setting = this->aics[aicIndex].blacksmithSetting;
             if (setting == -999) {
                 int itemType = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::chooseProductionItemType, DAT_BuildingsState::ptr)(
                     DAT_BuildingsState::instance.buildings[buildingID].owner, Map::Buildings::BT_BLACKSMITH);
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = (ResourceTypeShort)itemType;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = (ResourceTypeShort)itemType;
                 return;
             }
             if (setting == Game::Resources::RT_SWORD) {
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_SWORD;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_SWORD;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_SWORD;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_SWORD;
                 return;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_MACE;
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_MACE;
+            DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_MACE;
+            DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_MACE;
             return;
         }
 
@@ -48,17 +48,17 @@ namespace AI {
                 int itemType = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::chooseProductionItemType, DAT_BuildingsState::ptr)(
                     DAT_BuildingsState::instance.buildings[buildingID].owner, Map::Buildings::BT_POLETURNER);
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = (ResourceTypeShort)itemType;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = (ResourceTypeShort)itemType;
                 return;
             }
             if (setting == Game::Resources::RT_SPEAR) {
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_SPEAR;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_SPEAR;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_SPEAR;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_SPEAR;
                 return;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_PIKE;
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_PIKE;
+            DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_PIKE;
+            DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_PIKE;
             return;
         }
 
@@ -68,17 +68,17 @@ namespace AI {
                 int itemType = MACRO_CALL_MEMBER(
                     Map::Buildings::BuildingsState_Func::chooseProductionItemType, DAT_BuildingsState::ptr)(
                     DAT_BuildingsState::instance.buildings[buildingID].owner, Map::Buildings::BT_FLETCHER);
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = (ResourceTypeShort)itemType;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = (ResourceTypeShort)itemType;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = (ResourceTypeShort)itemType;
                 return;
             }
             if (setting == Game::Resources::RT_BOW) {
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_BOW;
-                DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_BOW;
+                DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_BOW;
+                DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_BOW;
                 return;
             }
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemType = Game::Resources::RT_CROSSBOW;
-            DAT_BuildingsState::instance.buildings[buildingID].producedItemTypeNext = Game::Resources::RT_CROSSBOW;
+            DAT_BuildingsState::instance.buildings[buildingID].selectedNextItemType = Game::Resources::RT_CROSSBOW;
+            DAT_BuildingsState::instance.buildings[buildingID].currentProducedItemType = Game::Resources::RT_CROSSBOW;
         }
     }
 }

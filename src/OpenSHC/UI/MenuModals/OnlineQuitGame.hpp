@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace OnlineQuitGame {
 
+            /**
+             * Renders the 'Quit Mission' header banner of the online quit modal.
+             */
             void __cdecl MenuModalRenderFunction_OnlineQuitGame(int x, int y, int width, int height);
 
         } // namespace OnlineQuitGame

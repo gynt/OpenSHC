@@ -9,7 +9,7 @@ namespace Map {
         {
             if (entityID > 0) {
                 this->entityArray[entityID].logicalState = 3;
-                this->entityArray[entityID].someCounter_OR_hitGround = 10;
+                this->entityArray[entityID].burnCyclesOrImpactCountdown = 10;
             }
         }
 

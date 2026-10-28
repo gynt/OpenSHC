@@ -7,12 +7,12 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479A60
         BOOLEnum SoundSystem::isSampleOrStreamPlaying(SHC_SoundStream streamIndex)
         {
-            if (!(this->waveOutOpenUnk_0x8 && this->streamActiveUnk_0x20[streamIndex])) {
+            if (!(this->soundSystemInitialized && this->streamOpen[streamIndex])) {
                 return false;
             }
 
             if (streamIndex == enums::SND_STR_MUSIC) {
-                if (AIL_sample_status(this->musicSampleUnk_0x170) == SMP_PLAYING) {
+                if (AIL_sample_status(this->musicSample) == SMP_PLAYING) {
                     return true;
                 }
             } else {

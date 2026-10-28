@@ -15,8 +15,8 @@ namespace UI {
         namespace Unknown33_Func {
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x0042C090,
-                &OpenSHC::UI::MenuViews::Unknown33::MenuView_Unknown33_DoEveryFrame)
-            MenuView_Unknown33_DoEveryFrame;
+                &OpenSHC::UI::MenuViews::Unknown33::MenuView_MultiplayerWaitForPlayersReady_DoEveryFrame)
+            MenuView_MultiplayerWaitForPlayersReady_DoEveryFrame;
 
         } // namespace Unknown33_Func
     } // namespace MenuViews

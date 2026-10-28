@@ -13,8 +13,8 @@ namespace Synchrony {
     int GameSynchronyState::getPendingGameCommandsCount()
     {
         int _pending = 0;
-        for (int _command = this->gameCommandID; _command < 200; ++_command) {
-            GameCommandStateByte _state = this->DAT_GameCommandArray[_command].stateUnk;
+        for (int _command = this->MBR_GameCommandID; _command < 200; ++_command) {
+            GameCommandStateByte _state = this->DAT_GameCommandArray[_command].processingState;
             if (_state != 0 && _state < Commands::GCS_PROCESSED) {
                 ++_pending;
             }

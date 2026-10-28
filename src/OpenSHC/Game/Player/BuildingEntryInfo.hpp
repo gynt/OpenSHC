@@ -16,6 +16,7 @@ namespace Game {
         // SIZE: 0x00000028
         typedef struct BuildingEntryInfo {
 
+            // Contains the id of a unique building or the id of the first building of the category
             int id; // 0x00000000 length: 4
             int xEntry; // 0x00000004 length: 4
             int yEntry; // 0x00000008 length: 4

@@ -34,8 +34,8 @@ namespace UI {
             MenuItemRenderFunction_TextEditor_Scrollbar;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(), false, Address::SHC_3BB0A8C1_0x00461570,
-                &OpenSHC::UI::MenuItems::TextEditor::MenuItemActionHandler_TextEditor_TextInputRelatedUnk)
-            MenuItemActionHandler_TextEditor_TextInputRelatedUnk;
+                &OpenSHC::UI::MenuItems::TextEditor::MenuItemActionHandler_TextEditor_HandleKeyboardInput)
+            MenuItemActionHandler_TextEditor_HandleKeyboardInput;
 
             MACRO_FUNCTION_RESOLVER(void(__cdecl*)(int param_1, ...), false, Address::SHC_3BB0A8C1_0x00462340,
                 &OpenSHC::UI::MenuItems::TextEditor::MenuItemActionHandler_TextEditor_Buttons)

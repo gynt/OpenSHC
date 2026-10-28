@@ -13,6 +13,9 @@ namespace UI {
     namespace MenuModals {
         namespace GameplayOptions {
 
+            /**
+             * Renders the 'Game Play Options' header banner.
+             */
             void __cdecl MenuModalRenderFunction_GameplayOptions(int x, int y, int width, int height);
 
         } // namespace GameplayOptions

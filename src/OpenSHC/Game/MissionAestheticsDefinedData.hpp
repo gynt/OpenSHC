@@ -19,22 +19,45 @@ namespace Game {
     // SIZE: 0x00005504
     typedef struct MissionAestheticsDefinedData {
 
-        char* RandomEvent1VideoName; // 0x00000000 length: 4
-        char* RandomEvent2VideoName; // 0x00000004 length: 4
-        char* RandomEvent3VideoName; // 0x00000008 length: 4
-        char* RandomEvent4VideoName; // 0x0000000C length: 4
-        char* RandomEvent5VideoName; // 0x00000010 length: 4
-        char* RandomEvent6VideoName; // 0x00000014 length: 4
-        char* RandomEvent7VideoName; // 0x00000018 length: 4
-        char* RandomEvent8VideoName; // 0x0000001C length: 4
-        char* RandomEvent9VideoName; // 0x00000020 length: 4
-        char* RandomEvent10VideoName; // 0x00000024 length: 4
-        char* RandomEvent11VideoName; // 0x00000028 length: 4
-        char* RandomEvent12VideoName; // 0x0000002C length: 4
-        char* RandomEvent13VideoName; // 0x00000030 length: 4
-        char* RandomEvent14VideoName; // 0x00000034 length: 4
-        char* RandomEvent15VideoName; // 0x00000038 length: 4
-        char** field15_0x3c; // 0x0000003C length: 4
+        // event video data for random event 1 (travelling fair, Random_Events1.wav)
+        char** eventVideoTravellingFair; // 0x00000000 length: 4
+        // event video for random event 2 (plague)
+        char** eventVideoPlague; // 0x00000004 length: 4
+        // event video for random event 3 (pestilence on wheat crops)
+        char** eventVideoWheatPestilence; // 0x00000008 length: 4
+        // event video for random event 4 (hop weevil)
+        char** eventVideoHopWeevil; // 0x0000000C length: 4
+        // event video file for random event 5 (exe init 'action_apples_die.bik', orchard blight), queued as a
+        // second video after the event message
+        char** eventVideoApplesDie; // 0x00000010 length: 4
+        // event video for random event 6 (drought killed trees)
+        char** eventVideoDroughtTrees; // 0x00000014 length: 4
+        // event video for random event 7 (rabbits breeding)
+        char** eventVideoRabbits; // 0x00000018 length: 4
+        // event video file for random event 8 (exe init 'action_wolves.bik'); only referenced by the trigger-event
+        // menu
+        char** eventVideoWolves; // 0x0000001C length: 4
+        // event video for random event 9 (bandits)
+        char** eventVideoBandits; // 0x00000020 length: 4
+        // event video file for random event 10 (exe init 'action_mad_cows.bik'), queued as a second video after the
+        // event message
+        char** eventVideoMadCows; // 0x00000024 length: 4
+        // event video for random event 11 (outlaws returned to our cause; exe init 'action_archers.bik')
+        char** eventVideoOutlawsReturn; // 0x00000028 length: 4
+        // event video for random event 12 (forthcoming marriage)
+        char** eventVideoMarriage; // 0x0000002C length: 4
+        // event video for random event 13 (jester arrives)
+        char** eventVideoJesterArrives; // 0x00000030 length: 4
+        // event video for random event 14 (thieves stole food from granary; exe init 'action_steal_bread.bik')
+        char** eventVideoGranaryThieves; // 0x00000034 length: 4
+        // event video for fire without wells (exe init 'action_fire.bik', with general_warning16.wav);
+        // loadMissionMapAndSetLord also uses its address as base of the 1-based mission map-name table
+        // ((&field)[missionNumber] -> missionMapNames)
+        char** eventVideoFireNoWells; // 0x00000038 length: 4
+        // start of the 20 campaign map file names (exe init 'crusaders_mission1a.map' ..
+        // 'crusaders_mission4e.map'), indexed by mission number (loadMapSiegeHeaderForMissionIndex,
+        // loadMissionMapAndSetLord)
+        char** missionMapNames; // 0x0000003C length: 4
         char** field16_0x40; // 0x00000040 length: 4
         char** field17_0x44; // 0x00000044 length: 4
         char** field18_0x48; // 0x00000048 length: 4
@@ -78,7 +101,12 @@ namespace Game {
         char** field56_0xe0; // 0x000000E0 length: 4
         char** field57_0xe4; // 0x000000E4 length: 4
         char** field58_0xe8; // 0x000000E8 length: 4
-        char* field59_0xec; // 0x000000EC length: 4
+        // base of the invasion-warning speech table used in processSingleplayerEvents: entry [invader*4 +
+        // sizeClass] (invader 0 = Arabian with good_arab_nervous.bik, 1 = European with good_soldier_nervous.bik;
+        // sizeClass 1..4 by troop count <=24/<75/<150/more) -> 'enemy_attack17.wav'..'enemy_attack_24.wav' at
+        // +0xF0..+0x10C, text TEXT_SANDS_OF_TIME same index. The field itself (index 0, never used here) holds
+        // 'ap_narra', last entry of the preceding speech-folder prefix list
+        char** invasionWarningWavBase; // 0x000000EC length: 4
         char** field60_0xf0; // 0x000000F0 length: 4
         char** field61_0xf4; // 0x000000F4 length: 4
         char** field62_0xf8; // 0x000000F8 length: 4
@@ -111,7 +139,11 @@ namespace Game {
         char** field89_0x164; // 0x00000164 length: 4
         char** field90_0x168; // 0x00000168 length: 4
         char** field91_0x16c; // 0x0000016C length: 4
-        int field92_0x170[5]; // 0x00000170 length: 20
+        // int[5] TEXT_SCENARIO string offsets (exe init 0x9c,9,10,11,12) indexed by a small option byte of a
+        // scenario event: kind-2 event conditions and invasion troop entries (data+0xe+4*i) in the
+        // NewEvent/NewEventCondition editor UI. Ghidra also reaches the AI-message wav tables after it through out-
+        // of-range indices (PlayAMessageFromAI, playBikVideoFromPlayer)
+        int eventOptionTextIds[5]; // 0x00000170 length: 20
         char** field93_0x184; // 0x00000184 length: 4
         char** field94_0x188; // 0x00000188 length: 4
         char** field95_0x18c; // 0x0000018C length: 4
@@ -633,7 +665,11 @@ namespace Game {
         char** field611_0x99c; // 0x0000099C length: 4
         char** field612_0x9a0; // 0x000009A0 length: 4
         char** field613_0x9a4; // 0x000009A4 length: 4
-        char** field614_0x9a8; // 0x000009A8 length: 4
+        // never read at its own index (the field itself holds a string pointer of a preceding table): the
+        // attacking-force editor reads [indexStored] with indexStored 40..49, i.e. the slider maxima for the siege-
+        // equipment rows at +0xA48 (exe init 10,10,5,5,20,20,5), capped by remaining unit points + 500
+        // (SiegeAttackingForceAndStartGoods_Main)
+        char** siegeEquipSliderMaxBase; // 0x000009A8 length: 4
         char** field615_0x9ac; // 0x000009AC length: 4
         char** field616_0x9b0; // 0x000009B0 length: 4
         char** field617_0x9b4; // 0x000009B4 length: 4
@@ -663,7 +699,8 @@ namespace Game {
         char** field641_0xa14; // 0x00000A14 length: 4
         char** field642_0xa18; // 0x00000A18 length: 4
         char** field643_0xa1c; // 0x00000A1C length: 4
-        char** field644_0xa20; // 0x00000A20 length: 4
+        // AI message bik/video name table indexed [aiType + messageType*17] (playBikVideoFromPlayer messageVfxFile)
+        char** aiMessageVideoTable; // 0x00000A20 length: 4
         char** field645_0xa24; // 0x00000A24 length: 4
         char** field646_0xa28; // 0x00000A28 length: 4
         char** field647_0xa2c; // 0x00000A2C length: 4
@@ -1201,7 +1238,10 @@ namespace Game {
         char** field1179_0x127c; // 0x0000127C length: 4
         char** field1180_0x1280; // 0x00001280 length: 4
         char** field1181_0x1284; // 0x00001284 length: 4
-        char** field1182_0x1288; // 0x00001288 length: 4
+        // base used with indexStored 40..49 for the text id (group 199) of the siege-equipment slider overlay; real
+        // entries at +0x1328 (exe init 157,158,160,159,161,220,170); the field itself holds an unrelated string
+        // pointer
+        char** siegeEquipSliderTextIdBase; // 0x00001288 length: 4
         char** field1183_0x128c; // 0x0000128C length: 4
         char** field1184_0x1290; // 0x00001290 length: 4
         char** field1185_0x1294; // 0x00001294 length: 4
@@ -1243,31 +1283,54 @@ namespace Game {
         char** field1221_0x1324; // 0x00001324 length: 4
         int field1222_0x1328[7]; // 0x00001328 length: 28
         int unknown3[914]; // 0x00001344 length: 3656
-        int field1224_0x218c[6]; // 0x0000218C length: 24
-        int MissionScoreByDifficulty[4]; // 0x000021A4 length: 16
+        // never read at its own offset (exe init 0): BuildingAvailability_Buttons indexes it with (button id
+        // 2000+row + scroll offset), so the access lands on the row->entry table at +0x40CC (exe init
+        // 0,2,4,5,6,...) - the same table field1234_0x312c reaches with ids 1000+row; the entry indexes
+        // BuildingNameRelatedStructArray to pick the disable-weapon/troops modal
+        int buildingAvailRowMapVia2000[6]; // 0x0000218C length: 24
+        // base mission completion score per difficulty (exe init 0,5000,10000,15000; indexed by
+        // mapAndTime.difficulty) in computeMissionCompletionScore
+        int missionScoreBasePerDifficulty[4]; // 0x000021A4 length: 16
         int DifficultyEventMultipliers[4]; // 0x000021B4 length: 16
-        int EventConditionMinValue[40]; // 0x000021C4 length: 160
-        int EventConditionMaxValue[40]; // 0x00002264 length: 160
-        int EventConditionValueScale[40]; // 0x00002304 length: 160
-        int EventConditionParamKind[40]; // 0x000023A4 length: 160
-        byte EventConditionOptionValues[32][100]; // 0x00002444 length: 3200
-        int field1232_0x30c4[25]; // 0x000030C4 length: 100
-        int field1233_0x3128; // 0x00003128 length: 4
-        int BuildingAvailabilityRowOrder[174]; // 0x0000312C length: 696
-        int EventConditionOptionTextOffsets[25]; // 0x000033E4 length: 100
-        int field1236_0x3448[5]; // 0x00003448 length: 20
-        int field1237_0x345c[22]; // 0x0000345C length: 88
+        // per event-condition type (40): minimum value of the condition slider/value in the event editor
+        int eventConditionValueMin[40]; // 0x000021C4 length: 160
+        // per event-condition type: maximum value of the condition slider; 0 = condition has no numeric value
+        int eventConditionValueMax[40]; // 0x00002264 length: 160
+        // per event-condition type: display multiplier; typed text is divided by it before storing, NewEvent shows
+        // value*scale
+        int eventConditionValueScale[40]; // 0x00002304 length: 160
+        // per event-condition type: 0 = no sub-type, 1 = sub-type chosen from eventConditionSubTypeLists (text via
+        // field1235), 2 = numeric sub-type stepped +-1
+        int eventConditionSubTypeKind[40]; // 0x000023A4 length: 160
+        // Per event-condition type (40, matching eventConditionSubTypeKind int[40]) a -1 terminated list of 25
+        // ints: index = cond*0x19 ints, read as dwords; 4000 bytes end exactly at eventConditionSubTypeTextIds
+        // (+0x33E4).
+        int eventConditionSubTypeLists[40][25]; // 0x00002444 length: 4000
+        // TEXT_SCENARIO string offset for sub-type values of kind-1 event conditions
+        int eventConditionSubTypeTextIds[25]; // 0x000033E4 length: 100
+        // text id per scenario rations setting (indexed by mapAndTime.scenarioRationsSetting) in EditScenario
+        int rationsSettingTextIds[5]; // 0x00003448 length: 20
+        // start goods / trader editor row (indexStored 0..19) -> resource index into SEC_StartingResources and
+        // tradeabilityArray (exe init 2,3,4,6,8,9,...); slider maxima are the parallel int table at +0x34B4
+        int editorGoodsListResourceIndex[22]; // 0x0000345C length: 88
         int field1238_0x34b4[40]; // 0x000034B4 length: 160
-        int field1239_0x3554[30]; // 0x00003554 length: 120
+        // indexed by indexStored: for goods rows 0..19 the slider text id (group 199, exe init 50,51,...), for unit
+        // rows 20..29 the slider maximum - two logical tables sharing one base
+        int goodsEditorSliderParamTable[30]; // 0x00003554 length: 120
         int InvasionUnitLimits[24]; // 0x000035CC length: 96
         int field1241_0x362c[10]; // 0x0000362C length: 40
         BuildingNameRelatedStruct BuildingNameRelatedStructArray[67]; // 0x00003654 length: 2680
         int BuildingAvailabilityStructIndexForNameArray[69]; // 0x000040CC length: 276
         undefined1 padding_0x41e0[4]; // 0x000041E0 length: 4
         char field1248_0x41e4[46][3][32]; // 0x000041E4 length: 4416
-        int TutorialStepActionCount[40]; // 0x00005324 length: 160
-        int TutorialStepShowsContinueButton[40]; // 0x000053C4 length: 160
-        int TutorialStepSpeechTrigger[40]; // 0x00005464 length: 160
+        // number of sub-steps (text pages) per tutorial step; [0] loaded at tutorial start
+        int tutorialSubStepCounts[40]; // 0x00005324 length: 160
+        // per tutorial step: nonzero = trigger the tutorial box continue once the step condition is met on the last
+        // sub-step
+        int tutorialStepAutoContinue[40]; // 0x000053C4 length: 160
+        // per tutorial step: 1 = play next tutorial speech clip when the step is advanced, 2 = play it when the
+        // step condition is met
+        int tutorialStepSpeechMode[40]; // 0x00005464 length: 160
 
     } MissionAestheticsDefinedData;
 #pragma pack(pop)

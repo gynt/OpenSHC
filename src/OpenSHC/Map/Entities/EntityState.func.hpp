@@ -50,14 +50,14 @@ namespace Map {
             tickEntityDecayCounter;
 
             MACRO_FUNCTION_RESOLVER(void (EntityState::*)(uint), false, Address::SHC_3BB0A8C1_0x00401460,
-                &EntityState::doSomethingWithOtherEntitiesOnTile)
-            doSomethingWithOtherEntitiesOnTile;
+                &EntityState::unlinkEntityFromTile)
+            unlinkEntityFromTile;
 
             MACRO_FUNCTION_RESOLVER(
                 int (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x00401540, &EntityState::getFireEntityIDAtTile)
             getFireEntityIDAtTile;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x00401570,
+            MACRO_FUNCTION_RESOLVER(int (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x00401570,
                 &EntityState::updateAllFireEntitiesAtTile)
             updateAllFireEntitiesAtTile;
 
@@ -74,8 +74,8 @@ namespace Map {
             flagUnitsWithActiveEntity;
 
             MACRO_FUNCTION_RESOLVER(int (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x004016E0,
-                &EntityState::somethingWithSeparateAreas1)
-            somethingWithSeparateAreas1;
+                &EntityState::findNearestDiseaseCloudForHealer)
+            findNearestDiseaseCloudForHealer;
 
             MACRO_FUNCTION_RESOLVER(void (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x00401880,
                 &EntityState::refreshPoisonCloudNearUnit)
@@ -89,7 +89,7 @@ namespace Map {
                 &EntityState::destroyEntitiesOnTile)
             destroyEntitiesOnTile;
 
-            MACRO_FUNCTION_RESOLVER(BOOLEnum (EntityState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x00401A50,
+            MACRO_FUNCTION_RESOLVER(undefined4 (EntityState::*)(int, int, int), false, Address::SHC_3BB0A8C1_0x00401A50,
                 &EntityState::isBrazierNearby)
             isBrazierNearby;
 
@@ -114,8 +114,8 @@ namespace Map {
             angleToRotationFrameIndex;
 
             MACRO_FUNCTION_RESOLVER(int (EntityState::*)(int, double, int, int), false,
-                Address::SHC_3BB0A8C1_0x00402C50, &EntityState::math_atan_1)
-            math_atan_1;
+                Address::SHC_3BB0A8C1_0x00402C50, &EntityState::computeLaunchAngle)
+            computeLaunchAngle;
 
             MACRO_FUNCTION_RESOLVER(int (EntityState::*)(int, double, int, int), false,
                 Address::SHC_3BB0A8C1_0x00402DA0, &EntityState::computeVelocity)
@@ -137,7 +137,7 @@ namespace Map {
                 &EntityState::removeEntityFromTileLinkedList)
             removeEntityFromTileLinkedList;
 
-            MACRO_FUNCTION_RESOLVER(void (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x004039B0,
+            MACRO_FUNCTION_RESOLVER(int (EntityState::*)(int), false, Address::SHC_3BB0A8C1_0x004039B0,
                 &EntityState::activateProjectileEntity)
             activateProjectileEntity;
 
@@ -159,8 +159,8 @@ namespace Map {
 
             MACRO_FUNCTION_RESOLVER(
                 uint (EntityState::*)(int, undefined4, uint, int, int, int, int, int, int, EntityType, int), false,
-                Address::SHC_3BB0A8C1_0x00404AE0, &EntityState::spawnProjectileEntity)
-            spawnProjectileEntity;
+                Address::SHC_3BB0A8C1_0x00404AE0, &EntityState::spawnEntity)
+            spawnEntity;
 
             MACRO_FUNCTION_RESOLVER(void (EntityState::*)(int, int, int, int, int, int, int), false,
                 Address::SHC_3BB0A8C1_0x00405CF0, &EntityState::setProjectileTargetPosition)

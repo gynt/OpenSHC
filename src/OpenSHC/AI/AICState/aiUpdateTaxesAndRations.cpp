@@ -10,12 +10,12 @@ namespace AI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004CAEA0
     void AICState::aiUpdateTaxesAndRations(int playerID)
     {
-        int const aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
+        int aiType = DAT_GameState::instance.playerDataArray[playerID].aiType;
         if (aiType == OpenSHC::AI::AIT_NULL)
             return;
-        int const aicIndex = aiType - 1;
+        int aicIndex = aiType - 1;
 
-        int const popularity = DAT_GameState::instance.playerDataArray[playerID].popularity;
+        int popularity = DAT_GameState::instance.playerDataArray[playerID].popularity;
         if (popularity <= this->aics[aicIndex].criticalPopularity)
             DAT_GameState::instance.playerDataArray[playerID].aiPopularityDecisionValue = 2;
         else if (popularity <= this->aics[aicIndex].lowestPopularity)
@@ -59,7 +59,7 @@ namespace AI {
                 else
                     lowerTaxesLimit = 4;
 
-                if (DAT_GameState::instance.playerDataArray[playerID].storedPopularityPercent <= popularity)
+                if (DAT_GameState::instance.playerDataArray[playerID].previousWeekPopularity <= popularity)
                     DAT_GameState::instance.playerDataArray[playerID].taxesSetting++;
                 else if (DAT_GameState::instance.playerDataArray[playerID].taxesSetting > lowerTaxesLimit)
                     DAT_GameState::instance.playerDataArray[playerID].taxesSetting--;

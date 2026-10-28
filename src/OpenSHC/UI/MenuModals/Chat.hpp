@@ -13,6 +13,12 @@ namespace UI {
     namespace MenuModals {
         namespace Chat {
 
+            /**
+             * Renders the multiplayer Chat modal: 'Chat' title, rounded input box with a caret at the current
+             * cursor width (only when no insult is selected), forces user text slot 4, then draws either the
+             * current chat input text or the selected insult text (TEXT_INSULTS[DAT_InsultTextIndex], in the
+             * current input font size) and clears the insult index.
+             */
             void __cdecl MenuModalRenderFunction_Chat(int x, int y, int width, int height);
 
         } // namespace Chat

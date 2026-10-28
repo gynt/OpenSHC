@@ -9,7 +9,7 @@ namespace Map {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00420BF0
         void BuildingsState::upgradeBuildingsForMapVersion(
-            int receivedMapVersion, PackagedFileMagicNum packagerMapVersion)
+            PackagedFileMagicNum receivedMapVersion, PackagedFileMagicNum packagerMapVersion)
         {
             MACRO_CALL(OpenSHC::Map::Version_Func::SetUndamagedBuildingHealthToValue)();
             MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingProperties1)(receivedMapVersion);
@@ -18,7 +18,7 @@ namespace Map {
             MACRO_CALL_MEMBER(
                 OpenSHC::Map::Buildings::BuildingsState_Func::rebuildTileLogicLayerForGatesAndWalls, this)();
             MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::rebuildTileLogicLayerForKeeps, this)();
-            this->pathLinkageKeepWasUpdatedUnk = 1;
+            this->pathLinkageDirty = 1;
             MACRO_CALL_MEMBER(
                 OpenSHC::Map::Buildings::BuildingsState_Func::updatePathLinkageForGatesKeepsSiegeTowers, this)();
             if (receivedMapVersion == packagerMapVersion) {
@@ -26,56 +26,56 @@ namespace Map {
             }
 
             // Upgrades of maps saved with older versions
-            if (receivedMapVersion < 103) {
+            if ((int)receivedMapVersion < 103) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingFlag1)();
             }
-            if (receivedMapVersion < 116) {
+            if ((int)receivedMapVersion < 116) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::updatePathLinkageLayerForAllBuildings,
                     DAT_BuildingsState::ptr)();
             }
-            if (receivedMapVersion < 119) {
+            if ((int)receivedMapVersion < 119) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingFlag1)();
             }
-            if (receivedMapVersion < 121) {
+            if ((int)receivedMapVersion < 121) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingField1)();
             }
-            if (receivedMapVersion < 130) {
+            if ((int)receivedMapVersion < 130) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::SetDairyCheeseToZero)();
             }
-            if (receivedMapVersion < 133) {
+            if ((int)receivedMapVersion < 133) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeTowerLogicLayer)();
             }
-            if (receivedMapVersion < 140) {
+            if ((int)receivedMapVersion < 140) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::SetHovelBuildOrder)();
             }
-            if (receivedMapVersion < 143) {
+            if ((int)receivedMapVersion < 143) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::SetBuildingsEmployeeCountToValue)();
             }
-            if (receivedMapVersion < 146) {
+            if ((int)receivedMapVersion < 146) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingField2)();
             }
-            if (receivedMapVersion < 149) {
+            if ((int)receivedMapVersion < 149) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeSolitaryMapBuildingField3)();
             }
-            if (receivedMapVersion < 150) {
+            if ((int)receivedMapVersion < 150) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeLogicAndDisplayLayerForDairyFarms)();
             }
-            if (receivedMapVersion < 151) {
+            if ((int)receivedMapVersion < 151) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeDestroyDrawbridgesInFirst10Buildings)();
             }
-            if (receivedMapVersion < 152) {
+            if ((int)receivedMapVersion < 152) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradePitchDitchBuildingIntoPitchDitchObject)();
             }
-            if (receivedMapVersion < 156) {
+            if ((int)receivedMapVersion < 156) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeBuildingField4)();
             }
-            if (receivedMapVersion < 161) {
+            if ((int)receivedMapVersion < 161) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeClearBuildings1000AndHigher)();
             }
-            if (receivedMapVersion < 167) {
+            if ((int)receivedMapVersion < 167) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeKnightsAndStables)();
             }
-            if (receivedMapVersion < 172) {
+            if ((int)receivedMapVersion < 172) {
                 MACRO_CALL(OpenSHC::Map::Version_Func::UpgradeOutpostField)();
             }
         }

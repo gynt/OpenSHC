@@ -1,6 +1,6 @@
 #include "../SoundSystem.func.hpp"
 
-#include "OpenSHC/Globals/DAT_00b95954.hpp"
+#include "OpenSHC/Globals/DAT_CreditsAfterCampaignEnd.hpp"
 #include "OpenSHC/Globals/DAT_SFXDefinedData.hpp"
 
 namespace OpenSHC {
@@ -10,16 +10,16 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047A5E0
         void SoundSystem::playDarMehqOrGlory()
         {
-            if (*DAT_00b95954::ptr == 1) {
+            if (*DAT_CreditsAfterCampaignEnd::ptr == 1) {
                 MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(DAT_SFXDefinedData::ptr->Pointers[0x26].musicFile);
                 return;
             }
-            if (this->sec_Section1055_0x3274 != 0xf) {
+            if (this->playingMusicId != 0xf) {
                 MACRO_CALL_MEMBER(SoundSystem_Func::setupVolumeAndSoundID, this)(DE::SHCDE::MUSIC_TUNE_OFF);
                 return;
             }
             MACRO_CALL_MEMBER(SoundSystem_Func::openSound, this)(DAT_SFXDefinedData::ptr->Pointers[0x10].musicFile);
-            this->sec_Section1055_0x3274 = 0;
+            this->playingMusicId = 0;
         }
 
     }

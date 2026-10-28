@@ -20,7 +20,7 @@ namespace AI {
         for (int aiIndex = 0; aiIndex < 16; ++aiIndex) {
             int availableAIVs = 0;
             for (int castleID = 0; castleID < 8; ++castleID) {
-                int const hash = MACRO_CALL_MEMBER(IO::ResourceManager_Func::getSimpleFirst1024ByteSumOfFile,
+                int const hash = MACRO_CALL_MEMBER(IO::ResourceManager_Func::getSignedByteSumOfFile,
                     DAT_ResourceManager::ptr)(DAT_AIVDefinedData::instance.AIVFileNames[aiIndex][castleID]);
                 this->aivFileHash[aiIndex][castleID] = hash;
                 if (hash != -1) {
@@ -29,11 +29,11 @@ namespace AI {
             }
             if (availableAIVs != 0) {
                 this->aivFileAvailabilityPerAIArray[aiIndex] = availableAIVs;
-                DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[this->numberOfAIsWithAIV] = aiIndex + 1;
+                DAT_GameCore::instance.aiLordIDsWithAIV[this->numberOfAIsWithAIV] = aiIndex + 1;
                 ++this->numberOfAIsWithAIV;
             }
         }
-        DAT_GameCore::instance.numOfAIsWithCastleUnk = this->numberOfAIsWithAIV;
+        DAT_GameCore::instance.numAILordsWithAIV = this->numberOfAIsWithAIV;
     }
 
 }

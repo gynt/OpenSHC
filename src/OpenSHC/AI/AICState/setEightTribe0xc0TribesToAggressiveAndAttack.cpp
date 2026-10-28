@@ -1,6 +1,5 @@
-#include "../AICState.func.hpp"
-
 #include "OpenSHC/Map/Units/TribesState.func.hpp"
+#include "OpenSHC/AI/AICState.hpp"
 #include "OpenSHC/AI/AITypeA.hpp"
 #include "OpenSHC/Map/Units/Behavior/UnitStanceEnum.hpp"
 #include "OpenSHC/Map/Units/SomeTribeBehaviorType.hpp"
@@ -19,7 +18,7 @@ namespace AI {
         }
 
         for (int i = 0; i < 8; i++) {
-            int const tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[i + 0xc0];
+            int tribeID = DAT_GameState::instance.playerDataArray[playerID].aiTribeIDs[i + 0xc0];
             if (tribeID == 0) {
                 continue;
             }
@@ -27,7 +26,7 @@ namespace AI {
                 != DAT_GameState::instance.playerDataArray[playerID].aiTribeUIDs[i + 0xc0]) {
                 continue;
             }
-            if (DAT_TribesState::instance.tribes[tribeID].selectionTargetUnitID == 0) {
+            if (DAT_TribesState::instance.tribes[tribeID].leaderUnitID == 0) {
                 continue;
             }
             DAT_TribesState::instance.tribes[tribeID].unitStance = Map::Units::Behavior::USE_AGGRESSIVE;

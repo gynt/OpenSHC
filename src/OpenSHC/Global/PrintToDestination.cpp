@@ -8,7 +8,7 @@ void Global::PrintToDestination(wchar_t* destination, wchar_t const* format, ...
 {
     va_list args;
     va_start(args, format);
-    MACRO_CALL(OpenSHC::OS_Func::__vswprintf)(destination, (wchar_t*)format, args);
+    MACRO_CALL(OpenSHC::OS_Func::__vswprintf)(destination, const_cast<wchar_t*>(format), args);
 }
 
 }

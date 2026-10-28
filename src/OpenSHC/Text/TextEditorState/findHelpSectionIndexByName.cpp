@@ -10,7 +10,7 @@ namespace Text {
     // FUNCTION: STRONGHOLDCRUSADER 0x0045D140
     int TextEditorState::findHelpSectionIndexByName(char* param_1)
     {
-        for (int counter = 0; counter < this->counter; ++counter) {
+        for (int counter = 0; counter < this->helpSectionCount; ++counter) {
             if (!MACRO_CALL(OS_Func::__stricmp)(DAT_UserHelpDefinedData::instance.HelpSections[counter], param_1)) {
                 return counter;
             }

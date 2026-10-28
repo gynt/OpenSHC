@@ -17,7 +17,7 @@ namespace Input {
         this->previousSelectionBox.bottom
             = this->screenSpaceY + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY;
 
-        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOutUnk) {
+        if (DAT_ViewportRenderState::instance.viewportState.isZoomedOut) {
             this->selectionBox.right
                 = (DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX + this->screenSpaceX) * 2 + 2;
             this->selectionBox.bottom
@@ -34,7 +34,7 @@ namespace Input {
             this->selectionBox.left, this->selectionBox.top, this->selectionBox.right, this->selectionBox.bottom);
 
         if (16 < DAT_DirectionAlgorithmState::instance.distanceHigh) {
-            DAT_MouseState::instance.selectionBoxState = 1;
+            DAT_MouseState::instance.selectionBoxActive = 1;
         }
     }
 

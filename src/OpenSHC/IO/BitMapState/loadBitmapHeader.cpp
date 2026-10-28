@@ -18,8 +18,8 @@ namespace IO {
         MACRO_CALL(OS_Func::_ucrt_read)(fileHandle, &this->bitmapInfoHeader, 0x28);
         this->mbr_0x0 = 0;
         this->mbr_0x4 = 0;
-        this->total = this->bitmapInfoHeader.biWidth;
-        this->high = this->bitmapInfoHeader.biHeight;
+        this->width = this->bitmapInfoHeader.biWidth;
+        this->height = this->bitmapInfoHeader.biHeight;
         this->biBitCount = this->bitmapInfoHeader.biBitCount;
 
         this->stride24bit = this->bitmapInfoHeader.biWidth * 3 + this->bitmapInfoHeader.biWidth % 4;

@@ -8,23 +8,22 @@
 
 #pragma once
 
-#include "OpenSHC/UI/Text/NumberOfDigitsThreshold.hpp"
-
 namespace OpenSHC {
 namespace UI {
-
-    using OpenSHC::UI::Text::NumberOfDigitsThreshold;
 
 #pragma pack(push, 1)
     // SIZE: 0x00000734
     typedef struct TextInputDefinedData {
 
-        int field0_0x0[11]; // 0x00000000 length: 44
+        // Per-row x inset table used to draw rounded box corners (drawStartX = inset + x)
+        int roundedCornerInsets[11]; // 0x00000000 length: 44
         int field1_0x2c[22]; // 0x0000002C length: 88
         byte UserTextHandler_CharacterFilter_B_1_8_9[256]; // 0x00000084 length: 256
         byte UserTextHandler_CharacterFilter_A_2_3[256]; // 0x00000184 length: 256
         short CharToImageSeqIDMapping[2][256]; // 0x00000284 length: 1024
-        NumberOfDigitsThreshold numberOfDigitsThresholds[8]; // 0x00000684 length: 64
+        // 8 x {maxValue, digitCount}: fillIntegerTextBuffer picks digit count of a number from the first row with
+        // value <= maxValue
+        int digitCountThresholds[8][2]; // 0x00000684 length: 64
         int field6_0x6c4[10]; // 0x000006C4 length: 40
         char field7_0x6ec[4]; // 0x000006EC length: 4
         char field8_0x6f0[6]; // 0x000006F0 length: 6
@@ -35,13 +34,16 @@ namespace UI {
         char field15_0x704[4]; // 0x00000704 length: 4
         char field16_0x708[6]; // 0x00000708 length: 6
         undefined1 padding_0x70e[2]; // 0x0000070E length: 2
-        char field19_0x710[4]; // 0x00000710 length: 4
+        // lpstrFilter string for the open-graphics-file dialog
+        char gfxFileFilter[4]; // 0x00000710 length: 4
         char field20_0x714[6]; // 0x00000714 length: 6
         undefined1 padding_0x71a[2]; // 0x0000071A length: 2
-        char field23_0x71c[4]; // 0x0000071C length: 4
+        // lpstrFilter string for the open-help-file dialog
+        char helpFileFilter[4]; // 0x0000071C length: 4
         char field24_0x720[6]; // 0x00000720 length: 6
         undefined1 padding_0x726[2]; // 0x00000726 length: 2
-        char field27_0x728[4]; // 0x00000728 length: 4
+        // lpstrFilter string for the open-sound-file dialog
+        char soundFileFilter[4]; // 0x00000728 length: 4
         char field28_0x72c[6]; // 0x0000072C length: 6
         undefined1 padding_0x732[2]; // 0x00000732 length: 2
 

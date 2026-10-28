@@ -55,24 +55,24 @@ namespace IO {
 
         MACRO_CALL(OS_Func::_ucrt_read)(_fileDescriptor, this->tempMem, this->directory.filePayloadSize);
         MACRO_CALL(OS_Func::_ucrt_close)(_fileDescriptor);
-        this->versionNumOfCurrentFileTypeUnk = this->directory.magicNumOfFileType;
+        this->currentFileFormatVersion = this->directory.fileFormatVersion;
 
         if (_loadAndSaveBarFunc) {
             (*_loadAndSaveBarFunc)(50);
         }
 
-        this->currentlyReadFileSectionIndex = 0;
+        this->currentSectionIndex = 0;
         this->directory.filePayloadSize = 0;
 
         MapSectionAddress* _sectionAddressListStart = mapSectionAddrArray;
-        while (this->currentlyReadFileSectionIndex < this->directory.sectionCount) {
+        while (this->currentSectionIndex < this->directory.sectionCount) {
             mapSectionAddrArray = _sectionAddressListStart;
 
-            while (this->currentlyReadFileSectionIndex < 150) {
+            while (this->currentSectionIndex < 150) {
                 this->currentlyReadFileSectionMemory = mapSectionAddrArray->address;
                 this->currentlyReadFileSectionSize = mapSectionAddrArray->size;
                 if (this->currentlyReadFileSectionMemory <= NULL
-                    || this->directory.id[this->currentlyReadFileSectionIndex] == mapSectionAddrArray->sectionId) {
+                    || this->directory.id[this->currentSectionIndex] == mapSectionAddrArray->sectionId) {
                     break;
                 }
                 ++mapSectionAddrArray;
@@ -80,19 +80,19 @@ namespace IO {
 
             if (this->currentlyReadFileSectionMemory > NULL && mapSectionAddrArray->sectionId == sectionID
                 && !mapSectionAddrArray->unknown) {
-                if (!this->directory.isCompressed[this->currentlyReadFileSectionIndex]
-                    || this->CRASHES_saveUncompressedUnk) {
+                if (!this->directory.isCompressed[this->currentSectionIndex]
+                    || this->bypassCompression) {
                     MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
-                        this->directory.uncompressedSize[this->currentlyReadFileSectionIndex],
-                        (void*)((int)this->tempMem + this->directory.offset[this->currentlyReadFileSectionIndex]),
+                        this->directory.uncompressedSize[this->currentSectionIndex],
+                        (void*)((int)this->tempMem + this->directory.offset[this->currentSectionIndex]),
                         this->currentlyReadFileSectionMemory);
                 } else {
                     MACRO_CALL_MEMBER(IO::DecoderState_Func::decodeData, DAT_DecoderState::ptr)(
-                        (void*)((int)this->tempMem + this->directory.offset[this->currentlyReadFileSectionIndex]),
+                        (void*)((int)this->tempMem + this->directory.offset[this->currentSectionIndex]),
                         this->currentlyReadFileSectionMemory);
                 }
             }
-            ++this->currentlyReadFileSectionIndex;
+            ++this->currentSectionIndex;
         }
 
         MACRO_CALL(OS_Func::_free_base)(this->tempMem);

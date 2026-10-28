@@ -16,7 +16,7 @@ namespace Synchrony {
         HKEY__* _key;
         DWORD _valueType;
         DWORD _valueSize = 512;
-        this->gameSpyArcadeAvailable = 0;
+        this->gameSpyArcadeInstalled = 0;
         LONG _result = RegOpenKeyExA(HKEY_CURRENT_USER, s_Software_GameSpy_GameSpy_Arcade_005a6f6c, 0, KEY_READ, &_key);
         if (!_result) {
             _result = RegQueryValueExA(
@@ -31,7 +31,7 @@ namespace Synchrony {
                 strcat(this->shellExecuteTarget, s_aphex_exe_005a6f54);
                 FILE* _file = MACRO_CALL(OS_Func::_fopen)(this->shellExecuteTarget, s_rb_005a4e18);
                 if (_file != (FILE*)0x0) {
-                    this->gameSpyArcadeAvailable = 1;
+                    this->gameSpyArcadeInstalled = 1;
                     MACRO_CALL(OS_Func::_fclose)(_file);
                 }
             }

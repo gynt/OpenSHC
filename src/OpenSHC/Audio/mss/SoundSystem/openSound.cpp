@@ -14,18 +14,18 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047B490
         void SoundSystem::openSound(char* filePath)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return;
             }
 
-            strcpy(this->currIdSoundFilenameUnk_0x84, filePath);
-            if (!this->mbr_0x188) {
-                DAT_SoundEffectsHelperData1::ptr->field14_0x54 = TRUE;
-                if (this->musicFileHandle_0x178 != -1) {
-                    MACRO_CALL(OS_Func::_ucrt_close)(this->musicFileHandle_0x178);
+            strcpy(this->currentMusicFilename, filePath);
+            if (!this->musicStreamStopped) {
+                DAT_SoundEffectsHelperData1::ptr->musicStreamBusyMainThread = TRUE;
+                if (this->queuedMusicFileHandle != -1) {
+                    MACRO_CALL(OS_Func::_ucrt_close)(this->queuedMusicFileHandle);
                 }
-                this->musicFileHandle_0x178 = MACRO_CALL(OS_Func::_ucrt_open)(filePath, _O_BINARY, 0);
-                DAT_SoundEffectsHelperData1::ptr->field14_0x54 = FALSE;
+                this->queuedMusicFileHandle = MACRO_CALL(OS_Func::_ucrt_open)(filePath, _O_BINARY, 0);
+                DAT_SoundEffectsHelperData1::ptr->musicStreamBusyMainThread = FALSE;
                 return;
             }
 

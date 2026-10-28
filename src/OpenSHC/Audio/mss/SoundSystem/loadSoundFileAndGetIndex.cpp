@@ -7,7 +7,7 @@ namespace Audio {
         // FUNCTION: STRONGHOLDCRUSADER 0x00479c20
         int SoundSystem::loadSoundFileAndGetIndex(char* fileName)
         {
-            if (!this->waveOutOpenUnk_0x8) {
+            if (!this->soundSystemInitialized) {
                 return -1;
             }
             this->soundFileDataPointerArray_0x122c[this->loadedSoundsCountAndIndex_0x316c] = AIL_file_read(fileName, 0);

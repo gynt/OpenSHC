@@ -17,7 +17,9 @@ namespace Audio {
         typedef struct SoundStructure2 {
 
             int soundID; // 0x00000000 length: 4
-            int field1_0x4; // 0x00000004 length: 4
+            // number of non-'Null.wav' names in this sound group's 8 slots (loadWavSounds); variationCount counts
+            // the ones actually loaded
+            int declaredVariantCount; // 0x00000004 length: 4
             int variationCount; // 0x00000008 length: 4
             int variationCounter; // 0x0000000C length: 4
 
