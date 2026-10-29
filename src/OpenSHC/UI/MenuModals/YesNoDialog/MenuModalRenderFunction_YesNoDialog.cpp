@@ -33,7 +33,7 @@ namespace UI {
           decompilerscript: committed: 2025-01-30 21:57:43.216000
          */
         // FUNCTION: STRONGHOLDCRUSADER 0x00493390
-        void YesNoDialog::MenuModalRenderFunction_YesNoDialog(int x, int y, int width, int height)
+        void YesNoDialog::MenuModalRenderFunction_YesNoDialog(int ySpace, int y, int total, int high)
         {
             int xParam;
             int yParam;
@@ -47,39 +47,34 @@ namespace UI {
             int blendStrength;
             iVar1 = -1;
             UI_MissionModeIntent::instance = FALSE;
-            if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter < 0x2d) {
-                if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter < 0x2b) {
-                    switch (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter) {
-                    case 7:
-                    case 9:
-                    case 0x1e:
-                        goto switchD_004933bd_caseD_7;
-                    case -7:
-                        iVar1 = -DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter;
-                    }
-                    goto switchD_004933bd_caseD_fffffffa;
-                }
-            } else if ((DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter != 0x2f)
-                && (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter != 0x31)) {
-                if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 1000) {
-                    iVar1 = 7;
-                    UI_MissionModeIntent::instance = TRUE;
-                }
-                goto switchD_004933bd_caseD_fffffffa;
+            switch (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter) {
+            case -7:
+                iVar1 = -DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter;
+                break;
+            case 7:
+            case 9:
+            case 0x1e:
+            case 0x2b:
+            case 0x2c:
+            case 0x2f:
+            case 0x31:
+                iVar1 = DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter;
+                break;
+            case 1000:
+                iVar1 = 7;
+                UI_MissionModeIntent::instance = TRUE;
+                break;
             }
-        switchD_004933bd_caseD_7:
-            iVar1 = DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter;
-        switchD_004933bd_caseD_fffffffa:
             if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 2000) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderBanner,
-                    DAT_PencilRenderCore::ptr)(x, y, width, height);
+                    DAT_PencilRenderCore::ptr)(ySpace, y, total, high);
                 blendStrength = 0;
                 keepOffsetX = FALSE;
                 fontSize = 0x11;
                 color = 0xc2f0eb;
                 alignment = OpenSHC::Text::TTA_CENTER;
                 yParam = y + 0xf;
-                xParam = width / 2 + x;
+                xParam = total / 2 + ySpace;
                 xParam_00 = xParam;
                 /*
                   added by script: "Receiving Map"
@@ -96,7 +91,7 @@ namespace UI {
             }
             if (iVar1 != -1) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
-                    DAT_PencilRenderCore::ptr)(0x4a, iVar1, x, y, width, height);
+                    DAT_PencilRenderCore::ptr)(0x4a, iVar1, ySpace, y, total, high);
                 (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
             }
             (DAT_MenuHandlerState::instance.currentMenu)->zero = 0;
