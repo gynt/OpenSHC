@@ -6,6 +6,9 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
+        // The comma-expression `while` is the shape the original compiles to: rewriting the walk as a
+        // `for (; guardCounter < 99; ...)` that reads `next` at the top of the body dropped the match from
+        // 100% to 31%, so the ugly form stays.
         // FUNCTION: STRONGHOLDCRUSADER 0x00403900
         void EntityState::removeEntityFromTileLinkedList(int entityID)
         {
@@ -20,10 +23,11 @@ namespace Map {
             int nextEntityID = prevEntityID;
             if (prevEntityID != 0) {
                 int currentEntityID;
-                while (currentEntityID = nextEntityID, ++guardCounter < 100
-                    && (prevEntityID = currentEntityID,
-                        nextEntityID = this->entityArray[currentEntityID].nextEntityOnThisTileByID,
-                        nextEntityID != entityID)) {
+                while (currentEntityID = nextEntityID,
+                    ++guardCounter < 100
+                        && (prevEntityID = currentEntityID,
+                            nextEntityID = this->entityArray[currentEntityID].nextEntityOnThisTileByID,
+                            nextEntityID != entityID)) {
                     if (nextEntityID == 0) {
                         return;
                     }

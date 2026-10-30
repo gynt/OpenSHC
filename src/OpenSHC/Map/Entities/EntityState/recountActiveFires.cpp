@@ -9,6 +9,8 @@ namespace OpenSHC {
 namespace Map {
     namespace Entities {
 
+        // fixme: the original tests logicalState twice (!= 0 and == 2); the first test is redundant but it is
+        // in the binary, so it stays.
         // FUNCTION: STRONGHOLDCRUSADER 0x00401620
         void EntityState::recountActiveFires()
         {
