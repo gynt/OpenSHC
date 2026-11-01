@@ -18,10 +18,11 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00524060
         BOOLEnum TribesState::isTribeAllAssassins(int tribeID)
         {
+            // Keeping the decompiler's guarded do-while: the equivalent for loop measured 0.97 instead of 1.00.
             int _unitID;
-            int iVar1 = (int)this->tribes[tribeID].size;
+            int const _size = this->tribes[tribeID].size;
             int _unitSelectionIndex = 0;
-            if (0 < iVar1) {
+            if (0 < _size) {
                 do {
                     _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, _unitSelectionIndex);
@@ -31,7 +32,7 @@ namespace Map {
                         && DAT_UnitsState::instance.units[_unitID].unitType != Map::Units::UT_A_ASSASSIN) {
                         return FALSE;
                     }
-                } while (_unitSelectionIndex < iVar1);
+                } while (_unitSelectionIndex < _size);
             }
             return TRUE;
         }

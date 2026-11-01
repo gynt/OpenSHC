@@ -14,23 +14,24 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00523630
         int TribesState::getNonDyingUnit(int tribeID)
         {
-            int iVar1;
+            // Keeping the decompiler's guarded do-while: the equivalent for loop measured 0.97 instead of 1.00.
+            int unitID;
             if (tribeID <= 0) {
                 return 0;
             }
             int unitSelectionIndex = 0;
-            int _size = this->tribes[tribeID].size;
+            int const _size = this->tribes[tribeID].size;
             do {
                 if (unitSelectionIndex >= _size) {
                     return 0;
                 }
-                iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                     tribeID, unitSelectionIndex);
                 unitSelectionIndex = unitSelectionIndex + 1;
-            } while (((DAT_UnitsState::instance.units[iVar1].logicalState != Map::Units::ULS_NORMAL)
-                         || (DAT_UnitsState::instance.units[iVar1].dying != 0))
-                || (DAT_UnitsState::instance.units[iVar1].antelopeBasedRngValue != 1));
-            return iVar1;
+            } while (((DAT_UnitsState::instance.units[unitID].logicalState != Map::Units::ULS_NORMAL)
+                         || (DAT_UnitsState::instance.units[unitID].dying != 0))
+                || (DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue != 1));
+            return unitID;
         }
 
     }

@@ -16,24 +16,25 @@ namespace Map {
         using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00524230
-        BOOLEnum TribesState::selectionContainsHorses(int param_1)
+        BOOLEnum TribesState::selectionContainsHorses(int tribeID)
         {
-            UnitTypeShort UVar1;
-            int iVar2;
-            int iVar3 = (int)this->tribes[param_1].size;
+            // Keeping the decompiler's guarded do-while: the equivalent for loop measured 0.97 instead of 1.00.
+            UnitTypeShort _unitType;
+            int unitID;
+            int const _size = this->tribes[tribeID].size;
             int unitSelectionIndex = 0;
-            if (0 < iVar3) {
+            if (0 < _size) {
                 do {
-                    iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                        param_1, unitSelectionIndex);
+                    unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if (DAT_UnitsState::instance.units[iVar2].logicalState == Map::Units::ULS_NORMAL
-                        && DAT_UnitsState::instance.units[iVar2].dying == 0
-                        && (UVar1 = DAT_UnitsState::instance.units[iVar2].unitType,
-                            UVar1 == Map::Units::UT_A_HARCHER || (UVar1 == Map::Units::UT_E_KNIGHT))) {
+                    if (DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL
+                        && DAT_UnitsState::instance.units[unitID].dying == 0
+                        && (_unitType = DAT_UnitsState::instance.units[unitID].unitType,
+                            _unitType == Map::Units::UT_A_HARCHER || (_unitType == Map::Units::UT_E_KNIGHT))) {
                         return TRUE;
                     }
-                } while (unitSelectionIndex < iVar3);
+                } while (unitSelectionIndex < _size);
             }
             return FALSE;
         }

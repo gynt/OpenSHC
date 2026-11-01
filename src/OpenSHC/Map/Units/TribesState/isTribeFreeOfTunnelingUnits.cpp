@@ -14,22 +14,23 @@ namespace Map {
         using WindowsHelper::Enums::BOOLEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00525210
-        BOOLEnum TribesState::isTribeFreeOfTunnelingUnits(int param_1, int param_2)
+        BOOLEnum TribesState::isTribeFreeOfTunnelingUnits(int tribeID, int param_2)
         {
-            int iVar2;
-            int iVar1 = (int)this->tribes[param_1].size;
+            // Keeping the decompiler's guarded do-while: the equivalent for loop measured 0.97 instead of 1.00.
+            int unitID;
+            int const _size = this->tribes[tribeID].size;
             int unitSelectionIndex = 0;
-            if (0 < iVar1) {
+            if (0 < _size) {
                 do {
-                    iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                        param_1, unitSelectionIndex);
+                    unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if (DAT_UnitsState::instance.units[iVar2].logicalState == Map::Units::ULS_NORMAL
-                        && DAT_UnitsState::instance.units[iVar2].dying == 0
-                        && DAT_UnitsState::instance.units[iVar2].tunnelerFinishedDigging == 2) {
+                    if (DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL
+                        && DAT_UnitsState::instance.units[unitID].dying == 0
+                        && DAT_UnitsState::instance.units[unitID].tunnelerFinishedDigging == 2) {
                         return FALSE;
                     }
-                } while (unitSelectionIndex < iVar1);
+                } while (unitSelectionIndex < _size);
             }
             return TRUE;
         }

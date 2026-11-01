@@ -17,10 +17,11 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x005250B0
         BOOLEnum TribesState::anyUnitsOfTribeAreOutsideCoverageOfPathFindingAlg(int tribeID, int algTileFlag)
         {
+            // Keeping the decompiler's guarded do-while: the equivalent for loop measured 0.97 instead of 1.00.
             int _unitID;
-            int iVar1 = (int)this->tribes[tribeID].size;
+            int const _size = this->tribes[tribeID].size;
             int unitSelectionIndex = 0;
-            if (0 < iVar1) {
+            if (0 < _size) {
                 do {
                     _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, unitSelectionIndex);
@@ -31,7 +32,7 @@ namespace Map {
                             != algTileFlag) {
                         return FALSE;
                     }
-                } while (unitSelectionIndex < iVar1);
+                } while (unitSelectionIndex < _size);
             }
             return TRUE;
         }
