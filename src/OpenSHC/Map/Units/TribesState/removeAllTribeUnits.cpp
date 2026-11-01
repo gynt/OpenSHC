@@ -30,9 +30,8 @@ namespace Map {
                       0x525499), which is what the decompiler printed as a spare variable
                       carrying the old value across the call.
                      */
-                    int const _unitID
-                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                            param_1, _index++);
+                    int const _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        param_1, _index++);
                     DAT_UnitsState::instance.units[_unitID].logicalState = Map::Units::ULS_REMOVE;
                 } while (_index < (int)*_size);
             }

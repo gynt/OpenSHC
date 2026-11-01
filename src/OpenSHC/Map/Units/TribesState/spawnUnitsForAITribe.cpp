@@ -49,11 +49,9 @@ namespace Map {
                         if (UVar1 == Map::Units::UT_E_ARCHER || UVar1 == Map::Units::UT_E_XBOW
                             || UVar1 == Map::Units::UT_A_ARCHER || UVar1 == Map::Units::UT_A_SLINGER
                             || UVar1 == Map::Units::UT_A_HARCHER || UVar1 == Map::Units::UT_A_FIRETHROWER) {
-                            MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(
-                                unitID, 0x11);
+                            MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(unitID, 0x11);
                         } else {
-                            MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(
-                                unitID, 0x14);
+                            MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(unitID, 0x14);
                         }
                     }
                     param_2 = param_2 + -1;

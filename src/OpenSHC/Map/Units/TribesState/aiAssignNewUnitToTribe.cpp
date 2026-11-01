@@ -37,8 +37,7 @@ namespace Map {
                         != DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk) {
                     _monkTribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
                     DAT_GameState::instance.playerDataArray[playerID].monkTribeIDUnk = _monkTribe;
-                    DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk
-                        = this->tribes[_monkTribe].uid;
+                    DAT_GameState::instance.playerDataArray[playerID].monkTribeUIDUnk = this->tribes[_monkTribe].uid;
                 }
                 /*
                   The monk arm is a block of its own in the disassembly, from 0x5238ac to
@@ -55,8 +54,7 @@ namespace Map {
                     != DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index]) {
                 _tribe = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
                 *psVar1 = (short)_tribe;
-                DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index]
-                    = this->tribes[_tribe].uid;
+                DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeUIDs[_index] = this->tribes[_tribe].uid;
             }
             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::addUnitToTribe, this)(unitID, _tribe);
         }

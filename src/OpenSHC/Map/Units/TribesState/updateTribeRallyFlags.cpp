@@ -29,9 +29,8 @@ namespace Map {
             short* const _size = &this->tribes[param_1].size;
             if (0 < *_size) {
                 do {
-                    int const _unitID
-                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                            param_1, unitSelectionIndex);
+                    int const _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        param_1, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
                     if (DAT_UnitsState::instance.units[_unitID].logicalState == Map::Units::ULS_NORMAL
                         && DAT_UnitsState::instance.units[_unitID].dying == 0) {
