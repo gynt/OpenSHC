@@ -16,11 +16,11 @@ namespace Map {
         using Map::Units::Instructions::UnitMatchSpeedEnum;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0052A640
-        void TribesState::moveTribeToNearbyClearTile(int param_1)
+        void TribesState::moveTribeToNearbyClearTile(int tribeID)
         {
-            int sVar1 = this->tribes[param_1].selectionTargetUnitID;
-            uint uVar5 = (uint)DAT_UnitsState::instance.units[sVar1].x;
-            uint uVar2 = (uint)DAT_UnitsState::instance.units[sVar1].y;
+            int const _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
+            uint const x0 = (uint)DAT_UnitsState::instance.units[_targetUnitID].x;
+            uint const y0 = (uint)DAT_UnitsState::instance.units[_targetUnitID].y;
             /*
               The import walked a cursor over the candidate offsets and left the loop's exit
               test as `if (0xb4df43 < (int)piVar4) {}`, so it fell out of the `while (true)`
@@ -37,15 +37,15 @@ namespace Map {
              */
             int* _pCandidate = &DAT_UnitSelectionDefinedData::instance.field1608_0xcc4[0].y;
             do {
-                uint const x1 = _pCandidate[-1] + uVar5;
-                uint const y1 = *_pCandidate + uVar2;
+                uint const x1 = _pCandidate[-1] + x0;
+                uint const y1 = *_pCandidate + y0;
                 if (x1 <= 399 && y1 <= 399
                     && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[y1 * 400 + x1] != 0
                     && MACRO_CALL_MEMBER(Map::Units::TribesState_Func::isTribePathToDestinationClear, this)(
-                           param_1, uVar5, uVar2, x1, y1)
+                           tribeID, x0, y0, x1, y1)
                         != 0) {
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeMoveInstruction, this)(
-                        param_1, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
+                        tribeID, x1, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                     return;
                 }
                 _pCandidate = _pCandidate + 2;

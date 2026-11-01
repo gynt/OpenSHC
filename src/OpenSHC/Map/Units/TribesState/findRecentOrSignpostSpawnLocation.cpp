@@ -10,39 +10,43 @@ namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523410
-        undefined4 TribesState::findRecentOrSignpostSpawnLocation(uint* param_1, uint* param_2)
+        undefined4 TribesState::findRecentOrSignpostSpawnLocation(uint* _outX, uint* _outY)
         {
-            int iVar4 = 0;
+            int _slotOffset = 0;
             do {
-                uint uVar2 = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + iVar4) % 4;
-                short sVar1 = DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].x;
-                if (sVar1) {
-                    *param_1 = (int)sVar1;
-                    uVar2 = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + iVar4) % 4;
-                    uint uVar3 = (uint)DAT_GameState::instance.mapAndTime.lionLocationsXY[uVar2].y;
-                    *param_2 = uVar3;
-                    uVar2 = *param_1;
-                    if (uVar2 <= 399 && uVar3 <= 399
-                        && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[uVar3 * 400 + uVar2] != 0
+                uint _slot = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + _slotOffset) % 4;
+                short const _spawnX = DAT_GameState::instance.mapAndTime.lionLocationsXY[_slot].x;
+                if (_spawnX) {
+                    *_outX = _spawnX;
+                    _slot = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + _slotOffset) % 4;
+                    uint const _spawnY = (uint)DAT_GameState::instance.mapAndTime.lionLocationsXY[_slot].y;
+                    *_outY = _spawnY;
+                    uint const _candidateX = *_outX;
+                    if (_candidateX <= 399 && _spawnY <= 399
+                        && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[_spawnY * 400 + _candidateX] != 0
                         && !(DAT_TileMapState::instance
-                                 .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[uVar3].addXgetTile
-                                     + uVar2]
-                            & 0x4a5014b1U)) {
-                        uVar2 = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + 1 + iVar4) % 4;
-                        DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor = (short)uVar2;
-                        return (undefined4)(1);
+                                 .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[_spawnY].addXgetTile
+                                     + _candidateX]
+                            & (LogicHelpers::L_SEA | LogicHelpers::L_BORDER | LogicHelpers::L_BORDER_EDGE
+                                | LogicHelpers::L_ROCKY | LogicHelpers::L_BUILDING | LogicHelpers::L_TREE
+                                | LogicHelpers::L_RIVER | LogicHelpers::L_CRENEL_VARIATIONUnk
+                                | LogicHelpers::L_FARM_FIELD_HOP | LogicHelpers::L_FARM_FIELD_DAIRY
+                                | LogicHelpers::L_MOAT))) {
+                        _slot = (DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor + 1 + _slotOffset) % 4;
+                        DAT_GameState::instance.mapAndTime.animalSpawnSlotCursor = (short)_slot;
+                        return 1;
                     }
                 }
-                iVar4 = iVar4 + 1;
-                if (4 <= iVar4) {
-                    for (iVar4 = 0; iVar4 < 8; iVar4++) {
-                        if (DAT_GameState::instance.mapAndTime.signpostIDs[iVar4] != 0) {
-                            *param_1 = DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar4][0].x;
-                            *param_2 = DAT_GameState::instance.mapAndTime.signpostsMapEdge[iVar4][0].y;
-                            return (undefined4)(1);
+                ++_slotOffset;
+                if (4 <= _slotOffset) {
+                    for (int _signpostSlot = 0; _signpostSlot < 8; ++_signpostSlot) {
+                        if (DAT_GameState::instance.mapAndTime.signpostIDs[_signpostSlot] != 0) {
+                            *_outX = DAT_GameState::instance.mapAndTime.signpostsMapEdge[_signpostSlot][0].x;
+                            *_outY = DAT_GameState::instance.mapAndTime.signpostsMapEdge[_signpostSlot][0].y;
+                            return 1;
                         }
                     }
-                    return (undefined4)(0);
+                    return 0;
                 }
             } while (true);
         }
