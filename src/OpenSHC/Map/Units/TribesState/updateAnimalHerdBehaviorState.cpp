@@ -14,17 +14,22 @@ namespace Map {
         // FUNCTION: STRONGHOLDCRUSADER 0x00523590
         void TribesState::updateAnimalHerdBehaviorState(int tribeID)
         {
-            int iVar1;
+            int unitID;
             int unitSelectionIndex;
+            /*
+              The comma assignment is load-bearing: initialising unitSelectionIndex above
+              the `if` instead measured 0.92 where this form measures 1.00, because the
+              original only zeroes the index once the two guards have passed.
+             */
             if (0 < tribeID && this->tribes[tribeID].predatorNearby == 0
                 && (unitSelectionIndex = 0, 0 < this->tribes[tribeID].size)) {
                 do {
-                    iVar1 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                    unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if (DAT_UnitsState::instance.units[iVar1].logicalState == Map::Units::ULS_NORMAL
-                        && DAT_UnitsState::instance.units[iVar1].dying == 0
-                        && DAT_UnitsState::instance.units[iVar1].antelopeBasedRngValue == 2) {
+                    if (DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL
+                        && DAT_UnitsState::instance.units[unitID].dying == 0
+                        && DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue == 2) {
                         /*
                           Signed, and tested against 1 rather than 2. The original has
                           `cmp ecx, 1; jg` and derives the second value with `setg`, where
@@ -36,11 +41,11 @@ namespace Map {
                           `jg` skips the nine bytes of the zero store, so that store is
                           its fall-through.
                          */
-                        int uVar2 = DAT_UnitsState::instance.units[iVar1].fixedRng & 7;
-                        if (uVar2 <= 1) {
-                            DAT_UnitsState::instance.units[iVar1].antelopeBasedRngValue = 0;
+                        int rngBucket = DAT_UnitsState::instance.units[unitID].fixedRng & 7;
+                        if (rngBucket <= 1) {
+                            DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = 0;
                         } else {
-                            DAT_UnitsState::instance.units[iVar1].antelopeBasedRngValue = (5 < uVar2) + 1;
+                            DAT_UnitsState::instance.units[unitID].antelopeBasedRngValue = (5 < rngBucket) + 1;
                         }
                     }
                 } while (unitSelectionIndex < this->tribes[tribeID].size);
