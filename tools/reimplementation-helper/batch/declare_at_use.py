@@ -12,8 +12,10 @@ left alone and reported, so the output doubles as a list of what still needs a h
 Declaration position does not change code generation, so this is a readability pass; run
 it before measuring, not instead of.
 
+Dry run by default like the other rewriting passes: read the report, then pass --apply.
+
 usage:
-  declare_at_use.py [path-filter]
+  declare_at_use.py [path-filter] [--apply]
 """
 
 import re
@@ -21,7 +23,9 @@ import sys
 
 import common
 
-path_filter = sys.argv[1] if len(sys.argv) > 1 else ""
+args = [a for a in sys.argv[1:] if not a.startswith("-")]
+path_filter = args[0] if args else ""
+apply = "--apply" in sys.argv
 
 DECL = re.compile(r"^(?P<type>(?:unsigned\s+|const\s+)*[A-Za-z_][\w:]*)\s+"
                   r"(?P<ptr>\**)\s*(?P<name>[A-Za-z_]\w*)\s*"
@@ -94,7 +98,7 @@ def is_statement(lines, n):
     return True                                   # first line of the body
 
 
-def move(path):
+def move(path, apply=True):
     text = common.read_text(path).replace("\r\n", "\n")
     brace = re.compile(r"\n[ \t]*\{[ \t]*\n").search(text, text.index("// FUNCTION:"))
     if not brace:
@@ -141,7 +145,8 @@ def move(path):
     if not drop:
         return None
     kept = [d[0] for d in decls if d[4] not in drop]
-    common.write_text(path, head + "\n".join(l for n, l in enumerate(lines) if n not in drop))
+    if apply:
+        common.write_text(path, head + "\n".join(l for n, l in enumerate(lines) if n not in drop))
     return len(decls), len(drop), kept, unsafe
 
 
@@ -149,13 +154,15 @@ touched = 0
 for f in common.list_files():
     if path_filter not in f:
         continue
-    result = move(f)
+    result = move(f, apply)
     if not result:
         continue
     count, moved, kept, unsafe = result
-    common.format_file(f)
+    if apply:
+        common.format_file(f)
     touched += 1
     print("%-52s %2d declarations, %2d moved, left: %s%s"
           % (f.rsplit("/", 1)[-1][:-4], count, moved, " ".join(kept) or "-",
              ", in a condition: " + " ".join(unsafe) if unsafe else ""))
-print("%d file(s) changed" % touched)
+print("%d file(s) changed%s"
+      % (touched, "" if apply else " (dry run, pass --apply)"))
