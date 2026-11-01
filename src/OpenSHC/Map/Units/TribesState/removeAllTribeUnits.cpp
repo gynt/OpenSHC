@@ -18,10 +18,10 @@ namespace Map {
           the unit id sharing no register.
          */
         // FUNCTION: STRONGHOLDCRUSADER 0x00525470
-        void TribesState::removeAllTribeUnits(int param_1)
+        void TribesState::removeAllTribeUnits(int tribeID)
         {
             int _index = 0;
-            short* const _size = &this->tribes[param_1].size;
+            short* const _size = &this->tribes[tribeID].size;
             if (0 < *_size) {
                 do {
                     /*
@@ -31,7 +31,7 @@ namespace Map {
                       carrying the old value across the call.
                      */
                     int const _unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                        param_1, _index++);
+                        tribeID, _index++);
                     DAT_UnitsState::instance.units[_unitID].logicalState = Map::Units::ULS_REMOVE;
                 } while (_index < (int)*_size);
             }

@@ -19,7 +19,7 @@ namespace Map {
               rabbitSpawnXY, 0x1d52 to camelSpawnXY), ending on the absolute address
               0x117d1de. All four hold four XY pairs.
              */
-            for (int _slot = 0; _slot < 4; _slot = _slot + 1) {
+            for (int _slot = 0; _slot < 4; ++_slot) {
                 DAT_GameState::instance.mapAndTime.deerSpawnLocationsXY[_slot].x = 0;
                 DAT_GameState::instance.mapAndTime.deerSpawnLocationsXY[_slot].y = 0;
                 DAT_GameState::instance.mapAndTime.lionLocationsXY[_slot].x = 0;

@@ -14,7 +14,7 @@ namespace Map {
               0x117ef1c is one past rabbitSpawnXY[3], so the cursor and its magic end
               address are a plain four-entry loop.
              */
-            for (int _slot = 0; _slot < 4; _slot = _slot + 1) {
+            for (int _slot = 0; _slot < 4; ++_slot) {
                 if (DAT_GameState::instance.mapAndTime.rabbitSpawnXY[_slot][0] == 0) {
                     DAT_GameState::instance.mapAndTime.rabbitSpawnXY[_slot][0] = (short)x;
                     DAT_GameState::instance.mapAndTime.rabbitSpawnXY[_slot][1] = (short)y;

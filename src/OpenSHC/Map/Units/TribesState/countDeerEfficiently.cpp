@@ -19,28 +19,20 @@ namespace Map {
         {
             DAT_GameState::instance.mapAndTime.aliveDeerCount = 0;
             /*
-              The original walks the unit array three at a time with the test written out once
-              per unit, so the three blocks below are kept separate rather than folded.
+              The original walks the unit array three units at a time, but MSVC unrolls this
+              plain loop to the same code: the hand-written three-block form, an outer loop
+              stepping by 3 with an inner 0..2, and this all measure identically, so the
+              short form is kept (style guide rule 8).
              */
-            for (int i = 1; i < 2500; i += 3) {
-                Unit* unit = &DAT_UnitsState::instance.units[i];
-                if (unit[0].logicalState == Map::Units::ULS_NORMAL && unit[0].dying == 0
-                    && unit[0].unitType == Map::Units::UT_ANTELOPESHDEER) {
-                    DAT_GameState::instance.mapAndTime.aliveDeerCount
-                        = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
-                }
-                if (unit[1].logicalState == Map::Units::ULS_NORMAL && unit[1].dying == 0
-                    && unit[1].unitType == Map::Units::UT_ANTELOPESHDEER) {
-                    DAT_GameState::instance.mapAndTime.aliveDeerCount
-                        = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
-                }
-                if (unit[2].logicalState == Map::Units::ULS_NORMAL && unit[2].dying == 0
-                    && unit[2].unitType == Map::Units::UT_ANTELOPESHDEER) {
-                    DAT_GameState::instance.mapAndTime.aliveDeerCount
-                        = DAT_GameState::instance.mapAndTime.aliveDeerCount + 1;
+            for (int i = 1; i < 2500; ++i) {
+                if (DAT_UnitsState::instance.units[i].logicalState == Map::Units::ULS_NORMAL
+                    && DAT_UnitsState::instance.units[i].dying == 0
+                    && DAT_UnitsState::instance.units[i].unitType == Map::Units::UT_ANTELOPESHDEER) {
+                    ++DAT_GameState::instance.mapAndTime.aliveDeerCount;
                 }
             }
         }
+
     }
 }
 }

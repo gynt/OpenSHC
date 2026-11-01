@@ -9,10 +9,10 @@ namespace Map {
     namespace Units {
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00522550
-        BOOLEnum TribesState::unitIsSelectedByPlayer(uint tribeID)
+        BOOLEnum TribesState::unitIsSelectedByPlayer(uint unitID)
         {
-            return ((int)DAT_UnitsState::instance.selectedUnitsBitFlags[(int)tribeID / 16]
-                       & (int)DAT_UnitSelectionDefinedData::instance.BitMaskHelper[(int)tribeID % 16])
+            return ((int)DAT_UnitsState::instance.selectedUnitsBitFlags[(int)unitID / 16]
+                       & (int)DAT_UnitSelectionDefinedData::instance.BitMaskHelper[(int)unitID % 16])
                 != 0;
         }
 

@@ -18,18 +18,18 @@ namespace Map {
         BOOLEnum TribesState::allUnitsReachedTheirDestination(int tribeID)
         {
             int unitID;
-            BOOLEnum BVar1;
+            BOOLEnum _reachedDestination;
             int unitSelectionIndex = 0;
             if (0 < this->tribes[tribeID].size) {
                 do {
                     unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
                         tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if ((DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL)
-                        && (DAT_UnitsState::instance.units[unitID].dying == 0)) {
-                        BVar1 = MACRO_CALL_MEMBER(
+                    if (DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL
+                        && DAT_UnitsState::instance.units[unitID].dying == 0) {
+                        _reachedDestination = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::hasUnitReachedDestination, DAT_UnitsState::ptr)(unitID);
-                        if (!BVar1) {
+                        if (!_reachedDestination) {
                             return FALSE;
                         }
                     }

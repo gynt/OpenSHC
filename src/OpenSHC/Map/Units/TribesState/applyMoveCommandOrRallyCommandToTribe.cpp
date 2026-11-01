@@ -68,7 +68,7 @@ namespace Map {
                     }
                 } while (_unitSelectionIndex < this->tribes[tribeID].size);
             }
-            return (undefined4)(1);
+            return 1;
         }
 
     }
