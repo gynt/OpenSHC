@@ -80,12 +80,12 @@ namespace UI {
                     if (param_1 == 0)
                         goto LAB_004bb841;
                 }
-                DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
+                DAT_ButtonX::instance = DAT_ButtonX::instance - 4;
             LAB_004bb841:
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d,
-                    (int)(DAT_ButtonX::instance + 6), DAT_ButtonY::instance + -5 + iVar1, 0xc);
+                    (int)(DAT_ButtonX::instance + 6), DAT_ButtonY::instance - 5 + iVar1, 0xc);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             }
@@ -104,8 +104,7 @@ namespace UI {
                 textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 3);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    textAddress, iVar1, DAT_ButtonY::instance + 6, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE,
-                    0);
+                    textAddress, iVar1, DAT_ButtonY::instance + 6, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE, 0);
             }
         }
 

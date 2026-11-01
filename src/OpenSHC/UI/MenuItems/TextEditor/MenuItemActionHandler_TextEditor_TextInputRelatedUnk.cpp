@@ -120,7 +120,7 @@ namespace UI {
                         <= DAT_TextEditorState::instance.customHelpTextLength) {
                         do {
                             pWVar7[iVar3 + 1] = pWVar7[iVar3];
-                            iVar3 = iVar3 + -1;
+                            iVar3 = iVar3 - 1;
                             pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
                         } while (iVar3 >= DAT_TextEditorState::instance.activeHelpHotspotIndex);
                     }
@@ -153,9 +153,9 @@ namespace UI {
                         iVar3 = DAT_TextEditorState::instance.activeHelpHotspotIndex;
                         if (iVar3 <= 0)
                             break;
-                        iVar6 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3 + -1];
+                        iVar6 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory[iVar3 - 1];
                         if ((HelpTextToken)0x20 <= iVar6) {
-                            DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 + -1;
+                            DAT_TextEditorState::instance.activeHelpHotspotIndex = iVar3 - 1;
                             break;
                         }
                         iVar5 = MACRO_CALL_MEMBER(
@@ -199,7 +199,7 @@ namespace UI {
                         if (iVar3 <= 0)
                             break;
                         pWVar7 = DAT_TextEditorState::instance.DAT_PointerToTemporaryTextMemory;
-                        iVar6 = pWVar7[iVar3 + -1];
+                        iVar6 = pWVar7[iVar3 - 1];
                         iVar5 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextEditorState_Func::helpToken_getHelpTokenAdvanceLength,
                             DAT_TextEditorState::ptr)((OpenSHC::Text::Enums::HelpTextToken)iVar6);

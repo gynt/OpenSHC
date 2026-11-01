@@ -24,8 +24,8 @@ namespace UI {
                 thumbHeight, 0);
             int x2 = x1 + 0x13;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, iVar2 + -1, x2, iVar2 + -1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
-            int y1 = iVar2 + -0x16;
+                x1, iVar2 - 1, x2, iVar2 - 1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+            int y1 = iVar2 - 0x16;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, y1, x2, y1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             iVar2 = iVar2 + iVar1;

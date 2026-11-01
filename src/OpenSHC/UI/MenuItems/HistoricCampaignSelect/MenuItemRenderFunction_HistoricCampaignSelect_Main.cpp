@@ -74,14 +74,13 @@ namespace UI {
                         OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, param_1 + 0x135),
-                        xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x10, FALSE,
-                        0);
+                        xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x10, FALSE, 0);
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_ICONS_FRONT_END, 1,
-                            (int)(DAT_ButtonX::instance + -0x55), (int)(DAT_ButtonY::instance + -0x1c),
+                            (int)(DAT_ButtonX::instance - 0x55), (int)(DAT_ButtonY::instance - 0x1c),
                             OpenSHC::IO::Graphics::GID_ICONS_FRONT_END, 2, 0);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;

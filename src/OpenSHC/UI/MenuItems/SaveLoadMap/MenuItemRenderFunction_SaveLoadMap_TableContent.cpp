@@ -41,9 +41,8 @@ namespace UI {
                 (uint)(param_1 == DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex), param_1, 0);
             if ((int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1
                 < (int)DAT_MenuTextInputState::instance.fileListEntryCount) {
-                mapIndex
-                    = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
-                          [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1];
+                mapIndex = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
+                               [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 - 1];
                 dword dVar1 = DAT_ResourceManager::instance.mapFileTimes[mapIndex];
                 if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY
                     || DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
@@ -63,7 +62,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     text, xPos, yPos, 0xc3, color, 0x12, 0);
                 MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
-                    (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) + -0x14, (int)dVar1 >> 0xb & 0x1f,
+                    (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14, (int)dVar1 >> 0xb & 0x1f,
                     (int)dVar1 >> 5 & 0x3f);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     local_24, (int)(DAT_ButtonX::instance + 0xd0), (int)(DAT_ButtonY::instance + 3),

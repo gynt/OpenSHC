@@ -26,7 +26,7 @@ namespace UI {
                 return;
             case 5:
                 if (0 < (int)DAT_MapPropertiesState::instance.offset) {
-                    DAT_MapPropertiesState::instance.offset = DAT_MapPropertiesState::instance.offset + -1;
+                    DAT_MapPropertiesState::instance.offset = DAT_MapPropertiesState::instance.offset - 1;
                     *currentValue = DAT_MapPropertiesState::instance.offset;
                     return;
                 }

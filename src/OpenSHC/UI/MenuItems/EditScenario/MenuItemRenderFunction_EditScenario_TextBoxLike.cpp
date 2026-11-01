@@ -63,7 +63,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 4 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 5 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                 }
                 iVar1 = DAT_ButtonY::instance + 6;
@@ -76,7 +76,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 8 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 9 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                 }
                 iVar1 = DAT_ButtonY::instance + 6;
@@ -89,7 +89,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 8 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 9 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                 }
                 iVar1 = DAT_ButtonY::instance + 6;
@@ -101,7 +101,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 9 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 10 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                     if (DAT_MapPropertiesState::instance.indexStored < 0x14) {
                         pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
@@ -140,7 +140,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 4 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 5 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                 }
                 iVar1 = DAT_ButtonY::instance + 6;
@@ -152,7 +152,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 9 + iVar1,
                         (int)((int)(DAT_ButtonY::instance + 2)), DAT_ButtonX::instance + 10 + iVar1,
-                        (int)((int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance)),
+                        (int)((int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance)),
                         (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
                     pcVar2 = MACRO_CALL_MEMBER(
                         OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0xc);
@@ -175,12 +175,12 @@ namespace UI {
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0x10,
-                    (int)((int)(DAT_ButtonW::instance / 2 + -0x14 + DAT_ButtonX::instance)),
+                    (int)((int)(DAT_ButtonW::instance / 2 - 0x14 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x12, FALSE);
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::MapPropertiesState_Func::sumUnitPoints, DAT_MapPropertiesState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    iVar1, (int)((int)(DAT_ButtonW::instance / 2 + -10 + DAT_ButtonX::instance)),
+                    iVar1, (int)((int)(DAT_ButtonW::instance / 2 - 10 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, TRUE, 0);
                 return;
             case 0x65:
@@ -192,7 +192,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::sumUnitCounts, DAT_MapPropertiesState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    number, (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
+                    number, (int)((int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                 return;
             case 0x66:
@@ -205,7 +205,7 @@ namespace UI {
                 iVar1 = MACRO_CALL_MEMBER(
                     OpenSHC::Map::MapPropertiesState_Func::sumInvasionEventUnitCount, DAT_MapPropertiesState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
-                    iVar1, (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
+                    iVar1, (int)((int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 6)), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                 return;
             }
@@ -213,7 +213,6 @@ namespace UI {
                 OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(iVar4);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar2, xParam, iVar1, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, FALSE, 0);
-            return;
         }
 
     }

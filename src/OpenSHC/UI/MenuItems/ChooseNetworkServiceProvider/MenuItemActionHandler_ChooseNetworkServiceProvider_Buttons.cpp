@@ -63,7 +63,7 @@ namespace UI {
                 return;
             case ((ChooseNetworkServiceProviderButtonActions)0xfffffffe):
                 if (DAT_GameSynchronyState::instance.scrollBarItemOffset
-                    < DAT_GameSynchronyState::instance.scrollBarItemCount + -4) {
+                    < DAT_GameSynchronyState::instance.scrollBarItemCount - 4) {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
                         = DAT_GameSynchronyState::instance.scrollBarItemOffset + 1;
                 }
@@ -71,7 +71,7 @@ namespace UI {
             case ((ChooseNetworkServiceProviderButtonActions)0xffffffff):
                 if (0 < DAT_GameSynchronyState::instance.scrollBarItemOffset) {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
-                        = DAT_GameSynchronyState::instance.scrollBarItemOffset + -1;
+                        = DAT_GameSynchronyState::instance.scrollBarItemOffset - 1;
                 }
                 return;
             case OpenSHC::UI::ChooseNetworkServiceProvider::CNSPBA_JOIN_GAME:

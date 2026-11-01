@@ -105,7 +105,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 yParam = DAT_ButtonY::instance + 6;
-                iVar1 = (int)DAT_ButtonW::instance / 2 + -0xf + DAT_ButtonX::instance;
+                iVar1 = (int)DAT_ButtonW::instance / 2 - 0xf + DAT_ButtonX::instance;
                 /*
                   "Bandits"
                  */
@@ -123,12 +123,12 @@ namespace UI {
                 iVar1 = DAT_TextManagerObject::instance.currentXOffset_0x0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " - ",
-                    (int)(DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 + -0xf + (int)DAT_ButtonW::instance / 2
+                    (int)(DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 - 0xf + (int)DAT_ButtonW::instance / 2
                         + DAT_ButtonX::instance),
                     (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar2 + 0x80,
-                    (int)((int)DAT_ButtonW::instance / 2 + -9
+                    (int)((int)DAT_ButtonW::instance / 2 - 9
                         + (DAT_TextManagerObject::instance.currentXOffset_0x0 + iVar1) / 2 + DAT_ButtonX::instance),
                     (int)(DAT_ButtonY::instance + 3));
                 return;

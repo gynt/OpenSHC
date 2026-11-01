@@ -80,7 +80,7 @@ namespace UI {
             case 0xb9:
             case 0xba:
             case 0xbb:
-                iVar1 = param_1 + -0x15;
+                iVar1 = param_1 - 0x15;
             case 0x80:
             case 0x81:
             case 0x82:
@@ -118,7 +118,7 @@ namespace UI {
                         iVar2 = 2;
                     }
                 }
-                if (iVar1 + -0x80
+                if (iVar1 - 0x80
                     == DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.ScenarioEventType) {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
@@ -142,7 +142,7 @@ namespace UI {
                     }
                     if ((DAT_MapPropertiesState::instance.sliderPopupDelay != 0)
                         && (DAT_MapPropertiesState::instance.sliderPopupDelay
-                            = DAT_MapPropertiesState::instance.sliderPopupDelay + -1,
+                            = DAT_MapPropertiesState::instance.sliderPopupDelay - 1,
                             DAT_MapPropertiesState::instance.sliderPopupDelay == 0)) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::setExtraActiveModalDialog,
                             DAT_MenuModalComposition2::ptr)(OpenSHC::UI::Enums::MMT_OVERLAY_SLIDER,
@@ -161,22 +161,21 @@ namespace UI {
                             DAT_MapPropertiesState::instance
                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                 .data.scenario.actionData,
-                            (int)(DAT_ButtonW::instance + -0xe + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonW::instance - 0xe + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                         return;
                     default:
                         return;
                     case 0xb2:
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("%",
-                            (int)(DAT_ButtonW::instance + -0xe + DAT_ButtonX::instance),
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                            DAT_TextManagerObject::ptr)("%", (int)(DAT_ButtonW::instance - 0xe + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                             DAT_MapPropertiesState::instance
                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                 .data.scenario.actionData,
-                            (int)(DAT_ButtonW::instance + -0x1c + DAT_ButtonX::instance),
+                            (int)(DAT_ButtonW::instance - 0x1c + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                     }
                 }

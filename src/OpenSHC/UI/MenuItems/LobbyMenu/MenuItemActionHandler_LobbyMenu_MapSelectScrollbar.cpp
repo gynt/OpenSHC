@@ -24,12 +24,11 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8;
+                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 8;
                 *currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
                 return;
             case 2:
-            case 3:
-            {
+            case 3: {
                 int iVar1 = *currentValue;
                 if ((iVar1 != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar1,
@@ -39,10 +38,9 @@ namespace UI {
                 }
                 break;
             }
-            case 4:
-            {
+            case 4: {
                 *minValue = 0;
-                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8;
+                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 8;
                 if ((*currentValue != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
                     && (*currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset,
                         DAT_GameSynchronyState::instance.isHost != FALSE)) {
@@ -51,11 +49,10 @@ namespace UI {
                 }
                 break;
             }
-            case 5:
-            {
+            case 5: {
                 if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
+                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1;
                 LAB_0042b8a4:
                     if (DAT_GameSynchronyState::instance.isHost != FALSE) {
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
@@ -64,10 +61,9 @@ namespace UI {
                 }
                 goto LAB_0042b8b9;
             }
-            case 6:
-            {
+            case 6: {
                 if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
+                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 8) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                     goto LAB_0042b8a4;

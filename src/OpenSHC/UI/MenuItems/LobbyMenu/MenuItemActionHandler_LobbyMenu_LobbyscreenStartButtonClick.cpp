@@ -73,7 +73,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                     = DAT_MenuTextInputState::instance
                           .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                              + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1];
+                              + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1];
                 MACRO_CALL_MEMBER(
                     OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
                     (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_SHARE_GAME_STATE_PARTIAL_HASHES
@@ -284,7 +284,7 @@ namespace UI {
             case -2:
                 if (0 < (int)DAT_GameSynchronyState::instance.chatScrollOffset) {
                     DAT_GameSynchronyState::instance.chatScrollOffset
-                        = DAT_GameSynchronyState::instance.chatScrollOffset + -1;
+                        = DAT_GameSynchronyState::instance.chatScrollOffset - 1;
                 }
                 break;
             case 1:
@@ -388,7 +388,7 @@ namespace UI {
                                 .unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
                                         .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance
                                                                    .DAT_MapSelectionRelativeSelected
-                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]]) {
+                                            + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1]]) {
                         MACRO_CALL_MEMBER(OpenSHC::Random::RNG_Func::setTimeBasedSeed, SEC_RNG::ptr)();
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(9);
@@ -419,13 +419,13 @@ namespace UI {
             case -10:
                 if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
+                        = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1;
                     goto LAB_0044291e;
                 }
                 break;
             case -0xb:
                 if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -8) {
+                    < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 8) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                 LAB_0044291e:
@@ -436,15 +436,15 @@ namespace UI {
                 }
                 break;
             case -100:
-                DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
+                DAT_00b960f4::instance = DAT_00b960f4::instance - 0xe;
                 if ((int)DAT_00b960f4::instance < -0x13) {
                     DAT_00b960f4::instance = 0xffffffed;
                 }
                 break;
             case -0x65:
-                iVar3 = DAT_00b95b74::instance + -0x72;
+                iVar3 = DAT_00b95b74::instance - 0x72;
                 if ((int)DAT_00b960f4::instance < iVar3
-                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe,(int)DAT_00b960f4::instance > iVar3)) {
+                    && (DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe, (int)DAT_00b960f4::instance > iVar3)) {
                     DAT_00b960f4::instance = iVar3;
                 }
                 break;

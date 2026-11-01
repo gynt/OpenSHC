@@ -20,7 +20,7 @@ namespace UI {
                     DAT_GameCore::instance.lordIconUnk = 3;
                 }
             } else if (param_1 == 0x28) {
-                DAT_GameCore::instance.lordIconUnk = DAT_GameCore::instance.lordIconUnk + -1;
+                DAT_GameCore::instance.lordIconUnk = DAT_GameCore::instance.lordIconUnk - 1;
                 if (DAT_GameCore::instance.lordIconUnk < 2) {
                     DAT_GameCore::instance.lordIconUnk = 21;
                 }

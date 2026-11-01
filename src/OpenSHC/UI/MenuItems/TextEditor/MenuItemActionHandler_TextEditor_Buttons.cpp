@@ -443,8 +443,8 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextEditorState_Func::setHelpWindowBounds,
                         DAT_TextEditorState::ptr)(DAT_TextEditorState::instance.dialogX + 10,
                         (undefined4)((int)(DAT_TextEditorState::instance.dialogY + 10)),
-                        (undefined4)((int)(DAT_TextEditorState::instance.dialogWidth + -0x28)),
-                        (undefined4)((int)(DAT_TextEditorState::instance.dialogHeight + -0x2d)));
+                        (undefined4)((int)(DAT_TextEditorState::instance.dialogWidth - 0x28)),
+                        (undefined4)((int)(DAT_TextEditorState::instance.dialogHeight - 0x2d)));
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextEditorState_Func::initializeAndLayoutHelpText, DAT_TextEditorState::ptr)();
                 }

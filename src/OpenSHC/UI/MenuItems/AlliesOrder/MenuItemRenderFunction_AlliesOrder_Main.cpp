@@ -69,7 +69,7 @@ namespace UI {
             if (param_1 <= 6) {
                 if (param_1 == -1)
                     goto LAB_004ad69c;
-                iVar1 = param_1 + -1;
+                iVar1 = param_1 - 1;
                 if (iVar1 >= (int)DAT_EnemyArrayIndex::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance),
@@ -112,11 +112,11 @@ namespace UI {
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
-                        (int)(DAT_ButtonX::instance + -6), (int)(DAT_ButtonY::instance + -6),
+                        (int)(DAT_ButtonX::instance - 6), (int)(DAT_ButtonY::instance - 6),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x23e,
-                        (int)(DAT_ButtonX::instance + -10), (int)(DAT_ButtonY::instance + -8),
+                        (int)(DAT_ButtonX::instance - 10), (int)(DAT_ButtonY::instance - 8),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x23f, 0);
                     DAT_00df5200::instance = OpenSHC::DE::SHCDE::TEXT_ALLIES;
                     DAT_00df51fc::instance = 10;

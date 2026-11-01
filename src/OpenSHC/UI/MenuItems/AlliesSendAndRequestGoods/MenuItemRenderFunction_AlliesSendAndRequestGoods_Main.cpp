@@ -108,41 +108,41 @@ namespace UI {
                 if (0 < (int)DAT_ButtonH::instance) {
                     for (int iVar2 = 0; iVar2 < (int)DAT_ButtonH::instance; iVar2 = iVar2 + 24) {
                         if (iVar2 == 0) {
-                        iVar3 = 1;
+                            iVar3 = 1;
                         } else {
-                        if (iVar2 == DAT_ButtonH::instance + -0x18) {
-                            iVar3 = 0xd;
-                        } else {
-                            iVar3 = 0x7;
-                        }
+                            if (iVar2 == DAT_ButtonH::instance - 0x18) {
+                                iVar3 = 0xd;
+                            } else {
+                                iVar3 = 0x7;
+                            }
                         }
                         iVar4 = 0;
                         do {
-                        int imageID = iVar3;
-                        if (iVar4 == 0) {
-                        LAB_004adacf:
-                            MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                                DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
-                                imageID, iVar4 + iVar1, iVar2 + iVar5, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
-                                imageID + 3, 0);
-                        } else {
-                            if (iVar4 == 0x210) {
-                                imageID = iVar3 + 2;
-                                goto LAB_004adacf;
+                            int imageID = iVar3;
+                            if (iVar4 == 0) {
+                            LAB_004adacf:
+                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
+                                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
+                                    imageID, iVar4 + iVar1, iVar2 + iVar5, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3,
+                                    imageID + 3, 0);
+                            } else {
+                                if (iVar4 == 0x210) {
+                                    imageID = iVar3 + 2;
+                                    goto LAB_004adacf;
+                                }
+                                if (iVar3 != 7) {
+                                    imageID = iVar3 + 1;
+                                    goto LAB_004adacf;
+                                }
+                                return;
                             }
-                            if (iVar3 != 7) {
-                                imageID = iVar3 + 1;
-                                goto LAB_004adacf;
-                            }
-                            return;
-                        }
-                        iVar4 = iVar4 + 0x18;
+                            iVar4 = iVar4 + 0x18;
                         } while (iVar4 < 0x228);
                     }
                 }
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
-                    iVar1 + 0x18, iVar5 + 0x18, iVar1 + 0x20f, DAT_ButtonH::instance + -0x19 + iVar5, 0x14);
+                    iVar1 + 0x18, iVar5 + 0x18, iVar1 + 0x20f, DAT_ButtonH::instance - 0x19 + iVar5, 0x14);
                 if (DAT_RequestedGoodsByWhoArray::instance[0] == 6) {
                     iVar1 = 7;
                 LAB_004adb48:

@@ -46,13 +46,13 @@ namespace UI {
                         do {
                             if (-1 < piVar5[-1]) {
                                 if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
-                                    iVar4 = iVar3 + -2;
+                                    iVar4 = iVar3 - 2;
                                 }
                                 dVar5 = dVar5 + 1;
                             }
                             if (-1 < *piVar5) {
                                 if (dVar5 == DAT_GameCore::instance.viewedKeepIndex) {
-                                    iVar4 = iVar3 + -1;
+                                    iVar4 = iVar3 - 1;
                                 }
                                 dVar5 = dVar5 + 1;
                             }
@@ -92,8 +92,7 @@ namespace UI {
                         } else {
                             DWORD_00b98410::instance = DVar2;
                             MACRO_CALL_MEMBER(OpenSHC::Rendering::ViewportRenderState_Func::focusOnTile,
-                                DAT_ViewportRenderState::ptr)(
-                                DAT_GameState::instance.mapAndTime.playerKeepTile[iVar4]);
+                                DAT_ViewportRenderState::ptr)(DAT_GameState::instance.mapAndTime.playerKeepTile[iVar4]);
                         }
                         DAT_GameCore::instance.viewedKeepIndex = DAT_GameCore::instance.viewedKeepIndex + 1;
                         if ((int)DAT_GameCore::instance.viewedKeepIndex >= (int)dVar5) {
@@ -105,7 +104,7 @@ namespace UI {
                     if (0 < (int)DAT_00b9840c::instance) {
                         DAT_00b9840c::instance = 0;
                     }
-                    DAT_00b9840c::instance = DAT_00b9840c::instance + -1;
+                    DAT_00b9840c::instance = DAT_00b9840c::instance - 1;
                     if (DAT_00b9840c::instance == -2) {
                         iVar4 = DAT_GameState::instance
                                     .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

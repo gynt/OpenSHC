@@ -144,7 +144,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_ICONS_FRONT_END, 1,
-                    (int)(DAT_ButtonX::instance + -0x55), (int)(DAT_ButtonY::instance + -0x1c),
+                    (int)(DAT_ButtonX::instance - 0x55), (int)(DAT_ButtonY::instance - 0x1c),
                     OpenSHC::IO::Graphics::GID_ICONS_FRONT_END, 2, 0);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }

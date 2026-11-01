@@ -43,7 +43,7 @@ namespace UI {
             iVar6 = 0;
             iVar5 = 0x12;
             iVar4 = 400;
-            iVar2 = (DAT_ButtonH::instance - iVar2) + -3 + DAT_ButtonY::instance;
+            iVar2 = (DAT_ButtonH::instance - iVar2) - 3 + DAT_ButtonY::instance;
             iVar3 = DAT_ButtonX::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

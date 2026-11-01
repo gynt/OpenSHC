@@ -49,7 +49,7 @@ namespace UI {
                 = MACRO_CALL(OpenSHC::UI::Helpers_Func::IsEuroUnitRecruitableUnk)(barrackUnitIdUnk);
             if (_recruitableState != OpenSHC::Map::Units::ERS_CAN_RECRUITUnk) {
                 ResourceTypeInt _unitCost
-                    = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk + -1];
+                    = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk - 1];
                 if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.skirmishTroopsCostGold == 0)) {
                     _unitCost = ((ResourceType)0);

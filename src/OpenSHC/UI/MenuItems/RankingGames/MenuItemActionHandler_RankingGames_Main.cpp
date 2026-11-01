@@ -46,11 +46,11 @@ namespace UI {
             char* pcVar7;
             if (param_1 == -10) {
                 if (0 < (int)DAT_00ed3120::instance) {
-                    DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
+                    DAT_00ed3120::instance = DAT_00ed3120::instance - 1;
                     return;
                 }
             } else if (param_1 == -0xb) {
-                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
+                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance - 8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
                     return;
                 }
@@ -60,7 +60,7 @@ namespace UI {
                     int iVar3 = DAT_SkMasters2DataArray::instance[iVar1].aliveArray[1];
                     pSVar6 = &DAT_GameSynchronyState::instance.finalResults;
                     pSVar4 = &DAT_SkMasters2DataArray::instance[iVar1].results;
-                    for (iVar2 = 0x1de; iVar2 != 0; iVar2 = iVar2 + -1) {
+                    for (iVar2 = 0x1de; iVar2 != 0; iVar2 = iVar2 - 1) {
                         *(undefined4*)pSVar6->names[0] = *(undefined4*)pSVar4->names[0];
                         pSVar4 = (SkirmishStatistics*)(pSVar4->names[0] + 4);
                         pSVar6 = (SkirmishStatistics*)(pSVar6->names[0] + 4);
@@ -77,7 +77,7 @@ namespace UI {
                         iVar1 = DAT_SkMasters2DataArray::instance[iVar1].lordType;
                         pcVar5 = "lose_screen_crusader.tgx";
                         pcVar7 = CHAR_ARRAY_00eb9ac8::instance;
-                        for (iVar3 = 6; iVar3 != 0; iVar3 = iVar3 + -1) {
+                        for (iVar3 = 6; iVar3 != 0; iVar3 = iVar3 - 1) {
                             *(undefined4*)pcVar7 = *(undefined4*)pcVar5;
                             pcVar5 = pcVar5 + 4;
                             pcVar7 = pcVar7 + 4;
@@ -94,7 +94,7 @@ namespace UI {
                         OpenSHC::UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
                 }
                 if ((0x28 <= param_1)
-                    && (iVar1 = DAT_00ed3120::instance + -0x28 + param_1, iVar1 < (int)DAT_00eb9b60::instance)) {
+                    && (iVar1 = DAT_00ed3120::instance - 0x28 + param_1, iVar1 < (int)DAT_00eb9b60::instance)) {
                     DAT_00ed2788::instance = INT_ARRAY_00eb96d8::instance[iVar1];
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
                         DAT_MenuModalComposition1::ptr)(OpenSHC::UI::Enums::MMT_DELETE_GAME_RECORD, FALSE);
@@ -112,14 +112,14 @@ namespace UI {
                     return;
                 }
                 if (param_1 - 0x14U <= 9) {
-                    if (DAT_MissionDefinedData::instance.sortColumn != param_1 + -0x13) {
-                        DAT_MissionDefinedData::instance.sortColumn = param_1 + -0x13;
+                    if (DAT_MissionDefinedData::instance.sortColumn != param_1 - 0x13) {
+                        DAT_MissionDefinedData::instance.sortColumn = param_1 - 0x13;
                         DAT_MissionDefinedData::instance.descending = 1;
                     } else {
                         DAT_MissionDefinedData::instance.descending = 1 - DAT_MissionDefinedData::instance.descending;
                     }
                     MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
-                    iVar1 = DAT_00eb9b60::instance + -8;
+                    iVar1 = DAT_00eb9b60::instance - 8;
                     if (iVar1 < 0) {
                         iVar1 = 0;
                     }
@@ -136,7 +136,7 @@ namespace UI {
                     DAT_00ed3124::instance = -(uint)(DAT_00ed3124::instance != 2) & 2;
                 }
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::Skirmish_PrepareLeaderboardView)();
-                iVar1 = DAT_00eb9b60::instance + -8;
+                iVar1 = DAT_00eb9b60::instance - 8;
                 if (iVar1 < 0) {
                     iVar1 = 0;
                 }

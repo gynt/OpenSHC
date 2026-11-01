@@ -44,7 +44,7 @@ namespace UI {
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
                 if (DAT_GameCore::instance.unlockAllHistoricalCampaigns == 0
                     && (&DAT_GameCore::instance.scenarioProgress.progressCallToArms)[DAT_00b95b2c::instance]
-                        < (DAT_00b96100::instance - param_1) + -1) {
+                        < (DAT_00b96100::instance - param_1) - 1) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -57,7 +57,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground, DAT_PencilRenderCore::ptr)(
-                    (uint)((DAT_00b96100::instance - param_1) + -1 == DAT_GameCore::instance.missionNumber1to20),
+                    (uint)((DAT_00b96100::instance - param_1) - 1 == DAT_GameCore::instance.missionNumber1to20),
                     param_1, 0);
                 int iVar1 = -param_1;
                 iVar2 = DAT_ButtonX::instance + 8;
@@ -72,7 +72,7 @@ namespace UI {
                     iVar2 = DAT_ButtonX::instance + 0x1e;
                     textAddress = MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) + -1);
+                        OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) - 1);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         textAddress, iVar2, iVar1, OpenSHC::Text::TTA_LEFT, 0xccfaff, iVar3, FALSE, 0);
                     DAT_ButtonUnknownZero::instance = 0;
@@ -94,7 +94,7 @@ namespace UI {
                     color_00 = 0xc2f0eb;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) + -1,
+                    OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, (DAT_00b96100::instance - param_1) - 1,
                     (int)(DAT_ButtonX::instance + 0x1e), (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT,
                     color_00, 0x13, FALSE);
                 DAT_ButtonUnknownZero::instance = 0;

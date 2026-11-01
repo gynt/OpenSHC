@@ -95,7 +95,7 @@ namespace UI {
                     (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, DAT_GameState::instance.mapAndTime.difficulty + 0x13,
-                    (int)((int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance)),
+                    (int)((int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance)),
                     (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_RIGHT, 0xff00, 0x12, FALSE);
                 return;
             }
@@ -221,7 +221,6 @@ namespace UI {
             DAT_ButtonUnknownZero::instance = 0;
             MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                     MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-            return;
         }
 
     }

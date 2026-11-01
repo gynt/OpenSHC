@@ -103,9 +103,9 @@ namespace UI {
                 /*
                   added by script: "No labour"
                  */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
-                        (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 3, (int)(DAT_ButtonX::instance + 0x96),
+                    (int)(DAT_ButtonY::instance), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                 return;
             }
             iVar7 = (int)sVar1;
@@ -119,7 +119,7 @@ namespace UI {
                         bVar4 = 0;
                     }
                     psVar5 = psVar5 + 1;
-                    iVar8 = iVar8 + -1;
+                    iVar8 = iVar8 - 1;
                 } while (iVar8 != 0);
                 if (!bVar4) {
                     /*
@@ -175,7 +175,7 @@ namespace UI {
                                 uVar6 = 5;
                             }
                         }
-                        iVar7 = iVar7 + -1;
+                        iVar7 = iVar7 - 1;
                         psVar5 = psVar5 + 1;
                     } while (iVar7 != 0);
                     if (uVar6 < 100) {
@@ -201,7 +201,7 @@ namespace UI {
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
-                    (int)(DAT_ButtonY::instance + -10), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    (int)(DAT_ButtonY::instance - 10), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                     _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance + 10));
                 return;
@@ -214,7 +214,7 @@ namespace UI {
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_IN_GENERAL_BUILDINGS, 10, (int)(DAT_ButtonX::instance + 0x96),
-                    (int)(DAT_ButtonY::instance + -0x14), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
+                    (int)(DAT_ButtonY::instance - 0x14), OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                     _unit, (int)(DAT_ButtonX::instance + 0x96), (int)(DAT_ButtonY::instance));
                 return;

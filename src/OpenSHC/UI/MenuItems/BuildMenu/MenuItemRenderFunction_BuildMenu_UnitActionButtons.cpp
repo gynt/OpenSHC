@@ -211,7 +211,7 @@ namespace UI {
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_STAND_GROUND) {
-                    DAT_ButtonY::instance = DAT_ButtonY::instance + -5;
+                    DAT_ButtonY::instance = DAT_ButtonY::instance - 5;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -228,7 +228,7 @@ namespace UI {
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_DEFENSIVE) {
-                    DAT_ButtonY::instance = DAT_ButtonY::instance + -1;
+                    DAT_ButtonY::instance = DAT_ButtonY::instance - 1;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -245,7 +245,7 @@ namespace UI {
                 }
                 if (DAT_TribesState::instance.tribes[DAT_TribesState::instance.DAT_CurrentTribeID].unitStance
                     == OpenSHC::Map::Units::Behavior::USE_AGGRESSIVE) {
-                    DAT_ButtonY::instance = DAT_ButtonY::instance + -1;
+                    DAT_ButtonY::instance = DAT_ButtonY::instance - 1;
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -312,7 +312,6 @@ namespace UI {
                 return;
             }
             DAT_ButtonUnknownZero::instance = 1;
-            return;
         }
 
     }

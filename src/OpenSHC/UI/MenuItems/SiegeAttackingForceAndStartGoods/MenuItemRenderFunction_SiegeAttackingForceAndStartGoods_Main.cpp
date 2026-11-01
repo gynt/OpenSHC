@@ -49,7 +49,7 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (param_1 < 0) {
                 int iVar1 = -param_1;
-                int iVar3 = iVar1 + -1;
+                int iVar3 = iVar1 - 1;
                 if (iVar3 < 0x14) {
                     if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 != OpenSHC::Map::MT_SIEGE) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
@@ -59,14 +59,14 @@ namespace UI {
                                 OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                                 DAT_MapPropertiesState::instance.SEC_StartingResources[*(
                                     int*)((int)DAT_MissionAestheticsDefinedData::ptr + iVar3 * 4 + 0x345c)],
-                                (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                         } else {
                             MACRO_CALL_MEMBER(
                                 OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                                 DAT_MapPropertiesState::instance.SEC_StartingResources[*(
                                     int*)((int)DAT_MissionAestheticsDefinedData::ptr + iVar3 * 4 + 0x345c)],
-                                (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                                (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                         }
                         iVar1 = *(int*)((int)DAT_MissionAestheticsDefinedData::ptr + iVar3 * 4 + 0x345c) * 2 + 0x8d;
@@ -105,11 +105,11 @@ namespace UI {
                         iVar2 = *(int*)((int)DAT_MapPropertiesState::ptr + iVar3 * 4 + 0x9c);
                     }
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(iVar2, (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                        DAT_TextManagerObject::ptr)(iVar2, (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance),
                         (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, uVar4, 0x12, FALSE, 0);
-                    iVar2 = iVar1 + -0x14;
+                    iVar2 = iVar1 - 0x14;
                     if (iVar3 == 0x1d) {
-                        iVar2 = iVar1 + -0x13;
+                        iVar2 = iVar1 - 0x13;
                     }
                 } else {
                     if (iVar3 == 0x1e) {
@@ -150,17 +150,17 @@ namespace UI {
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     iVar2 = *(int*)((int)DAT_MapPropertiesState::ptr + iVar3 * 4 + 0x9c);
                     if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                            DAT_TextManagerObject::ptr)(iVar2,
-                            (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
-                            (int)(DAT_ButtonY::instance + 8), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar2,
+                            (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                            OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                     } else {
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                            DAT_TextManagerObject::ptr)(iVar2,
-                            (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
-                            (int)(DAT_ButtonY::instance + 8), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar2,
+                            (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                            OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                     }
-                    iVar2 = iVar1 + -0x1d;
+                    iVar2 = iVar1 - 0x1d;
                     if (iVar3 == 0x2d) {
                         iVar2 = 10;
                     }
@@ -195,7 +195,6 @@ namespace UI {
                 (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
                 (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), OpenSHC::UI::Enums::RBERL_SLIGHT);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            return;
         }
 
     }

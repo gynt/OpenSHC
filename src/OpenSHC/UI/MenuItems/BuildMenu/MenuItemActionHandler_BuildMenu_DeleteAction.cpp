@@ -125,7 +125,7 @@ namespace UI {
                             (int)(DAT_UnitsState::instance
                                       .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                       .buildingHeight
-                                + -8
+                                - 8
                                 + DAT_UnitsState::instance
                                     .units[DAT_ViewportRenderState::instance.viewportState.mouseRayUnitID]
                                     .terrainOrClimbHeight),
@@ -223,7 +223,6 @@ namespace UI {
                     }
                 }
             }
-            return;
         }
 
     }

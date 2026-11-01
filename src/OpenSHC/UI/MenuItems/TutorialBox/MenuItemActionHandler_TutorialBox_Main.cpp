@@ -81,10 +81,10 @@ namespace UI {
                 }
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
                 if ((int)DAT_00df5558::instance >= (int)DAT_00df555c::instance) {
-                    DAT_00df5558::instance = DAT_00df5558::instance + -1;
+                    DAT_00df5558::instance = DAT_00df5558::instance - 1;
                     MACRO_CALL(OpenSHC::UI::Helpers_Func::InitTutorialStepTransition)(2);
                     DAT_00df5560::instance = 0;
-                    if ((int)DAT_TutorialCurrentStep::instance >= (int)DAT_00df5554::instance + -1) {
+                    if ((int)DAT_TutorialCurrentStep::instance >= (int)DAT_00df5554::instance - 1) {
                         INT_DisableTutorialRestrictions::instance = 1;
                     }
                     if (DAT_MissionAestheticsDefinedData::instance

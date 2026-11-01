@@ -78,7 +78,7 @@ namespace UI {
             pcVar3 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                        + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]);
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1]);
             pcVar5 = local_3f4;
             do {
                 cVar1 = *pcVar3;

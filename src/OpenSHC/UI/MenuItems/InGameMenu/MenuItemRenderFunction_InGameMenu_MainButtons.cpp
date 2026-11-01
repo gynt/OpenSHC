@@ -291,13 +291,11 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if (param_1 == -4) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    DAT_ButtonX::instance + -1, (int)(DAT_ButtonY::instance + 0x11), (int)(DAT_ButtonX::instance + -1),
-                    (int)(DAT_ButtonH::instance + -1 + DAT_ButtonY::instance),
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    DAT_ButtonX::instance - 1, (int)(DAT_ButtonY::instance + 0x11), (int)(DAT_ButtonX::instance - 1),
+                    (int)(DAT_ButtonH::instance - 1 + DAT_ButtonY::instance), (ushort)(COL_BLACK::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    DAT_ButtonX::instance + -2, (int)(DAT_ButtonY::instance + 0x11), (int)(DAT_ButtonX::instance + -2),
-                    (int)(DAT_ButtonH::instance + -1 + DAT_ButtonY::instance),
-                    (ushort)(COL_BLACK::instance.shortValue));
+                    DAT_ButtonX::instance - 2, (int)(DAT_ButtonY::instance + 0x11), (int)(DAT_ButtonX::instance - 2),
+                    (int)(DAT_ButtonH::instance - 1 + DAT_ButtonY::instance), (ushort)(COL_BLACK::instance.shortValue));
                 return;
             }
             if (param_1 == 0x47) {

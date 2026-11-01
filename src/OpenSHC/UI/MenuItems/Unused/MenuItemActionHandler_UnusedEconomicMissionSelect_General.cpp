@@ -60,7 +60,7 @@ namespace UI {
                 }
                 case 0xd:
                 LAB_00426f5c:
-                    DAT_GameCore::instance.missionNumber1to20 = DAT_GameCore::instance.missionNumber1to20 + -1;
+                    DAT_GameCore::instance.missionNumber1to20 = DAT_GameCore::instance.missionNumber1to20 - 1;
                     DAT_GameCore::instance.gameMode_2 = OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1;
                     DAT_GameCore::instance.field26_0x74 = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();

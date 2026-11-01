@@ -50,7 +50,7 @@ namespace UI {
                 if (BVar10 != FALSE) {
                     DAT_ButtonUnknownZero::instance = 0;
                     if ((DAT_ButtonCurrentlyInteracting::instance != FALSE) && (param_1 == 2)) {
-                        DAT_ButtonX::instance = DAT_ButtonX::instance + -4;
+                        DAT_ButtonX::instance = DAT_ButtonX::instance - 4;
                     }
                     MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                             MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();

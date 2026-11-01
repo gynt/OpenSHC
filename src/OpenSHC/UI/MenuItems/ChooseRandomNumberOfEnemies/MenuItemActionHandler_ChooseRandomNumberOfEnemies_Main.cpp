@@ -47,7 +47,7 @@ namespace UI {
                         MACRO_CALL(OpenSHC::Synchrony_Func::PutPlayerIntoRandomSlot)(iVar1);
                         piVar2 = piVar2 + 1;
                         iVar1 = iVar1 + 1;
-                        param_1 = param_1 + -1;
+                        param_1 = param_1 - 1;
                     } while (param_1 != 0);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::reorderTeamsAndPositions,

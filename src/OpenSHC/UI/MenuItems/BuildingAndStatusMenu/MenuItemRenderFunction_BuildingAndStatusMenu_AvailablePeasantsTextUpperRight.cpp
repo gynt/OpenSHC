@@ -29,7 +29,8 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_BARRACKS, 3),
-                DAT_ButtonX::instance + -5, DAT_ButtonY::instance, OpenSHC::Text::TTA_RIGHT, 0xb8eefb, 0, 0x12, FALSE, 0);
+                DAT_ButtonX::instance - 5, DAT_ButtonY::instance, OpenSHC::Text::TTA_RIGHT, 0xb8eefb, 0, 0x12, FALSE,
+                0);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .availablePeasantsOrHousedPeasants

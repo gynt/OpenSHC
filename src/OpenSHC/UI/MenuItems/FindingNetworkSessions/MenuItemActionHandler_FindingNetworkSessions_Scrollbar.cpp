@@ -13,7 +13,7 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue = DAT_GameSynchronyState::instance.DPLAY_SessionsCount + -10;
+                *maxValue = DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10;
                 *currentValue = DAT_GameSynchronyState::instance.scrollBarItemOffset;
                 return;
             case 2:
@@ -22,19 +22,19 @@ namespace UI {
                 return;
             case 4:
                 *currentValue = DAT_GameSynchronyState::instance.scrollBarItemOffset;
-                *maxValue = DAT_GameSynchronyState::instance.DPLAY_SessionsCount + -10;
+                *maxValue = DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10;
                 return;
             case 5:
                 if (0 < DAT_GameSynchronyState::instance.scrollBarItemOffset) {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
-                        = DAT_GameSynchronyState::instance.scrollBarItemOffset + -1;
+                        = DAT_GameSynchronyState::instance.scrollBarItemOffset - 1;
                     *currentValue = DAT_GameSynchronyState::instance.scrollBarItemOffset;
                     return;
                 }
                 break;
             case 6:
                 if (DAT_GameSynchronyState::instance.scrollBarItemOffset
-                    < DAT_GameSynchronyState::instance.DPLAY_SessionsCount + -10) {
+                    < DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10) {
                     DAT_GameSynchronyState::instance.scrollBarItemOffset
                         = DAT_GameSynchronyState::instance.scrollBarItemOffset + 1;
                     return;

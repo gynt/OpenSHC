@@ -63,7 +63,7 @@ namespace UI {
                 iVar4 = 5;
                 if (DAT_MenuTextInputState::instance.DAT_ArrayOfMapU3EndInt2[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]]
+                                + param_1 - 1]]
                     == 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d7,
@@ -84,19 +84,19 @@ namespace UI {
             pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                        + -1]);
+                        - 1]);
             pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar2, &local_28);
-            iVar3 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+            iVar3 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
             DAT_TextManagerObject::instance.field12_0x30 = 1;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar2, DAT_ButtonX::instance + 0x18 + iVar4, (int)(DAT_ButtonY::instance + 3), local_2c, color, 0x12,
                 (iVar3 / 32) + 0x20);
             dVar1 = DAT_ResourceManager::instance.mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
-                    [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 + -1]];
+                    [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 - 1]];
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
-                (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) + -0x14, (int)dVar1 >> 0xb & 0x1f,
+                (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14, (int)dVar1 >> 0xb & 0x1f,
                 (int)dVar1 >> 5 & 0x3f);
-            iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+            iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_24,
                 (int)(DAT_ButtonX::instance + 0x134), (int)(DAT_ButtonY::instance + 3), OpenSHC::Text::TTA_LEFT,
                 (BGR24)((int)(color)), 0x12, FALSE, (iVar4 / 32) + 0x20);

@@ -45,7 +45,7 @@ namespace UI {
             case 0xb9:
             case 0xba:
             case 0xbb:
-                iVar2 = param_1 + -0x15;
+                iVar2 = param_1 - 0x15;
             case 0x80:
             case 0x81:
             case 0x82:
@@ -77,8 +77,8 @@ namespace UI {
                 piVar1
                     = &DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                            .data.scenario.ScenarioEventType;
-                if (*piVar1 != iVar2 + -0x80) {
-                    *piVar1 = iVar2 + -0x80;
+                if (*piVar1 != iVar2 - 0x80) {
+                    *piVar1 = iVar2 - 0x80;
                     DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.actionData = 0;
                     DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]

@@ -197,7 +197,7 @@ namespace UI {
                     }
                     return;
                 }
-                brush = DAT_TileMapState::instance.editorActiveBrush + -1;
+                brush = DAT_TileMapState::instance.editorActiveBrush - 1;
                 DAT_TileMapState::instance.editorActiveBrush = brush;
                 if (brush < 1) {
                     brush = 7;

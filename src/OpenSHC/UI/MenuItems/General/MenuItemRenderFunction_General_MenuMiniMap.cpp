@@ -43,14 +43,14 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithCustomBlendedBackground,
-                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + -0x6c, (int)(DAT_ButtonY::instance + -0x6c),
-                    0xd8, 0xd8, (int)(DAT_ButtonBackgroundBlendStrength::instance));
+                    DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance - 0x6c, (int)(DAT_ButtonY::instance - 0x6c), 0xd8,
+                    0xd8, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 if ((DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber != 0)
                     && (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1)) {
                     if (DAT_ButtonBackgroundBlendStrength::instance == 0) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapPreview,
-                            DAT_MinimapViewState::ptr)(iVar3 + -100, iVar4 + -100);
+                            DAT_MinimapViewState::ptr)(iVar3 - 100, iVar4 - 100);
                         do {
                             int iVar2 = DAT_GameCore::instance.keepPositions[iVar7].x;
                             if (0 <= iVar2) {
@@ -62,13 +62,13 @@ namespace UI {
                                         if (INT_00b95950::instance == iVar7) {
                                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                 DAT_TextureRenderCoreObject::ptr)(
-                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xd3, iVar2 + -0x67 + iVar3,
-                                                DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
+                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xd3, iVar2 - 0x67 + iVar3,
+                                                DAT_GameCore::instance.keepPositions[iVar7].y - 0x6b + iVar4);
                                         } else {
                                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                 DAT_TextureRenderCoreObject::ptr)(
-                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xdc, iVar2 + -0x67 + iVar3,
-                                                DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
+                                                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xdc, iVar2 - 0x67 + iVar3,
+                                                DAT_GameCore::instance.keepPositions[iVar7].y - 0x6b + iVar4);
                                         }
                                     } else {
                                         if ('\0'
@@ -81,14 +81,14 @@ namespace UI {
                                                             .DAT_PlayerGroupArray[cVar1 + 1]
                                                         * 2
                                                     + 0x1ec),
-                                                iVar2 + -0x60 + iVar3,
-                                                DAT_GameCore::instance.keepPositions[iVar7].y + -100 + iVar4, 0xc);
+                                                iVar2 - 0x60 + iVar3,
+                                                DAT_GameCore::instance.keepPositions[iVar7].y - 100 + iVar4, 0xc);
                                         }
                                         if (INT_00b95f6c::instance != 0) {
-                                            iVar2 = DAT_GameCore::instance.keepPositions[iVar7].x + -0x71 + iVar3;
+                                            iVar2 = DAT_GameCore::instance.keepPositions[iVar7].x - 0x71 + iVar3;
                                             int iVar6
                                                 = (int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar7];
-                                            int drawY = DAT_GameCore::instance.keepPositions[iVar7].y + -0x74 + iVar4;
+                                            int drawY = DAT_GameCore::instance.keepPositions[iVar7].y - 0x74 + iVar4;
                                             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar6 + 1]
                                                 != -1) {
                                                 /*
@@ -138,8 +138,8 @@ namespace UI {
                                                     OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3,
                                                     (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
                                                         + 0xd4),
-                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
-                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
+                                                    DAT_GameCore::instance.keepPositions[iVar7].x - 0x67 + iVar3,
+                                                    DAT_GameCore::instance.keepPositions[iVar7].y - 0x6b + iVar4);
                                             } else {
                                                 MACRO_CALL_MEMBER(
                                                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -147,8 +147,8 @@ namespace UI {
                                                     OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                                                     (int)(DAT_GameSynchronyState::instance.playerPositionsArray[iVar7]
                                                         + 0x1d6),
-                                                    DAT_GameCore::instance.keepPositions[iVar7].x + -0x67 + iVar3,
-                                                    DAT_GameCore::instance.keepPositions[iVar7].y + -0x6b + iVar4);
+                                                    DAT_GameCore::instance.keepPositions[iVar7].x - 0x67 + iVar3,
+                                                    DAT_GameCore::instance.keepPositions[iVar7].y - 0x6b + iVar4);
                                             }
                                         }
                                     }
@@ -163,8 +163,8 @@ namespace UI {
                                 = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                DAT_00b95960::instance + 0x1d6, DAT_MouseState::instance.screenSpaceX + -5,
-                                DAT_MouseState::instance.screenSpaceY + -7);
+                                DAT_00b95960::instance + 0x1d6, DAT_MouseState::instance.screenSpaceX - 5,
+                                DAT_MouseState::instance.screenSpaceY - 7);
                             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                                 = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                             if ((DAT_MouseState::instance.leftClickState == FALSE)

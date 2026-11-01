@@ -80,19 +80,19 @@ namespace UI {
                 iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .currentResources[0xf];
                 bVar4 = (iVar1 < 4);
-                bVar3 = iVar1 + -4 < 0;
+                bVar3 = iVar1 - 4 < 0;
             } else if (param_1 == 0x1e) {
                 iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .currentResources[0xf];
                 bVar4 = (iVar1 < 0x1e);
-                bVar3 = iVar1 + -0x1e < 0;
+                bVar3 = iVar1 - 0x1e < 0;
             } else {
                 if (param_1 != 0x25)
                     goto LAB_00466f49;
                 iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .currentResources[0xf];
                 bVar4 = (iVar1 < 10);
-                bVar3 = iVar1 + -10 < 0;
+                bVar3 = iVar1 - 10 < 0;
             }
             if (bVar4 != bVar3) {
                 /*

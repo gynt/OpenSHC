@@ -58,7 +58,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawTableCellBackground,
                     DAT_PencilRenderCore::ptr)(FALSE, 1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
-                int iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                int iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar2 = (iVar2 / 32) + 0x20;
                 yParam = DAT_ButtonY::instance + 5;
                 iVar3 = DAT_ButtonX::instance + iVar3;

@@ -48,7 +48,7 @@ namespace UI {
             case -1:
                 if (0 < (int)DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset) {
                     DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
-                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1;
+                        = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset - 1;
                     ;
                 }
             case -2:
@@ -71,14 +71,14 @@ namespace UI {
                     && DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                             [DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                                     [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
-                                        + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + -1]
+                                        + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset - 1]
                                 + 499]
                         == 0)
                     break;
                 iVar1 = DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
                     + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset;
                 _mapName = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
-                    DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 + -1]);
+                    DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 - 1]);
                 pcVar6 = local_3f4;
                 do {
                     cVar2 = *_mapName;
@@ -145,7 +145,7 @@ namespace UI {
                             DAT_MenuTextInputState::ptr)();
                         pcVar6 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                             DAT_ResourceManager::ptr)(
-                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 + -1]);
+                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar1 - 1]);
                         _mapName = DAT_GameSynchronyState::instance.shortMapName;
                         do {
                             cVar2 = *pcVar6;

@@ -47,7 +47,7 @@ namespace UI {
                 *maxValue = (((int)uVar2 <= 0) - 1 & uVar2);
                 return;
             case 7:
-                *currentValue = DAT_TextEditorState::instance.dialogContentHeight + -0x14;
+                *currentValue = DAT_TextEditorState::instance.dialogContentHeight - 0x14;
                 return;
             case 5:
                 if ((int)DAT_TextEditorState::instance.helpContentScrollOffsetY >= iVar1) {

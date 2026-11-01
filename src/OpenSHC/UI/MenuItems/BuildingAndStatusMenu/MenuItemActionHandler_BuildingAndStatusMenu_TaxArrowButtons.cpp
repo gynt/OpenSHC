@@ -23,7 +23,7 @@ namespace UI {
                             .taxesSliderUI;
                 if (0 < iVar1) {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .taxesSliderUI = iVar1 + -1;
+                        .taxesSliderUI = iVar1 - 1;
                 }
             }
         }

@@ -221,7 +221,7 @@ namespace UI {
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1B:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1C:
             case OpenSHC::Commands::M_MAPPER_GATE_WOOD1D:
-                uVar5 = (DAT_TileMapState::instance.mapOrientation / 2 + -0x8c + buttonID) % 4;
+                uVar5 = (DAT_TileMapState::instance.mapOrientation / 2 - 0x8c + buttonID) % 4;
                 buttonID = (OpenSHC::Commands::MappersEnum)(uVar5 + OpenSHC::Commands::M_MAPPER_GATE_WOOD1A);
                 break;
             case OpenSHC::Commands::M_MAPPER_GATE_STONE1A:

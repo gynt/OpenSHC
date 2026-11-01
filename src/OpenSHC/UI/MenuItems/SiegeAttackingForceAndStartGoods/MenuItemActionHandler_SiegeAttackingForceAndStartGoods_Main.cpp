@@ -28,7 +28,7 @@ namespace UI {
         {
             char** maximum;
             if (param_1 < 0) {
-                int iVar1 = -param_1 + -1;
+                int iVar1 = -param_1 - 1;
                 if (iVar1 < 0x14) {
                     if (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1 == Map::MT_SIEGE) {
                         return;
@@ -54,7 +54,7 @@ namespace UI {
                     DAT_MenuModalComposition2::instance.textGroup = 199;
                     MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
                         DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER,
-                        (int)(DAT_ButtonX::instance + -0x25), (int)(DAT_ButtonY::instance + 0x19));
+                        (int)(DAT_ButtonX::instance - 0x25), (int)(DAT_ButtonY::instance + 0x19));
                     return;
                 }
                 if (iVar1 < 0x1e) {
@@ -113,14 +113,13 @@ namespace UI {
                 }
                 DAT_MenuModalComposition2::instance.textGroup = 199;
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog,
-                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER, (int)(DAT_ButtonX::instance + -0x25),
+                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_OVERLAY_SLIDER, (int)(DAT_ButtonX::instance - 0x25),
                     (int)(DAT_ButtonY::instance + 0x19));
             } else if (param_1 == 0x25) {
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                     UI::Enums::MMT_NONE, FALSE);
                 return;
             }
-            return;
         }
 
     }

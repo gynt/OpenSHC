@@ -102,13 +102,12 @@ namespace UI {
                                 MACRO_CALL(Synchrony_Func::EnumSessionsCallback_addSession_async), (void*)0x0,
                                 DirectPlay::ESFE_ASYNC_ENUMERATION_STOP);
                         }
-                        MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay,
-                            DAT_GameSynchronyState::ptr)();
+                        MACRO_CALL_MEMBER(
+                            Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby,
                             DAT_GameSynchronyState::ptr)();
                         MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                            DAT_MenuModalComposition1::ptr)(
-                            UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
+                            DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
                         MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)();
                         ;
                         return;
@@ -119,7 +118,7 @@ namespace UI {
                 if (param_1 == ((FindingNetworkSessions_ButtonParameters)0xffffffff)) {
                     if (0 < DAT_GameSynchronyState::instance.scrollBarItemOffset) {
                         DAT_GameSynchronyState::instance.scrollBarItemOffset
-                            = DAT_GameSynchronyState::instance.scrollBarItemOffset + -1;
+                            = DAT_GameSynchronyState::instance.scrollBarItemOffset - 1;
                         ;
                         return;
                     }
@@ -128,7 +127,7 @@ namespace UI {
                 if (param_1 != ((FindingNetworkSessions_ButtonParameters)0xffffd8f0)) {
                     if ((param_1 == ((FindingNetworkSessions_ButtonParameters)0xfffffffe))
                         && (DAT_GameSynchronyState::instance.scrollBarItemOffset
-                            < DAT_GameSynchronyState::instance.DPLAY_SessionsCount + -10)) {
+                            < DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10)) {
                         DAT_GameSynchronyState::instance.scrollBarItemOffset
                             = DAT_GameSynchronyState::instance.scrollBarItemOffset + 1;
                         ;
@@ -155,14 +154,12 @@ namespace UI {
                     MACRO_CALL(Synchrony_Func::EnumSessionsCallback_addSession_async), (void*)0x0,
                     DirectPlay::ESFE_ASYNC_ENUMERATION_STOP);
             }
-            MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
+            MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::disconnectDPlay, DAT_GameSynchronyState::ptr)();
             MACRO_CALL_MEMBER(
                 Synchrony::GameSynchronyState_Func::initializeMultiplayerLobby, DAT_GameSynchronyState::ptr)();
-            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
+            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                UI::Enums::MMT_CHOOSE_NETWORK_SERVICE_PROVIDER, FALSE);
         LAB_Return:;
-            return;
         }
 
     }

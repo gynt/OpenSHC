@@ -45,7 +45,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 iVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::GetUnitRecruitPermission)(param_1);
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
-                    DAT_00df3350::instance = param_1 + -0x46;
+                    DAT_00df3350::instance = param_1 - 0x46;
                 }
                 if (iVar1 == 1) {
                     if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
@@ -62,7 +62,8 @@ namespace UI {
                                 .gmId_0x0,
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm,
                                 &DAT_UIButtonDefinedData::instance
-                                    .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(DAT_ButtonCurrentlyInteracting::instance),
+                                    .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance])(
+                                DAT_ButtonCurrentlyInteracting::instance),
                             DAT_ButtonX::instance, DAT_ButtonY::instance);
                     } else {
                         DAT_UIButtonDefinedData::instance.ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
@@ -84,8 +85,8 @@ namespace UI {
                     iVar1 = MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::ButtonGmData_Func::getPictureNumberInGm, buttonGmData)(FALSE);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
-                        DAT_TextureRenderCoreObject::ptr)(
-                        (OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0, iVar1 + 7, DAT_ButtonX::instance, DAT_ButtonY::instance, 0x10);
+                        DAT_TextureRenderCoreObject::ptr)((OpenSHC::IO::Graphics::GmID)buttonGmData->gmId_0x0,
+                        iVar1 + 7, DAT_ButtonX::instance, DAT_ButtonY::instance, 0x10);
                 }
             LAB_00466bec:
                 DAT_CurrentButtonPictureInGm::instance

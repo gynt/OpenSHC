@@ -35,7 +35,7 @@ namespace UI {
                 yParam = DAT_ButtonY::instance + 10;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, param_1 + -0x47),
+                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, param_1 - 0x47),
                     xParam, yParam, OpenSHC::Text::TTA_CENTER, 0, 0x13, FALSE, 0);
             }
         }

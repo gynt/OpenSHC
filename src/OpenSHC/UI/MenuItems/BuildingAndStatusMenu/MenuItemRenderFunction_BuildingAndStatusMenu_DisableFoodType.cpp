@@ -43,7 +43,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2d,
-                    DAT_ButtonX::instance + -4 + _xOffset, DAT_ButtonY::instance + -0x2d + _yOffset, 6);
+                    DAT_ButtonX::instance - 4 + _xOffset, DAT_ButtonY::instance - 0x2d + _yOffset, 6);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
         }

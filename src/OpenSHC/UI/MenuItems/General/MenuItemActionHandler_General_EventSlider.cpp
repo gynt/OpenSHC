@@ -174,7 +174,7 @@ namespace UI {
             case 0x15:
                 if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.ScenarioEventType
-                    == param_1 + -1) {
+                    == param_1 - 1) {
                     switch (param_2) {
                     case 1:
                         *minValue = 1;
@@ -228,7 +228,7 @@ namespace UI {
                         if (0 < iVar1) {
                             DAT_MapPropertiesState::instance
                                 .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
-                                .data.scenario.actionData = iVar1 + -1;
+                                .data.scenario.actionData = iVar1 - 1;
                         }
                         *currentValue = DAT_MapPropertiesState::instance
                                             .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
@@ -271,7 +271,7 @@ namespace UI {
                 case 6:
                     if (0 < DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8) {
                         DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8
-                            = DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8 + -1;
+                            = DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8 - 1;
                     }
                     *currentValue = DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8;
                 }

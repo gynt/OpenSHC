@@ -67,7 +67,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
             case 2:
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar1 = iVar1 / 32;
                 break;
             case 0x45:
@@ -84,7 +84,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(
                     DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     /*
                       Difficulty
@@ -102,13 +102,13 @@ namespace UI {
                         (int)(DAT_ButtonX::instance + 10), (int)(DAT_ButtonY::instance + 8), OpenSHC::Text::TTA_LEFT,
                         0xc2f0eb, 0x12, FALSE, (iVar1 / 32) + 0x20);
                 }
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 /*
                   "easy, normal, hard, very hard"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, DAT_GameState::instance.mapAndTime.difficulty + 0x13,
-                    (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                    (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
                     OpenSHC::Text::TTA_RIGHT, 0xff00, 0x12, FALSE, (iVar1 / 32) + 0x20);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 return;
@@ -133,7 +133,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(
                         DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     iVar1 = (iVar1 / 32) + 0x20;
                     uVar2 = 0xccfaff;
                     yParam = DAT_ButtonY::instance + 7;
@@ -143,7 +143,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(
                         DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     /*
                       "Advanced"
                      */
@@ -158,7 +158,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(
                     DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar1 = iVar1 + (iVar1 >> 0x1f & 0x1fU);
                 uVar2 = 0xc2f0eb;
                 goto LAB_0042d4c2;
@@ -180,7 +180,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(
                         DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     iVar1 = (iVar1 / 32) + 0x20;
                     uVar2 = 0xc2f0eb;
                     yParam = DAT_ButtonY::instance + 7;
@@ -189,7 +189,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(
                     DAT_ButtonBackgroundBlendStrength::instance, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar1 = iVar1 + (iVar1 >> 0x1f & 0x1fU);
                 uVar2 = 0xccfaff;
             LAB_0042d4c2:

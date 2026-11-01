@@ -15,7 +15,7 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd;
+                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 0xd;
                 *currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
                 return;
             case 2:
@@ -34,7 +34,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 }
                 *currentValue = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset;
-                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd;
+                *maxValue = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 0xd;
                 return;
             case 5:
                 if (0 < DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
@@ -49,7 +49,7 @@ namespace UI {
                 return;
             case 6:
                 if (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
+                    < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 0xd) {
                     DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                     MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::

@@ -19,13 +19,13 @@ namespace UI {
             }
             if (param_1 == -2) {
                 if ((int)DAT_MapPropertiesState::instance.eventListScrollOffset
-                    < DAT_MapPropertiesState::instance.eventsCount + -0x14) {
+                    < DAT_MapPropertiesState::instance.eventsCount - 0x14) {
                     DAT_MapPropertiesState::instance.eventListScrollOffset
                         = DAT_MapPropertiesState::instance.eventListScrollOffset + 1;
                 }
             } else if ((param_1 == -1) && (0 < (int)DAT_MapPropertiesState::instance.eventListScrollOffset)) {
                 DAT_MapPropertiesState::instance.eventListScrollOffset
-                    = DAT_MapPropertiesState::instance.eventListScrollOffset + -1;
+                    = DAT_MapPropertiesState::instance.eventListScrollOffset - 1;
             }
         }
 

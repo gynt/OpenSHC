@@ -36,7 +36,7 @@ namespace UI {
             if (param_1 > DAT_GameCore::instance.numOfAIsWithCastleUnk) {
                 DAT_ButtonUnknownZero::instance = 1;
             }
-            int iVar1 = DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[param_1 + -1];
+            int iVar1 = DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[param_1 - 1];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x22b,
                 (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance));
@@ -46,7 +46,7 @@ namespace UI {
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
-                    (int)(DAT_ButtonX::instance + -6), (int)(DAT_ButtonY::instance + -6),
+                    (int)(DAT_ButtonX::instance - 6), (int)(DAT_ButtonY::instance - 6),
                     OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
                 DAT_LobbyAddAICurrentlyHoveredAI::instance = iVar1;
             }

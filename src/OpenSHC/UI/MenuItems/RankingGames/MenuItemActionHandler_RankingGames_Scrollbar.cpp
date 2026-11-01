@@ -23,10 +23,9 @@ namespace UI {
                     DAT_00ed3120::instance = *currentValue;
                 }
                 break;
-            case 4:
-            {
+            case 4: {
                 *minValue = 0;
-                int iVar1 = DAT_00eb9b60::instance + -8;
+                int iVar1 = DAT_00eb9b60::instance - 8;
                 *maxValue = iVar1;
                 if (iVar1 < 0) {
                     *maxValue = 0;
@@ -36,20 +35,18 @@ namespace UI {
                 }
                 break;
             }
-            case 7:
-            {
+            case 7: {
                 *currentValue = 6;
             }
-            case 5:
-            {
+            case 5: {
                 if (0 < (int)DAT_00ed3120::instance) {
-                    DAT_00ed3120::instance = DAT_00ed3120::instance + -1;
+                    DAT_00ed3120::instance = DAT_00ed3120::instance - 1;
                     *currentValue = DAT_00ed3120::instance;
                 }
                 goto LAB_004d9be7;
             }
             case 6:
-                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance + -8) {
+                if ((int)DAT_00ed3120::instance < (int)DAT_00eb9b60::instance - 8) {
                     DAT_00ed3120::instance = DAT_00ed3120::instance + 1;
                 }
             LAB_004d9be7:

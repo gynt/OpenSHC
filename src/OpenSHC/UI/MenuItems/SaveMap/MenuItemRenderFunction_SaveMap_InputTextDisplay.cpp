@@ -38,8 +38,7 @@ namespace UI {
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 DAT_ButtonX::instance + 6 + iVar1, (int)(DAT_ButtonY::instance + 2), DAT_ButtonX::instance + 7 + iVar1,
-                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
-                (ushort)(COL_DARK_LIME::instance.shortValue));
+                (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance), (ushort)(COL_DARK_LIME::instance.shortValue));
             iVar1 = DAT_ButtonY::instance + 7;
             xParam = DAT_ButtonX::instance + 8;
             textAddress = MACRO_CALL_MEMBER(

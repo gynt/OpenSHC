@@ -46,7 +46,7 @@ namespace UI {
                     iVar3 = DAT_GameCore::instance.scribeAnimationFrame;
                     if (iVar3 <= 0xb) {
                         if (iVar3 > iVar2) {
-                            DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
+                            DAT_GameCore::instance.scribeAnimationFrame = iVar3 - 1;
                         } else if (iVar3 >= iVar2) {
                             DAT_GameCore::instance.taxesSettingUnk = 0;
                         } else {
@@ -66,7 +66,7 @@ namespace UI {
                     if (iVar3 < 6) {
                         DAT_GameCore::instance.scribeAnimationFrame = iVar3 + 1;
                     } else if (iVar3 > 6) {
-                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 + -1;
+                        DAT_GameCore::instance.scribeAnimationFrame = iVar3 - 1;
                     } else {
                         BVar4 = TRUE;
                         DAT_GameCore::instance.scribeAnimationPhase = TRUE;

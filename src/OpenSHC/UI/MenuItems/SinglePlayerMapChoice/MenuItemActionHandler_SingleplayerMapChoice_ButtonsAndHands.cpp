@@ -39,7 +39,7 @@ namespace UI {
             DAT_StopHandlingMenuItems::instance = 0;
             if (param_1 < -100) {
                 if (param_1 == -0x65) {
-                    int iVar1 = DAT_00b95b74::instance + -0xcc;
+                    int iVar1 = DAT_00b95b74::instance - 0xcc;
                     if ((int)DAT_00b960f4::instance >= iVar1) {
                         DAT_StopHandlingMenuItems::instance = 0;
                     }
@@ -69,8 +69,8 @@ namespace UI {
                 /*
                   Start game
                  */
-                if (-(int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset > 1
-                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
+                if (-(int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
+                    > 1 + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                     if ((DAT_MapMissionType::instance == 0) || (DAT_MapMissionType::instance == 3)) {
                         DAT_GameState::instance.mapAndTime.difficulty = 1;
                         return;
@@ -162,7 +162,7 @@ namespace UI {
                     }
                     break;
                 case -100:
-                    DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
+                    DAT_00b960f4::instance = DAT_00b960f4::instance - 0xe;
                     if ((int)DAT_00b960f4::instance < 0) {
                         DAT_00b960f4::instance = 0;
                         return;
@@ -170,7 +170,7 @@ namespace UI {
                     break;
                 case -0xb:
                     if ((int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -0xd) {
+                        < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 0xd) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                             = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
                         MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
@@ -182,7 +182,7 @@ namespace UI {
                 case -10:
                     if (0 < (int)DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset) {
                         DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                            = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1;
+                            = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1;
                         MACRO_CALL(OpenSHC::UI::MenuItems::SinglePlayerMapChoice_Func::
                                 MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                             DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);

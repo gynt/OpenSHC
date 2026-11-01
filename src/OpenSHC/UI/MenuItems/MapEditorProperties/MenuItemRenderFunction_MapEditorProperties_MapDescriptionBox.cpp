@@ -35,15 +35,15 @@ namespace UI {
                 && DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU
                 && DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 int right_00 = DAT_ButtonW::instance + 0x18 + DAT_ButtonX::instance;
-                int bottom = DAT_ButtonH::instance + -6 + DAT_ButtonY::instance;
+                int bottom = DAT_ButtonH::instance - 6 + DAT_ButtonY::instance;
                 int top = DAT_ButtonY::instance + 4;
-                int right = right_00 + -0x14;
+                int right = right_00 - 0x14;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                     DAT_ButtonX::instance, top, right, bottom);
-                int top_00 = bottom + -0x23;
+                int top_00 = bottom - 0x23;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-                    right_00 + -0x13, top_00, right_00, bottom);
-                iVar1 = iVar1 + -1;
+                    right_00 - 0x13, top_00, right_00, bottom);
+                iVar1 = iVar1 - 1;
                 int y1 = iVar2 + 3;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar1, y1, right_00 + 1, y1, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
@@ -59,14 +59,13 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     right, iVar2, right_00, iVar2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    right, bottom + -0x37, right_00, bottom + -0x37,
-                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    right, bottom - 0x37, right_00, bottom - 0x37, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     right, top_00, right_00, top_00, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 if (DAT_GameCore::instance.mapLoadedForEditor != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
                         DAT_TextureRenderCoreObject::ptr)(
-                        DAT_ButtonY::instance + 7, (int)(DAT_ButtonH::instance + -0x2a + DAT_ButtonY::instance));
+                        DAT_ButtonY::instance + 7, (int)(DAT_ButtonH::instance - 0x2a + DAT_ButtonY::instance));
                     if (DAT_GameCore::instance.descriptionUseStringTable == 0) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
                             DAT_TextManagerObject::ptr)(DAT_GameCore::instance.temporaryTextBufferOfSize1000,

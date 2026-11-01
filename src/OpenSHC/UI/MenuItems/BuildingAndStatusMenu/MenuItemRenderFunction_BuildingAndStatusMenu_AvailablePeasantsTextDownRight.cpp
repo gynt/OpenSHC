@@ -25,7 +25,7 @@ namespace UI {
         {
             int xParam;
             int yParam = DAT_ButtonY::instance + 0x98;
-            xParam = DAT_ButtonX::instance + -5;
+            xParam = DAT_ButtonX::instance - 5;
             /*
               added by script: "Available Peasants"
              */

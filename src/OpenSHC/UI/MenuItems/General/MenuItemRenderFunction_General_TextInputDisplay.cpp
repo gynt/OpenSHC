@@ -55,7 +55,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
                         (int)(DAT_ButtonY::instance + 3), DAT_ButtonX::instance + 7 + _textWidth,
-                        (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                        (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance),
                         (ushort)(COL_DARK_LIME::instance.shortValue));
                 }
                 _textArrayIndex = 5;
@@ -65,7 +65,7 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                         DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
                         (int)(DAT_ButtonY::instance + 3), DAT_ButtonX::instance + 7 + _textWidth,
-                        (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                        (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance),
                         (ushort)(COL_DARK_LIME::instance.shortValue));
                 }
                 _textArrayIndex = 6;
@@ -73,14 +73,14 @@ namespace UI {
             case 2:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
-                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance),
                     (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = 7;
                 break;
             case 3:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
-                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance),
                     (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = 0;
                 break;
@@ -92,7 +92,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth, (int)(DAT_ButtonY::instance + 3),
-                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance),
+                    DAT_ButtonX::instance + 7 + _textWidth, (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance),
                     (ushort)(COL_DARK_LIME::instance.shortValue));
                 _textArrayIndex = DAT_ButtonY::instance + 6;
                 iVar2 = DAT_ButtonX::instance + 6;

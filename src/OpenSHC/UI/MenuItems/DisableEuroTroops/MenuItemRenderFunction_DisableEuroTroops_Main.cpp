@@ -37,11 +37,11 @@ namespace UI {
             int yParam;
             if ((uint)param_1 <= 7) {
                 if (param_1 == 2) {
-                    DAT_ButtonX::instance = DAT_ButtonX::instance + -8;
+                    DAT_ButtonX::instance = DAT_ButtonX::instance - 8;
                 }
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                if (DAT_MapPropertiesState::instance.SEC_MercRecruitable[param_1 + -7] == 0) {
+                if (DAT_MapPropertiesState::instance.SEC_MercRecruitable[param_1 - 7] == 0) {
                     if (param_1 == 2) {
                         DAT_ButtonX::instance = DAT_ButtonX::instance + 8;
                     }

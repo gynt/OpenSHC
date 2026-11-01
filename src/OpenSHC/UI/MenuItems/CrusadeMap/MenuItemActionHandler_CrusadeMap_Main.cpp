@@ -95,7 +95,7 @@ namespace UI {
                     iVar5 = 3;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::setStartDateUnk, DAT_GameCore::ptr)(iVar5);
-                DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
+                DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance - 1;
                 DWORD_00ed311c::instance = timeGetTime();
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setSoundWithVariation, DAT_SFXState::ptr)(
                     258, 100);
@@ -108,7 +108,7 @@ namespace UI {
                     MACRO_CALL(OpenSHC::OS_Func::_memcpy)(
                         (void*)((DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13) * 0x2100
                             + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
-                        (void*)((DAT_GameCore::instance.lordIconUnk + -2) * 0x2100
+                        (void*)((DAT_GameCore::instance.lordIconUnk - 2) * 0x2100
                             + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                         0x2100);
                     DAT_TextureRenderCoreObject::instance
@@ -133,7 +133,7 @@ namespace UI {
                             }
                             iVar1 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][0];
                             iVar2 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar3][1];
-                            if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
+                            if (iVar1 - 10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
                                 && _clickY <= iVar2 + 10) {
                             LAB_004d9190:
                                 DAT_GameCore::instance.extremeTrailProgress = iVar5;
@@ -152,7 +152,7 @@ namespace UI {
                             while ((int)dVar4 <= DAT_GameCore::instance.furthestWarchestTrailMission) {
                                 iVar1 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar4][0];
                                 iVar2 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar4][1];
-                                if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -10 <= _clickY
+                                if (iVar1 - 10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 - 10 <= _clickY
                                     && _clickY <= iVar2 + 10)
                                     goto LAB_004d9190;
                                 dVar4 = dVar4 + 1;
@@ -165,7 +165,7 @@ namespace UI {
                             while (iVar5 <= DAT_GameCore::instance.furthestExtremeTrailMission) {
                                 iVar1 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][0];
                                 iVar2 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar5][1];
-                                if (iVar1 + -10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
+                                if (iVar1 - 10 <= _clickX && _clickX <= iVar1 + 10 && iVar2 + -_clickY >= 10
                                     && _clickY <= iVar2 + 10)
                                     goto LAB_004d9190;
                                 iVar5 = iVar5 + 1;

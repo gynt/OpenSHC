@@ -13,7 +13,7 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue = DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13;
+                *maxValue = DAT_MapPropertiesState::instance.buildingAvailabilityRowCount - 0x13;
                 *currentValue = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset;
                 return;
             case 2:
@@ -22,19 +22,19 @@ namespace UI {
                 return;
             case 4:
                 *currentValue = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset;
-                *maxValue = DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13;
+                *maxValue = DAT_MapPropertiesState::instance.buildingAvailabilityRowCount - 0x13;
                 return;
             case 5:
                 if (0 < DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                        = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + -1;
+                        = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset - 1;
                     *currentValue = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset;
                     return;
                 }
                 break;
             case 6:
                 if (DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                    < (int)DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13) {
+                    < (int)DAT_MapPropertiesState::instance.buildingAvailabilityRowCount - 0x13) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + 1;
                     return;

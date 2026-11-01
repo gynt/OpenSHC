@@ -16,7 +16,7 @@ namespace UI {
                 switch (param_2) {
                 case 1:
                     *minValue = 0;
-                    *maxValue = DAT_00b95b74::instance + -0xe7;
+                    *maxValue = DAT_00b95b74::instance - 0xe7;
                     *currentValue = 0;
                     return;
                 case 2:
@@ -25,21 +25,20 @@ namespace UI {
                     return;
                 case 4:
                     *minValue = 0;
-                    *maxValue = DAT_00b95b74::instance + -0xe7;
+                    *maxValue = DAT_00b95b74::instance - 0xe7;
                     *currentValue = DAT_00b960f4::instance;
                     return;
                 case 5:
                     if (0 < (int)DAT_00b960f4::instance) {
-                        DAT_00b960f4::instance = DAT_00b960f4::instance + -0xe;
+                        DAT_00b960f4::instance = DAT_00b960f4::instance - 0xe;
                     }
                     if ((int)DAT_00b960f4::instance < 0) {
                         DAT_00b960f4::instance = 0;
                     }
                     *currentValue = DAT_00b960f4::instance;
                     return;
-                case 6:
-                {
-                    int iVar1 = DAT_00b95b74::instance + -0xe7;
+                case 6: {
+                    int iVar1 = DAT_00b95b74::instance - 0xe7;
                     if ((int)DAT_00b960f4::instance < iVar1) {
                         DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe;
                         if ((int)DAT_00b960f4::instance > iVar1) {

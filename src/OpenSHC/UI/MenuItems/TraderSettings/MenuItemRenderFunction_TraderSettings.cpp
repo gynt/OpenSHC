@@ -51,9 +51,8 @@ namespace UI {
             if (param_1 < 0) {
                 int const traderIndex = -1 - param_1;
                 DAT_ButtonCurrentlyInteracting::instance
-                    = (BOOLEnum)(DAT_MapPropertiesState::instance.SEC_Section1065
-                                     .tradeabilityArray[((int*)((int)DAT_MissionAestheticsDefinedData::ptr
-                                         + 0x345c))[traderIndex]]
+                    = (BOOLEnum)(DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[(
+                                     (int*)((int)DAT_MissionAestheticsDefinedData::ptr + 0x345c))[traderIndex]]
                         != FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -62,7 +61,7 @@ namespace UI {
                 if (iVar1 == 0x9d) {
                     iVar1 = 0x9b;
                 }
-                int const imhIndex = iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1;
+                int const imhIndex = iVar1 + GMTotalPicturesProcessed::instance[0x2e] - 1;
                 if (DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[iVar2] != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar1,
@@ -71,11 +70,10 @@ namespace UI {
                     /*
                       added by script: "On"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                        DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xac),
-                        DAT_ButtonW::instance + -10 + DAT_ButtonX::instance, (int)(DAT_ButtonY::instance + 7),
+                        DAT_ButtonW::instance - 10 + DAT_ButtonX::instance, (int)(DAT_ButtonY::instance + 7),
                         OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -89,11 +87,10 @@ namespace UI {
                     /*
                       added by script: "On"
                      */
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                        DAT_TextManagerObject::ptr)(
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, 0xad),
-                        DAT_ButtonW::instance + -10 + DAT_ButtonX::instance, (int)(DAT_ButtonY::instance + 7),
+                        DAT_ButtonW::instance - 10 + DAT_ButtonX::instance, (int)(DAT_ButtonY::instance + 7),
                         OpenSHC::Text::TTA_RIGHT, 0x7caaaf, 0x12, FALSE, 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -153,7 +150,6 @@ namespace UI {
                 (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), (ushort)(COL_BLUE::instance.shortValue),
                 OpenSHC::UI::Enums::RBERL_SLIGHT);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-            return;
         }
 
     }

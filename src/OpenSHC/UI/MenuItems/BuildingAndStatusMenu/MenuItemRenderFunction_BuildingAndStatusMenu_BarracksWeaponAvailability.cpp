@@ -128,7 +128,7 @@ namespace UI {
                 }
             }
             if ((DAT_EnoughGoldForRequestedUnit::instance == FALSE)
-                || (DAT_GameState::instance.mapAndTime.euroRecruitable[param_1 + -10] == 0)) {
+                || (DAT_GameState::instance.mapAndTime.euroRecruitable[param_1 - 10] == 0)) {
                 DAT_ButtonCurrentlyInteracting::instance = FALSE;
                 return;
             }

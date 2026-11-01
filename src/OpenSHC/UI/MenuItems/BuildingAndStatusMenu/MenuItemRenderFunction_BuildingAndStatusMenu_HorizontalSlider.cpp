@@ -32,7 +32,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x118,
-                DAT_ButtonX::instance + thumbYPos, (int)(DAT_ButtonY::instance + -5));
+                DAT_ButtonX::instance + thumbYPos, (int)(DAT_ButtonY::instance - 5));
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         }
 

@@ -33,7 +33,7 @@ namespace UI {
                 DAT_MenuTextInputState::instance.pendingGameSpeedLevel = *currentValue;
                 return;
             case 5:
-                *currentValue = *currentValue + -1;
+                *currentValue = *currentValue - 1;
                 DAT_MenuTextInputState::instance.pendingGameSpeedLevel = *currentValue;
                 return;
             case 6:

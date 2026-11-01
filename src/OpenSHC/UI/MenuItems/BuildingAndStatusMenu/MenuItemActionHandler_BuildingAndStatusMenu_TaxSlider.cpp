@@ -33,7 +33,7 @@ namespace UI {
                 piVar1 = &DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .taxesSliderUI;
                 if (0 < iVar2) {
-                    *piVar1 = iVar2 + -1;
+                    *piVar1 = iVar2 - 1;
                 }
                 *currentValue = *piVar1;
                 return;

@@ -48,7 +48,7 @@ namespace UI {
                                 [DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                                         [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset
                                             + DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex
-                                            + -1]
+                                            - 1]
                                     + 499]
                             == 0))
                     || DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex == -1) {

@@ -178,7 +178,7 @@ namespace UI {
             case 0xce:
             case 0xcf:
             case 0xd0: {
-                iVar1 = param_1 + -0x40;
+                iVar1 = param_1 - 0x40;
                 goto switchD_004c01f4_caseD_6a;
             }
             case 0x6a:
@@ -204,7 +204,7 @@ namespace UI {
                 iVar1 = param_1;
             switchD_004c01f4_caseD_6a:
                 DAT_ButtonCurrentlyInteracting::instance
-                    = (BOOLEnum)(DAT_MapPropertiesState::instance.invasionTroopIndex == iVar1 + -0x6a);
+                    = (BOOLEnum)(DAT_MapPropertiesState::instance.invasionTroopIndex == iVar1 - 0x6a);
                 uint uVar2 = 0xc2f0eb;
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     uVar2 = 0xccfaff;
@@ -246,7 +246,7 @@ namespace UI {
                         (int)DAT_MapPropertiesState::instance.buildingAvailabilityRelatedFlags[iVar1 * 2
                             + DAT_MapPropertiesState::instance.currentEventID * 0x72 + 0xfe]
                             * DAT_MissionAestheticsDefinedData::instance.unknown3[iVar1 + 0x386],
-                        (int)(DAT_ButtonW::instance + -8 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 7),
+                        (int)(DAT_ButtonW::instance - 8 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 7),
                         OpenSHC::Text::TTA_RIGHT, uVar2, 0x12, FALSE);
                     return;
                 }

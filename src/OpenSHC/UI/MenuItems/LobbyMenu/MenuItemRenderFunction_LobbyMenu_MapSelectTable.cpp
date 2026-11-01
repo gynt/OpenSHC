@@ -68,7 +68,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]);
+                                + param_1 - 1]);
                     iVar3 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(pcVar2, (char const*)((int)(_Str2)));
                     if (iVar3 == 0) {
                         iVar4 = 1;
@@ -88,7 +88,7 @@ namespace UI {
                 iVar3 = 0;
                 if (DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]]
+                                + param_1 - 1]]
                     <= 0) {
                     color = 0x7f7f7f;
                 } else if ((((param_1 != DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected)
@@ -97,16 +97,16 @@ namespace UI {
                     || (color = 0xccfaff, iVar4 < 0)) {
                     color = 0xc2f0eb;
                 }
-                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_GameSynchronyState::instance.mapPlayerCountArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]],
+                                + param_1 - 1]],
                     (int)(DAT_ButtonX::instance + 8), (int)(DAT_ButtonY::instance + 3), OpenSHC::Text::TTA_LEFT, color,
                     0x12, FALSE, (iVar4 / 32) + 0x20);
                 if (DAT_GameSynchronyState::instance.mapBalanceArray[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]]
+                                + param_1 - 1]]
                     != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -120,7 +120,7 @@ namespace UI {
                 }
                 if (DAT_GameSynchronyState::instance.mapU4Int0_2Array[DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]]
+                                + param_1 - 1]]
                     != 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -133,9 +133,9 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + param_1 + -1]);
+                                + param_1 - 1]);
                     pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar2, &local_4);
-                    iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                    iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     DAT_TextManagerObject::instance.field12_0x30 = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
                         DAT_TextManagerObject::ptr)(pcVar2, DAT_ButtonX::instance + 0x2c + iVar3,
@@ -144,9 +144,9 @@ namespace UI {
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                     DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                         .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + param_1
-                            + -1]);
+                            - 1]);
                 pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar2, &local_4);
-                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     pcVar2, DAT_ButtonX::instance + 0x18 + iVar3, (int)(DAT_ButtonY::instance + 3), 0xaa - iVar3, color,

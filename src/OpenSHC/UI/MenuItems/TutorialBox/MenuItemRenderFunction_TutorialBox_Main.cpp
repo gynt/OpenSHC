@@ -43,7 +43,7 @@ namespace UI {
                     if (DAT_00df5560::instance == 0) {
                         return;
                     }
-                    if ((int)DAT_00df5558::instance < (int)DAT_00df555c::instance + -1
+                    if ((int)DAT_00df5558::instance < (int)DAT_00df555c::instance - 1
                         && DAT_SoundSystemState::instance.waveOutOpenUnk_0x8 != FALSE
                         && DAT_SoundSystemState::instance.soundActiveUnk_0x0 != 0) {
                         numInGroup = 5;

@@ -35,8 +35,8 @@ namespace UI {
             }
             if (param_1 <= 6) {
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::RecalculateAllies)();
-                if (param_1 + -2 <= (int)DAT_AlliesCount::instance) {
-                    DAT_LastTeamMemberIndex::instance = param_1 + -1;
+                if (param_1 - 2 <= (int)DAT_AlliesCount::instance) {
+                    DAT_LastTeamMemberIndex::instance = param_1 - 1;
                 }
                 return;
             }
@@ -54,7 +54,7 @@ namespace UI {
                 DAT_00df4284::instance = 0;
                 if (sVar1 >= 2) {
                     DAT_00df4284::instance = 1;
-                    DAT_RequestedGoodsByWhoArray::instance[0] = (int)sVar1 + -1;
+                    DAT_RequestedGoodsByWhoArray::instance[0] = (int)sVar1 - 1;
                     DAT_SentOrRequestedGoodsAmount::instance
                         = (int)DAT_GameState::instance
                               .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

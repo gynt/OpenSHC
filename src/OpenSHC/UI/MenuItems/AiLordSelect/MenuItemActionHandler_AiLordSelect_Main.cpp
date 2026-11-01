@@ -32,7 +32,7 @@ namespace UI {
             }
             if (param_1 <= DAT_GameCore::instance.numOfAIsWithCastleUnk) {
                 DAT_LobbyAddAICurrentlyHoveredAI::instance
-                    = DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[param_1 + -1];
+                    = DAT_GameCore::instance.arrayOfLordIdsWithAIVsUnk[param_1 - 1];
                 int iVar1 = 1;
                 while (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar1] != -1
                     || DAT_GameSynchronyState::instance.currentAIArray[iVar1] != 0) {

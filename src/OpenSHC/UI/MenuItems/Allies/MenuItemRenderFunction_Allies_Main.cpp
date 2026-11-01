@@ -119,7 +119,7 @@ namespace UI {
                 if (param_1 == 1) {
                     DAT_00df51f4::instance = 0;
                 }
-                iVar3 = param_1 + -1;
+                iVar3 = param_1 - 1;
                 if ((int)DAT_AlliesCount::instance <= iVar3) {
                     DAT_ButtonUnknownZero::instance = 0;
                 }
@@ -186,7 +186,7 @@ namespace UI {
                 if (iVar3 == DAT_LastTeamMemberIndex::instance) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x202,
-                        (int)(DAT_ButtonX::instance + -6), (int)(DAT_ButtonY::instance + -6),
+                        (int)(DAT_ButtonX::instance - 6), (int)(DAT_ButtonY::instance - 6),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x201, 0);
                     return;
                 }
@@ -200,10 +200,10 @@ namespace UI {
                 if (iVar3 == 7) {
                     iVar3 = 8;
                 }
-                if (-1 < iVar3 + -2) {
+                if (-1 < iVar3 - 2) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, iVar3 + 0x242,
-                        (int)(DAT_ButtonX::instance + 0x3c), (int)(DAT_ButtonY::instance + -0xc),
+                        (int)(DAT_ButtonX::instance + 0x3c), (int)(DAT_ButtonY::instance - 0xc),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x25b, iVar6);
                 }
                 if (DAT_GameState::instance.playerDataArray[iVar2].isNotNervousByEnemyTroopValue != 0) {
@@ -216,13 +216,13 @@ namespace UI {
                 if (DAT_GameState::instance.playerDataArray[iVar2].requestStateUnk == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x240,
-                        (int)(DAT_ButtonX::instance + -0xf), (int)(DAT_ButtonY::instance + 0x39),
+                        (int)(DAT_ButtonX::instance - 0xf), (int)(DAT_ButtonY::instance + 0x39),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x241, iVar6);
                 }
                 if (DAT_GameState::instance.playerDataArray[iVar2].requestStateUnk == 2) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x25c,
-                        (int)(DAT_ButtonX::instance + -0xf), (int)(DAT_ButtonY::instance + 0x39),
+                        (int)(DAT_ButtonX::instance - 0xf), (int)(DAT_ButtonY::instance + 0x39),
                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x25d, iVar6);
                 }
                 return;
@@ -238,7 +238,7 @@ namespace UI {
                     if (iVar6 == 0) {
                         iVar5 = 1;
                     } else {
-                        if (iVar6 == DAT_ButtonH::instance + -0x18) {
+                        if (iVar6 == DAT_ButtonH::instance - 0x18) {
                             iVar5 = 0xd;
                         } else {
                             iVar5 = 0x7;
@@ -271,7 +271,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
-                iVar3 + 0x18, iVar2 + 0x18, iVar3 + 0x26f, DAT_ButtonH::instance + -0x19 + iVar2, 0x14);
+                iVar3 + 0x18, iVar2 + 0x18, iVar3 + 0x26f, DAT_ButtonH::instance - 0x19 + iVar2, 0x14);
             iVar3 = DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance];
             iVar2 = DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar3];
             if ((iVar2 == -1)
@@ -306,7 +306,7 @@ namespace UI {
                 iVar2 = 8;
             }
             iVar4 = iVar7 + 0x38;
-            int bVar8 = -1 < iVar2 + -2;
+            int bVar8 = -1 < iVar2 - 2;
             if (bVar8) {
                 /*
                   added by script: "Requests"

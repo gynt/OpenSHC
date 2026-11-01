@@ -69,7 +69,7 @@ namespace UI {
                     DAT_ButtonUnknownZero::instance = 1;
                 }
             }
-            if ((param_1 < 9) && (param_1 + -4 == DAT_MapPropertiesState::instance.field69_0x13590)) {
+            if ((param_1 < 9) && (param_1 - 4 == DAT_MapPropertiesState::instance.field69_0x13590)) {
                 if (DAT_MapPropertiesState::instance.field69_0x13590 == 3) {
                 LAB_004baa3d:
                     if (8 < param_1) {
@@ -91,12 +91,12 @@ namespace UI {
                 textNumInGroup = param_1;
                 if (DAT_MapPropertiesState::instance.field69_0x13590 == 4
                     && ((param_1 == 0x3f1 || (param_1 == 0x3f2)) || ((param_1 == 0x3f3 || (param_1 == 0x3f4))))) {
-                    textNumInGroup = param_1 + -1000;
+                    textNumInGroup = param_1 - 1000;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 + -0x3f0,
-                        (int)((int)DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance),
+                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 - 0x3f0,
+                        (int)((int)DAT_ButtonW::instance / 2 - 0x20 + DAT_ButtonX::instance),
                         (int)(DAT_ButtonY::instance + 7));
                     DAT_ButtonY::instance = DAT_ButtonY::instance + 0x48;
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -111,12 +111,12 @@ namespace UI {
             }
             if (DAT_MapPropertiesState::instance.field69_0x13590 == 4) {
                 if ((((param_1 < 0xd) || (1000 < param_1))
-                        && (param_1 + -0x3f1 == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[0])))
-                    || param_1 + -0xd == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[4]))
+                        && (param_1 - 0x3f1 == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[0])))
+                    || param_1 - 0xd == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[4]))
                     goto LAB_004baa59;
             } else {
                 if (DAT_MapPropertiesState::instance.field69_0x13590 == 3) {
-                    if (param_1 < 0xd && param_1 + -8 == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[0]))
+                    if (param_1 < 0xd && param_1 - 8 == (*(int*)&DAT_MapPropertiesState::instance.padding_0x13594[0]))
                         goto LAB_004baa3d;
                 LAB_004bab10:
                     if (0xc < param_1) {
@@ -148,11 +148,11 @@ namespace UI {
             textNumInGroup = param_1;
             if (DAT_MapPropertiesState::instance.field69_0x13590 == 4
                 && ((param_1 == 0x3f1 || (param_1 == 0x3f2)) || ((param_1 == 0x3f3 || (param_1 == 0x3f4))))) {
-                textNumInGroup = param_1 + -1000;
+                textNumInGroup = param_1 - 1000;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 + -0x3f0,
-                    (int)((int)DAT_ButtonW::instance / 2 + -0x20 + DAT_ButtonX::instance),
+                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_ENEMY_FACES, param_1 - 0x3f0,
+                    (int)((int)DAT_ButtonW::instance / 2 - 0x20 + DAT_ButtonX::instance),
                     (int)(DAT_ButtonY::instance + 7));
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 0x48;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;

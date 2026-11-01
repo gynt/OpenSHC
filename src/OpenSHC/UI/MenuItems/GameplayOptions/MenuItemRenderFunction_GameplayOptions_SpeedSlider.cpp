@@ -39,8 +39,8 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 thumbYPos + DAT_ButtonX::instance + 1, (int)(DAT_ButtonY::instance + 2),
-                thumbYPos + DAT_ButtonX::instance + -2 + thumbHeight,
-                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
+                thumbYPos + DAT_ButtonX::instance - 2 + thumbHeight,
+                (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance), (ushort)(color));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 param_3, (int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 7),
                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);

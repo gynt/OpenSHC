@@ -53,7 +53,7 @@ namespace UI {
             BOOLEnum buttonIsInteracting = DAT_ButtonCurrentlyInteracting::instance;
             _yPosition = DAT_ButtonY::instance;
             if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
-                DAT_00df3350::instance = param_1 + -0x16;
+                DAT_00df3350::instance = param_1 - 0x16;
             }
             if (EVar1 == OpenSHC::Map::Units::ERS_CAN_RECRUITUnk) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {

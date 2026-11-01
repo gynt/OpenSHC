@@ -13,7 +13,7 @@ namespace UI {
             switch (param_2) {
             case 1:
                 *minValue = 0;
-                *maxValue = DAT_MapPropertiesState::instance.eventsCount + -0x14;
+                *maxValue = DAT_MapPropertiesState::instance.eventsCount - 0x14;
                 *currentValue = 0;
                 return;
             case 2:
@@ -25,19 +25,19 @@ namespace UI {
                 return;
             case 4:
                 *currentValue = DAT_MapPropertiesState::instance.eventListScrollOffset;
-                *maxValue = DAT_MapPropertiesState::instance.eventsCount + -0x14;
+                *maxValue = DAT_MapPropertiesState::instance.eventsCount - 0x14;
                 return;
             case 5:
                 if (0 < (int)DAT_MapPropertiesState::instance.eventListScrollOffset) {
                     DAT_MapPropertiesState::instance.eventListScrollOffset
-                        = DAT_MapPropertiesState::instance.eventListScrollOffset + -1;
+                        = DAT_MapPropertiesState::instance.eventListScrollOffset - 1;
                     *currentValue = DAT_MapPropertiesState::instance.eventListScrollOffset;
                     return;
                 }
                 break;
             case 6:
                 if ((int)DAT_MapPropertiesState::instance.eventListScrollOffset
-                    < DAT_MapPropertiesState::instance.eventsCount + -0x14) {
+                    < DAT_MapPropertiesState::instance.eventsCount - 0x14) {
                     DAT_MapPropertiesState::instance.eventListScrollOffset
                         = DAT_MapPropertiesState::instance.eventListScrollOffset + 1;
                 }

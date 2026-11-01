@@ -50,7 +50,7 @@ namespace UI {
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 3;
                     iVar1 = 2;
                 } else if (4 < iVar1) {
-                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar1 + -1;
+                    DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar1 - 1;
                     if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 4) {
                         DAT_GameSynchronyState::instance.lobbyMapSortOrder = 0xb;
                     }
@@ -80,16 +80,16 @@ namespace UI {
              */
             switch (iVar1) {
             case 2:
-                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
+                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 1;
                 if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 3) {
                     do {
                         iVar7 = 0;
                         for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
-                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
+                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1];
                             if (DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]
                                 < DAT_GameSynchronyState::instance
                                     .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]) {
-                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
+                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
@@ -101,11 +101,11 @@ namespace UI {
                     do {
                         iVar7 = 0;
                         for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
-                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
+                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1];
                             if (DAT_GameSynchronyState::instance
                                     .mapBalanceArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]]
                                 < DAT_GameSynchronyState::instance.mapBalanceArray[iVar4]) {
-                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
+                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
@@ -120,14 +120,14 @@ namespace UI {
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
                 }
                 param_1 = 7;
-                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
+                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 1;
                 do {
-                    iVar3 = DAT_GameSynchronyState::instance.lobbyMapSortOrder + -5;
+                    iVar3 = DAT_GameSynchronyState::instance.lobbyMapSortOrder - 5;
                     do {
                         iVar9 = 0;
                         iVar7 = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
                         for (iVar4 = 0; iVar4 < iVar1; iVar4 = iVar4 + 1) {
-                            iVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4 + -1];
+                            iVar2 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4 - 1];
                             uVar5 = (DAT_GameSynchronyState::instance.mapPlayerCountArray[iVar2] + iVar3) % 8;
                             uVar6
                                 = (DAT_GameSynchronyState::instance.mapPlayerCountArray[DAT_MenuTextInputState::instance
@@ -135,17 +135,17 @@ namespace UI {
                                       + iVar3)
                                 % 8;
                             if ((int)uVar6 < (int)uVar5) {
-                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4 + -1]
+                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4 - 1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar4] = iVar2;
                                 iVar9 = iVar9 + 1;
                             }
-                            iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
+                            iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 1;
                         }
                         iVar7 = DAT_GameSynchronyState::instance.lobbyMapSortOrder;
                         iVar2 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
                     } while (iVar9 != 0);
-                    param_1 = param_1 + -1;
+                    param_1 = param_1 - 1;
                     DAT_GameSynchronyState::instance.lobbyMapSortOrder = iVar7 + 1;
                     if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 0xc) {
                         DAT_GameSynchronyState::instance.lobbyMapSortOrder = 5;
@@ -156,14 +156,14 @@ namespace UI {
                     && (0 < param_1));
                 break;
             case 0:
-                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber + -1;
+                iVar1 = DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber - 1;
                 if (DAT_GameSynchronyState::instance.lobbyMapSortOrder == 1) {
                     do {
                         iVar7 = 0;
                         for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
-                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
+                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1];
                             if (iVar4 < (int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3]) {
-                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
+                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
@@ -175,9 +175,9 @@ namespace UI {
                     do {
                         iVar7 = 0;
                         for (iVar3 = 0; iVar3 < iVar1; iVar3 = iVar3 + 1) {
-                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1];
+                            iVar4 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1];
                             if ((int)DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] < iVar4) {
-                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 + -1]
+                                DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3 - 1]
                                     = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3];
                                 DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar3] = iVar4;
                                 iVar7 = iVar7 + 1;
@@ -198,7 +198,7 @@ namespace UI {
             if (0 < iVar2) {
                 while (true) {
                     _Str2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
-                        DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + -1]);
+                        DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 - 1]);
                     iVar2 = MACRO_CALL(OpenSHC::OS_Func::__stricmp)(
                         DAT_MapNameCache::instance, (char const*)((int)(_Str2)));
                     if (iVar2 == 0)
@@ -216,7 +216,7 @@ namespace UI {
                 }
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = iVar8;
                 if (7 < iVar8) {
-                    DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar8 + -7;
+                    DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar8 - 7;
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = 7;
                 }
             }

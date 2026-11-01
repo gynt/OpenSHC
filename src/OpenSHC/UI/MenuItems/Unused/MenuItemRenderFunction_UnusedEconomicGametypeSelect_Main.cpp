@@ -58,10 +58,10 @@ namespace UI {
             switch (param_1) {
             case 1:
                 DAT_ButtonX::instance = DAT_ButtonX::instance + 1;
-                DAT_ButtonY::instance = DAT_ButtonY::instance + -1;
+                DAT_ButtonY::instance = DAT_ButtonY::instance - 1;
                 break;
             case 2:
-                DAT_ButtonX::instance = DAT_ButtonX::instance + -1;
+                DAT_ButtonX::instance = DAT_ButtonX::instance - 1;
                 break;
             case 4:
                 DAT_ButtonY::instance = DAT_ButtonY::instance + 2;

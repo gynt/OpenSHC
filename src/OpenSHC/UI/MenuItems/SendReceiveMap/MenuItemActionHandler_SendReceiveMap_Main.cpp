@@ -40,7 +40,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                                + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1]);
+                                + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1]);
                     pcVar3 = local_3f4;
                     do {
                         cVar1 = *pcVar2;
@@ -67,23 +67,22 @@ namespace UI {
                         DAT_GameSynchronyState::instance.mapSendingByteBufferAddress[_addressee] = 0;
                         DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[_addressee] = 0;
                         if (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[_addressee] == 1) {
-                        _fileName = MACRO_CALL_MEMBER(
-                            OpenSHC::IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
-                            DAT_ResourceManager::ptr)();
-                        _fileHandle = MACRO_CALL(OpenSHC::OS_Func::_fopen)(_fileName, "rb");
-                        DAT_GameSynchronyState::instance.mapSendingFileHandles[_addressee] = _fileHandle;
-                        DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                            = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
-                                  [DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                                      + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -1];
-                        DAT_GameSynchronyState::instance.DAT_GameCommandParam2
-                            = DAT_GameSynchronyState::instance.mapSendingFileSize;
-                        DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _addressee;
-                        MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
-                            DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECEIVE_SENT_MAPPARTUnk);
+                            _fileName = MACRO_CALL_MEMBER(
+                                OpenSHC::IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
+                                DAT_ResourceManager::ptr)();
+                            _fileHandle = MACRO_CALL(OpenSHC::OS_Func::_fopen)(_fileName, "rb");
+                            DAT_GameSynchronyState::instance.mapSendingFileHandles[_addressee] = _fileHandle;
+                            DAT_GameSynchronyState::instance.DAT_GameCommandParam0
+                                = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
+                                      [DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
+                                          + DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 1];
+                            DAT_GameSynchronyState::instance.DAT_GameCommandParam2
+                                = DAT_GameSynchronyState::instance.mapSendingFileSize;
+                            DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = _addressee;
+                            MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
+                                DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_RECEIVE_SENT_MAPPARTUnk);
                         }
-                    }
-                    ;
+                    };
                 }
                 goto LAB_004b12ab;
             }

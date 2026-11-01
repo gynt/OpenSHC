@@ -64,24 +64,24 @@ namespace UI {
                 }
                 if ((0x13 < param_1) || (param_1 < 10)) {
                     if (param_1 == 4) {
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2, 0x2a2,
                             (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance), (iVar2 / 32) + 0x20);
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
                             (int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance + 0x2a2),
-                            (int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance * 0x46 + -0x32
+                            (int)(DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance * 0x46 - 0x32
                                 + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance), (iVar2 / 32) + 0x20);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     }
                     if (param_1 == 0x14) {
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         iVar2 = (iVar2 / 32) + 0x20;
                         BVar1 = FALSE;
                         iVar3 = DAT_ButtonY::instance + 1;
@@ -89,23 +89,24 @@ namespace UI {
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE,
-                                DAT_GameSynchronyState::instance.skirmishGameIntensityType + -1),
-                            DAT_ButtonX::instance + 0xb4, iVar3, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, BVar1, iVar2);
+                                DAT_GameSynchronyState::instance.skirmishGameIntensityType - 1),
+                            DAT_ButtonX::instance + 0xb4, iVar3, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11, BVar1,
+                            iVar2);
                         if ((int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance < 3) {
-                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 3,
                                 (int)(DAT_ButtonX::instance + 0xb4), (int)(DAT_ButtonY::instance + 0x1a),
                                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, (iVar2 / 32) + 0x20);
                         }
                         if (3 < (int)DAT_GameSynchronyState::instance.skirmishCurrentAdvantageBalance) {
-                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,
                                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_TYPE, 4,
                                 (int)(DAT_ButtonX::instance + 0xb4), (int)(DAT_ButtonY::instance + 0x1a),
                                 OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, (iVar2 / 32) + 0x20);
                         }
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
@@ -119,7 +120,7 @@ namespace UI {
                             && DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                             _goldMultiplier = 3;
                         }
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                             DAT_RenderingDefinedData::instance
@@ -131,7 +132,7 @@ namespace UI {
                                 * _goldMultiplier,
                             (int)(DAT_ButtonX::instance + 110), (int)(DAT_ButtonY::instance + 0x30),
                             OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (iVar2 / 32) + 0x20);
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                             DAT_RenderingDefinedData::instance
@@ -145,7 +146,7 @@ namespace UI {
                             OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, (iVar2 / 32) + 0x20);
                     } else if (param_1 < 4) {
                         if (param_1 == DAT_GameSynchronyState::instance.skirmishGameIntensityType) {
-                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                            iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                             iVar3 = DAT_UIButtonDefinedData::instance
                                         .ButtonGmDataArray[DAT_CurrentButtonGmDataIndex::instance]
                                         .pictureInGm_0x4
@@ -167,14 +168,13 @@ namespace UI {
                                 return;
                             }
                         }
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderCurrentButtonToScreenMenuWithBlendingUnk)(
                             (iVar2 / 32) + 0x20);
                         return;
                     }
                 }
             }
-            return;
         }
 
     }

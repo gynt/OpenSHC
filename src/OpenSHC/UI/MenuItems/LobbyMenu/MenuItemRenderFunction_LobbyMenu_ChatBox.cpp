@@ -54,14 +54,14 @@ namespace UI {
                         BVar1 != FALSE)) {
                     return;
                 }
-                int iVar2 = DAT_ButtonBackgroundBlendStrength::instance + -0x20;
+                int iVar2 = DAT_ButtonBackgroundBlendStrength::instance - 0x20;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 if (param_1 != -3) {
                     if (param_1 == -2) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                             DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance, (int)(DAT_ButtonY::instance + 2),
                             (int)(DAT_ButtonW::instance + DAT_ButtonX::instance),
-                            (int)(DAT_ButtonH::instance + -2 + DAT_ButtonY::instance), (iVar2 * 0x10 / 32) + 0x20);
+                            (int)(DAT_ButtonH::instance - 2 + DAT_ButtonY::instance), (iVar2 * 0x10 / 32) + 0x20);
                         _widthTillCursor
                             = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor,
                                 DAT_UserTextHandlerState::ptr)();
@@ -69,19 +69,19 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                                 DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _widthTillCursor,
                                 (int)(DAT_ButtonY::instance + 2), DAT_ButtonX::instance + 7 + _widthTillCursor,
-                                (int)(DAT_ButtonH::instance + -2 + DAT_ButtonY::instance),
+                                (int)(DAT_ButtonH::instance - 2 + DAT_ButtonY::instance),
                                 (ushort)(COL_DARK_LIME::instance.shortValue));
                         }
-                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                        iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                         iVar2 = (iVar2 / 32) + 0x20;
                         BVar1 = FALSE;
                         yParam = DAT_ButtonY::instance + 5;
                         xParam = DAT_ButtonX::instance + 8;
                         textAddress = MACRO_CALL_MEMBER(
                             OpenSHC::Text::UserTextHandler_Func::getCurrentText, DAT_UserTextHandlerState::ptr)();
-                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                            DAT_TextManagerObject::ptr)(textAddress, xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xffffff,
-                            0, 0x13, BVar1, iVar2);
+                        MACRO_CALL_MEMBER(
+                            OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                            textAddress, xParam, yParam, OpenSHC::Text::TTA_LEFT, 0xffffff, 0, 0x13, BVar1, iVar2);
                     }
                     iVar2 = (iVar2 * 0x20 / 32) + 0x20;
                     if (param_1 == -1) {
@@ -103,7 +103,7 @@ namespace UI {
                     (int)(DAT_ButtonH::instance + DAT_ButtonY::instance), (iVar2 * 0x10 / 32) + 0x20);
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::renderChatMessageList,
                     DAT_GameSynchronyState::ptr)(DAT_ButtonX::instance + 8,
-                    (int)(DAT_ButtonH::instance + -0x1f + DAT_ButtonY::instance),
+                    (int)(DAT_ButtonH::instance - 0x1f + DAT_ButtonY::instance),
                     (int)(DAT_GameSynchronyState::instance.chatScrollOffset));
             }
         }

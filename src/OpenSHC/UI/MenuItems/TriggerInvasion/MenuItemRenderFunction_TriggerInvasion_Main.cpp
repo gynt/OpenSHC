@@ -111,11 +111,11 @@ namespace UI {
             if (number != 0) {
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance),
                         (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xc2f0eb, 0x12, FALSE, 0);
                 } else {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
-                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance + -10 + DAT_ButtonX::instance),
+                        DAT_TextManagerObject::ptr)(number, (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance),
                         (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                 }
             }
@@ -127,7 +127,6 @@ namespace UI {
                           + (GMTotalPicturesProcessed::instance[0xae] + imageID) * 0x10 + 0x72)
                         / 2)
                     + 0xf);
-            return;
         }
 
     }

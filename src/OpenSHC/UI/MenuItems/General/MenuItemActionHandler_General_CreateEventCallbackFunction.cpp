@@ -469,7 +469,7 @@ namespace UI {
                               .popularity;
                     if (6000 < iVar8) {
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .popularity = (iVar8 + -6000) / 2 + 6000;
+                            .popularity = (iVar8 - 6000) / 2 + 6000;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Game::GameStateStructures_Func::spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
@@ -528,7 +528,7 @@ namespace UI {
                         .someCount49 = 0xc;
                     iVar7 = DAT_GameState::instance.playerDataArray[iVar8].popularity;
                     if (6000 < iVar7) {
-                        DAT_GameState::instance.playerDataArray[iVar8].popularity = (iVar7 + -6000) / 2 + 6000;
+                        DAT_GameState::instance.playerDataArray[iVar8].popularity = (iVar7 - 6000) / 2 + 6000;
                     }
                     iVar8 = 0;
                     if (0 < DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8) {

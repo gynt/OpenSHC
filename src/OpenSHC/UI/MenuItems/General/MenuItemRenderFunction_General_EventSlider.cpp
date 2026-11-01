@@ -60,7 +60,7 @@ namespace UI {
             case 0x15:
                 if (DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                         .data.scenario.ScenarioEventType
-                    != param_1 + -1) {
+                    != param_1 - 1) {
                     return;
                 }
                 break;
@@ -74,8 +74,8 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 DAT_ButtonX::instance + thumbYPos + 1, (int)(DAT_ButtonY::instance + 2),
-                DAT_ButtonX::instance + thumbYPos + -2 + thumbHeight,
-                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
+                DAT_ButtonX::instance + thumbYPos - 2 + thumbHeight,
+                (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance), (ushort)(color));
             if ((param_1 == -2) && (param_3 == 10)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)("-", (int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance),

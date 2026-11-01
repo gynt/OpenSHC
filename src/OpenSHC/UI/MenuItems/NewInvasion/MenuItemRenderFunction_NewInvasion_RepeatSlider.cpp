@@ -49,13 +49,13 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 thumbXPos + DAT_ButtonX::instance + 1, (int)(DAT_ButtonY::instance + 2),
-                thumbXPos + DAT_ButtonX::instance + -2 + thumbWidth,
-                (int)(DAT_ButtonH::instance + -4 + DAT_ButtonY::instance), (ushort)(color));
+                thumbXPos + DAT_ButtonX::instance - 2 + thumbWidth,
+                (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance), (ushort)(color));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 sliderValue, (int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance),
                 (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
             int yParam = DAT_ButtonY::instance + 6;
-            xParam = DAT_ButtonX::instance + -0x96;
+            xParam = DAT_ButtonX::instance - 0x96;
             /*
               added by script: "Repeat"
              */

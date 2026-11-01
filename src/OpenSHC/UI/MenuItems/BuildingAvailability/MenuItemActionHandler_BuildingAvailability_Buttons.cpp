@@ -22,12 +22,12 @@ namespace UI {
                 if (param_1 < 2000)
                     goto LAB_004bb359;
             } else if (param_1 < 2000) {
-                DAT_MapPropertiesState::instance.buildingAvailability[DAT_MissionAestheticsDefinedData::instance
-                        .BuildingAvailabilityRowOrder[DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                            + param_1]]
-                    = DAT_MapPropertiesState::instance.buildingAvailability[DAT_MissionAestheticsDefinedData::instance
-                              .BuildingAvailabilityRowOrder[DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                                  + param_1]]
+                DAT_MapPropertiesState::instance
+                    .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
+                            [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]]
+                    = DAT_MapPropertiesState::instance
+                          .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
+                                  [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]]
                     ^ 1;
             }
             if (param_1 < 3000) {
@@ -57,14 +57,14 @@ namespace UI {
         LAB_004bb359:
             if (param_1 == -2) {
                 if (DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                    < (int)DAT_MapPropertiesState::instance.buildingAvailabilityRowCount + -0x13) {
+                    < (int)DAT_MapPropertiesState::instance.buildingAvailabilityRowCount - 0x13) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
                         = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + 1;
                 }
             } else if (param_1 == -1) {
                 if (0 < DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset) {
                     DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset
-                        = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + -1;
+                        = DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset - 1;
                 }
             } else if (param_1 == 0x25) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog,
