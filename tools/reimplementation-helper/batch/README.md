@@ -81,6 +81,10 @@ it was applied, but none is guaranteed to be -- re-measure after running one.
 | `unguarded_do.py [filter] [--apply]` | Collapse `if (cond) { do { ... } while (cond); }` into `while (cond) { ... }`. Usually neutral, but **measure**: where the original really did compile a do-while this has cost up to 22% on one function, so re-run `reccmp_report.py cmp` and revert per file. |
 | `docount.py [filter] [--apply]` | Counted `i = 0; do { ... i = i + 1; } while (i < N);` -> `for (int i = 0; i < N; i = i + 1)`. Only when the counter is stepped by the last statement, written nowhere else, and not read after the loop. |
 | `early_return.py [filter] [--apply]` | Turn a function whose body is one big `if (bounds guard) { ... } return X;` into `if (!guard) { return X; } ...`. Inverts a top-level `&&` chain of simple comparisons by De Morgan and bails on anything else. Measured code-generation neutral across 20 functions; it is a readability change. |
+| `unplusminus.py [filter] [--apply]` | Style guide rule 15: `+ -1` -> `- 1` and `- -1` -> `+ 1`. Literal operands only - `a + -b` negates a variable and stays. Match neutral; 1675 sites over the wilps-2026-10-18 import. |
+| `untrailing_return.py [filter] [--apply]` | Style guide rule 1: drop a `void` function's trailing `return;`. Walks braces rather than matching `return;
+}`, so an early return in an `if`, a loop or a `switch` arm is kept - which is the bug the guide warns a regex has. Also masks comments and string literals, so a `}` inside one cannot shift the depth. |
+| `strip_noise_comments.py [filter] [--apply] [--show]` | Remove the Ghidra `WARNING:` blocks and the import's `decompilerscript:` marker above a `// FUNCTION:` line. A block goes only when *every* line of it is noise, so hand-written notes survive; `--all-blocks` restores the old indiscriminate behaviour. |
 
 ## Typical loop
 

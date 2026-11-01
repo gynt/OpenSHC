@@ -10,14 +10,18 @@ provenance marker the import writes:
       decompilerscript: committed: 2025-01-30 21:57:43.216000
      */
 
-Every block comment in the run directly above a `// FUNCTION:` line is deleted, including
-blocks holding hand-written notes. Comments inside a body (the string literal annotated
-next to a playWAVSFX call, say) and `//` line comments are never touched.
+A block comment in the run directly above a `// FUNCTION:` line is deleted only when *every*
+one of its content lines is such a complaint or marker. A block holding a hand-written note is
+kept, and so is one that mixes a note with a noise line - over the wilps-2026-10-18 import that
+rule is the difference between 2106 noise blocks and taking 72 hand-written notes with them
+(`fixme:bug:` entries, parameter-type findings, hand-written-assembly remarks). Pass
+`--all-blocks` for the old indiscriminate behaviour. Comments inside a body (the string literal
+annotated next to a playWAVSFX call, say) and `//` line comments are never touched.
 
 Dry run by default like the other rewriting scripts: read the report, then pass --apply.
 
 usage:
-  strip_noise_comments.py [path-filter] [--apply] [--show]
+  strip_noise_comments.py [path-filter] [--apply] [--show] [--all-blocks]
 """
 
 import re
@@ -30,6 +34,15 @@ FUNCTION_LINE = re.compile(r"^\s*//\s*FUNCTION:")
 # a whole-line comment opener/closer, so a trailing comment on a line of code is not mistaken for one
 OPEN = re.compile(r"^\s*/\*")
 CLOSE = re.compile(r"\*/\s*$")
+# Ghidra's analysis complaints and the import's provenance marker: the only lines that make a
+# block disposable. Anything else in a block is somebody's note.
+NOISE = re.compile(r"^(WARNING:|decompilerscript:)")
+
+
+def is_noise(block):
+    """True when every content line of the block is a Ghidra complaint or the import marker."""
+    body = content_lines(block)
+    return bool(body) and all(NOISE.match(line) for line in body)
 
 
 def content_lines(block):
@@ -67,16 +80,19 @@ def main():
     path_filter = ""
     apply = False
     show = False
+    all_blocks = False
     for arg in sys.argv[1:]:
         if arg == "--apply":
             apply = True
         elif arg == "--show":
             show = True
+        elif arg == "--all-blocks":
+            all_blocks = True
         else:
             path_filter = arg
 
     files = sorted(p.as_posix() for p in Path("src/OpenSHC").rglob("*.cpp"))
-    removed = touched = 0
+    removed = touched = kept = 0
     for f in files:
         if path_filter not in f:
             continue
@@ -87,11 +103,18 @@ def main():
             if not FUNCTION_LINE.match(line):
                 continue
             for start, end in preceding_blocks(lines, i):
+                block = lines[start:end + 1]
+                if not all_blocks and not is_noise(block):
+                    kept += 1
+                    if show:
+                        print("%s:%d KEEP | %s"
+                              % (f, start + 1, " / ".join(content_lines(block))[:120]))
+                    continue
                 drop.update(range(start, end + 1))
                 n += 1
                 if show:
                     print("%s:%d | %s" % (f, start + 1,
-                                          " / ".join(content_lines(lines[start:end + 1]))[:120]))
+                                          " / ".join(content_lines(block))[:120]))
         if not n:
             continue
         removed += n
@@ -100,8 +123,9 @@ def main():
         if apply:
             common.write_text(f, "\n".join(l for i, l in enumerate(lines) if i not in drop))
 
-    print("%d block comment(s) in %d file(s)%s"
-          % (removed, touched, "" if apply else " (dry run, pass --apply)"))
+    print("%d block comment(s) in %d file(s), %d note block(s) kept%s"
+          % (removed, touched, kept, "" if apply else " (dry run, pass --apply)"))
 
 
-main()
+if __name__ == "__main__":
+    main()
