@@ -17,51 +17,54 @@ namespace Map {
         using Map::Units::States::UnitState;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x00523920
-        int TribesState::scatterTribeUnitsRandomly(int param_1)
+        int TribesState::scatterTribeUnitsRandomly(int tribeID)
         {
-            int iVar2;
-            int iVar3;
-            if (!param_1) {
+            int _queueTileCount;
+            int _targetTile;
+            int unitID;
+            int _rowStartTile;
+            if (tribeID == 0) {
                 return 0;
             }
-            int sVar1 = this->tribes[param_1].selectionTargetUnitID;
+            int const _targetUnitID = this->tribes[tribeID].selectionTargetUnitID;
             int unitSelectionIndex = 0;
-            int index = 100;
+            int _searchQueueIndex = 100;
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
-                DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[sVar1].x,
-                (int)(DAT_UnitsState::instance.units[sVar1].y), -1, -1, 5000, 0);
-            iVar2 = MACRO_CALL_MEMBER(
+                DAT_PathFindingState::ptr)(DAT_UnitsState::instance.units[_targetUnitID].x,
+                DAT_UnitsState::instance.units[_targetUnitID].y, -1, -1, 5000, 0);
+            _queueTileCount = MACRO_CALL_MEMBER(
                 Map::Navigation::PathFindingState_Func::getComputationalTileIndex, DAT_PathFindingState::ptr)();
-            int iVar4 = (int)this->tribes[param_1].size;
+            int _size = this->tribes[tribeID].size;
             /*
               An early return, which is where the original puts its own `xor eax, eax`.
              */
-            if (iVar2 < iVar4 * 0x10 + 200) {
+            if (_queueTileCount < _size * 16 + 200) {
                 return 0;
             }
-            if (0 < iVar4) {
+            if (0 < _size) {
                 do {
-                    iVar2 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                        param_1, unitSelectionIndex);
+                    unitID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, unitSelectionIndex);
                     unitSelectionIndex = unitSelectionIndex + 1;
-                    if ((DAT_UnitsState::instance.units[iVar2].logicalState == Map::Units::ULS_NORMAL)
-                        && (DAT_UnitsState::instance.units[iVar2].dying == 0)) {
-                        index = index + 1 + (DAT_UnitsState::instance.units[iVar2].fixedRng & 0xf);
-                        iVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::getTileInSearchQueue,
-                            DAT_PathFindingState::ptr)(index);
+                    if (DAT_UnitsState::instance.units[unitID].logicalState == Map::Units::ULS_NORMAL
+                        && DAT_UnitsState::instance.units[unitID].dying == 0) {
+                        _searchQueueIndex
+                            = _searchQueueIndex + 1 + (DAT_UnitsState::instance.units[unitID].fixedRng & 15);
+                        _targetTile = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::getTileInSearchQueue,
+                            DAT_PathFindingState::ptr)(_searchQueueIndex);
                         /*
                           One sign-extended read shared by both uses: the original has a
                           single `movsx ecx, word ptr [..]` and stores its low word, where
                           reading the `short` array twice leaves a `movzx` plus a `movsx`.
                          */
                         int const _targetTileY
-                            = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[iVar3];
-                        iVar4 = DAT_ViewportRenderState::instance.translationMatrix[_targetTileY].addXgetTile;
-                        DAT_UnitsState::instance.units[iVar2].targetY = (short)_targetTileY;
-                        DAT_UnitsState::instance.units[iVar2].targetX = (short)iVar3 - (short)iVar4;
-                        DAT_UnitsState::instance.units[iVar2].state.generic = ((UnitStateShort)0xd1);
+                            = DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[_targetTile];
+                        _rowStartTile = DAT_ViewportRenderState::instance.translationMatrix[_targetTileY].addXgetTile;
+                        DAT_UnitsState::instance.units[unitID].targetY = (short)_targetTileY;
+                        DAT_UnitsState::instance.units[unitID].targetX = (short)_targetTile - (short)_rowStartTile;
+                        DAT_UnitsState::instance.units[unitID].state.generic = 209;
                     }
-                } while (unitSelectionIndex < this->tribes[param_1].size);
+                } while (unitSelectionIndex < this->tribes[tribeID].size);
             }
             return 1;
         }
