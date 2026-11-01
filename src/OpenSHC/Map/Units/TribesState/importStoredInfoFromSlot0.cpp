@@ -9,7 +9,6 @@ namespace Map {
         void TribesState::importStoredInfoFromSlot0(undefined4 param_1, int tribeID)
         {
             /*
-            /*
               The copy is the fall-through and the stance block goes last. The original
               jumps away when the flag is clear (`je 0xe9`); the block at 0x522ed0 copies
               the stance and ends in its own `ret 8`, reaching the field through an
@@ -34,8 +33,8 @@ namespace Map {
                   between the two passes. Ten is right: the copy covers 0x260 to 0x287,
                   which is where `rallyPointArray` ends.
                  */
-                for (int _coordinate = 0; _coordinate < 2; _coordinate = _coordinate + 1) {
-                    for (int _point = 0; _point < 10; _point = _point + 1) {
+                for (int _coordinate = 0; _coordinate < 2; ++_coordinate) {
+                    for (int _point = 0; _point < 10; ++_point) {
                         this->tribes[tribeID].rallyPointArray[_point][_coordinate]
                             = this->tribes[0].rallyPointArray[_point][_coordinate];
                     }

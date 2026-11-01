@@ -13,12 +13,12 @@ namespace Map {
         dword TribesState::spawnUnitsAroundLocation(
             undefined4 param_1, int aroundX, int aroundY, int playerID, UnitType unitType, int count)
         {
-            if ((aroundX <= 0) && (aroundY <= 0)) {
-                return (dword)(0);
+            if (aroundX <= 0 && aroundY <= 0) {
+                return 0;
             }
             dword _tribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(playerID, 0);
             if ((int)_tribeID <= 0) {
-                return (dword)(0);
+                return 0;
             }
             this->tribes[_tribeID].someIndex = 0;
             this->tribes[_tribeID].attackWave = 0;
@@ -26,9 +26,9 @@ namespace Map {
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSuitableSpawnLocationUnk,
                 DAT_PathFindingState::ptr)(aroundX, aroundY, -1, -1, 2000, 0);
             MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::spawnUnitAndAddToTribe,
-                DAT_PathFindingState::ptr)(playerID, playerID, count, unitType, (undefined4)((int)(_tribeID)));
+                DAT_PathFindingState::ptr)(playerID, playerID, count, unitType, _tribeID);
             this->tribes[_tribeID].pendingScatterMove = 1;
-            return (dword)(_tribeID);
+            return _tribeID;
         }
 
     }

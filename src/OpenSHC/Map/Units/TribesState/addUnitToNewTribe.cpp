@@ -39,6 +39,16 @@ namespace Map {
                     || (this->tribes[_tribeID].tribeState == 0))) {
                 int _newTribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createTribe, this)(_playerID, 0);
                 if (0 < _newTribeID) {
+                    /*
+                      The Arabian and siege tribe types are a contiguous run with no names
+                      in AITribeType yet, so they are written as the decimals the binary
+                      has: 24 ballista, 25 archer, 26 slave, 27 slinger, 28 assassin,
+                      29 horse archer, 30 swordsman, 31 firethrower. The import rendered
+                      30 as OFFSET_CROSSBOWMAN, which belongs to a different enum
+                      (AIVUnitTypeTribeArrayOffset), and 12 as
+                      `AITT_SWORDSMEN | AITT_LADDERMEN`, which is one unnamed value rather
+                      than a union of two.
+                     */
                     UnitTypeShort _unitType = DAT_UnitsState::instance.units[unitID].unitType;
                     if (_unitType == Map::Units::UT_E_ARCHER) {
                         this->tribes[_newTribeID].tribeType = AI::Tribes::AITT_ARCHERS;
@@ -59,26 +69,25 @@ namespace Map {
                     } else if (_unitType == Map::Units::UT_E_ENGINEER) {
                         this->tribes[_newTribeID].tribeType = AI::Tribes::AITT_ENGINEERS;
                     } else if (_unitType == Map::Units::UT_HOPSFARMER) {
-                        this->tribes[_newTribeID].tribeType = AI::Tribes::AITT_SWORDSMEN | AI::Tribes::AITT_LADDERMEN;
+                        this->tribes[_newTribeID].tribeType = (AITribeType)12;
                     } else if (_unitType == Map::Units::UT_TUNNELER) {
                         this->tribes[_newTribeID].tribeType = AI::Tribes::AITT_TUNNELERS;
                     } else if (_unitType == Map::Units::UT_A_ARCHER) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x19);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)25;
                     } else if (_unitType == Map::Units::UT_A_SLAVE) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x1a);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)26;
                     } else if (_unitType == Map::Units::UT_A_SLINGER) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x1b);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)27;
                     } else if (_unitType == Map::Units::UT_A_ASSASSIN) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x1c);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)28;
                     } else if (_unitType == Map::Units::UT_A_HARCHER) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x1d);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)29;
                     } else if (_unitType == Map::Units::UT_A_SWORDSMAN) {
-                        this->tribes[_newTribeID].tribeType
-                            = (AI::Tribes::AITribeTypeShort)AI::Tribes::OFFSET_CROSSBOWMAN;
+                        this->tribes[_newTribeID].tribeType = (AITribeType)30;
                     } else if (_unitType == Map::Units::UT_A_FIRETHROWER) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x1f);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)31;
                     } else if (_unitType == Map::Units::UT_S_FBALLISTA) {
-                        this->tribes[_newTribeID].tribeType = ((AITribeType)0x18);
+                        this->tribes[_newTribeID].tribeType = (AITribeType)24;
                     }
                     this->tribes[_newTribeID].someIndex = 1;
                     this->tribes[_newTribeID].attackWave = (short)DAT_TroopValueState::instance.attackInfo.inv_count;
