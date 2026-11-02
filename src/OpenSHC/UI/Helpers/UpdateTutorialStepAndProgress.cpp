@@ -95,7 +95,7 @@ namespace UI {
             DWORD_00df564c::instance = timeGetTime();
         }
         if (!INT_00df5650::instance && 0 < DAT_00df5558::instance && DAT_00df5558::instance < DAT_00df555c::instance
-            && (DVar1 = timeGetTime(), 1000 < DVar1 - DWORD_00df564c::instance)) {
+            && (DVar1 = timeGetTime(), DVar1 > 1000 - DWORD_00df564c::instance)) {
             INT_00df5650::instance = 1;
             MACRO_CALL(OS_Func::_sprintf)(local_44, "%s%s", "fx\\speech\\",
                 (DAT_00df5558::instance + DAT_TutorialCurrentStep::instance * 3) * 32 + 0xb3d810);
@@ -356,7 +356,7 @@ namespace UI {
             && DAT_MissionAestheticsDefinedData::instance
                     .TutorialStepShowsContinueButton[DAT_TutorialCurrentStep::instance]
                 != 0
-            && DAT_00df555c::instance - 1 <= DAT_00df5558::instance) {
+            && DAT_00df555c::instance - DAT_00df5558::instance >= 1) {
             /*
               show continue button?
              */

@@ -390,7 +390,7 @@ namespace UI {
                 iVar5 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x28
                     + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 iVar6 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x12d;
-                if (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x12d < iVar5) {
+                if (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + iVar5 > 0x12d) {
                     iVar6 = iVar5;
                 }
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -461,7 +461,7 @@ namespace UI {
                     iVar5 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x28
                         + DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                     iVar6 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x12d;
-                    if (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x12d < iVar5) {
+                    if (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + iVar5 > 0x12d) {
                         iVar6 = iVar5;
                     }
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue

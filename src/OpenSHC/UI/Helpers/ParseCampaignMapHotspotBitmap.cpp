@@ -87,7 +87,7 @@ namespace UI {
                             _File);
                         iVar6 = iVar6 - 800;
                         iVar9 = iVar9 + 800;
-                    } while (-800 < iVar6);
+                    } while (-iVar6 > 800);
                 }
                 local_18 = 0;
                 local_14 = 0;

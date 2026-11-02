@@ -44,7 +44,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                     DE::SHCDE::GM_INTERFACE_ICONS3, 100, (int)(xPos), thumbYPos + yPos);
                 _yPos = thumbYPos + 10;
-                if (10 < thumbHeight - 10) {
+                if (thumbHeight > 10 - 10) {
                     _yPosEnd = thumbHeight - 0x14;
                     do {
                         MACRO_CALL_MEMBER(
@@ -66,7 +66,7 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 100, (int)(xPos),
                     thumbYPos + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, 0x67, blendStrength);
                 _yPos = thumbYPos + 10;
-                if (10 < thumbHeight - 10) {
+                if (thumbHeight > 10 - 10) {
                     thumbYPos = thumbHeight - 0x14;
                     do {
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
