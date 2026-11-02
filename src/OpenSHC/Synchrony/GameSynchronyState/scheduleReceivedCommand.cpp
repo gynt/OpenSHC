@@ -38,15 +38,15 @@ namespace Synchrony {
                 }
             }
             if (time) {
-                if ((int)DAT_GameCore::instance.mapTimeInTicks < (int)time) {
+                if ((int)DAT_GameCore::instance.mapTimeInTicks >= (int)time) {
+                    this->lateCommandPenalty = this->lateCommandPenalty + 2;
+                } else {
                     if ((int)(time - DAT_GameCore::instance.mapTimeInTicks) < (int)DAT_GameSynchronyState::instance
                             .DAT_LagIndicatorPerPlayer[DAT_GameSynchronyState::instance.currentPlayerSlotID]) {
                         DAT_GameSynchronyState::instance
                             .DAT_LagIndicatorPerPlayer[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             = (short)time - (short)DAT_GameCore::instance.mapTimeInTicks;
                     }
-                } else {
-                    this->lateCommandPenalty = this->lateCommandPenalty + 2;
                 }
             }
             this->DAT_CurrentGameCommandID = this->DAT_GameCommandArrayIndex;
@@ -65,7 +65,16 @@ namespace Synchrony {
             ((void (*)())DAT_ProtocolDefinedData::instance.commandFunctions
                     [DAT_GameSynchronyState::instance.DAT_GameCommandArray[this->DAT_CurrentGameCommandID].commandType
                         + 0x15])();
-            if ((int)DAT_GameSynchronyState::instance.DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time <= 0) {
+            if ((int)DAT_GameSynchronyState::instance.DAT_GameCommandArray[this->DAT_CurrentGameCommandID].time > 0) {
+                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(this->DAT_CommandSize,
+                    address,
+                    (void*)((int)(&DAT_GameSynchronyState::instance.DAT_GameCommandArray[this->DAT_CurrentGameCommandID]
+                            .parameters)));
+                this->DAT_GameCommandArrayIndex = this->DAT_GameCommandArrayIndex + 1;
+                if (199 < this->DAT_GameCommandArrayIndex) {
+                    this->DAT_GameCommandArrayIndex = 0;
+                }
+            } else {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(
                     this->DAT_CommandSize, address, (void*)((int)(this->DAT_GameCommandFixedParameterLocation)));
                 int iVar1 = this->DAT_CurrentGameCommandID;
@@ -84,15 +93,6 @@ namespace Synchrony {
                         .commandFunctions[this->DAT_GameCommandArray[iVar1].commandType + 0x15])();
                 MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::clearGameCommandEntry, this)(
                     this->DAT_CurrentGameCommandID);
-            } else {
-                MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::copyData, DAT_LowLevelMemory::ptr)(this->DAT_CommandSize,
-                    address,
-                    (void*)((int)(&DAT_GameSynchronyState::instance.DAT_GameCommandArray[this->DAT_CurrentGameCommandID]
-                            .parameters)));
-                this->DAT_GameCommandArrayIndex = this->DAT_GameCommandArrayIndex + 1;
-                if (199 < this->DAT_GameCommandArrayIndex) {
-                    this->DAT_GameCommandArrayIndex = 0;
-                }
             }
         }
     }

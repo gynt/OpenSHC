@@ -74,7 +74,35 @@ namespace Synchrony {
             _charIndex = 0;
             do {
                 _argChar = arguments[_charIndex3];
-                if (_argChar == '\"') {
+                if (_argChar != '\"') {
+                    if (_argChar == '\0') {
+                        _candidates[_candidateIndex][_charIndex] = '\0';
+                        local_409 = '\x01';
+                        _nextArgCharIndex = _charIndex3;
+                        goto LAB_00491101;
+                    }
+                    if (_argChar == ' ') {
+                        if (_quotation == false) {
+                            _char = arguments[_charIndex3 + 1];
+                            _candidates[_candidateIndex][_charIndex] = '\0';
+                            if (_char != '+') {
+                                if (_char == '\"') {
+                                    _char = arguments[_charIndex3 + 2];
+                                    goto LAB_004910e8;
+                                }
+                                goto LAB_004910ea;
+                            }
+                            goto LAB_004910fb;
+                        }
+                        _charIndex2 = _charIndex + 1;
+                        _candidates[_candidateIndex][_charIndex] = ' ';
+                        _nextArgCharIndex = _charIndex3 + 1;
+                    } else {
+                        _charIndex2 = _charIndex + 1;
+                        _candidates[_candidateIndex][_charIndex] = _argChar;
+                        _nextArgCharIndex = _charIndex3 + 1;
+                    }
+                } else {
                     _nextArgCharIndex = _charIndex3 + 1;
                     _quotation = _quotation == false;
                     _charIndex2 = _charIndex;
@@ -214,34 +242,6 @@ namespace Synchrony {
                         }
                         _candidates[0][0] = '\0';
                         _candidates[1][0] = '\0';
-                    }
-                } else {
-                    if (_argChar == '\0') {
-                        _candidates[_candidateIndex][_charIndex] = '\0';
-                        local_409 = '\x01';
-                        _nextArgCharIndex = _charIndex3;
-                        goto LAB_00491101;
-                    }
-                    if (_argChar == ' ') {
-                        if (_quotation == false) {
-                            _char = arguments[_charIndex3 + 1];
-                            _candidates[_candidateIndex][_charIndex] = '\0';
-                            if (_char != '+') {
-                                if (_char == '\"') {
-                                    _char = arguments[_charIndex3 + 2];
-                                    goto LAB_004910e8;
-                                }
-                                goto LAB_004910ea;
-                            }
-                            goto LAB_004910fb;
-                        }
-                        _charIndex2 = _charIndex + 1;
-                        _candidates[_candidateIndex][_charIndex] = ' ';
-                        _nextArgCharIndex = _charIndex3 + 1;
-                    } else {
-                        _charIndex2 = _charIndex + 1;
-                        _candidates[_candidateIndex][_charIndex] = _argChar;
-                        _nextArgCharIndex = _charIndex3 + 1;
                     }
                 }
             LAB_004912f7:

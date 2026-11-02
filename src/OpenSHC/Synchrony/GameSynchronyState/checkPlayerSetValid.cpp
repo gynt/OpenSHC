@@ -33,19 +33,19 @@ namespace Synchrony {
         _pFullIDs = DAT_GameSynchronyState::instance.currentPlayerFullIDArray + 1;
         local_2c = 2;
         do {
-            if (*_pFullIDs == -1) {
-                /*
-                  no human player in this slot
-                 */
-                if (_pFullIDs[0x1b] != 0)
-                    goto LAB_0047e967;
-            } else {
+            if (*_pFullIDs != -1) {
                 _someCounter = _someCounter + 1;
             LAB_0047e967:
                 _teamMemberCounts[_pFullIDs[-0x1e8232]] = _teamMemberCounts[_pFullIDs[-0x1e8232]] + 1;
                 if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER) {
                     _someCounter = _someCounter + 1;
                 }
+            } else {
+                /*
+                  no human player in this slot
+                 */
+                if (_pFullIDs[0x1b] != 0)
+                    goto LAB_0047e967;
             }
             if ((((_pFullIDs[1] != -1) && (_someCounter = _someCounter + 1, _pFullIDs[1] != -1))
                     || (_pFullIDs[0x1c] != 0))

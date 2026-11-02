@@ -55,20 +55,7 @@ namespace Synchrony {
             }
         }
         this->DAT_CurrentTransmitCommandPacketSize = _packetSize;
-        if (commandCategory == 117) {
-            BOOLEnum BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            _dwPriority = 0xfffd;
-            if (!BVar2) {
-            LAB_00487dc7:
-                _dwFlags = 1536 | 1536;
-                goto LAB_00487dda;
-            }
-            /*
-              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
-             */
-            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
-                1537 | 1537 | 1537, &this->DAT_Packet, _packetSize + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
-        } else {
+        if (commandCategory != 117) {
             /*
               0xc
              */
@@ -84,6 +71,19 @@ namespace Synchrony {
              */
             this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo, _dwFlags,
                 &this->DAT_Packet, _packetSize + 4, _dwPriority, 0, (void*)0x0, (DWORD_PTR*)0x0);
+        } else {
+            BOOLEnum BVar2 = MACRO_CALL_MEMBER(Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
+            _dwPriority = 0xfffd;
+            if (!BVar2) {
+            LAB_00487dc7:
+                _dwFlags = 1536 | 1536;
+                goto LAB_00487dda;
+            }
+            /*
+              SendEx(idFrom, idTo, dwFlags, lpData, dwDataSize, dwPriority, dwTimeout,   lpContext, lpdwMsgID)
+             */
+            this->DPLAYX_SendAndReceiveREsult = this->DPLAYX_4A->SendEx(this->DPLAYX_PlayerHandle, idTo,
+                1537 | 1537 | 1537, &this->DAT_Packet, _packetSize + 4, 0xfffd, 0, (void*)0x0, (DWORD_PTR*)0x0);
         }
         if ((this->DPLAYX_SendAndReceiveREsult) && (this->DPLAYX_SendAndReceiveREsult != -0x7ffffff6)) {
             /*
