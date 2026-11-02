@@ -338,6 +338,36 @@ Diff patterns that were reliable (more in the cheat sheet):
   This one is worth sweeping rather than waiting for a diff to point at it: over `UI/MenuItems` 6 of the 10 files
   holding a `< 1)` gained, `MenuItemRenderFunction_LobbyMenu_MapSelectTable` by 7.3 points, while the reverse
   rewrite (`<= 0` to `< 1`) paid on 1 of 13 - so the asm's form really is `<= 0` and not merely a tie.
+  Keep it per site even so: over the UI view and modal folders the same sweep paid on 6 of 9 files but cost
+  `MenuView_CrusadeMap_Prepare` 12.8 points on its three sites, more than it gained anywhere, so applied wholesale
+  it is a net loss of 0.065 of namespace average. "Worth sweeping" means worth trying everywhere, not keeping
+  everywhere.
+- **Rule 12's two forms are not interchangeable, and the choice is a code-generation one.**
+  `string-literals.hpp` gives `char const* const s_x = S_X;`, a pointer *variable*, so a use is a load where the
+  original materialises the string address as an immediate; `string-macros.hpp` gives `S_X`, which expands to the
+  literal and is textually what was there before. The style guide presents the macro as the fallback for when the
+  symbol does not compile (it is `char const*` where the render calls take `char*`, which was 38 of 94 files), but
+  it is also the fallback for when the symbol *measures* worse: 5 of 94 files regressed on the symbol form, one of
+  them `MenuItemActionHandler_SaveLoadMap_Buttons` by 11.4 points, and every one recovered on the macro. Import
+  the literal either way - just reach for the macro the moment the number moves.
+- **Rule 11 pays on a field at a computed offset and loses on a loop induction pointer.** Resolving
+  `(int)DAT_X::ptr + i * 4 + OFFSET` into the array the header declares was worth 3.5 points on
+  `MenuItemActionHandler_UnusedChooseAvailableKeeps_Main` and 4.4 on
+  `MenuItemActionHandler_SiegeAttackingForceAndStartGoods_Main`, because addressing by name lets MSVC fold the
+  index the way the original does. The same rule applied to the two five-at-a-time pointer walks in
+  `RenderDebugNumbersDisplayElement` - the readable index-loop form rule 9 also asks for - cost 3.4 points, so the
+  original really did walk pointers there. Only its magic *bound* was worth replacing
+  (`while (ptr < DAT_GameLoopDurationBuffer::instance + 100 - 1)`, +0.2).
+- A `*(int*)(DAT_X::ptr + i * 4 + OFF)` with no `(int)` cast on the pointer is a **bug**, not a style question:
+  `ptr` is `T* const`, so the arithmetic scales by `sizeof(T)` and the read lands far outside the struct.
+  `MenuItemActionHandler_SiegeAttackingForceAndStartGoods_Main` had one three lines from a correctly cast sibling,
+  and the match *rose* when it was fixed, which is how you can tell the original computed the other address.
+  Grep for `::ptr +` without a preceding `(int)` to find the class.
+- Moving the decompiler's leading declaration block down to each variable's first assignment (`declare_at_use.py`)
+  is code-generation neutral: 82 functions across two namespaces, not one changed by any amount. This looks like
+  it should contradict the declaration-order note above and does not, because the order of first *assignments* -
+  what MSVC allocates from - is what the pass preserves. Rule 10 is about reordering declarations against each
+  other, which this pass never does.
 - **A comparison's operand order is a free lever and pays more often than anything else mechanical.** Ghidra puts
   whichever operand it likes on the left, usually the constant; the original source had the other one there, and
   `cmp a, b` reads `a` into the register the condition destroys, so the two orders allocate differently
@@ -597,6 +627,30 @@ Diff patterns that were reliable (more in the cheat sheet):
   measured *worse* on `updateCrowding` (all three nested variants lost 9-14 points) and made no difference at all on
   `showPopAndGoldPopup` and `createStatsPopUpEntities`, where every shape tied to the decimal because the gap there is
   the loop base-pointer anchor. `try_styles.py` settles it per function; prefer the early-return form on a tie.
+
+## Known blockers in UI
+
+Found while putting the whole build list of `UI/MenuItems` and of the UI view and modal folders through
+`syntax_check.py`. None is a style question; each needs a generated header or a missing file, so the files are
+left out of the local build list rather than worked around.
+
+- **`HoldStrong_lib.func.hpp` exists in no branch of this repository** and 11 `.cpp` files include it, so none of
+  them can build: `OS/_srand`, `OS/_fwprintf`, `OS/basic_ofstream_write`, five `Meta/Destructor_*`,
+  `UI/DisplayElements/RenderUnknownDisplayElement25`,
+  `UI/DisplayElements/RenderInGameWinDefeatWindowDisplayElement` and
+  `UI/MenuItems/Chat/MenuItemRenderFunction_Chat_MostButtons`. They call `HoldStrong_lib_Func::__getptd`.
+- `UI/MenuItems/Chat/MenuItemRenderFunction_Chat_MostButtons` also holds `Text::0xaa`, which is not valid C++:
+  the import dropped the type name from a `(Text::TextAlignment)0xaa` cast. Other callers pass a raw value in
+  that parameter the same way (`(TextAlignment)400`).
+- Five `UI/MenuItems/MenuItemActionHandler_*` files do not compile on generated header types: `int` against
+  `TextMessageBLLookupStructUnion`, against `IO::Graphics::GmID` and against
+  `Map::Buildings::BuildingFailReasonEnum`, and `field_0x3e3` is not a member of `Map::Units::Unit`.
+- Four `UI/MenuViews/MenuView_*_DoEveryFrame` files fail with C2197, too many arguments for a function pointer
+  call, i.e. the signature in the generated header is wrong.
+- `MissionDefinedData::field13_0x28` is declared as one `CampaignInfoStruct1` but indexed as an array:
+  `MenuView_CampaignUnk_Prepare` computes `(missionNumber1to20 - 2) * 0x58` and `CampaignInfoStruct1` is exactly
+  0x58 bytes. The header wants `field13_0x28[N]`, after which that function's dozen magic offsets become field
+  accesses.
 
 ## Agent Skills
 
