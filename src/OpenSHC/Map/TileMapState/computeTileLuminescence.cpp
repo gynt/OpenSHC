@@ -102,12 +102,12 @@ namespace Map {
                 if (!iVar1) {
                     iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                         DAT_BuildingsState::ptr)(iVar8);
-                    if (iVar1 < 0x10) {
-                        uVar5 = this->HeightLayer[iVar6] + 0x10;
-                    } else {
+                    if (iVar1 >= 0x10) {
                         iVar1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getBuildingHeightForBuildingID,
                             DAT_BuildingsState::ptr)(iVar8);
                         uVar5 = (uint)this->HeightLayer[iVar6] + iVar1;
+                    } else {
+                        uVar5 = this->HeightLayer[iVar6] + 0x10;
                     }
                 }
             }

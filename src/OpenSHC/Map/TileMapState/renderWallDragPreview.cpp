@@ -61,9 +61,7 @@ namespace Map {
                 LAB_004f8d75:
                     this->DAT_WallTileCountCurrentDrag = iVar3;
                     if (!this->illegalBuild) {
-                        if ((short)command == 0x19) {
-                            this->ConstructionGFXLayer[iVar6] = (ushort)GMTotalPicturesProcessed::instance[6];
-                        } else {
+                        if ((short)command != 0x19) {
                             if ((short)command == 0x2e) {
                                 uVar2 = (ushort)GMTotalPicturesProcessed::instance[6] + 1;
                                 goto LAB_004f8e61;
@@ -82,6 +80,8 @@ namespace Map {
                                 }
                                 this->DAT_WallTileCountCurrentDrag = this->DAT_WallTileCountCurrentDrag - 1;
                             }
+                        } else {
+                            this->ConstructionGFXLayer[iVar6] = (ushort)GMTotalPicturesProcessed::instance[6];
                         }
                     } else if ((short)command == 0x19) {
                         this->ConstructionGFXLayer[iVar6] = (ushort)GMTotalPicturesProcessed::instance[6] + 0x13;
@@ -122,16 +122,16 @@ namespace Map {
                     } else {
                         if (iVar6 < 1)
                             goto LAB_004f8f54;
-                        if ((int)uVar7 < (int)y2) {
-                            local_14 = local_14 + 3;
-                            uVar7 = uVar7 + 1;
-                            iVar4 = iVar4 + 1;
-                            local_10 = local_10 - 1;
-                        } else {
+                        if ((int)uVar7 >= (int)y2) {
                             local_14 = local_14 - 3;
                             uVar7 = uVar7 - 1;
                             iVar4 = iVar4 - 1;
                             local_10 = local_10 + 1;
+                        } else {
+                            local_14 = local_14 + 3;
+                            uVar7 = uVar7 + 1;
+                            iVar4 = iVar4 + 1;
+                            local_10 = local_10 - 1;
                         }
                     }
                 } else {

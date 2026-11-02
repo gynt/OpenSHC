@@ -891,10 +891,7 @@ namespace Map {
                                                 _scenarioEventType
                                                     = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
                                                 if (_scenarioEventType != 0x1a || !_scenarioEventType
-                                                    || _scenarioEventType == 0x17) {
-                                                    *_pConditionIsMet = 1;
-                                                    local_a0 = local_a0 + 1;
-                                                } else {
+                                                    || _scenarioEventType != 0x17) {
                                                     iVar18 = _eventIndex + 1;
                                                     if (iVar18 < this->eventsCount) {
                                                         pSVar15 = this->scenarioEvents[_eventIndex + 1]
@@ -909,6 +906,9 @@ namespace Map {
                                                             pSVar15 = pSVar15 + 0x39;
                                                         } while (iVar18 < this->eventsCount);
                                                     }
+                                                    *_pConditionIsMet = 1;
+                                                    local_a0 = local_a0 + 1;
+                                                } else {
                                                     *_pConditionIsMet = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }

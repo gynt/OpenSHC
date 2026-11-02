@@ -13,15 +13,15 @@ namespace Map {
         int DirectionAlgorithmState::setAxisBasedDistanceResult(
             int destinationXPosition, int destinationYPosition, int fromXPosition, int fromYPosition)
         {
-            if (fromXPosition < destinationXPosition) {
-                this->distanceX = destinationXPosition - fromXPosition;
-            } else {
+            if (fromXPosition >= destinationXPosition) {
                 this->distanceX = fromXPosition - destinationXPosition;
-            }
-            if (fromYPosition < destinationYPosition) {
-                this->distanceY = destinationYPosition - fromYPosition;
             } else {
+                this->distanceX = destinationXPosition - fromXPosition;
+            }
+            if (fromYPosition >= destinationYPosition) {
                 this->distanceY = fromYPosition - destinationYPosition;
+            } else {
+                this->distanceY = destinationYPosition - fromYPosition;
             }
             if (this->distanceX < this->distanceY) {
                 this->distanceLow = this->distanceX;

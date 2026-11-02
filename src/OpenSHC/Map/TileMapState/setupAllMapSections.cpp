@@ -66,55 +66,55 @@ namespace Map {
         do {
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (piVar4[-1] != 0x10) {
-                if (piVar4[-1] == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (piVar4[-1] != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             puVar1[-1] = uVar3;
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (*piVar4 != 0x10) {
-                if (*piVar4 == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (*piVar4 != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             *puVar1 = uVar3;
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (piVar4[1] != 0x10) {
-                if (piVar4[1] == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (piVar4[1] != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             puVar1[1] = uVar3;
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (piVar4[2] != 0x10) {
-                if (piVar4[2] == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (piVar4[2] != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             puVar1[2] = uVar3;
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (piVar4[3] != 0x10) {
-                if (piVar4[3] == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (piVar4[3] != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             puVar1[3] = uVar3;
             uVar3 = (ushort)GMTotalPicturesProcessed::instance[2];
             if (piVar4[4] != 0x10) {
-                if (piVar4[4] == 0x20) {
-                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
-                } else {
+                if (piVar4[4] != 0x20) {
                     uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 2;
+                } else {
+                    uVar3 = (ushort)GMTotalPicturesProcessed::instance[2] + 1;
                 }
             }
             puVar1[4] = uVar3;

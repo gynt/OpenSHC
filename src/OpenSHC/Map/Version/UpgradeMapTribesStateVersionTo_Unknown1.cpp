@@ -19,14 +19,14 @@ namespace Map {
         do {
             if (psVar2[-0xe] != 0) {
                 sVar1 = *psVar2;
-                if (sVar1 < 0x1f) {
-                    psVar2[0x126] = sVar1 / 2;
-                    psVar2[0x127] = sVar1 * 2;
-                } else {
+                if (sVar1 >= 0x1f) {
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trimTribeToSize, DAT_TribesState::ptr)(
                         tribeID, 0x1e);
                     psVar2[0x126] = 0xf;
                     psVar2[0x127] = 0x3c;
+                } else {
+                    psVar2[0x126] = sVar1 / 2;
+                    psVar2[0x127] = sVar1 * 2;
                 }
                 psVar2[0x128] = 0;
             }

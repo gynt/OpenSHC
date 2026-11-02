@@ -161,81 +161,7 @@ namespace Map {
             }
             goto LAB_00503d46;
         }
-        if (_commandBuildingType == Commands::M_MAPPER_DOG_CAGE) {
-            if (9 < DAT_GameState::instance.playerDataArray[playerID].dogCageCount) {
-                this->buildingPlacementFail = TRUE;
-                this->buildingPlacementFailReason = ((BuildingFailReasonEnum)1000);
-            }
-        switchD_0050397c_caseD_62:
-            local_4 = 5;
-        switchD_0050397c_caseD_64:
-            if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
-                iVar8 = 0;
-                do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                        iVar8, buildingSize);
-                    iVar4 = MACRO_CALL_MEMBER(
-                        Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange, DAT_PathFindingState::ptr)(
-                        playerID, (int)(this->buildingX + x), (int)(this->buildingY + _y), 7, -1, -1, -1);
-                    if (iVar4)
-                        goto LAB_005039d6;
-                    iVar8 = iVar8 + 1;
-                } while (iVar8 < this->constructionTileCount);
-            } else if (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT) {
-                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                    _distance = 30;
-                    _range = 30;
-                } else {
-                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(
-                        playerID);
-                    _distance = 15;
-                    _range = 7;
-                }
-                x = 0;
-                do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, buildingSize);
-                    BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
-                        DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y, _distance);
-                    if (BVar3) {
-                    LAB_00503b32:
-                        this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
-                    LAB_00503b48:
-                        bVar11 = false;
-                        break;
-                    }
-                    if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
-                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                            DAT_PathFindingState::ptr)(
-                            playerID, (int)(this->buildingX + _x), (int)(this->buildingY + _y), _range, -1, -1, -1);
-                        if (iVar8)
-                            goto LAB_00503b32;
-                        _buildRange = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
-                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
-                            DAT_PathFindingState::ptr)(
-                            playerID, this->buildingX + _x, this->buildingY + _y, _buildRange + local_4);
-                        if (!iVar8)
-                            goto LAB_00503b11;
-                        this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x12);
-                        goto LAB_00503b48;
-                    }
-                LAB_00503b11:
-                    x = x + 1;
-                    bVar11 = true;
-                } while ((int)x < this->constructionTileCount);
-                BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
-                    DAT_PathFindingState::ptr)(_x, _y, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
-                if (!BVar3) {
-                    if (bVar11)
-                        goto LAB_00503d46;
-                } else {
-                    this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
-                }
-                this->buildingPlacementFail = TRUE;
-                if (this->buildingPlacementFailReason == Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
-                    this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x12);
-                }
-            }
-        } else {
+        if (_commandBuildingType != Commands::M_MAPPER_DOG_CAGE) {
             switch (_commandBuildingType) {
             case Commands::M_MAPPER_WOODSMAN:
             case Commands::M_MAPPER_OXENBASE:
@@ -311,6 +237,80 @@ namespace Map {
                             goto LAB_005039d6;
                         iVar8 = iVar8 + 1;
                     } while (iVar8 < this->constructionTileCount);
+                }
+            }
+        } else {
+            if (9 < DAT_GameState::instance.playerDataArray[playerID].dogCageCount) {
+                this->buildingPlacementFail = TRUE;
+                this->buildingPlacementFailReason = ((BuildingFailReasonEnum)1000);
+            }
+        switchD_0050397c_caseD_62:
+            local_4 = 5;
+        switchD_0050397c_caseD_64:
+            if (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR) {
+                iVar8 = 0;
+                do {
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
+                        iVar8, buildingSize);
+                    iVar4 = MACRO_CALL_MEMBER(
+                        Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange, DAT_PathFindingState::ptr)(
+                        playerID, (int)(this->buildingX + x), (int)(this->buildingY + _y), 7, -1, -1, -1);
+                    if (iVar4)
+                        goto LAB_005039d6;
+                    iVar8 = iVar8 + 1;
+                } while (iVar8 < this->constructionTileCount);
+            } else if (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT) {
+                if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(
+                        playerID);
+                    _distance = 15;
+                    _range = 7;
+                } else {
+                    _distance = 30;
+                    _range = 30;
+                }
+                x = 0;
+                do {
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, buildingSize);
+                    BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
+                        DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y, _distance);
+                    if (BVar3) {
+                    LAB_00503b32:
+                        this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
+                    LAB_00503b48:
+                        bVar11 = false;
+                        break;
+                    }
+                    if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
+                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                            DAT_PathFindingState::ptr)(
+                            playerID, (int)(this->buildingX + _x), (int)(this->buildingY + _y), _range, -1, -1, -1);
+                        if (iVar8)
+                            goto LAB_00503b32;
+                        _buildRange = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
+                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
+                            DAT_PathFindingState::ptr)(
+                            playerID, this->buildingX + _x, this->buildingY + _y, _buildRange + local_4);
+                        if (!iVar8)
+                            goto LAB_00503b11;
+                        this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x12);
+                        goto LAB_00503b48;
+                    }
+                LAB_00503b11:
+                    x = x + 1;
+                    bVar11 = true;
+                } while ((int)x < this->constructionTileCount);
+                BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isSignPostWithinDistance,
+                    DAT_PathFindingState::ptr)(_x, _y, DAT_GameState::instance.mapAndTime.unk_signpostDistance + 5);
+                if (!BVar3) {
+                    if (bVar11)
+                        goto LAB_00503d46;
+                } else {
+                    this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
+                }
+                this->buildingPlacementFail = TRUE;
+                if (this->buildingPlacementFailReason == Map::Buildings::BFRE_DEFAULT_CANT_PLACE_THAT_THERE) {
+                    this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x12);
                 }
             }
         }

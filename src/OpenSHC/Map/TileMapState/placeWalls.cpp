@@ -212,38 +212,38 @@ namespace Map {
                 }
                 if ((undefined2)wallType == Commands::M_MAPPER_STAIR) {
                     if (_tile < (int)uVar4) {
-                        if ((int)local_18 < (int)x2) {
-                            x1 = x1 + 1;
-                            local_18 = local_18 + 1;
-                            local_28 = local_28 - 1;
-                        } else {
+                        if ((int)local_18 >= (int)x2) {
                             x1 = x1 - 1;
                             local_18 = local_18 - 1;
                             local_28 = local_28 + 1;
+                        } else {
+                            x1 = x1 + 1;
+                            local_18 = local_18 + 1;
+                            local_28 = local_28 - 1;
                         }
                     } else if (_tile < 1) {
                         local_10 = local_10 - 1;
-                    } else if ((int)y1 < (int)y2) {
-                        y1 = y1 + 1;
-                        local_24 = local_24 + 3;
-                        local_20 = local_20 + 1;
-                        local_1c = local_1c - 1;
-                    } else {
+                    } else if ((int)y1 >= (int)y2) {
                         y1 = y1 - 1;
                         local_24 = local_24 - 3;
                         local_20 = local_20 - 1;
                         local_1c = local_1c + 1;
+                    } else {
+                        y1 = y1 + 1;
+                        local_24 = local_24 + 3;
+                        local_20 = local_20 + 1;
+                        local_1c = local_1c - 1;
                     }
                 } else {
                     iVar5 = 1;
                     if (uVar4) {
-                        if ((int)local_18 < (int)x2) {
-                            x1 = x1 + 1;
-                            local_28 = local_28 - 1;
-                        } else {
+                        if ((int)local_18 >= (int)x2) {
                             x1 = x1 - 1;
                             iVar5 = -1;
                             local_28 = local_28 + 1;
+                        } else {
+                            x1 = x1 + 1;
+                            local_28 = local_28 - 1;
                         }
                         local_18 = local_18 + iVar5;
                     }

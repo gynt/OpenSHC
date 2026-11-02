@@ -16,15 +16,15 @@ namespace Map {
     {
         int iVar1;
         int iVar2;
-        if (param_2 < param_1) {
-            iVar1 = param_1 - param_2;
-        } else {
+        if (param_2 >= param_1) {
             iVar1 = param_2 - param_1;
-        }
-        if (param_4 < param_3) {
-            iVar2 = param_3 - param_4;
         } else {
+            iVar1 = param_1 - param_2;
+        }
+        if (param_4 >= param_3) {
             iVar2 = param_4 - param_3;
+        } else {
+            iVar2 = param_3 - param_4;
         }
         if (iVar1 < iVar2) {
             if (iVar2) {

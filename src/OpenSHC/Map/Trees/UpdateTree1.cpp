@@ -28,7 +28,17 @@ namespace Map {
         int _rng2_2_data;
         int _tree;
         _tree = DAT_CurrentTreeID::instance;
-        if (DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].zeroUpTo2 == 0) {
+        if (DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].zeroUpTo2 != 0) {
+            _rng2_2 = DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex;
+            if (DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].stage == 0) {
+                _rng2_2_data = DAT_OrganismDefinedData::instance.Tree_2_A[_rng2_2];
+            } else {
+                _rng2_2_data = DAT_OrganismDefinedData::instance.Tree_2_B[_rng2_2];
+            }
+            if (_rng2_2_data < 1) {
+                DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex = _rng2_2 - 1;
+            }
+        } else {
             _rng2 = DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex;
             if (!DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].flag) {
                 _rng2Data = DAT_OrganismDefinedData::instance.Tree_1_A[_rng2];
@@ -39,16 +49,6 @@ namespace Map {
                 DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex = 0;
                 DAT_LandscapeState::instance.trees[_tree].flag
                     = (uint)(DAT_LandscapeState::instance.trees[_tree].one == 2);
-            }
-        } else {
-            _rng2_2 = DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex;
-            if (DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].stage == 0) {
-                _rng2_2_data = DAT_OrganismDefinedData::instance.Tree_2_A[_rng2_2];
-            } else {
-                _rng2_2_data = DAT_OrganismDefinedData::instance.Tree_2_B[_rng2_2];
-            }
-            if (_rng2_2_data < 1) {
-                DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex = _rng2_2 - 1;
             }
         }
         switch (DAT_LandscapeState::instance.trees[_tree].stage) {

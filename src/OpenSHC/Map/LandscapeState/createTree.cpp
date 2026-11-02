@@ -53,10 +53,10 @@ namespace Map {
         /*
          ***   Set initial state of tree   ***
          */
-        if ((int)treeType >= 0x10 || 0x13 < (int)treeType) {
-            this->trees[_treeID].state = 4;
-        } else {
+        if ((int)treeType >= 0x10 || 0x13 >= (int)treeType) {
             this->trees[_treeID].state = 1;
+        } else {
+            this->trees[_treeID].state = 4;
         }
         /*
          ***   Set (initial) values for tree   ***

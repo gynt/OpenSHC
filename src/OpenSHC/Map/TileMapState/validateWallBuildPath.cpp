@@ -51,12 +51,12 @@ namespace Map {
         _tileMapState = this;
         _tileMapState2 = this;
         local_c = 0;
-        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-            local_8 = 0x1e;
-            local_4 = 0x1e;
-        } else {
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             local_8 = 0xf;
             local_4 = 7;
+        } else {
+            local_8 = 0x1e;
+            local_4 = 0x1e;
         }
         this->buildingPlacementFail = FALSE;
         this->illegalBuild = TRUE;
@@ -186,53 +186,53 @@ namespace Map {
             }
             if ((short)command == 0x1b) {
                 if (iVar1 < (int)uVar3) {
-                    if ((int)_x1 < (int)x2) {
-                        x1 = x1 + 1;
-                        _x1 = _x1 + 1;
-                        y1 = y1 - 1;
-                    } else {
+                    if ((int)_x1 >= (int)x2) {
                         x1 = x1 - 1;
                         _x1 = _x1 - 1;
                         y1 = y1 + 1;
+                    } else {
+                        x1 = x1 + 1;
+                        _x1 = _x1 + 1;
+                        y1 = y1 - 1;
                     }
                 } else {
                     if (iVar1 < 1)
                         goto LAB_00502e46;
-                    if ((int)_y1 < (int)y2) {
-                        local_1c = local_1c + 3;
-                        local_18 = local_18 + 1;
-                        _y1 = _y1 + 1;
-                        local_14 = local_14 - 1;
-                    } else {
+                    if ((int)_y1 >= (int)y2) {
                         local_1c = local_1c - 3;
                         local_18 = local_18 - 1;
                         _y1 = _y1 - 1;
                         local_14 = local_14 + 1;
+                    } else {
+                        local_1c = local_1c + 3;
+                        local_18 = local_18 + 1;
+                        _y1 = _y1 + 1;
+                        local_14 = local_14 - 1;
                     }
                 }
             } else {
                 if (uVar3) {
-                    if ((int)_x1 < (int)x2) {
-                        x1 = x1 + 1;
-                        _x1 = _x1 + 1;
-                        y1 = y1 - 1;
-                    } else {
+                    if ((int)_x1 >= (int)x2) {
                         x1 = x1 - 1;
                         _x1 = _x1 - 1;
                         y1 = y1 + 1;
+                    } else {
+                        x1 = x1 + 1;
+                        _x1 = _x1 + 1;
+                        y1 = y1 - 1;
                     }
                 }
                 if (iVar1) {
-                    if ((int)_y1 < (int)y2) {
-                        local_1c = local_1c + 3;
-                        local_18 = local_18 + 1;
-                        _y1 = _y1 + 1;
-                        local_14 = local_14 - 1;
-                    } else {
+                    if ((int)_y1 >= (int)y2) {
                         local_1c = local_1c - 3;
                         local_18 = local_18 - 1;
                         _y1 = _y1 - 1;
                         local_14 = local_14 + 1;
+                    } else {
+                        local_1c = local_1c + 3;
+                        local_18 = local_18 + 1;
+                        _y1 = _y1 + 1;
+                        local_14 = local_14 - 1;
                     }
                 }
                 if ((_x1 == x2) && (_y1 == y2)) {

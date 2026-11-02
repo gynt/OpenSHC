@@ -353,14 +353,14 @@ namespace Map {
         /*
          ** Now PlacedBuildingID has been set ***/
         if (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID) {
-            if (_buildingType2 == Map::Buildings::BT_PITCHDITCH) {
+            if (_buildingType2 != Map::Buildings::BT_PITCHDITCH) {
+                MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::startBuildingDestructionConfirmation,
+                    DAT_WallAndPitchState::ptr)(this->placedBuildingID);
+            } else {
                 if (local_4) {
                     MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::placePitchDitch, DAT_WallAndPitchState::ptr)(
                         local_4);
                 }
-            } else {
-                MACRO_CALL_MEMBER(Map::WallAndPitchState_Func::startBuildingDestructionConfirmation,
-                    DAT_WallAndPitchState::ptr)(this->placedBuildingID);
             }
         }
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processPlacementResourceLossForBuildingType,

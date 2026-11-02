@@ -29,13 +29,7 @@ namespace Map {
         DAT_PathFindingState::instance.climbData[iVar2].isRecognizedByPathfinding
             = (uint)(DAT_BuildingsState::instance.buildings[iVar1].pathLinkageRelated2 != 2);
         iVar3 = DAT_PathFindingState::instance.climbData[iVar2].ladderDirection;
-        if (iVar3 == 2) {
-            iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[iVar1].x;
-            DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition = iVar3 + 7;
-            iVar4 = (short)DAT_BuildingsState::instance.buildings[iVar1].y + 3;
-            DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4;
-            iVar3 = iVar3 - 1;
-        } else {
+        if (iVar3 != 2) {
             if (iVar3)
                 goto LAB_004a4efe;
             iVar4 = (int)(short)DAT_BuildingsState::instance.buildings[iVar1].y;
@@ -43,6 +37,12 @@ namespace Map {
             DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition = iVar3;
             DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4 + 7;
             iVar4 = iVar4 - 1;
+        } else {
+            iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[iVar1].x;
+            DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition = iVar3 + 7;
+            iVar4 = (short)DAT_BuildingsState::instance.buildings[iVar1].y + 3;
+            DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4;
+            iVar3 = iVar3 - 1;
         }
         DAT_PathFindingState::instance.climbData[iVar2].topXPosition = iVar3;
         DAT_PathFindingState::instance.climbData[iVar2].topYPosition = iVar4;

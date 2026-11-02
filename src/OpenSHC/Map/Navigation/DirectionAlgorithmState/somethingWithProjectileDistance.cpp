@@ -9,15 +9,15 @@ namespace Map {
         void DirectionAlgorithmState::somethingWithProjectileDistance(int x, int y, int targetX, int targetY)
         {
             int iVar1;
-            if (targetX < x) {
-                this->distanceX = x - targetX;
-            } else {
+            if (targetX >= x) {
                 this->distanceX = targetX - x;
-            }
-            if (targetY < y) {
-                this->distanceY = y - targetY;
             } else {
+                this->distanceX = x - targetX;
+            }
+            if (targetY >= y) {
                 this->distanceY = targetY - y;
+            } else {
+                this->distanceY = y - targetY;
             }
             if (this->distanceX < this->distanceY) {
                 if (!this->distanceY) {
@@ -30,49 +30,7 @@ namespace Map {
             } else {
                 iVar1 = (this->distanceY * 100) / this->distanceX;
             }
-            if (this->distanceX < this->distanceY) {
-                if (targetY < y) {
-                    if (targetX < x) {
-                        if (iVar1 < 0x1a) {
-                            this->orientation = 60;
-                            goto LAB_0046cc5d;
-                        }
-                        if (iVar1 < 0x4b) {
-                            this->orientation = 75;
-                            goto LAB_0046cc5d;
-                        }
-                        goto LAB_0046cb3f;
-                    }
-                    if (iVar1 < 0x1a) {
-                        this->orientation = 60;
-                        goto LAB_0046cc5d;
-                    }
-                    if (iVar1 < 0x4b) {
-                        this->orientation = 61;
-                        goto LAB_0046cc5d;
-                    }
-                    goto LAB_0046cc06;
-                }
-                if (x <= targetX) {
-                    if (iVar1 < 0x1a) {
-                        this->orientation = 0x44;
-                        goto LAB_0046cc5d;
-                    }
-                    if (iVar1 < 0x4b) {
-                        this->orientation = 0x43;
-                        goto LAB_0046cc5d;
-                    }
-                    goto LAB_0046cc56;
-                }
-                if (iVar1 < 0x1a) {
-                    this->orientation = 0x44;
-                    goto LAB_0046cc5d;
-                }
-                if (iVar1 < 0x4b) {
-                    this->orientation = 0x45;
-                    goto LAB_0046cc5d;
-                }
-            } else {
+            if (this->distanceX >= this->distanceY) {
                 if (x <= targetX) {
                     if (y <= targetY) {
                         if (iVar1 < 0x1a) {
@@ -118,6 +76,48 @@ namespace Map {
                 }
                 if (iVar1 < 0x4b) {
                     this->orientation = 0x47;
+                    goto LAB_0046cc5d;
+                }
+            } else {
+                if (targetY < y) {
+                    if (targetX < x) {
+                        if (iVar1 < 0x1a) {
+                            this->orientation = 60;
+                            goto LAB_0046cc5d;
+                        }
+                        if (iVar1 < 0x4b) {
+                            this->orientation = 75;
+                            goto LAB_0046cc5d;
+                        }
+                        goto LAB_0046cb3f;
+                    }
+                    if (iVar1 < 0x1a) {
+                        this->orientation = 60;
+                        goto LAB_0046cc5d;
+                    }
+                    if (iVar1 < 0x4b) {
+                        this->orientation = 61;
+                        goto LAB_0046cc5d;
+                    }
+                    goto LAB_0046cc06;
+                }
+                if (x <= targetX) {
+                    if (iVar1 < 0x1a) {
+                        this->orientation = 0x44;
+                        goto LAB_0046cc5d;
+                    }
+                    if (iVar1 < 0x4b) {
+                        this->orientation = 0x43;
+                        goto LAB_0046cc5d;
+                    }
+                    goto LAB_0046cc56;
+                }
+                if (iVar1 < 0x1a) {
+                    this->orientation = 0x44;
+                    goto LAB_0046cc5d;
+                }
+                if (iVar1 < 0x4b) {
+                    this->orientation = 0x45;
                     goto LAB_0046cc5d;
                 }
             }

@@ -137,7 +137,9 @@ namespace Map {
                     local_358 = 0;
                     do {
                         if ((uint)(local_358 + local_35c) < 400 && uVar9 < 400
-                            && *(char*)(uVar9 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + local_358 + local_35c) != '\0') {
+                            && *(char*)(uVar9 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400
+                                   + local_358 + local_35c)
+                                != '\0') {
                             pWVar7->firstMember = pWVar7->firstMember + 1;
                             _tile = DAT_ViewportRenderState::instance.translationMatrix[uVar9].addXgetTile + local_358
                                 + local_35c;
@@ -249,12 +251,7 @@ namespace Map {
                             _unitID = (int)(short)DAT_TileMapState::instance.UnitLayer[_tile];
                             if (_unitID) {
                                 this->grid[_x10][_y10].unitCount = this->grid[_x10][_y10].unitCount + 1;
-                                if (DAT_UnitsState::instance.units[_unitID].isStalked == 0) {
-                                    this->grid[_x10][_y10].unstalkedUnitCount
-                                        = this->grid[_x10][_y10].unstalkedUnitCount + 1;
-                                LAB_0052be68:
-                                    this->grid[_x10][_y10].field18_0x48 = this->grid[_x10][_y10].field18_0x48 + 1;
-                                } else {
+                                if (DAT_UnitsState::instance.units[_unitID].isStalked != 0) {
                                     this->grid[_x10][_y10].stalkedUnitCount
                                         = this->grid[_x10][_y10].stalkedUnitCount + 1;
                                     UVar5 = DAT_UnitsState::instance.units[_unitID].unitType;
@@ -272,6 +269,11 @@ namespace Map {
                                     } else if (UVar5 == Map::Units::UT_LIONSHWOLF) {
                                         this->grid[_x10][_y10].lionCount = this->grid[_x10][_y10].lionCount + 1;
                                     }
+                                } else {
+                                    this->grid[_x10][_y10].unstalkedUnitCount
+                                        = this->grid[_x10][_y10].unstalkedUnitCount + 1;
+                                LAB_0052be68:
+                                    this->grid[_x10][_y10].field18_0x48 = this->grid[_x10][_y10].field18_0x48 + 1;
                                 }
                             }
                         }
