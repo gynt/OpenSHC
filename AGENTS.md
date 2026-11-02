@@ -345,6 +345,16 @@ Diff patterns that were reliable (more in the cheat sheet):
   1 of 4 - a 25% to 83% range with nothing that forecasts it. It was worth +0.35 of namespace average over `Map`
   at 83% and cost three functions out of four over `Synchrony`. Budget it as a per-site lever and measure every
   file; two attempts to state a rate here (first "~60% every time", then "83% on Map") were both premature.
+- **Style guide rule 15 has one measured exception: a `(T*)( ... )` address computation.** `+ -N` -> `- N` is
+  neutral everywhere else - 1829 sites over three namespaces moved nothing - but inside the decompiler's pointer
+  arithmetic it costs 6 to 7 points a function, measured on six: `Map::Buildings::UpdateBrewery` -5.8 and the five
+  `Map::Units::TroopValueState` setters -6.4 to -7.3, with no other change in any of those files. Three of the
+  setters are near-identical bodies and lost exactly the same amount, so this is code generation and not reccmp
+  realigning; the value is identical either way, so MSVC is picking a different addressing mode for the two
+  spellings. `unplusminus.py` skips the shape now (`--all` overrides), and these lines are the raw pointer
+  arithmetic rules 7 and 11 would rather replace with a named field than tidy, so little is lost by leaving them.
+  The wider point: a rule can hold over a thousand functions and still have an exception, so run
+  `reccmp_report.py cmp` on every batch even for the passes that are "known" neutral.
 - **Rule 12's two forms are not interchangeable, and the choice is a code-generation one.**
   `string-literals.hpp` gives `char const* const s_x = S_X;`, a pointer *variable*, so a use is a load where the
   original materialises the string address as an immediate; `string-macros.hpp` gives `S_X`, which expands to the
