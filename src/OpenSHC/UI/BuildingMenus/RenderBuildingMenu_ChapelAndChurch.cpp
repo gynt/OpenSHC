@@ -131,15 +131,15 @@ namespace UI {
                 if (9 < DAT_00b98428::instance) {
                     DAT_00b98428::instance = 0;
                 }
-            } else if (DAT_WifeUnitType::instance == OpenSHC::Map::Units::UT_TANNER) {
-                DAT_00b9842c::instance = DAT_00b9842c::instance + 1;
-                if (9 < DAT_00b9842c::instance) {
-                    DAT_00b9842c::instance = 0;
-                }
-            } else {
+            } else if (DAT_WifeUnitType::instance != OpenSHC::Map::Units::UT_TANNER) {
                 DAT_00b98430::instance = DAT_00b98430::instance + 1;
                 if (9 < DAT_00b98430::instance) {
                     DAT_00b98430::instance = 0;
+                }
+            } else {
+                DAT_00b9842c::instance = DAT_00b9842c::instance + 1;
+                if (9 < DAT_00b9842c::instance) {
+                    DAT_00b9842c::instance = 0;
                 }
             }
         }

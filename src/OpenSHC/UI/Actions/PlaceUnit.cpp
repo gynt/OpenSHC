@@ -44,7 +44,8 @@ namespace UI {
         GmID local_8;
         int local_4;
         if (DAT_TileMapState::instance.DAT_ClickedTileX < 400 && DAT_TileMapState::instance.DAT_ClickedTileY < 400
-            && *(char*)(DAT_TileMapState::instance.DAT_ClickedTileY * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400
+            && *(char*)(DAT_TileMapState::instance.DAT_ClickedTileY * 400
+                   + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400
                    + DAT_TileMapState::instance.DAT_ClickedTileX)
                 != '\0') {
             _tile = DAT_ViewportRenderState::instance.translationMatrix[DAT_TileMapState::instance.DAT_ClickedTileY]
@@ -252,14 +253,7 @@ namespace UI {
                         DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                         Game::Resources::RT_GOLD, (int)(local_8), 0);
                 }
-                if (iVar2 < 0) {
-                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
-                        DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                        (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
-                        (int)(DAT_TileMapState::instance.DAT_ClickedTileX * 8),
-                        (int)(DAT_TileMapState::instance.DAT_ClickedTileY * 8),
-                        (int)(DAT_TileMapState::instance.HeightLayer[_tile]), _unitType);
-                } else {
+                if (iVar2 >= 0) {
                     tribeID = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::spawnUnitsIntoNewTribe,
                         DAT_TribesState::ptr)(0xffffffff, iVar2, (int)(DAT_TileMapState::instance.DAT_ClickedTileX),
                         (int)(DAT_TileMapState::instance.DAT_ClickedTileY),
@@ -277,6 +271,13 @@ namespace UI {
                             DAT_UnitsState::instance.units[iVar1].resourceToDeposit = 1;
                         } while (iVar3 < iVar2);
                     }
+                } else {
+                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                        DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                        (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                        (int)(DAT_TileMapState::instance.DAT_ClickedTileX * 8),
+                        (int)(DAT_TileMapState::instance.DAT_ClickedTileY * 8),
+                        (int)(DAT_TileMapState::instance.HeightLayer[_tile]), _unitType);
                 }
             }
         }

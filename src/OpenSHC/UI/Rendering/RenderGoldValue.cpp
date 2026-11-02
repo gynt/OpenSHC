@@ -37,11 +37,11 @@ namespace UI {
         if (999 < _gold) {
             iVar5 = 2;
         }
-        if (_gold <= 0) {
+        if (_gold > 0) {
+            local_c = 0x7d3e;
+        } else {
             _gold = 0;
             local_c = 0xff;
-        } else {
-            local_c = 0x7d3e;
         }
         iVar5 = iVar5 + 1;
         iVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(

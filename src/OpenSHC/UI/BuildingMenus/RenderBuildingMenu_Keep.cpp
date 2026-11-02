@@ -90,18 +90,7 @@ namespace UI {
         }
         iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[_displayNumber].buildingType;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (iVar3 - 0x47U < 3) {
-            iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[_displayNumber].quarryStockpileID;
-            if ((iVar3)
-                && (DAT_BuildingsState::instance.buildings[iVar3].uid
-                    == DAT_BuildingsState::instance.buildings[_displayNumber].uidWhenPlaced)) {
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_IN_KEEP,
-                    (int)((short)DAT_BuildingsState::instance.buildings[iVar3].buildingType * 2 - 0x50),
-                    DAT_MenuHandlerState::instance.x + 0x19, DAT_MenuHandlerState::instance.y + 0x1d3,
-                    OpenSHC::Text::TTA_LEFT, 0, 0x10, FALSE);
-            }
-        } else {
+        if (iVar3 - 0x47U >= 3) {
             _blendStrength = 0;
             _keepOffsetX = FALSE;
             _fontSize = 0x10;
@@ -113,6 +102,17 @@ namespace UI {
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_KEEP, iVar3 * 2 - 0x50);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 _textAddress, _xPos, _displayNumber, _alignment, _color, _fontSize, _keepOffsetX, _blendStrength);
+        } else {
+            iVar3 = (int)(short)DAT_BuildingsState::instance.buildings[_displayNumber].quarryStockpileID;
+            if ((iVar3)
+                && (DAT_BuildingsState::instance.buildings[iVar3].uid
+                    == DAT_BuildingsState::instance.buildings[_displayNumber].uidWhenPlaced)) {
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_IN_KEEP,
+                    (int)((short)DAT_BuildingsState::instance.buildings[iVar3].buildingType * 2 - 0x50),
+                    DAT_MenuHandlerState::instance.x + 0x19, DAT_MenuHandlerState::instance.y + 0x1d3,
+                    OpenSHC::Text::TTA_LEFT, 0, 0x10, FALSE);
+            }
         }
         _displayNumber = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                              .taxesSliderUI;
@@ -206,7 +206,9 @@ namespace UI {
                     iVar3 = 0x7d;
                 } else if (iVar4 == 2) {
                     iVar3 = 0x4b;
-                } else if (iVar4 != 3) {
+                } else if (iVar4 == 3) {
+                    iVar3 = 0x19;
+                } else {
                     if (iVar4 == 4) {
                         iVar3 = -0x32;
                     } else if (iVar4 == 5) {
@@ -227,8 +229,6 @@ namespace UI {
                             iVar3 = iVar1;
                         }
                     }
-                } else {
-                    iVar3 = 0x19;
                 }
             } else {
                 iVar3 = 0x19;

@@ -40,10 +40,10 @@ namespace UI {
         } else {
             iVar2 = -4;
         }
-        if (integer < 1) {
-            color = (-(uint)(integer) & 0xff471204) + 0xb8eefb;
-        } else {
+        if (integer >= 1) {
             color = 0xff00;
+        } else {
+            color = (-(uint)(integer) & 0xff471204) + 0xb8eefb;
         }
         DAT_TextManagerObject::instance.field8_0x20 = 1;
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(

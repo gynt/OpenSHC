@@ -61,18 +61,18 @@ namespace UI {
                 iVar2 = blendStrengthUnk * -0x200;
                 iVar9 = iVar2 + 0xd812d8;
                 if (!this->isZoom2) {
-                    if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                        this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
-                        _jumpLineBytes = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
-                        blendStrengthUnk = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-                        _surfaceHeightStart = this->screenMenuSurfaceHeightRange.start;
-                        _surfaceHeightEnd = this->screenMenuSurfaceHeightRange.end;
-                    } else {
+                    if (this->drawBufferChoiceValue != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                         this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                         _jumpLineBytes = (0xfd8 - width) * 2;
                         blendStrengthUnk = 0x1fb0;
                         _surfaceHeightStart = this->mapGameSurfaceHeightRange.start;
                         _surfaceHeightEnd = this->mapGameSurfaceHeightRange.end;
+                    } else {
+                        this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                        _jumpLineBytes = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
+                        blendStrengthUnk = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
+                        _surfaceHeightStart = this->screenMenuSurfaceHeightRange.start;
+                        _surfaceHeightEnd = this->screenMenuSurfaceHeightRange.end;
                     }
                     if ((y + height <= _surfaceHeightEnd) || (height = _surfaceHeightEnd - y, 0 < height)) {
                         if (DAT_WindowAndDirectDraw::instance.colorBitMode != OpenSHC::Rendering::RGB_555) {

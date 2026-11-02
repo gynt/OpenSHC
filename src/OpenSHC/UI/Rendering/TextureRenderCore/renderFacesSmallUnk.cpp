@@ -23,16 +23,16 @@ namespace UI {
             short* _color;
             int j;
             _potraitDataBegin = (short*)(facesIndex * 0x2100 + (int)this->bitmapsFaces_0x94);
-            if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_MAP_GAME) {
-                _byteWidth = 8112;
-                this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
-            } else {
+            if (this->drawBufferChoiceValue != OpenSHC::Rendering::Enums::RT_MAP_GAME) {
                 _byteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                 this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                 if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
                     _byteWidth = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
                     this->currentRenderSurface = AlphaAndButtonSurfaceObj::instance.surfacePtr;
                 }
+            } else {
+                _byteWidth = 8112;
+                this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
             }
             _surface = (short*)((int)this->currentRenderSurface + drawX * 2 + _byteWidth * drawY);
             i = 33;

@@ -25,7 +25,26 @@ namespace UI {
               y, width, height).   Could also be that I am misinterpreting. -TheRedDaemon
              */
             this->drawColor = color;
-            if (this->surfaceTarget == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+            if (this->surfaceTarget != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+                if (left < 0) {
+                    if (right < 0) {
+                        return FALSE;
+                    }
+                    left = 0;
+                } else if (4056 < left) {
+                    if (4056 < right) {
+                        return FALSE;
+                    }
+                    left = 4055;
+                }
+                _heightRangeStart = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                _heightRangeEnd = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
+                if (right < 0) {
+                    right = 0;
+                } else if (4056 < right) {
+                    right = 4055;
+                }
+            } else {
                 if (left < 0) {
                     if (right < 0) {
                         return FALSE;
@@ -45,25 +64,6 @@ namespace UI {
                 _heightRangeEnd = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
                 if (DAT_WindowAndDirectDraw::instance.resolutionX <= right) {
                     right = DAT_WindowAndDirectDraw::instance.resolutionX - 1;
-                }
-            } else {
-                if (left < 0) {
-                    if (right < 0) {
-                        return FALSE;
-                    }
-                    left = 0;
-                } else if (4056 < left) {
-                    if (4056 < right) {
-                        return FALSE;
-                    }
-                    left = 4055;
-                }
-                _heightRangeStart = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
-                _heightRangeEnd = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
-                if (right < 0) {
-                    right = 0;
-                } else if (4056 < right) {
-                    right = 4055;
                 }
             }
             if ((top < (int)_heightRangeStart) && (top = _heightRangeStart, bottom < (int)_heightRangeStart)) {

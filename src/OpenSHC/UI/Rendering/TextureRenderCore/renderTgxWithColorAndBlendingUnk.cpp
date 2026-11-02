@@ -35,20 +35,20 @@ namespace UI {
             short _overlayStrengthUnk;
             _overlayStrengthUnk = 0x20 - (short)blendStrengthUnk;
             if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                DAT_TextureRenderCoreObject::instance.currentRenderSurface
-                    = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
-                _lineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-                _jumpLineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
-                _heightStart = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
-                iVar2 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
-            } else {
+                != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                 DAT_TextureRenderCoreObject::instance.currentRenderSurface
                     = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                 _jumpLineByteWidth = (0xfd8 - width) * 2;
                 _lineByteWidth = 0x1fb0;
                 _heightStart = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                 iVar2 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
+            } else {
+                DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                    = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                _lineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
+                _jumpLineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
+                _heightStart = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
+                iVar2 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
             }
             if ((height + yPos <= iVar2) || (height = iVar2 - yPos, 0 < height)) {
                 if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
@@ -144,13 +144,7 @@ namespace UI {
                             uVar1 = (ushort)(_overlayStrengthUnk
                                         * ((ushort) * (undefined2*)pTVar3 >> _greenOffset & 0x1f))
                                 >> 5;
-                            if (uVar1 == 0x1f) {
-                                do {
-                                    *_drawPointer = fillColorUnk;
-                                    _drawPointer = _drawPointer + 1;
-                                    iVar2 = iVar2 - 1;
-                                } while (iVar2);
-                            } else {
+                            if (uVar1 != 0x1f) {
                                 do {
                                     _length = (((iVar2 >> 0x10) << 0x10) | (uint)(ushort)*_drawPointer) & 0xffff001f;
                                     *_drawPointer = ((((ushort)(((fillColorUnk >> (char)width & 0x1f)
@@ -172,6 +166,12 @@ namespace UI {
                                             & 0x1f);
                                     _drawPointer = _drawPointer + 1;
                                     iVar2 = ((_length & 0xffff0000) | (uint)(ushort)iVar2) - 1;
+                                } while (iVar2);
+                            } else {
+                                do {
+                                    *_drawPointer = fillColorUnk;
+                                    _drawPointer = _drawPointer + 1;
+                                    iVar2 = iVar2 - 1;
                                 } while (iVar2);
                             }
                             goto LAB_0044f97b;

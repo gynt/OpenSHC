@@ -691,73 +691,7 @@ namespace UI {
             iVar2 = 0x12;
             BVar12 = 0xccfaff;
             TVar11 = OpenSHC::Text::TTA_LEFT;
-            if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
-                iVar10 = DAT_MenuHandlerState::instance.y + 0x229;
-                iVar3 = DAT_MenuHandlerState::instance.x + 0x32;
-                /*
-                  added by script: "Extreme Score"
-                 */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1b);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar5, iVar3, iVar10, TVar11, BVar12, iVar2, BVar13, iVar8);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_68, DAT_MenuHandlerState::instance.x + 0x32, DAT_MenuHandlerState::instance.y + 0x229,
-                    OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
-                iVar3 = 0;
-                BVar13 = TRUE;
-                iVar10 = 0x12;
-                BVar12 = 0xccfaff;
-                TVar11 = OpenSHC::Text::TTA_LEFT;
-                iVar2 = DAT_MenuHandlerState::instance.y + 0x229;
-                iVar8 = DAT_MenuHandlerState::instance.x + 0x32;
-                /*
-                  added by script: "Save File"
-                 */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1c);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar5, iVar8, iVar2, TVar11, BVar12, iVar10, BVar13, iVar3);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_cc, DAT_MenuHandlerState::instance.x + 0x32, DAT_MenuHandlerState::instance.y + 0x229,
-                    OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
-                iVar4 = 0;
-                BVar13 = FALSE;
-                iVar3 = 0x12;
-                iVar2 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x32 + DAT_MenuHandlerState::instance.x;
-                BVar12 = 0xccfaff;
-                TVar11 = OpenSHC::Text::TTA_LEFT;
-                iVar10 = DAT_MenuHandlerState::instance.y + 0x23f;
-                iVar8 = DAT_MenuHandlerState::instance.x + 0x32;
-                /*
-                  added by script: "To submit this score, visit"
-                 */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1d);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar5, iVar8, iVar10, TVar11, BVar12, iVar3, BVar13, iVar4);
-                iVar8 = DAT_MenuHandlerState::instance.y + 0x23f;
-                iVar4 = 0;
-                BVar13 = TRUE;
-                iVar3 = 0x12;
-                BVar12 = 0xffffff;
-                TVar11 = OpenSHC::Text::TTA_LEFT;
-                iVar10 = DAT_MenuHandlerState::instance.x + 0x38;
-                /*
-                  added by script: "www.fireflyworlds.com"
-                 */
-                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1e);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    pcVar5, iVar10, iVar8, TVar11, BVar12, iVar3, BVar13, iVar4);
-                iVar8 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x38 + DAT_MenuHandlerState::instance.x;
-                if (iVar2 < iVar8) {
-                    iVar2 = iVar8;
-                }
-                iVar8 = DAT_MenuHandlerState::instance.y + 0x253;
-                iVar10 = DAT_MenuHandlerState::instance.y + 0x222;
-                iVar3 = DAT_MenuHandlerState::instance.x + 0x1e;
-            } else {
+            if (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_800x600) {
                 iVar10 = DAT_MenuHandlerState::instance.y + 0x262;
                 iVar3 = DAT_MenuHandlerState::instance.x - 0x2a;
                 /*
@@ -823,6 +757,72 @@ namespace UI {
                 iVar8 = DAT_MenuHandlerState::instance.y + 0x28c;
                 iVar10 = DAT_MenuHandlerState::instance.y + 0x25b;
                 iVar3 = DAT_MenuHandlerState::instance.x - 0x3e;
+            } else {
+                iVar10 = DAT_MenuHandlerState::instance.y + 0x229;
+                iVar3 = DAT_MenuHandlerState::instance.x + 0x32;
+                /*
+                  added by script: "Extreme Score"
+                 */
+                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1b);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    pcVar5, iVar3, iVar10, TVar11, BVar12, iVar2, BVar13, iVar8);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    local_68, DAT_MenuHandlerState::instance.x + 0x32, DAT_MenuHandlerState::instance.y + 0x229,
+                    OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                iVar3 = 0;
+                BVar13 = TRUE;
+                iVar10 = 0x12;
+                BVar12 = 0xccfaff;
+                TVar11 = OpenSHC::Text::TTA_LEFT;
+                iVar2 = DAT_MenuHandlerState::instance.y + 0x229;
+                iVar8 = DAT_MenuHandlerState::instance.x + 0x32;
+                /*
+                  added by script: "Save File"
+                 */
+                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1c);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    pcVar5, iVar8, iVar2, TVar11, BVar12, iVar10, BVar13, iVar3);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    local_cc, DAT_MenuHandlerState::instance.x + 0x32, DAT_MenuHandlerState::instance.y + 0x229,
+                    OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                iVar4 = 0;
+                BVar13 = FALSE;
+                iVar3 = 0x12;
+                iVar2 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x32 + DAT_MenuHandlerState::instance.x;
+                BVar12 = 0xccfaff;
+                TVar11 = OpenSHC::Text::TTA_LEFT;
+                iVar10 = DAT_MenuHandlerState::instance.y + 0x23f;
+                iVar8 = DAT_MenuHandlerState::instance.x + 0x32;
+                /*
+                  added by script: "To submit this score, visit"
+                 */
+                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1d);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    pcVar5, iVar8, iVar10, TVar11, BVar12, iVar3, BVar13, iVar4);
+                iVar8 = DAT_MenuHandlerState::instance.y + 0x23f;
+                iVar4 = 0;
+                BVar13 = TRUE;
+                iVar3 = 0x12;
+                BVar12 = 0xffffff;
+                TVar11 = OpenSHC::Text::TTA_LEFT;
+                iVar10 = DAT_MenuHandlerState::instance.x + 0x38;
+                /*
+                  added by script: "www.fireflyworlds.com"
+                 */
+                pcVar5 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1e);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    pcVar5, iVar10, iVar8, TVar11, BVar12, iVar3, BVar13, iVar4);
+                iVar8 = DAT_TextManagerObject::instance.currentXOffset_0x0 + 0x38 + DAT_MenuHandlerState::instance.x;
+                if (iVar2 < iVar8) {
+                    iVar2 = iVar8;
+                }
+                iVar8 = DAT_MenuHandlerState::instance.y + 0x253;
+                iVar10 = DAT_MenuHandlerState::instance.y + 0x222;
+                iVar3 = DAT_MenuHandlerState::instance.x + 0x1e;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 iVar3, iVar10, iVar2 + 0x14, iVar8, (ushort)(COL_WHITE::instance.shortValue));

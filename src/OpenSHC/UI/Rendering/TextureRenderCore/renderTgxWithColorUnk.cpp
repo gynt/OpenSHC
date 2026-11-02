@@ -26,18 +26,18 @@ namespace UI {
             ushort* _drawingPosition;
             int _heightStart;
             int _lineByteWidth;
-            if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
-                _lineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-                width = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
-                _heightStart = this->screenMenuSurfaceHeightRange.start;
-                iVar1 = this->screenMenuSurfaceHeightRange.end;
-            } else {
+            if (this->drawBufferChoiceValue != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                 this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                 width = (0xfd8 - width) * 2;
                 _heightStart = this->mapGameSurfaceHeightRange.start;
                 _lineByteWidth = 0x1fb0;
                 iVar1 = this->mapGameSurfaceHeightRange.end;
+            } else {
+                this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                _lineByteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
+                width = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
+                _heightStart = this->screenMenuSurfaceHeightRange.start;
+                iVar1 = this->screenMenuSurfaceHeightRange.end;
             }
             if (((height + yPos <= iVar1) || (height = iVar1 - yPos, 0 < height)) && -1 < xPos) {
                 if (yPos < _heightStart) {

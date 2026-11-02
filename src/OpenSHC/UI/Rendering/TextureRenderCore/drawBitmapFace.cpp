@@ -30,16 +30,16 @@ namespace UI {
                 DAT_TextureRenderCoreObject::instance.currentRenderSurface
                     = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
             } else if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                == OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
-                _pixelToJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
-                _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
-                DAT_TextureRenderCoreObject::instance.currentRenderSurface
-                    = AlphaAndButtonSurfaceObj::instance.surfacePtr;
-            } else {
+                != OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
                 _pixelToJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 - 0x40;
                 _widthInByte = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                 DAT_TextureRenderCoreObject::instance.currentRenderSurface
                     = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+            } else {
+                _pixelToJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
+                _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
+                DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                    = AlphaAndButtonSurfaceObj::instance.surfacePtr;
             }
             _ptrInSurface = (short*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + xPos * 2
                 + _widthInByte * yPos);

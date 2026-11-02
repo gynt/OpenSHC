@@ -48,21 +48,7 @@ namespace UI {
             pcVar3 = pcVar3 + 1;
             pcVar5 = pcVar5 + 1;
         } while (cVar1 != '\0');
-        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
-            pcVar3 = (local_3f4 - 1);
-            do {
-                pcVar5 = pcVar3 + 1;
-                pcVar3 = pcVar3 + 1;
-            } while (*pcVar5 != '\0');
-            (*(char*)&uVar4) = '.';
-            (*(char*)((char*)&uVar4 + 1)) = 't';
-            (*(char*)((char*)&uVar4 + 2)) = 'm';
-            (*(char*)((char*)&uVar4 + 3)) = 'p';
-        LAB_00493166:
-            *(undefined4*)pcVar3 = uVar4;
-            pcVar3[4] = '\0';
-            resourceType = IO::FRT_MAPS;
-        } else {
+        if (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_UNUSED_CREATE_SIEGE) {
             if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_CUSTOM_SCENARIOS) {
                 pcVar3 = (local_3f4 - 1);
                 do {
@@ -93,6 +79,20 @@ namespace UI {
                 strcpy(pcVar5 + 1, ".msv");
                 resourceType = IO::FRT_UNKNOWN;
             }
+        } else {
+            pcVar3 = (local_3f4 - 1);
+            do {
+                pcVar5 = pcVar3 + 1;
+                pcVar3 = pcVar3 + 1;
+            } while (*pcVar5 != '\0');
+            (*(char*)&uVar4) = '.';
+            (*(char*)((char*)&uVar4 + 1)) = 't';
+            (*(char*)((char*)&uVar4 + 2)) = 'm';
+            (*(char*)((char*)&uVar4 + 3)) = 'p';
+        LAB_00493166:
+            *(undefined4*)pcVar3 = uVar4;
+            pcVar3[4] = '\0';
+            resourceType = IO::FRT_MAPS;
         }
         MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
             resourceType, (char const*)((int)(local_3f4)));

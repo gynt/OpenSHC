@@ -76,18 +76,18 @@ namespace UI {
                     iVar10 = iVar2 + 0xd812d8;
                     if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
                         if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
-                            == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
-                                = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
-                            local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-                            local_c = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
-                            iVar14 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
-                        } else {
+                            != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                             DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                             local_8 = 0x1fb0;
                             local_c = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
+                        } else {
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                            local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
+                            local_c = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
+                            iVar14 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
                         }
                         if ((yPosition + height <= iVar14) || (height = iVar14 - yPosition, 0 < height)) {
                             if (DAT_WindowAndDirectDraw::instance.colorBitMode != OpenSHC::Rendering::RGB_555) {

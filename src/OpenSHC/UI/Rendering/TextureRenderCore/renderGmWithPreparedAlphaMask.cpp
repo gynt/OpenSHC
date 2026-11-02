@@ -50,18 +50,18 @@ namespace UI {
                 if (DAT_BlendFilterArrays::instance[0x20][0x1f][0] == 0) {
                     MACRO_CALL(OpenSHC::UI::Rendering_Func::InitBlendFilterArraysUnk)();
                 }
-                if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                    this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
-                    _byteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
-                    _heightRangeStart = this->screenMenuSurfaceHeightRange.start;
-                    _jumpLineByteSize = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
-                    iVar7 = this->screenMenuSurfaceHeightRange.end;
-                } else {
+                if (this->drawBufferChoiceValue != OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
                     this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                     _heightRangeStart = this->mapGameSurfaceHeightRange.start;
                     _jumpLineByteSize = (0xfd8 - width) * 2;
                     _byteWidth = 0x1fb0;
                     iVar7 = this->mapGameSurfaceHeightRange.end;
+                } else {
+                    this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                    _byteWidth = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
+                    _heightRangeStart = this->screenMenuSurfaceHeightRange.start;
+                    _jumpLineByteSize = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine + width * -2;
+                    iVar7 = this->screenMenuSurfaceHeightRange.end;
                 }
                 if ((y + height <= iVar7) || (height = iVar7 - y, 0 < height)) {
                     if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
@@ -123,9 +123,7 @@ namespace UI {
                                             _anotherLengthUnk = (*_alphaAndButtonSurfacePtr & 0x1f) - blendStrength;
                                             if (_anotherLengthUnk
                                                 && blendStrength <= (int)(*_alphaAndButtonSurfacePtr & 0x1f)) {
-                                                if (_anotherLengthUnk == 0x1f) {
-                                                    *_currentRenderSurfacePtr = *imageDataPtr;
-                                                } else {
+                                                if (_anotherLengthUnk != 0x1f) {
                                                     uVar3 = *imageDataPtr & 0xffe0
                                                         | DAT_BlendFilterArrays::instance[_anotherLengthUnk]
                                                                                          [*imageDataPtr & 0xffff001f]
@@ -147,6 +145,8 @@ namespace UI {
                                                         + (uVar5 & 0x83ff
                                                             | *(ushort*)(iVar7 + 0xd7d2dc
                                                                 + (uint)(uVar5 >> 10 & 0x1f) * 8));
+                                                } else {
+                                                    *_currentRenderSurfacePtr = *imageDataPtr;
                                                 }
                                             }
                                             imageDataPtr = (ushort*)((int)imageDataPtr + 2);

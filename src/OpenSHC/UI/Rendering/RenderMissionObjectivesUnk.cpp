@@ -76,12 +76,7 @@ namespace UI {
         iVar5 = 200;
         local_8 = 300;
         DAT_TextManagerObject::instance.field9_0x24 = 1;
-        if (DAT_GameCore::instance.section1095 == 2) {
-            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x1a);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar4, iVar1, TVar7, BVar8, iVar9, BVar10, iVar11);
-        } else {
+        if (DAT_GameCore::instance.section1095 != 2) {
             pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
@@ -361,12 +356,12 @@ namespace UI {
                     }
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                    if (INT_ARRAY_00ed3070::instance[iVar1] == 0) {
-                        iVar6 = 5;
-                        iVar4 = yParam;
-                    } else {
+                    if (INT_ARRAY_00ed3070::instance[iVar1] != 0) {
                         iVar6 = 6;
                         iVar4 = yParam - 0x19;
+                    } else {
+                        iVar6 = 5;
+                        iVar4 = yParam;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_BUTTONS, iVar6,
@@ -496,6 +491,11 @@ namespace UI {
                     yParam = yParam + 0x15;
                 }
             }
+        } else {
+            pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_OBJECTIVES, 0x1a);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                pcVar2, iVar4, iVar1, TVar7, BVar8, iVar9, BVar10, iVar11);
         }
         if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk) {
             return yParam;

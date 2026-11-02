@@ -65,17 +65,17 @@ namespace UI {
             _resourceType = (OpenSHC::Game::Resources::ResourceType)(DAT_RenderingDefinedData::instance
                     .MarketStonksOrder[_index]);
             if (_resourceType != (ResourceType)0) {
-                if (_index < 13) {
-                    if (_index < 10) {
-                        iVar4 = 40;
-                        iVar1 = _index;
-                    } else {
-                        iVar4 = 100;
-                        iVar1 = _index - 10;
-                    }
-                } else {
+                if (_index >= 13) {
                     iVar4 = 100;
                     iVar1 = _index - 0xb;
+                } else {
+                    if (_index >= 10) {
+                        iVar4 = 100;
+                        iVar1 = _index - 10;
+                    } else {
+                        iVar4 = 40;
+                        iVar1 = _index;
+                    }
                 }
                 iVar1 = iVar1 * 0x2f;
                 BVar6 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable,

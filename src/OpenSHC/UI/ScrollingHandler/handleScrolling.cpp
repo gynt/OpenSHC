@@ -74,18 +74,18 @@ namespace UI {
             this->timeScrolling_0x44 = this->timeOfLastNotScroll_0x40;
         }
         this->isScrolling_0x0 = TRUE;
-        if (this->scrollSpeedSetting_0x38 == UI::SS_FAST) {
-            _scrollDistanceDenominator
-                = (int)((ulonglong)((longlong)this->scrollAccelerationInterval * 0x55555555) >> 0x20)
-                - this->scrollAccelerationInterval;
-            _scrollDistanceDenominator = (_scrollDistanceDenominator >> 1) - (_scrollDistanceDenominator >> 0x1f);
-            _scrollDistanceMax = (_scrollDistanceMax * 0x85) / 100;
-        } else {
+        if (this->scrollSpeedSetting_0x38 != UI::SS_FAST) {
             _scrollDistanceDenominator = this->scrollAccelerationInterval;
             if (this->scrollSpeedSetting_0x38 != UI::SS_SLOW)
                 goto LAB_00468c01;
             _scrollDistanceDenominator = this->scrollAccelerationInterval / 2;
             _scrollDistanceMax = _scrollDistanceMax / 2;
+        } else {
+            _scrollDistanceDenominator
+                = (int)((ulonglong)((longlong)this->scrollAccelerationInterval * 0x55555555) >> 0x20)
+                - this->scrollAccelerationInterval;
+            _scrollDistanceDenominator = (_scrollDistanceDenominator >> 1) - (_scrollDistanceDenominator >> 0x1f);
+            _scrollDistanceMax = (_scrollDistanceMax * 0x85) / 100;
         }
         _scrollDistanceDenominator = this->scrollAccelerationInterval + _scrollDistanceDenominator;
     LAB_00468c01:

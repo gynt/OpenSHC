@@ -99,19 +99,7 @@ namespace UI {
             /*
               if blendStrength != -1
              */
-            if (DAT_ButtonW::instance == 100) {
-                if (DAT_ButtonH::instance == 100) {
-                    iVar1 = 0xb3;
-                    iVar2 = 100;
-                    goto LAB_00463cd0;
-                }
-            LAB_00463ca0:
-                if (35 < DAT_ButtonH::instance) {
-                    iVar1 = 39;
-                    iVar2 = 200;
-                    goto LAB_00463cd0;
-                }
-            } else {
+            if (DAT_ButtonW::instance != 100) {
                 if ((DAT_ButtonW::instance < 0x1f) && (DAT_ButtonH::instance < 0x14)) {
                     iVar1 = 0x1b;
                     iVar2 = 0x14;
@@ -129,6 +117,18 @@ namespace UI {
                 }
                 if (DAT_ButtonW::instance < 0xdd)
                     goto LAB_00463ca0;
+            } else {
+                if (DAT_ButtonH::instance == 100) {
+                    iVar1 = 0xb3;
+                    iVar2 = 100;
+                    goto LAB_00463cd0;
+                }
+            LAB_00463ca0:
+                if (35 < DAT_ButtonH::instance) {
+                    iVar1 = 39;
+                    iVar2 = 200;
+                    goto LAB_00463cd0;
+                }
             }
             if ((310 < DAT_ButtonW::instance) || (DAT_ButtonH::instance < 35)) {
                 if (20 < DAT_ButtonH::instance) {

@@ -47,14 +47,14 @@ namespace UI {
                     _pixelToLineJump = 0xf98;
                     _widthInByte = 0x1fb0;
                     this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
-                } else if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
-                    _pixelToLineJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
-                    _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
-                    this->currentRenderSurface = AlphaAndButtonSurfaceObj::instance.surfacePtr;
-                } else {
+                } else if (this->drawBufferChoiceValue != OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
                     _pixelToLineJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 - 0x40;
                     _widthInByte = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                     this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                } else {
+                    _pixelToLineJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
+                    _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
+                    this->currentRenderSurface = AlphaAndButtonSurfaceObj::instance.surfacePtr;
                 }
                 _surfacePtr = (ushort*)((int)this->currentRenderSurface + xPos * 2 + _widthInByte * yPos);
                 if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {

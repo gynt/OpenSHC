@@ -38,38 +38,7 @@ namespace UI {
             = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::getUnitStateTextParameterAndResourceType,
                 DAT_UnitsState::ptr)(unitID, &_entry);
         if (_unitStateCategory < 1) {}
-        if (_unitStateCategory == 10) {
-            if ((int)_entry < 1)
-                goto LAB_0043cd7c;
-            iVar8 = 0;
-            BVar7 = FALSE;
-            iVar6 = 0x12;
-            BVar5 = 0;
-            TVar4 = OpenSHC::Text::TTA_LEFT;
-            iVar2 = xPos;
-            iVar3 = yPos;
-            /*
-              added by script: "Taking"
-             */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_UNIT_ACTIONS, 0x65);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
-            iVar8 = 0;
-            BVar7 = TRUE;
-            iVar6 = 0x12;
-            BVar5 = 0;
-            TVar4 = OpenSHC::Text::TTA_LEFT;
-            iVar2 = xPos + 5;
-            iVar3 = yPos;
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(_entry));
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
-            BVar7 = TRUE;
-            xPos = xPos + 10;
-            _entry = ((ResourceType)0x66);
-        } else {
+        if (_unitStateCategory != 10) {
             if (_unitStateCategory == 6) {
                 if (0 < (int)_entry) {
                     iVar8 = 0;
@@ -116,6 +85,37 @@ namespace UI {
               Reuse!
              */
             _entry = (OpenSHC::Game::Resources::ResourceType)(_unitStateCategory);
+        } else {
+            if ((int)_entry < 1)
+                goto LAB_0043cd7c;
+            iVar8 = 0;
+            BVar7 = FALSE;
+            iVar6 = 0x12;
+            BVar5 = 0;
+            TVar4 = OpenSHC::Text::TTA_LEFT;
+            iVar2 = xPos;
+            iVar3 = yPos;
+            /*
+              added by script: "Taking"
+             */
+            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_UNIT_ACTIONS, 0x65);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
+            iVar8 = 0;
+            BVar7 = TRUE;
+            iVar6 = 0x12;
+            BVar5 = 0;
+            TVar4 = OpenSHC::Text::TTA_LEFT;
+            iVar2 = xPos + 5;
+            iVar3 = yPos;
+            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(_entry));
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
+            BVar7 = TRUE;
+            xPos = xPos + 10;
+            _entry = ((ResourceType)0x66);
         }
         /*
           important!
